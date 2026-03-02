@@ -38,10 +38,10 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureC
 
   factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranch.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranch(
-      condition: map['condition'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
-      nextStep: map['nextStep'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>())).input(),
-      response: map['response'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchResponse.fromMap((map['response'] as Map).cast<String, dynamic>())).input(),
+      nextStep: map['nextStep'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchNextStep.fromMap((map['nextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      response: map['response'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchResponse.fromMap((map['response']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

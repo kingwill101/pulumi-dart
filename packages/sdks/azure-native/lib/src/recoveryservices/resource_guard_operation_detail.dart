@@ -23,8 +23,8 @@ class ResourceGuardOperationDetail {
 
   factory ResourceGuardOperationDetail.fromMap(Map<String, dynamic> map) {
     return ResourceGuardOperationDetail(
-      defaultResourceRequest: map['defaultResourceRequest'] == null ? null : (map['defaultResourceRequest'] as String).input(),
-      vaultCriticalOperation: map['vaultCriticalOperation'] == null ? null : (map['vaultCriticalOperation'] as String).input(),
+      defaultResourceRequest: map['defaultResourceRequest'] == null ? null : (map['defaultResourceRequest']! as String).input(),
+      vaultCriticalOperation: map['vaultCriticalOperation'] == null ? null : (map['vaultCriticalOperation']! as String).input(),
     );
   }
 }

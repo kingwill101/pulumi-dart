@@ -26,8 +26,8 @@ class DomainDevicesDiskDriverIoThreadsIoThread {
 
   factory DomainDevicesDiskDriverIoThreadsIoThread.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskDriverIoThreadsIoThread(
-      id: map['id'] == null ? null : (map['id'] as double).input(),
-      queues: map['queues'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskDriverIoThreadsIoThreadQueue>(map['queues'], (value) => DomainDevicesDiskDriverIoThreadsIoThreadQueue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
+      queues: map['queues'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskDriverIoThreadsIoThreadQueue>(map['queues']!, (value) => DomainDevicesDiskDriverIoThreadsIoThreadQueue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class GetAuthorizationPolicyNetworksecurityV1beta1Args {
     return GetAuthorizationPolicyNetworksecurityV1beta1Args(
       authorizationPolicyId: (map['authorizationPolicyId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

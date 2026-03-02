@@ -20,7 +20,7 @@ class WorkspaceConnectionApiKey {
 
   factory WorkspaceConnectionApiKey.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionApiKey(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

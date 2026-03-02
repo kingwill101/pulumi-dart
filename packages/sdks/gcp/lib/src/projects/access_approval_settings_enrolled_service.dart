@@ -38,7 +38,7 @@ class AccessApprovalSettingsEnrolledService {
   factory AccessApprovalSettingsEnrolledService.fromMap(Map<String, dynamic> map) {
     return AccessApprovalSettingsEnrolledService(
       cloudProduct: (map['cloudProduct'] as String).input(),
-      enrollmentLevel: map['enrollmentLevel'] == null ? null : (map['enrollmentLevel'] as String).input(),
+      enrollmentLevel: map['enrollmentLevel'] == null ? null : (map['enrollmentLevel']! as String).input(),
     );
   }
 }

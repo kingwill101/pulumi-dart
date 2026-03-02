@@ -65,14 +65,14 @@ class V3CustomDomainArgs {
 
   factory V3CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainArgs(
-      authConfig: map['authConfig'] == null ? null : (V3CustomDomainAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())).input(),
-      certConfig: map['certConfig'] == null ? null : (V3CustomDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())).input(),
-      corsConfig: map['corsConfig'] == null ? null : (V3CustomDomainCorsConfig.fromMap((map['corsConfig'] as Map).cast<String, dynamic>())).input(),
-      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      routeConfig: map['routeConfig'] == null ? null : (V3CustomDomainRouteConfig.fromMap((map['routeConfig'] as Map).cast<String, dynamic>())).input(),
-      tlsConfig: map['tlsConfig'] == null ? null : (V3CustomDomainTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())).input(),
-      wafConfig: map['wafConfig'] == null ? null : (V3CustomDomainWafConfig.fromMap((map['wafConfig'] as Map).cast<String, dynamic>())).input(),
+      authConfig: map['authConfig'] == null ? null : (V3CustomDomainAuthConfig.fromMap((map['authConfig']! as Map).cast<String, dynamic>())).input(),
+      certConfig: map['certConfig'] == null ? null : (V3CustomDomainCertConfig.fromMap((map['certConfig']! as Map).cast<String, dynamic>())).input(),
+      corsConfig: map['corsConfig'] == null ? null : (V3CustomDomainCorsConfig.fromMap((map['corsConfig']! as Map).cast<String, dynamic>())).input(),
+      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      routeConfig: map['routeConfig'] == null ? null : (V3CustomDomainRouteConfig.fromMap((map['routeConfig']! as Map).cast<String, dynamic>())).input(),
+      tlsConfig: map['tlsConfig'] == null ? null : (V3CustomDomainTlsConfig.fromMap((map['tlsConfig']! as Map).cast<String, dynamic>())).input(),
+      wafConfig: map['wafConfig'] == null ? null : (V3CustomDomainWafConfig.fromMap((map['wafConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

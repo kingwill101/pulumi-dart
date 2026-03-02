@@ -35,8 +35,8 @@ class GetSubscriptionsResult {
 
   factory GetSubscriptionsResult.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionsResult(
-      displayNameContains: map['displayNameContains'] == null ? null : map['displayNameContains'] as String,
-      displayNamePrefix: map['displayNamePrefix'] == null ? null : map['displayNamePrefix'] as String,
+      displayNameContains: map['displayNameContains'] == null ? null : map['displayNameContains']! as String,
+      displayNamePrefix: map['displayNamePrefix'] == null ? null : map['displayNamePrefix']! as String,
       id: map['id'] as String,
       subscriptions: pulumi.Input.decodeList<GetSubscriptionsSubscription>(map['subscriptions'], (value) => GetSubscriptionsSubscription.fromMap((value as Map).cast<String, dynamic>())),
     );

@@ -89,18 +89,18 @@ class DatabaseInstanceReplicaConfiguration {
 
   factory DatabaseInstanceReplicaConfiguration.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceReplicaConfiguration(
-      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate'] as String).input(),
-      cascadableReplica: map['cascadableReplica'] == null ? null : (map['cascadableReplica'] as bool).input(),
-      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
-      connectRetryInterval: map['connectRetryInterval'] == null ? null : (map['connectRetryInterval'] as int).input(),
-      dumpFilePath: map['dumpFilePath'] == null ? null : (map['dumpFilePath'] as String).input(),
-      failoverTarget: map['failoverTarget'] == null ? null : (map['failoverTarget'] as bool).input(),
-      masterHeartbeatPeriod: map['masterHeartbeatPeriod'] == null ? null : (map['masterHeartbeatPeriod'] as int).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      sslCipher: map['sslCipher'] == null ? null : (map['sslCipher'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
-      verifyServerCertificate: map['verifyServerCertificate'] == null ? null : (map['verifyServerCertificate'] as bool).input(),
+      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate']! as String).input(),
+      cascadableReplica: map['cascadableReplica'] == null ? null : (map['cascadableReplica']! as bool).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate']! as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
+      connectRetryInterval: map['connectRetryInterval'] == null ? null : (map['connectRetryInterval']! as int).input(),
+      dumpFilePath: map['dumpFilePath'] == null ? null : (map['dumpFilePath']! as String).input(),
+      failoverTarget: map['failoverTarget'] == null ? null : (map['failoverTarget']! as bool).input(),
+      masterHeartbeatPeriod: map['masterHeartbeatPeriod'] == null ? null : (map['masterHeartbeatPeriod']! as int).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      sslCipher: map['sslCipher'] == null ? null : (map['sslCipher']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
+      verifyServerCertificate: map['verifyServerCertificate'] == null ? null : (map['verifyServerCertificate']! as bool).input(),
     );
   }
 }

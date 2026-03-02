@@ -30,9 +30,9 @@ class L3NetworkAttachmentConfigurationResponse {
 
   factory L3NetworkAttachmentConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return L3NetworkAttachmentConfigurationResponse(
-      ipamEnabled: map['ipamEnabled'] == null ? null : (map['ipamEnabled'] as String).input(),
+      ipamEnabled: map['ipamEnabled'] == null ? null : (map['ipamEnabled']! as String).input(),
       networkId: (map['networkId'] as String).input(),
-      pluginType: map['pluginType'] == null ? null : (map['pluginType'] as String).input(),
+      pluginType: map['pluginType'] == null ? null : (map['pluginType']! as String).input(),
     );
   }
 }

@@ -59,14 +59,14 @@ class DomainDevicesMemBalloon {
 
   factory DomainDevicesMemBalloon.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemBalloon(
-      acpi: map['acpi'] == null ? null : (DomainDevicesMemBalloonAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesMemBalloonAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      autoDeflate: map['autoDeflate'] == null ? null : (map['autoDeflate'] as String).input(),
-      driver: map['driver'] == null ? null : (DomainDevicesMemBalloonDriver.fromMap((map['driver'] as Map).cast<String, dynamic>())).input(),
-      freePageReporting: map['freePageReporting'] == null ? null : (map['freePageReporting'] as String).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesMemBalloonAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesMemBalloonAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      autoDeflate: map['autoDeflate'] == null ? null : (map['autoDeflate']! as String).input(),
+      driver: map['driver'] == null ? null : (DomainDevicesMemBalloonDriver.fromMap((map['driver']! as Map).cast<String, dynamic>())).input(),
+      freePageReporting: map['freePageReporting'] == null ? null : (map['freePageReporting']! as String).input(),
       model: (map['model'] as String).input(),
-      stats: map['stats'] == null ? null : (DomainDevicesMemBalloonStats.fromMap((map['stats'] as Map).cast<String, dynamic>())).input(),
+      stats: map['stats'] == null ? null : (DomainDevicesMemBalloonStats.fromMap((map['stats']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedLanguage {
 
   factory GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageDetectedLanguage(
-      confidence: map['confidence'] == null ? null : (map['confidence'] as double).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      confidence: map['confidence'] == null ? null : (map['confidence']! as double).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
     );
   }
 }

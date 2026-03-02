@@ -41,9 +41,9 @@ class ApplicationHealthPolicyResponse {
   factory ApplicationHealthPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationHealthPolicyResponse(
       considerWarningAsError: (map['considerWarningAsError'] as bool).input(),
-      defaultServiceTypeHealthPolicy: map['defaultServiceTypeHealthPolicy'] == null ? null : (ServiceTypeHealthPolicyResponse.fromMap((map['defaultServiceTypeHealthPolicy'] as Map).cast<String, dynamic>())).input(),
+      defaultServiceTypeHealthPolicy: map['defaultServiceTypeHealthPolicy'] == null ? null : (ServiceTypeHealthPolicyResponse.fromMap((map['defaultServiceTypeHealthPolicy']! as Map).cast<String, dynamic>())).input(),
       maxPercentUnhealthyDeployedApplications: (map['maxPercentUnhealthyDeployedApplications'] as int).input(),
-      serviceTypeHealthPolicyMap: map['serviceTypeHealthPolicyMap'] == null ? null : (pulumi.Input.decodeMapValues<ServiceTypeHealthPolicyResponse>(map['serviceTypeHealthPolicyMap'], (value) => ServiceTypeHealthPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceTypeHealthPolicyMap: map['serviceTypeHealthPolicyMap'] == null ? null : (pulumi.Input.decodeMapValues<ServiceTypeHealthPolicyResponse>(map['serviceTypeHealthPolicyMap']!, (value) => ServiceTypeHealthPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

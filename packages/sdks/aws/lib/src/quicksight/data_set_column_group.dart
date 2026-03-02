@@ -21,7 +21,7 @@ class DataSetColumnGroup {
 
   factory DataSetColumnGroup.fromMap(Map<String, dynamic> map) {
     return DataSetColumnGroup(
-      geoSpatialColumnGroup: map['geoSpatialColumnGroup'] == null ? null : (DataSetColumnGroupGeoSpatialColumnGroup.fromMap((map['geoSpatialColumnGroup'] as Map).cast<String, dynamic>())).input(),
+      geoSpatialColumnGroup: map['geoSpatialColumnGroup'] == null ? null : ((DataSetColumnGroupGeoSpatialColumnGroup.fromMap((map['geoSpatialColumnGroup']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

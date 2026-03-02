@@ -62,7 +62,7 @@ class GetSnapshotV3Result {
       description: map['description'] as String,
       id: map['id'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
-      mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
+      mostRecent: map['mostRecent'] == null ? null : map['mostRecent']! as bool,
       name: map['name'] as String,
       region: map['region'] as String,
       size: map['size'] as int,

@@ -26,8 +26,8 @@ class ServiceStatus {
 
   factory ServiceStatus.fromMap(Map<String, dynamic> map) {
     return ServiceStatus(
-      startupType: map['startupType'] == null ? null : (map['startupType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      startupType: map['startupType'] == null ? null : (map['startupType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

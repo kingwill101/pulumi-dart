@@ -27,8 +27,8 @@ class PriorityLevelConfigurationSpecPatchFlowcontrolApiserverK8sIoV1alpha1 {
 
   factory PriorityLevelConfigurationSpecPatchFlowcontrolApiserverK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationSpecPatchFlowcontrolApiserverK8sIoV1alpha1(
-      limited: map['limited'] == null ? null : (LimitedPriorityLevelConfigurationPatchFlowcontrolApiserverK8sIoV1alpha1.fromMap((map['limited'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      limited: map['limited'] == null ? null : (LimitedPriorityLevelConfigurationPatchFlowcontrolApiserverK8sIoV1alpha1.fromMap((map['limited']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

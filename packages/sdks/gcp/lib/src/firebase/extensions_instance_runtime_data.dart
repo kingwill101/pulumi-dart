@@ -34,9 +34,9 @@ class ExtensionsInstanceRuntimeData {
 
   factory ExtensionsInstanceRuntimeData.fromMap(Map<String, dynamic> map) {
     return ExtensionsInstanceRuntimeData(
-      fatalError: map['fatalError'] == null ? null : (ExtensionsInstanceRuntimeDataFatalError.fromMap((map['fatalError'] as Map).cast<String, dynamic>())).input(),
-      processingState: map['processingState'] == null ? null : (ExtensionsInstanceRuntimeDataProcessingState.fromMap((map['processingState'] as Map).cast<String, dynamic>())).input(),
-      stateUpdateTime: map['stateUpdateTime'] == null ? null : (map['stateUpdateTime'] as String).input(),
+      fatalError: map['fatalError'] == null ? null : (ExtensionsInstanceRuntimeDataFatalError.fromMap((map['fatalError']! as Map).cast<String, dynamic>())).input(),
+      processingState: map['processingState'] == null ? null : (ExtensionsInstanceRuntimeDataProcessingState.fromMap((map['processingState']! as Map).cast<String, dynamic>())).input(),
+      stateUpdateTime: map['stateUpdateTime'] == null ? null : (map['stateUpdateTime']! as String).input(),
     );
   }
 }

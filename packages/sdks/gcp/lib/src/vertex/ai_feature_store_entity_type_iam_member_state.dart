@@ -59,12 +59,12 @@ class AiFeatureStoreEntityTypeIamMemberState {
 
   factory AiFeatureStoreEntityTypeIamMemberState.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeIamMemberState(
-      condition: map['condition'] == null ? null : (AiFeatureStoreEntityTypeIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      entitytype: map['entitytype'] == null ? null : (map['entitytype'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      featurestore: map['featurestore'] == null ? null : (map['featurestore'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (AiFeatureStoreEntityTypeIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      entitytype: map['entitytype'] == null ? null : (map['entitytype']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      featurestore: map['featurestore'] == null ? null : (map['featurestore']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

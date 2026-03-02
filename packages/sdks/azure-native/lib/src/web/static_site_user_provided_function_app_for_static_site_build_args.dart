@@ -60,11 +60,11 @@ class StaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs {
   factory StaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs(
       environmentName: (map['environmentName'] as String).input(),
-      functionAppName: map['functionAppName'] == null ? null : (map['functionAppName'] as String).input(),
-      functionAppRegion: map['functionAppRegion'] == null ? null : (map['functionAppRegion'] as String).input(),
-      functionAppResourceId: map['functionAppResourceId'] == null ? null : (map['functionAppResourceId'] as String).input(),
-      isForced: map['isForced'] == null ? null : (map['isForced'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      functionAppName: map['functionAppName'] == null ? null : (map['functionAppName']! as String).input(),
+      functionAppRegion: map['functionAppRegion'] == null ? null : (map['functionAppRegion']! as String).input(),
+      functionAppResourceId: map['functionAppResourceId'] == null ? null : (map['functionAppResourceId']! as String).input(),
+      isForced: map['isForced'] == null ? null : (map['isForced']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

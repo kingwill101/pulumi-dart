@@ -21,7 +21,7 @@ class AgentPoolWindowsProfile {
 
   factory AgentPoolWindowsProfile.fromMap(Map<String, dynamic> map) {
     return AgentPoolWindowsProfile(
-      disableOutboundNat: map['disableOutboundNat'] == null ? null : (map['disableOutboundNat'] as bool).input(),
+      disableOutboundNat: map['disableOutboundNat'] == null ? null : (map['disableOutboundNat']! as bool).input(),
     );
   }
 }

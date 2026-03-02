@@ -25,8 +25,8 @@ class NetworkInsightsPathFilterAtDestinationDestinationPortRange {
 
   factory NetworkInsightsPathFilterAtDestinationDestinationPortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsPathFilterAtDestinationDestinationPortRange(
-      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
-      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
+      fromPort: map['fromPort'] == null ? null : ((map['fromPort'] as int).input()).input(),
+      toPort: map['toPort'] == null ? null : ((map['toPort'] as int).input()).input(),
     );
   }
 }

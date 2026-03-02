@@ -81,18 +81,18 @@ class WorkspaceCustomParameters {
 
   factory WorkspaceCustomParameters.fromMap(Map<String, dynamic> map) {
     return WorkspaceCustomParameters(
-      machineLearningWorkspaceId: map['machineLearningWorkspaceId'] == null ? null : (map['machineLearningWorkspaceId'] as String).input(),
-      natGatewayName: map['natGatewayName'] == null ? null : (map['natGatewayName'] as String).input(),
-      noPublicIp: map['noPublicIp'] == null ? null : (map['noPublicIp'] as bool).input(),
-      privateSubnetName: map['privateSubnetName'] == null ? null : (map['privateSubnetName'] as String).input(),
-      privateSubnetNetworkSecurityGroupAssociationId: map['privateSubnetNetworkSecurityGroupAssociationId'] == null ? null : (map['privateSubnetNetworkSecurityGroupAssociationId'] as String).input(),
-      publicIpName: map['publicIpName'] == null ? null : (map['publicIpName'] as String).input(),
-      publicSubnetName: map['publicSubnetName'] == null ? null : (map['publicSubnetName'] as String).input(),
-      publicSubnetNetworkSecurityGroupAssociationId: map['publicSubnetNetworkSecurityGroupAssociationId'] == null ? null : (map['publicSubnetNetworkSecurityGroupAssociationId'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
-      storageAccountSkuName: map['storageAccountSkuName'] == null ? null : (map['storageAccountSkuName'] as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
-      vnetAddressPrefix: map['vnetAddressPrefix'] == null ? null : (map['vnetAddressPrefix'] as String).input(),
+      machineLearningWorkspaceId: map['machineLearningWorkspaceId'] == null ? null : (map['machineLearningWorkspaceId']! as String).input(),
+      natGatewayName: map['natGatewayName'] == null ? null : (map['natGatewayName']! as String).input(),
+      noPublicIp: map['noPublicIp'] == null ? null : (map['noPublicIp']! as bool).input(),
+      privateSubnetName: map['privateSubnetName'] == null ? null : (map['privateSubnetName']! as String).input(),
+      privateSubnetNetworkSecurityGroupAssociationId: map['privateSubnetNetworkSecurityGroupAssociationId'] == null ? null : (map['privateSubnetNetworkSecurityGroupAssociationId']! as String).input(),
+      publicIpName: map['publicIpName'] == null ? null : (map['publicIpName']! as String).input(),
+      publicSubnetName: map['publicSubnetName'] == null ? null : (map['publicSubnetName']! as String).input(),
+      publicSubnetNetworkSecurityGroupAssociationId: map['publicSubnetNetworkSecurityGroupAssociationId'] == null ? null : (map['publicSubnetNetworkSecurityGroupAssociationId']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
+      storageAccountSkuName: map['storageAccountSkuName'] == null ? null : (map['storageAccountSkuName']! as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
+      vnetAddressPrefix: map['vnetAddressPrefix'] == null ? null : (map['vnetAddressPrefix']! as String).input(),
     );
   }
 }

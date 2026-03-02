@@ -68,16 +68,16 @@ class IdentitySourceResponse {
 
   factory IdentitySourceResponse.fromMap(Map<String, dynamic> map) {
     return IdentitySourceResponse(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      baseGroupDN: map['baseGroupDN'] == null ? null : (map['baseGroupDN'] as String).input(),
-      baseUserDN: map['baseUserDN'] == null ? null : (map['baseUserDN'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      primaryServer: map['primaryServer'] == null ? null : (map['primaryServer'] as String).input(),
-      secondaryServer: map['secondaryServer'] == null ? null : (map['secondaryServer'] as String).input(),
-      ssl: map['ssl'] == null ? null : (map['ssl'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      baseGroupDN: map['baseGroupDN'] == null ? null : (map['baseGroupDN']! as String).input(),
+      baseUserDN: map['baseUserDN'] == null ? null : (map['baseUserDN']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      primaryServer: map['primaryServer'] == null ? null : (map['primaryServer']! as String).input(),
+      secondaryServer: map['secondaryServer'] == null ? null : (map['secondaryServer']! as String).input(),
+      ssl: map['ssl'] == null ? null : (map['ssl']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

@@ -70,16 +70,16 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deadLetterQueueUrl: map['deadLetterQueueUrl'] == null ? null : (map['deadLetterQueueUrl'] as String).input(),
-      defaultEncryptionKey: map['defaultEncryptionKey'] == null ? null : (map['defaultEncryptionKey'] as String).input(),
-      defaultExpirationDays: map['defaultExpirationDays'] == null ? null : (map['defaultExpirationDays'] as int).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      matching: map['matching'] == null ? null : (DomainMatching.fromMap((map['matching'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleBasedMatching: map['ruleBasedMatching'] == null ? null : (DomainRuleBasedMatching.fromMap((map['ruleBasedMatching'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deadLetterQueueUrl: map['deadLetterQueueUrl'] == null ? null : ((map['deadLetterQueueUrl'] as String).input()).input(),
+      defaultEncryptionKey: map['defaultEncryptionKey'] == null ? null : ((map['defaultEncryptionKey'] as String).input()).input(),
+      defaultExpirationDays: map['defaultExpirationDays'] == null ? null : ((map['defaultExpirationDays'] as int).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      matching: map['matching'] == null ? null : ((DomainMatching.fromMap((map['matching']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleBasedMatching: map['ruleBasedMatching'] == null ? null : ((DomainRuleBasedMatching.fromMap((map['ruleBasedMatching']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

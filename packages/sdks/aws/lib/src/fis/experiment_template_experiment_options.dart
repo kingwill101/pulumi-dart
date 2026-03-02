@@ -25,8 +25,8 @@ class ExperimentTemplateExperimentOptions {
 
   factory ExperimentTemplateExperimentOptions.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateExperimentOptions(
-      accountTargeting: map['accountTargeting'] == null ? null : (map['accountTargeting'] as String).input(),
-      emptyTargetResolutionMode: map['emptyTargetResolutionMode'] == null ? null : (map['emptyTargetResolutionMode'] as String).input(),
+      accountTargeting: map['accountTargeting'] == null ? null : ((map['accountTargeting'] as String).input()).input(),
+      emptyTargetResolutionMode: map['emptyTargetResolutionMode'] == null ? null : ((map['emptyTargetResolutionMode'] as String).input()).input(),
     );
   }
 }

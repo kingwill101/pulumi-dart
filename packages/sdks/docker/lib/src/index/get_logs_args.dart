@@ -66,17 +66,17 @@ class GetLogsArgs {
 
   factory GetLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetLogsArgs(
-      details: map['details'] == null ? null : (map['details'] as bool).input(),
-      discardHeaders: map['discardHeaders'] == null ? null : (map['discardHeaders'] as bool).input(),
-      follow: map['follow'] == null ? null : (map['follow'] as bool).input(),
-      logsListStringEnabled: map['logsListStringEnabled'] == null ? null : (map['logsListStringEnabled'] as bool).input(),
+      details: map['details'] == null ? null : (map['details']! as bool).input(),
+      discardHeaders: map['discardHeaders'] == null ? null : (map['discardHeaders']! as bool).input(),
+      follow: map['follow'] == null ? null : (map['follow']! as bool).input(),
+      logsListStringEnabled: map['logsListStringEnabled'] == null ? null : (map['logsListStringEnabled']! as bool).input(),
       name: (map['name'] as String).input(),
-      showStderr: map['showStderr'] == null ? null : (map['showStderr'] as bool).input(),
-      showStdout: map['showStdout'] == null ? null : (map['showStdout'] as bool).input(),
-      since: map['since'] == null ? null : (map['since'] as String).input(),
-      tail: map['tail'] == null ? null : (map['tail'] as String).input(),
-      timestamps: map['timestamps'] == null ? null : (map['timestamps'] as bool).input(),
-      until: map['until'] == null ? null : (map['until'] as String).input(),
+      showStderr: map['showStderr'] == null ? null : (map['showStderr']! as bool).input(),
+      showStdout: map['showStdout'] == null ? null : (map['showStdout']! as bool).input(),
+      since: map['since'] == null ? null : (map['since']! as String).input(),
+      tail: map['tail'] == null ? null : (map['tail']! as String).input(),
+      timestamps: map['timestamps'] == null ? null : (map['timestamps']! as bool).input(),
+      until: map['until'] == null ? null : (map['until']! as String).input(),
     );
   }
 }

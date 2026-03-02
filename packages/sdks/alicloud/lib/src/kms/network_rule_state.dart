@@ -31,9 +31,9 @@ class NetworkRuleState {
 
   factory NetworkRuleState.fromMap(Map<String, dynamic> map) {
     return NetworkRuleState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      networkRuleName: map['networkRuleName'] == null ? null : (map['networkRuleName'] as String).input(),
-      sourcePrivateIps: map['sourcePrivateIps'] == null ? null : ((map['sourcePrivateIps'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      networkRuleName: map['networkRuleName'] == null ? null : (map['networkRuleName']! as String).input(),
+      sourcePrivateIps: map['sourcePrivateIps'] == null ? null : ((map['sourcePrivateIps']! as List).cast<String>()).input(),
     );
   }
 }

@@ -57,14 +57,14 @@ class ReservationBigqueryreservationV1beta1Args {
 
   factory ReservationBigqueryreservationV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ReservationBigqueryreservationV1beta1Args(
-      concurrency: map['concurrency'] == null ? null : (map['concurrency'] as String).input(),
-      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : (map['ignoreIdleSlots'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : (map['multiRegionAuxiliary'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reservationId: map['reservationId'] == null ? null : (map['reservationId'] as String).input(),
-      slotCapacity: map['slotCapacity'] == null ? null : (map['slotCapacity'] as String).input(),
+      concurrency: map['concurrency'] == null ? null : (map['concurrency']! as String).input(),
+      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : (map['ignoreIdleSlots']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : (map['multiRegionAuxiliary']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reservationId: map['reservationId'] == null ? null : (map['reservationId']! as String).input(),
+      slotCapacity: map['slotCapacity'] == null ? null : (map['slotCapacity']! as String).input(),
     );
   }
 }

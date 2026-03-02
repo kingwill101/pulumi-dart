@@ -62,10 +62,10 @@ class OpenIdConnectProviderArgs {
       apiManagementName: (map['apiManagementName'] as String).input(),
       clientId: (map['clientId'] as String).input(),
       clientSecret: (map['clientSecret'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       metadataEndpoint: (map['metadataEndpoint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

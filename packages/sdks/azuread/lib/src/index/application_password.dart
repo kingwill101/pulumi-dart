@@ -41,10 +41,10 @@ class ApplicationPassword {
   factory ApplicationPassword.fromMap(Map<String, dynamic> map) {
     return ApplicationPassword(
       displayName: (map['displayName'] as String).input(),
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

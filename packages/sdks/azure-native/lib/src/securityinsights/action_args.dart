@@ -49,7 +49,7 @@ class ActionArgs {
 
   factory ActionArgs.fromMap(Map<String, dynamic> map) {
     return ActionArgs(
-      actionId: map['actionId'] == null ? null : (map['actionId'] as String).input(),
+      actionId: map['actionId'] == null ? null : (map['actionId']! as String).input(),
       logicAppResourceId: (map['logicAppResourceId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       ruleId: (map['ruleId'] as String).input(),

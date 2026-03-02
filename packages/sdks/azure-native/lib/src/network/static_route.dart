@@ -31,9 +31,9 @@ class StaticRoute {
 
   factory StaticRoute.fromMap(Map<String, dynamic> map) {
     return StaticRoute(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress'] as String).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress']! as String).input(),
     );
   }
 }

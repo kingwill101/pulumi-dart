@@ -67,9 +67,9 @@ class UpdateRunArgs {
       fleetName: (map['fleetName'] as String).input(),
       managedClusterUpdate: (ManagedClusterUpdate.fromMap((map['managedClusterUpdate'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      strategy: map['strategy'] == null ? null : (UpdateRunStrategy.fromMap((map['strategy'] as Map).cast<String, dynamic>())).input(),
-      updateRunName: map['updateRunName'] == null ? null : (map['updateRunName'] as String).input(),
-      updateStrategyId: map['updateStrategyId'] == null ? null : (map['updateStrategyId'] as String).input(),
+      strategy: map['strategy'] == null ? null : (UpdateRunStrategy.fromMap((map['strategy']! as Map).cast<String, dynamic>())).input(),
+      updateRunName: map['updateRunName'] == null ? null : (map['updateRunName']! as String).input(),
+      updateStrategyId: map['updateStrategyId'] == null ? null : (map['updateStrategyId']! as String).input(),
     );
   }
 }

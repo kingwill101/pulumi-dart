@@ -32,8 +32,8 @@ class InstanceDatabase {
 
   factory InstanceDatabase.fromMap(Map<String, dynamic> map) {
     return InstanceDatabase(
-      charset: map['charset'] == null ? null : (map['charset'] as String).input(),
-      collate: map['collate'] == null ? null : (map['collate'] as String).input(),
+      charset: map['charset'] == null ? null : (map['charset']! as String).input(),
+      collate: map['collate'] == null ? null : (map['collate']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -25,8 +25,8 @@ class ListRegistryBuildSourceUploadUrlResult {
 
   factory ListRegistryBuildSourceUploadUrlResult.fromMap(Map<String, dynamic> map) {
     return ListRegistryBuildSourceUploadUrlResult(
-      relativePath: map['relativePath'] == null ? null : map['relativePath'] as String,
-      uploadUrl: map['uploadUrl'] == null ? null : map['uploadUrl'] as String,
+      relativePath: map['relativePath'] == null ? null : map['relativePath']! as String,
+      uploadUrl: map['uploadUrl'] == null ? null : map['uploadUrl']! as String,
     );
   }
 }

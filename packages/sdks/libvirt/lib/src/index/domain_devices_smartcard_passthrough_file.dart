@@ -31,9 +31,9 @@ class DomainDevicesSmartcardPassthroughFile {
 
   factory DomainDevicesSmartcardPassthroughFile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSmartcardPassthroughFile(
-      append: map['append'] == null ? null : (map['append'] as String).input(),
+      append: map['append'] == null ? null : (map['append']! as String).input(),
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSmartcardPassthroughFileSecLabel>(map['secLabels'], (value) => DomainDevicesSmartcardPassthroughFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSmartcardPassthroughFileSecLabel>(map['secLabels']!, (value) => DomainDevicesSmartcardPassthroughFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

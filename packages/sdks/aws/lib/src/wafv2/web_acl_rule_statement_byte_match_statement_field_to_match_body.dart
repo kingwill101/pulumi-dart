@@ -20,7 +20,7 @@ class WebAclRuleStatementByteMatchStatementFieldToMatchBody {
 
   factory WebAclRuleStatementByteMatchStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementByteMatchStatementFieldToMatchBody(
-      oversizeHandling: map['oversizeHandling'] == null ? null : (map['oversizeHandling'] as String).input(),
+      oversizeHandling: map['oversizeHandling'] == null ? null : ((map['oversizeHandling'] as String).input()).input(),
     );
   }
 }

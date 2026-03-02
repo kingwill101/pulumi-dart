@@ -55,13 +55,13 @@ class UpdateConfiguration {
 
   factory UpdateConfiguration.fromMap(Map<String, dynamic> map) {
     return UpdateConfiguration(
-      azureVirtualMachines: map['azureVirtualMachines'] == null ? null : ((map['azureVirtualMachines'] as List).cast<String>()).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      linux: map['linux'] == null ? null : (LinuxProperties.fromMap((map['linux'] as Map).cast<String, dynamic>())).input(),
-      nonAzureComputerNames: map['nonAzureComputerNames'] == null ? null : ((map['nonAzureComputerNames'] as List).cast<String>()).input(),
+      azureVirtualMachines: map['azureVirtualMachines'] == null ? null : ((map['azureVirtualMachines']! as List).cast<String>()).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      linux: map['linux'] == null ? null : (LinuxProperties.fromMap((map['linux']! as Map).cast<String, dynamic>())).input(),
+      nonAzureComputerNames: map['nonAzureComputerNames'] == null ? null : ((map['nonAzureComputerNames']! as List).cast<String>()).input(),
       operatingSystem: (OperatingSystemType.fromValue(map['operatingSystem'] as String)).input(),
-      targets: map['targets'] == null ? null : (TargetProperties.fromMap((map['targets'] as Map).cast<String, dynamic>())).input(),
-      windows: map['windows'] == null ? null : (WindowsProperties.fromMap((map['windows'] as Map).cast<String, dynamic>())).input(),
+      targets: map['targets'] == null ? null : (TargetProperties.fromMap((map['targets']! as Map).cast<String, dynamic>())).input(),
+      windows: map['windows'] == null ? null : (WindowsProperties.fromMap((map['windows']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

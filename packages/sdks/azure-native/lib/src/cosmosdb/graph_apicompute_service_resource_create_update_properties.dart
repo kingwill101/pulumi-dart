@@ -32,8 +32,8 @@ class GraphAPIComputeServiceResourceCreateUpdateProperties {
 
   factory GraphAPIComputeServiceResourceCreateUpdateProperties.fromMap(Map<String, dynamic> map) {
     return GraphAPIComputeServiceResourceCreateUpdateProperties(
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize'] as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize']! as String).input(),
       serviceType: (map['serviceType'] as String).input(),
     );
   }

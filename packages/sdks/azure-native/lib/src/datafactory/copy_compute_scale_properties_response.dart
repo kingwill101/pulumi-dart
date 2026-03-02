@@ -26,8 +26,8 @@ class CopyComputeScalePropertiesResponse {
 
   factory CopyComputeScalePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CopyComputeScalePropertiesResponse(
-      dataIntegrationUnit: map['dataIntegrationUnit'] == null ? null : (map['dataIntegrationUnit'] as int).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as int).input(),
+      dataIntegrationUnit: map['dataIntegrationUnit'] == null ? null : (map['dataIntegrationUnit']! as int).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as int).input(),
     );
   }
 }

@@ -49,7 +49,7 @@ class GetDistributionConfigurationDistributionAmiDistributionConfiguration {
       amiTags: ((map['amiTags'] as Map).cast<String, String>()).input(),
       description: (map['description'] as String).input(),
       kmsKeyId: (map['kmsKeyId'] as String).input(),
-      launchPermissions: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission>(map['launchPermissions'], (value) => GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchPermissions: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission>(map['launchPermissions']!, (value) => GetDistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       targetAccountIds: ((map['targetAccountIds'] as List).cast<String>()).input(),
     );

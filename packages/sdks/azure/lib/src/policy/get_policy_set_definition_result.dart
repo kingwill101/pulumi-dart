@@ -75,7 +75,7 @@ class GetPolicySetDefinitionResult {
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
-      managementGroupName: map['managementGroupName'] == null ? null : map['managementGroupName'] as String,
+      managementGroupName: map['managementGroupName'] == null ? null : map['managementGroupName']! as String,
       metadata: map['metadata'] as String,
       name: map['name'] as String,
       parameters: map['parameters'] as String,

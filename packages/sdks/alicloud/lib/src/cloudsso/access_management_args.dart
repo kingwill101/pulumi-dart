@@ -55,7 +55,7 @@ class AccessManagementArgs {
   factory AccessManagementArgs.fromMap(Map<String, dynamic> map) {
     return AccessManagementArgs(
       accessConfigurationId: (map['accessConfigurationId'] as String).input(),
-      deprovisionStrategy: map['deprovisionStrategy'] == null ? null : (map['deprovisionStrategy'] as String).input(),
+      deprovisionStrategy: map['deprovisionStrategy'] == null ? null : (map['deprovisionStrategy']! as String).input(),
       directoryId: (map['directoryId'] as String).input(),
       principalId: (map['principalId'] as String).input(),
       principalType: (map['principalType'] as String).input(),

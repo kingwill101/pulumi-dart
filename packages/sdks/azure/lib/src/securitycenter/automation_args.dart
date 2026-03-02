@@ -69,14 +69,14 @@ class AutomationArgs {
   factory AutomationArgs.fromMap(Map<String, dynamic> map) {
     return AutomationArgs(
       actions: (pulumi.Input.decodeList<AutomationAction>(map['actions'], (value) => AutomationAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scopes: ((map['scopes'] as List).cast<String>()).input(),
       sources: (pulumi.Input.decodeList<AutomationSource>(map['sources'], (value) => AutomationSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

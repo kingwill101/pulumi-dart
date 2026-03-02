@@ -27,7 +27,7 @@ class ChannelNamespaceHandlerConfigsOnPublish {
   factory ChannelNamespaceHandlerConfigsOnPublish.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceHandlerConfigsOnPublish(
       behavior: (map['behavior'] as String).input(),
-      integration: (ChannelNamespaceHandlerConfigsOnPublishIntegration.fromMap((map['integration'] as Map).cast<String, dynamic>())).input(),
+      integration: (ChannelNamespaceHandlerConfigsOnPublishIntegration.fromMap((map['integration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

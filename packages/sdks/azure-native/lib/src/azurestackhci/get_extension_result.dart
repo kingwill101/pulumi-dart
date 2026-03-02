@@ -99,21 +99,21 @@ class GetExtensionResult {
   factory GetExtensionResult.fromMap(Map<String, dynamic> map) {
     return GetExtensionResult(
       aggregateState: map['aggregateState'] as String,
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : map['autoUpgradeMinorVersion'] as bool,
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : map['autoUpgradeMinorVersion']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : map['enableAutomaticUpgrade'] as bool,
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag'] as String,
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : map['enableAutomaticUpgrade']! as bool,
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag']! as String,
       id: map['id'] as String,
       managedBy: map['managedBy'] as String,
       name: map['name'] as String,
       perNodeExtensionDetails: pulumi.Input.decodeList<PerNodeExtensionStateResponse>(map['perNodeExtensionDetails'], (value) => PerNodeExtensionStateResponse.fromMap((value as Map).cast<String, dynamic>())),
-      protectedSettings: map['protectedSettings'] == null ? null : map['protectedSettings'],
+      protectedSettings: map['protectedSettings'] == null ? null : map['protectedSettings']!,
       provisioningState: map['provisioningState'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      settings: map['settings'] == null ? null : map['settings'],
+      publisher: map['publisher'] == null ? null : map['publisher']! as String,
+      settings: map['settings'] == null ? null : map['settings']!,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : map['typeHandlerVersion'] as String,
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : map['typeHandlerVersion']! as String,
     );
   }
 }

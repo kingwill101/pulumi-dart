@@ -75,17 +75,17 @@ class ModelContainer {
 
   factory ModelContainer.fromMap(Map<String, dynamic> map) {
     return ModelContainer(
-      additionalModelDataSources: map['additionalModelDataSources'] == null ? null : (pulumi.Input.decodeList<ModelContainerAdditionalModelDataSource>(map['additionalModelDataSources'], (value) => ModelContainerAdditionalModelDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      containerHostname: map['containerHostname'] == null ? null : (map['containerHostname'] as String).input(),
-      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      imageConfig: map['imageConfig'] == null ? null : (ModelContainerImageConfig.fromMap((map['imageConfig'] as Map).cast<String, dynamic>())).input(),
-      inferenceSpecificationName: map['inferenceSpecificationName'] == null ? null : (map['inferenceSpecificationName'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      modelDataSource: map['modelDataSource'] == null ? null : (ModelContainerModelDataSource.fromMap((map['modelDataSource'] as Map).cast<String, dynamic>())).input(),
-      modelDataUrl: map['modelDataUrl'] == null ? null : (map['modelDataUrl'] as String).input(),
-      modelPackageName: map['modelPackageName'] == null ? null : (map['modelPackageName'] as String).input(),
-      multiModelConfig: map['multiModelConfig'] == null ? null : (ModelContainerMultiModelConfig.fromMap((map['multiModelConfig'] as Map).cast<String, dynamic>())).input(),
+      additionalModelDataSources: map['additionalModelDataSources'] == null ? null : ((pulumi.Input.decodeList<ModelContainerAdditionalModelDataSource>(map['additionalModelDataSources']!, (value) => ModelContainerAdditionalModelDataSource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      containerHostname: map['containerHostname'] == null ? null : ((map['containerHostname'] as String).input()).input(),
+      environment: map['environment'] == null ? null : (((map['environment'] as Map).cast<String, String>()).input()).input(),
+      image: map['image'] == null ? null : ((map['image'] as String).input()).input(),
+      imageConfig: map['imageConfig'] == null ? null : ((ModelContainerImageConfig.fromMap((map['imageConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      inferenceSpecificationName: map['inferenceSpecificationName'] == null ? null : ((map['inferenceSpecificationName'] as String).input()).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
+      modelDataSource: map['modelDataSource'] == null ? null : ((ModelContainerModelDataSource.fromMap((map['modelDataSource']! as Map).cast<String, dynamic>())).input()).input(),
+      modelDataUrl: map['modelDataUrl'] == null ? null : ((map['modelDataUrl'] as String).input()).input(),
+      modelPackageName: map['modelPackageName'] == null ? null : ((map['modelPackageName'] as String).input()).input(),
+      multiModelConfig: map['multiModelConfig'] == null ? null : ((ModelContainerMultiModelConfig.fromMap((map['multiModelConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

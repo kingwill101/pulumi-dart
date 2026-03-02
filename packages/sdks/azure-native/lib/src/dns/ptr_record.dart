@@ -21,7 +21,7 @@ class PtrRecord {
 
   factory PtrRecord.fromMap(Map<String, dynamic> map) {
     return PtrRecord(
-      ptrdname: map['ptrdname'] == null ? null : (map['ptrdname'] as String).input(),
+      ptrdname: map['ptrdname'] == null ? null : (map['ptrdname']! as String).input(),
     );
   }
 }

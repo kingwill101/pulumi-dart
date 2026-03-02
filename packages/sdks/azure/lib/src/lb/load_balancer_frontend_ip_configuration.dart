@@ -82,19 +82,19 @@ class LoadBalancerFrontendIpConfiguration {
 
   factory LoadBalancerFrontendIpConfiguration.fromMap(Map<String, dynamic> map) {
     return LoadBalancerFrontendIpConfiguration(
-      gatewayLoadBalancerFrontendIpConfigurationId: map['gatewayLoadBalancerFrontendIpConfigurationId'] == null ? null : (map['gatewayLoadBalancerFrontendIpConfigurationId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      inboundNatRules: map['inboundNatRules'] == null ? null : ((map['inboundNatRules'] as List).cast<String>()).input(),
-      loadBalancerRules: map['loadBalancerRules'] == null ? null : ((map['loadBalancerRules'] as List).cast<String>()).input(),
+      gatewayLoadBalancerFrontendIpConfigurationId: map['gatewayLoadBalancerFrontendIpConfigurationId'] == null ? null : (map['gatewayLoadBalancerFrontendIpConfigurationId']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      inboundNatRules: map['inboundNatRules'] == null ? null : ((map['inboundNatRules']! as List).cast<String>()).input(),
+      loadBalancerRules: map['loadBalancerRules'] == null ? null : ((map['loadBalancerRules']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
-      outboundRules: map['outboundRules'] == null ? null : ((map['outboundRules'] as List).cast<String>()).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      privateIpAddressAllocation: map['privateIpAddressAllocation'] == null ? null : (map['privateIpAddressAllocation'] as String).input(),
-      privateIpAddressVersion: map['privateIpAddressVersion'] == null ? null : (map['privateIpAddressVersion'] as String).input(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
-      publicIpPrefixId: map['publicIpPrefixId'] == null ? null : (map['publicIpPrefixId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      outboundRules: map['outboundRules'] == null ? null : ((map['outboundRules']! as List).cast<String>()).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      privateIpAddressAllocation: map['privateIpAddressAllocation'] == null ? null : (map['privateIpAddressAllocation']! as String).input(),
+      privateIpAddressVersion: map['privateIpAddressVersion'] == null ? null : (map['privateIpAddressVersion']! as String).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId']! as String).input(),
+      publicIpPrefixId: map['publicIpPrefixId'] == null ? null : (map['publicIpPrefixId']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

@@ -64,15 +64,15 @@ class LinkState {
 
   factory LinkState.fromMap(Map<String, dynamic> map) {
     return LinkState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (LinkBandwidth.fromMap((map['bandwidth'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      globalNetworkId: map['globalNetworkId'] == null ? null : (map['globalNetworkId'] as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      bandwidth: map['bandwidth'] == null ? null : ((LinkBandwidth.fromMap((map['bandwidth']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      globalNetworkId: map['globalNetworkId'] == null ? null : ((map['globalNetworkId'] as String).input()).input(),
+      providerName: map['providerName'] == null ? null : ((map['providerName'] as String).input()).input(),
+      siteId: map['siteId'] == null ? null : ((map['siteId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

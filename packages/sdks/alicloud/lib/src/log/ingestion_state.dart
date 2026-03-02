@@ -61,15 +61,15 @@ class IngestionState {
 
   factory IngestionState.fromMap(Map<String, dynamic> map) {
     return IngestionState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      ingestionName: map['ingestionName'] == null ? null : (map['ingestionName'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      logstore: map['logstore'] == null ? null : (map['logstore'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      runImmediately: map['runImmediately'] == null ? null : (map['runImmediately'] as bool).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      ingestionName: map['ingestionName'] == null ? null : (map['ingestionName']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
+      logstore: map['logstore'] == null ? null : (map['logstore']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      runImmediately: map['runImmediately'] == null ? null : (map['runImmediately']! as bool).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

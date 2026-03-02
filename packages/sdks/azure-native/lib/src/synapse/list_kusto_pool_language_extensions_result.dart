@@ -22,7 +22,7 @@ class ListKustoPoolLanguageExtensionsResult {
 
   factory ListKustoPoolLanguageExtensionsResult.fromMap(Map<String, dynamic> map) {
     return ListKustoPoolLanguageExtensionsResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<LanguageExtensionResponse>(map['value'], (value) => LanguageExtensionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<LanguageExtensionResponse>(map['value']!, (value) => LanguageExtensionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

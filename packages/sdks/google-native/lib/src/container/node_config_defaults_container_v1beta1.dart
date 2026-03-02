@@ -34,9 +34,9 @@ class NodeConfigDefaultsContainerV1beta1 {
 
   factory NodeConfigDefaultsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodeConfigDefaultsContainerV1beta1(
-      gcfsConfig: map['gcfsConfig'] == null ? null : (GcfsConfigContainerV1beta1.fromMap((map['gcfsConfig'] as Map).cast<String, dynamic>())).input(),
-      hostMaintenancePolicy: map['hostMaintenancePolicy'] == null ? null : (HostMaintenancePolicy.fromMap((map['hostMaintenancePolicy'] as Map).cast<String, dynamic>())).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (NodePoolLoggingConfigContainerV1beta1.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      gcfsConfig: map['gcfsConfig'] == null ? null : (GcfsConfigContainerV1beta1.fromMap((map['gcfsConfig']! as Map).cast<String, dynamic>())).input(),
+      hostMaintenancePolicy: map['hostMaintenancePolicy'] == null ? null : (HostMaintenancePolicy.fromMap((map['hostMaintenancePolicy']! as Map).cast<String, dynamic>())).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (NodePoolLoggingConfigContainerV1beta1.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

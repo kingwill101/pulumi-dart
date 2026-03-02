@@ -49,7 +49,7 @@ class GetSecretRotationResult {
       region: map['region'] as String,
       rotationEnabled: map['rotationEnabled'] as bool,
       rotationLambdaArn: map['rotationLambdaArn'] as String,
-      rotationRules: pulumi.Input.decodeList<GetSecretRotationRotationRule>(map['rotationRules'], (value) => GetSecretRotationRotationRule.fromMap((value as Map).cast<String, dynamic>())),
+      rotationRules: pulumi.Input.decodeList<GetSecretRotationRotationRule>(map['rotationRules']!, (value) => GetSecretRotationRotationRule.fromMap((value as Map).cast<String, dynamic>())),
       secretId: map['secretId'] as String,
     );
   }

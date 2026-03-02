@@ -27,8 +27,8 @@ class ServiceVolumeConfigurationResponse {
 
   factory ServiceVolumeConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ServiceVolumeConfigurationResponse(
-      managedEBSVolume: map['managedEBSVolume'] == null ? null : (ServiceManagedEBSVolumeConfigurationResponse.fromMap((map['managedEBSVolume'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      managedEBSVolume: map['managedEBSVolume'] == null ? null : (ServiceManagedEBSVolumeConfigurationResponse.fromMap((map['managedEBSVolume']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

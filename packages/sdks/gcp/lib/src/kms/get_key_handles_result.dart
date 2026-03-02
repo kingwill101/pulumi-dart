@@ -44,7 +44,7 @@ class GetKeyHandlesResult {
       id: map['id'] as String,
       keyHandles: pulumi.Input.decodeList<GetKeyHandlesKeyHandle>(map['keyHandles'], (value) => GetKeyHandlesKeyHandle.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       resourceTypeSelector: map['resourceTypeSelector'] as String,
     );
   }

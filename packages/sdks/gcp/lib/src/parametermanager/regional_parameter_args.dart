@@ -63,12 +63,12 @@ class RegionalParameterArgs {
 
   factory RegionalParameterArgs.fromMap(Map<String, dynamic> map) {
     return RegionalParameterArgs(
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       parameterId: (map['parameterId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

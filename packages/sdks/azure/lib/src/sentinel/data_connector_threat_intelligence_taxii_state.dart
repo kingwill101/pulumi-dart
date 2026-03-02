@@ -68,16 +68,16 @@ class DataConnectorThreatIntelligenceTaxiiState {
 
   factory DataConnectorThreatIntelligenceTaxiiState.fromMap(Map<String, dynamic> map) {
     return DataConnectorThreatIntelligenceTaxiiState(
-      apiRootUrl: map['apiRootUrl'] == null ? null : (map['apiRootUrl'] as String).input(),
-      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      lookbackDate: map['lookbackDate'] == null ? null : (map['lookbackDate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      pollingFrequency: map['pollingFrequency'] == null ? null : (map['pollingFrequency'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      apiRootUrl: map['apiRootUrl'] == null ? null : (map['apiRootUrl']! as String).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      lookbackDate: map['lookbackDate'] == null ? null : (map['lookbackDate']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      pollingFrequency: map['pollingFrequency'] == null ? null : (map['pollingFrequency']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

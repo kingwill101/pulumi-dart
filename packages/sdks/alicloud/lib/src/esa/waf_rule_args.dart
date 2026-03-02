@@ -49,12 +49,12 @@ class WafRuleArgs {
 
   factory WafRuleArgs.fromMap(Map<String, dynamic> map) {
     return WafRuleArgs(
-      config: map['config'] == null ? null : (WafRuleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      config: map['config'] == null ? null : (WafRuleConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
       phase: (map['phase'] as String).input(),
-      rulesetId: map['rulesetId'] == null ? null : (map['rulesetId'] as int).input(),
-      shared: map['shared'] == null ? null : (WafRuleShared.fromMap((map['shared'] as Map).cast<String, dynamic>())).input(),
+      rulesetId: map['rulesetId'] == null ? null : (map['rulesetId']! as int).input(),
+      shared: map['shared'] == null ? null : (WafRuleShared.fromMap((map['shared']! as Map).cast<String, dynamic>())).input(),
       siteId: (map['siteId'] as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
     );
   }
 }

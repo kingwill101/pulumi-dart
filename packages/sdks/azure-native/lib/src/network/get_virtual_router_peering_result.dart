@@ -57,10 +57,10 @@ class GetVirtualRouterPeeringResult {
     return GetVirtualRouterPeeringResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      peerAsn: map['peerAsn'] == null ? null : map['peerAsn'] as double,
-      peerIp: map['peerIp'] == null ? null : map['peerIp'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      peerAsn: map['peerAsn'] == null ? null : map['peerAsn']! as double,
+      peerIp: map['peerIp'] == null ? null : map['peerIp']! as String,
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );

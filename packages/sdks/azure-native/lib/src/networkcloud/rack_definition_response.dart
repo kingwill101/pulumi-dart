@@ -52,13 +52,13 @@ class RackDefinitionResponse {
 
   factory RackDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return RackDefinitionResponse(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      bareMetalMachineConfigurationData: map['bareMetalMachineConfigurationData'] == null ? null : (pulumi.Input.decodeList<BareMetalMachineConfigurationDataResponse>(map['bareMetalMachineConfigurationData'], (value) => BareMetalMachineConfigurationDataResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
+      bareMetalMachineConfigurationData: map['bareMetalMachineConfigurationData'] == null ? null : (pulumi.Input.decodeList<BareMetalMachineConfigurationDataResponse>(map['bareMetalMachineConfigurationData']!, (value) => BareMetalMachineConfigurationDataResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       networkRackId: (map['networkRackId'] as String).input(),
-      rackLocation: map['rackLocation'] == null ? null : (map['rackLocation'] as String).input(),
+      rackLocation: map['rackLocation'] == null ? null : (map['rackLocation']! as String).input(),
       rackSerialNumber: (map['rackSerialNumber'] as String).input(),
       rackSkuId: (map['rackSkuId'] as String).input(),
-      storageApplianceConfigurationData: map['storageApplianceConfigurationData'] == null ? null : (pulumi.Input.decodeList<StorageApplianceConfigurationDataResponse>(map['storageApplianceConfigurationData'], (value) => StorageApplianceConfigurationDataResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageApplianceConfigurationData: map['storageApplianceConfigurationData'] == null ? null : (pulumi.Input.decodeList<StorageApplianceConfigurationDataResponse>(map['storageApplianceConfigurationData']!, (value) => StorageApplianceConfigurationDataResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

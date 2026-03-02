@@ -39,8 +39,8 @@ class PrivateEndpointConnectionPropertiesResponse {
   factory PrivateEndpointConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionPropertiesResponse(
       groupIds: ((map['groupIds'] as List).cast<String>()).input(),
-      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointPropertyResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStatePropertyResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointPropertyResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>())).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStatePropertyResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

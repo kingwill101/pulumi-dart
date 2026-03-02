@@ -36,10 +36,10 @@ class StorageInfoResponse {
 
   factory StorageInfoResponse.fromMap(Map<String, dynamic> map) {
     return StorageInfoResponse(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

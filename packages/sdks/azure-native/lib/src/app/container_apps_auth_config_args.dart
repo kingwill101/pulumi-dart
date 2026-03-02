@@ -70,14 +70,14 @@ class ContainerAppsAuthConfigArgs {
 
   factory ContainerAppsAuthConfigArgs.fromMap(Map<String, dynamic> map) {
     return ContainerAppsAuthConfigArgs(
-      authConfigName: map['authConfigName'] == null ? null : (map['authConfigName'] as String).input(),
+      authConfigName: map['authConfigName'] == null ? null : (map['authConfigName']! as String).input(),
       containerAppName: (map['containerAppName'] as String).input(),
-      encryptionSettings: map['encryptionSettings'] == null ? null : (EncryptionSettings.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>())).input(),
-      globalValidation: map['globalValidation'] == null ? null : (GlobalValidation.fromMap((map['globalValidation'] as Map).cast<String, dynamic>())).input(),
-      httpSettings: map['httpSettings'] == null ? null : (HttpSettings.fromMap((map['httpSettings'] as Map).cast<String, dynamic>())).input(),
-      identityProviders: map['identityProviders'] == null ? null : (IdentityProviders.fromMap((map['identityProviders'] as Map).cast<String, dynamic>())).input(),
-      login: map['login'] == null ? null : (Login.fromMap((map['login'] as Map).cast<String, dynamic>())).input(),
-      platform: map['platform'] == null ? null : (AuthPlatform.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
+      encryptionSettings: map['encryptionSettings'] == null ? null : (EncryptionSettings.fromMap((map['encryptionSettings']! as Map).cast<String, dynamic>())).input(),
+      globalValidation: map['globalValidation'] == null ? null : (GlobalValidation.fromMap((map['globalValidation']! as Map).cast<String, dynamic>())).input(),
+      httpSettings: map['httpSettings'] == null ? null : (HttpSettings.fromMap((map['httpSettings']! as Map).cast<String, dynamic>())).input(),
+      identityProviders: map['identityProviders'] == null ? null : (IdentityProviders.fromMap((map['identityProviders']! as Map).cast<String, dynamic>())).input(),
+      login: map['login'] == null ? null : (Login.fromMap((map['login']! as Map).cast<String, dynamic>())).input(),
+      platform: map['platform'] == null ? null : (AuthPlatform.fromMap((map['platform']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

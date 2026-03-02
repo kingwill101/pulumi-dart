@@ -37,10 +37,10 @@ class EndpointIpConfiguration {
 
   factory EndpointIpConfiguration.fromMap(Map<String, dynamic> map) {
     return EndpointIpConfiguration(
-      memberName: map['memberName'] == null ? null : (map['memberName'] as String).input(),
+      memberName: map['memberName'] == null ? null : (map['memberName']! as String).input(),
       name: (map['name'] as String).input(),
       privateIpAddress: (map['privateIpAddress'] as String).input(),
-      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName'] as String).input(),
+      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName']! as String).input(),
     );
   }
 }

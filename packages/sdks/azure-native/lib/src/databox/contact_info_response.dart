@@ -37,9 +37,9 @@ class ContactInfoResponse {
   factory ContactInfoResponse.fromMap(Map<String, dynamic> map) {
     return ContactInfoResponse(
       contactName: (map['contactName'] as String).input(),
-      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile']! as String).input(),
       phone: (map['phone'] as String).input(),
-      phoneExtension: map['phoneExtension'] == null ? null : (map['phoneExtension'] as String).input(),
+      phoneExtension: map['phoneExtension'] == null ? null : (map['phoneExtension']! as String).input(),
     );
   }
 }

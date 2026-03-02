@@ -38,9 +38,9 @@ class TaskSetLoadBalancer {
   factory TaskSetLoadBalancer.fromMap(Map<String, dynamic> map) {
     return TaskSetLoadBalancer(
       containerName: (map['containerName'] as String).input(),
-      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
-      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
-      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn'] as String).input(),
+      containerPort: map['containerPort'] == null ? null : ((map['containerPort'] as int).input()).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : ((map['loadBalancerName'] as String).input()).input(),
+      targetGroupArn: map['targetGroupArn'] == null ? null : ((map['targetGroupArn'] as String).input()).input(),
     );
   }
 }

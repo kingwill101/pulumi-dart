@@ -52,13 +52,13 @@ class NetworkProfile {
 
   factory NetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkProfile(
-      appNetworkResourceGroup: map['appNetworkResourceGroup'] == null ? null : (map['appNetworkResourceGroup'] as String).input(),
-      appSubnetId: map['appSubnetId'] == null ? null : (map['appSubnetId'] as String).input(),
-      ingressConfig: map['ingressConfig'] == null ? null : (IngressConfig.fromMap((map['ingressConfig'] as Map).cast<String, dynamic>())).input(),
-      outboundType: map['outboundType'] == null ? null : (map['outboundType'] as String).input(),
-      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr'] as String).input(),
-      serviceRuntimeNetworkResourceGroup: map['serviceRuntimeNetworkResourceGroup'] == null ? null : (map['serviceRuntimeNetworkResourceGroup'] as String).input(),
-      serviceRuntimeSubnetId: map['serviceRuntimeSubnetId'] == null ? null : (map['serviceRuntimeSubnetId'] as String).input(),
+      appNetworkResourceGroup: map['appNetworkResourceGroup'] == null ? null : (map['appNetworkResourceGroup']! as String).input(),
+      appSubnetId: map['appSubnetId'] == null ? null : (map['appSubnetId']! as String).input(),
+      ingressConfig: map['ingressConfig'] == null ? null : (IngressConfig.fromMap((map['ingressConfig']! as Map).cast<String, dynamic>())).input(),
+      outboundType: map['outboundType'] == null ? null : (map['outboundType']! as String).input(),
+      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr']! as String).input(),
+      serviceRuntimeNetworkResourceGroup: map['serviceRuntimeNetworkResourceGroup'] == null ? null : (map['serviceRuntimeNetworkResourceGroup']! as String).input(),
+      serviceRuntimeSubnetId: map['serviceRuntimeSubnetId'] == null ? null : (map['serviceRuntimeSubnetId']! as String).input(),
     );
   }
 }

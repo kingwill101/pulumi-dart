@@ -45,12 +45,12 @@ class SaasBotDefenseProfileProtectedEndpoint {
 
   factory SaasBotDefenseProfileProtectedEndpoint.fromMap(Map<String, dynamic> map) {
     return SaasBotDefenseProfileProtectedEndpoint(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      mitigationAction: map['mitigationAction'] == null ? null : (map['mitigationAction'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      mitigationAction: map['mitigationAction'] == null ? null : (map['mitigationAction']! as String).input(),
       name: (map['name'] as String).input(),
-      post: map['post'] == null ? null : (map['post'] as String).input(),
-      put: map['put'] == null ? null : (map['put'] as String).input(),
+      post: map['post'] == null ? null : (map['post']! as String).input(),
+      put: map['put'] == null ? null : (map['put']! as String).input(),
     );
   }
 }

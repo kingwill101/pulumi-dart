@@ -61,12 +61,12 @@ class EntityRecognizerInputDataConfig {
 
   factory EntityRecognizerInputDataConfig.fromMap(Map<String, dynamic> map) {
     return EntityRecognizerInputDataConfig(
-      annotations: map['annotations'] == null ? null : (EntityRecognizerInputDataConfigAnnotations.fromMap((map['annotations'] as Map).cast<String, dynamic>())).input(),
-      augmentedManifests: map['augmentedManifests'] == null ? null : (pulumi.Input.decodeList<EntityRecognizerInputDataConfigAugmentedManifest>(map['augmentedManifests'], (value) => EntityRecognizerInputDataConfigAugmentedManifest.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat'] as String).input(),
-      documents: map['documents'] == null ? null : (EntityRecognizerInputDataConfigDocuments.fromMap((map['documents'] as Map).cast<String, dynamic>())).input(),
-      entityList: map['entityList'] == null ? null : (EntityRecognizerInputDataConfigEntityList.fromMap((map['entityList'] as Map).cast<String, dynamic>())).input(),
-      entityTypes: (pulumi.Input.decodeList<EntityRecognizerInputDataConfigEntityType>(map['entityTypes'], (value) => EntityRecognizerInputDataConfigEntityType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      annotations: map['annotations'] == null ? null : ((EntityRecognizerInputDataConfigAnnotations.fromMap((map['annotations']! as Map).cast<String, dynamic>())).input()).input(),
+      augmentedManifests: map['augmentedManifests'] == null ? null : ((pulumi.Input.decodeList<EntityRecognizerInputDataConfigAugmentedManifest>(map['augmentedManifests']!, (value) => EntityRecognizerInputDataConfigAugmentedManifest.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      dataFormat: map['dataFormat'] == null ? null : ((map['dataFormat'] as String).input()).input(),
+      documents: map['documents'] == null ? null : ((EntityRecognizerInputDataConfigDocuments.fromMap((map['documents']! as Map).cast<String, dynamic>())).input()).input(),
+      entityList: map['entityList'] == null ? null : ((EntityRecognizerInputDataConfigEntityList.fromMap((map['entityList']! as Map).cast<String, dynamic>())).input()).input(),
+      entityTypes: (pulumi.Input.decodeList<EntityRecognizerInputDataConfigEntityType>(map['entityTypes']!, (value) => EntityRecognizerInputDataConfigEntityType.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

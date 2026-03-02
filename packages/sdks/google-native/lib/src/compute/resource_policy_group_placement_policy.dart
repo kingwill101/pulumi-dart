@@ -65,15 +65,15 @@ class ResourcePolicyGroupPlacementPolicy {
 
   factory ResourcePolicyGroupPlacementPolicy.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicy(
-      availabilityDomainCount: map['availabilityDomainCount'] == null ? null : (map['availabilityDomainCount'] as int).input(),
-      collocation: map['collocation'] == null ? null : (ResourcePolicyGroupPlacementPolicyCollocation.fromValue(map['collocation'] as String)).input(),
-      locality: map['locality'] == null ? null : (ResourcePolicyGroupPlacementPolicyLocality.fromValue(map['locality'] as String)).input(),
-      maxDistance: map['maxDistance'] == null ? null : (map['maxDistance'] as int).input(),
-      scope: map['scope'] == null ? null : (ResourcePolicyGroupPlacementPolicyScope.fromValue(map['scope'] as String)).input(),
-      sliceCount: map['sliceCount'] == null ? null : (map['sliceCount'] as int).input(),
-      style: map['style'] == null ? null : (ResourcePolicyGroupPlacementPolicyStyle.fromValue(map['style'] as String)).input(),
-      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology'] as String).input(),
-      vmCount: map['vmCount'] == null ? null : (map['vmCount'] as int).input(),
+      availabilityDomainCount: map['availabilityDomainCount'] == null ? null : (map['availabilityDomainCount']! as int).input(),
+      collocation: map['collocation'] == null ? null : (ResourcePolicyGroupPlacementPolicyCollocation.fromValue(map['collocation']! as String)).input(),
+      locality: map['locality'] == null ? null : (ResourcePolicyGroupPlacementPolicyLocality.fromValue(map['locality']! as String)).input(),
+      maxDistance: map['maxDistance'] == null ? null : (map['maxDistance']! as int).input(),
+      scope: map['scope'] == null ? null : (ResourcePolicyGroupPlacementPolicyScope.fromValue(map['scope']! as String)).input(),
+      sliceCount: map['sliceCount'] == null ? null : (map['sliceCount']! as int).input(),
+      style: map['style'] == null ? null : (ResourcePolicyGroupPlacementPolicyStyle.fromValue(map['style']! as String)).input(),
+      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology']! as String).input(),
+      vmCount: map['vmCount'] == null ? null : (map['vmCount']! as int).input(),
     );
   }
 }

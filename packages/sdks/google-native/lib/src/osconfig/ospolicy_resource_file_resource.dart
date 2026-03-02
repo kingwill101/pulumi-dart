@@ -43,10 +43,10 @@ class OSPolicyResourceFileResource {
 
   factory OSPolicyResourceFileResource.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceFileResource(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      file: map['file'] == null ? null : (OSPolicyResourceFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      file: map['file'] == null ? null : (OSPolicyResourceFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
       path: (map['path'] as String).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
       state: (OSPolicyResourceFileResourceState.fromValue(map['state'] as String)).input(),
     );
   }

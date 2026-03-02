@@ -60,14 +60,14 @@ class FormTypeArgs {
 
   factory FormTypeArgs.fromMap(Map<String, dynamic> map) {
     return FormTypeArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       domainIdentifier: (map['domainIdentifier'] as String).input(),
-      model: (FormTypeModel.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      model: (FormTypeModel.fromMap((map['model']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       owningProjectIdentifier: (map['owningProjectIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (FormTypeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((FormTypeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

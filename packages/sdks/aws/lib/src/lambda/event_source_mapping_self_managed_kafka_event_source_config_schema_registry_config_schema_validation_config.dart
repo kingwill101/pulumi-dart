@@ -20,7 +20,7 @@ class EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigSch
 
   factory EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig(
-      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
+      attribute: map['attribute'] == null ? null : ((map['attribute'] as String).input()).input(),
     );
   }
 }

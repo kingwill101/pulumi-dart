@@ -39,10 +39,10 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceIdentifier: map['serviceIdentifier'] == null ? null : (map['serviceIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceIdentifier: map['serviceIdentifier'] == null ? null : ((map['serviceIdentifier'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

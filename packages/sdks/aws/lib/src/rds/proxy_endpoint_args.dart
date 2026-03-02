@@ -56,10 +56,10 @@ class ProxyEndpointArgs {
     return ProxyEndpointArgs(
       dbProxyEndpointName: (map['dbProxyEndpointName'] as String).input(),
       dbProxyName: (map['dbProxyName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetRole: map['targetRole'] == null ? null : (map['targetRole'] as String).input(),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : ((map['vpcSecurityGroupIds'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      targetRole: map['targetRole'] == null ? null : ((map['targetRole'] as String).input()).input(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : (((map['vpcSecurityGroupIds'] as List).cast<String>()).input()).input(),
       vpcSubnetIds: ((map['vpcSubnetIds'] as List).cast<String>()).input(),
     );
   }

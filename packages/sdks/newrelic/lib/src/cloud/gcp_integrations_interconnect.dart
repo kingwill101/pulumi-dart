@@ -20,7 +20,7 @@ class GcpIntegrationsInterconnect {
 
   factory GcpIntegrationsInterconnect.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsInterconnect(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

@@ -28,9 +28,9 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings {
 
   factory ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings(
-      bitDepth: map['bitDepth'] == null ? null : (map['bitDepth'] as double).input(),
-      codingMode: map['codingMode'] == null ? null : (map['codingMode'] as String).input(),
-      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate'] as double).input(),
+      bitDepth: map['bitDepth'] == null ? null : ((map['bitDepth'] as double).input()).input(),
+      codingMode: map['codingMode'] == null ? null : ((map['codingMode'] as String).input()).input(),
+      sampleRate: map['sampleRate'] == null ? null : ((map['sampleRate'] as double).input()).input(),
     );
   }
 }

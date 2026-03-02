@@ -62,14 +62,14 @@ class WebApplicationFirewallPolicyArgs {
 
   factory WebApplicationFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return WebApplicationFirewallPolicyArgs(
-      customRules: map['customRules'] == null ? null : (pulumi.Input.decodeList<WebApplicationFirewallCustomRule>(map['customRules'], (value) => WebApplicationFirewallCustomRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      customRules: map['customRules'] == null ? null : (pulumi.Input.decodeList<WebApplicationFirewallCustomRule>(map['customRules']!, (value) => WebApplicationFirewallCustomRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managedRules: (ManagedRulesDefinition.fromMap((map['managedRules'] as Map).cast<String, dynamic>())).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      policySettings: map['policySettings'] == null ? null : (PolicySettings.fromMap((map['policySettings'] as Map).cast<String, dynamic>())).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      policySettings: map['policySettings'] == null ? null : (PolicySettings.fromMap((map['policySettings']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

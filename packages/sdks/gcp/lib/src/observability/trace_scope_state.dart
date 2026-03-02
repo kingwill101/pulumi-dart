@@ -62,14 +62,14 @@ class TraceScopeState {
 
   factory TraceScopeState.fromMap(Map<String, dynamic> map) {
     return TraceScopeState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resourceNames: map['resourceNames'] == null ? null : ((map['resourceNames'] as List).cast<String>()).input(),
-      traceScopeId: map['traceScopeId'] == null ? null : (map['traceScopeId'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resourceNames: map['resourceNames'] == null ? null : ((map['resourceNames']! as List).cast<String>()).input(),
+      traceScopeId: map['traceScopeId'] == null ? null : (map['traceScopeId']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

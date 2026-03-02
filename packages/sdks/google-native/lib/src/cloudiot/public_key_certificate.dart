@@ -27,8 +27,8 @@ class PublicKeyCertificate {
 
   factory PublicKeyCertificate.fromMap(Map<String, dynamic> map) {
     return PublicKeyCertificate(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      format: map['format'] == null ? null : (PublicKeyCertificateFormat.fromValue(map['format'] as String)).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      format: map['format'] == null ? null : (PublicKeyCertificateFormat.fromValue(map['format']! as String)).input(),
     );
   }
 }

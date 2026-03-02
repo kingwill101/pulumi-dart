@@ -54,13 +54,13 @@ class GetRdsBackupsArgs {
 
   factory GetRdsBackupsArgs.fromMap(Map<String, dynamic> map) {
     return GetRdsBackupsArgs(
-      backupMode: map['backupMode'] == null ? null : (map['backupMode'] as String).input(),
-      backupStatus: map['backupStatus'] == null ? null : (map['backupStatus'] as String).input(),
+      backupMode: map['backupMode'] == null ? null : (map['backupMode']! as String).input(),
+      backupStatus: map['backupStatus'] == null ? null : (map['backupStatus']! as String).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

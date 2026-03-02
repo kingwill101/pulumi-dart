@@ -25,8 +25,8 @@ class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
 
   factory WorkflowTemplatePlacementManagedClusterConfigEndpointConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigEndpointConfig(
-      enableHttpPortAccess: map['enableHttpPortAccess'] == null ? null : (map['enableHttpPortAccess'] as bool).input(),
-      httpPorts: map['httpPorts'] == null ? null : ((map['httpPorts'] as Map).cast<String, String>()).input(),
+      enableHttpPortAccess: map['enableHttpPortAccess'] == null ? null : (map['enableHttpPortAccess']! as bool).input(),
+      httpPorts: map['httpPorts'] == null ? null : ((map['httpPorts']! as Map).cast<String, String>()).input(),
     );
   }
 }

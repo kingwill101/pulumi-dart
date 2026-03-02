@@ -50,12 +50,12 @@ class PortState {
 
   factory PortState.fromMap(Map<String, dynamic> map) {
     return PortState(
-      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as String).input(),
-      config: map['config'] == null ? null : (PortConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as String).input(),
-      frontendProtocol: map['frontendProtocol'] == null ? null : (map['frontendProtocol'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      realServers: map['realServers'] == null ? null : ((map['realServers'] as List).cast<String>()).input(),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as String).input(),
+      config: map['config'] == null ? null : (PortConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as String).input(),
+      frontendProtocol: map['frontendProtocol'] == null ? null : (map['frontendProtocol']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      realServers: map['realServers'] == null ? null : ((map['realServers']! as List).cast<String>()).input(),
     );
   }
 }

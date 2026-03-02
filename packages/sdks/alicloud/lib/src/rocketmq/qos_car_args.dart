@@ -69,14 +69,14 @@ class QosCarArgs {
 
   factory QosCarArgs.fromMap(Map<String, dynamic> map) {
     return QosCarArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       limitType: (map['limitType'] as String).input(),
-      maxBandwidthAbs: map['maxBandwidthAbs'] == null ? null : (map['maxBandwidthAbs'] as int).input(),
-      maxBandwidthPercent: map['maxBandwidthPercent'] == null ? null : (map['maxBandwidthPercent'] as int).input(),
-      minBandwidthAbs: map['minBandwidthAbs'] == null ? null : (map['minBandwidthAbs'] as int).input(),
-      minBandwidthPercent: map['minBandwidthPercent'] == null ? null : (map['minBandwidthPercent'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      percentSourceType: map['percentSourceType'] == null ? null : (map['percentSourceType'] as String).input(),
+      maxBandwidthAbs: map['maxBandwidthAbs'] == null ? null : (map['maxBandwidthAbs']! as int).input(),
+      maxBandwidthPercent: map['maxBandwidthPercent'] == null ? null : (map['maxBandwidthPercent']! as int).input(),
+      minBandwidthAbs: map['minBandwidthAbs'] == null ? null : (map['minBandwidthAbs']! as int).input(),
+      minBandwidthPercent: map['minBandwidthPercent'] == null ? null : (map['minBandwidthPercent']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      percentSourceType: map['percentSourceType'] == null ? null : (map['percentSourceType']! as String).input(),
       priority: (map['priority'] as int).input(),
       qosId: (map['qosId'] as String).input(),
     );

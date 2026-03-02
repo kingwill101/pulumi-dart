@@ -27,7 +27,7 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument {
   factory RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument(
       name: (map['name'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation>(map['textTransformations'], (value) => RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

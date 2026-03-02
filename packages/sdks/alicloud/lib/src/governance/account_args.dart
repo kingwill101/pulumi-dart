@@ -72,14 +72,14 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as int).input(),
-      accountNamePrefix: map['accountNamePrefix'] == null ? null : (map['accountNamePrefix'] as String).input(),
-      accountTags: map['accountTags'] == null ? null : (pulumi.Input.decodeList<AccountAccountTag>(map['accountTags'], (value) => AccountAccountTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as int).input(),
+      accountNamePrefix: map['accountNamePrefix'] == null ? null : (map['accountNamePrefix']! as String).input(),
+      accountTags: map['accountTags'] == null ? null : (pulumi.Input.decodeList<AccountAccountTag>(map['accountTags']!, (value) => AccountAccountTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
       baselineId: (map['baselineId'] as String).input(),
-      defaultDomainName: map['defaultDomainName'] == null ? null : (map['defaultDomainName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
-      payerAccountId: map['payerAccountId'] == null ? null : (map['payerAccountId'] as int).input(),
+      defaultDomainName: map['defaultDomainName'] == null ? null : (map['defaultDomainName']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId']! as String).input(),
+      payerAccountId: map['payerAccountId'] == null ? null : (map['payerAccountId']! as int).input(),
     );
   }
 }

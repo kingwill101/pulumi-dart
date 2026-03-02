@@ -34,9 +34,9 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfig {
 
   factory DataStoreDocumentProcessingConfigDefaultParsingConfig.fromMap(Map<String, dynamic> map) {
     return DataStoreDocumentProcessingConfigDefaultParsingConfig(
-      digitalParsingConfig: map['digitalParsingConfig'] == null ? null : ((map['digitalParsingConfig'] as Map).cast<String, dynamic>()).input(),
-      layoutParsingConfig: map['layoutParsingConfig'] == null ? null : (DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig.fromMap((map['layoutParsingConfig'] as Map).cast<String, dynamic>())).input(),
-      ocrParsingConfig: map['ocrParsingConfig'] == null ? null : (DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig.fromMap((map['ocrParsingConfig'] as Map).cast<String, dynamic>())).input(),
+      digitalParsingConfig: map['digitalParsingConfig'] == null ? null : ((map['digitalParsingConfig']! as Map).cast<String, dynamic>()).input(),
+      layoutParsingConfig: map['layoutParsingConfig'] == null ? null : (DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig.fromMap((map['layoutParsingConfig']! as Map).cast<String, dynamic>())).input(),
+      ocrParsingConfig: map['ocrParsingConfig'] == null ? null : (DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig.fromMap((map['ocrParsingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

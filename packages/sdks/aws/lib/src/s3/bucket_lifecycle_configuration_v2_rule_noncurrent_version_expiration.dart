@@ -25,7 +25,7 @@ class BucketLifecycleConfigurationV2RuleNoncurrentVersionExpiration {
 
   factory BucketLifecycleConfigurationV2RuleNoncurrentVersionExpiration.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationV2RuleNoncurrentVersionExpiration(
-      newerNoncurrentVersions: map['newerNoncurrentVersions'] == null ? null : (map['newerNoncurrentVersions'] as int).input(),
+      newerNoncurrentVersions: map['newerNoncurrentVersions'] == null ? null : ((map['newerNoncurrentVersions'] as int).input()).input(),
       noncurrentDays: (map['noncurrentDays'] as int).input(),
     );
   }

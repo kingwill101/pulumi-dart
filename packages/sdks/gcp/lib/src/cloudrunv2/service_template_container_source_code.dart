@@ -22,7 +22,7 @@ class ServiceTemplateContainerSourceCode {
 
   factory ServiceTemplateContainerSourceCode.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateContainerSourceCode(
-      cloudStorageSource: map['cloudStorageSource'] == null ? null : (ServiceTemplateContainerSourceCodeCloudStorageSource.fromMap((map['cloudStorageSource'] as Map).cast<String, dynamic>())).input(),
+      cloudStorageSource: map['cloudStorageSource'] == null ? null : (ServiceTemplateContainerSourceCodeCloudStorageSource.fromMap((map['cloudStorageSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class LatencyCriteria {
 
   factory LatencyCriteria.fromMap(Map<String, dynamic> map) {
     return LatencyCriteria(
-      threshold: map['threshold'] == null ? null : (map['threshold'] as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as String).input(),
     );
   }
 }

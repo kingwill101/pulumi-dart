@@ -43,11 +43,11 @@ class AzureFunctionEventSubscriptionDestinationResponse {
 
   factory AzureFunctionEventSubscriptionDestinationResponse.fromMap(Map<String, dynamic> map) {
     return AzureFunctionEventSubscriptionDestinationResponse(
-      deliveryAttributeMappings: map['deliveryAttributeMappings'] == null ? null : (pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(map['deliveryAttributeMappings'], (value) => DynamicDeliveryAttributeMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deliveryAttributeMappings: map['deliveryAttributeMappings'] == null ? null : (pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(map['deliveryAttributeMappings']!, (value) => DynamicDeliveryAttributeMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       endpointType: (map['endpointType'] as String).input(),
-      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : (map['maxEventsPerBatch'] as int).input(),
-      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : (map['preferredBatchSizeInKilobytes'] as int).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : (map['maxEventsPerBatch']! as int).input(),
+      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : (map['preferredBatchSizeInKilobytes']! as int).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

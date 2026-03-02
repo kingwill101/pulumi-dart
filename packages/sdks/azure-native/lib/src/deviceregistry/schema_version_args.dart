@@ -49,12 +49,12 @@ class SchemaVersionArgs {
 
   factory SchemaVersionArgs.fromMap(Map<String, dynamic> map) {
     return SchemaVersionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       schemaContent: (map['schemaContent'] as String).input(),
       schemaName: (map['schemaName'] as String).input(),
       schemaRegistryName: (map['schemaRegistryName'] as String).input(),
-      schemaVersionName: map['schemaVersionName'] == null ? null : (map['schemaVersionName'] as String).input(),
+      schemaVersionName: map['schemaVersionName'] == null ? null : (map['schemaVersionName']! as String).input(),
     );
   }
 }

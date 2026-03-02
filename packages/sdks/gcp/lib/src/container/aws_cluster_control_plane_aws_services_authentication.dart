@@ -26,7 +26,7 @@ class AwsClusterControlPlaneAwsServicesAuthentication {
   factory AwsClusterControlPlaneAwsServicesAuthentication.fromMap(Map<String, dynamic> map) {
     return AwsClusterControlPlaneAwsServicesAuthentication(
       roleArn: (map['roleArn'] as String).input(),
-      roleSessionName: map['roleSessionName'] == null ? null : (map['roleSessionName'] as String).input(),
+      roleSessionName: map['roleSessionName'] == null ? null : (map['roleSessionName']! as String).input(),
     );
   }
 }

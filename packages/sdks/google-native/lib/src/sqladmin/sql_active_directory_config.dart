@@ -26,8 +26,8 @@ class SqlActiveDirectoryConfig {
 
   factory SqlActiveDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return SqlActiveDirectoryConfig(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

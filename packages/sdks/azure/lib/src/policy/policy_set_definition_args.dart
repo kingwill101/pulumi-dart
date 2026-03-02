@@ -65,13 +65,13 @@ class PolicySetDefinitionArgs {
 
   factory PolicySetDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return PolicySetDefinitionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
-      policyDefinitionGroups: map['policyDefinitionGroups'] == null ? null : (pulumi.Input.decodeList<PolicySetDefinitionPolicyDefinitionGroup>(map['policyDefinitionGroups'], (value) => PolicySetDefinitionPolicyDefinitionGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
+      policyDefinitionGroups: map['policyDefinitionGroups'] == null ? null : (pulumi.Input.decodeList<PolicySetDefinitionPolicyDefinitionGroup>(map['policyDefinitionGroups']!, (value) => PolicySetDefinitionPolicyDefinitionGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
       policyDefinitionReferences: (pulumi.Input.decodeList<PolicySetDefinitionPolicyDefinitionReference>(map['policyDefinitionReferences'], (value) => PolicySetDefinitionPolicyDefinitionReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       policyType: (map['policyType'] as String).input(),
     );

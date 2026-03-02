@@ -21,7 +21,7 @@ class ExecActionPatch {
 
   factory ExecActionPatch.fromMap(Map<String, dynamic> map) {
     return ExecActionPatch(
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
     );
   }
 }

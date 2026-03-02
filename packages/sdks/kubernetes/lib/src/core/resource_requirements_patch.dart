@@ -36,9 +36,9 @@ class ResourceRequirementsPatch {
 
   factory ResourceRequirementsPatch.fromMap(Map<String, dynamic> map) {
     return ResourceRequirementsPatch(
-      claims: map['claims'] == null ? null : (pulumi.Input.decodeList<ResourceClaimPatch>(map['claims'], (value) => ResourceClaimPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      limits: map['limits'] == null ? null : ((map['limits'] as Map).cast<String, String>()).input(),
-      requests: map['requests'] == null ? null : ((map['requests'] as Map).cast<String, String>()).input(),
+      claims: map['claims'] == null ? null : (pulumi.Input.decodeList<ResourceClaimPatch>(map['claims']!, (value) => ResourceClaimPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      limits: map['limits'] == null ? null : ((map['limits']! as Map).cast<String, String>()).input(),
+      requests: map['requests'] == null ? null : ((map['requests']! as Map).cast<String, String>()).input(),
     );
   }
 }

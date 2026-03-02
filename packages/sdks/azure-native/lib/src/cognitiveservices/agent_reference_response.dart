@@ -26,8 +26,8 @@ class AgentReferenceResponse {
 
   factory AgentReferenceResponse.fromMap(Map<String, dynamic> map) {
     return AgentReferenceResponse(
-      agentId: map['agentId'] == null ? null : (map['agentId'] as String).input(),
-      agentName: map['agentName'] == null ? null : (map['agentName'] as String).input(),
+      agentId: map['agentId'] == null ? null : (map['agentId']! as String).input(),
+      agentName: map['agentName'] == null ? null : (map['agentName']! as String).input(),
     );
   }
 }

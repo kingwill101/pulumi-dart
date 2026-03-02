@@ -82,17 +82,17 @@ class JobConfig {
 
   factory JobConfig.fromMap(Map<String, dynamic> map) {
     return JobConfig(
-      adBreaks: map['adBreaks'] == null ? null : (pulumi.Input.decodeList<AdBreak>(map['adBreaks'], (value) => AdBreak.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      editList: map['editList'] == null ? null : (pulumi.Input.decodeList<EditAtom>(map['editList'], (value) => EditAtom.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      elementaryStreams: map['elementaryStreams'] == null ? null : (pulumi.Input.decodeList<ElementaryStream>(map['elementaryStreams'], (value) => ElementaryStream.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encryptions: map['encryptions'] == null ? null : (pulumi.Input.decodeList<Encryption>(map['encryptions'], (value) => Encryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<InputType>(map['inputs'], (value) => InputType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      manifests: map['manifests'] == null ? null : (pulumi.Input.decodeList<Manifest>(map['manifests'], (value) => Manifest.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      muxStreams: map['muxStreams'] == null ? null : (pulumi.Input.decodeList<MuxStream>(map['muxStreams'], (value) => MuxStream.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      output: map['output'] == null ? null : (OutputType.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
-      overlays: map['overlays'] == null ? null : (pulumi.Input.decodeList<Overlay>(map['overlays'], (value) => Overlay.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pubsubDestination: map['pubsubDestination'] == null ? null : (PubsubDestination.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>())).input(),
-      spriteSheets: map['spriteSheets'] == null ? null : (pulumi.Input.decodeList<SpriteSheet>(map['spriteSheets'], (value) => SpriteSheet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adBreaks: map['adBreaks'] == null ? null : (pulumi.Input.decodeList<AdBreak>(map['adBreaks']!, (value) => AdBreak.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      editList: map['editList'] == null ? null : (pulumi.Input.decodeList<EditAtom>(map['editList']!, (value) => EditAtom.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      elementaryStreams: map['elementaryStreams'] == null ? null : (pulumi.Input.decodeList<ElementaryStream>(map['elementaryStreams']!, (value) => ElementaryStream.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptions: map['encryptions'] == null ? null : (pulumi.Input.decodeList<Encryption>(map['encryptions']!, (value) => Encryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<InputType>(map['inputs']!, (value) => InputType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manifests: map['manifests'] == null ? null : (pulumi.Input.decodeList<Manifest>(map['manifests']!, (value) => Manifest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      muxStreams: map['muxStreams'] == null ? null : (pulumi.Input.decodeList<MuxStream>(map['muxStreams']!, (value) => MuxStream.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      output: map['output'] == null ? null : (OutputType.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
+      overlays: map['overlays'] == null ? null : (pulumi.Input.decodeList<Overlay>(map['overlays']!, (value) => Overlay.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pubsubDestination: map['pubsubDestination'] == null ? null : (PubsubDestination.fromMap((map['pubsubDestination']! as Map).cast<String, dynamic>())).input(),
+      spriteSheets: map['spriteSheets'] == null ? null : (pulumi.Input.decodeList<SpriteSheet>(map['spriteSheets']!, (value) => SpriteSheet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

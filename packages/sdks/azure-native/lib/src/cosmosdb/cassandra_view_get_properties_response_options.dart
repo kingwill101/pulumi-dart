@@ -26,8 +26,8 @@ class CassandraViewGetPropertiesResponseOptions {
 
   factory CassandraViewGetPropertiesResponseOptions.fromMap(Map<String, dynamic> map) {
     return CassandraViewGetPropertiesResponseOptions(
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : (AutoscaleSettingsResponse.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (AutoscaleSettingsResponse.fromMap((map['autoscaleSettings']! as Map).cast<String, dynamic>())).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
     );
   }
 }

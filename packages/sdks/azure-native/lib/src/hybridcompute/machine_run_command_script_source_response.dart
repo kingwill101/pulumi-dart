@@ -37,10 +37,10 @@ class MachineRunCommandScriptSourceResponse {
 
   factory MachineRunCommandScriptSourceResponse.fromMap(Map<String, dynamic> map) {
     return MachineRunCommandScriptSourceResponse(
-      commandId: map['commandId'] == null ? null : (map['commandId'] as String).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
-      scriptUri: map['scriptUri'] == null ? null : (map['scriptUri'] as String).input(),
-      scriptUriManagedIdentity: map['scriptUriManagedIdentity'] == null ? null : (RunCommandManagedIdentityResponse.fromMap((map['scriptUriManagedIdentity'] as Map).cast<String, dynamic>())).input(),
+      commandId: map['commandId'] == null ? null : (map['commandId']! as String).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
+      scriptUri: map['scriptUri'] == null ? null : (map['scriptUri']! as String).input(),
+      scriptUriManagedIdentity: map['scriptUriManagedIdentity'] == null ? null : (RunCommandManagedIdentityResponse.fromMap((map['scriptUriManagedIdentity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

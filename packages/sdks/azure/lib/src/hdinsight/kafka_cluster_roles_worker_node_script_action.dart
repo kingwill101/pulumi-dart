@@ -31,7 +31,7 @@ class KafkaClusterRolesWorkerNodeScriptAction {
   factory KafkaClusterRolesWorkerNodeScriptAction.fromMap(Map<String, dynamic> map) {
     return KafkaClusterRolesWorkerNodeScriptAction(
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

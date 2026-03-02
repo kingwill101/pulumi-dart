@@ -64,12 +64,12 @@ class PrivateConnectionArgs {
 
   factory PrivateConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       privateConnectionId: (map['privateConnectionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      routingMode: map['routingMode'] == null ? null : (PrivateConnectionRoutingMode.fromValue(map['routingMode'] as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      routingMode: map['routingMode'] == null ? null : (PrivateConnectionRoutingMode.fromValue(map['routingMode']! as String)).input(),
       serviceNetwork: (map['serviceNetwork'] as String).input(),
       type: (PrivateConnectionType.fromValue(map['type'] as String)).input(),
       vmwareEngineNetwork: (map['vmwareEngineNetwork'] as String).input(),

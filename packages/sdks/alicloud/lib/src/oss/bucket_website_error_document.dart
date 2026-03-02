@@ -25,8 +25,8 @@ class BucketWebsiteErrorDocument {
 
   factory BucketWebsiteErrorDocument.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteErrorDocument(
-      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus'] as int).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus']! as int).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

@@ -45,11 +45,11 @@ class RuleGroupRuleAction {
 
   factory RuleGroupRuleAction.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleAction(
-      allow: map['allow'] == null ? null : (RuleGroupRuleActionAllow.fromMap((map['allow'] as Map).cast<String, dynamic>())).input(),
-      block: map['block'] == null ? null : (RuleGroupRuleActionBlock.fromMap((map['block'] as Map).cast<String, dynamic>())).input(),
-      captcha: map['captcha'] == null ? null : (RuleGroupRuleActionCaptcha.fromMap((map['captcha'] as Map).cast<String, dynamic>())).input(),
-      challenge: map['challenge'] == null ? null : (RuleGroupRuleActionChallenge.fromMap((map['challenge'] as Map).cast<String, dynamic>())).input(),
-      count: map['count'] == null ? null : (RuleGroupRuleActionCount.fromMap((map['count'] as Map).cast<String, dynamic>())).input(),
+      allow: map['allow'] == null ? null : ((RuleGroupRuleActionAllow.fromMap((map['allow']! as Map).cast<String, dynamic>())).input()).input(),
+      block: map['block'] == null ? null : ((RuleGroupRuleActionBlock.fromMap((map['block']! as Map).cast<String, dynamic>())).input()).input(),
+      captcha: map['captcha'] == null ? null : ((RuleGroupRuleActionCaptcha.fromMap((map['captcha']! as Map).cast<String, dynamic>())).input()).input(),
+      challenge: map['challenge'] == null ? null : ((RuleGroupRuleActionChallenge.fromMap((map['challenge']! as Map).cast<String, dynamic>())).input()).input(),
+      count: map['count'] == null ? null : ((RuleGroupRuleActionCount.fromMap((map['count']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

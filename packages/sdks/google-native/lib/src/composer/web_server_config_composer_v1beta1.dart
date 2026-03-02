@@ -21,7 +21,7 @@ class WebServerConfigComposerV1beta1 {
 
   factory WebServerConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return WebServerConfigComposerV1beta1(
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
     );
   }
 }

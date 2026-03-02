@@ -26,8 +26,8 @@ class VNetSolutionResponse {
 
   factory VNetSolutionResponse.fromMap(Map<String, dynamic> map) {
     return VNetSolutionResponse(
-      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

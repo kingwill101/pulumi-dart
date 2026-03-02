@@ -106,22 +106,22 @@ class AnomalySecurityMLAnalyticsSettingsArgs {
 
   factory AnomalySecurityMLAnalyticsSettingsArgs.fromMap(Map<String, dynamic> map) {
     return AnomalySecurityMLAnalyticsSettingsArgs(
-      anomalySettingsVersion: map['anomalySettingsVersion'] == null ? null : (map['anomalySettingsVersion'] as int).input(),
+      anomalySettingsVersion: map['anomalySettingsVersion'] == null ? null : (map['anomalySettingsVersion']! as int).input(),
       anomalyVersion: (map['anomalyVersion'] as String).input(),
-      customizableObservations: map['customizableObservations'] == null ? null : (map['customizableObservations']).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      customizableObservations: map['customizableObservations'] == null ? null : (map['customizableObservations']!).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       enabled: (map['enabled'] as bool).input(),
       frequency: (map['frequency'] as String).input(),
       isDefaultSettings: (map['isDefaultSettings'] as bool).input(),
       kind: (map['kind'] as String).input(),
-      requiredDataConnectors: map['requiredDataConnectors'] == null ? null : (pulumi.Input.decodeList<SecurityMLAnalyticsSettingsDataSource>(map['requiredDataConnectors'], (value) => SecurityMLAnalyticsSettingsDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requiredDataConnectors: map['requiredDataConnectors'] == null ? null : (pulumi.Input.decodeList<SecurityMLAnalyticsSettingsDataSource>(map['requiredDataConnectors']!, (value) => SecurityMLAnalyticsSettingsDataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      settingsDefinitionId: map['settingsDefinitionId'] == null ? null : (map['settingsDefinitionId'] as String).input(),
-      settingsResourceName: map['settingsResourceName'] == null ? null : (map['settingsResourceName'] as String).input(),
+      settingsDefinitionId: map['settingsDefinitionId'] == null ? null : (map['settingsDefinitionId']! as String).input(),
+      settingsResourceName: map['settingsResourceName'] == null ? null : (map['settingsResourceName']! as String).input(),
       settingsStatus: (map['settingsStatus'] as String).input(),
-      tactics: map['tactics'] == null ? null : ((map['tactics'] as List).cast<String>()).input(),
-      techniques: map['techniques'] == null ? null : ((map['techniques'] as List).cast<String>()).input(),
+      tactics: map['tactics'] == null ? null : ((map['tactics']! as List).cast<String>()).input(),
+      techniques: map['techniques'] == null ? null : ((map['techniques']! as List).cast<String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

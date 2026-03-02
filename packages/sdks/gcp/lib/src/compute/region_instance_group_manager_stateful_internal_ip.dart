@@ -25,8 +25,8 @@ class RegionInstanceGroupManagerStatefulInternalIp {
 
   factory RegionInstanceGroupManagerStatefulInternalIp.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerStatefulInternalIp(
-      deleteRule: map['deleteRule'] == null ? null : (map['deleteRule'] as String).input(),
-      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName'] as String).input(),
+      deleteRule: map['deleteRule'] == null ? null : (map['deleteRule']! as String).input(),
+      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName']! as String).input(),
     );
   }
 }

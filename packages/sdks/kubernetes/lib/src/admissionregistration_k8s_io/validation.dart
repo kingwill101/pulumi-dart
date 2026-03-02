@@ -62,9 +62,9 @@ class Validation {
   factory Validation.fromMap(Map<String, dynamic> map) {
     return Validation(
       expression: (map['expression'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      messageExpression: map['messageExpression'] == null ? null : (map['messageExpression'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      messageExpression: map['messageExpression'] == null ? null : (map['messageExpression']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

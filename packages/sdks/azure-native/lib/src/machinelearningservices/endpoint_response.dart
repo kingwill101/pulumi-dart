@@ -41,11 +41,11 @@ class EndpointResponse {
 
   factory EndpointResponse.fromMap(Map<String, dynamic> map) {
     return EndpointResponse(
-      hostIp: map['hostIp'] == null ? null : (map['hostIp'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      published: map['published'] == null ? null : (map['published'] as int).input(),
-      target: map['target'] == null ? null : (map['target'] as int).input(),
+      hostIp: map['hostIp'] == null ? null : (map['hostIp']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      published: map['published'] == null ? null : (map['published']! as int).input(),
+      target: map['target'] == null ? null : (map['target']! as int).input(),
     );
   }
 }

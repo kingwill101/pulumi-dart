@@ -20,7 +20,7 @@ class AutomationRuleActionFindingFieldsUpdateWorkflow {
 
   factory AutomationRuleActionFindingFieldsUpdateWorkflow.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionFindingFieldsUpdateWorkflow(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

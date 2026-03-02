@@ -27,8 +27,8 @@ class MultiClusterIngressFeatureSpecGkehubV1beta {
 
   factory MultiClusterIngressFeatureSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return MultiClusterIngressFeatureSpecGkehubV1beta(
-      billing: map['billing'] == null ? null : (MultiClusterIngressFeatureSpecBillingGkehubV1beta.fromValue(map['billing'] as String)).input(),
-      configMembership: map['configMembership'] == null ? null : (map['configMembership'] as String).input(),
+      billing: map['billing'] == null ? null : (MultiClusterIngressFeatureSpecBillingGkehubV1beta.fromValue(map['billing']! as String)).input(),
+      configMembership: map['configMembership'] == null ? null : (map['configMembership']! as String).input(),
     );
   }
 }

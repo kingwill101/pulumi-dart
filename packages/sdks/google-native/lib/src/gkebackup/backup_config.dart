@@ -49,12 +49,12 @@ class BackupConfig {
 
   factory BackupConfig.fromMap(Map<String, dynamic> map) {
     return BackupConfig(
-      allNamespaces: map['allNamespaces'] == null ? null : (map['allNamespaces'] as bool).input(),
-      encryptionKey: map['encryptionKey'] == null ? null : (EncryptionKey.fromMap((map['encryptionKey'] as Map).cast<String, dynamic>())).input(),
-      includeSecrets: map['includeSecrets'] == null ? null : (map['includeSecrets'] as bool).input(),
-      includeVolumeData: map['includeVolumeData'] == null ? null : (map['includeVolumeData'] as bool).input(),
-      selectedApplications: map['selectedApplications'] == null ? null : (NamespacedNames.fromMap((map['selectedApplications'] as Map).cast<String, dynamic>())).input(),
-      selectedNamespaces: map['selectedNamespaces'] == null ? null : (Namespaces.fromMap((map['selectedNamespaces'] as Map).cast<String, dynamic>())).input(),
+      allNamespaces: map['allNamespaces'] == null ? null : (map['allNamespaces']! as bool).input(),
+      encryptionKey: map['encryptionKey'] == null ? null : (EncryptionKey.fromMap((map['encryptionKey']! as Map).cast<String, dynamic>())).input(),
+      includeSecrets: map['includeSecrets'] == null ? null : (map['includeSecrets']! as bool).input(),
+      includeVolumeData: map['includeVolumeData'] == null ? null : (map['includeVolumeData']! as bool).input(),
+      selectedApplications: map['selectedApplications'] == null ? null : (NamespacedNames.fromMap((map['selectedApplications']! as Map).cast<String, dynamic>())).input(),
+      selectedNamespaces: map['selectedNamespaces'] == null ? null : (Namespaces.fromMap((map['selectedNamespaces']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

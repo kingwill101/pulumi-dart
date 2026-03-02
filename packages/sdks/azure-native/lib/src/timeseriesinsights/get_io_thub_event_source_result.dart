@@ -105,13 +105,13 @@ class GetIoTHubEventSourceResult {
       iotHubName: map['iotHubName'] as String,
       keyName: map['keyName'] as String,
       kind: map['kind'] as String,
-      localTimestamp: map['localTimestamp'] == null ? null : LocalTimestampResponse.fromMap((map['localTimestamp'] as Map).cast<String, dynamic>()),
+      localTimestamp: map['localTimestamp'] == null ? null : LocalTimestampResponse.fromMap((map['localTimestamp']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      time: map['time'] == null ? null : map['time'] as String,
-      timestampPropertyName: map['timestampPropertyName'] == null ? null : map['timestampPropertyName'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      time: map['time'] == null ? null : map['time']! as String,
+      timestampPropertyName: map['timestampPropertyName'] == null ? null : map['timestampPropertyName']! as String,
       type: map['type'] as String,
     );
   }

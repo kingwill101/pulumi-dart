@@ -65,15 +65,15 @@ class CodeSigningConfigState {
 
   factory CodeSigningConfigState.fromMap(Map<String, dynamic> map) {
     return CodeSigningConfigState(
-      allowedPublishers: map['allowedPublishers'] == null ? null : (CodeSigningConfigAllowedPublishers.fromMap((map['allowedPublishers'] as Map).cast<String, dynamic>())).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
-      policies: map['policies'] == null ? null : (CodeSigningConfigPolicies.fromMap((map['policies'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      allowedPublishers: map['allowedPublishers'] == null ? null : ((CodeSigningConfigAllowedPublishers.fromMap((map['allowedPublishers']! as Map).cast<String, dynamic>())).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configId: map['configId'] == null ? null : ((map['configId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      lastModified: map['lastModified'] == null ? null : ((map['lastModified'] as String).input()).input(),
+      policies: map['policies'] == null ? null : ((CodeSigningConfigPolicies.fromMap((map['policies']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

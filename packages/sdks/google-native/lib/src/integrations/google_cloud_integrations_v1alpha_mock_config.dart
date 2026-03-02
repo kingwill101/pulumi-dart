@@ -33,9 +33,9 @@ class GoogleCloudIntegrationsV1alphaMockConfig {
 
   factory GoogleCloudIntegrationsV1alphaMockConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaMockConfig(
-      failedExecutions: map['failedExecutions'] == null ? null : (map['failedExecutions'] as String).input(),
-      mockStrategy: map['mockStrategy'] == null ? null : (GoogleCloudIntegrationsV1alphaMockConfigMockStrategy.fromValue(map['mockStrategy'] as String)).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaEventParameter>(map['parameters'], (value) => GoogleCloudIntegrationsV1alphaEventParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failedExecutions: map['failedExecutions'] == null ? null : (map['failedExecutions']! as String).input(),
+      mockStrategy: map['mockStrategy'] == null ? null : (GoogleCloudIntegrationsV1alphaMockConfigMockStrategy.fromValue(map['mockStrategy']! as String)).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaEventParameter>(map['parameters']!, (value) => GoogleCloudIntegrationsV1alphaEventParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetTaxonomyIamPolicyArgs {
   factory GetTaxonomyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTaxonomyIamPolicyArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       taxonomyId: (map['taxonomyId'] as String).input(),
     );
   }

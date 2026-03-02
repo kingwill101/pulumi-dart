@@ -43,11 +43,11 @@ class AndroidTestLoop {
 
   factory AndroidTestLoop.fromMap(Map<String, dynamic> map) {
     return AndroidTestLoop(
-      appApk: map['appApk'] == null ? null : (FileReference.fromMap((map['appApk'] as Map).cast<String, dynamic>())).input(),
-      appBundle: map['appBundle'] == null ? null : (AppBundle.fromMap((map['appBundle'] as Map).cast<String, dynamic>())).input(),
-      appPackageId: map['appPackageId'] == null ? null : (map['appPackageId'] as String).input(),
-      scenarioLabels: map['scenarioLabels'] == null ? null : ((map['scenarioLabels'] as List).cast<String>()).input(),
-      scenarios: map['scenarios'] == null ? null : ((map['scenarios'] as List).cast<int>()).input(),
+      appApk: map['appApk'] == null ? null : (FileReference.fromMap((map['appApk']! as Map).cast<String, dynamic>())).input(),
+      appBundle: map['appBundle'] == null ? null : (AppBundle.fromMap((map['appBundle']! as Map).cast<String, dynamic>())).input(),
+      appPackageId: map['appPackageId'] == null ? null : (map['appPackageId']! as String).input(),
+      scenarioLabels: map['scenarioLabels'] == null ? null : ((map['scenarioLabels']! as List).cast<String>()).input(),
+      scenarios: map['scenarios'] == null ? null : ((map['scenarios']! as List).cast<int>()).input(),
     );
   }
 }

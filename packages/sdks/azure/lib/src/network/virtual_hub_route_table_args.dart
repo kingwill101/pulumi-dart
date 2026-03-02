@@ -40,9 +40,9 @@ class VirtualHubRouteTableArgs {
 
   factory VirtualHubRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return VirtualHubRouteTableArgs(
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualHubRouteTableRoute>(map['routes'], (value) => VirtualHubRouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualHubRouteTableRoute>(map['routes']!, (value) => VirtualHubRouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
       virtualHubId: (map['virtualHubId'] as String).input(),
     );
   }

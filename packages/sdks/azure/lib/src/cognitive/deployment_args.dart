@@ -57,12 +57,12 @@ class DeploymentArgs {
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
       cognitiveAccountId: (map['cognitiveAccountId'] as String).input(),
-      dynamicThrottlingEnabled: map['dynamicThrottlingEnabled'] == null ? null : (map['dynamicThrottlingEnabled'] as bool).input(),
+      dynamicThrottlingEnabled: map['dynamicThrottlingEnabled'] == null ? null : (map['dynamicThrottlingEnabled']! as bool).input(),
       model: (DeploymentModel.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName']! as String).input(),
       sku: (DeploymentSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : (map['versionUpgradeOption'] as String).input(),
+      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : (map['versionUpgradeOption']! as String).input(),
     );
   }
 }

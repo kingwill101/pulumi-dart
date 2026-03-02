@@ -40,10 +40,10 @@ class GetEndpointArgs {
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : (map['clientVpnEndpointId'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetEndpointFilter>(map['filters'], (value) => GetEndpointFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : ((map['clientVpnEndpointId'] as String).input()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetEndpointFilter>(map['filters']!, (value) => GetEndpointFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -53,11 +53,11 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy {
   factory PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy.fromMap(Map<String, dynamic> map) {
     return PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy(
       autoscalePolicyId: (map['autoscalePolicyId'] as String).input(),
-      consumedMemoryThresholds: map['consumedMemoryThresholds'] == null ? null : (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds.fromMap((map['consumedMemoryThresholds'] as Map).cast<String, dynamic>())).input(),
-      cpuThresholds: map['cpuThresholds'] == null ? null : (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds.fromMap((map['cpuThresholds'] as Map).cast<String, dynamic>())).input(),
+      consumedMemoryThresholds: map['consumedMemoryThresholds'] == null ? null : (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds.fromMap((map['consumedMemoryThresholds']! as Map).cast<String, dynamic>())).input(),
+      cpuThresholds: map['cpuThresholds'] == null ? null : (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds.fromMap((map['cpuThresholds']! as Map).cast<String, dynamic>())).input(),
       nodeTypeId: (map['nodeTypeId'] as String).input(),
       scaleOutSize: (map['scaleOutSize'] as int).input(),
-      storageThresholds: map['storageThresholds'] == null ? null : (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds.fromMap((map['storageThresholds'] as Map).cast<String, dynamic>())).input(),
+      storageThresholds: map['storageThresholds'] == null ? null : (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds.fromMap((map['storageThresholds']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

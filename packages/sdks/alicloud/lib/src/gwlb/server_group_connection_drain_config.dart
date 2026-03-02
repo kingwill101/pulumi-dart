@@ -31,8 +31,8 @@ class ServerGroupConnectionDrainConfig {
 
   factory ServerGroupConnectionDrainConfig.fromMap(Map<String, dynamic> map) {
     return ServerGroupConnectionDrainConfig(
-      connectionDrainEnabled: map['connectionDrainEnabled'] == null ? null : (map['connectionDrainEnabled'] as bool).input(),
-      connectionDrainTimeout: map['connectionDrainTimeout'] == null ? null : (map['connectionDrainTimeout'] as int).input(),
+      connectionDrainEnabled: map['connectionDrainEnabled'] == null ? null : (map['connectionDrainEnabled']! as bool).input(),
+      connectionDrainTimeout: map['connectionDrainTimeout'] == null ? null : (map['connectionDrainTimeout']! as int).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class ReplicatorKafkaClusterVpcConfig {
 
   factory ReplicatorKafkaClusterVpcConfig.fromMap(Map<String, dynamic> map) {
     return ReplicatorKafkaClusterVpcConfig(
-      securityGroupsIds: map['securityGroupsIds'] == null ? null : ((map['securityGroupsIds'] as List).cast<String>()).input(),
+      securityGroupsIds: map['securityGroupsIds'] == null ? null : (((map['securityGroupsIds'] as List).cast<String>()).input()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
     );
   }

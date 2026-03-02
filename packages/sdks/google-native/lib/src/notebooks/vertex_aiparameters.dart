@@ -26,8 +26,8 @@ class VertexAIParameters {
 
   factory VertexAIParameters.fromMap(Map<String, dynamic> map) {
     return VertexAIParameters(
-      env: map['env'] == null ? null : ((map['env'] as Map).cast<String, String>()).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
+      env: map['env'] == null ? null : ((map['env']! as Map).cast<String, String>()).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
     );
   }
 }

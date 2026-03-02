@@ -26,8 +26,8 @@ class GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment {
 
   factory GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment(
-      attributeName: map['attributeName'] == null ? null : (map['attributeName'] as String).input(),
-      position: map['position'] == null ? null : (map['position'] as int).input(),
+      attributeName: map['attributeName'] == null ? null : (map['attributeName']! as String).input(),
+      position: map['position'] == null ? null : (map['position']! as int).input(),
     );
   }
 }

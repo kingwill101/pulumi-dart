@@ -53,7 +53,7 @@ class KeyRingIAMMemberArgs {
 
   factory KeyRingIAMMemberArgs.fromMap(Map<String, dynamic> map) {
     return KeyRingIAMMemberArgs(
-      condition: map['condition'] == null ? null : (KeyRingIAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (KeyRingIAMMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       keyRingId: (map['keyRingId'] as String).input(),
       member: (map['member'] as String).input(),
       role: (map['role'] as String).input(),

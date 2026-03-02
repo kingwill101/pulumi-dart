@@ -42,7 +42,7 @@ class GetGroupMembershipsResult {
   factory GetGroupMembershipsResult.fromMap(Map<String, dynamic> map) {
     return GetGroupMembershipsResult(
       groupId: map['groupId'] as String,
-      groupMemberships: pulumi.Input.decodeList<GetGroupMembershipsGroupMembership>(map['groupMemberships'], (value) => GetGroupMembershipsGroupMembership.fromMap((value as Map).cast<String, dynamic>())),
+      groupMemberships: pulumi.Input.decodeList<GetGroupMembershipsGroupMembership>(map['groupMemberships']!, (value) => GetGroupMembershipsGroupMembership.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       identityStoreId: map['identityStoreId'] as String,
       region: map['region'] as String,

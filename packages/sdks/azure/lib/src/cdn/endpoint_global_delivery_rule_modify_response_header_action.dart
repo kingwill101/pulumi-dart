@@ -32,7 +32,7 @@ class EndpointGlobalDeliveryRuleModifyResponseHeaderAction {
     return EndpointGlobalDeliveryRuleModifyResponseHeaderAction(
       action: (map['action'] as String).input(),
       name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

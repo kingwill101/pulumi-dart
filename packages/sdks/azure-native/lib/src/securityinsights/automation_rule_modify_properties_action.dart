@@ -31,7 +31,7 @@ class AutomationRuleModifyPropertiesAction {
 
   factory AutomationRuleModifyPropertiesAction.fromMap(Map<String, dynamic> map) {
     return AutomationRuleModifyPropertiesAction(
-      actionConfiguration: map['actionConfiguration'] == null ? null : (IncidentPropertiesAction.fromMap((map['actionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      actionConfiguration: map['actionConfiguration'] == null ? null : (IncidentPropertiesAction.fromMap((map['actionConfiguration']! as Map).cast<String, dynamic>())).input(),
       actionType: (map['actionType'] as String).input(),
       order: (map['order'] as int).input(),
     );

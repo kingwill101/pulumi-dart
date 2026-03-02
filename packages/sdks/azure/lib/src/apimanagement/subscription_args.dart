@@ -78,17 +78,17 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      allowTracing: map['allowTracing'] == null ? null : (map['allowTracing'] as bool).input(),
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      allowTracing: map['allowTracing'] == null ? null : (map['allowTracing']! as bool).input(),
+      apiId: map['apiId'] == null ? null : (map['apiId']! as String).input(),
       apiManagementName: (map['apiManagementName'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
+      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

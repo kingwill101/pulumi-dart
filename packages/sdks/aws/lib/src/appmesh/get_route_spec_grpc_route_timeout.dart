@@ -25,8 +25,8 @@ class GetRouteSpecGrpcRouteTimeout {
 
   factory GetRouteSpecGrpcRouteTimeout.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteTimeout(
-      idles: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteTimeoutIdle>(map['idles'], (value) => GetRouteSpecGrpcRouteTimeoutIdle.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      perRequests: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteTimeoutPerRequest>(map['perRequests'], (value) => GetRouteSpecGrpcRouteTimeoutPerRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      idles: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteTimeoutIdle>(map['idles']!, (value) => GetRouteSpecGrpcRouteTimeoutIdle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      perRequests: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteTimeoutPerRequest>(map['perRequests']!, (value) => GetRouteSpecGrpcRouteTimeoutPerRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class AddonReleaseState {
 
   factory AddonReleaseState.fromMap(Map<String, dynamic> map) {
     return AddonReleaseState(
-      addonName: map['addonName'] == null ? null : (map['addonName'] as String).input(),
-      addonReleaseName: map['addonReleaseName'] == null ? null : (map['addonReleaseName'] as String).input(),
-      addonVersion: map['addonVersion'] == null ? null : (map['addonVersion'] as String).input(),
-      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      values: map['values'] == null ? null : (map['values'] as String).input(),
+      addonName: map['addonName'] == null ? null : (map['addonName']! as String).input(),
+      addonReleaseName: map['addonReleaseName'] == null ? null : (map['addonReleaseName']! as String).input(),
+      addonVersion: map['addonVersion'] == null ? null : (map['addonVersion']! as String).input(),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      values: map['values'] == null ? null : (map['values']! as String).input(),
     );
   }
 }

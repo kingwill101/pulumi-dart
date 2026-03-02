@@ -41,8 +41,8 @@ class GetUserArgs {
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
       authenticationDomainId: (map['authenticationDomainId'] as String).input(),
-      emailId: map['emailId'] == null ? null : (map['emailId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      emailId: map['emailId'] == null ? null : (map['emailId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class GetAcceleratorArgs {
 
   factory GetAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return GetAcceleratorArgs(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class GuestPoliciesRecipeInstallStepFileExec {
 
   factory GuestPoliciesRecipeInstallStepFileExec.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeInstallStepFileExec(
-      allowedExitCodes: map['allowedExitCodes'] == null ? null : (map['allowedExitCodes'] as String).input(),
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      artifactId: map['artifactId'] == null ? null : (map['artifactId'] as String).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
+      allowedExitCodes: map['allowedExitCodes'] == null ? null : (map['allowedExitCodes']! as String).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      artifactId: map['artifactId'] == null ? null : (map['artifactId']! as String).input(),
+      localPath: map['localPath'] == null ? null : (map['localPath']! as String).input(),
     );
   }
 }

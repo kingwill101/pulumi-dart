@@ -27,7 +27,7 @@ class DeviceResourceK8sIoV1alpha3 {
 
   factory DeviceResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return DeviceResourceK8sIoV1alpha3(
-      basic: map['basic'] == null ? null : (BasicDevice.fromMap((map['basic'] as Map).cast<String, dynamic>())).input(),
+      basic: map['basic'] == null ? null : (BasicDevice.fromMap((map['basic']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

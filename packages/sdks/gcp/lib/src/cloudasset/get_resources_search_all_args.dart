@@ -34,8 +34,8 @@ class GetResourcesSearchAllArgs {
 
   factory GetResourcesSearchAllArgs.fromMap(Map<String, dynamic> map) {
     return GetResourcesSearchAllArgs(
-      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes'] as List).cast<String>()).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
+      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes']! as List).cast<String>()).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
       scope: (map['scope'] as String).input(),
     );
   }

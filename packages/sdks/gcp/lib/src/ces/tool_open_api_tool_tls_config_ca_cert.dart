@@ -38,8 +38,8 @@ class ToolOpenApiToolTlsConfigCaCert {
 
   factory ToolOpenApiToolTlsConfigCaCert.fromMap(Map<String, dynamic> map) {
     return ToolOpenApiToolTlsConfigCaCert(
-      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

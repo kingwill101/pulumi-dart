@@ -48,12 +48,12 @@ class InputSecurityGroupState {
 
   factory InputSecurityGroupState.fromMap(Map<String, dynamic> map) {
     return InputSecurityGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      inputs: map['inputs'] == null ? null : ((map['inputs'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      whitelistRules: map['whitelistRules'] == null ? null : (pulumi.Input.decodeList<InputSecurityGroupWhitelistRule>(map['whitelistRules'], (value) => InputSecurityGroupWhitelistRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      inputs: map['inputs'] == null ? null : (((map['inputs'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      whitelistRules: map['whitelistRules'] == null ? null : ((pulumi.Input.decodeList<InputSecurityGroupWhitelistRule>(map['whitelistRules']!, (value) => InputSecurityGroupWhitelistRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

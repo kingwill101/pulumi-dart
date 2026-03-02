@@ -27,8 +27,8 @@ class ExportDatasetResponse {
 
   factory ExportDatasetResponse.fromMap(Map<String, dynamic> map) {
     return ExportDatasetResponse(
-      configuration: map['configuration'] == null ? null : (ExportDatasetConfigurationResponse.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      granularity: map['granularity'] == null ? null : (map['granularity'] as String).input(),
+      configuration: map['configuration'] == null ? null : (ExportDatasetConfigurationResponse.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      granularity: map['granularity'] == null ? null : (map['granularity']! as String).input(),
     );
   }
 }

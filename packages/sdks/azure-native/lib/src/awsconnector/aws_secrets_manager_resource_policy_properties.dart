@@ -36,10 +36,10 @@ class AwsSecretsManagerResourcePolicyProperties {
 
   factory AwsSecretsManagerResourcePolicyProperties.fromMap(Map<String, dynamic> map) {
     return AwsSecretsManagerResourcePolicyProperties(
-      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : (map['blockPublicPolicy'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      resourcePolicy: map['resourcePolicy'] == null ? null : (map['resourcePolicy']).input(),
-      secretId: map['secretId'] == null ? null : (map['secretId'] as String).input(),
+      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : (map['blockPublicPolicy']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      resourcePolicy: map['resourcePolicy'] == null ? null : (map['resourcePolicy']!).input(),
+      secretId: map['secretId'] == null ? null : (map['secretId']! as String).input(),
     );
   }
 }

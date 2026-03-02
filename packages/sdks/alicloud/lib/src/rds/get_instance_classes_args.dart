@@ -98,19 +98,19 @@ class GetInstanceClassesArgs {
 
   factory GetInstanceClassesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassesArgs(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      commodityCode: map['commodityCode'] == null ? null : (map['commodityCode'] as String).input(),
-      dbInstanceClass: map['dbInstanceClass'] == null ? null : (map['dbInstanceClass'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : (map['dbInstanceStorageType'] as String).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
-      multiZone: map['multiZone'] == null ? null : (map['multiZone'] as bool).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      sortedBy: map['sortedBy'] == null ? null : (map['sortedBy'] as String).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      commodityCode: map['commodityCode'] == null ? null : (map['commodityCode']! as String).input(),
+      dbInstanceClass: map['dbInstanceClass'] == null ? null : (map['dbInstanceClass']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : (map['dbInstanceStorageType']! as String).input(),
+      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion']! as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
+      multiZone: map['multiZone'] == null ? null : (map['multiZone']! as bool).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      sortedBy: map['sortedBy'] == null ? null : (map['sortedBy']! as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

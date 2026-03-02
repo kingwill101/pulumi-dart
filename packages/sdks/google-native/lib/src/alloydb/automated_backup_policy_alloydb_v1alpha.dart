@@ -60,14 +60,14 @@ class AutomatedBackupPolicyAlloydbV1alpha {
 
   factory AutomatedBackupPolicyAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return AutomatedBackupPolicyAlloydbV1alpha(
-      backupWindow: map['backupWindow'] == null ? null : (map['backupWindow'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigAlloydbV1alpha.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      quantityBasedRetention: map['quantityBasedRetention'] == null ? null : (QuantityBasedRetentionAlloydbV1alpha.fromMap((map['quantityBasedRetention'] as Map).cast<String, dynamic>())).input(),
-      timeBasedRetention: map['timeBasedRetention'] == null ? null : (TimeBasedRetentionAlloydbV1alpha.fromMap((map['timeBasedRetention'] as Map).cast<String, dynamic>())).input(),
-      weeklySchedule: map['weeklySchedule'] == null ? null : (WeeklyScheduleAlloydbV1alpha.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())).input(),
+      backupWindow: map['backupWindow'] == null ? null : (map['backupWindow']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigAlloydbV1alpha.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      quantityBasedRetention: map['quantityBasedRetention'] == null ? null : (QuantityBasedRetentionAlloydbV1alpha.fromMap((map['quantityBasedRetention']! as Map).cast<String, dynamic>())).input(),
+      timeBasedRetention: map['timeBasedRetention'] == null ? null : (TimeBasedRetentionAlloydbV1alpha.fromMap((map['timeBasedRetention']! as Map).cast<String, dynamic>())).input(),
+      weeklySchedule: map['weeklySchedule'] == null ? null : (WeeklyScheduleAlloydbV1alpha.fromMap((map['weeklySchedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

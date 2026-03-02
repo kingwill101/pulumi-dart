@@ -29,7 +29,7 @@ class GetSecureCredentialArgs {
 
   factory GetSecureCredentialArgs.fromMap(Map<String, dynamic> map) {
     return GetSecureCredentialArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       key: (map['key'] as String).input(),
     );
   }

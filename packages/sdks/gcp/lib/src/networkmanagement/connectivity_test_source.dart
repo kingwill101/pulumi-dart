@@ -86,17 +86,17 @@ class ConnectivityTestSource {
 
   factory ConnectivityTestSource.fromMap(Map<String, dynamic> map) {
     return ConnectivityTestSource(
-      appEngineVersion: map['appEngineVersion'] == null ? null : (ConnectivityTestSourceAppEngineVersion.fromMap((map['appEngineVersion'] as Map).cast<String, dynamic>())).input(),
-      cloudFunction: map['cloudFunction'] == null ? null : (ConnectivityTestSourceCloudFunction.fromMap((map['cloudFunction'] as Map).cast<String, dynamic>())).input(),
-      cloudRunRevision: map['cloudRunRevision'] == null ? null : (ConnectivityTestSourceCloudRunRevision.fromMap((map['cloudRunRevision'] as Map).cast<String, dynamic>())).input(),
-      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (map['cloudSqlInstance'] as String).input(),
-      gkeMasterCluster: map['gkeMasterCluster'] == null ? null : (map['gkeMasterCluster'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      appEngineVersion: map['appEngineVersion'] == null ? null : (ConnectivityTestSourceAppEngineVersion.fromMap((map['appEngineVersion']! as Map).cast<String, dynamic>())).input(),
+      cloudFunction: map['cloudFunction'] == null ? null : (ConnectivityTestSourceCloudFunction.fromMap((map['cloudFunction']! as Map).cast<String, dynamic>())).input(),
+      cloudRunRevision: map['cloudRunRevision'] == null ? null : (ConnectivityTestSourceCloudRunRevision.fromMap((map['cloudRunRevision']! as Map).cast<String, dynamic>())).input(),
+      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (map['cloudSqlInstance']! as String).input(),
+      gkeMasterCluster: map['gkeMasterCluster'] == null ? null : (map['gkeMasterCluster']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
     );
   }
 }

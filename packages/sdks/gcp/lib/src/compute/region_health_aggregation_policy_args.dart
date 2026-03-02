@@ -88,12 +88,12 @@ class RegionHealthAggregationPolicyArgs {
 
   factory RegionHealthAggregationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegionHealthAggregationPolicyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      healthyPercentThreshold: map['healthyPercentThreshold'] == null ? null : (map['healthyPercentThreshold'] as int).input(),
-      minHealthyThreshold: map['minHealthyThreshold'] == null ? null : (map['minHealthyThreshold'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      healthyPercentThreshold: map['healthyPercentThreshold'] == null ? null : (map['healthyPercentThreshold']! as int).input(),
+      minHealthyThreshold: map['minHealthyThreshold'] == null ? null : (map['minHealthyThreshold']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

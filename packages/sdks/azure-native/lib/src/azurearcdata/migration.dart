@@ -22,7 +22,7 @@ class Migration {
 
   factory Migration.fromMap(Map<String, dynamic> map) {
     return Migration(
-      assessment: map['assessment'] == null ? null : (MigrationAssessment.fromMap((map['assessment'] as Map).cast<String, dynamic>())).input(),
+      assessment: map['assessment'] == null ? null : (MigrationAssessment.fromMap((map['assessment']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

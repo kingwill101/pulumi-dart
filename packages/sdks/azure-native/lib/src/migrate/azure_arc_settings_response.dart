@@ -33,8 +33,8 @@ class AzureArcSettingsResponse {
   factory AzureArcSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AzureArcSettingsResponse(
       azureArcState: (map['azureArcState'] as String).input(),
-      laborCostPercentage: map['laborCostPercentage'] == null ? null : (map['laborCostPercentage'] as double).input(),
-      managementSettings: map['managementSettings'] == null ? null : (AzureArcManagementSettingsResponse.fromMap((map['managementSettings'] as Map).cast<String, dynamic>())).input(),
+      laborCostPercentage: map['laborCostPercentage'] == null ? null : (map['laborCostPercentage']! as double).input(),
+      managementSettings: map['managementSettings'] == null ? null : (AzureArcManagementSettingsResponse.fromMap((map['managementSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

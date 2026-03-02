@@ -30,8 +30,8 @@ class FolderKajPolicyConfigState {
 
   factory FolderKajPolicyConfigState.fromMap(Map<String, dynamic> map) {
     return FolderKajPolicyConfigState(
-      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : (FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy'] as Map).cast<String, dynamic>())).input(),
-      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : (FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy']! as Map).cast<String, dynamic>())).input(),
+      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
     );
   }
 }

@@ -38,9 +38,9 @@ class AuthCredentialResponse {
   factory AuthCredentialResponse.fromMap(Map<String, dynamic> map) {
     return AuthCredentialResponse(
       credentialHealth: (CredentialHealthResponse.fromMap((map['credentialHealth'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      passwordSecretIdentifier: map['passwordSecretIdentifier'] == null ? null : (map['passwordSecretIdentifier'] as String).input(),
-      usernameSecretIdentifier: map['usernameSecretIdentifier'] == null ? null : (map['usernameSecretIdentifier'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      passwordSecretIdentifier: map['passwordSecretIdentifier'] == null ? null : (map['passwordSecretIdentifier']! as String).input(),
+      usernameSecretIdentifier: map['usernameSecretIdentifier'] == null ? null : (map['usernameSecretIdentifier']! as String).input(),
     );
   }
 }

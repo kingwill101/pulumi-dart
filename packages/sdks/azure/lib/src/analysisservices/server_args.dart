@@ -70,16 +70,16 @@ class ServerArgs {
 
   factory ServerArgs.fromMap(Map<String, dynamic> map) {
     return ServerArgs(
-      adminUsers: map['adminUsers'] == null ? null : ((map['adminUsers'] as List).cast<String>()).input(),
-      backupBlobContainerUri: map['backupBlobContainerUri'] == null ? null : (map['backupBlobContainerUri'] as String).input(),
-      ipv4FirewallRules: map['ipv4FirewallRules'] == null ? null : (pulumi.Input.decodeList<ServerIpv4FirewallRule>(map['ipv4FirewallRules'], (value) => ServerIpv4FirewallRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      powerBiServiceEnabled: map['powerBiServiceEnabled'] == null ? null : (map['powerBiServiceEnabled'] as bool).input(),
-      querypoolConnectionMode: map['querypoolConnectionMode'] == null ? null : (map['querypoolConnectionMode'] as String).input(),
+      adminUsers: map['adminUsers'] == null ? null : ((map['adminUsers']! as List).cast<String>()).input(),
+      backupBlobContainerUri: map['backupBlobContainerUri'] == null ? null : (map['backupBlobContainerUri']! as String).input(),
+      ipv4FirewallRules: map['ipv4FirewallRules'] == null ? null : (pulumi.Input.decodeList<ServerIpv4FirewallRule>(map['ipv4FirewallRules']!, (value) => ServerIpv4FirewallRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      powerBiServiceEnabled: map['powerBiServiceEnabled'] == null ? null : (map['powerBiServiceEnabled']! as bool).input(),
+      querypoolConnectionMode: map['querypoolConnectionMode'] == null ? null : (map['querypoolConnectionMode']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (map['sku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -35,7 +35,7 @@ class ZoneAssociationArgs {
   factory ZoneAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ZoneAssociationArgs(
       vpcId: (map['vpcId'] as String).input(),
-      vpcRegion: map['vpcRegion'] == null ? null : (map['vpcRegion'] as String).input(),
+      vpcRegion: map['vpcRegion'] == null ? null : ((map['vpcRegion'] as String).input()).input(),
       zoneId: (map['zoneId'] as String).input(),
     );
   }

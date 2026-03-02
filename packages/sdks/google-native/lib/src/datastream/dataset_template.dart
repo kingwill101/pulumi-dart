@@ -31,8 +31,8 @@ class DatasetTemplate {
 
   factory DatasetTemplate.fromMap(Map<String, dynamic> map) {
     return DatasetTemplate(
-      datasetIdPrefix: map['datasetIdPrefix'] == null ? null : (map['datasetIdPrefix'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      datasetIdPrefix: map['datasetIdPrefix'] == null ? null : (map['datasetIdPrefix']! as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
       location: (map['location'] as String).input(),
     );
   }

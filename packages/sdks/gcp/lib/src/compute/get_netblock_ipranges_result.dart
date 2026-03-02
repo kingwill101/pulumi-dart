@@ -43,7 +43,7 @@ class GetNetblockIPRangesResult {
       cidrBlocksIpv4s: (map['cidrBlocksIpv4s'] as List).cast<String>(),
       cidrBlocksIpv6s: (map['cidrBlocksIpv6s'] as List).cast<String>(),
       id: map['id'] as String,
-      rangeType: map['rangeType'] == null ? null : map['rangeType'] as String,
+      rangeType: map['rangeType'] == null ? null : map['rangeType']! as String,
     );
   }
 }

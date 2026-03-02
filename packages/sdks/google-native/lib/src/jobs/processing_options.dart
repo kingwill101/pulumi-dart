@@ -27,8 +27,8 @@ class ProcessingOptions {
 
   factory ProcessingOptions.fromMap(Map<String, dynamic> map) {
     return ProcessingOptions(
-      disableStreetAddressResolution: map['disableStreetAddressResolution'] == null ? null : (map['disableStreetAddressResolution'] as bool).input(),
-      htmlSanitization: map['htmlSanitization'] == null ? null : (ProcessingOptionsHtmlSanitization.fromValue(map['htmlSanitization'] as String)).input(),
+      disableStreetAddressResolution: map['disableStreetAddressResolution'] == null ? null : (map['disableStreetAddressResolution']! as bool).input(),
+      htmlSanitization: map['htmlSanitization'] == null ? null : (ProcessingOptionsHtmlSanitization.fromValue(map['htmlSanitization']! as String)).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class ClusterEncryptionConfig {
 
   factory ClusterEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return ClusterEncryptionConfig(
-      provider: (ClusterEncryptionConfigProvider.fromMap((map['provider'] as Map).cast<String, dynamic>())).input(),
+      provider: (ClusterEncryptionConfigProvider.fromMap((map['provider']! as Map).cast<String, dynamic>())).input(),
       resources: ((map['resources'] as List).cast<String>()).input(),
     );
   }

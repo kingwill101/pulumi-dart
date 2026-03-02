@@ -39,10 +39,10 @@ class GetWafDomainsArgs {
 
   factory GetWafDomainsArgs.fromMap(Map<String, dynamic> map) {
     return GetWafDomainsArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      queryArgs: map['queryArgs'] == null ? null : (map['queryArgs'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      queryArgs: map['queryArgs'] == null ? null : (map['queryArgs']! as String).input(),
     );
   }
 }

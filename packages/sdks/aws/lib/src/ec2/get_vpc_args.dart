@@ -66,14 +66,14 @@ class GetVpcArgs {
 
   factory GetVpcArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      default_: map['default'] == null ? null : (map['default'] as bool).input(),
-      dhcpOptionsId: map['dhcpOptionsId'] == null ? null : (map['dhcpOptionsId'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcFilter>(map['filters'], (value) => GetVpcFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : ((map['cidrBlock'] as String).input()).input(),
+      default_: map['default'] == null ? null : ((map['default'] as bool).input()).input(),
+      dhcpOptionsId: map['dhcpOptionsId'] == null ? null : ((map['dhcpOptionsId'] as String).input()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetVpcFilter>(map['filters']!, (value) => GetVpcFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

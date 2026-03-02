@@ -25,8 +25,8 @@ class IndexingConfigurationThingIndexingConfigurationCustomField {
 
   factory IndexingConfigurationThingIndexingConfigurationCustomField.fromMap(Map<String, dynamic> map) {
     return IndexingConfigurationThingIndexingConfigurationCustomField(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

@@ -86,13 +86,13 @@ class DeviceSubRequest {
 
   factory DeviceSubRequest.fromMap(Map<String, dynamic> map) {
     return DeviceSubRequest(
-      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode'] as String).input(),
-      capacity: map['capacity'] == null ? null : (CapacityRequirements.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
+      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode']! as String).input(),
+      capacity: map['capacity'] == null ? null : (CapacityRequirements.fromMap((map['capacity']! as Map).cast<String, dynamic>())).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
       deviceClassName: (map['deviceClassName'] as String).input(),
       name: (map['name'] as String).input(),
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelector>(map['selectors'], (value) => DeviceSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<DeviceToleration>(map['tolerations'], (value) => DeviceToleration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelector>(map['selectors']!, (value) => DeviceSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<DeviceToleration>(map['tolerations']!, (value) => DeviceToleration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

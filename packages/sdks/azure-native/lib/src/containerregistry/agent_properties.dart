@@ -21,7 +21,7 @@ class AgentProperties {
 
   factory AgentProperties.fromMap(Map<String, dynamic> map) {
     return AgentProperties(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as int).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as int).input(),
     );
   }
 }

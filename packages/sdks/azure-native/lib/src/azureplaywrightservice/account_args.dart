@@ -59,14 +59,14 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      localAuth: map['localAuth'] == null ? null : (map['localAuth'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      regionalAffinity: map['regionalAffinity'] == null ? null : (map['regionalAffinity'] as String).input(),
-      reporting: map['reporting'] == null ? null : (map['reporting'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      localAuth: map['localAuth'] == null ? null : (map['localAuth']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      regionalAffinity: map['regionalAffinity'] == null ? null : (map['regionalAffinity']! as String).input(),
+      reporting: map['reporting'] == null ? null : (map['reporting']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scalableExecution: map['scalableExecution'] == null ? null : (map['scalableExecution'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      scalableExecution: map['scalableExecution'] == null ? null : (map['scalableExecution']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

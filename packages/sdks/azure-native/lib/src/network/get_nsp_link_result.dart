@@ -90,16 +90,16 @@ class GetNspLinkResult {
 
   factory GetNspLinkResult.fromMap(Map<String, dynamic> map) {
     return GetNspLinkResult(
-      autoApprovedRemotePerimeterResourceId: map['autoApprovedRemotePerimeterResourceId'] == null ? null : map['autoApprovedRemotePerimeterResourceId'] as String,
+      autoApprovedRemotePerimeterResourceId: map['autoApprovedRemotePerimeterResourceId'] == null ? null : map['autoApprovedRemotePerimeterResourceId']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
-      localInboundProfiles: map['localInboundProfiles'] == null ? null : (map['localInboundProfiles'] as List).cast<String>(),
+      localInboundProfiles: map['localInboundProfiles'] == null ? null : (map['localInboundProfiles']! as List).cast<String>(),
       localOutboundProfiles: (map['localOutboundProfiles'] as List).cast<String>(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      remoteInboundProfiles: map['remoteInboundProfiles'] == null ? null : (map['remoteInboundProfiles'] as List).cast<String>(),
+      remoteInboundProfiles: map['remoteInboundProfiles'] == null ? null : (map['remoteInboundProfiles']! as List).cast<String>(),
       remoteOutboundProfiles: (map['remoteOutboundProfiles'] as List).cast<String>(),
       remotePerimeterGuid: map['remotePerimeterGuid'] as String,
       remotePerimeterLocation: map['remotePerimeterLocation'] as String,

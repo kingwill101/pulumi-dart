@@ -44,10 +44,10 @@ class AppVersionSnapshotToolClientFunction {
 
   factory AppVersionSnapshotToolClientFunction.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolClientFunction(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolClientFunctionParameter>(map['parameters'], (value) => AppVersionSnapshotToolClientFunctionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responses: map['responses'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolClientFunctionResponse>(map['responses'], (value) => AppVersionSnapshotToolClientFunctionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolClientFunctionParameter>(map['parameters']!, (value) => AppVersionSnapshotToolClientFunctionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responses: map['responses'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolClientFunctionResponse>(map['responses']!, (value) => AppVersionSnapshotToolClientFunctionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

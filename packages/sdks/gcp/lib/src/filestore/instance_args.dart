@@ -140,23 +140,23 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : (map['deletionProtectionEnabled'] as bool).input(),
-      deletionProtectionReason: map['deletionProtectionReason'] == null ? null : (map['deletionProtectionReason'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      directoryServices: map['directoryServices'] == null ? null : (InstanceDirectoryServices.fromMap((map['directoryServices'] as Map).cast<String, dynamic>())).input(),
+      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : (map['deletionProtectionEnabled']! as bool).input(),
+      deletionProtectionReason: map['deletionProtectionReason'] == null ? null : (map['deletionProtectionReason']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      directoryServices: map['directoryServices'] == null ? null : (InstanceDirectoryServices.fromMap((map['directoryServices']! as Map).cast<String, dynamic>())).input(),
       fileShares: (InstanceFileShares.fromMap((map['fileShares'] as Map).cast<String, dynamic>())).input(),
-      initialReplication: map['initialReplication'] == null ? null : (InstanceInitialReplication.fromMap((map['initialReplication'] as Map).cast<String, dynamic>())).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      initialReplication: map['initialReplication'] == null ? null : (InstanceInitialReplication.fromMap((map['initialReplication']! as Map).cast<String, dynamic>())).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networks: (pulumi.Input.decodeList<InstanceNetwork>(map['networks'], (value) => InstanceNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      performanceConfig: map['performanceConfig'] == null ? null : (InstancePerformanceConfig.fromMap((map['performanceConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      performanceConfig: map['performanceConfig'] == null ? null : (InstancePerformanceConfig.fromMap((map['performanceConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       tier: (map['tier'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

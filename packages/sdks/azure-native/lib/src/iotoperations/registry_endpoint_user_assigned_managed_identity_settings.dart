@@ -32,7 +32,7 @@ class RegistryEndpointUserAssignedManagedIdentitySettings {
   factory RegistryEndpointUserAssignedManagedIdentitySettings.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointUserAssignedManagedIdentitySettings(
       clientId: (map['clientId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

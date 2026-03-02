@@ -25,8 +25,8 @@ class ListWorkspaceKeysResult {
 
   factory ListWorkspaceKeysResult.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceKeysResult(
-      primaryToken: map['primaryToken'] == null ? null : map['primaryToken'] as String,
-      secondaryToken: map['secondaryToken'] == null ? null : map['secondaryToken'] as String,
+      primaryToken: map['primaryToken'] == null ? null : map['primaryToken']! as String,
+      secondaryToken: map['secondaryToken'] == null ? null : map['secondaryToken']! as String,
     );
   }
 }

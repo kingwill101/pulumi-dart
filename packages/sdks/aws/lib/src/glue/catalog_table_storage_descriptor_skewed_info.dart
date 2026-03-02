@@ -30,9 +30,9 @@ class CatalogTableStorageDescriptorSkewedInfo {
 
   factory CatalogTableStorageDescriptorSkewedInfo.fromMap(Map<String, dynamic> map) {
     return CatalogTableStorageDescriptorSkewedInfo(
-      skewedColumnNames: map['skewedColumnNames'] == null ? null : ((map['skewedColumnNames'] as List).cast<String>()).input(),
-      skewedColumnValueLocationMaps: map['skewedColumnValueLocationMaps'] == null ? null : ((map['skewedColumnValueLocationMaps'] as Map).cast<String, String>()).input(),
-      skewedColumnValues: map['skewedColumnValues'] == null ? null : ((map['skewedColumnValues'] as List).cast<String>()).input(),
+      skewedColumnNames: map['skewedColumnNames'] == null ? null : (((map['skewedColumnNames'] as List).cast<String>()).input()).input(),
+      skewedColumnValueLocationMaps: map['skewedColumnValueLocationMaps'] == null ? null : (((map['skewedColumnValueLocationMaps'] as Map).cast<String, String>()).input()).input(),
+      skewedColumnValues: map['skewedColumnValues'] == null ? null : (((map['skewedColumnValues'] as List).cast<String>()).input()).input(),
     );
   }
 }

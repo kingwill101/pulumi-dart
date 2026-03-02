@@ -33,9 +33,9 @@ class BudgetFilter {
 
   factory BudgetFilter.fromMap(Map<String, dynamic> map) {
     return BudgetFilter(
-      and: map['and'] == null ? null : (pulumi.Input.decodeList<BudgetFilterProperties>(map['and'], (value) => BudgetFilterProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dimensions: map['dimensions'] == null ? null : (BudgetComparisonExpression.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (BudgetComparisonExpression.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      and: map['and'] == null ? null : (pulumi.Input.decodeList<BudgetFilterProperties>(map['and']!, (value) => BudgetFilterProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: map['dimensions'] == null ? null : (BudgetComparisonExpression.fromMap((map['dimensions']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (BudgetComparisonExpression.fromMap((map['tags']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

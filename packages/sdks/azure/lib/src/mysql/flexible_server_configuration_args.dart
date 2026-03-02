@@ -39,7 +39,7 @@ class FlexibleServerConfigurationArgs {
 
   factory FlexibleServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleServerConfigurationArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
       value: (map['value'] as String).input(),

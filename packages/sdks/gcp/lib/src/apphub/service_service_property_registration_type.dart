@@ -21,7 +21,7 @@ class ServiceServicePropertyRegistrationType {
 
   factory ServiceServicePropertyRegistrationType.fromMap(Map<String, dynamic> map) {
     return ServiceServicePropertyRegistrationType(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

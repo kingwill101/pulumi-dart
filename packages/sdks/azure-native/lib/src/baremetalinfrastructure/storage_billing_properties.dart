@@ -26,8 +26,8 @@ class StorageBillingProperties {
 
   factory StorageBillingProperties.fromMap(Map<String, dynamic> map) {
     return StorageBillingProperties(
-      azureBareMetalStorageInstanceSize: map['azureBareMetalStorageInstanceSize'] == null ? null : (map['azureBareMetalStorageInstanceSize'] as String).input(),
-      billingMode: map['billingMode'] == null ? null : (map['billingMode'] as String).input(),
+      azureBareMetalStorageInstanceSize: map['azureBareMetalStorageInstanceSize'] == null ? null : (map['azureBareMetalStorageInstanceSize']! as String).input(),
+      billingMode: map['billingMode'] == null ? null : (map['billingMode']! as String).input(),
     );
   }
 }

@@ -43,9 +43,9 @@ class TestBaseAccountSKUResponse {
   factory TestBaseAccountSKUResponse.fromMap(Map<String, dynamic> map) {
     return TestBaseAccountSKUResponse(
       capabilities: (pulumi.Input.decodeList<TestBaseAccountSKUCapabilityResponse>(map['capabilities'], (value) => TestBaseAccountSKUCapabilityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
       tier: (map['tier'] as String).input(),
     );
   }

@@ -20,7 +20,7 @@ class WafRuleConfigSecurityLevel {
 
   factory WafRuleConfigSecurityLevel.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigSecurityLevel(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

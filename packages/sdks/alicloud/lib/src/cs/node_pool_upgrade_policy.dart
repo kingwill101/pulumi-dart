@@ -40,11 +40,11 @@ class NodePoolUpgradePolicy {
 
   factory NodePoolUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return NodePoolUpgradePolicy(
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
-      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
-      useReplace: map['useReplace'] == null ? null : (map['useReplace'] as bool).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion']! as String).input(),
+      runtime: map['runtime'] == null ? null : (map['runtime']! as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
+      useReplace: map['useReplace'] == null ? null : (map['useReplace']! as bool).input(),
     );
   }
 }

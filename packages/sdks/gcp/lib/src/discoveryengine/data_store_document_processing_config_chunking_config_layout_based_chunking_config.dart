@@ -27,8 +27,8 @@ class DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig {
 
   factory DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig.fromMap(Map<String, dynamic> map) {
     return DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig(
-      chunkSize: map['chunkSize'] == null ? null : (map['chunkSize'] as int).input(),
-      includeAncestorHeadings: map['includeAncestorHeadings'] == null ? null : (map['includeAncestorHeadings'] as bool).input(),
+      chunkSize: map['chunkSize'] == null ? null : (map['chunkSize']! as int).input(),
+      includeAncestorHeadings: map['includeAncestorHeadings'] == null ? null : (map['includeAncestorHeadings']! as bool).input(),
     );
   }
 }

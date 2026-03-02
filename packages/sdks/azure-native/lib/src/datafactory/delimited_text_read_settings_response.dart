@@ -33,8 +33,8 @@ class DelimitedTextReadSettingsResponse {
 
   factory DelimitedTextReadSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DelimitedTextReadSettingsResponse(
-      compressionProperties: map['compressionProperties'] == null ? null : (TarGZipReadSettingsResponse.fromMap((map['compressionProperties'] as Map).cast<String, dynamic>())).input(),
-      skipLineCount: map['skipLineCount'] == null ? null : (map['skipLineCount']).input(),
+      compressionProperties: map['compressionProperties'] == null ? null : (TarGZipReadSettingsResponse.fromMap((map['compressionProperties']! as Map).cast<String, dynamic>())).input(),
+      skipLineCount: map['skipLineCount'] == null ? null : (map['skipLineCount']!).input(),
       type: (map['type'] as String).input(),
     );
   }

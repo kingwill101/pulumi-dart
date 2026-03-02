@@ -49,12 +49,12 @@ class ExtensionArgs {
 
   factory ExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionArgs(
-      createCascade: map['createCascade'] == null ? null : (map['createCascade'] as bool).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      createCascade: map['createCascade'] == null ? null : (map['createCascade']! as bool).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

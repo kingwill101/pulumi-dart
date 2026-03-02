@@ -56,13 +56,13 @@ class AlertMutingRuleArgs {
 
   factory AlertMutingRuleArgs.fromMap(Map<String, dynamic> map) {
     return AlertMutingRuleArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      actionOnMutingRuleWindowEnded: map['actionOnMutingRuleWindowEnded'] == null ? null : (map['actionOnMutingRuleWindowEnded'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      actionOnMutingRuleWindowEnded: map['actionOnMutingRuleWindowEnded'] == null ? null : (map['actionOnMutingRuleWindowEnded']! as String).input(),
       condition: (AlertMutingRuleCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      schedule: map['schedule'] == null ? null : (AlertMutingRuleSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      schedule: map['schedule'] == null ? null : (AlertMutingRuleSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

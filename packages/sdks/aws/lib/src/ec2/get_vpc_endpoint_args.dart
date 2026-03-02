@@ -69,15 +69,15 @@ class GetVpcEndpointArgs {
 
   factory GetVpcEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcEndpointFilter>(map['filters'], (value) => GetVpcEndpointFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      serviceRegion: map['serviceRegion'] == null ? null : (map['serviceRegion'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcEndpointType: map['vpcEndpointType'] == null ? null : (map['vpcEndpointType'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetVpcEndpointFilter>(map['filters']!, (value) => GetVpcEndpointFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceName: map['serviceName'] == null ? null : ((map['serviceName'] as String).input()).input(),
+      serviceRegion: map['serviceRegion'] == null ? null : ((map['serviceRegion'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vpcEndpointType: map['vpcEndpointType'] == null ? null : ((map['vpcEndpointType'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

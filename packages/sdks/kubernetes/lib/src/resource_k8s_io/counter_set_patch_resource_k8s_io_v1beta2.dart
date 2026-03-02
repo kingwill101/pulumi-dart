@@ -31,8 +31,8 @@ class CounterSetPatchResourceK8sIoV1beta2 {
 
   factory CounterSetPatchResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return CounterSetPatchResourceK8sIoV1beta2(
-      counters: map['counters'] == null ? null : (pulumi.Input.decodeMapValues<CounterResourceK8sIoV1beta2>(map['counters'], (value) => CounterResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      counters: map['counters'] == null ? null : (pulumi.Input.decodeMapValues<CounterResourceK8sIoV1beta2>(map['counters']!, (value) => CounterResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -50,10 +50,10 @@ class WorkspaceTableArgs {
 
   factory WorkspaceTableArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceTableArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      plan: map['plan'] == null ? null : (map['plan'] as String).input(),
-      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
-      totalRetentionInDays: map['totalRetentionInDays'] == null ? null : (map['totalRetentionInDays'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      plan: map['plan'] == null ? null : (map['plan']! as String).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays']! as int).input(),
+      totalRetentionInDays: map['totalRetentionInDays'] == null ? null : (map['totalRetentionInDays']! as int).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

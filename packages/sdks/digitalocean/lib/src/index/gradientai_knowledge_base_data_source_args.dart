@@ -35,8 +35,8 @@ class GradientaiKnowledgeBaseDataSourceArgs {
   factory GradientaiKnowledgeBaseDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return GradientaiKnowledgeBaseDataSourceArgs(
       knowledgeBaseUuid: (map['knowledgeBaseUuid'] as String).input(),
-      spacesDataSource: map['spacesDataSource'] == null ? null : (GradientaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((map['spacesDataSource'] as Map).cast<String, dynamic>())).input(),
-      webCrawlerDataSource: map['webCrawlerDataSource'] == null ? null : (GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((map['webCrawlerDataSource'] as Map).cast<String, dynamic>())).input(),
+      spacesDataSource: map['spacesDataSource'] == null ? null : (GradientaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((map['spacesDataSource']! as Map).cast<String, dynamic>())).input(),
+      webCrawlerDataSource: map['webCrawlerDataSource'] == null ? null : (GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((map['webCrawlerDataSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

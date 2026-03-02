@@ -46,12 +46,12 @@ class RepositoryOpts {
 
   factory RepositoryOpts.fromMap(Map<String, dynamic> map) {
     return RepositoryOpts(
-      caFile: map['caFile'] == null ? null : (map['caFile'] as String).input(),
-      certFile: map['certFile'] == null ? null : (map['certFile'] as String).input(),
-      keyFile: map['keyFile'] == null ? null : (map['keyFile'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      repo: map['repo'] == null ? null : (map['repo'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      caFile: map['caFile'] == null ? null : (map['caFile']! as String).input(),
+      certFile: map['certFile'] == null ? null : (map['certFile']! as String).input(),
+      keyFile: map['keyFile'] == null ? null : (map['keyFile']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      repo: map['repo'] == null ? null : (map['repo']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

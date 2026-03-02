@@ -24,7 +24,7 @@ class GetVpcsArgs {
 
   factory GetVpcsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcsFilter>(map['filters'], (value) => GetVpcsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcsFilter>(map['filters']!, (value) => GetVpcsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

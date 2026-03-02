@@ -26,8 +26,8 @@ class ReplicaSet {
 
   factory ReplicaSet.fromMap(Map<String, dynamic> map) {
     return ReplicaSet(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

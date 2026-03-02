@@ -88,16 +88,16 @@ class EntryArgs {
 
   factory EntryArgs.fromMap(Map<String, dynamic> map) {
     return EntryArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       entryGroup: (map['entryGroup'] as String).input(),
       entryId: (map['entryId'] as String).input(),
-      gcsFilesetSpec: map['gcsFilesetSpec'] == null ? null : (EntryGcsFilesetSpec.fromMap((map['gcsFilesetSpec'] as Map).cast<String, dynamic>())).input(),
-      linkedResource: map['linkedResource'] == null ? null : (map['linkedResource'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userSpecifiedSystem: map['userSpecifiedSystem'] == null ? null : (map['userSpecifiedSystem'] as String).input(),
-      userSpecifiedType: map['userSpecifiedType'] == null ? null : (map['userSpecifiedType'] as String).input(),
+      gcsFilesetSpec: map['gcsFilesetSpec'] == null ? null : (EntryGcsFilesetSpec.fromMap((map['gcsFilesetSpec']! as Map).cast<String, dynamic>())).input(),
+      linkedResource: map['linkedResource'] == null ? null : (map['linkedResource']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userSpecifiedSystem: map['userSpecifiedSystem'] == null ? null : (map['userSpecifiedSystem']! as String).input(),
+      userSpecifiedType: map['userSpecifiedType'] == null ? null : (map['userSpecifiedType']! as String).input(),
     );
   }
 }

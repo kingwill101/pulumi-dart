@@ -92,19 +92,19 @@ class LinuxWebAppSiteConfigApplicationStack {
 
   factory LinuxWebAppSiteConfigApplicationStack.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSiteConfigApplicationStack(
-      dockerImageName: map['dockerImageName'] == null ? null : (map['dockerImageName'] as String).input(),
-      dockerRegistryPassword: map['dockerRegistryPassword'] == null ? null : (map['dockerRegistryPassword'] as String).input(),
-      dockerRegistryUrl: map['dockerRegistryUrl'] == null ? null : (map['dockerRegistryUrl'] as String).input(),
-      dockerRegistryUsername: map['dockerRegistryUsername'] == null ? null : (map['dockerRegistryUsername'] as String).input(),
-      dotnetVersion: map['dotnetVersion'] == null ? null : (map['dotnetVersion'] as String).input(),
-      goVersion: map['goVersion'] == null ? null : (map['goVersion'] as String).input(),
-      javaServer: map['javaServer'] == null ? null : (map['javaServer'] as String).input(),
-      javaServerVersion: map['javaServerVersion'] == null ? null : (map['javaServerVersion'] as String).input(),
-      javaVersion: map['javaVersion'] == null ? null : (map['javaVersion'] as String).input(),
-      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion'] as String).input(),
-      phpVersion: map['phpVersion'] == null ? null : (map['phpVersion'] as String).input(),
-      pythonVersion: map['pythonVersion'] == null ? null : (map['pythonVersion'] as String).input(),
-      rubyVersion: map['rubyVersion'] == null ? null : (map['rubyVersion'] as String).input(),
+      dockerImageName: map['dockerImageName'] == null ? null : (map['dockerImageName']! as String).input(),
+      dockerRegistryPassword: map['dockerRegistryPassword'] == null ? null : (map['dockerRegistryPassword']! as String).input(),
+      dockerRegistryUrl: map['dockerRegistryUrl'] == null ? null : (map['dockerRegistryUrl']! as String).input(),
+      dockerRegistryUsername: map['dockerRegistryUsername'] == null ? null : (map['dockerRegistryUsername']! as String).input(),
+      dotnetVersion: map['dotnetVersion'] == null ? null : (map['dotnetVersion']! as String).input(),
+      goVersion: map['goVersion'] == null ? null : (map['goVersion']! as String).input(),
+      javaServer: map['javaServer'] == null ? null : (map['javaServer']! as String).input(),
+      javaServerVersion: map['javaServerVersion'] == null ? null : (map['javaServerVersion']! as String).input(),
+      javaVersion: map['javaVersion'] == null ? null : (map['javaVersion']! as String).input(),
+      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion']! as String).input(),
+      phpVersion: map['phpVersion'] == null ? null : (map['phpVersion']! as String).input(),
+      pythonVersion: map['pythonVersion'] == null ? null : (map['pythonVersion']! as String).input(),
+      rubyVersion: map['rubyVersion'] == null ? null : (map['rubyVersion']! as String).input(),
     );
   }
 }

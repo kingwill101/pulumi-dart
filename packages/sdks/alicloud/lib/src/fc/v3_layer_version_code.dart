@@ -35,10 +35,10 @@ class V3LayerVersionCode {
 
   factory V3LayerVersionCode.fromMap(Map<String, dynamic> map) {
     return V3LayerVersionCode(
-      checksum: map['checksum'] == null ? null : (map['checksum'] as String).input(),
-      ossBucketName: map['ossBucketName'] == null ? null : (map['ossBucketName'] as String).input(),
-      ossObjectName: map['ossObjectName'] == null ? null : (map['ossObjectName'] as String).input(),
-      zipFile: map['zipFile'] == null ? null : (map['zipFile'] as String).input(),
+      checksum: map['checksum'] == null ? null : (map['checksum']! as String).input(),
+      ossBucketName: map['ossBucketName'] == null ? null : (map['ossBucketName']! as String).input(),
+      ossObjectName: map['ossObjectName'] == null ? null : (map['ossObjectName']! as String).input(),
+      zipFile: map['zipFile'] == null ? null : (map['zipFile']! as String).input(),
     );
   }
 }

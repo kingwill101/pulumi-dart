@@ -26,8 +26,8 @@ class VirtualNodeSpecLoggingAccessLogFileFormat {
 
   factory VirtualNodeSpecLoggingAccessLogFileFormat.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecLoggingAccessLogFileFormat(
-      jsons: map['jsons'] == null ? null : (pulumi.Input.decodeList<VirtualNodeSpecLoggingAccessLogFileFormatJson>(map['jsons'], (value) => VirtualNodeSpecLoggingAccessLogFileFormatJson.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      jsons: map['jsons'] == null ? null : ((pulumi.Input.decodeList<VirtualNodeSpecLoggingAccessLogFileFormatJson>(map['jsons']!, (value) => VirtualNodeSpecLoggingAccessLogFileFormatJson.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      text: map['text'] == null ? null : ((map['text'] as String).input()).input(),
     );
   }
 }

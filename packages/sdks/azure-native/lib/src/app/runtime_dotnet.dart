@@ -21,7 +21,7 @@ class RuntimeDotnet {
 
   factory RuntimeDotnet.fromMap(Map<String, dynamic> map) {
     return RuntimeDotnet(
-      autoConfigureDataProtection: map['autoConfigureDataProtection'] == null ? null : (map['autoConfigureDataProtection'] as bool).input(),
+      autoConfigureDataProtection: map['autoConfigureDataProtection'] == null ? null : (map['autoConfigureDataProtection']! as bool).input(),
     );
   }
 }

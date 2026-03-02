@@ -37,8 +37,8 @@ class X12SecuritySettings {
   factory X12SecuritySettings.fromMap(Map<String, dynamic> map) {
     return X12SecuritySettings(
       authorizationQualifier: (map['authorizationQualifier'] as String).input(),
-      authorizationValue: map['authorizationValue'] == null ? null : (map['authorizationValue'] as String).input(),
-      passwordValue: map['passwordValue'] == null ? null : (map['passwordValue'] as String).input(),
+      authorizationValue: map['authorizationValue'] == null ? null : (map['authorizationValue']! as String).input(),
+      passwordValue: map['passwordValue'] == null ? null : (map['passwordValue']! as String).input(),
       securityQualifier: (map['securityQualifier'] as String).input(),
     );
   }

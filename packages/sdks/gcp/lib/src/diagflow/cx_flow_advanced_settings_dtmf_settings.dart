@@ -30,9 +30,9 @@ class CxFlowAdvancedSettingsDtmfSettings {
 
   factory CxFlowAdvancedSettingsDtmfSettings.fromMap(Map<String, dynamic> map) {
     return CxFlowAdvancedSettingsDtmfSettings(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit'] as String).input(),
-      maxDigits: map['maxDigits'] == null ? null : (map['maxDigits'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit']! as String).input(),
+      maxDigits: map['maxDigits'] == null ? null : (map['maxDigits']! as int).input(),
     );
   }
 }

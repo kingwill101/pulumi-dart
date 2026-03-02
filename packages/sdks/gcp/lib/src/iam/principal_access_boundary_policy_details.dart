@@ -30,7 +30,7 @@ class PrincipalAccessBoundaryPolicyDetails {
 
   factory PrincipalAccessBoundaryPolicyDetails.fromMap(Map<String, dynamic> map) {
     return PrincipalAccessBoundaryPolicyDetails(
-      enforcementVersion: map['enforcementVersion'] == null ? null : (map['enforcementVersion'] as String).input(),
+      enforcementVersion: map['enforcementVersion'] == null ? null : (map['enforcementVersion']! as String).input(),
       rules: (pulumi.Input.decodeList<PrincipalAccessBoundaryPolicyDetailsRule>(map['rules'], (value) => PrincipalAccessBoundaryPolicyDetailsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

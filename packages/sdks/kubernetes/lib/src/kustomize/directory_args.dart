@@ -43,9 +43,9 @@ class DirectoryArgs {
   factory DirectoryArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryArgs(
       directory: (map['directory'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix'] as String).input(),
-      skipAwait: map['skipAwait'] == null ? null : (map['skipAwait'] as bool).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix']! as String).input(),
+      skipAwait: map['skipAwait'] == null ? null : (map['skipAwait']! as bool).input(),
     );
   }
 }

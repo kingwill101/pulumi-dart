@@ -32,9 +32,9 @@ class VMwareNodePoolConfigVsphereConfig {
 
   factory VMwareNodePoolConfigVsphereConfig.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolConfigVsphereConfig(
-      datastore: map['datastore'] == null ? null : (map['datastore'] as String).input(),
-      hostGroups: map['hostGroups'] == null ? null : ((map['hostGroups'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<VMwareNodePoolConfigVsphereConfigTag>(map['tags'], (value) => VMwareNodePoolConfigVsphereConfigTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      datastore: map['datastore'] == null ? null : (map['datastore']! as String).input(),
+      hostGroups: map['hostGroups'] == null ? null : ((map['hostGroups']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<VMwareNodePoolConfigVsphereConfigTag>(map['tags']!, (value) => VMwareNodePoolConfigVsphereConfigTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

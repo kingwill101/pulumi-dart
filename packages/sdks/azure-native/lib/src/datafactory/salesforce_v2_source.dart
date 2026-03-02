@@ -77,17 +77,17 @@ class SalesforceV2Source {
 
   factory SalesforceV2Source.fromMap(Map<String, dynamic> map) {
     return SalesforceV2Source(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      includeDeletedObjects: map['includeDeletedObjects'] == null ? null : (map['includeDeletedObjects']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize']).input(),
-      partitionOption: map['partitionOption'] == null ? null : (map['partitionOption']).input(),
-      query: map['query'] == null ? null : (map['query']).input(),
-      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
-      sOQLQuery: map['sOQLQuery'] == null ? null : (map['sOQLQuery']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      includeDeletedObjects: map['includeDeletedObjects'] == null ? null : (map['includeDeletedObjects']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']!).input(),
+      partitionOption: map['partitionOption'] == null ? null : (map['partitionOption']!).input(),
+      query: map['query'] == null ? null : (map['query']!).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']!).input(),
+      sOQLQuery: map['sOQLQuery'] == null ? null : (map['sOQLQuery']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
       type: (map['type'] as String).input(),
     );
   }

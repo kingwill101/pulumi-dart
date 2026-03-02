@@ -31,7 +31,7 @@ class MetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
 
   factory MetastoreServiceHiveMetastoreConfigAuxiliaryVersion.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceHiveMetastoreConfigAuxiliaryVersion(
-      configOverrides: map['configOverrides'] == null ? null : ((map['configOverrides'] as Map).cast<String, String>()).input(),
+      configOverrides: map['configOverrides'] == null ? null : ((map['configOverrides']! as Map).cast<String, String>()).input(),
       key: (map['key'] as String).input(),
       version: (map['version'] as String).input(),
     );

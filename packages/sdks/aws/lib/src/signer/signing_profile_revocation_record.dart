@@ -30,9 +30,9 @@ class SigningProfileRevocationRecord {
 
   factory SigningProfileRevocationRecord.fromMap(Map<String, dynamic> map) {
     return SigningProfileRevocationRecord(
-      revocationEffectiveFrom: map['revocationEffectiveFrom'] == null ? null : (map['revocationEffectiveFrom'] as String).input(),
-      revokedAt: map['revokedAt'] == null ? null : (map['revokedAt'] as String).input(),
-      revokedBy: map['revokedBy'] == null ? null : (map['revokedBy'] as String).input(),
+      revocationEffectiveFrom: map['revocationEffectiveFrom'] == null ? null : ((map['revocationEffectiveFrom'] as String).input()).input(),
+      revokedAt: map['revokedAt'] == null ? null : ((map['revokedAt'] as String).input()).input(),
+      revokedBy: map['revokedBy'] == null ? null : ((map['revokedBy'] as String).input()).input(),
     );
   }
 }

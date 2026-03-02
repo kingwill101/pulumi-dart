@@ -35,10 +35,10 @@ class DomainDevicesAudioJackOutput {
 
   factory DomainDevicesAudioJackOutput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioJackOutput(
-      clientName: map['clientName'] == null ? null : (map['clientName'] as String).input(),
-      connectPorts: map['connectPorts'] == null ? null : (map['connectPorts'] as String).input(),
-      exactName: map['exactName'] == null ? null : (map['exactName'] as String).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      clientName: map['clientName'] == null ? null : (map['clientName']! as String).input(),
+      connectPorts: map['connectPorts'] == null ? null : (map['connectPorts']! as String).input(),
+      exactName: map['exactName'] == null ? null : (map['exactName']! as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
     );
   }
 }

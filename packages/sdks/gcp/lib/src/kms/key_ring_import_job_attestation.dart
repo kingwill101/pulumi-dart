@@ -28,8 +28,8 @@ class KeyRingImportJobAttestation {
 
   factory KeyRingImportJobAttestation.fromMap(Map<String, dynamic> map) {
     return KeyRingImportJobAttestation(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
     );
   }
 }

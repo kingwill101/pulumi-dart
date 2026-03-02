@@ -67,16 +67,16 @@ class ReplicatorState {
 
   factory ReplicatorState.fromMap(Map<String, dynamic> map) {
     return ReplicatorState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kafkaClusters: map['kafkaClusters'] == null ? null : (pulumi.Input.decodeList<ReplicatorKafkaCluster>(map['kafkaClusters'], (value) => ReplicatorKafkaCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replicationInfoList: map['replicationInfoList'] == null ? null : (ReplicatorReplicationInfoList.fromMap((map['replicationInfoList'] as Map).cast<String, dynamic>())).input(),
-      replicatorName: map['replicatorName'] == null ? null : (map['replicatorName'] as String).input(),
-      serviceExecutionRoleArn: map['serviceExecutionRoleArn'] == null ? null : (map['serviceExecutionRoleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      currentVersion: map['currentVersion'] == null ? null : ((map['currentVersion'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kafkaClusters: map['kafkaClusters'] == null ? null : ((pulumi.Input.decodeList<ReplicatorKafkaCluster>(map['kafkaClusters']!, (value) => ReplicatorKafkaCluster.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replicationInfoList: map['replicationInfoList'] == null ? null : ((ReplicatorReplicationInfoList.fromMap((map['replicationInfoList']! as Map).cast<String, dynamic>())).input()).input(),
+      replicatorName: map['replicatorName'] == null ? null : ((map['replicatorName'] as String).input()).input(),
+      serviceExecutionRoleArn: map['serviceExecutionRoleArn'] == null ? null : ((map['serviceExecutionRoleArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class NatIpCidrState {
 
   factory NatIpCidrState.fromMap(Map<String, dynamic> map) {
     return NatIpCidrState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId'] as String).input(),
-      natIpCidr: map['natIpCidr'] == null ? null : (map['natIpCidr'] as String).input(),
-      natIpCidrDescription: map['natIpCidrDescription'] == null ? null : (map['natIpCidrDescription'] as String).input(),
-      natIpCidrName: map['natIpCidrName'] == null ? null : (map['natIpCidrName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId']! as String).input(),
+      natIpCidr: map['natIpCidr'] == null ? null : (map['natIpCidr']! as String).input(),
+      natIpCidrDescription: map['natIpCidrDescription'] == null ? null : (map['natIpCidrDescription']! as String).input(),
+      natIpCidrName: map['natIpCidrName'] == null ? null : (map['natIpCidrName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

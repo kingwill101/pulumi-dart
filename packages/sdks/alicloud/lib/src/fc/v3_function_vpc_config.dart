@@ -30,9 +30,9 @@ class V3FunctionVpcConfig {
 
   factory V3FunctionVpcConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionVpcConfig(
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds']! as List).cast<String>()).input(),
     );
   }
 }

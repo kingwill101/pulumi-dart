@@ -44,11 +44,11 @@ class CipherGroupArgs {
 
   factory CipherGroupArgs.fromMap(Map<String, dynamic> map) {
     return CipherGroupArgs(
-      allows: map['allows'] == null ? null : ((map['allows'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      allows: map['allows'] == null ? null : ((map['allows']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
-      ordering: map['ordering'] == null ? null : (map['ordering'] as String).input(),
-      requires: map['requires'] == null ? null : ((map['requires'] as List).cast<String>()).input(),
+      ordering: map['ordering'] == null ? null : (map['ordering']! as String).input(),
+      requires: map['requires'] == null ? null : ((map['requires']! as List).cast<String>()).input(),
     );
   }
 }

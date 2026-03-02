@@ -46,12 +46,12 @@ class AzureDiskVolumeSourcePatch {
 
   factory AzureDiskVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return AzureDiskVolumeSourcePatch(
-      cachingMode: map['cachingMode'] == null ? null : (map['cachingMode'] as String).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
-      diskURI: map['diskURI'] == null ? null : (map['diskURI'] as String).input(),
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      cachingMode: map['cachingMode'] == null ? null : (map['cachingMode']! as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
+      diskURI: map['diskURI'] == null ? null : (map['diskURI']! as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

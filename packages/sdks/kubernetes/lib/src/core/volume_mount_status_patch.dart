@@ -36,10 +36,10 @@ class VolumeMountStatusPatch {
 
   factory VolumeMountStatusPatch.fromMap(Map<String, dynamic> map) {
     return VolumeMountStatusPatch(
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      recursiveReadOnly: map['recursiveReadOnly'] == null ? null : (map['recursiveReadOnly'] as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      recursiveReadOnly: map['recursiveReadOnly'] == null ? null : (map['recursiveReadOnly']! as String).input(),
     );
   }
 }

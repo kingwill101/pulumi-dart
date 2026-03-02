@@ -42,8 +42,8 @@ class ApplicationAccessScopeArgs {
   factory ApplicationAccessScopeArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationAccessScopeArgs(
       applicationArn: (map['applicationArn'] as String).input(),
-      authorizedTargets: map['authorizedTargets'] == null ? null : ((map['authorizedTargets'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      authorizedTargets: map['authorizedTargets'] == null ? null : (((map['authorizedTargets'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       scope: (map['scope'] as String).input(),
     );
   }

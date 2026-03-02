@@ -61,14 +61,14 @@ class GenericContainerResponse {
 
   factory GenericContainerResponse.fromMap(Map<String, dynamic> map) {
     return GenericContainerResponse(
-      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType'] as String).input(),
+      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType']! as String).input(),
       containerType: (map['containerType'] as String).input(),
-      extendedInformation: map['extendedInformation'] == null ? null : (GenericContainerExtendedInfoResponse.fromMap((map['extendedInformation'] as Map).cast<String, dynamic>())).input(),
-      fabricName: map['fabricName'] == null ? null : (map['fabricName'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus'] as String).input(),
-      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType'] as String).input(),
-      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus'] as String).input(),
+      extendedInformation: map['extendedInformation'] == null ? null : (GenericContainerExtendedInfoResponse.fromMap((map['extendedInformation']! as Map).cast<String, dynamic>())).input(),
+      fabricName: map['fabricName'] == null ? null : (map['fabricName']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus']! as String).input(),
+      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType']! as String).input(),
+      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus']! as String).input(),
     );
   }
 }

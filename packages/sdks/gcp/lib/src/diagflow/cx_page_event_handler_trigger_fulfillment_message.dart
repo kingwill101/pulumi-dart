@@ -82,14 +82,14 @@ class CxPageEventHandlerTriggerFulfillmentMessage {
 
   factory CxPageEventHandlerTriggerFulfillmentMessage.fromMap(Map<String, dynamic> map) {
     return CxPageEventHandlerTriggerFulfillmentMessage(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
-      conversationSuccess: map['conversationSuccess'] == null ? null : (CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess.fromMap((map['conversationSuccess'] as Map).cast<String, dynamic>())).input(),
-      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : (CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff'] as Map).cast<String, dynamic>())).input(),
-      outputAudioText: map['outputAudioText'] == null ? null : (CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText.fromMap((map['outputAudioText'] as Map).cast<String, dynamic>())).input(),
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
-      playAudio: map['playAudio'] == null ? null : (CxPageEventHandlerTriggerFulfillmentMessagePlayAudio.fromMap((map['playAudio'] as Map).cast<String, dynamic>())).input(),
-      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : (CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (CxPageEventHandlerTriggerFulfillmentMessageText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
+      conversationSuccess: map['conversationSuccess'] == null ? null : (CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess.fromMap((map['conversationSuccess']! as Map).cast<String, dynamic>())).input(),
+      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : (CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff']! as Map).cast<String, dynamic>())).input(),
+      outputAudioText: map['outputAudioText'] == null ? null : (CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText.fromMap((map['outputAudioText']! as Map).cast<String, dynamic>())).input(),
+      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
+      playAudio: map['playAudio'] == null ? null : (CxPageEventHandlerTriggerFulfillmentMessagePlayAudio.fromMap((map['playAudio']! as Map).cast<String, dynamic>())).input(),
+      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : (CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall']! as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (CxPageEventHandlerTriggerFulfillmentMessageText.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

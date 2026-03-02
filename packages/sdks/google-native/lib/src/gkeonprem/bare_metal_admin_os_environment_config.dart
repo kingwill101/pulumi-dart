@@ -21,7 +21,7 @@ class BareMetalAdminOsEnvironmentConfig {
 
   factory BareMetalAdminOsEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminOsEnvironmentConfig(
-      packageRepoExcluded: map['packageRepoExcluded'] == null ? null : (map['packageRepoExcluded'] as bool).input(),
+      packageRepoExcluded: map['packageRepoExcluded'] == null ? null : (map['packageRepoExcluded']! as bool).input(),
     );
   }
 }

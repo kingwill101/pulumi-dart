@@ -50,12 +50,12 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      properties: map['properties'] == null ? null : (NamespaceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      properties: map['properties'] == null ? null : (NamespaceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -110,22 +110,22 @@ class MetricAlertState {
 
   factory MetricAlertState.fromMap(Map<String, dynamic> map) {
     return MetricAlertState(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<MetricAlertAction>(map['actions'], (value) => MetricAlertAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      applicationInsightsWebTestLocationAvailabilityCriteria: map['applicationInsightsWebTestLocationAvailabilityCriteria'] == null ? null : (MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap((map['applicationInsightsWebTestLocationAvailabilityCriteria'] as Map).cast<String, dynamic>())).input(),
-      autoMitigate: map['autoMitigate'] == null ? null : (map['autoMitigate'] as bool).input(),
-      criterias: map['criterias'] == null ? null : (pulumi.Input.decodeList<MetricAlertCriteria>(map['criterias'], (value) => MetricAlertCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dynamicCriteria: map['dynamicCriteria'] == null ? null : (MetricAlertDynamicCriteria.fromMap((map['dynamicCriteria'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetResourceLocation: map['targetResourceLocation'] == null ? null : (map['targetResourceLocation'] as String).input(),
-      targetResourceType: map['targetResourceType'] == null ? null : (map['targetResourceType'] as String).input(),
-      windowSize: map['windowSize'] == null ? null : (map['windowSize'] as String).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<MetricAlertAction>(map['actions']!, (value) => MetricAlertAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationInsightsWebTestLocationAvailabilityCriteria: map['applicationInsightsWebTestLocationAvailabilityCriteria'] == null ? null : (MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap((map['applicationInsightsWebTestLocationAvailabilityCriteria']! as Map).cast<String, dynamic>())).input(),
+      autoMitigate: map['autoMitigate'] == null ? null : (map['autoMitigate']! as bool).input(),
+      criterias: map['criterias'] == null ? null : (pulumi.Input.decodeList<MetricAlertCriteria>(map['criterias']!, (value) => MetricAlertCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dynamicCriteria: map['dynamicCriteria'] == null ? null : (MetricAlertDynamicCriteria.fromMap((map['dynamicCriteria']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetResourceLocation: map['targetResourceLocation'] == null ? null : (map['targetResourceLocation']! as String).input(),
+      targetResourceType: map['targetResourceType'] == null ? null : (map['targetResourceType']! as String).input(),
+      windowSize: map['windowSize'] == null ? null : (map['windowSize']! as String).input(),
     );
   }
 }

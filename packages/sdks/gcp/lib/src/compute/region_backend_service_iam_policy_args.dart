@@ -45,10 +45,10 @@ class RegionBackendServiceIamPolicyArgs {
 
   factory RegionBackendServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceIamPolicyArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

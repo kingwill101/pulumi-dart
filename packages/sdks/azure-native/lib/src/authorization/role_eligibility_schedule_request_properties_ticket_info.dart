@@ -26,8 +26,8 @@ class RoleEligibilityScheduleRequestPropertiesTicketInfo {
 
   factory RoleEligibilityScheduleRequestPropertiesTicketInfo.fromMap(Map<String, dynamic> map) {
     return RoleEligibilityScheduleRequestPropertiesTicketInfo(
-      ticketNumber: map['ticketNumber'] == null ? null : (map['ticketNumber'] as String).input(),
-      ticketSystem: map['ticketSystem'] == null ? null : (map['ticketSystem'] as String).input(),
+      ticketNumber: map['ticketNumber'] == null ? null : (map['ticketNumber']! as String).input(),
+      ticketSystem: map['ticketSystem'] == null ? null : (map['ticketSystem']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class PartitionedPrefix {
 
   factory PartitionedPrefix.fromMap(Map<String, dynamic> map) {
     return PartitionedPrefix(
-      partitionDateSource: map['partitionDateSource'] == null ? null : (map['partitionDateSource'] as String).input(),
+      partitionDateSource: map['partitionDateSource'] == null ? null : (map['partitionDateSource']! as String).input(),
     );
   }
 }

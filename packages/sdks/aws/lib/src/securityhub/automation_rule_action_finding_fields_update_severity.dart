@@ -25,8 +25,8 @@ class AutomationRuleActionFindingFieldsUpdateSeverity {
 
   factory AutomationRuleActionFindingFieldsUpdateSeverity.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionFindingFieldsUpdateSeverity(
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      product: map['product'] == null ? null : (map['product'] as double).input(),
+      label: map['label'] == null ? null : ((map['label'] as String).input()).input(),
+      product: map['product'] == null ? null : ((map['product'] as double).input()).input(),
     );
   }
 }

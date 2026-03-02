@@ -98,21 +98,21 @@ class ProvisionedProductArgs {
 
   factory ProvisionedProductArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedProductArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
-      ignoreErrors: map['ignoreErrors'] == null ? null : (map['ignoreErrors'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationArns: map['notificationArns'] == null ? null : ((map['notificationArns'] as List).cast<String>()).input(),
-      pathId: map['pathId'] == null ? null : (map['pathId'] as String).input(),
-      pathName: map['pathName'] == null ? null : (map['pathName'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
-      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
-      provisioningArtifactId: map['provisioningArtifactId'] == null ? null : (map['provisioningArtifactId'] as String).input(),
-      provisioningArtifactName: map['provisioningArtifactName'] == null ? null : (map['provisioningArtifactName'] as String).input(),
-      provisioningParameters: map['provisioningParameters'] == null ? null : (pulumi.Input.decodeList<ProvisionedProductProvisioningParameter>(map['provisioningParameters'], (value) => ProvisionedProductProvisioningParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retainPhysicalResources: map['retainPhysicalResources'] == null ? null : (map['retainPhysicalResources'] as bool).input(),
-      stackSetProvisioningPreferences: map['stackSetProvisioningPreferences'] == null ? null : (ProvisionedProductStackSetProvisioningPreferences.fromMap((map['stackSetProvisioningPreferences'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
+      ignoreErrors: map['ignoreErrors'] == null ? null : ((map['ignoreErrors'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      notificationArns: map['notificationArns'] == null ? null : (((map['notificationArns'] as List).cast<String>()).input()).input(),
+      pathId: map['pathId'] == null ? null : ((map['pathId'] as String).input()).input(),
+      pathName: map['pathName'] == null ? null : ((map['pathName'] as String).input()).input(),
+      productId: map['productId'] == null ? null : ((map['productId'] as String).input()).input(),
+      productName: map['productName'] == null ? null : ((map['productName'] as String).input()).input(),
+      provisioningArtifactId: map['provisioningArtifactId'] == null ? null : ((map['provisioningArtifactId'] as String).input()).input(),
+      provisioningArtifactName: map['provisioningArtifactName'] == null ? null : ((map['provisioningArtifactName'] as String).input()).input(),
+      provisioningParameters: map['provisioningParameters'] == null ? null : ((pulumi.Input.decodeList<ProvisionedProductProvisioningParameter>(map['provisioningParameters']!, (value) => ProvisionedProductProvisioningParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retainPhysicalResources: map['retainPhysicalResources'] == null ? null : ((map['retainPhysicalResources'] as bool).input()).input(),
+      stackSetProvisioningPreferences: map['stackSetProvisioningPreferences'] == null ? null : ((ProvisionedProductStackSetProvisioningPreferences.fromMap((map['stackSetProvisioningPreferences']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

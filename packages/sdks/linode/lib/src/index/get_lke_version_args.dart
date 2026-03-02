@@ -30,7 +30,7 @@ class GetLkeVersionArgs {
   factory GetLkeVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetLkeVersionArgs(
       id: (map['id'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

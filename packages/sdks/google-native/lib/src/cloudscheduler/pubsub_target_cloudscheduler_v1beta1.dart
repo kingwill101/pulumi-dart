@@ -31,8 +31,8 @@ class PubsubTargetCloudschedulerV1beta1 {
 
   factory PubsubTargetCloudschedulerV1beta1.fromMap(Map<String, dynamic> map) {
     return PubsubTargetCloudschedulerV1beta1(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
+      attributes: map['attributes'] == null ? null : ((map['attributes']! as Map).cast<String, String>()).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
       topicName: (map['topicName'] as String).input(),
     );
   }

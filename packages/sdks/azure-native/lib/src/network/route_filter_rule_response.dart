@@ -59,9 +59,9 @@ class RouteFilterRuleResponse {
       access: (map['access'] as String).input(),
       communities: ((map['communities'] as List).cast<String>()).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       routeFilterRuleType: (map['routeFilterRuleType'] as String).input(),
     );

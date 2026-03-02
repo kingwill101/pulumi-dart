@@ -22,7 +22,7 @@ class CreateManagementGroupDetails {
 
   factory CreateManagementGroupDetails.fromMap(Map<String, dynamic> map) {
     return CreateManagementGroupDetails(
-      parent: map['parent'] == null ? null : (CreateParentGroupInfo.fromMap((map['parent'] as Map).cast<String, dynamic>())).input(),
+      parent: map['parent'] == null ? null : (CreateParentGroupInfo.fromMap((map['parent']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

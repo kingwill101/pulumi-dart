@@ -28,7 +28,7 @@ class LinuxVirtualMachineScaleSetTerminationNotification {
   factory LinuxVirtualMachineScaleSetTerminationNotification.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineScaleSetTerminationNotification(
       enabled: (map['enabled'] as bool).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

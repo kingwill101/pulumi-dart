@@ -22,7 +22,7 @@ class GoogleCloudIdentitytoolkitAdminV2MonitoringConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2MonitoringConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2MonitoringConfig(
-      requestLogging: map['requestLogging'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2RequestLogging.fromMap((map['requestLogging'] as Map).cast<String, dynamic>())).input(),
+      requestLogging: map['requestLogging'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2RequestLogging.fromMap((map['requestLogging']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

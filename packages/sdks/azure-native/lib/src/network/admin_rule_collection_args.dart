@@ -52,10 +52,10 @@ class AdminRuleCollectionArgs {
     return AdminRuleCollectionArgs(
       appliesToGroups: (pulumi.Input.decodeList<NetworkManagerSecurityGroupItem>(map['appliesToGroups'], (value) => NetworkManagerSecurityGroupItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
       configurationName: (map['configurationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleCollectionName: map['ruleCollectionName'] == null ? null : (map['ruleCollectionName'] as String).input(),
+      ruleCollectionName: map['ruleCollectionName'] == null ? null : (map['ruleCollectionName']! as String).input(),
     );
   }
 }

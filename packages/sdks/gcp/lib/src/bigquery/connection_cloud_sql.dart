@@ -47,7 +47,7 @@ class ConnectionCloudSql {
       credential: (ConnectionCloudSqlCredential.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
       database: (map['database'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

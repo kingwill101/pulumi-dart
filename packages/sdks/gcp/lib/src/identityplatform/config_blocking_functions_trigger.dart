@@ -33,7 +33,7 @@ class ConfigBlockingFunctionsTrigger {
     return ConfigBlockingFunctionsTrigger(
       eventType: (map['eventType'] as String).input(),
       functionUri: (map['functionUri'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

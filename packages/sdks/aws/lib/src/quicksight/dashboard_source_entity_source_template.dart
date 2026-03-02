@@ -27,7 +27,7 @@ class DashboardSourceEntitySourceTemplate {
   factory DashboardSourceEntitySourceTemplate.fromMap(Map<String, dynamic> map) {
     return DashboardSourceEntitySourceTemplate(
       arn: (map['arn'] as String).input(),
-      dataSetReferences: (pulumi.Input.decodeList<DashboardSourceEntitySourceTemplateDataSetReference>(map['dataSetReferences'], (value) => DashboardSourceEntitySourceTemplateDataSetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSetReferences: (pulumi.Input.decodeList<DashboardSourceEntitySourceTemplateDataSetReference>(map['dataSetReferences']!, (value) => DashboardSourceEntitySourceTemplateDataSetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

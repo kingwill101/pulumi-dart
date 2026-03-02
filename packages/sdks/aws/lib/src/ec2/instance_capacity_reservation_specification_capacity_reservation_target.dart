@@ -25,8 +25,8 @@ class InstanceCapacityReservationSpecificationCapacityReservationTarget {
 
   factory InstanceCapacityReservationSpecificationCapacityReservationTarget.fromMap(Map<String, dynamic> map) {
     return InstanceCapacityReservationSpecificationCapacityReservationTarget(
-      capacityReservationId: map['capacityReservationId'] == null ? null : (map['capacityReservationId'] as String).input(),
-      capacityReservationResourceGroupArn: map['capacityReservationResourceGroupArn'] == null ? null : (map['capacityReservationResourceGroupArn'] as String).input(),
+      capacityReservationId: map['capacityReservationId'] == null ? null : ((map['capacityReservationId'] as String).input()).input(),
+      capacityReservationResourceGroupArn: map['capacityReservationResourceGroupArn'] == null ? null : ((map['capacityReservationResourceGroupArn'] as String).input()).input(),
     );
   }
 }

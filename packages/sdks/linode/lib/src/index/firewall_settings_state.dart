@@ -22,7 +22,7 @@ class FirewallSettingsState {
 
   factory FirewallSettingsState.fromMap(Map<String, dynamic> map) {
     return FirewallSettingsState(
-      defaultFirewallIds: map['defaultFirewallIds'] == null ? null : (FirewallSettingsDefaultFirewallIds.fromMap((map['defaultFirewallIds'] as Map).cast<String, dynamic>())).input(),
+      defaultFirewallIds: map['defaultFirewallIds'] == null ? null : (FirewallSettingsDefaultFirewallIds.fromMap((map['defaultFirewallIds']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class BareMetalAdminPortConfig {
 
   factory BareMetalAdminPortConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminPortConfig(
-      controlPlaneLoadBalancerPort: map['controlPlaneLoadBalancerPort'] == null ? null : (map['controlPlaneLoadBalancerPort'] as int).input(),
+      controlPlaneLoadBalancerPort: map['controlPlaneLoadBalancerPort'] == null ? null : (map['controlPlaneLoadBalancerPort']! as int).input(),
     );
   }
 }

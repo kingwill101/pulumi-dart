@@ -58,14 +58,14 @@ class RoleManagementPolicyNotificationRuleResponse {
 
   factory RoleManagementPolicyNotificationRuleResponse.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyNotificationRuleResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      isDefaultRecipientsEnabled: map['isDefaultRecipientsEnabled'] == null ? null : (map['isDefaultRecipientsEnabled'] as bool).input(),
-      notificationLevel: map['notificationLevel'] == null ? null : (map['notificationLevel'] as String).input(),
-      notificationRecipients: map['notificationRecipients'] == null ? null : ((map['notificationRecipients'] as List).cast<String>()).input(),
-      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
-      recipientType: map['recipientType'] == null ? null : (map['recipientType'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      isDefaultRecipientsEnabled: map['isDefaultRecipientsEnabled'] == null ? null : (map['isDefaultRecipientsEnabled']! as bool).input(),
+      notificationLevel: map['notificationLevel'] == null ? null : (map['notificationLevel']! as String).input(),
+      notificationRecipients: map['notificationRecipients'] == null ? null : ((map['notificationRecipients']! as List).cast<String>()).input(),
+      notificationType: map['notificationType'] == null ? null : (map['notificationType']! as String).input(),
+      recipientType: map['recipientType'] == null ? null : (map['recipientType']! as String).input(),
       ruleType: (map['ruleType'] as String).input(),
-      target: map['target'] == null ? null : (RoleManagementPolicyRuleTargetResponse.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (RoleManagementPolicyRuleTargetResponse.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

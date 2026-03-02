@@ -36,9 +36,9 @@ class CustomRolloutStatusManifestCheckinStatus {
 
   factory CustomRolloutStatusManifestCheckinStatus.fromMap(Map<String, dynamic> map) {
     return CustomRolloutStatusManifestCheckinStatus(
-      commitId: map['commitId'] == null ? null : (map['commitId'] as String).input(),
+      commitId: map['commitId'] == null ? null : (map['commitId']! as String).input(),
       isCheckedIn: (map['isCheckedIn'] as bool).input(),
-      pullRequest: map['pullRequest'] == null ? null : (map['pullRequest'] as String).input(),
+      pullRequest: map['pullRequest'] == null ? null : (map['pullRequest']! as String).input(),
       statusMessage: (map['statusMessage'] as String).input(),
     );
   }

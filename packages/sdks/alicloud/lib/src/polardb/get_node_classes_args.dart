@@ -59,14 +59,14 @@ class GetNodeClassesArgs {
 
   factory GetNodeClassesArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeClassesArgs(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      dbNodeClass: map['dbNodeClass'] == null ? null : (map['dbNodeClass'] as String).input(),
-      dbType: map['dbType'] == null ? null : (map['dbType'] as String).input(),
-      dbVersion: map['dbVersion'] == null ? null : (map['dbVersion'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      dbNodeClass: map['dbNodeClass'] == null ? null : (map['dbNodeClass']! as String).input(),
+      dbType: map['dbType'] == null ? null : (map['dbType']! as String).input(),
+      dbVersion: map['dbVersion'] == null ? null : (map['dbVersion']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       payType: (map['payType'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

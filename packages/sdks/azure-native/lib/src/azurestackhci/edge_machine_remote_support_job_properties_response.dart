@@ -80,7 +80,7 @@ class EdgeMachineRemoteSupportJobPropertiesResponse {
   factory EdgeMachineRemoteSupportJobPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EdgeMachineRemoteSupportJobPropertiesResponse(
       accessLevel: (map['accessLevel'] as String).input(),
-      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode'] as String).input(),
+      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode']! as String).input(),
       endTimeUtc: (map['endTimeUtc'] as String).input(),
       error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
       expirationTimestamp: (map['expirationTimestamp'] as String).input(),

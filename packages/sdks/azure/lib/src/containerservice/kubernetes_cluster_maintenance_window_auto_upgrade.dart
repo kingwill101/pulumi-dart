@@ -67,16 +67,16 @@ class KubernetesClusterMaintenanceWindowAutoUpgrade {
 
   factory KubernetesClusterMaintenanceWindowAutoUpgrade.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterMaintenanceWindowAutoUpgrade(
-      dayOfMonth: map['dayOfMonth'] == null ? null : (map['dayOfMonth'] as int).input(),
-      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek'] as String).input(),
+      dayOfMonth: map['dayOfMonth'] == null ? null : (map['dayOfMonth']! as int).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek']! as String).input(),
       duration: (map['duration'] as int).input(),
       frequency: (map['frequency'] as String).input(),
       interval: (map['interval'] as int).input(),
-      notAlloweds: map['notAlloweds'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterMaintenanceWindowAutoUpgradeNotAllowed>(map['notAlloweds'], (value) => KubernetesClusterMaintenanceWindowAutoUpgradeNotAllowed.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      utcOffset: map['utcOffset'] == null ? null : (map['utcOffset'] as String).input(),
-      weekIndex: map['weekIndex'] == null ? null : (map['weekIndex'] as String).input(),
+      notAlloweds: map['notAlloweds'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterMaintenanceWindowAutoUpgradeNotAllowed>(map['notAlloweds']!, (value) => KubernetesClusterMaintenanceWindowAutoUpgradeNotAllowed.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      utcOffset: map['utcOffset'] == null ? null : (map['utcOffset']! as String).input(),
+      weekIndex: map['weekIndex'] == null ? null : (map['weekIndex']! as String).input(),
     );
   }
 }

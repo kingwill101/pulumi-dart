@@ -59,12 +59,12 @@ class AiReasoningEngineSpec {
 
   factory AiReasoningEngineSpec.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpec(
-      agentFramework: map['agentFramework'] == null ? null : (map['agentFramework'] as String).input(),
-      classMethods: map['classMethods'] == null ? null : (map['classMethods'] as String).input(),
-      deploymentSpec: map['deploymentSpec'] == null ? null : (AiReasoningEngineSpecDeploymentSpec.fromMap((map['deploymentSpec'] as Map).cast<String, dynamic>())).input(),
-      packageSpec: map['packageSpec'] == null ? null : (AiReasoningEngineSpecPackageSpec.fromMap((map['packageSpec'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      sourceCodeSpec: map['sourceCodeSpec'] == null ? null : (AiReasoningEngineSpecSourceCodeSpec.fromMap((map['sourceCodeSpec'] as Map).cast<String, dynamic>())).input(),
+      agentFramework: map['agentFramework'] == null ? null : (map['agentFramework']! as String).input(),
+      classMethods: map['classMethods'] == null ? null : (map['classMethods']! as String).input(),
+      deploymentSpec: map['deploymentSpec'] == null ? null : (AiReasoningEngineSpecDeploymentSpec.fromMap((map['deploymentSpec']! as Map).cast<String, dynamic>())).input(),
+      packageSpec: map['packageSpec'] == null ? null : (AiReasoningEngineSpecPackageSpec.fromMap((map['packageSpec']! as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      sourceCodeSpec: map['sourceCodeSpec'] == null ? null : (AiReasoningEngineSpecSourceCodeSpec.fromMap((map['sourceCodeSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

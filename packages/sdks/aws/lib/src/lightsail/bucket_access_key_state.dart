@@ -46,12 +46,12 @@ class BucketAccessKeyState {
 
   factory BucketAccessKeyState.fromMap(Map<String, dynamic> map) {
     return BucketAccessKeyState(
-      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId'] as String).input(),
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accessKeyId: map['accessKeyId'] == null ? null : ((map['accessKeyId'] as String).input()).input(),
+      bucketName: map['bucketName'] == null ? null : ((map['bucketName'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : ((map['secretAccessKey'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

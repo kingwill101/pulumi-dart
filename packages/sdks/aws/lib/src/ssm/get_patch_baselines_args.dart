@@ -35,9 +35,9 @@ class GetPatchBaselinesArgs {
 
   factory GetPatchBaselinesArgs.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselinesArgs(
-      defaultBaselines: map['defaultBaselines'] == null ? null : (map['defaultBaselines'] as bool).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetPatchBaselinesFilter>(map['filters'], (value) => GetPatchBaselinesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      defaultBaselines: map['defaultBaselines'] == null ? null : ((map['defaultBaselines'] as bool).input()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetPatchBaselinesFilter>(map['filters']!, (value) => GetPatchBaselinesFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

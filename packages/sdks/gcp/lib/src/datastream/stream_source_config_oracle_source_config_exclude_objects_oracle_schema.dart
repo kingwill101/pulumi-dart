@@ -27,7 +27,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema {
 
   factory StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema(
-      oracleTables: map['oracleTables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable>(map['oracleTables'], (value) => StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oracleTables: map['oracleTables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable>(map['oracleTables']!, (value) => StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
       schema: (map['schema'] as String).input(),
     );
   }

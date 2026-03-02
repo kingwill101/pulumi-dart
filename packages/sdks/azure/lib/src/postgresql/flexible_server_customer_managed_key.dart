@@ -41,10 +41,10 @@ class FlexibleServerCustomerManagedKey {
 
   factory FlexibleServerCustomerManagedKey.fromMap(Map<String, dynamic> map) {
     return FlexibleServerCustomerManagedKey(
-      geoBackupKeyVaultKeyId: map['geoBackupKeyVaultKeyId'] == null ? null : (map['geoBackupKeyVaultKeyId'] as String).input(),
-      geoBackupUserAssignedIdentityId: map['geoBackupUserAssignedIdentityId'] == null ? null : (map['geoBackupUserAssignedIdentityId'] as String).input(),
+      geoBackupKeyVaultKeyId: map['geoBackupKeyVaultKeyId'] == null ? null : (map['geoBackupKeyVaultKeyId']! as String).input(),
+      geoBackupUserAssignedIdentityId: map['geoBackupUserAssignedIdentityId'] == null ? null : (map['geoBackupUserAssignedIdentityId']! as String).input(),
       keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
-      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : (map['primaryUserAssignedIdentityId'] as String).input(),
+      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : (map['primaryUserAssignedIdentityId']! as String).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class EnterpriseAuthorityTemplateState {
 
   factory EnterpriseAuthorityTemplateState.fromMap(Map<String, dynamic> map) {
     return EnterpriseAuthorityTemplateState(
-      authorityTemplateId: map['authorityTemplateId'] == null ? null : (map['authorityTemplateId'] as int).input(),
-      authorityTemplateName: map['authorityTemplateName'] == null ? null : (map['authorityTemplateName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      tid: map['tid'] == null ? null : (map['tid'] as int).input(),
+      authorityTemplateId: map['authorityTemplateId'] == null ? null : (map['authorityTemplateId']! as int).input(),
+      authorityTemplateName: map['authorityTemplateName'] == null ? null : (map['authorityTemplateName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      tid: map['tid'] == null ? null : (map['tid']! as int).input(),
     );
   }
 }

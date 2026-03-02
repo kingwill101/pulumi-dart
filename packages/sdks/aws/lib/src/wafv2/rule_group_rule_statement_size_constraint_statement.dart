@@ -40,9 +40,9 @@ class RuleGroupRuleStatementSizeConstraintStatement {
   factory RuleGroupRuleStatementSizeConstraintStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSizeConstraintStatement(
       comparisonOperator: (map['comparisonOperator'] as String).input(),
-      fieldToMatch: map['fieldToMatch'] == null ? null : (RuleGroupRuleStatementSizeConstraintStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((RuleGroupRuleStatementSizeConstraintStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
       size: (map['size'] as int).input(),
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementSizeConstraintStatementTextTransformation>(map['textTransformations'], (value) => RuleGroupRuleStatementSizeConstraintStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementSizeConstraintStatementTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementSizeConstraintStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

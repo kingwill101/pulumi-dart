@@ -31,9 +31,9 @@ class SQLStorageSettings {
 
   factory SQLStorageSettings.fromMap(Map<String, dynamic> map) {
     return SQLStorageSettings(
-      defaultFilePath: map['defaultFilePath'] == null ? null : (map['defaultFilePath'] as String).input(),
-      luns: map['luns'] == null ? null : ((map['luns'] as List).cast<int>()).input(),
-      useStoragePool: map['useStoragePool'] == null ? null : (map['useStoragePool'] as bool).input(),
+      defaultFilePath: map['defaultFilePath'] == null ? null : (map['defaultFilePath']! as String).input(),
+      luns: map['luns'] == null ? null : ((map['luns']! as List).cast<int>()).input(),
+      useStoragePool: map['useStoragePool'] == null ? null : (map['useStoragePool']! as bool).input(),
     );
   }
 }

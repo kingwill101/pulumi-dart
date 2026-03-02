@@ -33,9 +33,9 @@ class DelegationSetState {
 
   factory DelegationSetState.fromMap(Map<String, dynamic> map) {
     return DelegationSetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      nameServers: map['nameServers'] == null ? null : ((map['nameServers'] as List).cast<String>()).input(),
-      referenceName: map['referenceName'] == null ? null : (map['referenceName'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      nameServers: map['nameServers'] == null ? null : (((map['nameServers'] as List).cast<String>()).input()).input(),
+      referenceName: map['referenceName'] == null ? null : ((map['referenceName'] as String).input()).input(),
     );
   }
 }

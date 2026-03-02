@@ -32,9 +32,9 @@ class PatchDeploymentPatchConfigWindowsUpdate {
 
   factory PatchDeploymentPatchConfigWindowsUpdate.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentPatchConfigWindowsUpdate(
-      classifications: map['classifications'] == null ? null : ((map['classifications'] as List).cast<String>()).input(),
-      excludes: map['excludes'] == null ? null : ((map['excludes'] as List).cast<String>()).input(),
-      exclusivePatches: map['exclusivePatches'] == null ? null : ((map['exclusivePatches'] as List).cast<String>()).input(),
+      classifications: map['classifications'] == null ? null : ((map['classifications']! as List).cast<String>()).input(),
+      excludes: map['excludes'] == null ? null : ((map['excludes']! as List).cast<String>()).input(),
+      exclusivePatches: map['exclusivePatches'] == null ? null : ((map['exclusivePatches']! as List).cast<String>()).input(),
     );
   }
 }

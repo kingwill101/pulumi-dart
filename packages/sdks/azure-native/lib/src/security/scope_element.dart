@@ -21,7 +21,7 @@ class ScopeElement {
 
   factory ScopeElement.fromMap(Map<String, dynamic> map) {
     return ScopeElement(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
     );
   }
 }

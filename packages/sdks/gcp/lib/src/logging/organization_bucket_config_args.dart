@@ -57,12 +57,12 @@ class OrganizationBucketConfigArgs {
   factory OrganizationBucketConfigArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationBucketConfigArgs(
       bucketId: (map['bucketId'] as String).input(),
-      cmekSettings: map['cmekSettings'] == null ? null : (OrganizationBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<OrganizationBucketConfigIndexConfig>(map['indexConfigs'], (value) => OrganizationBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (OrganizationBucketConfigCmekSettings.fromMap((map['cmekSettings']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<OrganizationBucketConfigIndexConfig>(map['indexConfigs']!, (value) => OrganizationBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       location: (map['location'] as String).input(),
       organization: (map['organization'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
     );
   }
 }

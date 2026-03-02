@@ -26,8 +26,8 @@ class ChannelInputAttachmentInputSettingsNetworkInputSettings {
 
   factory ChannelInputAttachmentInputSettingsNetworkInputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsNetworkInputSettings(
-      hlsInputSettings: map['hlsInputSettings'] == null ? null : (ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings.fromMap((map['hlsInputSettings'] as Map).cast<String, dynamic>())).input(),
-      serverValidation: map['serverValidation'] == null ? null : (map['serverValidation'] as String).input(),
+      hlsInputSettings: map['hlsInputSettings'] == null ? null : ((ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings.fromMap((map['hlsInputSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      serverValidation: map['serverValidation'] == null ? null : ((map['serverValidation'] as String).input()).input(),
     );
   }
 }

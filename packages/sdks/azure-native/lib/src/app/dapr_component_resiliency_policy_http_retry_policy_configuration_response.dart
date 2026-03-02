@@ -27,8 +27,8 @@ class DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse {
 
   factory DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse(
-      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries'] as int).input(),
-      retryBackOff: map['retryBackOff'] == null ? null : (DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse.fromMap((map['retryBackOff'] as Map).cast<String, dynamic>())).input(),
+      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries']! as int).input(),
+      retryBackOff: map['retryBackOff'] == null ? null : (DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse.fromMap((map['retryBackOff']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

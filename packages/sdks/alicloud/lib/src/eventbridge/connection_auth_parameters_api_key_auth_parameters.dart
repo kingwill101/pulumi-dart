@@ -25,8 +25,8 @@ class ConnectionAuthParametersApiKeyAuthParameters {
 
   factory ConnectionAuthParametersApiKeyAuthParameters.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthParametersApiKeyAuthParameters(
-      apiKeyName: map['apiKeyName'] == null ? null : (map['apiKeyName'] as String).input(),
-      apiKeyValue: map['apiKeyValue'] == null ? null : (map['apiKeyValue'] as String).input(),
+      apiKeyName: map['apiKeyName'] == null ? null : (map['apiKeyName']! as String).input(),
+      apiKeyValue: map['apiKeyValue'] == null ? null : (map['apiKeyValue']! as String).input(),
     );
   }
 }

@@ -68,16 +68,16 @@ class FileUploadState {
 
   factory FileUploadState.fromMap(Map<String, dynamic> map) {
     return FileUploadState(
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as String).input(),
-      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
-      iothubId: map['iothubId'] == null ? null : (map['iothubId'] as String).input(),
-      lockDuration: map['lockDuration'] == null ? null : (map['lockDuration'] as String).input(),
-      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount'] as int).input(),
-      notificationsEnabled: map['notificationsEnabled'] == null ? null : (map['notificationsEnabled'] as bool).input(),
-      sasTtl: map['sasTtl'] == null ? null : (map['sasTtl'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId']! as String).input(),
+      iothubId: map['iothubId'] == null ? null : (map['iothubId']! as String).input(),
+      lockDuration: map['lockDuration'] == null ? null : (map['lockDuration']! as String).input(),
+      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount']! as int).input(),
+      notificationsEnabled: map['notificationsEnabled'] == null ? null : (map['notificationsEnabled']! as bool).input(),
+      sasTtl: map['sasTtl'] == null ? null : (map['sasTtl']! as String).input(),
     );
   }
 }

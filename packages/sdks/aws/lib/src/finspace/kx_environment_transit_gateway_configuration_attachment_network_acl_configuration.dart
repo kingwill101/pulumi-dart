@@ -48,8 +48,8 @@ class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration 
   factory KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration.fromMap(Map<String, dynamic> map) {
     return KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration(
       cidrBlock: (map['cidrBlock'] as String).input(),
-      icmpTypeCode: map['icmpTypeCode'] == null ? null : (KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationIcmpTypeCode.fromMap((map['icmpTypeCode'] as Map).cast<String, dynamic>())).input(),
-      portRange: map['portRange'] == null ? null : (KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange.fromMap((map['portRange'] as Map).cast<String, dynamic>())).input(),
+      icmpTypeCode: map['icmpTypeCode'] == null ? null : ((KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationIcmpTypeCode.fromMap((map['icmpTypeCode']! as Map).cast<String, dynamic>())).input()).input(),
+      portRange: map['portRange'] == null ? null : ((KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange.fromMap((map['portRange']! as Map).cast<String, dynamic>())).input()).input(),
       protocol: (map['protocol'] as String).input(),
       ruleAction: (map['ruleAction'] as String).input(),
       ruleNumber: (map['ruleNumber'] as int).input(),

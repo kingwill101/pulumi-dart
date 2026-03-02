@@ -20,7 +20,7 @@ class WatchlistEntityPopulationMechanism {
 
   factory WatchlistEntityPopulationMechanism.fromMap(Map<String, dynamic> map) {
     return WatchlistEntityPopulationMechanism(
-      manual: map['manual'] == null ? null : ((map['manual'] as Map).cast<String, dynamic>()).input(),
+      manual: map['manual'] == null ? null : ((map['manual']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

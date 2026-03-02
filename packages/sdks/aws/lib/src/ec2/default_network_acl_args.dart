@@ -54,11 +54,11 @@ class DefaultNetworkAclArgs {
   factory DefaultNetworkAclArgs.fromMap(Map<String, dynamic> map) {
     return DefaultNetworkAclArgs(
       defaultNetworkAclId: (map['defaultNetworkAclId'] as String).input(),
-      egress: map['egress'] == null ? null : (pulumi.Input.decodeList<DefaultNetworkAclEgress>(map['egress'], (value) => DefaultNetworkAclEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<DefaultNetworkAclIngress>(map['ingress'], (value) => DefaultNetworkAclIngress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      egress: map['egress'] == null ? null : ((pulumi.Input.decodeList<DefaultNetworkAclEgress>(map['egress']!, (value) => DefaultNetworkAclEgress.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      ingress: map['ingress'] == null ? null : ((pulumi.Input.decodeList<DefaultNetworkAclIngress>(map['ingress']!, (value) => DefaultNetworkAclIngress.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

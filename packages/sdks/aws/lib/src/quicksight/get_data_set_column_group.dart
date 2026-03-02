@@ -20,7 +20,7 @@ class GetDataSetColumnGroup {
 
   factory GetDataSetColumnGroup.fromMap(Map<String, dynamic> map) {
     return GetDataSetColumnGroup(
-      geoSpatialColumnGroups: (pulumi.Input.decodeList<GetDataSetColumnGroupGeoSpatialColumnGroup>(map['geoSpatialColumnGroups'], (value) => GetDataSetColumnGroupGeoSpatialColumnGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      geoSpatialColumnGroups: (pulumi.Input.decodeList<GetDataSetColumnGroupGeoSpatialColumnGroup>(map['geoSpatialColumnGroups']!, (value) => GetDataSetColumnGroupGeoSpatialColumnGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class OptInCondition {
 
   factory OptInCondition.fromMap(Map<String, dynamic> map) {
     return OptInCondition(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      expression: map['expression'] == null ? null : ((map['expression'] as String).input()).input(),
     );
   }
 }

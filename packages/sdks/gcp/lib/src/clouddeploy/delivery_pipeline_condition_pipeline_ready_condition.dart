@@ -25,8 +25,8 @@ class DeliveryPipelineConditionPipelineReadyCondition {
 
   factory DeliveryPipelineConditionPipelineReadyCondition.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineConditionPipelineReadyCondition(
-      status: map['status'] == null ? null : (map['status'] as bool).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as bool).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

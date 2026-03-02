@@ -26,8 +26,8 @@ class StorageConfigurationResponse {
 
   factory StorageConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return StorageConfigurationResponse(
-      fileSystemName: map['fileSystemName'] == null ? null : (map['fileSystemName'] as String).input(),
-      storageResourceId: map['storageResourceId'] == null ? null : (map['storageResourceId'] as String).input(),
+      fileSystemName: map['fileSystemName'] == null ? null : (map['fileSystemName']! as String).input(),
+      storageResourceId: map['storageResourceId'] == null ? null : (map['storageResourceId']! as String).input(),
     );
   }
 }

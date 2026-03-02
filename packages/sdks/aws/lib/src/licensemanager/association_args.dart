@@ -35,7 +35,7 @@ class AssociationArgs {
   factory AssociationArgs.fromMap(Map<String, dynamic> map) {
     return AssociationArgs(
       licenseConfigurationArn: (map['licenseConfigurationArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceArn: (map['resourceArn'] as String).input(),
     );
   }

@@ -81,20 +81,20 @@ class GetEnterpriseInstancesResult {
 
   factory GetEnterpriseInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseInstancesResult(
-      envType: map['envType'] == null ? null : map['envType'] as String,
+      envType: map['envType'] == null ? null : map['envType']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceAliasRegex: map['instanceAliasRegex'] == null ? null : map['instanceAliasRegex'] as String,
-      instanceSource: map['instanceSource'] == null ? null : map['instanceSource'] as String,
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
+      instanceAliasRegex: map['instanceAliasRegex'] == null ? null : map['instanceAliasRegex']! as String,
+      instanceSource: map['instanceSource'] == null ? null : map['instanceSource']! as String,
+      instanceType: map['instanceType'] == null ? null : map['instanceType']! as String,
       instances: pulumi.Input.decodeList<GetEnterpriseInstancesInstance>(map['instances'], (value) => GetEnterpriseInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      netType: map['netType'] == null ? null : map['netType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      searchKey: map['searchKey'] == null ? null : map['searchKey'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tid: map['tid'] == null ? null : map['tid'] as int,
+      netType: map['netType'] == null ? null : map['netType']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      searchKey: map['searchKey'] == null ? null : map['searchKey']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tid: map['tid'] == null ? null : map['tid']! as int,
     );
   }
 }

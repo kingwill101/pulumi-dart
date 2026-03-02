@@ -67,13 +67,13 @@ class ElasticSanArgs {
   factory ElasticSanArgs.fromMap(Map<String, dynamic> map) {
     return ElasticSanArgs(
       baseSizeInTib: (map['baseSizeInTib'] as int).input(),
-      extendedSizeInTib: map['extendedSizeInTib'] == null ? null : (map['extendedSizeInTib'] as int).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      extendedSizeInTib: map['extendedSizeInTib'] == null ? null : (map['extendedSizeInTib']! as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (ElasticSanSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

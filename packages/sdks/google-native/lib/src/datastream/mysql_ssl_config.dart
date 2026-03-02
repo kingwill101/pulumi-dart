@@ -31,9 +31,9 @@ class MysqlSslConfig {
 
   factory MysqlSslConfig.fromMap(Map<String, dynamic> map) {
     return MysqlSslConfig(
-      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate'] as String).input(),
-      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
+      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate']! as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate']! as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
     );
   }
 }

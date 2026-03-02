@@ -46,12 +46,12 @@ class GatewayVcoRouteState {
 
   factory GatewayVcoRouteState.fromMap(Map<String, dynamic> map) {
     return GatewayVcoRouteState(
-      nextHop: map['nextHop'] == null ? null : (map['nextHop'] as String).input(),
-      overlayMode: map['overlayMode'] == null ? null : (map['overlayMode'] as String).input(),
-      routeDest: map['routeDest'] == null ? null : (map['routeDest'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpnConnectionId: map['vpnConnectionId'] == null ? null : (map['vpnConnectionId'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      nextHop: map['nextHop'] == null ? null : (map['nextHop']! as String).input(),
+      overlayMode: map['overlayMode'] == null ? null : (map['overlayMode']! as String).input(),
+      routeDest: map['routeDest'] == null ? null : (map['routeDest']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpnConnectionId: map['vpnConnectionId'] == null ? null : (map['vpnConnectionId']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

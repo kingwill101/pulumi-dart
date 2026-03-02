@@ -48,10 +48,10 @@ class GetSecretsSecret {
 
   factory GetSecretsSecret.fromMap(Map<String, dynamic> map) {
     return GetSecretsSecret(
-      context: map['context'] == null ? null : ((map['context'] as Map).cast<String, String>()).input(),
-      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : (map['encryptionAlgorithm'] as String).input(),
-      grantTokens: map['grantTokens'] == null ? null : ((map['grantTokens'] as List).cast<String>()).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      context: map['context'] == null ? null : (((map['context'] as Map).cast<String, String>()).input()).input(),
+      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : ((map['encryptionAlgorithm'] as String).input()).input(),
+      grantTokens: map['grantTokens'] == null ? null : (((map['grantTokens'] as List).cast<String>()).input()).input(),
+      keyId: map['keyId'] == null ? null : ((map['keyId'] as String).input()).input(),
       name: (map['name'] as String).input(),
       payload: (map['payload'] as String).input(),
     );

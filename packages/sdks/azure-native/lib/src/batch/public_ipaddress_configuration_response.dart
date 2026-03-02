@@ -26,8 +26,8 @@ class PublicIPAddressConfigurationResponse {
 
   factory PublicIPAddressConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressConfigurationResponse(
-      ipAddressIds: map['ipAddressIds'] == null ? null : ((map['ipAddressIds'] as List).cast<String>()).input(),
-      provision: map['provision'] == null ? null : (map['provision'] as String).input(),
+      ipAddressIds: map['ipAddressIds'] == null ? null : ((map['ipAddressIds']! as List).cast<String>()).input(),
+      provision: map['provision'] == null ? null : (map['provision']! as String).input(),
     );
   }
 }

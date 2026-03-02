@@ -30,8 +30,8 @@ class ClusterV2ManagerDirectoryService {
 
   factory ClusterV2ManagerDirectoryService.fromMap(Map<String, dynamic> map) {
     return ClusterV2ManagerDirectoryService(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

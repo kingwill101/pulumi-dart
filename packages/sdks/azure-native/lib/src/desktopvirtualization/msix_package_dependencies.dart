@@ -31,9 +31,9 @@ class MsixPackageDependencies {
 
   factory MsixPackageDependencies.fromMap(Map<String, dynamic> map) {
     return MsixPackageDependencies(
-      dependencyName: map['dependencyName'] == null ? null : (map['dependencyName'] as String).input(),
-      minVersion: map['minVersion'] == null ? null : (map['minVersion'] as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      dependencyName: map['dependencyName'] == null ? null : (map['dependencyName']! as String).input(),
+      minVersion: map['minVersion'] == null ? null : (map['minVersion']! as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
     );
   }
 }

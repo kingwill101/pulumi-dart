@@ -37,9 +37,9 @@ class PermissionsMissingDryrunPrerequisiteResultResponse {
 
   factory PermissionsMissingDryrunPrerequisiteResultResponse.fromMap(Map<String, dynamic> map) {
     return PermissionsMissingDryrunPrerequisiteResultResponse(
-      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
-      recommendedRole: map['recommendedRole'] == null ? null : (map['recommendedRole'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions']! as List).cast<String>()).input(),
+      recommendedRole: map['recommendedRole'] == null ? null : (map['recommendedRole']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

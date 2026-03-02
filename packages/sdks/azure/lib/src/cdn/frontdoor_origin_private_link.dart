@@ -41,8 +41,8 @@ class FrontdoorOriginPrivateLink {
     return FrontdoorOriginPrivateLink(
       location: (map['location'] as String).input(),
       privateLinkTargetId: (map['privateLinkTargetId'] as String).input(),
-      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage']! as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
     );
   }
 }

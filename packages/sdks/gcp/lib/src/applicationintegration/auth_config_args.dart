@@ -72,15 +72,15 @@ class AuthConfigArgs {
 
   factory AuthConfigArgs.fromMap(Map<String, dynamic> map) {
     return AuthConfigArgs(
-      clientCertificate: map['clientCertificate'] == null ? null : (AuthConfigClientCertificate.fromMap((map['clientCertificate'] as Map).cast<String, dynamic>())).input(),
-      decryptedCredential: map['decryptedCredential'] == null ? null : (AuthConfigDecryptedCredential.fromMap((map['decryptedCredential'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (AuthConfigClientCertificate.fromMap((map['clientCertificate']! as Map).cast<String, dynamic>())).input(),
+      decryptedCredential: map['decryptedCredential'] == null ? null : (AuthConfigDecryptedCredential.fromMap((map['decryptedCredential']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      expiryNotificationDurations: map['expiryNotificationDurations'] == null ? null : ((map['expiryNotificationDurations'] as List).cast<String>()).input(),
+      expiryNotificationDurations: map['expiryNotificationDurations'] == null ? null : ((map['expiryNotificationDurations']! as List).cast<String>()).input(),
       location: (map['location'] as String).input(),
-      overrideValidTime: map['overrideValidTime'] == null ? null : (map['overrideValidTime'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
+      overrideValidTime: map['overrideValidTime'] == null ? null : (map['overrideValidTime']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class StreamSpecification {
 
   factory StreamSpecification.fromMap(Map<String, dynamic> map) {
     return StreamSpecification(
-      resourcePolicy: map['resourcePolicy'] == null ? null : (ResourcePolicy.fromMap((map['resourcePolicy'] as Map).cast<String, dynamic>())).input(),
-      streamViewType: map['streamViewType'] == null ? null : (map['streamViewType'] as String).input(),
+      resourcePolicy: map['resourcePolicy'] == null ? null : (ResourcePolicy.fromMap((map['resourcePolicy']! as Map).cast<String, dynamic>())).input(),
+      streamViewType: map['streamViewType'] == null ? null : (map['streamViewType']! as String).input(),
     );
   }
 }

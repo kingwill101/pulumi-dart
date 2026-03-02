@@ -35,10 +35,10 @@ class DomainVpcOptions {
 
   factory DomainVpcOptions.fromMap(Map<String, dynamic> map) {
     return DomainVpcOptions(
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : (((map['availabilityZones'] as List).cast<String>()).input()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
+      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

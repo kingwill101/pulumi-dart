@@ -36,10 +36,10 @@ class OpenAIIntegrationPropertiesResponse {
 
   factory OpenAIIntegrationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return OpenAIIntegrationPropertiesResponse(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
       lastRefreshAt: (map['lastRefreshAt'] as String).input(),
-      openAIResourceEndpoint: map['openAIResourceEndpoint'] == null ? null : (map['openAIResourceEndpoint'] as String).input(),
-      openAIResourceId: map['openAIResourceId'] == null ? null : (map['openAIResourceId'] as String).input(),
+      openAIResourceEndpoint: map['openAIResourceEndpoint'] == null ? null : (map['openAIResourceEndpoint']! as String).input(),
+      openAIResourceId: map['openAIResourceId'] == null ? null : (map['openAIResourceId']! as String).input(),
     );
   }
 }

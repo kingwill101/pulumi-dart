@@ -26,8 +26,8 @@ class FunctionInput {
 
   factory FunctionInput.fromMap(Map<String, dynamic> map) {
     return FunctionInput(
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      isConfigurationParameter: map['isConfigurationParameter'] == null ? null : (map['isConfigurationParameter'] as bool).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      isConfigurationParameter: map['isConfigurationParameter'] == null ? null : (map['isConfigurationParameter']! as bool).input(),
     );
   }
 }

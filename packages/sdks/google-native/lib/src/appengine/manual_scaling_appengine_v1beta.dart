@@ -21,7 +21,7 @@ class ManualScalingAppengineV1beta {
 
   factory ManualScalingAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ManualScalingAppengineV1beta(
-      instances: map['instances'] == null ? null : (map['instances'] as int).input(),
+      instances: map['instances'] == null ? null : (map['instances']! as int).input(),
     );
   }
 }

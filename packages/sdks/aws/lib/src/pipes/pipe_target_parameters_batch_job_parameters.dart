@@ -54,13 +54,13 @@ class PipeTargetParametersBatchJobParameters {
 
   factory PipeTargetParametersBatchJobParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersBatchJobParameters(
-      arrayProperties: map['arrayProperties'] == null ? null : (PipeTargetParametersBatchJobParametersArrayProperties.fromMap((map['arrayProperties'] as Map).cast<String, dynamic>())).input(),
-      containerOverrides: map['containerOverrides'] == null ? null : (PipeTargetParametersBatchJobParametersContainerOverrides.fromMap((map['containerOverrides'] as Map).cast<String, dynamic>())).input(),
-      dependsOns: map['dependsOns'] == null ? null : (pulumi.Input.decodeList<PipeTargetParametersBatchJobParametersDependsOn>(map['dependsOns'], (value) => PipeTargetParametersBatchJobParametersDependsOn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arrayProperties: map['arrayProperties'] == null ? null : ((PipeTargetParametersBatchJobParametersArrayProperties.fromMap((map['arrayProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      containerOverrides: map['containerOverrides'] == null ? null : ((PipeTargetParametersBatchJobParametersContainerOverrides.fromMap((map['containerOverrides']! as Map).cast<String, dynamic>())).input()).input(),
+      dependsOns: map['dependsOns'] == null ? null : ((pulumi.Input.decodeList<PipeTargetParametersBatchJobParametersDependsOn>(map['dependsOns']!, (value) => PipeTargetParametersBatchJobParametersDependsOn.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       jobDefinition: (map['jobDefinition'] as String).input(),
       jobName: (map['jobName'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      retryStrategy: map['retryStrategy'] == null ? null : (PipeTargetParametersBatchJobParametersRetryStrategy.fromMap((map['retryStrategy'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      retryStrategy: map['retryStrategy'] == null ? null : ((PipeTargetParametersBatchJobParametersRetryStrategy.fromMap((map['retryStrategy']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

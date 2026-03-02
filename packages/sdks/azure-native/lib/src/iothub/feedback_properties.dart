@@ -31,9 +31,9 @@ class FeedbackProperties {
 
   factory FeedbackProperties.fromMap(Map<String, dynamic> map) {
     return FeedbackProperties(
-      lockDurationAsIso8601: map['lockDurationAsIso8601'] == null ? null : (map['lockDurationAsIso8601'] as String).input(),
-      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount'] as int).input(),
-      ttlAsIso8601: map['ttlAsIso8601'] == null ? null : (map['ttlAsIso8601'] as String).input(),
+      lockDurationAsIso8601: map['lockDurationAsIso8601'] == null ? null : (map['lockDurationAsIso8601']! as String).input(),
+      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount']! as int).input(),
+      ttlAsIso8601: map['ttlAsIso8601'] == null ? null : (map['ttlAsIso8601']! as String).input(),
     );
   }
 }

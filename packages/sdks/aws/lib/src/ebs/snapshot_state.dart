@@ -96,22 +96,22 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      dataEncryptionKeyId: map['dataEncryptionKeyId'] == null ? null : (map['dataEncryptionKeyId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
-      ownerAlias: map['ownerAlias'] == null ? null : (map['ownerAlias'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      permanentRestore: map['permanentRestore'] == null ? null : (map['permanentRestore'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      storageTier: map['storageTier'] == null ? null : (map['storageTier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : (map['temporaryRestoreDays'] as int).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
-      volumeSize: map['volumeSize'] == null ? null : (map['volumeSize'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      dataEncryptionKeyId: map['dataEncryptionKeyId'] == null ? null : ((map['dataEncryptionKeyId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      outpostArn: map['outpostArn'] == null ? null : ((map['outpostArn'] as String).input()).input(),
+      ownerAlias: map['ownerAlias'] == null ? null : ((map['ownerAlias'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      permanentRestore: map['permanentRestore'] == null ? null : ((map['permanentRestore'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      storageTier: map['storageTier'] == null ? null : ((map['storageTier'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : ((map['temporaryRestoreDays'] as int).input()).input(),
+      volumeId: map['volumeId'] == null ? null : ((map['volumeId'] as String).input()).input(),
+      volumeSize: map['volumeSize'] == null ? null : ((map['volumeSize'] as int).input()).input(),
     );
   }
 }

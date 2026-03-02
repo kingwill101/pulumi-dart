@@ -25,8 +25,8 @@ class TargetServerSSlInfoCommonName {
 
   factory TargetServerSSlInfoCommonName.fromMap(Map<String, dynamic> map) {
     return TargetServerSSlInfoCommonName(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      wildcardMatch: map['wildcardMatch'] == null ? null : (map['wildcardMatch'] as bool).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      wildcardMatch: map['wildcardMatch'] == null ? null : (map['wildcardMatch']! as bool).input(),
     );
   }
 }

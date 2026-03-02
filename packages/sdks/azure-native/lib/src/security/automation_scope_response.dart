@@ -26,8 +26,8 @@ class AutomationScopeResponse {
 
   factory AutomationScopeResponse.fromMap(Map<String, dynamic> map) {
     return AutomationScopeResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      scopePath: map['scopePath'] == null ? null : (map['scopePath'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      scopePath: map['scopePath'] == null ? null : (map['scopePath']! as String).input(),
     );
   }
 }

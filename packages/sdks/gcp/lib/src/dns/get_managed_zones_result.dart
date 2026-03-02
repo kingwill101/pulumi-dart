@@ -32,7 +32,7 @@ class GetManagedZonesResult {
     return GetManagedZonesResult(
       id: map['id'] as String,
       managedZones: pulumi.Input.decodeList<GetManagedZonesManagedZone>(map['managedZones'], (value) => GetManagedZonesManagedZone.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
     );
   }
 }

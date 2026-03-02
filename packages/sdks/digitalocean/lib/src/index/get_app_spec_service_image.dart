@@ -52,12 +52,12 @@ class GetAppSpecServiceImage {
   factory GetAppSpecServiceImage.fromMap(Map<String, dynamic> map) {
     return GetAppSpecServiceImage(
       deployOnPushes: (pulumi.Input.decodeList<GetAppSpecServiceImageDeployOnPush>(map['deployOnPushes'], (value) => GetAppSpecServiceImageDeployOnPush.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
-      registry: map['registry'] == null ? null : (map['registry'] as String).input(),
-      registryCredentials: map['registryCredentials'] == null ? null : (map['registryCredentials'] as String).input(),
+      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
+      registry: map['registry'] == null ? null : (map['registry']! as String).input(),
+      registryCredentials: map['registryCredentials'] == null ? null : (map['registryCredentials']! as String).input(),
       registryType: (map['registryType'] as String).input(),
       repository: (map['repository'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

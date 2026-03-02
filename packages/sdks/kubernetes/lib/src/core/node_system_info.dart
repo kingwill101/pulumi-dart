@@ -81,7 +81,7 @@ class NodeSystemInfo {
       machineID: (map['machineID'] as String).input(),
       operatingSystem: (map['operatingSystem'] as String).input(),
       osImage: (map['osImage'] as String).input(),
-      swap: map['swap'] == null ? null : (NodeSwapStatus.fromMap((map['swap'] as Map).cast<String, dynamic>())).input(),
+      swap: map['swap'] == null ? null : (NodeSwapStatus.fromMap((map['swap']! as Map).cast<String, dynamic>())).input(),
       systemUUID: (map['systemUUID'] as String).input(),
     );
   }

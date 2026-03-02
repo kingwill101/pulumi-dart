@@ -27,8 +27,8 @@ class DomainFeaturesXen {
 
   factory DomainFeaturesXen.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesXen(
-      e820host: map['e820host'] == null ? null : (DomainFeaturesXenE820host.fromMap((map['e820host'] as Map).cast<String, dynamic>())).input(),
-      passthrough: map['passthrough'] == null ? null : (DomainFeaturesXenPassthrough.fromMap((map['passthrough'] as Map).cast<String, dynamic>())).input(),
+      e820host: map['e820host'] == null ? null : (DomainFeaturesXenE820host.fromMap((map['e820host']! as Map).cast<String, dynamic>())).input(),
+      passthrough: map['passthrough'] == null ? null : (DomainFeaturesXenPassthrough.fromMap((map['passthrough']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

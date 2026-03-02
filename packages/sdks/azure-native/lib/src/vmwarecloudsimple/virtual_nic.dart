@@ -54,13 +54,13 @@ class VirtualNic {
 
   factory VirtualNic.fromMap(Map<String, dynamic> map) {
     return VirtualNic(
-      customization: map['customization'] == null ? null : (GuestOSNICCustomization.fromMap((map['customization'] as Map).cast<String, dynamic>())).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
+      customization: map['customization'] == null ? null : (GuestOSNICCustomization.fromMap((map['customization']! as Map).cast<String, dynamic>())).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
       network: (VirtualNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
       nicType: (NICType.fromValue(map['nicType'] as String)).input(),
-      powerOnBoot: map['powerOnBoot'] == null ? null : (map['powerOnBoot'] as bool).input(),
-      virtualNicId: map['virtualNicId'] == null ? null : (map['virtualNicId'] as String).input(),
+      powerOnBoot: map['powerOnBoot'] == null ? null : (map['powerOnBoot']! as bool).input(),
+      virtualNicId: map['virtualNicId'] == null ? null : (map['virtualNicId']! as String).input(),
     );
   }
 }

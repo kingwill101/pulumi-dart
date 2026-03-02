@@ -25,8 +25,8 @@ class GetDeploymentRemoteDebuggingConfigResult {
 
   factory GetDeploymentRemoteDebuggingConfigResult.fromMap(Map<String, dynamic> map) {
     return GetDeploymentRemoteDebuggingConfigResult(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      port: map['port'] == null ? null : map['port'] as int,
+      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
+      port: map['port'] == null ? null : map['port']! as int,
     );
   }
 }

@@ -36,9 +36,9 @@ class AllocationResultPatchResourceK8sIoV1alpha1 {
 
   factory AllocationResultPatchResourceK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return AllocationResultPatchResourceK8sIoV1alpha1(
-      availableOnNodes: map['availableOnNodes'] == null ? null : (NodeSelectorPatch.fromMap((map['availableOnNodes'] as Map).cast<String, dynamic>())).input(),
-      resourceHandle: map['resourceHandle'] == null ? null : (map['resourceHandle'] as String).input(),
-      shareable: map['shareable'] == null ? null : (map['shareable'] as bool).input(),
+      availableOnNodes: map['availableOnNodes'] == null ? null : (NodeSelectorPatch.fromMap((map['availableOnNodes']! as Map).cast<String, dynamic>())).input(),
+      resourceHandle: map['resourceHandle'] == null ? null : (map['resourceHandle']! as String).input(),
+      shareable: map['shareable'] == null ? null : (map['shareable']! as bool).input(),
     );
   }
 }

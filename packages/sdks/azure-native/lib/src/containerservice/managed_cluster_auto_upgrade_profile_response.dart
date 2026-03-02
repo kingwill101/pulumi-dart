@@ -26,8 +26,8 @@ class ManagedClusterAutoUpgradeProfileResponse {
 
   factory ManagedClusterAutoUpgradeProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAutoUpgradeProfileResponse(
-      nodeOSUpgradeChannel: map['nodeOSUpgradeChannel'] == null ? null : (map['nodeOSUpgradeChannel'] as String).input(),
-      upgradeChannel: map['upgradeChannel'] == null ? null : (map['upgradeChannel'] as String).input(),
+      nodeOSUpgradeChannel: map['nodeOSUpgradeChannel'] == null ? null : (map['nodeOSUpgradeChannel']! as String).input(),
+      upgradeChannel: map['upgradeChannel'] == null ? null : (map['upgradeChannel']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class VpnClientConnectionHealthResponse {
 
   factory VpnClientConnectionHealthResponse.fromMap(Map<String, dynamic> map) {
     return VpnClientConnectionHealthResponse(
-      allocatedIpAddresses: map['allocatedIpAddresses'] == null ? null : ((map['allocatedIpAddresses'] as List).cast<String>()).input(),
+      allocatedIpAddresses: map['allocatedIpAddresses'] == null ? null : ((map['allocatedIpAddresses']! as List).cast<String>()).input(),
       totalEgressBytesTransferred: (map['totalEgressBytesTransferred'] as double).input(),
       totalIngressBytesTransferred: (map['totalIngressBytesTransferred'] as double).input(),
-      vpnClientConnectionsCount: map['vpnClientConnectionsCount'] == null ? null : (map['vpnClientConnectionsCount'] as int).input(),
+      vpnClientConnectionsCount: map['vpnClientConnectionsCount'] == null ? null : (map['vpnClientConnectionsCount']! as int).input(),
     );
   }
 }

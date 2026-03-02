@@ -31,9 +31,9 @@ class InstanceGroupAutoscalingPolicyConfigDataprocV1beta2 {
 
   factory InstanceGroupAutoscalingPolicyConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return InstanceGroupAutoscalingPolicyConfigDataprocV1beta2(
-      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances'] as int).input(),
-      minInstances: map['minInstances'] == null ? null : (map['minInstances'] as int).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances']! as int).input(),
+      minInstances: map['minInstances'] == null ? null : (map['minInstances']! as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

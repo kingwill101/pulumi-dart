@@ -36,10 +36,10 @@ class LinkedServicePropsResponse {
 
   factory LinkedServicePropsResponse.fromMap(Map<String, dynamic> map) {
     return LinkedServicePropsResponse(
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      linkType: map['linkType'] == null ? null : (map['linkType'] as String).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime']! as String).input(),
+      linkType: map['linkType'] == null ? null : (map['linkType']! as String).input(),
       linkedServiceResourceId: (map['linkedServiceResourceId'] as String).input(),
-      modifiedTime: map['modifiedTime'] == null ? null : (map['modifiedTime'] as String).input(),
+      modifiedTime: map['modifiedTime'] == null ? null : (map['modifiedTime']! as String).input(),
     );
   }
 }

@@ -38,7 +38,7 @@ class MachineExtensionPropertiesResponseInstanceView {
   factory MachineExtensionPropertiesResponseInstanceView.fromMap(Map<String, dynamic> map) {
     return MachineExtensionPropertiesResponseInstanceView(
       name: (map['name'] as String).input(),
-      status: map['status'] == null ? null : (MachineExtensionInstanceViewResponseStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (MachineExtensionInstanceViewResponseStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
       typeHandlerVersion: (map['typeHandlerVersion'] as String).input(),
     );

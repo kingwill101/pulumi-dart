@@ -36,10 +36,10 @@ class KeyvaluestoreKeyState {
 
   factory KeyvaluestoreKeyState.fromMap(Map<String, dynamic> map) {
     return KeyvaluestoreKeyState(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      keyValueStoreArn: map['keyValueStoreArn'] == null ? null : (map['keyValueStoreArn'] as String).input(),
-      totalSizeInBytes: map['totalSizeInBytes'] == null ? null : (map['totalSizeInBytes'] as int).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      keyValueStoreArn: map['keyValueStoreArn'] == null ? null : ((map['keyValueStoreArn'] as String).input()).input(),
+      totalSizeInBytes: map['totalSizeInBytes'] == null ? null : ((map['totalSizeInBytes'] as int).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

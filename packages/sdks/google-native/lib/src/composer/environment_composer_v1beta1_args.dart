@@ -55,13 +55,13 @@ class EnvironmentComposerV1beta1Args {
 
   factory EnvironmentComposerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return EnvironmentComposerV1beta1Args(
-      config: map['config'] == null ? null : (EnvironmentConfigComposerV1beta1.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (EnvironmentStateComposerV1beta1.fromValue(map['state'] as String)).input(),
-      storageConfig: map['storageConfig'] == null ? null : (StorageConfigComposerV1beta1.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())).input(),
+      config: map['config'] == null ? null : (EnvironmentConfigComposerV1beta1.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (EnvironmentStateComposerV1beta1.fromValue(map['state']! as String)).input(),
+      storageConfig: map['storageConfig'] == null ? null : (StorageConfigComposerV1beta1.fromMap((map['storageConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

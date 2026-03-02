@@ -30,8 +30,8 @@ class RegionCommitmentLicenseResource {
 
   factory RegionCommitmentLicenseResource.fromMap(Map<String, dynamic> map) {
     return RegionCommitmentLicenseResource(
-      amount: map['amount'] == null ? null : (map['amount'] as String).input(),
-      coresPerLicense: map['coresPerLicense'] == null ? null : (map['coresPerLicense'] as String).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as String).input(),
+      coresPerLicense: map['coresPerLicense'] == null ? null : (map['coresPerLicense']! as String).input(),
       license: (map['license'] as String).input(),
     );
   }

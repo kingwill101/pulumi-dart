@@ -57,14 +57,14 @@ class ConditionalAccessPolicySessionControls {
 
   factory ConditionalAccessPolicySessionControls.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicySessionControls(
-      applicationEnforcedRestrictionsEnabled: map['applicationEnforcedRestrictionsEnabled'] == null ? null : (map['applicationEnforcedRestrictionsEnabled'] as bool).input(),
-      cloudAppSecurityPolicy: map['cloudAppSecurityPolicy'] == null ? null : (map['cloudAppSecurityPolicy'] as String).input(),
-      disableResilienceDefaults: map['disableResilienceDefaults'] == null ? null : (map['disableResilienceDefaults'] as bool).input(),
-      persistentBrowserMode: map['persistentBrowserMode'] == null ? null : (map['persistentBrowserMode'] as String).input(),
-      signInFrequency: map['signInFrequency'] == null ? null : (map['signInFrequency'] as int).input(),
-      signInFrequencyAuthenticationType: map['signInFrequencyAuthenticationType'] == null ? null : (map['signInFrequencyAuthenticationType'] as String).input(),
-      signInFrequencyInterval: map['signInFrequencyInterval'] == null ? null : (map['signInFrequencyInterval'] as String).input(),
-      signInFrequencyPeriod: map['signInFrequencyPeriod'] == null ? null : (map['signInFrequencyPeriod'] as String).input(),
+      applicationEnforcedRestrictionsEnabled: map['applicationEnforcedRestrictionsEnabled'] == null ? null : (map['applicationEnforcedRestrictionsEnabled']! as bool).input(),
+      cloudAppSecurityPolicy: map['cloudAppSecurityPolicy'] == null ? null : (map['cloudAppSecurityPolicy']! as String).input(),
+      disableResilienceDefaults: map['disableResilienceDefaults'] == null ? null : (map['disableResilienceDefaults']! as bool).input(),
+      persistentBrowserMode: map['persistentBrowserMode'] == null ? null : (map['persistentBrowserMode']! as String).input(),
+      signInFrequency: map['signInFrequency'] == null ? null : (map['signInFrequency']! as int).input(),
+      signInFrequencyAuthenticationType: map['signInFrequencyAuthenticationType'] == null ? null : (map['signInFrequencyAuthenticationType']! as String).input(),
+      signInFrequencyInterval: map['signInFrequencyInterval'] == null ? null : (map['signInFrequencyInterval']! as String).input(),
+      signInFrequencyPeriod: map['signInFrequencyPeriod'] == null ? null : (map['signInFrequencyPeriod']! as String).input(),
     );
   }
 }

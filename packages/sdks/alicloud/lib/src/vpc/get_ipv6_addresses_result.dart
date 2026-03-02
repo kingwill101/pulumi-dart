@@ -55,14 +55,14 @@ class GetIpv6AddressesResult {
   factory GetIpv6AddressesResult.fromMap(Map<String, dynamic> map) {
     return GetIpv6AddressesResult(
       addresses: pulumi.Input.decodeList<GetIpv6AddressesAddress>(map['addresses'], (value) => GetIpv6AddressesAddress.fromMap((value as Map).cast<String, dynamic>())),
-      associatedInstanceId: map['associatedInstanceId'] == null ? null : map['associatedInstanceId'] as String,
+      associatedInstanceId: map['associatedInstanceId'] == null ? null : map['associatedInstanceId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
+      vswitchId: map['vswitchId'] == null ? null : map['vswitchId']! as String,
     );
   }
 }

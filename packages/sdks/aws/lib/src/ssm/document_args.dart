@@ -70,16 +70,16 @@ class DocumentArgs {
 
   factory DocumentArgs.fromMap(Map<String, dynamic> map) {
     return DocumentArgs(
-      attachmentsSources: map['attachmentsSources'] == null ? null : (pulumi.Input.decodeList<DocumentAttachmentsSource>(map['attachmentsSources'], (value) => DocumentAttachmentsSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attachmentsSources: map['attachmentsSources'] == null ? null : ((pulumi.Input.decodeList<DocumentAttachmentsSource>(map['attachmentsSources']!, (value) => DocumentAttachmentsSource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       content: (map['content'] as String).input(),
-      documentFormat: map['documentFormat'] == null ? null : (map['documentFormat'] as String).input(),
+      documentFormat: map['documentFormat'] == null ? null : ((map['documentFormat'] as String).input()).input(),
       documentType: (map['documentType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissions: map['permissions'] == null ? null : ((map['permissions'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      permissions: map['permissions'] == null ? null : (((map['permissions'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      targetType: map['targetType'] == null ? null : ((map['targetType'] as String).input()).input(),
+      versionName: map['versionName'] == null ? null : ((map['versionName'] as String).input()).input(),
     );
   }
 }

@@ -73,17 +73,17 @@ class ProjectBucketConfigState {
 
   factory ProjectBucketConfigState.fromMap(Map<String, dynamic> map) {
     return ProjectBucketConfigState(
-      bucketId: map['bucketId'] == null ? null : (map['bucketId'] as String).input(),
-      cmekSettings: map['cmekSettings'] == null ? null : (ProjectBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableAnalytics: map['enableAnalytics'] == null ? null : (map['enableAnalytics'] as bool).input(),
-      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<ProjectBucketConfigIndexConfig>(map['indexConfigs'], (value) => ProjectBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lifecycleState: map['lifecycleState'] == null ? null : (map['lifecycleState'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      bucketId: map['bucketId'] == null ? null : (map['bucketId']! as String).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (ProjectBucketConfigCmekSettings.fromMap((map['cmekSettings']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableAnalytics: map['enableAnalytics'] == null ? null : (map['enableAnalytics']! as bool).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<ProjectBucketConfigIndexConfig>(map['indexConfigs']!, (value) => ProjectBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecycleState: map['lifecycleState'] == null ? null : (map['lifecycleState']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
     );
   }
 }

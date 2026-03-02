@@ -41,9 +41,9 @@ class OrganizationConfigurationArgs {
   factory OrganizationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationArgs(
       autoEnable: (map['autoEnable'] as bool).input(),
-      autoEnableStandards: map['autoEnableStandards'] == null ? null : (map['autoEnableStandards'] as String).input(),
-      organizationConfiguration: map['organizationConfiguration'] == null ? null : (OrganizationConfigurationOrganizationConfiguration.fromMap((map['organizationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      autoEnableStandards: map['autoEnableStandards'] == null ? null : ((map['autoEnableStandards'] as String).input()).input(),
+      organizationConfiguration: map['organizationConfiguration'] == null ? null : ((OrganizationConfigurationOrganizationConfiguration.fromMap((map['organizationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

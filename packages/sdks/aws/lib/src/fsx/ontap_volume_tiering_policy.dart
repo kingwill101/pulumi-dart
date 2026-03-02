@@ -25,8 +25,8 @@ class OntapVolumeTieringPolicy {
 
   factory OntapVolumeTieringPolicy.fromMap(Map<String, dynamic> map) {
     return OntapVolumeTieringPolicy(
-      coolingPeriod: map['coolingPeriod'] == null ? null : (map['coolingPeriod'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      coolingPeriod: map['coolingPeriod'] == null ? null : ((map['coolingPeriod'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

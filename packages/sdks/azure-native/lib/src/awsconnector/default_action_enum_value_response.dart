@@ -21,7 +21,7 @@ class DefaultActionEnumValueResponse {
 
   factory DefaultActionEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return DefaultActionEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

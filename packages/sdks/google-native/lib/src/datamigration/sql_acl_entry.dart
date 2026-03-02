@@ -36,10 +36,10 @@ class SqlAclEntry {
 
   factory SqlAclEntry.fromMap(Map<String, dynamic> map) {
     return SqlAclEntry(
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

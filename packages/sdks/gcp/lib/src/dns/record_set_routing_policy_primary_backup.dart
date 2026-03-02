@@ -40,9 +40,9 @@ class RecordSetRoutingPolicyPrimaryBackup {
   factory RecordSetRoutingPolicyPrimaryBackup.fromMap(Map<String, dynamic> map) {
     return RecordSetRoutingPolicyPrimaryBackup(
       backupGeos: (pulumi.Input.decodeList<RecordSetRoutingPolicyPrimaryBackupBackupGeo>(map['backupGeos'], (value) => RecordSetRoutingPolicyPrimaryBackupBackupGeo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableGeoFencingForBackups: map['enableGeoFencingForBackups'] == null ? null : (map['enableGeoFencingForBackups'] as bool).input(),
+      enableGeoFencingForBackups: map['enableGeoFencingForBackups'] == null ? null : (map['enableGeoFencingForBackups']! as bool).input(),
       primary: (RecordSetRoutingPolicyPrimaryBackupPrimary.fromMap((map['primary'] as Map).cast<String, dynamic>())).input(),
-      trickleRatio: map['trickleRatio'] == null ? null : (map['trickleRatio'] as double).input(),
+      trickleRatio: map['trickleRatio'] == null ? null : (map['trickleRatio']! as double).input(),
     );
   }
 }

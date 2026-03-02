@@ -51,12 +51,12 @@ class ServiceNetworkResourceAssociationArgs {
 
   factory ServiceNetworkResourceAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkResourceAssociationArgs(
-      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : ((map['privateDnsEnabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceConfigurationIdentifier: (map['resourceConfigurationIdentifier'] as String).input(),
       serviceNetworkIdentifier: (map['serviceNetworkIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ServiceNetworkResourceAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ServiceNetworkResourceAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

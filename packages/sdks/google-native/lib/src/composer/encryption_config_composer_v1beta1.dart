@@ -21,7 +21,7 @@ class EncryptionConfigComposerV1beta1 {
 
   factory EncryptionConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigComposerV1beta1(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
     );
   }
 }

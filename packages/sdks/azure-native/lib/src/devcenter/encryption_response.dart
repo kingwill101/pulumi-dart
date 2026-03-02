@@ -21,7 +21,7 @@ class EncryptionResponse {
 
   factory EncryptionResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionResponse(
-      customerManagedKeyEncryption: map['customerManagedKeyEncryption'] == null ? null : (CustomerManagedKeyEncryptionResponse.fromMap((map['customerManagedKeyEncryption'] as Map).cast<String, dynamic>())).input(),
+      customerManagedKeyEncryption: map['customerManagedKeyEncryption'] == null ? null : (CustomerManagedKeyEncryptionResponse.fromMap((map['customerManagedKeyEncryption']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

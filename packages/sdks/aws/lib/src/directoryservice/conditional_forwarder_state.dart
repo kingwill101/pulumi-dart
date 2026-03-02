@@ -36,10 +36,10 @@ class ConditionalForwarderState {
 
   factory ConditionalForwarderState.fromMap(Map<String, dynamic> map) {
     return ConditionalForwarderState(
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      dnsIps: map['dnsIps'] == null ? null : ((map['dnsIps'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      remoteDomainName: map['remoteDomainName'] == null ? null : (map['remoteDomainName'] as String).input(),
+      directoryId: map['directoryId'] == null ? null : ((map['directoryId'] as String).input()).input(),
+      dnsIps: map['dnsIps'] == null ? null : (((map['dnsIps'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      remoteDomainName: map['remoteDomainName'] == null ? null : ((map['remoteDomainName'] as String).input()).input(),
     );
   }
 }

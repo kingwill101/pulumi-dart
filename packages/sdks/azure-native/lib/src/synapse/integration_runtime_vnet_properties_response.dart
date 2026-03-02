@@ -36,10 +36,10 @@ class IntegrationRuntimeVNetPropertiesResponse {
 
   factory IntegrationRuntimeVNetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeVNetPropertiesResponse(
-      publicIPs: map['publicIPs'] == null ? null : ((map['publicIPs'] as List).cast<String>()).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      vNetId: map['vNetId'] == null ? null : (map['vNetId'] as String).input(),
+      publicIPs: map['publicIPs'] == null ? null : ((map['publicIPs']! as List).cast<String>()).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      vNetId: map['vNetId'] == null ? null : (map['vNetId']! as String).input(),
     );
   }
 }

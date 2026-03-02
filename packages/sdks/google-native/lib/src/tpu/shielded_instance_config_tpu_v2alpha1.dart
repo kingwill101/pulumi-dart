@@ -21,7 +21,7 @@ class ShieldedInstanceConfigTpuV2alpha1 {
 
   factory ShieldedInstanceConfigTpuV2alpha1.fromMap(Map<String, dynamic> map) {
     return ShieldedInstanceConfigTpuV2alpha1(
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot'] as bool).input(),
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot']! as bool).input(),
     );
   }
 }

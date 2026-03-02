@@ -33,9 +33,9 @@ class HttpSettings {
 
   factory HttpSettings.fromMap(Map<String, dynamic> map) {
     return HttpSettings(
-      forwardProxy: map['forwardProxy'] == null ? null : (ForwardProxy.fromMap((map['forwardProxy'] as Map).cast<String, dynamic>())).input(),
-      requireHttps: map['requireHttps'] == null ? null : (map['requireHttps'] as bool).input(),
-      routes: map['routes'] == null ? null : (HttpSettingsRoutes.fromMap((map['routes'] as Map).cast<String, dynamic>())).input(),
+      forwardProxy: map['forwardProxy'] == null ? null : (ForwardProxy.fromMap((map['forwardProxy']! as Map).cast<String, dynamic>())).input(),
+      requireHttps: map['requireHttps'] == null ? null : (map['requireHttps']! as bool).input(),
+      routes: map['routes'] == null ? null : (HttpSettingsRoutes.fromMap((map['routes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

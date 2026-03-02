@@ -57,14 +57,14 @@ class RevisionAssetsAsset {
 
   factory RevisionAssetsAsset.fromMap(Map<String, dynamic> map) {
     return RevisionAssetsAsset(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createS3DataAccessFromS3Bucket: map['createS3DataAccessFromS3Bucket'] == null ? null : (RevisionAssetsAssetCreateS3DataAccessFromS3Bucket.fromMap((map['createS3DataAccessFromS3Bucket'] as Map).cast<String, dynamic>())).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      importAssetsFromS3: map['importAssetsFromS3'] == null ? null : (RevisionAssetsAssetImportAssetsFromS3.fromMap((map['importAssetsFromS3'] as Map).cast<String, dynamic>())).input(),
-      importAssetsFromSignedUrl: map['importAssetsFromSignedUrl'] == null ? null : (RevisionAssetsAssetImportAssetsFromSignedUrl.fromMap((map['importAssetsFromSignedUrl'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createS3DataAccessFromS3Bucket: map['createS3DataAccessFromS3Bucket'] == null ? null : ((RevisionAssetsAssetCreateS3DataAccessFromS3Bucket.fromMap((map['createS3DataAccessFromS3Bucket']! as Map).cast<String, dynamic>())).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      importAssetsFromS3: map['importAssetsFromS3'] == null ? null : ((RevisionAssetsAssetImportAssetsFromS3.fromMap((map['importAssetsFromS3']! as Map).cast<String, dynamic>())).input()).input(),
+      importAssetsFromSignedUrl: map['importAssetsFromSignedUrl'] == null ? null : ((RevisionAssetsAssetImportAssetsFromSignedUrl.fromMap((map['importAssetsFromSignedUrl']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
     );
   }
 }

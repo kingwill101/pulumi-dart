@@ -58,14 +58,14 @@ class GatewayIamPolicyNetworkservicesV1beta1Args {
 
   factory GatewayIamPolicyNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GatewayIamPolicyNetworkservicesV1beta1Args(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigNetworkservicesV1beta1>(map['auditConfigs'], (value) => AuditConfigNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingNetworkservicesV1beta1>(map['bindings'], (value) => BindingNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigNetworkservicesV1beta1>(map['auditConfigs']!, (value) => AuditConfigNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingNetworkservicesV1beta1>(map['bindings']!, (value) => BindingNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       gatewayId: (map['gatewayId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

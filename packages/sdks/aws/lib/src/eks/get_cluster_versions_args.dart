@@ -50,12 +50,12 @@ class GetClusterVersionsArgs {
 
   factory GetClusterVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterVersionsArgs(
-      clusterType: map['clusterType'] == null ? null : (map['clusterType'] as String).input(),
-      clusterVersionsOnlies: map['clusterVersionsOnlies'] == null ? null : ((map['clusterVersionsOnlies'] as List).cast<String>()).input(),
-      defaultOnly: map['defaultOnly'] == null ? null : (map['defaultOnly'] as bool).input(),
-      includeAll: map['includeAll'] == null ? null : (map['includeAll'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      versionStatus: map['versionStatus'] == null ? null : (map['versionStatus'] as String).input(),
+      clusterType: map['clusterType'] == null ? null : ((map['clusterType'] as String).input()).input(),
+      clusterVersionsOnlies: map['clusterVersionsOnlies'] == null ? null : (((map['clusterVersionsOnlies'] as List).cast<String>()).input()).input(),
+      defaultOnly: map['defaultOnly'] == null ? null : ((map['defaultOnly'] as bool).input()).input(),
+      includeAll: map['includeAll'] == null ? null : ((map['includeAll'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      versionStatus: map['versionStatus'] == null ? null : ((map['versionStatus'] as String).input()).input(),
     );
   }
 }

@@ -41,10 +41,10 @@ class GtmInstanceAlertConfig {
 
   factory GtmInstanceAlertConfig.fromMap(Map<String, dynamic> map) {
     return GtmInstanceAlertConfig(
-      dingtalkNotice: map['dingtalkNotice'] == null ? null : (map['dingtalkNotice'] as bool).input(),
-      emailNotice: map['emailNotice'] == null ? null : (map['emailNotice'] as bool).input(),
-      noticeType: map['noticeType'] == null ? null : (map['noticeType'] as String).input(),
-      smsNotice: map['smsNotice'] == null ? null : (map['smsNotice'] as bool).input(),
+      dingtalkNotice: map['dingtalkNotice'] == null ? null : (map['dingtalkNotice']! as bool).input(),
+      emailNotice: map['emailNotice'] == null ? null : (map['emailNotice']! as bool).input(),
+      noticeType: map['noticeType'] == null ? null : (map['noticeType']! as String).input(),
+      smsNotice: map['smsNotice'] == null ? null : (map['smsNotice']! as bool).input(),
     );
   }
 }

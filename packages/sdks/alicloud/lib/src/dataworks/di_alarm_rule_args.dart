@@ -57,10 +57,10 @@ class DiAlarmRuleArgs {
 
   factory DiAlarmRuleArgs.fromMap(Map<String, dynamic> map) {
     return DiAlarmRuleArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       diAlarmRuleName: (map['diAlarmRuleName'] as String).input(),
       diJobId: (map['diJobId'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       metricType: (map['metricType'] as String).input(),
       notificationSettings: (DiAlarmRuleNotificationSettings.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>())).input(),
       triggerConditions: (pulumi.Input.decodeList<DiAlarmRuleTriggerCondition>(map['triggerConditions'], (value) => DiAlarmRuleTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),

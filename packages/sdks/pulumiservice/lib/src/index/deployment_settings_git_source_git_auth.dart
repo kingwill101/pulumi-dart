@@ -28,8 +28,8 @@ class DeploymentSettingsGitSourceGitAuth {
 
   factory DeploymentSettingsGitSourceGitAuth.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsGitSourceGitAuth(
-      basicAuth: map['basicAuth'] == null ? null : (DeploymentSettingsGitAuthBasicAuth.fromMap((map['basicAuth'] as Map).cast<String, dynamic>())).input(),
-      sshAuth: map['sshAuth'] == null ? null : (DeploymentSettingsGitAuthSSHAuth.fromMap((map['sshAuth'] as Map).cast<String, dynamic>())).input(),
+      basicAuth: map['basicAuth'] == null ? null : (DeploymentSettingsGitAuthBasicAuth.fromMap((map['basicAuth']! as Map).cast<String, dynamic>())).input(),
+      sshAuth: map['sshAuth'] == null ? null : (DeploymentSettingsGitAuthSSHAuth.fromMap((map['sshAuth']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

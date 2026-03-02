@@ -44,9 +44,9 @@ class IcebergCatalogArgs {
   factory IcebergCatalogArgs.fromMap(Map<String, dynamic> map) {
     return IcebergCatalogArgs(
       catalogType: (map['catalogType'] as String).input(),
-      credentialMode: map['credentialMode'] == null ? null : (map['credentialMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      credentialMode: map['credentialMode'] == null ? null : (map['credentialMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

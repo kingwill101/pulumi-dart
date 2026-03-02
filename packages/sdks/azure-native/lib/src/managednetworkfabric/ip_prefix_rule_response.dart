@@ -42,10 +42,10 @@ class IpPrefixRuleResponse {
   factory IpPrefixRuleResponse.fromMap(Map<String, dynamic> map) {
     return IpPrefixRuleResponse(
       action: (map['action'] as String).input(),
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
       networkPrefix: (map['networkPrefix'] as String).input(),
       sequenceNumber: (map['sequenceNumber'] as double).input(),
-      subnetMaskLength: map['subnetMaskLength'] == null ? null : (map['subnetMaskLength'] as String).input(),
+      subnetMaskLength: map['subnetMaskLength'] == null ? null : (map['subnetMaskLength']! as String).input(),
     );
   }
 }

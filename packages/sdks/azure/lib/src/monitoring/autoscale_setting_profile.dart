@@ -45,10 +45,10 @@ class AutoscaleSettingProfile {
   factory AutoscaleSettingProfile.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingProfile(
       capacity: (AutoscaleSettingProfileCapacity.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
-      fixedDate: map['fixedDate'] == null ? null : (AutoscaleSettingProfileFixedDate.fromMap((map['fixedDate'] as Map).cast<String, dynamic>())).input(),
+      fixedDate: map['fixedDate'] == null ? null : (AutoscaleSettingProfileFixedDate.fromMap((map['fixedDate']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      recurrence: map['recurrence'] == null ? null : (AutoscaleSettingProfileRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AutoscaleSettingProfileRule>(map['rules'], (value) => AutoscaleSettingProfileRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recurrence: map['recurrence'] == null ? null : (AutoscaleSettingProfileRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AutoscaleSettingProfileRule>(map['rules']!, (value) => AutoscaleSettingProfileRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

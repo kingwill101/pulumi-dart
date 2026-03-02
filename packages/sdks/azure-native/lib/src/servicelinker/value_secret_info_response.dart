@@ -28,7 +28,7 @@ class ValueSecretInfoResponse {
   factory ValueSecretInfoResponse.fromMap(Map<String, dynamic> map) {
     return ValueSecretInfoResponse(
       secretType: (map['secretType'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

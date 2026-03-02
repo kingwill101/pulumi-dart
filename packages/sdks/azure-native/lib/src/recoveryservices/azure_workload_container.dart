@@ -76,17 +76,17 @@ class AzureWorkloadContainer {
 
   factory AzureWorkloadContainer.fromMap(Map<String, dynamic> map) {
     return AzureWorkloadContainer(
-      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType'] as String).input(),
+      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType']! as String).input(),
       containerType: (map['containerType'] as String).input(),
-      extendedInfo: map['extendedInfo'] == null ? null : (AzureWorkloadContainerExtendedInfo.fromMap((map['extendedInfo'] as Map).cast<String, dynamic>())).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus'] as String).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
-      operationType: map['operationType'] == null ? null : (map['operationType'] as String).input(),
-      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType'] as String).input(),
-      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus'] as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
-      workloadType: map['workloadType'] == null ? null : (map['workloadType'] as String).input(),
+      extendedInfo: map['extendedInfo'] == null ? null : (AzureWorkloadContainerExtendedInfo.fromMap((map['extendedInfo']! as Map).cast<String, dynamic>())).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus']! as String).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime']! as String).input(),
+      operationType: map['operationType'] == null ? null : (map['operationType']! as String).input(),
+      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType']! as String).input(),
+      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus']! as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
+      workloadType: map['workloadType'] == null ? null : (map['workloadType']! as String).input(),
     );
   }
 }

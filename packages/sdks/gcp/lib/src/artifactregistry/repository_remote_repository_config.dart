@@ -82,16 +82,16 @@ class RepositoryRemoteRepositoryConfig {
 
   factory RepositoryRemoteRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryRemoteRepositoryConfig(
-      aptRepository: map['aptRepository'] == null ? null : (RepositoryRemoteRepositoryConfigAptRepository.fromMap((map['aptRepository'] as Map).cast<String, dynamic>())).input(),
-      commonRepository: map['commonRepository'] == null ? null : (RepositoryRemoteRepositoryConfigCommonRepository.fromMap((map['commonRepository'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableUpstreamValidation: map['disableUpstreamValidation'] == null ? null : (map['disableUpstreamValidation'] as bool).input(),
-      dockerRepository: map['dockerRepository'] == null ? null : (RepositoryRemoteRepositoryConfigDockerRepository.fromMap((map['dockerRepository'] as Map).cast<String, dynamic>())).input(),
-      mavenRepository: map['mavenRepository'] == null ? null : (RepositoryRemoteRepositoryConfigMavenRepository.fromMap((map['mavenRepository'] as Map).cast<String, dynamic>())).input(),
-      npmRepository: map['npmRepository'] == null ? null : (RepositoryRemoteRepositoryConfigNpmRepository.fromMap((map['npmRepository'] as Map).cast<String, dynamic>())).input(),
-      pythonRepository: map['pythonRepository'] == null ? null : (RepositoryRemoteRepositoryConfigPythonRepository.fromMap((map['pythonRepository'] as Map).cast<String, dynamic>())).input(),
-      upstreamCredentials: map['upstreamCredentials'] == null ? null : (RepositoryRemoteRepositoryConfigUpstreamCredentials.fromMap((map['upstreamCredentials'] as Map).cast<String, dynamic>())).input(),
-      yumRepository: map['yumRepository'] == null ? null : (RepositoryRemoteRepositoryConfigYumRepository.fromMap((map['yumRepository'] as Map).cast<String, dynamic>())).input(),
+      aptRepository: map['aptRepository'] == null ? null : (RepositoryRemoteRepositoryConfigAptRepository.fromMap((map['aptRepository']! as Map).cast<String, dynamic>())).input(),
+      commonRepository: map['commonRepository'] == null ? null : (RepositoryRemoteRepositoryConfigCommonRepository.fromMap((map['commonRepository']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disableUpstreamValidation: map['disableUpstreamValidation'] == null ? null : (map['disableUpstreamValidation']! as bool).input(),
+      dockerRepository: map['dockerRepository'] == null ? null : (RepositoryRemoteRepositoryConfigDockerRepository.fromMap((map['dockerRepository']! as Map).cast<String, dynamic>())).input(),
+      mavenRepository: map['mavenRepository'] == null ? null : (RepositoryRemoteRepositoryConfigMavenRepository.fromMap((map['mavenRepository']! as Map).cast<String, dynamic>())).input(),
+      npmRepository: map['npmRepository'] == null ? null : (RepositoryRemoteRepositoryConfigNpmRepository.fromMap((map['npmRepository']! as Map).cast<String, dynamic>())).input(),
+      pythonRepository: map['pythonRepository'] == null ? null : (RepositoryRemoteRepositoryConfigPythonRepository.fromMap((map['pythonRepository']! as Map).cast<String, dynamic>())).input(),
+      upstreamCredentials: map['upstreamCredentials'] == null ? null : (RepositoryRemoteRepositoryConfigUpstreamCredentials.fromMap((map['upstreamCredentials']! as Map).cast<String, dynamic>())).input(),
+      yumRepository: map['yumRepository'] == null ? null : (RepositoryRemoteRepositoryConfigYumRepository.fromMap((map['yumRepository']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhrasePart {
 
   factory GoogleCloudDialogflowCxV3IntentTrainingPhrasePart.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3IntentTrainingPhrasePart(
-      parameterId: map['parameterId'] == null ? null : (map['parameterId'] as String).input(),
+      parameterId: map['parameterId'] == null ? null : (map['parameterId']! as String).input(),
       text: (map['text'] as String).input(),
     );
   }

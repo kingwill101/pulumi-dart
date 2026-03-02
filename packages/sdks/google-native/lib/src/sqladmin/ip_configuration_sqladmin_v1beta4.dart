@@ -59,14 +59,14 @@ class IpConfigurationSqladminV1beta4 {
 
   factory IpConfigurationSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return IpConfigurationSqladminV1beta4(
-      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange'] as String).input(),
-      authorizedNetworks: map['authorizedNetworks'] == null ? null : (pulumi.Input.decodeList<AclEntrySqladminV1beta4>(map['authorizedNetworks'], (value) => AclEntrySqladminV1beta4.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enablePrivatePathForGoogleCloudServices: map['enablePrivatePathForGoogleCloudServices'] == null ? null : (map['enablePrivatePathForGoogleCloudServices'] as bool).input(),
-      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled'] as bool).input(),
-      privateNetwork: map['privateNetwork'] == null ? null : (map['privateNetwork'] as String).input(),
-      pscConfig: map['pscConfig'] == null ? null : (PscConfigSqladminV1beta4.fromMap((map['pscConfig'] as Map).cast<String, dynamic>())).input(),
-      requireSsl: map['requireSsl'] == null ? null : (map['requireSsl'] as bool).input(),
-      sslMode: map['sslMode'] == null ? null : (IpConfigurationSslModeSqladminV1beta4.fromValue(map['sslMode'] as String)).input(),
+      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange']! as String).input(),
+      authorizedNetworks: map['authorizedNetworks'] == null ? null : (pulumi.Input.decodeList<AclEntrySqladminV1beta4>(map['authorizedNetworks']!, (value) => AclEntrySqladminV1beta4.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enablePrivatePathForGoogleCloudServices: map['enablePrivatePathForGoogleCloudServices'] == null ? null : (map['enablePrivatePathForGoogleCloudServices']! as bool).input(),
+      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled']! as bool).input(),
+      privateNetwork: map['privateNetwork'] == null ? null : (map['privateNetwork']! as String).input(),
+      pscConfig: map['pscConfig'] == null ? null : (PscConfigSqladminV1beta4.fromMap((map['pscConfig']! as Map).cast<String, dynamic>())).input(),
+      requireSsl: map['requireSsl'] == null ? null : (map['requireSsl']! as bool).input(),
+      sslMode: map['sslMode'] == null ? null : (IpConfigurationSslModeSqladminV1beta4.fromValue(map['sslMode']! as String)).input(),
     );
   }
 }

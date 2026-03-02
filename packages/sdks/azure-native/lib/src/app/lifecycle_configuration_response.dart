@@ -31,9 +31,9 @@ class LifecycleConfigurationResponse {
 
   factory LifecycleConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LifecycleConfigurationResponse(
-      cooldownPeriodInSeconds: map['cooldownPeriodInSeconds'] == null ? null : (map['cooldownPeriodInSeconds'] as int).input(),
-      lifecycleType: map['lifecycleType'] == null ? null : (map['lifecycleType'] as String).input(),
-      maxAlivePeriodInSeconds: map['maxAlivePeriodInSeconds'] == null ? null : (map['maxAlivePeriodInSeconds'] as int).input(),
+      cooldownPeriodInSeconds: map['cooldownPeriodInSeconds'] == null ? null : (map['cooldownPeriodInSeconds']! as int).input(),
+      lifecycleType: map['lifecycleType'] == null ? null : (map['lifecycleType']! as String).input(),
+      maxAlivePeriodInSeconds: map['maxAlivePeriodInSeconds'] == null ? null : (map['maxAlivePeriodInSeconds']! as int).input(),
     );
   }
 }

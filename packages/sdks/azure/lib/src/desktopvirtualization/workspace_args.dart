@@ -54,13 +54,13 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

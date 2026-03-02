@@ -33,8 +33,8 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig {
 
   factory AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      groundingLevel: map['groundingLevel'] == null ? null : (map['groundingLevel'] as double).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      groundingLevel: map['groundingLevel'] == null ? null : (map['groundingLevel']! as double).input(),
     );
   }
 }

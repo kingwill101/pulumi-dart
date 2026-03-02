@@ -22,7 +22,7 @@ class NodeSelectorPatch {
 
   factory NodeSelectorPatch.fromMap(Map<String, dynamic> map) {
     return NodeSelectorPatch(
-      nodeSelectorTerms: map['nodeSelectorTerms'] == null ? null : (pulumi.Input.decodeList<NodeSelectorTermPatch>(map['nodeSelectorTerms'], (value) => NodeSelectorTermPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeSelectorTerms: map['nodeSelectorTerms'] == null ? null : (pulumi.Input.decodeList<NodeSelectorTermPatch>(map['nodeSelectorTerms']!, (value) => NodeSelectorTermPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

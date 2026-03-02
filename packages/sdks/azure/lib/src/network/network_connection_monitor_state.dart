@@ -64,15 +64,15 @@ class NetworkConnectionMonitorState {
 
   factory NetworkConnectionMonitorState.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorState(
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<NetworkConnectionMonitorEndpoint>(map['endpoints'], (value) => NetworkConnectionMonitorEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkWatcherId: map['networkWatcherId'] == null ? null : (map['networkWatcherId'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      outputWorkspaceResourceIds: map['outputWorkspaceResourceIds'] == null ? null : ((map['outputWorkspaceResourceIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      testConfigurations: map['testConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkConnectionMonitorTestConfiguration>(map['testConfigurations'], (value) => NetworkConnectionMonitorTestConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      testGroups: map['testGroups'] == null ? null : (pulumi.Input.decodeList<NetworkConnectionMonitorTestGroup>(map['testGroups'], (value) => NetworkConnectionMonitorTestGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<NetworkConnectionMonitorEndpoint>(map['endpoints']!, (value) => NetworkConnectionMonitorEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkWatcherId: map['networkWatcherId'] == null ? null : (map['networkWatcherId']! as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      outputWorkspaceResourceIds: map['outputWorkspaceResourceIds'] == null ? null : ((map['outputWorkspaceResourceIds']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      testConfigurations: map['testConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkConnectionMonitorTestConfiguration>(map['testConfigurations']!, (value) => NetworkConnectionMonitorTestConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testGroups: map['testGroups'] == null ? null : (pulumi.Input.decodeList<NetworkConnectionMonitorTestGroup>(map['testGroups']!, (value) => NetworkConnectionMonitorTestGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

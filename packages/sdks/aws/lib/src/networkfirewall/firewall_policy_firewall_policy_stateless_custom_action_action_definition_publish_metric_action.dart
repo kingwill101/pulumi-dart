@@ -21,7 +21,7 @@ class FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMe
 
   factory FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction(
-      dimensions: (pulumi.Input.decodeList<FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension>(map['dimensions'], (value) => FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: (pulumi.Input.decodeList<FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension>(map['dimensions']!, (value) => FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

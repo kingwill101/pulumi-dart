@@ -42,9 +42,9 @@ class ResourceSku {
 
   factory ResourceSku.fromMap(Map<String, dynamic> map) {
     return ResourceSku(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
       name: (map['name'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

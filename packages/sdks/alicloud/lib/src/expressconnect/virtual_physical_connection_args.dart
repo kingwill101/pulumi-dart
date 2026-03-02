@@ -71,14 +71,14 @@ class VirtualPhysicalConnectionArgs {
 
   factory VirtualPhysicalConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VirtualPhysicalConnectionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      expectSpec: map['expectSpec'] == null ? null : (map['expectSpec'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      expectSpec: map['expectSpec'] == null ? null : (map['expectSpec']! as String).input(),
       orderMode: (map['orderMode'] as String).input(),
       parentPhysicalConnectionId: (map['parentPhysicalConnectionId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       spec: (map['spec'] as String).input(),
-      virtualPhysicalConnectionName: map['virtualPhysicalConnectionName'] == null ? null : (map['virtualPhysicalConnectionName'] as String).input(),
+      virtualPhysicalConnectionName: map['virtualPhysicalConnectionName'] == null ? null : (map['virtualPhysicalConnectionName']! as String).input(),
       vlanId: (map['vlanId'] as int).input(),
       vpconnAliUid: (map['vpconnAliUid'] as String).input(),
     );

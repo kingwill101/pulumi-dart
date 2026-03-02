@@ -39,10 +39,10 @@ class GetImageArgs {
 
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sortDescending: map['sortDescending'] == null ? null : (map['sortDescending'] as bool).input(),
+      sortDescending: map['sortDescending'] == null ? null : (map['sortDescending']! as bool).input(),
     );
   }
 }

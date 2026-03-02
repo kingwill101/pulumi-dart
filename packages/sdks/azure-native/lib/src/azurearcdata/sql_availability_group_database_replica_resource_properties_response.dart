@@ -66,7 +66,7 @@ class SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse {
 
   factory SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
       databaseStateDescription: (map['databaseStateDescription'] as String).input(),
       isCommitParticipant: (map['isCommitParticipant'] as bool).input(),
       isLocal: (map['isLocal'] as bool).input(),

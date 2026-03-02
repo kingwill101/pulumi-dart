@@ -27,7 +27,7 @@ class NonComplianceMessage {
   factory NonComplianceMessage.fromMap(Map<String, dynamic> map) {
     return NonComplianceMessage(
       message: (map['message'] as String).input(),
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId']! as String).input(),
     );
   }
 }

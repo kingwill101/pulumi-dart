@@ -80,16 +80,16 @@ class DashboardArgs {
 
   factory DashboardArgs.fromMap(Map<String, dynamic> map) {
     return DashboardArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
       dashboardId: (map['dashboardId'] as String).input(),
-      dashboardPublishOptions: map['dashboardPublishOptions'] == null ? null : (DashboardDashboardPublishOptions.fromMap((map['dashboardPublishOptions'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (DashboardParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<DashboardPermission>(map['permissions'], (value) => DashboardPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceEntity: map['sourceEntity'] == null ? null : (DashboardSourceEntity.fromMap((map['sourceEntity'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      themeArn: map['themeArn'] == null ? null : (map['themeArn'] as String).input(),
+      dashboardPublishOptions: map['dashboardPublishOptions'] == null ? null : ((DashboardDashboardPublishOptions.fromMap((map['dashboardPublishOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((DashboardParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input()).input(),
+      permissions: map['permissions'] == null ? null : ((pulumi.Input.decodeList<DashboardPermission>(map['permissions']!, (value) => DashboardPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceEntity: map['sourceEntity'] == null ? null : ((DashboardSourceEntity.fromMap((map['sourceEntity']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      themeArn: map['themeArn'] == null ? null : ((map['themeArn'] as String).input()).input(),
       versionDescription: (map['versionDescription'] as String).input(),
     );
   }

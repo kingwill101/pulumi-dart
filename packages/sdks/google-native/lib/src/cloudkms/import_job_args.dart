@@ -48,11 +48,11 @@ class ImportJobArgs {
 
   factory ImportJobArgs.fromMap(Map<String, dynamic> map) {
     return ImportJobArgs(
-      importJobId: map['importJobId'] == null ? null : (map['importJobId'] as String).input(),
+      importJobId: map['importJobId'] == null ? null : (map['importJobId']! as String).input(),
       importMethod: (ImportJobImportMethod.fromValue(map['importMethod'] as String)).input(),
       keyRingId: (map['keyRingId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       protectionLevel: (ImportJobProtectionLevel.fromValue(map['protectionLevel'] as String)).input(),
     );
   }

@@ -108,22 +108,22 @@ class ClientUserDefineRuleState {
 
   factory ClientUserDefineRuleState.fromMap(Map<String, dynamic> map) {
     return ClientUserDefineRuleState(
-      actionType: map['actionType'] == null ? null : (map['actionType'] as int).input(),
-      clientUserDefineRuleName: map['clientUserDefineRuleName'] == null ? null : (map['clientUserDefineRuleName'] as String).input(),
-      cmdline: map['cmdline'] == null ? null : (map['cmdline'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
-      hash: map['hash'] == null ? null : (map['hash'] as String).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      newFilePath: map['newFilePath'] == null ? null : (map['newFilePath'] as String).input(),
-      parentCmdline: map['parentCmdline'] == null ? null : (map['parentCmdline'] as String).input(),
-      parentProcPath: map['parentProcPath'] == null ? null : (map['parentProcPath'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      portStr: map['portStr'] == null ? null : (map['portStr'] as String).input(),
-      procPath: map['procPath'] == null ? null : (map['procPath'] as String).input(),
-      registryContent: map['registryContent'] == null ? null : (map['registryContent'] as String).input(),
-      registryKey: map['registryKey'] == null ? null : (map['registryKey'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as int).input(),
+      actionType: map['actionType'] == null ? null : (map['actionType']! as int).input(),
+      clientUserDefineRuleName: map['clientUserDefineRuleName'] == null ? null : (map['clientUserDefineRuleName']! as String).input(),
+      cmdline: map['cmdline'] == null ? null : (map['cmdline']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
+      hash: map['hash'] == null ? null : (map['hash']! as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      newFilePath: map['newFilePath'] == null ? null : (map['newFilePath']! as String).input(),
+      parentCmdline: map['parentCmdline'] == null ? null : (map['parentCmdline']! as String).input(),
+      parentProcPath: map['parentProcPath'] == null ? null : (map['parentProcPath']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      portStr: map['portStr'] == null ? null : (map['portStr']! as String).input(),
+      procPath: map['procPath'] == null ? null : (map['procPath']! as String).input(),
+      registryContent: map['registryContent'] == null ? null : (map['registryContent']! as String).input(),
+      registryKey: map['registryKey'] == null ? null : (map['registryKey']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as int).input(),
     );
   }
 }

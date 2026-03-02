@@ -38,7 +38,7 @@ class GetManagementDnsZoneBindingArgs {
       location: (map['location'] as String).input(),
       managementDnsZoneBindingId: (map['managementDnsZoneBindingId'] as String).input(),
       privateCloudId: (map['privateCloudId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

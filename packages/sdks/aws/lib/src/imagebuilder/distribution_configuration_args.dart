@@ -47,11 +47,11 @@ class DistributionConfigurationArgs {
 
   factory DistributionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      distributions: (pulumi.Input.decodeList<DistributionConfigurationDistribution>(map['distributions'], (value) => DistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      distributions: (pulumi.Input.decodeList<DistributionConfigurationDistribution>(map['distributions']!, (value) => DistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

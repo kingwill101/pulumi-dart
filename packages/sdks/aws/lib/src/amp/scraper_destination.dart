@@ -21,7 +21,7 @@ class ScraperDestination {
 
   factory ScraperDestination.fromMap(Map<String, dynamic> map) {
     return ScraperDestination(
-      amp: map['amp'] == null ? null : (ScraperDestinationAmp.fromMap((map['amp'] as Map).cast<String, dynamic>())).input(),
+      amp: map['amp'] == null ? null : ((ScraperDestinationAmp.fromMap((map['amp']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

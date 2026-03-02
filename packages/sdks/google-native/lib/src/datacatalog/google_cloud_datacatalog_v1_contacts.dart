@@ -22,7 +22,7 @@ class GoogleCloudDatacatalogV1Contacts {
 
   factory GoogleCloudDatacatalogV1Contacts.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1Contacts(
-      people: map['people'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1ContactsPerson>(map['people'], (value) => GoogleCloudDatacatalogV1ContactsPerson.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      people: map['people'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1ContactsPerson>(map['people']!, (value) => GoogleCloudDatacatalogV1ContactsPerson.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

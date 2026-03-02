@@ -27,7 +27,7 @@ class GetTopicPubsubV1beta2Args {
 
   factory GetTopicPubsubV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetTopicPubsubV1beta2Args(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       topicId: (map['topicId'] as String).input(),
     );
   }

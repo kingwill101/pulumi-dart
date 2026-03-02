@@ -21,7 +21,7 @@ class GoogleCloudDatacatalogV1CloudBigtableSystemSpec {
 
   factory GoogleCloudDatacatalogV1CloudBigtableSystemSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1CloudBigtableSystemSpec(
-      instanceDisplayName: map['instanceDisplayName'] == null ? null : (map['instanceDisplayName'] as String).input(),
+      instanceDisplayName: map['instanceDisplayName'] == null ? null : (map['instanceDisplayName']! as String).input(),
     );
   }
 }

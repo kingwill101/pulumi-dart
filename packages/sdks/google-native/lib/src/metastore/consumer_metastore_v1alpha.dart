@@ -21,7 +21,7 @@ class ConsumerMetastoreV1alpha {
 
   factory ConsumerMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return ConsumerMetastoreV1alpha(
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

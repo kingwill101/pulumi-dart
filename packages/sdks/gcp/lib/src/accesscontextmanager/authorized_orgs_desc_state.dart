@@ -80,14 +80,14 @@ class AuthorizedOrgsDescState {
 
   factory AuthorizedOrgsDescState.fromMap(Map<String, dynamic> map) {
     return AuthorizedOrgsDescState(
-      assetType: map['assetType'] == null ? null : (map['assetType'] as String).input(),
-      authorizationDirection: map['authorizationDirection'] == null ? null : (map['authorizationDirection'] as String).input(),
-      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgs: map['orgs'] == null ? null : ((map['orgs'] as List).cast<String>()).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      assetType: map['assetType'] == null ? null : (map['assetType']! as String).input(),
+      authorizationDirection: map['authorizationDirection'] == null ? null : (map['authorizationDirection']! as String).input(),
+      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgs: map['orgs'] == null ? null : ((map['orgs']! as List).cast<String>()).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

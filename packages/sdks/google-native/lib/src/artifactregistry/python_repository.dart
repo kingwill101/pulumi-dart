@@ -22,7 +22,7 @@ class PythonRepository {
 
   factory PythonRepository.fromMap(Map<String, dynamic> map) {
     return PythonRepository(
-      publicRepository: map['publicRepository'] == null ? null : (PythonRepositoryPublicRepository.fromValue(map['publicRepository'] as String)).input(),
+      publicRepository: map['publicRepository'] == null ? null : (PythonRepositoryPublicRepository.fromValue(map['publicRepository']! as String)).input(),
     );
   }
 }

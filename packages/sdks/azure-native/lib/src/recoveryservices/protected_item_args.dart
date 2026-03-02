@@ -66,13 +66,13 @@ class ProtectedItemArgs {
   factory ProtectedItemArgs.fromMap(Map<String, dynamic> map) {
     return ProtectedItemArgs(
       containerName: (map['containerName'] as String).input(),
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
       fabricName: (map['fabricName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (AzureFileshareProtectedItem.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      protectedItemName: map['protectedItemName'] == null ? null : (map['protectedItemName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (AzureFileshareProtectedItem.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      protectedItemName: map['protectedItemName'] == null ? null : (map['protectedItemName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vaultName: (map['vaultName'] as String).input(),
     );
   }

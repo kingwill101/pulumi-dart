@@ -47,9 +47,9 @@ class GroupArgs {
     return GroupArgs(
       filterExpression: (map['filterExpression'] as String).input(),
       groupName: (map['groupName'] as String).input(),
-      insightsConfiguration: map['insightsConfiguration'] == null ? null : (GroupInsightsConfiguration.fromMap((map['insightsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      insightsConfiguration: map['insightsConfiguration'] == null ? null : ((GroupInsightsConfiguration.fromMap((map['insightsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

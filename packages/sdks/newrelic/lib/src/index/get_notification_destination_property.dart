@@ -35,9 +35,9 @@ class GetNotificationDestinationProperty {
 
   factory GetNotificationDestinationProperty.fromMap(Map<String, dynamic> map) {
     return GetNotificationDestinationProperty(
-      displayValue: map['displayValue'] == null ? null : (map['displayValue'] as String).input(),
+      displayValue: map['displayValue'] == null ? null : (map['displayValue']! as String).input(),
       key: (map['key'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

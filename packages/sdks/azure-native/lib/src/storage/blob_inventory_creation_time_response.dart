@@ -21,7 +21,7 @@ class BlobInventoryCreationTimeResponse {
 
   factory BlobInventoryCreationTimeResponse.fromMap(Map<String, dynamic> map) {
     return BlobInventoryCreationTimeResponse(
-      lastNDays: map['lastNDays'] == null ? null : (map['lastNDays'] as int).input(),
+      lastNDays: map['lastNDays'] == null ? null : (map['lastNDays']! as int).input(),
     );
   }
 }

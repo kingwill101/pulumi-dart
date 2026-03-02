@@ -99,22 +99,22 @@ class DevEndpointArgs {
 
   factory DevEndpointArgs.fromMap(Map<String, dynamic> map) {
     return DevEndpointArgs(
-      arguments: map['arguments'] == null ? null : ((map['arguments'] as Map).cast<String, String>()).input(),
-      extraJarsS3Path: map['extraJarsS3Path'] == null ? null : (map['extraJarsS3Path'] as String).input(),
-      extraPythonLibsS3Path: map['extraPythonLibsS3Path'] == null ? null : (map['extraPythonLibsS3Path'] as String).input(),
-      glueVersion: map['glueVersion'] == null ? null : (map['glueVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      numberOfNodes: map['numberOfNodes'] == null ? null : (map['numberOfNodes'] as int).input(),
-      numberOfWorkers: map['numberOfWorkers'] == null ? null : (map['numberOfWorkers'] as int).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
-      publicKeys: map['publicKeys'] == null ? null : ((map['publicKeys'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arguments: map['arguments'] == null ? null : (((map['arguments'] as Map).cast<String, String>()).input()).input(),
+      extraJarsS3Path: map['extraJarsS3Path'] == null ? null : ((map['extraJarsS3Path'] as String).input()).input(),
+      extraPythonLibsS3Path: map['extraPythonLibsS3Path'] == null ? null : ((map['extraPythonLibsS3Path'] as String).input()).input(),
+      glueVersion: map['glueVersion'] == null ? null : ((map['glueVersion'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      numberOfNodes: map['numberOfNodes'] == null ? null : ((map['numberOfNodes'] as int).input()).input(),
+      numberOfWorkers: map['numberOfWorkers'] == null ? null : ((map['numberOfWorkers'] as int).input()).input(),
+      publicKey: map['publicKey'] == null ? null : ((map['publicKey'] as String).input()).input(),
+      publicKeys: map['publicKeys'] == null ? null : (((map['publicKeys'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      securityConfiguration: map['securityConfiguration'] == null ? null : (map['securityConfiguration'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workerType: map['workerType'] == null ? null : (map['workerType'] as String).input(),
+      securityConfiguration: map['securityConfiguration'] == null ? null : ((map['securityConfiguration'] as String).input()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      workerType: map['workerType'] == null ? null : ((map['workerType'] as String).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class JobDeliveryInfo {
 
   factory JobDeliveryInfo.fromMap(Map<String, dynamic> map) {
     return JobDeliveryInfo(
-      scheduledDateTime: map['scheduledDateTime'] == null ? null : (map['scheduledDateTime'] as String).input(),
+      scheduledDateTime: map['scheduledDateTime'] == null ? null : (map['scheduledDateTime']! as String).input(),
     );
   }
 }

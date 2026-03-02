@@ -56,12 +56,12 @@ class AccessGroupArgs {
 
   factory AccessGroupArgs.fromMap(Map<String, dynamic> map) {
     return AccessGroupArgs(
-      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
-      accessGroupType: map['accessGroupType'] == null ? null : (map['accessGroupType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName']! as String).input(),
+      accessGroupType: map['accessGroupType'] == null ? null : (map['accessGroupType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

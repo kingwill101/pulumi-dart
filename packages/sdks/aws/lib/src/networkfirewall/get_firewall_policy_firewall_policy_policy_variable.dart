@@ -20,7 +20,7 @@ class GetFirewallPolicyFirewallPolicyPolicyVariable {
 
   factory GetFirewallPolicyFirewallPolicyPolicyVariable.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyPolicyVariable(
-      ruleVariables: (pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariable>(map['ruleVariables'], (value) => GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleVariables: (pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariable>(map['ruleVariables']!, (value) => GetFirewallPolicyFirewallPolicyPolicyVariableRuleVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

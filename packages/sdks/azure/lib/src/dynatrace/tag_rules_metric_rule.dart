@@ -26,8 +26,8 @@ class TagRulesMetricRule {
 
   factory TagRulesMetricRule.fromMap(Map<String, dynamic> map) {
     return TagRulesMetricRule(
-      filteringTags: map['filteringTags'] == null ? null : (pulumi.Input.decodeList<TagRulesMetricRuleFilteringTag>(map['filteringTags'], (value) => TagRulesMetricRuleFilteringTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sendingMetricsEnabled: map['sendingMetricsEnabled'] == null ? null : (map['sendingMetricsEnabled'] as bool).input(),
+      filteringTags: map['filteringTags'] == null ? null : (pulumi.Input.decodeList<TagRulesMetricRuleFilteringTag>(map['filteringTags']!, (value) => TagRulesMetricRuleFilteringTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sendingMetricsEnabled: map['sendingMetricsEnabled'] == null ? null : (map['sendingMetricsEnabled']! as bool).input(),
     );
   }
 }

@@ -27,9 +27,9 @@ class DomainPage404Config {
 
   factory DomainPage404Config.fromMap(Map<String, dynamic> map) {
     return DomainPage404Config(
-      customPageUrl: map['customPageUrl'] == null ? null : (map['customPageUrl'] as String).input(),
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
-      pageType: map['pageType'] == null ? null : (map['pageType'] as String).input(),
+      customPageUrl: map['customPageUrl'] == null ? null : (map['customPageUrl']! as String).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
+      pageType: map['pageType'] == null ? null : (map['pageType']! as String).input(),
     );
   }
 }

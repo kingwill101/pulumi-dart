@@ -30,7 +30,7 @@ class OrganizationsAccessArgs {
   factory OrganizationsAccessArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationsAccessArgs(
       enabled: (map['enabled'] as bool).input(),
-      timeouts: map['timeouts'] == null ? null : (OrganizationsAccessTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : ((OrganizationsAccessTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

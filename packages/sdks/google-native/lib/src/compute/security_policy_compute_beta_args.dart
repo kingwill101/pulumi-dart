@@ -92,20 +92,20 @@ class SecurityPolicyComputeBetaArgs {
 
   factory SecurityPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyComputeBetaArgs(
-      adaptiveProtectionConfig: map['adaptiveProtectionConfig'] == null ? null : (SecurityPolicyAdaptiveProtectionConfigComputeBeta.fromMap((map['adaptiveProtectionConfig'] as Map).cast<String, dynamic>())).input(),
-      advancedOptionsConfig: map['advancedOptionsConfig'] == null ? null : (SecurityPolicyAdvancedOptionsConfigComputeBeta.fromMap((map['advancedOptionsConfig'] as Map).cast<String, dynamic>())).input(),
-      associations: map['associations'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyAssociationComputeBeta>(map['associations'], (value) => SecurityPolicyAssociationComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ddosProtectionConfig: map['ddosProtectionConfig'] == null ? null : (SecurityPolicyDdosProtectionConfigComputeBeta.fromMap((map['ddosProtectionConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      recaptchaOptionsConfig: map['recaptchaOptionsConfig'] == null ? null : (SecurityPolicyRecaptchaOptionsConfigComputeBeta.fromMap((map['recaptchaOptionsConfig'] as Map).cast<String, dynamic>())).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRuleComputeBeta>(map['rules'], (value) => SecurityPolicyRuleComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (SecurityPolicyTypeComputeBeta.fromValue(map['type'] as String)).input(),
-      userDefinedFields: map['userDefinedFields'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyUserDefinedFieldComputeBeta>(map['userDefinedFields'], (value) => SecurityPolicyUserDefinedFieldComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adaptiveProtectionConfig: map['adaptiveProtectionConfig'] == null ? null : (SecurityPolicyAdaptiveProtectionConfigComputeBeta.fromMap((map['adaptiveProtectionConfig']! as Map).cast<String, dynamic>())).input(),
+      advancedOptionsConfig: map['advancedOptionsConfig'] == null ? null : (SecurityPolicyAdvancedOptionsConfigComputeBeta.fromMap((map['advancedOptionsConfig']! as Map).cast<String, dynamic>())).input(),
+      associations: map['associations'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyAssociationComputeBeta>(map['associations']!, (value) => SecurityPolicyAssociationComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ddosProtectionConfig: map['ddosProtectionConfig'] == null ? null : (SecurityPolicyDdosProtectionConfigComputeBeta.fromMap((map['ddosProtectionConfig']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      recaptchaOptionsConfig: map['recaptchaOptionsConfig'] == null ? null : (SecurityPolicyRecaptchaOptionsConfigComputeBeta.fromMap((map['recaptchaOptionsConfig']! as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRuleComputeBeta>(map['rules']!, (value) => SecurityPolicyRuleComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (SecurityPolicyTypeComputeBeta.fromValue(map['type']! as String)).input(),
+      userDefinedFields: map['userDefinedFields'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyUserDefinedFieldComputeBeta>(map['userDefinedFields']!, (value) => SecurityPolicyUserDefinedFieldComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

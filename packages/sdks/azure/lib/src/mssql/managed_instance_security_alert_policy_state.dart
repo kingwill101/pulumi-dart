@@ -63,15 +63,15 @@ class ManagedInstanceSecurityAlertPolicyState {
 
   factory ManagedInstanceSecurityAlertPolicyState.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceSecurityAlertPolicyState(
-      disabledAlerts: map['disabledAlerts'] == null ? null : ((map['disabledAlerts'] as List).cast<String>()).input(),
-      emailAccountAdminsEnabled: map['emailAccountAdminsEnabled'] == null ? null : (map['emailAccountAdminsEnabled'] as bool).input(),
-      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      managedInstanceName: map['managedInstanceName'] == null ? null : (map['managedInstanceName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
-      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
+      disabledAlerts: map['disabledAlerts'] == null ? null : ((map['disabledAlerts']! as List).cast<String>()).input(),
+      emailAccountAdminsEnabled: map['emailAccountAdminsEnabled'] == null ? null : (map['emailAccountAdminsEnabled']! as bool).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      managedInstanceName: map['managedInstanceName'] == null ? null : (map['managedInstanceName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey']! as String).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint']! as String).input(),
     );
   }
 }

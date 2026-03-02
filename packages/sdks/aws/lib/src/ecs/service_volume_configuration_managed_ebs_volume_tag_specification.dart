@@ -30,9 +30,9 @@ class ServiceVolumeConfigurationManagedEbsVolumeTagSpecification {
 
   factory ServiceVolumeConfigurationManagedEbsVolumeTagSpecification.fromMap(Map<String, dynamic> map) {
     return ServiceVolumeConfigurationManagedEbsVolumeTagSpecification(
-      propagateTags: map['propagateTags'] == null ? null : (map['propagateTags'] as String).input(),
+      propagateTags: map['propagateTags'] == null ? null : ((map['propagateTags'] as String).input()).input(),
       resourceType: (map['resourceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

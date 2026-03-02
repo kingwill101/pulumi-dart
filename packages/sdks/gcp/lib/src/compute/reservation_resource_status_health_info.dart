@@ -33,9 +33,9 @@ class ReservationResourceStatusHealthInfo {
 
   factory ReservationResourceStatusHealthInfo.fromMap(Map<String, dynamic> map) {
     return ReservationResourceStatusHealthInfo(
-      degradedBlockCount: map['degradedBlockCount'] == null ? null : (map['degradedBlockCount'] as int).input(),
-      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus'] as String).input(),
-      healthyBlockCount: map['healthyBlockCount'] == null ? null : (map['healthyBlockCount'] as int).input(),
+      degradedBlockCount: map['degradedBlockCount'] == null ? null : (map['degradedBlockCount']! as int).input(),
+      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus']! as String).input(),
+      healthyBlockCount: map['healthyBlockCount'] == null ? null : (map['healthyBlockCount']! as int).input(),
     );
   }
 }

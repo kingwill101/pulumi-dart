@@ -70,12 +70,12 @@ class VolumeProjection {
 
   factory VolumeProjection.fromMap(Map<String, dynamic> map) {
     return VolumeProjection(
-      clusterTrustBundle: map['clusterTrustBundle'] == null ? null : (ClusterTrustBundleProjection.fromMap((map['clusterTrustBundle'] as Map).cast<String, dynamic>())).input(),
-      configMap: map['configMap'] == null ? null : (ConfigMapProjection.fromMap((map['configMap'] as Map).cast<String, dynamic>())).input(),
-      downwardAPI: map['downwardAPI'] == null ? null : (DownwardAPIProjection.fromMap((map['downwardAPI'] as Map).cast<String, dynamic>())).input(),
-      podCertificate: map['podCertificate'] == null ? null : (PodCertificateProjection.fromMap((map['podCertificate'] as Map).cast<String, dynamic>())).input(),
-      secret: map['secret'] == null ? null : (SecretProjection.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
-      serviceAccountToken: map['serviceAccountToken'] == null ? null : (ServiceAccountTokenProjection.fromMap((map['serviceAccountToken'] as Map).cast<String, dynamic>())).input(),
+      clusterTrustBundle: map['clusterTrustBundle'] == null ? null : (ClusterTrustBundleProjection.fromMap((map['clusterTrustBundle']! as Map).cast<String, dynamic>())).input(),
+      configMap: map['configMap'] == null ? null : (ConfigMapProjection.fromMap((map['configMap']! as Map).cast<String, dynamic>())).input(),
+      downwardAPI: map['downwardAPI'] == null ? null : (DownwardAPIProjection.fromMap((map['downwardAPI']! as Map).cast<String, dynamic>())).input(),
+      podCertificate: map['podCertificate'] == null ? null : (PodCertificateProjection.fromMap((map['podCertificate']! as Map).cast<String, dynamic>())).input(),
+      secret: map['secret'] == null ? null : (SecretProjection.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
+      serviceAccountToken: map['serviceAccountToken'] == null ? null : (ServiceAccountTokenProjection.fromMap((map['serviceAccountToken']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class PluginConfigTemplateAuthConfigTemplate {
 
   factory PluginConfigTemplateAuthConfigTemplate.fromMap(Map<String, dynamic> map) {
     return PluginConfigTemplateAuthConfigTemplate(
-      serviceAccount: map['serviceAccount'] == null ? null : (PluginConfigTemplateAuthConfigTemplateServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (PluginConfigTemplateAuthConfigTemplateServiceAccount.fromMap((map['serviceAccount']! as Map).cast<String, dynamic>())).input(),
       supportedAuthTypes: ((map['supportedAuthTypes'] as List).cast<String>()).input(),
     );
   }

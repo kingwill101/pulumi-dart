@@ -21,7 +21,7 @@ class ModelingInputDataResponse {
 
   factory ModelingInputDataResponse.fromMap(Map<String, dynamic> map) {
     return ModelingInputDataResponse(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
     );
   }
 }

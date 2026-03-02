@@ -101,16 +101,16 @@ class AlertPolicyArgs {
 
   factory AlertPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AlertPolicyArgs(
-      alertStrategy: map['alertStrategy'] == null ? null : (AlertPolicyAlertStrategy.fromMap((map['alertStrategy'] as Map).cast<String, dynamic>())).input(),
+      alertStrategy: map['alertStrategy'] == null ? null : (AlertPolicyAlertStrategy.fromMap((map['alertStrategy']! as Map).cast<String, dynamic>())).input(),
       combiner: (map['combiner'] as String).input(),
       conditions: (pulumi.Input.decodeList<AlertPolicyCondition>(map['conditions'], (value) => AlertPolicyCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       displayName: (map['displayName'] as String).input(),
-      documentation: map['documentation'] == null ? null : (AlertPolicyDocumentation.fromMap((map['documentation'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      notificationChannels: map['notificationChannels'] == null ? null : ((map['notificationChannels'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
+      documentation: map['documentation'] == null ? null : (AlertPolicyDocumentation.fromMap((map['documentation']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      notificationChannels: map['notificationChannels'] == null ? null : ((map['notificationChannels']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

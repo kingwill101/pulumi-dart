@@ -29,7 +29,7 @@ class GalleryScriptVersionProperties {
   factory GalleryScriptVersionProperties.fromMap(Map<String, dynamic> map) {
     return GalleryScriptVersionProperties(
       publishingProfile: (GalleryScriptVersionPublishingProfile.fromMap((map['publishingProfile'] as Map).cast<String, dynamic>())).input(),
-      safetyProfile: map['safetyProfile'] == null ? null : (GalleryScriptVersionSafetyProfile.fromMap((map['safetyProfile'] as Map).cast<String, dynamic>())).input(),
+      safetyProfile: map['safetyProfile'] == null ? null : (GalleryScriptVersionSafetyProfile.fromMap((map['safetyProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

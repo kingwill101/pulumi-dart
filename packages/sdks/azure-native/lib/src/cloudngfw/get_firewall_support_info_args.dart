@@ -34,7 +34,7 @@ class GetFirewallSupportInfoArgs {
 
   factory GetFirewallSupportInfoArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallSupportInfoArgs(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
       firewallName: (map['firewallName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

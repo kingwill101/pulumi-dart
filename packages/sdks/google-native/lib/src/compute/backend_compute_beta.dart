@@ -83,19 +83,19 @@ class BackendComputeBeta {
 
   factory BackendComputeBeta.fromMap(Map<String, dynamic> map) {
     return BackendComputeBeta(
-      balancingMode: map['balancingMode'] == null ? null : (BackendBalancingModeComputeBeta.fromValue(map['balancingMode'] as String)).input(),
-      capacityScaler: map['capacityScaler'] == null ? null : (map['capacityScaler'] as double).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      failover: map['failover'] == null ? null : (map['failover'] as bool).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections'] as int).input(),
-      maxConnectionsPerEndpoint: map['maxConnectionsPerEndpoint'] == null ? null : (map['maxConnectionsPerEndpoint'] as int).input(),
-      maxConnectionsPerInstance: map['maxConnectionsPerInstance'] == null ? null : (map['maxConnectionsPerInstance'] as int).input(),
-      maxRate: map['maxRate'] == null ? null : (map['maxRate'] as int).input(),
-      maxRatePerEndpoint: map['maxRatePerEndpoint'] == null ? null : (map['maxRatePerEndpoint'] as double).input(),
-      maxRatePerInstance: map['maxRatePerInstance'] == null ? null : (map['maxRatePerInstance'] as double).input(),
-      maxUtilization: map['maxUtilization'] == null ? null : (map['maxUtilization'] as double).input(),
-      preference: map['preference'] == null ? null : (BackendPreferenceComputeBeta.fromValue(map['preference'] as String)).input(),
+      balancingMode: map['balancingMode'] == null ? null : (BackendBalancingModeComputeBeta.fromValue(map['balancingMode']! as String)).input(),
+      capacityScaler: map['capacityScaler'] == null ? null : (map['capacityScaler']! as double).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      failover: map['failover'] == null ? null : (map['failover']! as bool).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections']! as int).input(),
+      maxConnectionsPerEndpoint: map['maxConnectionsPerEndpoint'] == null ? null : (map['maxConnectionsPerEndpoint']! as int).input(),
+      maxConnectionsPerInstance: map['maxConnectionsPerInstance'] == null ? null : (map['maxConnectionsPerInstance']! as int).input(),
+      maxRate: map['maxRate'] == null ? null : (map['maxRate']! as int).input(),
+      maxRatePerEndpoint: map['maxRatePerEndpoint'] == null ? null : (map['maxRatePerEndpoint']! as double).input(),
+      maxRatePerInstance: map['maxRatePerInstance'] == null ? null : (map['maxRatePerInstance']! as double).input(),
+      maxUtilization: map['maxUtilization'] == null ? null : (map['maxUtilization']! as double).input(),
+      preference: map['preference'] == null ? null : (BackendPreferenceComputeBeta.fromValue(map['preference']! as String)).input(),
     );
   }
 }

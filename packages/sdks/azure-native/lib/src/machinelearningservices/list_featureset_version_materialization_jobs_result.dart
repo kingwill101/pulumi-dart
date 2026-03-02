@@ -27,8 +27,8 @@ class ListFeaturesetVersionMaterializationJobsResult {
 
   factory ListFeaturesetVersionMaterializationJobsResult.fromMap(Map<String, dynamic> map) {
     return ListFeaturesetVersionMaterializationJobsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<FeaturesetJobResponse>(map['value'], (value) => FeaturesetJobResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<FeaturesetJobResponse>(map['value']!, (value) => FeaturesetJobResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

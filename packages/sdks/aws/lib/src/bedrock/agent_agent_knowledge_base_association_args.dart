@@ -57,12 +57,12 @@ class AgentAgentKnowledgeBaseAssociationArgs {
   factory AgentAgentKnowledgeBaseAssociationArgs.fromMap(Map<String, dynamic> map) {
     return AgentAgentKnowledgeBaseAssociationArgs(
       agentId: (map['agentId'] as String).input(),
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : ((map['agentVersion'] as String).input()).input(),
       description: (map['description'] as String).input(),
       knowledgeBaseId: (map['knowledgeBaseId'] as String).input(),
       knowledgeBaseState: (map['knowledgeBaseState'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentAgentKnowledgeBaseAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentAgentKnowledgeBaseAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

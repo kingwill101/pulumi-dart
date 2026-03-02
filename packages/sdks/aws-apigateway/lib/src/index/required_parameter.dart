@@ -23,8 +23,8 @@ class RequiredParameter {
 
   factory RequiredParameter.fromMap(Map<String, dynamic> map) {
     return RequiredParameter(
-      in_: map['in'] == null ? null : (map['in'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      in_: map['in'] == null ? null : (map['in']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

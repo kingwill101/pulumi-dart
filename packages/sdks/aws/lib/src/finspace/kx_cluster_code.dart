@@ -32,7 +32,7 @@ class KxClusterCode {
     return KxClusterCode(
       s3Bucket: (map['s3Bucket'] as String).input(),
       s3Key: (map['s3Key'] as String).input(),
-      s3ObjectVersion: map['s3ObjectVersion'] == null ? null : (map['s3ObjectVersion'] as String).input(),
+      s3ObjectVersion: map['s3ObjectVersion'] == null ? null : ((map['s3ObjectVersion'] as String).input()).input(),
     );
   }
 }

@@ -62,15 +62,15 @@ class AccessPointState {
 
   factory AccessPointState.fromMap(Map<String, dynamic> map) {
     return AccessPointState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      fileSystemArn: map['fileSystemArn'] == null ? null : (map['fileSystemArn'] as String).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      posixUser: map['posixUser'] == null ? null : (AccessPointPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rootDirectory: map['rootDirectory'] == null ? null : (AccessPointRootDirectory.fromMap((map['rootDirectory'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      fileSystemArn: map['fileSystemArn'] == null ? null : ((map['fileSystemArn'] as String).input()).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : ((map['fileSystemId'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      posixUser: map['posixUser'] == null ? null : ((AccessPointPosixUser.fromMap((map['posixUser']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rootDirectory: map['rootDirectory'] == null ? null : ((AccessPointRootDirectory.fromMap((map['rootDirectory']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

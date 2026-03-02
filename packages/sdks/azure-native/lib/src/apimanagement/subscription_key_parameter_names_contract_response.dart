@@ -26,8 +26,8 @@ class SubscriptionKeyParameterNamesContractResponse {
 
   factory SubscriptionKeyParameterNamesContractResponse.fromMap(Map<String, dynamic> map) {
     return SubscriptionKeyParameterNamesContractResponse(
-      header: map['header'] == null ? null : (map['header'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
+      header: map['header'] == null ? null : (map['header']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
     );
   }
 }

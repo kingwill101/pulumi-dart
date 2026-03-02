@@ -33,7 +33,7 @@ class GetNetworksResult {
     return GetNetworksResult(
       id: map['id'] as String,
       networks: pulumi.Input.decodeList<GetNetworksNetwork>(map['networks'], (value) => GetNetworksNetwork.fromMap((value as Map).cast<String, dynamic>())),
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

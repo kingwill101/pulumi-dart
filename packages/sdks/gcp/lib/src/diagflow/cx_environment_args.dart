@@ -42,9 +42,9 @@ class CxEnvironmentArgs {
 
   factory CxEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return CxEnvironmentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
       versionConfigs: (pulumi.Input.decodeList<CxEnvironmentVersionConfig>(map['versionConfigs'], (value) => CxEnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

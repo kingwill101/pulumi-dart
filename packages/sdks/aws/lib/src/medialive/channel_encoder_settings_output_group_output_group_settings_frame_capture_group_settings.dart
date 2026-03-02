@@ -25,8 +25,8 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSetti
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettings(
-      destination: (ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      frameCaptureCdnSettings: map['frameCaptureCdnSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsFrameCaptureCdnSettings.fromMap((map['frameCaptureCdnSettings'] as Map).cast<String, dynamic>())).input(),
+      destination: (ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      frameCaptureCdnSettings: map['frameCaptureCdnSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsFrameCaptureCdnSettings.fromMap((map['frameCaptureCdnSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

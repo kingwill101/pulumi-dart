@@ -34,9 +34,9 @@ class AiFeatureOnlineStoreDedicatedServingEndpoint {
 
   factory AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreDedicatedServingEndpoint(
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())).input(),
-      publicEndpointDomainName: map['publicEndpointDomainName'] == null ? null : (map['publicEndpointDomainName'] as String).input(),
-      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig']! as Map).cast<String, dynamic>())).input(),
+      publicEndpointDomainName: map['publicEndpointDomainName'] == null ? null : (map['publicEndpointDomainName']! as String).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment']! as String).input(),
     );
   }
 }

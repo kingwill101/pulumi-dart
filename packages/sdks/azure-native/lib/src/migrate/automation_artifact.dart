@@ -33,9 +33,9 @@ class AutomationArtifact {
 
   factory AutomationArtifact.fromMap(Map<String, dynamic> map) {
     return AutomationArtifact(
-      artifacts: map['artifacts'] == null ? null : ((map['artifacts'] as Map).cast<String, String>()).input(),
-      azureFileShareProfile: map['azureFileShareProfile'] == null ? null : (AzureFileShareHydrationProfile.fromMap((map['azureFileShareProfile'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      artifacts: map['artifacts'] == null ? null : ((map['artifacts']! as Map).cast<String, String>()).input(),
+      azureFileShareProfile: map['azureFileShareProfile'] == null ? null : (AzureFileShareHydrationProfile.fromMap((map['azureFileShareProfile']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

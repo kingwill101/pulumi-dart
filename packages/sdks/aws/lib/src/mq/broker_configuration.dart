@@ -25,8 +25,8 @@ class BrokerConfiguration {
 
   factory BrokerConfiguration.fromMap(Map<String, dynamic> map) {
     return BrokerConfiguration(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as int).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      revision: map['revision'] == null ? null : ((map['revision'] as int).input()).input(),
     );
   }
 }

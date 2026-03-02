@@ -27,8 +27,8 @@ class GoogleCloudIntegrationsV1alphaEventParameter {
 
   factory GoogleCloudIntegrationsV1alphaEventParameter.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaEventParameter(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      value: map['value'] == null ? null : (GoogleCloudIntegrationsV1alphaValueType.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      value: map['value'] == null ? null : (GoogleCloudIntegrationsV1alphaValueType.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

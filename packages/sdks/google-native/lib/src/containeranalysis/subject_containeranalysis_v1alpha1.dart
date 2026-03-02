@@ -26,8 +26,8 @@ class SubjectContaineranalysisV1alpha1 {
 
   factory SubjectContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SubjectContaineranalysisV1alpha1(
-      digest: map['digest'] == null ? null : ((map['digest'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      digest: map['digest'] == null ? null : ((map['digest']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class WebAclAssociationArgs {
 
   factory WebAclAssociationArgs.fromMap(Map<String, dynamic> map) {
     return WebAclAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceArn: (map['resourceArn'] as String).input(),
       webAclArn: (map['webAclArn'] as String).input(),
     );

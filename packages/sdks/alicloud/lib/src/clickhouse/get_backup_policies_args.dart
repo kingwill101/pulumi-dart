@@ -30,7 +30,7 @@ class GetBackupPoliciesArgs {
   factory GetBackupPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupPoliciesArgs(
       dbClusterId: (map['dbClusterId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

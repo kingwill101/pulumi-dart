@@ -42,11 +42,11 @@ class DeploymentSettingsGitSource {
 
   factory DeploymentSettingsGitSource.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsGitSource(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      commit: map['commit'] == null ? null : (map['commit'] as String).input(),
-      gitAuth: map['gitAuth'] == null ? null : (DeploymentSettingsGitSourceGitAuth.fromMap((map['gitAuth'] as Map).cast<String, dynamic>())).input(),
-      repoDir: map['repoDir'] == null ? null : (map['repoDir'] as String).input(),
-      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      commit: map['commit'] == null ? null : (map['commit']! as String).input(),
+      gitAuth: map['gitAuth'] == null ? null : (DeploymentSettingsGitSourceGitAuth.fromMap((map['gitAuth']! as Map).cast<String, dynamic>())).input(),
+      repoDir: map['repoDir'] == null ? null : (map['repoDir']! as String).input(),
+      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl']! as String).input(),
     );
   }
 }

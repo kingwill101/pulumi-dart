@@ -30,9 +30,9 @@ class BuildxBuilderKubernetesLimits {
 
   factory BuildxBuilderKubernetesLimits.fromMap(Map<String, dynamic> map) {
     return BuildxBuilderKubernetesLimits(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
-      ephemeralStorage: map['ephemeralStorage'] == null ? null : (map['ephemeralStorage'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as String).input(),
+      ephemeralStorage: map['ephemeralStorage'] == null ? null : (map['ephemeralStorage']! as String).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
     );
   }
 }

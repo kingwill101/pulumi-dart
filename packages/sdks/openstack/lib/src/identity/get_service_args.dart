@@ -40,10 +40,10 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

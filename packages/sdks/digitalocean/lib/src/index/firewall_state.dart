@@ -68,14 +68,14 @@ class FirewallState {
 
   factory FirewallState.fromMap(Map<String, dynamic> map) {
     return FirewallState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      dropletIds: map['dropletIds'] == null ? null : ((map['dropletIds'] as List).cast<int>()).input(),
-      inboundRules: map['inboundRules'] == null ? null : (pulumi.Input.decodeList<FirewallInboundRule>(map['inboundRules'], (value) => FirewallInboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outboundRules: map['outboundRules'] == null ? null : (pulumi.Input.decodeList<FirewallOutboundRule>(map['outboundRules'], (value) => FirewallOutboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pendingChanges: map['pendingChanges'] == null ? null : (pulumi.Input.decodeList<FirewallPendingChange>(map['pendingChanges'], (value) => FirewallPendingChange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      dropletIds: map['dropletIds'] == null ? null : ((map['dropletIds']! as List).cast<int>()).input(),
+      inboundRules: map['inboundRules'] == null ? null : (pulumi.Input.decodeList<FirewallInboundRule>(map['inboundRules']!, (value) => FirewallInboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outboundRules: map['outboundRules'] == null ? null : (pulumi.Input.decodeList<FirewallOutboundRule>(map['outboundRules']!, (value) => FirewallOutboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pendingChanges: map['pendingChanges'] == null ? null : (pulumi.Input.decodeList<FirewallPendingChange>(map['pendingChanges']!, (value) => FirewallPendingChange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class SecretArchiveSettings {
 
   factory SecretArchiveSettings.fromMap(Map<String, dynamic> map) {
     return SecretArchiveSettings(
-      associatedIdentity: map['associatedIdentity'] == null ? null : (IdentitySelector.fromMap((map['associatedIdentity'] as Map).cast<String, dynamic>())).input(),
-      vaultUri: map['vaultUri'] == null ? null : (map['vaultUri'] as String).input(),
+      associatedIdentity: map['associatedIdentity'] == null ? null : (IdentitySelector.fromMap((map['associatedIdentity']! as Map).cast<String, dynamic>())).input(),
+      vaultUri: map['vaultUri'] == null ? null : (map['vaultUri']! as String).input(),
     );
   }
 }

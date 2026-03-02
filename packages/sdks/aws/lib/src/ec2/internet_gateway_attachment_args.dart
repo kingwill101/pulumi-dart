@@ -35,7 +35,7 @@ class InternetGatewayAttachmentArgs {
   factory InternetGatewayAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InternetGatewayAttachmentArgs(
       internetGatewayId: (map['internetGatewayId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

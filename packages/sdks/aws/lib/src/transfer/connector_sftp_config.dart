@@ -25,8 +25,8 @@ class ConnectorSftpConfig {
 
   factory ConnectorSftpConfig.fromMap(Map<String, dynamic> map) {
     return ConnectorSftpConfig(
-      trustedHostKeys: map['trustedHostKeys'] == null ? null : ((map['trustedHostKeys'] as List).cast<String>()).input(),
-      userSecretId: map['userSecretId'] == null ? null : (map['userSecretId'] as String).input(),
+      trustedHostKeys: map['trustedHostKeys'] == null ? null : (((map['trustedHostKeys'] as List).cast<String>()).input()).input(),
+      userSecretId: map['userSecretId'] == null ? null : ((map['userSecretId'] as String).input()).input(),
     );
   }
 }

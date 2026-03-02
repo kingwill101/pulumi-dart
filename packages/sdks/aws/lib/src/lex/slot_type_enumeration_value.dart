@@ -25,7 +25,7 @@ class SlotTypeEnumerationValue {
 
   factory SlotTypeEnumerationValue.fromMap(Map<String, dynamic> map) {
     return SlotTypeEnumerationValue(
-      synonyms: map['synonyms'] == null ? null : ((map['synonyms'] as List).cast<String>()).input(),
+      synonyms: map['synonyms'] == null ? null : (((map['synonyms'] as List).cast<String>()).input()).input(),
       value: (map['value'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class ScheduledQueryLastRunSummaryErrorReportLocation {
 
   factory ScheduledQueryLastRunSummaryErrorReportLocation.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryErrorReportLocation(
-      s3ReportLocations: map['s3ReportLocations'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation>(map['s3ReportLocations'], (value) => ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3ReportLocations: map['s3ReportLocations'] == null ? null : ((pulumi.Input.decodeList<ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation>(map['s3ReportLocations']!, (value) => ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

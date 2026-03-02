@@ -102,22 +102,22 @@ class TrailArgs {
 
   factory TrailArgs.fromMap(Map<String, dynamic> map) {
     return TrailArgs(
-      advancedEventSelectors: map['advancedEventSelectors'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_cloudtrail.TrailAdvancedEventSelector>(map['advancedEventSelectors'], (value) => pulumi_aws_cloudtrail.TrailAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cloudWatchLogsGroup: map['cloudWatchLogsGroup'] == null ? null : (OptionalLogGroup.fromMap((map['cloudWatchLogsGroup'] as Map).cast<String, dynamic>())).input(),
-      enableLogFileValidation: map['enableLogFileValidation'] == null ? null : (map['enableLogFileValidation'] as bool).input(),
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
-      eventSelectors: map['eventSelectors'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_cloudtrail.TrailEventSelector>(map['eventSelectors'], (value) => pulumi_aws_cloudtrail.TrailEventSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includeGlobalServiceEvents: map['includeGlobalServiceEvents'] == null ? null : (map['includeGlobalServiceEvents'] as bool).input(),
-      insightSelectors: map['insightSelectors'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_cloudtrail.TrailInsightSelector>(map['insightSelectors'], (value) => pulumi_aws_cloudtrail.TrailInsightSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isMultiRegionTrail: map['isMultiRegionTrail'] == null ? null : (map['isMultiRegionTrail'] as bool).input(),
-      isOrganizationTrail: map['isOrganizationTrail'] == null ? null : (map['isOrganizationTrail'] as bool).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3Bucket: map['s3Bucket'] == null ? null : (RequiredBucket.fromMap((map['s3Bucket'] as Map).cast<String, dynamic>())).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
-      snsTopicName: map['snsTopicName'] == null ? null : (map['snsTopicName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      advancedEventSelectors: map['advancedEventSelectors'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_cloudtrail.TrailAdvancedEventSelector>(map['advancedEventSelectors']!, (value) => pulumi_aws_cloudtrail.TrailAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudWatchLogsGroup: map['cloudWatchLogsGroup'] == null ? null : (OptionalLogGroup.fromMap((map['cloudWatchLogsGroup']! as Map).cast<String, dynamic>())).input(),
+      enableLogFileValidation: map['enableLogFileValidation'] == null ? null : (map['enableLogFileValidation']! as bool).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
+      eventSelectors: map['eventSelectors'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_cloudtrail.TrailEventSelector>(map['eventSelectors']!, (value) => pulumi_aws_cloudtrail.TrailEventSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includeGlobalServiceEvents: map['includeGlobalServiceEvents'] == null ? null : (map['includeGlobalServiceEvents']! as bool).input(),
+      insightSelectors: map['insightSelectors'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_cloudtrail.TrailInsightSelector>(map['insightSelectors']!, (value) => pulumi_aws_cloudtrail.TrailInsightSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isMultiRegionTrail: map['isMultiRegionTrail'] == null ? null : (map['isMultiRegionTrail']! as bool).input(),
+      isOrganizationTrail: map['isOrganizationTrail'] == null ? null : (map['isOrganizationTrail']! as bool).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      s3Bucket: map['s3Bucket'] == null ? null : (RequiredBucket.fromMap((map['s3Bucket']! as Map).cast<String, dynamic>())).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix']! as String).input(),
+      snsTopicName: map['snsTopicName'] == null ? null : (map['snsTopicName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

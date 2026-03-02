@@ -26,8 +26,8 @@ class VPCResponse {
 
   factory VPCResponse.fromMap(Map<String, dynamic> map) {
     return VPCResponse(
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vpcRegion: map['vpcRegion'] == null ? null : (map['vpcRegion'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vpcRegion: map['vpcRegion'] == null ? null : (map['vpcRegion']! as String).input(),
     );
   }
 }

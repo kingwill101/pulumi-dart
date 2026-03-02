@@ -52,7 +52,7 @@ class DeveloperArgs {
 
   factory DeveloperArgs.fromMap(Map<String, dynamic> map) {
     return DeveloperArgs(
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAttribute>(map['attributes'], (value) => DeveloperAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAttribute>(map['attributes']!, (value) => DeveloperAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
       email: (map['email'] as String).input(),
       firstName: (map['firstName'] as String).input(),
       lastName: (map['lastName'] as String).input(),

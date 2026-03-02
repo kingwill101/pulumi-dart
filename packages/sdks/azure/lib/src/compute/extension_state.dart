@@ -96,19 +96,19 @@ class ExtensionState {
 
   factory ExtensionState.fromMap(Map<String, dynamic> map) {
     return ExtensionState(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
-      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : (map['automaticUpgradeEnabled'] as bool).input(),
-      failureSuppressionEnabled: map['failureSuppressionEnabled'] == null ? null : (map['failureSuppressionEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings'] as String).input(),
-      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : (ExtensionProtectedSettingsFromKeyVault.fromMap((map['protectedSettingsFromKeyVault'] as Map).cast<String, dynamic>())).input(),
-      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions'] as List).cast<String>()).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
-      settings: map['settings'] == null ? null : (map['settings'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
-      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion']! as bool).input(),
+      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : (map['automaticUpgradeEnabled']! as bool).input(),
+      failureSuppressionEnabled: map['failureSuppressionEnabled'] == null ? null : (map['failureSuppressionEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']! as String).input(),
+      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : (ExtensionProtectedSettingsFromKeyVault.fromMap((map['protectedSettingsFromKeyVault']! as Map).cast<String, dynamic>())).input(),
+      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions']! as List).cast<String>()).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
+      settings: map['settings'] == null ? null : (map['settings']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion']! as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId']! as String).input(),
     );
   }
 }

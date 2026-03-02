@@ -44,10 +44,10 @@ class AlertRuleAnyOfOrLeafCondition {
 
   factory AlertRuleAnyOfOrLeafCondition.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnyOfOrLeafCondition(
-      anyOf: map['anyOf'] == null ? null : (pulumi.Input.decodeList<AlertRuleLeafCondition>(map['anyOf'], (value) => AlertRuleLeafCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      containsAny: map['containsAny'] == null ? null : ((map['containsAny'] as List).cast<String>()).input(),
-      equals: map['equals'] == null ? null : (map['equals'] as String).input(),
-      field: map['field'] == null ? null : (map['field'] as String).input(),
+      anyOf: map['anyOf'] == null ? null : (pulumi.Input.decodeList<AlertRuleLeafCondition>(map['anyOf']!, (value) => AlertRuleLeafCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containsAny: map['containsAny'] == null ? null : ((map['containsAny']! as List).cast<String>()).input(),
+      equals: map['equals'] == null ? null : (map['equals']! as String).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
     );
   }
 }

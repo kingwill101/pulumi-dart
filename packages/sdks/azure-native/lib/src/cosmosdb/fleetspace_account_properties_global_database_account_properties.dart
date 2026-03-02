@@ -26,8 +26,8 @@ class FleetspaceAccountPropertiesGlobalDatabaseAccountProperties {
 
   factory FleetspaceAccountPropertiesGlobalDatabaseAccountProperties.fromMap(Map<String, dynamic> map) {
     return FleetspaceAccountPropertiesGlobalDatabaseAccountProperties(
-      armLocation: map['armLocation'] == null ? null : (map['armLocation'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      armLocation: map['armLocation'] == null ? null : (map['armLocation']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

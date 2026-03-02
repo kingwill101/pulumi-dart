@@ -33,8 +33,8 @@ class WorkloadStatusConfigAutomatic {
   factory WorkloadStatusConfigAutomatic.fromMap(Map<String, dynamic> map) {
     return WorkloadStatusConfigAutomatic(
       enabled: (map['enabled'] as bool).input(),
-      remainingEntitiesRule: map['remainingEntitiesRule'] == null ? null : (WorkloadStatusConfigAutomaticRemainingEntitiesRule.fromMap((map['remainingEntitiesRule'] as Map).cast<String, dynamic>())).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<WorkloadStatusConfigAutomaticRule>(map['rules'], (value) => WorkloadStatusConfigAutomaticRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remainingEntitiesRule: map['remainingEntitiesRule'] == null ? null : (WorkloadStatusConfigAutomaticRemainingEntitiesRule.fromMap((map['remainingEntitiesRule']! as Map).cast<String, dynamic>())).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<WorkloadStatusConfigAutomaticRule>(map['rules']!, (value) => WorkloadStatusConfigAutomaticRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

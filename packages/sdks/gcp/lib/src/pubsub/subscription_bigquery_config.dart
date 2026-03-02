@@ -52,12 +52,12 @@ class SubscriptionBigqueryConfig {
 
   factory SubscriptionBigqueryConfig.fromMap(Map<String, dynamic> map) {
     return SubscriptionBigqueryConfig(
-      dropUnknownFields: map['dropUnknownFields'] == null ? null : (map['dropUnknownFields'] as bool).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      dropUnknownFields: map['dropUnknownFields'] == null ? null : (map['dropUnknownFields']! as bool).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
       table: (map['table'] as String).input(),
-      useTableSchema: map['useTableSchema'] == null ? null : (map['useTableSchema'] as bool).input(),
-      useTopicSchema: map['useTopicSchema'] == null ? null : (map['useTopicSchema'] as bool).input(),
-      writeMetadata: map['writeMetadata'] == null ? null : (map['writeMetadata'] as bool).input(),
+      useTableSchema: map['useTableSchema'] == null ? null : (map['useTableSchema']! as bool).input(),
+      useTopicSchema: map['useTopicSchema'] == null ? null : (map['useTopicSchema']! as bool).input(),
+      writeMetadata: map['writeMetadata'] == null ? null : (map['writeMetadata']! as bool).input(),
     );
   }
 }

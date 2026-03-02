@@ -35,10 +35,10 @@ class IoTHubSharedAccessPolicy {
 
   factory IoTHubSharedAccessPolicy.fromMap(Map<String, dynamic> map) {
     return IoTHubSharedAccessPolicy(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
     );
   }
 }

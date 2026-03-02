@@ -21,7 +21,7 @@ class MachineConfig {
 
   factory MachineConfig.fromMap(Map<String, dynamic> map) {
     return MachineConfig(
-      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount'] as int).input(),
+      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount']! as int).input(),
     );
   }
 }

@@ -48,11 +48,11 @@ class DataAccessScopeDeniedDataAccessLabel {
 
   factory DataAccessScopeDeniedDataAccessLabel.fromMap(Map<String, dynamic> map) {
     return DataAccessScopeDeniedDataAccessLabel(
-      assetNamespace: map['assetNamespace'] == null ? null : (map['assetNamespace'] as String).input(),
-      dataAccessLabel: map['dataAccessLabel'] == null ? null : (map['dataAccessLabel'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      ingestionLabel: map['ingestionLabel'] == null ? null : (DataAccessScopeDeniedDataAccessLabelIngestionLabel.fromMap((map['ingestionLabel'] as Map).cast<String, dynamic>())).input(),
-      logType: map['logType'] == null ? null : (map['logType'] as String).input(),
+      assetNamespace: map['assetNamespace'] == null ? null : (map['assetNamespace']! as String).input(),
+      dataAccessLabel: map['dataAccessLabel'] == null ? null : (map['dataAccessLabel']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      ingestionLabel: map['ingestionLabel'] == null ? null : (DataAccessScopeDeniedDataAccessLabelIngestionLabel.fromMap((map['ingestionLabel']! as Map).cast<String, dynamic>())).input(),
+      logType: map['logType'] == null ? null : (map['logType']! as String).input(),
     );
   }
 }

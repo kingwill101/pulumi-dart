@@ -75,16 +75,16 @@ class TransferJobArgs {
 
   factory TransferJobArgs.fromMap(Map<String, dynamic> map) {
     return TransferJobArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eventStream: map['eventStream'] == null ? null : (EventStream.fromMap((map['eventStream'] as Map).cast<String, dynamic>())).input(),
-      latestOperationName: map['latestOperationName'] == null ? null : (map['latestOperationName'] as String).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (LoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (NotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      schedule: map['schedule'] == null ? null : (Schedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (TransferJobStatus.fromValue(map['status'] as String)).input(),
-      transferSpec: map['transferSpec'] == null ? null : (TransferSpec.fromMap((map['transferSpec'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      eventStream: map['eventStream'] == null ? null : (EventStream.fromMap((map['eventStream']! as Map).cast<String, dynamic>())).input(),
+      latestOperationName: map['latestOperationName'] == null ? null : (map['latestOperationName']! as String).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (LoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (NotificationConfig.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      schedule: map['schedule'] == null ? null : (Schedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (TransferJobStatus.fromValue(map['status']! as String)).input(),
+      transferSpec: map['transferSpec'] == null ? null : (TransferSpec.fromMap((map['transferSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

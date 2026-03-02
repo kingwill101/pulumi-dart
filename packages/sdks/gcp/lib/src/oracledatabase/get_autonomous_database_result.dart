@@ -125,7 +125,7 @@ class GetAutonomousDatabaseResult {
       odbNetwork: map['odbNetwork'] as String,
       odbSubnet: map['odbSubnet'] as String,
       peerAutonomousDatabases: (map['peerAutonomousDatabases'] as List).cast<String>(),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       properties: pulumi.Input.decodeList<GetAutonomousDatabaseProperty>(map['properties'], (value) => GetAutonomousDatabaseProperty.fromMap((value as Map).cast<String, dynamic>())),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       sourceConfigs: pulumi.Input.decodeList<GetAutonomousDatabaseSourceConfig>(map['sourceConfigs'], (value) => GetAutonomousDatabaseSourceConfig.fromMap((value as Map).cast<String, dynamic>())),

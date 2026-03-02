@@ -42,11 +42,11 @@ class ManagedClusterWindowsProfile {
 
   factory ManagedClusterWindowsProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterWindowsProfile(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
       adminUsername: (map['adminUsername'] as String).input(),
-      enableCSIProxy: map['enableCSIProxy'] == null ? null : (map['enableCSIProxy'] as bool).input(),
-      gmsaProfile: map['gmsaProfile'] == null ? null : (WindowsGmsaProfile.fromMap((map['gmsaProfile'] as Map).cast<String, dynamic>())).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      enableCSIProxy: map['enableCSIProxy'] == null ? null : (map['enableCSIProxy']! as bool).input(),
+      gmsaProfile: map['gmsaProfile'] == null ? null : (WindowsGmsaProfile.fromMap((map['gmsaProfile']! as Map).cast<String, dynamic>())).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
     );
   }
 }

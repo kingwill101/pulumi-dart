@@ -26,8 +26,8 @@ class GooglePrivacyDlpV2TransformationErrorHandling {
 
   factory GooglePrivacyDlpV2TransformationErrorHandling.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TransformationErrorHandling(
-      leaveUntransformed: map['leaveUntransformed'] == null ? null : ((map['leaveUntransformed'] as Map).cast<String, dynamic>()).input(),
-      throwError: map['throwError'] == null ? null : ((map['throwError'] as Map).cast<String, dynamic>()).input(),
+      leaveUntransformed: map['leaveUntransformed'] == null ? null : ((map['leaveUntransformed']! as Map).cast<String, dynamic>()).input(),
+      throwError: map['throwError'] == null ? null : ((map['throwError']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class ProvisioningDetails {
   factory ProvisioningDetails.fromMap(Map<String, dynamic> map) {
     return ProvisioningDetails(
       osProfile: (OsProvisionProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
-      userDetails: map['userDetails'] == null ? null : (pulumi.Input.decodeList<UserDetails>(map['userDetails'], (value) => UserDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userDetails: map['userDetails'] == null ? null : (pulumi.Input.decodeList<UserDetails>(map['userDetails']!, (value) => UserDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

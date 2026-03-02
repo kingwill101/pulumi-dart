@@ -80,17 +80,17 @@ class ProtocolServiceState {
 
   factory ProtocolServiceState.fromMap(Map<String, dynamic> map) {
     return ProtocolServiceState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      protocolServiceId: map['protocolServiceId'] == null ? null : (map['protocolServiceId'] as String).input(),
-      protocolSpec: map['protocolSpec'] == null ? null : (map['protocolSpec'] as String).input(),
-      protocolThroughput: map['protocolThroughput'] == null ? null : (map['protocolThroughput'] as int).input(),
-      protocolType: map['protocolType'] == null ? null : (map['protocolType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      protocolServiceId: map['protocolServiceId'] == null ? null : (map['protocolServiceId']! as String).input(),
+      protocolSpec: map['protocolSpec'] == null ? null : (map['protocolSpec']! as String).input(),
+      protocolThroughput: map['protocolThroughput'] == null ? null : (map['protocolThroughput']! as int).input(),
+      protocolType: map['protocolType'] == null ? null : (map['protocolType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

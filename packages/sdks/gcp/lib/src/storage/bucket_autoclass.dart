@@ -26,7 +26,7 @@ class BucketAutoclass {
   factory BucketAutoclass.fromMap(Map<String, dynamic> map) {
     return BucketAutoclass(
       enabled: (map['enabled'] as bool).input(),
-      terminalStorageClass: map['terminalStorageClass'] == null ? null : (map['terminalStorageClass'] as String).input(),
+      terminalStorageClass: map['terminalStorageClass'] == null ? null : (map['terminalStorageClass']! as String).input(),
     );
   }
 }

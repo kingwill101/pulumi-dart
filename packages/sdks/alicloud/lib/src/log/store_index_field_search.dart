@@ -56,14 +56,14 @@ class StoreIndexFieldSearch {
 
   factory StoreIndexFieldSearch.fromMap(Map<String, dynamic> map) {
     return StoreIndexFieldSearch(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
-      enableAnalytics: map['enableAnalytics'] == null ? null : (map['enableAnalytics'] as bool).input(),
-      includeChinese: map['includeChinese'] == null ? null : (map['includeChinese'] as bool).input(),
-      jsonKeys: map['jsonKeys'] == null ? null : (pulumi.Input.decodeList<StoreIndexFieldSearchJsonKey>(map['jsonKeys'], (value) => StoreIndexFieldSearchJsonKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive']! as bool).input(),
+      enableAnalytics: map['enableAnalytics'] == null ? null : (map['enableAnalytics']! as bool).input(),
+      includeChinese: map['includeChinese'] == null ? null : (map['includeChinese']! as bool).input(),
+      jsonKeys: map['jsonKeys'] == null ? null : (pulumi.Input.decodeList<StoreIndexFieldSearchJsonKey>(map['jsonKeys']!, (value) => StoreIndexFieldSearchJsonKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

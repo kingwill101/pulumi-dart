@@ -55,13 +55,13 @@ class IotHubDeviceUpdateAccountArgs {
 
   factory IotHubDeviceUpdateAccountArgs.fromMap(Map<String, dynamic> map) {
     return IotHubDeviceUpdateAccountArgs(
-      identity: map['identity'] == null ? null : (IotHubDeviceUpdateAccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      identity: map['identity'] == null ? null : (IotHubDeviceUpdateAccountIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

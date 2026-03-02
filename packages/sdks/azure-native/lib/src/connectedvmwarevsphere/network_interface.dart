@@ -47,12 +47,12 @@ class NetworkInterface {
 
   factory NetworkInterface.fromMap(Map<String, dynamic> map) {
     return NetworkInterface(
-      deviceKey: map['deviceKey'] == null ? null : (map['deviceKey'] as int).input(),
-      ipSettings: map['ipSettings'] == null ? null : (NicIPSettings.fromMap((map['ipSettings'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
-      nicType: map['nicType'] == null ? null : (map['nicType'] as String).input(),
-      powerOnBoot: map['powerOnBoot'] == null ? null : (map['powerOnBoot'] as String).input(),
+      deviceKey: map['deviceKey'] == null ? null : (map['deviceKey']! as int).input(),
+      ipSettings: map['ipSettings'] == null ? null : (NicIPSettings.fromMap((map['ipSettings']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
+      nicType: map['nicType'] == null ? null : (map['nicType']! as String).input(),
+      powerOnBoot: map['powerOnBoot'] == null ? null : (map['powerOnBoot']! as String).input(),
     );
   }
 }

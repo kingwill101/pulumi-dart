@@ -20,7 +20,7 @@ class SeedNodeResponse {
 
   factory SeedNodeResponse.fromMap(Map<String, dynamic> map) {
     return SeedNodeResponse(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
     );
   }
 }

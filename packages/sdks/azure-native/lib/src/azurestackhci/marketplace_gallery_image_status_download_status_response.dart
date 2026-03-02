@@ -21,7 +21,7 @@ class MarketplaceGalleryImageStatusDownloadStatusResponse {
 
   factory MarketplaceGalleryImageStatusDownloadStatusResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceGalleryImageStatusDownloadStatusResponse(
-      downloadSizeInMB: map['downloadSizeInMB'] == null ? null : (map['downloadSizeInMB'] as double).input(),
+      downloadSizeInMB: map['downloadSizeInMB'] == null ? null : (map['downloadSizeInMB']! as double).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ConnectionSparkSparkHistoryServerConfig {
 
   factory ConnectionSparkSparkHistoryServerConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionSparkSparkHistoryServerConfig(
-      dataprocCluster: map['dataprocCluster'] == null ? null : (map['dataprocCluster'] as String).input(),
+      dataprocCluster: map['dataprocCluster'] == null ? null : (map['dataprocCluster']! as String).input(),
     );
   }
 }

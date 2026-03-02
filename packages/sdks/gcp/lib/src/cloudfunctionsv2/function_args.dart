@@ -78,15 +78,15 @@ class FunctionArgs {
 
   factory FunctionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionArgs(
-      buildConfig: map['buildConfig'] == null ? null : (FunctionBuildConfig.fromMap((map['buildConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eventTrigger: map['eventTrigger'] == null ? null : (FunctionEventTrigger.fromMap((map['eventTrigger'] as Map).cast<String, dynamic>())).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      buildConfig: map['buildConfig'] == null ? null : (FunctionBuildConfig.fromMap((map['buildConfig']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      eventTrigger: map['eventTrigger'] == null ? null : (FunctionEventTrigger.fromMap((map['eventTrigger']! as Map).cast<String, dynamic>())).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceConfig: map['serviceConfig'] == null ? null : (FunctionServiceConfig.fromMap((map['serviceConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceConfig: map['serviceConfig'] == null ? null : (FunctionServiceConfig.fromMap((map['serviceConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

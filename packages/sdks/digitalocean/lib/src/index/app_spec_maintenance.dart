@@ -30,9 +30,9 @@ class AppSpecMaintenance {
 
   factory AppSpecMaintenance.fromMap(Map<String, dynamic> map) {
     return AppSpecMaintenance(
-      archive: map['archive'] == null ? null : (map['archive'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      offlinePageUrl: map['offlinePageUrl'] == null ? null : (map['offlinePageUrl'] as String).input(),
+      archive: map['archive'] == null ? null : (map['archive']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      offlinePageUrl: map['offlinePageUrl'] == null ? null : (map['offlinePageUrl']! as String).input(),
     );
   }
 }

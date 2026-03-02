@@ -22,7 +22,7 @@ class PriorityLevelConfigurationStatusPatch {
 
   factory PriorityLevelConfigurationStatusPatch.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationStatusPatch(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PriorityLevelConfigurationConditionPatch>(map['conditions'], (value) => PriorityLevelConfigurationConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PriorityLevelConfigurationConditionPatch>(map['conditions']!, (value) => PriorityLevelConfigurationConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -46,11 +46,11 @@ class PipeTargetParametersRedshiftDataParameters {
   factory PipeTargetParametersRedshiftDataParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersRedshiftDataParameters(
       database: (map['database'] as String).input(),
-      dbUser: map['dbUser'] == null ? null : (map['dbUser'] as String).input(),
-      secretManagerArn: map['secretManagerArn'] == null ? null : (map['secretManagerArn'] as String).input(),
+      dbUser: map['dbUser'] == null ? null : ((map['dbUser'] as String).input()).input(),
+      secretManagerArn: map['secretManagerArn'] == null ? null : ((map['secretManagerArn'] as String).input()).input(),
       sqls: ((map['sqls'] as List).cast<String>()).input(),
-      statementName: map['statementName'] == null ? null : (map['statementName'] as String).input(),
-      withEvent: map['withEvent'] == null ? null : (map['withEvent'] as bool).input(),
+      statementName: map['statementName'] == null ? null : ((map['statementName'] as String).input()).input(),
+      withEvent: map['withEvent'] == null ? null : ((map['withEvent'] as bool).input()).input(),
     );
   }
 }

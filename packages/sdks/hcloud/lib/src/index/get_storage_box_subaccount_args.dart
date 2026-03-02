@@ -44,11 +44,11 @@ class GetStorageBoxSubaccountArgs {
 
   factory GetStorageBoxSubaccountArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxSubaccountArgs(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       storageBoxId: (map['storageBoxId'] as int).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

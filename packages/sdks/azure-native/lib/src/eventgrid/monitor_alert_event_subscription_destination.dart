@@ -39,10 +39,10 @@ class MonitorAlertEventSubscriptionDestination {
 
   factory MonitorAlertEventSubscriptionDestination.fromMap(Map<String, dynamic> map) {
     return MonitorAlertEventSubscriptionDestination(
-      actionGroups: map['actionGroups'] == null ? null : ((map['actionGroups'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      actionGroups: map['actionGroups'] == null ? null : ((map['actionGroups']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       endpointType: (map['endpointType'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
     );
   }
 }

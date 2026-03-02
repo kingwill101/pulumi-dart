@@ -31,9 +31,9 @@ class GreyTagRouteScRule {
 
   factory GreyTagRouteScRule.fromMap(Map<String, dynamic> map) {
     return GreyTagRouteScRule(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<GreyTagRouteScRuleItem>(map['items'], (value) => GreyTagRouteScRuleItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<GreyTagRouteScRuleItem>(map['items']!, (value) => GreyTagRouteScRuleItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

@@ -35,11 +35,11 @@ class AADProperties {
 
   factory AADProperties.fromMap(Map<String, dynamic> map) {
     return AADProperties(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
-      servicePrincipalClientId: map['servicePrincipalClientId'] == null ? null : (map['servicePrincipalClientId'] as String).input(),
-      servicePrincipalObjectId: map['servicePrincipalObjectId'] == null ? null : (map['servicePrincipalObjectId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
+      servicePrincipalClientId: map['servicePrincipalClientId'] == null ? null : (map['servicePrincipalClientId']! as String).input(),
+      servicePrincipalObjectId: map['servicePrincipalObjectId'] == null ? null : (map['servicePrincipalObjectId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

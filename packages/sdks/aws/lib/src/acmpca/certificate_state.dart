@@ -68,16 +68,16 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      apiPassthrough: map['apiPassthrough'] == null ? null : (map['apiPassthrough'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : (map['certificateAuthorityArn'] as String).input(),
-      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
-      certificateSigningRequest: map['certificateSigningRequest'] == null ? null : (map['certificateSigningRequest'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      signingAlgorithm: map['signingAlgorithm'] == null ? null : (map['signingAlgorithm'] as String).input(),
-      templateArn: map['templateArn'] == null ? null : (map['templateArn'] as String).input(),
-      validity: map['validity'] == null ? null : (CertificateValidity.fromMap((map['validity'] as Map).cast<String, dynamic>())).input(),
+      apiPassthrough: map['apiPassthrough'] == null ? null : ((map['apiPassthrough'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      certificate: map['certificate'] == null ? null : ((map['certificate'] as String).input()).input(),
+      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : ((map['certificateAuthorityArn'] as String).input()).input(),
+      certificateChain: map['certificateChain'] == null ? null : ((map['certificateChain'] as String).input()).input(),
+      certificateSigningRequest: map['certificateSigningRequest'] == null ? null : ((map['certificateSigningRequest'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      signingAlgorithm: map['signingAlgorithm'] == null ? null : ((map['signingAlgorithm'] as String).input()).input(),
+      templateArn: map['templateArn'] == null ? null : ((map['templateArn'] as String).input()).input(),
+      validity: map['validity'] == null ? null : ((CertificateValidity.fromMap((map['validity']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

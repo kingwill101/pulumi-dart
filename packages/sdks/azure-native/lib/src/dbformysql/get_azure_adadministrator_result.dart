@@ -66,15 +66,15 @@ class GetAzureADAdministratorResult {
 
   factory GetAzureADAdministratorResult.fromMap(Map<String, dynamic> map) {
     return GetAzureADAdministratorResult(
-      administratorType: map['administratorType'] == null ? null : map['administratorType'] as String,
+      administratorType: map['administratorType'] == null ? null : map['administratorType']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identityResourceId: map['identityResourceId'] == null ? null : map['identityResourceId'] as String,
-      login: map['login'] == null ? null : map['login'] as String,
+      identityResourceId: map['identityResourceId'] == null ? null : map['identityResourceId']! as String,
+      login: map['login'] == null ? null : map['login']! as String,
       name: map['name'] as String,
-      sid: map['sid'] == null ? null : map['sid'] as String,
+      sid: map['sid'] == null ? null : map['sid']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
     );
   }

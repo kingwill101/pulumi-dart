@@ -54,12 +54,12 @@ class NetworkSecurityPerimeterLinkArgs {
 
   factory NetworkSecurityPerimeterLinkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterLinkArgs(
-      autoApprovedRemotePerimeterResourceId: map['autoApprovedRemotePerimeterResourceId'] == null ? null : (map['autoApprovedRemotePerimeterResourceId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      linkName: map['linkName'] == null ? null : (map['linkName'] as String).input(),
-      localInboundProfiles: map['localInboundProfiles'] == null ? null : ((map['localInboundProfiles'] as List).cast<String>()).input(),
+      autoApprovedRemotePerimeterResourceId: map['autoApprovedRemotePerimeterResourceId'] == null ? null : (map['autoApprovedRemotePerimeterResourceId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      linkName: map['linkName'] == null ? null : (map['linkName']! as String).input(),
+      localInboundProfiles: map['localInboundProfiles'] == null ? null : ((map['localInboundProfiles']! as List).cast<String>()).input(),
       networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
-      remoteInboundProfiles: map['remoteInboundProfiles'] == null ? null : ((map['remoteInboundProfiles'] as List).cast<String>()).input(),
+      remoteInboundProfiles: map['remoteInboundProfiles'] == null ? null : ((map['remoteInboundProfiles']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

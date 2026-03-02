@@ -20,7 +20,7 @@ class InstanceParams {
 
   factory InstanceParams.fromMap(Map<String, dynamic> map) {
     return InstanceParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class SoleTenantNodeTypeMigrationcenterV1alpha1 {
 
   factory SoleTenantNodeTypeMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return SoleTenantNodeTypeMigrationcenterV1alpha1(
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
     );
   }
 }

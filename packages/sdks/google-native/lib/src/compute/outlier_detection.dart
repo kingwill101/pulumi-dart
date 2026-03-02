@@ -72,17 +72,17 @@ class OutlierDetection {
 
   factory OutlierDetection.fromMap(Map<String, dynamic> map) {
     return OutlierDetection(
-      baseEjectionTime: map['baseEjectionTime'] == null ? null : (Duration.fromMap((map['baseEjectionTime'] as Map).cast<String, dynamic>())).input(),
-      consecutiveErrors: map['consecutiveErrors'] == null ? null : (map['consecutiveErrors'] as int).input(),
-      consecutiveGatewayFailure: map['consecutiveGatewayFailure'] == null ? null : (map['consecutiveGatewayFailure'] as int).input(),
-      enforcingConsecutiveErrors: map['enforcingConsecutiveErrors'] == null ? null : (map['enforcingConsecutiveErrors'] as int).input(),
-      enforcingConsecutiveGatewayFailure: map['enforcingConsecutiveGatewayFailure'] == null ? null : (map['enforcingConsecutiveGatewayFailure'] as int).input(),
-      enforcingSuccessRate: map['enforcingSuccessRate'] == null ? null : (map['enforcingSuccessRate'] as int).input(),
-      interval: map['interval'] == null ? null : (Duration.fromMap((map['interval'] as Map).cast<String, dynamic>())).input(),
-      maxEjectionPercent: map['maxEjectionPercent'] == null ? null : (map['maxEjectionPercent'] as int).input(),
-      successRateMinimumHosts: map['successRateMinimumHosts'] == null ? null : (map['successRateMinimumHosts'] as int).input(),
-      successRateRequestVolume: map['successRateRequestVolume'] == null ? null : (map['successRateRequestVolume'] as int).input(),
-      successRateStdevFactor: map['successRateStdevFactor'] == null ? null : (map['successRateStdevFactor'] as int).input(),
+      baseEjectionTime: map['baseEjectionTime'] == null ? null : (Duration.fromMap((map['baseEjectionTime']! as Map).cast<String, dynamic>())).input(),
+      consecutiveErrors: map['consecutiveErrors'] == null ? null : (map['consecutiveErrors']! as int).input(),
+      consecutiveGatewayFailure: map['consecutiveGatewayFailure'] == null ? null : (map['consecutiveGatewayFailure']! as int).input(),
+      enforcingConsecutiveErrors: map['enforcingConsecutiveErrors'] == null ? null : (map['enforcingConsecutiveErrors']! as int).input(),
+      enforcingConsecutiveGatewayFailure: map['enforcingConsecutiveGatewayFailure'] == null ? null : (map['enforcingConsecutiveGatewayFailure']! as int).input(),
+      enforcingSuccessRate: map['enforcingSuccessRate'] == null ? null : (map['enforcingSuccessRate']! as int).input(),
+      interval: map['interval'] == null ? null : (Duration.fromMap((map['interval']! as Map).cast<String, dynamic>())).input(),
+      maxEjectionPercent: map['maxEjectionPercent'] == null ? null : (map['maxEjectionPercent']! as int).input(),
+      successRateMinimumHosts: map['successRateMinimumHosts'] == null ? null : (map['successRateMinimumHosts']! as int).input(),
+      successRateRequestVolume: map['successRateRequestVolume'] == null ? null : (map['successRateRequestVolume']! as int).input(),
+      successRateStdevFactor: map['successRateStdevFactor'] == null ? null : (map['successRateStdevFactor']! as int).input(),
     );
   }
 }

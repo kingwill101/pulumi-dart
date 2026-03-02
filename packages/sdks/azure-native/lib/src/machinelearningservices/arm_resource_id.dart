@@ -22,7 +22,7 @@ class ArmResourceId {
 
   factory ArmResourceId.fromMap(Map<String, dynamic> map) {
     return ArmResourceId(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

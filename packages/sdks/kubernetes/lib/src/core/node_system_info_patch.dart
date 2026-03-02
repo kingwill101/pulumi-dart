@@ -72,17 +72,17 @@ class NodeSystemInfoPatch {
 
   factory NodeSystemInfoPatch.fromMap(Map<String, dynamic> map) {
     return NodeSystemInfoPatch(
-      architecture: map['architecture'] == null ? null : (map['architecture'] as String).input(),
-      bootID: map['bootID'] == null ? null : (map['bootID'] as String).input(),
-      containerRuntimeVersion: map['containerRuntimeVersion'] == null ? null : (map['containerRuntimeVersion'] as String).input(),
-      kernelVersion: map['kernelVersion'] == null ? null : (map['kernelVersion'] as String).input(),
-      kubeProxyVersion: map['kubeProxyVersion'] == null ? null : (map['kubeProxyVersion'] as String).input(),
-      kubeletVersion: map['kubeletVersion'] == null ? null : (map['kubeletVersion'] as String).input(),
-      machineID: map['machineID'] == null ? null : (map['machineID'] as String).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
-      osImage: map['osImage'] == null ? null : (map['osImage'] as String).input(),
-      swap: map['swap'] == null ? null : (NodeSwapStatusPatch.fromMap((map['swap'] as Map).cast<String, dynamic>())).input(),
-      systemUUID: map['systemUUID'] == null ? null : (map['systemUUID'] as String).input(),
+      architecture: map['architecture'] == null ? null : (map['architecture']! as String).input(),
+      bootID: map['bootID'] == null ? null : (map['bootID']! as String).input(),
+      containerRuntimeVersion: map['containerRuntimeVersion'] == null ? null : (map['containerRuntimeVersion']! as String).input(),
+      kernelVersion: map['kernelVersion'] == null ? null : (map['kernelVersion']! as String).input(),
+      kubeProxyVersion: map['kubeProxyVersion'] == null ? null : (map['kubeProxyVersion']! as String).input(),
+      kubeletVersion: map['kubeletVersion'] == null ? null : (map['kubeletVersion']! as String).input(),
+      machineID: map['machineID'] == null ? null : (map['machineID']! as String).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem']! as String).input(),
+      osImage: map['osImage'] == null ? null : (map['osImage']! as String).input(),
+      swap: map['swap'] == null ? null : (NodeSwapStatusPatch.fromMap((map['swap']! as Map).cast<String, dynamic>())).input(),
+      systemUUID: map['systemUUID'] == null ? null : (map['systemUUID']! as String).input(),
     );
   }
 }

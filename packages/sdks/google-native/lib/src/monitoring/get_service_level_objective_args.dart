@@ -43,7 +43,7 @@ class GetServiceLevelObjectiveArgs {
       serviceLevelObjectiveId: (map['serviceLevelObjectiveId'] as String).input(),
       v3Id: (map['v3Id'] as String).input(),
       v3Id1: (map['v3Id1'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

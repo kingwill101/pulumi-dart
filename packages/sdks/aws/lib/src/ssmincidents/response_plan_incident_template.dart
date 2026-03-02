@@ -46,11 +46,11 @@ class ResponsePlanIncidentTemplate {
 
   factory ResponsePlanIncidentTemplate.fromMap(Map<String, dynamic> map) {
     return ResponsePlanIncidentTemplate(
-      dedupeString: map['dedupeString'] == null ? null : (map['dedupeString'] as String).input(),
+      dedupeString: map['dedupeString'] == null ? null : ((map['dedupeString'] as String).input()).input(),
       impact: (map['impact'] as int).input(),
-      incidentTags: map['incidentTags'] == null ? null : ((map['incidentTags'] as Map).cast<String, String>()).input(),
-      notificationTargets: map['notificationTargets'] == null ? null : (pulumi.Input.decodeList<ResponsePlanIncidentTemplateNotificationTarget>(map['notificationTargets'], (value) => ResponsePlanIncidentTemplateNotificationTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
+      incidentTags: map['incidentTags'] == null ? null : (((map['incidentTags'] as Map).cast<String, String>()).input()).input(),
+      notificationTargets: map['notificationTargets'] == null ? null : ((pulumi.Input.decodeList<ResponsePlanIncidentTemplateNotificationTarget>(map['notificationTargets']!, (value) => ResponsePlanIncidentTemplateNotificationTarget.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      summary: map['summary'] == null ? null : ((map['summary'] as String).input()).input(),
       title: (map['title'] as String).input(),
     );
   }

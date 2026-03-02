@@ -33,9 +33,9 @@ class ConnectionStatus {
 
   factory ConnectionStatus.fromMap(Map<String, dynamic> map) {
     return ConnectionStatus(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

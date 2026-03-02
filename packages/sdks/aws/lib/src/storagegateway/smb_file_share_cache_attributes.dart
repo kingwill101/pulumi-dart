@@ -22,7 +22,7 @@ class SmbFileShareCacheAttributes {
 
   factory SmbFileShareCacheAttributes.fromMap(Map<String, dynamic> map) {
     return SmbFileShareCacheAttributes(
-      cacheStaleTimeoutInSeconds: map['cacheStaleTimeoutInSeconds'] == null ? null : (map['cacheStaleTimeoutInSeconds'] as int).input(),
+      cacheStaleTimeoutInSeconds: map['cacheStaleTimeoutInSeconds'] == null ? null : ((map['cacheStaleTimeoutInSeconds'] as int).input()).input(),
     );
   }
 }

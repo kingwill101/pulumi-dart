@@ -41,11 +41,11 @@ class VpdGrantRuleState {
 
   factory VpdGrantRuleState.fromMap(Map<String, dynamic> map) {
     return VpdGrantRuleState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      erId: map['erId'] == null ? null : (map['erId'] as String).input(),
-      grantTenantId: map['grantTenantId'] == null ? null : (map['grantTenantId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      erId: map['erId'] == null ? null : (map['erId']! as String).input(),
+      grantTenantId: map['grantTenantId'] == null ? null : (map['grantTenantId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
     );
   }
 }

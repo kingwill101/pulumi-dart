@@ -20,7 +20,7 @@ class ResponseHeadersPolicyCustomHeadersConfig {
 
   factory ResponseHeadersPolicyCustomHeadersConfig.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicyCustomHeadersConfig(
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<ResponseHeadersPolicyCustomHeadersConfigItem>(map['items'], (value) => ResponseHeadersPolicyCustomHeadersConfigItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      items: map['items'] == null ? null : ((pulumi.Input.decodeList<ResponseHeadersPolicyCustomHeadersConfigItem>(map['items']!, (value) => ResponseHeadersPolicyCustomHeadersConfigItem.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

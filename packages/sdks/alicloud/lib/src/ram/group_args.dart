@@ -42,10 +42,10 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      comments: map['comments'] == null ? null : (map['comments']! as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

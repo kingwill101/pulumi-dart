@@ -31,9 +31,9 @@ class UserArtifactSettingsResponse {
 
   factory UserArtifactSettingsResponse.fromMap(Map<String, dynamic> map) {
     return UserArtifactSettingsResponse(
-      configFileName: map['configFileName'] == null ? null : (map['configFileName'] as String).input(),
-      packageFileName: map['packageFileName'] == null ? null : (map['packageFileName'] as String).input(),
-      scriptBehaviorAfterReboot: map['scriptBehaviorAfterReboot'] == null ? null : (map['scriptBehaviorAfterReboot'] as String).input(),
+      configFileName: map['configFileName'] == null ? null : (map['configFileName']! as String).input(),
+      packageFileName: map['packageFileName'] == null ? null : (map['packageFileName']! as String).input(),
+      scriptBehaviorAfterReboot: map['scriptBehaviorAfterReboot'] == null ? null : (map['scriptBehaviorAfterReboot']! as String).input(),
     );
   }
 }

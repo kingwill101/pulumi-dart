@@ -71,16 +71,16 @@ class PrometheusAlertRuleArgs {
 
   factory PrometheusAlertRuleArgs.fromMap(Map<String, dynamic> map) {
     return PrometheusAlertRuleArgs(
-      annotations: map['annotations'] == null ? null : (pulumi.Input.decodeList<PrometheusAlertRuleAnnotation>(map['annotations'], (value) => PrometheusAlertRuleAnnotation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      annotations: map['annotations'] == null ? null : (pulumi.Input.decodeList<PrometheusAlertRuleAnnotation>(map['annotations']!, (value) => PrometheusAlertRuleAnnotation.fromMap((value as Map).cast<String, dynamic>()))).input(),
       clusterId: (map['clusterId'] as String).input(),
-      dispatchRuleId: map['dispatchRuleId'] == null ? null : (map['dispatchRuleId'] as String).input(),
+      dispatchRuleId: map['dispatchRuleId'] == null ? null : (map['dispatchRuleId']! as String).input(),
       duration: (map['duration'] as String).input(),
       expression: (map['expression'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<PrometheusAlertRuleLabel>(map['labels'], (value) => PrometheusAlertRuleLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<PrometheusAlertRuleLabel>(map['labels']!, (value) => PrometheusAlertRuleLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
       message: (map['message'] as String).input(),
-      notifyType: map['notifyType'] == null ? null : (map['notifyType'] as String).input(),
+      notifyType: map['notifyType'] == null ? null : (map['notifyType']! as String).input(),
       prometheusAlertRuleName: (map['prometheusAlertRuleName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

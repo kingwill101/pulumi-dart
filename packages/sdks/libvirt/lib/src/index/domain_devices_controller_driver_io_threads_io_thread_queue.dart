@@ -20,7 +20,7 @@ class DomainDevicesControllerDriverIoThreadsIoThreadQueue {
 
   factory DomainDevicesControllerDriverIoThreadsIoThreadQueue.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerDriverIoThreadsIoThreadQueue(
-      id: map['id'] == null ? null : (map['id'] as double).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
     );
   }
 }

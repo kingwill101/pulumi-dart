@@ -50,11 +50,11 @@ class GetPluginResult {
 
   factory GetPluginResult.fromMap(Map<String, dynamic> map) {
     return GetPluginResult(
-      alias: map['alias'] == null ? null : map['alias'] as String,
+      alias: map['alias'] == null ? null : map['alias']! as String,
       enabled: map['enabled'] as bool,
       envs: (map['envs'] as List).cast<String>(),
       grantAllPermissions: map['grantAllPermissions'] as bool,
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
       name: map['name'] as String,
       pluginReference: map['pluginReference'] as String,
     );

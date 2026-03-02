@@ -83,18 +83,18 @@ class PartnerTopicArgs {
 
   factory PartnerTopicArgs.fromMap(Map<String, dynamic> map) {
     return PartnerTopicArgs(
-      activationState: map['activationState'] == null ? null : (map['activationState'] as String).input(),
-      eventTypeInfo: map['eventTypeInfo'] == null ? null : (EventTypeInfo.fromMap((map['eventTypeInfo'] as Map).cast<String, dynamic>())).input(),
-      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : (map['expirationTimeIfNotActivatedUtc'] as String).input(),
-      identity: map['identity'] == null ? null : (IdentityInfo.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      messageForActivation: map['messageForActivation'] == null ? null : (map['messageForActivation'] as String).input(),
-      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : (map['partnerRegistrationImmutableId'] as String).input(),
-      partnerTopicFriendlyDescription: map['partnerTopicFriendlyDescription'] == null ? null : (map['partnerTopicFriendlyDescription'] as String).input(),
-      partnerTopicName: map['partnerTopicName'] == null ? null : (map['partnerTopicName'] as String).input(),
+      activationState: map['activationState'] == null ? null : (map['activationState']! as String).input(),
+      eventTypeInfo: map['eventTypeInfo'] == null ? null : (EventTypeInfo.fromMap((map['eventTypeInfo']! as Map).cast<String, dynamic>())).input(),
+      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : (map['expirationTimeIfNotActivatedUtc']! as String).input(),
+      identity: map['identity'] == null ? null : (IdentityInfo.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      messageForActivation: map['messageForActivation'] == null ? null : (map['messageForActivation']! as String).input(),
+      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : (map['partnerRegistrationImmutableId']! as String).input(),
+      partnerTopicFriendlyDescription: map['partnerTopicFriendlyDescription'] == null ? null : (map['partnerTopicFriendlyDescription']! as String).input(),
+      partnerTopicName: map['partnerTopicName'] == null ? null : (map['partnerTopicName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

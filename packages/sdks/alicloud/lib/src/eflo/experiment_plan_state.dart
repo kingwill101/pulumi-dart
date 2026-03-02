@@ -51,13 +51,13 @@ class ExperimentPlanState {
 
   factory ExperimentPlanState.fromMap(Map<String, dynamic> map) {
     return ExperimentPlanState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      externalParams: map['externalParams'] == null ? null : ((map['externalParams'] as Map).cast<String, String>()).input(),
-      planName: map['planName'] == null ? null : (map['planName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      externalParams: map['externalParams'] == null ? null : ((map['externalParams']! as Map).cast<String, String>()).input(),
+      planName: map['planName'] == null ? null : (map['planName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as int).input(),
     );
   }
 }

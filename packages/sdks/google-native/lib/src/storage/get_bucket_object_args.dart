@@ -60,15 +60,15 @@ class GetBucketObjectArgs {
   factory GetBucketObjectArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectArgs(
       bucket: (map['bucket'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
-      ifGenerationMatch: map['ifGenerationMatch'] == null ? null : (map['ifGenerationMatch'] as String).input(),
-      ifGenerationNotMatch: map['ifGenerationNotMatch'] == null ? null : (map['ifGenerationNotMatch'] as String).input(),
-      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : (map['ifMetagenerationMatch'] as String).input(),
-      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : (map['ifMetagenerationNotMatch'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
+      ifGenerationMatch: map['ifGenerationMatch'] == null ? null : (map['ifGenerationMatch']! as String).input(),
+      ifGenerationNotMatch: map['ifGenerationNotMatch'] == null ? null : (map['ifGenerationNotMatch']! as String).input(),
+      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : (map['ifMetagenerationMatch']! as String).input(),
+      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : (map['ifMetagenerationNotMatch']! as String).input(),
       object: (map['object'] as String).input(),
-      projection: map['projection'] == null ? null : (map['projection'] as String).input(),
-      softDeleted: map['softDeleted'] == null ? null : (map['softDeleted'] as bool).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
+      projection: map['projection'] == null ? null : (map['projection']! as String).input(),
+      softDeleted: map['softDeleted'] == null ? null : (map['softDeleted']! as bool).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
     );
   }
 }

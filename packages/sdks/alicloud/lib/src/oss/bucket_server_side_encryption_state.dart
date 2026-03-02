@@ -36,10 +36,10 @@ class BucketServerSideEncryptionState {
 
   factory BucketServerSideEncryptionState.fromMap(Map<String, dynamic> map) {
     return BucketServerSideEncryptionState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      kmsDataEncryption: map['kmsDataEncryption'] == null ? null : (map['kmsDataEncryption'] as String).input(),
-      kmsMasterKeyId: map['kmsMasterKeyId'] == null ? null : (map['kmsMasterKeyId'] as String).input(),
-      sseAlgorithm: map['sseAlgorithm'] == null ? null : (map['sseAlgorithm'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      kmsDataEncryption: map['kmsDataEncryption'] == null ? null : (map['kmsDataEncryption']! as String).input(),
+      kmsMasterKeyId: map['kmsMasterKeyId'] == null ? null : (map['kmsMasterKeyId']! as String).input(),
+      sseAlgorithm: map['sseAlgorithm'] == null ? null : (map['sseAlgorithm']! as String).input(),
     );
   }
 }

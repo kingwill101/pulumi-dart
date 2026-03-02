@@ -70,16 +70,16 @@ class ProbePatch {
 
   factory ProbePatch.fromMap(Map<String, dynamic> map) {
     return ProbePatch(
-      exec: map['exec'] == null ? null : (ExecActionPatch.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      grpc: map['grpc'] == null ? null : (GRPCActionPatch.fromMap((map['grpc'] as Map).cast<String, dynamic>())).input(),
-      httpGet: map['httpGet'] == null ? null : (HTTPGetActionPatch.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
-      tcpSocket: map['tcpSocket'] == null ? null : (TCPSocketActionPatch.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
-      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds'] as int).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      exec: map['exec'] == null ? null : (ExecActionPatch.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      grpc: map['grpc'] == null ? null : (GRPCActionPatch.fromMap((map['grpc']! as Map).cast<String, dynamic>())).input(),
+      httpGet: map['httpGet'] == null ? null : (HTTPGetActionPatch.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as int).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (TCPSocketActionPatch.fromMap((map['tcpSocket']! as Map).cast<String, dynamic>())).input(),
+      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds']! as int).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

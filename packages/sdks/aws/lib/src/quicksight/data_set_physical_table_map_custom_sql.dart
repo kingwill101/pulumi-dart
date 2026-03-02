@@ -36,7 +36,7 @@ class DataSetPhysicalTableMapCustomSql {
 
   factory DataSetPhysicalTableMapCustomSql.fromMap(Map<String, dynamic> map) {
     return DataSetPhysicalTableMapCustomSql(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<DataSetPhysicalTableMapCustomSqlColumn>(map['columns'], (value) => DataSetPhysicalTableMapCustomSqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: map['columns'] == null ? null : ((pulumi.Input.decodeList<DataSetPhysicalTableMapCustomSqlColumn>(map['columns']!, (value) => DataSetPhysicalTableMapCustomSqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       dataSourceArn: (map['dataSourceArn'] as String).input(),
       name: (map['name'] as String).input(),
       sqlQuery: (map['sqlQuery'] as String).input(),

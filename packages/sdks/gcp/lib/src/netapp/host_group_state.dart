@@ -85,18 +85,18 @@ class HostGroupState {
 
   factory HostGroupState.fromMap(Map<String, dynamic> map) {
     return HostGroupState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

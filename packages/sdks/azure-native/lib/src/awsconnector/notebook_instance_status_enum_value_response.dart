@@ -21,7 +21,7 @@ class NotebookInstanceStatusEnumValueResponse {
 
   factory NotebookInstanceStatusEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return NotebookInstanceStatusEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

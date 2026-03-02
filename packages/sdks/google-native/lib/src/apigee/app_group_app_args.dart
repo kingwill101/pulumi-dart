@@ -73,17 +73,17 @@ class AppGroupAppArgs {
 
   factory AppGroupAppArgs.fromMap(Map<String, dynamic> map) {
     return AppGroupAppArgs(
-      apiProducts: map['apiProducts'] == null ? null : ((map['apiProducts'] as List).cast<String>()).input(),
-      appGroup: map['appGroup'] == null ? null : (map['appGroup'] as String).input(),
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
+      apiProducts: map['apiProducts'] == null ? null : ((map['apiProducts']! as List).cast<String>()).input(),
+      appGroup: map['appGroup'] == null ? null : (map['appGroup']! as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
       appgroupId: (map['appgroupId'] as String).input(),
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes'], (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl'] as String).input(),
-      keyExpiresIn: map['keyExpiresIn'] == null ? null : (map['keyExpiresIn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes']!, (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl']! as String).input(),
+      keyExpiresIn: map['keyExpiresIn'] == null ? null : (map['keyExpiresIn']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

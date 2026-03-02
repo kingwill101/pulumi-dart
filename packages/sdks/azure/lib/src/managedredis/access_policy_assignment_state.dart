@@ -28,8 +28,8 @@ class AccessPolicyAssignmentState {
 
   factory AccessPolicyAssignmentState.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssignmentState(
-      managedRedisId: map['managedRedisId'] == null ? null : (map['managedRedisId'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      managedRedisId: map['managedRedisId'] == null ? null : (map['managedRedisId']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
     );
   }
 }

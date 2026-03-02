@@ -21,7 +21,7 @@ class NamedResourcesStringSlicePatch {
 
   factory NamedResourcesStringSlicePatch.fromMap(Map<String, dynamic> map) {
     return NamedResourcesStringSlicePatch(
-      strings: map['strings'] == null ? null : ((map['strings'] as List).cast<String>()).input(),
+      strings: map['strings'] == null ? null : ((map['strings']! as List).cast<String>()).input(),
     );
   }
 }

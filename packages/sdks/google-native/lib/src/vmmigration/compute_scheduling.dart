@@ -39,10 +39,10 @@ class ComputeScheduling {
 
   factory ComputeScheduling.fromMap(Map<String, dynamic> map) {
     return ComputeScheduling(
-      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus'] as int).input(),
-      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<SchedulingNodeAffinity>(map['nodeAffinities'], (value) => SchedulingNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      onHostMaintenance: map['onHostMaintenance'] == null ? null : (ComputeSchedulingOnHostMaintenance.fromValue(map['onHostMaintenance'] as String)).input(),
-      restartType: map['restartType'] == null ? null : (ComputeSchedulingRestartType.fromValue(map['restartType'] as String)).input(),
+      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus']! as int).input(),
+      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<SchedulingNodeAffinity>(map['nodeAffinities']!, (value) => SchedulingNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onHostMaintenance: map['onHostMaintenance'] == null ? null : (ComputeSchedulingOnHostMaintenance.fromValue(map['onHostMaintenance']! as String)).input(),
+      restartType: map['restartType'] == null ? null : (ComputeSchedulingRestartType.fromValue(map['restartType']! as String)).input(),
     );
   }
 }

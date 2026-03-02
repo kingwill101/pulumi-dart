@@ -77,15 +77,15 @@ class OccurenceState {
 
   factory OccurenceState.fromMap(Map<String, dynamic> map) {
     return OccurenceState(
-      attestation: map['attestation'] == null ? null : (OccurenceAttestation.fromMap((map['attestation'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      noteName: map['noteName'] == null ? null : (map['noteName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      remediation: map['remediation'] == null ? null : (map['remediation'] as String).input(),
-      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      attestation: map['attestation'] == null ? null : (OccurenceAttestation.fromMap((map['attestation']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      noteName: map['noteName'] == null ? null : (map['noteName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      remediation: map['remediation'] == null ? null : (map['remediation']! as String).input(),
+      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

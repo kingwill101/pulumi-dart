@@ -43,10 +43,10 @@ class ConnectorCapacityAutoscaling {
   factory ConnectorCapacityAutoscaling.fromMap(Map<String, dynamic> map) {
     return ConnectorCapacityAutoscaling(
       maxWorkerCount: (map['maxWorkerCount'] as int).input(),
-      mcuCount: map['mcuCount'] == null ? null : (map['mcuCount'] as int).input(),
+      mcuCount: map['mcuCount'] == null ? null : ((map['mcuCount'] as int).input()).input(),
       minWorkerCount: (map['minWorkerCount'] as int).input(),
-      scaleInPolicy: map['scaleInPolicy'] == null ? null : (ConnectorCapacityAutoscalingScaleInPolicy.fromMap((map['scaleInPolicy'] as Map).cast<String, dynamic>())).input(),
-      scaleOutPolicy: map['scaleOutPolicy'] == null ? null : (ConnectorCapacityAutoscalingScaleOutPolicy.fromMap((map['scaleOutPolicy'] as Map).cast<String, dynamic>())).input(),
+      scaleInPolicy: map['scaleInPolicy'] == null ? null : ((ConnectorCapacityAutoscalingScaleInPolicy.fromMap((map['scaleInPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      scaleOutPolicy: map['scaleOutPolicy'] == null ? null : ((ConnectorCapacityAutoscalingScaleOutPolicy.fromMap((map['scaleOutPolicy']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

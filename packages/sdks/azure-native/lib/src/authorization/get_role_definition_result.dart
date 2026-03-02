@@ -82,16 +82,16 @@ class GetRoleDefinitionResult {
 
   factory GetRoleDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetRoleDefinitionResult(
-      assignableScopes: map['assignableScopes'] == null ? null : (map['assignableScopes'] as List).cast<String>(),
+      assignableScopes: map['assignableScopes'] == null ? null : (map['assignableScopes']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       createdBy: map['createdBy'] as String,
       createdOn: map['createdOn'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      permissions: map['permissions'] == null ? null : pulumi.Input.decodeList<PermissionResponse>(map['permissions'], (value) => PermissionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      roleName: map['roleName'] == null ? null : map['roleName'] as String,
-      roleType: map['roleType'] == null ? null : map['roleType'] as String,
+      permissions: map['permissions'] == null ? null : pulumi.Input.decodeList<PermissionResponse>(map['permissions']!, (value) => PermissionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      roleName: map['roleName'] == null ? null : map['roleName']! as String,
+      roleType: map['roleType'] == null ? null : map['roleType']! as String,
       type: map['type'] as String,
       updatedBy: map['updatedBy'] as String,
       updatedOn: map['updatedOn'] as String,

@@ -32,8 +32,8 @@ class JustInTimeAccessPolicy {
 
   factory JustInTimeAccessPolicy.fromMap(Map<String, dynamic> map) {
     return JustInTimeAccessPolicy(
-      managedByTenantApprovers: map['managedByTenantApprovers'] == null ? null : (pulumi.Input.decodeList<EligibleApprover>(map['managedByTenantApprovers'], (value) => EligibleApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maximumActivationDuration: map['maximumActivationDuration'] == null ? null : (map['maximumActivationDuration'] as String).input(),
+      managedByTenantApprovers: map['managedByTenantApprovers'] == null ? null : (pulumi.Input.decodeList<EligibleApprover>(map['managedByTenantApprovers']!, (value) => EligibleApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maximumActivationDuration: map['maximumActivationDuration'] == null ? null : (map['maximumActivationDuration']! as String).input(),
       multiFactorAuthProvider: (map['multiFactorAuthProvider'] as String).input(),
     );
   }

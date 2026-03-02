@@ -50,9 +50,9 @@ class HyperVToAzStackHCIDiskInput {
       diskFileFormat: (map['diskFileFormat'] as String).input(),
       diskId: (map['diskId'] as String).input(),
       diskSizeGB: (map['diskSizeGB'] as double).input(),
-      isDynamic: map['isDynamic'] == null ? null : (map['isDynamic'] as bool).input(),
+      isDynamic: map['isDynamic'] == null ? null : (map['isDynamic']! as bool).input(),
       isOsDisk: (map['isOsDisk'] as bool).input(),
-      storageContainerId: map['storageContainerId'] == null ? null : (map['storageContainerId'] as String).input(),
+      storageContainerId: map['storageContainerId'] == null ? null : (map['storageContainerId']! as String).input(),
     );
   }
 }

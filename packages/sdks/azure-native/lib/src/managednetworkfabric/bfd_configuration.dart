@@ -26,8 +26,8 @@ class BfdConfiguration {
 
   factory BfdConfiguration.fromMap(Map<String, dynamic> map) {
     return BfdConfiguration(
-      intervalInMilliSeconds: map['intervalInMilliSeconds'] == null ? null : (map['intervalInMilliSeconds'] as int).input(),
-      multiplier: map['multiplier'] == null ? null : (map['multiplier'] as int).input(),
+      intervalInMilliSeconds: map['intervalInMilliSeconds'] == null ? null : (map['intervalInMilliSeconds']! as int).input(),
+      multiplier: map['multiplier'] == null ? null : (map['multiplier']! as int).input(),
     );
   }
 }

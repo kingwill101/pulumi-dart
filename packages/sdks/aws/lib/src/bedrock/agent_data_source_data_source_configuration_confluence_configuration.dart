@@ -25,8 +25,8 @@ class AgentDataSourceDataSourceConfigurationConfluenceConfiguration {
 
   factory AgentDataSourceDataSourceConfigurationConfluenceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationConfluenceConfiguration(
-      crawlerConfiguration: map['crawlerConfiguration'] == null ? null : (AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration.fromMap((map['crawlerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      sourceConfiguration: map['sourceConfiguration'] == null ? null : (AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration.fromMap((map['sourceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      crawlerConfiguration: map['crawlerConfiguration'] == null ? null : ((AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration.fromMap((map['crawlerConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      sourceConfiguration: map['sourceConfiguration'] == null ? null : ((AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration.fromMap((map['sourceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

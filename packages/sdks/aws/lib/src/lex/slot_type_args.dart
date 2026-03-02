@@ -57,12 +57,12 @@ class SlotTypeArgs {
 
   factory SlotTypeArgs.fromMap(Map<String, dynamic> map) {
     return SlotTypeArgs(
-      createVersion: map['createVersion'] == null ? null : (map['createVersion'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enumerationValues: (pulumi.Input.decodeList<SlotTypeEnumerationValue>(map['enumerationValues'], (value) => SlotTypeEnumerationValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      valueSelectionStrategy: map['valueSelectionStrategy'] == null ? null : (map['valueSelectionStrategy'] as String).input(),
+      createVersion: map['createVersion'] == null ? null : ((map['createVersion'] as bool).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      enumerationValues: (pulumi.Input.decodeList<SlotTypeEnumerationValue>(map['enumerationValues']!, (value) => SlotTypeEnumerationValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      valueSelectionStrategy: map['valueSelectionStrategy'] == null ? null : ((map['valueSelectionStrategy'] as String).input()).input(),
     );
   }
 }

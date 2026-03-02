@@ -51,13 +51,13 @@ class RandomIdState {
 
   factory RandomIdState.fromMap(Map<String, dynamic> map) {
     return RandomIdState(
-      b64Std: map['b64Std'] == null ? null : (map['b64Std'] as String).input(),
-      b64Url: map['b64Url'] == null ? null : (map['b64Url'] as String).input(),
-      byteLength: map['byteLength'] == null ? null : (map['byteLength'] as int).input(),
-      dec: map['dec'] == null ? null : (map['dec'] as String).input(),
-      hex: map['hex'] == null ? null : (map['hex'] as String).input(),
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      b64Std: map['b64Std'] == null ? null : (map['b64Std']! as String).input(),
+      b64Url: map['b64Url'] == null ? null : (map['b64Url']! as String).input(),
+      byteLength: map['byteLength'] == null ? null : (map['byteLength']! as int).input(),
+      dec: map['dec'] == null ? null : (map['dec']! as String).input(),
+      hex: map['hex'] == null ? null : (map['hex']! as String).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
     );
   }
 }

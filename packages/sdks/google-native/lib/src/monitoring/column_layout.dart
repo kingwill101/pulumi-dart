@@ -22,7 +22,7 @@ class ColumnLayout {
 
   factory ColumnLayout.fromMap(Map<String, dynamic> map) {
     return ColumnLayout(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<Column>(map['columns'], (value) => Column.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<Column>(map['columns']!, (value) => Column.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

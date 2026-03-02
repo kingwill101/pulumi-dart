@@ -57,11 +57,11 @@ class GetBackupsAutomaticAndOnDemandResult {
   factory GetBackupsAutomaticAndOnDemandResult.fromMap(Map<String, dynamic> map) {
     return GetBackupsAutomaticAndOnDemandResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      backupType: map['backupType'] == null ? null : map['backupType'] as String,
-      completedTime: map['completedTime'] == null ? null : map['completedTime'] as String,
+      backupType: map['backupType'] == null ? null : map['backupType']! as String,
+      completedTime: map['completedTime'] == null ? null : map['completedTime']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      source: map['source'] == null ? null : map['source']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

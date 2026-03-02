@@ -48,12 +48,12 @@ class PublicKeyState {
 
   factory PublicKeyState.fromMap(Map<String, dynamic> map) {
     return PublicKeyState(
-      callerReference: map['callerReference'] == null ? null : (map['callerReference'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      encodedKey: map['encodedKey'] == null ? null : (map['encodedKey'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      callerReference: map['callerReference'] == null ? null : ((map['callerReference'] as String).input()).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      encodedKey: map['encodedKey'] == null ? null : ((map['encodedKey'] as String).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
     );
   }
 }

@@ -46,7 +46,7 @@ class DataSourceWindowsEventArgs {
     return DataSourceWindowsEventArgs(
       eventLogName: (map['eventLogName'] as String).input(),
       eventTypes: ((map['eventTypes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

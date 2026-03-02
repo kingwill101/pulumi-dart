@@ -24,8 +24,8 @@ class WebAclRuleStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern {
 
   factory WebAclRuleStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern(
-      all: map['all'] == null ? null : ((map['all'] as Map).cast<String, dynamic>()).input(),
-      includedPaths: map['includedPaths'] == null ? null : ((map['includedPaths'] as List).cast<String>()).input(),
+      all: map['all'] == null ? null : (((map['all'] as Map).cast<String, dynamic>()).input()).input(),
+      includedPaths: map['includedPaths'] == null ? null : (((map['includedPaths'] as List).cast<String>()).input()).input(),
     );
   }
 }

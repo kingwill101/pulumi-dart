@@ -36,10 +36,10 @@ class OrganizationRoot {
 
   factory OrganizationRoot.fromMap(Map<String, dynamic> map) {
     return OrganizationRoot(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyTypes: map['policyTypes'] == null ? null : (pulumi.Input.decodeList<OrganizationRootPolicyType>(map['policyTypes'], (value) => OrganizationRootPolicyType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      policyTypes: map['policyTypes'] == null ? null : ((pulumi.Input.decodeList<OrganizationRootPolicyType>(map['policyTypes']!, (value) => OrganizationRootPolicyType.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

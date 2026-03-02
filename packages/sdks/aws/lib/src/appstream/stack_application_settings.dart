@@ -28,7 +28,7 @@ class StackApplicationSettings {
   factory StackApplicationSettings.fromMap(Map<String, dynamic> map) {
     return StackApplicationSettings(
       enabled: (map['enabled'] as bool).input(),
-      settingsGroup: map['settingsGroup'] == null ? null : (map['settingsGroup'] as String).input(),
+      settingsGroup: map['settingsGroup'] == null ? null : ((map['settingsGroup'] as String).input()).input(),
     );
   }
 }

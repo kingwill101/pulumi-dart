@@ -27,8 +27,8 @@ class KubernetesClusterMaintenanceWindow {
 
   factory KubernetesClusterMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterMaintenanceWindow(
-      alloweds: map['alloweds'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterMaintenanceWindowAllowed>(map['alloweds'], (value) => KubernetesClusterMaintenanceWindowAllowed.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notAlloweds: map['notAlloweds'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterMaintenanceWindowNotAllowed>(map['notAlloweds'], (value) => KubernetesClusterMaintenanceWindowNotAllowed.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alloweds: map['alloweds'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterMaintenanceWindowAllowed>(map['alloweds']!, (value) => KubernetesClusterMaintenanceWindowAllowed.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notAlloweds: map['notAlloweds'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterMaintenanceWindowNotAllowed>(map['notAlloweds']!, (value) => KubernetesClusterMaintenanceWindowNotAllowed.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

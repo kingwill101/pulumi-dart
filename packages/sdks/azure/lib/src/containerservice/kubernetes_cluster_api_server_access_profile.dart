@@ -30,9 +30,9 @@ class KubernetesClusterApiServerAccessProfile {
 
   factory KubernetesClusterApiServerAccessProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterApiServerAccessProfile(
-      authorizedIpRanges: map['authorizedIpRanges'] == null ? null : ((map['authorizedIpRanges'] as List).cast<String>()).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      virtualNetworkIntegrationEnabled: map['virtualNetworkIntegrationEnabled'] == null ? null : (map['virtualNetworkIntegrationEnabled'] as bool).input(),
+      authorizedIpRanges: map['authorizedIpRanges'] == null ? null : ((map['authorizedIpRanges']! as List).cast<String>()).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      virtualNetworkIntegrationEnabled: map['virtualNetworkIntegrationEnabled'] == null ? null : (map['virtualNetworkIntegrationEnabled']! as bool).input(),
     );
   }
 }

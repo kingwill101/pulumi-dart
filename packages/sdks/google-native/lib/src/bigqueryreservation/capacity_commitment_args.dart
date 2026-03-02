@@ -65,15 +65,15 @@ class CapacityCommitmentArgs {
 
   factory CapacityCommitmentArgs.fromMap(Map<String, dynamic> map) {
     return CapacityCommitmentArgs(
-      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : (map['capacityCommitmentId'] as String).input(),
-      edition: map['edition'] == null ? null : (CapacityCommitmentEdition.fromValue(map['edition'] as String)).input(),
-      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : (map['enforceSingleAdminProjectPerOrg'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : (map['multiRegionAuxiliary'] as bool).input(),
-      plan: map['plan'] == null ? null : (CapacityCommitmentPlan.fromValue(map['plan'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      renewalPlan: map['renewalPlan'] == null ? null : (CapacityCommitmentRenewalPlan.fromValue(map['renewalPlan'] as String)).input(),
-      slotCount: map['slotCount'] == null ? null : (map['slotCount'] as String).input(),
+      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : (map['capacityCommitmentId']! as String).input(),
+      edition: map['edition'] == null ? null : (CapacityCommitmentEdition.fromValue(map['edition']! as String)).input(),
+      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : (map['enforceSingleAdminProjectPerOrg']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : (map['multiRegionAuxiliary']! as bool).input(),
+      plan: map['plan'] == null ? null : (CapacityCommitmentPlan.fromValue(map['plan']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      renewalPlan: map['renewalPlan'] == null ? null : (CapacityCommitmentRenewalPlan.fromValue(map['renewalPlan']! as String)).input(),
+      slotCount: map['slotCount'] == null ? null : (map['slotCount']! as String).input(),
     );
   }
 }

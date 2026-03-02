@@ -42,11 +42,11 @@ class V2modelsIntentConfirmationSettingPromptSpecification {
 
   factory V2modelsIntentConfirmationSettingPromptSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecification(
-      allowInterrupt: map['allowInterrupt'] == null ? null : (map['allowInterrupt'] as bool).input(),
+      allowInterrupt: map['allowInterrupt'] == null ? null : ((map['allowInterrupt'] as bool).input()).input(),
       maxRetries: (map['maxRetries'] as int).input(),
-      messageGroups: map['messageGroups'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup>(map['messageGroups'], (value) => V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      messageSelectionStrategy: map['messageSelectionStrategy'] == null ? null : (map['messageSelectionStrategy'] as String).input(),
-      promptAttemptsSpecifications: map['promptAttemptsSpecifications'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification>(map['promptAttemptsSpecifications'], (value) => V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      messageGroups: map['messageGroups'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup>(map['messageGroups']!, (value) => V2modelsIntentConfirmationSettingPromptSpecificationMessageGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      messageSelectionStrategy: map['messageSelectionStrategy'] == null ? null : ((map['messageSelectionStrategy'] as String).input()).input(),
+      promptAttemptsSpecifications: map['promptAttemptsSpecifications'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification>(map['promptAttemptsSpecifications']!, (value) => V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

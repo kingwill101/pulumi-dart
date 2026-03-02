@@ -36,9 +36,9 @@ class SamlIdpConfigCloudidentityV1beta1 {
 
   factory SamlIdpConfigCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return SamlIdpConfigCloudidentityV1beta1(
-      changePasswordUri: map['changePasswordUri'] == null ? null : (map['changePasswordUri'] as String).input(),
+      changePasswordUri: map['changePasswordUri'] == null ? null : (map['changePasswordUri']! as String).input(),
       entityId: (map['entityId'] as String).input(),
-      logoutRedirectUri: map['logoutRedirectUri'] == null ? null : (map['logoutRedirectUri'] as String).input(),
+      logoutRedirectUri: map['logoutRedirectUri'] == null ? null : (map['logoutRedirectUri']! as String).input(),
       singleSignOnServiceUri: (map['singleSignOnServiceUri'] as String).input(),
     );
   }

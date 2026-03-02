@@ -25,7 +25,7 @@ class FailoverGroupReadWriteEndpointFailoverPolicy {
 
   factory FailoverGroupReadWriteEndpointFailoverPolicy.fromMap(Map<String, dynamic> map) {
     return FailoverGroupReadWriteEndpointFailoverPolicy(
-      graceMinutes: map['graceMinutes'] == null ? null : (map['graceMinutes'] as int).input(),
+      graceMinutes: map['graceMinutes'] == null ? null : (map['graceMinutes']! as int).input(),
       mode: (map['mode'] as String).input(),
     );
   }

@@ -60,10 +60,10 @@ class ImageIamBindingArgs {
 
   factory ImageIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return ImageIamBindingArgs(
-      condition: map['condition'] == null ? null : (ImageIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (ImageIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       image: (map['image'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

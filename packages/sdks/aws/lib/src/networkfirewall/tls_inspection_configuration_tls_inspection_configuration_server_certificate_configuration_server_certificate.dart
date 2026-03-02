@@ -20,7 +20,7 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
 
   factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate(
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
     );
   }
 }

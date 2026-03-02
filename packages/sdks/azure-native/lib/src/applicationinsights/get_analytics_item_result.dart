@@ -67,14 +67,14 @@ class GetAnalyticsItemResult {
   factory GetAnalyticsItemResult.fromMap(Map<String, dynamic> map) {
     return GetAnalyticsItemResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      content: map['content'] == null ? null : map['content'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      content: map['content'] == null ? null : map['content']! as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       properties: ApplicationInsightsComponentAnalyticsItemPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      scope: map['scope'] == null ? null : map['scope']! as String,
       timeCreated: map['timeCreated'] as String,
       timeModified: map['timeModified'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : map['type']! as String,
       version: map['version'] as String,
     );
   }

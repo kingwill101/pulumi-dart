@@ -64,14 +64,14 @@ class EventDestinationArgs {
 
   factory EventDestinationArgs.fromMap(Map<String, dynamic> map) {
     return EventDestinationArgs(
-      cloudwatchDestinations: map['cloudwatchDestinations'] == null ? null : (pulumi.Input.decodeList<EventDestinationCloudwatchDestination>(map['cloudwatchDestinations'], (value) => EventDestinationCloudwatchDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudwatchDestinations: map['cloudwatchDestinations'] == null ? null : ((pulumi.Input.decodeList<EventDestinationCloudwatchDestination>(map['cloudwatchDestinations']!, (value) => EventDestinationCloudwatchDestination.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       configurationSetName: (map['configurationSetName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      kinesisDestination: map['kinesisDestination'] == null ? null : (EventDestinationKinesisDestination.fromMap((map['kinesisDestination'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      kinesisDestination: map['kinesisDestination'] == null ? null : ((EventDestinationKinesisDestination.fromMap((map['kinesisDestination']! as Map).cast<String, dynamic>())).input()).input(),
       matchingTypes: ((map['matchingTypes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snsDestination: map['snsDestination'] == null ? null : (EventDestinationSnsDestination.fromMap((map['snsDestination'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      snsDestination: map['snsDestination'] == null ? null : ((EventDestinationSnsDestination.fromMap((map['snsDestination']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

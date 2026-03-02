@@ -26,8 +26,8 @@ class FieldMapping {
 
   factory FieldMapping.fromMap(Map<String, dynamic> map) {
     return FieldMapping(
-      columnName: map['columnName'] == null ? null : (map['columnName'] as String).input(),
-      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
+      columnName: map['columnName'] == null ? null : (map['columnName']! as String).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier']! as String).input(),
     );
   }
 }

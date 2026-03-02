@@ -52,7 +52,7 @@ class GetThreatIntelligenceIndicatorResult {
   factory GetThreatIntelligenceIndicatorResult.fromMap(Map<String, dynamic> map) {
     return GetThreatIntelligenceIndicatorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,

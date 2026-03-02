@@ -55,14 +55,14 @@ class PeeringAttachmentAccepterState {
 
   factory PeeringAttachmentAccepterState.fromMap(Map<String, dynamic> map) {
     return PeeringAttachmentAccepterState(
-      peerAccountId: map['peerAccountId'] == null ? null : (map['peerAccountId'] as String).input(),
-      peerRegion: map['peerRegion'] == null ? null : (map['peerRegion'] as String).input(),
-      peerTransitGatewayId: map['peerTransitGatewayId'] == null ? null : (map['peerTransitGatewayId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
+      peerAccountId: map['peerAccountId'] == null ? null : ((map['peerAccountId'] as String).input()).input(),
+      peerRegion: map['peerRegion'] == null ? null : ((map['peerRegion'] as String).input()).input(),
+      peerTransitGatewayId: map['peerTransitGatewayId'] == null ? null : ((map['peerTransitGatewayId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : ((map['transitGatewayAttachmentId'] as String).input()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
     );
   }
 }

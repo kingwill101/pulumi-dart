@@ -63,12 +63,12 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      charset: map['charset'] == null ? null : (map['charset'] as String).input(),
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      charset: map['charset'] == null ? null : (map['charset']! as String).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
       instance: (map['instance'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

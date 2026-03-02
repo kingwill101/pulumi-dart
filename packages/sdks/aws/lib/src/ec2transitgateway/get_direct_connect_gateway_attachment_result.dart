@@ -50,7 +50,7 @@ class GetDirectConnectGatewayAttachmentResult {
     return GetDirectConnectGatewayAttachmentResult(
       arn: map['arn'] as String,
       dxGatewayId: map['dxGatewayId'] == null ? null : map['dxGatewayId'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetDirectConnectGatewayAttachmentFilter>(map['filters'], (value) => GetDirectConnectGatewayAttachmentFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetDirectConnectGatewayAttachmentFilter>(map['filters']!, (value) => GetDirectConnectGatewayAttachmentFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),

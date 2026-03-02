@@ -36,10 +36,10 @@ class ViewDefinition {
 
   factory ViewDefinition.fromMap(Map<String, dynamic> map) {
     return ViewDefinition(
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      useExplicitColumnNames: map['useExplicitColumnNames'] == null ? null : (map['useExplicitColumnNames'] as bool).input(),
-      useLegacySql: map['useLegacySql'] == null ? null : (map['useLegacySql'] as bool).input(),
-      userDefinedFunctionResources: map['userDefinedFunctionResources'] == null ? null : (pulumi.Input.decodeList<UserDefinedFunctionResource>(map['userDefinedFunctionResources'], (value) => UserDefinedFunctionResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      useExplicitColumnNames: map['useExplicitColumnNames'] == null ? null : (map['useExplicitColumnNames']! as bool).input(),
+      useLegacySql: map['useLegacySql'] == null ? null : (map['useLegacySql']! as bool).input(),
+      userDefinedFunctionResources: map['userDefinedFunctionResources'] == null ? null : (pulumi.Input.decodeList<UserDefinedFunctionResource>(map['userDefinedFunctionResources']!, (value) => UserDefinedFunctionResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

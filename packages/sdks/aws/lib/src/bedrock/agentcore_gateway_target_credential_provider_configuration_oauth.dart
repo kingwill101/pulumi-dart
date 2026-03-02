@@ -30,7 +30,7 @@ class AgentcoreGatewayTargetCredentialProviderConfigurationOauth {
 
   factory AgentcoreGatewayTargetCredentialProviderConfigurationOauth.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetCredentialProviderConfigurationOauth(
-      customParameters: map['customParameters'] == null ? null : ((map['customParameters'] as Map).cast<String, String>()).input(),
+      customParameters: map['customParameters'] == null ? null : (((map['customParameters'] as Map).cast<String, String>()).input()).input(),
       providerArn: (map['providerArn'] as String).input(),
       scopes: ((map['scopes'] as List).cast<String>()).input(),
     );

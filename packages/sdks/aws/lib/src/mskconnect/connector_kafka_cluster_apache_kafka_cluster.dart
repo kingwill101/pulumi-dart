@@ -27,7 +27,7 @@ class ConnectorKafkaClusterApacheKafkaCluster {
   factory ConnectorKafkaClusterApacheKafkaCluster.fromMap(Map<String, dynamic> map) {
     return ConnectorKafkaClusterApacheKafkaCluster(
       bootstrapServers: (map['bootstrapServers'] as String).input(),
-      vpc: (ConnectorKafkaClusterApacheKafkaClusterVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())).input(),
+      vpc: (ConnectorKafkaClusterApacheKafkaClusterVpc.fromMap((map['vpc']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class NotificationReceiverValueResponse {
 
   factory NotificationReceiverValueResponse.fromMap(Map<String, dynamic> map) {
     return NotificationReceiverValueResponse(
-      distributionGroupListReceiverValue: map['distributionGroupListReceiverValue'] == null ? null : (DistributionGroupListReceiverValueResponse.fromMap((map['distributionGroupListReceiverValue'] as Map).cast<String, dynamic>())).input(),
-      subscriptionReceiverValue: map['subscriptionReceiverValue'] == null ? null : (SubscriptionReceiverValueResponse.fromMap((map['subscriptionReceiverValue'] as Map).cast<String, dynamic>())).input(),
-      userObjectReceiverValue: map['userObjectReceiverValue'] == null ? null : (UserObjectReceiverValueResponse.fromMap((map['userObjectReceiverValue'] as Map).cast<String, dynamic>())).input(),
+      distributionGroupListReceiverValue: map['distributionGroupListReceiverValue'] == null ? null : (DistributionGroupListReceiverValueResponse.fromMap((map['distributionGroupListReceiverValue']! as Map).cast<String, dynamic>())).input(),
+      subscriptionReceiverValue: map['subscriptionReceiverValue'] == null ? null : (SubscriptionReceiverValueResponse.fromMap((map['subscriptionReceiverValue']! as Map).cast<String, dynamic>())).input(),
+      userObjectReceiverValue: map['userObjectReceiverValue'] == null ? null : (UserObjectReceiverValueResponse.fromMap((map['userObjectReceiverValue']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

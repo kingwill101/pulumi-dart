@@ -26,7 +26,7 @@ class LinuxWebAppSlotLogsApplicationLogs {
 
   factory LinuxWebAppSlotLogsApplicationLogs.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSlotLogsApplicationLogs(
-      azureBlobStorage: map['azureBlobStorage'] == null ? null : (LinuxWebAppSlotLogsApplicationLogsAzureBlobStorage.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>())).input(),
+      azureBlobStorage: map['azureBlobStorage'] == null ? null : (LinuxWebAppSlotLogsApplicationLogsAzureBlobStorage.fromMap((map['azureBlobStorage']! as Map).cast<String, dynamic>())).input(),
       fileSystemLevel: (map['fileSystemLevel'] as String).input(),
     );
   }

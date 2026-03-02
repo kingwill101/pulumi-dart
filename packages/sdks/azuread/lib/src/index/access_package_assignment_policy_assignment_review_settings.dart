@@ -61,15 +61,15 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettings {
 
   factory AccessPackageAssignmentPolicyAssignmentReviewSettings.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyAssignmentReviewSettings(
-      accessRecommendationEnabled: map['accessRecommendationEnabled'] == null ? null : (map['accessRecommendationEnabled'] as bool).input(),
-      accessReviewTimeoutBehavior: map['accessReviewTimeoutBehavior'] == null ? null : (map['accessReviewTimeoutBehavior'] as String).input(),
-      approverJustificationRequired: map['approverJustificationRequired'] == null ? null : (map['approverJustificationRequired'] as bool).input(),
-      durationInDays: map['durationInDays'] == null ? null : (map['durationInDays'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      reviewFrequency: map['reviewFrequency'] == null ? null : (map['reviewFrequency'] as String).input(),
-      reviewType: map['reviewType'] == null ? null : (map['reviewType'] as String).input(),
-      reviewers: map['reviewers'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer>(map['reviewers'], (value) => AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startingOn: map['startingOn'] == null ? null : (map['startingOn'] as String).input(),
+      accessRecommendationEnabled: map['accessRecommendationEnabled'] == null ? null : (map['accessRecommendationEnabled']! as bool).input(),
+      accessReviewTimeoutBehavior: map['accessReviewTimeoutBehavior'] == null ? null : (map['accessReviewTimeoutBehavior']! as String).input(),
+      approverJustificationRequired: map['approverJustificationRequired'] == null ? null : (map['approverJustificationRequired']! as bool).input(),
+      durationInDays: map['durationInDays'] == null ? null : (map['durationInDays']! as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      reviewFrequency: map['reviewFrequency'] == null ? null : (map['reviewFrequency']! as String).input(),
+      reviewType: map['reviewType'] == null ? null : (map['reviewType']! as String).input(),
+      reviewers: map['reviewers'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer>(map['reviewers']!, (value) => AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startingOn: map['startingOn'] == null ? null : (map['startingOn']! as String).input(),
     );
   }
 }

@@ -56,13 +56,13 @@ class IntegrationServiceEnvironmentManagedApiArgs {
 
   factory IntegrationServiceEnvironmentManagedApiArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmentManagedApiArgs(
-      apiName: map['apiName'] == null ? null : (map['apiName'] as String).input(),
-      deploymentParameters: map['deploymentParameters'] == null ? null : (IntegrationServiceEnvironmentManagedApiDeploymentParameters.fromMap((map['deploymentParameters'] as Map).cast<String, dynamic>())).input(),
-      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : (ResourceReference.fromMap((map['integrationServiceEnvironment'] as Map).cast<String, dynamic>())).input(),
+      apiName: map['apiName'] == null ? null : (map['apiName']! as String).input(),
+      deploymentParameters: map['deploymentParameters'] == null ? null : (IntegrationServiceEnvironmentManagedApiDeploymentParameters.fromMap((map['deploymentParameters']! as Map).cast<String, dynamic>())).input(),
+      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : (ResourceReference.fromMap((map['integrationServiceEnvironment']! as Map).cast<String, dynamic>())).input(),
       integrationServiceEnvironmentName: (map['integrationServiceEnvironmentName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroup: (map['resourceGroup'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class Persistence {
 
   factory Persistence.fromMap(Map<String, dynamic> map) {
     return Persistence(
-      aofEnabled: map['aofEnabled'] == null ? null : (map['aofEnabled'] as bool).input(),
-      aofFrequency: map['aofFrequency'] == null ? null : (map['aofFrequency'] as String).input(),
-      rdbEnabled: map['rdbEnabled'] == null ? null : (map['rdbEnabled'] as bool).input(),
-      rdbFrequency: map['rdbFrequency'] == null ? null : (map['rdbFrequency'] as String).input(),
+      aofEnabled: map['aofEnabled'] == null ? null : (map['aofEnabled']! as bool).input(),
+      aofFrequency: map['aofFrequency'] == null ? null : (map['aofFrequency']! as String).input(),
+      rdbEnabled: map['rdbEnabled'] == null ? null : (map['rdbEnabled']! as bool).input(),
+      rdbFrequency: map['rdbFrequency'] == null ? null : (map['rdbFrequency']! as String).input(),
     );
   }
 }

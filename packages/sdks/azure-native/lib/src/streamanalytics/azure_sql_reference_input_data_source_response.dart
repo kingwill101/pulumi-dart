@@ -67,16 +67,16 @@ class AzureSqlReferenceInputDataSourceResponse {
 
   factory AzureSqlReferenceInputDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return AzureSqlReferenceInputDataSourceResponse(
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      deltaSnapshotQuery: map['deltaSnapshotQuery'] == null ? null : (map['deltaSnapshotQuery'] as String).input(),
-      fullSnapshotQuery: map['fullSnapshotQuery'] == null ? null : (map['fullSnapshotQuery'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      refreshRate: map['refreshRate'] == null ? null : (map['refreshRate'] as String).input(),
-      refreshType: map['refreshType'] == null ? null : (map['refreshType'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      deltaSnapshotQuery: map['deltaSnapshotQuery'] == null ? null : (map['deltaSnapshotQuery']! as String).input(),
+      fullSnapshotQuery: map['fullSnapshotQuery'] == null ? null : (map['fullSnapshotQuery']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      refreshRate: map['refreshRate'] == null ? null : (map['refreshRate']! as String).input(),
+      refreshType: map['refreshType'] == null ? null : (map['refreshType']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
       type: (map['type'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

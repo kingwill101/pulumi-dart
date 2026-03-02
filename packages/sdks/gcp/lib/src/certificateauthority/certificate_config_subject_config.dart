@@ -30,7 +30,7 @@ class CertificateConfigSubjectConfig {
   factory CertificateConfigSubjectConfig.fromMap(Map<String, dynamic> map) {
     return CertificateConfigSubjectConfig(
       subject: (CertificateConfigSubjectConfigSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
-      subjectAltName: map['subjectAltName'] == null ? null : (CertificateConfigSubjectConfigSubjectAltName.fromMap((map['subjectAltName'] as Map).cast<String, dynamic>())).input(),
+      subjectAltName: map['subjectAltName'] == null ? null : (CertificateConfigSubjectConfigSubjectAltName.fromMap((map['subjectAltName']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

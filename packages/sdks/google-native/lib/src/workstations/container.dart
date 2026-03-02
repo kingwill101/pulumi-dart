@@ -46,12 +46,12 @@ class Container {
 
   factory Container.fromMap(Map<String, dynamic> map) {
     return Container(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
-      env: map['env'] == null ? null : ((map['env'] as Map).cast<String, String>()).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
-      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
+      env: map['env'] == null ? null : ((map['env']! as Map).cast<String, String>()).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser']! as int).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir']! as String).input(),
     );
   }
 }

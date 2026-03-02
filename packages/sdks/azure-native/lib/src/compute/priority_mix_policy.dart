@@ -26,8 +26,8 @@ class PriorityMixPolicy {
 
   factory PriorityMixPolicy.fromMap(Map<String, dynamic> map) {
     return PriorityMixPolicy(
-      baseRegularPriorityCount: map['baseRegularPriorityCount'] == null ? null : (map['baseRegularPriorityCount'] as int).input(),
-      regularPriorityPercentageAboveBase: map['regularPriorityPercentageAboveBase'] == null ? null : (map['regularPriorityPercentageAboveBase'] as int).input(),
+      baseRegularPriorityCount: map['baseRegularPriorityCount'] == null ? null : (map['baseRegularPriorityCount']! as int).input(),
+      regularPriorityPercentageAboveBase: map['regularPriorityPercentageAboveBase'] == null ? null : (map['regularPriorityPercentageAboveBase']! as int).input(),
     );
   }
 }

@@ -67,16 +67,16 @@ class DaemonSetStatus {
 
   factory DaemonSetStatus.fromMap(Map<String, dynamic> map) {
     return DaemonSetStatus(
-      collisionCount: map['collisionCount'] == null ? null : (map['collisionCount'] as int).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<DaemonSetCondition>(map['conditions'], (value) => DaemonSetCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      collisionCount: map['collisionCount'] == null ? null : (map['collisionCount']! as int).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<DaemonSetCondition>(map['conditions']!, (value) => DaemonSetCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       currentNumberScheduled: (map['currentNumberScheduled'] as int).input(),
       desiredNumberScheduled: (map['desiredNumberScheduled'] as int).input(),
-      numberAvailable: map['numberAvailable'] == null ? null : (map['numberAvailable'] as int).input(),
+      numberAvailable: map['numberAvailable'] == null ? null : (map['numberAvailable']! as int).input(),
       numberMisscheduled: (map['numberMisscheduled'] as int).input(),
       numberReady: (map['numberReady'] as int).input(),
-      numberUnavailable: map['numberUnavailable'] == null ? null : (map['numberUnavailable'] as int).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
-      updatedNumberScheduled: map['updatedNumberScheduled'] == null ? null : (map['updatedNumberScheduled'] as int).input(),
+      numberUnavailable: map['numberUnavailable'] == null ? null : (map['numberUnavailable']! as int).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      updatedNumberScheduled: map['updatedNumberScheduled'] == null ? null : (map['updatedNumberScheduled']! as int).input(),
     );
   }
 }

@@ -67,13 +67,13 @@ class TaskPropertiesResponse {
   factory TaskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TaskPropertiesResponse(
       completionDate: (map['completionDate'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       isEditable: (map['isEditable'] as bool).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       scope: (map['scope'] as String).input(),
       scopeId: (map['scopeId'] as String).input(),
-      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      stage: map['stage'] == null ? null : (map['stage']! as String).input(),
       status: (map['status'] as String).input(),
       taskType: (map['taskType'] as String).input(),
     );

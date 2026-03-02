@@ -20,7 +20,7 @@ class ProjectDataDeliveryCloudwatchLogs {
 
   factory ProjectDataDeliveryCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return ProjectDataDeliveryCloudwatchLogs(
-      logGroup: map['logGroup'] == null ? null : (map['logGroup'] as String).input(),
+      logGroup: map['logGroup'] == null ? null : ((map['logGroup'] as String).input()).input(),
     );
   }
 }

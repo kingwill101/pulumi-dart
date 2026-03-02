@@ -59,14 +59,14 @@ class ZoneState {
 
   factory ZoneState.fromMap(Map<String, dynamic> map) {
     return ZoneState(
-      maxNumberOfRecordSets: map['maxNumberOfRecordSets'] == null ? null : (map['maxNumberOfRecordSets'] as int).input(),
-      maxNumberOfVirtualNetworkLinks: map['maxNumberOfVirtualNetworkLinks'] == null ? null : (map['maxNumberOfVirtualNetworkLinks'] as int).input(),
-      maxNumberOfVirtualNetworkLinksWithRegistration: map['maxNumberOfVirtualNetworkLinksWithRegistration'] == null ? null : (map['maxNumberOfVirtualNetworkLinksWithRegistration'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      numberOfRecordSets: map['numberOfRecordSets'] == null ? null : (map['numberOfRecordSets'] as int).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      soaRecord: map['soaRecord'] == null ? null : (ZoneSoaRecord.fromMap((map['soaRecord'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      maxNumberOfRecordSets: map['maxNumberOfRecordSets'] == null ? null : (map['maxNumberOfRecordSets']! as int).input(),
+      maxNumberOfVirtualNetworkLinks: map['maxNumberOfVirtualNetworkLinks'] == null ? null : (map['maxNumberOfVirtualNetworkLinks']! as int).input(),
+      maxNumberOfVirtualNetworkLinksWithRegistration: map['maxNumberOfVirtualNetworkLinksWithRegistration'] == null ? null : (map['maxNumberOfVirtualNetworkLinksWithRegistration']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      numberOfRecordSets: map['numberOfRecordSets'] == null ? null : (map['numberOfRecordSets']! as int).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      soaRecord: map['soaRecord'] == null ? null : (ZoneSoaRecord.fromMap((map['soaRecord']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

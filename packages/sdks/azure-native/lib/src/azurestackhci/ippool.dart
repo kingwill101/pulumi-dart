@@ -36,10 +36,10 @@ class IPPool {
 
   factory IPPool.fromMap(Map<String, dynamic> map) {
     return IPPool(
-      end: map['end'] == null ? null : (map['end'] as String).input(),
-      ipPoolType: map['ipPoolType'] == null ? null : (map['ipPoolType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      start: map['start'] == null ? null : (map['start'] as String).input(),
+      end: map['end'] == null ? null : (map['end']! as String).input(),
+      ipPoolType: map['ipPoolType'] == null ? null : (map['ipPoolType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      start: map['start'] == null ? null : (map['start']! as String).input(),
     );
   }
 }

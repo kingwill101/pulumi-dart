@@ -75,13 +75,13 @@ class GetCustomizableConnectorDefinitionResult {
   factory GetCustomizableConnectorDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetCustomizableConnectorDefinitionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      connectionsConfig: map['connectionsConfig'] == null ? null : CustomizableConnectionsConfigResponse.fromMap((map['connectionsConfig'] as Map).cast<String, dynamic>()),
+      connectionsConfig: map['connectionsConfig'] == null ? null : CustomizableConnectionsConfigResponse.fromMap((map['connectionsConfig']! as Map).cast<String, dynamic>()),
       connectorUiConfig: CustomizableConnectorUiConfigResponse.fromMap((map['connectorUiConfig'] as Map).cast<String, dynamic>()),
-      createdTimeUtc: map['createdTimeUtc'] == null ? null : map['createdTimeUtc'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      createdTimeUtc: map['createdTimeUtc'] == null ? null : map['createdTimeUtc']! as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
-      lastModifiedUtc: map['lastModifiedUtc'] == null ? null : map['lastModifiedUtc'] as String,
+      lastModifiedUtc: map['lastModifiedUtc'] == null ? null : map['lastModifiedUtc']! as String,
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

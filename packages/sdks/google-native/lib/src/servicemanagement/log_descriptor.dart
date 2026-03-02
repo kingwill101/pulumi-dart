@@ -37,10 +37,10 @@ class LogDescriptor {
 
   factory LogDescriptor.fromMap(Map<String, dynamic> map) {
     return LogDescriptor(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<LabelDescriptor>(map['labels'], (value) => LabelDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<LabelDescriptor>(map['labels']!, (value) => LabelDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

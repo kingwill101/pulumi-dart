@@ -67,13 +67,13 @@ class RuleGroupArgs {
   factory RuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return RuleGroupArgs(
       capacity: (map['capacity'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (RuleGroupEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleGroup: map['ruleGroup'] == null ? null : (RuleGroupRuleGroup.fromMap((map['ruleGroup'] as Map).cast<String, dynamic>())).input(),
-      rules: map['rules'] == null ? null : (map['rules'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((RuleGroupEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleGroup: map['ruleGroup'] == null ? null : ((RuleGroupRuleGroup.fromMap((map['ruleGroup']! as Map).cast<String, dynamic>())).input()).input(),
+      rules: map['rules'] == null ? null : ((map['rules'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

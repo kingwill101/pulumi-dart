@@ -32,9 +32,9 @@ class NetworkInterface {
 
   factory NetworkInterface.fromMap(Map<String, dynamic> map) {
     return NetworkInterface(
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      nicType: map['nicType'] == null ? null : (NetworkInterfaceNicType.fromValue(map['nicType'] as String)).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      nicType: map['nicType'] == null ? null : (NetworkInterfaceNicType.fromValue(map['nicType']! as String)).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
     );
   }
 }

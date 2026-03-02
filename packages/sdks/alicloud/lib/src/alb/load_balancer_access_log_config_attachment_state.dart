@@ -36,10 +36,10 @@ class LoadBalancerAccessLogConfigAttachmentState {
 
   factory LoadBalancerAccessLogConfigAttachmentState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerAccessLogConfigAttachmentState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
-      logProject: map['logProject'] == null ? null : (map['logProject'] as String).input(),
-      logStore: map['logStore'] == null ? null : (map['logStore'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
+      logProject: map['logProject'] == null ? null : (map['logProject']! as String).input(),
+      logStore: map['logStore'] == null ? null : (map['logStore']! as String).input(),
     );
   }
 }

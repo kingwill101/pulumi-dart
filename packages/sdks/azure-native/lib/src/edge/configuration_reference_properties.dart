@@ -21,7 +21,7 @@ class ConfigurationReferenceProperties {
 
   factory ConfigurationReferenceProperties.fromMap(Map<String, dynamic> map) {
     return ConfigurationReferenceProperties(
-      configurationResourceId: map['configurationResourceId'] == null ? null : (map['configurationResourceId'] as String).input(),
+      configurationResourceId: map['configurationResourceId'] == null ? null : (map['configurationResourceId']! as String).input(),
     );
   }
 }

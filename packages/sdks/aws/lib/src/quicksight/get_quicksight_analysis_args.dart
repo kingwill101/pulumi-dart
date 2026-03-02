@@ -39,9 +39,9 @@ class GetQuicksightAnalysisArgs {
   factory GetQuicksightAnalysisArgs.fromMap(Map<String, dynamic> map) {
     return GetQuicksightAnalysisArgs(
       analysisId: (map['analysisId'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

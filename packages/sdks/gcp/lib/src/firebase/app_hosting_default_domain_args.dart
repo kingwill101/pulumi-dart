@@ -46,10 +46,10 @@ class AppHostingDefaultDomainArgs {
   factory AppHostingDefaultDomainArgs.fromMap(Map<String, dynamic> map) {
     return AppHostingDefaultDomainArgs(
       backend: (map['backend'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       domainId: (map['domainId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

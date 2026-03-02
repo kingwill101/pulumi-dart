@@ -47,12 +47,12 @@ class AccountRaiPolicyState {
 
   factory AccountRaiPolicyState.fromMap(Map<String, dynamic> map) {
     return AccountRaiPolicyState(
-      basePolicyName: map['basePolicyName'] == null ? null : (map['basePolicyName'] as String).input(),
-      cognitiveAccountId: map['cognitiveAccountId'] == null ? null : (map['cognitiveAccountId'] as String).input(),
-      contentFilters: map['contentFilters'] == null ? null : (pulumi.Input.decodeList<AccountRaiPolicyContentFilter>(map['contentFilters'], (value) => AccountRaiPolicyContentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      basePolicyName: map['basePolicyName'] == null ? null : (map['basePolicyName']! as String).input(),
+      cognitiveAccountId: map['cognitiveAccountId'] == null ? null : (map['cognitiveAccountId']! as String).input(),
+      contentFilters: map['contentFilters'] == null ? null : (pulumi.Input.decodeList<AccountRaiPolicyContentFilter>(map['contentFilters']!, (value) => AccountRaiPolicyContentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

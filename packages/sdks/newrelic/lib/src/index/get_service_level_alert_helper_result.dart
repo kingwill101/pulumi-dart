@@ -69,11 +69,11 @@ class GetServiceLevelAlertHelperResult {
   factory GetServiceLevelAlertHelperResult.fromMap(Map<String, dynamic> map) {
     return GetServiceLevelAlertHelperResult(
       alertType: map['alertType'] as String,
-      customEvaluationPeriod: map['customEvaluationPeriod'] == null ? null : map['customEvaluationPeriod'] as int,
-      customToleratedBudgetConsumption: map['customToleratedBudgetConsumption'] == null ? null : map['customToleratedBudgetConsumption'] as double,
+      customEvaluationPeriod: map['customEvaluationPeriod'] == null ? null : map['customEvaluationPeriod']! as int,
+      customToleratedBudgetConsumption: map['customToleratedBudgetConsumption'] == null ? null : map['customToleratedBudgetConsumption']! as double,
       evaluationPeriod: map['evaluationPeriod'] as int,
       id: map['id'] as String,
-      isBadEvents: map['isBadEvents'] == null ? null : map['isBadEvents'] as bool,
+      isBadEvents: map['isBadEvents'] == null ? null : map['isBadEvents']! as bool,
       nrql: map['nrql'] as String,
       sliGuid: map['sliGuid'] as String,
       sloPeriod: map['sloPeriod'] as int,

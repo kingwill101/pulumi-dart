@@ -82,19 +82,19 @@ class EnterpriseCrmEventbusProtoWorkflowAlertConfig {
 
   factory EnterpriseCrmEventbusProtoWorkflowAlertConfig.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoWorkflowAlertConfig(
-      aggregationPeriod: map['aggregationPeriod'] == null ? null : (map['aggregationPeriod'] as String).input(),
-      alertDisabled: map['alertDisabled'] == null ? null : (map['alertDisabled'] as bool).input(),
-      alertName: map['alertName'] == null ? null : (map['alertName'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      durationThresholdMs: map['durationThresholdMs'] == null ? null : (map['durationThresholdMs'] as String).input(),
-      errorEnumList: map['errorEnumList'] == null ? null : (EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList.fromMap((map['errorEnumList'] as Map).cast<String, dynamic>())).input(),
-      metricType: map['metricType'] == null ? null : (EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType.fromValue(map['metricType'] as String)).input(),
-      numAggregationPeriods: map['numAggregationPeriods'] == null ? null : (map['numAggregationPeriods'] as int).input(),
-      onlyFinalAttempt: map['onlyFinalAttempt'] == null ? null : (map['onlyFinalAttempt'] as bool).input(),
-      playbookUrl: map['playbookUrl'] == null ? null : (map['playbookUrl'] as String).input(),
-      thresholdType: map['thresholdType'] == null ? null : (EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdType.fromValue(map['thresholdType'] as String)).input(),
-      thresholdValue: map['thresholdValue'] == null ? null : (EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue.fromMap((map['thresholdValue'] as Map).cast<String, dynamic>())).input(),
-      warningEnumList: map['warningEnumList'] == null ? null : (EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList.fromMap((map['warningEnumList'] as Map).cast<String, dynamic>())).input(),
+      aggregationPeriod: map['aggregationPeriod'] == null ? null : (map['aggregationPeriod']! as String).input(),
+      alertDisabled: map['alertDisabled'] == null ? null : (map['alertDisabled']! as bool).input(),
+      alertName: map['alertName'] == null ? null : (map['alertName']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      durationThresholdMs: map['durationThresholdMs'] == null ? null : (map['durationThresholdMs']! as String).input(),
+      errorEnumList: map['errorEnumList'] == null ? null : (EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList.fromMap((map['errorEnumList']! as Map).cast<String, dynamic>())).input(),
+      metricType: map['metricType'] == null ? null : (EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType.fromValue(map['metricType']! as String)).input(),
+      numAggregationPeriods: map['numAggregationPeriods'] == null ? null : (map['numAggregationPeriods']! as int).input(),
+      onlyFinalAttempt: map['onlyFinalAttempt'] == null ? null : (map['onlyFinalAttempt']! as bool).input(),
+      playbookUrl: map['playbookUrl'] == null ? null : (map['playbookUrl']! as String).input(),
+      thresholdType: map['thresholdType'] == null ? null : (EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdType.fromValue(map['thresholdType']! as String)).input(),
+      thresholdValue: map['thresholdValue'] == null ? null : (EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue.fromMap((map['thresholdValue']! as Map).cast<String, dynamic>())).input(),
+      warningEnumList: map['warningEnumList'] == null ? null : (EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList.fromMap((map['warningEnumList']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

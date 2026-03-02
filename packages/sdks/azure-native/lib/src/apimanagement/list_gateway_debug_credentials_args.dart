@@ -50,7 +50,7 @@ class ListGatewayDebugCredentialsArgs {
   factory ListGatewayDebugCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return ListGatewayDebugCredentialsArgs(
       apiId: (map['apiId'] as String).input(),
-      credentialsExpireAfter: map['credentialsExpireAfter'] == null ? null : (map['credentialsExpireAfter'] as String).input(),
+      credentialsExpireAfter: map['credentialsExpireAfter'] == null ? null : (map['credentialsExpireAfter']! as String).input(),
       gatewayId: (map['gatewayId'] as String).input(),
       purposes: ((map['purposes'] as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

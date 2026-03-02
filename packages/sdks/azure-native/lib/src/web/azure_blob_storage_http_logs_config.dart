@@ -33,9 +33,9 @@ class AzureBlobStorageHttpLogsConfig {
 
   factory AzureBlobStorageHttpLogsConfig.fromMap(Map<String, dynamic> map) {
     return AzureBlobStorageHttpLogsConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
-      sasUrl: map['sasUrl'] == null ? null : (map['sasUrl'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays']! as int).input(),
+      sasUrl: map['sasUrl'] == null ? null : (map['sasUrl']! as String).input(),
     );
   }
 }

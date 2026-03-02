@@ -48,8 +48,8 @@ class GetDomainTxtGuidResult {
     return GetDomainTxtGuidResult(
       domainName: map['domainName'] as String,
       id: map['id'] as String,
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       rr: map['rr'] as String,
       type: map['type'] as String,
       value: map['value'] as String,

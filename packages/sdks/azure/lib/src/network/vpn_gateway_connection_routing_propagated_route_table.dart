@@ -25,7 +25,7 @@ class VpnGatewayConnectionRoutingPropagatedRouteTable {
 
   factory VpnGatewayConnectionRoutingPropagatedRouteTable.fromMap(Map<String, dynamic> map) {
     return VpnGatewayConnectionRoutingPropagatedRouteTable(
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
       routeTableIds: ((map['routeTableIds'] as List).cast<String>()).input(),
     );
   }

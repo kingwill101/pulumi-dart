@@ -39,9 +39,9 @@ class UserLoginProfileArgs {
 
   factory UserLoginProfileArgs.fromMap(Map<String, dynamic> map) {
     return UserLoginProfileArgs(
-      passwordLength: map['passwordLength'] == null ? null : (map['passwordLength'] as int).input(),
-      passwordResetRequired: map['passwordResetRequired'] == null ? null : (map['passwordResetRequired'] as bool).input(),
-      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
+      passwordLength: map['passwordLength'] == null ? null : ((map['passwordLength'] as int).input()).input(),
+      passwordResetRequired: map['passwordResetRequired'] == null ? null : ((map['passwordResetRequired'] as bool).input()).input(),
+      pgpKey: map['pgpKey'] == null ? null : ((map['pgpKey'] as String).input()).input(),
       user: (map['user'] as String).input(),
     );
   }

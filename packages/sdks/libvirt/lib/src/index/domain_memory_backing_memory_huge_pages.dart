@@ -21,7 +21,7 @@ class DomainMemoryBackingMemoryHugePages {
 
   factory DomainMemoryBackingMemoryHugePages.fromMap(Map<String, dynamic> map) {
     return DomainMemoryBackingMemoryHugePages(
-      hugepages: map['hugepages'] == null ? null : (pulumi.Input.decodeList<DomainMemoryBackingMemoryHugePagesHugepage>(map['hugepages'], (value) => DomainMemoryBackingMemoryHugePagesHugepage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hugepages: map['hugepages'] == null ? null : (pulumi.Input.decodeList<DomainMemoryBackingMemoryHugePagesHugepage>(map['hugepages']!, (value) => DomainMemoryBackingMemoryHugePagesHugepage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class SnapshotCopyGrantArgs {
 
   factory SnapshotCopyGrantArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotCopyGrantArgs(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       snapshotCopyGrantName: (map['snapshotCopyGrantName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

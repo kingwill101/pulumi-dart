@@ -36,7 +36,7 @@ class GetServiceQuotaUsageMetric {
 
   factory GetServiceQuotaUsageMetric.fromMap(Map<String, dynamic> map) {
     return GetServiceQuotaUsageMetric(
-      metricDimensions: (pulumi.Input.decodeList<GetServiceQuotaUsageMetricMetricDimension>(map['metricDimensions'], (value) => GetServiceQuotaUsageMetricMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricDimensions: (pulumi.Input.decodeList<GetServiceQuotaUsageMetricMetricDimension>(map['metricDimensions']!, (value) => GetServiceQuotaUsageMetricMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
       metricName: (map['metricName'] as String).input(),
       metricNamespace: (map['metricNamespace'] as String).input(),
       metricStatisticRecommendation: (map['metricStatisticRecommendation'] as String).input(),

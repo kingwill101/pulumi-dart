@@ -27,7 +27,7 @@ class AggregationFunction {
 
   factory AggregationFunction.fromMap(Map<String, dynamic> map) {
     return AggregationFunction(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<Parameter>(map['parameters'], (value) => Parameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<Parameter>(map['parameters']!, (value) => Parameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

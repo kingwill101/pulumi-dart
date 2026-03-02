@@ -41,11 +41,11 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
 
   factory GoogleCloudDialogflowV2FulfillmentGenericWebService.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2FulfillmentGenericWebService(
-      isCloudFunction: map['isCloudFunction'] == null ? null : (map['isCloudFunction'] as bool).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      requestHeaders: map['requestHeaders'] == null ? null : ((map['requestHeaders'] as Map).cast<String, String>()).input(),
+      isCloudFunction: map['isCloudFunction'] == null ? null : (map['isCloudFunction']! as bool).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      requestHeaders: map['requestHeaders'] == null ? null : ((map['requestHeaders']! as Map).cast<String, String>()).input(),
       uri: (map['uri'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

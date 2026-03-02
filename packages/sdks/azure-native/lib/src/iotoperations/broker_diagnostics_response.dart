@@ -40,10 +40,10 @@ class BrokerDiagnosticsResponse {
 
   factory BrokerDiagnosticsResponse.fromMap(Map<String, dynamic> map) {
     return BrokerDiagnosticsResponse(
-      logs: map['logs'] == null ? null : (DiagnosticsLogsResponse.fromMap((map['logs'] as Map).cast<String, dynamic>())).input(),
-      metrics: map['metrics'] == null ? null : (MetricsResponse.fromMap((map['metrics'] as Map).cast<String, dynamic>())).input(),
-      selfCheck: map['selfCheck'] == null ? null : (SelfCheckResponse.fromMap((map['selfCheck'] as Map).cast<String, dynamic>())).input(),
-      traces: map['traces'] == null ? null : (TracesResponse.fromMap((map['traces'] as Map).cast<String, dynamic>())).input(),
+      logs: map['logs'] == null ? null : (DiagnosticsLogsResponse.fromMap((map['logs']! as Map).cast<String, dynamic>())).input(),
+      metrics: map['metrics'] == null ? null : (MetricsResponse.fromMap((map['metrics']! as Map).cast<String, dynamic>())).input(),
+      selfCheck: map['selfCheck'] == null ? null : (SelfCheckResponse.fromMap((map['selfCheck']! as Map).cast<String, dynamic>())).input(),
+      traces: map['traces'] == null ? null : (TracesResponse.fromMap((map['traces']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

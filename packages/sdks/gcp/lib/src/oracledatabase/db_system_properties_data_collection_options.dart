@@ -25,8 +25,8 @@ class DbSystemPropertiesDataCollectionOptions {
 
   factory DbSystemPropertiesDataCollectionOptions.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDataCollectionOptions(
-      isDiagnosticsEventsEnabled: map['isDiagnosticsEventsEnabled'] == null ? null : (map['isDiagnosticsEventsEnabled'] as bool).input(),
-      isIncidentLogsEnabled: map['isIncidentLogsEnabled'] == null ? null : (map['isIncidentLogsEnabled'] as bool).input(),
+      isDiagnosticsEventsEnabled: map['isDiagnosticsEventsEnabled'] == null ? null : (map['isDiagnosticsEventsEnabled']! as bool).input(),
+      isIncidentLogsEnabled: map['isIncidentLogsEnabled'] == null ? null : (map['isIncidentLogsEnabled']! as bool).input(),
     );
   }
 }

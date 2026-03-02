@@ -32,8 +32,8 @@ class BackendServerBackendServer {
   factory BackendServerBackendServer.fromMap(Map<String, dynamic> map) {
     return BackendServerBackendServer(
       serverId: (map['serverId'] as String).input(),
-      serverIp: map['serverIp'] == null ? null : (map['serverIp'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      serverIp: map['serverIp'] == null ? null : (map['serverIp']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
       weight: (map['weight'] as int).input(),
     );
   }

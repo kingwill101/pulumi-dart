@@ -32,9 +32,9 @@ class ExportSchedule {
 
   factory ExportSchedule.fromMap(Map<String, dynamic> map) {
     return ExportSchedule(
-      recurrence: map['recurrence'] == null ? null : (map['recurrence'] as String).input(),
-      recurrencePeriod: map['recurrencePeriod'] == null ? null : (ExportRecurrencePeriod.fromMap((map['recurrencePeriod'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      recurrence: map['recurrence'] == null ? null : (map['recurrence']! as String).input(),
+      recurrencePeriod: map['recurrencePeriod'] == null ? null : (ExportRecurrencePeriod.fromMap((map['recurrencePeriod']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

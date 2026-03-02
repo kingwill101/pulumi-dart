@@ -36,10 +36,10 @@ class LdapsSettings {
 
   factory LdapsSettings.fromMap(Map<String, dynamic> map) {
     return LdapsSettings(
-      externalAccess: map['externalAccess'] == null ? null : (map['externalAccess'] as String).input(),
-      ldaps: map['ldaps'] == null ? null : (map['ldaps'] as String).input(),
-      pfxCertificate: map['pfxCertificate'] == null ? null : (map['pfxCertificate'] as String).input(),
-      pfxCertificatePassword: map['pfxCertificatePassword'] == null ? null : (map['pfxCertificatePassword'] as String).input(),
+      externalAccess: map['externalAccess'] == null ? null : (map['externalAccess']! as String).input(),
+      ldaps: map['ldaps'] == null ? null : (map['ldaps']! as String).input(),
+      pfxCertificate: map['pfxCertificate'] == null ? null : (map['pfxCertificate']! as String).input(),
+      pfxCertificatePassword: map['pfxCertificatePassword'] == null ? null : (map['pfxCertificatePassword']! as String).input(),
     );
   }
 }

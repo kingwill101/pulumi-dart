@@ -34,7 +34,7 @@ class DataflowEndpointDataLakeStorageResponse {
   factory DataflowEndpointDataLakeStorageResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointDataLakeStorageResponse(
       authentication: (DataflowEndpointDataLakeStorageAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      batching: map['batching'] == null ? null : (BatchingConfigurationResponse.fromMap((map['batching'] as Map).cast<String, dynamic>())).input(),
+      batching: map['batching'] == null ? null : (BatchingConfigurationResponse.fromMap((map['batching']! as Map).cast<String, dynamic>())).input(),
       host: (map['host'] as String).input(),
     );
   }

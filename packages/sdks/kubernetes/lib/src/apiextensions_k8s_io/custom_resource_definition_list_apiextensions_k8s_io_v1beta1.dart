@@ -37,10 +37,10 @@ class CustomResourceDefinitionListApiextensionsK8sIoV1beta1 {
 
   factory CustomResourceDefinitionListApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionListApiextensionsK8sIoV1beta1(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       items: (pulumi.Input.decodeList<CustomResourceDefinitionApiextensionsK8sIoV1beta1>(map['items'], (value) => CustomResourceDefinitionApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

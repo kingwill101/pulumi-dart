@@ -43,7 +43,7 @@ class GetProductWikiResult {
   factory GetProductWikiResult.fromMap(Map<String, dynamic> map) {
     return GetProductWikiResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      documents: map['documents'] == null ? null : pulumi.Input.decodeList<WikiDocumentationContractResponse>(map['documents'], (value) => WikiDocumentationContractResponse.fromMap((value as Map).cast<String, dynamic>())),
+      documents: map['documents'] == null ? null : pulumi.Input.decodeList<WikiDocumentationContractResponse>(map['documents']!, (value) => WikiDocumentationContractResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,

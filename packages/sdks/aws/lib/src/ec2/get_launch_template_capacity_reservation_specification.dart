@@ -25,7 +25,7 @@ class GetLaunchTemplateCapacityReservationSpecification {
   factory GetLaunchTemplateCapacityReservationSpecification.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateCapacityReservationSpecification(
       capacityReservationPreference: (map['capacityReservationPreference'] as String).input(),
-      capacityReservationTargets: (pulumi.Input.decodeList<GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget>(map['capacityReservationTargets'], (value) => GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      capacityReservationTargets: (pulumi.Input.decodeList<GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget>(map['capacityReservationTargets']!, (value) => GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

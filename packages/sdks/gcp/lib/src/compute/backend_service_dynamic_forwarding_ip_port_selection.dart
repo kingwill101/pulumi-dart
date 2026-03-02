@@ -20,7 +20,7 @@ class BackendServiceDynamicForwardingIpPortSelection {
 
   factory BackendServiceDynamicForwardingIpPortSelection.fromMap(Map<String, dynamic> map) {
     return BackendServiceDynamicForwardingIpPortSelection(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

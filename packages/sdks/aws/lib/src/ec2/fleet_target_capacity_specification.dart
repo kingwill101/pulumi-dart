@@ -42,9 +42,9 @@ class FleetTargetCapacitySpecification {
   factory FleetTargetCapacitySpecification.fromMap(Map<String, dynamic> map) {
     return FleetTargetCapacitySpecification(
       defaultTargetCapacityType: (map['defaultTargetCapacityType'] as String).input(),
-      onDemandTargetCapacity: map['onDemandTargetCapacity'] == null ? null : (map['onDemandTargetCapacity'] as int).input(),
-      spotTargetCapacity: map['spotTargetCapacity'] == null ? null : (map['spotTargetCapacity'] as int).input(),
-      targetCapacityUnitType: map['targetCapacityUnitType'] == null ? null : (map['targetCapacityUnitType'] as String).input(),
+      onDemandTargetCapacity: map['onDemandTargetCapacity'] == null ? null : ((map['onDemandTargetCapacity'] as int).input()).input(),
+      spotTargetCapacity: map['spotTargetCapacity'] == null ? null : ((map['spotTargetCapacity'] as int).input()).input(),
+      targetCapacityUnitType: map['targetCapacityUnitType'] == null ? null : ((map['targetCapacityUnitType'] as String).input()).input(),
       totalTargetCapacity: (map['totalTargetCapacity'] as int).input(),
     );
   }

@@ -94,21 +94,21 @@ class ProfileRewriteState {
 
   factory ProfileRewriteState.fromMap(Map<String, dynamic> map) {
     return ProfileRewriteState(
-      bypassLists: map['bypassLists'] == null ? null : ((map['bypassLists'] as List).cast<String>()).input(),
-      caFile: map['caFile'] == null ? null : (map['caFile'] as String).input(),
-      cacheType: map['cacheType'] == null ? null : (map['cacheType'] as String).input(),
-      cookieRules: map['cookieRules'] == null ? null : (pulumi.Input.decodeList<ProfileRewriteCookieRule>(map['cookieRules'], (value) => ProfileRewriteCookieRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      crlFile: map['crlFile'] == null ? null : (map['crlFile'] as String).input(),
-      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<ProfileRewriteRequest>(map['requests'], (value) => ProfileRewriteRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responses: map['responses'] == null ? null : (pulumi.Input.decodeList<ProfileRewriteResponse>(map['responses'], (value) => ProfileRewriteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rewriteLists: map['rewriteLists'] == null ? null : ((map['rewriteLists'] as List).cast<String>()).input(),
-      rewriteMode: map['rewriteMode'] == null ? null : (map['rewriteMode'] as String).input(),
-      signingCert: map['signingCert'] == null ? null : (map['signingCert'] as String).input(),
-      signingKey: map['signingKey'] == null ? null : (map['signingKey'] as String).input(),
-      signingKeyPassword: map['signingKeyPassword'] == null ? null : (map['signingKeyPassword'] as String).input(),
-      splitTunneling: map['splitTunneling'] == null ? null : (map['splitTunneling'] as String).input(),
+      bypassLists: map['bypassLists'] == null ? null : ((map['bypassLists']! as List).cast<String>()).input(),
+      caFile: map['caFile'] == null ? null : (map['caFile']! as String).input(),
+      cacheType: map['cacheType'] == null ? null : (map['cacheType']! as String).input(),
+      cookieRules: map['cookieRules'] == null ? null : (pulumi.Input.decodeList<ProfileRewriteCookieRule>(map['cookieRules']!, (value) => ProfileRewriteCookieRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      crlFile: map['crlFile'] == null ? null : (map['crlFile']! as String).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<ProfileRewriteRequest>(map['requests']!, (value) => ProfileRewriteRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responses: map['responses'] == null ? null : (pulumi.Input.decodeList<ProfileRewriteResponse>(map['responses']!, (value) => ProfileRewriteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rewriteLists: map['rewriteLists'] == null ? null : ((map['rewriteLists']! as List).cast<String>()).input(),
+      rewriteMode: map['rewriteMode'] == null ? null : (map['rewriteMode']! as String).input(),
+      signingCert: map['signingCert'] == null ? null : (map['signingCert']! as String).input(),
+      signingKey: map['signingKey'] == null ? null : (map['signingKey']! as String).input(),
+      signingKeyPassword: map['signingKeyPassword'] == null ? null : (map['signingKeyPassword']! as String).input(),
+      splitTunneling: map['splitTunneling'] == null ? null : (map['splitTunneling']! as String).input(),
     );
   }
 }

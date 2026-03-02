@@ -51,9 +51,9 @@ class DatabasePrincipalResponse {
 
   factory DatabasePrincipalResponse.fromMap(Map<String, dynamic> map) {
     return DatabasePrincipalResponse(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      fqn: map['fqn'] == null ? null : (map['fqn'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      fqn: map['fqn'] == null ? null : (map['fqn']! as String).input(),
       name: (map['name'] as String).input(),
       role: (map['role'] as String).input(),
       tenantName: (map['tenantName'] as String).input(),

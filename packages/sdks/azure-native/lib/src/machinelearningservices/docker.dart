@@ -21,7 +21,7 @@ class Docker {
 
   factory Docker.fromMap(Map<String, dynamic> map) {
     return Docker(
-      privileged: map['privileged'] == null ? null : (map['privileged'] as bool).input(),
+      privileged: map['privileged'] == null ? null : (map['privileged']! as bool).input(),
     );
   }
 }

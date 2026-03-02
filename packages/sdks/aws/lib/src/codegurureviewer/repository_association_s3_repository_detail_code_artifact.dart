@@ -23,8 +23,8 @@ class RepositoryAssociationS3RepositoryDetailCodeArtifact {
 
   factory RepositoryAssociationS3RepositoryDetailCodeArtifact.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationS3RepositoryDetailCodeArtifact(
-      buildArtifactsObjectKey: map['buildArtifactsObjectKey'] == null ? null : (map['buildArtifactsObjectKey'] as String).input(),
-      sourceCodeArtifactsObjectKey: map['sourceCodeArtifactsObjectKey'] == null ? null : (map['sourceCodeArtifactsObjectKey'] as String).input(),
+      buildArtifactsObjectKey: map['buildArtifactsObjectKey'] == null ? null : ((map['buildArtifactsObjectKey'] as String).input()).input(),
+      sourceCodeArtifactsObjectKey: map['sourceCodeArtifactsObjectKey'] == null ? null : ((map['sourceCodeArtifactsObjectKey'] as String).input()).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class ResizeErrorResponse {
   factory ResizeErrorResponse.fromMap(Map<String, dynamic> map) {
     return ResizeErrorResponse(
       code: (map['code'] as String).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<ResizeErrorResponse>(map['details'], (value) => ResizeErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<ResizeErrorResponse>(map['details']!, (value) => ResizeErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       message: (map['message'] as String).input(),
     );
   }

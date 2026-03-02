@@ -29,7 +29,7 @@ class ConsumerImageShareGroupTokenArgs {
 
   factory ConsumerImageShareGroupTokenArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerImageShareGroupTokenArgs(
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
       validForSharegroupUuid: (map['validForSharegroupUuid'] as String).input(),
     );
   }

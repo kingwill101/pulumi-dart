@@ -60,14 +60,14 @@ class GetEndpointResult {
 
   factory GetEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetEndpointResult(
-      endpointRegion: map['endpointRegion'] == null ? null : map['endpointRegion'] as String,
+      endpointRegion: map['endpointRegion'] == null ? null : map['endpointRegion']! as String,
       id: map['id'] as String,
-      interface: map['interface'] == null ? null : map['interface'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      interface: map['interface'] == null ? null : map['interface']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       region: map['region'] as String,
-      serviceId: map['serviceId'] == null ? null : map['serviceId'] as String,
-      serviceName: map['serviceName'] == null ? null : map['serviceName'] as String,
-      serviceType: map['serviceType'] == null ? null : map['serviceType'] as String,
+      serviceId: map['serviceId'] == null ? null : map['serviceId']! as String,
+      serviceName: map['serviceName'] == null ? null : map['serviceName']! as String,
+      serviceType: map['serviceType'] == null ? null : map['serviceType']! as String,
       url: map['url'] as String,
     );
   }

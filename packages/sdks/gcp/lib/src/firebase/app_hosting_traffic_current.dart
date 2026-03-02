@@ -23,7 +23,7 @@ class AppHostingTrafficCurrent {
 
   factory AppHostingTrafficCurrent.fromMap(Map<String, dynamic> map) {
     return AppHostingTrafficCurrent(
-      splits: map['splits'] == null ? null : (pulumi.Input.decodeList<AppHostingTrafficCurrentSplit>(map['splits'], (value) => AppHostingTrafficCurrentSplit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      splits: map['splits'] == null ? null : (pulumi.Input.decodeList<AppHostingTrafficCurrentSplit>(map['splits']!, (value) => AppHostingTrafficCurrentSplit.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

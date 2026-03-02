@@ -42,11 +42,11 @@ class NotificationEndpointGrpcSettings {
 
   factory NotificationEndpointGrpcSettings.fromMap(Map<String, dynamic> map) {
     return NotificationEndpointGrpcSettings(
-      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      payloadName: map['payloadName'] == null ? null : (map['payloadName'] as String).input(),
-      resendInterval: map['resendInterval'] == null ? null : (Duration.fromMap((map['resendInterval'] as Map).cast<String, dynamic>())).input(),
-      retryDurationSec: map['retryDurationSec'] == null ? null : (map['retryDurationSec'] as int).input(),
+      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      payloadName: map['payloadName'] == null ? null : (map['payloadName']! as String).input(),
+      resendInterval: map['resendInterval'] == null ? null : (Duration.fromMap((map['resendInterval']! as Map).cast<String, dynamic>())).input(),
+      retryDurationSec: map['retryDurationSec'] == null ? null : (map['retryDurationSec']! as int).input(),
     );
   }
 }

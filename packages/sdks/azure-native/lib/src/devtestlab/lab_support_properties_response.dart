@@ -26,8 +26,8 @@ class LabSupportPropertiesResponse {
 
   factory LabSupportPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LabSupportPropertiesResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
-      markdown: map['markdown'] == null ? null : (map['markdown'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
+      markdown: map['markdown'] == null ? null : (map['markdown']! as String).input(),
     );
   }
 }

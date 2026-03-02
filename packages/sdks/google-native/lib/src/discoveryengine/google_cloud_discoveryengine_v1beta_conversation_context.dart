@@ -26,8 +26,8 @@ class GoogleCloudDiscoveryengineV1betaConversationContext {
 
   factory GoogleCloudDiscoveryengineV1betaConversationContext.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1betaConversationContext(
-      activeDocument: map['activeDocument'] == null ? null : (map['activeDocument'] as String).input(),
-      contextDocuments: map['contextDocuments'] == null ? null : ((map['contextDocuments'] as List).cast<String>()).input(),
+      activeDocument: map['activeDocument'] == null ? null : (map['activeDocument']! as String).input(),
+      contextDocuments: map['contextDocuments'] == null ? null : ((map['contextDocuments']! as List).cast<String>()).input(),
     );
   }
 }

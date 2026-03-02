@@ -31,9 +31,9 @@ class FirewallPolicyFirewallPolicyStatefulEngineOptions {
 
   factory FirewallPolicyFirewallPolicyStatefulEngineOptions.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicyStatefulEngineOptions(
-      flowTimeouts: map['flowTimeouts'] == null ? null : (FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts.fromMap((map['flowTimeouts'] as Map).cast<String, dynamic>())).input(),
-      ruleOrder: map['ruleOrder'] == null ? null : (map['ruleOrder'] as String).input(),
-      streamExceptionPolicy: map['streamExceptionPolicy'] == null ? null : (map['streamExceptionPolicy'] as String).input(),
+      flowTimeouts: map['flowTimeouts'] == null ? null : ((FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts.fromMap((map['flowTimeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      ruleOrder: map['ruleOrder'] == null ? null : ((map['ruleOrder'] as String).input()).input(),
+      streamExceptionPolicy: map['streamExceptionPolicy'] == null ? null : ((map['streamExceptionPolicy'] as String).input()).input(),
     );
   }
 }

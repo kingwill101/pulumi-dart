@@ -21,7 +21,7 @@ class AutoSnapshotAddOnResponse {
 
   factory AutoSnapshotAddOnResponse.fromMap(Map<String, dynamic> map) {
     return AutoSnapshotAddOnResponse(
-      snapshotTimeOfDay: map['snapshotTimeOfDay'] == null ? null : (map['snapshotTimeOfDay'] as String).input(),
+      snapshotTimeOfDay: map['snapshotTimeOfDay'] == null ? null : (map['snapshotTimeOfDay']! as String).input(),
     );
   }
 }

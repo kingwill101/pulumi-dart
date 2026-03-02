@@ -73,17 +73,17 @@ class DetailContaineranalysisV1alpha1 {
 
   factory DetailContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return DetailContaineranalysisV1alpha1(
-      cpeUri: map['cpeUri'] == null ? null : (map['cpeUri'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fixedLocation: map['fixedLocation'] == null ? null : (VulnerabilityLocation.fromMap((map['fixedLocation'] as Map).cast<String, dynamic>())).input(),
-      isObsolete: map['isObsolete'] == null ? null : (map['isObsolete'] as bool).input(),
-      maxAffectedVersion: map['maxAffectedVersion'] == null ? null : (VersionContaineranalysisV1alpha1.fromMap((map['maxAffectedVersion'] as Map).cast<String, dynamic>())).input(),
-      minAffectedVersion: map['minAffectedVersion'] == null ? null : (VersionContaineranalysisV1alpha1.fromMap((map['minAffectedVersion'] as Map).cast<String, dynamic>())).input(),
-      package: map['package'] == null ? null : (map['package'] as String).input(),
-      packageType: map['packageType'] == null ? null : (map['packageType'] as String).input(),
-      severityName: map['severityName'] == null ? null : (map['severityName'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
+      cpeUri: map['cpeUri'] == null ? null : (map['cpeUri']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fixedLocation: map['fixedLocation'] == null ? null : (VulnerabilityLocation.fromMap((map['fixedLocation']! as Map).cast<String, dynamic>())).input(),
+      isObsolete: map['isObsolete'] == null ? null : (map['isObsolete']! as bool).input(),
+      maxAffectedVersion: map['maxAffectedVersion'] == null ? null : (VersionContaineranalysisV1alpha1.fromMap((map['maxAffectedVersion']! as Map).cast<String, dynamic>())).input(),
+      minAffectedVersion: map['minAffectedVersion'] == null ? null : (VersionContaineranalysisV1alpha1.fromMap((map['minAffectedVersion']! as Map).cast<String, dynamic>())).input(),
+      package: map['package'] == null ? null : (map['package']! as String).input(),
+      packageType: map['packageType'] == null ? null : (map['packageType']! as String).input(),
+      severityName: map['severityName'] == null ? null : (map['severityName']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      vendor: map['vendor'] == null ? null : (map['vendor']! as String).input(),
     );
   }
 }

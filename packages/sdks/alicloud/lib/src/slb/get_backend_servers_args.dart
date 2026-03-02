@@ -34,9 +34,9 @@ class GetBackendServersArgs {
 
   factory GetBackendServersArgs.fromMap(Map<String, dynamic> map) {
     return GetBackendServersArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       loadBalancerId: (map['loadBalancerId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

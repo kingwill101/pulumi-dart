@@ -50,12 +50,12 @@ class VolumeResponse {
 
   factory VolumeResponse.fromMap(Map<String, dynamic> map) {
     return VolumeResponse(
-      configuredAtLaunch: map['configuredAtLaunch'] == null ? null : (map['configuredAtLaunch'] as bool).input(),
-      dockerVolumeConfiguration: map['dockerVolumeConfiguration'] == null ? null : (DockerVolumeConfigurationResponse.fromMap((map['dockerVolumeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      efsVolumeConfiguration: map['efsVolumeConfiguration'] == null ? null : (EFSVolumeConfigurationResponse.fromMap((map['efsVolumeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      fSxWindowsFileServerVolumeConfiguration: map['fSxWindowsFileServerVolumeConfiguration'] == null ? null : (FSxWindowsFileServerVolumeConfigurationResponse.fromMap((map['fSxWindowsFileServerVolumeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      host: map['host'] == null ? null : (HostVolumePropertiesResponse.fromMap((map['host'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      configuredAtLaunch: map['configuredAtLaunch'] == null ? null : (map['configuredAtLaunch']! as bool).input(),
+      dockerVolumeConfiguration: map['dockerVolumeConfiguration'] == null ? null : (DockerVolumeConfigurationResponse.fromMap((map['dockerVolumeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      efsVolumeConfiguration: map['efsVolumeConfiguration'] == null ? null : (EFSVolumeConfigurationResponse.fromMap((map['efsVolumeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      fSxWindowsFileServerVolumeConfiguration: map['fSxWindowsFileServerVolumeConfiguration'] == null ? null : (FSxWindowsFileServerVolumeConfigurationResponse.fromMap((map['fSxWindowsFileServerVolumeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      host: map['host'] == null ? null : (HostVolumePropertiesResponse.fromMap((map['host']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

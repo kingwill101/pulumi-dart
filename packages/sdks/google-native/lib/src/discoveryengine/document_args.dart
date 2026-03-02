@@ -82,17 +82,17 @@ class DocumentArgs {
     return DocumentArgs(
       branchId: (map['branchId'] as String).input(),
       collectionId: (map['collectionId'] as String).input(),
-      content: map['content'] == null ? null : (GoogleCloudDiscoveryengineV1alphaDocumentContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
+      content: map['content'] == null ? null : (GoogleCloudDiscoveryengineV1alphaDocumentContent.fromMap((map['content']! as Map).cast<String, dynamic>())).input(),
       dataStoreId: (map['dataStoreId'] as String).input(),
       documentId: (map['documentId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      jsonData: map['jsonData'] == null ? null : (map['jsonData'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentDocumentId: map['parentDocumentId'] == null ? null : (map['parentDocumentId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
-      structData: map['structData'] == null ? null : ((map['structData'] as Map).cast<String, String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      jsonData: map['jsonData'] == null ? null : (map['jsonData']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentDocumentId: map['parentDocumentId'] == null ? null : (map['parentDocumentId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId']! as String).input(),
+      structData: map['structData'] == null ? null : ((map['structData']! as Map).cast<String, String>()).input(),
     );
   }
 }

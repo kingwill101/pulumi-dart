@@ -39,10 +39,10 @@ class RulesSource {
 
   factory RulesSource.fromMap(Map<String, dynamic> map) {
     return RulesSource(
-      rulesSourceList: map['rulesSourceList'] == null ? null : (RulesSourceList.fromMap((map['rulesSourceList'] as Map).cast<String, dynamic>())).input(),
-      rulesString: map['rulesString'] == null ? null : (map['rulesString'] as String).input(),
-      statefulRules: map['statefulRules'] == null ? null : (pulumi.Input.decodeList<StatefulRule>(map['statefulRules'], (value) => StatefulRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statelessRulesAndCustomActions: map['statelessRulesAndCustomActions'] == null ? null : (StatelessRulesAndCustomActions.fromMap((map['statelessRulesAndCustomActions'] as Map).cast<String, dynamic>())).input(),
+      rulesSourceList: map['rulesSourceList'] == null ? null : (RulesSourceList.fromMap((map['rulesSourceList']! as Map).cast<String, dynamic>())).input(),
+      rulesString: map['rulesString'] == null ? null : (map['rulesString']! as String).input(),
+      statefulRules: map['statefulRules'] == null ? null : (pulumi.Input.decodeList<StatefulRule>(map['statefulRules']!, (value) => StatefulRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statelessRulesAndCustomActions: map['statelessRulesAndCustomActions'] == null ? null : (StatelessRulesAndCustomActions.fromMap((map['statelessRulesAndCustomActions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

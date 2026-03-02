@@ -39,10 +39,10 @@ class RestorePlanRestoreConfigTransformationRuleFieldAction {
 
   factory RestorePlanRestoreConfigTransformationRuleFieldAction.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfigTransformationRuleFieldAction(
-      fromPath: map['fromPath'] == null ? null : (map['fromPath'] as String).input(),
+      fromPath: map['fromPath'] == null ? null : (map['fromPath']! as String).input(),
       op: (map['op'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

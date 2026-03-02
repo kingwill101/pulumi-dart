@@ -59,14 +59,14 @@ class ParameterVersionState {
 
   factory ParameterVersionState.fromMap(Map<String, dynamic> map) {
     return ParameterVersionState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      kmsKeyVersion: map['kmsKeyVersion'] == null ? null : (map['kmsKeyVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameter: map['parameter'] == null ? null : (map['parameter'] as String).input(),
-      parameterData: map['parameterData'] == null ? null : (map['parameterData'] as String).input(),
-      parameterVersionId: map['parameterVersionId'] == null ? null : (map['parameterVersionId'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      kmsKeyVersion: map['kmsKeyVersion'] == null ? null : (map['kmsKeyVersion']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameter: map['parameter'] == null ? null : (map['parameter']! as String).input(),
+      parameterData: map['parameterData'] == null ? null : (map['parameterData']! as String).input(),
+      parameterVersionId: map['parameterVersionId'] == null ? null : (map['parameterVersionId']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

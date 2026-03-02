@@ -21,7 +21,7 @@ class StackStreamingExperienceSettings {
 
   factory StackStreamingExperienceSettings.fromMap(Map<String, dynamic> map) {
     return StackStreamingExperienceSettings(
-      preferredProtocol: map['preferredProtocol'] == null ? null : (map['preferredProtocol'] as String).input(),
+      preferredProtocol: map['preferredProtocol'] == null ? null : ((map['preferredProtocol'] as String).input()).input(),
     );
   }
 }

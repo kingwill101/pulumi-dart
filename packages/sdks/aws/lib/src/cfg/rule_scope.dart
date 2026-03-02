@@ -35,10 +35,10 @@ class RuleScope {
 
   factory RuleScope.fromMap(Map<String, dynamic> map) {
     return RuleScope(
-      complianceResourceId: map['complianceResourceId'] == null ? null : (map['complianceResourceId'] as String).input(),
-      complianceResourceTypes: map['complianceResourceTypes'] == null ? null : ((map['complianceResourceTypes'] as List).cast<String>()).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
+      complianceResourceId: map['complianceResourceId'] == null ? null : ((map['complianceResourceId'] as String).input()).input(),
+      complianceResourceTypes: map['complianceResourceTypes'] == null ? null : (((map['complianceResourceTypes'] as List).cast<String>()).input()).input(),
+      tagKey: map['tagKey'] == null ? null : ((map['tagKey'] as String).input()).input(),
+      tagValue: map['tagValue'] == null ? null : ((map['tagValue'] as String).input()).input(),
     );
   }
 }

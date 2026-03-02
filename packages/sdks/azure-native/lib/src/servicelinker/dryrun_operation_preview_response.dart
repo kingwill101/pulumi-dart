@@ -41,11 +41,11 @@ class DryrunOperationPreviewResponse {
 
   factory DryrunOperationPreviewResponse.fromMap(Map<String, dynamic> map) {
     return DryrunOperationPreviewResponse(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      operationType: map['operationType'] == null ? null : (map['operationType'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      operationType: map['operationType'] == null ? null : (map['operationType']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

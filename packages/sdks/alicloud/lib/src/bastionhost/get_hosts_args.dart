@@ -74,17 +74,17 @@ class GetHostsArgs {
 
   factory GetHostsArgs.fromMap(Map<String, dynamic> map) {
     return GetHostsArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      hostAddress: map['hostAddress'] == null ? null : (map['hostAddress'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      hostAddress: map['hostAddress'] == null ? null : (map['hostAddress']! as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      sourceInstanceId: map['sourceInstanceId'] == null ? null : (map['sourceInstanceId'] as String).input(),
-      sourceInstanceState: map['sourceInstanceState'] == null ? null : (map['sourceInstanceState'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      sourceInstanceId: map['sourceInstanceId'] == null ? null : (map['sourceInstanceId']! as String).input(),
+      sourceInstanceState: map['sourceInstanceState'] == null ? null : (map['sourceInstanceState']! as String).input(),
     );
   }
 }

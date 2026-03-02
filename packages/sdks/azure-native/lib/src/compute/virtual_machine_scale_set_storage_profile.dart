@@ -39,10 +39,10 @@ class VirtualMachineScaleSetStorageProfile {
 
   factory VirtualMachineScaleSetStorageProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetStorageProfile(
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<VirtualMachineScaleSetDataDisk>(map['dataDisks'], (value) => VirtualMachineScaleSetDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diskControllerType: map['diskControllerType'] == null ? null : (map['diskControllerType'] as String).input(),
-      imageReference: map['imageReference'] == null ? null : (ImageReference.fromMap((map['imageReference'] as Map).cast<String, dynamic>())).input(),
-      osDisk: map['osDisk'] == null ? null : (VirtualMachineScaleSetOSDisk.fromMap((map['osDisk'] as Map).cast<String, dynamic>())).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<VirtualMachineScaleSetDataDisk>(map['dataDisks']!, (value) => VirtualMachineScaleSetDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskControllerType: map['diskControllerType'] == null ? null : (map['diskControllerType']! as String).input(),
+      imageReference: map['imageReference'] == null ? null : (ImageReference.fromMap((map['imageReference']! as Map).cast<String, dynamic>())).input(),
+      osDisk: map['osDisk'] == null ? null : (VirtualMachineScaleSetOSDisk.fromMap((map['osDisk']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

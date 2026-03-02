@@ -22,7 +22,7 @@ class SignInBehaviorCloudidentityV1beta1 {
 
   factory SignInBehaviorCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return SignInBehaviorCloudidentityV1beta1(
-      redirectCondition: map['redirectCondition'] == null ? null : (SignInBehaviorRedirectConditionCloudidentityV1beta1.fromValue(map['redirectCondition'] as String)).input(),
+      redirectCondition: map['redirectCondition'] == null ? null : (SignInBehaviorRedirectConditionCloudidentityV1beta1.fromValue(map['redirectCondition']! as String)).input(),
     );
   }
 }

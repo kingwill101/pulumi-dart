@@ -28,8 +28,8 @@ class UserProperties {
 
   factory UserProperties.fromMap(Map<String, dynamic> map) {
     return UserProperties(
-      identityProvider: map['identityProvider'] == null ? null : (EntraIdentityProvider.fromMap((map['identityProvider'] as Map).cast<String, dynamic>())).input(),
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<DatabaseRole>(map['roles'], (value) => DatabaseRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identityProvider: map['identityProvider'] == null ? null : (EntraIdentityProvider.fromMap((map['identityProvider']! as Map).cast<String, dynamic>())).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<DatabaseRole>(map['roles']!, (value) => DatabaseRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

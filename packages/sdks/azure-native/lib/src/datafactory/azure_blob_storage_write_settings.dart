@@ -48,11 +48,11 @@ class AzureBlobStorageWriteSettings {
 
   factory AzureBlobStorageWriteSettings.fromMap(Map<String, dynamic> map) {
     return AzureBlobStorageWriteSettings(
-      blockSizeInMB: map['blockSizeInMB'] == null ? null : (map['blockSizeInMB']).input(),
-      copyBehavior: map['copyBehavior'] == null ? null : (map['copyBehavior']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      metadata: map['metadata'] == null ? null : (pulumi.Input.decodeList<MetadataItem>(map['metadata'], (value) => MetadataItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      blockSizeInMB: map['blockSizeInMB'] == null ? null : (map['blockSizeInMB']!).input(),
+      copyBehavior: map['copyBehavior'] == null ? null : (map['copyBehavior']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      metadata: map['metadata'] == null ? null : (pulumi.Input.decodeList<MetadataItem>(map['metadata']!, (value) => MetadataItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -48,12 +48,12 @@ class BackendServiceFabricCluster {
 
   factory BackendServiceFabricCluster.fromMap(Map<String, dynamic> map) {
     return BackendServiceFabricCluster(
-      clientCertificateId: map['clientCertificateId'] == null ? null : (map['clientCertificateId'] as String).input(),
-      clientCertificateThumbprint: map['clientCertificateThumbprint'] == null ? null : (map['clientCertificateThumbprint'] as String).input(),
+      clientCertificateId: map['clientCertificateId'] == null ? null : (map['clientCertificateId']! as String).input(),
+      clientCertificateThumbprint: map['clientCertificateThumbprint'] == null ? null : (map['clientCertificateThumbprint']! as String).input(),
       managementEndpoints: ((map['managementEndpoints'] as List).cast<String>()).input(),
       maxPartitionResolutionRetries: (map['maxPartitionResolutionRetries'] as int).input(),
-      serverCertificateThumbprints: map['serverCertificateThumbprints'] == null ? null : ((map['serverCertificateThumbprints'] as List).cast<String>()).input(),
-      serverX509Names: map['serverX509Names'] == null ? null : (pulumi.Input.decodeList<BackendServiceFabricClusterServerX509Name>(map['serverX509Names'], (value) => BackendServiceFabricClusterServerX509Name.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serverCertificateThumbprints: map['serverCertificateThumbprints'] == null ? null : ((map['serverCertificateThumbprints']! as List).cast<String>()).input(),
+      serverX509Names: map['serverX509Names'] == null ? null : (pulumi.Input.decodeList<BackendServiceFabricClusterServerX509Name>(map['serverX509Names']!, (value) => BackendServiceFabricClusterServerX509Name.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

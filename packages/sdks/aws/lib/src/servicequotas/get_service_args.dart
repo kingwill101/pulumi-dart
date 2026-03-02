@@ -29,7 +29,7 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serviceName: (map['serviceName'] as String).input(),
     );
   }

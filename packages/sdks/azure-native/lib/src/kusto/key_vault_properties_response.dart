@@ -36,10 +36,10 @@ class KeyVaultPropertiesResponse {
 
   factory KeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPropertiesResponse(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
-      userIdentity: map['userIdentity'] == null ? null : (map['userIdentity'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
+      userIdentity: map['userIdentity'] == null ? null : (map['userIdentity']! as String).input(),
     );
   }
 }

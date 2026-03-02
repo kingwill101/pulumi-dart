@@ -33,7 +33,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri {
   factory SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri(
       operator: (map['operator'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

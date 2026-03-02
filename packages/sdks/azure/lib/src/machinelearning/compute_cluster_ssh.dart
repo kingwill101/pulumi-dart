@@ -32,9 +32,9 @@ class ComputeClusterSsh {
 
   factory ComputeClusterSsh.fromMap(Map<String, dynamic> map) {
     return ComputeClusterSsh(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
       adminUsername: (map['adminUsername'] as String).input(),
-      keyValue: map['keyValue'] == null ? null : (map['keyValue'] as String).input(),
+      keyValue: map['keyValue'] == null ? null : (map['keyValue']! as String).input(),
     );
   }
 }

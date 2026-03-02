@@ -75,15 +75,15 @@ class ProjectProperties {
 
   factory ProjectProperties.fromMap(Map<String, dynamic> map) {
     return ProjectProperties(
-      allowFullScan: map['allowFullScan'] == null ? null : (map['allowFullScan'] as bool).input(),
-      enableDecimal2: map['enableDecimal2'] == null ? null : (map['enableDecimal2'] as bool).input(),
-      enableDr: map['enableDr'] == null ? null : (map['enableDr'] as bool).input(),
-      encryption: map['encryption'] == null ? null : (ProjectPropertiesEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
-      sqlMeteringMax: map['sqlMeteringMax'] == null ? null : (map['sqlMeteringMax'] as String).input(),
-      tableLifecycle: map['tableLifecycle'] == null ? null : (ProjectPropertiesTableLifecycle.fromMap((map['tableLifecycle'] as Map).cast<String, dynamic>())).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
-      typeSystem: map['typeSystem'] == null ? null : (map['typeSystem'] as String).input(),
+      allowFullScan: map['allowFullScan'] == null ? null : (map['allowFullScan']! as bool).input(),
+      enableDecimal2: map['enableDecimal2'] == null ? null : (map['enableDecimal2']! as bool).input(),
+      enableDr: map['enableDr'] == null ? null : (map['enableDr']! as bool).input(),
+      encryption: map['encryption'] == null ? null : (ProjectPropertiesEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      sqlMeteringMax: map['sqlMeteringMax'] == null ? null : (map['sqlMeteringMax']! as String).input(),
+      tableLifecycle: map['tableLifecycle'] == null ? null : (ProjectPropertiesTableLifecycle.fromMap((map['tableLifecycle']! as Map).cast<String, dynamic>())).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
+      typeSystem: map['typeSystem'] == null ? null : (map['typeSystem']! as String).input(),
     );
   }
 }

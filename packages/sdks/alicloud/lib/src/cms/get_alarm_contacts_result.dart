@@ -53,14 +53,14 @@ class GetAlarmContactsResult {
 
   factory GetAlarmContactsResult.fromMap(Map<String, dynamic> map) {
     return GetAlarmContactsResult(
-      chanelType: map['chanelType'] == null ? null : map['chanelType'] as String,
-      chanelValue: map['chanelValue'] == null ? null : map['chanelValue'] as String,
+      chanelType: map['chanelType'] == null ? null : map['chanelType']! as String,
+      chanelValue: map['chanelValue'] == null ? null : map['chanelValue']! as String,
       contacts: pulumi.Input.decodeList<GetAlarmContactsContact>(map['contacts'], (value) => GetAlarmContactsContact.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

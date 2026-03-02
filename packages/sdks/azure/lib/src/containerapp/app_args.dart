@@ -93,18 +93,18 @@ class AppArgs {
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
       containerAppEnvironmentId: (map['containerAppEnvironmentId'] as String).input(),
-      dapr: map['dapr'] == null ? null : (AppDapr.fromMap((map['dapr'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (AppIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      ingress: map['ingress'] == null ? null : (AppIngress.fromMap((map['ingress'] as Map).cast<String, dynamic>())).input(),
-      maxInactiveRevisions: map['maxInactiveRevisions'] == null ? null : (map['maxInactiveRevisions'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<AppRegistry>(map['registries'], (value) => AppRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dapr: map['dapr'] == null ? null : (AppDapr.fromMap((map['dapr']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (AppIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      ingress: map['ingress'] == null ? null : (AppIngress.fromMap((map['ingress']! as Map).cast<String, dynamic>())).input(),
+      maxInactiveRevisions: map['maxInactiveRevisions'] == null ? null : (map['maxInactiveRevisions']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<AppRegistry>(map['registries']!, (value) => AppRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       revisionMode: (map['revisionMode'] as String).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<AppSecret>(map['secrets'], (value) => AppSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<AppSecret>(map['secrets']!, (value) => AppSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       template: (AppTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
-      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName'] as String).input(),
+      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName']! as String).input(),
     );
   }
 }

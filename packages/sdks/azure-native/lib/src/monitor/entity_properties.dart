@@ -65,15 +65,15 @@ class EntityProperties {
 
   factory EntityProperties.fromMap(Map<String, dynamic> map) {
     return EntityProperties(
-      alerts: map['alerts'] == null ? null : (EntityAlerts.fromMap((map['alerts'] as Map).cast<String, dynamic>())).input(),
-      canvasPosition: map['canvasPosition'] == null ? null : (EntityCoordinates.fromMap((map['canvasPosition'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      healthObjective: map['healthObjective'] == null ? null : (map['healthObjective'] as double).input(),
-      icon: map['icon'] == null ? null : (IconDefinition.fromMap((map['icon'] as Map).cast<String, dynamic>())).input(),
-      impact: map['impact'] == null ? null : (map['impact'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      signals: map['signals'] == null ? null : (SignalGroup.fromMap((map['signals'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      alerts: map['alerts'] == null ? null : (EntityAlerts.fromMap((map['alerts']! as Map).cast<String, dynamic>())).input(),
+      canvasPosition: map['canvasPosition'] == null ? null : (EntityCoordinates.fromMap((map['canvasPosition']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      healthObjective: map['healthObjective'] == null ? null : (map['healthObjective']! as double).input(),
+      icon: map['icon'] == null ? null : (IconDefinition.fromMap((map['icon']! as Map).cast<String, dynamic>())).input(),
+      impact: map['impact'] == null ? null : (map['impact']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      signals: map['signals'] == null ? null : (SignalGroup.fromMap((map['signals']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

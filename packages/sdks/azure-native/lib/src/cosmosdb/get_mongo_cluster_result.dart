@@ -88,7 +88,7 @@ class GetMongoClusterResult {
 
   factory GetMongoClusterResult.fromMap(Map<String, dynamic> map) {
     return GetMongoClusterResult(
-      administratorLogin: map['administratorLogin'] == null ? null : map['administratorLogin'] as String,
+      administratorLogin: map['administratorLogin'] == null ? null : map['administratorLogin']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       clusterStatus: map['clusterStatus'] as String,
       connectionString: map['connectionString'] as String,
@@ -96,11 +96,11 @@ class GetMongoClusterResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      nodeGroupSpecs: map['nodeGroupSpecs'] == null ? null : pulumi.Input.decodeList<NodeGroupSpecResponse>(map['nodeGroupSpecs'], (value) => NodeGroupSpecResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nodeGroupSpecs: map['nodeGroupSpecs'] == null ? null : pulumi.Input.decodeList<NodeGroupSpecResponse>(map['nodeGroupSpecs']!, (value) => NodeGroupSpecResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      serverVersion: map['serverVersion'] == null ? null : map['serverVersion'] as String,
+      serverVersion: map['serverVersion'] == null ? null : map['serverVersion']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

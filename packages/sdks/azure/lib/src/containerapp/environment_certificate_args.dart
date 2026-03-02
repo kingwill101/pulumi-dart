@@ -56,12 +56,12 @@ class EnvironmentCertificateArgs {
 
   factory EnvironmentCertificateArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentCertificateArgs(
-      certificateBlobBase64: map['certificateBlobBase64'] == null ? null : (map['certificateBlobBase64'] as String).input(),
-      certificateKeyVault: map['certificateKeyVault'] == null ? null : (EnvironmentCertificateCertificateKeyVault.fromMap((map['certificateKeyVault'] as Map).cast<String, dynamic>())).input(),
-      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
+      certificateBlobBase64: map['certificateBlobBase64'] == null ? null : (map['certificateBlobBase64']! as String).input(),
+      certificateKeyVault: map['certificateKeyVault'] == null ? null : (EnvironmentCertificateCertificateKeyVault.fromMap((map['certificateKeyVault']! as Map).cast<String, dynamic>())).input(),
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword']! as String).input(),
       containerAppEnvironmentId: (map['containerAppEnvironmentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -77,17 +77,17 @@ class Role {
 
   factory Role.fromMap(Map<String, dynamic> map) {
     return Role(
-      autoscaleConfiguration: map['autoscaleConfiguration'] == null ? null : (Autoscale.fromMap((map['autoscaleConfiguration'] as Map).cast<String, dynamic>())).input(),
-      dataDisksGroups: map['dataDisksGroups'] == null ? null : (pulumi.Input.decodeList<DataDisksGroups>(map['dataDisksGroups'], (value) => DataDisksGroups.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encryptDataDisks: map['encryptDataDisks'] == null ? null : (map['encryptDataDisks'] as bool).input(),
-      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfile.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())).input(),
-      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      osProfile: map['osProfile'] == null ? null : (OsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
-      scriptActions: map['scriptActions'] == null ? null : (pulumi.Input.decodeList<ScriptAction>(map['scriptActions'], (value) => ScriptAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetInstanceCount: map['targetInstanceCount'] == null ? null : (map['targetInstanceCount'] as int).input(),
-      vMGroupName: map['vMGroupName'] == null ? null : (map['vMGroupName'] as String).input(),
-      virtualNetworkProfile: map['virtualNetworkProfile'] == null ? null : (VirtualNetworkProfile.fromMap((map['virtualNetworkProfile'] as Map).cast<String, dynamic>())).input(),
+      autoscaleConfiguration: map['autoscaleConfiguration'] == null ? null : (Autoscale.fromMap((map['autoscaleConfiguration']! as Map).cast<String, dynamic>())).input(),
+      dataDisksGroups: map['dataDisksGroups'] == null ? null : (pulumi.Input.decodeList<DataDisksGroups>(map['dataDisksGroups']!, (value) => DataDisksGroups.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptDataDisks: map['encryptDataDisks'] == null ? null : (map['encryptDataDisks']! as bool).input(),
+      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfile.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>())).input(),
+      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      osProfile: map['osProfile'] == null ? null : (OsProfile.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
+      scriptActions: map['scriptActions'] == null ? null : (pulumi.Input.decodeList<ScriptAction>(map['scriptActions']!, (value) => ScriptAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetInstanceCount: map['targetInstanceCount'] == null ? null : (map['targetInstanceCount']! as int).input(),
+      vMGroupName: map['vMGroupName'] == null ? null : (map['vMGroupName']! as String).input(),
+      virtualNetworkProfile: map['virtualNetworkProfile'] == null ? null : (VirtualNetworkProfile.fromMap((map['virtualNetworkProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

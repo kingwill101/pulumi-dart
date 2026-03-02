@@ -33,8 +33,8 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailure
   factory V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditional.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditional(
       active: (map['active'] as bool).input(),
-      conditionalBranches: map['conditionalBranches'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranch>(map['conditionalBranches'], (value) => V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultBranch: map['defaultBranch'] == null ? null : (V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranch.fromMap((map['defaultBranch'] as Map).cast<String, dynamic>())).input(),
+      conditionalBranches: map['conditionalBranches'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranch>(map['conditionalBranches']!, (value) => V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalConditionalBranch.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      defaultBranch: map['defaultBranch'] == null ? null : ((V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranch.fromMap((map['defaultBranch']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

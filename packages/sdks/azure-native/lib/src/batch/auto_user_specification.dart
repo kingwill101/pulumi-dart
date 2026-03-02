@@ -28,8 +28,8 @@ class AutoUserSpecification {
 
   factory AutoUserSpecification.fromMap(Map<String, dynamic> map) {
     return AutoUserSpecification(
-      elevationLevel: map['elevationLevel'] == null ? null : (ElevationLevel.fromValue(map['elevationLevel'] as String)).input(),
-      scope: map['scope'] == null ? null : (AutoUserScope.fromValue(map['scope'] as String)).input(),
+      elevationLevel: map['elevationLevel'] == null ? null : (ElevationLevel.fromValue(map['elevationLevel']! as String)).input(),
+      scope: map['scope'] == null ? null : (AutoUserScope.fromValue(map['scope']! as String)).input(),
     );
   }
 }

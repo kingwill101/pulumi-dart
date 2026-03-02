@@ -69,15 +69,15 @@ class DropletAutoscaleDropletTemplate {
   factory DropletAutoscaleDropletTemplate.fromMap(Map<String, dynamic> map) {
     return DropletAutoscaleDropletTemplate(
       image: (map['image'] as String).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as bool).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6']! as bool).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
       region: (map['region'] as String).input(),
       size: (map['size'] as String).input(),
       sshKeys: ((map['sshKeys'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
-      vpcUuid: map['vpcUuid'] == null ? null : (map['vpcUuid'] as String).input(),
-      withDropletAgent: map['withDropletAgent'] == null ? null : (map['withDropletAgent'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
+      vpcUuid: map['vpcUuid'] == null ? null : (map['vpcUuid']! as String).input(),
+      withDropletAgent: map['withDropletAgent'] == null ? null : (map['withDropletAgent']! as bool).input(),
     );
   }
 }

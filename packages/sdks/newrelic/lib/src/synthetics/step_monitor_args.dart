@@ -100,20 +100,20 @@ class StepMonitorArgs {
 
   factory StepMonitorArgs.fromMap(Map<String, dynamic> map) {
     return StepMonitorArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      browsers: map['browsers'] == null ? null : ((map['browsers'] as List).cast<String>()).input(),
-      devices: map['devices'] == null ? null : ((map['devices'] as List).cast<String>()).input(),
-      enableScreenshotOnFailureAndScript: map['enableScreenshotOnFailureAndScript'] == null ? null : (map['enableScreenshotOnFailureAndScript'] as bool).input(),
-      locationPrivates: map['locationPrivates'] == null ? null : (pulumi.Input.decodeList<StepMonitorLocationPrivate>(map['locationPrivates'], (value) => StepMonitorLocationPrivate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      locationsPublics: map['locationsPublics'] == null ? null : ((map['locationsPublics'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      browsers: map['browsers'] == null ? null : ((map['browsers']! as List).cast<String>()).input(),
+      devices: map['devices'] == null ? null : ((map['devices']! as List).cast<String>()).input(),
+      enableScreenshotOnFailureAndScript: map['enableScreenshotOnFailureAndScript'] == null ? null : (map['enableScreenshotOnFailureAndScript']! as bool).input(),
+      locationPrivates: map['locationPrivates'] == null ? null : (pulumi.Input.decodeList<StepMonitorLocationPrivate>(map['locationPrivates']!, (value) => StepMonitorLocationPrivate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locationsPublics: map['locationsPublics'] == null ? null : ((map['locationsPublics']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       period: (map['period'] as String).input(),
-      runtimeType_: map['runtimeType'] == null ? null : (map['runtimeType'] as String).input(),
-      runtimeTypeVersion: map['runtimeTypeVersion'] == null ? null : (map['runtimeTypeVersion'] as String).input(),
+      runtimeType_: map['runtimeType'] == null ? null : (map['runtimeType']! as String).input(),
+      runtimeTypeVersion: map['runtimeTypeVersion'] == null ? null : (map['runtimeTypeVersion']! as String).input(),
       status: (map['status'] as String).input(),
       steps: (pulumi.Input.decodeList<StepMonitorStep>(map['steps'], (value) => StepMonitorStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<StepMonitorTag>(map['tags'], (value) => StepMonitorTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      useUnsupportedLegacyRuntime: map['useUnsupportedLegacyRuntime'] == null ? null : (map['useUnsupportedLegacyRuntime'] as bool).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<StepMonitorTag>(map['tags']!, (value) => StepMonitorTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      useUnsupportedLegacyRuntime: map['useUnsupportedLegacyRuntime'] == null ? null : (map['useUnsupportedLegacyRuntime']! as bool).input(),
     );
   }
 }

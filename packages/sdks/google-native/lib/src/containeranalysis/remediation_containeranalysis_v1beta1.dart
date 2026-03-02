@@ -33,9 +33,9 @@ class RemediationContaineranalysisV1beta1 {
 
   factory RemediationContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return RemediationContaineranalysisV1beta1(
-      details: map['details'] == null ? null : (map['details'] as String).input(),
-      remediationType: map['remediationType'] == null ? null : (RemediationRemediationTypeContaineranalysisV1beta1.fromValue(map['remediationType'] as String)).input(),
-      remediationUri: map['remediationUri'] == null ? null : (RelatedUrlContaineranalysisV1beta1.fromMap((map['remediationUri'] as Map).cast<String, dynamic>())).input(),
+      details: map['details'] == null ? null : (map['details']! as String).input(),
+      remediationType: map['remediationType'] == null ? null : (RemediationRemediationTypeContaineranalysisV1beta1.fromValue(map['remediationType']! as String)).input(),
+      remediationUri: map['remediationUri'] == null ? null : (RelatedUrlContaineranalysisV1beta1.fromMap((map['remediationUri']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

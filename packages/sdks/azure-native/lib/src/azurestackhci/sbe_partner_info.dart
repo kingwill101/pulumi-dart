@@ -34,9 +34,9 @@ class SbePartnerInfo {
 
   factory SbePartnerInfo.fromMap(Map<String, dynamic> map) {
     return SbePartnerInfo(
-      credentialList: map['credentialList'] == null ? null : (pulumi.Input.decodeList<SbeCredentials>(map['credentialList'], (value) => SbeCredentials.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      partnerProperties: map['partnerProperties'] == null ? null : (pulumi.Input.decodeList<SbePartnerProperties>(map['partnerProperties'], (value) => SbePartnerProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sbeDeploymentInfo: map['sbeDeploymentInfo'] == null ? null : (SbeDeploymentInfo.fromMap((map['sbeDeploymentInfo'] as Map).cast<String, dynamic>())).input(),
+      credentialList: map['credentialList'] == null ? null : (pulumi.Input.decodeList<SbeCredentials>(map['credentialList']!, (value) => SbeCredentials.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      partnerProperties: map['partnerProperties'] == null ? null : (pulumi.Input.decodeList<SbePartnerProperties>(map['partnerProperties']!, (value) => SbePartnerProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sbeDeploymentInfo: map['sbeDeploymentInfo'] == null ? null : (SbeDeploymentInfo.fromMap((map['sbeDeploymentInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

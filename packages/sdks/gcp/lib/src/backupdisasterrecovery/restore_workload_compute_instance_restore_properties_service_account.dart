@@ -25,8 +25,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

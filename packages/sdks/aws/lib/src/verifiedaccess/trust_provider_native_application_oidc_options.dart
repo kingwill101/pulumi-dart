@@ -47,14 +47,14 @@ class TrustProviderNativeApplicationOidcOptions {
 
   factory TrustProviderNativeApplicationOidcOptions.fromMap(Map<String, dynamic> map) {
     return TrustProviderNativeApplicationOidcOptions(
-      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : (map['authorizationEndpoint'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : ((map['authorizationEndpoint'] as String).input()).input(),
+      clientId: map['clientId'] == null ? null : ((map['clientId'] as String).input()).input(),
       clientSecret: (map['clientSecret'] as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      publicSigningKeyEndpoint: map['publicSigningKeyEndpoint'] == null ? null : (map['publicSigningKeyEndpoint'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint'] as String).input(),
-      userInfoEndpoint: map['userInfoEndpoint'] == null ? null : (map['userInfoEndpoint'] as String).input(),
+      issuer: map['issuer'] == null ? null : ((map['issuer'] as String).input()).input(),
+      publicSigningKeyEndpoint: map['publicSigningKeyEndpoint'] == null ? null : ((map['publicSigningKeyEndpoint'] as String).input()).input(),
+      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : ((map['tokenEndpoint'] as String).input()).input(),
+      userInfoEndpoint: map['userInfoEndpoint'] == null ? null : ((map['userInfoEndpoint'] as String).input()).input(),
     );
   }
 }

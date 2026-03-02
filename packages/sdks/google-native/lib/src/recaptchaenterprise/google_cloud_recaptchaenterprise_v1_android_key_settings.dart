@@ -31,9 +31,9 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings {
 
   factory GoogleCloudRecaptchaenterpriseV1AndroidKeySettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1AndroidKeySettings(
-      allowAllPackageNames: map['allowAllPackageNames'] == null ? null : (map['allowAllPackageNames'] as bool).input(),
-      allowedPackageNames: map['allowedPackageNames'] == null ? null : ((map['allowedPackageNames'] as List).cast<String>()).input(),
-      supportNonGoogleAppStoreDistribution: map['supportNonGoogleAppStoreDistribution'] == null ? null : (map['supportNonGoogleAppStoreDistribution'] as bool).input(),
+      allowAllPackageNames: map['allowAllPackageNames'] == null ? null : (map['allowAllPackageNames']! as bool).input(),
+      allowedPackageNames: map['allowedPackageNames'] == null ? null : ((map['allowedPackageNames']! as List).cast<String>()).input(),
+      supportNonGoogleAppStoreDistribution: map['supportNonGoogleAppStoreDistribution'] == null ? null : (map['supportNonGoogleAppStoreDistribution']! as bool).input(),
     );
   }
 }

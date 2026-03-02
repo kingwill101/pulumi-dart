@@ -70,16 +70,16 @@ class ProductArgs {
 
   factory ProductArgs.fromMap(Map<String, dynamic> map) {
     return ProductArgs(
-      approvalRequired: map['approvalRequired'] == null ? null : (map['approvalRequired'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      approvalRequired: map['approvalRequired'] == null ? null : (map['approvalRequired']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      state: map['state'] == null ? null : (ProductState.fromValue(map['state'] as String)).input(),
-      subscriptionRequired: map['subscriptionRequired'] == null ? null : (map['subscriptionRequired'] as bool).input(),
-      subscriptionsLimit: map['subscriptionsLimit'] == null ? null : (map['subscriptionsLimit'] as int).input(),
-      terms: map['terms'] == null ? null : (map['terms'] as String).input(),
+      state: map['state'] == null ? null : (ProductState.fromValue(map['state']! as String)).input(),
+      subscriptionRequired: map['subscriptionRequired'] == null ? null : (map['subscriptionRequired']! as bool).input(),
+      subscriptionsLimit: map['subscriptionsLimit'] == null ? null : (map['subscriptionsLimit']! as int).input(),
+      terms: map['terms'] == null ? null : (map['terms']! as String).input(),
     );
   }
 }

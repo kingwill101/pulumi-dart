@@ -39,9 +39,9 @@ class GetLocalGatewayRouteTablesArgs {
 
   factory GetLocalGatewayRouteTablesArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewayRouteTablesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetLocalGatewayRouteTablesFilter>(map['filters'], (value) => GetLocalGatewayRouteTablesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetLocalGatewayRouteTablesFilter>(map['filters']!, (value) => GetLocalGatewayRouteTablesFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

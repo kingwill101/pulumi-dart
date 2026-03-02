@@ -51,13 +51,13 @@ class SpotFleetRequestLaunchTemplateConfigOverride {
 
   factory SpotFleetRequestLaunchTemplateConfigOverride.fromMap(Map<String, dynamic> map) {
     return SpotFleetRequestLaunchTemplateConfigOverride(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      instanceRequirements: map['instanceRequirements'] == null ? null : (SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirements.fromMap((map['instanceRequirements'] as Map).cast<String, dynamic>())).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as double).input(),
-      spotPrice: map['spotPrice'] == null ? null : (map['spotPrice'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity'] as double).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      instanceRequirements: map['instanceRequirements'] == null ? null : ((SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirements.fromMap((map['instanceRequirements']! as Map).cast<String, dynamic>())).input()).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as double).input()).input(),
+      spotPrice: map['spotPrice'] == null ? null : ((map['spotPrice'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      weightedCapacity: map['weightedCapacity'] == null ? null : ((map['weightedCapacity'] as double).input()).input(),
     );
   }
 }

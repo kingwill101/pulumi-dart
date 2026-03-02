@@ -58,16 +58,16 @@ class GetServerPlansResult {
 
   factory GetServerPlansResult.fromMap(Map<String, dynamic> map) {
     return GetServerPlansResult(
-      bandwidth: map['bandwidth'] == null ? null : map['bandwidth'] as int,
-      core: map['core'] == null ? null : map['core'] as int,
-      diskSize: map['diskSize'] == null ? null : map['diskSize'] as int,
-      flow: map['flow'] == null ? null : map['flow'] as int,
+      bandwidth: map['bandwidth'] == null ? null : map['bandwidth']! as int,
+      core: map['core'] == null ? null : map['core']! as int,
+      diskSize: map['diskSize'] == null ? null : map['diskSize']! as int,
+      flow: map['flow'] == null ? null : map['flow']! as int,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      memory: map['memory'] == null ? null : map['memory'] as double,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      memory: map['memory'] == null ? null : map['memory']! as double,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       plans: pulumi.Input.decodeList<GetServerPlansPlan>(map['plans'], (value) => GetServerPlansPlan.fromMap((value as Map).cast<String, dynamic>())),
-      platform: map['platform'] == null ? null : map['platform'] as String,
+      platform: map['platform'] == null ? null : map['platform']! as String,
     );
   }
 }

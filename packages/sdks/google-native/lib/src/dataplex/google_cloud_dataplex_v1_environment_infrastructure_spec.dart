@@ -28,7 +28,7 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpec {
 
   factory GoogleCloudDataplexV1EnvironmentInfrastructureSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EnvironmentInfrastructureSpec(
-      compute: map['compute'] == null ? null : (GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources.fromMap((map['compute'] as Map).cast<String, dynamic>())).input(),
+      compute: map['compute'] == null ? null : (GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources.fromMap((map['compute']! as Map).cast<String, dynamic>())).input(),
       osImage: (GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime.fromMap((map['osImage'] as Map).cast<String, dynamic>())).input(),
     );
   }

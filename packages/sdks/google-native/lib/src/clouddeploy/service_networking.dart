@@ -32,7 +32,7 @@ class ServiceNetworking {
   factory ServiceNetworking.fromMap(Map<String, dynamic> map) {
     return ServiceNetworking(
       deployment: (map['deployment'] as String).input(),
-      disablePodOverprovisioning: map['disablePodOverprovisioning'] == null ? null : (map['disablePodOverprovisioning'] as bool).input(),
+      disablePodOverprovisioning: map['disablePodOverprovisioning'] == null ? null : (map['disablePodOverprovisioning']! as bool).input(),
       service: (map['service'] as String).input(),
     );
   }

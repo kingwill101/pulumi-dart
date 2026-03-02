@@ -41,11 +41,11 @@ class InstanceNetworkInterfaceAssociation {
 
   factory InstanceNetworkInterfaceAssociation.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkInterfaceAssociation(
-      carrierIp: map['carrierIp'] == null ? null : (map['carrierIp'] as String).input(),
-      customerOwnedIp: map['customerOwnedIp'] == null ? null : (map['customerOwnedIp'] as String).input(),
-      ipOwnerId: map['ipOwnerId'] == null ? null : (map['ipOwnerId'] as String).input(),
-      publicDnsName: map['publicDnsName'] == null ? null : (map['publicDnsName'] as String).input(),
-      publicIp: map['publicIp'] == null ? null : (map['publicIp'] as String).input(),
+      carrierIp: map['carrierIp'] == null ? null : (map['carrierIp']! as String).input(),
+      customerOwnedIp: map['customerOwnedIp'] == null ? null : (map['customerOwnedIp']! as String).input(),
+      ipOwnerId: map['ipOwnerId'] == null ? null : (map['ipOwnerId']! as String).input(),
+      publicDnsName: map['publicDnsName'] == null ? null : (map['publicDnsName']! as String).input(),
+      publicIp: map['publicIp'] == null ? null : (map['publicIp']! as String).input(),
     );
   }
 }

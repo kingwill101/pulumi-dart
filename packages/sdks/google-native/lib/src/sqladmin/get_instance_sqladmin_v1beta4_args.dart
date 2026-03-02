@@ -28,7 +28,7 @@ class GetInstanceSqladminV1beta4Args {
   factory GetInstanceSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
     return GetInstanceSqladminV1beta4Args(
       instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

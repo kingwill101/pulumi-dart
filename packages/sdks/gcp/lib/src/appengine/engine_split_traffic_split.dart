@@ -27,7 +27,7 @@ class EngineSplitTrafficSplit {
   factory EngineSplitTrafficSplit.fromMap(Map<String, dynamic> map) {
     return EngineSplitTrafficSplit(
       allocations: ((map['allocations'] as Map).cast<String, String>()).input(),
-      shardBy: map['shardBy'] == null ? null : (map['shardBy'] as String).input(),
+      shardBy: map['shardBy'] == null ? null : (map['shardBy']! as String).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class FrontdoorSecurityPolicyArgs {
   factory FrontdoorSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorSecurityPolicyArgs(
       cdnFrontdoorProfileId: (map['cdnFrontdoorProfileId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       securityPolicies: (FrontdoorSecurityPolicySecurityPolicies.fromMap((map['securityPolicies'] as Map).cast<String, dynamic>())).input(),
     );
   }

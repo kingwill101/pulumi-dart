@@ -70,14 +70,14 @@ class DownloadOsJobPropertiesResponse {
 
   factory DownloadOsJobPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DownloadOsJobPropertiesResponse(
-      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode'] as String).input(),
+      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode']! as String).input(),
       downloadRequest: (DownloadRequestResponse.fromMap((map['downloadRequest'] as Map).cast<String, dynamic>())).input(),
       endTimeUtc: (map['endTimeUtc'] as String).input(),
       error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
       jobId: (map['jobId'] as String).input(),
       jobType: (map['jobType'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      reportedProperties: map['reportedProperties'] == null ? null : (ProvisionOsReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>())).input(),
+      reportedProperties: map['reportedProperties'] == null ? null : (ProvisionOsReportedPropertiesResponse.fromMap((map['reportedProperties']! as Map).cast<String, dynamic>())).input(),
       startTimeUtc: (map['startTimeUtc'] as String).input(),
       status: (map['status'] as String).input(),
     );

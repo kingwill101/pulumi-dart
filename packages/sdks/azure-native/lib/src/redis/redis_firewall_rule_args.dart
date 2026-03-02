@@ -47,7 +47,7 @@ class RedisFirewallRuleArgs {
       cacheName: (map['cacheName'] as String).input(),
       endIP: (map['endIP'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
       startIP: (map['startIP'] as String).input(),
     );
   }

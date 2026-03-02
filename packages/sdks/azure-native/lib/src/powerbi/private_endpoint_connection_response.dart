@@ -55,9 +55,9 @@ class PrivateEndpointConnectionResponse {
     return PrivateEndpointConnectionResponse(
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
-      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (ConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>())).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (ConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );

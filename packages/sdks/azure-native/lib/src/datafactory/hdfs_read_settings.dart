@@ -83,19 +83,19 @@ class HdfsReadSettings {
 
   factory HdfsReadSettings.fromMap(Map<String, dynamic> map) {
     return HdfsReadSettings(
-      deleteFilesAfterCompletion: map['deleteFilesAfterCompletion'] == null ? null : (map['deleteFilesAfterCompletion']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      distcpSettings: map['distcpSettings'] == null ? null : (DistcpSettings.fromMap((map['distcpSettings'] as Map).cast<String, dynamic>())).input(),
-      enablePartitionDiscovery: map['enablePartitionDiscovery'] == null ? null : (map['enablePartitionDiscovery']).input(),
-      fileListPath: map['fileListPath'] == null ? null : (map['fileListPath']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : (map['modifiedDatetimeEnd']).input(),
-      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : (map['modifiedDatetimeStart']).input(),
-      partitionRootPath: map['partitionRootPath'] == null ? null : (map['partitionRootPath']).input(),
-      recursive: map['recursive'] == null ? null : (map['recursive']).input(),
+      deleteFilesAfterCompletion: map['deleteFilesAfterCompletion'] == null ? null : (map['deleteFilesAfterCompletion']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      distcpSettings: map['distcpSettings'] == null ? null : (DistcpSettings.fromMap((map['distcpSettings']! as Map).cast<String, dynamic>())).input(),
+      enablePartitionDiscovery: map['enablePartitionDiscovery'] == null ? null : (map['enablePartitionDiscovery']!).input(),
+      fileListPath: map['fileListPath'] == null ? null : (map['fileListPath']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : (map['modifiedDatetimeEnd']!).input(),
+      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : (map['modifiedDatetimeStart']!).input(),
+      partitionRootPath: map['partitionRootPath'] == null ? null : (map['partitionRootPath']!).input(),
+      recursive: map['recursive'] == null ? null : (map['recursive']!).input(),
       type: (map['type'] as String).input(),
-      wildcardFileName: map['wildcardFileName'] == null ? null : (map['wildcardFileName']).input(),
-      wildcardFolderPath: map['wildcardFolderPath'] == null ? null : (map['wildcardFolderPath']).input(),
+      wildcardFileName: map['wildcardFileName'] == null ? null : (map['wildcardFileName']!).input(),
+      wildcardFolderPath: map['wildcardFolderPath'] == null ? null : (map['wildcardFolderPath']!).input(),
     );
   }
 }

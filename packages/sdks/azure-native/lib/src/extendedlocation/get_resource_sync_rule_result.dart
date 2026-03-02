@@ -76,12 +76,12 @@ class GetResourceSyncRuleResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
+      priority: map['priority'] == null ? null : map['priority']! as int,
       provisioningState: map['provisioningState'] as String,
-      selector: map['selector'] == null ? null : ResourceSyncRulePropertiesResponseSelector.fromMap((map['selector'] as Map).cast<String, dynamic>()),
+      selector: map['selector'] == null ? null : ResourceSyncRulePropertiesResponseSelector.fromMap((map['selector']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      targetResourceGroup: map['targetResourceGroup'] == null ? null : map['targetResourceGroup'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      targetResourceGroup: map['targetResourceGroup'] == null ? null : map['targetResourceGroup']! as String,
       type: map['type'] as String,
     );
   }

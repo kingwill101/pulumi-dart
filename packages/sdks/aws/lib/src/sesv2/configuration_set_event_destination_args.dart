@@ -41,9 +41,9 @@ class ConfigurationSetEventDestinationArgs {
   factory ConfigurationSetEventDestinationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetEventDestinationArgs(
       configurationSetName: (map['configurationSetName'] as String).input(),
-      eventDestination: (ConfigurationSetEventDestinationEventDestination.fromMap((map['eventDestination'] as Map).cast<String, dynamic>())).input(),
+      eventDestination: (ConfigurationSetEventDestinationEventDestination.fromMap((map['eventDestination']! as Map).cast<String, dynamic>())).input(),
       eventDestinationName: (map['eventDestinationName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

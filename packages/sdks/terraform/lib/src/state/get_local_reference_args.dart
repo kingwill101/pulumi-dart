@@ -29,8 +29,8 @@ class GetLocalReferenceArgs {
 
   factory GetLocalReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalReferenceArgs(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      workspaceDir: map['workspaceDir'] == null ? null : (map['workspaceDir'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      workspaceDir: map['workspaceDir'] == null ? null : (map['workspaceDir']! as String).input(),
     );
   }
 }

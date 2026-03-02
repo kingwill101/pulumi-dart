@@ -27,7 +27,7 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource 
   factory PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResource(
       namespace: (map['namespace'] as String).input(),
-      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResourceResource>(map['resources'], (value) => PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResourceResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResourceResource>(map['resources']!, (value) => PlanWorkflowStepParallelConfigStepEksResourceScalingConfigScalingResourceResource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

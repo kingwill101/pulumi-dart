@@ -62,14 +62,14 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration']! as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sourceVirtualMachine: map['sourceVirtualMachine'] == null ? null : (SubResource.fromMap((map['sourceVirtualMachine'] as Map).cast<String, dynamic>())).input(),
-      storageProfile: map['storageProfile'] == null ? null : (ImageStorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sourceVirtualMachine: map['sourceVirtualMachine'] == null ? null : (SubResource.fromMap((map['sourceVirtualMachine']! as Map).cast<String, dynamic>())).input(),
+      storageProfile: map['storageProfile'] == null ? null : (ImageStorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

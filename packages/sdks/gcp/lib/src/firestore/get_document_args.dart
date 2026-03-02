@@ -42,7 +42,7 @@ class GetDocumentArgs {
       collection: (map['collection'] as String).input(),
       database: (map['database'] as String).input(),
       documentId: (map['documentId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

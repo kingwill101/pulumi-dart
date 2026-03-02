@@ -46,11 +46,11 @@ class DatasetDelimitedTextAzureBlobStorageLocation {
   factory DatasetDelimitedTextAzureBlobStorageLocation.fromMap(Map<String, dynamic> map) {
     return DatasetDelimitedTextAzureBlobStorageLocation(
       container: (map['container'] as String).input(),
-      dynamicContainerEnabled: map['dynamicContainerEnabled'] == null ? null : (map['dynamicContainerEnabled'] as bool).input(),
-      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : (map['dynamicFilenameEnabled'] as bool).input(),
-      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : (map['dynamicPathEnabled'] as bool).input(),
-      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      dynamicContainerEnabled: map['dynamicContainerEnabled'] == null ? null : (map['dynamicContainerEnabled']! as bool).input(),
+      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : (map['dynamicFilenameEnabled']! as bool).input(),
+      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : (map['dynamicPathEnabled']! as bool).input(),
+      filename: map['filename'] == null ? null : (map['filename']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

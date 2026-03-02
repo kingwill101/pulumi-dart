@@ -47,12 +47,12 @@ class RuleState {
 
   factory RuleState.fromMap(Map<String, dynamic> map) {
     return RuleState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName'] as String).input(),
-      filterPattern: map['filterPattern'] == null ? null : (map['filterPattern'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<RuleTarget>(map['targets'], (value) => RuleTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName']! as String).input(),
+      filterPattern: map['filterPattern'] == null ? null : (map['filterPattern']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<RuleTarget>(map['targets']!, (value) => RuleTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

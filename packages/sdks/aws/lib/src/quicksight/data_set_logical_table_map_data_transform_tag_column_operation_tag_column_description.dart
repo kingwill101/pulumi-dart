@@ -20,7 +20,7 @@ class DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription 
 
   factory DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription(
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      text: map['text'] == null ? null : ((map['text'] as String).input()).input(),
     );
   }
 }

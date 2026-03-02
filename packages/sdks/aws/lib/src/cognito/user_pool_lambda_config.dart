@@ -88,20 +88,20 @@ class UserPoolLambdaConfig {
 
   factory UserPoolLambdaConfig.fromMap(Map<String, dynamic> map) {
     return UserPoolLambdaConfig(
-      createAuthChallenge: map['createAuthChallenge'] == null ? null : (map['createAuthChallenge'] as String).input(),
-      customEmailSender: map['customEmailSender'] == null ? null : (UserPoolLambdaConfigCustomEmailSender.fromMap((map['customEmailSender'] as Map).cast<String, dynamic>())).input(),
-      customMessage: map['customMessage'] == null ? null : (map['customMessage'] as String).input(),
-      customSmsSender: map['customSmsSender'] == null ? null : (UserPoolLambdaConfigCustomSmsSender.fromMap((map['customSmsSender'] as Map).cast<String, dynamic>())).input(),
-      defineAuthChallenge: map['defineAuthChallenge'] == null ? null : (map['defineAuthChallenge'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      postAuthentication: map['postAuthentication'] == null ? null : (map['postAuthentication'] as String).input(),
-      postConfirmation: map['postConfirmation'] == null ? null : (map['postConfirmation'] as String).input(),
-      preAuthentication: map['preAuthentication'] == null ? null : (map['preAuthentication'] as String).input(),
-      preSignUp: map['preSignUp'] == null ? null : (map['preSignUp'] as String).input(),
-      preTokenGeneration: map['preTokenGeneration'] == null ? null : (map['preTokenGeneration'] as String).input(),
-      preTokenGenerationConfig: map['preTokenGenerationConfig'] == null ? null : (UserPoolLambdaConfigPreTokenGenerationConfig.fromMap((map['preTokenGenerationConfig'] as Map).cast<String, dynamic>())).input(),
-      userMigration: map['userMigration'] == null ? null : (map['userMigration'] as String).input(),
-      verifyAuthChallengeResponse: map['verifyAuthChallengeResponse'] == null ? null : (map['verifyAuthChallengeResponse'] as String).input(),
+      createAuthChallenge: map['createAuthChallenge'] == null ? null : ((map['createAuthChallenge'] as String).input()).input(),
+      customEmailSender: map['customEmailSender'] == null ? null : ((UserPoolLambdaConfigCustomEmailSender.fromMap((map['customEmailSender']! as Map).cast<String, dynamic>())).input()).input(),
+      customMessage: map['customMessage'] == null ? null : ((map['customMessage'] as String).input()).input(),
+      customSmsSender: map['customSmsSender'] == null ? null : ((UserPoolLambdaConfigCustomSmsSender.fromMap((map['customSmsSender']! as Map).cast<String, dynamic>())).input()).input(),
+      defineAuthChallenge: map['defineAuthChallenge'] == null ? null : ((map['defineAuthChallenge'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      postAuthentication: map['postAuthentication'] == null ? null : ((map['postAuthentication'] as String).input()).input(),
+      postConfirmation: map['postConfirmation'] == null ? null : ((map['postConfirmation'] as String).input()).input(),
+      preAuthentication: map['preAuthentication'] == null ? null : ((map['preAuthentication'] as String).input()).input(),
+      preSignUp: map['preSignUp'] == null ? null : ((map['preSignUp'] as String).input()).input(),
+      preTokenGeneration: map['preTokenGeneration'] == null ? null : ((map['preTokenGeneration'] as String).input()).input(),
+      preTokenGenerationConfig: map['preTokenGenerationConfig'] == null ? null : ((UserPoolLambdaConfigPreTokenGenerationConfig.fromMap((map['preTokenGenerationConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      userMigration: map['userMigration'] == null ? null : ((map['userMigration'] as String).input()).input(),
+      verifyAuthChallengeResponse: map['verifyAuthChallengeResponse'] == null ? null : ((map['verifyAuthChallengeResponse'] as String).input()).input(),
     );
   }
 }

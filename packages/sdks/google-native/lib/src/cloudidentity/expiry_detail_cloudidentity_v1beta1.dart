@@ -21,7 +21,7 @@ class ExpiryDetailCloudidentityV1beta1 {
 
   factory ExpiryDetailCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return ExpiryDetailCloudidentityV1beta1(
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
     );
   }
 }

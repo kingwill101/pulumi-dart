@@ -43,10 +43,10 @@ class ApplicationGatewayRewriteRuleSetResponse {
   factory ApplicationGatewayRewriteRuleSetResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRewriteRuleSetResponse(
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      rewriteRules: map['rewriteRules'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRuleResponse>(map['rewriteRules'], (value) => ApplicationGatewayRewriteRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rewriteRules: map['rewriteRules'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRuleResponse>(map['rewriteRules']!, (value) => ApplicationGatewayRewriteRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

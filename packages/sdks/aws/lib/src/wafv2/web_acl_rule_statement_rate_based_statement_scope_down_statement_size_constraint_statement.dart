@@ -38,9 +38,9 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintState
   factory WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatement(
       comparisonOperator: (map['comparisonOperator'] as String).input(),
-      fieldToMatch: map['fieldToMatch'] == null ? null : (WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
       size: (map['size'] as int).input(),
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

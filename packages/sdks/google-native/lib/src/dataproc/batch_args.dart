@@ -78,17 +78,17 @@ class BatchArgs {
 
   factory BatchArgs.fromMap(Map<String, dynamic> map) {
     return BatchArgs(
-      batchId: map['batchId'] == null ? null : (map['batchId'] as String).input(),
-      environmentConfig: map['environmentConfig'] == null ? null : (EnvironmentConfig.fromMap((map['environmentConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pysparkBatch: map['pysparkBatch'] == null ? null : (PySparkBatch.fromMap((map['pysparkBatch'] as Map).cast<String, dynamic>())).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      runtimeConfig: map['runtimeConfig'] == null ? null : (RuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())).input(),
-      sparkBatch: map['sparkBatch'] == null ? null : (SparkBatch.fromMap((map['sparkBatch'] as Map).cast<String, dynamic>())).input(),
-      sparkRBatch: map['sparkRBatch'] == null ? null : (SparkRBatch.fromMap((map['sparkRBatch'] as Map).cast<String, dynamic>())).input(),
-      sparkSqlBatch: map['sparkSqlBatch'] == null ? null : (SparkSqlBatch.fromMap((map['sparkSqlBatch'] as Map).cast<String, dynamic>())).input(),
+      batchId: map['batchId'] == null ? null : (map['batchId']! as String).input(),
+      environmentConfig: map['environmentConfig'] == null ? null : (EnvironmentConfig.fromMap((map['environmentConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pysparkBatch: map['pysparkBatch'] == null ? null : (PySparkBatch.fromMap((map['pysparkBatch']! as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      runtimeConfig: map['runtimeConfig'] == null ? null : (RuntimeConfig.fromMap((map['runtimeConfig']! as Map).cast<String, dynamic>())).input(),
+      sparkBatch: map['sparkBatch'] == null ? null : (SparkBatch.fromMap((map['sparkBatch']! as Map).cast<String, dynamic>())).input(),
+      sparkRBatch: map['sparkRBatch'] == null ? null : (SparkRBatch.fromMap((map['sparkRBatch']! as Map).cast<String, dynamic>())).input(),
+      sparkSqlBatch: map['sparkSqlBatch'] == null ? null : (SparkSqlBatch.fromMap((map['sparkSqlBatch']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

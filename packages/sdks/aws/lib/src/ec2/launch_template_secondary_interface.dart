@@ -50,13 +50,13 @@ class LaunchTemplateSecondaryInterface {
 
   factory LaunchTemplateSecondaryInterface.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateSecondaryInterface(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
-      deviceIndex: map['deviceIndex'] == null ? null : (map['deviceIndex'] as int).input(),
-      interfaceType: map['interfaceType'] == null ? null : (map['interfaceType'] as String).input(),
-      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
-      privateIpAddressCount: map['privateIpAddressCount'] == null ? null : (map['privateIpAddressCount'] as int).input(),
-      privateIpAddresses: map['privateIpAddresses'] == null ? null : ((map['privateIpAddresses'] as List).cast<String>()).input(),
-      secondarySubnetId: map['secondarySubnetId'] == null ? null : (map['secondarySubnetId'] as String).input(),
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : ((map['deleteOnTermination'] as bool).input()).input(),
+      deviceIndex: map['deviceIndex'] == null ? null : ((map['deviceIndex'] as int).input()).input(),
+      interfaceType: map['interfaceType'] == null ? null : ((map['interfaceType'] as String).input()).input(),
+      networkCardIndex: map['networkCardIndex'] == null ? null : ((map['networkCardIndex'] as int).input()).input(),
+      privateIpAddressCount: map['privateIpAddressCount'] == null ? null : ((map['privateIpAddressCount'] as int).input()).input(),
+      privateIpAddresses: map['privateIpAddresses'] == null ? null : (((map['privateIpAddresses'] as List).cast<String>()).input()).input(),
+      secondarySubnetId: map['secondarySubnetId'] == null ? null : ((map['secondarySubnetId'] as String).input()).input(),
     );
   }
 }

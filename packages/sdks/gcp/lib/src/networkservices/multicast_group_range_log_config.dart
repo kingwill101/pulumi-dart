@@ -20,7 +20,7 @@ class MulticastGroupRangeLogConfig {
 
   factory MulticastGroupRangeLogConfig.fromMap(Map<String, dynamic> map) {
     return MulticastGroupRangeLogConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

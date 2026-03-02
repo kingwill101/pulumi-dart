@@ -70,10 +70,10 @@ class ThreeTierVirtualInstanceThreeTierConfiguration {
       applicationServerConfiguration: (ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfiguration.fromMap((map['applicationServerConfiguration'] as Map).cast<String, dynamic>())).input(),
       centralServerConfiguration: (ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfiguration.fromMap((map['centralServerConfiguration'] as Map).cast<String, dynamic>())).input(),
       databaseServerConfiguration: (ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration.fromMap((map['databaseServerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      highAvailabilityType: map['highAvailabilityType'] == null ? null : (map['highAvailabilityType'] as String).input(),
-      resourceNames: map['resourceNames'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationResourceNames.fromMap((map['resourceNames'] as Map).cast<String, dynamic>())).input(),
-      secondaryIpEnabled: map['secondaryIpEnabled'] == null ? null : (map['secondaryIpEnabled'] as bool).input(),
-      transportCreateAndMount: map['transportCreateAndMount'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount.fromMap((map['transportCreateAndMount'] as Map).cast<String, dynamic>())).input(),
+      highAvailabilityType: map['highAvailabilityType'] == null ? null : (map['highAvailabilityType']! as String).input(),
+      resourceNames: map['resourceNames'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationResourceNames.fromMap((map['resourceNames']! as Map).cast<String, dynamic>())).input(),
+      secondaryIpEnabled: map['secondaryIpEnabled'] == null ? null : (map['secondaryIpEnabled']! as bool).input(),
+      transportCreateAndMount: map['transportCreateAndMount'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount.fromMap((map['transportCreateAndMount']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

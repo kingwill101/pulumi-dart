@@ -97,19 +97,19 @@ class DiJobState {
 
   factory DiJobState.fromMap(Map<String, dynamic> map) {
     return DiJobState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationDataSourceSettings: map['destinationDataSourceSettings'] == null ? null : (pulumi.Input.decodeList<DiJobDestinationDataSourceSetting>(map['destinationDataSourceSettings'], (value) => DiJobDestinationDataSourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      destinationDataSourceType: map['destinationDataSourceType'] == null ? null : (map['destinationDataSourceType'] as String).input(),
-      diJobId: map['diJobId'] == null ? null : (map['diJobId'] as int).input(),
-      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
-      jobSettings: map['jobSettings'] == null ? null : (DiJobJobSettings.fromMap((map['jobSettings'] as Map).cast<String, dynamic>())).input(),
-      migrationType: map['migrationType'] == null ? null : (map['migrationType'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as int).input(),
-      resourceSettings: map['resourceSettings'] == null ? null : (DiJobResourceSettings.fromMap((map['resourceSettings'] as Map).cast<String, dynamic>())).input(),
-      sourceDataSourceSettings: map['sourceDataSourceSettings'] == null ? null : (pulumi.Input.decodeList<DiJobSourceDataSourceSetting>(map['sourceDataSourceSettings'], (value) => DiJobSourceDataSourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceDataSourceType: map['sourceDataSourceType'] == null ? null : (map['sourceDataSourceType'] as String).input(),
-      tableMappings: map['tableMappings'] == null ? null : (pulumi.Input.decodeList<DiJobTableMapping>(map['tableMappings'], (value) => DiJobTableMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transformationRules: map['transformationRules'] == null ? null : (pulumi.Input.decodeList<DiJobTransformationRule>(map['transformationRules'], (value) => DiJobTransformationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationDataSourceSettings: map['destinationDataSourceSettings'] == null ? null : (pulumi.Input.decodeList<DiJobDestinationDataSourceSetting>(map['destinationDataSourceSettings']!, (value) => DiJobDestinationDataSourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationDataSourceType: map['destinationDataSourceType'] == null ? null : (map['destinationDataSourceType']! as String).input(),
+      diJobId: map['diJobId'] == null ? null : (map['diJobId']! as int).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName']! as String).input(),
+      jobSettings: map['jobSettings'] == null ? null : (DiJobJobSettings.fromMap((map['jobSettings']! as Map).cast<String, dynamic>())).input(),
+      migrationType: map['migrationType'] == null ? null : (map['migrationType']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as int).input(),
+      resourceSettings: map['resourceSettings'] == null ? null : (DiJobResourceSettings.fromMap((map['resourceSettings']! as Map).cast<String, dynamic>())).input(),
+      sourceDataSourceSettings: map['sourceDataSourceSettings'] == null ? null : (pulumi.Input.decodeList<DiJobSourceDataSourceSetting>(map['sourceDataSourceSettings']!, (value) => DiJobSourceDataSourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceDataSourceType: map['sourceDataSourceType'] == null ? null : (map['sourceDataSourceType']! as String).input(),
+      tableMappings: map['tableMappings'] == null ? null : (pulumi.Input.decodeList<DiJobTableMapping>(map['tableMappings']!, (value) => DiJobTableMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transformationRules: map['transformationRules'] == null ? null : (pulumi.Input.decodeList<DiJobTransformationRule>(map['transformationRules']!, (value) => DiJobTransformationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

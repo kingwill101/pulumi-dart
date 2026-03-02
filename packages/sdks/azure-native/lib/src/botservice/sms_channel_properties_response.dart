@@ -42,9 +42,9 @@ class SmsChannelPropertiesResponse {
   factory SmsChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SmsChannelPropertiesResponse(
       accountSID: (map['accountSID'] as String).input(),
-      authToken: map['authToken'] == null ? null : (map['authToken'] as String).input(),
+      authToken: map['authToken'] == null ? null : (map['authToken']! as String).input(),
       isEnabled: (map['isEnabled'] as bool).input(),
-      isValidated: map['isValidated'] == null ? null : (map['isValidated'] as bool).input(),
+      isValidated: map['isValidated'] == null ? null : (map['isValidated']! as bool).input(),
       phone: (map['phone'] as String).input(),
     );
   }

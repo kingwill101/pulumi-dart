@@ -31,8 +31,8 @@ class FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig
   factory FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig.fromMap(Map<String, dynamic> map) {
     return FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig(
       capacityProviderArn: (map['capacityProviderArn'] as String).input(),
-      executionEnvironmentMemoryGibPerVcpu: map['executionEnvironmentMemoryGibPerVcpu'] == null ? null : (map['executionEnvironmentMemoryGibPerVcpu'] as double).input(),
-      perExecutionEnvironmentMaxConcurrency: map['perExecutionEnvironmentMaxConcurrency'] == null ? null : (map['perExecutionEnvironmentMaxConcurrency'] as int).input(),
+      executionEnvironmentMemoryGibPerVcpu: map['executionEnvironmentMemoryGibPerVcpu'] == null ? null : ((map['executionEnvironmentMemoryGibPerVcpu'] as double).input()).input(),
+      perExecutionEnvironmentMaxConcurrency: map['perExecutionEnvironmentMaxConcurrency'] == null ? null : ((map['perExecutionEnvironmentMaxConcurrency'] as int).input()).input(),
     );
   }
 }

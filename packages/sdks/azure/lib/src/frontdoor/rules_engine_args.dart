@@ -45,11 +45,11 @@ class RulesEngineArgs {
 
   factory RulesEngineArgs.fromMap(Map<String, dynamic> map) {
     return RulesEngineArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       frontdoorName: (map['frontdoorName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RulesEngineRule>(map['rules'], (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RulesEngineRule>(map['rules']!, (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

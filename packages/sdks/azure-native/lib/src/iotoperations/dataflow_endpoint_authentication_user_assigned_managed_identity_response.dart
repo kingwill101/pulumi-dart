@@ -32,7 +32,7 @@ class DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse {
   factory DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse(
       clientId: (map['clientId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

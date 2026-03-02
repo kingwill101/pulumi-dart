@@ -51,14 +51,14 @@ class GetVersionsResult {
 
   factory GetVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetVersionsResult(
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       packageName: map['packageName'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       repositoryId: map['repositoryId'] as String,
       versions: pulumi.Input.decodeList<GetVersionsVersion>(map['versions'], (value) => GetVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
-      view: map['view'] == null ? null : map['view'] as String,
+      view: map['view'] == null ? null : map['view']! as String,
     );
   }
 }

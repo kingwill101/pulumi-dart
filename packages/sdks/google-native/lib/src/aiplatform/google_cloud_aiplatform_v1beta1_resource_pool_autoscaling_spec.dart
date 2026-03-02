@@ -26,8 +26,8 @@ class GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec {
 
   factory GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec(
-      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount'] as String).input(),
-      minReplicaCount: map['minReplicaCount'] == null ? null : (map['minReplicaCount'] as String).input(),
+      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount']! as String).input(),
+      minReplicaCount: map['minReplicaCount'] == null ? null : (map['minReplicaCount']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class GetUserPoolUserPoolAddOn {
 
   factory GetUserPoolUserPoolAddOn.fromMap(Map<String, dynamic> map) {
     return GetUserPoolUserPoolAddOn(
-      advancedSecurityAdditionalFlows: (pulumi.Input.decodeList<GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow>(map['advancedSecurityAdditionalFlows'], (value) => GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      advancedSecurityAdditionalFlows: (pulumi.Input.decodeList<GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow>(map['advancedSecurityAdditionalFlows']!, (value) => GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow.fromMap((value as Map).cast<String, dynamic>()))).input(),
       advancedSecurityMode: (map['advancedSecurityMode'] as String).input(),
     );
   }

@@ -36,10 +36,10 @@ class DatabaseKafkaSchemaRegistryState {
 
   factory DatabaseKafkaSchemaRegistryState.fromMap(Map<String, dynamic> map) {
     return DatabaseKafkaSchemaRegistryState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      schemaType: map['schemaType'] == null ? null : (map['schemaType'] as String).input(),
-      subjectName: map['subjectName'] == null ? null : (map['subjectName'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      schemaType: map['schemaType'] == null ? null : (map['schemaType']! as String).input(),
+      subjectName: map['subjectName'] == null ? null : (map['subjectName']! as String).input(),
     );
   }
 }

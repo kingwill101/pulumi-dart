@@ -67,16 +67,16 @@ class AlertPrometheusRuleGroupState {
 
   factory AlertPrometheusRuleGroupState.fromMap(Map<String, dynamic> map) {
     return AlertPrometheusRuleGroupState(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      ruleGroupEnabled: map['ruleGroupEnabled'] == null ? null : (map['ruleGroupEnabled'] as bool).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AlertPrometheusRuleGroupRule>(map['rules'], (value) => AlertPrometheusRuleGroupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      ruleGroupEnabled: map['ruleGroupEnabled'] == null ? null : (map['ruleGroupEnabled']! as bool).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AlertPrometheusRuleGroupRule>(map['rules']!, (value) => AlertPrometheusRuleGroupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

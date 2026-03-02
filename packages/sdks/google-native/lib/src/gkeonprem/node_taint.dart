@@ -32,9 +32,9 @@ class NodeTaint {
 
   factory NodeTaint.fromMap(Map<String, dynamic> map) {
     return NodeTaint(
-      effect: map['effect'] == null ? null : (NodeTaintEffect.fromValue(map['effect'] as String)).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      effect: map['effect'] == null ? null : (NodeTaintEffect.fromValue(map['effect']! as String)).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

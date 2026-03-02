@@ -31,9 +31,9 @@ class OnErrorDeploymentExtendedResponse {
 
   factory OnErrorDeploymentExtendedResponse.fromMap(Map<String, dynamic> map) {
     return OnErrorDeploymentExtendedResponse(
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

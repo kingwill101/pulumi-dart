@@ -81,18 +81,18 @@ class GetDBClustersResult {
   factory GetDBClustersResult.fromMap(Map<String, dynamic> map) {
     return GetDBClustersResult(
       clusters: pulumi.Input.decodeList<GetDBClustersCluster>(map['clusters'], (value) => GetDBClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex']! as String,
       descriptions: (map['descriptions'] as List).cast<String>(),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       totalCount: map['totalCount'] as int,
     );
   }

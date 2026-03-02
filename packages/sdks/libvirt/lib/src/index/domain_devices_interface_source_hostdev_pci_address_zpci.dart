@@ -25,8 +25,8 @@ class DomainDevicesInterfaceSourceHostdevPciAddressZpci {
 
   factory DomainDevicesInterfaceSourceHostdevPciAddressZpci.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceHostdevPciAddressZpci(
-      fid: map['fid'] == null ? null : (map['fid'] as double).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as double).input(),
+      fid: map['fid'] == null ? null : (map['fid']! as double).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as double).input(),
     );
   }
 }

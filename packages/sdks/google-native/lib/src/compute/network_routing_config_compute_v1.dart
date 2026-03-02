@@ -22,7 +22,7 @@ class NetworkRoutingConfigComputeV1 {
 
   factory NetworkRoutingConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return NetworkRoutingConfigComputeV1(
-      routingMode: map['routingMode'] == null ? null : (NetworkRoutingConfigRoutingModeComputeV1.fromValue(map['routingMode'] as String)).input(),
+      routingMode: map['routingMode'] == null ? null : (NetworkRoutingConfigRoutingModeComputeV1.fromValue(map['routingMode']! as String)).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ContactsPropertiesResponseAntennaConfiguration {
 
   factory ContactsPropertiesResponseAntennaConfiguration.fromMap(Map<String, dynamic> map) {
     return ContactsPropertiesResponseAntennaConfiguration(
-      destinationIp: map['destinationIp'] == null ? null : (map['destinationIp'] as String).input(),
-      sourceIps: map['sourceIps'] == null ? null : ((map['sourceIps'] as List).cast<String>()).input(),
+      destinationIp: map['destinationIp'] == null ? null : (map['destinationIp']! as String).input(),
+      sourceIps: map['sourceIps'] == null ? null : ((map['sourceIps']! as List).cast<String>()).input(),
     );
   }
 }

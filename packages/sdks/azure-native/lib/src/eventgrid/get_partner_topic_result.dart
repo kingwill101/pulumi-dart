@@ -100,21 +100,21 @@ class GetPartnerTopicResult {
 
   factory GetPartnerTopicResult.fromMap(Map<String, dynamic> map) {
     return GetPartnerTopicResult(
-      activationState: map['activationState'] == null ? null : map['activationState'] as String,
+      activationState: map['activationState'] == null ? null : map['activationState']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      eventTypeInfo: map['eventTypeInfo'] == null ? null : EventTypeInfoResponse.fromMap((map['eventTypeInfo'] as Map).cast<String, dynamic>()),
-      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : map['expirationTimeIfNotActivatedUtc'] as String,
+      eventTypeInfo: map['eventTypeInfo'] == null ? null : EventTypeInfoResponse.fromMap((map['eventTypeInfo']! as Map).cast<String, dynamic>()),
+      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : map['expirationTimeIfNotActivatedUtc']! as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityInfoResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : IdentityInfoResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
-      messageForActivation: map['messageForActivation'] == null ? null : map['messageForActivation'] as String,
+      messageForActivation: map['messageForActivation'] == null ? null : map['messageForActivation']! as String,
       name: map['name'] as String,
-      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : map['partnerRegistrationImmutableId'] as String,
-      partnerTopicFriendlyDescription: map['partnerTopicFriendlyDescription'] == null ? null : map['partnerTopicFriendlyDescription'] as String,
+      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : map['partnerRegistrationImmutableId']! as String,
+      partnerTopicFriendlyDescription: map['partnerTopicFriendlyDescription'] == null ? null : map['partnerTopicFriendlyDescription']! as String,
       provisioningState: map['provisioningState'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      source: map['source'] == null ? null : map['source']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

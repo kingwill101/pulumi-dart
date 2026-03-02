@@ -35,8 +35,8 @@ class GetInstanceAttachmentsArgs {
   factory GetInstanceAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceAttachmentsArgs(
       instanceName: (map['instanceName'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

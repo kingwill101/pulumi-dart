@@ -26,8 +26,8 @@ class SBOMReferenceNote {
 
   factory SBOMReferenceNote.fromMap(Map<String, dynamic> map) {
     return SBOMReferenceNote(
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

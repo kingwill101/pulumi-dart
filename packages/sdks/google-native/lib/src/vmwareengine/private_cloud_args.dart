@@ -60,14 +60,14 @@ class PrivateCloudArgs {
 
   factory PrivateCloudArgs.fromMap(Map<String, dynamic> map) {
     return PrivateCloudArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managementCluster: (ManagementCluster.fromMap((map['managementCluster'] as Map).cast<String, dynamic>())).input(),
       networkConfig: (NetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
       privateCloudId: (map['privateCloudId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      type: map['type'] == null ? null : (PrivateCloudType.fromValue(map['type'] as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      type: map['type'] == null ? null : (PrivateCloudType.fromValue(map['type']! as String)).input(),
     );
   }
 }

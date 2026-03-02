@@ -50,13 +50,13 @@ class EventRuleOpenApiParameter {
 
   factory EventRuleOpenApiParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleOpenApiParameter(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      openApiParametersId: map['openApiParametersId'] == null ? null : (map['openApiParametersId'] as String).input(),
-      product: map['product'] == null ? null : (map['product'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      openApiParametersId: map['openApiParametersId'] == null ? null : (map['openApiParametersId']! as String).input(),
+      product: map['product'] == null ? null : (map['product']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

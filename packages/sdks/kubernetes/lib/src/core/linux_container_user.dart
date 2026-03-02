@@ -32,7 +32,7 @@ class LinuxContainerUser {
   factory LinuxContainerUser.fromMap(Map<String, dynamic> map) {
     return LinuxContainerUser(
       gid: (map['gid'] as int).input(),
-      supplementalGroups: map['supplementalGroups'] == null ? null : ((map['supplementalGroups'] as List).cast<int>()).input(),
+      supplementalGroups: map['supplementalGroups'] == null ? null : ((map['supplementalGroups']! as List).cast<int>()).input(),
       uid: (map['uid'] as int).input(),
     );
   }

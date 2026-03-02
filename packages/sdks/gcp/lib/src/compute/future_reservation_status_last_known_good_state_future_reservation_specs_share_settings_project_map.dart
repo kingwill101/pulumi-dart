@@ -27,7 +27,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
   factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap(
       project: (map['project'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
     );
   }
 }

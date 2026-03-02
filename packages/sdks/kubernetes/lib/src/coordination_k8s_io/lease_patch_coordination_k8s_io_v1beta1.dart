@@ -38,10 +38,10 @@ class LeasePatchCoordinationK8sIoV1beta1 {
 
   factory LeasePatchCoordinationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return LeasePatchCoordinationK8sIoV1beta1(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (LeaseSpecPatchCoordinationK8sIoV1beta1.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (LeaseSpecPatchCoordinationK8sIoV1beta1.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

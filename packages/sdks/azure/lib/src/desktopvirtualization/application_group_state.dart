@@ -61,15 +61,15 @@ class ApplicationGroupState {
 
   factory ApplicationGroupState.fromMap(Map<String, dynamic> map) {
     return ApplicationGroupState(
-      defaultDesktopDisplayName: map['defaultDesktopDisplayName'] == null ? null : (map['defaultDesktopDisplayName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      hostPoolId: map['hostPoolId'] == null ? null : (map['hostPoolId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      defaultDesktopDisplayName: map['defaultDesktopDisplayName'] == null ? null : (map['defaultDesktopDisplayName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      hostPoolId: map['hostPoolId'] == null ? null : (map['hostPoolId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

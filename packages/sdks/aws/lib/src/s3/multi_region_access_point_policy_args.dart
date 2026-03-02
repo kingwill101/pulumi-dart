@@ -35,9 +35,9 @@ class MultiRegionAccessPointPolicyArgs {
 
   factory MultiRegionAccessPointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointPolicyArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      details: (MultiRegionAccessPointPolicyDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      details: (MultiRegionAccessPointPolicyDetails.fromMap((map['details']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

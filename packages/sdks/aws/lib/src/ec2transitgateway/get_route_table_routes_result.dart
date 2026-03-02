@@ -40,10 +40,10 @@ class GetRouteTableRoutesResult {
 
   factory GetRouteTableRoutesResult.fromMap(Map<String, dynamic> map) {
     return GetRouteTableRoutesResult(
-      filters: pulumi.Input.decodeList<GetRouteTableRoutesFilter>(map['filters'], (value) => GetRouteTableRoutesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: pulumi.Input.decodeList<GetRouteTableRoutesFilter>(map['filters']!, (value) => GetRouteTableRoutesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
-      routes: pulumi.Input.decodeList<GetRouteTableRoutesRoute>(map['routes'], (value) => GetRouteTableRoutesRoute.fromMap((value as Map).cast<String, dynamic>())),
+      routes: pulumi.Input.decodeList<GetRouteTableRoutesRoute>(map['routes']!, (value) => GetRouteTableRoutesRoute.fromMap((value as Map).cast<String, dynamic>())),
       transitGatewayRouteTableId: map['transitGatewayRouteTableId'] as String,
     );
   }

@@ -44,11 +44,11 @@ class TransitRouterMulticastDomainMemberArgs {
 
   factory TransitRouterMulticastDomainMemberArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainMemberArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       groupIpAddress: (map['groupIpAddress'] as String).input(),
       networkInterfaceId: (map['networkInterfaceId'] as String).input(),
       transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

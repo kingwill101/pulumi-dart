@@ -37,10 +37,10 @@ class InstancePrivateIpAddress {
 
   factory InstancePrivateIpAddress.fromMap(Map<String, dynamic> map) {
     return InstancePrivateIpAddress(
-      association: map['association'] == null ? null : (InstanceNetworkInterfaceAssociation.fromMap((map['association'] as Map).cast<String, dynamic>())).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
-      privateDnsName: map['privateDnsName'] == null ? null : (map['privateDnsName'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      association: map['association'] == null ? null : (InstanceNetworkInterfaceAssociation.fromMap((map['association']! as Map).cast<String, dynamic>())).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
+      privateDnsName: map['privateDnsName'] == null ? null : (map['privateDnsName']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
     );
   }
 }

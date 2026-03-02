@@ -101,22 +101,22 @@ class DataLakeAnalyticsUSQLActivity {
 
   factory DataLakeAnalyticsUSQLActivity.fromMap(Map<String, dynamic> map) {
     return DataLakeAnalyticsUSQLActivity(
-      compilationMode: map['compilationMode'] == null ? null : (map['compilationMode']).input(),
-      degreeOfParallelism: map['degreeOfParallelism'] == null ? null : (map['degreeOfParallelism']).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      compilationMode: map['compilationMode'] == null ? null : (map['compilationMode']!).input(),
+      degreeOfParallelism: map['degreeOfParallelism'] == null ? null : (map['degreeOfParallelism']!).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn']!, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, dynamic>()).input(),
-      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority']).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, dynamic>()).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority']!).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']!).input(),
       scriptLinkedService: (LinkedServiceReference.fromMap((map['scriptLinkedService'] as Map).cast<String, dynamic>())).input(),
       scriptPath: (map['scriptPath']).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties']!, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

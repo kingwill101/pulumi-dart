@@ -35,9 +35,9 @@ class TargetGroupStickiness {
 
   factory TargetGroupStickiness.fromMap(Map<String, dynamic> map) {
     return TargetGroupStickiness(
-      cookieDuration: map['cookieDuration'] == null ? null : (map['cookieDuration'] as int).input(),
-      cookieName: map['cookieName'] == null ? null : (map['cookieName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      cookieDuration: map['cookieDuration'] == null ? null : ((map['cookieDuration'] as int).input()).input(),
+      cookieName: map['cookieName'] == null ? null : ((map['cookieName'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

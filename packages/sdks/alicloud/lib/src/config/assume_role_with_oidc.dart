@@ -50,12 +50,12 @@ class AssumeRoleWithOidc {
   factory AssumeRoleWithOidc.fromMap(Map<String, dynamic> map) {
     return AssumeRoleWithOidc(
       oidcProviderArn: (map['oidcProviderArn'] as String).input(),
-      oidcToken: map['oidcToken'] == null ? null : (map['oidcToken'] as String).input(),
-      oidcTokenFile: map['oidcTokenFile'] == null ? null : (map['oidcTokenFile'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      oidcToken: map['oidcToken'] == null ? null : (map['oidcToken']! as String).input(),
+      oidcTokenFile: map['oidcTokenFile'] == null ? null : (map['oidcTokenFile']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
       roleArn: (map['roleArn'] as String).input(),
-      roleSessionName: map['roleSessionName'] == null ? null : (map['roleSessionName'] as String).input(),
-      sessionExpiration: map['sessionExpiration'] == null ? null : (map['sessionExpiration'] as int).input(),
+      roleSessionName: map['roleSessionName'] == null ? null : (map['roleSessionName']! as String).input(),
+      sessionExpiration: map['sessionExpiration'] == null ? null : (map['sessionExpiration']! as int).input(),
     );
   }
 }

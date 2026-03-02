@@ -99,22 +99,22 @@ class Environment {
 
   factory Environment.fromMap(Map<String, dynamic> map) {
     return Environment(
-      clusterManagerApiService: map['clusterManagerApiService'] == null ? null : (map['clusterManagerApiService'] as String).input(),
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      debugOptions: map['debugOptions'] == null ? null : (DebugOptions.fromMap((map['debugOptions'] as Map).cast<String, dynamic>())).input(),
-      experiments: map['experiments'] == null ? null : ((map['experiments'] as List).cast<String>()).input(),
-      flexResourceSchedulingGoal: map['flexResourceSchedulingGoal'] == null ? null : (EnvironmentFlexResourceSchedulingGoal.fromValue(map['flexResourceSchedulingGoal'] as String)).input(),
-      internalExperiments: map['internalExperiments'] == null ? null : ((map['internalExperiments'] as Map).cast<String, String>()).input(),
-      sdkPipelineOptions: map['sdkPipelineOptions'] == null ? null : ((map['sdkPipelineOptions'] as Map).cast<String, String>()).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
-      serviceKmsKeyName: map['serviceKmsKeyName'] == null ? null : (map['serviceKmsKeyName'] as String).input(),
-      serviceOptions: map['serviceOptions'] == null ? null : ((map['serviceOptions'] as List).cast<String>()).input(),
-      tempStoragePrefix: map['tempStoragePrefix'] == null ? null : (map['tempStoragePrefix'] as String).input(),
-      userAgent: map['userAgent'] == null ? null : ((map['userAgent'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : ((map['version'] as Map).cast<String, String>()).input(),
-      workerPools: map['workerPools'] == null ? null : (pulumi.Input.decodeList<WorkerPool>(map['workerPools'], (value) => WorkerPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workerRegion: map['workerRegion'] == null ? null : (map['workerRegion'] as String).input(),
-      workerZone: map['workerZone'] == null ? null : (map['workerZone'] as String).input(),
+      clusterManagerApiService: map['clusterManagerApiService'] == null ? null : (map['clusterManagerApiService']! as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      debugOptions: map['debugOptions'] == null ? null : (DebugOptions.fromMap((map['debugOptions']! as Map).cast<String, dynamic>())).input(),
+      experiments: map['experiments'] == null ? null : ((map['experiments']! as List).cast<String>()).input(),
+      flexResourceSchedulingGoal: map['flexResourceSchedulingGoal'] == null ? null : (EnvironmentFlexResourceSchedulingGoal.fromValue(map['flexResourceSchedulingGoal']! as String)).input(),
+      internalExperiments: map['internalExperiments'] == null ? null : ((map['internalExperiments']! as Map).cast<String, String>()).input(),
+      sdkPipelineOptions: map['sdkPipelineOptions'] == null ? null : ((map['sdkPipelineOptions']! as Map).cast<String, String>()).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      serviceKmsKeyName: map['serviceKmsKeyName'] == null ? null : (map['serviceKmsKeyName']! as String).input(),
+      serviceOptions: map['serviceOptions'] == null ? null : ((map['serviceOptions']! as List).cast<String>()).input(),
+      tempStoragePrefix: map['tempStoragePrefix'] == null ? null : (map['tempStoragePrefix']! as String).input(),
+      userAgent: map['userAgent'] == null ? null : ((map['userAgent']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : ((map['version']! as Map).cast<String, String>()).input(),
+      workerPools: map['workerPools'] == null ? null : (pulumi.Input.decodeList<WorkerPool>(map['workerPools']!, (value) => WorkerPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workerRegion: map['workerRegion'] == null ? null : (map['workerRegion']! as String).input(),
+      workerZone: map['workerZone'] == null ? null : (map['workerZone']! as String).input(),
     );
   }
 }

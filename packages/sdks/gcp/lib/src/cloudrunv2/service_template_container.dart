@@ -108,21 +108,21 @@ class ServiceTemplateContainer {
 
   factory ServiceTemplateContainer.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateContainer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      baseImageUri: map['baseImageUri'] == null ? null : (map['baseImageUri'] as String).input(),
-      buildInfos: map['buildInfos'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateContainerBuildInfo>(map['buildInfos'], (value) => ServiceTemplateContainerBuildInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      dependsOns: map['dependsOns'] == null ? null : ((map['dependsOns'] as List).cast<String>()).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateContainerEnv>(map['envs'], (value) => ServiceTemplateContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      baseImageUri: map['baseImageUri'] == null ? null : (map['baseImageUri']! as String).input(),
+      buildInfos: map['buildInfos'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateContainerBuildInfo>(map['buildInfos']!, (value) => ServiceTemplateContainerBuildInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      dependsOns: map['dependsOns'] == null ? null : ((map['dependsOns']! as List).cast<String>()).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateContainerEnv>(map['envs']!, (value) => ServiceTemplateContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
       image: (map['image'] as String).input(),
-      livenessProbe: map['livenessProbe'] == null ? null : (ServiceTemplateContainerLivenessProbe.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ports: map['ports'] == null ? null : (ServiceTemplateContainerPorts.fromMap((map['ports'] as Map).cast<String, dynamic>())).input(),
-      resources: map['resources'] == null ? null : (ServiceTemplateContainerResources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
-      sourceCode: map['sourceCode'] == null ? null : (ServiceTemplateContainerSourceCode.fromMap((map['sourceCode'] as Map).cast<String, dynamic>())).input(),
-      startupProbe: map['startupProbe'] == null ? null : (ServiceTemplateContainerStartupProbe.fromMap((map['startupProbe'] as Map).cast<String, dynamic>())).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateContainerVolumeMount>(map['volumeMounts'], (value) => ServiceTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
+      livenessProbe: map['livenessProbe'] == null ? null : (ServiceTemplateContainerLivenessProbe.fromMap((map['livenessProbe']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ports: map['ports'] == null ? null : (ServiceTemplateContainerPorts.fromMap((map['ports']! as Map).cast<String, dynamic>())).input(),
+      resources: map['resources'] == null ? null : (ServiceTemplateContainerResources.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
+      sourceCode: map['sourceCode'] == null ? null : (ServiceTemplateContainerSourceCode.fromMap((map['sourceCode']! as Map).cast<String, dynamic>())).input(),
+      startupProbe: map['startupProbe'] == null ? null : (ServiceTemplateContainerStartupProbe.fromMap((map['startupProbe']! as Map).cast<String, dynamic>())).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateContainerVolumeMount>(map['volumeMounts']!, (value) => ServiceTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir']! as String).input(),
     );
   }
 }

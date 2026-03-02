@@ -61,14 +61,14 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
   factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue(
-      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue'] as bool).input(),
-      dateValue: map['dateValue'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue.fromMap((map['dateValue'] as Map).cast<String, dynamic>())).input(),
-      dayOfWeekValue: map['dayOfWeekValue'] == null ? null : (map['dayOfWeekValue'] as String).input(),
-      floatValue: map['floatValue'] == null ? null : (map['floatValue'] as double).input(),
-      integerValue: map['integerValue'] == null ? null : (map['integerValue'] as int).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
-      timeValue: map['timeValue'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue.fromMap((map['timeValue'] as Map).cast<String, dynamic>())).input(),
-      timestampValue: map['timestampValue'] == null ? null : (map['timestampValue'] as String).input(),
+      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue']! as bool).input(),
+      dateValue: map['dateValue'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue.fromMap((map['dateValue']! as Map).cast<String, dynamic>())).input(),
+      dayOfWeekValue: map['dayOfWeekValue'] == null ? null : (map['dayOfWeekValue']! as String).input(),
+      floatValue: map['floatValue'] == null ? null : (map['floatValue']! as double).input(),
+      integerValue: map['integerValue'] == null ? null : (map['integerValue']! as int).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
+      timeValue: map['timeValue'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue.fromMap((map['timeValue']! as Map).cast<String, dynamic>())).input(),
+      timestampValue: map['timestampValue'] == null ? null : (map['timestampValue']! as String).input(),
     );
   }
 }

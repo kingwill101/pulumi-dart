@@ -34,8 +34,8 @@ class StorageBoxSnapshotArgs {
 
   factory StorageBoxSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return StorageBoxSnapshotArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       storageBoxId: (map['storageBoxId'] as int).input(),
     );
   }

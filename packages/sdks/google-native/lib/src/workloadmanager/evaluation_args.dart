@@ -73,17 +73,17 @@ class EvaluationArgs {
 
   factory EvaluationArgs.fromMap(Map<String, dynamic> map) {
     return EvaluationArgs(
-      customRulesBucket: map['customRulesBucket'] == null ? null : (map['customRulesBucket'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      customRulesBucket: map['customRulesBucket'] == null ? null : (map['customRulesBucket']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       evaluationId: (map['evaluationId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      resourceFilter: map['resourceFilter'] == null ? null : (ResourceFilter.fromMap((map['resourceFilter'] as Map).cast<String, dynamic>())).input(),
-      ruleNames: map['ruleNames'] == null ? null : ((map['ruleNames'] as List).cast<String>()).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      resourceFilter: map['resourceFilter'] == null ? null : (ResourceFilter.fromMap((map['resourceFilter']! as Map).cast<String, dynamic>())).input(),
+      ruleNames: map['ruleNames'] == null ? null : ((map['ruleNames']! as List).cast<String>()).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
     );
   }
 }

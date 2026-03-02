@@ -36,7 +36,7 @@ class GetClusterKubernetesNetworkConfig {
 
   factory GetClusterKubernetesNetworkConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterKubernetesNetworkConfig(
-      elasticLoadBalancings: (pulumi.Input.decodeList<GetClusterKubernetesNetworkConfigElasticLoadBalancing>(map['elasticLoadBalancings'], (value) => GetClusterKubernetesNetworkConfigElasticLoadBalancing.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      elasticLoadBalancings: (pulumi.Input.decodeList<GetClusterKubernetesNetworkConfigElasticLoadBalancing>(map['elasticLoadBalancings']!, (value) => GetClusterKubernetesNetworkConfigElasticLoadBalancing.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ipFamily: (map['ipFamily'] as String).input(),
       serviceIpv4Cidr: (map['serviceIpv4Cidr'] as String).input(),
       serviceIpv6Cidr: (map['serviceIpv6Cidr'] as String).input(),

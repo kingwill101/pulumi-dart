@@ -89,9 +89,9 @@ class StudentArgs {
       invoiceSectionName: (map['invoiceSectionName'] as String).input(),
       lastName: (map['lastName'] as String).input(),
       role: (map['role'] as String).input(),
-      studentAlias: map['studentAlias'] == null ? null : (map['studentAlias'] as String).input(),
-      subscriptionAlias: map['subscriptionAlias'] == null ? null : (map['subscriptionAlias'] as String).input(),
-      subscriptionInviteLastSentDate: map['subscriptionInviteLastSentDate'] == null ? null : (map['subscriptionInviteLastSentDate'] as String).input(),
+      studentAlias: map['studentAlias'] == null ? null : (map['studentAlias']! as String).input(),
+      subscriptionAlias: map['subscriptionAlias'] == null ? null : (map['subscriptionAlias']! as String).input(),
+      subscriptionInviteLastSentDate: map['subscriptionInviteLastSentDate'] == null ? null : (map['subscriptionInviteLastSentDate']! as String).input(),
     );
   }
 }

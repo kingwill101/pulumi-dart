@@ -43,9 +43,9 @@ class ResourceClaimStatusPatchResourceK8sIoV1alpha3 {
 
   factory ResourceClaimStatusPatchResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return ResourceClaimStatusPatchResourceK8sIoV1alpha3(
-      allocation: map['allocation'] == null ? null : (AllocationResultPatchResourceK8sIoV1alpha3.fromMap((map['allocation'] as Map).cast<String, dynamic>())).input(),
-      deallocationRequested: map['deallocationRequested'] == null ? null : (map['deallocationRequested'] as bool).input(),
-      reservedFor: map['reservedFor'] == null ? null : (pulumi.Input.decodeList<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha3>(map['reservedFor'], (value) => ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocation: map['allocation'] == null ? null : (AllocationResultPatchResourceK8sIoV1alpha3.fromMap((map['allocation']! as Map).cast<String, dynamic>())).input(),
+      deallocationRequested: map['deallocationRequested'] == null ? null : (map['deallocationRequested']! as bool).input(),
+      reservedFor: map['reservedFor'] == null ? null : (pulumi.Input.decodeList<ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha3>(map['reservedFor']!, (value) => ResourceClaimConsumerReferencePatchResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

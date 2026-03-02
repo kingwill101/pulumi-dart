@@ -59,11 +59,11 @@ class GetPrivateEndpointConnectionResult {
   factory GetPrivateEndpointConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      groupIds: map['groupIds'] == null ? null : (map['groupIds'] as List).cast<String>(),
+      groupIds: map['groupIds'] == null ? null : (map['groupIds']! as List).cast<String>(),
       id: map['id'] as String,
       name: map['name'] as String,
-      privateEndpoint: map['privateEndpoint'] == null ? null : PrivateEndpointPropertyResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>()),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : PrivateLinkServiceConnectionStatePropertyResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>()),
+      privateEndpoint: map['privateEndpoint'] == null ? null : PrivateEndpointPropertyResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>()),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : PrivateLinkServiceConnectionStatePropertyResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

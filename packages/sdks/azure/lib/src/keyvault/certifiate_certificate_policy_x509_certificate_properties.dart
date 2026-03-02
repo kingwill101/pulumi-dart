@@ -41,10 +41,10 @@ class CertifiateCertificatePolicyX509CertificateProperties {
 
   factory CertifiateCertificatePolicyX509CertificateProperties.fromMap(Map<String, dynamic> map) {
     return CertifiateCertificatePolicyX509CertificateProperties(
-      extendedKeyUsages: map['extendedKeyUsages'] == null ? null : ((map['extendedKeyUsages'] as List).cast<String>()).input(),
+      extendedKeyUsages: map['extendedKeyUsages'] == null ? null : ((map['extendedKeyUsages']! as List).cast<String>()).input(),
       keyUsages: ((map['keyUsages'] as List).cast<String>()).input(),
       subject: (map['subject'] as String).input(),
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : (CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames.fromMap((map['subjectAlternativeNames'] as Map).cast<String, dynamic>())).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : (CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames.fromMap((map['subjectAlternativeNames']! as Map).cast<String, dynamic>())).input(),
       validityInMonths: (map['validityInMonths'] as int).input(),
     );
   }

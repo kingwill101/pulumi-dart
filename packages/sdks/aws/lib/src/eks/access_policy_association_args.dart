@@ -45,11 +45,11 @@ class AccessPolicyAssociationArgs {
 
   factory AccessPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssociationArgs(
-      accessScope: (AccessPolicyAssociationAccessScope.fromMap((map['accessScope'] as Map).cast<String, dynamic>())).input(),
+      accessScope: (AccessPolicyAssociationAccessScope.fromMap((map['accessScope']! as Map).cast<String, dynamic>())).input(),
       clusterName: (map['clusterName'] as String).input(),
       policyArn: (map['policyArn'] as String).input(),
       principalArn: (map['principalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

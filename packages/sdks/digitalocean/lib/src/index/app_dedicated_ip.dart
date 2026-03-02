@@ -30,9 +30,9 @@ class AppDedicatedIp {
 
   factory AppDedicatedIp.fromMap(Map<String, dynamic> map) {
     return AppDedicatedIp(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

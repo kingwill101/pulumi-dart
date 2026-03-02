@@ -40,10 +40,10 @@ class ClusterControlPlaneLocal {
 
   factory ClusterControlPlaneLocal.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneLocal(
-      machineFilter: map['machineFilter'] == null ? null : (map['machineFilter'] as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      nodeLocation: map['nodeLocation'] == null ? null : (map['nodeLocation'] as String).input(),
-      sharedDeploymentPolicy: map['sharedDeploymentPolicy'] == null ? null : (map['sharedDeploymentPolicy'] as String).input(),
+      machineFilter: map['machineFilter'] == null ? null : (map['machineFilter']! as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      nodeLocation: map['nodeLocation'] == null ? null : (map['nodeLocation']! as String).input(),
+      sharedDeploymentPolicy: map['sharedDeploymentPolicy'] == null ? null : (map['sharedDeploymentPolicy']! as String).input(),
     );
   }
 }

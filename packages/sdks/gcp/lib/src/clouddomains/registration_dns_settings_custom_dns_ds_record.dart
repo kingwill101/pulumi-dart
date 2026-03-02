@@ -35,10 +35,10 @@ class RegistrationDnsSettingsCustomDnsDsRecord {
 
   factory RegistrationDnsSettingsCustomDnsDsRecord.fromMap(Map<String, dynamic> map) {
     return RegistrationDnsSettingsCustomDnsDsRecord(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
-      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
-      digestType: map['digestType'] == null ? null : (map['digestType'] as String).input(),
-      keyTag: map['keyTag'] == null ? null : (map['keyTag'] as int).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as String).input(),
+      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
+      digestType: map['digestType'] == null ? null : (map['digestType']! as String).input(),
+      keyTag: map['keyTag'] == null ? null : (map['keyTag']! as int).input(),
     );
   }
 }

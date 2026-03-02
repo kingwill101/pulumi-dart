@@ -53,11 +53,11 @@ class ContainerNetworkInterfaceConfigurationResponse {
 
   factory ContainerNetworkInterfaceConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ContainerNetworkInterfaceConfigurationResponse(
-      containerNetworkInterfaces: map['containerNetworkInterfaces'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['containerNetworkInterfaces'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerNetworkInterfaces: map['containerNetworkInterfaces'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['containerNetworkInterfaces']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<IPConfigurationProfileResponse>(map['ipConfigurations'], (value) => IPConfigurationProfileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<IPConfigurationProfileResponse>(map['ipConfigurations']!, (value) => IPConfigurationProfileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),
     );

@@ -78,14 +78,14 @@ class GetSummaryLogResult {
   factory GetSummaryLogResult.fromMap(Map<String, dynamic> map) {
     return GetSummaryLogResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       isActive: map['isActive'] as bool,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      ruleDefinition: map['ruleDefinition'] == null ? null : RuleDefinitionResponse.fromMap((map['ruleDefinition'] as Map).cast<String, dynamic>()),
-      ruleType: map['ruleType'] == null ? null : map['ruleType'] as String,
+      ruleDefinition: map['ruleDefinition'] == null ? null : RuleDefinitionResponse.fromMap((map['ruleDefinition']! as Map).cast<String, dynamic>()),
+      ruleType: map['ruleType'] == null ? null : map['ruleType']! as String,
       statusCode: map['statusCode'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

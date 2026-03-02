@@ -34,9 +34,9 @@ class AnalyticsSolutionPlan {
 
   factory AnalyticsSolutionPlan.fromMap(Map<String, dynamic> map) {
     return AnalyticsSolutionPlan(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       product: (map['product'] as String).input(),
-      promotionCode: map['promotionCode'] == null ? null : (map['promotionCode'] as String).input(),
+      promotionCode: map['promotionCode'] == null ? null : (map['promotionCode']! as String).input(),
       publisher: (map['publisher'] as String).input(),
     );
   }

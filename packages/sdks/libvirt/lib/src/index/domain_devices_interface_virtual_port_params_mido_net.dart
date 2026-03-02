@@ -20,7 +20,7 @@ class DomainDevicesInterfaceVirtualPortParamsMidoNet {
 
   factory DomainDevicesInterfaceVirtualPortParamsMidoNet.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceVirtualPortParamsMidoNet(
-      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId'] as String).input(),
+      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId']! as String).input(),
     );
   }
 }

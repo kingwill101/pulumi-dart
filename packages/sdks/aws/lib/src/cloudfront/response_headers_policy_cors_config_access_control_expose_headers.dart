@@ -19,7 +19,7 @@ class ResponseHeadersPolicyCorsConfigAccessControlExposeHeaders {
 
   factory ResponseHeadersPolicyCorsConfigAccessControlExposeHeaders.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicyCorsConfigAccessControlExposeHeaders(
-      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
+      items: map['items'] == null ? null : (((map['items'] as List).cast<String>()).input()).input(),
     );
   }
 }

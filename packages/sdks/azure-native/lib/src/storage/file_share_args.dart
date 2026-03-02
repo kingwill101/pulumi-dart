@@ -86,19 +86,19 @@ class FileShareArgs {
 
   factory FileShareArgs.fromMap(Map<String, dynamic> map) {
     return FileShareArgs(
-      accessTier: map['accessTier'] == null ? null : (map['accessTier'] as String).input(),
+      accessTier: map['accessTier'] == null ? null : (map['accessTier']! as String).input(),
       accountName: (map['accountName'] as String).input(),
-      enabledProtocols: map['enabledProtocols'] == null ? null : (map['enabledProtocols'] as String).input(),
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
-      fileSharePaidBursting: map['fileSharePaidBursting'] == null ? null : (FileSharePropertiesFileSharePaidBursting.fromMap((map['fileSharePaidBursting'] as Map).cast<String, dynamic>())).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      provisionedBandwidthMibps: map['provisionedBandwidthMibps'] == null ? null : (map['provisionedBandwidthMibps'] as int).input(),
-      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops'] as int).input(),
+      enabledProtocols: map['enabledProtocols'] == null ? null : (map['enabledProtocols']! as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
+      fileSharePaidBursting: map['fileSharePaidBursting'] == null ? null : (FileSharePropertiesFileSharePaidBursting.fromMap((map['fileSharePaidBursting']! as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      provisionedBandwidthMibps: map['provisionedBandwidthMibps'] == null ? null : (map['provisionedBandwidthMibps']! as int).input(),
+      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rootSquash: map['rootSquash'] == null ? null : (map['rootSquash'] as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
-      shareQuota: map['shareQuota'] == null ? null : (map['shareQuota'] as int).input(),
-      signedIdentifiers: map['signedIdentifiers'] == null ? null : (pulumi.Input.decodeList<SignedIdentifier>(map['signedIdentifiers'], (value) => SignedIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rootSquash: map['rootSquash'] == null ? null : (map['rootSquash']! as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
+      shareQuota: map['shareQuota'] == null ? null : (map['shareQuota']! as int).input(),
+      signedIdentifiers: map['signedIdentifiers'] == null ? null : (pulumi.Input.decodeList<SignedIdentifier>(map['signedIdentifiers']!, (value) => SignedIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

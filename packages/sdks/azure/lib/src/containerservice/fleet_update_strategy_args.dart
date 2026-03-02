@@ -36,7 +36,7 @@ class FleetUpdateStrategyArgs {
   factory FleetUpdateStrategyArgs.fromMap(Map<String, dynamic> map) {
     return FleetUpdateStrategyArgs(
       kubernetesFleetManagerId: (map['kubernetesFleetManagerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       stages: (pulumi.Input.decodeList<FleetUpdateStrategyStage>(map['stages'], (value) => FleetUpdateStrategyStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

@@ -46,12 +46,12 @@ class PlanWorkflowStepRoute53HealthCheckConfig {
 
   factory PlanWorkflowStepRoute53HealthCheckConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepRoute53HealthCheckConfig(
-      crossAccountRole: map['crossAccountRole'] == null ? null : (map['crossAccountRole'] as String).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      crossAccountRole: map['crossAccountRole'] == null ? null : ((map['crossAccountRole'] as String).input()).input(),
+      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
       hostedZoneId: (map['hostedZoneId'] as String).input(),
       recordName: (map['recordName'] as String).input(),
-      recordSets: map['recordSets'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepRoute53HealthCheckConfigRecordSet>(map['recordSets'], (value) => PlanWorkflowStepRoute53HealthCheckConfigRecordSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
+      recordSets: map['recordSets'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepRoute53HealthCheckConfigRecordSet>(map['recordSets']!, (value) => PlanWorkflowStepRoute53HealthCheckConfigRecordSet.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : ((map['timeoutMinutes'] as int).input()).input(),
     );
   }
 }

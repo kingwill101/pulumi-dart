@@ -21,7 +21,7 @@ class ArtifactsTypeEnumValue {
 
   factory ArtifactsTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return ArtifactsTypeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

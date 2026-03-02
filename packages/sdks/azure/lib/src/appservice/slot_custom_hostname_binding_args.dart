@@ -45,8 +45,8 @@ class SlotCustomHostnameBindingArgs {
     return SlotCustomHostnameBindingArgs(
       appServiceSlotId: (map['appServiceSlotId'] as String).input(),
       hostname: (map['hostname'] as String).input(),
-      sslState: map['sslState'] == null ? null : (map['sslState'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      sslState: map['sslState'] == null ? null : (map['sslState']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

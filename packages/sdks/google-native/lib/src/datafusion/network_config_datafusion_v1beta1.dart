@@ -38,10 +38,10 @@ class NetworkConfigDatafusionV1beta1 {
 
   factory NetworkConfigDatafusionV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkConfigDatafusionV1beta1(
-      connectionType: map['connectionType'] == null ? null : (NetworkConfigConnectionType.fromValue(map['connectionType'] as String)).input(),
-      ipAllocation: map['ipAllocation'] == null ? null : (map['ipAllocation'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (PrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())).input(),
+      connectionType: map['connectionType'] == null ? null : (NetworkConfigConnectionType.fromValue(map['connectionType']! as String)).input(),
+      ipAllocation: map['ipAllocation'] == null ? null : (map['ipAllocation']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (PrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

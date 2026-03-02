@@ -59,7 +59,7 @@ class EventImpactedResourceResponse {
   factory EventImpactedResourceResponse.fromMap(Map<String, dynamic> map) {
     return EventImpactedResourceResponse(
       id: (map['id'] as String).input(),
-      info: map['info'] == null ? null : (pulumi.Input.decodeList<KeyValueItemResponse>(map['info'], (value) => KeyValueItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      info: map['info'] == null ? null : (pulumi.Input.decodeList<KeyValueItemResponse>(map['info']!, (value) => KeyValueItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
       targetRegion: (map['targetRegion'] as String).input(),

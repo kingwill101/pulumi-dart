@@ -98,19 +98,19 @@ class IoTHubEventSourceArgs {
     return IoTHubEventSourceArgs(
       consumerGroupName: (map['consumerGroupName'] as String).input(),
       environmentName: (map['environmentName'] as String).input(),
-      eventSourceName: map['eventSourceName'] == null ? null : (map['eventSourceName'] as String).input(),
+      eventSourceName: map['eventSourceName'] == null ? null : (map['eventSourceName']! as String).input(),
       eventSourceResourceId: (map['eventSourceResourceId'] as String).input(),
       iotHubName: (map['iotHubName'] as String).input(),
       keyName: (map['keyName'] as String).input(),
       kind: (map['kind'] as String).input(),
-      localTimestamp: map['localTimestamp'] == null ? null : (LocalTimestamp.fromMap((map['localTimestamp'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      localTimestamp: map['localTimestamp'] == null ? null : (LocalTimestamp.fromMap((map['localTimestamp']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sharedAccessKey: (map['sharedAccessKey'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      time: map['time'] == null ? null : (map['time'] as String).input(),
-      timestampPropertyName: map['timestampPropertyName'] == null ? null : (map['timestampPropertyName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      time: map['time'] == null ? null : (map['time']! as String).input(),
+      timestampPropertyName: map['timestampPropertyName'] == null ? null : (map['timestampPropertyName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

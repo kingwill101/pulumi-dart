@@ -22,7 +22,7 @@ class CompensationInfoJobsV4 {
 
   factory CompensationInfoJobsV4.fromMap(Map<String, dynamic> map) {
     return CompensationInfoJobsV4(
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<CompensationEntryJobsV4>(map['entries'], (value) => CompensationEntryJobsV4.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<CompensationEntryJobsV4>(map['entries']!, (value) => CompensationEntryJobsV4.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

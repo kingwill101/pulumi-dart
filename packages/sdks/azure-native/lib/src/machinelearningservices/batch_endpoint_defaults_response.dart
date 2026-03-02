@@ -22,7 +22,7 @@ class BatchEndpointDefaultsResponse {
 
   factory BatchEndpointDefaultsResponse.fromMap(Map<String, dynamic> map) {
     return BatchEndpointDefaultsResponse(
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
     );
   }
 }

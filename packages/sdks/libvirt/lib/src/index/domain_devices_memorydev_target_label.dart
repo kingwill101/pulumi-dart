@@ -25,8 +25,8 @@ class DomainDevicesMemorydevTargetLabel {
 
   factory DomainDevicesMemorydevTargetLabel.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemorydevTargetLabel(
-      size: map['size'] == null ? null : (map['size'] as double).input(),
-      sizeUnit: map['sizeUnit'] == null ? null : (map['sizeUnit'] as String).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
+      sizeUnit: map['sizeUnit'] == null ? null : (map['sizeUnit']! as String).input(),
     );
   }
 }

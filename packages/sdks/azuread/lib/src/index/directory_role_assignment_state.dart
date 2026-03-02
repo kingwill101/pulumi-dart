@@ -36,10 +36,10 @@ class DirectoryRoleAssignmentState {
 
   factory DirectoryRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return DirectoryRoleAssignmentState(
-      appScopeId: map['appScopeId'] == null ? null : (map['appScopeId'] as String).input(),
-      directoryScopeId: map['directoryScopeId'] == null ? null : (map['directoryScopeId'] as String).input(),
-      principalObjectId: map['principalObjectId'] == null ? null : (map['principalObjectId'] as String).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
+      appScopeId: map['appScopeId'] == null ? null : (map['appScopeId']! as String).input(),
+      directoryScopeId: map['directoryScopeId'] == null ? null : (map['directoryScopeId']! as String).input(),
+      principalObjectId: map['principalObjectId'] == null ? null : (map['principalObjectId']! as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
     );
   }
 }

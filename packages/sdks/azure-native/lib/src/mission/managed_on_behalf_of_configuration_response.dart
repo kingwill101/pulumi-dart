@@ -22,7 +22,7 @@ class ManagedOnBehalfOfConfigurationResponse {
 
   factory ManagedOnBehalfOfConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ManagedOnBehalfOfConfigurationResponse(
-      moboBrokerResources: map['moboBrokerResources'] == null ? null : (pulumi.Input.decodeList<MoboBrokerResourceResponse>(map['moboBrokerResources'], (value) => MoboBrokerResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      moboBrokerResources: map['moboBrokerResources'] == null ? null : (pulumi.Input.decodeList<MoboBrokerResourceResponse>(map['moboBrokerResources']!, (value) => MoboBrokerResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

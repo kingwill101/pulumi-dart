@@ -38,10 +38,10 @@ class DiscoveredDataset {
 
   factory DiscoveredDataset.fromMap(Map<String, dynamic> map) {
     return DiscoveredDataset(
-      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<DiscoveredDataPoint>(map['dataPoints'], (value) => DiscoveredDataPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      datasetConfiguration: map['datasetConfiguration'] == null ? null : (map['datasetConfiguration'] as String).input(),
+      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<DiscoveredDataPoint>(map['dataPoints']!, (value) => DiscoveredDataPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      datasetConfiguration: map['datasetConfiguration'] == null ? null : (map['datasetConfiguration']! as String).input(),
       name: (map['name'] as String).input(),
-      topic: map['topic'] == null ? null : (Topic.fromMap((map['topic'] as Map).cast<String, dynamic>())).input(),
+      topic: map['topic'] == null ? null : (Topic.fromMap((map['topic']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

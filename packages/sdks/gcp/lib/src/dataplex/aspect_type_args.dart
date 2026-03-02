@@ -67,14 +67,14 @@ class AspectTypeArgs {
 
   factory AspectTypeArgs.fromMap(Map<String, dynamic> map) {
     return AspectTypeArgs(
-      aspectTypeId: map['aspectTypeId'] == null ? null : (map['aspectTypeId'] as String).input(),
-      dataClassification: map['dataClassification'] == null ? null : (map['dataClassification'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadataTemplate: map['metadataTemplate'] == null ? null : (map['metadataTemplate'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      aspectTypeId: map['aspectTypeId'] == null ? null : (map['aspectTypeId']! as String).input(),
+      dataClassification: map['dataClassification'] == null ? null : (map['dataClassification']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadataTemplate: map['metadataTemplate'] == null ? null : (map['metadataTemplate']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

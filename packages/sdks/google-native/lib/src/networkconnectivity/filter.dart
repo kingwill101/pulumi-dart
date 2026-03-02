@@ -37,10 +37,10 @@ class Filter {
 
   factory Filter.fromMap(Map<String, dynamic> map) {
     return Filter(
-      destRange: map['destRange'] == null ? null : (map['destRange'] as String).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
+      destRange: map['destRange'] == null ? null : (map['destRange']! as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
       protocolVersion: (FilterProtocolVersion.fromValue(map['protocolVersion'] as String)).input(),
-      srcRange: map['srcRange'] == null ? null : (map['srcRange'] as String).input(),
+      srcRange: map['srcRange'] == null ? null : (map['srcRange']! as String).input(),
     );
   }
 }

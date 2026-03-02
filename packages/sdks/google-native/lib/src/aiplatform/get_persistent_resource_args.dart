@@ -33,7 +33,7 @@ class GetPersistentResourceArgs {
     return GetPersistentResourceArgs(
       location: (map['location'] as String).input(),
       persistentResourceId: (map['persistentResourceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

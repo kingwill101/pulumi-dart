@@ -31,8 +31,8 @@ class HostingCustomDomainCertVerification {
 
   factory HostingCustomDomainCertVerification.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainCertVerification(
-      dns: map['dns'] == null ? null : (HostingCustomDomainCertVerificationDns.fromMap((map['dns'] as Map).cast<String, dynamic>())).input(),
-      http: map['http'] == null ? null : (HostingCustomDomainCertVerificationHttp.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
+      dns: map['dns'] == null ? null : (HostingCustomDomainCertVerificationDns.fromMap((map['dns']! as Map).cast<String, dynamic>())).input(),
+      http: map['http'] == null ? null : (HostingCustomDomainCertVerificationHttp.fromMap((map['http']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

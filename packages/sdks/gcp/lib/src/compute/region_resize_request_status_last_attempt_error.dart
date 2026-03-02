@@ -23,7 +23,7 @@ class RegionResizeRequestStatusLastAttemptError {
 
   factory RegionResizeRequestStatusLastAttemptError.fromMap(Map<String, dynamic> map) {
     return RegionResizeRequestStatusLastAttemptError(
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusLastAttemptErrorError>(map['errors'], (value) => RegionResizeRequestStatusLastAttemptErrorError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusLastAttemptErrorError>(map['errors']!, (value) => RegionResizeRequestStatusLastAttemptErrorError.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

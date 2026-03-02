@@ -38,10 +38,10 @@ class ResourcePolicyAttachmentState {
 
   factory ResourcePolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyAttachmentState(
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

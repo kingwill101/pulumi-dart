@@ -25,8 +25,8 @@ class SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks {
 
   factory SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks.fromMap(Map<String, dynamic> map) {
     return SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      mask: map['mask'] == null ? null : (map['mask'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      mask: map['mask'] == null ? null : (map['mask']! as String).input(),
     );
   }
 }

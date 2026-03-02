@@ -45,8 +45,8 @@ class GetApiVersionSpecIamPolicyArgs {
     return GetApiVersionSpecIamPolicyArgs(
       apiId: (map['apiId'] as String).input(),
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       specId: (map['specId'] as String).input(),
       versionId: (map['versionId'] as String).input(),
     );

@@ -25,8 +25,8 @@ class NotificationEndpoint {
 
   factory NotificationEndpoint.fromMap(Map<String, dynamic> map) {
     return NotificationEndpoint(
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      notificationDestination: map['notificationDestination'] == null ? null : (map['notificationDestination'] as String).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      notificationDestination: map['notificationDestination'] == null ? null : (map['notificationDestination']! as String).input(),
     );
   }
 }

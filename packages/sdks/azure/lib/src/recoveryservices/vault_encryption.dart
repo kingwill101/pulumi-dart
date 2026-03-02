@@ -41,8 +41,8 @@ class VaultEncryption {
     return VaultEncryption(
       infrastructureEncryptionEnabled: (map['infrastructureEncryptionEnabled'] as bool).input(),
       keyId: (map['keyId'] as String).input(),
-      useSystemAssignedIdentity: map['useSystemAssignedIdentity'] == null ? null : (map['useSystemAssignedIdentity'] as bool).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      useSystemAssignedIdentity: map['useSystemAssignedIdentity'] == null ? null : (map['useSystemAssignedIdentity']! as bool).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

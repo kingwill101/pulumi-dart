@@ -20,7 +20,7 @@ class ServerBindingComputeBeta {
 
   factory ServerBindingComputeBeta.fromMap(Map<String, dynamic> map) {
     return ServerBindingComputeBeta(
-      type: map['type'] == null ? null : (ServerBindingTypeComputeBeta.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (ServerBindingTypeComputeBeta.fromValue(map['type']! as String)).input(),
     );
   }
 }

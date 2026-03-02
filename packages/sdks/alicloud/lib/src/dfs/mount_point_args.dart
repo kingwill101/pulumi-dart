@@ -60,11 +60,11 @@ class MountPointArgs {
   factory MountPointArgs.fromMap(Map<String, dynamic> map) {
     return MountPointArgs(
       accessGroupId: (map['accessGroupId'] as String).input(),
-      aliasPrefix: map['aliasPrefix'] == null ? null : (map['aliasPrefix'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      aliasPrefix: map['aliasPrefix'] == null ? null : (map['aliasPrefix']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
       networkType: (map['networkType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       vpcId: (map['vpcId'] as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
     );

@@ -30,9 +30,9 @@ class ListWorkflowRunActionRepetitionExpressionTracesResult {
 
   factory ListWorkflowRunActionRepetitionExpressionTracesResult.fromMap(Map<String, dynamic> map) {
     return ListWorkflowRunActionRepetitionExpressionTracesResult(
-      inputs: map['inputs'] == null ? null : pulumi.Input.decodeList<ExpressionRootResponse>(map['inputs'], (value) => ExpressionRootResponse.fromMap((value as Map).cast<String, dynamic>())),
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : map['value'],
+      inputs: map['inputs'] == null ? null : pulumi.Input.decodeList<ExpressionRootResponse>(map['inputs']!, (value) => ExpressionRootResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : map['value']!,
     );
   }
 }

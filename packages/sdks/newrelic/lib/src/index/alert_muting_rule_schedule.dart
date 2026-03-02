@@ -51,13 +51,13 @@ class AlertMutingRuleSchedule {
 
   factory AlertMutingRuleSchedule.fromMap(Map<String, dynamic> map) {
     return AlertMutingRuleSchedule(
-      endRepeat: map['endRepeat'] == null ? null : (map['endRepeat'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      repeat: map['repeat'] == null ? null : (map['repeat'] as String).input(),
-      repeatCount: map['repeatCount'] == null ? null : (map['repeatCount'] as int).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endRepeat: map['endRepeat'] == null ? null : (map['endRepeat']! as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      repeat: map['repeat'] == null ? null : (map['repeat']! as String).input(),
+      repeatCount: map['repeatCount'] == null ? null : (map['repeatCount']! as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
       timeZone: (map['timeZone'] as String).input(),
-      weeklyRepeatDays: map['weeklyRepeatDays'] == null ? null : ((map['weeklyRepeatDays'] as List).cast<String>()).input(),
+      weeklyRepeatDays: map['weeklyRepeatDays'] == null ? null : ((map['weeklyRepeatDays']! as List).cast<String>()).input(),
     );
   }
 }

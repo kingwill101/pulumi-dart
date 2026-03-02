@@ -62,14 +62,14 @@ class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
 
   factory OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration(
-      applicationGatewayBackendAddressPoolIds: map['applicationGatewayBackendAddressPoolIds'] == null ? null : ((map['applicationGatewayBackendAddressPoolIds'] as List).cast<String>()).input(),
-      applicationSecurityGroupIds: map['applicationSecurityGroupIds'] == null ? null : ((map['applicationSecurityGroupIds'] as List).cast<String>()).input(),
-      loadBalancerBackendAddressPoolIds: map['loadBalancerBackendAddressPoolIds'] == null ? null : ((map['loadBalancerBackendAddressPoolIds'] as List).cast<String>()).input(),
+      applicationGatewayBackendAddressPoolIds: map['applicationGatewayBackendAddressPoolIds'] == null ? null : ((map['applicationGatewayBackendAddressPoolIds']! as List).cast<String>()).input(),
+      applicationSecurityGroupIds: map['applicationSecurityGroupIds'] == null ? null : ((map['applicationSecurityGroupIds']! as List).cast<String>()).input(),
+      loadBalancerBackendAddressPoolIds: map['loadBalancerBackendAddressPoolIds'] == null ? null : ((map['loadBalancerBackendAddressPoolIds']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
-      publicIpAddresses: map['publicIpAddresses'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress>(map['publicIpAddresses'], (value) => OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
+      publicIpAddresses: map['publicIpAddresses'] == null ? null : (pulumi.Input.decodeList<OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress>(map['publicIpAddresses']!, (value) => OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

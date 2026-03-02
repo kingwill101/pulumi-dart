@@ -39,10 +39,10 @@ class DatascanDataQualitySpecPostScanActionsNotificationReport {
 
   factory DatascanDataQualitySpecPostScanActionsNotificationReport.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecPostScanActionsNotificationReport(
-      jobEndTrigger: map['jobEndTrigger'] == null ? null : ((map['jobEndTrigger'] as Map).cast<String, dynamic>()).input(),
-      jobFailureTrigger: map['jobFailureTrigger'] == null ? null : ((map['jobFailureTrigger'] as Map).cast<String, dynamic>()).input(),
+      jobEndTrigger: map['jobEndTrigger'] == null ? null : ((map['jobEndTrigger']! as Map).cast<String, dynamic>()).input(),
+      jobFailureTrigger: map['jobFailureTrigger'] == null ? null : ((map['jobFailureTrigger']! as Map).cast<String, dynamic>()).input(),
       recipients: (DatascanDataQualitySpecPostScanActionsNotificationReportRecipients.fromMap((map['recipients'] as Map).cast<String, dynamic>())).input(),
-      scoreThresholdTrigger: map['scoreThresholdTrigger'] == null ? null : (DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger.fromMap((map['scoreThresholdTrigger'] as Map).cast<String, dynamic>())).input(),
+      scoreThresholdTrigger: map['scoreThresholdTrigger'] == null ? null : (DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger.fromMap((map['scoreThresholdTrigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

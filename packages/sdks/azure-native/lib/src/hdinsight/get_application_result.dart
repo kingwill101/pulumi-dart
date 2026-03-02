@@ -58,12 +58,12 @@ class GetApplicationResult {
   factory GetApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       properties: ApplicationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

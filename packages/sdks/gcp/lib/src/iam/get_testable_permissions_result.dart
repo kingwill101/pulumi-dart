@@ -40,11 +40,11 @@ class GetTestablePermissionsResult {
 
   factory GetTestablePermissionsResult.fromMap(Map<String, dynamic> map) {
     return GetTestablePermissionsResult(
-      customSupportLevel: map['customSupportLevel'] == null ? null : map['customSupportLevel'] as String,
+      customSupportLevel: map['customSupportLevel'] == null ? null : map['customSupportLevel']! as String,
       fullResourceName: map['fullResourceName'] as String,
       id: map['id'] as String,
       permissions: pulumi.Input.decodeList<GetTestablePermissionsPermission>(map['permissions'], (value) => GetTestablePermissionsPermission.fromMap((value as Map).cast<String, dynamic>())),
-      stages: map['stages'] == null ? null : (map['stages'] as List).cast<String>(),
+      stages: map['stages'] == null ? null : (map['stages']! as List).cast<String>(),
     );
   }
 }

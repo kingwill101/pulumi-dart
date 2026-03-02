@@ -36,7 +36,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfig {
   factory ClusterVirtualClusterConfigKubernetesClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigKubernetesClusterConfig(
       gkeClusterConfig: (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig.fromMap((map['gkeClusterConfig'] as Map).cast<String, dynamic>())).input(),
-      kubernetesNamespace: map['kubernetesNamespace'] == null ? null : (map['kubernetesNamespace'] as String).input(),
+      kubernetesNamespace: map['kubernetesNamespace'] == null ? null : (map['kubernetesNamespace']! as String).input(),
       kubernetesSoftwareConfig: (ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig.fromMap((map['kubernetesSoftwareConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }

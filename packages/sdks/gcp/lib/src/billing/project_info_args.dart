@@ -33,7 +33,7 @@ class ProjectInfoArgs {
   factory ProjectInfoArgs.fromMap(Map<String, dynamic> map) {
     return ProjectInfoArgs(
       billingAccount: (map['billingAccount'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -64,13 +64,13 @@ class SuppressionListAddressArgs {
 
   factory SuppressionListAddressArgs.fromMap(Map<String, dynamic> map) {
     return SuppressionListAddressArgs(
-      addressId: map['addressId'] == null ? null : (map['addressId'] as String).input(),
+      addressId: map['addressId'] == null ? null : (map['addressId']! as String).input(),
       domainName: (map['domainName'] as String).input(),
       email: (map['email'] as String).input(),
       emailServiceName: (map['emailServiceName'] as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName']! as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName']! as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       suppressionListName: (map['suppressionListName'] as String).input(),
     );

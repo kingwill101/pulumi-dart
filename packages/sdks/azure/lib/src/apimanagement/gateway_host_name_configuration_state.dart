@@ -61,15 +61,15 @@ class GatewayHostNameConfigurationState {
 
   factory GatewayHostNameConfigurationState.fromMap(Map<String, dynamic> map) {
     return GatewayHostNameConfigurationState(
-      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId'] as String).input(),
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      http2Enabled: map['http2Enabled'] == null ? null : (map['http2Enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      requestClientCertificateEnabled: map['requestClientCertificateEnabled'] == null ? null : (map['requestClientCertificateEnabled'] as bool).input(),
-      tls10Enabled: map['tls10Enabled'] == null ? null : (map['tls10Enabled'] as bool).input(),
-      tls11Enabled: map['tls11Enabled'] == null ? null : (map['tls11Enabled'] as bool).input(),
+      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId']! as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName']! as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      http2Enabled: map['http2Enabled'] == null ? null : (map['http2Enabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      requestClientCertificateEnabled: map['requestClientCertificateEnabled'] == null ? null : (map['requestClientCertificateEnabled']! as bool).input(),
+      tls10Enabled: map['tls10Enabled'] == null ? null : (map['tls10Enabled']! as bool).input(),
+      tls11Enabled: map['tls11Enabled'] == null ? null : (map['tls11Enabled']! as bool).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class LoggingConfigContainerV1beta1 {
 
   factory LoggingConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return LoggingConfigContainerV1beta1(
-      componentConfig: map['componentConfig'] == null ? null : (LoggingComponentConfigContainerV1beta1.fromMap((map['componentConfig'] as Map).cast<String, dynamic>())).input(),
+      componentConfig: map['componentConfig'] == null ? null : (LoggingComponentConfigContainerV1beta1.fromMap((map['componentConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

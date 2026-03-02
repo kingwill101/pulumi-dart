@@ -39,10 +39,10 @@ class IngressSpecPatchNetworkingK8sIoV1beta1 {
 
   factory IngressSpecPatchNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return IngressSpecPatchNetworkingK8sIoV1beta1(
-      backend: map['backend'] == null ? null : (IngressBackendPatchNetworkingK8sIoV1beta1.fromMap((map['backend'] as Map).cast<String, dynamic>())).input(),
-      ingressClassName: map['ingressClassName'] == null ? null : (map['ingressClassName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<IngressRulePatchNetworkingK8sIoV1beta1>(map['rules'], (value) => IngressRulePatchNetworkingK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tls: map['tls'] == null ? null : (pulumi.Input.decodeList<IngressTLSPatchNetworkingK8sIoV1beta1>(map['tls'], (value) => IngressTLSPatchNetworkingK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backend: map['backend'] == null ? null : (IngressBackendPatchNetworkingK8sIoV1beta1.fromMap((map['backend']! as Map).cast<String, dynamic>())).input(),
+      ingressClassName: map['ingressClassName'] == null ? null : (map['ingressClassName']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<IngressRulePatchNetworkingK8sIoV1beta1>(map['rules']!, (value) => IngressRulePatchNetworkingK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tls: map['tls'] == null ? null : (pulumi.Input.decodeList<IngressTLSPatchNetworkingK8sIoV1beta1>(map['tls']!, (value) => IngressTLSPatchNetworkingK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

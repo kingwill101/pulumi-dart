@@ -72,14 +72,14 @@ class GetEvidenceResult {
   factory GetEvidenceResult.fromMap(Map<String, dynamic> map) {
     return GetEvidenceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      controlId: map['controlId'] == null ? null : map['controlId'] as String,
-      evidenceType: map['evidenceType'] == null ? null : map['evidenceType'] as String,
-      extraData: map['extraData'] == null ? null : map['extraData'] as String,
+      controlId: map['controlId'] == null ? null : map['controlId']! as String,
+      evidenceType: map['evidenceType'] == null ? null : map['evidenceType']! as String,
+      extraData: map['extraData'] == null ? null : map['extraData']! as String,
       filePath: map['filePath'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      responsibilityId: map['responsibilityId'] == null ? null : map['responsibilityId'] as String,
+      responsibilityId: map['responsibilityId'] == null ? null : map['responsibilityId']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

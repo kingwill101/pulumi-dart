@@ -56,12 +56,12 @@ class TransitHubArgs {
   factory TransitHubArgs.fromMap(Map<String, dynamic> map) {
     return TransitHubArgs(
       communityName: (map['communityName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitHubName: map['transitHubName'] == null ? null : (map['transitHubName'] as String).input(),
-      transitOption: map['transitOption'] == null ? null : (TransitOption.fromMap((map['transitOption'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      transitHubName: map['transitHubName'] == null ? null : (map['transitHubName']! as String).input(),
+      transitOption: map['transitOption'] == null ? null : (TransitOption.fromMap((map['transitOption']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

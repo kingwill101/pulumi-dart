@@ -25,8 +25,8 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificate {
 
   factory GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificate.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificate(
-      files: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile>(map['files'], (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sds: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateSd>(map['sds'], (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateSd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      files: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile>(map['files']!, (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sds: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateSd>(map['sds']!, (value) => GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateSd.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -79,17 +79,17 @@ class RestoreConfig {
 
   factory RestoreConfig.fromMap(Map<String, dynamic> map) {
     return RestoreConfig(
-      allNamespaces: map['allNamespaces'] == null ? null : (map['allNamespaces'] as bool).input(),
-      clusterResourceConflictPolicy: map['clusterResourceConflictPolicy'] == null ? null : (RestoreConfigClusterResourceConflictPolicy.fromValue(map['clusterResourceConflictPolicy'] as String)).input(),
-      clusterResourceRestoreScope: map['clusterResourceRestoreScope'] == null ? null : (ClusterResourceRestoreScope.fromMap((map['clusterResourceRestoreScope'] as Map).cast<String, dynamic>())).input(),
-      excludedNamespaces: map['excludedNamespaces'] == null ? null : (Namespaces.fromMap((map['excludedNamespaces'] as Map).cast<String, dynamic>())).input(),
-      namespacedResourceRestoreMode: map['namespacedResourceRestoreMode'] == null ? null : (RestoreConfigNamespacedResourceRestoreMode.fromValue(map['namespacedResourceRestoreMode'] as String)).input(),
-      noNamespaces: map['noNamespaces'] == null ? null : (map['noNamespaces'] as bool).input(),
-      selectedApplications: map['selectedApplications'] == null ? null : (NamespacedNames.fromMap((map['selectedApplications'] as Map).cast<String, dynamic>())).input(),
-      selectedNamespaces: map['selectedNamespaces'] == null ? null : (Namespaces.fromMap((map['selectedNamespaces'] as Map).cast<String, dynamic>())).input(),
-      substitutionRules: map['substitutionRules'] == null ? null : (pulumi.Input.decodeList<SubstitutionRule>(map['substitutionRules'], (value) => SubstitutionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transformationRules: map['transformationRules'] == null ? null : (pulumi.Input.decodeList<TransformationRule>(map['transformationRules'], (value) => TransformationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumeDataRestorePolicy: map['volumeDataRestorePolicy'] == null ? null : (RestoreConfigVolumeDataRestorePolicy.fromValue(map['volumeDataRestorePolicy'] as String)).input(),
+      allNamespaces: map['allNamespaces'] == null ? null : (map['allNamespaces']! as bool).input(),
+      clusterResourceConflictPolicy: map['clusterResourceConflictPolicy'] == null ? null : (RestoreConfigClusterResourceConflictPolicy.fromValue(map['clusterResourceConflictPolicy']! as String)).input(),
+      clusterResourceRestoreScope: map['clusterResourceRestoreScope'] == null ? null : (ClusterResourceRestoreScope.fromMap((map['clusterResourceRestoreScope']! as Map).cast<String, dynamic>())).input(),
+      excludedNamespaces: map['excludedNamespaces'] == null ? null : (Namespaces.fromMap((map['excludedNamespaces']! as Map).cast<String, dynamic>())).input(),
+      namespacedResourceRestoreMode: map['namespacedResourceRestoreMode'] == null ? null : (RestoreConfigNamespacedResourceRestoreMode.fromValue(map['namespacedResourceRestoreMode']! as String)).input(),
+      noNamespaces: map['noNamespaces'] == null ? null : (map['noNamespaces']! as bool).input(),
+      selectedApplications: map['selectedApplications'] == null ? null : (NamespacedNames.fromMap((map['selectedApplications']! as Map).cast<String, dynamic>())).input(),
+      selectedNamespaces: map['selectedNamespaces'] == null ? null : (Namespaces.fromMap((map['selectedNamespaces']! as Map).cast<String, dynamic>())).input(),
+      substitutionRules: map['substitutionRules'] == null ? null : (pulumi.Input.decodeList<SubstitutionRule>(map['substitutionRules']!, (value) => SubstitutionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transformationRules: map['transformationRules'] == null ? null : (pulumi.Input.decodeList<TransformationRule>(map['transformationRules']!, (value) => TransformationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeDataRestorePolicy: map['volumeDataRestorePolicy'] == null ? null : (RestoreConfigVolumeDataRestorePolicy.fromValue(map['volumeDataRestorePolicy']! as String)).input(),
     );
   }
 }

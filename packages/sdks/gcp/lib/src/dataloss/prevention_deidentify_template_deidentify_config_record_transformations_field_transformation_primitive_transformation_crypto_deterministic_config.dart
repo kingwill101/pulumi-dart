@@ -48,9 +48,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfig(
-      context: map['context'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContext.fromMap((map['context'] as Map).cast<String, dynamic>())).input(),
-      cryptoKey: map['cryptoKey'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey.fromMap((map['cryptoKey'] as Map).cast<String, dynamic>())).input(),
-      surrogateInfoType: map['surrogateInfoType'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType.fromMap((map['surrogateInfoType'] as Map).cast<String, dynamic>())).input(),
+      context: map['context'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContext.fromMap((map['context']! as Map).cast<String, dynamic>())).input(),
+      cryptoKey: map['cryptoKey'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey.fromMap((map['cryptoKey']! as Map).cast<String, dynamic>())).input(),
+      surrogateInfoType: map['surrogateInfoType'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType.fromMap((map['surrogateInfoType']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

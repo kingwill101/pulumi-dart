@@ -88,20 +88,20 @@ class FileSystemState {
 
   factory FileSystemState.fromMap(Map<String, dynamic> map) {
     return FileSystemState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataRedundancyType: map['dataRedundancyType'] == null ? null : (map['dataRedundancyType'] as String).input(),
-      dedicatedClusterId: map['dedicatedClusterId'] == null ? null : (map['dedicatedClusterId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fileSystemName: map['fileSystemName'] == null ? null : (map['fileSystemName'] as String).input(),
-      partitionNumber: map['partitionNumber'] == null ? null : (map['partitionNumber'] as int).input(),
-      protocolType: map['protocolType'] == null ? null : (map['protocolType'] as String).input(),
-      provisionedThroughputInMiBps: map['provisionedThroughputInMiBps'] == null ? null : (map['provisionedThroughputInMiBps'] as int).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      spaceCapacity: map['spaceCapacity'] == null ? null : (map['spaceCapacity'] as int).input(),
-      storageSetName: map['storageSetName'] == null ? null : (map['storageSetName'] as String).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
-      throughputMode: map['throughputMode'] == null ? null : (map['throughputMode'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataRedundancyType: map['dataRedundancyType'] == null ? null : (map['dataRedundancyType']! as String).input(),
+      dedicatedClusterId: map['dedicatedClusterId'] == null ? null : (map['dedicatedClusterId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fileSystemName: map['fileSystemName'] == null ? null : (map['fileSystemName']! as String).input(),
+      partitionNumber: map['partitionNumber'] == null ? null : (map['partitionNumber']! as int).input(),
+      protocolType: map['protocolType'] == null ? null : (map['protocolType']! as String).input(),
+      provisionedThroughputInMiBps: map['provisionedThroughputInMiBps'] == null ? null : (map['provisionedThroughputInMiBps']! as int).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      spaceCapacity: map['spaceCapacity'] == null ? null : (map['spaceCapacity']! as int).input(),
+      storageSetName: map['storageSetName'] == null ? null : (map['storageSetName']! as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
+      throughputMode: map['throughputMode'] == null ? null : (map['throughputMode']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

@@ -38,10 +38,10 @@ class LifecyclePolicyRule {
 
   factory LifecyclePolicyRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyRule(
-      action: (LifecyclePolicyAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      action: (LifecyclePolicyAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       rulePriority: (map['rulePriority'] as int).input(),
-      selection: (LifecyclePolicySelection.fromMap((map['selection'] as Map).cast<String, dynamic>())).input(),
+      selection: (LifecyclePolicySelection.fromMap((map['selection']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

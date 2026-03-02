@@ -22,7 +22,7 @@ class DownwardAPIProjection {
 
   factory DownwardAPIProjection.fromMap(Map<String, dynamic> map) {
     return DownwardAPIProjection(
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<DownwardAPIVolumeFile>(map['items'], (value) => DownwardAPIVolumeFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<DownwardAPIVolumeFile>(map['items']!, (value) => DownwardAPIVolumeFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

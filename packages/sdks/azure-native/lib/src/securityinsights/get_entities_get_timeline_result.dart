@@ -28,8 +28,8 @@ class GetEntitiesGetTimelineResult {
 
   factory GetEntitiesGetTimelineResult.fromMap(Map<String, dynamic> map) {
     return GetEntitiesGetTimelineResult(
-      metaData: map['metaData'] == null ? null : TimelineResultsMetadataResponse.fromMap((map['metaData'] as Map).cast<String, dynamic>()),
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ActivityTimelineItemResponse>(map['value'], (value) => ActivityTimelineItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      metaData: map['metaData'] == null ? null : TimelineResultsMetadataResponse.fromMap((map['metaData']! as Map).cast<String, dynamic>()),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ActivityTimelineItemResponse>(map['value']!, (value) => ActivityTimelineItemResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

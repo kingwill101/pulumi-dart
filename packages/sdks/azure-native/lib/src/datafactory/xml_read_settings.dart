@@ -48,12 +48,12 @@ class XmlReadSettings {
 
   factory XmlReadSettings.fromMap(Map<String, dynamic> map) {
     return XmlReadSettings(
-      compressionProperties: map['compressionProperties'] == null ? null : (TarGZipReadSettings.fromMap((map['compressionProperties'] as Map).cast<String, dynamic>())).input(),
-      detectDataType: map['detectDataType'] == null ? null : (map['detectDataType']).input(),
-      namespacePrefixes: map['namespacePrefixes'] == null ? null : (map['namespacePrefixes']).input(),
-      namespaces: map['namespaces'] == null ? null : (map['namespaces']).input(),
+      compressionProperties: map['compressionProperties'] == null ? null : (TarGZipReadSettings.fromMap((map['compressionProperties']! as Map).cast<String, dynamic>())).input(),
+      detectDataType: map['detectDataType'] == null ? null : (map['detectDataType']!).input(),
+      namespacePrefixes: map['namespacePrefixes'] == null ? null : (map['namespacePrefixes']!).input(),
+      namespaces: map['namespaces'] == null ? null : (map['namespaces']!).input(),
       type: (map['type'] as String).input(),
-      validationMode: map['validationMode'] == null ? null : (map['validationMode']).input(),
+      validationMode: map['validationMode'] == null ? null : (map['validationMode']!).input(),
     );
   }
 }

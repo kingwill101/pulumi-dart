@@ -71,16 +71,16 @@ class KeystoresAliasesKeyCertFileState {
 
   factory KeystoresAliasesKeyCertFileState.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesKeyCertFileState(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
-      certsInfos: map['certsInfos'] == null ? null : (pulumi.Input.decodeList<KeystoresAliasesKeyCertFileCertsInfo>(map['certsInfos'], (value) => KeystoresAliasesKeyCertFileCertsInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      keystore: map['keystore'] == null ? null : (map['keystore'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (KeystoresAliasesKeyCertFileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
+      certsInfos: map['certsInfos'] == null ? null : (pulumi.Input.decodeList<KeystoresAliasesKeyCertFileCertsInfo>(map['certsInfos']!, (value) => KeystoresAliasesKeyCertFileCertsInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      keystore: map['keystore'] == null ? null : (map['keystore']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      timeouts: map['timeouts'] == null ? null : (KeystoresAliasesKeyCertFileTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

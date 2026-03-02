@@ -31,9 +31,9 @@ class Documentation {
 
   factory Documentation.fromMap(Map<String, dynamic> map) {
     return Documentation(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
     );
   }
 }

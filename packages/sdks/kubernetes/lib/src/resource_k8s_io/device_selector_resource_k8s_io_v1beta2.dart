@@ -22,7 +22,7 @@ class DeviceSelectorResourceK8sIoV1beta2 {
 
   factory DeviceSelectorResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceSelectorResourceK8sIoV1beta2(
-      cel: map['cel'] == null ? null : (CELDeviceSelectorResourceK8sIoV1beta2.fromMap((map['cel'] as Map).cast<String, dynamic>())).input(),
+      cel: map['cel'] == null ? null : (CELDeviceSelectorResourceK8sIoV1beta2.fromMap((map['cel']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

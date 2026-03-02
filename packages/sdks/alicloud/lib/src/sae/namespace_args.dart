@@ -44,11 +44,11 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      enableMicroRegistration: map['enableMicroRegistration'] == null ? null : (map['enableMicroRegistration'] as bool).input(),
-      namespaceDescription: map['namespaceDescription'] == null ? null : (map['namespaceDescription'] as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      enableMicroRegistration: map['enableMicroRegistration'] == null ? null : (map['enableMicroRegistration']! as bool).input(),
+      namespaceDescription: map['namespaceDescription'] == null ? null : (map['namespaceDescription']! as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      namespaceShortId: map['namespaceShortId'] == null ? null : (map['namespaceShortId'] as String).input(),
+      namespaceShortId: map['namespaceShortId'] == null ? null : (map['namespaceShortId']! as String).input(),
     );
   }
 }

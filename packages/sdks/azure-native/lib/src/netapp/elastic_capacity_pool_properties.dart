@@ -42,8 +42,8 @@ class ElasticCapacityPoolProperties {
 
   factory ElasticCapacityPoolProperties.fromMap(Map<String, dynamic> map) {
     return ElasticCapacityPoolProperties(
-      activeDirectoryConfigResourceId: map['activeDirectoryConfigResourceId'] == null ? null : (map['activeDirectoryConfigResourceId'] as String).input(),
-      encryption: map['encryption'] == null ? null : (ElasticEncryptionConfiguration.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      activeDirectoryConfigResourceId: map['activeDirectoryConfigResourceId'] == null ? null : (map['activeDirectoryConfigResourceId']! as String).input(),
+      encryption: map['encryption'] == null ? null : (ElasticEncryptionConfiguration.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
       serviceLevel: (map['serviceLevel'] as String).input(),
       size: (map['size'] as double).input(),
       subnetResourceId: (map['subnetResourceId'] as String).input(),

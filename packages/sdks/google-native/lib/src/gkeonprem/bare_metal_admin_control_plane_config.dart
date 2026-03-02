@@ -28,7 +28,7 @@ class BareMetalAdminControlPlaneConfig {
 
   factory BareMetalAdminControlPlaneConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminControlPlaneConfig(
-      apiServerArgs: map['apiServerArgs'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminApiServerArgument>(map['apiServerArgs'], (value) => BareMetalAdminApiServerArgument.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiServerArgs: map['apiServerArgs'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminApiServerArgument>(map['apiServerArgs']!, (value) => BareMetalAdminApiServerArgument.fromMap((value as Map).cast<String, dynamic>()))).input(),
       controlPlaneNodePoolConfig: (BareMetalAdminControlPlaneNodePoolConfig.fromMap((map['controlPlaneNodePoolConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }

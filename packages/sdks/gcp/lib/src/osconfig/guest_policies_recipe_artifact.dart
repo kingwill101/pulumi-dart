@@ -42,10 +42,10 @@ class GuestPoliciesRecipeArtifact {
 
   factory GuestPoliciesRecipeArtifact.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeArtifact(
-      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure'] as bool).input(),
-      gcs: map['gcs'] == null ? null : (GuestPoliciesRecipeArtifactGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>())).input(),
+      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure']! as bool).input(),
+      gcs: map['gcs'] == null ? null : (GuestPoliciesRecipeArtifactGcs.fromMap((map['gcs']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
-      remote: map['remote'] == null ? null : (GuestPoliciesRecipeArtifactRemote.fromMap((map['remote'] as Map).cast<String, dynamic>())).input(),
+      remote: map['remote'] == null ? null : (GuestPoliciesRecipeArtifactRemote.fromMap((map['remote']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

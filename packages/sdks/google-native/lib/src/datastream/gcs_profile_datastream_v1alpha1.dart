@@ -27,7 +27,7 @@ class GcsProfileDatastreamV1alpha1 {
   factory GcsProfileDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return GcsProfileDatastreamV1alpha1(
       bucketName: (map['bucketName'] as String).input(),
-      rootPath: map['rootPath'] == null ? null : (map['rootPath'] as String).input(),
+      rootPath: map['rootPath'] == null ? null : (map['rootPath']! as String).input(),
     );
   }
 }

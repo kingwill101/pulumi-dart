@@ -45,11 +45,11 @@ class GrpcRouteRouteAction {
 
   factory GrpcRouteRouteAction.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRouteAction(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<GrpcRouteDestination>(map['destinations'], (value) => GrpcRouteDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : (GrpcRouteFaultInjectionPolicy.fromMap((map['faultInjectionPolicy'] as Map).cast<String, dynamic>())).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (GrpcRouteRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
-      statefulSessionAffinity: map['statefulSessionAffinity'] == null ? null : (GrpcRouteStatefulSessionAffinityPolicy.fromMap((map['statefulSessionAffinity'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<GrpcRouteDestination>(map['destinations']!, (value) => GrpcRouteDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : (GrpcRouteFaultInjectionPolicy.fromMap((map['faultInjectionPolicy']! as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (GrpcRouteRetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
+      statefulSessionAffinity: map['statefulSessionAffinity'] == null ? null : (GrpcRouteStatefulSessionAffinityPolicy.fromMap((map['statefulSessionAffinity']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

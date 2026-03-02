@@ -63,7 +63,7 @@ class ListAccountSasArgs {
       expiry: (map['expiry'] as String).input(),
       maxRatePerSecond: (map['maxRatePerSecond'] as int).input(),
       principalId: (map['principalId'] as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       signingKey: (map['signingKey'] as String).input(),
       start: (map['start'] as String).input(),

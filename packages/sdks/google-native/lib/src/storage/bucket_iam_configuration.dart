@@ -33,9 +33,9 @@ class BucketIamConfiguration {
 
   factory BucketIamConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketIamConfiguration(
-      bucketPolicyOnly: map['bucketPolicyOnly'] == null ? null : (BucketIamConfigurationBucketPolicyOnly.fromMap((map['bucketPolicyOnly'] as Map).cast<String, dynamic>())).input(),
-      publicAccessPrevention: map['publicAccessPrevention'] == null ? null : (map['publicAccessPrevention'] as String).input(),
-      uniformBucketLevelAccess: map['uniformBucketLevelAccess'] == null ? null : (BucketIamConfigurationUniformBucketLevelAccess.fromMap((map['uniformBucketLevelAccess'] as Map).cast<String, dynamic>())).input(),
+      bucketPolicyOnly: map['bucketPolicyOnly'] == null ? null : (BucketIamConfigurationBucketPolicyOnly.fromMap((map['bucketPolicyOnly']! as Map).cast<String, dynamic>())).input(),
+      publicAccessPrevention: map['publicAccessPrevention'] == null ? null : (map['publicAccessPrevention']! as String).input(),
+      uniformBucketLevelAccess: map['uniformBucketLevelAccess'] == null ? null : (BucketIamConfigurationUniformBucketLevelAccess.fromMap((map['uniformBucketLevelAccess']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
-      apiUrl: map['apiUrl'] == null ? null : (map['apiUrl'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
+      apiUrl: map['apiUrl'] == null ? null : (map['apiUrl']! as String).input(),
     );
   }
 }

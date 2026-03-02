@@ -40,7 +40,7 @@ class HybridComputePrivateLinkScopePropertiesResponse {
       privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionDataModelResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionDataModelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       privateLinkScopeId: (map['privateLinkScopeId'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
     );
   }
 }

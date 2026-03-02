@@ -43,7 +43,7 @@ class NetworkSecurityPerimeterAssociationArgs {
   factory NetworkSecurityPerimeterAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterAssociationArgs(
       accessMode: (map['accessMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkSecurityPerimeterProfileId: (map['networkSecurityPerimeterProfileId'] as String).input(),
       resourceId: (map['resourceId'] as String).input(),
     );

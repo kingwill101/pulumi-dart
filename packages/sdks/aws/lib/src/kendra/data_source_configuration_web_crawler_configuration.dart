@@ -63,15 +63,15 @@ class DataSourceConfigurationWebCrawlerConfiguration {
 
   factory DataSourceConfigurationWebCrawlerConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationWebCrawlerConfiguration(
-      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : (DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      crawlDepth: map['crawlDepth'] == null ? null : (map['crawlDepth'] as int).input(),
-      maxContentSizePerPageInMegaBytes: map['maxContentSizePerPageInMegaBytes'] == null ? null : (map['maxContentSizePerPageInMegaBytes'] as double).input(),
-      maxLinksPerPage: map['maxLinksPerPage'] == null ? null : (map['maxLinksPerPage'] as int).input(),
-      maxUrlsPerMinuteCrawlRate: map['maxUrlsPerMinuteCrawlRate'] == null ? null : (map['maxUrlsPerMinuteCrawlRate'] as int).input(),
-      proxyConfiguration: map['proxyConfiguration'] == null ? null : (DataSourceConfigurationWebCrawlerConfigurationProxyConfiguration.fromMap((map['proxyConfiguration'] as Map).cast<String, dynamic>())).input(),
-      urlExclusionPatterns: map['urlExclusionPatterns'] == null ? null : ((map['urlExclusionPatterns'] as List).cast<String>()).input(),
-      urlInclusionPatterns: map['urlInclusionPatterns'] == null ? null : ((map['urlInclusionPatterns'] as List).cast<String>()).input(),
-      urls: (DataSourceConfigurationWebCrawlerConfigurationUrls.fromMap((map['urls'] as Map).cast<String, dynamic>())).input(),
+      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : ((DataSourceConfigurationWebCrawlerConfigurationAuthenticationConfiguration.fromMap((map['authenticationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      crawlDepth: map['crawlDepth'] == null ? null : ((map['crawlDepth'] as int).input()).input(),
+      maxContentSizePerPageInMegaBytes: map['maxContentSizePerPageInMegaBytes'] == null ? null : ((map['maxContentSizePerPageInMegaBytes'] as double).input()).input(),
+      maxLinksPerPage: map['maxLinksPerPage'] == null ? null : ((map['maxLinksPerPage'] as int).input()).input(),
+      maxUrlsPerMinuteCrawlRate: map['maxUrlsPerMinuteCrawlRate'] == null ? null : ((map['maxUrlsPerMinuteCrawlRate'] as int).input()).input(),
+      proxyConfiguration: map['proxyConfiguration'] == null ? null : ((DataSourceConfigurationWebCrawlerConfigurationProxyConfiguration.fromMap((map['proxyConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      urlExclusionPatterns: map['urlExclusionPatterns'] == null ? null : (((map['urlExclusionPatterns'] as List).cast<String>()).input()).input(),
+      urlInclusionPatterns: map['urlInclusionPatterns'] == null ? null : (((map['urlInclusionPatterns'] as List).cast<String>()).input()).input(),
+      urls: (DataSourceConfigurationWebCrawlerConfigurationUrls.fromMap((map['urls']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

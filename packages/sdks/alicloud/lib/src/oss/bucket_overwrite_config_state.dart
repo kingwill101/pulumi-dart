@@ -27,8 +27,8 @@ class BucketOverwriteConfigState {
 
   factory BucketOverwriteConfigState.fromMap(Map<String, dynamic> map) {
     return BucketOverwriteConfigState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketOverwriteConfigRule>(map['rules'], (value) => BucketOverwriteConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketOverwriteConfigRule>(map['rules']!, (value) => BucketOverwriteConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class OrganizationSecurityPolicyAssociationState {
 
   factory OrganizationSecurityPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyAssociationState(
-      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
     );
   }
 }

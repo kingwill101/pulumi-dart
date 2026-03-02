@@ -34,7 +34,7 @@ class SavedQueryArgs {
 
   factory SavedQueryArgs.fromMap(Map<String, dynamic> map) {
     return SavedQueryArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       savedQueryName: (map['savedQueryName'] as String).input(),
     );

@@ -66,11 +66,11 @@ class CxGeneratorArgs {
   factory CxGeneratorArgs.fromMap(Map<String, dynamic> map) {
     return CxGeneratorArgs(
       displayName: (map['displayName'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      llmModelSettings: map['llmModelSettings'] == null ? null : (CxGeneratorLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>())).input(),
-      modelParameter: map['modelParameter'] == null ? null : (CxGeneratorModelParameter.fromMap((map['modelParameter'] as Map).cast<String, dynamic>())).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      placeholders: map['placeholders'] == null ? null : (pulumi.Input.decodeList<CxGeneratorPlaceholder>(map['placeholders'], (value) => CxGeneratorPlaceholder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      llmModelSettings: map['llmModelSettings'] == null ? null : (CxGeneratorLlmModelSettings.fromMap((map['llmModelSettings']! as Map).cast<String, dynamic>())).input(),
+      modelParameter: map['modelParameter'] == null ? null : (CxGeneratorModelParameter.fromMap((map['modelParameter']! as Map).cast<String, dynamic>())).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      placeholders: map['placeholders'] == null ? null : (pulumi.Input.decodeList<CxGeneratorPlaceholder>(map['placeholders']!, (value) => CxGeneratorPlaceholder.fromMap((value as Map).cast<String, dynamic>()))).input(),
       promptText: (CxGeneratorPromptText.fromMap((map['promptText'] as Map).cast<String, dynamic>())).input(),
     );
   }

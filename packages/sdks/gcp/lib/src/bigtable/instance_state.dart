@@ -82,16 +82,16 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      clusters: map['clusters'] == null ? null : (pulumi.Input.decodeList<InstanceCluster>(map['clusters'], (value) => InstanceCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      clusters: map['clusters'] == null ? null : (pulumi.Input.decodeList<InstanceCluster>(map['clusters']!, (value) => InstanceCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

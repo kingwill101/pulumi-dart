@@ -41,11 +41,11 @@ class BizTypeState {
 
   factory BizTypeState.fromMap(Map<String, dynamic> map) {
     return BizTypeState(
-      bizTypeImport: map['bizTypeImport'] == null ? null : (map['bizTypeImport'] as String).input(),
-      bizTypeName: map['bizTypeName'] == null ? null : (map['bizTypeName'] as String).input(),
-      citeTemplate: map['citeTemplate'] == null ? null : (map['citeTemplate'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      industryInfo: map['industryInfo'] == null ? null : (map['industryInfo'] as String).input(),
+      bizTypeImport: map['bizTypeImport'] == null ? null : (map['bizTypeImport']! as String).input(),
+      bizTypeName: map['bizTypeName'] == null ? null : (map['bizTypeName']! as String).input(),
+      citeTemplate: map['citeTemplate'] == null ? null : (map['citeTemplate']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      industryInfo: map['industryInfo'] == null ? null : (map['industryInfo']! as String).input(),
     );
   }
 }

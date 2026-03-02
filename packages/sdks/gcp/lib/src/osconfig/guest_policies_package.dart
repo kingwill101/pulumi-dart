@@ -38,8 +38,8 @@ class GuestPoliciesPackage {
 
   factory GuestPoliciesPackage.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesPackage(
-      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
-      manager: map['manager'] == null ? null : (map['manager'] as String).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState']! as String).input(),
+      manager: map['manager'] == null ? null : (map['manager']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

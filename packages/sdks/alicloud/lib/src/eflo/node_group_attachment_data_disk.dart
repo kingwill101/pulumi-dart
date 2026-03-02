@@ -35,10 +35,10 @@ class NodeGroupAttachmentDataDisk {
 
   factory NodeGroupAttachmentDataDisk.fromMap(Map<String, dynamic> map) {
     return NodeGroupAttachmentDataDisk(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      deleteWithNode: map['deleteWithNode'] == null ? null : (map['deleteWithNode'] as bool).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      deleteWithNode: map['deleteWithNode'] == null ? null : (map['deleteWithNode']! as bool).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

@@ -55,13 +55,13 @@ class GetSnapshotArgs {
 
   factory GetSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSnapshotFilter>(map['filters'], (value) => GetSnapshotFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      owners: map['owners'] == null ? null : ((map['owners'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restorableByUserIds: map['restorableByUserIds'] == null ? null : ((map['restorableByUserIds'] as List).cast<String>()).input(),
-      snapshotIds: map['snapshotIds'] == null ? null : ((map['snapshotIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetSnapshotFilter>(map['filters']!, (value) => GetSnapshotFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      mostRecent: map['mostRecent'] == null ? null : ((map['mostRecent'] as bool).input()).input(),
+      owners: map['owners'] == null ? null : (((map['owners'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restorableByUserIds: map['restorableByUserIds'] == null ? null : (((map['restorableByUserIds'] as List).cast<String>()).input()).input(),
+      snapshotIds: map['snapshotIds'] == null ? null : (((map['snapshotIds'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

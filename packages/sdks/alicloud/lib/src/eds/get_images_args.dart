@@ -54,13 +54,13 @@ class GetImagesArgs {
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      desktopInstanceType: map['desktopInstanceType'] == null ? null : (map['desktopInstanceType'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      imageType: map['imageType'] == null ? null : (map['imageType'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      desktopInstanceType: map['desktopInstanceType'] == null ? null : (map['desktopInstanceType']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      imageType: map['imageType'] == null ? null : (map['imageType']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -60,12 +60,12 @@ class AppVersionSnapshotToolDataStoreTool {
 
   factory AppVersionSnapshotToolDataStoreTool.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreTool(
-      boostSpecs: map['boostSpecs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpec>(map['boostSpecs'], (value) => AppVersionSnapshotToolDataStoreToolBoostSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      engineSources: map['engineSources'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolEngineSource>(map['engineSources'], (value) => AppVersionSnapshotToolDataStoreToolEngineSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxResults: map['maxResults'] == null ? null : (map['maxResults'] as int).input(),
-      modalityConfigs: map['modalityConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfig>(map['modalityConfigs'], (value) => AppVersionSnapshotToolDataStoreToolModalityConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      boostSpecs: map['boostSpecs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpec>(map['boostSpecs']!, (value) => AppVersionSnapshotToolDataStoreToolBoostSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      engineSources: map['engineSources'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolEngineSource>(map['engineSources']!, (value) => AppVersionSnapshotToolDataStoreToolEngineSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxResults: map['maxResults'] == null ? null : (map['maxResults']! as int).input(),
+      modalityConfigs: map['modalityConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfig>(map['modalityConfigs']!, (value) => AppVersionSnapshotToolDataStoreToolModalityConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -46,10 +46,10 @@ class BrokerArgs {
 
   factory BrokerArgs.fromMap(Map<String, dynamic> map) {
     return BrokerArgs(
-      brokerName: map['brokerName'] == null ? null : (map['brokerName'] as String).input(),
+      brokerName: map['brokerName'] == null ? null : (map['brokerName']! as String).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       instanceName: (map['instanceName'] as String).input(),
-      properties: map['properties'] == null ? null : (BrokerProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (BrokerProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -35,7 +35,7 @@ class RegionUrlMapHostRule {
 
   factory RegionUrlMapHostRule.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapHostRule(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       hosts: ((map['hosts'] as List).cast<String>()).input(),
       pathMatcher: (map['pathMatcher'] as String).input(),
     );

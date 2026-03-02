@@ -26,8 +26,8 @@ class GoogleCloudRetailV2ConditionQueryTerm {
 
   factory GoogleCloudRetailV2ConditionQueryTerm.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2ConditionQueryTerm(
-      fullMatch: map['fullMatch'] == null ? null : (map['fullMatch'] as bool).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      fullMatch: map['fullMatch'] == null ? null : (map['fullMatch']! as bool).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

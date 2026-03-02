@@ -41,11 +41,11 @@ class AlarmCompositeExpression {
 
   factory AlarmCompositeExpression.fromMap(Map<String, dynamic> map) {
     return AlarmCompositeExpression(
-      expressionListJoin: map['expressionListJoin'] == null ? null : (map['expressionListJoin'] as String).input(),
-      expressionLists: map['expressionLists'] == null ? null : (pulumi.Input.decodeList<AlarmCompositeExpressionExpressionList>(map['expressionLists'], (value) => AlarmCompositeExpressionExpressionList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expressionRaw: map['expressionRaw'] == null ? null : (map['expressionRaw'] as String).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
-      times: map['times'] == null ? null : (map['times'] as int).input(),
+      expressionListJoin: map['expressionListJoin'] == null ? null : (map['expressionListJoin']! as String).input(),
+      expressionLists: map['expressionLists'] == null ? null : (pulumi.Input.decodeList<AlarmCompositeExpressionExpressionList>(map['expressionLists']!, (value) => AlarmCompositeExpressionExpressionList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expressionRaw: map['expressionRaw'] == null ? null : (map['expressionRaw']! as String).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
+      times: map['times'] == null ? null : (map['times']! as int).input(),
     );
   }
 }

@@ -61,15 +61,15 @@ class WebhookState {
 
   factory WebhookState.fromMap(Map<String, dynamic> map) {
     return WebhookState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      runOnWorkerGroup: map['runOnWorkerGroup'] == null ? null : (map['runOnWorkerGroup'] as String).input(),
-      runbookName: map['runbookName'] == null ? null : (map['runbookName'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      runOnWorkerGroup: map['runOnWorkerGroup'] == null ? null : (map['runOnWorkerGroup']! as String).input(),
+      runbookName: map['runbookName'] == null ? null : (map['runbookName']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

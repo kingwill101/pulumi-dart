@@ -31,9 +31,9 @@ class ConfigurationPolicyAssociationState {
 
   factory ConfigurationPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return ConfigurationPolicyAssociationState(
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      policyId: map['policyId'] == null ? null : ((map['policyId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      targetId: map['targetId'] == null ? null : ((map['targetId'] as String).input()).input(),
     );
   }
 }

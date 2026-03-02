@@ -53,11 +53,11 @@ class TransformationResponse {
     return TransformationResponse(
       etag: (map['etag'] as String).input(),
       id: (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      streamingUnits: map['streamingUnits'] == null ? null : (map['streamingUnits'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      streamingUnits: map['streamingUnits'] == null ? null : (map['streamingUnits']! as int).input(),
       type: (map['type'] as String).input(),
-      validStreamingUnits: map['validStreamingUnits'] == null ? null : ((map['validStreamingUnits'] as List).cast<int>()).input(),
+      validStreamingUnits: map['validStreamingUnits'] == null ? null : ((map['validStreamingUnits']! as List).cast<int>()).input(),
     );
   }
 }

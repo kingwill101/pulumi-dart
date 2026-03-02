@@ -53,13 +53,13 @@ class ServicePrincipalTokenSigningCertificateState {
 
   factory ServicePrincipalTokenSigningCertificateState.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalTokenSigningCertificateState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']! as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

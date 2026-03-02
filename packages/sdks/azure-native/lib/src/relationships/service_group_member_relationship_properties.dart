@@ -27,7 +27,7 @@ class ServiceGroupMemberRelationshipProperties {
   factory ServiceGroupMemberRelationshipProperties.fromMap(Map<String, dynamic> map) {
     return ServiceGroupMemberRelationshipProperties(
       targetId: (map['targetId'] as String).input(),
-      targetTenant: map['targetTenant'] == null ? null : (map['targetTenant'] as String).input(),
+      targetTenant: map['targetTenant'] == null ? null : (map['targetTenant']! as String).input(),
     );
   }
 }

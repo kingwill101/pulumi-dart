@@ -58,13 +58,13 @@ class DropletAutoscaleState {
 
   factory DropletAutoscaleState.fromMap(Map<String, dynamic> map) {
     return DropletAutoscaleState(
-      config: map['config'] == null ? null : (DropletAutoscaleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      currentUtilizations: map['currentUtilizations'] == null ? null : (pulumi.Input.decodeList<DropletAutoscaleCurrentUtilization>(map['currentUtilizations'], (value) => DropletAutoscaleCurrentUtilization.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dropletTemplate: map['dropletTemplate'] == null ? null : (DropletAutoscaleDropletTemplate.fromMap((map['dropletTemplate'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      config: map['config'] == null ? null : (DropletAutoscaleConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      currentUtilizations: map['currentUtilizations'] == null ? null : (pulumi.Input.decodeList<DropletAutoscaleCurrentUtilization>(map['currentUtilizations']!, (value) => DropletAutoscaleCurrentUtilization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dropletTemplate: map['dropletTemplate'] == null ? null : (DropletAutoscaleDropletTemplate.fromMap((map['dropletTemplate']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
     );
   }
 }

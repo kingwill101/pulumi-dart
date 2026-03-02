@@ -22,7 +22,7 @@ class CloudSqlConnectionProfileDatamigrationV1beta1 {
 
   factory CloudSqlConnectionProfileDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudSqlConnectionProfileDatamigrationV1beta1(
-      settings: map['settings'] == null ? null : (CloudSqlSettingsDatamigrationV1beta1.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (CloudSqlSettingsDatamigrationV1beta1.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

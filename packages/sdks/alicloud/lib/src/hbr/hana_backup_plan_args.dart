@@ -67,14 +67,14 @@ class HanaBackupPlanArgs {
 
   factory HanaBackupPlanArgs.fromMap(Map<String, dynamic> map) {
     return HanaBackupPlanArgs(
-      backupPrefix: map['backupPrefix'] == null ? null : (map['backupPrefix'] as String).input(),
+      backupPrefix: map['backupPrefix'] == null ? null : (map['backupPrefix']! as String).input(),
       backupType: (map['backupType'] as String).input(),
       clusterId: (map['clusterId'] as String).input(),
       databaseName: (map['databaseName'] as String).input(),
       planName: (map['planName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       schedule: (map['schedule'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       vaultId: (map['vaultId'] as String).input(),
     );
   }

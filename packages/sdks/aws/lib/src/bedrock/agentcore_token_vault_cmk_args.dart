@@ -35,9 +35,9 @@ class AgentcoreTokenVaultCmkArgs {
 
   factory AgentcoreTokenVaultCmkArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreTokenVaultCmkArgs(
-      kmsConfiguration: (AgentcoreTokenVaultCmkKmsConfiguration.fromMap((map['kmsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tokenVaultId: map['tokenVaultId'] == null ? null : (map['tokenVaultId'] as String).input(),
+      kmsConfiguration: (AgentcoreTokenVaultCmkKmsConfiguration.fromMap((map['kmsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tokenVaultId: map['tokenVaultId'] == null ? null : ((map['tokenVaultId'] as String).input()).input(),
     );
   }
 }

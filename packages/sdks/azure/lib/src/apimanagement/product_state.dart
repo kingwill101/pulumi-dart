@@ -70,16 +70,16 @@ class ProductState {
 
   factory ProductState.fromMap(Map<String, dynamic> map) {
     return ProductState(
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      approvalRequired: map['approvalRequired'] == null ? null : (map['approvalRequired'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
-      published: map['published'] == null ? null : (map['published'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      subscriptionRequired: map['subscriptionRequired'] == null ? null : (map['subscriptionRequired'] as bool).input(),
-      subscriptionsLimit: map['subscriptionsLimit'] == null ? null : (map['subscriptionsLimit'] as int).input(),
-      terms: map['terms'] == null ? null : (map['terms'] as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      approvalRequired: map['approvalRequired'] == null ? null : (map['approvalRequired']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
+      published: map['published'] == null ? null : (map['published']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      subscriptionRequired: map['subscriptionRequired'] == null ? null : (map['subscriptionRequired']! as bool).input(),
+      subscriptionsLimit: map['subscriptionsLimit'] == null ? null : (map['subscriptionsLimit']! as int).input(),
+      terms: map['terms'] == null ? null : (map['terms']! as String).input(),
     );
   }
 }

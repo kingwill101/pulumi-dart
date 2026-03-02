@@ -46,11 +46,11 @@ class BucketIpFilter {
 
   factory BucketIpFilter.fromMap(Map<String, dynamic> map) {
     return BucketIpFilter(
-      allowAllServiceAgentAccess: map['allowAllServiceAgentAccess'] == null ? null : (map['allowAllServiceAgentAccess'] as bool).input(),
-      allowCrossOrgVpcs: map['allowCrossOrgVpcs'] == null ? null : (map['allowCrossOrgVpcs'] as bool).input(),
+      allowAllServiceAgentAccess: map['allowAllServiceAgentAccess'] == null ? null : (map['allowAllServiceAgentAccess']! as bool).input(),
+      allowCrossOrgVpcs: map['allowCrossOrgVpcs'] == null ? null : (map['allowCrossOrgVpcs']! as bool).input(),
       mode: (map['mode'] as String).input(),
-      publicNetworkSource: map['publicNetworkSource'] == null ? null : (BucketIpFilterPublicNetworkSource.fromMap((map['publicNetworkSource'] as Map).cast<String, dynamic>())).input(),
-      vpcNetworkSources: map['vpcNetworkSources'] == null ? null : (pulumi.Input.decodeList<BucketIpFilterVpcNetworkSource>(map['vpcNetworkSources'], (value) => BucketIpFilterVpcNetworkSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetworkSource: map['publicNetworkSource'] == null ? null : (BucketIpFilterPublicNetworkSource.fromMap((map['publicNetworkSource']! as Map).cast<String, dynamic>())).input(),
+      vpcNetworkSources: map['vpcNetworkSources'] == null ? null : (pulumi.Input.decodeList<BucketIpFilterVpcNetworkSource>(map['vpcNetworkSources']!, (value) => BucketIpFilterVpcNetworkSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

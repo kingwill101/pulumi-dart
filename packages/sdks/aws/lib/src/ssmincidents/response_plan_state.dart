@@ -74,17 +74,17 @@ class ResponsePlanState {
 
   factory ResponsePlanState.fromMap(Map<String, dynamic> map) {
     return ResponsePlanState(
-      action: map['action'] == null ? null : (ResponsePlanAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      chatChannels: map['chatChannels'] == null ? null : ((map['chatChannels'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      engagements: map['engagements'] == null ? null : ((map['engagements'] as List).cast<String>()).input(),
-      incidentTemplate: map['incidentTemplate'] == null ? null : (ResponsePlanIncidentTemplate.fromMap((map['incidentTemplate'] as Map).cast<String, dynamic>())).input(),
-      integration: map['integration'] == null ? null : (ResponsePlanIntegration.fromMap((map['integration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      action: map['action'] == null ? null : ((ResponsePlanAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      chatChannels: map['chatChannels'] == null ? null : (((map['chatChannels'] as List).cast<String>()).input()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
+      engagements: map['engagements'] == null ? null : (((map['engagements'] as List).cast<String>()).input()).input(),
+      incidentTemplate: map['incidentTemplate'] == null ? null : ((ResponsePlanIncidentTemplate.fromMap((map['incidentTemplate']! as Map).cast<String, dynamic>())).input()).input(),
+      integration: map['integration'] == null ? null : ((ResponsePlanIntegration.fromMap((map['integration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -128,22 +128,22 @@ class DataConnectorArgs {
 
   factory DataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return DataConnectorArgs(
-      autoRunDisabled: map['autoRunDisabled'] == null ? null : (map['autoRunDisabled'] as bool).input(),
+      autoRunDisabled: map['autoRunDisabled'] == null ? null : (map['autoRunDisabled']! as bool).input(),
       collectionDisplayName: (map['collectionDisplayName'] as String).input(),
       collectionId: (map['collectionId'] as String).input(),
-      connectorModes: map['connectorModes'] == null ? null : ((map['connectorModes'] as List).cast<String>()).input(),
+      connectorModes: map['connectorModes'] == null ? null : ((map['connectorModes']! as List).cast<String>()).input(),
       dataSource: (map['dataSource'] as String).input(),
-      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<DataConnectorEntity>(map['entities'], (value) => DataConnectorEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      incrementalRefreshInterval: map['incrementalRefreshInterval'] == null ? null : (map['incrementalRefreshInterval'] as String).input(),
-      incrementalSyncDisabled: map['incrementalSyncDisabled'] == null ? null : (map['incrementalSyncDisabled'] as bool).input(),
-      jsonParams: map['jsonParams'] == null ? null : (map['jsonParams'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<DataConnectorEntity>(map['entities']!, (value) => DataConnectorEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      incrementalRefreshInterval: map['incrementalRefreshInterval'] == null ? null : (map['incrementalRefreshInterval']! as String).input(),
+      incrementalSyncDisabled: map['incrementalSyncDisabled'] == null ? null : (map['incrementalSyncDisabled']! as bool).input(),
+      jsonParams: map['jsonParams'] == null ? null : (map['jsonParams']! as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
       location: (map['location'] as String).input(),
-      params: map['params'] == null ? null : ((map['params'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      params: map['params'] == null ? null : ((map['params']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       refreshInterval: (map['refreshInterval'] as String).input(),
-      staticIpEnabled: map['staticIpEnabled'] == null ? null : (map['staticIpEnabled'] as bool).input(),
-      syncMode: map['syncMode'] == null ? null : (map['syncMode'] as String).input(),
+      staticIpEnabled: map['staticIpEnabled'] == null ? null : (map['staticIpEnabled']! as bool).input(),
+      syncMode: map['syncMode'] == null ? null : (map['syncMode']! as String).input(),
     );
   }
 }

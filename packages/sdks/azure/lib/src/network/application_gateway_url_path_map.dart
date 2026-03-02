@@ -72,15 +72,15 @@ class ApplicationGatewayUrlPathMap {
 
   factory ApplicationGatewayUrlPathMap.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayUrlPathMap(
-      defaultBackendAddressPoolId: map['defaultBackendAddressPoolId'] == null ? null : (map['defaultBackendAddressPoolId'] as String).input(),
-      defaultBackendAddressPoolName: map['defaultBackendAddressPoolName'] == null ? null : (map['defaultBackendAddressPoolName'] as String).input(),
-      defaultBackendHttpSettingsId: map['defaultBackendHttpSettingsId'] == null ? null : (map['defaultBackendHttpSettingsId'] as String).input(),
-      defaultBackendHttpSettingsName: map['defaultBackendHttpSettingsName'] == null ? null : (map['defaultBackendHttpSettingsName'] as String).input(),
-      defaultRedirectConfigurationId: map['defaultRedirectConfigurationId'] == null ? null : (map['defaultRedirectConfigurationId'] as String).input(),
-      defaultRedirectConfigurationName: map['defaultRedirectConfigurationName'] == null ? null : (map['defaultRedirectConfigurationName'] as String).input(),
-      defaultRewriteRuleSetId: map['defaultRewriteRuleSetId'] == null ? null : (map['defaultRewriteRuleSetId'] as String).input(),
-      defaultRewriteRuleSetName: map['defaultRewriteRuleSetName'] == null ? null : (map['defaultRewriteRuleSetName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      defaultBackendAddressPoolId: map['defaultBackendAddressPoolId'] == null ? null : (map['defaultBackendAddressPoolId']! as String).input(),
+      defaultBackendAddressPoolName: map['defaultBackendAddressPoolName'] == null ? null : (map['defaultBackendAddressPoolName']! as String).input(),
+      defaultBackendHttpSettingsId: map['defaultBackendHttpSettingsId'] == null ? null : (map['defaultBackendHttpSettingsId']! as String).input(),
+      defaultBackendHttpSettingsName: map['defaultBackendHttpSettingsName'] == null ? null : (map['defaultBackendHttpSettingsName']! as String).input(),
+      defaultRedirectConfigurationId: map['defaultRedirectConfigurationId'] == null ? null : (map['defaultRedirectConfigurationId']! as String).input(),
+      defaultRedirectConfigurationName: map['defaultRedirectConfigurationName'] == null ? null : (map['defaultRedirectConfigurationName']! as String).input(),
+      defaultRewriteRuleSetId: map['defaultRewriteRuleSetId'] == null ? null : (map['defaultRewriteRuleSetId']! as String).input(),
+      defaultRewriteRuleSetName: map['defaultRewriteRuleSetName'] == null ? null : (map['defaultRewriteRuleSetName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
       pathRules: (pulumi.Input.decodeList<ApplicationGatewayUrlPathMapPathRule>(map['pathRules'], (value) => ApplicationGatewayUrlPathMapPathRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

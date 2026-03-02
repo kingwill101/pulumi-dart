@@ -30,9 +30,9 @@ class EndpointDeploymentConfigBlueGreenUpdatePolicy {
 
   factory EndpointDeploymentConfigBlueGreenUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentConfigBlueGreenUpdatePolicy(
-      maximumExecutionTimeoutInSeconds: map['maximumExecutionTimeoutInSeconds'] == null ? null : (map['maximumExecutionTimeoutInSeconds'] as int).input(),
-      terminationWaitInSeconds: map['terminationWaitInSeconds'] == null ? null : (map['terminationWaitInSeconds'] as int).input(),
-      trafficRoutingConfiguration: (EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration.fromMap((map['trafficRoutingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      maximumExecutionTimeoutInSeconds: map['maximumExecutionTimeoutInSeconds'] == null ? null : ((map['maximumExecutionTimeoutInSeconds'] as int).input()).input(),
+      terminationWaitInSeconds: map['terminationWaitInSeconds'] == null ? null : ((map['terminationWaitInSeconds'] as int).input()).input(),
+      trafficRoutingConfiguration: (EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration.fromMap((map['trafficRoutingConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

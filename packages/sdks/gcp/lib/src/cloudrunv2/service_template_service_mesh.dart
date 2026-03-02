@@ -20,7 +20,7 @@ class ServiceTemplateServiceMesh {
 
   factory ServiceTemplateServiceMesh.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateServiceMesh(
-      mesh: map['mesh'] == null ? null : (map['mesh'] as String).input(),
+      mesh: map['mesh'] == null ? null : (map['mesh']! as String).input(),
     );
   }
 }

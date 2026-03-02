@@ -69,15 +69,15 @@ class DeidentifyConfigHealthcareV1beta1 {
 
   factory DeidentifyConfigHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return DeidentifyConfigHealthcareV1beta1(
-      annotation: map['annotation'] == null ? null : (AnnotationConfig.fromMap((map['annotation'] as Map).cast<String, dynamic>())).input(),
-      dicom: map['dicom'] == null ? null : (DicomConfigHealthcareV1beta1.fromMap((map['dicom'] as Map).cast<String, dynamic>())).input(),
-      dicomTagConfig: map['dicomTagConfig'] == null ? null : (DicomTagConfig.fromMap((map['dicomTagConfig'] as Map).cast<String, dynamic>())).input(),
-      fhir: map['fhir'] == null ? null : (FhirConfigHealthcareV1beta1.fromMap((map['fhir'] as Map).cast<String, dynamic>())).input(),
-      fhirFieldConfig: map['fhirFieldConfig'] == null ? null : (FhirFieldConfig.fromMap((map['fhirFieldConfig'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (ImageConfigHealthcareV1beta1.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      operationMetadata: map['operationMetadata'] == null ? null : (DeidentifyOperationMetadata.fromMap((map['operationMetadata'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (TextConfigHealthcareV1beta1.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
-      useRegionalDataProcessing: map['useRegionalDataProcessing'] == null ? null : (map['useRegionalDataProcessing'] as bool).input(),
+      annotation: map['annotation'] == null ? null : (AnnotationConfig.fromMap((map['annotation']! as Map).cast<String, dynamic>())).input(),
+      dicom: map['dicom'] == null ? null : (DicomConfigHealthcareV1beta1.fromMap((map['dicom']! as Map).cast<String, dynamic>())).input(),
+      dicomTagConfig: map['dicomTagConfig'] == null ? null : (DicomTagConfig.fromMap((map['dicomTagConfig']! as Map).cast<String, dynamic>())).input(),
+      fhir: map['fhir'] == null ? null : (FhirConfigHealthcareV1beta1.fromMap((map['fhir']! as Map).cast<String, dynamic>())).input(),
+      fhirFieldConfig: map['fhirFieldConfig'] == null ? null : (FhirFieldConfig.fromMap((map['fhirFieldConfig']! as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (ImageConfigHealthcareV1beta1.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
+      operationMetadata: map['operationMetadata'] == null ? null : (DeidentifyOperationMetadata.fromMap((map['operationMetadata']! as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (TextConfigHealthcareV1beta1.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
+      useRegionalDataProcessing: map['useRegionalDataProcessing'] == null ? null : (map['useRegionalDataProcessing']! as bool).input(),
     );
   }
 }

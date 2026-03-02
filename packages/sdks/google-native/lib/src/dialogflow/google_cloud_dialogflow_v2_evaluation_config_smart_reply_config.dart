@@ -26,7 +26,7 @@ class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig {
 
   factory GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig(
-      allowlistDocument: map['allowlistDocument'] == null ? null : (map['allowlistDocument'] as String).input(),
+      allowlistDocument: map['allowlistDocument'] == null ? null : (map['allowlistDocument']! as String).input(),
       maxResultCount: (map['maxResultCount'] as int).input(),
     );
   }

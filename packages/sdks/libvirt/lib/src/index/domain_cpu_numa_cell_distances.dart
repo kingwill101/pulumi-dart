@@ -21,7 +21,7 @@ class DomainCpuNumaCellDistances {
 
   factory DomainCpuNumaCellDistances.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaCellDistances(
-      siblings: map['siblings'] == null ? null : (pulumi.Input.decodeList<DomainCpuNumaCellDistancesSibling>(map['siblings'], (value) => DomainCpuNumaCellDistancesSibling.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      siblings: map['siblings'] == null ? null : (pulumi.Input.decodeList<DomainCpuNumaCellDistancesSibling>(map['siblings']!, (value) => DomainCpuNumaCellDistancesSibling.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -23,8 +23,8 @@ class RuleRuleConditionQueryStringConfigValue {
 
   factory RuleRuleConditionQueryStringConfigValue.fromMap(Map<String, dynamic> map) {
     return RuleRuleConditionQueryStringConfigValue(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

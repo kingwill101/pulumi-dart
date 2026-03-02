@@ -67,15 +67,15 @@ class ProjectEnvironment {
 
   factory ProjectEnvironment.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironment(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      computeType: map['computeType'] == null ? null : (ComputeTypeEnumValue.fromMap((map['computeType'] as Map).cast<String, dynamic>())).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['environmentVariables'], (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fleet: map['fleet'] == null ? null : (ProjectFleet.fromMap((map['fleet'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      imagePullCredentialsType: map['imagePullCredentialsType'] == null ? null : (ImagePullCredentialsTypeEnumValue.fromMap((map['imagePullCredentialsType'] as Map).cast<String, dynamic>())).input(),
-      privilegedMode: map['privilegedMode'] == null ? null : (map['privilegedMode'] as bool).input(),
-      registryCredential: map['registryCredential'] == null ? null : (RegistryCredential.fromMap((map['registryCredential'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (EnvironmentTypeEnumValue.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      computeType: map['computeType'] == null ? null : (ComputeTypeEnumValue.fromMap((map['computeType']! as Map).cast<String, dynamic>())).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['environmentVariables']!, (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fleet: map['fleet'] == null ? null : (ProjectFleet.fromMap((map['fleet']! as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      imagePullCredentialsType: map['imagePullCredentialsType'] == null ? null : (ImagePullCredentialsTypeEnumValue.fromMap((map['imagePullCredentialsType']! as Map).cast<String, dynamic>())).input(),
+      privilegedMode: map['privilegedMode'] == null ? null : (map['privilegedMode']! as bool).input(),
+      registryCredential: map['registryCredential'] == null ? null : (RegistryCredential.fromMap((map['registryCredential']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (EnvironmentTypeEnumValue.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

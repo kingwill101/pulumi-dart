@@ -19,7 +19,7 @@ class ProviderFeaturesPostgresqlFlexibleServer {
 
   factory ProviderFeaturesPostgresqlFlexibleServer.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesPostgresqlFlexibleServer(
-      restartServerOnConfigurationValueChange: map['restartServerOnConfigurationValueChange'] == null ? null : (map['restartServerOnConfigurationValueChange'] as bool).input(),
+      restartServerOnConfigurationValueChange: map['restartServerOnConfigurationValueChange'] == null ? null : (map['restartServerOnConfigurationValueChange']! as bool).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class RelationshipLinkFieldMapping {
   factory RelationshipLinkFieldMapping.fromMap(Map<String, dynamic> map) {
     return RelationshipLinkFieldMapping(
       interactionFieldName: (map['interactionFieldName'] as String).input(),
-      linkType: map['linkType'] == null ? null : (LinkTypes.fromValue(map['linkType'] as String)).input(),
+      linkType: map['linkType'] == null ? null : (LinkTypes.fromValue(map['linkType']! as String)).input(),
       relationshipFieldName: (map['relationshipFieldName'] as String).input(),
     );
   }

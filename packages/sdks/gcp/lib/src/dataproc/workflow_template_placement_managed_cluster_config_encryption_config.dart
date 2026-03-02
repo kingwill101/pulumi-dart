@@ -20,7 +20,7 @@ class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
 
   factory WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig(
-      gcePdKmsKeyName: map['gcePdKmsKeyName'] == null ? null : (map['gcePdKmsKeyName'] as String).input(),
+      gcePdKmsKeyName: map['gcePdKmsKeyName'] == null ? null : (map['gcePdKmsKeyName']! as String).input(),
     );
   }
 }

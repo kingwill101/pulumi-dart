@@ -75,15 +75,15 @@ class CxToolState {
 
   factory CxToolState.fromMap(Map<String, dynamic> map) {
     return CxToolState(
-      connectorSpec: map['connectorSpec'] == null ? null : (CxToolConnectorSpec.fromMap((map['connectorSpec'] as Map).cast<String, dynamic>())).input(),
-      dataStoreSpec: map['dataStoreSpec'] == null ? null : (CxToolDataStoreSpec.fromMap((map['dataStoreSpec'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      functionSpec: map['functionSpec'] == null ? null : (CxToolFunctionSpec.fromMap((map['functionSpec'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      openApiSpec: map['openApiSpec'] == null ? null : (CxToolOpenApiSpec.fromMap((map['openApiSpec'] as Map).cast<String, dynamic>())).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      toolType: map['toolType'] == null ? null : (map['toolType'] as String).input(),
+      connectorSpec: map['connectorSpec'] == null ? null : (CxToolConnectorSpec.fromMap((map['connectorSpec']! as Map).cast<String, dynamic>())).input(),
+      dataStoreSpec: map['dataStoreSpec'] == null ? null : (CxToolDataStoreSpec.fromMap((map['dataStoreSpec']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      functionSpec: map['functionSpec'] == null ? null : (CxToolFunctionSpec.fromMap((map['functionSpec']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      openApiSpec: map['openApiSpec'] == null ? null : (CxToolOpenApiSpec.fromMap((map['openApiSpec']! as Map).cast<String, dynamic>())).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      toolType: map['toolType'] == null ? null : (map['toolType']! as String).input(),
     );
   }
 }

@@ -40,7 +40,7 @@ class FirewallManagementIpConfiguration {
   factory FirewallManagementIpConfiguration.fromMap(Map<String, dynamic> map) {
     return FirewallManagementIpConfiguration(
       name: (map['name'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
       publicIpAddressId: (map['publicIpAddressId'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
     );

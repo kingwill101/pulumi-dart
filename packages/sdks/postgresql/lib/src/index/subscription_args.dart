@@ -50,11 +50,11 @@ class SubscriptionArgs {
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
       conninfo: (map['conninfo'] as String).input(),
-      createSlot: map['createSlot'] == null ? null : (map['createSlot'] as bool).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      createSlot: map['createSlot'] == null ? null : (map['createSlot']! as bool).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       publications: ((map['publications'] as List).cast<String>()).input(),
-      slotName: map['slotName'] == null ? null : (map['slotName'] as String).input(),
+      slotName: map['slotName'] == null ? null : (map['slotName']! as String).input(),
     );
   }
 }

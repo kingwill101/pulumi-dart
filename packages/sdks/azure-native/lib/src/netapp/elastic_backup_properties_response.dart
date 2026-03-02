@@ -85,14 +85,14 @@ class ElasticBackupPropertiesResponse {
       completionDate: (map['completionDate'] as String).input(),
       creationDate: (map['creationDate'] as String).input(),
       elasticBackupPolicyResourceId: (map['elasticBackupPolicyResourceId'] as String).input(),
-      elasticSnapshotResourceId: map['elasticSnapshotResourceId'] == null ? null : (map['elasticSnapshotResourceId'] as String).input(),
+      elasticSnapshotResourceId: map['elasticSnapshotResourceId'] == null ? null : (map['elasticSnapshotResourceId']! as String).input(),
       elasticVolumeResourceId: (map['elasticVolumeResourceId'] as String).input(),
       failureReason: (map['failureReason'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       size: (map['size'] as double).input(),
       snapshotCreationDate: (map['snapshotCreationDate'] as String).input(),
-      snapshotUsage: map['snapshotUsage'] == null ? null : (map['snapshotUsage'] as String).input(),
+      snapshotUsage: map['snapshotUsage'] == null ? null : (map['snapshotUsage']! as String).input(),
       volumeSize: (map['volumeSize'] as String).input(),
     );
   }

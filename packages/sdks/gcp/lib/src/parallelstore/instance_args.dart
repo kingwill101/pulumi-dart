@@ -123,16 +123,16 @@ class InstanceArgs {
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
       capacityGib: (map['capacityGib'] as String).input(),
-      deploymentType: map['deploymentType'] == null ? null : (map['deploymentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      directoryStripeLevel: map['directoryStripeLevel'] == null ? null : (map['directoryStripeLevel'] as String).input(),
-      fileStripeLevel: map['fileStripeLevel'] == null ? null : (map['fileStripeLevel'] as String).input(),
+      deploymentType: map['deploymentType'] == null ? null : (map['deploymentType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      directoryStripeLevel: map['directoryStripeLevel'] == null ? null : (map['directoryStripeLevel']! as String).input(),
+      fileStripeLevel: map['fileStripeLevel'] == null ? null : (map['fileStripeLevel']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reservedIpRange: map['reservedIpRange'] == null ? null : (map['reservedIpRange'] as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reservedIpRange: map['reservedIpRange'] == null ? null : (map['reservedIpRange']! as String).input(),
     );
   }
 }

@@ -56,7 +56,7 @@ class WorkflowVersionPropertiesResponse {
       provisioningState: (map['provisioningState'] as String).input(),
       reviewId: (map['reviewId'] as String).input(),
       revision: (map['revision'] as int).input(),
-      specification: map['specification'] == null ? null : (map['specification']).input(),
+      specification: map['specification'] == null ? null : (map['specification']!).input(),
       stageSpec: (pulumi.Input.decodeList<StageSpecResponse>(map['stageSpec'], (value) => StageSpecResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       state: (map['state'] as String).input(),
     );

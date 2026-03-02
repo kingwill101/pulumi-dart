@@ -26,7 +26,7 @@ class GetFlowLogServiceArgs {
 
   factory GetFlowLogServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetFlowLogServiceArgs(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class VolumePropertiesExportPolicy {
 
   factory VolumePropertiesExportPolicy.fromMap(Map<String, dynamic> map) {
     return VolumePropertiesExportPolicy(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ExportPolicyRule>(map['rules'], (value) => ExportPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ExportPolicyRule>(map['rules']!, (value) => ExportPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

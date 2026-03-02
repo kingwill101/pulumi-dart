@@ -60,13 +60,13 @@ class ProbeArgs {
   factory ProbeArgs.fromMap(Map<String, dynamic> map) {
     return ProbeArgs(
       destination: (map['destination'] as String).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      destinationPort: map['destinationPort'] == null ? null : ((map['destinationPort'] as int).input()).input(),
       monitorName: (map['monitorName'] as String).input(),
-      packetSize: map['packetSize'] == null ? null : (map['packetSize'] as int).input(),
+      packetSize: map['packetSize'] == null ? null : ((map['packetSize'] as int).input()).input(),
       protocol: (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       sourceArn: (map['sourceArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

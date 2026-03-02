@@ -70,13 +70,13 @@ class CachesIscsiVolumeArgs {
   factory CachesIscsiVolumeArgs.fromMap(Map<String, dynamic> map) {
     return CachesIscsiVolumeArgs(
       gatewayArn: (map['gatewayArn'] as String).input(),
-      kmsEncrypted: map['kmsEncrypted'] == null ? null : (map['kmsEncrypted'] as bool).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      kmsEncrypted: map['kmsEncrypted'] == null ? null : ((map['kmsEncrypted'] as bool).input()).input(),
+      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
       networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
-      sourceVolumeArn: map['sourceVolumeArn'] == null ? null : (map['sourceVolumeArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      snapshotId: map['snapshotId'] == null ? null : ((map['snapshotId'] as String).input()).input(),
+      sourceVolumeArn: map['sourceVolumeArn'] == null ? null : ((map['sourceVolumeArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       targetName: (map['targetName'] as String).input(),
       volumeSizeInBytes: (map['volumeSizeInBytes'] as int).input(),
     );

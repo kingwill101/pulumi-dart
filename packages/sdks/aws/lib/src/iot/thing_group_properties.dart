@@ -26,8 +26,8 @@ class ThingGroupProperties {
 
   factory ThingGroupProperties.fromMap(Map<String, dynamic> map) {
     return ThingGroupProperties(
-      attributePayload: map['attributePayload'] == null ? null : (ThingGroupPropertiesAttributePayload.fromMap((map['attributePayload'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      attributePayload: map['attributePayload'] == null ? null : ((ThingGroupPropertiesAttributePayload.fromMap((map['attributePayload']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
     );
   }
 }

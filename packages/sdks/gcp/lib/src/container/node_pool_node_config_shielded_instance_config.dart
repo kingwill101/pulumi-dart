@@ -25,8 +25,8 @@ class NodePoolNodeConfigShieldedInstanceConfig {
 
   factory NodePoolNodeConfigShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : (map['enableIntegrityMonitoring'] as bool).input(),
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot'] as bool).input(),
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : (map['enableIntegrityMonitoring']! as bool).input(),
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot']! as bool).input(),
     );
   }
 }

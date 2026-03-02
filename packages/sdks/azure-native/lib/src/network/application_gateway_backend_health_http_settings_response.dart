@@ -28,8 +28,8 @@ class ApplicationGatewayBackendHealthHttpSettingsResponse {
 
   factory ApplicationGatewayBackendHealthHttpSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendHealthHttpSettingsResponse(
-      backendHttpSettings: map['backendHttpSettings'] == null ? null : (ApplicationGatewayBackendHttpSettingsResponse.fromMap((map['backendHttpSettings'] as Map).cast<String, dynamic>())).input(),
-      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendHealthServerResponse>(map['servers'], (value) => ApplicationGatewayBackendHealthServerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backendHttpSettings: map['backendHttpSettings'] == null ? null : (ApplicationGatewayBackendHttpSettingsResponse.fromMap((map['backendHttpSettings']! as Map).cast<String, dynamic>())).input(),
+      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendHealthServerResponse>(map['servers']!, (value) => ApplicationGatewayBackendHealthServerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

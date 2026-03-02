@@ -24,8 +24,8 @@ class EnterpriseCrmEventbusProtoCoordinate {
 
   factory EnterpriseCrmEventbusProtoCoordinate.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoCoordinate(
-      x: map['x'] == null ? null : (map['x'] as int).input(),
-      y: map['y'] == null ? null : (map['y'] as int).input(),
+      x: map['x'] == null ? null : (map['x']! as int).input(),
+      y: map['y'] == null ? null : (map['y']! as int).input(),
     );
   }
 }

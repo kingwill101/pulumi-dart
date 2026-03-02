@@ -55,13 +55,13 @@ class ManagedInstanceFailoverGroupArgs {
 
   factory ManagedInstanceFailoverGroupArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceFailoverGroupArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managedInstanceId: (map['managedInstanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       partnerManagedInstanceId: (map['partnerManagedInstanceId'] as String).input(),
       readWriteEndpointFailoverPolicy: (ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy.fromMap((map['readWriteEndpointFailoverPolicy'] as Map).cast<String, dynamic>())).input(),
-      readonlyEndpointFailoverPolicyEnabled: map['readonlyEndpointFailoverPolicyEnabled'] == null ? null : (map['readonlyEndpointFailoverPolicyEnabled'] as bool).input(),
-      secondaryType: map['secondaryType'] == null ? null : (map['secondaryType'] as String).input(),
+      readonlyEndpointFailoverPolicyEnabled: map['readonlyEndpointFailoverPolicyEnabled'] == null ? null : (map['readonlyEndpointFailoverPolicyEnabled']! as bool).input(),
+      secondaryType: map['secondaryType'] == null ? null : (map['secondaryType']! as String).input(),
     );
   }
 }

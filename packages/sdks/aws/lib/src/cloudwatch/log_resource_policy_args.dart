@@ -36,7 +36,7 @@ class LogResourcePolicyArgs {
     return LogResourcePolicyArgs(
       policyDocument: (map['policyDocument'] as String).input(),
       policyName: (map['policyName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

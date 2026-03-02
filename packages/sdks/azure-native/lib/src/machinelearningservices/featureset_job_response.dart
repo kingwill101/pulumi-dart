@@ -62,15 +62,15 @@ class FeaturesetJobResponse {
 
   factory FeaturesetJobResponse.fromMap(Map<String, dynamic> map) {
     return FeaturesetJobResponse(
-      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      experimentId: map['experimentId'] == null ? null : (map['experimentId'] as String).input(),
-      featureWindow: map['featureWindow'] == null ? null : (FeatureWindowResponse.fromMap((map['featureWindow'] as Map).cast<String, dynamic>())).input(),
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      experimentId: map['experimentId'] == null ? null : (map['experimentId']! as String).input(),
+      featureWindow: map['featureWindow'] == null ? null : (FeatureWindowResponse.fromMap((map['featureWindow']! as Map).cast<String, dynamic>())).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

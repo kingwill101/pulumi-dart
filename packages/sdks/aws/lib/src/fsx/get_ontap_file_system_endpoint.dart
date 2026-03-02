@@ -27,8 +27,8 @@ class GetOntapFileSystemEndpoint {
 
   factory GetOntapFileSystemEndpoint.fromMap(Map<String, dynamic> map) {
     return GetOntapFileSystemEndpoint(
-      interclusters: (pulumi.Input.decodeList<GetOntapFileSystemEndpointIntercluster>(map['interclusters'], (value) => GetOntapFileSystemEndpointIntercluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managements: (pulumi.Input.decodeList<GetOntapFileSystemEndpointManagement>(map['managements'], (value) => GetOntapFileSystemEndpointManagement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interclusters: (pulumi.Input.decodeList<GetOntapFileSystemEndpointIntercluster>(map['interclusters']!, (value) => GetOntapFileSystemEndpointIntercluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managements: (pulumi.Input.decodeList<GetOntapFileSystemEndpointManagement>(map['managements']!, (value) => GetOntapFileSystemEndpointManagement.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

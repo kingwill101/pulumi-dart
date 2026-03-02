@@ -56,13 +56,13 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       severity: (map['severity'] as String).input(),
-      threatExceptions: map['threatExceptions'] == null ? null : ((map['threatExceptions'] as List).cast<String>()).input(),
+      threatExceptions: map['threatExceptions'] == null ? null : ((map['threatExceptions']! as List).cast<String>()).input(),
     );
   }
 }

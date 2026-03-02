@@ -27,8 +27,8 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifact {
 
   factory AgentcoreAgentRuntimeAgentRuntimeArtifact.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeAgentRuntimeArtifact(
-      codeConfiguration: map['codeConfiguration'] == null ? null : (AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfiguration.fromMap((map['codeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      containerConfiguration: map['containerConfiguration'] == null ? null : (AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration.fromMap((map['containerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      codeConfiguration: map['codeConfiguration'] == null ? null : ((AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfiguration.fromMap((map['codeConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      containerConfiguration: map['containerConfiguration'] == null ? null : ((AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration.fromMap((map['containerConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

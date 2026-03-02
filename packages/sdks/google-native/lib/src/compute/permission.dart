@@ -62,15 +62,15 @@ class Permission {
 
   factory Permission.fromMap(Map<String, dynamic> map) {
     return Permission(
-      constraints: map['constraints'] == null ? null : (pulumi.Input.decodeList<PermissionConstraint>(map['constraints'], (value) => PermissionConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
-      notHosts: map['notHosts'] == null ? null : ((map['notHosts'] as List).cast<String>()).input(),
-      notMethods: map['notMethods'] == null ? null : ((map['notMethods'] as List).cast<String>()).input(),
-      notPaths: map['notPaths'] == null ? null : ((map['notPaths'] as List).cast<String>()).input(),
-      notPorts: map['notPorts'] == null ? null : ((map['notPorts'] as List).cast<String>()).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
-      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<String>()).input(),
+      constraints: map['constraints'] == null ? null : (pulumi.Input.decodeList<PermissionConstraint>(map['constraints']!, (value) => PermissionConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
+      notHosts: map['notHosts'] == null ? null : ((map['notHosts']! as List).cast<String>()).input(),
+      notMethods: map['notMethods'] == null ? null : ((map['notMethods']! as List).cast<String>()).input(),
+      notPaths: map['notPaths'] == null ? null : ((map['notPaths']! as List).cast<String>()).input(),
+      notPorts: map['notPorts'] == null ? null : ((map['notPorts']! as List).cast<String>()).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<String>()).input(),
     );
   }
 }

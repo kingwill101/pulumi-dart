@@ -26,8 +26,8 @@ class ServiceAccountTpuV2alpha1 {
 
   factory ServiceAccountTpuV2alpha1.fromMap(Map<String, dynamic> map) {
     return ServiceAccountTpuV2alpha1(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      scope: map['scope'] == null ? null : ((map['scope'] as List).cast<String>()).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      scope: map['scope'] == null ? null : ((map['scope']! as List).cast<String>()).input(),
     );
   }
 }

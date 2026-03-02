@@ -51,11 +51,11 @@ class GetAccessPolicyResult {
   factory GetAccessPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetAccessPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      principalObjectId: map['principalObjectId'] == null ? null : map['principalObjectId'] as String,
-      roles: map['roles'] == null ? null : (map['roles'] as List).cast<String>(),
+      principalObjectId: map['principalObjectId'] == null ? null : map['principalObjectId']! as String,
+      roles: map['roles'] == null ? null : (map['roles']! as List).cast<String>(),
       type: map['type'] as String,
     );
   }

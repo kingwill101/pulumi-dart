@@ -22,7 +22,7 @@ class GoogleCloudContentwarehouseV1PropertyArray {
 
   factory GoogleCloudContentwarehouseV1PropertyArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1PropertyArray(
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Property>(map['properties'], (value) => GoogleCloudContentwarehouseV1Property.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Property>(map['properties']!, (value) => GoogleCloudContentwarehouseV1Property.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

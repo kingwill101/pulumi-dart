@@ -46,10 +46,10 @@ class AksAssessmentOperationArgs {
 
   factory AksAssessmentOperationArgs.fromMap(Map<String, dynamic> map) {
     return AksAssessmentOperationArgs(
-      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName'] as String).input(),
+      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (AssessmentScopeParameters.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (AssessmentScopeParameters.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
       settings: (AKSAssessmentSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
     );
   }

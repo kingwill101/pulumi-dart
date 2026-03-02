@@ -93,19 +93,19 @@ class GetDistributedAvailabilityGroupResult {
   factory GetDistributedAvailabilityGroupResult.fromMap(Map<String, dynamic> map) {
     return GetDistributedAvailabilityGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      databases: map['databases'] == null ? null : pulumi.Input.decodeList<DistributedAvailabilityGroupDatabaseResponse>(map['databases'], (value) => DistributedAvailabilityGroupDatabaseResponse.fromMap((value as Map).cast<String, dynamic>())),
+      databases: map['databases'] == null ? null : pulumi.Input.decodeList<DistributedAvailabilityGroupDatabaseResponse>(map['databases']!, (value) => DistributedAvailabilityGroupDatabaseResponse.fromMap((value as Map).cast<String, dynamic>())),
       distributedAvailabilityGroupId: map['distributedAvailabilityGroupId'] as String,
       distributedAvailabilityGroupName: map['distributedAvailabilityGroupName'] as String,
-      failoverMode: map['failoverMode'] == null ? null : map['failoverMode'] as String,
+      failoverMode: map['failoverMode'] == null ? null : map['failoverMode']! as String,
       id: map['id'] as String,
-      instanceAvailabilityGroupName: map['instanceAvailabilityGroupName'] == null ? null : map['instanceAvailabilityGroupName'] as String,
-      instanceLinkRole: map['instanceLinkRole'] == null ? null : map['instanceLinkRole'] as String,
+      instanceAvailabilityGroupName: map['instanceAvailabilityGroupName'] == null ? null : map['instanceAvailabilityGroupName']! as String,
+      instanceLinkRole: map['instanceLinkRole'] == null ? null : map['instanceLinkRole']! as String,
       name: map['name'] as String,
-      partnerAvailabilityGroupName: map['partnerAvailabilityGroupName'] == null ? null : map['partnerAvailabilityGroupName'] as String,
-      partnerEndpoint: map['partnerEndpoint'] == null ? null : map['partnerEndpoint'] as String,
+      partnerAvailabilityGroupName: map['partnerAvailabilityGroupName'] == null ? null : map['partnerAvailabilityGroupName']! as String,
+      partnerEndpoint: map['partnerEndpoint'] == null ? null : map['partnerEndpoint']! as String,
       partnerLinkRole: map['partnerLinkRole'] as String,
-      replicationMode: map['replicationMode'] == null ? null : map['replicationMode'] as String,
-      seedingMode: map['seedingMode'] == null ? null : map['seedingMode'] as String,
+      replicationMode: map['replicationMode'] == null ? null : map['replicationMode']! as String,
+      seedingMode: map['seedingMode'] == null ? null : map['seedingMode']! as String,
       type: map['type'] as String,
     );
   }

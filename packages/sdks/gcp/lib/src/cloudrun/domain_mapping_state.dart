@@ -53,12 +53,12 @@ class DomainMappingState {
 
   factory DomainMappingState.fromMap(Map<String, dynamic> map) {
     return DomainMappingState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : (DomainMappingMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      spec: map['spec'] == null ? null : (DomainMappingSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<DomainMappingStatus>(map['statuses'], (value) => DomainMappingStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : (DomainMappingMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      spec: map['spec'] == null ? null : (DomainMappingSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<DomainMappingStatus>(map['statuses']!, (value) => DomainMappingStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      sourceImage: map['sourceImage'] == null ? null : (map['sourceImage'] as String).input(),
-      sourceImageId: map['sourceImageId'] == null ? null : (map['sourceImageId'] as String).input(),
-      tagTriggers: map['tagTriggers'] == null ? null : ((map['tagTriggers'] as List).cast<String>()).input(),
-      targetImage: map['targetImage'] == null ? null : (map['targetImage'] as String).input(),
+      sourceImage: map['sourceImage'] == null ? null : (map['sourceImage']! as String).input(),
+      sourceImageId: map['sourceImageId'] == null ? null : (map['sourceImageId']! as String).input(),
+      tagTriggers: map['tagTriggers'] == null ? null : ((map['tagTriggers']! as List).cast<String>()).input(),
+      targetImage: map['targetImage'] == null ? null : (map['targetImage']! as String).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class InterconnectGroupPhysicalStructureMetroFacility {
 
   factory InterconnectGroupPhysicalStructureMetroFacility.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupPhysicalStructureMetroFacility(
-      facility: map['facility'] == null ? null : (map['facility'] as String).input(),
-      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupPhysicalStructureMetroFacilityZone>(map['zones'], (value) => InterconnectGroupPhysicalStructureMetroFacilityZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      facility: map['facility'] == null ? null : (map['facility']! as String).input(),
+      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupPhysicalStructureMetroFacilityZone>(map['zones']!, (value) => InterconnectGroupPhysicalStructureMetroFacilityZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class SpringCloudAppCustomPersistentDisk {
 
   factory SpringCloudAppCustomPersistentDisk.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppCustomPersistentDisk(
-      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions'] as List).cast<String>()).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions']! as List).cast<String>()).input(),
       mountPath: (map['mountPath'] as String).input(),
-      readOnlyEnabled: map['readOnlyEnabled'] == null ? null : (map['readOnlyEnabled'] as bool).input(),
+      readOnlyEnabled: map['readOnlyEnabled'] == null ? null : (map['readOnlyEnabled']! as bool).input(),
       shareName: (map['shareName'] as String).input(),
       storageName: (map['storageName'] as String).input(),
     );

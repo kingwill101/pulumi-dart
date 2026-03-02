@@ -92,21 +92,21 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
 
   factory GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo(
-      backgroundColor: map['backgroundColor'] == null ? null : (GoogleTypeColor.fromMap((map['backgroundColor'] as Map).cast<String, dynamic>())).input(),
-      bold: map['bold'] == null ? null : (map['bold'] as bool).input(),
-      fontSize: map['fontSize'] == null ? null : (map['fontSize'] as int).input(),
-      fontType: map['fontType'] == null ? null : (map['fontType'] as String).input(),
-      fontWeight: map['fontWeight'] == null ? null : (map['fontWeight'] as int).input(),
-      handwritten: map['handwritten'] == null ? null : (map['handwritten'] as bool).input(),
-      italic: map['italic'] == null ? null : (map['italic'] as bool).input(),
-      letterSpacing: map['letterSpacing'] == null ? null : (map['letterSpacing'] as double).input(),
-      pixelFontSize: map['pixelFontSize'] == null ? null : (map['pixelFontSize'] as double).input(),
-      smallcaps: map['smallcaps'] == null ? null : (map['smallcaps'] as bool).input(),
-      strikeout: map['strikeout'] == null ? null : (map['strikeout'] as bool).input(),
-      subscript: map['subscript'] == null ? null : (map['subscript'] as bool).input(),
-      superscript: map['superscript'] == null ? null : (map['superscript'] as bool).input(),
-      textColor: map['textColor'] == null ? null : (GoogleTypeColor.fromMap((map['textColor'] as Map).cast<String, dynamic>())).input(),
-      underlined: map['underlined'] == null ? null : (map['underlined'] as bool).input(),
+      backgroundColor: map['backgroundColor'] == null ? null : (GoogleTypeColor.fromMap((map['backgroundColor']! as Map).cast<String, dynamic>())).input(),
+      bold: map['bold'] == null ? null : (map['bold']! as bool).input(),
+      fontSize: map['fontSize'] == null ? null : (map['fontSize']! as int).input(),
+      fontType: map['fontType'] == null ? null : (map['fontType']! as String).input(),
+      fontWeight: map['fontWeight'] == null ? null : (map['fontWeight']! as int).input(),
+      handwritten: map['handwritten'] == null ? null : (map['handwritten']! as bool).input(),
+      italic: map['italic'] == null ? null : (map['italic']! as bool).input(),
+      letterSpacing: map['letterSpacing'] == null ? null : (map['letterSpacing']! as double).input(),
+      pixelFontSize: map['pixelFontSize'] == null ? null : (map['pixelFontSize']! as double).input(),
+      smallcaps: map['smallcaps'] == null ? null : (map['smallcaps']! as bool).input(),
+      strikeout: map['strikeout'] == null ? null : (map['strikeout']! as bool).input(),
+      subscript: map['subscript'] == null ? null : (map['subscript']! as bool).input(),
+      superscript: map['superscript'] == null ? null : (map['superscript']! as bool).input(),
+      textColor: map['textColor'] == null ? null : (GoogleTypeColor.fromMap((map['textColor']! as Map).cast<String, dynamic>())).input(),
+      underlined: map['underlined'] == null ? null : (map['underlined']! as bool).input(),
     );
   }
 }

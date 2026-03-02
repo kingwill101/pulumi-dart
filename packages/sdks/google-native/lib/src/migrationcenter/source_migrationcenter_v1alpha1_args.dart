@@ -63,15 +63,15 @@ class SourceMigrationcenterV1alpha1Args {
 
   factory SourceMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return SourceMigrationcenterV1alpha1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      isManaged: map['isManaged'] == null ? null : (map['isManaged'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      isManaged: map['isManaged'] == null ? null : (map['isManaged']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       sourceId: (map['sourceId'] as String).input(),
-      type: map['type'] == null ? null : (SourceTypeMigrationcenterV1alpha1.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (SourceTypeMigrationcenterV1alpha1.fromValue(map['type']! as String)).input(),
     );
   }
 }

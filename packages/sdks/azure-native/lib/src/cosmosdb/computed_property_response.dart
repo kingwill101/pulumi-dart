@@ -26,8 +26,8 @@ class ComputedPropertyResponse {
 
   factory ComputedPropertyResponse.fromMap(Map<String, dynamic> map) {
     return ComputedPropertyResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
     );
   }
 }

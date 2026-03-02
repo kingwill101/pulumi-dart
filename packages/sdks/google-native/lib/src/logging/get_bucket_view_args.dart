@@ -37,7 +37,7 @@ class GetBucketViewArgs {
     return GetBucketViewArgs(
       bucketId: (map['bucketId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       viewId: (map['viewId'] as String).input(),
     );
   }

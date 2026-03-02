@@ -67,16 +67,16 @@ class ModelVersion {
 
   factory ModelVersion.fromMap(Map<String, dynamic> map) {
     return ModelVersion(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      flavors: map['flavors'] == null ? null : (pulumi.Input.decodeMapValues<FlavorData>(map['flavors'], (value) => FlavorData.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous'] as bool).input(),
-      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
-      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
-      modelType: map['modelType'] == null ? null : (map['modelType'] as String).input(),
-      modelUri: map['modelUri'] == null ? null : (map['modelUri'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      flavors: map['flavors'] == null ? null : (pulumi.Input.decodeMapValues<FlavorData>(map['flavors']!, (value) => FlavorData.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous']! as bool).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived']! as bool).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName']! as String).input(),
+      modelType: map['modelType'] == null ? null : (map['modelType']! as String).input(),
+      modelUri: map['modelUri'] == null ? null : (map['modelUri']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      stage: map['stage'] == null ? null : (map['stage']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

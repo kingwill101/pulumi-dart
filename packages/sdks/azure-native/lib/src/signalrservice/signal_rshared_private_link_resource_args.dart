@@ -51,10 +51,10 @@ class SignalRSharedPrivateLinkResourceArgs {
     return SignalRSharedPrivateLinkResourceArgs(
       groupId: (map['groupId'] as String).input(),
       privateLinkResourceId: (map['privateLinkResourceId'] as String).input(),
-      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      sharedPrivateLinkResourceName: map['sharedPrivateLinkResourceName'] == null ? null : (map['sharedPrivateLinkResourceName'] as String).input(),
+      sharedPrivateLinkResourceName: map['sharedPrivateLinkResourceName'] == null ? null : (map['sharedPrivateLinkResourceName']! as String).input(),
     );
   }
 }

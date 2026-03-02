@@ -26,8 +26,8 @@ class ManagedZoneServiceDirectoryConfigDnsV1beta2 {
 
   factory ManagedZoneServiceDirectoryConfigDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZoneServiceDirectoryConfigDnsV1beta2(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      namespace: map['namespace'] == null ? null : (ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2.fromMap((map['namespace'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      namespace: map['namespace'] == null ? null : (ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2.fromMap((map['namespace']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

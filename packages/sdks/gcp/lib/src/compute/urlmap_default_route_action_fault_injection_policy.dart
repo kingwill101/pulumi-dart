@@ -29,8 +29,8 @@ class URLMapDefaultRouteActionFaultInjectionPolicy {
 
   factory URLMapDefaultRouteActionFaultInjectionPolicy.fromMap(Map<String, dynamic> map) {
     return URLMapDefaultRouteActionFaultInjectionPolicy(
-      abort: map['abort'] == null ? null : (URLMapDefaultRouteActionFaultInjectionPolicyAbort.fromMap((map['abort'] as Map).cast<String, dynamic>())).input(),
-      delay: map['delay'] == null ? null : (URLMapDefaultRouteActionFaultInjectionPolicyDelay.fromMap((map['delay'] as Map).cast<String, dynamic>())).input(),
+      abort: map['abort'] == null ? null : (URLMapDefaultRouteActionFaultInjectionPolicyAbort.fromMap((map['abort']! as Map).cast<String, dynamic>())).input(),
+      delay: map['delay'] == null ? null : (URLMapDefaultRouteActionFaultInjectionPolicyDelay.fromMap((map['delay']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

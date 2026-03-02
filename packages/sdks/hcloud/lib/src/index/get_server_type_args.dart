@@ -29,8 +29,8 @@ class GetServerTypeArgs {
 
   factory GetServerTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetServerTypeArgs(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ConfigurationSetReputationOptions {
 
   factory ConfigurationSetReputationOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetReputationOptions(
-      lastFreshStart: map['lastFreshStart'] == null ? null : (map['lastFreshStart'] as String).input(),
-      reputationMetricsEnabled: map['reputationMetricsEnabled'] == null ? null : (map['reputationMetricsEnabled'] as bool).input(),
+      lastFreshStart: map['lastFreshStart'] == null ? null : ((map['lastFreshStart'] as String).input()).input(),
+      reputationMetricsEnabled: map['reputationMetricsEnabled'] == null ? null : ((map['reputationMetricsEnabled'] as bool).input()).input(),
     );
   }
 }

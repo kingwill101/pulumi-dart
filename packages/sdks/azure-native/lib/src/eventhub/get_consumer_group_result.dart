@@ -69,7 +69,7 @@ class GetConsumerGroupResult {
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       updatedAt: map['updatedAt'] as String,
-      userMetadata: map['userMetadata'] == null ? null : map['userMetadata'] as String,
+      userMetadata: map['userMetadata'] == null ? null : map['userMetadata']! as String,
     );
   }
 }

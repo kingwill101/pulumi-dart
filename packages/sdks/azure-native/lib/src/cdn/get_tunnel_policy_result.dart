@@ -75,8 +75,8 @@ class GetTunnelPolicyResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      targetGroups: map['targetGroups'] == null ? null : pulumi.Input.decodeList<ResourceReferenceResponse>(map['targetGroups'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tunnelType: map['tunnelType'] == null ? null : map['tunnelType'] as String,
+      targetGroups: map['targetGroups'] == null ? null : pulumi.Input.decodeList<ResourceReferenceResponse>(map['targetGroups']!, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tunnelType: map['tunnelType'] == null ? null : map['tunnelType']! as String,
       type: map['type'] as String,
     );
   }

@@ -120,22 +120,22 @@ class BackupVaultArgs {
 
   factory BackupVaultArgs.fromMap(Map<String, dynamic> map) {
     return BackupVaultArgs(
-      accessRestriction: map['accessRestriction'] == null ? null : (map['accessRestriction'] as String).input(),
-      allowMissing: map['allowMissing'] == null ? null : (map['allowMissing'] as bool).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      accessRestriction: map['accessRestriction'] == null ? null : (map['accessRestriction']! as String).input(),
+      allowMissing: map['allowMissing'] == null ? null : (map['allowMissing']! as bool).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       backupMinimumEnforcedRetentionDuration: (map['backupMinimumEnforcedRetentionDuration'] as String).input(),
-      backupRetentionInheritance: map['backupRetentionInheritance'] == null ? null : (map['backupRetentionInheritance'] as String).input(),
+      backupRetentionInheritance: map['backupRetentionInheritance'] == null ? null : (map['backupRetentionInheritance']! as String).input(),
       backupVaultId: (map['backupVaultId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (BackupVaultEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      forceUpdate: map['forceUpdate'] == null ? null : (map['forceUpdate'] as bool).input(),
-      ignoreBackupPlanReferences: map['ignoreBackupPlanReferences'] == null ? null : (map['ignoreBackupPlanReferences'] as bool).input(),
-      ignoreInactiveDatasources: map['ignoreInactiveDatasources'] == null ? null : (map['ignoreInactiveDatasources'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime']! as String).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (BackupVaultEncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
+      forceUpdate: map['forceUpdate'] == null ? null : (map['forceUpdate']! as bool).input(),
+      ignoreBackupPlanReferences: map['ignoreBackupPlanReferences'] == null ? null : (map['ignoreBackupPlanReferences']! as bool).input(),
+      ignoreInactiveDatasources: map['ignoreInactiveDatasources'] == null ? null : (map['ignoreInactiveDatasources']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

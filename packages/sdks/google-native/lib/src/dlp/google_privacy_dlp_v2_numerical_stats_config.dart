@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2NumericalStatsConfig {
 
   factory GooglePrivacyDlpV2NumericalStatsConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2NumericalStatsConfig(
-      field: map['field'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['field'] as Map).cast<String, dynamic>())).input(),
+      field: map['field'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['field']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

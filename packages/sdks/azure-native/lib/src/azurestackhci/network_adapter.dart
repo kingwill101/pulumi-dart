@@ -62,15 +62,15 @@ class NetworkAdapter {
 
   factory NetworkAdapter.fromMap(Map<String, dynamic> map) {
     return NetworkAdapter(
-      adapterName: map['adapterName'] == null ? null : (map['adapterName'] as String).input(),
-      dnsAddressArray: map['dnsAddressArray'] == null ? null : ((map['dnsAddressArray'] as List).cast<String>()).input(),
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      ipAddressRange: map['ipAddressRange'] == null ? null : (IpAddressRange.fromMap((map['ipAddressRange'] as Map).cast<String, dynamic>())).input(),
+      adapterName: map['adapterName'] == null ? null : (map['adapterName']! as String).input(),
+      dnsAddressArray: map['dnsAddressArray'] == null ? null : ((map['dnsAddressArray']! as List).cast<String>()).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ipAddressRange: map['ipAddressRange'] == null ? null : (IpAddressRange.fromMap((map['ipAddressRange']! as Map).cast<String, dynamic>())).input(),
       ipAssignmentType: (map['ipAssignmentType'] as String).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
-      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask'] as String).input(),
-      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
+      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask']! as String).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId']! as String).input(),
     );
   }
 }

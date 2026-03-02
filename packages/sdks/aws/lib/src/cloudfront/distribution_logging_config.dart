@@ -30,9 +30,9 @@ class DistributionLoggingConfig {
 
   factory DistributionLoggingConfig.fromMap(Map<String, dynamic> map) {
     return DistributionLoggingConfig(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      includeCookies: map['includeCookies'] == null ? null : (map['includeCookies'] as bool).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      includeCookies: map['includeCookies'] == null ? null : ((map['includeCookies'] as bool).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

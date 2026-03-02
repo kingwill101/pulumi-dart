@@ -22,7 +22,7 @@ class FirewallPolicyTransportSecurity {
 
   factory FirewallPolicyTransportSecurity.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyTransportSecurity(
-      certificateAuthority: map['certificateAuthority'] == null ? null : (FirewallPolicyCertificateAuthority.fromMap((map['certificateAuthority'] as Map).cast<String, dynamic>())).input(),
+      certificateAuthority: map['certificateAuthority'] == null ? null : (FirewallPolicyCertificateAuthority.fromMap((map['certificateAuthority']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

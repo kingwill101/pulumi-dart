@@ -38,10 +38,10 @@ class AwsLogSourceSource {
 
   factory AwsLogSourceSource.fromMap(Map<String, dynamic> map) {
     return AwsLogSourceSource(
-      accounts: map['accounts'] == null ? null : ((map['accounts'] as List).cast<String>()).input(),
+      accounts: map['accounts'] == null ? null : (((map['accounts'] as List).cast<String>()).input()).input(),
       regions: ((map['regions'] as List).cast<String>()).input(),
       sourceName: (map['sourceName'] as String).input(),
-      sourceVersion: map['sourceVersion'] == null ? null : (map['sourceVersion'] as String).input(),
+      sourceVersion: map['sourceVersion'] == null ? null : ((map['sourceVersion'] as String).input()).input(),
     );
   }
 }

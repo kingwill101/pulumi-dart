@@ -87,18 +87,18 @@ class LocalUserArgs {
   factory LocalUserArgs.fromMap(Map<String, dynamic> map) {
     return LocalUserArgs(
       accountName: (map['accountName'] as String).input(),
-      allowAclAuthorization: map['allowAclAuthorization'] == null ? null : (map['allowAclAuthorization'] as bool).input(),
-      extendedGroups: map['extendedGroups'] == null ? null : ((map['extendedGroups'] as List).cast<int>()).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as int).input(),
-      hasSharedKey: map['hasSharedKey'] == null ? null : (map['hasSharedKey'] as bool).input(),
-      hasSshKey: map['hasSshKey'] == null ? null : (map['hasSshKey'] as bool).input(),
-      hasSshPassword: map['hasSshPassword'] == null ? null : (map['hasSshPassword'] as bool).input(),
-      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory'] as String).input(),
-      isNFSv3Enabled: map['isNFSv3Enabled'] == null ? null : (map['isNFSv3Enabled'] as bool).input(),
-      permissionScopes: map['permissionScopes'] == null ? null : (pulumi.Input.decodeList<PermissionScope>(map['permissionScopes'], (value) => PermissionScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowAclAuthorization: map['allowAclAuthorization'] == null ? null : (map['allowAclAuthorization']! as bool).input(),
+      extendedGroups: map['extendedGroups'] == null ? null : ((map['extendedGroups']! as List).cast<int>()).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as int).input(),
+      hasSharedKey: map['hasSharedKey'] == null ? null : (map['hasSharedKey']! as bool).input(),
+      hasSshKey: map['hasSshKey'] == null ? null : (map['hasSshKey']! as bool).input(),
+      hasSshPassword: map['hasSshPassword'] == null ? null : (map['hasSshPassword']! as bool).input(),
+      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory']! as String).input(),
+      isNFSv3Enabled: map['isNFSv3Enabled'] == null ? null : (map['isNFSv3Enabled']! as bool).input(),
+      permissionScopes: map['permissionScopes'] == null ? null : (pulumi.Input.decodeList<PermissionScope>(map['permissionScopes']!, (value) => PermissionScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sshAuthorizedKeys: map['sshAuthorizedKeys'] == null ? null : (pulumi.Input.decodeList<SshPublicKey>(map['sshAuthorizedKeys'], (value) => SshPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      sshAuthorizedKeys: map['sshAuthorizedKeys'] == null ? null : (pulumi.Input.decodeList<SshPublicKey>(map['sshAuthorizedKeys']!, (value) => SshPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

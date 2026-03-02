@@ -37,7 +37,7 @@ class GetNodeGroupArgs {
     return GetNodeGroupArgs(
       clusterId: (map['clusterId'] as String).input(),
       nodeGroupId: (map['nodeGroupId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       regionId: (map['regionId'] as String).input(),
     );
   }

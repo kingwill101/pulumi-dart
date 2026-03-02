@@ -33,9 +33,9 @@ class OrganizationConfigurationDatasources {
 
   factory OrganizationConfigurationDatasources.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationDatasources(
-      kubernetes: map['kubernetes'] == null ? null : (OrganizationConfigurationDatasourcesKubernetes.fromMap((map['kubernetes'] as Map).cast<String, dynamic>())).input(),
-      malwareProtection: map['malwareProtection'] == null ? null : (OrganizationConfigurationDatasourcesMalwareProtection.fromMap((map['malwareProtection'] as Map).cast<String, dynamic>())).input(),
-      s3Logs: map['s3Logs'] == null ? null : (OrganizationConfigurationDatasourcesS3Logs.fromMap((map['s3Logs'] as Map).cast<String, dynamic>())).input(),
+      kubernetes: map['kubernetes'] == null ? null : ((OrganizationConfigurationDatasourcesKubernetes.fromMap((map['kubernetes']! as Map).cast<String, dynamic>())).input()).input(),
+      malwareProtection: map['malwareProtection'] == null ? null : ((OrganizationConfigurationDatasourcesMalwareProtection.fromMap((map['malwareProtection']! as Map).cast<String, dynamic>())).input()).input(),
+      s3Logs: map['s3Logs'] == null ? null : ((OrganizationConfigurationDatasourcesS3Logs.fromMap((map['s3Logs']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

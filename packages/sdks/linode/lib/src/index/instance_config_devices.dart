@@ -63,14 +63,14 @@ class InstanceConfigDevices {
 
   factory InstanceConfigDevices.fromMap(Map<String, dynamic> map) {
     return InstanceConfigDevices(
-      sda: map['sda'] == null ? null : (InstanceConfigDevicesSda.fromMap((map['sda'] as Map).cast<String, dynamic>())).input(),
-      sdb: map['sdb'] == null ? null : (InstanceConfigDevicesSdb.fromMap((map['sdb'] as Map).cast<String, dynamic>())).input(),
-      sdc: map['sdc'] == null ? null : (InstanceConfigDevicesSdc.fromMap((map['sdc'] as Map).cast<String, dynamic>())).input(),
-      sdd: map['sdd'] == null ? null : (InstanceConfigDevicesSdd.fromMap((map['sdd'] as Map).cast<String, dynamic>())).input(),
-      sde: map['sde'] == null ? null : (InstanceConfigDevicesSde.fromMap((map['sde'] as Map).cast<String, dynamic>())).input(),
-      sdf: map['sdf'] == null ? null : (InstanceConfigDevicesSdf.fromMap((map['sdf'] as Map).cast<String, dynamic>())).input(),
-      sdg: map['sdg'] == null ? null : (InstanceConfigDevicesSdg.fromMap((map['sdg'] as Map).cast<String, dynamic>())).input(),
-      sdh: map['sdh'] == null ? null : (InstanceConfigDevicesSdh.fromMap((map['sdh'] as Map).cast<String, dynamic>())).input(),
+      sda: map['sda'] == null ? null : (InstanceConfigDevicesSda.fromMap((map['sda']! as Map).cast<String, dynamic>())).input(),
+      sdb: map['sdb'] == null ? null : (InstanceConfigDevicesSdb.fromMap((map['sdb']! as Map).cast<String, dynamic>())).input(),
+      sdc: map['sdc'] == null ? null : (InstanceConfigDevicesSdc.fromMap((map['sdc']! as Map).cast<String, dynamic>())).input(),
+      sdd: map['sdd'] == null ? null : (InstanceConfigDevicesSdd.fromMap((map['sdd']! as Map).cast<String, dynamic>())).input(),
+      sde: map['sde'] == null ? null : (InstanceConfigDevicesSde.fromMap((map['sde']! as Map).cast<String, dynamic>())).input(),
+      sdf: map['sdf'] == null ? null : (InstanceConfigDevicesSdf.fromMap((map['sdf']! as Map).cast<String, dynamic>())).input(),
+      sdg: map['sdg'] == null ? null : (InstanceConfigDevicesSdg.fromMap((map['sdg']! as Map).cast<String, dynamic>())).input(),
+      sdh: map['sdh'] == null ? null : (InstanceConfigDevicesSdh.fromMap((map['sdh']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

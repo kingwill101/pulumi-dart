@@ -58,14 +58,14 @@ class AssessmentDelegationState {
 
   factory AssessmentDelegationState.fromMap(Map<String, dynamic> map) {
     return AssessmentDelegationState(
-      assessmentId: map['assessmentId'] == null ? null : (map['assessmentId'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      controlSetId: map['controlSetId'] == null ? null : (map['controlSetId'] as String).input(),
-      delegationId: map['delegationId'] == null ? null : (map['delegationId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      roleType: map['roleType'] == null ? null : (map['roleType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      assessmentId: map['assessmentId'] == null ? null : ((map['assessmentId'] as String).input()).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      controlSetId: map['controlSetId'] == null ? null : ((map['controlSetId'] as String).input()).input(),
+      delegationId: map['delegationId'] == null ? null : ((map['delegationId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      roleType: map['roleType'] == null ? null : ((map['roleType'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

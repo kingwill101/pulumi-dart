@@ -29,7 +29,7 @@ class GetStateMachineVersionsArgs {
 
   factory GetStateMachineVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetStateMachineVersionsArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       statemachineArn: (map['statemachineArn'] as String).input(),
     );
   }

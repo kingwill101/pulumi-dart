@@ -100,21 +100,21 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      carrierGatewayId: map['carrierGatewayId'] == null ? null : (map['carrierGatewayId'] as String).input(),
-      coreNetworkArn: map['coreNetworkArn'] == null ? null : (map['coreNetworkArn'] as String).input(),
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
-      destinationIpv6CidrBlock: map['destinationIpv6CidrBlock'] == null ? null : (map['destinationIpv6CidrBlock'] as String).input(),
-      destinationPrefixListId: map['destinationPrefixListId'] == null ? null : (map['destinationPrefixListId'] as String).input(),
-      egressOnlyGatewayId: map['egressOnlyGatewayId'] == null ? null : (map['egressOnlyGatewayId'] as String).input(),
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
-      localGatewayId: map['localGatewayId'] == null ? null : (map['localGatewayId'] as String).input(),
-      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId'] as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      carrierGatewayId: map['carrierGatewayId'] == null ? null : ((map['carrierGatewayId'] as String).input()).input(),
+      coreNetworkArn: map['coreNetworkArn'] == null ? null : ((map['coreNetworkArn'] as String).input()).input(),
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : ((map['destinationCidrBlock'] as String).input()).input(),
+      destinationIpv6CidrBlock: map['destinationIpv6CidrBlock'] == null ? null : ((map['destinationIpv6CidrBlock'] as String).input()).input(),
+      destinationPrefixListId: map['destinationPrefixListId'] == null ? null : ((map['destinationPrefixListId'] as String).input()).input(),
+      egressOnlyGatewayId: map['egressOnlyGatewayId'] == null ? null : ((map['egressOnlyGatewayId'] as String).input()).input(),
+      gatewayId: map['gatewayId'] == null ? null : ((map['gatewayId'] as String).input()).input(),
+      localGatewayId: map['localGatewayId'] == null ? null : ((map['localGatewayId'] as String).input()).input(),
+      natGatewayId: map['natGatewayId'] == null ? null : ((map['natGatewayId'] as String).input()).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       routeTableId: (map['routeTableId'] as String).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
-      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : (map['vpcPeeringConnectionId'] as String).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
+      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : ((map['vpcPeeringConnectionId'] as String).input()).input(),
     );
   }
 }

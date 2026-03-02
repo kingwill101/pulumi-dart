@@ -21,7 +21,7 @@ class EventBridgeConfigurationResponse {
 
   factory EventBridgeConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return EventBridgeConfigurationResponse(
-      eventBridgeEnabled: map['eventBridgeEnabled'] == null ? null : (map['eventBridgeEnabled'] as bool).input(),
+      eventBridgeEnabled: map['eventBridgeEnabled'] == null ? null : (map['eventBridgeEnabled']! as bool).input(),
     );
   }
 }

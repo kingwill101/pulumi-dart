@@ -54,13 +54,13 @@ class SmsPreferencesArgs {
 
   factory SmsPreferencesArgs.fromMap(Map<String, dynamic> map) {
     return SmsPreferencesArgs(
-      defaultSenderId: map['defaultSenderId'] == null ? null : (map['defaultSenderId'] as String).input(),
-      defaultSmsType: map['defaultSmsType'] == null ? null : (map['defaultSmsType'] as String).input(),
-      deliveryStatusIamRoleArn: map['deliveryStatusIamRoleArn'] == null ? null : (map['deliveryStatusIamRoleArn'] as String).input(),
-      deliveryStatusSuccessSamplingRate: map['deliveryStatusSuccessSamplingRate'] == null ? null : (map['deliveryStatusSuccessSamplingRate'] as String).input(),
-      monthlySpendLimit: map['monthlySpendLimit'] == null ? null : (map['monthlySpendLimit'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      usageReportS3Bucket: map['usageReportS3Bucket'] == null ? null : (map['usageReportS3Bucket'] as String).input(),
+      defaultSenderId: map['defaultSenderId'] == null ? null : ((map['defaultSenderId'] as String).input()).input(),
+      defaultSmsType: map['defaultSmsType'] == null ? null : ((map['defaultSmsType'] as String).input()).input(),
+      deliveryStatusIamRoleArn: map['deliveryStatusIamRoleArn'] == null ? null : ((map['deliveryStatusIamRoleArn'] as String).input()).input(),
+      deliveryStatusSuccessSamplingRate: map['deliveryStatusSuccessSamplingRate'] == null ? null : ((map['deliveryStatusSuccessSamplingRate'] as String).input()).input(),
+      monthlySpendLimit: map['monthlySpendLimit'] == null ? null : ((map['monthlySpendLimit'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      usageReportS3Bucket: map['usageReportS3Bucket'] == null ? null : ((map['usageReportS3Bucket'] as String).input()).input(),
     );
   }
 }

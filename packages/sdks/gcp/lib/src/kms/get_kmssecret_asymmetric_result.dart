@@ -39,7 +39,7 @@ class GetKMSSecretAsymmetricResult {
   factory GetKMSSecretAsymmetricResult.fromMap(Map<String, dynamic> map) {
     return GetKMSSecretAsymmetricResult(
       ciphertext: map['ciphertext'] as String,
-      crc32: map['crc32'] == null ? null : map['crc32'] as String,
+      crc32: map['crc32'] == null ? null : map['crc32']! as String,
       cryptoKeyVersion: map['cryptoKeyVersion'] as String,
       id: map['id'] as String,
       plaintext: map['plaintext'] as String,

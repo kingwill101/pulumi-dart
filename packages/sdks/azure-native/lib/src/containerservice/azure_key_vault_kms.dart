@@ -36,10 +36,10 @@ class AzureKeyVaultKms {
 
   factory AzureKeyVaultKms.fromMap(Map<String, dynamic> map) {
     return AzureKeyVaultKms(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      keyVaultNetworkAccess: map['keyVaultNetworkAccess'] == null ? null : (map['keyVaultNetworkAccess'] as String).input(),
-      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      keyVaultNetworkAccess: map['keyVaultNetworkAccess'] == null ? null : (map['keyVaultNetworkAccess']! as String).input(),
+      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId']! as String).input(),
     );
   }
 }

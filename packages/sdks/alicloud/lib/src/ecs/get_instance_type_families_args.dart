@@ -44,11 +44,11 @@ class GetInstanceTypeFamiliesArgs {
 
   factory GetInstanceTypeFamiliesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeFamiliesArgs(
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      spotStrategy: map['spotStrategy'] == null ? null : (map['spotStrategy'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      spotStrategy: map['spotStrategy'] == null ? null : (map['spotStrategy']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

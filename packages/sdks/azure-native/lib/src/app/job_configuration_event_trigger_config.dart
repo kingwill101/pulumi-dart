@@ -32,9 +32,9 @@ class JobConfigurationEventTriggerConfig {
 
   factory JobConfigurationEventTriggerConfig.fromMap(Map<String, dynamic> map) {
     return JobConfigurationEventTriggerConfig(
-      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
-      replicaCompletionCount: map['replicaCompletionCount'] == null ? null : (map['replicaCompletionCount'] as int).input(),
-      scale: map['scale'] == null ? null : (JobScale.fromMap((map['scale'] as Map).cast<String, dynamic>())).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
+      replicaCompletionCount: map['replicaCompletionCount'] == null ? null : (map['replicaCompletionCount']! as int).input(),
+      scale: map['scale'] == null ? null : (JobScale.fromMap((map['scale']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

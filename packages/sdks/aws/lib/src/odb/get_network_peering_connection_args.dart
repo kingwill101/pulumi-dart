@@ -32,7 +32,7 @@ class GetNetworkPeeringConnectionArgs {
   factory GetNetworkPeeringConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringConnectionArgs(
       id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -72,17 +72,17 @@ class VirtualNodeState {
 
   factory VirtualNodeState.fromMap(Map<String, dynamic> map) {
     return VirtualNodeState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
-      lastUpdatedDate: map['lastUpdatedDate'] == null ? null : (map['lastUpdatedDate'] as String).input(),
-      meshName: map['meshName'] == null ? null : (map['meshName'] as String).input(),
-      meshOwner: map['meshOwner'] == null ? null : (map['meshOwner'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceOwner: map['resourceOwner'] == null ? null : (map['resourceOwner'] as String).input(),
-      spec: map['spec'] == null ? null : (VirtualNodeSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdDate: map['createdDate'] == null ? null : ((map['createdDate'] as String).input()).input(),
+      lastUpdatedDate: map['lastUpdatedDate'] == null ? null : ((map['lastUpdatedDate'] as String).input()).input(),
+      meshName: map['meshName'] == null ? null : ((map['meshName'] as String).input()).input(),
+      meshOwner: map['meshOwner'] == null ? null : ((map['meshOwner'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceOwner: map['resourceOwner'] == null ? null : ((map['resourceOwner'] as String).input()).input(),
+      spec: map['spec'] == null ? null : ((VirtualNodeSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

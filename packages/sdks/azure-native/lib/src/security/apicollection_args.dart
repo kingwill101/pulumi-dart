@@ -34,7 +34,7 @@ class APICollectionArgs {
 
   factory APICollectionArgs.fromMap(Map<String, dynamic> map) {
     return APICollectionArgs(
-      apiCollectionId: map['apiCollectionId'] == null ? null : (map['apiCollectionId'] as String).input(),
+      apiCollectionId: map['apiCollectionId'] == null ? null : (map['apiCollectionId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

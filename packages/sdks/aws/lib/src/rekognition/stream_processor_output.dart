@@ -27,8 +27,8 @@ class StreamProcessorOutput {
 
   factory StreamProcessorOutput.fromMap(Map<String, dynamic> map) {
     return StreamProcessorOutput(
-      kinesisDataStream: map['kinesisDataStream'] == null ? null : (StreamProcessorOutputKinesisDataStream.fromMap((map['kinesisDataStream'] as Map).cast<String, dynamic>())).input(),
-      s3Destination: map['s3Destination'] == null ? null : (StreamProcessorOutputS3Destination.fromMap((map['s3Destination'] as Map).cast<String, dynamic>())).input(),
+      kinesisDataStream: map['kinesisDataStream'] == null ? null : ((StreamProcessorOutputKinesisDataStream.fromMap((map['kinesisDataStream']! as Map).cast<String, dynamic>())).input()).input(),
+      s3Destination: map['s3Destination'] == null ? null : ((StreamProcessorOutputS3Destination.fromMap((map['s3Destination']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

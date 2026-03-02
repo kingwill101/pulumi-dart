@@ -39,10 +39,10 @@ class OrganizationArgs {
 
   factory OrganizationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationArgs(
-      awsServiceAccessPrincipals: map['awsServiceAccessPrincipals'] == null ? null : ((map['awsServiceAccessPrincipals'] as List).cast<String>()).input(),
-      enabledPolicyTypes: map['enabledPolicyTypes'] == null ? null : ((map['enabledPolicyTypes'] as List).cast<String>()).input(),
-      featureSet: map['featureSet'] == null ? null : (map['featureSet'] as String).input(),
-      returnOrganizationOnly: map['returnOrganizationOnly'] == null ? null : (map['returnOrganizationOnly'] as bool).input(),
+      awsServiceAccessPrincipals: map['awsServiceAccessPrincipals'] == null ? null : (((map['awsServiceAccessPrincipals'] as List).cast<String>()).input()).input(),
+      enabledPolicyTypes: map['enabledPolicyTypes'] == null ? null : (((map['enabledPolicyTypes'] as List).cast<String>()).input()).input(),
+      featureSet: map['featureSet'] == null ? null : ((map['featureSet'] as String).input()).input(),
+      returnOrganizationOnly: map['returnOrganizationOnly'] == null ? null : ((map['returnOrganizationOnly'] as bool).input()).input(),
     );
   }
 }

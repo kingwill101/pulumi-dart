@@ -68,13 +68,13 @@ class ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1 {
 
   factory ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1(
-      auditAnnotations: map['auditAnnotations'] == null ? null : (pulumi.Input.decodeList<AuditAnnotationPatchAdmissionregistrationK8sIoV1alpha1>(map['auditAnnotations'], (value) => AuditAnnotationPatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      failurePolicy: map['failurePolicy'] == null ? null : (map['failurePolicy'] as String).input(),
-      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<MatchConditionPatchAdmissionregistrationK8sIoV1alpha1>(map['matchConditions'], (value) => MatchConditionPatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchConstraints: map['matchConstraints'] == null ? null : (MatchResourcesPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['matchConstraints'] as Map).cast<String, dynamic>())).input(),
-      paramKind: map['paramKind'] == null ? null : (ParamKindPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['paramKind'] as Map).cast<String, dynamic>())).input(),
-      validations: map['validations'] == null ? null : (pulumi.Input.decodeList<ValidationPatchAdmissionregistrationK8sIoV1alpha1>(map['validations'], (value) => ValidationPatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      variables: map['variables'] == null ? null : (pulumi.Input.decodeList<VariablePatchAdmissionregistrationK8sIoV1alpha1>(map['variables'], (value) => VariablePatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      auditAnnotations: map['auditAnnotations'] == null ? null : (pulumi.Input.decodeList<AuditAnnotationPatchAdmissionregistrationK8sIoV1alpha1>(map['auditAnnotations']!, (value) => AuditAnnotationPatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failurePolicy: map['failurePolicy'] == null ? null : (map['failurePolicy']! as String).input(),
+      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<MatchConditionPatchAdmissionregistrationK8sIoV1alpha1>(map['matchConditions']!, (value) => MatchConditionPatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchConstraints: map['matchConstraints'] == null ? null : (MatchResourcesPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['matchConstraints']! as Map).cast<String, dynamic>())).input(),
+      paramKind: map['paramKind'] == null ? null : (ParamKindPatchAdmissionregistrationK8sIoV1alpha1.fromMap((map['paramKind']! as Map).cast<String, dynamic>())).input(),
+      validations: map['validations'] == null ? null : (pulumi.Input.decodeList<ValidationPatchAdmissionregistrationK8sIoV1alpha1>(map['validations']!, (value) => ValidationPatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      variables: map['variables'] == null ? null : (pulumi.Input.decodeList<VariablePatchAdmissionregistrationK8sIoV1alpha1>(map['variables']!, (value) => VariablePatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -61,14 +61,14 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       domain: (map['domain'] as String).input(),
-      domainOwner: map['domainOwner'] == null ? null : (map['domainOwner'] as String).input(),
-      externalConnections: map['externalConnections'] == null ? null : (RepositoryExternalConnections.fromMap((map['externalConnections'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      domainOwner: map['domainOwner'] == null ? null : ((map['domainOwner'] as String).input()).input(),
+      externalConnections: map['externalConnections'] == null ? null : ((RepositoryExternalConnections.fromMap((map['externalConnections']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       repository: (map['repository'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      upstreams: map['upstreams'] == null ? null : (pulumi.Input.decodeList<RepositoryUpstream>(map['upstreams'], (value) => RepositoryUpstream.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      upstreams: map['upstreams'] == null ? null : ((pulumi.Input.decodeList<RepositoryUpstream>(map['upstreams']!, (value) => RepositoryUpstream.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

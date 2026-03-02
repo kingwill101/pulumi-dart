@@ -68,15 +68,15 @@ class TemplateTemplateMetadata {
 
   factory TemplateTemplateMetadata.fromMap(Map<String, dynamic> map) {
     return TemplateTemplateMetadata(
-      customLlmResponseSafetyErrorCode: map['customLlmResponseSafetyErrorCode'] == null ? null : (map['customLlmResponseSafetyErrorCode'] as int).input(),
-      customLlmResponseSafetyErrorMessage: map['customLlmResponseSafetyErrorMessage'] == null ? null : (map['customLlmResponseSafetyErrorMessage'] as String).input(),
-      customPromptSafetyErrorCode: map['customPromptSafetyErrorCode'] == null ? null : (map['customPromptSafetyErrorCode'] as int).input(),
-      customPromptSafetyErrorMessage: map['customPromptSafetyErrorMessage'] == null ? null : (map['customPromptSafetyErrorMessage'] as String).input(),
-      enforcementType: map['enforcementType'] == null ? null : (map['enforcementType'] as String).input(),
-      ignorePartialInvocationFailures: map['ignorePartialInvocationFailures'] == null ? null : (map['ignorePartialInvocationFailures'] as bool).input(),
-      logSanitizeOperations: map['logSanitizeOperations'] == null ? null : (map['logSanitizeOperations'] as bool).input(),
-      logTemplateOperations: map['logTemplateOperations'] == null ? null : (map['logTemplateOperations'] as bool).input(),
-      multiLanguageDetection: map['multiLanguageDetection'] == null ? null : (TemplateTemplateMetadataMultiLanguageDetection.fromMap((map['multiLanguageDetection'] as Map).cast<String, dynamic>())).input(),
+      customLlmResponseSafetyErrorCode: map['customLlmResponseSafetyErrorCode'] == null ? null : (map['customLlmResponseSafetyErrorCode']! as int).input(),
+      customLlmResponseSafetyErrorMessage: map['customLlmResponseSafetyErrorMessage'] == null ? null : (map['customLlmResponseSafetyErrorMessage']! as String).input(),
+      customPromptSafetyErrorCode: map['customPromptSafetyErrorCode'] == null ? null : (map['customPromptSafetyErrorCode']! as int).input(),
+      customPromptSafetyErrorMessage: map['customPromptSafetyErrorMessage'] == null ? null : (map['customPromptSafetyErrorMessage']! as String).input(),
+      enforcementType: map['enforcementType'] == null ? null : (map['enforcementType']! as String).input(),
+      ignorePartialInvocationFailures: map['ignorePartialInvocationFailures'] == null ? null : (map['ignorePartialInvocationFailures']! as bool).input(),
+      logSanitizeOperations: map['logSanitizeOperations'] == null ? null : (map['logSanitizeOperations']! as bool).input(),
+      logTemplateOperations: map['logTemplateOperations'] == null ? null : (map['logTemplateOperations']! as bool).input(),
+      multiLanguageDetection: map['multiLanguageDetection'] == null ? null : (TemplateTemplateMetadataMultiLanguageDetection.fromMap((map['multiLanguageDetection']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

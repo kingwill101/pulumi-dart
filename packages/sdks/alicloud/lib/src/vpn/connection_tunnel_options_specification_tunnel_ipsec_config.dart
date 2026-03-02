@@ -31,10 +31,10 @@ class ConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
 
   factory ConnectionTunnelOptionsSpecificationTunnelIpsecConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionTunnelOptionsSpecificationTunnelIpsecConfig(
-      ipsecAuthAlg: map['ipsecAuthAlg'] == null ? null : (map['ipsecAuthAlg'] as String).input(),
-      ipsecEncAlg: map['ipsecEncAlg'] == null ? null : (map['ipsecEncAlg'] as String).input(),
-      ipsecLifetime: map['ipsecLifetime'] == null ? null : (map['ipsecLifetime'] as int).input(),
-      ipsecPfs: map['ipsecPfs'] == null ? null : (map['ipsecPfs'] as String).input(),
+      ipsecAuthAlg: map['ipsecAuthAlg'] == null ? null : (map['ipsecAuthAlg']! as String).input(),
+      ipsecEncAlg: map['ipsecEncAlg'] == null ? null : (map['ipsecEncAlg']! as String).input(),
+      ipsecLifetime: map['ipsecLifetime'] == null ? null : (map['ipsecLifetime']! as int).input(),
+      ipsecPfs: map['ipsecPfs'] == null ? null : (map['ipsecPfs']! as String).input(),
     );
   }
 }

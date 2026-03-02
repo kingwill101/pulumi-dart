@@ -54,11 +54,11 @@ class Schedule {
   factory Schedule.fromMap(Map<String, dynamic> map) {
     return Schedule(
       action: (CreateMonitorAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       trigger: (CronTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
     );
   }

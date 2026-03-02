@@ -75,7 +75,7 @@ class GetInventoryItemResult {
       id: map['id'] as String,
       inventoryItemName: map['inventoryItemName'] as String,
       inventoryType: map['inventoryType'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       managedResourceId: map['managedResourceId'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,

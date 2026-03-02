@@ -103,22 +103,22 @@ class SecurityPolicyRule {
 
   factory SecurityPolicyRule.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      direction: map['direction'] == null ? null : (SecurityPolicyRuleDirection.fromValue(map['direction'] as String)).input(),
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
-      headerAction: map['headerAction'] == null ? null : (SecurityPolicyRuleHttpHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      match: map['match'] == null ? null : (SecurityPolicyRuleMatcher.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      networkMatch: map['networkMatch'] == null ? null : (SecurityPolicyRuleNetworkMatcher.fromMap((map['networkMatch'] as Map).cast<String, dynamic>())).input(),
-      preconfiguredWafConfig: map['preconfiguredWafConfig'] == null ? null : (SecurityPolicyRulePreconfiguredWafConfig.fromMap((map['preconfiguredWafConfig'] as Map).cast<String, dynamic>())).input(),
-      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      rateLimitOptions: map['rateLimitOptions'] == null ? null : (SecurityPolicyRuleRateLimitOptions.fromMap((map['rateLimitOptions'] as Map).cast<String, dynamic>())).input(),
-      redirectOptions: map['redirectOptions'] == null ? null : (SecurityPolicyRuleRedirectOptions.fromMap((map['redirectOptions'] as Map).cast<String, dynamic>())).input(),
-      redirectTarget: map['redirectTarget'] == null ? null : (map['redirectTarget'] as String).input(),
-      ruleNumber: map['ruleNumber'] == null ? null : (map['ruleNumber'] as String).input(),
-      targetResources: map['targetResources'] == null ? null : ((map['targetResources'] as List).cast<String>()).input(),
-      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : ((map['targetServiceAccounts'] as List).cast<String>()).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      direction: map['direction'] == null ? null : (SecurityPolicyRuleDirection.fromValue(map['direction']! as String)).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
+      headerAction: map['headerAction'] == null ? null : (SecurityPolicyRuleHttpHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      match: map['match'] == null ? null : (SecurityPolicyRuleMatcher.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      networkMatch: map['networkMatch'] == null ? null : (SecurityPolicyRuleNetworkMatcher.fromMap((map['networkMatch']! as Map).cast<String, dynamic>())).input(),
+      preconfiguredWafConfig: map['preconfiguredWafConfig'] == null ? null : (SecurityPolicyRulePreconfiguredWafConfig.fromMap((map['preconfiguredWafConfig']! as Map).cast<String, dynamic>())).input(),
+      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      rateLimitOptions: map['rateLimitOptions'] == null ? null : (SecurityPolicyRuleRateLimitOptions.fromMap((map['rateLimitOptions']! as Map).cast<String, dynamic>())).input(),
+      redirectOptions: map['redirectOptions'] == null ? null : (SecurityPolicyRuleRedirectOptions.fromMap((map['redirectOptions']! as Map).cast<String, dynamic>())).input(),
+      redirectTarget: map['redirectTarget'] == null ? null : (map['redirectTarget']! as String).input(),
+      ruleNumber: map['ruleNumber'] == null ? null : (map['ruleNumber']! as String).input(),
+      targetResources: map['targetResources'] == null ? null : ((map['targetResources']! as List).cast<String>()).input(),
+      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : ((map['targetServiceAccounts']! as List).cast<String>()).input(),
     );
   }
 }

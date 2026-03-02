@@ -27,7 +27,7 @@ class URLMapDefaultRouteActionRequestMirrorPolicy {
   factory URLMapDefaultRouteActionRequestMirrorPolicy.fromMap(Map<String, dynamic> map) {
     return URLMapDefaultRouteActionRequestMirrorPolicy(
       backendService: (map['backendService'] as String).input(),
-      mirrorPercent: map['mirrorPercent'] == null ? null : (map['mirrorPercent'] as double).input(),
+      mirrorPercent: map['mirrorPercent'] == null ? null : (map['mirrorPercent']! as double).input(),
     );
   }
 }

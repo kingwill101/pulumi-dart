@@ -48,9 +48,9 @@ class RouterInterfaceConnectionArgs {
     return RouterInterfaceConnectionArgs(
       interfaceId: (map['interfaceId'] as String).input(),
       oppositeInterfaceId: (map['oppositeInterfaceId'] as String).input(),
-      oppositeInterfaceOwnerId: map['oppositeInterfaceOwnerId'] == null ? null : (map['oppositeInterfaceOwnerId'] as String).input(),
-      oppositeRouterId: map['oppositeRouterId'] == null ? null : (map['oppositeRouterId'] as String).input(),
-      oppositeRouterType: map['oppositeRouterType'] == null ? null : (map['oppositeRouterType'] as String).input(),
+      oppositeInterfaceOwnerId: map['oppositeInterfaceOwnerId'] == null ? null : (map['oppositeInterfaceOwnerId']! as String).input(),
+      oppositeRouterId: map['oppositeRouterId'] == null ? null : (map['oppositeRouterId']! as String).input(),
+      oppositeRouterType: map['oppositeRouterType'] == null ? null : (map['oppositeRouterType']! as String).input(),
     );
   }
 }

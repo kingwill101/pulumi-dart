@@ -75,14 +75,14 @@ class GetManagedRuleGroupResult {
 
   factory GetManagedRuleGroupResult.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupResult(
-      availableLabels: pulumi.Input.decodeList<GetManagedRuleGroupAvailableLabel>(map['availableLabels'], (value) => GetManagedRuleGroupAvailableLabel.fromMap((value as Map).cast<String, dynamic>())),
+      availableLabels: pulumi.Input.decodeList<GetManagedRuleGroupAvailableLabel>(map['availableLabels']!, (value) => GetManagedRuleGroupAvailableLabel.fromMap((value as Map).cast<String, dynamic>())),
       capacity: map['capacity'] as int,
-      consumedLabels: pulumi.Input.decodeList<GetManagedRuleGroupConsumedLabel>(map['consumedLabels'], (value) => GetManagedRuleGroupConsumedLabel.fromMap((value as Map).cast<String, dynamic>())),
+      consumedLabels: pulumi.Input.decodeList<GetManagedRuleGroupConsumedLabel>(map['consumedLabels']!, (value) => GetManagedRuleGroupConsumedLabel.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       labelNamespace: map['labelNamespace'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
-      rules: pulumi.Input.decodeList<GetManagedRuleGroupRule>(map['rules'], (value) => GetManagedRuleGroupRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<GetManagedRuleGroupRule>(map['rules']!, (value) => GetManagedRuleGroupRule.fromMap((value as Map).cast<String, dynamic>())),
       scope: map['scope'] as String,
       snsTopicArn: map['snsTopicArn'] as String,
       vendorName: map['vendorName'] as String,

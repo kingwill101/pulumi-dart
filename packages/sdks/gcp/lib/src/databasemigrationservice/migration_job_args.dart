@@ -115,20 +115,20 @@ class MigrationJobArgs {
   factory MigrationJobArgs.fromMap(Map<String, dynamic> map) {
     return MigrationJobArgs(
       destination: (map['destination'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      dumpFlags: map['dumpFlags'] == null ? null : (MigrationJobDumpFlags.fromMap((map['dumpFlags'] as Map).cast<String, dynamic>())).input(),
-      dumpPath: map['dumpPath'] == null ? null : (map['dumpPath'] as String).input(),
-      dumpType: map['dumpType'] == null ? null : (map['dumpType'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      dumpFlags: map['dumpFlags'] == null ? null : (MigrationJobDumpFlags.fromMap((map['dumpFlags']! as Map).cast<String, dynamic>())).input(),
+      dumpPath: map['dumpPath'] == null ? null : (map['dumpPath']! as String).input(),
+      dumpType: map['dumpType'] == null ? null : (map['dumpType']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       migrationJobId: (map['migrationJobId'] as String).input(),
-      performanceConfig: map['performanceConfig'] == null ? null : (MigrationJobPerformanceConfig.fromMap((map['performanceConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reverseSshConnectivity: map['reverseSshConnectivity'] == null ? null : (MigrationJobReverseSshConnectivity.fromMap((map['reverseSshConnectivity'] as Map).cast<String, dynamic>())).input(),
+      performanceConfig: map['performanceConfig'] == null ? null : (MigrationJobPerformanceConfig.fromMap((map['performanceConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reverseSshConnectivity: map['reverseSshConnectivity'] == null ? null : (MigrationJobReverseSshConnectivity.fromMap((map['reverseSshConnectivity']! as Map).cast<String, dynamic>())).input(),
       source: (map['source'] as String).input(),
-      staticIpConnectivity: map['staticIpConnectivity'] == null ? null : ((map['staticIpConnectivity'] as Map).cast<String, dynamic>()).input(),
+      staticIpConnectivity: map['staticIpConnectivity'] == null ? null : ((map['staticIpConnectivity']! as Map).cast<String, dynamic>()).input(),
       type: (map['type'] as String).input(),
-      vpcPeeringConnectivity: map['vpcPeeringConnectivity'] == null ? null : (MigrationJobVpcPeeringConnectivity.fromMap((map['vpcPeeringConnectivity'] as Map).cast<String, dynamic>())).input(),
+      vpcPeeringConnectivity: map['vpcPeeringConnectivity'] == null ? null : (MigrationJobVpcPeeringConnectivity.fromMap((map['vpcPeeringConnectivity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -90,18 +90,18 @@ class GetTopicAuthorizationRuleResult {
       listen: map['listen'] as bool,
       manage: map['manage'] as bool,
       name: map['name'] as String,
-      namespaceName: map['namespaceName'] == null ? null : map['namespaceName'] as String,
+      namespaceName: map['namespaceName'] == null ? null : map['namespaceName']! as String,
       primaryConnectionString: map['primaryConnectionString'] as String,
       primaryConnectionStringAlias: map['primaryConnectionStringAlias'] as String,
       primaryKey: map['primaryKey'] as String,
-      queueName: map['queueName'] == null ? null : map['queueName'] as String,
-      resourceGroupName: map['resourceGroupName'] == null ? null : map['resourceGroupName'] as String,
+      queueName: map['queueName'] == null ? null : map['queueName']! as String,
+      resourceGroupName: map['resourceGroupName'] == null ? null : map['resourceGroupName']! as String,
       secondaryConnectionString: map['secondaryConnectionString'] as String,
       secondaryConnectionStringAlias: map['secondaryConnectionStringAlias'] as String,
       secondaryKey: map['secondaryKey'] as String,
       send: map['send'] as bool,
-      topicId: map['topicId'] == null ? null : map['topicId'] as String,
-      topicName: map['topicName'] == null ? null : map['topicName'] as String,
+      topicId: map['topicId'] == null ? null : map['topicId']! as String,
+      topicName: map['topicName'] == null ? null : map['topicName']! as String,
     );
   }
 }

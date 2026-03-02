@@ -21,7 +21,7 @@ class ContainerServicePrivateRegistryAccess {
 
   factory ContainerServicePrivateRegistryAccess.fromMap(Map<String, dynamic> map) {
     return ContainerServicePrivateRegistryAccess(
-      ecrImagePullerRole: map['ecrImagePullerRole'] == null ? null : (ContainerServicePrivateRegistryAccessEcrImagePullerRole.fromMap((map['ecrImagePullerRole'] as Map).cast<String, dynamic>())).input(),
+      ecrImagePullerRole: map['ecrImagePullerRole'] == null ? null : ((ContainerServicePrivateRegistryAccessEcrImagePullerRole.fromMap((map['ecrImagePullerRole']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

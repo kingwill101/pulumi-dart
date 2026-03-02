@@ -52,9 +52,9 @@ class BackupInstanceBlogStorageArgs {
   factory BackupInstanceBlogStorageArgs.fromMap(Map<String, dynamic> map) {
     return BackupInstanceBlogStorageArgs(
       backupPolicyId: (map['backupPolicyId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageAccountContainerNames: map['storageAccountContainerNames'] == null ? null : ((map['storageAccountContainerNames'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageAccountContainerNames: map['storageAccountContainerNames'] == null ? null : ((map['storageAccountContainerNames']! as List).cast<String>()).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
       vaultId: (map['vaultId'] as String).input(),
     );

@@ -36,10 +36,10 @@ class LastAccessTimeTrackingPolicyResponse {
 
   factory LastAccessTimeTrackingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return LastAccessTimeTrackingPolicyResponse(
-      blobType: map['blobType'] == null ? null : ((map['blobType'] as List).cast<String>()).input(),
+      blobType: map['blobType'] == null ? null : ((map['blobType']! as List).cast<String>()).input(),
       enable: (map['enable'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      trackingGranularityInDays: map['trackingGranularityInDays'] == null ? null : (map['trackingGranularityInDays'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      trackingGranularityInDays: map['trackingGranularityInDays'] == null ? null : (map['trackingGranularityInDays']! as int).input(),
     );
   }
 }

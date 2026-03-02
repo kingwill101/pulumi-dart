@@ -30,9 +30,9 @@ class ScalingRuleStepAdjustment {
 
   factory ScalingRuleStepAdjustment.fromMap(Map<String, dynamic> map) {
     return ScalingRuleStepAdjustment(
-      metricIntervalLowerBound: map['metricIntervalLowerBound'] == null ? null : (map['metricIntervalLowerBound'] as String).input(),
-      metricIntervalUpperBound: map['metricIntervalUpperBound'] == null ? null : (map['metricIntervalUpperBound'] as String).input(),
-      scalingAdjustment: map['scalingAdjustment'] == null ? null : (map['scalingAdjustment'] as int).input(),
+      metricIntervalLowerBound: map['metricIntervalLowerBound'] == null ? null : (map['metricIntervalLowerBound']! as String).input(),
+      metricIntervalUpperBound: map['metricIntervalUpperBound'] == null ? null : (map['metricIntervalUpperBound']! as String).input(),
+      scalingAdjustment: map['scalingAdjustment'] == null ? null : (map['scalingAdjustment']! as int).input(),
     );
   }
 }

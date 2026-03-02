@@ -47,9 +47,9 @@ class SignalDefinitionArgs {
     return SignalDefinitionArgs(
       azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
       healthModelName: (map['healthModelName'] as String).input(),
-      properties: map['properties'] == null ? null : (LogAnalyticsQuerySignalDefinitionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (LogAnalyticsQuerySignalDefinitionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      signalDefinitionName: map['signalDefinitionName'] == null ? null : (map['signalDefinitionName'] as String).input(),
+      signalDefinitionName: map['signalDefinitionName'] == null ? null : (map['signalDefinitionName']! as String).input(),
     );
   }
 }

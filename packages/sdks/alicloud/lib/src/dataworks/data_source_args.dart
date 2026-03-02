@@ -52,7 +52,7 @@ class DataSourceArgs {
       connectionProperties: (map['connectionProperties'] as String).input(),
       connectionPropertiesMode: (map['connectionPropertiesMode'] as String).input(),
       dataSourceName: (map['dataSourceName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       projectId: (map['projectId'] as int).input(),
       type: (map['type'] as String).input(),
     );

@@ -40,10 +40,10 @@ class WorkflowWorkflowV2Args {
 
   factory WorkflowWorkflowV2Args.fromMap(Map<String, dynamic> map) {
     return WorkflowWorkflowV2Args(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

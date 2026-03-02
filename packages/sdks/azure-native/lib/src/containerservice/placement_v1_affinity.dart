@@ -22,7 +22,7 @@ class PlacementV1Affinity {
 
   factory PlacementV1Affinity.fromMap(Map<String, dynamic> map) {
     return PlacementV1Affinity(
-      clusterAffinity: map['clusterAffinity'] == null ? null : (PlacementV1ClusterAffinity.fromMap((map['clusterAffinity'] as Map).cast<String, dynamic>())).input(),
+      clusterAffinity: map['clusterAffinity'] == null ? null : (PlacementV1ClusterAffinity.fromMap((map['clusterAffinity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

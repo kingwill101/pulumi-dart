@@ -63,14 +63,14 @@ class ServiceNowV2Source {
 
   factory ServiceNowV2Source.fromMap(Map<String, dynamic> map) {
     return ServiceNowV2Source(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      expression: map['expression'] == null ? null : (ExpressionV2.fromMap((map['expression'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize']).input(),
-      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      expression: map['expression'] == null ? null : (ExpressionV2.fromMap((map['expression']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']!).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
       type: (map['type'] as String).input(),
     );
   }

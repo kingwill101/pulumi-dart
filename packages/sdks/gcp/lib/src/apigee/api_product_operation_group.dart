@@ -28,8 +28,8 @@ class ApiProductOperationGroup {
 
   factory ApiProductOperationGroup.fromMap(Map<String, dynamic> map) {
     return ApiProductOperationGroup(
-      operationConfigType: map['operationConfigType'] == null ? null : (map['operationConfigType'] as String).input(),
-      operationConfigs: map['operationConfigs'] == null ? null : (pulumi.Input.decodeList<ApiProductOperationGroupOperationConfig>(map['operationConfigs'], (value) => ApiProductOperationGroupOperationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operationConfigType: map['operationConfigType'] == null ? null : (map['operationConfigType']! as String).input(),
+      operationConfigs: map['operationConfigs'] == null ? null : (pulumi.Input.decodeList<ApiProductOperationGroupOperationConfig>(map['operationConfigs']!, (value) => ApiProductOperationGroupOperationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

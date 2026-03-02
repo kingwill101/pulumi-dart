@@ -41,11 +41,11 @@ class AndroidRoboTest {
 
   factory AndroidRoboTest.fromMap(Map<String, dynamic> map) {
     return AndroidRoboTest(
-      appInitialActivity: map['appInitialActivity'] == null ? null : (map['appInitialActivity'] as String).input(),
-      bootstrapPackageId: map['bootstrapPackageId'] == null ? null : (map['bootstrapPackageId'] as String).input(),
-      bootstrapRunnerClass: map['bootstrapRunnerClass'] == null ? null : (map['bootstrapRunnerClass'] as String).input(),
-      maxDepth: map['maxDepth'] == null ? null : (map['maxDepth'] as int).input(),
-      maxSteps: map['maxSteps'] == null ? null : (map['maxSteps'] as int).input(),
+      appInitialActivity: map['appInitialActivity'] == null ? null : (map['appInitialActivity']! as String).input(),
+      bootstrapPackageId: map['bootstrapPackageId'] == null ? null : (map['bootstrapPackageId']! as String).input(),
+      bootstrapRunnerClass: map['bootstrapRunnerClass'] == null ? null : (map['bootstrapRunnerClass']! as String).input(),
+      maxDepth: map['maxDepth'] == null ? null : (map['maxDepth']! as int).input(),
+      maxSteps: map['maxSteps'] == null ? null : (map['maxSteps']! as int).input(),
     );
   }
 }

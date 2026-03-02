@@ -47,8 +47,8 @@ class ReservationAssignmentArgs {
     return ReservationAssignmentArgs(
       assignee: (map['assignee'] as String).input(),
       jobType: (map['jobType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       reservation: (map['reservation'] as String).input(),
     );
   }

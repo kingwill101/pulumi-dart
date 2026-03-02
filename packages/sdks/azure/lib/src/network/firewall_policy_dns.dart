@@ -25,8 +25,8 @@ class FirewallPolicyDns {
 
   factory FirewallPolicyDns.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyDns(
-      proxyEnabled: map['proxyEnabled'] == null ? null : (map['proxyEnabled'] as bool).input(),
-      servers: map['servers'] == null ? null : ((map['servers'] as List).cast<String>()).input(),
+      proxyEnabled: map['proxyEnabled'] == null ? null : (map['proxyEnabled']! as bool).input(),
+      servers: map['servers'] == null ? null : ((map['servers']! as List).cast<String>()).input(),
     );
   }
 }

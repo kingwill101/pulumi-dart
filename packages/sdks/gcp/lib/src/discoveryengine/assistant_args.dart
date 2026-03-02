@@ -80,14 +80,14 @@ class AssistantArgs {
     return AssistantArgs(
       assistantId: (map['assistantId'] as String).input(),
       collectionId: (map['collectionId'] as String).input(),
-      customerPolicy: map['customerPolicy'] == null ? null : (AssistantCustomerPolicy.fromMap((map['customerPolicy'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      customerPolicy: map['customerPolicy'] == null ? null : (AssistantCustomerPolicy.fromMap((map['customerPolicy']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       engineId: (map['engineId'] as String).input(),
-      generationConfig: map['generationConfig'] == null ? null : (AssistantGenerationConfig.fromMap((map['generationConfig'] as Map).cast<String, dynamic>())).input(),
+      generationConfig: map['generationConfig'] == null ? null : (AssistantGenerationConfig.fromMap((map['generationConfig']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      webGroundingType: map['webGroundingType'] == null ? null : (map['webGroundingType'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      webGroundingType: map['webGroundingType'] == null ? null : (map['webGroundingType']! as String).input(),
     );
   }
 }

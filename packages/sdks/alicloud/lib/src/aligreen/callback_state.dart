@@ -46,12 +46,12 @@ class CallbackState {
 
   factory CallbackState.fromMap(Map<String, dynamic> map) {
     return CallbackState(
-      callbackName: map['callbackName'] == null ? null : (map['callbackName'] as String).input(),
-      callbackSuggestions: map['callbackSuggestions'] == null ? null : ((map['callbackSuggestions'] as List).cast<String>()).input(),
-      callbackTypes: map['callbackTypes'] == null ? null : ((map['callbackTypes'] as List).cast<String>()).input(),
-      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      cryptType: map['cryptType'] == null ? null : (map['cryptType'] as int).input(),
+      callbackName: map['callbackName'] == null ? null : (map['callbackName']! as String).input(),
+      callbackSuggestions: map['callbackSuggestions'] == null ? null : ((map['callbackSuggestions']! as List).cast<String>()).input(),
+      callbackTypes: map['callbackTypes'] == null ? null : ((map['callbackTypes']! as List).cast<String>()).input(),
+      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      cryptType: map['cryptType'] == null ? null : (map['cryptType']! as int).input(),
     );
   }
 }

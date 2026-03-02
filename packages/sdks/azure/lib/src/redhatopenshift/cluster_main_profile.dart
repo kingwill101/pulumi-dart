@@ -37,8 +37,8 @@ class ClusterMainProfile {
 
   factory ClusterMainProfile.fromMap(Map<String, dynamic> map) {
     return ClusterMainProfile(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      encryptionAtHostEnabled: map['encryptionAtHostEnabled'] == null ? null : (map['encryptionAtHostEnabled'] as bool).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      encryptionAtHostEnabled: map['encryptionAtHostEnabled'] == null ? null : (map['encryptionAtHostEnabled']! as bool).input(),
       subnetId: (map['subnetId'] as String).input(),
       vmSize: (map['vmSize'] as String).input(),
     );

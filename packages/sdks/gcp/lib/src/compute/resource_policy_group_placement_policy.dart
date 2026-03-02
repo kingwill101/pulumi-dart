@@ -52,12 +52,12 @@ class ResourcePolicyGroupPlacementPolicy {
 
   factory ResourcePolicyGroupPlacementPolicy.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicy(
-      availabilityDomainCount: map['availabilityDomainCount'] == null ? null : (map['availabilityDomainCount'] as int).input(),
-      collocation: map['collocation'] == null ? null : (map['collocation'] as String).input(),
-      gpuTopology: map['gpuTopology'] == null ? null : (map['gpuTopology'] as String).input(),
-      maxDistance: map['maxDistance'] == null ? null : (map['maxDistance'] as int).input(),
-      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology'] as String).input(),
-      vmCount: map['vmCount'] == null ? null : (map['vmCount'] as int).input(),
+      availabilityDomainCount: map['availabilityDomainCount'] == null ? null : (map['availabilityDomainCount']! as int).input(),
+      collocation: map['collocation'] == null ? null : (map['collocation']! as String).input(),
+      gpuTopology: map['gpuTopology'] == null ? null : (map['gpuTopology']! as String).input(),
+      maxDistance: map['maxDistance'] == null ? null : (map['maxDistance']! as int).input(),
+      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology']! as String).input(),
+      vmCount: map['vmCount'] == null ? null : (map['vmCount']! as int).input(),
     );
   }
 }

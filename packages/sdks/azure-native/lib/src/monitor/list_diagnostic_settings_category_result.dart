@@ -22,7 +22,7 @@ class ListDiagnosticSettingsCategoryResult {
 
   factory ListDiagnosticSettingsCategoryResult.fromMap(Map<String, dynamic> map) {
     return ListDiagnosticSettingsCategoryResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<DiagnosticSettingsCategoryResourceResponse>(map['value'], (value) => DiagnosticSettingsCategoryResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<DiagnosticSettingsCategoryResourceResponse>(map['value']!, (value) => DiagnosticSettingsCategoryResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

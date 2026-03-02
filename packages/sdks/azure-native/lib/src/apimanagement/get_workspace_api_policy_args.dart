@@ -50,7 +50,7 @@ class GetWorkspaceApiPolicyArgs {
   factory GetWorkspaceApiPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceApiPolicyArgs(
       apiId: (map['apiId'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
       policyId: (map['policyId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),

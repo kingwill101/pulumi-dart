@@ -58,12 +58,12 @@ class RouteTableArgs {
 
   factory RouteTableArgs.fromMap(Map<String, dynamic> map) {
     return RouteTableArgs(
-      associateType: map['associateType'] == null ? null : (map['associateType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      routePropagationEnable: map['routePropagationEnable'] == null ? null : (map['routePropagationEnable'] as bool).input(),
-      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      associateType: map['associateType'] == null ? null : (map['associateType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      routePropagationEnable: map['routePropagationEnable'] == null ? null : (map['routePropagationEnable']! as bool).input(),
+      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

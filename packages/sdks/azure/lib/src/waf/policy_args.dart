@@ -57,13 +57,13 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      customRules: map['customRules'] == null ? null : (pulumi.Input.decodeList<PolicyCustomRule>(map['customRules'], (value) => PolicyCustomRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      customRules: map['customRules'] == null ? null : (pulumi.Input.decodeList<PolicyCustomRule>(map['customRules']!, (value) => PolicyCustomRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managedRules: (PolicyManagedRules.fromMap((map['managedRules'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policySettings: map['policySettings'] == null ? null : (PolicyPolicySettings.fromMap((map['policySettings'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policySettings: map['policySettings'] == null ? null : (PolicyPolicySettings.fromMap((map['policySettings']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

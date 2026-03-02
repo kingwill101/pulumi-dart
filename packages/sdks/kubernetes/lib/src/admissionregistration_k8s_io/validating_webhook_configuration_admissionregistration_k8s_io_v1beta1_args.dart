@@ -41,10 +41,10 @@ class ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1beta1Args {
 
   factory ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ValidatingWebhookConfigurationAdmissionregistrationK8sIoV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      webhooks: map['webhooks'] == null ? null : (pulumi.Input.decodeList<ValidatingWebhookAdmissionregistrationK8sIoV1beta1>(map['webhooks'], (value) => ValidatingWebhookAdmissionregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      webhooks: map['webhooks'] == null ? null : (pulumi.Input.decodeList<ValidatingWebhookAdmissionregistrationK8sIoV1beta1>(map['webhooks']!, (value) => ValidatingWebhookAdmissionregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

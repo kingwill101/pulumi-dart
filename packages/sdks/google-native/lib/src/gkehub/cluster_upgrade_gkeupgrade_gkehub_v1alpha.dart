@@ -26,8 +26,8 @@ class ClusterUpgradeGKEUpgradeGkehubV1alpha {
 
   factory ClusterUpgradeGKEUpgradeGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeGKEUpgradeGkehubV1alpha(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

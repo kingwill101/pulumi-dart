@@ -46,12 +46,12 @@ class SyncState {
 
   factory SyncState.fromMap(Map<String, dynamic> map) {
     return SyncState(
-      incomingTrafficPolicy: map['incomingTrafficPolicy'] == null ? null : (map['incomingTrafficPolicy'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      registeredServers: map['registeredServers'] == null ? null : ((map['registeredServers'] as List).cast<String>()).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      incomingTrafficPolicy: map['incomingTrafficPolicy'] == null ? null : (map['incomingTrafficPolicy']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      registeredServers: map['registeredServers'] == null ? null : ((map['registeredServers']! as List).cast<String>()).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

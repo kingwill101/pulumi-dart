@@ -58,13 +58,13 @@ class AutoUpgradeProfileArgs {
 
   factory AutoUpgradeProfileArgs.fromMap(Map<String, dynamic> map) {
     return AutoUpgradeProfileArgs(
-      autoUpgradeProfileName: map['autoUpgradeProfileName'] == null ? null : (map['autoUpgradeProfileName'] as String).input(),
+      autoUpgradeProfileName: map['autoUpgradeProfileName'] == null ? null : (map['autoUpgradeProfileName']! as String).input(),
       channel: (map['channel'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       fleetName: (map['fleetName'] as String).input(),
-      nodeImageSelection: map['nodeImageSelection'] == null ? null : (AutoUpgradeNodeImageSelection.fromMap((map['nodeImageSelection'] as Map).cast<String, dynamic>())).input(),
+      nodeImageSelection: map['nodeImageSelection'] == null ? null : (AutoUpgradeNodeImageSelection.fromMap((map['nodeImageSelection']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      updateStrategyId: map['updateStrategyId'] == null ? null : (map['updateStrategyId'] as String).input(),
+      updateStrategyId: map['updateStrategyId'] == null ? null : (map['updateStrategyId']! as String).input(),
     );
   }
 }

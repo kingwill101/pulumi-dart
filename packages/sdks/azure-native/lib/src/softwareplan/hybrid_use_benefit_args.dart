@@ -35,7 +35,7 @@ class HybridUseBenefitArgs {
 
   factory HybridUseBenefitArgs.fromMap(Map<String, dynamic> map) {
     return HybridUseBenefitArgs(
-      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
       scope: (map['scope'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
     );

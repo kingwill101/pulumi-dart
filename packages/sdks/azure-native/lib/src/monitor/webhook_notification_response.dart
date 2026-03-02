@@ -26,8 +26,8 @@ class WebhookNotificationResponse {
 
   factory WebhookNotificationResponse.fromMap(Map<String, dynamic> map) {
     return WebhookNotificationResponse(
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri'] as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri']! as String).input(),
     );
   }
 }

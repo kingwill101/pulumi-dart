@@ -63,15 +63,15 @@ class PublicDelegatedPrefixComputeBetaArgs {
 
   factory PublicDelegatedPrefixComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixComputeBetaArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentPrefix: map['parentPrefix'] == null ? null : (map['parentPrefix'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : (pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta>(map['publicDelegatedSubPrefixs'], (value) => PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentPrefix: map['parentPrefix'] == null ? null : (map['parentPrefix']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : (pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta>(map['publicDelegatedSubPrefixs']!, (value) => PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

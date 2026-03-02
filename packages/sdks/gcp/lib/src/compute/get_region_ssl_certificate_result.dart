@@ -73,8 +73,8 @@ class GetRegionSslCertificateResult {
       name: map['name'] as String,
       namePrefix: map['namePrefix'] as String,
       privateKey: map['privateKey'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
+      region: map['region'] == null ? null : map['region']! as String,
       selfLink: map['selfLink'] as String,
     );
   }

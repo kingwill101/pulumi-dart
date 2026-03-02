@@ -40,12 +40,12 @@ class NetworkInsightsAnalysisExplanationAclRule {
 
   factory NetworkInsightsAnalysisExplanationAclRule.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisExplanationAclRule(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      egress: map['egress'] == null ? null : (map['egress'] as bool).input(),
-      portRanges: map['portRanges'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationAclRulePortRange>(map['portRanges'], (value) => NetworkInsightsAnalysisExplanationAclRulePortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction'] as String).input(),
-      ruleNumber: map['ruleNumber'] == null ? null : (map['ruleNumber'] as int).input(),
+      cidr: map['cidr'] == null ? null : ((map['cidr'] as String).input()).input(),
+      egress: map['egress'] == null ? null : ((map['egress'] as bool).input()).input(),
+      portRanges: map['portRanges'] == null ? null : ((pulumi.Input.decodeList<NetworkInsightsAnalysisExplanationAclRulePortRange>(map['portRanges']!, (value) => NetworkInsightsAnalysisExplanationAclRulePortRange.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      ruleAction: map['ruleAction'] == null ? null : ((map['ruleAction'] as String).input()).input(),
+      ruleNumber: map['ruleNumber'] == null ? null : ((map['ruleNumber'] as int).input()).input(),
     );
   }
 }

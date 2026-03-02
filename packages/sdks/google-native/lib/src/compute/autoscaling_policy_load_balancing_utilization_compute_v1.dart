@@ -21,7 +21,7 @@ class AutoscalingPolicyLoadBalancingUtilizationComputeV1 {
 
   factory AutoscalingPolicyLoadBalancingUtilizationComputeV1.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyLoadBalancingUtilizationComputeV1(
-      utilizationTarget: map['utilizationTarget'] == null ? null : (map['utilizationTarget'] as double).input(),
+      utilizationTarget: map['utilizationTarget'] == null ? null : (map['utilizationTarget']! as double).input(),
     );
   }
 }

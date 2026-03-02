@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesDacReadSearch {
 
   factory DomainFeaturesCapabilitiesDacReadSearch.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesDacReadSearch(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -37,7 +37,7 @@ class UrlRewriteActionParameters {
   factory UrlRewriteActionParameters.fromMap(Map<String, dynamic> map) {
     return UrlRewriteActionParameters(
       destination: (map['destination'] as String).input(),
-      preserveUnmatchedPath: map['preserveUnmatchedPath'] == null ? null : (map['preserveUnmatchedPath'] as bool).input(),
+      preserveUnmatchedPath: map['preserveUnmatchedPath'] == null ? null : (map['preserveUnmatchedPath']! as bool).input(),
       sourcePattern: (map['sourcePattern'] as String).input(),
       typeName: (map['typeName'] as String).input(),
     );

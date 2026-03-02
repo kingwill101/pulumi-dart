@@ -107,20 +107,20 @@ class CloudVmClusterArgs {
 
   factory CloudVmClusterArgs.fromMap(Map<String, dynamic> map) {
     return CloudVmClusterArgs(
-      backupOdbSubnet: map['backupOdbSubnet'] == null ? null : (map['backupOdbSubnet'] as String).input(),
-      backupSubnetCidr: map['backupSubnetCidr'] == null ? null : (map['backupSubnetCidr'] as String).input(),
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      backupOdbSubnet: map['backupOdbSubnet'] == null ? null : (map['backupOdbSubnet']! as String).input(),
+      backupSubnetCidr: map['backupSubnetCidr'] == null ? null : (map['backupSubnetCidr']! as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
       cloudVmClusterId: (map['cloudVmClusterId'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       exadataInfrastructure: (map['exadataInfrastructure'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      odbNetwork: map['odbNetwork'] == null ? null : (map['odbNetwork'] as String).input(),
-      odbSubnet: map['odbSubnet'] == null ? null : (map['odbSubnet'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      properties: map['properties'] == null ? null : (CloudVmClusterProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      odbNetwork: map['odbNetwork'] == null ? null : (map['odbNetwork']! as String).input(),
+      odbSubnet: map['odbSubnet'] == null ? null : (map['odbSubnet']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      properties: map['properties'] == null ? null : (CloudVmClusterProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -38,9 +38,9 @@ class ResourceDirectoryArgs {
 
   factory ResourceDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return ResourceDirectoryArgs(
-      memberAccountDisplayNameSyncStatus: map['memberAccountDisplayNameSyncStatus'] == null ? null : (map['memberAccountDisplayNameSyncStatus'] as String).input(),
-      memberDeletionStatus: map['memberDeletionStatus'] == null ? null : (map['memberDeletionStatus'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      memberAccountDisplayNameSyncStatus: map['memberAccountDisplayNameSyncStatus'] == null ? null : (map['memberAccountDisplayNameSyncStatus']! as String).input(),
+      memberDeletionStatus: map['memberDeletionStatus'] == null ? null : (map['memberDeletionStatus']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

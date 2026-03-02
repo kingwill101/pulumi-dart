@@ -80,15 +80,15 @@ class RegionPerInstanceConfigArgs {
 
   factory RegionPerInstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return RegionPerInstanceConfigArgs(
-      minimalAction: map['minimalAction'] == null ? null : (map['minimalAction'] as String).input(),
-      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : (map['mostDisruptiveAllowedAction'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      preservedState: map['preservedState'] == null ? null : (RegionPerInstanceConfigPreservedState.fromMap((map['preservedState'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      minimalAction: map['minimalAction'] == null ? null : (map['minimalAction']! as String).input(),
+      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : (map['mostDisruptiveAllowedAction']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      preservedState: map['preservedState'] == null ? null : (RegionPerInstanceConfigPreservedState.fromMap((map['preservedState']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       regionInstanceGroupManager: (map['regionInstanceGroupManager'] as String).input(),
-      removeInstanceOnDestroy: map['removeInstanceOnDestroy'] == null ? null : (map['removeInstanceOnDestroy'] as bool).input(),
-      removeInstanceStateOnDestroy: map['removeInstanceStateOnDestroy'] == null ? null : (map['removeInstanceStateOnDestroy'] as bool).input(),
+      removeInstanceOnDestroy: map['removeInstanceOnDestroy'] == null ? null : (map['removeInstanceOnDestroy']! as bool).input(),
+      removeInstanceStateOnDestroy: map['removeInstanceStateOnDestroy'] == null ? null : (map['removeInstanceStateOnDestroy']! as bool).input(),
     );
   }
 }

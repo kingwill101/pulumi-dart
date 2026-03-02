@@ -31,9 +31,9 @@ class PermissionResponse {
 
   factory PermissionResponse.fromMap(Map<String, dynamic> map) {
     return PermissionResponse(
-      dataActions: map['dataActions'] == null ? null : ((map['dataActions'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      notDataActions: map['notDataActions'] == null ? null : ((map['notDataActions'] as List).cast<String>()).input(),
+      dataActions: map['dataActions'] == null ? null : ((map['dataActions']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      notDataActions: map['notDataActions'] == null ? null : ((map['notDataActions']! as List).cast<String>()).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class NetworkManagerRoutingConfigurationState {
 
   factory NetworkManagerRoutingConfigurationState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerRoutingConfigurationState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId'] as String).input(),
-      routeTableUsageMode: map['routeTableUsageMode'] == null ? null : (map['routeTableUsageMode'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId']! as String).input(),
+      routeTableUsageMode: map['routeTableUsageMode'] == null ? null : (map['routeTableUsageMode']! as String).input(),
     );
   }
 }

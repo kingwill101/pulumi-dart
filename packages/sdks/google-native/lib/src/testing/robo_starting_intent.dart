@@ -37,10 +37,10 @@ class RoboStartingIntent {
 
   factory RoboStartingIntent.fromMap(Map<String, dynamic> map) {
     return RoboStartingIntent(
-      launcherActivity: map['launcherActivity'] == null ? null : ((map['launcherActivity'] as Map).cast<String, dynamic>()).input(),
-      noActivity: map['noActivity'] == null ? null : ((map['noActivity'] as Map).cast<String, dynamic>()).input(),
-      startActivity: map['startActivity'] == null ? null : (StartActivityIntent.fromMap((map['startActivity'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      launcherActivity: map['launcherActivity'] == null ? null : ((map['launcherActivity']! as Map).cast<String, dynamic>()).input(),
+      noActivity: map['noActivity'] == null ? null : ((map['noActivity']! as Map).cast<String, dynamic>()).input(),
+      startActivity: map['startActivity'] == null ? null : (StartActivityIntent.fromMap((map['startActivity']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

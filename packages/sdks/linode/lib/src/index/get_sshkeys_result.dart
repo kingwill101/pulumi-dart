@@ -39,10 +39,10 @@ class GetSshkeysResult {
 
   factory GetSshkeysResult.fromMap(Map<String, dynamic> map) {
     return GetSshkeysResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSshkeysFilter>(map['filters'], (value) => GetSshkeysFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSshkeysFilter>(map['filters']!, (value) => GetSshkeysFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
       sshkeys: pulumi.Input.decodeList<GetSshkeysSshkey>(map['sshkeys'], (value) => GetSshkeysSshkey.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

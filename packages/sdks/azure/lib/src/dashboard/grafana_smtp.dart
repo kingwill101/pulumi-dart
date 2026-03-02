@@ -55,14 +55,14 @@ class GrafanaSmtp {
 
   factory GrafanaSmtp.fromMap(Map<String, dynamic> map) {
     return GrafanaSmtp(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       fromAddress: (map['fromAddress'] as String).input(),
-      fromName: map['fromName'] == null ? null : (map['fromName'] as String).input(),
+      fromName: map['fromName'] == null ? null : (map['fromName']! as String).input(),
       host: (map['host'] as String).input(),
       password: (map['password'] as String).input(),
       startTlsPolicy: (map['startTlsPolicy'] as String).input(),
       user: (map['user'] as String).input(),
-      verificationSkipEnabled: map['verificationSkipEnabled'] == null ? null : (map['verificationSkipEnabled'] as bool).input(),
+      verificationSkipEnabled: map['verificationSkipEnabled'] == null ? null : (map['verificationSkipEnabled']! as bool).input(),
     );
   }
 }

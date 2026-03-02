@@ -26,7 +26,7 @@ class ClientApplicationSecretsContractResponseEntra {
 
   factory ClientApplicationSecretsContractResponseEntra.fromMap(Map<String, dynamic> map) {
     return ClientApplicationSecretsContractResponseEntra(
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
       expiresAt: (map['expiresAt'] as String).input(),
     );
   }

@@ -39,8 +39,8 @@ class SloRequestBasedSli {
 
   factory SloRequestBasedSli.fromMap(Map<String, dynamic> map) {
     return SloRequestBasedSli(
-      distributionCut: map['distributionCut'] == null ? null : (SloRequestBasedSliDistributionCut.fromMap((map['distributionCut'] as Map).cast<String, dynamic>())).input(),
-      goodTotalRatio: map['goodTotalRatio'] == null ? null : (SloRequestBasedSliGoodTotalRatio.fromMap((map['goodTotalRatio'] as Map).cast<String, dynamic>())).input(),
+      distributionCut: map['distributionCut'] == null ? null : (SloRequestBasedSliDistributionCut.fromMap((map['distributionCut']! as Map).cast<String, dynamic>())).input(),
+      goodTotalRatio: map['goodTotalRatio'] == null ? null : (SloRequestBasedSliGoodTotalRatio.fromMap((map['goodTotalRatio']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

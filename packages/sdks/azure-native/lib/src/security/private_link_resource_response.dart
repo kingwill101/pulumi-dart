@@ -56,7 +56,7 @@ class PrivateLinkResourceResponse {
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
       requiredMembers: ((map['requiredMembers'] as List).cast<String>()).input(),
-      requiredZoneNames: map['requiredZoneNames'] == null ? null : ((map['requiredZoneNames'] as List).cast<String>()).input(),
+      requiredZoneNames: map['requiredZoneNames'] == null ? null : ((map['requiredZoneNames']! as List).cast<String>()).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );

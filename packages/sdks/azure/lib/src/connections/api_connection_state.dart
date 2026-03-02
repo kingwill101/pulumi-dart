@@ -48,12 +48,12 @@ class ApiConnectionState {
 
   factory ApiConnectionState.fromMap(Map<String, dynamic> map) {
     return ApiConnectionState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      managedApiId: map['managedApiId'] == null ? null : (map['managedApiId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameterValues: map['parameterValues'] == null ? null : ((map['parameterValues'] as Map).cast<String, String>()).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      managedApiId: map['managedApiId'] == null ? null : (map['managedApiId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameterValues: map['parameterValues'] == null ? null : ((map['parameterValues']! as Map).cast<String, String>()).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

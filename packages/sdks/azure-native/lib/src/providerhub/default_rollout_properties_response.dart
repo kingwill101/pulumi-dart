@@ -33,8 +33,8 @@ class DefaultRolloutPropertiesResponse {
   factory DefaultRolloutPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutPropertiesResponse(
       provisioningState: (map['provisioningState'] as String).input(),
-      specification: map['specification'] == null ? null : (DefaultRolloutPropertiesSpecificationResponse.fromMap((map['specification'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (DefaultRolloutPropertiesStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      specification: map['specification'] == null ? null : (DefaultRolloutPropertiesSpecificationResponse.fromMap((map['specification']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (DefaultRolloutPropertiesStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

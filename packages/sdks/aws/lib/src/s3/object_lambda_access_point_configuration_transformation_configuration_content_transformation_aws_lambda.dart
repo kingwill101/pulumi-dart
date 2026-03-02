@@ -26,7 +26,7 @@ class ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTran
   factory ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda(
       functionArn: (map['functionArn'] as String).input(),
-      functionPayload: map['functionPayload'] == null ? null : (map['functionPayload'] as String).input(),
+      functionPayload: map['functionPayload'] == null ? null : ((map['functionPayload'] as String).input()).input(),
     );
   }
 }

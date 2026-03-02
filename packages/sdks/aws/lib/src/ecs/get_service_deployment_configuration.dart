@@ -65,12 +65,12 @@ class GetServiceDeploymentConfiguration {
 
   factory GetServiceDeploymentConfiguration.fromMap(Map<String, dynamic> map) {
     return GetServiceDeploymentConfiguration(
-      alarms: (pulumi.Input.decodeList<GetServiceDeploymentConfigurationAlarm>(map['alarms'], (value) => GetServiceDeploymentConfigurationAlarm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alarms: (pulumi.Input.decodeList<GetServiceDeploymentConfigurationAlarm>(map['alarms']!, (value) => GetServiceDeploymentConfigurationAlarm.fromMap((value as Map).cast<String, dynamic>()))).input(),
       bakeTimeInMinutes: (map['bakeTimeInMinutes'] as String).input(),
-      canaryConfigurations: (pulumi.Input.decodeList<GetServiceDeploymentConfigurationCanaryConfiguration>(map['canaryConfigurations'], (value) => GetServiceDeploymentConfigurationCanaryConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deploymentCircuitBreakers: (pulumi.Input.decodeList<GetServiceDeploymentConfigurationDeploymentCircuitBreaker>(map['deploymentCircuitBreakers'], (value) => GetServiceDeploymentConfigurationDeploymentCircuitBreaker.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lifecycleHooks: (pulumi.Input.decodeList<GetServiceDeploymentConfigurationLifecycleHook>(map['lifecycleHooks'], (value) => GetServiceDeploymentConfigurationLifecycleHook.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      linearConfigurations: (pulumi.Input.decodeList<GetServiceDeploymentConfigurationLinearConfiguration>(map['linearConfigurations'], (value) => GetServiceDeploymentConfigurationLinearConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      canaryConfigurations: (pulumi.Input.decodeList<GetServiceDeploymentConfigurationCanaryConfiguration>(map['canaryConfigurations']!, (value) => GetServiceDeploymentConfigurationCanaryConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deploymentCircuitBreakers: (pulumi.Input.decodeList<GetServiceDeploymentConfigurationDeploymentCircuitBreaker>(map['deploymentCircuitBreakers']!, (value) => GetServiceDeploymentConfigurationDeploymentCircuitBreaker.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecycleHooks: (pulumi.Input.decodeList<GetServiceDeploymentConfigurationLifecycleHook>(map['lifecycleHooks']!, (value) => GetServiceDeploymentConfigurationLifecycleHook.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      linearConfigurations: (pulumi.Input.decodeList<GetServiceDeploymentConfigurationLinearConfiguration>(map['linearConfigurations']!, (value) => GetServiceDeploymentConfigurationLinearConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       maximumPercent: (map['maximumPercent'] as int).input(),
       minimumHealthyPercent: (map['minimumHealthyPercent'] as int).input(),
       strategy: (map['strategy'] as String).input(),

@@ -61,14 +61,14 @@ class AwsEcsClusterProperties {
 
   factory AwsEcsClusterProperties.fromMap(Map<String, dynamic> map) {
     return AwsEcsClusterProperties(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      capacityProviders: map['capacityProviders'] == null ? null : ((map['capacityProviders'] as List).cast<String>()).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      clusterSettings: map['clusterSettings'] == null ? null : (pulumi.Input.decodeList<ClusterSettings>(map['clusterSettings'], (value) => ClusterSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configuration: map['configuration'] == null ? null : (ClusterConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      defaultCapacityProviderStrategy: map['defaultCapacityProviderStrategy'] == null ? null : (pulumi.Input.decodeList<CapacityProviderStrategyItem>(map['defaultCapacityProviderStrategy'], (value) => CapacityProviderStrategyItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceConnectDefaults: map['serviceConnectDefaults'] == null ? null : (ServiceConnectDefaults.fromMap((map['serviceConnectDefaults'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      capacityProviders: map['capacityProviders'] == null ? null : ((map['capacityProviders']! as List).cast<String>()).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      clusterSettings: map['clusterSettings'] == null ? null : (pulumi.Input.decodeList<ClusterSettings>(map['clusterSettings']!, (value) => ClusterSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configuration: map['configuration'] == null ? null : (ClusterConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      defaultCapacityProviderStrategy: map['defaultCapacityProviderStrategy'] == null ? null : (pulumi.Input.decodeList<CapacityProviderStrategyItem>(map['defaultCapacityProviderStrategy']!, (value) => CapacityProviderStrategyItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceConnectDefaults: map['serviceConnectDefaults'] == null ? null : (ServiceConnectDefaults.fromMap((map['serviceConnectDefaults']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

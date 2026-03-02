@@ -82,9 +82,9 @@ class RowAccessPolicyArgs {
     return RowAccessPolicyArgs(
       datasetId: (map['datasetId'] as String).input(),
       filterPredicate: (map['filterPredicate'] as String).input(),
-      grantees: map['grantees'] == null ? null : ((map['grantees'] as List).cast<String>()).input(),
+      grantees: map['grantees'] == null ? null : ((map['grantees']! as List).cast<String>()).input(),
       policyId: (map['policyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tableId: (map['tableId'] as String).input(),
     );
   }

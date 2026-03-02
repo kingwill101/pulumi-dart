@@ -31,7 +31,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintState
 
   factory WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchHeader.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchHeader(
-      matchPattern: (WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern'] as Map).cast<String, dynamic>())).input(),
+      matchPattern: (WebAclRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern']! as Map).cast<String, dynamic>())).input(),
       matchScope: (map['matchScope'] as String).input(),
       oversizeHandling: (map['oversizeHandling'] as String).input(),
     );

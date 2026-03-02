@@ -45,11 +45,11 @@ class SimpleSchedulePolicyV2 {
 
   factory SimpleSchedulePolicyV2.fromMap(Map<String, dynamic> map) {
     return SimpleSchedulePolicyV2(
-      dailySchedule: map['dailySchedule'] == null ? null : (DailySchedule.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>())).input(),
-      hourlySchedule: map['hourlySchedule'] == null ? null : (HourlySchedule.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>())).input(),
+      dailySchedule: map['dailySchedule'] == null ? null : (DailySchedule.fromMap((map['dailySchedule']! as Map).cast<String, dynamic>())).input(),
+      hourlySchedule: map['hourlySchedule'] == null ? null : (HourlySchedule.fromMap((map['hourlySchedule']! as Map).cast<String, dynamic>())).input(),
       schedulePolicyType: (map['schedulePolicyType'] as String).input(),
-      scheduleRunFrequency: map['scheduleRunFrequency'] == null ? null : (map['scheduleRunFrequency'] as String).input(),
-      weeklySchedule: map['weeklySchedule'] == null ? null : (WeeklySchedule.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())).input(),
+      scheduleRunFrequency: map['scheduleRunFrequency'] == null ? null : (map['scheduleRunFrequency']! as String).input(),
+      weeklySchedule: map['weeklySchedule'] == null ? null : (WeeklySchedule.fromMap((map['weeklySchedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

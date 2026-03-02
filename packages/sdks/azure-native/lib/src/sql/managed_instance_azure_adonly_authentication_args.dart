@@ -39,7 +39,7 @@ class ManagedInstanceAzureADOnlyAuthenticationArgs {
 
   factory ManagedInstanceAzureADOnlyAuthenticationArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceAzureADOnlyAuthenticationArgs(
-      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName'] as String).input(),
+      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName']! as String).input(),
       azureADOnlyAuthentication: (map['azureADOnlyAuthentication'] as bool).input(),
       managedInstanceName: (map['managedInstanceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

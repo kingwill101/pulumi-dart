@@ -68,16 +68,16 @@ class AgentcoreMemoryStrategyState {
 
   factory AgentcoreMemoryStrategyState.fromMap(Map<String, dynamic> map) {
     return AgentcoreMemoryStrategyState(
-      configuration: map['configuration'] == null ? null : (AgentcoreMemoryStrategyConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      memoryExecutionRoleArn: map['memoryExecutionRoleArn'] == null ? null : (map['memoryExecutionRoleArn'] as String).input(),
-      memoryId: map['memoryId'] == null ? null : (map['memoryId'] as String).input(),
-      memoryStrategyId: map['memoryStrategyId'] == null ? null : (map['memoryStrategyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentcoreMemoryStrategyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      configuration: map['configuration'] == null ? null : ((AgentcoreMemoryStrategyConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      memoryExecutionRoleArn: map['memoryExecutionRoleArn'] == null ? null : ((map['memoryExecutionRoleArn'] as String).input()).input(),
+      memoryId: map['memoryId'] == null ? null : ((map['memoryId'] as String).input()).input(),
+      memoryStrategyId: map['memoryStrategyId'] == null ? null : ((map['memoryStrategyId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namespaces: map['namespaces'] == null ? null : (((map['namespaces'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentcoreMemoryStrategyTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

@@ -47,11 +47,11 @@ class GatewayRouteTableAttachmentState {
 
   factory GatewayRouteTableAttachmentState.fromMap(Map<String, dynamic> map) {
     return GatewayRouteTableAttachmentState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      ipv4GatewayId: map['ipv4GatewayId'] == null ? null : (map['ipv4GatewayId'] as String).input(),
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      ipv4GatewayId: map['ipv4GatewayId'] == null ? null : (map['ipv4GatewayId']! as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -65,15 +65,15 @@ class ProvisioningTemplateArgs {
 
   factory ProvisioningTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ProvisioningTemplateArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      preProvisioningHook: map['preProvisioningHook'] == null ? null : (ProvisioningTemplatePreProvisioningHook.fromMap((map['preProvisioningHook'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      preProvisioningHook: map['preProvisioningHook'] == null ? null : ((ProvisioningTemplatePreProvisioningHook.fromMap((map['preProvisioningHook']! as Map).cast<String, dynamic>())).input()).input(),
       provisioningRoleArn: (map['provisioningRoleArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       templateBody: (map['templateBody'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

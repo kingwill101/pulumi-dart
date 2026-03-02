@@ -27,9 +27,9 @@ class SigningJobRevocationRecord {
 
   factory SigningJobRevocationRecord.fromMap(Map<String, dynamic> map) {
     return SigningJobRevocationRecord(
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      revokedAt: map['revokedAt'] == null ? null : (map['revokedAt'] as String).input(),
-      revokedBy: map['revokedBy'] == null ? null : (map['revokedBy'] as String).input(),
+      reason: map['reason'] == null ? null : ((map['reason'] as String).input()).input(),
+      revokedAt: map['revokedAt'] == null ? null : ((map['revokedAt'] as String).input()).input(),
+      revokedBy: map['revokedBy'] == null ? null : ((map['revokedBy'] as String).input()).input(),
     );
   }
 }

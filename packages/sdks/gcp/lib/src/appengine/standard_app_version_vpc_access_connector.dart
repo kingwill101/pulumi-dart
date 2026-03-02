@@ -25,7 +25,7 @@ class StandardAppVersionVpcAccessConnector {
 
   factory StandardAppVersionVpcAccessConnector.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionVpcAccessConnector(
-      egressSetting: map['egressSetting'] == null ? null : (map['egressSetting'] as String).input(),
+      egressSetting: map['egressSetting'] == null ? null : (map['egressSetting']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

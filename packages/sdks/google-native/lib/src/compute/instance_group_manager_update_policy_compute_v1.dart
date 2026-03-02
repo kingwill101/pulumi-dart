@@ -56,13 +56,13 @@ class InstanceGroupManagerUpdatePolicyComputeV1 {
 
   factory InstanceGroupManagerUpdatePolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerUpdatePolicyComputeV1(
-      instanceRedistributionType: map['instanceRedistributionType'] == null ? null : (InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeComputeV1.fromValue(map['instanceRedistributionType'] as String)).input(),
-      maxSurge: map['maxSurge'] == null ? null : (FixedOrPercentComputeV1.fromMap((map['maxSurge'] as Map).cast<String, dynamic>())).input(),
-      maxUnavailable: map['maxUnavailable'] == null ? null : (FixedOrPercentComputeV1.fromMap((map['maxUnavailable'] as Map).cast<String, dynamic>())).input(),
-      minimalAction: map['minimalAction'] == null ? null : (InstanceGroupManagerUpdatePolicyMinimalActionComputeV1.fromValue(map['minimalAction'] as String)).input(),
-      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : (InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeV1.fromValue(map['mostDisruptiveAllowedAction'] as String)).input(),
-      replacementMethod: map['replacementMethod'] == null ? null : (InstanceGroupManagerUpdatePolicyReplacementMethodComputeV1.fromValue(map['replacementMethod'] as String)).input(),
-      type: map['type'] == null ? null : (InstanceGroupManagerUpdatePolicyTypeComputeV1.fromValue(map['type'] as String)).input(),
+      instanceRedistributionType: map['instanceRedistributionType'] == null ? null : (InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeComputeV1.fromValue(map['instanceRedistributionType']! as String)).input(),
+      maxSurge: map['maxSurge'] == null ? null : (FixedOrPercentComputeV1.fromMap((map['maxSurge']! as Map).cast<String, dynamic>())).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (FixedOrPercentComputeV1.fromMap((map['maxUnavailable']! as Map).cast<String, dynamic>())).input(),
+      minimalAction: map['minimalAction'] == null ? null : (InstanceGroupManagerUpdatePolicyMinimalActionComputeV1.fromValue(map['minimalAction']! as String)).input(),
+      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : (InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionComputeV1.fromValue(map['mostDisruptiveAllowedAction']! as String)).input(),
+      replacementMethod: map['replacementMethod'] == null ? null : (InstanceGroupManagerUpdatePolicyReplacementMethodComputeV1.fromValue(map['replacementMethod']! as String)).input(),
+      type: map['type'] == null ? null : (InstanceGroupManagerUpdatePolicyTypeComputeV1.fromValue(map['type']! as String)).input(),
     );
   }
 }

@@ -52,11 +52,11 @@ class DbInstanceIpArrayState {
 
   factory DbInstanceIpArrayState.fromMap(Map<String, dynamic> map) {
     return DbInstanceIpArrayState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      dbInstanceIpArrayAttribute: map['dbInstanceIpArrayAttribute'] == null ? null : (map['dbInstanceIpArrayAttribute'] as String).input(),
-      dbInstanceIpArrayName: map['dbInstanceIpArrayName'] == null ? null : (map['dbInstanceIpArrayName'] as String).input(),
-      modifyMode: map['modifyMode'] == null ? null : (map['modifyMode'] as String).input(),
-      securityIpLists: map['securityIpLists'] == null ? null : ((map['securityIpLists'] as List).cast<String>()).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      dbInstanceIpArrayAttribute: map['dbInstanceIpArrayAttribute'] == null ? null : (map['dbInstanceIpArrayAttribute']! as String).input(),
+      dbInstanceIpArrayName: map['dbInstanceIpArrayName'] == null ? null : (map['dbInstanceIpArrayName']! as String).input(),
+      modifyMode: map['modifyMode'] == null ? null : (map['modifyMode']! as String).input(),
+      securityIpLists: map['securityIpLists'] == null ? null : ((map['securityIpLists']! as List).cast<String>()).input(),
     );
   }
 }

@@ -97,21 +97,21 @@ class GetOrchestratorInstanceServiceDetailsResult {
 
   factory GetOrchestratorInstanceServiceDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetOrchestratorInstanceServiceDetailsResult(
-      apiServerEndpoint: map['apiServerEndpoint'] == null ? null : map['apiServerEndpoint'] as String,
+      apiServerEndpoint: map['apiServerEndpoint'] == null ? null : map['apiServerEndpoint']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      clusterRootCA: map['clusterRootCA'] == null ? null : map['clusterRootCA'] as String,
+      clusterRootCA: map['clusterRootCA'] == null ? null : map['clusterRootCA']! as String,
       controllerDetails: ControllerDetailsResponse.fromMap((map['controllerDetails'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : OrchestratorIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : OrchestratorIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       kind: map['kind'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      orchestratorAppId: map['orchestratorAppId'] == null ? null : map['orchestratorAppId'] as String,
-      orchestratorTenantId: map['orchestratorTenantId'] == null ? null : map['orchestratorTenantId'] as String,
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : map['privateLinkResourceId'] as String,
+      orchestratorAppId: map['orchestratorAppId'] == null ? null : map['orchestratorAppId']! as String,
+      orchestratorTenantId: map['orchestratorTenantId'] == null ? null : map['orchestratorTenantId']! as String,
+      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : map['privateLinkResourceId']! as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

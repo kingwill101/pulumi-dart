@@ -41,11 +41,11 @@ class DataSourceWindowsEventState {
 
   factory DataSourceWindowsEventState.fromMap(Map<String, dynamic> map) {
     return DataSourceWindowsEventState(
-      eventLogName: map['eventLogName'] == null ? null : (map['eventLogName'] as String).input(),
-      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
+      eventLogName: map['eventLogName'] == null ? null : (map['eventLogName']! as String).input(),
+      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName']! as String).input(),
     );
   }
 }

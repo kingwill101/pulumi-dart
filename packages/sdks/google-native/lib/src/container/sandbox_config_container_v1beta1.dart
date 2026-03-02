@@ -27,8 +27,8 @@ class SandboxConfigContainerV1beta1 {
 
   factory SandboxConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return SandboxConfigContainerV1beta1(
-      sandboxType: map['sandboxType'] == null ? null : (map['sandboxType'] as String).input(),
-      type: map['type'] == null ? null : (SandboxConfigTypeContainerV1beta1.fromValue(map['type'] as String)).input(),
+      sandboxType: map['sandboxType'] == null ? null : (map['sandboxType']! as String).input(),
+      type: map['type'] == null ? null : (SandboxConfigTypeContainerV1beta1.fromValue(map['type']! as String)).input(),
     );
   }
 }

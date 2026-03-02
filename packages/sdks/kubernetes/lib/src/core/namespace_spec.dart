@@ -21,7 +21,7 @@ class NamespaceSpec {
 
   factory NamespaceSpec.fromMap(Map<String, dynamic> map) {
     return NamespaceSpec(
-      finalizers: map['finalizers'] == null ? null : ((map['finalizers'] as List).cast<String>()).input(),
+      finalizers: map['finalizers'] == null ? null : ((map['finalizers']! as List).cast<String>()).input(),
     );
   }
 }

@@ -35,9 +35,9 @@ class ApplicationAppversionLifecycle {
 
   factory ApplicationAppversionLifecycle.fromMap(Map<String, dynamic> map) {
     return ApplicationAppversionLifecycle(
-      deleteSourceFromS3: map['deleteSourceFromS3'] == null ? null : (map['deleteSourceFromS3'] as bool).input(),
-      maxAgeInDays: map['maxAgeInDays'] == null ? null : (map['maxAgeInDays'] as int).input(),
-      maxCount: map['maxCount'] == null ? null : (map['maxCount'] as int).input(),
+      deleteSourceFromS3: map['deleteSourceFromS3'] == null ? null : ((map['deleteSourceFromS3'] as bool).input()).input(),
+      maxAgeInDays: map['maxAgeInDays'] == null ? null : ((map['maxAgeInDays'] as int).input()).input(),
+      maxCount: map['maxCount'] == null ? null : ((map['maxCount'] as int).input()).input(),
       serviceRole: (map['serviceRole'] as String).input(),
     );
   }

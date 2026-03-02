@@ -26,8 +26,8 @@ class ManagedClusterAzureMonitorProfileKubeStateMetricsResponse {
 
   factory ManagedClusterAzureMonitorProfileKubeStateMetricsResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAzureMonitorProfileKubeStateMetricsResponse(
-      metricAnnotationsAllowList: map['metricAnnotationsAllowList'] == null ? null : (map['metricAnnotationsAllowList'] as String).input(),
-      metricLabelsAllowlist: map['metricLabelsAllowlist'] == null ? null : (map['metricLabelsAllowlist'] as String).input(),
+      metricAnnotationsAllowList: map['metricAnnotationsAllowList'] == null ? null : (map['metricAnnotationsAllowList']! as String).input(),
+      metricLabelsAllowlist: map['metricLabelsAllowlist'] == null ? null : (map['metricLabelsAllowlist']! as String).input(),
     );
   }
 }

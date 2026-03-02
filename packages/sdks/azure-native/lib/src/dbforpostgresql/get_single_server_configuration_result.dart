@@ -72,9 +72,9 @@ class GetSingleServerConfigurationResult {
       description: map['description'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      source: map['source'] == null ? null : map['source']! as String,
       type: map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

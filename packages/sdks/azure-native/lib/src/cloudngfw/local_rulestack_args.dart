@@ -86,19 +86,19 @@ class LocalRulestackArgs {
 
   factory LocalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return LocalRulestackArgs(
-      associatedSubscriptions: map['associatedSubscriptions'] == null ? null : ((map['associatedSubscriptions'] as List).cast<String>()).input(),
-      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      identity: map['identity'] == null ? null : (AzureResourceManagerManagedIdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      localRulestackName: map['localRulestackName'] == null ? null : (map['localRulestackName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      minAppIdVersion: map['minAppIdVersion'] == null ? null : (map['minAppIdVersion'] as String).input(),
-      panEtag: map['panEtag'] == null ? null : (map['panEtag'] as String).input(),
-      panLocation: map['panLocation'] == null ? null : (map['panLocation'] as String).input(),
+      associatedSubscriptions: map['associatedSubscriptions'] == null ? null : ((map['associatedSubscriptions']! as List).cast<String>()).input(),
+      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      identity: map['identity'] == null ? null : (AzureResourceManagerManagedIdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      localRulestackName: map['localRulestackName'] == null ? null : (map['localRulestackName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      minAppIdVersion: map['minAppIdVersion'] == null ? null : (map['minAppIdVersion']! as String).input(),
+      panEtag: map['panEtag'] == null ? null : (map['panEtag']! as String).input(),
+      panLocation: map['panLocation'] == null ? null : (map['panLocation']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      securityServices: map['securityServices'] == null ? null : (SecurityServices.fromMap((map['securityServices'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      securityServices: map['securityServices'] == null ? null : (SecurityServices.fromMap((map['securityServices']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

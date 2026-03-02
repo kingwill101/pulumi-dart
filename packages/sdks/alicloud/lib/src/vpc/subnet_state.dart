@@ -72,20 +72,20 @@ class SubnetState {
 
   factory SubnetState.fromMap(Map<String, dynamic> map) {
     return SubnetState(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableIpv6: map['enableIpv6'] == null ? null : (map['enableIpv6'] as bool).input(),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
-      ipv6CidrBlockMask: map['ipv6CidrBlockMask'] == null ? null : (map['ipv6CidrBlockMask'] as int).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchName: map['vswitchName'] == null ? null : (map['vswitchName'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableIpv6: map['enableIpv6'] == null ? null : (map['enableIpv6']! as bool).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock']! as String).input(),
+      ipv6CidrBlockMask: map['ipv6CidrBlockMask'] == null ? null : (map['ipv6CidrBlockMask']! as int).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchName: map['vswitchName'] == null ? null : (map['vswitchName']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

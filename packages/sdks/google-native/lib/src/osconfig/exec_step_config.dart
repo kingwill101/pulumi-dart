@@ -38,10 +38,10 @@ class ExecStepConfig {
 
   factory ExecStepConfig.fromMap(Map<String, dynamic> map) {
     return ExecStepConfig(
-      allowedSuccessCodes: map['allowedSuccessCodes'] == null ? null : ((map['allowedSuccessCodes'] as List).cast<int>()).input(),
-      gcsObject: map['gcsObject'] == null ? null : (GcsObject.fromMap((map['gcsObject'] as Map).cast<String, dynamic>())).input(),
-      interpreter: map['interpreter'] == null ? null : (ExecStepConfigInterpreter.fromValue(map['interpreter'] as String)).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
+      allowedSuccessCodes: map['allowedSuccessCodes'] == null ? null : ((map['allowedSuccessCodes']! as List).cast<int>()).input(),
+      gcsObject: map['gcsObject'] == null ? null : (GcsObject.fromMap((map['gcsObject']! as Map).cast<String, dynamic>())).input(),
+      interpreter: map['interpreter'] == null ? null : (ExecStepConfigInterpreter.fromValue(map['interpreter']! as String)).input(),
+      localPath: map['localPath'] == null ? null : (map['localPath']! as String).input(),
     );
   }
 }

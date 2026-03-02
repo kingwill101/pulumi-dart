@@ -22,7 +22,7 @@ class FutureReservationAggregateReservationReservedResource {
 
   factory FutureReservationAggregateReservationReservedResource.fromMap(Map<String, dynamic> map) {
     return FutureReservationAggregateReservationReservedResource(
-      accelerator: map['accelerator'] == null ? null : (FutureReservationAggregateReservationReservedResourceAccelerator.fromMap((map['accelerator'] as Map).cast<String, dynamic>())).input(),
+      accelerator: map['accelerator'] == null ? null : (FutureReservationAggregateReservationReservedResourceAccelerator.fromMap((map['accelerator']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class PolicySettingsResponseLogScrubbing {
 
   factory PolicySettingsResponseLogScrubbing.fromMap(Map<String, dynamic> map) {
     return PolicySettingsResponseLogScrubbing(
-      scrubbingRules: map['scrubbingRules'] == null ? null : (pulumi.Input.decodeList<WebApplicationFirewallScrubbingRulesResponse>(map['scrubbingRules'], (value) => WebApplicationFirewallScrubbingRulesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      scrubbingRules: map['scrubbingRules'] == null ? null : (pulumi.Input.decodeList<WebApplicationFirewallScrubbingRulesResponse>(map['scrubbingRules']!, (value) => WebApplicationFirewallScrubbingRulesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

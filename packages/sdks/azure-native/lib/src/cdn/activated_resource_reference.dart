@@ -21,7 +21,7 @@ class ActivatedResourceReference {
 
   factory ActivatedResourceReference.fromMap(Map<String, dynamic> map) {
     return ActivatedResourceReference(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

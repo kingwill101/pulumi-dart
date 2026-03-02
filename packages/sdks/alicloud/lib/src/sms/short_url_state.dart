@@ -36,10 +36,10 @@ class ShortUrlState {
 
   factory ShortUrlState.fromMap(Map<String, dynamic> map) {
     return ShortUrlState(
-      effectiveDays: map['effectiveDays'] == null ? null : (map['effectiveDays'] as int).input(),
-      shortUrlName: map['shortUrlName'] == null ? null : (map['shortUrlName'] as String).input(),
-      sourceUrl: map['sourceUrl'] == null ? null : (map['sourceUrl'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      effectiveDays: map['effectiveDays'] == null ? null : (map['effectiveDays']! as int).input(),
+      shortUrlName: map['shortUrlName'] == null ? null : (map['shortUrlName']! as String).input(),
+      sourceUrl: map['sourceUrl'] == null ? null : (map['sourceUrl']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

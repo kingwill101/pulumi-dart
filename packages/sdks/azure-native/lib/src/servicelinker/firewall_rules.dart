@@ -31,9 +31,9 @@ class FirewallRules {
 
   factory FirewallRules.fromMap(Map<String, dynamic> map) {
     return FirewallRules(
-      azureServices: map['azureServices'] == null ? null : (map['azureServices'] as String).input(),
-      callerClientIP: map['callerClientIP'] == null ? null : (map['callerClientIP'] as String).input(),
-      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges'] as List).cast<String>()).input(),
+      azureServices: map['azureServices'] == null ? null : (map['azureServices']! as String).input(),
+      callerClientIP: map['callerClientIP'] == null ? null : (map['callerClientIP']! as String).input(),
+      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges']! as List).cast<String>()).input(),
     );
   }
 }

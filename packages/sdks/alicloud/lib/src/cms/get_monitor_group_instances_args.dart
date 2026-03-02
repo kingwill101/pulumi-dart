@@ -32,8 +32,8 @@ class GetMonitorGroupInstancesArgs {
   factory GetMonitorGroupInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitorGroupInstancesArgs(
       ids: (map['ids'] as String).input(),
-      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class JobNotification {
 
   factory JobNotification.fromMap(Map<String, dynamic> map) {
     return JobNotification(
-      message: map['message'] == null ? null : (Message.fromMap((map['message'] as Map).cast<String, dynamic>())).input(),
-      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
+      message: map['message'] == null ? null : (Message.fromMap((map['message']! as Map).cast<String, dynamic>())).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class NetworkSecurityPerimeterProfileState {
 
   factory NetworkSecurityPerimeterProfileState.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterProfileState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkSecurityPerimeterId: map['networkSecurityPerimeterId'] == null ? null : (map['networkSecurityPerimeterId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkSecurityPerimeterId: map['networkSecurityPerimeterId'] == null ? null : (map['networkSecurityPerimeterId']! as String).input(),
     );
   }
 }

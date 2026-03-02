@@ -21,7 +21,7 @@ class DeleteMarkerReplicationResponse {
 
   factory DeleteMarkerReplicationResponse.fromMap(Map<String, dynamic> map) {
     return DeleteMarkerReplicationResponse(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class AgentToolset {
 
   factory AgentToolset.fromMap(Map<String, dynamic> map) {
     return AgentToolset(
-      toolIds: map['toolIds'] == null ? null : ((map['toolIds'] as List).cast<String>()).input(),
+      toolIds: map['toolIds'] == null ? null : ((map['toolIds']! as List).cast<String>()).input(),
       toolset: (map['toolset'] as String).input(),
     );
   }

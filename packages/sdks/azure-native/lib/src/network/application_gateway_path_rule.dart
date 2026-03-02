@@ -62,15 +62,15 @@ class ApplicationGatewayPathRule {
 
   factory ApplicationGatewayPathRule.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayPathRule(
-      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
-      backendHttpSettings: map['backendHttpSettings'] == null ? null : (SubResource.fromMap((map['backendHttpSettings'] as Map).cast<String, dynamic>())).input(),
-      firewallPolicy: map['firewallPolicy'] == null ? null : (SubResource.fromMap((map['firewallPolicy'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      loadDistributionPolicy: map['loadDistributionPolicy'] == null ? null : (SubResource.fromMap((map['loadDistributionPolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
-      redirectConfiguration: map['redirectConfiguration'] == null ? null : (SubResource.fromMap((map['redirectConfiguration'] as Map).cast<String, dynamic>())).input(),
-      rewriteRuleSet: map['rewriteRuleSet'] == null ? null : (SubResource.fromMap((map['rewriteRuleSet'] as Map).cast<String, dynamic>())).input(),
+      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>())).input(),
+      backendHttpSettings: map['backendHttpSettings'] == null ? null : (SubResource.fromMap((map['backendHttpSettings']! as Map).cast<String, dynamic>())).input(),
+      firewallPolicy: map['firewallPolicy'] == null ? null : (SubResource.fromMap((map['firewallPolicy']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      loadDistributionPolicy: map['loadDistributionPolicy'] == null ? null : (SubResource.fromMap((map['loadDistributionPolicy']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      redirectConfiguration: map['redirectConfiguration'] == null ? null : (SubResource.fromMap((map['redirectConfiguration']! as Map).cast<String, dynamic>())).input(),
+      rewriteRuleSet: map['rewriteRuleSet'] == null ? null : (SubResource.fromMap((map['rewriteRuleSet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

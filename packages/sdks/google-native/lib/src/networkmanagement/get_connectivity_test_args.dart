@@ -28,7 +28,7 @@ class GetConnectivityTestArgs {
   factory GetConnectivityTestArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestArgs(
       connectivityTestId: (map['connectivityTestId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -41,8 +41,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfig(
-      context: map['context'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContext.fromMap((map['context'] as Map).cast<String, dynamic>())).input(),
-      cryptoKey: map['cryptoKey'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKey.fromMap((map['cryptoKey'] as Map).cast<String, dynamic>())).input(),
+      context: map['context'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContext.fromMap((map['context']! as Map).cast<String, dynamic>())).input(),
+      cryptoKey: map['cryptoKey'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKey.fromMap((map['cryptoKey']! as Map).cast<String, dynamic>())).input(),
       lowerBoundDays: (map['lowerBoundDays'] as int).input(),
       upperBoundDays: (map['upperBoundDays'] as int).input(),
     );

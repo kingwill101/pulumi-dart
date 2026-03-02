@@ -37,10 +37,10 @@ class CustomerManagedPolicyAttachmentState {
 
   factory CustomerManagedPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return CustomerManagedPolicyAttachmentState(
-      customerManagedPolicyReference: map['customerManagedPolicyReference'] == null ? null : (CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap((map['customerManagedPolicyReference'] as Map).cast<String, dynamic>())).input(),
-      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
-      permissionSetArn: map['permissionSetArn'] == null ? null : (map['permissionSetArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      customerManagedPolicyReference: map['customerManagedPolicyReference'] == null ? null : ((CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap((map['customerManagedPolicyReference']! as Map).cast<String, dynamic>())).input()).input(),
+      instanceArn: map['instanceArn'] == null ? null : ((map['instanceArn'] as String).input()).input(),
+      permissionSetArn: map['permissionSetArn'] == null ? null : ((map['permissionSetArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

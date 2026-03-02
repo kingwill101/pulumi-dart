@@ -41,7 +41,7 @@ class FlexibleServerVirtualEndpointArgs {
 
   factory FlexibleServerVirtualEndpointArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleServerVirtualEndpointArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       replicaServerId: (map['replicaServerId'] as String).input(),
       sourceServerId: (map['sourceServerId'] as String).input(),
       type: (map['type'] as String).input(),

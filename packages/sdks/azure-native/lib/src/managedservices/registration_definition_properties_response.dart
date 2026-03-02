@@ -64,14 +64,14 @@ class RegistrationDefinitionPropertiesResponse {
   factory RegistrationDefinitionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RegistrationDefinitionPropertiesResponse(
       authorizations: (pulumi.Input.decodeList<AuthorizationResponse>(map['authorizations'], (value) => AuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : (pulumi.Input.decodeList<EligibleAuthorizationResponse>(map['eligibleAuthorizations'], (value) => EligibleAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : (pulumi.Input.decodeList<EligibleAuthorizationResponse>(map['eligibleAuthorizations']!, (value) => EligibleAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       managedByTenantId: (map['managedByTenantId'] as String).input(),
       managedByTenantName: (map['managedByTenantName'] as String).input(),
       manageeTenantId: (map['manageeTenantId'] as String).input(),
       manageeTenantName: (map['manageeTenantName'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      registrationDefinitionName: map['registrationDefinitionName'] == null ? null : (map['registrationDefinitionName'] as String).input(),
+      registrationDefinitionName: map['registrationDefinitionName'] == null ? null : (map['registrationDefinitionName']! as String).input(),
     );
   }
 }

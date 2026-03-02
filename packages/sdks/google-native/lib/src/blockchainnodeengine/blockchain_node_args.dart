@@ -60,13 +60,13 @@ class BlockchainNodeArgs {
   factory BlockchainNodeArgs.fromMap(Map<String, dynamic> map) {
     return BlockchainNodeArgs(
       blockchainNodeId: (map['blockchainNodeId'] as String).input(),
-      blockchainType: map['blockchainType'] == null ? null : (BlockchainNodeBlockchainType.fromValue(map['blockchainType'] as String)).input(),
-      ethereumDetails: map['ethereumDetails'] == null ? null : (EthereumDetails.fromMap((map['ethereumDetails'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      privateServiceConnectEnabled: map['privateServiceConnectEnabled'] == null ? null : (map['privateServiceConnectEnabled'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      blockchainType: map['blockchainType'] == null ? null : (BlockchainNodeBlockchainType.fromValue(map['blockchainType']! as String)).input(),
+      ethereumDetails: map['ethereumDetails'] == null ? null : (EthereumDetails.fromMap((map['ethereumDetails']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      privateServiceConnectEnabled: map['privateServiceConnectEnabled'] == null ? null : (map['privateServiceConnectEnabled']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

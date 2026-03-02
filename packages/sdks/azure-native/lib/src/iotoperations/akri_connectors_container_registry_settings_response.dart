@@ -27,7 +27,7 @@ class AkriConnectorsContainerRegistrySettingsResponse {
 
   factory AkriConnectorsContainerRegistrySettingsResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorsContainerRegistrySettingsResponse(
-      imagePullSecrets: map['imagePullSecrets'] == null ? null : (pulumi.Input.decodeList<AkriConnectorsImagePullSecretResponse>(map['imagePullSecrets'], (value) => AkriConnectorsImagePullSecretResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imagePullSecrets: map['imagePullSecrets'] == null ? null : (pulumi.Input.decodeList<AkriConnectorsImagePullSecretResponse>(map['imagePullSecrets']!, (value) => AkriConnectorsImagePullSecretResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       registry: (map['registry'] as String).input(),
     );
   }

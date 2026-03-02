@@ -36,10 +36,10 @@ class ServiceMonitoringAgentProcessState {
 
   factory ServiceMonitoringAgentProcessState.fromMap(Map<String, dynamic> map) {
     return ServiceMonitoringAgentProcessState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      processId: map['processId'] == null ? null : (map['processId'] as String).input(),
-      processName: map['processName'] == null ? null : (map['processName'] as String).input(),
-      processUser: map['processUser'] == null ? null : (map['processUser'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      processId: map['processId'] == null ? null : (map['processId']! as String).input(),
+      processName: map['processName'] == null ? null : (map['processName']! as String).input(),
+      processUser: map['processUser'] == null ? null : (map['processUser']! as String).input(),
     );
   }
 }

@@ -107,22 +107,22 @@ class ElasticPoolArgs {
 
   factory ElasticPoolArgs.fromMap(Map<String, dynamic> map) {
     return ElasticPoolArgs(
-      autoPauseDelay: map['autoPauseDelay'] == null ? null : (map['autoPauseDelay'] as int).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      elasticPoolName: map['elasticPoolName'] == null ? null : (map['elasticPoolName'] as String).input(),
-      highAvailabilityReplicaCount: map['highAvailabilityReplicaCount'] == null ? null : (map['highAvailabilityReplicaCount'] as int).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId'] as String).input(),
-      maxSizeBytes: map['maxSizeBytes'] == null ? null : (map['maxSizeBytes'] as double).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as double).input(),
-      perDatabaseSettings: map['perDatabaseSettings'] == null ? null : (ElasticPoolPerDatabaseSettings.fromMap((map['perDatabaseSettings'] as Map).cast<String, dynamic>())).input(),
-      preferredEnclaveType: map['preferredEnclaveType'] == null ? null : (map['preferredEnclaveType'] as String).input(),
+      autoPauseDelay: map['autoPauseDelay'] == null ? null : (map['autoPauseDelay']! as int).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
+      elasticPoolName: map['elasticPoolName'] == null ? null : (map['elasticPoolName']! as String).input(),
+      highAvailabilityReplicaCount: map['highAvailabilityReplicaCount'] == null ? null : (map['highAvailabilityReplicaCount']! as int).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId']! as String).input(),
+      maxSizeBytes: map['maxSizeBytes'] == null ? null : (map['maxSizeBytes']! as double).input(),
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as double).input(),
+      perDatabaseSettings: map['perDatabaseSettings'] == null ? null : (ElasticPoolPerDatabaseSettings.fromMap((map['perDatabaseSettings']! as Map).cast<String, dynamic>())).input(),
+      preferredEnclaveType: map['preferredEnclaveType'] == null ? null : (map['preferredEnclaveType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as bool).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant']! as bool).input(),
     );
   }
 }

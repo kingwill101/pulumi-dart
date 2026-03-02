@@ -69,7 +69,7 @@ class GetCertificateResult {
       name: map['name'] as String,
       namePrefix: map['namePrefix'] as String,
       privateKey: map['privateKey'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       selfLink: map['selfLink'] as String,
     );
   }

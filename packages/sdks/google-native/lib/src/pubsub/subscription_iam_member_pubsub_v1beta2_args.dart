@@ -45,7 +45,7 @@ class SubscriptionIamMemberPubsubV1beta2Args {
 
   factory SubscriptionIamMemberPubsubV1beta2Args.fromMap(Map<String, dynamic> map) {
     return SubscriptionIamMemberPubsubV1beta2Args(
-      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
       name: (map['name'] as String).input(),
       role: (map['role'] as String).input(),

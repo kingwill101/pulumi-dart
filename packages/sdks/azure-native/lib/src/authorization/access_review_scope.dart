@@ -46,12 +46,12 @@ class AccessReviewScope {
 
   factory AccessReviewScope.fromMap(Map<String, dynamic> map) {
     return AccessReviewScope(
-      excludeResourceId: map['excludeResourceId'] == null ? null : (map['excludeResourceId'] as String).input(),
-      excludeRoleDefinitionId: map['excludeRoleDefinitionId'] == null ? null : (map['excludeRoleDefinitionId'] as String).input(),
-      expandNestedMemberships: map['expandNestedMemberships'] == null ? null : (map['expandNestedMemberships'] as bool).input(),
-      inactiveDuration: map['inactiveDuration'] == null ? null : (map['inactiveDuration'] as String).input(),
-      includeAccessBelowResource: map['includeAccessBelowResource'] == null ? null : (map['includeAccessBelowResource'] as bool).input(),
-      includeInheritedAccess: map['includeInheritedAccess'] == null ? null : (map['includeInheritedAccess'] as bool).input(),
+      excludeResourceId: map['excludeResourceId'] == null ? null : (map['excludeResourceId']! as String).input(),
+      excludeRoleDefinitionId: map['excludeRoleDefinitionId'] == null ? null : (map['excludeRoleDefinitionId']! as String).input(),
+      expandNestedMemberships: map['expandNestedMemberships'] == null ? null : (map['expandNestedMemberships']! as bool).input(),
+      inactiveDuration: map['inactiveDuration'] == null ? null : (map['inactiveDuration']! as String).input(),
+      includeAccessBelowResource: map['includeAccessBelowResource'] == null ? null : (map['includeAccessBelowResource']! as bool).input(),
+      includeInheritedAccess: map['includeInheritedAccess'] == null ? null : (map['includeInheritedAccess']! as bool).input(),
     );
   }
 }

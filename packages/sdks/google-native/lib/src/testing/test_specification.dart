@@ -79,17 +79,17 @@ class TestSpecification {
 
   factory TestSpecification.fromMap(Map<String, dynamic> map) {
     return TestSpecification(
-      androidInstrumentationTest: map['androidInstrumentationTest'] == null ? null : (AndroidInstrumentationTest.fromMap((map['androidInstrumentationTest'] as Map).cast<String, dynamic>())).input(),
-      androidRoboTest: map['androidRoboTest'] == null ? null : (AndroidRoboTest.fromMap((map['androidRoboTest'] as Map).cast<String, dynamic>())).input(),
-      androidTestLoop: map['androidTestLoop'] == null ? null : (AndroidTestLoop.fromMap((map['androidTestLoop'] as Map).cast<String, dynamic>())).input(),
-      disablePerformanceMetrics: map['disablePerformanceMetrics'] == null ? null : (map['disablePerformanceMetrics'] as bool).input(),
-      disableVideoRecording: map['disableVideoRecording'] == null ? null : (map['disableVideoRecording'] as bool).input(),
-      iosRoboTest: map['iosRoboTest'] == null ? null : (IosRoboTest.fromMap((map['iosRoboTest'] as Map).cast<String, dynamic>())).input(),
-      iosTestLoop: map['iosTestLoop'] == null ? null : (IosTestLoop.fromMap((map['iosTestLoop'] as Map).cast<String, dynamic>())).input(),
-      iosTestSetup: map['iosTestSetup'] == null ? null : (IosTestSetup.fromMap((map['iosTestSetup'] as Map).cast<String, dynamic>())).input(),
-      iosXcTest: map['iosXcTest'] == null ? null : (IosXcTest.fromMap((map['iosXcTest'] as Map).cast<String, dynamic>())).input(),
-      testSetup: map['testSetup'] == null ? null : (TestSetup.fromMap((map['testSetup'] as Map).cast<String, dynamic>())).input(),
-      testTimeout: map['testTimeout'] == null ? null : (map['testTimeout'] as String).input(),
+      androidInstrumentationTest: map['androidInstrumentationTest'] == null ? null : (AndroidInstrumentationTest.fromMap((map['androidInstrumentationTest']! as Map).cast<String, dynamic>())).input(),
+      androidRoboTest: map['androidRoboTest'] == null ? null : (AndroidRoboTest.fromMap((map['androidRoboTest']! as Map).cast<String, dynamic>())).input(),
+      androidTestLoop: map['androidTestLoop'] == null ? null : (AndroidTestLoop.fromMap((map['androidTestLoop']! as Map).cast<String, dynamic>())).input(),
+      disablePerformanceMetrics: map['disablePerformanceMetrics'] == null ? null : (map['disablePerformanceMetrics']! as bool).input(),
+      disableVideoRecording: map['disableVideoRecording'] == null ? null : (map['disableVideoRecording']! as bool).input(),
+      iosRoboTest: map['iosRoboTest'] == null ? null : (IosRoboTest.fromMap((map['iosRoboTest']! as Map).cast<String, dynamic>())).input(),
+      iosTestLoop: map['iosTestLoop'] == null ? null : (IosTestLoop.fromMap((map['iosTestLoop']! as Map).cast<String, dynamic>())).input(),
+      iosTestSetup: map['iosTestSetup'] == null ? null : (IosTestSetup.fromMap((map['iosTestSetup']! as Map).cast<String, dynamic>())).input(),
+      iosXcTest: map['iosXcTest'] == null ? null : (IosXcTest.fromMap((map['iosXcTest']! as Map).cast<String, dynamic>())).input(),
+      testSetup: map['testSetup'] == null ? null : (TestSetup.fromMap((map['testSetup']! as Map).cast<String, dynamic>())).input(),
+      testTimeout: map['testTimeout'] == null ? null : (map['testTimeout']! as String).input(),
     );
   }
 }

@@ -82,18 +82,18 @@ class RuleGroupRuleStatementRateBasedStatementCustomKey {
 
   factory RuleGroupRuleStatementRateBasedStatementCustomKey.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementCustomKey(
-      asn: map['asn'] == null ? null : ((map['asn'] as Map).cast<String, dynamic>()).input(),
-      cookie: map['cookie'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyCookie.fromMap((map['cookie'] as Map).cast<String, dynamic>())).input(),
-      forwardedIp: map['forwardedIp'] == null ? null : ((map['forwardedIp'] as Map).cast<String, dynamic>()).input(),
-      header: map['header'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyHeader.fromMap((map['header'] as Map).cast<String, dynamic>())).input(),
-      httpMethod: map['httpMethod'] == null ? null : ((map['httpMethod'] as Map).cast<String, dynamic>()).input(),
-      ip: map['ip'] == null ? null : ((map['ip'] as Map).cast<String, dynamic>()).input(),
-      ja3Fingerprint: map['ja3Fingerprint'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint.fromMap((map['ja3Fingerprint'] as Map).cast<String, dynamic>())).input(),
-      ja4Fingerprint: map['ja4Fingerprint'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint.fromMap((map['ja4Fingerprint'] as Map).cast<String, dynamic>())).input(),
-      labelNamespace: map['labelNamespace'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace.fromMap((map['labelNamespace'] as Map).cast<String, dynamic>())).input(),
-      queryArgument: map['queryArgument'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument.fromMap((map['queryArgument'] as Map).cast<String, dynamic>())).input(),
-      queryString: map['queryString'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString.fromMap((map['queryString'] as Map).cast<String, dynamic>())).input(),
-      uriPath: map['uriPath'] == null ? null : (RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath.fromMap((map['uriPath'] as Map).cast<String, dynamic>())).input(),
+      asn: map['asn'] == null ? null : (((map['asn'] as Map).cast<String, dynamic>()).input()).input(),
+      cookie: map['cookie'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementCustomKeyCookie.fromMap((map['cookie']! as Map).cast<String, dynamic>())).input()).input(),
+      forwardedIp: map['forwardedIp'] == null ? null : (((map['forwardedIp'] as Map).cast<String, dynamic>()).input()).input(),
+      header: map['header'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementCustomKeyHeader.fromMap((map['header']! as Map).cast<String, dynamic>())).input()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (((map['httpMethod'] as Map).cast<String, dynamic>()).input()).input(),
+      ip: map['ip'] == null ? null : (((map['ip'] as Map).cast<String, dynamic>()).input()).input(),
+      ja3Fingerprint: map['ja3Fingerprint'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint.fromMap((map['ja3Fingerprint']! as Map).cast<String, dynamic>())).input()).input(),
+      ja4Fingerprint: map['ja4Fingerprint'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint.fromMap((map['ja4Fingerprint']! as Map).cast<String, dynamic>())).input()).input(),
+      labelNamespace: map['labelNamespace'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace.fromMap((map['labelNamespace']! as Map).cast<String, dynamic>())).input()).input(),
+      queryArgument: map['queryArgument'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument.fromMap((map['queryArgument']! as Map).cast<String, dynamic>())).input()).input(),
+      queryString: map['queryString'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString.fromMap((map['queryString']! as Map).cast<String, dynamic>())).input()).input(),
+      uriPath: map['uriPath'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath.fromMap((map['uriPath']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

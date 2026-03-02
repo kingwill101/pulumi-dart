@@ -20,7 +20,7 @@ class ConfigSmsRegionConfigAllowByDefault {
 
   factory ConfigSmsRegionConfigAllowByDefault.fromMap(Map<String, dynamic> map) {
     return ConfigSmsRegionConfigAllowByDefault(
-      disallowedRegions: map['disallowedRegions'] == null ? null : ((map['disallowedRegions'] as List).cast<String>()).input(),
+      disallowedRegions: map['disallowedRegions'] == null ? null : ((map['disallowedRegions']! as List).cast<String>()).input(),
     );
   }
 }

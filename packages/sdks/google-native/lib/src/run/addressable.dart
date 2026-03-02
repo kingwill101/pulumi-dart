@@ -20,7 +20,7 @@ class Addressable {
 
   factory Addressable.fromMap(Map<String, dynamic> map) {
     return Addressable(
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

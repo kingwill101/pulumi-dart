@@ -32,8 +32,8 @@ class RefreshScheduleSchedule {
   factory RefreshScheduleSchedule.fromMap(Map<String, dynamic> map) {
     return RefreshScheduleSchedule(
       refreshType: (map['refreshType'] as String).input(),
-      scheduleFrequency: (RefreshScheduleScheduleScheduleFrequency.fromMap((map['scheduleFrequency'] as Map).cast<String, dynamic>())).input(),
-      startAfterDateTime: map['startAfterDateTime'] == null ? null : (map['startAfterDateTime'] as String).input(),
+      scheduleFrequency: (RefreshScheduleScheduleScheduleFrequency.fromMap((map['scheduleFrequency']! as Map).cast<String, dynamic>())).input(),
+      startAfterDateTime: map['startAfterDateTime'] == null ? null : ((map['startAfterDateTime'] as String).input()).input(),
     );
   }
 }

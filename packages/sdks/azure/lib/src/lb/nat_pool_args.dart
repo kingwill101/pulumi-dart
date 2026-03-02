@@ -75,16 +75,16 @@ class NatPoolArgs {
   factory NatPoolArgs.fromMap(Map<String, dynamic> map) {
     return NatPoolArgs(
       backendPort: (map['backendPort'] as int).input(),
-      floatingIpEnabled: map['floatingIpEnabled'] == null ? null : (map['floatingIpEnabled'] as bool).input(),
+      floatingIpEnabled: map['floatingIpEnabled'] == null ? null : (map['floatingIpEnabled']! as bool).input(),
       frontendIpConfigurationName: (map['frontendIpConfigurationName'] as String).input(),
       frontendPortEnd: (map['frontendPortEnd'] as int).input(),
       frontendPortStart: (map['frontendPortStart'] as int).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
       loadbalancerId: (map['loadbalancerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       protocol: (map['protocol'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tcpResetEnabled: map['tcpResetEnabled'] == null ? null : (map['tcpResetEnabled'] as bool).input(),
+      tcpResetEnabled: map['tcpResetEnabled'] == null ? null : (map['tcpResetEnabled']! as bool).input(),
     );
   }
 }

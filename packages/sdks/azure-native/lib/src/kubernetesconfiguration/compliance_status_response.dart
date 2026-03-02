@@ -37,9 +37,9 @@ class ComplianceStatusResponse {
   factory ComplianceStatusResponse.fromMap(Map<String, dynamic> map) {
     return ComplianceStatusResponse(
       complianceState: (map['complianceState'] as String).input(),
-      lastConfigApplied: map['lastConfigApplied'] == null ? null : (map['lastConfigApplied'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      messageLevel: map['messageLevel'] == null ? null : (map['messageLevel'] as String).input(),
+      lastConfigApplied: map['lastConfigApplied'] == null ? null : (map['lastConfigApplied']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      messageLevel: map['messageLevel'] == null ? null : (map['messageLevel']! as String).input(),
     );
   }
 }

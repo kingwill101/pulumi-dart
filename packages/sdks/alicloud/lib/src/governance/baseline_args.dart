@@ -37,9 +37,9 @@ class BaselineArgs {
 
   factory BaselineArgs.fromMap(Map<String, dynamic> map) {
     return BaselineArgs(
-      baselineItems: map['baselineItems'] == null ? null : (pulumi.Input.decodeList<BaselineBaselineItem>(map['baselineItems'], (value) => BaselineBaselineItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      baselineName: map['baselineName'] == null ? null : (map['baselineName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      baselineItems: map['baselineItems'] == null ? null : (pulumi.Input.decodeList<BaselineBaselineItem>(map['baselineItems']!, (value) => BaselineBaselineItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      baselineName: map['baselineName'] == null ? null : (map['baselineName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class GetTargetGrpcProxyArgs {
 
   factory GetTargetGrpcProxyArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetGrpcProxyArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       targetGrpcProxy: (map['targetGrpcProxy'] as String).input(),
     );
   }

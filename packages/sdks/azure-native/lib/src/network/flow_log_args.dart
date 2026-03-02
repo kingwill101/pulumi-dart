@@ -93,19 +93,19 @@ class FlowLogArgs {
 
   factory FlowLogArgs.fromMap(Map<String, dynamic> map) {
     return FlowLogArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      enabledFilteringCriteria: map['enabledFilteringCriteria'] == null ? null : (map['enabledFilteringCriteria'] as String).input(),
-      flowAnalyticsConfiguration: map['flowAnalyticsConfiguration'] == null ? null : (TrafficAnalyticsProperties.fromMap((map['flowAnalyticsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName'] as String).input(),
-      format: map['format'] == null ? null : (FlowLogFormatParameters.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabledFilteringCriteria: map['enabledFilteringCriteria'] == null ? null : (map['enabledFilteringCriteria']! as String).input(),
+      flowAnalyticsConfiguration: map['flowAnalyticsConfiguration'] == null ? null : (TrafficAnalyticsProperties.fromMap((map['flowAnalyticsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName']! as String).input(),
+      format: map['format'] == null ? null : (FlowLogFormatParameters.fromMap((map['format']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       networkWatcherName: (map['networkWatcherName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicyParameters.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicyParameters.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
       storageId: (map['storageId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       targetResourceId: (map['targetResourceId'] as String).input(),
     );
   }

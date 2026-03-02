@@ -95,22 +95,22 @@ class SecuritySolutionRecommendationsEnabled {
 
   factory SecuritySolutionRecommendationsEnabled.fromMap(Map<String, dynamic> map) {
     return SecuritySolutionRecommendationsEnabled(
-      acrAuthentication: map['acrAuthentication'] == null ? null : (map['acrAuthentication'] as bool).input(),
-      agentSendUnutilizedMsg: map['agentSendUnutilizedMsg'] == null ? null : (map['agentSendUnutilizedMsg'] as bool).input(),
-      baseline: map['baseline'] == null ? null : (map['baseline'] as bool).input(),
-      edgeHubMemOptimize: map['edgeHubMemOptimize'] == null ? null : (map['edgeHubMemOptimize'] as bool).input(),
-      edgeLoggingOption: map['edgeLoggingOption'] == null ? null : (map['edgeLoggingOption'] as bool).input(),
-      inconsistentModuleSettings: map['inconsistentModuleSettings'] == null ? null : (map['inconsistentModuleSettings'] as bool).input(),
-      installAgent: map['installAgent'] == null ? null : (map['installAgent'] as bool).input(),
-      ipFilterDenyAll: map['ipFilterDenyAll'] == null ? null : (map['ipFilterDenyAll'] as bool).input(),
-      ipFilterPermissiveRule: map['ipFilterPermissiveRule'] == null ? null : (map['ipFilterPermissiveRule'] as bool).input(),
-      openPorts: map['openPorts'] == null ? null : (map['openPorts'] as bool).input(),
-      permissiveFirewallPolicy: map['permissiveFirewallPolicy'] == null ? null : (map['permissiveFirewallPolicy'] as bool).input(),
-      permissiveInputFirewallRules: map['permissiveInputFirewallRules'] == null ? null : (map['permissiveInputFirewallRules'] as bool).input(),
-      permissiveOutputFirewallRules: map['permissiveOutputFirewallRules'] == null ? null : (map['permissiveOutputFirewallRules'] as bool).input(),
-      privilegedDockerOptions: map['privilegedDockerOptions'] == null ? null : (map['privilegedDockerOptions'] as bool).input(),
-      sharedCredentials: map['sharedCredentials'] == null ? null : (map['sharedCredentials'] as bool).input(),
-      vulnerableTlsCipherSuite: map['vulnerableTlsCipherSuite'] == null ? null : (map['vulnerableTlsCipherSuite'] as bool).input(),
+      acrAuthentication: map['acrAuthentication'] == null ? null : (map['acrAuthentication']! as bool).input(),
+      agentSendUnutilizedMsg: map['agentSendUnutilizedMsg'] == null ? null : (map['agentSendUnutilizedMsg']! as bool).input(),
+      baseline: map['baseline'] == null ? null : (map['baseline']! as bool).input(),
+      edgeHubMemOptimize: map['edgeHubMemOptimize'] == null ? null : (map['edgeHubMemOptimize']! as bool).input(),
+      edgeLoggingOption: map['edgeLoggingOption'] == null ? null : (map['edgeLoggingOption']! as bool).input(),
+      inconsistentModuleSettings: map['inconsistentModuleSettings'] == null ? null : (map['inconsistentModuleSettings']! as bool).input(),
+      installAgent: map['installAgent'] == null ? null : (map['installAgent']! as bool).input(),
+      ipFilterDenyAll: map['ipFilterDenyAll'] == null ? null : (map['ipFilterDenyAll']! as bool).input(),
+      ipFilterPermissiveRule: map['ipFilterPermissiveRule'] == null ? null : (map['ipFilterPermissiveRule']! as bool).input(),
+      openPorts: map['openPorts'] == null ? null : (map['openPorts']! as bool).input(),
+      permissiveFirewallPolicy: map['permissiveFirewallPolicy'] == null ? null : (map['permissiveFirewallPolicy']! as bool).input(),
+      permissiveInputFirewallRules: map['permissiveInputFirewallRules'] == null ? null : (map['permissiveInputFirewallRules']! as bool).input(),
+      permissiveOutputFirewallRules: map['permissiveOutputFirewallRules'] == null ? null : (map['permissiveOutputFirewallRules']! as bool).input(),
+      privilegedDockerOptions: map['privilegedDockerOptions'] == null ? null : (map['privilegedDockerOptions']! as bool).input(),
+      sharedCredentials: map['sharedCredentials'] == null ? null : (map['sharedCredentials']! as bool).input(),
+      vulnerableTlsCipherSuite: map['vulnerableTlsCipherSuite'] == null ? null : (map['vulnerableTlsCipherSuite']! as bool).input(),
     );
   }
 }

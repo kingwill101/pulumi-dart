@@ -42,11 +42,11 @@ class GceRegionalPersistentDiskWorkstationsV1beta {
 
   factory GceRegionalPersistentDiskWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return GceRegionalPersistentDiskWorkstationsV1beta(
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      reclaimPolicy: map['reclaimPolicy'] == null ? null : (GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta.fromValue(map['reclaimPolicy'] as String)).input(),
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as int).input(),
-      sourceSnapshot: map['sourceSnapshot'] == null ? null : (map['sourceSnapshot'] as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      reclaimPolicy: map['reclaimPolicy'] == null ? null : (GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta.fromValue(map['reclaimPolicy']! as String)).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as int).input(),
+      sourceSnapshot: map['sourceSnapshot'] == null ? null : (map['sourceSnapshot']! as String).input(),
     );
   }
 }

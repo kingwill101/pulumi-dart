@@ -27,8 +27,8 @@ class SecurityPolicyWebApplicationFirewallAssociationResponse {
 
   factory SecurityPolicyWebApplicationFirewallAssociationResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyWebApplicationFirewallAssociationResponse(
-      domains: map['domains'] == null ? null : (pulumi.Input.decodeList<ActivatedResourceReferenceResponse>(map['domains'], (value) => ActivatedResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      patternsToMatch: map['patternsToMatch'] == null ? null : ((map['patternsToMatch'] as List).cast<String>()).input(),
+      domains: map['domains'] == null ? null : (pulumi.Input.decodeList<ActivatedResourceReferenceResponse>(map['domains']!, (value) => ActivatedResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      patternsToMatch: map['patternsToMatch'] == null ? null : ((map['patternsToMatch']! as List).cast<String>()).input(),
     );
   }
 }

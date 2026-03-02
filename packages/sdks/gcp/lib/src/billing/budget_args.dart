@@ -69,13 +69,13 @@ class BudgetArgs {
 
   factory BudgetArgs.fromMap(Map<String, dynamic> map) {
     return BudgetArgs(
-      allUpdatesRule: map['allUpdatesRule'] == null ? null : (BudgetAllUpdatesRule.fromMap((map['allUpdatesRule'] as Map).cast<String, dynamic>())).input(),
+      allUpdatesRule: map['allUpdatesRule'] == null ? null : (BudgetAllUpdatesRule.fromMap((map['allUpdatesRule']! as Map).cast<String, dynamic>())).input(),
       amount: (BudgetAmount.fromMap((map['amount'] as Map).cast<String, dynamic>())).input(),
       billingAccount: (map['billingAccount'] as String).input(),
-      budgetFilter: map['budgetFilter'] == null ? null : (BudgetBudgetFilter.fromMap((map['budgetFilter'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      ownershipScope: map['ownershipScope'] == null ? null : (map['ownershipScope'] as String).input(),
-      thresholdRules: map['thresholdRules'] == null ? null : (pulumi.Input.decodeList<BudgetThresholdRule>(map['thresholdRules'], (value) => BudgetThresholdRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      budgetFilter: map['budgetFilter'] == null ? null : (BudgetBudgetFilter.fromMap((map['budgetFilter']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      ownershipScope: map['ownershipScope'] == null ? null : (map['ownershipScope']! as String).input(),
+      thresholdRules: map['thresholdRules'] == null ? null : (pulumi.Input.decodeList<BudgetThresholdRule>(map['thresholdRules']!, (value) => BudgetThresholdRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

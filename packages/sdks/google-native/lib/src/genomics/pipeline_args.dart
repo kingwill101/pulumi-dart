@@ -62,13 +62,13 @@ class PipelineArgs {
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      docker: map['docker'] == null ? null : (DockerExecutor.fromMap((map['docker'] as Map).cast<String, dynamic>())).input(),
-      inputParameters: map['inputParameters'] == null ? null : (pulumi.Input.decodeList<PipelineParameter>(map['inputParameters'], (value) => PipelineParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputParameters: map['outputParameters'] == null ? null : (pulumi.Input.decodeList<PipelineParameter>(map['outputParameters'], (value) => PipelineParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pipelineId: map['pipelineId'] == null ? null : (map['pipelineId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      docker: map['docker'] == null ? null : (DockerExecutor.fromMap((map['docker']! as Map).cast<String, dynamic>())).input(),
+      inputParameters: map['inputParameters'] == null ? null : (pulumi.Input.decodeList<PipelineParameter>(map['inputParameters']!, (value) => PipelineParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outputParameters: map['outputParameters'] == null ? null : (pulumi.Input.decodeList<PipelineParameter>(map['outputParameters']!, (value) => PipelineParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pipelineId: map['pipelineId'] == null ? null : (map['pipelineId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       resources: (PipelineResources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -52,12 +52,12 @@ class DocumentDbOutputDataSourceResponse {
 
   factory DocumentDbOutputDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return DocumentDbOutputDataSourceResponse(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
-      collectionNamePattern: map['collectionNamePattern'] == null ? null : (map['collectionNamePattern'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      documentId: map['documentId'] == null ? null : (map['documentId'] as String).input(),
-      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
+      collectionNamePattern: map['collectionNamePattern'] == null ? null : (map['collectionNamePattern']! as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      documentId: map['documentId'] == null ? null : (map['documentId']! as String).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -105,23 +105,23 @@ class SftpServerLinkedService {
 
   factory SftpServerLinkedService.fromMap(Map<String, dynamic> map) {
     return SftpServerLinkedService(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
       host: (map['host']).input(),
-      hostKeyFingerprint: map['hostKeyFingerprint'] == null ? null : (map['hostKeyFingerprint']).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      passPhrase: map['passPhrase'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['passPhrase'] as Map).cast<String, dynamic>())).input(),
-      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port']).input(),
-      privateKeyContent: map['privateKeyContent'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['privateKeyContent'] as Map).cast<String, dynamic>())).input(),
-      privateKeyPath: map['privateKeyPath'] == null ? null : (map['privateKeyPath']).input(),
-      skipHostKeyValidation: map['skipHostKeyValidation'] == null ? null : (map['skipHostKeyValidation']).input(),
+      hostKeyFingerprint: map['hostKeyFingerprint'] == null ? null : (map['hostKeyFingerprint']!).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters']!, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      passPhrase: map['passPhrase'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['passPhrase']! as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']!).input(),
+      privateKeyContent: map['privateKeyContent'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['privateKeyContent']! as Map).cast<String, dynamic>())).input(),
+      privateKeyPath: map['privateKeyPath'] == null ? null : (map['privateKeyPath']!).input(),
+      skipHostKeyValidation: map['skipHostKeyValidation'] == null ? null : (map['skipHostKeyValidation']!).input(),
       type: (map['type'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName']).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']!).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

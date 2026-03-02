@@ -103,22 +103,22 @@ class VirtualMachineState {
 
   factory VirtualMachineState.fromMap(Map<String, dynamic> map) {
     return VirtualMachineState(
-      assessment: map['assessment'] == null ? null : (VirtualMachineAssessment.fromMap((map['assessment'] as Map).cast<String, dynamic>())).input(),
-      autoBackup: map['autoBackup'] == null ? null : (VirtualMachineAutoBackup.fromMap((map['autoBackup'] as Map).cast<String, dynamic>())).input(),
-      autoPatching: map['autoPatching'] == null ? null : (VirtualMachineAutoPatching.fromMap((map['autoPatching'] as Map).cast<String, dynamic>())).input(),
-      keyVaultCredential: map['keyVaultCredential'] == null ? null : (VirtualMachineKeyVaultCredential.fromMap((map['keyVaultCredential'] as Map).cast<String, dynamic>())).input(),
-      rServicesEnabled: map['rServicesEnabled'] == null ? null : (map['rServicesEnabled'] as bool).input(),
-      sqlConnectivityPort: map['sqlConnectivityPort'] == null ? null : (map['sqlConnectivityPort'] as int).input(),
-      sqlConnectivityType: map['sqlConnectivityType'] == null ? null : (map['sqlConnectivityType'] as String).input(),
-      sqlConnectivityUpdatePassword: map['sqlConnectivityUpdatePassword'] == null ? null : (map['sqlConnectivityUpdatePassword'] as String).input(),
-      sqlConnectivityUpdateUsername: map['sqlConnectivityUpdateUsername'] == null ? null : (map['sqlConnectivityUpdateUsername'] as String).input(),
-      sqlInstance: map['sqlInstance'] == null ? null : (VirtualMachineSqlInstance.fromMap((map['sqlInstance'] as Map).cast<String, dynamic>())).input(),
-      sqlLicenseType: map['sqlLicenseType'] == null ? null : (map['sqlLicenseType'] as String).input(),
-      sqlVirtualMachineGroupId: map['sqlVirtualMachineGroupId'] == null ? null : (map['sqlVirtualMachineGroupId'] as String).input(),
-      storageConfiguration: map['storageConfiguration'] == null ? null : (VirtualMachineStorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
-      wsfcDomainCredential: map['wsfcDomainCredential'] == null ? null : (VirtualMachineWsfcDomainCredential.fromMap((map['wsfcDomainCredential'] as Map).cast<String, dynamic>())).input(),
+      assessment: map['assessment'] == null ? null : (VirtualMachineAssessment.fromMap((map['assessment']! as Map).cast<String, dynamic>())).input(),
+      autoBackup: map['autoBackup'] == null ? null : (VirtualMachineAutoBackup.fromMap((map['autoBackup']! as Map).cast<String, dynamic>())).input(),
+      autoPatching: map['autoPatching'] == null ? null : (VirtualMachineAutoPatching.fromMap((map['autoPatching']! as Map).cast<String, dynamic>())).input(),
+      keyVaultCredential: map['keyVaultCredential'] == null ? null : (VirtualMachineKeyVaultCredential.fromMap((map['keyVaultCredential']! as Map).cast<String, dynamic>())).input(),
+      rServicesEnabled: map['rServicesEnabled'] == null ? null : (map['rServicesEnabled']! as bool).input(),
+      sqlConnectivityPort: map['sqlConnectivityPort'] == null ? null : (map['sqlConnectivityPort']! as int).input(),
+      sqlConnectivityType: map['sqlConnectivityType'] == null ? null : (map['sqlConnectivityType']! as String).input(),
+      sqlConnectivityUpdatePassword: map['sqlConnectivityUpdatePassword'] == null ? null : (map['sqlConnectivityUpdatePassword']! as String).input(),
+      sqlConnectivityUpdateUsername: map['sqlConnectivityUpdateUsername'] == null ? null : (map['sqlConnectivityUpdateUsername']! as String).input(),
+      sqlInstance: map['sqlInstance'] == null ? null : (VirtualMachineSqlInstance.fromMap((map['sqlInstance']! as Map).cast<String, dynamic>())).input(),
+      sqlLicenseType: map['sqlLicenseType'] == null ? null : (map['sqlLicenseType']! as String).input(),
+      sqlVirtualMachineGroupId: map['sqlVirtualMachineGroupId'] == null ? null : (map['sqlVirtualMachineGroupId']! as String).input(),
+      storageConfiguration: map['storageConfiguration'] == null ? null : (VirtualMachineStorageConfiguration.fromMap((map['storageConfiguration']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId']! as String).input(),
+      wsfcDomainCredential: map['wsfcDomainCredential'] == null ? null : (VirtualMachineWsfcDomainCredential.fromMap((map['wsfcDomainCredential']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

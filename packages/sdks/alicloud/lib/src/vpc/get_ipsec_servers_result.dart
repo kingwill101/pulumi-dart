@@ -56,12 +56,12 @@ class GetIpsecServersResult {
     return GetIpsecServersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ipsecServerName: map['ipsecServerName'] == null ? null : map['ipsecServerName'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      ipsecServerName: map['ipsecServerName'] == null ? null : map['ipsecServerName']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       servers: pulumi.Input.decodeList<GetIpsecServersServer>(map['servers'], (value) => GetIpsecServersServer.fromMap((value as Map).cast<String, dynamic>())),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : map['vpnGatewayId'] as String,
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : map['vpnGatewayId']! as String,
     );
   }
 }

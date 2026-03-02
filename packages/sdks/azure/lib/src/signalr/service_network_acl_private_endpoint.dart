@@ -36,8 +36,8 @@ class ServiceNetworkAclPrivateEndpoint {
 
   factory ServiceNetworkAclPrivateEndpoint.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkAclPrivateEndpoint(
-      allowedRequestTypes: map['allowedRequestTypes'] == null ? null : ((map['allowedRequestTypes'] as List).cast<String>()).input(),
-      deniedRequestTypes: map['deniedRequestTypes'] == null ? null : ((map['deniedRequestTypes'] as List).cast<String>()).input(),
+      allowedRequestTypes: map['allowedRequestTypes'] == null ? null : ((map['allowedRequestTypes']! as List).cast<String>()).input(),
+      deniedRequestTypes: map['deniedRequestTypes'] == null ? null : ((map['deniedRequestTypes']! as List).cast<String>()).input(),
       id: (map['id'] as String).input(),
     );
   }

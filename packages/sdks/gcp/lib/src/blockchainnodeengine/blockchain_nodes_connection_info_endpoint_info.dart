@@ -27,8 +27,8 @@ class BlockchainNodesConnectionInfoEndpointInfo {
 
   factory BlockchainNodesConnectionInfoEndpointInfo.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesConnectionInfoEndpointInfo(
-      jsonRpcApiEndpoint: map['jsonRpcApiEndpoint'] == null ? null : (map['jsonRpcApiEndpoint'] as String).input(),
-      websocketsApiEndpoint: map['websocketsApiEndpoint'] == null ? null : (map['websocketsApiEndpoint'] as String).input(),
+      jsonRpcApiEndpoint: map['jsonRpcApiEndpoint'] == null ? null : (map['jsonRpcApiEndpoint']! as String).input(),
+      websocketsApiEndpoint: map['websocketsApiEndpoint'] == null ? null : (map['websocketsApiEndpoint']! as String).input(),
     );
   }
 }

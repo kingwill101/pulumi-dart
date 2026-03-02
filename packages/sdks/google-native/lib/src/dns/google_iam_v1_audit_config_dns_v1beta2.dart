@@ -27,8 +27,8 @@ class GoogleIamV1AuditConfigDnsV1beta2 {
 
   factory GoogleIamV1AuditConfigDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return GoogleIamV1AuditConfigDnsV1beta2(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditLogConfigDnsV1beta2>(map['auditLogConfigs'], (value) => GoogleIamV1AuditLogConfigDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditLogConfigDnsV1beta2>(map['auditLogConfigs']!, (value) => GoogleIamV1AuditLogConfigDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

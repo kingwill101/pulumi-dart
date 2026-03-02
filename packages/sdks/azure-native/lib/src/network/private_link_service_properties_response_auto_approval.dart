@@ -21,7 +21,7 @@ class PrivateLinkServicePropertiesResponseAutoApproval {
 
   factory PrivateLinkServicePropertiesResponseAutoApproval.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServicePropertiesResponseAutoApproval(
-      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions'] as List).cast<String>()).input(),
+      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions']! as List).cast<String>()).input(),
     );
   }
 }

@@ -40,11 +40,11 @@ class GetManagedRuleGroupRuleAction {
 
   factory GetManagedRuleGroupRuleAction.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleAction(
-      allows: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionAllow>(map['allows'], (value) => GetManagedRuleGroupRuleActionAllow.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      blocks: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionBlock>(map['blocks'], (value) => GetManagedRuleGroupRuleActionBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      captchas: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCaptcha>(map['captchas'], (value) => GetManagedRuleGroupRuleActionCaptcha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      challenges: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionChallenge>(map['challenges'], (value) => GetManagedRuleGroupRuleActionChallenge.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      counts: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCount>(map['counts'], (value) => GetManagedRuleGroupRuleActionCount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allows: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionAllow>(map['allows']!, (value) => GetManagedRuleGroupRuleActionAllow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      blocks: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionBlock>(map['blocks']!, (value) => GetManagedRuleGroupRuleActionBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      captchas: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCaptcha>(map['captchas']!, (value) => GetManagedRuleGroupRuleActionCaptcha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      challenges: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionChallenge>(map['challenges']!, (value) => GetManagedRuleGroupRuleActionChallenge.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      counts: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCount>(map['counts']!, (value) => GetManagedRuleGroupRuleActionCount.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

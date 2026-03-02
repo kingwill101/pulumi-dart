@@ -36,7 +36,7 @@ class GetFileCrc64ChecksumResult {
       checksum: map['checksum'] as String,
       filename: map['filename'] as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

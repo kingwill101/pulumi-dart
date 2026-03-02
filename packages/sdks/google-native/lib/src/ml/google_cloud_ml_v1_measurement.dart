@@ -27,8 +27,8 @@ class GoogleCloudMlV1Measurement {
 
   factory GoogleCloudMlV1Measurement.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1Measurement(
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1MeasurementMetric>(map['metrics'], (value) => GoogleCloudMlV1MeasurementMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stepCount: map['stepCount'] == null ? null : (map['stepCount'] as String).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1MeasurementMetric>(map['metrics']!, (value) => GoogleCloudMlV1MeasurementMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stepCount: map['stepCount'] == null ? null : (map['stepCount']! as String).input(),
     );
   }
 }

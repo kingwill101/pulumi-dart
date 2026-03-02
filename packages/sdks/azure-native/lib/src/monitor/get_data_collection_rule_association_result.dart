@@ -73,9 +73,9 @@ class GetDataCollectionRuleAssociationResult {
   factory GetDataCollectionRuleAssociationResult.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleAssociationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dataCollectionEndpointId: map['dataCollectionEndpointId'] == null ? null : map['dataCollectionEndpointId'] as String,
-      dataCollectionRuleId: map['dataCollectionRuleId'] == null ? null : map['dataCollectionRuleId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      dataCollectionEndpointId: map['dataCollectionEndpointId'] == null ? null : map['dataCollectionEndpointId']! as String,
+      dataCollectionRuleId: map['dataCollectionRuleId'] == null ? null : map['dataCollectionRuleId']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
       metadata: DataCollectionRuleAssociationResponseMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),

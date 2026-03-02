@@ -40,10 +40,10 @@ class VolumePropertiesResponseDataProtection {
 
   factory VolumePropertiesResponseDataProtection.fromMap(Map<String, dynamic> map) {
     return VolumePropertiesResponseDataProtection(
-      backup: map['backup'] == null ? null : (VolumeBackupPropertiesResponse.fromMap((map['backup'] as Map).cast<String, dynamic>())).input(),
-      replication: map['replication'] == null ? null : (ReplicationObjectResponse.fromMap((map['replication'] as Map).cast<String, dynamic>())).input(),
-      snapshot: map['snapshot'] == null ? null : (VolumeSnapshotPropertiesResponse.fromMap((map['snapshot'] as Map).cast<String, dynamic>())).input(),
-      volumeRelocation: map['volumeRelocation'] == null ? null : (VolumeRelocationPropertiesResponse.fromMap((map['volumeRelocation'] as Map).cast<String, dynamic>())).input(),
+      backup: map['backup'] == null ? null : (VolumeBackupPropertiesResponse.fromMap((map['backup']! as Map).cast<String, dynamic>())).input(),
+      replication: map['replication'] == null ? null : (ReplicationObjectResponse.fromMap((map['replication']! as Map).cast<String, dynamic>())).input(),
+      snapshot: map['snapshot'] == null ? null : (VolumeSnapshotPropertiesResponse.fromMap((map['snapshot']! as Map).cast<String, dynamic>())).input(),
+      volumeRelocation: map['volumeRelocation'] == null ? null : (VolumeRelocationPropertiesResponse.fromMap((map['volumeRelocation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

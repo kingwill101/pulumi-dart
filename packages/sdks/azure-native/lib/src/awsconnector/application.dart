@@ -36,10 +36,10 @@ class Application {
 
   factory Application.fromMap(Map<String, dynamic> map) {
     return Application(
-      additionalInfo: map['additionalInfo'] == null ? null : ((map['additionalInfo'] as Map).cast<String, String>()).input(),
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      additionalInfo: map['additionalInfo'] == null ? null : ((map['additionalInfo']! as Map).cast<String, String>()).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

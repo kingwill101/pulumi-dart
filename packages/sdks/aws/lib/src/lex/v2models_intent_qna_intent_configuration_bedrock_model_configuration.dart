@@ -36,10 +36,10 @@ class V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration {
 
   factory V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration(
-      customPrompt: map['customPrompt'] == null ? null : (map['customPrompt'] as String).input(),
-      guardrail: map['guardrail'] == null ? null : (V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail.fromMap((map['guardrail'] as Map).cast<String, dynamic>())).input(),
+      customPrompt: map['customPrompt'] == null ? null : ((map['customPrompt'] as String).input()).input(),
+      guardrail: map['guardrail'] == null ? null : ((V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail.fromMap((map['guardrail']! as Map).cast<String, dynamic>())).input()).input(),
       modelArn: (map['modelArn'] as String).input(),
-      traceStatus: map['traceStatus'] == null ? null : (map['traceStatus'] as String).input(),
+      traceStatus: map['traceStatus'] == null ? null : ((map['traceStatus'] as String).input()).input(),
     );
   }
 }

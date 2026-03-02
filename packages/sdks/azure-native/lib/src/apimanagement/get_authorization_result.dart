@@ -61,14 +61,14 @@ class GetAuthorizationResult {
 
   factory GetAuthorizationResult.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationResult(
-      authorizationType: map['authorizationType'] == null ? null : map['authorizationType'] as String,
+      authorizationType: map['authorizationType'] == null ? null : map['authorizationType']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      error: map['error'] == null ? null : AuthorizationErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      error: map['error'] == null ? null : AuthorizationErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
-      oAuth2GrantType: map['oAuth2GrantType'] == null ? null : map['oAuth2GrantType'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      status: map['status'] == null ? null : map['status'] as String,
+      oAuth2GrantType: map['oAuth2GrantType'] == null ? null : map['oAuth2GrantType']! as String,
+      parameters: map['parameters'] == null ? null : (map['parameters']! as Map).cast<String, String>(),
+      status: map['status'] == null ? null : map['status']! as String,
       type: map['type'] as String,
     );
   }

@@ -47,8 +47,8 @@ class ContactArgs {
       alertNotifications: (map['alertNotifications'] as bool).input(),
       alertsToAdmins: (map['alertsToAdmins'] as bool).input(),
       email: (map['email'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
     );
   }
 }

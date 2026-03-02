@@ -33,9 +33,9 @@ class RiskConfigurationAccountTakeoverRiskConfigurationActions {
 
   factory RiskConfigurationAccountTakeoverRiskConfigurationActions.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationAccountTakeoverRiskConfigurationActions(
-      highAction: map['highAction'] == null ? null : (RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction.fromMap((map['highAction'] as Map).cast<String, dynamic>())).input(),
-      lowAction: map['lowAction'] == null ? null : (RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction.fromMap((map['lowAction'] as Map).cast<String, dynamic>())).input(),
-      mediumAction: map['mediumAction'] == null ? null : (RiskConfigurationAccountTakeoverRiskConfigurationActionsMediumAction.fromMap((map['mediumAction'] as Map).cast<String, dynamic>())).input(),
+      highAction: map['highAction'] == null ? null : ((RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction.fromMap((map['highAction']! as Map).cast<String, dynamic>())).input()).input(),
+      lowAction: map['lowAction'] == null ? null : ((RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction.fromMap((map['lowAction']! as Map).cast<String, dynamic>())).input()).input(),
+      mediumAction: map['mediumAction'] == null ? null : ((RiskConfigurationAccountTakeoverRiskConfigurationActionsMediumAction.fromMap((map['mediumAction']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

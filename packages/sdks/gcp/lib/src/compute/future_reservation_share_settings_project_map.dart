@@ -26,7 +26,7 @@ class FutureReservationShareSettingsProjectMap {
   factory FutureReservationShareSettingsProjectMap.fromMap(Map<String, dynamic> map) {
     return FutureReservationShareSettingsProjectMap(
       id: (map['id'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
     );
   }
 }

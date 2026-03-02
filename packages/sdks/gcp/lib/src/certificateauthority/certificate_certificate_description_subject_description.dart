@@ -56,12 +56,12 @@ class CertificateCertificateDescriptionSubjectDescription {
 
   factory CertificateCertificateDescriptionSubjectDescription.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionSubjectDescription(
-      hexSerialNumber: map['hexSerialNumber'] == null ? null : (map['hexSerialNumber'] as String).input(),
-      lifetime: map['lifetime'] == null ? null : (map['lifetime'] as String).input(),
-      notAfterTime: map['notAfterTime'] == null ? null : (map['notAfterTime'] as String).input(),
-      notBeforeTime: map['notBeforeTime'] == null ? null : (map['notBeforeTime'] as String).input(),
-      subjectAltNames: map['subjectAltNames'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName>(map['subjectAltNames'], (value) => CertificateCertificateDescriptionSubjectDescriptionSubjectAltName.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubject>(map['subjects'], (value) => CertificateCertificateDescriptionSubjectDescriptionSubject.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hexSerialNumber: map['hexSerialNumber'] == null ? null : (map['hexSerialNumber']! as String).input(),
+      lifetime: map['lifetime'] == null ? null : (map['lifetime']! as String).input(),
+      notAfterTime: map['notAfterTime'] == null ? null : (map['notAfterTime']! as String).input(),
+      notBeforeTime: map['notBeforeTime'] == null ? null : (map['notBeforeTime']! as String).input(),
+      subjectAltNames: map['subjectAltNames'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName>(map['subjectAltNames']!, (value) => CertificateCertificateDescriptionSubjectDescriptionSubjectAltName.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubject>(map['subjects']!, (value) => CertificateCertificateDescriptionSubjectDescriptionSubject.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

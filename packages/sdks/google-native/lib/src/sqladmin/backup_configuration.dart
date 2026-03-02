@@ -62,15 +62,15 @@ class BackupConfiguration {
 
   factory BackupConfiguration.fromMap(Map<String, dynamic> map) {
     return BackupConfiguration(
-      backupRetentionSettings: map['backupRetentionSettings'] == null ? null : (BackupRetentionSettings.fromMap((map['backupRetentionSettings'] as Map).cast<String, dynamic>())).input(),
-      binaryLogEnabled: map['binaryLogEnabled'] == null ? null : (map['binaryLogEnabled'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      pointInTimeRecoveryEnabled: map['pointInTimeRecoveryEnabled'] == null ? null : (map['pointInTimeRecoveryEnabled'] as bool).input(),
-      replicationLogArchivingEnabled: map['replicationLogArchivingEnabled'] == null ? null : (map['replicationLogArchivingEnabled'] as bool).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      transactionLogRetentionDays: map['transactionLogRetentionDays'] == null ? null : (map['transactionLogRetentionDays'] as int).input(),
+      backupRetentionSettings: map['backupRetentionSettings'] == null ? null : (BackupRetentionSettings.fromMap((map['backupRetentionSettings']! as Map).cast<String, dynamic>())).input(),
+      binaryLogEnabled: map['binaryLogEnabled'] == null ? null : (map['binaryLogEnabled']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      pointInTimeRecoveryEnabled: map['pointInTimeRecoveryEnabled'] == null ? null : (map['pointInTimeRecoveryEnabled']! as bool).input(),
+      replicationLogArchivingEnabled: map['replicationLogArchivingEnabled'] == null ? null : (map['replicationLogArchivingEnabled']! as bool).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      transactionLogRetentionDays: map['transactionLogRetentionDays'] == null ? null : (map['transactionLogRetentionDays']! as int).input(),
     );
   }
 }

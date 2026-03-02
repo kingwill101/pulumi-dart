@@ -25,8 +25,8 @@ class GatewayRouteSpecHttp2RouteMatchHostname {
 
   factory GatewayRouteSpecHttp2RouteMatchHostname.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttp2RouteMatchHostname(
-      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
+      exact: map['exact'] == null ? null : ((map['exact'] as String).input()).input(),
+      suffix: map['suffix'] == null ? null : ((map['suffix'] as String).input()).input(),
     );
   }
 }

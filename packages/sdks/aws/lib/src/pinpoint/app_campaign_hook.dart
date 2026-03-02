@@ -30,9 +30,9 @@ class AppCampaignHook {
 
   factory AppCampaignHook.fromMap(Map<String, dynamic> map) {
     return AppCampaignHook(
-      lambdaFunctionName: map['lambdaFunctionName'] == null ? null : (map['lambdaFunctionName'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      webUrl: map['webUrl'] == null ? null : (map['webUrl'] as String).input(),
+      lambdaFunctionName: map['lambdaFunctionName'] == null ? null : ((map['lambdaFunctionName'] as String).input()).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
+      webUrl: map['webUrl'] == null ? null : ((map['webUrl'] as String).input()).input(),
     );
   }
 }

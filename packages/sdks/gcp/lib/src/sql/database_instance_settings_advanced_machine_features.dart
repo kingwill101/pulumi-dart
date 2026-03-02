@@ -20,7 +20,7 @@ class DatabaseInstanceSettingsAdvancedMachineFeatures {
 
   factory DatabaseInstanceSettingsAdvancedMachineFeatures.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsAdvancedMachineFeatures(
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore'] as int).input(),
+      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore']! as int).input(),
     );
   }
 }

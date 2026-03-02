@@ -26,8 +26,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
 
   factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig(
-      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount'] as String).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
+      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount']! as String).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
     );
   }
 }

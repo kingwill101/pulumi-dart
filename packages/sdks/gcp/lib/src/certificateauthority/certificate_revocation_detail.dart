@@ -27,8 +27,8 @@ class CertificateRevocationDetail {
 
   factory CertificateRevocationDetail.fromMap(Map<String, dynamic> map) {
     return CertificateRevocationDetail(
-      revocationState: map['revocationState'] == null ? null : (map['revocationState'] as String).input(),
-      revocationTime: map['revocationTime'] == null ? null : (map['revocationTime'] as String).input(),
+      revocationState: map['revocationState'] == null ? null : (map['revocationState']! as String).input(),
+      revocationTime: map['revocationTime'] == null ? null : (map['revocationTime']! as String).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class MaintenanceRedeployStatusResponse {
 
   factory MaintenanceRedeployStatusResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceRedeployStatusResponse(
-      isCustomerInitiatedMaintenanceAllowed: map['isCustomerInitiatedMaintenanceAllowed'] == null ? null : (map['isCustomerInitiatedMaintenanceAllowed'] as bool).input(),
-      lastOperationMessage: map['lastOperationMessage'] == null ? null : (map['lastOperationMessage'] as String).input(),
-      lastOperationResultCode: map['lastOperationResultCode'] == null ? null : (map['lastOperationResultCode'] as String).input(),
-      maintenanceWindowEndTime: map['maintenanceWindowEndTime'] == null ? null : (map['maintenanceWindowEndTime'] as String).input(),
-      maintenanceWindowStartTime: map['maintenanceWindowStartTime'] == null ? null : (map['maintenanceWindowStartTime'] as String).input(),
-      preMaintenanceWindowEndTime: map['preMaintenanceWindowEndTime'] == null ? null : (map['preMaintenanceWindowEndTime'] as String).input(),
-      preMaintenanceWindowStartTime: map['preMaintenanceWindowStartTime'] == null ? null : (map['preMaintenanceWindowStartTime'] as String).input(),
+      isCustomerInitiatedMaintenanceAllowed: map['isCustomerInitiatedMaintenanceAllowed'] == null ? null : (map['isCustomerInitiatedMaintenanceAllowed']! as bool).input(),
+      lastOperationMessage: map['lastOperationMessage'] == null ? null : (map['lastOperationMessage']! as String).input(),
+      lastOperationResultCode: map['lastOperationResultCode'] == null ? null : (map['lastOperationResultCode']! as String).input(),
+      maintenanceWindowEndTime: map['maintenanceWindowEndTime'] == null ? null : (map['maintenanceWindowEndTime']! as String).input(),
+      maintenanceWindowStartTime: map['maintenanceWindowStartTime'] == null ? null : (map['maintenanceWindowStartTime']! as String).input(),
+      preMaintenanceWindowEndTime: map['preMaintenanceWindowEndTime'] == null ? null : (map['preMaintenanceWindowEndTime']! as String).input(),
+      preMaintenanceWindowStartTime: map['preMaintenanceWindowStartTime'] == null ? null : (map['preMaintenanceWindowStartTime']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class BucketLifecycleRuleFilterNot {
 
   factory BucketLifecycleRuleFilterNot.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleFilterNot(
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      tag: map['tag'] == null ? null : (BucketLifecycleRuleFilterNotTag.fromMap((map['tag'] as Map).cast<String, dynamic>())).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      tag: map['tag'] == null ? null : (BucketLifecycleRuleFilterNotTag.fromMap((map['tag']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       diskId: (map['diskId'] as String).input(),
       ensRegionId: (map['ensRegionId'] as String).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName']! as String).input(),
     );
   }
 }

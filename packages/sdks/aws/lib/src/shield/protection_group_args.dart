@@ -50,11 +50,11 @@ class ProtectionGroupArgs {
   factory ProtectionGroupArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionGroupArgs(
       aggregation: (map['aggregation'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      members: map['members'] == null ? null : (((map['members'] as List).cast<String>()).input()).input(),
       pattern: (map['pattern'] as String).input(),
       protectionGroupId: (map['protectionGroupId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

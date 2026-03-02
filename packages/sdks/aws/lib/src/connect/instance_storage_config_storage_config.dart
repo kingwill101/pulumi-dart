@@ -44,10 +44,10 @@ class InstanceStorageConfigStorageConfig {
 
   factory InstanceStorageConfigStorageConfig.fromMap(Map<String, dynamic> map) {
     return InstanceStorageConfigStorageConfig(
-      kinesisFirehoseConfig: map['kinesisFirehoseConfig'] == null ? null : (InstanceStorageConfigStorageConfigKinesisFirehoseConfig.fromMap((map['kinesisFirehoseConfig'] as Map).cast<String, dynamic>())).input(),
-      kinesisStreamConfig: map['kinesisStreamConfig'] == null ? null : (InstanceStorageConfigStorageConfigKinesisStreamConfig.fromMap((map['kinesisStreamConfig'] as Map).cast<String, dynamic>())).input(),
-      kinesisVideoStreamConfig: map['kinesisVideoStreamConfig'] == null ? null : (InstanceStorageConfigStorageConfigKinesisVideoStreamConfig.fromMap((map['kinesisVideoStreamConfig'] as Map).cast<String, dynamic>())).input(),
-      s3Config: map['s3Config'] == null ? null : (InstanceStorageConfigStorageConfigS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>())).input(),
+      kinesisFirehoseConfig: map['kinesisFirehoseConfig'] == null ? null : ((InstanceStorageConfigStorageConfigKinesisFirehoseConfig.fromMap((map['kinesisFirehoseConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      kinesisStreamConfig: map['kinesisStreamConfig'] == null ? null : ((InstanceStorageConfigStorageConfigKinesisStreamConfig.fromMap((map['kinesisStreamConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      kinesisVideoStreamConfig: map['kinesisVideoStreamConfig'] == null ? null : ((InstanceStorageConfigStorageConfigKinesisVideoStreamConfig.fromMap((map['kinesisVideoStreamConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      s3Config: map['s3Config'] == null ? null : ((InstanceStorageConfigStorageConfigS3Config.fromMap((map['s3Config']! as Map).cast<String, dynamic>())).input()).input(),
       storageType: (map['storageType'] as String).input(),
     );
   }

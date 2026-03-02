@@ -43,10 +43,10 @@ class FlexVolumeSource {
   factory FlexVolumeSource.fromMap(Map<String, dynamic> map) {
     return FlexVolumeSource(
       driver: (map['driver'] as String).input(),
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      secretRef: map['secretRef'] == null ? null : (LocalObjectReference.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      options: map['options'] == null ? null : ((map['options']! as Map).cast<String, String>()).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      secretRef: map['secretRef'] == null ? null : (LocalObjectReference.fromMap((map['secretRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

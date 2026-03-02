@@ -35,9 +35,9 @@ class ConfigMfa {
 
   factory ConfigMfa.fromMap(Map<String, dynamic> map) {
     return ConfigMfa(
-      enabledProviders: map['enabledProviders'] == null ? null : ((map['enabledProviders'] as List).cast<String>()).input(),
-      providerConfigs: map['providerConfigs'] == null ? null : (pulumi.Input.decodeList<ConfigMfaProviderConfig>(map['providerConfigs'], (value) => ConfigMfaProviderConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      enabledProviders: map['enabledProviders'] == null ? null : ((map['enabledProviders']! as List).cast<String>()).input(),
+      providerConfigs: map['providerConfigs'] == null ? null : (pulumi.Input.decodeList<ConfigMfaProviderConfig>(map['providerConfigs']!, (value) => ConfigMfaProviderConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

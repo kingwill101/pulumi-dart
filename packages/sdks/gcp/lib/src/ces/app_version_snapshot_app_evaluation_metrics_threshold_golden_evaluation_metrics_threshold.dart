@@ -31,8 +31,8 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
 
   factory AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold(
-      expectationLevelMetricsThresholds: map['expectationLevelMetricsThresholds'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold>(map['expectationLevelMetricsThresholds'], (value) => AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      turnLevelMetricsThresholds: map['turnLevelMetricsThresholds'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold>(map['turnLevelMetricsThresholds'], (value) => AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expectationLevelMetricsThresholds: map['expectationLevelMetricsThresholds'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold>(map['expectationLevelMetricsThresholds']!, (value) => AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      turnLevelMetricsThresholds: map['turnLevelMetricsThresholds'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold>(map['turnLevelMetricsThresholds']!, (value) => AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

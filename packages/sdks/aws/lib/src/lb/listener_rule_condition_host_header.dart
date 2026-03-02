@@ -25,8 +25,8 @@ class ListenerRuleConditionHostHeader {
 
   factory ListenerRuleConditionHostHeader.fromMap(Map<String, dynamic> map) {
     return ListenerRuleConditionHostHeader(
-      regexValues: map['regexValues'] == null ? null : ((map['regexValues'] as List).cast<String>()).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      regexValues: map['regexValues'] == null ? null : (((map['regexValues'] as List).cast<String>()).input()).input(),
+      values: map['values'] == null ? null : (((map['values'] as List).cast<String>()).input()).input(),
     );
   }
 }

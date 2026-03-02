@@ -26,8 +26,8 @@ class ControlBoostActionInterpolationBoostSpecControlPoint {
 
   factory ControlBoostActionInterpolationBoostSpecControlPoint.fromMap(Map<String, dynamic> map) {
     return ControlBoostActionInterpolationBoostSpecControlPoint(
-      attributeValue: map['attributeValue'] == null ? null : (map['attributeValue'] as String).input(),
-      boostAmount: map['boostAmount'] == null ? null : (map['boostAmount'] as double).input(),
+      attributeValue: map['attributeValue'] == null ? null : (map['attributeValue']! as String).input(),
+      boostAmount: map['boostAmount'] == null ? null : (map['boostAmount']! as double).input(),
     );
   }
 }

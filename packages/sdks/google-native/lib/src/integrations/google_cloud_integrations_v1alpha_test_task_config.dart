@@ -38,8 +38,8 @@ class GoogleCloudIntegrationsV1alphaTestTaskConfig {
 
   factory GoogleCloudIntegrationsV1alphaTestTaskConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaTestTaskConfig(
-      assertions: map['assertions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaAssertion>(map['assertions'], (value) => GoogleCloudIntegrationsV1alphaAssertion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mockConfig: map['mockConfig'] == null ? null : (GoogleCloudIntegrationsV1alphaMockConfig.fromMap((map['mockConfig'] as Map).cast<String, dynamic>())).input(),
+      assertions: map['assertions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaAssertion>(map['assertions']!, (value) => GoogleCloudIntegrationsV1alphaAssertion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mockConfig: map['mockConfig'] == null ? null : (GoogleCloudIntegrationsV1alphaMockConfig.fromMap((map['mockConfig']! as Map).cast<String, dynamic>())).input(),
       task: (map['task'] as String).input(),
       taskNumber: (map['taskNumber'] as String).input(),
     );

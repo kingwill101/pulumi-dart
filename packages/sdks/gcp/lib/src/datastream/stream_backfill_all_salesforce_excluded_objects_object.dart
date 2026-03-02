@@ -27,8 +27,8 @@ class StreamBackfillAllSalesforceExcludedObjectsObject {
 
   factory StreamBackfillAllSalesforceExcludedObjectsObject.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllSalesforceExcludedObjectsObject(
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllSalesforceExcludedObjectsObjectField>(map['fields'], (value) => StreamBackfillAllSalesforceExcludedObjectsObjectField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      objectName: map['objectName'] == null ? null : (map['objectName'] as String).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllSalesforceExcludedObjectsObjectField>(map['fields']!, (value) => StreamBackfillAllSalesforceExcludedObjectsObjectField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      objectName: map['objectName'] == null ? null : (map['objectName']! as String).input(),
     );
   }
 }

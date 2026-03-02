@@ -85,17 +85,17 @@ class FleetArgs {
   factory FleetArgs.fromMap(Map<String, dynamic> map) {
     return FleetArgs(
       baseCapacity: (map['baseCapacity'] as int).input(),
-      computeConfiguration: map['computeConfiguration'] == null ? null : (FleetComputeConfiguration.fromMap((map['computeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      computeConfiguration: map['computeConfiguration'] == null ? null : ((FleetComputeConfiguration.fromMap((map['computeConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       computeType: (map['computeType'] as String).input(),
       environmentType: (map['environmentType'] as String).input(),
-      fleetServiceRole: map['fleetServiceRole'] == null ? null : (map['fleetServiceRole'] as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      overflowBehavior: map['overflowBehavior'] == null ? null : (map['overflowBehavior'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scalingConfiguration: map['scalingConfiguration'] == null ? null : (FleetScalingConfiguration.fromMap((map['scalingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcConfigs: map['vpcConfigs'] == null ? null : (pulumi.Input.decodeList<FleetVpcConfig>(map['vpcConfigs'], (value) => FleetVpcConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fleetServiceRole: map['fleetServiceRole'] == null ? null : ((map['fleetServiceRole'] as String).input()).input(),
+      imageId: map['imageId'] == null ? null : ((map['imageId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      overflowBehavior: map['overflowBehavior'] == null ? null : ((map['overflowBehavior'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scalingConfiguration: map['scalingConfiguration'] == null ? null : ((FleetScalingConfiguration.fromMap((map['scalingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vpcConfigs: map['vpcConfigs'] == null ? null : ((pulumi.Input.decodeList<FleetVpcConfig>(map['vpcConfigs']!, (value) => FleetVpcConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

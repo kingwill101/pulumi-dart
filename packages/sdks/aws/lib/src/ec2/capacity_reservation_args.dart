@@ -90,19 +90,19 @@ class CapacityReservationArgs {
   factory CapacityReservationArgs.fromMap(Map<String, dynamic> map) {
     return CapacityReservationArgs(
       availabilityZone: (map['availabilityZone'] as String).input(),
-      ebsOptimized: map['ebsOptimized'] == null ? null : (map['ebsOptimized'] as bool).input(),
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      endDateType: map['endDateType'] == null ? null : (map['endDateType'] as String).input(),
-      ephemeralStorage: map['ephemeralStorage'] == null ? null : (map['ephemeralStorage'] as bool).input(),
+      ebsOptimized: map['ebsOptimized'] == null ? null : ((map['ebsOptimized'] as bool).input()).input(),
+      endDate: map['endDate'] == null ? null : ((map['endDate'] as String).input()).input(),
+      endDateType: map['endDateType'] == null ? null : ((map['endDateType'] as String).input()).input(),
+      ephemeralStorage: map['ephemeralStorage'] == null ? null : ((map['ephemeralStorage'] as bool).input()).input(),
       instanceCount: (map['instanceCount'] as int).input(),
-      instanceMatchCriteria: map['instanceMatchCriteria'] == null ? null : (map['instanceMatchCriteria'] as String).input(),
+      instanceMatchCriteria: map['instanceMatchCriteria'] == null ? null : ((map['instanceMatchCriteria'] as String).input()).input(),
       instancePlatform: (map['instancePlatform'] as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
-      placementGroupArn: map['placementGroupArn'] == null ? null : (map['placementGroupArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenancy: map['tenancy'] == null ? null : (map['tenancy'] as String).input(),
+      outpostArn: map['outpostArn'] == null ? null : ((map['outpostArn'] as String).input()).input(),
+      placementGroupArn: map['placementGroupArn'] == null ? null : ((map['placementGroupArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tenancy: map['tenancy'] == null ? null : ((map['tenancy'] as String).input()).input(),
     );
   }
 }

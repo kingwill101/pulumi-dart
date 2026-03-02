@@ -29,7 +29,7 @@ class GetControlsArgs {
 
   factory GetControlsArgs.fromMap(Map<String, dynamic> map) {
     return GetControlsArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       targetIdentifier: (map['targetIdentifier'] as String).input(),
     );
   }

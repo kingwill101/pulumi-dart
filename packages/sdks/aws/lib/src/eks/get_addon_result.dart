@@ -82,7 +82,7 @@ class GetAddonResult {
       createdAt: map['createdAt'] as String,
       id: map['id'] as String,
       modifiedAt: map['modifiedAt'] as String,
-      podIdentityAssociations: pulumi.Input.decodeList<GetAddonPodIdentityAssociation>(map['podIdentityAssociations'], (value) => GetAddonPodIdentityAssociation.fromMap((value as Map).cast<String, dynamic>())),
+      podIdentityAssociations: pulumi.Input.decodeList<GetAddonPodIdentityAssociation>(map['podIdentityAssociations']!, (value) => GetAddonPodIdentityAssociation.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       serviceAccountRoleArn: map['serviceAccountRoleArn'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),

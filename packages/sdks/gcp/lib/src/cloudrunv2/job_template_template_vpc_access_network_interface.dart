@@ -34,9 +34,9 @@ class JobTemplateTemplateVpcAccessNetworkInterface {
 
   factory JobTemplateTemplateVpcAccessNetworkInterface.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateVpcAccessNetworkInterface(
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

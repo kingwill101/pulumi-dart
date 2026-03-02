@@ -33,9 +33,9 @@ class RuntimeClassSpec {
 
   factory RuntimeClassSpec.fromMap(Map<String, dynamic> map) {
     return RuntimeClassSpec(
-      overhead: map['overhead'] == null ? null : (OverheadNodeK8sIoV1alpha1.fromMap((map['overhead'] as Map).cast<String, dynamic>())).input(),
+      overhead: map['overhead'] == null ? null : (OverheadNodeK8sIoV1alpha1.fromMap((map['overhead']! as Map).cast<String, dynamic>())).input(),
       runtimeHandler: (map['runtimeHandler'] as String).input(),
-      scheduling: map['scheduling'] == null ? null : (SchedulingNodeK8sIoV1alpha1.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
+      scheduling: map['scheduling'] == null ? null : (SchedulingNodeK8sIoV1alpha1.fromMap((map['scheduling']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

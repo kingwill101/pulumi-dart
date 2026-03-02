@@ -44,11 +44,11 @@ class ReplicationSubnetGroupArgs {
 
   factory ReplicationSubnetGroupArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationSubnetGroupArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       replicationSubnetGroupDescription: (map['replicationSubnetGroupDescription'] as String).input(),
       replicationSubnetGroupId: (map['replicationSubnetGroupId'] as String).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

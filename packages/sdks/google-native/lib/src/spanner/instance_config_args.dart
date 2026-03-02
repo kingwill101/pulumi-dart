@@ -69,16 +69,16 @@ class InstanceConfigArgs {
 
   factory InstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return InstanceConfigArgs(
-      baseConfig: map['baseConfig'] == null ? null : (map['baseConfig'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      baseConfig: map['baseConfig'] == null ? null : (map['baseConfig']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       instanceConfigId: (map['instanceConfigId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      leaderOptions: map['leaderOptions'] == null ? null : ((map['leaderOptions'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<ReplicaInfo>(map['replicas'], (value) => ReplicaInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      leaderOptions: map['leaderOptions'] == null ? null : ((map['leaderOptions']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<ReplicaInfo>(map['replicas']!, (value) => ReplicaInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly']! as bool).input(),
     );
   }
 }

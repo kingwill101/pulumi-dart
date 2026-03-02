@@ -78,14 +78,14 @@ class GetRuleResult {
 
   factory GetRuleResult.fromMap(Map<String, dynamic> map) {
     return GetRuleResult(
-      actions: map['actions'] == null ? null : pulumi.Input.decodeList<DeliveryRuleCacheExpirationActionResponse>(map['actions'], (value) => DeliveryRuleCacheExpirationActionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      actions: map['actions'] == null ? null : pulumi.Input.decodeList<DeliveryRuleCacheExpirationActionResponse>(map['actions']!, (value) => DeliveryRuleCacheExpirationActionResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<DeliveryRuleClientPortConditionResponse>(map['conditions'], (value) => DeliveryRuleClientPortConditionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<DeliveryRuleClientPortConditionResponse>(map['conditions']!, (value) => DeliveryRuleClientPortConditionResponse.fromMap((value as Map).cast<String, dynamic>())),
       deploymentStatus: map['deploymentStatus'] as String,
       id: map['id'] as String,
-      matchProcessingBehavior: map['matchProcessingBehavior'] == null ? null : map['matchProcessingBehavior'] as String,
+      matchProcessingBehavior: map['matchProcessingBehavior'] == null ? null : map['matchProcessingBehavior']! as String,
       name: map['name'] as String,
-      order: map['order'] == null ? null : map['order'] as int,
+      order: map['order'] == null ? null : map['order']! as int,
       provisioningState: map['provisioningState'] as String,
       ruleSetName: map['ruleSetName'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

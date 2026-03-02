@@ -31,9 +31,9 @@ class MigrationConfiguration {
 
   factory MigrationConfiguration.fromMap(Map<String, dynamic> map) {
     return MigrationConfiguration(
-      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId'] as String).input(),
-      migrationSolutionResourceId: map['migrationSolutionResourceId'] == null ? null : (map['migrationSolutionResourceId'] as String).input(),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
+      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId']! as String).input(),
+      migrationSolutionResourceId: map['migrationSolutionResourceId'] == null ? null : (map['migrationSolutionResourceId']! as String).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId']! as String).input(),
     );
   }
 }

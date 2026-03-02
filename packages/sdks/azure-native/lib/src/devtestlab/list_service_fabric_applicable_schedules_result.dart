@@ -52,11 +52,11 @@ class ListServiceFabricApplicableSchedulesResult {
   factory ListServiceFabricApplicableSchedulesResult.fromMap(Map<String, dynamic> map) {
     return ListServiceFabricApplicableSchedulesResult(
       id: map['id'] as String,
-      labVmsShutdown: map['labVmsShutdown'] == null ? null : ScheduleResponse.fromMap((map['labVmsShutdown'] as Map).cast<String, dynamic>()),
-      labVmsStartup: map['labVmsStartup'] == null ? null : ScheduleResponse.fromMap((map['labVmsStartup'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
+      labVmsShutdown: map['labVmsShutdown'] == null ? null : ScheduleResponse.fromMap((map['labVmsShutdown']! as Map).cast<String, dynamic>()),
+      labVmsStartup: map['labVmsStartup'] == null ? null : ScheduleResponse.fromMap((map['labVmsStartup']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

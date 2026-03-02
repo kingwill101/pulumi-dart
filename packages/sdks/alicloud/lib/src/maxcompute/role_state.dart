@@ -41,10 +41,10 @@ class RoleState {
 
   factory RoleState.fromMap(Map<String, dynamic> map) {
     return RoleState(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

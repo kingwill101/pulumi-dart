@@ -42,11 +42,11 @@ class JobSchedule {
 
   factory JobSchedule.fromMap(Map<String, dynamic> map) {
     return JobSchedule(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      type: map['type'] == null ? null : (JobScheduleType.fromValue(map['type'] as String)).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      type: map['type'] == null ? null : (JobScheduleType.fromValue(map['type']! as String)).input(),
     );
   }
 }

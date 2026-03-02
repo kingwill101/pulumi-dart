@@ -55,12 +55,12 @@ class DomainArgs {
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
       domainManagement: (map['domainManagement'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
       emailServiceName: (map['emailServiceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userEngagementTracking: map['userEngagementTracking'] == null ? null : (map['userEngagementTracking'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      userEngagementTracking: map['userEngagementTracking'] == null ? null : (map['userEngagementTracking']! as String).input(),
     );
   }
 }

@@ -35,7 +35,7 @@ class WorkspaceNetworkOutboundRuleFqdnArgs {
   factory WorkspaceNetworkOutboundRuleFqdnArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceNetworkOutboundRuleFqdnArgs(
       destinationFqdn: (map['destinationFqdn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

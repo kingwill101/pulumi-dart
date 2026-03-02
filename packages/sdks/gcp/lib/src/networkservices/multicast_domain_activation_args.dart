@@ -72,14 +72,14 @@ class MulticastDomainActivationArgs {
 
   factory MulticastDomainActivationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastDomainActivationArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disablePlacementPolicy: map['disablePlacementPolicy'] == null ? null : (map['disablePlacementPolicy'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disablePlacementPolicy: map['disablePlacementPolicy'] == null ? null : (map['disablePlacementPolicy']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       multicastDomain: (map['multicastDomain'] as String).input(),
       multicastDomainActivationId: (map['multicastDomainActivationId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      trafficSpec: map['trafficSpec'] == null ? null : (MulticastDomainActivationTrafficSpec.fromMap((map['trafficSpec'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      trafficSpec: map['trafficSpec'] == null ? null : (MulticastDomainActivationTrafficSpec.fromMap((map['trafficSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

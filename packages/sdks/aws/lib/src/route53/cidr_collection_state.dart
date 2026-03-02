@@ -31,9 +31,9 @@ class CidrCollectionState {
 
   factory CidrCollectionState.fromMap(Map<String, dynamic> map) {
     return CidrCollectionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as int).input()).input(),
     );
   }
 }

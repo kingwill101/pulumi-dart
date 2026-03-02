@@ -37,9 +37,9 @@ class RegionUrlMapDefaultRouteActionWeightedBackendService {
 
   factory RegionUrlMapDefaultRouteActionWeightedBackendService.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapDefaultRouteActionWeightedBackendService(
-      backendService: map['backendService'] == null ? null : (map['backendService'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      backendService: map['backendService'] == null ? null : (map['backendService']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

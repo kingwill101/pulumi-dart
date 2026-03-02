@@ -40,7 +40,7 @@ class ListGeodataByIpArgs {
   factory ListGeodataByIpArgs.fromMap(Map<String, dynamic> map) {
     return ListGeodataByIpArgs(
       enrichmentType: (map['enrichmentType'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

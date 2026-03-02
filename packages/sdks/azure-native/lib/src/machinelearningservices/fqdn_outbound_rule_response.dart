@@ -45,11 +45,11 @@ class FqdnOutboundRuleResponse {
 
   factory FqdnOutboundRuleResponse.fromMap(Map<String, dynamic> map) {
     return FqdnOutboundRuleResponse(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
       errorInformation: (map['errorInformation'] as String).input(),
       parentRuleNames: ((map['parentRuleNames'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

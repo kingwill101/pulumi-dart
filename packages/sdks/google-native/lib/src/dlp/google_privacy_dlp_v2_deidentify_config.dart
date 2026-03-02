@@ -40,10 +40,10 @@ class GooglePrivacyDlpV2DeidentifyConfig {
 
   factory GooglePrivacyDlpV2DeidentifyConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DeidentifyConfig(
-      imageTransformations: map['imageTransformations'] == null ? null : (GooglePrivacyDlpV2ImageTransformations.fromMap((map['imageTransformations'] as Map).cast<String, dynamic>())).input(),
-      infoTypeTransformations: map['infoTypeTransformations'] == null ? null : (GooglePrivacyDlpV2InfoTypeTransformations.fromMap((map['infoTypeTransformations'] as Map).cast<String, dynamic>())).input(),
-      recordTransformations: map['recordTransformations'] == null ? null : (GooglePrivacyDlpV2RecordTransformations.fromMap((map['recordTransformations'] as Map).cast<String, dynamic>())).input(),
-      transformationErrorHandling: map['transformationErrorHandling'] == null ? null : (GooglePrivacyDlpV2TransformationErrorHandling.fromMap((map['transformationErrorHandling'] as Map).cast<String, dynamic>())).input(),
+      imageTransformations: map['imageTransformations'] == null ? null : (GooglePrivacyDlpV2ImageTransformations.fromMap((map['imageTransformations']! as Map).cast<String, dynamic>())).input(),
+      infoTypeTransformations: map['infoTypeTransformations'] == null ? null : (GooglePrivacyDlpV2InfoTypeTransformations.fromMap((map['infoTypeTransformations']! as Map).cast<String, dynamic>())).input(),
+      recordTransformations: map['recordTransformations'] == null ? null : (GooglePrivacyDlpV2RecordTransformations.fromMap((map['recordTransformations']! as Map).cast<String, dynamic>())).input(),
+      transformationErrorHandling: map['transformationErrorHandling'] == null ? null : (GooglePrivacyDlpV2TransformationErrorHandling.fromMap((map['transformationErrorHandling']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

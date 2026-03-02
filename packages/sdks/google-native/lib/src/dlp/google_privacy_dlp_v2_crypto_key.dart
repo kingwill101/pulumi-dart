@@ -34,9 +34,9 @@ class GooglePrivacyDlpV2CryptoKey {
 
   factory GooglePrivacyDlpV2CryptoKey.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CryptoKey(
-      kmsWrapped: map['kmsWrapped'] == null ? null : (GooglePrivacyDlpV2KmsWrappedCryptoKey.fromMap((map['kmsWrapped'] as Map).cast<String, dynamic>())).input(),
-      transient: map['transient'] == null ? null : (GooglePrivacyDlpV2TransientCryptoKey.fromMap((map['transient'] as Map).cast<String, dynamic>())).input(),
-      unwrapped: map['unwrapped'] == null ? null : (GooglePrivacyDlpV2UnwrappedCryptoKey.fromMap((map['unwrapped'] as Map).cast<String, dynamic>())).input(),
+      kmsWrapped: map['kmsWrapped'] == null ? null : (GooglePrivacyDlpV2KmsWrappedCryptoKey.fromMap((map['kmsWrapped']! as Map).cast<String, dynamic>())).input(),
+      transient: map['transient'] == null ? null : (GooglePrivacyDlpV2TransientCryptoKey.fromMap((map['transient']! as Map).cast<String, dynamic>())).input(),
+      unwrapped: map['unwrapped'] == null ? null : (GooglePrivacyDlpV2UnwrappedCryptoKey.fromMap((map['unwrapped']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

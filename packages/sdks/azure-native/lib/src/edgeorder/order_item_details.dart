@@ -49,12 +49,12 @@ class OrderItemDetails {
 
   factory OrderItemDetails.fromMap(Map<String, dynamic> map) {
     return OrderItemDetails(
-      notificationEmailList: map['notificationEmailList'] == null ? null : ((map['notificationEmailList'] as List).cast<String>()).input(),
-      orderItemMode: map['orderItemMode'] == null ? null : (map['orderItemMode'] as String).input(),
+      notificationEmailList: map['notificationEmailList'] == null ? null : ((map['notificationEmailList']! as List).cast<String>()).input(),
+      orderItemMode: map['orderItemMode'] == null ? null : (map['orderItemMode']! as String).input(),
       orderItemType: (map['orderItemType'] as String).input(),
-      preferences: map['preferences'] == null ? null : (Preferences.fromMap((map['preferences'] as Map).cast<String, dynamic>())).input(),
+      preferences: map['preferences'] == null ? null : (Preferences.fromMap((map['preferences']! as Map).cast<String, dynamic>())).input(),
       productDetails: (ProductDetails.fromMap((map['productDetails'] as Map).cast<String, dynamic>())).input(),
-      siteDetails: map['siteDetails'] == null ? null : (SiteDetails.fromMap((map['siteDetails'] as Map).cast<String, dynamic>())).input(),
+      siteDetails: map['siteDetails'] == null ? null : (SiteDetails.fromMap((map['siteDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class EdgeProfileResponse {
 
   factory EdgeProfileResponse.fromMap(Map<String, dynamic> map) {
     return EdgeProfileResponse(
-      subscription: map['subscription'] == null ? null : (EdgeProfileSubscriptionResponse.fromMap((map['subscription'] as Map).cast<String, dynamic>())).input(),
+      subscription: map['subscription'] == null ? null : (EdgeProfileSubscriptionResponse.fromMap((map['subscription']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

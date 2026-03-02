@@ -28,8 +28,8 @@ class NetworkPolicyIngressRule {
 
   factory NetworkPolicyIngressRule.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyIngressRule(
-      from: map['from'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyPeer>(map['from'], (value) => NetworkPolicyPeer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyPort>(map['ports'], (value) => NetworkPolicyPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      from: map['from'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyPeer>(map['from']!, (value) => NetworkPolicyPeer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyPort>(map['ports']!, (value) => NetworkPolicyPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

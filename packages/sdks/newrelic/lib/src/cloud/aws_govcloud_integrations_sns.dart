@@ -30,9 +30,9 @@ class AwsGovcloudIntegrationsSns {
 
   factory AwsGovcloudIntegrationsSns.fromMap(Map<String, dynamic> map) {
     return AwsGovcloudIntegrationsSns(
-      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions'] as List).cast<String>()).input(),
-      fetchExtendedInventory: map['fetchExtendedInventory'] == null ? null : (map['fetchExtendedInventory'] as bool).input(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions']! as List).cast<String>()).input(),
+      fetchExtendedInventory: map['fetchExtendedInventory'] == null ? null : (map['fetchExtendedInventory']! as bool).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

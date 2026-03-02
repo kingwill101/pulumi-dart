@@ -42,10 +42,10 @@ class ContainerPort {
   factory ContainerPort.fromMap(Map<String, dynamic> map) {
     return ContainerPort(
       containerPort: (map['containerPort'] as int).input(),
-      hostIP: map['hostIP'] == null ? null : (map['hostIP'] as String).input(),
-      hostPort: map['hostPort'] == null ? null : (map['hostPort'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      hostIP: map['hostIP'] == null ? null : (map['hostIP']! as String).input(),
+      hostPort: map['hostPort'] == null ? null : (map['hostPort']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

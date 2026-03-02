@@ -31,9 +31,9 @@ class ElasticPoolPerDatabaseSettings {
 
   factory ElasticPoolPerDatabaseSettings.fromMap(Map<String, dynamic> map) {
     return ElasticPoolPerDatabaseSettings(
-      autoPauseDelay: map['autoPauseDelay'] == null ? null : (map['autoPauseDelay'] as int).input(),
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as double).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as double).input(),
+      autoPauseDelay: map['autoPauseDelay'] == null ? null : (map['autoPauseDelay']! as int).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity']! as double).input(),
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as double).input(),
     );
   }
 }

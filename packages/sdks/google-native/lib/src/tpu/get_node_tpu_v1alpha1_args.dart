@@ -33,7 +33,7 @@ class GetNodeTpuV1alpha1Args {
     return GetNodeTpuV1alpha1Args(
       location: (map['location'] as String).input(),
       nodeId: (map['nodeId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

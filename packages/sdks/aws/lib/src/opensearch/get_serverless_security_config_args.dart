@@ -36,8 +36,8 @@ class GetServerlessSecurityConfigArgs {
   factory GetServerlessSecurityConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetServerlessSecurityConfigArgs(
       id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      samlOptions: map['samlOptions'] == null ? null : (pulumi.Input.decodeList<GetServerlessSecurityConfigSamlOption>(map['samlOptions'], (value) => GetServerlessSecurityConfigSamlOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      samlOptions: map['samlOptions'] == null ? null : ((pulumi.Input.decodeList<GetServerlessSecurityConfigSamlOption>(map['samlOptions']!, (value) => GetServerlessSecurityConfigSamlOption.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

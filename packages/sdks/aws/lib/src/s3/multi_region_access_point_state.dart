@@ -52,13 +52,13 @@ class MultiRegionAccessPointState {
 
   factory MultiRegionAccessPointState.fromMap(Map<String, dynamic> map) {
     return MultiRegionAccessPointState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      details: map['details'] == null ? null : (MultiRegionAccessPointDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      alias: map['alias'] == null ? null : ((map['alias'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      details: map['details'] == null ? null : ((MultiRegionAccessPointDetails.fromMap((map['details']! as Map).cast<String, dynamic>())).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

@@ -52,11 +52,11 @@ class TransitRouterArgs {
   factory TransitRouterArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterArgs(
       cenId: (map['cenId'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      supportMulticast: map['supportMulticast'] == null ? null : (map['supportMulticast'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitRouterDescription: map['transitRouterDescription'] == null ? null : (map['transitRouterDescription'] as String).input(),
-      transitRouterName: map['transitRouterName'] == null ? null : (map['transitRouterName'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      supportMulticast: map['supportMulticast'] == null ? null : (map['supportMulticast']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      transitRouterDescription: map['transitRouterDescription'] == null ? null : (map['transitRouterDescription']! as String).input(),
+      transitRouterName: map['transitRouterName'] == null ? null : (map['transitRouterName']! as String).input(),
     );
   }
 }

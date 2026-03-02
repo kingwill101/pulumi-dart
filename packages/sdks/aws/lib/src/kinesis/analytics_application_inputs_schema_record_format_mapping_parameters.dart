@@ -29,8 +29,8 @@ class AnalyticsApplicationInputsSchemaRecordFormatMappingParameters {
 
   factory AnalyticsApplicationInputsSchemaRecordFormatMappingParameters.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsSchemaRecordFormatMappingParameters(
-      csv: map['csv'] == null ? null : (AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv.fromMap((map['csv'] as Map).cast<String, dynamic>())).input(),
-      json: map['json'] == null ? null : (AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson.fromMap((map['json'] as Map).cast<String, dynamic>())).input(),
+      csv: map['csv'] == null ? null : ((AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv.fromMap((map['csv']! as Map).cast<String, dynamic>())).input()).input(),
+      json: map['json'] == null ? null : ((AnalyticsApplicationInputsSchemaRecordFormatMappingParametersJson.fromMap((map['json']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class RegionSpecEntityResponse {
 
   factory RegionSpecEntityResponse.fromMap(Map<String, dynamic> map) {
     return RegionSpecEntityResponse(
-      cloud: map['cloud'] == null ? null : (map['cloud'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      packages: map['packages'] == null ? null : ((map['packages'] as List).cast<String>()).input(),
-      regionName: map['regionName'] == null ? null : (map['regionName'] as String).input(),
+      cloud: map['cloud'] == null ? null : (map['cloud']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      packages: map['packages'] == null ? null : ((map['packages']! as List).cast<String>()).input(),
+      regionName: map['regionName'] == null ? null : (map['regionName']! as String).input(),
     );
   }
 }

@@ -47,11 +47,11 @@ class GetTagsArgs {
 
   factory GetTagsArgs.fromMap(Map<String, dynamic> map) {
     return GetTagsArgs(
-      filter: map['filter'] == null ? null : (GetTagsFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      searchString: map['searchString'] == null ? null : (map['searchString'] as String).input(),
-      sortBies: map['sortBies'] == null ? null : (pulumi.Input.decodeList<GetTagsSortBy>(map['sortBies'], (value) => GetTagsSortBy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
-      timePeriod: (GetTagsTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : ((GetTagsFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input()).input(),
+      searchString: map['searchString'] == null ? null : ((map['searchString'] as String).input()).input(),
+      sortBies: map['sortBies'] == null ? null : ((pulumi.Input.decodeList<GetTagsSortBy>(map['sortBies']!, (value) => GetTagsSortBy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tagKey: map['tagKey'] == null ? null : ((map['tagKey'] as String).input()).input(),
+      timePeriod: (GetTagsTimePeriod.fromMap((map['timePeriod']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

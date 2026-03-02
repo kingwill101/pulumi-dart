@@ -64,15 +64,15 @@ class ListenerRuleState {
 
   factory ListenerRuleState.fromMap(Map<String, dynamic> map) {
     return ListenerRuleState(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<ListenerRuleAction>(map['actions'], (value) => ListenerRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ListenerRuleCondition>(map['conditions'], (value) => ListenerRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      listenerArn: map['listenerArn'] == null ? null : (map['listenerArn'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      transforms: map['transforms'] == null ? null : (pulumi.Input.decodeList<ListenerRuleTransform>(map['transforms'], (value) => ListenerRuleTransform.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: map['actions'] == null ? null : ((pulumi.Input.decodeList<ListenerRuleAction>(map['actions']!, (value) => ListenerRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      conditions: map['conditions'] == null ? null : ((pulumi.Input.decodeList<ListenerRuleCondition>(map['conditions']!, (value) => ListenerRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      listenerArn: map['listenerArn'] == null ? null : ((map['listenerArn'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      transforms: map['transforms'] == null ? null : ((pulumi.Input.decodeList<ListenerRuleTransform>(map['transforms']!, (value) => ListenerRuleTransform.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

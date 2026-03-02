@@ -27,7 +27,7 @@ class PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl {
   factory PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl(
       region: (map['region'] as String).input(),
-      routingControls: map['routingControls'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl>(map['routingControls'], (value) => PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routingControls: map['routingControls'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl>(map['routingControls']!, (value) => PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

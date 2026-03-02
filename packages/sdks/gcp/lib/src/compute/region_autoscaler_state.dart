@@ -67,14 +67,14 @@ class RegionAutoscalerState {
 
   factory RegionAutoscalerState.fromMap(Map<String, dynamic> map) {
     return RegionAutoscalerState(
-      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (RegionAutoscalerAutoscalingPolicy.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())).input(),
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (RegionAutoscalerAutoscalingPolicy.fromMap((map['autoscalingPolicy']! as Map).cast<String, dynamic>())).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

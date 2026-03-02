@@ -94,17 +94,17 @@ class NodeTemplateArgs {
 
   factory NodeTemplateArgs.fromMap(Map<String, dynamic> map) {
     return NodeTemplateArgs(
-      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<NodeTemplateAccelerator>(map['accelerators'], (value) => NodeTemplateAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cpuOvercommitType: map['cpuOvercommitType'] == null ? null : (map['cpuOvercommitType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<NodeTemplateDisk>(map['disks'], (value) => NodeTemplateDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeAffinityLabels: map['nodeAffinityLabels'] == null ? null : ((map['nodeAffinityLabels'] as Map).cast<String, String>()).input(),
-      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
-      nodeTypeFlexibility: map['nodeTypeFlexibility'] == null ? null : (NodeTemplateNodeTypeFlexibility.fromMap((map['nodeTypeFlexibility'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serverBinding: map['serverBinding'] == null ? null : (NodeTemplateServerBinding.fromMap((map['serverBinding'] as Map).cast<String, dynamic>())).input(),
+      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<NodeTemplateAccelerator>(map['accelerators']!, (value) => NodeTemplateAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cpuOvercommitType: map['cpuOvercommitType'] == null ? null : (map['cpuOvercommitType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<NodeTemplateDisk>(map['disks']!, (value) => NodeTemplateDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeAffinityLabels: map['nodeAffinityLabels'] == null ? null : ((map['nodeAffinityLabels']! as Map).cast<String, String>()).input(),
+      nodeType: map['nodeType'] == null ? null : (map['nodeType']! as String).input(),
+      nodeTypeFlexibility: map['nodeTypeFlexibility'] == null ? null : (NodeTemplateNodeTypeFlexibility.fromMap((map['nodeTypeFlexibility']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      serverBinding: map['serverBinding'] == null ? null : (NodeTemplateServerBinding.fromMap((map['serverBinding']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

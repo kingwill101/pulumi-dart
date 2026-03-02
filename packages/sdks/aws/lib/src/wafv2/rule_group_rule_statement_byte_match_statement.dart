@@ -39,10 +39,10 @@ class RuleGroupRuleStatementByteMatchStatement {
 
   factory RuleGroupRuleStatementByteMatchStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementByteMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null ? null : (RuleGroupRuleStatementByteMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((RuleGroupRuleStatementByteMatchStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
       positionalConstraint: (map['positionalConstraint'] as String).input(),
       searchString: (map['searchString'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementByteMatchStatementTextTransformation>(map['textTransformations'], (value) => RuleGroupRuleStatementByteMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementByteMatchStatementTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementByteMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

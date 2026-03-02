@@ -28,7 +28,7 @@ class SimpleFilterResponse {
 
   factory SimpleFilterResponse.fromMap(Map<String, dynamic> map) {
     return SimpleFilterResponse(
-      parameters: map['parameters'] == null ? null : (SimpleFilterParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (SimpleFilterParametersResponse.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

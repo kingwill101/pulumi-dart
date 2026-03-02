@@ -21,7 +21,7 @@ class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation {
 
   factory GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation(
-      sqlExpression: map['sqlExpression'] == null ? null : (map['sqlExpression'] as String).input(),
+      sqlExpression: map['sqlExpression'] == null ? null : (map['sqlExpression']! as String).input(),
     );
   }
 }

@@ -36,8 +36,8 @@ class IotHubDefinitionDescription {
 
   factory IotHubDefinitionDescription.fromMap(Map<String, dynamic> map) {
     return IotHubDefinitionDescription(
-      allocationWeight: map['allocationWeight'] == null ? null : (map['allocationWeight'] as int).input(),
-      applyAllocationPolicy: map['applyAllocationPolicy'] == null ? null : (map['applyAllocationPolicy'] as bool).input(),
+      allocationWeight: map['allocationWeight'] == null ? null : (map['allocationWeight']! as int).input(),
+      applyAllocationPolicy: map['applyAllocationPolicy'] == null ? null : (map['applyAllocationPolicy']! as bool).input(),
       connectionString: (map['connectionString'] as String).input(),
       location: (map['location'] as String).input(),
     );

@@ -53,13 +53,13 @@ class ConversationProfileSttConfig {
 
   factory ConversationProfileSttConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileSttConfig(
-      audioEncoding: map['audioEncoding'] == null ? null : (map['audioEncoding'] as String).input(),
-      enableWordInfo: map['enableWordInfo'] == null ? null : (map['enableWordInfo'] as bool).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      sampleRateHertz: map['sampleRateHertz'] == null ? null : (map['sampleRateHertz'] as int).input(),
-      speechModelVariant: map['speechModelVariant'] == null ? null : (map['speechModelVariant'] as String).input(),
-      useTimeoutBasedEndpointing: map['useTimeoutBasedEndpointing'] == null ? null : (map['useTimeoutBasedEndpointing'] as bool).input(),
+      audioEncoding: map['audioEncoding'] == null ? null : (map['audioEncoding']! as String).input(),
+      enableWordInfo: map['enableWordInfo'] == null ? null : (map['enableWordInfo']! as bool).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      sampleRateHertz: map['sampleRateHertz'] == null ? null : (map['sampleRateHertz']! as int).input(),
+      speechModelVariant: map['speechModelVariant'] == null ? null : (map['speechModelVariant']! as String).input(),
+      useTimeoutBasedEndpointing: map['useTimeoutBasedEndpointing'] == null ? null : (map['useTimeoutBasedEndpointing']! as bool).input(),
     );
   }
 }

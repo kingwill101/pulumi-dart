@@ -21,7 +21,7 @@ class DataCollectionEndpointNetworkAcls {
 
   factory DataCollectionEndpointNetworkAcls.fromMap(Map<String, dynamic> map) {
     return DataCollectionEndpointNetworkAcls(
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
     );
   }
 }

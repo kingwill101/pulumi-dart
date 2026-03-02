@@ -59,11 +59,11 @@ class SloBasicSli {
 
   factory SloBasicSli.fromMap(Map<String, dynamic> map) {
     return SloBasicSli(
-      availability: map['availability'] == null ? null : (SloBasicSliAvailability.fromMap((map['availability'] as Map).cast<String, dynamic>())).input(),
-      latency: map['latency'] == null ? null : (SloBasicSliLatency.fromMap((map['latency'] as Map).cast<String, dynamic>())).input(),
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
-      versions: map['versions'] == null ? null : ((map['versions'] as List).cast<String>()).input(),
+      availability: map['availability'] == null ? null : (SloBasicSliAvailability.fromMap((map['availability']! as Map).cast<String, dynamic>())).input(),
+      latency: map['latency'] == null ? null : (SloBasicSliLatency.fromMap((map['latency']! as Map).cast<String, dynamic>())).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
+      versions: map['versions'] == null ? null : ((map['versions']! as List).cast<String>()).input(),
     );
   }
 }

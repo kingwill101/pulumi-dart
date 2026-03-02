@@ -52,13 +52,13 @@ class GetEndUserProductsArgs {
 
   factory GetEndUserProductsArgs.fromMap(Map<String, dynamic> map) {
     return GetEndUserProductsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
-      sortBy: map['sortBy'] == null ? null : (map['sortBy'] as String).input(),
-      sortOrder: map['sortOrder'] == null ? null : (map['sortOrder'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      sortBy: map['sortBy'] == null ? null : (map['sortBy']! as String).input(),
+      sortOrder: map['sortOrder'] == null ? null : (map['sortOrder']! as String).input(),
     );
   }
 }

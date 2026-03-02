@@ -35,8 +35,8 @@ class GroupDiagnosticsLogAnalytics {
 
   factory GroupDiagnosticsLogAnalytics.fromMap(Map<String, dynamic> map) {
     return GroupDiagnosticsLogAnalytics(
-      logType: map['logType'] == null ? null : (map['logType'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      logType: map['logType'] == null ? null : (map['logType']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
       workspaceId: (map['workspaceId'] as String).input(),
       workspaceKey: (map['workspaceKey'] as String).input(),
     );

@@ -37,10 +37,10 @@ class ConnectionAuthParametersOauthParameters {
 
   factory ConnectionAuthParametersOauthParameters.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthParametersOauthParameters(
-      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : (map['authorizationEndpoint'] as String).input(),
-      clientParameters: map['clientParameters'] == null ? null : (ConnectionAuthParametersOauthParametersClientParameters.fromMap((map['clientParameters'] as Map).cast<String, dynamic>())).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
-      oauthHttpParameters: map['oauthHttpParameters'] == null ? null : (ConnectionAuthParametersOauthParametersOauthHttpParameters.fromMap((map['oauthHttpParameters'] as Map).cast<String, dynamic>())).input(),
+      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : (map['authorizationEndpoint']! as String).input(),
+      clientParameters: map['clientParameters'] == null ? null : (ConnectionAuthParametersOauthParametersClientParameters.fromMap((map['clientParameters']! as Map).cast<String, dynamic>())).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod']! as String).input(),
+      oauthHttpParameters: map['oauthHttpParameters'] == null ? null : (ConnectionAuthParametersOauthParametersOauthHttpParameters.fromMap((map['oauthHttpParameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfiguration {
 
   factory V2modelsIntentQnaIntentConfigurationDataSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfiguration(
-      bedrockKnowledgeStoreConfiguration: map['bedrockKnowledgeStoreConfiguration'] == null ? null : (V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration.fromMap((map['bedrockKnowledgeStoreConfiguration'] as Map).cast<String, dynamic>())).input(),
-      kendraConfiguration: map['kendraConfiguration'] == null ? null : (V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration.fromMap((map['kendraConfiguration'] as Map).cast<String, dynamic>())).input(),
-      opensearchConfiguration: map['opensearchConfiguration'] == null ? null : (V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration.fromMap((map['opensearchConfiguration'] as Map).cast<String, dynamic>())).input(),
+      bedrockKnowledgeStoreConfiguration: map['bedrockKnowledgeStoreConfiguration'] == null ? null : ((V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration.fromMap((map['bedrockKnowledgeStoreConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      kendraConfiguration: map['kendraConfiguration'] == null ? null : ((V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration.fromMap((map['kendraConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      opensearchConfiguration: map['opensearchConfiguration'] == null ? null : ((V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration.fromMap((map['opensearchConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

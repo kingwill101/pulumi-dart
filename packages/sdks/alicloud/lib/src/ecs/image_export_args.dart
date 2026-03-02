@@ -36,7 +36,7 @@ class ImageExportArgs {
     return ImageExportArgs(
       imageId: (map['imageId'] as String).input(),
       ossBucket: (map['ossBucket'] as String).input(),
-      ossPrefix: map['ossPrefix'] == null ? null : (map['ossPrefix'] as String).input(),
+      ossPrefix: map['ossPrefix'] == null ? null : (map['ossPrefix']! as String).input(),
     );
   }
 }

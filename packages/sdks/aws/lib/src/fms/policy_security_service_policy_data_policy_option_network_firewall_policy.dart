@@ -20,7 +20,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy {
 
   factory PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy.fromMap(Map<String, dynamic> map) {
     return PolicySecurityServicePolicyDataPolicyOptionNetworkFirewallPolicy(
-      firewallDeploymentModel: map['firewallDeploymentModel'] == null ? null : (map['firewallDeploymentModel'] as String).input(),
+      firewallDeploymentModel: map['firewallDeploymentModel'] == null ? null : ((map['firewallDeploymentModel'] as String).input()).input(),
     );
   }
 }

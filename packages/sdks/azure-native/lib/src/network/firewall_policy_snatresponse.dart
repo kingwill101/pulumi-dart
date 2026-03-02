@@ -26,8 +26,8 @@ class FirewallPolicySNATResponse {
 
   factory FirewallPolicySNATResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicySNATResponse(
-      autoLearnPrivateRanges: map['autoLearnPrivateRanges'] == null ? null : (map['autoLearnPrivateRanges'] as String).input(),
-      privateRanges: map['privateRanges'] == null ? null : ((map['privateRanges'] as List).cast<String>()).input(),
+      autoLearnPrivateRanges: map['autoLearnPrivateRanges'] == null ? null : (map['autoLearnPrivateRanges']! as String).input(),
+      privateRanges: map['privateRanges'] == null ? null : ((map['privateRanges']! as List).cast<String>()).input(),
     );
   }
 }

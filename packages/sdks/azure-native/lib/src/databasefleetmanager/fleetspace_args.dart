@@ -41,8 +41,8 @@ class FleetspaceArgs {
   factory FleetspaceArgs.fromMap(Map<String, dynamic> map) {
     return FleetspaceArgs(
       fleetName: (map['fleetName'] as String).input(),
-      fleetspaceName: map['fleetspaceName'] == null ? null : (map['fleetspaceName'] as String).input(),
-      properties: map['properties'] == null ? null : (FleetspaceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      fleetspaceName: map['fleetspaceName'] == null ? null : (map['fleetspaceName']! as String).input(),
+      properties: map['properties'] == null ? null : (FleetspaceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

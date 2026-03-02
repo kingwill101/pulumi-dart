@@ -72,17 +72,17 @@ class OssBackupPlanState {
 
   factory OssBackupPlanState.fromMap(Map<String, dynamic> map) {
     return OssBackupPlanState(
-      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName'] as String).input(),
-      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType'] as String).input(),
-      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId'] as int).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      ossBackupPlanName: map['ossBackupPlanName'] == null ? null : (map['ossBackupPlanName'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as String).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      backupType: map['backupType'] == null ? null : (map['backupType']! as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName']! as String).input(),
+      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType']! as String).input(),
+      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId']! as int).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      ossBackupPlanName: map['ossBackupPlanName'] == null ? null : (map['ossBackupPlanName']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

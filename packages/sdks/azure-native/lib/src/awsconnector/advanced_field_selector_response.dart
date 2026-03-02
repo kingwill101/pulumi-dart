@@ -51,13 +51,13 @@ class AdvancedFieldSelectorResponse {
 
   factory AdvancedFieldSelectorResponse.fromMap(Map<String, dynamic> map) {
     return AdvancedFieldSelectorResponse(
-      endsWith: map['endsWith'] == null ? null : ((map['endsWith'] as List).cast<String>()).input(),
-      equals: map['equals'] == null ? null : ((map['equals'] as List).cast<String>()).input(),
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      notEndsWith: map['notEndsWith'] == null ? null : ((map['notEndsWith'] as List).cast<String>()).input(),
-      notEquals: map['notEquals'] == null ? null : ((map['notEquals'] as List).cast<String>()).input(),
-      notStartsWith: map['notStartsWith'] == null ? null : ((map['notStartsWith'] as List).cast<String>()).input(),
-      startsWith: map['startsWith'] == null ? null : ((map['startsWith'] as List).cast<String>()).input(),
+      endsWith: map['endsWith'] == null ? null : ((map['endsWith']! as List).cast<String>()).input(),
+      equals: map['equals'] == null ? null : ((map['equals']! as List).cast<String>()).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      notEndsWith: map['notEndsWith'] == null ? null : ((map['notEndsWith']! as List).cast<String>()).input(),
+      notEquals: map['notEquals'] == null ? null : ((map['notEquals']! as List).cast<String>()).input(),
+      notStartsWith: map['notStartsWith'] == null ? null : ((map['notStartsWith']! as List).cast<String>()).input(),
+      startsWith: map['startsWith'] == null ? null : ((map['startsWith']! as List).cast<String>()).input(),
     );
   }
 }

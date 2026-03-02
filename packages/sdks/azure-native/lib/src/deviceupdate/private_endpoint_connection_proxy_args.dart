@@ -46,10 +46,10 @@ class PrivateEndpointConnectionProxyArgs {
   factory PrivateEndpointConnectionProxyArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionProxyArgs(
       accountName: (map['accountName'] as String).input(),
-      privateEndpointConnectionProxyId: map['privateEndpointConnectionProxyId'] == null ? null : (map['privateEndpointConnectionProxyId'] as String).input(),
-      remotePrivateEndpoint: map['remotePrivateEndpoint'] == null ? null : (RemotePrivateEndpoint.fromMap((map['remotePrivateEndpoint'] as Map).cast<String, dynamic>())).input(),
+      privateEndpointConnectionProxyId: map['privateEndpointConnectionProxyId'] == null ? null : (map['privateEndpointConnectionProxyId']! as String).input(),
+      remotePrivateEndpoint: map['remotePrivateEndpoint'] == null ? null : (RemotePrivateEndpoint.fromMap((map['remotePrivateEndpoint']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

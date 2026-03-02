@@ -44,7 +44,7 @@ class ActionGroupAzureFunctionReceiver {
       functionName: (map['functionName'] as String).input(),
       httpTriggerUrl: (map['httpTriggerUrl'] as String).input(),
       name: (map['name'] as String).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
     );
   }
 }

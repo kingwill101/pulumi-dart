@@ -31,9 +31,9 @@ class MaxAgeRuleResponse {
 
   factory MaxAgeRuleResponse.fromMap(Map<String, dynamic> map) {
     return MaxAgeRuleResponse(
-      deleteSourceFromS3: map['deleteSourceFromS3'] == null ? null : (map['deleteSourceFromS3'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      maxAgeInDays: map['maxAgeInDays'] == null ? null : (map['maxAgeInDays'] as int).input(),
+      deleteSourceFromS3: map['deleteSourceFromS3'] == null ? null : (map['deleteSourceFromS3']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      maxAgeInDays: map['maxAgeInDays'] == null ? null : (map['maxAgeInDays']! as int).input(),
     );
   }
 }

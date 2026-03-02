@@ -49,10 +49,10 @@ class LimitedPriorityLevelConfigurationPatchFlowcontrolApiserverK8sIoV1beta3 {
 
   factory LimitedPriorityLevelConfigurationPatchFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
     return LimitedPriorityLevelConfigurationPatchFlowcontrolApiserverK8sIoV1beta3(
-      borrowingLimitPercent: map['borrowingLimitPercent'] == null ? null : (map['borrowingLimitPercent'] as int).input(),
-      lendablePercent: map['lendablePercent'] == null ? null : (map['lendablePercent'] as int).input(),
-      limitResponse: map['limitResponse'] == null ? null : (LimitResponsePatchFlowcontrolApiserverK8sIoV1beta3.fromMap((map['limitResponse'] as Map).cast<String, dynamic>())).input(),
-      nominalConcurrencyShares: map['nominalConcurrencyShares'] == null ? null : (map['nominalConcurrencyShares'] as int).input(),
+      borrowingLimitPercent: map['borrowingLimitPercent'] == null ? null : (map['borrowingLimitPercent']! as int).input(),
+      lendablePercent: map['lendablePercent'] == null ? null : (map['lendablePercent']! as int).input(),
+      limitResponse: map['limitResponse'] == null ? null : (LimitResponsePatchFlowcontrolApiserverK8sIoV1beta3.fromMap((map['limitResponse']! as Map).cast<String, dynamic>())).input(),
+      nominalConcurrencyShares: map['nominalConcurrencyShares'] == null ? null : (map['nominalConcurrencyShares']! as int).input(),
     );
   }
 }

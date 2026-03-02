@@ -47,10 +47,10 @@ class RegionResizeRequestStatusErrorErrorErrorDetail {
 
   factory RegionResizeRequestStatusErrorErrorErrorDetail.fromMap(Map<String, dynamic> map) {
     return RegionResizeRequestStatusErrorErrorErrorDetail(
-      errorInfos: map['errorInfos'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo>(map['errorInfos'], (value) => RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      helps: map['helps'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusErrorErrorErrorDetailHelp>(map['helps'], (value) => RegionResizeRequestStatusErrorErrorErrorDetailHelp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      localizedMessages: map['localizedMessages'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessage>(map['localizedMessages'], (value) => RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      quotaInfos: map['quotaInfos'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfo>(map['quotaInfos'], (value) => RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errorInfos: map['errorInfos'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo>(map['errorInfos']!, (value) => RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      helps: map['helps'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusErrorErrorErrorDetailHelp>(map['helps']!, (value) => RegionResizeRequestStatusErrorErrorErrorDetailHelp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localizedMessages: map['localizedMessages'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessage>(map['localizedMessages']!, (value) => RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      quotaInfos: map['quotaInfos'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfo>(map['quotaInfos']!, (value) => RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

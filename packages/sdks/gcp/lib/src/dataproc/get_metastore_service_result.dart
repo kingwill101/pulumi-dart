@@ -162,7 +162,7 @@ class GetMetastoreServiceResult {
       network: map['network'] as String,
       networkConfigs: pulumi.Input.decodeList<GetMetastoreServiceNetworkConfig>(map['networkConfigs'], (value) => GetMetastoreServiceNetworkConfig.fromMap((value as Map).cast<String, dynamic>())),
       port: map['port'] as int,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       releaseChannel: map['releaseChannel'] as String,
       scalingConfigs: pulumi.Input.decodeList<GetMetastoreServiceScalingConfig>(map['scalingConfigs'], (value) => GetMetastoreServiceScalingConfig.fromMap((value as Map).cast<String, dynamic>())),

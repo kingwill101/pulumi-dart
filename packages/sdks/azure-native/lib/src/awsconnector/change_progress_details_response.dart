@@ -48,12 +48,12 @@ class ChangeProgressDetailsResponse {
 
   factory ChangeProgressDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ChangeProgressDetailsResponse(
-      changeId: map['changeId'] == null ? null : (map['changeId'] as String).input(),
-      configChangeStatus: map['configChangeStatus'] == null ? null : (ConfigChangeStatusEnumValueResponse.fromMap((map['configChangeStatus'] as Map).cast<String, dynamic>())).input(),
-      initiatedBy: map['initiatedBy'] == null ? null : (InitiatedByEnumValueResponse.fromMap((map['initiatedBy'] as Map).cast<String, dynamic>())).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      changeId: map['changeId'] == null ? null : (map['changeId']! as String).input(),
+      configChangeStatus: map['configChangeStatus'] == null ? null : (ConfigChangeStatusEnumValueResponse.fromMap((map['configChangeStatus']! as Map).cast<String, dynamic>())).input(),
+      initiatedBy: map['initiatedBy'] == null ? null : (InitiatedByEnumValueResponse.fromMap((map['initiatedBy']! as Map).cast<String, dynamic>())).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

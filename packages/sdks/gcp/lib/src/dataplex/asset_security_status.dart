@@ -30,9 +30,9 @@ class AssetSecurityStatus {
 
   factory AssetSecurityStatus.fromMap(Map<String, dynamic> map) {
     return AssetSecurityStatus(
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

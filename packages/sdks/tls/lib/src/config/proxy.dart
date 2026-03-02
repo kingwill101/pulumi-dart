@@ -35,10 +35,10 @@ class Proxy {
 
   factory Proxy.fromMap(Map<String, dynamic> map) {
     return Proxy(
-      fromEnv: map['fromEnv'] == null ? null : (map['fromEnv'] as bool).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      fromEnv: map['fromEnv'] == null ? null : (map['fromEnv']! as bool).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

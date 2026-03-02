@@ -29,8 +29,8 @@ class GetStorageBoxTypeArgs {
 
   factory GetStorageBoxTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxTypeArgs(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

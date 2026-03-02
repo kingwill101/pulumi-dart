@@ -22,7 +22,7 @@ class AgConfigurationResponse {
 
   factory AgConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AgConfigurationResponse(
-      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<AgReplicaResponse>(map['replicas'], (value) => AgReplicaResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<AgReplicaResponse>(map['replicas']!, (value) => AgReplicaResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

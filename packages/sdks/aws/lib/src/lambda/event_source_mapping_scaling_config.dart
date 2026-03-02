@@ -20,7 +20,7 @@ class EventSourceMappingScalingConfig {
 
   factory EventSourceMappingScalingConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingScalingConfig(
-      maximumConcurrency: map['maximumConcurrency'] == null ? null : (map['maximumConcurrency'] as int).input(),
+      maximumConcurrency: map['maximumConcurrency'] == null ? null : ((map['maximumConcurrency'] as int).input()).input(),
     );
   }
 }

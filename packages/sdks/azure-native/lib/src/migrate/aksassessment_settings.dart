@@ -81,13 +81,13 @@ class AKSAssessmentSettings {
       category: (map['category'] as String).input(),
       consolidation: (map['consolidation'] as String).input(),
       currency: (map['currency'] as String).input(),
-      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage'] as double).input(),
+      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage']! as double).input(),
       environmentType: (map['environmentType'] as String).input(),
       licensingProgram: (map['licensingProgram'] as String).input(),
-      performanceData: map['performanceData'] == null ? null : (PerfDataSettings.fromMap((map['performanceData'] as Map).cast<String, dynamic>())).input(),
+      performanceData: map['performanceData'] == null ? null : (PerfDataSettings.fromMap((map['performanceData']! as Map).cast<String, dynamic>())).input(),
       pricingTier: (map['pricingTier'] as String).input(),
       savingsOptions: (map['savingsOptions'] as String).input(),
-      scalingFactor: map['scalingFactor'] == null ? null : (map['scalingFactor'] as double).input(),
+      scalingFactor: map['scalingFactor'] == null ? null : (map['scalingFactor']! as double).input(),
       sizingCriteria: (map['sizingCriteria'] as String).input(),
     );
   }

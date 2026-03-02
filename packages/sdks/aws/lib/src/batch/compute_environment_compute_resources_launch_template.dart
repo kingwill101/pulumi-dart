@@ -30,9 +30,9 @@ class ComputeEnvironmentComputeResourcesLaunchTemplate {
 
   factory ComputeEnvironmentComputeResourcesLaunchTemplate.fromMap(Map<String, dynamic> map) {
     return ComputeEnvironmentComputeResourcesLaunchTemplate(
-      launchTemplateId: map['launchTemplateId'] == null ? null : (map['launchTemplateId'] as String).input(),
-      launchTemplateName: map['launchTemplateName'] == null ? null : (map['launchTemplateName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      launchTemplateId: map['launchTemplateId'] == null ? null : ((map['launchTemplateId'] as String).input()).input(),
+      launchTemplateName: map['launchTemplateName'] == null ? null : ((map['launchTemplateName'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

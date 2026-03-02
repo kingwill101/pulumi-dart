@@ -101,22 +101,22 @@ class AccessPointState {
 
   factory AccessPointState.fromMap(Map<String, dynamic> map) {
     return AccessPointState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      bucketAccountId: map['bucketAccountId'] == null ? null : (map['bucketAccountId'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      endpoints: map['endpoints'] == null ? null : ((map['endpoints'] as Map).cast<String, String>()).input(),
-      hasPublicAccessPolicy: map['hasPublicAccessPolicy'] == null ? null : (map['hasPublicAccessPolicy'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkOrigin: map['networkOrigin'] == null ? null : (map['networkOrigin'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : (AccessPointPublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : (AccessPointVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      alias: map['alias'] == null ? null : ((map['alias'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      bucketAccountId: map['bucketAccountId'] == null ? null : ((map['bucketAccountId'] as String).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      endpoints: map['endpoints'] == null ? null : (((map['endpoints'] as Map).cast<String, String>()).input()).input(),
+      hasPublicAccessPolicy: map['hasPublicAccessPolicy'] == null ? null : ((map['hasPublicAccessPolicy'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      networkOrigin: map['networkOrigin'] == null ? null : ((map['networkOrigin'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : ((AccessPointPublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : ((AccessPointVpcConfiguration.fromMap((map['vpcConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

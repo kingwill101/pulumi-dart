@@ -27,8 +27,8 @@ class MysqlDatabase {
 
   factory MysqlDatabase.fromMap(Map<String, dynamic> map) {
     return MysqlDatabase(
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      mysqlTables: map['mysqlTables'] == null ? null : (pulumi.Input.decodeList<MysqlTable>(map['mysqlTables'], (value) => MysqlTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      mysqlTables: map['mysqlTables'] == null ? null : (pulumi.Input.decodeList<MysqlTable>(map['mysqlTables']!, (value) => MysqlTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

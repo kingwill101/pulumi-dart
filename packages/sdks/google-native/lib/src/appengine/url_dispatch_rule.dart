@@ -31,9 +31,9 @@ class UrlDispatchRule {
 
   factory UrlDispatchRule.fromMap(Map<String, dynamic> map) {
     return UrlDispatchRule(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

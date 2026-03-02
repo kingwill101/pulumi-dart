@@ -39,8 +39,8 @@ class GetFoldersArgs {
 
   factory GetFoldersArgs.fromMap(Map<String, dynamic> map) {
     return GetFoldersArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       parentFolderPath: (map['parentFolderPath'] as String).input(),
       projectId: (map['projectId'] as String).input(),
     );

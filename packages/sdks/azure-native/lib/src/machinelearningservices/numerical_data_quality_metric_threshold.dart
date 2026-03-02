@@ -33,7 +33,7 @@ class NumericalDataQualityMetricThreshold {
     return NumericalDataQualityMetricThreshold(
       dataType: (map['dataType'] as String).input(),
       metric: (map['metric'] as String).input(),
-      threshold: map['threshold'] == null ? null : (MonitoringThreshold.fromMap((map['threshold'] as Map).cast<String, dynamic>())).input(),
+      threshold: map['threshold'] == null ? null : (MonitoringThreshold.fromMap((map['threshold']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

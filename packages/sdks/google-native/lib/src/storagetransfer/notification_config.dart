@@ -33,7 +33,7 @@ class NotificationConfig {
 
   factory NotificationConfig.fromMap(Map<String, dynamic> map) {
     return NotificationConfig(
-      eventTypes: map['eventTypes'] == null ? null : (pulumi.Input.decodeList<NotificationConfigEventTypesItem>(map['eventTypes'], (value) => NotificationConfigEventTypesItem.fromValue(value as String))).input(),
+      eventTypes: map['eventTypes'] == null ? null : (pulumi.Input.decodeList<NotificationConfigEventTypesItem>(map['eventTypes']!, (value) => NotificationConfigEventTypesItem.fromValue(value as String))).input(),
       payloadFormat: (NotificationConfigPayloadFormat.fromValue(map['payloadFormat'] as String)).input(),
       pubsubTopic: (map['pubsubTopic'] as String).input(),
     );

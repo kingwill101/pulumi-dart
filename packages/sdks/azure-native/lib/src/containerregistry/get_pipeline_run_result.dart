@@ -64,11 +64,11 @@ class GetPipelineRunResult {
   factory GetPipelineRunResult.fromMap(Map<String, dynamic> map) {
     return GetPipelineRunResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag'] as String,
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      request: map['request'] == null ? null : PipelineRunRequestResponse.fromMap((map['request'] as Map).cast<String, dynamic>()),
+      request: map['request'] == null ? null : PipelineRunRequestResponse.fromMap((map['request']! as Map).cast<String, dynamic>()),
       response: PipelineRunResponseResponse.fromMap((map['response'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

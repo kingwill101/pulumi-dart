@@ -27,7 +27,7 @@ class DependencyOfRelationshipProperties {
   factory DependencyOfRelationshipProperties.fromMap(Map<String, dynamic> map) {
     return DependencyOfRelationshipProperties(
       targetId: (map['targetId'] as String).input(),
-      targetTenant: map['targetTenant'] == null ? null : (map['targetTenant'] as String).input(),
+      targetTenant: map['targetTenant'] == null ? null : (map['targetTenant']! as String).input(),
     );
   }
 }

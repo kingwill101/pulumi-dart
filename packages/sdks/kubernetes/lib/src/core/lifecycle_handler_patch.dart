@@ -40,10 +40,10 @@ class LifecycleHandlerPatch {
 
   factory LifecycleHandlerPatch.fromMap(Map<String, dynamic> map) {
     return LifecycleHandlerPatch(
-      exec: map['exec'] == null ? null : (ExecActionPatch.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
-      httpGet: map['httpGet'] == null ? null : (HTTPGetActionPatch.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
-      sleep: map['sleep'] == null ? null : (SleepActionPatch.fromMap((map['sleep'] as Map).cast<String, dynamic>())).input(),
-      tcpSocket: map['tcpSocket'] == null ? null : (TCPSocketActionPatch.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
+      exec: map['exec'] == null ? null : (ExecActionPatch.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
+      httpGet: map['httpGet'] == null ? null : (HTTPGetActionPatch.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
+      sleep: map['sleep'] == null ? null : (SleepActionPatch.fromMap((map['sleep']! as Map).cast<String, dynamic>())).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (TCPSocketActionPatch.fromMap((map['tcpSocket']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

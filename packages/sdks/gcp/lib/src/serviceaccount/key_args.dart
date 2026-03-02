@@ -57,11 +57,11 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
-      keyAlgorithm: map['keyAlgorithm'] == null ? null : (map['keyAlgorithm'] as String).input(),
-      privateKeyType: map['privateKeyType'] == null ? null : (map['privateKeyType'] as String).input(),
-      publicKeyData: map['publicKeyData'] == null ? null : (map['publicKeyData'] as String).input(),
-      publicKeyType: map['publicKeyType'] == null ? null : (map['publicKeyType'] as String).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
+      keyAlgorithm: map['keyAlgorithm'] == null ? null : (map['keyAlgorithm']! as String).input(),
+      privateKeyType: map['privateKeyType'] == null ? null : (map['privateKeyType']! as String).input(),
+      publicKeyData: map['publicKeyData'] == null ? null : (map['publicKeyData']! as String).input(),
+      publicKeyType: map['publicKeyType'] == null ? null : (map['publicKeyType']! as String).input(),
       serviceAccountId: (map['serviceAccountId'] as String).input(),
     );
   }

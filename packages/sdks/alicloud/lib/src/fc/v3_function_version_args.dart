@@ -29,7 +29,7 @@ class V3FunctionVersionArgs {
 
   factory V3FunctionVersionArgs.fromMap(Map<String, dynamic> map) {
     return V3FunctionVersionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       functionName: (map['functionName'] as String).input(),
     );
   }

@@ -78,7 +78,7 @@ class GetSSLPolicyResult {
       minTlsVersion: map['minTlsVersion'] as String,
       name: map['name'] as String,
       profile: map['profile'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       selfLink: map['selfLink'] as String,
     );
   }

@@ -62,13 +62,13 @@ class OdbNetworkArgs {
 
   factory OdbNetworkArgs.fromMap(Map<String, dynamic> map) {
     return OdbNetworkArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      gcpOracleZone: map['gcpOracleZone'] == null ? null : (map['gcpOracleZone'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      gcpOracleZone: map['gcpOracleZone'] == null ? null : (map['gcpOracleZone']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       network: (map['network'] as String).input(),
       odbNetworkId: (map['odbNetworkId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

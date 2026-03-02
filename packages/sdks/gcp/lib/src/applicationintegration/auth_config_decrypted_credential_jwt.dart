@@ -36,10 +36,10 @@ class AuthConfigDecryptedCredentialJwt {
 
   factory AuthConfigDecryptedCredentialJwt.fromMap(Map<String, dynamic> map) {
     return AuthConfigDecryptedCredentialJwt(
-      jwt: map['jwt'] == null ? null : (map['jwt'] as String).input(),
-      jwtHeader: map['jwtHeader'] == null ? null : (map['jwtHeader'] as String).input(),
-      jwtPayload: map['jwtPayload'] == null ? null : (map['jwtPayload'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      jwt: map['jwt'] == null ? null : (map['jwt']! as String).input(),
+      jwtHeader: map['jwtHeader'] == null ? null : (map['jwtHeader']! as String).input(),
+      jwtPayload: map['jwtPayload'] == null ? null : (map['jwtPayload']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
     );
   }
 }

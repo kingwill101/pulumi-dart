@@ -49,8 +49,8 @@ class NetworkMonitorPropertiesResponse {
   factory NetworkMonitorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkMonitorPropertiesResponse(
       administrativeState: (map['administrativeState'] as String).input(),
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
-      bmpConfiguration: map['bmpConfiguration'] == null ? null : (BmpConfigurationPropertiesResponse.fromMap((map['bmpConfiguration'] as Map).cast<String, dynamic>())).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
+      bmpConfiguration: map['bmpConfiguration'] == null ? null : (BmpConfigurationPropertiesResponse.fromMap((map['bmpConfiguration']! as Map).cast<String, dynamic>())).input(),
       configurationState: (map['configurationState'] as String).input(),
       lastOperation: (LastOperationPropertiesResponse.fromMap((map['lastOperation'] as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),

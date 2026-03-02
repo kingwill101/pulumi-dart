@@ -36,10 +36,10 @@ class DscConfigurationParameter {
 
   factory DscConfigurationParameter.fromMap(Map<String, dynamic> map) {
     return DscConfigurationParameter(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      isMandatory: map['isMandatory'] == null ? null : (map['isMandatory'] as bool).input(),
-      position: map['position'] == null ? null : (map['position'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
+      isMandatory: map['isMandatory'] == null ? null : (map['isMandatory']! as bool).input(),
+      position: map['position'] == null ? null : (map['position']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

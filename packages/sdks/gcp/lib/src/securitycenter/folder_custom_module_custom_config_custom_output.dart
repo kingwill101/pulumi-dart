@@ -22,7 +22,7 @@ class FolderCustomModuleCustomConfigCustomOutput {
 
   factory FolderCustomModuleCustomConfigCustomOutput.fromMap(Map<String, dynamic> map) {
     return FolderCustomModuleCustomConfigCustomOutput(
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<FolderCustomModuleCustomConfigCustomOutputProperty>(map['properties'], (value) => FolderCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<FolderCustomModuleCustomConfigCustomOutputProperty>(map['properties']!, (value) => FolderCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

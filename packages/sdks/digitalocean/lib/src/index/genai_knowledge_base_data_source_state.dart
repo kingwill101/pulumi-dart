@@ -31,9 +31,9 @@ class GenaiKnowledgeBaseDataSourceState {
 
   factory GenaiKnowledgeBaseDataSourceState.fromMap(Map<String, dynamic> map) {
     return GenaiKnowledgeBaseDataSourceState(
-      knowledgeBaseUuid: map['knowledgeBaseUuid'] == null ? null : (map['knowledgeBaseUuid'] as String).input(),
-      spacesDataSource: map['spacesDataSource'] == null ? null : (GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((map['spacesDataSource'] as Map).cast<String, dynamic>())).input(),
-      webCrawlerDataSource: map['webCrawlerDataSource'] == null ? null : (GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((map['webCrawlerDataSource'] as Map).cast<String, dynamic>())).input(),
+      knowledgeBaseUuid: map['knowledgeBaseUuid'] == null ? null : (map['knowledgeBaseUuid']! as String).input(),
+      spacesDataSource: map['spacesDataSource'] == null ? null : (GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((map['spacesDataSource']! as Map).cast<String, dynamic>())).input(),
+      webCrawlerDataSource: map['webCrawlerDataSource'] == null ? null : (GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((map['webCrawlerDataSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

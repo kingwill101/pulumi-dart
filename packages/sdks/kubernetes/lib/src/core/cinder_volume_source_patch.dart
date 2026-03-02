@@ -37,10 +37,10 @@ class CinderVolumeSourcePatch {
 
   factory CinderVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return CinderVolumeSourcePatch(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      secretRef: map['secretRef'] == null ? null : (LocalObjectReferencePatch.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
-      volumeID: map['volumeID'] == null ? null : (map['volumeID'] as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      secretRef: map['secretRef'] == null ? null : (LocalObjectReferencePatch.fromMap((map['secretRef']! as Map).cast<String, dynamic>())).input(),
+      volumeID: map['volumeID'] == null ? null : (map['volumeID']! as String).input(),
     );
   }
 }

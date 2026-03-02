@@ -27,7 +27,7 @@ class GetBucketReplicationConfigurationRuleFilterAnd {
   factory GetBucketReplicationConfigurationRuleFilterAnd.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleFilterAnd(
       prefix: (map['prefix'] as String).input(),
-      tags: (pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleFilterAndTag>(map['tags'], (value) => GetBucketReplicationConfigurationRuleFilterAndTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: (pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleFilterAndTag>(map['tags']!, (value) => GetBucketReplicationConfigurationRuleFilterAndTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

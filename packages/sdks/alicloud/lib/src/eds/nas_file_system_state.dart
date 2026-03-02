@@ -51,13 +51,13 @@ class NasFileSystemState {
 
   factory NasFileSystemState.fromMap(Map<String, dynamic> map) {
     return NasFileSystemState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      mountTargetDomain: map['mountTargetDomain'] == null ? null : (map['mountTargetDomain'] as String).input(),
-      nasFileSystemName: map['nasFileSystemName'] == null ? null : (map['nasFileSystemName'] as String).input(),
-      officeSiteId: map['officeSiteId'] == null ? null : (map['officeSiteId'] as String).input(),
-      reset: map['reset'] == null ? null : (map['reset'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      mountTargetDomain: map['mountTargetDomain'] == null ? null : (map['mountTargetDomain']! as String).input(),
+      nasFileSystemName: map['nasFileSystemName'] == null ? null : (map['nasFileSystemName']! as String).input(),
+      officeSiteId: map['officeSiteId'] == null ? null : (map['officeSiteId']! as String).input(),
+      reset: map['reset'] == null ? null : (map['reset']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

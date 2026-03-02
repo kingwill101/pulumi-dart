@@ -26,8 +26,8 @@ class NotificationConfigHealthcareV1beta1 {
 
   factory NotificationConfigHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return NotificationConfigHealthcareV1beta1(
-      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
-      sendForBulkImport: map['sendForBulkImport'] == null ? null : (map['sendForBulkImport'] as bool).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic']! as String).input(),
+      sendForBulkImport: map['sendForBulkImport'] == null ? null : (map['sendForBulkImport']! as bool).input(),
     );
   }
 }

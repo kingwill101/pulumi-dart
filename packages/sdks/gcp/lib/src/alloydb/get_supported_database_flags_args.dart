@@ -30,7 +30,7 @@ class GetSupportedDatabaseFlagsArgs {
   factory GetSupportedDatabaseFlagsArgs.fromMap(Map<String, dynamic> map) {
     return GetSupportedDatabaseFlagsArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

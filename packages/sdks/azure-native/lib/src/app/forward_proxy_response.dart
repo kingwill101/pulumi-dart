@@ -31,9 +31,9 @@ class ForwardProxyResponse {
 
   factory ForwardProxyResponse.fromMap(Map<String, dynamic> map) {
     return ForwardProxyResponse(
-      convention: map['convention'] == null ? null : (map['convention'] as String).input(),
-      customHostHeaderName: map['customHostHeaderName'] == null ? null : (map['customHostHeaderName'] as String).input(),
-      customProtoHeaderName: map['customProtoHeaderName'] == null ? null : (map['customProtoHeaderName'] as String).input(),
+      convention: map['convention'] == null ? null : (map['convention']! as String).input(),
+      customHostHeaderName: map['customHostHeaderName'] == null ? null : (map['customHostHeaderName']! as String).input(),
+      customProtoHeaderName: map['customProtoHeaderName'] == null ? null : (map['customProtoHeaderName']! as String).input(),
     );
   }
 }

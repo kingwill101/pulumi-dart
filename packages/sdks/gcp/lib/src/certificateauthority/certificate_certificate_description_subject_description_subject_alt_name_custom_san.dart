@@ -34,9 +34,9 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
 
   factory CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan(
-      critical: map['critical'] == null ? null : (map['critical'] as bool).input(),
-      obectIds: map['obectIds'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId>(map['obectIds'], (value) => CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      critical: map['critical'] == null ? null : (map['critical']! as bool).input(),
+      obectIds: map['obectIds'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId>(map['obectIds']!, (value) => CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

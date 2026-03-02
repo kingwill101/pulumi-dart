@@ -26,8 +26,8 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
 
   factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSet.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSet(
-      clientSideActionConfig: (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfig.fromMap((map['clientSideActionConfig'] as Map).cast<String, dynamic>())).input(),
-      sensitivityToBlock: map['sensitivityToBlock'] == null ? null : (map['sensitivityToBlock'] as String).input(),
+      clientSideActionConfig: (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSetClientSideActionConfig.fromMap((map['clientSideActionConfig']! as Map).cast<String, dynamic>())).input(),
+      sensitivityToBlock: map['sensitivityToBlock'] == null ? null : ((map['sensitivityToBlock'] as String).input()).input(),
     );
   }
 }

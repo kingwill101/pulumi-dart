@@ -53,10 +53,10 @@ class TopicSubscriptionArgs {
   factory TopicSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return TopicSubscriptionArgs(
       endpoint: (map['endpoint'] as String).input(),
-      filterTag: map['filterTag'] == null ? null : (map['filterTag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notifyContentFormat: map['notifyContentFormat'] == null ? null : (map['notifyContentFormat'] as String).input(),
-      notifyStrategy: map['notifyStrategy'] == null ? null : (map['notifyStrategy'] as String).input(),
+      filterTag: map['filterTag'] == null ? null : (map['filterTag']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notifyContentFormat: map['notifyContentFormat'] == null ? null : (map['notifyContentFormat']! as String).input(),
+      notifyStrategy: map['notifyStrategy'] == null ? null : (map['notifyStrategy']! as String).input(),
       topicName: (map['topicName'] as String).input(),
     );
   }

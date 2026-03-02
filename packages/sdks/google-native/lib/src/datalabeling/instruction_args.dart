@@ -51,12 +51,12 @@ class InstructionArgs {
 
   factory InstructionArgs.fromMap(Map<String, dynamic> map) {
     return InstructionArgs(
-      csvInstruction: map['csvInstruction'] == null ? null : (GoogleCloudDatalabelingV1beta1CsvInstruction.fromMap((map['csvInstruction'] as Map).cast<String, dynamic>())).input(),
+      csvInstruction: map['csvInstruction'] == null ? null : (GoogleCloudDatalabelingV1beta1CsvInstruction.fromMap((map['csvInstruction']! as Map).cast<String, dynamic>())).input(),
       dataType: (InstructionDataType.fromValue(map['dataType'] as String)).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      pdfInstruction: map['pdfInstruction'] == null ? null : (GoogleCloudDatalabelingV1beta1PdfInstruction.fromMap((map['pdfInstruction'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      pdfInstruction: map['pdfInstruction'] == null ? null : (GoogleCloudDatalabelingV1beta1PdfInstruction.fromMap((map['pdfInstruction']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

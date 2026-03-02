@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesAuditControl {
 
   factory DomainFeaturesCapabilitiesAuditControl.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesAuditControl(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

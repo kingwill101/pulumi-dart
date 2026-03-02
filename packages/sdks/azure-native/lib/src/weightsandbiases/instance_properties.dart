@@ -41,8 +41,8 @@ class InstanceProperties {
   factory InstanceProperties.fromMap(Map<String, dynamic> map) {
     return InstanceProperties(
       marketplace: (LiftrBaseMarketplaceDetails.fromMap((map['marketplace'] as Map).cast<String, dynamic>())).input(),
-      partnerProperties: map['partnerProperties'] == null ? null : (PartnerProperties.fromMap((map['partnerProperties'] as Map).cast<String, dynamic>())).input(),
-      singleSignOnProperties: map['singleSignOnProperties'] == null ? null : (LiftrBaseSingleSignOnPropertiesV2.fromMap((map['singleSignOnProperties'] as Map).cast<String, dynamic>())).input(),
+      partnerProperties: map['partnerProperties'] == null ? null : (PartnerProperties.fromMap((map['partnerProperties']! as Map).cast<String, dynamic>())).input(),
+      singleSignOnProperties: map['singleSignOnProperties'] == null ? null : (LiftrBaseSingleSignOnPropertiesV2.fromMap((map['singleSignOnProperties']! as Map).cast<String, dynamic>())).input(),
       user: (LiftrBaseUserDetails.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
     );
   }

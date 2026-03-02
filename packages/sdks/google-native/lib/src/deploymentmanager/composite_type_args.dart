@@ -49,12 +49,12 @@ class CompositeTypeArgs {
 
   factory CompositeTypeArgs.fromMap(Map<String, dynamic> map) {
     return CompositeTypeArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<CompositeTypeLabelEntry>(map['labels'], (value) => CompositeTypeLabelEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      templateContents: map['templateContents'] == null ? null : (TemplateContents.fromMap((map['templateContents'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<CompositeTypeLabelEntry>(map['labels']!, (value) => CompositeTypeLabelEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      templateContents: map['templateContents'] == null ? null : (TemplateContents.fromMap((map['templateContents']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

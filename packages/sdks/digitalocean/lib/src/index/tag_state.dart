@@ -51,13 +51,13 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      databasesCount: map['databasesCount'] == null ? null : (map['databasesCount'] as int).input(),
-      dropletsCount: map['dropletsCount'] == null ? null : (map['dropletsCount'] as int).input(),
-      imagesCount: map['imagesCount'] == null ? null : (map['imagesCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      totalResourceCount: map['totalResourceCount'] == null ? null : (map['totalResourceCount'] as int).input(),
-      volumeSnapshotsCount: map['volumeSnapshotsCount'] == null ? null : (map['volumeSnapshotsCount'] as int).input(),
-      volumesCount: map['volumesCount'] == null ? null : (map['volumesCount'] as int).input(),
+      databasesCount: map['databasesCount'] == null ? null : (map['databasesCount']! as int).input(),
+      dropletsCount: map['dropletsCount'] == null ? null : (map['dropletsCount']! as int).input(),
+      imagesCount: map['imagesCount'] == null ? null : (map['imagesCount']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      totalResourceCount: map['totalResourceCount'] == null ? null : (map['totalResourceCount']! as int).input(),
+      volumeSnapshotsCount: map['volumeSnapshotsCount'] == null ? null : (map['volumeSnapshotsCount']! as int).input(),
+      volumesCount: map['volumesCount'] == null ? null : (map['volumesCount']! as int).input(),
     );
   }
 }

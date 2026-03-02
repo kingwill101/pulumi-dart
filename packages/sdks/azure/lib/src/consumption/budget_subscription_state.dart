@@ -61,14 +61,14 @@ class BudgetSubscriptionState {
 
   factory BudgetSubscriptionState.fromMap(Map<String, dynamic> map) {
     return BudgetSubscriptionState(
-      amount: map['amount'] == null ? null : (map['amount'] as double).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      filter: map['filter'] == null ? null : (BudgetSubscriptionFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<BudgetSubscriptionNotification>(map['notifications'], (value) => BudgetSubscriptionNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain'] as String).input(),
-      timePeriod: map['timePeriod'] == null ? null : (BudgetSubscriptionTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as double).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      filter: map['filter'] == null ? null : (BudgetSubscriptionFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<BudgetSubscriptionNotification>(map['notifications']!, (value) => BudgetSubscriptionNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain']! as String).input(),
+      timePeriod: map['timePeriod'] == null ? null : (BudgetSubscriptionTimePeriod.fromMap((map['timePeriod']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -43,7 +43,7 @@ class GetSnapshotIdsResult {
 
   factory GetSnapshotIdsResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotIdsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSnapshotIdsFilter>(map['filters'], (value) => GetSnapshotIdsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSnapshotIdsFilter>(map['filters']!, (value) => GetSnapshotIdsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       owners: map['owners'] == null ? null : (map['owners'] as List).cast<String>(),

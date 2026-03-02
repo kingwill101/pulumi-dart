@@ -61,13 +61,13 @@ class GetSandboxCustomImageResult {
   factory GetSandboxCustomImageResult.fromMap(Map<String, dynamic> map) {
     return GetSandboxCustomImageResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      baseImageName: map['baseImageName'] == null ? null : map['baseImageName'] as String,
+      baseImageName: map['baseImageName'] == null ? null : map['baseImageName']! as String,
       id: map['id'] as String,
       language: map['language'] as String,
-      languageVersion: map['languageVersion'] == null ? null : map['languageVersion'] as String,
+      languageVersion: map['languageVersion'] == null ? null : map['languageVersion']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      requirementsFileContent: map['requirementsFileContent'] == null ? null : map['requirementsFileContent'] as String,
+      requirementsFileContent: map['requirementsFileContent'] == null ? null : map['requirementsFileContent']! as String,
       type: map['type'] as String,
     );
   }

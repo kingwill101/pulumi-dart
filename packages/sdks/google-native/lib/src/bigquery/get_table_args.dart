@@ -40,10 +40,10 @@ class GetTableArgs {
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
       datasetId: (map['datasetId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      selectedFields: map['selectedFields'] == null ? null : (map['selectedFields'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      selectedFields: map['selectedFields'] == null ? null : (map['selectedFields']! as String).input(),
       tableId: (map['tableId'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

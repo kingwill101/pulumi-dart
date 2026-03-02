@@ -41,10 +41,10 @@ class RouteTableAssociationArgs {
 
   factory RouteTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RouteTableAssociationArgs(
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      gatewayId: map['gatewayId'] == null ? null : ((map['gatewayId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       routeTableId: (map['routeTableId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
     );
   }
 }

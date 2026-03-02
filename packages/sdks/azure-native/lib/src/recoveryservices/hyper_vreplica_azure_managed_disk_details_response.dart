@@ -46,12 +46,12 @@ class HyperVReplicaAzureManagedDiskDetailsResponse {
 
   factory HyperVReplicaAzureManagedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HyperVReplicaAzureManagedDiskDetailsResponse(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
-      replicaDiskType: map['replicaDiskType'] == null ? null : (map['replicaDiskType'] as String).input(),
-      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes'] as int).input(),
-      seedManagedDiskId: map['seedManagedDiskId'] == null ? null : (map['seedManagedDiskId'] as String).input(),
-      targetDiskAccountType: map['targetDiskAccountType'] == null ? null : (map['targetDiskAccountType'] as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
+      replicaDiskType: map['replicaDiskType'] == null ? null : (map['replicaDiskType']! as String).input(),
+      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes']! as int).input(),
+      seedManagedDiskId: map['seedManagedDiskId'] == null ? null : (map['seedManagedDiskId']! as String).input(),
+      targetDiskAccountType: map['targetDiskAccountType'] == null ? null : (map['targetDiskAccountType']! as String).input(),
     );
   }
 }

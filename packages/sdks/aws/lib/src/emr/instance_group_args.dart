@@ -239,16 +239,16 @@ class InstanceGroupArgs {
 
   factory InstanceGroupArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGroupArgs(
-      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (map['autoscalingPolicy'] as String).input(),
-      bidPrice: map['bidPrice'] == null ? null : (map['bidPrice'] as String).input(),
+      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : ((map['autoscalingPolicy'] as String).input()).input(),
+      bidPrice: map['bidPrice'] == null ? null : ((map['bidPrice'] as String).input()).input(),
       clusterId: (map['clusterId'] as String).input(),
-      configurationsJson: map['configurationsJson'] == null ? null : (map['configurationsJson'] as String).input(),
-      ebsConfigs: map['ebsConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceGroupEbsConfig>(map['ebsConfigs'], (value) => InstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ebsOptimized: map['ebsOptimized'] == null ? null : (map['ebsOptimized'] as bool).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      configurationsJson: map['configurationsJson'] == null ? null : ((map['configurationsJson'] as String).input()).input(),
+      ebsConfigs: map['ebsConfigs'] == null ? null : ((pulumi.Input.decodeList<InstanceGroupEbsConfig>(map['ebsConfigs']!, (value) => InstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      ebsOptimized: map['ebsOptimized'] == null ? null : ((map['ebsOptimized'] as bool).input()).input(),
+      instanceCount: map['instanceCount'] == null ? null : ((map['instanceCount'] as int).input()).input(),
       instanceType: (map['instanceType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

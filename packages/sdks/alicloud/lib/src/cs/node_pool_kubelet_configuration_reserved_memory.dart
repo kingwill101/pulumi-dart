@@ -25,8 +25,8 @@ class NodePoolKubeletConfigurationReservedMemory {
 
   factory NodePoolKubeletConfigurationReservedMemory.fromMap(Map<String, dynamic> map) {
     return NodePoolKubeletConfigurationReservedMemory(
-      limits: map['limits'] == null ? null : ((map['limits'] as Map).cast<String, String>()).input(),
-      numaNode: map['numaNode'] == null ? null : (map['numaNode'] as int).input(),
+      limits: map['limits'] == null ? null : ((map['limits']! as Map).cast<String, String>()).input(),
+      numaNode: map['numaNode'] == null ? null : (map['numaNode']! as int).input(),
     );
   }
 }

@@ -64,15 +64,15 @@ class AwsElasticLoadBalancingV2ListenerProperties {
 
   factory AwsElasticLoadBalancingV2ListenerProperties.fromMap(Map<String, dynamic> map) {
     return AwsElasticLoadBalancingV2ListenerProperties(
-      alpnPolicy: map['alpnPolicy'] == null ? null : ((map['alpnPolicy'] as List).cast<String>()).input(),
-      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<Certificate>(map['certificates'], (value) => Certificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultActions: map['defaultActions'] == null ? null : (pulumi.Input.decodeList<Action>(map['defaultActions'], (value) => Action.fromValue(value as String))).input(),
-      listenerArn: map['listenerArn'] == null ? null : (map['listenerArn'] as String).input(),
-      loadBalancerArn: map['loadBalancerArn'] == null ? null : (map['loadBalancerArn'] as String).input(),
-      mutualAuthentication: map['mutualAuthentication'] == null ? null : (MutualAuthentication.fromMap((map['mutualAuthentication'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
+      alpnPolicy: map['alpnPolicy'] == null ? null : ((map['alpnPolicy']! as List).cast<String>()).input(),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<Certificate>(map['certificates']!, (value) => Certificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultActions: map['defaultActions'] == null ? null : (pulumi.Input.decodeList<Action>(map['defaultActions']!, (value) => Action.fromValue(value as String))).input(),
+      listenerArn: map['listenerArn'] == null ? null : (map['listenerArn']! as String).input(),
+      loadBalancerArn: map['loadBalancerArn'] == null ? null : (map['loadBalancerArn']! as String).input(),
+      mutualAuthentication: map['mutualAuthentication'] == null ? null : (MutualAuthentication.fromMap((map['mutualAuthentication']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy']! as String).input(),
     );
   }
 }

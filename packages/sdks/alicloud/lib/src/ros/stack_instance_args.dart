@@ -64,14 +64,14 @@ class StackInstanceArgs {
 
   factory StackInstanceArgs.fromMap(Map<String, dynamic> map) {
     return StackInstanceArgs(
-      operationDescription: map['operationDescription'] == null ? null : (map['operationDescription'] as String).input(),
-      operationPreferences: map['operationPreferences'] == null ? null : (map['operationPreferences'] as String).input(),
-      parameterOverrides: map['parameterOverrides'] == null ? null : (pulumi.Input.decodeList<StackInstanceParameterOverride>(map['parameterOverrides'], (value) => StackInstanceParameterOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      retainStacks: map['retainStacks'] == null ? null : (map['retainStacks'] as bool).input(),
+      operationDescription: map['operationDescription'] == null ? null : (map['operationDescription']! as String).input(),
+      operationPreferences: map['operationPreferences'] == null ? null : (map['operationPreferences']! as String).input(),
+      parameterOverrides: map['parameterOverrides'] == null ? null : (pulumi.Input.decodeList<StackInstanceParameterOverride>(map['parameterOverrides']!, (value) => StackInstanceParameterOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      retainStacks: map['retainStacks'] == null ? null : (map['retainStacks']! as bool).input(),
       stackGroupName: (map['stackGroupName'] as String).input(),
       stackInstanceAccountId: (map['stackInstanceAccountId'] as String).input(),
       stackInstanceRegionId: (map['stackInstanceRegionId'] as String).input(),
-      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : (map['timeoutInMinutes'] as String).input(),
+      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : (map['timeoutInMinutes']! as String).input(),
     );
   }
 }

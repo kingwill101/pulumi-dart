@@ -52,13 +52,13 @@ class GoogleCloudDocumentaiV1DocumentRevision {
 
   factory GoogleCloudDocumentaiV1DocumentRevision.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentRevision(
-      agent: map['agent'] == null ? null : (map['agent'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      humanReview: map['humanReview'] == null ? null : (GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromMap((map['humanReview'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      parent: map['parent'] == null ? null : ((map['parent'] as List).cast<int>()).input(),
-      parentIds: map['parentIds'] == null ? null : ((map['parentIds'] as List).cast<String>()).input(),
-      processor: map['processor'] == null ? null : (map['processor'] as String).input(),
+      agent: map['agent'] == null ? null : (map['agent']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      humanReview: map['humanReview'] == null ? null : (GoogleCloudDocumentaiV1DocumentRevisionHumanReview.fromMap((map['humanReview']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      parent: map['parent'] == null ? null : ((map['parent']! as List).cast<int>()).input(),
+      parentIds: map['parentIds'] == null ? null : ((map['parentIds']! as List).cast<String>()).input(),
+      processor: map['processor'] == null ? null : (map['processor']! as String).input(),
     );
   }
 }

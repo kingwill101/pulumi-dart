@@ -26,8 +26,8 @@ class IPTagResponse {
 
   factory IPTagResponse.fromMap(Map<String, dynamic> map) {
     return IPTagResponse(
-      ipTagType: map['ipTagType'] == null ? null : (map['ipTagType'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      ipTagType: map['ipTagType'] == null ? null : (map['ipTagType']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

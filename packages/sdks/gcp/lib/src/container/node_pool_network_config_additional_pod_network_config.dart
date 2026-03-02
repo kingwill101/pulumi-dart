@@ -30,9 +30,9 @@ class NodePoolNetworkConfigAdditionalPodNetworkConfig {
 
   factory NodePoolNetworkConfigAdditionalPodNetworkConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNetworkConfigAdditionalPodNetworkConfig(
-      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode'] as int).input(),
-      secondaryPodRange: map['secondaryPodRange'] == null ? null : (map['secondaryPodRange'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode']! as int).input(),
+      secondaryPodRange: map['secondaryPodRange'] == null ? null : (map['secondaryPodRange']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

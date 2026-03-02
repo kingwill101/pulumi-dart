@@ -26,8 +26,8 @@ class ServiceBackendPortPatch {
 
   factory ServiceBackendPortPatch.fromMap(Map<String, dynamic> map) {
     return ServiceBackendPortPatch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      number: map['number'] == null ? null : (map['number'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      number: map['number'] == null ? null : (map['number']! as int).input(),
     );
   }
 }

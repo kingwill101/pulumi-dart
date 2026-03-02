@@ -36,9 +36,9 @@ class IpAddressPool {
   factory IpAddressPool.fromMap(Map<String, dynamic> map) {
     return IpAddressPool(
       addresses: ((map['addresses'] as List).cast<String>()).input(),
-      autoAssign: map['autoAssign'] == null ? null : (map['autoAssign'] as String).input(),
+      autoAssign: map['autoAssign'] == null ? null : (map['autoAssign']! as String).input(),
       name: (map['name'] as String).input(),
-      onlyUseHostIps: map['onlyUseHostIps'] == null ? null : (map['onlyUseHostIps'] as String).input(),
+      onlyUseHostIps: map['onlyUseHostIps'] == null ? null : (map['onlyUseHostIps']! as String).input(),
     );
   }
 }

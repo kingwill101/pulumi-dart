@@ -35,10 +35,10 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetList {
 
   factory ServiceGroupMonitoringAgentProcessAlertConfigTargetList.fromMap(Map<String, dynamic> map) {
     return ServiceGroupMonitoringAgentProcessAlertConfigTargetList(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      jsonParams: map['jsonParams'] == null ? null : (map['jsonParams'] as String).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
-      targetListId: map['targetListId'] == null ? null : (map['targetListId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      jsonParams: map['jsonParams'] == null ? null : (map['jsonParams']! as String).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
+      targetListId: map['targetListId'] == null ? null : (map['targetListId']! as String).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class ScaleSettingsResponse {
   factory ScaleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ScaleSettingsResponse(
       maxNodeCount: (map['maxNodeCount'] as int).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount'] as int).input(),
-      nodeIdleTimeBeforeScaleDown: map['nodeIdleTimeBeforeScaleDown'] == null ? null : (map['nodeIdleTimeBeforeScaleDown'] as String).input(),
+      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as int).input(),
+      nodeIdleTimeBeforeScaleDown: map['nodeIdleTimeBeforeScaleDown'] == null ? null : (map['nodeIdleTimeBeforeScaleDown']! as String).input(),
     );
   }
 }

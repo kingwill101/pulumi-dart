@@ -38,9 +38,9 @@ class GetPublicKeyArgs {
 
   factory GetPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicKeyArgs(
-      grantTokens: map['grantTokens'] == null ? null : ((map['grantTokens'] as List).cast<String>()).input(),
+      grantTokens: map['grantTokens'] == null ? null : (((map['grantTokens'] as List).cast<String>()).input()).input(),
       keyId: (map['keyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

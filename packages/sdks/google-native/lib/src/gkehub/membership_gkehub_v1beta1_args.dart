@@ -76,17 +76,17 @@ class MembershipGkehubV1beta1Args {
 
   factory MembershipGkehubV1beta1Args.fromMap(Map<String, dynamic> map) {
     return MembershipGkehubV1beta1Args(
-      authority: map['authority'] == null ? null : (AuthorityGkehubV1beta1.fromMap((map['authority'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (MembershipEndpointGkehubV1beta1.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      infrastructureType: map['infrastructureType'] == null ? null : (MembershipInfrastructureTypeGkehubV1beta1.fromValue(map['infrastructureType'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      authority: map['authority'] == null ? null : (AuthorityGkehubV1beta1.fromMap((map['authority']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (MembershipEndpointGkehubV1beta1.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
+      infrastructureType: map['infrastructureType'] == null ? null : (MembershipInfrastructureTypeGkehubV1beta1.fromValue(map['infrastructureType']! as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       membershipId: (map['membershipId'] as String).input(),
-      monitoringConfig: map['monitoringConfig'] == null ? null : (MonitoringConfigGkehubV1beta1.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      monitoringConfig: map['monitoringConfig'] == null ? null : (MonitoringConfigGkehubV1beta1.fromMap((map['monitoringConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

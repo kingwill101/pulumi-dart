@@ -43,11 +43,11 @@ class VirtualMachineInstancePropertiesHardwareProfileResponse {
 
   factory VirtualMachineInstancePropertiesHardwareProfileResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesHardwareProfileResponse(
-      dynamicMemoryConfig: map['dynamicMemoryConfig'] == null ? null : (VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse.fromMap((map['dynamicMemoryConfig'] as Map).cast<String, dynamic>())).input(),
-      memoryMB: map['memoryMB'] == null ? null : (map['memoryMB'] as double).input(),
-      processors: map['processors'] == null ? null : (map['processors'] as int).input(),
-      virtualMachineGPUs: map['virtualMachineGPUs'] == null ? null : (pulumi.Input.decodeList<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse>(map['virtualMachineGPUs'], (value) => VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      dynamicMemoryConfig: map['dynamicMemoryConfig'] == null ? null : (VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfigResponse.fromMap((map['dynamicMemoryConfig']! as Map).cast<String, dynamic>())).input(),
+      memoryMB: map['memoryMB'] == null ? null : (map['memoryMB']! as double).input(),
+      processors: map['processors'] == null ? null : (map['processors']! as int).input(),
+      virtualMachineGPUs: map['virtualMachineGPUs'] == null ? null : (pulumi.Input.decodeList<VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse>(map['virtualMachineGPUs']!, (value) => VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

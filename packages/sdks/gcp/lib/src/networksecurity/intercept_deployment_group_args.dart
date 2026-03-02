@@ -56,12 +56,12 @@ class InterceptDeploymentGroupArgs {
 
   factory InterceptDeploymentGroupArgs.fromMap(Map<String, dynamic> map) {
     return InterceptDeploymentGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       interceptDeploymentGroupId: (map['interceptDeploymentGroupId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

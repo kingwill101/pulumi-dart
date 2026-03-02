@@ -20,7 +20,7 @@ class GcpIntegrationsLoadBalancing {
 
   factory GcpIntegrationsLoadBalancing.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsLoadBalancing(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class GetTargetVpnGatewayComputeV1Args {
 
   factory GetTargetVpnGatewayComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetTargetVpnGatewayComputeV1Args(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       targetVpnGateway: (map['targetVpnGateway'] as String).input(),
     );

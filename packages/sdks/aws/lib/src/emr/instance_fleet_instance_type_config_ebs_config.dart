@@ -35,10 +35,10 @@ class InstanceFleetInstanceTypeConfigEbsConfig {
 
   factory InstanceFleetInstanceTypeConfigEbsConfig.fromMap(Map<String, dynamic> map) {
     return InstanceFleetInstanceTypeConfigEbsConfig(
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
+      iops: map['iops'] == null ? null : ((map['iops'] as int).input()).input(),
       size: (map['size'] as int).input(),
       type: (map['type'] as String).input(),
-      volumesPerInstance: map['volumesPerInstance'] == null ? null : (map['volumesPerInstance'] as int).input(),
+      volumesPerInstance: map['volumesPerInstance'] == null ? null : ((map['volumesPerInstance'] as int).input()).input(),
     );
   }
 }

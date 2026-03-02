@@ -39,8 +39,8 @@ class GetSqlServerInstanceJobsStatusArgs {
 
   factory GetSqlServerInstanceJobsStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerInstanceJobsStatusArgs(
-      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
-      jobType: map['jobType'] == null ? null : (map['jobType'] as String).input(),
+      featureName: map['featureName'] == null ? null : (map['featureName']! as String).input(),
+      jobType: map['jobType'] == null ? null : (map['jobType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sqlServerInstanceName: (map['sqlServerInstanceName'] as String).input(),
     );

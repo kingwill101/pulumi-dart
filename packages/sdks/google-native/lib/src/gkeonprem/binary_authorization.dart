@@ -22,7 +22,7 @@ class BinaryAuthorization {
 
   factory BinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return BinaryAuthorization(
-      evaluationMode: map['evaluationMode'] == null ? null : (BinaryAuthorizationEvaluationMode.fromValue(map['evaluationMode'] as String)).input(),
+      evaluationMode: map['evaluationMode'] == null ? null : (BinaryAuthorizationEvaluationMode.fromValue(map['evaluationMode']! as String)).input(),
     );
   }
 }

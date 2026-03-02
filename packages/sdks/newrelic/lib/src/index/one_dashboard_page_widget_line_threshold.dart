@@ -35,10 +35,10 @@ class OneDashboardPageWidgetLineThreshold {
 
   factory OneDashboardPageWidgetLineThreshold.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetLineThreshold(
-      from: map['from'] == null ? null : (map['from'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      to: map['to'] == null ? null : (map['to'] as String).input(),
+      from: map['from'] == null ? null : (map['from']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      to: map['to'] == null ? null : (map['to']! as String).input(),
     );
   }
 }

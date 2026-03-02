@@ -66,16 +66,16 @@ class TimeSeriesDatabaseConnectionState {
 
   factory TimeSeriesDatabaseConnectionState.fromMap(Map<String, dynamic> map) {
     return TimeSeriesDatabaseConnectionState(
-      digitalTwinsId: map['digitalTwinsId'] == null ? null : (map['digitalTwinsId'] as String).input(),
-      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName'] as String).input(),
-      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName'] as String).input(),
-      eventhubNamespaceEndpointUri: map['eventhubNamespaceEndpointUri'] == null ? null : (map['eventhubNamespaceEndpointUri'] as String).input(),
-      eventhubNamespaceId: map['eventhubNamespaceId'] == null ? null : (map['eventhubNamespaceId'] as String).input(),
-      kustoClusterId: map['kustoClusterId'] == null ? null : (map['kustoClusterId'] as String).input(),
-      kustoClusterUri: map['kustoClusterUri'] == null ? null : (map['kustoClusterUri'] as String).input(),
-      kustoDatabaseName: map['kustoDatabaseName'] == null ? null : (map['kustoDatabaseName'] as String).input(),
-      kustoTableName: map['kustoTableName'] == null ? null : (map['kustoTableName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      digitalTwinsId: map['digitalTwinsId'] == null ? null : (map['digitalTwinsId']! as String).input(),
+      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName']! as String).input(),
+      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName']! as String).input(),
+      eventhubNamespaceEndpointUri: map['eventhubNamespaceEndpointUri'] == null ? null : (map['eventhubNamespaceEndpointUri']! as String).input(),
+      eventhubNamespaceId: map['eventhubNamespaceId'] == null ? null : (map['eventhubNamespaceId']! as String).input(),
+      kustoClusterId: map['kustoClusterId'] == null ? null : (map['kustoClusterId']! as String).input(),
+      kustoClusterUri: map['kustoClusterUri'] == null ? null : (map['kustoClusterUri']! as String).input(),
+      kustoDatabaseName: map['kustoDatabaseName'] == null ? null : (map['kustoDatabaseName']! as String).input(),
+      kustoTableName: map['kustoTableName'] == null ? null : (map['kustoTableName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

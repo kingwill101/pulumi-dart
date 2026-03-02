@@ -26,7 +26,7 @@ class S3AccessPointAttachmentOpenzfsConfiguration {
 
   factory S3AccessPointAttachmentOpenzfsConfiguration.fromMap(Map<String, dynamic> map) {
     return S3AccessPointAttachmentOpenzfsConfiguration(
-      fileSystemIdentity: (S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity.fromMap((map['fileSystemIdentity'] as Map).cast<String, dynamic>())).input(),
+      fileSystemIdentity: (S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity.fromMap((map['fileSystemIdentity']! as Map).cast<String, dynamic>())).input(),
       volumeId: (map['volumeId'] as String).input(),
     );
   }

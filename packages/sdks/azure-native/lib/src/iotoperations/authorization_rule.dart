@@ -36,7 +36,7 @@ class AuthorizationRule {
     return AuthorizationRule(
       brokerResources: (pulumi.Input.decodeList<BrokerResourceRule>(map['brokerResources'], (value) => BrokerResourceRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       principals: (PrincipalDefinition.fromMap((map['principals'] as Map).cast<String, dynamic>())).input(),
-      stateStoreResources: map['stateStoreResources'] == null ? null : (pulumi.Input.decodeList<StateStoreResourceRule>(map['stateStoreResources'], (value) => StateStoreResourceRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stateStoreResources: map['stateStoreResources'] == null ? null : (pulumi.Input.decodeList<StateStoreResourceRule>(map['stateStoreResources']!, (value) => StateStoreResourceRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

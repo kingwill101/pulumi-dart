@@ -41,10 +41,10 @@ class WebPubSubHubProperties {
 
   factory WebPubSubHubProperties.fromMap(Map<String, dynamic> map) {
     return WebPubSubHubProperties(
-      anonymousConnectPolicy: map['anonymousConnectPolicy'] == null ? null : (map['anonymousConnectPolicy'] as String).input(),
-      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<EventHandler>(map['eventHandlers'], (value) => EventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      eventListeners: map['eventListeners'] == null ? null : (pulumi.Input.decodeList<EventListener>(map['eventListeners'], (value) => EventListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      webSocketKeepAliveIntervalInSeconds: map['webSocketKeepAliveIntervalInSeconds'] == null ? null : (map['webSocketKeepAliveIntervalInSeconds'] as int).input(),
+      anonymousConnectPolicy: map['anonymousConnectPolicy'] == null ? null : (map['anonymousConnectPolicy']! as String).input(),
+      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<EventHandler>(map['eventHandlers']!, (value) => EventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventListeners: map['eventListeners'] == null ? null : (pulumi.Input.decodeList<EventListener>(map['eventListeners']!, (value) => EventListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      webSocketKeepAliveIntervalInSeconds: map['webSocketKeepAliveIntervalInSeconds'] == null ? null : (map['webSocketKeepAliveIntervalInSeconds']! as int).input(),
     );
   }
 }

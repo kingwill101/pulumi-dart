@@ -62,15 +62,15 @@ class PoolExtension {
 
   factory PoolExtension.fromMap(Map<String, dynamic> map) {
     return PoolExtension(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
-      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : (map['automaticUpgradeEnabled'] as bool).input(),
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion']! as bool).input(),
+      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : (map['automaticUpgradeEnabled']! as bool).input(),
       name: (map['name'] as String).input(),
-      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings'] as String).input(),
-      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions'] as List).cast<String>()).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']! as String).input(),
+      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions']! as List).cast<String>()).input(),
       publisher: (map['publisher'] as String).input(),
-      settingsJson: map['settingsJson'] == null ? null : (map['settingsJson'] as String).input(),
+      settingsJson: map['settingsJson'] == null ? null : (map['settingsJson']! as String).input(),
       type: (map['type'] as String).input(),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion']! as String).input(),
     );
   }
 }

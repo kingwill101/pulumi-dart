@@ -37,10 +37,10 @@ class MetricStatResponse {
 
   factory MetricStatResponse.fromMap(Map<String, dynamic> map) {
     return MetricStatResponse(
-      metric: map['metric'] == null ? null : (MetricResponse.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      stat: map['stat'] == null ? null : (map['stat'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      metric: map['metric'] == null ? null : (MetricResponse.fromMap((map['metric']! as Map).cast<String, dynamic>())).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      stat: map['stat'] == null ? null : (map['stat']! as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

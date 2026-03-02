@@ -34,7 +34,7 @@ class GoogleCloudAiplatformV1beta1CreatePipelineJobRequest {
     return GoogleCloudAiplatformV1beta1CreatePipelineJobRequest(
       parent: (map['parent'] as String).input(),
       pipelineJob: (GoogleCloudAiplatformV1beta1PipelineJob.fromMap((map['pipelineJob'] as Map).cast<String, dynamic>())).input(),
-      pipelineJobId: map['pipelineJobId'] == null ? null : (map['pipelineJobId'] as String).input(),
+      pipelineJobId: map['pipelineJobId'] == null ? null : (map['pipelineJobId']! as String).input(),
     );
   }
 }

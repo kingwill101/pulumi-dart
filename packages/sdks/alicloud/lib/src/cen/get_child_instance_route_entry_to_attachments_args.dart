@@ -49,11 +49,11 @@ class GetChildInstanceRouteEntryToAttachmentsArgs {
 
   factory GetChildInstanceRouteEntryToAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetChildInstanceRouteEntryToAttachmentsArgs(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
       childInstanceRouteTableId: (map['childInstanceRouteTableId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType']! as String).input(),
       transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
     );
   }

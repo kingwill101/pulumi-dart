@@ -68,15 +68,15 @@ class Export {
 
   factory Export.fromMap(Map<String, dynamic> map) {
     return Export(
-      cacheonly: map['cacheonly'] == null ? null : ((map['cacheonly'] as Map).cast<String, dynamic>()).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      docker: map['docker'] == null ? null : (ExportDocker.fromMap((map['docker'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (ExportImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      local: map['local'] == null ? null : (ExportLocal.fromMap((map['local'] as Map).cast<String, dynamic>())).input(),
-      oci: map['oci'] == null ? null : (ExportOCI.fromMap((map['oci'] as Map).cast<String, dynamic>())).input(),
-      raw: map['raw'] == null ? null : (map['raw'] as String).input(),
-      registry: map['registry'] == null ? null : (ExportRegistry.fromMap((map['registry'] as Map).cast<String, dynamic>())).input(),
-      tar: map['tar'] == null ? null : (ExportTar.fromMap((map['tar'] as Map).cast<String, dynamic>())).input(),
+      cacheonly: map['cacheonly'] == null ? null : ((map['cacheonly']! as Map).cast<String, dynamic>()).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      docker: map['docker'] == null ? null : (ExportDocker.fromMap((map['docker']! as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (ExportImage.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
+      local: map['local'] == null ? null : (ExportLocal.fromMap((map['local']! as Map).cast<String, dynamic>())).input(),
+      oci: map['oci'] == null ? null : (ExportOCI.fromMap((map['oci']! as Map).cast<String, dynamic>())).input(),
+      raw: map['raw'] == null ? null : (map['raw']! as String).input(),
+      registry: map['registry'] == null ? null : (ExportRegistry.fromMap((map['registry']! as Map).cast<String, dynamic>())).input(),
+      tar: map['tar'] == null ? null : (ExportTar.fromMap((map['tar']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

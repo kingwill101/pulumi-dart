@@ -21,7 +21,7 @@ class VpcPeeringConnectionAccepterRequester {
 
   factory VpcPeeringConnectionAccepterRequester.fromMap(Map<String, dynamic> map) {
     return VpcPeeringConnectionAccepterRequester(
-      allowRemoteVpcDnsResolution: map['allowRemoteVpcDnsResolution'] == null ? null : (map['allowRemoteVpcDnsResolution'] as bool).input(),
+      allowRemoteVpcDnsResolution: map['allowRemoteVpcDnsResolution'] == null ? null : ((map['allowRemoteVpcDnsResolution'] as bool).input()).input(),
     );
   }
 }

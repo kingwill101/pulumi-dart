@@ -26,8 +26,8 @@ class Publisher {
 
   factory Publisher.fromMap(Map<String, dynamic> map) {
     return Publisher(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact']! as String).input(),
     );
   }
 }

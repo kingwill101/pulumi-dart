@@ -47,8 +47,8 @@ class DiagnosticSettingsCategoryResourceResponse {
 
   factory DiagnosticSettingsCategoryResourceResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticSettingsCategoryResourceResponse(
-      categoryGroups: map['categoryGroups'] == null ? null : ((map['categoryGroups'] as List).cast<String>()).input(),
-      categoryType: map['categoryType'] == null ? null : (map['categoryType'] as String).input(),
+      categoryGroups: map['categoryGroups'] == null ? null : ((map['categoryGroups']! as List).cast<String>()).input(),
+      categoryType: map['categoryType'] == null ? null : (map['categoryType']! as String).input(),
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),

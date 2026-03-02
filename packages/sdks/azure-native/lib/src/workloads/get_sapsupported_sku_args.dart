@@ -58,7 +58,7 @@ class GetSAPSupportedSkuArgs {
       databaseType: (map['databaseType'] as String).input(),
       deploymentType: (map['deploymentType'] as String).input(),
       environment: (map['environment'] as String).input(),
-      highAvailabilityType: map['highAvailabilityType'] == null ? null : (map['highAvailabilityType'] as String).input(),
+      highAvailabilityType: map['highAvailabilityType'] == null ? null : (map['highAvailabilityType']! as String).input(),
       location: (map['location'] as String).input(),
       sapProduct: (map['sapProduct'] as String).input(),
     );

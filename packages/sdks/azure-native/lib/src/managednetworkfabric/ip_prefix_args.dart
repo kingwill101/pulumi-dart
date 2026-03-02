@@ -50,12 +50,12 @@ class IpPrefixArgs {
 
   factory IpPrefixArgs.fromMap(Map<String, dynamic> map) {
     return IpPrefixArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
-      ipPrefixName: map['ipPrefixName'] == null ? null : (map['ipPrefixName'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
+      ipPrefixName: map['ipPrefixName'] == null ? null : (map['ipPrefixName']! as String).input(),
       ipPrefixRules: (pulumi.Input.decodeList<IpPrefixRule>(map['ipPrefixRules'], (value) => IpPrefixRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

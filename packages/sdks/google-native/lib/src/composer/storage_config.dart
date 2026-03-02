@@ -21,7 +21,7 @@ class StorageConfig {
 
   factory StorageConfig.fromMap(Map<String, dynamic> map) {
     return StorageConfig(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
     );
   }
 }

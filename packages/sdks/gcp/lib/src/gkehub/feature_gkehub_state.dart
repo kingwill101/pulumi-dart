@@ -95,19 +95,19 @@ class FeatureGkehubState {
 
   factory FeatureGkehubState.fromMap(Map<String, dynamic> map) {
     return FeatureGkehubState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : (FeatureFleetDefaultMemberConfig.fromMap((map['fleetDefaultMemberConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      resourceStates: map['resourceStates'] == null ? null : (pulumi.Input.decodeList<FeatureResourceState>(map['resourceStates'], (value) => FeatureResourceState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      spec: map['spec'] == null ? null : (FeatureSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<FeatureState>(map['states'], (value) => FeatureState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : (FeatureFleetDefaultMemberConfig.fromMap((map['fleetDefaultMemberConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      resourceStates: map['resourceStates'] == null ? null : (pulumi.Input.decodeList<FeatureResourceState>(map['resourceStates']!, (value) => FeatureResourceState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spec: map['spec'] == null ? null : (FeatureSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<FeatureState>(map['states']!, (value) => FeatureState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

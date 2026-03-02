@@ -83,7 +83,7 @@ class GetServiceQuotaResult {
       region: map['region'] as String,
       serviceCode: map['serviceCode'] as String,
       serviceName: map['serviceName'] as String,
-      usageMetrics: pulumi.Input.decodeList<GetServiceQuotaUsageMetric>(map['usageMetrics'], (value) => GetServiceQuotaUsageMetric.fromMap((value as Map).cast<String, dynamic>())),
+      usageMetrics: pulumi.Input.decodeList<GetServiceQuotaUsageMetric>(map['usageMetrics']!, (value) => GetServiceQuotaUsageMetric.fromMap((value as Map).cast<String, dynamic>())),
       value: map['value'] as double,
     );
   }

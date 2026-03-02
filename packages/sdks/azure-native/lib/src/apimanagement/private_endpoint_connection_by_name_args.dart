@@ -45,9 +45,9 @@ class PrivateEndpointConnectionByNameArgs {
 
   factory PrivateEndpointConnectionByNameArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionByNameArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
-      properties: map['properties'] == null ? null : (PrivateEndpointConnectionRequestProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName']! as String).input(),
+      properties: map['properties'] == null ? null : (PrivateEndpointConnectionRequestProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

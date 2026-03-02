@@ -48,10 +48,10 @@ class BackendAddressPoolArgs {
   factory BackendAddressPoolArgs.fromMap(Map<String, dynamic> map) {
     return BackendAddressPoolArgs(
       loadbalancerId: (map['loadbalancerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      synchronousMode: map['synchronousMode'] == null ? null : (map['synchronousMode'] as String).input(),
-      tunnelInterfaces: map['tunnelInterfaces'] == null ? null : (pulumi.Input.decodeList<BackendAddressPoolTunnelInterface>(map['tunnelInterfaces'], (value) => BackendAddressPoolTunnelInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      synchronousMode: map['synchronousMode'] == null ? null : (map['synchronousMode']! as String).input(),
+      tunnelInterfaces: map['tunnelInterfaces'] == null ? null : (pulumi.Input.decodeList<BackendAddressPoolTunnelInterface>(map['tunnelInterfaces']!, (value) => BackendAddressPoolTunnelInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
     );
   }
 }

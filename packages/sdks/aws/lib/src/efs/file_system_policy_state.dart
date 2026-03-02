@@ -38,10 +38,10 @@ class FileSystemPolicyState {
 
   factory FileSystemPolicyState.fromMap(Map<String, dynamic> map) {
     return FileSystemPolicyState(
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : ((map['bypassPolicyLockoutSafetyCheck'] as bool).input()).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : ((map['fileSystemId'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ClientConnectionConfigAlloydbV1alpha {
 
   factory ClientConnectionConfigAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return ClientConnectionConfigAlloydbV1alpha(
-      requireConnectors: map['requireConnectors'] == null ? null : (map['requireConnectors'] as bool).input(),
-      sslConfig: map['sslConfig'] == null ? null : (SslConfigAlloydbV1alpha.fromMap((map['sslConfig'] as Map).cast<String, dynamic>())).input(),
+      requireConnectors: map['requireConnectors'] == null ? null : (map['requireConnectors']! as bool).input(),
+      sslConfig: map['sslConfig'] == null ? null : (SslConfigAlloydbV1alpha.fromMap((map['sslConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

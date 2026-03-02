@@ -64,15 +64,15 @@ class JobDefinitionEksPropertiesPodPropertiesContainer {
 
   factory JobDefinitionEksPropertiesPodPropertiesContainer.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesContainer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesContainerEnv>(map['envs'], (value) => JobDefinitionEksPropertiesPodPropertiesContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      args: map['args'] == null ? null : (((map['args'] as List).cast<String>()).input()).input(),
+      commands: map['commands'] == null ? null : (((map['commands'] as List).cast<String>()).input()).input(),
+      envs: map['envs'] == null ? null : ((pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesContainerEnv>(map['envs']!, (value) => JobDefinitionEksPropertiesPodPropertiesContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       image: (map['image'] as String).input(),
-      imagePullPolicy: map['imagePullPolicy'] == null ? null : (map['imagePullPolicy'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resources: map['resources'] == null ? null : (JobDefinitionEksPropertiesPodPropertiesContainerResources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
-      securityContext: map['securityContext'] == null ? null : (JobDefinitionEksPropertiesPodPropertiesContainerSecurityContext.fromMap((map['securityContext'] as Map).cast<String, dynamic>())).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount>(map['volumeMounts'], (value) => JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imagePullPolicy: map['imagePullPolicy'] == null ? null : ((map['imagePullPolicy'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      resources: map['resources'] == null ? null : ((JobDefinitionEksPropertiesPodPropertiesContainerResources.fromMap((map['resources']! as Map).cast<String, dynamic>())).input()).input(),
+      securityContext: map['securityContext'] == null ? null : ((JobDefinitionEksPropertiesPodPropertiesContainerSecurityContext.fromMap((map['securityContext']! as Map).cast<String, dynamic>())).input()).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : ((pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount>(map['volumeMounts']!, (value) => JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

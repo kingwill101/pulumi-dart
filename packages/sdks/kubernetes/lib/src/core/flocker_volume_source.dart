@@ -26,8 +26,8 @@ class FlockerVolumeSource {
 
   factory FlockerVolumeSource.fromMap(Map<String, dynamic> map) {
     return FlockerVolumeSource(
-      datasetName: map['datasetName'] == null ? null : (map['datasetName'] as String).input(),
-      datasetUUID: map['datasetUUID'] == null ? null : (map['datasetUUID'] as String).input(),
+      datasetName: map['datasetName'] == null ? null : (map['datasetName']! as String).input(),
+      datasetUUID: map['datasetUUID'] == null ? null : (map['datasetUUID']! as String).input(),
     );
   }
 }

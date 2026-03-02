@@ -27,8 +27,8 @@ class ListNetworkManagerDeploymentStatusResult {
 
   factory ListNetworkManagerDeploymentStatusResult.fromMap(Map<String, dynamic> map) {
     return ListNetworkManagerDeploymentStatusResult(
-      skipToken: map['skipToken'] == null ? null : map['skipToken'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<NetworkManagerDeploymentStatusResponse>(map['value'], (value) => NetworkManagerDeploymentStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
+      skipToken: map['skipToken'] == null ? null : map['skipToken']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<NetworkManagerDeploymentStatusResponse>(map['value']!, (value) => NetworkManagerDeploymentStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

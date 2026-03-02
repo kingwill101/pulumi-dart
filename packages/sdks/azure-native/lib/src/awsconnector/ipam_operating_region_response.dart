@@ -21,7 +21,7 @@ class IpamOperatingRegionResponse {
 
   factory IpamOperatingRegionResponse.fromMap(Map<String, dynamic> map) {
     return IpamOperatingRegionResponse(
-      regionName: map['regionName'] == null ? null : (map['regionName'] as String).input(),
+      regionName: map['regionName'] == null ? null : (map['regionName']! as String).input(),
     );
   }
 }

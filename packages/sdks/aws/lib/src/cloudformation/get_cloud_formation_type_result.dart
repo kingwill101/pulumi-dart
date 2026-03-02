@@ -109,7 +109,7 @@ class GetCloudFormationTypeResult {
       executionRoleArn: map['executionRoleArn'] as String,
       id: map['id'] as String,
       isDefaultVersion: map['isDefaultVersion'] as bool,
-      loggingConfigs: pulumi.Input.decodeList<GetCloudFormationTypeLoggingConfig>(map['loggingConfigs'], (value) => GetCloudFormationTypeLoggingConfig.fromMap((value as Map).cast<String, dynamic>())),
+      loggingConfigs: pulumi.Input.decodeList<GetCloudFormationTypeLoggingConfig>(map['loggingConfigs']!, (value) => GetCloudFormationTypeLoggingConfig.fromMap((value as Map).cast<String, dynamic>())),
       provisioningType: map['provisioningType'] as String,
       region: map['region'] as String,
       schema: map['schema'] as String,

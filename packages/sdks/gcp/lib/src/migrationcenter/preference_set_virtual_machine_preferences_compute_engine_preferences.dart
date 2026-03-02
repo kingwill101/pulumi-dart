@@ -27,8 +27,8 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferences {
 
   factory PreferenceSetVirtualMachinePreferencesComputeEnginePreferences.fromMap(Map<String, dynamic> map) {
     return PreferenceSetVirtualMachinePreferencesComputeEnginePreferences(
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
-      machinePreferences: map['machinePreferences'] == null ? null : (PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences.fromMap((map['machinePreferences'] as Map).cast<String, dynamic>())).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
+      machinePreferences: map['machinePreferences'] == null ? null : (PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences.fromMap((map['machinePreferences']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

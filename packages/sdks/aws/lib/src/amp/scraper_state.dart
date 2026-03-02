@@ -74,17 +74,17 @@ class ScraperState {
 
   factory ScraperState.fromMap(Map<String, dynamic> map) {
     return ScraperState(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      destination: map['destination'] == null ? null : (ScraperDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      roleConfiguration: map['roleConfiguration'] == null ? null : (ScraperRoleConfiguration.fromMap((map['roleConfiguration'] as Map).cast<String, dynamic>())).input(),
-      scrapeConfiguration: map['scrapeConfiguration'] == null ? null : (map['scrapeConfiguration'] as String).input(),
-      source: map['source'] == null ? null : (ScraperSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ScraperTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      alias: map['alias'] == null ? null : ((map['alias'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      destination: map['destination'] == null ? null : ((ScraperDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      roleConfiguration: map['roleConfiguration'] == null ? null : ((ScraperRoleConfiguration.fromMap((map['roleConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      scrapeConfiguration: map['scrapeConfiguration'] == null ? null : ((map['scrapeConfiguration'] as String).input()).input(),
+      source: map['source'] == null ? null : ((ScraperSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ScraperTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

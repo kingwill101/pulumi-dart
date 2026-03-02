@@ -66,9 +66,9 @@ class OrganizationSccBigQueryExportArgs {
   factory OrganizationSccBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSccBigQueryExportArgs(
       bigQueryExportId: (map['bigQueryExportId'] as String).input(),
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       organization: (map['organization'] as String).input(),
     );
   }

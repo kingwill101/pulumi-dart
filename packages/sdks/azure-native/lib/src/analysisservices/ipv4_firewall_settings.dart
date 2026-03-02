@@ -27,8 +27,8 @@ class IPv4FirewallSettings {
 
   factory IPv4FirewallSettings.fromMap(Map<String, dynamic> map) {
     return IPv4FirewallSettings(
-      enablePowerBIService: map['enablePowerBIService'] == null ? null : (map['enablePowerBIService'] as bool).input(),
-      firewallRules: map['firewallRules'] == null ? null : (pulumi.Input.decodeList<IPv4FirewallRule>(map['firewallRules'], (value) => IPv4FirewallRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enablePowerBIService: map['enablePowerBIService'] == null ? null : (map['enablePowerBIService']! as bool).input(),
+      firewallRules: map['firewallRules'] == null ? null : (pulumi.Input.decodeList<IPv4FirewallRule>(map['firewallRules']!, (value) => IPv4FirewallRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

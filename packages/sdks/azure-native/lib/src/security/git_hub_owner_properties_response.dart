@@ -60,9 +60,9 @@ class GitHubOwnerPropertiesResponse {
   factory GitHubOwnerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GitHubOwnerPropertiesResponse(
       gitHubInternalId: (map['gitHubInternalId'] as String).input(),
-      onboardingState: map['onboardingState'] == null ? null : (map['onboardingState'] as String).input(),
+      onboardingState: map['onboardingState'] == null ? null : (map['onboardingState']! as String).input(),
       ownerUrl: (map['ownerUrl'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       provisioningStatusMessage: (map['provisioningStatusMessage'] as String).input(),
       provisioningStatusUpdateTimeUtc: (map['provisioningStatusUpdateTimeUtc'] as String).input(),
     );

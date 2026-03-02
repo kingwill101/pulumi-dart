@@ -38,8 +38,8 @@ class AdditionalNetworkInterfaceConfiguration {
 
   factory AdditionalNetworkInterfaceConfiguration.fromMap(Map<String, dynamic> map) {
     return AdditionalNetworkInterfaceConfiguration(
-      dscpConfiguration: map['dscpConfiguration'] == null ? null : (SubResource.fromMap((map['dscpConfiguration'] as Map).cast<String, dynamic>())).input(),
-      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking'] as bool).input(),
+      dscpConfiguration: map['dscpConfiguration'] == null ? null : (SubResource.fromMap((map['dscpConfiguration']! as Map).cast<String, dynamic>())).input(),
+      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking']! as bool).input(),
       ipConfigurations: (pulumi.Input.decodeList<IpConfiguration>(map['ipConfigurations'], (value) => IpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );

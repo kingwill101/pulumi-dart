@@ -55,13 +55,13 @@ class DomainDevicesRedirDev {
 
   factory DomainDevicesRedirDev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRedirDev(
-      acpi: map['acpi'] == null ? null : (DomainDevicesRedirDevAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesRedirDevAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      boot: map['boot'] == null ? null : (DomainDevicesRedirDevBoot.fromMap((map['boot'] as Map).cast<String, dynamic>())).input(),
-      bus: map['bus'] == null ? null : (map['bus'] as String).input(),
-      protocol: map['protocol'] == null ? null : (DomainDevicesRedirDevProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (DomainDevicesRedirDevSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesRedirDevAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesRedirDevAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      boot: map['boot'] == null ? null : (DomainDevicesRedirDevBoot.fromMap((map['boot']! as Map).cast<String, dynamic>())).input(),
+      bus: map['bus'] == null ? null : (map['bus']! as String).input(),
+      protocol: map['protocol'] == null ? null : (DomainDevicesRedirDevProtocol.fromMap((map['protocol']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (DomainDevicesRedirDevSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

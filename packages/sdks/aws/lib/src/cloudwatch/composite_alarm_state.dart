@@ -77,18 +77,18 @@ class CompositeAlarmState {
 
   factory CompositeAlarmState.fromMap(Map<String, dynamic> map) {
     return CompositeAlarmState(
-      actionsEnabled: map['actionsEnabled'] == null ? null : (map['actionsEnabled'] as bool).input(),
-      actionsSuppressor: map['actionsSuppressor'] == null ? null : (CompositeAlarmActionsSuppressor.fromMap((map['actionsSuppressor'] as Map).cast<String, dynamic>())).input(),
-      alarmActions: map['alarmActions'] == null ? null : ((map['alarmActions'] as List).cast<String>()).input(),
-      alarmDescription: map['alarmDescription'] == null ? null : (map['alarmDescription'] as String).input(),
-      alarmName: map['alarmName'] == null ? null : (map['alarmName'] as String).input(),
-      alarmRule: map['alarmRule'] == null ? null : (map['alarmRule'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      insufficientDataActions: map['insufficientDataActions'] == null ? null : ((map['insufficientDataActions'] as List).cast<String>()).input(),
-      okActions: map['okActions'] == null ? null : ((map['okActions'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      actionsEnabled: map['actionsEnabled'] == null ? null : ((map['actionsEnabled'] as bool).input()).input(),
+      actionsSuppressor: map['actionsSuppressor'] == null ? null : ((CompositeAlarmActionsSuppressor.fromMap((map['actionsSuppressor']! as Map).cast<String, dynamic>())).input()).input(),
+      alarmActions: map['alarmActions'] == null ? null : (((map['alarmActions'] as List).cast<String>()).input()).input(),
+      alarmDescription: map['alarmDescription'] == null ? null : ((map['alarmDescription'] as String).input()).input(),
+      alarmName: map['alarmName'] == null ? null : ((map['alarmName'] as String).input()).input(),
+      alarmRule: map['alarmRule'] == null ? null : ((map['alarmRule'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      insufficientDataActions: map['insufficientDataActions'] == null ? null : (((map['insufficientDataActions'] as List).cast<String>()).input()).input(),
+      okActions: map['okActions'] == null ? null : (((map['okActions'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

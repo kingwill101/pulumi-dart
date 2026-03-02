@@ -56,14 +56,14 @@ class VmUtilizationMetrics {
 
   factory VmUtilizationMetrics.fromMap(Map<String, dynamic> map) {
     return VmUtilizationMetrics(
-      cpuAveragePercent: map['cpuAveragePercent'] == null ? null : (map['cpuAveragePercent'] as int).input(),
-      cpuMaxPercent: map['cpuMaxPercent'] == null ? null : (map['cpuMaxPercent'] as int).input(),
-      diskIoRateAverageKbps: map['diskIoRateAverageKbps'] == null ? null : (map['diskIoRateAverageKbps'] as String).input(),
-      diskIoRateMaxKbps: map['diskIoRateMaxKbps'] == null ? null : (map['diskIoRateMaxKbps'] as String).input(),
-      memoryAveragePercent: map['memoryAveragePercent'] == null ? null : (map['memoryAveragePercent'] as int).input(),
-      memoryMaxPercent: map['memoryMaxPercent'] == null ? null : (map['memoryMaxPercent'] as int).input(),
-      networkThroughputAverageKbps: map['networkThroughputAverageKbps'] == null ? null : (map['networkThroughputAverageKbps'] as String).input(),
-      networkThroughputMaxKbps: map['networkThroughputMaxKbps'] == null ? null : (map['networkThroughputMaxKbps'] as String).input(),
+      cpuAveragePercent: map['cpuAveragePercent'] == null ? null : (map['cpuAveragePercent']! as int).input(),
+      cpuMaxPercent: map['cpuMaxPercent'] == null ? null : (map['cpuMaxPercent']! as int).input(),
+      diskIoRateAverageKbps: map['diskIoRateAverageKbps'] == null ? null : (map['diskIoRateAverageKbps']! as String).input(),
+      diskIoRateMaxKbps: map['diskIoRateMaxKbps'] == null ? null : (map['diskIoRateMaxKbps']! as String).input(),
+      memoryAveragePercent: map['memoryAveragePercent'] == null ? null : (map['memoryAveragePercent']! as int).input(),
+      memoryMaxPercent: map['memoryMaxPercent'] == null ? null : (map['memoryMaxPercent']! as int).input(),
+      networkThroughputAverageKbps: map['networkThroughputAverageKbps'] == null ? null : (map['networkThroughputAverageKbps']! as String).input(),
+      networkThroughputMaxKbps: map['networkThroughputMaxKbps'] == null ? null : (map['networkThroughputMaxKbps']! as String).input(),
     );
   }
 }

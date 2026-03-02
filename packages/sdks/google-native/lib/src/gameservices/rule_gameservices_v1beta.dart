@@ -54,13 +54,13 @@ class RuleGameservicesV1beta {
 
   factory RuleGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return RuleGameservicesV1beta(
-      action: map['action'] == null ? null : (RuleActionGameservicesV1beta.fromValue(map['action'] as String)).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionGameservicesV1beta>(map['conditions'], (value) => ConditionGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      in_: map['in'] == null ? null : ((map['in'] as List).cast<String>()).input(),
-      logConfig: map['logConfig'] == null ? null : (pulumi.Input.decodeList<LogConfigGameservicesV1beta>(map['logConfig'], (value) => LogConfigGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notIn: map['notIn'] == null ? null : ((map['notIn'] as List).cast<String>()).input(),
-      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
+      action: map['action'] == null ? null : (RuleActionGameservicesV1beta.fromValue(map['action']! as String)).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionGameservicesV1beta>(map['conditions']!, (value) => ConditionGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      in_: map['in'] == null ? null : ((map['in']! as List).cast<String>()).input(),
+      logConfig: map['logConfig'] == null ? null : (pulumi.Input.decodeList<LogConfigGameservicesV1beta>(map['logConfig']!, (value) => LogConfigGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notIn: map['notIn'] == null ? null : ((map['notIn']! as List).cast<String>()).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions']! as List).cast<String>()).input(),
     );
   }
 }

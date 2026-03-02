@@ -25,8 +25,8 @@ class NetworkDnsForwarder {
 
   factory NetworkDnsForwarder.fromMap(Map<String, dynamic> map) {
     return NetworkDnsForwarder(
-      addr: map['addr'] == null ? null : (map['addr'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      addr: map['addr'] == null ? null : (map['addr']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
     );
   }
 }

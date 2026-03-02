@@ -25,8 +25,8 @@ class KubernetesClusterWorkloadAutoscalerProfile {
 
   factory KubernetesClusterWorkloadAutoscalerProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterWorkloadAutoscalerProfile(
-      kedaEnabled: map['kedaEnabled'] == null ? null : (map['kedaEnabled'] as bool).input(),
-      verticalPodAutoscalerEnabled: map['verticalPodAutoscalerEnabled'] == null ? null : (map['verticalPodAutoscalerEnabled'] as bool).input(),
+      kedaEnabled: map['kedaEnabled'] == null ? null : (map['kedaEnabled']! as bool).input(),
+      verticalPodAutoscalerEnabled: map['verticalPodAutoscalerEnabled'] == null ? null : (map['verticalPodAutoscalerEnabled']! as bool).input(),
     );
   }
 }

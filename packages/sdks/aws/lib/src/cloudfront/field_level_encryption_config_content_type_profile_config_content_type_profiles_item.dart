@@ -31,7 +31,7 @@ class FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem 
     return FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem(
       contentType: (map['contentType'] as String).input(),
       format: (map['format'] as String).input(),
-      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
+      profileId: map['profileId'] == null ? null : ((map['profileId'] as String).input()).input(),
     );
   }
 }

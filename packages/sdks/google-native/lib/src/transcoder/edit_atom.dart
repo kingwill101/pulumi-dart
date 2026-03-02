@@ -36,10 +36,10 @@ class EditAtom {
 
   factory EditAtom.fromMap(Map<String, dynamic> map) {
     return EditAtom(
-      endTimeOffset: map['endTimeOffset'] == null ? null : (map['endTimeOffset'] as String).input(),
-      inputs: map['inputs'] == null ? null : ((map['inputs'] as List).cast<String>()).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset'] as String).input(),
+      endTimeOffset: map['endTimeOffset'] == null ? null : (map['endTimeOffset']! as String).input(),
+      inputs: map['inputs'] == null ? null : ((map['inputs']! as List).cast<String>()).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset']! as String).input(),
     );
   }
 }

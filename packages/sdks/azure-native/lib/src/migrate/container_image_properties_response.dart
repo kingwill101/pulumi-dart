@@ -52,13 +52,13 @@ class ContainerImagePropertiesResponse {
 
   factory ContainerImagePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ContainerImagePropertiesResponse(
-      dockerfile: map['dockerfile'] == null ? null : (map['dockerfile'] as String).input(),
+      dockerfile: map['dockerfile'] == null ? null : (map['dockerfile']! as String).input(),
       id: (map['id'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
-      imageTag: map['imageTag'] == null ? null : (map['imageTag'] as String).input(),
-      registryProperties: map['registryProperties'] == null ? null : (ACRPropertiesResponse.fromMap((map['registryProperties'] as Map).cast<String, dynamic>())).input(),
-      runId: map['runId'] == null ? null : (map['runId'] as String).input(),
-      runStatus: map['runStatus'] == null ? null : (map['runStatus'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
+      imageTag: map['imageTag'] == null ? null : (map['imageTag']! as String).input(),
+      registryProperties: map['registryProperties'] == null ? null : (ACRPropertiesResponse.fromMap((map['registryProperties']! as Map).cast<String, dynamic>())).input(),
+      runId: map['runId'] == null ? null : (map['runId']! as String).input(),
+      runStatus: map['runStatus'] == null ? null : (map['runStatus']! as String).input(),
     );
   }
 }

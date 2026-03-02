@@ -42,9 +42,9 @@ class DiskResourcePolicyAttachmentArgs {
   factory DiskResourcePolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return DiskResourcePolicyAttachmentArgs(
       disk: (map['disk'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class OSDisk {
 
   factory OSDisk.fromMap(Map<String, dynamic> map) {
     return OSDisk(
-      caching: map['caching'] == null ? null : (CachingType.fromValue(map['caching'] as String)).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
-      ephemeralOSDiskSettings: map['ephemeralOSDiskSettings'] == null ? null : (DiffDiskSettings.fromMap((map['ephemeralOSDiskSettings'] as Map).cast<String, dynamic>())).input(),
-      managedDisk: map['managedDisk'] == null ? null : (ManagedDisk.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
+      caching: map['caching'] == null ? null : (CachingType.fromValue(map['caching']! as String)).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
+      ephemeralOSDiskSettings: map['ephemeralOSDiskSettings'] == null ? null : (DiffDiskSettings.fromMap((map['ephemeralOSDiskSettings']! as Map).cast<String, dynamic>())).input(),
+      managedDisk: map['managedDisk'] == null ? null : (ManagedDisk.fromMap((map['managedDisk']! as Map).cast<String, dynamic>())).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled']! as bool).input(),
     );
   }
 }

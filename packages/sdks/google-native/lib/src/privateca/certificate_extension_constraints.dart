@@ -28,8 +28,8 @@ class CertificateExtensionConstraints {
 
   factory CertificateExtensionConstraints.fromMap(Map<String, dynamic> map) {
     return CertificateExtensionConstraints(
-      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<ObjectId>(map['additionalExtensions'], (value) => ObjectId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      knownExtensions: map['knownExtensions'] == null ? null : (pulumi.Input.decodeList<CertificateExtensionConstraintsKnownExtensionsItem>(map['knownExtensions'], (value) => CertificateExtensionConstraintsKnownExtensionsItem.fromValue(value as String))).input(),
+      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<ObjectId>(map['additionalExtensions']!, (value) => ObjectId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      knownExtensions: map['knownExtensions'] == null ? null : (pulumi.Input.decodeList<CertificateExtensionConstraintsKnownExtensionsItem>(map['knownExtensions']!, (value) => CertificateExtensionConstraintsKnownExtensionsItem.fromValue(value as String))).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class GetShardingNetworkPublicAddressesArgs {
   factory GetShardingNetworkPublicAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetShardingNetworkPublicAddressesArgs(
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

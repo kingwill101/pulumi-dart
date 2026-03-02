@@ -46,8 +46,8 @@ class SharedPrivateLinkServiceArgs {
 
   factory SharedPrivateLinkServiceArgs.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkServiceArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage']! as String).input(),
       searchServiceId: (map['searchServiceId'] as String).input(),
       subresourceName: (map['subresourceName'] as String).input(),
       targetResourceId: (map['targetResourceId'] as String).input(),

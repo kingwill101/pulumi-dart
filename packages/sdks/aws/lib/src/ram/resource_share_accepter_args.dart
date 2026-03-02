@@ -29,7 +29,7 @@ class ResourceShareAccepterArgs {
 
   factory ResourceShareAccepterArgs.fromMap(Map<String, dynamic> map) {
     return ResourceShareAccepterArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       shareArn: (map['shareArn'] as String).input(),
     );
   }

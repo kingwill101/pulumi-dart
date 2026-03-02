@@ -67,15 +67,15 @@ class WindowsVirtualMachineScaleSetNetworkInterface {
 
   factory WindowsVirtualMachineScaleSetNetworkInterface.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineScaleSetNetworkInterface(
-      auxiliaryMode: map['auxiliaryMode'] == null ? null : (map['auxiliaryMode'] as String).input(),
-      auxiliarySku: map['auxiliarySku'] == null ? null : (map['auxiliarySku'] as String).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking'] as bool).input(),
-      enableIpForwarding: map['enableIpForwarding'] == null ? null : (map['enableIpForwarding'] as bool).input(),
+      auxiliaryMode: map['auxiliaryMode'] == null ? null : (map['auxiliaryMode']! as String).input(),
+      auxiliarySku: map['auxiliarySku'] == null ? null : (map['auxiliarySku']! as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking']! as bool).input(),
+      enableIpForwarding: map['enableIpForwarding'] == null ? null : (map['enableIpForwarding']! as bool).input(),
       ipConfigurations: (pulumi.Input.decodeList<WindowsVirtualMachineScaleSetNetworkInterfaceIpConfiguration>(map['ipConfigurations'], (value) => WindowsVirtualMachineScaleSetNetworkInterfaceIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId']! as String).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
     );
   }
 }

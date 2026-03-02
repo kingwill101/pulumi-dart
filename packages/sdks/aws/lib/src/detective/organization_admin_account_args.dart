@@ -30,7 +30,7 @@ class OrganizationAdminAccountArgs {
   factory OrganizationAdminAccountArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationAdminAccountArgs(
       accountId: (map['accountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

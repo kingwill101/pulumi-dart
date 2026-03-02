@@ -48,10 +48,10 @@ class GetHybridMonitorFcTasksResult {
     return GetHybridMonitorFcTasksResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      namespace: map['namespace'] == null ? null : map['namespace']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
       tasks: pulumi.Input.decodeList<GetHybridMonitorFcTasksTask>(map['tasks'], (value) => GetHybridMonitorFcTasksTask.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

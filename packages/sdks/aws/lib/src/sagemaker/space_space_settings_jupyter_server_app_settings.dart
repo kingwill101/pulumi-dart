@@ -32,9 +32,9 @@ class SpaceSpaceSettingsJupyterServerAppSettings {
 
   factory SpaceSpaceSettingsJupyterServerAppSettings.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsJupyterServerAppSettings(
-      codeRepositories: map['codeRepositories'] == null ? null : (pulumi.Input.decodeList<SpaceSpaceSettingsJupyterServerAppSettingsCodeRepository>(map['codeRepositories'], (value) => SpaceSpaceSettingsJupyterServerAppSettingsCodeRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultResourceSpec: (SpaceSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec'] as Map).cast<String, dynamic>())).input(),
-      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : ((map['lifecycleConfigArns'] as List).cast<String>()).input(),
+      codeRepositories: map['codeRepositories'] == null ? null : ((pulumi.Input.decodeList<SpaceSpaceSettingsJupyterServerAppSettingsCodeRepository>(map['codeRepositories']!, (value) => SpaceSpaceSettingsJupyterServerAppSettingsCodeRepository.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      defaultResourceSpec: (SpaceSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec']! as Map).cast<String, dynamic>())).input(),
+      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : (((map['lifecycleConfigArns'] as List).cast<String>()).input()).input(),
     );
   }
 }

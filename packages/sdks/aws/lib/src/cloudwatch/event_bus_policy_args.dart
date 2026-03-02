@@ -35,9 +35,9 @@ class EventBusPolicyArgs {
 
   factory EventBusPolicyArgs.fromMap(Map<String, dynamic> map) {
     return EventBusPolicyArgs(
-      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName'] as String).input(),
+      eventBusName: map['eventBusName'] == null ? null : ((map['eventBusName'] as String).input()).input(),
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

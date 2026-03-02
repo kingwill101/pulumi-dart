@@ -73,17 +73,17 @@ class AwsIamRoleProperties {
 
   factory AwsIamRoleProperties.fromMap(Map<String, dynamic> map) {
     return AwsIamRoleProperties(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      assumeRolePolicyDocument: map['assumeRolePolicyDocument'] == null ? null : (map['assumeRolePolicyDocument']).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      managedPolicyArns: map['managedPolicyArns'] == null ? null : ((map['managedPolicyArns'] as List).cast<String>()).input(),
-      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      permissionsBoundary: map['permissionsBoundary'] == null ? null : (map['permissionsBoundary'] as String).input(),
-      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<Policy>(map['policies'], (value) => Policy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      assumeRolePolicyDocument: map['assumeRolePolicyDocument'] == null ? null : (map['assumeRolePolicyDocument']!).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      managedPolicyArns: map['managedPolicyArns'] == null ? null : ((map['managedPolicyArns']! as List).cast<String>()).input(),
+      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration']! as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      permissionsBoundary: map['permissionsBoundary'] == null ? null : (map['permissionsBoundary']! as String).input(),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<Policy>(map['policies']!, (value) => Policy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -46,11 +46,11 @@ class LbCertificateArgs {
 
   factory LbCertificateArgs.fromMap(Map<String, dynamic> map) {
     return LbCertificateArgs(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
       lbName: (map['lbName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : (((map['subjectAlternativeNames'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -75,16 +75,16 @@ class BucketReplicationArgs {
 
   factory BucketReplicationArgs.fromMap(Map<String, dynamic> map) {
     return BucketReplicationArgs(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       bucket: (map['bucket'] as String).input(),
       destination: (BucketReplicationDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (BucketReplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      historicalObjectReplication: map['historicalObjectReplication'] == null ? null : (map['historicalObjectReplication'] as String).input(),
-      prefixSet: map['prefixSet'] == null ? null : (BucketReplicationPrefixSet.fromMap((map['prefixSet'] as Map).cast<String, dynamic>())).input(),
-      progress: map['progress'] == null ? null : (BucketReplicationProgress.fromMap((map['progress'] as Map).cast<String, dynamic>())).input(),
-      rtc: map['rtc'] == null ? null : (BucketReplicationRtc.fromMap((map['rtc'] as Map).cast<String, dynamic>())).input(),
-      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null ? null : (BucketReplicationSourceSelectionCriteria.fromMap((map['sourceSelectionCriteria'] as Map).cast<String, dynamic>())).input(),
-      syncRole: map['syncRole'] == null ? null : (map['syncRole'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (BucketReplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      historicalObjectReplication: map['historicalObjectReplication'] == null ? null : (map['historicalObjectReplication']! as String).input(),
+      prefixSet: map['prefixSet'] == null ? null : (BucketReplicationPrefixSet.fromMap((map['prefixSet']! as Map).cast<String, dynamic>())).input(),
+      progress: map['progress'] == null ? null : (BucketReplicationProgress.fromMap((map['progress']! as Map).cast<String, dynamic>())).input(),
+      rtc: map['rtc'] == null ? null : (BucketReplicationRtc.fromMap((map['rtc']! as Map).cast<String, dynamic>())).input(),
+      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null ? null : (BucketReplicationSourceSelectionCriteria.fromMap((map['sourceSelectionCriteria']! as Map).cast<String, dynamic>())).input(),
+      syncRole: map['syncRole'] == null ? null : (map['syncRole']! as String).input(),
     );
   }
 }

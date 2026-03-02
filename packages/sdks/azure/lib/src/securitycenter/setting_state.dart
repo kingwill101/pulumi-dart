@@ -26,8 +26,8 @@ class SettingState {
 
   factory SettingState.fromMap(Map<String, dynamic> map) {
     return SettingState(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      settingName: map['settingName'] == null ? null : (map['settingName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      settingName: map['settingName'] == null ? null : (map['settingName']! as String).input(),
     );
   }
 }

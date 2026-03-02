@@ -40,11 +40,11 @@ class StorageBoxSubaccountAccessSettings {
 
   factory StorageBoxSubaccountAccessSettings.fromMap(Map<String, dynamic> map) {
     return StorageBoxSubaccountAccessSettings(
-      reachableExternally: map['reachableExternally'] == null ? null : (map['reachableExternally'] as bool).input(),
-      readonly: map['readonly'] == null ? null : (map['readonly'] as bool).input(),
-      sambaEnabled: map['sambaEnabled'] == null ? null : (map['sambaEnabled'] as bool).input(),
-      sshEnabled: map['sshEnabled'] == null ? null : (map['sshEnabled'] as bool).input(),
-      webdavEnabled: map['webdavEnabled'] == null ? null : (map['webdavEnabled'] as bool).input(),
+      reachableExternally: map['reachableExternally'] == null ? null : (map['reachableExternally']! as bool).input(),
+      readonly: map['readonly'] == null ? null : (map['readonly']! as bool).input(),
+      sambaEnabled: map['sambaEnabled'] == null ? null : (map['sambaEnabled']! as bool).input(),
+      sshEnabled: map['sshEnabled'] == null ? null : (map['sshEnabled']! as bool).input(),
+      webdavEnabled: map['webdavEnabled'] == null ? null : (map['webdavEnabled']! as bool).input(),
     );
   }
 }

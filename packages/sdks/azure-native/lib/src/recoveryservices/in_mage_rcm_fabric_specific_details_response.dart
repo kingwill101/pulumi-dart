@@ -126,7 +126,7 @@ class InMageRcmFabricSpecificDetailsResponse {
       serviceContainerId: (map['serviceContainerId'] as String).input(),
       serviceEndpoint: (map['serviceEndpoint'] as String).input(),
       serviceResourceId: (map['serviceResourceId'] as String).input(),
-      sourceAgentIdentityDetails: map['sourceAgentIdentityDetails'] == null ? null : (IdentityProviderDetailsResponse.fromMap((map['sourceAgentIdentityDetails'] as Map).cast<String, dynamic>())).input(),
+      sourceAgentIdentityDetails: map['sourceAgentIdentityDetails'] == null ? null : (IdentityProviderDetailsResponse.fromMap((map['sourceAgentIdentityDetails']! as Map).cast<String, dynamic>())).input(),
       vmwareSiteId: (map['vmwareSiteId'] as String).input(),
     );
   }

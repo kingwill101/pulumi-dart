@@ -25,8 +25,8 @@ class PipeTargetParametersBatchJobParametersDependsOn {
 
   factory PipeTargetParametersBatchJobParametersDependsOn.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersBatchJobParametersDependsOn(
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      jobId: map['jobId'] == null ? null : ((map['jobId'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

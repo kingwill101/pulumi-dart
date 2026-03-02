@@ -37,8 +37,8 @@ class SearchArgs {
   factory SearchArgs.fromMap(Map<String, dynamic> map) {
     return SearchArgs(
       queryString: (map['queryString'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      viewArn: map['viewArn'] == null ? null : (map['viewArn'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      viewArn: map['viewArn'] == null ? null : ((map['viewArn'] as String).input()).input(),
     );
   }
 }

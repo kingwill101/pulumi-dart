@@ -32,7 +32,7 @@ class IngressBackendNetworkingK8sIoV1beta1 {
 
   factory IngressBackendNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return IngressBackendNetworkingK8sIoV1beta1(
-      resource: map['resource'] == null ? null : (TypedLocalObjectReference.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (TypedLocalObjectReference.fromMap((map['resource']! as Map).cast<String, dynamic>())).input(),
       serviceName: (map['serviceName'] as String).input(),
       servicePort: (map['servicePort'] as int).input(),
     );

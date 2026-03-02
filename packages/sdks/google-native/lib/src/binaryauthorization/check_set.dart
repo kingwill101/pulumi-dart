@@ -39,10 +39,10 @@ class CheckSet {
 
   factory CheckSet.fromMap(Map<String, dynamic> map) {
     return CheckSet(
-      checks: map['checks'] == null ? null : (pulumi.Input.decodeList<Check>(map['checks'], (value) => Check.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      imageAllowlist: map['imageAllowlist'] == null ? null : (ImageAllowlist.fromMap((map['imageAllowlist'] as Map).cast<String, dynamic>())).input(),
-      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      checks: map['checks'] == null ? null : (pulumi.Input.decodeList<Check>(map['checks']!, (value) => Check.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      imageAllowlist: map['imageAllowlist'] == null ? null : (ImageAllowlist.fromMap((map['imageAllowlist']! as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

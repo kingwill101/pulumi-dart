@@ -21,7 +21,7 @@ class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
 
   factory GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema(
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

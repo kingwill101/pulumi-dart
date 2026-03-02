@@ -54,13 +54,13 @@ class GetTemplatesArgs {
 
   factory GetTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplatesArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      shareType: map['shareType'] == null ? null : (map['shareType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      shareType: map['shareType'] == null ? null : (map['shareType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
     );
   }
 }

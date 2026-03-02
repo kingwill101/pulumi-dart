@@ -56,14 +56,14 @@ class ActiveDirectoryProperties {
 
   factory ActiveDirectoryProperties.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryProperties(
-      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
-      azureStorageSid: map['azureStorageSid'] == null ? null : (map['azureStorageSid'] as String).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
+      azureStorageSid: map['azureStorageSid'] == null ? null : (map['azureStorageSid']! as String).input(),
       domainGuid: (map['domainGuid'] as String).input(),
       domainName: (map['domainName'] as String).input(),
-      domainSid: map['domainSid'] == null ? null : (map['domainSid'] as String).input(),
-      forestName: map['forestName'] == null ? null : (map['forestName'] as String).input(),
-      netBiosDomainName: map['netBiosDomainName'] == null ? null : (map['netBiosDomainName'] as String).input(),
-      samAccountName: map['samAccountName'] == null ? null : (map['samAccountName'] as String).input(),
+      domainSid: map['domainSid'] == null ? null : (map['domainSid']! as String).input(),
+      forestName: map['forestName'] == null ? null : (map['forestName']! as String).input(),
+      netBiosDomainName: map['netBiosDomainName'] == null ? null : (map['netBiosDomainName']! as String).input(),
+      samAccountName: map['samAccountName'] == null ? null : (map['samAccountName']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class JobExecutionTemplate {
 
   factory JobExecutionTemplate.fromMap(Map<String, dynamic> map) {
     return JobExecutionTemplate(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvVar>(map['environmentVariables'], (value) => EnvVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceRequests: map['resourceRequests'] == null ? null : (JobResourceRequests.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvVar>(map['environmentVariables']!, (value) => EnvVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceRequests: map['resourceRequests'] == null ? null : (JobResourceRequests.fromMap((map['resourceRequests']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

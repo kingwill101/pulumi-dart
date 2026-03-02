@@ -26,8 +26,8 @@ class CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1 {
 
   factory CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1>(map['conditions'], (value) => CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1>(map['conditions']!, (value) => CertificateSigningRequestConditionPatchCertificatesK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

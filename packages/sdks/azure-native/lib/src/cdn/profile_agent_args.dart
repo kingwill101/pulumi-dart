@@ -45,7 +45,7 @@ class ProfileAgentArgs {
 
   factory ProfileAgentArgs.fromMap(Map<String, dynamic> map) {
     return ProfileAgentArgs(
-      agentName: map['agentName'] == null ? null : (map['agentName'] as String).input(),
+      agentName: map['agentName'] == null ? null : (map['agentName']! as String).input(),
       customDomains: (pulumi.Input.decodeList<ResourceReference>(map['customDomains'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

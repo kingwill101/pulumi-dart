@@ -71,13 +71,13 @@ class PointToPointVpnGatewayArgs {
   factory PointToPointVpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return PointToPointVpnGatewayArgs(
       connectionConfigurations: (pulumi.Input.decodeList<PointToPointVpnGatewayConnectionConfiguration>(map['connectionConfigurations'], (value) => PointToPointVpnGatewayConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routingPreferenceInternetEnabled: map['routingPreferenceInternetEnabled'] == null ? null : (map['routingPreferenceInternetEnabled'] as bool).input(),
+      routingPreferenceInternetEnabled: map['routingPreferenceInternetEnabled'] == null ? null : (map['routingPreferenceInternetEnabled']! as bool).input(),
       scaleUnit: (map['scaleUnit'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       virtualHubId: (map['virtualHubId'] as String).input(),
       vpnServerConfigurationId: (map['vpnServerConfigurationId'] as String).input(),
     );

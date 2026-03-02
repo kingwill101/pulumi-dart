@@ -85,19 +85,19 @@ class ZohoLinkedService {
 
   factory ZohoLinkedService.fromMap(Map<String, dynamic> map) {
     return ZohoLinkedService(
-      accessToken: map['accessToken'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['accessToken'] as Map).cast<String, dynamic>())).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      connectionProperties: map['connectionProperties'] == null ? null : (map['connectionProperties']).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessToken: map['accessToken'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['accessToken']! as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      connectionProperties: map['connectionProperties'] == null ? null : (map['connectionProperties']!).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']!).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters']!, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
-      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : (map['useEncryptedEndpoints']).input(),
-      useHostVerification: map['useHostVerification'] == null ? null : (map['useHostVerification']).input(),
-      usePeerVerification: map['usePeerVerification'] == null ? null : (map['usePeerVerification']).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : (map['useEncryptedEndpoints']!).input(),
+      useHostVerification: map['useHostVerification'] == null ? null : (map['useHostVerification']!).input(),
+      usePeerVerification: map['usePeerVerification'] == null ? null : (map['usePeerVerification']!).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -61,15 +61,15 @@ class LifecycleHookState {
 
   factory LifecycleHookState.fromMap(Map<String, dynamic> map) {
     return LifecycleHookState(
-      autoscalingGroupName: map['autoscalingGroupName'] == null ? null : (map['autoscalingGroupName'] as String).input(),
-      defaultResult: map['defaultResult'] == null ? null : (map['defaultResult'] as String).input(),
-      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : (map['heartbeatTimeout'] as int).input(),
-      lifecycleTransition: map['lifecycleTransition'] == null ? null : (map['lifecycleTransition'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationMetadata: map['notificationMetadata'] == null ? null : (map['notificationMetadata'] as String).input(),
-      notificationTargetArn: map['notificationTargetArn'] == null ? null : (map['notificationTargetArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      autoscalingGroupName: map['autoscalingGroupName'] == null ? null : ((map['autoscalingGroupName'] as String).input()).input(),
+      defaultResult: map['defaultResult'] == null ? null : ((map['defaultResult'] as String).input()).input(),
+      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : ((map['heartbeatTimeout'] as int).input()).input(),
+      lifecycleTransition: map['lifecycleTransition'] == null ? null : ((map['lifecycleTransition'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      notificationMetadata: map['notificationMetadata'] == null ? null : ((map['notificationMetadata'] as String).input()).input(),
+      notificationTargetArn: map['notificationTargetArn'] == null ? null : ((map['notificationTargetArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

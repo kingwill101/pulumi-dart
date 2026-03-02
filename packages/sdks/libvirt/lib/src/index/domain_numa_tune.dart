@@ -27,8 +27,8 @@ class DomainNumaTune {
 
   factory DomainNumaTune.fromMap(Map<String, dynamic> map) {
     return DomainNumaTune(
-      memNodes: map['memNodes'] == null ? null : (pulumi.Input.decodeList<DomainNumaTuneMemNode>(map['memNodes'], (value) => DomainNumaTuneMemNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      memory: map['memory'] == null ? null : (DomainNumaTuneMemory.fromMap((map['memory'] as Map).cast<String, dynamic>())).input(),
+      memNodes: map['memNodes'] == null ? null : (pulumi.Input.decodeList<DomainNumaTuneMemNode>(map['memNodes']!, (value) => DomainNumaTuneMemNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      memory: map['memory'] == null ? null : (DomainNumaTuneMemory.fromMap((map['memory']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

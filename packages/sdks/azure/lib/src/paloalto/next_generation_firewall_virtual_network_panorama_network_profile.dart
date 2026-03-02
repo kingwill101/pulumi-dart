@@ -44,11 +44,11 @@ class NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile {
 
   factory NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile(
-      egressNatIpAddressIds: map['egressNatIpAddressIds'] == null ? null : ((map['egressNatIpAddressIds'] as List).cast<String>()).input(),
-      egressNatIpAddresses: map['egressNatIpAddresses'] == null ? null : ((map['egressNatIpAddresses'] as List).cast<String>()).input(),
+      egressNatIpAddressIds: map['egressNatIpAddressIds'] == null ? null : ((map['egressNatIpAddressIds']! as List).cast<String>()).input(),
+      egressNatIpAddresses: map['egressNatIpAddresses'] == null ? null : ((map['egressNatIpAddresses']! as List).cast<String>()).input(),
       publicIpAddressIds: ((map['publicIpAddressIds'] as List).cast<String>()).input(),
-      publicIpAddresses: map['publicIpAddresses'] == null ? null : ((map['publicIpAddresses'] as List).cast<String>()).input(),
-      trustedAddressRanges: map['trustedAddressRanges'] == null ? null : ((map['trustedAddressRanges'] as List).cast<String>()).input(),
+      publicIpAddresses: map['publicIpAddresses'] == null ? null : ((map['publicIpAddresses']! as List).cast<String>()).input(),
+      trustedAddressRanges: map['trustedAddressRanges'] == null ? null : ((map['trustedAddressRanges']! as List).cast<String>()).input(),
       vnetConfiguration: (NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileVnetConfiguration.fromMap((map['vnetConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }

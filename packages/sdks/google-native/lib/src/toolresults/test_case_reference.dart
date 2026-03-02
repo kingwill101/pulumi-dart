@@ -31,9 +31,9 @@ class TestCaseReference {
 
   factory TestCaseReference.fromMap(Map<String, dynamic> map) {
     return TestCaseReference(
-      className: map['className'] == null ? null : (map['className'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      testSuiteName: map['testSuiteName'] == null ? null : (map['testSuiteName'] as String).input(),
+      className: map['className'] == null ? null : (map['className']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      testSuiteName: map['testSuiteName'] == null ? null : (map['testSuiteName']! as String).input(),
     );
   }
 }

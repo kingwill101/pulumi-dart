@@ -35,7 +35,7 @@ class BackupPlanBackupScheduleRpoConfig {
 
   factory BackupPlanBackupScheduleRpoConfig.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupScheduleRpoConfig(
-      exclusionWindows: map['exclusionWindows'] == null ? null : (pulumi.Input.decodeList<BackupPlanBackupScheduleRpoConfigExclusionWindow>(map['exclusionWindows'], (value) => BackupPlanBackupScheduleRpoConfigExclusionWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exclusionWindows: map['exclusionWindows'] == null ? null : (pulumi.Input.decodeList<BackupPlanBackupScheduleRpoConfigExclusionWindow>(map['exclusionWindows']!, (value) => BackupPlanBackupScheduleRpoConfigExclusionWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
       targetRpoMinutes: (map['targetRpoMinutes'] as int).input(),
     );
   }

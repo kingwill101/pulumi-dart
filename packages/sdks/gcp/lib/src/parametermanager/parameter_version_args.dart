@@ -40,7 +40,7 @@ class ParameterVersionArgs {
 
   factory ParameterVersionArgs.fromMap(Map<String, dynamic> map) {
     return ParameterVersionArgs(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       parameter: (map['parameter'] as String).input(),
       parameterData: (map['parameterData'] as String).input(),
       parameterVersionId: (map['parameterVersionId'] as String).input(),

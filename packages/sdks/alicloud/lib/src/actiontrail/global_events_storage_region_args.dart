@@ -24,7 +24,7 @@ class GlobalEventsStorageRegionArgs {
 
   factory GlobalEventsStorageRegionArgs.fromMap(Map<String, dynamic> map) {
     return GlobalEventsStorageRegionArgs(
-      storageRegion: map['storageRegion'] == null ? null : (map['storageRegion'] as String).input(),
+      storageRegion: map['storageRegion'] == null ? null : (map['storageRegion']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ContainerUserPatch {
 
   factory ContainerUserPatch.fromMap(Map<String, dynamic> map) {
     return ContainerUserPatch(
-      linux: map['linux'] == null ? null : (LinuxContainerUserPatch.fromMap((map['linux'] as Map).cast<String, dynamic>())).input(),
+      linux: map['linux'] == null ? null : (LinuxContainerUserPatch.fromMap((map['linux']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

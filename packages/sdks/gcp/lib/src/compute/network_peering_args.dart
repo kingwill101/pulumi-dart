@@ -65,15 +65,15 @@ class NetworkPeeringArgs {
 
   factory NetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringArgs(
-      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes'] as bool).input(),
-      exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] == null ? null : (map['exportSubnetRoutesWithPublicIp'] as bool).input(),
-      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes'] as bool).input(),
-      importSubnetRoutesWithPublicIp: map['importSubnetRoutesWithPublicIp'] == null ? null : (map['importSubnetRoutesWithPublicIp'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes']! as bool).input(),
+      exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] == null ? null : (map['exportSubnetRoutesWithPublicIp']! as bool).input(),
+      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes']! as bool).input(),
+      importSubnetRoutesWithPublicIp: map['importSubnetRoutesWithPublicIp'] == null ? null : (map['importSubnetRoutesWithPublicIp']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       network: (map['network'] as String).input(),
       peerNetwork: (map['peerNetwork'] as String).input(),
-      stackType: map['stackType'] == null ? null : (map['stackType'] as String).input(),
-      updateStrategy: map['updateStrategy'] == null ? null : (map['updateStrategy'] as String).input(),
+      stackType: map['stackType'] == null ? null : (map['stackType']! as String).input(),
+      updateStrategy: map['updateStrategy'] == null ? null : (map['updateStrategy']! as String).input(),
     );
   }
 }

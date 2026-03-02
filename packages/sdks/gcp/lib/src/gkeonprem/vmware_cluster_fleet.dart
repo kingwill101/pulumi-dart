@@ -23,7 +23,7 @@ class VMwareClusterFleet {
 
   factory VMwareClusterFleet.fromMap(Map<String, dynamic> map) {
     return VMwareClusterFleet(
-      membership: map['membership'] == null ? null : (map['membership'] as String).input(),
+      membership: map['membership'] == null ? null : (map['membership']! as String).input(),
     );
   }
 }

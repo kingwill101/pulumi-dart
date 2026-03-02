@@ -21,7 +21,7 @@ class InterfaceDNSSettingsResponse {
 
   factory InterfaceDNSSettingsResponse.fromMap(Map<String, dynamic> map) {
     return InterfaceDNSSettingsResponse(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
     );
   }
 }

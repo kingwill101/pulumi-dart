@@ -57,12 +57,12 @@ class AlarmContactArgs {
   factory AlarmContactArgs.fromMap(Map<String, dynamic> map) {
     return AlarmContactArgs(
       alarmContactName: (map['alarmContactName'] as String).input(),
-      channelsAliim: map['channelsAliim'] == null ? null : (map['channelsAliim'] as String).input(),
-      channelsDingWebHook: map['channelsDingWebHook'] == null ? null : (map['channelsDingWebHook'] as String).input(),
-      channelsMail: map['channelsMail'] == null ? null : (map['channelsMail'] as String).input(),
-      channelsSms: map['channelsSms'] == null ? null : (map['channelsSms'] as String).input(),
+      channelsAliim: map['channelsAliim'] == null ? null : (map['channelsAliim']! as String).input(),
+      channelsDingWebHook: map['channelsDingWebHook'] == null ? null : (map['channelsDingWebHook']! as String).input(),
+      channelsMail: map['channelsMail'] == null ? null : (map['channelsMail']! as String).input(),
+      channelsSms: map['channelsSms'] == null ? null : (map['channelsSms']! as String).input(),
       describe: (map['describe'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
     );
   }
 }

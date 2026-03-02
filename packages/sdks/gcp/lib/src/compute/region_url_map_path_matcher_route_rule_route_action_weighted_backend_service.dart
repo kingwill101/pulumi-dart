@@ -38,7 +38,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService {
   factory RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendService(
       backendService: (map['backendService'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
+      headerAction: map['headerAction'] == null ? null : (RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
       weight: (map['weight'] as int).input(),
     );
   }

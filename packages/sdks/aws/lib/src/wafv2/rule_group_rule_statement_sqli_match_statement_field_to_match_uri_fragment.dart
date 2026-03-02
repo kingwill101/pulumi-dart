@@ -20,7 +20,7 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchUriFragment {
 
   factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchUriFragment.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSqliMatchStatementFieldToMatchUriFragment(
-      fallbackBehavior: map['fallbackBehavior'] == null ? null : (map['fallbackBehavior'] as String).input(),
+      fallbackBehavior: map['fallbackBehavior'] == null ? null : ((map['fallbackBehavior'] as String).input()).input(),
     );
   }
 }

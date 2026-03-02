@@ -30,9 +30,9 @@ class ApplicationScalingRuleScalingRuleMetricScaleDownRules {
 
   factory ApplicationScalingRuleScalingRuleMetricScaleDownRules.fromMap(Map<String, dynamic> map) {
     return ApplicationScalingRuleScalingRuleMetricScaleDownRules(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] == null ? null : (map['stabilizationWindowSeconds'] as int).input(),
-      step: map['step'] == null ? null : (map['step'] as int).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] == null ? null : (map['stabilizationWindowSeconds']! as int).input(),
+      step: map['step'] == null ? null : (map['step']! as int).input(),
     );
   }
 }

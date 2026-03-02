@@ -33,9 +33,9 @@ class AzureActiveDirectoryValidationResponse {
 
   factory AzureActiveDirectoryValidationResponse.fromMap(Map<String, dynamic> map) {
     return AzureActiveDirectoryValidationResponse(
-      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences'] as List).cast<String>()).input(),
-      defaultAuthorizationPolicy: map['defaultAuthorizationPolicy'] == null ? null : (DefaultAuthorizationPolicyResponse.fromMap((map['defaultAuthorizationPolicy'] as Map).cast<String, dynamic>())).input(),
-      jwtClaimChecks: map['jwtClaimChecks'] == null ? null : (JwtClaimChecksResponse.fromMap((map['jwtClaimChecks'] as Map).cast<String, dynamic>())).input(),
+      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences']! as List).cast<String>()).input(),
+      defaultAuthorizationPolicy: map['defaultAuthorizationPolicy'] == null ? null : (DefaultAuthorizationPolicyResponse.fromMap((map['defaultAuthorizationPolicy']! as Map).cast<String, dynamic>())).input(),
+      jwtClaimChecks: map['jwtClaimChecks'] == null ? null : (JwtClaimChecksResponse.fromMap((map['jwtClaimChecks']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

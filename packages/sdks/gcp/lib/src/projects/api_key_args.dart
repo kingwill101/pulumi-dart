@@ -49,11 +49,11 @@ class ApiKeyArgs {
 
   factory ApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return ApiKeyArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      restrictions: map['restrictions'] == null ? null : (ApiKeyRestrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>())).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      restrictions: map['restrictions'] == null ? null : (ApiKeyRestrictions.fromMap((map['restrictions']! as Map).cast<String, dynamic>())).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
     );
   }
 }

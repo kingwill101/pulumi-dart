@@ -54,13 +54,13 @@ class GetServiceMetricAlarmRulesArgs {
 
   factory GetServiceMetricAlarmRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceMetricAlarmRulesArgs(
-      dimensions: map['dimensions'] == null ? null : (map['dimensions'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as bool).input(),
+      dimensions: map['dimensions'] == null ? null : (map['dimensions']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as bool).input(),
     );
   }
 }

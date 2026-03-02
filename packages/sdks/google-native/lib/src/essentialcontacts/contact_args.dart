@@ -53,9 +53,9 @@ class ContactArgs {
       email: (map['email'] as String).input(),
       languageTag: (map['languageTag'] as String).input(),
       notificationCategorySubscriptions: (pulumi.Input.decodeList<ContactNotificationCategorySubscriptionsItem>(map['notificationCategorySubscriptions'], (value) => ContactNotificationCategorySubscriptionsItem.fromValue(value as String))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      validateTime: map['validateTime'] == null ? null : (map['validateTime'] as String).input(),
-      validationState: map['validationState'] == null ? null : (ContactValidationState.fromValue(map['validationState'] as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      validateTime: map['validateTime'] == null ? null : (map['validateTime']! as String).input(),
+      validationState: map['validationState'] == null ? null : (ContactValidationState.fromValue(map['validationState']! as String)).input(),
     );
   }
 }

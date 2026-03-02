@@ -26,8 +26,8 @@ class SchematizedDataHealthcareV1beta1 {
 
   factory SchematizedDataHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return SchematizedDataHealthcareV1beta1(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      error: map['error'] == null ? null : (map['error'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ManagedClusterSecurityProfileImageCleanerResponse {
 
   factory ManagedClusterSecurityProfileImageCleanerResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterSecurityProfileImageCleanerResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      intervalHours: map['intervalHours'] == null ? null : (map['intervalHours'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      intervalHours: map['intervalHours'] == null ? null : (map['intervalHours']! as int).input(),
     );
   }
 }

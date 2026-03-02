@@ -34,9 +34,9 @@ class GoogleCloudIntegrationsV1alphaParameterMap {
 
   factory GoogleCloudIntegrationsV1alphaParameterMap.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaParameterMap(
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaParameterMapEntry>(map['entries'], (value) => GoogleCloudIntegrationsV1alphaParameterMapEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      keyType: map['keyType'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMapKeyType.fromValue(map['keyType'] as String)).input(),
-      valueType: map['valueType'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMapValueType.fromValue(map['valueType'] as String)).input(),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaParameterMapEntry>(map['entries']!, (value) => GoogleCloudIntegrationsV1alphaParameterMapEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyType: map['keyType'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMapKeyType.fromValue(map['keyType']! as String)).input(),
+      valueType: map['valueType'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMapValueType.fromValue(map['valueType']! as String)).input(),
     );
   }
 }

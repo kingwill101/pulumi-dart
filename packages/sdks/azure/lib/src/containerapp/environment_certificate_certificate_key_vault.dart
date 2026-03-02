@@ -27,7 +27,7 @@ class EnvironmentCertificateCertificateKeyVault {
 
   factory EnvironmentCertificateCertificateKeyVault.fromMap(Map<String, dynamic> map) {
     return EnvironmentCertificateCertificateKeyVault(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
       keyVaultSecretId: (map['keyVaultSecretId'] as String).input(),
     );
   }

@@ -26,7 +26,7 @@ class WorkerPoolPrivateServiceConnect {
   factory WorkerPoolPrivateServiceConnect.fromMap(Map<String, dynamic> map) {
     return WorkerPoolPrivateServiceConnect(
       networkAttachment: (map['networkAttachment'] as String).input(),
-      routeAllTraffic: map['routeAllTraffic'] == null ? null : (map['routeAllTraffic'] as bool).input(),
+      routeAllTraffic: map['routeAllTraffic'] == null ? null : (map['routeAllTraffic']! as bool).input(),
     );
   }
 }

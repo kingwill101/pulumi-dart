@@ -43,11 +43,11 @@ class AddressPropertiesResponse {
 
   factory AddressPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AddressPropertiesResponse(
-      addressClassification: map['addressClassification'] == null ? null : (map['addressClassification'] as String).input(),
+      addressClassification: map['addressClassification'] == null ? null : (map['addressClassification']! as String).input(),
       addressValidationStatus: (map['addressValidationStatus'] as String).input(),
-      contactDetails: map['contactDetails'] == null ? null : (ContactDetailsResponse.fromMap((map['contactDetails'] as Map).cast<String, dynamic>())).input(),
+      contactDetails: map['contactDetails'] == null ? null : (ContactDetailsResponse.fromMap((map['contactDetails']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddressResponse.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())).input(),
+      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddressResponse.fromMap((map['shippingAddress']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

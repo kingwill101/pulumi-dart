@@ -33,7 +33,7 @@ class AccessControlRulesPrivilege {
     return AccessControlRulesPrivilege(
       name: (map['name'] as String).input(),
       path: (map['path'] as String).input(),
-      queryParameters: map['queryParameters'] == null ? null : ((map['queryParameters'] as Map).cast<String, String>()).input(),
+      queryParameters: map['queryParameters'] == null ? null : ((map['queryParameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

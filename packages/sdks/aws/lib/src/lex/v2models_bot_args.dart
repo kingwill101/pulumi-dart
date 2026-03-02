@@ -78,17 +78,17 @@ class V2modelsBotArgs {
 
   factory V2modelsBotArgs.fromMap(Map<String, dynamic> map) {
     return V2modelsBotArgs(
-      dataPrivacies: (pulumi.Input.decodeList<V2modelsBotDataPrivacy>(map['dataPrivacies'], (value) => V2modelsBotDataPrivacy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dataPrivacies: (pulumi.Input.decodeList<V2modelsBotDataPrivacy>(map['dataPrivacies']!, (value) => V2modelsBotDataPrivacy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       idleSessionTtlInSeconds: (map['idleSessionTtlInSeconds'] as int).input(),
-      members: map['members'] == null ? null : (pulumi.Input.decodeList<V2modelsBotMember>(map['members'], (value) => V2modelsBotMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      members: map['members'] == null ? null : ((pulumi.Input.decodeList<V2modelsBotMember>(map['members']!, (value) => V2modelsBotMember.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      testBotAliasTags: map['testBotAliasTags'] == null ? null : ((map['testBotAliasTags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (V2modelsBotTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      testBotAliasTags: map['testBotAliasTags'] == null ? null : (((map['testBotAliasTags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((V2modelsBotTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

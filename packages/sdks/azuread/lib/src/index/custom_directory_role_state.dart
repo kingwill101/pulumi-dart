@@ -52,13 +52,13 @@ class CustomDirectoryRoleState {
 
   factory CustomDirectoryRoleState.fromMap(Map<String, dynamic> map) {
     return CustomDirectoryRoleState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<CustomDirectoryRolePermission>(map['permissions'], (value) => CustomDirectoryRolePermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<CustomDirectoryRolePermission>(map['permissions']!, (value) => CustomDirectoryRolePermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

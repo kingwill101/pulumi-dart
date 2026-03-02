@@ -43,11 +43,11 @@ class GoogleCloudContentwarehouseV1Rule {
 
   factory GoogleCloudContentwarehouseV1Rule.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1Rule(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Action>(map['actions'], (value) => GoogleCloudContentwarehouseV1Action.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
-      triggerType: map['triggerType'] == null ? null : (GoogleCloudContentwarehouseV1RuleTriggerType.fromValue(map['triggerType'] as String)).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1Action>(map['actions']!, (value) => GoogleCloudContentwarehouseV1Action.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
+      triggerType: map['triggerType'] == null ? null : (GoogleCloudContentwarehouseV1RuleTriggerType.fromValue(map['triggerType']! as String)).input(),
     );
   }
 }

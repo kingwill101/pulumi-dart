@@ -30,7 +30,7 @@ class FrontdoorRuleSetArgs {
   factory FrontdoorRuleSetArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleSetArgs(
       cdnFrontdoorProfileId: (map['cdnFrontdoorProfileId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

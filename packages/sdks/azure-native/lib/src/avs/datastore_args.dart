@@ -58,10 +58,10 @@ class DatastoreArgs {
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
       clusterName: (map['clusterName'] as String).input(),
-      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName'] as String).input(),
-      diskPoolVolume: map['diskPoolVolume'] == null ? null : (DiskPoolVolume.fromMap((map['diskPoolVolume'] as Map).cast<String, dynamic>())).input(),
-      elasticSanVolume: map['elasticSanVolume'] == null ? null : (ElasticSanVolume.fromMap((map['elasticSanVolume'] as Map).cast<String, dynamic>())).input(),
-      netAppVolume: map['netAppVolume'] == null ? null : (NetAppVolume.fromMap((map['netAppVolume'] as Map).cast<String, dynamic>())).input(),
+      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName']! as String).input(),
+      diskPoolVolume: map['diskPoolVolume'] == null ? null : (DiskPoolVolume.fromMap((map['diskPoolVolume']! as Map).cast<String, dynamic>())).input(),
+      elasticSanVolume: map['elasticSanVolume'] == null ? null : (ElasticSanVolume.fromMap((map['elasticSanVolume']! as Map).cast<String, dynamic>())).input(),
+      netAppVolume: map['netAppVolume'] == null ? null : (NetAppVolume.fromMap((map['netAppVolume']! as Map).cast<String, dynamic>())).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

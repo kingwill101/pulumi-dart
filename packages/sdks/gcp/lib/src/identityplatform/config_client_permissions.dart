@@ -25,8 +25,8 @@ class ConfigClientPermissions {
 
   factory ConfigClientPermissions.fromMap(Map<String, dynamic> map) {
     return ConfigClientPermissions(
-      disabledUserDeletion: map['disabledUserDeletion'] == null ? null : (map['disabledUserDeletion'] as bool).input(),
-      disabledUserSignup: map['disabledUserSignup'] == null ? null : (map['disabledUserSignup'] as bool).input(),
+      disabledUserDeletion: map['disabledUserDeletion'] == null ? null : (map['disabledUserDeletion']! as bool).input(),
+      disabledUserSignup: map['disabledUserSignup'] == null ? null : (map['disabledUserSignup']! as bool).input(),
     );
   }
 }

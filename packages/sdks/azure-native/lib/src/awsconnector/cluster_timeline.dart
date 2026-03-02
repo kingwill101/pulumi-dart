@@ -31,9 +31,9 @@ class ClusterTimeline {
 
   factory ClusterTimeline.fromMap(Map<String, dynamic> map) {
     return ClusterTimeline(
-      creationDateTime: map['creationDateTime'] == null ? null : (map['creationDateTime'] as String).input(),
-      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime'] as String).input(),
-      readyDateTime: map['readyDateTime'] == null ? null : (map['readyDateTime'] as String).input(),
+      creationDateTime: map['creationDateTime'] == null ? null : (map['creationDateTime']! as String).input(),
+      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime']! as String).input(),
+      readyDateTime: map['readyDateTime'] == null ? null : (map['readyDateTime']! as String).input(),
     );
   }
 }

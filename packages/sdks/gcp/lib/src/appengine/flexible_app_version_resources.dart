@@ -37,10 +37,10 @@ class FlexibleAppVersionResources {
 
   factory FlexibleAppVersionResources.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionResources(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as int).input(),
-      diskGb: map['diskGb'] == null ? null : (map['diskGb'] as int).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb'] as double).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<FlexibleAppVersionResourcesVolume>(map['volumes'], (value) => FlexibleAppVersionResourcesVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as int).input(),
+      diskGb: map['diskGb'] == null ? null : (map['diskGb']! as int).input(),
+      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as double).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<FlexibleAppVersionResourcesVolume>(map['volumes']!, (value) => FlexibleAppVersionResourcesVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

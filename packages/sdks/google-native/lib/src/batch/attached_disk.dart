@@ -31,9 +31,9 @@ class AttachedDisk {
 
   factory AttachedDisk.fromMap(Map<String, dynamic> map) {
     return AttachedDisk(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      existingDisk: map['existingDisk'] == null ? null : (map['existingDisk'] as String).input(),
-      newDisk: map['newDisk'] == null ? null : (Disk.fromMap((map['newDisk'] as Map).cast<String, dynamic>())).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      existingDisk: map['existingDisk'] == null ? null : (map['existingDisk']! as String).input(),
+      newDisk: map['newDisk'] == null ? null : (Disk.fromMap((map['newDisk']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

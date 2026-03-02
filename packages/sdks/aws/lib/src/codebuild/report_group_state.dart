@@ -62,15 +62,15 @@ class ReportGroupState {
 
   factory ReportGroupState.fromMap(Map<String, dynamic> map) {
     return ReportGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      deleteReports: map['deleteReports'] == null ? null : (map['deleteReports'] as bool).input(),
-      exportConfig: map['exportConfig'] == null ? null : (ReportGroupExportConfig.fromMap((map['exportConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      created: map['created'] == null ? null : ((map['created'] as String).input()).input(),
+      deleteReports: map['deleteReports'] == null ? null : ((map['deleteReports'] as bool).input()).input(),
+      exportConfig: map['exportConfig'] == null ? null : ((ReportGroupExportConfig.fromMap((map['exportConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

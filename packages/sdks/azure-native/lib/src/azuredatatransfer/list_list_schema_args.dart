@@ -69,16 +69,16 @@ class ListListSchemaArgs {
 
   factory ListListSchemaArgs.fromMap(Map<String, dynamic> map) {
     return ListListSchemaArgs(
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId']! as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       pipelineName: (map['pipelineName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaType: map['schemaType'] == null ? null : (map['schemaType'] as String).input(),
-      schemaUri: map['schemaUri'] == null ? null : (map['schemaUri'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      schemaType: map['schemaType'] == null ? null : (map['schemaType']! as String).input(),
+      schemaUri: map['schemaUri'] == null ? null : (map['schemaUri']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

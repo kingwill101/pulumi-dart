@@ -31,8 +31,8 @@ class AuthoritySubordinateConfig {
 
   factory AuthoritySubordinateConfig.fromMap(Map<String, dynamic> map) {
     return AuthoritySubordinateConfig(
-      certificateAuthority: map['certificateAuthority'] == null ? null : (map['certificateAuthority'] as String).input(),
-      pemIssuerChain: map['pemIssuerChain'] == null ? null : (AuthoritySubordinateConfigPemIssuerChain.fromMap((map['pemIssuerChain'] as Map).cast<String, dynamic>())).input(),
+      certificateAuthority: map['certificateAuthority'] == null ? null : (map['certificateAuthority']! as String).input(),
+      pemIssuerChain: map['pemIssuerChain'] == null ? null : (AuthoritySubordinateConfigPemIssuerChain.fromMap((map['pemIssuerChain']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

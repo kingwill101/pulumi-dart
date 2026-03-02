@@ -61,7 +61,7 @@ class GetServerlessSecurityConfigResult {
       id: map['id'] as String,
       lastModifiedDate: map['lastModifiedDate'] as String,
       region: map['region'] as String,
-      samlOptions: map['samlOptions'] == null ? null : pulumi.Input.decodeList<GetServerlessSecurityConfigSamlOption>(map['samlOptions'], (value) => GetServerlessSecurityConfigSamlOption.fromMap((value as Map).cast<String, dynamic>())),
+      samlOptions: map['samlOptions'] == null ? null : pulumi.Input.decodeList<GetServerlessSecurityConfigSamlOption>(map['samlOptions']!, (value) => GetServerlessSecurityConfigSamlOption.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

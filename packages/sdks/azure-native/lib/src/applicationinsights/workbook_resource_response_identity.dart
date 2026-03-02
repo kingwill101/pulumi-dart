@@ -40,7 +40,7 @@ class WorkbookResourceResponseIdentity {
       principalId: (map['principalId'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),
       type: (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(map['userAssignedIdentities'], (value) => UserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(map['userAssignedIdentities']!, (value) => UserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

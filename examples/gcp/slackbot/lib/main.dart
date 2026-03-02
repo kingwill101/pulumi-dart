@@ -8,7 +8,7 @@ class GcpSlackbotStack extends pulumi.Stack {
   late final pulumi.Output<String> processorServiceAccountEmail;
 
   GcpSlackbotStack() {
-    final project = gcp.config.project;
+    final project = pulumi.Config('gcp').get('project');
     if (project == null || project.isEmpty) {
       throw Exception('Missing required GCP config: gcp:project');
     }
@@ -42,7 +42,8 @@ class GcpSlackbotStack extends pulumi.Stack {
       args: gcp.projects.IAMBindingArgs(
         project: project.output(),
         role: 'roles/pubsub.subscriber'.output(),
-        members: processorSa.email.apply((email) => ['serviceAccount:$email']),
+        members: processorSa.email
+            .apply((email) => ['serviceAccount:$email']),
       ),
     );
 

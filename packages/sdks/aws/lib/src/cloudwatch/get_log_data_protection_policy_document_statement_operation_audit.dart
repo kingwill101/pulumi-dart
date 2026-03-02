@@ -21,7 +21,7 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAudit {
 
   factory GetLogDataProtectionPolicyDocumentStatementOperationAudit.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentStatementOperationAudit(
-      findingsDestination: (GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination.fromMap((map['findingsDestination'] as Map).cast<String, dynamic>())).input(),
+      findingsDestination: (GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination.fromMap((map['findingsDestination']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

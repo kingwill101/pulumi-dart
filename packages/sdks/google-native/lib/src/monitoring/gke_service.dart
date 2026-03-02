@@ -36,10 +36,10 @@ class GkeService {
 
   factory GkeService.fromMap(Map<String, dynamic> map) {
     return GkeService(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

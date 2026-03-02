@@ -26,7 +26,7 @@ class ReconciliationPolicyResponse {
 
   factory ReconciliationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ReconciliationPolicyResponse(
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

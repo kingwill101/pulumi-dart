@@ -20,7 +20,7 @@ class FleetOnDemandOptionsCapacityReservationOptions {
 
   factory FleetOnDemandOptionsCapacityReservationOptions.fromMap(Map<String, dynamic> map) {
     return FleetOnDemandOptionsCapacityReservationOptions(
-      usageStrategy: map['usageStrategy'] == null ? null : (map['usageStrategy'] as String).input(),
+      usageStrategy: map['usageStrategy'] == null ? null : ((map['usageStrategy'] as String).input()).input(),
     );
   }
 }

@@ -66,16 +66,16 @@ class KeyPairState {
 
   factory KeyPairState.fromMap(Map<String, dynamic> map) {
     return KeyPairState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyNamePrefix: map['keyNamePrefix'] == null ? null : (map['keyNamePrefix'] as String).input(),
-      keyPairId: map['keyPairId'] == null ? null : (map['keyPairId'] as String).input(),
-      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      fingerprint: map['fingerprint'] == null ? null : ((map['fingerprint'] as String).input()).input(),
+      keyName: map['keyName'] == null ? null : ((map['keyName'] as String).input()).input(),
+      keyNamePrefix: map['keyNamePrefix'] == null ? null : ((map['keyNamePrefix'] as String).input()).input(),
+      keyPairId: map['keyPairId'] == null ? null : ((map['keyPairId'] as String).input()).input(),
+      keyType: map['keyType'] == null ? null : ((map['keyType'] as String).input()).input(),
+      publicKey: map['publicKey'] == null ? null : ((map['publicKey'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class SecurityGatewayServiceDiscoveryApiGatewayResourceOverride {
 
   factory SecurityGatewayServiceDiscoveryApiGatewayResourceOverride.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayServiceDiscoveryApiGatewayResourceOverride(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

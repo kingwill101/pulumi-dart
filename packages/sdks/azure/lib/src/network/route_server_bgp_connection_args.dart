@@ -39,7 +39,7 @@ class RouteServerBgpConnectionArgs {
 
   factory RouteServerBgpConnectionArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerBgpConnectionArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       peerAsn: (map['peerAsn'] as int).input(),
       peerIp: (map['peerIp'] as String).input(),
       routeServerId: (map['routeServerId'] as String).input(),

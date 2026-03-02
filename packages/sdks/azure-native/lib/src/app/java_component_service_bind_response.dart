@@ -26,8 +26,8 @@ class JavaComponentServiceBindResponse {
 
   factory JavaComponentServiceBindResponse.fromMap(Map<String, dynamic> map) {
     return JavaComponentServiceBindResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
     );
   }
 }

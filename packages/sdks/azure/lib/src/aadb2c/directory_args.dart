@@ -54,13 +54,13 @@ class DirectoryArgs {
 
   factory DirectoryArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryArgs(
-      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode']! as String).input(),
       dataResidencyLocation: (map['dataResidencyLocation'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       domainName: (map['domainName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       skuName: (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

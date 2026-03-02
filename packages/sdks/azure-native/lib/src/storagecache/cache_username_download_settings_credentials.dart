@@ -26,8 +26,8 @@ class CacheUsernameDownloadSettingsCredentials {
 
   factory CacheUsernameDownloadSettingsCredentials.fromMap(Map<String, dynamic> map) {
     return CacheUsernameDownloadSettingsCredentials(
-      bindDn: map['bindDn'] == null ? null : (map['bindDn'] as String).input(),
-      bindPassword: map['bindPassword'] == null ? null : (map['bindPassword'] as String).input(),
+      bindDn: map['bindDn'] == null ? null : (map['bindDn']! as String).input(),
+      bindPassword: map['bindPassword'] == null ? null : (map['bindPassword']! as String).input(),
     );
   }
 }

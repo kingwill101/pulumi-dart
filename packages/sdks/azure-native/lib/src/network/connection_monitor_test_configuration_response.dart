@@ -60,14 +60,14 @@ class ConnectionMonitorTestConfigurationResponse {
 
   factory ConnectionMonitorTestConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorTestConfigurationResponse(
-      httpConfiguration: map['httpConfiguration'] == null ? null : (ConnectionMonitorHttpConfigurationResponse.fromMap((map['httpConfiguration'] as Map).cast<String, dynamic>())).input(),
-      icmpConfiguration: map['icmpConfiguration'] == null ? null : (ConnectionMonitorIcmpConfigurationResponse.fromMap((map['icmpConfiguration'] as Map).cast<String, dynamic>())).input(),
+      httpConfiguration: map['httpConfiguration'] == null ? null : (ConnectionMonitorHttpConfigurationResponse.fromMap((map['httpConfiguration']! as Map).cast<String, dynamic>())).input(),
+      icmpConfiguration: map['icmpConfiguration'] == null ? null : (ConnectionMonitorIcmpConfigurationResponse.fromMap((map['icmpConfiguration']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      preferredIPVersion: map['preferredIPVersion'] == null ? null : (map['preferredIPVersion'] as String).input(),
+      preferredIPVersion: map['preferredIPVersion'] == null ? null : (map['preferredIPVersion']! as String).input(),
       protocol: (map['protocol'] as String).input(),
-      successThreshold: map['successThreshold'] == null ? null : (ConnectionMonitorSuccessThresholdResponse.fromMap((map['successThreshold'] as Map).cast<String, dynamic>())).input(),
-      tcpConfiguration: map['tcpConfiguration'] == null ? null : (ConnectionMonitorTcpConfigurationResponse.fromMap((map['tcpConfiguration'] as Map).cast<String, dynamic>())).input(),
-      testFrequencySec: map['testFrequencySec'] == null ? null : (map['testFrequencySec'] as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (ConnectionMonitorSuccessThresholdResponse.fromMap((map['successThreshold']! as Map).cast<String, dynamic>())).input(),
+      tcpConfiguration: map['tcpConfiguration'] == null ? null : (ConnectionMonitorTcpConfigurationResponse.fromMap((map['tcpConfiguration']! as Map).cast<String, dynamic>())).input(),
+      testFrequencySec: map['testFrequencySec'] == null ? null : (map['testFrequencySec']! as int).input(),
     );
   }
 }

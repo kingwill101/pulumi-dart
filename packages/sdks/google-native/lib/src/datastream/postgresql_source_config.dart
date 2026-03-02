@@ -42,9 +42,9 @@ class PostgresqlSourceConfig {
 
   factory PostgresqlSourceConfig.fromMap(Map<String, dynamic> map) {
     return PostgresqlSourceConfig(
-      excludeObjects: map['excludeObjects'] == null ? null : (PostgresqlRdbms.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>())).input(),
-      includeObjects: map['includeObjects'] == null ? null : (PostgresqlRdbms.fromMap((map['includeObjects'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks'] as int).input(),
+      excludeObjects: map['excludeObjects'] == null ? null : (PostgresqlRdbms.fromMap((map['excludeObjects']! as Map).cast<String, dynamic>())).input(),
+      includeObjects: map['includeObjects'] == null ? null : (PostgresqlRdbms.fromMap((map['includeObjects']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks']! as int).input(),
       publication: (map['publication'] as String).input(),
       replicationSlot: (map['replicationSlot'] as String).input(),
     );

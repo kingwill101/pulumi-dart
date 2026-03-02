@@ -41,11 +41,11 @@ class DeploymentClusterResponse {
 
   factory DeploymentClusterResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentClusterResponse(
-      azureServiceEndpoint: map['azureServiceEndpoint'] == null ? null : (map['azureServiceEndpoint'] as String).input(),
-      cloudAccountName: map['cloudAccountName'] == null ? null : (map['cloudAccountName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      witnessPath: map['witnessPath'] == null ? null : (map['witnessPath'] as String).input(),
-      witnessType: map['witnessType'] == null ? null : (map['witnessType'] as String).input(),
+      azureServiceEndpoint: map['azureServiceEndpoint'] == null ? null : (map['azureServiceEndpoint']! as String).input(),
+      cloudAccountName: map['cloudAccountName'] == null ? null : (map['cloudAccountName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      witnessPath: map['witnessPath'] == null ? null : (map['witnessPath']! as String).input(),
+      witnessType: map['witnessType'] == null ? null : (map['witnessType']! as String).input(),
     );
   }
 }

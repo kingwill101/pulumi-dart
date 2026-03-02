@@ -56,13 +56,13 @@ class ServerArgs {
 
   factory ServerArgs.fromMap(Map<String, dynamic> map) {
     return ServerArgs(
-      customerManagedKey: map['customerManagedKey'] == null ? null : (ServerCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ServerIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (ServerCustomerManagedKey.fromMap((map['customerManagedKey']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ServerIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageSku: map['storageSku'] == null ? null : (map['storageSku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storageSku: map['storageSku'] == null ? null : (map['storageSku']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

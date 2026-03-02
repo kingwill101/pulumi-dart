@@ -23,7 +23,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultV
 
   factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification(
-      defaultValueLists: (pulumi.Input.decodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecificationDefaultValueList>(map['defaultValueLists'], (value) => V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecificationDefaultValueList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultValueLists: (pulumi.Input.decodeList<V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecificationDefaultValueList>(map['defaultValueLists']!, (value) => V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecificationDefaultValueList.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

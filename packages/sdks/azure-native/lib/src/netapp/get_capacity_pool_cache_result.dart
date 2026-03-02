@@ -74,9 +74,9 @@ class GetCapacityPoolCacheResult {
       name: map['name'] as String,
       properties: CachePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
     );
   }
 }

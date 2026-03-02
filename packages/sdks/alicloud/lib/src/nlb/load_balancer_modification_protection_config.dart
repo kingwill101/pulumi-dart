@@ -36,9 +36,9 @@ class LoadBalancerModificationProtectionConfig {
 
   factory LoadBalancerModificationProtectionConfig.fromMap(Map<String, dynamic> map) {
     return LoadBalancerModificationProtectionConfig(
-      enabledTime: map['enabledTime'] == null ? null : (map['enabledTime'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      enabledTime: map['enabledTime'] == null ? null : (map['enabledTime']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

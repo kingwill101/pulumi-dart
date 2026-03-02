@@ -20,7 +20,7 @@ class Plan {
 
   factory Plan.fromMap(Map<String, dynamic> map) {
     return Plan(
-      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
+      accessibility: map['accessibility'] == null ? null : (map['accessibility']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class AppProfileSingleClusterRouting {
 
   factory AppProfileSingleClusterRouting.fromMap(Map<String, dynamic> map) {
     return AppProfileSingleClusterRouting(
-      allowTransactionalWrites: map['allowTransactionalWrites'] == null ? null : (map['allowTransactionalWrites'] as bool).input(),
+      allowTransactionalWrites: map['allowTransactionalWrites'] == null ? null : (map['allowTransactionalWrites']! as bool).input(),
       clusterId: (map['clusterId'] as String).input(),
     );
   }

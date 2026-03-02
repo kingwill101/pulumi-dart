@@ -32,7 +32,7 @@ class CostAllocationRuleProperties {
 
   factory CostAllocationRuleProperties.fromMap(Map<String, dynamic> map) {
     return CostAllocationRuleProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       details: (CostAllocationRuleDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
       status: (map['status'] as String).input(),
     );

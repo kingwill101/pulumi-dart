@@ -24,7 +24,7 @@ class GetKubernetesVersionsArgs {
 
   factory GetKubernetesVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesVersionsArgs(
-      versionPrefix: map['versionPrefix'] == null ? null : (map['versionPrefix'] as String).input(),
+      versionPrefix: map['versionPrefix'] == null ? null : (map['versionPrefix']! as String).input(),
     );
   }
 }

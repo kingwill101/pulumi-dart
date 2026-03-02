@@ -21,7 +21,7 @@ class UniqueKey {
 
   factory UniqueKey.fromMap(Map<String, dynamic> map) {
     return UniqueKey(
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
     );
   }
 }

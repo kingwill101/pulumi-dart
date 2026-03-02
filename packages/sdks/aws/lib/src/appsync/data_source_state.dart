@@ -93,20 +93,20 @@ class DataSourceState {
 
   factory DataSourceState.fromMap(Map<String, dynamic> map) {
     return DataSourceState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dynamodbConfig: map['dynamodbConfig'] == null ? null : (DataSourceDynamodbConfig.fromMap((map['dynamodbConfig'] as Map).cast<String, dynamic>())).input(),
-      elasticsearchConfig: map['elasticsearchConfig'] == null ? null : (DataSourceElasticsearchConfig.fromMap((map['elasticsearchConfig'] as Map).cast<String, dynamic>())).input(),
-      eventBridgeConfig: map['eventBridgeConfig'] == null ? null : (DataSourceEventBridgeConfig.fromMap((map['eventBridgeConfig'] as Map).cast<String, dynamic>())).input(),
-      httpConfig: map['httpConfig'] == null ? null : (DataSourceHttpConfig.fromMap((map['httpConfig'] as Map).cast<String, dynamic>())).input(),
-      lambdaConfig: map['lambdaConfig'] == null ? null : (DataSourceLambdaConfig.fromMap((map['lambdaConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      opensearchserviceConfig: map['opensearchserviceConfig'] == null ? null : (DataSourceOpensearchserviceConfig.fromMap((map['opensearchserviceConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      relationalDatabaseConfig: map['relationalDatabaseConfig'] == null ? null : (DataSourceRelationalDatabaseConfig.fromMap((map['relationalDatabaseConfig'] as Map).cast<String, dynamic>())).input(),
-      serviceRoleArn: map['serviceRoleArn'] == null ? null : (map['serviceRoleArn'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      apiId: map['apiId'] == null ? null : ((map['apiId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      dynamodbConfig: map['dynamodbConfig'] == null ? null : ((DataSourceDynamodbConfig.fromMap((map['dynamodbConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      elasticsearchConfig: map['elasticsearchConfig'] == null ? null : ((DataSourceElasticsearchConfig.fromMap((map['elasticsearchConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      eventBridgeConfig: map['eventBridgeConfig'] == null ? null : ((DataSourceEventBridgeConfig.fromMap((map['eventBridgeConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      httpConfig: map['httpConfig'] == null ? null : ((DataSourceHttpConfig.fromMap((map['httpConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      lambdaConfig: map['lambdaConfig'] == null ? null : ((DataSourceLambdaConfig.fromMap((map['lambdaConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      opensearchserviceConfig: map['opensearchserviceConfig'] == null ? null : ((DataSourceOpensearchserviceConfig.fromMap((map['opensearchserviceConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      relationalDatabaseConfig: map['relationalDatabaseConfig'] == null ? null : ((DataSourceRelationalDatabaseConfig.fromMap((map['relationalDatabaseConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      serviceRoleArn: map['serviceRoleArn'] == null ? null : ((map['serviceRoleArn'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

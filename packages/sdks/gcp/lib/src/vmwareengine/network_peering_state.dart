@@ -108,22 +108,22 @@ class NetworkPeeringState {
 
   factory NetworkPeeringState.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes'] as bool).input(),
-      exportCustomRoutesWithPublicIp: map['exportCustomRoutesWithPublicIp'] == null ? null : (map['exportCustomRoutesWithPublicIp'] as bool).input(),
-      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes'] as bool).input(),
-      importCustomRoutesWithPublicIp: map['importCustomRoutesWithPublicIp'] == null ? null : (map['importCustomRoutesWithPublicIp'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peerNetwork: map['peerNetwork'] == null ? null : (map['peerNetwork'] as String).input(),
-      peerNetworkType: map['peerNetworkType'] == null ? null : (map['peerNetworkType'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      stateDetails: map['stateDetails'] == null ? null : (map['stateDetails'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork'] as String).input(),
-      vmwareEngineNetworkCanonical: map['vmwareEngineNetworkCanonical'] == null ? null : (map['vmwareEngineNetworkCanonical'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes']! as bool).input(),
+      exportCustomRoutesWithPublicIp: map['exportCustomRoutesWithPublicIp'] == null ? null : (map['exportCustomRoutesWithPublicIp']! as bool).input(),
+      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes']! as bool).input(),
+      importCustomRoutesWithPublicIp: map['importCustomRoutesWithPublicIp'] == null ? null : (map['importCustomRoutesWithPublicIp']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peerNetwork: map['peerNetwork'] == null ? null : (map['peerNetwork']! as String).input(),
+      peerNetworkType: map['peerNetworkType'] == null ? null : (map['peerNetworkType']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      stateDetails: map['stateDetails'] == null ? null : (map['stateDetails']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork']! as String).input(),
+      vmwareEngineNetworkCanonical: map['vmwareEngineNetworkCanonical'] == null ? null : (map['vmwareEngineNetworkCanonical']! as String).input(),
     );
   }
 }

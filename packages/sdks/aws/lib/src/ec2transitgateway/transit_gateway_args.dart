@@ -86,19 +86,19 @@ class TransitGatewayArgs {
 
   factory TransitGatewayArgs.fromMap(Map<String, dynamic> map) {
     return TransitGatewayArgs(
-      amazonSideAsn: map['amazonSideAsn'] == null ? null : (map['amazonSideAsn'] as int).input(),
-      autoAcceptSharedAttachments: map['autoAcceptSharedAttachments'] == null ? null : (map['autoAcceptSharedAttachments'] as String).input(),
-      defaultRouteTableAssociation: map['defaultRouteTableAssociation'] == null ? null : (map['defaultRouteTableAssociation'] as String).input(),
-      defaultRouteTablePropagation: map['defaultRouteTablePropagation'] == null ? null : (map['defaultRouteTablePropagation'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dnsSupport: map['dnsSupport'] == null ? null : (map['dnsSupport'] as String).input(),
-      encryptionSupport: map['encryptionSupport'] == null ? null : (map['encryptionSupport'] as String).input(),
-      multicastSupport: map['multicastSupport'] == null ? null : (map['multicastSupport'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] == null ? null : (map['securityGroupReferencingSupport'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitGatewayCidrBlocks: map['transitGatewayCidrBlocks'] == null ? null : ((map['transitGatewayCidrBlocks'] as List).cast<String>()).input(),
-      vpnEcmpSupport: map['vpnEcmpSupport'] == null ? null : (map['vpnEcmpSupport'] as String).input(),
+      amazonSideAsn: map['amazonSideAsn'] == null ? null : ((map['amazonSideAsn'] as int).input()).input(),
+      autoAcceptSharedAttachments: map['autoAcceptSharedAttachments'] == null ? null : ((map['autoAcceptSharedAttachments'] as String).input()).input(),
+      defaultRouteTableAssociation: map['defaultRouteTableAssociation'] == null ? null : ((map['defaultRouteTableAssociation'] as String).input()).input(),
+      defaultRouteTablePropagation: map['defaultRouteTablePropagation'] == null ? null : ((map['defaultRouteTablePropagation'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      dnsSupport: map['dnsSupport'] == null ? null : ((map['dnsSupport'] as String).input()).input(),
+      encryptionSupport: map['encryptionSupport'] == null ? null : ((map['encryptionSupport'] as String).input()).input(),
+      multicastSupport: map['multicastSupport'] == null ? null : ((map['multicastSupport'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] == null ? null : ((map['securityGroupReferencingSupport'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayCidrBlocks: map['transitGatewayCidrBlocks'] == null ? null : (((map['transitGatewayCidrBlocks'] as List).cast<String>()).input()).input(),
+      vpnEcmpSupport: map['vpnEcmpSupport'] == null ? null : ((map['vpnEcmpSupport'] as String).input()).input(),
     );
   }
 }

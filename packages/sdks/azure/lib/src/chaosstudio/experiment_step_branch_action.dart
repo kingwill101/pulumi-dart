@@ -41,10 +41,10 @@ class ExperimentStepBranchAction {
   factory ExperimentStepBranchAction.fromMap(Map<String, dynamic> map) {
     return ExperimentStepBranchAction(
       actionType: (map['actionType'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      selectorName: map['selectorName'] == null ? null : (map['selectorName'] as String).input(),
-      urn: map['urn'] == null ? null : (map['urn'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      selectorName: map['selectorName'] == null ? null : (map['selectorName']! as String).input(),
+      urn: map['urn'] == null ? null : (map['urn']! as String).input(),
     );
   }
 }

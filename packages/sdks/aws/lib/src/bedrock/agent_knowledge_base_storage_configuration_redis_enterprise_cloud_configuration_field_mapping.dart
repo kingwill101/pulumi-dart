@@ -30,9 +30,9 @@ class AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFie
 
   factory AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping(
-      metadataField: map['metadataField'] == null ? null : (map['metadataField'] as String).input(),
-      textField: map['textField'] == null ? null : (map['textField'] as String).input(),
-      vectorField: map['vectorField'] == null ? null : (map['vectorField'] as String).input(),
+      metadataField: map['metadataField'] == null ? null : ((map['metadataField'] as String).input()).input(),
+      textField: map['textField'] == null ? null : ((map['textField'] as String).input()).input(),
+      vectorField: map['vectorField'] == null ? null : ((map['vectorField'] as String).input()).input(),
     );
   }
 }

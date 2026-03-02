@@ -41,11 +41,11 @@ class MachineGroupState {
 
   factory MachineGroupState.fromMap(Map<String, dynamic> map) {
     return MachineGroupState(
-      identifyLists: map['identifyLists'] == null ? null : ((map['identifyLists'] as List).cast<String>()).input(),
-      identifyType: map['identifyType'] == null ? null : (map['identifyType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      identifyLists: map['identifyLists'] == null ? null : ((map['identifyLists']! as List).cast<String>()).input(),
+      identifyType: map['identifyType'] == null ? null : (map['identifyType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

@@ -72,16 +72,16 @@ class ValueTransformation {
 
   factory ValueTransformation.fromMap(Map<String, dynamic> map) {
     return ValueTransformation(
-      applyHash: map['applyHash'] == null ? null : (ApplyHash.fromMap((map['applyHash'] as Map).cast<String, dynamic>())).input(),
-      assignMaxValue: map['assignMaxValue'] == null ? null : ((map['assignMaxValue'] as Map).cast<String, dynamic>()).input(),
-      assignMinValue: map['assignMinValue'] == null ? null : ((map['assignMinValue'] as Map).cast<String, dynamic>()).input(),
-      assignNull: map['assignNull'] == null ? null : ((map['assignNull'] as Map).cast<String, dynamic>()).input(),
-      assignSpecificValue: map['assignSpecificValue'] == null ? null : (AssignSpecificValue.fromMap((map['assignSpecificValue'] as Map).cast<String, dynamic>())).input(),
-      doubleComparison: map['doubleComparison'] == null ? null : (DoubleComparisonFilter.fromMap((map['doubleComparison'] as Map).cast<String, dynamic>())).input(),
-      intComparison: map['intComparison'] == null ? null : (IntComparisonFilter.fromMap((map['intComparison'] as Map).cast<String, dynamic>())).input(),
-      isNull: map['isNull'] == null ? null : ((map['isNull'] as Map).cast<String, dynamic>()).input(),
-      roundScale: map['roundScale'] == null ? null : (RoundToScale.fromMap((map['roundScale'] as Map).cast<String, dynamic>())).input(),
-      valueList: map['valueList'] == null ? null : (ValueListFilter.fromMap((map['valueList'] as Map).cast<String, dynamic>())).input(),
+      applyHash: map['applyHash'] == null ? null : (ApplyHash.fromMap((map['applyHash']! as Map).cast<String, dynamic>())).input(),
+      assignMaxValue: map['assignMaxValue'] == null ? null : ((map['assignMaxValue']! as Map).cast<String, dynamic>()).input(),
+      assignMinValue: map['assignMinValue'] == null ? null : ((map['assignMinValue']! as Map).cast<String, dynamic>()).input(),
+      assignNull: map['assignNull'] == null ? null : ((map['assignNull']! as Map).cast<String, dynamic>()).input(),
+      assignSpecificValue: map['assignSpecificValue'] == null ? null : (AssignSpecificValue.fromMap((map['assignSpecificValue']! as Map).cast<String, dynamic>())).input(),
+      doubleComparison: map['doubleComparison'] == null ? null : (DoubleComparisonFilter.fromMap((map['doubleComparison']! as Map).cast<String, dynamic>())).input(),
+      intComparison: map['intComparison'] == null ? null : (IntComparisonFilter.fromMap((map['intComparison']! as Map).cast<String, dynamic>())).input(),
+      isNull: map['isNull'] == null ? null : ((map['isNull']! as Map).cast<String, dynamic>()).input(),
+      roundScale: map['roundScale'] == null ? null : (RoundToScale.fromMap((map['roundScale']! as Map).cast<String, dynamic>())).input(),
+      valueList: map['valueList'] == null ? null : (ValueListFilter.fromMap((map['valueList']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

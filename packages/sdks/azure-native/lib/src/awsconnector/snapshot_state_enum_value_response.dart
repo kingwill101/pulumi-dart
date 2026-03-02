@@ -21,7 +21,7 @@ class SnapshotStateEnumValueResponse {
 
   factory SnapshotStateEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return SnapshotStateEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

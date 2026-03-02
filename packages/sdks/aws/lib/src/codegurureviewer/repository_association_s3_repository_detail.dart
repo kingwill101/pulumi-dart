@@ -25,8 +25,8 @@ class RepositoryAssociationS3RepositoryDetail {
 
   factory RepositoryAssociationS3RepositoryDetail.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationS3RepositoryDetail(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      codeArtifacts: map['codeArtifacts'] == null ? null : (pulumi.Input.decodeList<RepositoryAssociationS3RepositoryDetailCodeArtifact>(map['codeArtifacts'], (value) => RepositoryAssociationS3RepositoryDetailCodeArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bucketName: map['bucketName'] == null ? null : ((map['bucketName'] as String).input()).input(),
+      codeArtifacts: map['codeArtifacts'] == null ? null : ((pulumi.Input.decodeList<RepositoryAssociationS3RepositoryDetailCodeArtifact>(map['codeArtifacts']!, (value) => RepositoryAssociationS3RepositoryDetailCodeArtifact.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

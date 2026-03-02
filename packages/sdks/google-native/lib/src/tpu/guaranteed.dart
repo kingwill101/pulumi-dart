@@ -26,8 +26,8 @@ class Guaranteed {
 
   factory Guaranteed.fromMap(Map<String, dynamic> map) {
     return Guaranteed(
-      minDuration: map['minDuration'] == null ? null : (map['minDuration'] as String).input(),
-      reserved: map['reserved'] == null ? null : (map['reserved'] as bool).input(),
+      minDuration: map['minDuration'] == null ? null : (map['minDuration']! as String).input(),
+      reserved: map['reserved'] == null ? null : (map['reserved']! as bool).input(),
     );
   }
 }

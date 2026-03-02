@@ -75,16 +75,16 @@ class SslKeyCertArgs {
   factory SslKeyCertArgs.fromMap(Map<String, dynamic> map) {
     return SslKeyCertArgs(
       certContent: (map['certContent'] as String).input(),
-      certFullPath: map['certFullPath'] == null ? null : (map['certFullPath'] as String).input(),
-      certMonitoringType: map['certMonitoringType'] == null ? null : (map['certMonitoringType'] as String).input(),
+      certFullPath: map['certFullPath'] == null ? null : (map['certFullPath']! as String).input(),
+      certMonitoringType: map['certMonitoringType'] == null ? null : (map['certMonitoringType']! as String).input(),
       certName: (map['certName'] as String).input(),
-      certOcsp: map['certOcsp'] == null ? null : (map['certOcsp'] as String).input(),
-      issuerCert: map['issuerCert'] == null ? null : (map['issuerCert'] as String).input(),
+      certOcsp: map['certOcsp'] == null ? null : (map['certOcsp']! as String).input(),
+      issuerCert: map['issuerCert'] == null ? null : (map['issuerCert']! as String).input(),
       keyContent: (map['keyContent'] as String).input(),
-      keyFullPath: map['keyFullPath'] == null ? null : (map['keyFullPath'] as String).input(),
+      keyFullPath: map['keyFullPath'] == null ? null : (map['keyFullPath']! as String).input(),
       keyName: (map['keyName'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
-      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase']! as String).input(),
     );
   }
 }

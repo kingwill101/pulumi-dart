@@ -38,7 +38,7 @@ class GetIndexFirestoreV1beta2Args {
       collectionGroupId: (map['collectionGroupId'] as String).input(),
       databaseId: (map['databaseId'] as String).input(),
       indexId: (map['indexId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

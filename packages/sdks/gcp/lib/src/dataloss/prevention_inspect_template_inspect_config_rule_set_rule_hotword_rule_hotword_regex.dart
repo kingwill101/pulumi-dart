@@ -27,7 +27,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex {
 
   factory PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex(
-      groupIndexes: map['groupIndexes'] == null ? null : ((map['groupIndexes'] as List).cast<int>()).input(),
+      groupIndexes: map['groupIndexes'] == null ? null : ((map['groupIndexes']! as List).cast<int>()).input(),
       pattern: (map['pattern'] as String).input(),
     );
   }

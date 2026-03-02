@@ -33,9 +33,9 @@ class FleetHubProfile {
 
   factory FleetHubProfile.fromMap(Map<String, dynamic> map) {
     return FleetHubProfile(
-      agentProfile: map['agentProfile'] == null ? null : (AgentProfile.fromMap((map['agentProfile'] as Map).cast<String, dynamic>())).input(),
-      apiServerAccessProfile: map['apiServerAccessProfile'] == null ? null : (APIServerAccessProfile.fromMap((map['apiServerAccessProfile'] as Map).cast<String, dynamic>())).input(),
-      dnsPrefix: map['dnsPrefix'] == null ? null : (map['dnsPrefix'] as String).input(),
+      agentProfile: map['agentProfile'] == null ? null : (AgentProfile.fromMap((map['agentProfile']! as Map).cast<String, dynamic>())).input(),
+      apiServerAccessProfile: map['apiServerAccessProfile'] == null ? null : (APIServerAccessProfile.fromMap((map['apiServerAccessProfile']! as Map).cast<String, dynamic>())).input(),
+      dnsPrefix: map['dnsPrefix'] == null ? null : (map['dnsPrefix']! as String).input(),
     );
   }
 }

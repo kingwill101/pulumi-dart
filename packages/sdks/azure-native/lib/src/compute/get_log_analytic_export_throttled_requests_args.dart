@@ -66,11 +66,11 @@ class GetLogAnalyticExportThrottledRequestsArgs {
     return GetLogAnalyticExportThrottledRequestsArgs(
       blobContainerSasUri: (map['blobContainerSasUri'] as String).input(),
       fromTime: (map['fromTime'] as String).input(),
-      groupByClientApplicationId: map['groupByClientApplicationId'] == null ? null : (map['groupByClientApplicationId'] as bool).input(),
-      groupByOperationName: map['groupByOperationName'] == null ? null : (map['groupByOperationName'] as bool).input(),
-      groupByResourceName: map['groupByResourceName'] == null ? null : (map['groupByResourceName'] as bool).input(),
-      groupByThrottlePolicy: map['groupByThrottlePolicy'] == null ? null : (map['groupByThrottlePolicy'] as bool).input(),
-      groupByUserAgent: map['groupByUserAgent'] == null ? null : (map['groupByUserAgent'] as bool).input(),
+      groupByClientApplicationId: map['groupByClientApplicationId'] == null ? null : (map['groupByClientApplicationId']! as bool).input(),
+      groupByOperationName: map['groupByOperationName'] == null ? null : (map['groupByOperationName']! as bool).input(),
+      groupByResourceName: map['groupByResourceName'] == null ? null : (map['groupByResourceName']! as bool).input(),
+      groupByThrottlePolicy: map['groupByThrottlePolicy'] == null ? null : (map['groupByThrottlePolicy']! as bool).input(),
+      groupByUserAgent: map['groupByUserAgent'] == null ? null : (map['groupByUserAgent']! as bool).input(),
       location: (map['location'] as String).input(),
       toTime: (map['toTime'] as String).input(),
     );

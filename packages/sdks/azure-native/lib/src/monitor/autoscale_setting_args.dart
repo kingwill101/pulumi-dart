@@ -77,17 +77,17 @@ class AutoscaleSettingArgs {
 
   factory AutoscaleSettingArgs.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingArgs(
-      autoscaleSettingName: map['autoscaleSettingName'] == null ? null : (map['autoscaleSettingName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<AutoscaleNotification>(map['notifications'], (value) => AutoscaleNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      predictiveAutoscalePolicy: map['predictiveAutoscalePolicy'] == null ? null : (PredictiveAutoscalePolicy.fromMap((map['predictiveAutoscalePolicy'] as Map).cast<String, dynamic>())).input(),
+      autoscaleSettingName: map['autoscaleSettingName'] == null ? null : (map['autoscaleSettingName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<AutoscaleNotification>(map['notifications']!, (value) => AutoscaleNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      predictiveAutoscalePolicy: map['predictiveAutoscalePolicy'] == null ? null : (PredictiveAutoscalePolicy.fromMap((map['predictiveAutoscalePolicy']! as Map).cast<String, dynamic>())).input(),
       profiles: (pulumi.Input.decodeList<AutoscaleProfile>(map['profiles'], (value) => AutoscaleProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetResourceLocation: map['targetResourceLocation'] == null ? null : (map['targetResourceLocation'] as String).input(),
-      targetResourceUri: map['targetResourceUri'] == null ? null : (map['targetResourceUri'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetResourceLocation: map['targetResourceLocation'] == null ? null : (map['targetResourceLocation']! as String).input(),
+      targetResourceUri: map['targetResourceUri'] == null ? null : (map['targetResourceUri']! as String).input(),
     );
   }
 }

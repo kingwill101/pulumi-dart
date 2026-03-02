@@ -56,14 +56,14 @@ class ProducerImageShareGroupMemberState {
 
   factory ProducerImageShareGroupMemberState.fromMap(Map<String, dynamic> map) {
     return ProducerImageShareGroupMemberState(
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      sharegroupId: map['sharegroupId'] == null ? null : (map['sharegroupId'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
-      tokenUuid: map['tokenUuid'] == null ? null : (map['tokenUuid'] as String).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      sharegroupId: map['sharegroupId'] == null ? null : (map['sharegroupId']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
+      tokenUuid: map['tokenUuid'] == null ? null : (map['tokenUuid']! as String).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
     );
   }
 }

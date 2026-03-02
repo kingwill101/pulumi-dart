@@ -33,7 +33,7 @@ class GetAckServiceResult {
 
   factory GetAckServiceResult.fromMap(Map<String, dynamic> map) {
     return GetAckServiceResult(
-      enable: map['enable'] == null ? null : map['enable'] as String,
+      enable: map['enable'] == null ? null : map['enable']! as String,
       id: map['id'] as String,
       status: map['status'] as String,
       type: map['type'] as String,

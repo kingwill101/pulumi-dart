@@ -68,14 +68,14 @@ class AggregateRemediationState {
 
   factory AggregateRemediationState.fromMap(Map<String, dynamic> map) {
     return AggregateRemediationState(
-      aggregatorId: map['aggregatorId'] == null ? null : (map['aggregatorId'] as String).input(),
-      configRuleId: map['configRuleId'] == null ? null : (map['configRuleId'] as String).input(),
-      invokeType: map['invokeType'] == null ? null : (map['invokeType'] as String).input(),
-      remediationId: map['remediationId'] == null ? null : (map['remediationId'] as String).input(),
-      remediationOriginParams: map['remediationOriginParams'] == null ? null : (map['remediationOriginParams'] as String).input(),
-      remediationSourceType: map['remediationSourceType'] == null ? null : (map['remediationSourceType'] as String).input(),
-      remediationTemplateId: map['remediationTemplateId'] == null ? null : (map['remediationTemplateId'] as String).input(),
-      remediationType: map['remediationType'] == null ? null : (map['remediationType'] as String).input(),
+      aggregatorId: map['aggregatorId'] == null ? null : (map['aggregatorId']! as String).input(),
+      configRuleId: map['configRuleId'] == null ? null : (map['configRuleId']! as String).input(),
+      invokeType: map['invokeType'] == null ? null : (map['invokeType']! as String).input(),
+      remediationId: map['remediationId'] == null ? null : (map['remediationId']! as String).input(),
+      remediationOriginParams: map['remediationOriginParams'] == null ? null : (map['remediationOriginParams']! as String).input(),
+      remediationSourceType: map['remediationSourceType'] == null ? null : (map['remediationSourceType']! as String).input(),
+      remediationTemplateId: map['remediationTemplateId'] == null ? null : (map['remediationTemplateId']! as String).input(),
+      remediationType: map['remediationType'] == null ? null : (map['remediationType']! as String).input(),
     );
   }
 }

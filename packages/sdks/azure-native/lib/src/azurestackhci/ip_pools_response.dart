@@ -26,8 +26,8 @@ class IpPoolsResponse {
 
   factory IpPoolsResponse.fromMap(Map<String, dynamic> map) {
     return IpPoolsResponse(
-      endingAddress: map['endingAddress'] == null ? null : (map['endingAddress'] as String).input(),
-      startingAddress: map['startingAddress'] == null ? null : (map['startingAddress'] as String).input(),
+      endingAddress: map['endingAddress'] == null ? null : (map['endingAddress']! as String).input(),
+      startingAddress: map['startingAddress'] == null ? null : (map['startingAddress']! as String).input(),
     );
   }
 }

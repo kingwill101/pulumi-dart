@@ -61,15 +61,15 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      evaluatorType: map['evaluatorType'] == null ? null : (map['evaluatorType'] as String).input(),
-      factData: map['factData'] == null ? null : (map['factData'] as String).input(),
-      labName: map['labName'] == null ? null : (map['labName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policySetName: map['policySetName'] == null ? null : (map['policySetName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      evaluatorType: map['evaluatorType'] == null ? null : (map['evaluatorType']! as String).input(),
+      factData: map['factData'] == null ? null : (map['factData']! as String).input(),
+      labName: map['labName'] == null ? null : (map['labName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policySetName: map['policySetName'] == null ? null : (map['policySetName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as String).input(),
     );
   }
 }

@@ -37,7 +37,7 @@ class WorkforcePoolIamPolicyArgs {
 
   factory WorkforcePoolIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolIamPolicyArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       policyData: (map['policyData'] as String).input(),
       workforcePoolId: (map['workforcePoolId'] as String).input(),
     );

@@ -68,16 +68,16 @@ class LedgerPropertiesResponse {
 
   factory LedgerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LedgerPropertiesResponse(
-      aadBasedSecurityPrincipals: map['aadBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<AADBasedSecurityPrincipalResponse>(map['aadBasedSecurityPrincipals'], (value) => AADBasedSecurityPrincipalResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      certBasedSecurityPrincipals: map['certBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<CertBasedSecurityPrincipalResponse>(map['certBasedSecurityPrincipals'], (value) => CertBasedSecurityPrincipalResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aadBasedSecurityPrincipals: map['aadBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<AADBasedSecurityPrincipalResponse>(map['aadBasedSecurityPrincipals']!, (value) => AADBasedSecurityPrincipalResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certBasedSecurityPrincipals: map['certBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<CertBasedSecurityPrincipalResponse>(map['certBasedSecurityPrincipals']!, (value) => CertBasedSecurityPrincipalResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       identityServiceUri: (map['identityServiceUri'] as String).input(),
       ledgerInternalNamespace: (map['ledgerInternalNamespace'] as String).input(),
       ledgerName: (map['ledgerName'] as String).input(),
-      ledgerSku: map['ledgerSku'] == null ? null : (map['ledgerSku'] as String).input(),
-      ledgerType: map['ledgerType'] == null ? null : (map['ledgerType'] as String).input(),
+      ledgerSku: map['ledgerSku'] == null ? null : (map['ledgerSku']! as String).input(),
+      ledgerType: map['ledgerType'] == null ? null : (map['ledgerType']! as String).input(),
       ledgerUri: (map['ledgerUri'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      runningState: map['runningState'] == null ? null : (map['runningState'] as String).input(),
+      runningState: map['runningState'] == null ? null : (map['runningState']! as String).input(),
     );
   }
 }

@@ -57,14 +57,14 @@ class MaliciousFileWhitelistConfigState {
 
   factory MaliciousFileWhitelistConfigState.fromMap(Map<String, dynamic> map) {
     return MaliciousFileWhitelistConfigState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      eventName: map['eventName'] == null ? null : (map['eventName'] as String).input(),
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      fieldValue: map['fieldValue'] == null ? null : (map['fieldValue'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
-      targetValue: map['targetValue'] == null ? null : (map['targetValue'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      eventName: map['eventName'] == null ? null : (map['eventName']! as String).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      fieldValue: map['fieldValue'] == null ? null : (map['fieldValue']! as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
+      targetValue: map['targetValue'] == null ? null : (map['targetValue']! as String).input(),
     );
   }
 }

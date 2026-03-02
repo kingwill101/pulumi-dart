@@ -60,12 +60,12 @@ class VolumeGroupArgs {
   factory VolumeGroupArgs.fromMap(Map<String, dynamic> map) {
     return VolumeGroupArgs(
       elasticSanId: (map['elasticSanId'] as String).input(),
-      encryption: map['encryption'] == null ? null : (VolumeGroupEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
-      identity: map['identity'] == null ? null : (VolumeGroupIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkRules: map['networkRules'] == null ? null : (pulumi.Input.decodeList<VolumeGroupNetworkRule>(map['networkRules'], (value) => VolumeGroupNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      protocolType: map['protocolType'] == null ? null : (map['protocolType'] as String).input(),
+      encryption: map['encryption'] == null ? null : (VolumeGroupEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType']! as String).input(),
+      identity: map['identity'] == null ? null : (VolumeGroupIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkRules: map['networkRules'] == null ? null : (pulumi.Input.decodeList<VolumeGroupNetworkRule>(map['networkRules']!, (value) => VolumeGroupNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protocolType: map['protocolType'] == null ? null : (map['protocolType']! as String).input(),
     );
   }
 }

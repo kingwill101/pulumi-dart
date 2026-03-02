@@ -35,10 +35,10 @@ class ApplicationOssMountDescsV2 {
 
   factory ApplicationOssMountDescsV2.fromMap(Map<String, dynamic> map) {
     return ApplicationOssMountDescsV2(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      bucketPath: map['bucketPath'] == null ? null : (map['bucketPath'] as String).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      bucketPath: map['bucketPath'] == null ? null : (map['bucketPath']! as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

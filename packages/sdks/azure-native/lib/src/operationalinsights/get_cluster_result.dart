@@ -111,23 +111,23 @@ class GetClusterResult {
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
-      associatedWorkspaces: map['associatedWorkspaces'] == null ? null : pulumi.Input.decodeList<AssociatedWorkspaceResponse>(map['associatedWorkspaces'], (value) => AssociatedWorkspaceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      associatedWorkspaces: map['associatedWorkspaces'] == null ? null : pulumi.Input.decodeList<AssociatedWorkspaceResponse>(map['associatedWorkspaces']!, (value) => AssociatedWorkspaceResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
-      billingType: map['billingType'] == null ? null : map['billingType'] as String,
-      capacityReservationProperties: map['capacityReservationProperties'] == null ? null : CapacityReservationPropertiesResponse.fromMap((map['capacityReservationProperties'] as Map).cast<String, dynamic>()),
+      billingType: map['billingType'] == null ? null : map['billingType']! as String,
+      capacityReservationProperties: map['capacityReservationProperties'] == null ? null : CapacityReservationPropertiesResponse.fromMap((map['capacityReservationProperties']! as Map).cast<String, dynamic>()),
       clusterId: map['clusterId'] as String,
       createdDate: map['createdDate'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      isAvailabilityZonesEnabled: map['isAvailabilityZonesEnabled'] == null ? null : map['isAvailabilityZonesEnabled'] as bool,
-      isDoubleEncryptionEnabled: map['isDoubleEncryptionEnabled'] == null ? null : map['isDoubleEncryptionEnabled'] as bool,
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : KeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      isAvailabilityZonesEnabled: map['isAvailabilityZonesEnabled'] == null ? null : map['isAvailabilityZonesEnabled']! as bool,
+      isDoubleEncryptionEnabled: map['isDoubleEncryptionEnabled'] == null ? null : map['isDoubleEncryptionEnabled']! as bool,
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : KeyVaultPropertiesResponse.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>()),
       lastModifiedDate: map['lastModifiedDate'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sku: map['sku'] == null ? null : ClusterSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      sku: map['sku'] == null ? null : ClusterSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

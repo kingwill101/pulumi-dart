@@ -27,8 +27,8 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData 
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData(
-      basicAuthCredentials: map['basicAuthCredentials'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataBasicAuthCredentials.fromMap((map['basicAuthCredentials'] as Map).cast<String, dynamic>())).input(),
-      oauthCredentials: map['oauthCredentials'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials.fromMap((map['oauthCredentials'] as Map).cast<String, dynamic>())).input(),
+      basicAuthCredentials: map['basicAuthCredentials'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataBasicAuthCredentials.fromMap((map['basicAuthCredentials']! as Map).cast<String, dynamic>())).input()).input(),
+      oauthCredentials: map['oauthCredentials'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataOauthCredentials.fromMap((map['oauthCredentials']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

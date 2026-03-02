@@ -32,8 +32,8 @@ class ListingSubscriptionLinkedDatasetMap {
 
   factory ListingSubscriptionLinkedDatasetMap.fromMap(Map<String, dynamic> map) {
     return ListingSubscriptionLinkedDatasetMap(
-      linkedDataset: map['linkedDataset'] == null ? null : (map['linkedDataset'] as String).input(),
-      listing: map['listing'] == null ? null : (map['listing'] as String).input(),
+      linkedDataset: map['linkedDataset'] == null ? null : (map['linkedDataset']! as String).input(),
+      listing: map['listing'] == null ? null : (map['listing']! as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );
   }

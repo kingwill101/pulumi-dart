@@ -21,7 +21,7 @@ class AdBreak {
 
   factory AdBreak.fromMap(Map<String, dynamic> map) {
     return AdBreak(
-      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset'] as String).input(),
+      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset']! as String).input(),
     );
   }
 }

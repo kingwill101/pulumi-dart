@@ -38,10 +38,10 @@ class PeeringConnectionOptionsState {
 
   factory PeeringConnectionOptionsState.fromMap(Map<String, dynamic> map) {
     return PeeringConnectionOptionsState(
-      accepter: map['accepter'] == null ? null : (PeeringConnectionOptionsAccepter.fromMap((map['accepter'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requester: map['requester'] == null ? null : (PeeringConnectionOptionsRequester.fromMap((map['requester'] as Map).cast<String, dynamic>())).input(),
-      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : (map['vpcPeeringConnectionId'] as String).input(),
+      accepter: map['accepter'] == null ? null : ((PeeringConnectionOptionsAccepter.fromMap((map['accepter']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requester: map['requester'] == null ? null : ((PeeringConnectionOptionsRequester.fromMap((map['requester']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : ((map['vpcPeeringConnectionId'] as String).input()).input(),
     );
   }
 }

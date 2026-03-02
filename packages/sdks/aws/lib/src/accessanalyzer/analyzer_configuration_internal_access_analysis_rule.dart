@@ -21,7 +21,7 @@ class AnalyzerConfigurationInternalAccessAnalysisRule {
 
   factory AnalyzerConfigurationInternalAccessAnalysisRule.fromMap(Map<String, dynamic> map) {
     return AnalyzerConfigurationInternalAccessAnalysisRule(
-      inclusions: map['inclusions'] == null ? null : (pulumi.Input.decodeList<AnalyzerConfigurationInternalAccessAnalysisRuleInclusion>(map['inclusions'], (value) => AnalyzerConfigurationInternalAccessAnalysisRuleInclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inclusions: map['inclusions'] == null ? null : ((pulumi.Input.decodeList<AnalyzerConfigurationInternalAccessAnalysisRuleInclusion>(map['inclusions']!, (value) => AnalyzerConfigurationInternalAccessAnalysisRuleInclusion.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

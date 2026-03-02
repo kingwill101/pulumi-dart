@@ -76,9 +76,9 @@ class RadiusSettingsArgs {
       radiusRetries: (map['radiusRetries'] as int).input(),
       radiusServers: ((map['radiusServers'] as List).cast<String>()).input(),
       radiusTimeout: (map['radiusTimeout'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       sharedSecret: (map['sharedSecret'] as String).input(),
-      useSameUsername: map['useSameUsername'] == null ? null : (map['useSameUsername'] as bool).input(),
+      useSameUsername: map['useSameUsername'] == null ? null : ((map['useSameUsername'] as bool).input()).input(),
     );
   }
 }

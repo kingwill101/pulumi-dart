@@ -60,14 +60,14 @@ class FrontdoorProfileState {
 
   factory FrontdoorProfileState.fromMap(Map<String, dynamic> map) {
     return FrontdoorProfileState(
-      identity: map['identity'] == null ? null : (FrontdoorProfileIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      logScrubbingRules: map['logScrubbingRules'] == null ? null : (pulumi.Input.decodeList<FrontdoorProfileLogScrubbingRule>(map['logScrubbingRules'], (value) => FrontdoorProfileLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      resourceGuid: map['resourceGuid'] == null ? null : (map['resourceGuid'] as String).input(),
-      responseTimeoutSeconds: map['responseTimeoutSeconds'] == null ? null : (map['responseTimeoutSeconds'] as int).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      identity: map['identity'] == null ? null : (FrontdoorProfileIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      logScrubbingRules: map['logScrubbingRules'] == null ? null : (pulumi.Input.decodeList<FrontdoorProfileLogScrubbingRule>(map['logScrubbingRules']!, (value) => FrontdoorProfileLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      resourceGuid: map['resourceGuid'] == null ? null : (map['resourceGuid']! as String).input(),
+      responseTimeoutSeconds: map['responseTimeoutSeconds'] == null ? null : (map['responseTimeoutSeconds']! as int).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

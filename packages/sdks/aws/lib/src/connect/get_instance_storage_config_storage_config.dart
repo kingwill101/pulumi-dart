@@ -44,10 +44,10 @@ class GetInstanceStorageConfigStorageConfig {
 
   factory GetInstanceStorageConfigStorageConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceStorageConfigStorageConfig(
-      kinesisFirehoseConfigs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig>(map['kinesisFirehoseConfigs'], (value) => GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kinesisStreamConfigs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigKinesisStreamConfig>(map['kinesisStreamConfigs'], (value) => GetInstanceStorageConfigStorageConfigKinesisStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kinesisVideoStreamConfigs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig>(map['kinesisVideoStreamConfigs'], (value) => GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      s3Configs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigS3Config>(map['s3Configs'], (value) => GetInstanceStorageConfigStorageConfigS3Config.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kinesisFirehoseConfigs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig>(map['kinesisFirehoseConfigs']!, (value) => GetInstanceStorageConfigStorageConfigKinesisFirehoseConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kinesisStreamConfigs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigKinesisStreamConfig>(map['kinesisStreamConfigs']!, (value) => GetInstanceStorageConfigStorageConfigKinesisStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kinesisVideoStreamConfigs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig>(map['kinesisVideoStreamConfigs']!, (value) => GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3Configs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigS3Config>(map['s3Configs']!, (value) => GetInstanceStorageConfigStorageConfigS3Config.fromMap((value as Map).cast<String, dynamic>()))).input(),
       storageType: (map['storageType'] as String).input(),
     );
   }

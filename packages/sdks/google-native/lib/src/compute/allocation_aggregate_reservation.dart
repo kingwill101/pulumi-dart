@@ -34,9 +34,9 @@ class AllocationAggregateReservation {
 
   factory AllocationAggregateReservation.fromMap(Map<String, dynamic> map) {
     return AllocationAggregateReservation(
-      reservedResources: map['reservedResources'] == null ? null : (pulumi.Input.decodeList<AllocationAggregateReservationReservedResourceInfo>(map['reservedResources'], (value) => AllocationAggregateReservationReservedResourceInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmFamily: map['vmFamily'] == null ? null : (AllocationAggregateReservationVmFamily.fromValue(map['vmFamily'] as String)).input(),
-      workloadType: map['workloadType'] == null ? null : (AllocationAggregateReservationWorkloadType.fromValue(map['workloadType'] as String)).input(),
+      reservedResources: map['reservedResources'] == null ? null : (pulumi.Input.decodeList<AllocationAggregateReservationReservedResourceInfo>(map['reservedResources']!, (value) => AllocationAggregateReservationReservedResourceInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmFamily: map['vmFamily'] == null ? null : (AllocationAggregateReservationVmFamily.fromValue(map['vmFamily']! as String)).input(),
+      workloadType: map['workloadType'] == null ? null : (AllocationAggregateReservationWorkloadType.fromValue(map['workloadType']! as String)).input(),
     );
   }
 }

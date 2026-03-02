@@ -73,17 +73,17 @@ class NetworkManagerAdminRuleState {
 
   factory NetworkManagerAdminRuleState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerAdminRuleState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      adminRuleCollectionId: map['adminRuleCollectionId'] == null ? null : (map['adminRuleCollectionId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationPortRanges: map['destinationPortRanges'] == null ? null : ((map['destinationPortRanges'] as List).cast<String>()).input(),
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<NetworkManagerAdminRuleDestination>(map['destinations'], (value) => NetworkManagerAdminRuleDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges'] as List).cast<String>()).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<NetworkManagerAdminRuleSource>(map['sources'], (value) => NetworkManagerAdminRuleSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      adminRuleCollectionId: map['adminRuleCollectionId'] == null ? null : (map['adminRuleCollectionId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationPortRanges: map['destinationPortRanges'] == null ? null : ((map['destinationPortRanges']! as List).cast<String>()).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<NetworkManagerAdminRuleDestination>(map['destinations']!, (value) => NetworkManagerAdminRuleDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges']! as List).cast<String>()).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<NetworkManagerAdminRuleSource>(map['sources']!, (value) => NetworkManagerAdminRuleSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

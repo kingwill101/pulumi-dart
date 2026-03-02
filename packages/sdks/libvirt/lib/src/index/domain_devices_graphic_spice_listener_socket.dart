@@ -20,7 +20,7 @@ class DomainDevicesGraphicSpiceListenerSocket {
 
   factory DomainDevicesGraphicSpiceListenerSocket.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicSpiceListenerSocket(
-      socket: map['socket'] == null ? null : (map['socket'] as String).input(),
+      socket: map['socket'] == null ? null : (map['socket']! as String).input(),
     );
   }
 }

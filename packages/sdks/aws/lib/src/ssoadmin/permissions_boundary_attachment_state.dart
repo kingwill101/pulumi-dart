@@ -37,10 +37,10 @@ class PermissionsBoundaryAttachmentState {
 
   factory PermissionsBoundaryAttachmentState.fromMap(Map<String, dynamic> map) {
     return PermissionsBoundaryAttachmentState(
-      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
-      permissionSetArn: map['permissionSetArn'] == null ? null : (map['permissionSetArn'] as String).input(),
-      permissionsBoundary: map['permissionsBoundary'] == null ? null : (PermissionsBoundaryAttachmentPermissionsBoundary.fromMap((map['permissionsBoundary'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      instanceArn: map['instanceArn'] == null ? null : ((map['instanceArn'] as String).input()).input(),
+      permissionSetArn: map['permissionSetArn'] == null ? null : ((map['permissionSetArn'] as String).input()).input(),
+      permissionsBoundary: map['permissionsBoundary'] == null ? null : ((PermissionsBoundaryAttachmentPermissionsBoundary.fromMap((map['permissionsBoundary']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

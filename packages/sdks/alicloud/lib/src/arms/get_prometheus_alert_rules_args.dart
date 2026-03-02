@@ -54,12 +54,12 @@ class GetPrometheusAlertRulesArgs {
   factory GetPrometheusAlertRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetPrometheusAlertRulesArgs(
       clusterId: (map['clusterId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      matchExpressions: map['matchExpressions'] == null ? null : (map['matchExpressions'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      matchExpressions: map['matchExpressions'] == null ? null : (map['matchExpressions']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

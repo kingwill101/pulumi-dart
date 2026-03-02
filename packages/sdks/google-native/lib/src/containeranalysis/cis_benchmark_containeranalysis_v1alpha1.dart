@@ -27,8 +27,8 @@ class CisBenchmarkContaineranalysisV1alpha1 {
 
   factory CisBenchmarkContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return CisBenchmarkContaineranalysisV1alpha1(
-      profileLevel: map['profileLevel'] == null ? null : (map['profileLevel'] as int).input(),
-      severity: map['severity'] == null ? null : (CisBenchmarkSeverityContaineranalysisV1alpha1.fromValue(map['severity'] as String)).input(),
+      profileLevel: map['profileLevel'] == null ? null : (map['profileLevel']! as int).input(),
+      severity: map['severity'] == null ? null : (CisBenchmarkSeverityContaineranalysisV1alpha1.fromValue(map['severity']! as String)).input(),
     );
   }
 }

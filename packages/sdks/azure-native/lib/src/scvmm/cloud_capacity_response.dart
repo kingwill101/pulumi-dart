@@ -31,9 +31,9 @@ class CloudCapacityResponse {
 
   factory CloudCapacityResponse.fromMap(Map<String, dynamic> map) {
     return CloudCapacityResponse(
-      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount'] as double).input(),
-      memoryMB: map['memoryMB'] == null ? null : (map['memoryMB'] as double).input(),
-      vmCount: map['vmCount'] == null ? null : (map['vmCount'] as double).input(),
+      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount']! as double).input(),
+      memoryMB: map['memoryMB'] == null ? null : (map['memoryMB']! as double).input(),
+      vmCount: map['vmCount'] == null ? null : (map['vmCount']! as double).input(),
     );
   }
 }

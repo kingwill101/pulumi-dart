@@ -28,8 +28,8 @@ class AwsS3AccessControlPolicyProperties {
 
   factory AwsS3AccessControlPolicyProperties.fromMap(Map<String, dynamic> map) {
     return AwsS3AccessControlPolicyProperties(
-      grants: map['grants'] == null ? null : (pulumi.Input.decodeList<Grant>(map['grants'], (value) => Grant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      owner: map['owner'] == null ? null : (Owner.fromMap((map['owner'] as Map).cast<String, dynamic>())).input(),
+      grants: map['grants'] == null ? null : (pulumi.Input.decodeList<Grant>(map['grants']!, (value) => Grant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      owner: map['owner'] == null ? null : (Owner.fromMap((map['owner']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

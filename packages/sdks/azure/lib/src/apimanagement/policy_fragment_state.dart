@@ -45,11 +45,11 @@ class PolicyFragmentState {
 
   factory PolicyFragmentState.fromMap(Map<String, dynamic> map) {
     return PolicyFragmentState(
-      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

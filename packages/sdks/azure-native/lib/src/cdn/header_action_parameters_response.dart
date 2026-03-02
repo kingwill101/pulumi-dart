@@ -39,7 +39,7 @@ class HeaderActionParametersResponse {
       headerAction: (map['headerAction'] as String).input(),
       headerName: (map['headerName'] as String).input(),
       typeName: (map['typeName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

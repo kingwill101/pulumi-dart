@@ -27,8 +27,8 @@ class OracleTableDatastreamV1alpha1 {
 
   factory OracleTableDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleTableDatastreamV1alpha1(
-      oracleColumns: map['oracleColumns'] == null ? null : (pulumi.Input.decodeList<OracleColumnDatastreamV1alpha1>(map['oracleColumns'], (value) => OracleColumnDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      oracleColumns: map['oracleColumns'] == null ? null : (pulumi.Input.decodeList<OracleColumnDatastreamV1alpha1>(map['oracleColumns']!, (value) => OracleColumnDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
     );
   }
 }

@@ -52,11 +52,11 @@ class AcceleratorGitRepository {
   factory AcceleratorGitRepository.fromMap(Map<String, dynamic> map) {
     return AcceleratorGitRepository(
       authSetting: (AcceleratorBasicAuthSetting.fromMap((map['authSetting'] as Map).cast<String, dynamic>())).input(),
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      commit: map['commit'] == null ? null : (map['commit'] as String).input(),
-      gitTag: map['gitTag'] == null ? null : (map['gitTag'] as String).input(),
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
-      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      commit: map['commit'] == null ? null : (map['commit']! as String).input(),
+      gitTag: map['gitTag'] == null ? null : (map['gitTag']! as String).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as int).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath']! as String).input(),
       url: (map['url'] as String).input(),
     );
   }

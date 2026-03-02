@@ -71,14 +71,14 @@ class EnterpriseKeyArgs {
 
   factory EnterpriseKeyArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseKeyArgs(
-      androidSettings: map['androidSettings'] == null ? null : (EnterpriseKeyAndroidSettings.fromMap((map['androidSettings'] as Map).cast<String, dynamic>())).input(),
+      androidSettings: map['androidSettings'] == null ? null : (EnterpriseKeyAndroidSettings.fromMap((map['androidSettings']! as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
-      iosSettings: map['iosSettings'] == null ? null : (EnterpriseKeyIosSettings.fromMap((map['iosSettings'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      testingOptions: map['testingOptions'] == null ? null : (EnterpriseKeyTestingOptions.fromMap((map['testingOptions'] as Map).cast<String, dynamic>())).input(),
-      wafSettings: map['wafSettings'] == null ? null : (EnterpriseKeyWafSettings.fromMap((map['wafSettings'] as Map).cast<String, dynamic>())).input(),
-      webSettings: map['webSettings'] == null ? null : (EnterpriseKeyWebSettings.fromMap((map['webSettings'] as Map).cast<String, dynamic>())).input(),
+      iosSettings: map['iosSettings'] == null ? null : (EnterpriseKeyIosSettings.fromMap((map['iosSettings']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      testingOptions: map['testingOptions'] == null ? null : (EnterpriseKeyTestingOptions.fromMap((map['testingOptions']! as Map).cast<String, dynamic>())).input(),
+      wafSettings: map['wafSettings'] == null ? null : (EnterpriseKeyWafSettings.fromMap((map['wafSettings']! as Map).cast<String, dynamic>())).input(),
+      webSettings: map['webSettings'] == null ? null : (EnterpriseKeyWebSettings.fromMap((map['webSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

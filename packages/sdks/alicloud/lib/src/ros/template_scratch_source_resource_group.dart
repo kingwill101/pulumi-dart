@@ -25,7 +25,7 @@ class TemplateScratchSourceResourceGroup {
   factory TemplateScratchSourceResourceGroup.fromMap(Map<String, dynamic> map) {
     return TemplateScratchSourceResourceGroup(
       resourceGroupId: (map['resourceGroupId'] as String).input(),
-      resourceTypeFilters: map['resourceTypeFilters'] == null ? null : ((map['resourceTypeFilters'] as List).cast<String>()).input(),
+      resourceTypeFilters: map['resourceTypeFilters'] == null ? null : ((map['resourceTypeFilters']! as List).cast<String>()).input(),
     );
   }
 }

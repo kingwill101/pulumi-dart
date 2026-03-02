@@ -26,8 +26,8 @@ class SqlServerUserDetails {
 
   factory SqlServerUserDetails.fromMap(Map<String, dynamic> map) {
     return SqlServerUserDetails(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      serverRoles: map['serverRoles'] == null ? null : ((map['serverRoles'] as List).cast<String>()).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      serverRoles: map['serverRoles'] == null ? null : ((map['serverRoles']! as List).cast<String>()).input(),
     );
   }
 }

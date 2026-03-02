@@ -53,13 +53,13 @@ class PipeTargetParametersEcsTaskParametersOverrides {
 
   factory PipeTargetParametersEcsTaskParametersOverrides.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersEcsTaskParametersOverrides(
-      containerOverrides: map['containerOverrides'] == null ? null : (pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverride>(map['containerOverrides'], (value) => PipeTargetParametersEcsTaskParametersOverridesContainerOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
-      ephemeralStorage: map['ephemeralStorage'] == null ? null : (PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage.fromMap((map['ephemeralStorage'] as Map).cast<String, dynamic>())).input(),
-      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
-      inferenceAcceleratorOverrides: map['inferenceAcceleratorOverrides'] == null ? null : (pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride>(map['inferenceAcceleratorOverrides'], (value) => PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
-      taskRoleArn: map['taskRoleArn'] == null ? null : (map['taskRoleArn'] as String).input(),
+      containerOverrides: map['containerOverrides'] == null ? null : ((pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverride>(map['containerOverrides']!, (value) => PipeTargetParametersEcsTaskParametersOverridesContainerOverride.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      cpu: map['cpu'] == null ? null : ((map['cpu'] as String).input()).input(),
+      ephemeralStorage: map['ephemeralStorage'] == null ? null : ((PipeTargetParametersEcsTaskParametersOverridesEphemeralStorage.fromMap((map['ephemeralStorage']! as Map).cast<String, dynamic>())).input()).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
+      inferenceAcceleratorOverrides: map['inferenceAcceleratorOverrides'] == null ? null : ((pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride>(map['inferenceAcceleratorOverrides']!, (value) => PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      memory: map['memory'] == null ? null : ((map['memory'] as String).input()).input(),
+      taskRoleArn: map['taskRoleArn'] == null ? null : ((map['taskRoleArn'] as String).input()).input(),
     );
   }
 }

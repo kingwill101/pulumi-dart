@@ -31,8 +31,8 @@ class DirectoryRoleArgs {
 
   factory DirectoryRoleArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryRoleArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
     );
   }
 }

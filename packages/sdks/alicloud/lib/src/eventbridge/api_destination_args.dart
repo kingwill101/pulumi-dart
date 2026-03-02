@@ -42,7 +42,7 @@ class ApiDestinationArgs {
     return ApiDestinationArgs(
       apiDestinationName: (map['apiDestinationName'] as String).input(),
       connectionName: (map['connectionName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       httpApiParameters: (ApiDestinationHttpApiParameters.fromMap((map['httpApiParameters'] as Map).cast<String, dynamic>())).input(),
     );
   }

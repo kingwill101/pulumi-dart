@@ -31,9 +31,9 @@ class ServiceOciArtifactEntryResponse {
 
   factory ServiceOciArtifactEntryResponse.fromMap(Map<String, dynamic> map) {
     return ServiceOciArtifactEntryResponse(
-      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
-      loginServer: map['loginServer'] == null ? null : (map['loginServer'] as String).input(),
+      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
+      loginServer: map['loginServer'] == null ? null : (map['loginServer']! as String).input(),
     );
   }
 }

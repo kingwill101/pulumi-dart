@@ -40,9 +40,9 @@ class WorkspaceArgs {
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
       apiManagementId: (map['apiManagementId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

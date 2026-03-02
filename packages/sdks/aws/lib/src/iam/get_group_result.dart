@@ -51,7 +51,7 @@ class GetGroupResult {
       groupName: map['groupName'] as String,
       id: map['id'] as String,
       path: map['path'] as String,
-      users: pulumi.Input.decodeList<GetGroupUser>(map['users'], (value) => GetGroupUser.fromMap((value as Map).cast<String, dynamic>())),
+      users: pulumi.Input.decodeList<GetGroupUser>(map['users']!, (value) => GetGroupUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

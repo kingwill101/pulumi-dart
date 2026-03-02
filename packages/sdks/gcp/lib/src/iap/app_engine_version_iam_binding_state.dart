@@ -72,14 +72,14 @@ class AppEngineVersionIamBindingState {
 
   factory AppEngineVersionIamBindingState.fromMap(Map<String, dynamic> map) {
     return AppEngineVersionIamBindingState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      condition: map['condition'] == null ? null : (AppEngineVersionIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      condition: map['condition'] == null ? null : (AppEngineVersionIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
     );
   }
 }

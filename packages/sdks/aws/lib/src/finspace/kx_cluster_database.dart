@@ -36,10 +36,10 @@ class KxClusterDatabase {
 
   factory KxClusterDatabase.fromMap(Map<String, dynamic> map) {
     return KxClusterDatabase(
-      cacheConfigurations: map['cacheConfigurations'] == null ? null : (pulumi.Input.decodeList<KxClusterDatabaseCacheConfiguration>(map['cacheConfigurations'], (value) => KxClusterDatabaseCacheConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      changesetId: map['changesetId'] == null ? null : (map['changesetId'] as String).input(),
+      cacheConfigurations: map['cacheConfigurations'] == null ? null : ((pulumi.Input.decodeList<KxClusterDatabaseCacheConfiguration>(map['cacheConfigurations']!, (value) => KxClusterDatabaseCacheConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      changesetId: map['changesetId'] == null ? null : ((map['changesetId'] as String).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
-      dataviewName: map['dataviewName'] == null ? null : (map['dataviewName'] as String).input(),
+      dataviewName: map['dataviewName'] == null ? null : ((map['dataviewName'] as String).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ThreatIntelligenceIndicatorParsedPattern {
 
   factory ThreatIntelligenceIndicatorParsedPattern.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceIndicatorParsedPattern(
-      patternTypeKey: map['patternTypeKey'] == null ? null : (map['patternTypeKey'] as String).input(),
-      patternTypeValues: map['patternTypeValues'] == null ? null : (pulumi.Input.decodeList<ThreatIntelligenceIndicatorParsedPatternPatternTypeValue>(map['patternTypeValues'], (value) => ThreatIntelligenceIndicatorParsedPatternPatternTypeValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      patternTypeKey: map['patternTypeKey'] == null ? null : (map['patternTypeKey']! as String).input(),
+      patternTypeValues: map['patternTypeValues'] == null ? null : (pulumi.Input.decodeList<ThreatIntelligenceIndicatorParsedPatternPatternTypeValue>(map['patternTypeValues']!, (value) => ThreatIntelligenceIndicatorParsedPatternPatternTypeValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

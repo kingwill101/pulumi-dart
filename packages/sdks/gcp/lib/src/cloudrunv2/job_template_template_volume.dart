@@ -55,12 +55,12 @@ class JobTemplateTemplateVolume {
 
   factory JobTemplateTemplateVolume.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateVolume(
-      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (JobTemplateTemplateVolumeCloudSqlInstance.fromMap((map['cloudSqlInstance'] as Map).cast<String, dynamic>())).input(),
-      emptyDir: map['emptyDir'] == null ? null : (JobTemplateTemplateVolumeEmptyDir.fromMap((map['emptyDir'] as Map).cast<String, dynamic>())).input(),
-      gcs: map['gcs'] == null ? null : (JobTemplateTemplateVolumeGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>())).input(),
+      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (JobTemplateTemplateVolumeCloudSqlInstance.fromMap((map['cloudSqlInstance']! as Map).cast<String, dynamic>())).input(),
+      emptyDir: map['emptyDir'] == null ? null : (JobTemplateTemplateVolumeEmptyDir.fromMap((map['emptyDir']! as Map).cast<String, dynamic>())).input(),
+      gcs: map['gcs'] == null ? null : (JobTemplateTemplateVolumeGcs.fromMap((map['gcs']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      nfs: map['nfs'] == null ? null : (JobTemplateTemplateVolumeNfs.fromMap((map['nfs'] as Map).cast<String, dynamic>())).input(),
-      secret: map['secret'] == null ? null : (JobTemplateTemplateVolumeSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      nfs: map['nfs'] == null ? null : (JobTemplateTemplateVolumeNfs.fromMap((map['nfs']! as Map).cast<String, dynamic>())).input(),
+      secret: map['secret'] == null ? null : (JobTemplateTemplateVolumeSecret.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

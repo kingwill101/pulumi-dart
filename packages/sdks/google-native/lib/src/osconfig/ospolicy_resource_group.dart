@@ -28,7 +28,7 @@ class OSPolicyResourceGroup {
 
   factory OSPolicyResourceGroup.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceGroup(
-      inventoryFilters: map['inventoryFilters'] == null ? null : (pulumi.Input.decodeList<OSPolicyInventoryFilter>(map['inventoryFilters'], (value) => OSPolicyInventoryFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inventoryFilters: map['inventoryFilters'] == null ? null : (pulumi.Input.decodeList<OSPolicyInventoryFilter>(map['inventoryFilters']!, (value) => OSPolicyInventoryFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resources: (pulumi.Input.decodeList<OSPolicyResource>(map['resources'], (value) => OSPolicyResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

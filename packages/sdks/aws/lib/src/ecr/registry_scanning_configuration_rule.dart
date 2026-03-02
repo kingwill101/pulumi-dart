@@ -26,7 +26,7 @@ class RegistryScanningConfigurationRule {
 
   factory RegistryScanningConfigurationRule.fromMap(Map<String, dynamic> map) {
     return RegistryScanningConfigurationRule(
-      repositoryFilters: (pulumi.Input.decodeList<RegistryScanningConfigurationRuleRepositoryFilter>(map['repositoryFilters'], (value) => RegistryScanningConfigurationRuleRepositoryFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      repositoryFilters: (pulumi.Input.decodeList<RegistryScanningConfigurationRuleRepositoryFilter>(map['repositoryFilters']!, (value) => RegistryScanningConfigurationRuleRepositoryFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       scanFrequency: (map['scanFrequency'] as String).input(),
     );
   }

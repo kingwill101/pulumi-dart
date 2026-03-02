@@ -68,14 +68,14 @@ class VolumeGroupArgs {
   factory VolumeGroupArgs.fromMap(Map<String, dynamic> map) {
     return VolumeGroupArgs(
       elasticSanName: (map['elasticSanName'] as String).input(),
-      encryption: map['encryption'] == null ? null : (map['encryption'] as String).input(),
-      encryptionProperties: map['encryptionProperties'] == null ? null : (EncryptionProperties.fromMap((map['encryptionProperties'] as Map).cast<String, dynamic>())).input(),
-      enforceDataIntegrityCheckForIscsi: map['enforceDataIntegrityCheckForIscsi'] == null ? null : (map['enforceDataIntegrityCheckForIscsi'] as bool).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      networkAcls: map['networkAcls'] == null ? null : (NetworkRuleSet.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())).input(),
-      protocolType: map['protocolType'] == null ? null : (map['protocolType'] as String).input(),
+      encryption: map['encryption'] == null ? null : (map['encryption']! as String).input(),
+      encryptionProperties: map['encryptionProperties'] == null ? null : (EncryptionProperties.fromMap((map['encryptionProperties']! as Map).cast<String, dynamic>())).input(),
+      enforceDataIntegrityCheckForIscsi: map['enforceDataIntegrityCheckForIscsi'] == null ? null : (map['enforceDataIntegrityCheckForIscsi']! as bool).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      networkAcls: map['networkAcls'] == null ? null : (NetworkRuleSet.fromMap((map['networkAcls']! as Map).cast<String, dynamic>())).input(),
+      protocolType: map['protocolType'] == null ? null : (map['protocolType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      volumeGroupName: map['volumeGroupName'] == null ? null : (map['volumeGroupName'] as String).input(),
+      volumeGroupName: map['volumeGroupName'] == null ? null : (map['volumeGroupName']! as String).input(),
     );
   }
 }

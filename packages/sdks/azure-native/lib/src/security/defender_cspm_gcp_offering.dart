@@ -52,12 +52,12 @@ class DefenderCspmGcpOffering {
 
   factory DefenderCspmGcpOffering.fromMap(Map<String, dynamic> map) {
     return DefenderCspmGcpOffering(
-      ciemDiscovery: map['ciemDiscovery'] == null ? null : (DefenderCspmGcpOfferingCiemDiscovery.fromMap((map['ciemDiscovery'] as Map).cast<String, dynamic>())).input(),
-      dataSensitivityDiscovery: map['dataSensitivityDiscovery'] == null ? null : (DefenderCspmGcpOfferingDataSensitivityDiscovery.fromMap((map['dataSensitivityDiscovery'] as Map).cast<String, dynamic>())).input(),
-      mdcContainersAgentlessDiscoveryK8s: map['mdcContainersAgentlessDiscoveryK8s'] == null ? null : (DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s.fromMap((map['mdcContainersAgentlessDiscoveryK8s'] as Map).cast<String, dynamic>())).input(),
-      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderCspmGcpOfferingMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment'] as Map).cast<String, dynamic>())).input(),
+      ciemDiscovery: map['ciemDiscovery'] == null ? null : (DefenderCspmGcpOfferingCiemDiscovery.fromMap((map['ciemDiscovery']! as Map).cast<String, dynamic>())).input(),
+      dataSensitivityDiscovery: map['dataSensitivityDiscovery'] == null ? null : (DefenderCspmGcpOfferingDataSensitivityDiscovery.fromMap((map['dataSensitivityDiscovery']! as Map).cast<String, dynamic>())).input(),
+      mdcContainersAgentlessDiscoveryK8s: map['mdcContainersAgentlessDiscoveryK8s'] == null ? null : (DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s.fromMap((map['mdcContainersAgentlessDiscoveryK8s']! as Map).cast<String, dynamic>())).input(),
+      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderCspmGcpOfferingMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment']! as Map).cast<String, dynamic>())).input(),
       offeringType: (map['offeringType'] as String).input(),
-      vmScanners: map['vmScanners'] == null ? null : (DefenderCspmGcpOfferingVmScanners.fromMap((map['vmScanners'] as Map).cast<String, dynamic>())).input(),
+      vmScanners: map['vmScanners'] == null ? null : (DefenderCspmGcpOfferingVmScanners.fromMap((map['vmScanners']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

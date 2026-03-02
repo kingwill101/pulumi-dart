@@ -69,13 +69,13 @@ class SecurityGatewayArgs {
 
   factory SecurityGatewayArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      hubs: map['hubs'] == null ? null : (pulumi.Input.decodeList<SecurityGatewayHub>(map['hubs'], (value) => SecurityGatewayHub.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      proxyProtocolConfig: map['proxyProtocolConfig'] == null ? null : (SecurityGatewayProxyProtocolConfig.fromMap((map['proxyProtocolConfig'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      hubs: map['hubs'] == null ? null : (pulumi.Input.decodeList<SecurityGatewayHub>(map['hubs']!, (value) => SecurityGatewayHub.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      proxyProtocolConfig: map['proxyProtocolConfig'] == null ? null : (SecurityGatewayProxyProtocolConfig.fromMap((map['proxyProtocolConfig']! as Map).cast<String, dynamic>())).input(),
       securityGatewayId: (map['securityGatewayId'] as String).input(),
-      serviceDiscovery: map['serviceDiscovery'] == null ? null : (SecurityGatewayServiceDiscovery.fromMap((map['serviceDiscovery'] as Map).cast<String, dynamic>())).input(),
+      serviceDiscovery: map['serviceDiscovery'] == null ? null : (SecurityGatewayServiceDiscovery.fromMap((map['serviceDiscovery']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

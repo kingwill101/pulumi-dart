@@ -34,9 +34,9 @@ class RuleSourceSourceDetail {
 
   factory RuleSourceSourceDetail.fromMap(Map<String, dynamic> map) {
     return RuleSourceSourceDetail(
-      eventSource: map['eventSource'] == null ? null : (map['eventSource'] as String).input(),
-      maximumExecutionFrequency: map['maximumExecutionFrequency'] == null ? null : (map['maximumExecutionFrequency'] as String).input(),
-      messageType: map['messageType'] == null ? null : (map['messageType'] as String).input(),
+      eventSource: map['eventSource'] == null ? null : ((map['eventSource'] as String).input()).input(),
+      maximumExecutionFrequency: map['maximumExecutionFrequency'] == null ? null : ((map['maximumExecutionFrequency'] as String).input()).input(),
+      messageType: map['messageType'] == null ? null : ((map['messageType'] as String).input()).input(),
     );
   }
 }

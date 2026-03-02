@@ -44,10 +44,10 @@ class UserPoolUICustomizationArgs {
 
   factory UserPoolUICustomizationArgs.fromMap(Map<String, dynamic> map) {
     return UserPoolUICustomizationArgs(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      css: map['css'] == null ? null : (map['css'] as String).input(),
-      imageFile: map['imageFile'] == null ? null : (map['imageFile'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      clientId: map['clientId'] == null ? null : ((map['clientId'] as String).input()).input(),
+      css: map['css'] == null ? null : ((map['css'] as String).input()).input(),
+      imageFile: map['imageFile'] == null ? null : ((map['imageFile'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       userPoolId: (map['userPoolId'] as String).input(),
     );
   }

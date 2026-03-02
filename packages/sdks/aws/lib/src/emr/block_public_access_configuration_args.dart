@@ -38,8 +38,8 @@ class BlockPublicAccessConfigurationArgs {
   factory BlockPublicAccessConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return BlockPublicAccessConfigurationArgs(
       blockPublicSecurityGroupRules: (map['blockPublicSecurityGroupRules'] as bool).input(),
-      permittedPublicSecurityGroupRuleRanges: map['permittedPublicSecurityGroupRuleRanges'] == null ? null : (pulumi.Input.decodeList<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>(map['permittedPublicSecurityGroupRuleRanges'], (value) => BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      permittedPublicSecurityGroupRuleRanges: map['permittedPublicSecurityGroupRuleRanges'] == null ? null : ((pulumi.Input.decodeList<BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange>(map['permittedPublicSecurityGroupRuleRanges']!, (value) => BlockPublicAccessConfigurationPermittedPublicSecurityGroupRuleRange.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

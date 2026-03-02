@@ -24,7 +24,7 @@ class ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
 
   factory ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
     );
   }
 }

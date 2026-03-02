@@ -21,7 +21,7 @@ class APIServerProfile {
 
   factory APIServerProfile.fromMap(Map<String, dynamic> map) {
     return APIServerProfile(
-      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
     );
   }
 }

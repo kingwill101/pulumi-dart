@@ -60,14 +60,14 @@ class GoogleCloudRunV2TaskTemplate {
 
   factory GoogleCloudRunV2TaskTemplate.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2TaskTemplate(
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2Container>(map['containers'], (value) => GoogleCloudRunV2Container.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey'] as String).input(),
-      executionEnvironment: map['executionEnvironment'] == null ? null : (GoogleCloudRunV2TaskTemplateExecutionEnvironment.fromValue(map['executionEnvironment'] as String)).input(),
-      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries'] as int).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2Volume>(map['volumes'], (value) => GoogleCloudRunV2Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcAccess: map['vpcAccess'] == null ? null : (GoogleCloudRunV2VpcAccess.fromMap((map['vpcAccess'] as Map).cast<String, dynamic>())).input(),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2Container>(map['containers']!, (value) => GoogleCloudRunV2Container.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey']! as String).input(),
+      executionEnvironment: map['executionEnvironment'] == null ? null : (GoogleCloudRunV2TaskTemplateExecutionEnvironment.fromValue(map['executionEnvironment']! as String)).input(),
+      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries']! as int).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2Volume>(map['volumes']!, (value) => GoogleCloudRunV2Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcAccess: map['vpcAccess'] == null ? null : (GoogleCloudRunV2VpcAccess.fromMap((map['vpcAccess']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

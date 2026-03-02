@@ -41,11 +41,11 @@ class JobMonitorRuleState {
 
   factory JobMonitorRuleState.fromMap(Map<String, dynamic> map) {
     return JobMonitorRuleState(
-      delayRuleTime: map['delayRuleTime'] == null ? null : (map['delayRuleTime'] as String).input(),
-      dtsJobId: map['dtsJobId'] == null ? null : (map['dtsJobId'] as String).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      delayRuleTime: map['delayRuleTime'] == null ? null : (map['delayRuleTime']! as String).input(),
+      dtsJobId: map['dtsJobId'] == null ? null : (map['dtsJobId']! as String).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

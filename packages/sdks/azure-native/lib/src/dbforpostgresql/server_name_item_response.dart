@@ -27,7 +27,7 @@ class ServerNameItemResponse {
   factory ServerNameItemResponse.fromMap(Map<String, dynamic> map) {
     return ServerNameItemResponse(
       fullyQualifiedDomainName: (map['fullyQualifiedDomainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

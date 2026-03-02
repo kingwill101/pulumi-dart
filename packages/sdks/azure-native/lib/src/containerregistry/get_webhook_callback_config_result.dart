@@ -25,7 +25,7 @@ class GetWebhookCallbackConfigResult {
 
   factory GetWebhookCallbackConfigResult.fromMap(Map<String, dynamic> map) {
     return GetWebhookCallbackConfigResult(
-      customHeaders: map['customHeaders'] == null ? null : (map['customHeaders'] as Map).cast<String, String>(),
+      customHeaders: map['customHeaders'] == null ? null : (map['customHeaders']! as Map).cast<String, String>(),
       serviceUri: map['serviceUri'] as String,
     );
   }

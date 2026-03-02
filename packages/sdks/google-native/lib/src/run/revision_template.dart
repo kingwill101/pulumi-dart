@@ -28,8 +28,8 @@ class RevisionTemplate {
 
   factory RevisionTemplate.fromMap(Map<String, dynamic> map) {
     return RevisionTemplate(
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (RevisionSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (RevisionSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

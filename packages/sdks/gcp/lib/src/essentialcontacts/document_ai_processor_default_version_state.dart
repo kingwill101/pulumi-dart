@@ -27,8 +27,8 @@ class DocumentAiProcessorDefaultVersionState {
 
   factory DocumentAiProcessorDefaultVersionState.fromMap(Map<String, dynamic> map) {
     return DocumentAiProcessorDefaultVersionState(
-      processor: map['processor'] == null ? null : (map['processor'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      processor: map['processor'] == null ? null : (map['processor']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

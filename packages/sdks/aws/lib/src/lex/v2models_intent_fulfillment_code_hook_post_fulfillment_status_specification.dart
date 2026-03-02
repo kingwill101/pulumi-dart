@@ -69,15 +69,15 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecification {
 
   factory V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecification(
-      failureConditional: map['failureConditional'] == null ? null : (V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditional.fromMap((map['failureConditional'] as Map).cast<String, dynamic>())).input(),
-      failureNextStep: map['failureNextStep'] == null ? null : (V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStep.fromMap((map['failureNextStep'] as Map).cast<String, dynamic>())).input(),
-      failureResponse: map['failureResponse'] == null ? null : (V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureResponse.fromMap((map['failureResponse'] as Map).cast<String, dynamic>())).input(),
-      successConditional: map['successConditional'] == null ? null : (V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditional.fromMap((map['successConditional'] as Map).cast<String, dynamic>())).input(),
-      successNextStep: map['successNextStep'] == null ? null : (V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessNextStep.fromMap((map['successNextStep'] as Map).cast<String, dynamic>())).input(),
-      successResponse: map['successResponse'] == null ? null : (V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessResponse.fromMap((map['successResponse'] as Map).cast<String, dynamic>())).input(),
-      timeoutConditional: map['timeoutConditional'] == null ? null : (V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationTimeoutConditional.fromMap((map['timeoutConditional'] as Map).cast<String, dynamic>())).input(),
-      timeoutNextStep: map['timeoutNextStep'] == null ? null : (V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationTimeoutNextStep.fromMap((map['timeoutNextStep'] as Map).cast<String, dynamic>())).input(),
-      timeoutResponse: map['timeoutResponse'] == null ? null : (V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationTimeoutResponse.fromMap((map['timeoutResponse'] as Map).cast<String, dynamic>())).input(),
+      failureConditional: map['failureConditional'] == null ? null : ((V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditional.fromMap((map['failureConditional']! as Map).cast<String, dynamic>())).input()).input(),
+      failureNextStep: map['failureNextStep'] == null ? null : ((V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureNextStep.fromMap((map['failureNextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      failureResponse: map['failureResponse'] == null ? null : ((V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureResponse.fromMap((map['failureResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      successConditional: map['successConditional'] == null ? null : ((V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditional.fromMap((map['successConditional']! as Map).cast<String, dynamic>())).input()).input(),
+      successNextStep: map['successNextStep'] == null ? null : ((V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessNextStep.fromMap((map['successNextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      successResponse: map['successResponse'] == null ? null : ((V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessResponse.fromMap((map['successResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      timeoutConditional: map['timeoutConditional'] == null ? null : ((V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationTimeoutConditional.fromMap((map['timeoutConditional']! as Map).cast<String, dynamic>())).input()).input(),
+      timeoutNextStep: map['timeoutNextStep'] == null ? null : ((V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationTimeoutNextStep.fromMap((map['timeoutNextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      timeoutResponse: map['timeoutResponse'] == null ? null : ((V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationTimeoutResponse.fromMap((map['timeoutResponse']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -68,14 +68,14 @@ class StackInstancesArgs {
 
   factory StackInstancesArgs.fromMap(Map<String, dynamic> map) {
     return StackInstancesArgs(
-      accounts: map['accounts'] == null ? null : ((map['accounts'] as List).cast<String>()).input(),
-      callAs: map['callAs'] == null ? null : (map['callAs'] as String).input(),
-      deploymentTargets: map['deploymentTargets'] == null ? null : (StackInstancesDeploymentTargets.fromMap((map['deploymentTargets'] as Map).cast<String, dynamic>())).input(),
-      operationPreferences: map['operationPreferences'] == null ? null : (StackInstancesOperationPreferences.fromMap((map['operationPreferences'] as Map).cast<String, dynamic>())).input(),
-      parameterOverrides: map['parameterOverrides'] == null ? null : ((map['parameterOverrides'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      retainStacks: map['retainStacks'] == null ? null : (map['retainStacks'] as bool).input(),
+      accounts: map['accounts'] == null ? null : (((map['accounts'] as List).cast<String>()).input()).input(),
+      callAs: map['callAs'] == null ? null : ((map['callAs'] as String).input()).input(),
+      deploymentTargets: map['deploymentTargets'] == null ? null : ((StackInstancesDeploymentTargets.fromMap((map['deploymentTargets']! as Map).cast<String, dynamic>())).input()).input(),
+      operationPreferences: map['operationPreferences'] == null ? null : ((StackInstancesOperationPreferences.fromMap((map['operationPreferences']! as Map).cast<String, dynamic>())).input()).input(),
+      parameterOverrides: map['parameterOverrides'] == null ? null : (((map['parameterOverrides'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      regions: map['regions'] == null ? null : (((map['regions'] as List).cast<String>()).input()).input(),
+      retainStacks: map['retainStacks'] == null ? null : ((map['retainStacks'] as bool).input()).input(),
       stackSetName: (map['stackSetName'] as String).input(),
     );
   }

@@ -22,7 +22,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition>(map['conditions'], (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition>(map['conditions']!, (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

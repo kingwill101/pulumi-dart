@@ -55,10 +55,10 @@ class GraphQLApiResolverArgs {
   factory GraphQLApiResolverArgs.fromMap(Map<String, dynamic> map) {
     return GraphQLApiResolverArgs(
       apiId: (map['apiId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      resolverId: map['resolverId'] == null ? null : (map['resolverId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      resolverId: map['resolverId'] == null ? null : (map['resolverId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

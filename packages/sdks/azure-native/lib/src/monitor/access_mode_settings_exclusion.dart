@@ -31,9 +31,9 @@ class AccessModeSettingsExclusion {
 
   factory AccessModeSettingsExclusion.fromMap(Map<String, dynamic> map) {
     return AccessModeSettingsExclusion(
-      ingestionAccessMode: map['ingestionAccessMode'] == null ? null : (map['ingestionAccessMode'] as String).input(),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
-      queryAccessMode: map['queryAccessMode'] == null ? null : (map['queryAccessMode'] as String).input(),
+      ingestionAccessMode: map['ingestionAccessMode'] == null ? null : (map['ingestionAccessMode']! as String).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName']! as String).input(),
+      queryAccessMode: map['queryAccessMode'] == null ? null : (map['queryAccessMode']! as String).input(),
     );
   }
 }

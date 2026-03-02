@@ -21,7 +21,7 @@ class GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings {
 
   factory GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings(
-      enableAnswerFeedback: map['enableAnswerFeedback'] == null ? null : (map['enableAnswerFeedback'] as bool).input(),
+      enableAnswerFeedback: map['enableAnswerFeedback'] == null ? null : (map['enableAnswerFeedback']! as bool).input(),
     );
   }
 }

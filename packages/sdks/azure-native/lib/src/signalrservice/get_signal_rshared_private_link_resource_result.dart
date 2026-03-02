@@ -72,7 +72,7 @@ class GetSignalRSharedPrivateLinkResourceResult {
       name: map['name'] as String,
       privateLinkResourceId: map['privateLinkResourceId'] as String,
       provisioningState: map['provisioningState'] as String,
-      requestMessage: map['requestMessage'] == null ? null : map['requestMessage'] as String,
+      requestMessage: map['requestMessage'] == null ? null : map['requestMessage']! as String,
       status: map['status'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

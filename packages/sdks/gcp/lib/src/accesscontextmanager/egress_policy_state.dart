@@ -31,9 +31,9 @@ class EgressPolicyState {
 
   factory EgressPolicyState.fromMap(Map<String, dynamic> map) {
     return EgressPolicyState(
-      accessPolicyId: map['accessPolicyId'] == null ? null : (map['accessPolicyId'] as String).input(),
-      egressPolicyName: map['egressPolicyName'] == null ? null : (map['egressPolicyName'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      accessPolicyId: map['accessPolicyId'] == null ? null : (map['accessPolicyId']! as String).input(),
+      egressPolicyName: map['egressPolicyName'] == null ? null : (map['egressPolicyName']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

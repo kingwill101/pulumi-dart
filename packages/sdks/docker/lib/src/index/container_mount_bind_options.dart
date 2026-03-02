@@ -20,7 +20,7 @@ class ContainerMountBindOptions {
 
   factory ContainerMountBindOptions.fromMap(Map<String, dynamic> map) {
     return ContainerMountBindOptions(
-      propagation: map['propagation'] == null ? null : (map['propagation'] as String).input(),
+      propagation: map['propagation'] == null ? null : (map['propagation']! as String).input(),
     );
   }
 }

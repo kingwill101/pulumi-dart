@@ -20,7 +20,7 @@ class GetVirtualGatewaySpecBackendDefault {
 
   factory GetVirtualGatewaySpecBackendDefault.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefault(
-      clientPolicies: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicy>(map['clientPolicies'], (value) => GetVirtualGatewaySpecBackendDefaultClientPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientPolicies: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicy>(map['clientPolicies']!, (value) => GetVirtualGatewaySpecBackendDefaultClientPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

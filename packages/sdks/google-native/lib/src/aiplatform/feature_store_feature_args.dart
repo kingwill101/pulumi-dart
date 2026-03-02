@@ -76,18 +76,18 @@ class FeatureStoreFeatureArgs {
 
   factory FeatureStoreFeatureArgs.fromMap(Map<String, dynamic> map) {
     return FeatureStoreFeatureArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableMonitoring: map['disableMonitoring'] == null ? null : (map['disableMonitoring'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disableMonitoring: map['disableMonitoring'] == null ? null : (map['disableMonitoring']! as bool).input(),
       entityTypeId: (map['entityTypeId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       featureId: (map['featureId'] as String).input(),
       featurestoreId: (map['featurestoreId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      valueType: map['valueType'] == null ? null : (FeatureStoreFeatureValueType.fromValue(map['valueType'] as String)).input(),
-      versionColumnName: map['versionColumnName'] == null ? null : (map['versionColumnName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      valueType: map['valueType'] == null ? null : (FeatureStoreFeatureValueType.fromValue(map['valueType']! as String)).input(),
+      versionColumnName: map['versionColumnName'] == null ? null : (map['versionColumnName']! as String).input(),
     );
   }
 }

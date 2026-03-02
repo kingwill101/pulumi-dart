@@ -47,8 +47,8 @@ class MilvusInstanceComponent {
   factory MilvusInstanceComponent.fromMap(Map<String, dynamic> map) {
     return MilvusInstanceComponent(
       cuNum: (map['cuNum'] as int).input(),
-      cuType: map['cuType'] == null ? null : (map['cuType'] as String).input(),
-      diskSizeType: map['diskSizeType'] == null ? null : (map['diskSizeType'] as String).input(),
+      cuType: map['cuType'] == null ? null : (map['cuType']! as String).input(),
+      diskSizeType: map['diskSizeType'] == null ? null : (map['diskSizeType']! as String).input(),
       replica: (map['replica'] as int).input(),
       type: (map['type'] as String).input(),
     );

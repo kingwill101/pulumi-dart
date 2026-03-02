@@ -26,8 +26,8 @@ class ObjectFieldSelectorPatch {
 
   factory ObjectFieldSelectorPatch.fromMap(Map<String, dynamic> map) {
     return ObjectFieldSelectorPatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath']! as String).input(),
     );
   }
 }

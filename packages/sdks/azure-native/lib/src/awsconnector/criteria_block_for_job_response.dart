@@ -22,7 +22,7 @@ class CriteriaBlockForJobResponse {
 
   factory CriteriaBlockForJobResponse.fromMap(Map<String, dynamic> map) {
     return CriteriaBlockForJobResponse(
-      and: map['and'] == null ? null : (pulumi.Input.decodeList<CriteriaForJobResponse>(map['and'], (value) => CriteriaForJobResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      and: map['and'] == null ? null : (pulumi.Input.decodeList<CriteriaForJobResponse>(map['and']!, (value) => CriteriaForJobResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

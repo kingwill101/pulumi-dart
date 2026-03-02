@@ -81,18 +81,18 @@ class AssessmentState {
 
   factory AssessmentState.fromMap(Map<String, dynamic> map) {
     return AssessmentState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      assessmentReportsDestination: map['assessmentReportsDestination'] == null ? null : (AssessmentAssessmentReportsDestination.fromMap((map['assessmentReportsDestination'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      frameworkId: map['frameworkId'] == null ? null : (map['frameworkId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<AssessmentRole>(map['roles'], (value) => AssessmentRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rolesAlls: map['rolesAlls'] == null ? null : (pulumi.Input.decodeList<AssessmentRolesAll>(map['rolesAlls'], (value) => AssessmentRolesAll.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scope: map['scope'] == null ? null : (AssessmentScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      assessmentReportsDestination: map['assessmentReportsDestination'] == null ? null : ((AssessmentAssessmentReportsDestination.fromMap((map['assessmentReportsDestination']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      frameworkId: map['frameworkId'] == null ? null : ((map['frameworkId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roles: map['roles'] == null ? null : ((pulumi.Input.decodeList<AssessmentRole>(map['roles']!, (value) => AssessmentRole.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      rolesAlls: map['rolesAlls'] == null ? null : ((pulumi.Input.decodeList<AssessmentRolesAll>(map['rolesAlls']!, (value) => AssessmentRolesAll.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      scope: map['scope'] == null ? null : ((AssessmentScope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

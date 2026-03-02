@@ -74,16 +74,16 @@ class ConnectionGithubEnterpriseConfig {
 
   factory ConnectionGithubEnterpriseConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionGithubEnterpriseConfig(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId'] as String).input(),
-      appSlug: map['appSlug'] == null ? null : (map['appSlug'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId']! as String).input(),
+      appSlug: map['appSlug'] == null ? null : (map['appSlug']! as String).input(),
       hostUri: (map['hostUri'] as String).input(),
-      installationUri: map['installationUri'] == null ? null : (map['installationUri'] as String).input(),
-      privateKeySecretVersion: map['privateKeySecretVersion'] == null ? null : (map['privateKeySecretVersion'] as String).input(),
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ConnectionGithubEnterpriseConfigServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>())).input(),
-      sslCaCertificate: map['sslCaCertificate'] == null ? null : (map['sslCaCertificate'] as String).input(),
-      webhookSecretSecretVersion: map['webhookSecretSecretVersion'] == null ? null : (map['webhookSecretSecretVersion'] as String).input(),
+      installationUri: map['installationUri'] == null ? null : (map['installationUri']! as String).input(),
+      privateKeySecretVersion: map['privateKeySecretVersion'] == null ? null : (map['privateKeySecretVersion']! as String).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ConnectionGithubEnterpriseConfigServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig']! as Map).cast<String, dynamic>())).input(),
+      sslCaCertificate: map['sslCaCertificate'] == null ? null : (map['sslCaCertificate']! as String).input(),
+      webhookSecretSecretVersion: map['webhookSecretSecretVersion'] == null ? null : (map['webhookSecretSecretVersion']! as String).input(),
     );
   }
 }

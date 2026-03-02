@@ -27,7 +27,7 @@ class ServicePrincipalDatastoreSecrets {
 
   factory ServicePrincipalDatastoreSecrets.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalDatastoreSecrets(
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
       secretsType: (map['secretsType'] as String).input(),
     );
   }

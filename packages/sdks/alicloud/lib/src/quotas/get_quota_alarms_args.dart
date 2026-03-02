@@ -60,14 +60,14 @@ class GetQuotaAlarmsArgs {
 
   factory GetQuotaAlarmsArgs.fromMap(Map<String, dynamic> map) {
     return GetQuotaAlarmsArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
-      quotaActionCode: map['quotaActionCode'] == null ? null : (map['quotaActionCode'] as String).input(),
-      quotaAlarmName: map['quotaAlarmName'] == null ? null : (map['quotaAlarmName'] as String).input(),
-      quotaDimensions: map['quotaDimensions'] == null ? null : (pulumi.Input.decodeList<GetQuotaAlarmsQuotaDimension>(map['quotaDimensions'], (value) => GetQuotaAlarmsQuotaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode']! as String).input(),
+      quotaActionCode: map['quotaActionCode'] == null ? null : (map['quotaActionCode']! as String).input(),
+      quotaAlarmName: map['quotaAlarmName'] == null ? null : (map['quotaAlarmName']! as String).input(),
+      quotaDimensions: map['quotaDimensions'] == null ? null : (pulumi.Input.decodeList<GetQuotaAlarmsQuotaDimension>(map['quotaDimensions']!, (value) => GetQuotaAlarmsQuotaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

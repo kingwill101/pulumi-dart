@@ -21,7 +21,7 @@ class GroupModelConfigurationResponse {
 
   factory GroupModelConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return GroupModelConfigurationResponse(
-      modelId: map['modelId'] == null ? null : (map['modelId'] as String).input(),
+      modelId: map['modelId'] == null ? null : (map['modelId']! as String).input(),
     );
   }
 }

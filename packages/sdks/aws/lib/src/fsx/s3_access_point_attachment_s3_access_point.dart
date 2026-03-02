@@ -26,8 +26,8 @@ class S3AccessPointAttachmentS3AccessPoint {
 
   factory S3AccessPointAttachmentS3AccessPoint.fromMap(Map<String, dynamic> map) {
     return S3AccessPointAttachmentS3AccessPoint(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : (S3AccessPointAttachmentS3AccessPointVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : ((S3AccessPointAttachmentS3AccessPointVpcConfiguration.fromMap((map['vpcConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

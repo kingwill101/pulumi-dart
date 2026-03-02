@@ -92,19 +92,19 @@ class EngineArgs {
 
   factory EngineArgs.fromMap(Map<String, dynamic> map) {
     return EngineArgs(
-      chatEngineConfig: map['chatEngineConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig.fromMap((map['chatEngineConfig'] as Map).cast<String, dynamic>())).input(),
+      chatEngineConfig: map['chatEngineConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfig.fromMap((map['chatEngineConfig']! as Map).cast<String, dynamic>())).input(),
       collectionId: (map['collectionId'] as String).input(),
-      commonConfig: map['commonConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>())).input(),
-      dataStoreIds: map['dataStoreIds'] == null ? null : ((map['dataStoreIds'] as List).cast<String>()).input(),
+      commonConfig: map['commonConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineCommonConfig.fromMap((map['commonConfig']! as Map).cast<String, dynamic>())).input(),
+      dataStoreIds: map['dataStoreIds'] == null ? null : ((map['dataStoreIds']! as List).cast<String>()).input(),
       displayName: (map['displayName'] as String).input(),
       engineId: (map['engineId'] as String).input(),
-      industryVertical: map['industryVertical'] == null ? null : (EngineIndustryVertical.fromValue(map['industryVertical'] as String)).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mediaRecommendationEngineConfig: map['mediaRecommendationEngineConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig.fromMap((map['mediaRecommendationEngineConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      searchEngineConfig: map['searchEngineConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig.fromMap((map['searchEngineConfig'] as Map).cast<String, dynamic>())).input(),
-      similarDocumentsConfig: map['similarDocumentsConfig'] == null ? null : ((map['similarDocumentsConfig'] as Map).cast<String, dynamic>()).input(),
+      industryVertical: map['industryVertical'] == null ? null : (EngineIndustryVertical.fromValue(map['industryVertical']! as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mediaRecommendationEngineConfig: map['mediaRecommendationEngineConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig.fromMap((map['mediaRecommendationEngineConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      searchEngineConfig: map['searchEngineConfig'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig.fromMap((map['searchEngineConfig']! as Map).cast<String, dynamic>())).input(),
+      similarDocumentsConfig: map['similarDocumentsConfig'] == null ? null : ((map['similarDocumentsConfig']! as Map).cast<String, dynamic>()).input(),
       solutionType: (EngineSolutionType.fromValue(map['solutionType'] as String)).input(),
     );
   }

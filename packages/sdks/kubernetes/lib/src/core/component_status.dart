@@ -38,10 +38,10 @@ class ComponentStatus {
 
   factory ComponentStatus.fromMap(Map<String, dynamic> map) {
     return ComponentStatus(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ComponentCondition>(map['conditions'], (value) => ComponentCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ComponentCondition>(map['conditions']!, (value) => ComponentCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

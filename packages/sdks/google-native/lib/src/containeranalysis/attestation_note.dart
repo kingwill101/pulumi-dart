@@ -22,7 +22,7 @@ class AttestationNote {
 
   factory AttestationNote.fromMap(Map<String, dynamic> map) {
     return AttestationNote(
-      hint: map['hint'] == null ? null : (Hint.fromMap((map['hint'] as Map).cast<String, dynamic>())).input(),
+      hint: map['hint'] == null ? null : (Hint.fromMap((map['hint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

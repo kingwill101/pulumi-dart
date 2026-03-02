@@ -36,10 +36,10 @@ class ExpressRouteCircuitStats {
 
   factory ExpressRouteCircuitStats.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitStats(
-      primarybytesIn: map['primarybytesIn'] == null ? null : (map['primarybytesIn'] as double).input(),
-      primarybytesOut: map['primarybytesOut'] == null ? null : (map['primarybytesOut'] as double).input(),
-      secondarybytesIn: map['secondarybytesIn'] == null ? null : (map['secondarybytesIn'] as double).input(),
-      secondarybytesOut: map['secondarybytesOut'] == null ? null : (map['secondarybytesOut'] as double).input(),
+      primarybytesIn: map['primarybytesIn'] == null ? null : (map['primarybytesIn']! as double).input(),
+      primarybytesOut: map['primarybytesOut'] == null ? null : (map['primarybytesOut']! as double).input(),
+      secondarybytesIn: map['secondarybytesIn'] == null ? null : (map['secondarybytesIn']! as double).input(),
+      secondarybytesOut: map['secondarybytesOut'] == null ? null : (map['secondarybytesOut']! as double).input(),
     );
   }
 }

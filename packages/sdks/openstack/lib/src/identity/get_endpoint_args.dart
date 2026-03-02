@@ -57,13 +57,13 @@ class GetEndpointArgs {
 
   factory GetEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointArgs(
-      endpointRegion: map['endpointRegion'] == null ? null : (map['endpointRegion'] as String).input(),
-      interface: map['interface'] == null ? null : (map['interface'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
+      endpointRegion: map['endpointRegion'] == null ? null : (map['endpointRegion']! as String).input(),
+      interface: map['interface'] == null ? null : (map['interface']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType']! as String).input(),
     );
   }
 }

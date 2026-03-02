@@ -52,13 +52,13 @@ class ChannelState {
 
   factory ChannelState.fromMap(Map<String, dynamic> map) {
     return ChannelState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      hlsIngests: map['hlsIngests'] == null ? null : (pulumi.Input.decodeList<ChannelHlsIngest>(map['hlsIngests'], (value) => ChannelHlsIngest.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      channelId: map['channelId'] == null ? null : ((map['channelId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      hlsIngests: map['hlsIngests'] == null ? null : ((pulumi.Input.decodeList<ChannelHlsIngest>(map['hlsIngests']!, (value) => ChannelHlsIngest.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

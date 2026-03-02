@@ -72,17 +72,17 @@ class ApplicationGatewayRequestRoutingRule {
 
   factory ApplicationGatewayRequestRoutingRule.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRequestRoutingRule(
-      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
-      backendHttpSettings: map['backendHttpSettings'] == null ? null : (SubResource.fromMap((map['backendHttpSettings'] as Map).cast<String, dynamic>())).input(),
-      httpListener: map['httpListener'] == null ? null : (SubResource.fromMap((map['httpListener'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      loadDistributionPolicy: map['loadDistributionPolicy'] == null ? null : (SubResource.fromMap((map['loadDistributionPolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      redirectConfiguration: map['redirectConfiguration'] == null ? null : (SubResource.fromMap((map['redirectConfiguration'] as Map).cast<String, dynamic>())).input(),
-      rewriteRuleSet: map['rewriteRuleSet'] == null ? null : (SubResource.fromMap((map['rewriteRuleSet'] as Map).cast<String, dynamic>())).input(),
-      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as String).input(),
-      urlPathMap: map['urlPathMap'] == null ? null : (SubResource.fromMap((map['urlPathMap'] as Map).cast<String, dynamic>())).input(),
+      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>())).input(),
+      backendHttpSettings: map['backendHttpSettings'] == null ? null : (SubResource.fromMap((map['backendHttpSettings']! as Map).cast<String, dynamic>())).input(),
+      httpListener: map['httpListener'] == null ? null : (SubResource.fromMap((map['httpListener']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      loadDistributionPolicy: map['loadDistributionPolicy'] == null ? null : (SubResource.fromMap((map['loadDistributionPolicy']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      redirectConfiguration: map['redirectConfiguration'] == null ? null : (SubResource.fromMap((map['redirectConfiguration']! as Map).cast<String, dynamic>())).input(),
+      rewriteRuleSet: map['rewriteRuleSet'] == null ? null : (SubResource.fromMap((map['rewriteRuleSet']! as Map).cast<String, dynamic>())).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType']! as String).input(),
+      urlPathMap: map['urlPathMap'] == null ? null : (SubResource.fromMap((map['urlPathMap']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

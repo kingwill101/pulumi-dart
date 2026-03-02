@@ -27,8 +27,8 @@ class SourceAuthResponse {
 
   factory SourceAuthResponse.fromMap(Map<String, dynamic> map) {
     return SourceAuthResponse(
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
-      type: map['type'] == null ? null : (SourceAuthTypeEnumValueResponse.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      type: map['type'] == null ? null : (SourceAuthTypeEnumValueResponse.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ApplicationGatewayRewriteRuleCondition {
 
   factory ApplicationGatewayRewriteRuleCondition.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRewriteRuleCondition(
-      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
-      negate: map['negate'] == null ? null : (map['negate'] as bool).input(),
-      pattern: map['pattern'] == null ? null : (map['pattern'] as String).input(),
-      variable: map['variable'] == null ? null : (map['variable'] as String).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase']! as bool).input(),
+      negate: map['negate'] == null ? null : (map['negate']! as bool).input(),
+      pattern: map['pattern'] == null ? null : (map['pattern']! as String).input(),
+      variable: map['variable'] == null ? null : (map['variable']! as String).input(),
     );
   }
 }

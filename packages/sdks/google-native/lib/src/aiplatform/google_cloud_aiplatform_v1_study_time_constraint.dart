@@ -26,8 +26,8 @@ class GoogleCloudAiplatformV1StudyTimeConstraint {
 
   factory GoogleCloudAiplatformV1StudyTimeConstraint.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudyTimeConstraint(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      maxDuration: map['maxDuration'] == null ? null : (map['maxDuration'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      maxDuration: map['maxDuration'] == null ? null : (map['maxDuration']! as String).input(),
     );
   }
 }

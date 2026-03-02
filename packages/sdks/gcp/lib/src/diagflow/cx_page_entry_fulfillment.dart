@@ -51,12 +51,12 @@ class CxPageEntryFulfillment {
 
   factory CxPageEntryFulfillment.fromMap(Map<String, dynamic> map) {
     return CxPageEntryFulfillment(
-      conditionalCases: map['conditionalCases'] == null ? null : (pulumi.Input.decodeList<CxPageEntryFulfillmentConditionalCase>(map['conditionalCases'], (value) => CxPageEntryFulfillmentConditionalCase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<CxPageEntryFulfillmentMessage>(map['messages'], (value) => CxPageEntryFulfillmentMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      returnPartialResponses: map['returnPartialResponses'] == null ? null : (map['returnPartialResponses'] as bool).input(),
-      setParameterActions: map['setParameterActions'] == null ? null : (pulumi.Input.decodeList<CxPageEntryFulfillmentSetParameterAction>(map['setParameterActions'], (value) => CxPageEntryFulfillmentSetParameterAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      webhook: map['webhook'] == null ? null : (map['webhook'] as String).input(),
+      conditionalCases: map['conditionalCases'] == null ? null : (pulumi.Input.decodeList<CxPageEntryFulfillmentConditionalCase>(map['conditionalCases']!, (value) => CxPageEntryFulfillmentConditionalCase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<CxPageEntryFulfillmentMessage>(map['messages']!, (value) => CxPageEntryFulfillmentMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      returnPartialResponses: map['returnPartialResponses'] == null ? null : (map['returnPartialResponses']! as bool).input(),
+      setParameterActions: map['setParameterActions'] == null ? null : (pulumi.Input.decodeList<CxPageEntryFulfillmentSetParameterAction>(map['setParameterActions']!, (value) => CxPageEntryFulfillmentSetParameterAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      webhook: map['webhook'] == null ? null : (map['webhook']! as String).input(),
     );
   }
 }

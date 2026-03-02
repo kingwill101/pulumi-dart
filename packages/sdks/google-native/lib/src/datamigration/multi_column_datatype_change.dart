@@ -63,15 +63,15 @@ class MultiColumnDatatypeChange {
 
   factory MultiColumnDatatypeChange.fromMap(Map<String, dynamic> map) {
     return MultiColumnDatatypeChange(
-      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures'] as Map).cast<String, String>()).input(),
+      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures']! as Map).cast<String, String>()).input(),
       newDataType: (map['newDataType'] as String).input(),
-      overrideFractionalSecondsPrecision: map['overrideFractionalSecondsPrecision'] == null ? null : (map['overrideFractionalSecondsPrecision'] as int).input(),
-      overrideLength: map['overrideLength'] == null ? null : (map['overrideLength'] as String).input(),
-      overridePrecision: map['overridePrecision'] == null ? null : (map['overridePrecision'] as int).input(),
-      overrideScale: map['overrideScale'] == null ? null : (map['overrideScale'] as int).input(),
+      overrideFractionalSecondsPrecision: map['overrideFractionalSecondsPrecision'] == null ? null : (map['overrideFractionalSecondsPrecision']! as int).input(),
+      overrideLength: map['overrideLength'] == null ? null : (map['overrideLength']! as String).input(),
+      overridePrecision: map['overridePrecision'] == null ? null : (map['overridePrecision']! as int).input(),
+      overrideScale: map['overrideScale'] == null ? null : (map['overrideScale']! as int).input(),
       sourceDataTypeFilter: (map['sourceDataTypeFilter'] as String).input(),
-      sourceNumericFilter: map['sourceNumericFilter'] == null ? null : (SourceNumericFilter.fromMap((map['sourceNumericFilter'] as Map).cast<String, dynamic>())).input(),
-      sourceTextFilter: map['sourceTextFilter'] == null ? null : (SourceTextFilter.fromMap((map['sourceTextFilter'] as Map).cast<String, dynamic>())).input(),
+      sourceNumericFilter: map['sourceNumericFilter'] == null ? null : (SourceNumericFilter.fromMap((map['sourceNumericFilter']! as Map).cast<String, dynamic>())).input(),
+      sourceTextFilter: map['sourceTextFilter'] == null ? null : (SourceTextFilter.fromMap((map['sourceTextFilter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

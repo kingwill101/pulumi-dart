@@ -46,12 +46,12 @@ class DatabaseMongodbConfigState {
 
   factory DatabaseMongodbConfigState.fromMap(Map<String, dynamic> map) {
     return DatabaseMongodbConfigState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      defaultReadConcern: map['defaultReadConcern'] == null ? null : (map['defaultReadConcern'] as String).input(),
-      defaultWriteConcern: map['defaultWriteConcern'] == null ? null : (map['defaultWriteConcern'] as String).input(),
-      slowOpThresholdMs: map['slowOpThresholdMs'] == null ? null : (map['slowOpThresholdMs'] as int).input(),
-      transactionLifetimeLimitSeconds: map['transactionLifetimeLimitSeconds'] == null ? null : (map['transactionLifetimeLimitSeconds'] as int).input(),
-      verbosity: map['verbosity'] == null ? null : (map['verbosity'] as int).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      defaultReadConcern: map['defaultReadConcern'] == null ? null : (map['defaultReadConcern']! as String).input(),
+      defaultWriteConcern: map['defaultWriteConcern'] == null ? null : (map['defaultWriteConcern']! as String).input(),
+      slowOpThresholdMs: map['slowOpThresholdMs'] == null ? null : (map['slowOpThresholdMs']! as int).input(),
+      transactionLifetimeLimitSeconds: map['transactionLifetimeLimitSeconds'] == null ? null : (map['transactionLifetimeLimitSeconds']! as int).input(),
+      verbosity: map['verbosity'] == null ? null : (map['verbosity']! as int).input(),
     );
   }
 }

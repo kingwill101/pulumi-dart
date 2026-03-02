@@ -32,7 +32,7 @@ class ServiceTemplateContainerVolumeMount {
     return ServiceTemplateContainerVolumeMount(
       mountPath: (map['mountPath'] as String).input(),
       name: (map['name'] as String).input(),
-      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath']! as String).input(),
     );
   }
 }

@@ -79,18 +79,18 @@ class ServiceConnectionMapArgs {
 
   factory ServiceConnectionMapArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionMapArgs(
-      consumerPscConfigs: map['consumerPscConfigs'] == null ? null : (pulumi.Input.decodeList<ConsumerPscConfig>(map['consumerPscConfigs'], (value) => ConsumerPscConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      producerPscConfigs: map['producerPscConfigs'] == null ? null : (pulumi.Input.decodeList<ProducerPscConfig>(map['producerPscConfigs'], (value) => ProducerPscConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      serviceClass: map['serviceClass'] == null ? null : (map['serviceClass'] as String).input(),
-      serviceConnectionMapId: map['serviceConnectionMapId'] == null ? null : (map['serviceConnectionMapId'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      consumerPscConfigs: map['consumerPscConfigs'] == null ? null : (pulumi.Input.decodeList<ConsumerPscConfig>(map['consumerPscConfigs']!, (value) => ConsumerPscConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      producerPscConfigs: map['producerPscConfigs'] == null ? null : (pulumi.Input.decodeList<ProducerPscConfig>(map['producerPscConfigs']!, (value) => ProducerPscConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      serviceClass: map['serviceClass'] == null ? null : (map['serviceClass']! as String).input(),
+      serviceConnectionMapId: map['serviceConnectionMapId'] == null ? null : (map['serviceConnectionMapId']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

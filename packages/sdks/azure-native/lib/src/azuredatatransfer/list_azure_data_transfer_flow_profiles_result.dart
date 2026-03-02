@@ -22,7 +22,7 @@ class ListAzureDataTransferFlowProfilesResult {
 
   factory ListAzureDataTransferFlowProfilesResult.fromMap(Map<String, dynamic> map) {
     return ListAzureDataTransferFlowProfilesResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<FlowProfileMetadataResponse>(map['value'], (value) => FlowProfileMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<FlowProfileMetadataResponse>(map['value']!, (value) => FlowProfileMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

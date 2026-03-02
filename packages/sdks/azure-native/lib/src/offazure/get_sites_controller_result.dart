@@ -95,10 +95,10 @@ class GetSitesControllerResult {
 
   factory GetSitesControllerResult.fromMap(Map<String, dynamic> map) {
     return GetSitesControllerResult(
-      agentDetails: map['agentDetails'] == null ? null : SiteAgentPropertiesResponse.fromMap((map['agentDetails'] as Map).cast<String, dynamic>()),
-      applianceName: map['applianceName'] == null ? null : map['applianceName'] as String,
+      agentDetails: map['agentDetails'] == null ? null : SiteAgentPropertiesResponse.fromMap((map['agentDetails']! as Map).cast<String, dynamic>()),
+      applianceName: map['applianceName'] == null ? null : map['applianceName']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      discoverySolutionId: map['discoverySolutionId'] == null ? null : map['discoverySolutionId'] as String,
+      discoverySolutionId: map['discoverySolutionId'] == null ? null : map['discoverySolutionId']! as String,
       eTag: map['eTag'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
@@ -106,9 +106,9 @@ class GetSitesControllerResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       serviceEndpoint: map['serviceEndpoint'] as String,
-      servicePrincipalIdentityDetails: map['servicePrincipalIdentityDetails'] == null ? null : SiteSpnPropertiesResponse.fromMap((map['servicePrincipalIdentityDetails'] as Map).cast<String, dynamic>()),
+      servicePrincipalIdentityDetails: map['servicePrincipalIdentityDetails'] == null ? null : SiteSpnPropertiesResponse.fromMap((map['servicePrincipalIdentityDetails']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

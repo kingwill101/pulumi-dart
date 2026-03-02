@@ -35,10 +35,10 @@ class SearchIndexSchemaIndexSortSorter {
 
   factory SearchIndexSchemaIndexSortSorter.fromMap(Map<String, dynamic> map) {
     return SearchIndexSchemaIndexSortSorter(
-      fieldName: map['fieldName'] == null ? null : (map['fieldName'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as String).input(),
-      sorterType: map['sorterType'] == null ? null : (map['sorterType'] as String).input(),
+      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as String).input(),
+      sorterType: map['sorterType'] == null ? null : (map['sorterType']! as String).input(),
     );
   }
 }

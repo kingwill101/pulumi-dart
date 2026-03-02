@@ -85,16 +85,16 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateAuthority: map['certificateAuthority'] == null ? null : (map['certificateAuthority'] as String).input(),
-      certificateTemplate: map['certificateTemplate'] == null ? null : (map['certificateTemplate'] as String).input(),
-      config: map['config'] == null ? null : (CertificateConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      lifetime: map['lifetime'] == null ? null : (map['lifetime'] as String).input(),
+      certificateAuthority: map['certificateAuthority'] == null ? null : (map['certificateAuthority']! as String).input(),
+      certificateTemplate: map['certificateTemplate'] == null ? null : (map['certificateTemplate']! as String).input(),
+      config: map['config'] == null ? null : (CertificateConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      lifetime: map['lifetime'] == null ? null : (map['lifetime']! as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pemCsr: map['pemCsr'] == null ? null : (map['pemCsr'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pemCsr: map['pemCsr'] == null ? null : (map['pemCsr']! as String).input(),
       pool: (map['pool'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

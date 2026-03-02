@@ -71,16 +71,16 @@ class MetricThreshold {
 
   factory MetricThreshold.fromMap(Map<String, dynamic> map) {
     return MetricThreshold(
-      aggregations: map['aggregations'] == null ? null : (pulumi.Input.decodeList<AggregationMonitoringV3>(map['aggregations'], (value) => AggregationMonitoringV3.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      comparison: map['comparison'] == null ? null : (MetricThresholdComparison.fromValue(map['comparison'] as String)).input(),
-      denominatorAggregations: map['denominatorAggregations'] == null ? null : (pulumi.Input.decodeList<AggregationMonitoringV3>(map['denominatorAggregations'], (value) => AggregationMonitoringV3.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      denominatorFilter: map['denominatorFilter'] == null ? null : (map['denominatorFilter'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      evaluationMissingData: map['evaluationMissingData'] == null ? null : (MetricThresholdEvaluationMissingData.fromValue(map['evaluationMissingData'] as String)).input(),
+      aggregations: map['aggregations'] == null ? null : (pulumi.Input.decodeList<AggregationMonitoringV3>(map['aggregations']!, (value) => AggregationMonitoringV3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      comparison: map['comparison'] == null ? null : (MetricThresholdComparison.fromValue(map['comparison']! as String)).input(),
+      denominatorAggregations: map['denominatorAggregations'] == null ? null : (pulumi.Input.decodeList<AggregationMonitoringV3>(map['denominatorAggregations']!, (value) => AggregationMonitoringV3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      denominatorFilter: map['denominatorFilter'] == null ? null : (map['denominatorFilter']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      evaluationMissingData: map['evaluationMissingData'] == null ? null : (MetricThresholdEvaluationMissingData.fromValue(map['evaluationMissingData']! as String)).input(),
       filter: (map['filter'] as String).input(),
-      forecastOptions: map['forecastOptions'] == null ? null : (ForecastOptions.fromMap((map['forecastOptions'] as Map).cast<String, dynamic>())).input(),
-      thresholdValue: map['thresholdValue'] == null ? null : (map['thresholdValue'] as double).input(),
-      trigger: map['trigger'] == null ? null : (Trigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      forecastOptions: map['forecastOptions'] == null ? null : (ForecastOptions.fromMap((map['forecastOptions']! as Map).cast<String, dynamic>())).input(),
+      thresholdValue: map['thresholdValue'] == null ? null : (map['thresholdValue']! as double).input(),
+      trigger: map['trigger'] == null ? null : (Trigger.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

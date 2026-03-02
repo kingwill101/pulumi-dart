@@ -25,8 +25,8 @@ class ServiceMeshMeshConfigPilot {
 
   factory ServiceMeshMeshConfigPilot.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigPilot(
-      http10Enabled: map['http10Enabled'] == null ? null : (map['http10Enabled'] as bool).input(),
-      traceSampling: map['traceSampling'] == null ? null : (map['traceSampling'] as double).input(),
+      http10Enabled: map['http10Enabled'] == null ? null : (map['http10Enabled']! as bool).input(),
+      traceSampling: map['traceSampling'] == null ? null : (map['traceSampling']! as double).input(),
     );
   }
 }

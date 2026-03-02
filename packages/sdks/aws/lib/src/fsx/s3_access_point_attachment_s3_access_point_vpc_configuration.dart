@@ -20,7 +20,7 @@ class S3AccessPointAttachmentS3AccessPointVpcConfiguration {
 
   factory S3AccessPointAttachmentS3AccessPointVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return S3AccessPointAttachmentS3AccessPointVpcConfiguration(
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

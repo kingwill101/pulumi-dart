@@ -20,7 +20,7 @@ class GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling {
 
   factory GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling(
-      insertHeaders: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader>(map['insertHeaders'], (value) => GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      insertHeaders: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader>(map['insertHeaders']!, (value) => GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

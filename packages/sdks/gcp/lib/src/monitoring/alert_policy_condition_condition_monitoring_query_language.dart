@@ -62,9 +62,9 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage {
   factory AlertPolicyConditionConditionMonitoringQueryLanguage.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionMonitoringQueryLanguage(
       duration: (map['duration'] as String).input(),
-      evaluationMissingData: map['evaluationMissingData'] == null ? null : (map['evaluationMissingData'] as String).input(),
+      evaluationMissingData: map['evaluationMissingData'] == null ? null : (map['evaluationMissingData']! as String).input(),
       query: (map['query'] as String).input(),
-      trigger: map['trigger'] == null ? null : (AlertPolicyConditionConditionMonitoringQueryLanguageTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      trigger: map['trigger'] == null ? null : (AlertPolicyConditionConditionMonitoringQueryLanguageTrigger.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

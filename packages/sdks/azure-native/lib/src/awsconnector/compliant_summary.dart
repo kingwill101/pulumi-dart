@@ -27,8 +27,8 @@ class CompliantSummary {
 
   factory CompliantSummary.fromMap(Map<String, dynamic> map) {
     return CompliantSummary(
-      compliantCount: map['compliantCount'] == null ? null : (map['compliantCount'] as int).input(),
-      severitySummary: map['severitySummary'] == null ? null : (SeveritySummary.fromMap((map['severitySummary'] as Map).cast<String, dynamic>())).input(),
+      compliantCount: map['compliantCount'] == null ? null : (map['compliantCount']! as int).input(),
+      severitySummary: map['severitySummary'] == null ? null : (SeveritySummary.fromMap((map['severitySummary']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

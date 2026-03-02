@@ -26,7 +26,7 @@ class GetManagedRuleGroupRule {
 
   factory GetManagedRuleGroupRule.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRule(
-      actions: (pulumi.Input.decodeList<GetManagedRuleGroupRuleAction>(map['actions'], (value) => GetManagedRuleGroupRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: (pulumi.Input.decodeList<GetManagedRuleGroupRuleAction>(map['actions']!, (value) => GetManagedRuleGroupRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

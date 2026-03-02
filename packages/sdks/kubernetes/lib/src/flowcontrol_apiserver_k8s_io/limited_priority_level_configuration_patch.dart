@@ -53,10 +53,10 @@ class LimitedPriorityLevelConfigurationPatch {
 
   factory LimitedPriorityLevelConfigurationPatch.fromMap(Map<String, dynamic> map) {
     return LimitedPriorityLevelConfigurationPatch(
-      borrowingLimitPercent: map['borrowingLimitPercent'] == null ? null : (map['borrowingLimitPercent'] as int).input(),
-      lendablePercent: map['lendablePercent'] == null ? null : (map['lendablePercent'] as int).input(),
-      limitResponse: map['limitResponse'] == null ? null : (LimitResponsePatch.fromMap((map['limitResponse'] as Map).cast<String, dynamic>())).input(),
-      nominalConcurrencyShares: map['nominalConcurrencyShares'] == null ? null : (map['nominalConcurrencyShares'] as int).input(),
+      borrowingLimitPercent: map['borrowingLimitPercent'] == null ? null : (map['borrowingLimitPercent']! as int).input(),
+      lendablePercent: map['lendablePercent'] == null ? null : (map['lendablePercent']! as int).input(),
+      limitResponse: map['limitResponse'] == null ? null : (LimitResponsePatch.fromMap((map['limitResponse']! as Map).cast<String, dynamic>())).input(),
+      nominalConcurrencyShares: map['nominalConcurrencyShares'] == null ? null : (map['nominalConcurrencyShares']! as int).input(),
     );
   }
 }

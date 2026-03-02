@@ -104,7 +104,7 @@ class GetStreamResult {
       retentionPeriod: map['retentionPeriod'] as int,
       shardLevelMetrics: (map['shardLevelMetrics'] as List).cast<String>(),
       status: map['status'] as String,
-      streamModeDetails: pulumi.Input.decodeList<GetStreamStreamModeDetail>(map['streamModeDetails'], (value) => GetStreamStreamModeDetail.fromMap((value as Map).cast<String, dynamic>())),
+      streamModeDetails: pulumi.Input.decodeList<GetStreamStreamModeDetail>(map['streamModeDetails']!, (value) => GetStreamStreamModeDetail.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }

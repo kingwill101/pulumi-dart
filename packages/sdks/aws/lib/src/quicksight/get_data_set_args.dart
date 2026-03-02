@@ -38,10 +38,10 @@ class GetDataSetArgs {
 
   factory GetDataSetArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSetArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
       dataSetId: (map['dataSetId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

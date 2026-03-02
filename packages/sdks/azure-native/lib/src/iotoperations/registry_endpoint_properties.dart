@@ -35,7 +35,7 @@ class RegistryEndpointProperties {
     return RegistryEndpointProperties(
       authentication: (RegistryEndpointAnonymousAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
       host: (map['host'] as String).input(),
-      trustSettings: map['trustSettings'] == null ? null : (RegistryEndpointTrustedSettings.fromMap((map['trustSettings'] as Map).cast<String, dynamic>())).input(),
+      trustSettings: map['trustSettings'] == null ? null : (RegistryEndpointTrustedSettings.fromMap((map['trustSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

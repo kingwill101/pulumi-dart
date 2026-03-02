@@ -37,10 +37,10 @@ class CapacityProviderManagedInstancesProvider {
 
   factory CapacityProviderManagedInstancesProvider.fromMap(Map<String, dynamic> map) {
     return CapacityProviderManagedInstancesProvider(
-      infrastructureOptimization: map['infrastructureOptimization'] == null ? null : (CapacityProviderManagedInstancesProviderInfrastructureOptimization.fromMap((map['infrastructureOptimization'] as Map).cast<String, dynamic>())).input(),
+      infrastructureOptimization: map['infrastructureOptimization'] == null ? null : ((CapacityProviderManagedInstancesProviderInfrastructureOptimization.fromMap((map['infrastructureOptimization']! as Map).cast<String, dynamic>())).input()).input(),
       infrastructureRoleArn: (map['infrastructureRoleArn'] as String).input(),
-      instanceLaunchTemplate: (CapacityProviderManagedInstancesProviderInstanceLaunchTemplate.fromMap((map['instanceLaunchTemplate'] as Map).cast<String, dynamic>())).input(),
-      propagateTags: map['propagateTags'] == null ? null : (map['propagateTags'] as String).input(),
+      instanceLaunchTemplate: (CapacityProviderManagedInstancesProviderInstanceLaunchTemplate.fromMap((map['instanceLaunchTemplate']! as Map).cast<String, dynamic>())).input(),
+      propagateTags: map['propagateTags'] == null ? null : ((map['propagateTags'] as String).input()).input(),
     );
   }
 }

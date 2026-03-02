@@ -53,13 +53,13 @@ class AlarmContactState {
 
   factory AlarmContactState.fromMap(Map<String, dynamic> map) {
     return AlarmContactState(
-      alarmContactName: map['alarmContactName'] == null ? null : (map['alarmContactName'] as String).input(),
-      channelsAliim: map['channelsAliim'] == null ? null : (map['channelsAliim'] as String).input(),
-      channelsDingWebHook: map['channelsDingWebHook'] == null ? null : (map['channelsDingWebHook'] as String).input(),
-      channelsMail: map['channelsMail'] == null ? null : (map['channelsMail'] as String).input(),
-      channelsSms: map['channelsSms'] == null ? null : (map['channelsSms'] as String).input(),
-      describe: map['describe'] == null ? null : (map['describe'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      alarmContactName: map['alarmContactName'] == null ? null : (map['alarmContactName']! as String).input(),
+      channelsAliim: map['channelsAliim'] == null ? null : (map['channelsAliim']! as String).input(),
+      channelsDingWebHook: map['channelsDingWebHook'] == null ? null : (map['channelsDingWebHook']! as String).input(),
+      channelsMail: map['channelsMail'] == null ? null : (map['channelsMail']! as String).input(),
+      channelsSms: map['channelsSms'] == null ? null : (map['channelsSms']! as String).input(),
+      describe: map['describe'] == null ? null : (map['describe']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
     );
   }
 }

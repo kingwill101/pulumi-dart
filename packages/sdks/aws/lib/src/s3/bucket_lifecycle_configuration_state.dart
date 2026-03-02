@@ -47,12 +47,12 @@ class BucketLifecycleConfigurationState {
 
   factory BucketLifecycleConfigurationState.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketLifecycleConfigurationRule>(map['rules'], (value) => BucketLifecycleConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: map['timeouts'] == null ? null : (BucketLifecycleConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      transitionDefaultMinimumObjectSize: map['transitionDefaultMinimumObjectSize'] == null ? null : (map['transitionDefaultMinimumObjectSize'] as String).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rules: map['rules'] == null ? null : ((pulumi.Input.decodeList<BucketLifecycleConfigurationRule>(map['rules']!, (value) => BucketLifecycleConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((BucketLifecycleConfigurationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      transitionDefaultMinimumObjectSize: map['transitionDefaultMinimumObjectSize'] == null ? null : ((map['transitionDefaultMinimumObjectSize'] as String).input()).input(),
     );
   }
 }

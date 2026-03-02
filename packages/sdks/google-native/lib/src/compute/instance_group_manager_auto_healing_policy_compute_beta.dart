@@ -25,8 +25,8 @@ class InstanceGroupManagerAutoHealingPolicyComputeBeta {
 
   factory InstanceGroupManagerAutoHealingPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerAutoHealingPolicyComputeBeta(
-      healthCheck: map['healthCheck'] == null ? null : (map['healthCheck'] as String).input(),
-      initialDelaySec: map['initialDelaySec'] == null ? null : (map['initialDelaySec'] as int).input(),
+      healthCheck: map['healthCheck'] == null ? null : (map['healthCheck']! as String).input(),
+      initialDelaySec: map['initialDelaySec'] == null ? null : (map['initialDelaySec']! as int).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class FrontendEndpoint {
 
   factory FrontendEndpoint.fromMap(Map<String, dynamic> map) {
     return FrontendEndpoint(
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sessionAffinityEnabledState: map['sessionAffinityEnabledState'] == null ? null : (map['sessionAffinityEnabledState'] as String).input(),
-      sessionAffinityTtlSeconds: map['sessionAffinityTtlSeconds'] == null ? null : (map['sessionAffinityTtlSeconds'] as int).input(),
-      webApplicationFirewallPolicyLink: map['webApplicationFirewallPolicyLink'] == null ? null : (FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink.fromMap((map['webApplicationFirewallPolicyLink'] as Map).cast<String, dynamic>())).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sessionAffinityEnabledState: map['sessionAffinityEnabledState'] == null ? null : (map['sessionAffinityEnabledState']! as String).input(),
+      sessionAffinityTtlSeconds: map['sessionAffinityTtlSeconds'] == null ? null : (map['sessionAffinityTtlSeconds']! as int).input(),
+      webApplicationFirewallPolicyLink: map['webApplicationFirewallPolicyLink'] == null ? null : (FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink.fromMap((map['webApplicationFirewallPolicyLink']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

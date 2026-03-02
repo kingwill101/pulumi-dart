@@ -46,12 +46,12 @@ class QuobyteVolumeSourcePatch {
 
   factory QuobyteVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return QuobyteVolumeSourcePatch(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      registry: map['registry'] == null ? null : (map['registry'] as String).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
-      volume: map['volume'] == null ? null : (map['volume'] as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      registry: map['registry'] == null ? null : (map['registry']! as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
+      volume: map['volume'] == null ? null : (map['volume']! as String).input(),
     );
   }
 }

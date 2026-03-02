@@ -25,8 +25,8 @@ class GroupExternalId {
 
   factory GroupExternalId.fromMap(Map<String, dynamic> map) {
     return GroupExternalId(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      issuer: map['issuer'] == null ? null : ((map['issuer'] as String).input()).input(),
     );
   }
 }

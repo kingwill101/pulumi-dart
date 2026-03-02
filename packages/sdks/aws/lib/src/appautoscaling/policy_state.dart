@@ -74,17 +74,17 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      alarmArns: map['alarmArns'] == null ? null : ((map['alarmArns'] as List).cast<String>()).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      predictiveScalingPolicyConfiguration: map['predictiveScalingPolicyConfiguration'] == null ? null : (PolicyPredictiveScalingPolicyConfiguration.fromMap((map['predictiveScalingPolicyConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      scalableDimension: map['scalableDimension'] == null ? null : (map['scalableDimension'] as String).input(),
-      serviceNamespace: map['serviceNamespace'] == null ? null : (map['serviceNamespace'] as String).input(),
-      stepScalingPolicyConfiguration: map['stepScalingPolicyConfiguration'] == null ? null : (PolicyStepScalingPolicyConfiguration.fromMap((map['stepScalingPolicyConfiguration'] as Map).cast<String, dynamic>())).input(),
-      targetTrackingScalingPolicyConfiguration: map['targetTrackingScalingPolicyConfiguration'] == null ? null : (PolicyTargetTrackingScalingPolicyConfiguration.fromMap((map['targetTrackingScalingPolicyConfiguration'] as Map).cast<String, dynamic>())).input(),
+      alarmArns: map['alarmArns'] == null ? null : (((map['alarmArns'] as List).cast<String>()).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      policyType: map['policyType'] == null ? null : ((map['policyType'] as String).input()).input(),
+      predictiveScalingPolicyConfiguration: map['predictiveScalingPolicyConfiguration'] == null ? null : ((PolicyPredictiveScalingPolicyConfiguration.fromMap((map['predictiveScalingPolicyConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      scalableDimension: map['scalableDimension'] == null ? null : ((map['scalableDimension'] as String).input()).input(),
+      serviceNamespace: map['serviceNamespace'] == null ? null : ((map['serviceNamespace'] as String).input()).input(),
+      stepScalingPolicyConfiguration: map['stepScalingPolicyConfiguration'] == null ? null : ((PolicyStepScalingPolicyConfiguration.fromMap((map['stepScalingPolicyConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      targetTrackingScalingPolicyConfiguration: map['targetTrackingScalingPolicyConfiguration'] == null ? null : ((PolicyTargetTrackingScalingPolicyConfiguration.fromMap((map['targetTrackingScalingPolicyConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

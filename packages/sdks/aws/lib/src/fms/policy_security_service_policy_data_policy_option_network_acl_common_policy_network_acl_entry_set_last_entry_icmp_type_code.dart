@@ -25,8 +25,8 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
 
   factory PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntryIcmpTypeCode.fromMap(Map<String, dynamic> map) {
     return PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntryIcmpTypeCode(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as int).input(),
+      code: map['code'] == null ? null : ((map['code'] as int).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as int).input()).input(),
     );
   }
 }

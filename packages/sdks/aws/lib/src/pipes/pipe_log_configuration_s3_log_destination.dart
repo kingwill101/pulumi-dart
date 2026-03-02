@@ -37,8 +37,8 @@ class PipeLogConfigurationS3LogDestination {
     return PipeLogConfigurationS3LogDestination(
       bucketName: (map['bucketName'] as String).input(),
       bucketOwner: (map['bucketOwner'] as String).input(),
-      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      outputFormat: map['outputFormat'] == null ? null : ((map['outputFormat'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

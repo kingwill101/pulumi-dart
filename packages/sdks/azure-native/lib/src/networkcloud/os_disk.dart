@@ -30,8 +30,8 @@ class OsDisk {
 
   factory OsDisk.fromMap(Map<String, dynamic> map) {
     return OsDisk(
-      createOption: map['createOption'] == null ? null : (map['createOption'] as String).input(),
-      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption'] as String).input(),
+      createOption: map['createOption'] == null ? null : (map['createOption']! as String).input(),
+      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption']! as String).input(),
       diskSizeGB: (map['diskSizeGB'] as double).input(),
     );
   }

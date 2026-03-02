@@ -66,16 +66,16 @@ class ClickHouseEnterpriseDbClusterEndpoint {
 
   factory ClickHouseEnterpriseDbClusterEndpoint.fromMap(Map<String, dynamic> map) {
     return ClickHouseEnterpriseDbClusterEndpoint(
-      computingGroupId: map['computingGroupId'] == null ? null : (map['computingGroupId'] as String).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      endpointName: map['endpointName'] == null ? null : (map['endpointName'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<ClickHouseEnterpriseDbClusterEndpointPort>(map['ports'], (value) => ClickHouseEnterpriseDbClusterEndpointPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vpcInstanceId: map['vpcInstanceId'] == null ? null : (map['vpcInstanceId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      computingGroupId: map['computingGroupId'] == null ? null : (map['computingGroupId']! as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      endpointName: map['endpointName'] == null ? null : (map['endpointName']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      netType: map['netType'] == null ? null : (map['netType']! as String).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<ClickHouseEnterpriseDbClusterEndpointPort>(map['ports']!, (value) => ClickHouseEnterpriseDbClusterEndpointPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vpcInstanceId: map['vpcInstanceId'] == null ? null : (map['vpcInstanceId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

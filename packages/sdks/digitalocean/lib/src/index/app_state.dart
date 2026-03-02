@@ -77,17 +77,17 @@ class AppState {
 
   factory AppState.fromMap(Map<String, dynamic> map) {
     return AppState(
-      activeDeploymentId: map['activeDeploymentId'] == null ? null : (map['activeDeploymentId'] as String).input(),
-      appUrn: map['appUrn'] == null ? null : (map['appUrn'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      dedicatedIps: map['dedicatedIps'] == null ? null : (pulumi.Input.decodeList<AppDedicatedIp>(map['dedicatedIps'], (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultIngress: map['defaultIngress'] == null ? null : (map['defaultIngress'] as String).input(),
-      deploymentPerPage: map['deploymentPerPage'] == null ? null : (map['deploymentPerPage'] as int).input(),
-      liveDomain: map['liveDomain'] == null ? null : (map['liveDomain'] as String).input(),
-      liveUrl: map['liveUrl'] == null ? null : (map['liveUrl'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      spec: map['spec'] == null ? null : (AppSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      activeDeploymentId: map['activeDeploymentId'] == null ? null : (map['activeDeploymentId']! as String).input(),
+      appUrn: map['appUrn'] == null ? null : (map['appUrn']! as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      dedicatedIps: map['dedicatedIps'] == null ? null : (pulumi.Input.decodeList<AppDedicatedIp>(map['dedicatedIps']!, (value) => AppDedicatedIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultIngress: map['defaultIngress'] == null ? null : (map['defaultIngress']! as String).input(),
+      deploymentPerPage: map['deploymentPerPage'] == null ? null : (map['deploymentPerPage']! as int).input(),
+      liveDomain: map['liveDomain'] == null ? null : (map['liveDomain']! as String).input(),
+      liveUrl: map['liveUrl'] == null ? null : (map['liveUrl']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      spec: map['spec'] == null ? null : (AppSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
     );
   }
 }

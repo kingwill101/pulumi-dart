@@ -31,9 +31,9 @@ class ApiOperationTagState {
 
   factory ApiOperationTagState.fromMap(Map<String, dynamic> map) {
     return ApiOperationTagState(
-      apiOperationId: map['apiOperationId'] == null ? null : (map['apiOperationId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      apiOperationId: map['apiOperationId'] == null ? null : (map['apiOperationId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

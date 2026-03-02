@@ -78,17 +78,17 @@ class AssignmentArgs {
 
   factory AssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AssignmentArgs(
-      assignmentName: map['assignmentName'] == null ? null : (map['assignmentName'] as String).input(),
-      blueprintId: map['blueprintId'] == null ? null : (map['blueprintId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      assignmentName: map['assignmentName'] == null ? null : (map['assignmentName']! as String).input(),
+      blueprintId: map['blueprintId'] == null ? null : (map['blueprintId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       identity: (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      locks: map['locks'] == null ? null : (AssignmentLockSettings.fromMap((map['locks'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      locks: map['locks'] == null ? null : (AssignmentLockSettings.fromMap((map['locks']! as Map).cast<String, dynamic>())).input(),
       parameters: (pulumi.Input.decodeMapValues<ParameterValue>(map['parameters'], (value) => ParameterValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroups: (pulumi.Input.decodeMapValues<ResourceGroupValue>(map['resourceGroups'], (value) => ResourceGroupValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceScope: (map['resourceScope'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

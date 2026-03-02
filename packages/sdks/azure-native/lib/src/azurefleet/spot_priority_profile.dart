@@ -49,12 +49,12 @@ class SpotPriorityProfile {
 
   factory SpotPriorityProfile.fromMap(Map<String, dynamic> map) {
     return SpotPriorityProfile(
-      allocationStrategy: map['allocationStrategy'] == null ? null : (map['allocationStrategy'] as String).input(),
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy'] as String).input(),
-      maintain: map['maintain'] == null ? null : (map['maintain'] as bool).input(),
-      maxPricePerVM: map['maxPricePerVM'] == null ? null : (map['maxPricePerVM'] as double).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as int).input(),
+      allocationStrategy: map['allocationStrategy'] == null ? null : (map['allocationStrategy']! as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy']! as String).input(),
+      maintain: map['maintain'] == null ? null : (map['maintain']! as bool).input(),
+      maxPricePerVM: map['maxPricePerVM'] == null ? null : (map['maxPricePerVM']! as double).input(),
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as int).input(),
     );
   }
 }

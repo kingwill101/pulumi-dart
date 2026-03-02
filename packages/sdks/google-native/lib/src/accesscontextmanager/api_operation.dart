@@ -27,8 +27,8 @@ class ApiOperation {
 
   factory ApiOperation.fromMap(Map<String, dynamic> map) {
     return ApiOperation(
-      methodSelectors: map['methodSelectors'] == null ? null : (pulumi.Input.decodeList<MethodSelector>(map['methodSelectors'], (value) => MethodSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      methodSelectors: map['methodSelectors'] == null ? null : (pulumi.Input.decodeList<MethodSelector>(map['methodSelectors']!, (value) => MethodSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

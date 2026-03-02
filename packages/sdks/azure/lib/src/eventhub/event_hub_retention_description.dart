@@ -31,8 +31,8 @@ class EventHubRetentionDescription {
   factory EventHubRetentionDescription.fromMap(Map<String, dynamic> map) {
     return EventHubRetentionDescription(
       cleanupPolicy: (map['cleanupPolicy'] as String).input(),
-      retentionTimeInHours: map['retentionTimeInHours'] == null ? null : (map['retentionTimeInHours'] as int).input(),
-      tombstoneRetentionTimeInHours: map['tombstoneRetentionTimeInHours'] == null ? null : (map['tombstoneRetentionTimeInHours'] as int).input(),
+      retentionTimeInHours: map['retentionTimeInHours'] == null ? null : (map['retentionTimeInHours']! as int).input(),
+      tombstoneRetentionTimeInHours: map['tombstoneRetentionTimeInHours'] == null ? null : (map['tombstoneRetentionTimeInHours']! as int).input(),
     );
   }
 }

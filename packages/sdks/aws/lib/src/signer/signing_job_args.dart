@@ -46,11 +46,11 @@ class SigningJobArgs {
 
   factory SigningJobArgs.fromMap(Map<String, dynamic> map) {
     return SigningJobArgs(
-      destination: (SigningJobDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      ignoreSigningJobFailure: map['ignoreSigningJobFailure'] == null ? null : (map['ignoreSigningJobFailure'] as bool).input(),
+      destination: (SigningJobDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      ignoreSigningJobFailure: map['ignoreSigningJobFailure'] == null ? null : ((map['ignoreSigningJobFailure'] as bool).input()).input(),
       profileName: (map['profileName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      source: (SigningJobSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      source: (SigningJobSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -43,7 +43,7 @@ class GetSerialPortResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : map['state']! as String,
       type: map['type'] as String,
     );
   }

@@ -76,13 +76,13 @@ class L7RuleV2Args {
 
   factory L7RuleV2Args.fromMap(Map<String, dynamic> map) {
     return L7RuleV2Args(
-      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp']! as bool).input(),
       compareType: (map['compareType'] as String).input(),
-      invert: map['invert'] == null ? null : (map['invert'] as bool).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      invert: map['invert'] == null ? null : (map['invert']! as bool).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
       l7policyId: (map['l7policyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
       type: (map['type'] as String).input(),
       value: (map['value'] as String).input(),
     );

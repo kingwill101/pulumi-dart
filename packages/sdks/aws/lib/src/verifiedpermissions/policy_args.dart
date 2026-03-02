@@ -35,9 +35,9 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      definition: (PolicyDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
+      definition: (PolicyDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())).input(),
       policyStoreId: (map['policyStoreId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

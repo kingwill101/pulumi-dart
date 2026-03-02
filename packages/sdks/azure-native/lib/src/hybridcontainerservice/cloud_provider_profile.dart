@@ -28,8 +28,8 @@ class CloudProviderProfile {
 
   factory CloudProviderProfile.fromMap(Map<String, dynamic> map) {
     return CloudProviderProfile(
-      infraNetworkProfile: map['infraNetworkProfile'] == null ? null : (CloudProviderProfileInfraNetworkProfile.fromMap((map['infraNetworkProfile'] as Map).cast<String, dynamic>())).input(),
-      infraStorageProfile: map['infraStorageProfile'] == null ? null : (CloudProviderProfileInfraStorageProfile.fromMap((map['infraStorageProfile'] as Map).cast<String, dynamic>())).input(),
+      infraNetworkProfile: map['infraNetworkProfile'] == null ? null : (CloudProviderProfileInfraNetworkProfile.fromMap((map['infraNetworkProfile']! as Map).cast<String, dynamic>())).input(),
+      infraStorageProfile: map['infraStorageProfile'] == null ? null : (CloudProviderProfileInfraStorageProfile.fromMap((map['infraStorageProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

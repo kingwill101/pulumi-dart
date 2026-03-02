@@ -32,7 +32,7 @@ class DomainArgs {
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
       domainName: (map['domainName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

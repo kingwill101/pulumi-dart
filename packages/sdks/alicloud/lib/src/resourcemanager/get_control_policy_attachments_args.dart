@@ -39,9 +39,9 @@ class GetControlPolicyAttachmentsArgs {
 
   factory GetControlPolicyAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetControlPolicyAttachmentsArgs(
-      language: map['language'] == null ? null : (map['language'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      language: map['language'] == null ? null : (map['language']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
       targetId: (map['targetId'] as String).input(),
     );
   }

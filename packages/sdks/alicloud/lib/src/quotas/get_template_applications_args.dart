@@ -49,12 +49,12 @@ class GetTemplateApplicationsArgs {
 
   factory GetTemplateApplicationsArgs.fromMap(Map<String, dynamic> map) {
     return GetTemplateApplicationsArgs(
-      batchQuotaApplicationId: map['batchQuotaApplicationId'] == null ? null : (map['batchQuotaApplicationId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
-      quotaActionCode: map['quotaActionCode'] == null ? null : (map['quotaActionCode'] as String).input(),
-      quotaCategory: map['quotaCategory'] == null ? null : (map['quotaCategory'] as String).input(),
+      batchQuotaApplicationId: map['batchQuotaApplicationId'] == null ? null : (map['batchQuotaApplicationId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode']! as String).input(),
+      quotaActionCode: map['quotaActionCode'] == null ? null : (map['quotaActionCode']! as String).input(),
+      quotaCategory: map['quotaCategory'] == null ? null : (map['quotaCategory']! as String).input(),
     );
   }
 }

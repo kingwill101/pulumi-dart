@@ -39,8 +39,8 @@ class CxIntentParameter {
     return CxIntentParameter(
       entityType: (map['entityType'] as String).input(),
       id: (map['id'] as String).input(),
-      isList: map['isList'] == null ? null : (map['isList'] as bool).input(),
-      redact: map['redact'] == null ? null : (map['redact'] as bool).input(),
+      isList: map['isList'] == null ? null : (map['isList']! as bool).input(),
+      redact: map['redact'] == null ? null : (map['redact']! as bool).input(),
     );
   }
 }

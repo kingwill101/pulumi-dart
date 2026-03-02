@@ -31,9 +31,9 @@ class SpringCloudApiPortalCustomDomainState {
 
   factory SpringCloudApiPortalCustomDomainState.fromMap(Map<String, dynamic> map) {
     return SpringCloudApiPortalCustomDomainState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      springCloudApiPortalId: map['springCloudApiPortalId'] == null ? null : (map['springCloudApiPortalId'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      springCloudApiPortalId: map['springCloudApiPortalId'] == null ? null : (map['springCloudApiPortalId']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

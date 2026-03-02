@@ -32,8 +32,8 @@ class ExemptPriorityLevelConfiguration {
 
   factory ExemptPriorityLevelConfiguration.fromMap(Map<String, dynamic> map) {
     return ExemptPriorityLevelConfiguration(
-      lendablePercent: map['lendablePercent'] == null ? null : (map['lendablePercent'] as int).input(),
-      nominalConcurrencyShares: map['nominalConcurrencyShares'] == null ? null : (map['nominalConcurrencyShares'] as int).input(),
+      lendablePercent: map['lendablePercent'] == null ? null : (map['lendablePercent']! as int).input(),
+      nominalConcurrencyShares: map['nominalConcurrencyShares'] == null ? null : (map['nominalConcurrencyShares']! as int).input(),
     );
   }
 }

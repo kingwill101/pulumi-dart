@@ -28,8 +28,8 @@ class PodSchedulingContextSpec {
 
   factory PodSchedulingContextSpec.fromMap(Map<String, dynamic> map) {
     return PodSchedulingContextSpec(
-      potentialNodes: map['potentialNodes'] == null ? null : ((map['potentialNodes'] as List).cast<String>()).input(),
-      selectedNode: map['selectedNode'] == null ? null : (map['selectedNode'] as String).input(),
+      potentialNodes: map['potentialNodes'] == null ? null : ((map['potentialNodes']! as List).cast<String>()).input(),
+      selectedNode: map['selectedNode'] == null ? null : (map['selectedNode']! as String).input(),
     );
   }
 }

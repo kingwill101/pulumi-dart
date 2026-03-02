@@ -32,9 +32,9 @@ class NotificationSetting {
 
   factory NotificationSetting.fromMap(Map<String, dynamic> map) {
     return NotificationSetting(
-      emailOn: map['emailOn'] == null ? null : ((map['emailOn'] as List).cast<String>()).input(),
-      emails: map['emails'] == null ? null : ((map['emails'] as List).cast<String>()).input(),
-      webhooks: map['webhooks'] == null ? null : (pulumi.Input.decodeMapValues<AzureDevOpsWebhook>(map['webhooks'], (value) => AzureDevOpsWebhook.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      emailOn: map['emailOn'] == null ? null : ((map['emailOn']! as List).cast<String>()).input(),
+      emails: map['emails'] == null ? null : ((map['emails']! as List).cast<String>()).input(),
+      webhooks: map['webhooks'] == null ? null : (pulumi.Input.decodeMapValues<AzureDevOpsWebhook>(map['webhooks']!, (value) => AzureDevOpsWebhook.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

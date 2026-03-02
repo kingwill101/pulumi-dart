@@ -85,17 +85,17 @@ class BlobServicePropertiesArgs {
   factory BlobServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return BlobServicePropertiesArgs(
       accountName: (map['accountName'] as String).input(),
-      automaticSnapshotPolicyEnabled: map['automaticSnapshotPolicyEnabled'] == null ? null : (map['automaticSnapshotPolicyEnabled'] as bool).input(),
-      blobServicesName: map['blobServicesName'] == null ? null : (map['blobServicesName'] as String).input(),
-      changeFeed: map['changeFeed'] == null ? null : (ChangeFeed.fromMap((map['changeFeed'] as Map).cast<String, dynamic>())).input(),
-      containerDeleteRetentionPolicy: map['containerDeleteRetentionPolicy'] == null ? null : (DeleteRetentionPolicy.fromMap((map['containerDeleteRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      cors: map['cors'] == null ? null : (CorsRules.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
-      defaultServiceVersion: map['defaultServiceVersion'] == null ? null : (map['defaultServiceVersion'] as String).input(),
-      deleteRetentionPolicy: map['deleteRetentionPolicy'] == null ? null : (DeleteRetentionPolicy.fromMap((map['deleteRetentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      isVersioningEnabled: map['isVersioningEnabled'] == null ? null : (map['isVersioningEnabled'] as bool).input(),
-      lastAccessTimeTrackingPolicy: map['lastAccessTimeTrackingPolicy'] == null ? null : (LastAccessTimeTrackingPolicy.fromMap((map['lastAccessTimeTrackingPolicy'] as Map).cast<String, dynamic>())).input(),
+      automaticSnapshotPolicyEnabled: map['automaticSnapshotPolicyEnabled'] == null ? null : (map['automaticSnapshotPolicyEnabled']! as bool).input(),
+      blobServicesName: map['blobServicesName'] == null ? null : (map['blobServicesName']! as String).input(),
+      changeFeed: map['changeFeed'] == null ? null : (ChangeFeed.fromMap((map['changeFeed']! as Map).cast<String, dynamic>())).input(),
+      containerDeleteRetentionPolicy: map['containerDeleteRetentionPolicy'] == null ? null : (DeleteRetentionPolicy.fromMap((map['containerDeleteRetentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      cors: map['cors'] == null ? null : (CorsRules.fromMap((map['cors']! as Map).cast<String, dynamic>())).input(),
+      defaultServiceVersion: map['defaultServiceVersion'] == null ? null : (map['defaultServiceVersion']! as String).input(),
+      deleteRetentionPolicy: map['deleteRetentionPolicy'] == null ? null : (DeleteRetentionPolicy.fromMap((map['deleteRetentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      isVersioningEnabled: map['isVersioningEnabled'] == null ? null : (map['isVersioningEnabled']! as bool).input(),
+      lastAccessTimeTrackingPolicy: map['lastAccessTimeTrackingPolicy'] == null ? null : (LastAccessTimeTrackingPolicy.fromMap((map['lastAccessTimeTrackingPolicy']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      restorePolicy: map['restorePolicy'] == null ? null : (RestorePolicyProperties.fromMap((map['restorePolicy'] as Map).cast<String, dynamic>())).input(),
+      restorePolicy: map['restorePolicy'] == null ? null : (RestorePolicyProperties.fromMap((map['restorePolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

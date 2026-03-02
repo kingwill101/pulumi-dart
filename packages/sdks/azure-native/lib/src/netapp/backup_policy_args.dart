@@ -65,14 +65,14 @@ class BackupPolicyArgs {
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
       accountName: (map['accountName'] as String).input(),
-      backupPolicyName: map['backupPolicyName'] == null ? null : (map['backupPolicyName'] as String).input(),
-      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : (map['dailyBackupsToKeep'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : (map['monthlyBackupsToKeep'] as int).input(),
+      backupPolicyName: map['backupPolicyName'] == null ? null : (map['backupPolicyName']! as String).input(),
+      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : (map['dailyBackupsToKeep']! as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : (map['monthlyBackupsToKeep']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : (map['weeklyBackupsToKeep'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : (map['weeklyBackupsToKeep']! as int).input(),
     );
   }
 }

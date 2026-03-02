@@ -33,7 +33,7 @@ class SoftwareRecipeStepExtractArchive {
   factory SoftwareRecipeStepExtractArchive.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeStepExtractArchive(
       artifactId: (map['artifactId'] as String).input(),
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
       type: (SoftwareRecipeStepExtractArchiveType.fromValue(map['type'] as String)).input(),
     );
   }

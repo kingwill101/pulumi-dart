@@ -20,7 +20,7 @@ class OrchestratedVirtualMachineScaleSetBootDiagnostics {
 
   factory OrchestratedVirtualMachineScaleSetBootDiagnostics.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetBootDiagnostics(
-      storageAccountUri: map['storageAccountUri'] == null ? null : (map['storageAccountUri'] as String).input(),
+      storageAccountUri: map['storageAccountUri'] == null ? null : (map['storageAccountUri']! as String).input(),
     );
   }
 }

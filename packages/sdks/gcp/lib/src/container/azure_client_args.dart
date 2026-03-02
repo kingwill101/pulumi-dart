@@ -50,8 +50,8 @@ class AzureClientArgs {
     return AzureClientArgs(
       applicationId: (map['applicationId'] as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

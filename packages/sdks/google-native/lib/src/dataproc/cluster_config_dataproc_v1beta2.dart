@@ -102,21 +102,21 @@ class ClusterConfigDataprocV1beta2 {
 
   factory ClusterConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return ClusterConfigDataprocV1beta2(
-      autoscalingConfig: map['autoscalingConfig'] == null ? null : (AutoscalingConfigDataprocV1beta2.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>())).input(),
-      configBucket: map['configBucket'] == null ? null : (map['configBucket'] as String).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigDataprocV1beta2.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      endpointConfig: map['endpointConfig'] == null ? null : (EndpointConfigDataprocV1beta2.fromMap((map['endpointConfig'] as Map).cast<String, dynamic>())).input(),
-      gceClusterConfig: map['gceClusterConfig'] == null ? null : (GceClusterConfigDataprocV1beta2.fromMap((map['gceClusterConfig'] as Map).cast<String, dynamic>())).input(),
-      gkeClusterConfig: map['gkeClusterConfig'] == null ? null : (GkeClusterConfigDataprocV1beta2.fromMap((map['gkeClusterConfig'] as Map).cast<String, dynamic>())).input(),
-      initializationActions: map['initializationActions'] == null ? null : (pulumi.Input.decodeList<NodeInitializationActionDataprocV1beta2>(map['initializationActions'], (value) => NodeInitializationActionDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lifecycleConfig: map['lifecycleConfig'] == null ? null : (LifecycleConfigDataprocV1beta2.fromMap((map['lifecycleConfig'] as Map).cast<String, dynamic>())).input(),
-      masterConfig: map['masterConfig'] == null ? null : (InstanceGroupConfigDataprocV1beta2.fromMap((map['masterConfig'] as Map).cast<String, dynamic>())).input(),
-      metastoreConfig: map['metastoreConfig'] == null ? null : (MetastoreConfigDataprocV1beta2.fromMap((map['metastoreConfig'] as Map).cast<String, dynamic>())).input(),
-      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : (InstanceGroupConfigDataprocV1beta2.fromMap((map['secondaryWorkerConfig'] as Map).cast<String, dynamic>())).input(),
-      securityConfig: map['securityConfig'] == null ? null : (SecurityConfigDataprocV1beta2.fromMap((map['securityConfig'] as Map).cast<String, dynamic>())).input(),
-      softwareConfig: map['softwareConfig'] == null ? null : (SoftwareConfigDataprocV1beta2.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>())).input(),
-      tempBucket: map['tempBucket'] == null ? null : (map['tempBucket'] as String).input(),
-      workerConfig: map['workerConfig'] == null ? null : (InstanceGroupConfigDataprocV1beta2.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
+      autoscalingConfig: map['autoscalingConfig'] == null ? null : (AutoscalingConfigDataprocV1beta2.fromMap((map['autoscalingConfig']! as Map).cast<String, dynamic>())).input(),
+      configBucket: map['configBucket'] == null ? null : (map['configBucket']! as String).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigDataprocV1beta2.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      endpointConfig: map['endpointConfig'] == null ? null : (EndpointConfigDataprocV1beta2.fromMap((map['endpointConfig']! as Map).cast<String, dynamic>())).input(),
+      gceClusterConfig: map['gceClusterConfig'] == null ? null : (GceClusterConfigDataprocV1beta2.fromMap((map['gceClusterConfig']! as Map).cast<String, dynamic>())).input(),
+      gkeClusterConfig: map['gkeClusterConfig'] == null ? null : (GkeClusterConfigDataprocV1beta2.fromMap((map['gkeClusterConfig']! as Map).cast<String, dynamic>())).input(),
+      initializationActions: map['initializationActions'] == null ? null : (pulumi.Input.decodeList<NodeInitializationActionDataprocV1beta2>(map['initializationActions']!, (value) => NodeInitializationActionDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecycleConfig: map['lifecycleConfig'] == null ? null : (LifecycleConfigDataprocV1beta2.fromMap((map['lifecycleConfig']! as Map).cast<String, dynamic>())).input(),
+      masterConfig: map['masterConfig'] == null ? null : (InstanceGroupConfigDataprocV1beta2.fromMap((map['masterConfig']! as Map).cast<String, dynamic>())).input(),
+      metastoreConfig: map['metastoreConfig'] == null ? null : (MetastoreConfigDataprocV1beta2.fromMap((map['metastoreConfig']! as Map).cast<String, dynamic>())).input(),
+      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : (InstanceGroupConfigDataprocV1beta2.fromMap((map['secondaryWorkerConfig']! as Map).cast<String, dynamic>())).input(),
+      securityConfig: map['securityConfig'] == null ? null : (SecurityConfigDataprocV1beta2.fromMap((map['securityConfig']! as Map).cast<String, dynamic>())).input(),
+      softwareConfig: map['softwareConfig'] == null ? null : (SoftwareConfigDataprocV1beta2.fromMap((map['softwareConfig']! as Map).cast<String, dynamic>())).input(),
+      tempBucket: map['tempBucket'] == null ? null : (map['tempBucket']! as String).input(),
+      workerConfig: map['workerConfig'] == null ? null : (InstanceGroupConfigDataprocV1beta2.fromMap((map['workerConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

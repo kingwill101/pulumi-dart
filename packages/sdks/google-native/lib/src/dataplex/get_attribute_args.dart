@@ -38,7 +38,7 @@ class GetAttributeArgs {
       attributeId: (map['attributeId'] as String).input(),
       dataTaxonomyId: (map['dataTaxonomyId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

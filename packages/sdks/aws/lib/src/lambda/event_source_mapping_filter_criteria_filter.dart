@@ -20,7 +20,7 @@ class EventSourceMappingFilterCriteriaFilter {
 
   factory EventSourceMappingFilterCriteriaFilter.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingFilterCriteriaFilter(
-      pattern: map['pattern'] == null ? null : (map['pattern'] as String).input(),
+      pattern: map['pattern'] == null ? null : ((map['pattern'] as String).input()).input(),
     );
   }
 }

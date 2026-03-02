@@ -37,7 +37,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition(
       field: (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField.fromMap((map['field'] as Map).cast<String, dynamic>())).input(),
       operator: (map['operator'] as String).input(),
-      value: map['value'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -47,9 +47,9 @@ class GetConnectorResult {
 
   factory GetConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetConnectorResult(
-      authenticationDetails: map['authenticationDetails'] == null ? null : AwAssumeRoleAuthenticationDetailsPropertiesResponse.fromMap((map['authenticationDetails'] as Map).cast<String, dynamic>()),
+      authenticationDetails: map['authenticationDetails'] == null ? null : AwAssumeRoleAuthenticationDetailsPropertiesResponse.fromMap((map['authenticationDetails']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      hybridComputeSettings: map['hybridComputeSettings'] == null ? null : HybridComputeSettingsPropertiesResponse.fromMap((map['hybridComputeSettings'] as Map).cast<String, dynamic>()),
+      hybridComputeSettings: map['hybridComputeSettings'] == null ? null : HybridComputeSettingsPropertiesResponse.fromMap((map['hybridComputeSettings']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,

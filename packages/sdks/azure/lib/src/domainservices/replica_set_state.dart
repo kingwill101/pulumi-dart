@@ -46,12 +46,12 @@ class ReplicaSetState {
 
   factory ReplicaSetState.fromMap(Map<String, dynamic> map) {
     return ReplicaSetState(
-      domainControllerIpAddresses: map['domainControllerIpAddresses'] == null ? null : ((map['domainControllerIpAddresses'] as List).cast<String>()).input(),
-      domainServiceId: map['domainServiceId'] == null ? null : (map['domainServiceId'] as String).input(),
-      externalAccessIpAddress: map['externalAccessIpAddress'] == null ? null : (map['externalAccessIpAddress'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      serviceStatus: map['serviceStatus'] == null ? null : (map['serviceStatus'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      domainControllerIpAddresses: map['domainControllerIpAddresses'] == null ? null : ((map['domainControllerIpAddresses']! as List).cast<String>()).input(),
+      domainServiceId: map['domainServiceId'] == null ? null : (map['domainServiceId']! as String).input(),
+      externalAccessIpAddress: map['externalAccessIpAddress'] == null ? null : (map['externalAccessIpAddress']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      serviceStatus: map['serviceStatus'] == null ? null : (map['serviceStatus']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

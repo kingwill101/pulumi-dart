@@ -27,8 +27,8 @@ class ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecificati
 
   factory ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications.fromMap(Map<String, dynamic> map) {
     return ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications(
-      softDeleteTTL: map['softDeleteTTL'] == null ? null : (map['softDeleteTTL'] as String).input(),
-      subscriptionStateOverrideActions: map['subscriptionStateOverrideActions'] == null ? null : (pulumi.Input.decodeList<SubscriptionStateOverrideAction>(map['subscriptionStateOverrideActions'], (value) => SubscriptionStateOverrideAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      softDeleteTTL: map['softDeleteTTL'] == null ? null : (map['softDeleteTTL']! as String).input(),
+      subscriptionStateOverrideActions: map['subscriptionStateOverrideActions'] == null ? null : (pulumi.Input.decodeList<SubscriptionStateOverrideAction>(map['subscriptionStateOverrideActions']!, (value) => SubscriptionStateOverrideAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

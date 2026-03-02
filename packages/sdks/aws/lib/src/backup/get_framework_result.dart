@@ -67,7 +67,7 @@ class GetFrameworkResult {
   factory GetFrameworkResult.fromMap(Map<String, dynamic> map) {
     return GetFrameworkResult(
       arn: map['arn'] as String,
-      controls: pulumi.Input.decodeList<GetFrameworkControl>(map['controls'], (value) => GetFrameworkControl.fromMap((value as Map).cast<String, dynamic>())),
+      controls: pulumi.Input.decodeList<GetFrameworkControl>(map['controls']!, (value) => GetFrameworkControl.fromMap((value as Map).cast<String, dynamic>())),
       creationTime: map['creationTime'] as String,
       deploymentStatus: map['deploymentStatus'] as String,
       description: map['description'] as String,

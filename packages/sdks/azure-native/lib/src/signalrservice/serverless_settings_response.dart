@@ -28,7 +28,7 @@ class ServerlessSettingsResponse {
 
   factory ServerlessSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ServerlessSettingsResponse(
-      connectionTimeoutInSeconds: map['connectionTimeoutInSeconds'] == null ? null : (map['connectionTimeoutInSeconds'] as int).input(),
+      connectionTimeoutInSeconds: map['connectionTimeoutInSeconds'] == null ? null : (map['connectionTimeoutInSeconds']! as int).input(),
     );
   }
 }

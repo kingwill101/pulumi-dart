@@ -21,7 +21,7 @@ class VirtualMachinePropertiesResponseImageReference {
 
   factory VirtualMachinePropertiesResponseImageReference.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesResponseImageReference(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

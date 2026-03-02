@@ -46,12 +46,12 @@ class WorkerSettings {
 
   factory WorkerSettings.fromMap(Map<String, dynamic> map) {
     return WorkerSettings(
-      baseUrl: map['baseUrl'] == null ? null : (map['baseUrl'] as String).input(),
-      reportingEnabled: map['reportingEnabled'] == null ? null : (map['reportingEnabled'] as bool).input(),
-      servicePath: map['servicePath'] == null ? null : (map['servicePath'] as String).input(),
-      shuffleServicePath: map['shuffleServicePath'] == null ? null : (map['shuffleServicePath'] as String).input(),
-      tempStoragePrefix: map['tempStoragePrefix'] == null ? null : (map['tempStoragePrefix'] as String).input(),
-      workerId: map['workerId'] == null ? null : (map['workerId'] as String).input(),
+      baseUrl: map['baseUrl'] == null ? null : (map['baseUrl']! as String).input(),
+      reportingEnabled: map['reportingEnabled'] == null ? null : (map['reportingEnabled']! as bool).input(),
+      servicePath: map['servicePath'] == null ? null : (map['servicePath']! as String).input(),
+      shuffleServicePath: map['shuffleServicePath'] == null ? null : (map['shuffleServicePath']! as String).input(),
+      tempStoragePrefix: map['tempStoragePrefix'] == null ? null : (map['tempStoragePrefix']! as String).input(),
+      workerId: map['workerId'] == null ? null : (map['workerId']! as String).input(),
     );
   }
 }

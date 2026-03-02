@@ -77,16 +77,16 @@ class EnvironmentEC2Args {
 
   factory EnvironmentEC2Args.fromMap(Map<String, dynamic> map) {
     return EnvironmentEC2Args(
-      automaticStopTimeMinutes: map['automaticStopTimeMinutes'] == null ? null : (map['automaticStopTimeMinutes'] as int).input(),
-      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      automaticStopTimeMinutes: map['automaticStopTimeMinutes'] == null ? null : ((map['automaticStopTimeMinutes'] as int).input()).input(),
+      connectionType: map['connectionType'] == null ? null : ((map['connectionType'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       imageId: (map['imageId'] as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ownerArn: map['ownerArn'] == null ? null : (map['ownerArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      ownerArn: map['ownerArn'] == null ? null : ((map['ownerArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

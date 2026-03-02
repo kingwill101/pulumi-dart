@@ -43,10 +43,10 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskProperties {
 
   factory MigrateMySqlAzureDbForMySqlOfflineTaskProperties.fromMap(Map<String, dynamic> map) {
     return MigrateMySqlAzureDbForMySqlOfflineTaskProperties(
-      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
-      input: map['input'] == null ? null : (MigrateMySqlAzureDbForMySqlOfflineTaskInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      isCloneable: map['isCloneable'] == null ? null : (map['isCloneable'] as bool).input(),
-      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
+      clientData: map['clientData'] == null ? null : ((map['clientData']! as Map).cast<String, String>()).input(),
+      input: map['input'] == null ? null : (MigrateMySqlAzureDbForMySqlOfflineTaskInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
+      isCloneable: map['isCloneable'] == null ? null : (map['isCloneable']! as bool).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId']! as String).input(),
       taskType: (map['taskType'] as String).input(),
     );
   }

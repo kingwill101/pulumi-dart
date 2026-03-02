@@ -31,9 +31,9 @@ class SecurityConfigurationEncryptionConfiguration {
 
   factory SecurityConfigurationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return SecurityConfigurationEncryptionConfiguration(
-      cloudwatchEncryption: (SecurityConfigurationEncryptionConfigurationCloudwatchEncryption.fromMap((map['cloudwatchEncryption'] as Map).cast<String, dynamic>())).input(),
-      jobBookmarksEncryption: (SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption.fromMap((map['jobBookmarksEncryption'] as Map).cast<String, dynamic>())).input(),
-      s3Encryption: (SecurityConfigurationEncryptionConfigurationS3Encryption.fromMap((map['s3Encryption'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchEncryption: (SecurityConfigurationEncryptionConfigurationCloudwatchEncryption.fromMap((map['cloudwatchEncryption']! as Map).cast<String, dynamic>())).input(),
+      jobBookmarksEncryption: (SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption.fromMap((map['jobBookmarksEncryption']! as Map).cast<String, dynamic>())).input(),
+      s3Encryption: (SecurityConfigurationEncryptionConfigurationS3Encryption.fromMap((map['s3Encryption']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

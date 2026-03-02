@@ -45,10 +45,10 @@ class ReservationResourceStatus {
 
   factory ReservationResourceStatus.fromMap(Map<String, dynamic> map) {
     return ReservationResourceStatus(
-      healthInfos: map['healthInfos'] == null ? null : (pulumi.Input.decodeList<ReservationResourceStatusHealthInfo>(map['healthInfos'], (value) => ReservationResourceStatusHealthInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      reservationBlockCount: map['reservationBlockCount'] == null ? null : (map['reservationBlockCount'] as int).input(),
-      reservationMaintenances: map['reservationMaintenances'] == null ? null : (pulumi.Input.decodeList<ReservationResourceStatusReservationMaintenance>(map['reservationMaintenances'], (value) => ReservationResourceStatusReservationMaintenance.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      specificSkuAllocations: map['specificSkuAllocations'] == null ? null : (pulumi.Input.decodeList<ReservationResourceStatusSpecificSkuAllocation>(map['specificSkuAllocations'], (value) => ReservationResourceStatusSpecificSkuAllocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthInfos: map['healthInfos'] == null ? null : (pulumi.Input.decodeList<ReservationResourceStatusHealthInfo>(map['healthInfos']!, (value) => ReservationResourceStatusHealthInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reservationBlockCount: map['reservationBlockCount'] == null ? null : (map['reservationBlockCount']! as int).input(),
+      reservationMaintenances: map['reservationMaintenances'] == null ? null : (pulumi.Input.decodeList<ReservationResourceStatusReservationMaintenance>(map['reservationMaintenances']!, (value) => ReservationResourceStatusReservationMaintenance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      specificSkuAllocations: map['specificSkuAllocations'] == null ? null : (pulumi.Input.decodeList<ReservationResourceStatusSpecificSkuAllocation>(map['specificSkuAllocations']!, (value) => ReservationResourceStatusSpecificSkuAllocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

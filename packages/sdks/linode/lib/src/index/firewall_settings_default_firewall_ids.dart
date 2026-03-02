@@ -35,10 +35,10 @@ class FirewallSettingsDefaultFirewallIds {
 
   factory FirewallSettingsDefaultFirewallIds.fromMap(Map<String, dynamic> map) {
     return FirewallSettingsDefaultFirewallIds(
-      linode: map['linode'] == null ? null : (map['linode'] as int).input(),
-      nodebalancer: map['nodebalancer'] == null ? null : (map['nodebalancer'] as int).input(),
-      publicInterface: map['publicInterface'] == null ? null : (map['publicInterface'] as int).input(),
-      vpcInterface: map['vpcInterface'] == null ? null : (map['vpcInterface'] as int).input(),
+      linode: map['linode'] == null ? null : (map['linode']! as int).input(),
+      nodebalancer: map['nodebalancer'] == null ? null : (map['nodebalancer']! as int).input(),
+      publicInterface: map['publicInterface'] == null ? null : (map['publicInterface']! as int).input(),
+      vpcInterface: map['vpcInterface'] == null ? null : (map['vpcInterface']! as int).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class LogAccountPolicyState {
 
   factory LogAccountPolicyState.fromMap(Map<String, dynamic> map) {
     return LogAccountPolicyState(
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      selectionCriteria: map['selectionCriteria'] == null ? null : (map['selectionCriteria'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : ((map['policyDocument'] as String).input()).input(),
+      policyName: map['policyName'] == null ? null : ((map['policyName'] as String).input()).input(),
+      policyType: map['policyType'] == null ? null : ((map['policyType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
+      selectionCriteria: map['selectionCriteria'] == null ? null : ((map['selectionCriteria'] as String).input()).input(),
     );
   }
 }

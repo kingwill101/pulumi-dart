@@ -46,10 +46,10 @@ class ConfigurationArgs {
 
   factory ConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationArgs(
-      configFiles: map['configFiles'] == null ? null : (pulumi.Input.decodeList<ConfigurationConfigFile>(map['configFiles'], (value) => ConfigurationConfigFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configFiles: map['configFiles'] == null ? null : (pulumi.Input.decodeList<ConfigurationConfigFile>(map['configFiles']!, (value) => ConfigurationConfigFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
       nginxDeploymentId: (map['nginxDeploymentId'] as String).input(),
-      packageData: map['packageData'] == null ? null : (map['packageData'] as String).input(),
-      protectedFiles: map['protectedFiles'] == null ? null : (pulumi.Input.decodeList<ConfigurationProtectedFile>(map['protectedFiles'], (value) => ConfigurationProtectedFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packageData: map['packageData'] == null ? null : (map['packageData']! as String).input(),
+      protectedFiles: map['protectedFiles'] == null ? null : (pulumi.Input.decodeList<ConfigurationProtectedFile>(map['protectedFiles']!, (value) => ConfigurationProtectedFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
       rootFile: (map['rootFile'] as String).input(),
     );
   }

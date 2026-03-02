@@ -26,8 +26,8 @@ class NatGatewayPublicIpAssociationState {
 
   factory NatGatewayPublicIpAssociationState.fromMap(Map<String, dynamic> map) {
     return NatGatewayPublicIpAssociationState(
-      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId'] as String).input(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
+      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId']! as String).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId']! as String).input(),
     );
   }
 }

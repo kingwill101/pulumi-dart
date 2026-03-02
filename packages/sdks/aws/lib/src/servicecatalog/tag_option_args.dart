@@ -41,9 +41,9 @@ class TagOptionArgs {
 
   factory TagOptionArgs.fromMap(Map<String, dynamic> map) {
     return TagOptionArgs(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      active: map['active'] == null ? null : ((map['active'] as bool).input()).input(),
       key: (map['key'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       value: (map['value'] as String).input(),
     );
   }

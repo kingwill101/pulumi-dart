@@ -47,11 +47,11 @@ class PolicyTargetTrackingScalingPolicyConfiguration {
 
   factory PolicyTargetTrackingScalingPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingScalingPolicyConfiguration(
-      customizedMetricSpecification: map['customizedMetricSpecification'] == null ? null : (PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification.fromMap((map['customizedMetricSpecification'] as Map).cast<String, dynamic>())).input(),
-      disableScaleIn: map['disableScaleIn'] == null ? null : (map['disableScaleIn'] as bool).input(),
-      predefinedMetricSpecification: map['predefinedMetricSpecification'] == null ? null : (PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification.fromMap((map['predefinedMetricSpecification'] as Map).cast<String, dynamic>())).input(),
-      scaleInCooldown: map['scaleInCooldown'] == null ? null : (map['scaleInCooldown'] as int).input(),
-      scaleOutCooldown: map['scaleOutCooldown'] == null ? null : (map['scaleOutCooldown'] as int).input(),
+      customizedMetricSpecification: map['customizedMetricSpecification'] == null ? null : ((PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecification.fromMap((map['customizedMetricSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      disableScaleIn: map['disableScaleIn'] == null ? null : ((map['disableScaleIn'] as bool).input()).input(),
+      predefinedMetricSpecification: map['predefinedMetricSpecification'] == null ? null : ((PolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecification.fromMap((map['predefinedMetricSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      scaleInCooldown: map['scaleInCooldown'] == null ? null : ((map['scaleInCooldown'] as int).input()).input(),
+      scaleOutCooldown: map['scaleOutCooldown'] == null ? null : ((map['scaleOutCooldown'] as int).input()).input(),
       targetValue: (map['targetValue'] as double).input(),
     );
   }

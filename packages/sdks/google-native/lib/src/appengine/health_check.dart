@@ -51,13 +51,13 @@ class HealthCheck {
 
   factory HealthCheck.fromMap(Map<String, dynamic> map) {
     return HealthCheck(
-      checkInterval: map['checkInterval'] == null ? null : (map['checkInterval'] as String).input(),
-      disableHealthCheck: map['disableHealthCheck'] == null ? null : (map['disableHealthCheck'] as bool).input(),
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold'] as int).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      restartThreshold: map['restartThreshold'] == null ? null : (map['restartThreshold'] as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold'] as int).input(),
+      checkInterval: map['checkInterval'] == null ? null : (map['checkInterval']! as String).input(),
+      disableHealthCheck: map['disableHealthCheck'] == null ? null : (map['disableHealthCheck']! as bool).input(),
+      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold']! as int).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      restartThreshold: map['restartThreshold'] == null ? null : (map['restartThreshold']! as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold']! as int).input(),
     );
   }
 }

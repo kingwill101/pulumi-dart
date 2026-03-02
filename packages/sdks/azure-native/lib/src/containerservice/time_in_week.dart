@@ -26,8 +26,8 @@ class TimeInWeek {
 
   factory TimeInWeek.fromMap(Map<String, dynamic> map) {
     return TimeInWeek(
-      day: map['day'] == null ? null : (map['day'] as String).input(),
-      hourSlots: map['hourSlots'] == null ? null : ((map['hourSlots'] as List).cast<int>()).input(),
+      day: map['day'] == null ? null : (map['day']! as String).input(),
+      hourSlots: map['hourSlots'] == null ? null : ((map['hourSlots']! as List).cast<int>()).input(),
     );
   }
 }

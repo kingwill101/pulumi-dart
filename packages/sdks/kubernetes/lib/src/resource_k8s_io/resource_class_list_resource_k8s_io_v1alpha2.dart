@@ -38,10 +38,10 @@ class ResourceClassListResourceK8sIoV1alpha2 {
 
   factory ResourceClassListResourceK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
     return ResourceClassListResourceK8sIoV1alpha2(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       items: (pulumi.Input.decodeList<ResourceClassResourceK8sIoV1alpha2>(map['items'], (value) => ResourceClassResourceK8sIoV1alpha2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigGithubOauth2ProviderC
 
   factory AgentcoreOauth2CredentialProviderOauth2ProviderConfigGithubOauth2ProviderConfigOauthDiscovery.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderOauth2ProviderConfigGithubOauth2ProviderConfigOauthDiscovery(
-      authorizationServerMetadatas: (pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderOauth2ProviderConfigGithubOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata>(map['authorizationServerMetadatas'], (value) => AgentcoreOauth2CredentialProviderOauth2ProviderConfigGithubOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authorizationServerMetadatas: (pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderOauth2ProviderConfigGithubOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata>(map['authorizationServerMetadatas']!, (value) => AgentcoreOauth2CredentialProviderOauth2ProviderConfigGithubOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
       discoveryUrl: (map['discoveryUrl'] as String).input(),
     );
   }

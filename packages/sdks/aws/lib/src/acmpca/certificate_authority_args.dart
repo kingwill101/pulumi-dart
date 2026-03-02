@@ -66,15 +66,15 @@ class CertificateAuthorityArgs {
 
   factory CertificateAuthorityArgs.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityArgs(
-      certificateAuthorityConfiguration: (CertificateAuthorityCertificateAuthorityConfiguration.fromMap((map['certificateAuthorityConfiguration'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      keyStorageSecurityStandard: map['keyStorageSecurityStandard'] == null ? null : (map['keyStorageSecurityStandard'] as String).input(),
-      permanentDeletionTimeInDays: map['permanentDeletionTimeInDays'] == null ? null : (map['permanentDeletionTimeInDays'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      revocationConfiguration: map['revocationConfiguration'] == null ? null : (CertificateAuthorityRevocationConfiguration.fromMap((map['revocationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      usageMode: map['usageMode'] == null ? null : (map['usageMode'] as String).input(),
+      certificateAuthorityConfiguration: (CertificateAuthorityCertificateAuthorityConfiguration.fromMap((map['certificateAuthorityConfiguration']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      keyStorageSecurityStandard: map['keyStorageSecurityStandard'] == null ? null : ((map['keyStorageSecurityStandard'] as String).input()).input(),
+      permanentDeletionTimeInDays: map['permanentDeletionTimeInDays'] == null ? null : ((map['permanentDeletionTimeInDays'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      revocationConfiguration: map['revocationConfiguration'] == null ? null : ((CertificateAuthorityRevocationConfiguration.fromMap((map['revocationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      usageMode: map['usageMode'] == null ? null : ((map['usageMode'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class SwitchCase {
 
   factory SwitchCase.fromMap(Map<String, dynamic> map) {
     return SwitchCase(
-      activities: map['activities'] == null ? null : (pulumi.Input.decodeList<AppendVariableActivity>(map['activities'], (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      activities: map['activities'] == null ? null : (pulumi.Input.decodeList<AppendVariableActivity>(map['activities']!, (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

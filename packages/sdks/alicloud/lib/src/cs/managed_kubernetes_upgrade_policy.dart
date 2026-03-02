@@ -32,7 +32,7 @@ class ManagedKubernetesUpgradePolicy {
 
   factory ManagedKubernetesUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return ManagedKubernetesUpgradePolicy(
-      controlPlaneOnly: map['controlPlaneOnly'] == null ? null : (map['controlPlaneOnly'] as bool).input(),
+      controlPlaneOnly: map['controlPlaneOnly'] == null ? null : (map['controlPlaneOnly']! as bool).input(),
     );
   }
 }

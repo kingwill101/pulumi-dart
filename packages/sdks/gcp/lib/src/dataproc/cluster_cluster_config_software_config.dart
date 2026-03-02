@@ -45,10 +45,10 @@ class ClusterClusterConfigSoftwareConfig {
 
   factory ClusterClusterConfigSoftwareConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigSoftwareConfig(
-      imageVersion: map['imageVersion'] == null ? null : (map['imageVersion'] as String).input(),
-      optionalComponents: map['optionalComponents'] == null ? null : ((map['optionalComponents'] as List).cast<String>()).input(),
-      overrideProperties: map['overrideProperties'] == null ? null : ((map['overrideProperties'] as Map).cast<String, String>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      imageVersion: map['imageVersion'] == null ? null : (map['imageVersion']! as String).input(),
+      optionalComponents: map['optionalComponents'] == null ? null : ((map['optionalComponents']! as List).cast<String>()).input(),
+      overrideProperties: map['overrideProperties'] == null ? null : ((map['overrideProperties']! as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
     );
   }
 }

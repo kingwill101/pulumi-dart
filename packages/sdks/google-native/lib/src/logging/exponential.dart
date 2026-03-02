@@ -31,9 +31,9 @@ class Exponential {
 
   factory Exponential.fromMap(Map<String, dynamic> map) {
     return Exponential(
-      growthFactor: map['growthFactor'] == null ? null : (map['growthFactor'] as double).input(),
-      numFiniteBuckets: map['numFiniteBuckets'] == null ? null : (map['numFiniteBuckets'] as int).input(),
-      scale: map['scale'] == null ? null : (map['scale'] as double).input(),
+      growthFactor: map['growthFactor'] == null ? null : (map['growthFactor']! as double).input(),
+      numFiniteBuckets: map['numFiniteBuckets'] == null ? null : (map['numFiniteBuckets']! as int).input(),
+      scale: map['scale'] == null ? null : (map['scale']! as double).input(),
     );
   }
 }

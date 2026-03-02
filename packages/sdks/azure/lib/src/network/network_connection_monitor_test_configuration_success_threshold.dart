@@ -25,8 +25,8 @@ class NetworkConnectionMonitorTestConfigurationSuccessThreshold {
 
   factory NetworkConnectionMonitorTestConfigurationSuccessThreshold.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorTestConfigurationSuccessThreshold(
-      checksFailedPercent: map['checksFailedPercent'] == null ? null : (map['checksFailedPercent'] as int).input(),
-      roundTripTimeMs: map['roundTripTimeMs'] == null ? null : (map['roundTripTimeMs'] as double).input(),
+      checksFailedPercent: map['checksFailedPercent'] == null ? null : (map['checksFailedPercent']! as int).input(),
+      roundTripTimeMs: map['roundTripTimeMs'] == null ? null : (map['roundTripTimeMs']! as double).input(),
     );
   }
 }

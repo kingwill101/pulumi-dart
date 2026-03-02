@@ -59,11 +59,11 @@ class IPConfigurationResponse {
     return IPConfigurationResponse(
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      subnet: map['subnet'] == null ? null : (ResourceIdResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (ResourceIdResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

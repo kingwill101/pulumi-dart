@@ -51,12 +51,12 @@ class LbArgs {
 
   factory LbArgs.fromMap(Map<String, dynamic> map) {
     return LbArgs(
-      healthCheckPath: map['healthCheckPath'] == null ? null : (map['healthCheckPath'] as String).input(),
+      healthCheckPath: map['healthCheckPath'] == null ? null : ((map['healthCheckPath'] as String).input()).input(),
       instancePort: (map['instancePort'] as int).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

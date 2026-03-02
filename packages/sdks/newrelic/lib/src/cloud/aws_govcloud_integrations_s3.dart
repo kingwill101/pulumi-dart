@@ -40,11 +40,11 @@ class AwsGovcloudIntegrationsS3 {
 
   factory AwsGovcloudIntegrationsS3.fromMap(Map<String, dynamic> map) {
     return AwsGovcloudIntegrationsS3(
-      fetchExtendedInventory: map['fetchExtendedInventory'] == null ? null : (map['fetchExtendedInventory'] as bool).input(),
-      fetchTags: map['fetchTags'] == null ? null : (map['fetchTags'] as bool).input(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
+      fetchExtendedInventory: map['fetchExtendedInventory'] == null ? null : (map['fetchExtendedInventory']! as bool).input(),
+      fetchTags: map['fetchTags'] == null ? null : (map['fetchTags']! as bool).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
     );
   }
 }

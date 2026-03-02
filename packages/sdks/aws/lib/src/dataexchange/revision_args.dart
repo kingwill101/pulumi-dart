@@ -39,10 +39,10 @@ class RevisionArgs {
 
   factory RevisionArgs.fromMap(Map<String, dynamic> map) {
     return RevisionArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
       dataSetId: (map['dataSetId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

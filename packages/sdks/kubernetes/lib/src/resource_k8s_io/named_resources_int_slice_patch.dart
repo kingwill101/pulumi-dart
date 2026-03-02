@@ -21,7 +21,7 @@ class NamedResourcesIntSlicePatch {
 
   factory NamedResourcesIntSlicePatch.fromMap(Map<String, dynamic> map) {
     return NamedResourcesIntSlicePatch(
-      ints: map['ints'] == null ? null : ((map['ints'] as List).cast<int>()).input(),
+      ints: map['ints'] == null ? null : ((map['ints']! as List).cast<int>()).input(),
     );
   }
 }

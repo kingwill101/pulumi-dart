@@ -28,7 +28,7 @@ class VmSizeProfile {
   factory VmSizeProfile.fromMap(Map<String, dynamic> map) {
     return VmSizeProfile(
       name: (map['name'] as String).input(),
-      rank: map['rank'] == null ? null : (map['rank'] as int).input(),
+      rank: map['rank'] == null ? null : (map['rank']! as int).input(),
     );
   }
 }

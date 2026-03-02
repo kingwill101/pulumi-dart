@@ -53,13 +53,13 @@ class ListenerState {
 
   factory ListenerState.fromMap(Map<String, dynamic> map) {
     return ListenerState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      listenerDescription: map['listenerDescription'] == null ? null : (map['listenerDescription'] as String).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      listenerDescription: map['listenerDescription'] == null ? null : (map['listenerDescription']! as String).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class InterconnectCircuitInfo {
 
   factory InterconnectCircuitInfo.fromMap(Map<String, dynamic> map) {
     return InterconnectCircuitInfo(
-      customerDemarcId: map['customerDemarcId'] == null ? null : (map['customerDemarcId'] as String).input(),
-      googleCircuitId: map['googleCircuitId'] == null ? null : (map['googleCircuitId'] as String).input(),
-      googleDemarcId: map['googleDemarcId'] == null ? null : (map['googleDemarcId'] as String).input(),
+      customerDemarcId: map['customerDemarcId'] == null ? null : (map['customerDemarcId']! as String).input(),
+      googleCircuitId: map['googleCircuitId'] == null ? null : (map['googleCircuitId']! as String).input(),
+      googleDemarcId: map['googleDemarcId'] == null ? null : (map['googleDemarcId']! as String).input(),
     );
   }
 }

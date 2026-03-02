@@ -36,10 +36,10 @@ class AssessmentTargetState {
 
   factory AssessmentTargetState.fromMap(Map<String, dynamic> map) {
     return AssessmentTargetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceGroupArn: map['resourceGroupArn'] == null ? null : (map['resourceGroupArn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceGroupArn: map['resourceGroupArn'] == null ? null : ((map['resourceGroupArn'] as String).input()).input(),
     );
   }
 }

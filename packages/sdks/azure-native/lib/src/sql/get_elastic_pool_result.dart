@@ -123,26 +123,26 @@ class GetElasticPoolResult {
 
   factory GetElasticPoolResult.fromMap(Map<String, dynamic> map) {
     return GetElasticPoolResult(
-      autoPauseDelay: map['autoPauseDelay'] == null ? null : map['autoPauseDelay'] as int,
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
+      autoPauseDelay: map['autoPauseDelay'] == null ? null : map['autoPauseDelay']! as int,
+      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       creationDate: map['creationDate'] as String,
-      highAvailabilityReplicaCount: map['highAvailabilityReplicaCount'] == null ? null : map['highAvailabilityReplicaCount'] as int,
+      highAvailabilityReplicaCount: map['highAvailabilityReplicaCount'] == null ? null : map['highAvailabilityReplicaCount']! as int,
       id: map['id'] as String,
       kind: map['kind'] as String,
-      licenseType: map['licenseType'] == null ? null : map['licenseType'] as String,
+      licenseType: map['licenseType'] == null ? null : map['licenseType']! as String,
       location: map['location'] as String,
-      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : map['maintenanceConfigurationId'] as String,
-      maxSizeBytes: map['maxSizeBytes'] == null ? null : map['maxSizeBytes'] as double,
-      minCapacity: map['minCapacity'] == null ? null : map['minCapacity'] as double,
+      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : map['maintenanceConfigurationId']! as String,
+      maxSizeBytes: map['maxSizeBytes'] == null ? null : map['maxSizeBytes']! as double,
+      minCapacity: map['minCapacity'] == null ? null : map['minCapacity']! as double,
       name: map['name'] as String,
-      perDatabaseSettings: map['perDatabaseSettings'] == null ? null : ElasticPoolPerDatabaseSettingsResponse.fromMap((map['perDatabaseSettings'] as Map).cast<String, dynamic>()),
-      preferredEnclaveType: map['preferredEnclaveType'] == null ? null : map['preferredEnclaveType'] as String,
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      perDatabaseSettings: map['perDatabaseSettings'] == null ? null : ElasticPoolPerDatabaseSettingsResponse.fromMap((map['perDatabaseSettings']! as Map).cast<String, dynamic>()),
+      preferredEnclaveType: map['preferredEnclaveType'] == null ? null : map['preferredEnclaveType']! as String,
+      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
       state: map['state'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      zoneRedundant: map['zoneRedundant'] == null ? null : map['zoneRedundant'] as bool,
+      zoneRedundant: map['zoneRedundant'] == null ? null : map['zoneRedundant']! as bool,
     );
   }
 }

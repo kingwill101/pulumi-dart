@@ -53,7 +53,7 @@ class RateLimitRule {
   factory RateLimitRule.fromMap(Map<String, dynamic> map) {
     return RateLimitRule(
       action: (map['action'] as String).input(),
-      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
       matchConditions: (pulumi.Input.decodeList<MatchCondition>(map['matchConditions'], (value) => MatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       priority: (map['priority'] as int).input(),

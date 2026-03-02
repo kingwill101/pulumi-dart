@@ -21,7 +21,7 @@ class EnabledConfigResponse {
 
   factory EnabledConfigResponse.fromMap(Map<String, dynamic> map) {
     return EnabledConfigResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

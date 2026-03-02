@@ -31,9 +31,9 @@ class GalleryDiskImageSource {
 
   factory GalleryDiskImageSource.fromMap(Map<String, dynamic> map) {
     return GalleryDiskImageSource(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

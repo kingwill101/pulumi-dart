@@ -26,7 +26,7 @@ class ModuleModuleLink {
 
   factory ModuleModuleLink.fromMap(Map<String, dynamic> map) {
     return ModuleModuleLink(
-      hash: map['hash'] == null ? null : (ModuleModuleLinkHash.fromMap((map['hash'] as Map).cast<String, dynamic>())).input(),
+      hash: map['hash'] == null ? null : (ModuleModuleLinkHash.fromMap((map['hash']! as Map).cast<String, dynamic>())).input(),
       uri: (map['uri'] as String).input(),
     );
   }

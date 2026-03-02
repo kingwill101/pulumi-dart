@@ -58,14 +58,14 @@ class FederationIamPolicyMetastoreV1alphaArgs {
 
   factory FederationIamPolicyMetastoreV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return FederationIamPolicyMetastoreV1alphaArgs(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigMetastoreV1alpha>(map['auditConfigs'], (value) => AuditConfigMetastoreV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingMetastoreV1alpha>(map['bindings'], (value) => BindingMetastoreV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigMetastoreV1alpha>(map['auditConfigs']!, (value) => AuditConfigMetastoreV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingMetastoreV1alpha>(map['bindings']!, (value) => BindingMetastoreV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       federationId: (map['federationId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

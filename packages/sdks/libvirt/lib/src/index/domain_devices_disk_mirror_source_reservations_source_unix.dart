@@ -37,10 +37,10 @@ class DomainDevicesDiskMirrorSourceReservationsSourceUnix {
 
   factory DomainDevicesDiskMirrorSourceReservationsSourceUnix.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceReservationsSourceUnix(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      reconnect: map['reconnect'] == null ? null : (DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>())).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorSourceReservationsSourceUnixSecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorSourceReservationsSourceUnixSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      reconnect: map['reconnect'] == null ? null : (DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnect.fromMap((map['reconnect']! as Map).cast<String, dynamic>())).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorSourceReservationsSourceUnixSecLabel>(map['secLabels']!, (value) => DomainDevicesDiskMirrorSourceReservationsSourceUnixSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

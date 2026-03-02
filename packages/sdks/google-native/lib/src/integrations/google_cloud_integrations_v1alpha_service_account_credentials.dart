@@ -26,8 +26,8 @@ class GoogleCloudIntegrationsV1alphaServiceAccountCredentials {
 
   factory GoogleCloudIntegrationsV1alphaServiceAccountCredentials.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaServiceAccountCredentials(
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
     );
   }
 }

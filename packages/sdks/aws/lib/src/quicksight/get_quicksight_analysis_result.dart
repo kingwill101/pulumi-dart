@@ -78,7 +78,7 @@ class GetQuicksightAnalysisResult {
       lastPublishedTime: map['lastPublishedTime'] as String,
       lastUpdatedTime: map['lastUpdatedTime'] as String,
       name: map['name'] as String,
-      permissions: pulumi.Input.decodeList<GetQuicksightAnalysisPermission>(map['permissions'], (value) => GetQuicksightAnalysisPermission.fromMap((value as Map).cast<String, dynamic>())),
+      permissions: pulumi.Input.decodeList<GetQuicksightAnalysisPermission>(map['permissions']!, (value) => GetQuicksightAnalysisPermission.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),

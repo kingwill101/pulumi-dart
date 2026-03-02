@@ -83,11 +83,11 @@ class GetKustoPoolAttachedDatabaseConfigurationResult {
       defaultPrincipalsModificationKind: map['defaultPrincipalsModificationKind'] as String,
       id: map['id'] as String,
       kustoPoolResourceId: map['kustoPoolResourceId'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : TableLevelSharingPropertiesResponse.fromMap((map['tableLevelSharingProperties'] as Map).cast<String, dynamic>()),
+      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : TableLevelSharingPropertiesResponse.fromMap((map['tableLevelSharingProperties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

@@ -36,10 +36,10 @@ class BigQueryConfig {
 
   factory BigQueryConfig.fromMap(Map<String, dynamic> map) {
     return BigQueryConfig(
-      dropUnknownFields: map['dropUnknownFields'] == null ? null : (map['dropUnknownFields'] as bool).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
-      useTopicSchema: map['useTopicSchema'] == null ? null : (map['useTopicSchema'] as bool).input(),
-      writeMetadata: map['writeMetadata'] == null ? null : (map['writeMetadata'] as bool).input(),
+      dropUnknownFields: map['dropUnknownFields'] == null ? null : (map['dropUnknownFields']! as bool).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
+      useTopicSchema: map['useTopicSchema'] == null ? null : (map['useTopicSchema']! as bool).input(),
+      writeMetadata: map['writeMetadata'] == null ? null : (map['writeMetadata']! as bool).input(),
     );
   }
 }

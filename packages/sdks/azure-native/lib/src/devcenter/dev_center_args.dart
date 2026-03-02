@@ -62,14 +62,14 @@ class DevCenterArgs {
 
   factory DevCenterArgs.fromMap(Map<String, dynamic> map) {
     return DevCenterArgs(
-      devCenterName: map['devCenterName'] == null ? null : (map['devCenterName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      projectCatalogSettings: map['projectCatalogSettings'] == null ? null : (DevCenterProjectCatalogSettings.fromMap((map['projectCatalogSettings'] as Map).cast<String, dynamic>())).input(),
+      devCenterName: map['devCenterName'] == null ? null : (map['devCenterName']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      projectCatalogSettings: map['projectCatalogSettings'] == null ? null : (DevCenterProjectCatalogSettings.fromMap((map['projectCatalogSettings']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

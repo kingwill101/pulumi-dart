@@ -27,8 +27,8 @@ class ConfigurationServiceProperties {
 
   factory ConfigurationServiceProperties.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceProperties(
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
-      settings: map['settings'] == null ? null : (ConfigurationServiceSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
+      settings: map['settings'] == null ? null : (ConfigurationServiceSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -55,13 +55,13 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize'] as int).input(),
-      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize']! as int).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : (map['vsanDatastoreName'] as String).input(),
+      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : (map['vsanDatastoreName']! as String).input(),
     );
   }
 }

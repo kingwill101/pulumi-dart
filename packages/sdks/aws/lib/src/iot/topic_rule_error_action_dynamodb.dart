@@ -66,13 +66,13 @@ class TopicRuleErrorActionDynamodb {
   factory TopicRuleErrorActionDynamodb.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionDynamodb(
       hashKeyField: (map['hashKeyField'] as String).input(),
-      hashKeyType: map['hashKeyType'] == null ? null : (map['hashKeyType'] as String).input(),
+      hashKeyType: map['hashKeyType'] == null ? null : ((map['hashKeyType'] as String).input()).input(),
       hashKeyValue: (map['hashKeyValue'] as String).input(),
-      operation: map['operation'] == null ? null : (map['operation'] as String).input(),
-      payloadField: map['payloadField'] == null ? null : (map['payloadField'] as String).input(),
-      rangeKeyField: map['rangeKeyField'] == null ? null : (map['rangeKeyField'] as String).input(),
-      rangeKeyType: map['rangeKeyType'] == null ? null : (map['rangeKeyType'] as String).input(),
-      rangeKeyValue: map['rangeKeyValue'] == null ? null : (map['rangeKeyValue'] as String).input(),
+      operation: map['operation'] == null ? null : ((map['operation'] as String).input()).input(),
+      payloadField: map['payloadField'] == null ? null : ((map['payloadField'] as String).input()).input(),
+      rangeKeyField: map['rangeKeyField'] == null ? null : ((map['rangeKeyField'] as String).input()).input(),
+      rangeKeyType: map['rangeKeyType'] == null ? null : ((map['rangeKeyType'] as String).input()).input(),
+      rangeKeyValue: map['rangeKeyValue'] == null ? null : ((map['rangeKeyValue'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
       tableName: (map['tableName'] as String).input(),
     );

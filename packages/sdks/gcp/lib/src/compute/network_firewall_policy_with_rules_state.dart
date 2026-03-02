@@ -89,18 +89,18 @@ class NetworkFirewallPolicyWithRulesState {
 
   factory NetworkFirewallPolicyWithRulesState.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyWithRulesState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkFirewallPolicyId: map['networkFirewallPolicyId'] == null ? null : (map['networkFirewallPolicyId'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      predefinedRules: map['predefinedRules'] == null ? null : (pulumi.Input.decodeList<NetworkFirewallPolicyWithRulesPredefinedRule>(map['predefinedRules'], (value) => NetworkFirewallPolicyWithRulesPredefinedRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      ruleTupleCount: map['ruleTupleCount'] == null ? null : (map['ruleTupleCount'] as int).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<NetworkFirewallPolicyWithRulesRule>(map['rules'], (value) => NetworkFirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId'] as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkFirewallPolicyId: map['networkFirewallPolicyId'] == null ? null : (map['networkFirewallPolicyId']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      predefinedRules: map['predefinedRules'] == null ? null : (pulumi.Input.decodeList<NetworkFirewallPolicyWithRulesPredefinedRule>(map['predefinedRules']!, (value) => NetworkFirewallPolicyWithRulesPredefinedRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      ruleTupleCount: map['ruleTupleCount'] == null ? null : (map['ruleTupleCount']! as int).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<NetworkFirewallPolicyWithRulesRule>(map['rules']!, (value) => NetworkFirewallPolicyWithRulesRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId']! as String).input(),
     );
   }
 }

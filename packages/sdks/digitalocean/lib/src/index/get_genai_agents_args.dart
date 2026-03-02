@@ -33,9 +33,9 @@ class GetGenaiAgentsArgs {
 
   factory GetGenaiAgentsArgs.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsFilter>(map['filters'], (value) => GetGenaiAgentsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      onlyDeployed: map['onlyDeployed'] == null ? null : (map['onlyDeployed'] as bool).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsSort>(map['sorts'], (value) => GetGenaiAgentsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsFilter>(map['filters']!, (value) => GetGenaiAgentsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onlyDeployed: map['onlyDeployed'] == null ? null : (map['onlyDeployed']! as bool).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsSort>(map['sorts']!, (value) => GetGenaiAgentsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

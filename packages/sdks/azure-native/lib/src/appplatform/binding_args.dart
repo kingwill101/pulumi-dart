@@ -46,8 +46,8 @@ class BindingArgs {
   factory BindingArgs.fromMap(Map<String, dynamic> map) {
     return BindingArgs(
       appName: (map['appName'] as String).input(),
-      bindingName: map['bindingName'] == null ? null : (map['bindingName'] as String).input(),
-      properties: map['properties'] == null ? null : (BindingResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      bindingName: map['bindingName'] == null ? null : (map['bindingName']! as String).input(),
+      properties: map['properties'] == null ? null : (BindingResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

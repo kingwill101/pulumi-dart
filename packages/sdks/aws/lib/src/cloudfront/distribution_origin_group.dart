@@ -31,8 +31,8 @@ class DistributionOriginGroup {
 
   factory DistributionOriginGroup.fromMap(Map<String, dynamic> map) {
     return DistributionOriginGroup(
-      failoverCriteria: (DistributionOriginGroupFailoverCriteria.fromMap((map['failoverCriteria'] as Map).cast<String, dynamic>())).input(),
-      members: (pulumi.Input.decodeList<DistributionOriginGroupMember>(map['members'], (value) => DistributionOriginGroupMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failoverCriteria: (DistributionOriginGroupFailoverCriteria.fromMap((map['failoverCriteria']! as Map).cast<String, dynamic>())).input(),
+      members: (pulumi.Input.decodeList<DistributionOriginGroupMember>(map['members']!, (value) => DistributionOriginGroupMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
       originId: (map['originId'] as String).input(),
     );
   }

@@ -20,7 +20,7 @@ class GcpIntegrationsFireStore {
 
   factory GcpIntegrationsFireStore.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsFireStore(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

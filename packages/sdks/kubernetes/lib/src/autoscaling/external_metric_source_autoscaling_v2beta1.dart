@@ -38,9 +38,9 @@ class ExternalMetricSourceAutoscalingV2beta1 {
   factory ExternalMetricSourceAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return ExternalMetricSourceAutoscalingV2beta1(
       metricName: (map['metricName'] as String).input(),
-      metricSelector: map['metricSelector'] == null ? null : (LabelSelector.fromMap((map['metricSelector'] as Map).cast<String, dynamic>())).input(),
-      targetAverageValue: map['targetAverageValue'] == null ? null : (map['targetAverageValue'] as String).input(),
-      targetValue: map['targetValue'] == null ? null : (map['targetValue'] as String).input(),
+      metricSelector: map['metricSelector'] == null ? null : (LabelSelector.fromMap((map['metricSelector']! as Map).cast<String, dynamic>())).input(),
+      targetAverageValue: map['targetAverageValue'] == null ? null : (map['targetAverageValue']! as String).input(),
+      targetValue: map['targetValue'] == null ? null : (map['targetValue']! as String).input(),
     );
   }
 }

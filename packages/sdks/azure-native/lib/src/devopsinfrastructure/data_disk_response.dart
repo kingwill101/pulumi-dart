@@ -36,10 +36,10 @@ class DataDiskResponse {
 
   factory DataDiskResponse.fromMap(Map<String, dynamic> map) {
     return DataDiskResponse(
-      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
-      diskSizeGiB: map['diskSizeGiB'] == null ? null : (map['diskSizeGiB'] as int).input(),
-      driveLetter: map['driveLetter'] == null ? null : (map['driveLetter'] as String).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      caching: map['caching'] == null ? null : (map['caching']! as String).input(),
+      diskSizeGiB: map['diskSizeGiB'] == null ? null : (map['diskSizeGiB']! as int).input(),
+      driveLetter: map['driveLetter'] == null ? null : (map['driveLetter']! as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

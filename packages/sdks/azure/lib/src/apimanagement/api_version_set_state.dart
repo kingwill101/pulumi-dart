@@ -60,14 +60,14 @@ class ApiVersionSetState {
 
   factory ApiVersionSetState.fromMap(Map<String, dynamic> map) {
     return ApiVersionSetState(
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      versionHeaderName: map['versionHeaderName'] == null ? null : (map['versionHeaderName'] as String).input(),
-      versionQueryName: map['versionQueryName'] == null ? null : (map['versionQueryName'] as String).input(),
-      versioningScheme: map['versioningScheme'] == null ? null : (map['versioningScheme'] as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      versionHeaderName: map['versionHeaderName'] == null ? null : (map['versionHeaderName']! as String).input(),
+      versionQueryName: map['versionQueryName'] == null ? null : (map['versionQueryName']! as String).input(),
+      versioningScheme: map['versioningScheme'] == null ? null : (map['versioningScheme']! as String).input(),
     );
   }
 }

@@ -46,11 +46,11 @@ class TaskProperties {
 
   factory TaskProperties.fromMap(Map<String, dynamic> map) {
     return TaskProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       scope: (map['scope'] as String).input(),
       scopeId: (map['scopeId'] as String).input(),
-      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      stage: map['stage'] == null ? null : (map['stage']! as String).input(),
       status: (map['status'] as String).input(),
     );
   }

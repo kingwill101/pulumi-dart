@@ -85,19 +85,19 @@ class SalesforceServiceCloudLinkedService {
 
   factory SalesforceServiceCloudLinkedService.fromMap(Map<String, dynamic> map) {
     return SalesforceServiceCloudLinkedService(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
-      environmentUrl: map['environmentUrl'] == null ? null : (map['environmentUrl']).input(),
-      extendedProperties: map['extendedProperties'] == null ? null : (map['extendedProperties']).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
-      securityToken: map['securityToken'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['securityToken'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']!).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
+      environmentUrl: map['environmentUrl'] == null ? null : (map['environmentUrl']!).input(),
+      extendedProperties: map['extendedProperties'] == null ? null : (map['extendedProperties']!).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters']!, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
+      securityToken: map['securityToken'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['securityToken']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      username: map['username'] == null ? null : (map['username']).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      username: map['username'] == null ? null : (map['username']!).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

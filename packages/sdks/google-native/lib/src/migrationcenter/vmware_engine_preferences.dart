@@ -37,10 +37,10 @@ class VmwareEnginePreferences {
 
   factory VmwareEnginePreferences.fromMap(Map<String, dynamic> map) {
     return VmwareEnginePreferences(
-      commitmentPlan: map['commitmentPlan'] == null ? null : (VmwareEnginePreferencesCommitmentPlan.fromValue(map['commitmentPlan'] as String)).input(),
-      cpuOvercommitRatio: map['cpuOvercommitRatio'] == null ? null : (map['cpuOvercommitRatio'] as double).input(),
-      memoryOvercommitRatio: map['memoryOvercommitRatio'] == null ? null : (map['memoryOvercommitRatio'] as double).input(),
-      storageDeduplicationCompressionRatio: map['storageDeduplicationCompressionRatio'] == null ? null : (map['storageDeduplicationCompressionRatio'] as double).input(),
+      commitmentPlan: map['commitmentPlan'] == null ? null : (VmwareEnginePreferencesCommitmentPlan.fromValue(map['commitmentPlan']! as String)).input(),
+      cpuOvercommitRatio: map['cpuOvercommitRatio'] == null ? null : (map['cpuOvercommitRatio']! as double).input(),
+      memoryOvercommitRatio: map['memoryOvercommitRatio'] == null ? null : (map['memoryOvercommitRatio']! as double).input(),
+      storageDeduplicationCompressionRatio: map['storageDeduplicationCompressionRatio'] == null ? null : (map['storageDeduplicationCompressionRatio']! as double).input(),
     );
   }
 }

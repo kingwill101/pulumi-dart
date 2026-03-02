@@ -59,14 +59,14 @@ class RegionInstanceTemplateComputeV1Args {
 
   factory RegionInstanceTemplateComputeV1Args.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateComputeV1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      properties: map['properties'] == null ? null : (InstancePropertiesComputeV1.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      properties: map['properties'] == null ? null : (InstancePropertiesComputeV1.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      sourceInstance: map['sourceInstance'] == null ? null : (map['sourceInstance'] as String).input(),
-      sourceInstanceParams: map['sourceInstanceParams'] == null ? null : (SourceInstanceParamsComputeV1.fromMap((map['sourceInstanceParams'] as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      sourceInstance: map['sourceInstance'] == null ? null : (map['sourceInstance']! as String).input(),
+      sourceInstanceParams: map['sourceInstanceParams'] == null ? null : (SourceInstanceParamsComputeV1.fromMap((map['sourceInstanceParams']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

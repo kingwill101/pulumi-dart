@@ -23,8 +23,8 @@ class EndpointSseSpecification {
 
   factory EndpointSseSpecification.fromMap(Map<String, dynamic> map) {
     return EndpointSseSpecification(
-      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : (map['customerManagedKeyEnabled'] as bool).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      customerManagedKeyEnabled: map['customerManagedKeyEnabled'] == null ? null : ((map['customerManagedKeyEnabled'] as bool).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
     );
   }
 }

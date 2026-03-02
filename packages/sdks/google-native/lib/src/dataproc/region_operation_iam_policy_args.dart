@@ -47,12 +47,12 @@ class RegionOperationIamPolicyArgs {
 
   factory RegionOperationIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegionOperationIamPolicyArgs(
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<Binding>(map['bindings'], (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<Binding>(map['bindings']!, (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       operationId: (map['operationId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       regionId: (map['regionId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

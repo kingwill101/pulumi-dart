@@ -26,8 +26,8 @@ class Tiering {
 
   factory Tiering.fromMap(Map<String, dynamic> map) {
     return Tiering(
-      accessTier: map['accessTier'] == null ? null : (map['accessTier'] as String).input(),
-      days: map['days'] == null ? null : (map['days'] as int).input(),
+      accessTier: map['accessTier'] == null ? null : (map['accessTier']! as String).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
     );
   }
 }

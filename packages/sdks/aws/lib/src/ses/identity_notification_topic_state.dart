@@ -41,11 +41,11 @@ class IdentityNotificationTopicState {
 
   factory IdentityNotificationTopicState.fromMap(Map<String, dynamic> map) {
     return IdentityNotificationTopicState(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      includeOriginalHeaders: map['includeOriginalHeaders'] == null ? null : (map['includeOriginalHeaders'] as bool).input(),
-      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
+      identity: map['identity'] == null ? null : ((map['identity'] as String).input()).input(),
+      includeOriginalHeaders: map['includeOriginalHeaders'] == null ? null : ((map['includeOriginalHeaders'] as bool).input()).input(),
+      notificationType: map['notificationType'] == null ? null : ((map['notificationType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      topicArn: map['topicArn'] == null ? null : ((map['topicArn'] as String).input()).input(),
     );
   }
 }

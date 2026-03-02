@@ -70,17 +70,17 @@ class LogAnomalyDetectorState {
 
   factory LogAnomalyDetectorState.fromMap(Map<String, dynamic> map) {
     return LogAnomalyDetectorState(
-      anomalyVisibilityTime: map['anomalyVisibilityTime'] == null ? null : (map['anomalyVisibilityTime'] as int).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      detectorName: map['detectorName'] == null ? null : (map['detectorName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      evaluationFrequency: map['evaluationFrequency'] == null ? null : (map['evaluationFrequency'] as String).input(),
-      filterPattern: map['filterPattern'] == null ? null : (map['filterPattern'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      logGroupArnLists: map['logGroupArnLists'] == null ? null : ((map['logGroupArnLists'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      anomalyVisibilityTime: map['anomalyVisibilityTime'] == null ? null : ((map['anomalyVisibilityTime'] as int).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      detectorName: map['detectorName'] == null ? null : ((map['detectorName'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      evaluationFrequency: map['evaluationFrequency'] == null ? null : ((map['evaluationFrequency'] as String).input()).input(),
+      filterPattern: map['filterPattern'] == null ? null : ((map['filterPattern'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      logGroupArnLists: map['logGroupArnLists'] == null ? null : (((map['logGroupArnLists'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

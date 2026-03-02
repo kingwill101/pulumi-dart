@@ -21,7 +21,7 @@ class MigrationJobPerformanceConfig {
 
   factory MigrationJobPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return MigrationJobPerformanceConfig(
-      dumpParallelLevel: map['dumpParallelLevel'] == null ? null : (map['dumpParallelLevel'] as String).input(),
+      dumpParallelLevel: map['dumpParallelLevel'] == null ? null : (map['dumpParallelLevel']! as String).input(),
     );
   }
 }

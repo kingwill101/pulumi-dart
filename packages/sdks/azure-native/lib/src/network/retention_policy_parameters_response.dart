@@ -26,8 +26,8 @@ class RetentionPolicyParametersResponse {
 
   factory RetentionPolicyParametersResponse.fromMap(Map<String, dynamic> map) {
     return RetentionPolicyParametersResponse(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

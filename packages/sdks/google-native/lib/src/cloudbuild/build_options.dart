@@ -100,21 +100,21 @@ class BuildOptions {
 
   factory BuildOptions.fromMap(Map<String, dynamic> map) {
     return BuildOptions(
-      automapSubstitutions: map['automapSubstitutions'] == null ? null : (map['automapSubstitutions'] as bool).input(),
-      defaultLogsBucketBehavior: map['defaultLogsBucketBehavior'] == null ? null : (BuildOptionsDefaultLogsBucketBehavior.fromValue(map['defaultLogsBucketBehavior'] as String)).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
-      dynamicSubstitutions: map['dynamicSubstitutions'] == null ? null : (map['dynamicSubstitutions'] as bool).input(),
-      env: map['env'] == null ? null : ((map['env'] as List).cast<String>()).input(),
-      logStreamingOption: map['logStreamingOption'] == null ? null : (BuildOptionsLogStreamingOption.fromValue(map['logStreamingOption'] as String)).input(),
-      logging: map['logging'] == null ? null : (BuildOptionsLogging.fromValue(map['logging'] as String)).input(),
-      machineType: map['machineType'] == null ? null : (BuildOptionsMachineType.fromValue(map['machineType'] as String)).input(),
-      pool: map['pool'] == null ? null : (PoolOption.fromMap((map['pool'] as Map).cast<String, dynamic>())).input(),
-      requestedVerifyOption: map['requestedVerifyOption'] == null ? null : (BuildOptionsRequestedVerifyOption.fromValue(map['requestedVerifyOption'] as String)).input(),
-      secretEnv: map['secretEnv'] == null ? null : ((map['secretEnv'] as List).cast<String>()).input(),
-      sourceProvenanceHash: map['sourceProvenanceHash'] == null ? null : (pulumi.Input.decodeList<BuildOptionsSourceProvenanceHashItem>(map['sourceProvenanceHash'], (value) => BuildOptionsSourceProvenanceHashItem.fromValue(value as String))).input(),
-      substitutionOption: map['substitutionOption'] == null ? null : (BuildOptionsSubstitutionOption.fromValue(map['substitutionOption'] as String)).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes'], (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workerPool: map['workerPool'] == null ? null : (map['workerPool'] as String).input(),
+      automapSubstitutions: map['automapSubstitutions'] == null ? null : (map['automapSubstitutions']! as bool).input(),
+      defaultLogsBucketBehavior: map['defaultLogsBucketBehavior'] == null ? null : (BuildOptionsDefaultLogsBucketBehavior.fromValue(map['defaultLogsBucketBehavior']! as String)).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as String).input(),
+      dynamicSubstitutions: map['dynamicSubstitutions'] == null ? null : (map['dynamicSubstitutions']! as bool).input(),
+      env: map['env'] == null ? null : ((map['env']! as List).cast<String>()).input(),
+      logStreamingOption: map['logStreamingOption'] == null ? null : (BuildOptionsLogStreamingOption.fromValue(map['logStreamingOption']! as String)).input(),
+      logging: map['logging'] == null ? null : (BuildOptionsLogging.fromValue(map['logging']! as String)).input(),
+      machineType: map['machineType'] == null ? null : (BuildOptionsMachineType.fromValue(map['machineType']! as String)).input(),
+      pool: map['pool'] == null ? null : (PoolOption.fromMap((map['pool']! as Map).cast<String, dynamic>())).input(),
+      requestedVerifyOption: map['requestedVerifyOption'] == null ? null : (BuildOptionsRequestedVerifyOption.fromValue(map['requestedVerifyOption']! as String)).input(),
+      secretEnv: map['secretEnv'] == null ? null : ((map['secretEnv']! as List).cast<String>()).input(),
+      sourceProvenanceHash: map['sourceProvenanceHash'] == null ? null : (pulumi.Input.decodeList<BuildOptionsSourceProvenanceHashItem>(map['sourceProvenanceHash']!, (value) => BuildOptionsSourceProvenanceHashItem.fromValue(value as String))).input(),
+      substitutionOption: map['substitutionOption'] == null ? null : (BuildOptionsSubstitutionOption.fromValue(map['substitutionOption']! as String)).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes']!, (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workerPool: map['workerPool'] == null ? null : (map['workerPool']! as String).input(),
     );
   }
 }

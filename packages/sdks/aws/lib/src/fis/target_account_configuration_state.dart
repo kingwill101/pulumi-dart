@@ -43,11 +43,11 @@ class TargetAccountConfigurationState {
 
   factory TargetAccountConfigurationState.fromMap(Map<String, dynamic> map) {
     return TargetAccountConfigurationState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      experimentTemplateId: map['experimentTemplateId'] == null ? null : (map['experimentTemplateId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      experimentTemplateId: map['experimentTemplateId'] == null ? null : ((map['experimentTemplateId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

@@ -24,8 +24,8 @@ class ResponsePolicyGKECluster {
 
   factory ResponsePolicyGKECluster.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyGKECluster(
-      gkeClusterName: map['gkeClusterName'] == null ? null : (map['gkeClusterName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      gkeClusterName: map['gkeClusterName'] == null ? null : (map['gkeClusterName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

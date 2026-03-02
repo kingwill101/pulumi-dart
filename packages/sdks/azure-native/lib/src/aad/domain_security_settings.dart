@@ -61,15 +61,15 @@ class DomainSecuritySettings {
 
   factory DomainSecuritySettings.fromMap(Map<String, dynamic> map) {
     return DomainSecuritySettings(
-      channelBinding: map['channelBinding'] == null ? null : (map['channelBinding'] as String).input(),
-      kerberosArmoring: map['kerberosArmoring'] == null ? null : (map['kerberosArmoring'] as String).input(),
-      kerberosRc4Encryption: map['kerberosRc4Encryption'] == null ? null : (map['kerberosRc4Encryption'] as String).input(),
-      ldapSigning: map['ldapSigning'] == null ? null : (map['ldapSigning'] as String).input(),
-      ntlmV1: map['ntlmV1'] == null ? null : (map['ntlmV1'] as String).input(),
-      syncKerberosPasswords: map['syncKerberosPasswords'] == null ? null : (map['syncKerberosPasswords'] as String).input(),
-      syncNtlmPasswords: map['syncNtlmPasswords'] == null ? null : (map['syncNtlmPasswords'] as String).input(),
-      syncOnPremPasswords: map['syncOnPremPasswords'] == null ? null : (map['syncOnPremPasswords'] as String).input(),
-      tlsV1: map['tlsV1'] == null ? null : (map['tlsV1'] as String).input(),
+      channelBinding: map['channelBinding'] == null ? null : (map['channelBinding']! as String).input(),
+      kerberosArmoring: map['kerberosArmoring'] == null ? null : (map['kerberosArmoring']! as String).input(),
+      kerberosRc4Encryption: map['kerberosRc4Encryption'] == null ? null : (map['kerberosRc4Encryption']! as String).input(),
+      ldapSigning: map['ldapSigning'] == null ? null : (map['ldapSigning']! as String).input(),
+      ntlmV1: map['ntlmV1'] == null ? null : (map['ntlmV1']! as String).input(),
+      syncKerberosPasswords: map['syncKerberosPasswords'] == null ? null : (map['syncKerberosPasswords']! as String).input(),
+      syncNtlmPasswords: map['syncNtlmPasswords'] == null ? null : (map['syncNtlmPasswords']! as String).input(),
+      syncOnPremPasswords: map['syncOnPremPasswords'] == null ? null : (map['syncOnPremPasswords']! as String).input(),
+      tlsV1: map['tlsV1'] == null ? null : (map['tlsV1']! as String).input(),
     );
   }
 }

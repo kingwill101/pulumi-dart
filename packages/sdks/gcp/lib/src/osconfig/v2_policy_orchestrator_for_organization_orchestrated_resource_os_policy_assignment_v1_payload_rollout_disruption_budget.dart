@@ -26,8 +26,8 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
   factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget(
-      fixed: map['fixed'] == null ? null : (map['fixed'] as int).input(),
-      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
+      fixed: map['fixed'] == null ? null : (map['fixed']! as int).input(),
+      percent: map['percent'] == null ? null : (map['percent']! as int).input(),
     );
   }
 }

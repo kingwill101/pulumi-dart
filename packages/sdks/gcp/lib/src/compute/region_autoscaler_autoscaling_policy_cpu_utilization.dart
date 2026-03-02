@@ -37,7 +37,7 @@ class RegionAutoscalerAutoscalingPolicyCpuUtilization {
 
   factory RegionAutoscalerAutoscalingPolicyCpuUtilization.fromMap(Map<String, dynamic> map) {
     return RegionAutoscalerAutoscalingPolicyCpuUtilization(
-      predictiveMethod: map['predictiveMethod'] == null ? null : (map['predictiveMethod'] as String).input(),
+      predictiveMethod: map['predictiveMethod'] == null ? null : (map['predictiveMethod']! as String).input(),
       target: (map['target'] as double).input(),
     );
   }

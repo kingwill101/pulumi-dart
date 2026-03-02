@@ -39,7 +39,7 @@ class TeamAccessTokenArgs {
 
   factory TeamAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return TeamAccessTokenArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
       organizationName: (map['organizationName'] as String).input(),
       teamName: (map['teamName'] as String).input(),

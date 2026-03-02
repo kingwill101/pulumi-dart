@@ -26,8 +26,8 @@ class S3WordsListResponse {
 
   factory S3WordsListResponse.fromMap(Map<String, dynamic> map) {
     return S3WordsListResponse(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      objectKey: map['objectKey'] == null ? null : (map['objectKey'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      objectKey: map['objectKey'] == null ? null : (map['objectKey']! as String).input(),
     );
   }
 }

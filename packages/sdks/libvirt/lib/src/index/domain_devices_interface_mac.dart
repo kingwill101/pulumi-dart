@@ -31,8 +31,8 @@ class DomainDevicesInterfaceMac {
   factory DomainDevicesInterfaceMac.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceMac(
       address: (map['address'] as String).input(),
-      check: map['check'] == null ? null : (map['check'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      check: map['check'] == null ? null : (map['check']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

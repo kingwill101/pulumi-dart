@@ -32,7 +32,7 @@ class GetNodeTemplateComputeV1Args {
   factory GetNodeTemplateComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetNodeTemplateComputeV1Args(
       nodeTemplate: (map['nodeTemplate'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

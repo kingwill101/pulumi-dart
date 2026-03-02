@@ -55,14 +55,14 @@ class RocketMQInstanceProductInfo {
 
   factory RocketMQInstanceProductInfo.fromMap(Map<String, dynamic> map) {
     return RocketMQInstanceProductInfo(
-      autoScaling: map['autoScaling'] == null ? null : (map['autoScaling'] as bool).input(),
-      messageRetentionTime: map['messageRetentionTime'] == null ? null : (map['messageRetentionTime'] as int).input(),
+      autoScaling: map['autoScaling'] == null ? null : (map['autoScaling']! as bool).input(),
+      messageRetentionTime: map['messageRetentionTime'] == null ? null : (map['messageRetentionTime']! as int).input(),
       msgProcessSpec: (map['msgProcessSpec'] as String).input(),
-      sendReceiveRatio: map['sendReceiveRatio'] == null ? null : (map['sendReceiveRatio'] as double).input(),
-      storageEncryption: map['storageEncryption'] == null ? null : (map['storageEncryption'] as bool).input(),
-      storageSecretKey: map['storageSecretKey'] == null ? null : (map['storageSecretKey'] as String).input(),
-      supportAutoScaling: map['supportAutoScaling'] == null ? null : (map['supportAutoScaling'] as bool).input(),
-      traceOn: map['traceOn'] == null ? null : (map['traceOn'] as bool).input(),
+      sendReceiveRatio: map['sendReceiveRatio'] == null ? null : (map['sendReceiveRatio']! as double).input(),
+      storageEncryption: map['storageEncryption'] == null ? null : (map['storageEncryption']! as bool).input(),
+      storageSecretKey: map['storageSecretKey'] == null ? null : (map['storageSecretKey']! as String).input(),
+      supportAutoScaling: map['supportAutoScaling'] == null ? null : (map['supportAutoScaling']! as bool).input(),
+      traceOn: map['traceOn'] == null ? null : (map['traceOn']! as bool).input(),
     );
   }
 }

@@ -73,16 +73,16 @@ class PatchDeploymentArgs {
 
   factory PatchDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
       instanceFilter: (PatchInstanceFilter.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       oneTimeSchedule: (OneTimeSchedule.fromMap((map['oneTimeSchedule'] as Map).cast<String, dynamic>())).input(),
-      patchConfig: map['patchConfig'] == null ? null : (PatchConfig.fromMap((map['patchConfig'] as Map).cast<String, dynamic>())).input(),
+      patchConfig: map['patchConfig'] == null ? null : (PatchConfig.fromMap((map['patchConfig']! as Map).cast<String, dynamic>())).input(),
       patchDeploymentId: (map['patchDeploymentId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       recurringSchedule: (RecurringSchedule.fromMap((map['recurringSchedule'] as Map).cast<String, dynamic>())).input(),
-      rollout: map['rollout'] == null ? null : (PatchRollout.fromMap((map['rollout'] as Map).cast<String, dynamic>())).input(),
+      rollout: map['rollout'] == null ? null : (PatchRollout.fromMap((map['rollout']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class Header {
 
   factory Header.fromMap(Map<String, dynamic> map) {
     return Header(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as String).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      sourcePort: map['sourcePort'] == null ? null : (map['sourcePort'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      sourcePort: map['sourcePort'] == null ? null : (map['sourcePort']! as String).input(),
     );
   }
 }

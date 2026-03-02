@@ -33,9 +33,9 @@ class DefaultLogGroup {
 
   factory DefaultLogGroup.fromMap(Map<String, dynamic> map) {
     return DefaultLogGroup(
-      args: map['args'] == null ? null : (LogGroup.fromMap((map['args'] as Map).cast<String, dynamic>())).input(),
-      existing: map['existing'] == null ? null : (ExistingLogGroup.fromMap((map['existing'] as Map).cast<String, dynamic>())).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as bool).input(),
+      args: map['args'] == null ? null : (LogGroup.fromMap((map['args']! as Map).cast<String, dynamic>())).input(),
+      existing: map['existing'] == null ? null : (ExistingLogGroup.fromMap((map['existing']! as Map).cast<String, dynamic>())).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as bool).input(),
     );
   }
 }

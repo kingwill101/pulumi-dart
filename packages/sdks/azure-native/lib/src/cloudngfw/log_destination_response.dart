@@ -34,9 +34,9 @@ class LogDestinationResponse {
 
   factory LogDestinationResponse.fromMap(Map<String, dynamic> map) {
     return LogDestinationResponse(
-      eventHubConfigurations: map['eventHubConfigurations'] == null ? null : (EventHubResponse.fromMap((map['eventHubConfigurations'] as Map).cast<String, dynamic>())).input(),
-      monitorConfigurations: map['monitorConfigurations'] == null ? null : (MonitorLogResponse.fromMap((map['monitorConfigurations'] as Map).cast<String, dynamic>())).input(),
-      storageConfigurations: map['storageConfigurations'] == null ? null : (StorageAccountResponse.fromMap((map['storageConfigurations'] as Map).cast<String, dynamic>())).input(),
+      eventHubConfigurations: map['eventHubConfigurations'] == null ? null : (EventHubResponse.fromMap((map['eventHubConfigurations']! as Map).cast<String, dynamic>())).input(),
+      monitorConfigurations: map['monitorConfigurations'] == null ? null : (MonitorLogResponse.fromMap((map['monitorConfigurations']! as Map).cast<String, dynamic>())).input(),
+      storageConfigurations: map['storageConfigurations'] == null ? null : (StorageAccountResponse.fromMap((map['storageConfigurations']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ExternalAccessRuleDestinationIpRange {
 
   factory ExternalAccessRuleDestinationIpRange.fromMap(Map<String, dynamic> map) {
     return ExternalAccessRuleDestinationIpRange(
-      externalAddress: map['externalAddress'] == null ? null : (map['externalAddress'] as String).input(),
-      ipAddressRange: map['ipAddressRange'] == null ? null : (map['ipAddressRange'] as String).input(),
+      externalAddress: map['externalAddress'] == null ? null : (map['externalAddress']! as String).input(),
+      ipAddressRange: map['ipAddressRange'] == null ? null : (map['ipAddressRange']! as String).input(),
     );
   }
 }

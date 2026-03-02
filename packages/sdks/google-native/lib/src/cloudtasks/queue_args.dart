@@ -62,14 +62,14 @@ class QueueArgs {
 
   factory QueueArgs.fromMap(Map<String, dynamic> map) {
     return QueueArgs(
-      appEngineRoutingOverride: map['appEngineRoutingOverride'] == null ? null : (AppEngineRouting.fromMap((map['appEngineRoutingOverride'] as Map).cast<String, dynamic>())).input(),
-      httpTarget: map['httpTarget'] == null ? null : (HttpTarget.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rateLimits: map['rateLimits'] == null ? null : (RateLimits.fromMap((map['rateLimits'] as Map).cast<String, dynamic>())).input(),
-      retryConfig: map['retryConfig'] == null ? null : (RetryConfig.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())).input(),
-      stackdriverLoggingConfig: map['stackdriverLoggingConfig'] == null ? null : (StackdriverLoggingConfig.fromMap((map['stackdriverLoggingConfig'] as Map).cast<String, dynamic>())).input(),
+      appEngineRoutingOverride: map['appEngineRoutingOverride'] == null ? null : (AppEngineRouting.fromMap((map['appEngineRoutingOverride']! as Map).cast<String, dynamic>())).input(),
+      httpTarget: map['httpTarget'] == null ? null : (HttpTarget.fromMap((map['httpTarget']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rateLimits: map['rateLimits'] == null ? null : (RateLimits.fromMap((map['rateLimits']! as Map).cast<String, dynamic>())).input(),
+      retryConfig: map['retryConfig'] == null ? null : (RetryConfig.fromMap((map['retryConfig']! as Map).cast<String, dynamic>())).input(),
+      stackdriverLoggingConfig: map['stackdriverLoggingConfig'] == null ? null : (StackdriverLoggingConfig.fromMap((map['stackdriverLoggingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

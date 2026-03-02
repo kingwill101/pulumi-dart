@@ -41,8 +41,8 @@ class LandingZoneRegistrationOperationArgs {
   factory LandingZoneRegistrationOperationArgs.fromMap(Map<String, dynamic> map) {
     return LandingZoneRegistrationOperationArgs(
       landingZoneAccountName: (map['landingZoneAccountName'] as String).input(),
-      landingZoneRegistrationName: map['landingZoneRegistrationName'] == null ? null : (map['landingZoneRegistrationName'] as String).input(),
-      properties: map['properties'] == null ? null : (LandingZoneRegistrationResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      landingZoneRegistrationName: map['landingZoneRegistrationName'] == null ? null : (map['landingZoneRegistrationName']! as String).input(),
+      properties: map['properties'] == null ? null : (LandingZoneRegistrationResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

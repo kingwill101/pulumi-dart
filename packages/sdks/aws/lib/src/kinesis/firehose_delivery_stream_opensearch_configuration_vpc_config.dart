@@ -37,7 +37,7 @@ class FirehoseDeliveryStreamOpensearchConfigurationVpcConfig {
       roleArn: (map['roleArn'] as String).input(),
       securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

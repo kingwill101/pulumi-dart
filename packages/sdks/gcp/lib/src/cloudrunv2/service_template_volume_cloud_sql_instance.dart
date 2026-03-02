@@ -20,7 +20,7 @@ class ServiceTemplateVolumeCloudSqlInstance {
 
   factory ServiceTemplateVolumeCloudSqlInstance.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateVolumeCloudSqlInstance(
-      instances: map['instances'] == null ? null : ((map['instances'] as List).cast<String>()).input(),
+      instances: map['instances'] == null ? null : ((map['instances']! as List).cast<String>()).input(),
     );
   }
 }

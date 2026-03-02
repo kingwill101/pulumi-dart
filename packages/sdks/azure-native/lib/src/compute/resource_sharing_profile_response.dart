@@ -21,7 +21,7 @@ class ResourceSharingProfileResponse {
 
   factory ResourceSharingProfileResponse.fromMap(Map<String, dynamic> map) {
     return ResourceSharingProfileResponse(
-      subscriptionIds: map['subscriptionIds'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['subscriptionIds'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subscriptionIds: map['subscriptionIds'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['subscriptionIds']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

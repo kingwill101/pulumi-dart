@@ -36,10 +36,10 @@ class UpgradeDistribution {
 
   factory UpgradeDistribution.fromMap(Map<String, dynamic> map) {
     return UpgradeDistribution(
-      classification: map['classification'] == null ? null : (map['classification'] as String).input(),
-      cpeUri: map['cpeUri'] == null ? null : (map['cpeUri'] as String).input(),
-      cve: map['cve'] == null ? null : ((map['cve'] as List).cast<String>()).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      classification: map['classification'] == null ? null : (map['classification']! as String).input(),
+      cpeUri: map['cpeUri'] == null ? null : (map['cpeUri']! as String).input(),
+      cve: map['cve'] == null ? null : ((map['cve']! as List).cast<String>()).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
     );
   }
 }

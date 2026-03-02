@@ -26,8 +26,8 @@ class CaseClassification {
 
   factory CaseClassification.fromMap(Map<String, dynamic> map) {
     return CaseClassification(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

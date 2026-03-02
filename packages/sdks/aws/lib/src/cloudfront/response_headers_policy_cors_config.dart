@@ -55,11 +55,11 @@ class ResponseHeadersPolicyCorsConfig {
   factory ResponseHeadersPolicyCorsConfig.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicyCorsConfig(
       accessControlAllowCredentials: (map['accessControlAllowCredentials'] as bool).input(),
-      accessControlAllowHeaders: (ResponseHeadersPolicyCorsConfigAccessControlAllowHeaders.fromMap((map['accessControlAllowHeaders'] as Map).cast<String, dynamic>())).input(),
-      accessControlAllowMethods: (ResponseHeadersPolicyCorsConfigAccessControlAllowMethods.fromMap((map['accessControlAllowMethods'] as Map).cast<String, dynamic>())).input(),
-      accessControlAllowOrigins: (ResponseHeadersPolicyCorsConfigAccessControlAllowOrigins.fromMap((map['accessControlAllowOrigins'] as Map).cast<String, dynamic>())).input(),
-      accessControlExposeHeaders: map['accessControlExposeHeaders'] == null ? null : (ResponseHeadersPolicyCorsConfigAccessControlExposeHeaders.fromMap((map['accessControlExposeHeaders'] as Map).cast<String, dynamic>())).input(),
-      accessControlMaxAgeSec: map['accessControlMaxAgeSec'] == null ? null : (map['accessControlMaxAgeSec'] as int).input(),
+      accessControlAllowHeaders: (ResponseHeadersPolicyCorsConfigAccessControlAllowHeaders.fromMap((map['accessControlAllowHeaders']! as Map).cast<String, dynamic>())).input(),
+      accessControlAllowMethods: (ResponseHeadersPolicyCorsConfigAccessControlAllowMethods.fromMap((map['accessControlAllowMethods']! as Map).cast<String, dynamic>())).input(),
+      accessControlAllowOrigins: (ResponseHeadersPolicyCorsConfigAccessControlAllowOrigins.fromMap((map['accessControlAllowOrigins']! as Map).cast<String, dynamic>())).input(),
+      accessControlExposeHeaders: map['accessControlExposeHeaders'] == null ? null : ((ResponseHeadersPolicyCorsConfigAccessControlExposeHeaders.fromMap((map['accessControlExposeHeaders']! as Map).cast<String, dynamic>())).input()).input(),
+      accessControlMaxAgeSec: map['accessControlMaxAgeSec'] == null ? null : ((map['accessControlMaxAgeSec'] as int).input()).input(),
       originOverride: (map['originOverride'] as bool).input(),
     );
   }

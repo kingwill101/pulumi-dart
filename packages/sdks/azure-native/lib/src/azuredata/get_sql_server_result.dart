@@ -61,14 +61,14 @@ class GetSqlServerResult {
   factory GetSqlServerResult.fromMap(Map<String, dynamic> map) {
     return GetSqlServerResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      cores: map['cores'] == null ? null : map['cores'] as int,
-      edition: map['edition'] == null ? null : map['edition'] as String,
+      cores: map['cores'] == null ? null : map['cores']! as int,
+      edition: map['edition'] == null ? null : map['edition']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      propertyBag: map['propertyBag'] == null ? null : map['propertyBag'] as String,
-      registrationID: map['registrationID'] == null ? null : map['registrationID'] as String,
+      propertyBag: map['propertyBag'] == null ? null : map['propertyBag']! as String,
+      registrationID: map['registrationID'] == null ? null : map['registrationID']! as String,
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

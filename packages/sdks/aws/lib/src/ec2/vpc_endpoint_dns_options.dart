@@ -35,10 +35,10 @@ class VpcEndpointDnsOptions {
 
   factory VpcEndpointDnsOptions.fromMap(Map<String, dynamic> map) {
     return VpcEndpointDnsOptions(
-      dnsRecordIpType: map['dnsRecordIpType'] == null ? null : (map['dnsRecordIpType'] as String).input(),
-      privateDnsOnlyForInboundResolverEndpoint: map['privateDnsOnlyForInboundResolverEndpoint'] == null ? null : (map['privateDnsOnlyForInboundResolverEndpoint'] as bool).input(),
-      privateDnsPreference: map['privateDnsPreference'] == null ? null : (map['privateDnsPreference'] as String).input(),
-      privateDnsSpecifiedDomains: map['privateDnsSpecifiedDomains'] == null ? null : ((map['privateDnsSpecifiedDomains'] as List).cast<String>()).input(),
+      dnsRecordIpType: map['dnsRecordIpType'] == null ? null : ((map['dnsRecordIpType'] as String).input()).input(),
+      privateDnsOnlyForInboundResolverEndpoint: map['privateDnsOnlyForInboundResolverEndpoint'] == null ? null : ((map['privateDnsOnlyForInboundResolverEndpoint'] as bool).input()).input(),
+      privateDnsPreference: map['privateDnsPreference'] == null ? null : ((map['privateDnsPreference'] as String).input()).input(),
+      privateDnsSpecifiedDomains: map['privateDnsSpecifiedDomains'] == null ? null : (((map['privateDnsSpecifiedDomains'] as List).cast<String>()).input()).input(),
     );
   }
 }

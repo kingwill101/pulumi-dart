@@ -21,7 +21,7 @@ class MembershipBindingState {
 
   factory MembershipBindingState.fromMap(Map<String, dynamic> map) {
     return MembershipBindingState(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
     );
   }
 }

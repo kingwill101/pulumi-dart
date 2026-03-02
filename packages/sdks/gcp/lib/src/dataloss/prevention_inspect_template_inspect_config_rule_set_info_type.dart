@@ -34,8 +34,8 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoType {
   factory PreventionInspectTemplateInspectConfigRuleSetInfoType.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigRuleSetInfoType(
       name: (map['name'] as String).input(),
-      sensitivityScore: map['sensitivityScore'] == null ? null : (PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore.fromMap((map['sensitivityScore'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      sensitivityScore: map['sensitivityScore'] == null ? null : (PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore.fromMap((map['sensitivityScore']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

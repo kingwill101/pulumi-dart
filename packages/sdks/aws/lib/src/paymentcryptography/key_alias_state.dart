@@ -33,9 +33,9 @@ class KeyAliasState {
 
   factory KeyAliasState.fromMap(Map<String, dynamic> map) {
     return KeyAliasState(
-      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
-      keyArn: map['keyArn'] == null ? null : (map['keyArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      aliasName: map['aliasName'] == null ? null : ((map['aliasName'] as String).input()).input(),
+      keyArn: map['keyArn'] == null ? null : ((map['keyArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

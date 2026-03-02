@@ -25,7 +25,7 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
 
   factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet(
-      enableMachineLearning: map['enableMachineLearning'] == null ? null : (map['enableMachineLearning'] as bool).input(),
+      enableMachineLearning: map['enableMachineLearning'] == null ? null : ((map['enableMachineLearning'] as bool).input()).input(),
       inspectionLevel: (map['inspectionLevel'] as String).input(),
     );
   }

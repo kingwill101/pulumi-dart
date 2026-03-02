@@ -30,8 +30,8 @@ class GetHypervisorV2Args {
 
   factory GetHypervisorV2Args.fromMap(Map<String, dynamic> map) {
     return GetHypervisorV2Args(
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

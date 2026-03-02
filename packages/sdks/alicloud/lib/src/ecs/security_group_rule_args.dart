@@ -87,18 +87,18 @@ class SecurityGroupRuleArgs {
 
   factory SecurityGroupRuleArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGroupRuleArgs(
-      cidrIp: map['cidrIp'] == null ? null : (map['cidrIp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      cidrIp: map['cidrIp'] == null ? null : (map['cidrIp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       ipProtocol: (map['ipProtocol'] as String).input(),
-      ipv6CidrIp: map['ipv6CidrIp'] == null ? null : (map['ipv6CidrIp'] as String).input(),
-      nicType: map['nicType'] == null ? null : (map['nicType'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      portRange: map['portRange'] == null ? null : (map['portRange'] as String).input(),
-      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      ipv6CidrIp: map['ipv6CidrIp'] == null ? null : (map['ipv6CidrIp']! as String).input(),
+      nicType: map['nicType'] == null ? null : (map['nicType']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      portRange: map['portRange'] == null ? null : (map['portRange']! as String).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       securityGroupId: (map['securityGroupId'] as String).input(),
-      sourceGroupOwnerAccount: map['sourceGroupOwnerAccount'] == null ? null : (map['sourceGroupOwnerAccount'] as String).input(),
-      sourceSecurityGroupId: map['sourceSecurityGroupId'] == null ? null : (map['sourceSecurityGroupId'] as String).input(),
+      sourceGroupOwnerAccount: map['sourceGroupOwnerAccount'] == null ? null : (map['sourceGroupOwnerAccount']! as String).input(),
+      sourceSecurityGroupId: map['sourceSecurityGroupId'] == null ? null : (map['sourceSecurityGroupId']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -31,9 +31,9 @@ class URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersT
 
   factory URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd.fromMap(Map<String, dynamic> map) {
     return URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(
-      headerName: map['headerName'] == null ? null : (map['headerName'] as String).input(),
-      headerValue: map['headerValue'] == null ? null : (map['headerValue'] as String).input(),
-      replace: map['replace'] == null ? null : (map['replace'] as bool).input(),
+      headerName: map['headerName'] == null ? null : (map['headerName']! as String).input(),
+      headerValue: map['headerValue'] == null ? null : (map['headerValue']! as String).input(),
+      replace: map['replace'] == null ? null : (map['replace']! as bool).input(),
     );
   }
 }

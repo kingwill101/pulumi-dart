@@ -25,8 +25,8 @@ class ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation {
 
   factory ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      objectKey: map['objectKey'] == null ? null : (map['objectKey'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : ((map['bucketName'] as String).input()).input(),
+      objectKey: map['objectKey'] == null ? null : ((map['objectKey'] as String).input()).input(),
     );
   }
 }

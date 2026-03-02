@@ -26,8 +26,8 @@ class BucketObjectOwner {
 
   factory BucketObjectOwner.fromMap(Map<String, dynamic> map) {
     return BucketObjectOwner(
-      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
-      entityId: map['entityId'] == null ? null : (map['entityId'] as String).input(),
+      entity: map['entity'] == null ? null : (map['entity']! as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId']! as String).input(),
     );
   }
 }

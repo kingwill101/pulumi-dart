@@ -38,8 +38,8 @@ class GetAiFeatureOnlineStoreIamPolicyArgs {
   factory GetAiFeatureOnlineStoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAiFeatureOnlineStoreIamPolicyArgs(
       featureOnlineStore: (map['featureOnlineStore'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

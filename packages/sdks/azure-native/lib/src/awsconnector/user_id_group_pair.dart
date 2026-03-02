@@ -51,13 +51,13 @@ class UserIdGroupPair {
 
   factory UserIdGroupPair.fromMap(Map<String, dynamic> map) {
     return UserIdGroupPair(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      peeringStatus: map['peeringStatus'] == null ? null : (map['peeringStatus'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : (map['vpcPeeringConnectionId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      peeringStatus: map['peeringStatus'] == null ? null : (map['peeringStatus']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : (map['vpcPeeringConnectionId']! as String).input(),
     );
   }
 }

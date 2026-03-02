@@ -53,13 +53,13 @@ class GoogleCloudMlV1TrainingOutput {
 
   factory GoogleCloudMlV1TrainingOutput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1TrainingOutput(
-      builtInAlgorithmOutput: map['builtInAlgorithmOutput'] == null ? null : (GoogleCloudMlV1BuiltInAlgorithmOutput.fromMap((map['builtInAlgorithmOutput'] as Map).cast<String, dynamic>())).input(),
-      completedTrialCount: map['completedTrialCount'] == null ? null : (map['completedTrialCount'] as String).input(),
-      consumedMLUnits: map['consumedMLUnits'] == null ? null : (map['consumedMLUnits'] as double).input(),
-      hyperparameterMetricTag: map['hyperparameterMetricTag'] == null ? null : (map['hyperparameterMetricTag'] as String).input(),
-      isBuiltInAlgorithmJob: map['isBuiltInAlgorithmJob'] == null ? null : (map['isBuiltInAlgorithmJob'] as bool).input(),
-      isHyperparameterTuningJob: map['isHyperparameterTuningJob'] == null ? null : (map['isHyperparameterTuningJob'] as bool).input(),
-      trials: map['trials'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1HyperparameterOutput>(map['trials'], (value) => GoogleCloudMlV1HyperparameterOutput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      builtInAlgorithmOutput: map['builtInAlgorithmOutput'] == null ? null : (GoogleCloudMlV1BuiltInAlgorithmOutput.fromMap((map['builtInAlgorithmOutput']! as Map).cast<String, dynamic>())).input(),
+      completedTrialCount: map['completedTrialCount'] == null ? null : (map['completedTrialCount']! as String).input(),
+      consumedMLUnits: map['consumedMLUnits'] == null ? null : (map['consumedMLUnits']! as double).input(),
+      hyperparameterMetricTag: map['hyperparameterMetricTag'] == null ? null : (map['hyperparameterMetricTag']! as String).input(),
+      isBuiltInAlgorithmJob: map['isBuiltInAlgorithmJob'] == null ? null : (map['isBuiltInAlgorithmJob']! as bool).input(),
+      isHyperparameterTuningJob: map['isHyperparameterTuningJob'] == null ? null : (map['isHyperparameterTuningJob']! as bool).input(),
+      trials: map['trials'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1HyperparameterOutput>(map['trials']!, (value) => GoogleCloudMlV1HyperparameterOutput.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -37,9 +37,9 @@ class VpnGatewayConnectionRouting {
   factory VpnGatewayConnectionRouting.fromMap(Map<String, dynamic> map) {
     return VpnGatewayConnectionRouting(
       associatedRouteTable: (map['associatedRouteTable'] as String).input(),
-      inboundRouteMapId: map['inboundRouteMapId'] == null ? null : (map['inboundRouteMapId'] as String).input(),
-      outboundRouteMapId: map['outboundRouteMapId'] == null ? null : (map['outboundRouteMapId'] as String).input(),
-      propagatedRouteTable: map['propagatedRouteTable'] == null ? null : (VpnGatewayConnectionRoutingPropagatedRouteTable.fromMap((map['propagatedRouteTable'] as Map).cast<String, dynamic>())).input(),
+      inboundRouteMapId: map['inboundRouteMapId'] == null ? null : (map['inboundRouteMapId']! as String).input(),
+      outboundRouteMapId: map['outboundRouteMapId'] == null ? null : (map['outboundRouteMapId']! as String).input(),
+      propagatedRouteTable: map['propagatedRouteTable'] == null ? null : (VpnGatewayConnectionRoutingPropagatedRouteTable.fromMap((map['propagatedRouteTable']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

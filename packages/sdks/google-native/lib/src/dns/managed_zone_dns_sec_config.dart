@@ -37,10 +37,10 @@ class ManagedZoneDnsSecConfig {
 
   factory ManagedZoneDnsSecConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneDnsSecConfig(
-      defaultKeySpecs: map['defaultKeySpecs'] == null ? null : (pulumi.Input.decodeList<DnsKeySpec>(map['defaultKeySpecs'], (value) => DnsKeySpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      nonExistence: map['nonExistence'] == null ? null : (ManagedZoneDnsSecConfigNonExistence.fromValue(map['nonExistence'] as String)).input(),
-      state: map['state'] == null ? null : (ManagedZoneDnsSecConfigState.fromValue(map['state'] as String)).input(),
+      defaultKeySpecs: map['defaultKeySpecs'] == null ? null : (pulumi.Input.decodeList<DnsKeySpec>(map['defaultKeySpecs']!, (value) => DnsKeySpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      nonExistence: map['nonExistence'] == null ? null : (ManagedZoneDnsSecConfigNonExistence.fromValue(map['nonExistence']! as String)).input(),
+      state: map['state'] == null ? null : (ManagedZoneDnsSecConfigState.fromValue(map['state']! as String)).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression(
-      condition: map['condition'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

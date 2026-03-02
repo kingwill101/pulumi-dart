@@ -66,13 +66,13 @@ class WindowsConfigurationResponse {
 
   factory WindowsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WindowsConfigurationResponse(
-      additionalUnattendContent: map['additionalUnattendContent'] == null ? null : (pulumi.Input.decodeList<AdditionalUnattendContentResponse>(map['additionalUnattendContent'], (value) => AdditionalUnattendContentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates'] as bool).input(),
-      enableVMAgentPlatformUpdates: map['enableVMAgentPlatformUpdates'] == null ? null : (map['enableVMAgentPlatformUpdates'] as bool).input(),
-      patchSettings: map['patchSettings'] == null ? null : (PatchSettingsResponse.fromMap((map['patchSettings'] as Map).cast<String, dynamic>())).input(),
-      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent'] as bool).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      winRM: map['winRM'] == null ? null : (WinRMConfigurationResponse.fromMap((map['winRM'] as Map).cast<String, dynamic>())).input(),
+      additionalUnattendContent: map['additionalUnattendContent'] == null ? null : (pulumi.Input.decodeList<AdditionalUnattendContentResponse>(map['additionalUnattendContent']!, (value) => AdditionalUnattendContentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates']! as bool).input(),
+      enableVMAgentPlatformUpdates: map['enableVMAgentPlatformUpdates'] == null ? null : (map['enableVMAgentPlatformUpdates']! as bool).input(),
+      patchSettings: map['patchSettings'] == null ? null : (PatchSettingsResponse.fromMap((map['patchSettings']! as Map).cast<String, dynamic>())).input(),
+      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent']! as bool).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      winRM: map['winRM'] == null ? null : (WinRMConfigurationResponse.fromMap((map['winRM']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

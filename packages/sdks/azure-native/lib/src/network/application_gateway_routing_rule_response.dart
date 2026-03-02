@@ -67,15 +67,15 @@ class ApplicationGatewayRoutingRuleResponse {
 
   factory ApplicationGatewayRoutingRuleResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRoutingRuleResponse(
-      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResourceResponse.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
-      backendSettings: map['backendSettings'] == null ? null : (SubResourceResponse.fromMap((map['backendSettings'] as Map).cast<String, dynamic>())).input(),
+      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResourceResponse.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>())).input(),
+      backendSettings: map['backendSettings'] == null ? null : (SubResourceResponse.fromMap((map['backendSettings']! as Map).cast<String, dynamic>())).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      listener: map['listener'] == null ? null : (SubResourceResponse.fromMap((map['listener'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      listener: map['listener'] == null ? null : (SubResourceResponse.fromMap((map['listener']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       priority: (map['priority'] as int).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as String).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

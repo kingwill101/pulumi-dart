@@ -31,7 +31,7 @@ class ServiceTemplateContainerSourceCodeCloudStorageSource {
   factory ServiceTemplateContainerSourceCodeCloudStorageSource.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateContainerSourceCodeCloudStorageSource(
       bucket: (map['bucket'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
       object: (map['object'] as String).input(),
     );
   }

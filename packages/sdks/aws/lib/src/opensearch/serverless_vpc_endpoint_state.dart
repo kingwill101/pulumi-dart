@@ -48,12 +48,12 @@ class ServerlessVpcEndpointState {
 
   factory ServerlessVpcEndpointState.fromMap(Map<String, dynamic> map) {
     return ServerlessVpcEndpointState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ServerlessVpcEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
+      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ServerlessVpcEndpointTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

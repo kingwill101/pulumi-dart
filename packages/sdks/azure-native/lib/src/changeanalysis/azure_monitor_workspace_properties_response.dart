@@ -31,9 +31,9 @@ class AzureMonitorWorkspacePropertiesResponse {
 
   factory AzureMonitorWorkspacePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspacePropertiesResponse(
-      includeChangeDetails: map['includeChangeDetails'] == null ? null : (map['includeChangeDetails'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
+      includeChangeDetails: map['includeChangeDetails'] == null ? null : (map['includeChangeDetails']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId']! as String).input(),
     );
   }
 }

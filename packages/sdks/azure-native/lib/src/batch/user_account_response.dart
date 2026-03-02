@@ -43,11 +43,11 @@ class UserAccountResponse {
 
   factory UserAccountResponse.fromMap(Map<String, dynamic> map) {
     return UserAccountResponse(
-      elevationLevel: map['elevationLevel'] == null ? null : (map['elevationLevel'] as String).input(),
-      linuxUserConfiguration: map['linuxUserConfiguration'] == null ? null : (LinuxUserConfigurationResponse.fromMap((map['linuxUserConfiguration'] as Map).cast<String, dynamic>())).input(),
+      elevationLevel: map['elevationLevel'] == null ? null : (map['elevationLevel']! as String).input(),
+      linuxUserConfiguration: map['linuxUserConfiguration'] == null ? null : (LinuxUserConfigurationResponse.fromMap((map['linuxUserConfiguration']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       password: (map['password'] as String).input(),
-      windowsUserConfiguration: map['windowsUserConfiguration'] == null ? null : (WindowsUserConfigurationResponse.fromMap((map['windowsUserConfiguration'] as Map).cast<String, dynamic>())).input(),
+      windowsUserConfiguration: map['windowsUserConfiguration'] == null ? null : (WindowsUserConfigurationResponse.fromMap((map['windowsUserConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

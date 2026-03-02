@@ -27,8 +27,8 @@ class ListActiveConnectivityConfigurationResult {
 
   factory ListActiveConnectivityConfigurationResult.fromMap(Map<String, dynamic> map) {
     return ListActiveConnectivityConfigurationResult(
-      skipToken: map['skipToken'] == null ? null : map['skipToken'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ActiveConnectivityConfigurationResponse>(map['value'], (value) => ActiveConnectivityConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      skipToken: map['skipToken'] == null ? null : map['skipToken']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ActiveConnectivityConfigurationResponse>(map['value']!, (value) => ActiveConnectivityConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

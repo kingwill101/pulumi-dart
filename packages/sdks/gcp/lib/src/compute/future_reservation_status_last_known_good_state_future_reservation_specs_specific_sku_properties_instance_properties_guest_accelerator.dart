@@ -25,8 +25,8 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSku
 
   factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator(
-      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount'] as int).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
+      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount']! as int).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
     );
   }
 }

@@ -89,18 +89,18 @@ class GatewayVpnAttachmentTunnelOptionsSpecification {
   factory GatewayVpnAttachmentTunnelOptionsSpecification.fromMap(Map<String, dynamic> map) {
     return GatewayVpnAttachmentTunnelOptionsSpecification(
       customerGatewayId: (map['customerGatewayId'] as String).input(),
-      enableDpd: map['enableDpd'] == null ? null : (map['enableDpd'] as bool).input(),
-      enableNatTraversal: map['enableNatTraversal'] == null ? null : (map['enableNatTraversal'] as bool).input(),
-      internetIp: map['internetIp'] == null ? null : (map['internetIp'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tunnelBgpConfig: map['tunnelBgpConfig'] == null ? null : (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig.fromMap((map['tunnelBgpConfig'] as Map).cast<String, dynamic>())).input(),
-      tunnelId: map['tunnelId'] == null ? null : (map['tunnelId'] as String).input(),
-      tunnelIkeConfig: map['tunnelIkeConfig'] == null ? null : (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig.fromMap((map['tunnelIkeConfig'] as Map).cast<String, dynamic>())).input(),
+      enableDpd: map['enableDpd'] == null ? null : (map['enableDpd']! as bool).input(),
+      enableNatTraversal: map['enableNatTraversal'] == null ? null : (map['enableNatTraversal']! as bool).input(),
+      internetIp: map['internetIp'] == null ? null : (map['internetIp']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tunnelBgpConfig: map['tunnelBgpConfig'] == null ? null : (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig.fromMap((map['tunnelBgpConfig']! as Map).cast<String, dynamic>())).input(),
+      tunnelId: map['tunnelId'] == null ? null : (map['tunnelId']! as String).input(),
+      tunnelIkeConfig: map['tunnelIkeConfig'] == null ? null : (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig.fromMap((map['tunnelIkeConfig']! as Map).cast<String, dynamic>())).input(),
       tunnelIndex: (map['tunnelIndex'] as int).input(),
-      tunnelIpsecConfig: map['tunnelIpsecConfig'] == null ? null : (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig.fromMap((map['tunnelIpsecConfig'] as Map).cast<String, dynamic>())).input(),
-      zoneNo: map['zoneNo'] == null ? null : (map['zoneNo'] as String).input(),
+      tunnelIpsecConfig: map['tunnelIpsecConfig'] == null ? null : (GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig.fromMap((map['tunnelIpsecConfig']! as Map).cast<String, dynamic>())).input(),
+      zoneNo: map['zoneNo'] == null ? null : (map['zoneNo']! as String).input(),
     );
   }
 }

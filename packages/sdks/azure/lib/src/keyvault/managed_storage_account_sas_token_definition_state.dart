@@ -51,13 +51,13 @@ class ManagedStorageAccountSasTokenDefinitionState {
 
   factory ManagedStorageAccountSasTokenDefinitionState.fromMap(Map<String, dynamic> map) {
     return ManagedStorageAccountSasTokenDefinitionState(
-      managedStorageAccountId: map['managedStorageAccountId'] == null ? null : (map['managedStorageAccountId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sasTemplateUri: map['sasTemplateUri'] == null ? null : (map['sasTemplateUri'] as String).input(),
-      sasType: map['sasType'] == null ? null : (map['sasType'] as String).input(),
-      secretId: map['secretId'] == null ? null : (map['secretId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      validityPeriod: map['validityPeriod'] == null ? null : (map['validityPeriod'] as String).input(),
+      managedStorageAccountId: map['managedStorageAccountId'] == null ? null : (map['managedStorageAccountId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sasTemplateUri: map['sasTemplateUri'] == null ? null : (map['sasTemplateUri']! as String).input(),
+      sasType: map['sasType'] == null ? null : (map['sasType']! as String).input(),
+      secretId: map['secretId'] == null ? null : (map['secretId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      validityPeriod: map['validityPeriod'] == null ? null : (map['validityPeriod']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class GoogleCloudChannelV1AssociationInfo {
 
   factory GoogleCloudChannelV1AssociationInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1AssociationInfo(
-      baseEntitlement: map['baseEntitlement'] == null ? null : (map['baseEntitlement'] as String).input(),
+      baseEntitlement: map['baseEntitlement'] == null ? null : (map['baseEntitlement']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class StorageProfile {
 
   factory StorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageProfile(
-      diskSizeInGB: map['diskSizeInGB'] == null ? null : (map['diskSizeInGB'] as int).input(),
-      fileShareName: map['fileShareName'] == null ? null : (map['fileShareName'] as String).input(),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
+      diskSizeInGB: map['diskSizeInGB'] == null ? null : (map['diskSizeInGB']! as int).input(),
+      fileShareName: map['fileShareName'] == null ? null : (map['fileShareName']! as String).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class TagFilterListHealthcareV1beta1 {
 
   factory TagFilterListHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return TagFilterListHealthcareV1beta1(
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

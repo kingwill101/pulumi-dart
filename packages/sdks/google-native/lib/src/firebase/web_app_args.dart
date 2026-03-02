@@ -48,12 +48,12 @@ class WebAppArgs {
 
   factory WebAppArgs.fromMap(Map<String, dynamic> map) {
     return WebAppArgs(
-      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
-      appUrls: map['appUrls'] == null ? null : ((map['appUrls'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId']! as String).input(),
+      appUrls: map['appUrls'] == null ? null : ((map['appUrls']! as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

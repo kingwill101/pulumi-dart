@@ -31,9 +31,9 @@ class DomainDevicesDiskSourceVhostUserFile {
 
   factory DomainDevicesDiskSourceVhostUserFile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceVhostUserFile(
-      append: map['append'] == null ? null : (map['append'] as String).input(),
+      append: map['append'] == null ? null : (map['append']! as String).input(),
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskSourceVhostUserFileSecLabel>(map['secLabels'], (value) => DomainDevicesDiskSourceVhostUserFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskSourceVhostUserFileSecLabel>(map['secLabels']!, (value) => DomainDevicesDiskSourceVhostUserFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

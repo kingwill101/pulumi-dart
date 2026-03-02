@@ -102,18 +102,18 @@ class PeerConnectionArgs {
 
   factory PeerConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PeerConnectionArgs(
-      acceptingAliUid: map['acceptingAliUid'] == null ? null : (map['acceptingAliUid'] as int).input(),
+      acceptingAliUid: map['acceptingAliUid'] == null ? null : (map['acceptingAliUid']! as int).input(),
       acceptingRegionId: (map['acceptingRegionId'] as String).input(),
       acceptingVpcId: (map['acceptingVpcId'] as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      linkType: map['linkType'] == null ? null : (map['linkType'] as String).input(),
-      peerConnectionName: map['peerConnectionName'] == null ? null : (map['peerConnectionName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
+      linkType: map['linkType'] == null ? null : (map['linkType']! as String).input(),
+      peerConnectionName: map['peerConnectionName'] == null ? null : (map['peerConnectionName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

@@ -53,10 +53,10 @@ class TerminalServerConfiguration {
     return TerminalServerConfiguration(
       password: (map['password'] as String).input(),
       primaryIpv4Prefix: (map['primaryIpv4Prefix'] as String).input(),
-      primaryIpv6Prefix: map['primaryIpv6Prefix'] == null ? null : (map['primaryIpv6Prefix'] as String).input(),
+      primaryIpv6Prefix: map['primaryIpv6Prefix'] == null ? null : (map['primaryIpv6Prefix']! as String).input(),
       secondaryIpv4Prefix: (map['secondaryIpv4Prefix'] as String).input(),
-      secondaryIpv6Prefix: map['secondaryIpv6Prefix'] == null ? null : (map['secondaryIpv6Prefix'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
+      secondaryIpv6Prefix: map['secondaryIpv6Prefix'] == null ? null : (map['secondaryIpv6Prefix']! as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
       username: (map['username'] as String).input(),
     );
   }

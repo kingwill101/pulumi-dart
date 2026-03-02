@@ -49,12 +49,12 @@ class ExperimentState {
 
   factory ExperimentState.fromMap(Map<String, dynamic> map) {
     return ExperimentState(
-      identity: map['identity'] == null ? null : (ExperimentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<ExperimentSelector>(map['selectors'], (value) => ExperimentSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      steps: map['steps'] == null ? null : (pulumi.Input.decodeList<ExperimentStep>(map['steps'], (value) => ExperimentStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (ExperimentIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<ExperimentSelector>(map['selectors']!, (value) => ExperimentSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      steps: map['steps'] == null ? null : (pulumi.Input.decodeList<ExperimentStep>(map['steps']!, (value) => ExperimentStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class IdentityProviderFacebookState {
 
   factory IdentityProviderFacebookState.fromMap(Map<String, dynamic> map) {
     return IdentityProviderFacebookState(
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      appSecret: map['appSecret'] == null ? null : (map['appSecret'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      appSecret: map['appSecret'] == null ? null : (map['appSecret']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

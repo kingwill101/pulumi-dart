@@ -68,16 +68,16 @@ class GceInstance {
 
   factory GceInstance.fromMap(Map<String, dynamic> map) {
     return GceInstance(
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb'] as int).input(),
-      confidentialInstanceConfig: map['confidentialInstanceConfig'] == null ? null : (GceConfidentialInstanceConfig.fromMap((map['confidentialInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      disablePublicIpAddresses: map['disablePublicIpAddresses'] == null ? null : (map['disablePublicIpAddresses'] as bool).input(),
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization'] as bool).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      poolSize: map['poolSize'] == null ? null : (map['poolSize'] as int).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      serviceAccountScopes: map['serviceAccountScopes'] == null ? null : ((map['serviceAccountScopes'] as List).cast<String>()).input(),
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (GceShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb']! as int).input(),
+      confidentialInstanceConfig: map['confidentialInstanceConfig'] == null ? null : (GceConfidentialInstanceConfig.fromMap((map['confidentialInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      disablePublicIpAddresses: map['disablePublicIpAddresses'] == null ? null : (map['disablePublicIpAddresses']! as bool).input(),
+      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization']! as bool).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      poolSize: map['poolSize'] == null ? null : (map['poolSize']! as int).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      serviceAccountScopes: map['serviceAccountScopes'] == null ? null : ((map['serviceAccountScopes']! as List).cast<String>()).input(),
+      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (GceShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

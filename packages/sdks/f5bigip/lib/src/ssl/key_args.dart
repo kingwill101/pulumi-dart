@@ -45,10 +45,10 @@ class KeyArgs {
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
       content: (map['content'] as String).input(),
-      fullPath: map['fullPath'] == null ? null : (map['fullPath'] as String).input(),
+      fullPath: map['fullPath'] == null ? null : (map['fullPath']! as String).input(),
       name: (map['name'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
-      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase']! as String).input(),
     );
   }
 }

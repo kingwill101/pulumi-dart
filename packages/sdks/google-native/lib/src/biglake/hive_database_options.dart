@@ -26,8 +26,8 @@ class HiveDatabaseOptions {
 
   factory HiveDatabaseOptions.fromMap(Map<String, dynamic> map) {
     return HiveDatabaseOptions(
-      locationUri: map['locationUri'] == null ? null : (map['locationUri'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      locationUri: map['locationUri'] == null ? null : (map['locationUri']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

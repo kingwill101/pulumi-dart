@@ -21,7 +21,7 @@ class SingleTargetDataset {
 
   factory SingleTargetDataset.fromMap(Map<String, dynamic> map) {
     return SingleTargetDataset(
-      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
     );
   }
 }

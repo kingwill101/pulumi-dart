@@ -45,10 +45,10 @@ class BackupVaultArgs {
   factory BackupVaultArgs.fromMap(Map<String, dynamic> map) {
     return BackupVaultArgs(
       accountName: (map['accountName'] as String).input(),
-      backupVaultName: map['backupVaultName'] == null ? null : (map['backupVaultName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      backupVaultName: map['backupVaultName'] == null ? null : (map['backupVaultName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

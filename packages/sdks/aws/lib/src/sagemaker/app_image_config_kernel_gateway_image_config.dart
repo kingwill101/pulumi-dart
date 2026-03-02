@@ -27,8 +27,8 @@ class AppImageConfigKernelGatewayImageConfig {
 
   factory AppImageConfigKernelGatewayImageConfig.fromMap(Map<String, dynamic> map) {
     return AppImageConfigKernelGatewayImageConfig(
-      fileSystemConfig: map['fileSystemConfig'] == null ? null : (AppImageConfigKernelGatewayImageConfigFileSystemConfig.fromMap((map['fileSystemConfig'] as Map).cast<String, dynamic>())).input(),
-      kernelSpecs: (pulumi.Input.decodeList<AppImageConfigKernelGatewayImageConfigKernelSpec>(map['kernelSpecs'], (value) => AppImageConfigKernelGatewayImageConfigKernelSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fileSystemConfig: map['fileSystemConfig'] == null ? null : ((AppImageConfigKernelGatewayImageConfigFileSystemConfig.fromMap((map['fileSystemConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      kernelSpecs: (pulumi.Input.decodeList<AppImageConfigKernelGatewayImageConfigKernelSpec>(map['kernelSpecs']!, (value) => AppImageConfigKernelGatewayImageConfigKernelSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

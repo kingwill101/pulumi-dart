@@ -28,7 +28,7 @@ class ListDnsForwardingRulesetByVirtualNetworkResult {
   factory ListDnsForwardingRulesetByVirtualNetworkResult.fromMap(Map<String, dynamic> map) {
     return ListDnsForwardingRulesetByVirtualNetworkResult(
       nextLink: map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<VirtualNetworkDnsForwardingRulesetResponse>(map['value'], (value) => VirtualNetworkDnsForwardingRulesetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<VirtualNetworkDnsForwardingRulesetResponse>(map['value']!, (value) => VirtualNetworkDnsForwardingRulesetResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

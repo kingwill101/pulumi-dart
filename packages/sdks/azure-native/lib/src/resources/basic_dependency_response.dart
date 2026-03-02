@@ -31,9 +31,9 @@ class BasicDependencyResponse {
 
   factory BasicDependencyResponse.fromMap(Map<String, dynamic> map) {
     return BasicDependencyResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

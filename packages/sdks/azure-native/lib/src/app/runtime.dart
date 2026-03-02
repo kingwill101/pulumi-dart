@@ -28,8 +28,8 @@ class Runtime {
 
   factory Runtime.fromMap(Map<String, dynamic> map) {
     return Runtime(
-      dotnet: map['dotnet'] == null ? null : (RuntimeDotnet.fromMap((map['dotnet'] as Map).cast<String, dynamic>())).input(),
-      java: map['java'] == null ? null : (RuntimeJava.fromMap((map['java'] as Map).cast<String, dynamic>())).input(),
+      dotnet: map['dotnet'] == null ? null : (RuntimeDotnet.fromMap((map['dotnet']! as Map).cast<String, dynamic>())).input(),
+      java: map['java'] == null ? null : (RuntimeJava.fromMap((map['java']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

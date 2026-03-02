@@ -41,11 +41,11 @@ class HierarchyInformation {
 
   factory HierarchyInformation.fromMap(Map<String, dynamic> map) {
     return HierarchyInformation(
-      configurationIdDisplayName: map['configurationIdDisplayName'] == null ? null : (map['configurationIdDisplayName'] as String).input(),
-      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
-      productFamilyName: map['productFamilyName'] == null ? null : (map['productFamilyName'] as String).input(),
-      productLineName: map['productLineName'] == null ? null : (map['productLineName'] as String).input(),
-      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
+      configurationIdDisplayName: map['configurationIdDisplayName'] == null ? null : (map['configurationIdDisplayName']! as String).input(),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName']! as String).input(),
+      productFamilyName: map['productFamilyName'] == null ? null : (map['productFamilyName']! as String).input(),
+      productLineName: map['productLineName'] == null ? null : (map['productLineName']! as String).input(),
+      productName: map['productName'] == null ? null : (map['productName']! as String).input(),
     );
   }
 }

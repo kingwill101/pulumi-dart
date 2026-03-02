@@ -33,9 +33,9 @@ class VaultPropertiesResponseEncryption {
 
   factory VaultPropertiesResponseEncryption.fromMap(Map<String, dynamic> map) {
     return VaultPropertiesResponseEncryption(
-      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : (map['infrastructureEncryption'] as String).input(),
-      kekIdentity: map['kekIdentity'] == null ? null : (CmkKekIdentityResponse.fromMap((map['kekIdentity'] as Map).cast<String, dynamic>())).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (CmkKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : (map['infrastructureEncryption']! as String).input(),
+      kekIdentity: map['kekIdentity'] == null ? null : (CmkKekIdentityResponse.fromMap((map['kekIdentity']! as Map).cast<String, dynamic>())).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (CmkKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

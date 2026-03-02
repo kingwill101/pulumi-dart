@@ -21,7 +21,7 @@ class Attestation {
 
   factory Attestation.fromMap(Map<String, dynamic> map) {
     return Attestation(
-      pgpSignedAttestation: map['pgpSignedAttestation'] == null ? null : (PgpSignedAttestation.fromMap((map['pgpSignedAttestation'] as Map).cast<String, dynamic>())).input(),
+      pgpSignedAttestation: map['pgpSignedAttestation'] == null ? null : (PgpSignedAttestation.fromMap((map['pgpSignedAttestation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

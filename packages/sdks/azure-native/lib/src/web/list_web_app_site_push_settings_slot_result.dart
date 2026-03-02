@@ -58,13 +58,13 @@ class ListWebAppSitePushSettingsSlotResult {
 
   factory ListWebAppSitePushSettingsSlotResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppSitePushSettingsSlotResult(
-      dynamicTagsJson: map['dynamicTagsJson'] == null ? null : map['dynamicTagsJson'] as String,
+      dynamicTagsJson: map['dynamicTagsJson'] == null ? null : map['dynamicTagsJson']! as String,
       id: map['id'] as String,
       isPushEnabled: map['isPushEnabled'] as bool,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
-      tagWhitelistJson: map['tagWhitelistJson'] == null ? null : map['tagWhitelistJson'] as String,
-      tagsRequiringAuth: map['tagsRequiringAuth'] == null ? null : map['tagsRequiringAuth'] as String,
+      tagWhitelistJson: map['tagWhitelistJson'] == null ? null : map['tagWhitelistJson']! as String,
+      tagsRequiringAuth: map['tagsRequiringAuth'] == null ? null : map['tagsRequiringAuth']! as String,
       type: map['type'] as String,
     );
   }

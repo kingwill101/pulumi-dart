@@ -42,10 +42,10 @@ class ExecutionWorkflowexecutionsV1betaArgs {
 
   factory ExecutionWorkflowexecutionsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return ExecutionWorkflowexecutionsV1betaArgs(
-      argument: map['argument'] == null ? null : (map['argument'] as String).input(),
-      callLogLevel: map['callLogLevel'] == null ? null : (ExecutionCallLogLevelWorkflowexecutionsV1beta.fromValue(map['callLogLevel'] as String)).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      argument: map['argument'] == null ? null : (map['argument']! as String).input(),
+      callLogLevel: map['callLogLevel'] == null ? null : (ExecutionCallLogLevelWorkflowexecutionsV1beta.fromValue(map['callLogLevel']! as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workflowId: (map['workflowId'] as String).input(),
     );
   }

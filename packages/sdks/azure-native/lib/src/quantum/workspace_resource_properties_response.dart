@@ -47,11 +47,11 @@ class WorkspaceResourcePropertiesResponse {
 
   factory WorkspaceResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceResourcePropertiesResponse(
-      apiKeyEnabled: map['apiKeyEnabled'] == null ? null : (map['apiKeyEnabled'] as bool).input(),
+      apiKeyEnabled: map['apiKeyEnabled'] == null ? null : (map['apiKeyEnabled']! as bool).input(),
       endpointUri: (map['endpointUri'] as String).input(),
-      providers: map['providers'] == null ? null : (pulumi.Input.decodeList<ProviderResponse>(map['providers'], (value) => ProviderResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      providers: map['providers'] == null ? null : (pulumi.Input.decodeList<ProviderResponse>(map['providers']!, (value) => ProviderResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      storageAccount: map['storageAccount'] == null ? null : (map['storageAccount'] as String).input(),
+      storageAccount: map['storageAccount'] == null ? null : (map['storageAccount']! as String).input(),
       usable: (map['usable'] as String).input(),
     );
   }

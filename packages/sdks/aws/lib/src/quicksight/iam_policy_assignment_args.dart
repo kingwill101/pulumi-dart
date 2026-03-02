@@ -59,11 +59,11 @@ class IamPolicyAssignmentArgs {
     return IamPolicyAssignmentArgs(
       assignmentName: (map['assignmentName'] as String).input(),
       assignmentStatus: (map['assignmentStatus'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      identities: map['identities'] == null ? null : (IamPolicyAssignmentIdentities.fromMap((map['identities'] as Map).cast<String, dynamic>())).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      policyArn: map['policyArn'] == null ? null : (map['policyArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      identities: map['identities'] == null ? null : ((IamPolicyAssignmentIdentities.fromMap((map['identities']! as Map).cast<String, dynamic>())).input()).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
+      policyArn: map['policyArn'] == null ? null : ((map['policyArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

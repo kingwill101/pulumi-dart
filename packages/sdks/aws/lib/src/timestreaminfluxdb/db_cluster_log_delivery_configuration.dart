@@ -21,7 +21,7 @@ class DbClusterLogDeliveryConfiguration {
 
   factory DbClusterLogDeliveryConfiguration.fromMap(Map<String, dynamic> map) {
     return DbClusterLogDeliveryConfiguration(
-      s3Configuration: map['s3Configuration'] == null ? null : (DbClusterLogDeliveryConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
+      s3Configuration: map['s3Configuration'] == null ? null : ((DbClusterLogDeliveryConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

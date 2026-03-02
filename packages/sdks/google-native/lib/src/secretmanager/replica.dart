@@ -27,8 +27,8 @@ class Replica {
 
   factory Replica.fromMap(Map<String, dynamic> map) {
     return Replica(
-      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : (CustomerManagedEncryption.fromMap((map['customerManagedEncryption'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : (CustomerManagedEncryption.fromMap((map['customerManagedEncryption']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
     );
   }
 }

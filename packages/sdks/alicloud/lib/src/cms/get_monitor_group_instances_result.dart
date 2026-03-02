@@ -41,8 +41,8 @@ class GetMonitorGroupInstancesResult {
       id: map['id'] as String,
       ids: map['ids'] as String,
       instances: pulumi.Input.decodeList<GetMonitorGroupInstancesInstance>(map['instances'], (value) => GetMonitorGroupInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      keyword: map['keyword'] == null ? null : map['keyword'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      keyword: map['keyword'] == null ? null : map['keyword']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

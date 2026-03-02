@@ -20,7 +20,7 @@ class DataPartitionNamesResponse {
 
   factory DataPartitionNamesResponse.fromMap(Map<String, dynamic> map) {
     return DataPartitionNamesResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -98,19 +98,19 @@ class PipelineState {
 
   factory PipelineState.fromMap(Map<String, dynamic> map) {
     return PipelineState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      jobCount: map['jobCount'] == null ? null : (map['jobCount'] as int).input(),
-      lastUpdateTime: map['lastUpdateTime'] == null ? null : (map['lastUpdateTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pipelineSources: map['pipelineSources'] == null ? null : ((map['pipelineSources'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scheduleInfo: map['scheduleInfo'] == null ? null : (PipelineScheduleInfo.fromMap((map['scheduleInfo'] as Map).cast<String, dynamic>())).input(),
-      schedulerServiceAccountEmail: map['schedulerServiceAccountEmail'] == null ? null : (map['schedulerServiceAccountEmail'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      workload: map['workload'] == null ? null : (PipelineWorkload.fromMap((map['workload'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      jobCount: map['jobCount'] == null ? null : (map['jobCount']! as int).input(),
+      lastUpdateTime: map['lastUpdateTime'] == null ? null : (map['lastUpdateTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pipelineSources: map['pipelineSources'] == null ? null : ((map['pipelineSources']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      scheduleInfo: map['scheduleInfo'] == null ? null : (PipelineScheduleInfo.fromMap((map['scheduleInfo']! as Map).cast<String, dynamic>())).input(),
+      schedulerServiceAccountEmail: map['schedulerServiceAccountEmail'] == null ? null : (map['schedulerServiceAccountEmail']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      workload: map['workload'] == null ? null : (PipelineWorkload.fromMap((map['workload']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

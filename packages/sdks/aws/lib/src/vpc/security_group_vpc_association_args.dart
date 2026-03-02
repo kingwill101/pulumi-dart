@@ -39,9 +39,9 @@ class SecurityGroupVpcAssociationArgs {
 
   factory SecurityGroupVpcAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGroupVpcAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       securityGroupId: (map['securityGroupId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (SecurityGroupVpcAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : ((SecurityGroupVpcAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

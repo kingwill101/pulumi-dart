@@ -20,7 +20,7 @@ class DataCellsFilterTimeouts {
 
   factory DataCellsFilterTimeouts.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

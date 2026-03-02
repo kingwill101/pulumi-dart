@@ -33,10 +33,10 @@ class VpcEndpointVpcOptions {
 
   factory VpcEndpointVpcOptions.fromMap(Map<String, dynamic> map) {
     return VpcEndpointVpcOptions(
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : (((map['availabilityZones'] as List).cast<String>()).input()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

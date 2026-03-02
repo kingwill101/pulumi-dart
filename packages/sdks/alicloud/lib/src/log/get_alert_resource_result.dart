@@ -33,8 +33,8 @@ class GetAlertResourceResult {
   factory GetAlertResourceResult.fromMap(Map<String, dynamic> map) {
     return GetAlertResourceResult(
       id: map['id'] as String,
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
+      project: map['project'] == null ? null : map['project']! as String,
       type: map['type'] as String,
     );
   }

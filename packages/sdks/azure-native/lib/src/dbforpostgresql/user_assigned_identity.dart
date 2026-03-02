@@ -32,9 +32,9 @@ class UserAssignedIdentity {
 
   factory UserAssignedIdentity.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentity(
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
       type: (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserIdentity>(map['userAssignedIdentities'], (value) => UserIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserIdentity>(map['userAssignedIdentities']!, (value) => UserIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

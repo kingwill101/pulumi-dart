@@ -36,7 +36,7 @@ class GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs {
   factory GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPartnerTenantBrowserDlpRuleIamPolicyArgs(
       browserDlpRuleId: (map['browserDlpRuleId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
       organizationId: (map['organizationId'] as String).input(),
       partnerTenantId: (map['partnerTenantId'] as String).input(),
     );

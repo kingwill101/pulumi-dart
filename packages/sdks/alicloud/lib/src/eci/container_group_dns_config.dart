@@ -31,9 +31,9 @@ class ContainerGroupDnsConfig {
 
   factory ContainerGroupDnsConfig.fromMap(Map<String, dynamic> map) {
     return ContainerGroupDnsConfig(
-      nameServers: map['nameServers'] == null ? null : ((map['nameServers'] as List).cast<String>()).input(),
-      options: map['options'] == null ? null : (pulumi.Input.decodeList<ContainerGroupDnsConfigOption>(map['options'], (value) => ContainerGroupDnsConfigOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      searches: map['searches'] == null ? null : ((map['searches'] as List).cast<String>()).input(),
+      nameServers: map['nameServers'] == null ? null : ((map['nameServers']! as List).cast<String>()).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<ContainerGroupDnsConfigOption>(map['options']!, (value) => ContainerGroupDnsConfigOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      searches: map['searches'] == null ? null : ((map['searches']! as List).cast<String>()).input(),
     );
   }
 }

@@ -48,7 +48,7 @@ class GetVolumeArgs {
       name: (map['name'] as String).input(),
       poolName: (map['poolName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityStyle: map['securityStyle'] == null ? null : (map['securityStyle'] as String).input(),
+      securityStyle: map['securityStyle'] == null ? null : (map['securityStyle']! as String).input(),
     );
   }
 }

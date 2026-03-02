@@ -25,8 +25,8 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketCon
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions(
-      bucketTypes: map['bucketTypes'] == null ? null : ((map['bucketTypes'] as List).cast<String>()).input(),
-      objectStorageClasses: map['objectStorageClasses'] == null ? null : ((map['objectStorageClasses'] as List).cast<String>()).input(),
+      bucketTypes: map['bucketTypes'] == null ? null : ((map['bucketTypes']! as List).cast<String>()).input(),
+      objectStorageClasses: map['objectStorageClasses'] == null ? null : ((map['objectStorageClasses']! as List).cast<String>()).input(),
     );
   }
 }

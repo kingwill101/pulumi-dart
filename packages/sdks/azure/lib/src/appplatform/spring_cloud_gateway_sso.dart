@@ -35,10 +35,10 @@ class SpringCloudGatewaySso {
 
   factory SpringCloudGatewaySso.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewaySso(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      issuerUri: map['issuerUri'] == null ? null : (map['issuerUri'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      issuerUri: map['issuerUri'] == null ? null : (map['issuerUri']! as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

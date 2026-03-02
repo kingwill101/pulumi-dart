@@ -32,9 +32,9 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredicti
 
   factory GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig(
-      attributionScoreSkewThresholds: map['attributionScoreSkewThresholds'] == null ? null : ((map['attributionScoreSkewThresholds'] as Map).cast<String, String>()).input(),
-      defaultSkewThreshold: map['defaultSkewThreshold'] == null ? null : (GoogleCloudAiplatformV1beta1ThresholdConfig.fromMap((map['defaultSkewThreshold'] as Map).cast<String, dynamic>())).input(),
-      skewThresholds: map['skewThresholds'] == null ? null : ((map['skewThresholds'] as Map).cast<String, String>()).input(),
+      attributionScoreSkewThresholds: map['attributionScoreSkewThresholds'] == null ? null : ((map['attributionScoreSkewThresholds']! as Map).cast<String, String>()).input(),
+      defaultSkewThreshold: map['defaultSkewThreshold'] == null ? null : (GoogleCloudAiplatformV1beta1ThresholdConfig.fromMap((map['defaultSkewThreshold']! as Map).cast<String, dynamic>())).input(),
+      skewThresholds: map['skewThresholds'] == null ? null : ((map['skewThresholds']! as Map).cast<String, String>()).input(),
     );
   }
 }

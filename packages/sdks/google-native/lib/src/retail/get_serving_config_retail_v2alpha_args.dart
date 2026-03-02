@@ -37,7 +37,7 @@ class GetServingConfigRetailV2alphaArgs {
     return GetServingConfigRetailV2alphaArgs(
       catalogId: (map['catalogId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       servingConfigId: (map['servingConfigId'] as String).input(),
     );
   }

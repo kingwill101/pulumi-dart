@@ -34,9 +34,9 @@ class ServiceMeshMembershipSpecGkehubV1alpha {
 
   factory ServiceMeshMembershipSpecGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMembershipSpecGkehubV1alpha(
-      controlPlane: map['controlPlane'] == null ? null : (ServiceMeshMembershipSpecControlPlaneGkehubV1alpha.fromValue(map['controlPlane'] as String)).input(),
-      defaultChannel: map['defaultChannel'] == null ? null : (ServiceMeshMembershipSpecDefaultChannel.fromValue(map['defaultChannel'] as String)).input(),
-      management: map['management'] == null ? null : (ServiceMeshMembershipSpecManagementGkehubV1alpha.fromValue(map['management'] as String)).input(),
+      controlPlane: map['controlPlane'] == null ? null : (ServiceMeshMembershipSpecControlPlaneGkehubV1alpha.fromValue(map['controlPlane']! as String)).input(),
+      defaultChannel: map['defaultChannel'] == null ? null : (ServiceMeshMembershipSpecDefaultChannel.fromValue(map['defaultChannel']! as String)).input(),
+      management: map['management'] == null ? null : (ServiceMeshMembershipSpecManagementGkehubV1alpha.fromValue(map['management']! as String)).input(),
     );
   }
 }

@@ -23,7 +23,7 @@ class TemplateFilterConfigMaliciousUriFilterSettings {
 
   factory TemplateFilterConfigMaliciousUriFilterSettings.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfigMaliciousUriFilterSettings(
-      filterEnforcement: map['filterEnforcement'] == null ? null : (map['filterEnforcement'] as String).input(),
+      filterEnforcement: map['filterEnforcement'] == null ? null : (map['filterEnforcement']! as String).input(),
     );
   }
 }

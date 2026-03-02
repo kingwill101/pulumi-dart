@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2BucketingConfig {
 
   factory GooglePrivacyDlpV2BucketingConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BucketingConfig(
-      buckets: map['buckets'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2Bucket>(map['buckets'], (value) => GooglePrivacyDlpV2Bucket.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      buckets: map['buckets'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2Bucket>(map['buckets']!, (value) => GooglePrivacyDlpV2Bucket.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

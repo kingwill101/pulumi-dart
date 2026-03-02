@@ -19,7 +19,7 @@ class RouteSpecTcpRouteMatch {
 
   factory RouteSpecTcpRouteMatch.fromMap(Map<String, dynamic> map) {
     return RouteSpecTcpRouteMatch(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
     );
   }
 }

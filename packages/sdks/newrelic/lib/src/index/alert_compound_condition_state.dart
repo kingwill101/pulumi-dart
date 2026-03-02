@@ -64,15 +64,15 @@ class AlertCompoundConditionState {
 
   factory AlertCompoundConditionState.fromMap(Map<String, dynamic> map) {
     return AlertCompoundConditionState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      componentConditions: map['componentConditions'] == null ? null : (pulumi.Input.decodeList<AlertCompoundConditionComponentCondition>(map['componentConditions'], (value) => AlertCompoundConditionComponentCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      facetMatchingBehavior: map['facetMatchingBehavior'] == null ? null : (map['facetMatchingBehavior'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl'] as String).input(),
-      thresholdDuration: map['thresholdDuration'] == null ? null : (map['thresholdDuration'] as int).input(),
-      triggerExpression: map['triggerExpression'] == null ? null : (map['triggerExpression'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      componentConditions: map['componentConditions'] == null ? null : (pulumi.Input.decodeList<AlertCompoundConditionComponentCondition>(map['componentConditions']!, (value) => AlertCompoundConditionComponentCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      facetMatchingBehavior: map['facetMatchingBehavior'] == null ? null : (map['facetMatchingBehavior']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl']! as String).input(),
+      thresholdDuration: map['thresholdDuration'] == null ? null : (map['thresholdDuration']! as int).input(),
+      triggerExpression: map['triggerExpression'] == null ? null : (map['triggerExpression']! as String).input(),
     );
   }
 }

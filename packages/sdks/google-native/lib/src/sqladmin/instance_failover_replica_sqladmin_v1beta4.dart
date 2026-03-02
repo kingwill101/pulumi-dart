@@ -26,8 +26,8 @@ class InstanceFailoverReplicaSqladminV1beta4 {
 
   factory InstanceFailoverReplicaSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return InstanceFailoverReplicaSqladminV1beta4(
-      available: map['available'] == null ? null : (map['available'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      available: map['available'] == null ? null : (map['available']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

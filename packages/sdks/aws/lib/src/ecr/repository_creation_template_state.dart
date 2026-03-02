@@ -78,18 +78,18 @@ class RepositoryCreationTemplateState {
 
   factory RepositoryCreationTemplateState.fromMap(Map<String, dynamic> map) {
     return RepositoryCreationTemplateState(
-      appliedFors: map['appliedFors'] == null ? null : ((map['appliedFors'] as List).cast<String>()).input(),
-      customRoleArn: map['customRoleArn'] == null ? null : (map['customRoleArn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<RepositoryCreationTemplateEncryptionConfiguration>(map['encryptionConfigurations'], (value) => RepositoryCreationTemplateEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      imageTagMutability: map['imageTagMutability'] == null ? null : (map['imageTagMutability'] as String).input(),
-      imageTagMutabilityExclusionFilters: map['imageTagMutabilityExclusionFilters'] == null ? null : (pulumi.Input.decodeList<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>(map['imageTagMutabilityExclusionFilters'], (value) => RepositoryCreationTemplateImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lifecyclePolicy: map['lifecyclePolicy'] == null ? null : (map['lifecyclePolicy'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
-      repositoryPolicy: map['repositoryPolicy'] == null ? null : (map['repositoryPolicy'] as String).input(),
-      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags'] as Map).cast<String, String>()).input(),
+      appliedFors: map['appliedFors'] == null ? null : (((map['appliedFors'] as List).cast<String>()).input()).input(),
+      customRoleArn: map['customRoleArn'] == null ? null : ((map['customRoleArn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : ((pulumi.Input.decodeList<RepositoryCreationTemplateEncryptionConfiguration>(map['encryptionConfigurations']!, (value) => RepositoryCreationTemplateEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      imageTagMutability: map['imageTagMutability'] == null ? null : ((map['imageTagMutability'] as String).input()).input(),
+      imageTagMutabilityExclusionFilters: map['imageTagMutabilityExclusionFilters'] == null ? null : ((pulumi.Input.decodeList<RepositoryCreationTemplateImageTagMutabilityExclusionFilter>(map['imageTagMutabilityExclusionFilters']!, (value) => RepositoryCreationTemplateImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      lifecyclePolicy: map['lifecyclePolicy'] == null ? null : ((map['lifecyclePolicy'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registryId: map['registryId'] == null ? null : ((map['registryId'] as String).input()).input(),
+      repositoryPolicy: map['repositoryPolicy'] == null ? null : ((map['repositoryPolicy'] as String).input()).input(),
+      resourceTags: map['resourceTags'] == null ? null : (((map['resourceTags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

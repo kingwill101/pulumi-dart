@@ -26,8 +26,8 @@ class AzureFirewallSkuResponse {
 
   factory AzureFirewallSkuResponse.fromMap(Map<String, dynamic> map) {
     return AzureFirewallSkuResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

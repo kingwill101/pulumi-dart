@@ -40,7 +40,7 @@ class PlacementGroupArgs {
   factory PlacementGroupArgs.fromMap(Map<String, dynamic> map) {
     return PlacementGroupArgs(
       label: (map['label'] as String).input(),
-      placementGroupPolicy: map['placementGroupPolicy'] == null ? null : (map['placementGroupPolicy'] as String).input(),
+      placementGroupPolicy: map['placementGroupPolicy'] == null ? null : (map['placementGroupPolicy']! as String).input(),
       placementGroupType: (map['placementGroupType'] as String).input(),
       region: (map['region'] as String).input(),
     );

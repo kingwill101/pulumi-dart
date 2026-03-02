@@ -31,9 +31,9 @@ class GoogleCloudDialogflowV2Context {
 
   factory GoogleCloudDialogflowV2Context.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2Context(
-      lifespanCount: map['lifespanCount'] == null ? null : (map['lifespanCount'] as int).input(),
+      lifespanCount: map['lifespanCount'] == null ? null : (map['lifespanCount']! as int).input(),
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

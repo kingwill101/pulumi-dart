@@ -20,7 +20,7 @@ class EcsLaunchTemplateImageOptions {
 
   factory EcsLaunchTemplateImageOptions.fromMap(Map<String, dynamic> map) {
     return EcsLaunchTemplateImageOptions(
-      loginAsNonRoot: map['loginAsNonRoot'] == null ? null : (map['loginAsNonRoot'] as bool).input(),
+      loginAsNonRoot: map['loginAsNonRoot'] == null ? null : (map['loginAsNonRoot']! as bool).input(),
     );
   }
 }

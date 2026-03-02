@@ -79,16 +79,16 @@ class GalleryImageVersionArgs {
   factory GalleryImageVersionArgs.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionArgs(
       galleryImageName: (map['galleryImageName'] as String).input(),
-      galleryImageVersionName: map['galleryImageVersionName'] == null ? null : (map['galleryImageVersionName'] as String).input(),
+      galleryImageVersionName: map['galleryImageVersionName'] == null ? null : (map['galleryImageVersionName']! as String).input(),
       galleryName: (map['galleryName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      publishingProfile: map['publishingProfile'] == null ? null : (GalleryImageVersionPublishingProfile.fromMap((map['publishingProfile'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      publishingProfile: map['publishingProfile'] == null ? null : (GalleryImageVersionPublishingProfile.fromMap((map['publishingProfile']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      restore: map['restore'] == null ? null : (map['restore'] as bool).input(),
-      safetyProfile: map['safetyProfile'] == null ? null : (GalleryImageVersionSafetyProfile.fromMap((map['safetyProfile'] as Map).cast<String, dynamic>())).input(),
-      securityProfile: map['securityProfile'] == null ? null : (ImageVersionSecurityProfile.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
+      restore: map['restore'] == null ? null : (map['restore']! as bool).input(),
+      safetyProfile: map['safetyProfile'] == null ? null : (GalleryImageVersionSafetyProfile.fromMap((map['safetyProfile']! as Map).cast<String, dynamic>())).input(),
+      securityProfile: map['securityProfile'] == null ? null : (ImageVersionSecurityProfile.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
       storageProfile: (GalleryImageVersionStorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

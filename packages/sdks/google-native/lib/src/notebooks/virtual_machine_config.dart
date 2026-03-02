@@ -97,21 +97,21 @@ class VirtualMachineConfig {
 
   factory VirtualMachineConfig.fromMap(Map<String, dynamic> map) {
     return VirtualMachineConfig(
-      acceleratorConfig: map['acceleratorConfig'] == null ? null : (RuntimeAcceleratorConfig.fromMap((map['acceleratorConfig'] as Map).cast<String, dynamic>())).input(),
-      bootImage: map['bootImage'] == null ? null : ((map['bootImage'] as Map).cast<String, dynamic>()).input(),
-      containerImages: map['containerImages'] == null ? null : (pulumi.Input.decodeList<ContainerImage>(map['containerImages'], (value) => ContainerImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acceleratorConfig: map['acceleratorConfig'] == null ? null : (RuntimeAcceleratorConfig.fromMap((map['acceleratorConfig']! as Map).cast<String, dynamic>())).input(),
+      bootImage: map['bootImage'] == null ? null : ((map['bootImage']! as Map).cast<String, dynamic>()).input(),
+      containerImages: map['containerImages'] == null ? null : (pulumi.Input.decodeList<ContainerImage>(map['containerImages']!, (value) => ContainerImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dataDisk: (LocalDisk.fromMap((map['dataDisk'] as Map).cast<String, dynamic>())).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      internalIpOnly: map['internalIpOnly'] == null ? null : (map['internalIpOnly'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      internalIpOnly: map['internalIpOnly'] == null ? null : (map['internalIpOnly']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       machineType: (map['machineType'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      nicType: map['nicType'] == null ? null : (VirtualMachineConfigNicType.fromValue(map['nicType'] as String)).input(),
-      reservedIpRange: map['reservedIpRange'] == null ? null : (map['reservedIpRange'] as String).input(),
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (RuntimeShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      nicType: map['nicType'] == null ? null : (VirtualMachineConfigNicType.fromValue(map['nicType']! as String)).input(),
+      reservedIpRange: map['reservedIpRange'] == null ? null : (map['reservedIpRange']! as String).input(),
+      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (RuntimeShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

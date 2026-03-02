@@ -80,16 +80,16 @@ class RoleArgs {
   factory RoleArgs.fromMap(Map<String, dynamic> map) {
     return RoleArgs(
       assumeRolePolicy: (map['assumeRolePolicy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      forceDetachPolicies: map['forceDetachPolicies'] == null ? null : (map['forceDetachPolicies'] as bool).input(),
-      inlinePolicies: map['inlinePolicies'] == null ? null : (pulumi.Input.decodeList<RoleInlinePolicy>(map['inlinePolicies'], (value) => RoleInlinePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managedPolicyArns: map['managedPolicyArns'] == null ? null : ((map['managedPolicyArns'] as List).cast<String>()).input(),
-      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      permissionsBoundary: map['permissionsBoundary'] == null ? null : (map['permissionsBoundary'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      forceDetachPolicies: map['forceDetachPolicies'] == null ? null : ((map['forceDetachPolicies'] as bool).input()).input(),
+      inlinePolicies: map['inlinePolicies'] == null ? null : ((pulumi.Input.decodeList<RoleInlinePolicy>(map['inlinePolicies']!, (value) => RoleInlinePolicy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      managedPolicyArns: map['managedPolicyArns'] == null ? null : (((map['managedPolicyArns'] as List).cast<String>()).input()).input(),
+      maxSessionDuration: map['maxSessionDuration'] == null ? null : ((map['maxSessionDuration'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      permissionsBoundary: map['permissionsBoundary'] == null ? null : ((map['permissionsBoundary'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

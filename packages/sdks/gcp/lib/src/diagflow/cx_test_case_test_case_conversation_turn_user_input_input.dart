@@ -42,10 +42,10 @@ class CxTestCaseTestCaseConversationTurnUserInputInput {
 
   factory CxTestCaseTestCaseConversationTurnUserInputInput.fromMap(Map<String, dynamic> map) {
     return CxTestCaseTestCaseConversationTurnUserInputInput(
-      dtmf: map['dtmf'] == null ? null : (CxTestCaseTestCaseConversationTurnUserInputInputDtmf.fromMap((map['dtmf'] as Map).cast<String, dynamic>())).input(),
-      event: map['event'] == null ? null : (CxTestCaseTestCaseConversationTurnUserInputInputEvent.fromMap((map['event'] as Map).cast<String, dynamic>())).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      text: map['text'] == null ? null : (CxTestCaseTestCaseConversationTurnUserInputInputText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      dtmf: map['dtmf'] == null ? null : (CxTestCaseTestCaseConversationTurnUserInputInputDtmf.fromMap((map['dtmf']! as Map).cast<String, dynamic>())).input(),
+      event: map['event'] == null ? null : (CxTestCaseTestCaseConversationTurnUserInputInputEvent.fromMap((map['event']! as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      text: map['text'] == null ? null : (CxTestCaseTestCaseConversationTurnUserInputInputText.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -43,10 +43,10 @@ class AutomationRule {
 
   factory AutomationRule.fromMap(Map<String, dynamic> map) {
     return AutomationRule(
-      advanceRolloutRule: map['advanceRolloutRule'] == null ? null : (AutomationRuleAdvanceRolloutRule.fromMap((map['advanceRolloutRule'] as Map).cast<String, dynamic>())).input(),
-      promoteReleaseRule: map['promoteReleaseRule'] == null ? null : (AutomationRulePromoteReleaseRule.fromMap((map['promoteReleaseRule'] as Map).cast<String, dynamic>())).input(),
-      repairRolloutRule: map['repairRolloutRule'] == null ? null : (AutomationRuleRepairRolloutRule.fromMap((map['repairRolloutRule'] as Map).cast<String, dynamic>())).input(),
-      timedPromoteReleaseRule: map['timedPromoteReleaseRule'] == null ? null : (AutomationRuleTimedPromoteReleaseRule.fromMap((map['timedPromoteReleaseRule'] as Map).cast<String, dynamic>())).input(),
+      advanceRolloutRule: map['advanceRolloutRule'] == null ? null : (AutomationRuleAdvanceRolloutRule.fromMap((map['advanceRolloutRule']! as Map).cast<String, dynamic>())).input(),
+      promoteReleaseRule: map['promoteReleaseRule'] == null ? null : (AutomationRulePromoteReleaseRule.fromMap((map['promoteReleaseRule']! as Map).cast<String, dynamic>())).input(),
+      repairRolloutRule: map['repairRolloutRule'] == null ? null : (AutomationRuleRepairRolloutRule.fromMap((map['repairRolloutRule']! as Map).cast<String, dynamic>())).input(),
+      timedPromoteReleaseRule: map['timedPromoteReleaseRule'] == null ? null : (AutomationRuleTimedPromoteReleaseRule.fromMap((map['timedPromoteReleaseRule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

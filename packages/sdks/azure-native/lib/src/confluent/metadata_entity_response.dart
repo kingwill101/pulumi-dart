@@ -41,11 +41,11 @@ class MetadataEntityResponse {
 
   factory MetadataEntityResponse.fromMap(Map<String, dynamic> map) {
     return MetadataEntityResponse(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      deletedAt: map['deletedAt'] == null ? null : (map['deletedAt'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      self: map['self'] == null ? null : (map['self'] as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      deletedAt: map['deletedAt'] == null ? null : (map['deletedAt']! as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      self: map['self'] == null ? null : (map['self']! as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
     );
   }
 }

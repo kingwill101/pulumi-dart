@@ -59,9 +59,9 @@ class ApiIamBindingArgs {
   factory ApiIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return ApiIamBindingArgs(
       api: (map['api'] as String).input(),
-      condition: map['condition'] == null ? null : (ApiIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (ApiIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

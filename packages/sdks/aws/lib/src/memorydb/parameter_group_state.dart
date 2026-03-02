@@ -64,15 +64,15 @@ class ParameterGroupState {
 
   factory ParameterGroupState.fromMap(Map<String, dynamic> map) {
     return ParameterGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ParameterGroupParameter>(map['parameters'], (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      family: map['family'] == null ? null : ((map['family'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<ParameterGroupParameter>(map['parameters']!, (value) => ParameterGroupParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

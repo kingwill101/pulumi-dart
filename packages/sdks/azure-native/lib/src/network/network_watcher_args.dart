@@ -44,11 +44,11 @@ class NetworkWatcherArgs {
 
   factory NetworkWatcherArgs.fromMap(Map<String, dynamic> map) {
     return NetworkWatcherArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkWatcherName: map['networkWatcherName'] == null ? null : (map['networkWatcherName'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkWatcherName: map['networkWatcherName'] == null ? null : (map['networkWatcherName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

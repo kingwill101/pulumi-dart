@@ -35,10 +35,10 @@ class PipeSourceParametersSelfManagedKafkaParametersCredentials {
 
   factory PipeSourceParametersSelfManagedKafkaParametersCredentials.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersSelfManagedKafkaParametersCredentials(
-      basicAuth: map['basicAuth'] == null ? null : (map['basicAuth'] as String).input(),
-      clientCertificateTlsAuth: map['clientCertificateTlsAuth'] == null ? null : (map['clientCertificateTlsAuth'] as String).input(),
-      saslScram256Auth: map['saslScram256Auth'] == null ? null : (map['saslScram256Auth'] as String).input(),
-      saslScram512Auth: map['saslScram512Auth'] == null ? null : (map['saslScram512Auth'] as String).input(),
+      basicAuth: map['basicAuth'] == null ? null : ((map['basicAuth'] as String).input()).input(),
+      clientCertificateTlsAuth: map['clientCertificateTlsAuth'] == null ? null : ((map['clientCertificateTlsAuth'] as String).input()).input(),
+      saslScram256Auth: map['saslScram256Auth'] == null ? null : ((map['saslScram256Auth'] as String).input()).input(),
+      saslScram512Auth: map['saslScram512Auth'] == null ? null : ((map['saslScram512Auth'] as String).input()).input(),
     );
   }
 }

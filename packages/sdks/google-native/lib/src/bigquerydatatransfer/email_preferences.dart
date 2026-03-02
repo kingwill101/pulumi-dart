@@ -21,7 +21,7 @@ class EmailPreferences {
 
   factory EmailPreferences.fromMap(Map<String, dynamic> map) {
     return EmailPreferences(
-      enableFailureEmail: map['enableFailureEmail'] == null ? null : (map['enableFailureEmail'] as bool).input(),
+      enableFailureEmail: map['enableFailureEmail'] == null ? null : (map['enableFailureEmail']! as bool).input(),
     );
   }
 }

@@ -41,7 +41,7 @@ class ManagedEnvironmentPrivateEndpointConnectionArgs {
   factory ManagedEnvironmentPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ManagedEnvironmentPrivateEndpointConnectionArgs(
       environmentName: (map['environmentName'] as String).input(),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName']! as String).input(),
       privateLinkServiceConnectionState: (PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

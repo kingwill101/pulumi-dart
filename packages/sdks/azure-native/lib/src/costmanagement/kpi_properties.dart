@@ -31,9 +31,9 @@ class KpiProperties {
 
   factory KpiProperties.fromMap(Map<String, dynamic> map) {
     return KpiProperties(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class ThingState {
 
   factory ThingState.fromMap(Map<String, dynamic> map) {
     return ThingState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
-      defaultClientId: map['defaultClientId'] == null ? null : (map['defaultClientId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      thingTypeName: map['thingTypeName'] == null ? null : (map['thingTypeName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      attributes: map['attributes'] == null ? null : (((map['attributes'] as Map).cast<String, String>()).input()).input(),
+      defaultClientId: map['defaultClientId'] == null ? null : ((map['defaultClientId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      thingTypeName: map['thingTypeName'] == null ? null : ((map['thingTypeName'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as int).input()).input(),
     );
   }
 }

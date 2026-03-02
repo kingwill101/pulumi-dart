@@ -21,7 +21,7 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      tagName: map['tagName'] == null ? null : (map['tagName'] as String).input(),
+      tagName: map['tagName'] == null ? null : (map['tagName']! as String).input(),
     );
   }
 }

@@ -69,16 +69,16 @@ class GetTrafficMirrorSessionsArgs {
 
   factory GetTrafficMirrorSessionsArgs.fromMap(Map<String, dynamic> map) {
     return GetTrafficMirrorSessionsArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      trafficMirrorFilterId: map['trafficMirrorFilterId'] == null ? null : (map['trafficMirrorFilterId'] as String).input(),
-      trafficMirrorSessionName: map['trafficMirrorSessionName'] == null ? null : (map['trafficMirrorSessionName'] as String).input(),
-      trafficMirrorSourceId: map['trafficMirrorSourceId'] == null ? null : (map['trafficMirrorSourceId'] as String).input(),
-      trafficMirrorTargetId: map['trafficMirrorTargetId'] == null ? null : (map['trafficMirrorTargetId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      trafficMirrorFilterId: map['trafficMirrorFilterId'] == null ? null : (map['trafficMirrorFilterId']! as String).input(),
+      trafficMirrorSessionName: map['trafficMirrorSessionName'] == null ? null : (map['trafficMirrorSessionName']! as String).input(),
+      trafficMirrorSourceId: map['trafficMirrorSourceId'] == null ? null : (map['trafficMirrorSourceId']! as String).input(),
+      trafficMirrorTargetId: map['trafficMirrorTargetId'] == null ? null : (map['trafficMirrorTargetId']! as String).input(),
     );
   }
 }

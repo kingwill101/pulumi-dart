@@ -51,11 +51,11 @@ class VolumeArgs {
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sizeMiB: (map['sizeMiB'] as double).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
     );
   }
 }

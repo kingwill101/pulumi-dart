@@ -28,7 +28,7 @@ class ManagementServerNetwork {
   factory ManagementServerNetwork.fromMap(Map<String, dynamic> map) {
     return ManagementServerNetwork(
       network: (map['network'] as String).input(),
-      peeringMode: map['peeringMode'] == null ? null : (map['peeringMode'] as String).input(),
+      peeringMode: map['peeringMode'] == null ? null : (map['peeringMode']! as String).input(),
     );
   }
 }

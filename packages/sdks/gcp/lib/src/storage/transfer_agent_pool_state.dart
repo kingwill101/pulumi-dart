@@ -51,11 +51,11 @@ class TransferAgentPoolState {
 
   factory TransferAgentPoolState.fromMap(Map<String, dynamic> map) {
     return TransferAgentPoolState(
-      bandwidthLimit: map['bandwidthLimit'] == null ? null : (TransferAgentPoolBandwidthLimit.fromMap((map['bandwidthLimit'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      bandwidthLimit: map['bandwidthLimit'] == null ? null : (TransferAgentPoolBandwidthLimit.fromMap((map['bandwidthLimit']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -73,15 +73,15 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
 
   factory ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter.fromMap(Map<String, dynamic> map) {
     return ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter(
-      bool: map['bool'] == null ? null : (ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool.fromMap((map['bool'] as Map).cast<String, dynamic>())).input(),
-      double: map['double'] == null ? null : (ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble.fromMap((map['double'] as Map).cast<String, dynamic>())).input(),
-      enum_: map['enum'] == null ? null : (ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnum.fromMap((map['enum'] as Map).cast<String, dynamic>())).input(),
-      enumList: map['enumList'] == null ? null : (ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList.fromMap((map['enumList'] as Map).cast<String, dynamic>())).input(),
-      int: map['int'] == null ? null : (ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterInt.fromMap((map['int'] as Map).cast<String, dynamic>())).input(),
-      intList: map['intList'] == null ? null : (ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList.fromMap((map['intList'] as Map).cast<String, dynamic>())).input(),
+      bool: map['bool'] == null ? null : ((ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterBool.fromMap((map['bool']! as Map).cast<String, dynamic>())).input()).input(),
+      double: map['double'] == null ? null : ((ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterDouble.fromMap((map['double']! as Map).cast<String, dynamic>())).input()).input(),
+      enum_: map['enum'] == null ? null : ((ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnum.fromMap((map['enum']! as Map).cast<String, dynamic>())).input()).input(),
+      enumList: map['enumList'] == null ? null : ((ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList.fromMap((map['enumList']! as Map).cast<String, dynamic>())).input()).input(),
+      int: map['int'] == null ? null : ((ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterInt.fromMap((map['int']! as Map).cast<String, dynamic>())).input()).input(),
+      intList: map['intList'] == null ? null : ((ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterIntList.fromMap((map['intList']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
-      string: map['string'] == null ? null : (ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterString.fromMap((map['string'] as Map).cast<String, dynamic>())).input(),
-      stringList: map['stringList'] == null ? null : (ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterStringList.fromMap((map['stringList'] as Map).cast<String, dynamic>())).input(),
+      string: map['string'] == null ? null : ((ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterString.fromMap((map['string']! as Map).cast<String, dynamic>())).input()).input(),
+      stringList: map['stringList'] == null ? null : ((ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterStringList.fromMap((map['stringList']! as Map).cast<String, dynamic>())).input()).input(),
       valueType: (map['valueType'] as String).input(),
     );
   }

@@ -27,8 +27,8 @@ class IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection {
 
   factory IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection.fromMap(Map<String, dynamic> map) {
     return IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection(
-      accessTokenOnly: map['accessTokenOnly'] == null ? null : (IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly.fromMap((map['accessTokenOnly'] as Map).cast<String, dynamic>())).input(),
-      identityTokenOnly: map['identityTokenOnly'] == null ? null : (IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionIdentityTokenOnly.fromMap((map['identityTokenOnly'] as Map).cast<String, dynamic>())).input(),
+      accessTokenOnly: map['accessTokenOnly'] == null ? null : ((IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly.fromMap((map['accessTokenOnly']! as Map).cast<String, dynamic>())).input()).input(),
+      identityTokenOnly: map['identityTokenOnly'] == null ? null : ((IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionIdentityTokenOnly.fromMap((map['identityTokenOnly']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

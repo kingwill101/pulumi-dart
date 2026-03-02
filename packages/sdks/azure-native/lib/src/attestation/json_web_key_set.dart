@@ -25,7 +25,7 @@ class JsonWebKeySet {
 
   factory JsonWebKeySet.fromMap(Map<String, dynamic> map) {
     return JsonWebKeySet(
-      keys: map['keys'] == null ? null : (pulumi.Input.decodeList<JsonWebKey>(map['keys'], (value) => JsonWebKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keys: map['keys'] == null ? null : (pulumi.Input.decodeList<JsonWebKey>(map['keys']!, (value) => JsonWebKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

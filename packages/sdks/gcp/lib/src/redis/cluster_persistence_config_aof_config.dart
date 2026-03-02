@@ -24,7 +24,7 @@ class ClusterPersistenceConfigAofConfig {
 
   factory ClusterPersistenceConfigAofConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPersistenceConfigAofConfig(
-      appendFsync: map['appendFsync'] == null ? null : (map['appendFsync'] as String).input(),
+      appendFsync: map['appendFsync'] == null ? null : (map['appendFsync']! as String).input(),
     );
   }
 }

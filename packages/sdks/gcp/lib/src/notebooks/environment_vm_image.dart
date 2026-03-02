@@ -31,8 +31,8 @@ class EnvironmentVmImage {
 
   factory EnvironmentVmImage.fromMap(Map<String, dynamic> map) {
     return EnvironmentVmImage(
-      imageFamily: map['imageFamily'] == null ? null : (map['imageFamily'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      imageFamily: map['imageFamily'] == null ? null : (map['imageFamily']! as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
       project: (map['project'] as String).input(),
     );
   }

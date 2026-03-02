@@ -54,15 +54,15 @@ class GetServerSnapshotsResult {
 
   factory GetServerSnapshotsResult.fromMap(Map<String, dynamic> map) {
     return GetServerSnapshotsResult(
-      diskId: map['diskId'] == null ? null : map['diskId'] as String,
+      diskId: map['diskId'] == null ? null : map['diskId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       snapshots: pulumi.Input.decodeList<GetServerSnapshotsSnapshot>(map['snapshots'], (value) => GetServerSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

@@ -72,9 +72,9 @@ class GetHuntRelationResult {
   factory GetHuntRelationResult.fromMap(Map<String, dynamic> map) {
     return GetHuntRelationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as List).cast<String>(),
+      labels: map['labels'] == null ? null : (map['labels']! as List).cast<String>(),
       name: map['name'] as String,
       relatedResourceId: map['relatedResourceId'] as String,
       relatedResourceKind: map['relatedResourceKind'] as String,

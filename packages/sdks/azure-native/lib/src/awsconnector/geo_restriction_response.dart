@@ -26,8 +26,8 @@ class GeoRestrictionResponse {
 
   factory GeoRestrictionResponse.fromMap(Map<String, dynamic> map) {
     return GeoRestrictionResponse(
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      restrictionType: map['restrictionType'] == null ? null : (map['restrictionType'] as String).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      restrictionType: map['restrictionType'] == null ? null : (map['restrictionType']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ListenerAdditionalCertificateAttachmentState {
 
   factory ListenerAdditionalCertificateAttachmentState.fromMap(Map<String, dynamic> map) {
     return ListenerAdditionalCertificateAttachmentState(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

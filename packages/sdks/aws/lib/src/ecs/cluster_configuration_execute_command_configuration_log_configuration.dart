@@ -40,11 +40,11 @@ class ClusterConfigurationExecuteCommandConfigurationLogConfiguration {
 
   factory ClusterConfigurationExecuteCommandConfigurationLogConfiguration.fromMap(Map<String, dynamic> map) {
     return ClusterConfigurationExecuteCommandConfigurationLogConfiguration(
-      cloudWatchEncryptionEnabled: map['cloudWatchEncryptionEnabled'] == null ? null : (map['cloudWatchEncryptionEnabled'] as bool).input(),
-      cloudWatchLogGroupName: map['cloudWatchLogGroupName'] == null ? null : (map['cloudWatchLogGroupName'] as String).input(),
-      s3BucketEncryptionEnabled: map['s3BucketEncryptionEnabled'] == null ? null : (map['s3BucketEncryptionEnabled'] as bool).input(),
-      s3BucketName: map['s3BucketName'] == null ? null : (map['s3BucketName'] as String).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
+      cloudWatchEncryptionEnabled: map['cloudWatchEncryptionEnabled'] == null ? null : ((map['cloudWatchEncryptionEnabled'] as bool).input()).input(),
+      cloudWatchLogGroupName: map['cloudWatchLogGroupName'] == null ? null : ((map['cloudWatchLogGroupName'] as String).input()).input(),
+      s3BucketEncryptionEnabled: map['s3BucketEncryptionEnabled'] == null ? null : ((map['s3BucketEncryptionEnabled'] as bool).input()).input(),
+      s3BucketName: map['s3BucketName'] == null ? null : ((map['s3BucketName'] as String).input()).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : ((map['s3KeyPrefix'] as String).input()).input(),
     );
   }
 }

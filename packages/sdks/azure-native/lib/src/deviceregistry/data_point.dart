@@ -36,10 +36,10 @@ class DataPoint {
 
   factory DataPoint.fromMap(Map<String, dynamic> map) {
     return DataPoint(
-      dataPointConfiguration: map['dataPointConfiguration'] == null ? null : (map['dataPointConfiguration'] as String).input(),
+      dataPointConfiguration: map['dataPointConfiguration'] == null ? null : (map['dataPointConfiguration']! as String).input(),
       dataSource: (map['dataSource'] as String).input(),
       name: (map['name'] as String).input(),
-      observabilityMode: map['observabilityMode'] == null ? null : (map['observabilityMode'] as String).input(),
+      observabilityMode: map['observabilityMode'] == null ? null : (map['observabilityMode']! as String).input(),
     );
   }
 }

@@ -56,14 +56,14 @@ class OutputSynapseState {
 
   factory OutputSynapseState.fromMap(Map<String, dynamic> map) {
     return OutputSynapseState(
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
-      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
+      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

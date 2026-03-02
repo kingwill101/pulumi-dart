@@ -20,7 +20,7 @@ class FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles {
 
   factory FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles(
-      items: (pulumi.Input.decodeList<FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem>(map['items'], (value) => FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      items: (pulumi.Input.decodeList<FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem>(map['items']!, (value) => FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class GetInstanceMemcacheV1beta2Args {
     return GetInstanceMemcacheV1beta2Args(
       instanceId: (map['instanceId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

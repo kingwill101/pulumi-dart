@@ -46,10 +46,10 @@ class FhirStoreConsentConfig {
 
   factory FhirStoreConsentConfig.fromMap(Map<String, dynamic> map) {
     return FhirStoreConsentConfig(
-      accessDeterminationLogConfig: map['accessDeterminationLogConfig'] == null ? null : (FhirStoreConsentConfigAccessDeterminationLogConfig.fromMap((map['accessDeterminationLogConfig'] as Map).cast<String, dynamic>())).input(),
-      accessEnforced: map['accessEnforced'] == null ? null : (map['accessEnforced'] as bool).input(),
-      consentHeaderHandling: map['consentHeaderHandling'] == null ? null : (FhirStoreConsentConfigConsentHeaderHandling.fromMap((map['consentHeaderHandling'] as Map).cast<String, dynamic>())).input(),
-      enforcedAdminConsents: map['enforcedAdminConsents'] == null ? null : ((map['enforcedAdminConsents'] as List).cast<String>()).input(),
+      accessDeterminationLogConfig: map['accessDeterminationLogConfig'] == null ? null : (FhirStoreConsentConfigAccessDeterminationLogConfig.fromMap((map['accessDeterminationLogConfig']! as Map).cast<String, dynamic>())).input(),
+      accessEnforced: map['accessEnforced'] == null ? null : (map['accessEnforced']! as bool).input(),
+      consentHeaderHandling: map['consentHeaderHandling'] == null ? null : (FhirStoreConsentConfigConsentHeaderHandling.fromMap((map['consentHeaderHandling']! as Map).cast<String, dynamic>())).input(),
+      enforcedAdminConsents: map['enforcedAdminConsents'] == null ? null : ((map['enforcedAdminConsents']! as List).cast<String>()).input(),
       version: (map['version'] as String).input(),
     );
   }

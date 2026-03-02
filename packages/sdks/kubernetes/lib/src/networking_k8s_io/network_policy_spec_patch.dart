@@ -39,10 +39,10 @@ class NetworkPolicySpecPatch {
 
   factory NetworkPolicySpecPatch.fromMap(Map<String, dynamic> map) {
     return NetworkPolicySpecPatch(
-      egress: map['egress'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyEgressRulePatch>(map['egress'], (value) => NetworkPolicyEgressRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyIngressRulePatch>(map['ingress'], (value) => NetworkPolicyIngressRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      podSelector: map['podSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['podSelector'] as Map).cast<String, dynamic>())).input(),
-      policyTypes: map['policyTypes'] == null ? null : ((map['policyTypes'] as List).cast<String>()).input(),
+      egress: map['egress'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyEgressRulePatch>(map['egress']!, (value) => NetworkPolicyEgressRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyIngressRulePatch>(map['ingress']!, (value) => NetworkPolicyIngressRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      podSelector: map['podSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['podSelector']! as Map).cast<String, dynamic>())).input(),
+      policyTypes: map['policyTypes'] == null ? null : ((map['policyTypes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class PosturePolicySet {
 
   factory PosturePolicySet.fromMap(Map<String, dynamic> map) {
     return PosturePolicySet(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       policies: (pulumi.Input.decodeList<PosturePolicySetPolicy>(map['policies'], (value) => PosturePolicySetPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
       policySetId: (map['policySetId'] as String).input(),
     );

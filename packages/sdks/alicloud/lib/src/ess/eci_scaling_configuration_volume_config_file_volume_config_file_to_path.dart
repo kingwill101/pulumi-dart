@@ -30,9 +30,9 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath {
 
   factory EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath.fromMap(Map<String, dynamic> map) {
     return EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

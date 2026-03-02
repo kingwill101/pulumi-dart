@@ -19,7 +19,7 @@ class GetVirtualNetworkGatewayVpnProfilePackageUrlResult {
 
   factory GetVirtualNetworkGatewayVpnProfilePackageUrlResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayVpnProfilePackageUrlResult(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

@@ -21,7 +21,7 @@ class SuccessDetail {
 
   factory SuccessDetail.fromMap(Map<String, dynamic> map) {
     return SuccessDetail(
-      otherNativeCrash: map['otherNativeCrash'] == null ? null : (map['otherNativeCrash'] as bool).input(),
+      otherNativeCrash: map['otherNativeCrash'] == null ? null : (map['otherNativeCrash']! as bool).input(),
     );
   }
 }

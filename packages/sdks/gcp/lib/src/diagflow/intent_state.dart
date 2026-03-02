@@ -114,21 +114,21 @@ class IntentState {
 
   factory IntentState.fromMap(Map<String, dynamic> map) {
     return IntentState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      defaultResponsePlatforms: map['defaultResponsePlatforms'] == null ? null : ((map['defaultResponsePlatforms'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
-      followupIntentInfos: map['followupIntentInfos'] == null ? null : (pulumi.Input.decodeList<IntentFollowupIntentInfo>(map['followupIntentInfos'], (value) => IntentFollowupIntentInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputContextNames: map['inputContextNames'] == null ? null : ((map['inputContextNames'] as List).cast<String>()).input(),
-      isFallback: map['isFallback'] == null ? null : (map['isFallback'] as bool).input(),
-      mlDisabled: map['mlDisabled'] == null ? null : (map['mlDisabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentFollowupIntentName: map['parentFollowupIntentName'] == null ? null : (map['parentFollowupIntentName'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resetContexts: map['resetContexts'] == null ? null : (map['resetContexts'] as bool).input(),
-      rootFollowupIntentName: map['rootFollowupIntentName'] == null ? null : (map['rootFollowupIntentName'] as String).input(),
-      webhookState: map['webhookState'] == null ? null : (map['webhookState'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      defaultResponsePlatforms: map['defaultResponsePlatforms'] == null ? null : ((map['defaultResponsePlatforms']! as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      events: map['events'] == null ? null : ((map['events']! as List).cast<String>()).input(),
+      followupIntentInfos: map['followupIntentInfos'] == null ? null : (pulumi.Input.decodeList<IntentFollowupIntentInfo>(map['followupIntentInfos']!, (value) => IntentFollowupIntentInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputContextNames: map['inputContextNames'] == null ? null : ((map['inputContextNames']! as List).cast<String>()).input(),
+      isFallback: map['isFallback'] == null ? null : (map['isFallback']! as bool).input(),
+      mlDisabled: map['mlDisabled'] == null ? null : (map['mlDisabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentFollowupIntentName: map['parentFollowupIntentName'] == null ? null : (map['parentFollowupIntentName']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resetContexts: map['resetContexts'] == null ? null : (map['resetContexts']! as bool).input(),
+      rootFollowupIntentName: map['rootFollowupIntentName'] == null ? null : (map['rootFollowupIntentName']! as String).input(),
+      webhookState: map['webhookState'] == null ? null : (map['webhookState']! as String).input(),
     );
   }
 }

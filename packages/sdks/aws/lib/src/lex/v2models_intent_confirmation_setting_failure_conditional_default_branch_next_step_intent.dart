@@ -26,8 +26,8 @@ class V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchNextStepIn
 
   factory V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchNextStepIntent.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchNextStepIntent(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      slots: map['slots'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchNextStepIntentSlot>(map['slots'], (value) => V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      slots: map['slots'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchNextStepIntentSlot>(map['slots']!, (value) => V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

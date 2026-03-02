@@ -26,8 +26,8 @@ class ControlSyncRecordResponse {
 
   factory ControlSyncRecordResponse.fromMap(Map<String, dynamic> map) {
     return ControlSyncRecordResponse(
-      controlId: map['controlId'] == null ? null : (map['controlId'] as String).input(),
-      controlStatus: map['controlStatus'] == null ? null : (map['controlStatus'] as String).input(),
+      controlId: map['controlId'] == null ? null : (map['controlId']! as String).input(),
+      controlStatus: map['controlStatus'] == null ? null : (map['controlStatus']! as String).input(),
     );
   }
 }

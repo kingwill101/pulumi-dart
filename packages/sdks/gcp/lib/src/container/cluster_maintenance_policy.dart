@@ -63,9 +63,9 @@ class ClusterMaintenancePolicy {
 
   factory ClusterMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicy(
-      dailyMaintenanceWindow: map['dailyMaintenanceWindow'] == null ? null : (ClusterMaintenancePolicyDailyMaintenanceWindow.fromMap((map['dailyMaintenanceWindow'] as Map).cast<String, dynamic>())).input(),
-      maintenanceExclusions: map['maintenanceExclusions'] == null ? null : (pulumi.Input.decodeList<ClusterMaintenancePolicyMaintenanceExclusion>(map['maintenanceExclusions'], (value) => ClusterMaintenancePolicyMaintenanceExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recurringWindow: map['recurringWindow'] == null ? null : (ClusterMaintenancePolicyRecurringWindow.fromMap((map['recurringWindow'] as Map).cast<String, dynamic>())).input(),
+      dailyMaintenanceWindow: map['dailyMaintenanceWindow'] == null ? null : (ClusterMaintenancePolicyDailyMaintenanceWindow.fromMap((map['dailyMaintenanceWindow']! as Map).cast<String, dynamic>())).input(),
+      maintenanceExclusions: map['maintenanceExclusions'] == null ? null : (pulumi.Input.decodeList<ClusterMaintenancePolicyMaintenanceExclusion>(map['maintenanceExclusions']!, (value) => ClusterMaintenancePolicyMaintenanceExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recurringWindow: map['recurringWindow'] == null ? null : (ClusterMaintenancePolicyRecurringWindow.fromMap((map['recurringWindow']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

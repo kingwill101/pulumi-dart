@@ -20,7 +20,7 @@ class PipeSourceParametersDynamodbStreamParametersDeadLetterConfig {
 
   factory PipeSourceParametersDynamodbStreamParametersDeadLetterConfig.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersDynamodbStreamParametersDeadLetterConfig(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
     );
   }
 }

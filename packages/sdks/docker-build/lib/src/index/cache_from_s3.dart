@@ -65,16 +65,16 @@ class CacheFromS3 {
 
   factory CacheFromS3.fromMap(Map<String, dynamic> map) {
     return CacheFromS3(
-      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId'] as String).input(),
-      blobsPrefix: map['blobsPrefix'] == null ? null : (map['blobsPrefix'] as String).input(),
+      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId']! as String).input(),
+      blobsPrefix: map['blobsPrefix'] == null ? null : (map['blobsPrefix']! as String).input(),
       bucket: (map['bucket'] as String).input(),
-      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl'] as String).input(),
-      manifestsPrefix: map['manifestsPrefix'] == null ? null : (map['manifestsPrefix'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl']! as String).input(),
+      manifestsPrefix: map['manifestsPrefix'] == null ? null : (map['manifestsPrefix']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       region: (map['region'] as String).input(),
-      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
-      sessionToken: map['sessionToken'] == null ? null : (map['sessionToken'] as String).input(),
-      usePathStyle: map['usePathStyle'] == null ? null : (map['usePathStyle'] as bool).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey']! as String).input(),
+      sessionToken: map['sessionToken'] == null ? null : (map['sessionToken']! as String).input(),
+      usePathStyle: map['usePathStyle'] == null ? null : (map['usePathStyle']! as bool).input(),
     );
   }
 }

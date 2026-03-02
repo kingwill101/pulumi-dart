@@ -50,14 +50,14 @@ class GetDatabaseInstancesResult {
 
   factory GetDatabaseInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesResult(
-      databaseVersion: map['databaseVersion'] == null ? null : map['databaseVersion'] as String,
+      databaseVersion: map['databaseVersion'] == null ? null : map['databaseVersion']! as String,
       id: map['id'] as String,
       instances: pulumi.Input.decodeList<GetDatabaseInstancesInstance>(map['instances'], (value) => GetDatabaseInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
+      region: map['region'] == null ? null : map['region']! as String,
+      state: map['state'] == null ? null : map['state']! as String,
+      tier: map['tier'] == null ? null : map['tier']! as String,
+      zone: map['zone'] == null ? null : map['zone']! as String,
     );
   }
 }

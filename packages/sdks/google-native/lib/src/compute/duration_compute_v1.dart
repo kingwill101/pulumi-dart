@@ -26,8 +26,8 @@ class DurationComputeV1 {
 
   factory DurationComputeV1.fromMap(Map<String, dynamic> map) {
     return DurationComputeV1(
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
-      seconds: map['seconds'] == null ? null : (map['seconds'] as String).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
+      seconds: map['seconds'] == null ? null : (map['seconds']! as String).input(),
     );
   }
 }

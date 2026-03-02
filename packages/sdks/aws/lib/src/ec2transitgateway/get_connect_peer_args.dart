@@ -40,10 +40,10 @@ class GetConnectPeerArgs {
 
   factory GetConnectPeerArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectPeerArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetConnectPeerFilter>(map['filters'], (value) => GetConnectPeerFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitGatewayConnectPeerId: map['transitGatewayConnectPeerId'] == null ? null : (map['transitGatewayConnectPeerId'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetConnectPeerFilter>(map['filters']!, (value) => GetConnectPeerFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayConnectPeerId: map['transitGatewayConnectPeerId'] == null ? null : ((map['transitGatewayConnectPeerId'] as String).input()).input(),
     );
   }
 }

@@ -57,12 +57,12 @@ class SchemaDiscoveryengineV1betaArgs {
     return SchemaDiscoveryengineV1betaArgs(
       collectionId: (map['collectionId'] as String).input(),
       dataStoreId: (map['dataStoreId'] as String).input(),
-      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       schemaId: (map['schemaId'] as String).input(),
-      structSchema: map['structSchema'] == null ? null : ((map['structSchema'] as Map).cast<String, String>()).input(),
+      structSchema: map['structSchema'] == null ? null : ((map['structSchema']! as Map).cast<String, String>()).input(),
     );
   }
 }

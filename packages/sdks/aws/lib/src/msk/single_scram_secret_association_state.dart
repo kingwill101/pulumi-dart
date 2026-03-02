@@ -31,9 +31,9 @@ class SingleScramSecretAssociationState {
 
   factory SingleScramSecretAssociationState.fromMap(Map<String, dynamic> map) {
     return SingleScramSecretAssociationState(
-      clusterArn: map['clusterArn'] == null ? null : (map['clusterArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
+      clusterArn: map['clusterArn'] == null ? null : ((map['clusterArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
     );
   }
 }

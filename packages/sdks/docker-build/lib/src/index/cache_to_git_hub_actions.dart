@@ -53,11 +53,11 @@ class CacheToGitHubActions {
 
   factory CacheToGitHubActions.fromMap(Map<String, dynamic> map) {
     return CacheToGitHubActions(
-      ignoreError: map['ignoreError'] == null ? null : (map['ignoreError'] as bool).input(),
-      mode: map['mode'] == null ? null : (CacheMode.fromValue(map['mode'] as String)).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      ignoreError: map['ignoreError'] == null ? null : (map['ignoreError']! as bool).input(),
+      mode: map['mode'] == null ? null : (CacheMode.fromValue(map['mode']! as String)).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

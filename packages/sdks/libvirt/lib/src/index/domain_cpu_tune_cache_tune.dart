@@ -37,10 +37,10 @@ class DomainCpuTuneCacheTune {
 
   factory DomainCpuTuneCacheTune.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneCacheTune(
-      caches: map['caches'] == null ? null : (pulumi.Input.decodeList<DomainCpuTuneCacheTuneCach>(map['caches'], (value) => DomainCpuTuneCacheTuneCach.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      monitors: map['monitors'] == null ? null : (pulumi.Input.decodeList<DomainCpuTuneCacheTuneMonitor>(map['monitors'], (value) => DomainCpuTuneCacheTuneMonitor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vcpus: map['vcpus'] == null ? null : (map['vcpus'] as String).input(),
+      caches: map['caches'] == null ? null : (pulumi.Input.decodeList<DomainCpuTuneCacheTuneCach>(map['caches']!, (value) => DomainCpuTuneCacheTuneCach.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      monitors: map['monitors'] == null ? null : (pulumi.Input.decodeList<DomainCpuTuneCacheTuneMonitor>(map['monitors']!, (value) => DomainCpuTuneCacheTuneMonitor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vcpus: map['vcpus'] == null ? null : (map['vcpus']! as String).input(),
     );
   }
 }

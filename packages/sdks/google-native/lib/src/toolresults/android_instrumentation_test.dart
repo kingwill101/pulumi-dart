@@ -36,10 +36,10 @@ class AndroidInstrumentationTest {
 
   factory AndroidInstrumentationTest.fromMap(Map<String, dynamic> map) {
     return AndroidInstrumentationTest(
-      testPackageId: map['testPackageId'] == null ? null : (map['testPackageId'] as String).input(),
-      testRunnerClass: map['testRunnerClass'] == null ? null : (map['testRunnerClass'] as String).input(),
-      testTargets: map['testTargets'] == null ? null : ((map['testTargets'] as List).cast<String>()).input(),
-      useOrchestrator: map['useOrchestrator'] == null ? null : (map['useOrchestrator'] as bool).input(),
+      testPackageId: map['testPackageId'] == null ? null : (map['testPackageId']! as String).input(),
+      testRunnerClass: map['testRunnerClass'] == null ? null : (map['testRunnerClass']! as String).input(),
+      testTargets: map['testTargets'] == null ? null : ((map['testTargets']! as List).cast<String>()).input(),
+      useOrchestrator: map['useOrchestrator'] == null ? null : (map['useOrchestrator']! as bool).input(),
     );
   }
 }

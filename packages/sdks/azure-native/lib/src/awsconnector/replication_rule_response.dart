@@ -60,14 +60,14 @@ class ReplicationRuleResponse {
 
   factory ReplicationRuleResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationRuleResponse(
-      deleteMarkerReplication: map['deleteMarkerReplication'] == null ? null : (DeleteMarkerReplicationResponse.fromMap((map['deleteMarkerReplication'] as Map).cast<String, dynamic>())).input(),
-      destination: map['destination'] == null ? null : (ReplicationDestinationResponse.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      filter: map['filter'] == null ? null : (ReplicationRuleFilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null ? null : (SourceSelectionCriteriaResponse.fromMap((map['sourceSelectionCriteria'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      deleteMarkerReplication: map['deleteMarkerReplication'] == null ? null : (DeleteMarkerReplicationResponse.fromMap((map['deleteMarkerReplication']! as Map).cast<String, dynamic>())).input(),
+      destination: map['destination'] == null ? null : (ReplicationDestinationResponse.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : (ReplicationRuleFilterResponse.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      sourceSelectionCriteria: map['sourceSelectionCriteria'] == null ? null : (SourceSelectionCriteriaResponse.fromMap((map['sourceSelectionCriteria']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

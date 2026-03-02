@@ -71,14 +71,14 @@ class MessageBusArgs {
 
   factory MessageBusArgs.fromMap(Map<String, dynamic> map) {
     return MessageBusArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      cryptoKeyName: map['cryptoKeyName'] == null ? null : (map['cryptoKeyName']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (MessageBusLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (MessageBusLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
       messageBusId: (map['messageBusId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class AntiBruteForceRuleState {
 
   factory AntiBruteForceRuleState.fromMap(Map<String, dynamic> map) {
     return AntiBruteForceRuleState(
-      antiBruteForceRuleName: map['antiBruteForceRuleName'] == null ? null : (map['antiBruteForceRuleName'] as String).input(),
-      defaultRule: map['defaultRule'] == null ? null : (map['defaultRule'] as bool).input(),
-      failCount: map['failCount'] == null ? null : (map['failCount'] as int).input(),
-      forbiddenTime: map['forbiddenTime'] == null ? null : (map['forbiddenTime'] as int).input(),
-      protocolType: map['protocolType'] == null ? null : (AntiBruteForceRuleProtocolType.fromMap((map['protocolType'] as Map).cast<String, dynamic>())).input(),
-      span: map['span'] == null ? null : (map['span'] as int).input(),
-      uuidLists: map['uuidLists'] == null ? null : ((map['uuidLists'] as List).cast<String>()).input(),
+      antiBruteForceRuleName: map['antiBruteForceRuleName'] == null ? null : (map['antiBruteForceRuleName']! as String).input(),
+      defaultRule: map['defaultRule'] == null ? null : (map['defaultRule']! as bool).input(),
+      failCount: map['failCount'] == null ? null : (map['failCount']! as int).input(),
+      forbiddenTime: map['forbiddenTime'] == null ? null : (map['forbiddenTime']! as int).input(),
+      protocolType: map['protocolType'] == null ? null : (AntiBruteForceRuleProtocolType.fromMap((map['protocolType']! as Map).cast<String, dynamic>())).input(),
+      span: map['span'] == null ? null : (map['span']! as int).input(),
+      uuidLists: map['uuidLists'] == null ? null : ((map['uuidLists']! as List).cast<String>()).input(),
     );
   }
 }

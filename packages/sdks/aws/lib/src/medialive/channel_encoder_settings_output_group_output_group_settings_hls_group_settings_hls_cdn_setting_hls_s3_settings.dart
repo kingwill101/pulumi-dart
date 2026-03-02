@@ -20,7 +20,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsS3Settings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsS3Settings(
-      cannedAcl: map['cannedAcl'] == null ? null : (map['cannedAcl'] as String).input(),
+      cannedAcl: map['cannedAcl'] == null ? null : ((map['cannedAcl'] as String).input()).input(),
     );
   }
 }

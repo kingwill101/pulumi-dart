@@ -53,13 +53,13 @@ class AwsSageMakerAppProperties {
 
   factory AwsSageMakerAppProperties.fromMap(Map<String, dynamic> map) {
     return AwsSageMakerAppProperties(
-      appArn: map['appArn'] == null ? null : (map['appArn'] as String).input(),
-      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
-      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      resourceSpec: map['resourceSpec'] == null ? null : (ResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userProfileName: map['userProfileName'] == null ? null : (map['userProfileName'] as String).input(),
+      appArn: map['appArn'] == null ? null : (map['appArn']! as String).input(),
+      appName: map['appName'] == null ? null : (map['appName']! as String).input(),
+      appType: map['appType'] == null ? null : (map['appType']! as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      resourceSpec: map['resourceSpec'] == null ? null : (ResourceSpec.fromMap((map['resourceSpec']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userProfileName: map['userProfileName'] == null ? null : (map['userProfileName']! as String).input(),
     );
   }
 }

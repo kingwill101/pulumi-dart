@@ -63,12 +63,12 @@ class FileSystemSmbAcl {
 
   factory FileSystemSmbAcl.fromMap(Map<String, dynamic> map) {
     return FileSystemSmbAcl(
-      enableAnonymousAccess: map['enableAnonymousAccess'] == null ? null : (map['enableAnonymousAccess'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      encryptData: map['encryptData'] == null ? null : (map['encryptData'] as bool).input(),
-      homeDirPath: map['homeDirPath'] == null ? null : (map['homeDirPath'] as String).input(),
-      rejectUnencryptedAccess: map['rejectUnencryptedAccess'] == null ? null : (map['rejectUnencryptedAccess'] as bool).input(),
-      superAdminSid: map['superAdminSid'] == null ? null : (map['superAdminSid'] as String).input(),
+      enableAnonymousAccess: map['enableAnonymousAccess'] == null ? null : (map['enableAnonymousAccess']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      encryptData: map['encryptData'] == null ? null : (map['encryptData']! as bool).input(),
+      homeDirPath: map['homeDirPath'] == null ? null : (map['homeDirPath']! as String).input(),
+      rejectUnencryptedAccess: map['rejectUnencryptedAccess'] == null ? null : (map['rejectUnencryptedAccess']! as bool).input(),
+      superAdminSid: map['superAdminSid'] == null ? null : (map['superAdminSid']! as String).input(),
     );
   }
 }

@@ -55,12 +55,12 @@ class PeeringAttachmentArgs {
 
   factory PeeringAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PeeringAttachmentArgs(
-      options: map['options'] == null ? null : (PeeringAttachmentOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      peerAccountId: map['peerAccountId'] == null ? null : (map['peerAccountId'] as String).input(),
+      options: map['options'] == null ? null : ((PeeringAttachmentOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input()).input(),
+      peerAccountId: map['peerAccountId'] == null ? null : ((map['peerAccountId'] as String).input()).input(),
       peerRegion: (map['peerRegion'] as String).input(),
       peerTransitGatewayId: (map['peerTransitGatewayId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       transitGatewayId: (map['transitGatewayId'] as String).input(),
     );
   }

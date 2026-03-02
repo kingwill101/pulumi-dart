@@ -36,9 +36,9 @@ class TaskSparkInfrastructureSpec {
 
   factory TaskSparkInfrastructureSpec.fromMap(Map<String, dynamic> map) {
     return TaskSparkInfrastructureSpec(
-      batch: map['batch'] == null ? null : (TaskSparkInfrastructureSpecBatch.fromMap((map['batch'] as Map).cast<String, dynamic>())).input(),
-      containerImage: map['containerImage'] == null ? null : (TaskSparkInfrastructureSpecContainerImage.fromMap((map['containerImage'] as Map).cast<String, dynamic>())).input(),
-      vpcNetwork: map['vpcNetwork'] == null ? null : (TaskSparkInfrastructureSpecVpcNetwork.fromMap((map['vpcNetwork'] as Map).cast<String, dynamic>())).input(),
+      batch: map['batch'] == null ? null : (TaskSparkInfrastructureSpecBatch.fromMap((map['batch']! as Map).cast<String, dynamic>())).input(),
+      containerImage: map['containerImage'] == null ? null : (TaskSparkInfrastructureSpecContainerImage.fromMap((map['containerImage']! as Map).cast<String, dynamic>())).input(),
+      vpcNetwork: map['vpcNetwork'] == null ? null : (TaskSparkInfrastructureSpecVpcNetwork.fromMap((map['vpcNetwork']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

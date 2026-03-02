@@ -48,11 +48,11 @@ class VariableArgs {
   factory VariableArgs.fromMap(Map<String, dynamic> map) {
     return VariableArgs(
       configId: (map['configId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

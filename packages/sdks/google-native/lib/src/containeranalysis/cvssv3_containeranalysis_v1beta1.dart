@@ -70,17 +70,17 @@ class CVSSv3ContaineranalysisV1beta1 {
 
   factory CVSSv3ContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return CVSSv3ContaineranalysisV1beta1(
-      attackComplexity: map['attackComplexity'] == null ? null : (CVSSv3AttackComplexityContaineranalysisV1beta1.fromValue(map['attackComplexity'] as String)).input(),
-      attackVector: map['attackVector'] == null ? null : (CVSSv3AttackVectorContaineranalysisV1beta1.fromValue(map['attackVector'] as String)).input(),
-      availabilityImpact: map['availabilityImpact'] == null ? null : (CVSSv3AvailabilityImpactContaineranalysisV1beta1.fromValue(map['availabilityImpact'] as String)).input(),
-      baseScore: map['baseScore'] == null ? null : (map['baseScore'] as double).input(),
-      confidentialityImpact: map['confidentialityImpact'] == null ? null : (CVSSv3ConfidentialityImpactContaineranalysisV1beta1.fromValue(map['confidentialityImpact'] as String)).input(),
-      exploitabilityScore: map['exploitabilityScore'] == null ? null : (map['exploitabilityScore'] as double).input(),
-      impactScore: map['impactScore'] == null ? null : (map['impactScore'] as double).input(),
-      integrityImpact: map['integrityImpact'] == null ? null : (CVSSv3IntegrityImpactContaineranalysisV1beta1.fromValue(map['integrityImpact'] as String)).input(),
-      privilegesRequired: map['privilegesRequired'] == null ? null : (CVSSv3PrivilegesRequiredContaineranalysisV1beta1.fromValue(map['privilegesRequired'] as String)).input(),
-      scope: map['scope'] == null ? null : (CVSSv3ScopeContaineranalysisV1beta1.fromValue(map['scope'] as String)).input(),
-      userInteraction: map['userInteraction'] == null ? null : (CVSSv3UserInteractionContaineranalysisV1beta1.fromValue(map['userInteraction'] as String)).input(),
+      attackComplexity: map['attackComplexity'] == null ? null : (CVSSv3AttackComplexityContaineranalysisV1beta1.fromValue(map['attackComplexity']! as String)).input(),
+      attackVector: map['attackVector'] == null ? null : (CVSSv3AttackVectorContaineranalysisV1beta1.fromValue(map['attackVector']! as String)).input(),
+      availabilityImpact: map['availabilityImpact'] == null ? null : (CVSSv3AvailabilityImpactContaineranalysisV1beta1.fromValue(map['availabilityImpact']! as String)).input(),
+      baseScore: map['baseScore'] == null ? null : (map['baseScore']! as double).input(),
+      confidentialityImpact: map['confidentialityImpact'] == null ? null : (CVSSv3ConfidentialityImpactContaineranalysisV1beta1.fromValue(map['confidentialityImpact']! as String)).input(),
+      exploitabilityScore: map['exploitabilityScore'] == null ? null : (map['exploitabilityScore']! as double).input(),
+      impactScore: map['impactScore'] == null ? null : (map['impactScore']! as double).input(),
+      integrityImpact: map['integrityImpact'] == null ? null : (CVSSv3IntegrityImpactContaineranalysisV1beta1.fromValue(map['integrityImpact']! as String)).input(),
+      privilegesRequired: map['privilegesRequired'] == null ? null : (CVSSv3PrivilegesRequiredContaineranalysisV1beta1.fromValue(map['privilegesRequired']! as String)).input(),
+      scope: map['scope'] == null ? null : (CVSSv3ScopeContaineranalysisV1beta1.fromValue(map['scope']! as String)).input(),
+      userInteraction: map['userInteraction'] == null ? null : (CVSSv3UserInteractionContaineranalysisV1beta1.fromValue(map['userInteraction']! as String)).input(),
     );
   }
 }

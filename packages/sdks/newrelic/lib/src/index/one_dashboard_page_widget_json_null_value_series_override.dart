@@ -25,8 +25,8 @@ class OneDashboardPageWidgetJsonNullValueSeriesOverride {
 
   factory OneDashboardPageWidgetJsonNullValueSeriesOverride.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetJsonNullValueSeriesOverride(
-      nullValue: map['nullValue'] == null ? null : (map['nullValue'] as String).input(),
-      seriesName: map['seriesName'] == null ? null : (map['seriesName'] as String).input(),
+      nullValue: map['nullValue'] == null ? null : (map['nullValue']! as String).input(),
+      seriesName: map['seriesName'] == null ? null : (map['seriesName']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class NetworkInterfaceResponse {
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      ipAddresses: map['ipAddresses'] == null ? null : (pulumi.Input.decodeList<IpAddressResponse>(map['ipAddresses'], (value) => IpAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : (pulumi.Input.decodeList<IpAddressResponse>(map['ipAddresses']!, (value) => IpAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

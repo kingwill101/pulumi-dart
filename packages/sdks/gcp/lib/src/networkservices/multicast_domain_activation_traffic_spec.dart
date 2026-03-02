@@ -45,11 +45,11 @@ class MulticastDomainActivationTrafficSpec {
 
   factory MulticastDomainActivationTrafficSpec.fromMap(Map<String, dynamic> map) {
     return MulticastDomainActivationTrafficSpec(
-      aggrEgressPps: map['aggrEgressPps'] == null ? null : (map['aggrEgressPps'] as String).input(),
-      aggrIngressPps: map['aggrIngressPps'] == null ? null : (map['aggrIngressPps'] as String).input(),
-      avgPacketSize: map['avgPacketSize'] == null ? null : (map['avgPacketSize'] as int).input(),
-      maxPerGroupIngressPps: map['maxPerGroupIngressPps'] == null ? null : (map['maxPerGroupIngressPps'] as String).input(),
-      maxPerGroupSubscribers: map['maxPerGroupSubscribers'] == null ? null : (map['maxPerGroupSubscribers'] as String).input(),
+      aggrEgressPps: map['aggrEgressPps'] == null ? null : (map['aggrEgressPps']! as String).input(),
+      aggrIngressPps: map['aggrIngressPps'] == null ? null : (map['aggrIngressPps']! as String).input(),
+      avgPacketSize: map['avgPacketSize'] == null ? null : (map['avgPacketSize']! as int).input(),
+      maxPerGroupIngressPps: map['maxPerGroupIngressPps'] == null ? null : (map['maxPerGroupIngressPps']! as String).input(),
+      maxPerGroupSubscribers: map['maxPerGroupSubscribers'] == null ? null : (map['maxPerGroupSubscribers']! as String).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class BuildConfigurationResponse {
 
   factory BuildConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BuildConfigurationResponse(
-      baseOs: map['baseOs'] == null ? null : (map['baseOs'] as String).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables'], (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      platformVersion: map['platformVersion'] == null ? null : (map['platformVersion'] as String).input(),
-      preBuildSteps: map['preBuildSteps'] == null ? null : (pulumi.Input.decodeList<PreBuildStepResponse>(map['preBuildSteps'], (value) => PreBuildStepResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      baseOs: map['baseOs'] == null ? null : (map['baseOs']! as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables']!, (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      platformVersion: map['platformVersion'] == null ? null : (map['platformVersion']! as String).input(),
+      preBuildSteps: map['preBuildSteps'] == null ? null : (pulumi.Input.decodeList<PreBuildStepResponse>(map['preBuildSteps']!, (value) => PreBuildStepResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

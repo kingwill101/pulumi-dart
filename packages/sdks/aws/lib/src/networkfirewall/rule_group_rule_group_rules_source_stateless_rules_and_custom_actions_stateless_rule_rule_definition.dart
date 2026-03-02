@@ -27,7 +27,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRu
   factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition(
       actions: ((map['actions'] as List).cast<String>()).input(),
-      matchAttributes: (RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes.fromMap((map['matchAttributes'] as Map).cast<String, dynamic>())).input(),
+      matchAttributes: (RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributes.fromMap((map['matchAttributes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

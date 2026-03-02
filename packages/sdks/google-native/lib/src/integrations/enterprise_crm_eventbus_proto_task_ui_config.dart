@@ -22,7 +22,7 @@ class EnterpriseCrmEventbusProtoTaskUiConfig {
 
   factory EnterpriseCrmEventbusProtoTaskUiConfig.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTaskUiConfig(
-      taskUiModuleConfigs: map['taskUiModuleConfigs'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmEventbusProtoTaskUiModuleConfig>(map['taskUiModuleConfigs'], (value) => EnterpriseCrmEventbusProtoTaskUiModuleConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      taskUiModuleConfigs: map['taskUiModuleConfigs'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmEventbusProtoTaskUiModuleConfig>(map['taskUiModuleConfigs']!, (value) => EnterpriseCrmEventbusProtoTaskUiModuleConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

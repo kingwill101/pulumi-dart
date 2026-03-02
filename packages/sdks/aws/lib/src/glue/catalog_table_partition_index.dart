@@ -30,7 +30,7 @@ class CatalogTablePartitionIndex {
   factory CatalogTablePartitionIndex.fromMap(Map<String, dynamic> map) {
     return CatalogTablePartitionIndex(
       indexName: (map['indexName'] as String).input(),
-      indexStatus: map['indexStatus'] == null ? null : (map['indexStatus'] as String).input(),
+      indexStatus: map['indexStatus'] == null ? null : ((map['indexStatus'] as String).input()).input(),
       keys: ((map['keys'] as List).cast<String>()).input(),
     );
   }

@@ -103,20 +103,20 @@ class GetPolicyResult {
   factory GetPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customRules: map['customRules'] == null ? null : CustomRuleListResponse.fromMap((map['customRules'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      customRules: map['customRules'] == null ? null : CustomRuleListResponse.fromMap((map['customRules']! as Map).cast<String, dynamic>()),
+      etag: map['etag'] == null ? null : map['etag']! as String,
       frontendEndpointLinks: pulumi.Input.decodeList<FrontendEndpointLinkResponse>(map['frontendEndpointLinks'], (value) => FrontendEndpointLinkResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      managedRules: map['managedRules'] == null ? null : ManagedRuleSetListResponse.fromMap((map['managedRules'] as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
+      managedRules: map['managedRules'] == null ? null : ManagedRuleSetListResponse.fromMap((map['managedRules']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      policySettings: map['policySettings'] == null ? null : PolicySettingsResponse.fromMap((map['policySettings'] as Map).cast<String, dynamic>()),
+      policySettings: map['policySettings'] == null ? null : PolicySettingsResponse.fromMap((map['policySettings']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       resourceState: map['resourceState'] as String,
       routingRuleLinks: pulumi.Input.decodeList<RoutingRuleLinkResponse>(map['routingRuleLinks'], (value) => RoutingRuleLinkResponse.fromMap((value as Map).cast<String, dynamic>())),
       securityPolicyLinks: pulumi.Input.decodeList<SecurityPolicyLinkResponse>(map['securityPolicyLinks'], (value) => SecurityPolicyLinkResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

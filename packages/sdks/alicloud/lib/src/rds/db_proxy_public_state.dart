@@ -41,11 +41,11 @@ class DbProxyPublicState {
 
   factory DbProxyPublicState.fromMap(Map<String, dynamic> map) {
     return DbProxyPublicState(
-      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      dbProxyConnectionStringNetType: map['dbProxyConnectionStringNetType'] == null ? null : (map['dbProxyConnectionStringNetType'] as String).input(),
-      dbProxyEndpointId: map['dbProxyEndpointId'] == null ? null : (map['dbProxyEndpointId'] as String).input(),
-      dbProxyNewConnectStringPort: map['dbProxyNewConnectStringPort'] == null ? null : (map['dbProxyNewConnectStringPort'] as String).input(),
+      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      dbProxyConnectionStringNetType: map['dbProxyConnectionStringNetType'] == null ? null : (map['dbProxyConnectionStringNetType']! as String).input(),
+      dbProxyEndpointId: map['dbProxyEndpointId'] == null ? null : (map['dbProxyEndpointId']! as String).input(),
+      dbProxyNewConnectStringPort: map['dbProxyNewConnectStringPort'] == null ? null : (map['dbProxyNewConnectStringPort']! as String).input(),
     );
   }
 }

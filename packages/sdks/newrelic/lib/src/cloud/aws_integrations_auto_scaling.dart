@@ -25,8 +25,8 @@ class AwsIntegrationsAutoScaling {
 
   factory AwsIntegrationsAutoScaling.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsAutoScaling(
-      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions'] as List).cast<String>()).input(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions']! as List).cast<String>()).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

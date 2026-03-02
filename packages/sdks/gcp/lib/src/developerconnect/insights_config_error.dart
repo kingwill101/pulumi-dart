@@ -38,9 +38,9 @@ class InsightsConfigError {
 
   factory InsightsConfigError.fromMap(Map<String, dynamic> map) {
     return InsightsConfigError(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<InsightsConfigErrorDetail>(map['details'], (value) => InsightsConfigErrorDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<InsightsConfigErrorDetail>(map['details']!, (value) => InsightsConfigErrorDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

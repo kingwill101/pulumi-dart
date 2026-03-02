@@ -49,10 +49,10 @@ class NamespaceIpFilterRuleArgs {
 
   factory NamespaceIpFilterRuleArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceIpFilterRuleArgs(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      filterName: map['filterName'] == null ? null : (map['filterName'] as String).input(),
-      ipFilterRuleName: map['ipFilterRuleName'] == null ? null : (map['ipFilterRuleName'] as String).input(),
-      ipMask: map['ipMask'] == null ? null : (map['ipMask'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      filterName: map['filterName'] == null ? null : (map['filterName']! as String).input(),
+      ipFilterRuleName: map['ipFilterRuleName'] == null ? null : (map['ipFilterRuleName']! as String).input(),
+      ipMask: map['ipMask'] == null ? null : (map['ipMask']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

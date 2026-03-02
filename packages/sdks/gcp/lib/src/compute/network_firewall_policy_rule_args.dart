@@ -108,19 +108,19 @@ class NetworkFirewallPolicyRuleArgs {
   factory NetworkFirewallPolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyRuleArgs(
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       direction: (map['direction'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
       firewallPolicy: (map['firewallPolicy'] as String).input(),
       match: (NetworkFirewallPolicyRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
       priority: (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      securityProfileGroup: map['securityProfileGroup'] == null ? null : (map['securityProfileGroup'] as String).input(),
-      targetSecureTags: map['targetSecureTags'] == null ? null : (pulumi.Input.decodeList<NetworkFirewallPolicyRuleTargetSecureTag>(map['targetSecureTags'], (value) => NetworkFirewallPolicyRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : ((map['targetServiceAccounts'] as List).cast<String>()).input(),
-      tlsInspect: map['tlsInspect'] == null ? null : (map['tlsInspect'] as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      securityProfileGroup: map['securityProfileGroup'] == null ? null : (map['securityProfileGroup']! as String).input(),
+      targetSecureTags: map['targetSecureTags'] == null ? null : (pulumi.Input.decodeList<NetworkFirewallPolicyRuleTargetSecureTag>(map['targetSecureTags']!, (value) => NetworkFirewallPolicyRuleTargetSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : ((map['targetServiceAccounts']! as List).cast<String>()).input(),
+      tlsInspect: map['tlsInspect'] == null ? null : (map['tlsInspect']! as bool).input(),
     );
   }
 }

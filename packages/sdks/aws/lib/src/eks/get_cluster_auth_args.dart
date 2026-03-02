@@ -30,7 +30,7 @@ class GetClusterAuthArgs {
   factory GetClusterAuthArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterAuthArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

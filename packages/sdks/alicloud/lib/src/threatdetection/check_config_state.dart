@@ -69,15 +69,15 @@ class CheckConfigState {
 
   factory CheckConfigState.fromMap(Map<String, dynamic> map) {
     return CheckConfigState(
-      configure: map['configure'] == null ? null : (map['configure'] as String).input(),
-      cycleDays: map['cycleDays'] == null ? null : ((map['cycleDays'] as List).cast<int>()).input(),
-      enableAddCheck: map['enableAddCheck'] == null ? null : (map['enableAddCheck'] as bool).input(),
-      enableAutoCheck: map['enableAutoCheck'] == null ? null : (map['enableAutoCheck'] as bool).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as int).input(),
-      selectedChecks: map['selectedChecks'] == null ? null : (pulumi.Input.decodeList<CheckConfigSelectedCheck>(map['selectedChecks'], (value) => CheckConfigSelectedCheck.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as int).input(),
-      systemConfig: map['systemConfig'] == null ? null : (map['systemConfig'] as bool).input(),
-      vendors: map['vendors'] == null ? null : ((map['vendors'] as List).cast<String>()).input(),
+      configure: map['configure'] == null ? null : (map['configure']! as String).input(),
+      cycleDays: map['cycleDays'] == null ? null : ((map['cycleDays']! as List).cast<int>()).input(),
+      enableAddCheck: map['enableAddCheck'] == null ? null : (map['enableAddCheck']! as bool).input(),
+      enableAutoCheck: map['enableAutoCheck'] == null ? null : (map['enableAutoCheck']! as bool).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as int).input(),
+      selectedChecks: map['selectedChecks'] == null ? null : (pulumi.Input.decodeList<CheckConfigSelectedCheck>(map['selectedChecks']!, (value) => CheckConfigSelectedCheck.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as int).input(),
+      systemConfig: map['systemConfig'] == null ? null : (map['systemConfig']! as bool).input(),
+      vendors: map['vendors'] == null ? null : ((map['vendors']! as List).cast<String>()).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class ResourceHandlePatch {
 
   factory ResourceHandlePatch.fromMap(Map<String, dynamic> map) {
     return ResourceHandlePatch(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
-      structuredData: map['structuredData'] == null ? null : (StructuredResourceHandlePatch.fromMap((map['structuredData'] as Map).cast<String, dynamic>())).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      driverName: map['driverName'] == null ? null : (map['driverName']! as String).input(),
+      structuredData: map['structuredData'] == null ? null : (StructuredResourceHandlePatch.fromMap((map['structuredData']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

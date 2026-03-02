@@ -38,8 +38,8 @@ class AppCheckServiceConfigArgs {
 
   factory AppCheckServiceConfigArgs.fromMap(Map<String, dynamic> map) {
     return AppCheckServiceConfigArgs(
-      enforcementMode: map['enforcementMode'] == null ? null : (map['enforcementMode'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      enforcementMode: map['enforcementMode'] == null ? null : (map['enforcementMode']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );
   }

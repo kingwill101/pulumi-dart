@@ -52,11 +52,11 @@ class MetricAlertCriteria {
   factory MetricAlertCriteria.fromMap(Map<String, dynamic> map) {
     return MetricAlertCriteria(
       aggregation: (map['aggregation'] as String).input(),
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<MetricAlertCriteriaDimension>(map['dimensions'], (value) => MetricAlertCriteriaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<MetricAlertCriteriaDimension>(map['dimensions']!, (value) => MetricAlertCriteriaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
       metricName: (map['metricName'] as String).input(),
       metricNamespace: (map['metricNamespace'] as String).input(),
       operator: (map['operator'] as String).input(),
-      skipMetricValidation: map['skipMetricValidation'] == null ? null : (map['skipMetricValidation'] as bool).input(),
+      skipMetricValidation: map['skipMetricValidation'] == null ? null : (map['skipMetricValidation']! as bool).input(),
       threshold: (map['threshold'] as double).input(),
     );
   }

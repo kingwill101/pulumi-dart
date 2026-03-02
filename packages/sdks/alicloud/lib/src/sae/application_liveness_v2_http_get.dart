@@ -35,11 +35,11 @@ class ApplicationLivenessV2HttpGet {
 
   factory ApplicationLivenessV2HttpGet.fromMap(Map<String, dynamic> map) {
     return ApplicationLivenessV2HttpGet(
-      isContainKeyWord: map['isContainKeyWord'] == null ? null : (map['isContainKeyWord'] as bool).input(),
-      keyWord: map['keyWord'] == null ? null : (map['keyWord'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme'] as String).input(),
+      isContainKeyWord: map['isContainKeyWord'] == null ? null : (map['isContainKeyWord']! as bool).input(),
+      keyWord: map['keyWord'] == null ? null : (map['keyWord']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      scheme: map['scheme'] == null ? null : (map['scheme']! as String).input(),
     );
   }
 }

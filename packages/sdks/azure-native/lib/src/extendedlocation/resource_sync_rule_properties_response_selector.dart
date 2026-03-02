@@ -21,7 +21,7 @@ class ResourceSyncRulePropertiesResponseSelector {
 
   factory ResourceSyncRulePropertiesResponseSelector.fromMap(Map<String, dynamic> map) {
     return ResourceSyncRulePropertiesResponseSelector(
-      matchLabels: map['matchLabels'] == null ? null : ((map['matchLabels'] as Map).cast<String, String>()).input(),
+      matchLabels: map['matchLabels'] == null ? null : ((map['matchLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

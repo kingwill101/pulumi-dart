@@ -37,10 +37,10 @@ class MainRouteTableAssociationState {
 
   factory MainRouteTableAssociationState.fromMap(Map<String, dynamic> map) {
     return MainRouteTableAssociationState(
-      originalRouteTableId: map['originalRouteTableId'] == null ? null : (map['originalRouteTableId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      originalRouteTableId: map['originalRouteTableId'] == null ? null : ((map['originalRouteTableId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routeTableId: map['routeTableId'] == null ? null : ((map['routeTableId'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

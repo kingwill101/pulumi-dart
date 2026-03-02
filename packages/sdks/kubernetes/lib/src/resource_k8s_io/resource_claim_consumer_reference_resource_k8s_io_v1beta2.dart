@@ -36,7 +36,7 @@ class ResourceClaimConsumerReferenceResourceK8sIoV1beta2 {
 
   factory ResourceClaimConsumerReferenceResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return ResourceClaimConsumerReferenceResourceK8sIoV1beta2(
-      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup'] as String).input(),
+      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup']! as String).input(),
       name: (map['name'] as String).input(),
       resource: (map['resource'] as String).input(),
       uid: (map['uid'] as String).input(),

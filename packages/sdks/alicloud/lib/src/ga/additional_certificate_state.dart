@@ -36,10 +36,10 @@ class AdditionalCertificateState {
 
   factory AdditionalCertificateState.fromMap(Map<String, dynamic> map) {
     return AdditionalCertificateState(
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
     );
   }
 }

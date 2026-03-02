@@ -31,8 +31,8 @@ class DomainCpuTuneIoThreadSched {
   factory DomainCpuTuneIoThreadSched.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneIoThreadSched(
       ioThreads: (map['ioThreads'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as double).input(),
-      scheduler: map['scheduler'] == null ? null : (map['scheduler'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as double).input(),
+      scheduler: map['scheduler'] == null ? null : (map['scheduler']! as String).input(),
     );
   }
 }

@@ -50,11 +50,11 @@ class ReportGroupArgs {
 
   factory ReportGroupArgs.fromMap(Map<String, dynamic> map) {
     return ReportGroupArgs(
-      deleteReports: map['deleteReports'] == null ? null : (map['deleteReports'] as bool).input(),
-      exportConfig: (ReportGroupExportConfig.fromMap((map['exportConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      deleteReports: map['deleteReports'] == null ? null : ((map['deleteReports'] as bool).input()).input(),
+      exportConfig: (ReportGroupExportConfig.fromMap((map['exportConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

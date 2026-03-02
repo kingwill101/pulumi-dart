@@ -45,9 +45,9 @@ class NodeCustomizationPropertiesResponse {
 
   factory NodeCustomizationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NodeCustomizationPropertiesResponse(
-      containerImages: map['containerImages'] == null ? null : ((map['containerImages'] as List).cast<String>()).input(),
-      customizationScripts: map['customizationScripts'] == null ? null : (pulumi.Input.decodeList<NodeCustomizationScriptResponse>(map['customizationScripts'], (value) => NodeCustomizationScriptResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identityProfile: map['identityProfile'] == null ? null : (UserAssignedIdentityResponse.fromMap((map['identityProfile'] as Map).cast<String, dynamic>())).input(),
+      containerImages: map['containerImages'] == null ? null : ((map['containerImages']! as List).cast<String>()).input(),
+      customizationScripts: map['customizationScripts'] == null ? null : (pulumi.Input.decodeList<NodeCustomizationScriptResponse>(map['customizationScripts']!, (value) => NodeCustomizationScriptResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identityProfile: map['identityProfile'] == null ? null : (UserAssignedIdentityResponse.fromMap((map['identityProfile']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       version: (map['version'] as String).input(),
     );

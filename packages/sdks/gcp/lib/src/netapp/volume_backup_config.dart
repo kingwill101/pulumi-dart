@@ -31,9 +31,9 @@ class VolumeBackupConfig {
 
   factory VolumeBackupConfig.fromMap(Map<String, dynamic> map) {
     return VolumeBackupConfig(
-      backupPolicies: map['backupPolicies'] == null ? null : ((map['backupPolicies'] as List).cast<String>()).input(),
-      backupVault: map['backupVault'] == null ? null : (map['backupVault'] as String).input(),
-      scheduledBackupEnabled: map['scheduledBackupEnabled'] == null ? null : (map['scheduledBackupEnabled'] as bool).input(),
+      backupPolicies: map['backupPolicies'] == null ? null : ((map['backupPolicies']! as List).cast<String>()).input(),
+      backupVault: map['backupVault'] == null ? null : (map['backupVault']! as String).input(),
+      scheduledBackupEnabled: map['scheduledBackupEnabled'] == null ? null : (map['scheduledBackupEnabled']! as bool).input(),
     );
   }
 }

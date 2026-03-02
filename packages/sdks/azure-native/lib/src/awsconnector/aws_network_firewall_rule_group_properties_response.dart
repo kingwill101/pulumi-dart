@@ -58,14 +58,14 @@ class AwsNetworkFirewallRuleGroupPropertiesResponse {
 
   factory AwsNetworkFirewallRuleGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsNetworkFirewallRuleGroupPropertiesResponse(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ruleGroup: map['ruleGroup'] == null ? null : (RuleGroupResponse.fromMap((map['ruleGroup'] as Map).cast<String, dynamic>())).input(),
-      ruleGroupArn: map['ruleGroupArn'] == null ? null : (map['ruleGroupArn'] as String).input(),
-      ruleGroupId: map['ruleGroupId'] == null ? null : (map['ruleGroupId'] as String).input(),
-      ruleGroupName: map['ruleGroupName'] == null ? null : (map['ruleGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ruleGroup: map['ruleGroup'] == null ? null : (RuleGroupResponse.fromMap((map['ruleGroup']! as Map).cast<String, dynamic>())).input(),
+      ruleGroupArn: map['ruleGroupArn'] == null ? null : (map['ruleGroupArn']! as String).input(),
+      ruleGroupId: map['ruleGroupId'] == null ? null : (map['ruleGroupId']! as String).input(),
+      ruleGroupName: map['ruleGroupName'] == null ? null : (map['ruleGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

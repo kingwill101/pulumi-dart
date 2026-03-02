@@ -32,7 +32,7 @@ class SecurityAssessmentMetadataPartnerData {
   factory SecurityAssessmentMetadataPartnerData.fromMap(Map<String, dynamic> map) {
     return SecurityAssessmentMetadataPartnerData(
       partnerName: (map['partnerName'] as String).input(),
-      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
+      productName: map['productName'] == null ? null : (map['productName']! as String).input(),
       secret: (map['secret'] as String).input(),
     );
   }

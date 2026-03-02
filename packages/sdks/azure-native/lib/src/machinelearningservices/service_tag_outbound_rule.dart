@@ -38,9 +38,9 @@ class ServiceTagOutboundRule {
 
   factory ServiceTagOutboundRule.fromMap(Map<String, dynamic> map) {
     return ServiceTagOutboundRule(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      destination: map['destination'] == null ? null : (ServiceTagDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      destination: map['destination'] == null ? null : (ServiceTagDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

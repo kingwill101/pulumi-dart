@@ -26,7 +26,7 @@ class TargetGroupTargetHealthState {
   factory TargetGroupTargetHealthState.fromMap(Map<String, dynamic> map) {
     return TargetGroupTargetHealthState(
       enableUnhealthyConnectionTermination: (map['enableUnhealthyConnectionTermination'] as bool).input(),
-      unhealthyDrainingInterval: map['unhealthyDrainingInterval'] == null ? null : (map['unhealthyDrainingInterval'] as int).input(),
+      unhealthyDrainingInterval: map['unhealthyDrainingInterval'] == null ? null : ((map['unhealthyDrainingInterval'] as int).input()).input(),
     );
   }
 }

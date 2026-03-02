@@ -90,20 +90,20 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      internetAccess: map['internetAccess'] == null ? null : (map['internetAccess'] as bool).input(),
-      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
-      logConfig: map['logConfig'] == null ? null : (ServiceLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      nasConfig: map['nasConfig'] == null ? null : (ServiceNasConfig.fromMap((map['nasConfig'] as Map).cast<String, dynamic>())).input(),
-      publish: map['publish'] == null ? null : (map['publish'] as bool).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tracingConfig: map['tracingConfig'] == null ? null : (ServiceTracingConfig.fromMap((map['tracingConfig'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : (ServiceVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      internetAccess: map['internetAccess'] == null ? null : (map['internetAccess']! as bool).input(),
+      lastModified: map['lastModified'] == null ? null : (map['lastModified']! as String).input(),
+      logConfig: map['logConfig'] == null ? null : (ServiceLogConfig.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
+      nasConfig: map['nasConfig'] == null ? null : (ServiceNasConfig.fromMap((map['nasConfig']! as Map).cast<String, dynamic>())).input(),
+      publish: map['publish'] == null ? null : (map['publish']! as bool).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tracingConfig: map['tracingConfig'] == null ? null : (ServiceTracingConfig.fromMap((map['tracingConfig']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : (ServiceVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

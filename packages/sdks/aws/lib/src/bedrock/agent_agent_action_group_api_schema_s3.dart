@@ -25,8 +25,8 @@ class AgentAgentActionGroupApiSchemaS3 {
 
   factory AgentAgentActionGroupApiSchemaS3.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupApiSchemaS3(
-      s3BucketName: map['s3BucketName'] == null ? null : (map['s3BucketName'] as String).input(),
-      s3ObjectKey: map['s3ObjectKey'] == null ? null : (map['s3ObjectKey'] as String).input(),
+      s3BucketName: map['s3BucketName'] == null ? null : ((map['s3BucketName'] as String).input()).input(),
+      s3ObjectKey: map['s3ObjectKey'] == null ? null : ((map['s3ObjectKey'] as String).input()).input(),
     );
   }
 }

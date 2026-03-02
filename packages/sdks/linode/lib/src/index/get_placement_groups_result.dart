@@ -38,10 +38,10 @@ class GetPlacementGroupsResult {
 
   factory GetPlacementGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetPlacementGroupsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetPlacementGroupsFilter>(map['filters'], (value) => GetPlacementGroupsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetPlacementGroupsFilter>(map['filters']!, (value) => GetPlacementGroupsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
       placementGroups: pulumi.Input.decodeList<GetPlacementGroupsPlacementGroup>(map['placementGroups'], (value) => GetPlacementGroupsPlacementGroup.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

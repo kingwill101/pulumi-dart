@@ -27,7 +27,7 @@ class GrpcRouteDestination {
   factory GrpcRouteDestination.fromMap(Map<String, dynamic> map) {
     return GrpcRouteDestination(
       serviceName: (map['serviceName'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

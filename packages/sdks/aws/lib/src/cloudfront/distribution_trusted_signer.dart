@@ -26,8 +26,8 @@ class DistributionTrustedSigner {
 
   factory DistributionTrustedSigner.fromMap(Map<String, dynamic> map) {
     return DistributionTrustedSigner(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<DistributionTrustedSignerItem>(map['items'], (value) => DistributionTrustedSignerItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      items: map['items'] == null ? null : ((pulumi.Input.decodeList<DistributionTrustedSignerItem>(map['items']!, (value) => DistributionTrustedSignerItem.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

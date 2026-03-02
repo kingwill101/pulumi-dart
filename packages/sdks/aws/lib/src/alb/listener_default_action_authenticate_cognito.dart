@@ -57,11 +57,11 @@ class ListenerDefaultActionAuthenticateCognito {
 
   factory ListenerDefaultActionAuthenticateCognito.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionAuthenticateCognito(
-      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : ((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input(),
-      onUnauthenticatedRequest: map['onUnauthenticatedRequest'] == null ? null : (map['onUnauthenticatedRequest'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      sessionCookieName: map['sessionCookieName'] == null ? null : (map['sessionCookieName'] as String).input(),
-      sessionTimeout: map['sessionTimeout'] == null ? null : (map['sessionTimeout'] as int).input(),
+      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : (((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input()).input(),
+      onUnauthenticatedRequest: map['onUnauthenticatedRequest'] == null ? null : ((map['onUnauthenticatedRequest'] as String).input()).input(),
+      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
+      sessionCookieName: map['sessionCookieName'] == null ? null : ((map['sessionCookieName'] as String).input()).input(),
+      sessionTimeout: map['sessionTimeout'] == null ? null : ((map['sessionTimeout'] as int).input()).input(),
       userPoolArn: (map['userPoolArn'] as String).input(),
       userPoolClientId: (map['userPoolClientId'] as String).input(),
       userPoolDomain: (map['userPoolDomain'] as String).input(),

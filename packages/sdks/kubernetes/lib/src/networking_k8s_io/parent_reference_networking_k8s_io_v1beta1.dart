@@ -36,9 +36,9 @@ class ParentReferenceNetworkingK8sIoV1beta1 {
 
   factory ParentReferenceNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ParentReferenceNetworkingK8sIoV1beta1(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
       name: (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
       resource: (map['resource'] as String).input(),
     );
   }

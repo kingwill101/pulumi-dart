@@ -29,8 +29,8 @@ class BlockchainNodesConnectionInfo {
 
   factory BlockchainNodesConnectionInfo.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesConnectionInfo(
-      endpointInfos: map['endpointInfos'] == null ? null : (pulumi.Input.decodeList<BlockchainNodesConnectionInfoEndpointInfo>(map['endpointInfos'], (value) => BlockchainNodesConnectionInfoEndpointInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
+      endpointInfos: map['endpointInfos'] == null ? null : (pulumi.Input.decodeList<BlockchainNodesConnectionInfoEndpointInfo>(map['endpointInfos']!, (value) => BlockchainNodesConnectionInfoEndpointInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment']! as String).input(),
     );
   }
 }

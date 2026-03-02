@@ -35,7 +35,7 @@ class AssignmentArgs {
   factory AssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AssignmentArgs(
       lighthouseDefinitionId: (map['lighthouseDefinitionId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       scope: (map['scope'] as String).input(),
     );
   }

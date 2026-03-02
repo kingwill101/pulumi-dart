@@ -45,11 +45,11 @@ class DeploymentAtManagementGroupScopeArgs {
 
   factory DeploymentAtManagementGroupScopeArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentAtManagementGroupScopeArgs(
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
       groupId: (map['groupId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       properties: (DeploymentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

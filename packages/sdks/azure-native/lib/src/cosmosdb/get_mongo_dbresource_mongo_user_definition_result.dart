@@ -68,15 +68,15 @@ class GetMongoDBResourceMongoUserDefinitionResult {
   factory GetMongoDBResourceMongoUserDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetMongoDBResourceMongoUserDefinitionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customData: map['customData'] == null ? null : map['customData'] as String,
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
+      customData: map['customData'] == null ? null : map['customData']! as String,
+      databaseName: map['databaseName'] == null ? null : map['databaseName']! as String,
       id: map['id'] as String,
-      mechanisms: map['mechanisms'] == null ? null : map['mechanisms'] as String,
+      mechanisms: map['mechanisms'] == null ? null : map['mechanisms']! as String,
       name: map['name'] as String,
-      password: map['password'] == null ? null : map['password'] as String,
-      roles: map['roles'] == null ? null : pulumi.Input.decodeList<RoleResponse>(map['roles'], (value) => RoleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      password: map['password'] == null ? null : map['password']! as String,
+      roles: map['roles'] == null ? null : pulumi.Input.decodeList<RoleResponse>(map['roles']!, (value) => RoleResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      userName: map['userName'] == null ? null : map['userName']! as String,
     );
   }
 }

@@ -25,7 +25,7 @@ class BucketRefererConfig {
 
   factory BucketRefererConfig.fromMap(Map<String, dynamic> map) {
     return BucketRefererConfig(
-      allowEmpty: map['allowEmpty'] == null ? null : (map['allowEmpty'] as bool).input(),
+      allowEmpty: map['allowEmpty'] == null ? null : (map['allowEmpty']! as bool).input(),
       referers: ((map['referers'] as List).cast<String>()).input(),
     );
   }

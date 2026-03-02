@@ -41,7 +41,7 @@ class RegistryComponentContainerArgs {
   factory RegistryComponentContainerArgs.fromMap(Map<String, dynamic> map) {
     return RegistryComponentContainerArgs(
       componentContainerProperties: (map['componentContainerProperties'] as ComponentContainerMachinelearningservices).input(),
-      componentName: map['componentName'] == null ? null : (map['componentName'] as String).input(),
+      componentName: map['componentName'] == null ? null : (map['componentName']! as String).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

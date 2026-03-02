@@ -29,8 +29,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions(
-      conditions: map['conditions'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      logicalOperator: map['logicalOperator'] == null ? null : (map['logicalOperator'] as String).input(),
+      conditions: map['conditions'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      logicalOperator: map['logicalOperator'] == null ? null : (map['logicalOperator']! as String).input(),
     );
   }
 }

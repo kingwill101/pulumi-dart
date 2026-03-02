@@ -31,7 +31,7 @@ class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchHeader {
 
   factory RuleGroupRuleStatementSizeConstraintStatementFieldToMatchHeader.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSizeConstraintStatementFieldToMatchHeader(
-      matchPattern: (RuleGroupRuleStatementSizeConstraintStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern'] as Map).cast<String, dynamic>())).input(),
+      matchPattern: (RuleGroupRuleStatementSizeConstraintStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern']! as Map).cast<String, dynamic>())).input(),
       matchScope: (map['matchScope'] as String).input(),
       oversizeHandling: (map['oversizeHandling'] as String).input(),
     );

@@ -30,7 +30,7 @@ class BucketVersioningArgs {
   factory BucketVersioningArgs.fromMap(Map<String, dynamic> map) {
     return BucketVersioningArgs(
       bucket: (map['bucket'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

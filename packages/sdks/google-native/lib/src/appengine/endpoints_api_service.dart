@@ -37,10 +37,10 @@ class EndpointsApiService {
 
   factory EndpointsApiService.fromMap(Map<String, dynamic> map) {
     return EndpointsApiService(
-      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
-      disableTraceSampling: map['disableTraceSampling'] == null ? null : (map['disableTraceSampling'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rolloutStrategy: map['rolloutStrategy'] == null ? null : (EndpointsApiServiceRolloutStrategy.fromValue(map['rolloutStrategy'] as String)).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as String).input(),
+      disableTraceSampling: map['disableTraceSampling'] == null ? null : (map['disableTraceSampling']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rolloutStrategy: map['rolloutStrategy'] == null ? null : (EndpointsApiServiceRolloutStrategy.fromValue(map['rolloutStrategy']! as String)).input(),
     );
   }
 }

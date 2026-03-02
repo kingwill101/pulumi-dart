@@ -21,7 +21,7 @@ class DedicatedHostGroupInstanceViewResponse {
 
   factory DedicatedHostGroupInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return DedicatedHostGroupInstanceViewResponse(
-      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<DedicatedHostInstanceViewWithNameResponse>(map['hosts'], (value) => DedicatedHostInstanceViewWithNameResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<DedicatedHostInstanceViewWithNameResponse>(map['hosts']!, (value) => DedicatedHostInstanceViewWithNameResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

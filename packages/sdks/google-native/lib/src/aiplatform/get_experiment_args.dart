@@ -37,7 +37,7 @@ class GetExperimentArgs {
     return GetExperimentArgs(
       experimentId: (map['experimentId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tensorboardId: (map['tensorboardId'] as String).input(),
     );
   }

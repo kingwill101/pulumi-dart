@@ -27,7 +27,7 @@ class ConnectionBitbucketDataCenterConfigAuthorizerCredential {
   factory ConnectionBitbucketDataCenterConfigAuthorizerCredential.fromMap(Map<String, dynamic> map) {
     return ConnectionBitbucketDataCenterConfigAuthorizerCredential(
       userTokenSecretVersion: (map['userTokenSecretVersion'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

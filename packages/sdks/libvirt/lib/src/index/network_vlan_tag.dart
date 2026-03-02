@@ -25,8 +25,8 @@ class NetworkVlanTag {
 
   factory NetworkVlanTag.fromMap(Map<String, dynamic> map) {
     return NetworkVlanTag(
-      id: map['id'] == null ? null : (map['id'] as double).input(),
-      nativeMode: map['nativeMode'] == null ? null : (map['nativeMode'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
+      nativeMode: map['nativeMode'] == null ? null : (map['nativeMode']! as String).input(),
     );
   }
 }

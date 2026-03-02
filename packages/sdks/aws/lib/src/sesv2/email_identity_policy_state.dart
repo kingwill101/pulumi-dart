@@ -36,10 +36,10 @@ class EmailIdentityPolicyState {
 
   factory EmailIdentityPolicyState.fromMap(Map<String, dynamic> map) {
     return EmailIdentityPolicyState(
-      emailIdentity: map['emailIdentity'] == null ? null : (map['emailIdentity'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      emailIdentity: map['emailIdentity'] == null ? null : ((map['emailIdentity'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      policyName: map['policyName'] == null ? null : ((map['policyName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

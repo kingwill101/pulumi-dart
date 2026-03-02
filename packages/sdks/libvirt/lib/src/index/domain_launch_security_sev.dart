@@ -45,11 +45,11 @@ class DomainLaunchSecuritySev {
 
   factory DomainLaunchSecuritySev.fromMap(Map<String, dynamic> map) {
     return DomainLaunchSecuritySev(
-      cbitPos: map['cbitPos'] == null ? null : (map['cbitPos'] as double).input(),
+      cbitPos: map['cbitPos'] == null ? null : (map['cbitPos']! as double).input(),
       dhCert: (map['dhCert'] as String).input(),
-      kernelHashes: map['kernelHashes'] == null ? null : (map['kernelHashes'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as double).input(),
-      reducedPhysBits: map['reducedPhysBits'] == null ? null : (map['reducedPhysBits'] as double).input(),
+      kernelHashes: map['kernelHashes'] == null ? null : (map['kernelHashes']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as double).input(),
+      reducedPhysBits: map['reducedPhysBits'] == null ? null : (map['reducedPhysBits']! as double).input(),
       session: (map['session'] as String).input(),
     );
   }

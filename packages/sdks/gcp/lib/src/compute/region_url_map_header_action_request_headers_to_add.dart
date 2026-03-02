@@ -31,9 +31,9 @@ class RegionUrlMapHeaderActionRequestHeadersToAdd {
 
   factory RegionUrlMapHeaderActionRequestHeadersToAdd.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapHeaderActionRequestHeadersToAdd(
-      headerName: map['headerName'] == null ? null : (map['headerName'] as String).input(),
-      headerValue: map['headerValue'] == null ? null : (map['headerValue'] as String).input(),
-      replace: map['replace'] == null ? null : (map['replace'] as bool).input(),
+      headerName: map['headerName'] == null ? null : (map['headerName']! as String).input(),
+      headerValue: map['headerValue'] == null ? null : (map['headerValue']! as String).input(),
+      replace: map['replace'] == null ? null : (map['replace']! as bool).input(),
     );
   }
 }

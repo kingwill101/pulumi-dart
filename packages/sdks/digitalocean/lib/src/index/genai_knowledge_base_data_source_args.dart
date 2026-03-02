@@ -35,8 +35,8 @@ class GenaiKnowledgeBaseDataSourceArgs {
   factory GenaiKnowledgeBaseDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return GenaiKnowledgeBaseDataSourceArgs(
       knowledgeBaseUuid: (map['knowledgeBaseUuid'] as String).input(),
-      spacesDataSource: map['spacesDataSource'] == null ? null : (GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((map['spacesDataSource'] as Map).cast<String, dynamic>())).input(),
-      webCrawlerDataSource: map['webCrawlerDataSource'] == null ? null : (GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((map['webCrawlerDataSource'] as Map).cast<String, dynamic>())).input(),
+      spacesDataSource: map['spacesDataSource'] == null ? null : (GenaiKnowledgeBaseDataSourceSpacesDataSource.fromMap((map['spacesDataSource']! as Map).cast<String, dynamic>())).input(),
+      webCrawlerDataSource: map['webCrawlerDataSource'] == null ? null : (GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap((map['webCrawlerDataSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

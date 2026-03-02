@@ -26,8 +26,8 @@ class OrganizationalUnitAssociationState {
 
   factory OrganizationalUnitAssociationState.fromMap(Map<String, dynamic> map) {
     return OrganizationalUnitAssociationState(
-      notificationConfigurationArn: map['notificationConfigurationArn'] == null ? null : (map['notificationConfigurationArn'] as String).input(),
-      organizationalUnitId: map['organizationalUnitId'] == null ? null : (map['organizationalUnitId'] as String).input(),
+      notificationConfigurationArn: map['notificationConfigurationArn'] == null ? null : ((map['notificationConfigurationArn'] as String).input()).input(),
+      organizationalUnitId: map['organizationalUnitId'] == null ? null : ((map['organizationalUnitId'] as String).input()).input(),
     );
   }
 }

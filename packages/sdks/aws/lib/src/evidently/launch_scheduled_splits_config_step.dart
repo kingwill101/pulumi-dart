@@ -32,7 +32,7 @@ class LaunchScheduledSplitsConfigStep {
   factory LaunchScheduledSplitsConfigStep.fromMap(Map<String, dynamic> map) {
     return LaunchScheduledSplitsConfigStep(
       groupWeights: ((map['groupWeights'] as Map).cast<String, int>()).input(),
-      segmentOverrides: map['segmentOverrides'] == null ? null : (pulumi.Input.decodeList<LaunchScheduledSplitsConfigStepSegmentOverride>(map['segmentOverrides'], (value) => LaunchScheduledSplitsConfigStepSegmentOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      segmentOverrides: map['segmentOverrides'] == null ? null : ((pulumi.Input.decodeList<LaunchScheduledSplitsConfigStepSegmentOverride>(map['segmentOverrides']!, (value) => LaunchScheduledSplitsConfigStepSegmentOverride.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       startTime: (map['startTime'] as String).input(),
     );
   }

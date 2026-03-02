@@ -27,7 +27,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
 
   factory StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable(
-      postgresqlColumns: map['postgresqlColumns'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>(map['postgresqlColumns'], (value) => StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      postgresqlColumns: map['postgresqlColumns'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>(map['postgresqlColumns']!, (value) => StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
       table: (map['table'] as String).input(),
     );
   }

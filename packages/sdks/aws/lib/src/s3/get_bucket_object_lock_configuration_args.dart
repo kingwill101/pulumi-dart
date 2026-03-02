@@ -37,8 +37,8 @@ class GetBucketObjectLockConfigurationArgs {
   factory GetBucketObjectLockConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectLockConfigurationArgs(
       bucket: (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

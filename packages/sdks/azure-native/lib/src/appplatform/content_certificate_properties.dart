@@ -27,7 +27,7 @@ class ContentCertificateProperties {
 
   factory ContentCertificateProperties.fromMap(Map<String, dynamic> map) {
     return ContentCertificateProperties(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

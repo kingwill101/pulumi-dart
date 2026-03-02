@@ -22,7 +22,7 @@ class CompensationInfo {
 
   factory CompensationInfo.fromMap(Map<String, dynamic> map) {
     return CompensationInfo(
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<CompensationEntry>(map['entries'], (value) => CompensationEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<CompensationEntry>(map['entries']!, (value) => CompensationEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

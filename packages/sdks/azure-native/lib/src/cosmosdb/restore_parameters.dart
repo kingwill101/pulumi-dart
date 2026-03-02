@@ -58,14 +58,14 @@ class RestoreParameters {
 
   factory RestoreParameters.fromMap(Map<String, dynamic> map) {
     return RestoreParameters(
-      databasesToRestore: map['databasesToRestore'] == null ? null : (pulumi.Input.decodeList<DatabaseRestoreResource>(map['databasesToRestore'], (value) => DatabaseRestoreResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gremlinDatabasesToRestore: map['gremlinDatabasesToRestore'] == null ? null : (pulumi.Input.decodeList<GremlinDatabaseRestoreResource>(map['gremlinDatabasesToRestore'], (value) => GremlinDatabaseRestoreResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      restoreMode: map['restoreMode'] == null ? null : (map['restoreMode'] as String).input(),
-      restoreSource: map['restoreSource'] == null ? null : (map['restoreSource'] as String).input(),
-      restoreTimestampInUtc: map['restoreTimestampInUtc'] == null ? null : (map['restoreTimestampInUtc'] as String).input(),
-      restoreWithTtlDisabled: map['restoreWithTtlDisabled'] == null ? null : (map['restoreWithTtlDisabled'] as bool).input(),
-      sourceBackupLocation: map['sourceBackupLocation'] == null ? null : (map['sourceBackupLocation'] as String).input(),
-      tablesToRestore: map['tablesToRestore'] == null ? null : ((map['tablesToRestore'] as List).cast<String>()).input(),
+      databasesToRestore: map['databasesToRestore'] == null ? null : (pulumi.Input.decodeList<DatabaseRestoreResource>(map['databasesToRestore']!, (value) => DatabaseRestoreResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gremlinDatabasesToRestore: map['gremlinDatabasesToRestore'] == null ? null : (pulumi.Input.decodeList<GremlinDatabaseRestoreResource>(map['gremlinDatabasesToRestore']!, (value) => GremlinDatabaseRestoreResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      restoreMode: map['restoreMode'] == null ? null : (map['restoreMode']! as String).input(),
+      restoreSource: map['restoreSource'] == null ? null : (map['restoreSource']! as String).input(),
+      restoreTimestampInUtc: map['restoreTimestampInUtc'] == null ? null : (map['restoreTimestampInUtc']! as String).input(),
+      restoreWithTtlDisabled: map['restoreWithTtlDisabled'] == null ? null : (map['restoreWithTtlDisabled']! as bool).input(),
+      sourceBackupLocation: map['sourceBackupLocation'] == null ? null : (map['sourceBackupLocation']! as String).input(),
+      tablesToRestore: map['tablesToRestore'] == null ? null : ((map['tablesToRestore']! as List).cast<String>()).input(),
     );
   }
 }

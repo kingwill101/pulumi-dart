@@ -52,13 +52,13 @@ class ApplicationGatewayFrontendIPConfiguration {
 
   factory ApplicationGatewayFrontendIPConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayFrontendIPConfiguration(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
-      privateLinkConfiguration: map['privateLinkConfiguration'] == null ? null : (SubResource.fromMap((map['privateLinkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      publicIPAddress: map['publicIPAddress'] == null ? null : (SubResource.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (SubResource.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
+      privateLinkConfiguration: map['privateLinkConfiguration'] == null ? null : (SubResource.fromMap((map['privateLinkConfiguration']! as Map).cast<String, dynamic>())).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (SubResource.fromMap((map['publicIPAddress']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (SubResource.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

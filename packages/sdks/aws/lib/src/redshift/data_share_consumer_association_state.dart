@@ -58,14 +58,14 @@ class DataShareConsumerAssociationState {
 
   factory DataShareConsumerAssociationState.fromMap(Map<String, dynamic> map) {
     return DataShareConsumerAssociationState(
-      allowWrites: map['allowWrites'] == null ? null : (map['allowWrites'] as bool).input(),
-      associateEntireAccount: map['associateEntireAccount'] == null ? null : (map['associateEntireAccount'] as bool).input(),
-      consumerArn: map['consumerArn'] == null ? null : (map['consumerArn'] as String).input(),
-      consumerRegion: map['consumerRegion'] == null ? null : (map['consumerRegion'] as String).input(),
-      dataShareArn: map['dataShareArn'] == null ? null : (map['dataShareArn'] as String).input(),
-      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
-      producerArn: map['producerArn'] == null ? null : (map['producerArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      allowWrites: map['allowWrites'] == null ? null : ((map['allowWrites'] as bool).input()).input(),
+      associateEntireAccount: map['associateEntireAccount'] == null ? null : ((map['associateEntireAccount'] as bool).input()).input(),
+      consumerArn: map['consumerArn'] == null ? null : ((map['consumerArn'] as String).input()).input(),
+      consumerRegion: map['consumerRegion'] == null ? null : ((map['consumerRegion'] as String).input()).input(),
+      dataShareArn: map['dataShareArn'] == null ? null : ((map['dataShareArn'] as String).input()).input(),
+      managedBy: map['managedBy'] == null ? null : ((map['managedBy'] as String).input()).input(),
+      producerArn: map['producerArn'] == null ? null : ((map['producerArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -36,8 +36,8 @@ class ClusterNodeGroupDataDisk {
   factory ClusterNodeGroupDataDisk.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupDataDisk(
       category: (map['category'] as String).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
       size: (map['size'] as int).input(),
     );
   }

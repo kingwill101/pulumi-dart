@@ -55,13 +55,13 @@ class EnvironmentSpecificationVersion {
 
   factory EnvironmentSpecificationVersion.fromMap(Map<String, dynamic> map) {
     return EnvironmentSpecificationVersion(
-      condaFile: map['condaFile'] == null ? null : (map['condaFile'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      docker: map['docker'] == null ? null : (DockerBuild.fromMap((map['docker'] as Map).cast<String, dynamic>())).input(),
-      inferenceContainerProperties: map['inferenceContainerProperties'] == null ? null : (InferenceContainerProperties.fromMap((map['inferenceContainerProperties'] as Map).cast<String, dynamic>())).input(),
-      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous'] as bool).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      condaFile: map['condaFile'] == null ? null : (map['condaFile']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      docker: map['docker'] == null ? null : (DockerBuild.fromMap((map['docker']! as Map).cast<String, dynamic>())).input(),
+      inferenceContainerProperties: map['inferenceContainerProperties'] == null ? null : (InferenceContainerProperties.fromMap((map['inferenceContainerProperties']! as Map).cast<String, dynamic>())).input(),
+      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous']! as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

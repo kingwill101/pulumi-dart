@@ -49,8 +49,8 @@ class URLMapPathMatcherRouteRuleRouteActionRetryPolicy {
   factory URLMapPathMatcherRouteRuleRouteActionRetryPolicy.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherRouteRuleRouteActionRetryPolicy(
       numRetries: (map['numRetries'] as int).input(),
-      perTryTimeout: map['perTryTimeout'] == null ? null : (URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout.fromMap((map['perTryTimeout'] as Map).cast<String, dynamic>())).input(),
-      retryConditions: map['retryConditions'] == null ? null : ((map['retryConditions'] as List).cast<String>()).input(),
+      perTryTimeout: map['perTryTimeout'] == null ? null : (URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout.fromMap((map['perTryTimeout']! as Map).cast<String, dynamic>())).input(),
+      retryConditions: map['retryConditions'] == null ? null : ((map['retryConditions']! as List).cast<String>()).input(),
     );
   }
 }

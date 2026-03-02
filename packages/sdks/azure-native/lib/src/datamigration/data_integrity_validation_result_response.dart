@@ -27,8 +27,8 @@ class DataIntegrityValidationResultResponse {
 
   factory DataIntegrityValidationResultResponse.fromMap(Map<String, dynamic> map) {
     return DataIntegrityValidationResultResponse(
-      failedObjects: map['failedObjects'] == null ? null : ((map['failedObjects'] as Map).cast<String, String>()).input(),
-      validationErrors: map['validationErrors'] == null ? null : (ValidationErrorResponse.fromMap((map['validationErrors'] as Map).cast<String, dynamic>())).input(),
+      failedObjects: map['failedObjects'] == null ? null : ((map['failedObjects']! as Map).cast<String, String>()).input(),
+      validationErrors: map['validationErrors'] == null ? null : (ValidationErrorResponse.fromMap((map['validationErrors']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

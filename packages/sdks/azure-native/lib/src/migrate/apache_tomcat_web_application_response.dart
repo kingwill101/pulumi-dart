@@ -92,20 +92,20 @@ class ApacheTomcatWebApplicationResponse {
 
   factory ApacheTomcatWebApplicationResponse.fromMap(Map<String, dynamic> map) {
     return ApacheTomcatWebApplicationResponse(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      applicationScratchPath: map['applicationScratchPath'] == null ? null : (map['applicationScratchPath'] as String).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingResponse>(map['bindings'], (value) => BindingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<WebApplicationConfigurationResponse>(map['configurations'], (value) => WebApplicationConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      directories: map['directories'] == null ? null : (pulumi.Input.decodeList<WebApplicationDirectoryResponse>(map['directories'], (value) => WebApplicationDirectoryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      discoveredFrameworks: map['discoveredFrameworks'] == null ? null : (pulumi.Input.decodeList<WebApplicationFrameworkResponse>(map['discoveredFrameworks'], (value) => WebApplicationFrameworkResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      limits: map['limits'] == null ? null : (ResourceRequirementsResponse.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (DirectoryPathResponse.fromMap((map['path'] as Map).cast<String, dynamic>())).input(),
-      primaryFramework: map['primaryFramework'] == null ? null : (WebApplicationFrameworkResponse.fromMap((map['primaryFramework'] as Map).cast<String, dynamic>())).input(),
-      requests: map['requests'] == null ? null : (ResourceRequirementsResponse.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
-      webServerId: map['webServerId'] == null ? null : (map['webServerId'] as String).input(),
-      webServerName: map['webServerName'] == null ? null : (map['webServerName'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      applicationScratchPath: map['applicationScratchPath'] == null ? null : (map['applicationScratchPath']! as String).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingResponse>(map['bindings']!, (value) => BindingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<WebApplicationConfigurationResponse>(map['configurations']!, (value) => WebApplicationConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      directories: map['directories'] == null ? null : (pulumi.Input.decodeList<WebApplicationDirectoryResponse>(map['directories']!, (value) => WebApplicationDirectoryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      discoveredFrameworks: map['discoveredFrameworks'] == null ? null : (pulumi.Input.decodeList<WebApplicationFrameworkResponse>(map['discoveredFrameworks']!, (value) => WebApplicationFrameworkResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      limits: map['limits'] == null ? null : (ResourceRequirementsResponse.fromMap((map['limits']! as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (DirectoryPathResponse.fromMap((map['path']! as Map).cast<String, dynamic>())).input(),
+      primaryFramework: map['primaryFramework'] == null ? null : (WebApplicationFrameworkResponse.fromMap((map['primaryFramework']! as Map).cast<String, dynamic>())).input(),
+      requests: map['requests'] == null ? null : (ResourceRequirementsResponse.fromMap((map['requests']! as Map).cast<String, dynamic>())).input(),
+      webServerId: map['webServerId'] == null ? null : (map['webServerId']! as String).input(),
+      webServerName: map['webServerName'] == null ? null : (map['webServerName']! as String).input(),
     );
   }
 }

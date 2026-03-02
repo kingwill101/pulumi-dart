@@ -32,9 +32,9 @@ class ShareAclAccessPolicy {
 
   factory ShareAclAccessPolicy.fromMap(Map<String, dynamic> map) {
     return ShareAclAccessPolicy(
-      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
       permissions: (map['permissions'] as String).input(),
-      start: map['start'] == null ? null : (map['start'] as String).input(),
+      start: map['start'] == null ? null : (map['start']! as String).input(),
     );
   }
 }

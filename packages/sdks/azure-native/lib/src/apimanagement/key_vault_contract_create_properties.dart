@@ -26,8 +26,8 @@ class KeyVaultContractCreateProperties {
 
   factory KeyVaultContractCreateProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultContractCreateProperties(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
-      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
+      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier']! as String).input(),
     );
   }
 }

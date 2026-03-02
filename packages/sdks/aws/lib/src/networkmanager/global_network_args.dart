@@ -29,8 +29,8 @@ class GlobalNetworkArgs {
 
   factory GlobalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GlobalNetworkArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

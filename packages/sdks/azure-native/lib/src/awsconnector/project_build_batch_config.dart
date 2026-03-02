@@ -43,11 +43,11 @@ class ProjectBuildBatchConfig {
 
   factory ProjectBuildBatchConfig.fromMap(Map<String, dynamic> map) {
     return ProjectBuildBatchConfig(
-      batchReportMode: map['batchReportMode'] == null ? null : (BatchReportModeTypeEnumValue.fromMap((map['batchReportMode'] as Map).cast<String, dynamic>())).input(),
-      combineArtifacts: map['combineArtifacts'] == null ? null : (map['combineArtifacts'] as bool).input(),
-      restrictions: map['restrictions'] == null ? null : (BatchRestrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>())).input(),
-      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole'] as String).input(),
-      timeoutInMins: map['timeoutInMins'] == null ? null : (map['timeoutInMins'] as int).input(),
+      batchReportMode: map['batchReportMode'] == null ? null : (BatchReportModeTypeEnumValue.fromMap((map['batchReportMode']! as Map).cast<String, dynamic>())).input(),
+      combineArtifacts: map['combineArtifacts'] == null ? null : (map['combineArtifacts']! as bool).input(),
+      restrictions: map['restrictions'] == null ? null : (BatchRestrictions.fromMap((map['restrictions']! as Map).cast<String, dynamic>())).input(),
+      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole']! as String).input(),
+      timeoutInMins: map['timeoutInMins'] == null ? null : (map['timeoutInMins']! as int).input(),
     );
   }
 }

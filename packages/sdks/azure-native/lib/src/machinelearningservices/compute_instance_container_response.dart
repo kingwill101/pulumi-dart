@@ -47,11 +47,11 @@ class ComputeInstanceContainerResponse {
 
   factory ComputeInstanceContainerResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceContainerResponse(
-      autosave: map['autosave'] == null ? null : (map['autosave'] as String).input(),
-      environment: map['environment'] == null ? null : (ComputeInstanceEnvironmentInfoResponse.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
-      gpu: map['gpu'] == null ? null : (map['gpu'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
+      autosave: map['autosave'] == null ? null : (map['autosave']! as String).input(),
+      environment: map['environment'] == null ? null : (ComputeInstanceEnvironmentInfoResponse.fromMap((map['environment']! as Map).cast<String, dynamic>())).input(),
+      gpu: map['gpu'] == null ? null : (map['gpu']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
       services: ((map['services'] as List).cast<dynamic>()).input(),
     );
   }

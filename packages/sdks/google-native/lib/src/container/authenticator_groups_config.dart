@@ -26,8 +26,8 @@ class AuthenticatorGroupsConfig {
 
   factory AuthenticatorGroupsConfig.fromMap(Map<String, dynamic> map) {
     return AuthenticatorGroupsConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      securityGroup: map['securityGroup'] == null ? null : (map['securityGroup'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      securityGroup: map['securityGroup'] == null ? null : (map['securityGroup']! as String).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class ApplicationGatewayCustomErrorConfiguration {
   factory ApplicationGatewayCustomErrorConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayCustomErrorConfiguration(
       customErrorPageUrl: (map['customErrorPageUrl'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       statusCode: (map['statusCode'] as String).input(),
     );
   }

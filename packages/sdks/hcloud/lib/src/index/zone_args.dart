@@ -50,12 +50,12 @@ class ZoneArgs {
 
   factory ZoneArgs.fromMap(Map<String, dynamic> map) {
     return ZoneArgs(
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       mode: (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryNameservers: map['primaryNameservers'] == null ? null : (pulumi.Input.decodeList<ZonePrimaryNameserver>(map['primaryNameservers'], (value) => ZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryNameservers: map['primaryNameservers'] == null ? null : (pulumi.Input.decodeList<ZonePrimaryNameserver>(map['primaryNameservers']!, (value) => ZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
     );
   }
 }

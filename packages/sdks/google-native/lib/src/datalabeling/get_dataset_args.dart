@@ -28,7 +28,7 @@ class GetDatasetArgs {
   factory GetDatasetArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetArgs(
       datasetId: (map['datasetId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

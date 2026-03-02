@@ -32,9 +32,9 @@ class AllowedImagesSettingsState {
 
   factory AllowedImagesSettingsState.fromMap(Map<String, dynamic> map) {
     return AllowedImagesSettingsState(
-      imageCriterions: map['imageCriterions'] == null ? null : (pulumi.Input.decodeList<AllowedImagesSettingsImageCriterion>(map['imageCriterions'], (value) => AllowedImagesSettingsImageCriterion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      imageCriterions: map['imageCriterions'] == null ? null : ((pulumi.Input.decodeList<AllowedImagesSettingsImageCriterion>(map['imageCriterions']!, (value) => AllowedImagesSettingsImageCriterion.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
     );
   }
 }

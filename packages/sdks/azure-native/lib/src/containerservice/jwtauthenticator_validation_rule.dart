@@ -27,7 +27,7 @@ class JWTAuthenticatorValidationRule {
   factory JWTAuthenticatorValidationRule.fromMap(Map<String, dynamic> map) {
     return JWTAuthenticatorValidationRule(
       expression: (map['expression'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

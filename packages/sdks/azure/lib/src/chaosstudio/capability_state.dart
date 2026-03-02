@@ -31,9 +31,9 @@ class CapabilityState {
 
   factory CapabilityState.fromMap(Map<String, dynamic> map) {
     return CapabilityState(
-      capabilityType: map['capabilityType'] == null ? null : (map['capabilityType'] as String).input(),
-      capabilityUrn: map['capabilityUrn'] == null ? null : (map['capabilityUrn'] as String).input(),
-      chaosStudioTargetId: map['chaosStudioTargetId'] == null ? null : (map['chaosStudioTargetId'] as String).input(),
+      capabilityType: map['capabilityType'] == null ? null : (map['capabilityType']! as String).input(),
+      capabilityUrn: map['capabilityUrn'] == null ? null : (map['capabilityUrn']! as String).input(),
+      chaosStudioTargetId: map['chaosStudioTargetId'] == null ? null : (map['chaosStudioTargetId']! as String).input(),
     );
   }
 }

@@ -91,19 +91,19 @@ class FlowDestinationFlowConfigDestinationConnectorProperties {
 
   factory FlowDestinationFlowConfigDestinationConnectorProperties.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorProperties(
-      customConnector: map['customConnector'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnector.fromMap((map['customConnector'] as Map).cast<String, dynamic>())).input(),
-      customerProfiles: map['customerProfiles'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles.fromMap((map['customerProfiles'] as Map).cast<String, dynamic>())).input(),
-      eventBridge: map['eventBridge'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge.fromMap((map['eventBridge'] as Map).cast<String, dynamic>())).input(),
-      honeycode: map['honeycode'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode.fromMap((map['honeycode'] as Map).cast<String, dynamic>())).input(),
-      lookoutMetrics: map['lookoutMetrics'] == null ? null : ((map['lookoutMetrics'] as Map).cast<String, dynamic>()).input(),
-      marketo: map['marketo'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo.fromMap((map['marketo'] as Map).cast<String, dynamic>())).input(),
-      redshift: map['redshift'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesRedshift.fromMap((map['redshift'] as Map).cast<String, dynamic>())).input(),
-      s3: map['s3'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
-      salesforce: map['salesforce'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce.fromMap((map['salesforce'] as Map).cast<String, dynamic>())).input(),
-      sapoData: map['sapoData'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData.fromMap((map['sapoData'] as Map).cast<String, dynamic>())).input(),
-      snowflake: map['snowflake'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake.fromMap((map['snowflake'] as Map).cast<String, dynamic>())).input(),
-      upsolver: map['upsolver'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver.fromMap((map['upsolver'] as Map).cast<String, dynamic>())).input(),
-      zendesk: map['zendesk'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk.fromMap((map['zendesk'] as Map).cast<String, dynamic>())).input(),
+      customConnector: map['customConnector'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnector.fromMap((map['customConnector']! as Map).cast<String, dynamic>())).input()).input(),
+      customerProfiles: map['customerProfiles'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles.fromMap((map['customerProfiles']! as Map).cast<String, dynamic>())).input()).input(),
+      eventBridge: map['eventBridge'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge.fromMap((map['eventBridge']! as Map).cast<String, dynamic>())).input()).input(),
+      honeycode: map['honeycode'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode.fromMap((map['honeycode']! as Map).cast<String, dynamic>())).input()).input(),
+      lookoutMetrics: map['lookoutMetrics'] == null ? null : (((map['lookoutMetrics'] as Map).cast<String, dynamic>()).input()).input(),
+      marketo: map['marketo'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo.fromMap((map['marketo']! as Map).cast<String, dynamic>())).input()).input(),
+      redshift: map['redshift'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesRedshift.fromMap((map['redshift']! as Map).cast<String, dynamic>())).input()).input(),
+      s3: map['s3'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
+      salesforce: map['salesforce'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce.fromMap((map['salesforce']! as Map).cast<String, dynamic>())).input()).input(),
+      sapoData: map['sapoData'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData.fromMap((map['sapoData']! as Map).cast<String, dynamic>())).input()).input(),
+      snowflake: map['snowflake'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake.fromMap((map['snowflake']! as Map).cast<String, dynamic>())).input()).input(),
+      upsolver: map['upsolver'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver.fromMap((map['upsolver']! as Map).cast<String, dynamic>())).input()).input(),
+      zendesk: map['zendesk'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk.fromMap((map['zendesk']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

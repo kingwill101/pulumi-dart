@@ -26,8 +26,8 @@ class EnvironmentFileResponse {
 
   factory EnvironmentFileResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentFileResponse(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -41,10 +41,10 @@ class GetConstraintArgs {
 
   factory GetConstraintArgs.fromMap(Map<String, dynamic> map) {
     return GetConstraintArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

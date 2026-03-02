@@ -80,18 +80,18 @@ class ManagedRedisDefaultDatabase {
 
   factory ManagedRedisDefaultDatabase.fromMap(Map<String, dynamic> map) {
     return ManagedRedisDefaultDatabase(
-      accessKeysAuthenticationEnabled: map['accessKeysAuthenticationEnabled'] == null ? null : (map['accessKeysAuthenticationEnabled'] as bool).input(),
-      clientProtocol: map['clientProtocol'] == null ? null : (map['clientProtocol'] as String).input(),
-      clusteringPolicy: map['clusteringPolicy'] == null ? null : (map['clusteringPolicy'] as String).input(),
-      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy'] as String).input(),
-      geoReplicationGroupName: map['geoReplicationGroupName'] == null ? null : (map['geoReplicationGroupName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      modules: map['modules'] == null ? null : (pulumi.Input.decodeList<ManagedRedisDefaultDatabaseModule>(map['modules'], (value) => ManagedRedisDefaultDatabaseModule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      persistenceAppendOnlyFileBackupFrequency: map['persistenceAppendOnlyFileBackupFrequency'] == null ? null : (map['persistenceAppendOnlyFileBackupFrequency'] as String).input(),
-      persistenceRedisDatabaseBackupFrequency: map['persistenceRedisDatabaseBackupFrequency'] == null ? null : (map['persistenceRedisDatabaseBackupFrequency'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      primaryAccessKey: map['primaryAccessKey'] == null ? null : (map['primaryAccessKey'] as String).input(),
-      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : (map['secondaryAccessKey'] as String).input(),
+      accessKeysAuthenticationEnabled: map['accessKeysAuthenticationEnabled'] == null ? null : (map['accessKeysAuthenticationEnabled']! as bool).input(),
+      clientProtocol: map['clientProtocol'] == null ? null : (map['clientProtocol']! as String).input(),
+      clusteringPolicy: map['clusteringPolicy'] == null ? null : (map['clusteringPolicy']! as String).input(),
+      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy']! as String).input(),
+      geoReplicationGroupName: map['geoReplicationGroupName'] == null ? null : (map['geoReplicationGroupName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      modules: map['modules'] == null ? null : (pulumi.Input.decodeList<ManagedRedisDefaultDatabaseModule>(map['modules']!, (value) => ManagedRedisDefaultDatabaseModule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      persistenceAppendOnlyFileBackupFrequency: map['persistenceAppendOnlyFileBackupFrequency'] == null ? null : (map['persistenceAppendOnlyFileBackupFrequency']! as String).input(),
+      persistenceRedisDatabaseBackupFrequency: map['persistenceRedisDatabaseBackupFrequency'] == null ? null : (map['persistenceRedisDatabaseBackupFrequency']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      primaryAccessKey: map['primaryAccessKey'] == null ? null : (map['primaryAccessKey']! as String).input(),
+      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : (map['secondaryAccessKey']! as String).input(),
     );
   }
 }

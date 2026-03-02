@@ -36,10 +36,10 @@ class RemoteFunctionOptions {
 
   factory RemoteFunctionOptions.fromMap(Map<String, dynamic> map) {
     return RemoteFunctionOptions(
-      connection: map['connection'] == null ? null : (map['connection'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      maxBatchingRows: map['maxBatchingRows'] == null ? null : (map['maxBatchingRows'] as String).input(),
-      userDefinedContext: map['userDefinedContext'] == null ? null : ((map['userDefinedContext'] as Map).cast<String, String>()).input(),
+      connection: map['connection'] == null ? null : (map['connection']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      maxBatchingRows: map['maxBatchingRows'] == null ? null : (map['maxBatchingRows']! as String).input(),
+      userDefinedContext: map['userDefinedContext'] == null ? null : ((map['userDefinedContext']! as Map).cast<String, String>()).input(),
     );
   }
 }

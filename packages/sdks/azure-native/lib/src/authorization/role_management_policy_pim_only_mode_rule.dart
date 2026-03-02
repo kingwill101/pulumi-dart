@@ -39,10 +39,10 @@ class RoleManagementPolicyPimOnlyModeRule {
 
   factory RoleManagementPolicyPimOnlyModeRule.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyPimOnlyModeRule(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      pimOnlyModeSettings: map['pimOnlyModeSettings'] == null ? null : (PIMOnlyModeSettings.fromMap((map['pimOnlyModeSettings'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      pimOnlyModeSettings: map['pimOnlyModeSettings'] == null ? null : (PIMOnlyModeSettings.fromMap((map['pimOnlyModeSettings']! as Map).cast<String, dynamic>())).input(),
       ruleType: (map['ruleType'] as String).input(),
-      target: map['target'] == null ? null : (RoleManagementPolicyRuleTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (RoleManagementPolicyRuleTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

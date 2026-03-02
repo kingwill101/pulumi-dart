@@ -71,17 +71,17 @@ class PermissionState {
 
   factory PermissionState.fromMap(Map<String, dynamic> map) {
     return PermissionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyTemplate: map['policyTemplate'] == null ? null : (map['policyTemplate'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (PermissionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      defaultVersion: map['defaultVersion'] == null ? null : ((map['defaultVersion'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      policyTemplate: map['policyTemplate'] == null ? null : ((map['policyTemplate'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((PermissionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

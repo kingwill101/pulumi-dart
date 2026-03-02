@@ -19,7 +19,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsCont
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings(
-      repInterval: map['repInterval'] == null ? null : (map['repInterval'] as int).input(),
+      repInterval: map['repInterval'] == null ? null : ((map['repInterval'] as int).input()).input(),
     );
   }
 }

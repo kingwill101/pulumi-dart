@@ -22,7 +22,7 @@ class MaintenanceExclusionOptionsContainerV1beta1 {
 
   factory MaintenanceExclusionOptionsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MaintenanceExclusionOptionsContainerV1beta1(
-      scope: map['scope'] == null ? null : (MaintenanceExclusionOptionsScopeContainerV1beta1.fromValue(map['scope'] as String)).input(),
+      scope: map['scope'] == null ? null : (MaintenanceExclusionOptionsScopeContainerV1beta1.fromValue(map['scope']! as String)).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class AgentFlowDefinitionNodeInput {
 
   factory AgentFlowDefinitionNodeInput.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeInput(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
+      category: map['category'] == null ? null : ((map['category'] as String).input()).input(),
       expression: (map['expression'] as String).input(),
       name: (map['name'] as String).input(),
       type: (map['type'] as String).input(),

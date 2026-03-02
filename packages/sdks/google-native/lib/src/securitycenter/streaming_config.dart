@@ -21,7 +21,7 @@ class StreamingConfig {
 
   factory StreamingConfig.fromMap(Map<String, dynamic> map) {
     return StreamingConfig(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
     );
   }
 }

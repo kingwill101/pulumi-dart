@@ -101,22 +101,22 @@ class MetricStreamState {
 
   factory MetricStreamState.fromMap(Map<String, dynamic> map) {
     return MetricStreamState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      creationDate: map['creationDate'] == null ? null : (map['creationDate'] as String).input(),
-      excludeFilters: map['excludeFilters'] == null ? null : (pulumi.Input.decodeList<MetricStreamExcludeFilter>(map['excludeFilters'], (value) => MetricStreamExcludeFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      firehoseArn: map['firehoseArn'] == null ? null : (map['firehoseArn'] as String).input(),
-      includeFilters: map['includeFilters'] == null ? null : (pulumi.Input.decodeList<MetricStreamIncludeFilter>(map['includeFilters'], (value) => MetricStreamIncludeFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includeLinkedAccountsMetrics: map['includeLinkedAccountsMetrics'] == null ? null : (map['includeLinkedAccountsMetrics'] as bool).input(),
-      lastUpdateDate: map['lastUpdateDate'] == null ? null : (map['lastUpdateDate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      statisticsConfigurations: map['statisticsConfigurations'] == null ? null : (pulumi.Input.decodeList<MetricStreamStatisticsConfiguration>(map['statisticsConfigurations'], (value) => MetricStreamStatisticsConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      creationDate: map['creationDate'] == null ? null : ((map['creationDate'] as String).input()).input(),
+      excludeFilters: map['excludeFilters'] == null ? null : ((pulumi.Input.decodeList<MetricStreamExcludeFilter>(map['excludeFilters']!, (value) => MetricStreamExcludeFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      firehoseArn: map['firehoseArn'] == null ? null : ((map['firehoseArn'] as String).input()).input(),
+      includeFilters: map['includeFilters'] == null ? null : ((pulumi.Input.decodeList<MetricStreamIncludeFilter>(map['includeFilters']!, (value) => MetricStreamIncludeFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      includeLinkedAccountsMetrics: map['includeLinkedAccountsMetrics'] == null ? null : ((map['includeLinkedAccountsMetrics'] as bool).input()).input(),
+      lastUpdateDate: map['lastUpdateDate'] == null ? null : ((map['lastUpdateDate'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      outputFormat: map['outputFormat'] == null ? null : ((map['outputFormat'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      statisticsConfigurations: map['statisticsConfigurations'] == null ? null : ((pulumi.Input.decodeList<MetricStreamStatisticsConfiguration>(map['statisticsConfigurations']!, (value) => MetricStreamStatisticsConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

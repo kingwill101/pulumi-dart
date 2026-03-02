@@ -21,7 +21,7 @@ class ZoneAwarenessConfigResponse {
 
   factory ZoneAwarenessConfigResponse.fromMap(Map<String, dynamic> map) {
     return ZoneAwarenessConfigResponse(
-      availabilityZoneCount: map['availabilityZoneCount'] == null ? null : (map['availabilityZoneCount'] as int).input(),
+      availabilityZoneCount: map['availabilityZoneCount'] == null ? null : (map['availabilityZoneCount']! as int).input(),
     );
   }
 }

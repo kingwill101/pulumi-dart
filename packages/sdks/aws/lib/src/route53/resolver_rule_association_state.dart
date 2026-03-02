@@ -36,10 +36,10 @@ class ResolverRuleAssociationState {
 
   factory ResolverRuleAssociationState.fromMap(Map<String, dynamic> map) {
     return ResolverRuleAssociationState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resolverRuleId: map['resolverRuleId'] == null ? null : (map['resolverRuleId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resolverRuleId: map['resolverRuleId'] == null ? null : ((map['resolverRuleId'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

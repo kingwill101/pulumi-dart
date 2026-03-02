@@ -80,18 +80,18 @@ class NatFirewallArgs {
 
   factory NatFirewallArgs.fromMap(Map<String, dynamic> map) {
     return NatFirewallArgs(
-      firewallSwitch: map['firewallSwitch'] == null ? null : (map['firewallSwitch'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      firewallSwitch: map['firewallSwitch'] == null ? null : (map['firewallSwitch']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
       natGatewayId: (map['natGatewayId'] as String).input(),
       natRouteEntryLists: (pulumi.Input.decodeList<NatFirewallNatRouteEntryList>(map['natRouteEntryLists'], (value) => NatFirewallNatRouteEntryList.fromMap((value as Map).cast<String, dynamic>()))).input(),
       proxyName: (map['proxyName'] as String).input(),
       regionNo: (map['regionNo'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      strictMode: map['strictMode'] == null ? null : (map['strictMode'] as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      strictMode: map['strictMode'] == null ? null : (map['strictMode']! as int).input(),
       vpcId: (map['vpcId'] as String).input(),
-      vswitchAuto: map['vswitchAuto'] == null ? null : (map['vswitchAuto'] as String).input(),
-      vswitchCidr: map['vswitchCidr'] == null ? null : (map['vswitchCidr'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      vswitchAuto: map['vswitchAuto'] == null ? null : (map['vswitchAuto']! as String).input(),
+      vswitchCidr: map['vswitchCidr'] == null ? null : (map['vswitchCidr']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

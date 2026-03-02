@@ -77,15 +77,15 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      brokerCapacityConfig: map['brokerCapacityConfig'] == null ? null : (ClusterBrokerCapacityConfig.fromMap((map['brokerCapacityConfig'] as Map).cast<String, dynamic>())).input(),
+      brokerCapacityConfig: map['brokerCapacityConfig'] == null ? null : (ClusterBrokerCapacityConfig.fromMap((map['brokerCapacityConfig']! as Map).cast<String, dynamic>())).input(),
       capacityConfig: (ClusterCapacityConfig.fromMap((map['capacityConfig'] as Map).cast<String, dynamic>())).input(),
       clusterId: (map['clusterId'] as String).input(),
       gcpConfig: (ClusterGcpConfig.fromMap((map['gcpConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rebalanceConfig: map['rebalanceConfig'] == null ? null : (ClusterRebalanceConfig.fromMap((map['rebalanceConfig'] as Map).cast<String, dynamic>())).input(),
-      tlsConfig: map['tlsConfig'] == null ? null : (ClusterTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rebalanceConfig: map['rebalanceConfig'] == null ? null : (ClusterRebalanceConfig.fromMap((map['rebalanceConfig']! as Map).cast<String, dynamic>())).input(),
+      tlsConfig: map['tlsConfig'] == null ? null : (ClusterTlsConfig.fromMap((map['tlsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

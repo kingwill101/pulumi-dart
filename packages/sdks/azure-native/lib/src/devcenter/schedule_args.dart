@@ -80,16 +80,16 @@ class ScheduleArgs {
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
       frequency: (map['frequency'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       poolName: (map['poolName'] as String).input(),
       projectName: (map['projectName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       time: (map['time'] as String).input(),
       timeZone: (map['timeZone'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
       type: (map['type'] as String).input(),
     );
   }

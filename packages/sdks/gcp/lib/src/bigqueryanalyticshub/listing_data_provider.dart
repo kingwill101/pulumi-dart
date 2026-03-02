@@ -26,7 +26,7 @@ class ListingDataProvider {
   factory ListingDataProvider.fromMap(Map<String, dynamic> map) {
     return ListingDataProvider(
       name: (map['name'] as String).input(),
-      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact'] as String).input(),
+      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class CustomResourceConversionApiextensionsK8sIoV1beta1 {
 
   factory CustomResourceConversionApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceConversionApiextensionsK8sIoV1beta1(
-      conversionReviewVersions: map['conversionReviewVersions'] == null ? null : ((map['conversionReviewVersions'] as List).cast<String>()).input(),
+      conversionReviewVersions: map['conversionReviewVersions'] == null ? null : ((map['conversionReviewVersions']! as List).cast<String>()).input(),
       strategy: (map['strategy'] as String).input(),
-      webhookClientConfig: map['webhookClientConfig'] == null ? null : (WebhookClientConfigApiextensionsK8sIoV1beta1.fromMap((map['webhookClientConfig'] as Map).cast<String, dynamic>())).input(),
+      webhookClientConfig: map['webhookClientConfig'] == null ? null : (WebhookClientConfigApiextensionsK8sIoV1beta1.fromMap((map['webhookClientConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

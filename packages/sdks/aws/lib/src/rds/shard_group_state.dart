@@ -83,19 +83,19 @@ class ShardGroupState {
 
   factory ShardGroupState.fromMap(Map<String, dynamic> map) {
     return ShardGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      computeRedundancy: map['computeRedundancy'] == null ? null : (map['computeRedundancy'] as int).input(),
-      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : (map['dbClusterIdentifier'] as String).input(),
-      dbShardGroupIdentifier: map['dbShardGroupIdentifier'] == null ? null : (map['dbShardGroupIdentifier'] as String).input(),
-      dbShardGroupResourceId: map['dbShardGroupResourceId'] == null ? null : (map['dbShardGroupResourceId'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      maxAcu: map['maxAcu'] == null ? null : (map['maxAcu'] as double).input(),
-      minAcu: map['minAcu'] == null ? null : (map['minAcu'] as double).input(),
-      publiclyAccessible: map['publiclyAccessible'] == null ? null : (map['publiclyAccessible'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ShardGroupTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      computeRedundancy: map['computeRedundancy'] == null ? null : ((map['computeRedundancy'] as int).input()).input(),
+      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : ((map['dbClusterIdentifier'] as String).input()).input(),
+      dbShardGroupIdentifier: map['dbShardGroupIdentifier'] == null ? null : ((map['dbShardGroupIdentifier'] as String).input()).input(),
+      dbShardGroupResourceId: map['dbShardGroupResourceId'] == null ? null : ((map['dbShardGroupResourceId'] as String).input()).input(),
+      endpoint: map['endpoint'] == null ? null : ((map['endpoint'] as String).input()).input(),
+      maxAcu: map['maxAcu'] == null ? null : ((map['maxAcu'] as double).input()).input(),
+      minAcu: map['minAcu'] == null ? null : ((map['minAcu'] as double).input()).input(),
+      publiclyAccessible: map['publiclyAccessible'] == null ? null : ((map['publiclyAccessible'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ShardGroupTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

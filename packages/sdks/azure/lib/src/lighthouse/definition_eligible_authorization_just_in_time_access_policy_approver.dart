@@ -25,7 +25,7 @@ class DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover {
 
   factory DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover.fromMap(Map<String, dynamic> map) {
     return DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover(
-      principalDisplayName: map['principalDisplayName'] == null ? null : (map['principalDisplayName'] as String).input(),
+      principalDisplayName: map['principalDisplayName'] == null ? null : (map['principalDisplayName']! as String).input(),
       principalId: (map['principalId'] as String).input(),
     );
   }

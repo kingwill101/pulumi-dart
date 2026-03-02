@@ -46,12 +46,12 @@ class GroupConnectivityInformation {
 
   factory GroupConnectivityInformation.fromMap(Map<String, dynamic> map) {
     return GroupConnectivityInformation(
-      customerVisibleFqdns: map['customerVisibleFqdns'] == null ? null : ((map['customerVisibleFqdns'] as List).cast<String>()).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      internalFqdn: map['internalFqdn'] == null ? null : (map['internalFqdn'] as String).input(),
-      memberName: map['memberName'] == null ? null : (map['memberName'] as String).input(),
-      privateLinkServiceArmRegion: map['privateLinkServiceArmRegion'] == null ? null : (map['privateLinkServiceArmRegion'] as String).input(),
-      redirectMapId: map['redirectMapId'] == null ? null : (map['redirectMapId'] as String).input(),
+      customerVisibleFqdns: map['customerVisibleFqdns'] == null ? null : ((map['customerVisibleFqdns']! as List).cast<String>()).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      internalFqdn: map['internalFqdn'] == null ? null : (map['internalFqdn']! as String).input(),
+      memberName: map['memberName'] == null ? null : (map['memberName']! as String).input(),
+      privateLinkServiceArmRegion: map['privateLinkServiceArmRegion'] == null ? null : (map['privateLinkServiceArmRegion']! as String).input(),
+      redirectMapId: map['redirectMapId'] == null ? null : (map['redirectMapId']! as String).input(),
     );
   }
 }

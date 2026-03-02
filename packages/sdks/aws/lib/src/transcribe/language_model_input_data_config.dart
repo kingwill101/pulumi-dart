@@ -34,7 +34,7 @@ class LanguageModelInputDataConfig {
     return LanguageModelInputDataConfig(
       dataAccessRoleArn: (map['dataAccessRoleArn'] as String).input(),
       s3Uri: (map['s3Uri'] as String).input(),
-      tuningDataS3Uri: map['tuningDataS3Uri'] == null ? null : (map['tuningDataS3Uri'] as String).input(),
+      tuningDataS3Uri: map['tuningDataS3Uri'] == null ? null : ((map['tuningDataS3Uri'] as String).input()).input(),
     );
   }
 }

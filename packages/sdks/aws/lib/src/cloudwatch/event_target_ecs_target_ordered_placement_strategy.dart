@@ -25,7 +25,7 @@ class EventTargetEcsTargetOrderedPlacementStrategy {
 
   factory EventTargetEcsTargetOrderedPlacementStrategy.fromMap(Map<String, dynamic> map) {
     return EventTargetEcsTargetOrderedPlacementStrategy(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
+      field: map['field'] == null ? null : ((map['field'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

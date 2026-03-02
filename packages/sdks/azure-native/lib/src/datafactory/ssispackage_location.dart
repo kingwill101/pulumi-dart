@@ -69,16 +69,16 @@ class SSISPackageLocation {
 
   factory SSISPackageLocation.fromMap(Map<String, dynamic> map) {
     return SSISPackageLocation(
-      accessCredential: map['accessCredential'] == null ? null : (SSISAccessCredential.fromMap((map['accessCredential'] as Map).cast<String, dynamic>())).input(),
-      childPackages: map['childPackages'] == null ? null : (pulumi.Input.decodeList<SSISChildPackage>(map['childPackages'], (value) => SSISChildPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configurationAccessCredential: map['configurationAccessCredential'] == null ? null : (SSISAccessCredential.fromMap((map['configurationAccessCredential'] as Map).cast<String, dynamic>())).input(),
-      configurationPath: map['configurationPath'] == null ? null : (map['configurationPath']).input(),
-      packageContent: map['packageContent'] == null ? null : (map['packageContent']).input(),
-      packageLastModifiedDate: map['packageLastModifiedDate'] == null ? null : (map['packageLastModifiedDate'] as String).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
-      packagePassword: map['packagePassword'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['packagePassword'] as Map).cast<String, dynamic>())).input(),
-      packagePath: map['packagePath'] == null ? null : (map['packagePath']).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      accessCredential: map['accessCredential'] == null ? null : (SSISAccessCredential.fromMap((map['accessCredential']! as Map).cast<String, dynamic>())).input(),
+      childPackages: map['childPackages'] == null ? null : (pulumi.Input.decodeList<SSISChildPackage>(map['childPackages']!, (value) => SSISChildPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationAccessCredential: map['configurationAccessCredential'] == null ? null : (SSISAccessCredential.fromMap((map['configurationAccessCredential']! as Map).cast<String, dynamic>())).input(),
+      configurationPath: map['configurationPath'] == null ? null : (map['configurationPath']!).input(),
+      packageContent: map['packageContent'] == null ? null : (map['packageContent']!).input(),
+      packageLastModifiedDate: map['packageLastModifiedDate'] == null ? null : (map['packageLastModifiedDate']! as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
+      packagePassword: map['packagePassword'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['packagePassword']! as Map).cast<String, dynamic>())).input(),
+      packagePath: map['packagePath'] == null ? null : (map['packagePath']!).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

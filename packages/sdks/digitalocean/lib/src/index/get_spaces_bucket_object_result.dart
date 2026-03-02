@@ -121,7 +121,7 @@ class GetSpacesBucketObjectResult {
       key: map['key'] as String,
       lastModified: map['lastModified'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
-      range: map['range'] == null ? null : map['range'] as String,
+      range: map['range'] == null ? null : map['range']! as String,
       region: map['region'] as String,
       versionId: map['versionId'] as String,
       websiteRedirectLocation: map['websiteRedirectLocation'] as String,

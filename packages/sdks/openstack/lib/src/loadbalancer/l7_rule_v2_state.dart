@@ -78,16 +78,16 @@ class L7RuleV2State {
 
   factory L7RuleV2State.fromMap(Map<String, dynamic> map) {
     return L7RuleV2State(
-      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
-      compareType: map['compareType'] == null ? null : (map['compareType'] as String).input(),
-      invert: map['invert'] == null ? null : (map['invert'] as bool).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      l7policyId: map['l7policyId'] == null ? null : (map['l7policyId'] as String).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp']! as bool).input(),
+      compareType: map['compareType'] == null ? null : (map['compareType']! as String).input(),
+      invert: map['invert'] == null ? null : (map['invert']! as bool).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      l7policyId: map['l7policyId'] == null ? null : (map['l7policyId']! as String).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

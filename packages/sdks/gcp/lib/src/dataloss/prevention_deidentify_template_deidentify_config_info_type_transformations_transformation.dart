@@ -31,7 +31,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
   factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation(
-      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType>(map['infoTypes'], (value) => PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType>(map['infoTypes']!, (value) => PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
       primitiveTransformation: (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation.fromMap((map['primitiveTransformation'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -63,14 +63,14 @@ class UrlMap {
 
   factory UrlMap.fromMap(Map<String, dynamic> map) {
     return UrlMap(
-      apiEndpoint: map['apiEndpoint'] == null ? null : (ApiEndpointHandler.fromMap((map['apiEndpoint'] as Map).cast<String, dynamic>())).input(),
-      authFailAction: map['authFailAction'] == null ? null : (UrlMapAuthFailAction.fromValue(map['authFailAction'] as String)).input(),
-      login: map['login'] == null ? null : (UrlMapLogin.fromValue(map['login'] as String)).input(),
-      redirectHttpResponseCode: map['redirectHttpResponseCode'] == null ? null : (UrlMapRedirectHttpResponseCode.fromValue(map['redirectHttpResponseCode'] as String)).input(),
-      script: map['script'] == null ? null : (ScriptHandler.fromMap((map['script'] as Map).cast<String, dynamic>())).input(),
-      securityLevel: map['securityLevel'] == null ? null : (UrlMapSecurityLevel.fromValue(map['securityLevel'] as String)).input(),
-      staticFiles: map['staticFiles'] == null ? null : (StaticFilesHandler.fromMap((map['staticFiles'] as Map).cast<String, dynamic>())).input(),
-      urlRegex: map['urlRegex'] == null ? null : (map['urlRegex'] as String).input(),
+      apiEndpoint: map['apiEndpoint'] == null ? null : (ApiEndpointHandler.fromMap((map['apiEndpoint']! as Map).cast<String, dynamic>())).input(),
+      authFailAction: map['authFailAction'] == null ? null : (UrlMapAuthFailAction.fromValue(map['authFailAction']! as String)).input(),
+      login: map['login'] == null ? null : (UrlMapLogin.fromValue(map['login']! as String)).input(),
+      redirectHttpResponseCode: map['redirectHttpResponseCode'] == null ? null : (UrlMapRedirectHttpResponseCode.fromValue(map['redirectHttpResponseCode']! as String)).input(),
+      script: map['script'] == null ? null : (ScriptHandler.fromMap((map['script']! as Map).cast<String, dynamic>())).input(),
+      securityLevel: map['securityLevel'] == null ? null : (UrlMapSecurityLevel.fromValue(map['securityLevel']! as String)).input(),
+      staticFiles: map['staticFiles'] == null ? null : (StaticFilesHandler.fromMap((map['staticFiles']! as Map).cast<String, dynamic>())).input(),
+      urlRegex: map['urlRegex'] == null ? null : (map['urlRegex']! as String).input(),
     );
   }
 }

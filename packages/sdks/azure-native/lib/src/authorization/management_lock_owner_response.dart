@@ -21,7 +21,7 @@ class ManagementLockOwnerResponse {
 
   factory ManagementLockOwnerResponse.fromMap(Map<String, dynamic> map) {
     return ManagementLockOwnerResponse(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
     );
   }
 }

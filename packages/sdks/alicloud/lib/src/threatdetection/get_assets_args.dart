@@ -69,15 +69,15 @@ class GetAssetsArgs {
 
   factory GetAssetsArgs.fromMap(Map<String, dynamic> map) {
     return GetAssetsArgs(
-      criteria: map['criteria'] == null ? null : (map['criteria'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      importance: map['importance'] == null ? null : (map['importance'] as int).input(),
-      logicalExp: map['logicalExp'] == null ? null : (map['logicalExp'] as String).input(),
-      machineTypes: map['machineTypes'] == null ? null : (map['machineTypes'] as String).input(),
-      noGroupTrace: map['noGroupTrace'] == null ? null : (map['noGroupTrace'] as bool).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      criteria: map['criteria'] == null ? null : (map['criteria']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      importance: map['importance'] == null ? null : (map['importance']! as int).input(),
+      logicalExp: map['logicalExp'] == null ? null : (map['logicalExp']! as String).input(),
+      machineTypes: map['machineTypes'] == null ? null : (map['machineTypes']! as String).input(),
+      noGroupTrace: map['noGroupTrace'] == null ? null : (map['noGroupTrace']! as bool).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
     );
   }
 }

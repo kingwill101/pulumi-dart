@@ -29,8 +29,8 @@ class OriginProtectionState {
 
   factory OriginProtectionState.fromMap(Map<String, dynamic> map) {
     return OriginProtectionState(
-      originConverge: map['originConverge'] == null ? null : (map['originConverge'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      originConverge: map['originConverge'] == null ? null : (map['originConverge']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
     );
   }
 }

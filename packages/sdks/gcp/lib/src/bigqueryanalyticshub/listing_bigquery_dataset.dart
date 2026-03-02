@@ -42,9 +42,9 @@ class ListingBigqueryDataset {
   factory ListingBigqueryDataset.fromMap(Map<String, dynamic> map) {
     return ListingBigqueryDataset(
       dataset: (map['dataset'] as String).input(),
-      effectiveReplicas: map['effectiveReplicas'] == null ? null : (pulumi.Input.decodeList<ListingBigqueryDatasetEffectiveReplica>(map['effectiveReplicas'], (value) => ListingBigqueryDatasetEffectiveReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replicaLocations: map['replicaLocations'] == null ? null : ((map['replicaLocations'] as List).cast<String>()).input(),
-      selectedResources: map['selectedResources'] == null ? null : (pulumi.Input.decodeList<ListingBigqueryDatasetSelectedResource>(map['selectedResources'], (value) => ListingBigqueryDatasetSelectedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      effectiveReplicas: map['effectiveReplicas'] == null ? null : (pulumi.Input.decodeList<ListingBigqueryDatasetEffectiveReplica>(map['effectiveReplicas']!, (value) => ListingBigqueryDatasetEffectiveReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicaLocations: map['replicaLocations'] == null ? null : ((map['replicaLocations']! as List).cast<String>()).input(),
+      selectedResources: map['selectedResources'] == null ? null : (pulumi.Input.decodeList<ListingBigqueryDatasetSelectedResource>(map['selectedResources']!, (value) => ListingBigqueryDatasetSelectedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

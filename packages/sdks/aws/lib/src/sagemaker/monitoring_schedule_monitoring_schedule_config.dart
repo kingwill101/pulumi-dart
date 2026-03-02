@@ -37,10 +37,10 @@ class MonitoringScheduleMonitoringScheduleConfig {
 
   factory MonitoringScheduleMonitoringScheduleConfig.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfig(
-      monitoringJobDefinition: map['monitoringJobDefinition'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition.fromMap((map['monitoringJobDefinition'] as Map).cast<String, dynamic>())).input(),
-      monitoringJobDefinitionName: map['monitoringJobDefinitionName'] == null ? null : (map['monitoringJobDefinitionName'] as String).input(),
+      monitoringJobDefinition: map['monitoringJobDefinition'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition.fromMap((map['monitoringJobDefinition']! as Map).cast<String, dynamic>())).input()).input(),
+      monitoringJobDefinitionName: map['monitoringJobDefinitionName'] == null ? null : ((map['monitoringJobDefinitionName'] as String).input()).input(),
       monitoringType: (map['monitoringType'] as String).input(),
-      scheduleConfig: map['scheduleConfig'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigScheduleConfig.fromMap((map['scheduleConfig'] as Map).cast<String, dynamic>())).input(),
+      scheduleConfig: map['scheduleConfig'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfigScheduleConfig.fromMap((map['scheduleConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

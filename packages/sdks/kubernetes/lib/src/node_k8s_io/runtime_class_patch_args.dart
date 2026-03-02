@@ -53,12 +53,12 @@ class RuntimeClassPatchArgs {
 
   factory RuntimeClassPatchArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeClassPatchArgs(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      handler: map['handler'] == null ? null : (map['handler'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      overhead: map['overhead'] == null ? null : (OverheadPatch.fromMap((map['overhead'] as Map).cast<String, dynamic>())).input(),
-      scheduling: map['scheduling'] == null ? null : (SchedulingPatch.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      handler: map['handler'] == null ? null : (map['handler']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      overhead: map['overhead'] == null ? null : (OverheadPatch.fromMap((map['overhead']! as Map).cast<String, dynamic>())).input(),
+      scheduling: map['scheduling'] == null ? null : (SchedulingPatch.fromMap((map['scheduling']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

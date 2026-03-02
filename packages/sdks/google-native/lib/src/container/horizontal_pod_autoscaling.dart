@@ -21,7 +21,7 @@ class HorizontalPodAutoscaling {
 
   factory HorizontalPodAutoscaling.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscaling(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
     );
   }
 }

@@ -104,22 +104,22 @@ class GoogleCloudIntegrationsV1alphaTaskConfig {
 
   factory GoogleCloudIntegrationsV1alphaTaskConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaTaskConfig(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      errorCatcherId: map['errorCatcherId'] == null ? null : (map['errorCatcherId'] as String).input(),
-      externalTaskType: map['externalTaskType'] == null ? null : (GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType.fromValue(map['externalTaskType'] as String)).input(),
-      failurePolicy: map['failurePolicy'] == null ? null : (GoogleCloudIntegrationsV1alphaFailurePolicy.fromMap((map['failurePolicy'] as Map).cast<String, dynamic>())).input(),
-      jsonValidationOption: map['jsonValidationOption'] == null ? null : (GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption.fromValue(map['jsonValidationOption'] as String)).input(),
-      nextTasks: map['nextTasks'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaNextTask>(map['nextTasks'], (value) => GoogleCloudIntegrationsV1alphaNextTask.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nextTasksExecutionPolicy: map['nextTasksExecutionPolicy'] == null ? null : (GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy.fromValue(map['nextTasksExecutionPolicy'] as String)).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      position: map['position'] == null ? null : (GoogleCloudIntegrationsV1alphaCoordinate.fromMap((map['position'] as Map).cast<String, dynamic>())).input(),
-      successPolicy: map['successPolicy'] == null ? null : (GoogleCloudIntegrationsV1alphaSuccessPolicy.fromMap((map['successPolicy'] as Map).cast<String, dynamic>())).input(),
-      synchronousCallFailurePolicy: map['synchronousCallFailurePolicy'] == null ? null : (GoogleCloudIntegrationsV1alphaFailurePolicy.fromMap((map['synchronousCallFailurePolicy'] as Map).cast<String, dynamic>())).input(),
-      task: map['task'] == null ? null : (map['task'] as String).input(),
-      taskExecutionStrategy: map['taskExecutionStrategy'] == null ? null : (GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy.fromValue(map['taskExecutionStrategy'] as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      errorCatcherId: map['errorCatcherId'] == null ? null : (map['errorCatcherId']! as String).input(),
+      externalTaskType: map['externalTaskType'] == null ? null : (GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType.fromValue(map['externalTaskType']! as String)).input(),
+      failurePolicy: map['failurePolicy'] == null ? null : (GoogleCloudIntegrationsV1alphaFailurePolicy.fromMap((map['failurePolicy']! as Map).cast<String, dynamic>())).input(),
+      jsonValidationOption: map['jsonValidationOption'] == null ? null : (GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption.fromValue(map['jsonValidationOption']! as String)).input(),
+      nextTasks: map['nextTasks'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaNextTask>(map['nextTasks']!, (value) => GoogleCloudIntegrationsV1alphaNextTask.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nextTasksExecutionPolicy: map['nextTasksExecutionPolicy'] == null ? null : (GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy.fromValue(map['nextTasksExecutionPolicy']! as String)).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      position: map['position'] == null ? null : (GoogleCloudIntegrationsV1alphaCoordinate.fromMap((map['position']! as Map).cast<String, dynamic>())).input(),
+      successPolicy: map['successPolicy'] == null ? null : (GoogleCloudIntegrationsV1alphaSuccessPolicy.fromMap((map['successPolicy']! as Map).cast<String, dynamic>())).input(),
+      synchronousCallFailurePolicy: map['synchronousCallFailurePolicy'] == null ? null : (GoogleCloudIntegrationsV1alphaFailurePolicy.fromMap((map['synchronousCallFailurePolicy']! as Map).cast<String, dynamic>())).input(),
+      task: map['task'] == null ? null : (map['task']! as String).input(),
+      taskExecutionStrategy: map['taskExecutionStrategy'] == null ? null : (GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy.fromValue(map['taskExecutionStrategy']! as String)).input(),
       taskId: (map['taskId'] as String).input(),
-      taskTemplate: map['taskTemplate'] == null ? null : (map['taskTemplate'] as String).input(),
+      taskTemplate: map['taskTemplate'] == null ? null : (map['taskTemplate']! as String).input(),
     );
   }
 }

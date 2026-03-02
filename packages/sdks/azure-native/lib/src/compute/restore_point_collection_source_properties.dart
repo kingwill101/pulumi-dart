@@ -21,7 +21,7 @@ class RestorePointCollectionSourceProperties {
 
   factory RestorePointCollectionSourceProperties.fromMap(Map<String, dynamic> map) {
     return RestorePointCollectionSourceProperties(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

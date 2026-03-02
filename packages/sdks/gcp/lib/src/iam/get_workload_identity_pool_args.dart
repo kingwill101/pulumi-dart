@@ -33,7 +33,7 @@ class GetWorkloadIdentityPoolArgs {
 
   factory GetWorkloadIdentityPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
     );
   }

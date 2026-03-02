@@ -26,7 +26,7 @@ class ResourcePolicyAssignmentNonComplianceMessage {
   factory ResourcePolicyAssignmentNonComplianceMessage.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyAssignmentNonComplianceMessage(
       content: (map['content'] as String).input(),
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId']! as String).input(),
     );
   }
 }

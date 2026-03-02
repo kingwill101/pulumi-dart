@@ -20,7 +20,7 @@ class DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration {
 
   factory DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration(
-      s3Prefix: map['s3Prefix'] == null ? null : (map['s3Prefix'] as String).input(),
+      s3Prefix: map['s3Prefix'] == null ? null : ((map['s3Prefix'] as String).input()).input(),
     );
   }
 }

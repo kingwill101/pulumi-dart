@@ -51,8 +51,8 @@ class RuleTargetParamList {
     return RuleTargetParamList(
       form: (map['form'] as String).input(),
       resourceKey: (map['resourceKey'] as String).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

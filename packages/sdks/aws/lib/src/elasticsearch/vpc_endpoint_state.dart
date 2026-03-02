@@ -37,10 +37,10 @@ class VpcEndpointState {
 
   factory VpcEndpointState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointState(
-      domainArn: map['domainArn'] == null ? null : (map['domainArn'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpcOptions: map['vpcOptions'] == null ? null : (VpcEndpointVpcOptions.fromMap((map['vpcOptions'] as Map).cast<String, dynamic>())).input(),
+      domainArn: map['domainArn'] == null ? null : ((map['domainArn'] as String).input()).input(),
+      endpoint: map['endpoint'] == null ? null : ((map['endpoint'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpcOptions: map['vpcOptions'] == null ? null : ((VpcEndpointVpcOptions.fromMap((map['vpcOptions']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

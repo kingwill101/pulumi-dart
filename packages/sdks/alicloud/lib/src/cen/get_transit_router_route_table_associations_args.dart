@@ -58,13 +58,13 @@ class GetTransitRouterRouteTableAssociationsArgs {
 
   factory GetTransitRouterRouteTableAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterRouteTableAssociationsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId'] as String).input(),
-      transitRouterAttachmentResourceId: map['transitRouterAttachmentResourceId'] == null ? null : (map['transitRouterAttachmentResourceId'] as String).input(),
-      transitRouterAttachmentResourceType: map['transitRouterAttachmentResourceType'] == null ? null : (map['transitRouterAttachmentResourceType'] as String).input(),
-      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : (map['transitRouterRouteTableId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId']! as String).input(),
+      transitRouterAttachmentResourceId: map['transitRouterAttachmentResourceId'] == null ? null : (map['transitRouterAttachmentResourceId']! as String).input(),
+      transitRouterAttachmentResourceType: map['transitRouterAttachmentResourceType'] == null ? null : (map['transitRouterAttachmentResourceType']! as String).input(),
+      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : (map['transitRouterRouteTableId']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class OverheadPatch {
 
   factory OverheadPatch.fromMap(Map<String, dynamic> map) {
     return OverheadPatch(
-      podFixed: map['podFixed'] == null ? null : ((map['podFixed'] as Map).cast<String, String>()).input(),
+      podFixed: map['podFixed'] == null ? null : ((map['podFixed']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class AutoSnapshotPolicyCopyEncryptionConfiguration {
 
   factory AutoSnapshotPolicyCopyEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return AutoSnapshotPolicyCopyEncryptionConfiguration(
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
     );
   }
 }

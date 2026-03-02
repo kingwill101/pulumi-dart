@@ -25,8 +25,8 @@ class AcceleratorIpSet {
 
   factory AcceleratorIpSet.fromMap(Map<String, dynamic> map) {
     return AcceleratorIpSet(
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
-      ipFamily: map['ipFamily'] == null ? null : (map['ipFamily'] as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : (((map['ipAddresses'] as List).cast<String>()).input()).input(),
+      ipFamily: map['ipFamily'] == null ? null : ((map['ipFamily'] as String).input()).input(),
     );
   }
 }

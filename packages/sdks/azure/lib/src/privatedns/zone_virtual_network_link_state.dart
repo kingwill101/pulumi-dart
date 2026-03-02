@@ -51,13 +51,13 @@ class ZoneVirtualNetworkLinkState {
 
   factory ZoneVirtualNetworkLinkState.fromMap(Map<String, dynamic> map) {
     return ZoneVirtualNetworkLinkState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateDnsZoneName: map['privateDnsZoneName'] == null ? null : (map['privateDnsZoneName'] as String).input(),
-      registrationEnabled: map['registrationEnabled'] == null ? null : (map['registrationEnabled'] as bool).input(),
-      resolutionPolicy: map['resolutionPolicy'] == null ? null : (map['resolutionPolicy'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateDnsZoneName: map['privateDnsZoneName'] == null ? null : (map['privateDnsZoneName']! as String).input(),
+      registrationEnabled: map['registrationEnabled'] == null ? null : (map['registrationEnabled']! as bool).input(),
+      resolutionPolicy: map['resolutionPolicy'] == null ? null : (map['resolutionPolicy']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
     );
   }
 }

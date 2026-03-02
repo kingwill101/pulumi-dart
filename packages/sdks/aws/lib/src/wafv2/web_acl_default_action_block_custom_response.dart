@@ -31,9 +31,9 @@ class WebAclDefaultActionBlockCustomResponse {
 
   factory WebAclDefaultActionBlockCustomResponse.fromMap(Map<String, dynamic> map) {
     return WebAclDefaultActionBlockCustomResponse(
-      customResponseBodyKey: map['customResponseBodyKey'] == null ? null : (map['customResponseBodyKey'] as String).input(),
+      customResponseBodyKey: map['customResponseBodyKey'] == null ? null : ((map['customResponseBodyKey'] as String).input()).input(),
       responseCode: (map['responseCode'] as int).input(),
-      responseHeaders: map['responseHeaders'] == null ? null : (pulumi.Input.decodeList<WebAclDefaultActionBlockCustomResponseResponseHeader>(map['responseHeaders'], (value) => WebAclDefaultActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseHeaders: map['responseHeaders'] == null ? null : ((pulumi.Input.decodeList<WebAclDefaultActionBlockCustomResponseResponseHeader>(map['responseHeaders']!, (value) => WebAclDefaultActionBlockCustomResponseResponseHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

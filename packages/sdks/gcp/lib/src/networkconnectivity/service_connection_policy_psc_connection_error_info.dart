@@ -30,9 +30,9 @@ class ServiceConnectionPolicyPscConnectionErrorInfo {
 
   factory ServiceConnectionPolicyPscConnectionErrorInfo.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyPscConnectionErrorInfo(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

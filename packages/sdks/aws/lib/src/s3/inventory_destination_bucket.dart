@@ -41,11 +41,11 @@ class InventoryDestinationBucket {
 
   factory InventoryDestinationBucket.fromMap(Map<String, dynamic> map) {
     return InventoryDestinationBucket(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
       bucketArn: (map['bucketArn'] as String).input(),
-      encryption: map['encryption'] == null ? null : (InventoryDestinationBucketEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : ((InventoryDestinationBucketEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input()).input(),
       format: (map['format'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

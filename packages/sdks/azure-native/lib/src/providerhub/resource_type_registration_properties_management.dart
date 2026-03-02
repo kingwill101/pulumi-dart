@@ -96,21 +96,21 @@ class ResourceTypeRegistrationPropertiesManagement {
 
   factory ResourceTypeRegistrationPropertiesManagement.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesManagement(
-      authorizationOwners: map['authorizationOwners'] == null ? null : ((map['authorizationOwners'] as List).cast<String>()).input(),
-      canaryManifestOwners: map['canaryManifestOwners'] == null ? null : ((map['canaryManifestOwners'] as List).cast<String>()).input(),
-      errorResponseMessageOptions: map['errorResponseMessageOptions'] == null ? null : (ResourceProviderManagementErrorResponseMessageOptions.fromMap((map['errorResponseMessageOptions'] as Map).cast<String, dynamic>())).input(),
-      expeditedRolloutMetadata: map['expeditedRolloutMetadata'] == null ? null : (ResourceProviderManagementExpeditedRolloutMetadata.fromMap((map['expeditedRolloutMetadata'] as Map).cast<String, dynamic>())).input(),
-      expeditedRolloutSubmitters: map['expeditedRolloutSubmitters'] == null ? null : ((map['expeditedRolloutSubmitters'] as List).cast<String>()).input(),
-      incidentContactEmail: map['incidentContactEmail'] == null ? null : (map['incidentContactEmail'] as String).input(),
-      incidentRoutingService: map['incidentRoutingService'] == null ? null : (map['incidentRoutingService'] as String).input(),
-      incidentRoutingTeam: map['incidentRoutingTeam'] == null ? null : (map['incidentRoutingTeam'] as String).input(),
-      manifestOwners: map['manifestOwners'] == null ? null : ((map['manifestOwners'] as List).cast<String>()).input(),
-      pcCode: map['pcCode'] == null ? null : (map['pcCode'] as String).input(),
-      profitCenterProgramId: map['profitCenterProgramId'] == null ? null : (map['profitCenterProgramId'] as String).input(),
-      resourceAccessPolicy: map['resourceAccessPolicy'] == null ? null : (ResourceAccessPolicy.fromValue(map['resourceAccessPolicy'] as String)).input(),
-      resourceAccessRoles: map['resourceAccessRoles'] == null ? null : (pulumi.Input.decodeList<ResourceAccessRole>(map['resourceAccessRoles'], (value) => ResourceAccessRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schemaOwners: map['schemaOwners'] == null ? null : ((map['schemaOwners'] as List).cast<String>()).input(),
-      serviceTreeInfos: map['serviceTreeInfos'] == null ? null : (pulumi.Input.decodeList<ServiceTreeInfo>(map['serviceTreeInfos'], (value) => ServiceTreeInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authorizationOwners: map['authorizationOwners'] == null ? null : ((map['authorizationOwners']! as List).cast<String>()).input(),
+      canaryManifestOwners: map['canaryManifestOwners'] == null ? null : ((map['canaryManifestOwners']! as List).cast<String>()).input(),
+      errorResponseMessageOptions: map['errorResponseMessageOptions'] == null ? null : (ResourceProviderManagementErrorResponseMessageOptions.fromMap((map['errorResponseMessageOptions']! as Map).cast<String, dynamic>())).input(),
+      expeditedRolloutMetadata: map['expeditedRolloutMetadata'] == null ? null : (ResourceProviderManagementExpeditedRolloutMetadata.fromMap((map['expeditedRolloutMetadata']! as Map).cast<String, dynamic>())).input(),
+      expeditedRolloutSubmitters: map['expeditedRolloutSubmitters'] == null ? null : ((map['expeditedRolloutSubmitters']! as List).cast<String>()).input(),
+      incidentContactEmail: map['incidentContactEmail'] == null ? null : (map['incidentContactEmail']! as String).input(),
+      incidentRoutingService: map['incidentRoutingService'] == null ? null : (map['incidentRoutingService']! as String).input(),
+      incidentRoutingTeam: map['incidentRoutingTeam'] == null ? null : (map['incidentRoutingTeam']! as String).input(),
+      manifestOwners: map['manifestOwners'] == null ? null : ((map['manifestOwners']! as List).cast<String>()).input(),
+      pcCode: map['pcCode'] == null ? null : (map['pcCode']! as String).input(),
+      profitCenterProgramId: map['profitCenterProgramId'] == null ? null : (map['profitCenterProgramId']! as String).input(),
+      resourceAccessPolicy: map['resourceAccessPolicy'] == null ? null : (ResourceAccessPolicy.fromValue(map['resourceAccessPolicy']! as String)).input(),
+      resourceAccessRoles: map['resourceAccessRoles'] == null ? null : (pulumi.Input.decodeList<ResourceAccessRole>(map['resourceAccessRoles']!, (value) => ResourceAccessRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schemaOwners: map['schemaOwners'] == null ? null : ((map['schemaOwners']! as List).cast<String>()).input(),
+      serviceTreeInfos: map['serviceTreeInfos'] == null ? null : (pulumi.Input.decodeList<ServiceTreeInfo>(map['serviceTreeInfos']!, (value) => ServiceTreeInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

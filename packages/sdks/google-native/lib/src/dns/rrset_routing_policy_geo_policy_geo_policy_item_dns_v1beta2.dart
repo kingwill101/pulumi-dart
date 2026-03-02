@@ -40,11 +40,11 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItemDnsV1beta2 {
 
   factory RRSetRoutingPolicyGeoPolicyGeoPolicyItemDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyGeoPolicyGeoPolicyItemDnsV1beta2(
-      healthCheckedTargets: map['healthCheckedTargets'] == null ? null : (RRSetRoutingPolicyHealthCheckTargetsDnsV1beta2.fromMap((map['healthCheckedTargets'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas'] as List).cast<String>()).input(),
-      signatureRrdatas: map['signatureRrdatas'] == null ? null : ((map['signatureRrdatas'] as List).cast<String>()).input(),
+      healthCheckedTargets: map['healthCheckedTargets'] == null ? null : (RRSetRoutingPolicyHealthCheckTargetsDnsV1beta2.fromMap((map['healthCheckedTargets']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas']! as List).cast<String>()).input(),
+      signatureRrdatas: map['signatureRrdatas'] == null ? null : ((map['signatureRrdatas']! as List).cast<String>()).input(),
     );
   }
 }

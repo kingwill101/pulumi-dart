@@ -59,14 +59,14 @@ class GrantArgs {
 
   factory GrantArgs.fromMap(Map<String, dynamic> map) {
     return GrantArgs(
-      columns: map['columns'] == null ? null : ((map['columns'] as List).cast<String>()).input(),
+      columns: map['columns'] == null ? null : ((map['columns']! as List).cast<String>()).input(),
       database: (map['database'] as String).input(),
       objectType: (map['objectType'] as String).input(),
-      objects: map['objects'] == null ? null : ((map['objects'] as List).cast<String>()).input(),
+      objects: map['objects'] == null ? null : ((map['objects']! as List).cast<String>()).input(),
       privileges: ((map['privileges'] as List).cast<String>()).input(),
       role: (map['role'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      withGrantOption: map['withGrantOption'] == null ? null : (map['withGrantOption'] as bool).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      withGrantOption: map['withGrantOption'] == null ? null : (map['withGrantOption']! as bool).input(),
     );
   }
 }

@@ -50,11 +50,11 @@ class RedisCacheArgs {
   factory RedisCacheArgs.fromMap(Map<String, dynamic> map) {
     return RedisCacheArgs(
       apiManagementId: (map['apiManagementId'] as String).input(),
-      cacheLocation: map['cacheLocation'] == null ? null : (map['cacheLocation'] as String).input(),
+      cacheLocation: map['cacheLocation'] == null ? null : (map['cacheLocation']! as String).input(),
       connectionString: (map['connectionString'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      redisCacheId: map['redisCacheId'] == null ? null : (map['redisCacheId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      redisCacheId: map['redisCacheId'] == null ? null : (map['redisCacheId']! as String).input(),
     );
   }
 }

@@ -34,8 +34,8 @@ class EncryptionConfigArgs {
 
   factory EncryptionConfigArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigArgs(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      keyId: map['keyId'] == null ? null : ((map['keyId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

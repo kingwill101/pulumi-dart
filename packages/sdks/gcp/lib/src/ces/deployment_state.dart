@@ -76,16 +76,16 @@ class DeploymentState {
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      app: map['app'] == null ? null : (map['app'] as String).input(),
-      appVersion: map['appVersion'] == null ? null : (map['appVersion'] as String).input(),
-      channelProfile: map['channelProfile'] == null ? null : (DeploymentChannelProfile.fromMap((map['channelProfile'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      app: map['app'] == null ? null : (map['app']! as String).input(),
+      appVersion: map['appVersion'] == null ? null : (map['appVersion']! as String).input(),
+      channelProfile: map['channelProfile'] == null ? null : (DeploymentChannelProfile.fromMap((map['channelProfile']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

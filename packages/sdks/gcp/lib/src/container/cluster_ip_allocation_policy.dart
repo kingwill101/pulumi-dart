@@ -90,16 +90,16 @@ class ClusterIpAllocationPolicy {
 
   factory ClusterIpAllocationPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterIpAllocationPolicy(
-      additionalIpRangesConfigs: map['additionalIpRangesConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterIpAllocationPolicyAdditionalIpRangesConfig>(map['additionalIpRangesConfigs'], (value) => ClusterIpAllocationPolicyAdditionalIpRangesConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      additionalPodRangesConfig: map['additionalPodRangesConfig'] == null ? null : (ClusterIpAllocationPolicyAdditionalPodRangesConfig.fromMap((map['additionalPodRangesConfig'] as Map).cast<String, dynamic>())).input(),
-      autoIpamConfig: map['autoIpamConfig'] == null ? null : (ClusterIpAllocationPolicyAutoIpamConfig.fromMap((map['autoIpamConfig'] as Map).cast<String, dynamic>())).input(),
-      clusterIpv4CidrBlock: map['clusterIpv4CidrBlock'] == null ? null : (map['clusterIpv4CidrBlock'] as String).input(),
-      clusterSecondaryRangeName: map['clusterSecondaryRangeName'] == null ? null : (map['clusterSecondaryRangeName'] as String).input(),
-      networkTierConfig: map['networkTierConfig'] == null ? null : (ClusterIpAllocationPolicyNetworkTierConfig.fromMap((map['networkTierConfig'] as Map).cast<String, dynamic>())).input(),
-      podCidrOverprovisionConfig: map['podCidrOverprovisionConfig'] == null ? null : (ClusterIpAllocationPolicyPodCidrOverprovisionConfig.fromMap((map['podCidrOverprovisionConfig'] as Map).cast<String, dynamic>())).input(),
-      servicesIpv4CidrBlock: map['servicesIpv4CidrBlock'] == null ? null : (map['servicesIpv4CidrBlock'] as String).input(),
-      servicesSecondaryRangeName: map['servicesSecondaryRangeName'] == null ? null : (map['servicesSecondaryRangeName'] as String).input(),
-      stackType: map['stackType'] == null ? null : (map['stackType'] as String).input(),
+      additionalIpRangesConfigs: map['additionalIpRangesConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterIpAllocationPolicyAdditionalIpRangesConfig>(map['additionalIpRangesConfigs']!, (value) => ClusterIpAllocationPolicyAdditionalIpRangesConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalPodRangesConfig: map['additionalPodRangesConfig'] == null ? null : (ClusterIpAllocationPolicyAdditionalPodRangesConfig.fromMap((map['additionalPodRangesConfig']! as Map).cast<String, dynamic>())).input(),
+      autoIpamConfig: map['autoIpamConfig'] == null ? null : (ClusterIpAllocationPolicyAutoIpamConfig.fromMap((map['autoIpamConfig']! as Map).cast<String, dynamic>())).input(),
+      clusterIpv4CidrBlock: map['clusterIpv4CidrBlock'] == null ? null : (map['clusterIpv4CidrBlock']! as String).input(),
+      clusterSecondaryRangeName: map['clusterSecondaryRangeName'] == null ? null : (map['clusterSecondaryRangeName']! as String).input(),
+      networkTierConfig: map['networkTierConfig'] == null ? null : (ClusterIpAllocationPolicyNetworkTierConfig.fromMap((map['networkTierConfig']! as Map).cast<String, dynamic>())).input(),
+      podCidrOverprovisionConfig: map['podCidrOverprovisionConfig'] == null ? null : (ClusterIpAllocationPolicyPodCidrOverprovisionConfig.fromMap((map['podCidrOverprovisionConfig']! as Map).cast<String, dynamic>())).input(),
+      servicesIpv4CidrBlock: map['servicesIpv4CidrBlock'] == null ? null : (map['servicesIpv4CidrBlock']! as String).input(),
+      servicesSecondaryRangeName: map['servicesSecondaryRangeName'] == null ? null : (map['servicesSecondaryRangeName']! as String).input(),
+      stackType: map['stackType'] == null ? null : (map['stackType']! as String).input(),
     );
   }
 }

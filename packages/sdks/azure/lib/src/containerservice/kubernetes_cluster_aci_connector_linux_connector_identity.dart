@@ -30,9 +30,9 @@ class KubernetesClusterAciConnectorLinuxConnectorIdentity {
 
   factory KubernetesClusterAciConnectorLinuxConnectorIdentity.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterAciConnectorLinuxConnectorIdentity(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

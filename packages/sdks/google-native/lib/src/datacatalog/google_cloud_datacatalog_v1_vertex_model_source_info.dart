@@ -27,8 +27,8 @@ class GoogleCloudDatacatalogV1VertexModelSourceInfo {
 
   factory GoogleCloudDatacatalogV1VertexModelSourceInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1VertexModelSourceInfo(
-      copy: map['copy'] == null ? null : (map['copy'] as bool).input(),
-      sourceType: map['sourceType'] == null ? null : (GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType.fromValue(map['sourceType'] as String)).input(),
+      copy: map['copy'] == null ? null : (map['copy']! as bool).input(),
+      sourceType: map['sourceType'] == null ? null : (GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType.fromValue(map['sourceType']! as String)).input(),
     );
   }
 }

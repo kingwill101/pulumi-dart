@@ -21,7 +21,7 @@ class StackdriverLoggingConfig {
 
   factory StackdriverLoggingConfig.fromMap(Map<String, dynamic> map) {
     return StackdriverLoggingConfig(
-      samplingRatio: map['samplingRatio'] == null ? null : (map['samplingRatio'] as double).input(),
+      samplingRatio: map['samplingRatio'] == null ? null : (map['samplingRatio']! as double).input(),
     );
   }
 }

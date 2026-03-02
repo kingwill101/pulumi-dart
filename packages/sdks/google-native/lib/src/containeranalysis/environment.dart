@@ -20,7 +20,7 @@ class Environment {
 
   factory Environment.fromMap(Map<String, dynamic> map) {
     return Environment(
-      customValues: map['customValues'] == null ? null : ((map['customValues'] as Map).cast<String, String>()).input(),
+      customValues: map['customValues'] == null ? null : ((map['customValues']! as Map).cast<String, String>()).input(),
     );
   }
 }

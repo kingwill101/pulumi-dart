@@ -44,11 +44,11 @@ class ListEffectiveVirtualNetworkByNetworkManagerArgs {
 
   factory ListEffectiveVirtualNetworkByNetworkManagerArgs.fromMap(Map<String, dynamic> map) {
     return ListEffectiveVirtualNetworkByNetworkManagerArgs(
-      conditionalMembers: map['conditionalMembers'] == null ? null : (map['conditionalMembers'] as String).input(),
+      conditionalMembers: map['conditionalMembers'] == null ? null : (map['conditionalMembers']! as String).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
     );
   }
 }

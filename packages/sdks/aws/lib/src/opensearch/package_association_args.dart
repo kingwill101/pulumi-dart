@@ -36,7 +36,7 @@ class PackageAssociationArgs {
     return PackageAssociationArgs(
       domainName: (map['domainName'] as String).input(),
       packageId: (map['packageId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

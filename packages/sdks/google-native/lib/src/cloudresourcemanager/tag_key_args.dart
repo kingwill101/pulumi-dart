@@ -55,12 +55,12 @@ class TagKeyArgs {
 
   factory TagKeyArgs.fromMap(Map<String, dynamic> map) {
     return TagKeyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      purpose: map['purpose'] == null ? null : (TagKeyPurpose.fromValue(map['purpose'] as String)).input(),
-      purposeData: map['purposeData'] == null ? null : ((map['purposeData'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      purpose: map['purpose'] == null ? null : (TagKeyPurpose.fromValue(map['purpose']! as String)).input(),
+      purposeData: map['purposeData'] == null ? null : ((map['purposeData']! as Map).cast<String, String>()).input(),
       shortName: (map['shortName'] as String).input(),
     );
   }

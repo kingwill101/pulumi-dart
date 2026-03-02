@@ -78,11 +78,11 @@ class InMageRcmFailbackProtectedDiskDetailsResponse {
       diskId: (map['diskId'] as String).input(),
       diskName: (map['diskName'] as String).input(),
       diskUuid: (map['diskUuid'] as String).input(),
-      irDetails: map['irDetails'] == null ? null : (InMageRcmFailbackSyncDetailsResponse.fromMap((map['irDetails'] as Map).cast<String, dynamic>())).input(),
+      irDetails: map['irDetails'] == null ? null : (InMageRcmFailbackSyncDetailsResponse.fromMap((map['irDetails']! as Map).cast<String, dynamic>())).input(),
       isInitialReplicationComplete: (map['isInitialReplicationComplete'] as String).input(),
       isOSDisk: (map['isOSDisk'] as String).input(),
       lastSyncTime: (map['lastSyncTime'] as String).input(),
-      resyncDetails: map['resyncDetails'] == null ? null : (InMageRcmFailbackSyncDetailsResponse.fromMap((map['resyncDetails'] as Map).cast<String, dynamic>())).input(),
+      resyncDetails: map['resyncDetails'] == null ? null : (InMageRcmFailbackSyncDetailsResponse.fromMap((map['resyncDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

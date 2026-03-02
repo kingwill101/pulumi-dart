@@ -35,9 +35,9 @@ class MetadataSupport {
 
   factory MetadataSupport.fromMap(Map<String, dynamic> map) {
     return MetadataSupport(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      link: map['link'] == null ? null : (map['link'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      link: map['link'] == null ? null : (map['link']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       tier: (map['tier'] as String).input(),
     );
   }

@@ -26,8 +26,8 @@ class NfsUser {
 
   factory NfsUser.fromMap(Map<String, dynamic> map) {
     return NfsUser(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as double).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as double).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as double).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as double).input(),
     );
   }
 }

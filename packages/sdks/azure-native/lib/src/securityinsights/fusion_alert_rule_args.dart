@@ -54,7 +54,7 @@ class FusionAlertRuleArgs {
       enabled: (map['enabled'] as bool).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

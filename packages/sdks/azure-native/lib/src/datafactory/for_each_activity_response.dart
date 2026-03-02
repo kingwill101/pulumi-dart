@@ -77,16 +77,16 @@ class ForEachActivityResponse {
   factory ForEachActivityResponse.fromMap(Map<String, dynamic> map) {
     return ForEachActivityResponse(
       activities: (pulumi.Input.decodeList<AppendVariableActivityResponse>(map['activities'], (value) => AppendVariableActivityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      batchCount: map['batchCount'] == null ? null : (map['batchCount'] as int).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isSequential: map['isSequential'] == null ? null : (map['isSequential'] as bool).input(),
+      batchCount: map['batchCount'] == null ? null : (map['batchCount']! as int).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn']!, (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isSequential: map['isSequential'] == null ? null : (map['isSequential']! as bool).input(),
       items: (ExpressionResponse.fromMap((map['items'] as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties']!, (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

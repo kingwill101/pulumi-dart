@@ -57,14 +57,14 @@ class KubernetesProperties {
 
   factory KubernetesProperties.fromMap(Map<String, dynamic> map) {
     return KubernetesProperties(
-      defaultInstanceType: map['defaultInstanceType'] == null ? null : (map['defaultInstanceType'] as String).input(),
-      extensionInstanceReleaseTrain: map['extensionInstanceReleaseTrain'] == null ? null : (map['extensionInstanceReleaseTrain'] as String).input(),
-      extensionPrincipalId: map['extensionPrincipalId'] == null ? null : (map['extensionPrincipalId'] as String).input(),
-      instanceTypes: map['instanceTypes'] == null ? null : (pulumi.Input.decodeMapValues<InstanceTypeSchema>(map['instanceTypes'], (value) => InstanceTypeSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      relayConnectionString: map['relayConnectionString'] == null ? null : (map['relayConnectionString'] as String).input(),
-      serviceBusConnectionString: map['serviceBusConnectionString'] == null ? null : (map['serviceBusConnectionString'] as String).input(),
-      vcName: map['vcName'] == null ? null : (map['vcName'] as String).input(),
+      defaultInstanceType: map['defaultInstanceType'] == null ? null : (map['defaultInstanceType']! as String).input(),
+      extensionInstanceReleaseTrain: map['extensionInstanceReleaseTrain'] == null ? null : (map['extensionInstanceReleaseTrain']! as String).input(),
+      extensionPrincipalId: map['extensionPrincipalId'] == null ? null : (map['extensionPrincipalId']! as String).input(),
+      instanceTypes: map['instanceTypes'] == null ? null : (pulumi.Input.decodeMapValues<InstanceTypeSchema>(map['instanceTypes']!, (value) => InstanceTypeSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      relayConnectionString: map['relayConnectionString'] == null ? null : (map['relayConnectionString']! as String).input(),
+      serviceBusConnectionString: map['serviceBusConnectionString'] == null ? null : (map['serviceBusConnectionString']! as String).input(),
+      vcName: map['vcName'] == null ? null : (map['vcName']! as String).input(),
     );
   }
 }

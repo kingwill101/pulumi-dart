@@ -27,7 +27,7 @@ class NGroupCGPropertyVolume {
 
   factory NGroupCGPropertyVolume.fromMap(Map<String, dynamic> map) {
     return NGroupCGPropertyVolume(
-      azureFile: map['azureFile'] == null ? null : (AzureFileVolume.fromMap((map['azureFile'] as Map).cast<String, dynamic>())).input(),
+      azureFile: map['azureFile'] == null ? null : (AzureFileVolume.fromMap((map['azureFile']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

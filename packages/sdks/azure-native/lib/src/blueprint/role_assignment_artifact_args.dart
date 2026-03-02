@@ -70,14 +70,14 @@ class RoleAssignmentArtifactArgs {
 
   factory RoleAssignmentArtifactArgs.fromMap(Map<String, dynamic> map) {
     return RoleAssignmentArtifactArgs(
-      artifactName: map['artifactName'] == null ? null : (map['artifactName'] as String).input(),
+      artifactName: map['artifactName'] == null ? null : (map['artifactName']! as String).input(),
       blueprintName: (map['blueprintName'] as String).input(),
-      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       kind: (map['kind'] as String).input(),
       principalIds: (map['principalIds']).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
       resourceScope: (map['resourceScope'] as String).input(),
       roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );

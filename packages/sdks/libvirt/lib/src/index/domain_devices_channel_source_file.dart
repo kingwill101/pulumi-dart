@@ -31,9 +31,9 @@ class DomainDevicesChannelSourceFile {
 
   factory DomainDevicesChannelSourceFile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesChannelSourceFile(
-      append: map['append'] == null ? null : (map['append'] as String).input(),
+      append: map['append'] == null ? null : (map['append']! as String).input(),
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesChannelSourceFileSecLabel>(map['secLabels'], (value) => DomainDevicesChannelSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesChannelSourceFileSecLabel>(map['secLabels']!, (value) => DomainDevicesChannelSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

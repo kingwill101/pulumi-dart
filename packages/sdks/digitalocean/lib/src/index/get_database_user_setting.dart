@@ -25,8 +25,8 @@ class GetDatabaseUserSetting {
 
   factory GetDatabaseUserSetting.fromMap(Map<String, dynamic> map) {
     return GetDatabaseUserSetting(
-      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<GetDatabaseUserSettingAcl>(map['acls'], (value) => GetDatabaseUserSettingAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      opensearchAcls: map['opensearchAcls'] == null ? null : (pulumi.Input.decodeList<GetDatabaseUserSettingOpensearchAcl>(map['opensearchAcls'], (value) => GetDatabaseUserSettingOpensearchAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<GetDatabaseUserSettingAcl>(map['acls']!, (value) => GetDatabaseUserSettingAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      opensearchAcls: map['opensearchAcls'] == null ? null : (pulumi.Input.decodeList<GetDatabaseUserSettingOpensearchAcl>(map['opensearchAcls']!, (value) => GetDatabaseUserSettingOpensearchAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

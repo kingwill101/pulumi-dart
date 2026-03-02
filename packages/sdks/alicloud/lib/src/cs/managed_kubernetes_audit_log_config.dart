@@ -25,8 +25,8 @@ class ManagedKubernetesAuditLogConfig {
 
   factory ManagedKubernetesAuditLogConfig.fromMap(Map<String, dynamic> map) {
     return ManagedKubernetesAuditLogConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      slsProjectName: map['slsProjectName'] == null ? null : (map['slsProjectName'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      slsProjectName: map['slsProjectName'] == null ? null : (map['slsProjectName']! as String).input(),
     );
   }
 }

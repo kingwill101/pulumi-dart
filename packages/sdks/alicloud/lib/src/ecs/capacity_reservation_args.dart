@@ -79,17 +79,17 @@ class CapacityReservationArgs {
 
   factory CapacityReservationArgs.fromMap(Map<String, dynamic> map) {
     return CapacityReservationArgs(
-      capacityReservationName: map['capacityReservationName'] == null ? null : (map['capacityReservationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      endTimeType: map['endTimeType'] == null ? null : (map['endTimeType'] as String).input(),
+      capacityReservationName: map['capacityReservationName'] == null ? null : (map['capacityReservationName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      endTimeType: map['endTimeType'] == null ? null : (map['endTimeType']! as String).input(),
       instanceAmount: (map['instanceAmount'] as int).input(),
       instanceType: (map['instanceType'] as String).input(),
-      matchCriteria: map['matchCriteria'] == null ? null : (map['matchCriteria'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      matchCriteria: map['matchCriteria'] == null ? null : (map['matchCriteria']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       zoneIds: ((map['zoneIds'] as List).cast<String>()).input(),
     );
   }

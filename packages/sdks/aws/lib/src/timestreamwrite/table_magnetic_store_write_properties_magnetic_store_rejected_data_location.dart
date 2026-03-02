@@ -21,7 +21,7 @@ class TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation {
 
   factory TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation.fromMap(Map<String, dynamic> map) {
     return TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation(
-      s3Configuration: map['s3Configuration'] == null ? null : (TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
+      s3Configuration: map['s3Configuration'] == null ? null : ((TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

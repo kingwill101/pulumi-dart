@@ -21,7 +21,7 @@ class GooglePrivacyDlpV2PublishToPubSub {
 
   factory GooglePrivacyDlpV2PublishToPubSub.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PublishToPubSub(
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

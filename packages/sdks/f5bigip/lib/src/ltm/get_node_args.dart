@@ -49,10 +49,10 @@ class GetNodeArgs {
 
   factory GetNodeArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeArgs(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fqdn: map['fqdn'] == null ? null : (GetNodeFqdn.fromMap((map['fqdn'] as Map).cast<String, dynamic>())).input(),
-      fullPath: map['fullPath'] == null ? null : (map['fullPath'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fqdn: map['fqdn'] == null ? null : (GetNodeFqdn.fromMap((map['fqdn']! as Map).cast<String, dynamic>())).input(),
+      fullPath: map['fullPath'] == null ? null : (map['fullPath']! as String).input(),
       name: (map['name'] as String).input(),
       partition: (map['partition'] as String).input(),
     );

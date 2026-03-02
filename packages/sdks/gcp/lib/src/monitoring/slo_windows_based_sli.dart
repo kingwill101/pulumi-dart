@@ -67,11 +67,11 @@ class SloWindowsBasedSli {
 
   factory SloWindowsBasedSli.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSli(
-      goodBadMetricFilter: map['goodBadMetricFilter'] == null ? null : (map['goodBadMetricFilter'] as String).input(),
-      goodTotalRatioThreshold: map['goodTotalRatioThreshold'] == null ? null : (SloWindowsBasedSliGoodTotalRatioThreshold.fromMap((map['goodTotalRatioThreshold'] as Map).cast<String, dynamic>())).input(),
-      metricMeanInRange: map['metricMeanInRange'] == null ? null : (SloWindowsBasedSliMetricMeanInRange.fromMap((map['metricMeanInRange'] as Map).cast<String, dynamic>())).input(),
-      metricSumInRange: map['metricSumInRange'] == null ? null : (SloWindowsBasedSliMetricSumInRange.fromMap((map['metricSumInRange'] as Map).cast<String, dynamic>())).input(),
-      windowPeriod: map['windowPeriod'] == null ? null : (map['windowPeriod'] as String).input(),
+      goodBadMetricFilter: map['goodBadMetricFilter'] == null ? null : (map['goodBadMetricFilter']! as String).input(),
+      goodTotalRatioThreshold: map['goodTotalRatioThreshold'] == null ? null : (SloWindowsBasedSliGoodTotalRatioThreshold.fromMap((map['goodTotalRatioThreshold']! as Map).cast<String, dynamic>())).input(),
+      metricMeanInRange: map['metricMeanInRange'] == null ? null : (SloWindowsBasedSliMetricMeanInRange.fromMap((map['metricMeanInRange']! as Map).cast<String, dynamic>())).input(),
+      metricSumInRange: map['metricSumInRange'] == null ? null : (SloWindowsBasedSliMetricSumInRange.fromMap((map['metricSumInRange']! as Map).cast<String, dynamic>())).input(),
+      windowPeriod: map['windowPeriod'] == null ? null : (map['windowPeriod']! as String).input(),
     );
   }
 }

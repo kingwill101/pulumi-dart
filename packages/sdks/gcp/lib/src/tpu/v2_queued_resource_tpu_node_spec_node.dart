@@ -37,9 +37,9 @@ class V2QueuedResourceTpuNodeSpecNode {
 
   factory V2QueuedResourceTpuNodeSpecNode.fromMap(Map<String, dynamic> map) {
     return V2QueuedResourceTpuNodeSpecNode(
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (V2QueuedResourceTpuNodeSpecNodeNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (V2QueuedResourceTpuNodeSpecNodeNetworkConfig.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input(),
       runtimeVersion: (map['runtimeVersion'] as String).input(),
     );
   }

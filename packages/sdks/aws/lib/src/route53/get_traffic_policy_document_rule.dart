@@ -60,14 +60,14 @@ class GetTrafficPolicyDocumentRule {
 
   factory GetTrafficPolicyDocumentRule.fromMap(Map<String, dynamic> map) {
     return GetTrafficPolicyDocumentRule(
-      geoProximityLocations: map['geoProximityLocations'] == null ? null : (pulumi.Input.decodeList<GetTrafficPolicyDocumentRuleGeoProximityLocation>(map['geoProximityLocations'], (value) => GetTrafficPolicyDocumentRuleGeoProximityLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      geoProximityLocations: map['geoProximityLocations'] == null ? null : ((pulumi.Input.decodeList<GetTrafficPolicyDocumentRuleGeoProximityLocation>(map['geoProximityLocations']!, (value) => GetTrafficPolicyDocumentRuleGeoProximityLocation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       id: (map['id'] as String).input(),
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<GetTrafficPolicyDocumentRuleItem>(map['items'], (value) => GetTrafficPolicyDocumentRuleItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      locations: map['locations'] == null ? null : (pulumi.Input.decodeList<GetTrafficPolicyDocumentRuleLocation>(map['locations'], (value) => GetTrafficPolicyDocumentRuleLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      primary: map['primary'] == null ? null : (GetTrafficPolicyDocumentRulePrimary.fromMap((map['primary'] as Map).cast<String, dynamic>())).input(),
-      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<GetTrafficPolicyDocumentRuleRegion>(map['regions'], (value) => GetTrafficPolicyDocumentRuleRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secondary: map['secondary'] == null ? null : (GetTrafficPolicyDocumentRuleSecondary.fromMap((map['secondary'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      items: map['items'] == null ? null : ((pulumi.Input.decodeList<GetTrafficPolicyDocumentRuleItem>(map['items']!, (value) => GetTrafficPolicyDocumentRuleItem.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      locations: map['locations'] == null ? null : ((pulumi.Input.decodeList<GetTrafficPolicyDocumentRuleLocation>(map['locations']!, (value) => GetTrafficPolicyDocumentRuleLocation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      primary: map['primary'] == null ? null : ((GetTrafficPolicyDocumentRulePrimary.fromMap((map['primary']! as Map).cast<String, dynamic>())).input()).input(),
+      regions: map['regions'] == null ? null : ((pulumi.Input.decodeList<GetTrafficPolicyDocumentRuleRegion>(map['regions']!, (value) => GetTrafficPolicyDocumentRuleRegion.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      secondary: map['secondary'] == null ? null : ((GetTrafficPolicyDocumentRuleSecondary.fromMap((map['secondary']! as Map).cast<String, dynamic>())).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

@@ -1408,22 +1408,22 @@ class VpcEndpointSpec {
 
   factory VpcEndpointSpec.fromMap(Map<String, dynamic> map) {
     return VpcEndpointSpec(
-      autoAccept: map['autoAccept'] == null ? null : (map['autoAccept'] as bool).input(),
-      dnsOptions: map['dnsOptions'] == null ? null : (pulumi_aws_ec2.VpcEndpointDnsOptions.fromMap((map['dnsOptions'] as Map).cast<String, dynamic>())).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceConfigurationArn: map['resourceConfigurationArn'] == null ? null : (map['resourceConfigurationArn'] as String).input(),
-      routeTableIds: map['routeTableIds'] == null ? null : ((map['routeTableIds'] as List).cast<String>()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      autoAccept: map['autoAccept'] == null ? null : (map['autoAccept']! as bool).input(),
+      dnsOptions: map['dnsOptions'] == null ? null : (pulumi_aws_ec2.VpcEndpointDnsOptions.fromMap((map['dnsOptions']! as Map).cast<String, dynamic>())).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled']! as bool).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      resourceConfigurationArn: map['resourceConfigurationArn'] == null ? null : (map['resourceConfigurationArn']! as String).input(),
+      routeTableIds: map['routeTableIds'] == null ? null : ((map['routeTableIds']! as List).cast<String>()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
       serviceName: (map['serviceName'] as String).input(),
-      serviceNetworkArn: map['serviceNetworkArn'] == null ? null : (map['serviceNetworkArn'] as String).input(),
-      serviceRegion: map['serviceRegion'] == null ? null : (map['serviceRegion'] as String).input(),
-      subnetConfigurations: map['subnetConfigurations'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_ec2.VpcEndpointSubnetConfiguration>(map['subnetConfigurations'], (value) => pulumi_aws_ec2.VpcEndpointSubnetConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcEndpointType: map['vpcEndpointType'] == null ? null : (map['vpcEndpointType'] as String).input(),
+      serviceNetworkArn: map['serviceNetworkArn'] == null ? null : (map['serviceNetworkArn']! as String).input(),
+      serviceRegion: map['serviceRegion'] == null ? null : (map['serviceRegion']! as String).input(),
+      subnetConfigurations: map['subnetConfigurations'] == null ? null : (pulumi.Input.decodeList<pulumi_aws_ec2.VpcEndpointSubnetConfiguration>(map['subnetConfigurations']!, (value) => pulumi_aws_ec2.VpcEndpointSubnetConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcEndpointType: map['vpcEndpointType'] == null ? null : (map['vpcEndpointType']! as String).input(),
     );
   }
 }

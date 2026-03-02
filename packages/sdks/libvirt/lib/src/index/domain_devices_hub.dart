@@ -37,9 +37,9 @@ class DomainDevicesHub {
 
   factory DomainDevicesHub.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHub(
-      acpi: map['acpi'] == null ? null : (DomainDevicesHubAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesHubAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesHubAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesHubAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

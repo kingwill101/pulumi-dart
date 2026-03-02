@@ -41,11 +41,11 @@ class VaultLockState {
 
   factory VaultLockState.fromMap(Map<String, dynamic> map) {
     return VaultLockState(
-      completeLock: map['completeLock'] == null ? null : (map['completeLock'] as bool).input(),
-      ignoreDeletionError: map['ignoreDeletionError'] == null ? null : (map['ignoreDeletionError'] as bool).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vaultName: map['vaultName'] == null ? null : (map['vaultName'] as String).input(),
+      completeLock: map['completeLock'] == null ? null : ((map['completeLock'] as bool).input()).input(),
+      ignoreDeletionError: map['ignoreDeletionError'] == null ? null : ((map['ignoreDeletionError'] as bool).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vaultName: map['vaultName'] == null ? null : ((map['vaultName'] as String).input()).input(),
     );
   }
 }

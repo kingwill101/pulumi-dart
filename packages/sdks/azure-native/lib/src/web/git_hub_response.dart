@@ -33,9 +33,9 @@ class GitHubResponse {
 
   factory GitHubResponse.fromMap(Map<String, dynamic> map) {
     return GitHubResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      login: map['login'] == null ? null : (LoginScopesResponse.fromMap((map['login'] as Map).cast<String, dynamic>())).input(),
-      registration: map['registration'] == null ? null : (ClientRegistrationResponse.fromMap((map['registration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      login: map['login'] == null ? null : (LoginScopesResponse.fromMap((map['login']! as Map).cast<String, dynamic>())).input(),
+      registration: map['registration'] == null ? null : (ClientRegistrationResponse.fromMap((map['registration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

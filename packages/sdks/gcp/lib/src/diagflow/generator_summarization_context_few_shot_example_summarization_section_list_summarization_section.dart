@@ -31,9 +31,9 @@ class GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummari
 
   factory GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection.fromMap(Map<String, dynamic> map) {
     return GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection(
-      definition: map['definition'] == null ? null : (map['definition'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      definition: map['definition'] == null ? null : (map['definition']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

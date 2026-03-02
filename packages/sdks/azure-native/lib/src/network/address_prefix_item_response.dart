@@ -26,8 +26,8 @@ class AddressPrefixItemResponse {
 
   factory AddressPrefixItemResponse.fromMap(Map<String, dynamic> map) {
     return AddressPrefixItemResponse(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
-      addressPrefixType: map['addressPrefixType'] == null ? null : (map['addressPrefixType'] as String).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
+      addressPrefixType: map['addressPrefixType'] == null ? null : (map['addressPrefixType']! as String).input(),
     );
   }
 }

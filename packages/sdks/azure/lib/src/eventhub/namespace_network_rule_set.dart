@@ -43,11 +43,11 @@ class NamespaceNetworkRuleSet {
 
   factory NamespaceNetworkRuleSet.fromMap(Map<String, dynamic> map) {
     return NamespaceNetworkRuleSet(
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : ((map['ipRules'] as List).cast<String>()).input(),
-      networkRules: map['networkRules'] == null ? null : (pulumi.Input.decodeList<NamespaceNetworkRuleSetNetworkRule>(map['networkRules'], (value) => NamespaceNetworkRuleSetNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      trustedServicesAllowed: map['trustedServicesAllowed'] == null ? null : (map['trustedServicesAllowed'] as bool).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
+      ipRules: map['ipRules'] == null ? null : ((map['ipRules']! as List).cast<String>()).input(),
+      networkRules: map['networkRules'] == null ? null : (pulumi.Input.decodeList<NamespaceNetworkRuleSetNetworkRule>(map['networkRules']!, (value) => NamespaceNetworkRuleSetNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      trustedServicesAllowed: map['trustedServicesAllowed'] == null ? null : (map['trustedServicesAllowed']! as bool).input(),
     );
   }
 }

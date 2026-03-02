@@ -21,7 +21,7 @@ class DockerResponse {
 
   factory DockerResponse.fromMap(Map<String, dynamic> map) {
     return DockerResponse(
-      privileged: map['privileged'] == null ? null : (map['privileged'] as bool).input(),
+      privileged: map['privileged'] == null ? null : (map['privileged']! as bool).input(),
     );
   }
 }

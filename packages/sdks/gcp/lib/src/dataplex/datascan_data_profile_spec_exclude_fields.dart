@@ -22,7 +22,7 @@ class DatascanDataProfileSpecExcludeFields {
 
   factory DatascanDataProfileSpecExcludeFields.fromMap(Map<String, dynamic> map) {
     return DatascanDataProfileSpecExcludeFields(
-      fieldNames: map['fieldNames'] == null ? null : ((map['fieldNames'] as List).cast<String>()).input(),
+      fieldNames: map['fieldNames'] == null ? null : ((map['fieldNames']! as List).cast<String>()).input(),
     );
   }
 }

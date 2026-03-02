@@ -36,10 +36,10 @@ class V3FunctionCustomRuntimeConfig {
 
   factory V3FunctionCustomRuntimeConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionCustomRuntimeConfig(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      healthCheckConfig: map['healthCheckConfig'] == null ? null : (V3FunctionCustomRuntimeConfigHealthCheckConfig.fromMap((map['healthCheckConfig'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      healthCheckConfig: map['healthCheckConfig'] == null ? null : (V3FunctionCustomRuntimeConfigHealthCheckConfig.fromMap((map['healthCheckConfig']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

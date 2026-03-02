@@ -43,7 +43,7 @@ class GetFeedbackMessageArgs {
       datasetId: (map['datasetId'] as String).input(),
       feedbackMessageId: (map['feedbackMessageId'] as String).input(),
       feedbackThreadId: (map['feedbackThreadId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

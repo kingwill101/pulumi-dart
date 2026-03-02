@@ -26,7 +26,7 @@ class BucketAclV2AccessControlPolicyGrant {
 
   factory BucketAclV2AccessControlPolicyGrant.fromMap(Map<String, dynamic> map) {
     return BucketAclV2AccessControlPolicyGrant(
-      grantee: map['grantee'] == null ? null : (BucketAclV2AccessControlPolicyGrantGrantee.fromMap((map['grantee'] as Map).cast<String, dynamic>())).input(),
+      grantee: map['grantee'] == null ? null : ((BucketAclV2AccessControlPolicyGrantGrantee.fromMap((map['grantee']! as Map).cast<String, dynamic>())).input()).input(),
       permission: (map['permission'] as String).input(),
     );
   }

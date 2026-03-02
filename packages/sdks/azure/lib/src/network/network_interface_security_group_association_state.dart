@@ -26,8 +26,8 @@ class NetworkInterfaceSecurityGroupAssociationState {
 
   factory NetworkInterfaceSecurityGroupAssociationState.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceSecurityGroupAssociationState(
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId']! as String).input(),
+      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId']! as String).input(),
     );
   }
 }

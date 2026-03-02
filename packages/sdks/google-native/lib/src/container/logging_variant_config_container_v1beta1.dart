@@ -22,7 +22,7 @@ class LoggingVariantConfigContainerV1beta1 {
 
   factory LoggingVariantConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return LoggingVariantConfigContainerV1beta1(
-      variant: map['variant'] == null ? null : (LoggingVariantConfigVariantContainerV1beta1.fromValue(map['variant'] as String)).input(),
+      variant: map['variant'] == null ? null : (LoggingVariantConfigVariantContainerV1beta1.fromValue(map['variant']! as String)).input(),
     );
   }
 }

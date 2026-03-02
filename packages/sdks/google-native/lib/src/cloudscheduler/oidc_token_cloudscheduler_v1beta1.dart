@@ -26,8 +26,8 @@ class OidcTokenCloudschedulerV1beta1 {
 
   factory OidcTokenCloudschedulerV1beta1.fromMap(Map<String, dynamic> map) {
     return OidcTokenCloudschedulerV1beta1(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
     );
   }
 }

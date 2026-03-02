@@ -59,14 +59,14 @@ class ProbeArgs {
 
   factory ProbeArgs.fromMap(Map<String, dynamic> map) {
     return ProbeArgs(
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as int).input(),
       loadbalancerId: (map['loadbalancerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      numberOfProbes: map['numberOfProbes'] == null ? null : (map['numberOfProbes'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      numberOfProbes: map['numberOfProbes'] == null ? null : (map['numberOfProbes']! as int).input(),
       port: (map['port'] as int).input(),
-      probeThreshold: map['probeThreshold'] == null ? null : (map['probeThreshold'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      requestPath: map['requestPath'] == null ? null : (map['requestPath'] as String).input(),
+      probeThreshold: map['probeThreshold'] == null ? null : (map['probeThreshold']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      requestPath: map['requestPath'] == null ? null : (map['requestPath']! as String).input(),
     );
   }
 }

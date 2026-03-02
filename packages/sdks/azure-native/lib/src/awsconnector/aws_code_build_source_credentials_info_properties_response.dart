@@ -38,10 +38,10 @@ class AwsCodeBuildSourceCredentialsInfoPropertiesResponse {
 
   factory AwsCodeBuildSourceCredentialsInfoPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsCodeBuildSourceCredentialsInfoPropertiesResponse(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      authType: map['authType'] == null ? null : (AuthTypeEnumValueResponse.fromMap((map['authType'] as Map).cast<String, dynamic>())).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
-      serverType: map['serverType'] == null ? null : (ServerTypeEnumValueResponse.fromMap((map['serverType'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      authType: map['authType'] == null ? null : (AuthTypeEnumValueResponse.fromMap((map['authType']! as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      serverType: map['serverType'] == null ? null : (ServerTypeEnumValueResponse.fromMap((map['serverType']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

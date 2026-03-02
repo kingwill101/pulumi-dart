@@ -57,13 +57,13 @@ class EventEndpointArgs {
 
   factory EventEndpointArgs.fromMap(Map<String, dynamic> map) {
     return EventEndpointArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eventBuses: (pulumi.Input.decodeList<EventEndpointEventBus>(map['eventBuses'], (value) => EventEndpointEventBus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replicationConfig: map['replicationConfig'] == null ? null : (EventEndpointReplicationConfig.fromMap((map['replicationConfig'] as Map).cast<String, dynamic>())).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      routingConfig: (EventEndpointRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      eventBuses: (pulumi.Input.decodeList<EventEndpointEventBus>(map['eventBuses']!, (value) => EventEndpointEventBus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replicationConfig: map['replicationConfig'] == null ? null : ((EventEndpointReplicationConfig.fromMap((map['replicationConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      routingConfig: (EventEndpointRoutingConfig.fromMap((map['routingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

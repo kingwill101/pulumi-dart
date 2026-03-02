@@ -82,14 +82,14 @@ class CxPageTransitionRouteTriggerFulfillmentMessage {
 
   factory CxPageTransitionRouteTriggerFulfillmentMessage.fromMap(Map<String, dynamic> map) {
     return CxPageTransitionRouteTriggerFulfillmentMessage(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
-      conversationSuccess: map['conversationSuccess'] == null ? null : (CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess.fromMap((map['conversationSuccess'] as Map).cast<String, dynamic>())).input(),
-      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : (CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff'] as Map).cast<String, dynamic>())).input(),
-      outputAudioText: map['outputAudioText'] == null ? null : (CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText.fromMap((map['outputAudioText'] as Map).cast<String, dynamic>())).input(),
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
-      playAudio: map['playAudio'] == null ? null : (CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio.fromMap((map['playAudio'] as Map).cast<String, dynamic>())).input(),
-      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : (CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (CxPageTransitionRouteTriggerFulfillmentMessageText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
+      conversationSuccess: map['conversationSuccess'] == null ? null : (CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess.fromMap((map['conversationSuccess']! as Map).cast<String, dynamic>())).input(),
+      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : (CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff']! as Map).cast<String, dynamic>())).input(),
+      outputAudioText: map['outputAudioText'] == null ? null : (CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText.fromMap((map['outputAudioText']! as Map).cast<String, dynamic>())).input(),
+      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
+      playAudio: map['playAudio'] == null ? null : (CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio.fromMap((map['playAudio']! as Map).cast<String, dynamic>())).input(),
+      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : (CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall']! as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (CxPageTransitionRouteTriggerFulfillmentMessageText.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

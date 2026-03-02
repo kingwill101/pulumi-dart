@@ -31,9 +31,9 @@ class HostRuleComputeV1 {
 
   factory HostRuleComputeV1.fromMap(Map<String, dynamic> map) {
     return HostRuleComputeV1(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
-      pathMatcher: map['pathMatcher'] == null ? null : (map['pathMatcher'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
+      pathMatcher: map['pathMatcher'] == null ? null : (map['pathMatcher']! as String).input(),
     );
   }
 }

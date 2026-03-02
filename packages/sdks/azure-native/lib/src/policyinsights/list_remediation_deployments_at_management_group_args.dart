@@ -42,7 +42,7 @@ class ListRemediationDeploymentsAtManagementGroupArgs {
       managementGroupId: (map['managementGroupId'] as String).input(),
       managementGroupsNamespace: (map['managementGroupsNamespace'] as String).input(),
       remediationName: (map['remediationName'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
     );
   }
 }

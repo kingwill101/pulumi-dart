@@ -64,7 +64,7 @@ class RemoteAdbDataSourceArgs {
 
   factory RemoteAdbDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return RemoteAdbDataSourceArgs(
-      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName']! as String).input(),
       localDatabase: (map['localDatabase'] as String).input(),
       localDbInstanceId: (map['localDbInstanceId'] as String).input(),
       managerUserName: (map['managerUserName'] as String).input(),

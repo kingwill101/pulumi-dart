@@ -69,16 +69,16 @@ class QueryPackQueryArgs {
 
   factory QueryPackQueryArgs.fromMap(Map<String, dynamic> map) {
     return QueryPackQueryArgs(
-      additionalSettingsJson: map['additionalSettingsJson'] == null ? null : (map['additionalSettingsJson'] as String).input(),
+      additionalSettingsJson: map['additionalSettingsJson'] == null ? null : (map['additionalSettingsJson']! as String).input(),
       body: (map['body'] as String).input(),
-      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      categories: map['categories'] == null ? null : ((map['categories']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       queryPackId: (map['queryPackId'] as String).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
-      solutions: map['solutions'] == null ? null : ((map['solutions'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
+      solutions: map['solutions'] == null ? null : ((map['solutions']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class AnalyticsConfigurationStorageClassAnalysisDataExportDestination {
 
   factory AnalyticsConfigurationStorageClassAnalysisDataExportDestination.fromMap(Map<String, dynamic> map) {
     return AnalyticsConfigurationStorageClassAnalysisDataExportDestination(
-      s3BucketDestination: (AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination.fromMap((map['s3BucketDestination'] as Map).cast<String, dynamic>())).input(),
+      s3BucketDestination: (AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination.fromMap((map['s3BucketDestination']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

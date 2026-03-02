@@ -84,19 +84,19 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      applicationAccount: map['applicationAccount'] == null ? null : (map['applicationAccount'] as String).input(),
-      applicationArn: map['applicationArn'] == null ? null : (map['applicationArn'] as String).input(),
-      applicationProviderArn: map['applicationProviderArn'] == null ? null : (map['applicationProviderArn'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      clientToken: map['clientToken'] == null ? null : (map['clientToken'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      portalOptions: map['portalOptions'] == null ? null : (ApplicationPortalOptions.fromMap((map['portalOptions'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      applicationAccount: map['applicationAccount'] == null ? null : ((map['applicationAccount'] as String).input()).input(),
+      applicationArn: map['applicationArn'] == null ? null : ((map['applicationArn'] as String).input()).input(),
+      applicationProviderArn: map['applicationProviderArn'] == null ? null : ((map['applicationProviderArn'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      clientToken: map['clientToken'] == null ? null : ((map['clientToken'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      instanceArn: map['instanceArn'] == null ? null : ((map['instanceArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      portalOptions: map['portalOptions'] == null ? null : ((ApplicationPortalOptions.fromMap((map['portalOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

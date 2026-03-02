@@ -33,9 +33,9 @@ class AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint {
 
   factory AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint(
-      matchAddress: map['matchAddress'] == null ? null : (map['matchAddress'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      matchAddress: map['matchAddress'] == null ? null : (map['matchAddress']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
     );
   }
 }

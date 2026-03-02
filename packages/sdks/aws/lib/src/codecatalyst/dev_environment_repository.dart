@@ -27,7 +27,7 @@ class DevEnvironmentRepository {
 
   factory DevEnvironmentRepository.fromMap(Map<String, dynamic> map) {
     return DevEnvironmentRepository(
-      branchName: map['branchName'] == null ? null : (map['branchName'] as String).input(),
+      branchName: map['branchName'] == null ? null : ((map['branchName'] as String).input()).input(),
       repositoryName: (map['repositoryName'] as String).input(),
     );
   }

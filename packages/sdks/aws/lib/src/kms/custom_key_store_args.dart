@@ -69,17 +69,17 @@ class CustomKeyStoreArgs {
 
   factory CustomKeyStoreArgs.fromMap(Map<String, dynamic> map) {
     return CustomKeyStoreArgs(
-      cloudHsmClusterId: map['cloudHsmClusterId'] == null ? null : (map['cloudHsmClusterId'] as String).input(),
+      cloudHsmClusterId: map['cloudHsmClusterId'] == null ? null : ((map['cloudHsmClusterId'] as String).input()).input(),
       customKeyStoreName: (map['customKeyStoreName'] as String).input(),
-      customKeyStoreType: map['customKeyStoreType'] == null ? null : (map['customKeyStoreType'] as String).input(),
-      keyStorePassword: map['keyStorePassword'] == null ? null : (map['keyStorePassword'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      trustAnchorCertificate: map['trustAnchorCertificate'] == null ? null : (map['trustAnchorCertificate'] as String).input(),
-      xksProxyAuthenticationCredential: map['xksProxyAuthenticationCredential'] == null ? null : (CustomKeyStoreXksProxyAuthenticationCredential.fromMap((map['xksProxyAuthenticationCredential'] as Map).cast<String, dynamic>())).input(),
-      xksProxyConnectivity: map['xksProxyConnectivity'] == null ? null : (map['xksProxyConnectivity'] as String).input(),
-      xksProxyUriEndpoint: map['xksProxyUriEndpoint'] == null ? null : (map['xksProxyUriEndpoint'] as String).input(),
-      xksProxyUriPath: map['xksProxyUriPath'] == null ? null : (map['xksProxyUriPath'] as String).input(),
-      xksProxyVpcEndpointServiceName: map['xksProxyVpcEndpointServiceName'] == null ? null : (map['xksProxyVpcEndpointServiceName'] as String).input(),
+      customKeyStoreType: map['customKeyStoreType'] == null ? null : ((map['customKeyStoreType'] as String).input()).input(),
+      keyStorePassword: map['keyStorePassword'] == null ? null : ((map['keyStorePassword'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      trustAnchorCertificate: map['trustAnchorCertificate'] == null ? null : ((map['trustAnchorCertificate'] as String).input()).input(),
+      xksProxyAuthenticationCredential: map['xksProxyAuthenticationCredential'] == null ? null : ((CustomKeyStoreXksProxyAuthenticationCredential.fromMap((map['xksProxyAuthenticationCredential']! as Map).cast<String, dynamic>())).input()).input(),
+      xksProxyConnectivity: map['xksProxyConnectivity'] == null ? null : ((map['xksProxyConnectivity'] as String).input()).input(),
+      xksProxyUriEndpoint: map['xksProxyUriEndpoint'] == null ? null : ((map['xksProxyUriEndpoint'] as String).input()).input(),
+      xksProxyUriPath: map['xksProxyUriPath'] == null ? null : ((map['xksProxyUriPath'] as String).input()).input(),
+      xksProxyVpcEndpointServiceName: map['xksProxyVpcEndpointServiceName'] == null ? null : ((map['xksProxyVpcEndpointServiceName'] as String).input()).input(),
     );
   }
 }

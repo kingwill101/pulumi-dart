@@ -27,8 +27,8 @@ class ArchiveRule {
 
   factory ArchiveRule.fromMap(Map<String, dynamic> map) {
     return ArchiveRule(
-      filter: map['filter'] == null ? null : (pulumi.Input.decodeList<Filter>(map['filter'], (value) => Filter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      filter: map['filter'] == null ? null : (pulumi.Input.decodeList<Filter>(map['filter']!, (value) => Filter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
     );
   }
 }

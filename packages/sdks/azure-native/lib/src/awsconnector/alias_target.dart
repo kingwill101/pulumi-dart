@@ -31,9 +31,9 @@ class AliasTarget {
 
   factory AliasTarget.fromMap(Map<String, dynamic> map) {
     return AliasTarget(
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : (map['evaluateTargetHealth'] as bool).input(),
-      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
+      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : (map['evaluateTargetHealth']! as bool).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId']! as String).input(),
     );
   }
 }

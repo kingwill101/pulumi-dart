@@ -49,12 +49,12 @@ class CxEnvironmentState {
 
   factory CxEnvironmentState.fromMap(Map<String, dynamic> map) {
     return CxEnvironmentState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      versionConfigs: map['versionConfigs'] == null ? null : (pulumi.Input.decodeList<CxEnvironmentVersionConfig>(map['versionConfigs'], (value) => CxEnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      versionConfigs: map['versionConfigs'] == null ? null : (pulumi.Input.decodeList<CxEnvironmentVersionConfig>(map['versionConfigs']!, (value) => CxEnvironmentVersionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

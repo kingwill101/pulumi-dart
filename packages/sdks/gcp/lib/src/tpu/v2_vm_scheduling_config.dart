@@ -30,9 +30,9 @@ class V2VmSchedulingConfig {
 
   factory V2VmSchedulingConfig.fromMap(Map<String, dynamic> map) {
     return V2VmSchedulingConfig(
-      preemptible: map['preemptible'] == null ? null : (map['preemptible'] as bool).input(),
-      reserved: map['reserved'] == null ? null : (map['reserved'] as bool).input(),
-      spot: map['spot'] == null ? null : (map['spot'] as bool).input(),
+      preemptible: map['preemptible'] == null ? null : (map['preemptible']! as bool).input(),
+      reserved: map['reserved'] == null ? null : (map['reserved']! as bool).input(),
+      spot: map['spot'] == null ? null : (map['spot']! as bool).input(),
     );
   }
 }

@@ -101,21 +101,21 @@ class ServiceConnectionPolicyState {
 
   factory ServiceConnectionPolicyState.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      infrastructure: map['infrastructure'] == null ? null : (map['infrastructure'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pscConfig: map['pscConfig'] == null ? null : (ServiceConnectionPolicyPscConfig.fromMap((map['pscConfig'] as Map).cast<String, dynamic>())).input(),
-      pscConnections: map['pscConnections'] == null ? null : (pulumi.Input.decodeList<ServiceConnectionPolicyPscConnection>(map['pscConnections'], (value) => ServiceConnectionPolicyPscConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      serviceClass: map['serviceClass'] == null ? null : (map['serviceClass'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      infrastructure: map['infrastructure'] == null ? null : (map['infrastructure']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pscConfig: map['pscConfig'] == null ? null : (ServiceConnectionPolicyPscConfig.fromMap((map['pscConfig']! as Map).cast<String, dynamic>())).input(),
+      pscConnections: map['pscConnections'] == null ? null : (pulumi.Input.decodeList<ServiceConnectionPolicyPscConnection>(map['pscConnections']!, (value) => ServiceConnectionPolicyPscConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      serviceClass: map['serviceClass'] == null ? null : (map['serviceClass']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

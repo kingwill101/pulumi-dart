@@ -26,8 +26,8 @@ class TlsRouteRouteMatchNetworkservicesV1beta1 {
 
   factory TlsRouteRouteMatchNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return TlsRouteRouteMatchNetworkservicesV1beta1(
-      alpn: map['alpn'] == null ? null : ((map['alpn'] as List).cast<String>()).input(),
-      sniHost: map['sniHost'] == null ? null : ((map['sniHost'] as List).cast<String>()).input(),
+      alpn: map['alpn'] == null ? null : ((map['alpn']! as List).cast<String>()).input(),
+      sniHost: map['sniHost'] == null ? null : ((map['sniHost']! as List).cast<String>()).input(),
     );
   }
 }

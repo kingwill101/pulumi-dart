@@ -64,14 +64,14 @@ class CryptoKeyVersionState {
 
   factory CryptoKeyVersionState.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionState(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
-      attestations: map['attestations'] == null ? null : (pulumi.Input.decodeList<CryptoKeyVersionAttestation>(map['attestations'], (value) => CryptoKeyVersionAttestation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cryptoKey: map['cryptoKey'] == null ? null : (map['cryptoKey'] as String).input(),
-      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : (CryptoKeyVersionExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions'] as Map).cast<String, dynamic>())).input(),
-      generateTime: map['generateTime'] == null ? null : (map['generateTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protectionLevel: map['protectionLevel'] == null ? null : (map['protectionLevel'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as String).input(),
+      attestations: map['attestations'] == null ? null : (pulumi.Input.decodeList<CryptoKeyVersionAttestation>(map['attestations']!, (value) => CryptoKeyVersionAttestation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cryptoKey: map['cryptoKey'] == null ? null : (map['cryptoKey']! as String).input(),
+      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : (CryptoKeyVersionExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions']! as Map).cast<String, dynamic>())).input(),
+      generateTime: map['generateTime'] == null ? null : (map['generateTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protectionLevel: map['protectionLevel'] == null ? null : (map['protectionLevel']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

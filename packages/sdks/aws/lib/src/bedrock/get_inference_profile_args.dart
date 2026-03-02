@@ -30,7 +30,7 @@ class GetInferenceProfileArgs {
   factory GetInferenceProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetInferenceProfileArgs(
       inferenceProfileId: (map['inferenceProfileId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

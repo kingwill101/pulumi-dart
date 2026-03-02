@@ -25,8 +25,8 @@ class ResolverCachingConfig {
 
   factory ResolverCachingConfig.fromMap(Map<String, dynamic> map) {
     return ResolverCachingConfig(
-      cachingKeys: map['cachingKeys'] == null ? null : ((map['cachingKeys'] as List).cast<String>()).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      cachingKeys: map['cachingKeys'] == null ? null : (((map['cachingKeys'] as List).cast<String>()).input()).input(),
+      ttl: map['ttl'] == null ? null : ((map['ttl'] as int).input()).input(),
     );
   }
 }

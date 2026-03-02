@@ -52,7 +52,7 @@ class TagKeyIamBindingArgs {
 
   factory TagKeyIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return TagKeyIamBindingArgs(
-      condition: map['condition'] == null ? null : (TagKeyIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (TagKeyIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       members: ((map['members'] as List).cast<String>()).input(),
       role: (map['role'] as String).input(),
       tagKey: (map['tagKey'] as String).input(),

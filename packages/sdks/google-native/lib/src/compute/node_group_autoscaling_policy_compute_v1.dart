@@ -31,9 +31,9 @@ class NodeGroupAutoscalingPolicyComputeV1 {
 
   factory NodeGroupAutoscalingPolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return NodeGroupAutoscalingPolicyComputeV1(
-      maxNodes: map['maxNodes'] == null ? null : (map['maxNodes'] as int).input(),
-      minNodes: map['minNodes'] == null ? null : (map['minNodes'] as int).input(),
-      mode: map['mode'] == null ? null : (NodeGroupAutoscalingPolicyModeComputeV1.fromValue(map['mode'] as String)).input(),
+      maxNodes: map['maxNodes'] == null ? null : (map['maxNodes']! as int).input(),
+      minNodes: map['minNodes'] == null ? null : (map['minNodes']! as int).input(),
+      mode: map['mode'] == null ? null : (NodeGroupAutoscalingPolicyModeComputeV1.fromValue(map['mode']! as String)).input(),
     );
   }
 }

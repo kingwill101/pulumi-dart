@@ -84,19 +84,19 @@ class GetMultipleActivationKeyResult {
 
   factory GetMultipleActivationKeyResult.fromMap(Map<String, dynamic> map) {
     return GetMultipleActivationKeyResult(
-      agreementNumber: map['agreementNumber'] == null ? null : map['agreementNumber'] as String,
+      agreementNumber: map['agreementNumber'] == null ? null : map['agreementNumber']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       expirationDate: map['expirationDate'] as String,
       id: map['id'] as String,
-      installedServerNumber: map['installedServerNumber'] == null ? null : map['installedServerNumber'] as int,
-      isEligible: map['isEligible'] == null ? null : map['isEligible'] as bool,
+      installedServerNumber: map['installedServerNumber'] == null ? null : map['installedServerNumber']! as int,
+      isEligible: map['isEligible'] == null ? null : map['isEligible']! as bool,
       location: map['location'] as String,
       multipleActivationKey: map['multipleActivationKey'] as String,
       name: map['name'] as String,
-      osType: map['osType'] == null ? null : map['osType'] as String,
+      osType: map['osType'] == null ? null : map['osType']! as String,
       provisioningState: map['provisioningState'] as String,
-      supportType: map['supportType'] == null ? null : map['supportType'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      supportType: map['supportType'] == null ? null : map['supportType']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

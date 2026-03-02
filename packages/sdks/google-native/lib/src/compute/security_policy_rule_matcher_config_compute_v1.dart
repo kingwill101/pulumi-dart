@@ -20,7 +20,7 @@ class SecurityPolicyRuleMatcherConfigComputeV1 {
 
   factory SecurityPolicyRuleMatcherConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleMatcherConfigComputeV1(
-      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges'] as List).cast<String>()).input(),
+      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges']! as List).cast<String>()).input(),
     );
   }
 }

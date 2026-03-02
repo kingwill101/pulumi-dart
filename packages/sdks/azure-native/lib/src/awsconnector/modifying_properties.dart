@@ -37,10 +37,10 @@ class ModifyingProperties {
 
   factory ModifyingProperties.fromMap(Map<String, dynamic> map) {
     return ModifyingProperties(
-      activeValue: map['activeValue'] == null ? null : (map['activeValue'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pendingValue: map['pendingValue'] == null ? null : (map['pendingValue'] as String).input(),
-      valueType: map['valueType'] == null ? null : (PropertyValueTypeEnumValue.fromMap((map['valueType'] as Map).cast<String, dynamic>())).input(),
+      activeValue: map['activeValue'] == null ? null : (map['activeValue']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pendingValue: map['pendingValue'] == null ? null : (map['pendingValue']! as String).input(),
+      valueType: map['valueType'] == null ? null : (PropertyValueTypeEnumValue.fromMap((map['valueType']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

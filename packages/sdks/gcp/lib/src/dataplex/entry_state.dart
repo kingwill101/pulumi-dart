@@ -82,18 +82,18 @@ class EntryState {
 
   factory EntryState.fromMap(Map<String, dynamic> map) {
     return EntryState(
-      aspects: map['aspects'] == null ? null : (pulumi.Input.decodeList<EntryAspect>(map['aspects'], (value) => EntryAspect.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      entryGroupId: map['entryGroupId'] == null ? null : (map['entryGroupId'] as String).input(),
-      entryId: map['entryId'] == null ? null : (map['entryId'] as String).input(),
-      entrySource: map['entrySource'] == null ? null : (EntryEntrySource.fromMap((map['entrySource'] as Map).cast<String, dynamic>())).input(),
-      entryType: map['entryType'] == null ? null : (map['entryType'] as String).input(),
-      fullyQualifiedName: map['fullyQualifiedName'] == null ? null : (map['fullyQualifiedName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentEntry: map['parentEntry'] == null ? null : (map['parentEntry'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      aspects: map['aspects'] == null ? null : (pulumi.Input.decodeList<EntryAspect>(map['aspects']!, (value) => EntryAspect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      entryGroupId: map['entryGroupId'] == null ? null : (map['entryGroupId']! as String).input(),
+      entryId: map['entryId'] == null ? null : (map['entryId']! as String).input(),
+      entrySource: map['entrySource'] == null ? null : (EntryEntrySource.fromMap((map['entrySource']! as Map).cast<String, dynamic>())).input(),
+      entryType: map['entryType'] == null ? null : (map['entryType']! as String).input(),
+      fullyQualifiedName: map['fullyQualifiedName'] == null ? null : (map['fullyQualifiedName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentEntry: map['parentEntry'] == null ? null : (map['parentEntry']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

@@ -46,11 +46,11 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      checkIfServiceHasUsageOnDestroy: map['checkIfServiceHasUsageOnDestroy'] == null ? null : (map['checkIfServiceHasUsageOnDestroy'] as bool).input(),
-      disableDependentServices: map['disableDependentServices'] == null ? null : (map['disableDependentServices'] as bool).input(),
-      disableOnDestroy: map['disableOnDestroy'] == null ? null : (map['disableOnDestroy'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      checkIfServiceHasUsageOnDestroy: map['checkIfServiceHasUsageOnDestroy'] == null ? null : (map['checkIfServiceHasUsageOnDestroy']! as bool).input(),
+      disableDependentServices: map['disableDependentServices'] == null ? null : (map['disableDependentServices']! as bool).input(),
+      disableOnDestroy: map['disableOnDestroy'] == null ? null : (map['disableOnDestroy']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

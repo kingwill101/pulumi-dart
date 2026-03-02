@@ -32,9 +32,9 @@ class LinuxOperatingSystemProfileResponse {
 
   factory LinuxOperatingSystemProfileResponse.fromMap(Map<String, dynamic> map) {
     return LinuxOperatingSystemProfileResponse(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      sshProfile: map['sshProfile'] == null ? null : (SshProfileResponse.fromMap((map['sshProfile'] as Map).cast<String, dynamic>())).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      sshProfile: map['sshProfile'] == null ? null : (SshProfileResponse.fromMap((map['sshProfile']! as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

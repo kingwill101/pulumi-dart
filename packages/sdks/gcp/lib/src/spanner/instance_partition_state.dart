@@ -67,14 +67,14 @@ class InstancePartitionState {
 
   factory InstancePartitionState.fromMap(Map<String, dynamic> map) {
     return InstancePartitionState(
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

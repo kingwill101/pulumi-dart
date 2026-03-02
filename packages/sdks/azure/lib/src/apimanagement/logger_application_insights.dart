@@ -27,8 +27,8 @@ class LoggerApplicationInsights {
 
   factory LoggerApplicationInsights.fromMap(Map<String, dynamic> map) {
     return LoggerApplicationInsights(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      instrumentationKey: map['instrumentationKey'] == null ? null : (map['instrumentationKey'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      instrumentationKey: map['instrumentationKey'] == null ? null : (map['instrumentationKey']! as String).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class MigrationEntityGroupArgs {
 
   factory MigrationEntityGroupArgs.fromMap(Map<String, dynamic> map) {
     return MigrationEntityGroupArgs(
-      migrationEntityGroupName: map['migrationEntityGroupName'] == null ? null : (map['migrationEntityGroupName'] as String).input(),
+      migrationEntityGroupName: map['migrationEntityGroupName'] == null ? null : (map['migrationEntityGroupName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (MigrationEntityGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (MigrationEntityGroupProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

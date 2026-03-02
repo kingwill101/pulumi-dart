@@ -36,10 +36,10 @@ class AccessPointPolicyState {
 
   factory AccessPointPolicyState.fromMap(Map<String, dynamic> map) {
     return AccessPointPolicyState(
-      accessPointArn: map['accessPointArn'] == null ? null : (map['accessPointArn'] as String).input(),
-      hasPublicAccessPolicy: map['hasPublicAccessPolicy'] == null ? null : (map['hasPublicAccessPolicy'] as bool).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accessPointArn: map['accessPointArn'] == null ? null : ((map['accessPointArn'] as String).input()).input(),
+      hasPublicAccessPolicy: map['hasPublicAccessPolicy'] == null ? null : ((map['hasPublicAccessPolicy'] as bool).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

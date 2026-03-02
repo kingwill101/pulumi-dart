@@ -25,8 +25,8 @@ class VirtualNetworkSubnetSharedPublicIpAddressAllowedPort {
 
   factory VirtualNetworkSubnetSharedPublicIpAddressAllowedPort.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetSharedPublicIpAddressAllowedPort(
-      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
-      transportProtocol: map['transportProtocol'] == null ? null : (map['transportProtocol'] as String).input(),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as int).input(),
+      transportProtocol: map['transportProtocol'] == null ? null : (map['transportProtocol']! as String).input(),
     );
   }
 }

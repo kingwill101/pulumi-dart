@@ -55,14 +55,14 @@ class PresetThumbnails {
 
   factory PresetThumbnails.fromMap(Map<String, dynamic> map) {
     return PresetThumbnails(
-      aspectRatio: map['aspectRatio'] == null ? null : (map['aspectRatio'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      maxHeight: map['maxHeight'] == null ? null : (map['maxHeight'] as String).input(),
-      maxWidth: map['maxWidth'] == null ? null : (map['maxWidth'] as String).input(),
-      paddingPolicy: map['paddingPolicy'] == null ? null : (map['paddingPolicy'] as String).input(),
-      resolution: map['resolution'] == null ? null : (map['resolution'] as String).input(),
-      sizingPolicy: map['sizingPolicy'] == null ? null : (map['sizingPolicy'] as String).input(),
+      aspectRatio: map['aspectRatio'] == null ? null : ((map['aspectRatio'] as String).input()).input(),
+      format: map['format'] == null ? null : ((map['format'] as String).input()).input(),
+      interval: map['interval'] == null ? null : ((map['interval'] as String).input()).input(),
+      maxHeight: map['maxHeight'] == null ? null : ((map['maxHeight'] as String).input()).input(),
+      maxWidth: map['maxWidth'] == null ? null : ((map['maxWidth'] as String).input()).input(),
+      paddingPolicy: map['paddingPolicy'] == null ? null : ((map['paddingPolicy'] as String).input()).input(),
+      resolution: map['resolution'] == null ? null : ((map['resolution'] as String).input()).input(),
+      sizingPolicy: map['sizingPolicy'] == null ? null : ((map['sizingPolicy'] as String).input()).input(),
     );
   }
 }

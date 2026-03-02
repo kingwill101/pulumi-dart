@@ -54,9 +54,9 @@ class ConnectAttachmentArgs {
     return ConnectAttachmentArgs(
       coreNetworkId: (map['coreNetworkId'] as String).input(),
       edgeLocation: (map['edgeLocation'] as String).input(),
-      options: (ConnectAttachmentOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      options: (ConnectAttachmentOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : ((map['routingPolicyLabel'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       transportAttachmentId: (map['transportAttachmentId'] as String).input(),
     );
   }

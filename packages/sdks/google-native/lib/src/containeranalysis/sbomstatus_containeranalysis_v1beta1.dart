@@ -27,8 +27,8 @@ class SBOMStatusContaineranalysisV1beta1 {
 
   factory SBOMStatusContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return SBOMStatusContaineranalysisV1beta1(
-      error: map['error'] == null ? null : (map['error'] as String).input(),
-      sbomState: map['sbomState'] == null ? null : (SBOMStatusSbomStateContaineranalysisV1beta1.fromValue(map['sbomState'] as String)).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
+      sbomState: map['sbomState'] == null ? null : (SBOMStatusSbomStateContaineranalysisV1beta1.fromValue(map['sbomState']! as String)).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class MemcacheParametersMemcacheV1beta2 {
 
   factory MemcacheParametersMemcacheV1beta2.fromMap(Map<String, dynamic> map) {
     return MemcacheParametersMemcacheV1beta2(
-      params: map['params'] == null ? null : ((map['params'] as Map).cast<String, String>()).input(),
+      params: map['params'] == null ? null : ((map['params']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -52,12 +52,12 @@ class GoogleCloudDatalabelingV1beta1InputConfig {
 
   factory GoogleCloudDatalabelingV1beta1InputConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1InputConfig(
-      annotationType: map['annotationType'] == null ? null : (GoogleCloudDatalabelingV1beta1InputConfigAnnotationType.fromValue(map['annotationType'] as String)).input(),
-      bigquerySource: map['bigquerySource'] == null ? null : (GoogleCloudDatalabelingV1beta1BigQuerySource.fromMap((map['bigquerySource'] as Map).cast<String, dynamic>())).input(),
-      classificationMetadata: map['classificationMetadata'] == null ? null : (GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromMap((map['classificationMetadata'] as Map).cast<String, dynamic>())).input(),
+      annotationType: map['annotationType'] == null ? null : (GoogleCloudDatalabelingV1beta1InputConfigAnnotationType.fromValue(map['annotationType']! as String)).input(),
+      bigquerySource: map['bigquerySource'] == null ? null : (GoogleCloudDatalabelingV1beta1BigQuerySource.fromMap((map['bigquerySource']! as Map).cast<String, dynamic>())).input(),
+      classificationMetadata: map['classificationMetadata'] == null ? null : (GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromMap((map['classificationMetadata']! as Map).cast<String, dynamic>())).input(),
       dataType: (GoogleCloudDatalabelingV1beta1InputConfigDataType.fromValue(map['dataType'] as String)).input(),
-      gcsSource: map['gcsSource'] == null ? null : (GoogleCloudDatalabelingV1beta1GcsSource.fromMap((map['gcsSource'] as Map).cast<String, dynamic>())).input(),
-      textMetadata: map['textMetadata'] == null ? null : (GoogleCloudDatalabelingV1beta1TextMetadata.fromMap((map['textMetadata'] as Map).cast<String, dynamic>())).input(),
+      gcsSource: map['gcsSource'] == null ? null : (GoogleCloudDatalabelingV1beta1GcsSource.fromMap((map['gcsSource']! as Map).cast<String, dynamic>())).input(),
+      textMetadata: map['textMetadata'] == null ? null : (GoogleCloudDatalabelingV1beta1TextMetadata.fromMap((map['textMetadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

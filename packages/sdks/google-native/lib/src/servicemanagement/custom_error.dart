@@ -27,8 +27,8 @@ class CustomError {
 
   factory CustomError.fromMap(Map<String, dynamic> map) {
     return CustomError(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<CustomErrorRule>(map['rules'], (value) => CustomErrorRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      types: map['types'] == null ? null : ((map['types'] as List).cast<String>()).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<CustomErrorRule>(map['rules']!, (value) => CustomErrorRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      types: map['types'] == null ? null : ((map['types']! as List).cast<String>()).input(),
     );
   }
 }

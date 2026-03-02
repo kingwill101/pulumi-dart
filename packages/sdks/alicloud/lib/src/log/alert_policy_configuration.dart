@@ -30,7 +30,7 @@ class AlertPolicyConfiguration {
 
   factory AlertPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConfiguration(
-      actionPolicyId: map['actionPolicyId'] == null ? null : (map['actionPolicyId'] as String).input(),
+      actionPolicyId: map['actionPolicyId'] == null ? null : (map['actionPolicyId']! as String).input(),
       alertPolicyId: (map['alertPolicyId'] as String).input(),
       repeatInterval: (map['repeatInterval'] as String).input(),
     );

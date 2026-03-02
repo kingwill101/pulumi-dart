@@ -39,9 +39,9 @@ class ChannelDestination {
   factory ChannelDestination.fromMap(Map<String, dynamic> map) {
     return ChannelDestination(
       id: (map['id'] as String).input(),
-      mediaPackageSettings: map['mediaPackageSettings'] == null ? null : (pulumi.Input.decodeList<ChannelDestinationMediaPackageSetting>(map['mediaPackageSettings'], (value) => ChannelDestinationMediaPackageSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      multiplexSettings: map['multiplexSettings'] == null ? null : (ChannelDestinationMultiplexSettings.fromMap((map['multiplexSettings'] as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<ChannelDestinationSetting>(map['settings'], (value) => ChannelDestinationSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mediaPackageSettings: map['mediaPackageSettings'] == null ? null : ((pulumi.Input.decodeList<ChannelDestinationMediaPackageSetting>(map['mediaPackageSettings']!, (value) => ChannelDestinationMediaPackageSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      multiplexSettings: map['multiplexSettings'] == null ? null : ((ChannelDestinationMultiplexSettings.fromMap((map['multiplexSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      settings: map['settings'] == null ? null : ((pulumi.Input.decodeList<ChannelDestinationSetting>(map['settings']!, (value) => ChannelDestinationSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

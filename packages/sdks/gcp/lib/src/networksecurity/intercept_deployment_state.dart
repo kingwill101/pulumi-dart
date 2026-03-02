@@ -111,20 +111,20 @@ class InterceptDeploymentState {
 
   factory InterceptDeploymentState.fromMap(Map<String, dynamic> map) {
     return InterceptDeploymentState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      forwardingRule: map['forwardingRule'] == null ? null : (map['forwardingRule'] as String).input(),
-      interceptDeploymentGroup: map['interceptDeploymentGroup'] == null ? null : (map['interceptDeploymentGroup'] as String).input(),
-      interceptDeploymentId: map['interceptDeploymentId'] == null ? null : (map['interceptDeploymentId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      forwardingRule: map['forwardingRule'] == null ? null : (map['forwardingRule']! as String).input(),
+      interceptDeploymentGroup: map['interceptDeploymentGroup'] == null ? null : (map['interceptDeploymentGroup']! as String).input(),
+      interceptDeploymentId: map['interceptDeploymentId'] == null ? null : (map['interceptDeploymentId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

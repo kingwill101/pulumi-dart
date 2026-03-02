@@ -57,14 +57,14 @@ class ImportDataFileMigrationcenterV1alpha1Args {
 
   factory ImportDataFileMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return ImportDataFileMigrationcenterV1alpha1Args(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       format: (ImportDataFileFormatMigrationcenterV1alpha1.fromValue(map['format'] as String)).input(),
       importDataFileId: (map['importDataFileId'] as String).input(),
       importJobId: (map['importJobId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      uploadFileInfo: map['uploadFileInfo'] == null ? null : ((map['uploadFileInfo'] as Map).cast<String, dynamic>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      uploadFileInfo: map['uploadFileInfo'] == null ? null : ((map['uploadFileInfo']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

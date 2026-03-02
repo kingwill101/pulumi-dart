@@ -46,12 +46,12 @@ class EnrichmentDomainWhoisRegistrarDetailsResponse {
 
   factory EnrichmentDomainWhoisRegistrarDetailsResponse.fromMap(Map<String, dynamic> map) {
     return EnrichmentDomainWhoisRegistrarDetailsResponse(
-      abuseContactEmail: map['abuseContactEmail'] == null ? null : (map['abuseContactEmail'] as String).input(),
-      abuseContactPhone: map['abuseContactPhone'] == null ? null : (map['abuseContactPhone'] as String).input(),
-      ianaId: map['ianaId'] == null ? null : (map['ianaId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      whoisServer: map['whoisServer'] == null ? null : (map['whoisServer'] as String).input(),
+      abuseContactEmail: map['abuseContactEmail'] == null ? null : (map['abuseContactEmail']! as String).input(),
+      abuseContactPhone: map['abuseContactPhone'] == null ? null : (map['abuseContactPhone']! as String).input(),
+      ianaId: map['ianaId'] == null ? null : (map['ianaId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      whoisServer: map['whoisServer'] == null ? null : (map['whoisServer']! as String).input(),
     );
   }
 }

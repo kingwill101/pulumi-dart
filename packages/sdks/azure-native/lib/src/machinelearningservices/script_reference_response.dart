@@ -36,10 +36,10 @@ class ScriptReferenceResponse {
 
   factory ScriptReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ScriptReferenceResponse(
-      scriptArguments: map['scriptArguments'] == null ? null : (map['scriptArguments'] as String).input(),
-      scriptData: map['scriptData'] == null ? null : (map['scriptData'] as String).input(),
-      scriptSource: map['scriptSource'] == null ? null : (map['scriptSource'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      scriptArguments: map['scriptArguments'] == null ? null : (map['scriptArguments']! as String).input(),
+      scriptData: map['scriptData'] == null ? null : (map['scriptData']! as String).input(),
+      scriptSource: map['scriptSource'] == null ? null : (map['scriptSource']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

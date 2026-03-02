@@ -33,9 +33,9 @@ class ReplicationConfigurationResponse {
 
   factory ReplicationConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationResponse(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<ReplicationDestinationResponse>(map['destinations'], (value) => ReplicationDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ReplicationRuleResponse>(map['rules'], (value) => ReplicationRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<ReplicationDestinationResponse>(map['destinations']!, (value) => ReplicationDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ReplicationRuleResponse>(map['rules']!, (value) => ReplicationRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

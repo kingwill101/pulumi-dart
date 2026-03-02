@@ -32,9 +32,9 @@ class EnvKeystoreState {
 
   factory EnvKeystoreState.fromMap(Map<String, dynamic> map) {
     return EnvKeystoreState(
-      aliases: map['aliases'] == null ? null : ((map['aliases'] as List).cast<String>()).input(),
-      envId: map['envId'] == null ? null : (map['envId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      aliases: map['aliases'] == null ? null : ((map['aliases']! as List).cast<String>()).input(),
+      envId: map['envId'] == null ? null : (map['envId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

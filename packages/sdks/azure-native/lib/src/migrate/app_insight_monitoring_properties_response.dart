@@ -46,12 +46,12 @@ class AppInsightMonitoringPropertiesResponse {
 
   factory AppInsightMonitoringPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AppInsightMonitoringPropertiesResponse(
-      appInsightsName: map['appInsightsName'] == null ? null : (map['appInsightsName'] as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      secretStoreDetails: map['secretStoreDetails'] == null ? null : (SecretStoreDetailsResponse.fromMap((map['secretStoreDetails'] as Map).cast<String, dynamic>())).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      appInsightsName: map['appInsightsName'] == null ? null : (map['appInsightsName']! as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      secretStoreDetails: map['secretStoreDetails'] == null ? null : (SecretStoreDetailsResponse.fromMap((map['secretStoreDetails']! as Map).cast<String, dynamic>())).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

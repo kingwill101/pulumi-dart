@@ -31,9 +31,9 @@ class FunctionBuildConfigSourceStorageSource {
 
   factory FunctionBuildConfigSourceStorageSource.fromMap(Map<String, dynamic> map) {
     return FunctionBuildConfigSourceStorageSource(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as int).input(),
-      object: map['object'] == null ? null : (map['object'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as int).input(),
+      object: map['object'] == null ? null : (map['object']! as String).input(),
     );
   }
 }

@@ -36,9 +36,9 @@ class SoftwareUpdateConfigurationWindows {
   factory SoftwareUpdateConfigurationWindows.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationWindows(
       classificationsIncludeds: ((map['classificationsIncludeds'] as List).cast<String>()).input(),
-      excludedKnowledgeBaseNumbers: map['excludedKnowledgeBaseNumbers'] == null ? null : ((map['excludedKnowledgeBaseNumbers'] as List).cast<String>()).input(),
-      includedKnowledgeBaseNumbers: map['includedKnowledgeBaseNumbers'] == null ? null : ((map['includedKnowledgeBaseNumbers'] as List).cast<String>()).input(),
-      reboot: map['reboot'] == null ? null : (map['reboot'] as String).input(),
+      excludedKnowledgeBaseNumbers: map['excludedKnowledgeBaseNumbers'] == null ? null : ((map['excludedKnowledgeBaseNumbers']! as List).cast<String>()).input(),
+      includedKnowledgeBaseNumbers: map['includedKnowledgeBaseNumbers'] == null ? null : ((map['includedKnowledgeBaseNumbers']! as List).cast<String>()).input(),
+      reboot: map['reboot'] == null ? null : (map['reboot']! as String).input(),
     );
   }
 }

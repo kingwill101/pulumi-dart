@@ -31,9 +31,9 @@ class ResourceLimit {
 
   factory ResourceLimit.fromMap(Map<String, dynamic> map) {
     return ResourceLimit(
-      maximum: map['maximum'] == null ? null : (map['maximum'] as String).input(),
-      minimum: map['minimum'] == null ? null : (map['minimum'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      maximum: map['maximum'] == null ? null : (map['maximum']! as String).input(),
+      minimum: map['minimum'] == null ? null : (map['minimum']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

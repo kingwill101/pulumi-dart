@@ -71,17 +71,17 @@ class KubeletConfig {
 
   factory KubeletConfig.fromMap(Map<String, dynamic> map) {
     return KubeletConfig(
-      allowedUnsafeSysctls: map['allowedUnsafeSysctls'] == null ? null : ((map['allowedUnsafeSysctls'] as List).cast<String>()).input(),
-      containerLogMaxFiles: map['containerLogMaxFiles'] == null ? null : (map['containerLogMaxFiles'] as int).input(),
-      containerLogMaxSizeMB: map['containerLogMaxSizeMB'] == null ? null : (map['containerLogMaxSizeMB'] as int).input(),
-      cpuCfsQuota: map['cpuCfsQuota'] == null ? null : (map['cpuCfsQuota'] as bool).input(),
-      cpuCfsQuotaPeriod: map['cpuCfsQuotaPeriod'] == null ? null : (map['cpuCfsQuotaPeriod'] as String).input(),
-      cpuManagerPolicy: map['cpuManagerPolicy'] == null ? null : (map['cpuManagerPolicy'] as String).input(),
-      failSwapOn: map['failSwapOn'] == null ? null : (map['failSwapOn'] as bool).input(),
-      imageGcHighThreshold: map['imageGcHighThreshold'] == null ? null : (map['imageGcHighThreshold'] as int).input(),
-      imageGcLowThreshold: map['imageGcLowThreshold'] == null ? null : (map['imageGcLowThreshold'] as int).input(),
-      podMaxPids: map['podMaxPids'] == null ? null : (map['podMaxPids'] as int).input(),
-      topologyManagerPolicy: map['topologyManagerPolicy'] == null ? null : (map['topologyManagerPolicy'] as String).input(),
+      allowedUnsafeSysctls: map['allowedUnsafeSysctls'] == null ? null : ((map['allowedUnsafeSysctls']! as List).cast<String>()).input(),
+      containerLogMaxFiles: map['containerLogMaxFiles'] == null ? null : (map['containerLogMaxFiles']! as int).input(),
+      containerLogMaxSizeMB: map['containerLogMaxSizeMB'] == null ? null : (map['containerLogMaxSizeMB']! as int).input(),
+      cpuCfsQuota: map['cpuCfsQuota'] == null ? null : (map['cpuCfsQuota']! as bool).input(),
+      cpuCfsQuotaPeriod: map['cpuCfsQuotaPeriod'] == null ? null : (map['cpuCfsQuotaPeriod']! as String).input(),
+      cpuManagerPolicy: map['cpuManagerPolicy'] == null ? null : (map['cpuManagerPolicy']! as String).input(),
+      failSwapOn: map['failSwapOn'] == null ? null : (map['failSwapOn']! as bool).input(),
+      imageGcHighThreshold: map['imageGcHighThreshold'] == null ? null : (map['imageGcHighThreshold']! as int).input(),
+      imageGcLowThreshold: map['imageGcLowThreshold'] == null ? null : (map['imageGcLowThreshold']! as int).input(),
+      podMaxPids: map['podMaxPids'] == null ? null : (map['podMaxPids']! as int).input(),
+      topologyManagerPolicy: map['topologyManagerPolicy'] == null ? null : (map['topologyManagerPolicy']! as String).input(),
     );
   }
 }

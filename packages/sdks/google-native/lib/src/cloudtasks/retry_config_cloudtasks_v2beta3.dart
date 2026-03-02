@@ -41,11 +41,11 @@ class RetryConfigCloudtasksV2beta3 {
 
   factory RetryConfigCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return RetryConfigCloudtasksV2beta3(
-      maxAttempts: map['maxAttempts'] == null ? null : (map['maxAttempts'] as int).input(),
-      maxBackoff: map['maxBackoff'] == null ? null : (map['maxBackoff'] as String).input(),
-      maxDoublings: map['maxDoublings'] == null ? null : (map['maxDoublings'] as int).input(),
-      maxRetryDuration: map['maxRetryDuration'] == null ? null : (map['maxRetryDuration'] as String).input(),
-      minBackoff: map['minBackoff'] == null ? null : (map['minBackoff'] as String).input(),
+      maxAttempts: map['maxAttempts'] == null ? null : (map['maxAttempts']! as int).input(),
+      maxBackoff: map['maxBackoff'] == null ? null : (map['maxBackoff']! as String).input(),
+      maxDoublings: map['maxDoublings'] == null ? null : (map['maxDoublings']! as int).input(),
+      maxRetryDuration: map['maxRetryDuration'] == null ? null : (map['maxRetryDuration']! as String).input(),
+      minBackoff: map['minBackoff'] == null ? null : (map['minBackoff']! as String).input(),
     );
   }
 }

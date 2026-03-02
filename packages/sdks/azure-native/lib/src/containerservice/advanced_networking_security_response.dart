@@ -26,8 +26,8 @@ class AdvancedNetworkingSecurityResponse {
 
   factory AdvancedNetworkingSecurityResponse.fromMap(Map<String, dynamic> map) {
     return AdvancedNetworkingSecurityResponse(
-      advancedNetworkPolicies: map['advancedNetworkPolicies'] == null ? null : (map['advancedNetworkPolicies'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      advancedNetworkPolicies: map['advancedNetworkPolicies'] == null ? null : (map['advancedNetworkPolicies']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

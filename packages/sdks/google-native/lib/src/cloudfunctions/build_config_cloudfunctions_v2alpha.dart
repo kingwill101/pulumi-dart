@@ -58,14 +58,14 @@ class BuildConfigCloudfunctionsV2alpha {
 
   factory BuildConfigCloudfunctionsV2alpha.fromMap(Map<String, dynamic> map) {
     return BuildConfigCloudfunctionsV2alpha(
-      dockerRegistry: map['dockerRegistry'] == null ? null : (BuildConfigDockerRegistryCloudfunctionsV2alpha.fromValue(map['dockerRegistry'] as String)).input(),
-      dockerRepository: map['dockerRepository'] == null ? null : (map['dockerRepository'] as String).input(),
-      entryPoint: map['entryPoint'] == null ? null : (map['entryPoint'] as String).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
-      source: map['source'] == null ? null : (SourceCloudfunctionsV2alpha.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      sourceToken: map['sourceToken'] == null ? null : (map['sourceToken'] as String).input(),
-      workerPool: map['workerPool'] == null ? null : (map['workerPool'] as String).input(),
+      dockerRegistry: map['dockerRegistry'] == null ? null : (BuildConfigDockerRegistryCloudfunctionsV2alpha.fromValue(map['dockerRegistry']! as String)).input(),
+      dockerRepository: map['dockerRepository'] == null ? null : (map['dockerRepository']! as String).input(),
+      entryPoint: map['entryPoint'] == null ? null : (map['entryPoint']! as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
+      runtime: map['runtime'] == null ? null : (map['runtime']! as String).input(),
+      source: map['source'] == null ? null : (SourceCloudfunctionsV2alpha.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      sourceToken: map['sourceToken'] == null ? null : (map['sourceToken']! as String).input(),
+      workerPool: map['workerPool'] == null ? null : (map['workerPool']! as String).input(),
     );
   }
 }

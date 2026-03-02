@@ -44,8 +44,8 @@ class BackendBucketSignedUrlKeyArgs {
     return BackendBucketSignedUrlKeyArgs(
       backendBucket: (map['backendBucket'] as String).input(),
       keyValue: (map['keyValue'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

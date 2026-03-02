@@ -47,11 +47,11 @@ class SqlSitesControllerArgs {
 
   factory SqlSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return SqlSitesControllerArgs(
-      discoveryScenario: map['discoveryScenario'] == null ? null : (map['discoveryScenario'] as String).input(),
+      discoveryScenario: map['discoveryScenario'] == null ? null : (map['discoveryScenario']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteAppliancePropertiesCollection: map['siteAppliancePropertiesCollection'] == null ? null : (pulumi.Input.decodeList<SiteApplianceProperties>(map['siteAppliancePropertiesCollection'], (value) => SiteApplianceProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      siteAppliancePropertiesCollection: map['siteAppliancePropertiesCollection'] == null ? null : (pulumi.Input.decodeList<SiteApplianceProperties>(map['siteAppliancePropertiesCollection']!, (value) => SiteApplianceProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
       siteName: (map['siteName'] as String).input(),
-      sqlSiteName: map['sqlSiteName'] == null ? null : (map['sqlSiteName'] as String).input(),
+      sqlSiteName: map['sqlSiteName'] == null ? null : (map['sqlSiteName']! as String).input(),
     );
   }
 }

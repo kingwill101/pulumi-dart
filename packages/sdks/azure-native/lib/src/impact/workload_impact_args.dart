@@ -30,8 +30,8 @@ class WorkloadImpactArgs {
 
   factory WorkloadImpactArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadImpactArgs(
-      properties: map['properties'] == null ? null : (WorkloadImpactProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      workloadImpactName: map['workloadImpactName'] == null ? null : (map['workloadImpactName'] as String).input(),
+      properties: map['properties'] == null ? null : (WorkloadImpactProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      workloadImpactName: map['workloadImpactName'] == null ? null : (map['workloadImpactName']! as String).input(),
     );
   }
 }

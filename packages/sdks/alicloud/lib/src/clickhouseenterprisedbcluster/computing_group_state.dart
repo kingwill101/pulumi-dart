@@ -71,17 +71,17 @@ class ComputingGroupState {
 
   factory ComputingGroupState.fromMap(Map<String, dynamic> map) {
     return ComputingGroupState(
-      computingGroupDescription: map['computingGroupDescription'] == null ? null : (map['computingGroupDescription'] as String).input(),
-      computingGroupEndpointNames: map['computingGroupEndpointNames'] == null ? null : ((map['computingGroupEndpointNames'] as List).cast<String>()).input(),
-      computingGroupEndpoints: map['computingGroupEndpoints'] == null ? null : ((map['computingGroupEndpoints'] as List).cast<String>()).input(),
-      computingGroupId: map['computingGroupId'] == null ? null : (map['computingGroupId'] as String).input(),
-      computingGroupPublicEndpoints: map['computingGroupPublicEndpoints'] == null ? null : ((map['computingGroupPublicEndpoints'] as List).cast<String>()).input(),
-      computingGroupStatus: map['computingGroupStatus'] == null ? null : (map['computingGroupStatus'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      isReadonly: map['isReadonly'] == null ? null : (map['isReadonly'] as bool).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      nodeScaleMax: map['nodeScaleMax'] == null ? null : (map['nodeScaleMax'] as int).input(),
-      nodeScaleMin: map['nodeScaleMin'] == null ? null : (map['nodeScaleMin'] as int).input(),
+      computingGroupDescription: map['computingGroupDescription'] == null ? null : (map['computingGroupDescription']! as String).input(),
+      computingGroupEndpointNames: map['computingGroupEndpointNames'] == null ? null : ((map['computingGroupEndpointNames']! as List).cast<String>()).input(),
+      computingGroupEndpoints: map['computingGroupEndpoints'] == null ? null : ((map['computingGroupEndpoints']! as List).cast<String>()).input(),
+      computingGroupId: map['computingGroupId'] == null ? null : (map['computingGroupId']! as String).input(),
+      computingGroupPublicEndpoints: map['computingGroupPublicEndpoints'] == null ? null : ((map['computingGroupPublicEndpoints']! as List).cast<String>()).input(),
+      computingGroupStatus: map['computingGroupStatus'] == null ? null : (map['computingGroupStatus']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      isReadonly: map['isReadonly'] == null ? null : (map['isReadonly']! as bool).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      nodeScaleMax: map['nodeScaleMax'] == null ? null : (map['nodeScaleMax']! as int).input(),
+      nodeScaleMin: map['nodeScaleMin'] == null ? null : (map['nodeScaleMin']! as int).input(),
     );
   }
 }

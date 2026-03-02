@@ -38,7 +38,7 @@ class CollaborationMember {
       accountId: (map['accountId'] as String).input(),
       displayName: (map['displayName'] as String).input(),
       memberAbilities: ((map['memberAbilities'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

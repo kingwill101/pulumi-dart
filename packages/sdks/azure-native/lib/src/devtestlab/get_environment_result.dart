@@ -76,16 +76,16 @@ class GetEnvironmentResult {
 
   factory GetEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentResult(
-      armTemplateDisplayName: map['armTemplateDisplayName'] == null ? null : map['armTemplateDisplayName'] as String,
+      armTemplateDisplayName: map['armTemplateDisplayName'] == null ? null : map['armTemplateDisplayName']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       createdByUser: map['createdByUser'] as String,
-      deploymentProperties: map['deploymentProperties'] == null ? null : EnvironmentDeploymentPropertiesResponse.fromMap((map['deploymentProperties'] as Map).cast<String, dynamic>()),
+      deploymentProperties: map['deploymentProperties'] == null ? null : EnvironmentDeploymentPropertiesResponse.fromMap((map['deploymentProperties']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGroupId: map['resourceGroupId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
     );

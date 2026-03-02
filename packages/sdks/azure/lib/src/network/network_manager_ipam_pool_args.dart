@@ -60,13 +60,13 @@ class NetworkManagerIpamPoolArgs {
   factory NetworkManagerIpamPoolArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerIpamPoolArgs(
       addressPrefixes: ((map['addressPrefixes'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkManagerId: (map['networkManagerId'] as String).input(),
-      parentPoolName: map['parentPoolName'] == null ? null : (map['parentPoolName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      parentPoolName: map['parentPoolName'] == null ? null : (map['parentPoolName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class NetworkForwardDriver {
 
   factory NetworkForwardDriver.fromMap(Map<String, dynamic> map) {
     return NetworkForwardDriver(
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

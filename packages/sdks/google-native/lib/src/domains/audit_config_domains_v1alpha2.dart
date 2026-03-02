@@ -27,8 +27,8 @@ class AuditConfigDomainsV1alpha2 {
 
   factory AuditConfigDomainsV1alpha2.fromMap(Map<String, dynamic> map) {
     return AuditConfigDomainsV1alpha2(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigDomainsV1alpha2>(map['auditLogConfigs'], (value) => AuditLogConfigDomainsV1alpha2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigDomainsV1alpha2>(map['auditLogConfigs']!, (value) => AuditLogConfigDomainsV1alpha2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

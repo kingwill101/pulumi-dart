@@ -39,8 +39,8 @@ class LinuxWebAppSlotAuthSettingsV2FacebookV2 {
     return LinuxWebAppSlotAuthSettingsV2FacebookV2(
       appId: (map['appId'] as String).input(),
       appSecretSettingName: (map['appSecretSettingName'] as String).input(),
-      graphApiVersion: map['graphApiVersion'] == null ? null : (map['graphApiVersion'] as String).input(),
-      loginScopes: map['loginScopes'] == null ? null : ((map['loginScopes'] as List).cast<String>()).input(),
+      graphApiVersion: map['graphApiVersion'] == null ? null : (map['graphApiVersion']! as String).input(),
+      loginScopes: map['loginScopes'] == null ? null : ((map['loginScopes']! as List).cast<String>()).input(),
     );
   }
 }

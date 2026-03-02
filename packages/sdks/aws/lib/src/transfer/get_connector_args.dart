@@ -30,7 +30,7 @@ class GetConnectorArgs {
   factory GetConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectorArgs(
       id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -50,13 +50,13 @@ class PolicyNetRedirectPolicy {
 
   factory PolicyNetRedirectPolicy.fromMap(Map<String, dynamic> map) {
     return PolicyNetRedirectPolicy(
-      customProxy: map['customProxy'] == null ? null : (map['customProxy'] as String).input(),
-      hostAddr: map['hostAddr'] == null ? null : (map['hostAddr'] as String).input(),
-      netRedirect: map['netRedirect'] == null ? null : (map['netRedirect'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      proxyPassword: map['proxyPassword'] == null ? null : (map['proxyPassword'] as String).input(),
-      proxyType: map['proxyType'] == null ? null : (map['proxyType'] as String).input(),
-      proxyUserName: map['proxyUserName'] == null ? null : (map['proxyUserName'] as String).input(),
+      customProxy: map['customProxy'] == null ? null : (map['customProxy']! as String).input(),
+      hostAddr: map['hostAddr'] == null ? null : (map['hostAddr']! as String).input(),
+      netRedirect: map['netRedirect'] == null ? null : (map['netRedirect']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      proxyPassword: map['proxyPassword'] == null ? null : (map['proxyPassword']! as String).input(),
+      proxyType: map['proxyType'] == null ? null : (map['proxyType']! as String).input(),
+      proxyUserName: map['proxyUserName'] == null ? null : (map['proxyUserName']! as String).input(),
     );
   }
 }

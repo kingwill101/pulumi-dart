@@ -36,10 +36,10 @@ class DhcpOptionsSetAttachmentState {
 
   factory DhcpOptionsSetAttachmentState.fromMap(Map<String, dynamic> map) {
     return DhcpOptionsSetAttachmentState(
-      dhcpOptionsSetId: map['dhcpOptionsSetId'] == null ? null : (map['dhcpOptionsSetId'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      dhcpOptionsSetId: map['dhcpOptionsSetId'] == null ? null : (map['dhcpOptionsSetId']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

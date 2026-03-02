@@ -21,7 +21,7 @@ class CreationData {
 
   factory CreationData.fromMap(Map<String, dynamic> map) {
     return CreationData(
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
     );
   }
 }

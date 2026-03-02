@@ -86,18 +86,18 @@ class EventRuleArgs {
 
   factory EventRuleArgs.fromMap(Map<String, dynamic> map) {
     return EventRuleArgs(
-      contactParameters: map['contactParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleContactParameter>(map['contactParameters'], (value) => EventRuleContactParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      contactParameters: map['contactParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleContactParameter>(map['contactParameters']!, (value) => EventRuleContactParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       eventPattern: (EventRuleEventPattern.fromMap((map['eventPattern'] as Map).cast<String, dynamic>())).input(),
-      fcParameters: map['fcParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleFcParameter>(map['fcParameters'], (value) => EventRuleFcParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      mnsParameters: map['mnsParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleMnsParameter>(map['mnsParameters'], (value) => EventRuleMnsParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      openApiParameters: map['openApiParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleOpenApiParameter>(map['openApiParameters'], (value) => EventRuleOpenApiParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fcParameters: map['fcParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleFcParameter>(map['fcParameters']!, (value) => EventRuleFcParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      mnsParameters: map['mnsParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleMnsParameter>(map['mnsParameters']!, (value) => EventRuleMnsParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      openApiParameters: map['openApiParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleOpenApiParameter>(map['openApiParameters']!, (value) => EventRuleOpenApiParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ruleName: (map['ruleName'] as String).input(),
-      silenceTime: map['silenceTime'] == null ? null : (map['silenceTime'] as int).input(),
-      slsParameters: map['slsParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleSlsParameter>(map['slsParameters'], (value) => EventRuleSlsParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      webhookParameters: map['webhookParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleWebhookParameter>(map['webhookParameters'], (value) => EventRuleWebhookParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      silenceTime: map['silenceTime'] == null ? null : (map['silenceTime']! as int).input(),
+      slsParameters: map['slsParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleSlsParameter>(map['slsParameters']!, (value) => EventRuleSlsParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      webhookParameters: map['webhookParameters'] == null ? null : (pulumi.Input.decodeList<EventRuleWebhookParameter>(map['webhookParameters']!, (value) => EventRuleWebhookParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

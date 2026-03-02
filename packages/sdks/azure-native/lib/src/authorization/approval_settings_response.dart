@@ -42,11 +42,11 @@ class ApprovalSettingsResponse {
 
   factory ApprovalSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ApprovalSettingsResponse(
-      approvalMode: map['approvalMode'] == null ? null : (map['approvalMode'] as String).input(),
-      approvalStages: map['approvalStages'] == null ? null : (pulumi.Input.decodeList<ApprovalStageResponse>(map['approvalStages'], (value) => ApprovalStageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isApprovalRequired: map['isApprovalRequired'] == null ? null : (map['isApprovalRequired'] as bool).input(),
-      isApprovalRequiredForExtension: map['isApprovalRequiredForExtension'] == null ? null : (map['isApprovalRequiredForExtension'] as bool).input(),
-      isRequestorJustificationRequired: map['isRequestorJustificationRequired'] == null ? null : (map['isRequestorJustificationRequired'] as bool).input(),
+      approvalMode: map['approvalMode'] == null ? null : (map['approvalMode']! as String).input(),
+      approvalStages: map['approvalStages'] == null ? null : (pulumi.Input.decodeList<ApprovalStageResponse>(map['approvalStages']!, (value) => ApprovalStageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isApprovalRequired: map['isApprovalRequired'] == null ? null : (map['isApprovalRequired']! as bool).input(),
+      isApprovalRequiredForExtension: map['isApprovalRequiredForExtension'] == null ? null : (map['isApprovalRequiredForExtension']! as bool).input(),
+      isRequestorJustificationRequired: map['isRequestorJustificationRequired'] == null ? null : (map['isRequestorJustificationRequired']! as bool).input(),
     );
   }
 }

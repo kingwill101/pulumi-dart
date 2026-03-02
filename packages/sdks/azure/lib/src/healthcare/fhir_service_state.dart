@@ -90,20 +90,20 @@ class FhirServiceState {
 
   factory FhirServiceState.fromMap(Map<String, dynamic> map) {
     return FhirServiceState(
-      accessPolicyObjectIds: map['accessPolicyObjectIds'] == null ? null : ((map['accessPolicyObjectIds'] as List).cast<String>()).input(),
-      authentication: map['authentication'] == null ? null : (FhirServiceAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      configurationExportStorageAccountName: map['configurationExportStorageAccountName'] == null ? null : (map['configurationExportStorageAccountName'] as String).input(),
-      containerRegistryLoginServerUrls: map['containerRegistryLoginServerUrls'] == null ? null : ((map['containerRegistryLoginServerUrls'] as List).cast<String>()).input(),
-      cors: map['cors'] == null ? null : (FhirServiceCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (FhirServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ociArtifacts: map['ociArtifacts'] == null ? null : (pulumi.Input.decodeList<FhirServiceOciArtifact>(map['ociArtifacts'], (value) => FhirServiceOciArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      accessPolicyObjectIds: map['accessPolicyObjectIds'] == null ? null : ((map['accessPolicyObjectIds']! as List).cast<String>()).input(),
+      authentication: map['authentication'] == null ? null : (FhirServiceAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      configurationExportStorageAccountName: map['configurationExportStorageAccountName'] == null ? null : (map['configurationExportStorageAccountName']! as String).input(),
+      containerRegistryLoginServerUrls: map['containerRegistryLoginServerUrls'] == null ? null : ((map['containerRegistryLoginServerUrls']! as List).cast<String>()).input(),
+      cors: map['cors'] == null ? null : (FhirServiceCors.fromMap((map['cors']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (FhirServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ociArtifacts: map['ociArtifacts'] == null ? null : (pulumi.Input.decodeList<FhirServiceOciArtifact>(map['ociArtifacts']!, (value) => FhirServiceOciArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

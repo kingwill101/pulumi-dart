@@ -31,9 +31,9 @@ class ChainChainConfigNode {
 
   factory ChainChainConfigNode.fromMap(Map<String, dynamic> map) {
     return ChainChainConfigNode(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      nodeConfigs: map['nodeConfigs'] == null ? null : (pulumi.Input.decodeList<ChainChainConfigNodeNodeConfig>(map['nodeConfigs'], (value) => ChainChainConfigNodeNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      nodeConfigs: map['nodeConfigs'] == null ? null : (pulumi.Input.decodeList<ChainChainConfigNodeNodeConfig>(map['nodeConfigs']!, (value) => ChainChainConfigNodeNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
     );
   }
 }

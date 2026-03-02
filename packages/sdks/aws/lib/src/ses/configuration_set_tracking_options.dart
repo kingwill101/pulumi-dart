@@ -20,7 +20,7 @@ class ConfigurationSetTrackingOptions {
 
   factory ConfigurationSetTrackingOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetTrackingOptions(
-      customRedirectDomain: map['customRedirectDomain'] == null ? null : (map['customRedirectDomain'] as String).input(),
+      customRedirectDomain: map['customRedirectDomain'] == null ? null : ((map['customRedirectDomain'] as String).input()).input(),
     );
   }
 }

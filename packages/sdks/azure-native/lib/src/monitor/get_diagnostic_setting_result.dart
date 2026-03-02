@@ -90,19 +90,19 @@ class GetDiagnosticSettingResult {
   factory GetDiagnosticSettingResult.fromMap(Map<String, dynamic> map) {
     return GetDiagnosticSettingResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eventHubAuthorizationRuleId: map['eventHubAuthorizationRuleId'] == null ? null : map['eventHubAuthorizationRuleId'] as String,
-      eventHubName: map['eventHubName'] == null ? null : map['eventHubName'] as String,
+      eventHubAuthorizationRuleId: map['eventHubAuthorizationRuleId'] == null ? null : map['eventHubAuthorizationRuleId']! as String,
+      eventHubName: map['eventHubName'] == null ? null : map['eventHubName']! as String,
       id: map['id'] as String,
-      logAnalyticsDestinationType: map['logAnalyticsDestinationType'] == null ? null : map['logAnalyticsDestinationType'] as String,
-      logs: map['logs'] == null ? null : pulumi.Input.decodeList<LogSettingsResponse>(map['logs'], (value) => LogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      marketplacePartnerId: map['marketplacePartnerId'] == null ? null : map['marketplacePartnerId'] as String,
-      metrics: map['metrics'] == null ? null : pulumi.Input.decodeList<MetricSettingsResponse>(map['metrics'], (value) => MetricSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      logAnalyticsDestinationType: map['logAnalyticsDestinationType'] == null ? null : map['logAnalyticsDestinationType']! as String,
+      logs: map['logs'] == null ? null : pulumi.Input.decodeList<LogSettingsResponse>(map['logs']!, (value) => LogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      marketplacePartnerId: map['marketplacePartnerId'] == null ? null : map['marketplacePartnerId']! as String,
+      metrics: map['metrics'] == null ? null : pulumi.Input.decodeList<MetricSettingsResponse>(map['metrics']!, (value) => MetricSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      serviceBusRuleId: map['serviceBusRuleId'] == null ? null : map['serviceBusRuleId'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
+      serviceBusRuleId: map['serviceBusRuleId'] == null ? null : map['serviceBusRuleId']! as String,
+      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      workspaceId: map['workspaceId'] == null ? null : map['workspaceId'] as String,
+      workspaceId: map['workspaceId'] == null ? null : map['workspaceId']! as String,
     );
   }
 }

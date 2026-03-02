@@ -46,9 +46,9 @@ class ClusterArgs {
     return ClusterArgs(
       clusterName: (map['clusterName'] as String).input(),
       clusterType: (map['clusterType'] as int).input(),
-      logicalRegionId: map['logicalRegionId'] == null ? null : (map['logicalRegionId'] as String).input(),
+      logicalRegionId: map['logicalRegionId'] == null ? null : (map['logicalRegionId']! as String).input(),
       networkMode: (map['networkMode'] as int).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

@@ -64,15 +64,15 @@ class PolicyDnsV1beta2Args {
 
   factory PolicyDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return PolicyDnsV1beta2Args(
-      alternativeNameServerConfig: map['alternativeNameServerConfig'] == null ? null : (PolicyAlternativeNameServerConfigDnsV1beta2.fromMap((map['alternativeNameServerConfig'] as Map).cast<String, dynamic>())).input(),
-      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableInboundForwarding: map['enableInboundForwarding'] == null ? null : (map['enableInboundForwarding'] as bool).input(),
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<PolicyNetworkDnsV1beta2>(map['networks'], (value) => PolicyNetworkDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      alternativeNameServerConfig: map['alternativeNameServerConfig'] == null ? null : (PolicyAlternativeNameServerConfigDnsV1beta2.fromMap((map['alternativeNameServerConfig']! as Map).cast<String, dynamic>())).input(),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableInboundForwarding: map['enableInboundForwarding'] == null ? null : (map['enableInboundForwarding']! as bool).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<PolicyNetworkDnsV1beta2>(map['networks']!, (value) => PolicyNetworkDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

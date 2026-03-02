@@ -32,8 +32,8 @@ class BudgetAmount {
 
   factory BudgetAmount.fromMap(Map<String, dynamic> map) {
     return BudgetAmount(
-      lastPeriodAmount: map['lastPeriodAmount'] == null ? null : (map['lastPeriodAmount'] as bool).input(),
-      specifiedAmount: map['specifiedAmount'] == null ? null : (BudgetAmountSpecifiedAmount.fromMap((map['specifiedAmount'] as Map).cast<String, dynamic>())).input(),
+      lastPeriodAmount: map['lastPeriodAmount'] == null ? null : (map['lastPeriodAmount']! as bool).input(),
+      specifiedAmount: map['specifiedAmount'] == null ? null : (BudgetAmountSpecifiedAmount.fromMap((map['specifiedAmount']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class AliasRoutingStrategy {
 
   factory AliasRoutingStrategy.fromMap(Map<String, dynamic> map) {
     return AliasRoutingStrategy(
-      fleetId: map['fleetId'] == null ? null : (map['fleetId'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      fleetId: map['fleetId'] == null ? null : ((map['fleetId'] as String).input()).input(),
+      message: map['message'] == null ? null : ((map['message'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -30,7 +30,7 @@ class DomainSysInfoSmbiosProcessorEntry {
 
   factory DomainSysInfoSmbiosProcessorEntry.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosProcessorEntry(
-      file: map['file'] == null ? null : (map['file'] as String).input(),
+      file: map['file'] == null ? null : (map['file']! as String).input(),
       name: (map['name'] as String).input(),
       value: (map['value'] as String).input(),
     );

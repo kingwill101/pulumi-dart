@@ -77,17 +77,17 @@ class BillingProfileProperties {
 
   factory BillingProfileProperties.fromMap(Map<String, dynamic> map) {
     return BillingProfileProperties(
-      billTo: map['billTo'] == null ? null : (BillingProfilePropertiesBillTo.fromMap((map['billTo'] as Map).cast<String, dynamic>())).input(),
-      currentPaymentTerm: map['currentPaymentTerm'] == null ? null : (BillingProfilePropertiesCurrentPaymentTerm.fromMap((map['currentPaymentTerm'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enabledAzurePlans: map['enabledAzurePlans'] == null ? null : (pulumi.Input.decodeList<AzurePlan>(map['enabledAzurePlans'], (value) => AzurePlan.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      indirectRelationshipInfo: map['indirectRelationshipInfo'] == null ? null : (BillingProfilePropertiesIndirectRelationshipInfo.fromMap((map['indirectRelationshipInfo'] as Map).cast<String, dynamic>())).input(),
-      invoiceEmailOptIn: map['invoiceEmailOptIn'] == null ? null : (map['invoiceEmailOptIn'] as bool).input(),
-      invoiceRecipients: map['invoiceRecipients'] == null ? null : ((map['invoiceRecipients'] as List).cast<String>()).input(),
-      poNumber: map['poNumber'] == null ? null : (map['poNumber'] as String).input(),
-      shipTo: map['shipTo'] == null ? null : (BillingProfilePropertiesShipTo.fromMap((map['shipTo'] as Map).cast<String, dynamic>())).input(),
-      soldTo: map['soldTo'] == null ? null : (BillingProfilePropertiesSoldTo.fromMap((map['soldTo'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      billTo: map['billTo'] == null ? null : (BillingProfilePropertiesBillTo.fromMap((map['billTo']! as Map).cast<String, dynamic>())).input(),
+      currentPaymentTerm: map['currentPaymentTerm'] == null ? null : (BillingProfilePropertiesCurrentPaymentTerm.fromMap((map['currentPaymentTerm']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enabledAzurePlans: map['enabledAzurePlans'] == null ? null : (pulumi.Input.decodeList<AzurePlan>(map['enabledAzurePlans']!, (value) => AzurePlan.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      indirectRelationshipInfo: map['indirectRelationshipInfo'] == null ? null : (BillingProfilePropertiesIndirectRelationshipInfo.fromMap((map['indirectRelationshipInfo']! as Map).cast<String, dynamic>())).input(),
+      invoiceEmailOptIn: map['invoiceEmailOptIn'] == null ? null : (map['invoiceEmailOptIn']! as bool).input(),
+      invoiceRecipients: map['invoiceRecipients'] == null ? null : ((map['invoiceRecipients']! as List).cast<String>()).input(),
+      poNumber: map['poNumber'] == null ? null : (map['poNumber']! as String).input(),
+      shipTo: map['shipTo'] == null ? null : (BillingProfilePropertiesShipTo.fromMap((map['shipTo']! as Map).cast<String, dynamic>())).input(),
+      soldTo: map['soldTo'] == null ? null : (BillingProfilePropertiesSoldTo.fromMap((map['soldTo']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -58,14 +58,14 @@ class DatabaseInstanceSettingsBackupConfiguration {
 
   factory DatabaseInstanceSettingsBackupConfiguration.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsBackupConfiguration(
-      backupRetentionSettings: map['backupRetentionSettings'] == null ? null : (DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings.fromMap((map['backupRetentionSettings'] as Map).cast<String, dynamic>())).input(),
-      backupTier: map['backupTier'] == null ? null : (map['backupTier'] as String).input(),
-      binaryLogEnabled: map['binaryLogEnabled'] == null ? null : (map['binaryLogEnabled'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      pointInTimeRecoveryEnabled: map['pointInTimeRecoveryEnabled'] == null ? null : (map['pointInTimeRecoveryEnabled'] as bool).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      transactionLogRetentionDays: map['transactionLogRetentionDays'] == null ? null : (map['transactionLogRetentionDays'] as int).input(),
+      backupRetentionSettings: map['backupRetentionSettings'] == null ? null : (DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings.fromMap((map['backupRetentionSettings']! as Map).cast<String, dynamic>())).input(),
+      backupTier: map['backupTier'] == null ? null : (map['backupTier']! as String).input(),
+      binaryLogEnabled: map['binaryLogEnabled'] == null ? null : (map['binaryLogEnabled']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      pointInTimeRecoveryEnabled: map['pointInTimeRecoveryEnabled'] == null ? null : (map['pointInTimeRecoveryEnabled']! as bool).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      transactionLogRetentionDays: map['transactionLogRetentionDays'] == null ? null : (map['transactionLogRetentionDays']! as int).input(),
     );
   }
 }

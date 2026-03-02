@@ -58,12 +58,12 @@ class StreamDestinationConfigBigqueryDestinationConfig {
 
   factory StreamDestinationConfigBigqueryDestinationConfig.fromMap(Map<String, dynamic> map) {
     return StreamDestinationConfigBigqueryDestinationConfig(
-      appendOnly: map['appendOnly'] == null ? null : ((map['appendOnly'] as Map).cast<String, dynamic>()).input(),
-      blmtConfig: map['blmtConfig'] == null ? null : (StreamDestinationConfigBigqueryDestinationConfigBlmtConfig.fromMap((map['blmtConfig'] as Map).cast<String, dynamic>())).input(),
-      dataFreshness: map['dataFreshness'] == null ? null : (map['dataFreshness'] as String).input(),
-      merge: map['merge'] == null ? null : ((map['merge'] as Map).cast<String, dynamic>()).input(),
-      singleTargetDataset: map['singleTargetDataset'] == null ? null : (StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset.fromMap((map['singleTargetDataset'] as Map).cast<String, dynamic>())).input(),
-      sourceHierarchyDatasets: map['sourceHierarchyDatasets'] == null ? null : (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets.fromMap((map['sourceHierarchyDatasets'] as Map).cast<String, dynamic>())).input(),
+      appendOnly: map['appendOnly'] == null ? null : ((map['appendOnly']! as Map).cast<String, dynamic>()).input(),
+      blmtConfig: map['blmtConfig'] == null ? null : (StreamDestinationConfigBigqueryDestinationConfigBlmtConfig.fromMap((map['blmtConfig']! as Map).cast<String, dynamic>())).input(),
+      dataFreshness: map['dataFreshness'] == null ? null : (map['dataFreshness']! as String).input(),
+      merge: map['merge'] == null ? null : ((map['merge']! as Map).cast<String, dynamic>()).input(),
+      singleTargetDataset: map['singleTargetDataset'] == null ? null : (StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset.fromMap((map['singleTargetDataset']! as Map).cast<String, dynamic>())).input(),
+      sourceHierarchyDatasets: map['sourceHierarchyDatasets'] == null ? null : (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets.fromMap((map['sourceHierarchyDatasets']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

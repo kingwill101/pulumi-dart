@@ -30,9 +30,9 @@ class ServiceIntegrationKmsServerSideEncryption {
 
   factory ServiceIntegrationKmsServerSideEncryption.fromMap(Map<String, dynamic> map) {
     return ServiceIntegrationKmsServerSideEncryption(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      optInStatus: map['optInStatus'] == null ? null : (map['optInStatus'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      optInStatus: map['optInStatus'] == null ? null : ((map['optInStatus'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

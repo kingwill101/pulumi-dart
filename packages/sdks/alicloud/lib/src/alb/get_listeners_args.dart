@@ -54,13 +54,13 @@ class GetListenersArgs {
 
   factory GetListenersArgs.fromMap(Map<String, dynamic> map) {
     return GetListenersArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      listenerIds: map['listenerIds'] == null ? null : ((map['listenerIds'] as List).cast<String>()).input(),
-      listenerProtocol: map['listenerProtocol'] == null ? null : (map['listenerProtocol'] as String).input(),
-      loadBalancerIds: map['loadBalancerIds'] == null ? null : ((map['loadBalancerIds'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      listenerIds: map['listenerIds'] == null ? null : ((map['listenerIds']! as List).cast<String>()).input(),
+      listenerProtocol: map['listenerProtocol'] == null ? null : (map['listenerProtocol']! as String).input(),
+      loadBalancerIds: map['loadBalancerIds'] == null ? null : ((map['loadBalancerIds']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

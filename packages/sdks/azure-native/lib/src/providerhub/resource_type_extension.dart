@@ -30,9 +30,9 @@ class ResourceTypeExtension {
 
   factory ResourceTypeExtension.fromMap(Map<String, dynamic> map) {
     return ResourceTypeExtension(
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
-      extensionCategories: map['extensionCategories'] == null ? null : ((map['extensionCategories'] as List).cast<String>()).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
+      extensionCategories: map['extensionCategories'] == null ? null : ((map['extensionCategories']! as List).cast<String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

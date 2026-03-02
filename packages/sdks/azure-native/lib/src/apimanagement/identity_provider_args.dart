@@ -89,20 +89,20 @@ class IdentityProviderArgs {
 
   factory IdentityProviderArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderArgs(
-      allowedTenants: map['allowedTenants'] == null ? null : ((map['allowedTenants'] as List).cast<String>()).input(),
-      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
+      allowedTenants: map['allowedTenants'] == null ? null : ((map['allowedTenants']! as List).cast<String>()).input(),
+      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
       clientId: (map['clientId'] as String).input(),
-      clientLibrary: map['clientLibrary'] == null ? null : (map['clientLibrary'] as String).input(),
+      clientLibrary: map['clientLibrary'] == null ? null : (map['clientLibrary']! as String).input(),
       clientSecret: (map['clientSecret'] as String).input(),
-      identityProviderName: map['identityProviderName'] == null ? null : (map['identityProviderName'] as String).input(),
-      passwordResetPolicyName: map['passwordResetPolicyName'] == null ? null : (map['passwordResetPolicyName'] as String).input(),
-      profileEditingPolicyName: map['profileEditingPolicyName'] == null ? null : (map['profileEditingPolicyName'] as String).input(),
+      identityProviderName: map['identityProviderName'] == null ? null : (map['identityProviderName']! as String).input(),
+      passwordResetPolicyName: map['passwordResetPolicyName'] == null ? null : (map['passwordResetPolicyName']! as String).input(),
+      profileEditingPolicyName: map['profileEditingPolicyName'] == null ? null : (map['profileEditingPolicyName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      signinPolicyName: map['signinPolicyName'] == null ? null : (map['signinPolicyName'] as String).input(),
-      signinTenant: map['signinTenant'] == null ? null : (map['signinTenant'] as String).input(),
-      signupPolicyName: map['signupPolicyName'] == null ? null : (map['signupPolicyName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      signinPolicyName: map['signinPolicyName'] == null ? null : (map['signinPolicyName']! as String).input(),
+      signinTenant: map['signinTenant'] == null ? null : (map['signinTenant']! as String).input(),
+      signupPolicyName: map['signupPolicyName'] == null ? null : (map['signupPolicyName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

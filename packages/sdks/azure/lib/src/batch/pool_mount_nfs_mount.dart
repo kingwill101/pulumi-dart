@@ -30,7 +30,7 @@ class PoolMountNfsMount {
 
   factory PoolMountNfsMount.fromMap(Map<String, dynamic> map) {
     return PoolMountNfsMount(
-      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions'] as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions']! as String).input(),
       relativeMountPath: (map['relativeMountPath'] as String).input(),
       source: (map['source'] as String).input(),
     );

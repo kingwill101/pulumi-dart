@@ -42,11 +42,11 @@ class WebTestPropertiesResponseValidationRules {
 
   factory WebTestPropertiesResponseValidationRules.fromMap(Map<String, dynamic> map) {
     return WebTestPropertiesResponseValidationRules(
-      contentValidation: map['contentValidation'] == null ? null : (WebTestPropertiesResponseContentValidation.fromMap((map['contentValidation'] as Map).cast<String, dynamic>())).input(),
-      expectedHttpStatusCode: map['expectedHttpStatusCode'] == null ? null : (map['expectedHttpStatusCode'] as int).input(),
-      ignoreHttpStatusCode: map['ignoreHttpStatusCode'] == null ? null : (map['ignoreHttpStatusCode'] as bool).input(),
-      sSLCertRemainingLifetimeCheck: map['sSLCertRemainingLifetimeCheck'] == null ? null : (map['sSLCertRemainingLifetimeCheck'] as int).input(),
-      sSLCheck: map['sSLCheck'] == null ? null : (map['sSLCheck'] as bool).input(),
+      contentValidation: map['contentValidation'] == null ? null : (WebTestPropertiesResponseContentValidation.fromMap((map['contentValidation']! as Map).cast<String, dynamic>())).input(),
+      expectedHttpStatusCode: map['expectedHttpStatusCode'] == null ? null : (map['expectedHttpStatusCode']! as int).input(),
+      ignoreHttpStatusCode: map['ignoreHttpStatusCode'] == null ? null : (map['ignoreHttpStatusCode']! as bool).input(),
+      sSLCertRemainingLifetimeCheck: map['sSLCertRemainingLifetimeCheck'] == null ? null : (map['sSLCertRemainingLifetimeCheck']! as int).input(),
+      sSLCheck: map['sSLCheck'] == null ? null : (map['sSLCheck']! as bool).input(),
     );
   }
 }

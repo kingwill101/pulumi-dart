@@ -247,7 +247,7 @@ class GetBareMetalMachineResult {
       kubernetesNodeName: map['kubernetesNodeName'] as String,
       kubernetesVersion: map['kubernetesVersion'] as String,
       location: map['location'] as String,
-      machineClusterVersion: map['machineClusterVersion'] == null ? null : map['machineClusterVersion'] as String,
+      machineClusterVersion: map['machineClusterVersion'] == null ? null : map['machineClusterVersion']! as String,
       machineDetails: map['machineDetails'] as String,
       machineName: map['machineName'] as String,
       machineRoles: (map['machineRoles'] as List).cast<String>(),
@@ -266,7 +266,7 @@ class GetBareMetalMachineResult {
       serialNumber: map['serialNumber'] as String,
       serviceTag: map['serviceTag'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       virtualMachinesAssociatedIds: (map['virtualMachinesAssociatedIds'] as List).cast<String>(),
     );

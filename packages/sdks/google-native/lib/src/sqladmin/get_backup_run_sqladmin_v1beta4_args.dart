@@ -33,7 +33,7 @@ class GetBackupRunSqladminV1beta4Args {
     return GetBackupRunSqladminV1beta4Args(
       id: (map['id'] as String).input(),
       instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

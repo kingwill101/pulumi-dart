@@ -60,15 +60,15 @@ class SpringCloudGatewayRouteConfigRoute {
 
   factory SpringCloudGatewayRouteConfigRoute.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayRouteConfigRoute(
-      classificationTags: map['classificationTags'] == null ? null : ((map['classificationTags'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      filters: map['filters'] == null ? null : ((map['filters'] as List).cast<String>()).input(),
+      classificationTags: map['classificationTags'] == null ? null : ((map['classificationTags']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      filters: map['filters'] == null ? null : ((map['filters']! as List).cast<String>()).input(),
       order: (map['order'] as int).input(),
-      predicates: map['predicates'] == null ? null : ((map['predicates'] as List).cast<String>()).input(),
-      ssoValidationEnabled: map['ssoValidationEnabled'] == null ? null : (map['ssoValidationEnabled'] as bool).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
-      tokenRelay: map['tokenRelay'] == null ? null : (map['tokenRelay'] as bool).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      predicates: map['predicates'] == null ? null : ((map['predicates']! as List).cast<String>()).input(),
+      ssoValidationEnabled: map['ssoValidationEnabled'] == null ? null : (map['ssoValidationEnabled']! as bool).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
+      tokenRelay: map['tokenRelay'] == null ? null : (map['tokenRelay']! as bool).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

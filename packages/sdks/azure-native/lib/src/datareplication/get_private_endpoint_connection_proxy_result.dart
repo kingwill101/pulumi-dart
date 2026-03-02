@@ -53,7 +53,7 @@ class GetPrivateEndpointConnectionProxyResult {
   factory GetPrivateEndpointConnectionProxyResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionProxyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       properties: PrivateEndpointConnectionProxyPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),

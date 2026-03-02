@@ -38,8 +38,8 @@ class AppLoggingSettingsAudioRecordingConfig {
 
   factory AppLoggingSettingsAudioRecordingConfig.fromMap(Map<String, dynamic> map) {
     return AppLoggingSettingsAudioRecordingConfig(
-      gcsBucket: map['gcsBucket'] == null ? null : (map['gcsBucket'] as String).input(),
-      gcsPathPrefix: map['gcsPathPrefix'] == null ? null : (map['gcsPathPrefix'] as String).input(),
+      gcsBucket: map['gcsBucket'] == null ? null : (map['gcsBucket']! as String).input(),
+      gcsPathPrefix: map['gcsPathPrefix'] == null ? null : (map['gcsPathPrefix']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ResourceSetResourceDnsTargetResourceTargetResourceNlbResource {
 
   factory ResourceSetResourceDnsTargetResourceTargetResourceNlbResource.fromMap(Map<String, dynamic> map) {
     return ResourceSetResourceDnsTargetResourceTargetResourceNlbResource(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
     );
   }
 }

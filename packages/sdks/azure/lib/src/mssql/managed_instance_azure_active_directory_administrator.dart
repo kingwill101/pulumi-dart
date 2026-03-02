@@ -40,11 +40,11 @@ class ManagedInstanceAzureActiveDirectoryAdministrator {
 
   factory ManagedInstanceAzureActiveDirectoryAdministrator.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceAzureActiveDirectoryAdministrator(
-      azureadAuthenticationOnlyEnabled: map['azureadAuthenticationOnlyEnabled'] == null ? null : (map['azureadAuthenticationOnlyEnabled'] as bool).input(),
+      azureadAuthenticationOnlyEnabled: map['azureadAuthenticationOnlyEnabled'] == null ? null : (map['azureadAuthenticationOnlyEnabled']! as bool).input(),
       loginUsername: (map['loginUsername'] as String).input(),
       objectId: (map['objectId'] as String).input(),
       principalType: (map['principalType'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

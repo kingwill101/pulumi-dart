@@ -23,7 +23,7 @@ class BlockchainNodesEthereumDetailsGethDetails {
 
   factory BlockchainNodesEthereumDetailsGethDetails.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesEthereumDetailsGethDetails(
-      garbageCollectionMode: map['garbageCollectionMode'] == null ? null : (map['garbageCollectionMode'] as String).input(),
+      garbageCollectionMode: map['garbageCollectionMode'] == null ? null : (map['garbageCollectionMode']! as String).input(),
     );
   }
 }

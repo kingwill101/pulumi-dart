@@ -30,7 +30,7 @@ class DomainIdentityVerificationArgs {
   factory DomainIdentityVerificationArgs.fromMap(Map<String, dynamic> map) {
     return DomainIdentityVerificationArgs(
       domain: (map['domain'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

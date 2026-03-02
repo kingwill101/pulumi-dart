@@ -31,9 +31,9 @@ class KvNamespaceState {
 
   factory KvNamespaceState.fromMap(Map<String, dynamic> map) {
     return KvNamespaceState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

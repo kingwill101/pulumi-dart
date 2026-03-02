@@ -35,7 +35,7 @@ class AttachedNetworkArgs {
   factory AttachedNetworkArgs.fromMap(Map<String, dynamic> map) {
     return AttachedNetworkArgs(
       devCenterId: (map['devCenterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkConnectionId: (map['networkConnectionId'] as String).input(),
     );
   }

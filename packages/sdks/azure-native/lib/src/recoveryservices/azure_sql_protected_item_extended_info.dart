@@ -31,9 +31,9 @@ class AzureSqlProtectedItemExtendedInfo {
 
   factory AzureSqlProtectedItemExtendedInfo.fromMap(Map<String, dynamic> map) {
     return AzureSqlProtectedItemExtendedInfo(
-      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint'] as String).input(),
-      policyState: map['policyState'] == null ? null : (map['policyState'] as String).input(),
-      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount'] as int).input(),
+      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint']! as String).input(),
+      policyState: map['policyState'] == null ? null : (map['policyState']! as String).input(),
+      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount']! as int).input(),
     );
   }
 }

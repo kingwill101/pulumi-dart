@@ -31,9 +31,9 @@ class AccessPackageCatalogRoleAssignmentState {
 
   factory AccessPackageCatalogRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return AccessPackageCatalogRoleAssignmentState(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      principalObjectId: map['principalObjectId'] == null ? null : (map['principalObjectId'] as String).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : (map['catalogId']! as String).input(),
+      principalObjectId: map['principalObjectId'] == null ? null : (map['principalObjectId']! as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
     );
   }
 }

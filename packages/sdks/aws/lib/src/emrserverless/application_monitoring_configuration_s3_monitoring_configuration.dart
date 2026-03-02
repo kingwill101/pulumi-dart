@@ -25,8 +25,8 @@ class ApplicationMonitoringConfigurationS3MonitoringConfiguration {
 
   factory ApplicationMonitoringConfigurationS3MonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationMonitoringConfigurationS3MonitoringConfiguration(
-      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : (map['encryptionKeyArn'] as String).input(),
-      logUri: map['logUri'] == null ? null : (map['logUri'] as String).input(),
+      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : ((map['encryptionKeyArn'] as String).input()).input(),
+      logUri: map['logUri'] == null ? null : ((map['logUri'] as String).input()).input(),
     );
   }
 }

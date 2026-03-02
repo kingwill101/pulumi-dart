@@ -26,7 +26,7 @@ class VirtualNodeSpecLoggingAccessLogFile {
 
   factory VirtualNodeSpecLoggingAccessLogFile.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecLoggingAccessLogFile(
-      format: map['format'] == null ? null : (VirtualNodeSpecLoggingAccessLogFileFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : ((VirtualNodeSpecLoggingAccessLogFileFormat.fromMap((map['format']! as Map).cast<String, dynamic>())).input()).input(),
       path: (map['path'] as String).input(),
     );
   }

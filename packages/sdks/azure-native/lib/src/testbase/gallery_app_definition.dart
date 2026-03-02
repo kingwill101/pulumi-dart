@@ -26,7 +26,7 @@ class GalleryAppDefinition {
 
   factory GalleryAppDefinition.fromMap(Map<String, dynamic> map) {
     return GalleryAppDefinition(
-      isConsented: map['isConsented'] == null ? null : (map['isConsented'] as bool).input(),
+      isConsented: map['isConsented'] == null ? null : (map['isConsented']! as bool).input(),
       skuId: (map['skuId'] as String).input(),
     );
   }

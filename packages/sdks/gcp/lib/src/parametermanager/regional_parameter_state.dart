@@ -94,18 +94,18 @@ class RegionalParameterState {
 
   factory RegionalParameterState.fromMap(Map<String, dynamic> map) {
     return RegionalParameterState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameterId: map['parameterId'] == null ? null : (map['parameterId'] as String).input(),
-      policyMembers: map['policyMembers'] == null ? null : (pulumi.Input.decodeList<RegionalParameterPolicyMember>(map['policyMembers'], (value) => RegionalParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameterId: map['parameterId'] == null ? null : (map['parameterId']! as String).input(),
+      policyMembers: map['policyMembers'] == null ? null : (pulumi.Input.decodeList<RegionalParameterPolicyMember>(map['policyMembers']!, (value) => RegionalParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

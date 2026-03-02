@@ -45,11 +45,11 @@ class ProjectSecurityHealthAnalyticsSettingCustomModuleArgs {
 
   factory ProjectSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return ProjectSecurityHealthAnalyticsSettingCustomModuleArgs(
-      customConfig: map['customConfig'] == null ? null : (GoogleCloudSecuritycenterV1CustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enablementState: map['enablementState'] == null ? null : (ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(map['enablementState'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      customConfig: map['customConfig'] == null ? null : (GoogleCloudSecuritycenterV1CustomConfig.fromMap((map['customConfig']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enablementState: map['enablementState'] == null ? null : (ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(map['enablementState']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

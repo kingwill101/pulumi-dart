@@ -62,12 +62,12 @@ class ApplicationScalingRuleArgs {
   factory ApplicationScalingRuleArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationScalingRuleArgs(
       appId: (map['appId'] as String).input(),
-      minReadyInstanceRatio: map['minReadyInstanceRatio'] == null ? null : (map['minReadyInstanceRatio'] as int).input(),
-      minReadyInstances: map['minReadyInstances'] == null ? null : (map['minReadyInstances'] as int).input(),
-      scalingRuleEnable: map['scalingRuleEnable'] == null ? null : (map['scalingRuleEnable'] as bool).input(),
-      scalingRuleMetric: map['scalingRuleMetric'] == null ? null : (ApplicationScalingRuleScalingRuleMetric.fromMap((map['scalingRuleMetric'] as Map).cast<String, dynamic>())).input(),
+      minReadyInstanceRatio: map['minReadyInstanceRatio'] == null ? null : (map['minReadyInstanceRatio']! as int).input(),
+      minReadyInstances: map['minReadyInstances'] == null ? null : (map['minReadyInstances']! as int).input(),
+      scalingRuleEnable: map['scalingRuleEnable'] == null ? null : (map['scalingRuleEnable']! as bool).input(),
+      scalingRuleMetric: map['scalingRuleMetric'] == null ? null : (ApplicationScalingRuleScalingRuleMetric.fromMap((map['scalingRuleMetric']! as Map).cast<String, dynamic>())).input(),
       scalingRuleName: (map['scalingRuleName'] as String).input(),
-      scalingRuleTimer: map['scalingRuleTimer'] == null ? null : (ApplicationScalingRuleScalingRuleTimer.fromMap((map['scalingRuleTimer'] as Map).cast<String, dynamic>())).input(),
+      scalingRuleTimer: map['scalingRuleTimer'] == null ? null : (ApplicationScalingRuleScalingRuleTimer.fromMap((map['scalingRuleTimer']! as Map).cast<String, dynamic>())).input(),
       scalingRuleType: (map['scalingRuleType'] as String).input(),
     );
   }

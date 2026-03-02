@@ -72,15 +72,15 @@ class InferenceEndpointArgs {
 
   factory InferenceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return InferenceEndpointArgs(
-      endpointName: map['endpointName'] == null ? null : (map['endpointName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      endpointName: map['endpointName'] == null ? null : (map['endpointName']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       inferenceEndpointProperties: (map['inferenceEndpointProperties'] as InferenceEndpointMachinelearningservices).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       poolName: (map['poolName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

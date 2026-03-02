@@ -27,8 +27,8 @@ class DatasetExternalCatalogDatasetOptions {
 
   factory DatasetExternalCatalogDatasetOptions.fromMap(Map<String, dynamic> map) {
     return DatasetExternalCatalogDatasetOptions(
-      defaultStorageLocationUri: map['defaultStorageLocationUri'] == null ? null : (map['defaultStorageLocationUri'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      defaultStorageLocationUri: map['defaultStorageLocationUri'] == null ? null : (map['defaultStorageLocationUri']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

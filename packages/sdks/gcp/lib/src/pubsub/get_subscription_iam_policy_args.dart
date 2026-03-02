@@ -30,7 +30,7 @@ class GetSubscriptionIamPolicyArgs {
 
   factory GetSubscriptionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionIamPolicyArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       subscription: (map['subscription'] as String).input(),
     );
   }

@@ -24,7 +24,7 @@ class VendorArgs {
 
   factory VendorArgs.fromMap(Map<String, dynamic> map) {
     return VendorArgs(
-      vendorName: map['vendorName'] == null ? null : (map['vendorName'] as String).input(),
+      vendorName: map['vendorName'] == null ? null : (map['vendorName']! as String).input(),
     );
   }
 }

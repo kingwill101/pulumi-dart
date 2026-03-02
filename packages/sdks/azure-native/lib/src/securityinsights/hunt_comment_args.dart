@@ -44,7 +44,7 @@ class HuntCommentArgs {
 
   factory HuntCommentArgs.fromMap(Map<String, dynamic> map) {
     return HuntCommentArgs(
-      huntCommentId: map['huntCommentId'] == null ? null : (map['huntCommentId'] as String).input(),
+      huntCommentId: map['huntCommentId'] == null ? null : (map['huntCommentId']! as String).input(),
       huntId: (map['huntId'] as String).input(),
       message: (map['message'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

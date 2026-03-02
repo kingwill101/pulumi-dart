@@ -84,16 +84,16 @@ class CxEntityTypeState {
 
   factory CxEntityTypeState.fromMap(Map<String, dynamic> map) {
     return CxEntityTypeState(
-      autoExpansionMode: map['autoExpansionMode'] == null ? null : (map['autoExpansionMode'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction'] as bool).input(),
-      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<CxEntityTypeEntity>(map['entities'], (value) => CxEntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludedPhrases: map['excludedPhrases'] == null ? null : (pulumi.Input.decodeList<CxEntityTypeExcludedPhrase>(map['excludedPhrases'], (value) => CxEntityTypeExcludedPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      redact: map['redact'] == null ? null : (map['redact'] as bool).input(),
+      autoExpansionMode: map['autoExpansionMode'] == null ? null : (map['autoExpansionMode']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction']! as bool).input(),
+      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<CxEntityTypeEntity>(map['entities']!, (value) => CxEntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludedPhrases: map['excludedPhrases'] == null ? null : (pulumi.Input.decodeList<CxEntityTypeExcludedPhrase>(map['excludedPhrases']!, (value) => CxEntityTypeExcludedPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      redact: map['redact'] == null ? null : (map['redact']! as bool).input(),
     );
   }
 }

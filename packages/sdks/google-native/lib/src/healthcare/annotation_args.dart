@@ -69,16 +69,16 @@ class AnnotationArgs {
 
   factory AnnotationArgs.fromMap(Map<String, dynamic> map) {
     return AnnotationArgs(
-      annotationSource: map['annotationSource'] == null ? null : (AnnotationSource.fromMap((map['annotationSource'] as Map).cast<String, dynamic>())).input(),
+      annotationSource: map['annotationSource'] == null ? null : (AnnotationSource.fromMap((map['annotationSource']! as Map).cast<String, dynamic>())).input(),
       annotationStoreId: (map['annotationStoreId'] as String).input(),
-      customData: map['customData'] == null ? null : ((map['customData'] as Map).cast<String, String>()).input(),
+      customData: map['customData'] == null ? null : ((map['customData']! as Map).cast<String, String>()).input(),
       datasetId: (map['datasetId'] as String).input(),
-      imageAnnotation: map['imageAnnotation'] == null ? null : (ImageAnnotation.fromMap((map['imageAnnotation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resourceAnnotation: map['resourceAnnotation'] == null ? null : (ResourceAnnotation.fromMap((map['resourceAnnotation'] as Map).cast<String, dynamic>())).input(),
-      textAnnotation: map['textAnnotation'] == null ? null : (SensitiveTextAnnotation.fromMap((map['textAnnotation'] as Map).cast<String, dynamic>())).input(),
+      imageAnnotation: map['imageAnnotation'] == null ? null : (ImageAnnotation.fromMap((map['imageAnnotation']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resourceAnnotation: map['resourceAnnotation'] == null ? null : (ResourceAnnotation.fromMap((map['resourceAnnotation']! as Map).cast<String, dynamic>())).input(),
+      textAnnotation: map['textAnnotation'] == null ? null : (SensitiveTextAnnotation.fromMap((map['textAnnotation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

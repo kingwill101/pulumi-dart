@@ -39,9 +39,9 @@ class GetCredentialsArgs {
 
   factory GetCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return GetCredentialsArgs(
-      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
-      durationSeconds: map['durationSeconds'] == null ? null : (map['durationSeconds'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      dbName: map['dbName'] == null ? null : ((map['dbName'] as String).input()).input(),
+      durationSeconds: map['durationSeconds'] == null ? null : ((map['durationSeconds'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       workgroupName: (map['workgroupName'] as String).input(),
     );
   }

@@ -32,7 +32,7 @@ class BareMetalBgpPeerConfig {
   factory BareMetalBgpPeerConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalBgpPeerConfig(
       asn: (map['asn'] as String).input(),
-      controlPlaneNodes: map['controlPlaneNodes'] == null ? null : ((map['controlPlaneNodes'] as List).cast<String>()).input(),
+      controlPlaneNodes: map['controlPlaneNodes'] == null ? null : ((map['controlPlaneNodes']! as List).cast<String>()).input(),
       ipAddress: (map['ipAddress'] as String).input(),
     );
   }

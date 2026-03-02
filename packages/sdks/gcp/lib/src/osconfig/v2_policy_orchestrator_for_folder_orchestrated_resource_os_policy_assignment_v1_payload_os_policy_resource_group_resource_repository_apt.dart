@@ -46,7 +46,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
       archiveType: (map['archiveType'] as String).input(),
       components: ((map['components'] as List).cast<String>()).input(),
       distribution: (map['distribution'] as String).input(),
-      gpgKey: map['gpgKey'] == null ? null : (map['gpgKey'] as String).input(),
+      gpgKey: map['gpgKey'] == null ? null : (map['gpgKey']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

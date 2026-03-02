@@ -45,12 +45,12 @@ class UserPoolVerificationMessageTemplate {
 
   factory UserPoolVerificationMessageTemplate.fromMap(Map<String, dynamic> map) {
     return UserPoolVerificationMessageTemplate(
-      defaultEmailOption: map['defaultEmailOption'] == null ? null : (map['defaultEmailOption'] as String).input(),
-      emailMessage: map['emailMessage'] == null ? null : (map['emailMessage'] as String).input(),
-      emailMessageByLink: map['emailMessageByLink'] == null ? null : (map['emailMessageByLink'] as String).input(),
-      emailSubject: map['emailSubject'] == null ? null : (map['emailSubject'] as String).input(),
-      emailSubjectByLink: map['emailSubjectByLink'] == null ? null : (map['emailSubjectByLink'] as String).input(),
-      smsMessage: map['smsMessage'] == null ? null : (map['smsMessage'] as String).input(),
+      defaultEmailOption: map['defaultEmailOption'] == null ? null : ((map['defaultEmailOption'] as String).input()).input(),
+      emailMessage: map['emailMessage'] == null ? null : ((map['emailMessage'] as String).input()).input(),
+      emailMessageByLink: map['emailMessageByLink'] == null ? null : ((map['emailMessageByLink'] as String).input()).input(),
+      emailSubject: map['emailSubject'] == null ? null : ((map['emailSubject'] as String).input()).input(),
+      emailSubjectByLink: map['emailSubjectByLink'] == null ? null : ((map['emailSubjectByLink'] as String).input()).input(),
+      smsMessage: map['smsMessage'] == null ? null : ((map['smsMessage'] as String).input()).input(),
     );
   }
 }

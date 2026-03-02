@@ -55,7 +55,7 @@ class GetEndpointResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      resourceId: map['resourceId'] == null ? null : map['resourceId']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

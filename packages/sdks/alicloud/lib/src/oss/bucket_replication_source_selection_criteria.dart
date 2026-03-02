@@ -21,7 +21,7 @@ class BucketReplicationSourceSelectionCriteria {
 
   factory BucketReplicationSourceSelectionCriteria.fromMap(Map<String, dynamic> map) {
     return BucketReplicationSourceSelectionCriteria(
-      sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null ? null : (BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects.fromMap((map['sseKmsEncryptedObjects'] as Map).cast<String, dynamic>())).input(),
+      sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null ? null : (BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects.fromMap((map['sseKmsEncryptedObjects']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

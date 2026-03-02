@@ -40,10 +40,10 @@ class PolicySetDefinitionPolicyDefinitionGroup {
 
   factory PolicySetDefinitionPolicyDefinitionGroup.fromMap(Map<String, dynamic> map) {
     return PolicySetDefinitionPolicyDefinitionGroup(
-      additionalMetadataResourceId: map['additionalMetadataResourceId'] == null ? null : (map['additionalMetadataResourceId'] as String).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      additionalMetadataResourceId: map['additionalMetadataResourceId'] == null ? null : (map['additionalMetadataResourceId']! as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -57,13 +57,13 @@ class AndroidAppArgs {
 
   factory AndroidAppArgs.fromMap(Map<String, dynamic> map) {
     return AndroidAppArgs(
-      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId']! as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       packageName: (map['packageName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sha1Hashes: map['sha1Hashes'] == null ? null : ((map['sha1Hashes'] as List).cast<String>()).input(),
-      sha256Hashes: map['sha256Hashes'] == null ? null : ((map['sha256Hashes'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sha1Hashes: map['sha1Hashes'] == null ? null : ((map['sha1Hashes']! as List).cast<String>()).input(),
+      sha256Hashes: map['sha256Hashes'] == null ? null : ((map['sha256Hashes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class SchemaRegistryArgs {
 
   factory SchemaRegistryArgs.fromMap(Map<String, dynamic> map) {
     return SchemaRegistryArgs(
-      groupProperties: map['groupProperties'] == null ? null : ((map['groupProperties'] as Map).cast<String, String>()).input(),
+      groupProperties: map['groupProperties'] == null ? null : ((map['groupProperties']! as Map).cast<String, String>()).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaCompatibility: map['schemaCompatibility'] == null ? null : (map['schemaCompatibility'] as String).input(),
-      schemaGroupName: map['schemaGroupName'] == null ? null : (map['schemaGroupName'] as String).input(),
-      schemaType: map['schemaType'] == null ? null : (map['schemaType'] as String).input(),
+      schemaCompatibility: map['schemaCompatibility'] == null ? null : (map['schemaCompatibility']! as String).input(),
+      schemaGroupName: map['schemaGroupName'] == null ? null : (map['schemaGroupName']! as String).input(),
+      schemaType: map['schemaType'] == null ? null : (map['schemaType']! as String).input(),
     );
   }
 }

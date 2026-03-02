@@ -27,7 +27,7 @@ class GoogleCloudDialogflowV2AutomatedAgentConfig {
   factory GoogleCloudDialogflowV2AutomatedAgentConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2AutomatedAgentConfig(
       agent: (map['agent'] as String).input(),
-      sessionTtl: map['sessionTtl'] == null ? null : (map['sessionTtl'] as String).input(),
+      sessionTtl: map['sessionTtl'] == null ? null : (map['sessionTtl']! as String).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class GetGlobalForwardingRuleComputeBetaArgs {
   factory GetGlobalForwardingRuleComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalForwardingRuleComputeBetaArgs(
       forwardingRule: (map['forwardingRule'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

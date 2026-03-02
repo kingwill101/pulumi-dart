@@ -26,8 +26,8 @@ class DiagnosticDeploymentmanagerV2beta {
 
   factory DiagnosticDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return DiagnosticDeploymentmanagerV2beta(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      level: map['level'] == null ? null : (DiagnosticLevelDeploymentmanagerV2beta.fromValue(map['level'] as String)).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      level: map['level'] == null ? null : (DiagnosticLevelDeploymentmanagerV2beta.fromValue(map['level']! as String)).input(),
     );
   }
 }

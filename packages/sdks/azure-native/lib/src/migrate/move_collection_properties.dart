@@ -41,11 +41,11 @@ class MoveCollectionProperties {
 
   factory MoveCollectionProperties.fromMap(Map<String, dynamic> map) {
     return MoveCollectionProperties(
-      moveRegion: map['moveRegion'] == null ? null : (map['moveRegion'] as String).input(),
-      moveType: map['moveType'] == null ? null : (map['moveType'] as String).input(),
-      sourceRegion: map['sourceRegion'] == null ? null : (map['sourceRegion'] as String).input(),
-      targetRegion: map['targetRegion'] == null ? null : (map['targetRegion'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      moveRegion: map['moveRegion'] == null ? null : (map['moveRegion']! as String).input(),
+      moveType: map['moveType'] == null ? null : (map['moveType']! as String).input(),
+      sourceRegion: map['sourceRegion'] == null ? null : (map['sourceRegion']! as String).input(),
+      targetRegion: map['targetRegion'] == null ? null : (map['targetRegion']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

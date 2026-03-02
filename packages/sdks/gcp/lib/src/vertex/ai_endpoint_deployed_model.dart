@@ -92,18 +92,18 @@ class AiEndpointDeployedModel {
 
   factory AiEndpointDeployedModel.fromMap(Map<String, dynamic> map) {
     return AiEndpointDeployedModel(
-      automaticResources: map['automaticResources'] == null ? null : (pulumi.Input.decodeList<AiEndpointDeployedModelAutomaticResource>(map['automaticResources'], (value) => AiEndpointDeployedModelAutomaticResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dedicatedResources: map['dedicatedResources'] == null ? null : (pulumi.Input.decodeList<AiEndpointDeployedModelDedicatedResource>(map['dedicatedResources'], (value) => AiEndpointDeployedModelDedicatedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enableAccessLogging: map['enableAccessLogging'] == null ? null : (map['enableAccessLogging'] as bool).input(),
-      enableContainerLogging: map['enableContainerLogging'] == null ? null : (map['enableContainerLogging'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      modelVersionId: map['modelVersionId'] == null ? null : (map['modelVersionId'] as String).input(),
-      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<AiEndpointDeployedModelPrivateEndpoint>(map['privateEndpoints'], (value) => AiEndpointDeployedModelPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      sharedResources: map['sharedResources'] == null ? null : (map['sharedResources'] as String).input(),
+      automaticResources: map['automaticResources'] == null ? null : (pulumi.Input.decodeList<AiEndpointDeployedModelAutomaticResource>(map['automaticResources']!, (value) => AiEndpointDeployedModelAutomaticResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dedicatedResources: map['dedicatedResources'] == null ? null : (pulumi.Input.decodeList<AiEndpointDeployedModelDedicatedResource>(map['dedicatedResources']!, (value) => AiEndpointDeployedModelDedicatedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enableAccessLogging: map['enableAccessLogging'] == null ? null : (map['enableAccessLogging']! as bool).input(),
+      enableContainerLogging: map['enableContainerLogging'] == null ? null : (map['enableContainerLogging']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      modelVersionId: map['modelVersionId'] == null ? null : (map['modelVersionId']! as String).input(),
+      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<AiEndpointDeployedModelPrivateEndpoint>(map['privateEndpoints']!, (value) => AiEndpointDeployedModelPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      sharedResources: map['sharedResources'] == null ? null : (map['sharedResources']! as String).input(),
     );
   }
 }

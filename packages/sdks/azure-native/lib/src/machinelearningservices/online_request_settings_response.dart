@@ -34,9 +34,9 @@ class OnlineRequestSettingsResponse {
 
   factory OnlineRequestSettingsResponse.fromMap(Map<String, dynamic> map) {
     return OnlineRequestSettingsResponse(
-      maxConcurrentRequestsPerInstance: map['maxConcurrentRequestsPerInstance'] == null ? null : (map['maxConcurrentRequestsPerInstance'] as int).input(),
-      maxQueueWait: map['maxQueueWait'] == null ? null : (map['maxQueueWait'] as String).input(),
-      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout'] as String).input(),
+      maxConcurrentRequestsPerInstance: map['maxConcurrentRequestsPerInstance'] == null ? null : (map['maxConcurrentRequestsPerInstance']! as int).input(),
+      maxQueueWait: map['maxQueueWait'] == null ? null : (map['maxQueueWait']! as String).input(),
+      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout']! as String).input(),
     );
   }
 }

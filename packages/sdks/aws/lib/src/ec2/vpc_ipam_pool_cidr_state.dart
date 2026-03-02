@@ -47,12 +47,12 @@ class VpcIpamPoolCidrState {
 
   factory VpcIpamPoolCidrState.fromMap(Map<String, dynamic> map) {
     return VpcIpamPoolCidrState(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      cidrAuthorizationContext: map['cidrAuthorizationContext'] == null ? null : (VpcIpamPoolCidrCidrAuthorizationContext.fromMap((map['cidrAuthorizationContext'] as Map).cast<String, dynamic>())).input(),
-      ipamPoolCidrId: map['ipamPoolCidrId'] == null ? null : (map['ipamPoolCidrId'] as String).input(),
-      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
-      netmaskLength: map['netmaskLength'] == null ? null : (map['netmaskLength'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      cidr: map['cidr'] == null ? null : ((map['cidr'] as String).input()).input(),
+      cidrAuthorizationContext: map['cidrAuthorizationContext'] == null ? null : ((VpcIpamPoolCidrCidrAuthorizationContext.fromMap((map['cidrAuthorizationContext']! as Map).cast<String, dynamic>())).input()).input(),
+      ipamPoolCidrId: map['ipamPoolCidrId'] == null ? null : ((map['ipamPoolCidrId'] as String).input()).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : ((map['ipamPoolId'] as String).input()).input(),
+      netmaskLength: map['netmaskLength'] == null ? null : ((map['netmaskLength'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

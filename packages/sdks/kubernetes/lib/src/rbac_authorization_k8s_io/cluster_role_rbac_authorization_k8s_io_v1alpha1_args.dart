@@ -47,11 +47,11 @@ class ClusterRoleRbacAuthorizationK8sIoV1alpha1Args {
 
   factory ClusterRoleRbacAuthorizationK8sIoV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return ClusterRoleRbacAuthorizationK8sIoV1alpha1Args(
-      aggregationRule: map['aggregationRule'] == null ? null : (AggregationRuleRbacAuthorizationK8sIoV1alpha1.fromMap((map['aggregationRule'] as Map).cast<String, dynamic>())).input(),
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRuleRbacAuthorizationK8sIoV1alpha1>(map['rules'], (value) => PolicyRuleRbacAuthorizationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aggregationRule: map['aggregationRule'] == null ? null : (AggregationRuleRbacAuthorizationK8sIoV1alpha1.fromMap((map['aggregationRule']! as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRuleRbacAuthorizationK8sIoV1alpha1>(map['rules']!, (value) => PolicyRuleRbacAuthorizationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

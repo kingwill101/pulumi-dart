@@ -30,9 +30,9 @@ class DomainDevicesVideoModelAccel {
 
   factory DomainDevicesVideoModelAccel.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVideoModelAccel(
-      accel2d: map['accel2d'] == null ? null : (map['accel2d'] as String).input(),
-      accel3d: map['accel3d'] == null ? null : (map['accel3d'] as String).input(),
-      renderNode: map['renderNode'] == null ? null : (map['renderNode'] as String).input(),
+      accel2d: map['accel2d'] == null ? null : (map['accel2d']! as String).input(),
+      accel3d: map['accel3d'] == null ? null : (map['accel3d']! as String).input(),
+      renderNode: map['renderNode'] == null ? null : (map['renderNode']! as String).input(),
     );
   }
 }

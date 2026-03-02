@@ -69,15 +69,15 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
       keyVaultId: (map['keyVaultId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notBeforeDate: map['notBeforeDate'] == null ? null : (map['notBeforeDate'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      valueWo: map['valueWo'] == null ? null : (map['valueWo'] as String).input(),
-      valueWoVersion: map['valueWoVersion'] == null ? null : (map['valueWoVersion'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notBeforeDate: map['notBeforeDate'] == null ? null : (map['notBeforeDate']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      valueWo: map['valueWo'] == null ? null : (map['valueWo']! as String).input(),
+      valueWoVersion: map['valueWoVersion'] == null ? null : (map['valueWoVersion']! as int).input(),
     );
   }
 }

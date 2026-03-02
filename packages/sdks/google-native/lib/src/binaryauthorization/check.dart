@@ -62,14 +62,14 @@ class Check {
 
   factory Check.fromMap(Map<String, dynamic> map) {
     return Check(
-      alwaysDeny: map['alwaysDeny'] == null ? null : (map['alwaysDeny'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      imageAllowlist: map['imageAllowlist'] == null ? null : (ImageAllowlist.fromMap((map['imageAllowlist'] as Map).cast<String, dynamic>())).input(),
-      imageFreshnessCheck: map['imageFreshnessCheck'] == null ? null : (ImageFreshnessCheck.fromMap((map['imageFreshnessCheck'] as Map).cast<String, dynamic>())).input(),
-      simpleSigningAttestationCheck: map['simpleSigningAttestationCheck'] == null ? null : (SimpleSigningAttestationCheck.fromMap((map['simpleSigningAttestationCheck'] as Map).cast<String, dynamic>())).input(),
-      slsaCheck: map['slsaCheck'] == null ? null : (SlsaCheck.fromMap((map['slsaCheck'] as Map).cast<String, dynamic>())).input(),
-      trustedDirectoryCheck: map['trustedDirectoryCheck'] == null ? null : (TrustedDirectoryCheck.fromMap((map['trustedDirectoryCheck'] as Map).cast<String, dynamic>())).input(),
-      vulnerabilityCheck: map['vulnerabilityCheck'] == null ? null : (VulnerabilityCheck.fromMap((map['vulnerabilityCheck'] as Map).cast<String, dynamic>())).input(),
+      alwaysDeny: map['alwaysDeny'] == null ? null : (map['alwaysDeny']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      imageAllowlist: map['imageAllowlist'] == null ? null : (ImageAllowlist.fromMap((map['imageAllowlist']! as Map).cast<String, dynamic>())).input(),
+      imageFreshnessCheck: map['imageFreshnessCheck'] == null ? null : (ImageFreshnessCheck.fromMap((map['imageFreshnessCheck']! as Map).cast<String, dynamic>())).input(),
+      simpleSigningAttestationCheck: map['simpleSigningAttestationCheck'] == null ? null : (SimpleSigningAttestationCheck.fromMap((map['simpleSigningAttestationCheck']! as Map).cast<String, dynamic>())).input(),
+      slsaCheck: map['slsaCheck'] == null ? null : (SlsaCheck.fromMap((map['slsaCheck']! as Map).cast<String, dynamic>())).input(),
+      trustedDirectoryCheck: map['trustedDirectoryCheck'] == null ? null : (TrustedDirectoryCheck.fromMap((map['trustedDirectoryCheck']! as Map).cast<String, dynamic>())).input(),
+      vulnerabilityCheck: map['vulnerabilityCheck'] == null ? null : (VulnerabilityCheck.fromMap((map['vulnerabilityCheck']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

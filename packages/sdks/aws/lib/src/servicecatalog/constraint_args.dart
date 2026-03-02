@@ -56,12 +56,12 @@ class ConstraintArgs {
 
   factory ConstraintArgs.fromMap(Map<String, dynamic> map) {
     return ConstraintArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       parameters: (map['parameters'] as String).input(),
       portfolioId: (map['portfolioId'] as String).input(),
       productId: (map['productId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

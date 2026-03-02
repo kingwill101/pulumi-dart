@@ -37,9 +37,9 @@ class PolicyTargetTrackingConfiguration {
 
   factory PolicyTargetTrackingConfiguration.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingConfiguration(
-      customizedMetricSpecification: map['customizedMetricSpecification'] == null ? null : (PolicyTargetTrackingConfigurationCustomizedMetricSpecification.fromMap((map['customizedMetricSpecification'] as Map).cast<String, dynamic>())).input(),
-      disableScaleIn: map['disableScaleIn'] == null ? null : (map['disableScaleIn'] as bool).input(),
-      predefinedMetricSpecification: map['predefinedMetricSpecification'] == null ? null : (PolicyTargetTrackingConfigurationPredefinedMetricSpecification.fromMap((map['predefinedMetricSpecification'] as Map).cast<String, dynamic>())).input(),
+      customizedMetricSpecification: map['customizedMetricSpecification'] == null ? null : ((PolicyTargetTrackingConfigurationCustomizedMetricSpecification.fromMap((map['customizedMetricSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      disableScaleIn: map['disableScaleIn'] == null ? null : ((map['disableScaleIn'] as bool).input()).input(),
+      predefinedMetricSpecification: map['predefinedMetricSpecification'] == null ? null : ((PolicyTargetTrackingConfigurationPredefinedMetricSpecification.fromMap((map['predefinedMetricSpecification']! as Map).cast<String, dynamic>())).input()).input(),
       targetValue: (map['targetValue'] as double).input(),
     );
   }

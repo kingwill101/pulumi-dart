@@ -30,9 +30,9 @@ class DropletBackupPolicy {
 
   factory DropletBackupPolicy.fromMap(Map<String, dynamic> map) {
     return DropletBackupPolicy(
-      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
-      plan: map['plan'] == null ? null : (map['plan'] as String).input(),
-      weekday: map['weekday'] == null ? null : (map['weekday'] as String).input(),
+      hour: map['hour'] == null ? null : (map['hour']! as int).input(),
+      plan: map['plan'] == null ? null : (map['plan']! as String).input(),
+      weekday: map['weekday'] == null ? null : (map['weekday']! as String).input(),
     );
   }
 }

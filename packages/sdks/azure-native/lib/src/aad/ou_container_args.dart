@@ -49,12 +49,12 @@ class OuContainerArgs {
 
   factory OuContainerArgs.fromMap(Map<String, dynamic> map) {
     return OuContainerArgs(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
       domainServiceName: (map['domainServiceName'] as String).input(),
-      ouContainerName: map['ouContainerName'] == null ? null : (map['ouContainerName'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      ouContainerName: map['ouContainerName'] == null ? null : (map['ouContainerName']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      spn: map['spn'] == null ? null : (map['spn'] as String).input(),
+      spn: map['spn'] == null ? null : (map['spn']! as String).input(),
     );
   }
 }

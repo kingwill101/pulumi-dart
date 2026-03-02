@@ -58,14 +58,14 @@ class AlertState {
 
   factory AlertState.fromMap(Map<String, dynamic> map) {
     return AlertState(
-      alertName: map['alertName'] == null ? null : (map['alertName'] as String).input(),
-      configuration: map['configuration'] == null ? null : (AlertConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      schedule: map['schedule'] == null ? null : (AlertSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      alertName: map['alertName'] == null ? null : (map['alertName']! as String).input(),
+      configuration: map['configuration'] == null ? null : (AlertConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      schedule: map['schedule'] == null ? null : (AlertSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class VirtualNetworkSubnetIpConfigurationReferenceResponse {
 
   factory VirtualNetworkSubnetIpConfigurationReferenceResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetIpConfigurationReferenceResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

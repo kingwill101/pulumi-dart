@@ -26,8 +26,8 @@ class TerminalSettingsResponse {
 
   factory TerminalSettingsResponse.fromMap(Map<String, dynamic> map) {
     return TerminalSettingsResponse(
-      fontSize: map['fontSize'] == null ? null : (map['fontSize'] as String).input(),
-      fontStyle: map['fontStyle'] == null ? null : (map['fontStyle'] as String).input(),
+      fontSize: map['fontSize'] == null ? null : (map['fontSize']! as String).input(),
+      fontStyle: map['fontStyle'] == null ? null : (map['fontStyle']! as String).input(),
     );
   }
 }

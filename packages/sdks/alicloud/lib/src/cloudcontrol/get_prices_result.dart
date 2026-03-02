@@ -43,9 +43,9 @@ class GetPricesResult {
 
   factory GetPricesResult.fromMap(Map<String, dynamic> map) {
     return GetPricesResult(
-      desireAttributes: map['desireAttributes'] == null ? null : (map['desireAttributes'] as Map).cast<String, String>(),
+      desireAttributes: map['desireAttributes'] == null ? null : (map['desireAttributes']! as Map).cast<String, String>(),
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       prices: pulumi.Input.decodeList<GetPricesPrice>(map['prices'], (value) => GetPricesPrice.fromMap((value as Map).cast<String, dynamic>())),
       product: map['product'] as String,
       resourceCode: map['resourceCode'] as String,

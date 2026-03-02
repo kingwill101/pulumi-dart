@@ -22,7 +22,7 @@ class GetComputeAllowedResizeSizesResult {
 
   factory GetComputeAllowedResizeSizesResult.fromMap(Map<String, dynamic> map) {
     return GetComputeAllowedResizeSizesResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<VirtualMachineSizeResponse>(map['value'], (value) => VirtualMachineSizeResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<VirtualMachineSizeResponse>(map['value']!, (value) => VirtualMachineSizeResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

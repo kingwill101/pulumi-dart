@@ -27,8 +27,8 @@ class ConnectionParameterResponse {
 
   factory ConnectionParameterResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionParameterResponse(
-      oAuthSettings: map['oAuthSettings'] == null ? null : (ApiOAuthSettingsResponse.fromMap((map['oAuthSettings'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      oAuthSettings: map['oAuthSettings'] == null ? null : (ApiOAuthSettingsResponse.fromMap((map['oAuthSettings']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

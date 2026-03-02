@@ -27,8 +27,8 @@ class LicenseProfileMachineInstanceViewEsuProperties {
 
   factory LicenseProfileMachineInstanceViewEsuProperties.fromMap(Map<String, dynamic> map) {
     return LicenseProfileMachineInstanceViewEsuProperties(
-      assignedLicense: map['assignedLicense'] == null ? null : (License.fromMap((map['assignedLicense'] as Map).cast<String, dynamic>())).input(),
-      licenseAssignmentState: map['licenseAssignmentState'] == null ? null : (map['licenseAssignmentState'] as String).input(),
+      assignedLicense: map['assignedLicense'] == null ? null : (License.fromMap((map['assignedLicense']! as Map).cast<String, dynamic>())).input(),
+      licenseAssignmentState: map['licenseAssignmentState'] == null ? null : (map['licenseAssignmentState']! as String).input(),
     );
   }
 }

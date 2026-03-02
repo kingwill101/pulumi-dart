@@ -37,10 +37,10 @@ class WindowsFunctionAppSlotAuthSettingsV2GoogleV2 {
 
   factory WindowsFunctionAppSlotAuthSettingsV2GoogleV2.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppSlotAuthSettingsV2GoogleV2(
-      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences'] as List).cast<String>()).input(),
+      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences']! as List).cast<String>()).input(),
       clientId: (map['clientId'] as String).input(),
       clientSecretSettingName: (map['clientSecretSettingName'] as String).input(),
-      loginScopes: map['loginScopes'] == null ? null : ((map['loginScopes'] as List).cast<String>()).input(),
+      loginScopes: map['loginScopes'] == null ? null : ((map['loginScopes']! as List).cast<String>()).input(),
     );
   }
 }

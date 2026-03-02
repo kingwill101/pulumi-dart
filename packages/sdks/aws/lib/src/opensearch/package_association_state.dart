@@ -35,10 +35,10 @@ class PackageAssociationState {
 
   factory PackageAssociationState.fromMap(Map<String, dynamic> map) {
     return PackageAssociationState(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      packageId: map['packageId'] == null ? null : (map['packageId'] as String).input(),
-      referencePath: map['referencePath'] == null ? null : (map['referencePath'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      packageId: map['packageId'] == null ? null : ((map['packageId'] as String).input()).input(),
+      referencePath: map['referencePath'] == null ? null : ((map['referencePath'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

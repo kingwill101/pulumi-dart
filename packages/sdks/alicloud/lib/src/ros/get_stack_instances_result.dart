@@ -54,15 +54,15 @@ class GetStackInstancesResult {
 
   factory GetStackInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetStackInstancesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instances: pulumi.Input.decodeList<GetStackInstancesInstance>(map['instances'], (value) => GetStackInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       stackGroupName: map['stackGroupName'] as String,
-      stackInstanceAccountId: map['stackInstanceAccountId'] == null ? null : map['stackInstanceAccountId'] as String,
-      stackInstanceRegionId: map['stackInstanceRegionId'] == null ? null : map['stackInstanceRegionId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      stackInstanceAccountId: map['stackInstanceAccountId'] == null ? null : map['stackInstanceAccountId']! as String,
+      stackInstanceRegionId: map['stackInstanceRegionId'] == null ? null : map['stackInstanceRegionId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

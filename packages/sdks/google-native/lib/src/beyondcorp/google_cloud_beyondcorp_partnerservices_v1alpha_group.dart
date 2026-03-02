@@ -26,8 +26,8 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaGroup {
 
   factory GoogleCloudBeyondcorpPartnerservicesV1alphaGroup.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaGroup(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

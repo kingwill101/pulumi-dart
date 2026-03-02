@@ -25,7 +25,7 @@ class ListenerRuleConditionQueryString {
 
   factory ListenerRuleConditionQueryString.fromMap(Map<String, dynamic> map) {
     return ListenerRuleConditionQueryString(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
       value: (map['value'] as String).input(),
     );
   }

@@ -26,8 +26,8 @@ class DefenseRuleConfigTimeConfigWeekTimePeriod {
 
   factory DefenseRuleConfigTimeConfigWeekTimePeriod.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfigTimeConfigWeekTimePeriod(
-      day: map['day'] == null ? null : (map['day'] as String).input(),
-      dayPeriods: map['dayPeriods'] == null ? null : (pulumi.Input.decodeList<DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod>(map['dayPeriods'], (value) => DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      day: map['day'] == null ? null : (map['day']! as String).input(),
+      dayPeriods: map['dayPeriods'] == null ? null : (pulumi.Input.decodeList<DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod>(map['dayPeriods']!, (value) => DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class InconclusiveDetail {
 
   factory InconclusiveDetail.fromMap(Map<String, dynamic> map) {
     return InconclusiveDetail(
-      abortedByUser: map['abortedByUser'] == null ? null : (map['abortedByUser'] as bool).input(),
-      hasErrorLogs: map['hasErrorLogs'] == null ? null : (map['hasErrorLogs'] as bool).input(),
-      infrastructureFailure: map['infrastructureFailure'] == null ? null : (map['infrastructureFailure'] as bool).input(),
+      abortedByUser: map['abortedByUser'] == null ? null : (map['abortedByUser']! as bool).input(),
+      hasErrorLogs: map['hasErrorLogs'] == null ? null : (map['hasErrorLogs']! as bool).input(),
+      infrastructureFailure: map['infrastructureFailure'] == null ? null : (map['infrastructureFailure']! as bool).input(),
     );
   }
 }

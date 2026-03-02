@@ -26,8 +26,8 @@ class VmwareVipConfig {
 
   factory VmwareVipConfig.fromMap(Map<String, dynamic> map) {
     return VmwareVipConfig(
-      controlPlaneVip: map['controlPlaneVip'] == null ? null : (map['controlPlaneVip'] as String).input(),
-      ingressVip: map['ingressVip'] == null ? null : (map['ingressVip'] as String).input(),
+      controlPlaneVip: map['controlPlaneVip'] == null ? null : (map['controlPlaneVip']! as String).input(),
+      ingressVip: map['ingressVip'] == null ? null : (map['ingressVip']! as String).input(),
     );
   }
 }

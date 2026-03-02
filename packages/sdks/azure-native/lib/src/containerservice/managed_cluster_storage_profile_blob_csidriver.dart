@@ -21,7 +21,7 @@ class ManagedClusterStorageProfileBlobCSIDriver {
 
   factory ManagedClusterStorageProfileBlobCSIDriver.fromMap(Map<String, dynamic> map) {
     return ManagedClusterStorageProfileBlobCSIDriver(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

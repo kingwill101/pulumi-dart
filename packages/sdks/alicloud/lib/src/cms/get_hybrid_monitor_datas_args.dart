@@ -51,8 +51,8 @@ class GetHybridMonitorDatasArgs {
     return GetHybridMonitorDatasArgs(
       end: (map['end'] as String).input(),
       namespace: (map['namespace'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as String).input(),
       promSql: (map['promSql'] as String).input(),
       start: (map['start'] as String).input(),
     );

@@ -30,7 +30,7 @@ class BackendProxy {
 
   factory BackendProxy.fromMap(Map<String, dynamic> map) {
     return BackendProxy(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       url: (map['url'] as String).input(),
       username: (map['username'] as String).input(),
     );

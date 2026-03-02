@@ -26,8 +26,8 @@ class ExpressionWarningPatchAdmissionregistrationK8sIoV1alpha1 {
 
   factory ExpressionWarningPatchAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ExpressionWarningPatchAdmissionregistrationK8sIoV1alpha1(
-      fieldRef: map['fieldRef'] == null ? null : (map['fieldRef'] as String).input(),
-      warning: map['warning'] == null ? null : (map['warning'] as String).input(),
+      fieldRef: map['fieldRef'] == null ? null : (map['fieldRef']! as String).input(),
+      warning: map['warning'] == null ? null : (map['warning']! as String).input(),
     );
   }
 }

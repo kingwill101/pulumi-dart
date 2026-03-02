@@ -28,8 +28,8 @@ class RoutingRuleResponse {
 
   factory RoutingRuleResponse.fromMap(Map<String, dynamic> map) {
     return RoutingRuleResponse(
-      redirectRule: map['redirectRule'] == null ? null : (RedirectRuleResponse.fromMap((map['redirectRule'] as Map).cast<String, dynamic>())).input(),
-      routingRuleCondition: map['routingRuleCondition'] == null ? null : (RoutingRuleConditionResponse.fromMap((map['routingRuleCondition'] as Map).cast<String, dynamic>())).input(),
+      redirectRule: map['redirectRule'] == null ? null : (RedirectRuleResponse.fromMap((map['redirectRule']! as Map).cast<String, dynamic>())).input(),
+      routingRuleCondition: map['routingRuleCondition'] == null ? null : (RoutingRuleConditionResponse.fromMap((map['routingRuleCondition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -57,8 +57,8 @@ class ProductFeatureResponse {
       disenrollmentDate: (map['disenrollmentDate'] as String).input(),
       enrollmentDate: (map['enrollmentDate'] as String).input(),
       error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subscriptionStatus: map['subscriptionStatus'] == null ? null : (map['subscriptionStatus'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      subscriptionStatus: map['subscriptionStatus'] == null ? null : (map['subscriptionStatus']! as String).input(),
     );
   }
 }

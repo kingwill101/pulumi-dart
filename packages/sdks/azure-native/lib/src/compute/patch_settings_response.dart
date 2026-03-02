@@ -37,10 +37,10 @@ class PatchSettingsResponse {
 
   factory PatchSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PatchSettingsResponse(
-      assessmentMode: map['assessmentMode'] == null ? null : (map['assessmentMode'] as String).input(),
-      automaticByPlatformSettings: map['automaticByPlatformSettings'] == null ? null : (WindowsVMGuestPatchAutomaticByPlatformSettingsResponse.fromMap((map['automaticByPlatformSettings'] as Map).cast<String, dynamic>())).input(),
-      enableHotpatching: map['enableHotpatching'] == null ? null : (map['enableHotpatching'] as bool).input(),
-      patchMode: map['patchMode'] == null ? null : (map['patchMode'] as String).input(),
+      assessmentMode: map['assessmentMode'] == null ? null : (map['assessmentMode']! as String).input(),
+      automaticByPlatformSettings: map['automaticByPlatformSettings'] == null ? null : (WindowsVMGuestPatchAutomaticByPlatformSettingsResponse.fromMap((map['automaticByPlatformSettings']! as Map).cast<String, dynamic>())).input(),
+      enableHotpatching: map['enableHotpatching'] == null ? null : (map['enableHotpatching']! as bool).input(),
+      patchMode: map['patchMode'] == null ? null : (map['patchMode']! as String).input(),
     );
   }
 }

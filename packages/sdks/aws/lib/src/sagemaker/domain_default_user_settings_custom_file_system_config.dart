@@ -21,7 +21,7 @@ class DomainDefaultUserSettingsCustomFileSystemConfig {
 
   factory DomainDefaultUserSettingsCustomFileSystemConfig.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCustomFileSystemConfig(
-      efsFileSystemConfig: map['efsFileSystemConfig'] == null ? null : (DomainDefaultUserSettingsCustomFileSystemConfigEfsFileSystemConfig.fromMap((map['efsFileSystemConfig'] as Map).cast<String, dynamic>())).input(),
+      efsFileSystemConfig: map['efsFileSystemConfig'] == null ? null : ((DomainDefaultUserSettingsCustomFileSystemConfigEfsFileSystemConfig.fromMap((map['efsFileSystemConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

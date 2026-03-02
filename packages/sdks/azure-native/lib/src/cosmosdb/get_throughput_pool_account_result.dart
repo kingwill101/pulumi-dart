@@ -62,8 +62,8 @@ class GetThroughputPoolAccountResult {
   factory GetThroughputPoolAccountResult.fromMap(Map<String, dynamic> map) {
     return GetThroughputPoolAccountResult(
       accountInstanceId: map['accountInstanceId'] as String,
-      accountLocation: map['accountLocation'] == null ? null : map['accountLocation'] as String,
-      accountResourceIdentifier: map['accountResourceIdentifier'] == null ? null : map['accountResourceIdentifier'] as String,
+      accountLocation: map['accountLocation'] == null ? null : map['accountLocation']! as String,
+      accountResourceIdentifier: map['accountResourceIdentifier'] == null ? null : map['accountResourceIdentifier']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

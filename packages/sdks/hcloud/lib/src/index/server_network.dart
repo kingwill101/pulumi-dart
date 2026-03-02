@@ -37,9 +37,9 @@ class ServerNetwork {
 
   factory ServerNetwork.fromMap(Map<String, dynamic> map) {
     return ServerNetwork(
-      aliasIps: map['aliasIps'] == null ? null : ((map['aliasIps'] as List).cast<String>()).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
+      aliasIps: map['aliasIps'] == null ? null : ((map['aliasIps']! as List).cast<String>()).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
       networkId: (map['networkId'] as int).input(),
     );
   }

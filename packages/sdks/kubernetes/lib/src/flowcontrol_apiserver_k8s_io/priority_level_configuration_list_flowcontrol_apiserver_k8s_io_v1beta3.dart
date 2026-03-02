@@ -38,10 +38,10 @@ class PriorityLevelConfigurationListFlowcontrolApiserverK8sIoV1beta3 {
 
   factory PriorityLevelConfigurationListFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationListFlowcontrolApiserverK8sIoV1beta3(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       items: (pulumi.Input.decodeList<PriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta3>(map['items'], (value) => PriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta3.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

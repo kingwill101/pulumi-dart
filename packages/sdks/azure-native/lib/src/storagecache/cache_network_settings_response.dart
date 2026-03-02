@@ -41,10 +41,10 @@ class CacheNetworkSettingsResponse {
 
   factory CacheNetworkSettingsResponse.fromMap(Map<String, dynamic> map) {
     return CacheNetworkSettingsResponse(
-      dnsSearchDomain: map['dnsSearchDomain'] == null ? null : (map['dnsSearchDomain'] as String).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
-      ntpServer: map['ntpServer'] == null ? null : (map['ntpServer'] as String).input(),
+      dnsSearchDomain: map['dnsSearchDomain'] == null ? null : (map['dnsSearchDomain']! as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
+      ntpServer: map['ntpServer'] == null ? null : (map['ntpServer']! as String).input(),
       utilityAddresses: ((map['utilityAddresses'] as List).cast<String>()).input(),
     );
   }

@@ -32,7 +32,7 @@ class GetClusterArgs {
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

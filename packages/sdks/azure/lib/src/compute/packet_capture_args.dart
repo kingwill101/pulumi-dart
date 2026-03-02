@@ -61,11 +61,11 @@ class PacketCaptureArgs {
 
   factory PacketCaptureArgs.fromMap(Map<String, dynamic> map) {
     return PacketCaptureArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<PacketCaptureFilter>(map['filters'], (value) => PacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maximumBytesPerPacket: map['maximumBytesPerPacket'] == null ? null : (map['maximumBytesPerPacket'] as int).input(),
-      maximumBytesPerSession: map['maximumBytesPerSession'] == null ? null : (map['maximumBytesPerSession'] as int).input(),
-      maximumCaptureDurationInSeconds: map['maximumCaptureDurationInSeconds'] == null ? null : (map['maximumCaptureDurationInSeconds'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<PacketCaptureFilter>(map['filters']!, (value) => PacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maximumBytesPerPacket: map['maximumBytesPerPacket'] == null ? null : (map['maximumBytesPerPacket']! as int).input(),
+      maximumBytesPerSession: map['maximumBytesPerSession'] == null ? null : (map['maximumBytesPerSession']! as int).input(),
+      maximumCaptureDurationInSeconds: map['maximumCaptureDurationInSeconds'] == null ? null : (map['maximumCaptureDurationInSeconds']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkWatcherId: (map['networkWatcherId'] as String).input(),
       storageLocation: (PacketCaptureStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())).input(),
       virtualMachineId: (map['virtualMachineId'] as String).input(),

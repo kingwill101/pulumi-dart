@@ -26,8 +26,8 @@ class OneDashboardPageWidgetHistogramColor {
 
   factory OneDashboardPageWidgetHistogramColor.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetHistogramColor(
-      color: map['color'] == null ? null : (map['color'] as String).input(),
-      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramColorSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetHistogramColorSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      color: map['color'] == null ? null : (map['color']! as String).input(),
+      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramColorSeriesOverride>(map['seriesOverrides']!, (value) => OneDashboardPageWidgetHistogramColorSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

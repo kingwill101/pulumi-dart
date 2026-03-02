@@ -110,23 +110,23 @@ class HostPoolArgs {
 
   factory HostPoolArgs.fromMap(Map<String, dynamic> map) {
     return HostPoolArgs(
-      customRdpProperties: map['customRdpProperties'] == null ? null : (map['customRdpProperties'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      customRdpProperties: map['customRdpProperties'] == null ? null : (map['customRdpProperties']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
       loadBalancerType: (map['loadBalancerType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maximumSessionsAllowed: map['maximumSessionsAllowed'] == null ? null : (map['maximumSessionsAllowed'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      personalDesktopAssignmentType: map['personalDesktopAssignmentType'] == null ? null : (map['personalDesktopAssignmentType'] as String).input(),
-      preferredAppGroupType: map['preferredAppGroupType'] == null ? null : (map['preferredAppGroupType'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maximumSessionsAllowed: map['maximumSessionsAllowed'] == null ? null : (map['maximumSessionsAllowed']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      personalDesktopAssignmentType: map['personalDesktopAssignmentType'] == null ? null : (map['personalDesktopAssignmentType']! as String).input(),
+      preferredAppGroupType: map['preferredAppGroupType'] == null ? null : (map['preferredAppGroupType']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scheduledAgentUpdates: map['scheduledAgentUpdates'] == null ? null : (HostPoolScheduledAgentUpdates.fromMap((map['scheduledAgentUpdates'] as Map).cast<String, dynamic>())).input(),
-      startVmOnConnect: map['startVmOnConnect'] == null ? null : (map['startVmOnConnect'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      scheduledAgentUpdates: map['scheduledAgentUpdates'] == null ? null : (HostPoolScheduledAgentUpdates.fromMap((map['scheduledAgentUpdates']! as Map).cast<String, dynamic>())).input(),
+      startVmOnConnect: map['startVmOnConnect'] == null ? null : (map['startVmOnConnect']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
-      validateEnvironment: map['validateEnvironment'] == null ? null : (map['validateEnvironment'] as bool).input(),
-      vmTemplate: map['vmTemplate'] == null ? null : (map['vmTemplate'] as String).input(),
+      validateEnvironment: map['validateEnvironment'] == null ? null : (map['validateEnvironment']! as bool).input(),
+      vmTemplate: map['vmTemplate'] == null ? null : (map['vmTemplate']! as String).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class AuthorizationAccessPolicyArgs {
 
   factory AuthorizationAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationAccessPolicyArgs(
-      authorizationAccessPolicyId: map['authorizationAccessPolicyId'] == null ? null : (map['authorizationAccessPolicyId'] as String).input(),
+      authorizationAccessPolicyId: map['authorizationAccessPolicyId'] == null ? null : (map['authorizationAccessPolicyId']! as String).input(),
       authorizationId: (map['authorizationId'] as String).input(),
       authorizationProviderId: (map['authorizationProviderId'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

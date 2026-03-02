@@ -26,8 +26,8 @@ class AnalyticsConfigurationStorageClassAnalysisDataExport {
 
   factory AnalyticsConfigurationStorageClassAnalysisDataExport.fromMap(Map<String, dynamic> map) {
     return AnalyticsConfigurationStorageClassAnalysisDataExport(
-      destination: (AnalyticsConfigurationStorageClassAnalysisDataExportDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      outputSchemaVersion: map['outputSchemaVersion'] == null ? null : (map['outputSchemaVersion'] as String).input(),
+      destination: (AnalyticsConfigurationStorageClassAnalysisDataExportDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      outputSchemaVersion: map['outputSchemaVersion'] == null ? null : ((map['outputSchemaVersion'] as String).input()).input(),
     );
   }
 }

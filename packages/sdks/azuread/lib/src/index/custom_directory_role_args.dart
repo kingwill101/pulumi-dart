@@ -50,11 +50,11 @@ class CustomDirectoryRoleArgs {
 
   factory CustomDirectoryRoleArgs.fromMap(Map<String, dynamic> map) {
     return CustomDirectoryRoleArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       enabled: (map['enabled'] as bool).input(),
       permissions: (pulumi.Input.decodeList<CustomDirectoryRolePermission>(map['permissions'], (value) => CustomDirectoryRolePermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
       version: (map['version'] as String).input(),
     );
   }

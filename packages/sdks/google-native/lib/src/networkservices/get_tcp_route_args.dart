@@ -32,7 +32,7 @@ class GetTcpRouteArgs {
   factory GetTcpRouteArgs.fromMap(Map<String, dynamic> map) {
     return GetTcpRouteArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tcpRouteId: (map['tcpRouteId'] as String).input(),
     );
   }

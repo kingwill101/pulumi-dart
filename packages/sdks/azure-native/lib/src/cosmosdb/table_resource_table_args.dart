@@ -57,12 +57,12 @@ class TableResourceTableArgs {
   factory TableResourceTableArgs.fromMap(Map<String, dynamic> map) {
     return TableResourceTableArgs(
       accountName: (map['accountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      options: map['options'] == null ? null : (CreateUpdateOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      options: map['options'] == null ? null : (CreateUpdateOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
       resource: (TableResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

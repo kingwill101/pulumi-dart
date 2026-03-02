@@ -46,12 +46,12 @@ class ChannelEncoderSettingsGlobalConfiguration {
 
   factory ChannelEncoderSettingsGlobalConfiguration.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsGlobalConfiguration(
-      initialAudioGain: map['initialAudioGain'] == null ? null : (map['initialAudioGain'] as int).input(),
-      inputEndAction: map['inputEndAction'] == null ? null : (map['inputEndAction'] as String).input(),
-      inputLossBehavior: map['inputLossBehavior'] == null ? null : (ChannelEncoderSettingsGlobalConfigurationInputLossBehavior.fromMap((map['inputLossBehavior'] as Map).cast<String, dynamic>())).input(),
-      outputLockingMode: map['outputLockingMode'] == null ? null : (map['outputLockingMode'] as String).input(),
-      outputTimingSource: map['outputTimingSource'] == null ? null : (map['outputTimingSource'] as String).input(),
-      supportLowFramerateInputs: map['supportLowFramerateInputs'] == null ? null : (map['supportLowFramerateInputs'] as String).input(),
+      initialAudioGain: map['initialAudioGain'] == null ? null : ((map['initialAudioGain'] as int).input()).input(),
+      inputEndAction: map['inputEndAction'] == null ? null : ((map['inputEndAction'] as String).input()).input(),
+      inputLossBehavior: map['inputLossBehavior'] == null ? null : ((ChannelEncoderSettingsGlobalConfigurationInputLossBehavior.fromMap((map['inputLossBehavior']! as Map).cast<String, dynamic>())).input()).input(),
+      outputLockingMode: map['outputLockingMode'] == null ? null : ((map['outputLockingMode'] as String).input()).input(),
+      outputTimingSource: map['outputTimingSource'] == null ? null : ((map['outputTimingSource'] as String).input()).input(),
+      supportLowFramerateInputs: map['supportLowFramerateInputs'] == null ? null : ((map['supportLowFramerateInputs'] as String).input()).input(),
     );
   }
 }

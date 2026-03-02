@@ -70,15 +70,15 @@ class ServerGroupServerAttachmentState {
 
   factory ServerGroupServerAttachmentState.fromMap(Map<String, dynamic> map) {
     return ServerGroupServerAttachmentState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
-      serverIp: map['serverIp'] == null ? null : (map['serverIp'] as String).input(),
-      serverType: map['serverType'] == null ? null : (map['serverType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
+      serverIp: map['serverIp'] == null ? null : (map['serverIp']! as String).input(),
+      serverType: map['serverType'] == null ? null : (map['serverType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

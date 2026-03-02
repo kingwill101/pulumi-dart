@@ -33,9 +33,9 @@ class GoogleFirestoreAdminV1beta2IndexField {
 
   factory GoogleFirestoreAdminV1beta2IndexField.fromMap(Map<String, dynamic> map) {
     return GoogleFirestoreAdminV1beta2IndexField(
-      arrayConfig: map['arrayConfig'] == null ? null : (GoogleFirestoreAdminV1beta2IndexFieldArrayConfig.fromValue(map['arrayConfig'] as String)).input(),
-      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath'] as String).input(),
-      order: map['order'] == null ? null : (GoogleFirestoreAdminV1beta2IndexFieldOrder.fromValue(map['order'] as String)).input(),
+      arrayConfig: map['arrayConfig'] == null ? null : (GoogleFirestoreAdminV1beta2IndexFieldArrayConfig.fromValue(map['arrayConfig']! as String)).input(),
+      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath']! as String).input(),
+      order: map['order'] == null ? null : (GoogleFirestoreAdminV1beta2IndexFieldOrder.fromValue(map['order']! as String)).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class AsyncOptions {
 
   factory AsyncOptions.fromMap(Map<String, dynamic> map) {
     return AsyncOptions(
-      methodMatch: map['methodMatch'] == null ? null : (map['methodMatch'] as String).input(),
-      pollingOptions: map['pollingOptions'] == null ? null : (PollingOptions.fromMap((map['pollingOptions'] as Map).cast<String, dynamic>())).input(),
+      methodMatch: map['methodMatch'] == null ? null : (map['methodMatch']! as String).input(),
+      pollingOptions: map['pollingOptions'] == null ? null : (PollingOptions.fromMap((map['pollingOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

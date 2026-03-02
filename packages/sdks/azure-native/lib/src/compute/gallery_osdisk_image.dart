@@ -28,8 +28,8 @@ class GalleryOSDiskImage {
 
   factory GalleryOSDiskImage.fromMap(Map<String, dynamic> map) {
     return GalleryOSDiskImage(
-      hostCaching: map['hostCaching'] == null ? null : (HostCaching.fromValue(map['hostCaching'] as String)).input(),
-      source: map['source'] == null ? null : (GalleryDiskImageSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      hostCaching: map['hostCaching'] == null ? null : (HostCaching.fromValue(map['hostCaching']! as String)).input(),
+      source: map['source'] == null ? null : (GalleryDiskImageSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

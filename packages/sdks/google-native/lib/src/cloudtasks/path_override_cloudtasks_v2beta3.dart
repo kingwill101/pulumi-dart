@@ -21,7 +21,7 @@ class PathOverrideCloudtasksV2beta3 {
 
   factory PathOverrideCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return PathOverrideCloudtasksV2beta3(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

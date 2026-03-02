@@ -37,10 +37,10 @@ class ClusterCIDRSpecPatch {
 
   factory ClusterCIDRSpecPatch.fromMap(Map<String, dynamic> map) {
     return ClusterCIDRSpecPatch(
-      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as String).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as String).input(),
-      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelectorPatch.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
-      perNodeHostBits: map['perNodeHostBits'] == null ? null : (map['perNodeHostBits'] as int).input(),
+      ipv4: map['ipv4'] == null ? null : (map['ipv4']! as String).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6']! as String).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelectorPatch.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>())).input(),
+      perNodeHostBits: map['perNodeHostBits'] == null ? null : (map['perNodeHostBits']! as int).input(),
     );
   }
 }

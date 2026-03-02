@@ -98,21 +98,21 @@ class ContainerStatusPatch {
 
   factory ContainerStatusPatch.fromMap(Map<String, dynamic> map) {
     return ContainerStatusPatch(
-      allocatedResources: map['allocatedResources'] == null ? null : ((map['allocatedResources'] as Map).cast<String, String>()).input(),
-      allocatedResourcesStatus: map['allocatedResourcesStatus'] == null ? null : (pulumi.Input.decodeList<ResourceStatusPatch>(map['allocatedResourcesStatus'], (value) => ResourceStatusPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      containerID: map['containerID'] == null ? null : (map['containerID'] as String).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      imageID: map['imageID'] == null ? null : (map['imageID'] as String).input(),
-      lastState: map['lastState'] == null ? null : (ContainerStatePatch.fromMap((map['lastState'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ready: map['ready'] == null ? null : (map['ready'] as bool).input(),
-      resources: map['resources'] == null ? null : (ResourceRequirementsPatch.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
-      restartCount: map['restartCount'] == null ? null : (map['restartCount'] as int).input(),
-      started: map['started'] == null ? null : (map['started'] as bool).input(),
-      state: map['state'] == null ? null : (ContainerStatePatch.fromMap((map['state'] as Map).cast<String, dynamic>())).input(),
-      stopSignal: map['stopSignal'] == null ? null : (map['stopSignal'] as String).input(),
-      user: map['user'] == null ? null : (ContainerUserPatch.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMountStatusPatch>(map['volumeMounts'], (value) => VolumeMountStatusPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocatedResources: map['allocatedResources'] == null ? null : ((map['allocatedResources']! as Map).cast<String, String>()).input(),
+      allocatedResourcesStatus: map['allocatedResourcesStatus'] == null ? null : (pulumi.Input.decodeList<ResourceStatusPatch>(map['allocatedResourcesStatus']!, (value) => ResourceStatusPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerID: map['containerID'] == null ? null : (map['containerID']! as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      imageID: map['imageID'] == null ? null : (map['imageID']! as String).input(),
+      lastState: map['lastState'] == null ? null : (ContainerStatePatch.fromMap((map['lastState']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ready: map['ready'] == null ? null : (map['ready']! as bool).input(),
+      resources: map['resources'] == null ? null : (ResourceRequirementsPatch.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
+      restartCount: map['restartCount'] == null ? null : (map['restartCount']! as int).input(),
+      started: map['started'] == null ? null : (map['started']! as bool).input(),
+      state: map['state'] == null ? null : (ContainerStatePatch.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
+      stopSignal: map['stopSignal'] == null ? null : (map['stopSignal']! as String).input(),
+      user: map['user'] == null ? null : (ContainerUserPatch.fromMap((map['user']! as Map).cast<String, dynamic>())).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMountStatusPatch>(map['volumeMounts']!, (value) => VolumeMountStatusPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

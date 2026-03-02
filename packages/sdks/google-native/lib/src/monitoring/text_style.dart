@@ -56,13 +56,13 @@ class TextStyle {
 
   factory TextStyle.fromMap(Map<String, dynamic> map) {
     return TextStyle(
-      backgroundColor: map['backgroundColor'] == null ? null : (map['backgroundColor'] as String).input(),
-      fontSize: map['fontSize'] == null ? null : (TextStyleFontSize.fromValue(map['fontSize'] as String)).input(),
-      horizontalAlignment: map['horizontalAlignment'] == null ? null : (TextStyleHorizontalAlignment.fromValue(map['horizontalAlignment'] as String)).input(),
-      padding: map['padding'] == null ? null : (TextStylePadding.fromValue(map['padding'] as String)).input(),
-      pointerLocation: map['pointerLocation'] == null ? null : (TextStylePointerLocation.fromValue(map['pointerLocation'] as String)).input(),
-      textColor: map['textColor'] == null ? null : (map['textColor'] as String).input(),
-      verticalAlignment: map['verticalAlignment'] == null ? null : (TextStyleVerticalAlignment.fromValue(map['verticalAlignment'] as String)).input(),
+      backgroundColor: map['backgroundColor'] == null ? null : (map['backgroundColor']! as String).input(),
+      fontSize: map['fontSize'] == null ? null : (TextStyleFontSize.fromValue(map['fontSize']! as String)).input(),
+      horizontalAlignment: map['horizontalAlignment'] == null ? null : (TextStyleHorizontalAlignment.fromValue(map['horizontalAlignment']! as String)).input(),
+      padding: map['padding'] == null ? null : (TextStylePadding.fromValue(map['padding']! as String)).input(),
+      pointerLocation: map['pointerLocation'] == null ? null : (TextStylePointerLocation.fromValue(map['pointerLocation']! as String)).input(),
+      textColor: map['textColor'] == null ? null : (map['textColor']! as String).input(),
+      verticalAlignment: map['verticalAlignment'] == null ? null : (TextStyleVerticalAlignment.fromValue(map['verticalAlignment']! as String)).input(),
     );
   }
 }

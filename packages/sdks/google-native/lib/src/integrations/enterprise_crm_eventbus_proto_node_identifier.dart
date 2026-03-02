@@ -27,8 +27,8 @@ class EnterpriseCrmEventbusProtoNodeIdentifier {
 
   factory EnterpriseCrmEventbusProtoNodeIdentifier.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoNodeIdentifier(
-      elementIdentifier: map['elementIdentifier'] == null ? null : (map['elementIdentifier'] as String).input(),
-      elementType: map['elementType'] == null ? null : (EnterpriseCrmEventbusProtoNodeIdentifierElementType.fromValue(map['elementType'] as String)).input(),
+      elementIdentifier: map['elementIdentifier'] == null ? null : (map['elementIdentifier']! as String).input(),
+      elementType: map['elementType'] == null ? null : (EnterpriseCrmEventbusProtoNodeIdentifierElementType.fromValue(map['elementType']! as String)).input(),
     );
   }
 }

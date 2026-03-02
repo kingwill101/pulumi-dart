@@ -26,8 +26,8 @@ class AccessControlListAction {
 
   factory AccessControlListAction.fromMap(Map<String, dynamic> map) {
     return AccessControlListAction(
-      counterName: map['counterName'] == null ? null : (map['counterName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      counterName: map['counterName'] == null ? null : (map['counterName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

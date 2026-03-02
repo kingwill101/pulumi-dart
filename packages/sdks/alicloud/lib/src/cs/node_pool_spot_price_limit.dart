@@ -25,8 +25,8 @@ class NodePoolSpotPriceLimit {
 
   factory NodePoolSpotPriceLimit.fromMap(Map<String, dynamic> map) {
     return NodePoolSpotPriceLimit(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      priceLimit: map['priceLimit'] == null ? null : (map['priceLimit'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      priceLimit: map['priceLimit'] == null ? null : (map['priceLimit']! as String).input(),
     );
   }
 }

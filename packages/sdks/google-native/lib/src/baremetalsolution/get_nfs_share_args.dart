@@ -33,7 +33,7 @@ class GetNfsShareArgs {
     return GetNfsShareArgs(
       location: (map['location'] as String).input(),
       nfsShareId: (map['nfsShareId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

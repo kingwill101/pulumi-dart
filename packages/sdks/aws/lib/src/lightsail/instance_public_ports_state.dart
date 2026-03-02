@@ -34,9 +34,9 @@ class InstancePublicPortsState {
 
   factory InstancePublicPortsState.fromMap(Map<String, dynamic> map) {
     return InstancePublicPortsState(
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      portInfos: map['portInfos'] == null ? null : (pulumi.Input.decodeList<InstancePublicPortsPortInfo>(map['portInfos'], (value) => InstancePublicPortsPortInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : ((map['instanceName'] as String).input()).input(),
+      portInfos: map['portInfos'] == null ? null : ((pulumi.Input.decodeList<InstancePublicPortsPortInfo>(map['portInfos']!, (value) => InstancePublicPortsPortInfo.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -41,8 +41,8 @@ class IfileArgs {
     return IfileArgs(
       content: (map['content'] as String).input(),
       name: (map['name'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
-      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath']! as String).input(),
     );
   }
 }

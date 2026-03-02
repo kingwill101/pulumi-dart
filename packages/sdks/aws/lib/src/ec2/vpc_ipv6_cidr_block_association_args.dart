@@ -54,12 +54,12 @@ class VpcIpv6CidrBlockAssociationArgs {
 
   factory VpcIpv6CidrBlockAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpv6CidrBlockAssociationArgs(
-      assignGeneratedIpv6CidrBlock: map['assignGeneratedIpv6CidrBlock'] == null ? null : (map['assignGeneratedIpv6CidrBlock'] as bool).input(),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
-      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : (map['ipv6IpamPoolId'] as String).input(),
-      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : (map['ipv6NetmaskLength'] as int).input(),
-      ipv6Pool: map['ipv6Pool'] == null ? null : (map['ipv6Pool'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      assignGeneratedIpv6CidrBlock: map['assignGeneratedIpv6CidrBlock'] == null ? null : ((map['assignGeneratedIpv6CidrBlock'] as bool).input()).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : ((map['ipv6CidrBlock'] as String).input()).input(),
+      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : ((map['ipv6IpamPoolId'] as String).input()).input(),
+      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : ((map['ipv6NetmaskLength'] as int).input()).input(),
+      ipv6Pool: map['ipv6Pool'] == null ? null : ((map['ipv6Pool'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

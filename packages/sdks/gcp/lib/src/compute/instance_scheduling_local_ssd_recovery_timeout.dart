@@ -30,7 +30,7 @@ class InstanceSchedulingLocalSsdRecoveryTimeout {
 
   factory InstanceSchedulingLocalSsdRecoveryTimeout.fromMap(Map<String, dynamic> map) {
     return InstanceSchedulingLocalSsdRecoveryTimeout(
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
       seconds: (map['seconds'] as int).input(),
     );
   }

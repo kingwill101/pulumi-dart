@@ -27,7 +27,7 @@ class DelegationPropertiesResponse {
   factory DelegationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DelegationPropertiesResponse(
       provisioningState: (map['provisioningState'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class TrackerAssociationState {
 
   factory TrackerAssociationState.fromMap(Map<String, dynamic> map) {
     return TrackerAssociationState(
-      consumerArn: map['consumerArn'] == null ? null : (map['consumerArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      trackerName: map['trackerName'] == null ? null : (map['trackerName'] as String).input(),
+      consumerArn: map['consumerArn'] == null ? null : ((map['consumerArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      trackerName: map['trackerName'] == null ? null : ((map['trackerName'] as String).input()).input(),
     );
   }
 }

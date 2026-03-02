@@ -47,7 +47,7 @@ class ApiGatewayHostnameBindingArgs {
     return ApiGatewayHostnameBindingArgs(
       gatewayName: (map['gatewayName'] as String).input(),
       hostname: (map['hostname'] as String).input(),
-      hostnameBindingName: map['hostnameBindingName'] == null ? null : (map['hostnameBindingName'] as String).input(),
+      hostnameBindingName: map['hostnameBindingName'] == null ? null : (map['hostnameBindingName']! as String).input(),
       keyVault: (GatewayHostnameBindingKeyVault.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

@@ -1082,19 +1082,19 @@ class MockStack extends _i1.Mock implements _i3.Stack {
 /// See the documentation for Mockito's code generation for more information.
 class MockCustomResource extends _i1.Mock implements _i18.CustomResource {
   @override
-  _i8.Output<String?> get id =>
+  _i8.Output<String> get id =>
       (super.noSuchMethod(
             Invocation.getter(#id),
-            returnValue: _FakeOutput_6<String?>(this, Invocation.getter(#id)),
-            returnValueForMissingStub: _FakeOutput_6<String?>(
+            returnValue: _FakeOutput_6<String>(this, Invocation.getter(#id)),
+            returnValueForMissingStub: _FakeOutput_6<String>(
               this,
               Invocation.getter(#id),
             ),
           )
-          as _i8.Output<String?>);
+          as _i8.Output<String>);
 
   @override
-  set id(_i8.Output<String?>? value) => super.noSuchMethod(
+  set id(_i8.Output<String> value) => super.noSuchMethod(
     Invocation.setter(#id, value),
     returnValueForMissingStub: null,
   );

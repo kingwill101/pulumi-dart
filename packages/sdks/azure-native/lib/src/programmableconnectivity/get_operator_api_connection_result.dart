@@ -105,10 +105,10 @@ class GetOperatorApiConnectionResult {
   factory GetOperatorApiConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetOperatorApiConnectionResult(
       accountType: map['accountType'] as String,
-      appId: map['appId'] == null ? null : map['appId'] as String,
+      appId: map['appId'] == null ? null : map['appId']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       camaraApiName: map['camaraApiName'] as String,
-      configuredApplication: map['configuredApplication'] == null ? null : ApplicationPropertiesResponse.fromMap((map['configuredApplication'] as Map).cast<String, dynamic>()),
+      configuredApplication: map['configuredApplication'] == null ? null : ApplicationPropertiesResponse.fromMap((map['configuredApplication']! as Map).cast<String, dynamic>()),
       gatewayId: map['gatewayId'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
@@ -116,10 +116,10 @@ class GetOperatorApiConnectionResult {
       operatorApiPlanId: map['operatorApiPlanId'] as String,
       operatorName: map['operatorName'] as String,
       provisioningState: map['provisioningState'] as String,
-      saasProperties: map['saasProperties'] == null ? null : SaasPropertiesResponse.fromMap((map['saasProperties'] as Map).cast<String, dynamic>()),
+      saasProperties: map['saasProperties'] == null ? null : SaasPropertiesResponse.fromMap((map['saasProperties']! as Map).cast<String, dynamic>()),
       status: StatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

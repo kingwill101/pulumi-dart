@@ -26,8 +26,8 @@ class RetryPolicyResponse {
 
   factory RetryPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RetryPolicyResponse(
-      eventTimeToLiveInMinutes: map['eventTimeToLiveInMinutes'] == null ? null : (map['eventTimeToLiveInMinutes'] as int).input(),
-      maxDeliveryAttempts: map['maxDeliveryAttempts'] == null ? null : (map['maxDeliveryAttempts'] as int).input(),
+      eventTimeToLiveInMinutes: map['eventTimeToLiveInMinutes'] == null ? null : (map['eventTimeToLiveInMinutes']! as int).input(),
+      maxDeliveryAttempts: map['maxDeliveryAttempts'] == null ? null : (map['maxDeliveryAttempts']! as int).input(),
     );
   }
 }

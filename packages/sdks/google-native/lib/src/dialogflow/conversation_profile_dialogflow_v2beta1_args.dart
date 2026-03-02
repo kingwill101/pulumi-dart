@@ -99,21 +99,21 @@ class ConversationProfileDialogflowV2beta1Args {
 
   factory ConversationProfileDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return ConversationProfileDialogflowV2beta1Args(
-      automatedAgentConfig: map['automatedAgentConfig'] == null ? null : (GoogleCloudDialogflowV2beta1AutomatedAgentConfig.fromMap((map['automatedAgentConfig'] as Map).cast<String, dynamic>())).input(),
+      automatedAgentConfig: map['automatedAgentConfig'] == null ? null : (GoogleCloudDialogflowV2beta1AutomatedAgentConfig.fromMap((map['automatedAgentConfig']! as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
-      humanAgentAssistantConfig: map['humanAgentAssistantConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig.fromMap((map['humanAgentAssistantConfig'] as Map).cast<String, dynamic>())).input(),
-      humanAgentHandoffConfig: map['humanAgentHandoffConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig.fromMap((map['humanAgentHandoffConfig'] as Map).cast<String, dynamic>())).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (GoogleCloudDialogflowV2beta1LoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      newMessageEventNotificationConfig: map['newMessageEventNotificationConfig'] == null ? null : (GoogleCloudDialogflowV2beta1NotificationConfig.fromMap((map['newMessageEventNotificationConfig'] as Map).cast<String, dynamic>())).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (GoogleCloudDialogflowV2beta1NotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      securitySettings: map['securitySettings'] == null ? null : (map['securitySettings'] as String).input(),
-      sttConfig: map['sttConfig'] == null ? null : (GoogleCloudDialogflowV2beta1SpeechToTextConfig.fromMap((map['sttConfig'] as Map).cast<String, dynamic>())).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      ttsConfig: map['ttsConfig'] == null ? null : (GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig.fromMap((map['ttsConfig'] as Map).cast<String, dynamic>())).input(),
+      humanAgentAssistantConfig: map['humanAgentAssistantConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig.fromMap((map['humanAgentAssistantConfig']! as Map).cast<String, dynamic>())).input(),
+      humanAgentHandoffConfig: map['humanAgentHandoffConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig.fromMap((map['humanAgentHandoffConfig']! as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (GoogleCloudDialogflowV2beta1LoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      newMessageEventNotificationConfig: map['newMessageEventNotificationConfig'] == null ? null : (GoogleCloudDialogflowV2beta1NotificationConfig.fromMap((map['newMessageEventNotificationConfig']! as Map).cast<String, dynamic>())).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (GoogleCloudDialogflowV2beta1NotificationConfig.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      securitySettings: map['securitySettings'] == null ? null : (map['securitySettings']! as String).input(),
+      sttConfig: map['sttConfig'] == null ? null : (GoogleCloudDialogflowV2beta1SpeechToTextConfig.fromMap((map['sttConfig']! as Map).cast<String, dynamic>())).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      ttsConfig: map['ttsConfig'] == null ? null : (GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig.fromMap((map['ttsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

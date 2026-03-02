@@ -30,7 +30,7 @@ class RouteSpecGrpcRouteActionWeightedTarget {
 
   factory RouteSpecGrpcRouteActionWeightedTarget.fromMap(Map<String, dynamic> map) {
     return RouteSpecGrpcRouteActionWeightedTarget(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
       virtualNode: (map['virtualNode'] as String).input(),
       weight: (map['weight'] as int).input(),
     );

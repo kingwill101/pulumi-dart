@@ -27,8 +27,8 @@ class NetworkMonitorProperties {
 
   factory NetworkMonitorProperties.fromMap(Map<String, dynamic> map) {
     return NetworkMonitorProperties(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
-      bmpConfiguration: map['bmpConfiguration'] == null ? null : (BmpConfigurationProperties.fromMap((map['bmpConfiguration'] as Map).cast<String, dynamic>())).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
+      bmpConfiguration: map['bmpConfiguration'] == null ? null : (BmpConfigurationProperties.fromMap((map['bmpConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

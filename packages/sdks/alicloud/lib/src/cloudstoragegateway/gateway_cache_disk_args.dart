@@ -39,10 +39,10 @@ class GatewayCacheDiskArgs {
 
   factory GatewayCacheDiskArgs.fromMap(Map<String, dynamic> map) {
     return GatewayCacheDiskArgs(
-      cacheDiskCategory: map['cacheDiskCategory'] == null ? null : (map['cacheDiskCategory'] as String).input(),
+      cacheDiskCategory: map['cacheDiskCategory'] == null ? null : (map['cacheDiskCategory']! as String).input(),
       cacheDiskSizeInGb: (map['cacheDiskSizeInGb'] as int).input(),
       gatewayId: (map['gatewayId'] as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
     );
   }
 }

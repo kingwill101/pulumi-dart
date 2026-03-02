@@ -51,10 +51,10 @@ class SecuritySettingArgs {
     return SecuritySettingArgs(
       clusterName: (map['clusterName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securedCoreComplianceAssignment: map['securedCoreComplianceAssignment'] == null ? null : (map['securedCoreComplianceAssignment'] as String).input(),
-      securitySettingsName: map['securitySettingsName'] == null ? null : (map['securitySettingsName'] as String).input(),
-      smbEncryptionForIntraClusterTrafficComplianceAssignment: map['smbEncryptionForIntraClusterTrafficComplianceAssignment'] == null ? null : (map['smbEncryptionForIntraClusterTrafficComplianceAssignment'] as String).input(),
-      wdacComplianceAssignment: map['wdacComplianceAssignment'] == null ? null : (map['wdacComplianceAssignment'] as String).input(),
+      securedCoreComplianceAssignment: map['securedCoreComplianceAssignment'] == null ? null : (map['securedCoreComplianceAssignment']! as String).input(),
+      securitySettingsName: map['securitySettingsName'] == null ? null : (map['securitySettingsName']! as String).input(),
+      smbEncryptionForIntraClusterTrafficComplianceAssignment: map['smbEncryptionForIntraClusterTrafficComplianceAssignment'] == null ? null : (map['smbEncryptionForIntraClusterTrafficComplianceAssignment']! as String).input(),
+      wdacComplianceAssignment: map['wdacComplianceAssignment'] == null ? null : (map['wdacComplianceAssignment']! as String).input(),
     );
   }
 }

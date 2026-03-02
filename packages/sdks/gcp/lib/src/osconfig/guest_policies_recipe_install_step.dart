@@ -64,13 +64,13 @@ class GuestPoliciesRecipeInstallStep {
 
   factory GuestPoliciesRecipeInstallStep.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeInstallStep(
-      archiveExtraction: map['archiveExtraction'] == null ? null : (GuestPoliciesRecipeInstallStepArchiveExtraction.fromMap((map['archiveExtraction'] as Map).cast<String, dynamic>())).input(),
-      dpkgInstallation: map['dpkgInstallation'] == null ? null : (GuestPoliciesRecipeInstallStepDpkgInstallation.fromMap((map['dpkgInstallation'] as Map).cast<String, dynamic>())).input(),
-      fileCopy: map['fileCopy'] == null ? null : (GuestPoliciesRecipeInstallStepFileCopy.fromMap((map['fileCopy'] as Map).cast<String, dynamic>())).input(),
-      fileExec: map['fileExec'] == null ? null : (GuestPoliciesRecipeInstallStepFileExec.fromMap((map['fileExec'] as Map).cast<String, dynamic>())).input(),
-      msiInstallation: map['msiInstallation'] == null ? null : (GuestPoliciesRecipeInstallStepMsiInstallation.fromMap((map['msiInstallation'] as Map).cast<String, dynamic>())).input(),
-      rpmInstallation: map['rpmInstallation'] == null ? null : (GuestPoliciesRecipeInstallStepRpmInstallation.fromMap((map['rpmInstallation'] as Map).cast<String, dynamic>())).input(),
-      scriptRun: map['scriptRun'] == null ? null : (GuestPoliciesRecipeInstallStepScriptRun.fromMap((map['scriptRun'] as Map).cast<String, dynamic>())).input(),
+      archiveExtraction: map['archiveExtraction'] == null ? null : (GuestPoliciesRecipeInstallStepArchiveExtraction.fromMap((map['archiveExtraction']! as Map).cast<String, dynamic>())).input(),
+      dpkgInstallation: map['dpkgInstallation'] == null ? null : (GuestPoliciesRecipeInstallStepDpkgInstallation.fromMap((map['dpkgInstallation']! as Map).cast<String, dynamic>())).input(),
+      fileCopy: map['fileCopy'] == null ? null : (GuestPoliciesRecipeInstallStepFileCopy.fromMap((map['fileCopy']! as Map).cast<String, dynamic>())).input(),
+      fileExec: map['fileExec'] == null ? null : (GuestPoliciesRecipeInstallStepFileExec.fromMap((map['fileExec']! as Map).cast<String, dynamic>())).input(),
+      msiInstallation: map['msiInstallation'] == null ? null : (GuestPoliciesRecipeInstallStepMsiInstallation.fromMap((map['msiInstallation']! as Map).cast<String, dynamic>())).input(),
+      rpmInstallation: map['rpmInstallation'] == null ? null : (GuestPoliciesRecipeInstallStepRpmInstallation.fromMap((map['rpmInstallation']! as Map).cast<String, dynamic>())).input(),
+      scriptRun: map['scriptRun'] == null ? null : (GuestPoliciesRecipeInstallStepScriptRun.fromMap((map['scriptRun']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

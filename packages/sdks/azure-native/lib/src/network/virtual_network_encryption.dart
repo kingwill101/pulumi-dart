@@ -27,7 +27,7 @@ class VirtualNetworkEncryption {
   factory VirtualNetworkEncryption.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkEncryption(
       enabled: (map['enabled'] as bool).input(),
-      enforcement: map['enforcement'] == null ? null : (map['enforcement'] as String).input(),
+      enforcement: map['enforcement'] == null ? null : (map['enforcement']! as String).input(),
     );
   }
 }

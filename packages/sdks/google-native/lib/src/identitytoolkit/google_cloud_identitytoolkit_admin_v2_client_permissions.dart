@@ -26,8 +26,8 @@ class GoogleCloudIdentitytoolkitAdminV2ClientPermissions {
 
   factory GoogleCloudIdentitytoolkitAdminV2ClientPermissions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2ClientPermissions(
-      disabledUserDeletion: map['disabledUserDeletion'] == null ? null : (map['disabledUserDeletion'] as bool).input(),
-      disabledUserSignup: map['disabledUserSignup'] == null ? null : (map['disabledUserSignup'] as bool).input(),
+      disabledUserDeletion: map['disabledUserDeletion'] == null ? null : (map['disabledUserDeletion']! as bool).input(),
+      disabledUserSignup: map['disabledUserSignup'] == null ? null : (map['disabledUserSignup']! as bool).input(),
     );
   }
 }

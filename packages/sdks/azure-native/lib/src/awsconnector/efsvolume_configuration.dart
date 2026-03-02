@@ -42,11 +42,11 @@ class EFSVolumeConfiguration {
 
   factory EFSVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return EFSVolumeConfiguration(
-      authorizationConfig: map['authorizationConfig'] == null ? null : (AuthorizationConfig.fromMap((map['authorizationConfig'] as Map).cast<String, dynamic>())).input(),
-      filesystemId: map['filesystemId'] == null ? null : (map['filesystemId'] as String).input(),
-      rootDirectory: map['rootDirectory'] == null ? null : (map['rootDirectory'] as String).input(),
-      transitEncryption: map['transitEncryption'] == null ? null : (map['transitEncryption'] as String).input(),
-      transitEncryptionPort: map['transitEncryptionPort'] == null ? null : (map['transitEncryptionPort'] as int).input(),
+      authorizationConfig: map['authorizationConfig'] == null ? null : (AuthorizationConfig.fromMap((map['authorizationConfig']! as Map).cast<String, dynamic>())).input(),
+      filesystemId: map['filesystemId'] == null ? null : (map['filesystemId']! as String).input(),
+      rootDirectory: map['rootDirectory'] == null ? null : (map['rootDirectory']! as String).input(),
+      transitEncryption: map['transitEncryption'] == null ? null : (map['transitEncryption']! as String).input(),
+      transitEncryptionPort: map['transitEncryptionPort'] == null ? null : (map['transitEncryptionPort']! as int).input(),
     );
   }
 }

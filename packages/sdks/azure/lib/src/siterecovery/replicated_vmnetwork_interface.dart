@@ -55,14 +55,14 @@ class ReplicatedVMNetworkInterface {
 
   factory ReplicatedVMNetworkInterface.fromMap(Map<String, dynamic> map) {
     return ReplicatedVMNetworkInterface(
-      failoverTestPublicIpAddressId: map['failoverTestPublicIpAddressId'] == null ? null : (map['failoverTestPublicIpAddressId'] as String).input(),
-      failoverTestStaticIp: map['failoverTestStaticIp'] == null ? null : (map['failoverTestStaticIp'] as String).input(),
-      failoverTestSubnetName: map['failoverTestSubnetName'] == null ? null : (map['failoverTestSubnetName'] as String).input(),
-      recoveryLoadBalancerBackendAddressPoolIds: map['recoveryLoadBalancerBackendAddressPoolIds'] == null ? null : ((map['recoveryLoadBalancerBackendAddressPoolIds'] as List).cast<String>()).input(),
-      recoveryPublicIpAddressId: map['recoveryPublicIpAddressId'] == null ? null : (map['recoveryPublicIpAddressId'] as String).input(),
-      sourceNetworkInterfaceId: map['sourceNetworkInterfaceId'] == null ? null : (map['sourceNetworkInterfaceId'] as String).input(),
-      targetStaticIp: map['targetStaticIp'] == null ? null : (map['targetStaticIp'] as String).input(),
-      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName'] as String).input(),
+      failoverTestPublicIpAddressId: map['failoverTestPublicIpAddressId'] == null ? null : (map['failoverTestPublicIpAddressId']! as String).input(),
+      failoverTestStaticIp: map['failoverTestStaticIp'] == null ? null : (map['failoverTestStaticIp']! as String).input(),
+      failoverTestSubnetName: map['failoverTestSubnetName'] == null ? null : (map['failoverTestSubnetName']! as String).input(),
+      recoveryLoadBalancerBackendAddressPoolIds: map['recoveryLoadBalancerBackendAddressPoolIds'] == null ? null : ((map['recoveryLoadBalancerBackendAddressPoolIds']! as List).cast<String>()).input(),
+      recoveryPublicIpAddressId: map['recoveryPublicIpAddressId'] == null ? null : (map['recoveryPublicIpAddressId']! as String).input(),
+      sourceNetworkInterfaceId: map['sourceNetworkInterfaceId'] == null ? null : (map['sourceNetworkInterfaceId']! as String).input(),
+      targetStaticIp: map['targetStaticIp'] == null ? null : (map['targetStaticIp']! as String).input(),
+      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName']! as String).input(),
     );
   }
 }

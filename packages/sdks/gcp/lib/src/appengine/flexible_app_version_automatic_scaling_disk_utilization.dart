@@ -35,10 +35,10 @@ class FlexibleAppVersionAutomaticScalingDiskUtilization {
 
   factory FlexibleAppVersionAutomaticScalingDiskUtilization.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionAutomaticScalingDiskUtilization(
-      targetReadBytesPerSecond: map['targetReadBytesPerSecond'] == null ? null : (map['targetReadBytesPerSecond'] as int).input(),
-      targetReadOpsPerSecond: map['targetReadOpsPerSecond'] == null ? null : (map['targetReadOpsPerSecond'] as int).input(),
-      targetWriteBytesPerSecond: map['targetWriteBytesPerSecond'] == null ? null : (map['targetWriteBytesPerSecond'] as int).input(),
-      targetWriteOpsPerSecond: map['targetWriteOpsPerSecond'] == null ? null : (map['targetWriteOpsPerSecond'] as int).input(),
+      targetReadBytesPerSecond: map['targetReadBytesPerSecond'] == null ? null : (map['targetReadBytesPerSecond']! as int).input(),
+      targetReadOpsPerSecond: map['targetReadOpsPerSecond'] == null ? null : (map['targetReadOpsPerSecond']! as int).input(),
+      targetWriteBytesPerSecond: map['targetWriteBytesPerSecond'] == null ? null : (map['targetWriteBytesPerSecond']! as int).input(),
+      targetWriteOpsPerSecond: map['targetWriteOpsPerSecond'] == null ? null : (map['targetWriteOpsPerSecond']! as int).input(),
     );
   }
 }

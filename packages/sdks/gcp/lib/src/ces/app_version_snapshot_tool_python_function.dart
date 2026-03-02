@@ -34,9 +34,9 @@ class AppVersionSnapshotToolPythonFunction {
 
   factory AppVersionSnapshotToolPythonFunction.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolPythonFunction(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pythonCode: map['pythonCode'] == null ? null : (map['pythonCode'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pythonCode: map['pythonCode'] == null ? null : (map['pythonCode']! as String).input(),
     );
   }
 }

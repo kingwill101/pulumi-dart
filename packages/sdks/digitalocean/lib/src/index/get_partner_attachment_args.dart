@@ -36,10 +36,10 @@ class GetPartnerAttachmentArgs {
 
   factory GetPartnerAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetPartnerAttachmentArgs(
-      bgp: map['bgp'] == null ? null : (GetPartnerAttachmentBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      redundancyZone: map['redundancyZone'] == null ? null : (map['redundancyZone'] as String).input(),
+      bgp: map['bgp'] == null ? null : (GetPartnerAttachmentBgp.fromMap((map['bgp']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      redundancyZone: map['redundancyZone'] == null ? null : (map['redundancyZone']! as String).input(),
     );
   }
 }

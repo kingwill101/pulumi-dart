@@ -64,14 +64,14 @@ class ResourcePolicyRemediationArgs {
 
   factory ResourcePolicyRemediationArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyRemediationArgs(
-      failurePercentage: map['failurePercentage'] == null ? null : (map['failurePercentage'] as double).input(),
-      locationFilters: map['locationFilters'] == null ? null : ((map['locationFilters'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parallelDeployments: map['parallelDeployments'] == null ? null : (map['parallelDeployments'] as int).input(),
+      failurePercentage: map['failurePercentage'] == null ? null : (map['failurePercentage']! as double).input(),
+      locationFilters: map['locationFilters'] == null ? null : ((map['locationFilters']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parallelDeployments: map['parallelDeployments'] == null ? null : (map['parallelDeployments']! as int).input(),
       policyAssignmentId: (map['policyAssignmentId'] as String).input(),
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
-      resourceCount: map['resourceCount'] == null ? null : (map['resourceCount'] as int).input(),
-      resourceDiscoveryMode: map['resourceDiscoveryMode'] == null ? null : (map['resourceDiscoveryMode'] as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId']! as String).input(),
+      resourceCount: map['resourceCount'] == null ? null : (map['resourceCount']! as int).input(),
+      resourceDiscoveryMode: map['resourceDiscoveryMode'] == null ? null : (map['resourceDiscoveryMode']! as String).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

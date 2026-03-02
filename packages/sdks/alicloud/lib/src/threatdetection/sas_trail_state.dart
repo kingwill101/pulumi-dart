@@ -27,8 +27,8 @@ class SasTrailState {
 
   factory SasTrailState.fromMap(Map<String, dynamic> map) {
     return SasTrailState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      serviceTrail: map['serviceTrail'] == null ? null : (SasTrailServiceTrail.fromMap((map['serviceTrail'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      serviceTrail: map['serviceTrail'] == null ? null : (SasTrailServiceTrail.fromMap((map['serviceTrail']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

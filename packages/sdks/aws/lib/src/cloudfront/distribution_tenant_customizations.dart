@@ -33,9 +33,9 @@ class DistributionTenantCustomizations {
 
   factory DistributionTenantCustomizations.fromMap(Map<String, dynamic> map) {
     return DistributionTenantCustomizations(
-      certificate: map['certificate'] == null ? null : (DistributionTenantCustomizationsCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
-      geoRestriction: map['geoRestriction'] == null ? null : (DistributionTenantCustomizationsGeoRestriction.fromMap((map['geoRestriction'] as Map).cast<String, dynamic>())).input(),
-      webAcl: map['webAcl'] == null ? null : (DistributionTenantCustomizationsWebAcl.fromMap((map['webAcl'] as Map).cast<String, dynamic>())).input(),
+      certificate: map['certificate'] == null ? null : ((DistributionTenantCustomizationsCertificate.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input()).input(),
+      geoRestriction: map['geoRestriction'] == null ? null : ((DistributionTenantCustomizationsGeoRestriction.fromMap((map['geoRestriction']! as Map).cast<String, dynamic>())).input()).input(),
+      webAcl: map['webAcl'] == null ? null : ((DistributionTenantCustomizationsWebAcl.fromMap((map['webAcl']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

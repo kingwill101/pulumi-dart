@@ -27,8 +27,8 @@ class PolicyPropertiesResponse {
 
   factory PolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PolicyPropertiesResponse(
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      providerSpecificDetails: map['providerSpecificDetails'] == null ? null : (A2APolicyDetailsResponse.fromMap((map['providerSpecificDetails'] as Map).cast<String, dynamic>())).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      providerSpecificDetails: map['providerSpecificDetails'] == null ? null : (A2APolicyDetailsResponse.fromMap((map['providerSpecificDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -43,10 +43,10 @@ class GcpUserAccessBindingArgs {
 
   factory GcpUserAccessBindingArgs.fromMap(Map<String, dynamic> map) {
     return GcpUserAccessBindingArgs(
-      accessLevels: map['accessLevels'] == null ? null : ((map['accessLevels'] as List).cast<String>()).input(),
-      dryRunAccessLevels: map['dryRunAccessLevels'] == null ? null : ((map['dryRunAccessLevels'] as List).cast<String>()).input(),
+      accessLevels: map['accessLevels'] == null ? null : ((map['accessLevels']! as List).cast<String>()).input(),
+      dryRunAccessLevels: map['dryRunAccessLevels'] == null ? null : ((map['dryRunAccessLevels']! as List).cast<String>()).input(),
       groupKey: (map['groupKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
     );
   }

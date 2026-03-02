@@ -40,9 +40,9 @@ class LicenseArgs {
 
   factory LicenseArgs.fromMap(Map<String, dynamic> map) {
     return LicenseArgs(
-      licenseName: map['licenseName'] == null ? null : (map['licenseName'] as String).input(),
+      licenseName: map['licenseName'] == null ? null : (map['licenseName']! as String).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
-      properties: map['properties'] == null ? null : (VmwareFirewallLicenseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (VmwareFirewallLicenseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -28,8 +28,8 @@ class ListingCommercialInfoCloudMarketplace {
 
   factory ListingCommercialInfoCloudMarketplace.fromMap(Map<String, dynamic> map) {
     return ListingCommercialInfoCloudMarketplace(
-      commercialState: map['commercialState'] == null ? null : (map['commercialState'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      commercialState: map['commercialState'] == null ? null : (map['commercialState']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

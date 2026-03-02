@@ -46,12 +46,12 @@ class ServicePrincipalDefinitionResponse {
 
   factory ServicePrincipalDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalDefinitionResponse(
-      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
-      clientCertificatePassword: map['clientCertificatePassword'] == null ? null : (map['clientCertificatePassword'] as String).input(),
-      clientCertificateSendChain: map['clientCertificateSendChain'] == null ? null : (map['clientCertificateSendChain'] as bool).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate']! as String).input(),
+      clientCertificatePassword: map['clientCertificatePassword'] == null ? null : (map['clientCertificatePassword']! as String).input(),
+      clientCertificateSendChain: map['clientCertificateSendChain'] == null ? null : (map['clientCertificateSendChain']! as bool).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

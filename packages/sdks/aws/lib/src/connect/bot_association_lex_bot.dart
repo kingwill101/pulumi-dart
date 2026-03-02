@@ -25,7 +25,7 @@ class BotAssociationLexBot {
 
   factory BotAssociationLexBot.fromMap(Map<String, dynamic> map) {
     return BotAssociationLexBot(
-      lexRegion: map['lexRegion'] == null ? null : (map['lexRegion'] as String).input(),
+      lexRegion: map['lexRegion'] == null ? null : ((map['lexRegion'] as String).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

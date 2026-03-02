@@ -33,9 +33,9 @@ class FunctionRecursionConfigState {
 
   factory FunctionRecursionConfigState.fromMap(Map<String, dynamic> map) {
     return FunctionRecursionConfigState(
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      recursiveLoop: map['recursiveLoop'] == null ? null : (map['recursiveLoop'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      functionName: map['functionName'] == null ? null : ((map['functionName'] as String).input()).input(),
+      recursiveLoop: map['recursiveLoop'] == null ? null : ((map['recursiveLoop'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

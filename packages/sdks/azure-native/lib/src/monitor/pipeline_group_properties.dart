@@ -52,10 +52,10 @@ class PipelineGroupProperties {
   factory PipelineGroupProperties.fromMap(Map<String, dynamic> map) {
     return PipelineGroupProperties(
       exporters: (pulumi.Input.decodeList<Exporter>(map['exporters'], (value) => Exporter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkingConfigurations: map['networkingConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkingConfiguration>(map['networkingConfigurations'], (value) => NetworkingConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkingConfigurations: map['networkingConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkingConfiguration>(map['networkingConfigurations']!, (value) => NetworkingConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       processors: (pulumi.Input.decodeList<Processor>(map['processors'], (value) => Processor.fromMap((value as Map).cast<String, dynamic>()))).input(),
       receivers: (pulumi.Input.decodeList<Receiver>(map['receivers'], (value) => Receiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
       service: (Service.fromMap((map['service'] as Map).cast<String, dynamic>())).input(),
     );
   }

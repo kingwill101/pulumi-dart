@@ -33,8 +33,8 @@ class AiIndexEndpointPrivateServiceConnectConfig {
   factory AiIndexEndpointPrivateServiceConnectConfig.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointPrivateServiceConnectConfig(
       enablePrivateServiceConnect: (map['enablePrivateServiceConnect'] as bool).input(),
-      projectAllowlists: map['projectAllowlists'] == null ? null : ((map['projectAllowlists'] as List).cast<String>()).input(),
-      pscAutomationConfigs: map['pscAutomationConfigs'] == null ? null : (pulumi.Input.decodeList<AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig>(map['pscAutomationConfigs'], (value) => AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      projectAllowlists: map['projectAllowlists'] == null ? null : ((map['projectAllowlists']! as List).cast<String>()).input(),
+      pscAutomationConfigs: map['pscAutomationConfigs'] == null ? null : (pulumi.Input.decodeList<AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig>(map['pscAutomationConfigs']!, (value) => AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

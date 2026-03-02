@@ -48,7 +48,7 @@ class IAMMemberArgs {
 
   factory IAMMemberArgs.fromMap(Map<String, dynamic> map) {
     return IAMMemberArgs(
-      condition: map['condition'] == null ? null : (IAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (IAMMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
       orgId: (map['orgId'] as String).input(),
       role: (map['role'] as String).input(),

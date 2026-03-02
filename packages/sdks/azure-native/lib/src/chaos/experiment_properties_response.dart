@@ -39,7 +39,7 @@ class ExperimentPropertiesResponse {
 
   factory ExperimentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ExperimentPropertiesResponse(
-      customerDataStorage: map['customerDataStorage'] == null ? null : (CustomerDataStoragePropertiesResponse.fromMap((map['customerDataStorage'] as Map).cast<String, dynamic>())).input(),
+      customerDataStorage: map['customerDataStorage'] == null ? null : (CustomerDataStoragePropertiesResponse.fromMap((map['customerDataStorage']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       selectors: (pulumi.Input.decodeList<ListSelectorResponse>(map['selectors'], (value) => ListSelectorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       steps: (pulumi.Input.decodeList<StepResponse>(map['steps'], (value) => StepResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),

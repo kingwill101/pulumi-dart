@@ -48,12 +48,12 @@ class SqlServerInstanceJobStatusResponse {
 
   factory SqlServerInstanceJobStatusResponse.fromMap(Map<String, dynamic> map) {
     return SqlServerInstanceJobStatusResponse(
-      backgroundJob: map['backgroundJob'] == null ? null : (BackgroundJobResponse.fromMap((map['backgroundJob'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      jobException: map['jobException'] == null ? null : (map['jobException'] as String).input(),
-      jobStatus: map['jobStatus'] == null ? null : (map['jobStatus'] as String).input(),
-      sequencerActions: map['sequencerActions'] == null ? null : (pulumi.Input.decodeList<SequencerActionResponse>(map['sequencerActions'], (value) => SequencerActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backgroundJob: map['backgroundJob'] == null ? null : (BackgroundJobResponse.fromMap((map['backgroundJob']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      jobException: map['jobException'] == null ? null : (map['jobException']! as String).input(),
+      jobStatus: map['jobStatus'] == null ? null : (map['jobStatus']! as String).input(),
+      sequencerActions: map['sequencerActions'] == null ? null : (pulumi.Input.decodeList<SequencerActionResponse>(map['sequencerActions']!, (value) => SequencerActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

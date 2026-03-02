@@ -21,7 +21,7 @@ class ResourceIdResponse {
 
   factory ResourceIdResponse.fromMap(Map<String, dynamic> map) {
     return ResourceIdResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

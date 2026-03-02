@@ -58,8 +58,8 @@ class GetUebaResult {
   factory GetUebaResult.fromMap(Map<String, dynamic> map) {
     return GetUebaResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dataSources: map['dataSources'] == null ? null : (map['dataSources'] as List).cast<String>(),
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      dataSources: map['dataSources'] == null ? null : (map['dataSources']! as List).cast<String>(),
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,

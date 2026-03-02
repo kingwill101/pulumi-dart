@@ -41,8 +41,8 @@ class PrivateEndpointArgs {
   factory PrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointArgs(
       clusterName: (map['clusterName'] as String).input(),
-      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['manualPrivateLinkServiceConnections'], (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateEndpointName: map['privateEndpointName'] == null ? null : (map['privateEndpointName'] as String).input(),
+      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['manualPrivateLinkServiceConnections']!, (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateEndpointName: map['privateEndpointName'] == null ? null : (map['privateEndpointName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

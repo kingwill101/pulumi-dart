@@ -53,12 +53,12 @@ class V2modelsSlotValueElicitationSetting {
 
   factory V2modelsSlotValueElicitationSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSetting(
-      defaultValueSpecifications: map['defaultValueSpecifications'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingDefaultValueSpecification>(map['defaultValueSpecifications'], (value) => V2modelsSlotValueElicitationSettingDefaultValueSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      promptSpecification: map['promptSpecification'] == null ? null : (V2modelsSlotValueElicitationSettingPromptSpecification.fromMap((map['promptSpecification'] as Map).cast<String, dynamic>())).input(),
-      sampleUtterances: map['sampleUtterances'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingSampleUtterance>(map['sampleUtterances'], (value) => V2modelsSlotValueElicitationSettingSampleUtterance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultValueSpecifications: map['defaultValueSpecifications'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingDefaultValueSpecification>(map['defaultValueSpecifications']!, (value) => V2modelsSlotValueElicitationSettingDefaultValueSpecification.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      promptSpecification: map['promptSpecification'] == null ? null : ((V2modelsSlotValueElicitationSettingPromptSpecification.fromMap((map['promptSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      sampleUtterances: map['sampleUtterances'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingSampleUtterance>(map['sampleUtterances']!, (value) => V2modelsSlotValueElicitationSettingSampleUtterance.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       slotConstraint: (map['slotConstraint'] as String).input(),
-      slotResolutionSettings: map['slotResolutionSettings'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingSlotResolutionSetting>(map['slotResolutionSettings'], (value) => V2modelsSlotValueElicitationSettingSlotResolutionSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      waitAndContinueSpecifications: map['waitAndContinueSpecifications'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecification>(map['waitAndContinueSpecifications'], (value) => V2modelsSlotValueElicitationSettingWaitAndContinueSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slotResolutionSettings: map['slotResolutionSettings'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingSlotResolutionSetting>(map['slotResolutionSettings']!, (value) => V2modelsSlotValueElicitationSettingSlotResolutionSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      waitAndContinueSpecifications: map['waitAndContinueSpecifications'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingWaitAndContinueSpecification>(map['waitAndContinueSpecifications']!, (value) => V2modelsSlotValueElicitationSettingWaitAndContinueSpecification.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

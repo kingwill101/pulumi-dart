@@ -84,12 +84,12 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources {
 
   factory AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResources(
-      autoscalingMetricSpecs: map['autoscalingMetricSpecs'] == null ? null : (pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec>(map['autoscalingMetricSpecs'], (value) => AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoscalingMetricSpecs: map['autoscalingMetricSpecs'] == null ? null : (pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec>(map['autoscalingMetricSpecs']!, (value) => AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
       machineSpec: (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
-      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount'] as int).input(),
+      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount']! as int).input(),
       minReplicaCount: (map['minReplicaCount'] as int).input(),
-      requiredReplicaCount: map['requiredReplicaCount'] == null ? null : (map['requiredReplicaCount'] as int).input(),
-      spot: map['spot'] == null ? null : (map['spot'] as bool).input(),
+      requiredReplicaCount: map['requiredReplicaCount'] == null ? null : (map['requiredReplicaCount']! as int).input(),
+      spot: map['spot'] == null ? null : (map['spot']! as bool).input(),
     );
   }
 }

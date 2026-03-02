@@ -52,13 +52,13 @@ class ScaleSetStorageProfileOsDisk {
 
   factory ScaleSetStorageProfileOsDisk.fromMap(Map<String, dynamic> map) {
     return ScaleSetStorageProfileOsDisk(
-      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
+      caching: map['caching'] == null ? null : (map['caching']! as String).input(),
       createOption: (map['createOption'] as String).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      managedDiskType: map['managedDiskType'] == null ? null : (map['managedDiskType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      vhdContainers: map['vhdContainers'] == null ? null : ((map['vhdContainers'] as List).cast<String>()).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      managedDiskType: map['managedDiskType'] == null ? null : (map['managedDiskType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      vhdContainers: map['vhdContainers'] == null ? null : ((map['vhdContainers']! as List).cast<String>()).input(),
     );
   }
 }

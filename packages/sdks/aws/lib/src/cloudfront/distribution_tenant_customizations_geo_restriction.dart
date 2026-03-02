@@ -25,8 +25,8 @@ class DistributionTenantCustomizationsGeoRestriction {
 
   factory DistributionTenantCustomizationsGeoRestriction.fromMap(Map<String, dynamic> map) {
     return DistributionTenantCustomizationsGeoRestriction(
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      restrictionType: map['restrictionType'] == null ? null : (map['restrictionType'] as String).input(),
+      locations: map['locations'] == null ? null : (((map['locations'] as List).cast<String>()).input()).input(),
+      restrictionType: map['restrictionType'] == null ? null : ((map['restrictionType'] as String).input()).input(),
     );
   }
 }

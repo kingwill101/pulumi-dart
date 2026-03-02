@@ -45,10 +45,10 @@ class ExtensionArgs {
 
   factory ExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionArgs(
-      additionalApiProperties: map['additionalApiProperties'] == null ? null : (pulumi.Input.decodeMapValues<ApiProperties>(map['additionalApiProperties'], (value) => ApiProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalApiProperties: map['additionalApiProperties'] == null ? null : (pulumi.Input.decodeMapValues<ApiProperties>(map['additionalApiProperties']!, (value) => ApiProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dataManagerForAgricultureResourceName: (map['dataManagerForAgricultureResourceName'] as String).input(),
-      extensionId: map['extensionId'] == null ? null : (map['extensionId'] as String).input(),
-      extensionVersion: map['extensionVersion'] == null ? null : (map['extensionVersion'] as String).input(),
+      extensionId: map['extensionId'] == null ? null : (map['extensionId']! as String).input(),
+      extensionVersion: map['extensionVersion'] == null ? null : (map['extensionVersion']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

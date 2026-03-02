@@ -42,9 +42,9 @@ class ClusterUserCreatedConnectionsArgs {
 
   factory ClusterUserCreatedConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return ClusterUserCreatedConnectionsArgs(
-      clusterEndpoints: map['clusterEndpoints'] == null ? null : (pulumi.Input.decodeList<ClusterUserCreatedConnectionsClusterEndpoint>(map['clusterEndpoints'], (value) => ClusterUserCreatedConnectionsClusterEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      clusterEndpoints: map['clusterEndpoints'] == null ? null : (pulumi.Input.decodeList<ClusterUserCreatedConnectionsClusterEndpoint>(map['clusterEndpoints']!, (value) => ClusterUserCreatedConnectionsClusterEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

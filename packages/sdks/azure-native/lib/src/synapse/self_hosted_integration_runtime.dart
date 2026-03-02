@@ -33,8 +33,8 @@ class SelfHostedIntegrationRuntime {
 
   factory SelfHostedIntegrationRuntime.fromMap(Map<String, dynamic> map) {
     return SelfHostedIntegrationRuntime(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      linkedInfo: map['linkedInfo'] == null ? null : (LinkedIntegrationRuntimeKeyAuthorization.fromMap((map['linkedInfo'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      linkedInfo: map['linkedInfo'] == null ? null : (LinkedIntegrationRuntimeKeyAuthorization.fromMap((map['linkedInfo']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

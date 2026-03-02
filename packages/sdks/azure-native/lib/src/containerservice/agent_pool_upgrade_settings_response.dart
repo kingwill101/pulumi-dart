@@ -41,11 +41,11 @@ class AgentPoolUpgradeSettingsResponse {
 
   factory AgentPoolUpgradeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AgentPoolUpgradeSettingsResponse(
-      drainTimeoutInMinutes: map['drainTimeoutInMinutes'] == null ? null : (map['drainTimeoutInMinutes'] as int).input(),
-      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge'] as String).input(),
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as String).input(),
-      nodeSoakDurationInMinutes: map['nodeSoakDurationInMinutes'] == null ? null : (map['nodeSoakDurationInMinutes'] as int).input(),
-      undrainableNodeBehavior: map['undrainableNodeBehavior'] == null ? null : (map['undrainableNodeBehavior'] as String).input(),
+      drainTimeoutInMinutes: map['drainTimeoutInMinutes'] == null ? null : (map['drainTimeoutInMinutes']! as int).input(),
+      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge']! as String).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as String).input(),
+      nodeSoakDurationInMinutes: map['nodeSoakDurationInMinutes'] == null ? null : (map['nodeSoakDurationInMinutes']! as int).input(),
+      undrainableNodeBehavior: map['undrainableNodeBehavior'] == null ? null : (map['undrainableNodeBehavior']! as String).input(),
     );
   }
 }

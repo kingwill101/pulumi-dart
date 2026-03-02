@@ -108,22 +108,22 @@ class VirtualMachineImageTemplateArgs {
 
   factory VirtualMachineImageTemplateArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineImageTemplateArgs(
-      autoRun: map['autoRun'] == null ? null : (ImageTemplateAutoRun.fromMap((map['autoRun'] as Map).cast<String, dynamic>())).input(),
-      buildTimeoutInMinutes: map['buildTimeoutInMinutes'] == null ? null : (map['buildTimeoutInMinutes'] as int).input(),
-      customize: map['customize'] == null ? null : (pulumi.Input.decodeList<ImageTemplateFileCustomizer>(map['customize'], (value) => ImageTemplateFileCustomizer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoRun: map['autoRun'] == null ? null : (ImageTemplateAutoRun.fromMap((map['autoRun']! as Map).cast<String, dynamic>())).input(),
+      buildTimeoutInMinutes: map['buildTimeoutInMinutes'] == null ? null : (map['buildTimeoutInMinutes']! as int).input(),
+      customize: map['customize'] == null ? null : (pulumi.Input.decodeList<ImageTemplateFileCustomizer>(map['customize']!, (value) => ImageTemplateFileCustomizer.fromMap((value as Map).cast<String, dynamic>()))).input(),
       distribute: (pulumi.Input.decodeList<ImageTemplateManagedImageDistributor>(map['distribute'], (value) => ImageTemplateManagedImageDistributor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errorHandling: map['errorHandling'] == null ? null : (ImageTemplatePropertiesErrorHandling.fromMap((map['errorHandling'] as Map).cast<String, dynamic>())).input(),
+      errorHandling: map['errorHandling'] == null ? null : (ImageTemplatePropertiesErrorHandling.fromMap((map['errorHandling']! as Map).cast<String, dynamic>())).input(),
       identity: (ImageTemplateIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      imageTemplateName: map['imageTemplateName'] == null ? null : (map['imageTemplateName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedResourceTags: map['managedResourceTags'] == null ? null : ((map['managedResourceTags'] as Map).cast<String, String>()).input(),
-      optimize: map['optimize'] == null ? null : (ImageTemplatePropertiesOptimize.fromMap((map['optimize'] as Map).cast<String, dynamic>())).input(),
+      imageTemplateName: map['imageTemplateName'] == null ? null : (map['imageTemplateName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedResourceTags: map['managedResourceTags'] == null ? null : ((map['managedResourceTags']! as Map).cast<String, String>()).input(),
+      optimize: map['optimize'] == null ? null : (ImageTemplatePropertiesOptimize.fromMap((map['optimize']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       source: (ImageTemplateManagedImageSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      stagingResourceGroup: map['stagingResourceGroup'] == null ? null : (map['stagingResourceGroup'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      validate: map['validate'] == null ? null : (ImageTemplatePropertiesValidate.fromMap((map['validate'] as Map).cast<String, dynamic>())).input(),
-      vmProfile: map['vmProfile'] == null ? null : (ImageTemplateVmProfile.fromMap((map['vmProfile'] as Map).cast<String, dynamic>())).input(),
+      stagingResourceGroup: map['stagingResourceGroup'] == null ? null : (map['stagingResourceGroup']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      validate: map['validate'] == null ? null : (ImageTemplatePropertiesValidate.fromMap((map['validate']! as Map).cast<String, dynamic>())).input(),
+      vmProfile: map['vmProfile'] == null ? null : (ImageTemplateVmProfile.fromMap((map['vmProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

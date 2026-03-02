@@ -75,16 +75,16 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      environmentVars: map['environmentVars'] == null ? null : (pulumi.Input.decodeList<InstanceEnvironmentVar>(map['environmentVars'], (value) => InstanceEnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      environmentVars: map['environmentVars'] == null ? null : (pulumi.Input.decodeList<InstanceEnvironmentVar>(map['environmentVars']!, (value) => InstanceEnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       securityGroupId: (map['securityGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vswitchId: (map['vswitchId'] as String).input(),
     );
   }

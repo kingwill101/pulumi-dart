@@ -63,15 +63,15 @@ class Ipv6AddressState {
 
   factory Ipv6AddressState.fromMap(Map<String, dynamic> map) {
     return Ipv6AddressState(
-      addressType: map['addressType'] == null ? null : (map['addressType'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
-      ipv6AddressDescription: map['ipv6AddressDescription'] == null ? null : (map['ipv6AddressDescription'] as String).input(),
-      ipv6AddressName: map['ipv6AddressName'] == null ? null : (map['ipv6AddressName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      addressType: map['addressType'] == null ? null : (map['addressType']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
+      ipv6AddressDescription: map['ipv6AddressDescription'] == null ? null : (map['ipv6AddressDescription']! as String).input(),
+      ipv6AddressName: map['ipv6AddressName'] == null ? null : (map['ipv6AddressName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

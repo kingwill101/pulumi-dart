@@ -45,9 +45,9 @@ class GetGtmInstancesResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instances: pulumi.Input.decodeList<GetGtmInstancesInstance>(map['instances'], (value) => GetGtmInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      lang: map['lang'] == null ? null : map['lang'] as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
       outputFile: map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
     );
   }
 }

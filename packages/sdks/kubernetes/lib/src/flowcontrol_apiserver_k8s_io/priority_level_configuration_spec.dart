@@ -33,8 +33,8 @@ class PriorityLevelConfigurationSpec {
 
   factory PriorityLevelConfigurationSpec.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationSpec(
-      exempt: map['exempt'] == null ? null : (ExemptPriorityLevelConfiguration.fromMap((map['exempt'] as Map).cast<String, dynamic>())).input(),
-      limited: map['limited'] == null ? null : (LimitedPriorityLevelConfiguration.fromMap((map['limited'] as Map).cast<String, dynamic>())).input(),
+      exempt: map['exempt'] == null ? null : (ExemptPriorityLevelConfiguration.fromMap((map['exempt']! as Map).cast<String, dynamic>())).input(),
+      limited: map['limited'] == null ? null : (LimitedPriorityLevelConfiguration.fromMap((map['limited']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

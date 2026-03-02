@@ -25,8 +25,8 @@ class ClusterNodeGroupPrivatePoolOptions {
 
   factory ClusterNodeGroupPrivatePoolOptions.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupPrivatePoolOptions(
-      matchCriteria: map['matchCriteria'] == null ? null : (map['matchCriteria'] as String).input(),
-      privatePoolIds: map['privatePoolIds'] == null ? null : ((map['privatePoolIds'] as List).cast<String>()).input(),
+      matchCriteria: map['matchCriteria'] == null ? null : (map['matchCriteria']! as String).input(),
+      privatePoolIds: map['privatePoolIds'] == null ? null : ((map['privatePoolIds']! as List).cast<String>()).input(),
     );
   }
 }

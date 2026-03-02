@@ -26,8 +26,8 @@ class CertificateKeyVaultProperties {
 
   factory CertificateKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return CertificateKeyVaultProperties(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl']! as String).input(),
     );
   }
 }

@@ -72,14 +72,14 @@ class GetScriptResult {
   factory GetScriptResult.fromMap(Map<String, dynamic> map) {
     return GetScriptResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      continueOnErrors: map['continueOnErrors'] == null ? null : map['continueOnErrors'] as bool,
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag'] as String,
+      continueOnErrors: map['continueOnErrors'] == null ? null : map['continueOnErrors']! as bool,
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      principalPermissionsAction: map['principalPermissionsAction'] == null ? null : map['principalPermissionsAction'] as String,
+      principalPermissionsAction: map['principalPermissionsAction'] == null ? null : map['principalPermissionsAction']! as String,
       provisioningState: map['provisioningState'] as String,
-      scriptLevel: map['scriptLevel'] == null ? null : map['scriptLevel'] as String,
-      scriptUrl: map['scriptUrl'] == null ? null : map['scriptUrl'] as String,
+      scriptLevel: map['scriptLevel'] == null ? null : map['scriptLevel']! as String,
+      scriptUrl: map['scriptUrl'] == null ? null : map['scriptUrl']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

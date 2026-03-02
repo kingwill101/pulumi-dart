@@ -22,7 +22,7 @@ class GoogleCloudDialogflowCxV3beta1VersionVariants {
 
   factory GoogleCloudDialogflowCxV3beta1VersionVariants.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1VersionVariants(
-      variants: map['variants'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1VersionVariantsVariant>(map['variants'], (value) => GoogleCloudDialogflowCxV3beta1VersionVariantsVariant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      variants: map['variants'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1VersionVariantsVariant>(map['variants']!, (value) => GoogleCloudDialogflowCxV3beta1VersionVariantsVariant.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

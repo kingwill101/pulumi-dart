@@ -26,8 +26,8 @@ class BatchRetrySettings {
 
   factory BatchRetrySettings.fromMap(Map<String, dynamic> map) {
     return BatchRetrySettings(
-      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries'] as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries']! as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

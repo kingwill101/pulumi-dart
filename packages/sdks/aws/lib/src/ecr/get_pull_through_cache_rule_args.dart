@@ -30,7 +30,7 @@ class GetPullThroughCacheRuleArgs {
   factory GetPullThroughCacheRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetPullThroughCacheRuleArgs(
       ecrRepositoryPrefix: (map['ecrRepositoryPrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class SharedStorageResourceNames {
 
   factory SharedStorageResourceNames.fromMap(Map<String, dynamic> map) {
     return SharedStorageResourceNames(
-      sharedStorageAccountName: map['sharedStorageAccountName'] == null ? null : (map['sharedStorageAccountName'] as String).input(),
-      sharedStorageAccountPrivateEndPointName: map['sharedStorageAccountPrivateEndPointName'] == null ? null : (map['sharedStorageAccountPrivateEndPointName'] as String).input(),
+      sharedStorageAccountName: map['sharedStorageAccountName'] == null ? null : (map['sharedStorageAccountName']! as String).input(),
+      sharedStorageAccountPrivateEndPointName: map['sharedStorageAccountPrivateEndPointName'] == null ? null : (map['sharedStorageAccountPrivateEndPointName']! as String).input(),
     );
   }
 }

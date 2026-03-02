@@ -27,7 +27,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabase {
 
   factory StreamBackfillAllMongodbExcludedObjectsDatabase.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllMongodbExcludedObjectsDatabase(
-      collections: map['collections'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllMongodbExcludedObjectsDatabaseCollection>(map['collections'], (value) => StreamBackfillAllMongodbExcludedObjectsDatabaseCollection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      collections: map['collections'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllMongodbExcludedObjectsDatabaseCollection>(map['collections']!, (value) => StreamBackfillAllMongodbExcludedObjectsDatabaseCollection.fromMap((value as Map).cast<String, dynamic>()))).input(),
       database: (map['database'] as String).input(),
     );
   }

@@ -67,10 +67,10 @@ class GetInsightsAccountResult {
       insightsAccountId: map['insightsAccountId'] as String,
       organizationName: map['organizationName'] as String,
       provider: CloudProvider.fromValue(map['provider'] as String),
-      providerConfig: map['providerConfig'] == null ? null : (map['providerConfig'] as Map).cast<String, dynamic>(),
+      providerConfig: map['providerConfig'] == null ? null : (map['providerConfig']! as Map).cast<String, dynamic>(),
       scanSchedule: ScanSchedule.fromValue(map['scanSchedule'] as String),
       scheduledScanEnabled: map['scheduledScanEnabled'] as bool,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

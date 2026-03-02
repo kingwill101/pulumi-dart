@@ -22,7 +22,7 @@ class DiskEncryptionConfigurationResponse {
 
   factory DiskEncryptionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionConfigurationResponse(
-      keyVaultConfiguration: map['keyVaultConfiguration'] == null ? null : (DiskEncryptionConfigurationResponseKeyVaultConfiguration.fromMap((map['keyVaultConfiguration'] as Map).cast<String, dynamic>())).input(),
+      keyVaultConfiguration: map['keyVaultConfiguration'] == null ? null : (DiskEncryptionConfigurationResponseKeyVaultConfiguration.fromMap((map['keyVaultConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

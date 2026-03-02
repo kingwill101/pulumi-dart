@@ -46,12 +46,12 @@ class BasePathMappingState {
 
   factory BasePathMappingState.fromMap(Map<String, dynamic> map) {
     return BasePathMappingState(
-      basePath: map['basePath'] == null ? null : (map['basePath'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      domainNameId: map['domainNameId'] == null ? null : (map['domainNameId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
-      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
+      basePath: map['basePath'] == null ? null : ((map['basePath'] as String).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      domainNameId: map['domainNameId'] == null ? null : ((map['domainNameId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
+      stageName: map['stageName'] == null ? null : ((map['stageName'] as String).input()).input(),
     );
   }
 }

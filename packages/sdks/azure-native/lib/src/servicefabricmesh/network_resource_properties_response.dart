@@ -42,7 +42,7 @@ class NetworkResourcePropertiesResponse {
 
   factory NetworkResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkResourcePropertiesResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       kind: (map['kind'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       status: (map['status'] as String).input(),

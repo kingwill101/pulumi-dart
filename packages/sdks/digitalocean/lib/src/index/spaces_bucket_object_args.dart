@@ -104,22 +104,22 @@ class SpacesBucketObjectArgs {
 
   factory SpacesBucketObjectArgs.fromMap(Map<String, dynamic> map) {
     return SpacesBucketObjectArgs(
-      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
+      acl: map['acl'] == null ? null : (map['acl']! as String).input(),
       bucket: (map['bucket'] as String).input(),
-      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      contentBase64: map['contentBase64'] == null ? null : (map['contentBase64'] as String).input(),
-      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition'] as String).input(),
-      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
-      contentLanguage: map['contentLanguage'] == null ? null : (map['contentLanguage'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl']! as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      contentBase64: map['contentBase64'] == null ? null : (map['contentBase64']! as String).input(),
+      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition']! as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding']! as String).input(),
+      contentLanguage: map['contentLanguage'] == null ? null : (map['contentLanguage']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
       key: (map['key'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
       region: (map['region'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      websiteRedirect: map['websiteRedirect'] == null ? null : (map['websiteRedirect'] as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      websiteRedirect: map['websiteRedirect'] == null ? null : (map['websiteRedirect']! as String).input(),
     );
   }
 }

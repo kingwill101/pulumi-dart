@@ -26,7 +26,7 @@ class MatchVariable {
 
   factory MatchVariable.fromMap(Map<String, dynamic> map) {
     return MatchVariable(
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
       variableName: (map['variableName'] as String).input(),
     );
   }

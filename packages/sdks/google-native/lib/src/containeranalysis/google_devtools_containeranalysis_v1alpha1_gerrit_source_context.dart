@@ -37,10 +37,10 @@ class GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext {
 
   factory GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext(
-      aliasContext: map['aliasContext'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1AliasContext.fromMap((map['aliasContext'] as Map).cast<String, dynamic>())).input(),
-      gerritProject: map['gerritProject'] == null ? null : (map['gerritProject'] as String).input(),
-      hostUri: map['hostUri'] == null ? null : (map['hostUri'] as String).input(),
-      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
+      aliasContext: map['aliasContext'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1AliasContext.fromMap((map['aliasContext']! as Map).cast<String, dynamic>())).input(),
+      gerritProject: map['gerritProject'] == null ? null : (map['gerritProject']! as String).input(),
+      hostUri: map['hostUri'] == null ? null : (map['hostUri']! as String).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId']! as String).input(),
     );
   }
 }

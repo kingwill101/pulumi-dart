@@ -61,15 +61,15 @@ class LocationFsxLustreState {
 
   factory LocationFsxLustreState.fromMap(Map<String, dynamic> map) {
     return LocationFsxLustreState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      fsxFilesystemArn: map['fsxFilesystemArn'] == null ? null : (map['fsxFilesystemArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupArns: map['securityGroupArns'] == null ? null : ((map['securityGroupArns'] as List).cast<String>()).input(),
-      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      creationTime: map['creationTime'] == null ? null : ((map['creationTime'] as String).input()).input(),
+      fsxFilesystemArn: map['fsxFilesystemArn'] == null ? null : ((map['fsxFilesystemArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupArns: map['securityGroupArns'] == null ? null : (((map['securityGroupArns'] as List).cast<String>()).input()).input(),
+      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
     );
   }
 }

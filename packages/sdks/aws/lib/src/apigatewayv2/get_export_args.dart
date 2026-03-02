@@ -55,12 +55,12 @@ class GetExportArgs {
   factory GetExportArgs.fromMap(Map<String, dynamic> map) {
     return GetExportArgs(
       apiId: (map['apiId'] as String).input(),
-      exportVersion: map['exportVersion'] == null ? null : (map['exportVersion'] as String).input(),
-      includeExtensions: map['includeExtensions'] == null ? null : (map['includeExtensions'] as bool).input(),
+      exportVersion: map['exportVersion'] == null ? null : ((map['exportVersion'] as String).input()).input(),
+      includeExtensions: map['includeExtensions'] == null ? null : ((map['includeExtensions'] as bool).input()).input(),
       outputType: (map['outputType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       specification: (map['specification'] as String).input(),
-      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
+      stageName: map['stageName'] == null ? null : ((map['stageName'] as String).input()).input(),
     );
   }
 }

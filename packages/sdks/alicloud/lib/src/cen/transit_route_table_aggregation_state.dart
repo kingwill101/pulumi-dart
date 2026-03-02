@@ -61,13 +61,13 @@ class TransitRouteTableAggregationState {
 
   factory TransitRouteTableAggregationState.fromMap(Map<String, dynamic> map) {
     return TransitRouteTableAggregationState(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transitRouteTableAggregationCidr: map['transitRouteTableAggregationCidr'] == null ? null : (map['transitRouteTableAggregationCidr'] as String).input(),
-      transitRouteTableAggregationDescription: map['transitRouteTableAggregationDescription'] == null ? null : (map['transitRouteTableAggregationDescription'] as String).input(),
-      transitRouteTableAggregationName: map['transitRouteTableAggregationName'] == null ? null : (map['transitRouteTableAggregationName'] as String).input(),
-      transitRouteTableAggregationScope: map['transitRouteTableAggregationScope'] == null ? null : (map['transitRouteTableAggregationScope'] as String).input(),
-      transitRouteTableAggregationScopeLists: map['transitRouteTableAggregationScopeLists'] == null ? null : ((map['transitRouteTableAggregationScopeLists'] as List).cast<String>()).input(),
-      transitRouteTableId: map['transitRouteTableId'] == null ? null : (map['transitRouteTableId'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transitRouteTableAggregationCidr: map['transitRouteTableAggregationCidr'] == null ? null : (map['transitRouteTableAggregationCidr']! as String).input(),
+      transitRouteTableAggregationDescription: map['transitRouteTableAggregationDescription'] == null ? null : (map['transitRouteTableAggregationDescription']! as String).input(),
+      transitRouteTableAggregationName: map['transitRouteTableAggregationName'] == null ? null : (map['transitRouteTableAggregationName']! as String).input(),
+      transitRouteTableAggregationScope: map['transitRouteTableAggregationScope'] == null ? null : (map['transitRouteTableAggregationScope']! as String).input(),
+      transitRouteTableAggregationScopeLists: map['transitRouteTableAggregationScopeLists'] == null ? null : ((map['transitRouteTableAggregationScopeLists']! as List).cast<String>()).input(),
+      transitRouteTableId: map['transitRouteTableId'] == null ? null : (map['transitRouteTableId']! as String).input(),
     );
   }
 }

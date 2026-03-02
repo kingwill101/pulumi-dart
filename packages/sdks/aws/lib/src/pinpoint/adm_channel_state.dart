@@ -41,11 +41,11 @@ class AdmChannelState {
 
   factory AdmChannelState.fromMap(Map<String, dynamic> map) {
     return AdmChannelState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
+      clientId: map['clientId'] == null ? null : ((map['clientId'] as String).input()).input(),
+      clientSecret: map['clientSecret'] == null ? null : ((map['clientSecret'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

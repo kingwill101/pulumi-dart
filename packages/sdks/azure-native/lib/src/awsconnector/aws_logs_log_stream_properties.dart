@@ -26,8 +26,8 @@ class AwsLogsLogStreamProperties {
 
   factory AwsLogsLogStreamProperties.fromMap(Map<String, dynamic> map) {
     return AwsLogsLogStreamProperties(
-      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
-      logStreamName: map['logStreamName'] == null ? null : (map['logStreamName'] as String).input(),
+      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName']! as String).input(),
+      logStreamName: map['logStreamName'] == null ? null : (map['logStreamName']! as String).input(),
     );
   }
 }

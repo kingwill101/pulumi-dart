@@ -36,9 +36,9 @@ class JobDefinitionRetryStrategyEvaluateOnExit {
   factory JobDefinitionRetryStrategyEvaluateOnExit.fromMap(Map<String, dynamic> map) {
     return JobDefinitionRetryStrategyEvaluateOnExit(
       action: (map['action'] as String).input(),
-      onExitCode: map['onExitCode'] == null ? null : (map['onExitCode'] as String).input(),
-      onReason: map['onReason'] == null ? null : (map['onReason'] as String).input(),
-      onStatusReason: map['onStatusReason'] == null ? null : (map['onStatusReason'] as String).input(),
+      onExitCode: map['onExitCode'] == null ? null : ((map['onExitCode'] as String).input()).input(),
+      onReason: map['onReason'] == null ? null : ((map['onReason'] as String).input()).input(),
+      onStatusReason: map['onStatusReason'] == null ? null : ((map['onStatusReason'] as String).input()).input(),
     );
   }
 }

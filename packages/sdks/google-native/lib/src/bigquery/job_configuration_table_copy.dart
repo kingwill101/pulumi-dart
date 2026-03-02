@@ -57,14 +57,14 @@ class JobConfigurationTableCopy {
 
   factory JobConfigurationTableCopy.fromMap(Map<String, dynamic> map) {
     return JobConfigurationTableCopy(
-      createDisposition: map['createDisposition'] == null ? null : (map['createDisposition'] as String).input(),
-      destinationEncryptionConfiguration: map['destinationEncryptionConfiguration'] == null ? null : (EncryptionConfiguration.fromMap((map['destinationEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      destinationExpirationTime: map['destinationExpirationTime'] == null ? null : (map['destinationExpirationTime']).input(),
-      destinationTable: map['destinationTable'] == null ? null : (TableReference.fromMap((map['destinationTable'] as Map).cast<String, dynamic>())).input(),
-      operationType: map['operationType'] == null ? null : (map['operationType'] as String).input(),
-      sourceTable: map['sourceTable'] == null ? null : (TableReference.fromMap((map['sourceTable'] as Map).cast<String, dynamic>())).input(),
-      sourceTables: map['sourceTables'] == null ? null : (pulumi.Input.decodeList<TableReference>(map['sourceTables'], (value) => TableReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      writeDisposition: map['writeDisposition'] == null ? null : (map['writeDisposition'] as String).input(),
+      createDisposition: map['createDisposition'] == null ? null : (map['createDisposition']! as String).input(),
+      destinationEncryptionConfiguration: map['destinationEncryptionConfiguration'] == null ? null : (EncryptionConfiguration.fromMap((map['destinationEncryptionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      destinationExpirationTime: map['destinationExpirationTime'] == null ? null : (map['destinationExpirationTime']!).input(),
+      destinationTable: map['destinationTable'] == null ? null : (TableReference.fromMap((map['destinationTable']! as Map).cast<String, dynamic>())).input(),
+      operationType: map['operationType'] == null ? null : (map['operationType']! as String).input(),
+      sourceTable: map['sourceTable'] == null ? null : (TableReference.fromMap((map['sourceTable']! as Map).cast<String, dynamic>())).input(),
+      sourceTables: map['sourceTables'] == null ? null : (pulumi.Input.decodeList<TableReference>(map['sourceTables']!, (value) => TableReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      writeDisposition: map['writeDisposition'] == null ? null : (map['writeDisposition']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class UserAttachmentState {
 
   factory UserAttachmentState.fromMap(Map<String, dynamic> map) {
     return UserAttachmentState(
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

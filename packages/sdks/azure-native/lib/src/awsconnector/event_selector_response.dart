@@ -37,10 +37,10 @@ class EventSelectorResponse {
 
   factory EventSelectorResponse.fromMap(Map<String, dynamic> map) {
     return EventSelectorResponse(
-      dataResources: map['dataResources'] == null ? null : (pulumi.Input.decodeList<DataResourceResponse>(map['dataResources'], (value) => DataResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludeManagementEventSources: map['excludeManagementEventSources'] == null ? null : ((map['excludeManagementEventSources'] as List).cast<String>()).input(),
-      includeManagementEvents: map['includeManagementEvents'] == null ? null : (map['includeManagementEvents'] as bool).input(),
-      readWriteType: map['readWriteType'] == null ? null : (map['readWriteType'] as String).input(),
+      dataResources: map['dataResources'] == null ? null : (pulumi.Input.decodeList<DataResourceResponse>(map['dataResources']!, (value) => DataResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludeManagementEventSources: map['excludeManagementEventSources'] == null ? null : ((map['excludeManagementEventSources']! as List).cast<String>()).input(),
+      includeManagementEvents: map['includeManagementEvents'] == null ? null : (map['includeManagementEvents']! as bool).input(),
+      readWriteType: map['readWriteType'] == null ? null : (map['readWriteType']! as String).input(),
     );
   }
 }

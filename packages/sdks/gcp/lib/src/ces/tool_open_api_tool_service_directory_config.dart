@@ -26,7 +26,7 @@ class ToolOpenApiToolServiceDirectoryConfig {
 
   factory ToolOpenApiToolServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return ToolOpenApiToolServiceDirectoryConfig(
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

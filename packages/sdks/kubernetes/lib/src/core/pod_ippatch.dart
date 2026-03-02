@@ -21,7 +21,7 @@ class PodIPPatch {
 
   factory PodIPPatch.fromMap(Map<String, dynamic> map) {
     return PodIPPatch(
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
     );
   }
 }

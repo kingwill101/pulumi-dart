@@ -26,8 +26,8 @@ class ClientIncidentDetailsResponse {
 
   factory ClientIncidentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ClientIncidentDetailsResponse(
-      clientIncidentId: map['clientIncidentId'] == null ? null : (map['clientIncidentId'] as String).input(),
-      clientIncidentSource: map['clientIncidentSource'] == null ? null : (map['clientIncidentSource'] as String).input(),
+      clientIncidentId: map['clientIncidentId'] == null ? null : (map['clientIncidentId']! as String).input(),
+      clientIncidentSource: map['clientIncidentSource'] == null ? null : (map['clientIncidentSource']! as String).input(),
     );
   }
 }

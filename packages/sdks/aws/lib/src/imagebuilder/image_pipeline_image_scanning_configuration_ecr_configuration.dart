@@ -24,8 +24,8 @@ class ImagePipelineImageScanningConfigurationEcrConfiguration {
 
   factory ImagePipelineImageScanningConfigurationEcrConfiguration.fromMap(Map<String, dynamic> map) {
     return ImagePipelineImageScanningConfigurationEcrConfiguration(
-      containerTags: map['containerTags'] == null ? null : ((map['containerTags'] as List).cast<String>()).input(),
-      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
+      containerTags: map['containerTags'] == null ? null : (((map['containerTags'] as List).cast<String>()).input()).input(),
+      repositoryName: map['repositoryName'] == null ? null : ((map['repositoryName'] as String).input()).input(),
     );
   }
 }

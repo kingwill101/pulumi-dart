@@ -35,9 +35,9 @@ class DefenderForStorageArgs {
 
   factory DefenderForStorageArgs.fromMap(Map<String, dynamic> map) {
     return DefenderForStorageArgs(
-      properties: map['properties'] == null ? null : (DefenderForStorageSettingProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (DefenderForStorageSettingProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceId: (map['resourceId'] as String).input(),
-      settingName: map['settingName'] == null ? null : (map['settingName'] as String).input(),
+      settingName: map['settingName'] == null ? null : (map['settingName']! as String).input(),
     );
   }
 }

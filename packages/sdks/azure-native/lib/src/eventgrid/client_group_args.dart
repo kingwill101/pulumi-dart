@@ -45,10 +45,10 @@ class ClientGroupArgs {
 
   factory ClientGroupArgs.fromMap(Map<String, dynamic> map) {
     return ClientGroupArgs(
-      clientGroupName: map['clientGroupName'] == null ? null : (map['clientGroupName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      clientGroupName: map['clientGroupName'] == null ? null : (map['clientGroupName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

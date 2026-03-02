@@ -24,7 +24,7 @@ class AppVersionSnapshotAppAudioProcessingConfigBargeInConfig {
 
   factory AppVersionSnapshotAppAudioProcessingConfigBargeInConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppAudioProcessingConfigBargeInConfig(
-      bargeInAwareness: map['bargeInAwareness'] == null ? null : (map['bargeInAwareness'] as bool).input(),
+      bargeInAwareness: map['bargeInAwareness'] == null ? null : (map['bargeInAwareness']! as bool).input(),
     );
   }
 }

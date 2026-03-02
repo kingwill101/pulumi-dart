@@ -22,7 +22,7 @@ class SharedPublicIpAddressConfiguration {
 
   factory SharedPublicIpAddressConfiguration.fromMap(Map<String, dynamic> map) {
     return SharedPublicIpAddressConfiguration(
-      inboundNatRules: map['inboundNatRules'] == null ? null : (pulumi.Input.decodeList<InboundNatRule>(map['inboundNatRules'], (value) => InboundNatRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inboundNatRules: map['inboundNatRules'] == null ? null : (pulumi.Input.decodeList<InboundNatRule>(map['inboundNatRules']!, (value) => InboundNatRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

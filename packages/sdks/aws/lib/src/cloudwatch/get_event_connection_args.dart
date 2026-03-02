@@ -30,7 +30,7 @@ class GetEventConnectionArgs {
   factory GetEventConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetEventConnectionArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

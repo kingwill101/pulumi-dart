@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
 
   factory GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoverySchemaModifiedCadence(
-      frequency: map['frequency'] == null ? null : (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency.fromValue(map['frequency'] as String)).input(),
-      types: map['types'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem>(map['types'], (value) => GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem.fromValue(value as String))).input(),
+      frequency: map['frequency'] == null ? null : (GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency.fromValue(map['frequency']! as String)).input(),
+      types: map['types'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem>(map['types']!, (value) => GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem.fromValue(value as String))).input(),
     );
   }
 }

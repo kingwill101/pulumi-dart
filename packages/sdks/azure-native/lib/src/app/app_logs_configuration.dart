@@ -27,8 +27,8 @@ class AppLogsConfiguration {
 
   factory AppLogsConfiguration.fromMap(Map<String, dynamic> map) {
     return AppLogsConfiguration(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      logAnalyticsConfiguration: map['logAnalyticsConfiguration'] == null ? null : (LogAnalyticsConfiguration.fromMap((map['logAnalyticsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      logAnalyticsConfiguration: map['logAnalyticsConfiguration'] == null ? null : (LogAnalyticsConfiguration.fromMap((map['logAnalyticsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

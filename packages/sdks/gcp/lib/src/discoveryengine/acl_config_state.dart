@@ -41,10 +41,10 @@ class AclConfigState {
 
   factory AclConfigState.fromMap(Map<String, dynamic> map) {
     return AclConfigState(
-      idpConfig: map['idpConfig'] == null ? null : (AclConfigIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      idpConfig: map['idpConfig'] == null ? null : (AclConfigIdpConfig.fromMap((map['idpConfig']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

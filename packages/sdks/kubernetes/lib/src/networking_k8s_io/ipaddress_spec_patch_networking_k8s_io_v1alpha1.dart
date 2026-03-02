@@ -22,7 +22,7 @@ class IPAddressSpecPatchNetworkingK8sIoV1alpha1 {
 
   factory IPAddressSpecPatchNetworkingK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return IPAddressSpecPatchNetworkingK8sIoV1alpha1(
-      parentRef: map['parentRef'] == null ? null : (ParentReferencePatchNetworkingK8sIoV1alpha1.fromMap((map['parentRef'] as Map).cast<String, dynamic>())).input(),
+      parentRef: map['parentRef'] == null ? null : (ParentReferencePatchNetworkingK8sIoV1alpha1.fromMap((map['parentRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

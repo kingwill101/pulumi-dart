@@ -42,11 +42,11 @@ class DiscoveredEventResponse {
 
   factory DiscoveredEventResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveredEventResponse(
-      eventConfiguration: map['eventConfiguration'] == null ? null : (map['eventConfiguration'] as String).input(),
+      eventConfiguration: map['eventConfiguration'] == null ? null : (map['eventConfiguration']! as String).input(),
       eventNotifier: (map['eventNotifier'] as String).input(),
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn'] as String).input(),
+      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn']! as String).input(),
       name: (map['name'] as String).input(),
-      topic: map['topic'] == null ? null : (TopicResponse.fromMap((map['topic'] as Map).cast<String, dynamic>())).input(),
+      topic: map['topic'] == null ? null : (TopicResponse.fromMap((map['topic']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

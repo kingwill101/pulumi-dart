@@ -54,13 +54,13 @@ class HubArgs {
 
   factory HubArgs.fromMap(Map<String, dynamic> map) {
     return HubArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       hubId: (map['hubId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      routingVpcs: map['routingVpcs'] == null ? null : (pulumi.Input.decodeList<RoutingVPC>(map['routingVpcs'], (value) => RoutingVPC.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      routingVpcs: map['routingVpcs'] == null ? null : (pulumi.Input.decodeList<RoutingVPC>(map['routingVpcs']!, (value) => RoutingVPC.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

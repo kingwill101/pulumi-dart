@@ -70,16 +70,16 @@ class IntegrationAccountMapArgs {
 
   factory IntegrationAccountMapArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountMapArgs(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mapName: map['mapName'] == null ? null : (map['mapName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mapName: map['mapName'] == null ? null : (map['mapName']! as String).input(),
       mapType: (map['mapType'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
-      parametersSchema: map['parametersSchema'] == null ? null : (IntegrationAccountMapPropertiesParametersSchema.fromMap((map['parametersSchema'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
+      parametersSchema: map['parametersSchema'] == null ? null : (IntegrationAccountMapPropertiesParametersSchema.fromMap((map['parametersSchema']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

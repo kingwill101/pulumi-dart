@@ -35,7 +35,7 @@ class PolicyAttachmentArgs {
   factory PolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentArgs(
       policyId: (map['policyId'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
       targetId: (map['targetId'] as String).input(),
     );
   }

@@ -32,8 +32,8 @@ class SharedKeyPropertiesResponse {
   factory SharedKeyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SharedKeyPropertiesResponse(
       provisioningState: (map['provisioningState'] as String).input(),
-      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey'] as String).input(),
-      sharedKeyLength: map['sharedKeyLength'] == null ? null : (map['sharedKeyLength'] as int).input(),
+      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey']! as String).input(),
+      sharedKeyLength: map['sharedKeyLength'] == null ? null : (map['sharedKeyLength']! as int).input(),
     );
   }
 }

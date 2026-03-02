@@ -74,12 +74,12 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
 
   factory AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec(
-      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount'] as int).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      multihostGpuNodeCount: map['multihostGpuNodeCount'] == null ? null : (map['multihostGpuNodeCount'] as int).input(),
-      reservationAffinity: map['reservationAffinity'] == null ? null : (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity.fromMap((map['reservationAffinity'] as Map).cast<String, dynamic>())).input(),
-      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology'] as String).input(),
+      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount']! as int).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      multihostGpuNodeCount: map['multihostGpuNodeCount'] == null ? null : (map['multihostGpuNodeCount']! as int).input(),
+      reservationAffinity: map['reservationAffinity'] == null ? null : (AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity.fromMap((map['reservationAffinity']! as Map).cast<String, dynamic>())).input(),
+      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class ProjectLogsConfigCloudwatchLogs {
 
   factory ProjectLogsConfigCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return ProjectLogsConfigCloudwatchLogs(
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      streamName: map['streamName'] == null ? null : (map['streamName'] as String).input(),
+      groupName: map['groupName'] == null ? null : ((map['groupName'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      streamName: map['streamName'] == null ? null : ((map['streamName'] as String).input()).input(),
     );
   }
 }

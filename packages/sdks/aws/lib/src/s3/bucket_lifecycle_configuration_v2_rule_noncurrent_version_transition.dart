@@ -30,7 +30,7 @@ class BucketLifecycleConfigurationV2RuleNoncurrentVersionTransition {
 
   factory BucketLifecycleConfigurationV2RuleNoncurrentVersionTransition.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationV2RuleNoncurrentVersionTransition(
-      newerNoncurrentVersions: map['newerNoncurrentVersions'] == null ? null : (map['newerNoncurrentVersions'] as int).input(),
+      newerNoncurrentVersions: map['newerNoncurrentVersions'] == null ? null : ((map['newerNoncurrentVersions'] as int).input()).input(),
       noncurrentDays: (map['noncurrentDays'] as int).input(),
       storageClass: (map['storageClass'] as String).input(),
     );

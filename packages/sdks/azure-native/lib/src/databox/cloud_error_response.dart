@@ -43,10 +43,10 @@ class CloudErrorResponse {
   factory CloudErrorResponse.fromMap(Map<String, dynamic> map) {
     return CloudErrorResponse(
       additionalInfo: (pulumi.Input.decodeList<AdditionalErrorInfoResponse>(map['additionalInfo'], (value) => AdditionalErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      code: map['code'] == null ? null : (map['code'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
       details: (pulumi.Input.decodeList<CloudErrorResponse>(map['details'], (value) => CloudErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

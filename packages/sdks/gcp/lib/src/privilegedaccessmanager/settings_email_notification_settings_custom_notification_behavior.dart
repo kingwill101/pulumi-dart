@@ -36,9 +36,9 @@ class SettingsEmailNotificationSettingsCustomNotificationBehavior {
 
   factory SettingsEmailNotificationSettingsCustomNotificationBehavior.fromMap(Map<String, dynamic> map) {
     return SettingsEmailNotificationSettingsCustomNotificationBehavior(
-      adminNotifications: map['adminNotifications'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications.fromMap((map['adminNotifications'] as Map).cast<String, dynamic>())).input(),
-      approverNotifications: map['approverNotifications'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications.fromMap((map['approverNotifications'] as Map).cast<String, dynamic>())).input(),
-      requesterNotifications: map['requesterNotifications'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications.fromMap((map['requesterNotifications'] as Map).cast<String, dynamic>())).input(),
+      adminNotifications: map['adminNotifications'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications.fromMap((map['adminNotifications']! as Map).cast<String, dynamic>())).input(),
+      approverNotifications: map['approverNotifications'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications.fromMap((map['approverNotifications']! as Map).cast<String, dynamic>())).input(),
+      requesterNotifications: map['requesterNotifications'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications.fromMap((map['requesterNotifications']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

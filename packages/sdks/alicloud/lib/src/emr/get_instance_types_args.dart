@@ -63,11 +63,11 @@ class GetInstanceTypesArgs {
       clusterType: (map['clusterType'] as String).input(),
       destinationResource: (map['destinationResource'] as String).input(),
       instanceChargeType: (map['instanceChargeType'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      supportLocalStorage: map['supportLocalStorage'] == null ? null : (map['supportLocalStorage'] as bool).input(),
-      supportNodeTypes: map['supportNodeTypes'] == null ? null : ((map['supportNodeTypes'] as List).cast<String>()).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      supportLocalStorage: map['supportLocalStorage'] == null ? null : (map['supportLocalStorage']! as bool).input(),
+      supportNodeTypes: map['supportNodeTypes'] == null ? null : ((map['supportNodeTypes']! as List).cast<String>()).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

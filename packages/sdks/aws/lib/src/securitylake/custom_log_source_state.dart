@@ -56,13 +56,13 @@ class CustomLogSourceState {
 
   factory CustomLogSourceState.fromMap(Map<String, dynamic> map) {
     return CustomLogSourceState(
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<CustomLogSourceAttribute>(map['attributes'], (value) => CustomLogSourceAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configuration: map['configuration'] == null ? null : (CustomLogSourceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      eventClasses: map['eventClasses'] == null ? null : ((map['eventClasses'] as List).cast<String>()).input(),
-      providerDetails: map['providerDetails'] == null ? null : (pulumi.Input.decodeList<CustomLogSourceProviderDetail>(map['providerDetails'], (value) => CustomLogSourceProviderDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceName: map['sourceName'] == null ? null : (map['sourceName'] as String).input(),
-      sourceVersion: map['sourceVersion'] == null ? null : (map['sourceVersion'] as String).input(),
+      attributes: map['attributes'] == null ? null : ((pulumi.Input.decodeList<CustomLogSourceAttribute>(map['attributes']!, (value) => CustomLogSourceAttribute.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      configuration: map['configuration'] == null ? null : ((CustomLogSourceConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      eventClasses: map['eventClasses'] == null ? null : (((map['eventClasses'] as List).cast<String>()).input()).input(),
+      providerDetails: map['providerDetails'] == null ? null : ((pulumi.Input.decodeList<CustomLogSourceProviderDetail>(map['providerDetails']!, (value) => CustomLogSourceProviderDetail.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceName: map['sourceName'] == null ? null : ((map['sourceName'] as String).input()).input(),
+      sourceVersion: map['sourceVersion'] == null ? null : ((map['sourceVersion'] as String).input()).input(),
     );
   }
 }

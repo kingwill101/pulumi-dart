@@ -26,8 +26,8 @@ class RequestUtilizationAppengineV1beta {
 
   factory RequestUtilizationAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return RequestUtilizationAppengineV1beta(
-      targetConcurrentRequests: map['targetConcurrentRequests'] == null ? null : (map['targetConcurrentRequests'] as int).input(),
-      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] == null ? null : (map['targetRequestCountPerSecond'] as int).input(),
+      targetConcurrentRequests: map['targetConcurrentRequests'] == null ? null : (map['targetConcurrentRequests']! as int).input(),
+      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] == null ? null : (map['targetRequestCountPerSecond']! as int).input(),
     );
   }
 }

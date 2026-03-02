@@ -47,12 +47,12 @@ class AzureSynapseOutputDataSource {
 
   factory AzureSynapseOutputDataSource.fromMap(Map<String, dynamic> map) {
     return AzureSynapseOutputDataSource(
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
       type: (map['type'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

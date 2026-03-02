@@ -31,9 +31,9 @@ class SolutionDetailsResponse {
 
   factory SolutionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SolutionDetailsResponse(
-      assessmentCount: map['assessmentCount'] == null ? null : (map['assessmentCount'] as int).input(),
-      extendedDetails: map['extendedDetails'] == null ? null : ((map['extendedDetails'] as Map).cast<String, String>()).input(),
-      groupCount: map['groupCount'] == null ? null : (map['groupCount'] as int).input(),
+      assessmentCount: map['assessmentCount'] == null ? null : (map['assessmentCount']! as int).input(),
+      extendedDetails: map['extendedDetails'] == null ? null : ((map['extendedDetails']! as Map).cast<String, String>()).input(),
+      groupCount: map['groupCount'] == null ? null : (map['groupCount']! as int).input(),
     );
   }
 }

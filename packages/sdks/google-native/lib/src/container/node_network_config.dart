@@ -60,14 +60,14 @@ class NodeNetworkConfig {
 
   factory NodeNetworkConfig.fromMap(Map<String, dynamic> map) {
     return NodeNetworkConfig(
-      additionalNodeNetworkConfigs: map['additionalNodeNetworkConfigs'] == null ? null : (pulumi.Input.decodeList<AdditionalNodeNetworkConfig>(map['additionalNodeNetworkConfigs'], (value) => AdditionalNodeNetworkConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      additionalPodNetworkConfigs: map['additionalPodNetworkConfigs'] == null ? null : (pulumi.Input.decodeList<AdditionalPodNetworkConfig>(map['additionalPodNetworkConfigs'], (value) => AdditionalPodNetworkConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createPodRange: map['createPodRange'] == null ? null : (map['createPodRange'] as bool).input(),
-      enablePrivateNodes: map['enablePrivateNodes'] == null ? null : (map['enablePrivateNodes'] as bool).input(),
-      networkPerformanceConfig: map['networkPerformanceConfig'] == null ? null : (NetworkPerformanceConfig.fromMap((map['networkPerformanceConfig'] as Map).cast<String, dynamic>())).input(),
-      podCidrOverprovisionConfig: map['podCidrOverprovisionConfig'] == null ? null : (PodCIDROverprovisionConfig.fromMap((map['podCidrOverprovisionConfig'] as Map).cast<String, dynamic>())).input(),
-      podIpv4CidrBlock: map['podIpv4CidrBlock'] == null ? null : (map['podIpv4CidrBlock'] as String).input(),
-      podRange: map['podRange'] == null ? null : (map['podRange'] as String).input(),
+      additionalNodeNetworkConfigs: map['additionalNodeNetworkConfigs'] == null ? null : (pulumi.Input.decodeList<AdditionalNodeNetworkConfig>(map['additionalNodeNetworkConfigs']!, (value) => AdditionalNodeNetworkConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalPodNetworkConfigs: map['additionalPodNetworkConfigs'] == null ? null : (pulumi.Input.decodeList<AdditionalPodNetworkConfig>(map['additionalPodNetworkConfigs']!, (value) => AdditionalPodNetworkConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createPodRange: map['createPodRange'] == null ? null : (map['createPodRange']! as bool).input(),
+      enablePrivateNodes: map['enablePrivateNodes'] == null ? null : (map['enablePrivateNodes']! as bool).input(),
+      networkPerformanceConfig: map['networkPerformanceConfig'] == null ? null : (NetworkPerformanceConfig.fromMap((map['networkPerformanceConfig']! as Map).cast<String, dynamic>())).input(),
+      podCidrOverprovisionConfig: map['podCidrOverprovisionConfig'] == null ? null : (PodCIDROverprovisionConfig.fromMap((map['podCidrOverprovisionConfig']! as Map).cast<String, dynamic>())).input(),
+      podIpv4CidrBlock: map['podIpv4CidrBlock'] == null ? null : (map['podIpv4CidrBlock']! as String).input(),
+      podRange: map['podRange'] == null ? null : (map['podRange']! as String).input(),
     );
   }
 }

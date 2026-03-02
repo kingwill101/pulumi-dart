@@ -36,10 +36,10 @@ class ServiceTaskSpecPlacement {
 
   factory ServiceTaskSpecPlacement.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecPlacement(
-      constraints: map['constraints'] == null ? null : ((map['constraints'] as List).cast<String>()).input(),
-      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas'] as int).input(),
-      platforms: map['platforms'] == null ? null : (pulumi.Input.decodeList<ServiceTaskSpecPlacementPlatform>(map['platforms'], (value) => ServiceTaskSpecPlacementPlatform.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prefs: map['prefs'] == null ? null : ((map['prefs'] as List).cast<String>()).input(),
+      constraints: map['constraints'] == null ? null : ((map['constraints']! as List).cast<String>()).input(),
+      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas']! as int).input(),
+      platforms: map['platforms'] == null ? null : (pulumi.Input.decodeList<ServiceTaskSpecPlacementPlatform>(map['platforms']!, (value) => ServiceTaskSpecPlacementPlatform.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prefs: map['prefs'] == null ? null : ((map['prefs']! as List).cast<String>()).input(),
     );
   }
 }

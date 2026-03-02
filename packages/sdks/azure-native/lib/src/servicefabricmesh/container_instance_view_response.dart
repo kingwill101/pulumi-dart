@@ -38,10 +38,10 @@ class ContainerInstanceViewResponse {
 
   factory ContainerInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return ContainerInstanceViewResponse(
-      currentState: map['currentState'] == null ? null : (ContainerStateResponse.fromMap((map['currentState'] as Map).cast<String, dynamic>())).input(),
-      events: map['events'] == null ? null : (pulumi.Input.decodeList<ContainerEventResponse>(map['events'], (value) => ContainerEventResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      previousState: map['previousState'] == null ? null : (ContainerStateResponse.fromMap((map['previousState'] as Map).cast<String, dynamic>())).input(),
-      restartCount: map['restartCount'] == null ? null : (map['restartCount'] as int).input(),
+      currentState: map['currentState'] == null ? null : (ContainerStateResponse.fromMap((map['currentState']! as Map).cast<String, dynamic>())).input(),
+      events: map['events'] == null ? null : (pulumi.Input.decodeList<ContainerEventResponse>(map['events']!, (value) => ContainerEventResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      previousState: map['previousState'] == null ? null : (ContainerStateResponse.fromMap((map['previousState']! as Map).cast<String, dynamic>())).input(),
+      restartCount: map['restartCount'] == null ? null : (map['restartCount']! as int).input(),
     );
   }
 }

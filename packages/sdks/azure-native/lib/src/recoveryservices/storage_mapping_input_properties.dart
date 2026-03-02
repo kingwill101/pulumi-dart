@@ -21,7 +21,7 @@ class StorageMappingInputProperties {
 
   factory StorageMappingInputProperties.fromMap(Map<String, dynamic> map) {
     return StorageMappingInputProperties(
-      targetStorageClassificationId: map['targetStorageClassificationId'] == null ? null : (map['targetStorageClassificationId'] as String).input(),
+      targetStorageClassificationId: map['targetStorageClassificationId'] == null ? null : (map['targetStorageClassificationId']! as String).input(),
     );
   }
 }

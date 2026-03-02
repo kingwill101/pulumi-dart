@@ -52,11 +52,11 @@ class LbEdgeExtensionExtensionChainExtension {
 
   factory LbEdgeExtensionExtensionChainExtension.fromMap(Map<String, dynamic> map) {
     return LbEdgeExtensionExtensionChainExtension(
-      failOpen: map['failOpen'] == null ? null : (map['failOpen'] as bool).input(),
-      forwardHeaders: map['forwardHeaders'] == null ? null : ((map['forwardHeaders'] as List).cast<String>()).input(),
+      failOpen: map['failOpen'] == null ? null : (map['failOpen']! as bool).input(),
+      forwardHeaders: map['forwardHeaders'] == null ? null : ((map['forwardHeaders']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
       service: (map['service'] as String).input(),
-      supportedEvents: map['supportedEvents'] == null ? null : ((map['supportedEvents'] as List).cast<String>()).input(),
+      supportedEvents: map['supportedEvents'] == null ? null : ((map['supportedEvents']! as List).cast<String>()).input(),
     );
   }
 }

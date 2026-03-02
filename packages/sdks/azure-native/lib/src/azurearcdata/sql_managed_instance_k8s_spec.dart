@@ -39,10 +39,10 @@ class SqlManagedInstanceK8sSpec {
 
   factory SqlManagedInstanceK8sSpec.fromMap(Map<String, dynamic> map) {
     return SqlManagedInstanceK8sSpec(
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
-      scheduling: map['scheduling'] == null ? null : (K8sScheduling.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
-      security: map['security'] == null ? null : (K8sSecurity.fromMap((map['security'] as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (K8sSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      scheduling: map['scheduling'] == null ? null : (K8sScheduling.fromMap((map['scheduling']! as Map).cast<String, dynamic>())).input(),
+      security: map['security'] == null ? null : (K8sSecurity.fromMap((map['security']! as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (K8sSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

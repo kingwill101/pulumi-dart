@@ -21,7 +21,7 @@ class EndpointConfig {
 
   factory EndpointConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfig(
-      enableHttpPortAccess: map['enableHttpPortAccess'] == null ? null : (map['enableHttpPortAccess'] as bool).input(),
+      enableHttpPortAccess: map['enableHttpPortAccess'] == null ? null : (map['enableHttpPortAccess']! as bool).input(),
     );
   }
 }

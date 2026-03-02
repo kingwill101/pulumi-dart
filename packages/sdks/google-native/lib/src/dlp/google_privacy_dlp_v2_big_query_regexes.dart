@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2BigQueryRegexes {
 
   factory GooglePrivacyDlpV2BigQueryRegexes.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryRegexes(
-      patterns: map['patterns'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryRegex>(map['patterns'], (value) => GooglePrivacyDlpV2BigQueryRegex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      patterns: map['patterns'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryRegex>(map['patterns']!, (value) => GooglePrivacyDlpV2BigQueryRegex.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

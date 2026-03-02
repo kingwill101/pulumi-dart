@@ -29,9 +29,9 @@ class SoftDeleteSettings {
 
   factory SoftDeleteSettings.fromMap(Map<String, dynamic> map) {
     return SoftDeleteSettings(
-      enhancedSecurityState: map['enhancedSecurityState'] == null ? null : (map['enhancedSecurityState'] as String).input(),
-      softDeleteRetentionPeriodInDays: map['softDeleteRetentionPeriodInDays'] == null ? null : (map['softDeleteRetentionPeriodInDays'] as int).input(),
-      softDeleteState: map['softDeleteState'] == null ? null : (map['softDeleteState'] as String).input(),
+      enhancedSecurityState: map['enhancedSecurityState'] == null ? null : (map['enhancedSecurityState']! as String).input(),
+      softDeleteRetentionPeriodInDays: map['softDeleteRetentionPeriodInDays'] == null ? null : (map['softDeleteRetentionPeriodInDays']! as int).input(),
+      softDeleteState: map['softDeleteState'] == null ? null : (map['softDeleteState']! as String).input(),
     );
   }
 }

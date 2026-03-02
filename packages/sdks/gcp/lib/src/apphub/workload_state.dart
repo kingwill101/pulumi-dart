@@ -98,21 +98,21 @@ class WorkloadState {
 
   factory WorkloadState.fromMap(Map<String, dynamic> map) {
     return WorkloadState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      attributes: map['attributes'] == null ? null : (WorkloadAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      discoveredWorkload: map['discoveredWorkload'] == null ? null : (map['discoveredWorkload'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      workloadId: map['workloadId'] == null ? null : (map['workloadId'] as String).input(),
-      workloadProperties: map['workloadProperties'] == null ? null : (pulumi.Input.decodeList<WorkloadWorkloadProperty>(map['workloadProperties'], (value) => WorkloadWorkloadProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workloadReferences: map['workloadReferences'] == null ? null : (pulumi.Input.decodeList<WorkloadWorkloadReference>(map['workloadReferences'], (value) => WorkloadWorkloadReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      attributes: map['attributes'] == null ? null : (WorkloadAttributes.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      discoveredWorkload: map['discoveredWorkload'] == null ? null : (map['discoveredWorkload']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      workloadId: map['workloadId'] == null ? null : (map['workloadId']! as String).input(),
+      workloadProperties: map['workloadProperties'] == null ? null : (pulumi.Input.decodeList<WorkloadWorkloadProperty>(map['workloadProperties']!, (value) => WorkloadWorkloadProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workloadReferences: map['workloadReferences'] == null ? null : (pulumi.Input.decodeList<WorkloadWorkloadReference>(map['workloadReferences']!, (value) => WorkloadWorkloadReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

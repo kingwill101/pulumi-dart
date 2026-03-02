@@ -20,7 +20,7 @@ class PipeTargetParametersBatchJobParametersRetryStrategy {
 
   factory PipeTargetParametersBatchJobParametersRetryStrategy.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersBatchJobParametersRetryStrategy(
-      attempts: map['attempts'] == null ? null : (map['attempts'] as int).input(),
+      attempts: map['attempts'] == null ? null : ((map['attempts'] as int).input()).input(),
     );
   }
 }

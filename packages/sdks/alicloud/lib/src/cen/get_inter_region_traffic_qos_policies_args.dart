@@ -64,13 +64,13 @@ class GetInterRegionTrafficQosPoliciesArgs {
 
   factory GetInterRegionTrafficQosPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetInterRegionTrafficQosPoliciesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      trafficQosPolicyDescription: map['trafficQosPolicyDescription'] == null ? null : (map['trafficQosPolicyDescription'] as String).input(),
-      trafficQosPolicyId: map['trafficQosPolicyId'] == null ? null : (map['trafficQosPolicyId'] as String).input(),
-      trafficQosPolicyName: map['trafficQosPolicyName'] == null ? null : (map['trafficQosPolicyName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      trafficQosPolicyDescription: map['trafficQosPolicyDescription'] == null ? null : (map['trafficQosPolicyDescription']! as String).input(),
+      trafficQosPolicyId: map['trafficQosPolicyId'] == null ? null : (map['trafficQosPolicyId']! as String).input(),
+      trafficQosPolicyName: map['trafficQosPolicyName'] == null ? null : (map['trafficQosPolicyName']! as String).input(),
       transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
       transitRouterId: (map['transitRouterId'] as String).input(),
     );

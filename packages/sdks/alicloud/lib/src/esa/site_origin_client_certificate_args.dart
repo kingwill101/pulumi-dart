@@ -42,7 +42,7 @@ class SiteOriginClientCertificateArgs {
       certificate: (map['certificate'] as String).input(),
       privateKey: (map['privateKey'] as String).input(),
       siteId: (map['siteId'] as String).input(),
-      siteOriginClientCertificateName: map['siteOriginClientCertificateName'] == null ? null : (map['siteOriginClientCertificateName'] as String).input(),
+      siteOriginClientCertificateName: map['siteOriginClientCertificateName'] == null ? null : (map['siteOriginClientCertificateName']! as String).input(),
     );
   }
 }

@@ -40,10 +40,10 @@ class PartnerConfigurationArgs {
 
   factory PartnerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return PartnerConfigurationArgs(
-      defaultMaximumExpirationTimeInDays: map['defaultMaximumExpirationTimeInDays'] == null ? null : (map['defaultMaximumExpirationTimeInDays'] as int).input(),
-      partnerAuthorizations: map['partnerAuthorizations'] == null ? null : (pulumi.Input.decodeList<PartnerConfigurationPartnerAuthorization>(map['partnerAuthorizations'], (value) => PartnerConfigurationPartnerAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultMaximumExpirationTimeInDays: map['defaultMaximumExpirationTimeInDays'] == null ? null : (map['defaultMaximumExpirationTimeInDays']! as int).input(),
+      partnerAuthorizations: map['partnerAuthorizations'] == null ? null : (pulumi.Input.decodeList<PartnerConfigurationPartnerAuthorization>(map['partnerAuthorizations']!, (value) => PartnerConfigurationPartnerAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ObjectCopyOverrideProvider {
 
   factory ObjectCopyOverrideProvider.fromMap(Map<String, dynamic> map) {
     return ObjectCopyOverrideProvider(
-      defaultTags: map['defaultTags'] == null ? null : (ObjectCopyOverrideProviderDefaultTags.fromMap((map['defaultTags'] as Map).cast<String, dynamic>())).input(),
+      defaultTags: map['defaultTags'] == null ? null : ((ObjectCopyOverrideProviderDefaultTags.fromMap((map['defaultTags']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

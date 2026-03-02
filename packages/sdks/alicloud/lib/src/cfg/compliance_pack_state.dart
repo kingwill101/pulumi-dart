@@ -53,13 +53,13 @@ class CompliancePackState {
 
   factory CompliancePackState.fromMap(Map<String, dynamic> map) {
     return CompliancePackState(
-      compliancePackName: map['compliancePackName'] == null ? null : (map['compliancePackName'] as String).input(),
-      compliancePackTemplateId: map['compliancePackTemplateId'] == null ? null : (map['compliancePackTemplateId'] as String).input(),
-      configRuleIds: map['configRuleIds'] == null ? null : (pulumi.Input.decodeList<CompliancePackConfigRuleId>(map['configRuleIds'], (value) => CompliancePackConfigRuleId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configRules: map['configRules'] == null ? null : (pulumi.Input.decodeList<CompliancePackConfigRule>(map['configRules'], (value) => CompliancePackConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      riskLevel: map['riskLevel'] == null ? null : (map['riskLevel'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      compliancePackName: map['compliancePackName'] == null ? null : (map['compliancePackName']! as String).input(),
+      compliancePackTemplateId: map['compliancePackTemplateId'] == null ? null : (map['compliancePackTemplateId']! as String).input(),
+      configRuleIds: map['configRuleIds'] == null ? null : (pulumi.Input.decodeList<CompliancePackConfigRuleId>(map['configRuleIds']!, (value) => CompliancePackConfigRuleId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configRules: map['configRules'] == null ? null : (pulumi.Input.decodeList<CompliancePackConfigRule>(map['configRules']!, (value) => CompliancePackConfigRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      riskLevel: map['riskLevel'] == null ? null : (map['riskLevel']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

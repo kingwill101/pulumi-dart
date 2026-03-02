@@ -83,19 +83,19 @@ class CassandraDatacenterState {
 
   factory CassandraDatacenterState.fromMap(Map<String, dynamic> map) {
     return CassandraDatacenterState(
-      availabilityZonesEnabled: map['availabilityZonesEnabled'] == null ? null : (map['availabilityZonesEnabled'] as bool).input(),
-      backupStorageCustomerKeyUri: map['backupStorageCustomerKeyUri'] == null ? null : (map['backupStorageCustomerKeyUri'] as String).input(),
-      base64EncodedYamlFragment: map['base64EncodedYamlFragment'] == null ? null : (map['base64EncodedYamlFragment'] as String).input(),
-      cassandraClusterId: map['cassandraClusterId'] == null ? null : (map['cassandraClusterId'] as String).input(),
-      delegatedManagementSubnetId: map['delegatedManagementSubnetId'] == null ? null : (map['delegatedManagementSubnetId'] as String).input(),
-      diskCount: map['diskCount'] == null ? null : (map['diskCount'] as int).input(),
-      diskSku: map['diskSku'] == null ? null : (map['diskSku'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedDiskCustomerKeyUri: map['managedDiskCustomerKeyUri'] == null ? null : (map['managedDiskCustomerKeyUri'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      seedNodeIpAddresses: map['seedNodeIpAddresses'] == null ? null : ((map['seedNodeIpAddresses'] as List).cast<String>()).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
+      availabilityZonesEnabled: map['availabilityZonesEnabled'] == null ? null : (map['availabilityZonesEnabled']! as bool).input(),
+      backupStorageCustomerKeyUri: map['backupStorageCustomerKeyUri'] == null ? null : (map['backupStorageCustomerKeyUri']! as String).input(),
+      base64EncodedYamlFragment: map['base64EncodedYamlFragment'] == null ? null : (map['base64EncodedYamlFragment']! as String).input(),
+      cassandraClusterId: map['cassandraClusterId'] == null ? null : (map['cassandraClusterId']! as String).input(),
+      delegatedManagementSubnetId: map['delegatedManagementSubnetId'] == null ? null : (map['delegatedManagementSubnetId']! as String).input(),
+      diskCount: map['diskCount'] == null ? null : (map['diskCount']! as int).input(),
+      diskSku: map['diskSku'] == null ? null : (map['diskSku']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedDiskCustomerKeyUri: map['managedDiskCustomerKeyUri'] == null ? null : (map['managedDiskCustomerKeyUri']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      seedNodeIpAddresses: map['seedNodeIpAddresses'] == null ? null : ((map['seedNodeIpAddresses']! as List).cast<String>()).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
     );
   }
 }

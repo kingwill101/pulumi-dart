@@ -22,7 +22,7 @@ class VirtualRouterSpec {
 
   factory VirtualRouterSpec.fromMap(Map<String, dynamic> map) {
     return VirtualRouterSpec(
-      listeners: map['listeners'] == null ? null : (pulumi.Input.decodeList<VirtualRouterSpecListener>(map['listeners'], (value) => VirtualRouterSpecListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      listeners: map['listeners'] == null ? null : ((pulumi.Input.decodeList<VirtualRouterSpecListener>(map['listeners']!, (value) => VirtualRouterSpecListener.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

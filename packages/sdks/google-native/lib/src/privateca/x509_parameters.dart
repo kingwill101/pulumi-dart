@@ -51,12 +51,12 @@ class X509Parameters {
 
   factory X509Parameters.fromMap(Map<String, dynamic> map) {
     return X509Parameters(
-      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<X509Extension>(map['additionalExtensions'], (value) => X509Extension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aiaOcspServers: map['aiaOcspServers'] == null ? null : ((map['aiaOcspServers'] as List).cast<String>()).input(),
-      caOptions: map['caOptions'] == null ? null : (CaOptions.fromMap((map['caOptions'] as Map).cast<String, dynamic>())).input(),
-      keyUsage: map['keyUsage'] == null ? null : (KeyUsage.fromMap((map['keyUsage'] as Map).cast<String, dynamic>())).input(),
-      nameConstraints: map['nameConstraints'] == null ? null : (NameConstraints.fromMap((map['nameConstraints'] as Map).cast<String, dynamic>())).input(),
-      policyIds: map['policyIds'] == null ? null : (pulumi.Input.decodeList<ObjectId>(map['policyIds'], (value) => ObjectId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<X509Extension>(map['additionalExtensions']!, (value) => X509Extension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aiaOcspServers: map['aiaOcspServers'] == null ? null : ((map['aiaOcspServers']! as List).cast<String>()).input(),
+      caOptions: map['caOptions'] == null ? null : (CaOptions.fromMap((map['caOptions']! as Map).cast<String, dynamic>())).input(),
+      keyUsage: map['keyUsage'] == null ? null : (KeyUsage.fromMap((map['keyUsage']! as Map).cast<String, dynamic>())).input(),
+      nameConstraints: map['nameConstraints'] == null ? null : (NameConstraints.fromMap((map['nameConstraints']! as Map).cast<String, dynamic>())).input(),
+      policyIds: map['policyIds'] == null ? null : (pulumi.Input.decodeList<ObjectId>(map['policyIds']!, (value) => ObjectId.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

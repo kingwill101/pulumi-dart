@@ -63,10 +63,10 @@ class ReplicationRecoveryPlanArgs {
 
   factory ReplicationRecoveryPlanArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationRecoveryPlanArgs(
-      azureToAzureSettings: map['azureToAzureSettings'] == null ? null : (ReplicationRecoveryPlanAzureToAzureSettings.fromMap((map['azureToAzureSettings'] as Map).cast<String, dynamic>())).input(),
+      azureToAzureSettings: map['azureToAzureSettings'] == null ? null : (ReplicationRecoveryPlanAzureToAzureSettings.fromMap((map['azureToAzureSettings']! as Map).cast<String, dynamic>())).input(),
       bootRecoveryGroups: (pulumi.Input.decodeList<ReplicationRecoveryPlanBootRecoveryGroup>(map['bootRecoveryGroups'], (value) => ReplicationRecoveryPlanBootRecoveryGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
       failoverRecoveryGroup: (ReplicationRecoveryPlanFailoverRecoveryGroup.fromMap((map['failoverRecoveryGroup'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       recoveryVaultId: (map['recoveryVaultId'] as String).input(),
       shutdownRecoveryGroup: (ReplicationRecoveryPlanShutdownRecoveryGroup.fromMap((map['shutdownRecoveryGroup'] as Map).cast<String, dynamic>())).input(),
       sourceRecoveryFabricId: (map['sourceRecoveryFabricId'] as String).input(),

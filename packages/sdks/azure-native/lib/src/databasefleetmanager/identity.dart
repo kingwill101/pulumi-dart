@@ -32,9 +32,9 @@ class Identity {
 
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
-      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId'] as String).input(),
-      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeList<DatabaseIdentity>(map['userAssignedIdentities'], (value) => DatabaseIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId']! as String).input(),
+      identityType: map['identityType'] == null ? null : (map['identityType']! as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeList<DatabaseIdentity>(map['userAssignedIdentities']!, (value) => DatabaseIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

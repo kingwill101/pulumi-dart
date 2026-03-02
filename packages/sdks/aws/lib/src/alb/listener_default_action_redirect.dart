@@ -47,11 +47,11 @@ class ListenerDefaultActionRedirect {
 
   factory ListenerDefaultActionRedirect.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionRedirect(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
+      host: map['host'] == null ? null : ((map['host'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as String).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      query: map['query'] == null ? null : ((map['query'] as String).input()).input(),
       statusCode: (map['statusCode'] as String).input(),
     );
   }

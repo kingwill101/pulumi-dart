@@ -38,10 +38,10 @@ class MigrateAgentModelProperties {
 
   factory MigrateAgentModelProperties.fromMap(Map<String, dynamic> map) {
     return MigrateAgentModelProperties(
-      authenticationIdentity: map['authenticationIdentity'] == null ? null : (IdentityModel.fromMap((map['authenticationIdentity'] as Map).cast<String, dynamic>())).input(),
-      customProperties: map['customProperties'] == null ? null : (VMwareMigrateAgentModelCustomProperties.fromMap((map['customProperties'] as Map).cast<String, dynamic>())).input(),
-      machineId: map['machineId'] == null ? null : (map['machineId'] as String).input(),
-      machineName: map['machineName'] == null ? null : (map['machineName'] as String).input(),
+      authenticationIdentity: map['authenticationIdentity'] == null ? null : (IdentityModel.fromMap((map['authenticationIdentity']! as Map).cast<String, dynamic>())).input(),
+      customProperties: map['customProperties'] == null ? null : (VMwareMigrateAgentModelCustomProperties.fromMap((map['customProperties']! as Map).cast<String, dynamic>())).input(),
+      machineId: map['machineId'] == null ? null : (map['machineId']! as String).input(),
+      machineName: map['machineName'] == null ? null : (map['machineName']! as String).input(),
     );
   }
 }

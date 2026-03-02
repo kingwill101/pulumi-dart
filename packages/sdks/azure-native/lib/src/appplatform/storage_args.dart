@@ -40,10 +40,10 @@ class StorageArgs {
 
   factory StorageArgs.fromMap(Map<String, dynamic> map) {
     return StorageArgs(
-      properties: map['properties'] == null ? null : (StorageAccount.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (StorageAccount.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      storageName: map['storageName'] == null ? null : (map['storageName'] as String).input(),
+      storageName: map['storageName'] == null ? null : (map['storageName']! as String).input(),
     );
   }
 }

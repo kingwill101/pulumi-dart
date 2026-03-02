@@ -33,9 +33,9 @@ class CollectionOverride {
 
   factory CollectionOverride.fromMap(Map<String, dynamic> map) {
     return CollectionOverride(
-      collection: map['collection'] == null ? null : (map['collection'] as String).input(),
-      methodMap: map['methodMap'] == null ? null : (MethodMap.fromMap((map['methodMap'] as Map).cast<String, dynamic>())).input(),
-      options: map['options'] == null ? null : (Options.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      collection: map['collection'] == null ? null : (map['collection']! as String).input(),
+      methodMap: map['methodMap'] == null ? null : (MethodMap.fromMap((map['methodMap']! as Map).cast<String, dynamic>())).input(),
+      options: map['options'] == null ? null : (Options.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

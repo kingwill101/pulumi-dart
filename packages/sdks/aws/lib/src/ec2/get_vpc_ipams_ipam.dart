@@ -108,7 +108,7 @@ class GetVpcIpamsIpam {
       id: (map['id'] as String).input(),
       ipamRegion: (map['ipamRegion'] as String).input(),
       meteredAccount: (map['meteredAccount'] as String).input(),
-      operatingRegions: (pulumi.Input.decodeList<GetVpcIpamsIpamOperatingRegion>(map['operatingRegions'], (value) => GetVpcIpamsIpamOperatingRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operatingRegions: (pulumi.Input.decodeList<GetVpcIpamsIpamOperatingRegion>(map['operatingRegions']!, (value) => GetVpcIpamsIpamOperatingRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ownerId: (map['ownerId'] as String).input(),
       privateDefaultScopeId: (map['privateDefaultScopeId'] as String).input(),
       publicDefaultScopeId: (map['publicDefaultScopeId'] as String).input(),

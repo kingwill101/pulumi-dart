@@ -44,11 +44,11 @@ class PriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2 {
 
   factory PriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (PriorityLevelConfigurationSpecFlowcontrolApiserverK8sIoV1beta2.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta2.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (PriorityLevelConfigurationSpecFlowcontrolApiserverK8sIoV1beta2.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta2.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

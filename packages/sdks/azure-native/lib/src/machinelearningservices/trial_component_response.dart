@@ -48,12 +48,12 @@ class TrialComponentResponse {
 
   factory TrialComponentResponse.fromMap(Map<String, dynamic> map) {
     return TrialComponentResponse(
-      codeId: map['codeId'] == null ? null : (map['codeId'] as String).input(),
+      codeId: map['codeId'] == null ? null : (map['codeId']! as String).input(),
       command: (map['command'] as String).input(),
-      distribution: map['distribution'] == null ? null : (MpiResponse.fromMap((map['distribution'] as Map).cast<String, dynamic>())).input(),
+      distribution: map['distribution'] == null ? null : (MpiResponse.fromMap((map['distribution']! as Map).cast<String, dynamic>())).input(),
       environmentId: (map['environmentId'] as String).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      resources: map['resources'] == null ? null : (JobResourceConfigurationResponse.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
+      resources: map['resources'] == null ? null : (JobResourceConfigurationResponse.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

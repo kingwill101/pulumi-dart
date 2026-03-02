@@ -72,7 +72,7 @@ class GetInternetGatewayRuleResult {
 
   factory GetInternetGatewayRuleResult.fromMap(Map<String, dynamic> map) {
     return GetInternetGatewayRuleResult(
-      annotation: map['annotation'] == null ? null : map['annotation'] as String,
+      annotation: map['annotation'] == null ? null : map['annotation']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       internetGatewayIds: (map['internetGatewayIds'] as List).cast<String>(),
@@ -81,7 +81,7 @@ class GetInternetGatewayRuleResult {
       provisioningState: map['provisioningState'] as String,
       ruleProperties: RulePropertiesResponse.fromMap((map['ruleProperties'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

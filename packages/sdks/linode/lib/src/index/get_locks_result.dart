@@ -40,11 +40,11 @@ class GetLocksResult {
 
   factory GetLocksResult.fromMap(Map<String, dynamic> map) {
     return GetLocksResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLocksFilter>(map['filters'], (value) => GetLocksFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLocksFilter>(map['filters']!, (value) => GetLocksFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       locks: pulumi.Input.decodeList<GetLocksLock>(map['locks'], (value) => GetLocksLock.fromMap((value as Map).cast<String, dynamic>())),
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
     );
   }
 }

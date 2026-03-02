@@ -43,7 +43,7 @@ class WorkspaceKeyArgs {
     return WorkspaceKeyArgs(
       active: (map['active'] as bool).input(),
       customerManagedKeyName: (map['customerManagedKeyName'] as String).input(),
-      customerManagedKeyVersionlessId: map['customerManagedKeyVersionlessId'] == null ? null : (map['customerManagedKeyVersionlessId'] as String).input(),
+      customerManagedKeyVersionlessId: map['customerManagedKeyVersionlessId'] == null ? null : (map['customerManagedKeyVersionlessId']! as String).input(),
       synapseWorkspaceId: (map['synapseWorkspaceId'] as String).input(),
     );
   }

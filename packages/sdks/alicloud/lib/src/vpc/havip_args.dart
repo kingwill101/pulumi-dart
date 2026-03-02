@@ -54,12 +54,12 @@ class HAVipArgs {
 
   factory HAVipArgs.fromMap(Map<String, dynamic> map) {
     return HAVipArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      haVipName: map['haVipName'] == null ? null : (map['haVipName'] as String).input(),
-      havipName: map['havipName'] == null ? null : (map['havipName'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      haVipName: map['haVipName'] == null ? null : (map['haVipName']! as String).input(),
+      havipName: map['havipName'] == null ? null : (map['havipName']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vswitchId: (map['vswitchId'] as String).input(),
     );
   }

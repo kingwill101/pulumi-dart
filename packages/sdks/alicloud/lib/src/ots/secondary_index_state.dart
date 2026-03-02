@@ -51,13 +51,13 @@ class SecondaryIndexState {
 
   factory SecondaryIndexState.fromMap(Map<String, dynamic> map) {
     return SecondaryIndexState(
-      definedColumns: map['definedColumns'] == null ? null : ((map['definedColumns'] as List).cast<String>()).input(),
-      includeBaseData: map['includeBaseData'] == null ? null : (map['includeBaseData'] as bool).input(),
-      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
-      indexType: map['indexType'] == null ? null : (map['indexType'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      primaryKeys: map['primaryKeys'] == null ? null : ((map['primaryKeys'] as List).cast<String>()).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      definedColumns: map['definedColumns'] == null ? null : ((map['definedColumns']! as List).cast<String>()).input(),
+      includeBaseData: map['includeBaseData'] == null ? null : (map['includeBaseData']! as bool).input(),
+      indexName: map['indexName'] == null ? null : (map['indexName']! as String).input(),
+      indexType: map['indexType'] == null ? null : (map['indexType']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      primaryKeys: map['primaryKeys'] == null ? null : ((map['primaryKeys']! as List).cast<String>()).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
     );
   }
 }

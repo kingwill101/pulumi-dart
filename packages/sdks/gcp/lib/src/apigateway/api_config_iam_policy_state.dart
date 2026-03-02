@@ -44,11 +44,11 @@ class ApiConfigIamPolicyState {
 
   factory ApiConfigIamPolicyState.fromMap(Map<String, dynamic> map) {
     return ApiConfigIamPolicyState(
-      api: map['api'] == null ? null : (map['api'] as String).input(),
-      apiConfig: map['apiConfig'] == null ? null : (map['apiConfig'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      api: map['api'] == null ? null : (map['api']! as String).input(),
+      apiConfig: map['apiConfig'] == null ? null : (map['apiConfig']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -81,12 +81,12 @@ class GetGroupV2Result {
   factory GetGroupV2Result.fromMap(Map<String, dynamic> map) {
     return GetGroupV2Result(
       adminStateUp: map['adminStateUp'] as bool,
-      description: map['description'] == null ? null : map['description'] as String,
-      egressFirewallPolicyId: map['egressFirewallPolicyId'] == null ? null : map['egressFirewallPolicyId'] as String,
-      groupId: map['groupId'] == null ? null : map['groupId'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      egressFirewallPolicyId: map['egressFirewallPolicyId'] == null ? null : map['egressFirewallPolicyId']! as String,
+      groupId: map['groupId'] == null ? null : map['groupId']! as String,
       id: map['id'] as String,
-      ingressFirewallPolicyId: map['ingressFirewallPolicyId'] == null ? null : map['ingressFirewallPolicyId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      ingressFirewallPolicyId: map['ingressFirewallPolicyId'] == null ? null : map['ingressFirewallPolicyId']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       ports: (map['ports'] as List).cast<String>(),
       projectId: map['projectId'] as String,
       region: map['region'] as String,

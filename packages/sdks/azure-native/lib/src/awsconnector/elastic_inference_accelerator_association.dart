@@ -36,10 +36,10 @@ class ElasticInferenceAcceleratorAssociation {
 
   factory ElasticInferenceAcceleratorAssociation.fromMap(Map<String, dynamic> map) {
     return ElasticInferenceAcceleratorAssociation(
-      elasticInferenceAcceleratorArn: map['elasticInferenceAcceleratorArn'] == null ? null : (map['elasticInferenceAcceleratorArn'] as String).input(),
-      elasticInferenceAcceleratorAssociationId: map['elasticInferenceAcceleratorAssociationId'] == null ? null : (map['elasticInferenceAcceleratorAssociationId'] as String).input(),
-      elasticInferenceAcceleratorAssociationState: map['elasticInferenceAcceleratorAssociationState'] == null ? null : (map['elasticInferenceAcceleratorAssociationState'] as String).input(),
-      elasticInferenceAcceleratorAssociationTime: map['elasticInferenceAcceleratorAssociationTime'] == null ? null : (map['elasticInferenceAcceleratorAssociationTime'] as String).input(),
+      elasticInferenceAcceleratorArn: map['elasticInferenceAcceleratorArn'] == null ? null : (map['elasticInferenceAcceleratorArn']! as String).input(),
+      elasticInferenceAcceleratorAssociationId: map['elasticInferenceAcceleratorAssociationId'] == null ? null : (map['elasticInferenceAcceleratorAssociationId']! as String).input(),
+      elasticInferenceAcceleratorAssociationState: map['elasticInferenceAcceleratorAssociationState'] == null ? null : (map['elasticInferenceAcceleratorAssociationState']! as String).input(),
+      elasticInferenceAcceleratorAssociationTime: map['elasticInferenceAcceleratorAssociationTime'] == null ? null : (map['elasticInferenceAcceleratorAssociationTime']! as String).input(),
     );
   }
 }

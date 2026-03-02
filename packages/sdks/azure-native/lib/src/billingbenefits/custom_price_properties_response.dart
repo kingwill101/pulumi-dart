@@ -53,13 +53,13 @@ class CustomPricePropertiesResponse {
 
   factory CustomPricePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CustomPricePropertiesResponse(
-      billingPeriod: map['billingPeriod'] == null ? null : (map['billingPeriod'] as String).input(),
+      billingPeriod: map['billingPeriod'] == null ? null : (map['billingPeriod']! as String).input(),
       catalogClaims: (pulumi.Input.decodeList<CatalogClaimsItemResponse>(map['catalogClaims'], (value) => CatalogClaimsItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       catalogId: (map['catalogId'] as String).input(),
       marketSetPrices: (pulumi.Input.decodeList<MarketSetPricesItemsResponse>(map['marketSetPrices'], (value) => MarketSetPricesItemsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      meterType: map['meterType'] == null ? null : (map['meterType'] as String).input(),
+      meterType: map['meterType'] == null ? null : (map['meterType']! as String).input(),
       ruleType: (map['ruleType'] as String).input(),
-      termUnits: map['termUnits'] == null ? null : (map['termUnits'] as String).input(),
+      termUnits: map['termUnits'] == null ? null : (map['termUnits']! as String).input(),
     );
   }
 }

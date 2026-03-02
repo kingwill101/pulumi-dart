@@ -28,8 +28,8 @@ class DefaultClusterConfigGkehubV1alpha {
 
   factory DefaultClusterConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return DefaultClusterConfigGkehubV1alpha(
-      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null ? null : (BinaryAuthorizationConfigGkehubV1alpha.fromMap((map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>())).input(),
-      securityPostureConfig: map['securityPostureConfig'] == null ? null : (SecurityPostureConfigGkehubV1alpha.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>())).input(),
+      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null ? null : (BinaryAuthorizationConfigGkehubV1alpha.fromMap((map['binaryAuthorizationConfig']! as Map).cast<String, dynamic>())).input(),
+      securityPostureConfig: map['securityPostureConfig'] == null ? null : (SecurityPostureConfigGkehubV1alpha.fromMap((map['securityPostureConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

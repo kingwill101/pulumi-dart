@@ -51,10 +51,10 @@ class ParamRefAdmissionregistrationK8sIoV1alpha1 {
 
   factory ParamRefAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ParamRefAdmissionregistrationK8sIoV1alpha1(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      parameterNotFoundAction: map['parameterNotFoundAction'] == null ? null : (map['parameterNotFoundAction'] as String).input(),
-      selector: map['selector'] == null ? null : (LabelSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      parameterNotFoundAction: map['parameterNotFoundAction'] == null ? null : (map['parameterNotFoundAction']! as String).input(),
+      selector: map['selector'] == null ? null : (LabelSelector.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

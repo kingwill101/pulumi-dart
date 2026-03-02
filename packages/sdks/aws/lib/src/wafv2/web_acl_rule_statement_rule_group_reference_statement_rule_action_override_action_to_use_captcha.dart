@@ -21,7 +21,7 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUs
 
   factory WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha(
-      customRequestHandling: map['customRequestHandling'] == null ? null : (WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptchaCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>())).input(),
+      customRequestHandling: map['customRequestHandling'] == null ? null : ((WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptchaCustomRequestHandling.fromMap((map['customRequestHandling']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

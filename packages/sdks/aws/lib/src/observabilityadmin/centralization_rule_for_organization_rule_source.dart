@@ -33,7 +33,7 @@ class CentralizationRuleForOrganizationRuleSource {
     return CentralizationRuleForOrganizationRuleSource(
       regions: ((map['regions'] as List).cast<String>()).input(),
       scope: (map['scope'] as String).input(),
-      sourceLogsConfiguration: map['sourceLogsConfiguration'] == null ? null : (CentralizationRuleForOrganizationRuleSourceSourceLogsConfiguration.fromMap((map['sourceLogsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      sourceLogsConfiguration: map['sourceLogsConfiguration'] == null ? null : ((CentralizationRuleForOrganizationRuleSourceSourceLogsConfiguration.fromMap((map['sourceLogsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

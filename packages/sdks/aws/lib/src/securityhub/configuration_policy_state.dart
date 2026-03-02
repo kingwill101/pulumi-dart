@@ -41,11 +41,11 @@ class ConfigurationPolicyState {
 
   factory ConfigurationPolicyState.fromMap(Map<String, dynamic> map) {
     return ConfigurationPolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configurationPolicy: map['configurationPolicy'] == null ? null : (ConfigurationPolicyConfigurationPolicy.fromMap((map['configurationPolicy'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configurationPolicy: map['configurationPolicy'] == null ? null : ((ConfigurationPolicyConfigurationPolicy.fromMap((map['configurationPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

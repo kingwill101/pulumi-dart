@@ -26,8 +26,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech(
-      ssml: map['ssml'] == null ? null : (map['ssml'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      ssml: map['ssml'] == null ? null : (map['ssml']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

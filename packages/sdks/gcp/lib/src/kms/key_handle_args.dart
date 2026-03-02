@@ -43,8 +43,8 @@ class KeyHandleArgs {
   factory KeyHandleArgs.fromMap(Map<String, dynamic> map) {
     return KeyHandleArgs(
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       resourceTypeSelector: (map['resourceTypeSelector'] as String).input(),
     );
   }

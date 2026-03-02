@@ -104,19 +104,19 @@ class CxSecuritySettingsState {
 
   factory CxSecuritySettingsState.fromMap(Map<String, dynamic> map) {
     return CxSecuritySettingsState(
-      audioExportSettings: map['audioExportSettings'] == null ? null : (CxSecuritySettingsAudioExportSettings.fromMap((map['audioExportSettings'] as Map).cast<String, dynamic>())).input(),
-      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      insightsExportSettings: map['insightsExportSettings'] == null ? null : (CxSecuritySettingsInsightsExportSettings.fromMap((map['insightsExportSettings'] as Map).cast<String, dynamic>())).input(),
-      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      purgeDataTypes: map['purgeDataTypes'] == null ? null : ((map['purgeDataTypes'] as List).cast<String>()).input(),
-      redactionScope: map['redactionScope'] == null ? null : (map['redactionScope'] as String).input(),
-      redactionStrategy: map['redactionStrategy'] == null ? null : (map['redactionStrategy'] as String).input(),
-      retentionStrategy: map['retentionStrategy'] == null ? null : (map['retentionStrategy'] as String).input(),
-      retentionWindowDays: map['retentionWindowDays'] == null ? null : (map['retentionWindowDays'] as int).input(),
+      audioExportSettings: map['audioExportSettings'] == null ? null : (CxSecuritySettingsAudioExportSettings.fromMap((map['audioExportSettings']! as Map).cast<String, dynamic>())).input(),
+      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      insightsExportSettings: map['insightsExportSettings'] == null ? null : (CxSecuritySettingsInsightsExportSettings.fromMap((map['insightsExportSettings']! as Map).cast<String, dynamic>())).input(),
+      inspectTemplate: map['inspectTemplate'] == null ? null : (map['inspectTemplate']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      purgeDataTypes: map['purgeDataTypes'] == null ? null : ((map['purgeDataTypes']! as List).cast<String>()).input(),
+      redactionScope: map['redactionScope'] == null ? null : (map['redactionScope']! as String).input(),
+      redactionStrategy: map['redactionStrategy'] == null ? null : (map['redactionStrategy']! as String).input(),
+      retentionStrategy: map['retentionStrategy'] == null ? null : (map['retentionStrategy']! as String).input(),
+      retentionWindowDays: map['retentionWindowDays'] == null ? null : (map['retentionWindowDays']! as int).input(),
     );
   }
 }

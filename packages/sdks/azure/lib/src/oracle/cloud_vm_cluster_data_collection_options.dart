@@ -30,9 +30,9 @@ class CloudVmClusterDataCollectionOptions {
 
   factory CloudVmClusterDataCollectionOptions.fromMap(Map<String, dynamic> map) {
     return CloudVmClusterDataCollectionOptions(
-      diagnosticsEventsEnabled: map['diagnosticsEventsEnabled'] == null ? null : (map['diagnosticsEventsEnabled'] as bool).input(),
-      healthMonitoringEnabled: map['healthMonitoringEnabled'] == null ? null : (map['healthMonitoringEnabled'] as bool).input(),
-      incidentLogsEnabled: map['incidentLogsEnabled'] == null ? null : (map['incidentLogsEnabled'] as bool).input(),
+      diagnosticsEventsEnabled: map['diagnosticsEventsEnabled'] == null ? null : (map['diagnosticsEventsEnabled']! as bool).input(),
+      healthMonitoringEnabled: map['healthMonitoringEnabled'] == null ? null : (map['healthMonitoringEnabled']! as bool).input(),
+      incidentLogsEnabled: map['incidentLogsEnabled'] == null ? null : (map['incidentLogsEnabled']! as bool).input(),
     );
   }
 }

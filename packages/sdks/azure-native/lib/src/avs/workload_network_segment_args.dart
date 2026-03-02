@@ -55,13 +55,13 @@ class WorkloadNetworkSegmentArgs {
 
   factory WorkloadNetworkSegmentArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkSegmentArgs(
-      connectedGateway: map['connectedGateway'] == null ? null : (map['connectedGateway'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      connectedGateway: map['connectedGateway'] == null ? null : (map['connectedGateway']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
-      segmentId: map['segmentId'] == null ? null : (map['segmentId'] as String).input(),
-      subnet: map['subnet'] == null ? null : (WorkloadNetworkSegmentSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
+      segmentId: map['segmentId'] == null ? null : (map['segmentId']! as String).input(),
+      subnet: map['subnet'] == null ? null : (WorkloadNetworkSegmentSubnet.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

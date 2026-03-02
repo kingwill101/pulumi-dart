@@ -60,12 +60,12 @@ class BackupArgs {
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
       accountName: (map['accountName'] as String).input(),
-      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
+      backupName: map['backupName'] == null ? null : (map['backupName']! as String).input(),
       backupVaultName: (map['backupVaultName'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
-      useExistingSnapshot: map['useExistingSnapshot'] == null ? null : (map['useExistingSnapshot'] as bool).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName']! as String).input(),
+      useExistingSnapshot: map['useExistingSnapshot'] == null ? null : (map['useExistingSnapshot']! as bool).input(),
       volumeResourceId: (map['volumeResourceId'] as String).input(),
     );
   }

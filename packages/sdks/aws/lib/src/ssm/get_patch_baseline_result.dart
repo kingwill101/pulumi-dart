@@ -104,14 +104,14 @@ class GetPatchBaselineResult {
 
   factory GetPatchBaselineResult.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselineResult(
-      approvalRules: pulumi.Input.decodeList<GetPatchBaselineApprovalRule>(map['approvalRules'], (value) => GetPatchBaselineApprovalRule.fromMap((value as Map).cast<String, dynamic>())),
+      approvalRules: pulumi.Input.decodeList<GetPatchBaselineApprovalRule>(map['approvalRules']!, (value) => GetPatchBaselineApprovalRule.fromMap((value as Map).cast<String, dynamic>())),
       approvedPatches: (map['approvedPatches'] as List).cast<String>(),
       approvedPatchesComplianceLevel: map['approvedPatchesComplianceLevel'] as String,
       approvedPatchesEnableNonSecurity: map['approvedPatchesEnableNonSecurity'] as bool,
       availableSecurityUpdatesComplianceStatus: map['availableSecurityUpdatesComplianceStatus'] as String,
       defaultBaseline: map['defaultBaseline'] == null ? null : map['defaultBaseline'] as bool,
       description: map['description'] as String,
-      globalFilters: pulumi.Input.decodeList<GetPatchBaselineGlobalFilter>(map['globalFilters'], (value) => GetPatchBaselineGlobalFilter.fromMap((value as Map).cast<String, dynamic>())),
+      globalFilters: pulumi.Input.decodeList<GetPatchBaselineGlobalFilter>(map['globalFilters']!, (value) => GetPatchBaselineGlobalFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       json: map['json'] as String,
       name: map['name'] as String,
@@ -121,7 +121,7 @@ class GetPatchBaselineResult {
       region: map['region'] as String,
       rejectedPatches: (map['rejectedPatches'] as List).cast<String>(),
       rejectedPatchesAction: map['rejectedPatchesAction'] as String,
-      sources: pulumi.Input.decodeList<GetPatchBaselineSource>(map['sources'], (value) => GetPatchBaselineSource.fromMap((value as Map).cast<String, dynamic>())),
+      sources: pulumi.Input.decodeList<GetPatchBaselineSource>(map['sources']!, (value) => GetPatchBaselineSource.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

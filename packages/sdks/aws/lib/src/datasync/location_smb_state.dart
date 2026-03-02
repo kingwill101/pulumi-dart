@@ -76,18 +76,18 @@ class LocationSmbState {
 
   factory LocationSmbState.fromMap(Map<String, dynamic> map) {
     return LocationSmbState(
-      agentArns: map['agentArns'] == null ? null : ((map['agentArns'] as List).cast<String>()).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      mountOptions: map['mountOptions'] == null ? null : (LocationSmbMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serverHostname: map['serverHostname'] == null ? null : (map['serverHostname'] as String).input(),
-      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      agentArns: map['agentArns'] == null ? null : (((map['agentArns'] as List).cast<String>()).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((LocationSmbMountOptions.fromMap((map['mountOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      password: map['password'] == null ? null : ((map['password'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serverHostname: map['serverHostname'] == null ? null : ((map['serverHostname'] as String).input()).input(),
+      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
+      user: map['user'] == null ? null : ((map['user'] as String).input()).input(),
     );
   }
 }

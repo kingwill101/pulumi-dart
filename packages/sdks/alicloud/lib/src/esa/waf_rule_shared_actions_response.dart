@@ -24,8 +24,8 @@ class WafRuleSharedActionsResponse {
 
   factory WafRuleSharedActionsResponse.fromMap(Map<String, dynamic> map) {
     return WafRuleSharedActionsResponse(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as int).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
     );
   }
 }

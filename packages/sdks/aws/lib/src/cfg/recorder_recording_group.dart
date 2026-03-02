@@ -42,11 +42,11 @@ class RecorderRecordingGroup {
 
   factory RecorderRecordingGroup.fromMap(Map<String, dynamic> map) {
     return RecorderRecordingGroup(
-      allSupported: map['allSupported'] == null ? null : (map['allSupported'] as bool).input(),
-      exclusionByResourceTypes: map['exclusionByResourceTypes'] == null ? null : (pulumi.Input.decodeList<RecorderRecordingGroupExclusionByResourceType>(map['exclusionByResourceTypes'], (value) => RecorderRecordingGroupExclusionByResourceType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includeGlobalResourceTypes: map['includeGlobalResourceTypes'] == null ? null : (map['includeGlobalResourceTypes'] as bool).input(),
-      recordingStrategies: map['recordingStrategies'] == null ? null : (pulumi.Input.decodeList<RecorderRecordingGroupRecordingStrategy>(map['recordingStrategies'], (value) => RecorderRecordingGroupRecordingStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      allSupported: map['allSupported'] == null ? null : ((map['allSupported'] as bool).input()).input(),
+      exclusionByResourceTypes: map['exclusionByResourceTypes'] == null ? null : ((pulumi.Input.decodeList<RecorderRecordingGroupExclusionByResourceType>(map['exclusionByResourceTypes']!, (value) => RecorderRecordingGroupExclusionByResourceType.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      includeGlobalResourceTypes: map['includeGlobalResourceTypes'] == null ? null : ((map['includeGlobalResourceTypes'] as bool).input()).input(),
+      recordingStrategies: map['recordingStrategies'] == null ? null : ((pulumi.Input.decodeList<RecorderRecordingGroupRecordingStrategy>(map['recordingStrategies']!, (value) => RecorderRecordingGroupRecordingStrategy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : (((map['resourceTypes'] as List).cast<String>()).input()).input(),
     );
   }
 }

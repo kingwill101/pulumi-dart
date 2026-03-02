@@ -26,8 +26,8 @@ class ResourceClaimPatch {
 
   factory ResourceClaimPatch.fromMap(Map<String, dynamic> map) {
     return ResourceClaimPatch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      request: map['request'] == null ? null : (map['request'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      request: map['request'] == null ? null : (map['request']! as String).input(),
     );
   }
 }

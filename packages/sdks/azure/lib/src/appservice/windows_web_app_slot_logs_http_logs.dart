@@ -27,8 +27,8 @@ class WindowsWebAppSlotLogsHttpLogs {
 
   factory WindowsWebAppSlotLogsHttpLogs.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotLogsHttpLogs(
-      azureBlobStorage: map['azureBlobStorage'] == null ? null : (WindowsWebAppSlotLogsHttpLogsAzureBlobStorage.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>())).input(),
-      fileSystem: map['fileSystem'] == null ? null : (WindowsWebAppSlotLogsHttpLogsFileSystem.fromMap((map['fileSystem'] as Map).cast<String, dynamic>())).input(),
+      azureBlobStorage: map['azureBlobStorage'] == null ? null : (WindowsWebAppSlotLogsHttpLogsAzureBlobStorage.fromMap((map['azureBlobStorage']! as Map).cast<String, dynamic>())).input(),
+      fileSystem: map['fileSystem'] == null ? null : (WindowsWebAppSlotLogsHttpLogsFileSystem.fromMap((map['fileSystem']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

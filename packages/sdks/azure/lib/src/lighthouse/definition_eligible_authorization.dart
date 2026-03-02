@@ -36,8 +36,8 @@ class DefinitionEligibleAuthorization {
 
   factory DefinitionEligibleAuthorization.fromMap(Map<String, dynamic> map) {
     return DefinitionEligibleAuthorization(
-      justInTimeAccessPolicy: map['justInTimeAccessPolicy'] == null ? null : (DefinitionEligibleAuthorizationJustInTimeAccessPolicy.fromMap((map['justInTimeAccessPolicy'] as Map).cast<String, dynamic>())).input(),
-      principalDisplayName: map['principalDisplayName'] == null ? null : (map['principalDisplayName'] as String).input(),
+      justInTimeAccessPolicy: map['justInTimeAccessPolicy'] == null ? null : (DefinitionEligibleAuthorizationJustInTimeAccessPolicy.fromMap((map['justInTimeAccessPolicy']! as Map).cast<String, dynamic>())).input(),
+      principalDisplayName: map['principalDisplayName'] == null ? null : (map['principalDisplayName']! as String).input(),
       principalId: (map['principalId'] as String).input(),
       roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );

@@ -31,9 +31,9 @@ class GoogleCloudDocumentaiV1DocumentProvenanceParent {
 
   factory GoogleCloudDocumentaiV1DocumentProvenanceParent.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentProvenanceParent(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      index: map['index'] == null ? null : (map['index'] as int).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as int).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      index: map['index'] == null ? null : (map['index']! as int).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as int).input(),
     );
   }
 }

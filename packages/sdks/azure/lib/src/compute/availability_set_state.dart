@@ -60,14 +60,14 @@ class AvailabilitySetState {
 
   factory AvailabilitySetState.fromMap(Map<String, dynamic> map) {
     return AvailabilitySetState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      platformFaultDomainCount: map['platformFaultDomainCount'] == null ? null : (map['platformFaultDomainCount'] as int).input(),
-      platformUpdateDomainCount: map['platformUpdateDomainCount'] == null ? null : (map['platformUpdateDomainCount'] as int).input(),
-      proximityPlacementGroupId: map['proximityPlacementGroupId'] == null ? null : (map['proximityPlacementGroupId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managed: map['managed'] == null ? null : (map['managed']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      platformFaultDomainCount: map['platformFaultDomainCount'] == null ? null : (map['platformFaultDomainCount']! as int).input(),
+      platformUpdateDomainCount: map['platformUpdateDomainCount'] == null ? null : (map['platformUpdateDomainCount']! as int).input(),
+      proximityPlacementGroupId: map['proximityPlacementGroupId'] == null ? null : (map['proximityPlacementGroupId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

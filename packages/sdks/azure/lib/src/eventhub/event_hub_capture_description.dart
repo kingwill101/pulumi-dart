@@ -49,9 +49,9 @@ class EventHubCaptureDescription {
       destination: (EventHubCaptureDescriptionDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
       enabled: (map['enabled'] as bool).input(),
       encoding: (map['encoding'] as String).input(),
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
-      sizeLimitInBytes: map['sizeLimitInBytes'] == null ? null : (map['sizeLimitInBytes'] as int).input(),
-      skipEmptyArchives: map['skipEmptyArchives'] == null ? null : (map['skipEmptyArchives'] as bool).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as int).input(),
+      sizeLimitInBytes: map['sizeLimitInBytes'] == null ? null : (map['sizeLimitInBytes']! as int).input(),
+      skipEmptyArchives: map['skipEmptyArchives'] == null ? null : (map['skipEmptyArchives']! as bool).input(),
     );
   }
 }

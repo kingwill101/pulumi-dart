@@ -41,9 +41,9 @@ class CooWebCcRuleRuleDetailStatusCode {
   factory CooWebCcRuleRuleDetailStatusCode.fromMap(Map<String, dynamic> map) {
     return CooWebCcRuleRuleDetailStatusCode(
       code: (map['code'] as int).input(),
-      countThreshold: map['countThreshold'] == null ? null : (map['countThreshold'] as int).input(),
+      countThreshold: map['countThreshold'] == null ? null : (map['countThreshold']! as int).input(),
       enabled: (map['enabled'] as bool).input(),
-      ratioThreshold: map['ratioThreshold'] == null ? null : (map['ratioThreshold'] as int).input(),
+      ratioThreshold: map['ratioThreshold'] == null ? null : (map['ratioThreshold']! as int).input(),
       useRatio: (map['useRatio'] as bool).input(),
     );
   }

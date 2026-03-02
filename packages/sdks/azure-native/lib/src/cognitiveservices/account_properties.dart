@@ -94,21 +94,21 @@ class AccountProperties {
 
   factory AccountProperties.fromMap(Map<String, dynamic> map) {
     return AccountProperties(
-      allowedFqdnList: map['allowedFqdnList'] == null ? null : ((map['allowedFqdnList'] as List).cast<String>()).input(),
-      amlWorkspace: map['amlWorkspace'] == null ? null : (UserOwnedAmlWorkspace.fromMap((map['amlWorkspace'] as Map).cast<String, dynamic>())).input(),
-      apiProperties: map['apiProperties'] == null ? null : (ApiProperties.fromMap((map['apiProperties'] as Map).cast<String, dynamic>())).input(),
-      customSubDomainName: map['customSubDomainName'] == null ? null : (map['customSubDomainName'] as String).input(),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
-      dynamicThrottlingEnabled: map['dynamicThrottlingEnabled'] == null ? null : (map['dynamicThrottlingEnabled'] as bool).input(),
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      locations: map['locations'] == null ? null : (MultiRegionSettings.fromMap((map['locations'] as Map).cast<String, dynamic>())).input(),
-      migrationToken: map['migrationToken'] == null ? null : (map['migrationToken'] as String).input(),
-      networkAcls: map['networkAcls'] == null ? null : (NetworkRuleSet.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      raiMonitorConfig: map['raiMonitorConfig'] == null ? null : (RaiMonitorConfig.fromMap((map['raiMonitorConfig'] as Map).cast<String, dynamic>())).input(),
-      restore: map['restore'] == null ? null : (map['restore'] as bool).input(),
-      restrictOutboundNetworkAccess: map['restrictOutboundNetworkAccess'] == null ? null : (map['restrictOutboundNetworkAccess'] as bool).input(),
-      userOwnedStorage: map['userOwnedStorage'] == null ? null : (pulumi.Input.decodeList<UserOwnedStorage>(map['userOwnedStorage'], (value) => UserOwnedStorage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedFqdnList: map['allowedFqdnList'] == null ? null : ((map['allowedFqdnList']! as List).cast<String>()).input(),
+      amlWorkspace: map['amlWorkspace'] == null ? null : (UserOwnedAmlWorkspace.fromMap((map['amlWorkspace']! as Map).cast<String, dynamic>())).input(),
+      apiProperties: map['apiProperties'] == null ? null : (ApiProperties.fromMap((map['apiProperties']! as Map).cast<String, dynamic>())).input(),
+      customSubDomainName: map['customSubDomainName'] == null ? null : (map['customSubDomainName']! as String).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth']! as bool).input(),
+      dynamicThrottlingEnabled: map['dynamicThrottlingEnabled'] == null ? null : (map['dynamicThrottlingEnabled']! as bool).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      locations: map['locations'] == null ? null : (MultiRegionSettings.fromMap((map['locations']! as Map).cast<String, dynamic>())).input(),
+      migrationToken: map['migrationToken'] == null ? null : (map['migrationToken']! as String).input(),
+      networkAcls: map['networkAcls'] == null ? null : (NetworkRuleSet.fromMap((map['networkAcls']! as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      raiMonitorConfig: map['raiMonitorConfig'] == null ? null : (RaiMonitorConfig.fromMap((map['raiMonitorConfig']! as Map).cast<String, dynamic>())).input(),
+      restore: map['restore'] == null ? null : (map['restore']! as bool).input(),
+      restrictOutboundNetworkAccess: map['restrictOutboundNetworkAccess'] == null ? null : (map['restrictOutboundNetworkAccess']! as bool).input(),
+      userOwnedStorage: map['userOwnedStorage'] == null ? null : (pulumi.Input.decodeList<UserOwnedStorage>(map['userOwnedStorage']!, (value) => UserOwnedStorage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

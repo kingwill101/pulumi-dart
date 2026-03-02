@@ -42,10 +42,10 @@ class GetCoreNetworkPolicyDocumentAttachmentPolicy {
 
   factory GetCoreNetworkPolicyDocumentAttachmentPolicy.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentAttachmentPolicy(
-      action: (GetCoreNetworkPolicyDocumentAttachmentPolicyAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      conditionLogic: map['conditionLogic'] == null ? null : (map['conditionLogic'] as String).input(),
-      conditions: (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentPolicyCondition>(map['conditions'], (value) => GetCoreNetworkPolicyDocumentAttachmentPolicyCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      action: (GetCoreNetworkPolicyDocumentAttachmentPolicyAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      conditionLogic: map['conditionLogic'] == null ? null : ((map['conditionLogic'] as String).input()).input(),
+      conditions: (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentPolicyCondition>(map['conditions']!, (value) => GetCoreNetworkPolicyDocumentAttachmentPolicyCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       ruleNumber: (map['ruleNumber'] as int).input(),
     );
   }

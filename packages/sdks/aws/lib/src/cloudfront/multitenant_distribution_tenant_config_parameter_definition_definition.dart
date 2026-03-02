@@ -21,7 +21,7 @@ class MultitenantDistributionTenantConfigParameterDefinitionDefinition {
 
   factory MultitenantDistributionTenantConfigParameterDefinitionDefinition.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionTenantConfigParameterDefinitionDefinition(
-      stringSchemas: map['stringSchemas'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema>(map['stringSchemas'], (value) => MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stringSchemas: map['stringSchemas'] == null ? null : ((pulumi.Input.decodeList<MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema>(map['stringSchemas']!, (value) => MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

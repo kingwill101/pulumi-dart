@@ -84,19 +84,19 @@ class InstanceConfig {
 
   factory InstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceConfig(
-      accountNetworksEnabled: map['accountNetworksEnabled'] == null ? null : (map['accountNetworksEnabled'] as bool).input(),
-      clientNetwork: map['clientNetwork'] == null ? null : (NetworkAddress.fromMap((map['clientNetwork'] as Map).cast<String, dynamic>())).input(),
-      hyperthreading: map['hyperthreading'] == null ? null : (map['hyperthreading'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      logicalInterfaces: map['logicalInterfaces'] == null ? null : (pulumi.Input.decodeList<GoogleCloudBaremetalsolutionV2LogicalInterface>(map['logicalInterfaces'], (value) => GoogleCloudBaremetalsolutionV2LogicalInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (InstanceConfigNetworkConfig.fromValue(map['networkConfig'] as String)).input(),
-      networkTemplate: map['networkTemplate'] == null ? null : (map['networkTemplate'] as String).input(),
-      osImage: map['osImage'] == null ? null : (map['osImage'] as String).input(),
-      privateNetwork: map['privateNetwork'] == null ? null : (NetworkAddress.fromMap((map['privateNetwork'] as Map).cast<String, dynamic>())).input(),
-      sshKeyNames: map['sshKeyNames'] == null ? null : ((map['sshKeyNames'] as List).cast<String>()).input(),
-      userNote: map['userNote'] == null ? null : (map['userNote'] as String).input(),
+      accountNetworksEnabled: map['accountNetworksEnabled'] == null ? null : (map['accountNetworksEnabled']! as bool).input(),
+      clientNetwork: map['clientNetwork'] == null ? null : (NetworkAddress.fromMap((map['clientNetwork']! as Map).cast<String, dynamic>())).input(),
+      hyperthreading: map['hyperthreading'] == null ? null : (map['hyperthreading']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      logicalInterfaces: map['logicalInterfaces'] == null ? null : (pulumi.Input.decodeList<GoogleCloudBaremetalsolutionV2LogicalInterface>(map['logicalInterfaces']!, (value) => GoogleCloudBaremetalsolutionV2LogicalInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (InstanceConfigNetworkConfig.fromValue(map['networkConfig']! as String)).input(),
+      networkTemplate: map['networkTemplate'] == null ? null : (map['networkTemplate']! as String).input(),
+      osImage: map['osImage'] == null ? null : (map['osImage']! as String).input(),
+      privateNetwork: map['privateNetwork'] == null ? null : (NetworkAddress.fromMap((map['privateNetwork']! as Map).cast<String, dynamic>())).input(),
+      sshKeyNames: map['sshKeyNames'] == null ? null : ((map['sshKeyNames']! as List).cast<String>()).input(),
+      userNote: map['userNote'] == null ? null : (map['userNote']! as String).input(),
     );
   }
 }

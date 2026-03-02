@@ -52,11 +52,11 @@ class AppVersionSnapshotAgentRemoteDialogflowAgent {
 
   factory AppVersionSnapshotAgentRemoteDialogflowAgent.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAgentRemoteDialogflowAgent(
-      agent: map['agent'] == null ? null : (map['agent'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      flowId: map['flowId'] == null ? null : (map['flowId'] as String).input(),
-      inputVariableMapping: map['inputVariableMapping'] == null ? null : ((map['inputVariableMapping'] as Map).cast<String, String>()).input(),
-      outputVariableMapping: map['outputVariableMapping'] == null ? null : ((map['outputVariableMapping'] as Map).cast<String, String>()).input(),
+      agent: map['agent'] == null ? null : (map['agent']! as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      flowId: map['flowId'] == null ? null : (map['flowId']! as String).input(),
+      inputVariableMapping: map['inputVariableMapping'] == null ? null : ((map['inputVariableMapping']! as Map).cast<String, String>()).input(),
+      outputVariableMapping: map['outputVariableMapping'] == null ? null : ((map['outputVariableMapping']! as Map).cast<String, String>()).input(),
     );
   }
 }

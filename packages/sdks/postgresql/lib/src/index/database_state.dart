@@ -90,17 +90,17 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      allowConnections: map['allowConnections'] == null ? null : (map['allowConnections'] as bool).input(),
-      alterObjectOwnership: map['alterObjectOwnership'] == null ? null : (map['alterObjectOwnership'] as bool).input(),
-      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit'] as int).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      isTemplate: map['isTemplate'] == null ? null : (map['isTemplate'] as bool).input(),
-      lcCollate: map['lcCollate'] == null ? null : (map['lcCollate'] as String).input(),
-      lcCtype: map['lcCtype'] == null ? null : (map['lcCtype'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      tablespaceName: map['tablespaceName'] == null ? null : (map['tablespaceName'] as String).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
+      allowConnections: map['allowConnections'] == null ? null : (map['allowConnections']! as bool).input(),
+      alterObjectOwnership: map['alterObjectOwnership'] == null ? null : (map['alterObjectOwnership']! as bool).input(),
+      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit']! as int).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      isTemplate: map['isTemplate'] == null ? null : (map['isTemplate']! as bool).input(),
+      lcCollate: map['lcCollate'] == null ? null : (map['lcCollate']! as String).input(),
+      lcCtype: map['lcCtype'] == null ? null : (map['lcCtype']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      tablespaceName: map['tablespaceName'] == null ? null : (map['tablespaceName']! as String).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
     );
   }
 }

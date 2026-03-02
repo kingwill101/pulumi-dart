@@ -65,14 +65,14 @@ class GetClusterSnapshotArgs {
 
   factory GetClusterSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterSnapshotArgs(
-      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : (map['dbClusterIdentifier'] as String).input(),
-      dbClusterSnapshotIdentifier: map['dbClusterSnapshotIdentifier'] == null ? null : (map['dbClusterSnapshotIdentifier'] as String).input(),
-      includePublic: map['includePublic'] == null ? null : (map['includePublic'] as bool).input(),
-      includeShared: map['includeShared'] == null ? null : (map['includeShared'] as bool).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : ((map['dbClusterIdentifier'] as String).input()).input(),
+      dbClusterSnapshotIdentifier: map['dbClusterSnapshotIdentifier'] == null ? null : ((map['dbClusterSnapshotIdentifier'] as String).input()).input(),
+      includePublic: map['includePublic'] == null ? null : ((map['includePublic'] as bool).input()).input(),
+      includeShared: map['includeShared'] == null ? null : ((map['includeShared'] as bool).input()).input(),
+      mostRecent: map['mostRecent'] == null ? null : ((map['mostRecent'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      snapshotType: map['snapshotType'] == null ? null : ((map['snapshotType'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

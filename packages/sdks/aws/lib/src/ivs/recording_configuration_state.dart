@@ -63,15 +63,15 @@ class RecordingConfigurationState {
 
   factory RecordingConfigurationState.fromMap(Map<String, dynamic> map) {
     return RecordingConfigurationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      destinationConfiguration: map['destinationConfiguration'] == null ? null : (RecordingConfigurationDestinationConfiguration.fromMap((map['destinationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recordingReconnectWindowSeconds: map['recordingReconnectWindowSeconds'] == null ? null : (map['recordingReconnectWindowSeconds'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      thumbnailConfiguration: map['thumbnailConfiguration'] == null ? null : (RecordingConfigurationThumbnailConfiguration.fromMap((map['thumbnailConfiguration'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      destinationConfiguration: map['destinationConfiguration'] == null ? null : ((RecordingConfigurationDestinationConfiguration.fromMap((map['destinationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      recordingReconnectWindowSeconds: map['recordingReconnectWindowSeconds'] == null ? null : ((map['recordingReconnectWindowSeconds'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      thumbnailConfiguration: map['thumbnailConfiguration'] == null ? null : ((RecordingConfigurationThumbnailConfiguration.fromMap((map['thumbnailConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

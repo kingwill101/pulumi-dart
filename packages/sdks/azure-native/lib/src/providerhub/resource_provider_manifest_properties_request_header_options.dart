@@ -26,8 +26,8 @@ class ResourceProviderManifestPropertiesRequestHeaderOptions {
 
   factory ResourceProviderManifestPropertiesRequestHeaderOptions.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesRequestHeaderOptions(
-      optInHeaders: map['optInHeaders'] == null ? null : (map['optInHeaders'] as String).input(),
-      optOutHeaders: map['optOutHeaders'] == null ? null : (map['optOutHeaders'] as String).input(),
+      optInHeaders: map['optInHeaders'] == null ? null : (map['optInHeaders']! as String).input(),
+      optOutHeaders: map['optOutHeaders'] == null ? null : (map['optOutHeaders']! as String).input(),
     );
   }
 }

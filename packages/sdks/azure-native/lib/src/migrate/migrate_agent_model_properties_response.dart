@@ -69,14 +69,14 @@ class MigrateAgentModelPropertiesResponse {
 
   factory MigrateAgentModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrateAgentModelPropertiesResponse(
-      authenticationIdentity: map['authenticationIdentity'] == null ? null : (IdentityModelResponse.fromMap((map['authenticationIdentity'] as Map).cast<String, dynamic>())).input(),
+      authenticationIdentity: map['authenticationIdentity'] == null ? null : (IdentityModelResponse.fromMap((map['authenticationIdentity']! as Map).cast<String, dynamic>())).input(),
       correlationId: (map['correlationId'] as String).input(),
-      customProperties: map['customProperties'] == null ? null : (VMwareMigrateAgentModelCustomPropertiesResponse.fromMap((map['customProperties'] as Map).cast<String, dynamic>())).input(),
+      customProperties: map['customProperties'] == null ? null : (VMwareMigrateAgentModelCustomPropertiesResponse.fromMap((map['customProperties']! as Map).cast<String, dynamic>())).input(),
       healthErrors: (pulumi.Input.decodeList<HealthErrorModelResponse>(map['healthErrors'], (value) => HealthErrorModelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       isResponsive: (map['isResponsive'] as bool).input(),
       lastHeartbeat: (map['lastHeartbeat'] as String).input(),
-      machineId: map['machineId'] == null ? null : (map['machineId'] as String).input(),
-      machineName: map['machineName'] == null ? null : (map['machineName'] as String).input(),
+      machineId: map['machineId'] == null ? null : (map['machineId']! as String).input(),
+      machineName: map['machineName'] == null ? null : (map['machineName']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       versionNumber: (map['versionNumber'] as String).input(),
     );

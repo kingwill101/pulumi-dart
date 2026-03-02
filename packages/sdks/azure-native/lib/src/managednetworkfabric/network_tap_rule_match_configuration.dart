@@ -43,11 +43,11 @@ class NetworkTapRuleMatchConfiguration {
 
   factory NetworkTapRuleMatchConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkTapRuleMatchConfiguration(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<NetworkTapRuleAction>(map['actions'], (value) => NetworkTapRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<NetworkTapRuleMatchCondition>(map['matchConditions'], (value) => NetworkTapRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchConfigurationName: map['matchConfigurationName'] == null ? null : (map['matchConfigurationName'] as String).input(),
-      sequenceNumber: map['sequenceNumber'] == null ? null : (map['sequenceNumber'] as double).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<NetworkTapRuleAction>(map['actions']!, (value) => NetworkTapRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType']! as String).input(),
+      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<NetworkTapRuleMatchCondition>(map['matchConditions']!, (value) => NetworkTapRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchConfigurationName: map['matchConfigurationName'] == null ? null : (map['matchConfigurationName']! as String).input(),
+      sequenceNumber: map['sequenceNumber'] == null ? null : (map['sequenceNumber']! as double).input(),
     );
   }
 }

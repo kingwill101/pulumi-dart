@@ -26,8 +26,8 @@ class Backup {
 
   factory Backup.fromMap(Map<String, dynamic> map) {
     return Backup(
-      backupRetentionDays: map['backupRetentionDays'] == null ? null : (map['backupRetentionDays'] as int).input(),
-      geoRedundantBackup: map['geoRedundantBackup'] == null ? null : (map['geoRedundantBackup'] as String).input(),
+      backupRetentionDays: map['backupRetentionDays'] == null ? null : (map['backupRetentionDays']! as int).input(),
+      geoRedundantBackup: map['geoRedundantBackup'] == null ? null : (map['geoRedundantBackup']! as String).input(),
     );
   }
 }

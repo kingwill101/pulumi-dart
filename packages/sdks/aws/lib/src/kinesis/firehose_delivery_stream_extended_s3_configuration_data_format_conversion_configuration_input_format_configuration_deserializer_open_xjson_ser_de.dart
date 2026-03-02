@@ -30,9 +30,9 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 
   factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe(
-      caseInsensitive: map['caseInsensitive'] == null ? null : (map['caseInsensitive'] as bool).input(),
-      columnToJsonKeyMappings: map['columnToJsonKeyMappings'] == null ? null : ((map['columnToJsonKeyMappings'] as Map).cast<String, String>()).input(),
-      convertDotsInJsonKeysToUnderscores: map['convertDotsInJsonKeysToUnderscores'] == null ? null : (map['convertDotsInJsonKeysToUnderscores'] as bool).input(),
+      caseInsensitive: map['caseInsensitive'] == null ? null : ((map['caseInsensitive'] as bool).input()).input(),
+      columnToJsonKeyMappings: map['columnToJsonKeyMappings'] == null ? null : (((map['columnToJsonKeyMappings'] as Map).cast<String, String>()).input()).input(),
+      convertDotsInJsonKeysToUnderscores: map['convertDotsInJsonKeysToUnderscores'] == null ? null : ((map['convertDotsInJsonKeysToUnderscores'] as bool).input()).input(),
     );
   }
 }

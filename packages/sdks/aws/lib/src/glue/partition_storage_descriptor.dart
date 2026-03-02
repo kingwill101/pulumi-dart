@@ -84,19 +84,19 @@ class PartitionStorageDescriptor {
 
   factory PartitionStorageDescriptor.fromMap(Map<String, dynamic> map) {
     return PartitionStorageDescriptor(
-      additionalLocations: map['additionalLocations'] == null ? null : ((map['additionalLocations'] as List).cast<String>()).input(),
-      bucketColumns: map['bucketColumns'] == null ? null : ((map['bucketColumns'] as List).cast<String>()).input(),
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<PartitionStorageDescriptorColumn>(map['columns'], (value) => PartitionStorageDescriptorColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      compressed: map['compressed'] == null ? null : (map['compressed'] as bool).input(),
-      inputFormat: map['inputFormat'] == null ? null : (map['inputFormat'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      numberOfBuckets: map['numberOfBuckets'] == null ? null : (map['numberOfBuckets'] as int).input(),
-      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      serDeInfo: map['serDeInfo'] == null ? null : (PartitionStorageDescriptorSerDeInfo.fromMap((map['serDeInfo'] as Map).cast<String, dynamic>())).input(),
-      skewedInfo: map['skewedInfo'] == null ? null : (PartitionStorageDescriptorSkewedInfo.fromMap((map['skewedInfo'] as Map).cast<String, dynamic>())).input(),
-      sortColumns: map['sortColumns'] == null ? null : (pulumi.Input.decodeList<PartitionStorageDescriptorSortColumn>(map['sortColumns'], (value) => PartitionStorageDescriptorSortColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storedAsSubDirectories: map['storedAsSubDirectories'] == null ? null : (map['storedAsSubDirectories'] as bool).input(),
+      additionalLocations: map['additionalLocations'] == null ? null : (((map['additionalLocations'] as List).cast<String>()).input()).input(),
+      bucketColumns: map['bucketColumns'] == null ? null : (((map['bucketColumns'] as List).cast<String>()).input()).input(),
+      columns: map['columns'] == null ? null : ((pulumi.Input.decodeList<PartitionStorageDescriptorColumn>(map['columns']!, (value) => PartitionStorageDescriptorColumn.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      compressed: map['compressed'] == null ? null : ((map['compressed'] as bool).input()).input(),
+      inputFormat: map['inputFormat'] == null ? null : ((map['inputFormat'] as String).input()).input(),
+      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
+      numberOfBuckets: map['numberOfBuckets'] == null ? null : ((map['numberOfBuckets'] as int).input()).input(),
+      outputFormat: map['outputFormat'] == null ? null : ((map['outputFormat'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      serDeInfo: map['serDeInfo'] == null ? null : ((PartitionStorageDescriptorSerDeInfo.fromMap((map['serDeInfo']! as Map).cast<String, dynamic>())).input()).input(),
+      skewedInfo: map['skewedInfo'] == null ? null : ((PartitionStorageDescriptorSkewedInfo.fromMap((map['skewedInfo']! as Map).cast<String, dynamic>())).input()).input(),
+      sortColumns: map['sortColumns'] == null ? null : ((pulumi.Input.decodeList<PartitionStorageDescriptorSortColumn>(map['sortColumns']!, (value) => PartitionStorageDescriptorSortColumn.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      storedAsSubDirectories: map['storedAsSubDirectories'] == null ? null : ((map['storedAsSubDirectories'] as bool).input()).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class FleetScalingConfiguration {
 
   factory FleetScalingConfiguration.fromMap(Map<String, dynamic> map) {
     return FleetScalingConfiguration(
-      desiredCapacity: map['desiredCapacity'] == null ? null : (map['desiredCapacity'] as int).input(),
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
-      scalingType: map['scalingType'] == null ? null : (map['scalingType'] as String).input(),
-      targetTrackingScalingConfigs: map['targetTrackingScalingConfigs'] == null ? null : (pulumi.Input.decodeList<FleetScalingConfigurationTargetTrackingScalingConfig>(map['targetTrackingScalingConfigs'], (value) => FleetScalingConfigurationTargetTrackingScalingConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      desiredCapacity: map['desiredCapacity'] == null ? null : ((map['desiredCapacity'] as int).input()).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : ((map['maxCapacity'] as int).input()).input(),
+      scalingType: map['scalingType'] == null ? null : ((map['scalingType'] as String).input()).input(),
+      targetTrackingScalingConfigs: map['targetTrackingScalingConfigs'] == null ? null : ((pulumi.Input.decodeList<FleetScalingConfigurationTargetTrackingScalingConfig>(map['targetTrackingScalingConfigs']!, (value) => FleetScalingConfigurationTargetTrackingScalingConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

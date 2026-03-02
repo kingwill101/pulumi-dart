@@ -31,7 +31,7 @@ class CloudHsmClusterSkuResponse {
 
   factory CloudHsmClusterSkuResponse.fromMap(Map<String, dynamic> map) {
     return CloudHsmClusterSkuResponse(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
       family: (map['family'] as String).input(),
       name: (map['name'] as String).input(),
     );

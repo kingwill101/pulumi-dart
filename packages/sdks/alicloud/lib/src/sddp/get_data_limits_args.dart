@@ -39,10 +39,10 @@ class GetDataLimitsArgs {
 
   factory GetDataLimitsArgs.fromMap(Map<String, dynamic> map) {
     return GetDataLimitsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

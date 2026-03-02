@@ -28,7 +28,7 @@ class ReplicatedVMManagedDiskTargetDiskEncryption {
   factory ReplicatedVMManagedDiskTargetDiskEncryption.fromMap(Map<String, dynamic> map) {
     return ReplicatedVMManagedDiskTargetDiskEncryption(
       diskEncryptionKey: (ReplicatedVMManagedDiskTargetDiskEncryptionDiskEncryptionKey.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey.fromMap((map['keyEncryptionKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

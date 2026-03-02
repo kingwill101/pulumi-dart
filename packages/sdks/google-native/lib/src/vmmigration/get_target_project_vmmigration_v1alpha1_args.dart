@@ -32,7 +32,7 @@ class GetTargetProjectVmmigrationV1alpha1Args {
   factory GetTargetProjectVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetTargetProjectVmmigrationV1alpha1Args(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       targetProjectId: (map['targetProjectId'] as String).input(),
     );
   }

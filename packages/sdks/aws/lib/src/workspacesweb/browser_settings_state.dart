@@ -58,14 +58,14 @@ class BrowserSettingsState {
 
   factory BrowserSettingsState.fromMap(Map<String, dynamic> map) {
     return BrowserSettingsState(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : ((map['additionalEncryptionContext'] as Map).cast<String, String>()).input(),
-      associatedPortalArns: map['associatedPortalArns'] == null ? null : ((map['associatedPortalArns'] as List).cast<String>()).input(),
-      browserPolicy: map['browserPolicy'] == null ? null : (map['browserPolicy'] as String).input(),
-      browserSettingsArn: map['browserSettingsArn'] == null ? null : (map['browserSettingsArn'] as String).input(),
-      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : (((map['additionalEncryptionContext'] as Map).cast<String, String>()).input()).input(),
+      associatedPortalArns: map['associatedPortalArns'] == null ? null : (((map['associatedPortalArns'] as List).cast<String>()).input()).input(),
+      browserPolicy: map['browserPolicy'] == null ? null : ((map['browserPolicy'] as String).input()).input(),
+      browserSettingsArn: map['browserSettingsArn'] == null ? null : ((map['browserSettingsArn'] as String).input()).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : ((map['customerManagedKey'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

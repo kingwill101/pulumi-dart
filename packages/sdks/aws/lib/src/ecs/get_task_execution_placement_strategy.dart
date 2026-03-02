@@ -27,7 +27,7 @@ class GetTaskExecutionPlacementStrategy {
 
   factory GetTaskExecutionPlacementStrategy.fromMap(Map<String, dynamic> map) {
     return GetTaskExecutionPlacementStrategy(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
+      field: map['field'] == null ? null : ((map['field'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

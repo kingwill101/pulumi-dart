@@ -36,10 +36,10 @@ class SecurityLabelState {
 
   factory SecurityLabelState.fromMap(Map<String, dynamic> map) {
     return SecurityLabelState(
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      labelProvider: map['labelProvider'] == null ? null : (map['labelProvider'] as String).input(),
-      objectName: map['objectName'] == null ? null : (map['objectName'] as String).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      labelProvider: map['labelProvider'] == null ? null : (map['labelProvider']! as String).input(),
+      objectName: map['objectName'] == null ? null : (map['objectName']! as String).input(),
+      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
     );
   }
 }

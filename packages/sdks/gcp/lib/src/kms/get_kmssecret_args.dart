@@ -36,7 +36,7 @@ class GetKMSSecretArgs {
 
   factory GetKMSSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetKMSSecretArgs(
-      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : (map['additionalAuthenticatedData'] as String).input(),
+      additionalAuthenticatedData: map['additionalAuthenticatedData'] == null ? null : (map['additionalAuthenticatedData']! as String).input(),
       ciphertext: (map['ciphertext'] as String).input(),
       cryptoKey: (map['cryptoKey'] as String).input(),
     );

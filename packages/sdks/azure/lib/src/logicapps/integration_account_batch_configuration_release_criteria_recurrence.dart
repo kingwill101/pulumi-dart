@@ -46,12 +46,12 @@ class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence {
 
   factory IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       frequency: (map['frequency'] as String).input(),
       interval: (map['interval'] as int).input(),
-      schedule: map['schedule'] == null ? null : (IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      schedule: map['schedule'] == null ? null : (IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

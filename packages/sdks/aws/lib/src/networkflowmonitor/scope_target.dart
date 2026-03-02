@@ -27,7 +27,7 @@ class ScopeTarget {
   factory ScopeTarget.fromMap(Map<String, dynamic> map) {
     return ScopeTarget(
       region: (map['region'] as String).input(),
-      targetIdentifier: (ScopeTargetTargetIdentifier.fromMap((map['targetIdentifier'] as Map).cast<String, dynamic>())).input(),
+      targetIdentifier: (ScopeTargetTargetIdentifier.fromMap((map['targetIdentifier']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class LambdaConfiguration {
 
   factory LambdaConfiguration.fromMap(Map<String, dynamic> map) {
     return LambdaConfiguration(
-      event: map['event'] == null ? null : (map['event'] as String).input(),
-      filter: map['filter'] == null ? null : (NotificationFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      function: map['function'] == null ? null : (map['function'] as String).input(),
+      event: map['event'] == null ? null : (map['event']! as String).input(),
+      filter: map['filter'] == null ? null : (NotificationFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      function: map['function'] == null ? null : (map['function']! as String).input(),
     );
   }
 }

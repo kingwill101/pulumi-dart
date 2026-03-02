@@ -22,7 +22,7 @@ class InstanceGroupManagerParams {
 
   factory InstanceGroupManagerParams.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

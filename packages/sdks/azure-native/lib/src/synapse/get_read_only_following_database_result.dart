@@ -90,11 +90,11 @@ class GetReadOnlyFollowingDatabaseResult {
     return GetReadOnlyFollowingDatabaseResult(
       attachedDatabaseConfigurationName: map['attachedDatabaseConfigurationName'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      hotCachePeriod: map['hotCachePeriod'] == null ? null : map['hotCachePeriod'] as String,
+      hotCachePeriod: map['hotCachePeriod'] == null ? null : map['hotCachePeriod']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       leaderClusterResourceId: map['leaderClusterResourceId'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       principalsModificationKind: map['principalsModificationKind'] as String,
       provisioningState: map['provisioningState'] as String,

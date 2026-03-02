@@ -56,14 +56,14 @@ class WorkspaceState {
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      defaultDataCollectionEndpointId: map['defaultDataCollectionEndpointId'] == null ? null : (map['defaultDataCollectionEndpointId'] as String).input(),
-      defaultDataCollectionRuleId: map['defaultDataCollectionRuleId'] == null ? null : (map['defaultDataCollectionRuleId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      queryEndpoint: map['queryEndpoint'] == null ? null : (map['queryEndpoint'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      defaultDataCollectionEndpointId: map['defaultDataCollectionEndpointId'] == null ? null : (map['defaultDataCollectionEndpointId']! as String).input(),
+      defaultDataCollectionRuleId: map['defaultDataCollectionRuleId'] == null ? null : (map['defaultDataCollectionRuleId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      queryEndpoint: map['queryEndpoint'] == null ? null : (map['queryEndpoint']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

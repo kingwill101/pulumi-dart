@@ -65,13 +65,13 @@ class MultiLocationAlertConditionArgs {
   factory MultiLocationAlertConditionArgs.fromMap(Map<String, dynamic> map) {
     return MultiLocationAlertConditionArgs(
       critical: (MultiLocationAlertConditionCritical.fromMap((map['critical'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       entities: ((map['entities'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       policyId: (map['policyId'] as String).input(),
-      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl'] as String).input(),
-      violationTimeLimitSeconds: map['violationTimeLimitSeconds'] == null ? null : (map['violationTimeLimitSeconds'] as int).input(),
-      warning: map['warning'] == null ? null : (MultiLocationAlertConditionWarning.fromMap((map['warning'] as Map).cast<String, dynamic>())).input(),
+      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl']! as String).input(),
+      violationTimeLimitSeconds: map['violationTimeLimitSeconds'] == null ? null : (map['violationTimeLimitSeconds']! as int).input(),
+      warning: map['warning'] == null ? null : (MultiLocationAlertConditionWarning.fromMap((map['warning']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

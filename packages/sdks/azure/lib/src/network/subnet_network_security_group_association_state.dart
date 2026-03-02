@@ -26,8 +26,8 @@ class SubnetNetworkSecurityGroupAssociationState {
 
   factory SubnetNetworkSecurityGroupAssociationState.fromMap(Map<String, dynamic> map) {
     return SubnetNetworkSecurityGroupAssociationState(
-      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

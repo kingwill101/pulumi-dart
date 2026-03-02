@@ -26,8 +26,8 @@ class IngressTLSPatchNetworkingK8sIoV1beta1 {
 
   factory IngressTLSPatchNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return IngressTLSPatchNetworkingK8sIoV1beta1(
-      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
     );
   }
 }

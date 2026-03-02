@@ -30,9 +30,9 @@ class ServiceQueueDlqPolicy {
 
   factory ServiceQueueDlqPolicy.fromMap(Map<String, dynamic> map) {
     return ServiceQueueDlqPolicy(
-      deadLetterTargetQueue: map['deadLetterTargetQueue'] == null ? null : (map['deadLetterTargetQueue'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      maxReceiveCount: map['maxReceiveCount'] == null ? null : (map['maxReceiveCount'] as int).input(),
+      deadLetterTargetQueue: map['deadLetterTargetQueue'] == null ? null : (map['deadLetterTargetQueue']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      maxReceiveCount: map['maxReceiveCount'] == null ? null : (map['maxReceiveCount']! as int).input(),
     );
   }
 }

@@ -72,16 +72,16 @@ class ComputeEnvironmentArgs {
 
   factory ComputeEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return ComputeEnvironmentArgs(
-      computeResources: map['computeResources'] == null ? null : (ComputeEnvironmentComputeResources.fromMap((map['computeResources'] as Map).cast<String, dynamic>())).input(),
-      eksConfiguration: map['eksConfiguration'] == null ? null : (ComputeEnvironmentEksConfiguration.fromMap((map['eksConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      computeResources: map['computeResources'] == null ? null : ((ComputeEnvironmentComputeResources.fromMap((map['computeResources']! as Map).cast<String, dynamic>())).input()).input(),
+      eksConfiguration: map['eksConfiguration'] == null ? null : ((ComputeEnvironmentEksConfiguration.fromMap((map['eksConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceRole: map['serviceRole'] == null ? null : ((map['serviceRole'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       type: (map['type'] as String).input(),
-      updatePolicy: map['updatePolicy'] == null ? null : (ComputeEnvironmentUpdatePolicy.fromMap((map['updatePolicy'] as Map).cast<String, dynamic>())).input(),
+      updatePolicy: map['updatePolicy'] == null ? null : ((ComputeEnvironmentUpdatePolicy.fromMap((map['updatePolicy']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

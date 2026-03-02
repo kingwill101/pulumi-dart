@@ -72,16 +72,16 @@ class IcebergCatalogState {
 
   factory IcebergCatalogState.fromMap(Map<String, dynamic> map) {
     return IcebergCatalogState(
-      biglakeServiceAccount: map['biglakeServiceAccount'] == null ? null : (map['biglakeServiceAccount'] as String).input(),
-      catalogType: map['catalogType'] == null ? null : (map['catalogType'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      credentialMode: map['credentialMode'] == null ? null : (map['credentialMode'] as String).input(),
-      defaultLocation: map['defaultLocation'] == null ? null : (map['defaultLocation'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<IcebergCatalogReplica>(map['replicas'], (value) => IcebergCatalogReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageRegions: map['storageRegions'] == null ? null : ((map['storageRegions'] as List).cast<String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      biglakeServiceAccount: map['biglakeServiceAccount'] == null ? null : (map['biglakeServiceAccount']! as String).input(),
+      catalogType: map['catalogType'] == null ? null : (map['catalogType']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      credentialMode: map['credentialMode'] == null ? null : (map['credentialMode']! as String).input(),
+      defaultLocation: map['defaultLocation'] == null ? null : (map['defaultLocation']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<IcebergCatalogReplica>(map['replicas']!, (value) => IcebergCatalogReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageRegions: map['storageRegions'] == null ? null : ((map['storageRegions']! as List).cast<String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

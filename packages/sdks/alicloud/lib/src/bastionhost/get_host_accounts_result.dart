@@ -59,15 +59,15 @@ class GetHostAccountsResult {
   factory GetHostAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetHostAccountsResult(
       accounts: pulumi.Input.decodeList<GetHostAccountsAccount>(map['accounts'], (value) => GetHostAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
-      hostAccountName: map['hostAccountName'] == null ? null : map['hostAccountName'] as String,
+      hostAccountName: map['hostAccountName'] == null ? null : map['hostAccountName']! as String,
       hostId: map['hostId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      protocolName: map['protocolName'] == null ? null : map['protocolName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      protocolName: map['protocolName'] == null ? null : map['protocolName']! as String,
     );
   }
 }

@@ -48,12 +48,12 @@ class SsisEnvironmentResponse {
 
   factory SsisEnvironmentResponse.fromMap(Map<String, dynamic> map) {
     return SsisEnvironmentResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folderId: map['folderId'] == null ? null : (map['folderId'] as double).input(),
-      id: map['id'] == null ? null : (map['id'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId']! as double).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       type: (map['type'] as String).input(),
-      variables: map['variables'] == null ? null : (pulumi.Input.decodeList<SsisVariableResponse>(map['variables'], (value) => SsisVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      variables: map['variables'] == null ? null : (pulumi.Input.decodeList<SsisVariableResponse>(map['variables']!, (value) => SsisVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

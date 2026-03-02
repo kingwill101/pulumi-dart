@@ -33,7 +33,7 @@ class GetBatchPredictionJobAiplatformV1beta1Args {
     return GetBatchPredictionJobAiplatformV1beta1Args(
       batchPredictionJobId: (map['batchPredictionJobId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

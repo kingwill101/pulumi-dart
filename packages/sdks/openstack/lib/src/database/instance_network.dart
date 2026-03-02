@@ -39,10 +39,10 @@ class InstanceNetwork {
 
   factory InstanceNetwork.fromMap(Map<String, dynamic> map) {
     return InstanceNetwork(
-      fixedIpV4: map['fixedIpV4'] == null ? null : (map['fixedIpV4'] as String).input(),
-      fixedIpV6: map['fixedIpV6'] == null ? null : (map['fixedIpV6'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      fixedIpV4: map['fixedIpV4'] == null ? null : (map['fixedIpV4']! as String).input(),
+      fixedIpV6: map['fixedIpV6'] == null ? null : (map['fixedIpV6']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

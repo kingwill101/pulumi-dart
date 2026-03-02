@@ -58,14 +58,14 @@ class ForwardingRuleState {
 
   factory ForwardingRuleState.fromMap(Map<String, dynamic> map) {
     return ForwardingRuleState(
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
-      forwardingRuleId: map['forwardingRuleId'] == null ? null : (map['forwardingRuleId'] as String).input(),
-      forwardingRuleName: map['forwardingRuleName'] == null ? null : (map['forwardingRuleName'] as String).input(),
-      forwardingRuleStatus: map['forwardingRuleStatus'] == null ? null : (map['forwardingRuleStatus'] as String).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      ruleActions: map['ruleActions'] == null ? null : (pulumi.Input.decodeList<ForwardingRuleRuleAction>(map['ruleActions'], (value) => ForwardingRuleRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleConditions: map['ruleConditions'] == null ? null : (pulumi.Input.decodeList<ForwardingRuleRuleCondition>(map['ruleConditions'], (value) => ForwardingRuleRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
+      forwardingRuleId: map['forwardingRuleId'] == null ? null : (map['forwardingRuleId']! as String).input(),
+      forwardingRuleName: map['forwardingRuleName'] == null ? null : (map['forwardingRuleName']! as String).input(),
+      forwardingRuleStatus: map['forwardingRuleStatus'] == null ? null : (map['forwardingRuleStatus']! as String).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      ruleActions: map['ruleActions'] == null ? null : (pulumi.Input.decodeList<ForwardingRuleRuleAction>(map['ruleActions']!, (value) => ForwardingRuleRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleConditions: map['ruleConditions'] == null ? null : (pulumi.Input.decodeList<ForwardingRuleRuleCondition>(map['ruleConditions']!, (value) => ForwardingRuleRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

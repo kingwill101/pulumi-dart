@@ -25,7 +25,7 @@ class V2modelsBotLocaleVoiceSettings {
 
   factory V2modelsBotLocaleVoiceSettings.fromMap(Map<String, dynamic> map) {
     return V2modelsBotLocaleVoiceSettings(
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
       voiceId: (map['voiceId'] as String).input(),
     );
   }

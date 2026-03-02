@@ -35,8 +35,8 @@ class ApplicationGatewayRewriteRuleSetRewriteRuleCondition {
 
   factory ApplicationGatewayRewriteRuleSetRewriteRuleCondition.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRewriteRuleSetRewriteRuleCondition(
-      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
-      negate: map['negate'] == null ? null : (map['negate'] as bool).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase']! as bool).input(),
+      negate: map['negate'] == null ? null : (map['negate']! as bool).input(),
       pattern: (map['pattern'] as String).input(),
       variable: (map['variable'] as String).input(),
     );

@@ -59,11 +59,11 @@ class VirtualMachineAvailabilityGroupListenerArgs {
 
   factory VirtualMachineAvailabilityGroupListenerArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAvailabilityGroupListenerArgs(
-      availabilityGroupName: map['availabilityGroupName'] == null ? null : (map['availabilityGroupName'] as String).input(),
-      loadBalancerConfiguration: map['loadBalancerConfiguration'] == null ? null : (VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration.fromMap((map['loadBalancerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      multiSubnetIpConfigurations: map['multiSubnetIpConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>(map['multiSubnetIpConfigurations'], (value) => VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      availabilityGroupName: map['availabilityGroupName'] == null ? null : (map['availabilityGroupName']! as String).input(),
+      loadBalancerConfiguration: map['loadBalancerConfiguration'] == null ? null : (VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration.fromMap((map['loadBalancerConfiguration']! as Map).cast<String, dynamic>())).input(),
+      multiSubnetIpConfigurations: map['multiSubnetIpConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>(map['multiSubnetIpConfigurations']!, (value) => VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       replicas: (pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerReplica>(map['replicas'], (value) => VirtualMachineAvailabilityGroupListenerReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
       sqlVirtualMachineGroupId: (map['sqlVirtualMachineGroupId'] as String).input(),
     );

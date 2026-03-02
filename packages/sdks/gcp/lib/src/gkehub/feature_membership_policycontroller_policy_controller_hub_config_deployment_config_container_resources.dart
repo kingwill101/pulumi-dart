@@ -27,8 +27,8 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
 
   factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources(
-      limits: map['limits'] == null ? null : (FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
-      requests: map['requests'] == null ? null : (FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
+      limits: map['limits'] == null ? null : (FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits.fromMap((map['limits']! as Map).cast<String, dynamic>())).input(),
+      requests: map['requests'] == null ? null : (FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests.fromMap((map['requests']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

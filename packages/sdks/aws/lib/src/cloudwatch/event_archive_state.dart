@@ -56,14 +56,14 @@ class EventArchiveState {
 
   factory EventArchiveState.fromMap(Map<String, dynamic> map) {
     return EventArchiveState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eventPattern: map['eventPattern'] == null ? null : (map['eventPattern'] as String).input(),
-      eventSourceArn: map['eventSourceArn'] == null ? null : (map['eventSourceArn'] as String).input(),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      eventPattern: map['eventPattern'] == null ? null : ((map['eventPattern'] as String).input()).input(),
+      eventSourceArn: map['eventSourceArn'] == null ? null : ((map['eventSourceArn'] as String).input()).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionDays: map['retentionDays'] == null ? null : ((map['retentionDays'] as int).input()).input(),
     );
   }
 }

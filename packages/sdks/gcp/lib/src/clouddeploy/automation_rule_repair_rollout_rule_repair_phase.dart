@@ -29,8 +29,8 @@ class AutomationRuleRepairRolloutRuleRepairPhase {
 
   factory AutomationRuleRepairRolloutRuleRepairPhase.fromMap(Map<String, dynamic> map) {
     return AutomationRuleRepairRolloutRuleRepairPhase(
-      retry: map['retry'] == null ? null : (AutomationRuleRepairRolloutRuleRepairPhaseRetry.fromMap((map['retry'] as Map).cast<String, dynamic>())).input(),
-      rollback: map['rollback'] == null ? null : (AutomationRuleRepairRolloutRuleRepairPhaseRollback.fromMap((map['rollback'] as Map).cast<String, dynamic>())).input(),
+      retry: map['retry'] == null ? null : (AutomationRuleRepairRolloutRuleRepairPhaseRetry.fromMap((map['retry']! as Map).cast<String, dynamic>())).input(),
+      rollback: map['rollback'] == null ? null : (AutomationRuleRepairRolloutRuleRepairPhaseRollback.fromMap((map['rollback']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -67,15 +67,15 @@ class TlsRouteState {
 
   factory TlsRouteState.fromMap(Map<String, dynamic> map) {
     return TlsRouteState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gateways: map['gateways'] == null ? null : ((map['gateways'] as List).cast<String>()).input(),
-      meshes: map['meshes'] == null ? null : ((map['meshes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<TlsRouteRule>(map['rules'], (value) => TlsRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      gateways: map['gateways'] == null ? null : ((map['gateways']! as List).cast<String>()).input(),
+      meshes: map['meshes'] == null ? null : ((map['meshes']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<TlsRouteRule>(map['rules']!, (value) => TlsRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

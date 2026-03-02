@@ -42,10 +42,10 @@ class ZoneArgs {
 
   factory ZoneArgs.fromMap(Map<String, dynamic> map) {
     return ZoneArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      soaRecord: map['soaRecord'] == null ? null : (ZoneSoaRecord.fromMap((map['soaRecord'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      soaRecord: map['soaRecord'] == null ? null : (ZoneSoaRecord.fromMap((map['soaRecord']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

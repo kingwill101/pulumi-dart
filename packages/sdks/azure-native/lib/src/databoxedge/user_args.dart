@@ -46,8 +46,8 @@ class UserArgs {
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
       deviceName: (map['deviceName'] as String).input(),
-      encryptedPassword: map['encryptedPassword'] == null ? null : (AsymmetricEncryptedSecret.fromMap((map['encryptedPassword'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      encryptedPassword: map['encryptedPassword'] == null ? null : (AsymmetricEncryptedSecret.fromMap((map['encryptedPassword']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       userType: (map['userType'] as String).input(),
     );

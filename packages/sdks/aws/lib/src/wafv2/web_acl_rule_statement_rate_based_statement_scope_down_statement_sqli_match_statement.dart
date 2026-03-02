@@ -32,9 +32,9 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatement 
 
   factory WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null ? null : (WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
-      sensitivityLevel: map['sensitivityLevel'] == null ? null : (map['sensitivityLevel'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
+      sensitivityLevel: map['sensitivityLevel'] == null ? null : ((map['sensitivityLevel'] as String).input()).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

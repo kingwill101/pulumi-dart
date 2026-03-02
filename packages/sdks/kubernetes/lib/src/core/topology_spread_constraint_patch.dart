@@ -68,14 +68,14 @@ class TopologySpreadConstraintPatch {
 
   factory TopologySpreadConstraintPatch.fromMap(Map<String, dynamic> map) {
     return TopologySpreadConstraintPatch(
-      labelSelector: map['labelSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['labelSelector'] as Map).cast<String, dynamic>())).input(),
-      matchLabelKeys: map['matchLabelKeys'] == null ? null : ((map['matchLabelKeys'] as List).cast<String>()).input(),
-      maxSkew: map['maxSkew'] == null ? null : (map['maxSkew'] as int).input(),
-      minDomains: map['minDomains'] == null ? null : (map['minDomains'] as int).input(),
-      nodeAffinityPolicy: map['nodeAffinityPolicy'] == null ? null : (map['nodeAffinityPolicy'] as String).input(),
-      nodeTaintsPolicy: map['nodeTaintsPolicy'] == null ? null : (map['nodeTaintsPolicy'] as String).input(),
-      topologyKey: map['topologyKey'] == null ? null : (map['topologyKey'] as String).input(),
-      whenUnsatisfiable: map['whenUnsatisfiable'] == null ? null : (map['whenUnsatisfiable'] as String).input(),
+      labelSelector: map['labelSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['labelSelector']! as Map).cast<String, dynamic>())).input(),
+      matchLabelKeys: map['matchLabelKeys'] == null ? null : ((map['matchLabelKeys']! as List).cast<String>()).input(),
+      maxSkew: map['maxSkew'] == null ? null : (map['maxSkew']! as int).input(),
+      minDomains: map['minDomains'] == null ? null : (map['minDomains']! as int).input(),
+      nodeAffinityPolicy: map['nodeAffinityPolicy'] == null ? null : (map['nodeAffinityPolicy']! as String).input(),
+      nodeTaintsPolicy: map['nodeTaintsPolicy'] == null ? null : (map['nodeTaintsPolicy']! as String).input(),
+      topologyKey: map['topologyKey'] == null ? null : (map['topologyKey']! as String).input(),
+      whenUnsatisfiable: map['whenUnsatisfiable'] == null ? null : (map['whenUnsatisfiable']! as String).input(),
     );
   }
 }

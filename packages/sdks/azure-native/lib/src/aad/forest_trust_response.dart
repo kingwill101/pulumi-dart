@@ -41,11 +41,11 @@ class ForestTrustResponse {
 
   factory ForestTrustResponse.fromMap(Map<String, dynamic> map) {
     return ForestTrustResponse(
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      remoteDnsIps: map['remoteDnsIps'] == null ? null : (map['remoteDnsIps'] as String).input(),
-      trustDirection: map['trustDirection'] == null ? null : (map['trustDirection'] as String).input(),
-      trustPassword: map['trustPassword'] == null ? null : (map['trustPassword'] as String).input(),
-      trustedDomainFqdn: map['trustedDomainFqdn'] == null ? null : (map['trustedDomainFqdn'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      remoteDnsIps: map['remoteDnsIps'] == null ? null : (map['remoteDnsIps']! as String).input(),
+      trustDirection: map['trustDirection'] == null ? null : (map['trustDirection']! as String).input(),
+      trustPassword: map['trustPassword'] == null ? null : (map['trustPassword']! as String).input(),
+      trustedDomainFqdn: map['trustedDomainFqdn'] == null ? null : (map['trustedDomainFqdn']! as String).input(),
     );
   }
 }

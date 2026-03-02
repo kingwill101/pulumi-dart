@@ -26,7 +26,7 @@ class MigrateSyncCompleteCommandInputResponse {
 
   factory MigrateSyncCompleteCommandInputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSyncCompleteCommandInputResponse(
-      commitTimeStamp: map['commitTimeStamp'] == null ? null : (map['commitTimeStamp'] as String).input(),
+      commitTimeStamp: map['commitTimeStamp'] == null ? null : (map['commitTimeStamp']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
     );
   }

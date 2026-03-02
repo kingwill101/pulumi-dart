@@ -33,9 +33,9 @@ class AgentDataSourceVectorIngestionConfiguration {
 
   factory AgentDataSourceVectorIngestionConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfiguration(
-      chunkingConfiguration: map['chunkingConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfigurationChunkingConfiguration.fromMap((map['chunkingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      customTransformationConfiguration: map['customTransformationConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration.fromMap((map['customTransformationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      parsingConfiguration: map['parsingConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfigurationParsingConfiguration.fromMap((map['parsingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      chunkingConfiguration: map['chunkingConfiguration'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationChunkingConfiguration.fromMap((map['chunkingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      customTransformationConfiguration: map['customTransformationConfiguration'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration.fromMap((map['customTransformationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      parsingConfiguration: map['parsingConfiguration'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationParsingConfiguration.fromMap((map['parsingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

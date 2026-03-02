@@ -37,8 +37,8 @@ class FileSystemRootSquash {
     return FileSystemRootSquash(
       mode: (map['mode'] as String).input(),
       noSquashNids: (map['noSquashNids'] as String).input(),
-      squashGid: map['squashGid'] == null ? null : (map['squashGid'] as int).input(),
-      squashUid: map['squashUid'] == null ? null : (map['squashUid'] as int).input(),
+      squashGid: map['squashGid'] == null ? null : (map['squashGid']! as int).input(),
+      squashUid: map['squashUid'] == null ? null : (map['squashUid']! as int).input(),
     );
   }
 }

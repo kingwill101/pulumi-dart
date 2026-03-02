@@ -115,25 +115,25 @@ class GetMonitorResult {
 
   factory GetMonitorResult.fromMap(Map<String, dynamic> map) {
     return GetMonitorResult(
-      appLocation: map['appLocation'] == null ? null : map['appLocation'] as String,
-      appServicePlanConfiguration: map['appServicePlanConfiguration'] == null ? null : AppServicePlanConfigurationResponse.fromMap((map['appServicePlanConfiguration'] as Map).cast<String, dynamic>()),
+      appLocation: map['appLocation'] == null ? null : map['appLocation']! as String,
+      appServicePlanConfiguration: map['appServicePlanConfiguration'] == null ? null : AppServicePlanConfigurationResponse.fromMap((map['appServicePlanConfiguration']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
       errors: ErrorDetailResponse.fromMap((map['errors'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
-      logAnalyticsWorkspaceArmId: map['logAnalyticsWorkspaceArmId'] == null ? null : map['logAnalyticsWorkspaceArmId'] as String,
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : ManagedResourceGroupConfigurationResponse.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>()),
-      monitorSubnet: map['monitorSubnet'] == null ? null : map['monitorSubnet'] as String,
+      logAnalyticsWorkspaceArmId: map['logAnalyticsWorkspaceArmId'] == null ? null : map['logAnalyticsWorkspaceArmId']! as String,
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : ManagedResourceGroupConfigurationResponse.fromMap((map['managedResourceGroupConfiguration']! as Map).cast<String, dynamic>()),
+      monitorSubnet: map['monitorSubnet'] == null ? null : map['monitorSubnet']! as String,
       msiArmId: map['msiArmId'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      routingPreference: map['routingPreference'] == null ? null : map['routingPreference'] as String,
+      routingPreference: map['routingPreference'] == null ? null : map['routingPreference']! as String,
       storageAccountArmId: map['storageAccountArmId'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      zoneRedundancyPreference: map['zoneRedundancyPreference'] == null ? null : map['zoneRedundancyPreference'] as String,
+      zoneRedundancyPreference: map['zoneRedundancyPreference'] == null ? null : map['zoneRedundancyPreference']! as String,
     );
   }
 }

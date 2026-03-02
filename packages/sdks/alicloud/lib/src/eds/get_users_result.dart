@@ -40,8 +40,8 @@ class GetUsersResult {
     return GetUsersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
       users: pulumi.Input.decodeList<GetUsersUser>(map['users'], (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

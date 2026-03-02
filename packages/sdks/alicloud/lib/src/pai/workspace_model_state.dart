@@ -79,18 +79,18 @@ class WorkspaceModelState {
 
   factory WorkspaceModelState.fromMap(Map<String, dynamic> map) {
     return WorkspaceModelState(
-      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      extraInfo: map['extraInfo'] == null ? null : ((map['extraInfo'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceModelLabel>(map['labels'], (value) => WorkspaceModelLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      modelDescription: map['modelDescription'] == null ? null : (map['modelDescription'] as String).input(),
-      modelDoc: map['modelDoc'] == null ? null : (map['modelDoc'] as String).input(),
-      modelName: map['modelName'] == null ? null : (map['modelName'] as String).input(),
-      modelType: map['modelType'] == null ? null : (map['modelType'] as String).input(),
-      orderNumber: map['orderNumber'] == null ? null : (map['orderNumber'] as int).input(),
-      origin: map['origin'] == null ? null : (map['origin'] as String).input(),
-      task: map['task'] == null ? null : (map['task'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      accessibility: map['accessibility'] == null ? null : (map['accessibility']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      extraInfo: map['extraInfo'] == null ? null : ((map['extraInfo']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceModelLabel>(map['labels']!, (value) => WorkspaceModelLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      modelDescription: map['modelDescription'] == null ? null : (map['modelDescription']! as String).input(),
+      modelDoc: map['modelDoc'] == null ? null : (map['modelDoc']! as String).input(),
+      modelName: map['modelName'] == null ? null : (map['modelName']! as String).input(),
+      modelType: map['modelType'] == null ? null : (map['modelType']! as String).input(),
+      orderNumber: map['orderNumber'] == null ? null : (map['orderNumber']! as int).input(),
+      origin: map['origin'] == null ? null : (map['origin']! as String).input(),
+      task: map['task'] == null ? null : (map['task']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

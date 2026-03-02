@@ -35,7 +35,7 @@ class MainRouteTableAssociationArgs {
 
   factory MainRouteTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MainRouteTableAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       routeTableId: (map['routeTableId'] as String).input(),
       vpcId: (map['vpcId'] as String).input(),
     );

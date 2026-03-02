@@ -31,9 +31,9 @@ class ManagedVirtualNetworkSettingsResponse {
 
   factory ManagedVirtualNetworkSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ManagedVirtualNetworkSettingsResponse(
-      allowedAadTenantIdsForLinking: map['allowedAadTenantIdsForLinking'] == null ? null : ((map['allowedAadTenantIdsForLinking'] as List).cast<String>()).input(),
-      linkedAccessCheckOnTargetResource: map['linkedAccessCheckOnTargetResource'] == null ? null : (map['linkedAccessCheckOnTargetResource'] as bool).input(),
-      preventDataExfiltration: map['preventDataExfiltration'] == null ? null : (map['preventDataExfiltration'] as bool).input(),
+      allowedAadTenantIdsForLinking: map['allowedAadTenantIdsForLinking'] == null ? null : ((map['allowedAadTenantIdsForLinking']! as List).cast<String>()).input(),
+      linkedAccessCheckOnTargetResource: map['linkedAccessCheckOnTargetResource'] == null ? null : (map['linkedAccessCheckOnTargetResource']! as bool).input(),
+      preventDataExfiltration: map['preventDataExfiltration'] == null ? null : (map['preventDataExfiltration']! as bool).input(),
     );
   }
 }

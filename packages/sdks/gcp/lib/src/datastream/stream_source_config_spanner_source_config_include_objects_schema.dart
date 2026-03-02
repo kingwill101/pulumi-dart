@@ -28,7 +28,7 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema {
   factory StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema(
       schema: (map['schema'] as String).input(),
-      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable>(map['tables'], (value) => StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable>(map['tables']!, (value) => StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

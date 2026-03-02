@@ -33,8 +33,8 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration(
       embeddingModelArn: (map['embeddingModelArn'] as String).input(),
-      embeddingModelConfiguration: map['embeddingModelConfiguration'] == null ? null : (AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfiguration.fromMap((map['embeddingModelConfiguration'] as Map).cast<String, dynamic>())).input(),
-      supplementalDataStorageConfiguration: map['supplementalDataStorageConfiguration'] == null ? null : (AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration.fromMap((map['supplementalDataStorageConfiguration'] as Map).cast<String, dynamic>())).input(),
+      embeddingModelConfiguration: map['embeddingModelConfiguration'] == null ? null : ((AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfiguration.fromMap((map['embeddingModelConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      supplementalDataStorageConfiguration: map['supplementalDataStorageConfiguration'] == null ? null : ((AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfiguration.fromMap((map['supplementalDataStorageConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

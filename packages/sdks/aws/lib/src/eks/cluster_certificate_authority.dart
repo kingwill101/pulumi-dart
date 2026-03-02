@@ -20,7 +20,7 @@ class ClusterCertificateAuthority {
 
   factory ClusterCertificateAuthority.fromMap(Map<String, dynamic> map) {
     return ClusterCertificateAuthority(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
+      data: map['data'] == null ? null : ((map['data'] as String).input()).input(),
     );
   }
 }

@@ -47,8 +47,8 @@ class ChartRepositoryArgs {
       instanceId: (map['instanceId'] as String).input(),
       repoName: (map['repoName'] as String).input(),
       repoNamespaceName: (map['repoNamespaceName'] as String).input(),
-      repoType: map['repoType'] == null ? null : (map['repoType'] as String).input(),
-      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
+      repoType: map['repoType'] == null ? null : (map['repoType']! as String).input(),
+      summary: map['summary'] == null ? null : (map['summary']! as String).input(),
     );
   }
 }

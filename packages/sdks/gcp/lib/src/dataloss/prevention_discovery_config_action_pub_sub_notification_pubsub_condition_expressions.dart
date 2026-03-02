@@ -28,8 +28,8 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpression
 
   factory PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition>(map['conditions'], (value) => PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logicalOperator: map['logicalOperator'] == null ? null : (map['logicalOperator'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition>(map['conditions']!, (value) => PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logicalOperator: map['logicalOperator'] == null ? null : (map['logicalOperator']! as String).input(),
     );
   }
 }

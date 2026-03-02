@@ -21,7 +21,7 @@ class SshPublicKeyResponse {
 
   factory SshPublicKeyResponse.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyResponse(
-      certificateData: map['certificateData'] == null ? null : (map['certificateData'] as String).input(),
+      certificateData: map['certificateData'] == null ? null : (map['certificateData']! as String).input(),
     );
   }
 }

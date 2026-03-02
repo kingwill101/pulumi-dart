@@ -56,13 +56,13 @@ class IdentityProviderConfigOidc {
   factory IdentityProviderConfigOidc.fromMap(Map<String, dynamic> map) {
     return IdentityProviderConfigOidc(
       clientId: (map['clientId'] as String).input(),
-      groupsClaim: map['groupsClaim'] == null ? null : (map['groupsClaim'] as String).input(),
-      groupsPrefix: map['groupsPrefix'] == null ? null : (map['groupsPrefix'] as String).input(),
+      groupsClaim: map['groupsClaim'] == null ? null : ((map['groupsClaim'] as String).input()).input(),
+      groupsPrefix: map['groupsPrefix'] == null ? null : ((map['groupsPrefix'] as String).input()).input(),
       identityProviderConfigName: (map['identityProviderConfigName'] as String).input(),
       issuerUrl: (map['issuerUrl'] as String).input(),
-      requiredClaims: map['requiredClaims'] == null ? null : ((map['requiredClaims'] as Map).cast<String, String>()).input(),
-      usernameClaim: map['usernameClaim'] == null ? null : (map['usernameClaim'] as String).input(),
-      usernamePrefix: map['usernamePrefix'] == null ? null : (map['usernamePrefix'] as String).input(),
+      requiredClaims: map['requiredClaims'] == null ? null : (((map['requiredClaims'] as Map).cast<String, String>()).input()).input(),
+      usernameClaim: map['usernameClaim'] == null ? null : ((map['usernameClaim'] as String).input()).input(),
+      usernamePrefix: map['usernamePrefix'] == null ? null : ((map['usernamePrefix'] as String).input()).input(),
     );
   }
 }

@@ -38,7 +38,7 @@ class CaPoolIssuancePolicyIdentityConstraints {
     return CaPoolIssuancePolicyIdentityConstraints(
       allowSubjectAltNamesPassthrough: (map['allowSubjectAltNamesPassthrough'] as bool).input(),
       allowSubjectPassthrough: (map['allowSubjectPassthrough'] as bool).input(),
-      celExpression: map['celExpression'] == null ? null : (CaPoolIssuancePolicyIdentityConstraintsCelExpression.fromMap((map['celExpression'] as Map).cast<String, dynamic>())).input(),
+      celExpression: map['celExpression'] == null ? null : (CaPoolIssuancePolicyIdentityConstraintsCelExpression.fromMap((map['celExpression']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

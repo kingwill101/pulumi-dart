@@ -30,9 +30,9 @@ class VpnConnectionRoute {
 
   factory VpnConnectionRoute.fromMap(Map<String, dynamic> map) {
     return VpnConnectionRoute(
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : ((map['destinationCidrBlock'] as String).input()).input(),
+      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
     );
   }
 }

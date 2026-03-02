@@ -41,11 +41,11 @@ class DomainDevicesDiskSourceVhostUserTcp {
 
   factory DomainDevicesDiskSourceVhostUserTcp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceVhostUserTcp(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      reconnect: map['reconnect'] == null ? null : (DomainDevicesDiskSourceVhostUserTcpReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>())).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      tls: map['tls'] == null ? null : (map['tls'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      reconnect: map['reconnect'] == null ? null : (DomainDevicesDiskSourceVhostUserTcpReconnect.fromMap((map['reconnect']! as Map).cast<String, dynamic>())).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      tls: map['tls'] == null ? null : (map['tls']! as String).input(),
     );
   }
 }

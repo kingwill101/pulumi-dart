@@ -52,13 +52,13 @@ class APIServiceSpecPatchApiregistrationK8sIoV1beta1 {
 
   factory APIServiceSpecPatchApiregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return APIServiceSpecPatchApiregistrationK8sIoV1beta1(
-      caBundle: map['caBundle'] == null ? null : (map['caBundle'] as String).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      groupPriorityMinimum: map['groupPriorityMinimum'] == null ? null : (map['groupPriorityMinimum'] as int).input(),
-      insecureSkipTLSVerify: map['insecureSkipTLSVerify'] == null ? null : (map['insecureSkipTLSVerify'] as bool).input(),
-      service: map['service'] == null ? null : (ServiceReferencePatchApiregistrationK8sIoV1beta1.fromMap((map['service'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      versionPriority: map['versionPriority'] == null ? null : (map['versionPriority'] as int).input(),
+      caBundle: map['caBundle'] == null ? null : (map['caBundle']! as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      groupPriorityMinimum: map['groupPriorityMinimum'] == null ? null : (map['groupPriorityMinimum']! as int).input(),
+      insecureSkipTLSVerify: map['insecureSkipTLSVerify'] == null ? null : (map['insecureSkipTLSVerify']! as bool).input(),
+      service: map['service'] == null ? null : (ServiceReferencePatchApiregistrationK8sIoV1beta1.fromMap((map['service']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
+      versionPriority: map['versionPriority'] == null ? null : (map['versionPriority']! as int).input(),
     );
   }
 }

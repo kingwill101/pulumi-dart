@@ -34,10 +34,10 @@ class NetworkInterfaceAttachment {
 
   factory NetworkInterfaceAttachment.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceAttachment(
-      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
+      attachmentId: map['attachmentId'] == null ? null : ((map['attachmentId'] as String).input()).input(),
       deviceIndex: (map['deviceIndex'] as int).input(),
       instance: (map['instance'] as String).input(),
-      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
+      networkCardIndex: map['networkCardIndex'] == null ? null : ((map['networkCardIndex'] as int).input()).input(),
     );
   }
 }

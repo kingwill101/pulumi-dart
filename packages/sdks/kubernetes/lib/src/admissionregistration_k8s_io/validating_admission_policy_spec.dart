@@ -76,13 +76,13 @@ class ValidatingAdmissionPolicySpec {
 
   factory ValidatingAdmissionPolicySpec.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicySpec(
-      auditAnnotations: map['auditAnnotations'] == null ? null : (pulumi.Input.decodeList<AuditAnnotation>(map['auditAnnotations'], (value) => AuditAnnotation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      failurePolicy: map['failurePolicy'] == null ? null : (map['failurePolicy'] as String).input(),
-      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<MatchCondition>(map['matchConditions'], (value) => MatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchConstraints: map['matchConstraints'] == null ? null : (MatchResources.fromMap((map['matchConstraints'] as Map).cast<String, dynamic>())).input(),
-      paramKind: map['paramKind'] == null ? null : (ParamKind.fromMap((map['paramKind'] as Map).cast<String, dynamic>())).input(),
-      validations: map['validations'] == null ? null : (pulumi.Input.decodeList<Validation>(map['validations'], (value) => Validation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      variables: map['variables'] == null ? null : (pulumi.Input.decodeList<Variable>(map['variables'], (value) => Variable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      auditAnnotations: map['auditAnnotations'] == null ? null : (pulumi.Input.decodeList<AuditAnnotation>(map['auditAnnotations']!, (value) => AuditAnnotation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failurePolicy: map['failurePolicy'] == null ? null : (map['failurePolicy']! as String).input(),
+      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<MatchCondition>(map['matchConditions']!, (value) => MatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchConstraints: map['matchConstraints'] == null ? null : (MatchResources.fromMap((map['matchConstraints']! as Map).cast<String, dynamic>())).input(),
+      paramKind: map['paramKind'] == null ? null : (ParamKind.fromMap((map['paramKind']! as Map).cast<String, dynamic>())).input(),
+      validations: map['validations'] == null ? null : (pulumi.Input.decodeList<Validation>(map['validations']!, (value) => Validation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      variables: map['variables'] == null ? null : (pulumi.Input.decodeList<Variable>(map['variables']!, (value) => Variable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

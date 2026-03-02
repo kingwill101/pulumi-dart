@@ -36,10 +36,10 @@ class TableEntityState {
 
   factory TableEntityState.fromMap(Map<String, dynamic> map) {
     return TableEntityState(
-      entity: map['entity'] == null ? null : ((map['entity'] as Map).cast<String, String>()).input(),
-      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
-      rowKey: map['rowKey'] == null ? null : (map['rowKey'] as String).input(),
-      storageTableId: map['storageTableId'] == null ? null : (map['storageTableId'] as String).input(),
+      entity: map['entity'] == null ? null : ((map['entity']! as Map).cast<String, String>()).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey']! as String).input(),
+      rowKey: map['rowKey'] == null ? null : (map['rowKey']! as String).input(),
+      storageTableId: map['storageTableId'] == null ? null : (map['storageTableId']! as String).input(),
     );
   }
 }

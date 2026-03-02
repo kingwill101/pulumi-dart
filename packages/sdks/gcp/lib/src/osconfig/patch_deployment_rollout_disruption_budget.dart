@@ -25,8 +25,8 @@ class PatchDeploymentRolloutDisruptionBudget {
 
   factory PatchDeploymentRolloutDisruptionBudget.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentRolloutDisruptionBudget(
-      fixed: map['fixed'] == null ? null : (map['fixed'] as int).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
+      fixed: map['fixed'] == null ? null : (map['fixed']! as int).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as int).input(),
     );
   }
 }

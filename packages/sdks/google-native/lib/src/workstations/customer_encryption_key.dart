@@ -26,8 +26,8 @@ class CustomerEncryptionKey {
 
   factory CustomerEncryptionKey.fromMap(Map<String, dynamic> map) {
     return CustomerEncryptionKey(
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount']! as String).input(),
     );
   }
 }

@@ -86,18 +86,18 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      axfrIps: map['axfrIps'] == null ? null : ((map['axfrIps'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      axfrIps: map['axfrIps'] == null ? null : ((map['axfrIps']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       domain: (map['domain'] as String).input(),
-      expireSec: map['expireSec'] == null ? null : (map['expireSec'] as int).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      masterIps: map['masterIps'] == null ? null : ((map['masterIps'] as List).cast<String>()).input(),
-      refreshSec: map['refreshSec'] == null ? null : (map['refreshSec'] as int).input(),
-      retrySec: map['retrySec'] == null ? null : (map['retrySec'] as int).input(),
-      soaEmail: map['soaEmail'] == null ? null : (map['soaEmail'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      ttlSec: map['ttlSec'] == null ? null : (map['ttlSec'] as int).input(),
+      expireSec: map['expireSec'] == null ? null : (map['expireSec']! as int).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      masterIps: map['masterIps'] == null ? null : ((map['masterIps']! as List).cast<String>()).input(),
+      refreshSec: map['refreshSec'] == null ? null : (map['refreshSec']! as int).input(),
+      retrySec: map['retrySec'] == null ? null : (map['retrySec']! as int).input(),
+      soaEmail: map['soaEmail'] == null ? null : (map['soaEmail']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      ttlSec: map['ttlSec'] == null ? null : (map['ttlSec']! as int).input(),
       type: (map['type'] as String).input(),
     );
   }

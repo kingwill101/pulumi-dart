@@ -22,7 +22,7 @@ class NamespacedNames {
 
   factory NamespacedNames.fromMap(Map<String, dynamic> map) {
     return NamespacedNames(
-      namespacedNames: map['namespacedNames'] == null ? null : (pulumi.Input.decodeList<NamespacedName>(map['namespacedNames'], (value) => NamespacedName.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namespacedNames: map['namespacedNames'] == null ? null : (pulumi.Input.decodeList<NamespacedName>(map['namespacedNames']!, (value) => NamespacedName.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

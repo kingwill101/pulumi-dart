@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2RecordTransformations {
 
   factory GooglePrivacyDlpV2RecordTransformations.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2RecordTransformations(
-      fieldTransformations: map['fieldTransformations'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldTransformation>(map['fieldTransformations'], (value) => GooglePrivacyDlpV2FieldTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recordSuppressions: map['recordSuppressions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2RecordSuppression>(map['recordSuppressions'], (value) => GooglePrivacyDlpV2RecordSuppression.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldTransformations: map['fieldTransformations'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldTransformation>(map['fieldTransformations']!, (value) => GooglePrivacyDlpV2FieldTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recordSuppressions: map['recordSuppressions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2RecordSuppression>(map['recordSuppressions']!, (value) => GooglePrivacyDlpV2RecordSuppression.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

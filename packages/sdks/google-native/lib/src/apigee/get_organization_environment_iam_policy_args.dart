@@ -32,7 +32,7 @@ class GetOrganizationEnvironmentIamPolicyArgs {
   factory GetOrganizationEnvironmentIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationEnvironmentIamPolicyArgs(
       environmentId: (map['environmentId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
       organizationId: (map['organizationId'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class DomainSysInfoSmbiosProcessor {
 
   factory DomainSysInfoSmbiosProcessor.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosProcessor(
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosProcessorEntry>(map['entries'], (value) => DomainSysInfoSmbiosProcessorEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosProcessorEntry>(map['entries']!, (value) => DomainSysInfoSmbiosProcessorEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

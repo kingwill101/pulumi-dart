@@ -39,10 +39,10 @@ class SyslogDataSourceResponse {
 
   factory SyslogDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return SyslogDataSourceResponse(
-      facilityNames: map['facilityNames'] == null ? null : ((map['facilityNames'] as List).cast<String>()).input(),
-      logLevels: map['logLevels'] == null ? null : ((map['logLevels'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      streams: map['streams'] == null ? null : ((map['streams'] as List).cast<String>()).input(),
+      facilityNames: map['facilityNames'] == null ? null : ((map['facilityNames']! as List).cast<String>()).input(),
+      logLevels: map['logLevels'] == null ? null : ((map['logLevels']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      streams: map['streams'] == null ? null : ((map['streams']! as List).cast<String>()).input(),
     );
   }
 }

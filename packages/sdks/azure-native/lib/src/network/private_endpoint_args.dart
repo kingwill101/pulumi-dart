@@ -90,19 +90,19 @@ class PrivateEndpointArgs {
 
   factory PrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointArgs(
-      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : ((map['applicationSecurityGroups'] as List).cast<ApplicationSecurityGroupNetwork>()).input(),
-      customDnsConfigs: map['customDnsConfigs'] == null ? null : (pulumi.Input.decodeList<CustomDnsConfigPropertiesFormat>(map['customDnsConfigs'], (value) => CustomDnsConfigPropertiesFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customNetworkInterfaceName: map['customNetworkInterfaceName'] == null ? null : (map['customNetworkInterfaceName'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateEndpointIPConfiguration>(map['ipConfigurations'], (value) => PrivateEndpointIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['manualPrivateLinkServiceConnections'], (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateEndpointName: map['privateEndpointName'] == null ? null : (map['privateEndpointName'] as String).input(),
-      privateLinkServiceConnections: map['privateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['privateLinkServiceConnections'], (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : ((map['applicationSecurityGroups']! as List).cast<ApplicationSecurityGroupNetwork>()).input(),
+      customDnsConfigs: map['customDnsConfigs'] == null ? null : (pulumi.Input.decodeList<CustomDnsConfigPropertiesFormat>(map['customDnsConfigs']!, (value) => CustomDnsConfigPropertiesFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customNetworkInterfaceName: map['customNetworkInterfaceName'] == null ? null : (map['customNetworkInterfaceName']! as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateEndpointIPConfiguration>(map['ipConfigurations']!, (value) => PrivateEndpointIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['manualPrivateLinkServiceConnections']!, (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateEndpointName: map['privateEndpointName'] == null ? null : (map['privateEndpointName']! as String).input(),
+      privateLinkServiceConnections: map['privateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['privateLinkServiceConnections']!, (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as SubnetNetwork).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as SubnetNetwork).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

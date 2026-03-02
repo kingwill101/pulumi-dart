@@ -27,8 +27,8 @@ class VirtualNetworkPropertiesResponse {
 
   factory VirtualNetworkPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPropertiesResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      subnet: map['subnet'] == null ? null : (SubnetPropertiesResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      subnet: map['subnet'] == null ? null : (SubnetPropertiesResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -34,8 +34,8 @@ class DiJobJobSettingsDdlHandlingSetting {
 
   factory DiJobJobSettingsDdlHandlingSetting.fromMap(Map<String, dynamic> map) {
     return DiJobJobSettingsDdlHandlingSetting(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

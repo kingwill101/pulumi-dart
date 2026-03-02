@@ -40,10 +40,10 @@ class PeerAsnArgs {
 
   factory PeerAsnArgs.fromMap(Map<String, dynamic> map) {
     return PeerAsnArgs(
-      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as int).input(),
-      peerAsnName: map['peerAsnName'] == null ? null : (map['peerAsnName'] as String).input(),
-      peerContactDetail: map['peerContactDetail'] == null ? null : (pulumi.Input.decodeList<ContactDetail>(map['peerContactDetail'], (value) => ContactDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      peerName: map['peerName'] == null ? null : (map['peerName'] as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn']! as int).input(),
+      peerAsnName: map['peerAsnName'] == null ? null : (map['peerAsnName']! as String).input(),
+      peerContactDetail: map['peerContactDetail'] == null ? null : (pulumi.Input.decodeList<ContactDetail>(map['peerContactDetail']!, (value) => ContactDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      peerName: map['peerName'] == null ? null : (map['peerName']! as String).input(),
     );
   }
 }

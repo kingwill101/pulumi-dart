@@ -31,9 +31,9 @@ class IstioCanonicalService {
 
   factory IstioCanonicalService.fromMap(Map<String, dynamic> map) {
     return IstioCanonicalService(
-      canonicalService: map['canonicalService'] == null ? null : (map['canonicalService'] as String).input(),
-      canonicalServiceNamespace: map['canonicalServiceNamespace'] == null ? null : (map['canonicalServiceNamespace'] as String).input(),
-      meshUid: map['meshUid'] == null ? null : (map['meshUid'] as String).input(),
+      canonicalService: map['canonicalService'] == null ? null : (map['canonicalService']! as String).input(),
+      canonicalServiceNamespace: map['canonicalServiceNamespace'] == null ? null : (map['canonicalServiceNamespace']! as String).input(),
+      meshUid: map['meshUid'] == null ? null : (map['meshUid']! as String).input(),
     );
   }
 }

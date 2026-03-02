@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2BigQueryTableCollection {
 
   factory GooglePrivacyDlpV2BigQueryTableCollection.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryTableCollection(
-      includeRegexes: map['includeRegexes'] == null ? null : (GooglePrivacyDlpV2BigQueryRegexes.fromMap((map['includeRegexes'] as Map).cast<String, dynamic>())).input(),
+      includeRegexes: map['includeRegexes'] == null ? null : (GooglePrivacyDlpV2BigQueryRegexes.fromMap((map['includeRegexes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

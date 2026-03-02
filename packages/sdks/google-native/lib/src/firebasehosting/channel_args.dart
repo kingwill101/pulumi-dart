@@ -58,13 +58,13 @@ class ChannelArgs {
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
       channelId: (map['channelId'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      retainedReleaseCount: map['retainedReleaseCount'] == null ? null : (map['retainedReleaseCount'] as int).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      retainedReleaseCount: map['retainedReleaseCount'] == null ? null : (map['retainedReleaseCount']! as int).input(),
       siteId: (map['siteId'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
     );
   }
 }

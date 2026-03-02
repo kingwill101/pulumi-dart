@@ -58,13 +58,13 @@ class TemplateResponse {
 
   factory TemplateResponse.fromMap(Map<String, dynamic> map) {
     return TemplateResponse(
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<ContainerResponse>(map['containers'], (value) => ContainerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initContainers: map['initContainers'] == null ? null : (pulumi.Input.decodeList<InitContainerResponse>(map['initContainers'], (value) => InitContainerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      revisionSuffix: map['revisionSuffix'] == null ? null : (map['revisionSuffix'] as String).input(),
-      scale: map['scale'] == null ? null : (ScaleResponse.fromMap((map['scale'] as Map).cast<String, dynamic>())).input(),
-      serviceBinds: map['serviceBinds'] == null ? null : (pulumi.Input.decodeList<ServiceBindResponse>(map['serviceBinds'], (value) => ServiceBindResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds'] as double).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeResponse>(map['volumes'], (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<ContainerResponse>(map['containers']!, (value) => ContainerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initContainers: map['initContainers'] == null ? null : (pulumi.Input.decodeList<InitContainerResponse>(map['initContainers']!, (value) => InitContainerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      revisionSuffix: map['revisionSuffix'] == null ? null : (map['revisionSuffix']! as String).input(),
+      scale: map['scale'] == null ? null : (ScaleResponse.fromMap((map['scale']! as Map).cast<String, dynamic>())).input(),
+      serviceBinds: map['serviceBinds'] == null ? null : (pulumi.Input.decodeList<ServiceBindResponse>(map['serviceBinds']!, (value) => ServiceBindResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds']! as double).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeResponse>(map['volumes']!, (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

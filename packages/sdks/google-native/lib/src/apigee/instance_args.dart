@@ -64,15 +64,15 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      consumerAcceptList: map['consumerAcceptList'] == null ? null : ((map['consumerAcceptList'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diskEncryptionKeyName: map['diskEncryptionKeyName'] == null ? null : (map['diskEncryptionKeyName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      consumerAcceptList: map['consumerAcceptList'] == null ? null : ((map['consumerAcceptList']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diskEncryptionKeyName: map['diskEncryptionKeyName'] == null ? null : (map['diskEncryptionKeyName']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      peeringCidrRange: map['peeringCidrRange'] == null ? null : (InstancePeeringCidrRange.fromValue(map['peeringCidrRange'] as String)).input(),
+      peeringCidrRange: map['peeringCidrRange'] == null ? null : (InstancePeeringCidrRange.fromValue(map['peeringCidrRange']! as String)).input(),
     );
   }
 }

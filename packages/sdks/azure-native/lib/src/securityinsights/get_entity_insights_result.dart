@@ -28,8 +28,8 @@ class GetEntityInsightsResult {
 
   factory GetEntityInsightsResult.fromMap(Map<String, dynamic> map) {
     return GetEntityInsightsResult(
-      metaData: map['metaData'] == null ? null : GetInsightsResultsMetadataResponse.fromMap((map['metaData'] as Map).cast<String, dynamic>()),
-      value: map['value'] == null ? null : pulumi.Input.decodeList<EntityInsightItemResponse>(map['value'], (value) => EntityInsightItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      metaData: map['metaData'] == null ? null : GetInsightsResultsMetadataResponse.fromMap((map['metaData']! as Map).cast<String, dynamic>()),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<EntityInsightItemResponse>(map['value']!, (value) => EntityInsightItemResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

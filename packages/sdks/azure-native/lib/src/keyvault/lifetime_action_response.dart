@@ -27,8 +27,8 @@ class LifetimeActionResponse {
 
   factory LifetimeActionResponse.fromMap(Map<String, dynamic> map) {
     return LifetimeActionResponse(
-      action: map['action'] == null ? null : (ActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      trigger: map['trigger'] == null ? null : (TriggerResponse.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (ActionResponse.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      trigger: map['trigger'] == null ? null : (TriggerResponse.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

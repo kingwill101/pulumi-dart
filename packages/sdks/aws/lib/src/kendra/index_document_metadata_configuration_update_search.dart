@@ -35,10 +35,10 @@ class IndexDocumentMetadataConfigurationUpdateSearch {
 
   factory IndexDocumentMetadataConfigurationUpdateSearch.fromMap(Map<String, dynamic> map) {
     return IndexDocumentMetadataConfigurationUpdateSearch(
-      displayable: map['displayable'] == null ? null : (map['displayable'] as bool).input(),
-      facetable: map['facetable'] == null ? null : (map['facetable'] as bool).input(),
-      searchable: map['searchable'] == null ? null : (map['searchable'] as bool).input(),
-      sortable: map['sortable'] == null ? null : (map['sortable'] as bool).input(),
+      displayable: map['displayable'] == null ? null : ((map['displayable'] as bool).input()).input(),
+      facetable: map['facetable'] == null ? null : ((map['facetable'] as bool).input()).input(),
+      searchable: map['searchable'] == null ? null : ((map['searchable'] as bool).input()).input(),
+      sortable: map['sortable'] == null ? null : ((map['sortable'] as bool).input()).input(),
     );
   }
 }

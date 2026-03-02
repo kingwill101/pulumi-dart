@@ -21,7 +21,7 @@ class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
 
   factory WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa(
-      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate'] as String).input(),
+      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate']! as String).input(),
     );
   }
 }

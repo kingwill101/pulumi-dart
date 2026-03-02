@@ -42,8 +42,8 @@ class NotificationArgs {
   factory NotificationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationArgs(
       groupNames: ((map['groupNames'] as List).cast<String>()).input(),
-      notifications: (pulumi.Input.decodeList<NotificationType>(map['notifications'], (value) => NotificationType.fromValue(value as String))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      notifications: (pulumi.Input.decodeList<NotificationType>(map['notifications']!, (value) => NotificationType.fromValue(value as String))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       topicArn: (map['topicArn'] as String).input(),
     );
   }

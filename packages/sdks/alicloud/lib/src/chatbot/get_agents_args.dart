@@ -42,11 +42,11 @@ class GetAgentsArgs {
 
   factory GetAgentsArgs.fromMap(Map<String, dynamic> map) {
     return GetAgentsArgs(
-      agentName: map['agentName'] == null ? null : (map['agentName'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      agentName: map['agentName'] == null ? null : (map['agentName']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
     );
   }
 }

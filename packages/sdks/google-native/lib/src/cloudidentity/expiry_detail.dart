@@ -21,7 +21,7 @@ class ExpiryDetail {
 
   factory ExpiryDetail.fromMap(Map<String, dynamic> map) {
     return ExpiryDetail(
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
     );
   }
 }

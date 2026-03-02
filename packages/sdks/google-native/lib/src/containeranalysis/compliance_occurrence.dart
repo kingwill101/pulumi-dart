@@ -25,8 +25,8 @@ class ComplianceOccurrence {
 
   factory ComplianceOccurrence.fromMap(Map<String, dynamic> map) {
     return ComplianceOccurrence(
-      nonComplianceReason: map['nonComplianceReason'] == null ? null : (map['nonComplianceReason'] as String).input(),
-      nonCompliantFiles: map['nonCompliantFiles'] == null ? null : (pulumi.Input.decodeList<NonCompliantFile>(map['nonCompliantFiles'], (value) => NonCompliantFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nonComplianceReason: map['nonComplianceReason'] == null ? null : (map['nonComplianceReason']! as String).input(),
+      nonCompliantFiles: map['nonCompliantFiles'] == null ? null : (pulumi.Input.decodeList<NonCompliantFile>(map['nonCompliantFiles']!, (value) => NonCompliantFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

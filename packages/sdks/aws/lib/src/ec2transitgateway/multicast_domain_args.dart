@@ -49,11 +49,11 @@ class MulticastDomainArgs {
 
   factory MulticastDomainArgs.fromMap(Map<String, dynamic> map) {
     return MulticastDomainArgs(
-      autoAcceptSharedAssociations: map['autoAcceptSharedAssociations'] == null ? null : (map['autoAcceptSharedAssociations'] as String).input(),
-      igmpv2Support: map['igmpv2Support'] == null ? null : (map['igmpv2Support'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      staticSourcesSupport: map['staticSourcesSupport'] == null ? null : (map['staticSourcesSupport'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      autoAcceptSharedAssociations: map['autoAcceptSharedAssociations'] == null ? null : ((map['autoAcceptSharedAssociations'] as String).input()).input(),
+      igmpv2Support: map['igmpv2Support'] == null ? null : ((map['igmpv2Support'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      staticSourcesSupport: map['staticSourcesSupport'] == null ? null : ((map['staticSourcesSupport'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       transitGatewayId: (map['transitGatewayId'] as String).input(),
     );
   }

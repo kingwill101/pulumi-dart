@@ -41,11 +41,11 @@ class NodeGroupSpec {
 
   factory NodeGroupSpec.fromMap(Map<String, dynamic> map) {
     return NodeGroupSpec(
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as double).input(),
-      enableHa: map['enableHa'] == null ? null : (map['enableHa'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as double).input(),
+      enableHa: map['enableHa'] == null ? null : (map['enableHa']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
     );
   }
 }

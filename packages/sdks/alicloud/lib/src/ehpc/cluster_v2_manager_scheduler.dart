@@ -30,8 +30,8 @@ class ClusterV2ManagerScheduler {
 
   factory ClusterV2ManagerScheduler.fromMap(Map<String, dynamic> map) {
     return ClusterV2ManagerScheduler(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

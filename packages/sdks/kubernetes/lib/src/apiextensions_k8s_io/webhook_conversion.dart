@@ -27,7 +27,7 @@ class WebhookConversion {
 
   factory WebhookConversion.fromMap(Map<String, dynamic> map) {
     return WebhookConversion(
-      clientConfig: map['clientConfig'] == null ? null : (WebhookClientConfig.fromMap((map['clientConfig'] as Map).cast<String, dynamic>())).input(),
+      clientConfig: map['clientConfig'] == null ? null : (WebhookClientConfig.fromMap((map['clientConfig']! as Map).cast<String, dynamic>())).input(),
       conversionReviewVersions: ((map['conversionReviewVersions'] as List).cast<String>()).input(),
     );
   }

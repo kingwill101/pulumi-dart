@@ -43,7 +43,7 @@ class GetGroupsGroup {
     return GetGroupsGroup(
       description: (map['description'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      externalIds: (pulumi.Input.decodeList<GetGroupsGroupExternalId>(map['externalIds'], (value) => GetGroupsGroupExternalId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      externalIds: (pulumi.Input.decodeList<GetGroupsGroupExternalId>(map['externalIds']!, (value) => GetGroupsGroupExternalId.fromMap((value as Map).cast<String, dynamic>()))).input(),
       groupId: (map['groupId'] as String).input(),
       identityStoreId: (map['identityStoreId'] as String).input(),
     );

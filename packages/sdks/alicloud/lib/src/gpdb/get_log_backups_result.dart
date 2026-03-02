@@ -58,14 +58,14 @@ class GetLogBackupsResult {
   factory GetLogBackupsResult.fromMap(Map<String, dynamic> map) {
     return GetLogBackupsResult(
       dbInstanceId: map['dbInstanceId'] as String,
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
+      endTime: map['endTime'] == null ? null : map['endTime']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       logbackups: pulumi.Input.decodeList<GetLogBackupsLogbackup>(map['logbackups'], (value) => GetLogBackupsLogbackup.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      startTime: map['startTime'] == null ? null : map['startTime']! as String,
     );
   }
 }

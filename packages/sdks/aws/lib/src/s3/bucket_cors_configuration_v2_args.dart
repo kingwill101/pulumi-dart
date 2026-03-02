@@ -41,9 +41,9 @@ class BucketCorsConfigurationV2Args {
   factory BucketCorsConfigurationV2Args.fromMap(Map<String, dynamic> map) {
     return BucketCorsConfigurationV2Args(
       bucket: (map['bucket'] as String).input(),
-      corsRules: (pulumi.Input.decodeList<BucketCorsConfigurationV2CorsRule>(map['corsRules'], (value) => BucketCorsConfigurationV2CorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      corsRules: (pulumi.Input.decodeList<BucketCorsConfigurationV2CorsRule>(map['corsRules']!, (value) => BucketCorsConfigurationV2CorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

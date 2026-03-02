@@ -41,11 +41,11 @@ class MonthlyScheduleResponse {
 
   factory MonthlyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return MonthlyScheduleResponse(
-      daysOfMonth: map['daysOfMonth'] == null ? null : (map['daysOfMonth'] as String).input(),
-      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
-      minute: map['minute'] == null ? null : (map['minute'] as int).input(),
-      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep'] as int).input(),
-      usedBytes: map['usedBytes'] == null ? null : (map['usedBytes'] as double).input(),
+      daysOfMonth: map['daysOfMonth'] == null ? null : (map['daysOfMonth']! as String).input(),
+      hour: map['hour'] == null ? null : (map['hour']! as int).input(),
+      minute: map['minute'] == null ? null : (map['minute']! as int).input(),
+      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep']! as int).input(),
+      usedBytes: map['usedBytes'] == null ? null : (map['usedBytes']! as double).input(),
     );
   }
 }

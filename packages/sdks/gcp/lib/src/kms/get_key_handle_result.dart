@@ -48,7 +48,7 @@ class GetKeyHandleResult {
       kmsKey: map['kmsKey'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       resourceTypeSelector: map['resourceTypeSelector'] as String,
     );
   }

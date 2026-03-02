@@ -46,10 +46,10 @@ class ComputeProfileResponse {
 
   factory ComputeProfileResponse.fromMap(Map<String, dynamic> map) {
     return ComputeProfileResponse(
-      additionalVirtualMachineCapabilities: map['additionalVirtualMachineCapabilities'] == null ? null : (AdditionalCapabilitiesResponse.fromMap((map['additionalVirtualMachineCapabilities'] as Map).cast<String, dynamic>())).input(),
+      additionalVirtualMachineCapabilities: map['additionalVirtualMachineCapabilities'] == null ? null : (AdditionalCapabilitiesResponse.fromMap((map['additionalVirtualMachineCapabilities']! as Map).cast<String, dynamic>())).input(),
       baseVirtualMachineProfile: (BaseVirtualMachineProfileResponse.fromMap((map['baseVirtualMachineProfile'] as Map).cast<String, dynamic>())).input(),
-      computeApiVersion: map['computeApiVersion'] == null ? null : (map['computeApiVersion'] as String).input(),
-      platformFaultDomainCount: map['platformFaultDomainCount'] == null ? null : (map['platformFaultDomainCount'] as int).input(),
+      computeApiVersion: map['computeApiVersion'] == null ? null : (map['computeApiVersion']! as String).input(),
+      platformFaultDomainCount: map['platformFaultDomainCount'] == null ? null : (map['platformFaultDomainCount']! as int).input(),
     );
   }
 }

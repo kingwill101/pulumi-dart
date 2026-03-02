@@ -107,23 +107,23 @@ class GetVpnSiteResult {
 
   factory GetVpnSiteResult.fromMap(Map<String, dynamic> map) {
     return GetVpnSiteResult(
-      addressSpace: map['addressSpace'] == null ? null : AddressSpaceResponse.fromMap((map['addressSpace'] as Map).cast<String, dynamic>()),
+      addressSpace: map['addressSpace'] == null ? null : AddressSpaceResponse.fromMap((map['addressSpace']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      bgpProperties: map['bgpProperties'] == null ? null : BgpSettingsResponse.fromMap((map['bgpProperties'] as Map).cast<String, dynamic>()),
-      deviceProperties: map['deviceProperties'] == null ? null : DevicePropertiesResponse.fromMap((map['deviceProperties'] as Map).cast<String, dynamic>()),
+      bgpProperties: map['bgpProperties'] == null ? null : BgpSettingsResponse.fromMap((map['bgpProperties']! as Map).cast<String, dynamic>()),
+      deviceProperties: map['deviceProperties'] == null ? null : DevicePropertiesResponse.fromMap((map['deviceProperties']! as Map).cast<String, dynamic>()),
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      isSecuritySite: map['isSecuritySite'] == null ? null : map['isSecuritySite'] as bool,
+      id: map['id'] == null ? null : map['id']! as String,
+      ipAddress: map['ipAddress'] == null ? null : map['ipAddress']! as String,
+      isSecuritySite: map['isSecuritySite'] == null ? null : map['isSecuritySite']! as bool,
       location: map['location'] as String,
       name: map['name'] as String,
-      o365Policy: map['o365Policy'] == null ? null : O365PolicyPropertiesResponse.fromMap((map['o365Policy'] as Map).cast<String, dynamic>()),
+      o365Policy: map['o365Policy'] == null ? null : O365PolicyPropertiesResponse.fromMap((map['o365Policy']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
-      siteKey: map['siteKey'] == null ? null : map['siteKey'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      siteKey: map['siteKey'] == null ? null : map['siteKey']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      virtualWan: map['virtualWan'] == null ? null : SubResourceResponse.fromMap((map['virtualWan'] as Map).cast<String, dynamic>()),
-      vpnSiteLinks: map['vpnSiteLinks'] == null ? null : pulumi.Input.decodeList<VpnSiteLinkResponse>(map['vpnSiteLinks'], (value) => VpnSiteLinkResponse.fromMap((value as Map).cast<String, dynamic>())),
+      virtualWan: map['virtualWan'] == null ? null : SubResourceResponse.fromMap((map['virtualWan']! as Map).cast<String, dynamic>()),
+      vpnSiteLinks: map['vpnSiteLinks'] == null ? null : pulumi.Input.decodeList<VpnSiteLinkResponse>(map['vpnSiteLinks']!, (value) => VpnSiteLinkResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

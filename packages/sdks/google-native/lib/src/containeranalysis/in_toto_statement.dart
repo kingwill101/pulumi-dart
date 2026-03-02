@@ -46,12 +46,12 @@ class InTotoStatement {
 
   factory InTotoStatement.fromMap(Map<String, dynamic> map) {
     return InTotoStatement(
-      predicateType: map['predicateType'] == null ? null : (map['predicateType'] as String).input(),
-      provenance: map['provenance'] == null ? null : (InTotoProvenance.fromMap((map['provenance'] as Map).cast<String, dynamic>())).input(),
-      slsaProvenance: map['slsaProvenance'] == null ? null : (SlsaProvenance.fromMap((map['slsaProvenance'] as Map).cast<String, dynamic>())).input(),
-      slsaProvenanceZeroTwo: map['slsaProvenanceZeroTwo'] == null ? null : (SlsaProvenanceZeroTwo.fromMap((map['slsaProvenanceZeroTwo'] as Map).cast<String, dynamic>())).input(),
-      subject: map['subject'] == null ? null : (pulumi.Input.decodeList<Subject>(map['subject'], (value) => Subject.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      predicateType: map['predicateType'] == null ? null : (map['predicateType']! as String).input(),
+      provenance: map['provenance'] == null ? null : (InTotoProvenance.fromMap((map['provenance']! as Map).cast<String, dynamic>())).input(),
+      slsaProvenance: map['slsaProvenance'] == null ? null : (SlsaProvenance.fromMap((map['slsaProvenance']! as Map).cast<String, dynamic>())).input(),
+      slsaProvenanceZeroTwo: map['slsaProvenanceZeroTwo'] == null ? null : (SlsaProvenanceZeroTwo.fromMap((map['slsaProvenanceZeroTwo']! as Map).cast<String, dynamic>())).input(),
+      subject: map['subject'] == null ? null : (pulumi.Input.decodeList<Subject>(map['subject']!, (value) => Subject.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

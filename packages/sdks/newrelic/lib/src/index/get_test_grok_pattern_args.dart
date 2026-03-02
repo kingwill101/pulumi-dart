@@ -34,7 +34,7 @@ class GetTestGrokPatternArgs {
 
   factory GetTestGrokPatternArgs.fromMap(Map<String, dynamic> map) {
     return GetTestGrokPatternArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       grok: (map['grok'] as String).input(),
       logLines: ((map['logLines'] as List).cast<String>()).input(),
     );

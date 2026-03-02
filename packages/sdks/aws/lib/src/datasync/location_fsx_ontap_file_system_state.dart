@@ -74,17 +74,17 @@ class LocationFsxOntapFileSystemState {
 
   factory LocationFsxOntapFileSystemState.fromMap(Map<String, dynamic> map) {
     return LocationFsxOntapFileSystemState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      fsxFilesystemArn: map['fsxFilesystemArn'] == null ? null : (map['fsxFilesystemArn'] as String).input(),
-      protocol: map['protocol'] == null ? null : (LocationFsxOntapFileSystemProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupArns: map['securityGroupArns'] == null ? null : ((map['securityGroupArns'] as List).cast<String>()).input(),
-      storageVirtualMachineArn: map['storageVirtualMachineArn'] == null ? null : (map['storageVirtualMachineArn'] as String).input(),
-      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      creationTime: map['creationTime'] == null ? null : ((map['creationTime'] as String).input()).input(),
+      fsxFilesystemArn: map['fsxFilesystemArn'] == null ? null : ((map['fsxFilesystemArn'] as String).input()).input(),
+      protocol: map['protocol'] == null ? null : ((LocationFsxOntapFileSystemProtocol.fromMap((map['protocol']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupArns: map['securityGroupArns'] == null ? null : (((map['securityGroupArns'] as List).cast<String>()).input()).input(),
+      storageVirtualMachineArn: map['storageVirtualMachineArn'] == null ? null : ((map['storageVirtualMachineArn'] as String).input()).input(),
+      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
     );
   }
 }

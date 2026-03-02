@@ -37,10 +37,10 @@ class ChannelInputAttachment {
 
   factory ChannelInputAttachment.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachment(
-      automaticInputFailoverSettings: map['automaticInputFailoverSettings'] == null ? null : (ChannelInputAttachmentAutomaticInputFailoverSettings.fromMap((map['automaticInputFailoverSettings'] as Map).cast<String, dynamic>())).input(),
+      automaticInputFailoverSettings: map['automaticInputFailoverSettings'] == null ? null : ((ChannelInputAttachmentAutomaticInputFailoverSettings.fromMap((map['automaticInputFailoverSettings']! as Map).cast<String, dynamic>())).input()).input(),
       inputAttachmentName: (map['inputAttachmentName'] as String).input(),
       inputId: (map['inputId'] as String).input(),
-      inputSettings: map['inputSettings'] == null ? null : (ChannelInputAttachmentInputSettings.fromMap((map['inputSettings'] as Map).cast<String, dynamic>())).input(),
+      inputSettings: map['inputSettings'] == null ? null : ((ChannelInputAttachmentInputSettings.fromMap((map['inputSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

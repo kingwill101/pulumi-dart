@@ -26,8 +26,8 @@ class SamplingSettingsResponse {
 
   factory SamplingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SamplingSettingsResponse(
-      percentage: map['percentage'] == null ? null : (map['percentage'] as double).input(),
-      samplingType: map['samplingType'] == null ? null : (map['samplingType'] as String).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as double).input(),
+      samplingType: map['samplingType'] == null ? null : (map['samplingType']! as String).input(),
     );
   }
 }

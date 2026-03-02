@@ -34,8 +34,8 @@ class EdgeKubernetesRuntime {
 
   factory EdgeKubernetesRuntime.fromMap(Map<String, dynamic> map) {
     return EdgeKubernetesRuntime(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

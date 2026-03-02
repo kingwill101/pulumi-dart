@@ -64,15 +64,15 @@ class EventSubscriptionArgs {
 
   factory EventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      eventCategories: map['eventCategories'] == null ? null : ((map['eventCategories'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      eventCategories: map['eventCategories'] == null ? null : (((map['eventCategories'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      severity: map['severity'] == null ? null : ((map['severity'] as String).input()).input(),
       snsTopicArn: (map['snsTopicArn'] as String).input(),
-      sourceIds: map['sourceIds'] == null ? null : ((map['sourceIds'] as List).cast<String>()).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sourceIds: map['sourceIds'] == null ? null : (((map['sourceIds'] as List).cast<String>()).input()).input(),
+      sourceType: map['sourceType'] == null ? null : ((map['sourceType'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -68,14 +68,14 @@ class GetFleetspaceResult {
   factory GetFleetspaceResult.fromMap(Map<String, dynamic> map) {
     return GetFleetspaceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dataRegions: map['dataRegions'] == null ? null : (map['dataRegions'] as List).cast<String>(),
-      fleetspaceApiKind: map['fleetspaceApiKind'] == null ? null : map['fleetspaceApiKind'] as String,
+      dataRegions: map['dataRegions'] == null ? null : (map['dataRegions']! as List).cast<String>(),
+      fleetspaceApiKind: map['fleetspaceApiKind'] == null ? null : map['fleetspaceApiKind']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      serviceTier: map['serviceTier'] == null ? null : map['serviceTier'] as String,
+      serviceTier: map['serviceTier'] == null ? null : map['serviceTier']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      throughputPoolConfiguration: map['throughputPoolConfiguration'] == null ? null : FleetspacePropertiesResponseThroughputPoolConfiguration.fromMap((map['throughputPoolConfiguration'] as Map).cast<String, dynamic>()),
+      throughputPoolConfiguration: map['throughputPoolConfiguration'] == null ? null : FleetspacePropertiesResponseThroughputPoolConfiguration.fromMap((map['throughputPoolConfiguration']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

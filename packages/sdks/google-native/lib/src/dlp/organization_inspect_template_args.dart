@@ -49,12 +49,12 @@ class OrganizationInspectTemplateArgs {
 
   factory OrganizationInspectTemplateArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationInspectTemplateArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      inspectConfig: map['inspectConfig'] == null ? null : (GooglePrivacyDlpV2InspectConfig.fromMap((map['inspectConfig'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      inspectConfig: map['inspectConfig'] == null ? null : (GooglePrivacyDlpV2InspectConfig.fromMap((map['inspectConfig']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
     );
   }
 }

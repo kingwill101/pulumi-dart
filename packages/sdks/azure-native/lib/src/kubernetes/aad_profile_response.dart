@@ -31,9 +31,9 @@ class AadProfileResponse {
 
   factory AadProfileResponse.fromMap(Map<String, dynamic> map) {
     return AadProfileResponse(
-      adminGroupObjectIDs: map['adminGroupObjectIDs'] == null ? null : ((map['adminGroupObjectIDs'] as List).cast<String>()).input(),
-      enableAzureRBAC: map['enableAzureRBAC'] == null ? null : (map['enableAzureRBAC'] as bool).input(),
-      tenantID: map['tenantID'] == null ? null : (map['tenantID'] as String).input(),
+      adminGroupObjectIDs: map['adminGroupObjectIDs'] == null ? null : ((map['adminGroupObjectIDs']! as List).cast<String>()).input(),
+      enableAzureRBAC: map['enableAzureRBAC'] == null ? null : (map['enableAzureRBAC']! as bool).input(),
+      tenantID: map['tenantID'] == null ? null : (map['tenantID']! as String).input(),
     );
   }
 }

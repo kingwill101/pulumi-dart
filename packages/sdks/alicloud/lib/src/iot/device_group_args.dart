@@ -39,10 +39,10 @@ class DeviceGroupArgs {
 
   factory DeviceGroupArgs.fromMap(Map<String, dynamic> map) {
     return DeviceGroupArgs(
-      groupDesc: map['groupDesc'] == null ? null : (map['groupDesc'] as String).input(),
+      groupDesc: map['groupDesc'] == null ? null : (map['groupDesc']! as String).input(),
       groupName: (map['groupName'] as String).input(),
-      iotInstanceId: map['iotInstanceId'] == null ? null : (map['iotInstanceId'] as String).input(),
-      superGroupId: map['superGroupId'] == null ? null : (map['superGroupId'] as String).input(),
+      iotInstanceId: map['iotInstanceId'] == null ? null : (map['iotInstanceId']! as String).input(),
+      superGroupId: map['superGroupId'] == null ? null : (map['superGroupId']! as String).input(),
     );
   }
 }

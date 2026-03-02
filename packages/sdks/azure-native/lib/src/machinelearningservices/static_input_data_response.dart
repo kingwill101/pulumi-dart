@@ -57,11 +57,11 @@ class StaticInputDataResponse {
 
   factory StaticInputDataResponse.fromMap(Map<String, dynamic> map) {
     return StaticInputDataResponse(
-      columns: map['columns'] == null ? null : ((map['columns'] as Map).cast<String, String>()).input(),
-      dataContext: map['dataContext'] == null ? null : (map['dataContext'] as String).input(),
+      columns: map['columns'] == null ? null : ((map['columns']! as Map).cast<String, String>()).input(),
+      dataContext: map['dataContext'] == null ? null : (map['dataContext']! as String).input(),
       inputDataType: (map['inputDataType'] as String).input(),
       jobInputType: (map['jobInputType'] as String).input(),
-      preprocessingComponentId: map['preprocessingComponentId'] == null ? null : (map['preprocessingComponentId'] as String).input(),
+      preprocessingComponentId: map['preprocessingComponentId'] == null ? null : (map['preprocessingComponentId']! as String).input(),
       uri: (map['uri'] as String).input(),
       windowEnd: (map['windowEnd'] as String).input(),
       windowStart: (map['windowStart'] as String).input(),

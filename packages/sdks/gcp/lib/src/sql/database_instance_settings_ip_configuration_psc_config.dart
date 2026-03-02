@@ -36,10 +36,10 @@ class DatabaseInstanceSettingsIpConfigurationPscConfig {
 
   factory DatabaseInstanceSettingsIpConfigurationPscConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsIpConfigurationPscConfig(
-      allowedConsumerProjects: map['allowedConsumerProjects'] == null ? null : ((map['allowedConsumerProjects'] as List).cast<String>()).input(),
-      networkAttachmentUri: map['networkAttachmentUri'] == null ? null : (map['networkAttachmentUri'] as String).input(),
-      pscAutoConnections: map['pscAutoConnections'] == null ? null : (pulumi.Input.decodeList<DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection>(map['pscAutoConnections'], (value) => DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pscEnabled: map['pscEnabled'] == null ? null : (map['pscEnabled'] as bool).input(),
+      allowedConsumerProjects: map['allowedConsumerProjects'] == null ? null : ((map['allowedConsumerProjects']! as List).cast<String>()).input(),
+      networkAttachmentUri: map['networkAttachmentUri'] == null ? null : (map['networkAttachmentUri']! as String).input(),
+      pscAutoConnections: map['pscAutoConnections'] == null ? null : (pulumi.Input.decodeList<DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection>(map['pscAutoConnections']!, (value) => DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pscEnabled: map['pscEnabled'] == null ? null : (map['pscEnabled']! as bool).input(),
     );
   }
 }

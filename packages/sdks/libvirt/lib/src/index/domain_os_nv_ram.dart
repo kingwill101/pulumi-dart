@@ -41,11 +41,11 @@ class DomainOsNvRam {
 
   factory DomainOsNvRam.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRam(
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
       nvRam: (map['nvRam'] as String).input(),
-      source: map['source'] == null ? null : (DomainOsNvRamSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
-      templateFormat: map['templateFormat'] == null ? null : (map['templateFormat'] as String).input(),
+      source: map['source'] == null ? null : (DomainOsNvRamSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
+      templateFormat: map['templateFormat'] == null ? null : (map['templateFormat']! as String).input(),
     );
   }
 }

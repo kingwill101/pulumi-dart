@@ -21,7 +21,7 @@ class EventConnectionInvocationConnectivityParameters {
 
   factory EventConnectionInvocationConnectivityParameters.fromMap(Map<String, dynamic> map) {
     return EventConnectionInvocationConnectivityParameters(
-      resourceParameters: (EventConnectionInvocationConnectivityParametersResourceParameters.fromMap((map['resourceParameters'] as Map).cast<String, dynamic>())).input(),
+      resourceParameters: (EventConnectionInvocationConnectivityParametersResourceParameters.fromMap((map['resourceParameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

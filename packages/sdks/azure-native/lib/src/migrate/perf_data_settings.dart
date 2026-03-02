@@ -37,8 +37,8 @@ class PerfDataSettings {
   factory PerfDataSettings.fromMap(Map<String, dynamic> map) {
     return PerfDataSettings(
       percentile: (map['percentile'] as String).input(),
-      perfDataEndTime: map['perfDataEndTime'] == null ? null : (map['perfDataEndTime'] as String).input(),
-      perfDataStartTime: map['perfDataStartTime'] == null ? null : (map['perfDataStartTime'] as String).input(),
+      perfDataEndTime: map['perfDataEndTime'] == null ? null : (map['perfDataEndTime']! as String).input(),
+      perfDataStartTime: map['perfDataStartTime'] == null ? null : (map['perfDataStartTime']! as String).input(),
       timeRange: (map['timeRange'] as String).input(),
     );
   }

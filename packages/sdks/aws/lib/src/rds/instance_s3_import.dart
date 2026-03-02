@@ -43,7 +43,7 @@ class InstanceS3Import {
   factory InstanceS3Import.fromMap(Map<String, dynamic> map) {
     return InstanceS3Import(
       bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
       ingestionRole: (map['ingestionRole'] as String).input(),
       sourceEngine: (map['sourceEngine'] as String).input(),
       sourceEngineVersion: (map['sourceEngineVersion'] as String).input(),

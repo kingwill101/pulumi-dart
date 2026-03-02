@@ -63,14 +63,14 @@ class DockerBuildStep {
 
   factory DockerBuildStep.fromMap(Map<String, dynamic> map) {
     return DockerBuildStep(
-      arguments: map['arguments'] == null ? null : (pulumi.Input.decodeList<Argument>(map['arguments'], (value) => Argument.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contextAccessToken: map['contextAccessToken'] == null ? null : (map['contextAccessToken'] as String).input(),
-      contextPath: map['contextPath'] == null ? null : (map['contextPath'] as String).input(),
+      arguments: map['arguments'] == null ? null : (pulumi.Input.decodeList<Argument>(map['arguments']!, (value) => Argument.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contextAccessToken: map['contextAccessToken'] == null ? null : (map['contextAccessToken']! as String).input(),
+      contextPath: map['contextPath'] == null ? null : (map['contextPath']! as String).input(),
       dockerFilePath: (map['dockerFilePath'] as String).input(),
-      imageNames: map['imageNames'] == null ? null : ((map['imageNames'] as List).cast<String>()).input(),
-      isPushEnabled: map['isPushEnabled'] == null ? null : (map['isPushEnabled'] as bool).input(),
-      noCache: map['noCache'] == null ? null : (map['noCache'] as bool).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      imageNames: map['imageNames'] == null ? null : ((map['imageNames']! as List).cast<String>()).input(),
+      isPushEnabled: map['isPushEnabled'] == null ? null : (map['isPushEnabled']! as bool).input(),
+      noCache: map['noCache'] == null ? null : (map['noCache']! as bool).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

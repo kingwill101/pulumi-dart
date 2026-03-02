@@ -51,13 +51,13 @@ class TransferJobTransferSpecAwsS3DataSource {
 
   factory TransferJobTransferSpecAwsS3DataSource.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecAwsS3DataSource(
-      awsAccessKey: map['awsAccessKey'] == null ? null : (TransferJobTransferSpecAwsS3DataSourceAwsAccessKey.fromMap((map['awsAccessKey'] as Map).cast<String, dynamic>())).input(),
+      awsAccessKey: map['awsAccessKey'] == null ? null : (TransferJobTransferSpecAwsS3DataSourceAwsAccessKey.fromMap((map['awsAccessKey']! as Map).cast<String, dynamic>())).input(),
       bucketName: (map['bucketName'] as String).input(),
-      cloudfrontDomain: map['cloudfrontDomain'] == null ? null : (map['cloudfrontDomain'] as String).input(),
-      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret'] as String).input(),
-      managedPrivateNetwork: map['managedPrivateNetwork'] == null ? null : (map['managedPrivateNetwork'] as bool).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      cloudfrontDomain: map['cloudfrontDomain'] == null ? null : (map['cloudfrontDomain']! as String).input(),
+      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret']! as String).input(),
+      managedPrivateNetwork: map['managedPrivateNetwork'] == null ? null : (map['managedPrivateNetwork']! as bool).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
     );
   }
 }

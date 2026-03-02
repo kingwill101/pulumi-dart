@@ -62,12 +62,12 @@ class NetworkAttachmentArgs {
   factory NetworkAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAttachmentArgs(
       connectionPreference: (map['connectionPreference'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      producerAcceptLists: map['producerAcceptLists'] == null ? null : ((map['producerAcceptLists'] as List).cast<String>()).input(),
-      producerRejectLists: map['producerRejectLists'] == null ? null : ((map['producerRejectLists'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      producerAcceptLists: map['producerAcceptLists'] == null ? null : ((map['producerAcceptLists']! as List).cast<String>()).input(),
+      producerRejectLists: map['producerRejectLists'] == null ? null : ((map['producerRejectLists']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       subnetworks: ((map['subnetworks'] as List).cast<String>()).input(),
     );
   }

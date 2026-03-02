@@ -37,10 +37,10 @@ class NodeConfigStatusPatch {
 
   factory NodeConfigStatusPatch.fromMap(Map<String, dynamic> map) {
     return NodeConfigStatusPatch(
-      active: map['active'] == null ? null : (NodeConfigSourcePatch.fromMap((map['active'] as Map).cast<String, dynamic>())).input(),
-      assigned: map['assigned'] == null ? null : (NodeConfigSourcePatch.fromMap((map['assigned'] as Map).cast<String, dynamic>())).input(),
-      error: map['error'] == null ? null : (map['error'] as String).input(),
-      lastKnownGood: map['lastKnownGood'] == null ? null : (NodeConfigSourcePatch.fromMap((map['lastKnownGood'] as Map).cast<String, dynamic>())).input(),
+      active: map['active'] == null ? null : (NodeConfigSourcePatch.fromMap((map['active']! as Map).cast<String, dynamic>())).input(),
+      assigned: map['assigned'] == null ? null : (NodeConfigSourcePatch.fromMap((map['assigned']! as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
+      lastKnownGood: map['lastKnownGood'] == null ? null : (NodeConfigSourcePatch.fromMap((map['lastKnownGood']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

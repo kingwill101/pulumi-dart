@@ -34,9 +34,9 @@ class PublishTaskArgs {
 
   factory PublishTaskArgs.fromMap(Map<String, dynamic> map) {
     return PublishTaskArgs(
-      agentKey: map['agentKey'] == null ? null : (map['agentKey'] as String).input(),
+      agentKey: map['agentKey'] == null ? null : (map['agentKey']! as String).input(),
       bizType: (map['bizType'] as String).input(),
-      dataIdLists: map['dataIdLists'] == null ? null : ((map['dataIdLists'] as List).cast<String>()).input(),
+      dataIdLists: map['dataIdLists'] == null ? null : ((map['dataIdLists']! as List).cast<String>()).input(),
     );
   }
 }

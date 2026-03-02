@@ -46,11 +46,11 @@ class AzureActiveDirectory {
 
   factory AzureActiveDirectory.fromMap(Map<String, dynamic> map) {
     return AzureActiveDirectory(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      isAutoProvisioned: map['isAutoProvisioned'] == null ? null : (map['isAutoProvisioned'] as bool).input(),
-      login: map['login'] == null ? null : (AzureActiveDirectoryLogin.fromMap((map['login'] as Map).cast<String, dynamic>())).input(),
-      registration: map['registration'] == null ? null : (AzureActiveDirectoryRegistration.fromMap((map['registration'] as Map).cast<String, dynamic>())).input(),
-      validation: map['validation'] == null ? null : (AzureActiveDirectoryValidation.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      isAutoProvisioned: map['isAutoProvisioned'] == null ? null : (map['isAutoProvisioned']! as bool).input(),
+      login: map['login'] == null ? null : (AzureActiveDirectoryLogin.fromMap((map['login']! as Map).cast<String, dynamic>())).input(),
+      registration: map['registration'] == null ? null : (AzureActiveDirectoryRegistration.fromMap((map['registration']! as Map).cast<String, dynamic>())).input(),
+      validation: map['validation'] == null ? null : (AzureActiveDirectoryValidation.fromMap((map['validation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

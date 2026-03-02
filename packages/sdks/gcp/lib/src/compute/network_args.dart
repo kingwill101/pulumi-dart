@@ -138,22 +138,22 @@ class NetworkArgs {
 
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
-      autoCreateSubnetworks: map['autoCreateSubnetworks'] == null ? null : (map['autoCreateSubnetworks'] as bool).input(),
-      bgpAlwaysCompareMed: map['bgpAlwaysCompareMed'] == null ? null : (map['bgpAlwaysCompareMed'] as bool).input(),
-      bgpBestPathSelectionMode: map['bgpBestPathSelectionMode'] == null ? null : (map['bgpBestPathSelectionMode'] as String).input(),
-      bgpInterRegionCost: map['bgpInterRegionCost'] == null ? null : (map['bgpInterRegionCost'] as String).input(),
-      deleteBgpAlwaysCompareMed: map['deleteBgpAlwaysCompareMed'] == null ? null : (map['deleteBgpAlwaysCompareMed'] as bool).input(),
-      deleteDefaultRoutesOnCreate: map['deleteDefaultRoutesOnCreate'] == null ? null : (map['deleteDefaultRoutesOnCreate'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableUlaInternalIpv6: map['enableUlaInternalIpv6'] == null ? null : (map['enableUlaInternalIpv6'] as bool).input(),
-      internalIpv6Range: map['internalIpv6Range'] == null ? null : (map['internalIpv6Range'] as String).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkFirewallPolicyEnforcementOrder: map['networkFirewallPolicyEnforcementOrder'] == null ? null : (map['networkFirewallPolicyEnforcementOrder'] as String).input(),
-      networkProfile: map['networkProfile'] == null ? null : (map['networkProfile'] as String).input(),
-      params: map['params'] == null ? null : (NetworkParams.fromMap((map['params'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      routingMode: map['routingMode'] == null ? null : (map['routingMode'] as String).input(),
+      autoCreateSubnetworks: map['autoCreateSubnetworks'] == null ? null : (map['autoCreateSubnetworks']! as bool).input(),
+      bgpAlwaysCompareMed: map['bgpAlwaysCompareMed'] == null ? null : (map['bgpAlwaysCompareMed']! as bool).input(),
+      bgpBestPathSelectionMode: map['bgpBestPathSelectionMode'] == null ? null : (map['bgpBestPathSelectionMode']! as String).input(),
+      bgpInterRegionCost: map['bgpInterRegionCost'] == null ? null : (map['bgpInterRegionCost']! as String).input(),
+      deleteBgpAlwaysCompareMed: map['deleteBgpAlwaysCompareMed'] == null ? null : (map['deleteBgpAlwaysCompareMed']! as bool).input(),
+      deleteDefaultRoutesOnCreate: map['deleteDefaultRoutesOnCreate'] == null ? null : (map['deleteDefaultRoutesOnCreate']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableUlaInternalIpv6: map['enableUlaInternalIpv6'] == null ? null : (map['enableUlaInternalIpv6']! as bool).input(),
+      internalIpv6Range: map['internalIpv6Range'] == null ? null : (map['internalIpv6Range']! as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkFirewallPolicyEnforcementOrder: map['networkFirewallPolicyEnforcementOrder'] == null ? null : (map['networkFirewallPolicyEnforcementOrder']! as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (map['networkProfile']! as String).input(),
+      params: map['params'] == null ? null : (NetworkParams.fromMap((map['params']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      routingMode: map['routingMode'] == null ? null : (map['routingMode']! as String).input(),
     );
   }
 }

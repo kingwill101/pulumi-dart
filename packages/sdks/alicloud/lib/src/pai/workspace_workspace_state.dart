@@ -51,12 +51,12 @@ class WorkspaceWorkspaceState {
 
   factory WorkspaceWorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceWorkspaceState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      envTypes: map['envTypes'] == null ? null : ((map['envTypes'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      envTypes: map['envTypes'] == null ? null : ((map['envTypes']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName']! as String).input(),
     );
   }
 }

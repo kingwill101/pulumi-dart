@@ -25,8 +25,8 @@ class ThingTypeProperties {
 
   factory ThingTypeProperties.fromMap(Map<String, dynamic> map) {
     return ThingTypeProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      searchableAttributes: map['searchableAttributes'] == null ? null : ((map['searchableAttributes'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      searchableAttributes: map['searchableAttributes'] == null ? null : (((map['searchableAttributes'] as List).cast<String>()).input()).input(),
     );
   }
 }

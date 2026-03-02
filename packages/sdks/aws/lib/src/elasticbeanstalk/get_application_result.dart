@@ -43,7 +43,7 @@ class GetApplicationResult {
 
   factory GetApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationResult(
-      appversionLifecycle: GetApplicationAppversionLifecycle.fromMap((map['appversionLifecycle'] as Map).cast<String, dynamic>()),
+      appversionLifecycle: GetApplicationAppversionLifecycle.fromMap((map['appversionLifecycle']! as Map).cast<String, dynamic>()),
       arn: map['arn'] as String,
       description: map['description'] as String,
       id: map['id'] as String,

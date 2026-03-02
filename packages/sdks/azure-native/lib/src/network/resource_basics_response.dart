@@ -26,8 +26,8 @@ class ResourceBasicsResponse {
 
   factory ResourceBasicsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceBasicsResponse(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

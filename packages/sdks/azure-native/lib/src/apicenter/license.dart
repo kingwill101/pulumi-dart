@@ -33,9 +33,9 @@ class License {
 
   factory License.fromMap(Map<String, dynamic> map) {
     return License(
-      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

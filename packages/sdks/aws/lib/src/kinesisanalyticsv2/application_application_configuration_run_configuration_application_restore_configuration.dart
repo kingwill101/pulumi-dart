@@ -25,8 +25,8 @@ class ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfi
 
   factory ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration(
-      applicationRestoreType: map['applicationRestoreType'] == null ? null : (map['applicationRestoreType'] as String).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      applicationRestoreType: map['applicationRestoreType'] == null ? null : ((map['applicationRestoreType'] as String).input()).input(),
+      snapshotName: map['snapshotName'] == null ? null : ((map['snapshotName'] as String).input()).input(),
     );
   }
 }

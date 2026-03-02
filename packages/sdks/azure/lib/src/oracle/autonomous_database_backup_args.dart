@@ -40,9 +40,9 @@ class AutonomousDatabaseBackupArgs {
   factory AutonomousDatabaseBackupArgs.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabaseBackupArgs(
       autonomousDatabaseId: (map['autonomousDatabaseId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       retentionPeriodInDays: (map['retentionPeriodInDays'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

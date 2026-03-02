@@ -20,7 +20,7 @@ class AwsEuSovereignIntegrationsBilling {
 
   factory AwsEuSovereignIntegrationsBilling.fromMap(Map<String, dynamic> map) {
     return AwsEuSovereignIntegrationsBilling(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

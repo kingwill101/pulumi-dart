@@ -20,7 +20,7 @@ class MeshSpecEgressFilter {
 
   factory MeshSpecEgressFilter.fromMap(Map<String, dynamic> map) {
     return MeshSpecEgressFilter(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

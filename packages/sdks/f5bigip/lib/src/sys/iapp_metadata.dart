@@ -25,8 +25,8 @@ class IAppMetadata {
 
   factory IAppMetadata.fromMap(Map<String, dynamic> map) {
     return IAppMetadata(
-      persists: map['persists'] == null ? null : (map['persists'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      persists: map['persists'] == null ? null : (map['persists']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

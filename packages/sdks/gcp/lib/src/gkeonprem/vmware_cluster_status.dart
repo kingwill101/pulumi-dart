@@ -33,8 +33,8 @@ class VMwareClusterStatus {
 
   factory VMwareClusterStatus.fromMap(Map<String, dynamic> map) {
     return VMwareClusterStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<VMwareClusterStatusCondition>(map['conditions'], (value) => VMwareClusterStatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<VMwareClusterStatusCondition>(map['conditions']!, (value) => VMwareClusterStatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
     );
   }
 }

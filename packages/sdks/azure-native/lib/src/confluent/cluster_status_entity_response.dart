@@ -26,8 +26,8 @@ class ClusterStatusEntityResponse {
 
   factory ClusterStatusEntityResponse.fromMap(Map<String, dynamic> map) {
     return ClusterStatusEntityResponse(
-      cku: map['cku'] == null ? null : (map['cku'] as int).input(),
-      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
+      cku: map['cku'] == null ? null : (map['cku']! as int).input(),
+      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
     );
   }
 }

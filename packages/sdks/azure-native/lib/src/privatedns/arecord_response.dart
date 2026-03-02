@@ -21,7 +21,7 @@ class ARecordResponse {
 
   factory ARecordResponse.fromMap(Map<String, dynamic> map) {
     return ARecordResponse(
-      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address'] as String).input(),
+      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address']! as String).input(),
     );
   }
 }

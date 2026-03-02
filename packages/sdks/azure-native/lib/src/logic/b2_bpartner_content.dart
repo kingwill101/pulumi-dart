@@ -22,7 +22,7 @@ class B2BPartnerContent {
 
   factory B2BPartnerContent.fromMap(Map<String, dynamic> map) {
     return B2BPartnerContent(
-      businessIdentities: map['businessIdentities'] == null ? null : (pulumi.Input.decodeList<BusinessIdentity>(map['businessIdentities'], (value) => BusinessIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      businessIdentities: map['businessIdentities'] == null ? null : (pulumi.Input.decodeList<BusinessIdentity>(map['businessIdentities']!, (value) => BusinessIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

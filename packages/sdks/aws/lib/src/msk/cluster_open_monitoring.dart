@@ -21,7 +21,7 @@ class ClusterOpenMonitoring {
 
   factory ClusterOpenMonitoring.fromMap(Map<String, dynamic> map) {
     return ClusterOpenMonitoring(
-      prometheus: (ClusterOpenMonitoringPrometheus.fromMap((map['prometheus'] as Map).cast<String, dynamic>())).input(),
+      prometheus: (ClusterOpenMonitoringPrometheus.fromMap((map['prometheus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

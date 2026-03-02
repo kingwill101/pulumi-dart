@@ -33,9 +33,9 @@ class StatusCondition {
 
   factory StatusCondition.fromMap(Map<String, dynamic> map) {
     return StatusCondition(
-      canonicalCode: map['canonicalCode'] == null ? null : (StatusConditionCanonicalCode.fromValue(map['canonicalCode'] as String)).input(),
-      code: map['code'] == null ? null : (StatusConditionCode.fromValue(map['code'] as String)).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      canonicalCode: map['canonicalCode'] == null ? null : (StatusConditionCanonicalCode.fromValue(map['canonicalCode']! as String)).input(),
+      code: map['code'] == null ? null : (StatusConditionCode.fromValue(map['code']! as String)).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

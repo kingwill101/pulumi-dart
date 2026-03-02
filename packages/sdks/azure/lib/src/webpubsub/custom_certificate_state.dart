@@ -40,10 +40,10 @@ class CustomCertificateState {
 
   factory CustomCertificateState.fromMap(Map<String, dynamic> map) {
     return CustomCertificateState(
-      certificateVersion: map['certificateVersion'] == null ? null : (map['certificateVersion'] as String).input(),
-      customCertificateId: map['customCertificateId'] == null ? null : (map['customCertificateId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      webPubsubId: map['webPubsubId'] == null ? null : (map['webPubsubId'] as String).input(),
+      certificateVersion: map['certificateVersion'] == null ? null : (map['certificateVersion']! as String).input(),
+      customCertificateId: map['customCertificateId'] == null ? null : (map['customCertificateId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      webPubsubId: map['webPubsubId'] == null ? null : (map['webPubsubId']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class AIServicesCustomerManagedKey {
 
   factory AIServicesCustomerManagedKey.fromMap(Map<String, dynamic> map) {
     return AIServicesCustomerManagedKey(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
+      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId']! as String).input(),
     );
   }
 }

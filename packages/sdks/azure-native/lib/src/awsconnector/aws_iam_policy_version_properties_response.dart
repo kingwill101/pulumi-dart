@@ -36,10 +36,10 @@ class AwsIamPolicyVersionPropertiesResponse {
 
   factory AwsIamPolicyVersionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsIamPolicyVersionPropertiesResponse(
-      createDate: map['createDate'] == null ? null : (map['createDate'] as String).input(),
-      document: map['document'] == null ? null : (map['document'] as String).input(),
-      isDefaultVersion: map['isDefaultVersion'] == null ? null : (map['isDefaultVersion'] as bool).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      createDate: map['createDate'] == null ? null : (map['createDate']! as String).input(),
+      document: map['document'] == null ? null : (map['document']! as String).input(),
+      isDefaultVersion: map['isDefaultVersion'] == null ? null : (map['isDefaultVersion']! as bool).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
     );
   }
 }

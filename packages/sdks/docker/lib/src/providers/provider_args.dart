@@ -64,15 +64,15 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      caMaterial: map['caMaterial'] == null ? null : (map['caMaterial'] as String).input(),
-      certMaterial: map['certMaterial'] == null ? null : (map['certMaterial'] as String).input(),
-      certPath: map['certPath'] == null ? null : (map['certPath'] as String).input(),
-      context: map['context'] == null ? null : (map['context'] as String).input(),
-      disableDockerDaemonCheck: map['disableDockerDaemonCheck'] == null ? null : (map['disableDockerDaemonCheck'] as bool).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      keyMaterial: map['keyMaterial'] == null ? null : (map['keyMaterial'] as String).input(),
-      registryAuth: map['registryAuth'] == null ? null : (pulumi.Input.decodeList<ProviderRegistryAuth>(map['registryAuth'], (value) => ProviderRegistryAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sshOpts: map['sshOpts'] == null ? null : ((map['sshOpts'] as List).cast<String>()).input(),
+      caMaterial: map['caMaterial'] == null ? null : (map['caMaterial']! as String).input(),
+      certMaterial: map['certMaterial'] == null ? null : (map['certMaterial']! as String).input(),
+      certPath: map['certPath'] == null ? null : (map['certPath']! as String).input(),
+      context: map['context'] == null ? null : (map['context']! as String).input(),
+      disableDockerDaemonCheck: map['disableDockerDaemonCheck'] == null ? null : (map['disableDockerDaemonCheck']! as bool).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      keyMaterial: map['keyMaterial'] == null ? null : (map['keyMaterial']! as String).input(),
+      registryAuth: map['registryAuth'] == null ? null : (pulumi.Input.decodeList<ProviderRegistryAuth>(map['registryAuth']!, (value) => ProviderRegistryAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sshOpts: map['sshOpts'] == null ? null : ((map['sshOpts']! as List).cast<String>()).input(),
     );
   }
 }

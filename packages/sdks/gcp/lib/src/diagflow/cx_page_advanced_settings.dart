@@ -26,7 +26,7 @@ class CxPageAdvancedSettings {
 
   factory CxPageAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxPageAdvancedSettings(
-      dtmfSettings: map['dtmfSettings'] == null ? null : (CxPageAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>())).input(),
+      dtmfSettings: map['dtmfSettings'] == null ? null : (CxPageAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class DomainDevicesAudioAlsaInput {
 
   factory DomainDevicesAudioAlsaInput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioAlsaInput(
-      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
+      dev: map['dev'] == null ? null : (map['dev']! as String).input(),
     );
   }
 }

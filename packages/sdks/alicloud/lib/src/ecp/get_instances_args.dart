@@ -81,18 +81,18 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      resolution: map['resolution'] == null ? null : (map['resolution'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      resolution: map['resolution'] == null ? null : (map['resolution']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

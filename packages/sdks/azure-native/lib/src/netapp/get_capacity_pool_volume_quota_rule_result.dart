@@ -76,11 +76,11 @@ class GetCapacityPoolVolumeQuotaRuleResult {
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      quotaSizeInKiBs: map['quotaSizeInKiBs'] == null ? null : map['quotaSizeInKiBs'] as double,
-      quotaTarget: map['quotaTarget'] == null ? null : map['quotaTarget'] as String,
-      quotaType: map['quotaType'] == null ? null : map['quotaType'] as String,
+      quotaSizeInKiBs: map['quotaSizeInKiBs'] == null ? null : map['quotaSizeInKiBs']! as double,
+      quotaTarget: map['quotaTarget'] == null ? null : map['quotaTarget']! as String,
+      quotaType: map['quotaType'] == null ? null : map['quotaType']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

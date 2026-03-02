@@ -70,17 +70,17 @@ class SingleQueryResultResponse {
 
   factory SingleQueryResultResponse.fromMap(Map<String, dynamic> map) {
     return SingleQueryResultResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts'] as List).cast<String>()).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as int).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      inheritedFromParentPolicy: map['inheritedFromParentPolicy'] == null ? null : (map['inheritedFromParentPolicy'] as bool).input(),
-      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as int).input(),
-      signatureId: map['signatureId'] == null ? null : (map['signatureId'] as int).input(),
-      sourcePorts: map['sourcePorts'] == null ? null : ((map['sourcePorts'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts']! as List).cast<String>()).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as int).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      inheritedFromParentPolicy: map['inheritedFromParentPolicy'] == null ? null : (map['inheritedFromParentPolicy']! as bool).input(),
+      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as int).input(),
+      signatureId: map['signatureId'] == null ? null : (map['signatureId']! as int).input(),
+      sourcePorts: map['sourcePorts'] == null ? null : ((map['sourcePorts']! as List).cast<String>()).input(),
     );
   }
 }

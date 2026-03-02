@@ -71,16 +71,16 @@ class NetworkTapRuleArgs {
 
   factory NetworkTapRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkTapRuleArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
       configurationType: (map['configurationType'] as String).input(),
-      dynamicMatchConfigurations: map['dynamicMatchConfigurations'] == null ? null : (pulumi.Input.decodeList<CommonDynamicMatchConfiguration>(map['dynamicMatchConfigurations'], (value) => CommonDynamicMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      matchConfigurations: map['matchConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkTapRuleMatchConfiguration>(map['matchConfigurations'], (value) => NetworkTapRuleMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkTapRuleName: map['networkTapRuleName'] == null ? null : (map['networkTapRuleName'] as String).input(),
-      pollingIntervalInSeconds: map['pollingIntervalInSeconds'] == null ? null : (map['pollingIntervalInSeconds'] as int).input(),
+      dynamicMatchConfigurations: map['dynamicMatchConfigurations'] == null ? null : (pulumi.Input.decodeList<CommonDynamicMatchConfiguration>(map['dynamicMatchConfigurations']!, (value) => CommonDynamicMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      matchConfigurations: map['matchConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkTapRuleMatchConfiguration>(map['matchConfigurations']!, (value) => NetworkTapRuleMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkTapRuleName: map['networkTapRuleName'] == null ? null : (map['networkTapRuleName']! as String).input(),
+      pollingIntervalInSeconds: map['pollingIntervalInSeconds'] == null ? null : (map['pollingIntervalInSeconds']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tapRulesUrl: map['tapRulesUrl'] == null ? null : (map['tapRulesUrl'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tapRulesUrl: map['tapRulesUrl'] == null ? null : (map['tapRulesUrl']! as String).input(),
     );
   }
 }

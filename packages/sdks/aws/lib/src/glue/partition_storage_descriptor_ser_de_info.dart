@@ -30,9 +30,9 @@ class PartitionStorageDescriptorSerDeInfo {
 
   factory PartitionStorageDescriptorSerDeInfo.fromMap(Map<String, dynamic> map) {
     return PartitionStorageDescriptorSerDeInfo(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      serializationLibrary: map['serializationLibrary'] == null ? null : (map['serializationLibrary'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      serializationLibrary: map['serializationLibrary'] == null ? null : ((map['serializationLibrary'] as String).input()).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class LfTagState {
 
   factory LfTagState.fromMap(Map<String, dynamic> map) {
     return LfTagState(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      values: map['values'] == null ? null : (((map['values'] as List).cast<String>()).input()).input(),
     );
   }
 }

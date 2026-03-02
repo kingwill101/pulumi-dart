@@ -25,7 +25,7 @@ class DistributionRestrictionsGeoRestriction {
 
   factory DistributionRestrictionsGeoRestriction.fromMap(Map<String, dynamic> map) {
     return DistributionRestrictionsGeoRestriction(
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      locations: map['locations'] == null ? null : (((map['locations'] as List).cast<String>()).input()).input(),
       restrictionType: (map['restrictionType'] as String).input(),
     );
   }

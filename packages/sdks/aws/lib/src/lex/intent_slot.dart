@@ -70,15 +70,15 @@ class IntentSlot {
 
   factory IntentSlot.fromMap(Map<String, dynamic> map) {
     return IntentSlot(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      responseCard: map['responseCard'] == null ? null : (map['responseCard'] as String).input(),
-      sampleUtterances: map['sampleUtterances'] == null ? null : ((map['sampleUtterances'] as List).cast<String>()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      responseCard: map['responseCard'] == null ? null : ((map['responseCard'] as String).input()).input(),
+      sampleUtterances: map['sampleUtterances'] == null ? null : (((map['sampleUtterances'] as List).cast<String>()).input()).input(),
       slotConstraint: (map['slotConstraint'] as String).input(),
       slotType: (map['slotType'] as String).input(),
-      slotTypeVersion: map['slotTypeVersion'] == null ? null : (map['slotTypeVersion'] as String).input(),
-      valueElicitationPrompt: map['valueElicitationPrompt'] == null ? null : (IntentSlotValueElicitationPrompt.fromMap((map['valueElicitationPrompt'] as Map).cast<String, dynamic>())).input(),
+      slotTypeVersion: map['slotTypeVersion'] == null ? null : ((map['slotTypeVersion'] as String).input()).input(),
+      valueElicitationPrompt: map['valueElicitationPrompt'] == null ? null : ((IntentSlotValueElicitationPrompt.fromMap((map['valueElicitationPrompt']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

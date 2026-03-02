@@ -97,21 +97,21 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      access: map['access'] == null ? null : (pulumi.Input.decodeList<DatasetAccessItem>(map['access'], (value) => DatasetAccessItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      datasetReference: map['datasetReference'] == null ? null : (DatasetReference.fromMap((map['datasetReference'] as Map).cast<String, dynamic>())).input(),
-      defaultEncryptionConfiguration: map['defaultEncryptionConfiguration'] == null ? null : (EncryptionConfiguration.fromMap((map['defaultEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      defaultPartitionExpirationMs: map['defaultPartitionExpirationMs'] == null ? null : (map['defaultPartitionExpirationMs'] as String).input(),
-      defaultTableExpirationMs: map['defaultTableExpirationMs'] == null ? null : (map['defaultTableExpirationMs'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalDatasetReference: map['externalDatasetReference'] == null ? null : (ExternalDatasetReference.fromMap((map['externalDatasetReference'] as Map).cast<String, dynamic>())).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      isCaseInsensitive: map['isCaseInsensitive'] == null ? null : (map['isCaseInsensitive'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maxTimeTravelHours: map['maxTimeTravelHours'] == null ? null : (map['maxTimeTravelHours'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      storageBillingModel: map['storageBillingModel'] == null ? null : (map['storageBillingModel'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<DatasetTagsItem>(map['tags'], (value) => DatasetTagsItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      access: map['access'] == null ? null : (pulumi.Input.decodeList<DatasetAccessItem>(map['access']!, (value) => DatasetAccessItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      datasetReference: map['datasetReference'] == null ? null : (DatasetReference.fromMap((map['datasetReference']! as Map).cast<String, dynamic>())).input(),
+      defaultEncryptionConfiguration: map['defaultEncryptionConfiguration'] == null ? null : (EncryptionConfiguration.fromMap((map['defaultEncryptionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      defaultPartitionExpirationMs: map['defaultPartitionExpirationMs'] == null ? null : (map['defaultPartitionExpirationMs']! as String).input(),
+      defaultTableExpirationMs: map['defaultTableExpirationMs'] == null ? null : (map['defaultTableExpirationMs']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      externalDatasetReference: map['externalDatasetReference'] == null ? null : (ExternalDatasetReference.fromMap((map['externalDatasetReference']! as Map).cast<String, dynamic>())).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      isCaseInsensitive: map['isCaseInsensitive'] == null ? null : (map['isCaseInsensitive']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maxTimeTravelHours: map['maxTimeTravelHours'] == null ? null : (map['maxTimeTravelHours']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      storageBillingModel: map['storageBillingModel'] == null ? null : (map['storageBillingModel']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<DatasetTagsItem>(map['tags']!, (value) => DatasetTagsItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

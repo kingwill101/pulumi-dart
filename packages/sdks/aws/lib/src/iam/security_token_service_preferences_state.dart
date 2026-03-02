@@ -21,7 +21,7 @@ class SecurityTokenServicePreferencesState {
 
   factory SecurityTokenServicePreferencesState.fromMap(Map<String, dynamic> map) {
     return SecurityTokenServicePreferencesState(
-      globalEndpointTokenVersion: map['globalEndpointTokenVersion'] == null ? null : (map['globalEndpointTokenVersion'] as String).input(),
+      globalEndpointTokenVersion: map['globalEndpointTokenVersion'] == null ? null : ((map['globalEndpointTokenVersion'] as String).input()).input(),
     );
   }
 }

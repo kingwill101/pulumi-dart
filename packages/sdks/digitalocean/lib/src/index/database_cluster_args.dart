@@ -91,20 +91,20 @@ class DatabaseClusterArgs {
 
   factory DatabaseClusterArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseClusterArgs(
-      backupRestore: map['backupRestore'] == null ? null : (DatabaseClusterBackupRestore.fromMap((map['backupRestore'] as Map).cast<String, dynamic>())).input(),
+      backupRestore: map['backupRestore'] == null ? null : (DatabaseClusterBackupRestore.fromMap((map['backupRestore']! as Map).cast<String, dynamic>())).input(),
       engine: (map['engine'] as String).input(),
-      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy'] as String).input(),
-      maintenanceWindows: map['maintenanceWindows'] == null ? null : (pulumi.Input.decodeList<DatabaseClusterMaintenanceWindow>(map['maintenanceWindows'], (value) => DatabaseClusterMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy']! as String).input(),
+      maintenanceWindows: map['maintenanceWindows'] == null ? null : (pulumi.Input.decodeList<DatabaseClusterMaintenanceWindow>(map['maintenanceWindows']!, (value) => DatabaseClusterMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nodeCount: (map['nodeCount'] as int).input(),
-      privateNetworkUuid: map['privateNetworkUuid'] == null ? null : (map['privateNetworkUuid'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      privateNetworkUuid: map['privateNetworkUuid'] == null ? null : (map['privateNetworkUuid']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
       region: (map['region'] as String).input(),
       size: (map['size'] as String).input(),
-      sqlMode: map['sqlMode'] == null ? null : (map['sqlMode'] as String).input(),
-      storageSizeMib: map['storageSizeMib'] == null ? null : (map['storageSizeMib'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      sqlMode: map['sqlMode'] == null ? null : (map['sqlMode']! as String).input(),
+      storageSizeMib: map['storageSizeMib'] == null ? null : (map['storageSizeMib']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

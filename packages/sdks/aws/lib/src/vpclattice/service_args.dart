@@ -51,12 +51,12 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
-      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
-      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      authType: map['authType'] == null ? null : ((map['authType'] as String).input()).input(),
+      certificateArn: map['certificateArn'] == null ? null : ((map['certificateArn'] as String).input()).input(),
+      customDomainName: map['customDomainName'] == null ? null : ((map['customDomainName'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

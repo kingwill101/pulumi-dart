@@ -100,22 +100,22 @@ class RuleState {
 
   factory RuleState.fromMap(Map<String, dynamic> map) {
     return RuleState(
-      backendAddressPoolIds: map['backendAddressPoolIds'] == null ? null : ((map['backendAddressPoolIds'] as List).cast<String>()).input(),
-      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
-      disableOutboundSnat: map['disableOutboundSnat'] == null ? null : (map['disableOutboundSnat'] as bool).input(),
-      enableFloatingIp: map['enableFloatingIp'] == null ? null : (map['enableFloatingIp'] as bool).input(),
-      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset'] as bool).input(),
-      floatingIpEnabled: map['floatingIpEnabled'] == null ? null : (map['floatingIpEnabled'] as bool).input(),
-      frontendIpConfigurationId: map['frontendIpConfigurationId'] == null ? null : (map['frontendIpConfigurationId'] as String).input(),
-      frontendIpConfigurationName: map['frontendIpConfigurationName'] == null ? null : (map['frontendIpConfigurationName'] as String).input(),
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as int).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      loadDistribution: map['loadDistribution'] == null ? null : (map['loadDistribution'] as String).input(),
-      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      probeId: map['probeId'] == null ? null : (map['probeId'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      tcpResetEnabled: map['tcpResetEnabled'] == null ? null : (map['tcpResetEnabled'] as bool).input(),
+      backendAddressPoolIds: map['backendAddressPoolIds'] == null ? null : ((map['backendAddressPoolIds']! as List).cast<String>()).input(),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as int).input(),
+      disableOutboundSnat: map['disableOutboundSnat'] == null ? null : (map['disableOutboundSnat']! as bool).input(),
+      enableFloatingIp: map['enableFloatingIp'] == null ? null : (map['enableFloatingIp']! as bool).input(),
+      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset']! as bool).input(),
+      floatingIpEnabled: map['floatingIpEnabled'] == null ? null : (map['floatingIpEnabled']! as bool).input(),
+      frontendIpConfigurationId: map['frontendIpConfigurationId'] == null ? null : (map['frontendIpConfigurationId']! as String).input(),
+      frontendIpConfigurationName: map['frontendIpConfigurationName'] == null ? null : (map['frontendIpConfigurationName']! as String).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as int).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
+      loadDistribution: map['loadDistribution'] == null ? null : (map['loadDistribution']! as String).input(),
+      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      probeId: map['probeId'] == null ? null : (map['probeId']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      tcpResetEnabled: map['tcpResetEnabled'] == null ? null : (map['tcpResetEnabled']! as bool).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMo
 
   factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring(
-      backends: map['backends'] == null ? null : ((map['backends'] as List).cast<String>()).input(),
+      backends: map['backends'] == null ? null : ((map['backends']! as List).cast<String>()).input(),
     );
   }
 }

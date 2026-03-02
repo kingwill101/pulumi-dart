@@ -51,12 +51,12 @@ class VirtualNodeSpecListener {
 
   factory VirtualNodeSpecListener.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListener(
-      connectionPool: map['connectionPool'] == null ? null : (VirtualNodeSpecListenerConnectionPool.fromMap((map['connectionPool'] as Map).cast<String, dynamic>())).input(),
-      healthCheck: map['healthCheck'] == null ? null : (VirtualNodeSpecListenerHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())).input(),
-      outlierDetection: map['outlierDetection'] == null ? null : (VirtualNodeSpecListenerOutlierDetection.fromMap((map['outlierDetection'] as Map).cast<String, dynamic>())).input(),
-      portMapping: (VirtualNodeSpecListenerPortMapping.fromMap((map['portMapping'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (VirtualNodeSpecListenerTimeout.fromMap((map['timeout'] as Map).cast<String, dynamic>())).input(),
-      tls: map['tls'] == null ? null : (VirtualNodeSpecListenerTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      connectionPool: map['connectionPool'] == null ? null : ((VirtualNodeSpecListenerConnectionPool.fromMap((map['connectionPool']! as Map).cast<String, dynamic>())).input()).input(),
+      healthCheck: map['healthCheck'] == null ? null : ((VirtualNodeSpecListenerHealthCheck.fromMap((map['healthCheck']! as Map).cast<String, dynamic>())).input()).input(),
+      outlierDetection: map['outlierDetection'] == null ? null : ((VirtualNodeSpecListenerOutlierDetection.fromMap((map['outlierDetection']! as Map).cast<String, dynamic>())).input()).input(),
+      portMapping: (VirtualNodeSpecListenerPortMapping.fromMap((map['portMapping']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : ((VirtualNodeSpecListenerTimeout.fromMap((map['timeout']! as Map).cast<String, dynamic>())).input()).input(),
+      tls: map['tls'] == null ? null : ((VirtualNodeSpecListenerTls.fromMap((map['tls']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

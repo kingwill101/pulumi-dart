@@ -28,8 +28,8 @@ class AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfig
 
   factory AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilterFilter(
-      exclusionFilters: map['exclusionFilters'] == null ? null : ((map['exclusionFilters'] as List).cast<String>()).input(),
-      inclusionFilters: map['inclusionFilters'] == null ? null : ((map['inclusionFilters'] as List).cast<String>()).input(),
+      exclusionFilters: map['exclusionFilters'] == null ? null : (((map['exclusionFilters'] as List).cast<String>()).input()).input(),
+      inclusionFilters: map['inclusionFilters'] == null ? null : (((map['inclusionFilters'] as List).cast<String>()).input()).input(),
       objectType: (map['objectType'] as String).input(),
     );
   }

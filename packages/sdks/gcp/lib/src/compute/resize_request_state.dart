@@ -71,16 +71,16 @@ class ResizeRequestState {
 
   factory ResizeRequestState.fromMap(Map<String, dynamic> map) {
     return ResizeRequestState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceGroupManager: map['instanceGroupManager'] == null ? null : (map['instanceGroupManager'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestedRunDuration: map['requestedRunDuration'] == null ? null : (ResizeRequestRequestedRunDuration.fromMap((map['requestedRunDuration'] as Map).cast<String, dynamic>())).input(),
-      resizeBy: map['resizeBy'] == null ? null : (map['resizeBy'] as int).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ResizeRequestStatus>(map['statuses'], (value) => ResizeRequestStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceGroupManager: map['instanceGroupManager'] == null ? null : (map['instanceGroupManager']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestedRunDuration: map['requestedRunDuration'] == null ? null : (ResizeRequestRequestedRunDuration.fromMap((map['requestedRunDuration']! as Map).cast<String, dynamic>())).input(),
+      resizeBy: map['resizeBy'] == null ? null : (map['resizeBy']! as int).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ResizeRequestStatus>(map['statuses']!, (value) => ResizeRequestStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

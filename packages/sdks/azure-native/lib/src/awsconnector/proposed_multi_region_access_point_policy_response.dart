@@ -21,7 +21,7 @@ class ProposedMultiRegionAccessPointPolicyResponse {
 
   factory ProposedMultiRegionAccessPointPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ProposedMultiRegionAccessPointPolicyResponse(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
     );
   }
 }

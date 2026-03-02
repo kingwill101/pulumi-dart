@@ -27,7 +27,7 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
   factory DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(
       retainedBackups: (map['retainedBackups'] as int).input(),
-      retentionUnit: map['retentionUnit'] == null ? null : (map['retentionUnit'] as String).input(),
+      retentionUnit: map['retentionUnit'] == null ? null : (map['retentionUnit']! as String).input(),
     );
   }
 }

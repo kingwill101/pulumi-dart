@@ -35,8 +35,8 @@ class GetNamedQueryArgs {
   factory GetNamedQueryArgs.fromMap(Map<String, dynamic> map) {
     return GetNamedQueryArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      workgroup: map['workgroup'] == null ? null : (map['workgroup'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      workgroup: map['workgroup'] == null ? null : ((map['workgroup'] as String).input()).input(),
     );
   }
 }

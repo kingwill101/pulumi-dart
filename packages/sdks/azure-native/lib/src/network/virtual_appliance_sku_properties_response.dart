@@ -31,9 +31,9 @@ class VirtualApplianceSkuPropertiesResponse {
 
   factory VirtualApplianceSkuPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceSkuPropertiesResponse(
-      bundledScaleUnit: map['bundledScaleUnit'] == null ? null : (map['bundledScaleUnit'] as String).input(),
-      marketPlaceVersion: map['marketPlaceVersion'] == null ? null : (map['marketPlaceVersion'] as String).input(),
-      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
+      bundledScaleUnit: map['bundledScaleUnit'] == null ? null : (map['bundledScaleUnit']! as String).input(),
+      marketPlaceVersion: map['marketPlaceVersion'] == null ? null : (map['marketPlaceVersion']! as String).input(),
+      vendor: map['vendor'] == null ? null : (map['vendor']! as String).input(),
     );
   }
 }

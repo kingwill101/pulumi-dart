@@ -36,7 +36,7 @@ class InsightsReportConfigObjectMetadataReportOptions {
     return InsightsReportConfigObjectMetadataReportOptions(
       metadataFields: ((map['metadataFields'] as List).cast<String>()).input(),
       storageDestinationOptions: (InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions.fromMap((map['storageDestinationOptions'] as Map).cast<String, dynamic>())).input(),
-      storageFilters: map['storageFilters'] == null ? null : (InsightsReportConfigObjectMetadataReportOptionsStorageFilters.fromMap((map['storageFilters'] as Map).cast<String, dynamic>())).input(),
+      storageFilters: map['storageFilters'] == null ? null : (InsightsReportConfigObjectMetadataReportOptionsStorageFilters.fromMap((map['storageFilters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

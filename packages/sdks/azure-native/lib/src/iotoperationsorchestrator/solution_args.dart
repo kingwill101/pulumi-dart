@@ -56,13 +56,13 @@ class SolutionArgs {
 
   factory SolutionArgs.fromMap(Map<String, dynamic> map) {
     return SolutionArgs(
-      components: map['components'] == null ? null : (pulumi.Input.decodeList<ComponentProperties>(map['components'], (value) => ComponentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      components: map['components'] == null ? null : (pulumi.Input.decodeList<ComponentProperties>(map['components']!, (value) => ComponentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

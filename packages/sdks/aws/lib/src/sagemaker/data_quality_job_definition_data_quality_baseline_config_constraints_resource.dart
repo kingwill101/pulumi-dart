@@ -20,7 +20,7 @@ class DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource {
 
   factory DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityBaselineConfigConstraintsResource(
-      s3Uri: map['s3Uri'] == null ? null : (map['s3Uri'] as String).input(),
+      s3Uri: map['s3Uri'] == null ? null : ((map['s3Uri'] as String).input()).input(),
     );
   }
 }

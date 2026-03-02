@@ -57,13 +57,13 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : (map['deletionProtectionEnabled'] as bool).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      kmsEncryptionKey: map['kmsEncryptionKey'] == null ? null : (map['kmsEncryptionKey'] as String).input(),
-      multiRegionProperties: map['multiRegionProperties'] == null ? null : (ClusterMultiRegionProperties.fromMap((map['multiRegionProperties'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ClusterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : ((map['deletionProtectionEnabled'] as bool).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      kmsEncryptionKey: map['kmsEncryptionKey'] == null ? null : ((map['kmsEncryptionKey'] as String).input()).input(),
+      multiRegionProperties: map['multiRegionProperties'] == null ? null : ((ClusterMultiRegionProperties.fromMap((map['multiRegionProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ClusterTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

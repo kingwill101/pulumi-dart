@@ -29,8 +29,8 @@ class DeviceCounterConsumptionPatchResourceK8sIoV1beta2 {
 
   factory DeviceCounterConsumptionPatchResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceCounterConsumptionPatchResourceK8sIoV1beta2(
-      counterSet: map['counterSet'] == null ? null : (map['counterSet'] as String).input(),
-      counters: map['counters'] == null ? null : (pulumi.Input.decodeMapValues<CounterResourceK8sIoV1beta2>(map['counters'], (value) => CounterResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      counterSet: map['counterSet'] == null ? null : (map['counterSet']! as String).input(),
+      counters: map['counters'] == null ? null : (pulumi.Input.decodeMapValues<CounterResourceK8sIoV1beta2>(map['counters']!, (value) => CounterResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

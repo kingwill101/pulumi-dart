@@ -23,7 +23,7 @@ class DiagnosticSettingMetricRetentionPolicy {
 
   factory DiagnosticSettingMetricRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return DiagnosticSettingMetricRetentionPolicy(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

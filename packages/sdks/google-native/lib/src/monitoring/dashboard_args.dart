@@ -73,16 +73,16 @@ class DashboardArgs {
 
   factory DashboardArgs.fromMap(Map<String, dynamic> map) {
     return DashboardArgs(
-      columnLayout: map['columnLayout'] == null ? null : (ColumnLayout.fromMap((map['columnLayout'] as Map).cast<String, dynamic>())).input(),
-      dashboardFilters: map['dashboardFilters'] == null ? null : (pulumi.Input.decodeList<DashboardFilter>(map['dashboardFilters'], (value) => DashboardFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columnLayout: map['columnLayout'] == null ? null : (ColumnLayout.fromMap((map['columnLayout']! as Map).cast<String, dynamic>())).input(),
+      dashboardFilters: map['dashboardFilters'] == null ? null : (pulumi.Input.decodeList<DashboardFilter>(map['dashboardFilters']!, (value) => DashboardFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       displayName: (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      gridLayout: map['gridLayout'] == null ? null : (GridLayout.fromMap((map['gridLayout'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      mosaicLayout: map['mosaicLayout'] == null ? null : (MosaicLayout.fromMap((map['mosaicLayout'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rowLayout: map['rowLayout'] == null ? null : (RowLayout.fromMap((map['rowLayout'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      gridLayout: map['gridLayout'] == null ? null : (GridLayout.fromMap((map['gridLayout']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      mosaicLayout: map['mosaicLayout'] == null ? null : (MosaicLayout.fromMap((map['mosaicLayout']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rowLayout: map['rowLayout'] == null ? null : (RowLayout.fromMap((map['rowLayout']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

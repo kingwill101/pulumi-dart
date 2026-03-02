@@ -29,8 +29,8 @@ class CxTestCaseLastTestResultConversationTurn {
 
   factory CxTestCaseLastTestResultConversationTurn.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurn(
-      userInput: map['userInput'] == null ? null : (CxTestCaseLastTestResultConversationTurnUserInput.fromMap((map['userInput'] as Map).cast<String, dynamic>())).input(),
-      virtualAgentOutput: map['virtualAgentOutput'] == null ? null : (CxTestCaseLastTestResultConversationTurnVirtualAgentOutput.fromMap((map['virtualAgentOutput'] as Map).cast<String, dynamic>())).input(),
+      userInput: map['userInput'] == null ? null : (CxTestCaseLastTestResultConversationTurnUserInput.fromMap((map['userInput']! as Map).cast<String, dynamic>())).input(),
+      virtualAgentOutput: map['virtualAgentOutput'] == null ? null : (CxTestCaseLastTestResultConversationTurnVirtualAgentOutput.fromMap((map['virtualAgentOutput']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

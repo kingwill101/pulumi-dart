@@ -45,12 +45,12 @@ class DiskAttachmentArgs {
 
   factory DiskAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return DiskAttachmentArgs(
-      bootable: map['bootable'] == null ? null : (map['bootable'] as bool).input(),
-      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance'] as bool).input(),
+      bootable: map['bootable'] == null ? null : (map['bootable']! as bool).input(),
+      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance']! as bool).input(),
       diskId: (map['diskId'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
     );
   }
 }

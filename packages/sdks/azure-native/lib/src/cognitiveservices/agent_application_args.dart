@@ -46,7 +46,7 @@ class AgentApplicationArgs {
   factory AgentApplicationArgs.fromMap(Map<String, dynamic> map) {
     return AgentApplicationArgs(
       accountName: (map['accountName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       properties: (AgenticApplication.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

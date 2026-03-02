@@ -123,22 +123,22 @@ class GatewayVpnAttachmentArgs {
 
   factory GatewayVpnAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GatewayVpnAttachmentArgs(
-      bgpConfig: map['bgpConfig'] == null ? null : (GatewayVpnAttachmentBgpConfig.fromMap((map['bgpConfig'] as Map).cast<String, dynamic>())).input(),
-      customerGatewayId: map['customerGatewayId'] == null ? null : (map['customerGatewayId'] as String).input(),
-      effectImmediately: map['effectImmediately'] == null ? null : (map['effectImmediately'] as bool).input(),
-      enableDpd: map['enableDpd'] == null ? null : (map['enableDpd'] as bool).input(),
-      enableNatTraversal: map['enableNatTraversal'] == null ? null : (map['enableNatTraversal'] as bool).input(),
-      enableTunnelsBgp: map['enableTunnelsBgp'] == null ? null : (map['enableTunnelsBgp'] as bool).input(),
-      healthCheckConfig: map['healthCheckConfig'] == null ? null : (GatewayVpnAttachmentHealthCheckConfig.fromMap((map['healthCheckConfig'] as Map).cast<String, dynamic>())).input(),
-      ikeConfig: map['ikeConfig'] == null ? null : (GatewayVpnAttachmentIkeConfig.fromMap((map['ikeConfig'] as Map).cast<String, dynamic>())).input(),
-      ipsecConfig: map['ipsecConfig'] == null ? null : (GatewayVpnAttachmentIpsecConfig.fromMap((map['ipsecConfig'] as Map).cast<String, dynamic>())).input(),
+      bgpConfig: map['bgpConfig'] == null ? null : (GatewayVpnAttachmentBgpConfig.fromMap((map['bgpConfig']! as Map).cast<String, dynamic>())).input(),
+      customerGatewayId: map['customerGatewayId'] == null ? null : (map['customerGatewayId']! as String).input(),
+      effectImmediately: map['effectImmediately'] == null ? null : (map['effectImmediately']! as bool).input(),
+      enableDpd: map['enableDpd'] == null ? null : (map['enableDpd']! as bool).input(),
+      enableNatTraversal: map['enableNatTraversal'] == null ? null : (map['enableNatTraversal']! as bool).input(),
+      enableTunnelsBgp: map['enableTunnelsBgp'] == null ? null : (map['enableTunnelsBgp']! as bool).input(),
+      healthCheckConfig: map['healthCheckConfig'] == null ? null : (GatewayVpnAttachmentHealthCheckConfig.fromMap((map['healthCheckConfig']! as Map).cast<String, dynamic>())).input(),
+      ikeConfig: map['ikeConfig'] == null ? null : (GatewayVpnAttachmentIkeConfig.fromMap((map['ikeConfig']! as Map).cast<String, dynamic>())).input(),
+      ipsecConfig: map['ipsecConfig'] == null ? null : (GatewayVpnAttachmentIpsecConfig.fromMap((map['ipsecConfig']! as Map).cast<String, dynamic>())).input(),
       localSubnet: (map['localSubnet'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
       remoteSubnet: (map['remoteSubnet'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tunnelOptionsSpecifications: map['tunnelOptionsSpecifications'] == null ? null : (pulumi.Input.decodeList<GatewayVpnAttachmentTunnelOptionsSpecification>(map['tunnelOptionsSpecifications'], (value) => GatewayVpnAttachmentTunnelOptionsSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpnAttachmentName: map['vpnAttachmentName'] == null ? null : (map['vpnAttachmentName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tunnelOptionsSpecifications: map['tunnelOptionsSpecifications'] == null ? null : (pulumi.Input.decodeList<GatewayVpnAttachmentTunnelOptionsSpecification>(map['tunnelOptionsSpecifications']!, (value) => GatewayVpnAttachmentTunnelOptionsSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnAttachmentName: map['vpnAttachmentName'] == null ? null : (map['vpnAttachmentName']! as String).input(),
     );
   }
 }

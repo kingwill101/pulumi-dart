@@ -21,7 +21,7 @@ class DomainDevicesHostdevSubsysMDevSource {
 
   factory DomainDevicesHostdevSubsysMDevSource.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysMDevSource(
-      address: map['address'] == null ? null : (DomainDevicesHostdevSubsysMDevSourceAddress.fromMap((map['address'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : (DomainDevicesHostdevSubsysMDevSourceAddress.fromMap((map['address']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

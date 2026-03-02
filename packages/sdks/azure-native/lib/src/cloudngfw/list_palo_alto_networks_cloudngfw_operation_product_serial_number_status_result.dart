@@ -25,7 +25,7 @@ class ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult {
 
   factory ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult.fromMap(Map<String, dynamic> map) {
     return ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult(
-      serialNumber: map['serialNumber'] == null ? null : map['serialNumber'] as String,
+      serialNumber: map['serialNumber'] == null ? null : map['serialNumber']! as String,
       status: map['status'] as String,
     );
   }

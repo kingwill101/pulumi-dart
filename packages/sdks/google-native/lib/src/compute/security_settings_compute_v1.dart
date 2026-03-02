@@ -32,9 +32,9 @@ class SecuritySettingsComputeV1 {
 
   factory SecuritySettingsComputeV1.fromMap(Map<String, dynamic> map) {
     return SecuritySettingsComputeV1(
-      awsV4Authentication: map['awsV4Authentication'] == null ? null : (AWSV4SignatureComputeV1.fromMap((map['awsV4Authentication'] as Map).cast<String, dynamic>())).input(),
-      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : (map['clientTlsPolicy'] as String).input(),
-      subjectAltNames: map['subjectAltNames'] == null ? null : ((map['subjectAltNames'] as List).cast<String>()).input(),
+      awsV4Authentication: map['awsV4Authentication'] == null ? null : (AWSV4SignatureComputeV1.fromMap((map['awsV4Authentication']! as Map).cast<String, dynamic>())).input(),
+      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : (map['clientTlsPolicy']! as String).input(),
+      subjectAltNames: map['subjectAltNames'] == null ? null : ((map['subjectAltNames']! as List).cast<String>()).input(),
     );
   }
 }

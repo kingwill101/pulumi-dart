@@ -30,9 +30,9 @@ class DomainFeaturesSmm {
 
   factory DomainFeaturesSmm.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesSmm(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tseg: map['tseg'] == null ? null : (map['tseg'] as double).input(),
-      tsegUnit: map['tsegUnit'] == null ? null : (map['tsegUnit'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      tseg: map['tseg'] == null ? null : (map['tseg']! as double).input(),
+      tsegUnit: map['tsegUnit'] == null ? null : (map['tsegUnit']! as String).input(),
     );
   }
 }

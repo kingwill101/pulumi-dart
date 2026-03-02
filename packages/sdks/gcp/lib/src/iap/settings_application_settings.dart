@@ -44,10 +44,10 @@ class SettingsApplicationSettings {
 
   factory SettingsApplicationSettings.fromMap(Map<String, dynamic> map) {
     return SettingsApplicationSettings(
-      accessDeniedPageSettings: map['accessDeniedPageSettings'] == null ? null : (SettingsApplicationSettingsAccessDeniedPageSettings.fromMap((map['accessDeniedPageSettings'] as Map).cast<String, dynamic>())).input(),
-      attributePropagationSettings: map['attributePropagationSettings'] == null ? null : (SettingsApplicationSettingsAttributePropagationSettings.fromMap((map['attributePropagationSettings'] as Map).cast<String, dynamic>())).input(),
-      cookieDomain: map['cookieDomain'] == null ? null : (map['cookieDomain'] as String).input(),
-      csmSettings: map['csmSettings'] == null ? null : (SettingsApplicationSettingsCsmSettings.fromMap((map['csmSettings'] as Map).cast<String, dynamic>())).input(),
+      accessDeniedPageSettings: map['accessDeniedPageSettings'] == null ? null : (SettingsApplicationSettingsAccessDeniedPageSettings.fromMap((map['accessDeniedPageSettings']! as Map).cast<String, dynamic>())).input(),
+      attributePropagationSettings: map['attributePropagationSettings'] == null ? null : (SettingsApplicationSettingsAttributePropagationSettings.fromMap((map['attributePropagationSettings']! as Map).cast<String, dynamic>())).input(),
+      cookieDomain: map['cookieDomain'] == null ? null : (map['cookieDomain']! as String).input(),
+      csmSettings: map['csmSettings'] == null ? null : (SettingsApplicationSettingsCsmSettings.fromMap((map['csmSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

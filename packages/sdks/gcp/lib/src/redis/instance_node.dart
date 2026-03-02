@@ -27,8 +27,8 @@ class InstanceNode {
 
   factory InstanceNode.fromMap(Map<String, dynamic> map) {
     return InstanceNode(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

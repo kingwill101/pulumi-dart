@@ -23,7 +23,7 @@ class AgentAgentActionGroupFunctionSchema {
 
   factory AgentAgentActionGroupFunctionSchema.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupFunctionSchema(
-      memberFunctions: map['memberFunctions'] == null ? null : (AgentAgentActionGroupFunctionSchemaMemberFunctions.fromMap((map['memberFunctions'] as Map).cast<String, dynamic>())).input(),
+      memberFunctions: map['memberFunctions'] == null ? null : ((AgentAgentActionGroupFunctionSchemaMemberFunctions.fromMap((map['memberFunctions']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

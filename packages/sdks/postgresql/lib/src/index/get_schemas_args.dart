@@ -52,11 +52,11 @@ class GetSchemasArgs {
   factory GetSchemasArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemasArgs(
       database: (map['database'] as String).input(),
-      includeSystemSchemas: map['includeSystemSchemas'] == null ? null : (map['includeSystemSchemas'] as bool).input(),
-      likeAllPatterns: map['likeAllPatterns'] == null ? null : ((map['likeAllPatterns'] as List).cast<String>()).input(),
-      likeAnyPatterns: map['likeAnyPatterns'] == null ? null : ((map['likeAnyPatterns'] as List).cast<String>()).input(),
-      notLikeAllPatterns: map['notLikeAllPatterns'] == null ? null : ((map['notLikeAllPatterns'] as List).cast<String>()).input(),
-      regexPattern: map['regexPattern'] == null ? null : (map['regexPattern'] as String).input(),
+      includeSystemSchemas: map['includeSystemSchemas'] == null ? null : (map['includeSystemSchemas']! as bool).input(),
+      likeAllPatterns: map['likeAllPatterns'] == null ? null : ((map['likeAllPatterns']! as List).cast<String>()).input(),
+      likeAnyPatterns: map['likeAnyPatterns'] == null ? null : ((map['likeAnyPatterns']! as List).cast<String>()).input(),
+      notLikeAllPatterns: map['notLikeAllPatterns'] == null ? null : ((map['notLikeAllPatterns']! as List).cast<String>()).input(),
+      regexPattern: map['regexPattern'] == null ? null : (map['regexPattern']! as String).input(),
     );
   }
 }

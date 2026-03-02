@@ -21,7 +21,7 @@ class DefenderForServersAwsOfferingResponseDefenderForServers {
 
   factory DefenderForServersAwsOfferingResponseDefenderForServers.fromMap(Map<String, dynamic> map) {
     return DefenderForServersAwsOfferingResponseDefenderForServers(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
     );
   }
 }

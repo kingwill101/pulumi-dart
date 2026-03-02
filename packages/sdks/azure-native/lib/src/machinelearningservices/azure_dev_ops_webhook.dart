@@ -27,7 +27,7 @@ class AzureDevOpsWebhook {
 
   factory AzureDevOpsWebhook.fromMap(Map<String, dynamic> map) {
     return AzureDevOpsWebhook(
-      eventType: map['eventType'] == null ? null : (map['eventType'] as String).input(),
+      eventType: map['eventType'] == null ? null : (map['eventType']! as String).input(),
       webhookType: (map['webhookType'] as String).input(),
     );
   }

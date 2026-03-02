@@ -26,7 +26,7 @@ class DataDiskImageEncryption {
 
   factory DataDiskImageEncryption.fromMap(Map<String, dynamic> map) {
     return DataDiskImageEncryption(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
       lun: (map['lun'] as int).input(),
     );
   }

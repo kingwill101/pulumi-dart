@@ -26,8 +26,8 @@ class FlexibleRuntimeSettingsAppengineV1beta {
 
   factory FlexibleRuntimeSettingsAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return FlexibleRuntimeSettingsAppengineV1beta(
-      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem']! as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
     );
   }
 }

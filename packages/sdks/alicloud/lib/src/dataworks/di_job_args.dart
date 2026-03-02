@@ -95,18 +95,18 @@ class DiJobArgs {
 
   factory DiJobArgs.fromMap(Map<String, dynamic> map) {
     return DiJobArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destinationDataSourceSettings: (pulumi.Input.decodeList<DiJobDestinationDataSourceSetting>(map['destinationDataSourceSettings'], (value) => DiJobDestinationDataSourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
       destinationDataSourceType: (map['destinationDataSourceType'] as String).input(),
       jobName: (map['jobName'] as String).input(),
-      jobSettings: map['jobSettings'] == null ? null : (DiJobJobSettings.fromMap((map['jobSettings'] as Map).cast<String, dynamic>())).input(),
+      jobSettings: map['jobSettings'] == null ? null : (DiJobJobSettings.fromMap((map['jobSettings']! as Map).cast<String, dynamic>())).input(),
       migrationType: (map['migrationType'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as int).input(),
       resourceSettings: (DiJobResourceSettings.fromMap((map['resourceSettings'] as Map).cast<String, dynamic>())).input(),
       sourceDataSourceSettings: (pulumi.Input.decodeList<DiJobSourceDataSourceSetting>(map['sourceDataSourceSettings'], (value) => DiJobSourceDataSourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
       sourceDataSourceType: (map['sourceDataSourceType'] as String).input(),
       tableMappings: (pulumi.Input.decodeList<DiJobTableMapping>(map['tableMappings'], (value) => DiJobTableMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transformationRules: map['transformationRules'] == null ? null : (pulumi.Input.decodeList<DiJobTransformationRule>(map['transformationRules'], (value) => DiJobTransformationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transformationRules: map['transformationRules'] == null ? null : (pulumi.Input.decodeList<DiJobTransformationRule>(map['transformationRules']!, (value) => DiJobTransformationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

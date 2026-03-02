@@ -40,8 +40,8 @@ class HybridRunbookWorkerGroupArgs {
   factory HybridRunbookWorkerGroupArgs.fromMap(Map<String, dynamic> map) {
     return HybridRunbookWorkerGroupArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      credentialName: map['credentialName'] == null ? null : (map['credentialName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      credentialName: map['credentialName'] == null ? null : (map['credentialName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

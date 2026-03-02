@@ -31,7 +31,7 @@ class BackupArgs {
 
   factory BackupArgs.fromMap(Map<String, dynamic> map) {
     return BackupArgs(
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod'] as int).input(),
+      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod']! as int).input(),
       instanceId: (map['instanceId'] as String).input(),
     );
   }

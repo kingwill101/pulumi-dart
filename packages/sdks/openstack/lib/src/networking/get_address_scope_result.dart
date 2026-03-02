@@ -45,11 +45,11 @@ class GetAddressScopeResult {
   factory GetAddressScopeResult.fromMap(Map<String, dynamic> map) {
     return GetAddressScopeResult(
       id: map['id'] as String,
-      ipVersion: map['ipVersion'] == null ? null : map['ipVersion'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      shared: map['shared'] == null ? null : map['shared'] as bool,
+      ipVersion: map['ipVersion'] == null ? null : map['ipVersion']! as int,
+      name: map['name'] == null ? null : map['name']! as String,
+      projectId: map['projectId'] == null ? null : map['projectId']! as String,
+      region: map['region'] == null ? null : map['region']! as String,
+      shared: map['shared'] == null ? null : map['shared']! as bool,
     );
   }
 }

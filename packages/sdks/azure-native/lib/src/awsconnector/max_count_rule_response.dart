@@ -31,9 +31,9 @@ class MaxCountRuleResponse {
 
   factory MaxCountRuleResponse.fromMap(Map<String, dynamic> map) {
     return MaxCountRuleResponse(
-      deleteSourceFromS3: map['deleteSourceFromS3'] == null ? null : (map['deleteSourceFromS3'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      maxCount: map['maxCount'] == null ? null : (map['maxCount'] as int).input(),
+      deleteSourceFromS3: map['deleteSourceFromS3'] == null ? null : (map['deleteSourceFromS3']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      maxCount: map['maxCount'] == null ? null : (map['maxCount']! as int).input(),
     );
   }
 }

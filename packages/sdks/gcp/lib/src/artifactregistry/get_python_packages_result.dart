@@ -41,7 +41,7 @@ class GetPythonPackagesResult {
     return GetPythonPackagesResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pythonPackages: pulumi.Input.decodeList<GetPythonPackagesPythonPackage>(map['pythonPackages'], (value) => GetPythonPackagesPythonPackage.fromMap((value as Map).cast<String, dynamic>())),
       repositoryId: map['repositoryId'] as String,
     );

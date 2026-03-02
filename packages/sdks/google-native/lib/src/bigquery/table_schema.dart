@@ -21,7 +21,7 @@ class TableSchema {
 
   factory TableSchema.fromMap(Map<String, dynamic> map) {
     return TableSchema(
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<TableFieldSchema>(map['fields'], (value) => TableFieldSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<TableFieldSchema>(map['fields']!, (value) => TableFieldSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ApplicationSchedulerConfiguration {
 
   factory ApplicationSchedulerConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationSchedulerConfiguration(
-      maxConcurrentRuns: map['maxConcurrentRuns'] == null ? null : (map['maxConcurrentRuns'] as int).input(),
-      queueTimeoutMinutes: map['queueTimeoutMinutes'] == null ? null : (map['queueTimeoutMinutes'] as int).input(),
+      maxConcurrentRuns: map['maxConcurrentRuns'] == null ? null : ((map['maxConcurrentRuns'] as int).input()).input(),
+      queueTimeoutMinutes: map['queueTimeoutMinutes'] == null ? null : ((map['queueTimeoutMinutes'] as int).input()).input(),
     );
   }
 }

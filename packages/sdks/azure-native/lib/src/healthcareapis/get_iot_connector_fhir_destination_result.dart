@@ -68,11 +68,11 @@ class GetIotConnectorFhirDestinationResult {
   factory GetIotConnectorFhirDestinationResult.fromMap(Map<String, dynamic> map) {
     return GetIotConnectorFhirDestinationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       fhirMapping: IotMappingPropertiesResponse.fromMap((map['fhirMapping'] as Map).cast<String, dynamic>()),
       fhirServiceResourceId: map['fhirServiceResourceId'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       resourceIdentityResolutionType: map['resourceIdentityResolutionType'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

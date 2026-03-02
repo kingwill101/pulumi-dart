@@ -47,10 +47,10 @@ class StandardsControlAssociationArgs {
   factory StandardsControlAssociationArgs.fromMap(Map<String, dynamic> map) {
     return StandardsControlAssociationArgs(
       associationStatus: (map['associationStatus'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       securityControlId: (map['securityControlId'] as String).input(),
       standardsArn: (map['standardsArn'] as String).input(),
-      updatedReason: map['updatedReason'] == null ? null : (map['updatedReason'] as String).input(),
+      updatedReason: map['updatedReason'] == null ? null : ((map['updatedReason'] as String).input()).input(),
     );
   }
 }

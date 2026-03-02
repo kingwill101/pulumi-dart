@@ -78,7 +78,7 @@ class GetAndroidAppResult {
       id: map['id'] as String,
       name: map['name'] as String,
       packageName: map['packageName'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       sha1Hashes: (map['sha1Hashes'] as List).cast<String>(),
       sha256Hashes: (map['sha256Hashes'] as List).cast<String>(),
     );

@@ -31,9 +31,9 @@ class GeoLocation {
 
   factory GeoLocation.fromMap(Map<String, dynamic> map) {
     return GeoLocation(
-      continentCode: map['continentCode'] == null ? null : (map['continentCode'] as String).input(),
-      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
-      subdivisionCode: map['subdivisionCode'] == null ? null : (map['subdivisionCode'] as String).input(),
+      continentCode: map['continentCode'] == null ? null : (map['continentCode']! as String).input(),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode']! as String).input(),
+      subdivisionCode: map['subdivisionCode'] == null ? null : (map['subdivisionCode']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class InventoryFilter {
 
   factory InventoryFilter.fromMap(Map<String, dynamic> map) {
     return InventoryFilter(
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

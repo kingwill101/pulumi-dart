@@ -26,8 +26,8 @@ class OneDashboardPageWidgetMarkdownColor {
 
   factory OneDashboardPageWidgetMarkdownColor.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetMarkdownColor(
-      color: map['color'] == null ? null : (map['color'] as String).input(),
-      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetMarkdownColorSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetMarkdownColorSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      color: map['color'] == null ? null : (map['color']! as String).input(),
+      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetMarkdownColorSeriesOverride>(map['seriesOverrides']!, (value) => OneDashboardPageWidgetMarkdownColorSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

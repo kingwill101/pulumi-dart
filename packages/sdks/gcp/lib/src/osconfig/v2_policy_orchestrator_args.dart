@@ -84,13 +84,13 @@ class V2PolicyOrchestratorArgs {
   factory V2PolicyOrchestratorArgs.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorArgs(
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       orchestratedResource: (V2PolicyOrchestratorOrchestratedResource.fromMap((map['orchestratedResource'] as Map).cast<String, dynamic>())).input(),
-      orchestrationScope: map['orchestrationScope'] == null ? null : (V2PolicyOrchestratorOrchestrationScope.fromMap((map['orchestrationScope'] as Map).cast<String, dynamic>())).input(),
+      orchestrationScope: map['orchestrationScope'] == null ? null : (V2PolicyOrchestratorOrchestrationScope.fromMap((map['orchestrationScope']! as Map).cast<String, dynamic>())).input(),
       policyOrchestratorId: (map['policyOrchestratorId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

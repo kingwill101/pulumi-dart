@@ -22,7 +22,7 @@ class DataBaseMigrationResponse {
 
   factory DataBaseMigrationResponse.fromMap(Map<String, dynamic> map) {
     return DataBaseMigrationResponse(
-      assessment: map['assessment'] == null ? null : (DataBaseMigrationAssessmentResponse.fromMap((map['assessment'] as Map).cast<String, dynamic>())).input(),
+      assessment: map['assessment'] == null ? null : (DataBaseMigrationAssessmentResponse.fromMap((map['assessment']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

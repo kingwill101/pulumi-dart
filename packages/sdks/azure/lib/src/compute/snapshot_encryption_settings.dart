@@ -28,7 +28,7 @@ class SnapshotEncryptionSettings {
   factory SnapshotEncryptionSettings.fromMap(Map<String, dynamic> map) {
     return SnapshotEncryptionSettings(
       diskEncryptionKey: (SnapshotEncryptionSettingsDiskEncryptionKey.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (SnapshotEncryptionSettingsKeyEncryptionKey.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (SnapshotEncryptionSettingsKeyEncryptionKey.fromMap((map['keyEncryptionKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

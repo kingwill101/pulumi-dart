@@ -26,8 +26,8 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
 
   factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      selectionCriteria: map['selectionCriteria'] == null ? null : (StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria.fromMap((map['selectionCriteria'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      selectionCriteria: map['selectionCriteria'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria.fromMap((map['selectionCriteria']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

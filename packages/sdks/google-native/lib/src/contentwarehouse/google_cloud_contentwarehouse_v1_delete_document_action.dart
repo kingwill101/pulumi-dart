@@ -21,7 +21,7 @@ class GoogleCloudContentwarehouseV1DeleteDocumentAction {
 
   factory GoogleCloudContentwarehouseV1DeleteDocumentAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1DeleteDocumentAction(
-      enableHardDelete: map['enableHardDelete'] == null ? null : (map['enableHardDelete'] as bool).input(),
+      enableHardDelete: map['enableHardDelete'] == null ? null : (map['enableHardDelete']! as bool).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class DeploymentAlarms {
 
   factory DeploymentAlarms.fromMap(Map<String, dynamic> map) {
     return DeploymentAlarms(
-      alarmNames: map['alarmNames'] == null ? null : ((map['alarmNames'] as List).cast<String>()).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      rollback: map['rollback'] == null ? null : (map['rollback'] as bool).input(),
+      alarmNames: map['alarmNames'] == null ? null : ((map['alarmNames']! as List).cast<String>()).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      rollback: map['rollback'] == null ? null : (map['rollback']! as bool).input(),
     );
   }
 }

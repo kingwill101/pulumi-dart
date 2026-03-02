@@ -21,7 +21,7 @@ class GoogleCloudRetailV2alphaRuleRemoveFacetAction {
 
   factory GoogleCloudRetailV2alphaRuleRemoveFacetAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaRuleRemoveFacetAction(
-      attributeNames: map['attributeNames'] == null ? null : ((map['attributeNames'] as List).cast<String>()).input(),
+      attributeNames: map['attributeNames'] == null ? null : ((map['attributeNames']! as List).cast<String>()).input(),
     );
   }
 }

@@ -79,16 +79,16 @@ class WidgetConfigState {
 
   factory WidgetConfigState.fromMap(Map<String, dynamic> map) {
     return WidgetConfigState(
-      accessSettings: map['accessSettings'] == null ? null : (WidgetConfigAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())).input(),
-      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
-      engineId: map['engineId'] == null ? null : (map['engineId'] as String).input(),
-      homepageSetting: map['homepageSetting'] == null ? null : (WidgetConfigHomepageSetting.fromMap((map['homepageSetting'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      uiBranding: map['uiBranding'] == null ? null : (WidgetConfigUiBranding.fromMap((map['uiBranding'] as Map).cast<String, dynamic>())).input(),
-      uiSettings: map['uiSettings'] == null ? null : (WidgetConfigUiSettings.fromMap((map['uiSettings'] as Map).cast<String, dynamic>())).input(),
-      widgetConfigId: map['widgetConfigId'] == null ? null : (map['widgetConfigId'] as String).input(),
+      accessSettings: map['accessSettings'] == null ? null : (WidgetConfigAccessSettings.fromMap((map['accessSettings']! as Map).cast<String, dynamic>())).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId']! as String).input(),
+      engineId: map['engineId'] == null ? null : (map['engineId']! as String).input(),
+      homepageSetting: map['homepageSetting'] == null ? null : (WidgetConfigHomepageSetting.fromMap((map['homepageSetting']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      uiBranding: map['uiBranding'] == null ? null : (WidgetConfigUiBranding.fromMap((map['uiBranding']! as Map).cast<String, dynamic>())).input(),
+      uiSettings: map['uiSettings'] == null ? null : (WidgetConfigUiSettings.fromMap((map['uiSettings']! as Map).cast<String, dynamic>())).input(),
+      widgetConfigId: map['widgetConfigId'] == null ? null : (map['widgetConfigId']! as String).input(),
     );
   }
 }

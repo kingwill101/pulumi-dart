@@ -36,7 +36,7 @@ class GuardrailTopicPolicyConfigTopicsConfig {
   factory GuardrailTopicPolicyConfigTopicsConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailTopicPolicyConfigTopicsConfig(
       definition: (map['definition'] as String).input(),
-      examples: map['examples'] == null ? null : ((map['examples'] as List).cast<String>()).input(),
+      examples: map['examples'] == null ? null : (((map['examples'] as List).cast<String>()).input()).input(),
       name: (map['name'] as String).input(),
       type: (map['type'] as String).input(),
     );

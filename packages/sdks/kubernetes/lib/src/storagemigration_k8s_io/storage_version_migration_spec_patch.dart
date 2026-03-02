@@ -27,8 +27,8 @@ class StorageVersionMigrationSpecPatch {
 
   factory StorageVersionMigrationSpecPatch.fromMap(Map<String, dynamic> map) {
     return StorageVersionMigrationSpecPatch(
-      continueToken: map['continueToken'] == null ? null : (map['continueToken'] as String).input(),
-      resource: map['resource'] == null ? null : (GroupVersionResourcePatch.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      continueToken: map['continueToken'] == null ? null : (map['continueToken']! as String).input(),
+      resource: map['resource'] == null ? null : (GroupVersionResourcePatch.fromMap((map['resource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

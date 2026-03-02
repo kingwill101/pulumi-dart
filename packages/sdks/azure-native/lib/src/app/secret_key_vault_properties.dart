@@ -26,8 +26,8 @@ class SecretKeyVaultProperties {
 
   factory SecretKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return SecretKeyVaultProperties(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl']! as String).input(),
     );
   }
 }

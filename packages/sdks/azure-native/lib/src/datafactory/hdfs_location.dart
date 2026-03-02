@@ -32,8 +32,8 @@ class HdfsLocation {
 
   factory HdfsLocation.fromMap(Map<String, dynamic> map) {
     return HdfsLocation(
-      fileName: map['fileName'] == null ? null : (map['fileName']).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath']).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']!).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']!).input(),
       type: (map['type'] as String).input(),
     );
   }

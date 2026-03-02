@@ -39,11 +39,11 @@ class GetNodebalancersResult {
 
   factory GetNodebalancersResult.fromMap(Map<String, dynamic> map) {
     return GetNodebalancersResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNodebalancersFilter>(map['filters'], (value) => GetNodebalancersFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNodebalancersFilter>(map['filters']!, (value) => GetNodebalancersFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       nodebalancers: pulumi.Input.decodeList<GetNodebalancersNodebalancer>(map['nodebalancers'], (value) => GetNodebalancersNodebalancer.fromMap((value as Map).cast<String, dynamic>())),
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
     );
   }
 }

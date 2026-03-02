@@ -42,7 +42,7 @@ class TypeArgs {
       apiId: (map['apiId'] as String).input(),
       definition: (map['definition'] as String).input(),
       format: (map['format'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

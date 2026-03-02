@@ -45,7 +45,7 @@ class ApiConfigIamPolicyArgs {
       api: (map['api'] as String).input(),
       apiConfig: (map['apiConfig'] as String).input(),
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

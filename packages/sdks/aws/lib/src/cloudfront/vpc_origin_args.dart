@@ -37,9 +37,9 @@ class VpcOriginArgs {
 
   factory VpcOriginArgs.fromMap(Map<String, dynamic> map) {
     return VpcOriginArgs(
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (VpcOriginTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vpcOriginEndpointConfig: (VpcOriginVpcOriginEndpointConfig.fromMap((map['vpcOriginEndpointConfig'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((VpcOriginTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcOriginEndpointConfig: (VpcOriginVpcOriginEndpointConfig.fromMap((map['vpcOriginEndpointConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

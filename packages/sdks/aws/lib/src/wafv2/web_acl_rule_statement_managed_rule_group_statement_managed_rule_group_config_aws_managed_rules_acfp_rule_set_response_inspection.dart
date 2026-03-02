@@ -39,10 +39,10 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
 
   factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspection.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspection(
-      bodyContains: map['bodyContains'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionBodyContains.fromMap((map['bodyContains'] as Map).cast<String, dynamic>())).input(),
-      header: map['header'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionHeader.fromMap((map['header'] as Map).cast<String, dynamic>())).input(),
-      json: map['json'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionJson.fromMap((map['json'] as Map).cast<String, dynamic>())).input(),
-      statusCode: map['statusCode'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionStatusCode.fromMap((map['statusCode'] as Map).cast<String, dynamic>())).input(),
+      bodyContains: map['bodyContains'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionBodyContains.fromMap((map['bodyContains']! as Map).cast<String, dynamic>())).input()).input(),
+      header: map['header'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionHeader.fromMap((map['header']! as Map).cast<String, dynamic>())).input()).input(),
+      json: map['json'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionJson.fromMap((map['json']! as Map).cast<String, dynamic>())).input()).input(),
+      statusCode: map['statusCode'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetResponseInspectionStatusCode.fromMap((map['statusCode']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

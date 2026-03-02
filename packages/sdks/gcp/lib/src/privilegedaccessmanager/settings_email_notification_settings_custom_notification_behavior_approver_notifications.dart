@@ -21,7 +21,7 @@ class SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotific
 
   factory SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications.fromMap(Map<String, dynamic> map) {
     return SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications(
-      pendingApproval: map['pendingApproval'] == null ? null : (map['pendingApproval'] as String).input(),
+      pendingApproval: map['pendingApproval'] == null ? null : (map['pendingApproval']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class TableMagneticStoreWriteProperties {
 
   factory TableMagneticStoreWriteProperties.fromMap(Map<String, dynamic> map) {
     return TableMagneticStoreWriteProperties(
-      enableMagneticStoreWrites: map['enableMagneticStoreWrites'] == null ? null : (map['enableMagneticStoreWrites'] as bool).input(),
-      magneticStoreRejectedDataLocation: map['magneticStoreRejectedDataLocation'] == null ? null : (TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation.fromMap((map['magneticStoreRejectedDataLocation'] as Map).cast<String, dynamic>())).input(),
+      enableMagneticStoreWrites: map['enableMagneticStoreWrites'] == null ? null : ((map['enableMagneticStoreWrites'] as bool).input()).input(),
+      magneticStoreRejectedDataLocation: map['magneticStoreRejectedDataLocation'] == null ? null : ((TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation.fromMap((map['magneticStoreRejectedDataLocation']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

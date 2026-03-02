@@ -79,14 +79,14 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatch {
 
   factory URLMapPathMatcherRouteRuleMatchRuleHeaderMatch.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherRouteRuleMatchRuleHeaderMatch(
-      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch'] as String).input(),
+      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch']! as String).input(),
       headerName: (map['headerName'] as String).input(),
-      invertMatch: map['invertMatch'] == null ? null : (map['invertMatch'] as bool).input(),
-      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch'] as String).input(),
-      presentMatch: map['presentMatch'] == null ? null : (map['presentMatch'] as bool).input(),
-      rangeMatch: map['rangeMatch'] == null ? null : (URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch.fromMap((map['rangeMatch'] as Map).cast<String, dynamic>())).input(),
-      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch'] as String).input(),
-      suffixMatch: map['suffixMatch'] == null ? null : (map['suffixMatch'] as String).input(),
+      invertMatch: map['invertMatch'] == null ? null : (map['invertMatch']! as bool).input(),
+      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch']! as String).input(),
+      presentMatch: map['presentMatch'] == null ? null : (map['presentMatch']! as bool).input(),
+      rangeMatch: map['rangeMatch'] == null ? null : (URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch.fromMap((map['rangeMatch']! as Map).cast<String, dynamic>())).input(),
+      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch']! as String).input(),
+      suffixMatch: map['suffixMatch'] == null ? null : (map['suffixMatch']! as String).input(),
     );
   }
 }

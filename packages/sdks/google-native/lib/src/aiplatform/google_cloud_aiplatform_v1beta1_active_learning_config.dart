@@ -38,10 +38,10 @@ class GoogleCloudAiplatformV1beta1ActiveLearningConfig {
 
   factory GoogleCloudAiplatformV1beta1ActiveLearningConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ActiveLearningConfig(
-      maxDataItemCount: map['maxDataItemCount'] == null ? null : (map['maxDataItemCount'] as String).input(),
-      maxDataItemPercentage: map['maxDataItemPercentage'] == null ? null : (map['maxDataItemPercentage'] as int).input(),
-      sampleConfig: map['sampleConfig'] == null ? null : (GoogleCloudAiplatformV1beta1SampleConfig.fromMap((map['sampleConfig'] as Map).cast<String, dynamic>())).input(),
-      trainingConfig: map['trainingConfig'] == null ? null : (GoogleCloudAiplatformV1beta1TrainingConfig.fromMap((map['trainingConfig'] as Map).cast<String, dynamic>())).input(),
+      maxDataItemCount: map['maxDataItemCount'] == null ? null : (map['maxDataItemCount']! as String).input(),
+      maxDataItemPercentage: map['maxDataItemPercentage'] == null ? null : (map['maxDataItemPercentage']! as int).input(),
+      sampleConfig: map['sampleConfig'] == null ? null : (GoogleCloudAiplatformV1beta1SampleConfig.fromMap((map['sampleConfig']! as Map).cast<String, dynamic>())).input(),
+      trainingConfig: map['trainingConfig'] == null ? null : (GoogleCloudAiplatformV1beta1TrainingConfig.fromMap((map['trainingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

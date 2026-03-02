@@ -57,13 +57,13 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpec {
 
   factory GoogleCloudAiplatformV1beta1StudySpecParameterSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecParameterSpec(
-      categoricalValueSpec: map['categoricalValueSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpec.fromMap((map['categoricalValueSpec'] as Map).cast<String, dynamic>())).input(),
-      conditionalParameterSpecs: map['conditionalParameterSpecs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec>(map['conditionalParameterSpecs'], (value) => GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      discreteValueSpec: map['discreteValueSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec.fromMap((map['discreteValueSpec'] as Map).cast<String, dynamic>())).input(),
-      doubleValueSpec: map['doubleValueSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec.fromMap((map['doubleValueSpec'] as Map).cast<String, dynamic>())).input(),
-      integerValueSpec: map['integerValueSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec.fromMap((map['integerValueSpec'] as Map).cast<String, dynamic>())).input(),
+      categoricalValueSpec: map['categoricalValueSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecCategoricalValueSpec.fromMap((map['categoricalValueSpec']! as Map).cast<String, dynamic>())).input(),
+      conditionalParameterSpecs: map['conditionalParameterSpecs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec>(map['conditionalParameterSpecs']!, (value) => GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      discreteValueSpec: map['discreteValueSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecDiscreteValueSpec.fromMap((map['discreteValueSpec']! as Map).cast<String, dynamic>())).input(),
+      doubleValueSpec: map['doubleValueSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecDoubleValueSpec.fromMap((map['doubleValueSpec']! as Map).cast<String, dynamic>())).input(),
+      integerValueSpec: map['integerValueSpec'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecIntegerValueSpec.fromMap((map['integerValueSpec']! as Map).cast<String, dynamic>())).input(),
       parameterId: (map['parameterId'] as String).input(),
-      scaleType: map['scaleType'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleType.fromValue(map['scaleType'] as String)).input(),
+      scaleType: map['scaleType'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecScaleType.fromValue(map['scaleType']! as String)).input(),
     );
   }
 }

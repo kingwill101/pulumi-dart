@@ -31,9 +31,9 @@ class InsightFiltersLastObservedAt {
 
   factory InsightFiltersLastObservedAt.fromMap(Map<String, dynamic> map) {
     return InsightFiltersLastObservedAt(
-      dateRange: map['dateRange'] == null ? null : (InsightFiltersLastObservedAtDateRange.fromMap((map['dateRange'] as Map).cast<String, dynamic>())).input(),
-      end: map['end'] == null ? null : (map['end'] as String).input(),
-      start: map['start'] == null ? null : (map['start'] as String).input(),
+      dateRange: map['dateRange'] == null ? null : ((InsightFiltersLastObservedAtDateRange.fromMap((map['dateRange']! as Map).cast<String, dynamic>())).input()).input(),
+      end: map['end'] == null ? null : ((map['end'] as String).input()).input(),
+      start: map['start'] == null ? null : ((map['start'] as String).input()).input(),
     );
   }
 }

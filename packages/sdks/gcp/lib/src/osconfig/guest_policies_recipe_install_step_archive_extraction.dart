@@ -32,7 +32,7 @@ class GuestPoliciesRecipeInstallStepArchiveExtraction {
   factory GuestPoliciesRecipeInstallStepArchiveExtraction.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeInstallStepArchiveExtraction(
       artifactId: (map['artifactId'] as String).input(),
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

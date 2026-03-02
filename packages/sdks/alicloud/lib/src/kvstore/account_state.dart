@@ -68,15 +68,15 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
-      accountPrivilege: map['accountPrivilege'] == null ? null : (map['accountPrivilege'] as String).input(),
-      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword'] as String).input(),
-      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext'] as Map).cast<String, String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
+      accountPrivilege: map['accountPrivilege'] == null ? null : (map['accountPrivilege']! as String).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword']! as String).input(),
+      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext']! as Map).cast<String, String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

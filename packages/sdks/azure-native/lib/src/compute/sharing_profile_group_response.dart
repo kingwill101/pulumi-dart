@@ -26,8 +26,8 @@ class SharingProfileGroupResponse {
 
   factory SharingProfileGroupResponse.fromMap(Map<String, dynamic> map) {
     return SharingProfileGroupResponse(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

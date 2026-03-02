@@ -30,9 +30,9 @@ class RegistryTaskPlatform {
 
   factory RegistryTaskPlatform.fromMap(Map<String, dynamic> map) {
     return RegistryTaskPlatform(
-      architecture: map['architecture'] == null ? null : (map['architecture'] as String).input(),
+      architecture: map['architecture'] == null ? null : (map['architecture']! as String).input(),
       os: (map['os'] as String).input(),
-      variant: map['variant'] == null ? null : (map['variant'] as String).input(),
+      variant: map['variant'] == null ? null : (map['variant']! as String).input(),
     );
   }
 }

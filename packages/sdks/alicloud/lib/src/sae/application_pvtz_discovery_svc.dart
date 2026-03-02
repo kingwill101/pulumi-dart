@@ -36,10 +36,10 @@ class ApplicationPvtzDiscoverySvc {
 
   factory ApplicationPvtzDiscoverySvc.fromMap(Map<String, dynamic> map) {
     return ApplicationPvtzDiscoverySvc(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
-      portProtocols: map['portProtocols'] == null ? null : (pulumi.Input.decodeList<ApplicationPvtzDiscoverySvcPortProtocol>(map['portProtocols'], (value) => ApplicationPvtzDiscoverySvcPortProtocol.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
+      portProtocols: map['portProtocols'] == null ? null : (pulumi.Input.decodeList<ApplicationPvtzDiscoverySvcPortProtocol>(map['portProtocols']!, (value) => ApplicationPvtzDiscoverySvcPortProtocol.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      backupPolicyName: map['backupPolicyName'] == null ? null : (map['backupPolicyName'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      policyRegionId: map['policyRegionId'] == null ? null : (map['policyRegionId'] as String).input(),
-      policyVersion: map['policyVersion'] == null ? null : (map['policyVersion'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      uuidLists: map['uuidLists'] == null ? null : ((map['uuidLists'] as List).cast<String>()).input(),
+      backupPolicyName: map['backupPolicyName'] == null ? null : (map['backupPolicyName']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      policyRegionId: map['policyRegionId'] == null ? null : (map['policyRegionId']! as String).input(),
+      policyVersion: map['policyVersion'] == null ? null : (map['policyVersion']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      uuidLists: map['uuidLists'] == null ? null : ((map['uuidLists']! as List).cast<String>()).input(),
     );
   }
 }

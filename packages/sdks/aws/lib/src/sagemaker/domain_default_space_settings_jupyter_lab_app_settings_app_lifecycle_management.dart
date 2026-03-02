@@ -21,7 +21,7 @@ class DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement {
 
   factory DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement.fromMap(Map<String, dynamic> map) {
     return DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement(
-      idleSettings: map['idleSettings'] == null ? null : (DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings'] as Map).cast<String, dynamic>())).input(),
+      idleSettings: map['idleSettings'] == null ? null : ((DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

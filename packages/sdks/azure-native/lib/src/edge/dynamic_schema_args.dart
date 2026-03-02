@@ -34,7 +34,7 @@ class DynamicSchemaArgs {
 
   factory DynamicSchemaArgs.fromMap(Map<String, dynamic> map) {
     return DynamicSchemaArgs(
-      dynamicSchemaName: map['dynamicSchemaName'] == null ? null : (map['dynamicSchemaName'] as String).input(),
+      dynamicSchemaName: map['dynamicSchemaName'] == null ? null : (map['dynamicSchemaName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       schemaName: (map['schemaName'] as String).input(),
     );

@@ -31,7 +31,7 @@ class AddonsConfigArgs {
 
   factory AddonsConfigArgs.fromMap(Map<String, dynamic> map) {
     return AddonsConfigArgs(
-      addonsConfig: map['addonsConfig'] == null ? null : (AddonsConfigAddonsConfig.fromMap((map['addonsConfig'] as Map).cast<String, dynamic>())).input(),
+      addonsConfig: map['addonsConfig'] == null ? null : (AddonsConfigAddonsConfig.fromMap((map['addonsConfig']! as Map).cast<String, dynamic>())).input(),
       org: (map['org'] as String).input(),
     );
   }

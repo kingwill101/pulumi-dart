@@ -32,9 +32,9 @@ class OracleSourceConfigDatastreamV1alpha1 {
 
   factory OracleSourceConfigDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleSourceConfigDatastreamV1alpha1(
-      allowlist: map['allowlist'] == null ? null : (OracleRdbmsDatastreamV1alpha1.fromMap((map['allowlist'] as Map).cast<String, dynamic>())).input(),
-      dropLargeObjects: map['dropLargeObjects'] == null ? null : ((map['dropLargeObjects'] as Map).cast<String, dynamic>()).input(),
-      rejectlist: map['rejectlist'] == null ? null : (OracleRdbmsDatastreamV1alpha1.fromMap((map['rejectlist'] as Map).cast<String, dynamic>())).input(),
+      allowlist: map['allowlist'] == null ? null : (OracleRdbmsDatastreamV1alpha1.fromMap((map['allowlist']! as Map).cast<String, dynamic>())).input(),
+      dropLargeObjects: map['dropLargeObjects'] == null ? null : ((map['dropLargeObjects']! as Map).cast<String, dynamic>()).input(),
+      rejectlist: map['rejectlist'] == null ? null : (OracleRdbmsDatastreamV1alpha1.fromMap((map['rejectlist']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class DataCollectionRuleResourceIdentity {
   factory DataCollectionRuleResourceIdentity.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleResourceIdentity(
       type: (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
     );
   }
 }

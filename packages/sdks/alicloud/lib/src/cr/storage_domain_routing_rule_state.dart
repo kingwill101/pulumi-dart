@@ -37,10 +37,10 @@ class StorageDomainRoutingRuleState {
 
   factory StorageDomainRoutingRuleState.fromMap(Map<String, dynamic> map) {
     return StorageDomainRoutingRuleState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<StorageDomainRoutingRuleRoute>(map['routes'], (value) => StorageDomainRoutingRuleRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<StorageDomainRoutingRuleRoute>(map['routes']!, (value) => StorageDomainRoutingRuleRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
     );
   }
 }

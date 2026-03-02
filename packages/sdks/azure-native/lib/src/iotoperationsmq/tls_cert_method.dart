@@ -34,9 +34,9 @@ class TlsCertMethod {
 
   factory TlsCertMethod.fromMap(Map<String, dynamic> map) {
     return TlsCertMethod(
-      automatic: map['automatic'] == null ? null : (AutomaticCertMethod.fromMap((map['automatic'] as Map).cast<String, dynamic>())).input(),
-      keyVault: map['keyVault'] == null ? null : (KeyVaultCertificateProperties.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
-      manual: map['manual'] == null ? null : (ManualCertMethod.fromMap((map['manual'] as Map).cast<String, dynamic>())).input(),
+      automatic: map['automatic'] == null ? null : (AutomaticCertMethod.fromMap((map['automatic']! as Map).cast<String, dynamic>())).input(),
+      keyVault: map['keyVault'] == null ? null : (KeyVaultCertificateProperties.fromMap((map['keyVault']! as Map).cast<String, dynamic>())).input(),
+      manual: map['manual'] == null ? null : (ManualCertMethod.fromMap((map['manual']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

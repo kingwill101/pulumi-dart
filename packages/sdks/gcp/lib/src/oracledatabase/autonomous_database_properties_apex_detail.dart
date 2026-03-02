@@ -25,8 +25,8 @@ class AutonomousDatabasePropertiesApexDetail {
 
   factory AutonomousDatabasePropertiesApexDetail.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabasePropertiesApexDetail(
-      apexVersion: map['apexVersion'] == null ? null : (map['apexVersion'] as String).input(),
-      ordsVersion: map['ordsVersion'] == null ? null : (map['ordsVersion'] as String).input(),
+      apexVersion: map['apexVersion'] == null ? null : (map['apexVersion']! as String).input(),
+      ordsVersion: map['ordsVersion'] == null ? null : (map['ordsVersion']! as String).input(),
     );
   }
 }

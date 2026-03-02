@@ -36,7 +36,7 @@ class GetIruleResult {
   factory GetIruleResult.fromMap(Map<String, dynamic> map) {
     return GetIruleResult(
       id: map['id'] as String,
-      irule: map['irule'] == null ? null : map['irule'] as String,
+      irule: map['irule'] == null ? null : map['irule']! as String,
       name: map['name'] as String,
       partition: map['partition'] as String,
     );

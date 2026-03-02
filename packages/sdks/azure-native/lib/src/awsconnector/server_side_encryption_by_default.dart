@@ -26,8 +26,8 @@ class ServerSideEncryptionByDefault {
 
   factory ServerSideEncryptionByDefault.fromMap(Map<String, dynamic> map) {
     return ServerSideEncryptionByDefault(
-      kmsMasterKeyID: map['kmsMasterKeyID'] == null ? null : (map['kmsMasterKeyID'] as String).input(),
-      sseAlgorithm: map['sseAlgorithm'] == null ? null : (map['sseAlgorithm'] as String).input(),
+      kmsMasterKeyID: map['kmsMasterKeyID'] == null ? null : (map['kmsMasterKeyID']! as String).input(),
+      sseAlgorithm: map['sseAlgorithm'] == null ? null : (map['sseAlgorithm']! as String).input(),
     );
   }
 }

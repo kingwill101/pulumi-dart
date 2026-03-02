@@ -43,10 +43,10 @@ class AiFeatureStoreEntityTypeMonitoringConfig {
 
   factory AiFeatureStoreEntityTypeMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeMonitoringConfig(
-      categoricalThresholdConfig: map['categoricalThresholdConfig'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig.fromMap((map['categoricalThresholdConfig'] as Map).cast<String, dynamic>())).input(),
-      importFeaturesAnalysis: map['importFeaturesAnalysis'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis.fromMap((map['importFeaturesAnalysis'] as Map).cast<String, dynamic>())).input(),
-      numericalThresholdConfig: map['numericalThresholdConfig'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig.fromMap((map['numericalThresholdConfig'] as Map).cast<String, dynamic>())).input(),
-      snapshotAnalysis: map['snapshotAnalysis'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis.fromMap((map['snapshotAnalysis'] as Map).cast<String, dynamic>())).input(),
+      categoricalThresholdConfig: map['categoricalThresholdConfig'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig.fromMap((map['categoricalThresholdConfig']! as Map).cast<String, dynamic>())).input(),
+      importFeaturesAnalysis: map['importFeaturesAnalysis'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis.fromMap((map['importFeaturesAnalysis']! as Map).cast<String, dynamic>())).input(),
+      numericalThresholdConfig: map['numericalThresholdConfig'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig.fromMap((map['numericalThresholdConfig']! as Map).cast<String, dynamic>())).input(),
+      snapshotAnalysis: map['snapshotAnalysis'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis.fromMap((map['snapshotAnalysis']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

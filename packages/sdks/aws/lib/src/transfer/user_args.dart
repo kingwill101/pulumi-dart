@@ -71,15 +71,15 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory'] as String).input(),
-      homeDirectoryMappings: map['homeDirectoryMappings'] == null ? null : (pulumi.Input.decodeList<UserHomeDirectoryMapping>(map['homeDirectoryMappings'], (value) => UserHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      homeDirectoryType: map['homeDirectoryType'] == null ? null : (map['homeDirectoryType'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      posixProfile: map['posixProfile'] == null ? null : (UserPosixProfile.fromMap((map['posixProfile'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      homeDirectory: map['homeDirectory'] == null ? null : ((map['homeDirectory'] as String).input()).input(),
+      homeDirectoryMappings: map['homeDirectoryMappings'] == null ? null : ((pulumi.Input.decodeList<UserHomeDirectoryMapping>(map['homeDirectoryMappings']!, (value) => UserHomeDirectoryMapping.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      homeDirectoryType: map['homeDirectoryType'] == null ? null : ((map['homeDirectoryType'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      posixProfile: map['posixProfile'] == null ? null : ((UserPosixProfile.fromMap((map['posixProfile']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       role: (map['role'] as String).input(),
       serverId: (map['serverId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       userName: (map['userName'] as String).input(),
     );
   }

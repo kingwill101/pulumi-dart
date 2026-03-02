@@ -73,10 +73,10 @@ class ReplicaSetResponse {
       healthAlerts: (pulumi.Input.decodeList<HealthAlertResponse>(map['healthAlerts'], (value) => HealthAlertResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       healthLastEvaluated: (map['healthLastEvaluated'] as String).input(),
       healthMonitors: (pulumi.Input.decodeList<HealthMonitorResponse>(map['healthMonitors'], (value) => HealthMonitorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       replicaSetId: (map['replicaSetId'] as String).input(),
       serviceStatus: (map['serviceStatus'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
       vnetSiteId: (map['vnetSiteId'] as String).input(),
     );
   }

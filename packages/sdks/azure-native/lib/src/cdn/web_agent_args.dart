@@ -55,13 +55,13 @@ class WebAgentArgs {
 
   factory WebAgentArgs.fromMap(Map<String, dynamic> map) {
     return WebAgentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<AgentPath>(map['paths'], (value) => AgentPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<AgentPath>(map['paths']!, (value) => AgentPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      systemPrompt: map['systemPrompt'] == null ? null : (map['systemPrompt'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      webAgentName: map['webAgentName'] == null ? null : (map['webAgentName'] as String).input(),
+      systemPrompt: map['systemPrompt'] == null ? null : (map['systemPrompt']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      webAgentName: map['webAgentName'] == null ? null : (map['webAgentName']! as String).input(),
     );
   }
 }

@@ -56,10 +56,10 @@ class ValidateMigrationInputSqlServerSqlDbSyncTaskPropertiesResponse {
 
   factory ValidateMigrationInputSqlServerSqlDbSyncTaskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ValidateMigrationInputSqlServerSqlDbSyncTaskPropertiesResponse(
-      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
+      clientData: map['clientData'] == null ? null : ((map['clientData']! as Map).cast<String, String>()).input(),
       commands: (pulumi.Input.decodeList<MigrateMISyncCompleteCommandPropertiesResponse>(map['commands'], (value) => MigrateMISyncCompleteCommandPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       errors: (pulumi.Input.decodeList<ODataErrorResponse>(map['errors'], (value) => ODataErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      input: map['input'] == null ? null : (ValidateSyncMigrationInputSqlServerTaskInputResponse.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      input: map['input'] == null ? null : (ValidateSyncMigrationInputSqlServerTaskInputResponse.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
       output: (pulumi.Input.decodeList<ValidateSyncMigrationInputSqlServerTaskOutputResponse>(map['output'], (value) => ValidateSyncMigrationInputSqlServerTaskOutputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       state: (map['state'] as String).input(),
       taskType: (map['taskType'] as String).input(),

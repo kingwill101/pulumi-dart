@@ -54,10 +54,10 @@ class AppVersionSnapshotAppAudioProcessingConfig {
 
   factory AppVersionSnapshotAppAudioProcessingConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppAudioProcessingConfig(
-      ambientSoundConfigs: map['ambientSoundConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig>(map['ambientSoundConfigs'], (value) => AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bargeInConfigs: map['bargeInConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppAudioProcessingConfigBargeInConfig>(map['bargeInConfigs'], (value) => AppVersionSnapshotAppAudioProcessingConfigBargeInConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inactivityTimeout: map['inactivityTimeout'] == null ? null : (map['inactivityTimeout'] as String).input(),
-      synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfig>(map['synthesizeSpeechConfigs'], (value) => AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ambientSoundConfigs: map['ambientSoundConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig>(map['ambientSoundConfigs']!, (value) => AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bargeInConfigs: map['bargeInConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppAudioProcessingConfigBargeInConfig>(map['bargeInConfigs']!, (value) => AppVersionSnapshotAppAudioProcessingConfigBargeInConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inactivityTimeout: map['inactivityTimeout'] == null ? null : (map['inactivityTimeout']! as String).input(),
+      synthesizeSpeechConfigs: map['synthesizeSpeechConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfig>(map['synthesizeSpeechConfigs']!, (value) => AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

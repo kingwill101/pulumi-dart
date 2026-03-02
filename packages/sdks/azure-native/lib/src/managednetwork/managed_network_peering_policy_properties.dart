@@ -37,9 +37,9 @@ class ManagedNetworkPeeringPolicyProperties {
 
   factory ManagedNetworkPeeringPolicyProperties.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkPeeringPolicyProperties(
-      hub: map['hub'] == null ? null : (ResourceId.fromMap((map['hub'] as Map).cast<String, dynamic>())).input(),
-      mesh: map['mesh'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['mesh'], (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      spokes: map['spokes'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['spokes'], (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hub: map['hub'] == null ? null : (ResourceId.fromMap((map['hub']! as Map).cast<String, dynamic>())).input(),
+      mesh: map['mesh'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['mesh']!, (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spokes: map['spokes'] == null ? null : (pulumi.Input.decodeList<ResourceId>(map['spokes']!, (value) => ResourceId.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

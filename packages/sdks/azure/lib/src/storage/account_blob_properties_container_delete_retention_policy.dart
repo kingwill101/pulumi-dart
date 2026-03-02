@@ -20,7 +20,7 @@ class AccountBlobPropertiesContainerDeleteRetentionPolicy {
 
   factory AccountBlobPropertiesContainerDeleteRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return AccountBlobPropertiesContainerDeleteRetentionPolicy(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
     );
   }
 }

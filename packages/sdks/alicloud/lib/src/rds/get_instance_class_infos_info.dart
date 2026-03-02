@@ -60,15 +60,15 @@ class GetInstanceClassInfosInfo {
 
   factory GetInstanceClassInfosInfo.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassInfosInfo(
-      classCode: map['classCode'] == null ? null : (map['classCode'] as String).input(),
-      classGroup: map['classGroup'] == null ? null : (map['classGroup'] as String).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
-      instructionSetArch: map['instructionSetArch'] == null ? null : (map['instructionSetArch'] as String).input(),
-      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections'] as String).input(),
-      maxIombps: map['maxIombps'] == null ? null : (map['maxIombps'] as String).input(),
-      maxIops: map['maxIops'] == null ? null : (map['maxIops'] as String).input(),
-      memoryClass: map['memoryClass'] == null ? null : (map['memoryClass'] as String).input(),
-      referencePrice: map['referencePrice'] == null ? null : (map['referencePrice'] as String).input(),
+      classCode: map['classCode'] == null ? null : (map['classCode']! as String).input(),
+      classGroup: map['classGroup'] == null ? null : (map['classGroup']! as String).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as String).input(),
+      instructionSetArch: map['instructionSetArch'] == null ? null : (map['instructionSetArch']! as String).input(),
+      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections']! as String).input(),
+      maxIombps: map['maxIombps'] == null ? null : (map['maxIombps']! as String).input(),
+      maxIops: map['maxIops'] == null ? null : (map['maxIops']! as String).input(),
+      memoryClass: map['memoryClass'] == null ? null : (map['memoryClass']! as String).input(),
+      referencePrice: map['referencePrice'] == null ? null : (map['referencePrice']! as String).input(),
     );
   }
 }

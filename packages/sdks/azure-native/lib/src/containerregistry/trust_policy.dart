@@ -26,8 +26,8 @@ class TrustPolicy {
 
   factory TrustPolicy.fromMap(Map<String, dynamic> map) {
     return TrustPolicy(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

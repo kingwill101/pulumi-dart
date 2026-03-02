@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1TrainingConfig {
 
   factory GoogleCloudAiplatformV1TrainingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1TrainingConfig(
-      timeoutTrainingMilliHours: map['timeoutTrainingMilliHours'] == null ? null : (map['timeoutTrainingMilliHours'] as String).input(),
+      timeoutTrainingMilliHours: map['timeoutTrainingMilliHours'] == null ? null : (map['timeoutTrainingMilliHours']! as String).input(),
     );
   }
 }

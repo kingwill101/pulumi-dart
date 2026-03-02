@@ -62,15 +62,15 @@ class StorageBoxSubaccountState {
 
   factory StorageBoxSubaccountState.fromMap(Map<String, dynamic> map) {
     return StorageBoxSubaccountState(
-      accessSettings: map['accessSettings'] == null ? null : (StorageBoxSubaccountAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
-      storageBoxId: map['storageBoxId'] == null ? null : (map['storageBoxId'] as int).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      accessSettings: map['accessSettings'] == null ? null : (StorageBoxSubaccountAccessSettings.fromMap((map['accessSettings']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
+      storageBoxId: map['storageBoxId'] == null ? null : (map['storageBoxId']! as int).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

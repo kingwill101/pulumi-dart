@@ -84,19 +84,19 @@ class ResourceGroupArgs {
 
   factory ResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGroupArgs(
-      clusterMode: map['clusterMode'] == null ? null : (map['clusterMode'] as String).input(),
-      clusterSizeResource: map['clusterSizeResource'] == null ? null : (map['clusterSizeResource'] as String).input(),
+      clusterMode: map['clusterMode'] == null ? null : (map['clusterMode']! as String).input(),
+      clusterSizeResource: map['clusterSizeResource'] == null ? null : (map['clusterSizeResource']! as String).input(),
       dbClusterId: (map['dbClusterId'] as String).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      engineParams: map['engineParams'] == null ? null : ((map['engineParams'] as Map).cast<String, String>()).input(),
+      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
+      engineParams: map['engineParams'] == null ? null : ((map['engineParams']! as Map).cast<String, String>()).input(),
       groupName: (map['groupName'] as String).input(),
-      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
-      maxClusterCount: map['maxClusterCount'] == null ? null : (map['maxClusterCount'] as int).input(),
-      maxComputeResource: map['maxComputeResource'] == null ? null : (map['maxComputeResource'] as String).input(),
-      minClusterCount: map['minClusterCount'] == null ? null : (map['minClusterCount'] as int).input(),
-      minComputeResource: map['minComputeResource'] == null ? null : (map['minComputeResource'] as String).input(),
-      nodeNum: map['nodeNum'] == null ? null : (map['nodeNum'] as int).input(),
-      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType']! as String).input(),
+      maxClusterCount: map['maxClusterCount'] == null ? null : (map['maxClusterCount']! as int).input(),
+      maxComputeResource: map['maxComputeResource'] == null ? null : (map['maxComputeResource']! as String).input(),
+      minClusterCount: map['minClusterCount'] == null ? null : (map['minClusterCount']! as int).input(),
+      minComputeResource: map['minComputeResource'] == null ? null : (map['minComputeResource']! as String).input(),
+      nodeNum: map['nodeNum'] == null ? null : (map['nodeNum']! as int).input(),
+      users: map['users'] == null ? null : ((map['users']! as List).cast<String>()).input(),
     );
   }
 }

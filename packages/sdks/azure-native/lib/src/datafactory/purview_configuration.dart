@@ -21,7 +21,7 @@ class PurviewConfiguration {
 
   factory PurviewConfiguration.fromMap(Map<String, dynamic> map) {
     return PurviewConfiguration(
-      purviewResourceId: map['purviewResourceId'] == null ? null : (map['purviewResourceId'] as String).input(),
+      purviewResourceId: map['purviewResourceId'] == null ? null : (map['purviewResourceId']! as String).input(),
     );
   }
 }

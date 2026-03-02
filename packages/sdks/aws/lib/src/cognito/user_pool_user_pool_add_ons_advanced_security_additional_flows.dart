@@ -20,7 +20,7 @@ class UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows {
 
   factory UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows.fromMap(Map<String, dynamic> map) {
     return UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows(
-      customAuthMode: map['customAuthMode'] == null ? null : (map['customAuthMode'] as String).input(),
+      customAuthMode: map['customAuthMode'] == null ? null : ((map['customAuthMode'] as String).input()).input(),
     );
   }
 }

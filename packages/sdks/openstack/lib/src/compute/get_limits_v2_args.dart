@@ -31,7 +31,7 @@ class GetLimitsV2Args {
   factory GetLimitsV2Args.fromMap(Map<String, dynamic> map) {
     return GetLimitsV2Args(
       projectId: (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

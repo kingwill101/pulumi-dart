@@ -44,11 +44,11 @@ class ConfigManagementMembershipSpec {
 
   factory ConfigManagementMembershipSpec.fromMap(Map<String, dynamic> map) {
     return ConfigManagementMembershipSpec(
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      configSync: map['configSync'] == null ? null : (ConfigManagementConfigSync.fromMap((map['configSync'] as Map).cast<String, dynamic>())).input(),
-      hierarchyController: map['hierarchyController'] == null ? null : (ConfigManagementHierarchyControllerConfig.fromMap((map['hierarchyController'] as Map).cast<String, dynamic>())).input(),
-      policyController: map['policyController'] == null ? null : (ConfigManagementPolicyController.fromMap((map['policyController'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      configSync: map['configSync'] == null ? null : (ConfigManagementConfigSync.fromMap((map['configSync']! as Map).cast<String, dynamic>())).input(),
+      hierarchyController: map['hierarchyController'] == null ? null : (ConfigManagementHierarchyControllerConfig.fromMap((map['hierarchyController']! as Map).cast<String, dynamic>())).input(),
+      policyController: map['policyController'] == null ? null : (ConfigManagementPolicyController.fromMap((map['policyController']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

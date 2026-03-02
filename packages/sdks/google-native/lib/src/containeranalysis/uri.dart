@@ -26,8 +26,8 @@ class URI {
 
   factory URI.fromMap(Map<String, dynamic> map) {
     return URI(
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

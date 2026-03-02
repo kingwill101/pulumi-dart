@@ -21,7 +21,7 @@ class CertificateTypeEnumValue {
 
   factory CertificateTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return CertificateTypeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

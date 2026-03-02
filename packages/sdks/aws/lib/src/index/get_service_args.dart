@@ -48,12 +48,12 @@ class GetServiceArgs {
 
   factory GetServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceArgs(
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reverseDnsName: map['reverseDnsName'] == null ? null : (map['reverseDnsName'] as String).input(),
-      reverseDnsPrefix: map['reverseDnsPrefix'] == null ? null : (map['reverseDnsPrefix'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : ((map['dnsName'] as String).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      reverseDnsName: map['reverseDnsName'] == null ? null : ((map['reverseDnsName'] as String).input()).input(),
+      reverseDnsPrefix: map['reverseDnsPrefix'] == null ? null : ((map['reverseDnsPrefix'] as String).input()).input(),
+      serviceId: map['serviceId'] == null ? null : ((map['serviceId'] as String).input()).input(),
     );
   }
 }

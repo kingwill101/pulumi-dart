@@ -56,13 +56,13 @@ class CapacityDetailsArgs {
 
   factory CapacityDetailsArgs.fromMap(Map<String, dynamic> map) {
     return CapacityDetailsArgs(
-      administration: map['administration'] == null ? null : (DedicatedCapacityAdministrators.fromMap((map['administration'] as Map).cast<String, dynamic>())).input(),
-      dedicatedCapacityName: map['dedicatedCapacityName'] == null ? null : (map['dedicatedCapacityName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      administration: map['administration'] == null ? null : (DedicatedCapacityAdministrators.fromMap((map['administration']! as Map).cast<String, dynamic>())).input(),
+      dedicatedCapacityName: map['dedicatedCapacityName'] == null ? null : (map['dedicatedCapacityName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (CapacitySku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

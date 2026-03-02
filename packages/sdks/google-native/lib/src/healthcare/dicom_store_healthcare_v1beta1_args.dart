@@ -59,13 +59,13 @@ class DicomStoreHealthcareV1beta1Args {
   factory DicomStoreHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return DicomStoreHealthcareV1beta1Args(
       datasetId: (map['datasetId'] as String).input(),
-      dicomStoreId: map['dicomStoreId'] == null ? null : (map['dicomStoreId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (NotificationConfigHealthcareV1beta1.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      streamConfigs: map['streamConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1DicomStreamConfig>(map['streamConfigs'], (value) => GoogleCloudHealthcareV1beta1DicomStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dicomStoreId: map['dicomStoreId'] == null ? null : (map['dicomStoreId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (NotificationConfigHealthcareV1beta1.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      streamConfigs: map['streamConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudHealthcareV1beta1DicomStreamConfig>(map['streamConfigs']!, (value) => GoogleCloudHealthcareV1beta1DicomStreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

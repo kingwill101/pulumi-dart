@@ -54,12 +54,12 @@ class PreventionInspectTemplateState {
 
   factory PreventionInspectTemplateState.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      inspectConfig: map['inspectConfig'] == null ? null : (PreventionInspectTemplateInspectConfig.fromMap((map['inspectConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      inspectConfig: map['inspectConfig'] == null ? null : (PreventionInspectTemplateInspectConfig.fromMap((map['inspectConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
     );
   }
 }

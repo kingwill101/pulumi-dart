@@ -32,7 +32,7 @@ class GetSpokeNetworkconnectivityV1alpha1Args {
   factory GetSpokeNetworkconnectivityV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetSpokeNetworkconnectivityV1alpha1Args(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       spokeId: (map['spokeId'] as String).input(),
     );
   }

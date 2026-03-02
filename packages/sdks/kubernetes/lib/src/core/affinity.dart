@@ -34,9 +34,9 @@ class Affinity {
 
   factory Affinity.fromMap(Map<String, dynamic> map) {
     return Affinity(
-      nodeAffinity: map['nodeAffinity'] == null ? null : (NodeAffinity.fromMap((map['nodeAffinity'] as Map).cast<String, dynamic>())).input(),
-      podAffinity: map['podAffinity'] == null ? null : (PodAffinity.fromMap((map['podAffinity'] as Map).cast<String, dynamic>())).input(),
-      podAntiAffinity: map['podAntiAffinity'] == null ? null : (PodAntiAffinity.fromMap((map['podAntiAffinity'] as Map).cast<String, dynamic>())).input(),
+      nodeAffinity: map['nodeAffinity'] == null ? null : (NodeAffinity.fromMap((map['nodeAffinity']! as Map).cast<String, dynamic>())).input(),
+      podAffinity: map['podAffinity'] == null ? null : (PodAffinity.fromMap((map['podAffinity']! as Map).cast<String, dynamic>())).input(),
+      podAntiAffinity: map['podAntiAffinity'] == null ? null : (PodAntiAffinity.fromMap((map['podAntiAffinity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

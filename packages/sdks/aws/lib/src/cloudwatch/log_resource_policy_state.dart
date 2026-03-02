@@ -31,9 +31,9 @@ class LogResourcePolicyState {
 
   factory LogResourcePolicyState.fromMap(Map<String, dynamic> map) {
     return LogResourcePolicyState(
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : ((map['policyDocument'] as String).input()).input(),
+      policyName: map['policyName'] == null ? null : ((map['policyName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class ClusterBrokerNodeGroupInfo {
 
   factory ClusterBrokerNodeGroupInfo.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfo(
-      azDistribution: map['azDistribution'] == null ? null : (map['azDistribution'] as String).input(),
+      azDistribution: map['azDistribution'] == null ? null : ((map['azDistribution'] as String).input()).input(),
       clientSubnets: ((map['clientSubnets'] as List).cast<String>()).input(),
-      connectivityInfo: map['connectivityInfo'] == null ? null : (ClusterBrokerNodeGroupInfoConnectivityInfo.fromMap((map['connectivityInfo'] as Map).cast<String, dynamic>())).input(),
+      connectivityInfo: map['connectivityInfo'] == null ? null : ((ClusterBrokerNodeGroupInfoConnectivityInfo.fromMap((map['connectivityInfo']! as Map).cast<String, dynamic>())).input()).input(),
       instanceType: (map['instanceType'] as String).input(),
       securityGroups: ((map['securityGroups'] as List).cast<String>()).input(),
-      storageInfo: map['storageInfo'] == null ? null : (ClusterBrokerNodeGroupInfoStorageInfo.fromMap((map['storageInfo'] as Map).cast<String, dynamic>())).input(),
+      storageInfo: map['storageInfo'] == null ? null : ((ClusterBrokerNodeGroupInfoStorageInfo.fromMap((map['storageInfo']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

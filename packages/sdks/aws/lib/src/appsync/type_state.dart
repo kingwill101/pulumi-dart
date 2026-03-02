@@ -51,13 +51,13 @@ class TypeState {
 
   factory TypeState.fromMap(Map<String, dynamic> map) {
     return TypeState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      definition: map['definition'] == null ? null : (map['definition'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      apiId: map['apiId'] == null ? null : ((map['apiId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      definition: map['definition'] == null ? null : ((map['definition'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      format: map['format'] == null ? null : ((map['format'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite {
 
   factory RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite(
-      hostRewrite: map['hostRewrite'] == null ? null : (map['hostRewrite'] as String).input(),
-      pathPrefixRewrite: map['pathPrefixRewrite'] == null ? null : (map['pathPrefixRewrite'] as String).input(),
+      hostRewrite: map['hostRewrite'] == null ? null : (map['hostRewrite']! as String).input(),
+      pathPrefixRewrite: map['pathPrefixRewrite'] == null ? null : (map['pathPrefixRewrite']! as String).input(),
     );
   }
 }

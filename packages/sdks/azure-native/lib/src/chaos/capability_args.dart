@@ -49,7 +49,7 @@ class CapabilityArgs {
 
   factory CapabilityArgs.fromMap(Map<String, dynamic> map) {
     return CapabilityArgs(
-      capabilityName: map['capabilityName'] == null ? null : (map['capabilityName'] as String).input(),
+      capabilityName: map['capabilityName'] == null ? null : (map['capabilityName']! as String).input(),
       parentProviderNamespace: (map['parentProviderNamespace'] as String).input(),
       parentResourceName: (map['parentResourceName'] as String).input(),
       parentResourceType: (map['parentResourceType'] as String).input(),

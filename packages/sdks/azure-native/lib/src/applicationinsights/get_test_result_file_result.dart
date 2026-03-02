@@ -25,8 +25,8 @@ class GetTestResultFileResult {
 
   factory GetTestResultFileResult.fromMap(Map<String, dynamic> map) {
     return GetTestResultFileResult(
-      data: map['data'] == null ? null : map['data'] as String,
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      data: map['data'] == null ? null : map['data']! as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
     );
   }
 }

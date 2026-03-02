@@ -26,7 +26,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration 
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration(
-      redshiftConfiguration: map['redshiftConfiguration'] == null ? null : (AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration.fromMap((map['redshiftConfiguration'] as Map).cast<String, dynamic>())).input(),
+      redshiftConfiguration: map['redshiftConfiguration'] == null ? null : ((AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration.fromMap((map['redshiftConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

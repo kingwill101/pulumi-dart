@@ -75,7 +75,7 @@ class GetSlotTypeResult {
       checksum: map['checksum'] as String,
       createdDate: map['createdDate'] as String,
       description: map['description'] as String,
-      enumerationValues: pulumi.Input.decodeList<GetSlotTypeEnumerationValue>(map['enumerationValues'], (value) => GetSlotTypeEnumerationValue.fromMap((value as Map).cast<String, dynamic>())),
+      enumerationValues: pulumi.Input.decodeList<GetSlotTypeEnumerationValue>(map['enumerationValues']!, (value) => GetSlotTypeEnumerationValue.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       lastUpdatedDate: map['lastUpdatedDate'] as String,
       name: map['name'] as String,

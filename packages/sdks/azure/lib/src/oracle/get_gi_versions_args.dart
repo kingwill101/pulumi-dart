@@ -35,8 +35,8 @@ class GetGiVersionsArgs {
   factory GetGiVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetGiVersionsArgs(
       location: (map['location'] as String).input(),
-      shape: map['shape'] == null ? null : (map['shape'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      shape: map['shape'] == null ? null : (map['shape']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

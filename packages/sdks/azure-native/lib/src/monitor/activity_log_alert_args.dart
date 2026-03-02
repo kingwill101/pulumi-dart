@@ -67,14 +67,14 @@ class ActivityLogAlertArgs {
   factory ActivityLogAlertArgs.fromMap(Map<String, dynamic> map) {
     return ActivityLogAlertArgs(
       actions: (ActionList.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
-      activityLogAlertName: map['activityLogAlertName'] == null ? null : (map['activityLogAlertName'] as String).input(),
+      activityLogAlertName: map['activityLogAlertName'] == null ? null : (map['activityLogAlertName']! as String).input(),
       condition: (AlertRuleAllOfCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scopes: ((map['scopes'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -42,8 +42,8 @@ class ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration 
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration(
-      databaseType: map['databaseType'] == null ? null : (map['databaseType'] as String).input(),
-      diskVolumeConfigurations: map['diskVolumeConfigurations'] == null ? null : (pulumi.Input.decodeList<ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration>(map['diskVolumeConfigurations'], (value) => ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databaseType: map['databaseType'] == null ? null : (map['databaseType']! as String).input(),
+      diskVolumeConfigurations: map['diskVolumeConfigurations'] == null ? null : (pulumi.Input.decodeList<ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration>(map['diskVolumeConfigurations']!, (value) => ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       instanceCount: (map['instanceCount'] as int).input(),
       subnetId: (map['subnetId'] as String).input(),
       virtualMachineConfiguration: (ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfiguration.fromMap((map['virtualMachineConfiguration'] as Map).cast<String, dynamic>())).input(),

@@ -27,8 +27,8 @@ class CronJobStatusBatchV2alpha1 {
 
   factory CronJobStatusBatchV2alpha1.fromMap(Map<String, dynamic> map) {
     return CronJobStatusBatchV2alpha1(
-      active: map['active'] == null ? null : (pulumi.Input.decodeList<ObjectReference>(map['active'], (value) => ObjectReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastScheduleTime: map['lastScheduleTime'] == null ? null : (map['lastScheduleTime'] as String).input(),
+      active: map['active'] == null ? null : (pulumi.Input.decodeList<ObjectReference>(map['active']!, (value) => ObjectReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastScheduleTime: map['lastScheduleTime'] == null ? null : (map['lastScheduleTime']! as String).input(),
     );
   }
 }

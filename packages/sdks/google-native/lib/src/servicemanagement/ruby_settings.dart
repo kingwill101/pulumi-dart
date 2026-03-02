@@ -22,7 +22,7 @@ class RubySettings {
 
   factory RubySettings.fromMap(Map<String, dynamic> map) {
     return RubySettings(
-      common: map['common'] == null ? null : (CommonLanguageSettings.fromMap((map['common'] as Map).cast<String, dynamic>())).input(),
+      common: map['common'] == null ? null : (CommonLanguageSettings.fromMap((map['common']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

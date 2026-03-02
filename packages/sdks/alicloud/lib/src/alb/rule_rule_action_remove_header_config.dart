@@ -19,7 +19,7 @@ class RuleRuleActionRemoveHeaderConfig {
 
   factory RuleRuleActionRemoveHeaderConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionRemoveHeaderConfig(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

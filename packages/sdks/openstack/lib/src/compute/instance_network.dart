@@ -53,13 +53,13 @@ class InstanceNetwork {
 
   factory InstanceNetwork.fromMap(Map<String, dynamic> map) {
     return InstanceNetwork(
-      accessNetwork: map['accessNetwork'] == null ? null : (map['accessNetwork'] as bool).input(),
-      fixedIpV4: map['fixedIpV4'] == null ? null : (map['fixedIpV4'] as String).input(),
-      fixedIpV6: map['fixedIpV6'] == null ? null : (map['fixedIpV6'] as String).input(),
-      mac: map['mac'] == null ? null : (map['mac'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      accessNetwork: map['accessNetwork'] == null ? null : (map['accessNetwork']! as bool).input(),
+      fixedIpV4: map['fixedIpV4'] == null ? null : (map['fixedIpV4']! as String).input(),
+      fixedIpV6: map['fixedIpV6'] == null ? null : (map['fixedIpV6']! as String).input(),
+      mac: map['mac'] == null ? null : (map['mac']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

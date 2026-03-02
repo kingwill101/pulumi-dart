@@ -21,7 +21,7 @@ class ProjectCatalogSettings {
 
   factory ProjectCatalogSettings.fromMap(Map<String, dynamic> map) {
     return ProjectCatalogSettings(
-      catalogItemSyncTypes: map['catalogItemSyncTypes'] == null ? null : ((map['catalogItemSyncTypes'] as List).cast<String>()).input(),
+      catalogItemSyncTypes: map['catalogItemSyncTypes'] == null ? null : ((map['catalogItemSyncTypes']! as List).cast<String>()).input(),
     );
   }
 }

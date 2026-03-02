@@ -20,7 +20,7 @@ class RestApiPutTimeouts {
 
   factory RestApiPutTimeouts.fromMap(Map<String, dynamic> map) {
     return RestApiPutTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

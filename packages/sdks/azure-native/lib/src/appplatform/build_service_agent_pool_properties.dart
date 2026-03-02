@@ -22,7 +22,7 @@ class BuildServiceAgentPoolProperties {
 
   factory BuildServiceAgentPoolProperties.fromMap(Map<String, dynamic> map) {
     return BuildServiceAgentPoolProperties(
-      poolSize: map['poolSize'] == null ? null : (BuildServiceAgentPoolSizeProperties.fromMap((map['poolSize'] as Map).cast<String, dynamic>())).input(),
+      poolSize: map['poolSize'] == null ? null : (BuildServiceAgentPoolSizeProperties.fromMap((map['poolSize']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

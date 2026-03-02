@@ -59,14 +59,14 @@ class SsisProjectResponse {
 
   factory SsisProjectResponse.fromMap(Map<String, dynamic> map) {
     return SsisProjectResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environmentRefs: map['environmentRefs'] == null ? null : (pulumi.Input.decodeList<SsisEnvironmentReferenceResponse>(map['environmentRefs'], (value) => SsisEnvironmentReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      folderId: map['folderId'] == null ? null : (map['folderId'] as double).input(),
-      id: map['id'] == null ? null : (map['id'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<SsisParameterResponse>(map['parameters'], (value) => SsisParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environmentRefs: map['environmentRefs'] == null ? null : (pulumi.Input.decodeList<SsisEnvironmentReferenceResponse>(map['environmentRefs']!, (value) => SsisEnvironmentReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId']! as double).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<SsisParameterResponse>(map['parameters']!, (value) => SsisParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as double).input(),
+      version: map['version'] == null ? null : (map['version']! as double).input(),
     );
   }
 }

@@ -97,20 +97,20 @@ class AIServicesArgs {
 
   factory AIServicesArgs.fromMap(Map<String, dynamic> map) {
     return AIServicesArgs(
-      customSubdomainName: map['customSubdomainName'] == null ? null : (map['customSubdomainName'] as String).input(),
-      customerManagedKey: map['customerManagedKey'] == null ? null : (AIServicesCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
-      identity: map['identity'] == null ? null : (AIServicesIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : (map['localAuthenticationEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkAcls: map['networkAcls'] == null ? null : (AIServicesNetworkAcls.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())).input(),
-      outboundNetworkAccessRestricted: map['outboundNetworkAccessRestricted'] == null ? null : (map['outboundNetworkAccessRestricted'] as bool).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      customSubdomainName: map['customSubdomainName'] == null ? null : (map['customSubdomainName']! as String).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (AIServicesCustomerManagedKey.fromMap((map['customerManagedKey']! as Map).cast<String, dynamic>())).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
+      identity: map['identity'] == null ? null : (AIServicesIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : (map['localAuthenticationEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkAcls: map['networkAcls'] == null ? null : (AIServicesNetworkAcls.fromMap((map['networkAcls']! as Map).cast<String, dynamic>())).input(),
+      outboundNetworkAccessRestricted: map['outboundNetworkAccessRestricted'] == null ? null : (map['outboundNetworkAccessRestricted']! as bool).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       skuName: (map['skuName'] as String).input(),
-      storages: map['storages'] == null ? null : (pulumi.Input.decodeList<AIServicesStorage>(map['storages'], (value) => AIServicesStorage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storages: map['storages'] == null ? null : (pulumi.Input.decodeList<AIServicesStorage>(map['storages']!, (value) => AIServicesStorage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

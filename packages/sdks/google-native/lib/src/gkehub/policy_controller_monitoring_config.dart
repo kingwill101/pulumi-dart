@@ -22,7 +22,7 @@ class PolicyControllerMonitoringConfig {
 
   factory PolicyControllerMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return PolicyControllerMonitoringConfig(
-      backends: map['backends'] == null ? null : (pulumi.Input.decodeList<PolicyControllerMonitoringConfigBackendsItem>(map['backends'], (value) => PolicyControllerMonitoringConfigBackendsItem.fromValue(value as String))).input(),
+      backends: map['backends'] == null ? null : (pulumi.Input.decodeList<PolicyControllerMonitoringConfigBackendsItem>(map['backends']!, (value) => PolicyControllerMonitoringConfigBackendsItem.fromValue(value as String))).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class SqlRoleAssignmentState {
 
   factory SqlRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return SqlRoleAssignmentState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

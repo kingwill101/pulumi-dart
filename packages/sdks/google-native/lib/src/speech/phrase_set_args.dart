@@ -48,12 +48,12 @@ class PhraseSetArgs {
 
   factory PhraseSetArgs.fromMap(Map<String, dynamic> map) {
     return PhraseSetArgs(
-      boost: map['boost'] == null ? null : (map['boost'] as double).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      boost: map['boost'] == null ? null : (map['boost']! as double).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       phraseSetId: (map['phraseSetId'] as String).input(),
-      phrases: map['phrases'] == null ? null : (pulumi.Input.decodeList<Phrase>(map['phrases'], (value) => Phrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      phrases: map['phrases'] == null ? null : (pulumi.Input.decodeList<Phrase>(map['phrases']!, (value) => Phrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

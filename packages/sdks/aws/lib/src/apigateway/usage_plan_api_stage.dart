@@ -33,7 +33,7 @@ class UsagePlanApiStage {
     return UsagePlanApiStage(
       apiId: (map['apiId'] as String).input(),
       stage: (map['stage'] as String).input(),
-      throttles: map['throttles'] == null ? null : (pulumi.Input.decodeList<UsagePlanApiStageThrottle>(map['throttles'], (value) => UsagePlanApiStageThrottle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      throttles: map['throttles'] == null ? null : ((pulumi.Input.decodeList<UsagePlanApiStageThrottle>(map['throttles']!, (value) => UsagePlanApiStageThrottle.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

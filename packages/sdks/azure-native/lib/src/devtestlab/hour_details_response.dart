@@ -21,7 +21,7 @@ class HourDetailsResponse {
 
   factory HourDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HourDetailsResponse(
-      minute: map['minute'] == null ? null : (map['minute'] as int).input(),
+      minute: map['minute'] == null ? null : (map['minute']! as int).input(),
     );
   }
 }

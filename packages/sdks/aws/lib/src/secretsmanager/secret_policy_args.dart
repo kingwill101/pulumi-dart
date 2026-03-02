@@ -41,9 +41,9 @@ class SecretPolicyArgs {
 
   factory SecretPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SecretPolicyArgs(
-      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : (map['blockPublicPolicy'] as bool).input(),
+      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : ((map['blockPublicPolicy'] as bool).input()).input(),
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       secretArn: (map['secretArn'] as String).input(),
     );
   }

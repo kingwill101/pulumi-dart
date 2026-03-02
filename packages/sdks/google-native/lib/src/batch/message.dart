@@ -34,9 +34,9 @@ class Message {
 
   factory Message.fromMap(Map<String, dynamic> map) {
     return Message(
-      newJobState: map['newJobState'] == null ? null : (MessageNewJobState.fromValue(map['newJobState'] as String)).input(),
-      newTaskState: map['newTaskState'] == null ? null : (MessageNewTaskState.fromValue(map['newTaskState'] as String)).input(),
-      type: map['type'] == null ? null : (MessageType.fromValue(map['type'] as String)).input(),
+      newJobState: map['newJobState'] == null ? null : (MessageNewJobState.fromValue(map['newJobState']! as String)).input(),
+      newTaskState: map['newTaskState'] == null ? null : (MessageNewTaskState.fromValue(map['newTaskState']! as String)).input(),
+      type: map['type'] == null ? null : (MessageType.fromValue(map['type']! as String)).input(),
     );
   }
 }

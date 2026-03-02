@@ -40,11 +40,11 @@ class LinkedAccessCheckResponse {
 
   factory LinkedAccessCheckResponse.fromMap(Map<String, dynamic> map) {
     return LinkedAccessCheckResponse(
-      actionName: map['actionName'] == null ? null : (map['actionName'] as String).input(),
-      linkedAction: map['linkedAction'] == null ? null : (map['linkedAction'] as String).input(),
-      linkedActionVerb: map['linkedActionVerb'] == null ? null : (map['linkedActionVerb'] as String).input(),
-      linkedProperty: map['linkedProperty'] == null ? null : (map['linkedProperty'] as String).input(),
-      linkedType: map['linkedType'] == null ? null : (map['linkedType'] as String).input(),
+      actionName: map['actionName'] == null ? null : (map['actionName']! as String).input(),
+      linkedAction: map['linkedAction'] == null ? null : (map['linkedAction']! as String).input(),
+      linkedActionVerb: map['linkedActionVerb'] == null ? null : (map['linkedActionVerb']! as String).input(),
+      linkedProperty: map['linkedProperty'] == null ? null : (map['linkedProperty']! as String).input(),
+      linkedType: map['linkedType'] == null ? null : (map['linkedType']! as String).input(),
     );
   }
 }

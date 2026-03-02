@@ -59,13 +59,13 @@ class LocationFsxWindowsArgs {
 
   factory LocationFsxWindowsArgs.fromMap(Map<String, dynamic> map) {
     return LocationFsxWindowsArgs(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
       fsxFilesystemArn: (map['fsxFilesystemArn'] as String).input(),
       password: (map['password'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       securityGroupArns: ((map['securityGroupArns'] as List).cast<String>()).input(),
-      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       user: (map['user'] as String).input(),
     );
   }

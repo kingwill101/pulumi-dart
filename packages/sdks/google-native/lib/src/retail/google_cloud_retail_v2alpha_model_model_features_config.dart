@@ -22,7 +22,7 @@ class GoogleCloudRetailV2alphaModelModelFeaturesConfig {
 
   factory GoogleCloudRetailV2alphaModelModelFeaturesConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaModelModelFeaturesConfig(
-      frequentlyBoughtTogetherConfig: map['frequentlyBoughtTogetherConfig'] == null ? null : (GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig.fromMap((map['frequentlyBoughtTogetherConfig'] as Map).cast<String, dynamic>())).input(),
+      frequentlyBoughtTogetherConfig: map['frequentlyBoughtTogetherConfig'] == null ? null : (GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig.fromMap((map['frequentlyBoughtTogetherConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

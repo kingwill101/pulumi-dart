@@ -26,8 +26,8 @@ class DiJobSourceDataSourceSetting {
 
   factory DiJobSourceDataSourceSetting.fromMap(Map<String, dynamic> map) {
     return DiJobSourceDataSourceSetting(
-      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
-      dataSourceProperties: map['dataSourceProperties'] == null ? null : (DiJobSourceDataSourceSettingDataSourceProperties.fromMap((map['dataSourceProperties'] as Map).cast<String, dynamic>())).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName']! as String).input(),
+      dataSourceProperties: map['dataSourceProperties'] == null ? null : (DiJobSourceDataSourceSettingDataSourceProperties.fromMap((map['dataSourceProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

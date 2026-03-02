@@ -55,13 +55,13 @@ class SubscriptionState {
 
   factory SubscriptionState.fromMap(Map<String, dynamic> map) {
     return SubscriptionState(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      billingScopeId: map['billingScopeId'] == null ? null : (map['billingScopeId'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      workload: map['workload'] == null ? null : (map['workload'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      billingScopeId: map['billingScopeId'] == null ? null : (map['billingScopeId']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      workload: map['workload'] == null ? null : (map['workload']! as String).input(),
     );
   }
 }

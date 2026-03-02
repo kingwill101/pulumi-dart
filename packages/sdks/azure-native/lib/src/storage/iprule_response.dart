@@ -26,7 +26,7 @@ class IPRuleResponse {
 
   factory IPRuleResponse.fromMap(Map<String, dynamic> map) {
     return IPRuleResponse(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       iPAddressOrRange: (map['iPAddressOrRange'] as String).input(),
     );
   }

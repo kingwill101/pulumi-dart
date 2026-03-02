@@ -42,7 +42,7 @@ class GetLineageEventArgs {
       lineageEventId: (map['lineageEventId'] as String).input(),
       location: (map['location'] as String).input(),
       processId: (map['processId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       runId: (map['runId'] as String).input(),
     );
   }

@@ -79,18 +79,18 @@ class PipelineJobArgs {
 
   factory PipelineJobArgs.fromMap(Map<String, dynamic> map) {
     return PipelineJobArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      pipelineJobId: map['pipelineJobId'] == null ? null : (map['pipelineJobId'] as String).input(),
-      pipelineSpec: map['pipelineSpec'] == null ? null : ((map['pipelineSpec'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reservedIpRanges: map['reservedIpRanges'] == null ? null : ((map['reservedIpRanges'] as List).cast<String>()).input(),
-      runtimeConfig: map['runtimeConfig'] == null ? null : (GoogleCloudAiplatformV1PipelineJobRuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      templateUri: map['templateUri'] == null ? null : (map['templateUri'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      pipelineJobId: map['pipelineJobId'] == null ? null : (map['pipelineJobId']! as String).input(),
+      pipelineSpec: map['pipelineSpec'] == null ? null : ((map['pipelineSpec']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reservedIpRanges: map['reservedIpRanges'] == null ? null : ((map['reservedIpRanges']! as List).cast<String>()).input(),
+      runtimeConfig: map['runtimeConfig'] == null ? null : (GoogleCloudAiplatformV1PipelineJobRuntimeConfig.fromMap((map['runtimeConfig']! as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      templateUri: map['templateUri'] == null ? null : (map['templateUri']! as String).input(),
     );
   }
 }

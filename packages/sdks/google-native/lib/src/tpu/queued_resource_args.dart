@@ -70,16 +70,16 @@ class QueuedResourceArgs {
 
   factory QueuedResourceArgs.fromMap(Map<String, dynamic> map) {
     return QueuedResourceArgs(
-      bestEffort: map['bestEffort'] == null ? null : ((map['bestEffort'] as Map).cast<String, dynamic>()).input(),
-      guaranteed: map['guaranteed'] == null ? null : (Guaranteed.fromMap((map['guaranteed'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      queuedResourceId: map['queuedResourceId'] == null ? null : (map['queuedResourceId'] as String).input(),
-      queueingPolicy: map['queueingPolicy'] == null ? null : (QueueingPolicy.fromMap((map['queueingPolicy'] as Map).cast<String, dynamic>())).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      reservationName: map['reservationName'] == null ? null : (map['reservationName'] as String).input(),
-      spot: map['spot'] == null ? null : ((map['spot'] as Map).cast<String, dynamic>()).input(),
-      tpu: map['tpu'] == null ? null : (Tpu.fromMap((map['tpu'] as Map).cast<String, dynamic>())).input(),
+      bestEffort: map['bestEffort'] == null ? null : ((map['bestEffort']! as Map).cast<String, dynamic>()).input(),
+      guaranteed: map['guaranteed'] == null ? null : (Guaranteed.fromMap((map['guaranteed']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      queuedResourceId: map['queuedResourceId'] == null ? null : (map['queuedResourceId']! as String).input(),
+      queueingPolicy: map['queueingPolicy'] == null ? null : (QueueingPolicy.fromMap((map['queueingPolicy']! as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      reservationName: map['reservationName'] == null ? null : (map['reservationName']! as String).input(),
+      spot: map['spot'] == null ? null : ((map['spot']! as Map).cast<String, dynamic>()).input(),
+      tpu: map['tpu'] == null ? null : (Tpu.fromMap((map['tpu']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class PushConfigPubsubV1beta1a {
 
   factory PushConfigPubsubV1beta1a.fromMap(Map<String, dynamic> map) {
     return PushConfigPubsubV1beta1a(
-      pushEndpoint: map['pushEndpoint'] == null ? null : (map['pushEndpoint'] as String).input(),
+      pushEndpoint: map['pushEndpoint'] == null ? null : (map['pushEndpoint']! as String).input(),
     );
   }
 }

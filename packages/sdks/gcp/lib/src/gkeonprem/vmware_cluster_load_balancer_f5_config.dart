@@ -32,9 +32,9 @@ class VMwareClusterLoadBalancerF5Config {
 
   factory VMwareClusterLoadBalancerF5Config.fromMap(Map<String, dynamic> map) {
     return VMwareClusterLoadBalancerF5Config(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
-      snatPool: map['snatPool'] == null ? null : (map['snatPool'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
+      snatPool: map['snatPool'] == null ? null : (map['snatPool']! as String).input(),
     );
   }
 }

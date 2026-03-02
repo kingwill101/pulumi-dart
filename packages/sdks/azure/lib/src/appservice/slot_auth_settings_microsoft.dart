@@ -32,7 +32,7 @@ class SlotAuthSettingsMicrosoft {
     return SlotAuthSettingsMicrosoft(
       clientId: (map['clientId'] as String).input(),
       clientSecret: (map['clientSecret'] as String).input(),
-      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes'] as List).cast<String>()).input(),
+      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes']! as List).cast<String>()).input(),
     );
   }
 }

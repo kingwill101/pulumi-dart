@@ -32,8 +32,8 @@ class AssistantCustomerPolicyBannedPhrase {
 
   factory AssistantCustomerPolicyBannedPhrase.fromMap(Map<String, dynamic> map) {
     return AssistantCustomerPolicyBannedPhrase(
-      ignoreDiacritics: map['ignoreDiacritics'] == null ? null : (map['ignoreDiacritics'] as bool).input(),
-      matchType: map['matchType'] == null ? null : (map['matchType'] as String).input(),
+      ignoreDiacritics: map['ignoreDiacritics'] == null ? null : (map['ignoreDiacritics']! as bool).input(),
+      matchType: map['matchType'] == null ? null : (map['matchType']! as String).input(),
       phrase: (map['phrase'] as String).input(),
     );
   }

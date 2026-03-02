@@ -36,9 +36,9 @@ class P2SVpnServerConfigVpnClientRootCertificate {
 
   factory P2SVpnServerConfigVpnClientRootCertificate.fromMap(Map<String, dynamic> map) {
     return P2SVpnServerConfigVpnClientRootCertificate(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       publicCertData: (map['publicCertData'] as String).input(),
     );
   }

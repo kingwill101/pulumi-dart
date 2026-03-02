@@ -26,8 +26,8 @@ class FailoverGroupReadOnlyEndpointResponse {
 
   factory FailoverGroupReadOnlyEndpointResponse.fromMap(Map<String, dynamic> map) {
     return FailoverGroupReadOnlyEndpointResponse(
-      failoverPolicy: map['failoverPolicy'] == null ? null : (map['failoverPolicy'] as String).input(),
-      targetServer: map['targetServer'] == null ? null : (map['targetServer'] as String).input(),
+      failoverPolicy: map['failoverPolicy'] == null ? null : (map['failoverPolicy']! as String).input(),
+      targetServer: map['targetServer'] == null ? null : (map['targetServer']! as String).input(),
     );
   }
 }

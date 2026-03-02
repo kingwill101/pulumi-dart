@@ -30,7 +30,7 @@ class ServerDnsAliasArgs {
   factory ServerDnsAliasArgs.fromMap(Map<String, dynamic> map) {
     return ServerDnsAliasArgs(
       mssqlServerId: (map['mssqlServerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

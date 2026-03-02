@@ -87,19 +87,19 @@ class FutureReservationComputeBetaArgs {
 
   factory FutureReservationComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return FutureReservationComputeBetaArgs(
-      autoCreatedReservationsDeleteTime: map['autoCreatedReservationsDeleteTime'] == null ? null : (map['autoCreatedReservationsDeleteTime'] as String).input(),
-      autoCreatedReservationsDuration: map['autoCreatedReservationsDuration'] == null ? null : (DurationComputeBeta.fromMap((map['autoCreatedReservationsDuration'] as Map).cast<String, dynamic>())).input(),
-      autoDeleteAutoCreatedReservations: map['autoDeleteAutoCreatedReservations'] == null ? null : (map['autoDeleteAutoCreatedReservations'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      planningStatus: map['planningStatus'] == null ? null : (FutureReservationPlanningStatusComputeBeta.fromValue(map['planningStatus'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      shareSettings: map['shareSettings'] == null ? null : (ShareSettingsComputeBeta.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())).input(),
-      specificSkuProperties: map['specificSkuProperties'] == null ? null : (FutureReservationSpecificSKUPropertiesComputeBeta.fromMap((map['specificSkuProperties'] as Map).cast<String, dynamic>())).input(),
-      timeWindow: map['timeWindow'] == null ? null : (FutureReservationTimeWindowComputeBeta.fromMap((map['timeWindow'] as Map).cast<String, dynamic>())).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      autoCreatedReservationsDeleteTime: map['autoCreatedReservationsDeleteTime'] == null ? null : (map['autoCreatedReservationsDeleteTime']! as String).input(),
+      autoCreatedReservationsDuration: map['autoCreatedReservationsDuration'] == null ? null : (DurationComputeBeta.fromMap((map['autoCreatedReservationsDuration']! as Map).cast<String, dynamic>())).input(),
+      autoDeleteAutoCreatedReservations: map['autoDeleteAutoCreatedReservations'] == null ? null : (map['autoDeleteAutoCreatedReservations']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
+      planningStatus: map['planningStatus'] == null ? null : (FutureReservationPlanningStatusComputeBeta.fromValue(map['planningStatus']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      shareSettings: map['shareSettings'] == null ? null : (ShareSettingsComputeBeta.fromMap((map['shareSettings']! as Map).cast<String, dynamic>())).input(),
+      specificSkuProperties: map['specificSkuProperties'] == null ? null : (FutureReservationSpecificSKUPropertiesComputeBeta.fromMap((map['specificSkuProperties']! as Map).cast<String, dynamic>())).input(),
+      timeWindow: map['timeWindow'] == null ? null : (FutureReservationTimeWindowComputeBeta.fromMap((map['timeWindow']! as Map).cast<String, dynamic>())).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

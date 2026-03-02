@@ -39,10 +39,10 @@ class BackendServiceSignedUrlKeyState {
 
   factory BackendServiceSignedUrlKeyState.fromMap(Map<String, dynamic> map) {
     return BackendServiceSignedUrlKeyState(
-      backendService: map['backendService'] == null ? null : (map['backendService'] as String).input(),
-      keyValue: map['keyValue'] == null ? null : (map['keyValue'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      backendService: map['backendService'] == null ? null : (map['backendService']! as String).input(),
+      keyValue: map['keyValue'] == null ? null : (map['keyValue']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

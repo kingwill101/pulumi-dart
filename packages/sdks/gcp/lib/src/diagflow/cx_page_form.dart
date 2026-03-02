@@ -22,7 +22,7 @@ class CxPageForm {
 
   factory CxPageForm.fromMap(Map<String, dynamic> map) {
     return CxPageForm(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<CxPageFormParameter>(map['parameters'], (value) => CxPageFormParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<CxPageFormParameter>(map['parameters']!, (value) => CxPageFormParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

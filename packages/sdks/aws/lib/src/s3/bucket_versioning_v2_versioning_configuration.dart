@@ -25,7 +25,7 @@ class BucketVersioningV2VersioningConfiguration {
 
   factory BucketVersioningV2VersioningConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketVersioningV2VersioningConfiguration(
-      mfaDelete: map['mfaDelete'] == null ? null : (map['mfaDelete'] as String).input(),
+      mfaDelete: map['mfaDelete'] == null ? null : ((map['mfaDelete'] as String).input()).input(),
       status: (map['status'] as String).input(),
     );
   }

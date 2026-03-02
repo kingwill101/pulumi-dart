@@ -21,7 +21,7 @@ class BulkCreationParameters {
 
   factory BulkCreationParameters.fromMap(Map<String, dynamic> map) {
     return BulkCreationParameters(
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
     );
   }
 }

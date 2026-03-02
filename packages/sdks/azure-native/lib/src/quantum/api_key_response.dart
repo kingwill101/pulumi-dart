@@ -26,7 +26,7 @@ class ApiKeyResponse {
 
   factory ApiKeyResponse.fromMap(Map<String, dynamic> map) {
     return ApiKeyResponse(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
       key: (map['key'] as String).input(),
     );
   }

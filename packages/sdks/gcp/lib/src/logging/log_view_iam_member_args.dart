@@ -72,10 +72,10 @@ class LogViewIamMemberArgs {
   factory LogViewIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return LogViewIamMemberArgs(
       bucket: (map['bucket'] as String).input(),
-      condition: map['condition'] == null ? null : (LogViewIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      condition: map['condition'] == null ? null : (LogViewIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       member: (map['member'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       parent: (map['parent'] as String).input(),
       role: (map['role'] as String).input(),
     );

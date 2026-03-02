@@ -37,8 +37,8 @@ class LinkedServiceAzureDatabricksInstancePool {
     return LinkedServiceAzureDatabricksInstancePool(
       clusterVersion: (map['clusterVersion'] as String).input(),
       instancePoolId: (map['instancePoolId'] as String).input(),
-      maxNumberOfWorkers: map['maxNumberOfWorkers'] == null ? null : (map['maxNumberOfWorkers'] as int).input(),
-      minNumberOfWorkers: map['minNumberOfWorkers'] == null ? null : (map['minNumberOfWorkers'] as int).input(),
+      maxNumberOfWorkers: map['maxNumberOfWorkers'] == null ? null : (map['maxNumberOfWorkers']! as int).input(),
+      minNumberOfWorkers: map['minNumberOfWorkers'] == null ? null : (map['minNumberOfWorkers']! as int).input(),
     );
   }
 }

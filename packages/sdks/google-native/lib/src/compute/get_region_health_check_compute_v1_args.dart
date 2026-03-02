@@ -32,7 +32,7 @@ class GetRegionHealthCheckComputeV1Args {
   factory GetRegionHealthCheckComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionHealthCheckComputeV1Args(
       healthCheck: (map['healthCheck'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

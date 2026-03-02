@@ -20,7 +20,7 @@ class CertificateCertificateDescriptionSubjectKeyId {
 
   factory CertificateCertificateDescriptionSubjectKeyId.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionSubjectKeyId(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
     );
   }
 }

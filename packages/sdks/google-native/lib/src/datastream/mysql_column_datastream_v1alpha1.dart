@@ -51,13 +51,13 @@ class MysqlColumnDatastreamV1alpha1 {
 
   factory MysqlColumnDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return MysqlColumnDatastreamV1alpha1(
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
-      columnName: map['columnName'] == null ? null : (map['columnName'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      length: map['length'] == null ? null : (map['length'] as int).input(),
-      nullable: map['nullable'] == null ? null : (map['nullable'] as bool).input(),
-      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition'] as int).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as bool).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
+      columnName: map['columnName'] == null ? null : (map['columnName']! as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      length: map['length'] == null ? null : (map['length']! as int).input(),
+      nullable: map['nullable'] == null ? null : (map['nullable']! as bool).input(),
+      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition']! as int).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as bool).input(),
     );
   }
 }

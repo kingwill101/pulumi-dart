@@ -34,9 +34,9 @@ class ScheduledEventsPolicy {
 
   factory ScheduledEventsPolicy.fromMap(Map<String, dynamic> map) {
     return ScheduledEventsPolicy(
-      scheduledEventsAdditionalPublishingTargets: map['scheduledEventsAdditionalPublishingTargets'] == null ? null : (ScheduledEventsAdditionalPublishingTargets.fromMap((map['scheduledEventsAdditionalPublishingTargets'] as Map).cast<String, dynamic>())).input(),
-      userInitiatedReboot: map['userInitiatedReboot'] == null ? null : (UserInitiatedReboot.fromMap((map['userInitiatedReboot'] as Map).cast<String, dynamic>())).input(),
-      userInitiatedRedeploy: map['userInitiatedRedeploy'] == null ? null : (UserInitiatedRedeploy.fromMap((map['userInitiatedRedeploy'] as Map).cast<String, dynamic>())).input(),
+      scheduledEventsAdditionalPublishingTargets: map['scheduledEventsAdditionalPublishingTargets'] == null ? null : (ScheduledEventsAdditionalPublishingTargets.fromMap((map['scheduledEventsAdditionalPublishingTargets']! as Map).cast<String, dynamic>())).input(),
+      userInitiatedReboot: map['userInitiatedReboot'] == null ? null : (UserInitiatedReboot.fromMap((map['userInitiatedReboot']! as Map).cast<String, dynamic>())).input(),
+      userInitiatedRedeploy: map['userInitiatedRedeploy'] == null ? null : (UserInitiatedRedeploy.fromMap((map['userInitiatedRedeploy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

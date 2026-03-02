@@ -36,9 +36,9 @@ class RequestMetadata {
 
   factory RequestMetadata.fromMap(Map<String, dynamic> map) {
     return RequestMetadata(
-      approvalCallbackPayload: map['approvalCallbackPayload'] == null ? null : (map['approvalCallbackPayload'] as String).input(),
-      approvalCallbackRoute: map['approvalCallbackRoute'] == null ? null : (map['approvalCallbackRoute'] as String).input(),
-      approvalStatus: map['approvalStatus'] == null ? null : (map['approvalStatus'] as String).input(),
+      approvalCallbackPayload: map['approvalCallbackPayload'] == null ? null : (map['approvalCallbackPayload']! as String).input(),
+      approvalCallbackRoute: map['approvalCallbackRoute'] == null ? null : (map['approvalCallbackRoute']! as String).input(),
+      approvalStatus: map['approvalStatus'] == null ? null : (map['approvalStatus']! as String).input(),
       resourceAction: (map['resourceAction'] as String).input(),
     );
   }

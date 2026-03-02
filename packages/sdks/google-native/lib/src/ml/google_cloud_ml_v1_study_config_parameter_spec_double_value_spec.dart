@@ -25,8 +25,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
 
   factory GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec(
-      maxValue: map['maxValue'] == null ? null : (map['maxValue'] as double).input(),
-      minValue: map['minValue'] == null ? null : (map['minValue'] as double).input(),
+      maxValue: map['maxValue'] == null ? null : (map['maxValue']! as double).input(),
+      minValue: map['minValue'] == null ? null : (map['minValue']! as double).input(),
     );
   }
 }

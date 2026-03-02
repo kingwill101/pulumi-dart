@@ -25,7 +25,7 @@ class OptInResourceDataDatabase {
 
   factory OptInResourceDataDatabase.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataDatabase(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

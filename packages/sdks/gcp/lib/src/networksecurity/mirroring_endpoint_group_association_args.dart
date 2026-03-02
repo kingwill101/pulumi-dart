@@ -58,12 +58,12 @@ class MirroringEndpointGroupAssociationArgs {
 
   factory MirroringEndpointGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MirroringEndpointGroupAssociationArgs(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       mirroringEndpointGroup: (map['mirroringEndpointGroup'] as String).input(),
-      mirroringEndpointGroupAssociationId: map['mirroringEndpointGroupAssociationId'] == null ? null : (map['mirroringEndpointGroupAssociationId'] as String).input(),
+      mirroringEndpointGroupAssociationId: map['mirroringEndpointGroupAssociationId'] == null ? null : (map['mirroringEndpointGroupAssociationId']! as String).input(),
       network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -42,10 +42,10 @@ class WorkstationClusterPrivateClusterConfig {
 
   factory WorkstationClusterPrivateClusterConfig.fromMap(Map<String, dynamic> map) {
     return WorkstationClusterPrivateClusterConfig(
-      allowedProjects: map['allowedProjects'] == null ? null : ((map['allowedProjects'] as List).cast<String>()).input(),
-      clusterHostname: map['clusterHostname'] == null ? null : (map['clusterHostname'] as String).input(),
+      allowedProjects: map['allowedProjects'] == null ? null : ((map['allowedProjects']! as List).cast<String>()).input(),
+      clusterHostname: map['clusterHostname'] == null ? null : (map['clusterHostname']! as String).input(),
       enablePrivateEndpoint: (map['enablePrivateEndpoint'] as bool).input(),
-      serviceAttachmentUri: map['serviceAttachmentUri'] == null ? null : (map['serviceAttachmentUri'] as String).input(),
+      serviceAttachmentUri: map['serviceAttachmentUri'] == null ? null : (map['serviceAttachmentUri']! as String).input(),
     );
   }
 }

@@ -58,7 +58,7 @@ class GetEyesOnResult {
   factory GetEyesOnResult.fromMap(Map<String, dynamic> map) {
     return GetEyesOnResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       isEnabled: map['isEnabled'] as bool,
       kind: map['kind'] as String,

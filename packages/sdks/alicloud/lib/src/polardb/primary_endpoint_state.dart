@@ -78,18 +78,18 @@ class PrimaryEndpointState {
 
   factory PrimaryEndpointState.fromMap(Map<String, dynamic> map) {
     return PrimaryEndpointState(
-      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
-      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
-      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : (map['dbEndpointDescription'] as String).input(),
-      dbEndpointId: map['dbEndpointId'] == null ? null : (map['dbEndpointId'] as String).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      sslAutoRotate: map['sslAutoRotate'] == null ? null : (map['sslAutoRotate'] as String).input(),
-      sslCertificateUrl: map['sslCertificateUrl'] == null ? null : (map['sslCertificateUrl'] as String).input(),
-      sslConnectionString: map['sslConnectionString'] == null ? null : (map['sslConnectionString'] as String).input(),
-      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled'] as String).input(),
-      sslExpireTime: map['sslExpireTime'] == null ? null : (map['sslExpireTime'] as String).input(),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix']! as String).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId']! as String).input(),
+      dbEndpointDescription: map['dbEndpointDescription'] == null ? null : (map['dbEndpointDescription']! as String).input(),
+      dbEndpointId: map['dbEndpointId'] == null ? null : (map['dbEndpointId']! as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      netType: map['netType'] == null ? null : (map['netType']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      sslAutoRotate: map['sslAutoRotate'] == null ? null : (map['sslAutoRotate']! as String).input(),
+      sslCertificateUrl: map['sslCertificateUrl'] == null ? null : (map['sslCertificateUrl']! as String).input(),
+      sslConnectionString: map['sslConnectionString'] == null ? null : (map['sslConnectionString']! as String).input(),
+      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled']! as String).input(),
+      sslExpireTime: map['sslExpireTime'] == null ? null : (map['sslExpireTime']! as String).input(),
     );
   }
 }

@@ -40,8 +40,8 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfig {
 
   factory AppVersionSnapshotAppLoggingSettingAudioRecordingConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppLoggingSettingAudioRecordingConfig(
-      gcsBucket: map['gcsBucket'] == null ? null : (map['gcsBucket'] as String).input(),
-      gcsPathPrefix: map['gcsPathPrefix'] == null ? null : (map['gcsPathPrefix'] as String).input(),
+      gcsBucket: map['gcsBucket'] == null ? null : (map['gcsBucket']! as String).input(),
+      gcsPathPrefix: map['gcsPathPrefix'] == null ? null : (map['gcsPathPrefix']! as String).input(),
     );
   }
 }

@@ -108,7 +108,7 @@ class GetGrafanaResult {
       grafanaMajorVersion: map['grafanaMajorVersion'] as String,
       grafanaVersion: map['grafanaVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : GetGrafanaIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : GetGrafanaIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
       outboundIps: (map['outboundIps'] as List).cast<String>(),

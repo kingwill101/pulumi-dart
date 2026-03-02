@@ -36,8 +36,8 @@ class BillingAccountSinkExclusion {
 
   factory BillingAccountSinkExclusion.fromMap(Map<String, dynamic> map) {
     return BillingAccountSinkExclusion(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       filter: (map['filter'] as String).input(),
       name: (map['name'] as String).input(),
     );

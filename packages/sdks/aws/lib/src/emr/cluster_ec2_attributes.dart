@@ -62,15 +62,15 @@ class ClusterEc2Attributes {
 
   factory ClusterEc2Attributes.fromMap(Map<String, dynamic> map) {
     return ClusterEc2Attributes(
-      additionalMasterSecurityGroups: map['additionalMasterSecurityGroups'] == null ? null : (map['additionalMasterSecurityGroups'] as String).input(),
-      additionalSlaveSecurityGroups: map['additionalSlaveSecurityGroups'] == null ? null : (map['additionalSlaveSecurityGroups'] as String).input(),
-      emrManagedMasterSecurityGroup: map['emrManagedMasterSecurityGroup'] == null ? null : (map['emrManagedMasterSecurityGroup'] as String).input(),
-      emrManagedSlaveSecurityGroup: map['emrManagedSlaveSecurityGroup'] == null ? null : (map['emrManagedSlaveSecurityGroup'] as String).input(),
+      additionalMasterSecurityGroups: map['additionalMasterSecurityGroups'] == null ? null : ((map['additionalMasterSecurityGroups'] as String).input()).input(),
+      additionalSlaveSecurityGroups: map['additionalSlaveSecurityGroups'] == null ? null : ((map['additionalSlaveSecurityGroups'] as String).input()).input(),
+      emrManagedMasterSecurityGroup: map['emrManagedMasterSecurityGroup'] == null ? null : ((map['emrManagedMasterSecurityGroup'] as String).input()).input(),
+      emrManagedSlaveSecurityGroup: map['emrManagedSlaveSecurityGroup'] == null ? null : ((map['emrManagedSlaveSecurityGroup'] as String).input()).input(),
       instanceProfile: (map['instanceProfile'] as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      serviceAccessSecurityGroup: map['serviceAccessSecurityGroup'] == null ? null : (map['serviceAccessSecurityGroup'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      keyName: map['keyName'] == null ? null : ((map['keyName'] as String).input()).input(),
+      serviceAccessSecurityGroup: map['serviceAccessSecurityGroup'] == null ? null : ((map['serviceAccessSecurityGroup'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

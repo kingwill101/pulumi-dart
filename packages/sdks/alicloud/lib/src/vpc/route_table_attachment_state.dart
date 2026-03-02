@@ -31,9 +31,9 @@ class RouteTableAttachmentState {
 
   factory RouteTableAttachmentState.fromMap(Map<String, dynamic> map) {
     return RouteTableAttachmentState(
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

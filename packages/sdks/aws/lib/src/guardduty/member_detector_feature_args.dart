@@ -51,10 +51,10 @@ class MemberDetectorFeatureArgs {
   factory MemberDetectorFeatureArgs.fromMap(Map<String, dynamic> map) {
     return MemberDetectorFeatureArgs(
       accountId: (map['accountId'] as String).input(),
-      additionalConfigurations: map['additionalConfigurations'] == null ? null : (pulumi.Input.decodeList<MemberDetectorFeatureAdditionalConfiguration>(map['additionalConfigurations'], (value) => MemberDetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalConfigurations: map['additionalConfigurations'] == null ? null : ((pulumi.Input.decodeList<MemberDetectorFeatureAdditionalConfiguration>(map['additionalConfigurations']!, (value) => MemberDetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       detectorId: (map['detectorId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       status: (map['status'] as String).input(),
     );
   }

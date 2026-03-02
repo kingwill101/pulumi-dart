@@ -21,7 +21,7 @@ class InsightSelectorResponse {
 
   factory InsightSelectorResponse.fromMap(Map<String, dynamic> map) {
     return InsightSelectorResponse(
-      insightType: map['insightType'] == null ? null : (map['insightType'] as String).input(),
+      insightType: map['insightType'] == null ? null : (map['insightType']! as String).input(),
     );
   }
 }

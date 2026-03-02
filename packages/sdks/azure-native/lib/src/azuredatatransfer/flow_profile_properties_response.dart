@@ -51,7 +51,7 @@ class FlowProfilePropertiesResponse {
       flowProfileId: (map['flowProfileId'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       replicationScenario: (map['replicationScenario'] as String).input(),
-      rulesets: map['rulesets'] == null ? null : (FlowProfileRulesetsResponse.fromMap((map['rulesets'] as Map).cast<String, dynamic>())).input(),
+      rulesets: map['rulesets'] == null ? null : (FlowProfileRulesetsResponse.fromMap((map['rulesets']! as Map).cast<String, dynamic>())).input(),
       status: (map['status'] as String).input(),
     );
   }

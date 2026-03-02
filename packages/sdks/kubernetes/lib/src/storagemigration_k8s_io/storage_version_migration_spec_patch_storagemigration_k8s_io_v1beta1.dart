@@ -22,7 +22,7 @@ class StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1 {
 
   factory StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return StorageVersionMigrationSpecPatchStoragemigrationK8sIoV1beta1(
-      resource: map['resource'] == null ? null : (GroupResourcePatch.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (GroupResourcePatch.fromMap((map['resource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

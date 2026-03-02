@@ -47,12 +47,12 @@ class ModelIamPolicyArgs {
 
   factory ModelIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ModelIamPolicyArgs(
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1BindingAiplatformV1beta1>(map['bindings'], (value) => GoogleIamV1BindingAiplatformV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1BindingAiplatformV1beta1>(map['bindings']!, (value) => GoogleIamV1BindingAiplatformV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       modelId: (map['modelId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

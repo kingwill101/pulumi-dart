@@ -56,14 +56,14 @@ class OutputCosmosdbState {
 
   factory OutputCosmosdbState.fromMap(Map<String, dynamic> map) {
     return OutputCosmosdbState(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      cosmosdbAccountKey: map['cosmosdbAccountKey'] == null ? null : (map['cosmosdbAccountKey'] as String).input(),
-      cosmosdbSqlDatabaseId: map['cosmosdbSqlDatabaseId'] == null ? null : (map['cosmosdbSqlDatabaseId'] as String).input(),
-      documentId: map['documentId'] == null ? null : (map['documentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
-      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : (map['streamAnalyticsJobId'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      cosmosdbAccountKey: map['cosmosdbAccountKey'] == null ? null : (map['cosmosdbAccountKey']! as String).input(),
+      cosmosdbSqlDatabaseId: map['cosmosdbSqlDatabaseId'] == null ? null : (map['cosmosdbSqlDatabaseId']! as String).input(),
+      documentId: map['documentId'] == null ? null : (map['documentId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey']! as String).input(),
+      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : (map['streamAnalyticsJobId']! as String).input(),
     );
   }
 }

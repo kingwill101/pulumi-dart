@@ -53,11 +53,11 @@ class VmwareEngineNetworkArgs {
 
   factory VmwareEngineNetworkArgs.fromMap(Map<String, dynamic> map) {
     return VmwareEngineNetworkArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       type: (VmwareEngineNetworkType.fromValue(map['type'] as String)).input(),
       vmwareEngineNetworkId: (map['vmwareEngineNetworkId'] as String).input(),
     );

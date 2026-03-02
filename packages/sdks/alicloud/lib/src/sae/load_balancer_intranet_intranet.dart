@@ -35,10 +35,10 @@ class LoadBalancerIntranetIntranet {
 
   factory LoadBalancerIntranetIntranet.fromMap(Map<String, dynamic> map) {
     return LoadBalancerIntranetIntranet(
-      httpsCertId: map['httpsCertId'] == null ? null : (map['httpsCertId'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      targetPort: map['targetPort'] == null ? null : (map['targetPort'] as int).input(),
+      httpsCertId: map['httpsCertId'] == null ? null : (map['httpsCertId']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      targetPort: map['targetPort'] == null ? null : (map['targetPort']! as int).input(),
     );
   }
 }

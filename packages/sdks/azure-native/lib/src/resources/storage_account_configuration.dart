@@ -26,8 +26,8 @@ class StorageAccountConfiguration {
 
   factory StorageAccountConfiguration.fromMap(Map<String, dynamic> map) {
     return StorageAccountConfiguration(
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
     );
   }
 }

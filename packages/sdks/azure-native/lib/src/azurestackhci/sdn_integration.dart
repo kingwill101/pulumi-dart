@@ -22,7 +22,7 @@ class SdnIntegration {
 
   factory SdnIntegration.fromMap(Map<String, dynamic> map) {
     return SdnIntegration(
-      networkController: map['networkController'] == null ? null : (NetworkController.fromMap((map['networkController'] as Map).cast<String, dynamic>())).input(),
+      networkController: map['networkController'] == null ? null : (NetworkController.fromMap((map['networkController']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

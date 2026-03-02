@@ -27,8 +27,8 @@ class EphemeralDiskResponse {
 
   factory EphemeralDiskResponse.fromMap(Map<String, dynamic> map) {
     return EphemeralDiskResponse(
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<DiskResponse>(map['disks'], (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as double).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<DiskResponse>(map['disks']!, (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as double).input(),
     );
   }
 }

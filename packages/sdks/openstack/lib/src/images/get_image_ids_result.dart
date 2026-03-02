@@ -84,23 +84,23 @@ class GetImageIdsResult {
 
   factory GetImageIdsResult.fromMap(Map<String, dynamic> map) {
     return GetImageIdsResult(
-      containerFormat: map['containerFormat'] == null ? null : map['containerFormat'] as String,
-      diskFormat: map['diskFormat'] == null ? null : map['diskFormat'] as String,
-      hidden: map['hidden'] == null ? null : map['hidden'] as bool,
+      containerFormat: map['containerFormat'] == null ? null : map['containerFormat']! as String,
+      diskFormat: map['diskFormat'] == null ? null : map['diskFormat']! as String,
+      hidden: map['hidden'] == null ? null : map['hidden']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      memberStatus: map['memberStatus'] == null ? null : map['memberStatus'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
-      owner: map['owner'] == null ? null : map['owner'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
+      memberStatus: map['memberStatus'] == null ? null : map['memberStatus']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      owner: map['owner'] == null ? null : map['owner']! as String,
+      properties: map['properties'] == null ? null : (map['properties']! as Map).cast<String, String>(),
       region: map['region'] as String,
-      sizeMax: map['sizeMax'] == null ? null : map['sizeMax'] as int,
-      sizeMin: map['sizeMin'] == null ? null : map['sizeMin'] as int,
-      sort: map['sort'] == null ? null : map['sort'] as String,
-      tag: map['tag'] == null ? null : map['tag'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
-      visibility: map['visibility'] == null ? null : map['visibility'] as String,
+      sizeMax: map['sizeMax'] == null ? null : map['sizeMax']! as int,
+      sizeMin: map['sizeMin'] == null ? null : map['sizeMin']! as int,
+      sort: map['sort'] == null ? null : map['sort']! as String,
+      tag: map['tag'] == null ? null : map['tag']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
+      visibility: map['visibility'] == null ? null : map['visibility']! as String,
     );
   }
 }

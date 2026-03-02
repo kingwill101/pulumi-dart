@@ -32,8 +32,8 @@ class DirectoryPathResponse {
   factory DirectoryPathResponse.fromMap(Map<String, dynamic> map) {
     return DirectoryPathResponse(
       id: (map['id'] as String).input(),
-      physical: map['physical'] == null ? null : (map['physical'] as String).input(),
-      virtual: map['virtual'] == null ? null : (map['virtual'] as String).input(),
+      physical: map['physical'] == null ? null : (map['physical']! as String).input(),
+      virtual: map['virtual'] == null ? null : (map['virtual']! as String).input(),
     );
   }
 }

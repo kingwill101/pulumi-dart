@@ -20,7 +20,7 @@ class SpringCloudServiceDefaultBuildService {
 
   factory SpringCloudServiceDefaultBuildService.fromMap(Map<String, dynamic> map) {
     return SpringCloudServiceDefaultBuildService(
-      containerRegistryName: map['containerRegistryName'] == null ? null : (map['containerRegistryName'] as String).input(),
+      containerRegistryName: map['containerRegistryName'] == null ? null : (map['containerRegistryName']! as String).input(),
     );
   }
 }

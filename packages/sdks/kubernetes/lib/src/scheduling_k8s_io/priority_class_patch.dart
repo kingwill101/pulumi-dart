@@ -52,13 +52,13 @@ class PriorityClassPatch {
 
   factory PriorityClassPatch.fromMap(Map<String, dynamic> map) {
     return PriorityClassPatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      globalDefault: map['globalDefault'] == null ? null : (map['globalDefault'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      preemptionPolicy: map['preemptionPolicy'] == null ? null : (map['preemptionPolicy'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as int).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      globalDefault: map['globalDefault'] == null ? null : (map['globalDefault']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      preemptionPolicy: map['preemptionPolicy'] == null ? null : (map['preemptionPolicy']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as int).input(),
     );
   }
 }

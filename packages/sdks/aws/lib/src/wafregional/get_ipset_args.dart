@@ -30,7 +30,7 @@ class GetIpsetArgs {
   factory GetIpsetArgs.fromMap(Map<String, dynamic> map) {
     return GetIpsetArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

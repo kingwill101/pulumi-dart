@@ -32,9 +32,9 @@ class ExchangeConnection {
 
   factory ExchangeConnection.fromMap(Map<String, dynamic> map) {
     return ExchangeConnection(
-      bgpSession: map['bgpSession'] == null ? null : (BgpSession.fromMap((map['bgpSession'] as Map).cast<String, dynamic>())).input(),
-      connectionIdentifier: map['connectionIdentifier'] == null ? null : (map['connectionIdentifier'] as String).input(),
-      peeringDBFacilityId: map['peeringDBFacilityId'] == null ? null : (map['peeringDBFacilityId'] as int).input(),
+      bgpSession: map['bgpSession'] == null ? null : (BgpSession.fromMap((map['bgpSession']! as Map).cast<String, dynamic>())).input(),
+      connectionIdentifier: map['connectionIdentifier'] == null ? null : (map['connectionIdentifier']! as String).input(),
+      peeringDBFacilityId: map['peeringDBFacilityId'] == null ? null : (map['peeringDBFacilityId']! as int).input(),
     );
   }
 }

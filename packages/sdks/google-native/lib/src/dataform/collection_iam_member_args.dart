@@ -45,7 +45,7 @@ class CollectionIamMemberArgs {
 
   factory CollectionIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return CollectionIamMemberArgs(
-      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
       name: (map['name'] as String).input(),
       role: (map['role'] as String).input(),

@@ -21,7 +21,7 @@ class DebugSetting {
 
   factory DebugSetting.fromMap(Map<String, dynamic> map) {
     return DebugSetting(
-      detailLevel: map['detailLevel'] == null ? null : (map['detailLevel'] as String).input(),
+      detailLevel: map['detailLevel'] == null ? null : (map['detailLevel']! as String).input(),
     );
   }
 }

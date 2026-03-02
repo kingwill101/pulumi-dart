@@ -51,13 +51,13 @@ class ConnectionClassicCertificateState {
 
   factory ConnectionClassicCertificateState.fromMap(Map<String, dynamic> map) {
     return ConnectionClassicCertificateState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
-      certificateAssetName: map['certificateAssetName'] == null ? null : (map['certificateAssetName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName'] as String).input(),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
+      certificateAssetName: map['certificateAssetName'] == null ? null : (map['certificateAssetName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName']! as String).input(),
     );
   }
 }

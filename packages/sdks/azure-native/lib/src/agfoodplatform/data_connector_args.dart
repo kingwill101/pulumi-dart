@@ -40,7 +40,7 @@ class DataConnectorArgs {
 
   factory DataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return DataConnectorArgs(
-      dataConnectorName: map['dataConnectorName'] == null ? null : (map['dataConnectorName'] as String).input(),
+      dataConnectorName: map['dataConnectorName'] == null ? null : (map['dataConnectorName']! as String).input(),
       dataManagerForAgricultureResourceName: (map['dataManagerForAgricultureResourceName'] as String).input(),
       properties: (DataConnectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

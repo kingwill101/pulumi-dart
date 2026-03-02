@@ -81,16 +81,16 @@ class ExtensionArgs {
   factory ExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionArgs(
       arcMachineId: (map['arcMachineId'] as String).input(),
-      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : (map['automaticUpgradeEnabled'] as bool).input(),
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings'] as String).input(),
+      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : (map['automaticUpgradeEnabled']! as bool).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']! as String).input(),
       publisher: (map['publisher'] as String).input(),
-      settings: map['settings'] == null ? null : (map['settings'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      settings: map['settings'] == null ? null : (map['settings']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion']! as String).input(),
     );
   }
 }

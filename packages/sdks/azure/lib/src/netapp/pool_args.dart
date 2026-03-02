@@ -81,16 +81,16 @@ class PoolArgs {
   factory PoolArgs.fromMap(Map<String, dynamic> map) {
     return PoolArgs(
       accountName: (map['accountName'] as String).input(),
-      coolAccessEnabled: map['coolAccessEnabled'] == null ? null : (map['coolAccessEnabled'] as bool).input(),
-      customThroughputMibps: map['customThroughputMibps'] == null ? null : (map['customThroughputMibps'] as int).input(),
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      qosType: map['qosType'] == null ? null : (map['qosType'] as String).input(),
+      coolAccessEnabled: map['coolAccessEnabled'] == null ? null : (map['coolAccessEnabled']! as bool).input(),
+      customThroughputMibps: map['customThroughputMibps'] == null ? null : (map['customThroughputMibps']! as int).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      qosType: map['qosType'] == null ? null : (map['qosType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceLevel: (map['serviceLevel'] as String).input(),
       sizeInTb: (map['sizeInTb'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

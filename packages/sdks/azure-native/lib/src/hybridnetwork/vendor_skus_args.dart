@@ -65,14 +65,14 @@ class VendorSkusArgs {
 
   factory VendorSkusArgs.fromMap(Map<String, dynamic> map) {
     return VendorSkusArgs(
-      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode'] as String).input(),
-      managedApplicationParameters: map['managedApplicationParameters'] == null ? null : (map['managedApplicationParameters']).input(),
-      managedApplicationTemplate: map['managedApplicationTemplate'] == null ? null : (map['managedApplicationTemplate']).input(),
-      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : (NetworkFunctionTemplate.fromMap((map['networkFunctionTemplate'] as Map).cast<String, dynamic>())).input(),
-      networkFunctionType: map['networkFunctionType'] == null ? null : (map['networkFunctionType'] as String).input(),
-      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      skuType: map['skuType'] == null ? null : (map['skuType'] as String).input(),
+      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode']! as String).input(),
+      managedApplicationParameters: map['managedApplicationParameters'] == null ? null : (map['managedApplicationParameters']!).input(),
+      managedApplicationTemplate: map['managedApplicationTemplate'] == null ? null : (map['managedApplicationTemplate']!).input(),
+      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : (NetworkFunctionTemplate.fromMap((map['networkFunctionTemplate']! as Map).cast<String, dynamic>())).input(),
+      networkFunctionType: map['networkFunctionType'] == null ? null : (map['networkFunctionType']! as String).input(),
+      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      skuType: map['skuType'] == null ? null : (map['skuType']! as String).input(),
       vendorName: (map['vendorName'] as String).input(),
     );
   }

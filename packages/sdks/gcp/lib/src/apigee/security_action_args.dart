@@ -95,18 +95,18 @@ class SecurityActionArgs {
 
   factory SecurityActionArgs.fromMap(Map<String, dynamic> map) {
     return SecurityActionArgs(
-      allow: map['allow'] == null ? null : ((map['allow'] as Map).cast<String, dynamic>()).input(),
-      apiProxies: map['apiProxies'] == null ? null : ((map['apiProxies'] as List).cast<String>()).input(),
+      allow: map['allow'] == null ? null : ((map['allow']! as Map).cast<String, dynamic>()).input(),
+      apiProxies: map['apiProxies'] == null ? null : ((map['apiProxies']! as List).cast<String>()).input(),
       conditionConfig: (SecurityActionConditionConfig.fromMap((map['conditionConfig'] as Map).cast<String, dynamic>())).input(),
-      deny: map['deny'] == null ? null : (SecurityActionDeny.fromMap((map['deny'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      deny: map['deny'] == null ? null : (SecurityActionDeny.fromMap((map['deny']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       envId: (map['envId'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      flag: map['flag'] == null ? null : (SecurityActionFlag.fromMap((map['flag'] as Map).cast<String, dynamic>())).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      flag: map['flag'] == null ? null : (SecurityActionFlag.fromMap((map['flag']! as Map).cast<String, dynamic>())).input(),
       orgId: (map['orgId'] as String).input(),
       securityActionId: (map['securityActionId'] as String).input(),
       state: (map['state'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
     );
   }
 }

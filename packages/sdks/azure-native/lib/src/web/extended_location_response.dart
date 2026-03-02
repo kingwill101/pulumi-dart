@@ -26,7 +26,7 @@ class ExtendedLocationResponse {
 
   factory ExtendedLocationResponse.fromMap(Map<String, dynamic> map) {
     return ExtendedLocationResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class VolumeRelocationProperties {
 
   factory VolumeRelocationProperties.fromMap(Map<String, dynamic> map) {
     return VolumeRelocationProperties(
-      relocationRequested: map['relocationRequested'] == null ? null : (map['relocationRequested'] as bool).input(),
+      relocationRequested: map['relocationRequested'] == null ? null : (map['relocationRequested']! as bool).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class WebAclDefaultActionAllowCustomRequestHandling {
 
   factory WebAclDefaultActionAllowCustomRequestHandling.fromMap(Map<String, dynamic> map) {
     return WebAclDefaultActionAllowCustomRequestHandling(
-      insertHeaders: (pulumi.Input.decodeList<WebAclDefaultActionAllowCustomRequestHandlingInsertHeader>(map['insertHeaders'], (value) => WebAclDefaultActionAllowCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      insertHeaders: (pulumi.Input.decodeList<WebAclDefaultActionAllowCustomRequestHandlingInsertHeader>(map['insertHeaders']!, (value) => WebAclDefaultActionAllowCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

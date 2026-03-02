@@ -67,16 +67,16 @@ class AzureDataExplorerSink {
 
   factory AzureDataExplorerSink.fromMap(Map<String, dynamic> map) {
     return AzureDataExplorerSink(
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      flushImmediately: map['flushImmediately'] == null ? null : (map['flushImmediately']).input(),
-      ingestionMappingAsJson: map['ingestionMappingAsJson'] == null ? null : (map['ingestionMappingAsJson']).input(),
-      ingestionMappingName: map['ingestionMappingName'] == null ? null : (map['ingestionMappingName']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']).input(),
-      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      flushImmediately: map['flushImmediately'] == null ? null : (map['flushImmediately']!).input(),
+      ingestionMappingAsJson: map['ingestionMappingAsJson'] == null ? null : (map['ingestionMappingAsJson']!).input(),
+      ingestionMappingName: map['ingestionMappingName'] == null ? null : (map['ingestionMappingName']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']!).input(),
+      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']!).input(),
       type: (map['type'] as String).input(),
-      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']).input(),
-      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']).input(),
+      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']!).input(),
+      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']!).input(),
     );
   }
 }

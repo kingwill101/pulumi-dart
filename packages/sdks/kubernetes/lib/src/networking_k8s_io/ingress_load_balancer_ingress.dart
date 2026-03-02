@@ -32,9 +32,9 @@ class IngressLoadBalancerIngress {
 
   factory IngressLoadBalancerIngress.fromMap(Map<String, dynamic> map) {
     return IngressLoadBalancerIngress(
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<IngressPortStatus>(map['ports'], (value) => IngressPortStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<IngressPortStatus>(map['ports']!, (value) => IngressPortStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

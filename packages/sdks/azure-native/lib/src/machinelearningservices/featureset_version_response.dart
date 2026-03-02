@@ -68,16 +68,16 @@ class FeaturesetVersionResponse {
 
   factory FeaturesetVersionResponse.fromMap(Map<String, dynamic> map) {
     return FeaturesetVersionResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      entities: map['entities'] == null ? null : ((map['entities'] as List).cast<String>()).input(),
-      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous'] as bool).input(),
-      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
-      materializationSettings: map['materializationSettings'] == null ? null : (MaterializationSettingsResponse.fromMap((map['materializationSettings'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      entities: map['entities'] == null ? null : ((map['entities']! as List).cast<String>()).input(),
+      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous']! as bool).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived']! as bool).input(),
+      materializationSettings: map['materializationSettings'] == null ? null : (MaterializationSettingsResponse.fromMap((map['materializationSettings']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      specification: map['specification'] == null ? null : (FeaturesetSpecificationResponse.fromMap((map['specification'] as Map).cast<String, dynamic>())).input(),
-      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      specification: map['specification'] == null ? null : (FeaturesetSpecificationResponse.fromMap((map['specification']! as Map).cast<String, dynamic>())).input(),
+      stage: map['stage'] == null ? null : (map['stage']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

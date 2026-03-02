@@ -49,10 +49,10 @@ class JitNetworkAccessRequestPortResponse {
 
   factory JitNetworkAccessRequestPortResponse.fromMap(Map<String, dynamic> map) {
     return JitNetworkAccessRequestPortResponse(
-      allowedSourceAddressPrefix: map['allowedSourceAddressPrefix'] == null ? null : (map['allowedSourceAddressPrefix'] as String).input(),
-      allowedSourceAddressPrefixes: map['allowedSourceAddressPrefixes'] == null ? null : ((map['allowedSourceAddressPrefixes'] as List).cast<String>()).input(),
+      allowedSourceAddressPrefix: map['allowedSourceAddressPrefix'] == null ? null : (map['allowedSourceAddressPrefix']! as String).input(),
+      allowedSourceAddressPrefixes: map['allowedSourceAddressPrefixes'] == null ? null : ((map['allowedSourceAddressPrefixes']! as List).cast<String>()).input(),
       endTimeUtc: (map['endTimeUtc'] as String).input(),
-      mappedPort: map['mappedPort'] == null ? null : (map['mappedPort'] as int).input(),
+      mappedPort: map['mappedPort'] == null ? null : (map['mappedPort']! as int).input(),
       number: (map['number'] as int).input(),
       status: (map['status'] as String).input(),
       statusReason: (map['statusReason'] as String).input(),

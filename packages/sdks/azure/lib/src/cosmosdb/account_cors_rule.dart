@@ -44,7 +44,7 @@ class AccountCorsRule {
       allowedMethods: ((map['allowedMethods'] as List).cast<String>()).input(),
       allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
       exposedHeaders: ((map['exposedHeaders'] as List).cast<String>()).input(),
-      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : (map['maxAgeInSeconds'] as int).input(),
+      maxAgeInSeconds: map['maxAgeInSeconds'] == null ? null : (map['maxAgeInSeconds']! as int).input(),
     );
   }
 }

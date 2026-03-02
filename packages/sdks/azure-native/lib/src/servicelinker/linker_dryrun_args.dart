@@ -35,8 +35,8 @@ class LinkerDryrunArgs {
 
   factory LinkerDryrunArgs.fromMap(Map<String, dynamic> map) {
     return LinkerDryrunArgs(
-      dryrunName: map['dryrunName'] == null ? null : (map['dryrunName'] as String).input(),
-      parameters: map['parameters'] == null ? null : (CreateOrUpdateDryrunParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      dryrunName: map['dryrunName'] == null ? null : (map['dryrunName']! as String).input(),
+      parameters: map['parameters'] == null ? null : (CreateOrUpdateDryrunParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
       resourceUri: (map['resourceUri'] as String).input(),
     );
   }

@@ -46,7 +46,7 @@ class EventRuleArgs {
 
   factory EventRuleArgs.fromMap(Map<String, dynamic> map) {
     return EventRuleArgs(
-      eventPattern: map['eventPattern'] == null ? null : (map['eventPattern'] as String).input(),
+      eventPattern: map['eventPattern'] == null ? null : ((map['eventPattern'] as String).input()).input(),
       eventType: (map['eventType'] as String).input(),
       notificationConfigurationArn: (map['notificationConfigurationArn'] as String).input(),
       regions: ((map['regions'] as List).cast<String>()).input(),

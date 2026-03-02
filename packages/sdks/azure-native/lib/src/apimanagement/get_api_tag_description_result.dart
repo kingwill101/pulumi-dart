@@ -61,13 +61,13 @@ class GetApiTagDescriptionResult {
   factory GetApiTagDescriptionResult.fromMap(Map<String, dynamic> map) {
     return GetApiTagDescriptionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      externalDocsDescription: map['externalDocsDescription'] == null ? null : map['externalDocsDescription'] as String,
-      externalDocsUrl: map['externalDocsUrl'] == null ? null : map['externalDocsUrl'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      externalDocsDescription: map['externalDocsDescription'] == null ? null : map['externalDocsDescription']! as String,
+      externalDocsUrl: map['externalDocsUrl'] == null ? null : map['externalDocsUrl']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      tagId: map['tagId'] == null ? null : map['tagId'] as String,
+      tagId: map['tagId'] == null ? null : map['tagId']! as String,
       type: map['type'] as String,
     );
   }

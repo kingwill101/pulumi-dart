@@ -36,8 +36,8 @@ class EndpointOrigin {
   factory EndpointOrigin.fromMap(Map<String, dynamic> map) {
     return EndpointOrigin(
       hostName: (map['hostName'] as String).input(),
-      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
-      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort']! as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort']! as int).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -163,7 +163,7 @@ class KubernetesClusterAciConnectorLinux {
 
   factory KubernetesClusterAciConnectorLinux.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterAciConnectorLinux(
-      connectorIdentities: map['connectorIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterAciConnectorLinuxConnectorIdentity>(map['connectorIdentities'], (value) => KubernetesClusterAciConnectorLinuxConnectorIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectorIdentities: map['connectorIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterAciConnectorLinuxConnectorIdentity>(map['connectorIdentities']!, (value) => KubernetesClusterAciConnectorLinuxConnectorIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
       subnetName: (map['subnetName'] as String).input(),
     );
   }

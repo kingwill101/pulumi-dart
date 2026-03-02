@@ -37,9 +37,9 @@ class GoogleCloudDataplexV1TaskNotebookTaskConfig {
 
   factory GoogleCloudDataplexV1TaskNotebookTaskConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1TaskNotebookTaskConfig(
-      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris'] as List).cast<String>()).input(),
-      fileUris: map['fileUris'] == null ? null : ((map['fileUris'] as List).cast<String>()).input(),
-      infrastructureSpec: map['infrastructureSpec'] == null ? null : (GoogleCloudDataplexV1TaskInfrastructureSpec.fromMap((map['infrastructureSpec'] as Map).cast<String, dynamic>())).input(),
+      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris']! as List).cast<String>()).input(),
+      fileUris: map['fileUris'] == null ? null : ((map['fileUris']! as List).cast<String>()).input(),
+      infrastructureSpec: map['infrastructureSpec'] == null ? null : (GoogleCloudDataplexV1TaskInfrastructureSpec.fromMap((map['infrastructureSpec']! as Map).cast<String, dynamic>())).input(),
       notebook: (map['notebook'] as String).input(),
     );
   }

@@ -41,7 +41,7 @@ class NetworkConnectionMonitorTestGroup {
   factory NetworkConnectionMonitorTestGroup.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorTestGroup(
       destinationEndpoints: ((map['destinationEndpoints'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       name: (map['name'] as String).input(),
       sourceEndpoints: ((map['sourceEndpoints'] as List).cast<String>()).input(),
       testConfigurationNames: ((map['testConfigurationNames'] as List).cast<String>()).input(),

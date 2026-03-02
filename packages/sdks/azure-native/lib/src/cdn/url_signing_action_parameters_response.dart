@@ -32,8 +32,8 @@ class UrlSigningActionParametersResponse {
 
   factory UrlSigningActionParametersResponse.fromMap(Map<String, dynamic> map) {
     return UrlSigningActionParametersResponse(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
-      parameterNameOverride: map['parameterNameOverride'] == null ? null : (pulumi.Input.decodeList<UrlSigningParamIdentifierResponse>(map['parameterNameOverride'], (value) => UrlSigningParamIdentifierResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as String).input(),
+      parameterNameOverride: map['parameterNameOverride'] == null ? null : (pulumi.Input.decodeList<UrlSigningParamIdentifierResponse>(map['parameterNameOverride']!, (value) => UrlSigningParamIdentifierResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       typeName: (map['typeName'] as String).input(),
     );
   }

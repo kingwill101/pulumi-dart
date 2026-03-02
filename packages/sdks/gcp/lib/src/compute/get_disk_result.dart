@@ -257,7 +257,7 @@ class GetDiskResult {
       name: map['name'] as String,
       params: pulumi.Input.decodeList<GetDiskParam>(map['params'], (value) => GetDiskParam.fromMap((value as Map).cast<String, dynamic>())),
       physicalBlockSizeBytes: map['physicalBlockSizeBytes'] as int,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       provisionedIops: map['provisionedIops'] as int,
       provisionedThroughput: map['provisionedThroughput'] as int,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
@@ -277,7 +277,7 @@ class GetDiskResult {
       storagePool: map['storagePool'] as String,
       type: map['type'] as String,
       users: (map['users'] as List).cast<String>(),
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      zone: map['zone'] == null ? null : map['zone']! as String,
     );
   }
 }

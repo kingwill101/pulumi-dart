@@ -29,8 +29,8 @@ class TaskDefinitionLogConfiguration {
   factory TaskDefinitionLogConfiguration.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionLogConfiguration(
       logDriver: (map['logDriver'] as String).input(),
-      options: map['options'] == null ? null : (map['options']).input(),
-      secretOptions: map['secretOptions'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionSecret>(map['secretOptions'], (value) => TaskDefinitionSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      options: map['options'] == null ? null : (map['options']!).input(),
+      secretOptions: map['secretOptions'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionSecret>(map['secretOptions']!, (value) => TaskDefinitionSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

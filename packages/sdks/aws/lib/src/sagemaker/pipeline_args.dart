@@ -66,15 +66,15 @@ class PipelineArgs {
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      parallelismConfiguration: map['parallelismConfiguration'] == null ? null : (PipelineParallelismConfiguration.fromMap((map['parallelismConfiguration'] as Map).cast<String, dynamic>())).input(),
-      pipelineDefinition: map['pipelineDefinition'] == null ? null : (map['pipelineDefinition'] as String).input(),
-      pipelineDefinitionS3Location: map['pipelineDefinitionS3Location'] == null ? null : (PipelinePipelineDefinitionS3Location.fromMap((map['pipelineDefinitionS3Location'] as Map).cast<String, dynamic>())).input(),
-      pipelineDescription: map['pipelineDescription'] == null ? null : (map['pipelineDescription'] as String).input(),
+      parallelismConfiguration: map['parallelismConfiguration'] == null ? null : ((PipelineParallelismConfiguration.fromMap((map['parallelismConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      pipelineDefinition: map['pipelineDefinition'] == null ? null : ((map['pipelineDefinition'] as String).input()).input(),
+      pipelineDefinitionS3Location: map['pipelineDefinitionS3Location'] == null ? null : ((PipelinePipelineDefinitionS3Location.fromMap((map['pipelineDefinitionS3Location']! as Map).cast<String, dynamic>())).input()).input(),
+      pipelineDescription: map['pipelineDescription'] == null ? null : ((map['pipelineDescription'] as String).input()).input(),
       pipelineDisplayName: (map['pipelineDisplayName'] as String).input(),
       pipelineName: (map['pipelineName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

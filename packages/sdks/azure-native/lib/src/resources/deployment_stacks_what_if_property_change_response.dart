@@ -41,10 +41,10 @@ class DeploymentStacksWhatIfPropertyChangeResponse {
 
   factory DeploymentStacksWhatIfPropertyChangeResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksWhatIfPropertyChangeResponse(
-      after: map['after'] == null ? null : (map['after']).input(),
-      before: map['before'] == null ? null : (map['before']).input(),
+      after: map['after'] == null ? null : (map['after']!).input(),
+      before: map['before'] == null ? null : (map['before']!).input(),
       changeType: (map['changeType'] as String).input(),
-      children: map['children'] == null ? null : (pulumi.Input.decodeList<DeploymentStacksWhatIfPropertyChangeResponse>(map['children'], (value) => DeploymentStacksWhatIfPropertyChangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      children: map['children'] == null ? null : (pulumi.Input.decodeList<DeploymentStacksWhatIfPropertyChangeResponse>(map['children']!, (value) => DeploymentStacksWhatIfPropertyChangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       path: (map['path'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class SecurityPolicyRulePreconfiguredWafConfig {
 
   factory SecurityPolicyRulePreconfiguredWafConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRulePreconfiguredWafConfig(
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusion>(map['exclusions'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusion>(map['exclusions']!, (value) => SecurityPolicyRulePreconfiguredWafConfigExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

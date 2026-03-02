@@ -53,12 +53,12 @@ class RouterRoutePolicyArgs {
 
   factory RouterRoutePolicyArgs.fromMap(Map<String, dynamic> map) {
     return RouterRoutePolicyArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       router: (map['router'] as String).input(),
       terms: (pulumi.Input.decodeList<RouterRoutePolicyTerm>(map['terms'], (value) => RouterRoutePolicyTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

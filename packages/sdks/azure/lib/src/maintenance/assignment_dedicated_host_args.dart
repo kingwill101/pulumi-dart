@@ -35,7 +35,7 @@ class AssignmentDedicatedHostArgs {
   factory AssignmentDedicatedHostArgs.fromMap(Map<String, dynamic> map) {
     return AssignmentDedicatedHostArgs(
       dedicatedHostId: (map['dedicatedHostId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       maintenanceConfigurationId: (map['maintenanceConfigurationId'] as String).input(),
     );
   }

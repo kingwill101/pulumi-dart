@@ -61,14 +61,14 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      idpId: map['idpId'] == null ? null : (map['idpId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      passwordExpiresAt: map['passwordExpiresAt'] == null ? null : (map['passwordExpiresAt'] as String).input(),
-      protocolId: map['protocolId'] == null ? null : (map['protocolId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      idpId: map['idpId'] == null ? null : (map['idpId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      passwordExpiresAt: map['passwordExpiresAt'] == null ? null : (map['passwordExpiresAt']! as String).input(),
+      protocolId: map['protocolId'] == null ? null : (map['protocolId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId']! as String).input(),
     );
   }
 }

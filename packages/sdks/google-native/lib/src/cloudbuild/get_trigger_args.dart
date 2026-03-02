@@ -36,7 +36,7 @@ class GetTriggerArgs {
   factory GetTriggerArgs.fromMap(Map<String, dynamic> map) {
     return GetTriggerArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       projectId: (map['projectId'] as String).input(),
       triggerId: (map['triggerId'] as String).input(),
     );

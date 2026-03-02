@@ -28,8 +28,8 @@ class HttpRouteRouteRule {
 
   factory HttpRouteRouteRule.fromMap(Map<String, dynamic> map) {
     return HttpRouteRouteRule(
-      action: map['action'] == null ? null : (HttpRouteRouteAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<HttpRouteRouteMatch>(map['matches'], (value) => HttpRouteRouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      action: map['action'] == null ? null : (HttpRouteRouteAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<HttpRouteRouteMatch>(map['matches']!, (value) => HttpRouteRouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

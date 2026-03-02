@@ -25,8 +25,8 @@ class PipeSourceParametersSqsQueueParameters {
 
   factory PipeSourceParametersSqsQueueParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersSqsQueueParameters(
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
-      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : (map['maximumBatchingWindowInSeconds'] as int).input(),
+      batchSize: map['batchSize'] == null ? null : ((map['batchSize'] as int).input()).input(),
+      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : ((map['maximumBatchingWindowInSeconds'] as int).input()).input(),
     );
   }
 }

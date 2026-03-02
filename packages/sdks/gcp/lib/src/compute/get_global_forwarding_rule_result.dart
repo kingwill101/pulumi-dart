@@ -155,7 +155,7 @@ class GetGlobalForwardingRuleResult {
       networkTier: map['networkTier'] as String,
       noAutomateDnsZone: map['noAutomateDnsZone'] as bool,
       portRange: map['portRange'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pscConnectionId: map['pscConnectionId'] as String,
       pscConnectionStatus: map['pscConnectionStatus'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),

@@ -20,7 +20,7 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDet
 
   factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
     );
   }
 }

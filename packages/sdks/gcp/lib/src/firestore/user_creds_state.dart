@@ -64,14 +64,14 @@ class UserCredsState {
 
   factory UserCredsState.fromMap(Map<String, dynamic> map) {
     return UserCredsState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resourceIdentities: map['resourceIdentities'] == null ? null : (pulumi.Input.decodeList<UserCredsResourceIdentity>(map['resourceIdentities'], (value) => UserCredsResourceIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      securePassword: map['securePassword'] == null ? null : (map['securePassword'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resourceIdentities: map['resourceIdentities'] == null ? null : (pulumi.Input.decodeList<UserCredsResourceIdentity>(map['resourceIdentities']!, (value) => UserCredsResourceIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      securePassword: map['securePassword'] == null ? null : (map['securePassword']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

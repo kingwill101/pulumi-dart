@@ -34,9 +34,9 @@ class InstanceDiscoveryEndpoint {
 
   factory InstanceDiscoveryEndpoint.fromMap(Map<String, dynamic> map) {
     return InstanceDiscoveryEndpoint(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

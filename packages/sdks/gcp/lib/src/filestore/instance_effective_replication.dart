@@ -28,8 +28,8 @@ class InstanceEffectiveReplication {
 
   factory InstanceEffectiveReplication.fromMap(Map<String, dynamic> map) {
     return InstanceEffectiveReplication(
-      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<InstanceEffectiveReplicationReplica>(map['replicas'], (value) => InstanceEffectiveReplicationReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<InstanceEffectiveReplicationReplica>(map['replicas']!, (value) => InstanceEffectiveReplicationReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

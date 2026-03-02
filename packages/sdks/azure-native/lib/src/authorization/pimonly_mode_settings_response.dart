@@ -32,9 +32,9 @@ class PIMOnlyModeSettingsResponse {
 
   factory PIMOnlyModeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PIMOnlyModeSettingsResponse(
-      excludedAssignmentTypes: map['excludedAssignmentTypes'] == null ? null : ((map['excludedAssignmentTypes'] as List).cast<String>()).input(),
-      excludes: map['excludes'] == null ? null : (pulumi.Input.decodeList<UsersOrServicePrincipalSetResponse>(map['excludes'], (value) => UsersOrServicePrincipalSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      excludedAssignmentTypes: map['excludedAssignmentTypes'] == null ? null : ((map['excludedAssignmentTypes']! as List).cast<String>()).input(),
+      excludes: map['excludes'] == null ? null : (pulumi.Input.decodeList<UsersOrServicePrincipalSetResponse>(map['excludes']!, (value) => UsersOrServicePrincipalSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

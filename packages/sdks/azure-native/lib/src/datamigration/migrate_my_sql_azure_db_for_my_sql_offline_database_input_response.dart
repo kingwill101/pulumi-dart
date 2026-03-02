@@ -31,9 +31,9 @@ class MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse {
 
   factory MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tableMap: map['tableMap'] == null ? null : ((map['tableMap'] as Map).cast<String, String>()).input(),
-      targetDatabaseName: map['targetDatabaseName'] == null ? null : (map['targetDatabaseName'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tableMap: map['tableMap'] == null ? null : ((map['tableMap']! as Map).cast<String, String>()).input(),
+      targetDatabaseName: map['targetDatabaseName'] == null ? null : (map['targetDatabaseName']! as String).input(),
     );
   }
 }

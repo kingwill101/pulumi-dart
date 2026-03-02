@@ -25,8 +25,8 @@ class DomainDevicesGraphicDesktop {
 
   factory DomainDevicesGraphicDesktop.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicDesktop(
-      display: map['display'] == null ? null : (map['display'] as String).input(),
-      fullScreen: map['fullScreen'] == null ? null : (map['fullScreen'] as String).input(),
+      display: map['display'] == null ? null : (map['display']! as String).input(),
+      fullScreen: map['fullScreen'] == null ? null : (map['fullScreen']! as String).input(),
     );
   }
 }

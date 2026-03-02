@@ -67,16 +67,16 @@ class UserProfileState {
 
   factory UserProfileState.fromMap(Map<String, dynamic> map) {
     return UserProfileState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      homeEfsFileSystemUid: map['homeEfsFileSystemUid'] == null ? null : (map['homeEfsFileSystemUid'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      singleSignOnUserIdentifier: map['singleSignOnUserIdentifier'] == null ? null : (map['singleSignOnUserIdentifier'] as String).input(),
-      singleSignOnUserValue: map['singleSignOnUserValue'] == null ? null : (map['singleSignOnUserValue'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      userProfileName: map['userProfileName'] == null ? null : (map['userProfileName'] as String).input(),
-      userSettings: map['userSettings'] == null ? null : (UserProfileUserSettings.fromMap((map['userSettings'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      domainId: map['domainId'] == null ? null : ((map['domainId'] as String).input()).input(),
+      homeEfsFileSystemUid: map['homeEfsFileSystemUid'] == null ? null : ((map['homeEfsFileSystemUid'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      singleSignOnUserIdentifier: map['singleSignOnUserIdentifier'] == null ? null : ((map['singleSignOnUserIdentifier'] as String).input()).input(),
+      singleSignOnUserValue: map['singleSignOnUserValue'] == null ? null : ((map['singleSignOnUserValue'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      userProfileName: map['userProfileName'] == null ? null : ((map['userProfileName'] as String).input()).input(),
+      userSettings: map['userSettings'] == null ? null : ((UserProfileUserSettings.fromMap((map['userSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

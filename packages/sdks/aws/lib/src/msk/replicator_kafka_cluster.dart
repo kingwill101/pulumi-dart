@@ -27,8 +27,8 @@ class ReplicatorKafkaCluster {
 
   factory ReplicatorKafkaCluster.fromMap(Map<String, dynamic> map) {
     return ReplicatorKafkaCluster(
-      amazonMskCluster: (ReplicatorKafkaClusterAmazonMskCluster.fromMap((map['amazonMskCluster'] as Map).cast<String, dynamic>())).input(),
-      vpcConfig: (ReplicatorKafkaClusterVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      amazonMskCluster: (ReplicatorKafkaClusterAmazonMskCluster.fromMap((map['amazonMskCluster']! as Map).cast<String, dynamic>())).input(),
+      vpcConfig: (ReplicatorKafkaClusterVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class SloBasicSliAvailability {
 
   factory SloBasicSliAvailability.fromMap(Map<String, dynamic> map) {
     return SloBasicSliAvailability(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

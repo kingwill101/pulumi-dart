@@ -77,18 +77,18 @@ class AutoGroupingRuleState {
 
   factory AutoGroupingRuleState.fromMap(Map<String, dynamic> map) {
     return AutoGroupingRuleState(
-      excludeRegionIdsScope: map['excludeRegionIdsScope'] == null ? null : (map['excludeRegionIdsScope'] as String).input(),
-      excludeResourceGroupIdsScope: map['excludeResourceGroupIdsScope'] == null ? null : (map['excludeResourceGroupIdsScope'] as String).input(),
-      excludeResourceIdsScope: map['excludeResourceIdsScope'] == null ? null : (map['excludeResourceIdsScope'] as String).input(),
-      excludeResourceTypesScope: map['excludeResourceTypesScope'] == null ? null : (map['excludeResourceTypesScope'] as String).input(),
-      regionIdsScope: map['regionIdsScope'] == null ? null : (map['regionIdsScope'] as String).input(),
-      resourceGroupIdsScope: map['resourceGroupIdsScope'] == null ? null : (map['resourceGroupIdsScope'] as String).input(),
-      resourceIdsScope: map['resourceIdsScope'] == null ? null : (map['resourceIdsScope'] as String).input(),
-      resourceTypesScope: map['resourceTypesScope'] == null ? null : (map['resourceTypesScope'] as String).input(),
-      ruleContents: map['ruleContents'] == null ? null : (pulumi.Input.decodeList<AutoGroupingRuleRuleContent>(map['ruleContents'], (value) => AutoGroupingRuleRuleContent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleDesc: map['ruleDesc'] == null ? null : (map['ruleDesc'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as String).input(),
+      excludeRegionIdsScope: map['excludeRegionIdsScope'] == null ? null : (map['excludeRegionIdsScope']! as String).input(),
+      excludeResourceGroupIdsScope: map['excludeResourceGroupIdsScope'] == null ? null : (map['excludeResourceGroupIdsScope']! as String).input(),
+      excludeResourceIdsScope: map['excludeResourceIdsScope'] == null ? null : (map['excludeResourceIdsScope']! as String).input(),
+      excludeResourceTypesScope: map['excludeResourceTypesScope'] == null ? null : (map['excludeResourceTypesScope']! as String).input(),
+      regionIdsScope: map['regionIdsScope'] == null ? null : (map['regionIdsScope']! as String).input(),
+      resourceGroupIdsScope: map['resourceGroupIdsScope'] == null ? null : (map['resourceGroupIdsScope']! as String).input(),
+      resourceIdsScope: map['resourceIdsScope'] == null ? null : (map['resourceIdsScope']! as String).input(),
+      resourceTypesScope: map['resourceTypesScope'] == null ? null : (map['resourceTypesScope']! as String).input(),
+      ruleContents: map['ruleContents'] == null ? null : (pulumi.Input.decodeList<AutoGroupingRuleRuleContent>(map['ruleContents']!, (value) => AutoGroupingRuleRuleContent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleDesc: map['ruleDesc'] == null ? null : (map['ruleDesc']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType']! as String).input(),
     );
   }
 }

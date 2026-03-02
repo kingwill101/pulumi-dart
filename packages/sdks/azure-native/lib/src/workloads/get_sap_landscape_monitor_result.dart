@@ -60,12 +60,12 @@ class GetSapLandscapeMonitorResult {
   factory GetSapLandscapeMonitorResult.fromMap(Map<String, dynamic> map) {
     return GetSapLandscapeMonitorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      grouping: map['grouping'] == null ? null : SapLandscapeMonitorPropertiesGroupingResponse.fromMap((map['grouping'] as Map).cast<String, dynamic>()),
+      grouping: map['grouping'] == null ? null : SapLandscapeMonitorPropertiesGroupingResponse.fromMap((map['grouping']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      topMetricsThresholds: map['topMetricsThresholds'] == null ? null : pulumi.Input.decodeList<SapLandscapeMonitorMetricThresholdsResponse>(map['topMetricsThresholds'], (value) => SapLandscapeMonitorMetricThresholdsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      topMetricsThresholds: map['topMetricsThresholds'] == null ? null : pulumi.Input.decodeList<SapLandscapeMonitorMetricThresholdsResponse>(map['topMetricsThresholds']!, (value) => SapLandscapeMonitorMetricThresholdsResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

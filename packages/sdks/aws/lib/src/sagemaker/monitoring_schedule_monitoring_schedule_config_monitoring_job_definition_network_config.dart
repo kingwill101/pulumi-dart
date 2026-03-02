@@ -31,9 +31,9 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkCo
 
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig(
-      enableInterContainerTrafficEncryption: map['enableInterContainerTrafficEncryption'] == null ? null : (map['enableInterContainerTrafficEncryption'] as bool).input(),
-      enableNetworkIsolation: map['enableNetworkIsolation'] == null ? null : (map['enableNetworkIsolation'] as bool).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfigVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      enableInterContainerTrafficEncryption: map['enableInterContainerTrafficEncryption'] == null ? null : ((map['enableInterContainerTrafficEncryption'] as bool).input()).input(),
+      enableNetworkIsolation: map['enableNetworkIsolation'] == null ? null : ((map['enableNetworkIsolation'] as bool).input()).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfigVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

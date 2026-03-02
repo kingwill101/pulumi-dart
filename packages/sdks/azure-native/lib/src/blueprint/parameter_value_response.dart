@@ -27,8 +27,8 @@ class ParameterValueResponse {
 
   factory ParameterValueResponse.fromMap(Map<String, dynamic> map) {
     return ParameterValueResponse(
-      reference: map['reference'] == null ? null : (SecretValueReferenceResponse.fromMap((map['reference'] as Map).cast<String, dynamic>())).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      reference: map['reference'] == null ? null : (SecretValueReferenceResponse.fromMap((map['reference']! as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class MetricDescriptorMetadata {
 
   factory MetricDescriptorMetadata.fromMap(Map<String, dynamic> map) {
     return MetricDescriptorMetadata(
-      ingestDelay: map['ingestDelay'] == null ? null : (map['ingestDelay'] as String).input(),
-      samplePeriod: map['samplePeriod'] == null ? null : (map['samplePeriod'] as String).input(),
+      ingestDelay: map['ingestDelay'] == null ? null : (map['ingestDelay']! as String).input(),
+      samplePeriod: map['samplePeriod'] == null ? null : (map['samplePeriod']! as String).input(),
     );
   }
 }

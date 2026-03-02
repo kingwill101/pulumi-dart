@@ -45,11 +45,11 @@ class IosTest {
 
   factory IosTest.fromMap(Map<String, dynamic> map) {
     return IosTest(
-      iosAppInfo: map['iosAppInfo'] == null ? null : (IosAppInfo.fromMap((map['iosAppInfo'] as Map).cast<String, dynamic>())).input(),
-      iosRoboTest: map['iosRoboTest'] == null ? null : ((map['iosRoboTest'] as Map).cast<String, dynamic>()).input(),
-      iosTestLoop: map['iosTestLoop'] == null ? null : (IosTestLoop.fromMap((map['iosTestLoop'] as Map).cast<String, dynamic>())).input(),
-      iosXcTest: map['iosXcTest'] == null ? null : (IosXcTest.fromMap((map['iosXcTest'] as Map).cast<String, dynamic>())).input(),
-      testTimeout: map['testTimeout'] == null ? null : (Duration.fromMap((map['testTimeout'] as Map).cast<String, dynamic>())).input(),
+      iosAppInfo: map['iosAppInfo'] == null ? null : (IosAppInfo.fromMap((map['iosAppInfo']! as Map).cast<String, dynamic>())).input(),
+      iosRoboTest: map['iosRoboTest'] == null ? null : ((map['iosRoboTest']! as Map).cast<String, dynamic>()).input(),
+      iosTestLoop: map['iosTestLoop'] == null ? null : (IosTestLoop.fromMap((map['iosTestLoop']! as Map).cast<String, dynamic>())).input(),
+      iosXcTest: map['iosXcTest'] == null ? null : (IosXcTest.fromMap((map['iosXcTest']! as Map).cast<String, dynamic>())).input(),
+      testTimeout: map['testTimeout'] == null ? null : (Duration.fromMap((map['testTimeout']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

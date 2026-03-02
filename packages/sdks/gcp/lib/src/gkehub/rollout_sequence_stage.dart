@@ -34,9 +34,9 @@ class RolloutSequenceStage {
 
   factory RolloutSequenceStage.fromMap(Map<String, dynamic> map) {
     return RolloutSequenceStage(
-      clusterSelector: map['clusterSelector'] == null ? null : (RolloutSequenceStageClusterSelector.fromMap((map['clusterSelector'] as Map).cast<String, dynamic>())).input(),
+      clusterSelector: map['clusterSelector'] == null ? null : (RolloutSequenceStageClusterSelector.fromMap((map['clusterSelector']! as Map).cast<String, dynamic>())).input(),
       fleetProjects: ((map['fleetProjects'] as List).cast<String>()).input(),
-      soakDuration: map['soakDuration'] == null ? null : (map['soakDuration'] as String).input(),
+      soakDuration: map['soakDuration'] == null ? null : (map['soakDuration']! as String).input(),
     );
   }
 }

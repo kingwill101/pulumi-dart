@@ -32,8 +32,8 @@ class TaskSetNetworkConfiguration {
 
   factory TaskSetNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return TaskSetNetworkConfiguration(
-      assignPublicIp: map['assignPublicIp'] == null ? null : (map['assignPublicIp'] as bool).input(),
-      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
+      assignPublicIp: map['assignPublicIp'] == null ? null : ((map['assignPublicIp'] as bool).input()).input(),
+      securityGroups: map['securityGroups'] == null ? null : (((map['securityGroups'] as List).cast<String>()).input()).input(),
       subnets: ((map['subnets'] as List).cast<String>()).input(),
     );
   }

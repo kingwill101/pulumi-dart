@@ -31,9 +31,9 @@ class SqlFileShare {
 
   factory SqlFileShare.fromMap(Map<String, dynamic> map) {
     return SqlFileShare(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

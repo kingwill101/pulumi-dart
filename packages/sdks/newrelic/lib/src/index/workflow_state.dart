@@ -80,18 +80,18 @@ class WorkflowState {
 
   factory WorkflowState.fromMap(Map<String, dynamic> map) {
     return WorkflowState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<WorkflowDestination>(map['destinations'], (value) => WorkflowDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      destinationsEnabled: map['destinationsEnabled'] == null ? null : (map['destinationsEnabled'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      enrichments: map['enrichments'] == null ? null : (WorkflowEnrichments.fromMap((map['enrichments'] as Map).cast<String, dynamic>())).input(),
-      enrichmentsEnabled: map['enrichmentsEnabled'] == null ? null : (map['enrichmentsEnabled'] as bool).input(),
-      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
-      issuesFilter: map['issuesFilter'] == null ? null : (WorkflowIssuesFilter.fromMap((map['issuesFilter'] as Map).cast<String, dynamic>())).input(),
-      lastRun: map['lastRun'] == null ? null : (map['lastRun'] as String).input(),
-      mutingRulesHandling: map['mutingRulesHandling'] == null ? null : (map['mutingRulesHandling'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      workflowId: map['workflowId'] == null ? null : (map['workflowId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<WorkflowDestination>(map['destinations']!, (value) => WorkflowDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationsEnabled: map['destinationsEnabled'] == null ? null : (map['destinationsEnabled']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enrichments: map['enrichments'] == null ? null : (WorkflowEnrichments.fromMap((map['enrichments']! as Map).cast<String, dynamic>())).input(),
+      enrichmentsEnabled: map['enrichmentsEnabled'] == null ? null : (map['enrichmentsEnabled']! as bool).input(),
+      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
+      issuesFilter: map['issuesFilter'] == null ? null : (WorkflowIssuesFilter.fromMap((map['issuesFilter']! as Map).cast<String, dynamic>())).input(),
+      lastRun: map['lastRun'] == null ? null : (map['lastRun']! as String).input(),
+      mutingRulesHandling: map['mutingRulesHandling'] == null ? null : (map['mutingRulesHandling']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      workflowId: map['workflowId'] == null ? null : (map['workflowId']! as String).input(),
     );
   }
 }

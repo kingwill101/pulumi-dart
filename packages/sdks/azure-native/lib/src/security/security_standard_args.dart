@@ -55,13 +55,13 @@ class SecurityStandardArgs {
 
   factory SecurityStandardArgs.fromMap(Map<String, dynamic> map) {
     return SecurityStandardArgs(
-      assessments: map['assessments'] == null ? null : (pulumi.Input.decodeList<PartialAssessmentProperties>(map['assessments'], (value) => PartialAssessmentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cloudProviders: map['cloudProviders'] == null ? null : ((map['cloudProviders'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      policySetDefinitionId: map['policySetDefinitionId'] == null ? null : (map['policySetDefinitionId'] as String).input(),
+      assessments: map['assessments'] == null ? null : (pulumi.Input.decodeList<PartialAssessmentProperties>(map['assessments']!, (value) => PartialAssessmentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudProviders: map['cloudProviders'] == null ? null : ((map['cloudProviders']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      policySetDefinitionId: map['policySetDefinitionId'] == null ? null : (map['policySetDefinitionId']! as String).input(),
       scope: (map['scope'] as String).input(),
-      standardId: map['standardId'] == null ? null : (map['standardId'] as String).input(),
+      standardId: map['standardId'] == null ? null : (map['standardId']! as String).input(),
     );
   }
 }

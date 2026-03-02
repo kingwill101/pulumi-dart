@@ -66,11 +66,11 @@ class DatascanIamMemberArgs {
 
   factory DatascanIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return DatascanIamMemberArgs(
-      condition: map['condition'] == null ? null : (DatascanIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (DatascanIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       dataScanId: (map['dataScanId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

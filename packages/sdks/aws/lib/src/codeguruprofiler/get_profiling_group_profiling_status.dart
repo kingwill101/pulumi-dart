@@ -30,7 +30,7 @@ class GetProfilingGroupProfilingStatus {
     return GetProfilingGroupProfilingStatus(
       latestAgentOrchestratedAt: (map['latestAgentOrchestratedAt'] as String).input(),
       latestAgentProfileReportedAt: (map['latestAgentProfileReportedAt'] as String).input(),
-      latestAggregatedProfiles: (pulumi.Input.decodeList<GetProfilingGroupProfilingStatusLatestAggregatedProfile>(map['latestAggregatedProfiles'], (value) => GetProfilingGroupProfilingStatusLatestAggregatedProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      latestAggregatedProfiles: (pulumi.Input.decodeList<GetProfilingGroupProfilingStatusLatestAggregatedProfile>(map['latestAggregatedProfiles']!, (value) => GetProfilingGroupProfilingStatusLatestAggregatedProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

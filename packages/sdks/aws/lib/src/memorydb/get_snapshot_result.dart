@@ -62,7 +62,7 @@ class GetSnapshotResult {
   factory GetSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotResult(
       arn: map['arn'] as String,
-      clusterConfigurations: pulumi.Input.decodeList<GetSnapshotClusterConfiguration>(map['clusterConfigurations'], (value) => GetSnapshotClusterConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      clusterConfigurations: pulumi.Input.decodeList<GetSnapshotClusterConfiguration>(map['clusterConfigurations']!, (value) => GetSnapshotClusterConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       clusterName: map['clusterName'] as String,
       id: map['id'] as String,
       kmsKeyArn: map['kmsKeyArn'] as String,

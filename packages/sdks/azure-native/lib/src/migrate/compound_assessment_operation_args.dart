@@ -40,9 +40,9 @@ class CompoundAssessmentOperationArgs {
 
   factory CompoundAssessmentOperationArgs.fromMap(Map<String, dynamic> map) {
     return CompoundAssessmentOperationArgs(
-      compoundAssessmentName: map['compoundAssessmentName'] == null ? null : (map['compoundAssessmentName'] as String).input(),
+      compoundAssessmentName: map['compoundAssessmentName'] == null ? null : (map['compoundAssessmentName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (CompoundAssessmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (CompoundAssessmentProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

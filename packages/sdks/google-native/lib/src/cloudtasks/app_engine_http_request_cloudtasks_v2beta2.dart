@@ -43,11 +43,11 @@ class AppEngineHttpRequestCloudtasksV2beta2 {
 
   factory AppEngineHttpRequestCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return AppEngineHttpRequestCloudtasksV2beta2(
-      appEngineRouting: map['appEngineRouting'] == null ? null : (AppEngineRoutingCloudtasksV2beta2.fromMap((map['appEngineRouting'] as Map).cast<String, dynamic>())).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      httpMethod: map['httpMethod'] == null ? null : (AppEngineHttpRequestHttpMethodCloudtasksV2beta2.fromValue(map['httpMethod'] as String)).input(),
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
-      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl'] as String).input(),
+      appEngineRouting: map['appEngineRouting'] == null ? null : (AppEngineRoutingCloudtasksV2beta2.fromMap((map['appEngineRouting']! as Map).cast<String, dynamic>())).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (AppEngineHttpRequestHttpMethodCloudtasksV2beta2.fromValue(map['httpMethod']! as String)).input(),
+      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
+      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl']! as String).input(),
     );
   }
 }

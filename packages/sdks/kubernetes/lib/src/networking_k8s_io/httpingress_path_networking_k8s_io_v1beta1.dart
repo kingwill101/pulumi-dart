@@ -43,8 +43,8 @@ class HTTPIngressPathNetworkingK8sIoV1beta1 {
   factory HTTPIngressPathNetworkingK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return HTTPIngressPathNetworkingK8sIoV1beta1(
       backend: (IngressBackendNetworkingK8sIoV1beta1.fromMap((map['backend'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      pathType: map['pathType'] == null ? null : (map['pathType'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      pathType: map['pathType'] == null ? null : (map['pathType']! as String).input(),
     );
   }
 }

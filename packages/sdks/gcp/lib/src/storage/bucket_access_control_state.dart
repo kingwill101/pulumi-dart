@@ -56,11 +56,11 @@ class BucketAccessControlState {
 
   factory BucketAccessControlState.fromMap(Map<String, dynamic> map) {
     return BucketAccessControlState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      entity: map['entity'] == null ? null : (map['entity']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

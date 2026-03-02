@@ -26,8 +26,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
 
   factory GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig(
-      baselineModelVersion: map['baselineModelVersion'] == null ? null : (map['baselineModelVersion'] as String).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
+      baselineModelVersion: map['baselineModelVersion'] == null ? null : (map['baselineModelVersion']! as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
     );
   }
 }

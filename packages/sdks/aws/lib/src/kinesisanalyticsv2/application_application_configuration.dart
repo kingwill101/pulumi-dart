@@ -63,14 +63,14 @@ class ApplicationApplicationConfiguration {
 
   factory ApplicationApplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfiguration(
-      applicationCodeConfiguration: (ApplicationApplicationConfigurationApplicationCodeConfiguration.fromMap((map['applicationCodeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      applicationEncryptionConfiguration: map['applicationEncryptionConfiguration'] == null ? null : (ApplicationApplicationConfigurationApplicationEncryptionConfiguration.fromMap((map['applicationEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      applicationSnapshotConfiguration: map['applicationSnapshotConfiguration'] == null ? null : (ApplicationApplicationConfigurationApplicationSnapshotConfiguration.fromMap((map['applicationSnapshotConfiguration'] as Map).cast<String, dynamic>())).input(),
-      environmentProperties: map['environmentProperties'] == null ? null : (ApplicationApplicationConfigurationEnvironmentProperties.fromMap((map['environmentProperties'] as Map).cast<String, dynamic>())).input(),
-      flinkApplicationConfiguration: map['flinkApplicationConfiguration'] == null ? null : (ApplicationApplicationConfigurationFlinkApplicationConfiguration.fromMap((map['flinkApplicationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      runConfiguration: map['runConfiguration'] == null ? null : (ApplicationApplicationConfigurationRunConfiguration.fromMap((map['runConfiguration'] as Map).cast<String, dynamic>())).input(),
-      sqlApplicationConfiguration: map['sqlApplicationConfiguration'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfiguration.fromMap((map['sqlApplicationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : (ApplicationApplicationConfigurationVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      applicationCodeConfiguration: (ApplicationApplicationConfigurationApplicationCodeConfiguration.fromMap((map['applicationCodeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      applicationEncryptionConfiguration: map['applicationEncryptionConfiguration'] == null ? null : ((ApplicationApplicationConfigurationApplicationEncryptionConfiguration.fromMap((map['applicationEncryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      applicationSnapshotConfiguration: map['applicationSnapshotConfiguration'] == null ? null : ((ApplicationApplicationConfigurationApplicationSnapshotConfiguration.fromMap((map['applicationSnapshotConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      environmentProperties: map['environmentProperties'] == null ? null : ((ApplicationApplicationConfigurationEnvironmentProperties.fromMap((map['environmentProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      flinkApplicationConfiguration: map['flinkApplicationConfiguration'] == null ? null : ((ApplicationApplicationConfigurationFlinkApplicationConfiguration.fromMap((map['flinkApplicationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      runConfiguration: map['runConfiguration'] == null ? null : ((ApplicationApplicationConfigurationRunConfiguration.fromMap((map['runConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      sqlApplicationConfiguration: map['sqlApplicationConfiguration'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfiguration.fromMap((map['sqlApplicationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : ((ApplicationApplicationConfigurationVpcConfiguration.fromMap((map['vpcConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -69,16 +69,16 @@ class OrganizationBucketArgs {
 
   factory OrganizationBucketArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationBucketArgs(
-      analyticsEnabled: map['analyticsEnabled'] == null ? null : (map['analyticsEnabled'] as bool).input(),
+      analyticsEnabled: map['analyticsEnabled'] == null ? null : (map['analyticsEnabled']! as bool).input(),
       bucketId: (map['bucketId'] as String).input(),
-      cmekSettings: map['cmekSettings'] == null ? null : (CmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<IndexConfig>(map['indexConfigs'], (value) => IndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (CmekSettings.fromMap((map['cmekSettings']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<IndexConfig>(map['indexConfigs']!, (value) => IndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
       organizationId: (map['organizationId'] as String).input(),
-      restrictedFields: map['restrictedFields'] == null ? null : ((map['restrictedFields'] as List).cast<String>()).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      restrictedFields: map['restrictedFields'] == null ? null : ((map['restrictedFields']! as List).cast<String>()).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
     );
   }
 }

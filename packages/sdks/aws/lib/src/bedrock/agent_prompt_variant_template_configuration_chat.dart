@@ -38,10 +38,10 @@ class AgentPromptVariantTemplateConfigurationChat {
 
   factory AgentPromptVariantTemplateConfigurationChat.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChat(
-      inputVariables: map['inputVariables'] == null ? null : (pulumi.Input.decodeList<AgentPromptVariantTemplateConfigurationChatInputVariable>(map['inputVariables'], (value) => AgentPromptVariantTemplateConfigurationChatInputVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      messages: (pulumi.Input.decodeList<AgentPromptVariantTemplateConfigurationChatMessage>(map['messages'], (value) => AgentPromptVariantTemplateConfigurationChatMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      systems: map['systems'] == null ? null : (pulumi.Input.decodeList<AgentPromptVariantTemplateConfigurationChatSystem>(map['systems'], (value) => AgentPromptVariantTemplateConfigurationChatSystem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      toolConfiguration: map['toolConfiguration'] == null ? null : (AgentPromptVariantTemplateConfigurationChatToolConfiguration.fromMap((map['toolConfiguration'] as Map).cast<String, dynamic>())).input(),
+      inputVariables: map['inputVariables'] == null ? null : ((pulumi.Input.decodeList<AgentPromptVariantTemplateConfigurationChatInputVariable>(map['inputVariables']!, (value) => AgentPromptVariantTemplateConfigurationChatInputVariable.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      messages: (pulumi.Input.decodeList<AgentPromptVariantTemplateConfigurationChatMessage>(map['messages']!, (value) => AgentPromptVariantTemplateConfigurationChatMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      systems: map['systems'] == null ? null : ((pulumi.Input.decodeList<AgentPromptVariantTemplateConfigurationChatSystem>(map['systems']!, (value) => AgentPromptVariantTemplateConfigurationChatSystem.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      toolConfiguration: map['toolConfiguration'] == null ? null : ((AgentPromptVariantTemplateConfigurationChatToolConfiguration.fromMap((map['toolConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

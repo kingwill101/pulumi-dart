@@ -25,8 +25,8 @@ class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance {
 
   factory InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance.fromMap(Map<String, dynamic> map) {
     return InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance(
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

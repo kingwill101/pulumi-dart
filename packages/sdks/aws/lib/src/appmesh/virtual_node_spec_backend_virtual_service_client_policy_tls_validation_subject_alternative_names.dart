@@ -21,7 +21,7 @@ class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationSubjectAltern
 
   factory VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationSubjectAlternativeNames.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationSubjectAlternativeNames(
-      match: (VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationSubjectAlternativeNamesMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      match: (VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationSubjectAlternativeNamesMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

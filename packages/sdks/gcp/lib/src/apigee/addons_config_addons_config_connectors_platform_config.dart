@@ -26,8 +26,8 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfig {
 
   factory AddonsConfigAddonsConfigConnectorsPlatformConfig.fromMap(Map<String, dynamic> map) {
     return AddonsConfigAddonsConfigConnectorsPlatformConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt']! as String).input(),
     );
   }
 }

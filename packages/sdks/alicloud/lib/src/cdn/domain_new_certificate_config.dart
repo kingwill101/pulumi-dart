@@ -56,13 +56,13 @@ class DomainNewCertificateConfig {
 
   factory DomainNewCertificateConfig.fromMap(Map<String, dynamic> map) {
     return DomainNewCertificateConfig(
-      certId: map['certId'] == null ? null : (map['certId'] as String).input(),
-      certName: map['certName'] == null ? null : (map['certName'] as String).input(),
-      certRegion: map['certRegion'] == null ? null : (map['certRegion'] as String).input(),
-      certType: map['certType'] == null ? null : (map['certType'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate'] as String).input(),
-      serverCertificateStatus: map['serverCertificateStatus'] == null ? null : (map['serverCertificateStatus'] as String).input(),
+      certId: map['certId'] == null ? null : (map['certId']! as String).input(),
+      certName: map['certName'] == null ? null : (map['certName']! as String).input(),
+      certRegion: map['certRegion'] == null ? null : (map['certRegion']! as String).input(),
+      certType: map['certType'] == null ? null : (map['certType']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate']! as String).input(),
+      serverCertificateStatus: map['serverCertificateStatus'] == null ? null : (map['serverCertificateStatus']! as String).input(),
     );
   }
 }

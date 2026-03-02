@@ -21,7 +21,7 @@ class VirtualNodeSpecBackendDefaultsClientPolicy {
 
   factory VirtualNodeSpecBackendDefaultsClientPolicy.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendDefaultsClientPolicy(
-      tls: map['tls'] == null ? null : (VirtualNodeSpecBackendDefaultsClientPolicyTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      tls: map['tls'] == null ? null : ((VirtualNodeSpecBackendDefaultsClientPolicyTls.fromMap((map['tls']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

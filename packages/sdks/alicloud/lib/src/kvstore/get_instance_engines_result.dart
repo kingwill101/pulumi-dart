@@ -50,12 +50,12 @@ class GetInstanceEnginesResult {
 
   factory GetInstanceEnginesResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceEnginesResult(
-      engine: map['engine'] == null ? null : map['engine'] as String,
-      engineVersion: map['engineVersion'] == null ? null : map['engineVersion'] as String,
+      engine: map['engine'] == null ? null : map['engine']! as String,
+      engineVersion: map['engineVersion'] == null ? null : map['engineVersion']! as String,
       id: map['id'] as String,
-      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType'] as String,
+      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType']! as String,
       instanceEngines: pulumi.Input.decodeList<GetInstanceEnginesInstanceEngine>(map['instanceEngines'], (value) => GetInstanceEnginesInstanceEngine.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       zoneId: map['zoneId'] as String,
     );
   }

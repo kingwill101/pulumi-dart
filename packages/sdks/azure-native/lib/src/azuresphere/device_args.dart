@@ -51,8 +51,8 @@ class DeviceArgs {
     return DeviceArgs(
       catalogName: (map['catalogName'] as String).input(),
       deviceGroupName: (map['deviceGroupName'] as String).input(),
-      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      deviceId: map['deviceId'] == null ? null : (map['deviceId']! as String).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
       productName: (map['productName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

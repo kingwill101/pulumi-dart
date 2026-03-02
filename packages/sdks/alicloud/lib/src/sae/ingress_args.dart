@@ -71,13 +71,13 @@ class IngressArgs {
 
   factory IngressArgs.fromMap(Map<String, dynamic> map) {
     return IngressArgs(
-      certId: map['certId'] == null ? null : (map['certId'] as String).input(),
-      certIds: map['certIds'] == null ? null : (map['certIds'] as String).input(),
-      defaultRule: map['defaultRule'] == null ? null : (IngressDefaultRule.fromMap((map['defaultRule'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      certId: map['certId'] == null ? null : (map['certId']! as String).input(),
+      certIds: map['certIds'] == null ? null : (map['certIds']! as String).input(),
+      defaultRule: map['defaultRule'] == null ? null : (IngressDefaultRule.fromMap((map['defaultRule']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       listenerPort: (map['listenerPort'] as int).input(),
-      listenerProtocol: map['listenerProtocol'] == null ? null : (map['listenerProtocol'] as String).input(),
-      loadBalanceType: map['loadBalanceType'] == null ? null : (map['loadBalanceType'] as String).input(),
+      listenerProtocol: map['listenerProtocol'] == null ? null : (map['listenerProtocol']! as String).input(),
+      loadBalanceType: map['loadBalanceType'] == null ? null : (map['loadBalanceType']! as String).input(),
       namespaceId: (map['namespaceId'] as String).input(),
       rules: (pulumi.Input.decodeList<IngressRule>(map['rules'], (value) => IngressRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       slbId: (map['slbId'] as String).input(),

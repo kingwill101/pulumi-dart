@@ -36,8 +36,8 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config {
 
   factory NetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config(
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
-      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<String>()).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
+      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<String>()).input(),
     );
   }
 }

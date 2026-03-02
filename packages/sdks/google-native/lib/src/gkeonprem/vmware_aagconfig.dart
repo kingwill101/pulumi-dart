@@ -21,7 +21,7 @@ class VmwareAAGConfig {
 
   factory VmwareAAGConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAAGConfig(
-      aagConfigDisabled: map['aagConfigDisabled'] == null ? null : (map['aagConfigDisabled'] as bool).input(),
+      aagConfigDisabled: map['aagConfigDisabled'] == null ? null : (map['aagConfigDisabled']! as bool).input(),
     );
   }
 }

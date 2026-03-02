@@ -46,12 +46,12 @@ class WorkstationConfigContainer {
 
   factory WorkstationConfigContainer.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigContainer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      env: map['env'] == null ? null : ((map['env'] as Map).cast<String, String>()).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
-      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      env: map['env'] == null ? null : ((map['env']! as Map).cast<String, String>()).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser']! as int).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir']! as String).input(),
     );
   }
 }

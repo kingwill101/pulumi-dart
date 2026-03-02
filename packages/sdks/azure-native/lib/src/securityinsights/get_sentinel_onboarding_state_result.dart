@@ -52,8 +52,8 @@ class GetSentinelOnboardingStateResult {
   factory GetSentinelOnboardingStateResult.fromMap(Map<String, dynamic> map) {
     return GetSentinelOnboardingStateResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customerManagedKey: map['customerManagedKey'] == null ? null : map['customerManagedKey'] as bool,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      customerManagedKey: map['customerManagedKey'] == null ? null : map['customerManagedKey']! as bool,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

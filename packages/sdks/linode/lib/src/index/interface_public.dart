@@ -27,8 +27,8 @@ class InterfacePublic {
 
   factory InterfacePublic.fromMap(Map<String, dynamic> map) {
     return InterfacePublic(
-      ipv4: map['ipv4'] == null ? null : (InterfacePublicIpv4.fromMap((map['ipv4'] as Map).cast<String, dynamic>())).input(),
-      ipv6: map['ipv6'] == null ? null : (InterfacePublicIpv6.fromMap((map['ipv6'] as Map).cast<String, dynamic>())).input(),
+      ipv4: map['ipv4'] == null ? null : (InterfacePublicIpv4.fromMap((map['ipv4']! as Map).cast<String, dynamic>())).input(),
+      ipv6: map['ipv6'] == null ? null : (InterfacePublicIpv6.fromMap((map['ipv6']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

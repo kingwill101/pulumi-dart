@@ -28,8 +28,8 @@ class NodePoolAutoConfigContainerV1beta1 {
 
   factory NodePoolAutoConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodePoolAutoConfigContainerV1beta1(
-      networkTags: map['networkTags'] == null ? null : (NetworkTagsContainerV1beta1.fromMap((map['networkTags'] as Map).cast<String, dynamic>())).input(),
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : (ResourceManagerTagsContainerV1beta1.fromMap((map['resourceManagerTags'] as Map).cast<String, dynamic>())).input(),
+      networkTags: map['networkTags'] == null ? null : (NetworkTagsContainerV1beta1.fromMap((map['networkTags']! as Map).cast<String, dynamic>())).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : (ResourceManagerTagsContainerV1beta1.fromMap((map['resourceManagerTags']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

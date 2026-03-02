@@ -44,11 +44,11 @@ class LoadTestProfileMappingArgs {
 
   factory LoadTestProfileMappingArgs.fromMap(Map<String, dynamic> map) {
     return LoadTestProfileMappingArgs(
-      azureLoadTestingResourceId: map['azureLoadTestingResourceId'] == null ? null : (map['azureLoadTestingResourceId'] as String).input(),
-      loadTestProfileMappingName: map['loadTestProfileMappingName'] == null ? null : (map['loadTestProfileMappingName'] as String).input(),
+      azureLoadTestingResourceId: map['azureLoadTestingResourceId'] == null ? null : (map['azureLoadTestingResourceId']! as String).input(),
+      loadTestProfileMappingName: map['loadTestProfileMappingName'] == null ? null : (map['loadTestProfileMappingName']! as String).input(),
       resourceUri: (map['resourceUri'] as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
-      testProfileId: map['testProfileId'] == null ? null : (map['testProfileId'] as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
+      testProfileId: map['testProfileId'] == null ? null : (map['testProfileId']! as String).input(),
     );
   }
 }

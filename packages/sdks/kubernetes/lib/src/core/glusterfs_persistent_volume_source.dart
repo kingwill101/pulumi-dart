@@ -37,9 +37,9 @@ class GlusterfsPersistentVolumeSource {
   factory GlusterfsPersistentVolumeSource.fromMap(Map<String, dynamic> map) {
     return GlusterfsPersistentVolumeSource(
       endpoints: (map['endpoints'] as String).input(),
-      endpointsNamespace: map['endpointsNamespace'] == null ? null : (map['endpointsNamespace'] as String).input(),
+      endpointsNamespace: map['endpointsNamespace'] == null ? null : (map['endpointsNamespace']! as String).input(),
       path: (map['path'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

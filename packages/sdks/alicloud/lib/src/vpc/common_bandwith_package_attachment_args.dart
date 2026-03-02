@@ -49,11 +49,11 @@ class CommonBandwithPackageAttachmentArgs {
 
   factory CommonBandwithPackageAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return CommonBandwithPackageAttachmentArgs(
-      bandwidthPackageBandwidth: map['bandwidthPackageBandwidth'] == null ? null : (map['bandwidthPackageBandwidth'] as String).input(),
+      bandwidthPackageBandwidth: map['bandwidthPackageBandwidth'] == null ? null : (map['bandwidthPackageBandwidth']! as String).input(),
       bandwidthPackageId: (map['bandwidthPackageId'] as String).input(),
-      cancelCommonBandwidthPackageIpBandwidth: map['cancelCommonBandwidthPackageIpBandwidth'] == null ? null : (map['cancelCommonBandwidthPackageIpBandwidth'] as bool).input(),
+      cancelCommonBandwidthPackageIpBandwidth: map['cancelCommonBandwidthPackageIpBandwidth'] == null ? null : (map['cancelCommonBandwidthPackageIpBandwidth']! as bool).input(),
       instanceId: (map['instanceId'] as String).input(),
-      ipType: map['ipType'] == null ? null : (map['ipType'] as String).input(),
+      ipType: map['ipType'] == null ? null : (map['ipType']! as String).input(),
     );
   }
 }

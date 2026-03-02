@@ -22,7 +22,7 @@ class HciEdgeDeviceProperties {
 
   factory HciEdgeDeviceProperties.fromMap(Map<String, dynamic> map) {
     return HciEdgeDeviceProperties(
-      deviceConfiguration: map['deviceConfiguration'] == null ? null : (DeviceConfiguration.fromMap((map['deviceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      deviceConfiguration: map['deviceConfiguration'] == null ? null : (DeviceConfiguration.fromMap((map['deviceConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

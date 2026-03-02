@@ -44,11 +44,11 @@ class GetAccessPointsArgs {
 
   factory GetAccessPointsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPointsArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as String).input(),
-      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : ((map['dataSourceId'] as String).input()).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : ((map['dataSourceType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

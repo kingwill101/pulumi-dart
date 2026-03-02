@@ -22,7 +22,7 @@ class GlossaryTermsSet {
 
   factory GlossaryTermsSet.fromMap(Map<String, dynamic> map) {
     return GlossaryTermsSet(
-      terms: map['terms'] == null ? null : (pulumi.Input.decodeList<GlossaryTerm>(map['terms'], (value) => GlossaryTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      terms: map['terms'] == null ? null : (pulumi.Input.decodeList<GlossaryTerm>(map['terms']!, (value) => GlossaryTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

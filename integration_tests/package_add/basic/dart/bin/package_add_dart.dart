@@ -5,7 +5,7 @@ class PackageAddStack extends Stack {
   PackageAddStack() {
     final pet = random.index.RandomPet(
       'smoke-pet',
-      args: random.index.RandomPetArgs(length: 2.input()),
+      args: random.index.RandomPetArgs(length: 2),
     );
     registerOutputs({'petName': pet.id.output()});
   }

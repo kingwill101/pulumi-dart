@@ -94,19 +94,19 @@ class ElasticPoolArgs {
 
   factory ElasticPoolArgs.fromMap(Map<String, dynamic> map) {
     return ElasticPoolArgs(
-      enclaveType: map['enclaveType'] == null ? null : (map['enclaveType'] as String).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maintenanceConfigurationName: map['maintenanceConfigurationName'] == null ? null : (map['maintenanceConfigurationName'] as String).input(),
-      maxSizeBytes: map['maxSizeBytes'] == null ? null : (map['maxSizeBytes'] as int).input(),
-      maxSizeGb: map['maxSizeGb'] == null ? null : (map['maxSizeGb'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      enclaveType: map['enclaveType'] == null ? null : (map['enclaveType']! as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maintenanceConfigurationName: map['maintenanceConfigurationName'] == null ? null : (map['maintenanceConfigurationName']! as String).input(),
+      maxSizeBytes: map['maxSizeBytes'] == null ? null : (map['maxSizeBytes']! as int).input(),
+      maxSizeGb: map['maxSizeGb'] == null ? null : (map['maxSizeGb']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       perDatabaseSettings: (ElasticPoolPerDatabaseSettings.fromMap((map['perDatabaseSettings'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
       sku: (ElasticPoolSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant']! as bool).input(),
     );
   }
 }

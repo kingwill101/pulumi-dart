@@ -39,10 +39,10 @@ class DataStoreDocumentProcessingConfigParsingConfigOverride {
 
   factory DataStoreDocumentProcessingConfigParsingConfigOverride.fromMap(Map<String, dynamic> map) {
     return DataStoreDocumentProcessingConfigParsingConfigOverride(
-      digitalParsingConfig: map['digitalParsingConfig'] == null ? null : ((map['digitalParsingConfig'] as Map).cast<String, dynamic>()).input(),
+      digitalParsingConfig: map['digitalParsingConfig'] == null ? null : ((map['digitalParsingConfig']! as Map).cast<String, dynamic>()).input(),
       fileType: (map['fileType'] as String).input(),
-      layoutParsingConfig: map['layoutParsingConfig'] == null ? null : (DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig.fromMap((map['layoutParsingConfig'] as Map).cast<String, dynamic>())).input(),
-      ocrParsingConfig: map['ocrParsingConfig'] == null ? null : (DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig.fromMap((map['ocrParsingConfig'] as Map).cast<String, dynamic>())).input(),
+      layoutParsingConfig: map['layoutParsingConfig'] == null ? null : (DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig.fromMap((map['layoutParsingConfig']! as Map).cast<String, dynamic>())).input(),
+      ocrParsingConfig: map['ocrParsingConfig'] == null ? null : (DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig.fromMap((map['ocrParsingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

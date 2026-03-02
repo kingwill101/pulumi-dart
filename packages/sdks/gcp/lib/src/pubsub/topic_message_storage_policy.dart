@@ -34,7 +34,7 @@ class TopicMessageStoragePolicy {
   factory TopicMessageStoragePolicy.fromMap(Map<String, dynamic> map) {
     return TopicMessageStoragePolicy(
       allowedPersistenceRegions: ((map['allowedPersistenceRegions'] as List).cast<String>()).input(),
-      enforceInTransit: map['enforceInTransit'] == null ? null : (map['enforceInTransit'] as bool).input(),
+      enforceInTransit: map['enforceInTransit'] == null ? null : (map['enforceInTransit']! as bool).input(),
     );
   }
 }

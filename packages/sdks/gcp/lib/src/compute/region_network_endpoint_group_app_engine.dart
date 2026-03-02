@@ -40,9 +40,9 @@ class RegionNetworkEndpointGroupAppEngine {
 
   factory RegionNetworkEndpointGroupAppEngine.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointGroupAppEngine(
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      urlMask: map['urlMask'] == null ? null : (map['urlMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      urlMask: map['urlMask'] == null ? null : (map['urlMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

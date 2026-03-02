@@ -66,16 +66,16 @@ class HybridRunbookWorkerState {
 
   factory HybridRunbookWorkerState.fromMap(Map<String, dynamic> map) {
     return HybridRunbookWorkerState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      lastSeenDateTime: map['lastSeenDateTime'] == null ? null : (map['lastSeenDateTime'] as String).input(),
-      registrationDateTime: map['registrationDateTime'] == null ? null : (map['registrationDateTime'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      vmResourceId: map['vmResourceId'] == null ? null : (map['vmResourceId'] as String).input(),
-      workerGroupName: map['workerGroupName'] == null ? null : (map['workerGroupName'] as String).input(),
-      workerId: map['workerId'] == null ? null : (map['workerId'] as String).input(),
-      workerName: map['workerName'] == null ? null : (map['workerName'] as String).input(),
-      workerType: map['workerType'] == null ? null : (map['workerType'] as String).input(),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      lastSeenDateTime: map['lastSeenDateTime'] == null ? null : (map['lastSeenDateTime']! as String).input(),
+      registrationDateTime: map['registrationDateTime'] == null ? null : (map['registrationDateTime']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      vmResourceId: map['vmResourceId'] == null ? null : (map['vmResourceId']! as String).input(),
+      workerGroupName: map['workerGroupName'] == null ? null : (map['workerGroupName']! as String).input(),
+      workerId: map['workerId'] == null ? null : (map['workerId']! as String).input(),
+      workerName: map['workerName'] == null ? null : (map['workerName']! as String).input(),
+      workerType: map['workerType'] == null ? null : (map['workerType']! as String).input(),
     );
   }
 }

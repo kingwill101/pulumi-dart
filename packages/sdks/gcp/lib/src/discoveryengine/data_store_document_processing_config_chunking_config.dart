@@ -22,7 +22,7 @@ class DataStoreDocumentProcessingConfigChunkingConfig {
 
   factory DataStoreDocumentProcessingConfigChunkingConfig.fromMap(Map<String, dynamic> map) {
     return DataStoreDocumentProcessingConfigChunkingConfig(
-      layoutBasedChunkingConfig: map['layoutBasedChunkingConfig'] == null ? null : (DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig.fromMap((map['layoutBasedChunkingConfig'] as Map).cast<String, dynamic>())).input(),
+      layoutBasedChunkingConfig: map['layoutBasedChunkingConfig'] == null ? null : (DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig.fromMap((map['layoutBasedChunkingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

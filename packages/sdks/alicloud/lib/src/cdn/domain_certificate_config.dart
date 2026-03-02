@@ -27,9 +27,9 @@ class DomainCertificateConfig {
 
   factory DomainCertificateConfig.fromMap(Map<String, dynamic> map) {
     return DomainCertificateConfig(
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate'] as String).input(),
-      serverCertificateStatus: map['serverCertificateStatus'] == null ? null : (map['serverCertificateStatus'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      serverCertificate: map['serverCertificate'] == null ? null : (map['serverCertificate']! as String).input(),
+      serverCertificateStatus: map['serverCertificateStatus'] == null ? null : (map['serverCertificateStatus']! as String).input(),
     );
   }
 }

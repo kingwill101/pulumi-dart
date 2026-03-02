@@ -72,17 +72,17 @@ class InfrastructureProfileResponse {
 
   factory InfrastructureProfileResponse.fromMap(Map<String, dynamic> map) {
     return InfrastructureProfileResponse(
-      biosGuid: map['biosGuid'] == null ? null : (map['biosGuid'] as String).input(),
-      checkpointType: map['checkpointType'] == null ? null : (map['checkpointType'] as String).input(),
-      checkpoints: map['checkpoints'] == null ? null : (pulumi.Input.decodeList<CheckpointResponse>(map['checkpoints'], (value) => CheckpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cloudId: map['cloudId'] == null ? null : (map['cloudId'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as int).input(),
-      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId'] as String).input(),
+      biosGuid: map['biosGuid'] == null ? null : (map['biosGuid']! as String).input(),
+      checkpointType: map['checkpointType'] == null ? null : (map['checkpointType']! as String).input(),
+      checkpoints: map['checkpoints'] == null ? null : (pulumi.Input.decodeList<CheckpointResponse>(map['checkpoints']!, (value) => CheckpointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudId: map['cloudId'] == null ? null : (map['cloudId']! as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as int).input(),
+      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId']! as String).input(),
       lastRestoredVMCheckpoint: (CheckpointResponse.fromMap((map['lastRestoredVMCheckpoint'] as Map).cast<String, dynamic>())).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
-      vmName: map['vmName'] == null ? null : (map['vmName'] as String).input(),
-      vmmServerId: map['vmmServerId'] == null ? null : (map['vmmServerId'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      vmName: map['vmName'] == null ? null : (map['vmName']! as String).input(),
+      vmmServerId: map['vmmServerId'] == null ? null : (map['vmmServerId']! as String).input(),
     );
   }
 }

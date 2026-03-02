@@ -25,7 +25,7 @@ class BucketLifecycleRuleAction {
 
   factory BucketLifecycleRuleAction.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleAction(
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
+      storageClass: map['storageClass'] == null ? null : (map['storageClass']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

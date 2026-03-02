@@ -25,7 +25,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailo
   factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsAudioSilenceSettings(
       audioSelectorName: (map['audioSelectorName'] as String).input(),
-      audioSilenceThresholdMsec: map['audioSilenceThresholdMsec'] == null ? null : (map['audioSilenceThresholdMsec'] as int).input(),
+      audioSilenceThresholdMsec: map['audioSilenceThresholdMsec'] == null ? null : ((map['audioSilenceThresholdMsec'] as int).input()).input(),
     );
   }
 }

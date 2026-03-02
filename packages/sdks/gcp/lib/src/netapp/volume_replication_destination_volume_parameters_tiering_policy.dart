@@ -28,8 +28,8 @@ class VolumeReplicationDestinationVolumeParametersTieringPolicy {
 
   factory VolumeReplicationDestinationVolumeParametersTieringPolicy.fromMap(Map<String, dynamic> map) {
     return VolumeReplicationDestinationVolumeParametersTieringPolicy(
-      coolingThresholdDays: map['coolingThresholdDays'] == null ? null : (map['coolingThresholdDays'] as int).input(),
-      tierAction: map['tierAction'] == null ? null : (map['tierAction'] as String).input(),
+      coolingThresholdDays: map['coolingThresholdDays'] == null ? null : (map['coolingThresholdDays']! as int).input(),
+      tierAction: map['tierAction'] == null ? null : (map['tierAction']! as String).input(),
     );
   }
 }

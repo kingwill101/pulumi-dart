@@ -47,11 +47,11 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadI
 
   factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaProperty.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaProperty(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      items: map['items'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyItems.fromMap((map['items'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      items: map['items'] == null ? null : ((AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyItems.fromMap((map['items']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyProperty>(map['properties'], (value) => AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      properties: map['properties'] == null ? null : ((pulumi.Input.decodeList<AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyProperty>(map['properties']!, (value) => AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyProperty.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      required: map['required'] == null ? null : ((map['required'] as bool).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

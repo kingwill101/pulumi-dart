@@ -39,8 +39,8 @@ class DirectoryRoleAssignmentArgs {
 
   factory DirectoryRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryRoleAssignmentArgs(
-      appScopeId: map['appScopeId'] == null ? null : (map['appScopeId'] as String).input(),
-      directoryScopeId: map['directoryScopeId'] == null ? null : (map['directoryScopeId'] as String).input(),
+      appScopeId: map['appScopeId'] == null ? null : (map['appScopeId']! as String).input(),
+      directoryScopeId: map['directoryScopeId'] == null ? null : (map['directoryScopeId']! as String).input(),
       principalObjectId: (map['principalObjectId'] as String).input(),
       roleId: (map['roleId'] as String).input(),
     );

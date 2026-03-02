@@ -33,8 +33,8 @@ class InterconnectGroupPhysicalStructureMetroFacilityZone {
 
   factory InterconnectGroupPhysicalStructureMetroFacilityZone.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupPhysicalStructureMetroFacilityZone(
-      interconnects: map['interconnects'] == null ? null : ((map['interconnects'] as List).cast<String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      interconnects: map['interconnects'] == null ? null : ((map['interconnects']! as List).cast<String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

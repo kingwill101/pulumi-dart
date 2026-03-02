@@ -22,7 +22,7 @@ class RestorePointSourceMetadata {
 
   factory RestorePointSourceMetadata.fromMap(Map<String, dynamic> map) {
     return RestorePointSourceMetadata(
-      storageProfile: map['storageProfile'] == null ? null : (RestorePointSourceVMStorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      storageProfile: map['storageProfile'] == null ? null : (RestorePointSourceVMStorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -55,13 +55,13 @@ class SecuritySettings {
 
   factory SecuritySettings.fromMap(Map<String, dynamic> map) {
     return SecuritySettings(
-      authentication: map['authentication'] == null ? null : (map['authentication'] as String).input(),
-      authenticationPolicy: map['authenticationPolicy'] == null ? null : (AuthenticationPolicy.fromMap((map['authenticationPolicy'] as Map).cast<String, dynamic>())).input(),
-      authorizationConfig: map['authorizationConfig'] == null ? null : (AuthorizationConfig.fromMap((map['authorizationConfig'] as Map).cast<String, dynamic>())).input(),
-      awsV4Authentication: map['awsV4Authentication'] == null ? null : (AWSV4Signature.fromMap((map['awsV4Authentication'] as Map).cast<String, dynamic>())).input(),
-      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : (map['clientTlsPolicy'] as String).input(),
-      clientTlsSettings: map['clientTlsSettings'] == null ? null : (ClientTlsSettings.fromMap((map['clientTlsSettings'] as Map).cast<String, dynamic>())).input(),
-      subjectAltNames: map['subjectAltNames'] == null ? null : ((map['subjectAltNames'] as List).cast<String>()).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication']! as String).input(),
+      authenticationPolicy: map['authenticationPolicy'] == null ? null : (AuthenticationPolicy.fromMap((map['authenticationPolicy']! as Map).cast<String, dynamic>())).input(),
+      authorizationConfig: map['authorizationConfig'] == null ? null : (AuthorizationConfig.fromMap((map['authorizationConfig']! as Map).cast<String, dynamic>())).input(),
+      awsV4Authentication: map['awsV4Authentication'] == null ? null : (AWSV4Signature.fromMap((map['awsV4Authentication']! as Map).cast<String, dynamic>())).input(),
+      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : (map['clientTlsPolicy']! as String).input(),
+      clientTlsSettings: map['clientTlsSettings'] == null ? null : (ClientTlsSettings.fromMap((map['clientTlsSettings']! as Map).cast<String, dynamic>())).input(),
+      subjectAltNames: map['subjectAltNames'] == null ? null : ((map['subjectAltNames']! as List).cast<String>()).input(),
     );
   }
 }

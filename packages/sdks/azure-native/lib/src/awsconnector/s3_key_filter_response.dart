@@ -22,7 +22,7 @@ class S3KeyFilterResponse {
 
   factory S3KeyFilterResponse.fromMap(Map<String, dynamic> map) {
     return S3KeyFilterResponse(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FilterRuleResponse>(map['rules'], (value) => FilterRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FilterRuleResponse>(map['rules']!, (value) => FilterRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class FhirNotificationConfig {
 
   factory FhirNotificationConfig.fromMap(Map<String, dynamic> map) {
     return FhirNotificationConfig(
-      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
-      sendFullResource: map['sendFullResource'] == null ? null : (map['sendFullResource'] as bool).input(),
-      sendPreviousResourceOnDelete: map['sendPreviousResourceOnDelete'] == null ? null : (map['sendPreviousResourceOnDelete'] as bool).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic']! as String).input(),
+      sendFullResource: map['sendFullResource'] == null ? null : (map['sendFullResource']! as bool).input(),
+      sendPreviousResourceOnDelete: map['sendPreviousResourceOnDelete'] == null ? null : (map['sendPreviousResourceOnDelete']! as bool).input(),
     );
   }
 }

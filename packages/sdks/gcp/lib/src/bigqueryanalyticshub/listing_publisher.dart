@@ -26,7 +26,7 @@ class ListingPublisher {
   factory ListingPublisher.fromMap(Map<String, dynamic> map) {
     return ListingPublisher(
       name: (map['name'] as String).input(),
-      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact'] as String).input(),
+      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class StackSetInstanceStackInstanceSummary {
 
   factory StackSetInstanceStackInstanceSummary.fromMap(Map<String, dynamic> map) {
     return StackSetInstanceStackInstanceSummary(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      organizationalUnitId: map['organizationalUnitId'] == null ? null : (map['organizationalUnitId'] as String).input(),
-      stackId: map['stackId'] == null ? null : (map['stackId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      organizationalUnitId: map['organizationalUnitId'] == null ? null : ((map['organizationalUnitId'] as String).input()).input(),
+      stackId: map['stackId'] == null ? null : ((map['stackId'] as String).input()).input(),
     );
   }
 }

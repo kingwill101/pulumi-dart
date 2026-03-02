@@ -51,13 +51,13 @@ class AwsOrganizationsOrganizationProperties {
 
   factory AwsOrganizationsOrganizationProperties.fromMap(Map<String, dynamic> map) {
     return AwsOrganizationsOrganizationProperties(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      featureSet: map['featureSet'] == null ? null : (map['featureSet'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      managementAccountArn: map['managementAccountArn'] == null ? null : (map['managementAccountArn'] as String).input(),
-      managementAccountEmail: map['managementAccountEmail'] == null ? null : (map['managementAccountEmail'] as String).input(),
-      managementAccountId: map['managementAccountId'] == null ? null : (map['managementAccountId'] as String).input(),
-      rootId: map['rootId'] == null ? null : (map['rootId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      featureSet: map['featureSet'] == null ? null : (map['featureSet']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      managementAccountArn: map['managementAccountArn'] == null ? null : (map['managementAccountArn']! as String).input(),
+      managementAccountEmail: map['managementAccountEmail'] == null ? null : (map['managementAccountEmail']! as String).input(),
+      managementAccountId: map['managementAccountId'] == null ? null : (map['managementAccountId']! as String).input(),
+      rootId: map['rootId'] == null ? null : (map['rootId']! as String).input(),
     );
   }
 }

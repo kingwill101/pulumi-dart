@@ -27,7 +27,7 @@ class GetManagedAzResiliencyStatusResult {
 
   factory GetManagedAzResiliencyStatusResult.fromMap(Map<String, dynamic> map) {
     return GetManagedAzResiliencyStatusResult(
-      baseResourceStatus: map['baseResourceStatus'] == null ? null : pulumi.Input.decodeList<ResourceAzStatusResponse>(map['baseResourceStatus'], (value) => ResourceAzStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
+      baseResourceStatus: map['baseResourceStatus'] == null ? null : pulumi.Input.decodeList<ResourceAzStatusResponse>(map['baseResourceStatus']!, (value) => ResourceAzStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
       isClusterZoneResilient: map['isClusterZoneResilient'] as bool,
     );
   }

@@ -20,7 +20,7 @@ class DashboardDashboardPublishOptionsDataPointMenuLabelOption {
 
   factory DashboardDashboardPublishOptionsDataPointMenuLabelOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsDataPointMenuLabelOption(
-      availabilityStatus: map['availabilityStatus'] == null ? null : (map['availabilityStatus'] as String).input(),
+      availabilityStatus: map['availabilityStatus'] == null ? null : ((map['availabilityStatus'] as String).input()).input(),
     );
   }
 }

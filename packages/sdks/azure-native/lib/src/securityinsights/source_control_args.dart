@@ -83,16 +83,16 @@ class SourceControlArgs {
   factory SourceControlArgs.fromMap(Map<String, dynamic> map) {
     return SourceControlArgs(
       contentTypes: ((map['contentTypes'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      lastDeploymentInfo: map['lastDeploymentInfo'] == null ? null : (DeploymentInfo.fromMap((map['lastDeploymentInfo'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      lastDeploymentInfo: map['lastDeploymentInfo'] == null ? null : (DeploymentInfo.fromMap((map['lastDeploymentInfo']! as Map).cast<String, dynamic>())).input(),
       repoType: (map['repoType'] as String).input(),
       repository: (Repository.fromMap((map['repository'] as Map).cast<String, dynamic>())).input(),
-      repositoryResourceInfo: map['repositoryResourceInfo'] == null ? null : (RepositoryResourceInfo.fromMap((map['repositoryResourceInfo'] as Map).cast<String, dynamic>())).input(),
+      repositoryResourceInfo: map['repositoryResourceInfo'] == null ? null : (RepositoryResourceInfo.fromMap((map['repositoryResourceInfo']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sourceControlId: map['sourceControlId'] == null ? null : (map['sourceControlId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      sourceControlId: map['sourceControlId'] == null ? null : (map['sourceControlId']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

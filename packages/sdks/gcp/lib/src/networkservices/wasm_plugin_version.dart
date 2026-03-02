@@ -77,15 +77,15 @@ class WasmPluginVersion {
 
   factory WasmPluginVersion.fromMap(Map<String, dynamic> map) {
     return WasmPluginVersion(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      imageDigest: map['imageDigest'] == null ? null : (map['imageDigest'] as String).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      pluginConfigData: map['pluginConfigData'] == null ? null : (map['pluginConfigData'] as String).input(),
-      pluginConfigDigest: map['pluginConfigDigest'] == null ? null : (map['pluginConfigDigest'] as String).input(),
-      pluginConfigUri: map['pluginConfigUri'] == null ? null : (map['pluginConfigUri'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      imageDigest: map['imageDigest'] == null ? null : (map['imageDigest']! as String).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      pluginConfigData: map['pluginConfigData'] == null ? null : (map['pluginConfigData']! as String).input(),
+      pluginConfigDigest: map['pluginConfigDigest'] == null ? null : (map['pluginConfigDigest']! as String).input(),
+      pluginConfigUri: map['pluginConfigUri'] == null ? null : (map['pluginConfigUri']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
       versionName: (map['versionName'] as String).input(),
     );
   }

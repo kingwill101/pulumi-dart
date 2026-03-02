@@ -44,11 +44,11 @@ class RoleBindingPatchRbacAuthorizationK8sIoV1alpha1 {
 
   factory RoleBindingPatchRbacAuthorizationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return RoleBindingPatchRbacAuthorizationK8sIoV1alpha1(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      roleRef: map['roleRef'] == null ? null : (RoleRefPatchRbacAuthorizationK8sIoV1alpha1.fromMap((map['roleRef'] as Map).cast<String, dynamic>())).input(),
-      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<SubjectPatchRbacAuthorizationK8sIoV1alpha1>(map['subjects'], (value) => SubjectPatchRbacAuthorizationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      roleRef: map['roleRef'] == null ? null : (RoleRefPatchRbacAuthorizationK8sIoV1alpha1.fromMap((map['roleRef']! as Map).cast<String, dynamic>())).input(),
+      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<SubjectPatchRbacAuthorizationK8sIoV1alpha1>(map['subjects']!, (value) => SubjectPatchRbacAuthorizationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

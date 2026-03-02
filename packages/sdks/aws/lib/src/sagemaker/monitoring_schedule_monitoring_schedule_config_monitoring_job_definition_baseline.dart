@@ -29,9 +29,9 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline 
 
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline(
-      baseliningJobName: map['baseliningJobName'] == null ? null : (map['baseliningJobName'] as String).input(),
-      constraintsResource: map['constraintsResource'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource.fromMap((map['constraintsResource'] as Map).cast<String, dynamic>())).input(),
-      statisticsResource: map['statisticsResource'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource.fromMap((map['statisticsResource'] as Map).cast<String, dynamic>())).input(),
+      baseliningJobName: map['baseliningJobName'] == null ? null : ((map['baseliningJobName'] as String).input()).input(),
+      constraintsResource: map['constraintsResource'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource.fromMap((map['constraintsResource']! as Map).cast<String, dynamic>())).input()).input(),
+      statisticsResource: map['statisticsResource'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource.fromMap((map['statisticsResource']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

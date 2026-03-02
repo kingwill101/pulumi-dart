@@ -61,7 +61,7 @@ class GetContainerAppAuthTokenResult {
       location: map['location'] as String,
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       token: map['token'] as String,
       type: map['type'] as String,
     );

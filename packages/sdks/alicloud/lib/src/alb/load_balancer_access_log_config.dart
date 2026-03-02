@@ -25,8 +25,8 @@ class LoadBalancerAccessLogConfig {
 
   factory LoadBalancerAccessLogConfig.fromMap(Map<String, dynamic> map) {
     return LoadBalancerAccessLogConfig(
-      logProject: map['logProject'] == null ? null : (map['logProject'] as String).input(),
-      logStore: map['logStore'] == null ? null : (map['logStore'] as String).input(),
+      logProject: map['logProject'] == null ? null : (map['logProject']! as String).input(),
+      logStore: map['logStore'] == null ? null : (map['logStore']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class ApplicationApplicationConfigurationSqlApplicationConfiguration {
 
   factory ApplicationApplicationConfigurationSqlApplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfiguration(
-      input: map['input'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      outputs: map['outputs'] == null ? null : (pulumi.Input.decodeList<ApplicationApplicationConfigurationSqlApplicationConfigurationOutput>(map['outputs'], (value) => ApplicationApplicationConfigurationSqlApplicationConfigurationOutput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      referenceDataSource: map['referenceDataSource'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource.fromMap((map['referenceDataSource'] as Map).cast<String, dynamic>())).input(),
+      input: map['input'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfigurationInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input()).input(),
+      outputs: map['outputs'] == null ? null : ((pulumi.Input.decodeList<ApplicationApplicationConfigurationSqlApplicationConfigurationOutput>(map['outputs']!, (value) => ApplicationApplicationConfigurationSqlApplicationConfigurationOutput.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      referenceDataSource: map['referenceDataSource'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource.fromMap((map['referenceDataSource']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

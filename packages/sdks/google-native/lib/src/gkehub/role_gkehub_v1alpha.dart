@@ -22,7 +22,7 @@ class RoleGkehubV1alpha {
 
   factory RoleGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return RoleGkehubV1alpha(
-      predefinedRole: map['predefinedRole'] == null ? null : (RolePredefinedRoleGkehubV1alpha.fromValue(map['predefinedRole'] as String)).input(),
+      predefinedRole: map['predefinedRole'] == null ? null : (RolePredefinedRoleGkehubV1alpha.fromValue(map['predefinedRole']! as String)).input(),
     );
   }
 }

@@ -36,9 +36,9 @@ class DistributionOrigin {
   factory DistributionOrigin.fromMap(Map<String, dynamic> map) {
     return DistributionOrigin(
       name: (map['name'] as String).input(),
-      protocolPolicy: map['protocolPolicy'] == null ? null : (map['protocolPolicy'] as String).input(),
+      protocolPolicy: map['protocolPolicy'] == null ? null : ((map['protocolPolicy'] as String).input()).input(),
       regionName: (map['regionName'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
     );
   }
 }

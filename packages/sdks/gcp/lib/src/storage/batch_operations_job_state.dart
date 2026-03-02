@@ -92,19 +92,19 @@ class BatchOperationsJobState {
 
   factory BatchOperationsJobState.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobState(
-      bucketList: map['bucketList'] == null ? null : (BatchOperationsJobBucketList.fromMap((map['bucketList'] as Map).cast<String, dynamic>())).input(),
-      completeTime: map['completeTime'] == null ? null : (map['completeTime'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deleteObject: map['deleteObject'] == null ? null : (BatchOperationsJobDeleteObject.fromMap((map['deleteObject'] as Map).cast<String, dynamic>())).input(),
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      putMetadata: map['putMetadata'] == null ? null : (BatchOperationsJobPutMetadata.fromMap((map['putMetadata'] as Map).cast<String, dynamic>())).input(),
-      putObjectHold: map['putObjectHold'] == null ? null : (BatchOperationsJobPutObjectHold.fromMap((map['putObjectHold'] as Map).cast<String, dynamic>())).input(),
-      rewriteObject: map['rewriteObject'] == null ? null : (BatchOperationsJobRewriteObject.fromMap((map['rewriteObject'] as Map).cast<String, dynamic>())).input(),
-      scheduleTime: map['scheduleTime'] == null ? null : (map['scheduleTime'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      bucketList: map['bucketList'] == null ? null : (BatchOperationsJobBucketList.fromMap((map['bucketList']! as Map).cast<String, dynamic>())).input(),
+      completeTime: map['completeTime'] == null ? null : (map['completeTime']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deleteObject: map['deleteObject'] == null ? null : (BatchOperationsJobDeleteObject.fromMap((map['deleteObject']! as Map).cast<String, dynamic>())).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      putMetadata: map['putMetadata'] == null ? null : (BatchOperationsJobPutMetadata.fromMap((map['putMetadata']! as Map).cast<String, dynamic>())).input(),
+      putObjectHold: map['putObjectHold'] == null ? null : (BatchOperationsJobPutObjectHold.fromMap((map['putObjectHold']! as Map).cast<String, dynamic>())).input(),
+      rewriteObject: map['rewriteObject'] == null ? null : (BatchOperationsJobRewriteObject.fromMap((map['rewriteObject']! as Map).cast<String, dynamic>())).input(),
+      scheduleTime: map['scheduleTime'] == null ? null : (map['scheduleTime']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

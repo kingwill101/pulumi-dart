@@ -47,10 +47,10 @@ class SpringCloudGatewayComponent {
   factory SpringCloudGatewayComponent.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayComponent(
       componentType: (map['componentType'] as String).input(),
-      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<JavaComponentConfigurationProperty>(map['configurations'], (value) => JavaComponentConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scale: map['scale'] == null ? null : (JavaComponentPropertiesScale.fromMap((map['scale'] as Map).cast<String, dynamic>())).input(),
-      serviceBinds: map['serviceBinds'] == null ? null : (pulumi.Input.decodeList<JavaComponentServiceBind>(map['serviceBinds'], (value) => JavaComponentServiceBind.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      springCloudGatewayRoutes: map['springCloudGatewayRoutes'] == null ? null : (pulumi.Input.decodeList<ScgRoute>(map['springCloudGatewayRoutes'], (value) => ScgRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<JavaComponentConfigurationProperty>(map['configurations']!, (value) => JavaComponentConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scale: map['scale'] == null ? null : (JavaComponentPropertiesScale.fromMap((map['scale']! as Map).cast<String, dynamic>())).input(),
+      serviceBinds: map['serviceBinds'] == null ? null : (pulumi.Input.decodeList<JavaComponentServiceBind>(map['serviceBinds']!, (value) => JavaComponentServiceBind.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      springCloudGatewayRoutes: map['springCloudGatewayRoutes'] == null ? null : (pulumi.Input.decodeList<ScgRoute>(map['springCloudGatewayRoutes']!, (value) => ScgRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

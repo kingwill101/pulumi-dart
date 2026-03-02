@@ -30,9 +30,9 @@ class GetAppSpecStaticSiteCorsAllowOrigins {
 
   factory GetAppSpecStaticSiteCorsAllowOrigins.fromMap(Map<String, dynamic> map) {
     return GetAppSpecStaticSiteCorsAllowOrigins(
-      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
+      exact: map['exact'] == null ? null : (map['exact']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      regex: map['regex'] == null ? null : (map['regex']! as String).input(),
     );
   }
 }

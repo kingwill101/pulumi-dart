@@ -75,12 +75,12 @@ class SecurityGatewayApplicationArgs {
   factory SecurityGatewayApplicationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationArgs(
       applicationId: (map['applicationId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      endpointMatchers: map['endpointMatchers'] == null ? null : (pulumi.Input.decodeList<SecurityGatewayApplicationEndpointMatcher>(map['endpointMatchers'], (value) => SecurityGatewayApplicationEndpointMatcher.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      endpointMatchers: map['endpointMatchers'] == null ? null : (pulumi.Input.decodeList<SecurityGatewayApplicationEndpointMatcher>(map['endpointMatchers']!, (value) => SecurityGatewayApplicationEndpointMatcher.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
       securityGatewayId: (map['securityGatewayId'] as String).input(),
-      upstreams: map['upstreams'] == null ? null : (pulumi.Input.decodeList<SecurityGatewayApplicationUpstream>(map['upstreams'], (value) => SecurityGatewayApplicationUpstream.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      upstreams: map['upstreams'] == null ? null : (pulumi.Input.decodeList<SecurityGatewayApplicationUpstream>(map['upstreams']!, (value) => SecurityGatewayApplicationUpstream.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

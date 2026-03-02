@@ -28,8 +28,8 @@ class OrganizationCustomModuleCustomConfigCustomOutputProperty {
 
   factory OrganizationCustomModuleCustomConfigCustomOutputProperty.fromMap(Map<String, dynamic> map) {
     return OrganizationCustomModuleCustomConfigCustomOutputProperty(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      valueExpression: map['valueExpression'] == null ? null : (OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression.fromMap((map['valueExpression'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      valueExpression: map['valueExpression'] == null ? null : (OrganizationCustomModuleCustomConfigCustomOutputPropertyValueExpression.fromMap((map['valueExpression']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

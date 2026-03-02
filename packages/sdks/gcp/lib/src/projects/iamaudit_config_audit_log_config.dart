@@ -25,7 +25,7 @@ class IAMAuditConfigAuditLogConfig {
 
   factory IAMAuditConfigAuditLogConfig.fromMap(Map<String, dynamic> map) {
     return IAMAuditConfigAuditLogConfig(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
       logType: (map['logType'] as String).input(),
     );
   }

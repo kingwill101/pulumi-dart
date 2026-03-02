@@ -25,8 +25,8 @@ class EndpointGroupPortOverrides {
 
   factory EndpointGroupPortOverrides.fromMap(Map<String, dynamic> map) {
     return EndpointGroupPortOverrides(
-      endpointPort: map['endpointPort'] == null ? null : (map['endpointPort'] as int).input(),
-      listenerPort: map['listenerPort'] == null ? null : (map['listenerPort'] as int).input(),
+      endpointPort: map['endpointPort'] == null ? null : (map['endpointPort']! as int).input(),
+      listenerPort: map['listenerPort'] == null ? null : (map['listenerPort']! as int).input(),
     );
   }
 }

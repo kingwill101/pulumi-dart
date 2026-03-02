@@ -26,8 +26,8 @@ class Secret {
 
   factory Secret.fromMap(Map<String, dynamic> map) {
     return Secret(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      secretEnv: map['secretEnv'] == null ? null : ((map['secretEnv'] as Map).cast<String, String>()).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      secretEnv: map['secretEnv'] == null ? null : ((map['secretEnv']! as Map).cast<String, String>()).input(),
     );
   }
 }

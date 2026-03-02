@@ -28,8 +28,8 @@ class InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket {
 
   factory InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigIncludeCloudStorageBucketsCloudStorageBucket(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      bucketPrefixRegex: map['bucketPrefixRegex'] == null ? null : (map['bucketPrefixRegex'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      bucketPrefixRegex: map['bucketPrefixRegex'] == null ? null : (map['bucketPrefixRegex']! as String).input(),
     );
   }
 }

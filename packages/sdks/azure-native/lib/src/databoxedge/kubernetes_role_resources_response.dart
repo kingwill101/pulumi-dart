@@ -36,7 +36,7 @@ class KubernetesRoleResourcesResponse {
     return KubernetesRoleResourcesResponse(
       compute: (KubernetesRoleComputeResponse.fromMap((map['compute'] as Map).cast<String, dynamic>())).input(),
       network: (KubernetesRoleNetworkResponse.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
-      storage: map['storage'] == null ? null : (KubernetesRoleStorageResponse.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
+      storage: map['storage'] == null ? null : (KubernetesRoleStorageResponse.fromMap((map['storage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

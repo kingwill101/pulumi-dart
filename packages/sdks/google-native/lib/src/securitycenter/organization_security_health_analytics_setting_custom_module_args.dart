@@ -45,10 +45,10 @@ class OrganizationSecurityHealthAnalyticsSettingCustomModuleArgs {
 
   factory OrganizationSecurityHealthAnalyticsSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityHealthAnalyticsSettingCustomModuleArgs(
-      customConfig: map['customConfig'] == null ? null : (GoogleCloudSecuritycenterV1CustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enablementState: map['enablementState'] == null ? null : (OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(map['enablementState'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      customConfig: map['customConfig'] == null ? null : (GoogleCloudSecuritycenterV1CustomConfig.fromMap((map['customConfig']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enablementState: map['enablementState'] == null ? null : (OrganizationSecurityHealthAnalyticsSettingCustomModuleEnablementState.fromValue(map['enablementState']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
     );
   }

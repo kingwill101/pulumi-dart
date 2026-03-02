@@ -26,7 +26,7 @@ class LoadBalancerNatRuleReferenceResponse {
 
   factory LoadBalancerNatRuleReferenceResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerNatRuleReferenceResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       sourceArmResourceId: (map['sourceArmResourceId'] as String).input(),
     );
   }

@@ -34,8 +34,8 @@ class UnitKindOutputVariableMapping {
 
   factory UnitKindOutputVariableMapping.fromMap(Map<String, dynamic> map) {
     return UnitKindOutputVariableMapping(
-      from: map['from'] == null ? null : (UnitKindOutputVariableMappingFrom.fromMap((map['from'] as Map).cast<String, dynamic>())).input(),
-      to: map['to'] == null ? null : (UnitKindOutputVariableMappingTo.fromMap((map['to'] as Map).cast<String, dynamic>())).input(),
+      from: map['from'] == null ? null : (UnitKindOutputVariableMappingFrom.fromMap((map['from']! as Map).cast<String, dynamic>())).input(),
+      to: map['to'] == null ? null : (UnitKindOutputVariableMappingTo.fromMap((map['to']! as Map).cast<String, dynamic>())).input(),
       variable: (map['variable'] as String).input(),
     );
   }

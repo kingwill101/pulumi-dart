@@ -61,15 +61,15 @@ class IPSetState {
 
   factory IPSetState.fromMap(Map<String, dynamic> map) {
     return IPSetState(
-      activate: map['activate'] == null ? null : (map['activate'] as bool).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      detectorId: map['detectorId'] == null ? null : (map['detectorId'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      activate: map['activate'] == null ? null : ((map['activate'] as bool).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      detectorId: map['detectorId'] == null ? null : ((map['detectorId'] as String).input()).input(),
+      format: map['format'] == null ? null : ((map['format'] as String).input()).input(),
+      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

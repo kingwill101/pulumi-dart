@@ -48,7 +48,7 @@ class ServerTrustGroupArgs {
       groupMembers: (pulumi.Input.decodeList<ServerInfo>(map['groupMembers'], (value) => ServerInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
       locationName: (map['locationName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverTrustGroupName: map['serverTrustGroupName'] == null ? null : (map['serverTrustGroupName'] as String).input(),
+      serverTrustGroupName: map['serverTrustGroupName'] == null ? null : (map['serverTrustGroupName']! as String).input(),
       trustScopes: ((map['trustScopes'] as List).cast<String>()).input(),
     );
   }

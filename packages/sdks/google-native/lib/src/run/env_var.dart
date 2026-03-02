@@ -33,8 +33,8 @@ class EnvVar {
   factory EnvVar.fromMap(Map<String, dynamic> map) {
     return EnvVar(
       name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      valueFrom: map['valueFrom'] == null ? null : (EnvVarSource.fromMap((map['valueFrom'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      valueFrom: map['valueFrom'] == null ? null : (EnvVarSource.fromMap((map['valueFrom']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

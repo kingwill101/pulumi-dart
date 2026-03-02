@@ -27,7 +27,7 @@ class OpenDeploymentResourceReferenceResponse {
 
   factory OpenDeploymentResourceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return OpenDeploymentResourceReferenceResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       idType: (map['idType'] as String).input(),
     );
   }

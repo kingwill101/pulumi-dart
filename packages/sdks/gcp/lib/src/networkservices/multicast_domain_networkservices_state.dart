@@ -120,21 +120,21 @@ class MulticastDomainNetworkservicesState {
 
   factory MulticastDomainNetworkservicesState.fromMap(Map<String, dynamic> map) {
     return MulticastDomainNetworkservicesState(
-      adminNetwork: map['adminNetwork'] == null ? null : (map['adminNetwork'] as String).input(),
-      connectionConfig: map['connectionConfig'] == null ? null : (MulticastDomainConnectionConfig.fromMap((map['connectionConfig'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      multicastDomainGroup: map['multicastDomainGroup'] == null ? null : (map['multicastDomainGroup'] as String).input(),
-      multicastDomainId: map['multicastDomainId'] == null ? null : (map['multicastDomainId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<MulticastDomainState>(map['states'], (value) => MulticastDomainState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      adminNetwork: map['adminNetwork'] == null ? null : (map['adminNetwork']! as String).input(),
+      connectionConfig: map['connectionConfig'] == null ? null : (MulticastDomainConnectionConfig.fromMap((map['connectionConfig']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      multicastDomainGroup: map['multicastDomainGroup'] == null ? null : (map['multicastDomainGroup']! as String).input(),
+      multicastDomainId: map['multicastDomainId'] == null ? null : (map['multicastDomainId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<MulticastDomainState>(map['states']!, (value) => MulticastDomainState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

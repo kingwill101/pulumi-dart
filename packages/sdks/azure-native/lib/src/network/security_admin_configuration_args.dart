@@ -49,10 +49,10 @@ class SecurityAdminConfigurationArgs {
 
   factory SecurityAdminConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityAdminConfigurationArgs(
-      applyOnNetworkIntentPolicyBasedServices: map['applyOnNetworkIntentPolicyBasedServices'] == null ? null : ((map['applyOnNetworkIntentPolicyBasedServices'] as List).cast<String>()).input(),
-      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      networkGroupAddressSpaceAggregationOption: map['networkGroupAddressSpaceAggregationOption'] == null ? null : (map['networkGroupAddressSpaceAggregationOption'] as String).input(),
+      applyOnNetworkIntentPolicyBasedServices: map['applyOnNetworkIntentPolicyBasedServices'] == null ? null : ((map['applyOnNetworkIntentPolicyBasedServices']! as List).cast<String>()).input(),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      networkGroupAddressSpaceAggregationOption: map['networkGroupAddressSpaceAggregationOption'] == null ? null : (map['networkGroupAddressSpaceAggregationOption']! as String).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

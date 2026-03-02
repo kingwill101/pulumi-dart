@@ -21,7 +21,7 @@ class ResourceAnnotation {
 
   factory ResourceAnnotation.fromMap(Map<String, dynamic> map) {
     return ResourceAnnotation(
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
     );
   }
 }

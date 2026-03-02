@@ -27,8 +27,8 @@ class SchedulingPatchNodeK8sIoV1alpha1 {
 
   factory SchedulingPatchNodeK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return SchedulingPatchNodeK8sIoV1alpha1(
-      nodeSelector: map['nodeSelector'] == null ? null : ((map['nodeSelector'] as Map).cast<String, String>()).input(),
-      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<TolerationPatch>(map['tolerations'], (value) => TolerationPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : ((map['nodeSelector']! as Map).cast<String, String>()).input(),
+      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<TolerationPatch>(map['tolerations']!, (value) => TolerationPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

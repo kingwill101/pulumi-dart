@@ -32,7 +32,7 @@ class AutomationRuleAddIncidentTaskAction {
 
   factory AutomationRuleAddIncidentTaskAction.fromMap(Map<String, dynamic> map) {
     return AutomationRuleAddIncidentTaskAction(
-      actionConfiguration: map['actionConfiguration'] == null ? null : (AddIncidentTaskActionProperties.fromMap((map['actionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      actionConfiguration: map['actionConfiguration'] == null ? null : (AddIncidentTaskActionProperties.fromMap((map['actionConfiguration']! as Map).cast<String, dynamic>())).input(),
       actionType: (map['actionType'] as String).input(),
       order: (map['order'] as int).input(),
     );

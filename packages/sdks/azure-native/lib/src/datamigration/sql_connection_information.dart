@@ -46,12 +46,12 @@ class SqlConnectionInformation {
 
   factory SqlConnectionInformation.fromMap(Map<String, dynamic> map) {
     return SqlConnectionInformation(
-      authentication: map['authentication'] == null ? null : (map['authentication'] as String).input(),
-      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
-      encryptConnection: map['encryptConnection'] == null ? null : (map['encryptConnection'] as bool).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      trustServerCertificate: map['trustServerCertificate'] == null ? null : (map['trustServerCertificate'] as bool).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication']! as String).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource']! as String).input(),
+      encryptConnection: map['encryptConnection'] == null ? null : (map['encryptConnection']! as bool).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      trustServerCertificate: map['trustServerCertificate'] == null ? null : (map['trustServerCertificate']! as bool).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

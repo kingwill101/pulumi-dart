@@ -26,8 +26,8 @@ class ImageResponse {
 
   factory ImageResponse.fromMap(Map<String, dynamic> map) {
     return ImageResponse(
-      reference: map['reference'] == null ? null : (map['reference'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      reference: map['reference'] == null ? null : (map['reference']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

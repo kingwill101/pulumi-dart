@@ -21,7 +21,7 @@ class UsersResponse {
 
   factory UsersResponse.fromMap(Map<String, dynamic> map) {
     return UsersResponse(
-      viewersCanEdit: map['viewersCanEdit'] == null ? null : (map['viewersCanEdit'] as bool).input(),
+      viewersCanEdit: map['viewersCanEdit'] == null ? null : (map['viewersCanEdit']! as bool).input(),
     );
   }
 }

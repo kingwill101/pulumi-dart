@@ -23,8 +23,8 @@ class ChannelInputAttachmentInputSettingsVideoSelector {
 
   factory ChannelInputAttachmentInputSettingsVideoSelector.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsVideoSelector(
-      colorSpace: map['colorSpace'] == null ? null : (map['colorSpace'] as String).input(),
-      colorSpaceUsage: map['colorSpaceUsage'] == null ? null : (map['colorSpaceUsage'] as String).input(),
+      colorSpace: map['colorSpace'] == null ? null : ((map['colorSpace'] as String).input()).input(),
+      colorSpaceUsage: map['colorSpaceUsage'] == null ? null : ((map['colorSpaceUsage'] as String).input()).input(),
     );
   }
 }

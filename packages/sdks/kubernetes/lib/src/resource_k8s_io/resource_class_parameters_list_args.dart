@@ -41,10 +41,10 @@ class ResourceClassParametersListArgs {
 
   factory ResourceClassParametersListArgs.fromMap(Map<String, dynamic> map) {
     return ResourceClassParametersListArgs(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       items: ((map['items'] as List).cast<ResourceClassParametersResourceK8sIoV1alpha2>()).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

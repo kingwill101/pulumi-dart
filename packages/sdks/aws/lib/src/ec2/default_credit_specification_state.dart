@@ -36,10 +36,10 @@ class DefaultCreditSpecificationState {
 
   factory DefaultCreditSpecificationState.fromMap(Map<String, dynamic> map) {
     return DefaultCreditSpecificationState(
-      cpuCredits: map['cpuCredits'] == null ? null : (map['cpuCredits'] as String).input(),
-      instanceFamily: map['instanceFamily'] == null ? null : (map['instanceFamily'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (DefaultCreditSpecificationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      cpuCredits: map['cpuCredits'] == null ? null : ((map['cpuCredits'] as String).input()).input(),
+      instanceFamily: map['instanceFamily'] == null ? null : ((map['instanceFamily'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DefaultCreditSpecificationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

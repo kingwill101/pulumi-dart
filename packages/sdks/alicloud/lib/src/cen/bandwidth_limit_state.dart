@@ -33,9 +33,9 @@ class BandwidthLimitState {
 
   factory BandwidthLimitState.fromMap(Map<String, dynamic> map) {
     return BandwidthLimitState(
-      bandwidthLimit: map['bandwidthLimit'] == null ? null : (map['bandwidthLimit'] as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      regionIds: map['regionIds'] == null ? null : ((map['regionIds'] as List).cast<String>()).input(),
+      bandwidthLimit: map['bandwidthLimit'] == null ? null : (map['bandwidthLimit']! as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      regionIds: map['regionIds'] == null ? null : ((map['regionIds']! as List).cast<String>()).input(),
     );
   }
 }

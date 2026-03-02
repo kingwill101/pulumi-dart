@@ -25,8 +25,8 @@ class DataMaskingEntity {
 
   factory DataMaskingEntity.fromMap(Map<String, dynamic> map) {
     return DataMaskingEntity(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

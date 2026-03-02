@@ -42,11 +42,11 @@ class ParameterDefinitionsValue {
 
   factory ParameterDefinitionsValue.fromMap(Map<String, dynamic> map) {
     return ParameterDefinitionsValue(
-      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues'] as List).cast<dynamic>()).input(),
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']).input(),
-      metadata: map['metadata'] == null ? null : (ParameterDefinitionsValueMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      schema: map['schema'] == null ? null : (map['schema']).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues']! as List).cast<dynamic>()).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']!).input(),
+      metadata: map['metadata'] == null ? null : (ParameterDefinitionsValueMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      schema: map['schema'] == null ? null : (map['schema']!).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

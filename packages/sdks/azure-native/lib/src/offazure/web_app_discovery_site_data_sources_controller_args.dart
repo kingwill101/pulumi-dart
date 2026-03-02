@@ -44,8 +44,8 @@ class WebAppDiscoverySiteDataSourcesControllerArgs {
 
   factory WebAppDiscoverySiteDataSourcesControllerArgs.fromMap(Map<String, dynamic> map) {
     return WebAppDiscoverySiteDataSourcesControllerArgs(
-      discoverySiteDataSourceName: map['discoverySiteDataSourceName'] == null ? null : (map['discoverySiteDataSourceName'] as String).input(),
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      discoverySiteDataSourceName: map['discoverySiteDataSourceName'] == null ? null : (map['discoverySiteDataSourceName']! as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       siteName: (map['siteName'] as String).input(),
       webAppSiteName: (map['webAppSiteName'] as String).input(),

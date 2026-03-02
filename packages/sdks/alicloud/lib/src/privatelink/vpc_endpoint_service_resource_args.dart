@@ -44,11 +44,11 @@ class VpcEndpointServiceResourceArgs {
 
   factory VpcEndpointServiceResourceArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceResourceArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       resourceId: (map['resourceId'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),
       serviceId: (map['serviceId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

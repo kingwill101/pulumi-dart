@@ -37,10 +37,10 @@ class FeatureGroupOnlineStoreConfig {
 
   factory FeatureGroupOnlineStoreConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupOnlineStoreConfig(
-      enableOnlineStore: map['enableOnlineStore'] == null ? null : (map['enableOnlineStore'] as bool).input(),
-      securityConfig: map['securityConfig'] == null ? null : (FeatureGroupOnlineStoreConfigSecurityConfig.fromMap((map['securityConfig'] as Map).cast<String, dynamic>())).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
-      ttlDuration: map['ttlDuration'] == null ? null : (FeatureGroupOnlineStoreConfigTtlDuration.fromMap((map['ttlDuration'] as Map).cast<String, dynamic>())).input(),
+      enableOnlineStore: map['enableOnlineStore'] == null ? null : ((map['enableOnlineStore'] as bool).input()).input(),
+      securityConfig: map['securityConfig'] == null ? null : ((FeatureGroupOnlineStoreConfigSecurityConfig.fromMap((map['securityConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      storageType: map['storageType'] == null ? null : ((map['storageType'] as String).input()).input(),
+      ttlDuration: map['ttlDuration'] == null ? null : ((FeatureGroupOnlineStoreConfigTtlDuration.fromMap((map['ttlDuration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

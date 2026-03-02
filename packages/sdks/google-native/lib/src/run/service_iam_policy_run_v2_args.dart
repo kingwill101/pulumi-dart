@@ -58,14 +58,14 @@ class ServiceIamPolicyRunV2Args {
 
   factory ServiceIamPolicyRunV2Args.fromMap(Map<String, dynamic> map) {
     return ServiceIamPolicyRunV2Args(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditConfig>(map['auditConfigs'], (value) => GoogleIamV1AuditConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1Binding>(map['bindings'], (value) => GoogleIamV1Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditConfig>(map['auditConfigs']!, (value) => GoogleIamV1AuditConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1Binding>(map['bindings']!, (value) => GoogleIamV1Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

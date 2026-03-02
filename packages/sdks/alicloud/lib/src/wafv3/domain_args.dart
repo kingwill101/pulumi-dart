@@ -55,13 +55,13 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
+      accessType: map['accessType'] == null ? null : (map['accessType']! as String).input(),
       domain: (map['domain'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       listen: (DomainListen.fromMap((map['listen'] as Map).cast<String, dynamic>())).input(),
       redirect: (DomainRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>())).input(),
-      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : (map['resourceManagerResourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : (map['resourceManagerResourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -77,16 +77,16 @@ class OperatorApiConnectionArgs {
   factory OperatorApiConnectionArgs.fromMap(Map<String, dynamic> map) {
     return OperatorApiConnectionArgs(
       accountType: (map['accountType'] as String).input(),
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      appSecret: map['appSecret'] == null ? null : (map['appSecret'] as String).input(),
-      configuredApplication: map['configuredApplication'] == null ? null : (ApplicationProperties.fromMap((map['configuredApplication'] as Map).cast<String, dynamic>())).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      appSecret: map['appSecret'] == null ? null : (map['appSecret']! as String).input(),
+      configuredApplication: map['configuredApplication'] == null ? null : (ApplicationProperties.fromMap((map['configuredApplication']! as Map).cast<String, dynamic>())).input(),
       gatewayId: (map['gatewayId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      operatorApiConnectionName: map['operatorApiConnectionName'] == null ? null : (map['operatorApiConnectionName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      operatorApiConnectionName: map['operatorApiConnectionName'] == null ? null : (map['operatorApiConnectionName']! as String).input(),
       operatorApiPlanId: (map['operatorApiPlanId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      saasProperties: map['saasProperties'] == null ? null : (SaasProperties.fromMap((map['saasProperties'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      saasProperties: map['saasProperties'] == null ? null : (SaasProperties.fromMap((map['saasProperties']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

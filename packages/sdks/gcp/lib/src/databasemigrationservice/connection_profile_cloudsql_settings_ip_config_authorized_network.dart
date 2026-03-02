@@ -35,9 +35,9 @@ class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork {
 
   factory ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork(
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

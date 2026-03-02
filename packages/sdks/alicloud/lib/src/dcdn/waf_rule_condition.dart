@@ -37,8 +37,8 @@ class WafRuleCondition {
     return WafRuleCondition(
       key: (map['key'] as String).input(),
       opValue: (map['opValue'] as String).input(),
-      subKey: map['subKey'] == null ? null : (map['subKey'] as String).input(),
-      values: map['values'] == null ? null : (map['values'] as String).input(),
+      subKey: map['subKey'] == null ? null : (map['subKey']! as String).input(),
+      values: map['values'] == null ? null : (map['values']! as String).input(),
     );
   }
 }

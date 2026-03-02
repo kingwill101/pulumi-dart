@@ -20,7 +20,7 @@ class DomainFeaturesHyperVSpinlocks {
 
   factory DomainFeaturesHyperVSpinlocks.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVSpinlocks(
-      retries: map['retries'] == null ? null : (map['retries'] as double).input(),
+      retries: map['retries'] == null ? null : (map['retries']! as double).input(),
     );
   }
 }

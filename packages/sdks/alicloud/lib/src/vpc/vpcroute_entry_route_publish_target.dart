@@ -30,8 +30,8 @@ class VPCRouteEntryRoutePublishTarget {
 
   factory VPCRouteEntryRoutePublishTarget.fromMap(Map<String, dynamic> map) {
     return VPCRouteEntryRoutePublishTarget(
-      publishStatus: map['publishStatus'] == null ? null : (map['publishStatus'] as String).input(),
-      targetInstanceId: map['targetInstanceId'] == null ? null : (map['targetInstanceId'] as String).input(),
+      publishStatus: map['publishStatus'] == null ? null : (map['publishStatus']! as String).input(),
+      targetInstanceId: map['targetInstanceId'] == null ? null : (map['targetInstanceId']! as String).input(),
       targetType: (map['targetType'] as String).input(),
     );
   }

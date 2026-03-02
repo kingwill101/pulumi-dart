@@ -27,7 +27,7 @@ class GcsProfile {
   factory GcsProfile.fromMap(Map<String, dynamic> map) {
     return GcsProfile(
       bucket: (map['bucket'] as String).input(),
-      rootPath: map['rootPath'] == null ? null : (map['rootPath'] as String).input(),
+      rootPath: map['rootPath'] == null ? null : (map['rootPath']! as String).input(),
     );
   }
 }

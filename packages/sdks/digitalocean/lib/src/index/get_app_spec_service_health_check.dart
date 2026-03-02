@@ -50,13 +50,13 @@ class GetAppSpecServiceHealthCheck {
 
   factory GetAppSpecServiceHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetAppSpecServiceHealthCheck(
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      httpPath: map['httpPath'] == null ? null : (map['httpPath'] as String).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      httpPath: map['httpPath'] == null ? null : (map['httpPath']! as String).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as int).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

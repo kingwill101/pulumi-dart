@@ -41,8 +41,8 @@ class SolutionDependencyResponse {
 
   factory SolutionDependencyResponse.fromMap(Map<String, dynamic> map) {
     return SolutionDependencyResponse(
-      dependencies: map['dependencies'] == null ? null : (pulumi.Input.decodeList<SolutionDependencyResponse>(map['dependencies'], (value) => SolutionDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      solutionInstanceName: map['solutionInstanceName'] == null ? null : (map['solutionInstanceName'] as String).input(),
+      dependencies: map['dependencies'] == null ? null : (pulumi.Input.decodeList<SolutionDependencyResponse>(map['dependencies']!, (value) => SolutionDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      solutionInstanceName: map['solutionInstanceName'] == null ? null : (map['solutionInstanceName']! as String).input(),
       solutionTemplateVersionId: (map['solutionTemplateVersionId'] as String).input(),
       solutionVersionId: (map['solutionVersionId'] as String).input(),
       targetId: (map['targetId'] as String).input(),

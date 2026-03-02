@@ -44,8 +44,8 @@ class ZoneShareV2Args {
 
   factory ZoneShareV2Args.fromMap(Map<String, dynamic> map) {
     return ZoneShareV2Args(
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       targetProjectId: (map['targetProjectId'] as String).input(),
       zoneId: (map['zoneId'] as String).input(),
     );

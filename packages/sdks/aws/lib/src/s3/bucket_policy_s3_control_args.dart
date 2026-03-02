@@ -36,7 +36,7 @@ class BucketPolicyS3ControlArgs {
     return BucketPolicyS3ControlArgs(
       bucket: (map['bucket'] as String).input(),
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

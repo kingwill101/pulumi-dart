@@ -21,7 +21,7 @@ class ToolExitCode {
 
   factory ToolExitCode.fromMap(Map<String, dynamic> map) {
     return ToolExitCode(
-      number: map['number'] == null ? null : (map['number'] as int).input(),
+      number: map['number'] == null ? null : (map['number']! as int).input(),
     );
   }
 }

@@ -61,14 +61,14 @@ class DomainTrustState {
 
   factory DomainTrustState.fromMap(Map<String, dynamic> map) {
     return DomainTrustState(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      selectiveAuthentication: map['selectiveAuthentication'] == null ? null : (map['selectiveAuthentication'] as bool).input(),
-      targetDnsIpAddresses: map['targetDnsIpAddresses'] == null ? null : ((map['targetDnsIpAddresses'] as List).cast<String>()).input(),
-      targetDomainName: map['targetDomainName'] == null ? null : (map['targetDomainName'] as String).input(),
-      trustDirection: map['trustDirection'] == null ? null : (map['trustDirection'] as String).input(),
-      trustHandshakeSecret: map['trustHandshakeSecret'] == null ? null : (map['trustHandshakeSecret'] as String).input(),
-      trustType: map['trustType'] == null ? null : (map['trustType'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      selectiveAuthentication: map['selectiveAuthentication'] == null ? null : (map['selectiveAuthentication']! as bool).input(),
+      targetDnsIpAddresses: map['targetDnsIpAddresses'] == null ? null : ((map['targetDnsIpAddresses']! as List).cast<String>()).input(),
+      targetDomainName: map['targetDomainName'] == null ? null : (map['targetDomainName']! as String).input(),
+      trustDirection: map['trustDirection'] == null ? null : (map['trustDirection']! as String).input(),
+      trustHandshakeSecret: map['trustHandshakeSecret'] == null ? null : (map['trustHandshakeSecret']! as String).input(),
+      trustType: map['trustType'] == null ? null : (map['trustType']! as String).input(),
     );
   }
 }

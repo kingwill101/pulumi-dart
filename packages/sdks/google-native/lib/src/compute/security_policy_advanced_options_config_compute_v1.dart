@@ -36,10 +36,10 @@ class SecurityPolicyAdvancedOptionsConfigComputeV1 {
 
   factory SecurityPolicyAdvancedOptionsConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdvancedOptionsConfigComputeV1(
-      jsonCustomConfig: map['jsonCustomConfig'] == null ? null : (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigComputeV1.fromMap((map['jsonCustomConfig'] as Map).cast<String, dynamic>())).input(),
-      jsonParsing: map['jsonParsing'] == null ? null : (SecurityPolicyAdvancedOptionsConfigJsonParsingComputeV1.fromValue(map['jsonParsing'] as String)).input(),
-      logLevel: map['logLevel'] == null ? null : (SecurityPolicyAdvancedOptionsConfigLogLevelComputeV1.fromValue(map['logLevel'] as String)).input(),
-      userIpRequestHeaders: map['userIpRequestHeaders'] == null ? null : ((map['userIpRequestHeaders'] as List).cast<String>()).input(),
+      jsonCustomConfig: map['jsonCustomConfig'] == null ? null : (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigComputeV1.fromMap((map['jsonCustomConfig']! as Map).cast<String, dynamic>())).input(),
+      jsonParsing: map['jsonParsing'] == null ? null : (SecurityPolicyAdvancedOptionsConfigJsonParsingComputeV1.fromValue(map['jsonParsing']! as String)).input(),
+      logLevel: map['logLevel'] == null ? null : (SecurityPolicyAdvancedOptionsConfigLogLevelComputeV1.fromValue(map['logLevel']! as String)).input(),
+      userIpRequestHeaders: map['userIpRequestHeaders'] == null ? null : ((map['userIpRequestHeaders']! as List).cast<String>()).input(),
     );
   }
 }

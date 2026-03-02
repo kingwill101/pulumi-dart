@@ -21,7 +21,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccoun
 
   factory GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
     );
   }
 }

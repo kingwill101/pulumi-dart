@@ -50,11 +50,11 @@ class WorkspaceNetworkOutboundRulePrivateEndpointState {
 
   factory WorkspaceNetworkOutboundRulePrivateEndpointState.fromMap(Map<String, dynamic> map) {
     return WorkspaceNetworkOutboundRulePrivateEndpointState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serviceResourceId: map['serviceResourceId'] == null ? null : (map['serviceResourceId'] as String).input(),
-      sparkEnabled: map['sparkEnabled'] == null ? null : (map['sparkEnabled'] as bool).input(),
-      subResourceTarget: map['subResourceTarget'] == null ? null : (map['subResourceTarget'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serviceResourceId: map['serviceResourceId'] == null ? null : (map['serviceResourceId']! as String).input(),
+      sparkEnabled: map['sparkEnabled'] == null ? null : (map['sparkEnabled']! as bool).input(),
+      subResourceTarget: map['subResourceTarget'] == null ? null : (map['subResourceTarget']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

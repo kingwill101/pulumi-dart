@@ -47,11 +47,11 @@ class EipInstanceAttachmentState {
 
   factory EipInstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return EipInstanceAttachmentState(
-      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      standby: map['standby'] == null ? null : (map['standby'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      allocationId: map['allocationId'] == null ? null : (map['allocationId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      standby: map['standby'] == null ? null : (map['standby']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

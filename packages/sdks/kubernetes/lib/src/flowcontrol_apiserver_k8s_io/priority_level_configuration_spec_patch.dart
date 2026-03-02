@@ -33,9 +33,9 @@ class PriorityLevelConfigurationSpecPatch {
 
   factory PriorityLevelConfigurationSpecPatch.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationSpecPatch(
-      exempt: map['exempt'] == null ? null : (ExemptPriorityLevelConfigurationPatch.fromMap((map['exempt'] as Map).cast<String, dynamic>())).input(),
-      limited: map['limited'] == null ? null : (LimitedPriorityLevelConfigurationPatch.fromMap((map['limited'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      exempt: map['exempt'] == null ? null : (ExemptPriorityLevelConfigurationPatch.fromMap((map['exempt']! as Map).cast<String, dynamic>())).input(),
+      limited: map['limited'] == null ? null : (LimitedPriorityLevelConfigurationPatch.fromMap((map['limited']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ServiceVNetAddons {
 
   factory ServiceVNetAddons.fromMap(Map<String, dynamic> map) {
     return ServiceVNetAddons(
-      dataPlanePublicEndpoint: map['dataPlanePublicEndpoint'] == null ? null : (map['dataPlanePublicEndpoint'] as bool).input(),
-      logStreamPublicEndpoint: map['logStreamPublicEndpoint'] == null ? null : (map['logStreamPublicEndpoint'] as bool).input(),
+      dataPlanePublicEndpoint: map['dataPlanePublicEndpoint'] == null ? null : (map['dataPlanePublicEndpoint']! as bool).input(),
+      logStreamPublicEndpoint: map['logStreamPublicEndpoint'] == null ? null : (map['logStreamPublicEndpoint']! as bool).input(),
     );
   }
 }

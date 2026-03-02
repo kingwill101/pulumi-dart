@@ -45,11 +45,11 @@ class VpcIpamPoolCidrArgs {
 
   factory VpcIpamPoolCidrArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamPoolCidrArgs(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      cidrAuthorizationContext: map['cidrAuthorizationContext'] == null ? null : (VpcIpamPoolCidrCidrAuthorizationContext.fromMap((map['cidrAuthorizationContext'] as Map).cast<String, dynamic>())).input(),
+      cidr: map['cidr'] == null ? null : ((map['cidr'] as String).input()).input(),
+      cidrAuthorizationContext: map['cidrAuthorizationContext'] == null ? null : ((VpcIpamPoolCidrCidrAuthorizationContext.fromMap((map['cidrAuthorizationContext']! as Map).cast<String, dynamic>())).input()).input(),
       ipamPoolId: (map['ipamPoolId'] as String).input(),
-      netmaskLength: map['netmaskLength'] == null ? null : (map['netmaskLength'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      netmaskLength: map['netmaskLength'] == null ? null : ((map['netmaskLength'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

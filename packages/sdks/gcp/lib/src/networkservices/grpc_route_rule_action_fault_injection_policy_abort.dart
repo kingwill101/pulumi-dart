@@ -25,8 +25,8 @@ class GrpcRouteRuleActionFaultInjectionPolicyAbort {
 
   factory GrpcRouteRuleActionFaultInjectionPolicyAbort.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRuleActionFaultInjectionPolicyAbort(
-      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus'] as int).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
+      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus']! as int).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as int).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ApplicationPackageLockingPolicyDefinition {
 
   factory ApplicationPackageLockingPolicyDefinition.fromMap(Map<String, dynamic> map) {
     return ApplicationPackageLockingPolicyDefinition(
-      allowedActions: map['allowedActions'] == null ? null : ((map['allowedActions'] as List).cast<String>()).input(),
-      allowedDataActions: map['allowedDataActions'] == null ? null : ((map['allowedDataActions'] as List).cast<String>()).input(),
+      allowedActions: map['allowedActions'] == null ? null : ((map['allowedActions']! as List).cast<String>()).input(),
+      allowedDataActions: map['allowedDataActions'] == null ? null : ((map['allowedDataActions']! as List).cast<String>()).input(),
     );
   }
 }

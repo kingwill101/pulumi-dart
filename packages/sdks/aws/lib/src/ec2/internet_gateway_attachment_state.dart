@@ -31,9 +31,9 @@ class InternetGatewayAttachmentState {
 
   factory InternetGatewayAttachmentState.fromMap(Map<String, dynamic> map) {
     return InternetGatewayAttachmentState(
-      internetGatewayId: map['internetGatewayId'] == null ? null : (map['internetGatewayId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      internetGatewayId: map['internetGatewayId'] == null ? null : ((map['internetGatewayId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

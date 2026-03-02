@@ -44,9 +44,9 @@ class CapacityRequestPolicyRangeResourceK8sIoV1beta1 {
 
   factory CapacityRequestPolicyRangeResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CapacityRequestPolicyRangeResourceK8sIoV1beta1(
-      max: map['max'] == null ? null : (map['max'] as String).input(),
+      max: map['max'] == null ? null : (map['max']! as String).input(),
       min: (map['min'] as String).input(),
-      step: map['step'] == null ? null : (map['step'] as String).input(),
+      step: map['step'] == null ? null : (map['step']! as String).input(),
     );
   }
 }

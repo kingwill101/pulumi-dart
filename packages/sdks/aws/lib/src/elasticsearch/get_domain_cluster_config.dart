@@ -72,7 +72,7 @@ class GetDomainClusterConfig {
 
   factory GetDomainClusterConfig.fromMap(Map<String, dynamic> map) {
     return GetDomainClusterConfig(
-      coldStorageOptions: (pulumi.Input.decodeList<GetDomainClusterConfigColdStorageOption>(map['coldStorageOptions'], (value) => GetDomainClusterConfigColdStorageOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      coldStorageOptions: (pulumi.Input.decodeList<GetDomainClusterConfigColdStorageOption>(map['coldStorageOptions']!, (value) => GetDomainClusterConfigColdStorageOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dedicatedMasterCount: (map['dedicatedMasterCount'] as int).input(),
       dedicatedMasterEnabled: (map['dedicatedMasterEnabled'] as bool).input(),
       dedicatedMasterType: (map['dedicatedMasterType'] as String).input(),
@@ -81,7 +81,7 @@ class GetDomainClusterConfig {
       warmCount: (map['warmCount'] as int).input(),
       warmEnabled: (map['warmEnabled'] as bool).input(),
       warmType: (map['warmType'] as String).input(),
-      zoneAwarenessConfigs: (pulumi.Input.decodeList<GetDomainClusterConfigZoneAwarenessConfig>(map['zoneAwarenessConfigs'], (value) => GetDomainClusterConfigZoneAwarenessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zoneAwarenessConfigs: (pulumi.Input.decodeList<GetDomainClusterConfigZoneAwarenessConfig>(map['zoneAwarenessConfigs']!, (value) => GetDomainClusterConfigZoneAwarenessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       zoneAwarenessEnabled: (map['zoneAwarenessEnabled'] as bool).input(),
     );
   }

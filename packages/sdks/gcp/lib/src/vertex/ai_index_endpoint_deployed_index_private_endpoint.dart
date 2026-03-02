@@ -35,9 +35,9 @@ class AiIndexEndpointDeployedIndexPrivateEndpoint {
 
   factory AiIndexEndpointDeployedIndexPrivateEndpoint.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexPrivateEndpoint(
-      matchGrpcAddress: map['matchGrpcAddress'] == null ? null : (map['matchGrpcAddress'] as String).input(),
-      pscAutomatedEndpoints: map['pscAutomatedEndpoints'] == null ? null : (pulumi.Input.decodeList<AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint>(map['pscAutomatedEndpoints'], (value) => AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
+      matchGrpcAddress: map['matchGrpcAddress'] == null ? null : (map['matchGrpcAddress']! as String).input(),
+      pscAutomatedEndpoints: map['pscAutomatedEndpoints'] == null ? null : (pulumi.Input.decodeList<AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint>(map['pscAutomatedEndpoints']!, (value) => AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment']! as String).input(),
     );
   }
 }

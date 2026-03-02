@@ -36,10 +36,10 @@ class GitHubActionContainerConfigurationResponse {
 
   factory GitHubActionContainerConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return GitHubActionContainerConfigurationResponse(
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

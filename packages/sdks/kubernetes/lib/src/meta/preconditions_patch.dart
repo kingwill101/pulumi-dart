@@ -26,8 +26,8 @@ class PreconditionsPatch {
 
   factory PreconditionsPatch.fromMap(Map<String, dynamic> map) {
     return PreconditionsPatch(
-      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

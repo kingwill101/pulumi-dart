@@ -28,7 +28,7 @@ class VmwareAdminClusterLoadBalancerVipConfig {
 
   factory VmwareAdminClusterLoadBalancerVipConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterLoadBalancerVipConfig(
-      addonsVip: map['addonsVip'] == null ? null : (map['addonsVip'] as String).input(),
+      addonsVip: map['addonsVip'] == null ? null : (map['addonsVip']! as String).input(),
       controlPlaneVip: (map['controlPlaneVip'] as String).input(),
     );
   }

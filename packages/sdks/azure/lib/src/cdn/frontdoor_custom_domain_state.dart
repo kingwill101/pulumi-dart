@@ -56,13 +56,13 @@ class FrontdoorCustomDomainState {
 
   factory FrontdoorCustomDomainState.fromMap(Map<String, dynamic> map) {
     return FrontdoorCustomDomainState(
-      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : (map['cdnFrontdoorProfileId'] as String).input(),
-      dnsZoneId: map['dnsZoneId'] == null ? null : (map['dnsZoneId'] as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tls: map['tls'] == null ? null : (FrontdoorCustomDomainTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
-      validationToken: map['validationToken'] == null ? null : (map['validationToken'] as String).input(),
+      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : (map['cdnFrontdoorProfileId']! as String).input(),
+      dnsZoneId: map['dnsZoneId'] == null ? null : (map['dnsZoneId']! as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tls: map['tls'] == null ? null : (FrontdoorCustomDomainTls.fromMap((map['tls']! as Map).cast<String, dynamic>())).input(),
+      validationToken: map['validationToken'] == null ? null : (map['validationToken']! as String).input(),
     );
   }
 }

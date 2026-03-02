@@ -26,8 +26,8 @@ class DriveBitLockerKeyResponse {
 
   factory DriveBitLockerKeyResponse.fromMap(Map<String, dynamic> map) {
     return DriveBitLockerKeyResponse(
-      bitLockerKey: map['bitLockerKey'] == null ? null : (map['bitLockerKey'] as String).input(),
-      driveId: map['driveId'] == null ? null : (map['driveId'] as String).input(),
+      bitLockerKey: map['bitLockerKey'] == null ? null : (map['bitLockerKey']! as String).input(),
+      driveId: map['driveId'] == null ? null : (map['driveId']! as String).input(),
     );
   }
 }

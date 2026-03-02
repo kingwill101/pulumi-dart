@@ -47,8 +47,8 @@ class MedicalVocabularyArgs {
   factory MedicalVocabularyArgs.fromMap(Map<String, dynamic> map) {
     return MedicalVocabularyArgs(
       languageCode: (map['languageCode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vocabularyFileUri: (map['vocabularyFileUri'] as String).input(),
       vocabularyName: (map['vocabularyName'] as String).input(),
     );

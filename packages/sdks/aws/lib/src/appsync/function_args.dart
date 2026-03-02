@@ -82,17 +82,17 @@ class FunctionArgs {
   factory FunctionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionArgs(
       apiId: (map['apiId'] as String).input(),
-      code: map['code'] == null ? null : (map['code'] as String).input(),
+      code: map['code'] == null ? null : ((map['code'] as String).input()).input(),
       dataSource: (map['dataSource'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      functionVersion: map['functionVersion'] == null ? null : (map['functionVersion'] as String).input(),
-      maxBatchSize: map['maxBatchSize'] == null ? null : (map['maxBatchSize'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requestMappingTemplate: map['requestMappingTemplate'] == null ? null : (map['requestMappingTemplate'] as String).input(),
-      responseMappingTemplate: map['responseMappingTemplate'] == null ? null : (map['responseMappingTemplate'] as String).input(),
-      runtime: map['runtime'] == null ? null : (FunctionRuntime.fromMap((map['runtime'] as Map).cast<String, dynamic>())).input(),
-      syncConfig: map['syncConfig'] == null ? null : (FunctionSyncConfig.fromMap((map['syncConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      functionVersion: map['functionVersion'] == null ? null : ((map['functionVersion'] as String).input()).input(),
+      maxBatchSize: map['maxBatchSize'] == null ? null : ((map['maxBatchSize'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requestMappingTemplate: map['requestMappingTemplate'] == null ? null : ((map['requestMappingTemplate'] as String).input()).input(),
+      responseMappingTemplate: map['responseMappingTemplate'] == null ? null : ((map['responseMappingTemplate'] as String).input()).input(),
+      runtime: map['runtime'] == null ? null : ((FunctionRuntime.fromMap((map['runtime']! as Map).cast<String, dynamic>())).input()).input(),
+      syncConfig: map['syncConfig'] == null ? null : ((FunctionSyncConfig.fromMap((map['syncConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

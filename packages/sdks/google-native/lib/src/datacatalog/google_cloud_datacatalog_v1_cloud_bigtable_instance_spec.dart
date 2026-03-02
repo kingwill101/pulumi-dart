@@ -22,7 +22,7 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
 
   factory GoogleCloudDatacatalogV1CloudBigtableInstanceSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1CloudBigtableInstanceSpec(
-      cloudBigtableClusterSpecs: map['cloudBigtableClusterSpecs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>(map['cloudBigtableClusterSpecs'], (value) => GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudBigtableClusterSpecs: map['cloudBigtableClusterSpecs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>(map['cloudBigtableClusterSpecs']!, (value) => GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

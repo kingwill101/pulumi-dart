@@ -43,11 +43,11 @@ class ServiceDeploymentConfiguration {
 
   factory ServiceDeploymentConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceDeploymentConfiguration(
-      bakeTimeInMinutes: map['bakeTimeInMinutes'] == null ? null : (map['bakeTimeInMinutes'] as String).input(),
-      canaryConfiguration: map['canaryConfiguration'] == null ? null : (ServiceDeploymentConfigurationCanaryConfiguration.fromMap((map['canaryConfiguration'] as Map).cast<String, dynamic>())).input(),
-      lifecycleHooks: map['lifecycleHooks'] == null ? null : (pulumi.Input.decodeList<ServiceDeploymentConfigurationLifecycleHook>(map['lifecycleHooks'], (value) => ServiceDeploymentConfigurationLifecycleHook.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      linearConfiguration: map['linearConfiguration'] == null ? null : (ServiceDeploymentConfigurationLinearConfiguration.fromMap((map['linearConfiguration'] as Map).cast<String, dynamic>())).input(),
-      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
+      bakeTimeInMinutes: map['bakeTimeInMinutes'] == null ? null : ((map['bakeTimeInMinutes'] as String).input()).input(),
+      canaryConfiguration: map['canaryConfiguration'] == null ? null : ((ServiceDeploymentConfigurationCanaryConfiguration.fromMap((map['canaryConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      lifecycleHooks: map['lifecycleHooks'] == null ? null : ((pulumi.Input.decodeList<ServiceDeploymentConfigurationLifecycleHook>(map['lifecycleHooks']!, (value) => ServiceDeploymentConfigurationLifecycleHook.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      linearConfiguration: map['linearConfiguration'] == null ? null : ((ServiceDeploymentConfigurationLinearConfiguration.fromMap((map['linearConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      strategy: map['strategy'] == null ? null : ((map['strategy'] as String).input()).input(),
     );
   }
 }

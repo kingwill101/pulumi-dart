@@ -42,11 +42,11 @@ class PublicIpAddressPoolCidrBlockState {
 
   factory PublicIpAddressPoolCidrBlockState.fromMap(Map<String, dynamic> map) {
     return PublicIpAddressPoolCidrBlockState(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask'] as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      publicIpAddressPoolId: map['publicIpAddressPoolId'] == null ? null : (map['publicIpAddressPoolId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
+      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask']! as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      publicIpAddressPoolId: map['publicIpAddressPoolId'] == null ? null : (map['publicIpAddressPoolId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

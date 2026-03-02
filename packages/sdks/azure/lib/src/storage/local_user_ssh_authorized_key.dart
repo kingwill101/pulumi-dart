@@ -25,7 +25,7 @@ class LocalUserSshAuthorizedKey {
 
   factory LocalUserSshAuthorizedKey.fromMap(Map<String, dynamic> map) {
     return LocalUserSshAuthorizedKey(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       key: (map['key'] as String).input(),
     );
   }

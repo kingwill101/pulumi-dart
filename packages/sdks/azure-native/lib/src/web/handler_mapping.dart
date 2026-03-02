@@ -32,9 +32,9 @@ class HandlerMapping {
 
   factory HandlerMapping.fromMap(Map<String, dynamic> map) {
     return HandlerMapping(
-      arguments: map['arguments'] == null ? null : (map['arguments'] as String).input(),
-      extension: map['extension'] == null ? null : (map['extension'] as String).input(),
-      scriptProcessor: map['scriptProcessor'] == null ? null : (map['scriptProcessor'] as String).input(),
+      arguments: map['arguments'] == null ? null : (map['arguments']! as String).input(),
+      extension: map['extension'] == null ? null : (map['extension']! as String).input(),
+      scriptProcessor: map['scriptProcessor'] == null ? null : (map['scriptProcessor']! as String).input(),
     );
   }
 }

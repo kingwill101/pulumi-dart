@@ -50,12 +50,12 @@ class AppConnectionAuthentication {
 
   factory AppConnectionAuthentication.fromMap(Map<String, dynamic> map) {
     return AppConnectionAuthentication(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

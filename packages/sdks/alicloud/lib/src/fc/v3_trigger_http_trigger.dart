@@ -25,8 +25,8 @@ class V3TriggerHttpTrigger {
 
   factory V3TriggerHttpTrigger.fromMap(Map<String, dynamic> map) {
     return V3TriggerHttpTrigger(
-      urlInternet: map['urlInternet'] == null ? null : (map['urlInternet'] as String).input(),
-      urlIntranet: map['urlIntranet'] == null ? null : (map['urlIntranet'] as String).input(),
+      urlInternet: map['urlInternet'] == null ? null : (map['urlInternet']! as String).input(),
+      urlIntranet: map['urlIntranet'] == null ? null : (map['urlIntranet']! as String).input(),
     );
   }
 }

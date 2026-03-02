@@ -31,9 +31,9 @@ class DomainDevicesGraphicDbus {
 
   factory DomainDevicesGraphicDbus.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicDbus(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      gl: map['gl'] == null ? null : (DomainDevicesGraphicDbusGl.fromMap((map['gl'] as Map).cast<String, dynamic>())).input(),
-      p2p: map['p2p'] == null ? null : (map['p2p'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      gl: map['gl'] == null ? null : (DomainDevicesGraphicDbusGl.fromMap((map['gl']! as Map).cast<String, dynamic>())).input(),
+      p2p: map['p2p'] == null ? null : (map['p2p']! as String).input(),
     );
   }
 }

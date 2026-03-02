@@ -26,8 +26,8 @@ class SourceResponse {
 
   factory SourceResponse.fromMap(Map<String, dynamic> map) {
     return SourceResponse(
-      addr: map['addr'] == null ? null : (map['addr'] as String).input(),
-      instanceID: map['instanceID'] == null ? null : (map['instanceID'] as String).input(),
+      addr: map['addr'] == null ? null : (map['addr']! as String).input(),
+      instanceID: map['instanceID'] == null ? null : (map['instanceID']! as String).input(),
     );
   }
 }

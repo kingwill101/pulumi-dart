@@ -29,8 +29,8 @@ class GetGradientaiOpenaiApiKeysArgs {
 
   factory GetGradientaiOpenaiApiKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetGradientaiOpenaiApiKeysArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGradientaiOpenaiApiKeysFilter>(map['filters'], (value) => GetGradientaiOpenaiApiKeysFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGradientaiOpenaiApiKeysSort>(map['sorts'], (value) => GetGradientaiOpenaiApiKeysSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGradientaiOpenaiApiKeysFilter>(map['filters']!, (value) => GetGradientaiOpenaiApiKeysFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGradientaiOpenaiApiKeysSort>(map['sorts']!, (value) => GetGradientaiOpenaiApiKeysSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -40,11 +40,11 @@ class PacketCaptureFilter {
 
   factory PacketCaptureFilter.fromMap(Map<String, dynamic> map) {
     return PacketCaptureFilter(
-      localIpAddress: map['localIpAddress'] == null ? null : (map['localIpAddress'] as String).input(),
-      localPort: map['localPort'] == null ? null : (map['localPort'] as String).input(),
+      localIpAddress: map['localIpAddress'] == null ? null : (map['localIpAddress']! as String).input(),
+      localPort: map['localPort'] == null ? null : (map['localPort']! as String).input(),
       protocol: (map['protocol'] as String).input(),
-      remoteIpAddress: map['remoteIpAddress'] == null ? null : (map['remoteIpAddress'] as String).input(),
-      remotePort: map['remotePort'] == null ? null : (map['remotePort'] as String).input(),
+      remoteIpAddress: map['remoteIpAddress'] == null ? null : (map['remoteIpAddress']! as String).input(),
+      remotePort: map['remotePort'] == null ? null : (map['remotePort']! as String).input(),
     );
   }
 }

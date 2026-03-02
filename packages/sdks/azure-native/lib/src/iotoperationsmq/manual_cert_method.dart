@@ -27,7 +27,7 @@ class ManualCertMethod {
   factory ManualCertMethod.fromMap(Map<String, dynamic> map) {
     return ManualCertMethod(
       secretName: (map['secretName'] as String).input(),
-      secretNamespace: map['secretNamespace'] == null ? null : (map['secretNamespace'] as String).input(),
+      secretNamespace: map['secretNamespace'] == null ? null : (map['secretNamespace']! as String).input(),
     );
   }
 }

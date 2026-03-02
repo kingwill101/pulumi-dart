@@ -86,16 +86,16 @@ class GetBusinessProcessResult {
   factory GetBusinessProcessResult.fromMap(Map<String, dynamic> map) {
     return GetBusinessProcessResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      businessProcessMapping: map['businessProcessMapping'] == null ? null : pulumi.Input.decodeMapValues<BusinessProcessMappingItemResponse>(map['businessProcessMapping'], (value) => BusinessProcessMappingItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      businessProcessStages: map['businessProcessStages'] == null ? null : pulumi.Input.decodeMapValues<BusinessProcessStageResponse>(map['businessProcessStages'], (value) => BusinessProcessStageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
+      businessProcessMapping: map['businessProcessMapping'] == null ? null : pulumi.Input.decodeMapValues<BusinessProcessMappingItemResponse>(map['businessProcessMapping']!, (value) => BusinessProcessMappingItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      businessProcessStages: map['businessProcessStages'] == null ? null : pulumi.Input.decodeMapValues<BusinessProcessStageResponse>(map['businessProcessStages']!, (value) => BusinessProcessStageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
-      identifier: map['identifier'] == null ? null : BusinessProcessIdentifierResponse.fromMap((map['identifier'] as Map).cast<String, dynamic>()),
+      identifier: map['identifier'] == null ? null : BusinessProcessIdentifierResponse.fromMap((map['identifier']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tableName: map['tableName'] == null ? null : map['tableName'] as String,
-      trackingDataStoreReferenceName: map['trackingDataStoreReferenceName'] == null ? null : map['trackingDataStoreReferenceName'] as String,
+      tableName: map['tableName'] == null ? null : map['tableName']! as String,
+      trackingDataStoreReferenceName: map['trackingDataStoreReferenceName'] == null ? null : map['trackingDataStoreReferenceName']! as String,
       type: map['type'] as String,
       version: map['version'] as String,
     );

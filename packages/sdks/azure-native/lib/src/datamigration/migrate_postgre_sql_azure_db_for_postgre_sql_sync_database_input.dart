@@ -47,12 +47,12 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput {
 
   factory MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput(
-      migrationSetting: map['migrationSetting'] == null ? null : (map['migrationSetting']).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      selectedTables: map['selectedTables'] == null ? null : (pulumi.Input.decodeList<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput>(map['selectedTables'], (value) => MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceSetting: map['sourceSetting'] == null ? null : ((map['sourceSetting'] as Map).cast<String, String>()).input(),
-      targetDatabaseName: map['targetDatabaseName'] == null ? null : (map['targetDatabaseName'] as String).input(),
-      targetSetting: map['targetSetting'] == null ? null : ((map['targetSetting'] as Map).cast<String, String>()).input(),
+      migrationSetting: map['migrationSetting'] == null ? null : (map['migrationSetting']!).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      selectedTables: map['selectedTables'] == null ? null : (pulumi.Input.decodeList<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput>(map['selectedTables']!, (value) => MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceSetting: map['sourceSetting'] == null ? null : ((map['sourceSetting']! as Map).cast<String, String>()).input(),
+      targetDatabaseName: map['targetDatabaseName'] == null ? null : (map['targetDatabaseName']! as String).input(),
+      targetSetting: map['targetSetting'] == null ? null : ((map['targetSetting']! as Map).cast<String, String>()).input(),
     );
   }
 }

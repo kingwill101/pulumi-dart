@@ -62,14 +62,14 @@ class HciClusterArgs {
 
   factory HciClusterArgs.fromMap(Map<String, dynamic> map) {
     return HciClusterArgs(
-      automanageConfigurationId: map['automanageConfigurationId'] == null ? null : (map['automanageConfigurationId'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      identity: map['identity'] == null ? null : (HciClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      automanageConfigurationId: map['automanageConfigurationId'] == null ? null : (map['automanageConfigurationId']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      identity: map['identity'] == null ? null : (HciClusterIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class RoutingRuleCondition {
 
   factory RoutingRuleCondition.fromMap(Map<String, dynamic> map) {
     return RoutingRuleCondition(
-      matchBasePaths: map['matchBasePaths'] == null ? null : (RoutingRuleConditionMatchBasePaths.fromMap((map['matchBasePaths'] as Map).cast<String, dynamic>())).input(),
-      matchHeaders: map['matchHeaders'] == null ? null : (RoutingRuleConditionMatchHeaders.fromMap((map['matchHeaders'] as Map).cast<String, dynamic>())).input(),
+      matchBasePaths: map['matchBasePaths'] == null ? null : ((RoutingRuleConditionMatchBasePaths.fromMap((map['matchBasePaths']! as Map).cast<String, dynamic>())).input()).input(),
+      matchHeaders: map['matchHeaders'] == null ? null : ((RoutingRuleConditionMatchHeaders.fromMap((map['matchHeaders']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

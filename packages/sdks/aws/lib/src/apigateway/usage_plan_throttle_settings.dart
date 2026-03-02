@@ -23,8 +23,8 @@ class UsagePlanThrottleSettings {
 
   factory UsagePlanThrottleSettings.fromMap(Map<String, dynamic> map) {
     return UsagePlanThrottleSettings(
-      burstLimit: map['burstLimit'] == null ? null : (map['burstLimit'] as int).input(),
-      rateLimit: map['rateLimit'] == null ? null : (map['rateLimit'] as double).input(),
+      burstLimit: map['burstLimit'] == null ? null : ((map['burstLimit'] as int).input()).input(),
+      rateLimit: map['rateLimit'] == null ? null : ((map['rateLimit'] as double).input()).input(),
     );
   }
 }

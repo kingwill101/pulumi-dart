@@ -25,8 +25,8 @@ class RouterExpressConnectRouterRegion {
 
   factory RouterExpressConnectRouterRegion.fromMap(Map<String, dynamic> map) {
     return RouterExpressConnectRouterRegion(
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      transitMode: map['transitMode'] == null ? null : (map['transitMode'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      transitMode: map['transitMode'] == null ? null : (map['transitMode']! as String).input(),
     );
   }
 }

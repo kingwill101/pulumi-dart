@@ -75,15 +75,15 @@ class AlidnsRecordArgs {
   factory AlidnsRecordArgs.fromMap(Map<String, dynamic> map) {
     return AlidnsRecordArgs(
       domainName: (map['domainName'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      line: map['line'] == null ? null : (map['line'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      line: map['line'] == null ? null : (map['line']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
       rr: (map['rr'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
       type: (map['type'] as String).input(),
-      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

@@ -32,7 +32,7 @@ class CatalogDatabaseTargetDatabase {
     return CatalogDatabaseTargetDatabase(
       catalogId: (map['catalogId'] as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

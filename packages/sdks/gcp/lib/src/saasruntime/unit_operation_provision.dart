@@ -27,8 +27,8 @@ class UnitOperationProvision {
 
   factory UnitOperationProvision.fromMap(Map<String, dynamic> map) {
     return UnitOperationProvision(
-      inputVariables: map['inputVariables'] == null ? null : (pulumi.Input.decodeList<UnitOperationProvisionInputVariable>(map['inputVariables'], (value) => UnitOperationProvisionInputVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      release: map['release'] == null ? null : (map['release'] as String).input(),
+      inputVariables: map['inputVariables'] == null ? null : (pulumi.Input.decodeList<UnitOperationProvisionInputVariable>(map['inputVariables']!, (value) => UnitOperationProvisionInputVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      release: map['release'] == null ? null : (map['release']! as String).input(),
     );
   }
 }

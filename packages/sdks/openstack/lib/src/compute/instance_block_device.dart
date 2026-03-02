@@ -91,17 +91,17 @@ class InstanceBlockDevice {
 
   factory InstanceBlockDevice.fromMap(Map<String, dynamic> map) {
     return InstanceBlockDevice(
-      bootIndex: map['bootIndex'] == null ? null : (map['bootIndex'] as int).input(),
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
-      destinationType: map['destinationType'] == null ? null : (map['destinationType'] as String).input(),
-      deviceType: map['deviceType'] == null ? null : (map['deviceType'] as String).input(),
-      diskBus: map['diskBus'] == null ? null : (map['diskBus'] as String).input(),
-      guestFormat: map['guestFormat'] == null ? null : (map['guestFormat'] as String).input(),
-      multiattach: map['multiattach'] == null ? null : (map['multiattach'] as bool).input(),
+      bootIndex: map['bootIndex'] == null ? null : (map['bootIndex']! as int).input(),
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination']! as bool).input(),
+      destinationType: map['destinationType'] == null ? null : (map['destinationType']! as String).input(),
+      deviceType: map['deviceType'] == null ? null : (map['deviceType']! as String).input(),
+      diskBus: map['diskBus'] == null ? null : (map['diskBus']! as String).input(),
+      guestFormat: map['guestFormat'] == null ? null : (map['guestFormat']! as String).input(),
+      multiattach: map['multiattach'] == null ? null : (map['multiattach']! as bool).input(),
       sourceType: (map['sourceType'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
-      volumeSize: map['volumeSize'] == null ? null : (map['volumeSize'] as int).input(),
-      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      volumeSize: map['volumeSize'] == null ? null : (map['volumeSize']! as int).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType']! as String).input(),
     );
   }
 }

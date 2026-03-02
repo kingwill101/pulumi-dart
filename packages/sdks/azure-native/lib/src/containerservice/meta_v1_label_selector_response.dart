@@ -27,8 +27,8 @@ class MetaV1LabelSelectorResponse {
 
   factory MetaV1LabelSelectorResponse.fromMap(Map<String, dynamic> map) {
     return MetaV1LabelSelectorResponse(
-      matchExpressions: map['matchExpressions'] == null ? null : (pulumi.Input.decodeList<MetaV1LabelSelectorRequirementResponse>(map['matchExpressions'], (value) => MetaV1LabelSelectorRequirementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchLabels: map['matchLabels'] == null ? null : ((map['matchLabels'] as Map).cast<String, String>()).input(),
+      matchExpressions: map['matchExpressions'] == null ? null : (pulumi.Input.decodeList<MetaV1LabelSelectorRequirementResponse>(map['matchExpressions']!, (value) => MetaV1LabelSelectorRequirementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchLabels: map['matchLabels'] == null ? null : ((map['matchLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

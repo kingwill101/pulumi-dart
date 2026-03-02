@@ -79,17 +79,17 @@ class SpringCloudNewRelicApplicationPerformanceMonitoringArgs {
 
   factory SpringCloudNewRelicApplicationPerformanceMonitoringArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudNewRelicApplicationPerformanceMonitoringArgs(
-      agentEnabled: map['agentEnabled'] == null ? null : (map['agentEnabled'] as bool).input(),
+      agentEnabled: map['agentEnabled'] == null ? null : (map['agentEnabled']! as bool).input(),
       appName: (map['appName'] as String).input(),
-      appServerPort: map['appServerPort'] == null ? null : (map['appServerPort'] as int).input(),
-      auditModeEnabled: map['auditModeEnabled'] == null ? null : (map['auditModeEnabled'] as bool).input(),
-      autoAppNamingEnabled: map['autoAppNamingEnabled'] == null ? null : (map['autoAppNamingEnabled'] as bool).input(),
-      autoTransactionNamingEnabled: map['autoTransactionNamingEnabled'] == null ? null : (map['autoTransactionNamingEnabled'] as bool).input(),
-      customTracingEnabled: map['customTracingEnabled'] == null ? null : (map['customTracingEnabled'] as bool).input(),
-      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      appServerPort: map['appServerPort'] == null ? null : (map['appServerPort']! as int).input(),
+      auditModeEnabled: map['auditModeEnabled'] == null ? null : (map['auditModeEnabled']! as bool).input(),
+      autoAppNamingEnabled: map['autoAppNamingEnabled'] == null ? null : (map['autoAppNamingEnabled']! as bool).input(),
+      autoTransactionNamingEnabled: map['autoTransactionNamingEnabled'] == null ? null : (map['autoTransactionNamingEnabled']! as bool).input(),
+      customTracingEnabled: map['customTracingEnabled'] == null ? null : (map['customTracingEnabled']! as bool).input(),
+      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       licenseKey: (map['licenseKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       springCloudServiceId: (map['springCloudServiceId'] as String).input(),
     );
   }

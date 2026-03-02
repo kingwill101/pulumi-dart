@@ -72,17 +72,17 @@ class VCenterPropertiesResponse {
 
   factory VCenterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VCenterPropertiesResponse(
-      discoveryStatus: map['discoveryStatus'] == null ? null : (map['discoveryStatus'] as String).input(),
-      fabricArmResourceName: map['fabricArmResourceName'] == null ? null : (map['fabricArmResourceName'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      healthErrors: map['healthErrors'] == null ? null : (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      infrastructureId: map['infrastructureId'] == null ? null : (map['infrastructureId'] as String).input(),
-      internalId: map['internalId'] == null ? null : (map['internalId'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      lastHeartbeat: map['lastHeartbeat'] == null ? null : (map['lastHeartbeat'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      processServerId: map['processServerId'] == null ? null : (map['processServerId'] as String).input(),
-      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
+      discoveryStatus: map['discoveryStatus'] == null ? null : (map['discoveryStatus']! as String).input(),
+      fabricArmResourceName: map['fabricArmResourceName'] == null ? null : (map['fabricArmResourceName']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      healthErrors: map['healthErrors'] == null ? null : (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrors']!, (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      infrastructureId: map['infrastructureId'] == null ? null : (map['infrastructureId']! as String).input(),
+      internalId: map['internalId'] == null ? null : (map['internalId']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      lastHeartbeat: map['lastHeartbeat'] == null ? null : (map['lastHeartbeat']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      processServerId: map['processServerId'] == null ? null : (map['processServerId']! as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId']! as String).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class ServiceServicePropertyExtendedMetadata {
 
   factory ServiceServicePropertyExtendedMetadata.fromMap(Map<String, dynamic> map) {
     return ServiceServicePropertyExtendedMetadata(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyExtendedMetadataValue>(map['values'], (value) => ServiceServicePropertyExtendedMetadataValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      values: map['values'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyExtendedMetadataValue>(map['values']!, (value) => ServiceServicePropertyExtendedMetadataValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

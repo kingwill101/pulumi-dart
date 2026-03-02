@@ -37,7 +37,7 @@ class ManagedClusterPodIdentity {
 
   factory ManagedClusterPodIdentity.fromMap(Map<String, dynamic> map) {
     return ManagedClusterPodIdentity(
-      bindingSelector: map['bindingSelector'] == null ? null : (map['bindingSelector'] as String).input(),
+      bindingSelector: map['bindingSelector'] == null ? null : (map['bindingSelector']! as String).input(),
       identity: (UserAssignedIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       namespace: (map['namespace'] as String).input(),

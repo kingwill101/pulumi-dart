@@ -78,18 +78,18 @@ class GoogleCloudMlV1PredictionInput {
 
   factory GoogleCloudMlV1PredictionInput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1PredictionInput(
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as String).input(),
+      batchSize: map['batchSize'] == null ? null : (map['batchSize']! as String).input(),
       dataFormat: (GoogleCloudMlV1PredictionInputDataFormat.fromValue(map['dataFormat'] as String)).input(),
       inputPaths: ((map['inputPaths'] as List).cast<String>()).input(),
-      maxWorkerCount: map['maxWorkerCount'] == null ? null : (map['maxWorkerCount'] as String).input(),
-      modelName: map['modelName'] == null ? null : (map['modelName'] as String).input(),
-      outputDataFormat: map['outputDataFormat'] == null ? null : (GoogleCloudMlV1PredictionInputOutputDataFormat.fromValue(map['outputDataFormat'] as String)).input(),
+      maxWorkerCount: map['maxWorkerCount'] == null ? null : (map['maxWorkerCount']! as String).input(),
+      modelName: map['modelName'] == null ? null : (map['modelName']! as String).input(),
+      outputDataFormat: map['outputDataFormat'] == null ? null : (GoogleCloudMlV1PredictionInputOutputDataFormat.fromValue(map['outputDataFormat']! as String)).input(),
       outputPath: (map['outputPath'] as String).input(),
       region: (map['region'] as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
-      signatureName: map['signatureName'] == null ? null : (map['signatureName'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
+      signatureName: map['signatureName'] == null ? null : (map['signatureName']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
     );
   }
 }

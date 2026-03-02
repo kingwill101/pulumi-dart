@@ -20,7 +20,7 @@ class ClusterBackupSource {
 
   factory ClusterBackupSource.fromMap(Map<String, dynamic> map) {
     return ClusterBackupSource(
-      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
+      backupName: map['backupName'] == null ? null : (map['backupName']! as String).input(),
     );
   }
 }

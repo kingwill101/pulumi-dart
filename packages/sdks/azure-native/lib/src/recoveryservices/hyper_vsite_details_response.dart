@@ -28,7 +28,7 @@ class HyperVSiteDetailsResponse {
 
   factory HyperVSiteDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HyperVSiteDetailsResponse(
-      hyperVHosts: map['hyperVHosts'] == null ? null : (pulumi.Input.decodeList<HyperVHostDetailsResponse>(map['hyperVHosts'], (value) => HyperVHostDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hyperVHosts: map['hyperVHosts'] == null ? null : (pulumi.Input.decodeList<HyperVHostDetailsResponse>(map['hyperVHosts']!, (value) => HyperVHostDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       instanceType: (map['instanceType'] as String).input(),
     );
   }

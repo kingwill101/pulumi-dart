@@ -39,9 +39,9 @@ class DomainAutoTuneOptions {
   factory DomainAutoTuneOptions.fromMap(Map<String, dynamic> map) {
     return DomainAutoTuneOptions(
       desiredState: (map['desiredState'] as String).input(),
-      maintenanceSchedules: map['maintenanceSchedules'] == null ? null : (pulumi.Input.decodeList<DomainAutoTuneOptionsMaintenanceSchedule>(map['maintenanceSchedules'], (value) => DomainAutoTuneOptionsMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rollbackOnDisable: map['rollbackOnDisable'] == null ? null : (map['rollbackOnDisable'] as String).input(),
-      useOffPeakWindow: map['useOffPeakWindow'] == null ? null : (map['useOffPeakWindow'] as bool).input(),
+      maintenanceSchedules: map['maintenanceSchedules'] == null ? null : ((pulumi.Input.decodeList<DomainAutoTuneOptionsMaintenanceSchedule>(map['maintenanceSchedules']!, (value) => DomainAutoTuneOptionsMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      rollbackOnDisable: map['rollbackOnDisable'] == null ? null : ((map['rollbackOnDisable'] as String).input()).input(),
+      useOffPeakWindow: map['useOffPeakWindow'] == null ? null : ((map['useOffPeakWindow'] as bool).input()).input(),
     );
   }
 }

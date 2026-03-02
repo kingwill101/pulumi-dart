@@ -32,9 +32,9 @@ class WorkspaceFeatureStore {
 
   factory WorkspaceFeatureStore.fromMap(Map<String, dynamic> map) {
     return WorkspaceFeatureStore(
-      computerSparkRuntimeVersion: map['computerSparkRuntimeVersion'] == null ? null : (map['computerSparkRuntimeVersion'] as String).input(),
-      offlineConnectionName: map['offlineConnectionName'] == null ? null : (map['offlineConnectionName'] as String).input(),
-      onlineConnectionName: map['onlineConnectionName'] == null ? null : (map['onlineConnectionName'] as String).input(),
+      computerSparkRuntimeVersion: map['computerSparkRuntimeVersion'] == null ? null : (map['computerSparkRuntimeVersion']! as String).input(),
+      offlineConnectionName: map['offlineConnectionName'] == null ? null : (map['offlineConnectionName']! as String).input(),
+      onlineConnectionName: map['onlineConnectionName'] == null ? null : (map['onlineConnectionName']! as String).input(),
     );
   }
 }

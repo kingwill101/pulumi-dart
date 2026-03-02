@@ -96,20 +96,20 @@ class FirewallEndpointState {
 
   factory FirewallEndpointState.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointState(
-      associatedNetworks: map['associatedNetworks'] == null ? null : ((map['associatedNetworks'] as List).cast<String>()).input(),
-      billingProjectId: map['billingProjectId'] == null ? null : (map['billingProjectId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      endpointSettings: map['endpointSettings'] == null ? null : (FirewallEndpointEndpointSettings.fromMap((map['endpointSettings'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling'] as bool).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      associatedNetworks: map['associatedNetworks'] == null ? null : ((map['associatedNetworks']! as List).cast<String>()).input(),
+      billingProjectId: map['billingProjectId'] == null ? null : (map['billingProjectId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      endpointSettings: map['endpointSettings'] == null ? null : (FirewallEndpointEndpointSettings.fromMap((map['endpointSettings']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

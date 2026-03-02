@@ -69,16 +69,16 @@ class ReservationArgs {
 
   factory ReservationArgs.fromMap(Map<String, dynamic> map) {
     return ReservationArgs(
-      autoscale: map['autoscale'] == null ? null : (Autoscale.fromMap((map['autoscale'] as Map).cast<String, dynamic>())).input(),
-      concurrency: map['concurrency'] == null ? null : (map['concurrency'] as String).input(),
-      edition: map['edition'] == null ? null : (ReservationEdition.fromValue(map['edition'] as String)).input(),
-      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : (map['ignoreIdleSlots'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : (map['multiRegionAuxiliary'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reservationId: map['reservationId'] == null ? null : (map['reservationId'] as String).input(),
-      slotCapacity: map['slotCapacity'] == null ? null : (map['slotCapacity'] as String).input(),
+      autoscale: map['autoscale'] == null ? null : (Autoscale.fromMap((map['autoscale']! as Map).cast<String, dynamic>())).input(),
+      concurrency: map['concurrency'] == null ? null : (map['concurrency']! as String).input(),
+      edition: map['edition'] == null ? null : (ReservationEdition.fromValue(map['edition']! as String)).input(),
+      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : (map['ignoreIdleSlots']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      multiRegionAuxiliary: map['multiRegionAuxiliary'] == null ? null : (map['multiRegionAuxiliary']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reservationId: map['reservationId'] == null ? null : (map['reservationId']! as String).input(),
+      slotCapacity: map['slotCapacity'] == null ? null : (map['slotCapacity']! as String).input(),
     );
   }
 }

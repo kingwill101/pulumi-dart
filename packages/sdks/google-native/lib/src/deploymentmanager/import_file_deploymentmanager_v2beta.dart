@@ -25,8 +25,8 @@ class ImportFileDeploymentmanagerV2beta {
 
   factory ImportFileDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return ImportFileDeploymentmanagerV2beta(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

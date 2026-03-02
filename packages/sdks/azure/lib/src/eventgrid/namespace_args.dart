@@ -72,16 +72,16 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      identity: map['identity'] == null ? null : (NamespaceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<NamespaceInboundIpRule>(map['inboundIpRules'], (value) => NamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      identity: map['identity'] == null ? null : (NamespaceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<NamespaceInboundIpRule>(map['inboundIpRules']!, (value) => NamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topicSpacesConfigurations: map['topicSpacesConfigurations'] == null ? null : (pulumi.Input.decodeList<NamespaceTopicSpacesConfiguration>(map['topicSpacesConfigurations'], (value) => NamespaceTopicSpacesConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      topicSpacesConfigurations: map['topicSpacesConfigurations'] == null ? null : (pulumi.Input.decodeList<NamespaceTopicSpacesConfiguration>(map['topicSpacesConfigurations']!, (value) => NamespaceTopicSpacesConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

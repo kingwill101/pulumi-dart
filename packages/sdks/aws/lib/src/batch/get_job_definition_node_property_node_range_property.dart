@@ -26,7 +26,7 @@ class GetJobDefinitionNodePropertyNodeRangeProperty {
 
   factory GetJobDefinitionNodePropertyNodeRangeProperty.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangeProperty(
-      containers: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainer>(map['containers'], (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containers: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainer>(map['containers']!, (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
       targetNodes: (map['targetNodes'] as String).input(),
     );
   }

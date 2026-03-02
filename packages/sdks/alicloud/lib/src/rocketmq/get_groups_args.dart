@@ -53,13 +53,13 @@ class GetGroupsArgs {
 
   factory GetGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupsArgs(
-      groupIdRegex: map['groupIdRegex'] == null ? null : (map['groupIdRegex'] as String).input(),
-      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      groupIdRegex: map['groupIdRegex'] == null ? null : (map['groupIdRegex']! as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

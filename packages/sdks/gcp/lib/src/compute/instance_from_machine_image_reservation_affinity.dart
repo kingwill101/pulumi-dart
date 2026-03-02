@@ -26,7 +26,7 @@ class InstanceFromMachineImageReservationAffinity {
 
   factory InstanceFromMachineImageReservationAffinity.fromMap(Map<String, dynamic> map) {
     return InstanceFromMachineImageReservationAffinity(
-      specificReservation: map['specificReservation'] == null ? null : (InstanceFromMachineImageReservationAffinitySpecificReservation.fromMap((map['specificReservation'] as Map).cast<String, dynamic>())).input(),
+      specificReservation: map['specificReservation'] == null ? null : (InstanceFromMachineImageReservationAffinitySpecificReservation.fromMap((map['specificReservation']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

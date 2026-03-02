@@ -26,8 +26,8 @@ class ServiceEmailDomainAssociationState {
 
   factory ServiceEmailDomainAssociationState.fromMap(Map<String, dynamic> map) {
     return ServiceEmailDomainAssociationState(
-      communicationServiceId: map['communicationServiceId'] == null ? null : (map['communicationServiceId'] as String).input(),
-      emailServiceDomainId: map['emailServiceDomainId'] == null ? null : (map['emailServiceDomainId'] as String).input(),
+      communicationServiceId: map['communicationServiceId'] == null ? null : (map['communicationServiceId']! as String).input(),
+      emailServiceDomainId: map['emailServiceDomainId'] == null ? null : (map['emailServiceDomainId']! as String).input(),
     );
   }
 }

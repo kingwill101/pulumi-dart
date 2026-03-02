@@ -35,10 +35,10 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
 
   factory PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpression.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpression(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

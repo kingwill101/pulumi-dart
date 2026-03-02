@@ -104,21 +104,21 @@ class VirtualMachineArgs {
   factory VirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineArgs(
       amountOfRam: (map['amountOfRam'] as int).input(),
-      customization: map['customization'] == null ? null : (GuestOSCustomization.fromMap((map['customization'] as Map).cast<String, dynamic>())).input(),
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<VirtualDisk>(map['disks'], (value) => VirtualDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      exposeToGuestVM: map['exposeToGuestVM'] == null ? null : (map['exposeToGuestVM'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      nics: map['nics'] == null ? null : (pulumi.Input.decodeList<VirtualNic>(map['nics'], (value) => VirtualNic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customization: map['customization'] == null ? null : (GuestOSCustomization.fromMap((map['customization']! as Map).cast<String, dynamic>())).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<VirtualDisk>(map['disks']!, (value) => VirtualDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exposeToGuestVM: map['exposeToGuestVM'] == null ? null : (map['exposeToGuestVM']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      nics: map['nics'] == null ? null : (pulumi.Input.decodeList<VirtualNic>(map['nics']!, (value) => VirtualNic.fromMap((value as Map).cast<String, dynamic>()))).input(),
       numberOfCores: (map['numberOfCores'] as int).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       privateCloudId: (map['privateCloudId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourcePool: map['resourcePool'] == null ? null : (ResourcePool.fromMap((map['resourcePool'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
-      vSphereNetworks: map['vSphereNetworks'] == null ? null : ((map['vSphereNetworks'] as List).cast<String>()).input(),
-      virtualMachineName: map['virtualMachineName'] == null ? null : (map['virtualMachineName'] as String).input(),
+      resourcePool: map['resourcePool'] == null ? null : (ResourcePool.fromMap((map['resourcePool']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
+      vSphereNetworks: map['vSphereNetworks'] == null ? null : ((map['vSphereNetworks']! as List).cast<String>()).input(),
+      virtualMachineName: map['virtualMachineName'] == null ? null : (map['virtualMachineName']! as String).input(),
     );
   }
 }

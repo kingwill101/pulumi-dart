@@ -25,8 +25,8 @@ class ListConnectionKeysResult {
 
   factory ListConnectionKeysResult.fromMap(Map<String, dynamic> map) {
     return ListConnectionKeysResult(
-      connectionKey: map['connectionKey'] == null ? null : map['connectionKey'] as String,
-      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues'] as Map).cast<String, dynamic>(),
+      connectionKey: map['connectionKey'] == null ? null : map['connectionKey']! as String,
+      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues']! as Map).cast<String, dynamic>(),
     );
   }
 }

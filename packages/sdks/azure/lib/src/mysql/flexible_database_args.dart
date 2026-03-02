@@ -46,7 +46,7 @@ class FlexibleDatabaseArgs {
     return FlexibleDatabaseArgs(
       charset: (map['charset'] as String).input(),
       collation: (map['collation'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
     );

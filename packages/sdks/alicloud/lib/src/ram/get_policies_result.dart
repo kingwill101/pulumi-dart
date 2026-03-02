@@ -71,18 +71,18 @@ class GetPoliciesResult {
 
   factory GetPoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetPoliciesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
-      groupName: map['groupName'] == null ? null : map['groupName'] as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      groupName: map['groupName'] == null ? null : map['groupName']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       policies: pulumi.Input.decodeList<GetPoliciesPolicy>(map['policies'], (value) => GetPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      roleName: map['roleName'] == null ? null : map['roleName'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] == null ? null : map['type'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      roleName: map['roleName'] == null ? null : map['roleName']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      type: map['type'] == null ? null : map['type']! as String,
+      userName: map['userName'] == null ? null : map['userName']! as String,
     );
   }
 }

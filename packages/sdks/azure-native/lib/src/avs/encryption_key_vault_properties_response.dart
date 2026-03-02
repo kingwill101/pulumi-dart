@@ -47,10 +47,10 @@ class EncryptionKeyVaultPropertiesResponse {
   factory EncryptionKeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionKeyVaultPropertiesResponse(
       autoDetectedKeyVersion: (map['autoDetectedKeyVersion'] as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
       keyState: (map['keyState'] as String).input(),
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl'] as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl']! as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
       versionType: (map['versionType'] as String).input(),
     );
   }

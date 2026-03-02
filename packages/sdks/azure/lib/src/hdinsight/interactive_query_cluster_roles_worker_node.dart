@@ -68,14 +68,14 @@ class InteractiveQueryClusterRolesWorkerNode {
 
   factory InteractiveQueryClusterRolesWorkerNode.fromMap(Map<String, dynamic> map) {
     return InteractiveQueryClusterRolesWorkerNode(
-      autoscale: map['autoscale'] == null ? null : (InteractiveQueryClusterRolesWorkerNodeAutoscale.fromMap((map['autoscale'] as Map).cast<String, dynamic>())).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      scriptActions: map['scriptActions'] == null ? null : (pulumi.Input.decodeList<InteractiveQueryClusterRolesWorkerNodeScriptAction>(map['scriptActions'], (value) => InteractiveQueryClusterRolesWorkerNodeScriptAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sshKeys: map['sshKeys'] == null ? null : ((map['sshKeys'] as List).cast<String>()).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      autoscale: map['autoscale'] == null ? null : (InteractiveQueryClusterRolesWorkerNodeAutoscale.fromMap((map['autoscale']! as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      scriptActions: map['scriptActions'] == null ? null : (pulumi.Input.decodeList<InteractiveQueryClusterRolesWorkerNodeScriptAction>(map['scriptActions']!, (value) => InteractiveQueryClusterRolesWorkerNodeScriptAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sshKeys: map['sshKeys'] == null ? null : ((map['sshKeys']! as List).cast<String>()).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
       targetInstanceCount: (map['targetInstanceCount'] as int).input(),
       username: (map['username'] as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
       vmSize: (map['vmSize'] as String).input(),
     );
   }

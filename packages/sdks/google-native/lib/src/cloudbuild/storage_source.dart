@@ -37,10 +37,10 @@ class StorageSource {
 
   factory StorageSource.fromMap(Map<String, dynamic> map) {
     return StorageSource(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
-      object: map['object'] == null ? null : (map['object'] as String).input(),
-      sourceFetcher: map['sourceFetcher'] == null ? null : (StorageSourceSourceFetcher.fromValue(map['sourceFetcher'] as String)).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
+      object: map['object'] == null ? null : (map['object']! as String).input(),
+      sourceFetcher: map['sourceFetcher'] == null ? null : (StorageSourceSourceFetcher.fromValue(map['sourceFetcher']! as String)).input(),
     );
   }
 }

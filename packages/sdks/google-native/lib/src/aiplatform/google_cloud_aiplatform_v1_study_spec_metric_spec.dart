@@ -35,7 +35,7 @@ class GoogleCloudAiplatformV1StudySpecMetricSpec {
     return GoogleCloudAiplatformV1StudySpecMetricSpec(
       goal: (GoogleCloudAiplatformV1StudySpecMetricSpecGoal.fromValue(map['goal'] as String)).input(),
       metricId: (map['metricId'] as String).input(),
-      safetyConfig: map['safetyConfig'] == null ? null : (GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfig.fromMap((map['safetyConfig'] as Map).cast<String, dynamic>())).input(),
+      safetyConfig: map['safetyConfig'] == null ? null : (GoogleCloudAiplatformV1StudySpecMetricSpecSafetyMetricConfig.fromMap((map['safetyConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

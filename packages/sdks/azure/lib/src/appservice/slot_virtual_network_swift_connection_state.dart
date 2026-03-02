@@ -31,9 +31,9 @@ class SlotVirtualNetworkSwiftConnectionState {
 
   factory SlotVirtualNetworkSwiftConnectionState.fromMap(Map<String, dynamic> map) {
     return SlotVirtualNetworkSwiftConnectionState(
-      appServiceId: map['appServiceId'] == null ? null : (map['appServiceId'] as String).input(),
-      slotName: map['slotName'] == null ? null : (map['slotName'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      appServiceId: map['appServiceId'] == null ? null : (map['appServiceId']! as String).input(),
+      slotName: map['slotName'] == null ? null : (map['slotName']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

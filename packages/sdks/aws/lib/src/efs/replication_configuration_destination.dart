@@ -39,11 +39,11 @@ class ReplicationConfigurationDestination {
 
   factory ReplicationConfigurationDestination.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationDestination(
-      availabilityZoneName: map['availabilityZoneName'] == null ? null : (map['availabilityZoneName'] as String).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      availabilityZoneName: map['availabilityZoneName'] == null ? null : ((map['availabilityZoneName'] as String).input()).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : ((map['fileSystemId'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

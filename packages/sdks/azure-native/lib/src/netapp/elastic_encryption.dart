@@ -33,9 +33,9 @@ class ElasticEncryption {
 
   factory ElasticEncryption.fromMap(Map<String, dynamic> map) {
     return ElasticEncryption(
-      identity: map['identity'] == null ? null : (ElasticEncryptionIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      keySource: map['keySource'] == null ? null : (map['keySource'] as String).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (ElasticKeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ElasticEncryptionIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      keySource: map['keySource'] == null ? null : (map['keySource']! as String).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (ElasticKeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

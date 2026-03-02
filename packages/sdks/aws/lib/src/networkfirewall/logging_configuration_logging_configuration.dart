@@ -21,7 +21,7 @@ class LoggingConfigurationLoggingConfiguration {
 
   factory LoggingConfigurationLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return LoggingConfigurationLoggingConfiguration(
-      logDestinationConfigs: (pulumi.Input.decodeList<LoggingConfigurationLoggingConfigurationLogDestinationConfig>(map['logDestinationConfigs'], (value) => LoggingConfigurationLoggingConfigurationLogDestinationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logDestinationConfigs: (pulumi.Input.decodeList<LoggingConfigurationLoggingConfigurationLogDestinationConfig>(map['logDestinationConfigs']!, (value) => LoggingConfigurationLoggingConfigurationLogDestinationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -60,13 +60,13 @@ class GatewayEndpointArgs {
 
   factory GatewayEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GatewayEndpointArgs(
-      gatewayEndpointDescrption: map['gatewayEndpointDescrption'] == null ? null : (map['gatewayEndpointDescrption'] as String).input(),
-      gatewayEndpointName: map['gatewayEndpointName'] == null ? null : (map['gatewayEndpointName'] as String).input(),
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      routeTables: map['routeTables'] == null ? null : ((map['routeTables'] as List).cast<String>()).input(),
+      gatewayEndpointDescrption: map['gatewayEndpointDescrption'] == null ? null : (map['gatewayEndpointDescrption']! as String).input(),
+      gatewayEndpointName: map['gatewayEndpointName'] == null ? null : (map['gatewayEndpointName']! as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      routeTables: map['routeTables'] == null ? null : ((map['routeTables']! as List).cast<String>()).input(),
       serviceName: (map['serviceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

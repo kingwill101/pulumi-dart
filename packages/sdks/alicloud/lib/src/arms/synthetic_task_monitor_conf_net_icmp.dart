@@ -60,15 +60,15 @@ class SyntheticTaskMonitorConfNetIcmp {
 
   factory SyntheticTaskMonitorConfNetIcmp.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskMonitorConfNetIcmp(
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      packageNum: map['packageNum'] == null ? null : (map['packageNum'] as int).input(),
-      packageSize: map['packageSize'] == null ? null : (map['packageSize'] as int).input(),
-      splitPackage: map['splitPackage'] == null ? null : (map['splitPackage'] as bool).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      packageNum: map['packageNum'] == null ? null : (map['packageNum']! as int).input(),
+      packageSize: map['packageSize'] == null ? null : (map['packageSize']! as int).input(),
+      splitPackage: map['splitPackage'] == null ? null : (map['splitPackage']! as bool).input(),
       targetUrl: (map['targetUrl'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      tracertEnable: map['tracertEnable'] == null ? null : (map['tracertEnable'] as bool).input(),
-      tracertNumMax: map['tracertNumMax'] == null ? null : (map['tracertNumMax'] as int).input(),
-      tracertTimeout: map['tracertTimeout'] == null ? null : (map['tracertTimeout'] as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      tracertEnable: map['tracertEnable'] == null ? null : (map['tracertEnable']! as bool).input(),
+      tracertNumMax: map['tracertNumMax'] == null ? null : (map['tracertNumMax']! as int).input(),
+      tracertTimeout: map['tracertTimeout'] == null ? null : (map['tracertTimeout']! as int).input(),
     );
   }
 }

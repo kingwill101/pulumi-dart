@@ -45,10 +45,10 @@ class LocationFsxLustreArgs {
   factory LocationFsxLustreArgs.fromMap(Map<String, dynamic> map) {
     return LocationFsxLustreArgs(
       fsxFilesystemArn: (map['fsxFilesystemArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       securityGroupArns: ((map['securityGroupArns'] as List).cast<String>()).input(),
-      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

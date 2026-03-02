@@ -41,11 +41,11 @@ class DataFlowResponse {
 
   factory DataFlowResponse.fromMap(Map<String, dynamic> map) {
     return DataFlowResponse(
-      builtInTransform: map['builtInTransform'] == null ? null : (map['builtInTransform'] as String).input(),
-      destinations: map['destinations'] == null ? null : ((map['destinations'] as List).cast<String>()).input(),
-      outputStream: map['outputStream'] == null ? null : (map['outputStream'] as String).input(),
-      streams: map['streams'] == null ? null : ((map['streams'] as List).cast<String>()).input(),
-      transformKql: map['transformKql'] == null ? null : (map['transformKql'] as String).input(),
+      builtInTransform: map['builtInTransform'] == null ? null : (map['builtInTransform']! as String).input(),
+      destinations: map['destinations'] == null ? null : ((map['destinations']! as List).cast<String>()).input(),
+      outputStream: map['outputStream'] == null ? null : (map['outputStream']! as String).input(),
+      streams: map['streams'] == null ? null : ((map['streams']! as List).cast<String>()).input(),
+      transformKql: map['transformKql'] == null ? null : (map['transformKql']! as String).input(),
     );
   }
 }

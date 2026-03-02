@@ -36,10 +36,10 @@ class ComputeInstanceSshSettingsResponse {
 
   factory ComputeInstanceSshSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceSshSettingsResponse(
-      adminPublicKey: map['adminPublicKey'] == null ? null : (map['adminPublicKey'] as String).input(),
+      adminPublicKey: map['adminPublicKey'] == null ? null : (map['adminPublicKey']! as String).input(),
       adminUserName: (map['adminUserName'] as String).input(),
       sshPort: (map['sshPort'] as int).input(),
-      sshPublicAccess: map['sshPublicAccess'] == null ? null : (map['sshPublicAccess'] as String).input(),
+      sshPublicAccess: map['sshPublicAccess'] == null ? null : (map['sshPublicAccess']! as String).input(),
     );
   }
 }

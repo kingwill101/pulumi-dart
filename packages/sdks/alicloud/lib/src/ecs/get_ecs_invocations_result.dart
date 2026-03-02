@@ -54,15 +54,15 @@ class GetEcsInvocationsResult {
 
   factory GetEcsInvocationsResult.fromMap(Map<String, dynamic> map) {
     return GetEcsInvocationsResult(
-      commandId: map['commandId'] == null ? null : map['commandId'] as String,
-      contentEncoding: map['contentEncoding'] == null ? null : map['contentEncoding'] as String,
+      commandId: map['commandId'] == null ? null : map['commandId']! as String,
+      contentEncoding: map['contentEncoding'] == null ? null : map['contentEncoding']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       invocations: pulumi.Input.decodeList<GetEcsInvocationsInvocation>(map['invocations'], (value) => GetEcsInvocationsInvocation.fromMap((value as Map).cast<String, dynamic>())),
-      invokeStatus: map['invokeStatus'] == null ? null : map['invokeStatus'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      invokeStatus: map['invokeStatus'] == null ? null : map['invokeStatus']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
     );
   }
 }

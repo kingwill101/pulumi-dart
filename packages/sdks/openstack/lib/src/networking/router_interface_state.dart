@@ -49,11 +49,11 @@ class RouterInterfaceState {
 
   factory RouterInterfaceState.fromMap(Map<String, dynamic> map) {
     return RouterInterfaceState(
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      portId: map['portId'] == null ? null : (map['portId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

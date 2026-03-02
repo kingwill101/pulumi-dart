@@ -38,10 +38,10 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricSt
 
   factory GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies(
-      featureDisplayName: map['featureDisplayName'] == null ? null : (map['featureDisplayName'] as String).input(),
-      predictionStats: map['predictionStats'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1FeatureStatsAnomaly>(map['predictionStats'], (value) => GoogleCloudAiplatformV1beta1FeatureStatsAnomaly.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      threshold: map['threshold'] == null ? null : (GoogleCloudAiplatformV1beta1ThresholdConfig.fromMap((map['threshold'] as Map).cast<String, dynamic>())).input(),
-      trainingStats: map['trainingStats'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureStatsAnomaly.fromMap((map['trainingStats'] as Map).cast<String, dynamic>())).input(),
+      featureDisplayName: map['featureDisplayName'] == null ? null : (map['featureDisplayName']! as String).input(),
+      predictionStats: map['predictionStats'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1FeatureStatsAnomaly>(map['predictionStats']!, (value) => GoogleCloudAiplatformV1beta1FeatureStatsAnomaly.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      threshold: map['threshold'] == null ? null : (GoogleCloudAiplatformV1beta1ThresholdConfig.fromMap((map['threshold']! as Map).cast<String, dynamic>())).input(),
+      trainingStats: map['trainingStats'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureStatsAnomaly.fromMap((map['trainingStats']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

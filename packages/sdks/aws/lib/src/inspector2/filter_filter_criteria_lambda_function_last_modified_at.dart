@@ -25,8 +25,8 @@ class FilterFilterCriteriaLambdaFunctionLastModifiedAt {
 
   factory FilterFilterCriteriaLambdaFunctionLastModifiedAt.fromMap(Map<String, dynamic> map) {
     return FilterFilterCriteriaLambdaFunctionLastModifiedAt(
-      endInclusive: map['endInclusive'] == null ? null : (map['endInclusive'] as String).input(),
-      startInclusive: map['startInclusive'] == null ? null : (map['startInclusive'] as String).input(),
+      endInclusive: map['endInclusive'] == null ? null : ((map['endInclusive'] as String).input()).input(),
+      startInclusive: map['startInclusive'] == null ? null : ((map['startInclusive'] as String).input()).input(),
     );
   }
 }

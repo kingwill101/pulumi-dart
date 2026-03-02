@@ -48,12 +48,12 @@ class RegionNotificationEndpointComputeV1Args {
 
   factory RegionNotificationEndpointComputeV1Args.fromMap(Map<String, dynamic> map) {
     return RegionNotificationEndpointComputeV1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      grpcSettings: map['grpcSettings'] == null ? null : (NotificationEndpointGrpcSettingsComputeV1.fromMap((map['grpcSettings'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      grpcSettings: map['grpcSettings'] == null ? null : (NotificationEndpointGrpcSettingsComputeV1.fromMap((map['grpcSettings']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

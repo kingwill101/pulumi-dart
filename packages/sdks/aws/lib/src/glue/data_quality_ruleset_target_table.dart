@@ -30,7 +30,7 @@ class DataQualityRulesetTargetTable {
 
   factory DataQualityRulesetTargetTable.fromMap(Map<String, dynamic> map) {
     return DataQualityRulesetTargetTable(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
       tableName: (map['tableName'] as String).input(),
     );

@@ -26,8 +26,8 @@ class CustomDomainProperties {
 
   factory CustomDomainProperties.fromMap(Map<String, dynamic> map) {
     return CustomDomainProperties(
-      certName: map['certName'] == null ? null : (map['certName'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      certName: map['certName'] == null ? null : (map['certName']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

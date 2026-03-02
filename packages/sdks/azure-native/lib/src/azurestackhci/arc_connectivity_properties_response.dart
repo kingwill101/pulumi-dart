@@ -27,8 +27,8 @@ class ArcConnectivityPropertiesResponse {
 
   factory ArcConnectivityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ArcConnectivityPropertiesResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      serviceConfigurations: map['serviceConfigurations'] == null ? null : (pulumi.Input.decodeList<ServiceConfigurationResponse>(map['serviceConfigurations'], (value) => ServiceConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      serviceConfigurations: map['serviceConfigurations'] == null ? null : (pulumi.Input.decodeList<ServiceConfigurationResponse>(map['serviceConfigurations']!, (value) => ServiceConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -52,11 +52,11 @@ class GetBillingAccountResult {
 
   factory GetBillingAccountResult.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountResult(
-      billingAccount: map['billingAccount'] == null ? null : map['billingAccount'] as String,
+      billingAccount: map['billingAccount'] == null ? null : map['billingAccount']! as String,
       currencyCode: map['currencyCode'] as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
-      lookupProjects: map['lookupProjects'] == null ? null : map['lookupProjects'] as bool,
+      lookupProjects: map['lookupProjects'] == null ? null : map['lookupProjects']! as bool,
       name: map['name'] as String,
       open: map['open'] as bool,
       projectIds: (map['projectIds'] as List).cast<String>(),

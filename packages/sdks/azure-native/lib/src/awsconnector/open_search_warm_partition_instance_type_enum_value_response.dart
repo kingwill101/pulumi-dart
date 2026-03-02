@@ -21,7 +21,7 @@ class OpenSearchWarmPartitionInstanceTypeEnumValueResponse {
 
   factory OpenSearchWarmPartitionInstanceTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return OpenSearchWarmPartitionInstanceTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

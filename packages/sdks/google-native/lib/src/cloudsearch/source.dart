@@ -27,8 +27,8 @@ class Source {
 
   factory Source.fromMap(Map<String, dynamic> map) {
     return Source(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      predefinedSource: map['predefinedSource'] == null ? null : (SourcePredefinedSource.fromValue(map['predefinedSource'] as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      predefinedSource: map['predefinedSource'] == null ? null : (SourcePredefinedSource.fromValue(map['predefinedSource']! as String)).input(),
     );
   }
 }

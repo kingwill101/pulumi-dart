@@ -38,10 +38,10 @@ class ApiOperationRequest {
 
   factory ApiOperationRequest.fromMap(Map<String, dynamic> map) {
     return ApiOperationRequest(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<ApiOperationRequestHeader>(map['headers'], (value) => ApiOperationRequestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queryParameters: map['queryParameters'] == null ? null : (pulumi.Input.decodeList<ApiOperationRequestQueryParameter>(map['queryParameters'], (value) => ApiOperationRequestQueryParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      representations: map['representations'] == null ? null : (pulumi.Input.decodeList<ApiOperationRequestRepresentation>(map['representations'], (value) => ApiOperationRequestRepresentation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<ApiOperationRequestHeader>(map['headers']!, (value) => ApiOperationRequestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryParameters: map['queryParameters'] == null ? null : (pulumi.Input.decodeList<ApiOperationRequestQueryParameter>(map['queryParameters']!, (value) => ApiOperationRequestQueryParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      representations: map['representations'] == null ? null : (pulumi.Input.decodeList<ApiOperationRequestRepresentation>(map['representations']!, (value) => ApiOperationRequestRepresentation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class DomainFeaturesHyperVReset {
 
   factory DomainFeaturesHyperVReset.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVReset(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

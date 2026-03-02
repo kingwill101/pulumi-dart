@@ -56,12 +56,12 @@ class GlobalNetworkEndpointGroupState {
 
   factory GlobalNetworkEndpointGroupState.fromMap(Map<String, dynamic> map) {
     return GlobalNetworkEndpointGroupState(
-      defaultPort: map['defaultPort'] == null ? null : (map['defaultPort'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkEndpointType: map['networkEndpointType'] == null ? null : (map['networkEndpointType'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      defaultPort: map['defaultPort'] == null ? null : (map['defaultPort']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkEndpointType: map['networkEndpointType'] == null ? null : (map['networkEndpointType']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
     );
   }
 }

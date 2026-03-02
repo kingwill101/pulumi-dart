@@ -49,11 +49,11 @@ class RoutineExternalRuntimeOptions {
 
   factory RoutineExternalRuntimeOptions.fromMap(Map<String, dynamic> map) {
     return RoutineExternalRuntimeOptions(
-      containerCpu: map['containerCpu'] == null ? null : (map['containerCpu'] as double).input(),
-      containerMemory: map['containerMemory'] == null ? null : (map['containerMemory'] as String).input(),
-      maxBatchingRows: map['maxBatchingRows'] == null ? null : (map['maxBatchingRows'] as String).input(),
-      runtimeConnection: map['runtimeConnection'] == null ? null : (map['runtimeConnection'] as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      containerCpu: map['containerCpu'] == null ? null : (map['containerCpu']! as double).input(),
+      containerMemory: map['containerMemory'] == null ? null : (map['containerMemory']! as String).input(),
+      maxBatchingRows: map['maxBatchingRows'] == null ? null : (map['maxBatchingRows']! as String).input(),
+      runtimeConnection: map['runtimeConnection'] == null ? null : (map['runtimeConnection']! as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
     );
   }
 }

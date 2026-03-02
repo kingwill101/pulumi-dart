@@ -41,11 +41,11 @@ class PipeSourceParametersRabbitmqBrokerParameters {
 
   factory PipeSourceParametersRabbitmqBrokerParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersRabbitmqBrokerParameters(
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
-      credentials: (PipeSourceParametersRabbitmqBrokerParametersCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : (map['maximumBatchingWindowInSeconds'] as int).input(),
+      batchSize: map['batchSize'] == null ? null : ((map['batchSize'] as int).input()).input(),
+      credentials: (PipeSourceParametersRabbitmqBrokerParametersCredentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
+      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : ((map['maximumBatchingWindowInSeconds'] as int).input()).input(),
       queueName: (map['queueName'] as String).input(),
-      virtualHost: map['virtualHost'] == null ? null : (map['virtualHost'] as String).input(),
+      virtualHost: map['virtualHost'] == null ? null : ((map['virtualHost'] as String).input()).input(),
     );
   }
 }

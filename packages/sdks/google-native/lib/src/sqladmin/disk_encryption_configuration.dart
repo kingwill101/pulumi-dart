@@ -26,8 +26,8 @@ class DiskEncryptionConfiguration {
 
   factory DiskEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionConfiguration(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
     );
   }
 }

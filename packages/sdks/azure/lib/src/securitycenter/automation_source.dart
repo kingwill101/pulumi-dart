@@ -29,7 +29,7 @@ class AutomationSource {
   factory AutomationSource.fromMap(Map<String, dynamic> map) {
     return AutomationSource(
       eventSource: (map['eventSource'] as String).input(),
-      ruleSets: map['ruleSets'] == null ? null : (pulumi.Input.decodeList<AutomationSourceRuleSet>(map['ruleSets'], (value) => AutomationSourceRuleSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleSets: map['ruleSets'] == null ? null : (pulumi.Input.decodeList<AutomationSourceRuleSet>(map['ruleSets']!, (value) => AutomationSourceRuleSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

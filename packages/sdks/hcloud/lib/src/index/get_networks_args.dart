@@ -24,7 +24,7 @@ class GetNetworksArgs {
 
   factory GetNetworksArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworksArgs(
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class CollapsibleGroup {
 
   factory CollapsibleGroup.fromMap(Map<String, dynamic> map) {
     return CollapsibleGroup(
-      collapsed: map['collapsed'] == null ? null : (map['collapsed'] as bool).input(),
+      collapsed: map['collapsed'] == null ? null : (map['collapsed']! as bool).input(),
     );
   }
 }

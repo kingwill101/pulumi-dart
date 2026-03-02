@@ -35,9 +35,9 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
 
   factory RepositoryWorkflowConfigRecentScheduledExecutionRecord.fromMap(Map<String, dynamic> map) {
     return RepositoryWorkflowConfigRecentScheduledExecutionRecord(
-      errorStatuses: map['errorStatuses'] == null ? null : (pulumi.Input.decodeList<RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus>(map['errorStatuses'], (value) => RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      executionTime: map['executionTime'] == null ? null : (map['executionTime'] as String).input(),
-      workflowInvocation: map['workflowInvocation'] == null ? null : (map['workflowInvocation'] as String).input(),
+      errorStatuses: map['errorStatuses'] == null ? null : (pulumi.Input.decodeList<RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus>(map['errorStatuses']!, (value) => RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      executionTime: map['executionTime'] == null ? null : (map['executionTime']! as String).input(),
+      workflowInvocation: map['workflowInvocation'] == null ? null : (map['workflowInvocation']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ComputeProfileResponse {
 
   factory ComputeProfileResponse.fromMap(Map<String, dynamic> map) {
     return ComputeProfileResponse(
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<RoleResponse>(map['roles'], (value) => RoleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<RoleResponse>(map['roles']!, (value) => RoleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

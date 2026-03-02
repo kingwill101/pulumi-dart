@@ -31,9 +31,9 @@ class ShieldedInstanceConfigDataprocV1beta2 {
 
   factory ShieldedInstanceConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return ShieldedInstanceConfigDataprocV1beta2(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : (map['enableIntegrityMonitoring'] as bool).input(),
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot'] as bool).input(),
-      enableVtpm: map['enableVtpm'] == null ? null : (map['enableVtpm'] as bool).input(),
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : (map['enableIntegrityMonitoring']! as bool).input(),
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot']! as bool).input(),
+      enableVtpm: map['enableVtpm'] == null ? null : (map['enableVtpm']! as bool).input(),
     );
   }
 }

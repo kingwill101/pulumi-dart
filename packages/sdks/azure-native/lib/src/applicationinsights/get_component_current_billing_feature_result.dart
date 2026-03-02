@@ -32,8 +32,8 @@ class GetComponentCurrentBillingFeatureResult {
   factory GetComponentCurrentBillingFeatureResult.fromMap(Map<String, dynamic> map) {
     return GetComponentCurrentBillingFeatureResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      currentBillingFeatures: map['currentBillingFeatures'] == null ? null : (map['currentBillingFeatures'] as List).cast<String>(),
-      dataVolumeCap: map['dataVolumeCap'] == null ? null : ApplicationInsightsComponentDataVolumeCapResponse.fromMap((map['dataVolumeCap'] as Map).cast<String, dynamic>()),
+      currentBillingFeatures: map['currentBillingFeatures'] == null ? null : (map['currentBillingFeatures']! as List).cast<String>(),
+      dataVolumeCap: map['dataVolumeCap'] == null ? null : ApplicationInsightsComponentDataVolumeCapResponse.fromMap((map['dataVolumeCap']! as Map).cast<String, dynamic>()),
     );
   }
 }

@@ -33,9 +33,9 @@ class AttestationOccurrence {
 
   factory AttestationOccurrence.fromMap(Map<String, dynamic> map) {
     return AttestationOccurrence(
-      jwts: map['jwts'] == null ? null : (pulumi.Input.decodeList<Jwt>(map['jwts'], (value) => Jwt.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      jwts: map['jwts'] == null ? null : (pulumi.Input.decodeList<Jwt>(map['jwts']!, (value) => Jwt.fromMap((value as Map).cast<String, dynamic>()))).input(),
       serializedPayload: (map['serializedPayload'] as String).input(),
-      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<Signature>(map['signatures'], (value) => Signature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<Signature>(map['signatures']!, (value) => Signature.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

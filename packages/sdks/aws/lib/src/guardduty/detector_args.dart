@@ -45,11 +45,11 @@ class DetectorArgs {
 
   factory DetectorArgs.fromMap(Map<String, dynamic> map) {
     return DetectorArgs(
-      datasources: map['datasources'] == null ? null : (DetectorDatasources.fromMap((map['datasources'] as Map).cast<String, dynamic>())).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      findingPublishingFrequency: map['findingPublishingFrequency'] == null ? null : (map['findingPublishingFrequency'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      datasources: map['datasources'] == null ? null : ((DetectorDatasources.fromMap((map['datasources']! as Map).cast<String, dynamic>())).input()).input(),
+      enable: map['enable'] == null ? null : ((map['enable'] as bool).input()).input(),
+      findingPublishingFrequency: map['findingPublishingFrequency'] == null ? null : ((map['findingPublishingFrequency'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

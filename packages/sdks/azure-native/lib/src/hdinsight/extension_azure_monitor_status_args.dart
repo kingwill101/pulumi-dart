@@ -46,10 +46,10 @@ class ExtensionAzureMonitorStatusArgs {
   factory ExtensionAzureMonitorStatusArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionAzureMonitorStatusArgs(
       clusterName: (map['clusterName'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      selectedConfigurations: map['selectedConfigurations'] == null ? null : (AzureMonitorSelectedConfigurations.fromMap((map['selectedConfigurations'] as Map).cast<String, dynamic>())).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      selectedConfigurations: map['selectedConfigurations'] == null ? null : (AzureMonitorSelectedConfigurations.fromMap((map['selectedConfigurations']! as Map).cast<String, dynamic>())).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

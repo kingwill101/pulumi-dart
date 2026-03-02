@@ -56,13 +56,13 @@ class ImageTransformArgs {
 
   factory ImageTransformArgs.fromMap(Map<String, dynamic> map) {
     return ImageTransformArgs(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence']! as int).input(),
       siteId: (map['siteId'] as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
     );
   }
 }

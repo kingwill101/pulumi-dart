@@ -25,8 +25,8 @@ class GetContainerSecretRef {
 
   factory GetContainerSecretRef.fromMap(Map<String, dynamic> map) {
     return GetContainerSecretRef(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secretRef: map['secretRef'] == null ? null : (map['secretRef'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secretRef: map['secretRef'] == null ? null : (map['secretRef']! as String).input(),
     );
   }
 }

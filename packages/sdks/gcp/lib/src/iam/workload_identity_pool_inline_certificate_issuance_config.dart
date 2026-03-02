@@ -55,9 +55,9 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfig {
   factory WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolInlineCertificateIssuanceConfig(
       caPools: ((map['caPools'] as Map).cast<String, String>()).input(),
-      keyAlgorithm: map['keyAlgorithm'] == null ? null : (map['keyAlgorithm'] as String).input(),
-      lifetime: map['lifetime'] == null ? null : (map['lifetime'] as String).input(),
-      rotationWindowPercentage: map['rotationWindowPercentage'] == null ? null : (map['rotationWindowPercentage'] as int).input(),
+      keyAlgorithm: map['keyAlgorithm'] == null ? null : (map['keyAlgorithm']! as String).input(),
+      lifetime: map['lifetime'] == null ? null : (map['lifetime']! as String).input(),
+      rotationWindowPercentage: map['rotationWindowPercentage'] == null ? null : (map['rotationWindowPercentage']! as int).input(),
     );
   }
 }

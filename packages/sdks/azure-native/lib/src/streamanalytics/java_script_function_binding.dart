@@ -27,7 +27,7 @@ class JavaScriptFunctionBinding {
 
   factory JavaScriptFunctionBinding.fromMap(Map<String, dynamic> map) {
     return JavaScriptFunctionBinding(
-      script: map['script'] == null ? null : (map['script'] as String).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

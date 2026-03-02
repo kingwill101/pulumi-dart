@@ -66,16 +66,16 @@ class WebApplicationConfiguration {
 
   factory WebApplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return WebApplicationConfiguration(
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
-      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
-      isDeploymentTimeEditable: map['isDeploymentTimeEditable'] == null ? null : (map['isDeploymentTimeEditable'] as bool).input(),
-      localFilePath: map['localFilePath'] == null ? null : (map['localFilePath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secretStoreDetails: map['secretStoreDetails'] == null ? null : (SecretStoreDetails.fromMap((map['secretStoreDetails'] as Map).cast<String, dynamic>())).input(),
-      section: map['section'] == null ? null : (map['section'] as String).input(),
-      targetFilePath: map['targetFilePath'] == null ? null : (map['targetFilePath'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier']! as String).input(),
+      isDeploymentTimeEditable: map['isDeploymentTimeEditable'] == null ? null : (map['isDeploymentTimeEditable']! as bool).input(),
+      localFilePath: map['localFilePath'] == null ? null : (map['localFilePath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secretStoreDetails: map['secretStoreDetails'] == null ? null : (SecretStoreDetails.fromMap((map['secretStoreDetails']! as Map).cast<String, dynamic>())).input(),
+      section: map['section'] == null ? null : (map['section']! as String).input(),
+      targetFilePath: map['targetFilePath'] == null ? null : (map['targetFilePath']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

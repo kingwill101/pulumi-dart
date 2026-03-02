@@ -28,8 +28,8 @@ class AnomalyDetectionResponse {
 
   factory AnomalyDetectionResponse.fromMap(Map<String, dynamic> map) {
     return AnomalyDetectionResponse(
-      mitigationInEffect: map['mitigationInEffect'] == null ? null : (MitigationInEffectEnumEnumValueResponse.fromMap((map['mitigationInEffect'] as Map).cast<String, dynamic>())).input(),
-      result: map['result'] == null ? null : (AnomalyResultEnumEnumValueResponse.fromMap((map['result'] as Map).cast<String, dynamic>())).input(),
+      mitigationInEffect: map['mitigationInEffect'] == null ? null : (MitigationInEffectEnumEnumValueResponse.fromMap((map['mitigationInEffect']! as Map).cast<String, dynamic>())).input(),
+      result: map['result'] == null ? null : (AnomalyResultEnumEnumValueResponse.fromMap((map['result']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

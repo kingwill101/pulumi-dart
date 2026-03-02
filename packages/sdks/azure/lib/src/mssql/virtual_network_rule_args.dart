@@ -41,8 +41,8 @@ class VirtualNetworkRuleArgs {
 
   factory VirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRuleArgs(
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       serverId: (map['serverId'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
     );

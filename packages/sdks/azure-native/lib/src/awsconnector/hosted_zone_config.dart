@@ -21,7 +21,7 @@ class HostedZoneConfig {
 
   factory HostedZoneConfig.fromMap(Map<String, dynamic> map) {
     return HostedZoneConfig(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
     );
   }
 }

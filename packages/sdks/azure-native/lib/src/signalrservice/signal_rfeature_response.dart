@@ -36,7 +36,7 @@ class SignalRFeatureResponse {
   factory SignalRFeatureResponse.fromMap(Map<String, dynamic> map) {
     return SignalRFeatureResponse(
       flag: (map['flag'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       value: (map['value'] as String).input(),
     );
   }

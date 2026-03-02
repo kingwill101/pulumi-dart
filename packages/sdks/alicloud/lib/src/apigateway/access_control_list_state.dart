@@ -33,9 +33,9 @@ class AccessControlListState {
 
   factory AccessControlListState.fromMap(Map<String, dynamic> map) {
     return AccessControlListState(
-      accessControlListName: map['accessControlListName'] == null ? null : (map['accessControlListName'] as String).input(),
-      aclEntrys: map['aclEntrys'] == null ? null : (pulumi.Input.decodeList<AccessControlListAclEntry>(map['aclEntrys'], (value) => AccessControlListAclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion'] as String).input(),
+      accessControlListName: map['accessControlListName'] == null ? null : (map['accessControlListName']! as String).input(),
+      aclEntrys: map['aclEntrys'] == null ? null : (pulumi.Input.decodeList<AccessControlListAclEntry>(map['aclEntrys']!, (value) => AccessControlListAclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion']! as String).input(),
     );
   }
 }

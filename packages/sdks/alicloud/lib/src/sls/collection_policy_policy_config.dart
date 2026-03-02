@@ -37,10 +37,10 @@ class CollectionPolicyPolicyConfig {
 
   factory CollectionPolicyPolicyConfig.fromMap(Map<String, dynamic> map) {
     return CollectionPolicyPolicyConfig(
-      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds']! as List).cast<String>()).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
       resourceMode: (map['resourceMode'] as String).input(),
-      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags'] as Map).cast<String, String>()).input(),
+      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

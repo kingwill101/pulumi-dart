@@ -27,7 +27,7 @@ class DomainDevicesInterfaceFilterRef {
   factory DomainDevicesInterfaceFilterRef.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceFilterRef(
       filter: (map['filter'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfaceFilterRefParameter>(map['parameters'], (value) => DomainDevicesInterfaceFilterRefParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfaceFilterRefParameter>(map['parameters']!, (value) => DomainDevicesInterfaceFilterRefParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

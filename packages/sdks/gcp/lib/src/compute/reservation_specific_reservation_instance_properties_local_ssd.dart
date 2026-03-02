@@ -28,7 +28,7 @@ class ReservationSpecificReservationInstancePropertiesLocalSsd {
   factory ReservationSpecificReservationInstancePropertiesLocalSsd.fromMap(Map<String, dynamic> map) {
     return ReservationSpecificReservationInstancePropertiesLocalSsd(
       diskSizeGb: (map['diskSizeGb'] as int).input(),
-      interface: map['interface'] == null ? null : (map['interface'] as String).input(),
+      interface: map['interface'] == null ? null : (map['interface']! as String).input(),
     );
   }
 }

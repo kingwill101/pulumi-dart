@@ -20,7 +20,7 @@ class BatchOperationsJobBucketListBucketsManifest {
 
   factory BatchOperationsJobBucketListBucketsManifest.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobBucketListBucketsManifest(
-      manifestLocation: map['manifestLocation'] == null ? null : (map['manifestLocation'] as String).input(),
+      manifestLocation: map['manifestLocation'] == null ? null : (map['manifestLocation']! as String).input(),
     );
   }
 }

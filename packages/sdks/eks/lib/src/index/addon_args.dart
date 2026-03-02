@@ -68,14 +68,14 @@ class AddonArgs {
   factory AddonArgs.fromMap(Map<String, dynamic> map) {
     return AddonArgs(
       addonName: (map['addonName'] as String).input(),
-      addonVersion: map['addonVersion'] == null ? null : (map['addonVersion'] as String).input(),
+      addonVersion: map['addonVersion'] == null ? null : (map['addonVersion']! as String).input(),
       cluster: (map['cluster'] as Cluster).input(),
-      configurationValues: map['configurationValues'] == null ? null : ((map['configurationValues'] as Map).cast<String, dynamic>()).input(),
-      preserve: map['preserve'] == null ? null : (map['preserve'] as bool).input(),
-      resolveConflictsOnCreate: map['resolveConflictsOnCreate'] == null ? null : (map['resolveConflictsOnCreate'] as String).input(),
-      resolveConflictsOnUpdate: map['resolveConflictsOnUpdate'] == null ? null : (map['resolveConflictsOnUpdate'] as String).input(),
-      serviceAccountRoleArn: map['serviceAccountRoleArn'] == null ? null : (map['serviceAccountRoleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<Map<String, String>>()).input(),
+      configurationValues: map['configurationValues'] == null ? null : ((map['configurationValues']! as Map).cast<String, dynamic>()).input(),
+      preserve: map['preserve'] == null ? null : (map['preserve']! as bool).input(),
+      resolveConflictsOnCreate: map['resolveConflictsOnCreate'] == null ? null : (map['resolveConflictsOnCreate']! as String).input(),
+      resolveConflictsOnUpdate: map['resolveConflictsOnUpdate'] == null ? null : (map['resolveConflictsOnUpdate']! as String).input(),
+      serviceAccountRoleArn: map['serviceAccountRoleArn'] == null ? null : (map['serviceAccountRoleArn']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<Map<String, String>>()).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class DomainDevicesGraphicSdl {
 
   factory DomainDevicesGraphicSdl.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicSdl(
-      display: map['display'] == null ? null : (map['display'] as String).input(),
-      fullScreen: map['fullScreen'] == null ? null : (map['fullScreen'] as String).input(),
-      gl: map['gl'] == null ? null : (DomainDevicesGraphicSdlGl.fromMap((map['gl'] as Map).cast<String, dynamic>())).input(),
-      xauth: map['xauth'] == null ? null : (map['xauth'] as String).input(),
+      display: map['display'] == null ? null : (map['display']! as String).input(),
+      fullScreen: map['fullScreen'] == null ? null : (map['fullScreen']! as String).input(),
+      gl: map['gl'] == null ? null : (DomainDevicesGraphicSdlGl.fromMap((map['gl']! as Map).cast<String, dynamic>())).input(),
+      xauth: map['xauth'] == null ? null : (map['xauth']! as String).input(),
     );
   }
 }

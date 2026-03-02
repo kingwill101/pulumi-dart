@@ -53,11 +53,11 @@ class DatasetIamMemberState {
 
   factory DatasetIamMemberState.fromMap(Map<String, dynamic> map) {
     return DatasetIamMemberState(
-      condition: map['condition'] == null ? null : (DatasetIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (DatasetIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

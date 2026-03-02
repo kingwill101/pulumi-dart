@@ -60,12 +60,12 @@ class MembershipArgs {
 
   factory MembershipArgs.fromMap(Map<String, dynamic> map) {
     return MembershipArgs(
-      authority: map['authority'] == null ? null : (MembershipAuthority.fromMap((map['authority'] as Map).cast<String, dynamic>())).input(),
-      endpoint: map['endpoint'] == null ? null : (MembershipEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      authority: map['authority'] == null ? null : (MembershipAuthority.fromMap((map['authority']! as Map).cast<String, dynamic>())).input(),
+      endpoint: map['endpoint'] == null ? null : (MembershipEndpoint.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       membershipId: (map['membershipId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -53,12 +53,12 @@ class AzureDatabricksDeltaLakeSource {
 
   factory AzureDatabricksDeltaLakeSource.fromMap(Map<String, dynamic> map) {
     return AzureDatabricksDeltaLakeSource(
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      exportSettings: map['exportSettings'] == null ? null : (AzureDatabricksDeltaLakeExportCommand.fromMap((map['exportSettings'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      query: map['query'] == null ? null : (map['query']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      exportSettings: map['exportSettings'] == null ? null : (AzureDatabricksDeltaLakeExportCommand.fromMap((map['exportSettings']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      query: map['query'] == null ? null : (map['query']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
       type: (map['type'] as String).input(),
     );
   }

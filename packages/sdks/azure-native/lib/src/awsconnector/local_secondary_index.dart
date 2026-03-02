@@ -33,9 +33,9 @@ class LocalSecondaryIndex {
 
   factory LocalSecondaryIndex.fromMap(Map<String, dynamic> map) {
     return LocalSecondaryIndex(
-      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
-      keySchema: map['keySchema'] == null ? null : (pulumi.Input.decodeList<KeySchema>(map['keySchema'], (value) => KeySchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      projection: map['projection'] == null ? null : (Projection.fromMap((map['projection'] as Map).cast<String, dynamic>())).input(),
+      indexName: map['indexName'] == null ? null : (map['indexName']! as String).input(),
+      keySchema: map['keySchema'] == null ? null : (pulumi.Input.decodeList<KeySchema>(map['keySchema']!, (value) => KeySchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      projection: map['projection'] == null ? null : (Projection.fromMap((map['projection']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

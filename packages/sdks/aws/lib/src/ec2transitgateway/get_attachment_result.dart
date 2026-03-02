@@ -87,7 +87,7 @@ class GetAttachmentResult {
       arn: map['arn'] as String,
       associationState: map['associationState'] as String,
       associationTransitGatewayRouteTableId: map['associationTransitGatewayRouteTableId'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAttachmentFilter>(map['filters'], (value) => GetAttachmentFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAttachmentFilter>(map['filters']!, (value) => GetAttachmentFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
       resourceId: map['resourceId'] as String,

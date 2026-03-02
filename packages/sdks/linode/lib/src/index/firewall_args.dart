@@ -75,16 +75,16 @@ class FirewallArgs {
 
   factory FirewallArgs.fromMap(Map<String, dynamic> map) {
     return FirewallArgs(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       inboundPolicy: (map['inboundPolicy'] as String).input(),
-      inbounds: map['inbounds'] == null ? null : (pulumi.Input.decodeList<FirewallInbound>(map['inbounds'], (value) => FirewallInbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      interfaces: map['interfaces'] == null ? null : ((map['interfaces'] as List).cast<int>()).input(),
+      inbounds: map['inbounds'] == null ? null : (pulumi.Input.decodeList<FirewallInbound>(map['inbounds']!, (value) => FirewallInbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interfaces: map['interfaces'] == null ? null : ((map['interfaces']! as List).cast<int>()).input(),
       label: (map['label'] as String).input(),
-      linodes: map['linodes'] == null ? null : ((map['linodes'] as List).cast<int>()).input(),
-      nodebalancers: map['nodebalancers'] == null ? null : ((map['nodebalancers'] as List).cast<int>()).input(),
+      linodes: map['linodes'] == null ? null : ((map['linodes']! as List).cast<int>()).input(),
+      nodebalancers: map['nodebalancers'] == null ? null : ((map['nodebalancers']! as List).cast<int>()).input(),
       outboundPolicy: (map['outboundPolicy'] as String).input(),
-      outbounds: map['outbounds'] == null ? null : (pulumi.Input.decodeList<FirewallOutbound>(map['outbounds'], (value) => FirewallOutbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      outbounds: map['outbounds'] == null ? null : (pulumi.Input.decodeList<FirewallOutbound>(map['outbounds']!, (value) => FirewallOutbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

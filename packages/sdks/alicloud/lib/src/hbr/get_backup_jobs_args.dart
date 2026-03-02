@@ -49,12 +49,12 @@ class GetBackupJobsArgs {
 
   factory GetBackupJobsArgs.fromMap(Map<String, dynamic> map) {
     return GetBackupJobsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetBackupJobsFilter>(map['filters'], (value) => GetBackupJobsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      sortDirection: map['sortDirection'] == null ? null : (map['sortDirection'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetBackupJobsFilter>(map['filters']!, (value) => GetBackupJobsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      sortDirection: map['sortDirection'] == null ? null : (map['sortDirection']! as String).input(),
       sourceType: (map['sourceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

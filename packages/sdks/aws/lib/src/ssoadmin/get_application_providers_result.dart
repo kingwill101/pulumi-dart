@@ -31,7 +31,7 @@ class GetApplicationProvidersResult {
 
   factory GetApplicationProvidersResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationProvidersResult(
-      applicationProviders: pulumi.Input.decodeList<GetApplicationProvidersApplicationProvider>(map['applicationProviders'], (value) => GetApplicationProvidersApplicationProvider.fromMap((value as Map).cast<String, dynamic>())),
+      applicationProviders: pulumi.Input.decodeList<GetApplicationProvidersApplicationProvider>(map['applicationProviders']!, (value) => GetApplicationProvidersApplicationProvider.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

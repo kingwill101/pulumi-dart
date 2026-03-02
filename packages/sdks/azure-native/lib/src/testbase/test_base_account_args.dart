@@ -56,13 +56,13 @@ class TestBaseAccountArgs {
 
   factory TestBaseAccountArgs.fromMap(Map<String, dynamic> map) {
     return TestBaseAccountArgs(
-      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      restore: map['restore'] == null ? null : (map['restore'] as bool).input(),
+      restore: map['restore'] == null ? null : (map['restore']! as bool).input(),
       sku: (TestBaseAccountSKU.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      testBaseAccountName: map['testBaseAccountName'] == null ? null : (map['testBaseAccountName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      testBaseAccountName: map['testBaseAccountName'] == null ? null : (map['testBaseAccountName']! as String).input(),
     );
   }
 }

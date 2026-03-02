@@ -53,12 +53,12 @@ class IndexingConfigurationThingIndexingConfiguration {
 
   factory IndexingConfigurationThingIndexingConfiguration.fromMap(Map<String, dynamic> map) {
     return IndexingConfigurationThingIndexingConfiguration(
-      customFields: map['customFields'] == null ? null : (pulumi.Input.decodeList<IndexingConfigurationThingIndexingConfigurationCustomField>(map['customFields'], (value) => IndexingConfigurationThingIndexingConfigurationCustomField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deviceDefenderIndexingMode: map['deviceDefenderIndexingMode'] == null ? null : (map['deviceDefenderIndexingMode'] as String).input(),
-      filter: map['filter'] == null ? null : (IndexingConfigurationThingIndexingConfigurationFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      managedFields: map['managedFields'] == null ? null : (pulumi.Input.decodeList<IndexingConfigurationThingIndexingConfigurationManagedField>(map['managedFields'], (value) => IndexingConfigurationThingIndexingConfigurationManagedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      namedShadowIndexingMode: map['namedShadowIndexingMode'] == null ? null : (map['namedShadowIndexingMode'] as String).input(),
-      thingConnectivityIndexingMode: map['thingConnectivityIndexingMode'] == null ? null : (map['thingConnectivityIndexingMode'] as String).input(),
+      customFields: map['customFields'] == null ? null : ((pulumi.Input.decodeList<IndexingConfigurationThingIndexingConfigurationCustomField>(map['customFields']!, (value) => IndexingConfigurationThingIndexingConfigurationCustomField.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      deviceDefenderIndexingMode: map['deviceDefenderIndexingMode'] == null ? null : ((map['deviceDefenderIndexingMode'] as String).input()).input(),
+      filter: map['filter'] == null ? null : ((IndexingConfigurationThingIndexingConfigurationFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input()).input(),
+      managedFields: map['managedFields'] == null ? null : ((pulumi.Input.decodeList<IndexingConfigurationThingIndexingConfigurationManagedField>(map['managedFields']!, (value) => IndexingConfigurationThingIndexingConfigurationManagedField.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      namedShadowIndexingMode: map['namedShadowIndexingMode'] == null ? null : ((map['namedShadowIndexingMode'] as String).input()).input(),
+      thingConnectivityIndexingMode: map['thingConnectivityIndexingMode'] == null ? null : ((map['thingConnectivityIndexingMode'] as String).input()).input(),
       thingIndexingMode: (map['thingIndexingMode'] as String).input(),
     );
   }

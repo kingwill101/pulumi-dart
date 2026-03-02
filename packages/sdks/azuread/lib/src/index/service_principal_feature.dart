@@ -35,10 +35,10 @@ class ServicePrincipalFeature {
 
   factory ServicePrincipalFeature.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalFeature(
-      customSingleSignOnApp: map['customSingleSignOnApp'] == null ? null : (map['customSingleSignOnApp'] as bool).input(),
-      enterpriseApplication: map['enterpriseApplication'] == null ? null : (map['enterpriseApplication'] as bool).input(),
-      galleryApplication: map['galleryApplication'] == null ? null : (map['galleryApplication'] as bool).input(),
-      visibleToUsers: map['visibleToUsers'] == null ? null : (map['visibleToUsers'] as bool).input(),
+      customSingleSignOnApp: map['customSingleSignOnApp'] == null ? null : (map['customSingleSignOnApp']! as bool).input(),
+      enterpriseApplication: map['enterpriseApplication'] == null ? null : (map['enterpriseApplication']! as bool).input(),
+      galleryApplication: map['galleryApplication'] == null ? null : (map['galleryApplication']! as bool).input(),
+      visibleToUsers: map['visibleToUsers'] == null ? null : (map['visibleToUsers']! as bool).input(),
     );
   }
 }

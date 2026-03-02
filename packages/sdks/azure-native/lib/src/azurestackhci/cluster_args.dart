@@ -86,19 +86,19 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      aadApplicationObjectId: map['aadApplicationObjectId'] == null ? null : (map['aadApplicationObjectId'] as String).input(),
-      aadClientId: map['aadClientId'] == null ? null : (map['aadClientId'] as String).input(),
-      aadServicePrincipalObjectId: map['aadServicePrincipalObjectId'] == null ? null : (map['aadServicePrincipalObjectId'] as String).input(),
-      aadTenantId: map['aadTenantId'] == null ? null : (map['aadTenantId'] as String).input(),
-      cloudManagementEndpoint: map['cloudManagementEndpoint'] == null ? null : (map['cloudManagementEndpoint'] as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      desiredProperties: map['desiredProperties'] == null ? null : (ClusterDesiredProperties.fromMap((map['desiredProperties'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      aadApplicationObjectId: map['aadApplicationObjectId'] == null ? null : (map['aadApplicationObjectId']! as String).input(),
+      aadClientId: map['aadClientId'] == null ? null : (map['aadClientId']! as String).input(),
+      aadServicePrincipalObjectId: map['aadServicePrincipalObjectId'] == null ? null : (map['aadServicePrincipalObjectId']! as String).input(),
+      aadTenantId: map['aadTenantId'] == null ? null : (map['aadTenantId']! as String).input(),
+      cloudManagementEndpoint: map['cloudManagementEndpoint'] == null ? null : (map['cloudManagementEndpoint']! as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      desiredProperties: map['desiredProperties'] == null ? null : (ClusterDesiredProperties.fromMap((map['desiredProperties']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      softwareAssuranceProperties: map['softwareAssuranceProperties'] == null ? null : (SoftwareAssuranceProperties.fromMap((map['softwareAssuranceProperties'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      softwareAssuranceProperties: map['softwareAssuranceProperties'] == null ? null : (SoftwareAssuranceProperties.fromMap((map['softwareAssuranceProperties']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
     );
   }
 }

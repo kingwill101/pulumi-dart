@@ -21,7 +21,7 @@ class GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig(
-      enableImprovedEmailPrivacy: map['enableImprovedEmailPrivacy'] == null ? null : (map['enableImprovedEmailPrivacy'] as bool).input(),
+      enableImprovedEmailPrivacy: map['enableImprovedEmailPrivacy'] == null ? null : (map['enableImprovedEmailPrivacy']! as bool).input(),
     );
   }
 }

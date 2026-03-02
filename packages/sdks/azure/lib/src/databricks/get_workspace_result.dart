@@ -88,7 +88,7 @@ class GetWorkspaceResult {
       resourceGroupName: map['resourceGroupName'] as String,
       sku: map['sku'] as String,
       storageAccountIdentities: pulumi.Input.decodeList<GetWorkspaceStorageAccountIdentity>(map['storageAccountIdentities'], (value) => GetWorkspaceStorageAccountIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       workspaceId: map['workspaceId'] as String,
       workspaceUrl: map['workspaceUrl'] as String,
     );

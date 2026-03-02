@@ -55,13 +55,13 @@ class AlertArgs {
 
   factory AlertArgs.fromMap(Map<String, dynamic> map) {
     return AlertArgs(
-      alertName: map['alertName'] == null ? null : (map['alertName'] as String).input(),
-      alertRuleProperties: map['alertRuleProperties'] == null ? null : (AlertRuleProperties.fromMap((map['alertRuleProperties'] as Map).cast<String, dynamic>())).input(),
+      alertName: map['alertName'] == null ? null : (map['alertName']! as String).input(),
+      alertRuleProperties: map['alertRuleProperties'] == null ? null : (AlertRuleProperties.fromMap((map['alertRuleProperties']! as Map).cast<String, dynamic>())).input(),
       monitorName: (map['monitorName'] as String).input(),
-      providerNames: map['providerNames'] == null ? null : ((map['providerNames'] as List).cast<String>()).input(),
-      providerType: map['providerType'] == null ? null : (map['providerType'] as String).input(),
+      providerNames: map['providerNames'] == null ? null : ((map['providerNames']! as List).cast<String>()).input(),
+      providerType: map['providerType'] == null ? null : (map['providerType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
     );
   }
 }

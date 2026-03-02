@@ -41,11 +41,11 @@ class TaskDefinitionVolumeEfsVolumeConfiguration {
 
   factory TaskDefinitionVolumeEfsVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionVolumeEfsVolumeConfiguration(
-      authorizationConfig: map['authorizationConfig'] == null ? null : (TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig.fromMap((map['authorizationConfig'] as Map).cast<String, dynamic>())).input(),
+      authorizationConfig: map['authorizationConfig'] == null ? null : ((TaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig.fromMap((map['authorizationConfig']! as Map).cast<String, dynamic>())).input()).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
-      rootDirectory: map['rootDirectory'] == null ? null : (map['rootDirectory'] as String).input(),
-      transitEncryption: map['transitEncryption'] == null ? null : (map['transitEncryption'] as String).input(),
-      transitEncryptionPort: map['transitEncryptionPort'] == null ? null : (map['transitEncryptionPort'] as int).input(),
+      rootDirectory: map['rootDirectory'] == null ? null : ((map['rootDirectory'] as String).input()).input(),
+      transitEncryption: map['transitEncryption'] == null ? null : ((map['transitEncryption'] as String).input()).input(),
+      transitEncryptionPort: map['transitEncryptionPort'] == null ? null : ((map['transitEncryptionPort'] as int).input()).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class GetInputArgs {
   factory GetInputArgs.fromMap(Map<String, dynamic> map) {
     return GetInputArgs(
       id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

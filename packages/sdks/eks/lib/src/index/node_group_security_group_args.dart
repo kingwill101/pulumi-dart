@@ -43,7 +43,7 @@ class NodeGroupSecurityGroupArgs {
     return NodeGroupSecurityGroupArgs(
       clusterSecurityGroup: (map['clusterSecurityGroup'] as pulumi_aws_ec2.SecurityGroup).input(),
       eksCluster: (map['eksCluster'] as pulumi_aws_eks.Cluster).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

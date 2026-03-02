@@ -21,7 +21,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputPr
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration(
-      inputLambdaProcessor: (ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor.fromMap((map['inputLambdaProcessor'] as Map).cast<String, dynamic>())).input(),
+      inputLambdaProcessor: (ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor.fromMap((map['inputLambdaProcessor']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

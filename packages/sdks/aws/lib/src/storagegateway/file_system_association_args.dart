@@ -60,13 +60,13 @@ class FileSystemAssociationArgs {
 
   factory FileSystemAssociationArgs.fromMap(Map<String, dynamic> map) {
     return FileSystemAssociationArgs(
-      auditDestinationArn: map['auditDestinationArn'] == null ? null : (map['auditDestinationArn'] as String).input(),
-      cacheAttributes: map['cacheAttributes'] == null ? null : (FileSystemAssociationCacheAttributes.fromMap((map['cacheAttributes'] as Map).cast<String, dynamic>())).input(),
+      auditDestinationArn: map['auditDestinationArn'] == null ? null : ((map['auditDestinationArn'] as String).input()).input(),
+      cacheAttributes: map['cacheAttributes'] == null ? null : ((FileSystemAssociationCacheAttributes.fromMap((map['cacheAttributes']! as Map).cast<String, dynamic>())).input()).input(),
       gatewayArn: (map['gatewayArn'] as String).input(),
       locationArn: (map['locationArn'] as String).input(),
       password: (map['password'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       username: (map['username'] as String).input(),
     );
   }

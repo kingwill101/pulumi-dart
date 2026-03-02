@@ -21,7 +21,7 @@ class EgressSource {
 
   factory EgressSource.fromMap(Map<String, dynamic> map) {
     return EgressSource(
-      accessLevel: map['accessLevel'] == null ? null : (map['accessLevel'] as String).input(),
+      accessLevel: map['accessLevel'] == null ? null : (map['accessLevel']! as String).input(),
     );
   }
 }

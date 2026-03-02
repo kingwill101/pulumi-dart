@@ -31,8 +31,8 @@ class ConfigurationPolicyConfigurationPolicy {
 
   factory ConfigurationPolicyConfigurationPolicy.fromMap(Map<String, dynamic> map) {
     return ConfigurationPolicyConfigurationPolicy(
-      enabledStandardArns: map['enabledStandardArns'] == null ? null : ((map['enabledStandardArns'] as List).cast<String>()).input(),
-      securityControlsConfiguration: map['securityControlsConfiguration'] == null ? null : (ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration.fromMap((map['securityControlsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      enabledStandardArns: map['enabledStandardArns'] == null ? null : (((map['enabledStandardArns'] as List).cast<String>()).input()).input(),
+      securityControlsConfiguration: map['securityControlsConfiguration'] == null ? null : ((ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration.fromMap((map['securityControlsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       serviceEnabled: (map['serviceEnabled'] as bool).input(),
     );
   }

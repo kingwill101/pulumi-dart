@@ -29,7 +29,7 @@ class GetSecretRotationArgs {
 
   factory GetSecretRotationArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretRotationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       secretId: (map['secretId'] as String).input(),
     );
   }

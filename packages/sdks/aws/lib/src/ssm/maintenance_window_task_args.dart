@@ -86,17 +86,17 @@ class MaintenanceWindowTaskArgs {
 
   factory MaintenanceWindowTaskArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskArgs(
-      cutoffBehavior: map['cutoffBehavior'] == null ? null : (map['cutoffBehavior'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency'] as String).input(),
-      maxErrors: map['maxErrors'] == null ? null : (map['maxErrors'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceRoleArn: map['serviceRoleArn'] == null ? null : (map['serviceRoleArn'] as String).input(),
-      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<MaintenanceWindowTaskTarget>(map['targets'], (value) => MaintenanceWindowTaskTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cutoffBehavior: map['cutoffBehavior'] == null ? null : ((map['cutoffBehavior'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      maxConcurrency: map['maxConcurrency'] == null ? null : ((map['maxConcurrency'] as String).input()).input(),
+      maxErrors: map['maxErrors'] == null ? null : ((map['maxErrors'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceRoleArn: map['serviceRoleArn'] == null ? null : ((map['serviceRoleArn'] as String).input()).input(),
+      targets: map['targets'] == null ? null : ((pulumi.Input.decodeList<MaintenanceWindowTaskTarget>(map['targets']!, (value) => MaintenanceWindowTaskTarget.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       taskArn: (map['taskArn'] as String).input(),
-      taskInvocationParameters: map['taskInvocationParameters'] == null ? null : (MaintenanceWindowTaskTaskInvocationParameters.fromMap((map['taskInvocationParameters'] as Map).cast<String, dynamic>())).input(),
+      taskInvocationParameters: map['taskInvocationParameters'] == null ? null : ((MaintenanceWindowTaskTaskInvocationParameters.fromMap((map['taskInvocationParameters']! as Map).cast<String, dynamic>())).input()).input(),
       taskType: (map['taskType'] as String).input(),
       windowId: (map['windowId'] as String).input(),
     );

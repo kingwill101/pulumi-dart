@@ -20,7 +20,7 @@ class TargetAnthosCluster {
 
   factory TargetAnthosCluster.fromMap(Map<String, dynamic> map) {
     return TargetAnthosCluster(
-      membership: map['membership'] == null ? null : (map['membership'] as String).input(),
+      membership: map['membership'] == null ? null : (map['membership']! as String).input(),
     );
   }
 }

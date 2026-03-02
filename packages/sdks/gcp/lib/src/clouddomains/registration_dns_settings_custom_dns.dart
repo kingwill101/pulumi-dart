@@ -29,7 +29,7 @@ class RegistrationDnsSettingsCustomDns {
 
   factory RegistrationDnsSettingsCustomDns.fromMap(Map<String, dynamic> map) {
     return RegistrationDnsSettingsCustomDns(
-      dsRecords: map['dsRecords'] == null ? null : (pulumi.Input.decodeList<RegistrationDnsSettingsCustomDnsDsRecord>(map['dsRecords'], (value) => RegistrationDnsSettingsCustomDnsDsRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dsRecords: map['dsRecords'] == null ? null : (pulumi.Input.decodeList<RegistrationDnsSettingsCustomDnsDsRecord>(map['dsRecords']!, (value) => RegistrationDnsSettingsCustomDnsDsRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
       nameServers: ((map['nameServers'] as List).cast<String>()).input(),
     );
   }

@@ -33,9 +33,9 @@ class StreamConfigHealthcareV1beta1 {
 
   factory StreamConfigHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return StreamConfigHealthcareV1beta1(
-      bigqueryDestination: map['bigqueryDestination'] == null ? null : (GoogleCloudHealthcareV1beta1FhirBigQueryDestination.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>())).input(),
-      deidentifiedStoreDestination: map['deidentifiedStoreDestination'] == null ? null : (DeidentifiedStoreDestinationHealthcareV1beta1.fromMap((map['deidentifiedStoreDestination'] as Map).cast<String, dynamic>())).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      bigqueryDestination: map['bigqueryDestination'] == null ? null : (GoogleCloudHealthcareV1beta1FhirBigQueryDestination.fromMap((map['bigqueryDestination']! as Map).cast<String, dynamic>())).input(),
+      deidentifiedStoreDestination: map['deidentifiedStoreDestination'] == null ? null : (DeidentifiedStoreDestinationHealthcareV1beta1.fromMap((map['deidentifiedStoreDestination']! as Map).cast<String, dynamic>())).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
     );
   }
 }

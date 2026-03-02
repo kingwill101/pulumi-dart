@@ -133,21 +133,21 @@ class InvocationState {
 
   factory InvocationState.fromMap(Map<String, dynamic> map) {
     return InvocationState(
-      commandContent: map['commandContent'] == null ? null : (map['commandContent'] as String).input(),
-      commandId: map['commandId'] == null ? null : (map['commandId'] as String).input(),
-      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableParameter: map['enableParameter'] == null ? null : (map['enableParameter'] as bool).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      launcher: map['launcher'] == null ? null : (map['launcher'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeIdLists: map['nodeIdLists'] == null ? null : ((map['nodeIdLists'] as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      repeatMode: map['repeatMode'] == null ? null : (map['repeatMode'] as String).input(),
-      terminationMode: map['terminationMode'] == null ? null : (map['terminationMode'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
-      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
+      commandContent: map['commandContent'] == null ? null : (map['commandContent']! as String).input(),
+      commandId: map['commandId'] == null ? null : (map['commandId']! as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableParameter: map['enableParameter'] == null ? null : (map['enableParameter']! as bool).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      launcher: map['launcher'] == null ? null : (map['launcher']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeIdLists: map['nodeIdLists'] == null ? null : ((map['nodeIdLists']! as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      repeatMode: map['repeatMode'] == null ? null : (map['repeatMode']! as String).input(),
+      terminationMode: map['terminationMode'] == null ? null : (map['terminationMode']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir']! as String).input(),
     );
   }
 }

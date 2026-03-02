@@ -58,13 +58,13 @@ class OriginAccessIdentityState {
 
   factory OriginAccessIdentityState.fromMap(Map<String, dynamic> map) {
     return OriginAccessIdentityState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      callerReference: map['callerReference'] == null ? null : (map['callerReference'] as String).input(),
-      cloudfrontAccessIdentityPath: map['cloudfrontAccessIdentityPath'] == null ? null : (map['cloudfrontAccessIdentityPath'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      iamArn: map['iamArn'] == null ? null : (map['iamArn'] as String).input(),
-      s3CanonicalUserId: map['s3CanonicalUserId'] == null ? null : (map['s3CanonicalUserId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      callerReference: map['callerReference'] == null ? null : ((map['callerReference'] as String).input()).input(),
+      cloudfrontAccessIdentityPath: map['cloudfrontAccessIdentityPath'] == null ? null : ((map['cloudfrontAccessIdentityPath'] as String).input()).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      iamArn: map['iamArn'] == null ? null : ((map['iamArn'] as String).input()).input(),
+      s3CanonicalUserId: map['s3CanonicalUserId'] == null ? null : ((map['s3CanonicalUserId'] as String).input()).input(),
     );
   }
 }

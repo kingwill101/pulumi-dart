@@ -21,7 +21,7 @@ class NodeFeatures {
 
   factory NodeFeatures.fromMap(Map<String, dynamic> map) {
     return NodeFeatures(
-      supplementalGroupsPolicy: map['supplementalGroupsPolicy'] == null ? null : (map['supplementalGroupsPolicy'] as bool).input(),
+      supplementalGroupsPolicy: map['supplementalGroupsPolicy'] == null ? null : (map['supplementalGroupsPolicy']! as bool).input(),
     );
   }
 }

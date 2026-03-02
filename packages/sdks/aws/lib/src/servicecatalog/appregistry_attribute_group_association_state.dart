@@ -31,9 +31,9 @@ class AppregistryAttributeGroupAssociationState {
 
   factory AppregistryAttributeGroupAssociationState.fromMap(Map<String, dynamic> map) {
     return AppregistryAttributeGroupAssociationState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      attributeGroupId: map['attributeGroupId'] == null ? null : (map['attributeGroupId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
+      attributeGroupId: map['attributeGroupId'] == null ? null : ((map['attributeGroupId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

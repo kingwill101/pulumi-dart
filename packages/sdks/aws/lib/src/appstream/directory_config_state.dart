@@ -48,12 +48,12 @@ class DirectoryConfigState {
 
   factory DirectoryConfigState.fromMap(Map<String, dynamic> map) {
     return DirectoryConfigState(
-      certificateBasedAuthProperties: map['certificateBasedAuthProperties'] == null ? null : (DirectoryConfigCertificateBasedAuthProperties.fromMap((map['certificateBasedAuthProperties'] as Map).cast<String, dynamic>())).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      directoryName: map['directoryName'] == null ? null : (map['directoryName'] as String).input(),
-      organizationalUnitDistinguishedNames: map['organizationalUnitDistinguishedNames'] == null ? null : ((map['organizationalUnitDistinguishedNames'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceAccountCredentials: map['serviceAccountCredentials'] == null ? null : (DirectoryConfigServiceAccountCredentials.fromMap((map['serviceAccountCredentials'] as Map).cast<String, dynamic>())).input(),
+      certificateBasedAuthProperties: map['certificateBasedAuthProperties'] == null ? null : ((DirectoryConfigCertificateBasedAuthProperties.fromMap((map['certificateBasedAuthProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
+      directoryName: map['directoryName'] == null ? null : ((map['directoryName'] as String).input()).input(),
+      organizationalUnitDistinguishedNames: map['organizationalUnitDistinguishedNames'] == null ? null : (((map['organizationalUnitDistinguishedNames'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceAccountCredentials: map['serviceAccountCredentials'] == null ? null : ((DirectoryConfigServiceAccountCredentials.fromMap((map['serviceAccountCredentials']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

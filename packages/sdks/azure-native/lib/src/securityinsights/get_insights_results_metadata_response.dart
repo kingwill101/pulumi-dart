@@ -27,7 +27,7 @@ class GetInsightsResultsMetadataResponse {
 
   factory GetInsightsResultsMetadataResponse.fromMap(Map<String, dynamic> map) {
     return GetInsightsResultsMetadataResponse(
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<GetInsightsErrorKindResponse>(map['errors'], (value) => GetInsightsErrorKindResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<GetInsightsErrorKindResponse>(map['errors']!, (value) => GetInsightsErrorKindResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       totalCount: (map['totalCount'] as int).input(),
     );
   }

@@ -48,10 +48,10 @@ class ContactListArgs {
   factory ContactListArgs.fromMap(Map<String, dynamic> map) {
     return ContactListArgs(
       contactListName: (map['contactListName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topics: map['topics'] == null ? null : (pulumi.Input.decodeList<ContactListTopic>(map['topics'], (value) => ContactListTopic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      topics: map['topics'] == null ? null : ((pulumi.Input.decodeList<ContactListTopic>(map['topics']!, (value) => ContactListTopic.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class DataCollectionRuleDataSourcesIisLog {
 
   factory DataCollectionRuleDataSourcesIisLog.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleDataSourcesIisLog(
-      logDirectories: map['logDirectories'] == null ? null : ((map['logDirectories'] as List).cast<String>()).input(),
+      logDirectories: map['logDirectories'] == null ? null : ((map['logDirectories']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
       streams: ((map['streams'] as List).cast<String>()).input(),
     );

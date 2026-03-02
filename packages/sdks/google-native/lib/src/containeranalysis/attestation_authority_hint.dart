@@ -21,7 +21,7 @@ class AttestationAuthorityHint {
 
   factory AttestationAuthorityHint.fromMap(Map<String, dynamic> map) {
     return AttestationAuthorityHint(
-      humanReadableName: map['humanReadableName'] == null ? null : (map['humanReadableName'] as String).input(),
+      humanReadableName: map['humanReadableName'] == null ? null : (map['humanReadableName']! as String).input(),
     );
   }
 }

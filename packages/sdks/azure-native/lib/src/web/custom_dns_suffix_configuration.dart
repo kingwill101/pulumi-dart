@@ -36,10 +36,10 @@ class CustomDnsSuffixConfiguration {
 
   factory CustomDnsSuffixConfiguration.fromMap(Map<String, dynamic> map) {
     return CustomDnsSuffixConfiguration(
-      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
-      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix'] as String).input(),
-      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : (map['keyVaultReferenceIdentity'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl']! as String).input(),
+      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix']! as String).input(),
+      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : (map['keyVaultReferenceIdentity']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

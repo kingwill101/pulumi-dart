@@ -41,11 +41,11 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityM
 
   factory PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      expression: map['expression'] == null ? null : ((map['expression'] as String).input()).input(),
       id: (map['id'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      metricStat: map['metricStat'] == null ? null : (PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat.fromMap((map['metricStat'] as Map).cast<String, dynamic>())).input(),
-      returnData: map['returnData'] == null ? null : (map['returnData'] as bool).input(),
+      label: map['label'] == null ? null : ((map['label'] as String).input()).input(),
+      metricStat: map['metricStat'] == null ? null : ((PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat.fromMap((map['metricStat']! as Map).cast<String, dynamic>())).input()).input(),
+      returnData: map['returnData'] == null ? null : ((map['returnData'] as bool).input()).input(),
     );
   }
 }

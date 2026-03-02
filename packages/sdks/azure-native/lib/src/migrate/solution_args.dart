@@ -41,9 +41,9 @@ class SolutionArgs {
   factory SolutionArgs.fromMap(Map<String, dynamic> map) {
     return SolutionArgs(
       migrateProjectName: (map['migrateProjectName'] as String).input(),
-      properties: map['properties'] == null ? null : (SolutionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SolutionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      solutionName: map['solutionName'] == null ? null : (map['solutionName'] as String).input(),
+      solutionName: map['solutionName'] == null ? null : (map['solutionName']! as String).input(),
     );
   }
 }

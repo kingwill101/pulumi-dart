@@ -27,8 +27,8 @@ class CompensationRange {
 
   factory CompensationRange.fromMap(Map<String, dynamic> map) {
     return CompensationRange(
-      maxCompensation: map['maxCompensation'] == null ? null : (Money.fromMap((map['maxCompensation'] as Map).cast<String, dynamic>())).input(),
-      minCompensation: map['minCompensation'] == null ? null : (Money.fromMap((map['minCompensation'] as Map).cast<String, dynamic>())).input(),
+      maxCompensation: map['maxCompensation'] == null ? null : (Money.fromMap((map['maxCompensation']! as Map).cast<String, dynamic>())).input(),
+      minCompensation: map['minCompensation'] == null ? null : (Money.fromMap((map['minCompensation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

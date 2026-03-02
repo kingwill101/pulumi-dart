@@ -71,14 +71,14 @@ class RuleDeploymentArgs {
 
   factory RuleDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return RuleDeploymentArgs(
-      alerting: map['alerting'] == null ? null : (map['alerting'] as bool).input(),
-      archived: map['archived'] == null ? null : (map['archived'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      alerting: map['alerting'] == null ? null : (map['alerting']! as bool).input(),
+      archived: map['archived'] == null ? null : (map['archived']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       instance: (map['instance'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rule: (map['rule'] as String).input(),
-      runFrequency: map['runFrequency'] == null ? null : (map['runFrequency'] as String).input(),
+      runFrequency: map['runFrequency'] == null ? null : (map['runFrequency']! as String).input(),
     );
   }
 }

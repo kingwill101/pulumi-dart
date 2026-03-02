@@ -37,7 +37,7 @@ class EkmConnectionServiceResolver {
 
   factory EkmConnectionServiceResolver.fromMap(Map<String, dynamic> map) {
     return EkmConnectionServiceResolver(
-      endpointFilter: map['endpointFilter'] == null ? null : (map['endpointFilter'] as String).input(),
+      endpointFilter: map['endpointFilter'] == null ? null : (map['endpointFilter']! as String).input(),
       hostname: (map['hostname'] as String).input(),
       serverCertificates: (pulumi.Input.decodeList<EkmConnectionServiceResolverServerCertificate>(map['serverCertificates'], (value) => EkmConnectionServiceResolverServerCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
       serviceDirectoryService: (map['serviceDirectoryService'] as String).input(),

@@ -36,9 +36,9 @@ class GetChangeArgs {
   factory GetChangeArgs.fromMap(Map<String, dynamic> map) {
     return GetChangeArgs(
       changeId: (map['changeId'] as String).input(),
-      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId']! as String).input(),
       managedZone: (map['managedZone'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

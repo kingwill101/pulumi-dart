@@ -28,7 +28,7 @@ class GetPatchDeploymentArgs {
   factory GetPatchDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return GetPatchDeploymentArgs(
       patchDeploymentId: (map['patchDeploymentId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

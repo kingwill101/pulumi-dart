@@ -25,8 +25,8 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatc
 
   factory MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersCloudwatchConfig(
-      cloudwatchLogGroupName: map['cloudwatchLogGroupName'] == null ? null : (map['cloudwatchLogGroupName'] as String).input(),
-      cloudwatchOutputEnabled: map['cloudwatchOutputEnabled'] == null ? null : (map['cloudwatchOutputEnabled'] as bool).input(),
+      cloudwatchLogGroupName: map['cloudwatchLogGroupName'] == null ? null : ((map['cloudwatchLogGroupName'] as String).input()).input(),
+      cloudwatchOutputEnabled: map['cloudwatchOutputEnabled'] == null ? null : ((map['cloudwatchOutputEnabled'] as bool).input()).input(),
     );
   }
 }

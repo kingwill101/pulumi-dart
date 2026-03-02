@@ -22,7 +22,7 @@ class ListConnectionConsentLinksResult {
 
   factory ListConnectionConsentLinksResult.fromMap(Map<String, dynamic> map) {
     return ListConnectionConsentLinksResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ConsentLinkDefinitionResponse>(map['value'], (value) => ConsentLinkDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ConsentLinkDefinitionResponse>(map['value']!, (value) => ConsentLinkDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

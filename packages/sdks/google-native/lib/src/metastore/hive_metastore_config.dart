@@ -43,11 +43,11 @@ class HiveMetastoreConfig {
 
   factory HiveMetastoreConfig.fromMap(Map<String, dynamic> map) {
     return HiveMetastoreConfig(
-      auxiliaryVersions: map['auxiliaryVersions'] == null ? null : ((map['auxiliaryVersions'] as Map).cast<String, String>()).input(),
-      configOverrides: map['configOverrides'] == null ? null : ((map['configOverrides'] as Map).cast<String, String>()).input(),
-      endpointProtocol: map['endpointProtocol'] == null ? null : (HiveMetastoreConfigEndpointProtocol.fromValue(map['endpointProtocol'] as String)).input(),
-      kerberosConfig: map['kerberosConfig'] == null ? null : (KerberosConfig.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      auxiliaryVersions: map['auxiliaryVersions'] == null ? null : ((map['auxiliaryVersions']! as Map).cast<String, String>()).input(),
+      configOverrides: map['configOverrides'] == null ? null : ((map['configOverrides']! as Map).cast<String, String>()).input(),
+      endpointProtocol: map['endpointProtocol'] == null ? null : (HiveMetastoreConfigEndpointProtocol.fromValue(map['endpointProtocol']! as String)).input(),
+      kerberosConfig: map['kerberosConfig'] == null ? null : (KerberosConfig.fromMap((map['kerberosConfig']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

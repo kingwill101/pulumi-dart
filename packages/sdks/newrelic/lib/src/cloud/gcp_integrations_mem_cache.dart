@@ -20,7 +20,7 @@ class GcpIntegrationsMemCache {
 
   factory GcpIntegrationsMemCache.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsMemCache(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

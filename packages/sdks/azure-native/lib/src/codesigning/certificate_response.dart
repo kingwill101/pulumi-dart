@@ -76,18 +76,18 @@ class CertificateResponse {
 
   factory CertificateResponse.fromMap(Map<String, dynamic> map) {
     return CertificateResponse(
-      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
-      effectiveAt: map['effectiveAt'] == null ? null : (map['effectiveAt'] as String).input(),
-      enhancedKeyUsage: map['enhancedKeyUsage'] == null ? null : (map['enhancedKeyUsage'] as String).input(),
-      expiryDate: map['expiryDate'] == null ? null : (map['expiryDate'] as String).input(),
-      failureReason: map['failureReason'] == null ? null : (map['failureReason'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      remarks: map['remarks'] == null ? null : (map['remarks'] as String).input(),
-      requestedAt: map['requestedAt'] == null ? null : (map['requestedAt'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate']! as String).input(),
+      effectiveAt: map['effectiveAt'] == null ? null : (map['effectiveAt']! as String).input(),
+      enhancedKeyUsage: map['enhancedKeyUsage'] == null ? null : (map['enhancedKeyUsage']! as String).input(),
+      expiryDate: map['expiryDate'] == null ? null : (map['expiryDate']! as String).input(),
+      failureReason: map['failureReason'] == null ? null : (map['failureReason']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      remarks: map['remarks'] == null ? null : (map['remarks']! as String).input(),
+      requestedAt: map['requestedAt'] == null ? null : (map['requestedAt']! as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
       status: (map['status'] as String).input(),
-      subjectName: map['subjectName'] == null ? null : (map['subjectName'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      subjectName: map['subjectName'] == null ? null : (map['subjectName']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

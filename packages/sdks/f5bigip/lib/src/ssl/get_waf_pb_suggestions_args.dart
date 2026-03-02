@@ -41,7 +41,7 @@ class GetWafPbSuggestionsArgs {
     return GetWafPbSuggestionsArgs(
       minimumLearningScore: (map['minimumLearningScore'] as int).input(),
       partition: (map['partition'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
       policyName: (map['policyName'] as String).input(),
     );
   }

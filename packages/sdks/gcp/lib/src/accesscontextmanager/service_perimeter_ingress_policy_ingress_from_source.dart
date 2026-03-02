@@ -40,8 +40,8 @@ class ServicePerimeterIngressPolicyIngressFromSource {
 
   factory ServicePerimeterIngressPolicyIngressFromSource.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterIngressPolicyIngressFromSource(
-      accessLevel: map['accessLevel'] == null ? null : (map['accessLevel'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      accessLevel: map['accessLevel'] == null ? null : (map['accessLevel']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

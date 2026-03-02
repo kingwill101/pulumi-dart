@@ -33,9 +33,9 @@ class GetConfigsArgs {
 
   factory GetConfigsArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

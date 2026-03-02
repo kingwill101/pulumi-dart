@@ -44,8 +44,8 @@ class GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1be
   factory GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaArgs(
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workstationClusterId: (map['workstationClusterId'] as String).input(),
       workstationConfigId: (map['workstationConfigId'] as String).input(),
       workstationId: (map['workstationId'] as String).input(),

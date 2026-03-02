@@ -89,19 +89,19 @@ class ConnectClusterState {
 
   factory ConnectClusterState.fromMap(Map<String, dynamic> map) {
     return ConnectClusterState(
-      capacityConfig: map['capacityConfig'] == null ? null : (ConnectClusterCapacityConfig.fromMap((map['capacityConfig'] as Map).cast<String, dynamic>())).input(),
-      connectClusterId: map['connectClusterId'] == null ? null : (map['connectClusterId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      gcpConfig: map['gcpConfig'] == null ? null : (ConnectClusterGcpConfig.fromMap((map['gcpConfig'] as Map).cast<String, dynamic>())).input(),
-      kafkaCluster: map['kafkaCluster'] == null ? null : (map['kafkaCluster'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      capacityConfig: map['capacityConfig'] == null ? null : (ConnectClusterCapacityConfig.fromMap((map['capacityConfig']! as Map).cast<String, dynamic>())).input(),
+      connectClusterId: map['connectClusterId'] == null ? null : (map['connectClusterId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      gcpConfig: map['gcpConfig'] == null ? null : (ConnectClusterGcpConfig.fromMap((map['gcpConfig']! as Map).cast<String, dynamic>())).input(),
+      kafkaCluster: map['kafkaCluster'] == null ? null : (map['kafkaCluster']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

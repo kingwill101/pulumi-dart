@@ -26,8 +26,8 @@ class AgentFlowDefinitionNodeConfigurationPrompt {
 
   factory AgentFlowDefinitionNodeConfigurationPrompt.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPrompt(
-      guardrailConfiguration: map['guardrailConfiguration'] == null ? null : (AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration.fromMap((map['guardrailConfiguration'] as Map).cast<String, dynamic>())).input(),
-      sourceConfiguration: map['sourceConfiguration'] == null ? null : (AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration.fromMap((map['sourceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      guardrailConfiguration: map['guardrailConfiguration'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration.fromMap((map['guardrailConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      sourceConfiguration: map['sourceConfiguration'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration.fromMap((map['sourceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

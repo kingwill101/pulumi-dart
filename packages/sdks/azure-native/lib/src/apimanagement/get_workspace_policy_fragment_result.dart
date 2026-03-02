@@ -51,8 +51,8 @@ class GetWorkspacePolicyFragmentResult {
   factory GetWorkspacePolicyFragmentResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspacePolicyFragmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      format: map['format'] == null ? null : map['format'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      format: map['format'] == null ? null : map['format']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,

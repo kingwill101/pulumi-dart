@@ -84,17 +84,17 @@ class RedirectRuleState {
 
   factory RedirectRuleState.fromMap(Map<String, dynamic> map) {
     return RedirectRuleState(
-      configId: map['configId'] == null ? null : (map['configId'] as int).input(),
-      reserveQueryString: map['reserveQueryString'] == null ? null : (map['reserveQueryString'] as String).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
-      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as int).input(),
+      reserveQueryString: map['reserveQueryString'] == null ? null : (map['reserveQueryString']! as String).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence']! as int).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as String).input(),
+      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

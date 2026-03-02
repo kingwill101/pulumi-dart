@@ -30,9 +30,9 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo {
 
   factory RecordSetRoutingPolicyPrimaryBackupBackupGeo.fromMap(Map<String, dynamic> map) {
     return RecordSetRoutingPolicyPrimaryBackupBackupGeo(
-      healthCheckedTargets: map['healthCheckedTargets'] == null ? null : (RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets.fromMap((map['healthCheckedTargets'] as Map).cast<String, dynamic>())).input(),
+      healthCheckedTargets: map['healthCheckedTargets'] == null ? null : (RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets.fromMap((map['healthCheckedTargets']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas'] as List).cast<String>()).input(),
+      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas']! as List).cast<String>()).input(),
     );
   }
 }

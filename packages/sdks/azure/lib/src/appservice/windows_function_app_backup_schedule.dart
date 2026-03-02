@@ -49,10 +49,10 @@ class WindowsFunctionAppBackupSchedule {
     return WindowsFunctionAppBackupSchedule(
       frequencyInterval: (map['frequencyInterval'] as int).input(),
       frequencyUnit: (map['frequencyUnit'] as String).input(),
-      keepAtLeastOneBackup: map['keepAtLeastOneBackup'] == null ? null : (map['keepAtLeastOneBackup'] as bool).input(),
-      lastExecutionTime: map['lastExecutionTime'] == null ? null : (map['lastExecutionTime'] as String).input(),
-      retentionPeriodDays: map['retentionPeriodDays'] == null ? null : (map['retentionPeriodDays'] as int).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      keepAtLeastOneBackup: map['keepAtLeastOneBackup'] == null ? null : (map['keepAtLeastOneBackup']! as bool).input(),
+      lastExecutionTime: map['lastExecutionTime'] == null ? null : (map['lastExecutionTime']! as String).input(),
+      retentionPeriodDays: map['retentionPeriodDays'] == null ? null : (map['retentionPeriodDays']! as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

@@ -72,17 +72,17 @@ class DatasetSnowflakeState {
 
   factory DatasetSnowflakeState.fromMap(Map<String, dynamic> map) {
     return DatasetSnowflakeState(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (map['linkedServiceName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      schemaColumns: map['schemaColumns'] == null ? null : (pulumi.Input.decodeList<DatasetSnowflakeSchemaColumn>(map['schemaColumns'], (value) => DatasetSnowflakeSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (map['linkedServiceName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      schemaColumns: map['schemaColumns'] == null ? null : (pulumi.Input.decodeList<DatasetSnowflakeSchemaColumn>(map['schemaColumns']!, (value) => DatasetSnowflakeSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schemaName: map['schemaName'] == null ? null : (map['schemaName']! as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
     );
   }
 }

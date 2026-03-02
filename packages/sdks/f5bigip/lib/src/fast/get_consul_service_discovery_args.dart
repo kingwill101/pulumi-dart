@@ -78,17 +78,17 @@ class GetConsulServiceDiscoveryArgs {
 
   factory GetConsulServiceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return GetConsulServiceDiscoveryArgs(
-      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm'] as String).input(),
-      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate'] as bool).input(),
-      encodedToken: map['encodedToken'] == null ? null : (map['encodedToken'] as String).input(),
-      jmesPathQuery: map['jmesPathQuery'] == null ? null : (map['jmesPathQuery'] as String).input(),
-      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors'] as String).input(),
+      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm']! as String).input(),
+      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate']! as bool).input(),
+      encodedToken: map['encodedToken'] == null ? null : (map['encodedToken']! as String).input(),
+      jmesPathQuery: map['jmesPathQuery'] == null ? null : (map['jmesPathQuery']! as String).input(),
+      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors']! as String).input(),
       port: (map['port'] as int).input(),
-      rejectUnauthorized: map['rejectUnauthorized'] == null ? null : (map['rejectUnauthorized'] as bool).input(),
-      trustCa: map['trustCa'] == null ? null : (map['trustCa'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction'] as String).input(),
-      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval'] as String).input(),
+      rejectUnauthorized: map['rejectUnauthorized'] == null ? null : (map['rejectUnauthorized']! as bool).input(),
+      trustCa: map['trustCa'] == null ? null : (map['trustCa']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction']! as String).input(),
+      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

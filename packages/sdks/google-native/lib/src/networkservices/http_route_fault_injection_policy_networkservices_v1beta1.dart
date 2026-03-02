@@ -28,8 +28,8 @@ class HttpRouteFaultInjectionPolicyNetworkservicesV1beta1 {
 
   factory HttpRouteFaultInjectionPolicyNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteFaultInjectionPolicyNetworkservicesV1beta1(
-      abort: map['abort'] == null ? null : (HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1.fromMap((map['abort'] as Map).cast<String, dynamic>())).input(),
-      delay: map['delay'] == null ? null : (HttpRouteFaultInjectionPolicyDelayNetworkservicesV1beta1.fromMap((map['delay'] as Map).cast<String, dynamic>())).input(),
+      abort: map['abort'] == null ? null : (HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1.fromMap((map['abort']! as Map).cast<String, dynamic>())).input(),
+      delay: map['delay'] == null ? null : (HttpRouteFaultInjectionPolicyDelayNetworkservicesV1beta1.fromMap((map['delay']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

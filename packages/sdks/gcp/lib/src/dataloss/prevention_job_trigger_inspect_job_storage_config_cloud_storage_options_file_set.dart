@@ -31,8 +31,8 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet {
 
   factory PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet(
-      regexFileSet: map['regexFileSet'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet.fromMap((map['regexFileSet'] as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      regexFileSet: map['regexFileSet'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet.fromMap((map['regexFileSet']! as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

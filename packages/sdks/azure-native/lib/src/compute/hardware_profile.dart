@@ -27,8 +27,8 @@ class HardwareProfile {
 
   factory HardwareProfile.fromMap(Map<String, dynamic> map) {
     return HardwareProfile(
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
-      vmSizeProperties: map['vmSizeProperties'] == null ? null : (VMSizeProperties.fromMap((map['vmSizeProperties'] as Map).cast<String, dynamic>())).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
+      vmSizeProperties: map['vmSizeProperties'] == null ? null : (VMSizeProperties.fromMap((map['vmSizeProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

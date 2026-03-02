@@ -83,12 +83,12 @@ class GetIncidentTaskResult {
   factory GetIncidentTaskResult.fromMap(Map<String, dynamic> map) {
     return GetIncidentTaskResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      createdBy: map['createdBy'] == null ? null : ClientInfoResponse.fromMap((map['createdBy'] as Map).cast<String, dynamic>()),
+      createdBy: map['createdBy'] == null ? null : ClientInfoResponse.fromMap((map['createdBy']! as Map).cast<String, dynamic>()),
       createdTimeUtc: map['createdTimeUtc'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      lastModifiedBy: map['lastModifiedBy'] == null ? null : ClientInfoResponse.fromMap((map['lastModifiedBy'] as Map).cast<String, dynamic>()),
+      lastModifiedBy: map['lastModifiedBy'] == null ? null : ClientInfoResponse.fromMap((map['lastModifiedBy']! as Map).cast<String, dynamic>()),
       lastModifiedTimeUtc: map['lastModifiedTimeUtc'] as String,
       name: map['name'] as String,
       status: map['status'] as String,

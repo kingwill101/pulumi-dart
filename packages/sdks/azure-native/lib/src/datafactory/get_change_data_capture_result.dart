@@ -80,16 +80,16 @@ class GetChangeDataCaptureResult {
 
   factory GetChangeDataCaptureResult.fromMap(Map<String, dynamic> map) {
     return GetChangeDataCaptureResult(
-      allowVNetOverride: map['allowVNetOverride'] == null ? null : map['allowVNetOverride'] as bool,
+      allowVNetOverride: map['allowVNetOverride'] == null ? null : map['allowVNetOverride']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       etag: map['etag'] as String,
-      folder: map['folder'] == null ? null : ChangeDataCaptureResponseFolder.fromMap((map['folder'] as Map).cast<String, dynamic>()),
+      folder: map['folder'] == null ? null : ChangeDataCaptureResponseFolder.fromMap((map['folder']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       policy: MapperPolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>()),
       sourceConnectionsInfo: pulumi.Input.decodeList<MapperSourceConnectionsInfoResponse>(map['sourceConnectionsInfo'], (value) => MapperSourceConnectionsInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
       targetConnectionsInfo: pulumi.Input.decodeList<MapperTargetConnectionsInfoResponse>(map['targetConnectionsInfo'], (value) => MapperTargetConnectionsInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );

@@ -21,7 +21,7 @@ class OriginGroupMemberResponse {
 
   factory OriginGroupMemberResponse.fromMap(Map<String, dynamic> map) {
     return OriginGroupMemberResponse(
-      originId: map['originId'] == null ? null : (map['originId'] as String).input(),
+      originId: map['originId'] == null ? null : (map['originId']! as String).input(),
     );
   }
 }

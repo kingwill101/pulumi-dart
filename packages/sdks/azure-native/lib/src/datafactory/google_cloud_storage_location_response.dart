@@ -42,11 +42,11 @@ class GoogleCloudStorageLocationResponse {
 
   factory GoogleCloudStorageLocationResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudStorageLocationResponse(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName']).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName']).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath']).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']!).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']!).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']!).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version']).input(),
+      version: map['version'] == null ? null : (map['version']!).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class EntityMappingResponse {
 
   factory EntityMappingResponse.fromMap(Map<String, dynamic> map) {
     return EntityMappingResponse(
-      entityType: map['entityType'] == null ? null : (map['entityType'] as String).input(),
-      fieldMappings: map['fieldMappings'] == null ? null : (pulumi.Input.decodeList<FieldMappingResponse>(map['fieldMappings'], (value) => FieldMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entityType: map['entityType'] == null ? null : (map['entityType']! as String).input(),
+      fieldMappings: map['fieldMappings'] == null ? null : (pulumi.Input.decodeList<FieldMappingResponse>(map['fieldMappings']!, (value) => FieldMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

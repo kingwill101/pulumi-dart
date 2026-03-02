@@ -37,7 +37,7 @@ class GetActiveFolderResult {
 
   factory GetActiveFolderResult.fromMap(Map<String, dynamic> map) {
     return GetActiveFolderResult(
-      apiMethod: map['apiMethod'] == null ? null : map['apiMethod'] as String,
+      apiMethod: map['apiMethod'] == null ? null : map['apiMethod']! as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

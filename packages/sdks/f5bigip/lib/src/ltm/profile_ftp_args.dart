@@ -99,22 +99,22 @@ class ProfileFtpArgs {
 
   factory ProfileFtpArgs.fromMap(Map<String, dynamic> map) {
     return ProfileFtpArgs(
-      allowActiveMode: map['allowActiveMode'] == null ? null : (map['allowActiveMode'] as String).input(),
-      allowFtps: map['allowFtps'] == null ? null : (map['allowFtps'] as String).input(),
-      appService: map['appService'] == null ? null : (map['appService'] as String).input(),
-      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enforceTlssessionReuse: map['enforceTlssessionReuse'] == null ? null : (map['enforceTlssessionReuse'] as String).input(),
-      ftpsMode: map['ftpsMode'] == null ? null : (map['ftpsMode'] as String).input(),
-      inheritParentProfile: map['inheritParentProfile'] == null ? null : (map['inheritParentProfile'] as String).input(),
-      inheritVlanList: map['inheritVlanList'] == null ? null : (map['inheritVlanList'] as String).input(),
-      logProfile: map['logProfile'] == null ? null : (map['logProfile'] as String).input(),
-      logPublisher: map['logPublisher'] == null ? null : (map['logPublisher'] as String).input(),
+      allowActiveMode: map['allowActiveMode'] == null ? null : (map['allowActiveMode']! as String).input(),
+      allowFtps: map['allowFtps'] == null ? null : (map['allowFtps']! as String).input(),
+      appService: map['appService'] == null ? null : (map['appService']! as String).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enforceTlssessionReuse: map['enforceTlssessionReuse'] == null ? null : (map['enforceTlssessionReuse']! as String).input(),
+      ftpsMode: map['ftpsMode'] == null ? null : (map['ftpsMode']! as String).input(),
+      inheritParentProfile: map['inheritParentProfile'] == null ? null : (map['inheritParentProfile']! as String).input(),
+      inheritVlanList: map['inheritVlanList'] == null ? null : (map['inheritVlanList']! as String).input(),
+      logProfile: map['logProfile'] == null ? null : (map['logProfile']! as String).input(),
+      logPublisher: map['logPublisher'] == null ? null : (map['logPublisher']! as String).input(),
       name: (map['name'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      security: map['security'] == null ? null : (map['security'] as String).input(),
-      translateExtended: map['translateExtended'] == null ? null : (map['translateExtended'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      security: map['security'] == null ? null : (map['security']! as String).input(),
+      translateExtended: map['translateExtended'] == null ? null : (map['translateExtended']! as String).input(),
     );
   }
 }

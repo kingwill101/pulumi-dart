@@ -22,7 +22,7 @@ class DynamicGroupMetadata {
 
   factory DynamicGroupMetadata.fromMap(Map<String, dynamic> map) {
     return DynamicGroupMetadata(
-      queries: map['queries'] == null ? null : (pulumi.Input.decodeList<DynamicGroupQuery>(map['queries'], (value) => DynamicGroupQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queries: map['queries'] == null ? null : (pulumi.Input.decodeList<DynamicGroupQuery>(map['queries']!, (value) => DynamicGroupQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -61,14 +61,14 @@ class OutputArgs {
 
   factory OutputArgs.fromMap(Map<String, dynamic> map) {
     return OutputArgs(
-      datasource: map['datasource'] == null ? null : (AzureDataLakeStoreOutputDataSource.fromMap((map['datasource'] as Map).cast<String, dynamic>())).input(),
+      datasource: map['datasource'] == null ? null : (AzureDataLakeStoreOutputDataSource.fromMap((map['datasource']! as Map).cast<String, dynamic>())).input(),
       jobName: (map['jobName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputName: map['outputName'] == null ? null : (map['outputName'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outputName: map['outputName'] == null ? null : (map['outputName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serialization: map['serialization'] == null ? null : (AvroSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
-      sizeWindow: map['sizeWindow'] == null ? null : (map['sizeWindow'] as int).input(),
-      timeWindow: map['timeWindow'] == null ? null : (map['timeWindow'] as String).input(),
+      serialization: map['serialization'] == null ? null : (AvroSerialization.fromMap((map['serialization']! as Map).cast<String, dynamic>())).input(),
+      sizeWindow: map['sizeWindow'] == null ? null : (map['sizeWindow']! as int).input(),
+      timeWindow: map['timeWindow'] == null ? null : (map['timeWindow']! as String).input(),
     );
   }
 }

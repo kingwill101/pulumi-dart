@@ -26,8 +26,8 @@ class FeatureSettingsAppengineV1beta {
 
   factory FeatureSettingsAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return FeatureSettingsAppengineV1beta(
-      splitHealthChecks: map['splitHealthChecks'] == null ? null : (map['splitHealthChecks'] as bool).input(),
-      useContainerOptimizedOs: map['useContainerOptimizedOs'] == null ? null : (map['useContainerOptimizedOs'] as bool).input(),
+      splitHealthChecks: map['splitHealthChecks'] == null ? null : (map['splitHealthChecks']! as bool).input(),
+      useContainerOptimizedOs: map['useContainerOptimizedOs'] == null ? null : (map['useContainerOptimizedOs']! as bool).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ForNodePatch {
 
   factory ForNodePatch.fromMap(Map<String, dynamic> map) {
     return ForNodePatch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

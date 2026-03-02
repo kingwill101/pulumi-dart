@@ -20,7 +20,7 @@ class DomainDevicesGraphicVncListenerSocket {
 
   factory DomainDevicesGraphicVncListenerSocket.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicVncListenerSocket(
-      socket: map['socket'] == null ? null : (map['socket'] as String).input(),
+      socket: map['socket'] == null ? null : (map['socket']! as String).input(),
     );
   }
 }

@@ -83,16 +83,16 @@ class AutoSnapshotPolicyArgs {
 
   factory AutoSnapshotPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AutoSnapshotPolicyArgs(
-      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : (map['autoSnapshotPolicyName'] as String).input(),
-      copiedSnapshotsRetentionDays: map['copiedSnapshotsRetentionDays'] == null ? null : (map['copiedSnapshotsRetentionDays'] as int).input(),
-      copyEncryptionConfiguration: map['copyEncryptionConfiguration'] == null ? null : (AutoSnapshotPolicyCopyEncryptionConfiguration.fromMap((map['copyEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      enableCrossRegionCopy: map['enableCrossRegionCopy'] == null ? null : (map['enableCrossRegionCopy'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : (map['autoSnapshotPolicyName']! as String).input(),
+      copiedSnapshotsRetentionDays: map['copiedSnapshotsRetentionDays'] == null ? null : (map['copiedSnapshotsRetentionDays']! as int).input(),
+      copyEncryptionConfiguration: map['copyEncryptionConfiguration'] == null ? null : (AutoSnapshotPolicyCopyEncryptionConfiguration.fromMap((map['copyEncryptionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      enableCrossRegionCopy: map['enableCrossRegionCopy'] == null ? null : (map['enableCrossRegionCopy']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       repeatWeekdays: ((map['repeatWeekdays'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       retentionDays: (map['retentionDays'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetCopyRegions: map['targetCopyRegions'] == null ? null : ((map['targetCopyRegions'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetCopyRegions: map['targetCopyRegions'] == null ? null : ((map['targetCopyRegions']! as List).cast<String>()).input(),
       timePoints: ((map['timePoints'] as List).cast<String>()).input(),
     );
   }

@@ -31,7 +31,7 @@ class DicomStoreNotificationConfig {
   factory DicomStoreNotificationConfig.fromMap(Map<String, dynamic> map) {
     return DicomStoreNotificationConfig(
       pubsubTopic: (map['pubsubTopic'] as String).input(),
-      sendForBulkImport: map['sendForBulkImport'] == null ? null : (map['sendForBulkImport'] as bool).input(),
+      sendForBulkImport: map['sendForBulkImport'] == null ? null : (map['sendForBulkImport']! as bool).input(),
     );
   }
 }

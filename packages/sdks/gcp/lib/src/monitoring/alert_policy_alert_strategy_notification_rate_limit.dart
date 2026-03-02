@@ -21,7 +21,7 @@ class AlertPolicyAlertStrategyNotificationRateLimit {
 
   factory AlertPolicyAlertStrategyNotificationRateLimit.fromMap(Map<String, dynamic> map) {
     return AlertPolicyAlertStrategyNotificationRateLimit(
-      period: map['period'] == null ? null : (map['period'] as String).input(),
+      period: map['period'] == null ? null : (map['period']! as String).input(),
     );
   }
 }

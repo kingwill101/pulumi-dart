@@ -53,13 +53,13 @@ class VersionArgs {
 
   factory VersionArgs.fromMap(Map<String, dynamic> map) {
     return VersionArgs(
-      config: map['config'] == null ? null : (ServingConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      config: map['config'] == null ? null : (ServingConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       siteId: (map['siteId'] as String).input(),
-      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes']! as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
     );
   }
 }

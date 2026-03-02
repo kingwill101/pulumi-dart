@@ -86,19 +86,19 @@ class GoogleCloudRunV2RevisionTemplate {
 
   factory GoogleCloudRunV2RevisionTemplate.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2RevisionTemplate(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2Container>(map['containers'], (value) => GoogleCloudRunV2Container.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey'] as String).input(),
-      executionEnvironment: map['executionEnvironment'] == null ? null : (GoogleCloudRunV2RevisionTemplateExecutionEnvironment.fromValue(map['executionEnvironment'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      maxInstanceRequestConcurrency: map['maxInstanceRequestConcurrency'] == null ? null : (map['maxInstanceRequestConcurrency'] as int).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
-      scaling: map['scaling'] == null ? null : (GoogleCloudRunV2RevisionScaling.fromMap((map['scaling'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity'] as bool).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2Volume>(map['volumes'], (value) => GoogleCloudRunV2Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcAccess: map['vpcAccess'] == null ? null : (GoogleCloudRunV2VpcAccess.fromMap((map['vpcAccess'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2Container>(map['containers']!, (value) => GoogleCloudRunV2Container.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey']! as String).input(),
+      executionEnvironment: map['executionEnvironment'] == null ? null : (GoogleCloudRunV2RevisionTemplateExecutionEnvironment.fromValue(map['executionEnvironment']! as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      maxInstanceRequestConcurrency: map['maxInstanceRequestConcurrency'] == null ? null : (map['maxInstanceRequestConcurrency']! as int).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
+      scaling: map['scaling'] == null ? null : (GoogleCloudRunV2RevisionScaling.fromMap((map['scaling']! as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity']! as bool).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2Volume>(map['volumes']!, (value) => GoogleCloudRunV2Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcAccess: map['vpcAccess'] == null ? null : (GoogleCloudRunV2VpcAccess.fromMap((map['vpcAccess']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

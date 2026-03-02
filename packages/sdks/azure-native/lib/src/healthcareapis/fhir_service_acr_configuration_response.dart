@@ -27,8 +27,8 @@ class FhirServiceAcrConfigurationResponse {
 
   factory FhirServiceAcrConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FhirServiceAcrConfigurationResponse(
-      loginServers: map['loginServers'] == null ? null : ((map['loginServers'] as List).cast<String>()).input(),
-      ociArtifacts: map['ociArtifacts'] == null ? null : (pulumi.Input.decodeList<ServiceOciArtifactEntryResponse>(map['ociArtifacts'], (value) => ServiceOciArtifactEntryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loginServers: map['loginServers'] == null ? null : ((map['loginServers']! as List).cast<String>()).input(),
+      ociArtifacts: map['ociArtifacts'] == null ? null : (pulumi.Input.decodeList<ServiceOciArtifactEntryResponse>(map['ociArtifacts']!, (value) => ServiceOciArtifactEntryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ListPrivateStoreStopSellOffersPlansNotificationsResult {
 
   factory ListPrivateStoreStopSellOffersPlansNotificationsResult.fromMap(Map<String, dynamic> map) {
     return ListPrivateStoreStopSellOffersPlansNotificationsResult(
-      stopSellNotifications: map['stopSellNotifications'] == null ? null : pulumi.Input.decodeList<StopSellOffersPlansNotificationsListPropertiesResponse>(map['stopSellNotifications'], (value) => StopSellOffersPlansNotificationsListPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      stopSellNotifications: map['stopSellNotifications'] == null ? null : pulumi.Input.decodeList<StopSellOffersPlansNotificationsListPropertiesResponse>(map['stopSellNotifications']!, (value) => StopSellOffersPlansNotificationsListPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

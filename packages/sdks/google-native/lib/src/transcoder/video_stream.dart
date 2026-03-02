@@ -34,9 +34,9 @@ class VideoStream {
 
   factory VideoStream.fromMap(Map<String, dynamic> map) {
     return VideoStream(
-      h264: map['h264'] == null ? null : (H264CodecSettings.fromMap((map['h264'] as Map).cast<String, dynamic>())).input(),
-      h265: map['h265'] == null ? null : (H265CodecSettings.fromMap((map['h265'] as Map).cast<String, dynamic>())).input(),
-      vp9: map['vp9'] == null ? null : (Vp9CodecSettings.fromMap((map['vp9'] as Map).cast<String, dynamic>())).input(),
+      h264: map['h264'] == null ? null : (H264CodecSettings.fromMap((map['h264']! as Map).cast<String, dynamic>())).input(),
+      h265: map['h265'] == null ? null : (H265CodecSettings.fromMap((map['h265']! as Map).cast<String, dynamic>())).input(),
+      vp9: map['vp9'] == null ? null : (Vp9CodecSettings.fromMap((map['vp9']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

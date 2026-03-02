@@ -72,16 +72,16 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig {
 
   factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig(
-      auditIntervalSeconds: map['auditIntervalSeconds'] == null ? null : (map['auditIntervalSeconds'] as int).input(),
-      constraintViolationLimit: map['constraintViolationLimit'] == null ? null : (map['constraintViolationLimit'] as int).input(),
-      deploymentConfigs: map['deploymentConfigs'] == null ? null : (pulumi.Input.decodeList<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig>(map['deploymentConfigs'], (value) => FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      exemptableNamespaces: map['exemptableNamespaces'] == null ? null : ((map['exemptableNamespaces'] as List).cast<String>()).input(),
+      auditIntervalSeconds: map['auditIntervalSeconds'] == null ? null : (map['auditIntervalSeconds']! as int).input(),
+      constraintViolationLimit: map['constraintViolationLimit'] == null ? null : (map['constraintViolationLimit']! as int).input(),
+      deploymentConfigs: map['deploymentConfigs'] == null ? null : (pulumi.Input.decodeList<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig>(map['deploymentConfigs']!, (value) => FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exemptableNamespaces: map['exemptableNamespaces'] == null ? null : ((map['exemptableNamespaces']! as List).cast<String>()).input(),
       installSpec: (map['installSpec'] as String).input(),
-      logDeniesEnabled: map['logDeniesEnabled'] == null ? null : (map['logDeniesEnabled'] as bool).input(),
-      monitoring: map['monitoring'] == null ? null : (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring.fromMap((map['monitoring'] as Map).cast<String, dynamic>())).input(),
-      mutationEnabled: map['mutationEnabled'] == null ? null : (map['mutationEnabled'] as bool).input(),
-      policyContent: map['policyContent'] == null ? null : (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent.fromMap((map['policyContent'] as Map).cast<String, dynamic>())).input(),
-      referentialRulesEnabled: map['referentialRulesEnabled'] == null ? null : (map['referentialRulesEnabled'] as bool).input(),
+      logDeniesEnabled: map['logDeniesEnabled'] == null ? null : (map['logDeniesEnabled']! as bool).input(),
+      monitoring: map['monitoring'] == null ? null : (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring.fromMap((map['monitoring']! as Map).cast<String, dynamic>())).input(),
+      mutationEnabled: map['mutationEnabled'] == null ? null : (map['mutationEnabled']! as bool).input(),
+      policyContent: map['policyContent'] == null ? null : (FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent.fromMap((map['policyContent']! as Map).cast<String, dynamic>())).input(),
+      referentialRulesEnabled: map['referentialRulesEnabled'] == null ? null : (map['referentialRulesEnabled']! as bool).input(),
     );
   }
 }

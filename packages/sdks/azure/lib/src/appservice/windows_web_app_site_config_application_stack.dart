@@ -113,21 +113,21 @@ class WindowsWebAppSiteConfigApplicationStack {
 
   factory WindowsWebAppSiteConfigApplicationStack.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSiteConfigApplicationStack(
-      currentStack: map['currentStack'] == null ? null : (map['currentStack'] as String).input(),
-      dockerImageName: map['dockerImageName'] == null ? null : (map['dockerImageName'] as String).input(),
-      dockerRegistryPassword: map['dockerRegistryPassword'] == null ? null : (map['dockerRegistryPassword'] as String).input(),
-      dockerRegistryUrl: map['dockerRegistryUrl'] == null ? null : (map['dockerRegistryUrl'] as String).input(),
-      dockerRegistryUsername: map['dockerRegistryUsername'] == null ? null : (map['dockerRegistryUsername'] as String).input(),
-      dotnetCoreVersion: map['dotnetCoreVersion'] == null ? null : (map['dotnetCoreVersion'] as String).input(),
-      dotnetVersion: map['dotnetVersion'] == null ? null : (map['dotnetVersion'] as String).input(),
-      javaContainer: map['javaContainer'] == null ? null : (map['javaContainer'] as String).input(),
-      javaContainerVersion: map['javaContainerVersion'] == null ? null : (map['javaContainerVersion'] as String).input(),
-      javaEmbeddedServerEnabled: map['javaEmbeddedServerEnabled'] == null ? null : (map['javaEmbeddedServerEnabled'] as bool).input(),
-      javaVersion: map['javaVersion'] == null ? null : (map['javaVersion'] as String).input(),
-      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion'] as String).input(),
-      phpVersion: map['phpVersion'] == null ? null : (map['phpVersion'] as String).input(),
-      python: map['python'] == null ? null : (map['python'] as bool).input(),
-      tomcatVersion: map['tomcatVersion'] == null ? null : (map['tomcatVersion'] as String).input(),
+      currentStack: map['currentStack'] == null ? null : (map['currentStack']! as String).input(),
+      dockerImageName: map['dockerImageName'] == null ? null : (map['dockerImageName']! as String).input(),
+      dockerRegistryPassword: map['dockerRegistryPassword'] == null ? null : (map['dockerRegistryPassword']! as String).input(),
+      dockerRegistryUrl: map['dockerRegistryUrl'] == null ? null : (map['dockerRegistryUrl']! as String).input(),
+      dockerRegistryUsername: map['dockerRegistryUsername'] == null ? null : (map['dockerRegistryUsername']! as String).input(),
+      dotnetCoreVersion: map['dotnetCoreVersion'] == null ? null : (map['dotnetCoreVersion']! as String).input(),
+      dotnetVersion: map['dotnetVersion'] == null ? null : (map['dotnetVersion']! as String).input(),
+      javaContainer: map['javaContainer'] == null ? null : (map['javaContainer']! as String).input(),
+      javaContainerVersion: map['javaContainerVersion'] == null ? null : (map['javaContainerVersion']! as String).input(),
+      javaEmbeddedServerEnabled: map['javaEmbeddedServerEnabled'] == null ? null : (map['javaEmbeddedServerEnabled']! as bool).input(),
+      javaVersion: map['javaVersion'] == null ? null : (map['javaVersion']! as String).input(),
+      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion']! as String).input(),
+      phpVersion: map['phpVersion'] == null ? null : (map['phpVersion']! as String).input(),
+      python: map['python'] == null ? null : (map['python']! as bool).input(),
+      tomcatVersion: map['tomcatVersion'] == null ? null : (map['tomcatVersion']! as String).input(),
     );
   }
 }

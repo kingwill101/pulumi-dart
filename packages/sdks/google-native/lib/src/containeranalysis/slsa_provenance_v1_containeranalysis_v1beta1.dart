@@ -26,8 +26,8 @@ class SlsaProvenanceV1ContaineranalysisV1beta1 {
 
   factory SlsaProvenanceV1ContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceV1ContaineranalysisV1beta1(
-      buildDefinition: map['buildDefinition'] == null ? null : (BuildDefinitionContaineranalysisV1beta1.fromMap((map['buildDefinition'] as Map).cast<String, dynamic>())).input(),
-      runDetails: map['runDetails'] == null ? null : (RunDetailsContaineranalysisV1beta1.fromMap((map['runDetails'] as Map).cast<String, dynamic>())).input(),
+      buildDefinition: map['buildDefinition'] == null ? null : (BuildDefinitionContaineranalysisV1beta1.fromMap((map['buildDefinition']! as Map).cast<String, dynamic>())).input(),
+      runDetails: map['runDetails'] == null ? null : (RunDetailsContaineranalysisV1beta1.fromMap((map['runDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

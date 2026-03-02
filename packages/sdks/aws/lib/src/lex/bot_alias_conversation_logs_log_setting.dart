@@ -41,10 +41,10 @@ class BotAliasConversationLogsLogSetting {
   factory BotAliasConversationLogsLogSetting.fromMap(Map<String, dynamic> map) {
     return BotAliasConversationLogsLogSetting(
       destination: (map['destination'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
       logType: (map['logType'] as String).input(),
       resourceArn: (map['resourceArn'] as String).input(),
-      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix'] as String).input(),
+      resourcePrefix: map['resourcePrefix'] == null ? null : ((map['resourcePrefix'] as String).input()).input(),
     );
   }
 }

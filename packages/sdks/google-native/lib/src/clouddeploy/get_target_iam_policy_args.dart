@@ -36,8 +36,8 @@ class GetTargetIamPolicyArgs {
   factory GetTargetIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetIamPolicyArgs(
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       targetId: (map['targetId'] as String).input(),
     );
   }

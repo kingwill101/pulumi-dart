@@ -25,8 +25,8 @@ class HybridMonitorSlsTaskSlsProcessConfigExpress {
 
   factory HybridMonitorSlsTaskSlsProcessConfigExpress.fromMap(Map<String, dynamic> map) {
     return HybridMonitorSlsTaskSlsProcessConfigExpress(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      express: map['express'] == null ? null : (map['express'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      express: map['express'] == null ? null : (map['express']! as String).input(),
     );
   }
 }

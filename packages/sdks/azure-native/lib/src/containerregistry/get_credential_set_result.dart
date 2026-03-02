@@ -70,12 +70,12 @@ class GetCredentialSetResult {
 
   factory GetCredentialSetResult.fromMap(Map<String, dynamic> map) {
     return GetCredentialSetResult(
-      authCredentials: map['authCredentials'] == null ? null : pulumi.Input.decodeList<AuthCredentialResponse>(map['authCredentials'], (value) => AuthCredentialResponse.fromMap((value as Map).cast<String, dynamic>())),
+      authCredentials: map['authCredentials'] == null ? null : pulumi.Input.decodeList<AuthCredentialResponse>(map['authCredentials']!, (value) => AuthCredentialResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
       creationDate: map['creationDate'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityPropertiesResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      loginServer: map['loginServer'] == null ? null : map['loginServer'] as String,
+      identity: map['identity'] == null ? null : IdentityPropertiesResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      loginServer: map['loginServer'] == null ? null : map['loginServer']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

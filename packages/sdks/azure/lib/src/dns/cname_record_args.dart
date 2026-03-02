@@ -56,11 +56,11 @@ class CNameRecordArgs {
 
   factory CNameRecordArgs.fromMap(Map<String, dynamic> map) {
     return CNameRecordArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      record: map['record'] == null ? null : (map['record'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      record: map['record'] == null ? null : (map['record']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
       ttl: (map['ttl'] as int).input(),
       zoneName: (map['zoneName'] as String).input(),
     );

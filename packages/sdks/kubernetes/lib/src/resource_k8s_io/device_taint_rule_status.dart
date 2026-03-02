@@ -31,7 +31,7 @@ class DeviceTaintRuleStatus {
 
   factory DeviceTaintRuleStatus.fromMap(Map<String, dynamic> map) {
     return DeviceTaintRuleStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions']!, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

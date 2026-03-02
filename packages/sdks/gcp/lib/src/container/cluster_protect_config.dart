@@ -26,8 +26,8 @@ class ClusterProtectConfig {
 
   factory ClusterProtectConfig.fromMap(Map<String, dynamic> map) {
     return ClusterProtectConfig(
-      workloadConfig: map['workloadConfig'] == null ? null : (ClusterProtectConfigWorkloadConfig.fromMap((map['workloadConfig'] as Map).cast<String, dynamic>())).input(),
-      workloadVulnerabilityMode: map['workloadVulnerabilityMode'] == null ? null : (map['workloadVulnerabilityMode'] as String).input(),
+      workloadConfig: map['workloadConfig'] == null ? null : (ClusterProtectConfigWorkloadConfig.fromMap((map['workloadConfig']! as Map).cast<String, dynamic>())).input(),
+      workloadVulnerabilityMode: map['workloadVulnerabilityMode'] == null ? null : (map['workloadVulnerabilityMode']! as String).input(),
     );
   }
 }

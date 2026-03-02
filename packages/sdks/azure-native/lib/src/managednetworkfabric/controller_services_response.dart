@@ -26,8 +26,8 @@ class ControllerServicesResponse {
 
   factory ControllerServicesResponse.fromMap(Map<String, dynamic> map) {
     return ControllerServicesResponse(
-      ipv4AddressSpaces: map['ipv4AddressSpaces'] == null ? null : ((map['ipv4AddressSpaces'] as List).cast<String>()).input(),
-      ipv6AddressSpaces: map['ipv6AddressSpaces'] == null ? null : ((map['ipv6AddressSpaces'] as List).cast<String>()).input(),
+      ipv4AddressSpaces: map['ipv4AddressSpaces'] == null ? null : ((map['ipv4AddressSpaces']! as List).cast<String>()).input(),
+      ipv6AddressSpaces: map['ipv6AddressSpaces'] == null ? null : ((map['ipv6AddressSpaces']! as List).cast<String>()).input(),
     );
   }
 }

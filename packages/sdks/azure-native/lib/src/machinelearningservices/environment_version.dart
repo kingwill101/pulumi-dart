@@ -80,18 +80,18 @@ class EnvironmentVersion {
 
   factory EnvironmentVersion.fromMap(Map<String, dynamic> map) {
     return EnvironmentVersion(
-      autoRebuild: map['autoRebuild'] == null ? null : (map['autoRebuild'] as String).input(),
-      build: map['build'] == null ? null : (BuildContext.fromMap((map['build'] as Map).cast<String, dynamic>())).input(),
-      condaFile: map['condaFile'] == null ? null : (map['condaFile'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      inferenceConfig: map['inferenceConfig'] == null ? null : (InferenceContainerProperties.fromMap((map['inferenceConfig'] as Map).cast<String, dynamic>())).input(),
-      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous'] as bool).input(),
-      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      autoRebuild: map['autoRebuild'] == null ? null : (map['autoRebuild']! as String).input(),
+      build: map['build'] == null ? null : (BuildContext.fromMap((map['build']! as Map).cast<String, dynamic>())).input(),
+      condaFile: map['condaFile'] == null ? null : (map['condaFile']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      inferenceConfig: map['inferenceConfig'] == null ? null : (InferenceContainerProperties.fromMap((map['inferenceConfig']! as Map).cast<String, dynamic>())).input(),
+      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous']! as bool).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived']! as bool).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      stage: map['stage'] == null ? null : (map['stage']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

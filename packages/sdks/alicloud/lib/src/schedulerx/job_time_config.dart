@@ -35,9 +35,9 @@ class JobTimeConfig {
 
   factory JobTimeConfig.fromMap(Map<String, dynamic> map) {
     return JobTimeConfig(
-      calendar: map['calendar'] == null ? null : (map['calendar'] as String).input(),
-      dataOffset: map['dataOffset'] == null ? null : (map['dataOffset'] as int).input(),
-      timeExpression: map['timeExpression'] == null ? null : (map['timeExpression'] as String).input(),
+      calendar: map['calendar'] == null ? null : (map['calendar']! as String).input(),
+      dataOffset: map['dataOffset'] == null ? null : (map['dataOffset']! as int).input(),
+      timeExpression: map['timeExpression'] == null ? null : (map['timeExpression']! as String).input(),
       timeType: (map['timeType'] as int).input(),
     );
   }

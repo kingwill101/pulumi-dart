@@ -25,8 +25,8 @@ class ListWebAppFunctionSecretsResult {
 
   factory ListWebAppFunctionSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppFunctionSecretsResult(
-      key: map['key'] == null ? null : map['key'] as String,
-      triggerUrl: map['triggerUrl'] == null ? null : map['triggerUrl'] as String,
+      key: map['key'] == null ? null : map['key']! as String,
+      triggerUrl: map['triggerUrl'] == null ? null : map['triggerUrl']! as String,
     );
   }
 }

@@ -44,11 +44,11 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      cidrEndpointsCustomSubdomain: map['cidrEndpointsCustomSubdomain'] == null ? null : (map['cidrEndpointsCustomSubdomain'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fipsEnabled: map['fipsEnabled'] == null ? null : (map['fipsEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      cidrEndpointsCustomSubdomain: map['cidrEndpointsCustomSubdomain'] == null ? null : ((map['cidrEndpointsCustomSubdomain'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      fipsEnabled: map['fipsEnabled'] == null ? null : ((map['fipsEnabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

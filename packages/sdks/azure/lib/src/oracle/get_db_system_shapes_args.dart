@@ -30,7 +30,7 @@ class GetDbSystemShapesArgs {
   factory GetDbSystemShapesArgs.fromMap(Map<String, dynamic> map) {
     return GetDbSystemShapesArgs(
       location: (map['location'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

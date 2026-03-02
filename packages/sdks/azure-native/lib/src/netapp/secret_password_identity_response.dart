@@ -27,7 +27,7 @@ class SecretPasswordIdentityResponse {
   factory SecretPasswordIdentityResponse.fromMap(Map<String, dynamic> map) {
     return SecretPasswordIdentityResponse(
       principalId: (map['principalId'] as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
     );
   }
 }

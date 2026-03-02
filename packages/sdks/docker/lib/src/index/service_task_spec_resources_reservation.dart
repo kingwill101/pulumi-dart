@@ -31,9 +31,9 @@ class ServiceTaskSpecResourcesReservation {
 
   factory ServiceTaskSpecResourcesReservation.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecResourcesReservation(
-      genericResources: map['genericResources'] == null ? null : (ServiceTaskSpecResourcesReservationGenericResources.fromMap((map['genericResources'] as Map).cast<String, dynamic>())).input(),
-      memoryBytes: map['memoryBytes'] == null ? null : (map['memoryBytes'] as int).input(),
-      nanoCpus: map['nanoCpus'] == null ? null : (map['nanoCpus'] as int).input(),
+      genericResources: map['genericResources'] == null ? null : (ServiceTaskSpecResourcesReservationGenericResources.fromMap((map['genericResources']! as Map).cast<String, dynamic>())).input(),
+      memoryBytes: map['memoryBytes'] == null ? null : (map['memoryBytes']! as int).input(),
+      nanoCpus: map['nanoCpus'] == null ? null : (map['nanoCpus']! as int).input(),
     );
   }
 }

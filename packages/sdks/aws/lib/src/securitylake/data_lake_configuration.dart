@@ -38,10 +38,10 @@ class DataLakeConfiguration {
 
   factory DataLakeConfiguration.fromMap(Map<String, dynamic> map) {
     return DataLakeConfiguration(
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<DataLakeConfigurationEncryptionConfiguration>(map['encryptionConfigurations'], (value) => DataLakeConfigurationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lifecycleConfiguration: map['lifecycleConfiguration'] == null ? null : (DataLakeConfigurationLifecycleConfiguration.fromMap((map['lifecycleConfiguration'] as Map).cast<String, dynamic>())).input(),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : ((pulumi.Input.decodeList<DataLakeConfigurationEncryptionConfiguration>(map['encryptionConfigurations']!, (value) => DataLakeConfigurationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      lifecycleConfiguration: map['lifecycleConfiguration'] == null ? null : ((DataLakeConfigurationLifecycleConfiguration.fromMap((map['lifecycleConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       region: (map['region'] as String).input(),
-      replicationConfiguration: map['replicationConfiguration'] == null ? null : (DataLakeConfigurationReplicationConfiguration.fromMap((map['replicationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      replicationConfiguration: map['replicationConfiguration'] == null ? null : ((DataLakeConfigurationReplicationConfiguration.fromMap((map['replicationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

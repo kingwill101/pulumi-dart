@@ -22,7 +22,7 @@ class CustomServiceTelemetry {
 
   factory CustomServiceTelemetry.fromMap(Map<String, dynamic> map) {
     return CustomServiceTelemetry(
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
     );
   }
 }

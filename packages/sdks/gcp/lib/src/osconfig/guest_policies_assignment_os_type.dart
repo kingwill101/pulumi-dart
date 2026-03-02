@@ -30,9 +30,9 @@ class GuestPoliciesAssignmentOsType {
 
   factory GuestPoliciesAssignmentOsType.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesAssignmentOsType(
-      osArchitecture: map['osArchitecture'] == null ? null : (map['osArchitecture'] as String).input(),
-      osShortName: map['osShortName'] == null ? null : (map['osShortName'] as String).input(),
-      osVersion: map['osVersion'] == null ? null : (map['osVersion'] as String).input(),
+      osArchitecture: map['osArchitecture'] == null ? null : (map['osArchitecture']! as String).input(),
+      osShortName: map['osShortName'] == null ? null : (map['osShortName']! as String).input(),
+      osVersion: map['osVersion'] == null ? null : (map['osVersion']! as String).input(),
     );
   }
 }

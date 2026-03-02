@@ -20,7 +20,7 @@ class DomainDevicesControllerNvme {
 
   factory DomainDevicesControllerNvme.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerNvme(
-      serial: map['serial'] == null ? null : (map['serial'] as String).input(),
+      serial: map['serial'] == null ? null : (map['serial']! as String).input(),
     );
   }
 }

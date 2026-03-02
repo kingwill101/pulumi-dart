@@ -126,9 +126,9 @@ class GetVpcEndpointResult {
     return GetVpcEndpointResult(
       arn: map['arn'] as String,
       cidrBlocks: (map['cidrBlocks'] as List).cast<String>(),
-      dnsEntries: pulumi.Input.decodeList<GetVpcEndpointDnsEntry>(map['dnsEntries'], (value) => GetVpcEndpointDnsEntry.fromMap((value as Map).cast<String, dynamic>())),
-      dnsOptions: pulumi.Input.decodeList<GetVpcEndpointDnsOption>(map['dnsOptions'], (value) => GetVpcEndpointDnsOption.fromMap((value as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcEndpointFilter>(map['filters'], (value) => GetVpcEndpointFilter.fromMap((value as Map).cast<String, dynamic>())),
+      dnsEntries: pulumi.Input.decodeList<GetVpcEndpointDnsEntry>(map['dnsEntries']!, (value) => GetVpcEndpointDnsEntry.fromMap((value as Map).cast<String, dynamic>())),
+      dnsOptions: pulumi.Input.decodeList<GetVpcEndpointDnsOption>(map['dnsOptions']!, (value) => GetVpcEndpointDnsOption.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcEndpointFilter>(map['filters']!, (value) => GetVpcEndpointFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipAddressType: map['ipAddressType'] as String,
       networkInterfaceIds: (map['networkInterfaceIds'] as List).cast<String>(),

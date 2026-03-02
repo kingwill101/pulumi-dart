@@ -21,7 +21,7 @@ class SecurityContext {
 
   factory SecurityContext.fromMap(Map<String, dynamic> map) {
     return SecurityContext(
-      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser']! as int).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class RepoResponse {
 
   factory RepoResponse.fromMap(Map<String, dynamic> map) {
     return RepoResponse(
-      branches: map['branches'] == null ? null : ((map['branches'] as List).cast<String>()).input(),
-      fullName: map['fullName'] == null ? null : (map['fullName'] as String).input(),
-      installationId: map['installationId'] == null ? null : (map['installationId'] as double).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      branches: map['branches'] == null ? null : ((map['branches']! as List).cast<String>()).input(),
+      fullName: map['fullName'] == null ? null : (map['fullName']! as String).input(),
+      installationId: map['installationId'] == null ? null : (map['installationId']! as double).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

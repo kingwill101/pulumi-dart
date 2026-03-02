@@ -51,12 +51,12 @@ class SecurityContactArgs {
 
   factory SecurityContactArgs.fromMap(Map<String, dynamic> map) {
     return SecurityContactArgs(
-      emails: map['emails'] == null ? null : (map['emails'] as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      notificationsByRole: map['notificationsByRole'] == null ? null : (SecurityContactPropertiesNotificationsByRole.fromMap((map['notificationsByRole'] as Map).cast<String, dynamic>())).input(),
-      notificationsSources: map['notificationsSources'] == null ? null : (pulumi.Input.decodeList<NotificationsSourceAlert>(map['notificationsSources'], (value) => NotificationsSourceAlert.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
-      securityContactName: map['securityContactName'] == null ? null : (map['securityContactName'] as String).input(),
+      emails: map['emails'] == null ? null : (map['emails']! as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      notificationsByRole: map['notificationsByRole'] == null ? null : (SecurityContactPropertiesNotificationsByRole.fromMap((map['notificationsByRole']! as Map).cast<String, dynamic>())).input(),
+      notificationsSources: map['notificationsSources'] == null ? null : (pulumi.Input.decodeList<NotificationsSourceAlert>(map['notificationsSources']!, (value) => NotificationsSourceAlert.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
+      securityContactName: map['securityContactName'] == null ? null : (map['securityContactName']! as String).input(),
     );
   }
 }

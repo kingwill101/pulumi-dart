@@ -27,8 +27,8 @@ class DomainFeaturesHyperVTlbFlush {
 
   factory DomainFeaturesHyperVTlbFlush.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVTlbFlush(
-      direct: map['direct'] == null ? null : (DomainFeaturesHyperVTlbFlushDirect.fromMap((map['direct'] as Map).cast<String, dynamic>())).input(),
-      extended: map['extended'] == null ? null : (DomainFeaturesHyperVTlbFlushExtended.fromMap((map['extended'] as Map).cast<String, dynamic>())).input(),
+      direct: map['direct'] == null ? null : (DomainFeaturesHyperVTlbFlushDirect.fromMap((map['direct']! as Map).cast<String, dynamic>())).input(),
+      extended: map['extended'] == null ? null : (DomainFeaturesHyperVTlbFlushExtended.fromMap((map['extended']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

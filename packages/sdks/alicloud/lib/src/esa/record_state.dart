@@ -84,18 +84,18 @@ class RecordState {
 
   factory RecordState.fromMap(Map<String, dynamic> map) {
     return RecordState(
-      authConf: map['authConf'] == null ? null : (RecordAuthConf.fromMap((map['authConf'] as Map).cast<String, dynamic>())).input(),
-      bizName: map['bizName'] == null ? null : (map['bizName'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      data: map['data'] == null ? null : (RecordData.fromMap((map['data'] as Map).cast<String, dynamic>())).input(),
-      hostPolicy: map['hostPolicy'] == null ? null : (map['hostPolicy'] as String).input(),
-      proxied: map['proxied'] == null ? null : (map['proxied'] as bool).input(),
-      recordName: map['recordName'] == null ? null : (map['recordName'] as String).input(),
-      recordType: map['recordType'] == null ? null : (map['recordType'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      authConf: map['authConf'] == null ? null : (RecordAuthConf.fromMap((map['authConf']! as Map).cast<String, dynamic>())).input(),
+      bizName: map['bizName'] == null ? null : (map['bizName']! as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      data: map['data'] == null ? null : (RecordData.fromMap((map['data']! as Map).cast<String, dynamic>())).input(),
+      hostPolicy: map['hostPolicy'] == null ? null : (map['hostPolicy']! as String).input(),
+      proxied: map['proxied'] == null ? null : (map['proxied']! as bool).input(),
+      recordName: map['recordName'] == null ? null : (map['recordName']! as String).input(),
+      recordType: map['recordType'] == null ? null : (map['recordType']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
     );
   }
 }

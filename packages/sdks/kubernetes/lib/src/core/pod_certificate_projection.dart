@@ -75,13 +75,13 @@ class PodCertificateProjection {
 
   factory PodCertificateProjection.fromMap(Map<String, dynamic> map) {
     return PodCertificateProjection(
-      certificateChainPath: map['certificateChainPath'] == null ? null : (map['certificateChainPath'] as String).input(),
-      credentialBundlePath: map['credentialBundlePath'] == null ? null : (map['credentialBundlePath'] as String).input(),
-      keyPath: map['keyPath'] == null ? null : (map['keyPath'] as String).input(),
+      certificateChainPath: map['certificateChainPath'] == null ? null : (map['certificateChainPath']! as String).input(),
+      credentialBundlePath: map['credentialBundlePath'] == null ? null : (map['credentialBundlePath']! as String).input(),
+      keyPath: map['keyPath'] == null ? null : (map['keyPath']! as String).input(),
       keyType: (map['keyType'] as String).input(),
-      maxExpirationSeconds: map['maxExpirationSeconds'] == null ? null : (map['maxExpirationSeconds'] as int).input(),
+      maxExpirationSeconds: map['maxExpirationSeconds'] == null ? null : (map['maxExpirationSeconds']! as int).input(),
       signerName: (map['signerName'] as String).input(),
-      userAnnotations: map['userAnnotations'] == null ? null : ((map['userAnnotations'] as Map).cast<String, String>()).input(),
+      userAnnotations: map['userAnnotations'] == null ? null : ((map['userAnnotations']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -41,7 +41,7 @@ class BlobInventoryPolicyArgs {
   factory BlobInventoryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BlobInventoryPolicyArgs(
       accountName: (map['accountName'] as String).input(),
-      blobInventoryPolicyName: map['blobInventoryPolicyName'] == null ? null : (map['blobInventoryPolicyName'] as String).input(),
+      blobInventoryPolicyName: map['blobInventoryPolicyName'] == null ? null : (map['blobInventoryPolicyName']! as String).input(),
       policy: (BlobInventoryPolicySchema.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

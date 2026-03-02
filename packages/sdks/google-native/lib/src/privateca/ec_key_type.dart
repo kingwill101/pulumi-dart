@@ -22,7 +22,7 @@ class EcKeyType {
 
   factory EcKeyType.fromMap(Map<String, dynamic> map) {
     return EcKeyType(
-      signatureAlgorithm: map['signatureAlgorithm'] == null ? null : (EcKeyTypeSignatureAlgorithm.fromValue(map['signatureAlgorithm'] as String)).input(),
+      signatureAlgorithm: map['signatureAlgorithm'] == null ? null : (EcKeyTypeSignatureAlgorithm.fromValue(map['signatureAlgorithm']! as String)).input(),
     );
   }
 }

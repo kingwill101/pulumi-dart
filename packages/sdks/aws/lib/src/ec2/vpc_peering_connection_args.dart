@@ -70,14 +70,14 @@ class VpcPeeringConnectionArgs {
 
   factory VpcPeeringConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VpcPeeringConnectionArgs(
-      accepter: map['accepter'] == null ? null : (VpcPeeringConnectionAccepter.fromMap((map['accepter'] as Map).cast<String, dynamic>())).input(),
-      autoAccept: map['autoAccept'] == null ? null : (map['autoAccept'] as bool).input(),
-      peerOwnerId: map['peerOwnerId'] == null ? null : (map['peerOwnerId'] as String).input(),
-      peerRegion: map['peerRegion'] == null ? null : (map['peerRegion'] as String).input(),
+      accepter: map['accepter'] == null ? null : ((VpcPeeringConnectionAccepter.fromMap((map['accepter']! as Map).cast<String, dynamic>())).input()).input(),
+      autoAccept: map['autoAccept'] == null ? null : ((map['autoAccept'] as bool).input()).input(),
+      peerOwnerId: map['peerOwnerId'] == null ? null : ((map['peerOwnerId'] as String).input()).input(),
+      peerRegion: map['peerRegion'] == null ? null : ((map['peerRegion'] as String).input()).input(),
       peerVpcId: (map['peerVpcId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requester: map['requester'] == null ? null : (VpcPeeringConnectionRequester.fromMap((map['requester'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requester: map['requester'] == null ? null : ((VpcPeeringConnectionRequester.fromMap((map['requester']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

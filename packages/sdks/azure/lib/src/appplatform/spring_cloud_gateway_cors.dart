@@ -50,13 +50,13 @@ class SpringCloudGatewayCors {
 
   factory SpringCloudGatewayCors.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayCors(
-      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders'] as List).cast<String>()).input(),
-      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods'] as List).cast<String>()).input(),
-      allowedOriginPatterns: map['allowedOriginPatterns'] == null ? null : ((map['allowedOriginPatterns'] as List).cast<String>()).input(),
-      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins'] as List).cast<String>()).input(),
-      credentialsAllowed: map['credentialsAllowed'] == null ? null : (map['credentialsAllowed'] as bool).input(),
-      exposedHeaders: map['exposedHeaders'] == null ? null : ((map['exposedHeaders'] as List).cast<String>()).input(),
-      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : (map['maxAgeSeconds'] as int).input(),
+      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders']! as List).cast<String>()).input(),
+      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods']! as List).cast<String>()).input(),
+      allowedOriginPatterns: map['allowedOriginPatterns'] == null ? null : ((map['allowedOriginPatterns']! as List).cast<String>()).input(),
+      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins']! as List).cast<String>()).input(),
+      credentialsAllowed: map['credentialsAllowed'] == null ? null : (map['credentialsAllowed']! as bool).input(),
+      exposedHeaders: map['exposedHeaders'] == null ? null : ((map['exposedHeaders']! as List).cast<String>()).input(),
+      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : (map['maxAgeSeconds']! as int).input(),
     );
   }
 }

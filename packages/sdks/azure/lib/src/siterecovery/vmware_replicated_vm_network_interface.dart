@@ -42,9 +42,9 @@ class VmwareReplicatedVmNetworkInterface {
     return VmwareReplicatedVmNetworkInterface(
       isPrimary: (map['isPrimary'] as bool).input(),
       sourceMacAddress: (map['sourceMacAddress'] as String).input(),
-      targetStaticIp: map['targetStaticIp'] == null ? null : (map['targetStaticIp'] as String).input(),
-      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName'] as String).input(),
-      testSubnetName: map['testSubnetName'] == null ? null : (map['testSubnetName'] as String).input(),
+      targetStaticIp: map['targetStaticIp'] == null ? null : (map['targetStaticIp']! as String).input(),
+      targetSubnetName: map['targetSubnetName'] == null ? null : (map['targetSubnetName']! as String).input(),
+      testSubnetName: map['testSubnetName'] == null ? null : (map['testSubnetName']! as String).input(),
     );
   }
 }

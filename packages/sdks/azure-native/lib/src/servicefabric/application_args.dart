@@ -73,16 +73,16 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
       clusterName: (map['clusterName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedIdentities: map['managedIdentities'] == null ? null : (pulumi.Input.decodeList<ApplicationUserAssignedIdentity>(map['managedIdentities'], (value) => ApplicationUserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      identity: map['identity'] == null ? null : (ManagedIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedIdentities: map['managedIdentities'] == null ? null : (pulumi.Input.decodeList<ApplicationUserAssignedIdentity>(map['managedIdentities']!, (value) => ApplicationUserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      upgradePolicy: map['upgradePolicy'] == null ? null : (ApplicationUpgradePolicy.fromMap((map['upgradePolicy'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      upgradePolicy: map['upgradePolicy'] == null ? null : (ApplicationUpgradePolicy.fromMap((map['upgradePolicy']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -53,13 +53,13 @@ class AlertSchedule {
 
   factory AlertSchedule.fromMap(Map<String, dynamic> map) {
     return AlertSchedule(
-      cronExpression: map['cronExpression'] == null ? null : (map['cronExpression'] as String).input(),
-      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek'] as int).input(),
-      delay: map['delay'] == null ? null : (map['delay'] as int).input(),
-      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      runImmediately: map['runImmediately'] == null ? null : (map['runImmediately'] as bool).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      cronExpression: map['cronExpression'] == null ? null : (map['cronExpression']! as String).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek']! as int).input(),
+      delay: map['delay'] == null ? null : (map['delay']! as int).input(),
+      hour: map['hour'] == null ? null : (map['hour']! as int).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
+      runImmediately: map['runImmediately'] == null ? null : (map['runImmediately']! as bool).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -22,7 +22,7 @@ class OsProfileResponse {
 
   factory OsProfileResponse.fromMap(Map<String, dynamic> map) {
     return OsProfileResponse(
-      linuxOperatingSystemProfile: map['linuxOperatingSystemProfile'] == null ? null : (LinuxOperatingSystemProfileResponse.fromMap((map['linuxOperatingSystemProfile'] as Map).cast<String, dynamic>())).input(),
+      linuxOperatingSystemProfile: map['linuxOperatingSystemProfile'] == null ? null : (LinuxOperatingSystemProfileResponse.fromMap((map['linuxOperatingSystemProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

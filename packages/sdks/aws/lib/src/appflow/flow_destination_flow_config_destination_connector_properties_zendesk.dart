@@ -32,10 +32,10 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk {
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk(
-      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>())).input(),
-      idFieldNames: map['idFieldNames'] == null ? null : ((map['idFieldNames'] as List).cast<String>()).input(),
+      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig.fromMap((map['errorHandlingConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      idFieldNames: map['idFieldNames'] == null ? null : (((map['idFieldNames'] as List).cast<String>()).input()).input(),
       object: (map['object'] as String).input(),
-      writeOperationType: map['writeOperationType'] == null ? null : (map['writeOperationType'] as String).input(),
+      writeOperationType: map['writeOperationType'] == null ? null : ((map['writeOperationType'] as String).input()).input(),
     );
   }
 }

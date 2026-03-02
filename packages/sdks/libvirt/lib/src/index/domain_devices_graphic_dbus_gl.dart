@@ -25,8 +25,8 @@ class DomainDevicesGraphicDbusGl {
 
   factory DomainDevicesGraphicDbusGl.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicDbusGl(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
-      renderNode: map['renderNode'] == null ? null : (map['renderNode'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
+      renderNode: map['renderNode'] == null ? null : (map['renderNode']! as String).input(),
     );
   }
 }

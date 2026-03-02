@@ -27,8 +27,8 @@ class SyncGroupSchemaTableResponse {
 
   factory SyncGroupSchemaTableResponse.fromMap(Map<String, dynamic> map) {
     return SyncGroupSchemaTableResponse(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<SyncGroupSchemaTableColumnResponse>(map['columns'], (value) => SyncGroupSchemaTableColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      quotedName: map['quotedName'] == null ? null : (map['quotedName'] as String).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<SyncGroupSchemaTableColumnResponse>(map['columns']!, (value) => SyncGroupSchemaTableColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      quotedName: map['quotedName'] == null ? null : (map['quotedName']! as String).input(),
     );
   }
 }

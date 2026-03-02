@@ -27,8 +27,8 @@ class ApplicationGateway {
 
   factory ApplicationGateway.fromMap(Map<String, dynamic> map) {
     return ApplicationGateway(
-      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendAddressPool>(map['backendAddressPools'], (value) => ApplicationGatewayBackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendAddressPool>(map['backendAddressPools']!, (value) => ApplicationGatewayBackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

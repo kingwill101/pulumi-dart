@@ -42,7 +42,7 @@ class MongoUserDefinitionArgs {
   factory MongoUserDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return MongoUserDefinitionArgs(
       cosmosMongoDatabaseId: (map['cosmosMongoDatabaseId'] as String).input(),
-      inheritedRoleNames: map['inheritedRoleNames'] == null ? null : ((map['inheritedRoleNames'] as List).cast<String>()).input(),
+      inheritedRoleNames: map['inheritedRoleNames'] == null ? null : ((map['inheritedRoleNames']! as List).cast<String>()).input(),
       password: (map['password'] as String).input(),
       username: (map['username'] as String).input(),
     );

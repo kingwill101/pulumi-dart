@@ -33,9 +33,9 @@ class VpnServerConfigurationRadius {
 
   factory VpnServerConfigurationRadius.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigurationRadius(
-      clientRootCertificates: map['clientRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationRadiusClientRootCertificate>(map['clientRootCertificates'], (value) => VpnServerConfigurationRadiusClientRootCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serverRootCertificates: map['serverRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationRadiusServerRootCertificate>(map['serverRootCertificates'], (value) => VpnServerConfigurationRadiusServerRootCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationRadiusServer>(map['servers'], (value) => VpnServerConfigurationRadiusServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientRootCertificates: map['clientRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationRadiusClientRootCertificate>(map['clientRootCertificates']!, (value) => VpnServerConfigurationRadiusClientRootCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serverRootCertificates: map['serverRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationRadiusServerRootCertificate>(map['serverRootCertificates']!, (value) => VpnServerConfigurationRadiusServerRootCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationRadiusServer>(map['servers']!, (value) => VpnServerConfigurationRadiusServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

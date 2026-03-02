@@ -27,8 +27,8 @@ class SubscriptionRetryPolicy {
 
   factory SubscriptionRetryPolicy.fromMap(Map<String, dynamic> map) {
     return SubscriptionRetryPolicy(
-      maximumBackoff: map['maximumBackoff'] == null ? null : (map['maximumBackoff'] as String).input(),
-      minimumBackoff: map['minimumBackoff'] == null ? null : (map['minimumBackoff'] as String).input(),
+      maximumBackoff: map['maximumBackoff'] == null ? null : (map['maximumBackoff']! as String).input(),
+      minimumBackoff: map['minimumBackoff'] == null ? null : (map['minimumBackoff']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class FunctionOutputResponse {
 
   factory FunctionOutputResponse.fromMap(Map<String, dynamic> map) {
     return FunctionOutputResponse(
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
     );
   }
 }

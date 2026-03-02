@@ -32,7 +32,7 @@ class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent
     return ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation(
       bucketArn: (map['bucketArn'] as String).input(),
       fileKey: (map['fileKey'] as String).input(),
-      objectVersion: map['objectVersion'] == null ? null : (map['objectVersion'] as String).input(),
+      objectVersion: map['objectVersion'] == null ? null : ((map['objectVersion'] as String).input()).input(),
     );
   }
 }

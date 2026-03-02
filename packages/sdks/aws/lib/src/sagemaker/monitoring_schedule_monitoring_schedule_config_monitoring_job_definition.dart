@@ -67,15 +67,15 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition {
 
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition(
-      baseline: map['baseline'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline.fromMap((map['baseline'] as Map).cast<String, dynamic>())).input(),
-      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
-      monitoringAppSpecification: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification.fromMap((map['monitoringAppSpecification'] as Map).cast<String, dynamic>())).input(),
-      monitoringInputs: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs.fromMap((map['monitoringInputs'] as Map).cast<String, dynamic>())).input(),
-      monitoringOutputConfig: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfig.fromMap((map['monitoringOutputConfig'] as Map).cast<String, dynamic>())).input(),
-      monitoringResources: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResources.fromMap((map['monitoringResources'] as Map).cast<String, dynamic>())).input(),
-      networkConfig: map['networkConfig'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
+      baseline: map['baseline'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaseline.fromMap((map['baseline']! as Map).cast<String, dynamic>())).input()).input(),
+      environment: map['environment'] == null ? null : (((map['environment'] as Map).cast<String, String>()).input()).input(),
+      monitoringAppSpecification: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification.fromMap((map['monitoringAppSpecification']! as Map).cast<String, dynamic>())).input(),
+      monitoringInputs: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs.fromMap((map['monitoringInputs']! as Map).cast<String, dynamic>())).input(),
+      monitoringOutputConfig: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfig.fromMap((map['monitoringOutputConfig']! as Map).cast<String, dynamic>())).input(),
+      monitoringResources: (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResources.fromMap((map['monitoringResources']! as Map).cast<String, dynamic>())).input(),
+      networkConfig: map['networkConfig'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      stoppingConditions: map['stoppingConditions'] == null ? null : (pulumi.Input.decodeList<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition>(map['stoppingConditions'], (value) => MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stoppingConditions: map['stoppingConditions'] == null ? null : ((pulumi.Input.decodeList<MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition>(map['stoppingConditions']!, (value) => MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

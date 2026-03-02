@@ -58,14 +58,14 @@ class LoadBalancerBackendAddressResponse {
 
   factory LoadBalancerBackendAddressResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressResponse(
-      adminState: map['adminState'] == null ? null : (map['adminState'] as String).input(),
+      adminState: map['adminState'] == null ? null : (map['adminState']! as String).input(),
       inboundNatRulesPortMapping: (pulumi.Input.decodeList<NatRulePortMappingResponse>(map['inboundNatRulesPortMapping'], (value) => NatRulePortMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      loadBalancerFrontendIPConfiguration: map['loadBalancerFrontendIPConfiguration'] == null ? null : (SubResourceResponse.fromMap((map['loadBalancerFrontendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      loadBalancerFrontendIPConfiguration: map['loadBalancerFrontendIPConfiguration'] == null ? null : (SubResourceResponse.fromMap((map['loadBalancerFrontendIPConfiguration']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkInterfaceIPConfiguration: (SubResourceResponse.fromMap((map['networkInterfaceIPConfiguration'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (SubResourceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
-      virtualNetwork: map['virtualNetwork'] == null ? null : (SubResourceResponse.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (SubResourceResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
+      virtualNetwork: map['virtualNetwork'] == null ? null : (SubResourceResponse.fromMap((map['virtualNetwork']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

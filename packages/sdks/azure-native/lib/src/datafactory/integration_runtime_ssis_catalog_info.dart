@@ -42,11 +42,11 @@ class IntegrationRuntimeSsisCatalogInfo {
 
   factory IntegrationRuntimeSsisCatalogInfo.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisCatalogInfo(
-      catalogAdminPassword: map['catalogAdminPassword'] == null ? null : (SecureString.fromMap((map['catalogAdminPassword'] as Map).cast<String, dynamic>())).input(),
-      catalogAdminUserName: map['catalogAdminUserName'] == null ? null : (map['catalogAdminUserName'] as String).input(),
-      catalogPricingTier: map['catalogPricingTier'] == null ? null : (map['catalogPricingTier'] as String).input(),
-      catalogServerEndpoint: map['catalogServerEndpoint'] == null ? null : (map['catalogServerEndpoint'] as String).input(),
-      dualStandbyPairName: map['dualStandbyPairName'] == null ? null : (map['dualStandbyPairName'] as String).input(),
+      catalogAdminPassword: map['catalogAdminPassword'] == null ? null : (SecureString.fromMap((map['catalogAdminPassword']! as Map).cast<String, dynamic>())).input(),
+      catalogAdminUserName: map['catalogAdminUserName'] == null ? null : (map['catalogAdminUserName']! as String).input(),
+      catalogPricingTier: map['catalogPricingTier'] == null ? null : (map['catalogPricingTier']! as String).input(),
+      catalogServerEndpoint: map['catalogServerEndpoint'] == null ? null : (map['catalogServerEndpoint']! as String).input(),
+      dualStandbyPairName: map['dualStandbyPairName'] == null ? null : (map['dualStandbyPairName']! as String).input(),
     );
   }
 }

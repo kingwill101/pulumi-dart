@@ -27,8 +27,8 @@ class WireGroupWireWireProperty {
 
   factory WireGroupWireWireProperty.fromMap(Map<String, dynamic> map) {
     return WireGroupWireWireProperty(
-      bandwidthUnmetered: map['bandwidthUnmetered'] == null ? null : (map['bandwidthUnmetered'] as int).input(),
-      faultResponse: map['faultResponse'] == null ? null : (map['faultResponse'] as String).input(),
+      bandwidthUnmetered: map['bandwidthUnmetered'] == null ? null : (map['bandwidthUnmetered']! as int).input(),
+      faultResponse: map['faultResponse'] == null ? null : (map['faultResponse']! as String).input(),
     );
   }
 }

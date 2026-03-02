@@ -21,7 +21,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceCookies {
 
   factory DomainDevicesDiskMirrorBackingStoreSourceCookies.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceCookies(
-      cookies: map['cookies'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceCookiesCookie>(map['cookies'], (value) => DomainDevicesDiskMirrorBackingStoreSourceCookiesCookie.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cookies: map['cookies'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceCookiesCookie>(map['cookies']!, (value) => DomainDevicesDiskMirrorBackingStoreSourceCookiesCookie.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

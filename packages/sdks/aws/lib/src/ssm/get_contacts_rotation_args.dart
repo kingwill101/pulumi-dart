@@ -30,7 +30,7 @@ class GetContactsRotationArgs {
   factory GetContactsRotationArgs.fromMap(Map<String, dynamic> map) {
     return GetContactsRotationArgs(
       arn: (map['arn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

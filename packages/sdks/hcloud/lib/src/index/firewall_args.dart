@@ -41,10 +41,10 @@ class FirewallArgs {
 
   factory FirewallArgs.fromMap(Map<String, dynamic> map) {
     return FirewallArgs(
-      applyTos: map['applyTos'] == null ? null : (pulumi.Input.decodeList<FirewallApplyTo>(map['applyTos'], (value) => FirewallApplyTo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallRule>(map['rules'], (value) => FirewallRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applyTos: map['applyTos'] == null ? null : (pulumi.Input.decodeList<FirewallApplyTo>(map['applyTos']!, (value) => FirewallApplyTo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallRule>(map['rules']!, (value) => FirewallRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

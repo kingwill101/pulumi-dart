@@ -38,10 +38,10 @@ class JobProperties {
 
   factory JobProperties.fromMap(Map<String, dynamic> map) {
     return JobProperties(
-      action: map['action'] == null ? null : (JobAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      recurrence: map['recurrence'] == null ? null : (JobRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      state: map['state'] == null ? null : (JobState.fromValue(map['state'] as String)).input(),
+      action: map['action'] == null ? null : (JobAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      recurrence: map['recurrence'] == null ? null : (JobRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      state: map['state'] == null ? null : (JobState.fromValue(map['state']! as String)).input(),
     );
   }
 }

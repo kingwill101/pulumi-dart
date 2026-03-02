@@ -45,11 +45,11 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       properties: (DeploymentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

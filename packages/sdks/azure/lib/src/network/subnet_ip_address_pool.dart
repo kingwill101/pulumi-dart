@@ -32,7 +32,7 @@ class SubnetIpAddressPool {
 
   factory SubnetIpAddressPool.fromMap(Map<String, dynamic> map) {
     return SubnetIpAddressPool(
-      allocatedIpAddressPrefixes: map['allocatedIpAddressPrefixes'] == null ? null : ((map['allocatedIpAddressPrefixes'] as List).cast<String>()).input(),
+      allocatedIpAddressPrefixes: map['allocatedIpAddressPrefixes'] == null ? null : ((map['allocatedIpAddressPrefixes']! as List).cast<String>()).input(),
       id: (map['id'] as String).input(),
       numberOfIpAddresses: (map['numberOfIpAddresses'] as String).input(),
     );

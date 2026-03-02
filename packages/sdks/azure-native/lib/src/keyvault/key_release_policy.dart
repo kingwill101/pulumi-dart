@@ -25,8 +25,8 @@ class KeyReleasePolicy {
 
   factory KeyReleasePolicy.fromMap(Map<String, dynamic> map) {
     return KeyReleasePolicy(
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
     );
   }
 }

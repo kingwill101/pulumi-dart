@@ -21,7 +21,7 @@ class EphemeralStorageLocalSsdConfig {
 
   factory EphemeralStorageLocalSsdConfig.fromMap(Map<String, dynamic> map) {
     return EphemeralStorageLocalSsdConfig(
-      localSsdCount: map['localSsdCount'] == null ? null : (map['localSsdCount'] as int).input(),
+      localSsdCount: map['localSsdCount'] == null ? null : (map['localSsdCount']! as int).input(),
     );
   }
 }

@@ -38,10 +38,10 @@ class DiJobTableMappingSourceObjectSelectionRule {
 
   factory DiJobTableMappingSourceObjectSelectionRule.fromMap(Map<String, dynamic> map) {
     return DiJobTableMappingSourceObjectSelectionRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      expressionType: map['expressionType'] == null ? null : (map['expressionType'] as String).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      expressionType: map['expressionType'] == null ? null : (map['expressionType']! as String).input(),
+      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
     );
   }
 }

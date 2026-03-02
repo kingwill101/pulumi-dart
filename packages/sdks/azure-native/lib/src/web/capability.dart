@@ -31,9 +31,9 @@ class Capability {
 
   factory Capability.fromMap(Map<String, dynamic> map) {
     return Capability(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

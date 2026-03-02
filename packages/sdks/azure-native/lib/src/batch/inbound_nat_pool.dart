@@ -52,7 +52,7 @@ class InboundNatPool {
       frontendPortRangeEnd: (map['frontendPortRangeEnd'] as int).input(),
       frontendPortRangeStart: (map['frontendPortRangeStart'] as int).input(),
       name: (map['name'] as String).input(),
-      networkSecurityGroupRules: map['networkSecurityGroupRules'] == null ? null : (pulumi.Input.decodeList<NetworkSecurityGroupRule>(map['networkSecurityGroupRules'], (value) => NetworkSecurityGroupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkSecurityGroupRules: map['networkSecurityGroupRules'] == null ? null : (pulumi.Input.decodeList<NetworkSecurityGroupRule>(map['networkSecurityGroupRules']!, (value) => NetworkSecurityGroupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       protocol: (InboundEndpointProtocol.fromValue(map['protocol'] as String)).input(),
     );
   }

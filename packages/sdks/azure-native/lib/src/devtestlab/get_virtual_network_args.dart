@@ -39,7 +39,7 @@ class GetVirtualNetworkArgs {
 
   factory GetVirtualNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       labName: (map['labName'] as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

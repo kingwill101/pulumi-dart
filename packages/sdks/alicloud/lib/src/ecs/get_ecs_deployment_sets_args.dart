@@ -44,11 +44,11 @@ class GetEcsDeploymentSetsArgs {
 
   factory GetEcsDeploymentSetsArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsDeploymentSetsArgs(
-      deploymentSetName: map['deploymentSetName'] == null ? null : (map['deploymentSetName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
+      deploymentSetName: map['deploymentSetName'] == null ? null : (map['deploymentSetName']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy']! as String).input(),
     );
   }
 }

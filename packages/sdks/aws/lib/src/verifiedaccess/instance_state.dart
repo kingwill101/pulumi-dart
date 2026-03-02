@@ -65,16 +65,16 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      cidrEndpointsCustomSubdomain: map['cidrEndpointsCustomSubdomain'] == null ? null : (map['cidrEndpointsCustomSubdomain'] as String).input(),
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fipsEnabled: map['fipsEnabled'] == null ? null : (map['fipsEnabled'] as bool).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
-      nameServers: map['nameServers'] == null ? null : ((map['nameServers'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      verifiedAccessTrustProviders: map['verifiedAccessTrustProviders'] == null ? null : (pulumi.Input.decodeList<InstanceVerifiedAccessTrustProvider>(map['verifiedAccessTrustProviders'], (value) => InstanceVerifiedAccessTrustProvider.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cidrEndpointsCustomSubdomain: map['cidrEndpointsCustomSubdomain'] == null ? null : ((map['cidrEndpointsCustomSubdomain'] as String).input()).input(),
+      creationTime: map['creationTime'] == null ? null : ((map['creationTime'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      fipsEnabled: map['fipsEnabled'] == null ? null : ((map['fipsEnabled'] as bool).input()).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : ((map['lastUpdatedTime'] as String).input()).input(),
+      nameServers: map['nameServers'] == null ? null : (((map['nameServers'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      verifiedAccessTrustProviders: map['verifiedAccessTrustProviders'] == null ? null : ((pulumi.Input.decodeList<InstanceVerifiedAccessTrustProvider>(map['verifiedAccessTrustProviders']!, (value) => InstanceVerifiedAccessTrustProvider.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class StackEnsembleSettings {
 
   factory StackEnsembleSettings.fromMap(Map<String, dynamic> map) {
     return StackEnsembleSettings(
-      stackMetaLearnerKWargs: map['stackMetaLearnerKWargs'] == null ? null : (map['stackMetaLearnerKWargs']).input(),
-      stackMetaLearnerTrainPercentage: map['stackMetaLearnerTrainPercentage'] == null ? null : (map['stackMetaLearnerTrainPercentage'] as double).input(),
-      stackMetaLearnerType: map['stackMetaLearnerType'] == null ? null : (map['stackMetaLearnerType'] as String).input(),
+      stackMetaLearnerKWargs: map['stackMetaLearnerKWargs'] == null ? null : (map['stackMetaLearnerKWargs']!).input(),
+      stackMetaLearnerTrainPercentage: map['stackMetaLearnerTrainPercentage'] == null ? null : (map['stackMetaLearnerTrainPercentage']! as double).input(),
+      stackMetaLearnerType: map['stackMetaLearnerType'] == null ? null : (map['stackMetaLearnerType']! as String).input(),
     );
   }
 }

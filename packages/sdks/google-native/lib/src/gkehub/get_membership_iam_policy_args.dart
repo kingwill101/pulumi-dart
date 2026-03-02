@@ -37,8 +37,8 @@ class GetMembershipIamPolicyArgs {
     return GetMembershipIamPolicyArgs(
       location: (map['location'] as String).input(),
       membershipId: (map['membershipId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

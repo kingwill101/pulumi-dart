@@ -26,8 +26,8 @@ class GooglePrivacyDlpV2DiscoveryStartingLocation {
 
   factory GooglePrivacyDlpV2DiscoveryStartingLocation.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryStartingLocation(
-      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
-      organizationId: map['organizationId'] == null ? null : (map['organizationId'] as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId']! as String).input(),
+      organizationId: map['organizationId'] == null ? null : (map['organizationId']! as String).input(),
     );
   }
 }

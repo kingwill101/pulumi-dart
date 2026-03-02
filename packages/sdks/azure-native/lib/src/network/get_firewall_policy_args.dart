@@ -34,7 +34,7 @@ class GetFirewallPolicyArgs {
 
   factory GetFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       firewallPolicyName: (map['firewallPolicyName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

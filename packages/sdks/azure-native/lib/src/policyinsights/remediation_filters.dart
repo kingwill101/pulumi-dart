@@ -26,8 +26,8 @@ class RemediationFilters {
 
   factory RemediationFilters.fromMap(Map<String, dynamic> map) {
     return RemediationFilters(
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      resourceIds: map['resourceIds'] == null ? null : ((map['resourceIds'] as List).cast<String>()).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      resourceIds: map['resourceIds'] == null ? null : ((map['resourceIds']! as List).cast<String>()).input(),
     );
   }
 }

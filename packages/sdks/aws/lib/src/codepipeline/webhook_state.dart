@@ -73,17 +73,17 @@ class WebhookState {
 
   factory WebhookState.fromMap(Map<String, dynamic> map) {
     return WebhookState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      authentication: map['authentication'] == null ? null : (map['authentication'] as String).input(),
-      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : (WebhookAuthenticationConfiguration.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<WebhookFilter>(map['filters'], (value) => WebhookFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      targetAction: map['targetAction'] == null ? null : (map['targetAction'] as String).input(),
-      targetPipeline: map['targetPipeline'] == null ? null : (map['targetPipeline'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      authentication: map['authentication'] == null ? null : ((map['authentication'] as String).input()).input(),
+      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : ((WebhookAuthenticationConfiguration.fromMap((map['authenticationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<WebhookFilter>(map['filters']!, (value) => WebhookFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      targetAction: map['targetAction'] == null ? null : ((map['targetAction'] as String).input()).input(),
+      targetPipeline: map['targetPipeline'] == null ? null : ((map['targetPipeline'] as String).input()).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
     );
   }
 }

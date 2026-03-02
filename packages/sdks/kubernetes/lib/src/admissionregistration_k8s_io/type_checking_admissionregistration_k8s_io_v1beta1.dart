@@ -22,7 +22,7 @@ class TypeCheckingAdmissionregistrationK8sIoV1beta1 {
 
   factory TypeCheckingAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return TypeCheckingAdmissionregistrationK8sIoV1beta1(
-      expressionWarnings: map['expressionWarnings'] == null ? null : (pulumi.Input.decodeList<ExpressionWarningAdmissionregistrationK8sIoV1beta1>(map['expressionWarnings'], (value) => ExpressionWarningAdmissionregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expressionWarnings: map['expressionWarnings'] == null ? null : (pulumi.Input.decodeList<ExpressionWarningAdmissionregistrationK8sIoV1beta1>(map['expressionWarnings']!, (value) => ExpressionWarningAdmissionregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

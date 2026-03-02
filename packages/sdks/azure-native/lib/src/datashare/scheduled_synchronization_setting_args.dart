@@ -60,7 +60,7 @@ class ScheduledSynchronizationSettingArgs {
       recurrenceInterval: (map['recurrenceInterval'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       shareName: (map['shareName'] as String).input(),
-      synchronizationSettingName: map['synchronizationSettingName'] == null ? null : (map['synchronizationSettingName'] as String).input(),
+      synchronizationSettingName: map['synchronizationSettingName'] == null ? null : (map['synchronizationSettingName']! as String).input(),
       synchronizationTime: (map['synchronizationTime'] as String).input(),
     );
   }

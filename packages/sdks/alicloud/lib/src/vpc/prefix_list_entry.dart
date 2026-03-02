@@ -25,8 +25,8 @@ class PrefixListEntry {
 
   factory PrefixListEntry.fromMap(Map<String, dynamic> map) {
     return PrefixListEntry(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

@@ -83,15 +83,15 @@ class CustomizableConnectorUiConfigResponse {
 
   factory CustomizableConnectorUiConfigResponse.fromMap(Map<String, dynamic> map) {
     return CustomizableConnectorUiConfigResponse(
-      availability: map['availability'] == null ? null : (ConnectorDefinitionsAvailabilityResponse.fromMap((map['availability'] as Map).cast<String, dynamic>())).input(),
+      availability: map['availability'] == null ? null : (ConnectorDefinitionsAvailabilityResponse.fromMap((map['availability']! as Map).cast<String, dynamic>())).input(),
       connectivityCriteria: (pulumi.Input.decodeList<ConnectivityCriterionResponse>(map['connectivityCriteria'], (value) => ConnectivityCriterionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dataTypes: (pulumi.Input.decodeList<ConnectorDataTypeResponse>(map['dataTypes'], (value) => ConnectorDataTypeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       descriptionMarkdown: (map['descriptionMarkdown'] as String).input(),
       graphQueries: (pulumi.Input.decodeList<GraphQueryResponse>(map['graphQueries'], (value) => GraphQueryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       instructionSteps: (pulumi.Input.decodeList<InstructionStepResponse>(map['instructionSteps'], (value) => InstructionStepResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isConnectivityCriteriasMatchSome: map['isConnectivityCriteriasMatchSome'] == null ? null : (map['isConnectivityCriteriasMatchSome'] as bool).input(),
-      logo: map['logo'] == null ? null : (map['logo'] as String).input(),
+      isConnectivityCriteriasMatchSome: map['isConnectivityCriteriasMatchSome'] == null ? null : (map['isConnectivityCriteriasMatchSome']! as bool).input(),
+      logo: map['logo'] == null ? null : (map['logo']! as String).input(),
       permissions: (ConnectorDefinitionsPermissionsResponse.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
       publisher: (map['publisher'] as String).input(),
       title: (map['title'] as String).input(),

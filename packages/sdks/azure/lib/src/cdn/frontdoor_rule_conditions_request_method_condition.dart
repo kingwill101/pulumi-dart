@@ -31,8 +31,8 @@ class FrontdoorRuleConditionsRequestMethodCondition {
   factory FrontdoorRuleConditionsRequestMethodCondition.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleConditionsRequestMethodCondition(
       matchValues: ((map['matchValues'] as List).cast<String>()).input(),
-      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition']! as bool).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
     );
   }
 }

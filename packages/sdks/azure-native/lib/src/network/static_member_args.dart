@@ -47,8 +47,8 @@ class StaticMemberArgs {
       networkGroupName: (map['networkGroupName'] as String).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      staticMemberName: map['staticMemberName'] == null ? null : (map['staticMemberName'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      staticMemberName: map['staticMemberName'] == null ? null : (map['staticMemberName']! as String).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class RetentionConfigurationArgs {
 
   factory RetentionConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return RetentionConfigurationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       retentionPeriodInDays: (map['retentionPeriodInDays'] as int).input(),
     );
   }

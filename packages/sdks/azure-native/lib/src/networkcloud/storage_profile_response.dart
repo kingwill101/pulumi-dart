@@ -27,7 +27,7 @@ class StorageProfileResponse {
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
       osDisk: (OsDiskResponse.fromMap((map['osDisk'] as Map).cast<String, dynamic>())).input(),
-      volumeAttachments: map['volumeAttachments'] == null ? null : ((map['volumeAttachments'] as List).cast<String>()).input(),
+      volumeAttachments: map['volumeAttachments'] == null ? null : ((map['volumeAttachments']! as List).cast<String>()).input(),
     );
   }
 }

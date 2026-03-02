@@ -30,9 +30,9 @@ class ActivityLogAlertCriteriaResourceHealth {
 
   factory ActivityLogAlertCriteriaResourceHealth.fromMap(Map<String, dynamic> map) {
     return ActivityLogAlertCriteriaResourceHealth(
-      currents: map['currents'] == null ? null : ((map['currents'] as List).cast<String>()).input(),
-      previouses: map['previouses'] == null ? null : ((map['previouses'] as List).cast<String>()).input(),
-      reasons: map['reasons'] == null ? null : ((map['reasons'] as List).cast<String>()).input(),
+      currents: map['currents'] == null ? null : ((map['currents']! as List).cast<String>()).input(),
+      previouses: map['previouses'] == null ? null : ((map['previouses']! as List).cast<String>()).input(),
+      reasons: map['reasons'] == null ? null : ((map['reasons']! as List).cast<String>()).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class DiskInstanceAttachmentArgs {
 
   factory DiskInstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return DiskInstanceAttachmentArgs(
-      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance'] as String).input(),
+      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance']! as String).input(),
       diskId: (map['diskId'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
     );

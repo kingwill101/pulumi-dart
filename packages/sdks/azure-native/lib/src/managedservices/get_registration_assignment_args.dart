@@ -34,7 +34,7 @@ class GetRegistrationAssignmentArgs {
 
   factory GetRegistrationAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistrationAssignmentArgs(
-      expandRegistrationDefinition: map['expandRegistrationDefinition'] == null ? null : (map['expandRegistrationDefinition'] as bool).input(),
+      expandRegistrationDefinition: map['expandRegistrationDefinition'] == null ? null : (map['expandRegistrationDefinition']! as bool).input(),
       registrationAssignmentId: (map['registrationAssignmentId'] as String).input(),
       scope: (map['scope'] as String).input(),
     );

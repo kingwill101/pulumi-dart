@@ -110,23 +110,23 @@ class BatchPredictionJobArgs {
 
   factory BatchPredictionJobArgs.fromMap(Map<String, dynamic> map) {
     return BatchPredictionJobArgs(
-      dedicatedResources: map['dedicatedResources'] == null ? null : (GoogleCloudAiplatformV1BatchDedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())).input(),
-      disableContainerLogging: map['disableContainerLogging'] == null ? null : (map['disableContainerLogging'] as bool).input(),
+      dedicatedResources: map['dedicatedResources'] == null ? null : (GoogleCloudAiplatformV1BatchDedicatedResources.fromMap((map['dedicatedResources']! as Map).cast<String, dynamic>())).input(),
+      disableContainerLogging: map['disableContainerLogging'] == null ? null : (map['disableContainerLogging']! as bool).input(),
       displayName: (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      explanationSpec: map['explanationSpec'] == null ? null : (GoogleCloudAiplatformV1ExplanationSpec.fromMap((map['explanationSpec'] as Map).cast<String, dynamic>())).input(),
-      generateExplanation: map['generateExplanation'] == null ? null : (map['generateExplanation'] as bool).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      explanationSpec: map['explanationSpec'] == null ? null : (GoogleCloudAiplatformV1ExplanationSpec.fromMap((map['explanationSpec']! as Map).cast<String, dynamic>())).input(),
+      generateExplanation: map['generateExplanation'] == null ? null : (map['generateExplanation']! as bool).input(),
       inputConfig: (GoogleCloudAiplatformV1BatchPredictionJobInputConfig.fromMap((map['inputConfig'] as Map).cast<String, dynamic>())).input(),
-      instanceConfig: map['instanceConfig'] == null ? null : (GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig.fromMap((map['instanceConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      manualBatchTuningParameters: map['manualBatchTuningParameters'] == null ? null : (GoogleCloudAiplatformV1ManualBatchTuningParameters.fromMap((map['manualBatchTuningParameters'] as Map).cast<String, dynamic>())).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      modelParameters: map['modelParameters'] == null ? null : (map['modelParameters']).input(),
+      instanceConfig: map['instanceConfig'] == null ? null : (GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig.fromMap((map['instanceConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      manualBatchTuningParameters: map['manualBatchTuningParameters'] == null ? null : (GoogleCloudAiplatformV1ManualBatchTuningParameters.fromMap((map['manualBatchTuningParameters']! as Map).cast<String, dynamic>())).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      modelParameters: map['modelParameters'] == null ? null : (map['modelParameters']!).input(),
       outputConfig: (GoogleCloudAiplatformV1BatchPredictionJobOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      unmanagedContainerModel: map['unmanagedContainerModel'] == null ? null : (GoogleCloudAiplatformV1UnmanagedContainerModel.fromMap((map['unmanagedContainerModel'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      unmanagedContainerModel: map['unmanagedContainerModel'] == null ? null : (GoogleCloudAiplatformV1UnmanagedContainerModel.fromMap((map['unmanagedContainerModel']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

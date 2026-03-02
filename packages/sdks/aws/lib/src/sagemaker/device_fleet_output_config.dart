@@ -25,7 +25,7 @@ class DeviceFleetOutputConfig {
 
   factory DeviceFleetOutputConfig.fromMap(Map<String, dynamic> map) {
     return DeviceFleetOutputConfig(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
       s3OutputLocation: (map['s3OutputLocation'] as String).input(),
     );
   }

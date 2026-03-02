@@ -42,11 +42,11 @@ class BucketLifecycleConfigurationV2RuleFilter {
 
   factory BucketLifecycleConfigurationV2RuleFilter.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationV2RuleFilter(
-      and: map['and'] == null ? null : (BucketLifecycleConfigurationV2RuleFilterAnd.fromMap((map['and'] as Map).cast<String, dynamic>())).input(),
-      objectSizeGreaterThan: map['objectSizeGreaterThan'] == null ? null : (map['objectSizeGreaterThan'] as int).input(),
-      objectSizeLessThan: map['objectSizeLessThan'] == null ? null : (map['objectSizeLessThan'] as int).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      tag: map['tag'] == null ? null : (BucketLifecycleConfigurationV2RuleFilterTag.fromMap((map['tag'] as Map).cast<String, dynamic>())).input(),
+      and: map['and'] == null ? null : ((BucketLifecycleConfigurationV2RuleFilterAnd.fromMap((map['and']! as Map).cast<String, dynamic>())).input()).input(),
+      objectSizeGreaterThan: map['objectSizeGreaterThan'] == null ? null : ((map['objectSizeGreaterThan'] as int).input()).input(),
+      objectSizeLessThan: map['objectSizeLessThan'] == null ? null : ((map['objectSizeLessThan'] as int).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      tag: map['tag'] == null ? null : ((BucketLifecycleConfigurationV2RuleFilterTag.fromMap((map['tag']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

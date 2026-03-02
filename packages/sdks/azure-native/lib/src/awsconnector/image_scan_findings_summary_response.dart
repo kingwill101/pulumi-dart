@@ -31,9 +31,9 @@ class ImageScanFindingsSummaryResponse {
 
   factory ImageScanFindingsSummaryResponse.fromMap(Map<String, dynamic> map) {
     return ImageScanFindingsSummaryResponse(
-      findingSeverityCounts: map['findingSeverityCounts'] == null ? null : ((map['findingSeverityCounts'] as Map).cast<String, int>()).input(),
-      imageScanCompletedAt: map['imageScanCompletedAt'] == null ? null : (map['imageScanCompletedAt'] as String).input(),
-      vulnerabilitySourceUpdatedAt: map['vulnerabilitySourceUpdatedAt'] == null ? null : (map['vulnerabilitySourceUpdatedAt'] as String).input(),
+      findingSeverityCounts: map['findingSeverityCounts'] == null ? null : ((map['findingSeverityCounts']! as Map).cast<String, int>()).input(),
+      imageScanCompletedAt: map['imageScanCompletedAt'] == null ? null : (map['imageScanCompletedAt']! as String).input(),
+      vulnerabilitySourceUpdatedAt: map['vulnerabilitySourceUpdatedAt'] == null ? null : (map['vulnerabilitySourceUpdatedAt']! as String).input(),
     );
   }
 }

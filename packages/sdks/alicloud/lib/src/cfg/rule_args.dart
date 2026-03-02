@@ -111,24 +111,24 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      configRuleTriggerTypes: map['configRuleTriggerTypes'] == null ? null : (map['configRuleTriggerTypes'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      excludeResourceIdsScope: map['excludeResourceIdsScope'] == null ? null : (map['excludeResourceIdsScope'] as String).input(),
-      inputParameters: map['inputParameters'] == null ? null : ((map['inputParameters'] as Map).cast<String, String>()).input(),
-      maximumExecutionFrequency: map['maximumExecutionFrequency'] == null ? null : (map['maximumExecutionFrequency'] as String).input(),
-      regionIdsScope: map['regionIdsScope'] == null ? null : (map['regionIdsScope'] as String).input(),
-      resourceGroupIdsScope: map['resourceGroupIdsScope'] == null ? null : (map['resourceGroupIdsScope'] as String).input(),
-      resourceTypesScopes: map['resourceTypesScopes'] == null ? null : ((map['resourceTypesScopes'] as List).cast<String>()).input(),
+      configRuleTriggerTypes: map['configRuleTriggerTypes'] == null ? null : (map['configRuleTriggerTypes']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      excludeResourceIdsScope: map['excludeResourceIdsScope'] == null ? null : (map['excludeResourceIdsScope']! as String).input(),
+      inputParameters: map['inputParameters'] == null ? null : ((map['inputParameters']! as Map).cast<String, String>()).input(),
+      maximumExecutionFrequency: map['maximumExecutionFrequency'] == null ? null : (map['maximumExecutionFrequency']! as String).input(),
+      regionIdsScope: map['regionIdsScope'] == null ? null : (map['regionIdsScope']! as String).input(),
+      resourceGroupIdsScope: map['resourceGroupIdsScope'] == null ? null : (map['resourceGroupIdsScope']! as String).input(),
+      resourceTypesScopes: map['resourceTypesScopes'] == null ? null : ((map['resourceTypesScopes']! as List).cast<String>()).input(),
       riskLevel: (map['riskLevel'] as int).input(),
       ruleName: (map['ruleName'] as String).input(),
-      scopeComplianceResourceTypes: map['scopeComplianceResourceTypes'] == null ? null : (map['scopeComplianceResourceTypes'] as String).input(),
-      sourceDetailMessageType: map['sourceDetailMessageType'] == null ? null : (map['sourceDetailMessageType'] as String).input(),
+      scopeComplianceResourceTypes: map['scopeComplianceResourceTypes'] == null ? null : (map['scopeComplianceResourceTypes']! as String).input(),
+      sourceDetailMessageType: map['sourceDetailMessageType'] == null ? null : (map['sourceDetailMessageType']! as String).input(),
       sourceIdentifier: (map['sourceIdentifier'] as String).input(),
-      sourceMaximumExecutionFrequency: map['sourceMaximumExecutionFrequency'] == null ? null : (map['sourceMaximumExecutionFrequency'] as String).input(),
+      sourceMaximumExecutionFrequency: map['sourceMaximumExecutionFrequency'] == null ? null : (map['sourceMaximumExecutionFrequency']! as String).input(),
       sourceOwner: (map['sourceOwner'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tagKeyScope: map['tagKeyScope'] == null ? null : (map['tagKeyScope'] as String).input(),
-      tagValueScope: map['tagValueScope'] == null ? null : (map['tagValueScope'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tagKeyScope: map['tagKeyScope'] == null ? null : (map['tagKeyScope']! as String).input(),
+      tagValueScope: map['tagValueScope'] == null ? null : (map['tagValueScope']! as String).input(),
     );
   }
 }

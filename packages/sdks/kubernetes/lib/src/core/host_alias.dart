@@ -26,7 +26,7 @@ class HostAlias {
 
   factory HostAlias.fromMap(Map<String, dynamic> map) {
     return HostAlias(
-      hostnames: map['hostnames'] == null ? null : ((map['hostnames'] as List).cast<String>()).input(),
+      hostnames: map['hostnames'] == null ? null : ((map['hostnames']! as List).cast<String>()).input(),
       ip: (map['ip'] as String).input(),
     );
   }

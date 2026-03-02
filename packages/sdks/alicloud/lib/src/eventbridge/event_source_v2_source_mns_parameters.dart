@@ -30,9 +30,9 @@ class EventSourceV2SourceMnsParameters {
 
   factory EventSourceV2SourceMnsParameters.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceMnsParameters(
-      isBase64Decode: map['isBase64Decode'] == null ? null : (map['isBase64Decode'] as bool).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      isBase64Decode: map['isBase64Decode'] == null ? null : (map['isBase64Decode']! as bool).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class XssMatchSetXssMatchTuple {
 
   factory XssMatchSetXssMatchTuple.fromMap(Map<String, dynamic> map) {
     return XssMatchSetXssMatchTuple(
-      fieldToMatch: (XssMatchSetXssMatchTupleFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      fieldToMatch: (XssMatchSetXssMatchTupleFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input(),
       textTransformation: (map['textTransformation'] as String).input(),
     );
   }

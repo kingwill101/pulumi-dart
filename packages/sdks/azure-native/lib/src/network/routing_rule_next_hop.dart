@@ -26,7 +26,7 @@ class RoutingRuleNextHop {
 
   factory RoutingRuleNextHop.fromMap(Map<String, dynamic> map) {
     return RoutingRuleNextHop(
-      nextHopAddress: map['nextHopAddress'] == null ? null : (map['nextHopAddress'] as String).input(),
+      nextHopAddress: map['nextHopAddress'] == null ? null : (map['nextHopAddress']! as String).input(),
       nextHopType: (map['nextHopType'] as String).input(),
     );
   }

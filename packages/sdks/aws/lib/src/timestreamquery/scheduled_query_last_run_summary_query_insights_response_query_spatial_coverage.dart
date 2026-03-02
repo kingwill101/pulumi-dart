@@ -21,7 +21,7 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage {
 
   factory ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage(
-      maxes: map['maxes'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis>(map['maxes'], (value) => ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxes: map['maxes'] == null ? null : ((pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis>(map['maxes']!, (value) => ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

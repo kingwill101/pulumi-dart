@@ -52,13 +52,13 @@ class IpSetState {
 
   factory IpSetState.fromMap(Map<String, dynamic> map) {
     return IpSetState(
-      accelerateRegionId: map['accelerateRegionId'] == null ? null : (map['accelerateRegionId'] as String).input(),
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      ipAddressLists: map['ipAddressLists'] == null ? null : ((map['ipAddressLists'] as List).cast<String>()).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      ispType: map['ispType'] == null ? null : (map['ispType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accelerateRegionId: map['accelerateRegionId'] == null ? null : (map['accelerateRegionId']! as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      ipAddressLists: map['ipAddressLists'] == null ? null : ((map['ipAddressLists']! as List).cast<String>()).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      ispType: map['ispType'] == null ? null : (map['ispType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

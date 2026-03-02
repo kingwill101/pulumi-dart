@@ -51,13 +51,13 @@ class LinkArgs {
 
   factory LinkArgs.fromMap(Map<String, dynamic> map) {
     return LinkArgs(
-      bigqueryDataset: map['bigqueryDataset'] == null ? null : ((map['bigqueryDataset'] as Map).cast<String, dynamic>()).input(),
+      bigqueryDataset: map['bigqueryDataset'] == null ? null : ((map['bigqueryDataset']! as Map).cast<String, dynamic>()).input(),
       bucketId: (map['bucketId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       linkId: (map['linkId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -54,12 +54,12 @@ class GetGroupsResult {
     return GetGroupsResult(
       groups: pulumi.Input.decodeList<GetGroupsGroup>(map['groups'], (value) => GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      policyName: map['policyName'] == null ? null : map['policyName'] as String,
-      policyType: map['policyType'] == null ? null : map['policyType'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      policyName: map['policyName'] == null ? null : map['policyName']! as String,
+      policyType: map['policyType'] == null ? null : map['policyType']! as String,
+      userName: map['userName'] == null ? null : map['userName']! as String,
     );
   }
 }

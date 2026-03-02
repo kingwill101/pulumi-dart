@@ -26,7 +26,7 @@ class PlanWorkflowStepExecutionApprovalConfig {
   factory PlanWorkflowStepExecutionApprovalConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepExecutionApprovalConfig(
       approvalRole: (map['approvalRole'] as String).input(),
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : ((map['timeoutMinutes'] as int).input()).input(),
     );
   }
 }

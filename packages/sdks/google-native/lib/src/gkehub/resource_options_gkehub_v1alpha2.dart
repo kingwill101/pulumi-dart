@@ -31,9 +31,9 @@ class ResourceOptionsGkehubV1alpha2 {
 
   factory ResourceOptionsGkehubV1alpha2.fromMap(Map<String, dynamic> map) {
     return ResourceOptionsGkehubV1alpha2(
-      connectVersion: map['connectVersion'] == null ? null : (map['connectVersion'] as String).input(),
-      k8sVersion: map['k8sVersion'] == null ? null : (map['k8sVersion'] as String).input(),
-      v1beta1Crd: map['v1beta1Crd'] == null ? null : (map['v1beta1Crd'] as bool).input(),
+      connectVersion: map['connectVersion'] == null ? null : (map['connectVersion']! as String).input(),
+      k8sVersion: map['k8sVersion'] == null ? null : (map['k8sVersion']! as String).input(),
+      v1beta1Crd: map['v1beta1Crd'] == null ? null : (map['v1beta1Crd']! as bool).input(),
     );
   }
 }

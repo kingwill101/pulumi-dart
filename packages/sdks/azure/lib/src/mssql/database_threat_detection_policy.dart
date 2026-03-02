@@ -50,13 +50,13 @@ class DatabaseThreatDetectionPolicy {
 
   factory DatabaseThreatDetectionPolicy.fromMap(Map<String, dynamic> map) {
     return DatabaseThreatDetectionPolicy(
-      disabledAlerts: map['disabledAlerts'] == null ? null : ((map['disabledAlerts'] as List).cast<String>()).input(),
-      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : (map['emailAccountAdmins'] as String).input(),
-      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
-      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
+      disabledAlerts: map['disabledAlerts'] == null ? null : ((map['disabledAlerts']! as List).cast<String>()).input(),
+      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : (map['emailAccountAdmins']! as String).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses']! as List).cast<String>()).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey']! as String).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint']! as String).input(),
     );
   }
 }

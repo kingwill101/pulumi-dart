@@ -89,20 +89,20 @@ class SiteCertificateArgs {
 
   factory SiteCertificateArgs.fromMap(Map<String, dynamic> map) {
     return SiteCertificateArgs(
-      canonicalName: map['canonicalName'] == null ? null : (map['canonicalName'] as String).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
-      domainValidationMethod: map['domainValidationMethod'] == null ? null : (map['domainValidationMethod'] as String).input(),
-      hostNames: map['hostNames'] == null ? null : ((map['hostNames'] as List).cast<String>()).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      canonicalName: map['canonicalName'] == null ? null : (map['canonicalName']! as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
+      domainValidationMethod: map['domainValidationMethod'] == null ? null : (map['domainValidationMethod']! as String).input(),
+      hostNames: map['hostNames'] == null ? null : ((map['hostNames']! as List).cast<String>()).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      pfxBlob: map['pfxBlob'] == null ? null : (map['pfxBlob'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      pfxBlob: map['pfxBlob'] == null ? null : (map['pfxBlob']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverFarmId: map['serverFarmId'] == null ? null : (map['serverFarmId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      serverFarmId: map['serverFarmId'] == null ? null : (map['serverFarmId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

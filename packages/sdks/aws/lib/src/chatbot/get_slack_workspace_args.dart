@@ -29,7 +29,7 @@ class GetSlackWorkspaceArgs {
 
   factory GetSlackWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetSlackWorkspaceArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       slackTeamName: (map['slackTeamName'] as String).input(),
     );
   }

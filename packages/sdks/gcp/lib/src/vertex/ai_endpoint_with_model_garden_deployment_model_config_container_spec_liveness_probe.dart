@@ -79,15 +79,15 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe {
 
   factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe(
-      exec: map['exec'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      grpc: map['grpc'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc.fromMap((map['grpc'] as Map).cast<String, dynamic>())).input(),
-      httpGet: map['httpGet'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
-      tcpSocket: map['tcpSocket'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      exec: map['exec'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExec.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      grpc: map['grpc'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpc.fromMap((map['grpc']! as Map).cast<String, dynamic>())).input(),
+      httpGet: map['httpGet'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGet.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as int).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocket.fromMap((map['tcpSocket']! as Map).cast<String, dynamic>())).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

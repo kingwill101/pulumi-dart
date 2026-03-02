@@ -21,7 +21,7 @@ class ClusterStateEnumValueResponse {
 
   factory ClusterStateEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ClusterStateEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

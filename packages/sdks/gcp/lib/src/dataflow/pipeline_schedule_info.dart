@@ -32,9 +32,9 @@ class PipelineScheduleInfo {
 
   factory PipelineScheduleInfo.fromMap(Map<String, dynamic> map) {
     return PipelineScheduleInfo(
-      nextJobTime: map['nextJobTime'] == null ? null : (map['nextJobTime'] as String).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      nextJobTime: map['nextJobTime'] == null ? null : (map['nextJobTime']! as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

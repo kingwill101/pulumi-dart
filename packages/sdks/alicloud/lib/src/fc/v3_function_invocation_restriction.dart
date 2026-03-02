@@ -30,9 +30,9 @@ class V3FunctionInvocationRestriction {
 
   factory V3FunctionInvocationRestriction.fromMap(Map<String, dynamic> map) {
     return V3FunctionInvocationRestriction(
-      disable: map['disable'] == null ? null : (map['disable'] as bool).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      disable: map['disable'] == null ? null : (map['disable']! as bool).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

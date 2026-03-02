@@ -37,7 +37,7 @@ class InstancePropertiesResponse {
 
   factory InstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InstancePropertiesResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       schemaRegistryRef: (SchemaRegistryRefResponse.fromMap((map['schemaRegistryRef'] as Map).cast<String, dynamic>())).input(),
       version: (map['version'] as String).input(),

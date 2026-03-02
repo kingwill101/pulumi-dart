@@ -25,8 +25,8 @@ class ClusterMultiRegionProperties {
 
   factory ClusterMultiRegionProperties.fromMap(Map<String, dynamic> map) {
     return ClusterMultiRegionProperties(
-      clusters: map['clusters'] == null ? null : ((map['clusters'] as List).cast<String>()).input(),
-      witnessRegion: map['witnessRegion'] == null ? null : (map['witnessRegion'] as String).input(),
+      clusters: map['clusters'] == null ? null : (((map['clusters'] as List).cast<String>()).input()).input(),
+      witnessRegion: map['witnessRegion'] == null ? null : ((map['witnessRegion'] as String).input()).input(),
     );
   }
 }

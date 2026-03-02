@@ -33,9 +33,9 @@ class AutonomousDatabasePropertiesConnectionStringAllConnectionString {
 
   factory AutonomousDatabasePropertiesConnectionStringAllConnectionString.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabasePropertiesConnectionStringAllConnectionString(
-      high: map['high'] == null ? null : (map['high'] as String).input(),
-      low: map['low'] == null ? null : (map['low'] as String).input(),
-      medium: map['medium'] == null ? null : (map['medium'] as String).input(),
+      high: map['high'] == null ? null : (map['high']! as String).input(),
+      low: map['low'] == null ? null : (map['low']! as String).input(),
+      medium: map['medium'] == null ? null : (map['medium']! as String).input(),
     );
   }
 }

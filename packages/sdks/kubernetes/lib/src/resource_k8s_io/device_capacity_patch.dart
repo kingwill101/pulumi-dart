@@ -33,8 +33,8 @@ class DeviceCapacityPatch {
 
   factory DeviceCapacityPatch.fromMap(Map<String, dynamic> map) {
     return DeviceCapacityPatch(
-      requestPolicy: map['requestPolicy'] == null ? null : (CapacityRequestPolicyPatch.fromMap((map['requestPolicy'] as Map).cast<String, dynamic>())).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      requestPolicy: map['requestPolicy'] == null ? null : (CapacityRequestPolicyPatch.fromMap((map['requestPolicy']! as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

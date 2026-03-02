@@ -67,13 +67,13 @@ class PipelineDestination {
 
   factory PipelineDestination.fromMap(Map<String, dynamic> map) {
     return PipelineDestination(
-      authenticationConfig: map['authenticationConfig'] == null ? null : (PipelineDestinationAuthenticationConfig.fromMap((map['authenticationConfig'] as Map).cast<String, dynamic>())).input(),
-      httpEndpoint: map['httpEndpoint'] == null ? null : (PipelineDestinationHttpEndpoint.fromMap((map['httpEndpoint'] as Map).cast<String, dynamic>())).input(),
-      messageBus: map['messageBus'] == null ? null : (map['messageBus'] as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (PipelineDestinationNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      outputPayloadFormat: map['outputPayloadFormat'] == null ? null : (PipelineDestinationOutputPayloadFormat.fromMap((map['outputPayloadFormat'] as Map).cast<String, dynamic>())).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
-      workflow: map['workflow'] == null ? null : (map['workflow'] as String).input(),
+      authenticationConfig: map['authenticationConfig'] == null ? null : (PipelineDestinationAuthenticationConfig.fromMap((map['authenticationConfig']! as Map).cast<String, dynamic>())).input(),
+      httpEndpoint: map['httpEndpoint'] == null ? null : (PipelineDestinationHttpEndpoint.fromMap((map['httpEndpoint']! as Map).cast<String, dynamic>())).input(),
+      messageBus: map['messageBus'] == null ? null : (map['messageBus']! as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (PipelineDestinationNetworkConfig.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input(),
+      outputPayloadFormat: map['outputPayloadFormat'] == null ? null : (PipelineDestinationOutputPayloadFormat.fromMap((map['outputPayloadFormat']! as Map).cast<String, dynamic>())).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      workflow: map['workflow'] == null ? null : (map['workflow']! as String).input(),
     );
   }
 }

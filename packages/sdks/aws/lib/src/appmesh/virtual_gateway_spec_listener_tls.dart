@@ -32,9 +32,9 @@ class VirtualGatewaySpecListenerTls {
 
   factory VirtualGatewaySpecListenerTls.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerTls(
-      certificate: (VirtualGatewaySpecListenerTlsCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
+      certificate: (VirtualGatewaySpecListenerTlsCertificate.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input(),
       mode: (map['mode'] as String).input(),
-      validation: map['validation'] == null ? null : (VirtualGatewaySpecListenerTlsValidation.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
+      validation: map['validation'] == null ? null : ((VirtualGatewaySpecListenerTlsValidation.fromMap((map['validation']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

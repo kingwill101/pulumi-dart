@@ -46,10 +46,10 @@ class BuildArgs {
 
   factory BuildArgs.fromMap(Map<String, dynamic> map) {
     return BuildArgs(
-      buildName: map['buildName'] == null ? null : (map['buildName'] as String).input(),
+      buildName: map['buildName'] == null ? null : (map['buildName']! as String).input(),
       builderName: (map['builderName'] as String).input(),
-      configuration: map['configuration'] == null ? null : (BuildConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      destinationContainerRegistry: map['destinationContainerRegistry'] == null ? null : (ContainerRegistryWithCustomImage.fromMap((map['destinationContainerRegistry'] as Map).cast<String, dynamic>())).input(),
+      configuration: map['configuration'] == null ? null : (BuildConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      destinationContainerRegistry: map['destinationContainerRegistry'] == null ? null : (ContainerRegistryWithCustomImage.fromMap((map['destinationContainerRegistry']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

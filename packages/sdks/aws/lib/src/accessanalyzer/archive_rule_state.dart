@@ -37,10 +37,10 @@ class ArchiveRuleState {
 
   factory ArchiveRuleState.fromMap(Map<String, dynamic> map) {
     return ArchiveRuleState(
-      analyzerName: map['analyzerName'] == null ? null : (map['analyzerName'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<ArchiveRuleFilter>(map['filters'], (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      analyzerName: map['analyzerName'] == null ? null : ((map['analyzerName'] as String).input()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<ArchiveRuleFilter>(map['filters']!, (value) => ArchiveRuleFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleName: map['ruleName'] == null ? null : ((map['ruleName'] as String).input()).input(),
     );
   }
 }

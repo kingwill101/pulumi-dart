@@ -69,15 +69,15 @@ class BackupScheduleState {
 
   factory BackupScheduleState.fromMap(Map<String, dynamic> map) {
     return BackupScheduleState(
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (BackupScheduleEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      fullBackupSpec: map['fullBackupSpec'] == null ? null : ((map['fullBackupSpec'] as Map).cast<String, dynamic>()).input(),
-      incrementalBackupSpec: map['incrementalBackupSpec'] == null ? null : ((map['incrementalBackupSpec'] as Map).cast<String, dynamic>()).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      retentionDuration: map['retentionDuration'] == null ? null : (map['retentionDuration'] as String).input(),
-      spec: map['spec'] == null ? null : (BackupScheduleSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (BackupScheduleEncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      fullBackupSpec: map['fullBackupSpec'] == null ? null : ((map['fullBackupSpec']! as Map).cast<String, dynamic>()).input(),
+      incrementalBackupSpec: map['incrementalBackupSpec'] == null ? null : ((map['incrementalBackupSpec']! as Map).cast<String, dynamic>()).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      retentionDuration: map['retentionDuration'] == null ? null : (map['retentionDuration']! as String).input(),
+      spec: map['spec'] == null ? null : (BackupScheduleSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

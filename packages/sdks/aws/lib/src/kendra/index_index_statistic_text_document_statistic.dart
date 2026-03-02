@@ -25,8 +25,8 @@ class IndexIndexStatisticTextDocumentStatistic {
 
   factory IndexIndexStatisticTextDocumentStatistic.fromMap(Map<String, dynamic> map) {
     return IndexIndexStatisticTextDocumentStatistic(
-      indexedTextBytes: map['indexedTextBytes'] == null ? null : (map['indexedTextBytes'] as int).input(),
-      indexedTextDocumentsCount: map['indexedTextDocumentsCount'] == null ? null : (map['indexedTextDocumentsCount'] as int).input(),
+      indexedTextBytes: map['indexedTextBytes'] == null ? null : ((map['indexedTextBytes'] as int).input()).input(),
+      indexedTextDocumentsCount: map['indexedTextDocumentsCount'] == null ? null : ((map['indexedTextDocumentsCount'] as int).input()).input(),
     );
   }
 }

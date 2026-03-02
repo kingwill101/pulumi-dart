@@ -25,8 +25,8 @@ class DomainDevicesHostdevSubsysScsiHostSource {
 
   factory DomainDevicesHostdevSubsysScsiHostSource.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysScsiHostSource(
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      wwpn: map['wwpn'] == null ? null : (map['wwpn'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      wwpn: map['wwpn'] == null ? null : (map['wwpn']! as String).input(),
     );
   }
 }

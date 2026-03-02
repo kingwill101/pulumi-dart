@@ -21,7 +21,7 @@ class AddressResponse {
 
   factory AddressResponse.fromMap(Map<String, dynamic> map) {
     return AddressResponse(
-      addressDefinition: map['addressDefinition'] == null ? null : (map['addressDefinition'] as String).input(),
+      addressDefinition: map['addressDefinition'] == null ? null : (map['addressDefinition']! as String).input(),
     );
   }
 }

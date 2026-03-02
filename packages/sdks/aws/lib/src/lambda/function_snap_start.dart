@@ -26,7 +26,7 @@ class FunctionSnapStart {
   factory FunctionSnapStart.fromMap(Map<String, dynamic> map) {
     return FunctionSnapStart(
       applyOn: (map['applyOn'] as String).input(),
-      optimizationStatus: map['optimizationStatus'] == null ? null : (map['optimizationStatus'] as String).input(),
+      optimizationStatus: map['optimizationStatus'] == null ? null : ((map['optimizationStatus'] as String).input()).input(),
     );
   }
 }

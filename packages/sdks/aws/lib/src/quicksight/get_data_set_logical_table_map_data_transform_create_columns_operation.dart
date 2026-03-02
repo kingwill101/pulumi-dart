@@ -20,7 +20,7 @@ class GetDataSetLogicalTableMapDataTransformCreateColumnsOperation {
 
   factory GetDataSetLogicalTableMapDataTransformCreateColumnsOperation.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformCreateColumnsOperation(
-      columns: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn>(map['columns'], (value) => GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn>(map['columns']!, (value) => GetDataSetLogicalTableMapDataTransformCreateColumnsOperationColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -104,23 +104,23 @@ class JobTemplateArgs {
 
   factory JobTemplateArgs.fromMap(Map<String, dynamic> map) {
     return JobTemplateArgs(
-      arrayRequest: map['arrayRequest'] == null ? null : (map['arrayRequest'] as String).input(),
-      clockTime: map['clockTime'] == null ? null : (map['clockTime'] as String).input(),
+      arrayRequest: map['arrayRequest'] == null ? null : (map['arrayRequest']! as String).input(),
+      clockTime: map['clockTime'] == null ? null : (map['clockTime']! as String).input(),
       commandLine: (map['commandLine'] as String).input(),
-      gpu: map['gpu'] == null ? null : (map['gpu'] as int).input(),
+      gpu: map['gpu'] == null ? null : (map['gpu']! as int).input(),
       jobTemplateName: (map['jobTemplateName'] as String).input(),
-      mem: map['mem'] == null ? null : (map['mem'] as String).input(),
-      node: map['node'] == null ? null : (map['node'] as int).input(),
-      packagePath: map['packagePath'] == null ? null : (map['packagePath'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      queue: map['queue'] == null ? null : (map['queue'] as String).input(),
-      reRunable: map['reRunable'] == null ? null : (map['reRunable'] as bool).input(),
-      runasUser: map['runasUser'] == null ? null : (map['runasUser'] as String).input(),
-      stderrRedirectPath: map['stderrRedirectPath'] == null ? null : (map['stderrRedirectPath'] as String).input(),
-      stdoutRedirectPath: map['stdoutRedirectPath'] == null ? null : (map['stdoutRedirectPath'] as String).input(),
-      task: map['task'] == null ? null : (map['task'] as int).input(),
-      thread: map['thread'] == null ? null : (map['thread'] as int).input(),
-      variables: map['variables'] == null ? null : (map['variables'] as String).input(),
+      mem: map['mem'] == null ? null : (map['mem']! as String).input(),
+      node: map['node'] == null ? null : (map['node']! as int).input(),
+      packagePath: map['packagePath'] == null ? null : (map['packagePath']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      queue: map['queue'] == null ? null : (map['queue']! as String).input(),
+      reRunable: map['reRunable'] == null ? null : (map['reRunable']! as bool).input(),
+      runasUser: map['runasUser'] == null ? null : (map['runasUser']! as String).input(),
+      stderrRedirectPath: map['stderrRedirectPath'] == null ? null : (map['stderrRedirectPath']! as String).input(),
+      stdoutRedirectPath: map['stdoutRedirectPath'] == null ? null : (map['stdoutRedirectPath']! as String).input(),
+      task: map['task'] == null ? null : (map['task']! as int).input(),
+      thread: map['thread'] == null ? null : (map['thread']! as int).input(),
+      variables: map['variables'] == null ? null : (map['variables']! as String).input(),
     );
   }
 }

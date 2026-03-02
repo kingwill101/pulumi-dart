@@ -42,7 +42,7 @@ class GetDbServersResult {
       dbServers: pulumi.Input.decodeList<GetDbServersDbServer>(map['dbServers'], (value) => GetDbServersDbServer.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
     );
   }
 }

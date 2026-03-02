@@ -94,20 +94,20 @@ class StackArgs {
 
   factory StackArgs.fromMap(Map<String, dynamic> map) {
     return StackArgs(
-      capabilities: map['capabilities'] == null ? null : ((map['capabilities'] as List).cast<String>()).input(),
-      disableRollback: map['disableRollback'] == null ? null : (map['disableRollback'] as bool).input(),
-      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationArns: map['notificationArns'] == null ? null : ((map['notificationArns'] as List).cast<String>()).input(),
-      onFailure: map['onFailure'] == null ? null : (map['onFailure'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      policyBody: map['policyBody'] == null ? null : (map['policyBody'] as String).input(),
-      policyUrl: map['policyUrl'] == null ? null : (map['policyUrl'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      templateBody: map['templateBody'] == null ? null : (map['templateBody'] as String).input(),
-      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl'] as String).input(),
-      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : (map['timeoutInMinutes'] as int).input(),
+      capabilities: map['capabilities'] == null ? null : (((map['capabilities'] as List).cast<String>()).input()).input(),
+      disableRollback: map['disableRollback'] == null ? null : ((map['disableRollback'] as bool).input()).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : ((map['iamRoleArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      notificationArns: map['notificationArns'] == null ? null : (((map['notificationArns'] as List).cast<String>()).input()).input(),
+      onFailure: map['onFailure'] == null ? null : ((map['onFailure'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      policyBody: map['policyBody'] == null ? null : ((map['policyBody'] as String).input()).input(),
+      policyUrl: map['policyUrl'] == null ? null : ((map['policyUrl'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      templateBody: map['templateBody'] == null ? null : ((map['templateBody'] as String).input()).input(),
+      templateUrl: map['templateUrl'] == null ? null : ((map['templateUrl'] as String).input()).input(),
+      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : ((map['timeoutInMinutes'] as int).input()).input(),
     );
   }
 }

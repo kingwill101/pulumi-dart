@@ -34,7 +34,7 @@ class InvestigationScopeResponse {
     return InvestigationScopeResponse(
       id: (map['id'] as String).input(),
       origin: (OriginResponse.fromMap((map['origin'] as Map).cast<String, dynamic>())).input(),
-      relevance: map['relevance'] == null ? null : (map['relevance'] as String).input(),
+      relevance: map['relevance'] == null ? null : (map['relevance']! as String).input(),
     );
   }
 }

@@ -113,11 +113,11 @@ class GetMetricAlertResult {
 
   factory GetMetricAlertResult.fromMap(Map<String, dynamic> map) {
     return GetMetricAlertResult(
-      actions: map['actions'] == null ? null : pulumi.Input.decodeList<MetricAlertActionResponse>(map['actions'], (value) => MetricAlertActionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      autoMitigate: map['autoMitigate'] == null ? null : map['autoMitigate'] as bool,
+      actions: map['actions'] == null ? null : pulumi.Input.decodeList<MetricAlertActionResponse>(map['actions']!, (value) => MetricAlertActionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      autoMitigate: map['autoMitigate'] == null ? null : map['autoMitigate']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
       criteria: MetricAlertMultipleResourceMultipleMetricCriteriaResponse.fromMap((map['criteria'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       enabled: map['enabled'] as bool,
       evaluationFrequency: map['evaluationFrequency'] as String,
       id: map['id'] as String,
@@ -127,9 +127,9 @@ class GetMetricAlertResult {
       name: map['name'] as String,
       scopes: (map['scopes'] as List).cast<String>(),
       severity: map['severity'] as int,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      targetResourceRegion: map['targetResourceRegion'] == null ? null : map['targetResourceRegion'] as String,
-      targetResourceType: map['targetResourceType'] == null ? null : map['targetResourceType'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      targetResourceRegion: map['targetResourceRegion'] == null ? null : map['targetResourceRegion']! as String,
+      targetResourceType: map['targetResourceType'] == null ? null : map['targetResourceType']! as String,
       type: map['type'] as String,
       windowSize: map['windowSize'] as String,
     );

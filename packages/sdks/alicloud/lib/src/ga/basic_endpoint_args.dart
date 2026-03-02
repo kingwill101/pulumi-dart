@@ -60,13 +60,13 @@ class BasicEndpointArgs {
   factory BasicEndpointArgs.fromMap(Map<String, dynamic> map) {
     return BasicEndpointArgs(
       acceleratorId: (map['acceleratorId'] as String).input(),
-      basicEndpointName: map['basicEndpointName'] == null ? null : (map['basicEndpointName'] as String).input(),
+      basicEndpointName: map['basicEndpointName'] == null ? null : (map['basicEndpointName']! as String).input(),
       endpointAddress: (map['endpointAddress'] as String).input(),
       endpointGroupId: (map['endpointGroupId'] as String).input(),
-      endpointSubAddress: map['endpointSubAddress'] == null ? null : (map['endpointSubAddress'] as String).input(),
-      endpointSubAddressType: map['endpointSubAddressType'] == null ? null : (map['endpointSubAddressType'] as String).input(),
+      endpointSubAddress: map['endpointSubAddress'] == null ? null : (map['endpointSubAddress']! as String).input(),
+      endpointSubAddressType: map['endpointSubAddressType'] == null ? null : (map['endpointSubAddressType']! as String).input(),
       endpointType: (map['endpointType'] as String).input(),
-      endpointZoneId: map['endpointZoneId'] == null ? null : (map['endpointZoneId'] as String).input(),
+      endpointZoneId: map['endpointZoneId'] == null ? null : (map['endpointZoneId']! as String).input(),
     );
   }
 }

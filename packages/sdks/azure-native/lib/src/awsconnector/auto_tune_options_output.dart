@@ -32,9 +32,9 @@ class AutoTuneOptionsOutput {
 
   factory AutoTuneOptionsOutput.fromMap(Map<String, dynamic> map) {
     return AutoTuneOptionsOutput(
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      state: map['state'] == null ? null : (AutoTuneStateEnumValue.fromMap((map['state'] as Map).cast<String, dynamic>())).input(),
-      useOffPeakWindow: map['useOffPeakWindow'] == null ? null : (map['useOffPeakWindow'] as bool).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      state: map['state'] == null ? null : (AutoTuneStateEnumValue.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
+      useOffPeakWindow: map['useOffPeakWindow'] == null ? null : (map['useOffPeakWindow']! as bool).input(),
     );
   }
 }

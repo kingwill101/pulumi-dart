@@ -48,12 +48,12 @@ class WorkstationConfigHostGceInstanceBoostConfig {
 
   factory WorkstationConfigHostGceInstanceBoostConfig.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigHostGceInstanceBoostConfig(
-      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<WorkstationConfigHostGceInstanceBoostConfigAccelerator>(map['accelerators'], (value) => WorkstationConfigHostGceInstanceBoostConfigAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb'] as int).input(),
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization'] as bool).input(),
+      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<WorkstationConfigHostGceInstanceBoostConfigAccelerator>(map['accelerators']!, (value) => WorkstationConfigHostGceInstanceBoostConfigAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb']! as int).input(),
+      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization']! as bool).input(),
       id: (map['id'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      poolSize: map['poolSize'] == null ? null : (map['poolSize'] as int).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      poolSize: map['poolSize'] == null ? null : (map['poolSize']! as int).input(),
     );
   }
 }

@@ -87,15 +87,15 @@ class GetOntapStorageVirtualMachineResult {
 
   factory GetOntapStorageVirtualMachineResult.fromMap(Map<String, dynamic> map) {
     return GetOntapStorageVirtualMachineResult(
-      activeDirectoryConfigurations: pulumi.Input.decodeList<GetOntapStorageVirtualMachineActiveDirectoryConfiguration>(map['activeDirectoryConfigurations'], (value) => GetOntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      activeDirectoryConfigurations: pulumi.Input.decodeList<GetOntapStorageVirtualMachineActiveDirectoryConfiguration>(map['activeDirectoryConfigurations']!, (value) => GetOntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       arn: map['arn'] as String,
       creationTime: map['creationTime'] as String,
-      endpoints: pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpoint>(map['endpoints'], (value) => GetOntapStorageVirtualMachineEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      endpoints: pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpoint>(map['endpoints']!, (value) => GetOntapStorageVirtualMachineEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       fileSystemId: map['fileSystemId'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetOntapStorageVirtualMachineFilter>(map['filters'], (value) => GetOntapStorageVirtualMachineFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetOntapStorageVirtualMachineFilter>(map['filters']!, (value) => GetOntapStorageVirtualMachineFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       lifecycleStatus: map['lifecycleStatus'] as String,
-      lifecycleTransitionReasons: pulumi.Input.decodeList<GetOntapStorageVirtualMachineLifecycleTransitionReason>(map['lifecycleTransitionReasons'], (value) => GetOntapStorageVirtualMachineLifecycleTransitionReason.fromMap((value as Map).cast<String, dynamic>())),
+      lifecycleTransitionReasons: pulumi.Input.decodeList<GetOntapStorageVirtualMachineLifecycleTransitionReason>(map['lifecycleTransitionReasons']!, (value) => GetOntapStorageVirtualMachineLifecycleTransitionReason.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       region: map['region'] as String,
       subtype: map['subtype'] as String,

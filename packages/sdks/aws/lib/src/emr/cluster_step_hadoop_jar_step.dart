@@ -35,10 +35,10 @@ class ClusterStepHadoopJarStep {
 
   factory ClusterStepHadoopJarStep.fromMap(Map<String, dynamic> map) {
     return ClusterStepHadoopJarStep(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      args: map['args'] == null ? null : (((map['args'] as List).cast<String>()).input()).input(),
       jar: (map['jar'] as String).input(),
-      mainClass: map['mainClass'] == null ? null : (map['mainClass'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      mainClass: map['mainClass'] == null ? null : ((map['mainClass'] as String).input()).input(),
+      properties: map['properties'] == null ? null : (((map['properties'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -63,13 +63,13 @@ class GetWebAppDiagnosticLogsConfigurationResult {
 
   factory GetWebAppDiagnosticLogsConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppDiagnosticLogsConfigurationResult(
-      applicationLogs: map['applicationLogs'] == null ? null : ApplicationLogsConfigResponse.fromMap((map['applicationLogs'] as Map).cast<String, dynamic>()),
+      applicationLogs: map['applicationLogs'] == null ? null : ApplicationLogsConfigResponse.fromMap((map['applicationLogs']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      detailedErrorMessages: map['detailedErrorMessages'] == null ? null : EnabledConfigResponse.fromMap((map['detailedErrorMessages'] as Map).cast<String, dynamic>()),
-      failedRequestsTracing: map['failedRequestsTracing'] == null ? null : EnabledConfigResponse.fromMap((map['failedRequestsTracing'] as Map).cast<String, dynamic>()),
-      httpLogs: map['httpLogs'] == null ? null : HttpLogsConfigResponse.fromMap((map['httpLogs'] as Map).cast<String, dynamic>()),
+      detailedErrorMessages: map['detailedErrorMessages'] == null ? null : EnabledConfigResponse.fromMap((map['detailedErrorMessages']! as Map).cast<String, dynamic>()),
+      failedRequestsTracing: map['failedRequestsTracing'] == null ? null : EnabledConfigResponse.fromMap((map['failedRequestsTracing']! as Map).cast<String, dynamic>()),
+      httpLogs: map['httpLogs'] == null ? null : HttpLogsConfigResponse.fromMap((map['httpLogs']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       type: map['type'] as String,
     );

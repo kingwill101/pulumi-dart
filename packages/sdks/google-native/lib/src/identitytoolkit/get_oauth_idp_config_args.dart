@@ -32,7 +32,7 @@ class GetOauthIdpConfigArgs {
   factory GetOauthIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetOauthIdpConfigArgs(
       oauthIdpConfigId: (map['oauthIdpConfigId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

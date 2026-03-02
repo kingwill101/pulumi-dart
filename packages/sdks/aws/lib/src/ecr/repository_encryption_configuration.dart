@@ -25,8 +25,8 @@ class RepositoryEncryptionConfiguration {
 
   factory RepositoryEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return RepositoryEncryptionConfiguration(
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      encryptionType: map['encryptionType'] == null ? null : ((map['encryptionType'] as String).input()).input(),
+      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
     );
   }
 }

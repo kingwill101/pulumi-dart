@@ -50,8 +50,8 @@ class GetMultiRegionAccessPointsAccessPoint {
       alias: (map['alias'] as String).input(),
       createdAt: (map['createdAt'] as String).input(),
       name: (map['name'] as String).input(),
-      publicAccessBlocks: (pulumi.Input.decodeList<GetMultiRegionAccessPointsAccessPointPublicAccessBlock>(map['publicAccessBlocks'], (value) => GetMultiRegionAccessPointsAccessPointPublicAccessBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regions: (pulumi.Input.decodeList<GetMultiRegionAccessPointsAccessPointRegion>(map['regions'], (value) => GetMultiRegionAccessPointsAccessPointRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicAccessBlocks: (pulumi.Input.decodeList<GetMultiRegionAccessPointsAccessPointPublicAccessBlock>(map['publicAccessBlocks']!, (value) => GetMultiRegionAccessPointsAccessPointPublicAccessBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regions: (pulumi.Input.decodeList<GetMultiRegionAccessPointsAccessPointRegion>(map['regions']!, (value) => GetMultiRegionAccessPointsAccessPointRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
       status: (map['status'] as String).input(),
     );
   }

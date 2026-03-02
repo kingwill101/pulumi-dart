@@ -93,21 +93,21 @@ class GitHubWorkflowProfileResponse {
 
   factory GitHubWorkflowProfileResponse.fromMap(Map<String, dynamic> map) {
     return GitHubWorkflowProfileResponse(
-      acr: map['acr'] == null ? null : (ACRResponse.fromMap((map['acr'] as Map).cast<String, dynamic>())).input(),
-      aksResourceId: map['aksResourceId'] == null ? null : (map['aksResourceId'] as String).input(),
+      acr: map['acr'] == null ? null : (ACRResponse.fromMap((map['acr']! as Map).cast<String, dynamic>())).input(),
+      aksResourceId: map['aksResourceId'] == null ? null : (map['aksResourceId']! as String).input(),
       authStatus: (map['authStatus'] as String).input(),
-      branchName: map['branchName'] == null ? null : (map['branchName'] as String).input(),
-      deploymentProperties: map['deploymentProperties'] == null ? null : (DeploymentPropertiesResponse.fromMap((map['deploymentProperties'] as Map).cast<String, dynamic>())).input(),
-      dockerBuildContext: map['dockerBuildContext'] == null ? null : (map['dockerBuildContext'] as String).input(),
-      dockerfile: map['dockerfile'] == null ? null : (map['dockerfile'] as String).input(),
-      lastWorkflowRun: map['lastWorkflowRun'] == null ? null : (WorkflowRunResponse.fromMap((map['lastWorkflowRun'] as Map).cast<String, dynamic>())).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      oidcCredentials: map['oidcCredentials'] == null ? null : (GitHubWorkflowProfileResponseOidcCredentials.fromMap((map['oidcCredentials'] as Map).cast<String, dynamic>())).input(),
+      branchName: map['branchName'] == null ? null : (map['branchName']! as String).input(),
+      deploymentProperties: map['deploymentProperties'] == null ? null : (DeploymentPropertiesResponse.fromMap((map['deploymentProperties']! as Map).cast<String, dynamic>())).input(),
+      dockerBuildContext: map['dockerBuildContext'] == null ? null : (map['dockerBuildContext']! as String).input(),
+      dockerfile: map['dockerfile'] == null ? null : (map['dockerfile']! as String).input(),
+      lastWorkflowRun: map['lastWorkflowRun'] == null ? null : (WorkflowRunResponse.fromMap((map['lastWorkflowRun']! as Map).cast<String, dynamic>())).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      oidcCredentials: map['oidcCredentials'] == null ? null : (GitHubWorkflowProfileResponseOidcCredentials.fromMap((map['oidcCredentials']! as Map).cast<String, dynamic>())).input(),
       prStatus: (map['prStatus'] as String).input(),
       prURL: (map['prURL'] as String).input(),
       pullNumber: (map['pullNumber'] as int).input(),
-      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
-      repositoryOwner: map['repositoryOwner'] == null ? null : (map['repositoryOwner'] as String).input(),
+      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName']! as String).input(),
+      repositoryOwner: map['repositoryOwner'] == null ? null : (map['repositoryOwner']! as String).input(),
     );
   }
 }

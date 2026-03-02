@@ -59,11 +59,11 @@ class TargetSiteArgs {
   factory TargetSiteArgs.fromMap(Map<String, dynamic> map) {
     return TargetSiteArgs(
       dataStoreId: (map['dataStoreId'] as String).input(),
-      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch'] as bool).input(),
+      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch']! as bool).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       providedUriPattern: (map['providedUriPattern'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

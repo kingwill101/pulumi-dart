@@ -48,12 +48,12 @@ class StorageConfigurationSettingsResponse {
 
   factory StorageConfigurationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return StorageConfigurationSettingsResponse(
-      diskConfigurationType: map['diskConfigurationType'] == null ? null : (map['diskConfigurationType'] as String).input(),
-      sqlDataSettings: map['sqlDataSettings'] == null ? null : (SQLStorageSettingsResponse.fromMap((map['sqlDataSettings'] as Map).cast<String, dynamic>())).input(),
-      sqlLogSettings: map['sqlLogSettings'] == null ? null : (SQLStorageSettingsResponse.fromMap((map['sqlLogSettings'] as Map).cast<String, dynamic>())).input(),
-      sqlSystemDbOnDataDisk: map['sqlSystemDbOnDataDisk'] == null ? null : (map['sqlSystemDbOnDataDisk'] as bool).input(),
-      sqlTempDbSettings: map['sqlTempDbSettings'] == null ? null : (SQLTempDbSettingsResponse.fromMap((map['sqlTempDbSettings'] as Map).cast<String, dynamic>())).input(),
-      storageWorkloadType: map['storageWorkloadType'] == null ? null : (map['storageWorkloadType'] as String).input(),
+      diskConfigurationType: map['diskConfigurationType'] == null ? null : (map['diskConfigurationType']! as String).input(),
+      sqlDataSettings: map['sqlDataSettings'] == null ? null : (SQLStorageSettingsResponse.fromMap((map['sqlDataSettings']! as Map).cast<String, dynamic>())).input(),
+      sqlLogSettings: map['sqlLogSettings'] == null ? null : (SQLStorageSettingsResponse.fromMap((map['sqlLogSettings']! as Map).cast<String, dynamic>())).input(),
+      sqlSystemDbOnDataDisk: map['sqlSystemDbOnDataDisk'] == null ? null : (map['sqlSystemDbOnDataDisk']! as bool).input(),
+      sqlTempDbSettings: map['sqlTempDbSettings'] == null ? null : (SQLTempDbSettingsResponse.fromMap((map['sqlTempDbSettings']! as Map).cast<String, dynamic>())).input(),
+      storageWorkloadType: map['storageWorkloadType'] == null ? null : (map['storageWorkloadType']! as String).input(),
     );
   }
 }

@@ -41,8 +41,8 @@ class SyncAgentArgs {
     return SyncAgentArgs(
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      syncAgentName: map['syncAgentName'] == null ? null : (map['syncAgentName'] as String).input(),
-      syncDatabaseId: map['syncDatabaseId'] == null ? null : (map['syncDatabaseId'] as String).input(),
+      syncAgentName: map['syncAgentName'] == null ? null : (map['syncAgentName']! as String).input(),
+      syncDatabaseId: map['syncDatabaseId'] == null ? null : (map['syncDatabaseId']! as String).input(),
     );
   }
 }

@@ -41,10 +41,10 @@ class ScalingPlanArgs {
 
   factory ScalingPlanArgs.fromMap(Map<String, dynamic> map) {
     return ScalingPlanArgs(
-      applicationSource: (ScalingPlanApplicationSource.fromMap((map['applicationSource'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scalingInstructions: (pulumi.Input.decodeList<ScalingPlanScalingInstruction>(map['scalingInstructions'], (value) => ScalingPlanScalingInstruction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationSource: (ScalingPlanApplicationSource.fromMap((map['applicationSource']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scalingInstructions: (pulumi.Input.decodeList<ScalingPlanScalingInstruction>(map['scalingInstructions']!, (value) => ScalingPlanScalingInstruction.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

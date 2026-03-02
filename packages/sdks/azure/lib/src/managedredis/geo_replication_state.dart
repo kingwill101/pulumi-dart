@@ -26,8 +26,8 @@ class GeoReplicationState {
 
   factory GeoReplicationState.fromMap(Map<String, dynamic> map) {
     return GeoReplicationState(
-      linkedManagedRedisIds: map['linkedManagedRedisIds'] == null ? null : ((map['linkedManagedRedisIds'] as List).cast<String>()).input(),
-      managedRedisId: map['managedRedisId'] == null ? null : (map['managedRedisId'] as String).input(),
+      linkedManagedRedisIds: map['linkedManagedRedisIds'] == null ? null : ((map['linkedManagedRedisIds']! as List).cast<String>()).input(),
+      managedRedisId: map['managedRedisId'] == null ? null : (map['managedRedisId']! as String).input(),
     );
   }
 }

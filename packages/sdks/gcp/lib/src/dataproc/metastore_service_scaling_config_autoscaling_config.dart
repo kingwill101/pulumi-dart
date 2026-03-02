@@ -33,9 +33,9 @@ class MetastoreServiceScalingConfigAutoscalingConfig {
 
   factory MetastoreServiceScalingConfigAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceScalingConfigAutoscalingConfig(
-      autoscalingEnabled: map['autoscalingEnabled'] == null ? null : (map['autoscalingEnabled'] as bool).input(),
-      autoscalingFactor: map['autoscalingFactor'] == null ? null : (map['autoscalingFactor'] as double).input(),
-      limitConfig: map['limitConfig'] == null ? null : (MetastoreServiceScalingConfigAutoscalingConfigLimitConfig.fromMap((map['limitConfig'] as Map).cast<String, dynamic>())).input(),
+      autoscalingEnabled: map['autoscalingEnabled'] == null ? null : (map['autoscalingEnabled']! as bool).input(),
+      autoscalingFactor: map['autoscalingFactor'] == null ? null : (map['autoscalingFactor']! as double).input(),
+      limitConfig: map['limitConfig'] == null ? null : (MetastoreServiceScalingConfigAutoscalingConfigLimitConfig.fromMap((map['limitConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

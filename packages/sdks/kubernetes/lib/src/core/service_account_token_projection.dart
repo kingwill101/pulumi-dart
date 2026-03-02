@@ -31,8 +31,8 @@ class ServiceAccountTokenProjection {
 
   factory ServiceAccountTokenProjection.fromMap(Map<String, dynamic> map) {
     return ServiceAccountTokenProjection(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      expirationSeconds: map['expirationSeconds'] == null ? null : (map['expirationSeconds'] as int).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      expirationSeconds: map['expirationSeconds'] == null ? null : (map['expirationSeconds']! as int).input(),
       path: (map['path'] as String).input(),
     );
   }

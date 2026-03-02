@@ -77,14 +77,14 @@ class PipelineJobArgs {
 
   factory PipelineJobArgs.fromMap(Map<String, dynamic> map) {
     return PipelineJobArgs(
-      backfillPipelineJob: map['backfillPipelineJob'] == null ? null : (PipelineJobBackfillPipelineJob.fromMap((map['backfillPipelineJob'] as Map).cast<String, dynamic>())).input(),
+      backfillPipelineJob: map['backfillPipelineJob'] == null ? null : (PipelineJobBackfillPipelineJob.fromMap((map['backfillPipelineJob']! as Map).cast<String, dynamic>())).input(),
       dataset: (map['dataset'] as String).input(),
-      disableLineage: map['disableLineage'] == null ? null : (map['disableLineage'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      disableLineage: map['disableLineage'] == null ? null : (map['disableLineage']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      mappingPipelineJob: map['mappingPipelineJob'] == null ? null : (PipelineJobMappingPipelineJob.fromMap((map['mappingPipelineJob'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      reconciliationPipelineJob: map['reconciliationPipelineJob'] == null ? null : (PipelineJobReconciliationPipelineJob.fromMap((map['reconciliationPipelineJob'] as Map).cast<String, dynamic>())).input(),
+      mappingPipelineJob: map['mappingPipelineJob'] == null ? null : (PipelineJobMappingPipelineJob.fromMap((map['mappingPipelineJob']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      reconciliationPipelineJob: map['reconciliationPipelineJob'] == null ? null : (PipelineJobReconciliationPipelineJob.fromMap((map['reconciliationPipelineJob']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

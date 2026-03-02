@@ -38,10 +38,10 @@ class GoogleCloudAiplatformV1Examples {
 
   factory GoogleCloudAiplatformV1Examples.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1Examples(
-      exampleGcsSource: map['exampleGcsSource'] == null ? null : (GoogleCloudAiplatformV1ExamplesExampleGcsSource.fromMap((map['exampleGcsSource'] as Map).cast<String, dynamic>())).input(),
-      nearestNeighborSearchConfig: map['nearestNeighborSearchConfig'] == null ? null : (map['nearestNeighborSearchConfig']).input(),
-      neighborCount: map['neighborCount'] == null ? null : (map['neighborCount'] as int).input(),
-      presets: map['presets'] == null ? null : (GoogleCloudAiplatformV1Presets.fromMap((map['presets'] as Map).cast<String, dynamic>())).input(),
+      exampleGcsSource: map['exampleGcsSource'] == null ? null : (GoogleCloudAiplatformV1ExamplesExampleGcsSource.fromMap((map['exampleGcsSource']! as Map).cast<String, dynamic>())).input(),
+      nearestNeighborSearchConfig: map['nearestNeighborSearchConfig'] == null ? null : (map['nearestNeighborSearchConfig']!).input(),
+      neighborCount: map['neighborCount'] == null ? null : (map['neighborCount']! as int).input(),
+      presets: map['presets'] == null ? null : (GoogleCloudAiplatformV1Presets.fromMap((map['presets']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

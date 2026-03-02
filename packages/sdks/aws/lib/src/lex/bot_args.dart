@@ -97,21 +97,21 @@ class BotArgs {
 
   factory BotArgs.fromMap(Map<String, dynamic> map) {
     return BotArgs(
-      abortStatement: (BotAbortStatement.fromMap((map['abortStatement'] as Map).cast<String, dynamic>())).input(),
+      abortStatement: (BotAbortStatement.fromMap((map['abortStatement']! as Map).cast<String, dynamic>())).input(),
       childDirected: (map['childDirected'] as bool).input(),
-      clarificationPrompt: map['clarificationPrompt'] == null ? null : (BotClarificationPrompt.fromMap((map['clarificationPrompt'] as Map).cast<String, dynamic>())).input(),
-      createVersion: map['createVersion'] == null ? null : (map['createVersion'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      detectSentiment: map['detectSentiment'] == null ? null : (map['detectSentiment'] as bool).input(),
-      enableModelImprovements: map['enableModelImprovements'] == null ? null : (map['enableModelImprovements'] as bool).input(),
-      idleSessionTtlInSeconds: map['idleSessionTtlInSeconds'] == null ? null : (map['idleSessionTtlInSeconds'] as int).input(),
-      intents: (pulumi.Input.decodeList<BotIntent>(map['intents'], (value) => BotIntent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      locale: map['locale'] == null ? null : (map['locale'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nluIntentConfidenceThreshold: map['nluIntentConfidenceThreshold'] == null ? null : (map['nluIntentConfidenceThreshold'] as double).input(),
-      processBehavior: map['processBehavior'] == null ? null : (map['processBehavior'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      voiceId: map['voiceId'] == null ? null : (map['voiceId'] as String).input(),
+      clarificationPrompt: map['clarificationPrompt'] == null ? null : ((BotClarificationPrompt.fromMap((map['clarificationPrompt']! as Map).cast<String, dynamic>())).input()).input(),
+      createVersion: map['createVersion'] == null ? null : ((map['createVersion'] as bool).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      detectSentiment: map['detectSentiment'] == null ? null : ((map['detectSentiment'] as bool).input()).input(),
+      enableModelImprovements: map['enableModelImprovements'] == null ? null : ((map['enableModelImprovements'] as bool).input()).input(),
+      idleSessionTtlInSeconds: map['idleSessionTtlInSeconds'] == null ? null : ((map['idleSessionTtlInSeconds'] as int).input()).input(),
+      intents: (pulumi.Input.decodeList<BotIntent>(map['intents']!, (value) => BotIntent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locale: map['locale'] == null ? null : ((map['locale'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      nluIntentConfidenceThreshold: map['nluIntentConfidenceThreshold'] == null ? null : ((map['nluIntentConfidenceThreshold'] as double).input()).input(),
+      processBehavior: map['processBehavior'] == null ? null : ((map['processBehavior'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      voiceId: map['voiceId'] == null ? null : ((map['voiceId'] as String).input()).input(),
     );
   }
 }

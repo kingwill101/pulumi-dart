@@ -26,8 +26,8 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutN
 
   factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutNextStepIntent.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutNextStepIntent(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      slots: map['slots'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutNextStepIntentSlot>(map['slots'], (value) => V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      slots: map['slots'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutNextStepIntentSlot>(map['slots']!, (value) => V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class DomainDevicesInterfaceSourceMcastLocal {
 
   factory DomainDevicesInterfaceSourceMcastLocal.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceMcastLocal(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as double).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as double).input(),
     );
   }
 }

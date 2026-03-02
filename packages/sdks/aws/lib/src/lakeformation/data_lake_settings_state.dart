@@ -80,18 +80,18 @@ class DataLakeSettingsState {
 
   factory DataLakeSettingsState.fromMap(Map<String, dynamic> map) {
     return DataLakeSettingsState(
-      admins: map['admins'] == null ? null : ((map['admins'] as List).cast<String>()).input(),
-      allowExternalDataFiltering: map['allowExternalDataFiltering'] == null ? null : (map['allowExternalDataFiltering'] as bool).input(),
-      allowFullTableExternalDataAccess: map['allowFullTableExternalDataAccess'] == null ? null : (map['allowFullTableExternalDataAccess'] as bool).input(),
-      authorizedSessionTagValueLists: map['authorizedSessionTagValueLists'] == null ? null : ((map['authorizedSessionTagValueLists'] as List).cast<String>()).input(),
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      createDatabaseDefaultPermissions: map['createDatabaseDefaultPermissions'] == null ? null : (pulumi.Input.decodeList<DataLakeSettingsCreateDatabaseDefaultPermission>(map['createDatabaseDefaultPermissions'], (value) => DataLakeSettingsCreateDatabaseDefaultPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTableDefaultPermissions: map['createTableDefaultPermissions'] == null ? null : (pulumi.Input.decodeList<DataLakeSettingsCreateTableDefaultPermission>(map['createTableDefaultPermissions'], (value) => DataLakeSettingsCreateTableDefaultPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      externalDataFilteringAllowLists: map['externalDataFilteringAllowLists'] == null ? null : ((map['externalDataFilteringAllowLists'] as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      readOnlyAdmins: map['readOnlyAdmins'] == null ? null : ((map['readOnlyAdmins'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      trustedResourceOwners: map['trustedResourceOwners'] == null ? null : ((map['trustedResourceOwners'] as List).cast<String>()).input(),
+      admins: map['admins'] == null ? null : (((map['admins'] as List).cast<String>()).input()).input(),
+      allowExternalDataFiltering: map['allowExternalDataFiltering'] == null ? null : ((map['allowExternalDataFiltering'] as bool).input()).input(),
+      allowFullTableExternalDataAccess: map['allowFullTableExternalDataAccess'] == null ? null : ((map['allowFullTableExternalDataAccess'] as bool).input()).input(),
+      authorizedSessionTagValueLists: map['authorizedSessionTagValueLists'] == null ? null : (((map['authorizedSessionTagValueLists'] as List).cast<String>()).input()).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      createDatabaseDefaultPermissions: map['createDatabaseDefaultPermissions'] == null ? null : ((pulumi.Input.decodeList<DataLakeSettingsCreateDatabaseDefaultPermission>(map['createDatabaseDefaultPermissions']!, (value) => DataLakeSettingsCreateDatabaseDefaultPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      createTableDefaultPermissions: map['createTableDefaultPermissions'] == null ? null : ((pulumi.Input.decodeList<DataLakeSettingsCreateTableDefaultPermission>(map['createTableDefaultPermissions']!, (value) => DataLakeSettingsCreateTableDefaultPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      externalDataFilteringAllowLists: map['externalDataFilteringAllowLists'] == null ? null : (((map['externalDataFilteringAllowLists'] as List).cast<String>()).input()).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      readOnlyAdmins: map['readOnlyAdmins'] == null ? null : (((map['readOnlyAdmins'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      trustedResourceOwners: map['trustedResourceOwners'] == null ? null : (((map['trustedResourceOwners'] as List).cast<String>()).input()).input(),
     );
   }
 }

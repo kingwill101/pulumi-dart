@@ -21,7 +21,7 @@ class ContainerInfoAppengineV1beta {
 
   factory ContainerInfoAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ContainerInfoAppengineV1beta(
-      image: map['image'] == null ? null : (map['image'] as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
     );
   }
 }

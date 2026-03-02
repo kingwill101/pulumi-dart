@@ -26,7 +26,7 @@ class GetRegionsSort {
 
   factory GetRegionsSort.fromMap(Map<String, dynamic> map) {
     return GetRegionsSort(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
       key: (map['key'] as String).input(),
     );
   }

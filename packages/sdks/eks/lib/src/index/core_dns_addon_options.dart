@@ -45,11 +45,11 @@ class CoreDnsAddonOptions {
 
   factory CoreDnsAddonOptions.fromMap(Map<String, dynamic> map) {
     return CoreDnsAddonOptions(
-      configurationValues: map['configurationValues'] == null ? null : ((map['configurationValues'] as Map).cast<String, dynamic>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      resolveConflictsOnCreate: map['resolveConflictsOnCreate'] == null ? null : (ResolveConflictsOnCreate.fromValue(map['resolveConflictsOnCreate'] as String)).input(),
-      resolveConflictsOnUpdate: map['resolveConflictsOnUpdate'] == null ? null : (ResolveConflictsOnUpdate.fromValue(map['resolveConflictsOnUpdate'] as String)).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      configurationValues: map['configurationValues'] == null ? null : ((map['configurationValues']! as Map).cast<String, dynamic>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      resolveConflictsOnCreate: map['resolveConflictsOnCreate'] == null ? null : (ResolveConflictsOnCreate.fromValue(map['resolveConflictsOnCreate']! as String)).input(),
+      resolveConflictsOnUpdate: map['resolveConflictsOnUpdate'] == null ? null : (ResolveConflictsOnUpdate.fromValue(map['resolveConflictsOnUpdate']! as String)).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

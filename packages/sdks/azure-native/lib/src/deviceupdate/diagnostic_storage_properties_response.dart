@@ -32,7 +32,7 @@ class DiagnosticStoragePropertiesResponse {
   factory DiagnosticStoragePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticStoragePropertiesResponse(
       authenticationType: (map['authenticationType'] as String).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

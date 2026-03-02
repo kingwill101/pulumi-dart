@@ -26,8 +26,8 @@ class ContainerRecipeInstanceConfiguration {
 
   factory ContainerRecipeInstanceConfiguration.fromMap(Map<String, dynamic> map) {
     return ContainerRecipeInstanceConfiguration(
-      blockDeviceMappings: map['blockDeviceMappings'] == null ? null : (pulumi.Input.decodeList<ContainerRecipeInstanceConfigurationBlockDeviceMapping>(map['blockDeviceMappings'], (value) => ContainerRecipeInstanceConfigurationBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
+      blockDeviceMappings: map['blockDeviceMappings'] == null ? null : ((pulumi.Input.decodeList<ContainerRecipeInstanceConfigurationBlockDeviceMapping>(map['blockDeviceMappings']!, (value) => ContainerRecipeInstanceConfigurationBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      image: map['image'] == null ? null : ((map['image'] as String).input()).input(),
     );
   }
 }

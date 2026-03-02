@@ -41,11 +41,11 @@ class AccessControlListPortCondition {
 
   factory AccessControlListPortCondition.fromMap(Map<String, dynamic> map) {
     return AccessControlListPortCondition(
-      flags: map['flags'] == null ? null : ((map['flags'] as List).cast<String>()).input(),
+      flags: map['flags'] == null ? null : ((map['flags']! as List).cast<String>()).input(),
       layer4Protocol: (map['layer4Protocol'] as String).input(),
-      portGroupNames: map['portGroupNames'] == null ? null : ((map['portGroupNames'] as List).cast<String>()).input(),
-      portType: map['portType'] == null ? null : (map['portType'] as String).input(),
-      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<String>()).input(),
+      portGroupNames: map['portGroupNames'] == null ? null : ((map['portGroupNames']! as List).cast<String>()).input(),
+      portType: map['portType'] == null ? null : (map['portType']! as String).input(),
+      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<String>()).input(),
     );
   }
 }

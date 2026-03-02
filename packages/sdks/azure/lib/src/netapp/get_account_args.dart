@@ -34,7 +34,7 @@ class GetAccountArgs {
 
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
-      identity: map['identity'] == null ? null : (GetAccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (GetAccountIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

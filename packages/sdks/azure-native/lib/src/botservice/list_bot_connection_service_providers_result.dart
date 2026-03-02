@@ -27,7 +27,7 @@ class ListBotConnectionServiceProvidersResult {
 
   factory ListBotConnectionServiceProvidersResult.fromMap(Map<String, dynamic> map) {
     return ListBotConnectionServiceProvidersResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: pulumi.Input.decodeList<ServiceProviderResponse>(map['value'], (value) => ServiceProviderResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

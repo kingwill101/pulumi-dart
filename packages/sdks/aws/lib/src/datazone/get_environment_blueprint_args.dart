@@ -42,7 +42,7 @@ class GetEnvironmentBlueprintArgs {
       domainId: (map['domainId'] as String).input(),
       managed: (map['managed'] as bool).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

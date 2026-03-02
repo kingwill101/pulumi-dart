@@ -33,7 +33,7 @@ class CertificateAuthorityCertificateAuthorityConfiguration {
     return CertificateAuthorityCertificateAuthorityConfiguration(
       keyAlgorithm: (map['keyAlgorithm'] as String).input(),
       signingAlgorithm: (map['signingAlgorithm'] as String).input(),
-      subject: (CertificateAuthorityCertificateAuthorityConfigurationSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
+      subject: (CertificateAuthorityCertificateAuthorityConfigurationSubject.fromMap((map['subject']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

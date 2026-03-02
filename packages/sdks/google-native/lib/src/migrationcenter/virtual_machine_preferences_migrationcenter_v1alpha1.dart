@@ -70,15 +70,15 @@ class VirtualMachinePreferencesMigrationcenterV1alpha1 {
 
   factory VirtualMachinePreferencesMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePreferencesMigrationcenterV1alpha1(
-      commitmentPlan: map['commitmentPlan'] == null ? null : (VirtualMachinePreferencesCommitmentPlanMigrationcenterV1alpha1.fromValue(map['commitmentPlan'] as String)).input(),
-      computeEnginePreferences: map['computeEnginePreferences'] == null ? null : (ComputeEnginePreferencesMigrationcenterV1alpha1.fromMap((map['computeEnginePreferences'] as Map).cast<String, dynamic>())).input(),
-      networkCostParameters: map['networkCostParameters'] == null ? null : (VirtualMachinePreferencesNetworkCostParameters.fromMap((map['networkCostParameters'] as Map).cast<String, dynamic>())).input(),
-      regionPreferences: map['regionPreferences'] == null ? null : (RegionPreferencesMigrationcenterV1alpha1.fromMap((map['regionPreferences'] as Map).cast<String, dynamic>())).input(),
-      sizingOptimizationCustomParameters: map['sizingOptimizationCustomParameters'] == null ? null : (VirtualMachinePreferencesSizingOptimizationCustomParameters.fromMap((map['sizingOptimizationCustomParameters'] as Map).cast<String, dynamic>())).input(),
-      sizingOptimizationStrategy: map['sizingOptimizationStrategy'] == null ? null : (VirtualMachinePreferencesSizingOptimizationStrategyMigrationcenterV1alpha1.fromValue(map['sizingOptimizationStrategy'] as String)).input(),
-      soleTenancyPreferences: map['soleTenancyPreferences'] == null ? null : (SoleTenancyPreferencesMigrationcenterV1alpha1.fromMap((map['soleTenancyPreferences'] as Map).cast<String, dynamic>())).input(),
-      targetProduct: map['targetProduct'] == null ? null : (VirtualMachinePreferencesTargetProductMigrationcenterV1alpha1.fromValue(map['targetProduct'] as String)).input(),
-      vmwareEnginePreferences: map['vmwareEnginePreferences'] == null ? null : (VmwareEnginePreferencesMigrationcenterV1alpha1.fromMap((map['vmwareEnginePreferences'] as Map).cast<String, dynamic>())).input(),
+      commitmentPlan: map['commitmentPlan'] == null ? null : (VirtualMachinePreferencesCommitmentPlanMigrationcenterV1alpha1.fromValue(map['commitmentPlan']! as String)).input(),
+      computeEnginePreferences: map['computeEnginePreferences'] == null ? null : (ComputeEnginePreferencesMigrationcenterV1alpha1.fromMap((map['computeEnginePreferences']! as Map).cast<String, dynamic>())).input(),
+      networkCostParameters: map['networkCostParameters'] == null ? null : (VirtualMachinePreferencesNetworkCostParameters.fromMap((map['networkCostParameters']! as Map).cast<String, dynamic>())).input(),
+      regionPreferences: map['regionPreferences'] == null ? null : (RegionPreferencesMigrationcenterV1alpha1.fromMap((map['regionPreferences']! as Map).cast<String, dynamic>())).input(),
+      sizingOptimizationCustomParameters: map['sizingOptimizationCustomParameters'] == null ? null : (VirtualMachinePreferencesSizingOptimizationCustomParameters.fromMap((map['sizingOptimizationCustomParameters']! as Map).cast<String, dynamic>())).input(),
+      sizingOptimizationStrategy: map['sizingOptimizationStrategy'] == null ? null : (VirtualMachinePreferencesSizingOptimizationStrategyMigrationcenterV1alpha1.fromValue(map['sizingOptimizationStrategy']! as String)).input(),
+      soleTenancyPreferences: map['soleTenancyPreferences'] == null ? null : (SoleTenancyPreferencesMigrationcenterV1alpha1.fromMap((map['soleTenancyPreferences']! as Map).cast<String, dynamic>())).input(),
+      targetProduct: map['targetProduct'] == null ? null : (VirtualMachinePreferencesTargetProductMigrationcenterV1alpha1.fromValue(map['targetProduct']! as String)).input(),
+      vmwareEnginePreferences: map['vmwareEnginePreferences'] == null ? null : (VmwareEnginePreferencesMigrationcenterV1alpha1.fromMap((map['vmwareEnginePreferences']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -40,8 +40,8 @@ class ProductArgs {
   factory ProductArgs.fromMap(Map<String, dynamic> map) {
     return ProductArgs(
       catalogName: (map['catalogName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      productName: map['productName'] == null ? null : (map['productName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

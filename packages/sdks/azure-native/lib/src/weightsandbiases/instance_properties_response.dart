@@ -46,9 +46,9 @@ class InstancePropertiesResponse {
   factory InstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InstancePropertiesResponse(
       marketplace: (LiftrBaseMarketplaceDetailsResponse.fromMap((map['marketplace'] as Map).cast<String, dynamic>())).input(),
-      partnerProperties: map['partnerProperties'] == null ? null : (PartnerPropertiesResponse.fromMap((map['partnerProperties'] as Map).cast<String, dynamic>())).input(),
+      partnerProperties: map['partnerProperties'] == null ? null : (PartnerPropertiesResponse.fromMap((map['partnerProperties']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      singleSignOnProperties: map['singleSignOnProperties'] == null ? null : (LiftrBaseSingleSignOnPropertiesV2Response.fromMap((map['singleSignOnProperties'] as Map).cast<String, dynamic>())).input(),
+      singleSignOnProperties: map['singleSignOnProperties'] == null ? null : (LiftrBaseSingleSignOnPropertiesV2Response.fromMap((map['singleSignOnProperties']! as Map).cast<String, dynamic>())).input(),
       user: (LiftrBaseUserDetailsResponse.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
     );
   }

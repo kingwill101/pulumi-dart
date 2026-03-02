@@ -94,19 +94,19 @@ class DataLakeConnectorArgs {
 
   factory DataLakeConnectorArgs.fromMap(Map<String, dynamic> map) {
     return DataLakeConnectorArgs(
-      dataLakeConnectorName: map['dataLakeConnectorName'] == null ? null : (map['dataLakeConnectorName'] as String).input(),
+      dataLakeConnectorName: map['dataLakeConnectorName'] == null ? null : (map['dataLakeConnectorName']! as String).input(),
       databaseFormat: (map['databaseFormat'] as String).input(),
       extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       image: (ContainerImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      instances: map['instances'] == null ? null : (map['instances'] as int).input(),
-      localBrokerConnection: map['localBrokerConnection'] == null ? null : (LocalBrokerConnectionSpec.fromMap((map['localBrokerConnection'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      instances: map['instances'] == null ? null : (map['instances']! as int).input(),
+      localBrokerConnection: map['localBrokerConnection'] == null ? null : (LocalBrokerConnectionSpec.fromMap((map['localBrokerConnection']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
       mqName: (map['mqName'] as String).input(),
-      nodeTolerations: map['nodeTolerations'] == null ? null : (NodeTolerations.fromMap((map['nodeTolerations'] as Map).cast<String, dynamic>())).input(),
+      nodeTolerations: map['nodeTolerations'] == null ? null : (NodeTolerations.fromMap((map['nodeTolerations']! as Map).cast<String, dynamic>())).input(),
       protocol: (map['protocol'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       target: (DataLakeTargetStorage.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }

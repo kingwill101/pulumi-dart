@@ -52,11 +52,11 @@ class V2modelsBotVersionArgs {
   factory V2modelsBotVersionArgs.fromMap(Map<String, dynamic> map) {
     return V2modelsBotVersionArgs(
       botId: (map['botId'] as String).input(),
-      botVersion: map['botVersion'] == null ? null : (map['botVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      localeSpecification: (pulumi.Input.decodeMapValues<V2modelsBotVersionLocaleSpecification>(map['localeSpecification'], (value) => V2modelsBotVersionLocaleSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (V2modelsBotVersionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      botVersion: map['botVersion'] == null ? null : ((map['botVersion'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      localeSpecification: (pulumi.Input.decodeMapValues<V2modelsBotVersionLocaleSpecification>(map['localeSpecification']!, (value) => V2modelsBotVersionLocaleSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((V2modelsBotVersionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

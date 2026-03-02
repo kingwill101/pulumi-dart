@@ -27,7 +27,7 @@ class WebAclLoggingConfiguration {
   factory WebAclLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfiguration(
       logDestination: (map['logDestination'] as String).input(),
-      redactedFields: map['redactedFields'] == null ? null : (WebAclLoggingConfigurationRedactedFields.fromMap((map['redactedFields'] as Map).cast<String, dynamic>())).input(),
+      redactedFields: map['redactedFields'] == null ? null : ((WebAclLoggingConfigurationRedactedFields.fromMap((map['redactedFields']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

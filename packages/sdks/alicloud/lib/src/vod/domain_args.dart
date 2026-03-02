@@ -52,12 +52,12 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      checkUrl: map['checkUrl'] == null ? null : (map['checkUrl'] as String).input(),
+      checkUrl: map['checkUrl'] == null ? null : (map['checkUrl']! as String).input(),
       domainName: (map['domainName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       sources: (pulumi.Input.decodeList<DomainSource>(map['sources'], (value) => DomainSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topLevelDomain: map['topLevelDomain'] == null ? null : (map['topLevelDomain'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      topLevelDomain: map['topLevelDomain'] == null ? null : (map['topLevelDomain']! as String).input(),
     );
   }
 }

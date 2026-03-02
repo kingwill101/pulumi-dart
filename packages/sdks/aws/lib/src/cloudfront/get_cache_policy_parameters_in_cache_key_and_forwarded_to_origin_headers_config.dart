@@ -27,7 +27,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig {
   factory GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig.fromMap(Map<String, dynamic> map) {
     return GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig(
       headerBehavior: (map['headerBehavior'] as String).input(),
-      headers: (pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader>(map['headers'], (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: (pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader>(map['headers']!, (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

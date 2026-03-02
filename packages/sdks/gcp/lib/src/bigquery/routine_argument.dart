@@ -44,10 +44,10 @@ class RoutineArgument {
 
   factory RoutineArgument.fromMap(Map<String, dynamic> map) {
     return RoutineArgument(
-      argumentKind: map['argumentKind'] == null ? null : (map['argumentKind'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      argumentKind: map['argumentKind'] == null ? null : (map['argumentKind']! as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

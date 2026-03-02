@@ -29,8 +29,8 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
 
   factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification(
-      audioSpecification: map['audioSpecification'] == null ? null : (V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap((map['audioSpecification'] as Map).cast<String, dynamic>())).input(),
-      dtmfSpecification: map['dtmfSpecification'] == null ? null : (V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap((map['dtmfSpecification'] as Map).cast<String, dynamic>())).input(),
+      audioSpecification: map['audioSpecification'] == null ? null : ((V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap((map['audioSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      dtmfSpecification: map['dtmfSpecification'] == null ? null : ((V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap((map['dtmfSpecification']! as Map).cast<String, dynamic>())).input()).input(),
       startTimeoutMs: (map['startTimeoutMs'] as int).input(),
     );
   }

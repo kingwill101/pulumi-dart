@@ -25,8 +25,8 @@ class ScalingConfigurationSpotPriceLimit {
 
   factory ScalingConfigurationSpotPriceLimit.fromMap(Map<String, dynamic> map) {
     return ScalingConfigurationSpotPriceLimit(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      priceLimit: map['priceLimit'] == null ? null : (map['priceLimit'] as double).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      priceLimit: map['priceLimit'] == null ? null : (map['priceLimit']! as double).input(),
     );
   }
 }

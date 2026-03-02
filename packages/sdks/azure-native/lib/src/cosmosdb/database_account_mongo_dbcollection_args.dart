@@ -51,7 +51,7 @@ class DatabaseAccountMongoDBCollectionArgs {
   factory DatabaseAccountMongoDBCollectionArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAccountMongoDBCollectionArgs(
       accountName: (map['accountName'] as String).input(),
-      collectionName: map['collectionName'] == null ? null : (map['collectionName'] as String).input(),
+      collectionName: map['collectionName'] == null ? null : (map['collectionName']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
       options: ((map['options'] as Map).cast<String, String>()).input(),
       resource: (MongoDBCollectionResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),

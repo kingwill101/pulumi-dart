@@ -41,11 +41,11 @@ class InstanceAutomatedBackupsReplicationState {
 
   factory InstanceAutomatedBackupsReplicationState.fromMap(Map<String, dynamic> map) {
     return InstanceAutomatedBackupsReplicationState(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      preSignedUrl: map['preSignedUrl'] == null ? null : (map['preSignedUrl'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
-      sourceDbInstanceArn: map['sourceDbInstanceArn'] == null ? null : (map['sourceDbInstanceArn'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      preSignedUrl: map['preSignedUrl'] == null ? null : ((map['preSignedUrl'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : ((map['retentionPeriod'] as int).input()).input(),
+      sourceDbInstanceArn: map['sourceDbInstanceArn'] == null ? null : ((map['sourceDbInstanceArn'] as String).input()).input(),
     );
   }
 }

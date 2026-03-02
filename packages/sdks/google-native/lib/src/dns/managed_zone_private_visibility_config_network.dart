@@ -24,8 +24,8 @@ class ManagedZonePrivateVisibilityConfigNetwork {
 
   factory ManagedZonePrivateVisibilityConfigNetwork.fromMap(Map<String, dynamic> map) {
     return ManagedZonePrivateVisibilityConfigNetwork(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl']! as String).input(),
     );
   }
 }

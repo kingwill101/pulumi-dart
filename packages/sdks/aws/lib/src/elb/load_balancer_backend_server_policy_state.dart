@@ -36,10 +36,10 @@ class LoadBalancerBackendServerPolicyState {
 
   factory LoadBalancerBackendServerPolicyState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendServerPolicyState(
-      instancePort: map['instancePort'] == null ? null : (map['instancePort'] as int).input(),
-      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
-      policyNames: map['policyNames'] == null ? null : ((map['policyNames'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      instancePort: map['instancePort'] == null ? null : ((map['instancePort'] as int).input()).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : ((map['loadBalancerName'] as String).input()).input(),
+      policyNames: map['policyNames'] == null ? null : (((map['policyNames'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

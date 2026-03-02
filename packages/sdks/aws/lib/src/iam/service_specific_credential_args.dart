@@ -39,9 +39,9 @@ class ServiceSpecificCredentialArgs {
 
   factory ServiceSpecificCredentialArgs.fromMap(Map<String, dynamic> map) {
     return ServiceSpecificCredentialArgs(
-      credentialAgeDays: map['credentialAgeDays'] == null ? null : (map['credentialAgeDays'] as int).input(),
+      credentialAgeDays: map['credentialAgeDays'] == null ? null : ((map['credentialAgeDays'] as int).input()).input(),
       serviceName: (map['serviceName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
       userName: (map['userName'] as String).input(),
     );
   }

@@ -55,7 +55,7 @@ class RosettaNetPipRoleSettings {
     return RosettaNetPipRoleSettings(
       action: (map['action'] as String).input(),
       businessDocument: (RosettaNetPipBusinessDocument.fromMap((map['businessDocument'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       role: (map['role'] as String).input(),
       roleType: (RosettaNetPipRoleType.fromValue(map['roleType'] as String)).input(),
       service: (map['service'] as String).input(),

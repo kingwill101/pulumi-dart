@@ -27,8 +27,8 @@ class VirtualNodeSpecListenerTlsValidation {
 
   factory VirtualNodeSpecListenerTlsValidation.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsValidation(
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : (VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames'] as Map).cast<String, dynamic>())).input(),
-      trust: (VirtualNodeSpecListenerTlsValidationTrust.fromMap((map['trust'] as Map).cast<String, dynamic>())).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames']! as Map).cast<String, dynamic>())).input()).input(),
+      trust: (VirtualNodeSpecListenerTlsValidationTrust.fromMap((map['trust']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

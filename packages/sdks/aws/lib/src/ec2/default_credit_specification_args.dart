@@ -41,8 +41,8 @@ class DefaultCreditSpecificationArgs {
     return DefaultCreditSpecificationArgs(
       cpuCredits: (map['cpuCredits'] as String).input(),
       instanceFamily: (map['instanceFamily'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (DefaultCreditSpecificationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DefaultCreditSpecificationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class PolicyRuleRetentionRule {
 
   factory PolicyRuleRetentionRule.fromMap(Map<String, dynamic> map) {
     return PolicyRuleRetentionRule(
-      advancedRetentionType: map['advancedRetentionType'] == null ? null : (map['advancedRetentionType'] as String).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as int).input(),
+      advancedRetentionType: map['advancedRetentionType'] == null ? null : (map['advancedRetentionType']! as String).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as int).input(),
     );
   }
 }

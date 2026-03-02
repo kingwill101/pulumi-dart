@@ -36,7 +36,7 @@ class GetLinkArgs {
     return GetLinkArgs(
       globalNetworkId: (map['globalNetworkId'] as String).input(),
       linkId: (map['linkId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

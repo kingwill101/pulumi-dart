@@ -42,7 +42,7 @@ class SpringCloudBuilderArgs {
   factory SpringCloudBuilderArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudBuilderArgs(
       buildPackGroups: (pulumi.Input.decodeList<SpringCloudBuilderBuildPackGroup>(map['buildPackGroups'], (value) => SpringCloudBuilderBuildPackGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       springCloudServiceId: (map['springCloudServiceId'] as String).input(),
       stack: (SpringCloudBuilderStack.fromMap((map['stack'] as Map).cast<String, dynamic>())).input(),
     );

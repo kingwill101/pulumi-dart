@@ -32,8 +32,8 @@ class AzureDatabricksDeltaLakeImportCommand {
 
   factory AzureDatabricksDeltaLakeImportCommand.fromMap(Map<String, dynamic> map) {
     return AzureDatabricksDeltaLakeImportCommand(
-      dateFormat: map['dateFormat'] == null ? null : (map['dateFormat']).input(),
-      timestampFormat: map['timestampFormat'] == null ? null : (map['timestampFormat']).input(),
+      dateFormat: map['dateFormat'] == null ? null : (map['dateFormat']!).input(),
+      timestampFormat: map['timestampFormat'] == null ? null : (map['timestampFormat']!).input(),
       type: (map['type'] as String).input(),
     );
   }

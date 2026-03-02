@@ -87,19 +87,19 @@ class GetPartnerDestinationResult {
 
   factory GetPartnerDestinationResult.fromMap(Map<String, dynamic> map) {
     return GetPartnerDestinationResult(
-      activationState: map['activationState'] == null ? null : map['activationState'] as String,
+      activationState: map['activationState'] == null ? null : map['activationState']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      endpointBaseUrl: map['endpointBaseUrl'] == null ? null : map['endpointBaseUrl'] as String,
-      endpointServiceContext: map['endpointServiceContext'] == null ? null : map['endpointServiceContext'] as String,
-      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : map['expirationTimeIfNotActivatedUtc'] as String,
+      endpointBaseUrl: map['endpointBaseUrl'] == null ? null : map['endpointBaseUrl']! as String,
+      endpointServiceContext: map['endpointServiceContext'] == null ? null : map['endpointServiceContext']! as String,
+      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : map['expirationTimeIfNotActivatedUtc']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      messageForActivation: map['messageForActivation'] == null ? null : map['messageForActivation'] as String,
+      messageForActivation: map['messageForActivation'] == null ? null : map['messageForActivation']! as String,
       name: map['name'] as String,
-      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : map['partnerRegistrationImmutableId'] as String,
+      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : map['partnerRegistrationImmutableId']! as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

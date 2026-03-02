@@ -28,8 +28,8 @@ class DatabaseTypeDatamigrationV1beta1 {
 
   factory DatabaseTypeDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
     return DatabaseTypeDatamigrationV1beta1(
-      engine: map['engine'] == null ? null : (DatabaseTypeEngineDatamigrationV1beta1.fromValue(map['engine'] as String)).input(),
-      provider: map['provider'] == null ? null : (DatabaseTypeProviderDatamigrationV1beta1.fromValue(map['provider'] as String)).input(),
+      engine: map['engine'] == null ? null : (DatabaseTypeEngineDatamigrationV1beta1.fromValue(map['engine']! as String)).input(),
+      provider: map['provider'] == null ? null : (DatabaseTypeProviderDatamigrationV1beta1.fromValue(map['provider']! as String)).input(),
     );
   }
 }

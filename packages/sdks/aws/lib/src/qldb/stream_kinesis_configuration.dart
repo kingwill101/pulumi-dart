@@ -25,7 +25,7 @@ class StreamKinesisConfiguration {
 
   factory StreamKinesisConfiguration.fromMap(Map<String, dynamic> map) {
     return StreamKinesisConfiguration(
-      aggregationEnabled: map['aggregationEnabled'] == null ? null : (map['aggregationEnabled'] as bool).input(),
+      aggregationEnabled: map['aggregationEnabled'] == null ? null : ((map['aggregationEnabled'] as bool).input()).input(),
       streamArn: (map['streamArn'] as String).input(),
     );
   }

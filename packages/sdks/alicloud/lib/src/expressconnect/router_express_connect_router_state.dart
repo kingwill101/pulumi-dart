@@ -58,14 +58,14 @@ class RouterExpressConnectRouterState {
 
   factory RouterExpressConnectRouterState.fromMap(Map<String, dynamic> map) {
     return RouterExpressConnectRouterState(
-      alibabaSideAsn: map['alibabaSideAsn'] == null ? null : (map['alibabaSideAsn'] as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ecrName: map['ecrName'] == null ? null : (map['ecrName'] as String).input(),
-      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<RouterExpressConnectRouterRegion>(map['regions'], (value) => RouterExpressConnectRouterRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      alibabaSideAsn: map['alibabaSideAsn'] == null ? null : (map['alibabaSideAsn']! as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ecrName: map['ecrName'] == null ? null : (map['ecrName']! as String).input(),
+      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<RouterExpressConnectRouterRegion>(map['regions']!, (value) => RouterExpressConnectRouterRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

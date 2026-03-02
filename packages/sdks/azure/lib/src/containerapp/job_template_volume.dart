@@ -35,10 +35,10 @@ class JobTemplateVolume {
 
   factory JobTemplateVolume.fromMap(Map<String, dynamic> map) {
     return JobTemplateVolume(
-      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions'] as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions']! as String).input(),
       name: (map['name'] as String).input(),
-      storageName: map['storageName'] == null ? null : (map['storageName'] as String).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
+      storageName: map['storageName'] == null ? null : (map['storageName']! as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
     );
   }
 }

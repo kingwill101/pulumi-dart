@@ -30,7 +30,7 @@ class FastApplicationArgs {
   factory FastApplicationArgs.fromMap(Map<String, dynamic> map) {
     return FastApplicationArgs(
       fastJson: (map['fastJson'] as String).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
     );
   }
 }

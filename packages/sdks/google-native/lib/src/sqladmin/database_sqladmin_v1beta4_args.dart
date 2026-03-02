@@ -64,15 +64,15 @@ class DatabaseSqladminV1beta4Args {
 
   factory DatabaseSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
     return DatabaseSqladminV1beta4Args(
-      charset: map['charset'] == null ? null : (map['charset'] as String).input(),
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      charset: map['charset'] == null ? null : (map['charset']! as String).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       instance: (map['instance'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      sqlserverDatabaseDetails: map['sqlserverDatabaseDetails'] == null ? null : (SqlServerDatabaseDetailsSqladminV1beta4.fromMap((map['sqlserverDatabaseDetails'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      sqlserverDatabaseDetails: map['sqlserverDatabaseDetails'] == null ? null : (SqlServerDatabaseDetailsSqladminV1beta4.fromMap((map['sqlserverDatabaseDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class InstanceFromTemplateSchedulingGracefulShutdown {
   factory InstanceFromTemplateSchedulingGracefulShutdown.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateSchedulingGracefulShutdown(
       enabled: (map['enabled'] as bool).input(),
-      maxDuration: map['maxDuration'] == null ? null : (InstanceFromTemplateSchedulingGracefulShutdownMaxDuration.fromMap((map['maxDuration'] as Map).cast<String, dynamic>())).input(),
+      maxDuration: map['maxDuration'] == null ? null : (InstanceFromTemplateSchedulingGracefulShutdownMaxDuration.fromMap((map['maxDuration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

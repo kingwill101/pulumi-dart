@@ -26,8 +26,8 @@ class HoneypotProbeHoneypotBindList {
 
   factory HoneypotProbeHoneypotBindList.fromMap(Map<String, dynamic> map) {
     return HoneypotProbeHoneypotBindList(
-      bindPortLists: map['bindPortLists'] == null ? null : (pulumi.Input.decodeList<HoneypotProbeHoneypotBindListBindPortList>(map['bindPortLists'], (value) => HoneypotProbeHoneypotBindListBindPortList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      honeypotId: map['honeypotId'] == null ? null : (map['honeypotId'] as String).input(),
+      bindPortLists: map['bindPortLists'] == null ? null : (pulumi.Input.decodeList<HoneypotProbeHoneypotBindListBindPortList>(map['bindPortLists']!, (value) => HoneypotProbeHoneypotBindListBindPortList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      honeypotId: map['honeypotId'] == null ? null : (map['honeypotId']! as String).input(),
     );
   }
 }

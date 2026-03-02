@@ -27,8 +27,8 @@ class TcpRouteRouteActionNetworkservicesV1beta1 {
 
   factory TcpRouteRouteActionNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return TcpRouteRouteActionNetworkservicesV1beta1(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<TcpRouteRouteDestinationNetworkservicesV1beta1>(map['destinations'], (value) => TcpRouteRouteDestinationNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      originalDestination: map['originalDestination'] == null ? null : (map['originalDestination'] as bool).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<TcpRouteRouteDestinationNetworkservicesV1beta1>(map['destinations']!, (value) => TcpRouteRouteDestinationNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      originalDestination: map['originalDestination'] == null ? null : (map['originalDestination']! as bool).input(),
     );
   }
 }

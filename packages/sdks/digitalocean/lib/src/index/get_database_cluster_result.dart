@@ -171,7 +171,7 @@ class GetDatabaseClusterResult {
       region: map['region'] as String,
       size: map['size'] as String,
       storageSizeMib: map['storageSizeMib'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
       uiDatabase: map['uiDatabase'] as String,
       uiHost: map['uiHost'] as String,
       uiPassword: map['uiPassword'] as String,

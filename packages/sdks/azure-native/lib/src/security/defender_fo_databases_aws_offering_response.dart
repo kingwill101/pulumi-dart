@@ -45,11 +45,11 @@ class DefenderFoDatabasesAwsOfferingResponse {
 
   factory DefenderFoDatabasesAwsOfferingResponse.fromMap(Map<String, dynamic> map) {
     return DefenderFoDatabasesAwsOfferingResponse(
-      arcAutoProvisioning: map['arcAutoProvisioning'] == null ? null : (DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioning.fromMap((map['arcAutoProvisioning'] as Map).cast<String, dynamic>())).input(),
-      databasesDspm: map['databasesDspm'] == null ? null : (DefenderFoDatabasesAwsOfferingResponseDatabasesDspm.fromMap((map['databasesDspm'] as Map).cast<String, dynamic>())).input(),
+      arcAutoProvisioning: map['arcAutoProvisioning'] == null ? null : (DefenderFoDatabasesAwsOfferingResponseArcAutoProvisioning.fromMap((map['arcAutoProvisioning']! as Map).cast<String, dynamic>())).input(),
+      databasesDspm: map['databasesDspm'] == null ? null : (DefenderFoDatabasesAwsOfferingResponseDatabasesDspm.fromMap((map['databasesDspm']! as Map).cast<String, dynamic>())).input(),
       description: (map['description'] as String).input(),
       offeringType: (map['offeringType'] as String).input(),
-      rds: map['rds'] == null ? null : (DefenderFoDatabasesAwsOfferingResponseRds.fromMap((map['rds'] as Map).cast<String, dynamic>())).input(),
+      rds: map['rds'] == null ? null : (DefenderFoDatabasesAwsOfferingResponseRds.fromMap((map['rds']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

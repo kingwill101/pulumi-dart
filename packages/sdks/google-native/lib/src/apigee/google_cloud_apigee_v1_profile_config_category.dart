@@ -46,12 +46,12 @@ class GoogleCloudApigeeV1ProfileConfigCategory {
 
   factory GoogleCloudApigeeV1ProfileConfigCategory.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1ProfileConfigCategory(
-      abuse: map['abuse'] == null ? null : ((map['abuse'] as Map).cast<String, dynamic>()).input(),
-      authorization: map['authorization'] == null ? null : ((map['authorization'] as Map).cast<String, dynamic>()).input(),
-      cors: map['cors'] == null ? null : ((map['cors'] as Map).cast<String, dynamic>()).input(),
-      mediation: map['mediation'] == null ? null : ((map['mediation'] as Map).cast<String, dynamic>()).input(),
-      mtls: map['mtls'] == null ? null : ((map['mtls'] as Map).cast<String, dynamic>()).input(),
-      threat: map['threat'] == null ? null : ((map['threat'] as Map).cast<String, dynamic>()).input(),
+      abuse: map['abuse'] == null ? null : ((map['abuse']! as Map).cast<String, dynamic>()).input(),
+      authorization: map['authorization'] == null ? null : ((map['authorization']! as Map).cast<String, dynamic>()).input(),
+      cors: map['cors'] == null ? null : ((map['cors']! as Map).cast<String, dynamic>()).input(),
+      mediation: map['mediation'] == null ? null : ((map['mediation']! as Map).cast<String, dynamic>()).input(),
+      mtls: map['mtls'] == null ? null : ((map['mtls']! as Map).cast<String, dynamic>()).input(),
+      threat: map['threat'] == null ? null : ((map['threat']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

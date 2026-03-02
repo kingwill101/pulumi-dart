@@ -115,21 +115,21 @@ class RdsAccountState {
 
   factory RdsAccountState.fromMap(Map<String, dynamic> map) {
     return RdsAccountState(
-      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
-      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
-      checkPolicy: map['checkPolicy'] == null ? null : (map['checkPolicy'] as bool).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword'] as String).input(),
-      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      resetPermissionFlag: map['resetPermissionFlag'] == null ? null : (map['resetPermissionFlag'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
+      checkPolicy: map['checkPolicy'] == null ? null : (map['checkPolicy']! as bool).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword']! as String).input(),
+      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      resetPermissionFlag: map['resetPermissionFlag'] == null ? null : (map['resetPermissionFlag']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

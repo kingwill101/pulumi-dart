@@ -27,8 +27,8 @@ class GalleryImageVersionUefiSettingsResponse {
 
   factory GalleryImageVersionUefiSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionUefiSettingsResponse(
-      additionalSignatures: map['additionalSignatures'] == null ? null : (UefiKeySignaturesResponse.fromMap((map['additionalSignatures'] as Map).cast<String, dynamic>())).input(),
-      signatureTemplateNames: map['signatureTemplateNames'] == null ? null : ((map['signatureTemplateNames'] as List).cast<String>()).input(),
+      additionalSignatures: map['additionalSignatures'] == null ? null : (UefiKeySignaturesResponse.fromMap((map['additionalSignatures']! as Map).cast<String, dynamic>())).input(),
+      signatureTemplateNames: map['signatureTemplateNames'] == null ? null : ((map['signatureTemplateNames']! as List).cast<String>()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ResourcesResponse {
 
   factory ResourcesResponse.fromMap(Map<String, dynamic> map) {
     return ResourcesResponse(
-      requests: map['requests'] == null ? null : (RequestsResponse.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
+      requests: map['requests'] == null ? null : (RequestsResponse.fromMap((map['requests']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

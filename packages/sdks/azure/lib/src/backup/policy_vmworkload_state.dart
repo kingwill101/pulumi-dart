@@ -48,12 +48,12 @@ class PolicyVMWorkloadState {
 
   factory PolicyVMWorkloadState.fromMap(Map<String, dynamic> map) {
     return PolicyVMWorkloadState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protectionPolicies: map['protectionPolicies'] == null ? null : (pulumi.Input.decodeList<PolicyVMWorkloadProtectionPolicy>(map['protectionPolicies'], (value) => PolicyVMWorkloadProtectionPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      settings: map['settings'] == null ? null : (PolicyVMWorkloadSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
-      workloadType: map['workloadType'] == null ? null : (map['workloadType'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protectionPolicies: map['protectionPolicies'] == null ? null : (pulumi.Input.decodeList<PolicyVMWorkloadProtectionPolicy>(map['protectionPolicies']!, (value) => PolicyVMWorkloadProtectionPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      settings: map['settings'] == null ? null : (PolicyVMWorkloadSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
+      workloadType: map['workloadType'] == null ? null : (map['workloadType']! as String).input(),
     );
   }
 }

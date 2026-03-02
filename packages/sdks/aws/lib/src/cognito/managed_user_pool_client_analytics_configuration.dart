@@ -40,11 +40,11 @@ class ManagedUserPoolClientAnalyticsConfiguration {
 
   factory ManagedUserPoolClientAnalyticsConfiguration.fromMap(Map<String, dynamic> map) {
     return ManagedUserPoolClientAnalyticsConfiguration(
-      applicationArn: map['applicationArn'] == null ? null : (map['applicationArn'] as String).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      userDataShared: map['userDataShared'] == null ? null : (map['userDataShared'] as bool).input(),
+      applicationArn: map['applicationArn'] == null ? null : ((map['applicationArn'] as String).input()).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
+      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      userDataShared: map['userDataShared'] == null ? null : ((map['userDataShared'] as bool).input()).input(),
     );
   }
 }

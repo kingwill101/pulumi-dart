@@ -33,9 +33,9 @@ class ConfigServerProperties {
 
   factory ConfigServerProperties.fromMap(Map<String, dynamic> map) {
     return ConfigServerProperties(
-      configServer: map['configServer'] == null ? null : (ConfigServerSettings.fromMap((map['configServer'] as Map).cast<String, dynamic>())).input(),
-      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
-      error: map['error'] == null ? null : (Error.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      configServer: map['configServer'] == null ? null : (ConfigServerSettings.fromMap((map['configServer']! as Map).cast<String, dynamic>())).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
+      error: map['error'] == null ? null : (Error.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ServiceConvergeConfig {
 
   factory ServiceConvergeConfig.fromMap(Map<String, dynamic> map) {
     return ServiceConvergeConfig(
-      delay: map['delay'] == null ? null : (map['delay'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      delay: map['delay'] == null ? null : (map['delay']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

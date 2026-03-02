@@ -54,12 +54,12 @@ class ConnectPeerArgs {
 
   factory ConnectPeerArgs.fromMap(Map<String, dynamic> map) {
     return ConnectPeerArgs(
-      bgpAsn: map['bgpAsn'] == null ? null : (map['bgpAsn'] as String).input(),
+      bgpAsn: map['bgpAsn'] == null ? null : ((map['bgpAsn'] as String).input()).input(),
       insideCidrBlocks: ((map['insideCidrBlocks'] as List).cast<String>()).input(),
       peerAddress: (map['peerAddress'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitGatewayAddress: map['transitGatewayAddress'] == null ? null : (map['transitGatewayAddress'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayAddress: map['transitGatewayAddress'] == null ? null : ((map['transitGatewayAddress'] as String).input()).input(),
       transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
     );
   }

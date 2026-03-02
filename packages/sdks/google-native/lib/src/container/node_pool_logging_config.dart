@@ -22,7 +22,7 @@ class NodePoolLoggingConfig {
 
   factory NodePoolLoggingConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolLoggingConfig(
-      variantConfig: map['variantConfig'] == null ? null : (LoggingVariantConfig.fromMap((map['variantConfig'] as Map).cast<String, dynamic>())).input(),
+      variantConfig: map['variantConfig'] == null ? null : (LoggingVariantConfig.fromMap((map['variantConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

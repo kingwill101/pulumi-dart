@@ -26,8 +26,8 @@ class BandwidthPackageAttachmentState {
 
   factory BandwidthPackageAttachmentState.fromMap(Map<String, dynamic> map) {
     return BandwidthPackageAttachmentState(
-      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
     );
   }
 }

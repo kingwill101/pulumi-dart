@@ -31,9 +31,9 @@ class SoftwareRecipeArtifactGcs {
 
   factory SoftwareRecipeArtifactGcs.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeArtifactGcs(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
-      object: map['object'] == null ? null : (map['object'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
+      object: map['object'] == null ? null : (map['object']! as String).input(),
     );
   }
 }

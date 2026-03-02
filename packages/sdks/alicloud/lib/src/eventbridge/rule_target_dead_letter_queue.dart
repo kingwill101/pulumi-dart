@@ -20,7 +20,7 @@ class RuleTargetDeadLetterQueue {
 
   factory RuleTargetDeadLetterQueue.fromMap(Map<String, dynamic> map) {
     return RuleTargetDeadLetterQueue(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
     );
   }
 }

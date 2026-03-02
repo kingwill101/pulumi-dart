@@ -53,12 +53,12 @@ class ResourceSlicePatchResourceK8sIoV1alpha2Args {
 
   factory ResourceSlicePatchResourceK8sIoV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return ResourceSlicePatchResourceK8sIoV1alpha2Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      namedResources: map['namedResources'] == null ? null : (NamedResourcesResourcesPatch.fromMap((map['namedResources'] as Map).cast<String, dynamic>())).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      driverName: map['driverName'] == null ? null : (map['driverName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      namedResources: map['namedResources'] == null ? null : (NamedResourcesResourcesPatch.fromMap((map['namedResources']! as Map).cast<String, dynamic>())).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
     );
   }
 }

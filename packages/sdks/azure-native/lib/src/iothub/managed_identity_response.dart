@@ -21,7 +21,7 @@ class ManagedIdentityResponse {
 
   factory ManagedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityResponse(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
     );
   }
 }

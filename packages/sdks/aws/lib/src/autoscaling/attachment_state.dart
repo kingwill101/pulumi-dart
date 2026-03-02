@@ -36,10 +36,10 @@ class AttachmentState {
 
   factory AttachmentState.fromMap(Map<String, dynamic> map) {
     return AttachmentState(
-      autoscalingGroupName: map['autoscalingGroupName'] == null ? null : (map['autoscalingGroupName'] as String).input(),
-      elb: map['elb'] == null ? null : (map['elb'] as String).input(),
-      lbTargetGroupArn: map['lbTargetGroupArn'] == null ? null : (map['lbTargetGroupArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      autoscalingGroupName: map['autoscalingGroupName'] == null ? null : ((map['autoscalingGroupName'] as String).input()).input(),
+      elb: map['elb'] == null ? null : ((map['elb'] as String).input()).input(),
+      lbTargetGroupArn: map['lbTargetGroupArn'] == null ? null : ((map['lbTargetGroupArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

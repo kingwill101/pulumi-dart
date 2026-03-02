@@ -25,8 +25,8 @@ class WorkgroupConfigurationEngineVersion {
 
   factory WorkgroupConfigurationEngineVersion.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationEngineVersion(
-      effectiveEngineVersion: map['effectiveEngineVersion'] == null ? null : (map['effectiveEngineVersion'] as String).input(),
-      selectedEngineVersion: map['selectedEngineVersion'] == null ? null : (map['selectedEngineVersion'] as String).input(),
+      effectiveEngineVersion: map['effectiveEngineVersion'] == null ? null : ((map['effectiveEngineVersion'] as String).input()).input(),
+      selectedEngineVersion: map['selectedEngineVersion'] == null ? null : ((map['selectedEngineVersion'] as String).input()).input(),
     );
   }
 }

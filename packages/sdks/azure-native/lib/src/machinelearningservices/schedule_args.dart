@@ -40,7 +40,7 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scheduleProperties: (map['scheduleProperties'] as ScheduleMachinelearningservices).input(),
       workspaceName: (map['workspaceName'] as String).input(),

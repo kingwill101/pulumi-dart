@@ -39,9 +39,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
   factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey(
-      kmsWrapped: map['kmsWrapped'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped.fromMap((map['kmsWrapped'] as Map).cast<String, dynamic>())).input(),
-      transient: map['transient'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient.fromMap((map['transient'] as Map).cast<String, dynamic>())).input(),
-      unwrapped: map['unwrapped'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped.fromMap((map['unwrapped'] as Map).cast<String, dynamic>())).input(),
+      kmsWrapped: map['kmsWrapped'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrapped.fromMap((map['kmsWrapped']! as Map).cast<String, dynamic>())).input(),
+      transient: map['transient'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransient.fromMap((map['transient']! as Map).cast<String, dynamic>())).input(),
+      unwrapped: map['unwrapped'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrapped.fromMap((map['unwrapped']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

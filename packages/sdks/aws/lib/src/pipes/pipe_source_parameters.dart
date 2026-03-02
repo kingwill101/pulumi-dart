@@ -63,14 +63,14 @@ class PipeSourceParameters {
 
   factory PipeSourceParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParameters(
-      activemqBrokerParameters: map['activemqBrokerParameters'] == null ? null : (PipeSourceParametersActivemqBrokerParameters.fromMap((map['activemqBrokerParameters'] as Map).cast<String, dynamic>())).input(),
-      dynamodbStreamParameters: map['dynamodbStreamParameters'] == null ? null : (PipeSourceParametersDynamodbStreamParameters.fromMap((map['dynamodbStreamParameters'] as Map).cast<String, dynamic>())).input(),
-      filterCriteria: map['filterCriteria'] == null ? null : (PipeSourceParametersFilterCriteria.fromMap((map['filterCriteria'] as Map).cast<String, dynamic>())).input(),
-      kinesisStreamParameters: map['kinesisStreamParameters'] == null ? null : (PipeSourceParametersKinesisStreamParameters.fromMap((map['kinesisStreamParameters'] as Map).cast<String, dynamic>())).input(),
-      managedStreamingKafkaParameters: map['managedStreamingKafkaParameters'] == null ? null : (PipeSourceParametersManagedStreamingKafkaParameters.fromMap((map['managedStreamingKafkaParameters'] as Map).cast<String, dynamic>())).input(),
-      rabbitmqBrokerParameters: map['rabbitmqBrokerParameters'] == null ? null : (PipeSourceParametersRabbitmqBrokerParameters.fromMap((map['rabbitmqBrokerParameters'] as Map).cast<String, dynamic>())).input(),
-      selfManagedKafkaParameters: map['selfManagedKafkaParameters'] == null ? null : (PipeSourceParametersSelfManagedKafkaParameters.fromMap((map['selfManagedKafkaParameters'] as Map).cast<String, dynamic>())).input(),
-      sqsQueueParameters: map['sqsQueueParameters'] == null ? null : (PipeSourceParametersSqsQueueParameters.fromMap((map['sqsQueueParameters'] as Map).cast<String, dynamic>())).input(),
+      activemqBrokerParameters: map['activemqBrokerParameters'] == null ? null : ((PipeSourceParametersActivemqBrokerParameters.fromMap((map['activemqBrokerParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      dynamodbStreamParameters: map['dynamodbStreamParameters'] == null ? null : ((PipeSourceParametersDynamodbStreamParameters.fromMap((map['dynamodbStreamParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      filterCriteria: map['filterCriteria'] == null ? null : ((PipeSourceParametersFilterCriteria.fromMap((map['filterCriteria']! as Map).cast<String, dynamic>())).input()).input(),
+      kinesisStreamParameters: map['kinesisStreamParameters'] == null ? null : ((PipeSourceParametersKinesisStreamParameters.fromMap((map['kinesisStreamParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      managedStreamingKafkaParameters: map['managedStreamingKafkaParameters'] == null ? null : ((PipeSourceParametersManagedStreamingKafkaParameters.fromMap((map['managedStreamingKafkaParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      rabbitmqBrokerParameters: map['rabbitmqBrokerParameters'] == null ? null : ((PipeSourceParametersRabbitmqBrokerParameters.fromMap((map['rabbitmqBrokerParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      selfManagedKafkaParameters: map['selfManagedKafkaParameters'] == null ? null : ((PipeSourceParametersSelfManagedKafkaParameters.fromMap((map['selfManagedKafkaParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      sqsQueueParameters: map['sqsQueueParameters'] == null ? null : ((PipeSourceParametersSqsQueueParameters.fromMap((map['sqsQueueParameters']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

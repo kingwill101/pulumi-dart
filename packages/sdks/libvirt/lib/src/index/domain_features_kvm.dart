@@ -45,11 +45,11 @@ class DomainFeaturesKvm {
 
   factory DomainFeaturesKvm.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesKvm(
-      dirtyRing: map['dirtyRing'] == null ? null : (DomainFeaturesKvmDirtyRing.fromMap((map['dirtyRing'] as Map).cast<String, dynamic>())).input(),
-      hidden: map['hidden'] == null ? null : (DomainFeaturesKvmHidden.fromMap((map['hidden'] as Map).cast<String, dynamic>())).input(),
-      hintDedicated: map['hintDedicated'] == null ? null : (DomainFeaturesKvmHintDedicated.fromMap((map['hintDedicated'] as Map).cast<String, dynamic>())).input(),
-      pollControl: map['pollControl'] == null ? null : (DomainFeaturesKvmPollControl.fromMap((map['pollControl'] as Map).cast<String, dynamic>())).input(),
-      pvipi: map['pvipi'] == null ? null : (DomainFeaturesKvmPvipi.fromMap((map['pvipi'] as Map).cast<String, dynamic>())).input(),
+      dirtyRing: map['dirtyRing'] == null ? null : (DomainFeaturesKvmDirtyRing.fromMap((map['dirtyRing']! as Map).cast<String, dynamic>())).input(),
+      hidden: map['hidden'] == null ? null : (DomainFeaturesKvmHidden.fromMap((map['hidden']! as Map).cast<String, dynamic>())).input(),
+      hintDedicated: map['hintDedicated'] == null ? null : (DomainFeaturesKvmHintDedicated.fromMap((map['hintDedicated']! as Map).cast<String, dynamic>())).input(),
+      pollControl: map['pollControl'] == null ? null : (DomainFeaturesKvmPollControl.fromMap((map['pollControl']! as Map).cast<String, dynamic>())).input(),
+      pvipi: map['pvipi'] == null ? null : (DomainFeaturesKvmPvipi.fromMap((map['pvipi']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

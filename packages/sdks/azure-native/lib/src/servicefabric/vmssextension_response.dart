@@ -76,16 +76,16 @@ class VMSSExtensionResponse {
 
   factory VMSSExtensionResponse.fromMap(Map<String, dynamic> map) {
     return VMSSExtensionResponse(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade'] as bool).input(),
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion']! as bool).input(),
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade']! as bool).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag']! as String).input(),
       name: (map['name'] as String).input(),
-      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']).input(),
-      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions'] as List).cast<String>()).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']!).input(),
+      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions']! as List).cast<String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       publisher: (map['publisher'] as String).input(),
-      settings: map['settings'] == null ? null : (map['settings']).input(),
-      setupOrder: map['setupOrder'] == null ? null : ((map['setupOrder'] as List).cast<String>()).input(),
+      settings: map['settings'] == null ? null : (map['settings']!).input(),
+      setupOrder: map['setupOrder'] == null ? null : ((map['setupOrder']! as List).cast<String>()).input(),
       type: (map['type'] as String).input(),
       typeHandlerVersion: (map['typeHandlerVersion'] as String).input(),
     );

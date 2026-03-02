@@ -56,10 +56,10 @@ class ExportPipelineArgs {
 
   factory ExportPipelineArgs.fromMap(Map<String, dynamic> map) {
     return ExportPipelineArgs(
-      exportPipelineName: map['exportPipelineName'] == null ? null : (map['exportPipelineName'] as String).input(),
-      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      options: map['options'] == null ? null : ((map['options'] as List).cast<String>()).input(),
+      exportPipelineName: map['exportPipelineName'] == null ? null : (map['exportPipelineName']! as String).input(),
+      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      options: map['options'] == null ? null : ((map['options']! as List).cast<String>()).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       target: (ExportPipelineTargetProperties.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),

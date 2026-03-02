@@ -24,7 +24,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo {
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo(
-      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesMarketoErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>())).input(),
+      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesMarketoErrorHandlingConfig.fromMap((map['errorHandlingConfig']! as Map).cast<String, dynamic>())).input()).input(),
       object: (map['object'] as String).input(),
     );
   }

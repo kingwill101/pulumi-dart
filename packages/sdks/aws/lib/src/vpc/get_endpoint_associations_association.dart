@@ -63,9 +63,9 @@ class GetEndpointAssociationsAssociation {
     return GetEndpointAssociationsAssociation(
       associatedResourceAccessibility: (map['associatedResourceAccessibility'] as String).input(),
       associatedResourceArn: (map['associatedResourceArn'] as String).input(),
-      dnsEntries: (pulumi.Input.decodeList<GetEndpointAssociationsAssociationDnsEntry>(map['dnsEntries'], (value) => GetEndpointAssociationsAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsEntries: (pulumi.Input.decodeList<GetEndpointAssociationsAssociationDnsEntry>(map['dnsEntries']!, (value) => GetEndpointAssociationsAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
       id: (map['id'] as String).input(),
-      privateDnsEntries: (pulumi.Input.decodeList<GetEndpointAssociationsAssociationPrivateDnsEntry>(map['privateDnsEntries'], (value) => GetEndpointAssociationsAssociationPrivateDnsEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateDnsEntries: (pulumi.Input.decodeList<GetEndpointAssociationsAssociationPrivateDnsEntry>(map['privateDnsEntries']!, (value) => GetEndpointAssociationsAssociationPrivateDnsEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceConfigurationGroupArn: (map['resourceConfigurationGroupArn'] as String).input(),
       serviceNetworkArn: (map['serviceNetworkArn'] as String).input(),
       serviceNetworkName: (map['serviceNetworkName'] as String).input(),

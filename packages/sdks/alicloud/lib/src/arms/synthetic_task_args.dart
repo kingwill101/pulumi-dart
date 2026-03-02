@@ -84,17 +84,17 @@ class SyntheticTaskArgs {
 
   factory SyntheticTaskArgs.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskArgs(
-      availableAssertions: map['availableAssertions'] == null ? null : (pulumi.Input.decodeList<SyntheticTaskAvailableAssertion>(map['availableAssertions'], (value) => SyntheticTaskAvailableAssertion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      commonSetting: map['commonSetting'] == null ? null : (SyntheticTaskCommonSetting.fromMap((map['commonSetting'] as Map).cast<String, dynamic>())).input(),
-      customPeriod: map['customPeriod'] == null ? null : (SyntheticTaskCustomPeriod.fromMap((map['customPeriod'] as Map).cast<String, dynamic>())).input(),
+      availableAssertions: map['availableAssertions'] == null ? null : (pulumi.Input.decodeList<SyntheticTaskAvailableAssertion>(map['availableAssertions']!, (value) => SyntheticTaskAvailableAssertion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commonSetting: map['commonSetting'] == null ? null : (SyntheticTaskCommonSetting.fromMap((map['commonSetting']! as Map).cast<String, dynamic>())).input(),
+      customPeriod: map['customPeriod'] == null ? null : (SyntheticTaskCustomPeriod.fromMap((map['customPeriod']! as Map).cast<String, dynamic>())).input(),
       frequency: (map['frequency'] as String).input(),
       monitorCategory: (map['monitorCategory'] as int).input(),
       monitorConf: (SyntheticTaskMonitorConf.fromMap((map['monitorConf'] as Map).cast<String, dynamic>())).input(),
       monitors: (pulumi.Input.decodeList<SyntheticTaskMonitor>(map['monitors'], (value) => SyntheticTaskMonitor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       syntheticTaskName: (map['syntheticTaskName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       taskType: (map['taskType'] as int).input(),
     );
   }

@@ -21,7 +21,7 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue {
 
   factory GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue.fromMap(Map<String, dynamic> map) {
     return GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue(
-      plainText: map['plainText'] == null ? null : (map['plainText'] as String).input(),
+      plainText: map['plainText'] == null ? null : (map['plainText']! as String).input(),
     );
   }
 }

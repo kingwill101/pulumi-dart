@@ -69,15 +69,15 @@ class ChannelEncoderSettings {
 
   factory ChannelEncoderSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettings(
-      audioDescriptions: map['audioDescriptions'] == null ? null : (pulumi.Input.decodeList<ChannelEncoderSettingsAudioDescription>(map['audioDescriptions'], (value) => ChannelEncoderSettingsAudioDescription.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      availBlanking: map['availBlanking'] == null ? null : (ChannelEncoderSettingsAvailBlanking.fromMap((map['availBlanking'] as Map).cast<String, dynamic>())).input(),
-      captionDescriptions: map['captionDescriptions'] == null ? null : (pulumi.Input.decodeList<ChannelEncoderSettingsCaptionDescription>(map['captionDescriptions'], (value) => ChannelEncoderSettingsCaptionDescription.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      globalConfiguration: map['globalConfiguration'] == null ? null : (ChannelEncoderSettingsGlobalConfiguration.fromMap((map['globalConfiguration'] as Map).cast<String, dynamic>())).input(),
-      motionGraphicsConfiguration: map['motionGraphicsConfiguration'] == null ? null : (ChannelEncoderSettingsMotionGraphicsConfiguration.fromMap((map['motionGraphicsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      nielsenConfiguration: map['nielsenConfiguration'] == null ? null : (ChannelEncoderSettingsNielsenConfiguration.fromMap((map['nielsenConfiguration'] as Map).cast<String, dynamic>())).input(),
-      outputGroups: (pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroup>(map['outputGroups'], (value) => ChannelEncoderSettingsOutputGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timecodeConfig: (ChannelEncoderSettingsTimecodeConfig.fromMap((map['timecodeConfig'] as Map).cast<String, dynamic>())).input(),
-      videoDescriptions: map['videoDescriptions'] == null ? null : (pulumi.Input.decodeList<ChannelEncoderSettingsVideoDescription>(map['videoDescriptions'], (value) => ChannelEncoderSettingsVideoDescription.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      audioDescriptions: map['audioDescriptions'] == null ? null : ((pulumi.Input.decodeList<ChannelEncoderSettingsAudioDescription>(map['audioDescriptions']!, (value) => ChannelEncoderSettingsAudioDescription.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      availBlanking: map['availBlanking'] == null ? null : ((ChannelEncoderSettingsAvailBlanking.fromMap((map['availBlanking']! as Map).cast<String, dynamic>())).input()).input(),
+      captionDescriptions: map['captionDescriptions'] == null ? null : ((pulumi.Input.decodeList<ChannelEncoderSettingsCaptionDescription>(map['captionDescriptions']!, (value) => ChannelEncoderSettingsCaptionDescription.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      globalConfiguration: map['globalConfiguration'] == null ? null : ((ChannelEncoderSettingsGlobalConfiguration.fromMap((map['globalConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      motionGraphicsConfiguration: map['motionGraphicsConfiguration'] == null ? null : ((ChannelEncoderSettingsMotionGraphicsConfiguration.fromMap((map['motionGraphicsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      nielsenConfiguration: map['nielsenConfiguration'] == null ? null : ((ChannelEncoderSettingsNielsenConfiguration.fromMap((map['nielsenConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      outputGroups: (pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroup>(map['outputGroups']!, (value) => ChannelEncoderSettingsOutputGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timecodeConfig: (ChannelEncoderSettingsTimecodeConfig.fromMap((map['timecodeConfig']! as Map).cast<String, dynamic>())).input(),
+      videoDescriptions: map['videoDescriptions'] == null ? null : ((pulumi.Input.decodeList<ChannelEncoderSettingsVideoDescription>(map['videoDescriptions']!, (value) => ChannelEncoderSettingsVideoDescription.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

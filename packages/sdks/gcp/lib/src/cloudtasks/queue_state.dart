@@ -87,16 +87,16 @@ class QueueState {
 
   factory QueueState.fromMap(Map<String, dynamic> map) {
     return QueueState(
-      appEngineRoutingOverride: map['appEngineRoutingOverride'] == null ? null : (QueueAppEngineRoutingOverride.fromMap((map['appEngineRoutingOverride'] as Map).cast<String, dynamic>())).input(),
-      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
-      httpTarget: map['httpTarget'] == null ? null : (QueueHttpTarget.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rateLimits: map['rateLimits'] == null ? null : (QueueRateLimits.fromMap((map['rateLimits'] as Map).cast<String, dynamic>())).input(),
-      retryConfig: map['retryConfig'] == null ? null : (QueueRetryConfig.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())).input(),
-      stackdriverLoggingConfig: map['stackdriverLoggingConfig'] == null ? null : (QueueStackdriverLoggingConfig.fromMap((map['stackdriverLoggingConfig'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      appEngineRoutingOverride: map['appEngineRoutingOverride'] == null ? null : (QueueAppEngineRoutingOverride.fromMap((map['appEngineRoutingOverride']! as Map).cast<String, dynamic>())).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState']! as String).input(),
+      httpTarget: map['httpTarget'] == null ? null : (QueueHttpTarget.fromMap((map['httpTarget']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rateLimits: map['rateLimits'] == null ? null : (QueueRateLimits.fromMap((map['rateLimits']! as Map).cast<String, dynamic>())).input(),
+      retryConfig: map['retryConfig'] == null ? null : (QueueRetryConfig.fromMap((map['retryConfig']! as Map).cast<String, dynamic>())).input(),
+      stackdriverLoggingConfig: map['stackdriverLoggingConfig'] == null ? null : (QueueStackdriverLoggingConfig.fromMap((map['stackdriverLoggingConfig']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

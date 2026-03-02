@@ -31,9 +31,9 @@ class MeshIstio {
 
   factory MeshIstio.fromMap(Map<String, dynamic> map) {
     return MeshIstio(
-      meshUid: map['meshUid'] == null ? null : (map['meshUid'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      serviceNamespace: map['serviceNamespace'] == null ? null : (map['serviceNamespace'] as String).input(),
+      meshUid: map['meshUid'] == null ? null : (map['meshUid']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      serviceNamespace: map['serviceNamespace'] == null ? null : (map['serviceNamespace']! as String).input(),
     );
   }
 }

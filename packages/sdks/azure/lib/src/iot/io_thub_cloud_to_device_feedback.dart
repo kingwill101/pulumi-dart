@@ -30,9 +30,9 @@ class IoTHubCloudToDeviceFeedback {
 
   factory IoTHubCloudToDeviceFeedback.fromMap(Map<String, dynamic> map) {
     return IoTHubCloudToDeviceFeedback(
-      lockDuration: map['lockDuration'] == null ? null : (map['lockDuration'] as String).input(),
-      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount'] as int).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as String).input(),
+      lockDuration: map['lockDuration'] == null ? null : (map['lockDuration']! as String).input(),
+      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount']! as int).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as String).input(),
     );
   }
 }

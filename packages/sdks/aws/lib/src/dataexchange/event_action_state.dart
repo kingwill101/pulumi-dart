@@ -50,12 +50,12 @@ class EventActionState {
 
   factory EventActionState.fromMap(Map<String, dynamic> map) {
     return EventActionState(
-      action: map['action'] == null ? null : (EventActionAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      event: map['event'] == null ? null : (EventActionEvent.fromMap((map['event'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      action: map['action'] == null ? null : ((EventActionAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      event: map['event'] == null ? null : ((EventActionEvent.fromMap((map['event']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
     );
   }
 }

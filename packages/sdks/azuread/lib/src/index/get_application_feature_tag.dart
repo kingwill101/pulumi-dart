@@ -35,10 +35,10 @@ class GetApplicationFeatureTag {
 
   factory GetApplicationFeatureTag.fromMap(Map<String, dynamic> map) {
     return GetApplicationFeatureTag(
-      customSingleSignOn: map['customSingleSignOn'] == null ? null : (map['customSingleSignOn'] as bool).input(),
-      enterprise: map['enterprise'] == null ? null : (map['enterprise'] as bool).input(),
-      gallery: map['gallery'] == null ? null : (map['gallery'] as bool).input(),
-      hide: map['hide'] == null ? null : (map['hide'] as bool).input(),
+      customSingleSignOn: map['customSingleSignOn'] == null ? null : (map['customSingleSignOn']! as bool).input(),
+      enterprise: map['enterprise'] == null ? null : (map['enterprise']! as bool).input(),
+      gallery: map['gallery'] == null ? null : (map['gallery']! as bool).input(),
+      hide: map['hide'] == null ? null : (map['hide']! as bool).input(),
     );
   }
 }

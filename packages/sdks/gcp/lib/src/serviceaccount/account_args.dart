@@ -56,12 +56,12 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

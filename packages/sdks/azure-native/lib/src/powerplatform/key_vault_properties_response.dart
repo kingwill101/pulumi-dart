@@ -27,8 +27,8 @@ class KeyVaultPropertiesResponse {
 
   factory KeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPropertiesResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      key: map['key'] == null ? null : (KeyPropertiesResponse.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      key: map['key'] == null ? null : (KeyPropertiesResponse.fromMap((map['key']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

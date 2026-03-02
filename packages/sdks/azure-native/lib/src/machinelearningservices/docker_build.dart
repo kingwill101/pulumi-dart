@@ -41,10 +41,10 @@ class DockerBuild {
 
   factory DockerBuild.fromMap(Map<String, dynamic> map) {
     return DockerBuild(
-      context: map['context'] == null ? null : (map['context'] as String).input(),
+      context: map['context'] == null ? null : (map['context']! as String).input(),
       dockerSpecificationType: (map['dockerSpecificationType'] as String).input(),
       dockerfile: (map['dockerfile'] as String).input(),
-      platform: map['platform'] == null ? null : (DockerImagePlatform.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
+      platform: map['platform'] == null ? null : (DockerImagePlatform.fromMap((map['platform']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

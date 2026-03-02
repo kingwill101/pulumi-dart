@@ -20,7 +20,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert {
 
   factory NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert(
-      gcpSecretManagerSecretUri: map['gcpSecretManagerSecretUri'] == null ? null : (map['gcpSecretManagerSecretUri'] as String).input(),
+      gcpSecretManagerSecretUri: map['gcpSecretManagerSecretUri'] == null ? null : (map['gcpSecretManagerSecretUri']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ExpressionWarningPatch {
 
   factory ExpressionWarningPatch.fromMap(Map<String, dynamic> map) {
     return ExpressionWarningPatch(
-      fieldRef: map['fieldRef'] == null ? null : (map['fieldRef'] as String).input(),
-      warning: map['warning'] == null ? null : (map['warning'] as String).input(),
+      fieldRef: map['fieldRef'] == null ? null : (map['fieldRef']! as String).input(),
+      warning: map['warning'] == null ? null : (map['warning']! as String).input(),
     );
   }
 }

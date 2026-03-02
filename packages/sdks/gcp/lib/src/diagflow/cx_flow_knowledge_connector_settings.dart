@@ -48,11 +48,11 @@ class CxFlowKnowledgeConnectorSettings {
 
   factory CxFlowKnowledgeConnectorSettings.fromMap(Map<String, dynamic> map) {
     return CxFlowKnowledgeConnectorSettings(
-      dataStoreConnections: map['dataStoreConnections'] == null ? null : (pulumi.Input.decodeList<CxFlowKnowledgeConnectorSettingsDataStoreConnection>(map['dataStoreConnections'], (value) => CxFlowKnowledgeConnectorSettingsDataStoreConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      targetFlow: map['targetFlow'] == null ? null : (map['targetFlow'] as String).input(),
-      targetPage: map['targetPage'] == null ? null : (map['targetPage'] as String).input(),
-      triggerFulfillment: map['triggerFulfillment'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillment.fromMap((map['triggerFulfillment'] as Map).cast<String, dynamic>())).input(),
+      dataStoreConnections: map['dataStoreConnections'] == null ? null : (pulumi.Input.decodeList<CxFlowKnowledgeConnectorSettingsDataStoreConnection>(map['dataStoreConnections']!, (value) => CxFlowKnowledgeConnectorSettingsDataStoreConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      targetFlow: map['targetFlow'] == null ? null : (map['targetFlow']! as String).input(),
+      targetPage: map['targetPage'] == null ? null : (map['targetPage']! as String).input(),
+      triggerFulfillment: map['triggerFulfillment'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillment.fromMap((map['triggerFulfillment']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

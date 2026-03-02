@@ -31,9 +31,9 @@ class RestApiPolicyState {
 
   factory RestApiPolicyState.fromMap(Map<String, dynamic> map) {
     return RestApiPolicyState(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restApiId: map['restApiId'] == null ? null : (map['restApiId'] as String).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restApiId: map['restApiId'] == null ? null : ((map['restApiId'] as String).input()).input(),
     );
   }
 }

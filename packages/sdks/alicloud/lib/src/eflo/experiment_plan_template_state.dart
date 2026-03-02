@@ -49,12 +49,12 @@ class ExperimentPlanTemplateState {
 
   factory ExperimentPlanTemplateState.fromMap(Map<String, dynamic> map) {
     return ExperimentPlanTemplateState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      privacyLevel: map['privacyLevel'] == null ? null : (map['privacyLevel'] as String).input(),
-      templateDescription: map['templateDescription'] == null ? null : (map['templateDescription'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
-      templatePipelines: map['templatePipelines'] == null ? null : (pulumi.Input.decodeList<ExperimentPlanTemplateTemplatePipeline>(map['templatePipelines'], (value) => ExperimentPlanTemplateTemplatePipeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      privacyLevel: map['privacyLevel'] == null ? null : (map['privacyLevel']! as String).input(),
+      templateDescription: map['templateDescription'] == null ? null : (map['templateDescription']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
+      templatePipelines: map['templatePipelines'] == null ? null : (pulumi.Input.decodeList<ExperimentPlanTemplateTemplatePipeline>(map['templatePipelines']!, (value) => ExperimentPlanTemplateTemplatePipeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

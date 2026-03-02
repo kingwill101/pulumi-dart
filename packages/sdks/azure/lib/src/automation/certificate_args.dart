@@ -51,9 +51,9 @@ class CertificateArgs {
     return CertificateArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
       base64: (map['base64'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      exportable: map['exportable'] == null ? null : (map['exportable'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      exportable: map['exportable'] == null ? null : (map['exportable']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

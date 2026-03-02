@@ -66,15 +66,15 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      autoConfigEnabled: map['autoConfigEnabled'] == null ? null : (map['autoConfigEnabled'] as bool).input(),
-      autoCreate: map['autoCreate'] == null ? null : (map['autoCreate'] as bool).input(),
-      cweMonitorEnabled: map['cweMonitorEnabled'] == null ? null : (map['cweMonitorEnabled'] as bool).input(),
-      groupingType: map['groupingType'] == null ? null : (map['groupingType'] as String).input(),
-      opsCenterEnabled: map['opsCenterEnabled'] == null ? null : (map['opsCenterEnabled'] as bool).input(),
-      opsItemSnsTopicArn: map['opsItemSnsTopicArn'] == null ? null : (map['opsItemSnsTopicArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      autoConfigEnabled: map['autoConfigEnabled'] == null ? null : ((map['autoConfigEnabled'] as bool).input()).input(),
+      autoCreate: map['autoCreate'] == null ? null : ((map['autoCreate'] as bool).input()).input(),
+      cweMonitorEnabled: map['cweMonitorEnabled'] == null ? null : ((map['cweMonitorEnabled'] as bool).input()).input(),
+      groupingType: map['groupingType'] == null ? null : ((map['groupingType'] as String).input()).input(),
+      opsCenterEnabled: map['opsCenterEnabled'] == null ? null : ((map['opsCenterEnabled'] as bool).input()).input(),
+      opsItemSnsTopicArn: map['opsItemSnsTopicArn'] == null ? null : ((map['opsItemSnsTopicArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

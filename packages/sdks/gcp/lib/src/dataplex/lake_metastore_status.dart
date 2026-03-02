@@ -35,10 +35,10 @@ class LakeMetastoreStatus {
 
   factory LakeMetastoreStatus.fromMap(Map<String, dynamic> map) {
     return LakeMetastoreStatus(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

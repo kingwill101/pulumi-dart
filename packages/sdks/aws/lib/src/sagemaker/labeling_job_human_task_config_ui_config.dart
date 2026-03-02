@@ -25,8 +25,8 @@ class LabelingJobHumanTaskConfigUiConfig {
 
   factory LabelingJobHumanTaskConfigUiConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobHumanTaskConfigUiConfig(
-      humanTaskUiArn: map['humanTaskUiArn'] == null ? null : (map['humanTaskUiArn'] as String).input(),
-      uiTemplateS3Uri: map['uiTemplateS3Uri'] == null ? null : (map['uiTemplateS3Uri'] as String).input(),
+      humanTaskUiArn: map['humanTaskUiArn'] == null ? null : ((map['humanTaskUiArn'] as String).input()).input(),
+      uiTemplateS3Uri: map['uiTemplateS3Uri'] == null ? null : ((map['uiTemplateS3Uri'] as String).input()).input(),
     );
   }
 }

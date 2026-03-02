@@ -22,7 +22,7 @@ class RecordingStrategyResponse {
 
   factory RecordingStrategyResponse.fromMap(Map<String, dynamic> map) {
     return RecordingStrategyResponse(
-      useOnly: map['useOnly'] == null ? null : (RecordingStrategyTypeEnumValueResponse.fromMap((map['useOnly'] as Map).cast<String, dynamic>())).input(),
+      useOnly: map['useOnly'] == null ? null : (RecordingStrategyTypeEnumValueResponse.fromMap((map['useOnly']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

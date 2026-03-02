@@ -34,9 +34,9 @@ class LogConfigGameservicesV1beta {
 
   factory LogConfigGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return LogConfigGameservicesV1beta(
-      cloudAudit: map['cloudAudit'] == null ? null : (CloudAuditOptionsGameservicesV1beta.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>())).input(),
-      counter: map['counter'] == null ? null : (CounterOptionsGameservicesV1beta.fromMap((map['counter'] as Map).cast<String, dynamic>())).input(),
-      dataAccess: map['dataAccess'] == null ? null : (DataAccessOptionsGameservicesV1beta.fromMap((map['dataAccess'] as Map).cast<String, dynamic>())).input(),
+      cloudAudit: map['cloudAudit'] == null ? null : (CloudAuditOptionsGameservicesV1beta.fromMap((map['cloudAudit']! as Map).cast<String, dynamic>())).input(),
+      counter: map['counter'] == null ? null : (CounterOptionsGameservicesV1beta.fromMap((map['counter']! as Map).cast<String, dynamic>())).input(),
+      dataAccess: map['dataAccess'] == null ? null : (DataAccessOptionsGameservicesV1beta.fromMap((map['dataAccess']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

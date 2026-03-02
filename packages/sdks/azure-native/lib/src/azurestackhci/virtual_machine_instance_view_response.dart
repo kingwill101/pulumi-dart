@@ -22,7 +22,7 @@ class VirtualMachineInstanceViewResponse {
 
   factory VirtualMachineInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstanceViewResponse(
-      vmAgent: map['vmAgent'] == null ? null : (VirtualMachineConfigAgentInstanceViewResponse.fromMap((map['vmAgent'] as Map).cast<String, dynamic>())).input(),
+      vmAgent: map['vmAgent'] == null ? null : (VirtualMachineConfigAgentInstanceViewResponse.fromMap((map['vmAgent']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

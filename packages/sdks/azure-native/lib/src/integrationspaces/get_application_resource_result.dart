@@ -66,7 +66,7 @@ class GetApplicationResourceResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceId: map['resourceId'] as String,
-      resourceKind: map['resourceKind'] == null ? null : map['resourceKind'] as String,
+      resourceKind: map['resourceKind'] == null ? null : map['resourceKind']! as String,
       resourceType: map['resourceType'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

@@ -67,15 +67,15 @@ class CosmosDbSqlApiSource {
 
   factory CosmosDbSqlApiSource.fromMap(Map<String, dynamic> map) {
     return CosmosDbSqlApiSource(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      detectDatetime: map['detectDatetime'] == null ? null : (map['detectDatetime']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize']).input(),
-      preferredRegions: map['preferredRegions'] == null ? null : (map['preferredRegions']).input(),
-      query: map['query'] == null ? null : (map['query']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      detectDatetime: map['detectDatetime'] == null ? null : (map['detectDatetime']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']!).input(),
+      preferredRegions: map['preferredRegions'] == null ? null : (map['preferredRegions']!).input(),
+      query: map['query'] == null ? null : (map['query']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
       type: (map['type'] as String).input(),
     );
   }

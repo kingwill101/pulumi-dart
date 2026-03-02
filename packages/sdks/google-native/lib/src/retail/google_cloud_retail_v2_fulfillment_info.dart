@@ -26,8 +26,8 @@ class GoogleCloudRetailV2FulfillmentInfo {
 
   factory GoogleCloudRetailV2FulfillmentInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2FulfillmentInfo(
-      placeIds: map['placeIds'] == null ? null : ((map['placeIds'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      placeIds: map['placeIds'] == null ? null : ((map['placeIds']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

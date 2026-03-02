@@ -35,7 +35,7 @@ class GetProductResult {
 
   factory GetProductResult.fromMap(Map<String, dynamic> map) {
     return GetProductResult(
-      filters: pulumi.Input.decodeList<GetProductFilter>(map['filters'], (value) => GetProductFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: pulumi.Input.decodeList<GetProductFilter>(map['filters']!, (value) => GetProductFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       result: map['result'] as String,
       serviceCode: map['serviceCode'] as String,

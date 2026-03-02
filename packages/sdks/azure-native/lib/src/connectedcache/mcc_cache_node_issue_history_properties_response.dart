@@ -34,7 +34,7 @@ class MccCacheNodeIssueHistoryPropertiesResponse {
     return MccCacheNodeIssueHistoryPropertiesResponse(
       cacheNodeId: (map['cacheNodeId'] as String).input(),
       customerId: (map['customerId'] as String).input(),
-      mccIssueHistory: map['mccIssueHistory'] == null ? null : (pulumi.Input.decodeList<MccIssueResponse>(map['mccIssueHistory'], (value) => MccIssueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mccIssueHistory: map['mccIssueHistory'] == null ? null : (pulumi.Input.decodeList<MccIssueResponse>(map['mccIssueHistory']!, (value) => MccIssueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

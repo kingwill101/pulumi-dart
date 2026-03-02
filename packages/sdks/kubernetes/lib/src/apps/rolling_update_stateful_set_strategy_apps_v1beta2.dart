@@ -21,7 +21,7 @@ class RollingUpdateStatefulSetStrategyAppsV1beta2 {
 
   factory RollingUpdateStatefulSetStrategyAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return RollingUpdateStatefulSetStrategyAppsV1beta2(
-      partition: map['partition'] == null ? null : (map['partition'] as int).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as int).input(),
     );
   }
 }

@@ -40,10 +40,10 @@ class InstanceAllowedIpAttachmentState {
 
   factory InstanceAllowedIpAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAllowedIpAttachmentState(
-      allowedIp: map['allowedIp'] == null ? null : (map['allowedIp'] as String).input(),
-      allowedType: map['allowedType'] == null ? null : (map['allowedType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      portRange: map['portRange'] == null ? null : (map['portRange'] as String).input(),
+      allowedIp: map['allowedIp'] == null ? null : (map['allowedIp']! as String).input(),
+      allowedType: map['allowedType'] == null ? null : (map['allowedType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      portRange: map['portRange'] == null ? null : (map['portRange']! as String).input(),
     );
   }
 }

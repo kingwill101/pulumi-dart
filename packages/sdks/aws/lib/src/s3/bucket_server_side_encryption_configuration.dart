@@ -21,7 +21,7 @@ class BucketServerSideEncryptionConfiguration {
 
   factory BucketServerSideEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketServerSideEncryptionConfiguration(
-      rule: (BucketServerSideEncryptionConfigurationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      rule: (BucketServerSideEncryptionConfigurationRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

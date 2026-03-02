@@ -79,16 +79,16 @@ class ShareState {
 
   factory ShareState.fromMap(Map<String, dynamic> map) {
     return ShareState(
-      accessTier: map['accessTier'] == null ? null : (map['accessTier'] as String).input(),
-      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<ShareAcl>(map['acls'], (value) => ShareAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabledProtocol: map['enabledProtocol'] == null ? null : (map['enabledProtocol'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      quota: map['quota'] == null ? null : (map['quota'] as int).input(),
-      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      accessTier: map['accessTier'] == null ? null : (map['accessTier']! as String).input(),
+      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<ShareAcl>(map['acls']!, (value) => ShareAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabledProtocol: map['enabledProtocol'] == null ? null : (map['enabledProtocol']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      quota: map['quota'] == null ? null : (map['quota']! as int).input(),
+      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

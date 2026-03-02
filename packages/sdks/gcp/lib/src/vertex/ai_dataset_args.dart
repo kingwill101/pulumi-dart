@@ -56,11 +56,11 @@ class AiDatasetArgs {
   factory AiDatasetArgs.fromMap(Map<String, dynamic> map) {
     return AiDatasetArgs(
       displayName: (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiDatasetEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiDatasetEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       metadataSchemaUri: (map['metadataSchemaUri'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

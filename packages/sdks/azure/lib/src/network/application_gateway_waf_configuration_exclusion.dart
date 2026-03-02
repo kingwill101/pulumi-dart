@@ -31,8 +31,8 @@ class ApplicationGatewayWafConfigurationExclusion {
   factory ApplicationGatewayWafConfigurationExclusion.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayWafConfigurationExclusion(
       matchVariable: (map['matchVariable'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
-      selectorMatchOperator: map['selectorMatchOperator'] == null ? null : (map['selectorMatchOperator'] as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
+      selectorMatchOperator: map['selectorMatchOperator'] == null ? null : (map['selectorMatchOperator']! as String).input(),
     );
   }
 }

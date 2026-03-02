@@ -31,9 +31,9 @@ class HourlySchedule {
 
   factory HourlySchedule.fromMap(Map<String, dynamic> map) {
     return HourlySchedule(
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      scheduleWindowDuration: map['scheduleWindowDuration'] == null ? null : (map['scheduleWindowDuration'] as int).input(),
-      scheduleWindowStartTime: map['scheduleWindowStartTime'] == null ? null : (map['scheduleWindowStartTime'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      scheduleWindowDuration: map['scheduleWindowDuration'] == null ? null : (map['scheduleWindowDuration']! as int).input(),
+      scheduleWindowStartTime: map['scheduleWindowStartTime'] == null ? null : (map['scheduleWindowStartTime']! as String).input(),
     );
   }
 }

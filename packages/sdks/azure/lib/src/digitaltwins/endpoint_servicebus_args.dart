@@ -44,9 +44,9 @@ class EndpointServicebusArgs {
 
   factory EndpointServicebusArgs.fromMap(Map<String, dynamic> map) {
     return EndpointServicebusArgs(
-      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret'] as String).input(),
+      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret']! as String).input(),
       digitalTwinsId: (map['digitalTwinsId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       servicebusPrimaryConnectionString: (map['servicebusPrimaryConnectionString'] as String).input(),
       servicebusSecondaryConnectionString: (map['servicebusSecondaryConnectionString'] as String).input(),
     );

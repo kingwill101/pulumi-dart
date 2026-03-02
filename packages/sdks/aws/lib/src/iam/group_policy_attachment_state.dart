@@ -26,8 +26,8 @@ class GroupPolicyAttachmentState {
 
   factory GroupPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAttachmentState(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      policyArn: map['policyArn'] == null ? null : (map['policyArn'] as String).input(),
+      group: map['group'] == null ? null : ((map['group'] as String).input()).input(),
+      policyArn: map['policyArn'] == null ? null : ((map['policyArn'] as String).input()).input(),
     );
   }
 }

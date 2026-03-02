@@ -43,7 +43,7 @@ class EnvironmentLastDeployment {
       deploymentId: (map['deploymentId'] as String).input(),
       deploymentStatus: (map['deploymentStatus'] as String).input(),
       deploymentType: (map['deploymentType'] as String).input(),
-      failureReasons: (pulumi.Input.decodeList<EnvironmentLastDeploymentFailureReason>(map['failureReasons'], (value) => EnvironmentLastDeploymentFailureReason.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failureReasons: (pulumi.Input.decodeList<EnvironmentLastDeploymentFailureReason>(map['failureReasons']!, (value) => EnvironmentLastDeploymentFailureReason.fromMap((value as Map).cast<String, dynamic>()))).input(),
       isDeploymentComplete: (map['isDeploymentComplete'] as bool).input(),
       messages: ((map['messages'] as List).cast<String>()).input(),
     );

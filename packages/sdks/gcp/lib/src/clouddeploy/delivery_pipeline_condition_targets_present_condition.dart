@@ -30,9 +30,9 @@ class DeliveryPipelineConditionTargetsPresentCondition {
 
   factory DeliveryPipelineConditionTargetsPresentCondition.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineConditionTargetsPresentCondition(
-      missingTargets: map['missingTargets'] == null ? null : ((map['missingTargets'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as bool).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      missingTargets: map['missingTargets'] == null ? null : ((map['missingTargets']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as bool).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

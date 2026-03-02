@@ -32,9 +32,9 @@ class VirtualMachinePropertiesResponseLinuxConfiguration {
 
   factory VirtualMachinePropertiesResponseLinuxConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesResponseLinuxConfiguration(
-      disablePasswordAuthentication: map['disablePasswordAuthentication'] == null ? null : (map['disablePasswordAuthentication'] as bool).input(),
-      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent'] as bool).input(),
-      ssh: map['ssh'] == null ? null : (VirtualMachinePropertiesResponseSsh.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
+      disablePasswordAuthentication: map['disablePasswordAuthentication'] == null ? null : (map['disablePasswordAuthentication']! as bool).input(),
+      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent']! as bool).input(),
+      ssh: map['ssh'] == null ? null : (VirtualMachinePropertiesResponseSsh.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

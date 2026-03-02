@@ -25,8 +25,8 @@ class NodePoolEfloNodeGroup {
 
   factory NodePoolEfloNodeGroup.fromMap(Map<String, dynamic> map) {
     return NodePoolEfloNodeGroup(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
     );
   }
 }

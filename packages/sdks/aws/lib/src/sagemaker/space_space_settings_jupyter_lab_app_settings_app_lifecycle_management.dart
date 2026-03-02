@@ -21,7 +21,7 @@ class SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement {
 
   factory SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement(
-      idleSettings: map['idleSettings'] == null ? null : (SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings'] as Map).cast<String, dynamic>())).input(),
+      idleSettings: map['idleSettings'] == null ? null : ((SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

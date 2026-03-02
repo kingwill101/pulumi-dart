@@ -70,15 +70,15 @@ class TimeSeriesDatabaseConnectionArgs {
   factory TimeSeriesDatabaseConnectionArgs.fromMap(Map<String, dynamic> map) {
     return TimeSeriesDatabaseConnectionArgs(
       digitalTwinsId: (map['digitalTwinsId'] as String).input(),
-      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName'] as String).input(),
+      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName']! as String).input(),
       eventhubName: (map['eventhubName'] as String).input(),
       eventhubNamespaceEndpointUri: (map['eventhubNamespaceEndpointUri'] as String).input(),
       eventhubNamespaceId: (map['eventhubNamespaceId'] as String).input(),
       kustoClusterId: (map['kustoClusterId'] as String).input(),
       kustoClusterUri: (map['kustoClusterUri'] as String).input(),
       kustoDatabaseName: (map['kustoDatabaseName'] as String).input(),
-      kustoTableName: map['kustoTableName'] == null ? null : (map['kustoTableName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      kustoTableName: map['kustoTableName'] == null ? null : (map['kustoTableName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

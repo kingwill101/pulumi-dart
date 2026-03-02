@@ -37,10 +37,10 @@ class AppAttachPackageProperties {
 
   factory AppAttachPackageProperties.fromMap(Map<String, dynamic> map) {
     return AppAttachPackageProperties(
-      failHealthCheckOnStagingFailure: map['failHealthCheckOnStagingFailure'] == null ? null : (map['failHealthCheckOnStagingFailure'] as String).input(),
-      hostPoolReferences: map['hostPoolReferences'] == null ? null : ((map['hostPoolReferences'] as List).cast<String>()).input(),
-      image: map['image'] == null ? null : (AppAttachPackageInfoProperties.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      keyVaultURL: map['keyVaultURL'] == null ? null : (map['keyVaultURL'] as String).input(),
+      failHealthCheckOnStagingFailure: map['failHealthCheckOnStagingFailure'] == null ? null : (map['failHealthCheckOnStagingFailure']! as String).input(),
+      hostPoolReferences: map['hostPoolReferences'] == null ? null : ((map['hostPoolReferences']! as List).cast<String>()).input(),
+      image: map['image'] == null ? null : (AppAttachPackageInfoProperties.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
+      keyVaultURL: map['keyVaultURL'] == null ? null : (map['keyVaultURL']! as String).input(),
     );
   }
 }

@@ -38,7 +38,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetails {
     return FrameworkDeploymentCloudControlMetadataCloudControlDetails(
       majorRevisionId: (map['majorRevisionId'] as String).input(),
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter>(map['parameters'], (value) => FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter>(map['parameters']!, (value) => FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

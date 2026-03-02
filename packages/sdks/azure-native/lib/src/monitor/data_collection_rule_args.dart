@@ -85,18 +85,18 @@ class DataCollectionRuleArgs {
 
   factory DataCollectionRuleArgs.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleArgs(
-      dataCollectionEndpointId: map['dataCollectionEndpointId'] == null ? null : (map['dataCollectionEndpointId'] as String).input(),
-      dataCollectionRuleName: map['dataCollectionRuleName'] == null ? null : (map['dataCollectionRuleName'] as String).input(),
-      dataFlows: map['dataFlows'] == null ? null : (pulumi.Input.decodeList<DataFlow>(map['dataFlows'], (value) => DataFlow.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataSources: map['dataSources'] == null ? null : (DataCollectionRuleDataSources.fromMap((map['dataSources'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinations: map['destinations'] == null ? null : (DataCollectionRuleDestinations.fromMap((map['destinations'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (DataCollectionRuleResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      dataCollectionEndpointId: map['dataCollectionEndpointId'] == null ? null : (map['dataCollectionEndpointId']! as String).input(),
+      dataCollectionRuleName: map['dataCollectionRuleName'] == null ? null : (map['dataCollectionRuleName']! as String).input(),
+      dataFlows: map['dataFlows'] == null ? null : (pulumi.Input.decodeList<DataFlow>(map['dataFlows']!, (value) => DataFlow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSources: map['dataSources'] == null ? null : (DataCollectionRuleDataSources.fromMap((map['dataSources']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinations: map['destinations'] == null ? null : (DataCollectionRuleDestinations.fromMap((map['destinations']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (DataCollectionRuleResourceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      streamDeclarations: map['streamDeclarations'] == null ? null : (pulumi.Input.decodeMapValues<StreamDeclaration>(map['streamDeclarations'], (value) => StreamDeclaration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      streamDeclarations: map['streamDeclarations'] == null ? null : (pulumi.Input.decodeMapValues<StreamDeclaration>(map['streamDeclarations']!, (value) => StreamDeclaration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

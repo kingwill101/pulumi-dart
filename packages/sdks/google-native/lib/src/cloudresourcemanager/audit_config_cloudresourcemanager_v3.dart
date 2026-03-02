@@ -27,8 +27,8 @@ class AuditConfigCloudresourcemanagerV3 {
 
   factory AuditConfigCloudresourcemanagerV3.fromMap(Map<String, dynamic> map) {
     return AuditConfigCloudresourcemanagerV3(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigCloudresourcemanagerV3>(map['auditLogConfigs'], (value) => AuditLogConfigCloudresourcemanagerV3.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigCloudresourcemanagerV3>(map['auditLogConfigs']!, (value) => AuditLogConfigCloudresourcemanagerV3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

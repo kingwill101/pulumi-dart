@@ -21,7 +21,7 @@ class ArchitectureValuesEnumValueResponse {
 
   factory ArchitectureValuesEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ArchitectureValuesEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

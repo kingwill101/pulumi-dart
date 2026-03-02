@@ -68,14 +68,14 @@ class WorkerPoolArgs {
 
   factory WorkerPoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkerPoolArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (WorkerPoolNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      privateServiceConnect: map['privateServiceConnect'] == null ? null : (WorkerPoolPrivateServiceConnect.fromMap((map['privateServiceConnect'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      workerConfig: map['workerConfig'] == null ? null : (WorkerPoolWorkerConfig.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (WorkerPoolNetworkConfig.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input(),
+      privateServiceConnect: map['privateServiceConnect'] == null ? null : (WorkerPoolPrivateServiceConnect.fromMap((map['privateServiceConnect']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      workerConfig: map['workerConfig'] == null ? null : (WorkerPoolWorkerConfig.fromMap((map['workerConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

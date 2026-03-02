@@ -41,10 +41,10 @@ class UrlFileNameMatchConditionParametersResponse {
 
   factory UrlFileNameMatchConditionParametersResponse.fromMap(Map<String, dynamic> map) {
     return UrlFileNameMatchConditionParametersResponse(
-      matchValues: map['matchValues'] == null ? null : ((map['matchValues'] as List).cast<String>()).input(),
-      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
+      matchValues: map['matchValues'] == null ? null : ((map['matchValues']! as List).cast<String>()).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition']! as bool).input(),
       operator: (map['operator'] as String).input(),
-      transforms: map['transforms'] == null ? null : ((map['transforms'] as List).cast<String>()).input(),
+      transforms: map['transforms'] == null ? null : ((map['transforms']! as List).cast<String>()).input(),
       typeName: (map['typeName'] as String).input(),
     );
   }

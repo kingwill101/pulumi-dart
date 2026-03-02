@@ -20,7 +20,7 @@ class V3FunctionCustomContainerConfigAccelerationInfo {
 
   factory V3FunctionCustomContainerConfigAccelerationInfo.fromMap(Map<String, dynamic> map) {
     return V3FunctionCustomContainerConfigAccelerationInfo(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

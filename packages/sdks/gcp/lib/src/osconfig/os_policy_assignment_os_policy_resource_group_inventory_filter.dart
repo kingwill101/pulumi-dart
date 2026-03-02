@@ -29,7 +29,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter {
   factory OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter(
       osShortName: (map['osShortName'] as String).input(),
-      osVersion: map['osVersion'] == null ? null : (map['osVersion'] as String).input(),
+      osVersion: map['osVersion'] == null ? null : (map['osVersion']! as String).input(),
     );
   }
 }

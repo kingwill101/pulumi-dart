@@ -46,12 +46,12 @@ class DbNodeState {
 
   factory DbNodeState.fromMap(Map<String, dynamic> map) {
     return DbNodeState(
-      classCode: map['classCode'] == null ? null : (map['classCode'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      nodeRegionId: map['nodeRegionId'] == null ? null : (map['nodeRegionId'] as String).input(),
-      nodeRole: map['nodeRole'] == null ? null : (map['nodeRole'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      classCode: map['classCode'] == null ? null : (map['classCode']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      nodeRegionId: map['nodeRegionId'] == null ? null : (map['nodeRegionId']! as String).input(),
+      nodeRole: map['nodeRole'] == null ? null : (map['nodeRole']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

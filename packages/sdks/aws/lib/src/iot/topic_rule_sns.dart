@@ -30,7 +30,7 @@ class TopicRuleSns {
 
   factory TopicRuleSns.fromMap(Map<String, dynamic> map) {
     return TopicRuleSns(
-      messageFormat: map['messageFormat'] == null ? null : (map['messageFormat'] as String).input(),
+      messageFormat: map['messageFormat'] == null ? null : ((map['messageFormat'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
       targetArn: (map['targetArn'] as String).input(),
     );

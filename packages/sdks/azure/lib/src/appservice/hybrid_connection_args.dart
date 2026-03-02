@@ -54,7 +54,7 @@ class HybridConnectionArgs {
       port: (map['port'] as int).input(),
       relayId: (map['relayId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName'] as String).input(),
+      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName']! as String).input(),
     );
   }
 }

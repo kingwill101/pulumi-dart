@@ -44,11 +44,11 @@ class IdentityServiceAuthMethodGkehubV1beta {
 
   factory IdentityServiceAuthMethodGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return IdentityServiceAuthMethodGkehubV1beta(
-      azureadConfig: map['azureadConfig'] == null ? null : (IdentityServiceAzureADConfigGkehubV1beta.fromMap((map['azureadConfig'] as Map).cast<String, dynamic>())).input(),
-      googleConfig: map['googleConfig'] == null ? null : (IdentityServiceGoogleConfigGkehubV1beta.fromMap((map['googleConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      oidcConfig: map['oidcConfig'] == null ? null : (IdentityServiceOidcConfigGkehubV1beta.fromMap((map['oidcConfig'] as Map).cast<String, dynamic>())).input(),
-      proxy: map['proxy'] == null ? null : (map['proxy'] as String).input(),
+      azureadConfig: map['azureadConfig'] == null ? null : (IdentityServiceAzureADConfigGkehubV1beta.fromMap((map['azureadConfig']! as Map).cast<String, dynamic>())).input(),
+      googleConfig: map['googleConfig'] == null ? null : (IdentityServiceGoogleConfigGkehubV1beta.fromMap((map['googleConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      oidcConfig: map['oidcConfig'] == null ? null : (IdentityServiceOidcConfigGkehubV1beta.fromMap((map['oidcConfig']! as Map).cast<String, dynamic>())).input(),
+      proxy: map['proxy'] == null ? null : (map['proxy']! as String).input(),
     );
   }
 }

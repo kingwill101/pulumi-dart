@@ -33,8 +33,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
   factory GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia(
       fileUri: (map['fileUri'] as String).input(),
-      height: map['height'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight.fromValue(map['height'] as String)).input(),
-      thumbnailUri: map['thumbnailUri'] == null ? null : (map['thumbnailUri'] as String).input(),
+      height: map['height'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeight.fromValue(map['height']! as String)).input(),
+      thumbnailUri: map['thumbnailUri'] == null ? null : (map['thumbnailUri']! as String).input(),
     );
   }
 }

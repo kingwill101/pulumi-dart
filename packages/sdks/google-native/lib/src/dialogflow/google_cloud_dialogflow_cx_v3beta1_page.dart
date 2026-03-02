@@ -67,15 +67,15 @@ class GoogleCloudDialogflowCxV3beta1Page {
 
   factory GoogleCloudDialogflowCxV3beta1Page.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1Page(
-      advancedSettings: map['advancedSettings'] == null ? null : (GoogleCloudDialogflowCxV3beta1AdvancedSettings.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>())).input(),
+      advancedSettings: map['advancedSettings'] == null ? null : (GoogleCloudDialogflowCxV3beta1AdvancedSettings.fromMap((map['advancedSettings']! as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
-      entryFulfillment: map['entryFulfillment'] == null ? null : (GoogleCloudDialogflowCxV3beta1Fulfillment.fromMap((map['entryFulfillment'] as Map).cast<String, dynamic>())).input(),
-      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EventHandler>(map['eventHandlers'], (value) => GoogleCloudDialogflowCxV3beta1EventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      form: map['form'] == null ? null : (GoogleCloudDialogflowCxV3beta1Form.fromMap((map['form'] as Map).cast<String, dynamic>())).input(),
-      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : (GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      transitionRouteGroups: map['transitionRouteGroups'] == null ? null : ((map['transitionRouteGroups'] as List).cast<String>()).input(),
-      transitionRoutes: map['transitionRoutes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1TransitionRoute>(map['transitionRoutes'], (value) => GoogleCloudDialogflowCxV3beta1TransitionRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entryFulfillment: map['entryFulfillment'] == null ? null : (GoogleCloudDialogflowCxV3beta1Fulfillment.fromMap((map['entryFulfillment']! as Map).cast<String, dynamic>())).input(),
+      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EventHandler>(map['eventHandlers']!, (value) => GoogleCloudDialogflowCxV3beta1EventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      form: map['form'] == null ? null : (GoogleCloudDialogflowCxV3beta1Form.fromMap((map['form']! as Map).cast<String, dynamic>())).input(),
+      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : (GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      transitionRouteGroups: map['transitionRouteGroups'] == null ? null : ((map['transitionRouteGroups']! as List).cast<String>()).input(),
+      transitionRoutes: map['transitionRoutes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1TransitionRoute>(map['transitionRoutes']!, (value) => GoogleCloudDialogflowCxV3beta1TransitionRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -47,10 +47,10 @@ class OsPolicyAssignmentInstanceFilter {
 
   factory OsPolicyAssignmentInstanceFilter.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentInstanceFilter(
-      all: map['all'] == null ? null : (map['all'] as bool).input(),
-      exclusionLabels: map['exclusionLabels'] == null ? null : (pulumi.Input.decodeList<OsPolicyAssignmentInstanceFilterExclusionLabel>(map['exclusionLabels'], (value) => OsPolicyAssignmentInstanceFilterExclusionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inclusionLabels: map['inclusionLabels'] == null ? null : (pulumi.Input.decodeList<OsPolicyAssignmentInstanceFilterInclusionLabel>(map['inclusionLabels'], (value) => OsPolicyAssignmentInstanceFilterInclusionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inventories: map['inventories'] == null ? null : (pulumi.Input.decodeList<OsPolicyAssignmentInstanceFilterInventory>(map['inventories'], (value) => OsPolicyAssignmentInstanceFilterInventory.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      all: map['all'] == null ? null : (map['all']! as bool).input(),
+      exclusionLabels: map['exclusionLabels'] == null ? null : (pulumi.Input.decodeList<OsPolicyAssignmentInstanceFilterExclusionLabel>(map['exclusionLabels']!, (value) => OsPolicyAssignmentInstanceFilterExclusionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inclusionLabels: map['inclusionLabels'] == null ? null : (pulumi.Input.decodeList<OsPolicyAssignmentInstanceFilterInclusionLabel>(map['inclusionLabels']!, (value) => OsPolicyAssignmentInstanceFilterInclusionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inventories: map['inventories'] == null ? null : (pulumi.Input.decodeList<OsPolicyAssignmentInstanceFilterInventory>(map['inventories']!, (value) => OsPolicyAssignmentInstanceFilterInventory.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

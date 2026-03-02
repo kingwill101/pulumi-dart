@@ -27,7 +27,7 @@ class GoogleCloudMlV1RequestLoggingConfig {
   factory GoogleCloudMlV1RequestLoggingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1RequestLoggingConfig(
       bigqueryTableName: (map['bigqueryTableName'] as String).input(),
-      samplingPercentage: map['samplingPercentage'] == null ? null : (map['samplingPercentage'] as double).input(),
+      samplingPercentage: map['samplingPercentage'] == null ? null : (map['samplingPercentage']! as double).input(),
     );
   }
 }

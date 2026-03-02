@@ -51,13 +51,13 @@ class ClusterNodeGroup {
 
   factory ClusterNodeGroup.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroup(
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      nodeGroupDescription: map['nodeGroupDescription'] == null ? null : (map['nodeGroupDescription'] as String).input(),
-      nodeGroupName: map['nodeGroupName'] == null ? null : (map['nodeGroupName'] as String).input(),
-      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupNode>(map['nodes'], (value) => ClusterNodeGroupNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      nodeGroupDescription: map['nodeGroupDescription'] == null ? null : (map['nodeGroupDescription']! as String).input(),
+      nodeGroupName: map['nodeGroupName'] == null ? null : (map['nodeGroupName']! as String).input(),
+      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupNode>(map['nodes']!, (value) => ClusterNodeGroupNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

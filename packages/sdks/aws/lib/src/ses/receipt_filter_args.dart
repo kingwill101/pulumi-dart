@@ -40,9 +40,9 @@ class ReceiptFilterArgs {
   factory ReceiptFilterArgs.fromMap(Map<String, dynamic> map) {
     return ReceiptFilterArgs(
       cidr: (map['cidr'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

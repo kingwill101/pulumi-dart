@@ -24,8 +24,8 @@ class DeploymentLoggingStorageAccount {
 
   factory DeploymentLoggingStorageAccount.fromMap(Map<String, dynamic> map) {
     return DeploymentLoggingStorageAccount(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

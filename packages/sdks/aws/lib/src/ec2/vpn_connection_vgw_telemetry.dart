@@ -45,12 +45,12 @@ class VpnConnectionVgwTelemetry {
 
   factory VpnConnectionVgwTelemetry.fromMap(Map<String, dynamic> map) {
     return VpnConnectionVgwTelemetry(
-      acceptedRouteCount: map['acceptedRouteCount'] == null ? null : (map['acceptedRouteCount'] as int).input(),
-      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
-      lastStatusChange: map['lastStatusChange'] == null ? null : (map['lastStatusChange'] as String).input(),
-      outsideIpAddress: map['outsideIpAddress'] == null ? null : (map['outsideIpAddress'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
+      acceptedRouteCount: map['acceptedRouteCount'] == null ? null : ((map['acceptedRouteCount'] as int).input()).input(),
+      certificateArn: map['certificateArn'] == null ? null : ((map['certificateArn'] as String).input()).input(),
+      lastStatusChange: map['lastStatusChange'] == null ? null : ((map['lastStatusChange'] as String).input()).input(),
+      outsideIpAddress: map['outsideIpAddress'] == null ? null : ((map['outsideIpAddress'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      statusMessage: map['statusMessage'] == null ? null : ((map['statusMessage'] as String).input()).input(),
     );
   }
 }

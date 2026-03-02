@@ -32,9 +32,9 @@ class BindingCloudfunctionsV2alpha {
 
   factory BindingCloudfunctionsV2alpha.fromMap(Map<String, dynamic> map) {
     return BindingCloudfunctionsV2alpha(
-      condition: map['condition'] == null ? null : (ExprCloudfunctionsV2alpha.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (ExprCloudfunctionsV2alpha.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

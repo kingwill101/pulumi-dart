@@ -34,7 +34,7 @@ class DeltaTableResponse {
     return DeltaTableResponse(
       schema: (pulumi.Input.decodeList<DeltaTableSchemaResponse>(map['schema'], (value) => DeltaTableSchemaResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       tableName: (map['tableName'] as String).input(),
-      tablePath: map['tablePath'] == null ? null : (map['tablePath'] as String).input(),
+      tablePath: map['tablePath'] == null ? null : (map['tablePath']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class AWSV4Signature {
 
   factory AWSV4Signature.fromMap(Map<String, dynamic> map) {
     return AWSV4Signature(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId'] as String).input(),
-      accessKeyVersion: map['accessKeyVersion'] == null ? null : (map['accessKeyVersion'] as String).input(),
-      originRegion: map['originRegion'] == null ? null : (map['originRegion'] as String).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
+      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId']! as String).input(),
+      accessKeyVersion: map['accessKeyVersion'] == null ? null : (map['accessKeyVersion']! as String).input(),
+      originRegion: map['originRegion'] == null ? null : (map['originRegion']! as String).input(),
     );
   }
 }

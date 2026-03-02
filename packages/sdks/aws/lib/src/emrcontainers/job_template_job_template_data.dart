@@ -42,10 +42,10 @@ class JobTemplateJobTemplateData {
 
   factory JobTemplateJobTemplateData.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateData(
-      configurationOverrides: map['configurationOverrides'] == null ? null : (JobTemplateJobTemplateDataConfigurationOverrides.fromMap((map['configurationOverrides'] as Map).cast<String, dynamic>())).input(),
+      configurationOverrides: map['configurationOverrides'] == null ? null : ((JobTemplateJobTemplateDataConfigurationOverrides.fromMap((map['configurationOverrides']! as Map).cast<String, dynamic>())).input()).input(),
       executionRoleArn: (map['executionRoleArn'] as String).input(),
-      jobDriver: (JobTemplateJobTemplateDataJobDriver.fromMap((map['jobDriver'] as Map).cast<String, dynamic>())).input(),
-      jobTags: map['jobTags'] == null ? null : ((map['jobTags'] as Map).cast<String, String>()).input(),
+      jobDriver: (JobTemplateJobTemplateDataJobDriver.fromMap((map['jobDriver']! as Map).cast<String, dynamic>())).input(),
+      jobTags: map['jobTags'] == null ? null : (((map['jobTags'] as Map).cast<String, String>()).input()).input(),
       releaseLabel: (map['releaseLabel'] as String).input(),
     );
   }

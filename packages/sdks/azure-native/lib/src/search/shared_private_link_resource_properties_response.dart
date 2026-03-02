@@ -46,12 +46,12 @@ class SharedPrivateLinkResourcePropertiesResponse {
 
   factory SharedPrivateLinkResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourcePropertiesResponse(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
-      resourceRegion: map['resourceRegion'] == null ? null : (map['resourceRegion'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage']! as String).input(),
+      resourceRegion: map['resourceRegion'] == null ? null : (map['resourceRegion']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

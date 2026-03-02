@@ -75,7 +75,7 @@ class AS2ValidationSettings {
       interchangeDuplicatesValidityDays: (map['interchangeDuplicatesValidityDays'] as int).input(),
       overrideMessageProperties: (map['overrideMessageProperties'] as bool).input(),
       signMessage: (map['signMessage'] as bool).input(),
-      signingAlgorithm: map['signingAlgorithm'] == null ? null : (map['signingAlgorithm'] as String).input(),
+      signingAlgorithm: map['signingAlgorithm'] == null ? null : (map['signingAlgorithm']! as String).input(),
     );
   }
 }

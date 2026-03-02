@@ -27,8 +27,8 @@ class ListConnectedPartnerResourceResult {
 
   factory ListConnectedPartnerResourceResult.fromMap(Map<String, dynamic> map) {
     return ListConnectedPartnerResourceResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ConnectedPartnerResourcesListFormatResponse>(map['value'], (value) => ConnectedPartnerResourcesListFormatResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ConnectedPartnerResourcesListFormatResponse>(map['value']!, (value) => ConnectedPartnerResourcesListFormatResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

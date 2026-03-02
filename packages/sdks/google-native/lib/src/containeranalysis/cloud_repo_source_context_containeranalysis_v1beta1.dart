@@ -33,9 +33,9 @@ class CloudRepoSourceContextContaineranalysisV1beta1 {
 
   factory CloudRepoSourceContextContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudRepoSourceContextContaineranalysisV1beta1(
-      aliasContext: map['aliasContext'] == null ? null : (AliasContextContaineranalysisV1beta1.fromMap((map['aliasContext'] as Map).cast<String, dynamic>())).input(),
-      repoId: map['repoId'] == null ? null : (RepoIdContaineranalysisV1beta1.fromMap((map['repoId'] as Map).cast<String, dynamic>())).input(),
-      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
+      aliasContext: map['aliasContext'] == null ? null : (AliasContextContaineranalysisV1beta1.fromMap((map['aliasContext']! as Map).cast<String, dynamic>())).input(),
+      repoId: map['repoId'] == null ? null : (RepoIdContaineranalysisV1beta1.fromMap((map['repoId']! as Map).cast<String, dynamic>())).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId']! as String).input(),
     );
   }
 }

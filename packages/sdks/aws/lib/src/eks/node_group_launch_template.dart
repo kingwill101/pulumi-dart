@@ -30,8 +30,8 @@ class NodeGroupLaunchTemplate {
 
   factory NodeGroupLaunchTemplate.fromMap(Map<String, dynamic> map) {
     return NodeGroupLaunchTemplate(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       version: (map['version'] as String).input(),
     );
   }

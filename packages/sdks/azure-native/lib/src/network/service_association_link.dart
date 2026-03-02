@@ -36,10 +36,10 @@ class ServiceAssociationLink {
 
   factory ServiceAssociationLink.fromMap(Map<String, dynamic> map) {
     return ServiceAssociationLink(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      link: map['link'] == null ? null : (map['link'] as String).input(),
-      linkedResourceType: map['linkedResourceType'] == null ? null : (map['linkedResourceType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      link: map['link'] == null ? null : (map['link']! as String).input(),
+      linkedResourceType: map['linkedResourceType'] == null ? null : (map['linkedResourceType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

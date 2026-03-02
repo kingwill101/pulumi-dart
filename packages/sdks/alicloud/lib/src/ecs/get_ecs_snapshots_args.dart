@@ -99,22 +99,22 @@ class GetEcsSnapshotsArgs {
 
   factory GetEcsSnapshotsArgs.fromMap(Map<String, dynamic> map) {
     return GetEcsSnapshotsArgs(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      snapshotLinkId: map['snapshotLinkId'] == null ? null : (map['snapshotLinkId'] as String).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
-      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType'] as String).input(),
-      sourceDiskType: map['sourceDiskType'] == null ? null : (map['sourceDiskType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      usage: map['usage'] == null ? null : (map['usage'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      snapshotLinkId: map['snapshotLinkId'] == null ? null : (map['snapshotLinkId']! as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName']! as String).input(),
+      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType']! as String).input(),
+      sourceDiskType: map['sourceDiskType'] == null ? null : (map['sourceDiskType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      usage: map['usage'] == null ? null : (map['usage']! as String).input(),
     );
   }
 }

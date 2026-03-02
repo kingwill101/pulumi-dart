@@ -26,8 +26,8 @@ class NonceResponse {
 
   factory NonceResponse.fromMap(Map<String, dynamic> map) {
     return NonceResponse(
-      nonceExpirationInterval: map['nonceExpirationInterval'] == null ? null : (map['nonceExpirationInterval'] as String).input(),
-      validateNonce: map['validateNonce'] == null ? null : (map['validateNonce'] as bool).input(),
+      nonceExpirationInterval: map['nonceExpirationInterval'] == null ? null : (map['nonceExpirationInterval']! as String).input(),
+      validateNonce: map['validateNonce'] == null ? null : (map['validateNonce']! as bool).input(),
     );
   }
 }

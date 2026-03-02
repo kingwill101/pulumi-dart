@@ -30,9 +30,9 @@ class AgentcoreGatewayProtocolConfigurationMcp {
 
   factory AgentcoreGatewayProtocolConfigurationMcp.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayProtocolConfigurationMcp(
-      instructions: map['instructions'] == null ? null : (map['instructions'] as String).input(),
-      searchType: map['searchType'] == null ? null : (map['searchType'] as String).input(),
-      supportedVersions: map['supportedVersions'] == null ? null : ((map['supportedVersions'] as List).cast<String>()).input(),
+      instructions: map['instructions'] == null ? null : ((map['instructions'] as String).input()).input(),
+      searchType: map['searchType'] == null ? null : ((map['searchType'] as String).input()).input(),
+      supportedVersions: map['supportedVersions'] == null ? null : (((map['supportedVersions'] as List).cast<String>()).input()).input(),
     );
   }
 }

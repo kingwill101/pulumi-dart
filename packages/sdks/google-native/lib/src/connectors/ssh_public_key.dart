@@ -37,10 +37,10 @@ class SshPublicKey {
 
   factory SshPublicKey.fromMap(Map<String, dynamic> map) {
     return SshPublicKey(
-      certType: map['certType'] == null ? null : (map['certType'] as String).input(),
-      sshClientCert: map['sshClientCert'] == null ? null : (Secret.fromMap((map['sshClientCert'] as Map).cast<String, dynamic>())).input(),
-      sshClientCertPass: map['sshClientCertPass'] == null ? null : (Secret.fromMap((map['sshClientCertPass'] as Map).cast<String, dynamic>())).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      certType: map['certType'] == null ? null : (map['certType']! as String).input(),
+      sshClientCert: map['sshClientCert'] == null ? null : (Secret.fromMap((map['sshClientCert']! as Map).cast<String, dynamic>())).input(),
+      sshClientCertPass: map['sshClientCertPass'] == null ? null : (Secret.fromMap((map['sshClientCertPass']! as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

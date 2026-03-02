@@ -24,7 +24,7 @@ class GetPrimaryIpsArgs {
 
   factory GetPrimaryIpsArgs.fromMap(Map<String, dynamic> map) {
     return GetPrimaryIpsArgs(
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

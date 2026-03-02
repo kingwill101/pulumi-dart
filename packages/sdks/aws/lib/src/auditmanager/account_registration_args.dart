@@ -39,10 +39,10 @@ class AccountRegistrationArgs {
 
   factory AccountRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return AccountRegistrationArgs(
-      delegatedAdminAccount: map['delegatedAdminAccount'] == null ? null : (map['delegatedAdminAccount'] as String).input(),
-      deregisterOnDestroy: map['deregisterOnDestroy'] == null ? null : (map['deregisterOnDestroy'] as bool).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      delegatedAdminAccount: map['delegatedAdminAccount'] == null ? null : ((map['delegatedAdminAccount'] as String).input()).input(),
+      deregisterOnDestroy: map['deregisterOnDestroy'] == null ? null : ((map['deregisterOnDestroy'] as bool).input()).input(),
+      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

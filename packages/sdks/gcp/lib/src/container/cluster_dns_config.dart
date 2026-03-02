@@ -35,10 +35,10 @@ class ClusterDnsConfig {
 
   factory ClusterDnsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterDnsConfig(
-      additiveVpcScopeDnsDomain: map['additiveVpcScopeDnsDomain'] == null ? null : (map['additiveVpcScopeDnsDomain'] as String).input(),
-      clusterDns: map['clusterDns'] == null ? null : (map['clusterDns'] as String).input(),
-      clusterDnsDomain: map['clusterDnsDomain'] == null ? null : (map['clusterDnsDomain'] as String).input(),
-      clusterDnsScope: map['clusterDnsScope'] == null ? null : (map['clusterDnsScope'] as String).input(),
+      additiveVpcScopeDnsDomain: map['additiveVpcScopeDnsDomain'] == null ? null : (map['additiveVpcScopeDnsDomain']! as String).input(),
+      clusterDns: map['clusterDns'] == null ? null : (map['clusterDns']! as String).input(),
+      clusterDnsDomain: map['clusterDnsDomain'] == null ? null : (map['clusterDnsDomain']! as String).input(),
+      clusterDnsScope: map['clusterDnsScope'] == null ? null : (map['clusterDnsScope']! as String).input(),
     );
   }
 }

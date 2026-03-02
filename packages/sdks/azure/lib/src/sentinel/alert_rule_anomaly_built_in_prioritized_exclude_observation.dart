@@ -35,10 +35,10 @@ class AlertRuleAnomalyBuiltInPrioritizedExcludeObservation {
 
   factory AlertRuleAnomalyBuiltInPrioritizedExcludeObservation.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyBuiltInPrioritizedExcludeObservation(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      exclude: map['exclude'] == null ? null : (map['exclude'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      prioritize: map['prioritize'] == null ? null : (map['prioritize'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      exclude: map['exclude'] == null ? null : (map['exclude']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      prioritize: map['prioritize'] == null ? null : (map['prioritize']! as String).input(),
     );
   }
 }

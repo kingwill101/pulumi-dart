@@ -58,11 +58,11 @@ class GetElasticityAssurancesResult {
       assurances: pulumi.Input.decodeList<GetElasticityAssurancesAssurance>(map['assurances'], (value) => GetElasticityAssurancesAssurance.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      privatePoolOptionsIds: map['privatePoolOptionsIds'] == null ? null : (map['privatePoolOptionsIds'] as List).cast<String>(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      privatePoolOptionsIds: map['privatePoolOptionsIds'] == null ? null : (map['privatePoolOptionsIds']! as List).cast<String>(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

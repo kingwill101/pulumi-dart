@@ -25,8 +25,8 @@ class ApplicationAutoStopConfiguration {
 
   factory ApplicationAutoStopConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationAutoStopConfiguration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      idleTimeoutMinutes: map['idleTimeoutMinutes'] == null ? null : (map['idleTimeoutMinutes'] as int).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      idleTimeoutMinutes: map['idleTimeoutMinutes'] == null ? null : ((map['idleTimeoutMinutes'] as int).input()).input(),
     );
   }
 }

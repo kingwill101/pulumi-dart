@@ -40,10 +40,10 @@ class AttestorState {
 
   factory AttestorState.fromMap(Map<String, dynamic> map) {
     return AttestorState(
-      attestationAuthorityNote: map['attestationAuthorityNote'] == null ? null : (AttestorAttestationAuthorityNote.fromMap((map['attestationAuthorityNote'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      attestationAuthorityNote: map['attestationAuthorityNote'] == null ? null : (AttestorAttestationAuthorityNote.fromMap((map['attestationAuthorityNote']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

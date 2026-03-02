@@ -83,16 +83,16 @@ class GetVendorSkusResult {
   factory GetVendorSkusResult.fromMap(Map<String, dynamic> map) {
     return GetVendorSkusResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      deploymentMode: map['deploymentMode'] == null ? null : map['deploymentMode'] as String,
+      deploymentMode: map['deploymentMode'] == null ? null : map['deploymentMode']! as String,
       id: map['id'] as String,
-      managedApplicationParameters: map['managedApplicationParameters'] == null ? null : map['managedApplicationParameters'],
-      managedApplicationTemplate: map['managedApplicationTemplate'] == null ? null : map['managedApplicationTemplate'],
+      managedApplicationParameters: map['managedApplicationParameters'] == null ? null : map['managedApplicationParameters']!,
+      managedApplicationTemplate: map['managedApplicationTemplate'] == null ? null : map['managedApplicationTemplate']!,
       name: map['name'] as String,
-      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : NetworkFunctionTemplateResponse.fromMap((map['networkFunctionTemplate'] as Map).cast<String, dynamic>()),
-      networkFunctionType: map['networkFunctionType'] == null ? null : map['networkFunctionType'] as String,
-      preview: map['preview'] == null ? null : map['preview'] as bool,
+      networkFunctionTemplate: map['networkFunctionTemplate'] == null ? null : NetworkFunctionTemplateResponse.fromMap((map['networkFunctionTemplate']! as Map).cast<String, dynamic>()),
+      networkFunctionType: map['networkFunctionType'] == null ? null : map['networkFunctionType']! as String,
+      preview: map['preview'] == null ? null : map['preview']! as bool,
       provisioningState: map['provisioningState'] as String,
-      skuType: map['skuType'] == null ? null : map['skuType'] as String,
+      skuType: map['skuType'] == null ? null : map['skuType']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

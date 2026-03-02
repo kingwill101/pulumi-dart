@@ -27,8 +27,8 @@ class AppImageConfigJupyterLabImageConfig {
 
   factory AppImageConfigJupyterLabImageConfig.fromMap(Map<String, dynamic> map) {
     return AppImageConfigJupyterLabImageConfig(
-      containerConfig: map['containerConfig'] == null ? null : (AppImageConfigJupyterLabImageConfigContainerConfig.fromMap((map['containerConfig'] as Map).cast<String, dynamic>())).input(),
-      fileSystemConfig: map['fileSystemConfig'] == null ? null : (AppImageConfigJupyterLabImageConfigFileSystemConfig.fromMap((map['fileSystemConfig'] as Map).cast<String, dynamic>())).input(),
+      containerConfig: map['containerConfig'] == null ? null : ((AppImageConfigJupyterLabImageConfigContainerConfig.fromMap((map['containerConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      fileSystemConfig: map['fileSystemConfig'] == null ? null : ((AppImageConfigJupyterLabImageConfigFileSystemConfig.fromMap((map['fileSystemConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

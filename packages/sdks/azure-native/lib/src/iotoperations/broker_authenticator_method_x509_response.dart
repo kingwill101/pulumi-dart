@@ -27,8 +27,8 @@ class BrokerAuthenticatorMethodX509Response {
 
   factory BrokerAuthenticatorMethodX509Response.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodX509Response(
-      authorizationAttributes: map['authorizationAttributes'] == null ? null : (pulumi.Input.decodeMapValues<BrokerAuthenticatorMethodX509AttributesResponse>(map['authorizationAttributes'], (value) => BrokerAuthenticatorMethodX509AttributesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      trustedClientCaCert: map['trustedClientCaCert'] == null ? null : (map['trustedClientCaCert'] as String).input(),
+      authorizationAttributes: map['authorizationAttributes'] == null ? null : (pulumi.Input.decodeMapValues<BrokerAuthenticatorMethodX509AttributesResponse>(map['authorizationAttributes']!, (value) => BrokerAuthenticatorMethodX509AttributesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trustedClientCaCert: map['trustedClientCaCert'] == null ? null : (map['trustedClientCaCert']! as String).input(),
     );
   }
 }

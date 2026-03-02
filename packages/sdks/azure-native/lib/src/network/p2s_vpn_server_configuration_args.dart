@@ -50,10 +50,10 @@ class P2sVpnServerConfigurationArgs {
 
   factory P2sVpnServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return P2sVpnServerConfigurationArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      p2SVpnServerConfigurationName: map['p2SVpnServerConfigurationName'] == null ? null : (map['p2SVpnServerConfigurationName'] as String).input(),
-      properties: map['properties'] == null ? null : (P2SVpnServerConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      p2SVpnServerConfigurationName: map['p2SVpnServerConfigurationName'] == null ? null : (map['p2SVpnServerConfigurationName']! as String).input(),
+      properties: map['properties'] == null ? null : (P2SVpnServerConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       virtualWanName: (map['virtualWanName'] as String).input(),
     );

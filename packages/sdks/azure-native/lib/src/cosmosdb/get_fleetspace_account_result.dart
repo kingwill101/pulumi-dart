@@ -53,7 +53,7 @@ class GetFleetspaceAccountResult {
   factory GetFleetspaceAccountResult.fromMap(Map<String, dynamic> map) {
     return GetFleetspaceAccountResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      globalDatabaseAccountProperties: map['globalDatabaseAccountProperties'] == null ? null : FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties.fromMap((map['globalDatabaseAccountProperties'] as Map).cast<String, dynamic>()),
+      globalDatabaseAccountProperties: map['globalDatabaseAccountProperties'] == null ? null : FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties.fromMap((map['globalDatabaseAccountProperties']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,

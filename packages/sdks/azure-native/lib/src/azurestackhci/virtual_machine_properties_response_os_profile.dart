@@ -43,11 +43,11 @@ class VirtualMachinePropertiesResponseOsProfile {
 
   factory VirtualMachinePropertiesResponseOsProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesResponseOsProfile(
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
-      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
-      linuxConfiguration: map['linuxConfiguration'] == null ? null : (VirtualMachinePropertiesResponseLinuxConfiguration.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>())).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : (VirtualMachinePropertiesResponseWindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername']! as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
+      linuxConfiguration: map['linuxConfiguration'] == null ? null : (VirtualMachinePropertiesResponseLinuxConfiguration.fromMap((map['linuxConfiguration']! as Map).cast<String, dynamic>())).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (VirtualMachinePropertiesResponseWindowsConfiguration.fromMap((map['windowsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

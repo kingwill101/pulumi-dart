@@ -41,11 +41,11 @@ class PolicyPredictiveScalingPolicyConfiguration {
 
   factory PolicyPredictiveScalingPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingPolicyConfiguration(
-      maxCapacityBreachBehavior: map['maxCapacityBreachBehavior'] == null ? null : (map['maxCapacityBreachBehavior'] as String).input(),
-      maxCapacityBuffer: map['maxCapacityBuffer'] == null ? null : (map['maxCapacityBuffer'] as int).input(),
-      metricSpecifications: (pulumi.Input.decodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecification>(map['metricSpecifications'], (value) => PolicyPredictiveScalingPolicyConfigurationMetricSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      schedulingBufferTime: map['schedulingBufferTime'] == null ? null : (map['schedulingBufferTime'] as int).input(),
+      maxCapacityBreachBehavior: map['maxCapacityBreachBehavior'] == null ? null : ((map['maxCapacityBreachBehavior'] as String).input()).input(),
+      maxCapacityBuffer: map['maxCapacityBuffer'] == null ? null : ((map['maxCapacityBuffer'] as int).input()).input(),
+      metricSpecifications: (pulumi.Input.decodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecification>(map['metricSpecifications']!, (value) => PolicyPredictiveScalingPolicyConfigurationMetricSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
+      schedulingBufferTime: map['schedulingBufferTime'] == null ? null : ((map['schedulingBufferTime'] as int).input()).input(),
     );
   }
 }

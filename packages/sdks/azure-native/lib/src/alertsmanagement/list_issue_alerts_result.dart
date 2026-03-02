@@ -27,7 +27,7 @@ class ListIssueAlertsResult {
 
   factory ListIssueAlertsResult.fromMap(Map<String, dynamic> map) {
     return ListIssueAlertsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: pulumi.Input.decodeList<RelatedAlertResponse>(map['value'], (value) => RelatedAlertResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

@@ -32,9 +32,9 @@ class BucketLifecycleConfigurationS3ControlState {
 
   factory BucketLifecycleConfigurationS3ControlState.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationS3ControlState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketLifecycleConfigurationRuleS3Control>(map['rules'], (value) => BucketLifecycleConfigurationRuleS3Control.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rules: map['rules'] == null ? null : ((pulumi.Input.decodeList<BucketLifecycleConfigurationRuleS3Control>(map['rules']!, (value) => BucketLifecycleConfigurationRuleS3Control.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

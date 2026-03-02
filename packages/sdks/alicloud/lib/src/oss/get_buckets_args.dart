@@ -29,8 +29,8 @@ class GetBucketsArgs {
 
   factory GetBucketsArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketsArgs(
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

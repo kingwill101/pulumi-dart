@@ -98,21 +98,21 @@ class ConnectionProfileArgs {
 
   factory ConnectionProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileArgs(
-      bigqueryProfile: map['bigqueryProfile'] == null ? null : ((map['bigqueryProfile'] as Map).cast<String, dynamic>()).input(),
+      bigqueryProfile: map['bigqueryProfile'] == null ? null : ((map['bigqueryProfile']! as Map).cast<String, dynamic>()).input(),
       connectionProfileId: (map['connectionProfileId'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      forwardSshConnectivity: map['forwardSshConnectivity'] == null ? null : (ForwardSshTunnelConnectivity.fromMap((map['forwardSshConnectivity'] as Map).cast<String, dynamic>())).input(),
-      gcsProfile: map['gcsProfile'] == null ? null : (GcsProfile.fromMap((map['gcsProfile'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mysqlProfile: map['mysqlProfile'] == null ? null : (MysqlProfile.fromMap((map['mysqlProfile'] as Map).cast<String, dynamic>())).input(),
-      oracleProfile: map['oracleProfile'] == null ? null : (OracleProfile.fromMap((map['oracleProfile'] as Map).cast<String, dynamic>())).input(),
-      postgresqlProfile: map['postgresqlProfile'] == null ? null : (PostgresqlProfile.fromMap((map['postgresqlProfile'] as Map).cast<String, dynamic>())).input(),
-      privateConnectivity: map['privateConnectivity'] == null ? null : (PrivateConnectivity.fromMap((map['privateConnectivity'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      staticServiceIpConnectivity: map['staticServiceIpConnectivity'] == null ? null : ((map['staticServiceIpConnectivity'] as Map).cast<String, dynamic>()).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      forwardSshConnectivity: map['forwardSshConnectivity'] == null ? null : (ForwardSshTunnelConnectivity.fromMap((map['forwardSshConnectivity']! as Map).cast<String, dynamic>())).input(),
+      gcsProfile: map['gcsProfile'] == null ? null : (GcsProfile.fromMap((map['gcsProfile']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mysqlProfile: map['mysqlProfile'] == null ? null : (MysqlProfile.fromMap((map['mysqlProfile']! as Map).cast<String, dynamic>())).input(),
+      oracleProfile: map['oracleProfile'] == null ? null : (OracleProfile.fromMap((map['oracleProfile']! as Map).cast<String, dynamic>())).input(),
+      postgresqlProfile: map['postgresqlProfile'] == null ? null : (PostgresqlProfile.fromMap((map['postgresqlProfile']! as Map).cast<String, dynamic>())).input(),
+      privateConnectivity: map['privateConnectivity'] == null ? null : (PrivateConnectivity.fromMap((map['privateConnectivity']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      staticServiceIpConnectivity: map['staticServiceIpConnectivity'] == null ? null : ((map['staticServiceIpConnectivity']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

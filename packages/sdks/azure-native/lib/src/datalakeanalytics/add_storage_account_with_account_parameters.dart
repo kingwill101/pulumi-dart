@@ -33,7 +33,7 @@ class AddStorageAccountWithAccountParameters {
     return AddStorageAccountWithAccountParameters(
       accessKey: (map['accessKey'] as String).input(),
       name: (map['name'] as String).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
     );
   }
 }

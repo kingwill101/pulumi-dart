@@ -41,11 +41,11 @@ class BgpConnectionState {
 
   factory BgpConnectionState.fromMap(Map<String, dynamic> map) {
     return BgpConnectionState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as int).input(),
-      peerIp: map['peerIp'] == null ? null : (map['peerIp'] as String).input(),
-      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId'] as String).input(),
-      virtualNetworkConnectionId: map['virtualNetworkConnectionId'] == null ? null : (map['virtualNetworkConnectionId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn']! as int).input(),
+      peerIp: map['peerIp'] == null ? null : (map['peerIp']! as String).input(),
+      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId']! as String).input(),
+      virtualNetworkConnectionId: map['virtualNetworkConnectionId'] == null ? null : (map['virtualNetworkConnectionId']! as String).input(),
     );
   }
 }

@@ -38,10 +38,10 @@ class FaultSimulationDetailsResponse {
 
   factory FaultSimulationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return FaultSimulationDetailsResponse(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      nodeTypeFaultSimulation: map['nodeTypeFaultSimulation'] == null ? null : (pulumi.Input.decodeList<NodeTypeFaultSimulationResponse>(map['nodeTypeFaultSimulation'], (value) => NodeTypeFaultSimulationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
-      parameters: map['parameters'] == null ? null : (ZoneFaultSimulationContentResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      nodeTypeFaultSimulation: map['nodeTypeFaultSimulation'] == null ? null : (pulumi.Input.decodeList<NodeTypeFaultSimulationResponse>(map['nodeTypeFaultSimulation']!, (value) => NodeTypeFaultSimulationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
+      parameters: map['parameters'] == null ? null : (ZoneFaultSimulationContentResponse.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

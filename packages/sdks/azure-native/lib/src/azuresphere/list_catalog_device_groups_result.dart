@@ -27,7 +27,7 @@ class ListCatalogDeviceGroupsResult {
 
   factory ListCatalogDeviceGroupsResult.fromMap(Map<String, dynamic> map) {
     return ListCatalogDeviceGroupsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: pulumi.Input.decodeList<DeviceGroupResponse>(map['value'], (value) => DeviceGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

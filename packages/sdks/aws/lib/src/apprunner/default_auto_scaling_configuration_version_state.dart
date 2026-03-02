@@ -26,8 +26,8 @@ class DefaultAutoScalingConfigurationVersionState {
 
   factory DefaultAutoScalingConfigurationVersionState.fromMap(Map<String, dynamic> map) {
     return DefaultAutoScalingConfigurationVersionState(
-      autoScalingConfigurationArn: map['autoScalingConfigurationArn'] == null ? null : (map['autoScalingConfigurationArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      autoScalingConfigurationArn: map['autoScalingConfigurationArn'] == null ? null : ((map['autoScalingConfigurationArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

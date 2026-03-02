@@ -80,18 +80,18 @@ class NetworkInterfaceComputeBeta {
 
   factory NetworkInterfaceComputeBeta.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceComputeBeta(
-      accessConfigs: map['accessConfigs'] == null ? null : (pulumi.Input.decodeList<AccessConfigComputeBeta>(map['accessConfigs'], (value) => AccessConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aliasIpRanges: map['aliasIpRanges'] == null ? null : (pulumi.Input.decodeList<AliasIpRangeComputeBeta>(map['aliasIpRanges'], (value) => AliasIpRangeComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      internalIpv6PrefixLength: map['internalIpv6PrefixLength'] == null ? null : (map['internalIpv6PrefixLength'] as int).input(),
-      ipv6AccessConfigs: map['ipv6AccessConfigs'] == null ? null : (pulumi.Input.decodeList<AccessConfigComputeBeta>(map['ipv6AccessConfigs'], (value) => AccessConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      networkAttachment: map['networkAttachment'] == null ? null : (map['networkAttachment'] as String).input(),
-      networkIP: map['networkIP'] == null ? null : (map['networkIP'] as String).input(),
-      nicType: map['nicType'] == null ? null : (NetworkInterfaceNicTypeComputeBeta.fromValue(map['nicType'] as String)).input(),
-      queueCount: map['queueCount'] == null ? null : (map['queueCount'] as int).input(),
-      stackType: map['stackType'] == null ? null : (NetworkInterfaceStackTypeComputeBeta.fromValue(map['stackType'] as String)).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      accessConfigs: map['accessConfigs'] == null ? null : (pulumi.Input.decodeList<AccessConfigComputeBeta>(map['accessConfigs']!, (value) => AccessConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aliasIpRanges: map['aliasIpRanges'] == null ? null : (pulumi.Input.decodeList<AliasIpRangeComputeBeta>(map['aliasIpRanges']!, (value) => AliasIpRangeComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      internalIpv6PrefixLength: map['internalIpv6PrefixLength'] == null ? null : (map['internalIpv6PrefixLength']! as int).input(),
+      ipv6AccessConfigs: map['ipv6AccessConfigs'] == null ? null : (pulumi.Input.decodeList<AccessConfigComputeBeta>(map['ipv6AccessConfigs']!, (value) => AccessConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      networkAttachment: map['networkAttachment'] == null ? null : (map['networkAttachment']! as String).input(),
+      networkIP: map['networkIP'] == null ? null : (map['networkIP']! as String).input(),
+      nicType: map['nicType'] == null ? null : (NetworkInterfaceNicTypeComputeBeta.fromValue(map['nicType']! as String)).input(),
+      queueCount: map['queueCount'] == null ? null : (map['queueCount']! as int).input(),
+      stackType: map['stackType'] == null ? null : (NetworkInterfaceStackTypeComputeBeta.fromValue(map['stackType']! as String)).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

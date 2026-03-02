@@ -20,7 +20,7 @@ class SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings 
 
   factory SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings(
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : ((map['idleTimeoutInMinutes'] as int).input()).input(),
     );
   }
 }

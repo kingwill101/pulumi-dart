@@ -48,12 +48,12 @@ class DocumentAiWarehouseDocumentSchemaState {
 
   factory DocumentAiWarehouseDocumentSchemaState.fromMap(Map<String, dynamic> map) {
     return DocumentAiWarehouseDocumentSchemaState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      documentIsFolder: map['documentIsFolder'] == null ? null : (map['documentIsFolder'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
-      propertyDefinitions: map['propertyDefinitions'] == null ? null : (pulumi.Input.decodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinition>(map['propertyDefinitions'], (value) => DocumentAiWarehouseDocumentSchemaPropertyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      documentIsFolder: map['documentIsFolder'] == null ? null : (map['documentIsFolder']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber']! as String).input(),
+      propertyDefinitions: map['propertyDefinitions'] == null ? null : (pulumi.Input.decodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinition>(map['propertyDefinitions']!, (value) => DocumentAiWarehouseDocumentSchemaPropertyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

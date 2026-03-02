@@ -39,7 +39,7 @@ class SpringCloudStorageArgs {
 
   factory SpringCloudStorageArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudStorageArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       springCloudServiceId: (map['springCloudServiceId'] as String).input(),
       storageAccountKey: (map['storageAccountKey'] as String).input(),
       storageAccountName: (map['storageAccountName'] as String).input(),

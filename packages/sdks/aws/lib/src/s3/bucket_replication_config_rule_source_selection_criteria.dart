@@ -27,8 +27,8 @@ class BucketReplicationConfigRuleSourceSelectionCriteria {
 
   factory BucketReplicationConfigRuleSourceSelectionCriteria.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleSourceSelectionCriteria(
-      replicaModifications: map['replicaModifications'] == null ? null : (BucketReplicationConfigRuleSourceSelectionCriteriaReplicaModifications.fromMap((map['replicaModifications'] as Map).cast<String, dynamic>())).input(),
-      sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null ? null : (BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects.fromMap((map['sseKmsEncryptedObjects'] as Map).cast<String, dynamic>())).input(),
+      replicaModifications: map['replicaModifications'] == null ? null : ((BucketReplicationConfigRuleSourceSelectionCriteriaReplicaModifications.fromMap((map['replicaModifications']! as Map).cast<String, dynamic>())).input()).input(),
+      sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null ? null : ((BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects.fromMap((map['sseKmsEncryptedObjects']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

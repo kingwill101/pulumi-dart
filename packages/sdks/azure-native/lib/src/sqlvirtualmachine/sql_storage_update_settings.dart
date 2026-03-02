@@ -31,9 +31,9 @@ class SqlStorageUpdateSettings {
 
   factory SqlStorageUpdateSettings.fromMap(Map<String, dynamic> map) {
     return SqlStorageUpdateSettings(
-      diskConfigurationType: map['diskConfigurationType'] == null ? null : (map['diskConfigurationType'] as String).input(),
-      diskCount: map['diskCount'] == null ? null : (map['diskCount'] as int).input(),
-      startingDeviceId: map['startingDeviceId'] == null ? null : (map['startingDeviceId'] as int).input(),
+      diskConfigurationType: map['diskConfigurationType'] == null ? null : (map['diskConfigurationType']! as String).input(),
+      diskCount: map['diskCount'] == null ? null : (map['diskCount']! as int).input(),
+      startingDeviceId: map['startingDeviceId'] == null ? null : (map['startingDeviceId']! as int).input(),
     );
   }
 }

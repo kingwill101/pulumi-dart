@@ -52,8 +52,8 @@ class VirtualNodeSpecListenerHealthCheck {
     return VirtualNodeSpecListenerHealthCheck(
       healthyThreshold: (map['healthyThreshold'] as int).input(),
       intervalMillis: (map['intervalMillis'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
       protocol: (map['protocol'] as String).input(),
       timeoutMillis: (map['timeoutMillis'] as int).input(),
       unhealthyThreshold: (map['unhealthyThreshold'] as int).input(),

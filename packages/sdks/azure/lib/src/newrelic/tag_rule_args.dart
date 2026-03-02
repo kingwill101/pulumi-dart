@@ -56,13 +56,13 @@ class TagRuleArgs {
 
   factory TagRuleArgs.fromMap(Map<String, dynamic> map) {
     return TagRuleArgs(
-      activityLogEnabled: map['activityLogEnabled'] == null ? null : (map['activityLogEnabled'] as bool).input(),
-      azureActiveDirectoryLogEnabled: map['azureActiveDirectoryLogEnabled'] == null ? null : (map['azureActiveDirectoryLogEnabled'] as bool).input(),
-      logTagFilters: map['logTagFilters'] == null ? null : (pulumi.Input.decodeList<TagRuleLogTagFilter>(map['logTagFilters'], (value) => TagRuleLogTagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metricEnabled: map['metricEnabled'] == null ? null : (map['metricEnabled'] as bool).input(),
-      metricTagFilters: map['metricTagFilters'] == null ? null : (pulumi.Input.decodeList<TagRuleMetricTagFilter>(map['metricTagFilters'], (value) => TagRuleMetricTagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      activityLogEnabled: map['activityLogEnabled'] == null ? null : (map['activityLogEnabled']! as bool).input(),
+      azureActiveDirectoryLogEnabled: map['azureActiveDirectoryLogEnabled'] == null ? null : (map['azureActiveDirectoryLogEnabled']! as bool).input(),
+      logTagFilters: map['logTagFilters'] == null ? null : (pulumi.Input.decodeList<TagRuleLogTagFilter>(map['logTagFilters']!, (value) => TagRuleLogTagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricEnabled: map['metricEnabled'] == null ? null : (map['metricEnabled']! as bool).input(),
+      metricTagFilters: map['metricTagFilters'] == null ? null : (pulumi.Input.decodeList<TagRuleMetricTagFilter>(map['metricTagFilters']!, (value) => TagRuleMetricTagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       monitorId: (map['monitorId'] as String).input(),
-      subscriptionLogEnabled: map['subscriptionLogEnabled'] == null ? null : (map['subscriptionLogEnabled'] as bool).input(),
+      subscriptionLogEnabled: map['subscriptionLogEnabled'] == null ? null : (map['subscriptionLogEnabled']! as bool).input(),
     );
   }
 }

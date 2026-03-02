@@ -76,19 +76,19 @@ class GetParametersResult {
 
   factory GetParametersResult.fromMap(Map<String, dynamic> map) {
     return GetParametersResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      parameterName: map['parameterName'] == null ? null : map['parameterName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      parameterName: map['parameterName'] == null ? null : map['parameterName']! as String,
       parameters: pulumi.Input.decodeList<GetParametersParameter>(map['parameters'], (value) => GetParametersParameter.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      sortField: map['sortField'] == null ? null : map['sortField'] as String,
-      sortOrder: map['sortOrder'] == null ? null : map['sortOrder'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      sortField: map['sortField'] == null ? null : map['sortField']! as String,
+      sortOrder: map['sortOrder'] == null ? null : map['sortOrder']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      type: map['type'] == null ? null : map['type']! as String,
     );
   }
 }

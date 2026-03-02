@@ -21,7 +21,7 @@ class AvroConfig {
 
   factory AvroConfig.fromMap(Map<String, dynamic> map) {
     return AvroConfig(
-      writeMetadata: map['writeMetadata'] == null ? null : (map['writeMetadata'] as bool).input(),
+      writeMetadata: map['writeMetadata'] == null ? null : (map['writeMetadata']! as bool).input(),
     );
   }
 }

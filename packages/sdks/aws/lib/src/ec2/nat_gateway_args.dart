@@ -80,18 +80,18 @@ class NatGatewayArgs {
 
   factory NatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return NatGatewayArgs(
-      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
-      availabilityMode: map['availabilityMode'] == null ? null : (map['availabilityMode'] as String).input(),
-      availabilityZoneAddresses: map['availabilityZoneAddresses'] == null ? null : (pulumi.Input.decodeList<NatGatewayAvailabilityZoneAddress>(map['availabilityZoneAddresses'], (value) => NatGatewayAvailabilityZoneAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      connectivityType: map['connectivityType'] == null ? null : (map['connectivityType'] as String).input(),
-      privateIp: map['privateIp'] == null ? null : (map['privateIp'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secondaryAllocationIds: map['secondaryAllocationIds'] == null ? null : ((map['secondaryAllocationIds'] as List).cast<String>()).input(),
-      secondaryPrivateIpAddressCount: map['secondaryPrivateIpAddressCount'] == null ? null : (map['secondaryPrivateIpAddressCount'] as int).input(),
-      secondaryPrivateIpAddresses: map['secondaryPrivateIpAddresses'] == null ? null : ((map['secondaryPrivateIpAddresses'] as List).cast<String>()).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      allocationId: map['allocationId'] == null ? null : ((map['allocationId'] as String).input()).input(),
+      availabilityMode: map['availabilityMode'] == null ? null : ((map['availabilityMode'] as String).input()).input(),
+      availabilityZoneAddresses: map['availabilityZoneAddresses'] == null ? null : ((pulumi.Input.decodeList<NatGatewayAvailabilityZoneAddress>(map['availabilityZoneAddresses']!, (value) => NatGatewayAvailabilityZoneAddress.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      connectivityType: map['connectivityType'] == null ? null : ((map['connectivityType'] as String).input()).input(),
+      privateIp: map['privateIp'] == null ? null : ((map['privateIp'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secondaryAllocationIds: map['secondaryAllocationIds'] == null ? null : (((map['secondaryAllocationIds'] as List).cast<String>()).input()).input(),
+      secondaryPrivateIpAddressCount: map['secondaryPrivateIpAddressCount'] == null ? null : ((map['secondaryPrivateIpAddressCount'] as int).input()).input(),
+      secondaryPrivateIpAddresses: map['secondaryPrivateIpAddresses'] == null ? null : (((map['secondaryPrivateIpAddresses'] as List).cast<String>()).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

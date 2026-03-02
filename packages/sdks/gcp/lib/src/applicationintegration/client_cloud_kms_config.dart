@@ -51,9 +51,9 @@ class ClientCloudKmsConfig {
   factory ClientCloudKmsConfig.fromMap(Map<String, dynamic> map) {
     return ClientCloudKmsConfig(
       key: (map['key'] as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
       kmsLocation: (map['kmsLocation'] as String).input(),
-      kmsProjectId: map['kmsProjectId'] == null ? null : (map['kmsProjectId'] as String).input(),
+      kmsProjectId: map['kmsProjectId'] == null ? null : (map['kmsProjectId']! as String).input(),
       kmsRing: (map['kmsRing'] as String).input(),
     );
   }

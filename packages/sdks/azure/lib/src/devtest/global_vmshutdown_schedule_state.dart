@@ -52,13 +52,13 @@ class GlobalVMShutdownScheduleState {
 
   factory GlobalVMShutdownScheduleState.fromMap(Map<String, dynamic> map) {
     return GlobalVMShutdownScheduleState(
-      dailyRecurrenceTime: map['dailyRecurrenceTime'] == null ? null : (map['dailyRecurrenceTime'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      notificationSettings: map['notificationSettings'] == null ? null : (GlobalVMShutdownScheduleNotificationSettings.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
-      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
+      dailyRecurrenceTime: map['dailyRecurrenceTime'] == null ? null : (map['dailyRecurrenceTime']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      notificationSettings: map['notificationSettings'] == null ? null : (GlobalVMShutdownScheduleNotificationSettings.fromMap((map['notificationSettings']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId']! as String).input(),
     );
   }
 }

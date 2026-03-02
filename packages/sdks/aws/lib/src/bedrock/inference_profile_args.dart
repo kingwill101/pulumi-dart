@@ -52,12 +52,12 @@ class InferenceProfileArgs {
 
   factory InferenceProfileArgs.fromMap(Map<String, dynamic> map) {
     return InferenceProfileArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      modelSource: map['modelSource'] == null ? null : (InferenceProfileModelSource.fromMap((map['modelSource'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (InferenceProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      modelSource: map['modelSource'] == null ? null : ((InferenceProfileModelSource.fromMap((map['modelSource']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((InferenceProfileTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

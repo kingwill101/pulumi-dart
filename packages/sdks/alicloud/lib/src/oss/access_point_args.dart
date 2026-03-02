@@ -51,8 +51,8 @@ class AccessPointArgs {
       accessPointName: (map['accessPointName'] as String).input(),
       bucket: (map['bucket'] as String).input(),
       networkOrigin: (map['networkOrigin'] as String).input(),
-      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : (AccessPointPublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration'] as Map).cast<String, dynamic>())).input(),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : (AccessPointVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : (AccessPointPublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration']! as Map).cast<String, dynamic>())).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : (AccessPointVpcConfiguration.fromMap((map['vpcConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

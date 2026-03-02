@@ -36,10 +36,10 @@ class EndpointPortPatchDiscoveryK8sIoV1beta1 {
 
   factory EndpointPortPatchDiscoveryK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return EndpointPortPatchDiscoveryK8sIoV1beta1(
-      appProtocol: map['appProtocol'] == null ? null : (map['appProtocol'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      appProtocol: map['appProtocol'] == null ? null : (map['appProtocol']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

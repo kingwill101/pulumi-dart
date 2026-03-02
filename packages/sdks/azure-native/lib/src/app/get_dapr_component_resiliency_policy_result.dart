@@ -54,9 +54,9 @@ class GetDaprComponentResiliencyPolicyResult {
     return GetDaprComponentResiliencyPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      inboundPolicy: map['inboundPolicy'] == null ? null : DaprComponentResiliencyPolicyConfigurationResponse.fromMap((map['inboundPolicy'] as Map).cast<String, dynamic>()),
+      inboundPolicy: map['inboundPolicy'] == null ? null : DaprComponentResiliencyPolicyConfigurationResponse.fromMap((map['inboundPolicy']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      outboundPolicy: map['outboundPolicy'] == null ? null : DaprComponentResiliencyPolicyConfigurationResponse.fromMap((map['outboundPolicy'] as Map).cast<String, dynamic>()),
+      outboundPolicy: map['outboundPolicy'] == null ? null : DaprComponentResiliencyPolicyConfigurationResponse.fromMap((map['outboundPolicy']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

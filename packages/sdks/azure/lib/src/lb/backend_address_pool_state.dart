@@ -64,15 +64,15 @@ class BackendAddressPoolState {
 
   factory BackendAddressPoolState.fromMap(Map<String, dynamic> map) {
     return BackendAddressPoolState(
-      backendIpConfigurations: map['backendIpConfigurations'] == null ? null : ((map['backendIpConfigurations'] as List).cast<String>()).input(),
-      inboundNatRules: map['inboundNatRules'] == null ? null : ((map['inboundNatRules'] as List).cast<String>()).input(),
-      loadBalancingRules: map['loadBalancingRules'] == null ? null : ((map['loadBalancingRules'] as List).cast<String>()).input(),
-      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outboundRules: map['outboundRules'] == null ? null : ((map['outboundRules'] as List).cast<String>()).input(),
-      synchronousMode: map['synchronousMode'] == null ? null : (map['synchronousMode'] as String).input(),
-      tunnelInterfaces: map['tunnelInterfaces'] == null ? null : (pulumi.Input.decodeList<BackendAddressPoolTunnelInterface>(map['tunnelInterfaces'], (value) => BackendAddressPoolTunnelInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
+      backendIpConfigurations: map['backendIpConfigurations'] == null ? null : ((map['backendIpConfigurations']! as List).cast<String>()).input(),
+      inboundNatRules: map['inboundNatRules'] == null ? null : ((map['inboundNatRules']! as List).cast<String>()).input(),
+      loadBalancingRules: map['loadBalancingRules'] == null ? null : ((map['loadBalancingRules']! as List).cast<String>()).input(),
+      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outboundRules: map['outboundRules'] == null ? null : ((map['outboundRules']! as List).cast<String>()).input(),
+      synchronousMode: map['synchronousMode'] == null ? null : (map['synchronousMode']! as String).input(),
+      tunnelInterfaces: map['tunnelInterfaces'] == null ? null : (pulumi.Input.decodeList<BackendAddressPoolTunnelInterface>(map['tunnelInterfaces']!, (value) => BackendAddressPoolTunnelInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
     );
   }
 }

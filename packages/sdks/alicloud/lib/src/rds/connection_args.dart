@@ -41,10 +41,10 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      babelfishPort: map['babelfishPort'] == null ? null : (map['babelfishPort'] as String).input(),
-      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      babelfishPort: map['babelfishPort'] == null ? null : (map['babelfishPort']! as String).input(),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
     );
   }
 }

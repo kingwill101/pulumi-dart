@@ -31,10 +31,10 @@ class OperatingSystemDetails {
 
   factory OperatingSystemDetails.fromMap(Map<String, dynamic> map) {
     return OperatingSystemDetails(
-      os: map['os'] == null ? null : (map['os'] as String).input(),
-      osArchitecture: map['osArchitecture'] == null ? null : (map['osArchitecture'] as String).input(),
-      osName: map['osName'] == null ? null : (map['osName'] as String).input(),
-      osVersion: map['osVersion'] == null ? null : (map['osVersion'] as String).input(),
+      os: map['os'] == null ? null : (map['os']! as String).input(),
+      osArchitecture: map['osArchitecture'] == null ? null : (map['osArchitecture']! as String).input(),
+      osName: map['osName'] == null ? null : (map['osName']! as String).input(),
+      osVersion: map['osVersion'] == null ? null : (map['osVersion']! as String).input(),
     );
   }
 }

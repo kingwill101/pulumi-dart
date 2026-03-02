@@ -31,9 +31,9 @@ class ApplicationKafkaConfigs {
 
   factory ApplicationKafkaConfigs.fromMap(Map<String, dynamic> map) {
     return ApplicationKafkaConfigs(
-      kafkaConfigs: map['kafkaConfigs'] == null ? null : (pulumi.Input.decodeList<ApplicationKafkaConfigsKafkaConfig>(map['kafkaConfigs'], (value) => ApplicationKafkaConfigsKafkaConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kafkaEndpoint: map['kafkaEndpoint'] == null ? null : (map['kafkaEndpoint'] as String).input(),
-      kafkaInstanceId: map['kafkaInstanceId'] == null ? null : (map['kafkaInstanceId'] as String).input(),
+      kafkaConfigs: map['kafkaConfigs'] == null ? null : (pulumi.Input.decodeList<ApplicationKafkaConfigsKafkaConfig>(map['kafkaConfigs']!, (value) => ApplicationKafkaConfigsKafkaConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kafkaEndpoint: map['kafkaEndpoint'] == null ? null : (map['kafkaEndpoint']! as String).input(),
+      kafkaInstanceId: map['kafkaInstanceId'] == null ? null : (map['kafkaInstanceId']! as String).input(),
     );
   }
 }

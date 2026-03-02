@@ -70,12 +70,12 @@ class VolumeProjectionPatch {
 
   factory VolumeProjectionPatch.fromMap(Map<String, dynamic> map) {
     return VolumeProjectionPatch(
-      clusterTrustBundle: map['clusterTrustBundle'] == null ? null : (ClusterTrustBundleProjectionPatch.fromMap((map['clusterTrustBundle'] as Map).cast<String, dynamic>())).input(),
-      configMap: map['configMap'] == null ? null : (ConfigMapProjectionPatch.fromMap((map['configMap'] as Map).cast<String, dynamic>())).input(),
-      downwardAPI: map['downwardAPI'] == null ? null : (DownwardAPIProjectionPatch.fromMap((map['downwardAPI'] as Map).cast<String, dynamic>())).input(),
-      podCertificate: map['podCertificate'] == null ? null : (PodCertificateProjectionPatch.fromMap((map['podCertificate'] as Map).cast<String, dynamic>())).input(),
-      secret: map['secret'] == null ? null : (SecretProjectionPatch.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
-      serviceAccountToken: map['serviceAccountToken'] == null ? null : (ServiceAccountTokenProjectionPatch.fromMap((map['serviceAccountToken'] as Map).cast<String, dynamic>())).input(),
+      clusterTrustBundle: map['clusterTrustBundle'] == null ? null : (ClusterTrustBundleProjectionPatch.fromMap((map['clusterTrustBundle']! as Map).cast<String, dynamic>())).input(),
+      configMap: map['configMap'] == null ? null : (ConfigMapProjectionPatch.fromMap((map['configMap']! as Map).cast<String, dynamic>())).input(),
+      downwardAPI: map['downwardAPI'] == null ? null : (DownwardAPIProjectionPatch.fromMap((map['downwardAPI']! as Map).cast<String, dynamic>())).input(),
+      podCertificate: map['podCertificate'] == null ? null : (PodCertificateProjectionPatch.fromMap((map['podCertificate']! as Map).cast<String, dynamic>())).input(),
+      secret: map['secret'] == null ? null : (SecretProjectionPatch.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
+      serviceAccountToken: map['serviceAccountToken'] == null ? null : (ServiceAccountTokenProjectionPatch.fromMap((map['serviceAccountToken']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -72,17 +72,17 @@ class DocumentArgs {
 
   factory DocumentArgs.fromMap(Map<String, dynamic> map) {
     return DocumentArgs(
-      contentUri: map['contentUri'] == null ? null : (map['contentUri'] as String).input(),
+      contentUri: map['contentUri'] == null ? null : (map['contentUri']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      enableAutoReload: map['enableAutoReload'] == null ? null : (map['enableAutoReload'] as bool).input(),
+      enableAutoReload: map['enableAutoReload'] == null ? null : (map['enableAutoReload']! as bool).input(),
       knowledgeBaseId: (map['knowledgeBaseId'] as String).input(),
       knowledgeTypes: (pulumi.Input.decodeList<DocumentKnowledgeTypesItem>(map['knowledgeTypes'], (value) => DocumentKnowledgeTypesItem.fromValue(value as String))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
       mimeType: (map['mimeType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rawContent: map['rawContent'] == null ? null : (map['rawContent'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rawContent: map['rawContent'] == null ? null : (map['rawContent']! as String).input(),
     );
   }
 }

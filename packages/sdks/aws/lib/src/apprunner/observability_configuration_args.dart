@@ -41,9 +41,9 @@ class ObservabilityConfigurationArgs {
   factory ObservabilityConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ObservabilityConfigurationArgs(
       observabilityConfigurationName: (map['observabilityConfigurationName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      traceConfiguration: map['traceConfiguration'] == null ? null : (ObservabilityConfigurationTraceConfiguration.fromMap((map['traceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      traceConfiguration: map['traceConfiguration'] == null ? null : ((ObservabilityConfigurationTraceConfiguration.fromMap((map['traceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

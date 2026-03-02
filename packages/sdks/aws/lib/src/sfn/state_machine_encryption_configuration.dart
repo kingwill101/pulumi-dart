@@ -30,9 +30,9 @@ class StateMachineEncryptionConfiguration {
 
   factory StateMachineEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return StateMachineEncryptionConfiguration(
-      kmsDataKeyReusePeriodSeconds: map['kmsDataKeyReusePeriodSeconds'] == null ? null : (map['kmsDataKeyReusePeriodSeconds'] as int).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      kmsDataKeyReusePeriodSeconds: map['kmsDataKeyReusePeriodSeconds'] == null ? null : ((map['kmsDataKeyReusePeriodSeconds'] as int).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

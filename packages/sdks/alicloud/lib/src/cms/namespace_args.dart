@@ -40,9 +40,9 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       namespace: (map['namespace'] as String).input(),
-      specification: map['specification'] == null ? null : (map['specification'] as String).input(),
+      specification: map['specification'] == null ? null : (map['specification']! as String).input(),
     );
   }
 }

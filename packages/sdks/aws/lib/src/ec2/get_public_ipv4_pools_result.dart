@@ -39,7 +39,7 @@ class GetPublicIpv4PoolsResult {
 
   factory GetPublicIpv4PoolsResult.fromMap(Map<String, dynamic> map) {
     return GetPublicIpv4PoolsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetPublicIpv4PoolsFilter>(map['filters'], (value) => GetPublicIpv4PoolsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetPublicIpv4PoolsFilter>(map['filters']!, (value) => GetPublicIpv4PoolsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       poolIds: (map['poolIds'] as List).cast<String>(),
       region: map['region'] as String,

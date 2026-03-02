@@ -20,7 +20,7 @@ class FunctionSyncConfigLambdaConflictHandlerConfig {
 
   factory FunctionSyncConfigLambdaConflictHandlerConfig.fromMap(Map<String, dynamic> map) {
     return FunctionSyncConfigLambdaConflictHandlerConfig(
-      lambdaConflictHandlerArn: map['lambdaConflictHandlerArn'] == null ? null : (map['lambdaConflictHandlerArn'] as String).input(),
+      lambdaConflictHandlerArn: map['lambdaConflictHandlerArn'] == null ? null : ((map['lambdaConflictHandlerArn'] as String).input()).input(),
     );
   }
 }

@@ -35,9 +35,9 @@ class BackupPlanAssociationRulesConfigInfo {
 
   factory BackupPlanAssociationRulesConfigInfo.fromMap(Map<String, dynamic> map) {
     return BackupPlanAssociationRulesConfigInfo(
-      lastBackupErrors: map['lastBackupErrors'] == null ? null : (pulumi.Input.decodeList<BackupPlanAssociationRulesConfigInfoLastBackupError>(map['lastBackupErrors'], (value) => BackupPlanAssociationRulesConfigInfoLastBackupError.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastBackupState: map['lastBackupState'] == null ? null : (map['lastBackupState'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      lastBackupErrors: map['lastBackupErrors'] == null ? null : (pulumi.Input.decodeList<BackupPlanAssociationRulesConfigInfoLastBackupError>(map['lastBackupErrors']!, (value) => BackupPlanAssociationRulesConfigInfoLastBackupError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastBackupState: map['lastBackupState'] == null ? null : (map['lastBackupState']! as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
     );
   }
 }

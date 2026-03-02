@@ -27,7 +27,7 @@ class CustomPersistentDiskResource {
 
   factory CustomPersistentDiskResource.fromMap(Map<String, dynamic> map) {
     return CustomPersistentDiskResource(
-      customPersistentDiskProperties: map['customPersistentDiskProperties'] == null ? null : (AzureFileVolume.fromMap((map['customPersistentDiskProperties'] as Map).cast<String, dynamic>())).input(),
+      customPersistentDiskProperties: map['customPersistentDiskProperties'] == null ? null : (AzureFileVolume.fromMap((map['customPersistentDiskProperties']! as Map).cast<String, dynamic>())).input(),
       storageId: (map['storageId'] as String).input(),
     );
   }

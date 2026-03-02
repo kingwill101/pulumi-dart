@@ -27,8 +27,8 @@ class PipelineJobMappingPipelineJobMappingConfig {
 
   factory PipelineJobMappingPipelineJobMappingConfig.fromMap(Map<String, dynamic> map) {
     return PipelineJobMappingPipelineJobMappingConfig(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      whistleConfigSource: map['whistleConfigSource'] == null ? null : (PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource.fromMap((map['whistleConfigSource'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      whistleConfigSource: map['whistleConfigSource'] == null ? null : (PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource.fromMap((map['whistleConfigSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

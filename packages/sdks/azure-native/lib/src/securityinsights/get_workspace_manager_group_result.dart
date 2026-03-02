@@ -62,7 +62,7 @@ class GetWorkspaceManagerGroupResult {
   factory GetWorkspaceManagerGroupResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceManagerGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       displayName: map['displayName'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,

@@ -46,12 +46,12 @@ class ElasticExportPolicyRuleResponse {
 
   factory ElasticExportPolicyRuleResponse.fromMap(Map<String, dynamic> map) {
     return ElasticExportPolicyRuleResponse(
-      allowedClients: map['allowedClients'] == null ? null : ((map['allowedClients'] as List).cast<String>()).input(),
-      nfsv3: map['nfsv3'] == null ? null : (map['nfsv3'] as String).input(),
-      nfsv4: map['nfsv4'] == null ? null : (map['nfsv4'] as String).input(),
-      rootAccess: map['rootAccess'] == null ? null : (map['rootAccess'] as String).input(),
-      ruleIndex: map['ruleIndex'] == null ? null : (map['ruleIndex'] as int).input(),
-      unixAccessRule: map['unixAccessRule'] == null ? null : (map['unixAccessRule'] as String).input(),
+      allowedClients: map['allowedClients'] == null ? null : ((map['allowedClients']! as List).cast<String>()).input(),
+      nfsv3: map['nfsv3'] == null ? null : (map['nfsv3']! as String).input(),
+      nfsv4: map['nfsv4'] == null ? null : (map['nfsv4']! as String).input(),
+      rootAccess: map['rootAccess'] == null ? null : (map['rootAccess']! as String).input(),
+      ruleIndex: map['ruleIndex'] == null ? null : (map['ruleIndex']! as int).input(),
+      unixAccessRule: map['unixAccessRule'] == null ? null : (map['unixAccessRule']! as String).input(),
     );
   }
 }

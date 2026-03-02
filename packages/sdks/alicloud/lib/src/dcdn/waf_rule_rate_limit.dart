@@ -46,12 +46,12 @@ class WafRuleRateLimit {
 
   factory WafRuleRateLimit.fromMap(Map<String, dynamic> map) {
     return WafRuleRateLimit(
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      status: map['status'] == null ? null : (WafRuleRateLimitStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      subKey: map['subKey'] == null ? null : (map['subKey'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as int).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      status: map['status'] == null ? null : (WafRuleRateLimitStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      subKey: map['subKey'] == null ? null : (map['subKey']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as int).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
     );
   }
 }

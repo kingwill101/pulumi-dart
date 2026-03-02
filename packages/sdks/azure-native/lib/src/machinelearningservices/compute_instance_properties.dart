@@ -72,16 +72,16 @@ class ComputeInstanceProperties {
 
   factory ComputeInstanceProperties.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceProperties(
-      applicationSharingPolicy: map['applicationSharingPolicy'] == null ? null : (map['applicationSharingPolicy'] as String).input(),
-      computeInstanceAuthorizationType: map['computeInstanceAuthorizationType'] == null ? null : (map['computeInstanceAuthorizationType'] as String).input(),
-      customServices: map['customServices'] == null ? null : (pulumi.Input.decodeList<CustomService>(map['customServices'], (value) => CustomService.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableNodePublicIp: map['enableNodePublicIp'] == null ? null : (map['enableNodePublicIp'] as bool).input(),
-      personalComputeInstanceSettings: map['personalComputeInstanceSettings'] == null ? null : (PersonalComputeInstanceSettings.fromMap((map['personalComputeInstanceSettings'] as Map).cast<String, dynamic>())).input(),
-      schedules: map['schedules'] == null ? null : (ComputeSchedules.fromMap((map['schedules'] as Map).cast<String, dynamic>())).input(),
-      setupScripts: map['setupScripts'] == null ? null : (SetupScripts.fromMap((map['setupScripts'] as Map).cast<String, dynamic>())).input(),
-      sshSettings: map['sshSettings'] == null ? null : (ComputeInstanceSshSettings.fromMap((map['sshSettings'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (ResourceId.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      applicationSharingPolicy: map['applicationSharingPolicy'] == null ? null : (map['applicationSharingPolicy']! as String).input(),
+      computeInstanceAuthorizationType: map['computeInstanceAuthorizationType'] == null ? null : (map['computeInstanceAuthorizationType']! as String).input(),
+      customServices: map['customServices'] == null ? null : (pulumi.Input.decodeList<CustomService>(map['customServices']!, (value) => CustomService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableNodePublicIp: map['enableNodePublicIp'] == null ? null : (map['enableNodePublicIp']! as bool).input(),
+      personalComputeInstanceSettings: map['personalComputeInstanceSettings'] == null ? null : (PersonalComputeInstanceSettings.fromMap((map['personalComputeInstanceSettings']! as Map).cast<String, dynamic>())).input(),
+      schedules: map['schedules'] == null ? null : (ComputeSchedules.fromMap((map['schedules']! as Map).cast<String, dynamic>())).input(),
+      setupScripts: map['setupScripts'] == null ? null : (SetupScripts.fromMap((map['setupScripts']! as Map).cast<String, dynamic>())).input(),
+      sshSettings: map['sshSettings'] == null ? null : (ComputeInstanceSshSettings.fromMap((map['sshSettings']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (ResourceId.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

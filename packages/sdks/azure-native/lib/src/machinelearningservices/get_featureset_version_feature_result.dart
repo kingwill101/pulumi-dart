@@ -35,10 +35,10 @@ class GetFeaturesetVersionFeatureResult {
 
   factory GetFeaturesetVersionFeatureResult.fromMap(Map<String, dynamic> map) {
     return GetFeaturesetVersionFeatureResult(
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      featureName: map['featureName'] == null ? null : map['featureName'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      dataType: map['dataType'] == null ? null : map['dataType']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      featureName: map['featureName'] == null ? null : map['featureName']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

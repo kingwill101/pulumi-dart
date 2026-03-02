@@ -43,10 +43,10 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      dryRunSpec: map['dryRunSpec'] == null ? null : (PolicyDryRunSpec.fromMap((map['dryRunSpec'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dryRunSpec: map['dryRunSpec'] == null ? null : (PolicyDryRunSpec.fromMap((map['dryRunSpec']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       parent: (map['parent'] as String).input(),
-      spec: map['spec'] == null ? null : (PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (PolicySpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

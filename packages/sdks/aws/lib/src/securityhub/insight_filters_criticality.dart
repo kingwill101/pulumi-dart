@@ -30,9 +30,9 @@ class InsightFiltersCriticality {
 
   factory InsightFiltersCriticality.fromMap(Map<String, dynamic> map) {
     return InsightFiltersCriticality(
-      eq: map['eq'] == null ? null : (map['eq'] as String).input(),
-      gte: map['gte'] == null ? null : (map['gte'] as String).input(),
-      lte: map['lte'] == null ? null : (map['lte'] as String).input(),
+      eq: map['eq'] == null ? null : ((map['eq'] as String).input()).input(),
+      gte: map['gte'] == null ? null : ((map['gte'] as String).input()).input(),
+      lte: map['lte'] == null ? null : ((map['lte'] as String).input()).input(),
     );
   }
 }

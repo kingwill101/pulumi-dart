@@ -26,8 +26,8 @@ class RetentionConfig {
 
   factory RetentionConfig.fromMap(Map<String, dynamic> map) {
     return RetentionConfig(
-      perPartitionBytes: map['perPartitionBytes'] == null ? null : (map['perPartitionBytes'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
+      perPartitionBytes: map['perPartitionBytes'] == null ? null : (map['perPartitionBytes']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as String).input(),
     );
   }
 }

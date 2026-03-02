@@ -30,9 +30,9 @@ class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurati
 
   factory CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration(
-      encryptionConflictResolutionStrategy: map['encryptionConflictResolutionStrategy'] == null ? null : (map['encryptionConflictResolutionStrategy'] as String).input(),
+      encryptionConflictResolutionStrategy: map['encryptionConflictResolutionStrategy'] == null ? null : ((map['encryptionConflictResolutionStrategy'] as String).input()).input(),
       encryptionStrategy: (map['encryptionStrategy'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
     );
   }
 }

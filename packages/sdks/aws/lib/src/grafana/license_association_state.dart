@@ -46,12 +46,12 @@ class LicenseAssociationState {
 
   factory LicenseAssociationState.fromMap(Map<String, dynamic> map) {
     return LicenseAssociationState(
-      freeTrialExpiration: map['freeTrialExpiration'] == null ? null : (map['freeTrialExpiration'] as String).input(),
-      grafanaToken: map['grafanaToken'] == null ? null : (map['grafanaToken'] as String).input(),
-      licenseExpiration: map['licenseExpiration'] == null ? null : (map['licenseExpiration'] as String).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      freeTrialExpiration: map['freeTrialExpiration'] == null ? null : ((map['freeTrialExpiration'] as String).input()).input(),
+      grafanaToken: map['grafanaToken'] == null ? null : ((map['grafanaToken'] as String).input()).input(),
+      licenseExpiration: map['licenseExpiration'] == null ? null : ((map['licenseExpiration'] as String).input()).input(),
+      licenseType: map['licenseType'] == null ? null : ((map['licenseType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      workspaceId: map['workspaceId'] == null ? null : ((map['workspaceId'] as String).input()).input(),
     );
   }
 }

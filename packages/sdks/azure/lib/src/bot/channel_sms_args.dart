@@ -50,7 +50,7 @@ class ChannelSmsArgs {
   factory ChannelSmsArgs.fromMap(Map<String, dynamic> map) {
     return ChannelSmsArgs(
       botName: (map['botName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       phoneNumber: (map['phoneNumber'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       smsChannelAccountSecurityId: (map['smsChannelAccountSecurityId'] as String).input(),

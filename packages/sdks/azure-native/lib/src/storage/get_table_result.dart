@@ -50,7 +50,7 @@ class GetTableResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      signedIdentifiers: map['signedIdentifiers'] == null ? null : pulumi.Input.decodeList<TableSignedIdentifierResponse>(map['signedIdentifiers'], (value) => TableSignedIdentifierResponse.fromMap((value as Map).cast<String, dynamic>())),
+      signedIdentifiers: map['signedIdentifiers'] == null ? null : pulumi.Input.decodeList<TableSignedIdentifierResponse>(map['signedIdentifiers']!, (value) => TableSignedIdentifierResponse.fromMap((value as Map).cast<String, dynamic>())),
       tableName: map['tableName'] as String,
       type: map['type'] as String,
     );

@@ -97,7 +97,7 @@ class GetMetricsConfigurationResult {
       detailedStatus: map['detailedStatus'] as String,
       detailedStatusMessage: map['detailedStatusMessage'] as String,
       disabledMetrics: (map['disabledMetrics'] as List).cast<String>(),
-      enabledMetrics: map['enabledMetrics'] == null ? null : (map['enabledMetrics'] as List).cast<String>(),
+      enabledMetrics: map['enabledMetrics'] == null ? null : (map['enabledMetrics']! as List).cast<String>(),
       etag: map['etag'] as String,
       extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
@@ -105,7 +105,7 @@ class GetMetricsConfigurationResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

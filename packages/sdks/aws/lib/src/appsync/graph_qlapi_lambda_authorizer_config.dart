@@ -30,9 +30,9 @@ class GraphQLApiLambdaAuthorizerConfig {
 
   factory GraphQLApiLambdaAuthorizerConfig.fromMap(Map<String, dynamic> map) {
     return GraphQLApiLambdaAuthorizerConfig(
-      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : (map['authorizerResultTtlInSeconds'] as int).input(),
+      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : ((map['authorizerResultTtlInSeconds'] as int).input()).input(),
       authorizerUri: (map['authorizerUri'] as String).input(),
-      identityValidationExpression: map['identityValidationExpression'] == null ? null : (map['identityValidationExpression'] as String).input(),
+      identityValidationExpression: map['identityValidationExpression'] == null ? null : ((map['identityValidationExpression'] as String).input()).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class CacheAccessPolicyState {
 
   factory CacheAccessPolicyState.fromMap(Map<String, dynamic> map) {
     return CacheAccessPolicyState(
-      accessRules: map['accessRules'] == null ? null : (pulumi.Input.decodeList<CacheAccessPolicyAccessRule>(map['accessRules'], (value) => CacheAccessPolicyAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hpcCacheId: map['hpcCacheId'] == null ? null : (map['hpcCacheId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accessRules: map['accessRules'] == null ? null : (pulumi.Input.decodeList<CacheAccessPolicyAccessRule>(map['accessRules']!, (value) => CacheAccessPolicyAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hpcCacheId: map['hpcCacheId'] == null ? null : (map['hpcCacheId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -78,18 +78,18 @@ class FirewallPolicyRuleMatcher {
 
   factory FirewallPolicyRuleMatcher.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleMatcher(
-      destAddressGroups: map['destAddressGroups'] == null ? null : ((map['destAddressGroups'] as List).cast<String>()).input(),
-      destFqdns: map['destFqdns'] == null ? null : ((map['destFqdns'] as List).cast<String>()).input(),
-      destIpRanges: map['destIpRanges'] == null ? null : ((map['destIpRanges'] as List).cast<String>()).input(),
-      destRegionCodes: map['destRegionCodes'] == null ? null : ((map['destRegionCodes'] as List).cast<String>()).input(),
-      destThreatIntelligences: map['destThreatIntelligences'] == null ? null : ((map['destThreatIntelligences'] as List).cast<String>()).input(),
-      layer4Configs: map['layer4Configs'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleMatcherLayer4Config>(map['layer4Configs'], (value) => FirewallPolicyRuleMatcherLayer4Config.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      srcAddressGroups: map['srcAddressGroups'] == null ? null : ((map['srcAddressGroups'] as List).cast<String>()).input(),
-      srcFqdns: map['srcFqdns'] == null ? null : ((map['srcFqdns'] as List).cast<String>()).input(),
-      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges'] as List).cast<String>()).input(),
-      srcRegionCodes: map['srcRegionCodes'] == null ? null : ((map['srcRegionCodes'] as List).cast<String>()).input(),
-      srcSecureTags: map['srcSecureTags'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleSecureTag>(map['srcSecureTags'], (value) => FirewallPolicyRuleSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      srcThreatIntelligences: map['srcThreatIntelligences'] == null ? null : ((map['srcThreatIntelligences'] as List).cast<String>()).input(),
+      destAddressGroups: map['destAddressGroups'] == null ? null : ((map['destAddressGroups']! as List).cast<String>()).input(),
+      destFqdns: map['destFqdns'] == null ? null : ((map['destFqdns']! as List).cast<String>()).input(),
+      destIpRanges: map['destIpRanges'] == null ? null : ((map['destIpRanges']! as List).cast<String>()).input(),
+      destRegionCodes: map['destRegionCodes'] == null ? null : ((map['destRegionCodes']! as List).cast<String>()).input(),
+      destThreatIntelligences: map['destThreatIntelligences'] == null ? null : ((map['destThreatIntelligences']! as List).cast<String>()).input(),
+      layer4Configs: map['layer4Configs'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleMatcherLayer4Config>(map['layer4Configs']!, (value) => FirewallPolicyRuleMatcherLayer4Config.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      srcAddressGroups: map['srcAddressGroups'] == null ? null : ((map['srcAddressGroups']! as List).cast<String>()).input(),
+      srcFqdns: map['srcFqdns'] == null ? null : ((map['srcFqdns']! as List).cast<String>()).input(),
+      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges']! as List).cast<String>()).input(),
+      srcRegionCodes: map['srcRegionCodes'] == null ? null : ((map['srcRegionCodes']! as List).cast<String>()).input(),
+      srcSecureTags: map['srcSecureTags'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleSecureTag>(map['srcSecureTags']!, (value) => FirewallPolicyRuleSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      srcThreatIntelligences: map['srcThreatIntelligences'] == null ? null : ((map['srcThreatIntelligences']! as List).cast<String>()).input(),
     );
   }
 }

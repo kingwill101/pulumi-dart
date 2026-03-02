@@ -54,10 +54,10 @@ class GetEntityInsightsArgs {
 
   factory GetEntityInsightsArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityInsightsArgs(
-      addDefaultExtendedTimeRange: map['addDefaultExtendedTimeRange'] == null ? null : (map['addDefaultExtendedTimeRange'] as bool).input(),
+      addDefaultExtendedTimeRange: map['addDefaultExtendedTimeRange'] == null ? null : (map['addDefaultExtendedTimeRange']! as bool).input(),
       endTime: (map['endTime'] as String).input(),
       entityId: (map['entityId'] as String).input(),
-      insightQueryIds: map['insightQueryIds'] == null ? null : ((map['insightQueryIds'] as List).cast<String>()).input(),
+      insightQueryIds: map['insightQueryIds'] == null ? null : ((map['insightQueryIds']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       startTime: (map['startTime'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),

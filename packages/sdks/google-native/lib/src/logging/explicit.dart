@@ -21,7 +21,7 @@ class Explicit {
 
   factory Explicit.fromMap(Map<String, dynamic> map) {
     return Explicit(
-      bounds: map['bounds'] == null ? null : ((map['bounds'] as List).cast<double>()).input(),
+      bounds: map['bounds'] == null ? null : ((map['bounds']! as List).cast<double>()).input(),
     );
   }
 }

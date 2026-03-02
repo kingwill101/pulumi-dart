@@ -56,14 +56,14 @@ class PipelineStageBeforeEntryConditionRule {
 
   factory PipelineStageBeforeEntryConditionRule.fromMap(Map<String, dynamic> map) {
     return PipelineStageBeforeEntryConditionRule(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      configuration: map['configuration'] == null ? null : ((map['configuration'] as Map).cast<String, String>()).input(),
-      inputArtifacts: map['inputArtifacts'] == null ? null : ((map['inputArtifacts'] as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : (((map['commands'] as List).cast<String>()).input()).input(),
+      configuration: map['configuration'] == null ? null : (((map['configuration'] as Map).cast<String, String>()).input()).input(),
+      inputArtifacts: map['inputArtifacts'] == null ? null : (((map['inputArtifacts'] as List).cast<String>()).input()).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      ruleTypeId: (PipelineStageBeforeEntryConditionRuleRuleTypeId.fromMap((map['ruleTypeId'] as Map).cast<String, dynamic>())).input(),
-      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : (map['timeoutInMinutes'] as int).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      ruleTypeId: (PipelineStageBeforeEntryConditionRuleRuleTypeId.fromMap((map['ruleTypeId']! as Map).cast<String, dynamic>())).input(),
+      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : ((map['timeoutInMinutes'] as int).input()).input(),
     );
   }
 }

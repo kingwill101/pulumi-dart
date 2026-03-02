@@ -80,13 +80,13 @@ class RegionSecurityPolicyRule {
   factory RegionSecurityPolicyRule.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyRule(
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      match: map['match'] == null ? null : (RegionSecurityPolicyRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      networkMatch: map['networkMatch'] == null ? null : (RegionSecurityPolicyRuleNetworkMatch.fromMap((map['networkMatch'] as Map).cast<String, dynamic>())).input(),
-      preconfiguredWafConfig: map['preconfiguredWafConfig'] == null ? null : (RegionSecurityPolicyRulePreconfiguredWafConfig.fromMap((map['preconfiguredWafConfig'] as Map).cast<String, dynamic>())).input(),
-      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      match: map['match'] == null ? null : (RegionSecurityPolicyRuleMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      networkMatch: map['networkMatch'] == null ? null : (RegionSecurityPolicyRuleNetworkMatch.fromMap((map['networkMatch']! as Map).cast<String, dynamic>())).input(),
+      preconfiguredWafConfig: map['preconfiguredWafConfig'] == null ? null : (RegionSecurityPolicyRulePreconfiguredWafConfig.fromMap((map['preconfiguredWafConfig']! as Map).cast<String, dynamic>())).input(),
+      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
       priority: (map['priority'] as int).input(),
-      rateLimitOptions: map['rateLimitOptions'] == null ? null : (RegionSecurityPolicyRuleRateLimitOptions.fromMap((map['rateLimitOptions'] as Map).cast<String, dynamic>())).input(),
+      rateLimitOptions: map['rateLimitOptions'] == null ? null : (RegionSecurityPolicyRuleRateLimitOptions.fromMap((map['rateLimitOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

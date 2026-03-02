@@ -39,10 +39,10 @@ class GetAccountIdTokenArgs {
 
   factory GetAccountIdTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountIdTokenArgs(
-      delegates: map['delegates'] == null ? null : ((map['delegates'] as List).cast<String>()).input(),
-      includeEmail: map['includeEmail'] == null ? null : (map['includeEmail'] as bool).input(),
+      delegates: map['delegates'] == null ? null : ((map['delegates']! as List).cast<String>()).input(),
+      includeEmail: map['includeEmail'] == null ? null : (map['includeEmail']! as bool).input(),
       targetAudience: (map['targetAudience'] as String).input(),
-      targetServiceAccount: map['targetServiceAccount'] == null ? null : (map['targetServiceAccount'] as String).input(),
+      targetServiceAccount: map['targetServiceAccount'] == null ? null : (map['targetServiceAccount']! as String).input(),
     );
   }
 }

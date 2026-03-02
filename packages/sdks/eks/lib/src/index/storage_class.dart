@@ -76,17 +76,17 @@ class StorageClass {
 
   factory StorageClass.fromMap(Map<String, dynamic> map) {
     return StorageClass(
-      allowVolumeExpansion: map['allowVolumeExpansion'] == null ? null : (map['allowVolumeExpansion'] as bool).input(),
-      default_: map['default'] == null ? null : (map['default'] as bool).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      iopsPerGb: map['iopsPerGb'] == null ? null : (map['iopsPerGb'] as int).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      metadata: map['metadata'] == null ? null : (pulumi_kubernetes_meta.ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions'] as List).cast<String>()).input(),
-      reclaimPolicy: map['reclaimPolicy'] == null ? null : (map['reclaimPolicy'] as String).input(),
+      allowVolumeExpansion: map['allowVolumeExpansion'] == null ? null : (map['allowVolumeExpansion']! as bool).input(),
+      default_: map['default'] == null ? null : (map['default']! as bool).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
+      iopsPerGb: map['iopsPerGb'] == null ? null : (map['iopsPerGb']! as int).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      metadata: map['metadata'] == null ? null : (pulumi_kubernetes_meta.ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions']! as List).cast<String>()).input(),
+      reclaimPolicy: map['reclaimPolicy'] == null ? null : (map['reclaimPolicy']! as String).input(),
       type: (map['type'] as String).input(),
-      volumeBindingMode: map['volumeBindingMode'] == null ? null : (map['volumeBindingMode'] as String).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      volumeBindingMode: map['volumeBindingMode'] == null ? null : (map['volumeBindingMode']! as String).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

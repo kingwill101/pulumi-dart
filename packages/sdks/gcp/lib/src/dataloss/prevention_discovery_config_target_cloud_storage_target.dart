@@ -41,10 +41,10 @@ class PreventionDiscoveryConfigTargetCloudStorageTarget {
 
   factory PreventionDiscoveryConfigTargetCloudStorageTarget.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTarget(
-      conditions: map['conditions'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTargetConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      disabled: map['disabled'] == null ? null : ((map['disabled'] as Map).cast<String, dynamic>()).input(),
+      conditions: map['conditions'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTargetConditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      disabled: map['disabled'] == null ? null : ((map['disabled']! as Map).cast<String, dynamic>()).input(),
       filter: (PreventionDiscoveryConfigTargetCloudStorageTargetFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      generationCadence: map['generationCadence'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence.fromMap((map['generationCadence'] as Map).cast<String, dynamic>())).input(),
+      generationCadence: map['generationCadence'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadence.fromMap((map['generationCadence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

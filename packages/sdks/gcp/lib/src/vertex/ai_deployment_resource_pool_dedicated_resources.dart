@@ -39,9 +39,9 @@ class AiDeploymentResourcePoolDedicatedResources {
 
   factory AiDeploymentResourcePoolDedicatedResources.fromMap(Map<String, dynamic> map) {
     return AiDeploymentResourcePoolDedicatedResources(
-      autoscalingMetricSpecs: map['autoscalingMetricSpecs'] == null ? null : (pulumi.Input.decodeList<AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec>(map['autoscalingMetricSpecs'], (value) => AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoscalingMetricSpecs: map['autoscalingMetricSpecs'] == null ? null : (pulumi.Input.decodeList<AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec>(map['autoscalingMetricSpecs']!, (value) => AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
       machineSpec: (AiDeploymentResourcePoolDedicatedResourcesMachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
-      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount'] as int).input(),
+      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount']! as int).input(),
       minReplicaCount: (map['minReplicaCount'] as int).input(),
     );
   }

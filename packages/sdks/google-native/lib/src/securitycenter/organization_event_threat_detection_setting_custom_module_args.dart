@@ -54,13 +54,13 @@ class OrganizationEventThreatDetectionSettingCustomModuleArgs {
 
   factory OrganizationEventThreatDetectionSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationEventThreatDetectionSettingCustomModuleArgs(
-      config: map['config'] == null ? null : ((map['config'] as Map).cast<String, String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enablementState: map['enablementState'] == null ? null : (OrganizationEventThreatDetectionSettingCustomModuleEnablementState.fromValue(map['enablementState'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      config: map['config'] == null ? null : ((map['config']! as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enablementState: map['enablementState'] == null ? null : (OrganizationEventThreatDetectionSettingCustomModuleEnablementState.fromValue(map['enablementState']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

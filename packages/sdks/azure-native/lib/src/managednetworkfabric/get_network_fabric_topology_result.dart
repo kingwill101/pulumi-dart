@@ -32,8 +32,8 @@ class GetNetworkFabricTopologyResult {
   factory GetNetworkFabricTopologyResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkFabricTopologyResult(
       configurationState: map['configurationState'] as String,
-      error: map['error'] == null ? null : ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      url: map['url'] == null ? null : map['url'] as String,
+      error: map['error'] == null ? null : ErrorDetailResponse.fromMap((map['error']! as Map).cast<String, dynamic>()),
+      url: map['url'] == null ? null : map['url']! as String,
     );
   }
 }

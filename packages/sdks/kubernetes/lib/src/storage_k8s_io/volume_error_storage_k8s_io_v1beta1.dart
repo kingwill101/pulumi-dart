@@ -26,8 +26,8 @@ class VolumeErrorStorageK8sIoV1beta1 {
 
   factory VolumeErrorStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return VolumeErrorStorageK8sIoV1beta1(
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      time: map['time'] == null ? null : (map['time'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      time: map['time'] == null ? null : (map['time']! as String).input(),
     );
   }
 }

@@ -24,7 +24,7 @@ class GetFunctionsArgs {
 
   factory GetFunctionsArgs.fromMap(Map<String, dynamic> map) {
     return GetFunctionsArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

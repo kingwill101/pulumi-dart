@@ -53,7 +53,7 @@ class DatabaseImport {
       administratorLogin: (map['administratorLogin'] as String).input(),
       administratorLoginPassword: (map['administratorLoginPassword'] as String).input(),
       authenticationType: (map['authenticationType'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
       storageKey: (map['storageKey'] as String).input(),
       storageKeyType: (map['storageKeyType'] as String).input(),
       storageUri: (map['storageUri'] as String).input(),

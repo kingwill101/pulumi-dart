@@ -22,7 +22,7 @@ class EncryptionDetails {
 
   factory EncryptionDetails.fromMap(Map<String, dynamic> map) {
     return EncryptionDetails(
-      cmk: map['cmk'] == null ? null : (CustomerManagedKeyDetails.fromMap((map['cmk'] as Map).cast<String, dynamic>())).input(),
+      cmk: map['cmk'] == null ? null : (CustomerManagedKeyDetails.fromMap((map['cmk']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

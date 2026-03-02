@@ -44,11 +44,11 @@ class DeliveryChannelState {
 
   factory DeliveryChannelState.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelState(
-      deliveryChannelDescription: map['deliveryChannelDescription'] == null ? null : (map['deliveryChannelDescription'] as String).input(),
-      deliveryChannelFilter: map['deliveryChannelFilter'] == null ? null : (DeliveryChannelDeliveryChannelFilter.fromMap((map['deliveryChannelFilter'] as Map).cast<String, dynamic>())).input(),
-      deliveryChannelName: map['deliveryChannelName'] == null ? null : (map['deliveryChannelName'] as String).input(),
-      resourceChangeDelivery: map['resourceChangeDelivery'] == null ? null : (DeliveryChannelResourceChangeDelivery.fromMap((map['resourceChangeDelivery'] as Map).cast<String, dynamic>())).input(),
-      resourceSnapshotDelivery: map['resourceSnapshotDelivery'] == null ? null : (DeliveryChannelResourceSnapshotDelivery.fromMap((map['resourceSnapshotDelivery'] as Map).cast<String, dynamic>())).input(),
+      deliveryChannelDescription: map['deliveryChannelDescription'] == null ? null : (map['deliveryChannelDescription']! as String).input(),
+      deliveryChannelFilter: map['deliveryChannelFilter'] == null ? null : (DeliveryChannelDeliveryChannelFilter.fromMap((map['deliveryChannelFilter']! as Map).cast<String, dynamic>())).input(),
+      deliveryChannelName: map['deliveryChannelName'] == null ? null : (map['deliveryChannelName']! as String).input(),
+      resourceChangeDelivery: map['resourceChangeDelivery'] == null ? null : (DeliveryChannelResourceChangeDelivery.fromMap((map['resourceChangeDelivery']! as Map).cast<String, dynamic>())).input(),
+      resourceSnapshotDelivery: map['resourceSnapshotDelivery'] == null ? null : (DeliveryChannelResourceSnapshotDelivery.fromMap((map['resourceSnapshotDelivery']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -60,14 +60,14 @@ class VexAssessment {
 
   factory VexAssessment.fromMap(Map<String, dynamic> map) {
     return VexAssessment(
-      cve: map['cve'] == null ? null : (map['cve'] as String).input(),
-      impacts: map['impacts'] == null ? null : ((map['impacts'] as List).cast<String>()).input(),
-      justification: map['justification'] == null ? null : (Justification.fromMap((map['justification'] as Map).cast<String, dynamic>())).input(),
-      noteName: map['noteName'] == null ? null : (map['noteName'] as String).input(),
-      relatedUris: map['relatedUris'] == null ? null : (pulumi.Input.decodeList<RelatedUrl>(map['relatedUris'], (value) => RelatedUrl.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      remediations: map['remediations'] == null ? null : (pulumi.Input.decodeList<Remediation>(map['remediations'], (value) => Remediation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (VexAssessmentState.fromValue(map['state'] as String)).input(),
-      vulnerabilityId: map['vulnerabilityId'] == null ? null : (map['vulnerabilityId'] as String).input(),
+      cve: map['cve'] == null ? null : (map['cve']! as String).input(),
+      impacts: map['impacts'] == null ? null : ((map['impacts']! as List).cast<String>()).input(),
+      justification: map['justification'] == null ? null : (Justification.fromMap((map['justification']! as Map).cast<String, dynamic>())).input(),
+      noteName: map['noteName'] == null ? null : (map['noteName']! as String).input(),
+      relatedUris: map['relatedUris'] == null ? null : (pulumi.Input.decodeList<RelatedUrl>(map['relatedUris']!, (value) => RelatedUrl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remediations: map['remediations'] == null ? null : (pulumi.Input.decodeList<Remediation>(map['remediations']!, (value) => Remediation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (VexAssessmentState.fromValue(map['state']! as String)).input(),
+      vulnerabilityId: map['vulnerabilityId'] == null ? null : (map['vulnerabilityId']! as String).input(),
     );
   }
 }

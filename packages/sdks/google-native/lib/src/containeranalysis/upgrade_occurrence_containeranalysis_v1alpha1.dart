@@ -33,9 +33,9 @@ class UpgradeOccurrenceContaineranalysisV1alpha1 {
 
   factory UpgradeOccurrenceContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return UpgradeOccurrenceContaineranalysisV1alpha1(
-      distribution: map['distribution'] == null ? null : (UpgradeDistributionContaineranalysisV1alpha1.fromMap((map['distribution'] as Map).cast<String, dynamic>())).input(),
-      package: map['package'] == null ? null : (map['package'] as String).input(),
-      parsedVersion: map['parsedVersion'] == null ? null : (VersionContaineranalysisV1alpha1.fromMap((map['parsedVersion'] as Map).cast<String, dynamic>())).input(),
+      distribution: map['distribution'] == null ? null : (UpgradeDistributionContaineranalysisV1alpha1.fromMap((map['distribution']! as Map).cast<String, dynamic>())).input(),
+      package: map['package'] == null ? null : (map['package']! as String).input(),
+      parsedVersion: map['parsedVersion'] == null ? null : (VersionContaineranalysisV1alpha1.fromMap((map['parsedVersion']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

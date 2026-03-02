@@ -32,8 +32,8 @@ class PrivateDnsZoneConfigResponse {
 
   factory PrivateDnsZoneConfigResponse.fromMap(Map<String, dynamic> map) {
     return PrivateDnsZoneConfigResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateDnsZoneId: map['privateDnsZoneId'] == null ? null : (map['privateDnsZoneId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateDnsZoneId: map['privateDnsZoneId'] == null ? null : (map['privateDnsZoneId']! as String).input(),
       recordSets: (pulumi.Input.decodeList<RecordSetResponse>(map['recordSets'], (value) => RecordSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

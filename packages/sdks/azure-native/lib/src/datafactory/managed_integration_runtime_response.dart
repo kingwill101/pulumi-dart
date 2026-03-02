@@ -62,12 +62,12 @@ class ManagedIntegrationRuntimeResponse {
 
   factory ManagedIntegrationRuntimeResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIntegrationRuntimeResponse(
-      computeProperties: map['computeProperties'] == null ? null : (IntegrationRuntimeComputePropertiesResponse.fromMap((map['computeProperties'] as Map).cast<String, dynamic>())).input(),
-      customerVirtualNetwork: map['customerVirtualNetwork'] == null ? null : (IntegrationRuntimeCustomerVirtualNetworkResponse.fromMap((map['customerVirtualNetwork'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      interactiveQuery: map['interactiveQuery'] == null ? null : (InteractiveQueryPropertiesResponse.fromMap((map['interactiveQuery'] as Map).cast<String, dynamic>())).input(),
-      managedVirtualNetwork: map['managedVirtualNetwork'] == null ? null : (ManagedVirtualNetworkReferenceResponse.fromMap((map['managedVirtualNetwork'] as Map).cast<String, dynamic>())).input(),
-      ssisProperties: map['ssisProperties'] == null ? null : (IntegrationRuntimeSsisPropertiesResponse.fromMap((map['ssisProperties'] as Map).cast<String, dynamic>())).input(),
+      computeProperties: map['computeProperties'] == null ? null : (IntegrationRuntimeComputePropertiesResponse.fromMap((map['computeProperties']! as Map).cast<String, dynamic>())).input(),
+      customerVirtualNetwork: map['customerVirtualNetwork'] == null ? null : (IntegrationRuntimeCustomerVirtualNetworkResponse.fromMap((map['customerVirtualNetwork']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      interactiveQuery: map['interactiveQuery'] == null ? null : (InteractiveQueryPropertiesResponse.fromMap((map['interactiveQuery']! as Map).cast<String, dynamic>())).input(),
+      managedVirtualNetwork: map['managedVirtualNetwork'] == null ? null : (ManagedVirtualNetworkReferenceResponse.fromMap((map['managedVirtualNetwork']! as Map).cast<String, dynamic>())).input(),
+      ssisProperties: map['ssisProperties'] == null ? null : (IntegrationRuntimeSsisPropertiesResponse.fromMap((map['ssisProperties']! as Map).cast<String, dynamic>())).input(),
       state: (map['state'] as String).input(),
       type: (map['type'] as String).input(),
     );

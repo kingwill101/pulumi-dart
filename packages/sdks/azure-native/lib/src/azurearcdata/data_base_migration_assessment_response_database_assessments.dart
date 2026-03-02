@@ -31,10 +31,10 @@ class DataBaseMigrationAssessmentResponseDatabaseAssessments {
 
   factory DataBaseMigrationAssessmentResponseDatabaseAssessments.fromMap(Map<String, dynamic> map) {
     return DataBaseMigrationAssessmentResponseDatabaseAssessments(
-      appliesToMigrationTargetPlatform: map['appliesToMigrationTargetPlatform'] == null ? null : (map['appliesToMigrationTargetPlatform'] as String).input(),
-      featureId: map['featureId'] == null ? null : (map['featureId'] as String).input(),
-      issueCategory: map['issueCategory'] == null ? null : (map['issueCategory'] as String).input(),
-      moreInformation: map['moreInformation'] == null ? null : (map['moreInformation'] as String).input(),
+      appliesToMigrationTargetPlatform: map['appliesToMigrationTargetPlatform'] == null ? null : (map['appliesToMigrationTargetPlatform']! as String).input(),
+      featureId: map['featureId'] == null ? null : (map['featureId']! as String).input(),
+      issueCategory: map['issueCategory'] == null ? null : (map['issueCategory']! as String).input(),
+      moreInformation: map['moreInformation'] == null ? null : (map['moreInformation']! as String).input(),
     );
   }
 }

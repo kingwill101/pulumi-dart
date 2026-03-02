@@ -27,7 +27,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementGeoMatchStatemen
   factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementGeoMatchStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementGeoMatchStatement(
       countryCodes: ((map['countryCodes'] as List).cast<String>()).input(),
-      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : (RuleGroupRuleStatementRateBasedStatementScopeDownStatementGeoMatchStatementForwardedIpConfig.fromMap((map['forwardedIpConfig'] as Map).cast<String, dynamic>())).input(),
+      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementScopeDownStatementGeoMatchStatementForwardedIpConfig.fromMap((map['forwardedIpConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

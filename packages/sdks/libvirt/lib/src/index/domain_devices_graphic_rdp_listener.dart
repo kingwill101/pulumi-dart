@@ -33,9 +33,9 @@ class DomainDevicesGraphicRdpListener {
 
   factory DomainDevicesGraphicRdpListener.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicRdpListener(
-      address: map['address'] == null ? null : (DomainDevicesGraphicRdpListenerAddress.fromMap((map['address'] as Map).cast<String, dynamic>())).input(),
-      network: map['network'] == null ? null : (DomainDevicesGraphicRdpListenerNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
-      socket: map['socket'] == null ? null : (DomainDevicesGraphicRdpListenerSocket.fromMap((map['socket'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : (DomainDevicesGraphicRdpListenerAddress.fromMap((map['address']! as Map).cast<String, dynamic>())).input(),
+      network: map['network'] == null ? null : (DomainDevicesGraphicRdpListenerNetwork.fromMap((map['network']! as Map).cast<String, dynamic>())).input(),
+      socket: map['socket'] == null ? null : (DomainDevicesGraphicRdpListenerSocket.fromMap((map['socket']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

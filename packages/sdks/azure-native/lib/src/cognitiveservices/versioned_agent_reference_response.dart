@@ -31,9 +31,9 @@ class VersionedAgentReferenceResponse {
 
   factory VersionedAgentReferenceResponse.fromMap(Map<String, dynamic> map) {
     return VersionedAgentReferenceResponse(
-      agentId: map['agentId'] == null ? null : (map['agentId'] as String).input(),
-      agentName: map['agentName'] == null ? null : (map['agentName'] as String).input(),
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      agentId: map['agentId'] == null ? null : (map['agentId']! as String).input(),
+      agentName: map['agentName'] == null ? null : (map['agentName']! as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
     );
   }
 }

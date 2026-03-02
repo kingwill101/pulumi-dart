@@ -55,10 +55,10 @@ class QueueInfo {
 
   factory QueueInfo.fromMap(Map<String, dynamic> map) {
     return QueueInfo(
-      deadLetterDestinationWithResourceIdentity: map['deadLetterDestinationWithResourceIdentity'] == null ? null : (DeadLetterWithResourceIdentity.fromMap((map['deadLetterDestinationWithResourceIdentity'] as Map).cast<String, dynamic>())).input(),
-      eventTimeToLive: map['eventTimeToLive'] == null ? null : (map['eventTimeToLive'] as String).input(),
-      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount'] as int).input(),
-      receiveLockDurationInSeconds: map['receiveLockDurationInSeconds'] == null ? null : (map['receiveLockDurationInSeconds'] as int).input(),
+      deadLetterDestinationWithResourceIdentity: map['deadLetterDestinationWithResourceIdentity'] == null ? null : (DeadLetterWithResourceIdentity.fromMap((map['deadLetterDestinationWithResourceIdentity']! as Map).cast<String, dynamic>())).input(),
+      eventTimeToLive: map['eventTimeToLive'] == null ? null : (map['eventTimeToLive']! as String).input(),
+      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount']! as int).input(),
+      receiveLockDurationInSeconds: map['receiveLockDurationInSeconds'] == null ? null : (map['receiveLockDurationInSeconds']! as int).input(),
     );
   }
 }

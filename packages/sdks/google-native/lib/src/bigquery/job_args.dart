@@ -39,10 +39,10 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      configuration: map['configuration'] == null ? null : (JobConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      jobReference: map['jobReference'] == null ? null : (JobReference.fromMap((map['jobReference'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      source: map['source'] == null ? null : (map['source']).input(),
+      configuration: map['configuration'] == null ? null : (JobConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      jobReference: map['jobReference'] == null ? null : (JobReference.fromMap((map['jobReference']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      source: map['source'] == null ? null : (map['source']!).input(),
     );
   }
 }

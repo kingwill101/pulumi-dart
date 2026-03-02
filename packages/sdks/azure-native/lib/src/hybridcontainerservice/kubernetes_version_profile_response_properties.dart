@@ -27,7 +27,7 @@ class KubernetesVersionProfileResponseProperties {
   factory KubernetesVersionProfileResponseProperties.fromMap(Map<String, dynamic> map) {
     return KubernetesVersionProfileResponseProperties(
       provisioningState: (map['provisioningState'] as String).input(),
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<KubernetesVersionPropertiesResponse>(map['values'], (value) => KubernetesVersionPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      values: map['values'] == null ? null : (pulumi.Input.decodeList<KubernetesVersionPropertiesResponse>(map['values']!, (value) => KubernetesVersionPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

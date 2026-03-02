@@ -31,9 +31,9 @@ class DatabaseIdentityResponse {
 
   factory DatabaseIdentityResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseIdentityResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

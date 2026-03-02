@@ -30,7 +30,7 @@ class RouteSpecTcpRouteActionWeightedTarget {
 
   factory RouteSpecTcpRouteActionWeightedTarget.fromMap(Map<String, dynamic> map) {
     return RouteSpecTcpRouteActionWeightedTarget(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
       virtualNode: (map['virtualNode'] as String).input(),
       weight: (map['weight'] as int).input(),
     );

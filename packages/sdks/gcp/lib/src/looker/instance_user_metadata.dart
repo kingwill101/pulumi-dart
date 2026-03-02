@@ -30,9 +30,9 @@ class InstanceUserMetadata {
 
   factory InstanceUserMetadata.fromMap(Map<String, dynamic> map) {
     return InstanceUserMetadata(
-      additionalDeveloperUserCount: map['additionalDeveloperUserCount'] == null ? null : (map['additionalDeveloperUserCount'] as int).input(),
-      additionalStandardUserCount: map['additionalStandardUserCount'] == null ? null : (map['additionalStandardUserCount'] as int).input(),
-      additionalViewerUserCount: map['additionalViewerUserCount'] == null ? null : (map['additionalViewerUserCount'] as int).input(),
+      additionalDeveloperUserCount: map['additionalDeveloperUserCount'] == null ? null : (map['additionalDeveloperUserCount']! as int).input(),
+      additionalStandardUserCount: map['additionalStandardUserCount'] == null ? null : (map['additionalStandardUserCount']! as int).input(),
+      additionalViewerUserCount: map['additionalViewerUserCount'] == null ? null : (map['additionalViewerUserCount']! as int).input(),
     );
   }
 }

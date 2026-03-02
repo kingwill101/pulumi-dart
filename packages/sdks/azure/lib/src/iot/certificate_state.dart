@@ -41,11 +41,11 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      certificateContent: map['certificateContent'] == null ? null : (map['certificateContent'] as String).input(),
-      iothubName: map['iothubName'] == null ? null : (map['iothubName'] as String).input(),
-      isVerified: map['isVerified'] == null ? null : (map['isVerified'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      certificateContent: map['certificateContent'] == null ? null : (map['certificateContent']! as String).input(),
+      iothubName: map['iothubName'] == null ? null : (map['iothubName']! as String).input(),
+      isVerified: map['isVerified'] == null ? null : (map['isVerified']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

@@ -37,9 +37,9 @@ class GitRemoteSettings {
 
   factory GitRemoteSettings.fromMap(Map<String, dynamic> map) {
     return GitRemoteSettings(
-      authenticationTokenSecretVersion: map['authenticationTokenSecretVersion'] == null ? null : (map['authenticationTokenSecretVersion'] as String).input(),
+      authenticationTokenSecretVersion: map['authenticationTokenSecretVersion'] == null ? null : (map['authenticationTokenSecretVersion']! as String).input(),
       defaultBranch: (map['defaultBranch'] as String).input(),
-      sshAuthenticationConfig: map['sshAuthenticationConfig'] == null ? null : (SshAuthenticationConfig.fromMap((map['sshAuthenticationConfig'] as Map).cast<String, dynamic>())).input(),
+      sshAuthenticationConfig: map['sshAuthenticationConfig'] == null ? null : (SshAuthenticationConfig.fromMap((map['sshAuthenticationConfig']! as Map).cast<String, dynamic>())).input(),
       url: (map['url'] as String).input(),
     );
   }

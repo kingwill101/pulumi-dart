@@ -59,9 +59,9 @@ class SessionEntityTypeArgs {
       entities: (pulumi.Input.decodeList<GoogleCloudDialogflowV2EntityTypeEntity>(map['entities'], (value) => GoogleCloudDialogflowV2EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
       entityOverrideMode: (SessionEntityTypeEntityOverrideMode.fromValue(map['entityOverrideMode'] as String)).input(),
       environmentId: (map['environmentId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sessionId: (map['sessionId'] as String).input(),
       userId: (map['userId'] as String).input(),
     );

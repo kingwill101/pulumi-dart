@@ -31,7 +31,7 @@ class LogTransformerTransformerConfigCopyValueEntry {
 
   factory LogTransformerTransformerConfigCopyValueEntry.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigCopyValueEntry(
-      overwriteIfExists: map['overwriteIfExists'] == null ? null : (map['overwriteIfExists'] as bool).input(),
+      overwriteIfExists: map['overwriteIfExists'] == null ? null : ((map['overwriteIfExists'] as bool).input()).input(),
       source: (map['source'] as String).input(),
       target: (map['target'] as String).input(),
     );

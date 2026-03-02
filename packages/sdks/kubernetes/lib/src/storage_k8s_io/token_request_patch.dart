@@ -26,8 +26,8 @@ class TokenRequestPatch {
 
   factory TokenRequestPatch.fromMap(Map<String, dynamic> map) {
     return TokenRequestPatch(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      expirationSeconds: map['expirationSeconds'] == null ? null : (map['expirationSeconds'] as int).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      expirationSeconds: map['expirationSeconds'] == null ? null : (map['expirationSeconds']! as int).input(),
     );
   }
 }

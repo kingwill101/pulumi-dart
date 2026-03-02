@@ -21,7 +21,7 @@ class CFNS3LogsConfiguration {
 
   factory CFNS3LogsConfiguration.fromMap(Map<String, dynamic> map) {
     return CFNS3LogsConfiguration(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
     );
   }
 }

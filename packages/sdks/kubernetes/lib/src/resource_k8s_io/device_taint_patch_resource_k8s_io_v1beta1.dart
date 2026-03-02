@@ -38,10 +38,10 @@ class DeviceTaintPatchResourceK8sIoV1beta1 {
 
   factory DeviceTaintPatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return DeviceTaintPatchResourceK8sIoV1beta1(
-      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      timeAdded: map['timeAdded'] == null ? null : (map['timeAdded'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      timeAdded: map['timeAdded'] == null ? null : (map['timeAdded']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

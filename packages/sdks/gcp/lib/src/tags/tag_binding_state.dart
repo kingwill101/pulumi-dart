@@ -31,9 +31,9 @@ class TagBindingState {
 
   factory TagBindingState.fromMap(Map<String, dynamic> map) {
     return TagBindingState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
     );
   }
 }

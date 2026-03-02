@@ -31,9 +31,9 @@ class ListenerRuleMatchHttpMatchHeaderMatchMatch {
 
   factory ListenerRuleMatchHttpMatchHeaderMatchMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatchHttpMatchHeaderMatchMatch(
-      contains: map['contains'] == null ? null : (map['contains'] as String).input(),
-      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      contains: map['contains'] == null ? null : ((map['contains'] as String).input()).input(),
+      exact: map['exact'] == null ? null : ((map['exact'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

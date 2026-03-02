@@ -41,11 +41,11 @@ class VmwareSourceDetails {
 
   factory VmwareSourceDetails.fromMap(Map<String, dynamic> map) {
     return VmwareSourceDetails(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      resolvedVcenterHost: map['resolvedVcenterHost'] == null ? null : (map['resolvedVcenterHost'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
-      vcenterIp: map['vcenterIp'] == null ? null : (map['vcenterIp'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      resolvedVcenterHost: map['resolvedVcenterHost'] == null ? null : (map['resolvedVcenterHost']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
+      vcenterIp: map['vcenterIp'] == null ? null : (map['vcenterIp']! as String).input(),
     );
   }
 }

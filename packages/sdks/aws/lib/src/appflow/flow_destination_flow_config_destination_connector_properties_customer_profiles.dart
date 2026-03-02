@@ -26,7 +26,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles {
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles(
       domainName: (map['domainName'] as String).input(),
-      objectTypeName: map['objectTypeName'] == null ? null : (map['objectTypeName'] as String).input(),
+      objectTypeName: map['objectTypeName'] == null ? null : ((map['objectTypeName'] as String).input()).input(),
     );
   }
 }

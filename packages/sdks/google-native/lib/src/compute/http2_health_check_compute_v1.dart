@@ -52,13 +52,13 @@ class HTTP2HealthCheckComputeV1 {
 
   factory HTTP2HealthCheckComputeV1.fromMap(Map<String, dynamic> map) {
     return HTTP2HealthCheckComputeV1(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      portName: map['portName'] == null ? null : (map['portName'] as String).input(),
-      portSpecification: map['portSpecification'] == null ? null : (HTTP2HealthCheckPortSpecificationComputeV1.fromValue(map['portSpecification'] as String)).input(),
-      proxyHeader: map['proxyHeader'] == null ? null : (HTTP2HealthCheckProxyHeaderComputeV1.fromValue(map['proxyHeader'] as String)).input(),
-      requestPath: map['requestPath'] == null ? null : (map['requestPath'] as String).input(),
-      response: map['response'] == null ? null : (map['response'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      portName: map['portName'] == null ? null : (map['portName']! as String).input(),
+      portSpecification: map['portSpecification'] == null ? null : (HTTP2HealthCheckPortSpecificationComputeV1.fromValue(map['portSpecification']! as String)).input(),
+      proxyHeader: map['proxyHeader'] == null ? null : (HTTP2HealthCheckProxyHeaderComputeV1.fromValue(map['proxyHeader']! as String)).input(),
+      requestPath: map['requestPath'] == null ? null : (map['requestPath']! as String).input(),
+      response: map['response'] == null ? null : (map['response']! as String).input(),
     );
   }
 }

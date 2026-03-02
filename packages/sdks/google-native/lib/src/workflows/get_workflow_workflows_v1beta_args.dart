@@ -32,7 +32,7 @@ class GetWorkflowWorkflowsV1betaArgs {
   factory GetWorkflowWorkflowsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkflowWorkflowsV1betaArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workflowId: (map['workflowId'] as String).input(),
     );
   }

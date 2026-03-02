@@ -29,7 +29,7 @@ class SupportPlanTypeArgs {
 
   factory SupportPlanTypeArgs.fromMap(Map<String, dynamic> map) {
     return SupportPlanTypeArgs(
-      planTypeName: map['planTypeName'] == null ? null : (map['planTypeName'] as String).input(),
+      planTypeName: map['planTypeName'] == null ? null : (map['planTypeName']! as String).input(),
       providerName: (map['providerName'] as String).input(),
     );
   }

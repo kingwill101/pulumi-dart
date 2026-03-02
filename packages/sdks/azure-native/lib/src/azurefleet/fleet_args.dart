@@ -92,19 +92,19 @@ class FleetArgs {
 
   factory FleetArgs.fromMap(Map<String, dynamic> map) {
     return FleetArgs(
-      additionalLocationsProfile: map['additionalLocationsProfile'] == null ? null : (AdditionalLocationsProfile.fromMap((map['additionalLocationsProfile'] as Map).cast<String, dynamic>())).input(),
+      additionalLocationsProfile: map['additionalLocationsProfile'] == null ? null : (AdditionalLocationsProfile.fromMap((map['additionalLocationsProfile']! as Map).cast<String, dynamic>())).input(),
       computeProfile: (ComputeProfile.fromMap((map['computeProfile'] as Map).cast<String, dynamic>())).input(),
-      fleetName: map['fleetName'] == null ? null : (map['fleetName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      regularPriorityProfile: map['regularPriorityProfile'] == null ? null : (RegularPriorityProfile.fromMap((map['regularPriorityProfile'] as Map).cast<String, dynamic>())).input(),
+      fleetName: map['fleetName'] == null ? null : (map['fleetName']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      regularPriorityProfile: map['regularPriorityProfile'] == null ? null : (RegularPriorityProfile.fromMap((map['regularPriorityProfile']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      spotPriorityProfile: map['spotPriorityProfile'] == null ? null : (SpotPriorityProfile.fromMap((map['spotPriorityProfile'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vmAttributes: map['vmAttributes'] == null ? null : (VMAttributes.fromMap((map['vmAttributes'] as Map).cast<String, dynamic>())).input(),
+      spotPriorityProfile: map['spotPriorityProfile'] == null ? null : (SpotPriorityProfile.fromMap((map['spotPriorityProfile']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vmAttributes: map['vmAttributes'] == null ? null : (VMAttributes.fromMap((map['vmAttributes']! as Map).cast<String, dynamic>())).input(),
       vmSizesProfile: (pulumi.Input.decodeList<VmSizeProfile>(map['vmSizesProfile'], (value) => VmSizeProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

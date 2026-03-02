@@ -55,11 +55,11 @@ class BucketNotificationArgs {
   factory BucketNotificationArgs.fromMap(Map<String, dynamic> map) {
     return BucketNotificationArgs(
       bucket: (map['bucket'] as String).input(),
-      eventbridge: map['eventbridge'] == null ? null : (map['eventbridge'] as bool).input(),
-      lambdaFunctions: map['lambdaFunctions'] == null ? null : (pulumi.Input.decodeList<BucketNotificationLambdaFunction>(map['lambdaFunctions'], (value) => BucketNotificationLambdaFunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queues: map['queues'] == null ? null : (pulumi.Input.decodeList<BucketNotificationQueue>(map['queues'], (value) => BucketNotificationQueue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      topics: map['topics'] == null ? null : (pulumi.Input.decodeList<BucketNotificationTopic>(map['topics'], (value) => BucketNotificationTopic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventbridge: map['eventbridge'] == null ? null : ((map['eventbridge'] as bool).input()).input(),
+      lambdaFunctions: map['lambdaFunctions'] == null ? null : ((pulumi.Input.decodeList<BucketNotificationLambdaFunction>(map['lambdaFunctions']!, (value) => BucketNotificationLambdaFunction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      queues: map['queues'] == null ? null : ((pulumi.Input.decodeList<BucketNotificationQueue>(map['queues']!, (value) => BucketNotificationQueue.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      topics: map['topics'] == null ? null : ((pulumi.Input.decodeList<BucketNotificationTopic>(map['topics']!, (value) => BucketNotificationTopic.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

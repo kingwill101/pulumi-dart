@@ -46,11 +46,11 @@ class DatascanDataQualitySpec {
 
   factory DatascanDataQualitySpec.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpec(
-      catalogPublishingEnabled: map['catalogPublishingEnabled'] == null ? null : (map['catalogPublishingEnabled'] as bool).input(),
-      postScanActions: map['postScanActions'] == null ? null : (DatascanDataQualitySpecPostScanActions.fromMap((map['postScanActions'] as Map).cast<String, dynamic>())).input(),
-      rowFilter: map['rowFilter'] == null ? null : (map['rowFilter'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<DatascanDataQualitySpecRule>(map['rules'], (value) => DatascanDataQualitySpecRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      samplingPercent: map['samplingPercent'] == null ? null : (map['samplingPercent'] as double).input(),
+      catalogPublishingEnabled: map['catalogPublishingEnabled'] == null ? null : (map['catalogPublishingEnabled']! as bool).input(),
+      postScanActions: map['postScanActions'] == null ? null : (DatascanDataQualitySpecPostScanActions.fromMap((map['postScanActions']! as Map).cast<String, dynamic>())).input(),
+      rowFilter: map['rowFilter'] == null ? null : (map['rowFilter']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<DatascanDataQualitySpecRule>(map['rules']!, (value) => DatascanDataQualitySpecRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      samplingPercent: map['samplingPercent'] == null ? null : (map['samplingPercent']! as double).input(),
     );
   }
 }

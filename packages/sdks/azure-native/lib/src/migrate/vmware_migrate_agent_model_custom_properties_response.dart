@@ -32,9 +32,9 @@ class VMwareMigrateAgentModelCustomPropertiesResponse {
 
   factory VMwareMigrateAgentModelCustomPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VMwareMigrateAgentModelCustomPropertiesResponse(
-      fabricFriendlyName: map['fabricFriendlyName'] == null ? null : (map['fabricFriendlyName'] as String).input(),
+      fabricFriendlyName: map['fabricFriendlyName'] == null ? null : (map['fabricFriendlyName']! as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      vmwareSiteId: map['vmwareSiteId'] == null ? null : (map['vmwareSiteId'] as String).input(),
+      vmwareSiteId: map['vmwareSiteId'] == null ? null : (map['vmwareSiteId']! as String).input(),
     );
   }
 }

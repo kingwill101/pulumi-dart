@@ -38,7 +38,7 @@ class GetDbNodeArgs {
     return GetDbNodeArgs(
       cloudVmClusterId: (map['cloudVmClusterId'] as String).input(),
       id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

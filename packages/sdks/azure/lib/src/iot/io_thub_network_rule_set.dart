@@ -31,9 +31,9 @@ class IoTHubNetworkRuleSet {
 
   factory IoTHubNetworkRuleSet.fromMap(Map<String, dynamic> map) {
     return IoTHubNetworkRuleSet(
-      applyToBuiltinEventhubEndpoint: map['applyToBuiltinEventhubEndpoint'] == null ? null : (map['applyToBuiltinEventhubEndpoint'] as bool).input(),
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IoTHubNetworkRuleSetIpRule>(map['ipRules'], (value) => IoTHubNetworkRuleSetIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applyToBuiltinEventhubEndpoint: map['applyToBuiltinEventhubEndpoint'] == null ? null : (map['applyToBuiltinEventhubEndpoint']! as bool).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IoTHubNetworkRuleSetIpRule>(map['ipRules']!, (value) => IoTHubNetworkRuleSetIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -46,11 +46,11 @@ class K8sSlbAttachmentSlbConfig {
 
   factory K8sSlbAttachmentSlbConfig.fromMap(Map<String, dynamic> map) {
     return K8sSlbAttachmentSlbConfig(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       portMappings: (pulumi.Input.decodeList<K8sSlbAttachmentSlbConfigPortMapping>(map['portMappings'], (value) => K8sSlbAttachmentSlbConfigPortMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
       scheduler: (map['scheduler'] as String).input(),
-      slbId: map['slbId'] == null ? null : (map['slbId'] as String).input(),
-      specification: map['specification'] == null ? null : (map['specification'] as String).input(),
+      slbId: map['slbId'] == null ? null : (map['slbId']! as String).input(),
+      specification: map['specification'] == null ? null : (map['specification']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

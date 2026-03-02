@@ -30,9 +30,9 @@ class RouteMapRuleActionParameter {
 
   factory RouteMapRuleActionParameter.fromMap(Map<String, dynamic> map) {
     return RouteMapRuleActionParameter(
-      asPaths: map['asPaths'] == null ? null : ((map['asPaths'] as List).cast<String>()).input(),
-      communities: map['communities'] == null ? null : ((map['communities'] as List).cast<String>()).input(),
-      routePrefixes: map['routePrefixes'] == null ? null : ((map['routePrefixes'] as List).cast<String>()).input(),
+      asPaths: map['asPaths'] == null ? null : ((map['asPaths']! as List).cast<String>()).input(),
+      communities: map['communities'] == null ? null : ((map['communities']! as List).cast<String>()).input(),
+      routePrefixes: map['routePrefixes'] == null ? null : ((map['routePrefixes']! as List).cast<String>()).input(),
     );
   }
 }

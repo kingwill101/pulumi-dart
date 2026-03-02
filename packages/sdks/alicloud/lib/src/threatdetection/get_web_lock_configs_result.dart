@@ -63,13 +63,13 @@ class GetWebLockConfigsResult {
       configs: pulumi.Input.decodeList<GetWebLockConfigsConfig>(map['configs'], (value) => GetWebLockConfigsConfig.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      remark: map['remark'] == null ? null : map['remark'] as String,
-      sourceIp: map['sourceIp'] == null ? null : map['sourceIp'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      remark: map['remark'] == null ? null : map['remark']! as String,
+      sourceIp: map['sourceIp'] == null ? null : map['sourceIp']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

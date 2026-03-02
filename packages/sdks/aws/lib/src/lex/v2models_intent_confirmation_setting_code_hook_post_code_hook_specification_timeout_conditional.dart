@@ -33,8 +33,8 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutC
   factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditional.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditional(
       active: (map['active'] as bool).input(),
-      conditionalBranches: map['conditionalBranches'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranch>(map['conditionalBranches'], (value) => V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultBranch: map['defaultBranch'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalDefaultBranch.fromMap((map['defaultBranch'] as Map).cast<String, dynamic>())).input(),
+      conditionalBranches: map['conditionalBranches'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranch>(map['conditionalBranches']!, (value) => V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalConditionalBranch.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      defaultBranch: map['defaultBranch'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutConditionalDefaultBranch.fromMap((map['defaultBranch']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

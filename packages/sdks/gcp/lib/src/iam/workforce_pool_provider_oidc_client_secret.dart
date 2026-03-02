@@ -22,7 +22,7 @@ class WorkforcePoolProviderOidcClientSecret {
 
   factory WorkforcePoolProviderOidcClientSecret.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderOidcClientSecret(
-      value: map['value'] == null ? null : (WorkforcePoolProviderOidcClientSecretValue.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (WorkforcePoolProviderOidcClientSecretValue.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

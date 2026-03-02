@@ -42,11 +42,11 @@ class BackendCredentialsContract {
 
   factory BackendCredentialsContract.fromMap(Map<String, dynamic> map) {
     return BackendCredentialsContract(
-      authorization: map['authorization'] == null ? null : (BackendAuthorizationHeaderCredentials.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
-      certificate: map['certificate'] == null ? null : ((map['certificate'] as List).cast<String>()).input(),
-      certificateIds: map['certificateIds'] == null ? null : ((map['certificateIds'] as List).cast<String>()).input(),
-      header: map['header'] == null ? null : ((map['header'] as Map).cast<String, List<String>>()).input(),
-      query: map['query'] == null ? null : ((map['query'] as Map).cast<String, List<String>>()).input(),
+      authorization: map['authorization'] == null ? null : (BackendAuthorizationHeaderCredentials.fromMap((map['authorization']! as Map).cast<String, dynamic>())).input(),
+      certificate: map['certificate'] == null ? null : ((map['certificate']! as List).cast<String>()).input(),
+      certificateIds: map['certificateIds'] == null ? null : ((map['certificateIds']! as List).cast<String>()).input(),
+      header: map['header'] == null ? null : ((map['header']! as Map).cast<String, List<String>>()).input(),
+      query: map['query'] == null ? null : ((map['query']! as Map).cast<String, List<String>>()).input(),
     );
   }
 }

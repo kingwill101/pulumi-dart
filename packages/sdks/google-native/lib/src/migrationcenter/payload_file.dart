@@ -26,8 +26,8 @@ class PayloadFile {
 
   factory PayloadFile.fromMap(Map<String, dynamic> map) {
     return PayloadFile(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

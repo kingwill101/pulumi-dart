@@ -77,18 +77,18 @@ class LoadBalancerState {
 
   factory LoadBalancerState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerState(
-      algorithm: map['algorithm'] == null ? null : (LoadBalancerAlgorithm.fromMap((map['algorithm'] as Map).cast<String, dynamic>())).input(),
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as String).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as int).input(),
-      networkIp: map['networkIp'] == null ? null : (map['networkIp'] as String).input(),
-      networkZone: map['networkZone'] == null ? null : (map['networkZone'] as String).input(),
-      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<LoadBalancerTarget>(map['targets'], (value) => LoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      algorithm: map['algorithm'] == null ? null : (LoadBalancerAlgorithm.fromMap((map['algorithm']! as Map).cast<String, dynamic>())).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
+      ipv4: map['ipv4'] == null ? null : (map['ipv4']! as String).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as int).input(),
+      networkIp: map['networkIp'] == null ? null : (map['networkIp']! as String).input(),
+      networkZone: map['networkZone'] == null ? null : (map['networkZone']! as String).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<LoadBalancerTarget>(map['targets']!, (value) => LoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

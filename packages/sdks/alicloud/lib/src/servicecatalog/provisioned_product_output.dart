@@ -30,9 +30,9 @@ class ProvisionedProductOutput {
 
   factory ProvisionedProductOutput.fromMap(Map<String, dynamic> map) {
     return ProvisionedProductOutput(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      outputKey: map['outputKey'] == null ? null : (map['outputKey'] as String).input(),
-      outputValue: map['outputValue'] == null ? null : (map['outputValue'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      outputKey: map['outputKey'] == null ? null : (map['outputKey']! as String).input(),
+      outputValue: map['outputValue'] == null ? null : (map['outputValue']! as String).input(),
     );
   }
 }

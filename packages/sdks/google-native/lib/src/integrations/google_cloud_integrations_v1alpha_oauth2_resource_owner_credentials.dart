@@ -64,15 +64,15 @@ class GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials {
 
   factory GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials(
-      accessToken: map['accessToken'] == null ? null : (GoogleCloudIntegrationsV1alphaAccessToken.fromMap((map['accessToken'] as Map).cast<String, dynamic>())).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      requestType: map['requestType'] == null ? null : (GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType.fromValue(map['requestType'] as String)).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint'] as String).input(),
-      tokenParams: map['tokenParams'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMap.fromMap((map['tokenParams'] as Map).cast<String, dynamic>())).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : (GoogleCloudIntegrationsV1alphaAccessToken.fromMap((map['accessToken']! as Map).cast<String, dynamic>())).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      requestType: map['requestType'] == null ? null : (GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsRequestType.fromValue(map['requestType']! as String)).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint']! as String).input(),
+      tokenParams: map['tokenParams'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMap.fromMap((map['tokenParams']! as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

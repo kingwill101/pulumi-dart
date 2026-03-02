@@ -41,10 +41,10 @@ class MailFromArgs {
 
   factory MailFromArgs.fromMap(Map<String, dynamic> map) {
     return MailFromArgs(
-      behaviorOnMxFailure: map['behaviorOnMxFailure'] == null ? null : (map['behaviorOnMxFailure'] as String).input(),
+      behaviorOnMxFailure: map['behaviorOnMxFailure'] == null ? null : ((map['behaviorOnMxFailure'] as String).input()).input(),
       domain: (map['domain'] as String).input(),
       mailFromDomain: (map['mailFromDomain'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

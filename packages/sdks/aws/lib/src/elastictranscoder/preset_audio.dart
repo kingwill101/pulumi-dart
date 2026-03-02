@@ -40,11 +40,11 @@ class PresetAudio {
 
   factory PresetAudio.fromMap(Map<String, dynamic> map) {
     return PresetAudio(
-      audioPackingMode: map['audioPackingMode'] == null ? null : (map['audioPackingMode'] as String).input(),
-      bitRate: map['bitRate'] == null ? null : (map['bitRate'] as String).input(),
-      channels: map['channels'] == null ? null : (map['channels'] as String).input(),
-      codec: map['codec'] == null ? null : (map['codec'] as String).input(),
-      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate'] as String).input(),
+      audioPackingMode: map['audioPackingMode'] == null ? null : ((map['audioPackingMode'] as String).input()).input(),
+      bitRate: map['bitRate'] == null ? null : ((map['bitRate'] as String).input()).input(),
+      channels: map['channels'] == null ? null : ((map['channels'] as String).input()).input(),
+      codec: map['codec'] == null ? null : ((map['codec'] as String).input()).input(),
+      sampleRate: map['sampleRate'] == null ? null : ((map['sampleRate'] as String).input()).input(),
     );
   }
 }

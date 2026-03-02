@@ -66,17 +66,17 @@ class GetBasicAcceleratorsResult {
 
   factory GetBasicAcceleratorsResult.fromMap(Map<String, dynamic> map) {
     return GetBasicAcceleratorsResult(
-      acceleratorId: map['acceleratorId'] == null ? null : map['acceleratorId'] as String,
+      acceleratorId: map['acceleratorId'] == null ? null : map['acceleratorId']! as String,
       accelerators: pulumi.Input.decodeList<GetBasicAcceleratorsAccelerator>(map['accelerators'], (value) => GetBasicAcceleratorsAccelerator.fromMap((value as Map).cast<String, dynamic>())),
-      bandwidthBillingType: map['bandwidthBillingType'] == null ? null : map['bandwidthBillingType'] as String,
+      bandwidthBillingType: map['bandwidthBillingType'] == null ? null : map['bandwidthBillingType']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

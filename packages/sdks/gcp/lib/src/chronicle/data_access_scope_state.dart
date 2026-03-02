@@ -111,20 +111,20 @@ class DataAccessScopeState {
 
   factory DataAccessScopeState.fromMap(Map<String, dynamic> map) {
     return DataAccessScopeState(
-      allowAll: map['allowAll'] == null ? null : (map['allowAll'] as bool).input(),
-      allowedDataAccessLabels: map['allowedDataAccessLabels'] == null ? null : (pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(map['allowedDataAccessLabels'], (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      author: map['author'] == null ? null : (map['author'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataAccessScopeId: map['dataAccessScopeId'] == null ? null : (map['dataAccessScopeId'] as String).input(),
-      deniedDataAccessLabels: map['deniedDataAccessLabels'] == null ? null : (pulumi.Input.decodeList<DataAccessScopeDeniedDataAccessLabel>(map['deniedDataAccessLabels'], (value) => DataAccessScopeDeniedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      lastEditor: map['lastEditor'] == null ? null : (map['lastEditor'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      allowAll: map['allowAll'] == null ? null : (map['allowAll']! as bool).input(),
+      allowedDataAccessLabels: map['allowedDataAccessLabels'] == null ? null : (pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(map['allowedDataAccessLabels']!, (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      author: map['author'] == null ? null : (map['author']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataAccessScopeId: map['dataAccessScopeId'] == null ? null : (map['dataAccessScopeId']! as String).input(),
+      deniedDataAccessLabels: map['deniedDataAccessLabels'] == null ? null : (pulumi.Input.decodeList<DataAccessScopeDeniedDataAccessLabel>(map['deniedDataAccessLabels']!, (value) => DataAccessScopeDeniedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      lastEditor: map['lastEditor'] == null ? null : (map['lastEditor']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

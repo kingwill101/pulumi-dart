@@ -31,7 +31,7 @@ class KxDataviewSegmentConfiguration {
   factory KxDataviewSegmentConfiguration.fromMap(Map<String, dynamic> map) {
     return KxDataviewSegmentConfiguration(
       dbPaths: ((map['dbPaths'] as List).cast<String>()).input(),
-      onDemand: map['onDemand'] == null ? null : (map['onDemand'] as bool).input(),
+      onDemand: map['onDemand'] == null ? null : ((map['onDemand'] as bool).input()).input(),
       volumeName: (map['volumeName'] as String).input(),
     );
   }

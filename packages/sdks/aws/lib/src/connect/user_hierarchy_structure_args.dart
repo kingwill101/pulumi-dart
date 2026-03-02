@@ -35,9 +35,9 @@ class UserHierarchyStructureArgs {
 
   factory UserHierarchyStructureArgs.fromMap(Map<String, dynamic> map) {
     return UserHierarchyStructureArgs(
-      hierarchyStructure: (UserHierarchyStructureHierarchyStructure.fromMap((map['hierarchyStructure'] as Map).cast<String, dynamic>())).input(),
+      hierarchyStructure: (UserHierarchyStructureHierarchyStructure.fromMap((map['hierarchyStructure']! as Map).cast<String, dynamic>())).input(),
       instanceId: (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

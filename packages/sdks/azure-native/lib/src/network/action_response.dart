@@ -27,8 +27,8 @@ class ActionResponse {
 
   factory ActionResponse.fromMap(Map<String, dynamic> map) {
     return ActionResponse(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ParameterResponse>(map['parameters'], (value) => ParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ParameterResponse>(map['parameters']!, (value) => ParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

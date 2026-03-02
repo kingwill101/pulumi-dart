@@ -51,13 +51,13 @@ class ResourceAttributesAuthorizationK8sIoV1beta1 {
 
   factory ResourceAttributesAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ResourceAttributesAuthorizationK8sIoV1beta1(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
-      subresource: map['subresource'] == null ? null : (map['subresource'] as String).input(),
-      verb: map['verb'] == null ? null : (map['verb'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      subresource: map['subresource'] == null ? null : (map['subresource']! as String).input(),
+      verb: map['verb'] == null ? null : (map['verb']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

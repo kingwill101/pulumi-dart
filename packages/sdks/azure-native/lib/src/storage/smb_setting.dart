@@ -42,11 +42,11 @@ class SmbSetting {
 
   factory SmbSetting.fromMap(Map<String, dynamic> map) {
     return SmbSetting(
-      authenticationMethods: map['authenticationMethods'] == null ? null : (map['authenticationMethods'] as String).input(),
-      channelEncryption: map['channelEncryption'] == null ? null : (map['channelEncryption'] as String).input(),
-      kerberosTicketEncryption: map['kerberosTicketEncryption'] == null ? null : (map['kerberosTicketEncryption'] as String).input(),
-      multichannel: map['multichannel'] == null ? null : (Multichannel.fromMap((map['multichannel'] as Map).cast<String, dynamic>())).input(),
-      versions: map['versions'] == null ? null : (map['versions'] as String).input(),
+      authenticationMethods: map['authenticationMethods'] == null ? null : (map['authenticationMethods']! as String).input(),
+      channelEncryption: map['channelEncryption'] == null ? null : (map['channelEncryption']! as String).input(),
+      kerberosTicketEncryption: map['kerberosTicketEncryption'] == null ? null : (map['kerberosTicketEncryption']! as String).input(),
+      multichannel: map['multichannel'] == null ? null : (Multichannel.fromMap((map['multichannel']! as Map).cast<String, dynamic>())).input(),
+      versions: map['versions'] == null ? null : (map['versions']! as String).input(),
     );
   }
 }

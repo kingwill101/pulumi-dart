@@ -30,7 +30,7 @@ class GetSigningJobArgs {
   factory GetSigningJobArgs.fromMap(Map<String, dynamic> map) {
     return GetSigningJobArgs(
       jobId: (map['jobId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class VirtualNetworkSubnetSharedPublicIpAddress {
 
   factory VirtualNetworkSubnetSharedPublicIpAddress.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetSharedPublicIpAddress(
-      allowedPorts: map['allowedPorts'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkSubnetSharedPublicIpAddressAllowedPort>(map['allowedPorts'], (value) => VirtualNetworkSubnetSharedPublicIpAddressAllowedPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedPorts: map['allowedPorts'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkSubnetSharedPublicIpAddressAllowedPort>(map['allowedPorts']!, (value) => VirtualNetworkSubnetSharedPublicIpAddressAllowedPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class BillingProfilePropertiesCurrentPaymentTerm {
 
   factory BillingProfilePropertiesCurrentPaymentTerm.fromMap(Map<String, dynamic> map) {
     return BillingProfilePropertiesCurrentPaymentTerm(
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      term: map['term'] == null ? null : (map['term'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      term: map['term'] == null ? null : (map['term']! as String).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class UploadBufferArgs {
 
   factory UploadBufferArgs.fromMap(Map<String, dynamic> map) {
     return UploadBufferArgs(
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
-      diskPath: map['diskPath'] == null ? null : (map['diskPath'] as String).input(),
+      diskId: map['diskId'] == null ? null : ((map['diskId'] as String).input()).input(),
+      diskPath: map['diskPath'] == null ? null : ((map['diskPath'] as String).input()).input(),
       gatewayArn: (map['gatewayArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

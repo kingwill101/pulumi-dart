@@ -99,20 +99,20 @@ class ExternalAccessRuleState {
 
   factory ExternalAccessRuleState.fromMap(Map<String, dynamic> map) {
     return ExternalAccessRuleState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationIpRanges: map['destinationIpRanges'] == null ? null : (pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(map['destinationIpRanges'], (value) => ExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts'] as List).cast<String>()).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      sourceIpRanges: map['sourceIpRanges'] == null ? null : (pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(map['sourceIpRanges'], (value) => ExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourcePorts: map['sourcePorts'] == null ? null : ((map['sourcePorts'] as List).cast<String>()).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationIpRanges: map['destinationIpRanges'] == null ? null : (pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(map['destinationIpRanges']!, (value) => ExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts']! as List).cast<String>()).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      sourceIpRanges: map['sourceIpRanges'] == null ? null : (pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(map['sourceIpRanges']!, (value) => ExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourcePorts: map['sourcePorts'] == null ? null : ((map['sourcePorts']! as List).cast<String>()).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

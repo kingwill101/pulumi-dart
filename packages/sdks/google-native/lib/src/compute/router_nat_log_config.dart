@@ -27,8 +27,8 @@ class RouterNatLogConfig {
 
   factory RouterNatLogConfig.fromMap(Map<String, dynamic> map) {
     return RouterNatLogConfig(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      filter: map['filter'] == null ? null : (RouterNatLogConfigFilter.fromValue(map['filter'] as String)).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      filter: map['filter'] == null ? null : (RouterNatLogConfigFilter.fromValue(map['filter']! as String)).input(),
     );
   }
 }

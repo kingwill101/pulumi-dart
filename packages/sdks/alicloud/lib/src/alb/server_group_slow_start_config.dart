@@ -29,8 +29,8 @@ class ServerGroupSlowStartConfig {
 
   factory ServerGroupSlowStartConfig.fromMap(Map<String, dynamic> map) {
     return ServerGroupSlowStartConfig(
-      slowStartDuration: map['slowStartDuration'] == null ? null : (map['slowStartDuration'] as int).input(),
-      slowStartEnabled: map['slowStartEnabled'] == null ? null : (map['slowStartEnabled'] as bool).input(),
+      slowStartDuration: map['slowStartDuration'] == null ? null : (map['slowStartDuration']! as int).input(),
+      slowStartEnabled: map['slowStartEnabled'] == null ? null : (map['slowStartEnabled']! as bool).input(),
     );
   }
 }

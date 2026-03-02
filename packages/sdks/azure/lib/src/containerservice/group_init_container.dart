@@ -52,13 +52,13 @@ class GroupInitContainer {
 
   factory GroupInitContainer.fromMap(Map<String, dynamic> map) {
     return GroupInitContainer(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
       image: (map['image'] as String).input(),
       name: (map['name'] as String).input(),
-      secureEnvironmentVariables: map['secureEnvironmentVariables'] == null ? null : ((map['secureEnvironmentVariables'] as Map).cast<String, String>()).input(),
-      securities: map['securities'] == null ? null : (pulumi.Input.decodeList<GroupInitContainerSecurity>(map['securities'], (value) => GroupInitContainerSecurity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<GroupInitContainerVolume>(map['volumes'], (value) => GroupInitContainerVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secureEnvironmentVariables: map['secureEnvironmentVariables'] == null ? null : ((map['secureEnvironmentVariables']! as Map).cast<String, String>()).input(),
+      securities: map['securities'] == null ? null : (pulumi.Input.decodeList<GroupInitContainerSecurity>(map['securities']!, (value) => GroupInitContainerSecurity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<GroupInitContainerVolume>(map['volumes']!, (value) => GroupInitContainerVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

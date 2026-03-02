@@ -36,10 +36,10 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatem
 
   factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJsonBody.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJsonBody(
-      invalidFallbackBehavior: map['invalidFallbackBehavior'] == null ? null : (map['invalidFallbackBehavior'] as String).input(),
-      matchPattern: (RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap((map['matchPattern'] as Map).cast<String, dynamic>())).input(),
+      invalidFallbackBehavior: map['invalidFallbackBehavior'] == null ? null : ((map['invalidFallbackBehavior'] as String).input()).input(),
+      matchPattern: (RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap((map['matchPattern']! as Map).cast<String, dynamic>())).input(),
       matchScope: (map['matchScope'] as String).input(),
-      oversizeHandling: map['oversizeHandling'] == null ? null : (map['oversizeHandling'] as String).input(),
+      oversizeHandling: map['oversizeHandling'] == null ? null : ((map['oversizeHandling'] as String).input()).input(),
     );
   }
 }

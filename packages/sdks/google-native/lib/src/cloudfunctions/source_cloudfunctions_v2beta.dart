@@ -33,9 +33,9 @@ class SourceCloudfunctionsV2beta {
 
   factory SourceCloudfunctionsV2beta.fromMap(Map<String, dynamic> map) {
     return SourceCloudfunctionsV2beta(
-      gitUri: map['gitUri'] == null ? null : (map['gitUri'] as String).input(),
-      repoSource: map['repoSource'] == null ? null : (RepoSourceCloudfunctionsV2beta.fromMap((map['repoSource'] as Map).cast<String, dynamic>())).input(),
-      storageSource: map['storageSource'] == null ? null : (StorageSourceCloudfunctionsV2beta.fromMap((map['storageSource'] as Map).cast<String, dynamic>())).input(),
+      gitUri: map['gitUri'] == null ? null : (map['gitUri']! as String).input(),
+      repoSource: map['repoSource'] == null ? null : (RepoSourceCloudfunctionsV2beta.fromMap((map['repoSource']! as Map).cast<String, dynamic>())).input(),
+      storageSource: map['storageSource'] == null ? null : (StorageSourceCloudfunctionsV2beta.fromMap((map['storageSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

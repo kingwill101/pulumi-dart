@@ -71,17 +71,17 @@ class ServiceCertificateState {
 
   factory ServiceCertificateState.fromMap(Map<String, dynamic> map) {
     return ServiceCertificateState(
-      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
-      encryptCert: map['encryptCert'] == null ? null : (map['encryptCert'] as String).input(),
-      encryptPrivateKey: map['encryptPrivateKey'] == null ? null : (map['encryptPrivateKey'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      signCert: map['signCert'] == null ? null : (map['signCert'] as String).input(),
-      signPrivateKey: map['signPrivateKey'] == null ? null : (map['signPrivateKey'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
+      encryptCert: map['encryptCert'] == null ? null : (map['encryptCert']! as String).input(),
+      encryptPrivateKey: map['encryptPrivateKey'] == null ? null : (map['encryptPrivateKey']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      signCert: map['signCert'] == null ? null : (map['signCert']! as String).input(),
+      signPrivateKey: map['signPrivateKey'] == null ? null : (map['signPrivateKey']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

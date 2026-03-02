@@ -56,14 +56,14 @@ class ConnectState {
 
   factory ConnectState.fromMap(Map<String, dynamic> map) {
     return ConnectState(
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      transitGatewayDefaultRouteTableAssociation: map['transitGatewayDefaultRouteTableAssociation'] == null ? null : (map['transitGatewayDefaultRouteTableAssociation'] as bool).input(),
-      transitGatewayDefaultRouteTablePropagation: map['transitGatewayDefaultRouteTablePropagation'] == null ? null : (map['transitGatewayDefaultRouteTablePropagation'] as bool).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
-      transportAttachmentId: map['transportAttachmentId'] == null ? null : (map['transportAttachmentId'] as String).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayDefaultRouteTableAssociation: map['transitGatewayDefaultRouteTableAssociation'] == null ? null : ((map['transitGatewayDefaultRouteTableAssociation'] as bool).input()).input(),
+      transitGatewayDefaultRouteTablePropagation: map['transitGatewayDefaultRouteTablePropagation'] == null ? null : ((map['transitGatewayDefaultRouteTablePropagation'] as bool).input()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
+      transportAttachmentId: map['transportAttachmentId'] == null ? null : ((map['transportAttachmentId'] as String).input()).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class LiteralJobInput {
 
   factory LiteralJobInput.fromMap(Map<String, dynamic> map) {
     return LiteralJobInput(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       jobInputType: (map['jobInputType'] as String).input(),
       value: (map['value'] as String).input(),
     );

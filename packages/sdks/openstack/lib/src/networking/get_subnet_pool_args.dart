@@ -89,19 +89,19 @@ class GetSubnetPoolArgs {
 
   factory GetSubnetPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetPoolArgs(
-      addressScopeId: map['addressScopeId'] == null ? null : (map['addressScopeId'] as String).input(),
-      defaultPrefixlen: map['defaultPrefixlen'] == null ? null : (map['defaultPrefixlen'] as int).input(),
-      defaultQuota: map['defaultQuota'] == null ? null : (map['defaultQuota'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as int).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      maxPrefixlen: map['maxPrefixlen'] == null ? null : (map['maxPrefixlen'] as int).input(),
-      minPrefixlen: map['minPrefixlen'] == null ? null : (map['minPrefixlen'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shared: map['shared'] == null ? null : (map['shared'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      addressScopeId: map['addressScopeId'] == null ? null : (map['addressScopeId']! as String).input(),
+      defaultPrefixlen: map['defaultPrefixlen'] == null ? null : (map['defaultPrefixlen']! as int).input(),
+      defaultQuota: map['defaultQuota'] == null ? null : (map['defaultQuota']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as int).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
+      maxPrefixlen: map['maxPrefixlen'] == null ? null : (map['maxPrefixlen']! as int).input(),
+      minPrefixlen: map['minPrefixlen'] == null ? null : (map['minPrefixlen']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      shared: map['shared'] == null ? null : (map['shared']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

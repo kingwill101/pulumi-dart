@@ -67,15 +67,15 @@ class PathMatcherComputeBeta {
 
   factory PathMatcherComputeBeta.fromMap(Map<String, dynamic> map) {
     return PathMatcherComputeBeta(
-      defaultCustomErrorResponsePolicy: map['defaultCustomErrorResponsePolicy'] == null ? null : (CustomErrorResponsePolicyComputeBeta.fromMap((map['defaultCustomErrorResponsePolicy'] as Map).cast<String, dynamic>())).input(),
-      defaultRouteAction: map['defaultRouteAction'] == null ? null : (HttpRouteActionComputeBeta.fromMap((map['defaultRouteAction'] as Map).cast<String, dynamic>())).input(),
-      defaultService: map['defaultService'] == null ? null : (map['defaultService'] as String).input(),
-      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (HttpRedirectActionComputeBeta.fromMap((map['defaultUrlRedirect'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (HttpHeaderActionComputeBeta.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<PathRuleComputeBeta>(map['pathRules'], (value) => PathRuleComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routeRules: map['routeRules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRuleComputeBeta>(map['routeRules'], (value) => HttpRouteRuleComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultCustomErrorResponsePolicy: map['defaultCustomErrorResponsePolicy'] == null ? null : (CustomErrorResponsePolicyComputeBeta.fromMap((map['defaultCustomErrorResponsePolicy']! as Map).cast<String, dynamic>())).input(),
+      defaultRouteAction: map['defaultRouteAction'] == null ? null : (HttpRouteActionComputeBeta.fromMap((map['defaultRouteAction']! as Map).cast<String, dynamic>())).input(),
+      defaultService: map['defaultService'] == null ? null : (map['defaultService']! as String).input(),
+      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (HttpRedirectActionComputeBeta.fromMap((map['defaultUrlRedirect']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (HttpHeaderActionComputeBeta.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<PathRuleComputeBeta>(map['pathRules']!, (value) => PathRuleComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeRules: map['routeRules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRuleComputeBeta>(map['routeRules']!, (value) => HttpRouteRuleComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

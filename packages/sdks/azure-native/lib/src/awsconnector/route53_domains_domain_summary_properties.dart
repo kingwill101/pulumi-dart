@@ -57,14 +57,14 @@ class Route53DomainsDomainSummaryProperties {
 
   factory Route53DomainsDomainSummaryProperties.fromMap(Map<String, dynamic> map) {
     return Route53DomainsDomainSummaryProperties(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      awsProperties: map['awsProperties'] == null ? null : (AwsRoute53DomainsDomainSummaryProperties.fromMap((map['awsProperties'] as Map).cast<String, dynamic>())).input(),
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
-      awsSourceSchema: map['awsSourceSchema'] == null ? null : (map['awsSourceSchema'] as String).input(),
-      awsTags: map['awsTags'] == null ? null : ((map['awsTags'] as Map).cast<String, String>()).input(),
-      publicCloudConnectorsResourceId: map['publicCloudConnectorsResourceId'] == null ? null : (map['publicCloudConnectorsResourceId'] as String).input(),
-      publicCloudResourceName: map['publicCloudResourceName'] == null ? null : (map['publicCloudResourceName'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId']! as String).input(),
+      awsProperties: map['awsProperties'] == null ? null : (AwsRoute53DomainsDomainSummaryProperties.fromMap((map['awsProperties']! as Map).cast<String, dynamic>())).input(),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion']! as String).input(),
+      awsSourceSchema: map['awsSourceSchema'] == null ? null : (map['awsSourceSchema']! as String).input(),
+      awsTags: map['awsTags'] == null ? null : ((map['awsTags']! as Map).cast<String, String>()).input(),
+      publicCloudConnectorsResourceId: map['publicCloudConnectorsResourceId'] == null ? null : (map['publicCloudConnectorsResourceId']! as String).input(),
+      publicCloudResourceName: map['publicCloudResourceName'] == null ? null : (map['publicCloudResourceName']! as String).input(),
     );
   }
 }

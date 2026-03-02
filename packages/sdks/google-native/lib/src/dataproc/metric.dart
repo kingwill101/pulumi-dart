@@ -27,7 +27,7 @@ class Metric {
 
   factory Metric.fromMap(Map<String, dynamic> map) {
     return Metric(
-      metricOverrides: map['metricOverrides'] == null ? null : ((map['metricOverrides'] as List).cast<String>()).input(),
+      metricOverrides: map['metricOverrides'] == null ? null : ((map['metricOverrides']! as List).cast<String>()).input(),
       metricSource: (MetricMetricSource.fromValue(map['metricSource'] as String)).input(),
     );
   }

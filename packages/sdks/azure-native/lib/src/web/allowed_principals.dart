@@ -26,8 +26,8 @@ class AllowedPrincipals {
 
   factory AllowedPrincipals.fromMap(Map<String, dynamic> map) {
     return AllowedPrincipals(
-      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
-      identities: map['identities'] == null ? null : ((map['identities'] as List).cast<String>()).input(),
+      groups: map['groups'] == null ? null : ((map['groups']! as List).cast<String>()).input(),
+      identities: map['identities'] == null ? null : ((map['identities']! as List).cast<String>()).input(),
     );
   }
 }

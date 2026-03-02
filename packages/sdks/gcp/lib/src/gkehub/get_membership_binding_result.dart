@@ -87,7 +87,7 @@ class GetMembershipBindingResult {
       membershipBindingId: map['membershipBindingId'] as String,
       membershipId: map['membershipId'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       scope: map['scope'] as String,
       states: pulumi.Input.decodeList<GetMembershipBindingState>(map['states'], (value) => GetMembershipBindingState.fromMap((value as Map).cast<String, dynamic>())),

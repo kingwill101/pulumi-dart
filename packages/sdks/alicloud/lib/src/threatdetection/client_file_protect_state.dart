@@ -56,14 +56,14 @@ class ClientFileProtectState {
 
   factory ClientFileProtectState.fromMap(Map<String, dynamic> map) {
     return ClientFileProtectState(
-      alertLevel: map['alertLevel'] == null ? null : (map['alertLevel'] as int).input(),
-      fileOps: map['fileOps'] == null ? null : ((map['fileOps'] as List).cast<String>()).input(),
-      filePaths: map['filePaths'] == null ? null : ((map['filePaths'] as List).cast<String>()).input(),
-      procPaths: map['procPaths'] == null ? null : ((map['procPaths'] as List).cast<String>()).input(),
-      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
-      switchId: map['switchId'] == null ? null : (map['switchId'] as String).input(),
+      alertLevel: map['alertLevel'] == null ? null : (map['alertLevel']! as int).input(),
+      fileOps: map['fileOps'] == null ? null : ((map['fileOps']! as List).cast<String>()).input(),
+      filePaths: map['filePaths'] == null ? null : ((map['filePaths']! as List).cast<String>()).input(),
+      procPaths: map['procPaths'] == null ? null : ((map['procPaths']! as List).cast<String>()).input(),
+      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
+      switchId: map['switchId'] == null ? null : (map['switchId']! as String).input(),
     );
   }
 }

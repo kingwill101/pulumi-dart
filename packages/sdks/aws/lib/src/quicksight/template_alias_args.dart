@@ -47,8 +47,8 @@ class TemplateAliasArgs {
   factory TemplateAliasArgs.fromMap(Map<String, dynamic> map) {
     return TemplateAliasArgs(
       aliasName: (map['aliasName'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       templateId: (map['templateId'] as String).input(),
       templateVersionNumber: (map['templateVersionNumber'] as int).input(),
     );

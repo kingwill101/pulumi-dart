@@ -30,9 +30,9 @@ class DataSourceDynamodbConfigDeltaSyncConfig {
 
   factory DataSourceDynamodbConfigDeltaSyncConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceDynamodbConfigDeltaSyncConfig(
-      baseTableTtl: map['baseTableTtl'] == null ? null : (map['baseTableTtl'] as int).input(),
+      baseTableTtl: map['baseTableTtl'] == null ? null : ((map['baseTableTtl'] as int).input()).input(),
       deltaSyncTableName: (map['deltaSyncTableName'] as String).input(),
-      deltaSyncTableTtl: map['deltaSyncTableTtl'] == null ? null : (map['deltaSyncTableTtl'] as int).input(),
+      deltaSyncTableTtl: map['deltaSyncTableTtl'] == null ? null : ((map['deltaSyncTableTtl'] as int).input()).input(),
     );
   }
 }

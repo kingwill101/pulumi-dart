@@ -59,14 +59,14 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
 
   factory GoogleCloudDocumentaiV1DocumentPageFormField.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageFormField(
-      correctedKeyText: map['correctedKeyText'] == null ? null : (map['correctedKeyText'] as String).input(),
-      correctedValueText: map['correctedValueText'] == null ? null : (map['correctedValueText'] as String).input(),
-      fieldName: map['fieldName'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['fieldName'] as Map).cast<String, dynamic>())).input(),
-      fieldValue: map['fieldValue'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['fieldValue'] as Map).cast<String, dynamic>())).input(),
-      nameDetectedLanguages: map['nameDetectedLanguages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(map['nameDetectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provenance: map['provenance'] == null ? null : (GoogleCloudDocumentaiV1DocumentProvenance.fromMap((map['provenance'] as Map).cast<String, dynamic>())).input(),
-      valueDetectedLanguages: map['valueDetectedLanguages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(map['valueDetectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      valueType: map['valueType'] == null ? null : (map['valueType'] as String).input(),
+      correctedKeyText: map['correctedKeyText'] == null ? null : (map['correctedKeyText']! as String).input(),
+      correctedValueText: map['correctedValueText'] == null ? null : (map['correctedValueText']! as String).input(),
+      fieldName: map['fieldName'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['fieldName']! as Map).cast<String, dynamic>())).input(),
+      fieldValue: map['fieldValue'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['fieldValue']! as Map).cast<String, dynamic>())).input(),
+      nameDetectedLanguages: map['nameDetectedLanguages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(map['nameDetectedLanguages']!, (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provenance: map['provenance'] == null ? null : (GoogleCloudDocumentaiV1DocumentProvenance.fromMap((map['provenance']! as Map).cast<String, dynamic>())).input(),
+      valueDetectedLanguages: map['valueDetectedLanguages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(map['valueDetectedLanguages']!, (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      valueType: map['valueType'] == null ? null : (map['valueType']! as String).input(),
     );
   }
 }

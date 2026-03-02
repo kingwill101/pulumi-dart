@@ -61,13 +61,13 @@ class VirtualNetworkArgs {
   factory VirtualNetworkArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkArgs(
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
-      virtualNetworkName: map['virtualNetworkName'] == null ? null : (map['virtualNetworkName'] as String).input(),
-      vmmServerId: map['vmmServerId'] == null ? null : (map['vmmServerId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      virtualNetworkName: map['virtualNetworkName'] == null ? null : (map['virtualNetworkName']! as String).input(),
+      vmmServerId: map['vmmServerId'] == null ? null : (map['vmmServerId']! as String).input(),
     );
   }
 }

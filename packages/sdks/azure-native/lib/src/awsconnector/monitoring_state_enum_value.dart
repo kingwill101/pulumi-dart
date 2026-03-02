@@ -21,7 +21,7 @@ class MonitoringStateEnumValue {
 
   factory MonitoringStateEnumValue.fromMap(Map<String, dynamic> map) {
     return MonitoringStateEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class DomainVcpusVcpus {
 
   factory DomainVcpusVcpus.fromMap(Map<String, dynamic> map) {
     return DomainVcpusVcpus(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
-      hotpluggable: map['hotpluggable'] == null ? null : (map['hotpluggable'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as double).input(),
-      order: map['order'] == null ? null : (map['order'] as double).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
+      hotpluggable: map['hotpluggable'] == null ? null : (map['hotpluggable']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
+      order: map['order'] == null ? null : (map['order']! as double).input(),
     );
   }
 }

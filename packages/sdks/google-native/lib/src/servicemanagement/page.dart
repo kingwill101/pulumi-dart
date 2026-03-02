@@ -31,9 +31,9 @@ class Page {
 
   factory Page.fromMap(Map<String, dynamic> map) {
     return Page(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subpages: map['subpages'] == null ? null : (pulumi.Input.decodeList<Page>(map['subpages'], (value) => Page.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      subpages: map['subpages'] == null ? null : (pulumi.Input.decodeList<Page>(map['subpages']!, (value) => Page.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

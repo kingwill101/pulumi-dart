@@ -26,8 +26,8 @@ class RetryPolicyResponse {
 
   factory RetryPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RetryPolicyResponse(
-      retryCount: map['retryCount'] == null ? null : (map['retryCount'] as int).input(),
-      retryWindowInMinutes: map['retryWindowInMinutes'] == null ? null : (map['retryWindowInMinutes'] as int).input(),
+      retryCount: map['retryCount'] == null ? null : (map['retryCount']! as int).input(),
+      retryWindowInMinutes: map['retryWindowInMinutes'] == null ? null : (map['retryWindowInMinutes']! as int).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class RouteSpecHttpRouteMatchHeader {
 
   factory RouteSpecHttpRouteMatchHeader.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttpRouteMatchHeader(
-      invert: map['invert'] == null ? null : (map['invert'] as bool).input(),
-      match: map['match'] == null ? null : (RouteSpecHttpRouteMatchHeaderMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      invert: map['invert'] == null ? null : ((map['invert'] as bool).input()).input(),
+      match: map['match'] == null ? null : ((RouteSpecHttpRouteMatchHeaderMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

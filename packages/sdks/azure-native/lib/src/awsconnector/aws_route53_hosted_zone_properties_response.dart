@@ -55,13 +55,13 @@ class AwsRoute53HostedZonePropertiesResponse {
 
   factory AwsRoute53HostedZonePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsRoute53HostedZonePropertiesResponse(
-      hostedZoneConfig: map['hostedZoneConfig'] == null ? null : (HostedZoneConfigResponse.fromMap((map['hostedZoneConfig'] as Map).cast<String, dynamic>())).input(),
-      hostedZoneTags: map['hostedZoneTags'] == null ? null : (pulumi.Input.decodeList<HostedZoneTagResponse>(map['hostedZoneTags'], (value) => HostedZoneTagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nameServers: map['nameServers'] == null ? null : ((map['nameServers'] as List).cast<String>()).input(),
-      queryLoggingConfig: map['queryLoggingConfig'] == null ? null : (QueryLoggingConfigResponse.fromMap((map['queryLoggingConfig'] as Map).cast<String, dynamic>())).input(),
-      vpCs: map['vpCs'] == null ? null : (pulumi.Input.decodeList<VPCResponse>(map['vpCs'], (value) => VPCResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostedZoneConfig: map['hostedZoneConfig'] == null ? null : (HostedZoneConfigResponse.fromMap((map['hostedZoneConfig']! as Map).cast<String, dynamic>())).input(),
+      hostedZoneTags: map['hostedZoneTags'] == null ? null : (pulumi.Input.decodeList<HostedZoneTagResponse>(map['hostedZoneTags']!, (value) => HostedZoneTagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nameServers: map['nameServers'] == null ? null : ((map['nameServers']! as List).cast<String>()).input(),
+      queryLoggingConfig: map['queryLoggingConfig'] == null ? null : (QueryLoggingConfigResponse.fromMap((map['queryLoggingConfig']! as Map).cast<String, dynamic>())).input(),
+      vpCs: map['vpCs'] == null ? null : (pulumi.Input.decodeList<VPCResponse>(map['vpCs']!, (value) => VPCResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

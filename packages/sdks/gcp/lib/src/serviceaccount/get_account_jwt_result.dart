@@ -41,8 +41,8 @@ class GetAccountJwtResult {
 
   factory GetAccountJwtResult.fromMap(Map<String, dynamic> map) {
     return GetAccountJwtResult(
-      delegates: map['delegates'] == null ? null : (map['delegates'] as List).cast<String>(),
-      expiresIn: map['expiresIn'] == null ? null : map['expiresIn'] as int,
+      delegates: map['delegates'] == null ? null : (map['delegates']! as List).cast<String>(),
+      expiresIn: map['expiresIn'] == null ? null : map['expiresIn']! as int,
       id: map['id'] as String,
       jwt: map['jwt'] as String,
       payload: map['payload'] as String,

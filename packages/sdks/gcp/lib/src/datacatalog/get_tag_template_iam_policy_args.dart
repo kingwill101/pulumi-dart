@@ -38,8 +38,8 @@ class GetTagTemplateIamPolicyArgs {
 
   factory GetTagTemplateIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTagTemplateIamPolicyArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       tagTemplate: (map['tagTemplate'] as String).input(),
     );
   }

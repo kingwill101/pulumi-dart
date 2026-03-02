@@ -26,8 +26,8 @@ class IndexFieldVectorConfig {
 
   factory IndexFieldVectorConfig.fromMap(Map<String, dynamic> map) {
     return IndexFieldVectorConfig(
-      dimension: map['dimension'] == null ? null : (map['dimension'] as int).input(),
-      flat: map['flat'] == null ? null : ((map['flat'] as Map).cast<String, dynamic>()).input(),
+      dimension: map['dimension'] == null ? null : (map['dimension']! as int).input(),
+      flat: map['flat'] == null ? null : ((map['flat']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

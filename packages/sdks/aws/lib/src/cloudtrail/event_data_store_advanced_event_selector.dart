@@ -26,8 +26,8 @@ class EventDataStoreAdvancedEventSelector {
 
   factory EventDataStoreAdvancedEventSelector.fromMap(Map<String, dynamic> map) {
     return EventDataStoreAdvancedEventSelector(
-      fieldSelectors: map['fieldSelectors'] == null ? null : (pulumi.Input.decodeList<EventDataStoreAdvancedEventSelectorFieldSelector>(map['fieldSelectors'], (value) => EventDataStoreAdvancedEventSelectorFieldSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      fieldSelectors: map['fieldSelectors'] == null ? null : ((pulumi.Input.decodeList<EventDataStoreAdvancedEventSelectorFieldSelector>(map['fieldSelectors']!, (value) => EventDataStoreAdvancedEventSelectorFieldSelector.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

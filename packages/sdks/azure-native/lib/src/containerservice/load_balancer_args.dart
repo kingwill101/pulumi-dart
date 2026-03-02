@@ -65,15 +65,15 @@ class LoadBalancerArgs {
 
   factory LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerArgs(
-      allowServicePlacement: map['allowServicePlacement'] == null ? null : (map['allowServicePlacement'] as bool).input(),
-      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
+      allowServicePlacement: map['allowServicePlacement'] == null ? null : (map['allowServicePlacement']! as bool).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName']! as String).input(),
       name: (map['name'] as String).input(),
-      nodeSelector: map['nodeSelector'] == null ? null : (LabelSelector.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : (LabelSelector.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>())).input(),
       primaryAgentPoolName: (map['primaryAgentPoolName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      serviceLabelSelector: map['serviceLabelSelector'] == null ? null : (LabelSelector.fromMap((map['serviceLabelSelector'] as Map).cast<String, dynamic>())).input(),
-      serviceNamespaceSelector: map['serviceNamespaceSelector'] == null ? null : (LabelSelector.fromMap((map['serviceNamespaceSelector'] as Map).cast<String, dynamic>())).input(),
+      serviceLabelSelector: map['serviceLabelSelector'] == null ? null : (LabelSelector.fromMap((map['serviceLabelSelector']! as Map).cast<String, dynamic>())).input(),
+      serviceNamespaceSelector: map['serviceNamespaceSelector'] == null ? null : (LabelSelector.fromMap((map['serviceNamespaceSelector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

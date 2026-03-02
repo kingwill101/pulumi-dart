@@ -26,8 +26,8 @@ class VirtualNetworkDnsServersState {
 
   factory VirtualNetworkDnsServersState.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkDnsServersState(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
     );
   }
 }

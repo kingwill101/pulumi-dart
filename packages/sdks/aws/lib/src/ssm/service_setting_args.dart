@@ -34,7 +34,7 @@ class ServiceSettingArgs {
 
   factory ServiceSettingArgs.fromMap(Map<String, dynamic> map) {
     return ServiceSettingArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       settingId: (map['settingId'] as String).input(),
       settingValue: (map['settingValue'] as String).input(),
     );

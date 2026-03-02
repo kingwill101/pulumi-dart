@@ -39,10 +39,10 @@ class RuleGroupRuleGroup {
 
   factory RuleGroupRuleGroup.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroup(
-      referenceSets: map['referenceSets'] == null ? null : (RuleGroupRuleGroupReferenceSets.fromMap((map['referenceSets'] as Map).cast<String, dynamic>())).input(),
-      ruleVariables: map['ruleVariables'] == null ? null : (RuleGroupRuleGroupRuleVariables.fromMap((map['ruleVariables'] as Map).cast<String, dynamic>())).input(),
-      rulesSource: (RuleGroupRuleGroupRulesSource.fromMap((map['rulesSource'] as Map).cast<String, dynamic>())).input(),
-      statefulRuleOptions: map['statefulRuleOptions'] == null ? null : (RuleGroupRuleGroupStatefulRuleOptions.fromMap((map['statefulRuleOptions'] as Map).cast<String, dynamic>())).input(),
+      referenceSets: map['referenceSets'] == null ? null : ((RuleGroupRuleGroupReferenceSets.fromMap((map['referenceSets']! as Map).cast<String, dynamic>())).input()).input(),
+      ruleVariables: map['ruleVariables'] == null ? null : ((RuleGroupRuleGroupRuleVariables.fromMap((map['ruleVariables']! as Map).cast<String, dynamic>())).input()).input(),
+      rulesSource: (RuleGroupRuleGroupRulesSource.fromMap((map['rulesSource']! as Map).cast<String, dynamic>())).input(),
+      statefulRuleOptions: map['statefulRuleOptions'] == null ? null : ((RuleGroupRuleGroupStatefulRuleOptions.fromMap((map['statefulRuleOptions']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

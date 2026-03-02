@@ -41,10 +41,10 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModule {
 
   factory CustomTargetTypeCustomActionsIncludeSkaffoldModule.fromMap(Map<String, dynamic> map) {
     return CustomTargetTypeCustomActionsIncludeSkaffoldModule(
-      configs: map['configs'] == null ? null : ((map['configs'] as List).cast<String>()).input(),
-      git: map['git'] == null ? null : (CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit.fromMap((map['git'] as Map).cast<String, dynamic>())).input(),
-      googleCloudBuildRepo: map['googleCloudBuildRepo'] == null ? null : (CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo.fromMap((map['googleCloudBuildRepo'] as Map).cast<String, dynamic>())).input(),
-      googleCloudStorage: map['googleCloudStorage'] == null ? null : (CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage.fromMap((map['googleCloudStorage'] as Map).cast<String, dynamic>())).input(),
+      configs: map['configs'] == null ? null : ((map['configs']! as List).cast<String>()).input(),
+      git: map['git'] == null ? null : (CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit.fromMap((map['git']! as Map).cast<String, dynamic>())).input(),
+      googleCloudBuildRepo: map['googleCloudBuildRepo'] == null ? null : (CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo.fromMap((map['googleCloudBuildRepo']! as Map).cast<String, dynamic>())).input(),
+      googleCloudStorage: map['googleCloudStorage'] == null ? null : (CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage.fromMap((map['googleCloudStorage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -46,10 +46,10 @@ class RoleAssociationArgs {
 
   factory RoleAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RoleAssociationArgs(
-      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      groupIds: map['groupIds'] == null ? null : (((map['groupIds'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       role: (map['role'] as String).input(),
-      userIds: map['userIds'] == null ? null : ((map['userIds'] as List).cast<String>()).input(),
+      userIds: map['userIds'] == null ? null : (((map['userIds'] as List).cast<String>()).input()).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

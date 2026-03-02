@@ -29,8 +29,8 @@ class ContainerRestartRuleOnExitCodesPatch {
 
   factory ContainerRestartRuleOnExitCodesPatch.fromMap(Map<String, dynamic> map) {
     return ContainerRestartRuleOnExitCodesPatch(
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<int>()).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<int>()).input(),
     );
   }
 }

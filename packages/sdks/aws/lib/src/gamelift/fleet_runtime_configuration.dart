@@ -31,9 +31,9 @@ class FleetRuntimeConfiguration {
 
   factory FleetRuntimeConfiguration.fromMap(Map<String, dynamic> map) {
     return FleetRuntimeConfiguration(
-      gameSessionActivationTimeoutSeconds: map['gameSessionActivationTimeoutSeconds'] == null ? null : (map['gameSessionActivationTimeoutSeconds'] as int).input(),
-      maxConcurrentGameSessionActivations: map['maxConcurrentGameSessionActivations'] == null ? null : (map['maxConcurrentGameSessionActivations'] as int).input(),
-      serverProcesses: map['serverProcesses'] == null ? null : (pulumi.Input.decodeList<FleetRuntimeConfigurationServerProcess>(map['serverProcesses'], (value) => FleetRuntimeConfigurationServerProcess.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gameSessionActivationTimeoutSeconds: map['gameSessionActivationTimeoutSeconds'] == null ? null : ((map['gameSessionActivationTimeoutSeconds'] as int).input()).input(),
+      maxConcurrentGameSessionActivations: map['maxConcurrentGameSessionActivations'] == null ? null : ((map['maxConcurrentGameSessionActivations'] as int).input()).input(),
+      serverProcesses: map['serverProcesses'] == null ? null : ((pulumi.Input.decodeList<FleetRuntimeConfigurationServerProcess>(map['serverProcesses']!, (value) => FleetRuntimeConfigurationServerProcess.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

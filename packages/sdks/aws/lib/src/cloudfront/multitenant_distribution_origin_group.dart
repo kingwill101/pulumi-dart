@@ -32,9 +32,9 @@ class MultitenantDistributionOriginGroup {
 
   factory MultitenantDistributionOriginGroup.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOriginGroup(
-      failoverCriteria: (MultitenantDistributionOriginGroupFailoverCriteria.fromMap((map['failoverCriteria'] as Map).cast<String, dynamic>())).input(),
+      failoverCriteria: (MultitenantDistributionOriginGroupFailoverCriteria.fromMap((map['failoverCriteria']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
-      members: (pulumi.Input.decodeList<MultitenantDistributionOriginGroupMember>(map['members'], (value) => MultitenantDistributionOriginGroupMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      members: (pulumi.Input.decodeList<MultitenantDistributionOriginGroupMember>(map['members']!, (value) => MultitenantDistributionOriginGroupMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

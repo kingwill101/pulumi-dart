@@ -49,8 +49,8 @@ class OrderArgs {
       contactInformation: (ContactDetails.fromMap((map['contactInformation'] as Map).cast<String, dynamic>())).input(),
       deviceName: (map['deviceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      shipmentType: map['shipmentType'] == null ? null : (map['shipmentType'] as String).input(),
-      shippingAddress: map['shippingAddress'] == null ? null : (Address.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())).input(),
+      shipmentType: map['shipmentType'] == null ? null : (map['shipmentType']! as String).input(),
+      shippingAddress: map['shippingAddress'] == null ? null : (Address.fromMap((map['shippingAddress']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

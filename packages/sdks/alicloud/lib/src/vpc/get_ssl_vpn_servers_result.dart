@@ -52,11 +52,11 @@ class GetSslVpnServersResult {
     return GetSslVpnServersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       servers: pulumi.Input.decodeList<GetSslVpnServersServer>(map['servers'], (value) => GetSslVpnServersServer.fromMap((value as Map).cast<String, dynamic>())),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : map['vpnGatewayId'] as String,
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : map['vpnGatewayId']! as String,
     );
   }
 }

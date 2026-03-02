@@ -101,22 +101,22 @@ class NotebookInstanceArgs {
 
   factory NotebookInstanceArgs.fromMap(Map<String, dynamic> map) {
     return NotebookInstanceArgs(
-      additionalCodeRepositories: map['additionalCodeRepositories'] == null ? null : ((map['additionalCodeRepositories'] as List).cast<String>()).input(),
-      defaultCodeRepository: map['defaultCodeRepository'] == null ? null : (map['defaultCodeRepository'] as String).input(),
-      directInternetAccess: map['directInternetAccess'] == null ? null : (map['directInternetAccess'] as String).input(),
-      instanceMetadataServiceConfiguration: map['instanceMetadataServiceConfiguration'] == null ? null : (NotebookInstanceInstanceMetadataServiceConfiguration.fromMap((map['instanceMetadataServiceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      additionalCodeRepositories: map['additionalCodeRepositories'] == null ? null : (((map['additionalCodeRepositories'] as List).cast<String>()).input()).input(),
+      defaultCodeRepository: map['defaultCodeRepository'] == null ? null : ((map['defaultCodeRepository'] as String).input()).input(),
+      directInternetAccess: map['directInternetAccess'] == null ? null : ((map['directInternetAccess'] as String).input()).input(),
+      instanceMetadataServiceConfiguration: map['instanceMetadataServiceConfiguration'] == null ? null : ((NotebookInstanceInstanceMetadataServiceConfiguration.fromMap((map['instanceMetadataServiceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       instanceType: (map['instanceType'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      lifecycleConfigName: map['lifecycleConfigName'] == null ? null : (map['lifecycleConfigName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      platformIdentifier: map['platformIdentifier'] == null ? null : (map['platformIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      lifecycleConfigName: map['lifecycleConfigName'] == null ? null : ((map['lifecycleConfigName'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      platformIdentifier: map['platformIdentifier'] == null ? null : ((map['platformIdentifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      rootAccess: map['rootAccess'] == null ? null : (map['rootAccess'] as String).input(),
-      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      volumeSize: map['volumeSize'] == null ? null : (map['volumeSize'] as int).input(),
+      rootAccess: map['rootAccess'] == null ? null : ((map['rootAccess'] as String).input()).input(),
+      securityGroups: map['securityGroups'] == null ? null : (((map['securityGroups'] as List).cast<String>()).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      volumeSize: map['volumeSize'] == null ? null : ((map['volumeSize'] as int).input()).input(),
     );
   }
 }

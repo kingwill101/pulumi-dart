@@ -42,10 +42,10 @@ class BucketAbacArgs {
 
   factory BucketAbacArgs.fromMap(Map<String, dynamic> map) {
     return BucketAbacArgs(
-      abacStatus: (BucketAbacAbacStatus.fromMap((map['abacStatus'] as Map).cast<String, dynamic>())).input(),
+      abacStatus: (BucketAbacAbacStatus.fromMap((map['abacStatus']! as Map).cast<String, dynamic>())).input(),
       bucket: (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

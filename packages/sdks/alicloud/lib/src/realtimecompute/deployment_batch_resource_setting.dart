@@ -26,8 +26,8 @@ class DeploymentBatchResourceSetting {
 
   factory DeploymentBatchResourceSetting.fromMap(Map<String, dynamic> map) {
     return DeploymentBatchResourceSetting(
-      basicResourceSetting: map['basicResourceSetting'] == null ? null : (DeploymentBatchResourceSettingBasicResourceSetting.fromMap((map['basicResourceSetting'] as Map).cast<String, dynamic>())).input(),
-      maxSlot: map['maxSlot'] == null ? null : (map['maxSlot'] as int).input(),
+      basicResourceSetting: map['basicResourceSetting'] == null ? null : (DeploymentBatchResourceSettingBasicResourceSetting.fromMap((map['basicResourceSetting']! as Map).cast<String, dynamic>())).input(),
+      maxSlot: map['maxSlot'] == null ? null : (map['maxSlot']! as int).input(),
     );
   }
 }

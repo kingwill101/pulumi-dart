@@ -36,8 +36,8 @@ class GetClientTokenResult {
   factory GetClientTokenResult.fromMap(Map<String, dynamic> map) {
     return GetClientTokenResult(
       accessToken: map['accessToken'] as String,
-      expiry: map['expiry'] == null ? null : map['expiry'] as String,
-      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
+      expiry: map['expiry'] == null ? null : map['expiry']! as String,
+      refreshToken: map['refreshToken'] == null ? null : map['refreshToken']! as String,
       tokenType: map['tokenType'] as String,
     );
   }

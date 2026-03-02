@@ -27,8 +27,8 @@ class GPUSharingConfig {
 
   factory GPUSharingConfig.fromMap(Map<String, dynamic> map) {
     return GPUSharingConfig(
-      gpuSharingStrategy: map['gpuSharingStrategy'] == null ? null : (GPUSharingConfigGpuSharingStrategy.fromValue(map['gpuSharingStrategy'] as String)).input(),
-      maxSharedClientsPerGpu: map['maxSharedClientsPerGpu'] == null ? null : (map['maxSharedClientsPerGpu'] as String).input(),
+      gpuSharingStrategy: map['gpuSharingStrategy'] == null ? null : (GPUSharingConfigGpuSharingStrategy.fromValue(map['gpuSharingStrategy']! as String)).input(),
+      maxSharedClientsPerGpu: map['maxSharedClientsPerGpu'] == null ? null : (map['maxSharedClientsPerGpu']! as String).input(),
     );
   }
 }

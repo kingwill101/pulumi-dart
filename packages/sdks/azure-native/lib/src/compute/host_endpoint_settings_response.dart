@@ -26,8 +26,8 @@ class HostEndpointSettingsResponse {
 
   factory HostEndpointSettingsResponse.fromMap(Map<String, dynamic> map) {
     return HostEndpointSettingsResponse(
-      inVMAccessControlProfileReferenceId: map['inVMAccessControlProfileReferenceId'] == null ? null : (map['inVMAccessControlProfileReferenceId'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      inVMAccessControlProfileReferenceId: map['inVMAccessControlProfileReferenceId'] == null ? null : (map['inVMAccessControlProfileReferenceId']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

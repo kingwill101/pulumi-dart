@@ -35,9 +35,9 @@ class CryptoKeyIAMPolicyState {
 
   factory CryptoKeyIAMPolicyState.fromMap(Map<String, dynamic> map) {
     return CryptoKeyIAMPolicyState(
-      cryptoKeyId: map['cryptoKeyId'] == null ? null : (map['cryptoKeyId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      cryptoKeyId: map['cryptoKeyId'] == null ? null : (map['cryptoKeyId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
     );
   }
 }

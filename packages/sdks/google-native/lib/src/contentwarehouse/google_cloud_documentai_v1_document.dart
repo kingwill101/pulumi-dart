@@ -84,18 +84,18 @@ class GoogleCloudDocumentaiV1Document {
 
   factory GoogleCloudDocumentaiV1Document.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1Document(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentEntity>(map['entities'], (value) => GoogleCloudDocumentaiV1DocumentEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      entityRelations: map['entityRelations'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentEntityRelation>(map['entityRelations'], (value) => GoogleCloudDocumentaiV1DocumentEntityRelation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      error: map['error'] == null ? null : (GoogleRpcStatus.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
-      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPage>(map['pages'], (value) => GoogleCloudDocumentaiV1DocumentPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      revisions: map['revisions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentRevision>(map['revisions'], (value) => GoogleCloudDocumentaiV1DocumentRevision.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shardInfo: map['shardInfo'] == null ? null : (GoogleCloudDocumentaiV1DocumentShardInfo.fromMap((map['shardInfo'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
-      textChanges: map['textChanges'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentTextChange>(map['textChanges'], (value) => GoogleCloudDocumentaiV1DocumentTextChange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      textStyles: map['textStyles'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentStyle>(map['textStyles'], (value) => GoogleCloudDocumentaiV1DocumentStyle.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentEntity>(map['entities']!, (value) => GoogleCloudDocumentaiV1DocumentEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entityRelations: map['entityRelations'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentEntityRelation>(map['entityRelations']!, (value) => GoogleCloudDocumentaiV1DocumentEntityRelation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      error: map['error'] == null ? null : (GoogleRpcStatus.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
+      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPage>(map['pages']!, (value) => GoogleCloudDocumentaiV1DocumentPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      revisions: map['revisions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentRevision>(map['revisions']!, (value) => GoogleCloudDocumentaiV1DocumentRevision.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shardInfo: map['shardInfo'] == null ? null : (GoogleCloudDocumentaiV1DocumentShardInfo.fromMap((map['shardInfo']! as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
+      textChanges: map['textChanges'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentTextChange>(map['textChanges']!, (value) => GoogleCloudDocumentaiV1DocumentTextChange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textStyles: map['textStyles'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentStyle>(map['textStyles']!, (value) => GoogleCloudDocumentaiV1DocumentStyle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -70,16 +70,16 @@ class StorageClassStorageK8sIoV1beta1 {
 
   factory StorageClassStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return StorageClassStorageK8sIoV1beta1(
-      allowVolumeExpansion: map['allowVolumeExpansion'] == null ? null : (map['allowVolumeExpansion'] as bool).input(),
-      allowedTopologies: map['allowedTopologies'] == null ? null : (pulumi.Input.decodeList<TopologySelectorTerm>(map['allowedTopologies'], (value) => TopologySelectorTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions'] as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      allowVolumeExpansion: map['allowVolumeExpansion'] == null ? null : (map['allowVolumeExpansion']! as bool).input(),
+      allowedTopologies: map['allowedTopologies'] == null ? null : (pulumi.Input.decodeList<TopologySelectorTerm>(map['allowedTopologies']!, (value) => TopologySelectorTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions']! as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
       provisioner: (map['provisioner'] as String).input(),
-      reclaimPolicy: map['reclaimPolicy'] == null ? null : (map['reclaimPolicy'] as String).input(),
-      volumeBindingMode: map['volumeBindingMode'] == null ? null : (map['volumeBindingMode'] as String).input(),
+      reclaimPolicy: map['reclaimPolicy'] == null ? null : (map['reclaimPolicy']! as String).input(),
+      volumeBindingMode: map['volumeBindingMode'] == null ? null : (map['volumeBindingMode']! as String).input(),
     );
   }
 }

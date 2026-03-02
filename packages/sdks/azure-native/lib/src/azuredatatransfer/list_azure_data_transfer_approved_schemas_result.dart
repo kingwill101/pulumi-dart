@@ -22,7 +22,7 @@ class ListAzureDataTransferApprovedSchemasResult {
 
   factory ListAzureDataTransferApprovedSchemasResult.fromMap(Map<String, dynamic> map) {
     return ListAzureDataTransferApprovedSchemasResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<SchemaResponse>(map['value'], (value) => SchemaResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<SchemaResponse>(map['value']!, (value) => SchemaResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

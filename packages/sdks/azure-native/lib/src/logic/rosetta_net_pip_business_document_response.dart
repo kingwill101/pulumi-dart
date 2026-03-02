@@ -31,7 +31,7 @@ class RosettaNetPipBusinessDocumentResponse {
 
   factory RosettaNetPipBusinessDocumentResponse.fromMap(Map<String, dynamic> map) {
     return RosettaNetPipBusinessDocumentResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
       version: (map['version'] as String).input(),
     );

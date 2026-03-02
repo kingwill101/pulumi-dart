@@ -33,9 +33,9 @@ class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText {
 
   factory CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText.fromMap(Map<String, dynamic> map) {
     return CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption'] as bool).input(),
-      ssml: map['ssml'] == null ? null : (map['ssml'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption']! as bool).input(),
+      ssml: map['ssml'] == null ? null : (map['ssml']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

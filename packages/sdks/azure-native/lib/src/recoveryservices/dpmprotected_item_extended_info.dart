@@ -86,20 +86,20 @@ class DPMProtectedItemExtendedInfo {
 
   factory DPMProtectedItemExtendedInfo.fromMap(Map<String, dynamic> map) {
     return DPMProtectedItemExtendedInfo(
-      diskStorageUsedInBytes: map['diskStorageUsedInBytes'] == null ? null : (map['diskStorageUsedInBytes'] as String).input(),
-      isCollocated: map['isCollocated'] == null ? null : (map['isCollocated'] as bool).input(),
-      isPresentOnCloud: map['isPresentOnCloud'] == null ? null : (map['isPresentOnCloud'] as bool).input(),
-      lastBackupStatus: map['lastBackupStatus'] == null ? null : (map['lastBackupStatus'] as String).input(),
-      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt'] as String).input(),
-      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint'] as String).input(),
-      onPremiseLatestRecoveryPoint: map['onPremiseLatestRecoveryPoint'] == null ? null : (map['onPremiseLatestRecoveryPoint'] as String).input(),
-      onPremiseOldestRecoveryPoint: map['onPremiseOldestRecoveryPoint'] == null ? null : (map['onPremiseOldestRecoveryPoint'] as String).input(),
-      onPremiseRecoveryPointCount: map['onPremiseRecoveryPointCount'] == null ? null : (map['onPremiseRecoveryPointCount'] as int).input(),
-      protectableObjectLoadPath: map['protectableObjectLoadPath'] == null ? null : ((map['protectableObjectLoadPath'] as Map).cast<String, String>()).input(),
-      protected: map['protected'] == null ? null : (map['protected'] as bool).input(),
-      protectionGroupName: map['protectionGroupName'] == null ? null : (map['protectionGroupName'] as String).input(),
-      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount'] as int).input(),
-      totalDiskStorageSizeInBytes: map['totalDiskStorageSizeInBytes'] == null ? null : (map['totalDiskStorageSizeInBytes'] as String).input(),
+      diskStorageUsedInBytes: map['diskStorageUsedInBytes'] == null ? null : (map['diskStorageUsedInBytes']! as String).input(),
+      isCollocated: map['isCollocated'] == null ? null : (map['isCollocated']! as bool).input(),
+      isPresentOnCloud: map['isPresentOnCloud'] == null ? null : (map['isPresentOnCloud']! as bool).input(),
+      lastBackupStatus: map['lastBackupStatus'] == null ? null : (map['lastBackupStatus']! as String).input(),
+      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt']! as String).input(),
+      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint']! as String).input(),
+      onPremiseLatestRecoveryPoint: map['onPremiseLatestRecoveryPoint'] == null ? null : (map['onPremiseLatestRecoveryPoint']! as String).input(),
+      onPremiseOldestRecoveryPoint: map['onPremiseOldestRecoveryPoint'] == null ? null : (map['onPremiseOldestRecoveryPoint']! as String).input(),
+      onPremiseRecoveryPointCount: map['onPremiseRecoveryPointCount'] == null ? null : (map['onPremiseRecoveryPointCount']! as int).input(),
+      protectableObjectLoadPath: map['protectableObjectLoadPath'] == null ? null : ((map['protectableObjectLoadPath']! as Map).cast<String, String>()).input(),
+      protected: map['protected'] == null ? null : (map['protected']! as bool).input(),
+      protectionGroupName: map['protectionGroupName'] == null ? null : (map['protectionGroupName']! as String).input(),
+      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount']! as int).input(),
+      totalDiskStorageSizeInBytes: map['totalDiskStorageSizeInBytes'] == null ? null : (map['totalDiskStorageSizeInBytes']! as String).input(),
     );
   }
 }

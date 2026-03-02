@@ -49,13 +49,13 @@ class StreamConsumerState {
 
   factory StreamConsumerState.fromMap(Map<String, dynamic> map) {
     return StreamConsumerState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      streamArn: map['streamArn'] == null ? null : (map['streamArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : ((map['creationTimestamp'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      streamArn: map['streamArn'] == null ? null : ((map['streamArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

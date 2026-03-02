@@ -33,7 +33,7 @@ class GetBackupScheduleArgs {
     return GetBackupScheduleArgs(
       backupScheduleId: (map['backupScheduleId'] as String).input(),
       databaseId: (map['databaseId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

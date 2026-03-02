@@ -21,7 +21,7 @@ class VirtualClusterContainerProviderInfo {
 
   factory VirtualClusterContainerProviderInfo.fromMap(Map<String, dynamic> map) {
     return VirtualClusterContainerProviderInfo(
-      eksInfo: (VirtualClusterContainerProviderInfoEksInfo.fromMap((map['eksInfo'] as Map).cast<String, dynamic>())).input(),
+      eksInfo: (VirtualClusterContainerProviderInfoEksInfo.fromMap((map['eksInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

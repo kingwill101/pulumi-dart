@@ -21,7 +21,7 @@ class GoogleCloudContentwarehouseV1SynonymSetSynonym {
 
   factory GoogleCloudContentwarehouseV1SynonymSetSynonym.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1SynonymSetSynonym(
-      words: map['words'] == null ? null : ((map['words'] as List).cast<String>()).input(),
+      words: map['words'] == null ? null : ((map['words']! as List).cast<String>()).input(),
     );
   }
 }

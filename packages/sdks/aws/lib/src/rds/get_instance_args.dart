@@ -34,9 +34,9 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : (map['dbInstanceIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : ((map['dbInstanceIdentifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

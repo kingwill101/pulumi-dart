@@ -36,9 +36,9 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource(
-      referenceId: map['referenceId'] == null ? null : (map['referenceId'] as String).input(),
-      referenceSchema: (ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema.fromMap((map['referenceSchema'] as Map).cast<String, dynamic>())).input(),
-      s3ReferenceDataSource: (ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource.fromMap((map['s3ReferenceDataSource'] as Map).cast<String, dynamic>())).input(),
+      referenceId: map['referenceId'] == null ? null : ((map['referenceId'] as String).input()).input(),
+      referenceSchema: (ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema.fromMap((map['referenceSchema']! as Map).cast<String, dynamic>())).input(),
+      s3ReferenceDataSource: (ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource.fromMap((map['s3ReferenceDataSource']! as Map).cast<String, dynamic>())).input(),
       tableName: (map['tableName'] as String).input(),
     );
   }

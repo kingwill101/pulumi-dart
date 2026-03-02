@@ -46,12 +46,12 @@ class CloudinitDiskState {
 
   factory CloudinitDiskState.fromMap(Map<String, dynamic> map) {
     return CloudinitDiskState(
-      metaData: map['metaData'] == null ? null : (map['metaData'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (map['networkConfig'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as double).input(),
-      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
+      metaData: map['metaData'] == null ? null : (map['metaData']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (map['networkConfig']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
+      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
     );
   }
 }

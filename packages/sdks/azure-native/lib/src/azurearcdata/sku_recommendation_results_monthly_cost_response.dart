@@ -31,9 +31,9 @@ class SkuRecommendationResultsMonthlyCostResponse {
 
   factory SkuRecommendationResultsMonthlyCostResponse.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsMonthlyCostResponse(
-      computeCost: map['computeCost'] == null ? null : (map['computeCost'] as double).input(),
-      storageCost: map['storageCost'] == null ? null : (map['storageCost'] as double).input(),
-      totalCost: map['totalCost'] == null ? null : (map['totalCost'] as double).input(),
+      computeCost: map['computeCost'] == null ? null : (map['computeCost']! as double).input(),
+      storageCost: map['storageCost'] == null ? null : (map['storageCost']! as double).input(),
+      totalCost: map['totalCost'] == null ? null : (map['totalCost']! as double).input(),
     );
   }
 }

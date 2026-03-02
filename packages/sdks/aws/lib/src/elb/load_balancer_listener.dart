@@ -47,7 +47,7 @@ class LoadBalancerListener {
       instanceProtocol: (map['instanceProtocol'] as String).input(),
       lbPort: (map['lbPort'] as int).input(),
       lbProtocol: (map['lbProtocol'] as String).input(),
-      sslCertificateId: map['sslCertificateId'] == null ? null : (map['sslCertificateId'] as String).input(),
+      sslCertificateId: map['sslCertificateId'] == null ? null : ((map['sslCertificateId'] as String).input()).input(),
     );
   }
 }

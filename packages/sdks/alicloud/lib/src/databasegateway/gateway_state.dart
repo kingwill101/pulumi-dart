@@ -31,9 +31,9 @@ class GatewayState {
 
   factory GatewayState.fromMap(Map<String, dynamic> map) {
     return GatewayState(
-      gatewayDesc: map['gatewayDesc'] == null ? null : (map['gatewayDesc'] as String).input(),
-      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      gatewayDesc: map['gatewayDesc'] == null ? null : (map['gatewayDesc']! as String).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -78,10 +78,10 @@ class GetTransitHubResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceCollection: (map['resourceCollection'] as List).cast<String>(),
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : map['state']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      transitOption: map['transitOption'] == null ? null : TransitOptionResponse.fromMap((map['transitOption'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      transitOption: map['transitOption'] == null ? null : TransitOptionResponse.fromMap((map['transitOption']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

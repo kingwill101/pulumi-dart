@@ -42,7 +42,7 @@ class SourceIamMemberArgs {
 
   factory SourceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return SourceIamMemberArgs(
-      condition: map['condition'] == null ? null : (SourceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (SourceIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
       organization: (map['organization'] as String).input(),
       role: (map['role'] as String).input(),

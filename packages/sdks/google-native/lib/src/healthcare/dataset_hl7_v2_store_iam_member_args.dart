@@ -45,7 +45,7 @@ class DatasetHl7V2StoreIamMemberArgs {
 
   factory DatasetHl7V2StoreIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return DatasetHl7V2StoreIamMemberArgs(
-      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
       name: (map['name'] as String).input(),
       role: (map['role'] as String).input(),

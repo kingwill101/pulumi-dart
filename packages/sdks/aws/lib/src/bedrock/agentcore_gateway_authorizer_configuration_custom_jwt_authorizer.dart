@@ -30,8 +30,8 @@ class AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer {
 
   factory AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayAuthorizerConfigurationCustomJwtAuthorizer(
-      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences'] as List).cast<String>()).input(),
-      allowedClients: map['allowedClients'] == null ? null : ((map['allowedClients'] as List).cast<String>()).input(),
+      allowedAudiences: map['allowedAudiences'] == null ? null : (((map['allowedAudiences'] as List).cast<String>()).input()).input(),
+      allowedClients: map['allowedClients'] == null ? null : (((map['allowedClients'] as List).cast<String>()).input()).input(),
       discoveryUrl: (map['discoveryUrl'] as String).input(),
     );
   }

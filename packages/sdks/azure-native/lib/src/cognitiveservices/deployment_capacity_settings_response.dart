@@ -26,8 +26,8 @@ class DeploymentCapacitySettingsResponse {
 
   factory DeploymentCapacitySettingsResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentCapacitySettingsResponse(
-      designatedCapacity: map['designatedCapacity'] == null ? null : (map['designatedCapacity'] as int).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      designatedCapacity: map['designatedCapacity'] == null ? null : (map['designatedCapacity']! as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
     );
   }
 }

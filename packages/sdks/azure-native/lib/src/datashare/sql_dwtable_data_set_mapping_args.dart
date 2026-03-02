@@ -72,7 +72,7 @@ class SqlDWTableDataSetMappingArgs {
     return SqlDWTableDataSetMappingArgs(
       accountName: (map['accountName'] as String).input(),
       dataSetId: (map['dataSetId'] as String).input(),
-      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName'] as String).input(),
+      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName']! as String).input(),
       dataWarehouseName: (map['dataWarehouseName'] as String).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

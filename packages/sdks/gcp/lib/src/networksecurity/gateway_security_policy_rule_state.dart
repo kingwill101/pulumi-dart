@@ -94,20 +94,20 @@ class GatewaySecurityPolicyRuleState {
 
   factory GatewaySecurityPolicyRuleState.fromMap(Map<String, dynamic> map) {
     return GatewaySecurityPolicyRuleState(
-      applicationMatcher: map['applicationMatcher'] == null ? null : (map['applicationMatcher'] as String).input(),
-      basicProfile: map['basicProfile'] == null ? null : (map['basicProfile'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      gatewaySecurityPolicy: map['gatewaySecurityPolicy'] == null ? null : (map['gatewaySecurityPolicy'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      sessionMatcher: map['sessionMatcher'] == null ? null : (map['sessionMatcher'] as String).input(),
-      tlsInspectionEnabled: map['tlsInspectionEnabled'] == null ? null : (map['tlsInspectionEnabled'] as bool).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      applicationMatcher: map['applicationMatcher'] == null ? null : (map['applicationMatcher']! as String).input(),
+      basicProfile: map['basicProfile'] == null ? null : (map['basicProfile']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      gatewaySecurityPolicy: map['gatewaySecurityPolicy'] == null ? null : (map['gatewaySecurityPolicy']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      sessionMatcher: map['sessionMatcher'] == null ? null : (map['sessionMatcher']! as String).input(),
+      tlsInspectionEnabled: map['tlsInspectionEnabled'] == null ? null : (map['tlsInspectionEnabled']! as bool).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

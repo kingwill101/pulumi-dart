@@ -34,7 +34,7 @@ class GetPrivateEndpointArgs {
 
   factory GetPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       privateEndpointName: (map['privateEndpointName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

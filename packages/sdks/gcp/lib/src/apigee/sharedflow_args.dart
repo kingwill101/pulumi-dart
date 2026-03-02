@@ -41,8 +41,8 @@ class SharedflowArgs {
   factory SharedflowArgs.fromMap(Map<String, dynamic> map) {
     return SharedflowArgs(
       configBundle: (map['configBundle'] as String).input(),
-      detectMd5hash: map['detectMd5hash'] == null ? null : (map['detectMd5hash'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      detectMd5hash: map['detectMd5hash'] == null ? null : (map['detectMd5hash']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       orgId: (map['orgId'] as String).input(),
     );
   }

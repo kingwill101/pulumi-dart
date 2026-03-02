@@ -49,11 +49,11 @@ class BatchRuntimeInfo {
 
   factory BatchRuntimeInfo.fromMap(Map<String, dynamic> map) {
     return BatchRuntimeInfo(
-      approximateUsages: map['approximateUsages'] == null ? null : (pulumi.Input.decodeList<BatchRuntimeInfoApproximateUsage>(map['approximateUsages'], (value) => BatchRuntimeInfoApproximateUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      currentUsages: map['currentUsages'] == null ? null : (pulumi.Input.decodeList<BatchRuntimeInfoCurrentUsage>(map['currentUsages'], (value) => BatchRuntimeInfoCurrentUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diagnosticOutputUri: map['diagnosticOutputUri'] == null ? null : (map['diagnosticOutputUri'] as String).input(),
-      endpoints: map['endpoints'] == null ? null : ((map['endpoints'] as Map).cast<String, String>()).input(),
-      outputUri: map['outputUri'] == null ? null : (map['outputUri'] as String).input(),
+      approximateUsages: map['approximateUsages'] == null ? null : (pulumi.Input.decodeList<BatchRuntimeInfoApproximateUsage>(map['approximateUsages']!, (value) => BatchRuntimeInfoApproximateUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentUsages: map['currentUsages'] == null ? null : (pulumi.Input.decodeList<BatchRuntimeInfoCurrentUsage>(map['currentUsages']!, (value) => BatchRuntimeInfoCurrentUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diagnosticOutputUri: map['diagnosticOutputUri'] == null ? null : (map['diagnosticOutputUri']! as String).input(),
+      endpoints: map['endpoints'] == null ? null : ((map['endpoints']! as Map).cast<String, String>()).input(),
+      outputUri: map['outputUri'] == null ? null : (map['outputUri']! as String).input(),
     );
   }
 }

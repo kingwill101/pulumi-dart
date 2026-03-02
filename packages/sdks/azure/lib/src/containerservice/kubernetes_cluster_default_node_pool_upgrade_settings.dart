@@ -39,10 +39,10 @@ class KubernetesClusterDefaultNodePoolUpgradeSettings {
 
   factory KubernetesClusterDefaultNodePoolUpgradeSettings.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterDefaultNodePoolUpgradeSettings(
-      drainTimeoutInMinutes: map['drainTimeoutInMinutes'] == null ? null : (map['drainTimeoutInMinutes'] as int).input(),
+      drainTimeoutInMinutes: map['drainTimeoutInMinutes'] == null ? null : (map['drainTimeoutInMinutes']! as int).input(),
       maxSurge: (map['maxSurge'] as String).input(),
-      nodeSoakDurationInMinutes: map['nodeSoakDurationInMinutes'] == null ? null : (map['nodeSoakDurationInMinutes'] as int).input(),
-      undrainableNodeBehavior: map['undrainableNodeBehavior'] == null ? null : (map['undrainableNodeBehavior'] as String).input(),
+      nodeSoakDurationInMinutes: map['nodeSoakDurationInMinutes'] == null ? null : (map['nodeSoakDurationInMinutes']! as int).input(),
+      undrainableNodeBehavior: map['undrainableNodeBehavior'] == null ? null : (map['undrainableNodeBehavior']! as String).input(),
     );
   }
 }

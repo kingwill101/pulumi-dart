@@ -38,10 +38,10 @@ class Aggregation {
 
   factory Aggregation.fromMap(Map<String, dynamic> map) {
     return Aggregation(
-      alignmentPeriod: map['alignmentPeriod'] == null ? null : (map['alignmentPeriod'] as String).input(),
-      crossSeriesReducer: map['crossSeriesReducer'] == null ? null : (AggregationCrossSeriesReducer.fromValue(map['crossSeriesReducer'] as String)).input(),
-      groupByFields: map['groupByFields'] == null ? null : ((map['groupByFields'] as List).cast<String>()).input(),
-      perSeriesAligner: map['perSeriesAligner'] == null ? null : (AggregationPerSeriesAligner.fromValue(map['perSeriesAligner'] as String)).input(),
+      alignmentPeriod: map['alignmentPeriod'] == null ? null : (map['alignmentPeriod']! as String).input(),
+      crossSeriesReducer: map['crossSeriesReducer'] == null ? null : (AggregationCrossSeriesReducer.fromValue(map['crossSeriesReducer']! as String)).input(),
+      groupByFields: map['groupByFields'] == null ? null : ((map['groupByFields']! as List).cast<String>()).input(),
+      perSeriesAligner: map['perSeriesAligner'] == null ? null : (AggregationPerSeriesAligner.fromValue(map['perSeriesAligner']! as String)).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ListMonitorApiKeysResult {
 
   factory ListMonitorApiKeysResult.fromMap(Map<String, dynamic> map) {
     return ListMonitorApiKeysResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<DatadogApiKeyResponse>(map['value'], (value) => DatadogApiKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<DatadogApiKeyResponse>(map['value']!, (value) => DatadogApiKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

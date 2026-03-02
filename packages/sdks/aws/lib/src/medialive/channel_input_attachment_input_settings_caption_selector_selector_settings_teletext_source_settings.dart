@@ -26,8 +26,8 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletext
 
   factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettings(
-      outputRectangle: map['outputRectangle'] == null ? null : (ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettingsOutputRectangle.fromMap((map['outputRectangle'] as Map).cast<String, dynamic>())).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as String).input(),
+      outputRectangle: map['outputRectangle'] == null ? null : ((ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettingsOutputRectangle.fromMap((map['outputRectangle']! as Map).cast<String, dynamic>())).input()).input(),
+      pageNumber: map['pageNumber'] == null ? null : ((map['pageNumber'] as String).input()).input(),
     );
   }
 }

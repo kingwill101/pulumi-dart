@@ -51,12 +51,12 @@ class SchedulerRuleRule {
 
   factory SchedulerRuleRule.fromMap(Map<String, dynamic> map) {
     return SchedulerRuleRule(
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      valueType: map['valueType'] == null ? null : (map['valueType'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      valueType: map['valueType'] == null ? null : (map['valueType']! as int).input(),
     );
   }
 }

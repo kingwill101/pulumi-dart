@@ -45,11 +45,11 @@ class SlotCustomHostnameBindingState {
 
   factory SlotCustomHostnameBindingState.fromMap(Map<String, dynamic> map) {
     return SlotCustomHostnameBindingState(
-      appServiceSlotId: map['appServiceSlotId'] == null ? null : (map['appServiceSlotId'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      sslState: map['sslState'] == null ? null : (map['sslState'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
-      virtualIp: map['virtualIp'] == null ? null : (map['virtualIp'] as String).input(),
+      appServiceSlotId: map['appServiceSlotId'] == null ? null : (map['appServiceSlotId']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      sslState: map['sslState'] == null ? null : (map['sslState']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      virtualIp: map['virtualIp'] == null ? null : (map['virtualIp']! as String).input(),
     );
   }
 }

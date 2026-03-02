@@ -35,8 +35,8 @@ class BucketUserDefinedLogFieldsArgs {
   factory BucketUserDefinedLogFieldsArgs.fromMap(Map<String, dynamic> map) {
     return BucketUserDefinedLogFieldsArgs(
       bucket: (map['bucket'] as String).input(),
-      headerSets: map['headerSets'] == null ? null : ((map['headerSets'] as List).cast<String>()).input(),
-      paramSets: map['paramSets'] == null ? null : ((map['paramSets'] as List).cast<String>()).input(),
+      headerSets: map['headerSets'] == null ? null : ((map['headerSets']! as List).cast<String>()).input(),
+      paramSets: map['paramSets'] == null ? null : ((map['paramSets']! as List).cast<String>()).input(),
     );
   }
 }

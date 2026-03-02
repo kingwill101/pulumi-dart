@@ -46,12 +46,12 @@ class OriginCaCertificateState {
 
   factory OriginCaCertificateState.fromMap(Map<String, dynamic> map) {
     return OriginCaCertificateState(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      originCaCertificateId: map['originCaCertificateId'] == null ? null : (map['originCaCertificateId'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      originCaCertificateId: map['originCaCertificateId'] == null ? null : (map['originCaCertificateId']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyRefer
   factory PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference.fromMap(Map<String, dynamic> map) {
     return PermissionsBoundaryAttachmentPermissionsBoundaryCustomerManagedPolicyReference(
       name: (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
     );
   }
 }

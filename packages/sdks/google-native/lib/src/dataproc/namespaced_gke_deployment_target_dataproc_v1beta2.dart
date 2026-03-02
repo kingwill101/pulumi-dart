@@ -26,8 +26,8 @@ class NamespacedGkeDeploymentTargetDataprocV1beta2 {
 
   factory NamespacedGkeDeploymentTargetDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return NamespacedGkeDeploymentTargetDataprocV1beta2(
-      clusterNamespace: map['clusterNamespace'] == null ? null : (map['clusterNamespace'] as String).input(),
-      targetGkeCluster: map['targetGkeCluster'] == null ? null : (map['targetGkeCluster'] as String).input(),
+      clusterNamespace: map['clusterNamespace'] == null ? null : (map['clusterNamespace']! as String).input(),
+      targetGkeCluster: map['targetGkeCluster'] == null ? null : (map['targetGkeCluster']! as String).input(),
     );
   }
 }

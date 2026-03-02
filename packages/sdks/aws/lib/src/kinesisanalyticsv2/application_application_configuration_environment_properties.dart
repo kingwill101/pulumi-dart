@@ -21,7 +21,7 @@ class ApplicationApplicationConfigurationEnvironmentProperties {
 
   factory ApplicationApplicationConfigurationEnvironmentProperties.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationEnvironmentProperties(
-      propertyGroups: (pulumi.Input.decodeList<ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup>(map['propertyGroups'], (value) => ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      propertyGroups: (pulumi.Input.decodeList<ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup>(map['propertyGroups']!, (value) => ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

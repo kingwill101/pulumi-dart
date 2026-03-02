@@ -41,7 +41,7 @@ class InstanceArgs {
     return InstanceArgs(
       attributes: ((map['attributes'] as Map).cast<String, String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serviceId: (map['serviceId'] as String).input(),
     );
   }

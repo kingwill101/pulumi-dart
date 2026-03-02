@@ -58,14 +58,14 @@ class ImageTransformState {
 
   factory ImageTransformState.fromMap(Map<String, dynamic> map) {
     return ImageTransformState(
-      configId: map['configId'] == null ? null : (map['configId'] as int).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as int).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence']! as int).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
     );
   }
 }

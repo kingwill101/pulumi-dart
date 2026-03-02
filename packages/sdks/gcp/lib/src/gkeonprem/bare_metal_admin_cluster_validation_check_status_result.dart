@@ -44,11 +44,11 @@ class BareMetalAdminClusterValidationCheckStatusResult {
 
   factory BareMetalAdminClusterValidationCheckStatusResult.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterValidationCheckStatusResult(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      details: map['details'] == null ? null : (map['details'] as String).input(),
-      options: map['options'] == null ? null : (map['options'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      details: map['details'] == null ? null : (map['details']! as String).input(),
+      options: map['options'] == null ? null : (map['options']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

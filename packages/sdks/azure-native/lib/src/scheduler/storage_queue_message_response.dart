@@ -35,10 +35,10 @@ class StorageQueueMessageResponse {
 
   factory StorageQueueMessageResponse.fromMap(Map<String, dynamic> map) {
     return StorageQueueMessageResponse(
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
-      sasToken: map['sasToken'] == null ? null : (map['sasToken'] as String).input(),
-      storageAccount: map['storageAccount'] == null ? null : (map['storageAccount'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
+      sasToken: map['sasToken'] == null ? null : (map['sasToken']! as String).input(),
+      storageAccount: map['storageAccount'] == null ? null : (map['storageAccount']! as String).input(),
     );
   }
 }

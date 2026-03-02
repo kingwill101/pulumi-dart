@@ -41,9 +41,9 @@ class LaunchMetricMonitorMetricDefinition {
   factory LaunchMetricMonitorMetricDefinition.fromMap(Map<String, dynamic> map) {
     return LaunchMetricMonitorMetricDefinition(
       entityIdKey: (map['entityIdKey'] as String).input(),
-      eventPattern: map['eventPattern'] == null ? null : (map['eventPattern'] as String).input(),
+      eventPattern: map['eventPattern'] == null ? null : ((map['eventPattern'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      unitLabel: map['unitLabel'] == null ? null : (map['unitLabel'] as String).input(),
+      unitLabel: map['unitLabel'] == null ? null : ((map['unitLabel'] as String).input()).input(),
       valueKey: (map['valueKey'] as String).input(),
     );
   }

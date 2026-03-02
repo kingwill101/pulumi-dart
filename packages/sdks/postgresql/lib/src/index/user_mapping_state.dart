@@ -37,9 +37,9 @@ class UserMappingState {
 
   factory UserMappingState.fromMap(Map<String, dynamic> map) {
     return UserMappingState(
-      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      options: map['options'] == null ? null : ((map['options']! as Map).cast<String, String>()).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

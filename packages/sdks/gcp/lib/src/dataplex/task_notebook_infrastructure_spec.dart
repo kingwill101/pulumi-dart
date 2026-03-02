@@ -36,9 +36,9 @@ class TaskNotebookInfrastructureSpec {
 
   factory TaskNotebookInfrastructureSpec.fromMap(Map<String, dynamic> map) {
     return TaskNotebookInfrastructureSpec(
-      batch: map['batch'] == null ? null : (TaskNotebookInfrastructureSpecBatch.fromMap((map['batch'] as Map).cast<String, dynamic>())).input(),
-      containerImage: map['containerImage'] == null ? null : (TaskNotebookInfrastructureSpecContainerImage.fromMap((map['containerImage'] as Map).cast<String, dynamic>())).input(),
-      vpcNetwork: map['vpcNetwork'] == null ? null : (TaskNotebookInfrastructureSpecVpcNetwork.fromMap((map['vpcNetwork'] as Map).cast<String, dynamic>())).input(),
+      batch: map['batch'] == null ? null : (TaskNotebookInfrastructureSpecBatch.fromMap((map['batch']! as Map).cast<String, dynamic>())).input(),
+      containerImage: map['containerImage'] == null ? null : (TaskNotebookInfrastructureSpecContainerImage.fromMap((map['containerImage']! as Map).cast<String, dynamic>())).input(),
+      vpcNetwork: map['vpcNetwork'] == null ? null : (TaskNotebookInfrastructureSpecVpcNetwork.fromMap((map['vpcNetwork']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

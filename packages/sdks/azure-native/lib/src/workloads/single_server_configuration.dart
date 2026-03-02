@@ -62,11 +62,11 @@ class SingleServerConfiguration {
   factory SingleServerConfiguration.fromMap(Map<String, dynamic> map) {
     return SingleServerConfiguration(
       appResourceGroup: (map['appResourceGroup'] as String).input(),
-      customResourceNames: map['customResourceNames'] == null ? null : (SingleServerFullResourceNames.fromMap((map['customResourceNames'] as Map).cast<String, dynamic>())).input(),
-      databaseType: map['databaseType'] == null ? null : (map['databaseType'] as String).input(),
-      dbDiskConfiguration: map['dbDiskConfiguration'] == null ? null : (DiskConfiguration.fromMap((map['dbDiskConfiguration'] as Map).cast<String, dynamic>())).input(),
+      customResourceNames: map['customResourceNames'] == null ? null : (SingleServerFullResourceNames.fromMap((map['customResourceNames']! as Map).cast<String, dynamic>())).input(),
+      databaseType: map['databaseType'] == null ? null : (map['databaseType']! as String).input(),
+      dbDiskConfiguration: map['dbDiskConfiguration'] == null ? null : (DiskConfiguration.fromMap((map['dbDiskConfiguration']! as Map).cast<String, dynamic>())).input(),
       deploymentType: (map['deploymentType'] as String).input(),
-      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input(),
       subnetId: (map['subnetId'] as String).input(),
       virtualMachineConfiguration: (VirtualMachineConfiguration.fromMap((map['virtualMachineConfiguration'] as Map).cast<String, dynamic>())).input(),
     );

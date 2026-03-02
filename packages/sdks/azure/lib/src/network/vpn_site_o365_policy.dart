@@ -21,7 +21,7 @@ class VpnSiteO365Policy {
 
   factory VpnSiteO365Policy.fromMap(Map<String, dynamic> map) {
     return VpnSiteO365Policy(
-      trafficCategory: map['trafficCategory'] == null ? null : (VpnSiteO365PolicyTrafficCategory.fromMap((map['trafficCategory'] as Map).cast<String, dynamic>())).input(),
+      trafficCategory: map['trafficCategory'] == null ? null : (VpnSiteO365PolicyTrafficCategory.fromMap((map['trafficCategory']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

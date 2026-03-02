@@ -28,8 +28,8 @@ class WorkloadMetadataConfigContainerV1beta1 {
 
   factory WorkloadMetadataConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return WorkloadMetadataConfigContainerV1beta1(
-      mode: map['mode'] == null ? null : (WorkloadMetadataConfigModeContainerV1beta1.fromValue(map['mode'] as String)).input(),
-      nodeMetadata: map['nodeMetadata'] == null ? null : (WorkloadMetadataConfigNodeMetadata.fromValue(map['nodeMetadata'] as String)).input(),
+      mode: map['mode'] == null ? null : (WorkloadMetadataConfigModeContainerV1beta1.fromValue(map['mode']! as String)).input(),
+      nodeMetadata: map['nodeMetadata'] == null ? null : (WorkloadMetadataConfigNodeMetadata.fromValue(map['nodeMetadata']! as String)).input(),
     );
   }
 }

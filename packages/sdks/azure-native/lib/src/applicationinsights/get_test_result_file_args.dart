@@ -54,11 +54,11 @@ class GetTestResultFileArgs {
 
   factory GetTestResultFileArgs.fromMap(Map<String, dynamic> map) {
     return GetTestResultFileArgs(
-      continuationToken: map['continuationToken'] == null ? null : (map['continuationToken'] as String).input(),
+      continuationToken: map['continuationToken'] == null ? null : (map['continuationToken']! as String).input(),
       downloadAs: (map['downloadAs'] as String).input(),
       geoLocationId: (map['geoLocationId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      testSuccessfulCriteria: map['testSuccessfulCriteria'] == null ? null : (map['testSuccessfulCriteria'] as bool).input(),
+      testSuccessfulCriteria: map['testSuccessfulCriteria'] == null ? null : (map['testSuccessfulCriteria']! as bool).input(),
       timeStamp: (map['timeStamp'] as int).input(),
       webTestName: (map['webTestName'] as String).input(),
     );

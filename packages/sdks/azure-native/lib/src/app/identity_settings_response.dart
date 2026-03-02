@@ -27,7 +27,7 @@ class IdentitySettingsResponse {
   factory IdentitySettingsResponse.fromMap(Map<String, dynamic> map) {
     return IdentitySettingsResponse(
       identity: (map['identity'] as String).input(),
-      lifecycle: map['lifecycle'] == null ? null : (map['lifecycle'] as String).input(),
+      lifecycle: map['lifecycle'] == null ? null : (map['lifecycle']! as String).input(),
     );
   }
 }

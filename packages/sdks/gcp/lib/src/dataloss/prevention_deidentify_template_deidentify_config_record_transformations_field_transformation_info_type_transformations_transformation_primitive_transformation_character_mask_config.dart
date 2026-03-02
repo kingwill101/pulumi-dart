@@ -41,10 +41,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig(
-      charactersToIgnores: map['charactersToIgnores'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore>(map['charactersToIgnores'], (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maskingCharacter: map['maskingCharacter'] == null ? null : (map['maskingCharacter'] as String).input(),
-      numberToMask: map['numberToMask'] == null ? null : (map['numberToMask'] as int).input(),
-      reverseOrder: map['reverseOrder'] == null ? null : (map['reverseOrder'] as bool).input(),
+      charactersToIgnores: map['charactersToIgnores'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore>(map['charactersToIgnores']!, (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maskingCharacter: map['maskingCharacter'] == null ? null : (map['maskingCharacter']! as String).input(),
+      numberToMask: map['numberToMask'] == null ? null : (map['numberToMask']! as int).input(),
+      reverseOrder: map['reverseOrder'] == null ? null : (map['reverseOrder']! as bool).input(),
     );
   }
 }

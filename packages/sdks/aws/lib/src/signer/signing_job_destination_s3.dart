@@ -25,7 +25,7 @@ class SigningJobDestinationS3 {
   factory SigningJobDestinationS3.fromMap(Map<String, dynamic> map) {
     return SigningJobDestinationS3(
       bucket: (map['bucket'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

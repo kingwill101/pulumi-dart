@@ -25,8 +25,8 @@ class InstanceInterfaceIpv4 {
 
   factory InstanceInterfaceIpv4.fromMap(Map<String, dynamic> map) {
     return InstanceInterfaceIpv4(
-      nat11: map['nat11'] == null ? null : (map['nat11'] as String).input(),
-      vpc: map['vpc'] == null ? null : (map['vpc'] as String).input(),
+      nat11: map['nat11'] == null ? null : (map['nat11']! as String).input(),
+      vpc: map['vpc'] == null ? null : (map['vpc']! as String).input(),
     );
   }
 }

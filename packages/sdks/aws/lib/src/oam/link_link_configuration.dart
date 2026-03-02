@@ -27,8 +27,8 @@ class LinkLinkConfiguration {
 
   factory LinkLinkConfiguration.fromMap(Map<String, dynamic> map) {
     return LinkLinkConfiguration(
-      logGroupConfiguration: map['logGroupConfiguration'] == null ? null : (LinkLinkConfigurationLogGroupConfiguration.fromMap((map['logGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
-      metricConfiguration: map['metricConfiguration'] == null ? null : (LinkLinkConfigurationMetricConfiguration.fromMap((map['metricConfiguration'] as Map).cast<String, dynamic>())).input(),
+      logGroupConfiguration: map['logGroupConfiguration'] == null ? null : ((LinkLinkConfigurationLogGroupConfiguration.fromMap((map['logGroupConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      metricConfiguration: map['metricConfiguration'] == null ? null : ((LinkLinkConfigurationMetricConfiguration.fromMap((map['metricConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

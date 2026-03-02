@@ -74,16 +74,16 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      customRules: map['customRules'] == null ? null : (CustomRuleList.fromMap((map['customRules'] as Map).cast<String, dynamic>())).input(),
-      extendedProperties: map['extendedProperties'] == null ? null : ((map['extendedProperties'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedRules: map['managedRules'] == null ? null : (ManagedRuleSetList.fromMap((map['managedRules'] as Map).cast<String, dynamic>())).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      policySettings: map['policySettings'] == null ? null : (PolicySettings.fromMap((map['policySettings'] as Map).cast<String, dynamic>())).input(),
-      rateLimitRules: map['rateLimitRules'] == null ? null : (RateLimitRuleList.fromMap((map['rateLimitRules'] as Map).cast<String, dynamic>())).input(),
+      customRules: map['customRules'] == null ? null : (CustomRuleList.fromMap((map['customRules']! as Map).cast<String, dynamic>())).input(),
+      extendedProperties: map['extendedProperties'] == null ? null : ((map['extendedProperties']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedRules: map['managedRules'] == null ? null : (ManagedRuleSetList.fromMap((map['managedRules']! as Map).cast<String, dynamic>())).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      policySettings: map['policySettings'] == null ? null : (PolicySettings.fromMap((map['policySettings']! as Map).cast<String, dynamic>())).input(),
+      rateLimitRules: map['rateLimitRules'] == null ? null : (RateLimitRuleList.fromMap((map['rateLimitRules']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

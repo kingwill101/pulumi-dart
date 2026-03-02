@@ -35,7 +35,7 @@ class TagArgs {
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
       sourceImage: (map['sourceImage'] as String).input(),
-      tagTriggers: map['tagTriggers'] == null ? null : ((map['tagTriggers'] as List).cast<String>()).input(),
+      tagTriggers: map['tagTriggers'] == null ? null : ((map['tagTriggers']! as List).cast<String>()).input(),
       targetImage: (map['targetImage'] as String).input(),
     );
   }

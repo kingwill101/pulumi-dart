@@ -22,7 +22,7 @@ class ListKeyByAutomationAccountResult {
 
   factory ListKeyByAutomationAccountResult.fromMap(Map<String, dynamic> map) {
     return ListKeyByAutomationAccountResult(
-      keys: map['keys'] == null ? null : pulumi.Input.decodeList<KeyResponse>(map['keys'], (value) => KeyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      keys: map['keys'] == null ? null : pulumi.Input.decodeList<KeyResponse>(map['keys']!, (value) => KeyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

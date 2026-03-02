@@ -57,13 +57,13 @@ class ODataSource {
 
   factory ODataSource.fromMap(Map<String, dynamic> map) {
     return ODataSource(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      httpRequestTimeout: map['httpRequestTimeout'] == null ? null : (map['httpRequestTimeout']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      query: map['query'] == null ? null : (map['query']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      httpRequestTimeout: map['httpRequestTimeout'] == null ? null : (map['httpRequestTimeout']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      query: map['query'] == null ? null : (map['query']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
       type: (map['type'] as String).input(),
     );
   }

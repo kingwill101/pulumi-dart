@@ -31,9 +31,9 @@ class TmpfsResponse {
 
   factory TmpfsResponse.fromMap(Map<String, dynamic> map) {
     return TmpfsResponse(
-      containerPath: map['containerPath'] == null ? null : (map['containerPath'] as String).input(),
-      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions'] as List).cast<String>()).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      containerPath: map['containerPath'] == null ? null : (map['containerPath']! as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions']! as List).cast<String>()).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

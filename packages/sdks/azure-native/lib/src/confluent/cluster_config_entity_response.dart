@@ -21,7 +21,7 @@ class ClusterConfigEntityResponse {
 
   factory ClusterConfigEntityResponse.fromMap(Map<String, dynamic> map) {
     return ClusterConfigEntityResponse(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

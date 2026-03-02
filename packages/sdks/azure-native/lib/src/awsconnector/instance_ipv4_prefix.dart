@@ -21,7 +21,7 @@ class InstanceIpv4Prefix {
 
   factory InstanceIpv4Prefix.fromMap(Map<String, dynamic> map) {
     return InstanceIpv4Prefix(
-      ipv4Prefix: map['ipv4Prefix'] == null ? null : (map['ipv4Prefix'] as String).input(),
+      ipv4Prefix: map['ipv4Prefix'] == null ? null : (map['ipv4Prefix']! as String).input(),
     );
   }
 }

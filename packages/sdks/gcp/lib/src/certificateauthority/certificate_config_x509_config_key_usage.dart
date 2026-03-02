@@ -38,7 +38,7 @@ class CertificateConfigX509ConfigKeyUsage {
     return CertificateConfigX509ConfigKeyUsage(
       baseKeyUsage: (CertificateConfigX509ConfigKeyUsageBaseKeyUsage.fromMap((map['baseKeyUsage'] as Map).cast<String, dynamic>())).input(),
       extendedKeyUsage: (CertificateConfigX509ConfigKeyUsageExtendedKeyUsage.fromMap((map['extendedKeyUsage'] as Map).cast<String, dynamic>())).input(),
-      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null ? null : (pulumi.Input.decodeList<CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage>(map['unknownExtendedKeyUsages'], (value) => CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null ? null : (pulumi.Input.decodeList<CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage>(map['unknownExtendedKeyUsages']!, (value) => CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

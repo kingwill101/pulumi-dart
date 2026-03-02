@@ -46,10 +46,10 @@ class ApiHubInstanceConfig {
 
   factory ApiHubInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ApiHubInstanceConfig(
-      cmekKeyName: map['cmekKeyName'] == null ? null : (map['cmekKeyName'] as String).input(),
-      disableSearch: map['disableSearch'] == null ? null : (map['disableSearch'] as bool).input(),
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
-      vertexLocation: map['vertexLocation'] == null ? null : (map['vertexLocation'] as String).input(),
+      cmekKeyName: map['cmekKeyName'] == null ? null : (map['cmekKeyName']! as String).input(),
+      disableSearch: map['disableSearch'] == null ? null : (map['disableSearch']! as bool).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType']! as String).input(),
+      vertexLocation: map['vertexLocation'] == null ? null : (map['vertexLocation']! as String).input(),
     );
   }
 }

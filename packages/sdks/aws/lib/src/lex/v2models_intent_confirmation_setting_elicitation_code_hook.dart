@@ -25,8 +25,8 @@ class V2modelsIntentConfirmationSettingElicitationCodeHook {
 
   factory V2modelsIntentConfirmationSettingElicitationCodeHook.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingElicitationCodeHook(
-      enableCodeHookInvocation: map['enableCodeHookInvocation'] == null ? null : (map['enableCodeHookInvocation'] as bool).input(),
-      invocationLabel: map['invocationLabel'] == null ? null : (map['invocationLabel'] as String).input(),
+      enableCodeHookInvocation: map['enableCodeHookInvocation'] == null ? null : ((map['enableCodeHookInvocation'] as bool).input()).input(),
+      invocationLabel: map['invocationLabel'] == null ? null : ((map['invocationLabel'] as String).input()).input(),
     );
   }
 }

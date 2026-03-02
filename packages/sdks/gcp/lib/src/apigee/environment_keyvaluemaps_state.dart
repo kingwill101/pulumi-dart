@@ -27,8 +27,8 @@ class EnvironmentKeyvaluemapsState {
 
   factory EnvironmentKeyvaluemapsState.fromMap(Map<String, dynamic> map) {
     return EnvironmentKeyvaluemapsState(
-      envId: map['envId'] == null ? null : (map['envId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      envId: map['envId'] == null ? null : (map['envId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

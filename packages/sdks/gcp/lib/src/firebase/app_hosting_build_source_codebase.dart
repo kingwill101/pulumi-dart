@@ -69,14 +69,14 @@ class AppHostingBuildSourceCodebase {
 
   factory AppHostingBuildSourceCodebase.fromMap(Map<String, dynamic> map) {
     return AppHostingBuildSourceCodebase(
-      authors: map['authors'] == null ? null : (pulumi.Input.decodeList<AppHostingBuildSourceCodebaseAuthor>(map['authors'], (value) => AppHostingBuildSourceCodebaseAuthor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      commit: map['commit'] == null ? null : (map['commit'] as String).input(),
-      commitMessage: map['commitMessage'] == null ? null : (map['commitMessage'] as String).input(),
-      commitTime: map['commitTime'] == null ? null : (map['commitTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      hash: map['hash'] == null ? null : (map['hash'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      authors: map['authors'] == null ? null : (pulumi.Input.decodeList<AppHostingBuildSourceCodebaseAuthor>(map['authors']!, (value) => AppHostingBuildSourceCodebaseAuthor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      commit: map['commit'] == null ? null : (map['commit']! as String).input(),
+      commitMessage: map['commitMessage'] == null ? null : (map['commitMessage']! as String).input(),
+      commitTime: map['commitTime'] == null ? null : (map['commitTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      hash: map['hash'] == null ? null : (map['hash']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

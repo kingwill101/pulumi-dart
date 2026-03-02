@@ -38,10 +38,10 @@ class ParserConfigHealthcareV1beta1 {
 
   factory ParserConfigHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return ParserConfigHealthcareV1beta1(
-      allowNullHeader: map['allowNullHeader'] == null ? null : (map['allowNullHeader'] as bool).input(),
-      schema: map['schema'] == null ? null : (SchemaPackageHealthcareV1beta1.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
-      segmentTerminator: map['segmentTerminator'] == null ? null : (map['segmentTerminator'] as String).input(),
-      version: map['version'] == null ? null : (ParserConfigVersionHealthcareV1beta1.fromValue(map['version'] as String)).input(),
+      allowNullHeader: map['allowNullHeader'] == null ? null : (map['allowNullHeader']! as bool).input(),
+      schema: map['schema'] == null ? null : (SchemaPackageHealthcareV1beta1.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
+      segmentTerminator: map['segmentTerminator'] == null ? null : (map['segmentTerminator']! as String).input(),
+      version: map['version'] == null ? null : (ParserConfigVersionHealthcareV1beta1.fromValue(map['version']! as String)).input(),
     );
   }
 }

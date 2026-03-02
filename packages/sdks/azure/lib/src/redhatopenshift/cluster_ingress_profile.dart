@@ -30,8 +30,8 @@ class ClusterIngressProfile {
 
   factory ClusterIngressProfile.fromMap(Map<String, dynamic> map) {
     return ClusterIngressProfile(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       visibility: (map['visibility'] as String).input(),
     );
   }

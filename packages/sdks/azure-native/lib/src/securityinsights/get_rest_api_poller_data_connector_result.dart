@@ -102,20 +102,20 @@ class GetRestApiPollerDataConnectorResult {
 
   factory GetRestApiPollerDataConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetRestApiPollerDataConnectorResult(
-      addOnAttributes: map['addOnAttributes'] == null ? null : (map['addOnAttributes'] as Map).cast<String, String>(),
+      addOnAttributes: map['addOnAttributes'] == null ? null : (map['addOnAttributes']! as Map).cast<String, String>(),
       auth: AWSAuthModelResponse.fromMap((map['auth'] as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
       connectorDefinitionName: map['connectorDefinitionName'] as String,
-      dataType: map['dataType'] == null ? null : map['dataType'] as String,
-      dcrConfig: map['dcrConfig'] == null ? null : DCRConfigurationResponse.fromMap((map['dcrConfig'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      dataType: map['dataType'] == null ? null : map['dataType']! as String,
+      dcrConfig: map['dcrConfig'] == null ? null : DCRConfigurationResponse.fromMap((map['dcrConfig']! as Map).cast<String, dynamic>()),
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      isActive: map['isActive'] == null ? null : map['isActive'] as bool,
+      isActive: map['isActive'] == null ? null : map['isActive']! as bool,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      paging: map['paging'] == null ? null : RestApiPollerRequestPagingConfigResponse.fromMap((map['paging'] as Map).cast<String, dynamic>()),
+      paging: map['paging'] == null ? null : RestApiPollerRequestPagingConfigResponse.fromMap((map['paging']! as Map).cast<String, dynamic>()),
       request: RestApiPollerRequestConfigResponse.fromMap((map['request'] as Map).cast<String, dynamic>()),
-      response: map['response'] == null ? null : CcpResponseConfigResponse.fromMap((map['response'] as Map).cast<String, dynamic>()),
+      response: map['response'] == null ? null : CcpResponseConfigResponse.fromMap((map['response']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

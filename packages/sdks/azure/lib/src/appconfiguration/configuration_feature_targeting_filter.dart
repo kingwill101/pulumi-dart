@@ -32,8 +32,8 @@ class ConfigurationFeatureTargetingFilter {
   factory ConfigurationFeatureTargetingFilter.fromMap(Map<String, dynamic> map) {
     return ConfigurationFeatureTargetingFilter(
       defaultRolloutPercentage: (map['defaultRolloutPercentage'] as int).input(),
-      groups: map['groups'] == null ? null : (pulumi.Input.decodeList<ConfigurationFeatureTargetingFilterGroup>(map['groups'], (value) => ConfigurationFeatureTargetingFilterGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
+      groups: map['groups'] == null ? null : (pulumi.Input.decodeList<ConfigurationFeatureTargetingFilterGroup>(map['groups']!, (value) => ConfigurationFeatureTargetingFilterGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      users: map['users'] == null ? null : ((map['users']! as List).cast<String>()).input(),
     );
   }
 }

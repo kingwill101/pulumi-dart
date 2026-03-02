@@ -25,8 +25,8 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSetti
 
   factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettingsTemporalFilterSettings(
-      postFilterSharpening: map['postFilterSharpening'] == null ? null : (map['postFilterSharpening'] as String).input(),
-      strength: map['strength'] == null ? null : (map['strength'] as String).input(),
+      postFilterSharpening: map['postFilterSharpening'] == null ? null : ((map['postFilterSharpening'] as String).input()).input(),
+      strength: map['strength'] == null ? null : ((map['strength'] as String).input()).input(),
     );
   }
 }

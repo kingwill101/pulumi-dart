@@ -38,7 +38,7 @@ class GetCertificateAuthorityArgs {
       caPoolId: (map['caPoolId'] as String).input(),
       certificateAuthorityId: (map['certificateAuthorityId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

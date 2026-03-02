@@ -63,15 +63,15 @@ class ContainerAppProbe {
 
   factory ContainerAppProbe.fromMap(Map<String, dynamic> map) {
     return ContainerAppProbe(
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      httpGet: map['httpGet'] == null ? null : (ContainerAppProbeHttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
-      tcpSocket: map['tcpSocket'] == null ? null : (ContainerAppProbeTcpSocket.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
-      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds'] as double).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      httpGet: map['httpGet'] == null ? null : (ContainerAppProbeHttpGet.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as int).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (ContainerAppProbeTcpSocket.fromMap((map['tcpSocket']! as Map).cast<String, dynamic>())).input(),
+      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds']! as double).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

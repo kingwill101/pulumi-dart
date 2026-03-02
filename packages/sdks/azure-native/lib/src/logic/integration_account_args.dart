@@ -56,13 +56,13 @@ class IntegrationAccountArgs {
 
   factory IntegrationAccountArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountArgs(
-      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName'] as String).input(),
-      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : (ResourceReference.fromMap((map['integrationServiceEnvironment'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName']! as String).input(),
+      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : (ResourceReference.fromMap((map['integrationServiceEnvironment']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (IntegrationAccountSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (IntegrationAccountSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class AmountResponse {
 
   factory AmountResponse.fromMap(Map<String, dynamic> map) {
     return AmountResponse(
-      currency: map['currency'] == null ? null : (map['currency'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as double).input(),
+      currency: map['currency'] == null ? null : (map['currency']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as double).input(),
     );
   }
 }

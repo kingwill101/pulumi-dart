@@ -33,7 +33,7 @@ class GetNotificationArgs {
     return GetNotificationArgs(
       bucket: (map['bucket'] as String).input(),
       notification: (map['notification'] as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
     );
   }
 }

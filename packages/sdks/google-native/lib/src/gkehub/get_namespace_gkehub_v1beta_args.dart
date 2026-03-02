@@ -37,7 +37,7 @@ class GetNamespaceGkehubV1betaArgs {
     return GetNamespaceGkehubV1betaArgs(
       location: (map['location'] as String).input(),
       namespaceId: (map['namespaceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       scopeId: (map['scopeId'] as String).input(),
     );
   }

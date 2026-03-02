@@ -27,7 +27,7 @@ class ChannelNamespaceHandlerConfigsOnSubscribeIntegration {
   factory ChannelNamespaceHandlerConfigsOnSubscribeIntegration.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceHandlerConfigsOnSubscribeIntegration(
       dataSourceName: (map['dataSourceName'] as String).input(),
-      lambdaConfig: map['lambdaConfig'] == null ? null : (ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig.fromMap((map['lambdaConfig'] as Map).cast<String, dynamic>())).input(),
+      lambdaConfig: map['lambdaConfig'] == null ? null : ((ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig.fromMap((map['lambdaConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

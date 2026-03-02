@@ -31,9 +31,9 @@ class WorkgroupEndpoint {
 
   factory WorkgroupEndpoint.fromMap(Map<String, dynamic> map) {
     return WorkgroupEndpoint(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      vpcEndpoints: map['vpcEndpoints'] == null ? null : (pulumi.Input.decodeList<WorkgroupEndpointVpcEndpoint>(map['vpcEndpoints'], (value) => WorkgroupEndpointVpcEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      address: map['address'] == null ? null : ((map['address'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      vpcEndpoints: map['vpcEndpoints'] == null ? null : ((pulumi.Input.decodeList<WorkgroupEndpointVpcEndpoint>(map['vpcEndpoints']!, (value) => WorkgroupEndpointVpcEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

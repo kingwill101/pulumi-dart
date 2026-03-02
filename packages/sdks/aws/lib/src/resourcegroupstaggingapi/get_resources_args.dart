@@ -50,12 +50,12 @@ class GetResourcesArgs {
 
   factory GetResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetResourcesArgs(
-      excludeCompliantResources: map['excludeCompliantResources'] == null ? null : (map['excludeCompliantResources'] as bool).input(),
-      includeComplianceDetails: map['includeComplianceDetails'] == null ? null : (map['includeComplianceDetails'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceArnLists: map['resourceArnLists'] == null ? null : ((map['resourceArnLists'] as List).cast<String>()).input(),
-      resourceTypeFilters: map['resourceTypeFilters'] == null ? null : ((map['resourceTypeFilters'] as List).cast<String>()).input(),
-      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<GetResourcesTagFilter>(map['tagFilters'], (value) => GetResourcesTagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludeCompliantResources: map['excludeCompliantResources'] == null ? null : ((map['excludeCompliantResources'] as bool).input()).input(),
+      includeComplianceDetails: map['includeComplianceDetails'] == null ? null : ((map['includeComplianceDetails'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceArnLists: map['resourceArnLists'] == null ? null : (((map['resourceArnLists'] as List).cast<String>()).input()).input(),
+      resourceTypeFilters: map['resourceTypeFilters'] == null ? null : (((map['resourceTypeFilters'] as List).cast<String>()).input()).input(),
+      tagFilters: map['tagFilters'] == null ? null : ((pulumi.Input.decodeList<GetResourcesTagFilter>(map['tagFilters']!, (value) => GetResourcesTagFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

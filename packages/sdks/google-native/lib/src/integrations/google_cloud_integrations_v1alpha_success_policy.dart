@@ -22,7 +22,7 @@ class GoogleCloudIntegrationsV1alphaSuccessPolicy {
 
   factory GoogleCloudIntegrationsV1alphaSuccessPolicy.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaSuccessPolicy(
-      finalState: map['finalState'] == null ? null : (GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState.fromValue(map['finalState'] as String)).input(),
+      finalState: map['finalState'] == null ? null : (GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState.fromValue(map['finalState']! as String)).input(),
     );
   }
 }

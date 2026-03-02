@@ -47,12 +47,12 @@ class StorageProperties {
 
   factory StorageProperties.fromMap(Map<String, dynamic> map) {
     return StorageProperties(
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
-      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType'] as String).input(),
-      offeringType: map['offeringType'] == null ? null : (map['offeringType'] as String).input(),
-      storageBillingProperties: map['storageBillingProperties'] == null ? null : (StorageBillingProperties.fromMap((map['storageBillingProperties'] as Map).cast<String, dynamic>())).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
-      workloadType: map['workloadType'] == null ? null : (map['workloadType'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
+      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType']! as String).input(),
+      offeringType: map['offeringType'] == null ? null : (map['offeringType']! as String).input(),
+      storageBillingProperties: map['storageBillingProperties'] == null ? null : (StorageBillingProperties.fromMap((map['storageBillingProperties']! as Map).cast<String, dynamic>())).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
+      workloadType: map['workloadType'] == null ? null : (map['workloadType']! as String).input(),
     );
   }
 }

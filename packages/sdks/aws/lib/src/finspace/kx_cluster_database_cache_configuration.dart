@@ -26,7 +26,7 @@ class KxClusterDatabaseCacheConfiguration {
   factory KxClusterDatabaseCacheConfiguration.fromMap(Map<String, dynamic> map) {
     return KxClusterDatabaseCacheConfiguration(
       cacheType: (map['cacheType'] as String).input(),
-      dbPaths: map['dbPaths'] == null ? null : ((map['dbPaths'] as List).cast<String>()).input(),
+      dbPaths: map['dbPaths'] == null ? null : (((map['dbPaths'] as List).cast<String>()).input()).input(),
     );
   }
 }

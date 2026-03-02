@@ -40,7 +40,7 @@ class GetAvailabilityGroupListenerArgs {
   factory GetAvailabilityGroupListenerArgs.fromMap(Map<String, dynamic> map) {
     return GetAvailabilityGroupListenerArgs(
       availabilityGroupListenerName: (map['availabilityGroupListenerName'] as String).input(),
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sqlVirtualMachineGroupName: (map['sqlVirtualMachineGroupName'] as String).input(),
     );

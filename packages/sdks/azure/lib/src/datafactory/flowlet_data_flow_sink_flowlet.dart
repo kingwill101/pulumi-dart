@@ -30,9 +30,9 @@ class FlowletDataFlowSinkFlowlet {
 
   factory FlowletDataFlowSinkFlowlet.fromMap(Map<String, dynamic> map) {
     return FlowletDataFlowSinkFlowlet(
-      datasetParameters: map['datasetParameters'] == null ? null : (map['datasetParameters'] as String).input(),
+      datasetParameters: map['datasetParameters'] == null ? null : (map['datasetParameters']! as String).input(),
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

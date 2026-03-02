@@ -82,19 +82,19 @@ class AwsEc2VolumeProperties {
 
   factory AwsEc2VolumeProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2VolumeProperties(
-      autoEnableIO: map['autoEnableIO'] == null ? null : (map['autoEnableIO'] as bool).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      multiAttachEnabled: map['multiAttachEnabled'] == null ? null : (map['multiAttachEnabled'] as bool).input(),
-      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
-      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
+      autoEnableIO: map['autoEnableIO'] == null ? null : (map['autoEnableIO']! as bool).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
+      iops: map['iops'] == null ? null : (map['iops']! as int).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      multiAttachEnabled: map['multiAttachEnabled'] == null ? null : (map['multiAttachEnabled']! as bool).input(),
+      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as String).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class IngestionPolicyPropertiesFormat {
 
   factory IngestionPolicyPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return IngestionPolicyPropertiesFormat(
-      ingestionSources: map['ingestionSources'] == null ? null : (pulumi.Input.decodeList<IngestionSourcesPropertiesFormat>(map['ingestionSources'], (value) => IngestionSourcesPropertiesFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingestionType: map['ingestionType'] == null ? null : (map['ingestionType'] as String).input(),
+      ingestionSources: map['ingestionSources'] == null ? null : (pulumi.Input.decodeList<IngestionSourcesPropertiesFormat>(map['ingestionSources']!, (value) => IngestionSourcesPropertiesFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingestionType: map['ingestionType'] == null ? null : (map['ingestionType']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class LoadBalancerBackendAddressProperties {
 
   factory LoadBalancerBackendAddressProperties.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressProperties(
-      adminState: map['adminState'] == null ? null : (map['adminState'] as String).input(),
-      networkInterfaceIPConfiguration: map['networkInterfaceIPConfiguration'] == null ? null : (IPConfigurationArmReference.fromMap((map['networkInterfaceIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      adminState: map['adminState'] == null ? null : (map['adminState']! as String).input(),
+      networkInterfaceIPConfiguration: map['networkInterfaceIPConfiguration'] == null ? null : (IPConfigurationArmReference.fromMap((map['networkInterfaceIPConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

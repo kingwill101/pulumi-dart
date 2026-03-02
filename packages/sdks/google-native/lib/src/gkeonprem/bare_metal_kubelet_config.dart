@@ -31,9 +31,9 @@ class BareMetalKubeletConfig {
 
   factory BareMetalKubeletConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalKubeletConfig(
-      registryBurst: map['registryBurst'] == null ? null : (map['registryBurst'] as int).input(),
-      registryPullQps: map['registryPullQps'] == null ? null : (map['registryPullQps'] as int).input(),
-      serializeImagePullsDisabled: map['serializeImagePullsDisabled'] == null ? null : (map['serializeImagePullsDisabled'] as bool).input(),
+      registryBurst: map['registryBurst'] == null ? null : (map['registryBurst']! as int).input(),
+      registryPullQps: map['registryPullQps'] == null ? null : (map['registryPullQps']! as int).input(),
+      serializeImagePullsDisabled: map['serializeImagePullsDisabled'] == null ? null : (map['serializeImagePullsDisabled']! as bool).input(),
     );
   }
 }

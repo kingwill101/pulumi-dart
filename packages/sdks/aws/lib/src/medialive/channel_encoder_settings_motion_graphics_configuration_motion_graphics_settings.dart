@@ -20,7 +20,7 @@ class ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings {
 
   factory ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings(
-      htmlMotionGraphicsSettings: map['htmlMotionGraphicsSettings'] == null ? null : ((map['htmlMotionGraphicsSettings'] as Map).cast<String, dynamic>()).input(),
+      htmlMotionGraphicsSettings: map['htmlMotionGraphicsSettings'] == null ? null : (((map['htmlMotionGraphicsSettings'] as Map).cast<String, dynamic>()).input()).input(),
     );
   }
 }

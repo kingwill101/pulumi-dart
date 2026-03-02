@@ -65,7 +65,7 @@ class GetCertificateMapResult {
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       updateTime: map['updateTime'] as String,
     );

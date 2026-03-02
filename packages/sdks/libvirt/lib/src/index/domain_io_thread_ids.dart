@@ -21,7 +21,7 @@ class DomainIoThreadIDs {
 
   factory DomainIoThreadIDs.fromMap(Map<String, dynamic> map) {
     return DomainIoThreadIDs(
-      ioThreads: map['ioThreads'] == null ? null : (pulumi.Input.decodeList<DomainIoThreadIDsIoThread>(map['ioThreads'], (value) => DomainIoThreadIDsIoThread.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ioThreads: map['ioThreads'] == null ? null : (pulumi.Input.decodeList<DomainIoThreadIDsIoThread>(map['ioThreads']!, (value) => DomainIoThreadIDsIoThread.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

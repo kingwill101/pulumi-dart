@@ -53,11 +53,11 @@ class Hl7StoreIamBindingState {
 
   factory Hl7StoreIamBindingState.fromMap(Map<String, dynamic> map) {
     return Hl7StoreIamBindingState(
-      condition: map['condition'] == null ? null : (Hl7StoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      hl7V2StoreId: map['hl7V2StoreId'] == null ? null : (map['hl7V2StoreId'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (Hl7StoreIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      hl7V2StoreId: map['hl7V2StoreId'] == null ? null : (map['hl7V2StoreId']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

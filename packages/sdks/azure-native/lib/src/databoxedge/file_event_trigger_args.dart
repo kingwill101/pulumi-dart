@@ -57,10 +57,10 @@ class FileEventTriggerArgs {
 
   factory FileEventTriggerArgs.fromMap(Map<String, dynamic> map) {
     return FileEventTriggerArgs(
-      customContextTag: map['customContextTag'] == null ? null : (map['customContextTag'] as String).input(),
+      customContextTag: map['customContextTag'] == null ? null : (map['customContextTag']! as String).input(),
       deviceName: (map['deviceName'] as String).input(),
       kind: (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sinkInfo: (RoleSinkInfo.fromMap((map['sinkInfo'] as Map).cast<String, dynamic>())).input(),
       sourceInfo: (FileSourceInfo.fromMap((map['sourceInfo'] as Map).cast<String, dynamic>())).input(),

@@ -50,10 +50,10 @@ class ImageArgs {
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
       catalogName: (map['catalogName'] as String).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
-      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary'] as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
+      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

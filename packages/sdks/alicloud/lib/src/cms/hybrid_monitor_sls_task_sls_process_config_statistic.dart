@@ -42,11 +42,11 @@ class HybridMonitorSlsTaskSlsProcessConfigStatistic {
 
   factory HybridMonitorSlsTaskSlsProcessConfigStatistic.fromMap(Map<String, dynamic> map) {
     return HybridMonitorSlsTaskSlsProcessConfigStatistic(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      function: map['function'] == null ? null : (map['function'] as String).input(),
-      parameterOne: map['parameterOne'] == null ? null : (map['parameterOne'] as String).input(),
-      parameterTwo: map['parameterTwo'] == null ? null : (map['parameterTwo'] as String).input(),
-      slsKeyName: map['slsKeyName'] == null ? null : (map['slsKeyName'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      function: map['function'] == null ? null : (map['function']! as String).input(),
+      parameterOne: map['parameterOne'] == null ? null : (map['parameterOne']! as String).input(),
+      parameterTwo: map['parameterTwo'] == null ? null : (map['parameterTwo']! as String).input(),
+      slsKeyName: map['slsKeyName'] == null ? null : (map['slsKeyName']! as String).input(),
     );
   }
 }

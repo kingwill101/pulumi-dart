@@ -47,12 +47,12 @@ class A2APolicyDetailsResponse {
 
   factory A2APolicyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2APolicyDetailsResponse(
-      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : (map['appConsistentFrequencyInMinutes'] as int).input(),
-      crashConsistentFrequencyInMinutes: map['crashConsistentFrequencyInMinutes'] == null ? null : (map['crashConsistentFrequencyInMinutes'] as int).input(),
+      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : (map['appConsistentFrequencyInMinutes']! as int).input(),
+      crashConsistentFrequencyInMinutes: map['crashConsistentFrequencyInMinutes'] == null ? null : (map['crashConsistentFrequencyInMinutes']! as int).input(),
       instanceType: (map['instanceType'] as String).input(),
-      multiVmSyncStatus: map['multiVmSyncStatus'] == null ? null : (map['multiVmSyncStatus'] as String).input(),
-      recoveryPointHistory: map['recoveryPointHistory'] == null ? null : (map['recoveryPointHistory'] as int).input(),
-      recoveryPointThresholdInMinutes: map['recoveryPointThresholdInMinutes'] == null ? null : (map['recoveryPointThresholdInMinutes'] as int).input(),
+      multiVmSyncStatus: map['multiVmSyncStatus'] == null ? null : (map['multiVmSyncStatus']! as String).input(),
+      recoveryPointHistory: map['recoveryPointHistory'] == null ? null : (map['recoveryPointHistory']! as int).input(),
+      recoveryPointThresholdInMinutes: map['recoveryPointThresholdInMinutes'] == null ? null : (map['recoveryPointThresholdInMinutes']! as int).input(),
     );
   }
 }

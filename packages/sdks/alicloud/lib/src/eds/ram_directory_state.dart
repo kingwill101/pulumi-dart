@@ -46,12 +46,12 @@ class RamDirectoryState {
 
   factory RamDirectoryState.fromMap(Map<String, dynamic> map) {
     return RamDirectoryState(
-      desktopAccessType: map['desktopAccessType'] == null ? null : (map['desktopAccessType'] as String).input(),
-      enableAdminAccess: map['enableAdminAccess'] == null ? null : (map['enableAdminAccess'] as bool).input(),
-      enableInternetAccess: map['enableInternetAccess'] == null ? null : (map['enableInternetAccess'] as bool).input(),
-      ramDirectoryName: map['ramDirectoryName'] == null ? null : (map['ramDirectoryName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
+      desktopAccessType: map['desktopAccessType'] == null ? null : (map['desktopAccessType']! as String).input(),
+      enableAdminAccess: map['enableAdminAccess'] == null ? null : (map['enableAdminAccess']! as bool).input(),
+      enableInternetAccess: map['enableInternetAccess'] == null ? null : (map['enableInternetAccess']! as bool).input(),
+      ramDirectoryName: map['ramDirectoryName'] == null ? null : (map['ramDirectoryName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds']! as List).cast<String>()).input(),
     );
   }
 }

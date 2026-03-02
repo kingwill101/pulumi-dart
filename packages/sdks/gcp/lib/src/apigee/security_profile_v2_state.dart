@@ -55,13 +55,13 @@ class SecurityProfileV2State {
 
   factory SecurityProfileV2State.fromMap(Map<String, dynamic> map) {
     return SecurityProfileV2State(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      profileAssessmentConfigs: map['profileAssessmentConfigs'] == null ? null : (pulumi.Input.decodeList<SecurityProfileV2ProfileAssessmentConfig>(map['profileAssessmentConfigs'], (value) => SecurityProfileV2ProfileAssessmentConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      profileAssessmentConfigs: map['profileAssessmentConfigs'] == null ? null : (pulumi.Input.decodeList<SecurityProfileV2ProfileAssessmentConfig>(map['profileAssessmentConfigs']!, (value) => SecurityProfileV2ProfileAssessmentConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

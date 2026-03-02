@@ -31,9 +31,9 @@ class KeyVaultLastAccessStatusContractPropertiesResponse {
 
   factory KeyVaultLastAccessStatusContractPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultLastAccessStatusContractPropertiesResponse(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      timeStampUtc: map['timeStampUtc'] == null ? null : (map['timeStampUtc'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      timeStampUtc: map['timeStampUtc'] == null ? null : (map['timeStampUtc']! as String).input(),
     );
   }
 }

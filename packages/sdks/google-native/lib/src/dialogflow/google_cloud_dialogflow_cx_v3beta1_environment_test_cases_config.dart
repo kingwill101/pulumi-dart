@@ -31,9 +31,9 @@ class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig {
 
   factory GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig(
-      enableContinuousRun: map['enableContinuousRun'] == null ? null : (map['enableContinuousRun'] as bool).input(),
-      enablePredeploymentRun: map['enablePredeploymentRun'] == null ? null : (map['enablePredeploymentRun'] as bool).input(),
-      testCases: map['testCases'] == null ? null : ((map['testCases'] as List).cast<String>()).input(),
+      enableContinuousRun: map['enableContinuousRun'] == null ? null : (map['enableContinuousRun']! as bool).input(),
+      enablePredeploymentRun: map['enablePredeploymentRun'] == null ? null : (map['enablePredeploymentRun']! as bool).input(),
+      testCases: map['testCases'] == null ? null : ((map['testCases']! as List).cast<String>()).input(),
     );
   }
 }

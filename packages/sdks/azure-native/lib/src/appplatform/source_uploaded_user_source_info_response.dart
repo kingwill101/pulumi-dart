@@ -43,11 +43,11 @@ class SourceUploadedUserSourceInfoResponse {
 
   factory SourceUploadedUserSourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return SourceUploadedUserSourceInfoResponse(
-      artifactSelector: map['artifactSelector'] == null ? null : (map['artifactSelector'] as String).input(),
-      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      artifactSelector: map['artifactSelector'] == null ? null : (map['artifactSelector']! as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath']! as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

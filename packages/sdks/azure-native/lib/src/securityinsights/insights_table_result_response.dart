@@ -27,8 +27,8 @@ class InsightsTableResultResponse {
 
   factory InsightsTableResultResponse.fromMap(Map<String, dynamic> map) {
     return InsightsTableResultResponse(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<InsightsTableResultResponseColumns>(map['columns'], (value) => InsightsTableResultResponseColumns.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rows: map['rows'] == null ? null : ((map['rows'] as List).cast<List<String>>()).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<InsightsTableResultResponseColumns>(map['columns']!, (value) => InsightsTableResultResponseColumns.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rows: map['rows'] == null ? null : ((map['rows']! as List).cast<List<String>>()).input(),
     );
   }
 }

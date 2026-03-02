@@ -55,7 +55,7 @@ class GroupPropertiesResponse {
       assessments: ((map['assessments'] as List).cast<String>()).input(),
       createdTimestamp: (map['createdTimestamp'] as String).input(),
       groupStatus: (map['groupStatus'] as String).input(),
-      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType']! as String).input(),
       machineCount: (map['machineCount'] as int).input(),
       updatedTimestamp: (map['updatedTimestamp'] as String).input(),
     );

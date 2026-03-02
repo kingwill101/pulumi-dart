@@ -61,13 +61,13 @@ class PrivateStoreCollectionOfferArgs {
   factory PrivateStoreCollectionOfferArgs.fromMap(Map<String, dynamic> map) {
     return PrivateStoreCollectionOfferArgs(
       collectionId: (map['collectionId'] as String).input(),
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      iconFileUris: map['iconFileUris'] == null ? null : ((map['iconFileUris'] as Map).cast<String, String>()).input(),
-      offerId: map['offerId'] == null ? null : (map['offerId'] as String).input(),
-      plans: map['plans'] == null ? null : (pulumi.Input.decodeList<Plan>(map['plans'], (value) => Plan.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      iconFileUris: map['iconFileUris'] == null ? null : ((map['iconFileUris']! as Map).cast<String, String>()).input(),
+      offerId: map['offerId'] == null ? null : (map['offerId']! as String).input(),
+      plans: map['plans'] == null ? null : (pulumi.Input.decodeList<Plan>(map['plans']!, (value) => Plan.fromMap((value as Map).cast<String, dynamic>()))).input(),
       privateStoreId: (map['privateStoreId'] as String).input(),
-      specificPlanIdsLimitation: map['specificPlanIdsLimitation'] == null ? null : ((map['specificPlanIdsLimitation'] as List).cast<String>()).input(),
-      updateSuppressedDueIdempotence: map['updateSuppressedDueIdempotence'] == null ? null : (map['updateSuppressedDueIdempotence'] as bool).input(),
+      specificPlanIdsLimitation: map['specificPlanIdsLimitation'] == null ? null : ((map['specificPlanIdsLimitation']! as List).cast<String>()).input(),
+      updateSuppressedDueIdempotence: map['updateSuppressedDueIdempotence'] == null ? null : (map['updateSuppressedDueIdempotence']! as bool).input(),
     );
   }
 }

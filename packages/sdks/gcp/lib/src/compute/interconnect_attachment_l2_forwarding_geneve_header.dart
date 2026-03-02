@@ -20,7 +20,7 @@ class InterconnectAttachmentL2ForwardingGeneveHeader {
 
   factory InterconnectAttachmentL2ForwardingGeneveHeader.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentL2ForwardingGeneveHeader(
-      vni: map['vni'] == null ? null : (map['vni'] as int).input(),
+      vni: map['vni'] == null ? null : (map['vni']! as int).input(),
     );
   }
 }

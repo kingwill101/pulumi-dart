@@ -55,12 +55,12 @@ class SpringCloudJavaDeploymentArgs {
 
   factory SpringCloudJavaDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudJavaDeploymentArgs(
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      jvmOptions: map['jvmOptions'] == null ? null : (map['jvmOptions'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      quota: map['quota'] == null ? null : (SpringCloudJavaDeploymentQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      jvmOptions: map['jvmOptions'] == null ? null : (map['jvmOptions']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      quota: map['quota'] == null ? null : (SpringCloudJavaDeploymentQuota.fromMap((map['quota']! as Map).cast<String, dynamic>())).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
       springCloudAppId: (map['springCloudAppId'] as String).input(),
     );
   }

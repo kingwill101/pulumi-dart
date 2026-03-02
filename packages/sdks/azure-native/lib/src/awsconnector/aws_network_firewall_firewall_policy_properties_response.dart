@@ -48,12 +48,12 @@ class AwsNetworkFirewallFirewallPolicyPropertiesResponse {
 
   factory AwsNetworkFirewallFirewallPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsNetworkFirewallFirewallPolicyPropertiesResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      firewallPolicy: map['firewallPolicy'] == null ? null : (FirewallPolicyResponse.fromMap((map['firewallPolicy'] as Map).cast<String, dynamic>())).input(),
-      firewallPolicyArn: map['firewallPolicyArn'] == null ? null : (map['firewallPolicyArn'] as String).input(),
-      firewallPolicyId: map['firewallPolicyId'] == null ? null : (map['firewallPolicyId'] as String).input(),
-      firewallPolicyName: map['firewallPolicyName'] == null ? null : (map['firewallPolicyName'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      firewallPolicy: map['firewallPolicy'] == null ? null : (FirewallPolicyResponse.fromMap((map['firewallPolicy']! as Map).cast<String, dynamic>())).input(),
+      firewallPolicyArn: map['firewallPolicyArn'] == null ? null : (map['firewallPolicyArn']! as String).input(),
+      firewallPolicyId: map['firewallPolicyId'] == null ? null : (map['firewallPolicyId']! as String).input(),
+      firewallPolicyName: map['firewallPolicyName'] == null ? null : (map['firewallPolicyName']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

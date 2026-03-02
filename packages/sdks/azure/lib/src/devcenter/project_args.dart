@@ -60,14 +60,14 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       devCenterId: (map['devCenterId'] as String).input(),
-      identity: map['identity'] == null ? null : (ProjectIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maximumDevBoxesPerUser: map['maximumDevBoxesPerUser'] == null ? null : (map['maximumDevBoxesPerUser'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      identity: map['identity'] == null ? null : (ProjectIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maximumDevBoxesPerUser: map['maximumDevBoxesPerUser'] == null ? null : (map['maximumDevBoxesPerUser']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -38,9 +38,9 @@ class MonthlyRecurrence {
   factory MonthlyRecurrence.fromMap(Map<String, dynamic> map) {
     return MonthlyRecurrence(
       daysOfMonth: ((map['daysOfMonth'] as List).cast<int>()).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       recurrenceType: (map['recurrenceType'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

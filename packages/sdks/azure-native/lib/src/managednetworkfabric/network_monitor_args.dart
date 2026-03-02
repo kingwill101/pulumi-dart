@@ -45,11 +45,11 @@ class NetworkMonitorArgs {
 
   factory NetworkMonitorArgs.fromMap(Map<String, dynamic> map) {
     return NetworkMonitorArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkMonitorName: map['networkMonitorName'] == null ? null : (map['networkMonitorName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkMonitorName: map['networkMonitorName'] == null ? null : (map['networkMonitorName']! as String).input(),
       properties: (NetworkMonitorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

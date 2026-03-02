@@ -73,15 +73,15 @@ class GetSecurityStandardResult {
 
   factory GetSecurityStandardResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityStandardResult(
-      assessments: map['assessments'] == null ? null : pulumi.Input.decodeList<PartialAssessmentPropertiesResponse>(map['assessments'], (value) => PartialAssessmentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      assessments: map['assessments'] == null ? null : pulumi.Input.decodeList<PartialAssessmentPropertiesResponse>(map['assessments']!, (value) => PartialAssessmentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
-      cloudProviders: map['cloudProviders'] == null ? null : (map['cloudProviders'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      cloudProviders: map['cloudProviders'] == null ? null : (map['cloudProviders']! as List).cast<String>(),
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
-      metadata: map['metadata'] == null ? null : StandardMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      metadata: map['metadata'] == null ? null : StandardMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      policySetDefinitionId: map['policySetDefinitionId'] == null ? null : map['policySetDefinitionId'] as String,
+      policySetDefinitionId: map['policySetDefinitionId'] == null ? null : map['policySetDefinitionId']! as String,
       standardType: map['standardType'] as String,
       type: map['type'] as String,
     );

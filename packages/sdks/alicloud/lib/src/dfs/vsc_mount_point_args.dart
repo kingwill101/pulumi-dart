@@ -34,8 +34,8 @@ class VscMountPointArgs {
 
   factory VscMountPointArgs.fromMap(Map<String, dynamic> map) {
     return VscMountPointArgs(
-      aliasPrefix: map['aliasPrefix'] == null ? null : (map['aliasPrefix'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      aliasPrefix: map['aliasPrefix'] == null ? null : (map['aliasPrefix']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
     );
   }

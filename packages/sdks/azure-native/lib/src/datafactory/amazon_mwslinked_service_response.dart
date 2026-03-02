@@ -101,21 +101,21 @@ class AmazonMWSLinkedServiceResponse {
   factory AmazonMWSLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return AmazonMWSLinkedServiceResponse(
       accessKeyId: (map['accessKeyId']).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
       endpoint: (map['endpoint']).input(),
       marketplaceID: (map['marketplaceID']).input(),
-      mwsAuthToken: map['mwsAuthToken'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['mwsAuthToken'] as Map).cast<String, dynamic>())).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secretKey: map['secretKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['secretKey'] as Map).cast<String, dynamic>())).input(),
+      mwsAuthToken: map['mwsAuthToken'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['mwsAuthToken']! as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secretKey: map['secretKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['secretKey']! as Map).cast<String, dynamic>())).input(),
       sellerID: (map['sellerID']).input(),
       type: (map['type'] as String).input(),
-      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : (map['useEncryptedEndpoints']).input(),
-      useHostVerification: map['useHostVerification'] == null ? null : (map['useHostVerification']).input(),
-      usePeerVerification: map['usePeerVerification'] == null ? null : (map['usePeerVerification']).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : (map['useEncryptedEndpoints']!).input(),
+      useHostVerification: map['useHostVerification'] == null ? null : (map['useHostVerification']!).input(),
+      usePeerVerification: map['usePeerVerification'] == null ? null : (map['usePeerVerification']!).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

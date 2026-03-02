@@ -33,9 +33,9 @@ class BudgetFilterExpressionOrOr {
 
   factory BudgetFilterExpressionOrOr.fromMap(Map<String, dynamic> map) {
     return BudgetFilterExpressionOrOr(
-      costCategories: map['costCategories'] == null ? null : (BudgetFilterExpressionOrOrCostCategories.fromMap((map['costCategories'] as Map).cast<String, dynamic>())).input(),
-      dimensions: map['dimensions'] == null ? null : (BudgetFilterExpressionOrOrDimensions.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (BudgetFilterExpressionOrOrTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      costCategories: map['costCategories'] == null ? null : ((BudgetFilterExpressionOrOrCostCategories.fromMap((map['costCategories']! as Map).cast<String, dynamic>())).input()).input(),
+      dimensions: map['dimensions'] == null ? null : ((BudgetFilterExpressionOrOrDimensions.fromMap((map['dimensions']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : ((BudgetFilterExpressionOrOrTags.fromMap((map['tags']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

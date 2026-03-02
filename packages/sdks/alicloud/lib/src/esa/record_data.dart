@@ -93,20 +93,20 @@ class RecordData {
 
   factory RecordData.fromMap(Map<String, dynamic> map) {
     return RecordData(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as int).input(),
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      flag: map['flag'] == null ? null : (map['flag'] as int).input(),
-      keyTag: map['keyTag'] == null ? null : (map['keyTag'] as int).input(),
-      matchingType: map['matchingType'] == null ? null : (map['matchingType'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as int).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as int).input(),
-      usage: map['usage'] == null ? null : (map['usage'] as int).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as int).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
+      flag: map['flag'] == null ? null : (map['flag']! as int).input(),
+      keyTag: map['keyTag'] == null ? null : (map['keyTag']! as int).input(),
+      matchingType: map['matchingType'] == null ? null : (map['matchingType']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as int).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as int).input(),
+      usage: map['usage'] == null ? null : (map['usage']! as int).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

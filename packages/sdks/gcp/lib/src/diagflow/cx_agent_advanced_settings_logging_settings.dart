@@ -30,9 +30,9 @@ class CxAgentAdvancedSettingsLoggingSettings {
 
   factory CxAgentAdvancedSettingsLoggingSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentAdvancedSettingsLoggingSettings(
-      enableConsentBasedRedaction: map['enableConsentBasedRedaction'] == null ? null : (map['enableConsentBasedRedaction'] as bool).input(),
-      enableInteractionLogging: map['enableInteractionLogging'] == null ? null : (map['enableInteractionLogging'] as bool).input(),
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging'] as bool).input(),
+      enableConsentBasedRedaction: map['enableConsentBasedRedaction'] == null ? null : (map['enableConsentBasedRedaction']! as bool).input(),
+      enableInteractionLogging: map['enableInteractionLogging'] == null ? null : (map['enableInteractionLogging']! as bool).input(),
+      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging']! as bool).input(),
     );
   }
 }

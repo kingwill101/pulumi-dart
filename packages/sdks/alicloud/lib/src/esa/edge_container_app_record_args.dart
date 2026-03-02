@@ -36,7 +36,7 @@ class EdgeContainerAppRecordArgs {
     return EdgeContainerAppRecordArgs(
       appId: (map['appId'] as String).input(),
       recordName: (map['recordName'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
     );
   }
 }

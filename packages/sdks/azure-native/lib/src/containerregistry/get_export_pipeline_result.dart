@@ -70,10 +70,10 @@ class GetExportPipelineResult {
     return GetExportPipelineResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityPropertiesResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
+      identity: map['identity'] == null ? null : IdentityPropertiesResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      options: map['options'] == null ? null : (map['options'] as List).cast<String>(),
+      options: map['options'] == null ? null : (map['options']! as List).cast<String>(),
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       target: ExportPipelineTargetPropertiesResponse.fromMap((map['target'] as Map).cast<String, dynamic>()),

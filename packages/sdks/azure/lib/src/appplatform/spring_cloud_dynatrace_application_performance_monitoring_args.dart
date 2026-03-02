@@ -64,12 +64,12 @@ class SpringCloudDynatraceApplicationPerformanceMonitoringArgs {
 
   factory SpringCloudDynatraceApplicationPerformanceMonitoringArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudDynatraceApplicationPerformanceMonitoringArgs(
-      apiToken: map['apiToken'] == null ? null : (map['apiToken'] as String).input(),
-      apiUrl: map['apiUrl'] == null ? null : (map['apiUrl'] as String).input(),
+      apiToken: map['apiToken'] == null ? null : (map['apiToken']! as String).input(),
+      apiUrl: map['apiUrl'] == null ? null : (map['apiUrl']! as String).input(),
       connectionPoint: (map['connectionPoint'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       springCloudServiceId: (map['springCloudServiceId'] as String).input(),
       tenant: (map['tenant'] as String).input(),
       tenantToken: (map['tenantToken'] as String).input(),

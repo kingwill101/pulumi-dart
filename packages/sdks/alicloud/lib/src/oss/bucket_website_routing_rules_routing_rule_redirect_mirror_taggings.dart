@@ -21,7 +21,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings {
 
   factory BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings(
-      taggings: map['taggings'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging>(map['taggings'], (value) => BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      taggings: map['taggings'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging>(map['taggings']!, (value) => BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

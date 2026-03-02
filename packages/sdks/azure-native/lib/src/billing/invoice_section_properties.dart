@@ -41,11 +41,11 @@ class InvoiceSectionProperties {
 
   factory InvoiceSectionProperties.fromMap(Map<String, dynamic> map) {
     return InvoiceSectionProperties(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      reasonCode: map['reasonCode'] == null ? null : (map['reasonCode'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetCloud: map['targetCloud'] == null ? null : (map['targetCloud'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      reasonCode: map['reasonCode'] == null ? null : (map['reasonCode']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetCloud: map['targetCloud'] == null ? null : (map['targetCloud']! as String).input(),
     );
   }
 }

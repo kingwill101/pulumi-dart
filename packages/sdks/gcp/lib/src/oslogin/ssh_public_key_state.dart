@@ -41,11 +41,11 @@ class SshPublicKeyState {
 
   factory SshPublicKeyState.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyState(
-      expirationTimeUsec: map['expirationTimeUsec'] == null ? null : (map['expirationTimeUsec'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      expirationTimeUsec: map['expirationTimeUsec'] == null ? null : (map['expirationTimeUsec']! as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

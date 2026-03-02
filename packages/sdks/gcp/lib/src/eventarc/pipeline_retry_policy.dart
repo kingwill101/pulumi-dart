@@ -36,9 +36,9 @@ class PipelineRetryPolicy {
 
   factory PipelineRetryPolicy.fromMap(Map<String, dynamic> map) {
     return PipelineRetryPolicy(
-      maxAttempts: map['maxAttempts'] == null ? null : (map['maxAttempts'] as int).input(),
-      maxRetryDelay: map['maxRetryDelay'] == null ? null : (map['maxRetryDelay'] as String).input(),
-      minRetryDelay: map['minRetryDelay'] == null ? null : (map['minRetryDelay'] as String).input(),
+      maxAttempts: map['maxAttempts'] == null ? null : (map['maxAttempts']! as int).input(),
+      maxRetryDelay: map['maxRetryDelay'] == null ? null : (map['maxRetryDelay']! as String).input(),
+      minRetryDelay: map['minRetryDelay'] == null ? null : (map['minRetryDelay']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class MetricIdentifierPatch {
 
   factory MetricIdentifierPatch.fromMap(Map<String, dynamic> map) {
     return MetricIdentifierPatch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

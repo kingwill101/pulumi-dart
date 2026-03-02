@@ -31,9 +31,9 @@ class HistoryDeliveryJobState {
 
   factory HistoryDeliveryJobState.fromMap(Map<String, dynamic> map) {
     return HistoryDeliveryJobState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
-      trailName: map['trailName'] == null ? null : (map['trailName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
+      trailName: map['trailName'] == null ? null : (map['trailName']! as String).input(),
     );
   }
 }

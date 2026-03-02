@@ -26,8 +26,8 @@ class ReadinessCheck {
 
   factory ReadinessCheck.fromMap(Map<String, dynamic> map) {
     return ReadinessCheck(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

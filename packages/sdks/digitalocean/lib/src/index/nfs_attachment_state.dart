@@ -30,9 +30,9 @@ class NfsAttachmentState {
 
   factory NfsAttachmentState.fromMap(Map<String, dynamic> map) {
     return NfsAttachmentState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      shareId: map['shareId'] == null ? null : (map['shareId']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

@@ -79,16 +79,16 @@ class GetExpressRouteGatewayResult {
 
   factory GetExpressRouteGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteGatewayResult(
-      allowNonVirtualWanTraffic: map['allowNonVirtualWanTraffic'] == null ? null : map['allowNonVirtualWanTraffic'] as bool,
-      autoScaleConfiguration: map['autoScaleConfiguration'] == null ? null : ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration.fromMap((map['autoScaleConfiguration'] as Map).cast<String, dynamic>()),
+      allowNonVirtualWanTraffic: map['allowNonVirtualWanTraffic'] == null ? null : map['allowNonVirtualWanTraffic']! as bool,
+      autoScaleConfiguration: map['autoScaleConfiguration'] == null ? null : ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration.fromMap((map['autoScaleConfiguration']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      expressRouteConnections: map['expressRouteConnections'] == null ? null : pulumi.Input.decodeList<ExpressRouteConnectionResponse>(map['expressRouteConnections'], (value) => ExpressRouteConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      expressRouteConnections: map['expressRouteConnections'] == null ? null : pulumi.Input.decodeList<ExpressRouteConnectionResponse>(map['expressRouteConnections']!, (value) => ExpressRouteConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      id: map['id'] == null ? null : map['id']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       virtualHub: VirtualHubIdResponse.fromMap((map['virtualHub'] as Map).cast<String, dynamic>()),
     );

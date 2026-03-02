@@ -41,11 +41,11 @@ class MethodMap {
 
   factory MethodMap.fromMap(Map<String, dynamic> map) {
     return MethodMap(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
-      delete: map['delete'] == null ? null : (map['delete'] as String).input(),
-      get: map['get'] == null ? null : (map['get'] as String).input(),
-      setIamPolicy: map['setIamPolicy'] == null ? null : (map['setIamPolicy'] as String).input(),
-      update: map['update'] == null ? null : (map['update'] as String).input(),
+      create: map['create'] == null ? null : (map['create']! as String).input(),
+      delete: map['delete'] == null ? null : (map['delete']! as String).input(),
+      get: map['get'] == null ? null : (map['get']! as String).input(),
+      setIamPolicy: map['setIamPolicy'] == null ? null : (map['setIamPolicy']! as String).input(),
+      update: map['update'] == null ? null : (map['update']! as String).input(),
     );
   }
 }

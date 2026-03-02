@@ -52,7 +52,7 @@ class ShareAccessArgs {
       accessLevel: (map['accessLevel'] as String).input(),
       accessTo: (map['accessTo'] as String).input(),
       accessType: (map['accessType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       shareId: (map['shareId'] as String).input(),
     );
   }

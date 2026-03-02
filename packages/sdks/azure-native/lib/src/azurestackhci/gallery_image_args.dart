@@ -87,19 +87,19 @@ class GalleryImageArgs {
 
   factory GalleryImageArgs.fromMap(Map<String, dynamic> map) {
     return GalleryImageArgs(
-      cloudInitDataSource: map['cloudInitDataSource'] == null ? null : (map['cloudInitDataSource'] as String).input(),
-      containerId: map['containerId'] == null ? null : (map['containerId'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      galleryImageName: map['galleryImageName'] == null ? null : (map['galleryImageName'] as String).input(),
-      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration'] as String).input(),
-      identifier: map['identifier'] == null ? null : (GalleryImageIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())).input(),
-      imagePath: map['imagePath'] == null ? null : (map['imagePath'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      cloudInitDataSource: map['cloudInitDataSource'] == null ? null : (map['cloudInitDataSource']! as String).input(),
+      containerId: map['containerId'] == null ? null : (map['containerId']! as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      galleryImageName: map['galleryImageName'] == null ? null : (map['galleryImageName']! as String).input(),
+      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration']! as String).input(),
+      identifier: map['identifier'] == null ? null : (GalleryImageIdentifier.fromMap((map['identifier']! as Map).cast<String, dynamic>())).input(),
+      imagePath: map['imagePath'] == null ? null : (map['imagePath']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       osType: (map['osType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sourceVirtualMachineId: map['sourceVirtualMachineId'] == null ? null : (map['sourceVirtualMachineId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (GalleryImageVersion.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
+      sourceVirtualMachineId: map['sourceVirtualMachineId'] == null ? null : (map['sourceVirtualMachineId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (GalleryImageVersion.fromMap((map['version']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

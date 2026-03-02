@@ -32,8 +32,8 @@ class V2modelsIntentInitialResponseSettingNextStepIntentSlot {
   factory V2modelsIntentInitialResponseSettingNextStepIntentSlot.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingNextStepIntentSlot(
       mapBlockKey: (map['mapBlockKey'] as String).input(),
-      shape: map['shape'] == null ? null : (map['shape'] as String).input(),
-      value: map['value'] == null ? null : (V2modelsIntentInitialResponseSettingNextStepIntentSlotValue.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      shape: map['shape'] == null ? null : ((map['shape'] as String).input()).input(),
+      value: map['value'] == null ? null : ((V2modelsIntentInitialResponseSettingNextStepIntentSlotValue.fromMap((map['value']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

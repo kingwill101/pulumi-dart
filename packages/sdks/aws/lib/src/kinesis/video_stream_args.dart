@@ -55,13 +55,13 @@ class VideoStreamArgs {
 
   factory VideoStreamArgs.fromMap(Map<String, dynamic> map) {
     return VideoStreamArgs(
-      dataRetentionInHours: map['dataRetentionInHours'] == null ? null : (map['dataRetentionInHours'] as int).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      mediaType: map['mediaType'] == null ? null : (map['mediaType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      dataRetentionInHours: map['dataRetentionInHours'] == null ? null : ((map['dataRetentionInHours'] as int).input()).input(),
+      deviceName: map['deviceName'] == null ? null : ((map['deviceName'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      mediaType: map['mediaType'] == null ? null : ((map['mediaType'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

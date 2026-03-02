@@ -79,18 +79,18 @@ class SmartagFlowLogArgs {
 
   factory SmartagFlowLogArgs.fromMap(Map<String, dynamic> map) {
     return SmartagFlowLogArgs(
-      activeAging: map['activeAging'] == null ? null : (map['activeAging'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName'] as String).input(),
-      inactiveAging: map['inactiveAging'] == null ? null : (map['inactiveAging'] as int).input(),
-      logstoreName: map['logstoreName'] == null ? null : (map['logstoreName'] as String).input(),
-      netflowServerIp: map['netflowServerIp'] == null ? null : (map['netflowServerIp'] as String).input(),
-      netflowServerPort: map['netflowServerPort'] == null ? null : (map['netflowServerPort'] as int).input(),
-      netflowVersion: map['netflowVersion'] == null ? null : (map['netflowVersion'] as String).input(),
+      activeAging: map['activeAging'] == null ? null : (map['activeAging']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName']! as String).input(),
+      inactiveAging: map['inactiveAging'] == null ? null : (map['inactiveAging']! as int).input(),
+      logstoreName: map['logstoreName'] == null ? null : (map['logstoreName']! as String).input(),
+      netflowServerIp: map['netflowServerIp'] == null ? null : (map['netflowServerIp']! as String).input(),
+      netflowServerPort: map['netflowServerPort'] == null ? null : (map['netflowServerPort']! as int).input(),
+      netflowVersion: map['netflowVersion'] == null ? null : (map['netflowVersion']! as String).input(),
       outputType: (map['outputType'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      slsRegionId: map['slsRegionId'] == null ? null : (map['slsRegionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      slsRegionId: map['slsRegionId'] == null ? null : (map['slsRegionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class DomainDevicesGraphicSpiceListener {
 
   factory DomainDevicesGraphicSpiceListener.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicSpiceListener(
-      address: map['address'] == null ? null : (DomainDevicesGraphicSpiceListenerAddress.fromMap((map['address'] as Map).cast<String, dynamic>())).input(),
-      network: map['network'] == null ? null : (DomainDevicesGraphicSpiceListenerNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
-      socket: map['socket'] == null ? null : (DomainDevicesGraphicSpiceListenerSocket.fromMap((map['socket'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : (DomainDevicesGraphicSpiceListenerAddress.fromMap((map['address']! as Map).cast<String, dynamic>())).input(),
+      network: map['network'] == null ? null : (DomainDevicesGraphicSpiceListenerNetwork.fromMap((map['network']! as Map).cast<String, dynamic>())).input(),
+      socket: map['socket'] == null ? null : (DomainDevicesGraphicSpiceListenerSocket.fromMap((map['socket']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

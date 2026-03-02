@@ -69,16 +69,16 @@ class RegionHealthCheckServiceComputeBetaArgs {
 
   factory RegionHealthCheckServiceComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return RegionHealthCheckServiceComputeBetaArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      healthChecks: map['healthChecks'] == null ? null : ((map['healthChecks'] as List).cast<String>()).input(),
-      healthStatusAggregationPolicy: map['healthStatusAggregationPolicy'] == null ? null : (RegionHealthCheckServiceHealthStatusAggregationPolicyComputeBeta.fromValue(map['healthStatusAggregationPolicy'] as String)).input(),
-      healthStatusAggregationStrategy: map['healthStatusAggregationStrategy'] == null ? null : (RegionHealthCheckServiceHealthStatusAggregationStrategyComputeBeta.fromValue(map['healthStatusAggregationStrategy'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkEndpointGroups: map['networkEndpointGroups'] == null ? null : ((map['networkEndpointGroups'] as List).cast<String>()).input(),
-      notificationEndpoints: map['notificationEndpoints'] == null ? null : ((map['notificationEndpoints'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      healthChecks: map['healthChecks'] == null ? null : ((map['healthChecks']! as List).cast<String>()).input(),
+      healthStatusAggregationPolicy: map['healthStatusAggregationPolicy'] == null ? null : (RegionHealthCheckServiceHealthStatusAggregationPolicyComputeBeta.fromValue(map['healthStatusAggregationPolicy']! as String)).input(),
+      healthStatusAggregationStrategy: map['healthStatusAggregationStrategy'] == null ? null : (RegionHealthCheckServiceHealthStatusAggregationStrategyComputeBeta.fromValue(map['healthStatusAggregationStrategy']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkEndpointGroups: map['networkEndpointGroups'] == null ? null : ((map['networkEndpointGroups']! as List).cast<String>()).input(),
+      notificationEndpoints: map['notificationEndpoints'] == null ? null : ((map['notificationEndpoints']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

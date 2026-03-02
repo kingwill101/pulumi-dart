@@ -77,15 +77,15 @@ class GetWorkloadNetworkDnsZoneResult {
   factory GetWorkloadNetworkDnsZoneResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadNetworkDnsZoneResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      dnsServerIps: map['dnsServerIps'] == null ? null : (map['dnsServerIps'] as List).cast<String>(),
-      dnsServices: map['dnsServices'] == null ? null : map['dnsServices'] as double,
-      domain: map['domain'] == null ? null : (map['domain'] as List).cast<String>(),
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      dnsServerIps: map['dnsServerIps'] == null ? null : (map['dnsServerIps']! as List).cast<String>(),
+      dnsServices: map['dnsServices'] == null ? null : map['dnsServices']! as double,
+      domain: map['domain'] == null ? null : (map['domain']! as List).cast<String>(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      revision: map['revision'] == null ? null : map['revision'] as double,
-      sourceIp: map['sourceIp'] == null ? null : map['sourceIp'] as String,
+      revision: map['revision'] == null ? null : map['revision']! as double,
+      sourceIp: map['sourceIp'] == null ? null : map['sourceIp']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

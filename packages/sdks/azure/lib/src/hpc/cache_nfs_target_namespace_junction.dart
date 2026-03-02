@@ -35,10 +35,10 @@ class CacheNfsTargetNamespaceJunction {
 
   factory CacheNfsTargetNamespaceJunction.fromMap(Map<String, dynamic> map) {
     return CacheNfsTargetNamespaceJunction(
-      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName'] as String).input(),
+      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName']! as String).input(),
       namespacePath: (map['namespacePath'] as String).input(),
       nfsExport: (map['nfsExport'] as String).input(),
-      targetPath: map['targetPath'] == null ? null : (map['targetPath'] as String).input(),
+      targetPath: map['targetPath'] == null ? null : (map['targetPath']! as String).input(),
     );
   }
 }

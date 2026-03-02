@@ -31,8 +31,8 @@ class TopicRuleHttp {
 
   factory TopicRuleHttp.fromMap(Map<String, dynamic> map) {
     return TopicRuleHttp(
-      confirmationUrl: map['confirmationUrl'] == null ? null : (map['confirmationUrl'] as String).input(),
-      httpHeaders: map['httpHeaders'] == null ? null : (pulumi.Input.decodeList<TopicRuleHttpHttpHeader>(map['httpHeaders'], (value) => TopicRuleHttpHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      confirmationUrl: map['confirmationUrl'] == null ? null : ((map['confirmationUrl'] as String).input()).input(),
+      httpHeaders: map['httpHeaders'] == null ? null : ((pulumi.Input.decodeList<TopicRuleHttpHttpHeader>(map['httpHeaders']!, (value) => TopicRuleHttpHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       url: (map['url'] as String).input(),
     );
   }

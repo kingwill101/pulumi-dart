@@ -107,22 +107,22 @@ class SubnetState {
 
   factory SubnetState.fromMap(Map<String, dynamic> map) {
     return SubnetState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      ipv4Cidrs: map['ipv4Cidrs'] == null ? null : ((map['ipv4Cidrs'] as List).cast<String>()).input(),
-      ipv6Cidrs: map['ipv6Cidrs'] == null ? null : ((map['ipv6Cidrs'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as int).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      ipv4Cidrs: map['ipv4Cidrs'] == null ? null : ((map['ipv4Cidrs']! as List).cast<String>()).input(),
+      ipv6Cidrs: map['ipv6Cidrs'] == null ? null : ((map['ipv6Cidrs']! as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId']! as int).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

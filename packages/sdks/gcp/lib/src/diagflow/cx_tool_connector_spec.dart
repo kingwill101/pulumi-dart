@@ -41,7 +41,7 @@ class CxToolConnectorSpec {
   factory CxToolConnectorSpec.fromMap(Map<String, dynamic> map) {
     return CxToolConnectorSpec(
       actions: (pulumi.Input.decodeList<CxToolConnectorSpecAction>(map['actions'], (value) => CxToolConnectorSpecAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      endUserAuthConfig: map['endUserAuthConfig'] == null ? null : (CxToolConnectorSpecEndUserAuthConfig.fromMap((map['endUserAuthConfig'] as Map).cast<String, dynamic>())).input(),
+      endUserAuthConfig: map['endUserAuthConfig'] == null ? null : (CxToolConnectorSpecEndUserAuthConfig.fromMap((map['endUserAuthConfig']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

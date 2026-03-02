@@ -36,10 +36,10 @@ class ParentReferencePatch {
 
   factory ParentReferencePatch.fromMap(Map<String, dynamic> map) {
     return ParentReferencePatch(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

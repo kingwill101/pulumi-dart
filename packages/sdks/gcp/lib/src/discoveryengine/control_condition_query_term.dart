@@ -25,8 +25,8 @@ class ControlConditionQueryTerm {
 
   factory ControlConditionQueryTerm.fromMap(Map<String, dynamic> map) {
     return ControlConditionQueryTerm(
-      fullMatch: map['fullMatch'] == null ? null : (map['fullMatch'] as bool).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      fullMatch: map['fullMatch'] == null ? null : (map['fullMatch']! as bool).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

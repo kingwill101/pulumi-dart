@@ -37,10 +37,10 @@ class VirtualNetworkGatewayBgpSettingsPeeringAddress {
 
   factory VirtualNetworkGatewayBgpSettingsPeeringAddress.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayBgpSettingsPeeringAddress(
-      apipaAddresses: map['apipaAddresses'] == null ? null : ((map['apipaAddresses'] as List).cast<String>()).input(),
-      defaultAddresses: map['defaultAddresses'] == null ? null : ((map['defaultAddresses'] as List).cast<String>()).input(),
-      ipConfigurationName: map['ipConfigurationName'] == null ? null : (map['ipConfigurationName'] as String).input(),
-      tunnelIpAddresses: map['tunnelIpAddresses'] == null ? null : ((map['tunnelIpAddresses'] as List).cast<String>()).input(),
+      apipaAddresses: map['apipaAddresses'] == null ? null : ((map['apipaAddresses']! as List).cast<String>()).input(),
+      defaultAddresses: map['defaultAddresses'] == null ? null : ((map['defaultAddresses']! as List).cast<String>()).input(),
+      ipConfigurationName: map['ipConfigurationName'] == null ? null : (map['ipConfigurationName']! as String).input(),
+      tunnelIpAddresses: map['tunnelIpAddresses'] == null ? null : ((map['tunnelIpAddresses']! as List).cast<String>()).input(),
     );
   }
 }

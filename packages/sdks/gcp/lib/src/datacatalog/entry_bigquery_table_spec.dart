@@ -37,9 +37,9 @@ class EntryBigqueryTableSpec {
 
   factory EntryBigqueryTableSpec.fromMap(Map<String, dynamic> map) {
     return EntryBigqueryTableSpec(
-      tableSourceType: map['tableSourceType'] == null ? null : (map['tableSourceType'] as String).input(),
-      tableSpecs: map['tableSpecs'] == null ? null : (pulumi.Input.decodeList<EntryBigqueryTableSpecTableSpec>(map['tableSpecs'], (value) => EntryBigqueryTableSpecTableSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      viewSpecs: map['viewSpecs'] == null ? null : (pulumi.Input.decodeList<EntryBigqueryTableSpecViewSpec>(map['viewSpecs'], (value) => EntryBigqueryTableSpecViewSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tableSourceType: map['tableSourceType'] == null ? null : (map['tableSourceType']! as String).input(),
+      tableSpecs: map['tableSpecs'] == null ? null : (pulumi.Input.decodeList<EntryBigqueryTableSpecTableSpec>(map['tableSpecs']!, (value) => EntryBigqueryTableSpecTableSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      viewSpecs: map['viewSpecs'] == null ? null : (pulumi.Input.decodeList<EntryBigqueryTableSpecViewSpec>(map['viewSpecs']!, (value) => EntryBigqueryTableSpecViewSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

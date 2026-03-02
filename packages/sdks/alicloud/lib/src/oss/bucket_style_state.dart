@@ -41,11 +41,11 @@ class BucketStyleState {
 
   factory BucketStyleState.fromMap(Map<String, dynamic> map) {
     return BucketStyleState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      styleName: map['styleName'] == null ? null : (map['styleName'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      styleName: map['styleName'] == null ? null : (map['styleName']! as String).input(),
     );
   }
 }

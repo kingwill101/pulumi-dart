@@ -88,19 +88,19 @@ class AzureBareMetalInstanceArgs {
 
   factory AzureBareMetalInstanceArgs.fromMap(Map<String, dynamic> map) {
     return AzureBareMetalInstanceArgs(
-      azureBareMetalInstanceId: map['azureBareMetalInstanceId'] == null ? null : (map['azureBareMetalInstanceId'] as String).input(),
-      azureBareMetalInstanceName: map['azureBareMetalInstanceName'] == null ? null : (map['azureBareMetalInstanceName'] as String).input(),
-      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfile.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())).input(),
-      hwRevision: map['hwRevision'] == null ? null : (map['hwRevision'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      osProfile: map['osProfile'] == null ? null : (OSProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
-      partnerNodeId: map['partnerNodeId'] == null ? null : (map['partnerNodeId'] as String).input(),
-      powerState: map['powerState'] == null ? null : (map['powerState'] as String).input(),
-      proximityPlacementGroup: map['proximityPlacementGroup'] == null ? null : (map['proximityPlacementGroup'] as String).input(),
+      azureBareMetalInstanceId: map['azureBareMetalInstanceId'] == null ? null : (map['azureBareMetalInstanceId']! as String).input(),
+      azureBareMetalInstanceName: map['azureBareMetalInstanceName'] == null ? null : (map['azureBareMetalInstanceName']! as String).input(),
+      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfile.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>())).input(),
+      hwRevision: map['hwRevision'] == null ? null : (map['hwRevision']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      osProfile: map['osProfile'] == null ? null : (OSProfile.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
+      partnerNodeId: map['partnerNodeId'] == null ? null : (map['partnerNodeId']! as String).input(),
+      powerState: map['powerState'] == null ? null : (map['powerState']! as String).input(),
+      proximityPlacementGroup: map['proximityPlacementGroup'] == null ? null : (map['proximityPlacementGroup']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

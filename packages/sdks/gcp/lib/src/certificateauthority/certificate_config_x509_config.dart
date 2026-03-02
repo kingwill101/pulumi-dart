@@ -62,12 +62,12 @@ class CertificateConfigX509Config {
 
   factory CertificateConfigX509Config.fromMap(Map<String, dynamic> map) {
     return CertificateConfigX509Config(
-      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<CertificateConfigX509ConfigAdditionalExtension>(map['additionalExtensions'], (value) => CertificateConfigX509ConfigAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aiaOcspServers: map['aiaOcspServers'] == null ? null : ((map['aiaOcspServers'] as List).cast<String>()).input(),
-      caOptions: map['caOptions'] == null ? null : (CertificateConfigX509ConfigCaOptions.fromMap((map['caOptions'] as Map).cast<String, dynamic>())).input(),
+      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<CertificateConfigX509ConfigAdditionalExtension>(map['additionalExtensions']!, (value) => CertificateConfigX509ConfigAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aiaOcspServers: map['aiaOcspServers'] == null ? null : ((map['aiaOcspServers']! as List).cast<String>()).input(),
+      caOptions: map['caOptions'] == null ? null : (CertificateConfigX509ConfigCaOptions.fromMap((map['caOptions']! as Map).cast<String, dynamic>())).input(),
       keyUsage: (CertificateConfigX509ConfigKeyUsage.fromMap((map['keyUsage'] as Map).cast<String, dynamic>())).input(),
-      nameConstraints: map['nameConstraints'] == null ? null : (CertificateConfigX509ConfigNameConstraints.fromMap((map['nameConstraints'] as Map).cast<String, dynamic>())).input(),
-      policyIds: map['policyIds'] == null ? null : (pulumi.Input.decodeList<CertificateConfigX509ConfigPolicyId>(map['policyIds'], (value) => CertificateConfigX509ConfigPolicyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nameConstraints: map['nameConstraints'] == null ? null : (CertificateConfigX509ConfigNameConstraints.fromMap((map['nameConstraints']! as Map).cast<String, dynamic>())).input(),
+      policyIds: map['policyIds'] == null ? null : (pulumi.Input.decodeList<CertificateConfigX509ConfigPolicyId>(map['policyIds']!, (value) => CertificateConfigX509ConfigPolicyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

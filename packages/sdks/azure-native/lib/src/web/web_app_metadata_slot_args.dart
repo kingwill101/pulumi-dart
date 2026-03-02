@@ -44,9 +44,9 @@ class WebAppMetadataSlotArgs {
 
   factory WebAppMetadataSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppMetadataSlotArgs(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       slot: (map['slot'] as String).input(),
     );

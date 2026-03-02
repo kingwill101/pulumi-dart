@@ -26,7 +26,7 @@ class PolicyVMInstantRestoreResourceGroup {
   factory PolicyVMInstantRestoreResourceGroup.fromMap(Map<String, dynamic> map) {
     return PolicyVMInstantRestoreResourceGroup(
       prefix: (map['prefix'] as String).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
     );
   }
 }

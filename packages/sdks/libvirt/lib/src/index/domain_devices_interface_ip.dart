@@ -36,9 +36,9 @@ class DomainDevicesInterfaceIp {
   factory DomainDevicesInterfaceIp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceIp(
       address: (map['address'] as String).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      peer: map['peer'] == null ? null : (map['peer'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as double).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
+      peer: map['peer'] == null ? null : (map['peer']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as double).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class FastUdpAppMonitor {
 
   factory FastUdpAppMonitor.fromMap(Map<String, dynamic> map) {
     return FastUdpAppMonitor(
-      expectedResponse: map['expectedResponse'] == null ? null : (map['expectedResponse'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      sendString: map['sendString'] == null ? null : (map['sendString'] as String).input(),
+      expectedResponse: map['expectedResponse'] == null ? null : (map['expectedResponse']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      sendString: map['sendString'] == null ? null : (map['sendString']! as String).input(),
     );
   }
 }

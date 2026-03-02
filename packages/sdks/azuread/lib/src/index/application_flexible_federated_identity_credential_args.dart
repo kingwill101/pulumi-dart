@@ -52,7 +52,7 @@ class ApplicationFlexibleFederatedIdentityCredentialArgs {
       applicationId: (map['applicationId'] as String).input(),
       audience: (map['audience'] as String).input(),
       claimsMatchingExpression: (map['claimsMatchingExpression'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       issuer: (map['issuer'] as String).input(),
     );

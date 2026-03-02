@@ -43,11 +43,11 @@ class ManagementGroupState {
 
   factory ManagementGroupState.fromMap(Map<String, dynamic> map) {
     return ManagementGroupState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentManagementGroupId: map['parentManagementGroupId'] == null ? null : (map['parentManagementGroupId'] as String).input(),
-      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds'] as List).cast<String>()).input(),
-      tenantScopedId: map['tenantScopedId'] == null ? null : (map['tenantScopedId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentManagementGroupId: map['parentManagementGroupId'] == null ? null : (map['parentManagementGroupId']! as String).input(),
+      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds']! as List).cast<String>()).input(),
+      tenantScopedId: map['tenantScopedId'] == null ? null : (map['tenantScopedId']! as String).input(),
     );
   }
 }

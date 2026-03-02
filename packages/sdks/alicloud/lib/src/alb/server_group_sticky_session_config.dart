@@ -55,10 +55,10 @@ class ServerGroupStickySessionConfig {
 
   factory ServerGroupStickySessionConfig.fromMap(Map<String, dynamic> map) {
     return ServerGroupStickySessionConfig(
-      cookie: map['cookie'] == null ? null : (map['cookie'] as String).input(),
-      cookieTimeout: map['cookieTimeout'] == null ? null : (map['cookieTimeout'] as int).input(),
-      stickySessionEnabled: map['stickySessionEnabled'] == null ? null : (map['stickySessionEnabled'] as bool).input(),
-      stickySessionType: map['stickySessionType'] == null ? null : (map['stickySessionType'] as String).input(),
+      cookie: map['cookie'] == null ? null : (map['cookie']! as String).input(),
+      cookieTimeout: map['cookieTimeout'] == null ? null : (map['cookieTimeout']! as int).input(),
+      stickySessionEnabled: map['stickySessionEnabled'] == null ? null : (map['stickySessionEnabled']! as bool).input(),
+      stickySessionType: map['stickySessionType'] == null ? null : (map['stickySessionType']! as String).input(),
     );
   }
 }

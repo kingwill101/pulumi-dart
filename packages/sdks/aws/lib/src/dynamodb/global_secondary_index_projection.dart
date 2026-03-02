@@ -27,7 +27,7 @@ class GlobalSecondaryIndexProjection {
 
   factory GlobalSecondaryIndexProjection.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexProjection(
-      nonKeyAttributes: map['nonKeyAttributes'] == null ? null : ((map['nonKeyAttributes'] as List).cast<String>()).input(),
+      nonKeyAttributes: map['nonKeyAttributes'] == null ? null : (((map['nonKeyAttributes'] as List).cast<String>()).input()).input(),
       projectionType: (map['projectionType'] as String).input(),
     );
   }

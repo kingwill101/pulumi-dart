@@ -36,10 +36,10 @@ class VaultPolicyState {
 
   factory VaultPolicyState.fromMap(Map<String, dynamic> map) {
     return VaultPolicyState(
-      backupVaultArn: map['backupVaultArn'] == null ? null : (map['backupVaultArn'] as String).input(),
-      backupVaultName: map['backupVaultName'] == null ? null : (map['backupVaultName'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      backupVaultArn: map['backupVaultArn'] == null ? null : ((map['backupVaultArn'] as String).input()).input(),
+      backupVaultName: map['backupVaultName'] == null ? null : ((map['backupVaultName'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

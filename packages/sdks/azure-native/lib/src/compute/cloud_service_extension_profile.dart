@@ -22,7 +22,7 @@ class CloudServiceExtensionProfile {
 
   factory CloudServiceExtensionProfile.fromMap(Map<String, dynamic> map) {
     return CloudServiceExtensionProfile(
-      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<Extension>(map['extensions'], (value) => Extension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<Extension>(map['extensions']!, (value) => Extension.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

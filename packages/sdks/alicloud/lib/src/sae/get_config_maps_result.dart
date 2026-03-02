@@ -49,10 +49,10 @@ class GetConfigMapsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       maps: pulumi.Input.decodeList<GetConfigMapsMap>(map['maps'], (value) => GetConfigMapsMap.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
       namespaceId: map['namespaceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

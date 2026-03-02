@@ -27,8 +27,8 @@ class NetworkPolicyContainerV1beta1 {
 
   factory NetworkPolicyContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyContainerV1beta1(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      provider: map['provider'] == null ? null : (NetworkPolicyProviderContainerV1beta1.fromValue(map['provider'] as String)).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      provider: map['provider'] == null ? null : (NetworkPolicyProviderContainerV1beta1.fromValue(map['provider']! as String)).input(),
     );
   }
 }

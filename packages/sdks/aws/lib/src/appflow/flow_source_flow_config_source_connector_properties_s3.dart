@@ -31,7 +31,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesS3 {
     return FlowSourceFlowConfigSourceConnectorPropertiesS3(
       bucketName: (map['bucketName'] as String).input(),
       bucketPrefix: (map['bucketPrefix'] as String).input(),
-      s3InputFormatConfig: map['s3InputFormatConfig'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig.fromMap((map['s3InputFormatConfig'] as Map).cast<String, dynamic>())).input(),
+      s3InputFormatConfig: map['s3InputFormatConfig'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig.fromMap((map['s3InputFormatConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

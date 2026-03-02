@@ -44,9 +44,9 @@ class NamespaceCustomerManagedKeyArgs {
   factory NamespaceCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceCustomerManagedKeyArgs(
       eventhubNamespaceId: (map['eventhubNamespaceId'] as String).input(),
-      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : (map['infrastructureEncryptionEnabled'] as bool).input(),
+      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : (map['infrastructureEncryptionEnabled']! as bool).input(),
       keyVaultKeyIds: ((map['keyVaultKeyIds'] as List).cast<String>()).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

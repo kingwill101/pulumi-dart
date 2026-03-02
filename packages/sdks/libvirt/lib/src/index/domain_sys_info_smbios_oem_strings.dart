@@ -20,7 +20,7 @@ class DomainSysInfoSmbiosOemStrings {
 
   factory DomainSysInfoSmbiosOemStrings.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosOemStrings(
-      entries: map['entries'] == null ? null : ((map['entries'] as List).cast<String>()).input(),
+      entries: map['entries'] == null ? null : ((map['entries']! as List).cast<String>()).input(),
     );
   }
 }

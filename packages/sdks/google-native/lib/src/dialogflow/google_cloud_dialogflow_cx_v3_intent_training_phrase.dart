@@ -28,7 +28,7 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhrase {
   factory GoogleCloudDialogflowCxV3IntentTrainingPhrase.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3IntentTrainingPhrase(
       parts: (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3IntentTrainingPhrasePart>(map['parts'], (value) => GoogleCloudDialogflowCxV3IntentTrainingPhrasePart.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      repeatCount: map['repeatCount'] == null ? null : (map['repeatCount'] as int).input(),
+      repeatCount: map['repeatCount'] == null ? null : (map['repeatCount']! as int).input(),
     );
   }
 }

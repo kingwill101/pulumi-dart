@@ -22,7 +22,7 @@ class SecurityProfileResponse {
 
   factory SecurityProfileResponse.fromMap(Map<String, dynamic> map) {
     return SecurityProfileResponse(
-      uefiSettings: map['uefiSettings'] == null ? null : (UefiSettingsResponse.fromMap((map['uefiSettings'] as Map).cast<String, dynamic>())).input(),
+      uefiSettings: map['uefiSettings'] == null ? null : (UefiSettingsResponse.fromMap((map['uefiSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

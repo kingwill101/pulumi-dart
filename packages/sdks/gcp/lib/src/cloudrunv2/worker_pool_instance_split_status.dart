@@ -33,9 +33,9 @@ class WorkerPoolInstanceSplitStatus {
 
   factory WorkerPoolInstanceSplitStatus.fromMap(Map<String, dynamic> map) {
     return WorkerPoolInstanceSplitStatus(
-      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      percent: map['percent'] == null ? null : (map['percent']! as int).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

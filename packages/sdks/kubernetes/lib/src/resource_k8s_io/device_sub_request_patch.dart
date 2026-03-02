@@ -86,13 +86,13 @@ class DeviceSubRequestPatch {
 
   factory DeviceSubRequestPatch.fromMap(Map<String, dynamic> map) {
     return DeviceSubRequestPatch(
-      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode'] as String).input(),
-      capacity: map['capacity'] == null ? null : (CapacityRequirementsPatch.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      deviceClassName: map['deviceClassName'] == null ? null : (map['deviceClassName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelectorPatch>(map['selectors'], (value) => DeviceSelectorPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<DeviceTolerationPatch>(map['tolerations'], (value) => DeviceTolerationPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode']! as String).input(),
+      capacity: map['capacity'] == null ? null : (CapacityRequirementsPatch.fromMap((map['capacity']! as Map).cast<String, dynamic>())).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      deviceClassName: map['deviceClassName'] == null ? null : (map['deviceClassName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelectorPatch>(map['selectors']!, (value) => DeviceSelectorPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<DeviceTolerationPatch>(map['tolerations']!, (value) => DeviceTolerationPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

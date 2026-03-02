@@ -33,8 +33,8 @@ class CacheHealthResponse {
   factory CacheHealthResponse.fromMap(Map<String, dynamic> map) {
     return CacheHealthResponse(
       conditions: (pulumi.Input.decodeList<ConditionResponse>(map['conditions'], (value) => ConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      statusDescription: map['statusDescription'] == null ? null : (map['statusDescription'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      statusDescription: map['statusDescription'] == null ? null : (map['statusDescription']! as String).input(),
     );
   }
 }

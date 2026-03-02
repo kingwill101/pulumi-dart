@@ -21,7 +21,7 @@ class MultitenantDistributionRestrictions {
 
   factory MultitenantDistributionRestrictions.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionRestrictions(
-      geoRestriction: (MultitenantDistributionRestrictionsGeoRestriction.fromMap((map['geoRestriction'] as Map).cast<String, dynamic>())).input(),
+      geoRestriction: (MultitenantDistributionRestrictionsGeoRestriction.fromMap((map['geoRestriction']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

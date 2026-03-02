@@ -21,7 +21,7 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange {
 
   factory ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange(
-      maxes: map['maxes'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis>(map['maxes'], (value) => ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxes: map['maxes'] == null ? null : ((pulumi.Input.decodeList<ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis>(map['maxes']!, (value) => ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

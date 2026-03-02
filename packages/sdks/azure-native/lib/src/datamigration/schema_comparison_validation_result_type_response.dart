@@ -31,9 +31,9 @@ class SchemaComparisonValidationResultTypeResponse {
 
   factory SchemaComparisonValidationResultTypeResponse.fromMap(Map<String, dynamic> map) {
     return SchemaComparisonValidationResultTypeResponse(
-      objectName: map['objectName'] == null ? null : (map['objectName'] as String).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType'] as String).input(),
-      updateAction: map['updateAction'] == null ? null : (map['updateAction'] as String).input(),
+      objectName: map['objectName'] == null ? null : (map['objectName']! as String).input(),
+      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
+      updateAction: map['updateAction'] == null ? null : (map['updateAction']! as String).input(),
     );
   }
 }

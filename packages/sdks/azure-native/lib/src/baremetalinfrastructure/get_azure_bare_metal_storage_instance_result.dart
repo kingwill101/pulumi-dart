@@ -69,14 +69,14 @@ class GetAzureBareMetalStorageInstanceResult {
   factory GetAzureBareMetalStorageInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetAzureBareMetalStorageInstanceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      azureBareMetalStorageInstanceUniqueIdentifier: map['azureBareMetalStorageInstanceUniqueIdentifier'] == null ? null : map['azureBareMetalStorageInstanceUniqueIdentifier'] as String,
+      azureBareMetalStorageInstanceUniqueIdentifier: map['azureBareMetalStorageInstanceUniqueIdentifier'] == null ? null : map['azureBareMetalStorageInstanceUniqueIdentifier']! as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : AzureBareMetalStorageInstanceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : AzureBareMetalStorageInstanceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
-      storageProperties: map['storageProperties'] == null ? null : StoragePropertiesResponse.fromMap((map['storageProperties'] as Map).cast<String, dynamic>()),
+      storageProperties: map['storageProperties'] == null ? null : StoragePropertiesResponse.fromMap((map['storageProperties']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

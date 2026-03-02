@@ -41,11 +41,11 @@ class PolicyTableAssociationState {
 
   factory PolicyTableAssociationState.fromMap(Map<String, dynamic> map) {
     return PolicyTableAssociationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
-      transitGatewayPolicyTableId: map['transitGatewayPolicyTableId'] == null ? null : (map['transitGatewayPolicyTableId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : ((map['transitGatewayAttachmentId'] as String).input()).input(),
+      transitGatewayPolicyTableId: map['transitGatewayPolicyTableId'] == null ? null : ((map['transitGatewayPolicyTableId'] as String).input()).input(),
     );
   }
 }

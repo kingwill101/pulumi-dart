@@ -26,8 +26,8 @@ class ResourceId {
 
   factory ResourceId.fromMap(Map<String, dynamic> map) {
     return ResourceId(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

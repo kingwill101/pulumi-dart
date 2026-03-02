@@ -53,13 +53,13 @@ class NodeSpecPatch {
 
   factory NodeSpecPatch.fromMap(Map<String, dynamic> map) {
     return NodeSpecPatch(
-      configSource: map['configSource'] == null ? null : (NodeConfigSourcePatch.fromMap((map['configSource'] as Map).cast<String, dynamic>())).input(),
-      externalID: map['externalID'] == null ? null : (map['externalID'] as String).input(),
-      podCIDR: map['podCIDR'] == null ? null : (map['podCIDR'] as String).input(),
-      podCIDRs: map['podCIDRs'] == null ? null : ((map['podCIDRs'] as List).cast<String>()).input(),
-      providerID: map['providerID'] == null ? null : (map['providerID'] as String).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<TaintPatch>(map['taints'], (value) => TaintPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      unschedulable: map['unschedulable'] == null ? null : (map['unschedulable'] as bool).input(),
+      configSource: map['configSource'] == null ? null : (NodeConfigSourcePatch.fromMap((map['configSource']! as Map).cast<String, dynamic>())).input(),
+      externalID: map['externalID'] == null ? null : (map['externalID']! as String).input(),
+      podCIDR: map['podCIDR'] == null ? null : (map['podCIDR']! as String).input(),
+      podCIDRs: map['podCIDRs'] == null ? null : ((map['podCIDRs']! as List).cast<String>()).input(),
+      providerID: map['providerID'] == null ? null : (map['providerID']! as String).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<TaintPatch>(map['taints']!, (value) => TaintPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      unschedulable: map['unschedulable'] == null ? null : (map['unschedulable']! as bool).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class TemplateSourceEntity {
 
   factory TemplateSourceEntity.fromMap(Map<String, dynamic> map) {
     return TemplateSourceEntity(
-      sourceAnalysis: map['sourceAnalysis'] == null ? null : (TemplateSourceEntitySourceAnalysis.fromMap((map['sourceAnalysis'] as Map).cast<String, dynamic>())).input(),
-      sourceTemplate: map['sourceTemplate'] == null ? null : (TemplateSourceEntitySourceTemplate.fromMap((map['sourceTemplate'] as Map).cast<String, dynamic>())).input(),
+      sourceAnalysis: map['sourceAnalysis'] == null ? null : ((TemplateSourceEntitySourceAnalysis.fromMap((map['sourceAnalysis']! as Map).cast<String, dynamic>())).input()).input(),
+      sourceTemplate: map['sourceTemplate'] == null ? null : ((TemplateSourceEntitySourceTemplate.fromMap((map['sourceTemplate']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

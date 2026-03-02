@@ -70,15 +70,15 @@ class WatcherArgs {
   factory WatcherArgs.fromMap(Map<String, dynamic> map) {
     return WatcherArgs(
       automationAccountId: (map['automationAccountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       executionFrequencyInSeconds: (map['executionFrequencyInSeconds'] as int).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       scriptName: (map['scriptName'] as String).input(),
-      scriptParameters: map['scriptParameters'] == null ? null : ((map['scriptParameters'] as Map).cast<String, String>()).input(),
+      scriptParameters: map['scriptParameters'] == null ? null : ((map['scriptParameters']! as Map).cast<String, String>()).input(),
       scriptRunOn: (map['scriptRunOn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

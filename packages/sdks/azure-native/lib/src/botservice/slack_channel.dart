@@ -39,9 +39,9 @@ class SlackChannel {
   factory SlackChannel.fromMap(Map<String, dynamic> map) {
     return SlackChannel(
       channelName: (map['channelName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (SlackChannelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (SlackChannelProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

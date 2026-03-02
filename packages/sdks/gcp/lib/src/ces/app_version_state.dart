@@ -83,17 +83,17 @@ class AppVersionState {
 
   factory AppVersionState.fromMap(Map<String, dynamic> map) {
     return AppVersionState(
-      app: map['app'] == null ? null : (map['app'] as String).input(),
-      appVersionId: map['appVersionId'] == null ? null : (map['appVersionId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      creator: map['creator'] == null ? null : (map['creator'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      snapshots: map['snapshots'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshot>(map['snapshots'], (value) => AppVersionSnapshot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      app: map['app'] == null ? null : (map['app']! as String).input(),
+      appVersionId: map['appVersionId'] == null ? null : (map['appVersionId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      creator: map['creator'] == null ? null : (map['creator']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      snapshots: map['snapshots'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshot>(map['snapshots']!, (value) => AppVersionSnapshot.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

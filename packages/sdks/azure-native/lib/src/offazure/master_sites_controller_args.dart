@@ -62,14 +62,14 @@ class MasterSitesControllerArgs {
 
   factory MasterSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return MasterSitesControllerArgs(
-      allowMultipleSites: map['allowMultipleSites'] == null ? null : (map['allowMultipleSites'] as bool).input(),
-      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : (map['customerStorageAccountArmId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      allowMultipleSites: map['allowMultipleSites'] == null ? null : (map['allowMultipleSites']! as bool).input(),
+      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : (map['customerStorageAccountArmId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
-      sites: map['sites'] == null ? null : ((map['sites'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName']! as String).input(),
+      sites: map['sites'] == null ? null : ((map['sites']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

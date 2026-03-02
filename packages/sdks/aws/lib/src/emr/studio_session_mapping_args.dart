@@ -49,10 +49,10 @@ class StudioSessionMappingArgs {
 
   factory StudioSessionMappingArgs.fromMap(Map<String, dynamic> map) {
     return StudioSessionMappingArgs(
-      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
-      identityName: map['identityName'] == null ? null : (map['identityName'] as String).input(),
+      identityId: map['identityId'] == null ? null : ((map['identityId'] as String).input()).input(),
+      identityName: map['identityName'] == null ? null : ((map['identityName'] as String).input()).input(),
       identityType: (map['identityType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       sessionPolicyArn: (map['sessionPolicyArn'] as String).input(),
       studioId: (map['studioId'] as String).input(),
     );

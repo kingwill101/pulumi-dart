@@ -25,8 +25,8 @@ class InstanceConfigDevicesSdd {
 
   factory InstanceConfigDevicesSdd.fromMap(Map<String, dynamic> map) {
     return InstanceConfigDevicesSdd(
-      diskId: map['diskId'] == null ? null : (map['diskId'] as int).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as int).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as int).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as int).input(),
     );
   }
 }

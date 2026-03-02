@@ -32,9 +32,9 @@ class RoutingIntentState {
 
   factory RoutingIntentState.fromMap(Map<String, dynamic> map) {
     return RoutingIntentState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      routingPolicies: map['routingPolicies'] == null ? null : (pulumi.Input.decodeList<RoutingIntentRoutingPolicy>(map['routingPolicies'], (value) => RoutingIntentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      routingPolicies: map['routingPolicies'] == null ? null : (pulumi.Input.decodeList<RoutingIntentRoutingPolicy>(map['routingPolicies']!, (value) => RoutingIntentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId']! as String).input(),
     );
   }
 }

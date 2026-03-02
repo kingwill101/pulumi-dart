@@ -22,7 +22,7 @@ class AppEvaluationMetricsThresholds {
 
   factory AppEvaluationMetricsThresholds.fromMap(Map<String, dynamic> map) {
     return AppEvaluationMetricsThresholds(
-      goldenEvaluationMetricsThresholds: map['goldenEvaluationMetricsThresholds'] == null ? null : (AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds.fromMap((map['goldenEvaluationMetricsThresholds'] as Map).cast<String, dynamic>())).input(),
+      goldenEvaluationMetricsThresholds: map['goldenEvaluationMetricsThresholds'] == null ? null : (AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds.fromMap((map['goldenEvaluationMetricsThresholds']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

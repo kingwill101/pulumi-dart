@@ -27,8 +27,8 @@ class AuditLogConfigMetastoreV1beta {
 
   factory AuditLogConfigMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigMetastoreV1beta(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeMetastoreV1beta.fromValue(map['logType'] as String)).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeMetastoreV1beta.fromValue(map['logType']! as String)).input(),
     );
   }
 }

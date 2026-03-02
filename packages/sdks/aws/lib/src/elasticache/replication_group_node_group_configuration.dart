@@ -50,13 +50,13 @@ class ReplicationGroupNodeGroupConfiguration {
 
   factory ReplicationGroupNodeGroupConfiguration.fromMap(Map<String, dynamic> map) {
     return ReplicationGroupNodeGroupConfiguration(
-      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId'] as String).input(),
-      primaryAvailabilityZone: map['primaryAvailabilityZone'] == null ? null : (map['primaryAvailabilityZone'] as String).input(),
-      primaryOutpostArn: map['primaryOutpostArn'] == null ? null : (map['primaryOutpostArn'] as String).input(),
-      replicaAvailabilityZones: map['replicaAvailabilityZones'] == null ? null : ((map['replicaAvailabilityZones'] as List).cast<String>()).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
-      replicaOutpostArns: map['replicaOutpostArns'] == null ? null : ((map['replicaOutpostArns'] as List).cast<String>()).input(),
-      slots: map['slots'] == null ? null : (map['slots'] as String).input(),
+      nodeGroupId: map['nodeGroupId'] == null ? null : ((map['nodeGroupId'] as String).input()).input(),
+      primaryAvailabilityZone: map['primaryAvailabilityZone'] == null ? null : ((map['primaryAvailabilityZone'] as String).input()).input(),
+      primaryOutpostArn: map['primaryOutpostArn'] == null ? null : ((map['primaryOutpostArn'] as String).input()).input(),
+      replicaAvailabilityZones: map['replicaAvailabilityZones'] == null ? null : (((map['replicaAvailabilityZones'] as List).cast<String>()).input()).input(),
+      replicaCount: map['replicaCount'] == null ? null : ((map['replicaCount'] as int).input()).input(),
+      replicaOutpostArns: map['replicaOutpostArns'] == null ? null : (((map['replicaOutpostArns'] as List).cast<String>()).input()).input(),
+      slots: map['slots'] == null ? null : ((map['slots'] as String).input()).input(),
     );
   }
 }

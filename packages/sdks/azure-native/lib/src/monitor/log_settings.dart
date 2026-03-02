@@ -37,10 +37,10 @@ class LogSettings {
 
   factory LogSettings.fromMap(Map<String, dynamic> map) {
     return LogSettings(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      categoryGroup: map['categoryGroup'] == null ? null : (map['categoryGroup'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      categoryGroup: map['categoryGroup'] == null ? null : (map['categoryGroup']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicy.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class LegacyS3OriginResponse {
 
   factory LegacyS3OriginResponse.fromMap(Map<String, dynamic> map) {
     return LegacyS3OriginResponse(
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      originAccessIdentity: map['originAccessIdentity'] == null ? null : (map['originAccessIdentity'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
+      originAccessIdentity: map['originAccessIdentity'] == null ? null : (map['originAccessIdentity']! as String).input(),
     );
   }
 }

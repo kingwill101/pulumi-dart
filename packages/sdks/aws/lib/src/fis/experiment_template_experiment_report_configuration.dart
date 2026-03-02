@@ -37,10 +37,10 @@ class ExperimentTemplateExperimentReportConfiguration {
 
   factory ExperimentTemplateExperimentReportConfiguration.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateExperimentReportConfiguration(
-      dataSources: map['dataSources'] == null ? null : (ExperimentTemplateExperimentReportConfigurationDataSources.fromMap((map['dataSources'] as Map).cast<String, dynamic>())).input(),
-      outputs: map['outputs'] == null ? null : (ExperimentTemplateExperimentReportConfigurationOutputs.fromMap((map['outputs'] as Map).cast<String, dynamic>())).input(),
-      postExperimentDuration: map['postExperimentDuration'] == null ? null : (map['postExperimentDuration'] as String).input(),
-      preExperimentDuration: map['preExperimentDuration'] == null ? null : (map['preExperimentDuration'] as String).input(),
+      dataSources: map['dataSources'] == null ? null : ((ExperimentTemplateExperimentReportConfigurationDataSources.fromMap((map['dataSources']! as Map).cast<String, dynamic>())).input()).input(),
+      outputs: map['outputs'] == null ? null : ((ExperimentTemplateExperimentReportConfigurationOutputs.fromMap((map['outputs']! as Map).cast<String, dynamic>())).input()).input(),
+      postExperimentDuration: map['postExperimentDuration'] == null ? null : ((map['postExperimentDuration'] as String).input()).input(),
+      preExperimentDuration: map['preExperimentDuration'] == null ? null : ((map['preExperimentDuration'] as String).input()).input(),
     );
   }
 }

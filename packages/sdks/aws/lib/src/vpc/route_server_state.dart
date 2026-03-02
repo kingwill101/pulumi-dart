@@ -73,17 +73,17 @@ class RouteServerState {
 
   factory RouteServerState.fromMap(Map<String, dynamic> map) {
     return RouteServerState(
-      amazonSideAsn: map['amazonSideAsn'] == null ? null : (map['amazonSideAsn'] as int).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      persistRoutes: map['persistRoutes'] == null ? null : (map['persistRoutes'] as String).input(),
-      persistRoutesDuration: map['persistRoutesDuration'] == null ? null : (map['persistRoutesDuration'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routeServerId: map['routeServerId'] == null ? null : (map['routeServerId'] as String).input(),
-      snsNotificationsEnabled: map['snsNotificationsEnabled'] == null ? null : (map['snsNotificationsEnabled'] as bool).input(),
-      snsTopicArn: map['snsTopicArn'] == null ? null : (map['snsTopicArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (RouteServerTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      amazonSideAsn: map['amazonSideAsn'] == null ? null : ((map['amazonSideAsn'] as int).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      persistRoutes: map['persistRoutes'] == null ? null : ((map['persistRoutes'] as String).input()).input(),
+      persistRoutesDuration: map['persistRoutesDuration'] == null ? null : ((map['persistRoutesDuration'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routeServerId: map['routeServerId'] == null ? null : ((map['routeServerId'] as String).input()).input(),
+      snsNotificationsEnabled: map['snsNotificationsEnabled'] == null ? null : ((map['snsNotificationsEnabled'] as bool).input()).input(),
+      snsTopicArn: map['snsTopicArn'] == null ? null : ((map['snsTopicArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((RouteServerTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -55,14 +55,14 @@ class GetBaselineStrategiesResult {
 
   factory GetBaselineStrategiesResult.fromMap(Map<String, dynamic> map) {
     return GetBaselineStrategiesResult(
-      customType: map['customType'] == null ? null : map['customType'] as String,
+      customType: map['customType'] == null ? null : map['customType']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       strategies: pulumi.Input.decodeList<GetBaselineStrategiesStrategy>(map['strategies'], (value) => GetBaselineStrategiesStrategy.fromMap((value as Map).cast<String, dynamic>())),
-      strategyIds: map['strategyIds'] == null ? null : map['strategyIds'] as String,
+      strategyIds: map['strategyIds'] == null ? null : map['strategyIds']! as String,
     );
   }
 }

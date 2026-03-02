@@ -36,7 +36,7 @@ class GetRegionalParameterArgs {
     return GetRegionalParameterArgs(
       location: (map['location'] as String).input(),
       parameterId: (map['parameterId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class NfsFileShareCacheAttributes {
 
   factory NfsFileShareCacheAttributes.fromMap(Map<String, dynamic> map) {
     return NfsFileShareCacheAttributes(
-      cacheStaleTimeoutInSeconds: map['cacheStaleTimeoutInSeconds'] == null ? null : (map['cacheStaleTimeoutInSeconds'] as int).input(),
+      cacheStaleTimeoutInSeconds: map['cacheStaleTimeoutInSeconds'] == null ? null : ((map['cacheStaleTimeoutInSeconds'] as int).input()).input(),
     );
   }
 }

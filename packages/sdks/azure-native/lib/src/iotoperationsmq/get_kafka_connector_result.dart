@@ -102,20 +102,20 @@ class GetKafkaConnectorResult {
   factory GetKafkaConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetKafkaConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      clientIdPrefix: map['clientIdPrefix'] == null ? null : map['clientIdPrefix'] as String,
+      clientIdPrefix: map['clientIdPrefix'] == null ? null : map['clientIdPrefix']! as String,
       extendedLocation: ExtendedLocationPropertyResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      image: map['image'] == null ? null : ContainerImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      instances: map['instances'] == null ? null : map['instances'] as int,
+      image: map['image'] == null ? null : ContainerImageResponse.fromMap((map['image']! as Map).cast<String, dynamic>()),
+      instances: map['instances'] == null ? null : map['instances']! as int,
       kafkaConnection: KafkaRemoteBrokerConnectionSpecResponse.fromMap((map['kafkaConnection'] as Map).cast<String, dynamic>()),
-      localBrokerConnection: map['localBrokerConnection'] == null ? null : LocalBrokerConnectionSpecResponse.fromMap((map['localBrokerConnection'] as Map).cast<String, dynamic>()),
+      localBrokerConnection: map['localBrokerConnection'] == null ? null : LocalBrokerConnectionSpecResponse.fromMap((map['localBrokerConnection']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
-      logLevel: map['logLevel'] == null ? null : map['logLevel'] as String,
+      logLevel: map['logLevel'] == null ? null : map['logLevel']! as String,
       name: map['name'] as String,
-      nodeTolerations: map['nodeTolerations'] == null ? null : NodeTolerationsResponse.fromMap((map['nodeTolerations'] as Map).cast<String, dynamic>()),
+      nodeTolerations: map['nodeTolerations'] == null ? null : NodeTolerationsResponse.fromMap((map['nodeTolerations']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

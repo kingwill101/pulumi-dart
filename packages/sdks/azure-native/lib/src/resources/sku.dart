@@ -46,12 +46,12 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

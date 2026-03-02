@@ -26,8 +26,8 @@ class EventHubProperties {
 
   factory EventHubProperties.fromMap(Map<String, dynamic> map) {
     return EventHubProperties(
-      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
-      retentionTimeInDays: map['retentionTimeInDays'] == null ? null : (map['retentionTimeInDays'] as double).input(),
+      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount']! as int).input(),
+      retentionTimeInDays: map['retentionTimeInDays'] == null ? null : (map['retentionTimeInDays']! as double).input(),
     );
   }
 }

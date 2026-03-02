@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2OutputStorageConfig {
 
   factory GooglePrivacyDlpV2OutputStorageConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2OutputStorageConfig(
-      outputSchema: map['outputSchema'] == null ? null : (GooglePrivacyDlpV2OutputStorageConfigOutputSchema.fromValue(map['outputSchema'] as String)).input(),
-      table: map['table'] == null ? null : (GooglePrivacyDlpV2BigQueryTable.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
+      outputSchema: map['outputSchema'] == null ? null : (GooglePrivacyDlpV2OutputStorageConfigOutputSchema.fromValue(map['outputSchema']! as String)).input(),
+      table: map['table'] == null ? null : (GooglePrivacyDlpV2BigQueryTable.fromMap((map['table']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class V3CustomDomainRouteConfig {
 
   factory V3CustomDomainRouteConfig.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainRouteConfig(
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<V3CustomDomainRouteConfigRoute>(map['routes'], (value) => V3CustomDomainRouteConfigRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<V3CustomDomainRouteConfigRoute>(map['routes']!, (value) => V3CustomDomainRouteConfigRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

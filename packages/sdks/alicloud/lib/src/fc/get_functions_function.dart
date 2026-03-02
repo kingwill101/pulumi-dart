@@ -110,7 +110,7 @@ class GetFunctionsFunction {
       codeChecksum: (map['codeChecksum'] as String).input(),
       codeSize: (map['codeSize'] as int).input(),
       creationTime: (map['creationTime'] as String).input(),
-      customContainerConfig: map['customContainerConfig'] == null ? null : (GetFunctionsFunctionCustomContainerConfig.fromMap((map['customContainerConfig'] as Map).cast<String, dynamic>())).input(),
+      customContainerConfig: map['customContainerConfig'] == null ? null : (GetFunctionsFunctionCustomContainerConfig.fromMap((map['customContainerConfig']! as Map).cast<String, dynamic>())).input(),
       description: (map['description'] as String).input(),
       environmentVariables: ((map['environmentVariables'] as Map).cast<String, String>()).input(),
       handler: (map['handler'] as String).input(),

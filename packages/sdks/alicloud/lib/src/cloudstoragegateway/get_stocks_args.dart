@@ -29,8 +29,8 @@ class GetStocksArgs {
 
   factory GetStocksArgs.fromMap(Map<String, dynamic> map) {
     return GetStocksArgs(
-      gatewayClass: map['gatewayClass'] == null ? null : (map['gatewayClass'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      gatewayClass: map['gatewayClass'] == null ? null : (map['gatewayClass']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

@@ -75,17 +75,17 @@ class NetworkComputeBetaArgs {
 
   factory NetworkComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return NetworkComputeBetaArgs(
-      autoCreateSubnetworks: map['autoCreateSubnetworks'] == null ? null : (map['autoCreateSubnetworks'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableUlaInternalIpv6: map['enableUlaInternalIpv6'] == null ? null : (map['enableUlaInternalIpv6'] as bool).input(),
-      internalIpv6Range: map['internalIpv6Range'] == null ? null : (map['internalIpv6Range'] as String).input(),
-      ipv4Range: map['ipv4Range'] == null ? null : (map['ipv4Range'] as String).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkFirewallPolicyEnforcementOrder: map['networkFirewallPolicyEnforcementOrder'] == null ? null : (NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta.fromValue(map['networkFirewallPolicyEnforcementOrder'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      routingConfig: map['routingConfig'] == null ? null : (NetworkRoutingConfigComputeBeta.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())).input(),
+      autoCreateSubnetworks: map['autoCreateSubnetworks'] == null ? null : (map['autoCreateSubnetworks']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableUlaInternalIpv6: map['enableUlaInternalIpv6'] == null ? null : (map['enableUlaInternalIpv6']! as bool).input(),
+      internalIpv6Range: map['internalIpv6Range'] == null ? null : (map['internalIpv6Range']! as String).input(),
+      ipv4Range: map['ipv4Range'] == null ? null : (map['ipv4Range']! as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkFirewallPolicyEnforcementOrder: map['networkFirewallPolicyEnforcementOrder'] == null ? null : (NetworkNetworkFirewallPolicyEnforcementOrderComputeBeta.fromValue(map['networkFirewallPolicyEnforcementOrder']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      routingConfig: map['routingConfig'] == null ? null : (NetworkRoutingConfigComputeBeta.fromMap((map['routingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      additionalUsageQuota: map['additionalUsageQuota'] == null ? null : (map['additionalUsageQuota'] as String).input(),
+      additionalUsageQuota: map['additionalUsageQuota'] == null ? null : (map['additionalUsageQuota']! as String).input(),
       email: (map['email'] as String).input(),
       labName: (map['labName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

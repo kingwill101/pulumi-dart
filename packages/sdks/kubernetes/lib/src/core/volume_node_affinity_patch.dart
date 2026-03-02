@@ -22,7 +22,7 @@ class VolumeNodeAffinityPatch {
 
   factory VolumeNodeAffinityPatch.fromMap(Map<String, dynamic> map) {
     return VolumeNodeAffinityPatch(
-      required: map['required'] == null ? null : (NodeSelectorPatch.fromMap((map['required'] as Map).cast<String, dynamic>())).input(),
+      required: map['required'] == null ? null : (NodeSelectorPatch.fromMap((map['required']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -57,11 +57,11 @@ class GetEcsNetworkInterfacePermissionsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       networkInterfaceId: map['networkInterfaceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
       permissions: pulumi.Input.decodeList<GetEcsNetworkInterfacePermissionsPermission>(map['permissions'], (value) => GetEcsNetworkInterfacePermissionsPermission.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
       totalCount: map['totalCount'] as int,
     );
   }

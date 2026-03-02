@@ -68,15 +68,15 @@ class VaultArgs {
 
   factory VaultArgs.fromMap(Map<String, dynamic> map) {
     return VaultArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptType: map['encryptType'] == null ? null : (map['encryptType'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptType: map['encryptType'] == null ? null : (map['encryptType']! as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vaultName: (map['vaultName'] as String).input(),
-      vaultStorageClass: map['vaultStorageClass'] == null ? null : (map['vaultStorageClass'] as String).input(),
-      vaultType: map['vaultType'] == null ? null : (map['vaultType'] as String).input(),
-      wormEnabled: map['wormEnabled'] == null ? null : (map['wormEnabled'] as bool).input(),
+      vaultStorageClass: map['vaultStorageClass'] == null ? null : (map['vaultStorageClass']! as String).input(),
+      vaultType: map['vaultType'] == null ? null : (map['vaultType']! as String).input(),
+      wormEnabled: map['wormEnabled'] == null ? null : (map['wormEnabled']! as bool).input(),
     );
   }
 }

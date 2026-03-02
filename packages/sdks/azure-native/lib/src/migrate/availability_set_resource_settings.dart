@@ -47,12 +47,12 @@ class AvailabilitySetResourceSettings {
 
   factory AvailabilitySetResourceSettings.fromMap(Map<String, dynamic> map) {
     return AvailabilitySetResourceSettings(
-      faultDomain: map['faultDomain'] == null ? null : (map['faultDomain'] as int).input(),
+      faultDomain: map['faultDomain'] == null ? null : (map['faultDomain']! as int).input(),
       resourceType: (map['resourceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
-      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
-      updateDomain: map['updateDomain'] == null ? null : (map['updateDomain'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName']! as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName']! as String).input(),
+      updateDomain: map['updateDomain'] == null ? null : (map['updateDomain']! as int).input(),
     );
   }
 }

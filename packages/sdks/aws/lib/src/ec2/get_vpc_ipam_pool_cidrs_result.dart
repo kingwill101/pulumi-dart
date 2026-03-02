@@ -40,9 +40,9 @@ class GetVpcIpamPoolCidrsResult {
 
   factory GetVpcIpamPoolCidrsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamPoolCidrsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcIpamPoolCidrsFilter>(map['filters'], (value) => GetVpcIpamPoolCidrsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcIpamPoolCidrsFilter>(map['filters']!, (value) => GetVpcIpamPoolCidrsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      ipamPoolCidrs: pulumi.Input.decodeList<GetVpcIpamPoolCidrsIpamPoolCidr>(map['ipamPoolCidrs'], (value) => GetVpcIpamPoolCidrsIpamPoolCidr.fromMap((value as Map).cast<String, dynamic>())),
+      ipamPoolCidrs: pulumi.Input.decodeList<GetVpcIpamPoolCidrsIpamPoolCidr>(map['ipamPoolCidrs']!, (value) => GetVpcIpamPoolCidrsIpamPoolCidr.fromMap((value as Map).cast<String, dynamic>())),
       ipamPoolId: map['ipamPoolId'] as String,
       region: map['region'] as String,
     );

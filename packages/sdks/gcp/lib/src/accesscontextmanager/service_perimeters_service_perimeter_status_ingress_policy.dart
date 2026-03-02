@@ -36,9 +36,9 @@ class ServicePerimetersServicePerimeterStatusIngressPolicy {
 
   factory ServicePerimetersServicePerimeterStatusIngressPolicy.fromMap(Map<String, dynamic> map) {
     return ServicePerimetersServicePerimeterStatusIngressPolicy(
-      ingressFrom: map['ingressFrom'] == null ? null : (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom.fromMap((map['ingressFrom'] as Map).cast<String, dynamic>())).input(),
-      ingressTo: map['ingressTo'] == null ? null : (ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo.fromMap((map['ingressTo'] as Map).cast<String, dynamic>())).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      ingressFrom: map['ingressFrom'] == null ? null : (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom.fromMap((map['ingressFrom']! as Map).cast<String, dynamic>())).input(),
+      ingressTo: map['ingressTo'] == null ? null : (ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo.fromMap((map['ingressTo']! as Map).cast<String, dynamic>())).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

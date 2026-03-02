@@ -28,8 +28,8 @@ class ChannelCredentials {
 
   factory ChannelCredentials.fromMap(Map<String, dynamic> map) {
     return ChannelCredentials(
-      certificates: map['certificates'] == null ? null : (TlsCertificatePaths.fromMap((map['certificates'] as Map).cast<String, dynamic>())).input(),
-      channelCredentialType: map['channelCredentialType'] == null ? null : (ChannelCredentialsChannelCredentialType.fromValue(map['channelCredentialType'] as String)).input(),
+      certificates: map['certificates'] == null ? null : (TlsCertificatePaths.fromMap((map['certificates']! as Map).cast<String, dynamic>())).input(),
+      channelCredentialType: map['channelCredentialType'] == null ? null : (ChannelCredentialsChannelCredentialType.fromValue(map['channelCredentialType']! as String)).input(),
     );
   }
 }

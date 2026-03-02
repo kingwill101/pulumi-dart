@@ -28,7 +28,7 @@ class MetricAlertSingleResourceMultipleMetricCriteria {
 
   factory MetricAlertSingleResourceMultipleMetricCriteria.fromMap(Map<String, dynamic> map) {
     return MetricAlertSingleResourceMultipleMetricCriteria(
-      allOf: map['allOf'] == null ? null : (pulumi.Input.decodeList<MetricCriteria>(map['allOf'], (value) => MetricCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allOf: map['allOf'] == null ? null : (pulumi.Input.decodeList<MetricCriteria>(map['allOf']!, (value) => MetricCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
       odataType: (map['odataType'] as String).input(),
     );
   }

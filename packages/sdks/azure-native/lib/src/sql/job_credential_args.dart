@@ -49,7 +49,7 @@ class JobCredentialArgs {
 
   factory JobCredentialArgs.fromMap(Map<String, dynamic> map) {
     return JobCredentialArgs(
-      credentialName: map['credentialName'] == null ? null : (map['credentialName'] as String).input(),
+      credentialName: map['credentialName'] == null ? null : (map['credentialName']! as String).input(),
       jobAgentName: (map['jobAgentName'] as String).input(),
       password: (map['password'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

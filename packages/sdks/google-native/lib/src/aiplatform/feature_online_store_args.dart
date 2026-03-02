@@ -48,12 +48,12 @@ class FeatureOnlineStoreArgs {
 
   factory FeatureOnlineStoreArgs.fromMap(Map<String, dynamic> map) {
     return FeatureOnlineStoreArgs(
-      bigtable: map['bigtable'] == null ? null : (GoogleCloudAiplatformV1FeatureOnlineStoreBigtable.fromMap((map['bigtable'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      bigtable: map['bigtable'] == null ? null : (GoogleCloudAiplatformV1FeatureOnlineStoreBigtable.fromMap((map['bigtable']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       featureOnlineStoreId: (map['featureOnlineStoreId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

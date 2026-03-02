@@ -37,10 +37,10 @@ class ScaleSetOsProfileWindowsConfig {
 
   factory ScaleSetOsProfileWindowsConfig.fromMap(Map<String, dynamic> map) {
     return ScaleSetOsProfileWindowsConfig(
-      additionalUnattendConfigs: map['additionalUnattendConfigs'] == null ? null : (pulumi.Input.decodeList<ScaleSetOsProfileWindowsConfigAdditionalUnattendConfig>(map['additionalUnattendConfigs'], (value) => ScaleSetOsProfileWindowsConfigAdditionalUnattendConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableAutomaticUpgrades: map['enableAutomaticUpgrades'] == null ? null : (map['enableAutomaticUpgrades'] as bool).input(),
-      provisionVmAgent: map['provisionVmAgent'] == null ? null : (map['provisionVmAgent'] as bool).input(),
-      winrms: map['winrms'] == null ? null : (pulumi.Input.decodeList<ScaleSetOsProfileWindowsConfigWinrm>(map['winrms'], (value) => ScaleSetOsProfileWindowsConfigWinrm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalUnattendConfigs: map['additionalUnattendConfigs'] == null ? null : (pulumi.Input.decodeList<ScaleSetOsProfileWindowsConfigAdditionalUnattendConfig>(map['additionalUnattendConfigs']!, (value) => ScaleSetOsProfileWindowsConfigAdditionalUnattendConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableAutomaticUpgrades: map['enableAutomaticUpgrades'] == null ? null : (map['enableAutomaticUpgrades']! as bool).input(),
+      provisionVmAgent: map['provisionVmAgent'] == null ? null : (map['provisionVmAgent']! as bool).input(),
+      winrms: map['winrms'] == null ? null : (pulumi.Input.decodeList<ScaleSetOsProfileWindowsConfigWinrm>(map['winrms']!, (value) => ScaleSetOsProfileWindowsConfigWinrm.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

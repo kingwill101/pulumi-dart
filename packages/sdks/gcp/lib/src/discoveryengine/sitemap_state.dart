@@ -56,13 +56,13 @@ class SitemapState {
 
   factory SitemapState.fromMap(Map<String, dynamic> map) {
     return SitemapState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataStoreId: map['dataStoreId'] == null ? null : (map['dataStoreId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sitemapId: map['sitemapId'] == null ? null : (map['sitemapId'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataStoreId: map['dataStoreId'] == null ? null : (map['dataStoreId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sitemapId: map['sitemapId'] == null ? null : (map['sitemapId']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

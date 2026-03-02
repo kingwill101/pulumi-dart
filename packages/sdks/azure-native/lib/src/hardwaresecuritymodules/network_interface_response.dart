@@ -26,7 +26,7 @@ class NetworkInterfaceResponse {
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

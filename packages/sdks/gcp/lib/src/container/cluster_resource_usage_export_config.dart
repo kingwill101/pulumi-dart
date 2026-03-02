@@ -39,8 +39,8 @@ class ClusterResourceUsageExportConfig {
   factory ClusterResourceUsageExportConfig.fromMap(Map<String, dynamic> map) {
     return ClusterResourceUsageExportConfig(
       bigqueryDestination: (ClusterResourceUsageExportConfigBigqueryDestination.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>())).input(),
-      enableNetworkEgressMetering: map['enableNetworkEgressMetering'] == null ? null : (map['enableNetworkEgressMetering'] as bool).input(),
-      enableResourceConsumptionMetering: map['enableResourceConsumptionMetering'] == null ? null : (map['enableResourceConsumptionMetering'] as bool).input(),
+      enableNetworkEgressMetering: map['enableNetworkEgressMetering'] == null ? null : (map['enableNetworkEgressMetering']! as bool).input(),
+      enableResourceConsumptionMetering: map['enableResourceConsumptionMetering'] == null ? null : (map['enableResourceConsumptionMetering']! as bool).input(),
     );
   }
 }

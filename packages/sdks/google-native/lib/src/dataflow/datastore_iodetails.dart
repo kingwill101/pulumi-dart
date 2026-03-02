@@ -26,8 +26,8 @@ class DatastoreIODetails {
 
   factory DatastoreIODetails.fromMap(Map<String, dynamic> map) {
     return DatastoreIODetails(
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

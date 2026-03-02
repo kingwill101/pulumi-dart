@@ -40,9 +40,9 @@ class GetIntegrationExportersArgs {
   factory GetIntegrationExportersArgs.fromMap(Map<String, dynamic> map) {
     return GetIntegrationExportersArgs(
       clusterId: (map['clusterId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       integrationType: (map['integrationType'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

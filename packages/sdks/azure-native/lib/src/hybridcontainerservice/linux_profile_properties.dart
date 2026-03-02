@@ -27,8 +27,8 @@ class LinuxProfileProperties {
 
   factory LinuxProfileProperties.fromMap(Map<String, dynamic> map) {
     return LinuxProfileProperties(
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
-      ssh: map['ssh'] == null ? null : (LinuxProfilePropertiesSsh.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername']! as String).input(),
+      ssh: map['ssh'] == null ? null : (LinuxProfilePropertiesSsh.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

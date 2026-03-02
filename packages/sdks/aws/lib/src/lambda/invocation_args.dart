@@ -62,12 +62,12 @@ class InvocationArgs {
     return InvocationArgs(
       functionName: (map['functionName'] as String).input(),
       input: (map['input'] as String).input(),
-      lifecycleScope: map['lifecycleScope'] == null ? null : (map['lifecycleScope'] as String).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      terraformKey: map['terraformKey'] == null ? null : (map['terraformKey'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      lifecycleScope: map['lifecycleScope'] == null ? null : ((map['lifecycleScope'] as String).input()).input(),
+      qualifier: map['qualifier'] == null ? null : ((map['qualifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tenantId: map['tenantId'] == null ? null : ((map['tenantId'] as String).input()).input(),
+      terraformKey: map['terraformKey'] == null ? null : ((map['terraformKey'] as String).input()).input(),
+      triggers: map['triggers'] == null ? null : (((map['triggers'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class DistributionViewerMtlsConfigTrustStoreConfig {
 
   factory DistributionViewerMtlsConfigTrustStoreConfig.fromMap(Map<String, dynamic> map) {
     return DistributionViewerMtlsConfigTrustStoreConfig(
-      advertiseTrustStoreCaNames: map['advertiseTrustStoreCaNames'] == null ? null : (map['advertiseTrustStoreCaNames'] as bool).input(),
-      ignoreCertificateExpiry: map['ignoreCertificateExpiry'] == null ? null : (map['ignoreCertificateExpiry'] as bool).input(),
+      advertiseTrustStoreCaNames: map['advertiseTrustStoreCaNames'] == null ? null : ((map['advertiseTrustStoreCaNames'] as bool).input()).input(),
+      ignoreCertificateExpiry: map['ignoreCertificateExpiry'] == null ? null : ((map['ignoreCertificateExpiry'] as bool).input()).input(),
       trustStoreId: (map['trustStoreId'] as String).input(),
     );
   }

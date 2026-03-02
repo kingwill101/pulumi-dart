@@ -94,19 +94,19 @@ class PermissionsState {
 
   factory PermissionsState.fromMap(Map<String, dynamic> map) {
     return PermissionsState(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      catalogResource: map['catalogResource'] == null ? null : (map['catalogResource'] as bool).input(),
-      dataCellsFilter: map['dataCellsFilter'] == null ? null : (PermissionsDataCellsFilter.fromMap((map['dataCellsFilter'] as Map).cast<String, dynamic>())).input(),
-      dataLocation: map['dataLocation'] == null ? null : (PermissionsDataLocation.fromMap((map['dataLocation'] as Map).cast<String, dynamic>())).input(),
-      database: map['database'] == null ? null : (PermissionsDatabase.fromMap((map['database'] as Map).cast<String, dynamic>())).input(),
-      lfTag: map['lfTag'] == null ? null : (PermissionsLfTag.fromMap((map['lfTag'] as Map).cast<String, dynamic>())).input(),
-      lfTagPolicy: map['lfTagPolicy'] == null ? null : (PermissionsLfTagPolicy.fromMap((map['lfTagPolicy'] as Map).cast<String, dynamic>())).input(),
-      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
-      permissionsWithGrantOptions: map['permissionsWithGrantOptions'] == null ? null : ((map['permissionsWithGrantOptions'] as List).cast<String>()).input(),
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      table: map['table'] == null ? null : (PermissionsTable.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
-      tableWithColumns: map['tableWithColumns'] == null ? null : (PermissionsTableWithColumns.fromMap((map['tableWithColumns'] as Map).cast<String, dynamic>())).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      catalogResource: map['catalogResource'] == null ? null : ((map['catalogResource'] as bool).input()).input(),
+      dataCellsFilter: map['dataCellsFilter'] == null ? null : ((PermissionsDataCellsFilter.fromMap((map['dataCellsFilter']! as Map).cast<String, dynamic>())).input()).input(),
+      dataLocation: map['dataLocation'] == null ? null : ((PermissionsDataLocation.fromMap((map['dataLocation']! as Map).cast<String, dynamic>())).input()).input(),
+      database: map['database'] == null ? null : ((PermissionsDatabase.fromMap((map['database']! as Map).cast<String, dynamic>())).input()).input(),
+      lfTag: map['lfTag'] == null ? null : ((PermissionsLfTag.fromMap((map['lfTag']! as Map).cast<String, dynamic>())).input()).input(),
+      lfTagPolicy: map['lfTagPolicy'] == null ? null : ((PermissionsLfTagPolicy.fromMap((map['lfTagPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      permissions: map['permissions'] == null ? null : (((map['permissions'] as List).cast<String>()).input()).input(),
+      permissionsWithGrantOptions: map['permissionsWithGrantOptions'] == null ? null : (((map['permissionsWithGrantOptions'] as List).cast<String>()).input()).input(),
+      principal: map['principal'] == null ? null : ((map['principal'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      table: map['table'] == null ? null : ((PermissionsTable.fromMap((map['table']! as Map).cast<String, dynamic>())).input()).input(),
+      tableWithColumns: map['tableWithColumns'] == null ? null : ((PermissionsTableWithColumns.fromMap((map['tableWithColumns']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

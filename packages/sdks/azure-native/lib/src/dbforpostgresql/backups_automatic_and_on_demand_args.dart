@@ -34,7 +34,7 @@ class BackupsAutomaticAndOnDemandArgs {
 
   factory BackupsAutomaticAndOnDemandArgs.fromMap(Map<String, dynamic> map) {
     return BackupsAutomaticAndOnDemandArgs(
-      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
+      backupName: map['backupName'] == null ? null : (map['backupName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
     );

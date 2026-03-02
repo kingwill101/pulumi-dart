@@ -70,16 +70,16 @@ class AnalyticsItemArgs {
 
   factory AnalyticsItemArgs.fromMap(Map<String, dynamic> map) {
     return AnalyticsItemArgs(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      overrideItem: map['overrideItem'] == null ? null : (map['overrideItem'] as bool).input(),
-      properties: map['properties'] == null ? null : (ApplicationInsightsComponentAnalyticsItemProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      overrideItem: map['overrideItem'] == null ? null : (map['overrideItem']! as bool).input(),
+      properties: map['properties'] == null ? null : (ApplicationInsightsComponentAnalyticsItemProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       scopePath: (map['scopePath'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

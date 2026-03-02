@@ -27,7 +27,7 @@ class NotificationsSourceAlert {
 
   factory NotificationsSourceAlert.fromMap(Map<String, dynamic> map) {
     return NotificationsSourceAlert(
-      minimalSeverity: map['minimalSeverity'] == null ? null : (map['minimalSeverity'] as String).input(),
+      minimalSeverity: map['minimalSeverity'] == null ? null : (map['minimalSeverity']! as String).input(),
       sourceType: (map['sourceType'] as String).input(),
     );
   }

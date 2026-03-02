@@ -21,7 +21,7 @@ class BuildpackProperties {
 
   factory BuildpackProperties.fromMap(Map<String, dynamic> map) {
     return BuildpackProperties(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

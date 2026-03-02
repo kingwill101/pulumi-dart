@@ -46,7 +46,7 @@ class GetAuthorizationLoginLinkPostArgs {
     return GetAuthorizationLoginLinkPostArgs(
       authorizationId: (map['authorizationId'] as String).input(),
       authorizationProviderId: (map['authorizationProviderId'] as String).input(),
-      postLoginRedirectUrl: map['postLoginRedirectUrl'] == null ? null : (map['postLoginRedirectUrl'] as String).input(),
+      postLoginRedirectUrl: map['postLoginRedirectUrl'] == null ? null : (map['postLoginRedirectUrl']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

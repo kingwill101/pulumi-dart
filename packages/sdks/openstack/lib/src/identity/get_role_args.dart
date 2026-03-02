@@ -35,9 +35,9 @@ class GetRoleArgs {
 
   factory GetRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleArgs(
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

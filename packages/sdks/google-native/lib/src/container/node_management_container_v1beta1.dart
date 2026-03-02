@@ -31,9 +31,9 @@ class NodeManagementContainerV1beta1 {
 
   factory NodeManagementContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodeManagementContainerV1beta1(
-      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair'] as bool).input(),
-      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade'] as bool).input(),
-      upgradeOptions: map['upgradeOptions'] == null ? null : ((map['upgradeOptions'] as Map).cast<String, dynamic>()).input(),
+      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair']! as bool).input(),
+      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade']! as bool).input(),
+      upgradeOptions: map['upgradeOptions'] == null ? null : ((map['upgradeOptions']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

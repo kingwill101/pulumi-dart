@@ -153,7 +153,7 @@ class GetClusterResult {
     return GetClusterResult(
       arn: map['arn'] as String,
       availabilityZone: map['availabilityZone'] as String,
-      cacheNodes: pulumi.Input.decodeList<GetClusterCacheNode>(map['cacheNodes'], (value) => GetClusterCacheNode.fromMap((value as Map).cast<String, dynamic>())),
+      cacheNodes: pulumi.Input.decodeList<GetClusterCacheNode>(map['cacheNodes']!, (value) => GetClusterCacheNode.fromMap((value as Map).cast<String, dynamic>())),
       clusterAddress: map['clusterAddress'] as String,
       clusterId: map['clusterId'] as String,
       configurationEndpoint: map['configurationEndpoint'] as String,
@@ -161,7 +161,7 @@ class GetClusterResult {
       engineVersion: map['engineVersion'] as String,
       id: map['id'] as String,
       ipDiscovery: map['ipDiscovery'] as String,
-      logDeliveryConfigurations: pulumi.Input.decodeList<GetClusterLogDeliveryConfiguration>(map['logDeliveryConfigurations'], (value) => GetClusterLogDeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      logDeliveryConfigurations: pulumi.Input.decodeList<GetClusterLogDeliveryConfiguration>(map['logDeliveryConfigurations']!, (value) => GetClusterLogDeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       maintenanceWindow: map['maintenanceWindow'] as String,
       networkType: map['networkType'] as String,
       nodeType: map['nodeType'] as String,

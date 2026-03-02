@@ -33,7 +33,7 @@ class GetPhraseMatcherArgs {
     return GetPhraseMatcherArgs(
       location: (map['location'] as String).input(),
       phraseMatcherId: (map['phraseMatcherId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class AutonomousDatabaseBackupState {
 
   factory AutonomousDatabaseBackupState.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabaseBackupState(
-      autonomousDatabaseId: map['autonomousDatabaseId'] == null ? null : (map['autonomousDatabaseId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : (map['retentionPeriodInDays'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      autonomousDatabaseId: map['autonomousDatabaseId'] == null ? null : (map['autonomousDatabaseId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : (map['retentionPeriodInDays']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBur
 
   factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings(
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      timecodeBurninFontSize: map['timecodeBurninFontSize'] == null ? null : (map['timecodeBurninFontSize'] as String).input(),
-      timecodeBurninPosition: map['timecodeBurninPosition'] == null ? null : (map['timecodeBurninPosition'] as String).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      timecodeBurninFontSize: map['timecodeBurninFontSize'] == null ? null : ((map['timecodeBurninFontSize'] as String).input()).input(),
+      timecodeBurninPosition: map['timecodeBurninPosition'] == null ? null : ((map['timecodeBurninPosition'] as String).input()).input(),
     );
   }
 }

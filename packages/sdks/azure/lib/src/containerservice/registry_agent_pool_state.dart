@@ -56,14 +56,14 @@ class RegistryAgentPoolState {
 
   factory RegistryAgentPoolState.fromMap(Map<String, dynamic> map) {
     return RegistryAgentPoolState(
-      containerRegistryName: map['containerRegistryName'] == null ? null : (map['containerRegistryName'] as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
-      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : (map['virtualNetworkSubnetId'] as String).input(),
+      containerRegistryName: map['containerRegistryName'] == null ? null : (map['containerRegistryName']! as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : (map['virtualNetworkSubnetId']! as String).input(),
     );
   }
 }

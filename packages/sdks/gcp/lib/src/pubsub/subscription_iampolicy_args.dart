@@ -39,7 +39,7 @@ class SubscriptionIAMPolicyArgs {
   factory SubscriptionIAMPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionIAMPolicyArgs(
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       subscription: (map['subscription'] as String).input(),
     );
   }

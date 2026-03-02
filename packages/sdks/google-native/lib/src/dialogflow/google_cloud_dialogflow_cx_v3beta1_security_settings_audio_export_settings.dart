@@ -37,10 +37,10 @@ class GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings {
 
   factory GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings(
-      audioExportPattern: map['audioExportPattern'] == null ? null : (map['audioExportPattern'] as String).input(),
-      audioFormat: map['audioFormat'] == null ? null : (GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat.fromValue(map['audioFormat'] as String)).input(),
-      enableAudioRedaction: map['enableAudioRedaction'] == null ? null : (map['enableAudioRedaction'] as bool).input(),
-      gcsBucket: map['gcsBucket'] == null ? null : (map['gcsBucket'] as String).input(),
+      audioExportPattern: map['audioExportPattern'] == null ? null : (map['audioExportPattern']! as String).input(),
+      audioFormat: map['audioFormat'] == null ? null : (GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat.fromValue(map['audioFormat']! as String)).input(),
+      enableAudioRedaction: map['enableAudioRedaction'] == null ? null : (map['enableAudioRedaction']! as bool).input(),
+      gcsBucket: map['gcsBucket'] == null ? null : (map['gcsBucket']! as String).input(),
     );
   }
 }

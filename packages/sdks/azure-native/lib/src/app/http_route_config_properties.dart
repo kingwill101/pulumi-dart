@@ -28,8 +28,8 @@ class HttpRouteConfigProperties {
 
   factory HttpRouteConfigProperties.fromMap(Map<String, dynamic> map) {
     return HttpRouteConfigProperties(
-      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomain>(map['customDomains'], (value) => CustomDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRule>(map['rules'], (value) => HttpRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomain>(map['customDomains']!, (value) => CustomDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRule>(map['rules']!, (value) => HttpRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

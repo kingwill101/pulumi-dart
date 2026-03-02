@@ -26,8 +26,8 @@ class MonitorConfigExpectedStatusCodeRangesItem {
 
   factory MonitorConfigExpectedStatusCodeRangesItem.fromMap(Map<String, dynamic> map) {
     return MonitorConfigExpectedStatusCodeRangesItem(
-      max: map['max'] == null ? null : (map['max'] as int).input(),
-      min: map['min'] == null ? null : (map['min'] as int).input(),
+      max: map['max'] == null ? null : (map['max']! as int).input(),
+      min: map['min'] == null ? null : (map['min']! as int).input(),
     );
   }
 }

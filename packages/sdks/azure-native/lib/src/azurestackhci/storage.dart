@@ -21,7 +21,7 @@ class Storage {
 
   factory Storage.fromMap(Map<String, dynamic> map) {
     return Storage(
-      configurationMode: map['configurationMode'] == null ? null : (map['configurationMode'] as String).input(),
+      configurationMode: map['configurationMode'] == null ? null : (map['configurationMode']! as String).input(),
     );
   }
 }

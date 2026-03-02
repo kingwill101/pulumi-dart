@@ -39,7 +39,7 @@ class GetMachineTypesResult {
 
   factory GetMachineTypesResult.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesResult(
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       machineTypes: pulumi.Input.decodeList<GetMachineTypesMachineType>(map['machineTypes'], (value) => GetMachineTypesMachineType.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] as String,

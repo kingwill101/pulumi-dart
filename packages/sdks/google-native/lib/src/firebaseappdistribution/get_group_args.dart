@@ -28,7 +28,7 @@ class GetGroupArgs {
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupArgs(
       groupId: (map['groupId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

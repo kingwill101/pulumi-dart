@@ -35,9 +35,9 @@ class DataCellsFilterArgs {
 
   factory DataCellsFilterArgs.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tableData: (DataCellsFilterTableData.fromMap((map['tableData'] as Map).cast<String, dynamic>())).input(),
-      timeouts: map['timeouts'] == null ? null : (DataCellsFilterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tableData: (DataCellsFilterTableData.fromMap((map['tableData']! as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : ((DataCellsFilterTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

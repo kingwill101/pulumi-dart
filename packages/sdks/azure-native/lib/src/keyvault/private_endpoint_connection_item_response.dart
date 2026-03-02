@@ -43,10 +43,10 @@ class PrivateEndpointConnectionItemResponse {
 
   factory PrivateEndpointConnectionItemResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionItemResponse(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>())).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

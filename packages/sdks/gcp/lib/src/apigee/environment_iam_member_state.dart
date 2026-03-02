@@ -61,12 +61,12 @@ class EnvironmentIamMemberState {
 
   factory EnvironmentIamMemberState.fromMap(Map<String, dynamic> map) {
     return EnvironmentIamMemberState(
-      condition: map['condition'] == null ? null : (EnvironmentIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      envId: map['envId'] == null ? null : (map['envId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (EnvironmentIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      envId: map['envId'] == null ? null : (map['envId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

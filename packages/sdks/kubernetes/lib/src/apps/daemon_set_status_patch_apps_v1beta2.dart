@@ -67,16 +67,16 @@ class DaemonSetStatusPatchAppsV1beta2 {
 
   factory DaemonSetStatusPatchAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return DaemonSetStatusPatchAppsV1beta2(
-      collisionCount: map['collisionCount'] == null ? null : (map['collisionCount'] as int).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<DaemonSetConditionPatchAppsV1beta2>(map['conditions'], (value) => DaemonSetConditionPatchAppsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      currentNumberScheduled: map['currentNumberScheduled'] == null ? null : (map['currentNumberScheduled'] as int).input(),
-      desiredNumberScheduled: map['desiredNumberScheduled'] == null ? null : (map['desiredNumberScheduled'] as int).input(),
-      numberAvailable: map['numberAvailable'] == null ? null : (map['numberAvailable'] as int).input(),
-      numberMisscheduled: map['numberMisscheduled'] == null ? null : (map['numberMisscheduled'] as int).input(),
-      numberReady: map['numberReady'] == null ? null : (map['numberReady'] as int).input(),
-      numberUnavailable: map['numberUnavailable'] == null ? null : (map['numberUnavailable'] as int).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
-      updatedNumberScheduled: map['updatedNumberScheduled'] == null ? null : (map['updatedNumberScheduled'] as int).input(),
+      collisionCount: map['collisionCount'] == null ? null : (map['collisionCount']! as int).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<DaemonSetConditionPatchAppsV1beta2>(map['conditions']!, (value) => DaemonSetConditionPatchAppsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentNumberScheduled: map['currentNumberScheduled'] == null ? null : (map['currentNumberScheduled']! as int).input(),
+      desiredNumberScheduled: map['desiredNumberScheduled'] == null ? null : (map['desiredNumberScheduled']! as int).input(),
+      numberAvailable: map['numberAvailable'] == null ? null : (map['numberAvailable']! as int).input(),
+      numberMisscheduled: map['numberMisscheduled'] == null ? null : (map['numberMisscheduled']! as int).input(),
+      numberReady: map['numberReady'] == null ? null : (map['numberReady']! as int).input(),
+      numberUnavailable: map['numberUnavailable'] == null ? null : (map['numberUnavailable']! as int).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      updatedNumberScheduled: map['updatedNumberScheduled'] == null ? null : (map['updatedNumberScheduled']! as int).input(),
     );
   }
 }

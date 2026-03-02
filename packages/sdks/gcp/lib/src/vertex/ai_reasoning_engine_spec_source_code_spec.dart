@@ -29,8 +29,8 @@ class AiReasoningEngineSpecSourceCodeSpec {
 
   factory AiReasoningEngineSpecSourceCodeSpec.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecSourceCodeSpec(
-      inlineSource: map['inlineSource'] == null ? null : (AiReasoningEngineSpecSourceCodeSpecInlineSource.fromMap((map['inlineSource'] as Map).cast<String, dynamic>())).input(),
-      pythonSpec: map['pythonSpec'] == null ? null : (AiReasoningEngineSpecSourceCodeSpecPythonSpec.fromMap((map['pythonSpec'] as Map).cast<String, dynamic>())).input(),
+      inlineSource: map['inlineSource'] == null ? null : (AiReasoningEngineSpecSourceCodeSpecInlineSource.fromMap((map['inlineSource']! as Map).cast<String, dynamic>())).input(),
+      pythonSpec: map['pythonSpec'] == null ? null : (AiReasoningEngineSpecSourceCodeSpecPythonSpec.fromMap((map['pythonSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

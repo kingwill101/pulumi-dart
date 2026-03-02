@@ -36,11 +36,11 @@ class GetAccountResult {
 
   factory GetAccountResult.fromMap(Map<String, dynamic> map) {
     return GetAccountResult(
-      accountId: map['accountId'] == null ? null : map['accountId'] as String,
+      accountId: map['accountId'] == null ? null : map['accountId']! as String,
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       region: map['region'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      scope: map['scope'] == null ? null : map['scope']! as String,
     );
   }
 }

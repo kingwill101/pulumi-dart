@@ -31,9 +31,9 @@ class ManagedResourceReferenceResponse {
 
   factory ManagedResourceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ManagedResourceReferenceResponse(
-      denyStatus: map['denyStatus'] == null ? null : (map['denyStatus'] as String).input(),
+      denyStatus: map['denyStatus'] == null ? null : (map['denyStatus']! as String).input(),
       id: (map['id'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

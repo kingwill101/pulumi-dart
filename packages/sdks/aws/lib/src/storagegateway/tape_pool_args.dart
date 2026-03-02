@@ -50,11 +50,11 @@ class TapePoolArgs {
   factory TapePoolArgs.fromMap(Map<String, dynamic> map) {
     return TapePoolArgs(
       poolName: (map['poolName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionLockTimeInDays: map['retentionLockTimeInDays'] == null ? null : (map['retentionLockTimeInDays'] as int).input(),
-      retentionLockType: map['retentionLockType'] == null ? null : (map['retentionLockType'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionLockTimeInDays: map['retentionLockTimeInDays'] == null ? null : ((map['retentionLockTimeInDays'] as int).input()).input(),
+      retentionLockType: map['retentionLockType'] == null ? null : ((map['retentionLockType'] as String).input()).input(),
       storageClass: (map['storageClass'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

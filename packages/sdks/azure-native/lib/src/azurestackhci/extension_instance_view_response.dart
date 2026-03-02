@@ -37,10 +37,10 @@ class ExtensionInstanceViewResponse {
 
   factory ExtensionInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return ExtensionInstanceViewResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (ExtensionInstanceViewResponseStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (ExtensionInstanceViewResponseStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion']! as String).input(),
     );
   }
 }

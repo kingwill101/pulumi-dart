@@ -74,17 +74,17 @@ class SafetyRuleState {
 
   factory SafetyRuleState.fromMap(Map<String, dynamic> map) {
     return SafetyRuleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      assertedControls: map['assertedControls'] == null ? null : ((map['assertedControls'] as List).cast<String>()).input(),
-      controlPanelArn: map['controlPanelArn'] == null ? null : (map['controlPanelArn'] as String).input(),
-      gatingControls: map['gatingControls'] == null ? null : ((map['gatingControls'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ruleConfig: map['ruleConfig'] == null ? null : (SafetyRuleRuleConfig.fromMap((map['ruleConfig'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      targetControls: map['targetControls'] == null ? null : ((map['targetControls'] as List).cast<String>()).input(),
-      waitPeriodMs: map['waitPeriodMs'] == null ? null : (map['waitPeriodMs'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      assertedControls: map['assertedControls'] == null ? null : (((map['assertedControls'] as List).cast<String>()).input()).input(),
+      controlPanelArn: map['controlPanelArn'] == null ? null : ((map['controlPanelArn'] as String).input()).input(),
+      gatingControls: map['gatingControls'] == null ? null : (((map['gatingControls'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      ruleConfig: map['ruleConfig'] == null ? null : ((SafetyRuleRuleConfig.fromMap((map['ruleConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      targetControls: map['targetControls'] == null ? null : (((map['targetControls'] as List).cast<String>()).input()).input(),
+      waitPeriodMs: map['waitPeriodMs'] == null ? null : ((map['waitPeriodMs'] as int).input()).input(),
     );
   }
 }

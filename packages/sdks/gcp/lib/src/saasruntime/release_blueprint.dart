@@ -31,9 +31,9 @@ class ReleaseBlueprint {
 
   factory ReleaseBlueprint.fromMap(Map<String, dynamic> map) {
     return ReleaseBlueprint(
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      package: map['package'] == null ? null : (map['package'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
+      package: map['package'] == null ? null : (map['package']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -68,11 +68,11 @@ class TenantArgs {
 
   factory TenantArgs.fromMap(Map<String, dynamic> map) {
     return TenantArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      consumerResource: map['consumerResource'] == null ? null : (map['consumerResource'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      consumerResource: map['consumerResource'] == null ? null : (map['consumerResource']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       saas: (map['saas'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),
     );

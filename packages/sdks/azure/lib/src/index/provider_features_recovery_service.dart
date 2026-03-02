@@ -27,9 +27,9 @@ class ProviderFeaturesRecoveryService {
 
   factory ProviderFeaturesRecoveryService.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesRecoveryService(
-      purgeProtectedItemsFromVaultOnDestroy: map['purgeProtectedItemsFromVaultOnDestroy'] == null ? null : (map['purgeProtectedItemsFromVaultOnDestroy'] as bool).input(),
-      vmBackupStopProtectionAndRetainDataOnDestroy: map['vmBackupStopProtectionAndRetainDataOnDestroy'] == null ? null : (map['vmBackupStopProtectionAndRetainDataOnDestroy'] as bool).input(),
-      vmBackupSuspendProtectionAndRetainDataOnDestroy: map['vmBackupSuspendProtectionAndRetainDataOnDestroy'] == null ? null : (map['vmBackupSuspendProtectionAndRetainDataOnDestroy'] as bool).input(),
+      purgeProtectedItemsFromVaultOnDestroy: map['purgeProtectedItemsFromVaultOnDestroy'] == null ? null : (map['purgeProtectedItemsFromVaultOnDestroy']! as bool).input(),
+      vmBackupStopProtectionAndRetainDataOnDestroy: map['vmBackupStopProtectionAndRetainDataOnDestroy'] == null ? null : (map['vmBackupStopProtectionAndRetainDataOnDestroy']! as bool).input(),
+      vmBackupSuspendProtectionAndRetainDataOnDestroy: map['vmBackupSuspendProtectionAndRetainDataOnDestroy'] == null ? null : (map['vmBackupSuspendProtectionAndRetainDataOnDestroy']! as bool).input(),
     );
   }
 }

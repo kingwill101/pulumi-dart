@@ -33,9 +33,9 @@ class AdvancedSettings {
 
   factory AdvancedSettings.fromMap(Map<String, dynamic> map) {
     return AdvancedSettings(
-      clients: map['clients'] == null ? null : (ClientConfig.fromMap((map['clients'] as Map).cast<String, dynamic>())).input(),
-      encryptInternalTraffic: map['encryptInternalTraffic'] == null ? null : (map['encryptInternalTraffic'] as String).input(),
-      internalCerts: map['internalCerts'] == null ? null : (CertManagerCertOptions.fromMap((map['internalCerts'] as Map).cast<String, dynamic>())).input(),
+      clients: map['clients'] == null ? null : (ClientConfig.fromMap((map['clients']! as Map).cast<String, dynamic>())).input(),
+      encryptInternalTraffic: map['encryptInternalTraffic'] == null ? null : (map['encryptInternalTraffic']! as String).input(),
+      internalCerts: map['internalCerts'] == null ? null : (CertManagerCertOptions.fromMap((map['internalCerts']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

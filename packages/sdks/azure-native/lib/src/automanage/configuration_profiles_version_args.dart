@@ -51,11 +51,11 @@ class ConfigurationProfilesVersionArgs {
   factory ConfigurationProfilesVersionArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfilesVersionArgs(
       configurationProfileName: (map['configurationProfileName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (ConfigurationProfileProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationProfileProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
     );
   }
 }

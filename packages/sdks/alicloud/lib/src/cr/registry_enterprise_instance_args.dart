@@ -131,22 +131,22 @@ class RegistryEnterpriseInstanceArgs {
 
   factory RegistryEnterpriseInstanceArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEnterpriseInstanceArgs(
-      customOssBucket: map['customOssBucket'] == null ? null : (map['customOssBucket'] as String).input(),
-      defaultOssBucket: map['defaultOssBucket'] == null ? null : (map['defaultOssBucket'] as String).input(),
-      imageScanner: map['imageScanner'] == null ? null : (map['imageScanner'] as String).input(),
+      customOssBucket: map['customOssBucket'] == null ? null : (map['customOssBucket']! as String).input(),
+      defaultOssBucket: map['defaultOssBucket'] == null ? null : (map['defaultOssBucket']! as String).input(),
+      imageScanner: map['imageScanner'] == null ? null : (map['imageScanner']! as String).input(),
       instanceName: (map['instanceName'] as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword'] as String).input(),
-      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext'] as Map).cast<String, String>()).input(),
-      namespaceQuota: map['namespaceQuota'] == null ? null : (map['namespaceQuota'] as int).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword']! as String).input(),
+      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext']! as Map).cast<String, String>()).input(),
+      namespaceQuota: map['namespaceQuota'] == null ? null : (map['namespaceQuota']! as int).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       paymentType: (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod'] as int).input(),
-      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus'] as String).input(),
-      repoQuota: map['repoQuota'] == null ? null : (map['repoQuota'] as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      vpcQuota: map['vpcQuota'] == null ? null : (map['vpcQuota'] as int).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod']! as int).input(),
+      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus']! as String).input(),
+      repoQuota: map['repoQuota'] == null ? null : (map['repoQuota']! as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      vpcQuota: map['vpcQuota'] == null ? null : (map['vpcQuota']! as int).input(),
     );
   }
 }

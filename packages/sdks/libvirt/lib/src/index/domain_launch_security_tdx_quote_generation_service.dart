@@ -20,7 +20,7 @@ class DomainLaunchSecurityTdxQuoteGenerationService {
 
   factory DomainLaunchSecurityTdxQuoteGenerationService.fromMap(Map<String, dynamic> map) {
     return DomainLaunchSecurityTdxQuoteGenerationService(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class VpcEndpointRouteTableAssociationState {
 
   factory VpcEndpointRouteTableAssociationState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointRouteTableAssociationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routeTableId: map['routeTableId'] == null ? null : ((map['routeTableId'] as String).input()).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
     );
   }
 }

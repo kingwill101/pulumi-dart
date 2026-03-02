@@ -51,12 +51,12 @@ class QuotaSubQuotaInfoListParameter {
 
   factory QuotaSubQuotaInfoListParameter.fromMap(Map<String, dynamic> map) {
     return QuotaSubQuotaInfoListParameter(
-      enablePriority: map['enablePriority'] == null ? null : (map['enablePriority'] as bool).input(),
-      forceReservedMin: map['forceReservedMin'] == null ? null : (map['forceReservedMin'] as bool).input(),
+      enablePriority: map['enablePriority'] == null ? null : (map['enablePriority']! as bool).input(),
+      forceReservedMin: map['forceReservedMin'] == null ? null : (map['forceReservedMin']! as bool).input(),
       maxCu: (map['maxCu'] as int).input(),
       minCu: (map['minCu'] as int).input(),
-      schedulerType: map['schedulerType'] == null ? null : (map['schedulerType'] as String).input(),
-      singleJobCuLimit: map['singleJobCuLimit'] == null ? null : (map['singleJobCuLimit'] as int).input(),
+      schedulerType: map['schedulerType'] == null ? null : (map['schedulerType']! as String).input(),
+      singleJobCuLimit: map['singleJobCuLimit'] == null ? null : (map['singleJobCuLimit']! as int).input(),
     );
   }
 }

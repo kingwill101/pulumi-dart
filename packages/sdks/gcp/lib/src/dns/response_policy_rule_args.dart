@@ -53,10 +53,10 @@ class ResponsePolicyRuleArgs {
 
   factory ResponsePolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyRuleArgs(
-      behavior: map['behavior'] == null ? null : (map['behavior'] as String).input(),
+      behavior: map['behavior'] == null ? null : (map['behavior']! as String).input(),
       dnsName: (map['dnsName'] as String).input(),
-      localData: map['localData'] == null ? null : (ResponsePolicyRuleLocalData.fromMap((map['localData'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      localData: map['localData'] == null ? null : (ResponsePolicyRuleLocalData.fromMap((map['localData']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       responsePolicy: (map['responsePolicy'] as String).input(),
       ruleName: (map['ruleName'] as String).input(),
     );

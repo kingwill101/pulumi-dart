@@ -37,10 +37,10 @@ class GeoProximityLocation {
 
   factory GeoProximityLocation.fromMap(Map<String, dynamic> map) {
     return GeoProximityLocation(
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
-      bias: map['bias'] == null ? null : (map['bias'] as int).input(),
-      coordinates: map['coordinates'] == null ? null : (Coordinates.fromMap((map['coordinates'] as Map).cast<String, dynamic>())).input(),
-      localZoneGroup: map['localZoneGroup'] == null ? null : (map['localZoneGroup'] as String).input(),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion']! as String).input(),
+      bias: map['bias'] == null ? null : (map['bias']! as int).input(),
+      coordinates: map['coordinates'] == null ? null : (Coordinates.fromMap((map['coordinates']! as Map).cast<String, dynamic>())).input(),
+      localZoneGroup: map['localZoneGroup'] == null ? null : (map['localZoneGroup']! as String).input(),
     );
   }
 }

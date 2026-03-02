@@ -22,7 +22,7 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentials {
 
   factory RepositoryRemoteRepositoryConfigUpstreamCredentials.fromMap(Map<String, dynamic> map) {
     return RepositoryRemoteRepositoryConfigUpstreamCredentials(
-      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null ? null : (RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials.fromMap((map['usernamePasswordCredentials'] as Map).cast<String, dynamic>())).input(),
+      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null ? null : (RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials.fromMap((map['usernamePasswordCredentials']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

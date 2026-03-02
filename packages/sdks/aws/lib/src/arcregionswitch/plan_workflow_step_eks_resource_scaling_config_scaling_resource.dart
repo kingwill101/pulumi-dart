@@ -27,7 +27,7 @@ class PlanWorkflowStepEksResourceScalingConfigScalingResource {
   factory PlanWorkflowStepEksResourceScalingConfigScalingResource.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepEksResourceScalingConfigScalingResource(
       namespace: (map['namespace'] as String).input(),
-      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepEksResourceScalingConfigScalingResourceResource>(map['resources'], (value) => PlanWorkflowStepEksResourceScalingConfigScalingResourceResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepEksResourceScalingConfigScalingResourceResource>(map['resources']!, (value) => PlanWorkflowStepEksResourceScalingConfigScalingResourceResource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

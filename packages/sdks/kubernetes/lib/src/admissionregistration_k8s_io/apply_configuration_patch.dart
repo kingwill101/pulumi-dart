@@ -48,7 +48,7 @@ class ApplyConfigurationPatch {
 
   factory ApplyConfigurationPatch.fromMap(Map<String, dynamic> map) {
     return ApplyConfigurationPatch(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
     );
   }
 }

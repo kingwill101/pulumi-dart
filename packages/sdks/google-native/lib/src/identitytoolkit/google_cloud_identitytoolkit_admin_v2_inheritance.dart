@@ -21,7 +21,7 @@ class GoogleCloudIdentitytoolkitAdminV2Inheritance {
 
   factory GoogleCloudIdentitytoolkitAdminV2Inheritance.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2Inheritance(
-      emailSendingConfig: map['emailSendingConfig'] == null ? null : (map['emailSendingConfig'] as bool).input(),
+      emailSendingConfig: map['emailSendingConfig'] == null ? null : (map['emailSendingConfig']! as bool).input(),
     );
   }
 }

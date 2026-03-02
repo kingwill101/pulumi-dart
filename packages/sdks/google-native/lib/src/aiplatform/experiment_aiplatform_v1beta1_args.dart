@@ -61,13 +61,13 @@ class ExperimentAiplatformV1beta1Args {
 
   factory ExperimentAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ExperimentAiplatformV1beta1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
       tensorboardExperimentId: (map['tensorboardExperimentId'] as String).input(),
       tensorboardId: (map['tensorboardId'] as String).input(),
     );

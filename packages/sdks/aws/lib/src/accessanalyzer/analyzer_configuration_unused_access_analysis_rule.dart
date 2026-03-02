@@ -21,7 +21,7 @@ class AnalyzerConfigurationUnusedAccessAnalysisRule {
 
   factory AnalyzerConfigurationUnusedAccessAnalysisRule.fromMap(Map<String, dynamic> map) {
     return AnalyzerConfigurationUnusedAccessAnalysisRule(
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion>(map['exclusions'], (value) => AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exclusions: map['exclusions'] == null ? null : ((pulumi.Input.decodeList<AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion>(map['exclusions']!, (value) => AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

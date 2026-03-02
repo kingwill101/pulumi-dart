@@ -21,7 +21,7 @@ class LaunchMetricMonitor {
 
   factory LaunchMetricMonitor.fromMap(Map<String, dynamic> map) {
     return LaunchMetricMonitor(
-      metricDefinition: (LaunchMetricMonitorMetricDefinition.fromMap((map['metricDefinition'] as Map).cast<String, dynamic>())).input(),
+      metricDefinition: (LaunchMetricMonitorMetricDefinition.fromMap((map['metricDefinition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

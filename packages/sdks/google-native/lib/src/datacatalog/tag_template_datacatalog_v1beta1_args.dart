@@ -47,11 +47,11 @@ class TagTemplateDatacatalogV1beta1Args {
 
   factory TagTemplateDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TagTemplateDatacatalogV1beta1Args(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       fields: ((map['fields'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tagTemplateId: (map['tagTemplateId'] as String).input(),
     );
   }

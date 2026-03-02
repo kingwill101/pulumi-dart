@@ -21,7 +21,7 @@ class ManagedClusterManagedOutboundIPProfile {
 
   factory ManagedClusterManagedOutboundIPProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterManagedOutboundIPProfile(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
     );
   }
 }

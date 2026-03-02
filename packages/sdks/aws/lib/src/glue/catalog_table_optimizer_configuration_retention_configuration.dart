@@ -21,7 +21,7 @@ class CatalogTableOptimizerConfigurationRetentionConfiguration {
 
   factory CatalogTableOptimizerConfigurationRetentionConfiguration.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerConfigurationRetentionConfiguration(
-      icebergConfiguration: map['icebergConfiguration'] == null ? null : (CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration.fromMap((map['icebergConfiguration'] as Map).cast<String, dynamic>())).input(),
+      icebergConfiguration: map['icebergConfiguration'] == null ? null : ((CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration.fromMap((map['icebergConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

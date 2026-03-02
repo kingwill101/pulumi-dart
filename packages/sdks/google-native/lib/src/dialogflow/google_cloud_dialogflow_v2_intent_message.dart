@@ -105,21 +105,21 @@ class GoogleCloudDialogflowV2IntentMessage {
 
   factory GoogleCloudDialogflowV2IntentMessage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessage(
-      basicCard: map['basicCard'] == null ? null : (GoogleCloudDialogflowV2IntentMessageBasicCard.fromMap((map['basicCard'] as Map).cast<String, dynamic>())).input(),
-      browseCarouselCard: map['browseCarouselCard'] == null ? null : (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromMap((map['browseCarouselCard'] as Map).cast<String, dynamic>())).input(),
-      card: map['card'] == null ? null : (GoogleCloudDialogflowV2IntentMessageCard.fromMap((map['card'] as Map).cast<String, dynamic>())).input(),
-      carouselSelect: map['carouselSelect'] == null ? null : (GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromMap((map['carouselSelect'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      linkOutSuggestion: map['linkOutSuggestion'] == null ? null : (GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion.fromMap((map['linkOutSuggestion'] as Map).cast<String, dynamic>())).input(),
-      listSelect: map['listSelect'] == null ? null : (GoogleCloudDialogflowV2IntentMessageListSelect.fromMap((map['listSelect'] as Map).cast<String, dynamic>())).input(),
-      mediaContent: map['mediaContent'] == null ? null : (GoogleCloudDialogflowV2IntentMessageMediaContent.fromMap((map['mediaContent'] as Map).cast<String, dynamic>())).input(),
-      payload: map['payload'] == null ? null : ((map['payload'] as Map).cast<String, String>()).input(),
-      platform: map['platform'] == null ? null : (GoogleCloudDialogflowV2IntentMessagePlatform.fromValue(map['platform'] as String)).input(),
-      quickReplies: map['quickReplies'] == null ? null : (GoogleCloudDialogflowV2IntentMessageQuickReplies.fromMap((map['quickReplies'] as Map).cast<String, dynamic>())).input(),
-      simpleResponses: map['simpleResponses'] == null ? null : (GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromMap((map['simpleResponses'] as Map).cast<String, dynamic>())).input(),
-      suggestions: map['suggestions'] == null ? null : (GoogleCloudDialogflowV2IntentMessageSuggestions.fromMap((map['suggestions'] as Map).cast<String, dynamic>())).input(),
-      tableCard: map['tableCard'] == null ? null : (GoogleCloudDialogflowV2IntentMessageTableCard.fromMap((map['tableCard'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (GoogleCloudDialogflowV2IntentMessageText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      basicCard: map['basicCard'] == null ? null : (GoogleCloudDialogflowV2IntentMessageBasicCard.fromMap((map['basicCard']! as Map).cast<String, dynamic>())).input(),
+      browseCarouselCard: map['browseCarouselCard'] == null ? null : (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromMap((map['browseCarouselCard']! as Map).cast<String, dynamic>())).input(),
+      card: map['card'] == null ? null : (GoogleCloudDialogflowV2IntentMessageCard.fromMap((map['card']! as Map).cast<String, dynamic>())).input(),
+      carouselSelect: map['carouselSelect'] == null ? null : (GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromMap((map['carouselSelect']! as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
+      linkOutSuggestion: map['linkOutSuggestion'] == null ? null : (GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion.fromMap((map['linkOutSuggestion']! as Map).cast<String, dynamic>())).input(),
+      listSelect: map['listSelect'] == null ? null : (GoogleCloudDialogflowV2IntentMessageListSelect.fromMap((map['listSelect']! as Map).cast<String, dynamic>())).input(),
+      mediaContent: map['mediaContent'] == null ? null : (GoogleCloudDialogflowV2IntentMessageMediaContent.fromMap((map['mediaContent']! as Map).cast<String, dynamic>())).input(),
+      payload: map['payload'] == null ? null : ((map['payload']! as Map).cast<String, String>()).input(),
+      platform: map['platform'] == null ? null : (GoogleCloudDialogflowV2IntentMessagePlatform.fromValue(map['platform']! as String)).input(),
+      quickReplies: map['quickReplies'] == null ? null : (GoogleCloudDialogflowV2IntentMessageQuickReplies.fromMap((map['quickReplies']! as Map).cast<String, dynamic>())).input(),
+      simpleResponses: map['simpleResponses'] == null ? null : (GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromMap((map['simpleResponses']! as Map).cast<String, dynamic>())).input(),
+      suggestions: map['suggestions'] == null ? null : (GoogleCloudDialogflowV2IntentMessageSuggestions.fromMap((map['suggestions']! as Map).cast<String, dynamic>())).input(),
+      tableCard: map['tableCard'] == null ? null : (GoogleCloudDialogflowV2IntentMessageTableCard.fromMap((map['tableCard']! as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (GoogleCloudDialogflowV2IntentMessageText.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class JobConfigInput {
 
   factory JobConfigInput.fromMap(Map<String, dynamic> map) {
     return JobConfigInput(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

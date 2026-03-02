@@ -40,7 +40,7 @@ class PrivateEndpointConnectionOperationArgs {
 
   factory PrivateEndpointConnectionOperationArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionOperationArgs(
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName']! as String).input(),
       privateLinkServiceConnectionState: (PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
       projectName: (map['projectName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

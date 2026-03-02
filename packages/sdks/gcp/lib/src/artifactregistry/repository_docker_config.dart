@@ -20,7 +20,7 @@ class RepositoryDockerConfig {
 
   factory RepositoryDockerConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryDockerConfig(
-      immutableTags: map['immutableTags'] == null ? null : (map['immutableTags'] as bool).input(),
+      immutableTags: map['immutableTags'] == null ? null : (map['immutableTags']! as bool).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class LabelingJobInputConfigDataSource {
 
   factory LabelingJobInputConfigDataSource.fromMap(Map<String, dynamic> map) {
     return LabelingJobInputConfigDataSource(
-      s3DataSource: map['s3DataSource'] == null ? null : (LabelingJobInputConfigDataSourceS3DataSource.fromMap((map['s3DataSource'] as Map).cast<String, dynamic>())).input(),
-      snsDataSource: map['snsDataSource'] == null ? null : (LabelingJobInputConfigDataSourceSnsDataSource.fromMap((map['snsDataSource'] as Map).cast<String, dynamic>())).input(),
+      s3DataSource: map['s3DataSource'] == null ? null : ((LabelingJobInputConfigDataSourceS3DataSource.fromMap((map['s3DataSource']! as Map).cast<String, dynamic>())).input()).input(),
+      snsDataSource: map['snsDataSource'] == null ? null : ((LabelingJobInputConfigDataSourceSnsDataSource.fromMap((map['snsDataSource']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

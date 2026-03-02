@@ -42,11 +42,11 @@ class GoogleCloudDatacatalogV1VertexModelSpec {
 
   factory GoogleCloudDatacatalogV1VertexModelSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1VertexModelSpec(
-      containerImageUri: map['containerImageUri'] == null ? null : (map['containerImageUri'] as String).input(),
-      versionAliases: map['versionAliases'] == null ? null : ((map['versionAliases'] as List).cast<String>()).input(),
-      versionDescription: map['versionDescription'] == null ? null : (map['versionDescription'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
-      vertexModelSourceInfo: map['vertexModelSourceInfo'] == null ? null : (GoogleCloudDatacatalogV1VertexModelSourceInfo.fromMap((map['vertexModelSourceInfo'] as Map).cast<String, dynamic>())).input(),
+      containerImageUri: map['containerImageUri'] == null ? null : (map['containerImageUri']! as String).input(),
+      versionAliases: map['versionAliases'] == null ? null : ((map['versionAliases']! as List).cast<String>()).input(),
+      versionDescription: map['versionDescription'] == null ? null : (map['versionDescription']! as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
+      vertexModelSourceInfo: map['vertexModelSourceInfo'] == null ? null : (GoogleCloudDatacatalogV1VertexModelSourceInfo.fromMap((map['vertexModelSourceInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

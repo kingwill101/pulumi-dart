@@ -31,9 +31,9 @@ class HeaderValueMatcherResponse {
 
   factory HeaderValueMatcherResponse.fromMap(Map<String, dynamic> map) {
     return HeaderValueMatcherResponse(
-      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
-      negate: map['negate'] == null ? null : (map['negate'] as bool).input(),
-      pattern: map['pattern'] == null ? null : (map['pattern'] as String).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase']! as bool).input(),
+      negate: map['negate'] == null ? null : (map['negate']! as bool).input(),
+      pattern: map['pattern'] == null ? null : (map['pattern']! as String).input(),
     );
   }
 }

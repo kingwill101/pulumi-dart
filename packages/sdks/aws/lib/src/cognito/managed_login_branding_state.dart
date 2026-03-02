@@ -59,14 +59,14 @@ class ManagedLoginBrandingState {
 
   factory ManagedLoginBrandingState.fromMap(Map<String, dynamic> map) {
     return ManagedLoginBrandingState(
-      assets: map['assets'] == null ? null : (pulumi.Input.decodeList<ManagedLoginBrandingAsset>(map['assets'], (value) => ManagedLoginBrandingAsset.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      managedLoginBrandingId: map['managedLoginBrandingId'] == null ? null : (map['managedLoginBrandingId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      settings: map['settings'] == null ? null : (map['settings'] as String).input(),
-      settingsAll: map['settingsAll'] == null ? null : (map['settingsAll'] as String).input(),
-      useCognitoProvidedValues: map['useCognitoProvidedValues'] == null ? null : (map['useCognitoProvidedValues'] as bool).input(),
-      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
+      assets: map['assets'] == null ? null : ((pulumi.Input.decodeList<ManagedLoginBrandingAsset>(map['assets']!, (value) => ManagedLoginBrandingAsset.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      clientId: map['clientId'] == null ? null : ((map['clientId'] as String).input()).input(),
+      managedLoginBrandingId: map['managedLoginBrandingId'] == null ? null : ((map['managedLoginBrandingId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      settings: map['settings'] == null ? null : ((map['settings'] as String).input()).input(),
+      settingsAll: map['settingsAll'] == null ? null : ((map['settingsAll'] as String).input()).input(),
+      useCognitoProvidedValues: map['useCognitoProvidedValues'] == null ? null : ((map['useCognitoProvidedValues'] as bool).input()).input(),
+      userPoolId: map['userPoolId'] == null ? null : ((map['userPoolId'] as String).input()).input(),
     );
   }
 }

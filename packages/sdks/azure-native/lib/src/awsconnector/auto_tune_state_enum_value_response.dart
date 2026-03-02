@@ -21,7 +21,7 @@ class AutoTuneStateEnumValueResponse {
 
   factory AutoTuneStateEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return AutoTuneStateEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

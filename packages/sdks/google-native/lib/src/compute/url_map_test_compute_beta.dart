@@ -52,13 +52,13 @@ class UrlMapTestComputeBeta {
 
   factory UrlMapTestComputeBeta.fromMap(Map<String, dynamic> map) {
     return UrlMapTestComputeBeta(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expectedOutputUrl: map['expectedOutputUrl'] == null ? null : (map['expectedOutputUrl'] as String).input(),
-      expectedRedirectResponseCode: map['expectedRedirectResponseCode'] == null ? null : (map['expectedRedirectResponseCode'] as int).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<UrlMapTestHeaderComputeBeta>(map['headers'], (value) => UrlMapTestHeaderComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expectedOutputUrl: map['expectedOutputUrl'] == null ? null : (map['expectedOutputUrl']! as String).input(),
+      expectedRedirectResponseCode: map['expectedRedirectResponseCode'] == null ? null : (map['expectedRedirectResponseCode']! as int).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<UrlMapTestHeaderComputeBeta>(map['headers']!, (value) => UrlMapTestHeaderComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

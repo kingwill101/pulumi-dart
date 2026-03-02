@@ -22,7 +22,7 @@ class ClusterNetworkPerformanceConfig {
 
   factory ClusterNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNetworkPerformanceConfig(
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : (ClusterNetworkPerformanceConfigTotalEgressBandwidthTier.fromValue(map['totalEgressBandwidthTier'] as String)).input(),
+      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : (ClusterNetworkPerformanceConfigTotalEgressBandwidthTier.fromValue(map['totalEgressBandwidthTier']! as String)).input(),
     );
   }
 }

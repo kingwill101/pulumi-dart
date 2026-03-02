@@ -25,8 +25,8 @@ class BucketWebsiteConfigurationV2RoutingRuleCondition {
 
   factory BucketWebsiteConfigurationV2RoutingRuleCondition.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteConfigurationV2RoutingRuleCondition(
-      httpErrorCodeReturnedEquals: map['httpErrorCodeReturnedEquals'] == null ? null : (map['httpErrorCodeReturnedEquals'] as String).input(),
-      keyPrefixEquals: map['keyPrefixEquals'] == null ? null : (map['keyPrefixEquals'] as String).input(),
+      httpErrorCodeReturnedEquals: map['httpErrorCodeReturnedEquals'] == null ? null : ((map['httpErrorCodeReturnedEquals'] as String).input()).input(),
+      keyPrefixEquals: map['keyPrefixEquals'] == null ? null : ((map['keyPrefixEquals'] as String).input()).input(),
     );
   }
 }

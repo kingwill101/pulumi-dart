@@ -26,8 +26,8 @@ class AdministratorConfiguration {
 
   factory AdministratorConfiguration.fromMap(Map<String, dynamic> map) {
     return AdministratorConfiguration(
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
-      sshPublicKeys: map['sshPublicKeys'] == null ? null : (pulumi.Input.decodeList<SshPublicKey>(map['sshPublicKeys'], (value) => SshPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername']! as String).input(),
+      sshPublicKeys: map['sshPublicKeys'] == null ? null : (pulumi.Input.decodeList<SshPublicKey>(map['sshPublicKeys']!, (value) => SshPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

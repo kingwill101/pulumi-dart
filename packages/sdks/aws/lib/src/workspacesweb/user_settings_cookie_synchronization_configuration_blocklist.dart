@@ -31,8 +31,8 @@ class UserSettingsCookieSynchronizationConfigurationBlocklist {
   factory UserSettingsCookieSynchronizationConfigurationBlocklist.fromMap(Map<String, dynamic> map) {
     return UserSettingsCookieSynchronizationConfigurationBlocklist(
       domain: (map['domain'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
     );
   }
 }

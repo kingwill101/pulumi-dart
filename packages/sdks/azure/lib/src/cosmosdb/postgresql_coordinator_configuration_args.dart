@@ -35,7 +35,7 @@ class PostgresqlCoordinatorConfigurationArgs {
   factory PostgresqlCoordinatorConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return PostgresqlCoordinatorConfigurationArgs(
       clusterId: (map['clusterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

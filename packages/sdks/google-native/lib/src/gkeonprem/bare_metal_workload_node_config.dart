@@ -27,8 +27,8 @@ class BareMetalWorkloadNodeConfig {
 
   factory BareMetalWorkloadNodeConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalWorkloadNodeConfig(
-      containerRuntime: map['containerRuntime'] == null ? null : (BareMetalWorkloadNodeConfigContainerRuntime.fromValue(map['containerRuntime'] as String)).input(),
-      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode'] as String).input(),
+      containerRuntime: map['containerRuntime'] == null ? null : (BareMetalWorkloadNodeConfigContainerRuntime.fromValue(map['containerRuntime']! as String)).input(),
+      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode']! as String).input(),
     );
   }
 }

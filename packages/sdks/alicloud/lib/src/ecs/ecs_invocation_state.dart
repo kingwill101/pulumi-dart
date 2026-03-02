@@ -67,15 +67,15 @@ class EcsInvocationState {
 
   factory EcsInvocationState.fromMap(Map<String, dynamic> map) {
     return EcsInvocationState(
-      commandId: map['commandId'] == null ? null : (map['commandId'] as String).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      repeatMode: map['repeatMode'] == null ? null : (map['repeatMode'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      timed: map['timed'] == null ? null : (map['timed'] as bool).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
-      windowsPasswordName: map['windowsPasswordName'] == null ? null : (map['windowsPasswordName'] as String).input(),
+      commandId: map['commandId'] == null ? null : (map['commandId']! as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds']! as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      repeatMode: map['repeatMode'] == null ? null : (map['repeatMode']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      timed: map['timed'] == null ? null : (map['timed']! as bool).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
+      windowsPasswordName: map['windowsPasswordName'] == null ? null : (map['windowsPasswordName']! as String).input(),
     );
   }
 }

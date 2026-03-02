@@ -66,16 +66,16 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceType: map['namespaceType'] == null ? null : (map['namespaceType'] as String).input(),
-      replicationRegion: map['replicationRegion'] == null ? null : (map['replicationRegion'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      servicebusEndpoint: map['servicebusEndpoint'] == null ? null : (map['servicebusEndpoint'] as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneRedundancyEnabled: map['zoneRedundancyEnabled'] == null ? null : (map['zoneRedundancyEnabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaceType: map['namespaceType'] == null ? null : (map['namespaceType']! as String).input(),
+      replicationRegion: map['replicationRegion'] == null ? null : (map['replicationRegion']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      servicebusEndpoint: map['servicebusEndpoint'] == null ? null : (map['servicebusEndpoint']! as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneRedundancyEnabled: map['zoneRedundancyEnabled'] == null ? null : (map['zoneRedundancyEnabled']! as bool).input(),
     );
   }
 }

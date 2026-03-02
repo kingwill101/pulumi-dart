@@ -39,10 +39,10 @@ class VMwareClusterLoadBalancerManualLbConfig {
 
   factory VMwareClusterLoadBalancerManualLbConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterLoadBalancerManualLbConfig(
-      controlPlaneNodePort: map['controlPlaneNodePort'] == null ? null : (map['controlPlaneNodePort'] as int).input(),
-      ingressHttpNodePort: map['ingressHttpNodePort'] == null ? null : (map['ingressHttpNodePort'] as int).input(),
-      ingressHttpsNodePort: map['ingressHttpsNodePort'] == null ? null : (map['ingressHttpsNodePort'] as int).input(),
-      konnectivityServerNodePort: map['konnectivityServerNodePort'] == null ? null : (map['konnectivityServerNodePort'] as int).input(),
+      controlPlaneNodePort: map['controlPlaneNodePort'] == null ? null : (map['controlPlaneNodePort']! as int).input(),
+      ingressHttpNodePort: map['ingressHttpNodePort'] == null ? null : (map['ingressHttpNodePort']! as int).input(),
+      ingressHttpsNodePort: map['ingressHttpsNodePort'] == null ? null : (map['ingressHttpsNodePort']! as int).input(),
+      konnectivityServerNodePort: map['konnectivityServerNodePort'] == null ? null : (map['konnectivityServerNodePort']! as int).input(),
     );
   }
 }

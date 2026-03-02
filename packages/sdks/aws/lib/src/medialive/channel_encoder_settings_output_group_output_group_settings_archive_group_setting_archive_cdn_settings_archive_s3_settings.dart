@@ -20,7 +20,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArc
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettingsArchiveS3Settings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettingsArchiveS3Settings(
-      cannedAcl: map['cannedAcl'] == null ? null : (map['cannedAcl'] as String).input(),
+      cannedAcl: map['cannedAcl'] == null ? null : ((map['cannedAcl'] as String).input()).input(),
     );
   }
 }

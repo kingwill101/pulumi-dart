@@ -52,13 +52,13 @@ class EcsKeyPairArgs {
 
   factory EcsKeyPairArgs.fromMap(Map<String, dynamic> map) {
     return EcsKeyPairArgs(
-      keyFile: map['keyFile'] == null ? null : (map['keyFile'] as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyNamePrefix: map['keyNamePrefix'] == null ? null : (map['keyNamePrefix'] as String).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      keyFile: map['keyFile'] == null ? null : (map['keyFile']! as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyNamePrefix: map['keyNamePrefix'] == null ? null : (map['keyNamePrefix']! as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class GetExclusionArgs {
   factory GetExclusionArgs.fromMap(Map<String, dynamic> map) {
     return GetExclusionArgs(
       exclusionId: (map['exclusionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

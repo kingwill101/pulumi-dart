@@ -25,8 +25,8 @@ class NotificationChannelFilters {
 
   factory NotificationChannelFilters.fromMap(Map<String, dynamic> map) {
     return NotificationChannelFilters(
-      messageTypes: map['messageTypes'] == null ? null : ((map['messageTypes'] as List).cast<String>()).input(),
-      severities: map['severities'] == null ? null : ((map['severities'] as List).cast<String>()).input(),
+      messageTypes: map['messageTypes'] == null ? null : (((map['messageTypes'] as List).cast<String>()).input()).input(),
+      severities: map['severities'] == null ? null : (((map['severities'] as List).cast<String>()).input()).input(),
     );
   }
 }

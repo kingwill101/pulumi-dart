@@ -66,16 +66,16 @@ class StateConfigurationState {
 
   factory StateConfigurationState.fromMap(Map<String, dynamic> map) {
     return StateConfigurationState(
-      configureMode: map['configureMode'] == null ? null : (map['configureMode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      scheduleExpression: map['scheduleExpression'] == null ? null : (map['scheduleExpression'] as String).input(),
-      scheduleType: map['scheduleType'] == null ? null : (map['scheduleType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targets: map['targets'] == null ? null : (map['targets'] as String).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
-      templateVersion: map['templateVersion'] == null ? null : (map['templateVersion'] as String).input(),
+      configureMode: map['configureMode'] == null ? null : (map['configureMode']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      scheduleExpression: map['scheduleExpression'] == null ? null : (map['scheduleExpression']! as String).input(),
+      scheduleType: map['scheduleType'] == null ? null : (map['scheduleType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targets: map['targets'] == null ? null : (map['targets']! as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
+      templateVersion: map['templateVersion'] == null ? null : (map['templateVersion']! as String).input(),
     );
   }
 }

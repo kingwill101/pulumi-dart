@@ -40,9 +40,9 @@ class RandomShuffleArgs {
   factory RandomShuffleArgs.fromMap(Map<String, dynamic> map) {
     return RandomShuffleArgs(
       inputs: ((map['inputs'] as List).cast<String>()).input(),
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
-      resultCount: map['resultCount'] == null ? null : (map['resultCount'] as int).input(),
-      seed: map['seed'] == null ? null : (map['seed'] as String).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
+      resultCount: map['resultCount'] == null ? null : (map['resultCount']! as int).input(),
+      seed: map['seed'] == null ? null : (map['seed']! as String).input(),
     );
   }
 }

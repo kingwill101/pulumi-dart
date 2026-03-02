@@ -34,9 +34,9 @@ class GetStocksResult {
 
   factory GetStocksResult.fromMap(Map<String, dynamic> map) {
     return GetStocksResult(
-      gatewayClass: map['gatewayClass'] == null ? null : map['gatewayClass'] as String,
+      gatewayClass: map['gatewayClass'] == null ? null : map['gatewayClass']! as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       stocks: pulumi.Input.decodeList<GetStocksStock>(map['stocks'], (value) => GetStocksStock.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

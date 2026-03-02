@@ -37,10 +37,10 @@ class AwsIamAccessKeyMetadataProperties {
 
   factory AwsIamAccessKeyMetadataProperties.fromMap(Map<String, dynamic> map) {
     return AwsIamAccessKeyMetadataProperties(
-      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId'] as String).input(),
-      createDate: map['createDate'] == null ? null : (map['createDate'] as String).input(),
-      status: map['status'] == null ? null : (StatusTypeEnumValue.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId']! as String).input(),
+      createDate: map['createDate'] == null ? null : (map['createDate']! as String).input(),
+      status: map['status'] == null ? null : (StatusTypeEnumValue.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

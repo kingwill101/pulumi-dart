@@ -61,9 +61,9 @@ class GetEnvironmentResult {
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      region: map['region'] == null ? null : map['region'] as String,
+      region: map['region'] == null ? null : map['region']! as String,
       storageConfigs: pulumi.Input.decodeList<GetEnvironmentStorageConfig>(map['storageConfigs'], (value) => GetEnvironmentStorageConfig.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

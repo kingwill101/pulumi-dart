@@ -38,10 +38,10 @@ class UpgradeSettingsContainerV1beta1 {
 
   factory UpgradeSettingsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return UpgradeSettingsContainerV1beta1(
-      blueGreenSettings: map['blueGreenSettings'] == null ? null : (BlueGreenSettingsContainerV1beta1.fromMap((map['blueGreenSettings'] as Map).cast<String, dynamic>())).input(),
-      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge'] as int).input(),
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as int).input(),
-      strategy: map['strategy'] == null ? null : (UpgradeSettingsStrategyContainerV1beta1.fromValue(map['strategy'] as String)).input(),
+      blueGreenSettings: map['blueGreenSettings'] == null ? null : (BlueGreenSettingsContainerV1beta1.fromMap((map['blueGreenSettings']! as Map).cast<String, dynamic>())).input(),
+      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge']! as int).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
+      strategy: map['strategy'] == null ? null : (UpgradeSettingsStrategyContainerV1beta1.fromValue(map['strategy']! as String)).input(),
     );
   }
 }

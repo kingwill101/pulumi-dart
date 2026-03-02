@@ -53,13 +53,13 @@ class VmwareFirewallLicenseProperties {
 
   factory VmwareFirewallLicenseProperties.fromMap(Map<String, dynamic> map) {
     return VmwareFirewallLicenseProperties(
-      broadcomContractNumber: map['broadcomContractNumber'] == null ? null : (map['broadcomContractNumber'] as String).input(),
-      broadcomSiteId: map['broadcomSiteId'] == null ? null : (map['broadcomSiteId'] as String).input(),
+      broadcomContractNumber: map['broadcomContractNumber'] == null ? null : (map['broadcomContractNumber']! as String).input(),
+      broadcomSiteId: map['broadcomSiteId'] == null ? null : (map['broadcomSiteId']! as String).input(),
       cores: (map['cores'] as int).input(),
       endDate: (map['endDate'] as String).input(),
       kind: (map['kind'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<Label>(map['labels'], (value) => Label.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      licenseKey: map['licenseKey'] == null ? null : (map['licenseKey'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<Label>(map['labels']!, (value) => Label.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      licenseKey: map['licenseKey'] == null ? null : (map['licenseKey']! as String).input(),
     );
   }
 }

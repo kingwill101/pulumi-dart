@@ -73,16 +73,16 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      components: map['components'] == null ? null : (pulumi.Input.decodeList<ComponentProperties>(map['components'], (value) => ComponentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      components: map['components'] == null ? null : (pulumi.Input.decodeList<ComponentProperties>(map['components']!, (value) => ComponentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : (ReconciliationPolicy.fromMap((map['reconciliationPolicy'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : (ReconciliationPolicy.fromMap((map['reconciliationPolicy']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topologies: map['topologies'] == null ? null : (pulumi.Input.decodeList<TopologiesProperties>(map['topologies'], (value) => TopologiesProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      topologies: map['topologies'] == null ? null : (pulumi.Input.decodeList<TopologiesProperties>(map['topologies']!, (value) => TopologiesProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

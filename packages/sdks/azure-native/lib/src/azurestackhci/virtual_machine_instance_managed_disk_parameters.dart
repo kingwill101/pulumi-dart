@@ -22,7 +22,7 @@ class VirtualMachineInstanceManagedDiskParameters {
 
   factory VirtualMachineInstanceManagedDiskParameters.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstanceManagedDiskParameters(
-      securityProfile: map['securityProfile'] == null ? null : (VMDiskSecurityProfile.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
+      securityProfile: map['securityProfile'] == null ? null : (VMDiskSecurityProfile.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -56,13 +56,13 @@ class NetworkPeeringRoutesConfigState {
 
   factory NetworkPeeringRoutesConfigState.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringRoutesConfigState(
-      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes'] as bool).input(),
-      exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] == null ? null : (map['exportSubnetRoutesWithPublicIp'] as bool).input(),
-      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes'] as bool).input(),
-      importSubnetRoutesWithPublicIp: map['importSubnetRoutesWithPublicIp'] == null ? null : (map['importSubnetRoutesWithPublicIp'] as bool).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      peering: map['peering'] == null ? null : (map['peering'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes']! as bool).input(),
+      exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] == null ? null : (map['exportSubnetRoutesWithPublicIp']! as bool).input(),
+      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes']! as bool).input(),
+      importSubnetRoutesWithPublicIp: map['importSubnetRoutesWithPublicIp'] == null ? null : (map['importSubnetRoutesWithPublicIp']! as bool).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      peering: map['peering'] == null ? null : (map['peering']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

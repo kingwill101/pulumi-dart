@@ -28,8 +28,8 @@ class ResourceClaimSchedulingStatus {
 
   factory ResourceClaimSchedulingStatus.fromMap(Map<String, dynamic> map) {
     return ResourceClaimSchedulingStatus(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      unsuitableNodes: map['unsuitableNodes'] == null ? null : ((map['unsuitableNodes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      unsuitableNodes: map['unsuitableNodes'] == null ? null : ((map['unsuitableNodes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -57,10 +57,10 @@ class BackupPolicyPostgresqlArgs {
     return BackupPolicyPostgresqlArgs(
       backupRepeatingTimeIntervals: ((map['backupRepeatingTimeIntervals'] as List).cast<String>()).input(),
       defaultRetentionDuration: (map['defaultRetentionDuration'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyPostgresqlRetentionRule>(map['retentionRules'], (value) => BackupPolicyPostgresqlRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyPostgresqlRetentionRule>(map['retentionRules']!, (value) => BackupPolicyPostgresqlRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
       vaultName: (map['vaultName'] as String).input(),
     );
   }

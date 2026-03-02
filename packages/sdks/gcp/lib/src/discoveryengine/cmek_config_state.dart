@@ -86,18 +86,18 @@ class CmekConfigState {
 
   factory CmekConfigState.fromMap(Map<String, dynamic> map) {
     return CmekConfigState(
-      cmekConfigId: map['cmekConfigId'] == null ? null : (map['cmekConfigId'] as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      kmsKeyVersion: map['kmsKeyVersion'] == null ? null : (map['kmsKeyVersion'] as String).input(),
-      lastRotationTimestampMicros: map['lastRotationTimestampMicros'] == null ? null : (map['lastRotationTimestampMicros'] as int).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notebooklmState: map['notebooklmState'] == null ? null : (map['notebooklmState'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      setDefault: map['setDefault'] == null ? null : (map['setDefault'] as bool).input(),
-      singleRegionKeys: map['singleRegionKeys'] == null ? null : (pulumi.Input.decodeList<CmekConfigSingleRegionKey>(map['singleRegionKeys'], (value) => CmekConfigSingleRegionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      cmekConfigId: map['cmekConfigId'] == null ? null : (map['cmekConfigId']! as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      kmsKeyVersion: map['kmsKeyVersion'] == null ? null : (map['kmsKeyVersion']! as String).input(),
+      lastRotationTimestampMicros: map['lastRotationTimestampMicros'] == null ? null : (map['lastRotationTimestampMicros']! as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notebooklmState: map['notebooklmState'] == null ? null : (map['notebooklmState']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      setDefault: map['setDefault'] == null ? null : (map['setDefault']! as bool).input(),
+      singleRegionKeys: map['singleRegionKeys'] == null ? null : (pulumi.Input.decodeList<CmekConfigSingleRegionKey>(map['singleRegionKeys']!, (value) => CmekConfigSingleRegionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

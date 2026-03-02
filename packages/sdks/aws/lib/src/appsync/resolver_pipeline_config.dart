@@ -20,7 +20,7 @@ class ResolverPipelineConfig {
 
   factory ResolverPipelineConfig.fromMap(Map<String, dynamic> map) {
     return ResolverPipelineConfig(
-      functions: map['functions'] == null ? null : ((map['functions'] as List).cast<String>()).input(),
+      functions: map['functions'] == null ? null : (((map['functions'] as List).cast<String>()).input()).input(),
     );
   }
 }

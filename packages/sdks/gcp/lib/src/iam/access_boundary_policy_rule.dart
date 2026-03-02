@@ -27,8 +27,8 @@ class AccessBoundaryPolicyRule {
 
   factory AccessBoundaryPolicyRule.fromMap(Map<String, dynamic> map) {
     return AccessBoundaryPolicyRule(
-      accessBoundaryRule: map['accessBoundaryRule'] == null ? null : (AccessBoundaryPolicyRuleAccessBoundaryRule.fromMap((map['accessBoundaryRule'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      accessBoundaryRule: map['accessBoundaryRule'] == null ? null : (AccessBoundaryPolicyRuleAccessBoundaryRule.fromMap((map['accessBoundaryRule']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

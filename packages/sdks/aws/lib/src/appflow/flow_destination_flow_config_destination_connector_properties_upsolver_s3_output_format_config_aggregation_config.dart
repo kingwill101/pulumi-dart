@@ -20,7 +20,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFor
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigAggregationConfig.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigAggregationConfig(
-      aggregationType: map['aggregationType'] == null ? null : (map['aggregationType'] as String).input(),
+      aggregationType: map['aggregationType'] == null ? null : ((map['aggregationType'] as String).input()).input(),
     );
   }
 }

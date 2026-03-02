@@ -31,8 +31,8 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoring
   factory ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration(
       configurationType: (map['configurationType'] as String).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
-      metricsLevel: map['metricsLevel'] == null ? null : (map['metricsLevel'] as String).input(),
+      logLevel: map['logLevel'] == null ? null : ((map['logLevel'] as String).input()).input(),
+      metricsLevel: map['metricsLevel'] == null ? null : ((map['metricsLevel'] as String).input()).input(),
     );
   }
 }

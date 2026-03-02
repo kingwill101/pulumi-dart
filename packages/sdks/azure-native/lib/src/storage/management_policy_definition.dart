@@ -29,7 +29,7 @@ class ManagementPolicyDefinition {
   factory ManagementPolicyDefinition.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyDefinition(
       actions: (ManagementPolicyAction.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
-      filters: map['filters'] == null ? null : (ManagementPolicyFilter.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      filters: map['filters'] == null ? null : (ManagementPolicyFilter.fromMap((map['filters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

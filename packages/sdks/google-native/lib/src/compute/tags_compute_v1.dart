@@ -21,7 +21,7 @@ class TagsComputeV1 {
 
   factory TagsComputeV1.fromMap(Map<String, dynamic> map) {
     return TagsComputeV1(
-      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
+      items: map['items'] == null ? null : ((map['items']! as List).cast<String>()).input(),
     );
   }
 }

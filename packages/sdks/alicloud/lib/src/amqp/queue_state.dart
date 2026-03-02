@@ -66,16 +66,16 @@ class QueueState {
 
   factory QueueState.fromMap(Map<String, dynamic> map) {
     return QueueState(
-      autoDeleteState: map['autoDeleteState'] == null ? null : (map['autoDeleteState'] as bool).input(),
-      autoExpireState: map['autoExpireState'] == null ? null : (map['autoExpireState'] as String).input(),
-      deadLetterExchange: map['deadLetterExchange'] == null ? null : (map['deadLetterExchange'] as String).input(),
-      deadLetterRoutingKey: map['deadLetterRoutingKey'] == null ? null : (map['deadLetterRoutingKey'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      maxLength: map['maxLength'] == null ? null : (map['maxLength'] as String).input(),
-      maximumPriority: map['maximumPriority'] == null ? null : (map['maximumPriority'] as int).input(),
-      messageTtl: map['messageTtl'] == null ? null : (map['messageTtl'] as String).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
-      virtualHostName: map['virtualHostName'] == null ? null : (map['virtualHostName'] as String).input(),
+      autoDeleteState: map['autoDeleteState'] == null ? null : (map['autoDeleteState']! as bool).input(),
+      autoExpireState: map['autoExpireState'] == null ? null : (map['autoExpireState']! as String).input(),
+      deadLetterExchange: map['deadLetterExchange'] == null ? null : (map['deadLetterExchange']! as String).input(),
+      deadLetterRoutingKey: map['deadLetterRoutingKey'] == null ? null : (map['deadLetterRoutingKey']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      maxLength: map['maxLength'] == null ? null : (map['maxLength']! as String).input(),
+      maximumPriority: map['maximumPriority'] == null ? null : (map['maximumPriority']! as int).input(),
+      messageTtl: map['messageTtl'] == null ? null : (map['messageTtl']! as String).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
+      virtualHostName: map['virtualHostName'] == null ? null : (map['virtualHostName']! as String).input(),
     );
   }
 }

@@ -68,12 +68,12 @@ class UserArgs {
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
       accessString: (map['accessString'] as String).input(),
-      authenticationMode: map['authenticationMode'] == null ? null : (UserAuthenticationMode.fromMap((map['authenticationMode'] as Map).cast<String, dynamic>())).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : ((UserAuthenticationMode.fromMap((map['authenticationMode']! as Map).cast<String, dynamic>())).input()).input(),
       engine: (map['engine'] as String).input(),
-      noPasswordRequired: map['noPasswordRequired'] == null ? null : (map['noPasswordRequired'] as bool).input(),
-      passwords: map['passwords'] == null ? null : ((map['passwords'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      noPasswordRequired: map['noPasswordRequired'] == null ? null : ((map['noPasswordRequired'] as bool).input()).input(),
+      passwords: map['passwords'] == null ? null : (((map['passwords'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       userId: (map['userId'] as String).input(),
       userName: (map['userName'] as String).input(),
     );

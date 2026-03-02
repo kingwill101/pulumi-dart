@@ -60,14 +60,14 @@ class NetworkForward {
 
   factory NetworkForward.fromMap(Map<String, dynamic> map) {
     return NetworkForward(
-      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<NetworkForwardAddress>(map['addresses'], (value) => NetworkForwardAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
-      driver: map['driver'] == null ? null : (NetworkForwardDriver.fromMap((map['driver'] as Map).cast<String, dynamic>())).input(),
-      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<NetworkForwardInterface>(map['interfaces'], (value) => NetworkForwardInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      nat: map['nat'] == null ? null : (NetworkForwardNat.fromMap((map['nat'] as Map).cast<String, dynamic>())).input(),
-      pfs: map['pfs'] == null ? null : (pulumi.Input.decodeList<NetworkForwardPf>(map['pfs'], (value) => NetworkForwardPf.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<NetworkForwardAddress>(map['addresses']!, (value) => NetworkForwardAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dev: map['dev'] == null ? null : (map['dev']! as String).input(),
+      driver: map['driver'] == null ? null : (NetworkForwardDriver.fromMap((map['driver']! as Map).cast<String, dynamic>())).input(),
+      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<NetworkForwardInterface>(map['interfaces']!, (value) => NetworkForwardInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managed: map['managed'] == null ? null : (map['managed']! as bool).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      nat: map['nat'] == null ? null : (NetworkForwardNat.fromMap((map['nat']! as Map).cast<String, dynamic>())).input(),
+      pfs: map['pfs'] == null ? null : (pulumi.Input.decodeList<NetworkForwardPf>(map['pfs']!, (value) => NetworkForwardPf.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

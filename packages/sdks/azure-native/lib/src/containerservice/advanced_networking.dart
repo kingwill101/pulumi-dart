@@ -33,9 +33,9 @@ class AdvancedNetworking {
 
   factory AdvancedNetworking.fromMap(Map<String, dynamic> map) {
     return AdvancedNetworking(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      observability: map['observability'] == null ? null : (AdvancedNetworkingObservability.fromMap((map['observability'] as Map).cast<String, dynamic>())).input(),
-      security: map['security'] == null ? null : (AdvancedNetworkingSecurity.fromMap((map['security'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      observability: map['observability'] == null ? null : (AdvancedNetworkingObservability.fromMap((map['observability']! as Map).cast<String, dynamic>())).input(),
+      security: map['security'] == null ? null : (AdvancedNetworkingSecurity.fromMap((map['security']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

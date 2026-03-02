@@ -39,10 +39,10 @@ class InstanceUser {
 
   factory InstanceUser.fromMap(Map<String, dynamic> map) {
     return InstanceUser(
-      databases: map['databases'] == null ? null : ((map['databases'] as List).cast<String>()).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
+      databases: map['databases'] == null ? null : ((map['databases']! as List).cast<String>()).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
       name: (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
     );
   }
 }

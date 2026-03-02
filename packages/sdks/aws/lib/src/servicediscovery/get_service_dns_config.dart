@@ -31,7 +31,7 @@ class GetServiceDnsConfig {
 
   factory GetServiceDnsConfig.fromMap(Map<String, dynamic> map) {
     return GetServiceDnsConfig(
-      dnsRecords: (pulumi.Input.decodeList<GetServiceDnsConfigDnsRecord>(map['dnsRecords'], (value) => GetServiceDnsConfigDnsRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsRecords: (pulumi.Input.decodeList<GetServiceDnsConfigDnsRecord>(map['dnsRecords']!, (value) => GetServiceDnsConfigDnsRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
       namespaceId: (map['namespaceId'] as String).input(),
       routingPolicy: (map['routingPolicy'] as String).input(),
     );

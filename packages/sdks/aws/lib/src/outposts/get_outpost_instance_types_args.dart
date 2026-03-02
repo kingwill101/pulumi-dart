@@ -30,7 +30,7 @@ class GetOutpostInstanceTypesArgs {
   factory GetOutpostInstanceTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetOutpostInstanceTypesArgs(
       arn: (map['arn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

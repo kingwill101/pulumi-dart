@@ -28,8 +28,8 @@ class GoogleCloudDocumentaiV1BoundingPoly {
 
   factory GoogleCloudDocumentaiV1BoundingPoly.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1BoundingPoly(
-      normalizedVertices: map['normalizedVertices'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1NormalizedVertex>(map['normalizedVertices'], (value) => GoogleCloudDocumentaiV1NormalizedVertex.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vertices: map['vertices'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1Vertex>(map['vertices'], (value) => GoogleCloudDocumentaiV1Vertex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      normalizedVertices: map['normalizedVertices'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1NormalizedVertex>(map['normalizedVertices']!, (value) => GoogleCloudDocumentaiV1NormalizedVertex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vertices: map['vertices'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1Vertex>(map['vertices']!, (value) => GoogleCloudDocumentaiV1Vertex.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

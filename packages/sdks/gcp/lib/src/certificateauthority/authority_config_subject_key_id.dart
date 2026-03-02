@@ -22,7 +22,7 @@ class AuthorityConfigSubjectKeyId {
 
   factory AuthorityConfigSubjectKeyId.fromMap(Map<String, dynamic> map) {
     return AuthorityConfigSubjectKeyId(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
     );
   }
 }

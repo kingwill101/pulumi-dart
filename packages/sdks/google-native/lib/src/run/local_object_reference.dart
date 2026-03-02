@@ -21,7 +21,7 @@ class LocalObjectReference {
 
   factory LocalObjectReference.fromMap(Map<String, dynamic> map) {
     return LocalObjectReference(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

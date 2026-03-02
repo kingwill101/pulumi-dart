@@ -42,12 +42,12 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforc
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
-      clientCredentialsArn: map['clientCredentialsArn'] == null ? null : (map['clientCredentialsArn'] as String).input(),
-      jwtToken: map['jwtToken'] == null ? null : (map['jwtToken'] as String).input(),
-      oauth2GrantType: map['oauth2GrantType'] == null ? null : (map['oauth2GrantType'] as String).input(),
-      oauthRequest: map['oauthRequest'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>())).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : ((map['accessToken'] as String).input()).input(),
+      clientCredentialsArn: map['clientCredentialsArn'] == null ? null : ((map['clientCredentialsArn'] as String).input()).input(),
+      jwtToken: map['jwtToken'] == null ? null : ((map['jwtToken'] as String).input()).input(),
+      oauth2GrantType: map['oauth2GrantType'] == null ? null : ((map['oauth2GrantType'] as String).input()).input(),
+      oauthRequest: map['oauthRequest'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforceOauthRequest.fromMap((map['oauthRequest']! as Map).cast<String, dynamic>())).input()).input(),
+      refreshToken: map['refreshToken'] == null ? null : ((map['refreshToken'] as String).input()).input(),
     );
   }
 }

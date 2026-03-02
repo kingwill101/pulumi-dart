@@ -50,11 +50,11 @@ class RoutingIntentArgs {
 
   factory RoutingIntentArgs.fromMap(Map<String, dynamic> map) {
     return RoutingIntentArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routingIntentName: map['routingIntentName'] == null ? null : (map['routingIntentName'] as String).input(),
-      routingPolicies: map['routingPolicies'] == null ? null : (pulumi.Input.decodeList<RoutingPolicy>(map['routingPolicies'], (value) => RoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routingIntentName: map['routingIntentName'] == null ? null : (map['routingIntentName']! as String).input(),
+      routingPolicies: map['routingPolicies'] == null ? null : (pulumi.Input.decodeList<RoutingPolicy>(map['routingPolicies']!, (value) => RoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
       virtualHubName: (map['virtualHubName'] as String).input(),
     );
   }

@@ -74,14 +74,14 @@ class GetChannelResult {
   factory GetChannelResult.fromMap(Map<String, dynamic> map) {
     return GetChannelResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      channelType: map['channelType'] == null ? null : map['channelType'] as String,
-      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : map['expirationTimeIfNotActivatedUtc'] as String,
+      channelType: map['channelType'] == null ? null : map['channelType']! as String,
+      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : map['expirationTimeIfNotActivatedUtc']! as String,
       id: map['id'] as String,
-      messageForActivation: map['messageForActivation'] == null ? null : map['messageForActivation'] as String,
+      messageForActivation: map['messageForActivation'] == null ? null : map['messageForActivation']! as String,
       name: map['name'] as String,
-      partnerTopicInfo: map['partnerTopicInfo'] == null ? null : PartnerTopicInfoResponse.fromMap((map['partnerTopicInfo'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      readinessState: map['readinessState'] == null ? null : map['readinessState'] as String,
+      partnerTopicInfo: map['partnerTopicInfo'] == null ? null : PartnerTopicInfoResponse.fromMap((map['partnerTopicInfo']! as Map).cast<String, dynamic>()),
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
+      readinessState: map['readinessState'] == null ? null : map['readinessState']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

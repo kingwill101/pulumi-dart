@@ -39,7 +39,7 @@ class QosAssociationV3Args {
   factory QosAssociationV3Args.fromMap(Map<String, dynamic> map) {
     return QosAssociationV3Args(
       qosId: (map['qosId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       volumeTypeId: (map['volumeTypeId'] as String).input(),
     );
   }

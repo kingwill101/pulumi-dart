@@ -38,10 +38,10 @@ class RoleManagementPolicyEnablementRule {
 
   factory RoleManagementPolicyEnablementRule.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyEnablementRule(
-      enabledRules: map['enabledRules'] == null ? null : ((map['enabledRules'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      enabledRules: map['enabledRules'] == null ? null : ((map['enabledRules']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       ruleType: (map['ruleType'] as String).input(),
-      target: map['target'] == null ? null : (RoleManagementPolicyRuleTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (RoleManagementPolicyRuleTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

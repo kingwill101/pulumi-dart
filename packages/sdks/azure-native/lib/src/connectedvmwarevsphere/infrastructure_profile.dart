@@ -41,11 +41,11 @@ class InfrastructureProfile {
 
   factory InfrastructureProfile.fromMap(Map<String, dynamic> map) {
     return InfrastructureProfile(
-      firmwareType: map['firmwareType'] == null ? null : (map['firmwareType'] as String).input(),
-      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId'] as String).input(),
-      smbiosUuid: map['smbiosUuid'] == null ? null : (map['smbiosUuid'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      vCenterId: map['vCenterId'] == null ? null : (map['vCenterId'] as String).input(),
+      firmwareType: map['firmwareType'] == null ? null : (map['firmwareType']! as String).input(),
+      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId']! as String).input(),
+      smbiosUuid: map['smbiosUuid'] == null ? null : (map['smbiosUuid']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      vCenterId: map['vCenterId'] == null ? null : (map['vCenterId']! as String).input(),
     );
   }
 }

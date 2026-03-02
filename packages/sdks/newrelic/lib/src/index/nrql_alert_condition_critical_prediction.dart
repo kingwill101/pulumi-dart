@@ -25,8 +25,8 @@ class NrqlAlertConditionCriticalPrediction {
 
   factory NrqlAlertConditionCriticalPrediction.fromMap(Map<String, dynamic> map) {
     return NrqlAlertConditionCriticalPrediction(
-      predictBy: map['predictBy'] == null ? null : (map['predictBy'] as int).input(),
-      preferPredictionViolation: map['preferPredictionViolation'] == null ? null : (map['preferPredictionViolation'] as bool).input(),
+      predictBy: map['predictBy'] == null ? null : (map['predictBy']! as int).input(),
+      preferPredictionViolation: map['preferPredictionViolation'] == null ? null : (map['preferPredictionViolation']! as bool).input(),
     );
   }
 }

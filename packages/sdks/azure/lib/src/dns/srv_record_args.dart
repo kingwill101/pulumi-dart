@@ -50,10 +50,10 @@ class SrvRecordArgs {
 
   factory SrvRecordArgs.fromMap(Map<String, dynamic> map) {
     return SrvRecordArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       records: (pulumi.Input.decodeList<SrvRecordRecord>(map['records'], (value) => SrvRecordRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       ttl: (map['ttl'] as int).input(),
       zoneName: (map['zoneName'] as String).input(),
     );

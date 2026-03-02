@@ -40,10 +40,10 @@ class GetReportMigrationcenterV1alpha1Args {
   factory GetReportMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetReportMigrationcenterV1alpha1Args(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       reportConfigId: (map['reportConfigId'] as String).input(),
       reportId: (map['reportId'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

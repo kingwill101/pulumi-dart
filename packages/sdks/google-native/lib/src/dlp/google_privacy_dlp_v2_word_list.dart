@@ -21,7 +21,7 @@ class GooglePrivacyDlpV2WordList {
 
   factory GooglePrivacyDlpV2WordList.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2WordList(
-      words: map['words'] == null ? null : ((map['words'] as List).cast<String>()).input(),
+      words: map['words'] == null ? null : ((map['words']! as List).cast<String>()).input(),
     );
   }
 }

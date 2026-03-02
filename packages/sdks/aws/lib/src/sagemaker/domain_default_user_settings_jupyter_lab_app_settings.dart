@@ -55,13 +55,13 @@ class DomainDefaultUserSettingsJupyterLabAppSettings {
 
   factory DomainDefaultUserSettingsJupyterLabAppSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsJupyterLabAppSettings(
-      appLifecycleManagement: map['appLifecycleManagement'] == null ? null : (DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement.fromMap((map['appLifecycleManagement'] as Map).cast<String, dynamic>())).input(),
-      builtInLifecycleConfigArn: map['builtInLifecycleConfigArn'] == null ? null : (map['builtInLifecycleConfigArn'] as String).input(),
-      codeRepositories: map['codeRepositories'] == null ? null : (pulumi.Input.decodeList<DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository>(map['codeRepositories'], (value) => DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customImages: map['customImages'] == null ? null : (pulumi.Input.decodeList<DomainDefaultUserSettingsJupyterLabAppSettingsCustomImage>(map['customImages'], (value) => DomainDefaultUserSettingsJupyterLabAppSettingsCustomImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : (DomainDefaultUserSettingsJupyterLabAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec'] as Map).cast<String, dynamic>())).input(),
-      emrSettings: map['emrSettings'] == null ? null : (DomainDefaultUserSettingsJupyterLabAppSettingsEmrSettings.fromMap((map['emrSettings'] as Map).cast<String, dynamic>())).input(),
-      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : ((map['lifecycleConfigArns'] as List).cast<String>()).input(),
+      appLifecycleManagement: map['appLifecycleManagement'] == null ? null : ((DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement.fromMap((map['appLifecycleManagement']! as Map).cast<String, dynamic>())).input()).input(),
+      builtInLifecycleConfigArn: map['builtInLifecycleConfigArn'] == null ? null : ((map['builtInLifecycleConfigArn'] as String).input()).input(),
+      codeRepositories: map['codeRepositories'] == null ? null : ((pulumi.Input.decodeList<DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository>(map['codeRepositories']!, (value) => DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      customImages: map['customImages'] == null ? null : ((pulumi.Input.decodeList<DomainDefaultUserSettingsJupyterLabAppSettingsCustomImage>(map['customImages']!, (value) => DomainDefaultUserSettingsJupyterLabAppSettingsCustomImage.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : ((DomainDefaultUserSettingsJupyterLabAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec']! as Map).cast<String, dynamic>())).input()).input(),
+      emrSettings: map['emrSettings'] == null ? null : ((DomainDefaultUserSettingsJupyterLabAppSettingsEmrSettings.fromMap((map['emrSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : (((map['lifecycleConfigArns'] as List).cast<String>()).input()).input(),
     );
   }
 }

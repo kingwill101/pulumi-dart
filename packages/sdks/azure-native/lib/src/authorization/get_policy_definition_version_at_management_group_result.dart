@@ -84,18 +84,18 @@ class GetPolicyDefinitionVersionAtManagementGroupResult {
   factory GetPolicyDefinitionVersionAtManagementGroupResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyDefinitionVersionAtManagementGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
-      metadata: map['metadata'] == null ? null : map['metadata'],
-      mode: map['mode'] == null ? null : map['mode'] as String,
+      metadata: map['metadata'] == null ? null : map['metadata']!,
+      mode: map['mode'] == null ? null : map['mode']! as String,
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterDefinitionsValueResponse>(map['parameters'], (value) => ParameterDefinitionsValueResponse.fromMap((value as Map).cast<String, dynamic>())),
-      policyRule: map['policyRule'] == null ? null : map['policyRule'],
-      policyType: map['policyType'] == null ? null : map['policyType'] as String,
+      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterDefinitionsValueResponse>(map['parameters']!, (value) => ParameterDefinitionsValueResponse.fromMap((value as Map).cast<String, dynamic>())),
+      policyRule: map['policyRule'] == null ? null : map['policyRule']!,
+      policyType: map['policyType'] == null ? null : map['policyType']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

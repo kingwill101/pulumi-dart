@@ -22,7 +22,7 @@ class ManagedClusterPodIdentityProvisioningErrorResponse {
 
   factory ManagedClusterPodIdentityProvisioningErrorResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterPodIdentityProvisioningErrorResponse(
-      error: map['error'] == null ? null : (ManagedClusterPodIdentityProvisioningErrorBodyResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (ManagedClusterPodIdentityProvisioningErrorBodyResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

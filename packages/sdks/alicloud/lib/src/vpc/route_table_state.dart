@@ -70,16 +70,16 @@ class RouteTableState {
 
   factory RouteTableState.fromMap(Map<String, dynamic> map) {
     return RouteTableState(
-      associateType: map['associateType'] == null ? null : (map['associateType'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      routePropagationEnable: map['routePropagationEnable'] == null ? null : (map['routePropagationEnable'] as bool).input(),
-      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      associateType: map['associateType'] == null ? null : (map['associateType']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      routePropagationEnable: map['routePropagationEnable'] == null ? null : (map['routePropagationEnable']! as bool).input(),
+      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

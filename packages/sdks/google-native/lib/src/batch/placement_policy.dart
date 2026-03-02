@@ -26,8 +26,8 @@ class PlacementPolicy {
 
   factory PlacementPolicy.fromMap(Map<String, dynamic> map) {
     return PlacementPolicy(
-      collocation: map['collocation'] == null ? null : (map['collocation'] as String).input(),
-      maxDistance: map['maxDistance'] == null ? null : (map['maxDistance'] as String).input(),
+      collocation: map['collocation'] == null ? null : (map['collocation']! as String).input(),
+      maxDistance: map['maxDistance'] == null ? null : (map['maxDistance']! as String).input(),
     );
   }
 }

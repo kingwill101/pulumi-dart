@@ -21,7 +21,7 @@ class BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig {
 
   factory BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

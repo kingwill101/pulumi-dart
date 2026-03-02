@@ -45,10 +45,10 @@ class ReceiverResponse {
   factory ReceiverResponse.fromMap(Map<String, dynamic> map) {
     return ReceiverResponse(
       name: (map['name'] as String).input(),
-      otlp: map['otlp'] == null ? null : (OtlpReceiverResponse.fromMap((map['otlp'] as Map).cast<String, dynamic>())).input(),
-      syslog: map['syslog'] == null ? null : (SyslogReceiverResponse.fromMap((map['syslog'] as Map).cast<String, dynamic>())).input(),
+      otlp: map['otlp'] == null ? null : (OtlpReceiverResponse.fromMap((map['otlp']! as Map).cast<String, dynamic>())).input(),
+      syslog: map['syslog'] == null ? null : (SyslogReceiverResponse.fromMap((map['syslog']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      udp: map['udp'] == null ? null : (UdpReceiverResponse.fromMap((map['udp'] as Map).cast<String, dynamic>())).input(),
+      udp: map['udp'] == null ? null : (UdpReceiverResponse.fromMap((map['udp']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

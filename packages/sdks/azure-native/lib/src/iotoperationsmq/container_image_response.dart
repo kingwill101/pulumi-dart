@@ -36,8 +36,8 @@ class ContainerImageResponse {
 
   factory ContainerImageResponse.fromMap(Map<String, dynamic> map) {
     return ContainerImageResponse(
-      pullPolicy: map['pullPolicy'] == null ? null : (map['pullPolicy'] as String).input(),
-      pullSecrets: map['pullSecrets'] == null ? null : (map['pullSecrets'] as String).input(),
+      pullPolicy: map['pullPolicy'] == null ? null : (map['pullPolicy']! as String).input(),
+      pullSecrets: map['pullSecrets'] == null ? null : (map['pullSecrets']! as String).input(),
       repository: (map['repository'] as String).input(),
       tag: (map['tag'] as String).input(),
     );

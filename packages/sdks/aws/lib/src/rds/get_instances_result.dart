@@ -44,7 +44,7 @@ class GetInstancesResult {
 
   factory GetInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetInstancesResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInstancesFilter>(map['filters'], (value) => GetInstancesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInstancesFilter>(map['filters']!, (value) => GetInstancesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceArns: (map['instanceArns'] as List).cast<String>(),
       instanceIdentifiers: (map['instanceIdentifiers'] as List).cast<String>(),

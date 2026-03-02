@@ -30,9 +30,9 @@ class AwsGovcloudIntegrationsIam {
 
   factory AwsGovcloudIntegrationsIam.fromMap(Map<String, dynamic> map) {
     return AwsGovcloudIntegrationsIam(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
     );
   }
 }

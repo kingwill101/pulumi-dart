@@ -39,10 +39,10 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNames {
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNames.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationResourceNames(
-      applicationServer: map['applicationServer'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServer.fromMap((map['applicationServer'] as Map).cast<String, dynamic>())).input(),
-      centralServer: map['centralServer'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServer.fromMap((map['centralServer'] as Map).cast<String, dynamic>())).input(),
-      databaseServer: map['databaseServer'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServer.fromMap((map['databaseServer'] as Map).cast<String, dynamic>())).input(),
-      sharedStorage: map['sharedStorage'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage.fromMap((map['sharedStorage'] as Map).cast<String, dynamic>())).input(),
+      applicationServer: map['applicationServer'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServer.fromMap((map['applicationServer']! as Map).cast<String, dynamic>())).input(),
+      centralServer: map['centralServer'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServer.fromMap((map['centralServer']! as Map).cast<String, dynamic>())).input(),
+      databaseServer: map['databaseServer'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServer.fromMap((map['databaseServer']! as Map).cast<String, dynamic>())).input(),
+      sharedStorage: map['sharedStorage'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage.fromMap((map['sharedStorage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

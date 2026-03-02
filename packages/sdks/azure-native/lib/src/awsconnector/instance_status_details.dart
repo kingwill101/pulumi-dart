@@ -33,9 +33,9 @@ class InstanceStatusDetails {
 
   factory InstanceStatusDetails.fromMap(Map<String, dynamic> map) {
     return InstanceStatusDetails(
-      impairedSince: map['impairedSince'] == null ? null : (map['impairedSince'] as String).input(),
-      name: map['name'] == null ? null : (StatusNameEnumValue.fromMap((map['name'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (StatusTypeEnumValue.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      impairedSince: map['impairedSince'] == null ? null : (map['impairedSince']! as String).input(),
+      name: map['name'] == null ? null : (StatusNameEnumValue.fromMap((map['name']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (StatusTypeEnumValue.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

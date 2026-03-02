@@ -20,7 +20,7 @@ class DomainDevicesFilesystemBinaryThreadPool {
 
   factory DomainDevicesFilesystemBinaryThreadPool.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemBinaryThreadPool(
-      size: map['size'] == null ? null : (map['size'] as double).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
     );
   }
 }

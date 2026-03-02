@@ -54,12 +54,12 @@ class GetKeyPairArgs {
 
   factory GetKeyPairArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyPairArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetKeyPairFilter>(map['filters'], (value) => GetKeyPairFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includePublicKey: map['includePublicKey'] == null ? null : (map['includePublicKey'] as bool).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyPairId: map['keyPairId'] == null ? null : (map['keyPairId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetKeyPairFilter>(map['filters']!, (value) => GetKeyPairFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      includePublicKey: map['includePublicKey'] == null ? null : ((map['includePublicKey'] as bool).input()).input(),
+      keyName: map['keyName'] == null ? null : ((map['keyName'] as String).input()).input(),
+      keyPairId: map['keyPairId'] == null ? null : ((map['keyPairId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

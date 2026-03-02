@@ -41,11 +41,11 @@ class DeploymentStacksTemplateLink {
 
   factory DeploymentStacksTemplateLink.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksTemplateLink(
-      contentVersion: map['contentVersion'] == null ? null : (map['contentVersion'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      queryString: map['queryString'] == null ? null : (map['queryString'] as String).input(),
-      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      contentVersion: map['contentVersion'] == null ? null : (map['contentVersion']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      queryString: map['queryString'] == null ? null : (map['queryString']! as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ResourceProviderAuthorizationRules {
 
   factory ResourceProviderAuthorizationRules.fromMap(Map<String, dynamic> map) {
     return ResourceProviderAuthorizationRules(
-      asyncOperationPollingRules: map['asyncOperationPollingRules'] == null ? null : (AsyncOperationPollingRules.fromMap((map['asyncOperationPollingRules'] as Map).cast<String, dynamic>())).input(),
+      asyncOperationPollingRules: map['asyncOperationPollingRules'] == null ? null : (AsyncOperationPollingRules.fromMap((map['asyncOperationPollingRules']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

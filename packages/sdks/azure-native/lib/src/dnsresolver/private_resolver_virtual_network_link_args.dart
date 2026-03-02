@@ -46,10 +46,10 @@ class PrivateResolverVirtualNetworkLinkArgs {
   factory PrivateResolverVirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return PrivateResolverVirtualNetworkLinkArgs(
       dnsForwardingRulesetName: (map['dnsForwardingRulesetName'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       virtualNetwork: (SubResource.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())).input(),
-      virtualNetworkLinkName: map['virtualNetworkLinkName'] == null ? null : (map['virtualNetworkLinkName'] as String).input(),
+      virtualNetworkLinkName: map['virtualNetworkLinkName'] == null ? null : (map['virtualNetworkLinkName']! as String).input(),
     );
   }
 }

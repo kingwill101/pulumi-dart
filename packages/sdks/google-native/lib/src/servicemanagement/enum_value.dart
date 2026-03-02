@@ -32,9 +32,9 @@ class EnumValue {
 
   factory EnumValue.fromMap(Map<String, dynamic> map) {
     return EnumValue(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      number: map['number'] == null ? null : (map['number'] as int).input(),
-      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options'], (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      number: map['number'] == null ? null : (map['number']! as int).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options']!, (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

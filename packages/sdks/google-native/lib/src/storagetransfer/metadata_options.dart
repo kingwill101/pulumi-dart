@@ -70,15 +70,15 @@ class MetadataOptions {
 
   factory MetadataOptions.fromMap(Map<String, dynamic> map) {
     return MetadataOptions(
-      acl: map['acl'] == null ? null : (MetadataOptionsAcl.fromValue(map['acl'] as String)).input(),
-      gid: map['gid'] == null ? null : (MetadataOptionsGid.fromValue(map['gid'] as String)).input(),
-      kmsKey: map['kmsKey'] == null ? null : (MetadataOptionsKmsKey.fromValue(map['kmsKey'] as String)).input(),
-      mode: map['mode'] == null ? null : (MetadataOptionsMode.fromValue(map['mode'] as String)).input(),
-      storageClass: map['storageClass'] == null ? null : (MetadataOptionsStorageClass.fromValue(map['storageClass'] as String)).input(),
-      symlink: map['symlink'] == null ? null : (MetadataOptionsSymlink.fromValue(map['symlink'] as String)).input(),
-      temporaryHold: map['temporaryHold'] == null ? null : (MetadataOptionsTemporaryHold.fromValue(map['temporaryHold'] as String)).input(),
-      timeCreated: map['timeCreated'] == null ? null : (MetadataOptionsTimeCreated.fromValue(map['timeCreated'] as String)).input(),
-      uid: map['uid'] == null ? null : (MetadataOptionsUid.fromValue(map['uid'] as String)).input(),
+      acl: map['acl'] == null ? null : (MetadataOptionsAcl.fromValue(map['acl']! as String)).input(),
+      gid: map['gid'] == null ? null : (MetadataOptionsGid.fromValue(map['gid']! as String)).input(),
+      kmsKey: map['kmsKey'] == null ? null : (MetadataOptionsKmsKey.fromValue(map['kmsKey']! as String)).input(),
+      mode: map['mode'] == null ? null : (MetadataOptionsMode.fromValue(map['mode']! as String)).input(),
+      storageClass: map['storageClass'] == null ? null : (MetadataOptionsStorageClass.fromValue(map['storageClass']! as String)).input(),
+      symlink: map['symlink'] == null ? null : (MetadataOptionsSymlink.fromValue(map['symlink']! as String)).input(),
+      temporaryHold: map['temporaryHold'] == null ? null : (MetadataOptionsTemporaryHold.fromValue(map['temporaryHold']! as String)).input(),
+      timeCreated: map['timeCreated'] == null ? null : (MetadataOptionsTimeCreated.fromValue(map['timeCreated']! as String)).input(),
+      uid: map['uid'] == null ? null : (MetadataOptionsUid.fromValue(map['uid']! as String)).input(),
     );
   }
 }

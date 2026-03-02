@@ -36,10 +36,10 @@ class UserInGroupState {
 
   factory UserInGroupState.fromMap(Map<String, dynamic> map) {
     return UserInGroupState(
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      groupName: map['groupName'] == null ? null : ((map['groupName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      userPoolId: map['userPoolId'] == null ? null : ((map['userPoolId'] as String).input()).input(),
+      username: map['username'] == null ? null : ((map['username'] as String).input()).input(),
     );
   }
 }

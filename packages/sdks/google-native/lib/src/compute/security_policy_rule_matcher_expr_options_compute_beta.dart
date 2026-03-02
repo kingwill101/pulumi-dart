@@ -21,7 +21,7 @@ class SecurityPolicyRuleMatcherExprOptionsComputeBeta {
 
   factory SecurityPolicyRuleMatcherExprOptionsComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleMatcherExprOptionsComputeBeta(
-      recaptchaOptions: map['recaptchaOptions'] == null ? null : (SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta.fromMap((map['recaptchaOptions'] as Map).cast<String, dynamic>())).input(),
+      recaptchaOptions: map['recaptchaOptions'] == null ? null : (SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsComputeBeta.fromMap((map['recaptchaOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

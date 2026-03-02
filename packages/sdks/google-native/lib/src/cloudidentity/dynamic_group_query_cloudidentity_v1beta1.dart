@@ -26,8 +26,8 @@ class DynamicGroupQueryCloudidentityV1beta1 {
 
   factory DynamicGroupQueryCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return DynamicGroupQueryCloudidentityV1beta1(
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (DynamicGroupQueryResourceTypeCloudidentityV1beta1.fromValue(map['resourceType'] as String)).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (DynamicGroupQueryResourceTypeCloudidentityV1beta1.fromValue(map['resourceType']! as String)).input(),
     );
   }
 }

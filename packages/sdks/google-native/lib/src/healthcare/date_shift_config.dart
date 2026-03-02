@@ -27,8 +27,8 @@ class DateShiftConfig {
 
   factory DateShiftConfig.fromMap(Map<String, dynamic> map) {
     return DateShiftConfig(
-      cryptoKey: map['cryptoKey'] == null ? null : (map['cryptoKey'] as String).input(),
-      kmsWrapped: map['kmsWrapped'] == null ? null : (KmsWrappedCryptoKey.fromMap((map['kmsWrapped'] as Map).cast<String, dynamic>())).input(),
+      cryptoKey: map['cryptoKey'] == null ? null : (map['cryptoKey']! as String).input(),
+      kmsWrapped: map['kmsWrapped'] == null ? null : (KmsWrappedCryptoKey.fromMap((map['kmsWrapped']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

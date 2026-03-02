@@ -127,7 +127,7 @@ class GetAppResult {
       maxInactiveRevisions: map['maxInactiveRevisions'] as int,
       name: map['name'] as String,
       outboundIpAddresses: (map['outboundIpAddresses'] as List).cast<String>(),
-      readSecrets: map['readSecrets'] == null ? null : map['readSecrets'] as bool,
+      readSecrets: map['readSecrets'] == null ? null : map['readSecrets']! as bool,
       registries: pulumi.Input.decodeList<GetAppRegistry>(map['registries'], (value) => GetAppRegistry.fromMap((value as Map).cast<String, dynamic>())),
       resourceGroupName: map['resourceGroupName'] as String,
       revisionMode: map['revisionMode'] as String,

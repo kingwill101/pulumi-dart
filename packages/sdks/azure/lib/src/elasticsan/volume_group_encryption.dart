@@ -40,11 +40,11 @@ class VolumeGroupEncryption {
 
   factory VolumeGroupEncryption.fromMap(Map<String, dynamic> map) {
     return VolumeGroupEncryption(
-      currentVersionedKeyExpirationTimestamp: map['currentVersionedKeyExpirationTimestamp'] == null ? null : (map['currentVersionedKeyExpirationTimestamp'] as String).input(),
-      currentVersionedKeyId: map['currentVersionedKeyId'] == null ? null : (map['currentVersionedKeyId'] as String).input(),
+      currentVersionedKeyExpirationTimestamp: map['currentVersionedKeyExpirationTimestamp'] == null ? null : (map['currentVersionedKeyExpirationTimestamp']! as String).input(),
+      currentVersionedKeyId: map['currentVersionedKeyId'] == null ? null : (map['currentVersionedKeyId']! as String).input(),
       keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
-      lastKeyRotationTimestamp: map['lastKeyRotationTimestamp'] == null ? null : (map['lastKeyRotationTimestamp'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      lastKeyRotationTimestamp: map['lastKeyRotationTimestamp'] == null ? null : (map['lastKeyRotationTimestamp']! as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class SourceHierarchyDatasets {
 
   factory SourceHierarchyDatasets.fromMap(Map<String, dynamic> map) {
     return SourceHierarchyDatasets(
-      datasetTemplate: map['datasetTemplate'] == null ? null : (DatasetTemplate.fromMap((map['datasetTemplate'] as Map).cast<String, dynamic>())).input(),
+      datasetTemplate: map['datasetTemplate'] == null ? null : (DatasetTemplate.fromMap((map['datasetTemplate']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

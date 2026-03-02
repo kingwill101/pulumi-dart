@@ -39,9 +39,9 @@ class StageSpecResponse {
   factory StageSpecResponse.fromMap(Map<String, dynamic> map) {
     return StageSpecResponse(
       name: (map['name'] as String).input(),
-      specification: map['specification'] == null ? null : (map['specification']).input(),
-      taskOption: map['taskOption'] == null ? null : (TaskOptionResponse.fromMap((map['taskOption'] as Map).cast<String, dynamic>())).input(),
-      tasks: map['tasks'] == null ? null : (pulumi.Input.decodeList<TaskSpecResponse>(map['tasks'], (value) => TaskSpecResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      specification: map['specification'] == null ? null : (map['specification']!).input(),
+      taskOption: map['taskOption'] == null ? null : (TaskOptionResponse.fromMap((map['taskOption']! as Map).cast<String, dynamic>())).input(),
+      tasks: map['tasks'] == null ? null : (pulumi.Input.decodeList<TaskSpecResponse>(map['tasks']!, (value) => TaskSpecResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

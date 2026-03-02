@@ -31,9 +31,9 @@ class DomainDevicesSerialTarget {
 
   factory DomainDevicesSerialTarget.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSerialTarget(
-      model: map['model'] == null ? null : (DomainDevicesSerialTargetModel.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as double).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      model: map['model'] == null ? null : (DomainDevicesSerialTargetModel.fromMap((map['model']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as double).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

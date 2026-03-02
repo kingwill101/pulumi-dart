@@ -33,9 +33,9 @@ class SacRealmSymantecOptions {
 
   factory SacRealmSymantecOptions.fromMap(Map<String, dynamic> map) {
     return SacRealmSymantecOptions(
-      availableSymantecSites: map['availableSymantecSites'] == null ? null : ((map['availableSymantecSites'] as List).cast<String>()).input(),
-      secretPath: map['secretPath'] == null ? null : (map['secretPath'] as String).input(),
-      symantecConnectionState: map['symantecConnectionState'] == null ? null : (map['symantecConnectionState'] as String).input(),
+      availableSymantecSites: map['availableSymantecSites'] == null ? null : ((map['availableSymantecSites']! as List).cast<String>()).input(),
+      secretPath: map['secretPath'] == null ? null : (map['secretPath']! as String).input(),
+      symantecConnectionState: map['symantecConnectionState'] == null ? null : (map['symantecConnectionState']! as String).input(),
     );
   }
 }

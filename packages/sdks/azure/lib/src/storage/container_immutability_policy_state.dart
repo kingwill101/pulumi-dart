@@ -43,11 +43,11 @@ class ContainerImmutabilityPolicyState {
 
   factory ContainerImmutabilityPolicyState.fromMap(Map<String, dynamic> map) {
     return ContainerImmutabilityPolicyState(
-      immutabilityPeriodInDays: map['immutabilityPeriodInDays'] == null ? null : (map['immutabilityPeriodInDays'] as int).input(),
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
-      protectedAppendWritesAllEnabled: map['protectedAppendWritesAllEnabled'] == null ? null : (map['protectedAppendWritesAllEnabled'] as bool).input(),
-      protectedAppendWritesEnabled: map['protectedAppendWritesEnabled'] == null ? null : (map['protectedAppendWritesEnabled'] as bool).input(),
-      storageContainerResourceManagerId: map['storageContainerResourceManagerId'] == null ? null : (map['storageContainerResourceManagerId'] as String).input(),
+      immutabilityPeriodInDays: map['immutabilityPeriodInDays'] == null ? null : (map['immutabilityPeriodInDays']! as int).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
+      protectedAppendWritesAllEnabled: map['protectedAppendWritesAllEnabled'] == null ? null : (map['protectedAppendWritesAllEnabled']! as bool).input(),
+      protectedAppendWritesEnabled: map['protectedAppendWritesEnabled'] == null ? null : (map['protectedAppendWritesEnabled']! as bool).input(),
+      storageContainerResourceManagerId: map['storageContainerResourceManagerId'] == null ? null : (map['storageContainerResourceManagerId']! as String).input(),
     );
   }
 }

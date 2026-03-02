@@ -30,7 +30,7 @@ class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption {
 
   factory PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption.fromMap(Map<String, dynamic> map) {
     return PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       id: (map['id'] as String).input(),
     );

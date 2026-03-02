@@ -20,7 +20,7 @@ class AppLoggingSettingsCloudLoggingSettings {
 
   factory AppLoggingSettingsCloudLoggingSettings.fromMap(Map<String, dynamic> map) {
     return AppLoggingSettingsCloudLoggingSettings(
-      enableCloudLogging: map['enableCloudLogging'] == null ? null : (map['enableCloudLogging'] as bool).input(),
+      enableCloudLogging: map['enableCloudLogging'] == null ? null : (map['enableCloudLogging']! as bool).input(),
     );
   }
 }

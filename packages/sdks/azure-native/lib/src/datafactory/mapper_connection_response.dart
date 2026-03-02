@@ -43,10 +43,10 @@ class MapperConnectionResponse {
 
   factory MapperConnectionResponse.fromMap(Map<String, dynamic> map) {
     return MapperConnectionResponse(
-      commonDslConnectorProperties: map['commonDslConnectorProperties'] == null ? null : (pulumi.Input.decodeList<MapperDslConnectorPropertiesResponse>(map['commonDslConnectorProperties'], (value) => MapperDslConnectorPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isInlineDataset: map['isInlineDataset'] == null ? null : (map['isInlineDataset'] as bool).input(),
-      linkedService: map['linkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedService'] as Map).cast<String, dynamic>())).input(),
-      linkedServiceType: map['linkedServiceType'] == null ? null : (map['linkedServiceType'] as String).input(),
+      commonDslConnectorProperties: map['commonDslConnectorProperties'] == null ? null : (pulumi.Input.decodeList<MapperDslConnectorPropertiesResponse>(map['commonDslConnectorProperties']!, (value) => MapperDslConnectorPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isInlineDataset: map['isInlineDataset'] == null ? null : (map['isInlineDataset']! as bool).input(),
+      linkedService: map['linkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedService']! as Map).cast<String, dynamic>())).input(),
+      linkedServiceType: map['linkedServiceType'] == null ? null : (map['linkedServiceType']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

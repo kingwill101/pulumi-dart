@@ -78,13 +78,13 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
 
   factory AlertPolicyConditionConditionPrometheusQueryLanguage.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionPrometheusQueryLanguage(
-      alertRule: map['alertRule'] == null ? null : (map['alertRule'] as String).input(),
-      disableMetricValidation: map['disableMetricValidation'] == null ? null : (map['disableMetricValidation'] as bool).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      alertRule: map['alertRule'] == null ? null : (map['alertRule']! as String).input(),
+      disableMetricValidation: map['disableMetricValidation'] == null ? null : (map['disableMetricValidation']! as bool).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       query: (map['query'] as String).input(),
-      ruleGroup: map['ruleGroup'] == null ? null : (map['ruleGroup'] as String).input(),
+      ruleGroup: map['ruleGroup'] == null ? null : (map['ruleGroup']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class WorkspaceUserConfigState {
 
   factory WorkspaceUserConfigState.fromMap(Map<String, dynamic> map) {
     return WorkspaceUserConfigState(
-      categoryName: map['categoryName'] == null ? null : (map['categoryName'] as String).input(),
-      configKey: map['configKey'] == null ? null : (map['configKey'] as String).input(),
-      configValue: map['configValue'] == null ? null : (map['configValue'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      categoryName: map['categoryName'] == null ? null : (map['categoryName']! as String).input(),
+      configKey: map['configKey'] == null ? null : (map['configKey']! as String).input(),
+      configValue: map['configValue'] == null ? null : (map['configValue']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

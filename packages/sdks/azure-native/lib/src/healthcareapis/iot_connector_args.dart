@@ -62,13 +62,13 @@ class IotConnectorArgs {
 
   factory IotConnectorArgs.fromMap(Map<String, dynamic> map) {
     return IotConnectorArgs(
-      deviceMapping: map['deviceMapping'] == null ? null : (IotMappingProperties.fromMap((map['deviceMapping'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ServiceManagedIdentityIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      ingestionEndpointConfiguration: map['ingestionEndpointConfiguration'] == null ? null : (IotEventHubIngestionEndpointConfiguration.fromMap((map['ingestionEndpointConfiguration'] as Map).cast<String, dynamic>())).input(),
-      iotConnectorName: map['iotConnectorName'] == null ? null : (map['iotConnectorName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      deviceMapping: map['deviceMapping'] == null ? null : (IotMappingProperties.fromMap((map['deviceMapping']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ServiceManagedIdentityIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      ingestionEndpointConfiguration: map['ingestionEndpointConfiguration'] == null ? null : (IotEventHubIngestionEndpointConfiguration.fromMap((map['ingestionEndpointConfiguration']! as Map).cast<String, dynamic>())).input(),
+      iotConnectorName: map['iotConnectorName'] == null ? null : (map['iotConnectorName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

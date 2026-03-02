@@ -28,7 +28,7 @@ class SourceIamBindingCondition {
 
   factory SourceIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return SourceIamBindingCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

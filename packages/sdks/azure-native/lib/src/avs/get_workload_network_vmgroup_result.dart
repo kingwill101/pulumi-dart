@@ -67,12 +67,12 @@ class GetWorkloadNetworkVMGroupResult {
   factory GetWorkloadNetworkVMGroupResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadNetworkVMGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
-      members: map['members'] == null ? null : (map['members'] as List).cast<String>(),
+      members: map['members'] == null ? null : (map['members']! as List).cast<String>(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      revision: map['revision'] == null ? null : map['revision'] as double,
+      revision: map['revision'] == null ? null : map['revision']! as double,
       status: map['status'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

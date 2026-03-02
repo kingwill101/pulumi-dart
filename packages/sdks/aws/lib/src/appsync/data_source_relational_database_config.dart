@@ -26,8 +26,8 @@ class DataSourceRelationalDatabaseConfig {
 
   factory DataSourceRelationalDatabaseConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceRelationalDatabaseConfig(
-      httpEndpointConfig: map['httpEndpointConfig'] == null ? null : (DataSourceRelationalDatabaseConfigHttpEndpointConfig.fromMap((map['httpEndpointConfig'] as Map).cast<String, dynamic>())).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      httpEndpointConfig: map['httpEndpointConfig'] == null ? null : ((DataSourceRelationalDatabaseConfigHttpEndpointConfig.fromMap((map['httpEndpointConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      sourceType: map['sourceType'] == null ? null : ((map['sourceType'] as String).input()).input(),
     );
   }
 }

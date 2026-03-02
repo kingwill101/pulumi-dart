@@ -29,7 +29,7 @@ class TcpRouteRouteRuleNetworkservicesV1beta1 {
   factory TcpRouteRouteRuleNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return TcpRouteRouteRuleNetworkservicesV1beta1(
       action: (TcpRouteRouteActionNetworkservicesV1beta1.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<TcpRouteRouteMatchNetworkservicesV1beta1>(map['matches'], (value) => TcpRouteRouteMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<TcpRouteRouteMatchNetworkservicesV1beta1>(map['matches']!, (value) => TcpRouteRouteMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

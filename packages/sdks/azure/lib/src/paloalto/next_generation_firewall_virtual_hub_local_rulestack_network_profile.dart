@@ -60,15 +60,15 @@ class NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile {
 
   factory NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile(
-      egressNatIpAddressIds: map['egressNatIpAddressIds'] == null ? null : ((map['egressNatIpAddressIds'] as List).cast<String>()).input(),
-      egressNatIpAddresses: map['egressNatIpAddresses'] == null ? null : ((map['egressNatIpAddresses'] as List).cast<String>()).input(),
-      ipOfTrustForUserDefinedRoutes: map['ipOfTrustForUserDefinedRoutes'] == null ? null : (map['ipOfTrustForUserDefinedRoutes'] as String).input(),
+      egressNatIpAddressIds: map['egressNatIpAddressIds'] == null ? null : ((map['egressNatIpAddressIds']! as List).cast<String>()).input(),
+      egressNatIpAddresses: map['egressNatIpAddresses'] == null ? null : ((map['egressNatIpAddresses']! as List).cast<String>()).input(),
+      ipOfTrustForUserDefinedRoutes: map['ipOfTrustForUserDefinedRoutes'] == null ? null : (map['ipOfTrustForUserDefinedRoutes']! as String).input(),
       networkVirtualApplianceId: (map['networkVirtualApplianceId'] as String).input(),
       publicIpAddressIds: ((map['publicIpAddressIds'] as List).cast<String>()).input(),
-      publicIpAddresses: map['publicIpAddresses'] == null ? null : ((map['publicIpAddresses'] as List).cast<String>()).input(),
-      trustedAddressRanges: map['trustedAddressRanges'] == null ? null : ((map['trustedAddressRanges'] as List).cast<String>()).input(),
-      trustedSubnetId: map['trustedSubnetId'] == null ? null : (map['trustedSubnetId'] as String).input(),
-      untrustedSubnetId: map['untrustedSubnetId'] == null ? null : (map['untrustedSubnetId'] as String).input(),
+      publicIpAddresses: map['publicIpAddresses'] == null ? null : ((map['publicIpAddresses']! as List).cast<String>()).input(),
+      trustedAddressRanges: map['trustedAddressRanges'] == null ? null : ((map['trustedAddressRanges']! as List).cast<String>()).input(),
+      trustedSubnetId: map['trustedSubnetId'] == null ? null : (map['trustedSubnetId']! as String).input(),
+      untrustedSubnetId: map['untrustedSubnetId'] == null ? null : (map['untrustedSubnetId']! as String).input(),
       virtualHubId: (map['virtualHubId'] as String).input(),
     );
   }

@@ -147,16 +147,16 @@ class GetServerResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       name: map['name'] as String,
-      networks: map['networks'] == null ? null : pulumi.Input.decodeList<GetServerNetwork>(map['networks'], (value) => GetServerNetwork.fromMap((value as Map).cast<String, dynamic>())),
-      placementGroupId: map['placementGroupId'] == null ? null : map['placementGroupId'] as int,
+      networks: map['networks'] == null ? null : pulumi.Input.decodeList<GetServerNetwork>(map['networks']!, (value) => GetServerNetwork.fromMap((value as Map).cast<String, dynamic>())),
+      placementGroupId: map['placementGroupId'] == null ? null : map['placementGroupId']! as int,
       primaryDiskSize: map['primaryDiskSize'] as int,
       rebuildProtection: map['rebuildProtection'] as bool,
       rescue: map['rescue'] as String,
-      selector: map['selector'] == null ? null : map['selector'] as String,
+      selector: map['selector'] == null ? null : map['selector']! as String,
       serverType: map['serverType'] as String,
       status: map['status'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
-      withStatuses: map['withStatuses'] == null ? null : (map['withStatuses'] as List).cast<String>(),
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
+      withStatuses: map['withStatuses'] == null ? null : (map['withStatuses']! as List).cast<String>(),
     );
   }
 }

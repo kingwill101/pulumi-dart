@@ -23,7 +23,7 @@ class AppAudioProcessingConfigBargeInConfig {
 
   factory AppAudioProcessingConfigBargeInConfig.fromMap(Map<String, dynamic> map) {
     return AppAudioProcessingConfigBargeInConfig(
-      bargeInAwareness: map['bargeInAwareness'] == null ? null : (map['bargeInAwareness'] as bool).input(),
+      bargeInAwareness: map['bargeInAwareness'] == null ? null : (map['bargeInAwareness']! as bool).input(),
     );
   }
 }

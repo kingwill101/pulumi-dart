@@ -62,15 +62,15 @@ class DatasetHl7V2StoreIamPolicyHealthcareV1beta1Args {
 
   factory DatasetHl7V2StoreIamPolicyHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return DatasetHl7V2StoreIamPolicyHealthcareV1beta1Args(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigHealthcareV1beta1>(map['auditConfigs'], (value) => AuditConfigHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingHealthcareV1beta1>(map['bindings'], (value) => BindingHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigHealthcareV1beta1>(map['auditConfigs']!, (value) => AuditConfigHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingHealthcareV1beta1>(map['bindings']!, (value) => BindingHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
       datasetId: (map['datasetId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       hl7V2StoreId: (map['hl7V2StoreId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

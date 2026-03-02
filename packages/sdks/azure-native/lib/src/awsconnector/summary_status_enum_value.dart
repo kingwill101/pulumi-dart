@@ -21,7 +21,7 @@ class SummaryStatusEnumValue {
 
   factory SummaryStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return SummaryStatusEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

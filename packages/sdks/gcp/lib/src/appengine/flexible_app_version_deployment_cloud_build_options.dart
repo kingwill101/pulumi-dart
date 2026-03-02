@@ -27,7 +27,7 @@ class FlexibleAppVersionDeploymentCloudBuildOptions {
   factory FlexibleAppVersionDeploymentCloudBuildOptions.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionDeploymentCloudBuildOptions(
       appYamlPath: (map['appYamlPath'] as String).input(),
-      cloudBuildTimeout: map['cloudBuildTimeout'] == null ? null : (map['cloudBuildTimeout'] as String).input(),
+      cloudBuildTimeout: map['cloudBuildTimeout'] == null ? null : (map['cloudBuildTimeout']! as String).input(),
     );
   }
 }

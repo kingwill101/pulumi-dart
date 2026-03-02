@@ -36,10 +36,10 @@ class HttpRouteMatchResponse {
 
   factory HttpRouteMatchResponse.fromMap(Map<String, dynamic> map) {
     return HttpRouteMatchResponse(
-      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      pathSeparatedPrefix: map['pathSeparatedPrefix'] == null ? null : (map['pathSeparatedPrefix'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive']! as bool).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      pathSeparatedPrefix: map['pathSeparatedPrefix'] == null ? null : (map['pathSeparatedPrefix']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
     );
   }
 }

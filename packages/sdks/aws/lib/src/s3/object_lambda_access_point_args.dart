@@ -40,10 +40,10 @@ class ObjectLambdaAccessPointArgs {
 
   factory ObjectLambdaAccessPointArgs.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      configuration: (ObjectLambdaAccessPointConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      configuration: (ObjectLambdaAccessPointConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

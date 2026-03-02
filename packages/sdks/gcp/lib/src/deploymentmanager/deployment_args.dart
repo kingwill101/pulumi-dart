@@ -85,13 +85,13 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      createPolicy: map['createPolicy'] == null ? null : (map['createPolicy'] as String).input(),
-      deletePolicy: map['deletePolicy'] == null ? null : (map['deletePolicy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<DeploymentLabel>(map['labels'], (value) => DeploymentLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      createPolicy: map['createPolicy'] == null ? null : (map['createPolicy']! as String).input(),
+      deletePolicy: map['deletePolicy'] == null ? null : (map['deletePolicy']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<DeploymentLabel>(map['labels']!, (value) => DeploymentLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       target: (DeploymentTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }

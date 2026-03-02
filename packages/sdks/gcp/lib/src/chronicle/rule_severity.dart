@@ -21,7 +21,7 @@ class RuleSeverity {
 
   factory RuleSeverity.fromMap(Map<String, dynamic> map) {
     return RuleSeverity(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

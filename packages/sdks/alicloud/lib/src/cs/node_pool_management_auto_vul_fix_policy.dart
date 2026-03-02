@@ -25,8 +25,8 @@ class NodePoolManagementAutoVulFixPolicy {
 
   factory NodePoolManagementAutoVulFixPolicy.fromMap(Map<String, dynamic> map) {
     return NodePoolManagementAutoVulFixPolicy(
-      restartNode: map['restartNode'] == null ? null : (map['restartNode'] as bool).input(),
-      vulLevel: map['vulLevel'] == null ? null : (map['vulLevel'] as String).input(),
+      restartNode: map['restartNode'] == null ? null : (map['restartNode']! as bool).input(),
+      vulLevel: map['vulLevel'] == null ? null : (map['vulLevel']! as String).input(),
     );
   }
 }

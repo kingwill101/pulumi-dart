@@ -21,7 +21,7 @@ class LinkedDatabase {
 
   factory LinkedDatabase.fromMap(Map<String, dynamic> map) {
     return LinkedDatabase(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

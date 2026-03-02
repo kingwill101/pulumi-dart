@@ -41,10 +41,10 @@ class GetTrafficManagerUserMetricsKeyResult {
   factory GetTrafficManagerUserMetricsKeyResult.fromMap(Map<String, dynamic> map) {
     return GetTrafficManagerUserMetricsKeyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      key: map['key'] == null ? null : map['key'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      key: map['key'] == null ? null : map['key']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      type: map['type'] == null ? null : map['type']! as String,
     );
   }
 }

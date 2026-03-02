@@ -31,9 +31,9 @@ class GoogleCloudRunV2ResourceRequirements {
 
   factory GoogleCloudRunV2ResourceRequirements.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ResourceRequirements(
-      cpuIdle: map['cpuIdle'] == null ? null : (map['cpuIdle'] as bool).input(),
-      limits: map['limits'] == null ? null : ((map['limits'] as Map).cast<String, String>()).input(),
-      startupCpuBoost: map['startupCpuBoost'] == null ? null : (map['startupCpuBoost'] as bool).input(),
+      cpuIdle: map['cpuIdle'] == null ? null : (map['cpuIdle']! as bool).input(),
+      limits: map['limits'] == null ? null : ((map['limits']! as Map).cast<String, String>()).input(),
+      startupCpuBoost: map['startupCpuBoost'] == null ? null : (map['startupCpuBoost']! as bool).input(),
     );
   }
 }

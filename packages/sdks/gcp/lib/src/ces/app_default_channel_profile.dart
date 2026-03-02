@@ -58,12 +58,12 @@ class AppDefaultChannelProfile {
 
   factory AppDefaultChannelProfile.fromMap(Map<String, dynamic> map) {
     return AppDefaultChannelProfile(
-      channelType: map['channelType'] == null ? null : (map['channelType'] as String).input(),
-      disableBargeInControl: map['disableBargeInControl'] == null ? null : (map['disableBargeInControl'] as bool).input(),
-      disableDtmf: map['disableDtmf'] == null ? null : (map['disableDtmf'] as bool).input(),
-      personaProperty: map['personaProperty'] == null ? null : (AppDefaultChannelProfilePersonaProperty.fromMap((map['personaProperty'] as Map).cast<String, dynamic>())).input(),
-      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
-      webWidgetConfig: map['webWidgetConfig'] == null ? null : (AppDefaultChannelProfileWebWidgetConfig.fromMap((map['webWidgetConfig'] as Map).cast<String, dynamic>())).input(),
+      channelType: map['channelType'] == null ? null : (map['channelType']! as String).input(),
+      disableBargeInControl: map['disableBargeInControl'] == null ? null : (map['disableBargeInControl']! as bool).input(),
+      disableDtmf: map['disableDtmf'] == null ? null : (map['disableDtmf']! as bool).input(),
+      personaProperty: map['personaProperty'] == null ? null : (AppDefaultChannelProfilePersonaProperty.fromMap((map['personaProperty']! as Map).cast<String, dynamic>())).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId']! as String).input(),
+      webWidgetConfig: map['webWidgetConfig'] == null ? null : (AppDefaultChannelProfileWebWidgetConfig.fromMap((map['webWidgetConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class SacAttachmentSymantecOptions {
 
   factory SacAttachmentSymantecOptions.fromMap(Map<String, dynamic> map) {
     return SacAttachmentSymantecOptions(
-      symantecLocationName: map['symantecLocationName'] == null ? null : (map['symantecLocationName'] as String).input(),
-      symantecSite: map['symantecSite'] == null ? null : (map['symantecSite'] as String).input(),
+      symantecLocationName: map['symantecLocationName'] == null ? null : (map['symantecLocationName']! as String).input(),
+      symantecSite: map['symantecSite'] == null ? null : (map['symantecSite']! as String).input(),
     );
   }
 }

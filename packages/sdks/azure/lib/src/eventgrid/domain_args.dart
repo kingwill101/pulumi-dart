@@ -88,19 +88,19 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      autoCreateTopicWithFirstSubscription: map['autoCreateTopicWithFirstSubscription'] == null ? null : (map['autoCreateTopicWithFirstSubscription'] as bool).input(),
-      autoDeleteTopicWithLastSubscription: map['autoDeleteTopicWithLastSubscription'] == null ? null : (map['autoDeleteTopicWithLastSubscription'] as bool).input(),
-      identity: map['identity'] == null ? null : (DomainIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<DomainInboundIpRule>(map['inboundIpRules'], (value) => DomainInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputMappingDefaultValues: map['inputMappingDefaultValues'] == null ? null : (DomainInputMappingDefaultValues.fromMap((map['inputMappingDefaultValues'] as Map).cast<String, dynamic>())).input(),
-      inputMappingFields: map['inputMappingFields'] == null ? null : (DomainInputMappingFields.fromMap((map['inputMappingFields'] as Map).cast<String, dynamic>())).input(),
-      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema'] as String).input(),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      autoCreateTopicWithFirstSubscription: map['autoCreateTopicWithFirstSubscription'] == null ? null : (map['autoCreateTopicWithFirstSubscription']! as bool).input(),
+      autoDeleteTopicWithLastSubscription: map['autoDeleteTopicWithLastSubscription'] == null ? null : (map['autoDeleteTopicWithLastSubscription']! as bool).input(),
+      identity: map['identity'] == null ? null : (DomainIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<DomainInboundIpRule>(map['inboundIpRules']!, (value) => DomainInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputMappingDefaultValues: map['inputMappingDefaultValues'] == null ? null : (DomainInputMappingDefaultValues.fromMap((map['inputMappingDefaultValues']! as Map).cast<String, dynamic>())).input(),
+      inputMappingFields: map['inputMappingFields'] == null ? null : (DomainInputMappingFields.fromMap((map['inputMappingFields']! as Map).cast<String, dynamic>())).input(),
+      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema']! as String).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

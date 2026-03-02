@@ -36,7 +36,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard(
       cardContent: (GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent.fromMap((map['cardContent'] as Map).cast<String, dynamic>())).input(),
       cardOrientation: (GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation.fromValue(map['cardOrientation'] as String)).input(),
-      thumbnailImageAlignment: map['thumbnailImageAlignment'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment.fromValue(map['thumbnailImageAlignment'] as String)).input(),
+      thumbnailImageAlignment: map['thumbnailImageAlignment'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignment.fromValue(map['thumbnailImageAlignment']! as String)).input(),
     );
   }
 }

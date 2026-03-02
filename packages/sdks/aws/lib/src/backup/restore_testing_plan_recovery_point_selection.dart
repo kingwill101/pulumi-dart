@@ -41,10 +41,10 @@ class RestoreTestingPlanRecoveryPointSelection {
   factory RestoreTestingPlanRecoveryPointSelection.fromMap(Map<String, dynamic> map) {
     return RestoreTestingPlanRecoveryPointSelection(
       algorithm: (map['algorithm'] as String).input(),
-      excludeVaults: map['excludeVaults'] == null ? null : ((map['excludeVaults'] as List).cast<String>()).input(),
+      excludeVaults: map['excludeVaults'] == null ? null : (((map['excludeVaults'] as List).cast<String>()).input()).input(),
       includeVaults: ((map['includeVaults'] as List).cast<String>()).input(),
       recoveryPointTypes: ((map['recoveryPointTypes'] as List).cast<String>()).input(),
-      selectionWindowDays: map['selectionWindowDays'] == null ? null : (map['selectionWindowDays'] as int).input(),
+      selectionWindowDays: map['selectionWindowDays'] == null ? null : ((map['selectionWindowDays'] as int).input()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class AppSpecServiceRoute {
 
   factory AppSpecServiceRoute.fromMap(Map<String, dynamic> map) {
     return AppSpecServiceRoute(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      preservePathPrefix: map['preservePathPrefix'] == null ? null : (map['preservePathPrefix'] as bool).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      preservePathPrefix: map['preservePathPrefix'] == null ? null : (map['preservePathPrefix']! as bool).input(),
     );
   }
 }

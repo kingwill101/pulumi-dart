@@ -59,13 +59,13 @@ class DeploymentSpecAppsV1beta2 {
 
   factory DeploymentSpecAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return DeploymentSpecAppsV1beta2(
-      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds'] as int).input(),
-      paused: map['paused'] == null ? null : (map['paused'] as bool).input(),
-      progressDeadlineSeconds: map['progressDeadlineSeconds'] == null ? null : (map['progressDeadlineSeconds'] as int).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
-      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit'] as int).input(),
+      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds']! as int).input(),
+      paused: map['paused'] == null ? null : (map['paused']! as bool).input(),
+      progressDeadlineSeconds: map['progressDeadlineSeconds'] == null ? null : (map['progressDeadlineSeconds']! as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit']! as int).input(),
       selector: (LabelSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
-      strategy: map['strategy'] == null ? null : (DeploymentStrategyAppsV1beta2.fromMap((map['strategy'] as Map).cast<String, dynamic>())).input(),
+      strategy: map['strategy'] == null ? null : (DeploymentStrategyAppsV1beta2.fromMap((map['strategy']! as Map).cast<String, dynamic>())).input(),
       template: (PodTemplateSpec.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
     );
   }

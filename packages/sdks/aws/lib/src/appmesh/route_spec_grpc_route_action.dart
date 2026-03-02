@@ -22,7 +22,7 @@ class RouteSpecGrpcRouteAction {
 
   factory RouteSpecGrpcRouteAction.fromMap(Map<String, dynamic> map) {
     return RouteSpecGrpcRouteAction(
-      weightedTargets: (pulumi.Input.decodeList<RouteSpecGrpcRouteActionWeightedTarget>(map['weightedTargets'], (value) => RouteSpecGrpcRouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      weightedTargets: (pulumi.Input.decodeList<RouteSpecGrpcRouteActionWeightedTarget>(map['weightedTargets']!, (value) => RouteSpecGrpcRouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

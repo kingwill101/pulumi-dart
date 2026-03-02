@@ -32,9 +32,9 @@ class NetworkBandwidth {
 
   factory NetworkBandwidth.fromMap(Map<String, dynamic> map) {
     return NetworkBandwidth(
-      classId: map['classId'] == null ? null : (map['classId'] as double).input(),
-      inbound: map['inbound'] == null ? null : (NetworkBandwidthInbound.fromMap((map['inbound'] as Map).cast<String, dynamic>())).input(),
-      outbound: map['outbound'] == null ? null : (NetworkBandwidthOutbound.fromMap((map['outbound'] as Map).cast<String, dynamic>())).input(),
+      classId: map['classId'] == null ? null : (map['classId']! as double).input(),
+      inbound: map['inbound'] == null ? null : (NetworkBandwidthInbound.fromMap((map['inbound']! as Map).cast<String, dynamic>())).input(),
+      outbound: map['outbound'] == null ? null : (NetworkBandwidthOutbound.fromMap((map['outbound']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

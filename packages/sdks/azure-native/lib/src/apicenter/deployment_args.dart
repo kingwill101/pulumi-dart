@@ -81,16 +81,16 @@ class DeploymentArgs {
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
       apiName: (map['apiName'] as String).input(),
-      customProperties: map['customProperties'] == null ? null : (map['customProperties']).input(),
-      definitionId: map['definitionId'] == null ? null : (map['definitionId'] as String).input(),
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
+      customProperties: map['customProperties'] == null ? null : (map['customProperties']!).input(),
+      definitionId: map['definitionId'] == null ? null : (map['definitionId']! as String).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      server: map['server'] == null ? null : (DeploymentServer.fromMap((map['server'] as Map).cast<String, dynamic>())).input(),
+      server: map['server'] == null ? null : (DeploymentServer.fromMap((map['server']! as Map).cast<String, dynamic>())).input(),
       serviceName: (map['serviceName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

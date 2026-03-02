@@ -27,8 +27,8 @@ class URLMapDefaultRouteActionRetryPolicyPerTryTimeout {
 
   factory URLMapDefaultRouteActionRetryPolicyPerTryTimeout.fromMap(Map<String, dynamic> map) {
     return URLMapDefaultRouteActionRetryPolicyPerTryTimeout(
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
-      seconds: map['seconds'] == null ? null : (map['seconds'] as String).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
+      seconds: map['seconds'] == null ? null : (map['seconds']! as String).input(),
     );
   }
 }

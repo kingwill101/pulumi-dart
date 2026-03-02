@@ -23,7 +23,7 @@ class GetProjectCloudresourcemanagerV3Args {
 
   factory GetProjectCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
     return GetProjectCloudresourcemanagerV3Args(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class MCASDataConnectorDataTypes {
   factory MCASDataConnectorDataTypes.fromMap(Map<String, dynamic> map) {
     return MCASDataConnectorDataTypes(
       alerts: (DataConnectorDataTypeCommon.fromMap((map['alerts'] as Map).cast<String, dynamic>())).input(),
-      discoveryLogs: map['discoveryLogs'] == null ? null : (DataConnectorDataTypeCommon.fromMap((map['discoveryLogs'] as Map).cast<String, dynamic>())).input(),
+      discoveryLogs: map['discoveryLogs'] == null ? null : (DataConnectorDataTypeCommon.fromMap((map['discoveryLogs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

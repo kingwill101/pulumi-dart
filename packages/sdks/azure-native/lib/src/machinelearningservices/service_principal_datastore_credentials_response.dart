@@ -42,10 +42,10 @@ class ServicePrincipalDatastoreCredentialsResponse {
 
   factory ServicePrincipalDatastoreCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalDatastoreCredentialsResponse(
-      authorityUrl: map['authorityUrl'] == null ? null : (map['authorityUrl'] as String).input(),
+      authorityUrl: map['authorityUrl'] == null ? null : (map['authorityUrl']! as String).input(),
       clientId: (map['clientId'] as String).input(),
       credentialsType: (map['credentialsType'] as String).input(),
-      resourceUrl: map['resourceUrl'] == null ? null : (map['resourceUrl'] as String).input(),
+      resourceUrl: map['resourceUrl'] == null ? null : (map['resourceUrl']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

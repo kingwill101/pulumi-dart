@@ -26,8 +26,8 @@ class LogsPanel {
 
   factory LogsPanel.fromMap(Map<String, dynamic> map) {
     return LogsPanel(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      resourceNames: map['resourceNames'] == null ? null : ((map['resourceNames'] as List).cast<String>()).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      resourceNames: map['resourceNames'] == null ? null : ((map['resourceNames']! as List).cast<String>()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class LogTransformerTransformerConfigParseCloudfront {
 
   factory LogTransformerTransformerConfigParseCloudfront.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigParseCloudfront(
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
     );
   }
 }

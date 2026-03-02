@@ -63,14 +63,14 @@ class AuthConfig {
 
   factory AuthConfig.fromMap(Map<String, dynamic> map) {
     return AuthConfig(
-      additionalVariables: map['additionalVariables'] == null ? null : (pulumi.Input.decodeList<ConfigVariable>(map['additionalVariables'], (value) => ConfigVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authKey: map['authKey'] == null ? null : (map['authKey'] as String).input(),
-      authType: map['authType'] == null ? null : (AuthConfigAuthType.fromValue(map['authType'] as String)).input(),
-      oauth2AuthCodeFlow: map['oauth2AuthCodeFlow'] == null ? null : (Oauth2AuthCodeFlow.fromMap((map['oauth2AuthCodeFlow'] as Map).cast<String, dynamic>())).input(),
-      oauth2ClientCredentials: map['oauth2ClientCredentials'] == null ? null : (Oauth2ClientCredentials.fromMap((map['oauth2ClientCredentials'] as Map).cast<String, dynamic>())).input(),
-      oauth2JwtBearer: map['oauth2JwtBearer'] == null ? null : (Oauth2JwtBearer.fromMap((map['oauth2JwtBearer'] as Map).cast<String, dynamic>())).input(),
-      sshPublicKey: map['sshPublicKey'] == null ? null : (SshPublicKey.fromMap((map['sshPublicKey'] as Map).cast<String, dynamic>())).input(),
-      userPassword: map['userPassword'] == null ? null : (UserPassword.fromMap((map['userPassword'] as Map).cast<String, dynamic>())).input(),
+      additionalVariables: map['additionalVariables'] == null ? null : (pulumi.Input.decodeList<ConfigVariable>(map['additionalVariables']!, (value) => ConfigVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authKey: map['authKey'] == null ? null : (map['authKey']! as String).input(),
+      authType: map['authType'] == null ? null : (AuthConfigAuthType.fromValue(map['authType']! as String)).input(),
+      oauth2AuthCodeFlow: map['oauth2AuthCodeFlow'] == null ? null : (Oauth2AuthCodeFlow.fromMap((map['oauth2AuthCodeFlow']! as Map).cast<String, dynamic>())).input(),
+      oauth2ClientCredentials: map['oauth2ClientCredentials'] == null ? null : (Oauth2ClientCredentials.fromMap((map['oauth2ClientCredentials']! as Map).cast<String, dynamic>())).input(),
+      oauth2JwtBearer: map['oauth2JwtBearer'] == null ? null : (Oauth2JwtBearer.fromMap((map['oauth2JwtBearer']! as Map).cast<String, dynamic>())).input(),
+      sshPublicKey: map['sshPublicKey'] == null ? null : (SshPublicKey.fromMap((map['sshPublicKey']! as Map).cast<String, dynamic>())).input(),
+      userPassword: map['userPassword'] == null ? null : (UserPassword.fromMap((map['userPassword']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -81,16 +81,16 @@ class GetRestorePointResult {
   factory GetRestorePointResult.fromMap(Map<String, dynamic> map) {
     return GetRestorePointResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      consistencyMode: map['consistencyMode'] == null ? null : map['consistencyMode'] as String,
-      excludeDisks: map['excludeDisks'] == null ? null : pulumi.Input.decodeList<ApiEntityReferenceResponse>(map['excludeDisks'], (value) => ApiEntityReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      consistencyMode: map['consistencyMode'] == null ? null : map['consistencyMode']! as String,
+      excludeDisks: map['excludeDisks'] == null ? null : pulumi.Input.decodeList<ApiEntityReferenceResponse>(map['excludeDisks']!, (value) => ApiEntityReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceView: RestorePointInstanceViewResponse.fromMap((map['instanceView'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sourceMetadata: map['sourceMetadata'] == null ? null : RestorePointSourceMetadataResponse.fromMap((map['sourceMetadata'] as Map).cast<String, dynamic>()),
-      sourceRestorePoint: map['sourceRestorePoint'] == null ? null : ApiEntityReferenceResponse.fromMap((map['sourceRestorePoint'] as Map).cast<String, dynamic>()),
+      sourceMetadata: map['sourceMetadata'] == null ? null : RestorePointSourceMetadataResponse.fromMap((map['sourceMetadata']! as Map).cast<String, dynamic>()),
+      sourceRestorePoint: map['sourceRestorePoint'] == null ? null : ApiEntityReferenceResponse.fromMap((map['sourceRestorePoint']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      timeCreated: map['timeCreated'] == null ? null : map['timeCreated'] as String,
+      timeCreated: map['timeCreated'] == null ? null : map['timeCreated']! as String,
       type: map['type'] as String,
     );
   }

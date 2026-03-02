@@ -25,8 +25,8 @@ class SpringCloudGatewayClientAuthorization {
 
   factory SpringCloudGatewayClientAuthorization.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayClientAuthorization(
-      certificateIds: map['certificateIds'] == null ? null : ((map['certificateIds'] as List).cast<String>()).input(),
-      verificationEnabled: map['verificationEnabled'] == null ? null : (map['verificationEnabled'] as bool).input(),
+      certificateIds: map['certificateIds'] == null ? null : ((map['certificateIds']! as List).cast<String>()).input(),
+      verificationEnabled: map['verificationEnabled'] == null ? null : (map['verificationEnabled']! as bool).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class ErrorDetailResponse {
 
   factory ErrorDetailResponse.fromMap(Map<String, dynamic> map) {
     return ErrorDetailResponse(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
-      errorData: map['errorData'] == null ? null : ((map['errorData'] as List).cast<dynamic>()).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
+      errorData: map['errorData'] == null ? null : ((map['errorData']! as List).cast<dynamic>()).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
     );
   }
 }

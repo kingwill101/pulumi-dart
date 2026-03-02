@@ -40,9 +40,9 @@ class ApiTagDescriptionArgs {
   factory ApiTagDescriptionArgs.fromMap(Map<String, dynamic> map) {
     return ApiTagDescriptionArgs(
       apiTagId: (map['apiTagId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalDocumentationDescription: map['externalDocumentationDescription'] == null ? null : (map['externalDocumentationDescription'] as String).input(),
-      externalDocumentationUrl: map['externalDocumentationUrl'] == null ? null : (map['externalDocumentationUrl'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      externalDocumentationDescription: map['externalDocumentationDescription'] == null ? null : (map['externalDocumentationDescription']! as String).input(),
+      externalDocumentationUrl: map['externalDocumentationUrl'] == null ? null : (map['externalDocumentationUrl']! as String).input(),
     );
   }
 }

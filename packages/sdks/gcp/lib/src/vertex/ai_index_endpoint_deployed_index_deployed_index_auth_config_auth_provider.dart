@@ -25,8 +25,8 @@ class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider {
 
   factory AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider(
-      allowedIssuers: map['allowedIssuers'] == null ? null : ((map['allowedIssuers'] as List).cast<String>()).input(),
-      audiences: map['audiences'] == null ? null : ((map['audiences'] as List).cast<String>()).input(),
+      allowedIssuers: map['allowedIssuers'] == null ? null : ((map['allowedIssuers']! as List).cast<String>()).input(),
+      audiences: map['audiences'] == null ? null : ((map['audiences']! as List).cast<String>()).input(),
     );
   }
 }

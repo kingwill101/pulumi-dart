@@ -28,7 +28,7 @@ class GetHistoryArgs {
   factory GetHistoryArgs.fromMap(Map<String, dynamic> map) {
     return GetHistoryArgs(
       historyId: (map['historyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

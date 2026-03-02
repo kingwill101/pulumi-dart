@@ -71,16 +71,16 @@ class MachineImageComputeV1Args {
 
   factory MachineImageComputeV1Args.fromMap(Map<String, dynamic> map) {
     return MachineImageComputeV1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      guestFlush: map['guestFlush'] == null ? null : (map['guestFlush'] as bool).input(),
-      machineImageEncryptionKey: map['machineImageEncryptionKey'] == null ? null : (CustomerEncryptionKeyComputeV1.fromMap((map['machineImageEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      savedDisks: map['savedDisks'] == null ? null : (pulumi.Input.decodeList<SavedDiskComputeV1>(map['savedDisks'], (value) => SavedDiskComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceDiskEncryptionKeys: map['sourceDiskEncryptionKeys'] == null ? null : (pulumi.Input.decodeList<SourceDiskEncryptionKeyComputeV1>(map['sourceDiskEncryptionKeys'], (value) => SourceDiskEncryptionKeyComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      guestFlush: map['guestFlush'] == null ? null : (map['guestFlush']! as bool).input(),
+      machineImageEncryptionKey: map['machineImageEncryptionKey'] == null ? null : (CustomerEncryptionKeyComputeV1.fromMap((map['machineImageEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      savedDisks: map['savedDisks'] == null ? null : (pulumi.Input.decodeList<SavedDiskComputeV1>(map['savedDisks']!, (value) => SavedDiskComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceDiskEncryptionKeys: map['sourceDiskEncryptionKeys'] == null ? null : (pulumi.Input.decodeList<SourceDiskEncryptionKeyComputeV1>(map['sourceDiskEncryptionKeys']!, (value) => SourceDiskEncryptionKeyComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
       sourceInstance: (map['sourceInstance'] as String).input(),
-      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations'] as List).cast<String>()).input(),
+      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations']! as List).cast<String>()).input(),
     );
   }
 }

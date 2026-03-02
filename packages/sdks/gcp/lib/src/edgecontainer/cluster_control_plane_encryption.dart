@@ -52,10 +52,10 @@ class ClusterControlPlaneEncryption {
 
   factory ClusterControlPlaneEncryption.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneEncryption(
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      kmsKeyActiveVersion: map['kmsKeyActiveVersion'] == null ? null : (map['kmsKeyActiveVersion'] as String).input(),
-      kmsKeyState: map['kmsKeyState'] == null ? null : (map['kmsKeyState'] as String).input(),
-      kmsStatuses: map['kmsStatuses'] == null ? null : (pulumi.Input.decodeList<ClusterControlPlaneEncryptionKmsStatus>(map['kmsStatuses'], (value) => ClusterControlPlaneEncryptionKmsStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      kmsKeyActiveVersion: map['kmsKeyActiveVersion'] == null ? null : (map['kmsKeyActiveVersion']! as String).input(),
+      kmsKeyState: map['kmsKeyState'] == null ? null : (map['kmsKeyState']! as String).input(),
+      kmsStatuses: map['kmsStatuses'] == null ? null : (pulumi.Input.decodeList<ClusterControlPlaneEncryptionKmsStatus>(map['kmsStatuses']!, (value) => ClusterControlPlaneEncryptionKmsStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

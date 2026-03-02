@@ -47,12 +47,12 @@ class ExecutionStatisticsResponse {
 
   factory ExecutionStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionStatisticsResponse(
-      cpuTimeMs: map['cpuTimeMs'] == null ? null : (map['cpuTimeMs'] as double).input(),
-      elapsedTimeMs: map['elapsedTimeMs'] == null ? null : (map['elapsedTimeMs'] as double).input(),
-      executionCount: map['executionCount'] == null ? null : (map['executionCount'] as double).input(),
-      hasErrors: map['hasErrors'] == null ? null : (map['hasErrors'] as bool).input(),
-      sqlErrors: map['sqlErrors'] == null ? null : ((map['sqlErrors'] as List).cast<String>()).input(),
-      waitStats: map['waitStats'] == null ? null : (pulumi.Input.decodeMapValues<WaitStatisticsResponse>(map['waitStats'], (value) => WaitStatisticsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cpuTimeMs: map['cpuTimeMs'] == null ? null : (map['cpuTimeMs']! as double).input(),
+      elapsedTimeMs: map['elapsedTimeMs'] == null ? null : (map['elapsedTimeMs']! as double).input(),
+      executionCount: map['executionCount'] == null ? null : (map['executionCount']! as double).input(),
+      hasErrors: map['hasErrors'] == null ? null : (map['hasErrors']! as bool).input(),
+      sqlErrors: map['sqlErrors'] == null ? null : ((map['sqlErrors']! as List).cast<String>()).input(),
+      waitStats: map['waitStats'] == null ? null : (pulumi.Input.decodeMapValues<WaitStatisticsResponse>(map['waitStats']!, (value) => WaitStatisticsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

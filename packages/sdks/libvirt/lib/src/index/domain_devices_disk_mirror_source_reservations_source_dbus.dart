@@ -20,7 +20,7 @@ class DomainDevicesDiskMirrorSourceReservationsSourceDbus {
 
   factory DomainDevicesDiskMirrorSourceReservationsSourceDbus.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceReservationsSourceDbus(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
     );
   }
 }

@@ -53,13 +53,13 @@ class AgentAgentKnowledgeBaseAssociationState {
 
   factory AgentAgentKnowledgeBaseAssociationState.fromMap(Map<String, dynamic> map) {
     return AgentAgentKnowledgeBaseAssociationState(
-      agentId: map['agentId'] == null ? null : (map['agentId'] as String).input(),
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      knowledgeBaseId: map['knowledgeBaseId'] == null ? null : (map['knowledgeBaseId'] as String).input(),
-      knowledgeBaseState: map['knowledgeBaseState'] == null ? null : (map['knowledgeBaseState'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentAgentKnowledgeBaseAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      agentId: map['agentId'] == null ? null : ((map['agentId'] as String).input()).input(),
+      agentVersion: map['agentVersion'] == null ? null : ((map['agentVersion'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      knowledgeBaseId: map['knowledgeBaseId'] == null ? null : ((map['knowledgeBaseId'] as String).input()).input(),
+      knowledgeBaseState: map['knowledgeBaseState'] == null ? null : ((map['knowledgeBaseState'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentAgentKnowledgeBaseAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

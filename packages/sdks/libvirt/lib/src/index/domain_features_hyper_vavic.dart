@@ -20,7 +20,7 @@ class DomainFeaturesHyperVAvic {
 
   factory DomainFeaturesHyperVAvic.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVAvic(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

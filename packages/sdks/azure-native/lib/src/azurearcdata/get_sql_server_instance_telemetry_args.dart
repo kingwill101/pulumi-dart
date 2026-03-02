@@ -59,14 +59,14 @@ class GetSqlServerInstanceTelemetryArgs {
 
   factory GetSqlServerInstanceTelemetryArgs.fromMap(Map<String, dynamic> map) {
     return GetSqlServerInstanceTelemetryArgs(
-      aggregationType: map['aggregationType'] == null ? null : (map['aggregationType'] as String).input(),
-      databaseNames: map['databaseNames'] == null ? null : ((map['databaseNames'] as List).cast<String>()).input(),
+      aggregationType: map['aggregationType'] == null ? null : (map['aggregationType']! as String).input(),
+      databaseNames: map['databaseNames'] == null ? null : ((map['databaseNames']! as List).cast<String>()).input(),
       datasetName: (map['datasetName'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sqlServerInstanceName: (map['sqlServerInstanceName'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

@@ -77,17 +77,17 @@ class GetAgentPoolResult {
   factory GetAgentPoolResult.fromMap(Map<String, dynamic> map) {
     return GetAgentPoolResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      count: map['count'] == null ? null : map['count'] as int,
+      count: map['count'] == null ? null : map['count']! as int,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      os: map['os'] == null ? null : map['os'] as String,
+      os: map['os'] == null ? null : map['os']! as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tier: map['tier'] == null ? null : map['tier']! as String,
       type: map['type'] as String,
-      virtualNetworkSubnetResourceId: map['virtualNetworkSubnetResourceId'] == null ? null : map['virtualNetworkSubnetResourceId'] as String,
+      virtualNetworkSubnetResourceId: map['virtualNetworkSubnetResourceId'] == null ? null : map['virtualNetworkSubnetResourceId']! as String,
     );
   }
 }

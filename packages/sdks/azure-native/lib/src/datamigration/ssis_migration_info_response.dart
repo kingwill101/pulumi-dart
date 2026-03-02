@@ -31,9 +31,9 @@ class SsisMigrationInfoResponse {
 
   factory SsisMigrationInfoResponse.fromMap(Map<String, dynamic> map) {
     return SsisMigrationInfoResponse(
-      environmentOverwriteOption: map['environmentOverwriteOption'] == null ? null : (map['environmentOverwriteOption'] as String).input(),
-      projectOverwriteOption: map['projectOverwriteOption'] == null ? null : (map['projectOverwriteOption'] as String).input(),
-      ssisStoreType: map['ssisStoreType'] == null ? null : (map['ssisStoreType'] as String).input(),
+      environmentOverwriteOption: map['environmentOverwriteOption'] == null ? null : (map['environmentOverwriteOption']! as String).input(),
+      projectOverwriteOption: map['projectOverwriteOption'] == null ? null : (map['projectOverwriteOption']! as String).input(),
+      ssisStoreType: map['ssisStoreType'] == null ? null : (map['ssisStoreType']! as String).input(),
     );
   }
 }

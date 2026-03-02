@@ -79,18 +79,18 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      attachmentsConfiguration: map['attachmentsConfiguration'] == null ? null : (ApplicationAttachmentsConfiguration.fromMap((map['attachmentsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (ApplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      iamServiceRoleArn: map['iamServiceRoleArn'] == null ? null : (map['iamServiceRoleArn'] as String).input(),
-      identityCenterApplicationArn: map['identityCenterApplicationArn'] == null ? null : (map['identityCenterApplicationArn'] as String).input(),
-      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null ? null : (map['identityCenterInstanceArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ApplicationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      attachmentsConfiguration: map['attachmentsConfiguration'] == null ? null : ((ApplicationAttachmentsConfiguration.fromMap((map['attachmentsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((ApplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      iamServiceRoleArn: map['iamServiceRoleArn'] == null ? null : ((map['iamServiceRoleArn'] as String).input()).input(),
+      identityCenterApplicationArn: map['identityCenterApplicationArn'] == null ? null : ((map['identityCenterApplicationArn'] as String).input()).input(),
+      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null ? null : ((map['identityCenterInstanceArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ApplicationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -38,7 +38,7 @@ class DnsManagedZoneIamPolicyArgs {
     return DnsManagedZoneIamPolicyArgs(
       managedZone: (map['managedZone'] as String).input(),
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

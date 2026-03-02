@@ -56,14 +56,14 @@ class OrderState {
 
   factory OrderState.fromMap(Map<String, dynamic> map) {
     return OrderState(
-      components: map['components'] == null ? null : ((map['components'] as Map).cast<String, String>()).input(),
-      couponId: map['couponId'] == null ? null : (map['couponId'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
-      packageVersion: map['packageVersion'] == null ? null : (map['packageVersion'] as String).input(),
-      payType: map['payType'] == null ? null : (map['payType'] as String).input(),
-      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle'] as String).input(),
-      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
-      quantity: map['quantity'] == null ? null : (map['quantity'] as int).input(),
+      components: map['components'] == null ? null : ((map['components']! as Map).cast<String, String>()).input(),
+      couponId: map['couponId'] == null ? null : (map['couponId']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
+      packageVersion: map['packageVersion'] == null ? null : (map['packageVersion']! as String).input(),
+      payType: map['payType'] == null ? null : (map['payType']! as String).input(),
+      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle']! as String).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode']! as String).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity']! as int).input(),
     );
   }
 }

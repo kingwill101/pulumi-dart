@@ -111,22 +111,22 @@ class JobSpecPatch {
 
   factory JobSpecPatch.fromMap(Map<String, dynamic> map) {
     return JobSpecPatch(
-      activeDeadlineSeconds: map['activeDeadlineSeconds'] == null ? null : (map['activeDeadlineSeconds'] as int).input(),
-      backoffLimit: map['backoffLimit'] == null ? null : (map['backoffLimit'] as int).input(),
-      backoffLimitPerIndex: map['backoffLimitPerIndex'] == null ? null : (map['backoffLimitPerIndex'] as int).input(),
-      completionMode: map['completionMode'] == null ? null : (map['completionMode'] as String).input(),
-      completions: map['completions'] == null ? null : (map['completions'] as int).input(),
-      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
-      manualSelector: map['manualSelector'] == null ? null : (map['manualSelector'] as bool).input(),
-      maxFailedIndexes: map['maxFailedIndexes'] == null ? null : (map['maxFailedIndexes'] as int).input(),
-      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
-      podFailurePolicy: map['podFailurePolicy'] == null ? null : (PodFailurePolicyPatch.fromMap((map['podFailurePolicy'] as Map).cast<String, dynamic>())).input(),
-      podReplacementPolicy: map['podReplacementPolicy'] == null ? null : (map['podReplacementPolicy'] as String).input(),
-      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
-      successPolicy: map['successPolicy'] == null ? null : (SuccessPolicyPatch.fromMap((map['successPolicy'] as Map).cast<String, dynamic>())).input(),
-      suspend: map['suspend'] == null ? null : (map['suspend'] as bool).input(),
-      template: map['template'] == null ? null : (PodTemplateSpecPatch.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
-      ttlSecondsAfterFinished: map['ttlSecondsAfterFinished'] == null ? null : (map['ttlSecondsAfterFinished'] as int).input(),
+      activeDeadlineSeconds: map['activeDeadlineSeconds'] == null ? null : (map['activeDeadlineSeconds']! as int).input(),
+      backoffLimit: map['backoffLimit'] == null ? null : (map['backoffLimit']! as int).input(),
+      backoffLimitPerIndex: map['backoffLimitPerIndex'] == null ? null : (map['backoffLimitPerIndex']! as int).input(),
+      completionMode: map['completionMode'] == null ? null : (map['completionMode']! as String).input(),
+      completions: map['completions'] == null ? null : (map['completions']! as int).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy']! as String).input(),
+      manualSelector: map['manualSelector'] == null ? null : (map['manualSelector']! as bool).input(),
+      maxFailedIndexes: map['maxFailedIndexes'] == null ? null : (map['maxFailedIndexes']! as int).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
+      podFailurePolicy: map['podFailurePolicy'] == null ? null : (PodFailurePolicyPatch.fromMap((map['podFailurePolicy']! as Map).cast<String, dynamic>())).input(),
+      podReplacementPolicy: map['podReplacementPolicy'] == null ? null : (map['podReplacementPolicy']! as String).input(),
+      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
+      successPolicy: map['successPolicy'] == null ? null : (SuccessPolicyPatch.fromMap((map['successPolicy']! as Map).cast<String, dynamic>())).input(),
+      suspend: map['suspend'] == null ? null : (map['suspend']! as bool).input(),
+      template: map['template'] == null ? null : (PodTemplateSpecPatch.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
+      ttlSecondsAfterFinished: map['ttlSecondsAfterFinished'] == null ? null : (map['ttlSecondsAfterFinished']! as int).input(),
     );
   }
 }

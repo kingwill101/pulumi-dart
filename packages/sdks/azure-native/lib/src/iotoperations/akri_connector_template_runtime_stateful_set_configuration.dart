@@ -63,14 +63,14 @@ class AkriConnectorTemplateRuntimeStatefulSetConfiguration {
 
   factory AkriConnectorTemplateRuntimeStatefulSetConfiguration.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateRuntimeStatefulSetConfiguration(
-      additionalConfiguration: map['additionalConfiguration'] == null ? null : ((map['additionalConfiguration'] as Map).cast<String, String>()).input(),
-      allocation: map['allocation'] == null ? null : (AkriConnectorTemplateBucketizedAllocation.fromMap((map['allocation'] as Map).cast<String, dynamic>())).input(),
+      additionalConfiguration: map['additionalConfiguration'] == null ? null : ((map['additionalConfiguration']! as Map).cast<String, String>()).input(),
+      allocation: map['allocation'] == null ? null : (AkriConnectorTemplateBucketizedAllocation.fromMap((map['allocation']! as Map).cast<String, dynamic>())).input(),
       managedConfigurationType: (map['managedConfigurationType'] as String).input(),
-      persistentVolumeClaimTemplates: map['persistentVolumeClaimTemplates'] == null ? null : ((map['persistentVolumeClaimTemplates'] as List).cast<dynamic>()).input(),
-      persistentVolumeClaims: map['persistentVolumeClaims'] == null ? null : (pulumi.Input.decodeList<AkriConnectorTemplatePersistentVolumeClaim>(map['persistentVolumeClaims'], (value) => AkriConnectorTemplatePersistentVolumeClaim.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<AkriConnectorsSecret>(map['secrets'], (value) => AkriConnectorsSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      persistentVolumeClaimTemplates: map['persistentVolumeClaimTemplates'] == null ? null : ((map['persistentVolumeClaimTemplates']! as List).cast<dynamic>()).input(),
+      persistentVolumeClaims: map['persistentVolumeClaims'] == null ? null : (pulumi.Input.decodeList<AkriConnectorTemplatePersistentVolumeClaim>(map['persistentVolumeClaims']!, (value) => AkriConnectorTemplatePersistentVolumeClaim.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<AkriConnectorsSecret>(map['secrets']!, (value) => AkriConnectorsSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
       statefulSetConfigurationSettings: (map['statefulSetConfigurationSettings']).input(),
-      trustSettings: map['trustSettings'] == null ? null : (AkriConnectorTemplateTrustList.fromMap((map['trustSettings'] as Map).cast<String, dynamic>())).input(),
+      trustSettings: map['trustSettings'] == null ? null : (AkriConnectorTemplateTrustList.fromMap((map['trustSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -56,13 +56,13 @@ class AzureLargeStorageInstanceArgs {
 
   factory AzureLargeStorageInstanceArgs.fromMap(Map<String, dynamic> map) {
     return AzureLargeStorageInstanceArgs(
-      azureLargeStorageInstanceName: map['azureLargeStorageInstanceName'] == null ? null : (map['azureLargeStorageInstanceName'] as String).input(),
-      azureLargeStorageInstanceUniqueIdentifier: map['azureLargeStorageInstanceUniqueIdentifier'] == null ? null : (map['azureLargeStorageInstanceUniqueIdentifier'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      azureLargeStorageInstanceName: map['azureLargeStorageInstanceName'] == null ? null : (map['azureLargeStorageInstanceName']! as String).input(),
+      azureLargeStorageInstanceUniqueIdentifier: map['azureLargeStorageInstanceUniqueIdentifier'] == null ? null : (map['azureLargeStorageInstanceUniqueIdentifier']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageProperties: map['storageProperties'] == null ? null : (StorageProperties.fromMap((map['storageProperties'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storageProperties: map['storageProperties'] == null ? null : (StorageProperties.fromMap((map['storageProperties']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

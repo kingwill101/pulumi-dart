@@ -27,7 +27,7 @@ class KafkaRemoteBrokerAuthenticationPropertiesResponse {
 
   factory KafkaRemoteBrokerAuthenticationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KafkaRemoteBrokerAuthenticationPropertiesResponse(
-      authType: map['authType'] == null ? null : (KafkaRemoteBrokerAuthenticationTypesResponse.fromMap((map['authType'] as Map).cast<String, dynamic>())).input(),
+      authType: map['authType'] == null ? null : (KafkaRemoteBrokerAuthenticationTypesResponse.fromMap((map['authType']! as Map).cast<String, dynamic>())).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

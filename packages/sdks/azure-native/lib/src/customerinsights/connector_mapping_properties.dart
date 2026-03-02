@@ -64,10 +64,10 @@ class ConnectorMappingProperties {
       availability: (ConnectorMappingAvailability.fromMap((map['availability'] as Map).cast<String, dynamic>())).input(),
       completeOperation: (ConnectorMappingCompleteOperation.fromMap((map['completeOperation'] as Map).cast<String, dynamic>())).input(),
       errorManagement: (ConnectorMappingErrorManagement.fromMap((map['errorManagement'] as Map).cast<String, dynamic>())).input(),
-      fileFilter: map['fileFilter'] == null ? null : (map['fileFilter'] as String).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
+      fileFilter: map['fileFilter'] == null ? null : (map['fileFilter']! as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']! as String).input(),
       format: (ConnectorMappingFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
-      hasHeader: map['hasHeader'] == null ? null : (map['hasHeader'] as bool).input(),
+      hasHeader: map['hasHeader'] == null ? null : (map['hasHeader']! as bool).input(),
       structure: (pulumi.Input.decodeList<ConnectorMappingStructure>(map['structure'], (value) => ConnectorMappingStructure.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

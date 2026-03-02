@@ -21,7 +21,7 @@ class AllowedAudiencesValidationResponse {
 
   factory AllowedAudiencesValidationResponse.fromMap(Map<String, dynamic> map) {
     return AllowedAudiencesValidationResponse(
-      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences'] as List).cast<String>()).input(),
+      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences']! as List).cast<String>()).input(),
     );
   }
 }

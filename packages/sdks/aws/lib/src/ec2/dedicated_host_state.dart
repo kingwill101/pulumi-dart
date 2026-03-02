@@ -76,18 +76,18 @@ class DedicatedHostState {
 
   factory DedicatedHostState.fromMap(Map<String, dynamic> map) {
     return DedicatedHostState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      assetId: map['assetId'] == null ? null : (map['assetId'] as String).input(),
-      autoPlacement: map['autoPlacement'] == null ? null : (map['autoPlacement'] as String).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      hostRecovery: map['hostRecovery'] == null ? null : (map['hostRecovery'] as String).input(),
-      instanceFamily: map['instanceFamily'] == null ? null : (map['instanceFamily'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      assetId: map['assetId'] == null ? null : ((map['assetId'] as String).input()).input(),
+      autoPlacement: map['autoPlacement'] == null ? null : ((map['autoPlacement'] as String).input()).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      hostRecovery: map['hostRecovery'] == null ? null : ((map['hostRecovery'] as String).input()).input(),
+      instanceFamily: map['instanceFamily'] == null ? null : ((map['instanceFamily'] as String).input()).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      outpostArn: map['outpostArn'] == null ? null : ((map['outpostArn'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

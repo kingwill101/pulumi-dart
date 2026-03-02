@@ -40,9 +40,9 @@ class AddonArgs {
 
   factory AddonArgs.fromMap(Map<String, dynamic> map) {
     return AddonArgs(
-      addonName: map['addonName'] == null ? null : (map['addonName'] as String).input(),
+      addonName: map['addonName'] == null ? null : (map['addonName']! as String).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
-      properties: map['properties'] == null ? null : (AddonArcProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (AddonArcProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

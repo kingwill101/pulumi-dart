@@ -44,11 +44,11 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      develop: map['develop'] == null ? null : (map['develop'] as String).input(),
+      develop: map['develop'] == null ? null : (map['develop']! as String).input(),
       serviceConfig: (map['serviceConfig'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

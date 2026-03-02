@@ -32,9 +32,9 @@ class ServiceEndpointAclState {
 
   factory ServiceEndpointAclState.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointAclState(
-      aclStrategy: map['aclStrategy'] == null ? null : (map['aclStrategy'] as String).input(),
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      aclStrategy: map['aclStrategy'] == null ? null : (map['aclStrategy']! as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
     );
   }
 }

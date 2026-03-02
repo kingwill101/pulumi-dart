@@ -77,14 +77,14 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       instance: (map['instance'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

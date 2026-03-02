@@ -54,12 +54,12 @@ class InferenceEndpointResponse {
   factory InferenceEndpointResponse.fromMap(Map<String, dynamic> map) {
     return InferenceEndpointResponse(
       authMode: (map['authMode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       endpointUri: (map['endpointUri'] as String).input(),
       groupName: (map['groupName'] as String).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePairResponse>(map['properties'], (value) => StringStringKeyValuePairResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePairResponse>(map['properties']!, (value) => StringStringKeyValuePairResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      requestConfiguration: map['requestConfiguration'] == null ? null : (RequestConfigurationResponse.fromMap((map['requestConfiguration'] as Map).cast<String, dynamic>())).input(),
+      requestConfiguration: map['requestConfiguration'] == null ? null : (RequestConfigurationResponse.fromMap((map['requestConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

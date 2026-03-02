@@ -110,24 +110,24 @@ class OneDashboardPageWidgetLogTable {
 
   factory OneDashboardPageWidgetLogTable.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetLogTable(
-      colors: map['colors'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetLogTableColor>(map['colors'], (value) => OneDashboardPageWidgetLogTableColor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      colors: map['colors'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetLogTableColor>(map['colors']!, (value) => OneDashboardPageWidgetLogTableColor.fromMap((value as Map).cast<String, dynamic>()))).input(),
       column: (map['column'] as int).input(),
-      dataFormats: map['dataFormats'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetLogTableDataFormat>(map['dataFormats'], (value) => OneDashboardPageWidgetLogTableDataFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      facetShowOtherSeries: map['facetShowOtherSeries'] == null ? null : (map['facetShowOtherSeries'] as bool).input(),
-      height: map['height'] == null ? null : (map['height'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ignoreTimeRange: map['ignoreTimeRange'] == null ? null : (map['ignoreTimeRange'] as bool).input(),
-      initialSorting: map['initialSorting'] == null ? null : (OneDashboardPageWidgetLogTableInitialSorting.fromMap((map['initialSorting'] as Map).cast<String, dynamic>())).input(),
-      legendEnabled: map['legendEnabled'] == null ? null : (map['legendEnabled'] as bool).input(),
+      dataFormats: map['dataFormats'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetLogTableDataFormat>(map['dataFormats']!, (value) => OneDashboardPageWidgetLogTableDataFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      facetShowOtherSeries: map['facetShowOtherSeries'] == null ? null : (map['facetShowOtherSeries']! as bool).input(),
+      height: map['height'] == null ? null : (map['height']! as int).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ignoreTimeRange: map['ignoreTimeRange'] == null ? null : (map['ignoreTimeRange']! as bool).input(),
+      initialSorting: map['initialSorting'] == null ? null : (OneDashboardPageWidgetLogTableInitialSorting.fromMap((map['initialSorting']! as Map).cast<String, dynamic>())).input(),
+      legendEnabled: map['legendEnabled'] == null ? null : (map['legendEnabled']! as bool).input(),
       nrqlQueries: (pulumi.Input.decodeList<OneDashboardPageWidgetLogTableNrqlQuery>(map['nrqlQueries'], (value) => OneDashboardPageWidgetLogTableNrqlQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nullValues: map['nullValues'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetLogTableNullValue>(map['nullValues'], (value) => OneDashboardPageWidgetLogTableNullValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      refreshRate: map['refreshRate'] == null ? null : (map['refreshRate'] as String).input(),
+      nullValues: map['nullValues'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetLogTableNullValue>(map['nullValues']!, (value) => OneDashboardPageWidgetLogTableNullValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      refreshRate: map['refreshRate'] == null ? null : (map['refreshRate']! as String).input(),
       row: (map['row'] as int).input(),
       title: (map['title'] as String).input(),
-      units: map['units'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetLogTableUnit>(map['units'], (value) => OneDashboardPageWidgetLogTableUnit.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      width: map['width'] == null ? null : (map['width'] as int).input(),
-      yAxisLeftMax: map['yAxisLeftMax'] == null ? null : (map['yAxisLeftMax'] as double).input(),
-      yAxisLeftMin: map['yAxisLeftMin'] == null ? null : (map['yAxisLeftMin'] as double).input(),
+      units: map['units'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetLogTableUnit>(map['units']!, (value) => OneDashboardPageWidgetLogTableUnit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      width: map['width'] == null ? null : (map['width']! as int).input(),
+      yAxisLeftMax: map['yAxisLeftMax'] == null ? null : (map['yAxisLeftMax']! as double).input(),
+      yAxisLeftMin: map['yAxisLeftMin'] == null ? null : (map['yAxisLeftMin']! as double).input(),
     );
   }
 }

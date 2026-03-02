@@ -41,11 +41,11 @@ class UserAccessPolicyResponse {
 
   factory UserAccessPolicyResponse.fromMap(Map<String, dynamic> map) {
     return UserAccessPolicyResponse(
-      accessResourcePath: map['accessResourcePath'] == null ? null : (map['accessResourcePath'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
-      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      accessResourcePath: map['accessResourcePath'] == null ? null : (map['accessResourcePath']! as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class NetworkManagerScopeConnectionState {
 
   factory NetworkManagerScopeConnectionState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerScopeConnectionState(
-      connectionState: map['connectionState'] == null ? null : (map['connectionState'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId'] as String).input(),
-      targetScopeId: map['targetScopeId'] == null ? null : (map['targetScopeId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      connectionState: map['connectionState'] == null ? null : (map['connectionState']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId']! as String).input(),
+      targetScopeId: map['targetScopeId'] == null ? null : (map['targetScopeId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

@@ -64,13 +64,13 @@ class WorkspaceApiVersionSetArgs {
 
   factory WorkspaceApiVersionSetArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceApiVersionSetArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      versionHeaderName: map['versionHeaderName'] == null ? null : (map['versionHeaderName'] as String).input(),
-      versionQueryName: map['versionQueryName'] == null ? null : (map['versionQueryName'] as String).input(),
-      versionSetId: map['versionSetId'] == null ? null : (map['versionSetId'] as String).input(),
+      versionHeaderName: map['versionHeaderName'] == null ? null : (map['versionHeaderName']! as String).input(),
+      versionQueryName: map['versionQueryName'] == null ? null : (map['versionQueryName']! as String).input(),
+      versionSetId: map['versionSetId'] == null ? null : (map['versionSetId']! as String).input(),
       versioningScheme: (map['versioningScheme'] as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );

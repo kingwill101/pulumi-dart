@@ -22,7 +22,7 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint {
 
   factory GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpoint(
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())).input(),
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

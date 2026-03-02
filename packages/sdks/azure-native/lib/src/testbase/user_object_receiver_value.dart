@@ -21,7 +21,7 @@ class UserObjectReceiverValue {
 
   factory UserObjectReceiverValue.fromMap(Map<String, dynamic> map) {
     return UserObjectReceiverValue(
-      userObjectIds: map['userObjectIds'] == null ? null : ((map['userObjectIds'] as List).cast<String>()).input(),
+      userObjectIds: map['userObjectIds'] == null ? null : ((map['userObjectIds']! as List).cast<String>()).input(),
     );
   }
 }

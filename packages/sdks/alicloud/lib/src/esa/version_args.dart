@@ -34,7 +34,7 @@ class VersionArgs {
 
   factory VersionArgs.fromMap(Map<String, dynamic> map) {
     return VersionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       originVersion: (map['originVersion'] as int).input(),
       siteId: (map['siteId'] as String).input(),
     );

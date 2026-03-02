@@ -26,7 +26,7 @@ class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationClo
   factory JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration(
       logGroupName: (map['logGroupName'] as String).input(),
-      logStreamNamePrefix: map['logStreamNamePrefix'] == null ? null : (map['logStreamNamePrefix'] as String).input(),
+      logStreamNamePrefix: map['logStreamNamePrefix'] == null ? null : ((map['logStreamNamePrefix'] as String).input()).input(),
     );
   }
 }

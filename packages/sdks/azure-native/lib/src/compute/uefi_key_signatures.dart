@@ -37,10 +37,10 @@ class UefiKeySignatures {
 
   factory UefiKeySignatures.fromMap(Map<String, dynamic> map) {
     return UefiKeySignatures(
-      db: map['db'] == null ? null : (pulumi.Input.decodeList<UefiKey>(map['db'], (value) => UefiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dbx: map['dbx'] == null ? null : (pulumi.Input.decodeList<UefiKey>(map['dbx'], (value) => UefiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kek: map['kek'] == null ? null : (pulumi.Input.decodeList<UefiKey>(map['kek'], (value) => UefiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pk: map['pk'] == null ? null : (UefiKey.fromMap((map['pk'] as Map).cast<String, dynamic>())).input(),
+      db: map['db'] == null ? null : (pulumi.Input.decodeList<UefiKey>(map['db']!, (value) => UefiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbx: map['dbx'] == null ? null : (pulumi.Input.decodeList<UefiKey>(map['dbx']!, (value) => UefiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kek: map['kek'] == null ? null : (pulumi.Input.decodeList<UefiKey>(map['kek']!, (value) => UefiKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pk: map['pk'] == null ? null : (UefiKey.fromMap((map['pk']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

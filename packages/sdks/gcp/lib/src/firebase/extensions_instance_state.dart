@@ -94,19 +94,19 @@ class ExtensionsInstanceState {
 
   factory ExtensionsInstanceState.fromMap(Map<String, dynamic> map) {
     return ExtensionsInstanceState(
-      config: map['config'] == null ? null : (ExtensionsInstanceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      errorStatuses: map['errorStatuses'] == null ? null : (pulumi.Input.decodeList<ExtensionsInstanceErrorStatus>(map['errorStatuses'], (value) => ExtensionsInstanceErrorStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      lastOperationName: map['lastOperationName'] == null ? null : (map['lastOperationName'] as String).input(),
-      lastOperationType: map['lastOperationType'] == null ? null : (map['lastOperationType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      runtimeDatas: map['runtimeDatas'] == null ? null : (pulumi.Input.decodeList<ExtensionsInstanceRuntimeData>(map['runtimeDatas'], (value) => ExtensionsInstanceRuntimeData.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      config: map['config'] == null ? null : (ExtensionsInstanceConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      errorStatuses: map['errorStatuses'] == null ? null : (pulumi.Input.decodeList<ExtensionsInstanceErrorStatus>(map['errorStatuses']!, (value) => ExtensionsInstanceErrorStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      lastOperationName: map['lastOperationName'] == null ? null : (map['lastOperationName']! as String).input(),
+      lastOperationType: map['lastOperationType'] == null ? null : (map['lastOperationType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      runtimeDatas: map['runtimeDatas'] == null ? null : (pulumi.Input.decodeList<ExtensionsInstanceRuntimeData>(map['runtimeDatas']!, (value) => ExtensionsInstanceRuntimeData.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

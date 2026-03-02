@@ -28,8 +28,8 @@ class GoogleCloudDatacatalogV1BusinessContext {
 
   factory GoogleCloudDatacatalogV1BusinessContext.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1BusinessContext(
-      contacts: map['contacts'] == null ? null : (GoogleCloudDatacatalogV1Contacts.fromMap((map['contacts'] as Map).cast<String, dynamic>())).input(),
-      entryOverview: map['entryOverview'] == null ? null : (GoogleCloudDatacatalogV1EntryOverview.fromMap((map['entryOverview'] as Map).cast<String, dynamic>())).input(),
+      contacts: map['contacts'] == null ? null : (GoogleCloudDatacatalogV1Contacts.fromMap((map['contacts']! as Map).cast<String, dynamic>())).input(),
+      entryOverview: map['entryOverview'] == null ? null : (GoogleCloudDatacatalogV1EntryOverview.fromMap((map['entryOverview']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

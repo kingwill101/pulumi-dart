@@ -20,7 +20,7 @@ class ClusterControlPlaneEndpointsConfigIpEndpointsConfig {
 
   factory ClusterControlPlaneEndpointsConfigIpEndpointsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneEndpointsConfigIpEndpointsConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

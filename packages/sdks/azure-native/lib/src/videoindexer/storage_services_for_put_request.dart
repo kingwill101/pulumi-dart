@@ -26,8 +26,8 @@ class StorageServicesForPutRequest {
 
   factory StorageServicesForPutRequest.fromMap(Map<String, dynamic> map) {
     return StorageServicesForPutRequest(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
     );
   }
 }

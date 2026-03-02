@@ -84,19 +84,19 @@ class FolderState {
 
   factory FolderState.fromMap(Map<String, dynamic> map) {
     return FolderState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
-      folderPaths: map['folderPaths'] == null ? null : ((map['folderPaths'] as List).cast<String>()).input(),
-      folderType: map['folderType'] == null ? null : (map['folderType'] as String).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentFolderArn: map['parentFolderArn'] == null ? null : (map['parentFolderArn'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<FolderPermission>(map['permissions'], (value) => FolderPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
+      folderId: map['folderId'] == null ? null : ((map['folderId'] as String).input()).input(),
+      folderPaths: map['folderPaths'] == null ? null : (((map['folderPaths'] as List).cast<String>()).input()).input(),
+      folderType: map['folderType'] == null ? null : ((map['folderType'] as String).input()).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : ((map['lastUpdatedTime'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parentFolderArn: map['parentFolderArn'] == null ? null : ((map['parentFolderArn'] as String).input()).input(),
+      permissions: map['permissions'] == null ? null : ((pulumi.Input.decodeList<FolderPermission>(map['permissions']!, (value) => FolderPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

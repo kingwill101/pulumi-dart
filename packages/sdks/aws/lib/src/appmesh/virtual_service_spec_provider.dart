@@ -27,8 +27,8 @@ class VirtualServiceSpecProvider {
 
   factory VirtualServiceSpecProvider.fromMap(Map<String, dynamic> map) {
     return VirtualServiceSpecProvider(
-      virtualNode: map['virtualNode'] == null ? null : (VirtualServiceSpecProviderVirtualNode.fromMap((map['virtualNode'] as Map).cast<String, dynamic>())).input(),
-      virtualRouter: map['virtualRouter'] == null ? null : (VirtualServiceSpecProviderVirtualRouter.fromMap((map['virtualRouter'] as Map).cast<String, dynamic>())).input(),
+      virtualNode: map['virtualNode'] == null ? null : ((VirtualServiceSpecProviderVirtualNode.fromMap((map['virtualNode']! as Map).cast<String, dynamic>())).input()).input(),
+      virtualRouter: map['virtualRouter'] == null ? null : ((VirtualServiceSpecProviderVirtualRouter.fromMap((map['virtualRouter']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

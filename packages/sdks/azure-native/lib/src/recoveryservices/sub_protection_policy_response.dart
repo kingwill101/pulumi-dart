@@ -47,11 +47,11 @@ class SubProtectionPolicyResponse {
 
   factory SubProtectionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return SubProtectionPolicyResponse(
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (LongTermRetentionPolicyResponse.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      schedulePolicy: map['schedulePolicy'] == null ? null : (LogSchedulePolicyResponse.fromMap((map['schedulePolicy'] as Map).cast<String, dynamic>())).input(),
-      snapshotBackupAdditionalDetails: map['snapshotBackupAdditionalDetails'] == null ? null : (SnapshotBackupAdditionalDetailsResponse.fromMap((map['snapshotBackupAdditionalDetails'] as Map).cast<String, dynamic>())).input(),
-      tieringPolicy: map['tieringPolicy'] == null ? null : (pulumi.Input.decodeMapValues<TieringPolicyResponse>(map['tieringPolicy'], (value) => TieringPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (LongTermRetentionPolicyResponse.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      schedulePolicy: map['schedulePolicy'] == null ? null : (LogSchedulePolicyResponse.fromMap((map['schedulePolicy']! as Map).cast<String, dynamic>())).input(),
+      snapshotBackupAdditionalDetails: map['snapshotBackupAdditionalDetails'] == null ? null : (SnapshotBackupAdditionalDetailsResponse.fromMap((map['snapshotBackupAdditionalDetails']! as Map).cast<String, dynamic>())).input(),
+      tieringPolicy: map['tieringPolicy'] == null ? null : (pulumi.Input.decodeMapValues<TieringPolicyResponse>(map['tieringPolicy']!, (value) => TieringPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

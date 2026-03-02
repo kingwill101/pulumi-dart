@@ -60,14 +60,14 @@ class StreamSourceConfigSpannerSourceConfig {
 
   factory StreamSourceConfigSpannerSourceConfig.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSpannerSourceConfig(
-      backfillDataBoostEnabled: map['backfillDataBoostEnabled'] == null ? null : (map['backfillDataBoostEnabled'] as bool).input(),
-      changeStreamName: map['changeStreamName'] == null ? null : (map['changeStreamName'] as String).input(),
-      excludeObjects: map['excludeObjects'] == null ? null : (StreamSourceConfigSpannerSourceConfigExcludeObjects.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>())).input(),
-      fgacRole: map['fgacRole'] == null ? null : (map['fgacRole'] as String).input(),
-      includeObjects: map['includeObjects'] == null ? null : (StreamSourceConfigSpannerSourceConfigIncludeObjects.fromMap((map['includeObjects'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks'] as int).input(),
-      maxConcurrentCdcTasks: map['maxConcurrentCdcTasks'] == null ? null : (map['maxConcurrentCdcTasks'] as int).input(),
-      spannerRpcPriority: map['spannerRpcPriority'] == null ? null : (map['spannerRpcPriority'] as String).input(),
+      backfillDataBoostEnabled: map['backfillDataBoostEnabled'] == null ? null : (map['backfillDataBoostEnabled']! as bool).input(),
+      changeStreamName: map['changeStreamName'] == null ? null : (map['changeStreamName']! as String).input(),
+      excludeObjects: map['excludeObjects'] == null ? null : (StreamSourceConfigSpannerSourceConfigExcludeObjects.fromMap((map['excludeObjects']! as Map).cast<String, dynamic>())).input(),
+      fgacRole: map['fgacRole'] == null ? null : (map['fgacRole']! as String).input(),
+      includeObjects: map['includeObjects'] == null ? null : (StreamSourceConfigSpannerSourceConfigIncludeObjects.fromMap((map['includeObjects']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks']! as int).input(),
+      maxConcurrentCdcTasks: map['maxConcurrentCdcTasks'] == null ? null : (map['maxConcurrentCdcTasks']! as int).input(),
+      spannerRpcPriority: map['spannerRpcPriority'] == null ? null : (map['spannerRpcPriority']! as String).input(),
     );
   }
 }

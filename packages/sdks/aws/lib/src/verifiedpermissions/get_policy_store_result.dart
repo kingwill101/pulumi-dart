@@ -67,7 +67,7 @@ class GetPolicyStoreResult {
       lastUpdatedDate: map['lastUpdatedDate'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      validationSettings: pulumi.Input.decodeList<GetPolicyStoreValidationSetting>(map['validationSettings'], (value) => GetPolicyStoreValidationSetting.fromMap((value as Map).cast<String, dynamic>())),
+      validationSettings: pulumi.Input.decodeList<GetPolicyStoreValidationSetting>(map['validationSettings']!, (value) => GetPolicyStoreValidationSetting.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -46,12 +46,12 @@ class BucketRefererState {
 
   factory BucketRefererState.fromMap(Map<String, dynamic> map) {
     return BucketRefererState(
-      allowEmptyReferer: map['allowEmptyReferer'] == null ? null : (map['allowEmptyReferer'] as bool).input(),
-      allowTruncateQueryString: map['allowTruncateQueryString'] == null ? null : (map['allowTruncateQueryString'] as bool).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      refererBlacklists: map['refererBlacklists'] == null ? null : ((map['refererBlacklists'] as List).cast<String>()).input(),
-      refererLists: map['refererLists'] == null ? null : ((map['refererLists'] as List).cast<String>()).input(),
-      truncatePath: map['truncatePath'] == null ? null : (map['truncatePath'] as bool).input(),
+      allowEmptyReferer: map['allowEmptyReferer'] == null ? null : (map['allowEmptyReferer']! as bool).input(),
+      allowTruncateQueryString: map['allowTruncateQueryString'] == null ? null : (map['allowTruncateQueryString']! as bool).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      refererBlacklists: map['refererBlacklists'] == null ? null : ((map['refererBlacklists']! as List).cast<String>()).input(),
+      refererLists: map['refererLists'] == null ? null : ((map['refererLists']! as List).cast<String>()).input(),
+      truncatePath: map['truncatePath'] == null ? null : (map['truncatePath']! as bool).input(),
     );
   }
 }

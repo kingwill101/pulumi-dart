@@ -48,10 +48,10 @@ class AnalyzerArgs {
   factory AnalyzerArgs.fromMap(Map<String, dynamic> map) {
     return AnalyzerArgs(
       analyzerName: (map['analyzerName'] as String).input(),
-      configuration: map['configuration'] == null ? null : (AnalyzerConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      configuration: map['configuration'] == null ? null : ((AnalyzerConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

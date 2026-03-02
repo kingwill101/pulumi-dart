@@ -44,8 +44,8 @@ class GetAnalyticsItemArgs {
 
   factory GetAnalyticsItemArgs.fromMap(Map<String, dynamic> map) {
     return GetAnalyticsItemArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
       scopePath: (map['scopePath'] as String).input(),

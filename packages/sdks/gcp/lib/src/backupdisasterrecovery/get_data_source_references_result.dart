@@ -42,7 +42,7 @@ class GetDataSourceReferencesResult {
       id: map['id'] as String,
       location: map['location'] as String,
       project: map['project'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
+      resourceType: map['resourceType'] == null ? null : map['resourceType']! as String,
     );
   }
 }

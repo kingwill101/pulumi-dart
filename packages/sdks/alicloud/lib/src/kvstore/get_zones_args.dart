@@ -44,11 +44,11 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
-      multi: map['multi'] == null ? null : (map['multi'] as bool).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
+      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
+      multi: map['multi'] == null ? null : (map['multi']! as bool).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      productType: map['productType'] == null ? null : (map['productType']! as String).input(),
     );
   }
 }

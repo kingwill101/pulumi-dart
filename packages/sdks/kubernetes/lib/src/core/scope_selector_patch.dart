@@ -22,7 +22,7 @@ class ScopeSelectorPatch {
 
   factory ScopeSelectorPatch.fromMap(Map<String, dynamic> map) {
     return ScopeSelectorPatch(
-      matchExpressions: map['matchExpressions'] == null ? null : (pulumi.Input.decodeList<ScopedResourceSelectorRequirementPatch>(map['matchExpressions'], (value) => ScopedResourceSelectorRequirementPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchExpressions: map['matchExpressions'] == null ? null : (pulumi.Input.decodeList<ScopedResourceSelectorRequirementPatch>(map['matchExpressions']!, (value) => ScopedResourceSelectorRequirementPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

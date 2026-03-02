@@ -35,10 +35,10 @@ class PresetAudioCodecOptions {
 
   factory PresetAudioCodecOptions.fromMap(Map<String, dynamic> map) {
     return PresetAudioCodecOptions(
-      bitDepth: map['bitDepth'] == null ? null : (map['bitDepth'] as String).input(),
-      bitOrder: map['bitOrder'] == null ? null : (map['bitOrder'] as String).input(),
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
-      signed: map['signed'] == null ? null : (map['signed'] as String).input(),
+      bitDepth: map['bitDepth'] == null ? null : ((map['bitDepth'] as String).input()).input(),
+      bitOrder: map['bitOrder'] == null ? null : ((map['bitOrder'] as String).input()).input(),
+      profile: map['profile'] == null ? null : ((map['profile'] as String).input()).input(),
+      signed: map['signed'] == null ? null : ((map['signed'] as String).input()).input(),
     );
   }
 }

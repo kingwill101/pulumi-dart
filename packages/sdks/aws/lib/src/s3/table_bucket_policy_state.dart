@@ -31,9 +31,9 @@ class TableBucketPolicyState {
 
   factory TableBucketPolicyState.fromMap(Map<String, dynamic> map) {
     return TableBucketPolicyState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourcePolicy: map['resourcePolicy'] == null ? null : (map['resourcePolicy'] as String).input(),
-      tableBucketArn: map['tableBucketArn'] == null ? null : (map['tableBucketArn'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourcePolicy: map['resourcePolicy'] == null ? null : ((map['resourcePolicy'] as String).input()).input(),
+      tableBucketArn: map['tableBucketArn'] == null ? null : ((map['tableBucketArn'] as String).input()).input(),
     );
   }
 }

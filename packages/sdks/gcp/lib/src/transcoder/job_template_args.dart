@@ -50,11 +50,11 @@ class JobTemplateArgs {
 
   factory JobTemplateArgs.fromMap(Map<String, dynamic> map) {
     return JobTemplateArgs(
-      config: map['config'] == null ? null : (JobTemplateConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      config: map['config'] == null ? null : (JobTemplateConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
       jobTemplateId: (map['jobTemplateId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

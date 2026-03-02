@@ -34,9 +34,9 @@ class GlobalValidation {
 
   factory GlobalValidation.fromMap(Map<String, dynamic> map) {
     return GlobalValidation(
-      excludedPaths: map['excludedPaths'] == null ? null : ((map['excludedPaths'] as List).cast<String>()).input(),
-      redirectToProvider: map['redirectToProvider'] == null ? null : (map['redirectToProvider'] as String).input(),
-      unauthenticatedClientAction: map['unauthenticatedClientAction'] == null ? null : (UnauthenticatedClientActionV2.fromValue(map['unauthenticatedClientAction'] as String)).input(),
+      excludedPaths: map['excludedPaths'] == null ? null : ((map['excludedPaths']! as List).cast<String>()).input(),
+      redirectToProvider: map['redirectToProvider'] == null ? null : (map['redirectToProvider']! as String).input(),
+      unauthenticatedClientAction: map['unauthenticatedClientAction'] == null ? null : (UnauthenticatedClientActionV2.fromValue(map['unauthenticatedClientAction']! as String)).input(),
     );
   }
 }

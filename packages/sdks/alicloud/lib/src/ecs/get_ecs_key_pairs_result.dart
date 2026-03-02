@@ -65,16 +65,16 @@ class GetEcsKeyPairsResult {
 
   factory GetEcsKeyPairsResult.fromMap(Map<String, dynamic> map) {
     return GetEcsKeyPairsResult(
-      fingerPrint: map['fingerPrint'] == null ? null : map['fingerPrint'] as String,
+      fingerPrint: map['fingerPrint'] == null ? null : map['fingerPrint']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       keyPairs: pulumi.Input.decodeList<GetEcsKeyPairsKeyPair>(map['keyPairs'], (value) => GetEcsKeyPairsKeyPair.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       pairs: pulumi.Input.decodeList<GetEcsKeyPairsPair>(map['pairs'], (value) => GetEcsKeyPairsPair.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

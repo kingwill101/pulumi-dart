@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesSysRawIo {
 
   factory DomainFeaturesCapabilitiesSysRawIo.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesSysRawIo(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

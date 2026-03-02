@@ -89,20 +89,20 @@ class SynchronizationInstanceArgs {
 
   factory SynchronizationInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SynchronizationInstanceArgs(
-      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as String).input(),
-      autoStart: map['autoStart'] == null ? null : (map['autoStart'] as String).input(),
-      computeUnit: map['computeUnit'] == null ? null : (map['computeUnit'] as int).input(),
-      databaseCount: map['databaseCount'] == null ? null : (map['databaseCount'] as int).input(),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay']! as String).input(),
+      autoStart: map['autoStart'] == null ? null : (map['autoStart']! as String).input(),
+      computeUnit: map['computeUnit'] == null ? null : (map['computeUnit']! as int).input(),
+      databaseCount: map['databaseCount'] == null ? null : (map['databaseCount']! as int).input(),
       destinationEndpointEngineName: (map['destinationEndpointEngineName'] as String).input(),
       destinationEndpointRegion: (map['destinationEndpointRegion'] as String).input(),
-      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass'] as String).input(),
-      paymentDuration: map['paymentDuration'] == null ? null : (map['paymentDuration'] as int).input(),
-      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : (map['paymentDurationUnit'] as String).input(),
+      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass']! as String).input(),
+      paymentDuration: map['paymentDuration'] == null ? null : (map['paymentDuration']! as int).input(),
+      paymentDurationUnit: map['paymentDurationUnit'] == null ? null : (map['paymentDurationUnit']! as String).input(),
       paymentType: (map['paymentType'] as String).input(),
-      quantity: map['quantity'] == null ? null : (map['quantity'] as int).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity']! as int).input(),
       sourceEndpointEngineName: (map['sourceEndpointEngineName'] as String).input(),
       sourceEndpointRegion: (map['sourceEndpointRegion'] as String).input(),
-      syncArchitecture: map['syncArchitecture'] == null ? null : (map['syncArchitecture'] as String).input(),
+      syncArchitecture: map['syncArchitecture'] == null ? null : (map['syncArchitecture']! as String).input(),
     );
   }
 }

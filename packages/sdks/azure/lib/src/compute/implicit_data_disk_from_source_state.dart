@@ -64,14 +64,14 @@ class ImplicitDataDiskFromSourceState {
 
   factory ImplicitDataDiskFromSourceState.fromMap(Map<String, dynamic> map) {
     return ImplicitDataDiskFromSourceState(
-      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
-      createOption: map['createOption'] == null ? null : (map['createOption'] as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      lun: map['lun'] == null ? null : (map['lun'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
-      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
+      caching: map['caching'] == null ? null : (map['caching']! as String).input(),
+      createOption: map['createOption'] == null ? null : (map['createOption']! as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      lun: map['lun'] == null ? null : (map['lun']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId']! as String).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled']! as bool).input(),
     );
   }
 }

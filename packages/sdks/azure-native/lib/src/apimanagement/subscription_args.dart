@@ -82,18 +82,18 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      allowTracing: map['allowTracing'] == null ? null : (map['allowTracing'] as bool).input(),
-      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
+      allowTracing: map['allowTracing'] == null ? null : (map['allowTracing']! as bool).input(),
+      appType: map['appType'] == null ? null : (map['appType']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      notify: map['notify'] == null ? null : (map['notify'] as bool).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      notify: map['notify'] == null ? null : (map['notify']! as bool).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId']! as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scope: (map['scope'] as String).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
-      state: map['state'] == null ? null : (SubscriptionState.fromValue(map['state'] as String)).input(),
+      sid: map['sid'] == null ? null : (map['sid']! as String).input(),
+      state: map['state'] == null ? null : (SubscriptionState.fromValue(map['state']! as String)).input(),
     );
   }
 }

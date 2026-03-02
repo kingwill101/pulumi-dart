@@ -27,7 +27,7 @@ class GetSecretArgs {
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       secretId: (map['secretId'] as String).input(),
     );
   }

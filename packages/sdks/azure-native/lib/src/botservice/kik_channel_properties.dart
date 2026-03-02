@@ -36,9 +36,9 @@ class KikChannelProperties {
 
   factory KikChannelProperties.fromMap(Map<String, dynamic> map) {
     return KikChannelProperties(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
       isEnabled: (map['isEnabled'] as bool).input(),
-      isValidated: map['isValidated'] == null ? null : (map['isValidated'] as bool).input(),
+      isValidated: map['isValidated'] == null ? null : (map['isValidated']! as bool).input(),
       userName: (map['userName'] as String).input(),
     );
   }

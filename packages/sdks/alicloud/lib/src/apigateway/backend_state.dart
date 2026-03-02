@@ -36,10 +36,10 @@ class BackendState {
 
   factory BackendState.fromMap(Map<String, dynamic> map) {
     return BackendState(
-      backendName: map['backendName'] == null ? null : (map['backendName'] as String).input(),
-      backendType: map['backendType'] == null ? null : (map['backendType'] as String).input(),
-      createEventBridgeServiceLinkedRole: map['createEventBridgeServiceLinkedRole'] == null ? null : (map['createEventBridgeServiceLinkedRole'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      backendName: map['backendName'] == null ? null : (map['backendName']! as String).input(),
+      backendType: map['backendType'] == null ? null : (map['backendType']! as String).input(),
+      createEventBridgeServiceLinkedRole: map['createEventBridgeServiceLinkedRole'] == null ? null : (map['createEventBridgeServiceLinkedRole']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

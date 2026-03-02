@@ -22,7 +22,7 @@ class DeploymentConfigurationResponse {
 
   factory DeploymentConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentConfigurationResponse(
-      virtualMachineConfiguration: map['virtualMachineConfiguration'] == null ? null : (VirtualMachineConfigurationResponse.fromMap((map['virtualMachineConfiguration'] as Map).cast<String, dynamic>())).input(),
+      virtualMachineConfiguration: map['virtualMachineConfiguration'] == null ? null : (VirtualMachineConfigurationResponse.fromMap((map['virtualMachineConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

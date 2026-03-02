@@ -44,11 +44,11 @@ class BrowserApplicationArgs {
 
   factory BrowserApplicationArgs.fromMap(Map<String, dynamic> map) {
     return BrowserApplicationArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      cookiesEnabled: map['cookiesEnabled'] == null ? null : (map['cookiesEnabled'] as bool).input(),
-      distributedTracingEnabled: map['distributedTracingEnabled'] == null ? null : (map['distributedTracingEnabled'] as bool).input(),
-      loaderType: map['loaderType'] == null ? null : (map['loaderType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      cookiesEnabled: map['cookiesEnabled'] == null ? null : (map['cookiesEnabled']! as bool).input(),
+      distributedTracingEnabled: map['distributedTracingEnabled'] == null ? null : (map['distributedTracingEnabled']! as bool).input(),
+      loaderType: map['loaderType'] == null ? null : (map['loaderType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

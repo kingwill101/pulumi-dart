@@ -41,8 +41,8 @@ class GetLakeTaskIamPolicyArgs {
     return GetLakeTaskIamPolicyArgs(
       lakeId: (map['lakeId'] as String).input(),
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       taskId: (map['taskId'] as String).input(),
     );
   }

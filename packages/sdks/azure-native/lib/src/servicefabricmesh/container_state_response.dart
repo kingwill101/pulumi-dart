@@ -41,11 +41,11 @@ class ContainerStateResponse {
 
   factory ContainerStateResponse.fromMap(Map<String, dynamic> map) {
     return ContainerStateResponse(
-      detailStatus: map['detailStatus'] == null ? null : (map['detailStatus'] as String).input(),
-      exitCode: map['exitCode'] == null ? null : (map['exitCode'] as String).input(),
-      finishTime: map['finishTime'] == null ? null : (map['finishTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      detailStatus: map['detailStatus'] == null ? null : (map['detailStatus']! as String).input(),
+      exitCode: map['exitCode'] == null ? null : (map['exitCode']! as String).input(),
+      finishTime: map['finishTime'] == null ? null : (map['finishTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

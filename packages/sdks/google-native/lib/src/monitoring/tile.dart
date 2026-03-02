@@ -42,11 +42,11 @@ class Tile {
 
   factory Tile.fromMap(Map<String, dynamic> map) {
     return Tile(
-      height: map['height'] == null ? null : (map['height'] as int).input(),
-      widget: map['widget'] == null ? null : (Widget.fromMap((map['widget'] as Map).cast<String, dynamic>())).input(),
-      width: map['width'] == null ? null : (map['width'] as int).input(),
-      xPos: map['xPos'] == null ? null : (map['xPos'] as int).input(),
-      yPos: map['yPos'] == null ? null : (map['yPos'] as int).input(),
+      height: map['height'] == null ? null : (map['height']! as int).input(),
+      widget: map['widget'] == null ? null : (Widget.fromMap((map['widget']! as Map).cast<String, dynamic>())).input(),
+      width: map['width'] == null ? null : (map['width']! as int).input(),
+      xPos: map['xPos'] == null ? null : (map['xPos']! as int).input(),
+      yPos: map['yPos'] == null ? null : (map['yPos']! as int).input(),
     );
   }
 }

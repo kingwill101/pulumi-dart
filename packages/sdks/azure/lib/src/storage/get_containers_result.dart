@@ -37,7 +37,7 @@ class GetContainersResult {
     return GetContainersResult(
       containers: pulumi.Input.decodeList<GetContainersContainer>(map['containers'], (value) => GetContainersContainer.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
+      namePrefix: map['namePrefix'] == null ? null : map['namePrefix']! as String,
       storageAccountId: map['storageAccountId'] as String,
     );
   }

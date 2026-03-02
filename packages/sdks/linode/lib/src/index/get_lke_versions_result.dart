@@ -32,7 +32,7 @@ class GetLkeVersionsResult {
   factory GetLkeVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetLkeVersionsResult(
       id: map['id'] as String,
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      tier: map['tier'] == null ? null : map['tier']! as String,
       versions: pulumi.Input.decodeList<GetLkeVersionsVersion>(map['versions'], (value) => GetLkeVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

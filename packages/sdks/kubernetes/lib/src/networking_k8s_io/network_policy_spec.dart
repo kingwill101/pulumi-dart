@@ -39,10 +39,10 @@ class NetworkPolicySpec {
 
   factory NetworkPolicySpec.fromMap(Map<String, dynamic> map) {
     return NetworkPolicySpec(
-      egress: map['egress'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyEgressRule>(map['egress'], (value) => NetworkPolicyEgressRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyIngressRule>(map['ingress'], (value) => NetworkPolicyIngressRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      egress: map['egress'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyEgressRule>(map['egress']!, (value) => NetworkPolicyEgressRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<NetworkPolicyIngressRule>(map['ingress']!, (value) => NetworkPolicyIngressRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       podSelector: (LabelSelector.fromMap((map['podSelector'] as Map).cast<String, dynamic>())).input(),
-      policyTypes: map['policyTypes'] == null ? null : ((map['policyTypes'] as List).cast<String>()).input(),
+      policyTypes: map['policyTypes'] == null ? null : ((map['policyTypes']! as List).cast<String>()).input(),
     );
   }
 }

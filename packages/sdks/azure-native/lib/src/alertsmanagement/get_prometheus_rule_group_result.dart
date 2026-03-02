@@ -84,17 +84,17 @@ class GetPrometheusRuleGroupResult {
   factory GetPrometheusRuleGroupResult.fromMap(Map<String, dynamic> map) {
     return GetPrometheusRuleGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      clusterName: map['clusterName'] == null ? null : map['clusterName'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      clusterName: map['clusterName'] == null ? null : map['clusterName']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
       id: map['id'] as String,
-      interval: map['interval'] == null ? null : map['interval'] as String,
+      interval: map['interval'] == null ? null : map['interval']! as String,
       location: map['location'] as String,
       name: map['name'] as String,
       rules: pulumi.Input.decodeList<PrometheusRuleResponse>(map['rules'], (value) => PrometheusRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       scopes: (map['scopes'] as List).cast<String>(),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

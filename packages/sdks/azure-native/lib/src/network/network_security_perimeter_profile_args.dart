@@ -49,12 +49,12 @@ class NetworkSecurityPerimeterProfileArgs {
 
   factory NetworkSecurityPerimeterProfileArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterProfileArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
-      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

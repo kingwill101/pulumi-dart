@@ -57,7 +57,7 @@ class DataLakeConnectorMap {
       maxMessagesPerBatch: (map['maxMessagesPerBatch'] as double).input(),
       messagePayloadType: (map['messagePayloadType'] as String).input(),
       mqttSourceTopic: (map['mqttSourceTopic'] as String).input(),
-      qos: map['qos'] == null ? null : (map['qos'] as int).input(),
+      qos: map['qos'] == null ? null : (map['qos']! as int).input(),
       table: (DeltaTable.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
     );
   }

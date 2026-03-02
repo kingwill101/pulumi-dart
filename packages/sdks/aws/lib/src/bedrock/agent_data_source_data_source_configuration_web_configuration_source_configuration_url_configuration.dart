@@ -21,7 +21,7 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationU
 
   factory AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration(
-      seedUrls: map['seedUrls'] == null ? null : (pulumi.Input.decodeList<AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl>(map['seedUrls'], (value) => AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      seedUrls: map['seedUrls'] == null ? null : ((pulumi.Input.decodeList<AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl>(map['seedUrls']!, (value) => AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

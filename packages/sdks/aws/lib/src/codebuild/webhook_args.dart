@@ -62,14 +62,14 @@ class WebhookArgs {
 
   factory WebhookArgs.fromMap(Map<String, dynamic> map) {
     return WebhookArgs(
-      branchFilter: map['branchFilter'] == null ? null : (map['branchFilter'] as String).input(),
-      buildType: map['buildType'] == null ? null : (map['buildType'] as String).input(),
-      filterGroups: map['filterGroups'] == null ? null : (pulumi.Input.decodeList<WebhookFilterGroup>(map['filterGroups'], (value) => WebhookFilterGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      manualCreation: map['manualCreation'] == null ? null : (map['manualCreation'] as bool).input(),
+      branchFilter: map['branchFilter'] == null ? null : ((map['branchFilter'] as String).input()).input(),
+      buildType: map['buildType'] == null ? null : ((map['buildType'] as String).input()).input(),
+      filterGroups: map['filterGroups'] == null ? null : ((pulumi.Input.decodeList<WebhookFilterGroup>(map['filterGroups']!, (value) => WebhookFilterGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      manualCreation: map['manualCreation'] == null ? null : ((map['manualCreation'] as bool).input()).input(),
       projectName: (map['projectName'] as String).input(),
-      pullRequestBuildPolicy: map['pullRequestBuildPolicy'] == null ? null : (WebhookPullRequestBuildPolicy.fromMap((map['pullRequestBuildPolicy'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scopeConfiguration: map['scopeConfiguration'] == null ? null : (WebhookScopeConfiguration.fromMap((map['scopeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      pullRequestBuildPolicy: map['pullRequestBuildPolicy'] == null ? null : ((WebhookPullRequestBuildPolicy.fromMap((map['pullRequestBuildPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scopeConfiguration: map['scopeConfiguration'] == null ? null : ((WebhookScopeConfiguration.fromMap((map['scopeConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

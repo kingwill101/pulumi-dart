@@ -63,11 +63,11 @@ class AppArgs {
       appName: (map['appName'] as String).input(),
       appType: (map['appType'] as String).input(),
       domainId: (map['domainId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceSpec: map['resourceSpec'] == null ? null : (AppResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())).input(),
-      spaceName: map['spaceName'] == null ? null : (map['spaceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userProfileName: map['userProfileName'] == null ? null : (map['userProfileName'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceSpec: map['resourceSpec'] == null ? null : ((AppResourceSpec.fromMap((map['resourceSpec']! as Map).cast<String, dynamic>())).input()).input(),
+      spaceName: map['spaceName'] == null ? null : ((map['spaceName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      userProfileName: map['userProfileName'] == null ? null : ((map['userProfileName'] as String).input()).input(),
     );
   }
 }

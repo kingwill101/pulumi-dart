@@ -30,9 +30,9 @@ class PreventionDiscoveryConfigActionExportDataProfileTable {
 
   factory PreventionDiscoveryConfigActionExportDataProfileTable.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionExportDataProfileTable(
-      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      tableId: map['tableId'] == null ? null : (map['tableId'] as String).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      tableId: map['tableId'] == null ? null : (map['tableId']! as String).input(),
     );
   }
 }

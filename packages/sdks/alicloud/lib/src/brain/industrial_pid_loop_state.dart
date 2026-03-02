@@ -56,14 +56,14 @@ class IndustrialPidLoopState {
 
   factory IndustrialPidLoopState.fromMap(Map<String, dynamic> map) {
     return IndustrialPidLoopState(
-      pidLoopConfiguration: map['pidLoopConfiguration'] == null ? null : (map['pidLoopConfiguration'] as String).input(),
-      pidLoopDcsType: map['pidLoopDcsType'] == null ? null : (map['pidLoopDcsType'] as String).input(),
-      pidLoopDesc: map['pidLoopDesc'] == null ? null : (map['pidLoopDesc'] as String).input(),
-      pidLoopIsCrucial: map['pidLoopIsCrucial'] == null ? null : (map['pidLoopIsCrucial'] as bool).input(),
-      pidLoopName: map['pidLoopName'] == null ? null : (map['pidLoopName'] as String).input(),
-      pidLoopType: map['pidLoopType'] == null ? null : (map['pidLoopType'] as String).input(),
-      pidProjectId: map['pidProjectId'] == null ? null : (map['pidProjectId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      pidLoopConfiguration: map['pidLoopConfiguration'] == null ? null : (map['pidLoopConfiguration']! as String).input(),
+      pidLoopDcsType: map['pidLoopDcsType'] == null ? null : (map['pidLoopDcsType']! as String).input(),
+      pidLoopDesc: map['pidLoopDesc'] == null ? null : (map['pidLoopDesc']! as String).input(),
+      pidLoopIsCrucial: map['pidLoopIsCrucial'] == null ? null : (map['pidLoopIsCrucial']! as bool).input(),
+      pidLoopName: map['pidLoopName'] == null ? null : (map['pidLoopName']! as String).input(),
+      pidLoopType: map['pidLoopType'] == null ? null : (map['pidLoopType']! as String).input(),
+      pidProjectId: map['pidProjectId'] == null ? null : (map['pidProjectId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

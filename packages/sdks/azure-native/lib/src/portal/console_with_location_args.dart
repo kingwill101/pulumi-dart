@@ -29,7 +29,7 @@ class ConsoleWithLocationArgs {
 
   factory ConsoleWithLocationArgs.fromMap(Map<String, dynamic> map) {
     return ConsoleWithLocationArgs(
-      consoleName: map['consoleName'] == null ? null : (map['consoleName'] as String).input(),
+      consoleName: map['consoleName'] == null ? null : (map['consoleName']! as String).input(),
       location: (map['location'] as String).input(),
     );
   }

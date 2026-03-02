@@ -34,9 +34,9 @@ class GetApiKeysArgs {
 
   factory GetApiKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetApiKeysArgs(
-      customerId: map['customerId'] == null ? null : (map['customerId'] as String).input(),
-      includeValues: map['includeValues'] == null ? null : (map['includeValues'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      customerId: map['customerId'] == null ? null : ((map['customerId'] as String).input()).input(),
+      includeValues: map['includeValues'] == null ? null : ((map['includeValues'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

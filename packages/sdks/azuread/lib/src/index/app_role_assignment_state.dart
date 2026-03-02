@@ -46,12 +46,12 @@ class AppRoleAssignmentState {
 
   factory AppRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return AppRoleAssignmentState(
-      appRoleId: map['appRoleId'] == null ? null : (map['appRoleId'] as String).input(),
-      principalDisplayName: map['principalDisplayName'] == null ? null : (map['principalDisplayName'] as String).input(),
-      principalObjectId: map['principalObjectId'] == null ? null : (map['principalObjectId'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      resourceDisplayName: map['resourceDisplayName'] == null ? null : (map['resourceDisplayName'] as String).input(),
-      resourceObjectId: map['resourceObjectId'] == null ? null : (map['resourceObjectId'] as String).input(),
+      appRoleId: map['appRoleId'] == null ? null : (map['appRoleId']! as String).input(),
+      principalDisplayName: map['principalDisplayName'] == null ? null : (map['principalDisplayName']! as String).input(),
+      principalObjectId: map['principalObjectId'] == null ? null : (map['principalObjectId']! as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
+      resourceDisplayName: map['resourceDisplayName'] == null ? null : (map['resourceDisplayName']! as String).input(),
+      resourceObjectId: map['resourceObjectId'] == null ? null : (map['resourceObjectId']! as String).input(),
     );
   }
 }

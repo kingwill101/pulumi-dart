@@ -26,8 +26,8 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole']! as String).input(),
     );
   }
 }

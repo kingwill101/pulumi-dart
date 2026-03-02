@@ -57,14 +57,14 @@ class MetadataSchemaAiplatformV1beta1Args {
 
   factory MetadataSchemaAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return MetadataSchemaAiplatformV1beta1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadataSchemaId: map['metadataSchemaId'] == null ? null : (map['metadataSchemaId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadataSchemaId: map['metadataSchemaId'] == null ? null : (map['metadataSchemaId']! as String).input(),
       metadataStoreId: (map['metadataStoreId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       schema: (map['schema'] as String).input(),
-      schemaType: map['schemaType'] == null ? null : (MetadataSchemaSchemaTypeAiplatformV1beta1.fromValue(map['schemaType'] as String)).input(),
-      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion'] as String).input(),
+      schemaType: map['schemaType'] == null ? null : (MetadataSchemaSchemaTypeAiplatformV1beta1.fromValue(map['schemaType']! as String)).input(),
+      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion']! as String).input(),
     );
   }
 }

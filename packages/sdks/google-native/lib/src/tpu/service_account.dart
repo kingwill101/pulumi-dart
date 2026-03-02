@@ -26,8 +26,8 @@ class ServiceAccount {
 
   factory ServiceAccount.fromMap(Map<String, dynamic> map) {
     return ServiceAccount(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      scope: map['scope'] == null ? null : ((map['scope'] as List).cast<String>()).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      scope: map['scope'] == null ? null : ((map['scope']! as List).cast<String>()).input(),
     );
   }
 }

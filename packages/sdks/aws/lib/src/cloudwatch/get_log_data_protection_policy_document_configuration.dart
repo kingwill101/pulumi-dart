@@ -21,7 +21,7 @@ class GetLogDataProtectionPolicyDocumentConfiguration {
 
   factory GetLogDataProtectionPolicyDocumentConfiguration.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentConfiguration(
-      customDataIdentifiers: map['customDataIdentifiers'] == null ? null : (pulumi.Input.decodeList<GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier>(map['customDataIdentifiers'], (value) => GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customDataIdentifiers: map['customDataIdentifiers'] == null ? null : ((pulumi.Input.decodeList<GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier>(map['customDataIdentifiers']!, (value) => GetLogDataProtectionPolicyDocumentConfigurationCustomDataIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

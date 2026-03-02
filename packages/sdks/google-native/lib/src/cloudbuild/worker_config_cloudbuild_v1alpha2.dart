@@ -26,8 +26,8 @@ class WorkerConfigCloudbuildV1alpha2 {
 
   factory WorkerConfigCloudbuildV1alpha2.fromMap(Map<String, dynamic> map) {
     return WorkerConfigCloudbuildV1alpha2(
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ProvisioningErrorResponse {
 
   factory ProvisioningErrorResponse.fromMap(Map<String, dynamic> map) {
     return ProvisioningErrorResponse(
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      provisioningErrorCode: map['provisioningErrorCode'] == null ? null : (map['provisioningErrorCode'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      provisioningErrorCode: map['provisioningErrorCode'] == null ? null : (map['provisioningErrorCode']! as String).input(),
     );
   }
 }

@@ -47,10 +47,10 @@ class OrderV1Meta {
     return OrderV1Meta(
       algorithm: (map['algorithm'] as String).input(),
       bitLength: (map['bitLength'] as int).input(),
-      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      payloadContentType: map['payloadContentType'] == null ? null : (map['payloadContentType'] as String).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      payloadContentType: map['payloadContentType'] == null ? null : (map['payloadContentType']! as String).input(),
     );
   }
 }

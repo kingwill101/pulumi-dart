@@ -32,9 +32,9 @@ class ImageConfigHealthcareV1beta1 {
 
   factory ImageConfigHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return ImageConfigHealthcareV1beta1(
-      additionalInfoTypes: map['additionalInfoTypes'] == null ? null : ((map['additionalInfoTypes'] as List).cast<String>()).input(),
-      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : ((map['excludeInfoTypes'] as List).cast<String>()).input(),
-      textRedactionMode: map['textRedactionMode'] == null ? null : (ImageConfigTextRedactionModeHealthcareV1beta1.fromValue(map['textRedactionMode'] as String)).input(),
+      additionalInfoTypes: map['additionalInfoTypes'] == null ? null : ((map['additionalInfoTypes']! as List).cast<String>()).input(),
+      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : ((map['excludeInfoTypes']! as List).cast<String>()).input(),
+      textRedactionMode: map['textRedactionMode'] == null ? null : (ImageConfigTextRedactionModeHealthcareV1beta1.fromValue(map['textRedactionMode']! as String)).input(),
     );
   }
 }

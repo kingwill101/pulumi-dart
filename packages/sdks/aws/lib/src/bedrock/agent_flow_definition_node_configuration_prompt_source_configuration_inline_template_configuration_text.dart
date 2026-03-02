@@ -29,8 +29,8 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
 
   factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationText(
-      cachePoint: map['cachePoint'] == null ? null : (AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextCachePoint.fromMap((map['cachePoint'] as Map).cast<String, dynamic>())).input(),
-      inputVariables: map['inputVariables'] == null ? null : (pulumi.Input.decodeList<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariable>(map['inputVariables'], (value) => AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cachePoint: map['cachePoint'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextCachePoint.fromMap((map['cachePoint']! as Map).cast<String, dynamic>())).input()).input(),
+      inputVariables: map['inputVariables'] == null ? null : ((pulumi.Input.decodeList<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariable>(map['inputVariables']!, (value) => AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariable.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       text: (map['text'] as String).input(),
     );
   }

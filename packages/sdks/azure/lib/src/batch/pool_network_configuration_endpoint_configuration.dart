@@ -44,7 +44,7 @@ class PoolNetworkConfigurationEndpointConfiguration {
       backendPort: (map['backendPort'] as int).input(),
       frontendPortRange: (map['frontendPortRange'] as String).input(),
       name: (map['name'] as String).input(),
-      networkSecurityGroupRules: map['networkSecurityGroupRules'] == null ? null : (pulumi.Input.decodeList<PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule>(map['networkSecurityGroupRules'], (value) => PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkSecurityGroupRules: map['networkSecurityGroupRules'] == null ? null : (pulumi.Input.decodeList<PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule>(map['networkSecurityGroupRules']!, (value) => PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       protocol: (map['protocol'] as String).input(),
     );
   }

@@ -28,8 +28,8 @@ class ReverseShippingDetails {
 
   factory ReverseShippingDetails.fromMap(Map<String, dynamic> map) {
     return ReverseShippingDetails(
-      contactDetails: map['contactDetails'] == null ? null : (ContactInfo.fromMap((map['contactDetails'] as Map).cast<String, dynamic>())).input(),
-      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddress.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())).input(),
+      contactDetails: map['contactDetails'] == null ? null : (ContactInfo.fromMap((map['contactDetails']! as Map).cast<String, dynamic>())).input(),
+      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddress.fromMap((map['shippingAddress']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

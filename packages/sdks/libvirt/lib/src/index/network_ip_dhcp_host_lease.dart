@@ -26,7 +26,7 @@ class NetworkIpDhcpHostLease {
   factory NetworkIpDhcpHostLease.fromMap(Map<String, dynamic> map) {
     return NetworkIpDhcpHostLease(
       expiry: (map['expiry'] as double).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

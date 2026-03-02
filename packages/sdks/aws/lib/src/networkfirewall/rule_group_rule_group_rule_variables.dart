@@ -27,8 +27,8 @@ class RuleGroupRuleGroupRuleVariables {
 
   factory RuleGroupRuleGroupRuleVariables.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRuleVariables(
-      ipSets: map['ipSets'] == null ? null : (pulumi.Input.decodeList<RuleGroupRuleGroupRuleVariablesIpSet>(map['ipSets'], (value) => RuleGroupRuleGroupRuleVariablesIpSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      portSets: map['portSets'] == null ? null : (pulumi.Input.decodeList<RuleGroupRuleGroupRuleVariablesPortSet>(map['portSets'], (value) => RuleGroupRuleGroupRuleVariablesPortSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipSets: map['ipSets'] == null ? null : ((pulumi.Input.decodeList<RuleGroupRuleGroupRuleVariablesIpSet>(map['ipSets']!, (value) => RuleGroupRuleGroupRuleVariablesIpSet.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      portSets: map['portSets'] == null ? null : ((pulumi.Input.decodeList<RuleGroupRuleGroupRuleVariablesPortSet>(map['portSets']!, (value) => RuleGroupRuleGroupRuleVariablesPortSet.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

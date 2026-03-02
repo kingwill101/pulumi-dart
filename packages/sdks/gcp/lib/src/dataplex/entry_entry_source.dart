@@ -72,16 +72,16 @@ class EntryEntrySource {
 
   factory EntryEntrySource.fromMap(Map<String, dynamic> map) {
     return EntryEntrySource(
-      ancestors: map['ancestors'] == null ? null : (pulumi.Input.decodeList<EntryEntrySourceAncestor>(map['ancestors'], (value) => EntryEntrySourceAncestor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
-      system: map['system'] == null ? null : (map['system'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      ancestors: map['ancestors'] == null ? null : (pulumi.Input.decodeList<EntryEntrySourceAncestor>(map['ancestors']!, (value) => EntryEntrySourceAncestor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      system: map['system'] == null ? null : (map['system']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

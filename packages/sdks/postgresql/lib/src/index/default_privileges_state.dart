@@ -51,13 +51,13 @@ class DefaultPrivilegesState {
 
   factory DefaultPrivilegesState.fromMap(Map<String, dynamic> map) {
     return DefaultPrivilegesState(
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      privileges: map['privileges'] == null ? null : ((map['privileges'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      withGrantOption: map['withGrantOption'] == null ? null : (map['withGrantOption'] as bool).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      privileges: map['privileges'] == null ? null : ((map['privileges']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      withGrantOption: map['withGrantOption'] == null ? null : (map['withGrantOption']! as bool).input(),
     );
   }
 }

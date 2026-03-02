@@ -66,14 +66,14 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      containerImage: map['containerImage'] == null ? null : (EnvironmentContainerImage.fromMap((map['containerImage'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      containerImage: map['containerImage'] == null ? null : (EnvironmentContainerImage.fromMap((map['containerImage']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      postStartupScript: map['postStartupScript'] == null ? null : (map['postStartupScript'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      vmImage: map['vmImage'] == null ? null : (EnvironmentVmImage.fromMap((map['vmImage'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      postStartupScript: map['postStartupScript'] == null ? null : (map['postStartupScript']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      vmImage: map['vmImage'] == null ? null : (EnvironmentVmImage.fromMap((map['vmImage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

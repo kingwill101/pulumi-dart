@@ -28,8 +28,8 @@ class GoogleCloudContactcenterinsightsV1ConversationDataSource {
 
   factory GoogleCloudContactcenterinsightsV1ConversationDataSource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ConversationDataSource(
-      dialogflowSource: map['dialogflowSource'] == null ? null : (GoogleCloudContactcenterinsightsV1DialogflowSource.fromMap((map['dialogflowSource'] as Map).cast<String, dynamic>())).input(),
-      gcsSource: map['gcsSource'] == null ? null : (GoogleCloudContactcenterinsightsV1GcsSource.fromMap((map['gcsSource'] as Map).cast<String, dynamic>())).input(),
+      dialogflowSource: map['dialogflowSource'] == null ? null : (GoogleCloudContactcenterinsightsV1DialogflowSource.fromMap((map['dialogflowSource']! as Map).cast<String, dynamic>())).input(),
+      gcsSource: map['gcsSource'] == null ? null : (GoogleCloudContactcenterinsightsV1GcsSource.fromMap((map['gcsSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

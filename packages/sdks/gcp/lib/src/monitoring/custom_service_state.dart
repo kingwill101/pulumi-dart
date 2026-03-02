@@ -56,12 +56,12 @@ class CustomServiceState {
 
   factory CustomServiceState.fromMap(Map<String, dynamic> map) {
     return CustomServiceState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
-      telemetry: map['telemetry'] == null ? null : (CustomServiceTelemetry.fromMap((map['telemetry'] as Map).cast<String, dynamic>())).input(),
-      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      telemetry: map['telemetry'] == null ? null : (CustomServiceTelemetry.fromMap((map['telemetry']! as Map).cast<String, dynamic>())).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

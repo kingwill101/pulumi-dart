@@ -69,14 +69,14 @@ class LicenseResponse {
   factory LicenseResponse.fromMap(Map<String, dynamic> map) {
     return LicenseResponse(
       id: (map['id'] as String).input(),
-      licenseDetails: map['licenseDetails'] == null ? null : (LicenseDetailsResponse.fromMap((map['licenseDetails'] as Map).cast<String, dynamic>())).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      licenseDetails: map['licenseDetails'] == null ? null : (LicenseDetailsResponse.fromMap((map['licenseDetails']! as Map).cast<String, dynamic>())).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
       location: (map['location'] as String).input(),
       name: (map['name'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

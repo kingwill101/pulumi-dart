@@ -55,7 +55,7 @@ class AclArgs {
       aclId: (map['aclId'] as String).input(),
       cluster: (map['cluster'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

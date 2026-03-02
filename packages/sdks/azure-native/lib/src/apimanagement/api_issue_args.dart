@@ -65,12 +65,12 @@ class ApiIssueArgs {
   factory ApiIssueArgs.fromMap(Map<String, dynamic> map) {
     return ApiIssueArgs(
       apiId: (map['apiId'] as String).input(),
-      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate']! as String).input(),
       description: (map['description'] as String).input(),
-      issueId: map['issueId'] == null ? null : (map['issueId'] as String).input(),
+      issueId: map['issueId'] == null ? null : (map['issueId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       title: (map['title'] as String).input(),
       userId: (map['userId'] as String).input(),
     );

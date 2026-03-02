@@ -21,7 +21,7 @@ class PipelineStageBeforeEntry {
 
   factory PipelineStageBeforeEntry.fromMap(Map<String, dynamic> map) {
     return PipelineStageBeforeEntry(
-      condition: (PipelineStageBeforeEntryCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: (PipelineStageBeforeEntryCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

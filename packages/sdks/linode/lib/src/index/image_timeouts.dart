@@ -20,7 +20,7 @@ class ImageTimeouts {
 
   factory ImageTimeouts.fromMap(Map<String, dynamic> map) {
     return ImageTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : (map['create']! as String).input(),
     );
   }
 }

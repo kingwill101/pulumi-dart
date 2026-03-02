@@ -72,16 +72,16 @@ class DatabaseInstanceSettingsIpConfiguration {
 
   factory DatabaseInstanceSettingsIpConfiguration.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsIpConfiguration(
-      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange'] as String).input(),
-      authorizedNetworks: map['authorizedNetworks'] == null ? null : (pulumi.Input.decodeList<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork>(map['authorizedNetworks'], (value) => DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customSubjectAlternativeNames: map['customSubjectAlternativeNames'] == null ? null : ((map['customSubjectAlternativeNames'] as List).cast<String>()).input(),
-      enablePrivatePathForGoogleCloudServices: map['enablePrivatePathForGoogleCloudServices'] == null ? null : (map['enablePrivatePathForGoogleCloudServices'] as bool).input(),
-      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled'] as bool).input(),
-      privateNetwork: map['privateNetwork'] == null ? null : (map['privateNetwork'] as String).input(),
-      pscConfigs: map['pscConfigs'] == null ? null : (pulumi.Input.decodeList<DatabaseInstanceSettingsIpConfigurationPscConfig>(map['pscConfigs'], (value) => DatabaseInstanceSettingsIpConfigurationPscConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serverCaMode: map['serverCaMode'] == null ? null : (map['serverCaMode'] as String).input(),
-      serverCaPool: map['serverCaPool'] == null ? null : (map['serverCaPool'] as String).input(),
-      sslMode: map['sslMode'] == null ? null : (map['sslMode'] as String).input(),
+      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange']! as String).input(),
+      authorizedNetworks: map['authorizedNetworks'] == null ? null : (pulumi.Input.decodeList<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork>(map['authorizedNetworks']!, (value) => DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customSubjectAlternativeNames: map['customSubjectAlternativeNames'] == null ? null : ((map['customSubjectAlternativeNames']! as List).cast<String>()).input(),
+      enablePrivatePathForGoogleCloudServices: map['enablePrivatePathForGoogleCloudServices'] == null ? null : (map['enablePrivatePathForGoogleCloudServices']! as bool).input(),
+      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled']! as bool).input(),
+      privateNetwork: map['privateNetwork'] == null ? null : (map['privateNetwork']! as String).input(),
+      pscConfigs: map['pscConfigs'] == null ? null : (pulumi.Input.decodeList<DatabaseInstanceSettingsIpConfigurationPscConfig>(map['pscConfigs']!, (value) => DatabaseInstanceSettingsIpConfigurationPscConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serverCaMode: map['serverCaMode'] == null ? null : (map['serverCaMode']! as String).input(),
+      serverCaPool: map['serverCaPool'] == null ? null : (map['serverCaPool']! as String).input(),
+      sslMode: map['sslMode'] == null ? null : (map['sslMode']! as String).input(),
     );
   }
 }

@@ -51,12 +51,12 @@ class GetResponseHeadersPolicySecurityHeadersConfig {
 
   factory GetResponseHeadersPolicySecurityHeadersConfig.fromMap(Map<String, dynamic> map) {
     return GetResponseHeadersPolicySecurityHeadersConfig(
-      contentSecurityPolicies: (pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy>(map['contentSecurityPolicies'], (value) => GetResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contentTypeOptions: (pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption>(map['contentTypeOptions'], (value) => GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      frameOptions: (pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfigFrameOption>(map['frameOptions'], (value) => GetResponseHeadersPolicySecurityHeadersConfigFrameOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      referrerPolicies: (pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfigReferrerPolicy>(map['referrerPolicies'], (value) => GetResponseHeadersPolicySecurityHeadersConfigReferrerPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      strictTransportSecurities: (pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity>(map['strictTransportSecurities'], (value) => GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      xssProtections: (pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfigXssProtection>(map['xssProtections'], (value) => GetResponseHeadersPolicySecurityHeadersConfigXssProtection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contentSecurityPolicies: (pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy>(map['contentSecurityPolicies']!, (value) => GetResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contentTypeOptions: (pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption>(map['contentTypeOptions']!, (value) => GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      frameOptions: (pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfigFrameOption>(map['frameOptions']!, (value) => GetResponseHeadersPolicySecurityHeadersConfigFrameOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      referrerPolicies: (pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfigReferrerPolicy>(map['referrerPolicies']!, (value) => GetResponseHeadersPolicySecurityHeadersConfigReferrerPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      strictTransportSecurities: (pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity>(map['strictTransportSecurities']!, (value) => GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      xssProtections: (pulumi.Input.decodeList<GetResponseHeadersPolicySecurityHeadersConfigXssProtection>(map['xssProtections']!, (value) => GetResponseHeadersPolicySecurityHeadersConfigXssProtection.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

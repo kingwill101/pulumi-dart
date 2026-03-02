@@ -26,8 +26,8 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfiguration {
 
   factory MediaInsightsPipelineConfigurationRealTimeAlertConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationRealTimeAlertConfiguration(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      rules: (pulumi.Input.decodeList<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule>(map['rules'], (value) => MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disabled: map['disabled'] == null ? null : ((map['disabled'] as bool).input()).input(),
+      rules: (pulumi.Input.decodeList<MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule>(map['rules']!, (value) => MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

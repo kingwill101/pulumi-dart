@@ -55,10 +55,10 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
   factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      file: map['file'] == null ? null : (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      file: map['file'] == null ? null : (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
       path: (map['path'] as String).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
       state: (map['state'] as String).input(),
     );
   }

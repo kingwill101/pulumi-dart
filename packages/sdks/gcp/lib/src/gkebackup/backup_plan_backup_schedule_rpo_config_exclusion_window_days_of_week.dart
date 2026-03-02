@@ -21,7 +21,7 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek {
 
   factory BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek(
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks'] as List).cast<String>()).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks']! as List).cast<String>()).input(),
     );
   }
 }

@@ -44,7 +44,7 @@ class DataCollectionRuleDataSourcesLogFile {
       filePatterns: ((map['filePatterns'] as List).cast<String>()).input(),
       format: (map['format'] as String).input(),
       name: (map['name'] as String).input(),
-      settings: map['settings'] == null ? null : (DataCollectionRuleDataSourcesLogFileSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (DataCollectionRuleDataSourcesLogFileSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
       streams: ((map['streams'] as List).cast<String>()).input(),
     );
   }

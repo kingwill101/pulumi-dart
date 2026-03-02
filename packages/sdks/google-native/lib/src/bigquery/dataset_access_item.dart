@@ -63,15 +63,15 @@ class DatasetAccessItem {
 
   factory DatasetAccessItem.fromMap(Map<String, dynamic> map) {
     return DatasetAccessItem(
-      dataset: map['dataset'] == null ? null : (DatasetAccessEntry.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      groupByEmail: map['groupByEmail'] == null ? null : (map['groupByEmail'] as String).input(),
-      iamMember: map['iamMember'] == null ? null : (map['iamMember'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      routine: map['routine'] == null ? null : (RoutineReference.fromMap((map['routine'] as Map).cast<String, dynamic>())).input(),
-      specialGroup: map['specialGroup'] == null ? null : (map['specialGroup'] as String).input(),
-      userByEmail: map['userByEmail'] == null ? null : (map['userByEmail'] as String).input(),
-      view: map['view'] == null ? null : (TableReference.fromMap((map['view'] as Map).cast<String, dynamic>())).input(),
+      dataset: map['dataset'] == null ? null : (DatasetAccessEntry.fromMap((map['dataset']! as Map).cast<String, dynamic>())).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      groupByEmail: map['groupByEmail'] == null ? null : (map['groupByEmail']! as String).input(),
+      iamMember: map['iamMember'] == null ? null : (map['iamMember']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      routine: map['routine'] == null ? null : (RoutineReference.fromMap((map['routine']! as Map).cast<String, dynamic>())).input(),
+      specialGroup: map['specialGroup'] == null ? null : (map['specialGroup']! as String).input(),
+      userByEmail: map['userByEmail'] == null ? null : (map['userByEmail']! as String).input(),
+      view: map['view'] == null ? null : (TableReference.fromMap((map['view']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

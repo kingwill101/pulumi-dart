@@ -44,10 +44,10 @@ class GetTransitRouterCidrsArgs {
 
   factory GetTransitRouterCidrsArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterCidrsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      transitRouterCidrId: map['transitRouterCidrId'] == null ? null : (map['transitRouterCidrId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      transitRouterCidrId: map['transitRouterCidrId'] == null ? null : (map['transitRouterCidrId']! as String).input(),
       transitRouterId: (map['transitRouterId'] as String).input(),
     );
   }

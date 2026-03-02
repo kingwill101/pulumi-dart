@@ -145,15 +145,15 @@ class RunArgs {
 
   factory RunArgs.fromMap(Map<String, dynamic> map) {
     return RunArgs(
-      addPreviousOutputInEnv: map['addPreviousOutputInEnv'] == null ? null : (map['addPreviousOutputInEnv'] as bool).input(),
-      archivePaths: map['archivePaths'] == null ? null : ((map['archivePaths'] as List).cast<String>()).input(),
-      assetPaths: map['assetPaths'] == null ? null : ((map['assetPaths'] as List).cast<String>()).input(),
+      addPreviousOutputInEnv: map['addPreviousOutputInEnv'] == null ? null : (map['addPreviousOutputInEnv']! as bool).input(),
+      archivePaths: map['archivePaths'] == null ? null : ((map['archivePaths']! as List).cast<String>()).input(),
+      assetPaths: map['assetPaths'] == null ? null : ((map['assetPaths']! as List).cast<String>()).input(),
       command: (map['command'] as String).input(),
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
-      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
-      interpreter: map['interpreter'] == null ? null : ((map['interpreter'] as List).cast<String>()).input(),
-      logging: map['logging'] == null ? null : (Logging.fromValue(map['logging'] as String)).input(),
-      stdin: map['stdin'] == null ? null : (map['stdin'] as String).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
+      environment: map['environment'] == null ? null : ((map['environment']! as Map).cast<String, String>()).input(),
+      interpreter: map['interpreter'] == null ? null : ((map['interpreter']! as List).cast<String>()).input(),
+      logging: map['logging'] == null ? null : (Logging.fromValue(map['logging']! as String)).input(),
+      stdin: map['stdin'] == null ? null : (map['stdin']! as String).input(),
     );
   }
 }

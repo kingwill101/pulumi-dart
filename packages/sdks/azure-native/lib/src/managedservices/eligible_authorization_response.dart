@@ -37,9 +37,9 @@ class EligibleAuthorizationResponse {
 
   factory EligibleAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return EligibleAuthorizationResponse(
-      justInTimeAccessPolicy: map['justInTimeAccessPolicy'] == null ? null : (JustInTimeAccessPolicyResponse.fromMap((map['justInTimeAccessPolicy'] as Map).cast<String, dynamic>())).input(),
+      justInTimeAccessPolicy: map['justInTimeAccessPolicy'] == null ? null : (JustInTimeAccessPolicyResponse.fromMap((map['justInTimeAccessPolicy']! as Map).cast<String, dynamic>())).input(),
       principalId: (map['principalId'] as String).input(),
-      principalIdDisplayName: map['principalIdDisplayName'] == null ? null : (map['principalIdDisplayName'] as String).input(),
+      principalIdDisplayName: map['principalIdDisplayName'] == null ? null : (map['principalIdDisplayName']! as String).input(),
       roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );
   }

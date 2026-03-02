@@ -72,17 +72,17 @@ class NodeConfigComposerV1beta1 {
 
   factory NodeConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodeConfigComposerV1beta1(
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      enableIpMasqAgent: map['enableIpMasqAgent'] == null ? null : (map['enableIpMasqAgent'] as bool).input(),
-      ipAllocationPolicy: map['ipAllocationPolicy'] == null ? null : (IPAllocationPolicyComposerV1beta1.fromMap((map['ipAllocationPolicy'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode'] as int).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes'] as List).cast<String>()).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      enableIpMasqAgent: map['enableIpMasqAgent'] == null ? null : (map['enableIpMasqAgent']! as bool).input(),
+      ipAllocationPolicy: map['ipAllocationPolicy'] == null ? null : (IPAllocationPolicyComposerV1beta1.fromMap((map['ipAllocationPolicy']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode']! as int).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes']! as List).cast<String>()).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

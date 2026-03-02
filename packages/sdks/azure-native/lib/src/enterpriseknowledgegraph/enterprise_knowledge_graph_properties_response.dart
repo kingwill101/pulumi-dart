@@ -31,9 +31,9 @@ class EnterpriseKnowledgeGraphPropertiesResponse {
 
   factory EnterpriseKnowledgeGraphPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EnterpriseKnowledgeGraphPropertiesResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
     );
   }
 }

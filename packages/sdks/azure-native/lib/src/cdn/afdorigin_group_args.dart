@@ -62,14 +62,14 @@ class AFDOriginGroupArgs {
 
   factory AFDOriginGroupArgs.fromMap(Map<String, dynamic> map) {
     return AFDOriginGroupArgs(
-      authentication: map['authentication'] == null ? null : (OriginAuthenticationProperties.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      healthProbeSettings: map['healthProbeSettings'] == null ? null : (HealthProbeParameters.fromMap((map['healthProbeSettings'] as Map).cast<String, dynamic>())).input(),
-      loadBalancingSettings: map['loadBalancingSettings'] == null ? null : (LoadBalancingSettingsParameters.fromMap((map['loadBalancingSettings'] as Map).cast<String, dynamic>())).input(),
-      originGroupName: map['originGroupName'] == null ? null : (map['originGroupName'] as String).input(),
+      authentication: map['authentication'] == null ? null : (OriginAuthenticationProperties.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      healthProbeSettings: map['healthProbeSettings'] == null ? null : (HealthProbeParameters.fromMap((map['healthProbeSettings']! as Map).cast<String, dynamic>())).input(),
+      loadBalancingSettings: map['loadBalancingSettings'] == null ? null : (LoadBalancingSettingsParameters.fromMap((map['loadBalancingSettings']! as Map).cast<String, dynamic>())).input(),
+      originGroupName: map['originGroupName'] == null ? null : (map['originGroupName']! as String).input(),
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sessionAffinityState: map['sessionAffinityState'] == null ? null : (map['sessionAffinityState'] as String).input(),
-      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] == null ? null : (map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] as int).input(),
+      sessionAffinityState: map['sessionAffinityState'] == null ? null : (map['sessionAffinityState']! as String).input(),
+      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] == null ? null : (map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes']! as int).input(),
     );
   }
 }

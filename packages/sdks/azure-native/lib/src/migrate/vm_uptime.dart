@@ -26,8 +26,8 @@ class VmUptime {
 
   factory VmUptime.fromMap(Map<String, dynamic> map) {
     return VmUptime(
-      daysPerMonth: map['daysPerMonth'] == null ? null : (map['daysPerMonth'] as double).input(),
-      hoursPerDay: map['hoursPerDay'] == null ? null : (map['hoursPerDay'] as double).input(),
+      daysPerMonth: map['daysPerMonth'] == null ? null : (map['daysPerMonth']! as double).input(),
+      hoursPerDay: map['hoursPerDay'] == null ? null : (map['hoursPerDay']! as double).input(),
     );
   }
 }

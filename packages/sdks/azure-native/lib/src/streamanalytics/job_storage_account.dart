@@ -31,9 +31,9 @@ class JobStorageAccount {
 
   factory JobStorageAccount.fromMap(Map<String, dynamic> map) {
     return JobStorageAccount(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
     );
   }
 }

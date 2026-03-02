@@ -25,8 +25,8 @@ class RRSetRoutingPolicyWrrPolicy {
 
   factory RRSetRoutingPolicyWrrPolicy.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyWrrPolicy(
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>(map['items'], (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>(map['items']!, (value) => RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class ServicePerimetersState {
 
   factory ServicePerimetersState.fromMap(Map<String, dynamic> map) {
     return ServicePerimetersState(
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      servicePerimeters: map['servicePerimeters'] == null ? null : (pulumi.Input.decodeList<ServicePerimetersServicePerimeter>(map['servicePerimeters'], (value) => ServicePerimetersServicePerimeter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      servicePerimeters: map['servicePerimeters'] == null ? null : (pulumi.Input.decodeList<ServicePerimetersServicePerimeter>(map['servicePerimeters']!, (value) => ServicePerimetersServicePerimeter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

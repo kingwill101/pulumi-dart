@@ -25,8 +25,8 @@ class LinuxFunctionAppSiteCredential {
 
   factory LinuxFunctionAppSiteCredential.fromMap(Map<String, dynamic> map) {
     return LinuxFunctionAppSiteCredential(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
     );
   }
 }

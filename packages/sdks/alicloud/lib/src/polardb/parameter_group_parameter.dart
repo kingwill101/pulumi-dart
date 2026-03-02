@@ -25,8 +25,8 @@ class ParameterGroupParameter {
 
   factory ParameterGroupParameter.fromMap(Map<String, dynamic> map) {
     return ParameterGroupParameter(
-      paramName: map['paramName'] == null ? null : (map['paramName'] as String).input(),
-      paramValue: map['paramValue'] == null ? null : (map['paramValue'] as String).input(),
+      paramName: map['paramName'] == null ? null : (map['paramName']! as String).input(),
+      paramValue: map['paramValue'] == null ? null : (map['paramValue']! as String).input(),
     );
   }
 }

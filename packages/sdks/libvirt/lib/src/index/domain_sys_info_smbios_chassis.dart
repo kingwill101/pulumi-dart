@@ -21,7 +21,7 @@ class DomainSysInfoSmbiosChassis {
 
   factory DomainSysInfoSmbiosChassis.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosChassis(
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosChassisEntry>(map['entries'], (value) => DomainSysInfoSmbiosChassisEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosChassisEntry>(map['entries']!, (value) => DomainSysInfoSmbiosChassisEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

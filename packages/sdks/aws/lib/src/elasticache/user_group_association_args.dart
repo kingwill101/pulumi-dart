@@ -34,7 +34,7 @@ class UserGroupAssociationArgs {
 
   factory UserGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       userGroupId: (map['userGroupId'] as String).input(),
       userId: (map['userId'] as String).input(),
     );

@@ -39,10 +39,10 @@ class LinuxWebAppSiteConfigAutoHealSettingTrigger {
 
   factory LinuxWebAppSiteConfigAutoHealSettingTrigger.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSiteConfigAutoHealSettingTrigger(
-      requests: map['requests'] == null ? null : (LinuxWebAppSiteConfigAutoHealSettingTriggerRequests.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
-      slowRequest: map['slowRequest'] == null ? null : (LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap((map['slowRequest'] as Map).cast<String, dynamic>())).input(),
-      slowRequestWithPaths: map['slowRequestWithPaths'] == null ? null : (pulumi.Input.decodeList<LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>(map['slowRequestWithPaths'], (value) => LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statusCodes: map['statusCodes'] == null ? null : (pulumi.Input.decodeList<LinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode>(map['statusCodes'], (value) => LinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requests: map['requests'] == null ? null : (LinuxWebAppSiteConfigAutoHealSettingTriggerRequests.fromMap((map['requests']! as Map).cast<String, dynamic>())).input(),
+      slowRequest: map['slowRequest'] == null ? null : (LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap((map['slowRequest']! as Map).cast<String, dynamic>())).input(),
+      slowRequestWithPaths: map['slowRequestWithPaths'] == null ? null : (pulumi.Input.decodeList<LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>(map['slowRequestWithPaths']!, (value) => LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statusCodes: map['statusCodes'] == null ? null : (pulumi.Input.decodeList<LinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode>(map['statusCodes']!, (value) => LinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

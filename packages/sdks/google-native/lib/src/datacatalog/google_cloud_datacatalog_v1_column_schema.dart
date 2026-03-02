@@ -69,14 +69,14 @@ class GoogleCloudDatacatalogV1ColumnSchema {
   factory GoogleCloudDatacatalogV1ColumnSchema.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1ColumnSchema(
       column: (map['column'] as String).input(),
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gcRule: map['gcRule'] == null ? null : (map['gcRule'] as String).input(),
-      highestIndexingType: map['highestIndexingType'] == null ? null : (GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType.fromValue(map['highestIndexingType'] as String)).input(),
-      lookerColumnSpec: map['lookerColumnSpec'] == null ? null : (GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromMap((map['lookerColumnSpec'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition'] as int).input(),
-      subcolumns: map['subcolumns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(map['subcolumns'], (value) => GoogleCloudDatacatalogV1ColumnSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      gcRule: map['gcRule'] == null ? null : (map['gcRule']! as String).input(),
+      highestIndexingType: map['highestIndexingType'] == null ? null : (GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType.fromValue(map['highestIndexingType']! as String)).input(),
+      lookerColumnSpec: map['lookerColumnSpec'] == null ? null : (GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromMap((map['lookerColumnSpec']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition']! as int).input(),
+      subcolumns: map['subcolumns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(map['subcolumns']!, (value) => GoogleCloudDatacatalogV1ColumnSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -99,18 +99,18 @@ class TriggerBuild {
 
   factory TriggerBuild.fromMap(Map<String, dynamic> map) {
     return TriggerBuild(
-      artifacts: map['artifacts'] == null ? null : (TriggerBuildArtifacts.fromMap((map['artifacts'] as Map).cast<String, dynamic>())).input(),
-      availableSecrets: map['availableSecrets'] == null ? null : (TriggerBuildAvailableSecrets.fromMap((map['availableSecrets'] as Map).cast<String, dynamic>())).input(),
-      images: map['images'] == null ? null : ((map['images'] as List).cast<String>()).input(),
-      logsBucket: map['logsBucket'] == null ? null : (map['logsBucket'] as String).input(),
-      options: map['options'] == null ? null : (TriggerBuildOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      queueTtl: map['queueTtl'] == null ? null : (map['queueTtl'] as String).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<TriggerBuildSecret>(map['secrets'], (value) => TriggerBuildSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      source: map['source'] == null ? null : (TriggerBuildSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      artifacts: map['artifacts'] == null ? null : (TriggerBuildArtifacts.fromMap((map['artifacts']! as Map).cast<String, dynamic>())).input(),
+      availableSecrets: map['availableSecrets'] == null ? null : (TriggerBuildAvailableSecrets.fromMap((map['availableSecrets']! as Map).cast<String, dynamic>())).input(),
+      images: map['images'] == null ? null : ((map['images']! as List).cast<String>()).input(),
+      logsBucket: map['logsBucket'] == null ? null : (map['logsBucket']! as String).input(),
+      options: map['options'] == null ? null : (TriggerBuildOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
+      queueTtl: map['queueTtl'] == null ? null : (map['queueTtl']! as String).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<TriggerBuildSecret>(map['secrets']!, (value) => TriggerBuildSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      source: map['source'] == null ? null : (TriggerBuildSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
       steps: (pulumi.Input.decodeList<TriggerBuildStep>(map['steps'], (value) => TriggerBuildStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      substitutions: map['substitutions'] == null ? null : ((map['substitutions'] as Map).cast<String, String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      substitutions: map['substitutions'] == null ? null : ((map['substitutions']! as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

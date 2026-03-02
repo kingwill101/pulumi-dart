@@ -27,8 +27,8 @@ class IncludedPath {
 
   factory IncludedPath.fromMap(Map<String, dynamic> map) {
     return IncludedPath(
-      indexes: map['indexes'] == null ? null : (pulumi.Input.decodeList<Indexes>(map['indexes'], (value) => Indexes.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      indexes: map['indexes'] == null ? null : (pulumi.Input.decodeList<Indexes>(map['indexes']!, (value) => Indexes.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

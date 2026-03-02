@@ -27,7 +27,7 @@ class AgentcoreBrowserNetworkConfiguration {
   factory AgentcoreBrowserNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreBrowserNetworkConfiguration(
       networkMode: (map['networkMode'] as String).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : (AgentcoreBrowserNetworkConfigurationVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : ((AgentcoreBrowserNetworkConfigurationVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

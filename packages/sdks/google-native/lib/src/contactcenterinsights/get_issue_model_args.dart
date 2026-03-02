@@ -33,7 +33,7 @@ class GetIssueModelArgs {
     return GetIssueModelArgs(
       issueModelId: (map['issueModelId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -45,8 +45,8 @@ class HyperVToAzStackHCIReplicationExtensionModelCustomProperties {
       azStackHciFabricArmId: (map['azStackHciFabricArmId'] as String).input(),
       hyperVFabricArmId: (map['hyperVFabricArmId'] as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : (map['storageAccountSasSecretName'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      storageAccountSasSecretName: map['storageAccountSasSecretName'] == null ? null : (map['storageAccountSasSecretName']! as String).input(),
     );
   }
 }

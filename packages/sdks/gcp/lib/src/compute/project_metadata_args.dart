@@ -33,7 +33,7 @@ class ProjectMetadataArgs {
   factory ProjectMetadataArgs.fromMap(Map<String, dynamic> map) {
     return ProjectMetadataArgs(
       metadata: ((map['metadata'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

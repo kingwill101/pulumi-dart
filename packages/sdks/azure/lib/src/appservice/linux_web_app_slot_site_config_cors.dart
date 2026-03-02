@@ -25,8 +25,8 @@ class LinuxWebAppSlotSiteConfigCors {
 
   factory LinuxWebAppSlotSiteConfigCors.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSlotSiteConfigCors(
-      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins'] as List).cast<String>()).input(),
-      supportCredentials: map['supportCredentials'] == null ? null : (map['supportCredentials'] as bool).input(),
+      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins']! as List).cast<String>()).input(),
+      supportCredentials: map['supportCredentials'] == null ? null : (map['supportCredentials']! as bool).input(),
     );
   }
 }

@@ -70,7 +70,7 @@ class RemediationArgs {
       configRuleId: (map['configRuleId'] as String).input(),
       invokeType: (map['invokeType'] as String).input(),
       remediationOriginParams: (map['remediationOriginParams'] as String).input(),
-      remediationSourceType: map['remediationSourceType'] == null ? null : (map['remediationSourceType'] as String).input(),
+      remediationSourceType: map['remediationSourceType'] == null ? null : (map['remediationSourceType']! as String).input(),
       remediationTemplateId: (map['remediationTemplateId'] as String).input(),
       remediationType: (map['remediationType'] as String).input(),
     );

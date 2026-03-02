@@ -26,8 +26,8 @@ class SecretManagerSecret {
 
   factory SecretManagerSecret.fromMap(Map<String, dynamic> map) {
     return SecretManagerSecret(
-      env: map['env'] == null ? null : (map['env'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      env: map['env'] == null ? null : (map['env']! as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
     );
   }
 }

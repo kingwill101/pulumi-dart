@@ -45,12 +45,12 @@ class AlertSchedule {
 
   factory AlertSchedule.fromMap(Map<String, dynamic> map) {
     return AlertSchedule(
-      cronExpression: map['cronExpression'] == null ? null : (map['cronExpression'] as String).input(),
-      delay: map['delay'] == null ? null : (map['delay'] as int).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      runImmdiately: map['runImmdiately'] == null ? null : (map['runImmdiately'] as bool).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      cronExpression: map['cronExpression'] == null ? null : (map['cronExpression']! as String).input(),
+      delay: map['delay'] == null ? null : (map['delay']! as int).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
+      runImmdiately: map['runImmdiately'] == null ? null : (map['runImmdiately']! as bool).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

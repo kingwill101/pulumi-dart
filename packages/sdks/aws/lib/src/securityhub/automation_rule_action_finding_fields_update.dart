@@ -64,15 +64,15 @@ class AutomationRuleActionFindingFieldsUpdate {
 
   factory AutomationRuleActionFindingFieldsUpdate.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionFindingFieldsUpdate(
-      confidence: map['confidence'] == null ? null : (map['confidence'] as int).input(),
-      criticality: map['criticality'] == null ? null : (map['criticality'] as int).input(),
-      note: map['note'] == null ? null : (AutomationRuleActionFindingFieldsUpdateNote.fromMap((map['note'] as Map).cast<String, dynamic>())).input(),
-      relatedFindings: map['relatedFindings'] == null ? null : (pulumi.Input.decodeList<AutomationRuleActionFindingFieldsUpdateRelatedFinding>(map['relatedFindings'], (value) => AutomationRuleActionFindingFieldsUpdateRelatedFinding.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      severity: map['severity'] == null ? null : (AutomationRuleActionFindingFieldsUpdateSeverity.fromMap((map['severity'] as Map).cast<String, dynamic>())).input(),
-      types: map['types'] == null ? null : ((map['types'] as List).cast<String>()).input(),
-      userDefinedFields: map['userDefinedFields'] == null ? null : ((map['userDefinedFields'] as Map).cast<String, String>()).input(),
-      verificationState: map['verificationState'] == null ? null : (map['verificationState'] as String).input(),
-      workflow: map['workflow'] == null ? null : (AutomationRuleActionFindingFieldsUpdateWorkflow.fromMap((map['workflow'] as Map).cast<String, dynamic>())).input(),
+      confidence: map['confidence'] == null ? null : ((map['confidence'] as int).input()).input(),
+      criticality: map['criticality'] == null ? null : ((map['criticality'] as int).input()).input(),
+      note: map['note'] == null ? null : ((AutomationRuleActionFindingFieldsUpdateNote.fromMap((map['note']! as Map).cast<String, dynamic>())).input()).input(),
+      relatedFindings: map['relatedFindings'] == null ? null : ((pulumi.Input.decodeList<AutomationRuleActionFindingFieldsUpdateRelatedFinding>(map['relatedFindings']!, (value) => AutomationRuleActionFindingFieldsUpdateRelatedFinding.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      severity: map['severity'] == null ? null : ((AutomationRuleActionFindingFieldsUpdateSeverity.fromMap((map['severity']! as Map).cast<String, dynamic>())).input()).input(),
+      types: map['types'] == null ? null : (((map['types'] as List).cast<String>()).input()).input(),
+      userDefinedFields: map['userDefinedFields'] == null ? null : (((map['userDefinedFields'] as Map).cast<String, String>()).input()).input(),
+      verificationState: map['verificationState'] == null ? null : ((map['verificationState'] as String).input()).input(),
+      workflow: map['workflow'] == null ? null : ((AutomationRuleActionFindingFieldsUpdateWorkflow.fromMap((map['workflow']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

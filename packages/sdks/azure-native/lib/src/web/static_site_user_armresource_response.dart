@@ -58,10 +58,10 @@ class StaticSiteUserARMResourceResponse {
     return StaticSiteUserARMResourceResponse(
       displayName: (map['displayName'] as String).input(),
       id: (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       provider: (map['provider'] as String).input(),
-      roles: map['roles'] == null ? null : (map['roles'] as String).input(),
+      roles: map['roles'] == null ? null : (map['roles']! as String).input(),
       type: (map['type'] as String).input(),
       userId: (map['userId'] as String).input(),
     );

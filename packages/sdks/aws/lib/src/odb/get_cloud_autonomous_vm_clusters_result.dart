@@ -31,7 +31,7 @@ class GetCloudAutonomousVmClustersResult {
 
   factory GetCloudAutonomousVmClustersResult.fromMap(Map<String, dynamic> map) {
     return GetCloudAutonomousVmClustersResult(
-      cloudAutonomousVmClusters: pulumi.Input.decodeList<GetCloudAutonomousVmClustersCloudAutonomousVmCluster>(map['cloudAutonomousVmClusters'], (value) => GetCloudAutonomousVmClustersCloudAutonomousVmCluster.fromMap((value as Map).cast<String, dynamic>())),
+      cloudAutonomousVmClusters: pulumi.Input.decodeList<GetCloudAutonomousVmClustersCloudAutonomousVmCluster>(map['cloudAutonomousVmClusters']!, (value) => GetCloudAutonomousVmClustersCloudAutonomousVmCluster.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

@@ -40,10 +40,10 @@ class SharedPrivateLinkResourceArgs {
 
   factory SharedPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceArgs(
-      properties: map['properties'] == null ? null : (SharedPrivateLinkResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SharedPrivateLinkResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       searchServiceName: (map['searchServiceName'] as String).input(),
-      sharedPrivateLinkResourceName: map['sharedPrivateLinkResourceName'] == null ? null : (map['sharedPrivateLinkResourceName'] as String).input(),
+      sharedPrivateLinkResourceName: map['sharedPrivateLinkResourceName'] == null ? null : (map['sharedPrivateLinkResourceName']! as String).input(),
     );
   }
 }

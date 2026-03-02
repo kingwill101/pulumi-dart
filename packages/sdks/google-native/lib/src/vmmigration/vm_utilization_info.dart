@@ -33,9 +33,9 @@ class VmUtilizationInfo {
 
   factory VmUtilizationInfo.fromMap(Map<String, dynamic> map) {
     return VmUtilizationInfo(
-      utilization: map['utilization'] == null ? null : (VmUtilizationMetrics.fromMap((map['utilization'] as Map).cast<String, dynamic>())).input(),
-      vmId: map['vmId'] == null ? null : (map['vmId'] as String).input(),
-      vmwareVmDetails: map['vmwareVmDetails'] == null ? null : (VmwareVmDetails.fromMap((map['vmwareVmDetails'] as Map).cast<String, dynamic>())).input(),
+      utilization: map['utilization'] == null ? null : (VmUtilizationMetrics.fromMap((map['utilization']! as Map).cast<String, dynamic>())).input(),
+      vmId: map['vmId'] == null ? null : (map['vmId']! as String).input(),
+      vmwareVmDetails: map['vmwareVmDetails'] == null ? null : (VmwareVmDetails.fromMap((map['vmwareVmDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

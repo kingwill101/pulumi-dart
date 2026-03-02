@@ -21,7 +21,7 @@ class BootModeValuesEnumValueResponse {
 
   factory BootModeValuesEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return BootModeValuesEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class UserWorkloadsConfigMapState {
 
   factory UserWorkloadsConfigMapState.fromMap(Map<String, dynamic> map) {
     return UserWorkloadsConfigMapState(
-      data: map['data'] == null ? null : ((map['data'] as Map).cast<String, String>()).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      data: map['data'] == null ? null : ((map['data']! as Map).cast<String, String>()).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

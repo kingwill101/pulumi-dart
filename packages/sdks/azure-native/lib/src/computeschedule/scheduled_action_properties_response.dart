@@ -59,8 +59,8 @@ class ScheduledActionPropertiesResponse {
   factory ScheduledActionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledActionPropertiesResponse(
       actionType: (map['actionType'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       notificationSettings: (pulumi.Input.decodeList<NotificationPropertiesResponse>(map['notificationSettings'], (value) => NotificationPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),

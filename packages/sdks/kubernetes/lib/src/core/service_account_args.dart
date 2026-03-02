@@ -52,12 +52,12 @@ class ServiceAccountArgs {
 
   factory ServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return ServiceAccountArgs(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      automountServiceAccountToken: map['automountServiceAccountToken'] == null ? null : (map['automountServiceAccountToken'] as bool).input(),
-      imagePullSecrets: map['imagePullSecrets'] == null ? null : (pulumi.Input.decodeList<LocalObjectReference>(map['imagePullSecrets'], (value) => LocalObjectReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<ObjectReference>(map['secrets'], (value) => ObjectReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      automountServiceAccountToken: map['automountServiceAccountToken'] == null ? null : (map['automountServiceAccountToken']! as bool).input(),
+      imagePullSecrets: map['imagePullSecrets'] == null ? null : (pulumi.Input.decodeList<LocalObjectReference>(map['imagePullSecrets']!, (value) => LocalObjectReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<ObjectReference>(map['secrets']!, (value) => ObjectReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

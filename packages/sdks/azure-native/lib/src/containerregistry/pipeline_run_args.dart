@@ -45,10 +45,10 @@ class PipelineRunArgs {
 
   factory PipelineRunArgs.fromMap(Map<String, dynamic> map) {
     return PipelineRunArgs(
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
-      pipelineRunName: map['pipelineRunName'] == null ? null : (map['pipelineRunName'] as String).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag']! as String).input(),
+      pipelineRunName: map['pipelineRunName'] == null ? null : (map['pipelineRunName']! as String).input(),
       registryName: (map['registryName'] as String).input(),
-      request: map['request'] == null ? null : (PipelineRunRequest.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
+      request: map['request'] == null ? null : (PipelineRunRequest.fromMap((map['request']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

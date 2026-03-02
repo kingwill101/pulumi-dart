@@ -27,8 +27,8 @@ class VirtualApplianceNetworkInterfaceConfigurationResponse {
 
   factory VirtualApplianceNetworkInterfaceConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceNetworkInterfaceConfigurationResponse(
-      nicType: map['nicType'] == null ? null : (map['nicType'] as String).input(),
-      properties: map['properties'] == null ? null : (VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      nicType: map['nicType'] == null ? null : (map['nicType']! as String).input(),
+      properties: map['properties'] == null ? null : (VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

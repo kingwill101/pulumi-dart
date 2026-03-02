@@ -45,7 +45,7 @@ class SecretIamBindingSecretmanagerV1beta1Args {
 
   factory SecretIamBindingSecretmanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return SecretIamBindingSecretmanagerV1beta1Args(
-      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       members: ((map['members'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
       role: (map['role'] as String).input(),

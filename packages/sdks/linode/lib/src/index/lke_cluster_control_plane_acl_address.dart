@@ -25,8 +25,8 @@ class LkeClusterControlPlaneAclAddress {
 
   factory LkeClusterControlPlaneAclAddress.fromMap(Map<String, dynamic> map) {
     return LkeClusterControlPlaneAclAddress(
-      ipv4s: map['ipv4s'] == null ? null : ((map['ipv4s'] as List).cast<String>()).input(),
-      ipv6s: map['ipv6s'] == null ? null : ((map['ipv6s'] as List).cast<String>()).input(),
+      ipv4s: map['ipv4s'] == null ? null : ((map['ipv4s']! as List).cast<String>()).input(),
+      ipv6s: map['ipv6s'] == null ? null : ((map['ipv6s']! as List).cast<String>()).input(),
     );
   }
 }

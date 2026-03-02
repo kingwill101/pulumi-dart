@@ -21,7 +21,7 @@ class KPIResourceHealthDetails {
 
   factory KPIResourceHealthDetails.fromMap(Map<String, dynamic> map) {
     return KPIResourceHealthDetails(
-      resourceHealthStatus: map['resourceHealthStatus'] == null ? null : (map['resourceHealthStatus'] as String).input(),
+      resourceHealthStatus: map['resourceHealthStatus'] == null ? null : (map['resourceHealthStatus']! as String).input(),
     );
   }
 }

@@ -23,8 +23,8 @@ class DomainParameterFilterConfig {
 
   factory DomainParameterFilterConfig.fromMap(Map<String, dynamic> map) {
     return DomainParameterFilterConfig(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
-      hashKeyArgs: map['hashKeyArgs'] == null ? null : ((map['hashKeyArgs'] as List).cast<String>()).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
+      hashKeyArgs: map['hashKeyArgs'] == null ? null : ((map['hashKeyArgs']! as List).cast<String>()).input(),
     );
   }
 }

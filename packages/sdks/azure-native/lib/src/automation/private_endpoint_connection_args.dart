@@ -52,10 +52,10 @@ class PrivateEndpointConnectionArgs {
   factory PrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
-      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointProperty.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStateProperty.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds']! as List).cast<String>()).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointProperty.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>())).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName']! as String).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStateProperty.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

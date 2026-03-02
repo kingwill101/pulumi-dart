@@ -21,7 +21,7 @@ class DefenderForServersAwsOfferingConfiguration {
 
   factory DefenderForServersAwsOfferingConfiguration.fromMap(Map<String, dynamic> map) {
     return DefenderForServersAwsOfferingConfiguration(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

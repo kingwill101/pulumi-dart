@@ -41,11 +41,11 @@ class ShardingInstanceZoneInfo {
 
   factory ShardingInstanceZoneInfo.fromMap(Map<String, dynamic> map) {
     return ShardingInstanceZoneInfo(
-      insName: map['insName'] == null ? null : (map['insName'] as String).input(),
-      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
-      roleType: map['roleType'] == null ? null : (map['roleType'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      insName: map['insName'] == null ? null : (map['insName']! as String).input(),
+      nodeType: map['nodeType'] == null ? null : (map['nodeType']! as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
+      roleType: map['roleType'] == null ? null : (map['roleType']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

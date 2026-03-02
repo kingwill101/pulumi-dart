@@ -62,14 +62,14 @@ class SpringCloudCustomizedAcceleratorGitRepository {
 
   factory SpringCloudCustomizedAcceleratorGitRepository.fromMap(Map<String, dynamic> map) {
     return SpringCloudCustomizedAcceleratorGitRepository(
-      basicAuth: map['basicAuth'] == null ? null : (SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth.fromMap((map['basicAuth'] as Map).cast<String, dynamic>())).input(),
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      caCertificateId: map['caCertificateId'] == null ? null : (map['caCertificateId'] as String).input(),
-      commit: map['commit'] == null ? null : (map['commit'] as String).input(),
-      gitTag: map['gitTag'] == null ? null : (map['gitTag'] as String).input(),
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      sshAuth: map['sshAuth'] == null ? null : (SpringCloudCustomizedAcceleratorGitRepositorySshAuth.fromMap((map['sshAuth'] as Map).cast<String, dynamic>())).input(),
+      basicAuth: map['basicAuth'] == null ? null : (SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth.fromMap((map['basicAuth']! as Map).cast<String, dynamic>())).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      caCertificateId: map['caCertificateId'] == null ? null : (map['caCertificateId']! as String).input(),
+      commit: map['commit'] == null ? null : (map['commit']! as String).input(),
+      gitTag: map['gitTag'] == null ? null : (map['gitTag']! as String).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      sshAuth: map['sshAuth'] == null ? null : (SpringCloudCustomizedAcceleratorGitRepositorySshAuth.fromMap((map['sshAuth']! as Map).cast<String, dynamic>())).input(),
       url: (map['url'] as String).input(),
     );
   }

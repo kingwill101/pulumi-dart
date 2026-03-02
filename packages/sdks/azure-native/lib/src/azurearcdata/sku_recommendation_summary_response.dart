@@ -26,8 +26,8 @@ class SkuRecommendationSummaryResponse {
 
   factory SkuRecommendationSummaryResponse.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationSummaryResponse(
-      numOfBlockerIssues: map['numOfBlockerIssues'] == null ? null : (map['numOfBlockerIssues'] as int).input(),
-      recommendationStatus: map['recommendationStatus'] == null ? null : (map['recommendationStatus'] as String).input(),
+      numOfBlockerIssues: map['numOfBlockerIssues'] == null ? null : (map['numOfBlockerIssues']! as int).input(),
+      recommendationStatus: map['recommendationStatus'] == null ? null : (map['recommendationStatus']! as String).input(),
     );
   }
 }

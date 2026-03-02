@@ -27,8 +27,8 @@ class Twitter {
 
   factory Twitter.fromMap(Map<String, dynamic> map) {
     return Twitter(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      registration: map['registration'] == null ? null : (TwitterRegistration.fromMap((map['registration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      registration: map['registration'] == null ? null : (TwitterRegistration.fromMap((map['registration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

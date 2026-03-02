@@ -37,10 +37,10 @@ class ChannelWebChatState {
 
   factory ChannelWebChatState.fromMap(Map<String, dynamic> map) {
     return ChannelWebChatState(
-      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<ChannelWebChatSite>(map['sites'], (value) => ChannelWebChatSite.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      botName: map['botName'] == null ? null : (map['botName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<ChannelWebChatSite>(map['sites']!, (value) => ChannelWebChatSite.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

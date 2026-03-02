@@ -45,10 +45,10 @@ class ClientKeyArgs {
   factory ClientKeyArgs.fromMap(Map<String, dynamic> map) {
     return ClientKeyArgs(
       aapName: (map['aapName'] as String).input(),
-      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as String).input(),
+      notAfter: map['notAfter'] == null ? null : (map['notAfter']! as String).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as String).input(),
       password: (map['password'] as String).input(),
-      privateKeyDataFile: map['privateKeyDataFile'] == null ? null : (map['privateKeyDataFile'] as String).input(),
+      privateKeyDataFile: map['privateKeyDataFile'] == null ? null : (map['privateKeyDataFile']! as String).input(),
     );
   }
 }

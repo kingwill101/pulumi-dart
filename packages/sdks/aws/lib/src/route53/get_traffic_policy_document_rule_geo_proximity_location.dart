@@ -55,14 +55,14 @@ class GetTrafficPolicyDocumentRuleGeoProximityLocation {
 
   factory GetTrafficPolicyDocumentRuleGeoProximityLocation.fromMap(Map<String, dynamic> map) {
     return GetTrafficPolicyDocumentRuleGeoProximityLocation(
-      bias: map['bias'] == null ? null : (map['bias'] as String).input(),
-      endpointReference: map['endpointReference'] == null ? null : (map['endpointReference'] as String).input(),
-      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : (map['evaluateTargetHealth'] as bool).input(),
-      healthCheck: map['healthCheck'] == null ? null : (map['healthCheck'] as String).input(),
-      latitude: map['latitude'] == null ? null : (map['latitude'] as String).input(),
-      longitude: map['longitude'] == null ? null : (map['longitude'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleReference: map['ruleReference'] == null ? null : (map['ruleReference'] as String).input(),
+      bias: map['bias'] == null ? null : ((map['bias'] as String).input()).input(),
+      endpointReference: map['endpointReference'] == null ? null : ((map['endpointReference'] as String).input()).input(),
+      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : ((map['evaluateTargetHealth'] as bool).input()).input(),
+      healthCheck: map['healthCheck'] == null ? null : ((map['healthCheck'] as String).input()).input(),
+      latitude: map['latitude'] == null ? null : ((map['latitude'] as String).input()).input(),
+      longitude: map['longitude'] == null ? null : ((map['longitude'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleReference: map['ruleReference'] == null ? null : ((map['ruleReference'] as String).input()).input(),
     );
   }
 }

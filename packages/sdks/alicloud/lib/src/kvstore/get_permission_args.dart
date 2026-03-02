@@ -24,7 +24,7 @@ class GetPermissionArgs {
 
   factory GetPermissionArgs.fromMap(Map<String, dynamic> map) {
     return GetPermissionArgs(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
     );
   }
 }

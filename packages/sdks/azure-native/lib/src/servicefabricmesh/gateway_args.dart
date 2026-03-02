@@ -67,15 +67,15 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destinationNetwork: (NetworkRef.fromMap((map['destinationNetwork'] as Map).cast<String, dynamic>())).input(),
-      gatewayResourceName: map['gatewayResourceName'] == null ? null : (map['gatewayResourceName'] as String).input(),
-      http: map['http'] == null ? null : (pulumi.Input.decodeList<HttpConfig>(map['http'], (value) => HttpConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      gatewayResourceName: map['gatewayResourceName'] == null ? null : (map['gatewayResourceName']! as String).input(),
+      http: map['http'] == null ? null : (pulumi.Input.decodeList<HttpConfig>(map['http']!, (value) => HttpConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sourceNetwork: (NetworkRef.fromMap((map['sourceNetwork'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tcp: map['tcp'] == null ? null : (pulumi.Input.decodeList<TcpConfig>(map['tcp'], (value) => TcpConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tcp: map['tcp'] == null ? null : (pulumi.Input.decodeList<TcpConfig>(map['tcp']!, (value) => TcpConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

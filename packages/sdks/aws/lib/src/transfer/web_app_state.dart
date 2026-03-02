@@ -71,16 +71,16 @@ class WebAppState {
 
   factory WebAppState.fromMap(Map<String, dynamic> map) {
     return WebAppState(
-      accessEndpoint: map['accessEndpoint'] == null ? null : (map['accessEndpoint'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      endpointDetails: map['endpointDetails'] == null ? null : (WebAppEndpointDetails.fromMap((map['endpointDetails'] as Map).cast<String, dynamic>())).input(),
-      identityProviderDetails: map['identityProviderDetails'] == null ? null : (WebAppIdentityProviderDetails.fromMap((map['identityProviderDetails'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      webAppEndpointPolicy: map['webAppEndpointPolicy'] == null ? null : (map['webAppEndpointPolicy'] as String).input(),
-      webAppId: map['webAppId'] == null ? null : (map['webAppId'] as String).input(),
-      webAppUnits: map['webAppUnits'] == null ? null : (pulumi.Input.decodeList<WebAppWebAppUnit>(map['webAppUnits'], (value) => WebAppWebAppUnit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessEndpoint: map['accessEndpoint'] == null ? null : ((map['accessEndpoint'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      endpointDetails: map['endpointDetails'] == null ? null : ((WebAppEndpointDetails.fromMap((map['endpointDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      identityProviderDetails: map['identityProviderDetails'] == null ? null : ((WebAppIdentityProviderDetails.fromMap((map['identityProviderDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      webAppEndpointPolicy: map['webAppEndpointPolicy'] == null ? null : ((map['webAppEndpointPolicy'] as String).input()).input(),
+      webAppId: map['webAppId'] == null ? null : ((map['webAppId'] as String).input()).input(),
+      webAppUnits: map['webAppUnits'] == null ? null : ((pulumi.Input.decodeList<WebAppWebAppUnit>(map['webAppUnits']!, (value) => WebAppWebAppUnit.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

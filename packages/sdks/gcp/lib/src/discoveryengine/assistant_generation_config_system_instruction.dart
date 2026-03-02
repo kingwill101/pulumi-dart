@@ -20,7 +20,7 @@ class AssistantGenerationConfigSystemInstruction {
 
   factory AssistantGenerationConfigSystemInstruction.fromMap(Map<String, dynamic> map) {
     return AssistantGenerationConfigSystemInstruction(
-      additionalSystemInstruction: map['additionalSystemInstruction'] == null ? null : (map['additionalSystemInstruction'] as String).input(),
+      additionalSystemInstruction: map['additionalSystemInstruction'] == null ? null : (map['additionalSystemInstruction']! as String).input(),
     );
   }
 }

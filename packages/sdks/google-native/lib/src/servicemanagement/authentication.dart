@@ -28,8 +28,8 @@ class Authentication {
 
   factory Authentication.fromMap(Map<String, dynamic> map) {
     return Authentication(
-      providers: map['providers'] == null ? null : (pulumi.Input.decodeList<AuthProvider>(map['providers'], (value) => AuthProvider.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AuthenticationRule>(map['rules'], (value) => AuthenticationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      providers: map['providers'] == null ? null : (pulumi.Input.decodeList<AuthProvider>(map['providers']!, (value) => AuthProvider.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AuthenticationRule>(map['rules']!, (value) => AuthenticationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

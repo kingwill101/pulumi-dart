@@ -25,8 +25,8 @@ class ProjectSecurityPropertiesProjectProtection {
 
   factory ProjectSecurityPropertiesProjectProtection.fromMap(Map<String, dynamic> map) {
     return ProjectSecurityPropertiesProjectProtection(
-      exceptionPolicy: map['exceptionPolicy'] == null ? null : (map['exceptionPolicy'] as String).input(),
-      protected: map['protected'] == null ? null : (map['protected'] as bool).input(),
+      exceptionPolicy: map['exceptionPolicy'] == null ? null : (map['exceptionPolicy']! as String).input(),
+      protected: map['protected'] == null ? null : (map['protected']! as bool).input(),
     );
   }
 }

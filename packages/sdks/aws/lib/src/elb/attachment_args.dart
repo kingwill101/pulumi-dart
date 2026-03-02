@@ -36,7 +36,7 @@ class AttachmentArgs {
     return AttachmentArgs(
       elb: (map['elb'] as String).input(),
       instance: (map['instance'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

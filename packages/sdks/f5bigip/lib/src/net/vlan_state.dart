@@ -42,11 +42,11 @@ class VlanState {
 
   factory VlanState.fromMap(Map<String, dynamic> map) {
     return VlanState(
-      cmpHash: map['cmpHash'] == null ? null : (map['cmpHash'] as String).input(),
-      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<VlanInterface>(map['interfaces'], (value) => VlanInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as int).input(),
+      cmpHash: map['cmpHash'] == null ? null : (map['cmpHash']! as String).input(),
+      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<VlanInterface>(map['interfaces']!, (value) => VlanInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as int).input(),
     );
   }
 }

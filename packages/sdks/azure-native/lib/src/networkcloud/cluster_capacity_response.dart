@@ -55,14 +55,14 @@ class ClusterCapacityResponse {
 
   factory ClusterCapacityResponse.fromMap(Map<String, dynamic> map) {
     return ClusterCapacityResponse(
-      availableApplianceStorageGB: map['availableApplianceStorageGB'] == null ? null : (map['availableApplianceStorageGB'] as double).input(),
-      availableCoreCount: map['availableCoreCount'] == null ? null : (map['availableCoreCount'] as double).input(),
-      availableHostStorageGB: map['availableHostStorageGB'] == null ? null : (map['availableHostStorageGB'] as double).input(),
-      availableMemoryGB: map['availableMemoryGB'] == null ? null : (map['availableMemoryGB'] as double).input(),
-      totalApplianceStorageGB: map['totalApplianceStorageGB'] == null ? null : (map['totalApplianceStorageGB'] as double).input(),
-      totalCoreCount: map['totalCoreCount'] == null ? null : (map['totalCoreCount'] as double).input(),
-      totalHostStorageGB: map['totalHostStorageGB'] == null ? null : (map['totalHostStorageGB'] as double).input(),
-      totalMemoryGB: map['totalMemoryGB'] == null ? null : (map['totalMemoryGB'] as double).input(),
+      availableApplianceStorageGB: map['availableApplianceStorageGB'] == null ? null : (map['availableApplianceStorageGB']! as double).input(),
+      availableCoreCount: map['availableCoreCount'] == null ? null : (map['availableCoreCount']! as double).input(),
+      availableHostStorageGB: map['availableHostStorageGB'] == null ? null : (map['availableHostStorageGB']! as double).input(),
+      availableMemoryGB: map['availableMemoryGB'] == null ? null : (map['availableMemoryGB']! as double).input(),
+      totalApplianceStorageGB: map['totalApplianceStorageGB'] == null ? null : (map['totalApplianceStorageGB']! as double).input(),
+      totalCoreCount: map['totalCoreCount'] == null ? null : (map['totalCoreCount']! as double).input(),
+      totalHostStorageGB: map['totalHostStorageGB'] == null ? null : (map['totalHostStorageGB']! as double).input(),
+      totalMemoryGB: map['totalMemoryGB'] == null ? null : (map['totalMemoryGB']! as double).input(),
     );
   }
 }

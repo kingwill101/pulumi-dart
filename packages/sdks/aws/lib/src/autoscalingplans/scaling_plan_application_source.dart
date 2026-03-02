@@ -26,8 +26,8 @@ class ScalingPlanApplicationSource {
 
   factory ScalingPlanApplicationSource.fromMap(Map<String, dynamic> map) {
     return ScalingPlanApplicationSource(
-      cloudformationStackArn: map['cloudformationStackArn'] == null ? null : (map['cloudformationStackArn'] as String).input(),
-      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<ScalingPlanApplicationSourceTagFilter>(map['tagFilters'], (value) => ScalingPlanApplicationSourceTagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudformationStackArn: map['cloudformationStackArn'] == null ? null : ((map['cloudformationStackArn'] as String).input()).input(),
+      tagFilters: map['tagFilters'] == null ? null : ((pulumi.Input.decodeList<ScalingPlanApplicationSourceTagFilter>(map['tagFilters']!, (value) => ScalingPlanApplicationSourceTagFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -45,10 +45,10 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
       properties: (KeyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vaultName: (map['vaultName'] as String).input(),
     );
   }

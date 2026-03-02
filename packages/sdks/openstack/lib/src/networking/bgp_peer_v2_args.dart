@@ -63,13 +63,13 @@ class BgpPeerV2Args {
 
   factory BgpPeerV2Args.fromMap(Map<String, dynamic> map) {
     return BgpPeerV2Args(
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       peerIp: (map['peerIp'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       remoteAs: (map['remoteAs'] as int).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

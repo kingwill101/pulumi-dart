@@ -42,11 +42,11 @@ class LoadBalancerPolicyState {
 
   factory LoadBalancerPolicyState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerPolicyState(
-      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
-      policyAttributes: map['policyAttributes'] == null ? null : (pulumi.Input.decodeList<LoadBalancerPolicyPolicyAttribute>(map['policyAttributes'], (value) => LoadBalancerPolicyPolicyAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      policyTypeName: map['policyTypeName'] == null ? null : (map['policyTypeName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : ((map['loadBalancerName'] as String).input()).input(),
+      policyAttributes: map['policyAttributes'] == null ? null : ((pulumi.Input.decodeList<LoadBalancerPolicyPolicyAttribute>(map['policyAttributes']!, (value) => LoadBalancerPolicyPolicyAttribute.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      policyName: map['policyName'] == null ? null : ((map['policyName'] as String).input()).input(),
+      policyTypeName: map['policyTypeName'] == null ? null : ((map['policyTypeName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

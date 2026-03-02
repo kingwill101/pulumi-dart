@@ -20,7 +20,7 @@ class DistributionTenantCustomizationsCertificate {
 
   factory DistributionTenantCustomizationsCertificate.fromMap(Map<String, dynamic> map) {
     return DistributionTenantCustomizationsCertificate(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
     );
   }
 }

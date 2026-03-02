@@ -26,7 +26,7 @@ class ExperimentTemplateLogConfigurationS3Configuration {
   factory ExperimentTemplateLogConfigurationS3Configuration.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateLogConfigurationS3Configuration(
       bucketName: (map['bucketName'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

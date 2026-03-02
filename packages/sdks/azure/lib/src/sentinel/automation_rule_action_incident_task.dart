@@ -30,7 +30,7 @@ class AutomationRuleActionIncidentTask {
 
   factory AutomationRuleActionIncidentTask.fromMap(Map<String, dynamic> map) {
     return AutomationRuleActionIncidentTask(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       order: (map['order'] as int).input(),
       title: (map['title'] as String).input(),
     );

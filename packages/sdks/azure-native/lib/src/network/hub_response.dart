@@ -26,8 +26,8 @@ class HubResponse {
 
   factory HubResponse.fromMap(Map<String, dynamic> map) {
     return HubResponse(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

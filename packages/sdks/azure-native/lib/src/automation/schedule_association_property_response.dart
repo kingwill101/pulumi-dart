@@ -21,7 +21,7 @@ class ScheduleAssociationPropertyResponse {
 
   factory ScheduleAssociationPropertyResponse.fromMap(Map<String, dynamic> map) {
     return ScheduleAssociationPropertyResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class IdentityPoolProviderPrincipalTagState {
 
   factory IdentityPoolProviderPrincipalTagState.fromMap(Map<String, dynamic> map) {
     return IdentityPoolProviderPrincipalTagState(
-      identityPoolId: map['identityPoolId'] == null ? null : (map['identityPoolId'] as String).input(),
-      identityProviderName: map['identityProviderName'] == null ? null : (map['identityProviderName'] as String).input(),
-      principalTags: map['principalTags'] == null ? null : ((map['principalTags'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      useDefaults: map['useDefaults'] == null ? null : (map['useDefaults'] as bool).input(),
+      identityPoolId: map['identityPoolId'] == null ? null : ((map['identityPoolId'] as String).input()).input(),
+      identityProviderName: map['identityProviderName'] == null ? null : ((map['identityProviderName'] as String).input()).input(),
+      principalTags: map['principalTags'] == null ? null : (((map['principalTags'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      useDefaults: map['useDefaults'] == null ? null : ((map['useDefaults'] as bool).input()).input(),
     );
   }
 }

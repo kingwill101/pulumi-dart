@@ -72,12 +72,12 @@ class ThreeTierConfigurationResponse {
       appResourceGroup: (map['appResourceGroup'] as String).input(),
       applicationServer: (ApplicationServerConfigurationResponse.fromMap((map['applicationServer'] as Map).cast<String, dynamic>())).input(),
       centralServer: (CentralServerConfigurationResponse.fromMap((map['centralServer'] as Map).cast<String, dynamic>())).input(),
-      customResourceNames: map['customResourceNames'] == null ? null : (ThreeTierFullResourceNamesResponse.fromMap((map['customResourceNames'] as Map).cast<String, dynamic>())).input(),
+      customResourceNames: map['customResourceNames'] == null ? null : (ThreeTierFullResourceNamesResponse.fromMap((map['customResourceNames']! as Map).cast<String, dynamic>())).input(),
       databaseServer: (DatabaseConfigurationResponse.fromMap((map['databaseServer'] as Map).cast<String, dynamic>())).input(),
       deploymentType: (map['deploymentType'] as String).input(),
-      highAvailabilityConfig: map['highAvailabilityConfig'] == null ? null : (HighAvailabilityConfigurationResponse.fromMap((map['highAvailabilityConfig'] as Map).cast<String, dynamic>())).input(),
-      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfigurationResponse.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      storageConfiguration: map['storageConfiguration'] == null ? null : (StorageConfigurationResponse.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())).input(),
+      highAvailabilityConfig: map['highAvailabilityConfig'] == null ? null : (HighAvailabilityConfigurationResponse.fromMap((map['highAvailabilityConfig']! as Map).cast<String, dynamic>())).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfigurationResponse.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input(),
+      storageConfiguration: map['storageConfiguration'] == null ? null : (StorageConfigurationResponse.fromMap((map['storageConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

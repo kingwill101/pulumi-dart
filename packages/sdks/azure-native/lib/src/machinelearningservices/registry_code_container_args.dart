@@ -41,7 +41,7 @@ class RegistryCodeContainerArgs {
   factory RegistryCodeContainerArgs.fromMap(Map<String, dynamic> map) {
     return RegistryCodeContainerArgs(
       codeContainerProperties: (map['codeContainerProperties'] as CodeContainerMachinelearningservices).input(),
-      codeName: map['codeName'] == null ? null : (map['codeName'] as String).input(),
+      codeName: map['codeName'] == null ? null : (map['codeName']! as String).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

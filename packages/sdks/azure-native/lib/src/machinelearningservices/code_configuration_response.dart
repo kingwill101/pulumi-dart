@@ -26,7 +26,7 @@ class CodeConfigurationResponse {
 
   factory CodeConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CodeConfigurationResponse(
-      codeId: map['codeId'] == null ? null : (map['codeId'] as String).input(),
+      codeId: map['codeId'] == null ? null : (map['codeId']! as String).input(),
       scoringScript: (map['scoringScript'] as String).input(),
     );
   }

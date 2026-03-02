@@ -74,17 +74,17 @@ class EcsSnapshotArgs {
 
   factory EcsSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return EcsSnapshotArgs(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       diskId: (map['diskId'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      instantAccess: map['instantAccess'] == null ? null : (map['instantAccess'] as bool).input(),
-      instantAccessRetentionDays: map['instantAccessRetentionDays'] == null ? null : (map['instantAccessRetentionDays'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      instantAccess: map['instantAccess'] == null ? null : (map['instantAccess']! as bool).input(),
+      instantAccessRetentionDays: map['instantAccessRetentionDays'] == null ? null : (map['instantAccessRetentionDays']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

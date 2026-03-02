@@ -26,8 +26,8 @@ class CmekSettings {
 
   factory CmekSettings.fromMap(Map<String, dynamic> map) {
     return CmekSettings(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      kmsKeyVersionName: map['kmsKeyVersionName'] == null ? null : (map['kmsKeyVersionName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      kmsKeyVersionName: map['kmsKeyVersionName'] == null ? null : (map['kmsKeyVersionName']! as String).input(),
     );
   }
 }

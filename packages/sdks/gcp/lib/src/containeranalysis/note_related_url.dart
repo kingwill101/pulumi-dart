@@ -25,7 +25,7 @@ class NoteRelatedUrl {
 
   factory NoteRelatedUrl.fromMap(Map<String, dynamic> map) {
     return NoteRelatedUrl(
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
       url: (map['url'] as String).input(),
     );
   }

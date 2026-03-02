@@ -47,12 +47,12 @@ class ListenerPortResponse {
 
   factory ListenerPortResponse.fromMap(Map<String, dynamic> map) {
     return ListenerPortResponse(
-      authenticationRef: map['authenticationRef'] == null ? null : (map['authenticationRef'] as String).input(),
-      authorizationRef: map['authorizationRef'] == null ? null : (map['authorizationRef'] as String).input(),
-      nodePort: map['nodePort'] == null ? null : (map['nodePort'] as int).input(),
+      authenticationRef: map['authenticationRef'] == null ? null : (map['authenticationRef']! as String).input(),
+      authorizationRef: map['authorizationRef'] == null ? null : (map['authorizationRef']! as String).input(),
+      nodePort: map['nodePort'] == null ? null : (map['nodePort']! as int).input(),
       port: (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      tls: map['tls'] == null ? null : (TlsCertMethodResponse.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      tls: map['tls'] == null ? null : (TlsCertMethodResponse.fromMap((map['tls']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

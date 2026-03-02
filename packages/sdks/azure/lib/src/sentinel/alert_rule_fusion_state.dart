@@ -41,11 +41,11 @@ class AlertRuleFusionState {
 
   factory AlertRuleFusionState.fromMap(Map<String, dynamic> map) {
     return AlertRuleFusionState(
-      alertRuleTemplateGuid: map['alertRuleTemplateGuid'] == null ? null : (map['alertRuleTemplateGuid'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<AlertRuleFusionSource>(map['sources'], (value) => AlertRuleFusionSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alertRuleTemplateGuid: map['alertRuleTemplateGuid'] == null ? null : (map['alertRuleTemplateGuid']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<AlertRuleFusionSource>(map['sources']!, (value) => AlertRuleFusionSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

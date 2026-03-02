@@ -84,14 +84,14 @@ class ResourceSliceSpecPatchResourceK8sIoV1beta1 {
 
   factory ResourceSliceSpecPatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ResourceSliceSpecPatchResourceK8sIoV1beta1(
-      allNodes: map['allNodes'] == null ? null : (map['allNodes'] as bool).input(),
-      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DevicePatchResourceK8sIoV1beta1>(map['devices'], (value) => DevicePatchResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelectorPatch.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
-      perDeviceNodeSelection: map['perDeviceNodeSelection'] == null ? null : (map['perDeviceNodeSelection'] as bool).input(),
-      pool: map['pool'] == null ? null : (ResourcePoolPatchResourceK8sIoV1beta1.fromMap((map['pool'] as Map).cast<String, dynamic>())).input(),
-      sharedCounters: map['sharedCounters'] == null ? null : (pulumi.Input.decodeList<CounterSetPatchResourceK8sIoV1beta1>(map['sharedCounters'], (value) => CounterSetPatchResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allNodes: map['allNodes'] == null ? null : (map['allNodes']! as bool).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DevicePatchResourceK8sIoV1beta1>(map['devices']!, (value) => DevicePatchResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelectorPatch.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>())).input(),
+      perDeviceNodeSelection: map['perDeviceNodeSelection'] == null ? null : (map['perDeviceNodeSelection']! as bool).input(),
+      pool: map['pool'] == null ? null : (ResourcePoolPatchResourceK8sIoV1beta1.fromMap((map['pool']! as Map).cast<String, dynamic>())).input(),
+      sharedCounters: map['sharedCounters'] == null ? null : (pulumi.Input.decodeList<CounterSetPatchResourceK8sIoV1beta1>(map['sharedCounters']!, (value) => CounterSetPatchResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

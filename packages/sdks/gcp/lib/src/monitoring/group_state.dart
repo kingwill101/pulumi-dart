@@ -54,12 +54,12 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      isCluster: map['isCluster'] == null ? null : (map['isCluster'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentName: map['parentName'] == null ? null : (map['parentName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      isCluster: map['isCluster'] == null ? null : (map['isCluster']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentName: map['parentName'] == null ? null : (map['parentName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

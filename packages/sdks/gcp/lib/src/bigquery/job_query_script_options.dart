@@ -32,9 +32,9 @@ class JobQueryScriptOptions {
 
   factory JobQueryScriptOptions.fromMap(Map<String, dynamic> map) {
     return JobQueryScriptOptions(
-      keyResultStatement: map['keyResultStatement'] == null ? null : (map['keyResultStatement'] as String).input(),
-      statementByteBudget: map['statementByteBudget'] == null ? null : (map['statementByteBudget'] as String).input(),
-      statementTimeoutMs: map['statementTimeoutMs'] == null ? null : (map['statementTimeoutMs'] as String).input(),
+      keyResultStatement: map['keyResultStatement'] == null ? null : (map['keyResultStatement']! as String).input(),
+      statementByteBudget: map['statementByteBudget'] == null ? null : (map['statementByteBudget']! as String).input(),
+      statementTimeoutMs: map['statementTimeoutMs'] == null ? null : (map['statementTimeoutMs']! as String).input(),
     );
   }
 }

@@ -45,7 +45,7 @@ class QueueAuthorizationRuleArgs {
 
   factory QueueAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return QueueAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName'] as String).input(),
+      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       queueName: (map['queueName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

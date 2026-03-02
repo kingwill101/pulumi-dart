@@ -26,8 +26,8 @@ class Deblock {
 
   factory Deblock.fromMap(Map<String, dynamic> map) {
     return Deblock(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      strength: map['strength'] == null ? null : (map['strength'] as double).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      strength: map['strength'] == null ? null : (map['strength']! as double).input(),
     );
   }
 }

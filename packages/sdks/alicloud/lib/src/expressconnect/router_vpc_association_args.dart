@@ -45,11 +45,11 @@ class RouterVpcAssociationArgs {
 
   factory RouterVpcAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RouterVpcAssociationArgs(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes'] as List).cast<String>()).input(),
+      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes']! as List).cast<String>()).input(),
       associationRegionId: (map['associationRegionId'] as String).input(),
       ecrId: (map['ecrId'] as String).input(),
       vpcId: (map['vpcId'] as String).input(),
-      vpcOwnerId: map['vpcOwnerId'] == null ? null : (map['vpcOwnerId'] as int).input(),
+      vpcOwnerId: map['vpcOwnerId'] == null ? null : (map['vpcOwnerId']! as int).input(),
     );
   }
 }

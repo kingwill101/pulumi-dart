@@ -37,7 +37,7 @@ class WebBackendServiceIamPolicyArgs {
   factory WebBackendServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return WebBackendServiceIamPolicyArgs(
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       webBackendService: (map['webBackendService'] as String).input(),
     );
   }

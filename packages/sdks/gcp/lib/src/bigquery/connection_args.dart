@@ -99,18 +99,18 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      aws: map['aws'] == null ? null : (ConnectionAws.fromMap((map['aws'] as Map).cast<String, dynamic>())).input(),
-      azure: map['azure'] == null ? null : (ConnectionAzure.fromMap((map['azure'] as Map).cast<String, dynamic>())).input(),
-      cloudResource: map['cloudResource'] == null ? null : (ConnectionCloudResource.fromMap((map['cloudResource'] as Map).cast<String, dynamic>())).input(),
-      cloudSpanner: map['cloudSpanner'] == null ? null : (ConnectionCloudSpanner.fromMap((map['cloudSpanner'] as Map).cast<String, dynamic>())).input(),
-      cloudSql: map['cloudSql'] == null ? null : (ConnectionCloudSql.fromMap((map['cloudSql'] as Map).cast<String, dynamic>())).input(),
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      spark: map['spark'] == null ? null : (ConnectionSpark.fromMap((map['spark'] as Map).cast<String, dynamic>())).input(),
+      aws: map['aws'] == null ? null : (ConnectionAws.fromMap((map['aws']! as Map).cast<String, dynamic>())).input(),
+      azure: map['azure'] == null ? null : (ConnectionAzure.fromMap((map['azure']! as Map).cast<String, dynamic>())).input(),
+      cloudResource: map['cloudResource'] == null ? null : (ConnectionCloudResource.fromMap((map['cloudResource']! as Map).cast<String, dynamic>())).input(),
+      cloudSpanner: map['cloudSpanner'] == null ? null : (ConnectionCloudSpanner.fromMap((map['cloudSpanner']! as Map).cast<String, dynamic>())).input(),
+      cloudSql: map['cloudSql'] == null ? null : (ConnectionCloudSql.fromMap((map['cloudSql']! as Map).cast<String, dynamic>())).input(),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      spark: map['spark'] == null ? null : (ConnectionSpark.fromMap((map['spark']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

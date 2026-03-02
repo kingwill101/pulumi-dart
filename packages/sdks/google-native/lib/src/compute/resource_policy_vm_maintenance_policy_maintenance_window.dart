@@ -21,7 +21,7 @@ class ResourcePolicyVmMaintenancePolicyMaintenanceWindow {
 
   factory ResourcePolicyVmMaintenancePolicyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyVmMaintenancePolicyMaintenanceWindow(
-      dailyMaintenanceWindow: map['dailyMaintenanceWindow'] == null ? null : (ResourcePolicyDailyCycle.fromMap((map['dailyMaintenanceWindow'] as Map).cast<String, dynamic>())).input(),
+      dailyMaintenanceWindow: map['dailyMaintenanceWindow'] == null ? null : (ResourcePolicyDailyCycle.fromMap((map['dailyMaintenanceWindow']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class LegacyDisallowedConditionResponse {
 
   factory LegacyDisallowedConditionResponse.fromMap(Map<String, dynamic> map) {
     return LegacyDisallowedConditionResponse(
-      disallowedLegacyOperations: map['disallowedLegacyOperations'] == null ? null : ((map['disallowedLegacyOperations'] as List).cast<String>()).input(),
-      feature: map['feature'] == null ? null : (map['feature'] as String).input(),
+      disallowedLegacyOperations: map['disallowedLegacyOperations'] == null ? null : ((map['disallowedLegacyOperations']! as List).cast<String>()).input(),
+      feature: map['feature'] == null ? null : (map['feature']! as String).input(),
     );
   }
 }

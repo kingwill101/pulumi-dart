@@ -40,11 +40,11 @@ class ImageOutputResourceAmi {
 
   factory ImageOutputResourceAmi.fromMap(Map<String, dynamic> map) {
     return ImageOutputResourceAmi(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      image: map['image'] == null ? null : ((map['image'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

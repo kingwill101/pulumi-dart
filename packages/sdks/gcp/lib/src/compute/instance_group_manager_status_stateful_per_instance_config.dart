@@ -20,7 +20,7 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfig {
 
   factory InstanceGroupManagerStatusStatefulPerInstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStatusStatefulPerInstanceConfig(
-      allEffective: map['allEffective'] == null ? null : (map['allEffective'] as bool).input(),
+      allEffective: map['allEffective'] == null ? null : (map['allEffective']! as bool).input(),
     );
   }
 }

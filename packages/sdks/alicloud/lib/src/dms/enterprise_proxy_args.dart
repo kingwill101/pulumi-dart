@@ -41,7 +41,7 @@ class EnterpriseProxyArgs {
     return EnterpriseProxyArgs(
       instanceId: (map['instanceId'] as String).input(),
       password: (map['password'] as String).input(),
-      tid: map['tid'] == null ? null : (map['tid'] as String).input(),
+      tid: map['tid'] == null ? null : (map['tid']! as String).input(),
       username: (map['username'] as String).input(),
     );
   }

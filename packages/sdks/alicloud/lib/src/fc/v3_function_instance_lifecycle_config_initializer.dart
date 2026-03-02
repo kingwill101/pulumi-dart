@@ -29,9 +29,9 @@ class V3FunctionInstanceLifecycleConfigInitializer {
 
   factory V3FunctionInstanceLifecycleConfigInitializer.fromMap(Map<String, dynamic> map) {
     return V3FunctionInstanceLifecycleConfigInitializer(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      handler: map['handler'] == null ? null : (map['handler'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      handler: map['handler'] == null ? null : (map['handler']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

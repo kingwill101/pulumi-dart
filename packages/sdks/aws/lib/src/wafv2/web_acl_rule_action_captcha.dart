@@ -21,7 +21,7 @@ class WebAclRuleActionCaptcha {
 
   factory WebAclRuleActionCaptcha.fromMap(Map<String, dynamic> map) {
     return WebAclRuleActionCaptcha(
-      customRequestHandling: map['customRequestHandling'] == null ? null : (WebAclRuleActionCaptchaCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>())).input(),
+      customRequestHandling: map['customRequestHandling'] == null ? null : ((WebAclRuleActionCaptchaCustomRequestHandling.fromMap((map['customRequestHandling']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

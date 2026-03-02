@@ -26,8 +26,8 @@ class StandbyPoolProfileDefinitionResponse {
 
   factory StandbyPoolProfileDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return StandbyPoolProfileDefinitionResponse(
-      failContainerGroupCreateOnReuseFailure: map['failContainerGroupCreateOnReuseFailure'] == null ? null : (map['failContainerGroupCreateOnReuseFailure'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      failContainerGroupCreateOnReuseFailure: map['failContainerGroupCreateOnReuseFailure'] == null ? null : (map['failContainerGroupCreateOnReuseFailure']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

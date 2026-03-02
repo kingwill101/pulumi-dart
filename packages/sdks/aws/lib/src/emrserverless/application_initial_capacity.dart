@@ -26,7 +26,7 @@ class ApplicationInitialCapacity {
 
   factory ApplicationInitialCapacity.fromMap(Map<String, dynamic> map) {
     return ApplicationInitialCapacity(
-      initialCapacityConfig: map['initialCapacityConfig'] == null ? null : (ApplicationInitialCapacityInitialCapacityConfig.fromMap((map['initialCapacityConfig'] as Map).cast<String, dynamic>())).input(),
+      initialCapacityConfig: map['initialCapacityConfig'] == null ? null : ((ApplicationInitialCapacityInitialCapacityConfig.fromMap((map['initialCapacityConfig']! as Map).cast<String, dynamic>())).input()).input(),
       initialCapacityType: (map['initialCapacityType'] as String).input(),
     );
   }

@@ -36,10 +36,10 @@ class RouteServerBgpConnectionState {
 
   factory RouteServerBgpConnectionState.fromMap(Map<String, dynamic> map) {
     return RouteServerBgpConnectionState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as int).input(),
-      peerIp: map['peerIp'] == null ? null : (map['peerIp'] as String).input(),
-      routeServerId: map['routeServerId'] == null ? null : (map['routeServerId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn']! as int).input(),
+      peerIp: map['peerIp'] == null ? null : (map['peerIp']! as String).input(),
+      routeServerId: map['routeServerId'] == null ? null : (map['routeServerId']! as String).input(),
     );
   }
 }

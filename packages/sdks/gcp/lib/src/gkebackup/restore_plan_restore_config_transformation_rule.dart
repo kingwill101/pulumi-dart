@@ -41,9 +41,9 @@ class RestorePlanRestoreConfigTransformationRule {
 
   factory RestorePlanRestoreConfigTransformationRule.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfigTransformationRule(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       fieldActions: (pulumi.Input.decodeList<RestorePlanRestoreConfigTransformationRuleFieldAction>(map['fieldActions'], (value) => RestorePlanRestoreConfigTransformationRuleFieldAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceFilter: map['resourceFilter'] == null ? null : (RestorePlanRestoreConfigTransformationRuleResourceFilter.fromMap((map['resourceFilter'] as Map).cast<String, dynamic>())).input(),
+      resourceFilter: map['resourceFilter'] == null ? null : (RestorePlanRestoreConfigTransformationRuleResourceFilter.fromMap((map['resourceFilter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

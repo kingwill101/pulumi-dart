@@ -26,7 +26,7 @@ class PlaybookActionPropertiesResponse {
   factory PlaybookActionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PlaybookActionPropertiesResponse(
       logicAppResourceId: (map['logicAppResourceId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

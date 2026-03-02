@@ -26,8 +26,8 @@ class GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue {
 
   factory GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValue(
-      absolute: map['absolute'] == null ? null : (map['absolute'] as String).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
+      absolute: map['absolute'] == null ? null : (map['absolute']! as String).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as int).input(),
     );
   }
 }

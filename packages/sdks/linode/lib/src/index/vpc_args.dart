@@ -42,8 +42,8 @@ class VpcArgs {
 
   factory VpcArgs.fromMap(Map<String, dynamic> map) {
     return VpcArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipv6s: map['ipv6s'] == null ? null : (pulumi.Input.decodeList<VpcIpv6>(map['ipv6s'], (value) => VpcIpv6.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipv6s: map['ipv6s'] == null ? null : (pulumi.Input.decodeList<VpcIpv6>(map['ipv6s']!, (value) => VpcIpv6.fromMap((value as Map).cast<String, dynamic>()))).input(),
       label: (map['label'] as String).input(),
       region: (map['region'] as String).input(),
     );

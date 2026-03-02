@@ -73,17 +73,17 @@ class TransitGatewayPeeringState {
 
   factory TransitGatewayPeeringState.fromMap(Map<String, dynamic> map) {
     return TransitGatewayPeeringState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      coreNetworkArn: map['coreNetworkArn'] == null ? null : (map['coreNetworkArn'] as String).input(),
-      coreNetworkId: map['coreNetworkId'] == null ? null : (map['coreNetworkId'] as String).input(),
-      edgeLocation: map['edgeLocation'] == null ? null : (map['edgeLocation'] as String).input(),
-      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
-      peeringType: map['peeringType'] == null ? null : (map['peeringType'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      transitGatewayArn: map['transitGatewayArn'] == null ? null : (map['transitGatewayArn'] as String).input(),
-      transitGatewayPeeringAttachmentId: map['transitGatewayPeeringAttachmentId'] == null ? null : (map['transitGatewayPeeringAttachmentId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      coreNetworkArn: map['coreNetworkArn'] == null ? null : ((map['coreNetworkArn'] as String).input()).input(),
+      coreNetworkId: map['coreNetworkId'] == null ? null : ((map['coreNetworkId'] as String).input()).input(),
+      edgeLocation: map['edgeLocation'] == null ? null : ((map['edgeLocation'] as String).input()).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : ((map['ownerAccountId'] as String).input()).input(),
+      peeringType: map['peeringType'] == null ? null : ((map['peeringType'] as String).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayArn: map['transitGatewayArn'] == null ? null : ((map['transitGatewayArn'] as String).input()).input(),
+      transitGatewayPeeringAttachmentId: map['transitGatewayPeeringAttachmentId'] == null ? null : ((map['transitGatewayPeeringAttachmentId'] as String).input()).input(),
     );
   }
 }

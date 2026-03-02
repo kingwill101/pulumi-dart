@@ -26,8 +26,8 @@ class TransitGatewayRegistrationState {
 
   factory TransitGatewayRegistrationState.fromMap(Map<String, dynamic> map) {
     return TransitGatewayRegistrationState(
-      globalNetworkId: map['globalNetworkId'] == null ? null : (map['globalNetworkId'] as String).input(),
-      transitGatewayArn: map['transitGatewayArn'] == null ? null : (map['transitGatewayArn'] as String).input(),
+      globalNetworkId: map['globalNetworkId'] == null ? null : ((map['globalNetworkId'] as String).input()).input(),
+      transitGatewayArn: map['transitGatewayArn'] == null ? null : ((map['transitGatewayArn'] as String).input()).input(),
     );
   }
 }

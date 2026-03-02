@@ -41,9 +41,9 @@ class GetDeveloperAppArgs {
     return GetDeveloperAppArgs(
       appId: (map['appId'] as String).input(),
       developerId: (map['developerId'] as String).input(),
-      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
+      entity: map['entity'] == null ? null : (map['entity']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
     );
   }
 }

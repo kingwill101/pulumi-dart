@@ -31,7 +31,7 @@ class CapacityRequirementsPatchResourceK8sIoV1beta2 {
 
   factory CapacityRequirementsPatchResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return CapacityRequirementsPatchResourceK8sIoV1beta2(
-      requests: map['requests'] == null ? null : ((map['requests'] as Map).cast<String, String>()).input(),
+      requests: map['requests'] == null ? null : ((map['requests']! as Map).cast<String, String>()).input(),
     );
   }
 }

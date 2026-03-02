@@ -27,8 +27,8 @@ class V2modelsIntentQnaIntentConfiguration {
 
   factory V2modelsIntentQnaIntentConfiguration.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfiguration(
-      bedrockModelConfiguration: map['bedrockModelConfiguration'] == null ? null : (V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration.fromMap((map['bedrockModelConfiguration'] as Map).cast<String, dynamic>())).input(),
-      dataSourceConfiguration: map['dataSourceConfiguration'] == null ? null : (V2modelsIntentQnaIntentConfigurationDataSourceConfiguration.fromMap((map['dataSourceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      bedrockModelConfiguration: map['bedrockModelConfiguration'] == null ? null : ((V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration.fromMap((map['bedrockModelConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      dataSourceConfiguration: map['dataSourceConfiguration'] == null ? null : ((V2modelsIntentQnaIntentConfigurationDataSourceConfiguration.fromMap((map['dataSourceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

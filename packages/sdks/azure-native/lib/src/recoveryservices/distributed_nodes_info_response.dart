@@ -38,10 +38,10 @@ class DistributedNodesInfoResponse {
 
   factory DistributedNodesInfoResponse.fromMap(Map<String, dynamic> map) {
     return DistributedNodesInfoResponse(
-      errorDetail: map['errorDetail'] == null ? null : (ErrorDetailResponse.fromMap((map['errorDetail'] as Map).cast<String, dynamic>())).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      errorDetail: map['errorDetail'] == null ? null : (ErrorDetailResponse.fromMap((map['errorDetail']! as Map).cast<String, dynamic>())).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

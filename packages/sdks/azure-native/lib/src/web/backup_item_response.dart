@@ -109,7 +109,7 @@ class BackupItemResponse {
       databases: (pulumi.Input.decodeList<DatabaseBackupSettingResponse>(map['databases'], (value) => DatabaseBackupSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       finishedTimeStamp: (map['finishedTimeStamp'] as String).input(),
       id: (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       lastRestoreTimeStamp: (map['lastRestoreTimeStamp'] as String).input(),
       log: (map['log'] as String).input(),
       name: (map['name'] as String).input(),

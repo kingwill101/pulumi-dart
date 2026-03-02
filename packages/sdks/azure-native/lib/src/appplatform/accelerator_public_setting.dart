@@ -28,7 +28,7 @@ class AcceleratorPublicSetting {
   factory AcceleratorPublicSetting.fromMap(Map<String, dynamic> map) {
     return AcceleratorPublicSetting(
       authType: (map['authType'] as String).input(),
-      caCertResourceId: map['caCertResourceId'] == null ? null : (map['caCertResourceId'] as String).input(),
+      caCertResourceId: map['caCertResourceId'] == null ? null : (map['caCertResourceId']! as String).input(),
     );
   }
 }

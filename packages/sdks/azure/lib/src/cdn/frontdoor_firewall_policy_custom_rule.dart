@@ -59,12 +59,12 @@ class FrontdoorFirewallPolicyCustomRule {
   factory FrontdoorFirewallPolicyCustomRule.fromMap(Map<String, dynamic> map) {
     return FrontdoorFirewallPolicyCustomRule(
       action: (map['action'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<FrontdoorFirewallPolicyCustomRuleMatchCondition>(map['matchConditions'], (value) => FrontdoorFirewallPolicyCustomRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<FrontdoorFirewallPolicyCustomRuleMatchCondition>(map['matchConditions']!, (value) => FrontdoorFirewallPolicyCustomRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      rateLimitDurationInMinutes: map['rateLimitDurationInMinutes'] == null ? null : (map['rateLimitDurationInMinutes'] as int).input(),
-      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (map['rateLimitThreshold'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      rateLimitDurationInMinutes: map['rateLimitDurationInMinutes'] == null ? null : (map['rateLimitDurationInMinutes']! as int).input(),
+      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (map['rateLimitThreshold']! as int).input(),
       type: (map['type'] as String).input(),
     );
   }

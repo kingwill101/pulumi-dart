@@ -33,7 +33,7 @@ class BotClarificationPromptMessage {
     return BotClarificationPromptMessage(
       content: (map['content'] as String).input(),
       contentType: (map['contentType'] as String).input(),
-      groupNumber: map['groupNumber'] == null ? null : (map['groupNumber'] as int).input(),
+      groupNumber: map['groupNumber'] == null ? null : ((map['groupNumber'] as int).input()).input(),
     );
   }
 }

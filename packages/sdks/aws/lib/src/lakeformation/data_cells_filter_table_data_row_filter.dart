@@ -25,8 +25,8 @@ class DataCellsFilterTableDataRowFilter {
 
   factory DataCellsFilterTableDataRowFilter.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterTableDataRowFilter(
-      allRowsWildcard: map['allRowsWildcard'] == null ? null : ((map['allRowsWildcard'] as Map).cast<String, dynamic>()).input(),
-      filterExpression: map['filterExpression'] == null ? null : (map['filterExpression'] as String).input(),
+      allRowsWildcard: map['allRowsWildcard'] == null ? null : (((map['allRowsWildcard'] as Map).cast<String, dynamic>()).input()).input(),
+      filterExpression: map['filterExpression'] == null ? null : ((map['filterExpression'] as String).input()).input(),
     );
   }
 }

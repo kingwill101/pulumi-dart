@@ -30,9 +30,9 @@ class DatabaseInstanceSettingsMaintenanceWindow {
 
   factory DatabaseInstanceSettingsMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsMaintenanceWindow(
-      day: map['day'] == null ? null : (map['day'] as int).input(),
-      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
-      updateTrack: map['updateTrack'] == null ? null : (map['updateTrack'] as String).input(),
+      day: map['day'] == null ? null : (map['day']! as int).input(),
+      hour: map['hour'] == null ? null : (map['hour']! as int).input(),
+      updateTrack: map['updateTrack'] == null ? null : (map['updateTrack']! as String).input(),
     );
   }
 }

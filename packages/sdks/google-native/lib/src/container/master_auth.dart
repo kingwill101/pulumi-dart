@@ -32,9 +32,9 @@ class MasterAuth {
 
   factory MasterAuth.fromMap(Map<String, dynamic> map) {
     return MasterAuth(
-      clientCertificateConfig: map['clientCertificateConfig'] == null ? null : (ClientCertificateConfig.fromMap((map['clientCertificateConfig'] as Map).cast<String, dynamic>())).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      clientCertificateConfig: map['clientCertificateConfig'] == null ? null : (ClientCertificateConfig.fromMap((map['clientCertificateConfig']! as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

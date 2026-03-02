@@ -27,8 +27,8 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText {
 
   factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText.fromMap(Map<String, dynamic> map) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption'] as bool).input(),
-      texts: map['texts'] == null ? null : ((map['texts'] as List).cast<String>()).input(),
+      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption']! as bool).input(),
+      texts: map['texts'] == null ? null : ((map['texts']! as List).cast<String>()).input(),
     );
   }
 }

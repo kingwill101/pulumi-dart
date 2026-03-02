@@ -81,19 +81,19 @@ class WebAppState {
 
   factory WebAppState.fromMap(Map<String, dynamic> map) {
     return WebAppState(
-      developerAppInsightsApiKey: map['developerAppInsightsApiKey'] == null ? null : (map['developerAppInsightsApiKey'] as String).input(),
-      developerAppInsightsApplicationId: map['developerAppInsightsApplicationId'] == null ? null : (map['developerAppInsightsApplicationId'] as String).input(),
-      developerAppInsightsKey: map['developerAppInsightsKey'] == null ? null : (map['developerAppInsightsKey'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      luisAppIds: map['luisAppIds'] == null ? null : ((map['luisAppIds'] as List).cast<String>()).input(),
-      luisKey: map['luisKey'] == null ? null : (map['luisKey'] as String).input(),
-      microsoftAppId: map['microsoftAppId'] == null ? null : (map['microsoftAppId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      developerAppInsightsApiKey: map['developerAppInsightsApiKey'] == null ? null : (map['developerAppInsightsApiKey']! as String).input(),
+      developerAppInsightsApplicationId: map['developerAppInsightsApplicationId'] == null ? null : (map['developerAppInsightsApplicationId']! as String).input(),
+      developerAppInsightsKey: map['developerAppInsightsKey'] == null ? null : (map['developerAppInsightsKey']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      luisAppIds: map['luisAppIds'] == null ? null : ((map['luisAppIds']! as List).cast<String>()).input(),
+      luisKey: map['luisKey'] == null ? null : (map['luisKey']! as String).input(),
+      microsoftAppId: map['microsoftAppId'] == null ? null : (map['microsoftAppId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

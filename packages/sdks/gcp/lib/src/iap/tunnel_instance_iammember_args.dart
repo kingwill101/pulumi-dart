@@ -67,12 +67,12 @@ class TunnelInstanceIAMMemberArgs {
 
   factory TunnelInstanceIAMMemberArgs.fromMap(Map<String, dynamic> map) {
     return TunnelInstanceIAMMemberArgs(
-      condition: map['condition'] == null ? null : (TunnelInstanceIAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (TunnelInstanceIAMMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       instance: (map['instance'] as String).input(),
       member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

@@ -46,8 +46,8 @@ class ClusterPeeringArgs {
     return ClusterPeeringArgs(
       clusters: ((map['clusters'] as List).cast<String>()).input(),
       identifier: (map['identifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ClusterPeeringTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ClusterPeeringTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       witnessRegion: (map['witnessRegion'] as String).input(),
     );
   }

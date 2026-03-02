@@ -54,13 +54,13 @@ class ManagedZoneIamPolicyArgs {
 
   factory ManagedZoneIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedZoneIamPolicyArgs(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditConfig>(map['auditConfigs'], (value) => GoogleIamV1AuditConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1Binding>(map['bindings'], (value) => GoogleIamV1Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditConfig>(map['auditConfigs']!, (value) => GoogleIamV1AuditConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1Binding>(map['bindings']!, (value) => GoogleIamV1Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       managedZone: (map['managedZone'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

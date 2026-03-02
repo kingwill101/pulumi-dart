@@ -25,8 +25,8 @@ class AuthorizerJwtConfiguration {
 
   factory AuthorizerJwtConfiguration.fromMap(Map<String, dynamic> map) {
     return AuthorizerJwtConfiguration(
-      audiences: map['audiences'] == null ? null : ((map['audiences'] as List).cast<String>()).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
+      audiences: map['audiences'] == null ? null : (((map['audiences'] as List).cast<String>()).input()).input(),
+      issuer: map['issuer'] == null ? null : ((map['issuer'] as String).input()).input(),
     );
   }
 }

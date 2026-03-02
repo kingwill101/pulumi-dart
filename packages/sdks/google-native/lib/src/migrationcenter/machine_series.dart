@@ -21,7 +21,7 @@ class MachineSeries {
 
   factory MachineSeries.fromMap(Map<String, dynamic> map) {
     return MachineSeries(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
     );
   }
 }

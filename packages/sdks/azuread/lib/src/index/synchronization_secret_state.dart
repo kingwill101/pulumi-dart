@@ -27,8 +27,8 @@ class SynchronizationSecretState {
 
   factory SynchronizationSecretState.fromMap(Map<String, dynamic> map) {
     return SynchronizationSecretState(
-      credentials: map['credentials'] == null ? null : (pulumi.Input.decodeList<SynchronizationSecretCredential>(map['credentials'], (value) => SynchronizationSecretCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
+      credentials: map['credentials'] == null ? null : (pulumi.Input.decodeList<SynchronizationSecretCredential>(map['credentials']!, (value) => SynchronizationSecretCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']! as String).input(),
     );
   }
 }

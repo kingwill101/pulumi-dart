@@ -52,12 +52,12 @@ class PriorityClass {
 
   factory PriorityClass.fromMap(Map<String, dynamic> map) {
     return PriorityClass(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      globalDefault: map['globalDefault'] == null ? null : (map['globalDefault'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      preemptionPolicy: map['preemptionPolicy'] == null ? null : (map['preemptionPolicy'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      globalDefault: map['globalDefault'] == null ? null : (map['globalDefault']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      preemptionPolicy: map['preemptionPolicy'] == null ? null : (map['preemptionPolicy']! as String).input(),
       value: (map['value'] as int).input(),
     );
   }

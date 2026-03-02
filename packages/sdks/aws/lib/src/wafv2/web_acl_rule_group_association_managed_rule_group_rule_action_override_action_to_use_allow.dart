@@ -21,7 +21,7 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAll
 
   factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow(
-      customRequestHandling: map['customRequestHandling'] == null ? null : (WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllowCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>())).input(),
+      customRequestHandling: map['customRequestHandling'] == null ? null : ((WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllowCustomRequestHandling.fromMap((map['customRequestHandling']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

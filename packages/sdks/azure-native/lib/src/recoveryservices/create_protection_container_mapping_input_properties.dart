@@ -32,9 +32,9 @@ class CreateProtectionContainerMappingInputProperties {
 
   factory CreateProtectionContainerMappingInputProperties.fromMap(Map<String, dynamic> map) {
     return CreateProtectionContainerMappingInputProperties(
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      providerSpecificInput: map['providerSpecificInput'] == null ? null : (A2AContainerMappingInput.fromMap((map['providerSpecificInput'] as Map).cast<String, dynamic>())).input(),
-      targetProtectionContainerId: map['targetProtectionContainerId'] == null ? null : (map['targetProtectionContainerId'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      providerSpecificInput: map['providerSpecificInput'] == null ? null : (A2AContainerMappingInput.fromMap((map['providerSpecificInput']! as Map).cast<String, dynamic>())).input(),
+      targetProtectionContainerId: map['targetProtectionContainerId'] == null ? null : (map['targetProtectionContainerId']! as String).input(),
     );
   }
 }

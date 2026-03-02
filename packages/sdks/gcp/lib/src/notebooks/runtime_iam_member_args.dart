@@ -65,10 +65,10 @@ class RuntimeIamMemberArgs {
 
   factory RuntimeIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeIamMemberArgs(
-      condition: map['condition'] == null ? null : (RuntimeIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      condition: map['condition'] == null ? null : (RuntimeIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
       runtimeName: (map['runtimeName'] as String).input(),
     );

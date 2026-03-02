@@ -36,10 +36,10 @@ class SqlConnectivityUpdateSettings {
 
   factory SqlConnectivityUpdateSettings.fromMap(Map<String, dynamic> map) {
     return SqlConnectivityUpdateSettings(
-      connectivityType: map['connectivityType'] == null ? null : (map['connectivityType'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      sqlAuthUpdatePassword: map['sqlAuthUpdatePassword'] == null ? null : (map['sqlAuthUpdatePassword'] as String).input(),
-      sqlAuthUpdateUserName: map['sqlAuthUpdateUserName'] == null ? null : (map['sqlAuthUpdateUserName'] as String).input(),
+      connectivityType: map['connectivityType'] == null ? null : (map['connectivityType']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      sqlAuthUpdatePassword: map['sqlAuthUpdatePassword'] == null ? null : (map['sqlAuthUpdatePassword']! as String).input(),
+      sqlAuthUpdateUserName: map['sqlAuthUpdateUserName'] == null ? null : (map['sqlAuthUpdateUserName']! as String).input(),
     );
   }
 }

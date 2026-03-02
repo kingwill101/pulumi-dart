@@ -99,17 +99,17 @@ class V2OrganizationSccBigQueryExportsState {
 
   factory V2OrganizationSccBigQueryExportsState.fromMap(Map<String, dynamic> map) {
     return V2OrganizationSccBigQueryExportsState(
-      bigQueryExportId: map['bigQueryExportId'] == null ? null : (map['bigQueryExportId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mostRecentEditor: map['mostRecentEditor'] == null ? null : (map['mostRecentEditor'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      bigQueryExportId: map['bigQueryExportId'] == null ? null : (map['bigQueryExportId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mostRecentEditor: map['mostRecentEditor'] == null ? null : (map['mostRecentEditor']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
+      principal: map['principal'] == null ? null : (map['principal']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

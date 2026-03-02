@@ -39,10 +39,10 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig {
 
   factory PatchDeploymentPatchConfigPostStepLinuxExecStepConfig.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentPatchConfigPostStepLinuxExecStepConfig(
-      allowedSuccessCodes: map['allowedSuccessCodes'] == null ? null : ((map['allowedSuccessCodes'] as List).cast<int>()).input(),
-      gcsObject: map['gcsObject'] == null ? null : (PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject.fromMap((map['gcsObject'] as Map).cast<String, dynamic>())).input(),
-      interpreter: map['interpreter'] == null ? null : (map['interpreter'] as String).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
+      allowedSuccessCodes: map['allowedSuccessCodes'] == null ? null : ((map['allowedSuccessCodes']! as List).cast<int>()).input(),
+      gcsObject: map['gcsObject'] == null ? null : (PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject.fromMap((map['gcsObject']! as Map).cast<String, dynamic>())).input(),
+      interpreter: map['interpreter'] == null ? null : (map['interpreter']! as String).input(),
+      localPath: map['localPath'] == null ? null : (map['localPath']! as String).input(),
     );
   }
 }

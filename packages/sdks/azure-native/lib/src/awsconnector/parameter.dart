@@ -31,9 +31,9 @@ class Parameter {
 
   factory Parameter.fromMap(Map<String, dynamic> map) {
     return Parameter(
-      parameterKey: map['parameterKey'] == null ? null : (map['parameterKey'] as String).input(),
-      parameterName: map['parameterName'] == null ? null : (map['parameterName'] as String).input(),
-      parameterValue: map['parameterValue'] == null ? null : (map['parameterValue'] as String).input(),
+      parameterKey: map['parameterKey'] == null ? null : (map['parameterKey']! as String).input(),
+      parameterName: map['parameterName'] == null ? null : (map['parameterName']! as String).input(),
+      parameterValue: map['parameterValue'] == null ? null : (map['parameterValue']! as String).input(),
     );
   }
 }

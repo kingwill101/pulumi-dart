@@ -41,10 +41,10 @@ class NetworkEndpointListState {
 
   factory NetworkEndpointListState.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointListState(
-      networkEndpointGroup: map['networkEndpointGroup'] == null ? null : (map['networkEndpointGroup'] as String).input(),
-      networkEndpoints: map['networkEndpoints'] == null ? null : (pulumi.Input.decodeList<NetworkEndpointListNetworkEndpoint>(map['networkEndpoints'], (value) => NetworkEndpointListNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      networkEndpointGroup: map['networkEndpointGroup'] == null ? null : (map['networkEndpointGroup']! as String).input(),
+      networkEndpoints: map['networkEndpoints'] == null ? null : (pulumi.Input.decodeList<NetworkEndpointListNetworkEndpoint>(map['networkEndpoints']!, (value) => NetworkEndpointListNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

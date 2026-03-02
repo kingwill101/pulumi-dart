@@ -78,7 +78,7 @@ class GetCustomDomainResult {
   factory GetCustomDomainResult.fromMap(Map<String, dynamic> map) {
     return GetCustomDomainResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customHttpsParameters: map['customHttpsParameters'] == null ? null : CdnManagedHttpsParametersResponse.fromMap((map['customHttpsParameters'] as Map).cast<String, dynamic>()),
+      customHttpsParameters: map['customHttpsParameters'] == null ? null : CdnManagedHttpsParametersResponse.fromMap((map['customHttpsParameters']! as Map).cast<String, dynamic>()),
       customHttpsProvisioningState: map['customHttpsProvisioningState'] as String,
       customHttpsProvisioningSubstate: map['customHttpsProvisioningSubstate'] as String,
       hostName: map['hostName'] as String,
@@ -88,7 +88,7 @@ class GetCustomDomainResult {
       resourceState: map['resourceState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      validationData: map['validationData'] == null ? null : map['validationData'] as String,
+      validationData: map['validationData'] == null ? null : map['validationData']! as String,
     );
   }
 }

@@ -21,7 +21,7 @@ class RoutingVPC {
 
   factory RoutingVPC.fromMap(Map<String, dynamic> map) {
     return RoutingVPC(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

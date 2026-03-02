@@ -22,7 +22,7 @@ class GuestOsFeature {
 
   factory GuestOsFeature.fromMap(Map<String, dynamic> map) {
     return GuestOsFeature(
-      type: map['type'] == null ? null : (GuestOsFeatureType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (GuestOsFeatureType.fromValue(map['type']! as String)).input(),
     );
   }
 }

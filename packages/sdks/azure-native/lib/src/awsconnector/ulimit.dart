@@ -31,9 +31,9 @@ class Ulimit {
 
   factory Ulimit.fromMap(Map<String, dynamic> map) {
     return Ulimit(
-      hardLimit: map['hardLimit'] == null ? null : (map['hardLimit'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      softLimit: map['softLimit'] == null ? null : (map['softLimit'] as int).input(),
+      hardLimit: map['hardLimit'] == null ? null : (map['hardLimit']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      softLimit: map['softLimit'] == null ? null : (map['softLimit']! as int).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class KubernetesMasterNode {
 
   factory KubernetesMasterNode.fromMap(Map<String, dynamic> map) {
     return KubernetesMasterNode(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIp: map['privateIp'] == null ? null : (map['privateIp'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIp: map['privateIp'] == null ? null : (map['privateIp']! as String).input(),
     );
   }
 }

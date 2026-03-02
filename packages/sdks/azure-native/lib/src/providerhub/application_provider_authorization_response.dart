@@ -25,8 +25,8 @@ class ApplicationProviderAuthorizationResponse {
 
   factory ApplicationProviderAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationProviderAuthorizationResponse(
-      managedByRoleDefinitionId: map['managedByRoleDefinitionId'] == null ? null : (map['managedByRoleDefinitionId'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      managedByRoleDefinitionId: map['managedByRoleDefinitionId'] == null ? null : (map['managedByRoleDefinitionId']! as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
     );
   }
 }

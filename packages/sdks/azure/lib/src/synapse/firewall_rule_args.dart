@@ -44,7 +44,7 @@ class FirewallRuleArgs {
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
       endIpAddress: (map['endIpAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       startIpAddress: (map['startIpAddress'] as String).input(),
       synapseWorkspaceId: (map['synapseWorkspaceId'] as String).input(),
     );

@@ -36,7 +36,7 @@ class EnclaveDefaultSettingsModelResponse {
 
   factory EnclaveDefaultSettingsModelResponse.fromMap(Map<String, dynamic> map) {
     return EnclaveDefaultSettingsModelResponse(
-      diagnosticDestination: map['diagnosticDestination'] == null ? null : (map['diagnosticDestination'] as String).input(),
+      diagnosticDestination: map['diagnosticDestination'] == null ? null : (map['diagnosticDestination']! as String).input(),
       keyVaultResourceId: (map['keyVaultResourceId'] as String).input(),
       logAnalyticsResourceIdCollection: ((map['logAnalyticsResourceIdCollection'] as List).cast<String>()).input(),
       storageAccountResourceId: (map['storageAccountResourceId'] as String).input(),

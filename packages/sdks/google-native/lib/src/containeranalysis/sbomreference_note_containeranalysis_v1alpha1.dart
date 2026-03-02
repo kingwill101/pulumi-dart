@@ -26,8 +26,8 @@ class SBOMReferenceNoteContaineranalysisV1alpha1 {
 
   factory SBOMReferenceNoteContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SBOMReferenceNoteContaineranalysisV1alpha1(
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

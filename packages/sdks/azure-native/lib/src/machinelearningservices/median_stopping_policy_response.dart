@@ -31,8 +31,8 @@ class MedianStoppingPolicyResponse {
 
   factory MedianStoppingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return MedianStoppingPolicyResponse(
-      delayEvaluation: map['delayEvaluation'] == null ? null : (map['delayEvaluation'] as int).input(),
-      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval'] as int).input(),
+      delayEvaluation: map['delayEvaluation'] == null ? null : (map['delayEvaluation']! as int).input(),
+      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval']! as int).input(),
       policyType: (map['policyType'] as String).input(),
     );
   }

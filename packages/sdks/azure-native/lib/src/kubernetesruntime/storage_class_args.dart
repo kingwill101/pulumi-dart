@@ -85,19 +85,19 @@ class StorageClassArgs {
 
   factory StorageClassArgs.fromMap(Map<String, dynamic> map) {
     return StorageClassArgs(
-      accessModes: map['accessModes'] == null ? null : ((map['accessModes'] as List).cast<String>()).input(),
-      allowVolumeExpansion: map['allowVolumeExpansion'] == null ? null : (map['allowVolumeExpansion'] as String).input(),
-      dataResilience: map['dataResilience'] == null ? null : (map['dataResilience'] as String).input(),
-      failoverSpeed: map['failoverSpeed'] == null ? null : (map['failoverSpeed'] as String).input(),
-      limitations: map['limitations'] == null ? null : ((map['limitations'] as List).cast<String>()).input(),
-      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions'] as List).cast<String>()).input(),
-      performance: map['performance'] == null ? null : (map['performance'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as double).input(),
-      provisioner: map['provisioner'] == null ? null : (map['provisioner'] as String).input(),
+      accessModes: map['accessModes'] == null ? null : ((map['accessModes']! as List).cast<String>()).input(),
+      allowVolumeExpansion: map['allowVolumeExpansion'] == null ? null : (map['allowVolumeExpansion']! as String).input(),
+      dataResilience: map['dataResilience'] == null ? null : (map['dataResilience']! as String).input(),
+      failoverSpeed: map['failoverSpeed'] == null ? null : (map['failoverSpeed']! as String).input(),
+      limitations: map['limitations'] == null ? null : ((map['limitations']! as List).cast<String>()).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions']! as List).cast<String>()).input(),
+      performance: map['performance'] == null ? null : (map['performance']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as double).input(),
+      provisioner: map['provisioner'] == null ? null : (map['provisioner']! as String).input(),
       resourceUri: (map['resourceUri'] as String).input(),
-      storageClassName: map['storageClassName'] == null ? null : (map['storageClassName'] as String).input(),
+      storageClassName: map['storageClassName'] == null ? null : (map['storageClassName']! as String).input(),
       typeProperties: (BlobStorageClassTypeProperties.fromMap((map['typeProperties'] as Map).cast<String, dynamic>())).input(),
-      volumeBindingMode: map['volumeBindingMode'] == null ? null : (map['volumeBindingMode'] as String).input(),
+      volumeBindingMode: map['volumeBindingMode'] == null ? null : (map['volumeBindingMode']! as String).input(),
     );
   }
 }

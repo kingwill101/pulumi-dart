@@ -44,11 +44,11 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      catalogData: map['catalogData'] == null ? null : (RepositoryCatalogData.fromMap((map['catalogData'] as Map).cast<String, dynamic>())).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      catalogData: map['catalogData'] == null ? null : ((RepositoryCatalogData.fromMap((map['catalogData']! as Map).cast<String, dynamic>())).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       repositoryName: (map['repositoryName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

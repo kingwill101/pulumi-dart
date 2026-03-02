@@ -31,8 +31,8 @@ class FailoverGroupPartnerServer {
   factory FailoverGroupPartnerServer.fromMap(Map<String, dynamic> map) {
     return FailoverGroupPartnerServer(
       id: (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

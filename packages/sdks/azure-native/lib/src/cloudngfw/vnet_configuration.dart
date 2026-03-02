@@ -38,7 +38,7 @@ class VnetConfiguration {
 
   factory VnetConfiguration.fromMap(Map<String, dynamic> map) {
     return VnetConfiguration(
-      ipOfTrustSubnetForUdr: map['ipOfTrustSubnetForUdr'] == null ? null : (IPAddress.fromMap((map['ipOfTrustSubnetForUdr'] as Map).cast<String, dynamic>())).input(),
+      ipOfTrustSubnetForUdr: map['ipOfTrustSubnetForUdr'] == null ? null : (IPAddress.fromMap((map['ipOfTrustSubnetForUdr']! as Map).cast<String, dynamic>())).input(),
       trustSubnet: (IPAddressSpace.fromMap((map['trustSubnet'] as Map).cast<String, dynamic>())).input(),
       unTrustSubnet: (IPAddressSpace.fromMap((map['unTrustSubnet'] as Map).cast<String, dynamic>())).input(),
       vnet: (IPAddressSpace.fromMap((map['vnet'] as Map).cast<String, dynamic>())).input(),

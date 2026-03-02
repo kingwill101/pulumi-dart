@@ -21,7 +21,7 @@ class InterconnectAttachmentGroupIntent {
 
   factory InterconnectAttachmentGroupIntent.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupIntent(
-      availabilitySla: map['availabilitySla'] == null ? null : (map['availabilitySla'] as String).input(),
+      availabilitySla: map['availabilitySla'] == null ? null : (map['availabilitySla']! as String).input(),
     );
   }
 }

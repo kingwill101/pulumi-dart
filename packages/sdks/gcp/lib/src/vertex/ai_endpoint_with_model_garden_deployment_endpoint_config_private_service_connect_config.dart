@@ -40,9 +40,9 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
   factory AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig(
       enablePrivateServiceConnect: (map['enablePrivateServiceConnect'] as bool).input(),
-      projectAllowlists: map['projectAllowlists'] == null ? null : ((map['projectAllowlists'] as List).cast<String>()).input(),
-      pscAutomationConfigs: map['pscAutomationConfigs'] == null ? null : (AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs.fromMap((map['pscAutomationConfigs'] as Map).cast<String, dynamic>())).input(),
-      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
+      projectAllowlists: map['projectAllowlists'] == null ? null : ((map['projectAllowlists']! as List).cast<String>()).input(),
+      pscAutomationConfigs: map['pscAutomationConfigs'] == null ? null : (AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigs.fromMap((map['pscAutomationConfigs']! as Map).cast<String, dynamic>())).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment']! as String).input(),
     );
   }
 }

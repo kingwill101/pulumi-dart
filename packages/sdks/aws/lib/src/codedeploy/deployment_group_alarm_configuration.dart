@@ -30,9 +30,9 @@ class DeploymentGroupAlarmConfiguration {
 
   factory DeploymentGroupAlarmConfiguration.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupAlarmConfiguration(
-      alarms: map['alarms'] == null ? null : ((map['alarms'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      ignorePollAlarmFailure: map['ignorePollAlarmFailure'] == null ? null : (map['ignorePollAlarmFailure'] as bool).input(),
+      alarms: map['alarms'] == null ? null : (((map['alarms'] as List).cast<String>()).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      ignorePollAlarmFailure: map['ignorePollAlarmFailure'] == null ? null : ((map['ignorePollAlarmFailure'] as bool).input()).input(),
     );
   }
 }

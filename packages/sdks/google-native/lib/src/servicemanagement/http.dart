@@ -27,8 +27,8 @@ class Http {
 
   factory Http.fromMap(Map<String, dynamic> map) {
     return Http(
-      fullyDecodeReservedExpansion: map['fullyDecodeReservedExpansion'] == null ? null : (map['fullyDecodeReservedExpansion'] as bool).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<HttpRule>(map['rules'], (value) => HttpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fullyDecodeReservedExpansion: map['fullyDecodeReservedExpansion'] == null ? null : (map['fullyDecodeReservedExpansion']! as bool).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<HttpRule>(map['rules']!, (value) => HttpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

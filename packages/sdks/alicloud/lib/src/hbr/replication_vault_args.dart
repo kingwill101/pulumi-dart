@@ -54,13 +54,13 @@ class ReplicationVaultArgs {
 
   factory ReplicationVaultArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationVaultArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptType: map['encryptType'] == null ? null : (map['encryptType'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptType: map['encryptType'] == null ? null : (map['encryptType']! as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
       replicationSourceRegionId: (map['replicationSourceRegionId'] as String).input(),
       replicationSourceVaultId: (map['replicationSourceVaultId'] as String).input(),
       vaultName: (map['vaultName'] as String).input(),
-      vaultStorageClass: map['vaultStorageClass'] == null ? null : (map['vaultStorageClass'] as String).input(),
+      vaultStorageClass: map['vaultStorageClass'] == null ? null : (map['vaultStorageClass']! as String).input(),
     );
   }
 }

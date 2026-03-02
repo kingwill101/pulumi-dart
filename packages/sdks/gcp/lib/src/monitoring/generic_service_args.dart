@@ -55,11 +55,11 @@ class GenericServiceArgs {
 
   factory GenericServiceArgs.fromMap(Map<String, dynamic> map) {
     return GenericServiceArgs(
-      basicService: map['basicService'] == null ? null : (GenericServiceBasicService.fromMap((map['basicService'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      basicService: map['basicService'] == null ? null : (GenericServiceBasicService.fromMap((map['basicService']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
-      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -68,13 +68,13 @@ class GetTransitRouterMulticastDomainAssociationsResult {
       associations: pulumi.Input.decodeList<GetTransitRouterMulticastDomainAssociationsAssociation>(map['associations'], (value) => GetTransitRouterMulticastDomainAssociationsAssociation.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : map['transitRouterAttachmentId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceId: map['resourceId'] == null ? null : map['resourceId']! as String,
+      resourceType: map['resourceType'] == null ? null : map['resourceType']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : map['transitRouterAttachmentId']! as String,
       transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] as String,
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
+      vswitchId: map['vswitchId'] == null ? null : map['vswitchId']! as String,
     );
   }
 }

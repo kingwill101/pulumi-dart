@@ -31,9 +31,9 @@ class ImageConfig {
 
   factory ImageConfig.fromMap(Map<String, dynamic> map) {
     return ImageConfig(
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
-      entryPoint: map['entryPoint'] == null ? null : ((map['entryPoint'] as List).cast<String>()).input(),
-      workingDirectory: map['workingDirectory'] == null ? null : (map['workingDirectory'] as String).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
+      entryPoint: map['entryPoint'] == null ? null : ((map['entryPoint']! as List).cast<String>()).input(),
+      workingDirectory: map['workingDirectory'] == null ? null : (map['workingDirectory']! as String).input(),
     );
   }
 }

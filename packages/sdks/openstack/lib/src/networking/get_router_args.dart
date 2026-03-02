@@ -71,16 +71,16 @@ class GetRouterArgs {
 
   factory GetRouterArgs.fromMap(Map<String, dynamic> map) {
     return GetRouterArgs(
-      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      distributed: map['distributed'] == null ? null : (map['distributed'] as bool).input(),
-      enableSnat: map['enableSnat'] == null ? null : (map['enableSnat'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      distributed: map['distributed'] == null ? null : (map['distributed']! as bool).input(),
+      enableSnat: map['enableSnat'] == null ? null : (map['enableSnat']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

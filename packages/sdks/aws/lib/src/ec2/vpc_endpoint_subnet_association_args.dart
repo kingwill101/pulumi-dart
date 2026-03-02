@@ -34,7 +34,7 @@ class VpcEndpointSubnetAssociationArgs {
 
   factory VpcEndpointSubnetAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointSubnetAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       subnetId: (map['subnetId'] as String).input(),
       vpcEndpointId: (map['vpcEndpointId'] as String).input(),
     );

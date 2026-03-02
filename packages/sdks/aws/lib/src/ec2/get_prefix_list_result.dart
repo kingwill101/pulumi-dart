@@ -45,7 +45,7 @@ class GetPrefixListResult {
   factory GetPrefixListResult.fromMap(Map<String, dynamic> map) {
     return GetPrefixListResult(
       cidrBlocks: (map['cidrBlocks'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetPrefixListFilter>(map['filters'], (value) => GetPrefixListFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetPrefixListFilter>(map['filters']!, (value) => GetPrefixListFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       prefixListId: map['prefixListId'] == null ? null : map['prefixListId'] as String,

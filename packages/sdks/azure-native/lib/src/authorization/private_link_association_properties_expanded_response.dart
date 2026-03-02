@@ -35,10 +35,10 @@ class PrivateLinkAssociationPropertiesExpandedResponse {
 
   factory PrivateLinkAssociationPropertiesExpandedResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationPropertiesExpandedResponse(
-      privateLink: map['privateLink'] == null ? null : (map['privateLink'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      tenantID: map['tenantID'] == null ? null : (map['tenantID'] as String).input(),
+      privateLink: map['privateLink'] == null ? null : (map['privateLink']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      tenantID: map['tenantID'] == null ? null : (map['tenantID']! as String).input(),
     );
   }
 }

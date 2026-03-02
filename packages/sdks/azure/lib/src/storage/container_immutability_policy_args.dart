@@ -47,9 +47,9 @@ class ContainerImmutabilityPolicyArgs {
   factory ContainerImmutabilityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ContainerImmutabilityPolicyArgs(
       immutabilityPeriodInDays: (map['immutabilityPeriodInDays'] as int).input(),
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
-      protectedAppendWritesAllEnabled: map['protectedAppendWritesAllEnabled'] == null ? null : (map['protectedAppendWritesAllEnabled'] as bool).input(),
-      protectedAppendWritesEnabled: map['protectedAppendWritesEnabled'] == null ? null : (map['protectedAppendWritesEnabled'] as bool).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
+      protectedAppendWritesAllEnabled: map['protectedAppendWritesAllEnabled'] == null ? null : (map['protectedAppendWritesAllEnabled']! as bool).input(),
+      protectedAppendWritesEnabled: map['protectedAppendWritesEnabled'] == null ? null : (map['protectedAppendWritesEnabled']! as bool).input(),
       storageContainerResourceManagerId: (map['storageContainerResourceManagerId'] as String).input(),
     );
   }

@@ -41,11 +41,11 @@ class Disk {
 
   factory Disk.fromMap(Map<String, dynamic> map) {
     return Disk(
-      diskInterface: map['diskInterface'] == null ? null : (map['diskInterface'] as String).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as String).input(),
-      snapshot: map['snapshot'] == null ? null : (map['snapshot'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      diskInterface: map['diskInterface'] == null ? null : (map['diskInterface']! as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as String).input(),
+      snapshot: map['snapshot'] == null ? null : (map['snapshot']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class SecurityConfigurationEncryptionConfigurationCloudwatchEncryption {
 
   factory SecurityConfigurationEncryptionConfigurationCloudwatchEncryption.fromMap(Map<String, dynamic> map) {
     return SecurityConfigurationEncryptionConfigurationCloudwatchEncryption(
-      cloudwatchEncryptionMode: map['cloudwatchEncryptionMode'] == null ? null : (map['cloudwatchEncryptionMode'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      cloudwatchEncryptionMode: map['cloudwatchEncryptionMode'] == null ? null : ((map['cloudwatchEncryptionMode'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
     );
   }
 }

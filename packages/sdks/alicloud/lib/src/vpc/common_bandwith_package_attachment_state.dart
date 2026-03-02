@@ -51,12 +51,12 @@ class CommonBandwithPackageAttachmentState {
 
   factory CommonBandwithPackageAttachmentState.fromMap(Map<String, dynamic> map) {
     return CommonBandwithPackageAttachmentState(
-      bandwidthPackageBandwidth: map['bandwidthPackageBandwidth'] == null ? null : (map['bandwidthPackageBandwidth'] as String).input(),
-      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId'] as String).input(),
-      cancelCommonBandwidthPackageIpBandwidth: map['cancelCommonBandwidthPackageIpBandwidth'] == null ? null : (map['cancelCommonBandwidthPackageIpBandwidth'] as bool).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      ipType: map['ipType'] == null ? null : (map['ipType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bandwidthPackageBandwidth: map['bandwidthPackageBandwidth'] == null ? null : (map['bandwidthPackageBandwidth']! as String).input(),
+      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId']! as String).input(),
+      cancelCommonBandwidthPackageIpBandwidth: map['cancelCommonBandwidthPackageIpBandwidth'] == null ? null : (map['cancelCommonBandwidthPackageIpBandwidth']! as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      ipType: map['ipType'] == null ? null : (map['ipType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

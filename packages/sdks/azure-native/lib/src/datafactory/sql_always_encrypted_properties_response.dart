@@ -39,9 +39,9 @@ class SqlAlwaysEncryptedPropertiesResponse {
   factory SqlAlwaysEncryptedPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlAlwaysEncryptedPropertiesResponse(
       alwaysEncryptedAkvAuthType: (map['alwaysEncryptedAkvAuthType'] as String).input(),
-      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']).input(),
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>())).input(),
+      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']!).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

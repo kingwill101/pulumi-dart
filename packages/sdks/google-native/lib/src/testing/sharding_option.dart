@@ -34,9 +34,9 @@ class ShardingOption {
 
   factory ShardingOption.fromMap(Map<String, dynamic> map) {
     return ShardingOption(
-      manualSharding: map['manualSharding'] == null ? null : (ManualSharding.fromMap((map['manualSharding'] as Map).cast<String, dynamic>())).input(),
-      smartSharding: map['smartSharding'] == null ? null : (SmartSharding.fromMap((map['smartSharding'] as Map).cast<String, dynamic>())).input(),
-      uniformSharding: map['uniformSharding'] == null ? null : (UniformSharding.fromMap((map['uniformSharding'] as Map).cast<String, dynamic>())).input(),
+      manualSharding: map['manualSharding'] == null ? null : (ManualSharding.fromMap((map['manualSharding']! as Map).cast<String, dynamic>())).input(),
+      smartSharding: map['smartSharding'] == null ? null : (SmartSharding.fromMap((map['smartSharding']! as Map).cast<String, dynamic>())).input(),
+      uniformSharding: map['uniformSharding'] == null ? null : (UniformSharding.fromMap((map['uniformSharding']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

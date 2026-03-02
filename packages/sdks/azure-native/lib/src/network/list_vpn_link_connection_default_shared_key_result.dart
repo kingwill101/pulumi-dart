@@ -36,8 +36,8 @@ class ListVpnLinkConnectionDefaultSharedKeyResult {
 
   factory ListVpnLinkConnectionDefaultSharedKeyResult.fromMap(Map<String, dynamic> map) {
     return ListVpnLinkConnectionDefaultSharedKeyResult(
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       properties: SharedKeyPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

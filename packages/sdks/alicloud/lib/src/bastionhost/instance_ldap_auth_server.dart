@@ -77,16 +77,16 @@ class InstanceLdapAuthServer {
     return InstanceLdapAuthServer(
       account: (map['account'] as String).input(),
       baseDn: (map['baseDn'] as String).input(),
-      emailMapping: map['emailMapping'] == null ? null : (map['emailMapping'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      isSsl: map['isSsl'] == null ? null : (map['isSsl'] as bool).input(),
-      loginNameMapping: map['loginNameMapping'] == null ? null : (map['loginNameMapping'] as String).input(),
-      mobileMapping: map['mobileMapping'] == null ? null : (map['mobileMapping'] as String).input(),
-      nameMapping: map['nameMapping'] == null ? null : (map['nameMapping'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      emailMapping: map['emailMapping'] == null ? null : (map['emailMapping']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      isSsl: map['isSsl'] == null ? null : (map['isSsl']! as bool).input(),
+      loginNameMapping: map['loginNameMapping'] == null ? null : (map['loginNameMapping']! as String).input(),
+      mobileMapping: map['mobileMapping'] == null ? null : (map['mobileMapping']! as String).input(),
+      nameMapping: map['nameMapping'] == null ? null : (map['nameMapping']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       port: (map['port'] as int).input(),
       server: (map['server'] as String).input(),
-      standbyServer: map['standbyServer'] == null ? null : (map['standbyServer'] as String).input(),
+      standbyServer: map['standbyServer'] == null ? null : (map['standbyServer']! as String).input(),
     );
   }
 }

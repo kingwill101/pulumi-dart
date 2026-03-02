@@ -27,7 +27,7 @@ class GoogleCloudApigeeV1GraphQLOperationGroup {
 
   factory GoogleCloudApigeeV1GraphQLOperationGroup.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1GraphQLOperationGroup(
-      operationConfigType: map['operationConfigType'] == null ? null : (map['operationConfigType'] as String).input(),
+      operationConfigType: map['operationConfigType'] == null ? null : (map['operationConfigType']! as String).input(),
       operationConfigs: (pulumi.Input.decodeList<GoogleCloudApigeeV1GraphQLOperationConfig>(map['operationConfigs'], (value) => GoogleCloudApigeeV1GraphQLOperationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

@@ -36,10 +36,10 @@ class ResourceQuota {
 
   factory ResourceQuota.fromMap(Map<String, dynamic> map) {
     return ResourceQuota(
-      cpuLimit: map['cpuLimit'] == null ? null : (map['cpuLimit'] as String).input(),
-      cpuRequest: map['cpuRequest'] == null ? null : (map['cpuRequest'] as String).input(),
-      memoryLimit: map['memoryLimit'] == null ? null : (map['memoryLimit'] as String).input(),
-      memoryRequest: map['memoryRequest'] == null ? null : (map['memoryRequest'] as String).input(),
+      cpuLimit: map['cpuLimit'] == null ? null : (map['cpuLimit']! as String).input(),
+      cpuRequest: map['cpuRequest'] == null ? null : (map['cpuRequest']! as String).input(),
+      memoryLimit: map['memoryLimit'] == null ? null : (map['memoryLimit']! as String).input(),
+      memoryRequest: map['memoryRequest'] == null ? null : (map['memoryRequest']! as String).input(),
     );
   }
 }

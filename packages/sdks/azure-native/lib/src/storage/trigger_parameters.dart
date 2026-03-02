@@ -42,11 +42,11 @@ class TriggerParameters {
 
   factory TriggerParameters.fromMap(Map<String, dynamic> map) {
     return TriggerParameters(
-      endBy: map['endBy'] == null ? null : (map['endBy'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      intervalUnit: map['intervalUnit'] == null ? null : (IntervalUnit.fromValue(map['intervalUnit'] as String)).input(),
-      startFrom: map['startFrom'] == null ? null : (map['startFrom'] as String).input(),
-      startOn: map['startOn'] == null ? null : (map['startOn'] as String).input(),
+      endBy: map['endBy'] == null ? null : (map['endBy']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      intervalUnit: map['intervalUnit'] == null ? null : (IntervalUnit.fromValue(map['intervalUnit']! as String)).input(),
+      startFrom: map['startFrom'] == null ? null : (map['startFrom']! as String).input(),
+      startOn: map['startOn'] == null ? null : (map['startOn']! as String).input(),
     );
   }
 }

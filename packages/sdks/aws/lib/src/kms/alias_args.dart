@@ -40,9 +40,9 @@ class AliasArgs {
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       targetKeyId: (map['targetKeyId'] as String).input(),
     );
   }

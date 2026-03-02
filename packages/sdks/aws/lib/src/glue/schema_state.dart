@@ -86,20 +86,20 @@ class SchemaState {
 
   factory SchemaState.fromMap(Map<String, dynamic> map) {
     return SchemaState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      compatibility: map['compatibility'] == null ? null : (map['compatibility'] as String).input(),
-      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      latestSchemaVersion: map['latestSchemaVersion'] == null ? null : (map['latestSchemaVersion'] as int).input(),
-      nextSchemaVersion: map['nextSchemaVersion'] == null ? null : (map['nextSchemaVersion'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registryArn: map['registryArn'] == null ? null : (map['registryArn'] as String).input(),
-      registryName: map['registryName'] == null ? null : (map['registryName'] as String).input(),
-      schemaCheckpoint: map['schemaCheckpoint'] == null ? null : (map['schemaCheckpoint'] as int).input(),
-      schemaDefinition: map['schemaDefinition'] == null ? null : (map['schemaDefinition'] as String).input(),
-      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      compatibility: map['compatibility'] == null ? null : ((map['compatibility'] as String).input()).input(),
+      dataFormat: map['dataFormat'] == null ? null : ((map['dataFormat'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      latestSchemaVersion: map['latestSchemaVersion'] == null ? null : ((map['latestSchemaVersion'] as int).input()).input(),
+      nextSchemaVersion: map['nextSchemaVersion'] == null ? null : ((map['nextSchemaVersion'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registryArn: map['registryArn'] == null ? null : ((map['registryArn'] as String).input()).input(),
+      registryName: map['registryName'] == null ? null : ((map['registryName'] as String).input()).input(),
+      schemaCheckpoint: map['schemaCheckpoint'] == null ? null : ((map['schemaCheckpoint'] as int).input()).input(),
+      schemaDefinition: map['schemaDefinition'] == null ? null : ((map['schemaDefinition'] as String).input()).input(),
+      schemaName: map['schemaName'] == null ? null : ((map['schemaName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

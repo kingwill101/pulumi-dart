@@ -43,11 +43,11 @@ class AppEngineHttpTargetCloudschedulerV1beta1 {
 
   factory AppEngineHttpTargetCloudschedulerV1beta1.fromMap(Map<String, dynamic> map) {
     return AppEngineHttpTargetCloudschedulerV1beta1(
-      appEngineRouting: map['appEngineRouting'] == null ? null : (AppEngineRoutingCloudschedulerV1beta1.fromMap((map['appEngineRouting'] as Map).cast<String, dynamic>())).input(),
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      httpMethod: map['httpMethod'] == null ? null : (AppEngineHttpTargetHttpMethodCloudschedulerV1beta1.fromValue(map['httpMethod'] as String)).input(),
-      relativeUri: map['relativeUri'] == null ? null : (map['relativeUri'] as String).input(),
+      appEngineRouting: map['appEngineRouting'] == null ? null : (AppEngineRoutingCloudschedulerV1beta1.fromMap((map['appEngineRouting']! as Map).cast<String, dynamic>())).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (AppEngineHttpTargetHttpMethodCloudschedulerV1beta1.fromValue(map['httpMethod']! as String)).input(),
+      relativeUri: map['relativeUri'] == null ? null : (map['relativeUri']! as String).input(),
     );
   }
 }

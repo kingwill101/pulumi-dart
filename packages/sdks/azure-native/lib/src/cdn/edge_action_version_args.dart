@@ -57,10 +57,10 @@ class EdgeActionVersionArgs {
       deploymentType: (map['deploymentType'] as String).input(),
       edgeActionName: (map['edgeActionName'] as String).input(),
       isDefaultVersion: (map['isDefaultVersion'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

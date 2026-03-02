@@ -35,10 +35,10 @@ class DataSourceParametersRedshift {
 
   factory DataSourceParametersRedshift.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersRedshift(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : ((map['clusterId'] as String).input()).input(),
       database: (map['database'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      host: map['host'] == null ? null : ((map['host'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
     );
   }
 }

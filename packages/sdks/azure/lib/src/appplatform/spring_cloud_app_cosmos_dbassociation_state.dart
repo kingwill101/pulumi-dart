@@ -66,16 +66,16 @@ class SpringCloudAppCosmosDBAssociationState {
 
   factory SpringCloudAppCosmosDBAssociationState.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppCosmosDBAssociationState(
-      apiType: map['apiType'] == null ? null : (map['apiType'] as String).input(),
-      cosmosdbAccessKey: map['cosmosdbAccessKey'] == null ? null : (map['cosmosdbAccessKey'] as String).input(),
-      cosmosdbAccountId: map['cosmosdbAccountId'] == null ? null : (map['cosmosdbAccountId'] as String).input(),
-      cosmosdbCassandraKeyspaceName: map['cosmosdbCassandraKeyspaceName'] == null ? null : (map['cosmosdbCassandraKeyspaceName'] as String).input(),
-      cosmosdbGremlinDatabaseName: map['cosmosdbGremlinDatabaseName'] == null ? null : (map['cosmosdbGremlinDatabaseName'] as String).input(),
-      cosmosdbGremlinGraphName: map['cosmosdbGremlinGraphName'] == null ? null : (map['cosmosdbGremlinGraphName'] as String).input(),
-      cosmosdbMongoDatabaseName: map['cosmosdbMongoDatabaseName'] == null ? null : (map['cosmosdbMongoDatabaseName'] as String).input(),
-      cosmosdbSqlDatabaseName: map['cosmosdbSqlDatabaseName'] == null ? null : (map['cosmosdbSqlDatabaseName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId'] as String).input(),
+      apiType: map['apiType'] == null ? null : (map['apiType']! as String).input(),
+      cosmosdbAccessKey: map['cosmosdbAccessKey'] == null ? null : (map['cosmosdbAccessKey']! as String).input(),
+      cosmosdbAccountId: map['cosmosdbAccountId'] == null ? null : (map['cosmosdbAccountId']! as String).input(),
+      cosmosdbCassandraKeyspaceName: map['cosmosdbCassandraKeyspaceName'] == null ? null : (map['cosmosdbCassandraKeyspaceName']! as String).input(),
+      cosmosdbGremlinDatabaseName: map['cosmosdbGremlinDatabaseName'] == null ? null : (map['cosmosdbGremlinDatabaseName']! as String).input(),
+      cosmosdbGremlinGraphName: map['cosmosdbGremlinGraphName'] == null ? null : (map['cosmosdbGremlinGraphName']! as String).input(),
+      cosmosdbMongoDatabaseName: map['cosmosdbMongoDatabaseName'] == null ? null : (map['cosmosdbMongoDatabaseName']! as String).input(),
+      cosmosdbSqlDatabaseName: map['cosmosdbSqlDatabaseName'] == null ? null : (map['cosmosdbSqlDatabaseName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId']! as String).input(),
     );
   }
 }

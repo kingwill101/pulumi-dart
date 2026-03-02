@@ -60,15 +60,15 @@ class DscConfigurationState {
 
   factory DscConfigurationState.fromMap(Map<String, dynamic> map) {
     return DscConfigurationState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
-      contentEmbedded: map['contentEmbedded'] == null ? null : (map['contentEmbedded'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logVerbose: map['logVerbose'] == null ? null : (map['logVerbose'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
+      contentEmbedded: map['contentEmbedded'] == null ? null : (map['contentEmbedded']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logVerbose: map['logVerbose'] == null ? null : (map['logVerbose']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

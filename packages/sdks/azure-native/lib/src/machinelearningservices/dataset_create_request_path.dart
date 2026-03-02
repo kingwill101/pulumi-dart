@@ -25,8 +25,8 @@ class DatasetCreateRequestPath {
 
   factory DatasetCreateRequestPath.fromMap(Map<String, dynamic> map) {
     return DatasetCreateRequestPath(
-      dataPath: map['dataPath'] == null ? null : (DatasetCreateRequestDataPath.fromMap((map['dataPath'] as Map).cast<String, dynamic>())).input(),
-      httpUrl: map['httpUrl'] == null ? null : (map['httpUrl'] as String).input(),
+      dataPath: map['dataPath'] == null ? null : (DatasetCreateRequestDataPath.fromMap((map['dataPath']! as Map).cast<String, dynamic>())).input(),
+      httpUrl: map['httpUrl'] == null ? null : (map['httpUrl']! as String).input(),
     );
   }
 }

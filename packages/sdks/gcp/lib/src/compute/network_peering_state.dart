@@ -73,17 +73,17 @@ class NetworkPeeringState {
 
   factory NetworkPeeringState.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringState(
-      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes'] as bool).input(),
-      exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] == null ? null : (map['exportSubnetRoutesWithPublicIp'] as bool).input(),
-      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes'] as bool).input(),
-      importSubnetRoutesWithPublicIp: map['importSubnetRoutesWithPublicIp'] == null ? null : (map['importSubnetRoutesWithPublicIp'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      peerNetwork: map['peerNetwork'] == null ? null : (map['peerNetwork'] as String).input(),
-      stackType: map['stackType'] == null ? null : (map['stackType'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      stateDetails: map['stateDetails'] == null ? null : (map['stateDetails'] as String).input(),
-      updateStrategy: map['updateStrategy'] == null ? null : (map['updateStrategy'] as String).input(),
+      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes']! as bool).input(),
+      exportSubnetRoutesWithPublicIp: map['exportSubnetRoutesWithPublicIp'] == null ? null : (map['exportSubnetRoutesWithPublicIp']! as bool).input(),
+      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes']! as bool).input(),
+      importSubnetRoutesWithPublicIp: map['importSubnetRoutesWithPublicIp'] == null ? null : (map['importSubnetRoutesWithPublicIp']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      peerNetwork: map['peerNetwork'] == null ? null : (map['peerNetwork']! as String).input(),
+      stackType: map['stackType'] == null ? null : (map['stackType']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      stateDetails: map['stateDetails'] == null ? null : (map['stateDetails']! as String).input(),
+      updateStrategy: map['updateStrategy'] == null ? null : (map['updateStrategy']! as String).input(),
     );
   }
 }

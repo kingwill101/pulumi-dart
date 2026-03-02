@@ -39,10 +39,10 @@ class ClientState {
 
   factory ClientState.fromMap(Map<String, dynamic> map) {
     return ClientState(
-      brand: map['brand'] == null ? null : (map['brand'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      brand: map['brand'] == null ? null : (map['brand']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
     );
   }
 }

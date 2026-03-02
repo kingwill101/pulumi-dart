@@ -58,13 +58,13 @@ class FrontdoorProfileArgs {
 
   factory FrontdoorProfileArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorProfileArgs(
-      identity: map['identity'] == null ? null : (FrontdoorProfileIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      logScrubbingRules: map['logScrubbingRules'] == null ? null : (pulumi.Input.decodeList<FrontdoorProfileLogScrubbingRule>(map['logScrubbingRules'], (value) => FrontdoorProfileLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      identity: map['identity'] == null ? null : (FrontdoorProfileIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      logScrubbingRules: map['logScrubbingRules'] == null ? null : (pulumi.Input.decodeList<FrontdoorProfileLogScrubbingRule>(map['logScrubbingRules']!, (value) => FrontdoorProfileLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      responseTimeoutSeconds: map['responseTimeoutSeconds'] == null ? null : (map['responseTimeoutSeconds'] as int).input(),
+      responseTimeoutSeconds: map['responseTimeoutSeconds'] == null ? null : (map['responseTimeoutSeconds']! as int).input(),
       skuName: (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

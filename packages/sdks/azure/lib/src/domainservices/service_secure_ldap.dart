@@ -50,13 +50,13 @@ class ServiceSecureLdap {
 
   factory ServiceSecureLdap.fromMap(Map<String, dynamic> map) {
     return ServiceSecureLdap(
-      certificateExpiry: map['certificateExpiry'] == null ? null : (map['certificateExpiry'] as String).input(),
-      certificateThumbprint: map['certificateThumbprint'] == null ? null : (map['certificateThumbprint'] as String).input(),
+      certificateExpiry: map['certificateExpiry'] == null ? null : (map['certificateExpiry']! as String).input(),
+      certificateThumbprint: map['certificateThumbprint'] == null ? null : (map['certificateThumbprint']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
-      externalAccessEnabled: map['externalAccessEnabled'] == null ? null : (map['externalAccessEnabled'] as bool).input(),
+      externalAccessEnabled: map['externalAccessEnabled'] == null ? null : (map['externalAccessEnabled']! as bool).input(),
       pfxCertificate: (map['pfxCertificate'] as String).input(),
       pfxCertificatePassword: (map['pfxCertificatePassword'] as String).input(),
-      publicCertificate: map['publicCertificate'] == null ? null : (map['publicCertificate'] as String).input(),
+      publicCertificate: map['publicCertificate'] == null ? null : (map['publicCertificate']! as String).input(),
     );
   }
 }

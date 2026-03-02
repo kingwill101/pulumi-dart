@@ -53,13 +53,13 @@ class RouterBgpPeerBfd {
 
   factory RouterBgpPeerBfd.fromMap(Map<String, dynamic> map) {
     return RouterBgpPeerBfd(
-      minReceiveInterval: map['minReceiveInterval'] == null ? null : (map['minReceiveInterval'] as int).input(),
-      minTransmitInterval: map['minTransmitInterval'] == null ? null : (map['minTransmitInterval'] as int).input(),
-      mode: map['mode'] == null ? null : (RouterBgpPeerBfdMode.fromValue(map['mode'] as String)).input(),
-      multiplier: map['multiplier'] == null ? null : (map['multiplier'] as int).input(),
-      packetMode: map['packetMode'] == null ? null : (RouterBgpPeerBfdPacketMode.fromValue(map['packetMode'] as String)).input(),
-      sessionInitializationMode: map['sessionInitializationMode'] == null ? null : (RouterBgpPeerBfdSessionInitializationMode.fromValue(map['sessionInitializationMode'] as String)).input(),
-      slowTimerInterval: map['slowTimerInterval'] == null ? null : (map['slowTimerInterval'] as int).input(),
+      minReceiveInterval: map['minReceiveInterval'] == null ? null : (map['minReceiveInterval']! as int).input(),
+      minTransmitInterval: map['minTransmitInterval'] == null ? null : (map['minTransmitInterval']! as int).input(),
+      mode: map['mode'] == null ? null : (RouterBgpPeerBfdMode.fromValue(map['mode']! as String)).input(),
+      multiplier: map['multiplier'] == null ? null : (map['multiplier']! as int).input(),
+      packetMode: map['packetMode'] == null ? null : (RouterBgpPeerBfdPacketMode.fromValue(map['packetMode']! as String)).input(),
+      sessionInitializationMode: map['sessionInitializationMode'] == null ? null : (RouterBgpPeerBfdSessionInitializationMode.fromValue(map['sessionInitializationMode']! as String)).input(),
+      slowTimerInterval: map['slowTimerInterval'] == null ? null : (map['slowTimerInterval']! as int).input(),
     );
   }
 }

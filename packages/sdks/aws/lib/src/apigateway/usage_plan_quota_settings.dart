@@ -31,7 +31,7 @@ class UsagePlanQuotaSettings {
   factory UsagePlanQuotaSettings.fromMap(Map<String, dynamic> map) {
     return UsagePlanQuotaSettings(
       limit: (map['limit'] as int).input(),
-      offset: map['offset'] == null ? null : (map['offset'] as int).input(),
+      offset: map['offset'] == null ? null : ((map['offset'] as int).input()).input(),
       period: (map['period'] as String).input(),
     );
   }

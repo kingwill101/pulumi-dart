@@ -39,10 +39,10 @@ class SuppressionArgs {
 
   factory SuppressionArgs.fromMap(Map<String, dynamic> map) {
     return SuppressionArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       recommendationId: (map['recommendationId'] as String).input(),
       resourceId: (map['resourceId'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
     );
   }
 }

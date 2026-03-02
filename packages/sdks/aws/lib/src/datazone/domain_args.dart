@@ -76,17 +76,17 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       domainExecutionRole: (map['domainExecutionRole'] as String).input(),
-      domainVersion: map['domainVersion'] == null ? null : (map['domainVersion'] as String).input(),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole'] as String).input(),
-      singleSignOn: map['singleSignOn'] == null ? null : (DomainSingleSignOn.fromMap((map['singleSignOn'] as Map).cast<String, dynamic>())).input(),
-      skipDeletionCheck: map['skipDeletionCheck'] == null ? null : (map['skipDeletionCheck'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (DomainTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      domainVersion: map['domainVersion'] == null ? null : ((map['domainVersion'] as String).input()).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceRole: map['serviceRole'] == null ? null : ((map['serviceRole'] as String).input()).input(),
+      singleSignOn: map['singleSignOn'] == null ? null : ((DomainSingleSignOn.fromMap((map['singleSignOn']! as Map).cast<String, dynamic>())).input()).input(),
+      skipDeletionCheck: map['skipDeletionCheck'] == null ? null : ((map['skipDeletionCheck'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DomainTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

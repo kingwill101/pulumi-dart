@@ -31,9 +31,9 @@ class EmployeeProperties {
 
   factory EmployeeProperties.fromMap(Map<String, dynamic> map) {
     return EmployeeProperties(
-      age: map['age'] == null ? null : (map['age'] as int).input(),
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
+      age: map['age'] == null ? null : (map['age']! as int).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
     );
   }
 }

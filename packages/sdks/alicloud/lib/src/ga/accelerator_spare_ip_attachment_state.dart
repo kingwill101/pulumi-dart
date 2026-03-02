@@ -36,10 +36,10 @@ class AcceleratorSpareIpAttachmentState {
 
   factory AcceleratorSpareIpAttachmentState.fromMap(Map<String, dynamic> map) {
     return AcceleratorSpareIpAttachmentState(
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      spareIp: map['spareIp'] == null ? null : (map['spareIp'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      spareIp: map['spareIp'] == null ? null : (map['spareIp']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

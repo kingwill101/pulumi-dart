@@ -26,8 +26,8 @@ class VlanGroupProperties {
 
   factory VlanGroupProperties.fromMap(Map<String, dynamic> map) {
     return VlanGroupProperties(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      vlans: map['vlans'] == null ? null : ((map['vlans'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      vlans: map['vlans'] == null ? null : ((map['vlans']! as List).cast<String>()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class BucketV2ReplicationConfigurationRuleDestinationMetric {
 
   factory BucketV2ReplicationConfigurationRuleDestinationMetric.fromMap(Map<String, dynamic> map) {
     return BucketV2ReplicationConfigurationRuleDestinationMetric(
-      minutes: map['minutes'] == null ? null : (map['minutes'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      minutes: map['minutes'] == null ? null : ((map['minutes'] as int).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

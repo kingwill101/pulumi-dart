@@ -106,21 +106,21 @@ class AddonState {
 
   factory AddonState.fromMap(Map<String, dynamic> map) {
     return AddonState(
-      addonName: map['addonName'] == null ? null : (map['addonName'] as String).input(),
-      addonVersion: map['addonVersion'] == null ? null : (map['addonVersion'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      configurationValues: map['configurationValues'] == null ? null : (map['configurationValues'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      modifiedAt: map['modifiedAt'] == null ? null : (map['modifiedAt'] as String).input(),
-      podIdentityAssociations: map['podIdentityAssociations'] == null ? null : (pulumi.Input.decodeList<AddonPodIdentityAssociation>(map['podIdentityAssociations'], (value) => AddonPodIdentityAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      preserve: map['preserve'] == null ? null : (map['preserve'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resolveConflictsOnCreate: map['resolveConflictsOnCreate'] == null ? null : (map['resolveConflictsOnCreate'] as String).input(),
-      resolveConflictsOnUpdate: map['resolveConflictsOnUpdate'] == null ? null : (map['resolveConflictsOnUpdate'] as String).input(),
-      serviceAccountRoleArn: map['serviceAccountRoleArn'] == null ? null : (map['serviceAccountRoleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      addonName: map['addonName'] == null ? null : ((map['addonName'] as String).input()).input(),
+      addonVersion: map['addonVersion'] == null ? null : ((map['addonVersion'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      clusterName: map['clusterName'] == null ? null : ((map['clusterName'] as String).input()).input(),
+      configurationValues: map['configurationValues'] == null ? null : ((map['configurationValues'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      modifiedAt: map['modifiedAt'] == null ? null : ((map['modifiedAt'] as String).input()).input(),
+      podIdentityAssociations: map['podIdentityAssociations'] == null ? null : ((pulumi.Input.decodeList<AddonPodIdentityAssociation>(map['podIdentityAssociations']!, (value) => AddonPodIdentityAssociation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      preserve: map['preserve'] == null ? null : ((map['preserve'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resolveConflictsOnCreate: map['resolveConflictsOnCreate'] == null ? null : ((map['resolveConflictsOnCreate'] as String).input()).input(),
+      resolveConflictsOnUpdate: map['resolveConflictsOnUpdate'] == null ? null : ((map['resolveConflictsOnUpdate'] as String).input()).input(),
+      serviceAccountRoleArn: map['serviceAccountRoleArn'] == null ? null : ((map['serviceAccountRoleArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

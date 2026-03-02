@@ -21,7 +21,7 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetadata {
 
   factory GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1ClassificationMetadata(
-      isMultiLabel: map['isMultiLabel'] == null ? null : (map['isMultiLabel'] as bool).input(),
+      isMultiLabel: map['isMultiLabel'] == null ? null : (map['isMultiLabel']! as bool).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class GaugeView {
 
   factory GaugeView.fromMap(Map<String, dynamic> map) {
     return GaugeView(
-      lowerBound: map['lowerBound'] == null ? null : (map['lowerBound'] as double).input(),
-      upperBound: map['upperBound'] == null ? null : (map['upperBound'] as double).input(),
+      lowerBound: map['lowerBound'] == null ? null : (map['lowerBound']! as double).input(),
+      upperBound: map['upperBound'] == null ? null : (map['upperBound']! as double).input(),
     );
   }
 }

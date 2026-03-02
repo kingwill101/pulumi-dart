@@ -21,7 +21,7 @@ class ChangeStreamConfig {
 
   factory ChangeStreamConfig.fromMap(Map<String, dynamic> map) {
     return ChangeStreamConfig(
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod']! as String).input(),
     );
   }
 }

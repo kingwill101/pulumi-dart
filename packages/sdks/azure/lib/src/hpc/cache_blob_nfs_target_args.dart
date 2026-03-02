@@ -66,15 +66,15 @@ class CacheBlobNfsTargetArgs {
 
   factory CacheBlobNfsTargetArgs.fromMap(Map<String, dynamic> map) {
     return CacheBlobNfsTargetArgs(
-      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName'] as String).input(),
+      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName']! as String).input(),
       cacheName: (map['cacheName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       namespacePath: (map['namespacePath'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       storageContainerId: (map['storageContainerId'] as String).input(),
       usageModel: (map['usageModel'] as String).input(),
-      verificationTimerInSeconds: map['verificationTimerInSeconds'] == null ? null : (map['verificationTimerInSeconds'] as int).input(),
-      writeBackTimerInSeconds: map['writeBackTimerInSeconds'] == null ? null : (map['writeBackTimerInSeconds'] as int).input(),
+      verificationTimerInSeconds: map['verificationTimerInSeconds'] == null ? null : (map['verificationTimerInSeconds']! as int).input(),
+      writeBackTimerInSeconds: map['writeBackTimerInSeconds'] == null ? null : (map['writeBackTimerInSeconds']! as int).input(),
     );
   }
 }

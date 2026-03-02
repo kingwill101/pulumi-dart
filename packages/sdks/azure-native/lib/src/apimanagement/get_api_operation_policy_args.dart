@@ -50,7 +50,7 @@ class GetApiOperationPolicyArgs {
   factory GetApiOperationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetApiOperationPolicyArgs(
       apiId: (map['apiId'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
       operationId: (map['operationId'] as String).input(),
       policyId: (map['policyId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

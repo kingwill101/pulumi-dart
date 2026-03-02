@@ -60,15 +60,15 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings {
 
   factory ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings(
-      bitrate: map['bitrate'] == null ? null : (map['bitrate'] as double).input(),
-      codingMode: map['codingMode'] == null ? null : (map['codingMode'] as String).input(),
-      inputType: map['inputType'] == null ? null : (map['inputType'] as String).input(),
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
-      rateControlMode: map['rateControlMode'] == null ? null : (map['rateControlMode'] as String).input(),
-      rawFormat: map['rawFormat'] == null ? null : (map['rawFormat'] as String).input(),
-      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate'] as double).input(),
-      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
-      vbrQuality: map['vbrQuality'] == null ? null : (map['vbrQuality'] as String).input(),
+      bitrate: map['bitrate'] == null ? null : ((map['bitrate'] as double).input()).input(),
+      codingMode: map['codingMode'] == null ? null : ((map['codingMode'] as String).input()).input(),
+      inputType: map['inputType'] == null ? null : ((map['inputType'] as String).input()).input(),
+      profile: map['profile'] == null ? null : ((map['profile'] as String).input()).input(),
+      rateControlMode: map['rateControlMode'] == null ? null : ((map['rateControlMode'] as String).input()).input(),
+      rawFormat: map['rawFormat'] == null ? null : ((map['rawFormat'] as String).input()).input(),
+      sampleRate: map['sampleRate'] == null ? null : ((map['sampleRate'] as double).input()).input(),
+      spec: map['spec'] == null ? null : ((map['spec'] as String).input()).input(),
+      vbrQuality: map['vbrQuality'] == null ? null : ((map['vbrQuality'] as String).input()).input(),
     );
   }
 }

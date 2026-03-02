@@ -21,7 +21,7 @@ class HybridComputePrivateLinkScopeProperties {
 
   factory HybridComputePrivateLinkScopeProperties.fromMap(Map<String, dynamic> map) {
     return HybridComputePrivateLinkScopeProperties(
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
     );
   }
 }

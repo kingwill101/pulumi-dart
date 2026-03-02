@@ -112,23 +112,23 @@ class GetKubeEnvironmentResult {
 
   factory GetKubeEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetKubeEnvironmentResult(
-      aksResourceID: map['aksResourceID'] == null ? null : map['aksResourceID'] as String,
-      appLogsConfiguration: map['appLogsConfiguration'] == null ? null : AppLogsConfigurationResponse.fromMap((map['appLogsConfiguration'] as Map).cast<String, dynamic>()),
-      arcConfiguration: map['arcConfiguration'] == null ? null : ArcConfigurationResponse.fromMap((map['arcConfiguration'] as Map).cast<String, dynamic>()),
+      aksResourceID: map['aksResourceID'] == null ? null : map['aksResourceID']! as String,
+      appLogsConfiguration: map['appLogsConfiguration'] == null ? null : AppLogsConfigurationResponse.fromMap((map['appLogsConfiguration']! as Map).cast<String, dynamic>()),
+      arcConfiguration: map['arcConfiguration'] == null ? null : ArcConfigurationResponse.fromMap((map['arcConfiguration']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      containerAppsConfiguration: map['containerAppsConfiguration'] == null ? null : ContainerAppsConfigurationResponse.fromMap((map['containerAppsConfiguration'] as Map).cast<String, dynamic>()),
+      containerAppsConfiguration: map['containerAppsConfiguration'] == null ? null : ContainerAppsConfigurationResponse.fromMap((map['containerAppsConfiguration']! as Map).cast<String, dynamic>()),
       defaultDomain: map['defaultDomain'] as String,
       deploymentErrors: map['deploymentErrors'] as String,
-      environmentType: map['environmentType'] == null ? null : map['environmentType'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      environmentType: map['environmentType'] == null ? null : map['environmentType']! as String,
+      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      internalLoadBalancerEnabled: map['internalLoadBalancerEnabled'] == null ? null : map['internalLoadBalancerEnabled'] as bool,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      internalLoadBalancerEnabled: map['internalLoadBalancerEnabled'] == null ? null : map['internalLoadBalancerEnabled']! as bool,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      staticIp: map['staticIp'] == null ? null : map['staticIp'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      staticIp: map['staticIp'] == null ? null : map['staticIp']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

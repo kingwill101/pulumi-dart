@@ -31,9 +31,9 @@ class RegistryPolicyState {
 
   factory RegistryPolicyState.fromMap(Map<String, dynamic> map) {
     return RegistryPolicyState(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registryId: map['registryId'] == null ? null : ((map['registryId'] as String).input()).input(),
     );
   }
 }

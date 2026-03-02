@@ -60,14 +60,14 @@ class VexAssessmentContaineranalysisV1alpha1 {
 
   factory VexAssessmentContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return VexAssessmentContaineranalysisV1alpha1(
-      cve: map['cve'] == null ? null : (map['cve'] as String).input(),
-      impacts: map['impacts'] == null ? null : ((map['impacts'] as List).cast<String>()).input(),
-      justification: map['justification'] == null ? null : (JustificationContaineranalysisV1alpha1.fromMap((map['justification'] as Map).cast<String, dynamic>())).input(),
-      noteName: map['noteName'] == null ? null : (map['noteName'] as String).input(),
-      relatedUris: map['relatedUris'] == null ? null : (pulumi.Input.decodeList<URI>(map['relatedUris'], (value) => URI.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      remediations: map['remediations'] == null ? null : (pulumi.Input.decodeList<RemediationContaineranalysisV1alpha1>(map['remediations'], (value) => RemediationContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (VexAssessmentStateContaineranalysisV1alpha1.fromValue(map['state'] as String)).input(),
-      vulnerabilityId: map['vulnerabilityId'] == null ? null : (map['vulnerabilityId'] as String).input(),
+      cve: map['cve'] == null ? null : (map['cve']! as String).input(),
+      impacts: map['impacts'] == null ? null : ((map['impacts']! as List).cast<String>()).input(),
+      justification: map['justification'] == null ? null : (JustificationContaineranalysisV1alpha1.fromMap((map['justification']! as Map).cast<String, dynamic>())).input(),
+      noteName: map['noteName'] == null ? null : (map['noteName']! as String).input(),
+      relatedUris: map['relatedUris'] == null ? null : (pulumi.Input.decodeList<URI>(map['relatedUris']!, (value) => URI.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remediations: map['remediations'] == null ? null : (pulumi.Input.decodeList<RemediationContaineranalysisV1alpha1>(map['remediations']!, (value) => RemediationContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (VexAssessmentStateContaineranalysisV1alpha1.fromValue(map['state']! as String)).input(),
+      vulnerabilityId: map['vulnerabilityId'] == null ? null : (map['vulnerabilityId']! as String).input(),
     );
   }
 }

@@ -89,17 +89,17 @@ class NetworkToNetworkInterconnectArgs {
 
   factory NetworkToNetworkInterconnectArgs.fromMap(Map<String, dynamic> map) {
     return NetworkToNetworkInterconnectArgs(
-      egressAclId: map['egressAclId'] == null ? null : (map['egressAclId'] as String).input(),
-      exportRoutePolicy: map['exportRoutePolicy'] == null ? null : (ExportRoutePolicyInformation.fromMap((map['exportRoutePolicy'] as Map).cast<String, dynamic>())).input(),
-      importRoutePolicy: map['importRoutePolicy'] == null ? null : (ImportRoutePolicyInformation.fromMap((map['importRoutePolicy'] as Map).cast<String, dynamic>())).input(),
-      ingressAclId: map['ingressAclId'] == null ? null : (map['ingressAclId'] as String).input(),
-      isManagementType: map['isManagementType'] == null ? null : (map['isManagementType'] as String).input(),
-      layer2Configuration: map['layer2Configuration'] == null ? null : (Layer2Configuration.fromMap((map['layer2Configuration'] as Map).cast<String, dynamic>())).input(),
+      egressAclId: map['egressAclId'] == null ? null : (map['egressAclId']! as String).input(),
+      exportRoutePolicy: map['exportRoutePolicy'] == null ? null : (ExportRoutePolicyInformation.fromMap((map['exportRoutePolicy']! as Map).cast<String, dynamic>())).input(),
+      importRoutePolicy: map['importRoutePolicy'] == null ? null : (ImportRoutePolicyInformation.fromMap((map['importRoutePolicy']! as Map).cast<String, dynamic>())).input(),
+      ingressAclId: map['ingressAclId'] == null ? null : (map['ingressAclId']! as String).input(),
+      isManagementType: map['isManagementType'] == null ? null : (map['isManagementType']! as String).input(),
+      layer2Configuration: map['layer2Configuration'] == null ? null : (Layer2Configuration.fromMap((map['layer2Configuration']! as Map).cast<String, dynamic>())).input(),
       networkFabricName: (map['networkFabricName'] as String).input(),
-      networkToNetworkInterconnectName: map['networkToNetworkInterconnectName'] == null ? null : (map['networkToNetworkInterconnectName'] as String).input(),
-      nniType: map['nniType'] == null ? null : (map['nniType'] as String).input(),
-      npbStaticRouteConfiguration: map['npbStaticRouteConfiguration'] == null ? null : (NpbStaticRouteConfiguration.fromMap((map['npbStaticRouteConfiguration'] as Map).cast<String, dynamic>())).input(),
-      optionBLayer3Configuration: map['optionBLayer3Configuration'] == null ? null : (NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration.fromMap((map['optionBLayer3Configuration'] as Map).cast<String, dynamic>())).input(),
+      networkToNetworkInterconnectName: map['networkToNetworkInterconnectName'] == null ? null : (map['networkToNetworkInterconnectName']! as String).input(),
+      nniType: map['nniType'] == null ? null : (map['nniType']! as String).input(),
+      npbStaticRouteConfiguration: map['npbStaticRouteConfiguration'] == null ? null : (NpbStaticRouteConfiguration.fromMap((map['npbStaticRouteConfiguration']! as Map).cast<String, dynamic>())).input(),
+      optionBLayer3Configuration: map['optionBLayer3Configuration'] == null ? null : (NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration.fromMap((map['optionBLayer3Configuration']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       useOptionB: (map['useOptionB'] as String).input(),
     );

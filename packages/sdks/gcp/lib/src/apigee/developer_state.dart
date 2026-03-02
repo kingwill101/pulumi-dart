@@ -69,16 +69,16 @@ class DeveloperState {
 
   factory DeveloperState.fromMap(Map<String, dynamic> map) {
     return DeveloperState(
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAttribute>(map['attributes'], (value) => DeveloperAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
-      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt'] as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      organizatioName: map['organizatioName'] == null ? null : (map['organizatioName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAttribute>(map['attributes']!, (value) => DeveloperAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName']! as String).input(),
+      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt']! as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      organizatioName: map['organizatioName'] == null ? null : (map['organizatioName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

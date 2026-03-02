@@ -22,7 +22,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutp
 
   factory ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput.fromMap(Map<String, dynamic> map) {
     return ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput(
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty>(map['properties'], (value) => ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty>(map['properties']!, (value) => ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

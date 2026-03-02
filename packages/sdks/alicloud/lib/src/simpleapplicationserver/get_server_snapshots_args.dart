@@ -49,12 +49,12 @@ class GetServerSnapshotsArgs {
 
   factory GetServerSnapshotsArgs.fromMap(Map<String, dynamic> map) {
     return GetServerSnapshotsArgs(
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

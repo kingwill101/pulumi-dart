@@ -31,7 +31,7 @@ class VirtualNodeSpecServiceDiscoveryAwsCloudMap {
 
   factory VirtualNodeSpecServiceDiscoveryAwsCloudMap.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecServiceDiscoveryAwsCloudMap(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
+      attributes: map['attributes'] == null ? null : (((map['attributes'] as Map).cast<String, String>()).input()).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

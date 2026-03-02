@@ -87,19 +87,19 @@ class V3CustomDomainState {
 
   factory V3CustomDomainState.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      authConfig: map['authConfig'] == null ? null : (V3CustomDomainAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())).input(),
-      certConfig: map['certConfig'] == null ? null : (V3CustomDomainCertConfig.fromMap((map['certConfig'] as Map).cast<String, dynamic>())).input(),
-      corsConfig: map['corsConfig'] == null ? null : (V3CustomDomainCorsConfig.fromMap((map['corsConfig'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      routeConfig: map['routeConfig'] == null ? null : (V3CustomDomainRouteConfig.fromMap((map['routeConfig'] as Map).cast<String, dynamic>())).input(),
-      subdomainCount: map['subdomainCount'] == null ? null : (map['subdomainCount'] as String).input(),
-      tlsConfig: map['tlsConfig'] == null ? null : (V3CustomDomainTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())).input(),
-      wafConfig: map['wafConfig'] == null ? null : (V3CustomDomainWafConfig.fromMap((map['wafConfig'] as Map).cast<String, dynamic>())).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      authConfig: map['authConfig'] == null ? null : (V3CustomDomainAuthConfig.fromMap((map['authConfig']! as Map).cast<String, dynamic>())).input(),
+      certConfig: map['certConfig'] == null ? null : (V3CustomDomainCertConfig.fromMap((map['certConfig']! as Map).cast<String, dynamic>())).input(),
+      corsConfig: map['corsConfig'] == null ? null : (V3CustomDomainCorsConfig.fromMap((map['corsConfig']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName']! as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      routeConfig: map['routeConfig'] == null ? null : (V3CustomDomainRouteConfig.fromMap((map['routeConfig']! as Map).cast<String, dynamic>())).input(),
+      subdomainCount: map['subdomainCount'] == null ? null : (map['subdomainCount']! as String).input(),
+      tlsConfig: map['tlsConfig'] == null ? null : (V3CustomDomainTlsConfig.fromMap((map['tlsConfig']! as Map).cast<String, dynamic>())).input(),
+      wafConfig: map['wafConfig'] == null ? null : (V3CustomDomainWafConfig.fromMap((map['wafConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

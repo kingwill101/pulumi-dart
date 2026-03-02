@@ -56,12 +56,12 @@ class BrokerPropertiesResponse {
 
   factory BrokerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BrokerPropertiesResponse(
-      advanced: map['advanced'] == null ? null : (AdvancedSettingsResponse.fromMap((map['advanced'] as Map).cast<String, dynamic>())).input(),
-      cardinality: map['cardinality'] == null ? null : (CardinalityResponse.fromMap((map['cardinality'] as Map).cast<String, dynamic>())).input(),
-      diagnostics: map['diagnostics'] == null ? null : (BrokerDiagnosticsResponse.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())).input(),
-      diskBackedMessageBuffer: map['diskBackedMessageBuffer'] == null ? null : (DiskBackedMessageBufferResponse.fromMap((map['diskBackedMessageBuffer'] as Map).cast<String, dynamic>())).input(),
-      generateResourceLimits: map['generateResourceLimits'] == null ? null : (GenerateResourceLimitsResponse.fromMap((map['generateResourceLimits'] as Map).cast<String, dynamic>())).input(),
-      memoryProfile: map['memoryProfile'] == null ? null : (map['memoryProfile'] as String).input(),
+      advanced: map['advanced'] == null ? null : (AdvancedSettingsResponse.fromMap((map['advanced']! as Map).cast<String, dynamic>())).input(),
+      cardinality: map['cardinality'] == null ? null : (CardinalityResponse.fromMap((map['cardinality']! as Map).cast<String, dynamic>())).input(),
+      diagnostics: map['diagnostics'] == null ? null : (BrokerDiagnosticsResponse.fromMap((map['diagnostics']! as Map).cast<String, dynamic>())).input(),
+      diskBackedMessageBuffer: map['diskBackedMessageBuffer'] == null ? null : (DiskBackedMessageBufferResponse.fromMap((map['diskBackedMessageBuffer']! as Map).cast<String, dynamic>())).input(),
+      generateResourceLimits: map['generateResourceLimits'] == null ? null : (GenerateResourceLimitsResponse.fromMap((map['generateResourceLimits']! as Map).cast<String, dynamic>())).input(),
+      memoryProfile: map['memoryProfile'] == null ? null : (map['memoryProfile']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

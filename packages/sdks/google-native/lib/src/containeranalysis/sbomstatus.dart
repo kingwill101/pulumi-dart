@@ -27,8 +27,8 @@ class SBOMStatus {
 
   factory SBOMStatus.fromMap(Map<String, dynamic> map) {
     return SBOMStatus(
-      error: map['error'] == null ? null : (map['error'] as String).input(),
-      sbomState: map['sbomState'] == null ? null : (SBOMStatusSbomState.fromValue(map['sbomState'] as String)).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
+      sbomState: map['sbomState'] == null ? null : (SBOMStatusSbomState.fromValue(map['sbomState']! as String)).input(),
     );
   }
 }

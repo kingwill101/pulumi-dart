@@ -20,7 +20,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSetti
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsFrameCaptureCdnSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsFrameCaptureCdnSettings(
-      frameCaptureS3Settings: map['frameCaptureS3Settings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsFrameCaptureCdnSettingsFrameCaptureS3Settings.fromMap((map['frameCaptureS3Settings'] as Map).cast<String, dynamic>())).input(),
+      frameCaptureS3Settings: map['frameCaptureS3Settings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsFrameCaptureCdnSettingsFrameCaptureS3Settings.fromMap((map['frameCaptureS3Settings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

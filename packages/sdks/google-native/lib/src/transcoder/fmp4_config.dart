@@ -21,7 +21,7 @@ class Fmp4Config {
 
   factory Fmp4Config.fromMap(Map<String, dynamic> map) {
     return Fmp4Config(
-      codecTag: map['codecTag'] == null ? null : (map['codecTag'] as String).input(),
+      codecTag: map['codecTag'] == null ? null : (map['codecTag']! as String).input(),
     );
   }
 }

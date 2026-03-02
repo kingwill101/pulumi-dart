@@ -35,10 +35,10 @@ class GetOnlineEndpointTokenResult {
 
   factory GetOnlineEndpointTokenResult.fromMap(Map<String, dynamic> map) {
     return GetOnlineEndpointTokenResult(
-      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
-      expiryTimeUtc: map['expiryTimeUtc'] == null ? null : map['expiryTimeUtc'] as double,
-      refreshAfterTimeUtc: map['refreshAfterTimeUtc'] == null ? null : map['refreshAfterTimeUtc'] as double,
-      tokenType: map['tokenType'] == null ? null : map['tokenType'] as String,
+      accessToken: map['accessToken'] == null ? null : map['accessToken']! as String,
+      expiryTimeUtc: map['expiryTimeUtc'] == null ? null : map['expiryTimeUtc']! as double,
+      refreshAfterTimeUtc: map['refreshAfterTimeUtc'] == null ? null : map['refreshAfterTimeUtc']! as double,
+      tokenType: map['tokenType'] == null ? null : map['tokenType']! as String,
     );
   }
 }

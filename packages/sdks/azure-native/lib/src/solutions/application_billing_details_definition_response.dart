@@ -21,7 +21,7 @@ class ApplicationBillingDetailsDefinitionResponse {
 
   factory ApplicationBillingDetailsDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationBillingDetailsDefinitionResponse(
-      resourceUsageId: map['resourceUsageId'] == null ? null : (map['resourceUsageId'] as String).input(),
+      resourceUsageId: map['resourceUsageId'] == null ? null : (map['resourceUsageId']! as String).input(),
     );
   }
 }

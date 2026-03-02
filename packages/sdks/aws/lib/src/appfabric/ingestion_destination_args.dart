@@ -57,12 +57,12 @@ class IngestionDestinationArgs {
   factory IngestionDestinationArgs.fromMap(Map<String, dynamic> map) {
     return IngestionDestinationArgs(
       appBundleArn: (map['appBundleArn'] as String).input(),
-      destinationConfiguration: (IngestionDestinationDestinationConfiguration.fromMap((map['destinationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      destinationConfiguration: (IngestionDestinationDestinationConfiguration.fromMap((map['destinationConfiguration']! as Map).cast<String, dynamic>())).input(),
       ingestionArn: (map['ingestionArn'] as String).input(),
-      processingConfiguration: (IngestionDestinationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (IngestionDestinationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      processingConfiguration: (IngestionDestinationProcessingConfiguration.fromMap((map['processingConfiguration']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((IngestionDestinationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

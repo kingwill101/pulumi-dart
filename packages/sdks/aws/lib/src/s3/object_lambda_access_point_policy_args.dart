@@ -39,10 +39,10 @@ class ObjectLambdaAccessPointPolicyArgs {
 
   factory ObjectLambdaAccessPointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointPolicyArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

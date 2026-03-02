@@ -163,16 +163,16 @@ class AlertPolicyConditionConditionThreshold {
 
   factory AlertPolicyConditionConditionThreshold.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionThreshold(
-      aggregations: map['aggregations'] == null ? null : (pulumi.Input.decodeList<AlertPolicyConditionConditionThresholdAggregation>(map['aggregations'], (value) => AlertPolicyConditionConditionThresholdAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aggregations: map['aggregations'] == null ? null : (pulumi.Input.decodeList<AlertPolicyConditionConditionThresholdAggregation>(map['aggregations']!, (value) => AlertPolicyConditionConditionThresholdAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
       comparison: (map['comparison'] as String).input(),
-      denominatorAggregations: map['denominatorAggregations'] == null ? null : (pulumi.Input.decodeList<AlertPolicyConditionConditionThresholdDenominatorAggregation>(map['denominatorAggregations'], (value) => AlertPolicyConditionConditionThresholdDenominatorAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      denominatorFilter: map['denominatorFilter'] == null ? null : (map['denominatorFilter'] as String).input(),
+      denominatorAggregations: map['denominatorAggregations'] == null ? null : (pulumi.Input.decodeList<AlertPolicyConditionConditionThresholdDenominatorAggregation>(map['denominatorAggregations']!, (value) => AlertPolicyConditionConditionThresholdDenominatorAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      denominatorFilter: map['denominatorFilter'] == null ? null : (map['denominatorFilter']! as String).input(),
       duration: (map['duration'] as String).input(),
-      evaluationMissingData: map['evaluationMissingData'] == null ? null : (map['evaluationMissingData'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      forecastOptions: map['forecastOptions'] == null ? null : (AlertPolicyConditionConditionThresholdForecastOptions.fromMap((map['forecastOptions'] as Map).cast<String, dynamic>())).input(),
-      thresholdValue: map['thresholdValue'] == null ? null : (map['thresholdValue'] as double).input(),
-      trigger: map['trigger'] == null ? null : (AlertPolicyConditionConditionThresholdTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      evaluationMissingData: map['evaluationMissingData'] == null ? null : (map['evaluationMissingData']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      forecastOptions: map['forecastOptions'] == null ? null : (AlertPolicyConditionConditionThresholdForecastOptions.fromMap((map['forecastOptions']! as Map).cast<String, dynamic>())).input(),
+      thresholdValue: map['thresholdValue'] == null ? null : (map['thresholdValue']! as double).input(),
+      trigger: map['trigger'] == null ? null : (AlertPolicyConditionConditionThresholdTrigger.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class ChannelEncoderSettingsOutputGroupOutput {
 
   factory ChannelEncoderSettingsOutputGroupOutput.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutput(
-      audioDescriptionNames: map['audioDescriptionNames'] == null ? null : ((map['audioDescriptionNames'] as List).cast<String>()).input(),
-      captionDescriptionNames: map['captionDescriptionNames'] == null ? null : ((map['captionDescriptionNames'] as List).cast<String>()).input(),
-      outputName: map['outputName'] == null ? null : (map['outputName'] as String).input(),
-      outputSettings: (ChannelEncoderSettingsOutputGroupOutputOutputSettings.fromMap((map['outputSettings'] as Map).cast<String, dynamic>())).input(),
-      videoDescriptionName: map['videoDescriptionName'] == null ? null : (map['videoDescriptionName'] as String).input(),
+      audioDescriptionNames: map['audioDescriptionNames'] == null ? null : (((map['audioDescriptionNames'] as List).cast<String>()).input()).input(),
+      captionDescriptionNames: map['captionDescriptionNames'] == null ? null : (((map['captionDescriptionNames'] as List).cast<String>()).input()).input(),
+      outputName: map['outputName'] == null ? null : ((map['outputName'] as String).input()).input(),
+      outputSettings: (ChannelEncoderSettingsOutputGroupOutputOutputSettings.fromMap((map['outputSettings']! as Map).cast<String, dynamic>())).input(),
+      videoDescriptionName: map['videoDescriptionName'] == null ? null : ((map['videoDescriptionName'] as String).input()).input(),
     );
   }
 }

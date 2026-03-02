@@ -61,15 +61,15 @@ class UploadState {
 
   factory UploadState.fromMap(Map<String, dynamic> map) {
     return UploadState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectArn: map['projectArn'] == null ? null : (map['projectArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      category: map['category'] == null ? null : ((map['category'] as String).input()).input(),
+      contentType: map['contentType'] == null ? null : ((map['contentType'] as String).input()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      projectArn: map['projectArn'] == null ? null : ((map['projectArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
     );
   }
 }

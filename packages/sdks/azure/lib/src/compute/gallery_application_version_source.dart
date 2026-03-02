@@ -25,7 +25,7 @@ class GalleryApplicationVersionSource {
 
   factory GalleryApplicationVersionSource.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationVersionSource(
-      defaultConfigurationLink: map['defaultConfigurationLink'] == null ? null : (map['defaultConfigurationLink'] as String).input(),
+      defaultConfigurationLink: map['defaultConfigurationLink'] == null ? null : (map['defaultConfigurationLink']! as String).input(),
       mediaLink: (map['mediaLink'] as String).input(),
     );
   }

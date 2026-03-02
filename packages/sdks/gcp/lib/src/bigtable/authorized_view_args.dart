@@ -52,11 +52,11 @@ class AuthorizedViewArgs {
 
   factory AuthorizedViewArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedViewArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as String).input(),
       instanceName: (map['instanceName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      subsetView: map['subsetView'] == null ? null : (AuthorizedViewSubsetView.fromMap((map['subsetView'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      subsetView: map['subsetView'] == null ? null : (AuthorizedViewSubsetView.fromMap((map['subsetView']! as Map).cast<String, dynamic>())).input(),
       tableName: (map['tableName'] as String).input(),
     );
   }

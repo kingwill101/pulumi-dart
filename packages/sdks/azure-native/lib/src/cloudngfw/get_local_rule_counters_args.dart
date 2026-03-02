@@ -38,7 +38,7 @@ class GetLocalRuleCountersArgs {
 
   factory GetLocalRuleCountersArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalRuleCountersArgs(
-      firewallName: map['firewallName'] == null ? null : (map['firewallName'] as String).input(),
+      firewallName: map['firewallName'] == null ? null : (map['firewallName']! as String).input(),
       localRulestackName: (map['localRulestackName'] as String).input(),
       priority: (map['priority'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

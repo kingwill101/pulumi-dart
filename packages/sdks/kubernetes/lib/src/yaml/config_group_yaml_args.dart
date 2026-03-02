@@ -44,11 +44,11 @@ class ConfigGroupYamlArgs {
 
   factory ConfigGroupYamlArgs.fromMap(Map<String, dynamic> map) {
     return ConfigGroupYamlArgs(
-      files: map['files'] == null ? null : (map['files'] as String).input(),
-      objs: map['objs'] == null ? null : ((map['objs'] as List).cast<dynamic>()).input(),
-      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix'] as String).input(),
-      transformations: map['transformations'] == null ? null : ((map['transformations'] as List).cast<dynamic>()).input(),
-      yaml: map['yaml'] == null ? null : (map['yaml'] as String).input(),
+      files: map['files'] == null ? null : (map['files']! as String).input(),
+      objs: map['objs'] == null ? null : ((map['objs']! as List).cast<dynamic>()).input(),
+      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix']! as String).input(),
+      transformations: map['transformations'] == null ? null : ((map['transformations']! as List).cast<dynamic>()).input(),
+      yaml: map['yaml'] == null ? null : (map['yaml']! as String).input(),
     );
   }
 }

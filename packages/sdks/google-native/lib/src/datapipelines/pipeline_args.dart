@@ -72,15 +72,15 @@ class PipelineArgs {
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
       displayName: (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pipelineSources: map['pipelineSources'] == null ? null : ((map['pipelineSources'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      scheduleInfo: map['scheduleInfo'] == null ? null : (GoogleCloudDatapipelinesV1ScheduleSpec.fromMap((map['scheduleInfo'] as Map).cast<String, dynamic>())).input(),
-      schedulerServiceAccountEmail: map['schedulerServiceAccountEmail'] == null ? null : (map['schedulerServiceAccountEmail'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pipelineSources: map['pipelineSources'] == null ? null : ((map['pipelineSources']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      scheduleInfo: map['scheduleInfo'] == null ? null : (GoogleCloudDatapipelinesV1ScheduleSpec.fromMap((map['scheduleInfo']! as Map).cast<String, dynamic>())).input(),
+      schedulerServiceAccountEmail: map['schedulerServiceAccountEmail'] == null ? null : (map['schedulerServiceAccountEmail']! as String).input(),
       state: (PipelineState.fromValue(map['state'] as String)).input(),
       type: (PipelineType.fromValue(map['type'] as String)).input(),
-      workload: map['workload'] == null ? null : (GoogleCloudDatapipelinesV1Workload.fromMap((map['workload'] as Map).cast<String, dynamic>())).input(),
+      workload: map['workload'] == null ? null : (GoogleCloudDatapipelinesV1Workload.fromMap((map['workload']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -45,11 +45,11 @@ class ReportPlanReportSetting {
 
   factory ReportPlanReportSetting.fromMap(Map<String, dynamic> map) {
     return ReportPlanReportSetting(
-      accounts: map['accounts'] == null ? null : ((map['accounts'] as List).cast<String>()).input(),
-      frameworkArns: map['frameworkArns'] == null ? null : ((map['frameworkArns'] as List).cast<String>()).input(),
-      numberOfFrameworks: map['numberOfFrameworks'] == null ? null : (map['numberOfFrameworks'] as int).input(),
-      organizationUnits: map['organizationUnits'] == null ? null : ((map['organizationUnits'] as List).cast<String>()).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      accounts: map['accounts'] == null ? null : (((map['accounts'] as List).cast<String>()).input()).input(),
+      frameworkArns: map['frameworkArns'] == null ? null : (((map['frameworkArns'] as List).cast<String>()).input()).input(),
+      numberOfFrameworks: map['numberOfFrameworks'] == null ? null : ((map['numberOfFrameworks'] as int).input()).input(),
+      organizationUnits: map['organizationUnits'] == null ? null : (((map['organizationUnits'] as List).cast<String>()).input()).input(),
+      regions: map['regions'] == null ? null : (((map['regions'] as List).cast<String>()).input()).input(),
       reportTemplate: (map['reportTemplate'] as String).input(),
     );
   }

@@ -22,7 +22,7 @@ class SoleTenantConfig {
 
   factory SoleTenantConfig.fromMap(Map<String, dynamic> map) {
     return SoleTenantConfig(
-      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<NodeAffinity>(map['nodeAffinities'], (value) => NodeAffinity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<NodeAffinity>(map['nodeAffinities']!, (value) => NodeAffinity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

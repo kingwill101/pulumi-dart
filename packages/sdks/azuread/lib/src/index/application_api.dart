@@ -36,10 +36,10 @@ class ApplicationApi {
 
   factory ApplicationApi.fromMap(Map<String, dynamic> map) {
     return ApplicationApi(
-      knownClientApplications: map['knownClientApplications'] == null ? null : ((map['knownClientApplications'] as List).cast<String>()).input(),
-      mappedClaimsEnabled: map['mappedClaimsEnabled'] == null ? null : (map['mappedClaimsEnabled'] as bool).input(),
-      oauth2PermissionScopes: map['oauth2PermissionScopes'] == null ? null : (pulumi.Input.decodeList<ApplicationApiOauth2PermissionScope>(map['oauth2PermissionScopes'], (value) => ApplicationApiOauth2PermissionScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestedAccessTokenVersion: map['requestedAccessTokenVersion'] == null ? null : (map['requestedAccessTokenVersion'] as int).input(),
+      knownClientApplications: map['knownClientApplications'] == null ? null : ((map['knownClientApplications']! as List).cast<String>()).input(),
+      mappedClaimsEnabled: map['mappedClaimsEnabled'] == null ? null : (map['mappedClaimsEnabled']! as bool).input(),
+      oauth2PermissionScopes: map['oauth2PermissionScopes'] == null ? null : (pulumi.Input.decodeList<ApplicationApiOauth2PermissionScope>(map['oauth2PermissionScopes']!, (value) => ApplicationApiOauth2PermissionScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestedAccessTokenVersion: map['requestedAccessTokenVersion'] == null ? null : (map['requestedAccessTokenVersion']! as int).input(),
     );
   }
 }

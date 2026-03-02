@@ -67,15 +67,15 @@ class DefenderForContainersGcpOffering {
 
   factory DefenderForContainersGcpOffering.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersGcpOffering(
-      dataPipelineNativeCloudConnection: map['dataPipelineNativeCloudConnection'] == null ? null : (DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection.fromMap((map['dataPipelineNativeCloudConnection'] as Map).cast<String, dynamic>())).input(),
-      enableAuditLogsAutoProvisioning: map['enableAuditLogsAutoProvisioning'] == null ? null : (map['enableAuditLogsAutoProvisioning'] as bool).input(),
-      enableDefenderAgentAutoProvisioning: map['enableDefenderAgentAutoProvisioning'] == null ? null : (map['enableDefenderAgentAutoProvisioning'] as bool).input(),
-      enablePolicyAgentAutoProvisioning: map['enablePolicyAgentAutoProvisioning'] == null ? null : (map['enablePolicyAgentAutoProvisioning'] as bool).input(),
-      mdcContainersAgentlessDiscoveryK8s: map['mdcContainersAgentlessDiscoveryK8s'] == null ? null : (DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s.fromMap((map['mdcContainersAgentlessDiscoveryK8s'] as Map).cast<String, dynamic>())).input(),
-      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderForContainersGcpOfferingMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment'] as Map).cast<String, dynamic>())).input(),
-      nativeCloudConnection: map['nativeCloudConnection'] == null ? null : (DefenderForContainersGcpOfferingNativeCloudConnection.fromMap((map['nativeCloudConnection'] as Map).cast<String, dynamic>())).input(),
+      dataPipelineNativeCloudConnection: map['dataPipelineNativeCloudConnection'] == null ? null : (DefenderForContainersGcpOfferingDataPipelineNativeCloudConnection.fromMap((map['dataPipelineNativeCloudConnection']! as Map).cast<String, dynamic>())).input(),
+      enableAuditLogsAutoProvisioning: map['enableAuditLogsAutoProvisioning'] == null ? null : (map['enableAuditLogsAutoProvisioning']! as bool).input(),
+      enableDefenderAgentAutoProvisioning: map['enableDefenderAgentAutoProvisioning'] == null ? null : (map['enableDefenderAgentAutoProvisioning']! as bool).input(),
+      enablePolicyAgentAutoProvisioning: map['enablePolicyAgentAutoProvisioning'] == null ? null : (map['enablePolicyAgentAutoProvisioning']! as bool).input(),
+      mdcContainersAgentlessDiscoveryK8s: map['mdcContainersAgentlessDiscoveryK8s'] == null ? null : (DefenderForContainersGcpOfferingMdcContainersAgentlessDiscoveryK8s.fromMap((map['mdcContainersAgentlessDiscoveryK8s']! as Map).cast<String, dynamic>())).input(),
+      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderForContainersGcpOfferingMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment']! as Map).cast<String, dynamic>())).input(),
+      nativeCloudConnection: map['nativeCloudConnection'] == null ? null : (DefenderForContainersGcpOfferingNativeCloudConnection.fromMap((map['nativeCloudConnection']! as Map).cast<String, dynamic>())).input(),
       offeringType: (map['offeringType'] as String).input(),
-      vmScanners: map['vmScanners'] == null ? null : (DefenderForContainersGcpOfferingVmScanners.fromMap((map['vmScanners'] as Map).cast<String, dynamic>())).input(),
+      vmScanners: map['vmScanners'] == null ? null : (DefenderForContainersGcpOfferingVmScanners.fromMap((map['vmScanners']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

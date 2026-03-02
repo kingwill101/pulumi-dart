@@ -36,10 +36,10 @@ class UserGroupState {
 
   factory UserGroupState.fromMap(Map<String, dynamic> map) {
     return UserGroupState(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      userGroupId: map['userGroupId'] == null ? null : (map['userGroupId'] as String).input(),
-      userGroupName: map['userGroupName'] == null ? null : (map['userGroupName'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      userGroupId: map['userGroupId'] == null ? null : (map['userGroupId']! as String).input(),
+      userGroupName: map['userGroupName'] == null ? null : (map['userGroupName']! as String).input(),
     );
   }
 }

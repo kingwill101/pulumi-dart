@@ -20,7 +20,7 @@ class VmwareAdminClusterLoadBalancerMetalLbConfig {
 
   factory VmwareAdminClusterLoadBalancerMetalLbConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterLoadBalancerMetalLbConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

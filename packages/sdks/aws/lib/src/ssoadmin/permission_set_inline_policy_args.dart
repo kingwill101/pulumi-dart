@@ -42,7 +42,7 @@ class PermissionSetInlinePolicyArgs {
       inlinePolicy: (map['inlinePolicy'] as String).input(),
       instanceArn: (map['instanceArn'] as String).input(),
       permissionSetArn: (map['permissionSetArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

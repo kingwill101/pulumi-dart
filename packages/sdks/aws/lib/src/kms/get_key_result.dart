@@ -154,12 +154,12 @@ class GetKeyResult {
       keyState: map['keyState'] as String,
       keyUsage: map['keyUsage'] as String,
       multiRegion: map['multiRegion'] as bool,
-      multiRegionConfigurations: pulumi.Input.decodeList<GetKeyMultiRegionConfiguration>(map['multiRegionConfigurations'], (value) => GetKeyMultiRegionConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      multiRegionConfigurations: pulumi.Input.decodeList<GetKeyMultiRegionConfiguration>(map['multiRegionConfigurations']!, (value) => GetKeyMultiRegionConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       origin: map['origin'] as String,
       pendingDeletionWindowInDays: map['pendingDeletionWindowInDays'] as int,
       region: map['region'] as String,
       validTo: map['validTo'] as String,
-      xksKeyConfigurations: pulumi.Input.decodeList<GetKeyXksKeyConfiguration>(map['xksKeyConfigurations'], (value) => GetKeyXksKeyConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      xksKeyConfigurations: pulumi.Input.decodeList<GetKeyXksKeyConfiguration>(map['xksKeyConfigurations']!, (value) => GetKeyXksKeyConfiguration.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -45,11 +45,11 @@ class OSPolicyResource {
 
   factory OSPolicyResource.fromMap(Map<String, dynamic> map) {
     return OSPolicyResource(
-      exec: map['exec'] == null ? null : (OSPolicyResourceExecResource.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (OSPolicyResourceFileResource.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      exec: map['exec'] == null ? null : (OSPolicyResourceExecResource.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (OSPolicyResourceFileResource.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
-      pkg: map['pkg'] == null ? null : (OSPolicyResourcePackageResource.fromMap((map['pkg'] as Map).cast<String, dynamic>())).input(),
-      repository: map['repository'] == null ? null : (OSPolicyResourceRepositoryResource.fromMap((map['repository'] as Map).cast<String, dynamic>())).input(),
+      pkg: map['pkg'] == null ? null : (OSPolicyResourcePackageResource.fromMap((map['pkg']! as Map).cast<String, dynamic>())).input(),
+      repository: map['repository'] == null ? null : (OSPolicyResourceRepositoryResource.fromMap((map['repository']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

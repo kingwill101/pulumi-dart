@@ -100,21 +100,21 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      attributes: map['attributes'] == null ? null : (ServiceAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      discoveredService: map['discoveredService'] == null ? null : (map['discoveredService'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
-      serviceProperties: map['serviceProperties'] == null ? null : (pulumi.Input.decodeList<ServiceServiceProperty>(map['serviceProperties'], (value) => ServiceServiceProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceReferences: map['serviceReferences'] == null ? null : (pulumi.Input.decodeList<ServiceServiceReference>(map['serviceReferences'], (value) => ServiceServiceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      attributes: map['attributes'] == null ? null : (ServiceAttributes.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      discoveredService: map['discoveredService'] == null ? null : (map['discoveredService']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      serviceProperties: map['serviceProperties'] == null ? null : (pulumi.Input.decodeList<ServiceServiceProperty>(map['serviceProperties']!, (value) => ServiceServiceProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceReferences: map['serviceReferences'] == null ? null : (pulumi.Input.decodeList<ServiceServiceReference>(map['serviceReferences']!, (value) => ServiceServiceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class DeploymentStreamingResourceSetting {
 
   factory DeploymentStreamingResourceSetting.fromMap(Map<String, dynamic> map) {
     return DeploymentStreamingResourceSetting(
-      basicResourceSetting: map['basicResourceSetting'] == null ? null : (DeploymentStreamingResourceSettingBasicResourceSetting.fromMap((map['basicResourceSetting'] as Map).cast<String, dynamic>())).input(),
-      expertResourceSetting: map['expertResourceSetting'] == null ? null : (DeploymentStreamingResourceSettingExpertResourceSetting.fromMap((map['expertResourceSetting'] as Map).cast<String, dynamic>())).input(),
-      resourceSettingMode: map['resourceSettingMode'] == null ? null : (map['resourceSettingMode'] as String).input(),
+      basicResourceSetting: map['basicResourceSetting'] == null ? null : (DeploymentStreamingResourceSettingBasicResourceSetting.fromMap((map['basicResourceSetting']! as Map).cast<String, dynamic>())).input(),
+      expertResourceSetting: map['expertResourceSetting'] == null ? null : (DeploymentStreamingResourceSettingExpertResourceSetting.fromMap((map['expertResourceSetting']! as Map).cast<String, dynamic>())).input(),
+      resourceSettingMode: map['resourceSettingMode'] == null ? null : (map['resourceSettingMode']! as String).input(),
     );
   }
 }

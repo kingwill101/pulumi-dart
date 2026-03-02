@@ -81,18 +81,18 @@ class GalleryApplicationArgs {
 
   factory GalleryApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationArgs(
-      customActions: map['customActions'] == null ? null : (pulumi.Input.decodeList<GalleryApplicationCustomAction>(map['customActions'], (value) => GalleryApplicationCustomAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
-      eula: map['eula'] == null ? null : (map['eula'] as String).input(),
-      galleryApplicationName: map['galleryApplicationName'] == null ? null : (map['galleryApplicationName'] as String).input(),
+      customActions: map['customActions'] == null ? null : (pulumi.Input.decodeList<GalleryApplicationCustomAction>(map['customActions']!, (value) => GalleryApplicationCustomAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
+      eula: map['eula'] == null ? null : (map['eula']! as String).input(),
+      galleryApplicationName: map['galleryApplicationName'] == null ? null : (map['galleryApplicationName']! as String).input(),
       galleryName: (map['galleryName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri'] as String).input(),
-      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri']! as String).input(),
+      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       supportedOSType: (OperatingSystemTypes.fromValue(map['supportedOSType'] as String)).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

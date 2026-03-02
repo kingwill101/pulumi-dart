@@ -73,15 +73,15 @@ class MonitorArgs {
 
   factory MonitorArgs.fromMap(Map<String, dynamic> map) {
     return MonitorArgs(
-      environmentProperties: map['environmentProperties'] == null ? null : (pulumi.Input.decodeList<MonitorEnvironmentProperty>(map['environmentProperties'], (value) => MonitorEnvironmentProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environmentProperties: map['environmentProperties'] == null ? null : (pulumi.Input.decodeList<MonitorEnvironmentProperty>(map['environmentProperties']!, (value) => MonitorEnvironmentProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
       identity: (MonitorIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       marketplaceSubscription: (map['marketplaceSubscription'] as String).input(),
-      monitoringEnabled: map['monitoringEnabled'] == null ? null : (map['monitoringEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      monitoringEnabled: map['monitoringEnabled'] == null ? null : (map['monitoringEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       plan: (MonitorPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       user: (MonitorUser.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
     );
   }

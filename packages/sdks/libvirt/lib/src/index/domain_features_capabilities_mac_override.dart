@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesMacOverride {
 
   factory DomainFeaturesCapabilitiesMacOverride.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesMacOverride(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

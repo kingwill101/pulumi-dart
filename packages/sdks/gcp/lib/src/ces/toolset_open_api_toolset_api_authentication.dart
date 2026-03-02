@@ -50,11 +50,11 @@ class ToolsetOpenApiToolsetApiAuthentication {
 
   factory ToolsetOpenApiToolsetApiAuthentication.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetApiAuthentication(
-      apiKeyConfig: map['apiKeyConfig'] == null ? null : (ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig.fromMap((map['apiKeyConfig'] as Map).cast<String, dynamic>())).input(),
-      bearerTokenConfig: map['bearerTokenConfig'] == null ? null : (ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig.fromMap((map['bearerTokenConfig'] as Map).cast<String, dynamic>())).input(),
-      oauthConfig: map['oauthConfig'] == null ? null : (ToolsetOpenApiToolsetApiAuthenticationOauthConfig.fromMap((map['oauthConfig'] as Map).cast<String, dynamic>())).input(),
-      serviceAccountAuthConfig: map['serviceAccountAuthConfig'] == null ? null : (ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig.fromMap((map['serviceAccountAuthConfig'] as Map).cast<String, dynamic>())).input(),
-      serviceAgentIdTokenAuthConfig: map['serviceAgentIdTokenAuthConfig'] == null ? null : ((map['serviceAgentIdTokenAuthConfig'] as Map).cast<String, dynamic>()).input(),
+      apiKeyConfig: map['apiKeyConfig'] == null ? null : (ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig.fromMap((map['apiKeyConfig']! as Map).cast<String, dynamic>())).input(),
+      bearerTokenConfig: map['bearerTokenConfig'] == null ? null : (ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig.fromMap((map['bearerTokenConfig']! as Map).cast<String, dynamic>())).input(),
+      oauthConfig: map['oauthConfig'] == null ? null : (ToolsetOpenApiToolsetApiAuthenticationOauthConfig.fromMap((map['oauthConfig']! as Map).cast<String, dynamic>())).input(),
+      serviceAccountAuthConfig: map['serviceAccountAuthConfig'] == null ? null : (ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig.fromMap((map['serviceAccountAuthConfig']! as Map).cast<String, dynamic>())).input(),
+      serviceAgentIdTokenAuthConfig: map['serviceAgentIdTokenAuthConfig'] == null ? null : ((map['serviceAgentIdTokenAuthConfig']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

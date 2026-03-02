@@ -28,7 +28,7 @@ class GetNoteContaineranalysisV1alpha1Args {
   factory GetNoteContaineranalysisV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetNoteContaineranalysisV1alpha1Args(
       noteId: (map['noteId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class OraclePartitionSettingsResponse {
 
   factory OraclePartitionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return OraclePartitionSettingsResponse(
-      partitionColumnName: map['partitionColumnName'] == null ? null : (map['partitionColumnName']).input(),
-      partitionLowerBound: map['partitionLowerBound'] == null ? null : (map['partitionLowerBound']).input(),
-      partitionNames: map['partitionNames'] == null ? null : ((map['partitionNames'] as List).cast<dynamic>()).input(),
-      partitionUpperBound: map['partitionUpperBound'] == null ? null : (map['partitionUpperBound']).input(),
+      partitionColumnName: map['partitionColumnName'] == null ? null : (map['partitionColumnName']!).input(),
+      partitionLowerBound: map['partitionLowerBound'] == null ? null : (map['partitionLowerBound']!).input(),
+      partitionNames: map['partitionNames'] == null ? null : ((map['partitionNames']! as List).cast<dynamic>()).input(),
+      partitionUpperBound: map['partitionUpperBound'] == null ? null : (map['partitionUpperBound']!).input(),
     );
   }
 }

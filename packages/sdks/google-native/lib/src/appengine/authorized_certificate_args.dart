@@ -35,8 +35,8 @@ class AuthorizedCertificateArgs {
   factory AuthorizedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedCertificateArgs(
       appId: (map['appId'] as String).input(),
-      certificateRawData: map['certificateRawData'] == null ? null : (CertificateRawData.fromMap((map['certificateRawData'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      certificateRawData: map['certificateRawData'] == null ? null : (CertificateRawData.fromMap((map['certificateRawData']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

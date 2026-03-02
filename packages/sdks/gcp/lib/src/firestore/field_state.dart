@@ -60,13 +60,13 @@ class FieldState {
 
   factory FieldState.fromMap(Map<String, dynamic> map) {
     return FieldState(
-      collection: map['collection'] == null ? null : (map['collection'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      indexConfig: map['indexConfig'] == null ? null : (FieldIndexConfig.fromMap((map['indexConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      ttlConfig: map['ttlConfig'] == null ? null : (FieldTtlConfig.fromMap((map['ttlConfig'] as Map).cast<String, dynamic>())).input(),
+      collection: map['collection'] == null ? null : (map['collection']! as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      indexConfig: map['indexConfig'] == null ? null : (FieldIndexConfig.fromMap((map['indexConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      ttlConfig: map['ttlConfig'] == null ? null : (FieldTtlConfig.fromMap((map['ttlConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

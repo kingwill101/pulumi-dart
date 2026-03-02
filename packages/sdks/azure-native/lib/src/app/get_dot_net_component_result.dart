@@ -65,12 +65,12 @@ class GetDotNetComponentResult {
   factory GetDotNetComponentResult.fromMap(Map<String, dynamic> map) {
     return GetDotNetComponentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      componentType: map['componentType'] == null ? null : map['componentType'] as String,
-      configurations: map['configurations'] == null ? null : pulumi.Input.decodeList<DotNetComponentConfigurationPropertyResponse>(map['configurations'], (value) => DotNetComponentConfigurationPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      componentType: map['componentType'] == null ? null : map['componentType']! as String,
+      configurations: map['configurations'] == null ? null : pulumi.Input.decodeList<DotNetComponentConfigurationPropertyResponse>(map['configurations']!, (value) => DotNetComponentConfigurationPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      serviceBinds: map['serviceBinds'] == null ? null : pulumi.Input.decodeList<DotNetComponentServiceBindResponse>(map['serviceBinds'], (value) => DotNetComponentServiceBindResponse.fromMap((value as Map).cast<String, dynamic>())),
+      serviceBinds: map['serviceBinds'] == null ? null : pulumi.Input.decodeList<DotNetComponentServiceBindResponse>(map['serviceBinds']!, (value) => DotNetComponentServiceBindResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

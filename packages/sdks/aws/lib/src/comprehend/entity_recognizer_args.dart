@@ -93,16 +93,16 @@ class EntityRecognizerArgs {
   factory EntityRecognizerArgs.fromMap(Map<String, dynamic> map) {
     return EntityRecognizerArgs(
       dataAccessRoleArn: (map['dataAccessRoleArn'] as String).input(),
-      inputDataConfig: (EntityRecognizerInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())).input(),
+      inputDataConfig: (EntityRecognizerInputDataConfig.fromMap((map['inputDataConfig']! as Map).cast<String, dynamic>())).input(),
       languageCode: (map['languageCode'] as String).input(),
-      modelKmsKeyId: map['modelKmsKeyId'] == null ? null : (map['modelKmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
-      versionNamePrefix: map['versionNamePrefix'] == null ? null : (map['versionNamePrefix'] as String).input(),
-      volumeKmsKeyId: map['volumeKmsKeyId'] == null ? null : (map['volumeKmsKeyId'] as String).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : (EntityRecognizerVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      modelKmsKeyId: map['modelKmsKeyId'] == null ? null : ((map['modelKmsKeyId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      versionName: map['versionName'] == null ? null : ((map['versionName'] as String).input()).input(),
+      versionNamePrefix: map['versionNamePrefix'] == null ? null : ((map['versionNamePrefix'] as String).input()).input(),
+      volumeKmsKeyId: map['volumeKmsKeyId'] == null ? null : ((map['volumeKmsKeyId'] as String).input()).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : ((EntityRecognizerVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -24,8 +24,8 @@ class AsyncTimeoutRuleResponse {
 
   factory AsyncTimeoutRuleResponse.fromMap(Map<String, dynamic> map) {
     return AsyncTimeoutRuleResponse(
-      actionName: map['actionName'] == null ? null : (map['actionName'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      actionName: map['actionName'] == null ? null : (map['actionName']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

@@ -35,9 +35,9 @@ class InsightsConfigRuntimeConfigAppHubWorkload {
 
   factory InsightsConfigRuntimeConfigAppHubWorkload.fromMap(Map<String, dynamic> map) {
     return InsightsConfigRuntimeConfigAppHubWorkload(
-      criticality: map['criticality'] == null ? null : (map['criticality'] as String).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      workload: map['workload'] == null ? null : (map['workload'] as String).input(),
+      criticality: map['criticality'] == null ? null : (map['criticality']! as String).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      workload: map['workload'] == null ? null : (map['workload']! as String).input(),
     );
   }
 }

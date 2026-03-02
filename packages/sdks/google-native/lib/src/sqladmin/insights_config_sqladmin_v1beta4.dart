@@ -41,11 +41,11 @@ class InsightsConfigSqladminV1beta4 {
 
   factory InsightsConfigSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return InsightsConfigSqladminV1beta4(
-      queryInsightsEnabled: map['queryInsightsEnabled'] == null ? null : (map['queryInsightsEnabled'] as bool).input(),
-      queryPlansPerMinute: map['queryPlansPerMinute'] == null ? null : (map['queryPlansPerMinute'] as int).input(),
-      queryStringLength: map['queryStringLength'] == null ? null : (map['queryStringLength'] as int).input(),
-      recordApplicationTags: map['recordApplicationTags'] == null ? null : (map['recordApplicationTags'] as bool).input(),
-      recordClientAddress: map['recordClientAddress'] == null ? null : (map['recordClientAddress'] as bool).input(),
+      queryInsightsEnabled: map['queryInsightsEnabled'] == null ? null : (map['queryInsightsEnabled']! as bool).input(),
+      queryPlansPerMinute: map['queryPlansPerMinute'] == null ? null : (map['queryPlansPerMinute']! as int).input(),
+      queryStringLength: map['queryStringLength'] == null ? null : (map['queryStringLength']! as int).input(),
+      recordApplicationTags: map['recordApplicationTags'] == null ? null : (map['recordApplicationTags']! as bool).input(),
+      recordClientAddress: map['recordClientAddress'] == null ? null : (map['recordClientAddress']! as bool).input(),
     );
   }
 }

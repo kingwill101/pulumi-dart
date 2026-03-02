@@ -30,7 +30,7 @@ class TableEncryptionConfiguration {
   factory TableEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return TableEncryptionConfiguration(
       kmsKeyName: (map['kmsKeyName'] as String).input(),
-      kmsKeyVersion: map['kmsKeyVersion'] == null ? null : (map['kmsKeyVersion'] as String).input(),
+      kmsKeyVersion: map['kmsKeyVersion'] == null ? null : (map['kmsKeyVersion']! as String).input(),
     );
   }
 }

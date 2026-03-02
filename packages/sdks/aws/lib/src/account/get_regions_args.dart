@@ -29,8 +29,8 @@ class GetRegionsArgs {
 
   factory GetRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionsArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      regionOptStatusContains: map['regionOptStatusContains'] == null ? null : ((map['regionOptStatusContains'] as List).cast<String>()).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      regionOptStatusContains: map['regionOptStatusContains'] == null ? null : (((map['regionOptStatusContains'] as List).cast<String>()).input()).input(),
     );
   }
 }

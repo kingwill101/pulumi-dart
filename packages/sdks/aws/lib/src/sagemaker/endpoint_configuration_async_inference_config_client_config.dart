@@ -20,7 +20,7 @@ class EndpointConfigurationAsyncInferenceConfigClientConfig {
 
   factory EndpointConfigurationAsyncInferenceConfigClientConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationAsyncInferenceConfigClientConfig(
-      maxConcurrentInvocationsPerInstance: map['maxConcurrentInvocationsPerInstance'] == null ? null : (map['maxConcurrentInvocationsPerInstance'] as int).input(),
+      maxConcurrentInvocationsPerInstance: map['maxConcurrentInvocationsPerInstance'] == null ? null : ((map['maxConcurrentInvocationsPerInstance'] as int).input()).input(),
     );
   }
 }

@@ -62,12 +62,12 @@ class AppVersionSnapshot {
 
   factory AppVersionSnapshot.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshot(
-      agents: map['agents'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAgent>(map['agents'], (value) => AppVersionSnapshotAgent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      apps: map['apps'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotApp>(map['apps'], (value) => AppVersionSnapshotApp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      examples: map['examples'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExample>(map['examples'], (value) => AppVersionSnapshotExample.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      guardrails: map['guardrails'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrail>(map['guardrails'], (value) => AppVersionSnapshotGuardrail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tools: map['tools'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotTool>(map['tools'], (value) => AppVersionSnapshotTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      toolsets: map['toolsets'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolset>(map['toolsets'], (value) => AppVersionSnapshotToolset.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      agents: map['agents'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAgent>(map['agents']!, (value) => AppVersionSnapshotAgent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apps: map['apps'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotApp>(map['apps']!, (value) => AppVersionSnapshotApp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      examples: map['examples'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExample>(map['examples']!, (value) => AppVersionSnapshotExample.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      guardrails: map['guardrails'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrail>(map['guardrails']!, (value) => AppVersionSnapshotGuardrail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tools: map['tools'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotTool>(map['tools']!, (value) => AppVersionSnapshotTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      toolsets: map['toolsets'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolset>(map['toolsets']!, (value) => AppVersionSnapshotToolset.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class ScriptActivityTypePropertiesLogSettings {
   factory ScriptActivityTypePropertiesLogSettings.fromMap(Map<String, dynamic> map) {
     return ScriptActivityTypePropertiesLogSettings(
       logDestination: (map['logDestination'] as String).input(),
-      logLocationSettings: map['logLocationSettings'] == null ? null : (LogLocationSettings.fromMap((map['logLocationSettings'] as Map).cast<String, dynamic>())).input(),
+      logLocationSettings: map['logLocationSettings'] == null ? null : (LogLocationSettings.fromMap((map['logLocationSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

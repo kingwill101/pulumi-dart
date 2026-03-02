@@ -43,11 +43,11 @@ class BuildConfiguration {
 
   factory BuildConfiguration.fromMap(Map<String, dynamic> map) {
     return BuildConfiguration(
-      baseOs: map['baseOs'] == null ? null : (map['baseOs'] as String).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['environmentVariables'], (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      platformVersion: map['platformVersion'] == null ? null : (map['platformVersion'] as String).input(),
-      preBuildSteps: map['preBuildSteps'] == null ? null : (pulumi.Input.decodeList<PreBuildStep>(map['preBuildSteps'], (value) => PreBuildStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      baseOs: map['baseOs'] == null ? null : (map['baseOs']! as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['environmentVariables']!, (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      platformVersion: map['platformVersion'] == null ? null : (map['platformVersion']! as String).input(),
+      preBuildSteps: map['preBuildSteps'] == null ? null : (pulumi.Input.decodeList<PreBuildStep>(map['preBuildSteps']!, (value) => PreBuildStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class OneDashboardVariableNrqlQuery {
 
   factory OneDashboardVariableNrqlQuery.fromMap(Map<String, dynamic> map) {
     return OneDashboardVariableNrqlQuery(
-      accountIds: map['accountIds'] == null ? null : ((map['accountIds'] as List).cast<String>()).input(),
+      accountIds: map['accountIds'] == null ? null : ((map['accountIds']! as List).cast<String>()).input(),
       query: (map['query'] as String).input(),
     );
   }

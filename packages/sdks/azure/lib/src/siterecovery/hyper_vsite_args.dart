@@ -29,7 +29,7 @@ class HyperVSiteArgs {
 
   factory HyperVSiteArgs.fromMap(Map<String, dynamic> map) {
     return HyperVSiteArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       recoveryVaultId: (map['recoveryVaultId'] as String).input(),
     );
   }

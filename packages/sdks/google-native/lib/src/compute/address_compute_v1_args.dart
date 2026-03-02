@@ -97,21 +97,21 @@ class AddressComputeV1Args {
 
   factory AddressComputeV1Args.fromMap(Map<String, dynamic> map) {
     return AddressComputeV1Args(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      addressType: map['addressType'] == null ? null : (AddressAddressTypeComputeV1.fromValue(map['addressType'] as String)).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (AddressIpVersionComputeV1.fromValue(map['ipVersion'] as String)).input(),
-      ipv6EndpointType: map['ipv6EndpointType'] == null ? null : (AddressIpv6EndpointTypeComputeV1.fromValue(map['ipv6EndpointType'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      networkTier: map['networkTier'] == null ? null : (AddressNetworkTierComputeV1.fromValue(map['networkTier'] as String)).input(),
-      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      purpose: map['purpose'] == null ? null : (AddressPurposeComputeV1.fromValue(map['purpose'] as String)).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      addressType: map['addressType'] == null ? null : (AddressAddressTypeComputeV1.fromValue(map['addressType']! as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (AddressIpVersionComputeV1.fromValue(map['ipVersion']! as String)).input(),
+      ipv6EndpointType: map['ipv6EndpointType'] == null ? null : (AddressIpv6EndpointTypeComputeV1.fromValue(map['ipv6EndpointType']! as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      networkTier: map['networkTier'] == null ? null : (AddressNetworkTierComputeV1.fromValue(map['networkTier']! as String)).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      purpose: map['purpose'] == null ? null : (AddressPurposeComputeV1.fromValue(map['purpose']! as String)).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

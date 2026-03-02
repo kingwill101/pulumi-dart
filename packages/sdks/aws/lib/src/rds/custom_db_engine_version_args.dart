@@ -84,19 +84,19 @@ class CustomDbEngineVersionArgs {
 
   factory CustomDbEngineVersionArgs.fromMap(Map<String, dynamic> map) {
     return CustomDbEngineVersionArgs(
-      databaseInstallationFilesS3BucketName: map['databaseInstallationFilesS3BucketName'] == null ? null : (map['databaseInstallationFilesS3BucketName'] as String).input(),
-      databaseInstallationFilesS3Prefix: map['databaseInstallationFilesS3Prefix'] == null ? null : (map['databaseInstallationFilesS3Prefix'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      databaseInstallationFilesS3BucketName: map['databaseInstallationFilesS3BucketName'] == null ? null : ((map['databaseInstallationFilesS3BucketName'] as String).input()).input(),
+      databaseInstallationFilesS3Prefix: map['databaseInstallationFilesS3Prefix'] == null ? null : ((map['databaseInstallationFilesS3Prefix'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       engine: (map['engine'] as String).input(),
       engineVersion: (map['engineVersion'] as String).input(),
-      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      manifest: map['manifest'] == null ? null : (map['manifest'] as String).input(),
-      manifestHash: map['manifestHash'] == null ? null : (map['manifestHash'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceImageId: map['sourceImageId'] == null ? null : (map['sourceImageId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filename: map['filename'] == null ? null : ((map['filename'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      manifest: map['manifest'] == null ? null : ((map['manifest'] as String).input()).input(),
+      manifestHash: map['manifestHash'] == null ? null : ((map['manifestHash'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceImageId: map['sourceImageId'] == null ? null : ((map['sourceImageId'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

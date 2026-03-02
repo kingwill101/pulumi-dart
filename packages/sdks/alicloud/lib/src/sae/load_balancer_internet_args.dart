@@ -36,7 +36,7 @@ class LoadBalancerInternetArgs {
   factory LoadBalancerInternetArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerInternetArgs(
       appId: (map['appId'] as String).input(),
-      internetSlbId: map['internetSlbId'] == null ? null : (map['internetSlbId'] as String).input(),
+      internetSlbId: map['internetSlbId'] == null ? null : (map['internetSlbId']! as String).input(),
       internets: (pulumi.Input.decodeList<LoadBalancerInternetInternet>(map['internets'], (value) => LoadBalancerInternetInternet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

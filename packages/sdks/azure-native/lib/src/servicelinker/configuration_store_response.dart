@@ -21,7 +21,7 @@ class ConfigurationStoreResponse {
 
   factory ConfigurationStoreResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationStoreResponse(
-      appConfigurationId: map['appConfigurationId'] == null ? null : (map['appConfigurationId'] as String).input(),
+      appConfigurationId: map['appConfigurationId'] == null ? null : (map['appConfigurationId']! as String).input(),
     );
   }
 }

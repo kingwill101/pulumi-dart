@@ -27,7 +27,7 @@ class FrontdoorBackendPoolSetting {
 
   factory FrontdoorBackendPoolSetting.fromMap(Map<String, dynamic> map) {
     return FrontdoorBackendPoolSetting(
-      backendPoolsSendReceiveTimeoutSeconds: map['backendPoolsSendReceiveTimeoutSeconds'] == null ? null : (map['backendPoolsSendReceiveTimeoutSeconds'] as int).input(),
+      backendPoolsSendReceiveTimeoutSeconds: map['backendPoolsSendReceiveTimeoutSeconds'] == null ? null : (map['backendPoolsSendReceiveTimeoutSeconds']! as int).input(),
       enforceBackendPoolsCertificateNameCheck: (map['enforceBackendPoolsCertificateNameCheck'] as bool).input(),
     );
   }

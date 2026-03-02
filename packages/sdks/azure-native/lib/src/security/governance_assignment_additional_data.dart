@@ -31,9 +31,9 @@ class GovernanceAssignmentAdditionalData {
 
   factory GovernanceAssignmentAdditionalData.fromMap(Map<String, dynamic> map) {
     return GovernanceAssignmentAdditionalData(
-      ticketLink: map['ticketLink'] == null ? null : (map['ticketLink'] as String).input(),
-      ticketNumber: map['ticketNumber'] == null ? null : (map['ticketNumber'] as int).input(),
-      ticketStatus: map['ticketStatus'] == null ? null : (map['ticketStatus'] as String).input(),
+      ticketLink: map['ticketLink'] == null ? null : (map['ticketLink']! as String).input(),
+      ticketNumber: map['ticketNumber'] == null ? null : (map['ticketNumber']! as int).input(),
+      ticketStatus: map['ticketStatus'] == null ? null : (map['ticketStatus']! as String).input(),
     );
   }
 }

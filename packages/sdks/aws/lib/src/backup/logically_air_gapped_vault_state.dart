@@ -61,15 +61,15 @@ class LogicallyAirGappedVaultState {
 
   factory LogicallyAirGappedVaultState.fromMap(Map<String, dynamic> map) {
     return LogicallyAirGappedVaultState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : (map['encryptionKeyArn'] as String).input(),
-      maxRetentionDays: map['maxRetentionDays'] == null ? null : (map['maxRetentionDays'] as int).input(),
-      minRetentionDays: map['minRetentionDays'] == null ? null : (map['minRetentionDays'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (LogicallyAirGappedVaultTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : ((map['encryptionKeyArn'] as String).input()).input(),
+      maxRetentionDays: map['maxRetentionDays'] == null ? null : ((map['maxRetentionDays'] as int).input()).input(),
+      minRetentionDays: map['minRetentionDays'] == null ? null : ((map['minRetentionDays'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((LogicallyAirGappedVaultTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

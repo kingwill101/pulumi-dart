@@ -48,13 +48,13 @@ class GetAlidnsInstancesResult {
 
   factory GetAlidnsInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetAlidnsInstancesResult(
-      domainType: map['domainType'] == null ? null : map['domainType'] as String,
+      domainType: map['domainType'] == null ? null : map['domainType']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instances: pulumi.Input.decodeList<GetAlidnsInstancesInstance>(map['instances'], (value) => GetAlidnsInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      userClientIp: map['userClientIp'] == null ? null : map['userClientIp'] as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      userClientIp: map['userClientIp'] == null ? null : map['userClientIp']! as String,
     );
   }
 }

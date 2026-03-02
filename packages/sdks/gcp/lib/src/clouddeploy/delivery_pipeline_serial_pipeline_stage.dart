@@ -37,10 +37,10 @@ class DeliveryPipelineSerialPipelineStage {
 
   factory DeliveryPipelineSerialPipelineStage.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStage(
-      deployParameters: map['deployParameters'] == null ? null : (pulumi.Input.decodeList<DeliveryPipelineSerialPipelineStageDeployParameter>(map['deployParameters'], (value) => DeliveryPipelineSerialPipelineStageDeployParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      profiles: map['profiles'] == null ? null : ((map['profiles'] as List).cast<String>()).input(),
-      strategy: map['strategy'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategy.fromMap((map['strategy'] as Map).cast<String, dynamic>())).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      deployParameters: map['deployParameters'] == null ? null : (pulumi.Input.decodeList<DeliveryPipelineSerialPipelineStageDeployParameter>(map['deployParameters']!, (value) => DeliveryPipelineSerialPipelineStageDeployParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      profiles: map['profiles'] == null ? null : ((map['profiles']! as List).cast<String>()).input(),
+      strategy: map['strategy'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategy.fromMap((map['strategy']! as Map).cast<String, dynamic>())).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
     );
   }
 }

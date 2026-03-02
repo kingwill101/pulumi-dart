@@ -31,9 +31,9 @@ class SkuChangeInfoResponse {
 
   factory SkuChangeInfoResponse.fromMap(Map<String, dynamic> map) {
     return SkuChangeInfoResponse(
-      countOfDowngrades: map['countOfDowngrades'] == null ? null : (map['countOfDowngrades'] as double).input(),
-      countOfUpgradesAfterDowngrades: map['countOfUpgradesAfterDowngrades'] == null ? null : (map['countOfUpgradesAfterDowngrades'] as double).input(),
-      lastChangeDate: map['lastChangeDate'] == null ? null : (map['lastChangeDate'] as String).input(),
+      countOfDowngrades: map['countOfDowngrades'] == null ? null : (map['countOfDowngrades']! as double).input(),
+      countOfUpgradesAfterDowngrades: map['countOfUpgradesAfterDowngrades'] == null ? null : (map['countOfUpgradesAfterDowngrades']! as double).input(),
+      lastChangeDate: map['lastChangeDate'] == null ? null : (map['lastChangeDate']! as String).input(),
     );
   }
 }

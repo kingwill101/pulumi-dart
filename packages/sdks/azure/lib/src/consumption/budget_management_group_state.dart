@@ -59,14 +59,14 @@ class BudgetManagementGroupState {
 
   factory BudgetManagementGroupState.fromMap(Map<String, dynamic> map) {
     return BudgetManagementGroupState(
-      amount: map['amount'] == null ? null : (map['amount'] as double).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      filter: map['filter'] == null ? null : (BudgetManagementGroupFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<BudgetManagementGroupNotification>(map['notifications'], (value) => BudgetManagementGroupNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain'] as String).input(),
-      timePeriod: map['timePeriod'] == null ? null : (BudgetManagementGroupTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as double).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      filter: map['filter'] == null ? null : (BudgetManagementGroupFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<BudgetManagementGroupNotification>(map['notifications']!, (value) => BudgetManagementGroupNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain']! as String).input(),
+      timePeriod: map['timePeriod'] == null ? null : (BudgetManagementGroupTimePeriod.fromMap((map['timePeriod']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

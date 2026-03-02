@@ -26,7 +26,7 @@ class AutoScaleSettings {
 
   factory AutoScaleSettings.fromMap(Map<String, dynamic> map) {
     return AutoScaleSettings(
-      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval'] as String).input(),
+      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval']! as String).input(),
       formula: (map['formula'] as String).input(),
     );
   }

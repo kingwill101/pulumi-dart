@@ -50,11 +50,11 @@ class MemberArgs {
   factory MemberArgs.fromMap(Map<String, dynamic> map) {
     return MemberArgs(
       accountId: (map['accountId'] as String).input(),
-      disableEmailNotification: map['disableEmailNotification'] == null ? null : (map['disableEmailNotification'] as bool).input(),
+      disableEmailNotification: map['disableEmailNotification'] == null ? null : ((map['disableEmailNotification'] as bool).input()).input(),
       emailAddress: (map['emailAddress'] as String).input(),
       graphArn: (map['graphArn'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      message: map['message'] == null ? null : ((map['message'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

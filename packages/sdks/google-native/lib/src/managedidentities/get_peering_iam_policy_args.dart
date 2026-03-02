@@ -31,9 +31,9 @@ class GetPeeringIamPolicyArgs {
 
   factory GetPeeringIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPeeringIamPolicyArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
       peeringId: (map['peeringId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

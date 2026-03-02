@@ -25,7 +25,7 @@ class DomainDevicesHostdevSubsysPciTeaming {
 
   factory DomainDevicesHostdevSubsysPciTeaming.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysPciTeaming(
-      persistent: map['persistent'] == null ? null : (map['persistent'] as String).input(),
+      persistent: map['persistent'] == null ? null : (map['persistent']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

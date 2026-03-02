@@ -65,14 +65,14 @@ class WorkbookTemplateArgs {
 
   factory WorkbookTemplateArgs.fromMap(Map<String, dynamic> map) {
     return WorkbookTemplateArgs(
-      author: map['author'] == null ? null : (map['author'] as String).input(),
+      author: map['author'] == null ? null : (map['author']! as String).input(),
       galleries: (pulumi.Input.decodeList<WorkbookTemplateGallery>(map['galleries'], (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      localized: map['localized'] == null ? null : (map['localized'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      localized: map['localized'] == null ? null : (map['localized']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       templateData: (map['templateData'] as String).input(),
     );
   }

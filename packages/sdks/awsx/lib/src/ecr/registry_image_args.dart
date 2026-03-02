@@ -49,12 +49,12 @@ class RegistryImageArgs {
 
   factory RegistryImageArgs.fromMap(Map<String, dynamic> map) {
     return RegistryImageArgs(
-      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify'] as bool).input(),
-      keepRemotely: map['keepRemotely'] == null ? null : (map['keepRemotely'] as bool).input(),
+      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify']! as bool).input(),
+      keepRemotely: map['keepRemotely'] == null ? null : (map['keepRemotely']! as bool).input(),
       repositoryUrl: (map['repositoryUrl'] as String).input(),
       sourceImage: (map['sourceImage'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers']! as Map).cast<String, String>()).input(),
     );
   }
 }

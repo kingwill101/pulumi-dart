@@ -24,7 +24,7 @@ class ToolOpenApiToolTlsConfig {
 
   factory ToolOpenApiToolTlsConfig.fromMap(Map<String, dynamic> map) {
     return ToolOpenApiToolTlsConfig(
-      caCerts: map['caCerts'] == null ? null : (pulumi.Input.decodeList<ToolOpenApiToolTlsConfigCaCert>(map['caCerts'], (value) => ToolOpenApiToolTlsConfigCaCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      caCerts: map['caCerts'] == null ? null : (pulumi.Input.decodeList<ToolOpenApiToolTlsConfigCaCert>(map['caCerts']!, (value) => ToolOpenApiToolTlsConfigCaCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

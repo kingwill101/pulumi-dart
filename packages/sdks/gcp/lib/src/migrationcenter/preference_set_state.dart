@@ -64,15 +64,15 @@ class PreferenceSetState {
 
   factory PreferenceSetState.fromMap(Map<String, dynamic> map) {
     return PreferenceSetState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      preferenceSetId: map['preferenceSetId'] == null ? null : (map['preferenceSetId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      virtualMachinePreferences: map['virtualMachinePreferences'] == null ? null : (PreferenceSetVirtualMachinePreferences.fromMap((map['virtualMachinePreferences'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      preferenceSetId: map['preferenceSetId'] == null ? null : (map['preferenceSetId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      virtualMachinePreferences: map['virtualMachinePreferences'] == null ? null : (PreferenceSetVirtualMachinePreferences.fromMap((map['virtualMachinePreferences']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

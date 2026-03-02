@@ -28,7 +28,7 @@ class DiskAsyncReplicationSecondaryDisk {
   factory DiskAsyncReplicationSecondaryDisk.fromMap(Map<String, dynamic> map) {
     return DiskAsyncReplicationSecondaryDisk(
       disk: (map['disk'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

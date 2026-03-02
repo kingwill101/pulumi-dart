@@ -71,16 +71,16 @@ class GetNspAssociationResult {
 
   factory GetNspAssociationResult.fromMap(Map<String, dynamic> map) {
     return GetNspAssociationResult(
-      accessMode: map['accessMode'] == null ? null : map['accessMode'] as String,
+      accessMode: map['accessMode'] == null ? null : map['accessMode']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       hasProvisioningIssues: map['hasProvisioningIssues'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      privateLinkResource: map['privateLinkResource'] == null ? null : SubResourceResponse.fromMap((map['privateLinkResource'] as Map).cast<String, dynamic>()),
-      profile: map['profile'] == null ? null : SubResourceResponse.fromMap((map['profile'] as Map).cast<String, dynamic>()),
+      privateLinkResource: map['privateLinkResource'] == null ? null : SubResourceResponse.fromMap((map['privateLinkResource']! as Map).cast<String, dynamic>()),
+      profile: map['profile'] == null ? null : SubResourceResponse.fromMap((map['profile']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

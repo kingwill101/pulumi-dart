@@ -45,7 +45,7 @@ class TrafficPolicyInstanceArgs {
   factory TrafficPolicyInstanceArgs.fromMap(Map<String, dynamic> map) {
     return TrafficPolicyInstanceArgs(
       hostedZoneId: (map['hostedZoneId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       trafficPolicyId: (map['trafficPolicyId'] as String).input(),
       trafficPolicyVersion: (map['trafficPolicyVersion'] as int).input(),
       ttl: (map['ttl'] as int).input(),

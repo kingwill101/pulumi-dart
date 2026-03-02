@@ -27,8 +27,8 @@ class RunAsUserStrategyOptionsPatch {
 
   factory RunAsUserStrategyOptionsPatch.fromMap(Map<String, dynamic> map) {
     return RunAsUserStrategyOptionsPatch(
-      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<IDRangePatch>(map['ranges'], (value) => IDRangePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<IDRangePatch>(map['ranges']!, (value) => IDRangePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
     );
   }
 }

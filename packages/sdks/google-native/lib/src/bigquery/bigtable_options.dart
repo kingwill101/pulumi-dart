@@ -31,9 +31,9 @@ class BigtableOptions {
 
   factory BigtableOptions.fromMap(Map<String, dynamic> map) {
     return BigtableOptions(
-      columnFamilies: map['columnFamilies'] == null ? null : (pulumi.Input.decodeList<BigtableColumnFamily>(map['columnFamilies'], (value) => BigtableColumnFamily.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ignoreUnspecifiedColumnFamilies: map['ignoreUnspecifiedColumnFamilies'] == null ? null : (map['ignoreUnspecifiedColumnFamilies'] as bool).input(),
-      readRowkeyAsString: map['readRowkeyAsString'] == null ? null : (map['readRowkeyAsString'] as bool).input(),
+      columnFamilies: map['columnFamilies'] == null ? null : (pulumi.Input.decodeList<BigtableColumnFamily>(map['columnFamilies']!, (value) => BigtableColumnFamily.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ignoreUnspecifiedColumnFamilies: map['ignoreUnspecifiedColumnFamilies'] == null ? null : (map['ignoreUnspecifiedColumnFamilies']! as bool).input(),
+      readRowkeyAsString: map['readRowkeyAsString'] == null ? null : (map['readRowkeyAsString']! as bool).input(),
     );
   }
 }

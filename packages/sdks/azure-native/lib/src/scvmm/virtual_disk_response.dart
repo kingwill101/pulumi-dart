@@ -87,19 +87,19 @@ class VirtualDiskResponse {
 
   factory VirtualDiskResponse.fromMap(Map<String, dynamic> map) {
     return VirtualDiskResponse(
-      bus: map['bus'] == null ? null : (map['bus'] as int).input(),
-      busType: map['busType'] == null ? null : (map['busType'] as String).input(),
-      createDiffDisk: map['createDiffDisk'] == null ? null : (map['createDiffDisk'] as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
+      bus: map['bus'] == null ? null : (map['bus']! as int).input(),
+      busType: map['busType'] == null ? null : (map['busType']! as String).input(),
+      createDiffDisk: map['createDiffDisk'] == null ? null : (map['createDiffDisk']! as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
       displayName: (map['displayName'] as String).input(),
-      lun: map['lun'] == null ? null : (map['lun'] as int).input(),
+      lun: map['lun'] == null ? null : (map['lun']! as int).input(),
       maxDiskSizeGB: (map['maxDiskSizeGB'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageQoSPolicy: map['storageQoSPolicy'] == null ? null : (StorageQoSPolicyDetailsResponse.fromMap((map['storageQoSPolicy'] as Map).cast<String, dynamic>())).input(),
-      templateDiskId: map['templateDiskId'] == null ? null : (map['templateDiskId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageQoSPolicy: map['storageQoSPolicy'] == null ? null : (StorageQoSPolicyDetailsResponse.fromMap((map['storageQoSPolicy']! as Map).cast<String, dynamic>())).input(),
+      templateDiskId: map['templateDiskId'] == null ? null : (map['templateDiskId']! as String).input(),
       vhdFormatType: (map['vhdFormatType'] as String).input(),
-      vhdType: map['vhdType'] == null ? null : (map['vhdType'] as String).input(),
+      vhdType: map['vhdType'] == null ? null : (map['vhdType']! as String).input(),
       volumeType: (map['volumeType'] as String).input(),
     );
   }

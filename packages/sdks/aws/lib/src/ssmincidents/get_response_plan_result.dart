@@ -71,14 +71,14 @@ class GetResponsePlanResult {
 
   factory GetResponsePlanResult.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanResult(
-      actions: pulumi.Input.decodeList<GetResponsePlanAction>(map['actions'], (value) => GetResponsePlanAction.fromMap((value as Map).cast<String, dynamic>())),
+      actions: pulumi.Input.decodeList<GetResponsePlanAction>(map['actions']!, (value) => GetResponsePlanAction.fromMap((value as Map).cast<String, dynamic>())),
       arn: map['arn'] as String,
       chatChannels: (map['chatChannels'] as List).cast<String>(),
       displayName: map['displayName'] as String,
       engagements: (map['engagements'] as List).cast<String>(),
       id: map['id'] as String,
-      incidentTemplates: pulumi.Input.decodeList<GetResponsePlanIncidentTemplate>(map['incidentTemplates'], (value) => GetResponsePlanIncidentTemplate.fromMap((value as Map).cast<String, dynamic>())),
-      integrations: pulumi.Input.decodeList<GetResponsePlanIntegration>(map['integrations'], (value) => GetResponsePlanIntegration.fromMap((value as Map).cast<String, dynamic>())),
+      incidentTemplates: pulumi.Input.decodeList<GetResponsePlanIncidentTemplate>(map['incidentTemplates']!, (value) => GetResponsePlanIncidentTemplate.fromMap((value as Map).cast<String, dynamic>())),
+      integrations: pulumi.Input.decodeList<GetResponsePlanIntegration>(map['integrations']!, (value) => GetResponsePlanIntegration.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),

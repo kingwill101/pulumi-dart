@@ -35,9 +35,9 @@ class InstanceAccessControlAttributesArgs {
 
   factory InstanceAccessControlAttributesArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAccessControlAttributesArgs(
-      attributes: (pulumi.Input.decodeList<InstanceAccessControlAttributesAttribute>(map['attributes'], (value) => InstanceAccessControlAttributesAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attributes: (pulumi.Input.decodeList<InstanceAccessControlAttributesAttribute>(map['attributes']!, (value) => InstanceAccessControlAttributesAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
       instanceArn: (map['instanceArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

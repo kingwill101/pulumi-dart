@@ -27,7 +27,7 @@ class OSPolicyResourcePackageResourceMSIOsconfigV1alpha {
 
   factory OSPolicyResourcePackageResourceMSIOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceMSIOsconfigV1alpha(
-      properties: map['properties'] == null ? null : ((map['properties'] as List).cast<String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as List).cast<String>()).input(),
       source: (OSPolicyResourceFileOsconfigV1alpha.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

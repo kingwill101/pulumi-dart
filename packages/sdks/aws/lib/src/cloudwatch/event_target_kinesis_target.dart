@@ -20,7 +20,7 @@ class EventTargetKinesisTarget {
 
   factory EventTargetKinesisTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetKinesisTarget(
-      partitionKeyPath: map['partitionKeyPath'] == null ? null : (map['partitionKeyPath'] as String).input(),
+      partitionKeyPath: map['partitionKeyPath'] == null ? null : ((map['partitionKeyPath'] as String).input()).input(),
     );
   }
 }

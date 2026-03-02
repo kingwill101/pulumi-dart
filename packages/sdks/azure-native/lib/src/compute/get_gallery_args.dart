@@ -39,10 +39,10 @@ class GetGalleryArgs {
 
   factory GetGalleryArgs.fromMap(Map<String, dynamic> map) {
     return GetGalleryArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       galleryName: (map['galleryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      select: map['select'] == null ? null : (map['select'] as String).input(),
+      select: map['select'] == null ? null : (map['select']! as String).input(),
     );
   }
 }

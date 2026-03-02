@@ -52,13 +52,13 @@ class AppSpecDatabase {
 
   factory AppSpecDatabase.fromMap(Map<String, dynamic> map) {
     return AppSpecDatabase(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
-      dbUser: map['dbUser'] == null ? null : (map['dbUser'] as String).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      production: map['production'] == null ? null : (map['production'] as bool).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName']! as String).input(),
+      dbUser: map['dbUser'] == null ? null : (map['dbUser']! as String).input(),
+      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      production: map['production'] == null ? null : (map['production']! as bool).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

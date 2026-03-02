@@ -27,8 +27,8 @@ class RecommendedMachineConfiguration {
 
   factory RecommendedMachineConfiguration.fromMap(Map<String, dynamic> map) {
     return RecommendedMachineConfiguration(
-      memory: map['memory'] == null ? null : (ResourceRange.fromMap((map['memory'] as Map).cast<String, dynamic>())).input(),
-      vCPUs: map['vCPUs'] == null ? null : (ResourceRange.fromMap((map['vCPUs'] as Map).cast<String, dynamic>())).input(),
+      memory: map['memory'] == null ? null : (ResourceRange.fromMap((map['memory']! as Map).cast<String, dynamic>())).input(),
+      vCPUs: map['vCPUs'] == null ? null : (ResourceRange.fromMap((map['vCPUs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -62,13 +62,13 @@ class Secret {
 
   factory Secret.fromMap(Map<String, dynamic> map) {
     return Secret(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      data: map['data'] == null ? null : ((map['data'] as Map).cast<String, String>()).input(),
-      immutable: map['immutable'] == null ? null : (map['immutable'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      stringData: map['stringData'] == null ? null : ((map['stringData'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      data: map['data'] == null ? null : ((map['data']! as Map).cast<String, String>()).input(),
+      immutable: map['immutable'] == null ? null : (map['immutable']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      stringData: map['stringData'] == null ? null : ((map['stringData']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

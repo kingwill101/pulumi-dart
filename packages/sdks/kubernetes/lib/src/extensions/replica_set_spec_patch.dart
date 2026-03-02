@@ -38,10 +38,10 @@ class ReplicaSetSpecPatch {
 
   factory ReplicaSetSpecPatch.fromMap(Map<String, dynamic> map) {
     return ReplicaSetSpecPatch(
-      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds'] as int).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
-      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
-      template: map['template'] == null ? null : (PodTemplateSpecPatch.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
+      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds']! as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
+      template: map['template'] == null ? null : (PodTemplateSpecPatch.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class ScalingRuleHybridMetric {
 
   factory ScalingRuleHybridMetric.fromMap(Map<String, dynamic> map) {
     return ScalingRuleHybridMetric(
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<ScalingRuleHybridMetricDimension>(map['dimensions'], (value) => ScalingRuleHybridMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      statistic: map['statistic'] == null ? null : (map['statistic'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<ScalingRuleHybridMetricDimension>(map['dimensions']!, (value) => ScalingRuleHybridMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      statistic: map['statistic'] == null ? null : (map['statistic']! as String).input(),
     );
   }
 }

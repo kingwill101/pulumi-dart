@@ -49,10 +49,10 @@ class EndpointCustomDomainArgs {
   factory EndpointCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return EndpointCustomDomainArgs(
       cdnEndpointId: (map['cdnEndpointId'] as String).input(),
-      cdnManagedHttps: map['cdnManagedHttps'] == null ? null : (EndpointCustomDomainCdnManagedHttps.fromMap((map['cdnManagedHttps'] as Map).cast<String, dynamic>())).input(),
+      cdnManagedHttps: map['cdnManagedHttps'] == null ? null : (EndpointCustomDomainCdnManagedHttps.fromMap((map['cdnManagedHttps']! as Map).cast<String, dynamic>())).input(),
       hostName: (map['hostName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      userManagedHttps: map['userManagedHttps'] == null ? null : (EndpointCustomDomainUserManagedHttps.fromMap((map['userManagedHttps'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      userManagedHttps: map['userManagedHttps'] == null ? null : (EndpointCustomDomainUserManagedHttps.fromMap((map['userManagedHttps']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

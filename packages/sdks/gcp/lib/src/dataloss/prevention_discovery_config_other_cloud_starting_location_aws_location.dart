@@ -25,8 +25,8 @@ class PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation {
 
   factory PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      allAssetInventoryAssets: map['allAssetInventoryAssets'] == null ? null : (map['allAssetInventoryAssets'] as bool).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      allAssetInventoryAssets: map['allAssetInventoryAssets'] == null ? null : (map['allAssetInventoryAssets']! as bool).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class RelatedUrl {
 
   factory RelatedUrl.fromMap(Map<String, dynamic> map) {
     return RelatedUrl(
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

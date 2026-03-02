@@ -71,15 +71,15 @@ class BlockchainNodesEthereumDetails {
 
   factory BlockchainNodesEthereumDetails.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesEthereumDetails(
-      additionalEndpoints: map['additionalEndpoints'] == null ? null : (pulumi.Input.decodeList<BlockchainNodesEthereumDetailsAdditionalEndpoint>(map['additionalEndpoints'], (value) => BlockchainNodesEthereumDetailsAdditionalEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      apiEnableAdmin: map['apiEnableAdmin'] == null ? null : (map['apiEnableAdmin'] as bool).input(),
-      apiEnableDebug: map['apiEnableDebug'] == null ? null : (map['apiEnableDebug'] as bool).input(),
-      consensusClient: map['consensusClient'] == null ? null : (map['consensusClient'] as String).input(),
-      executionClient: map['executionClient'] == null ? null : (map['executionClient'] as String).input(),
-      gethDetails: map['gethDetails'] == null ? null : (BlockchainNodesEthereumDetailsGethDetails.fromMap((map['gethDetails'] as Map).cast<String, dynamic>())).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
-      validatorConfig: map['validatorConfig'] == null ? null : (BlockchainNodesEthereumDetailsValidatorConfig.fromMap((map['validatorConfig'] as Map).cast<String, dynamic>())).input(),
+      additionalEndpoints: map['additionalEndpoints'] == null ? null : (pulumi.Input.decodeList<BlockchainNodesEthereumDetailsAdditionalEndpoint>(map['additionalEndpoints']!, (value) => BlockchainNodesEthereumDetailsAdditionalEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiEnableAdmin: map['apiEnableAdmin'] == null ? null : (map['apiEnableAdmin']! as bool).input(),
+      apiEnableDebug: map['apiEnableDebug'] == null ? null : (map['apiEnableDebug']! as bool).input(),
+      consensusClient: map['consensusClient'] == null ? null : (map['consensusClient']! as String).input(),
+      executionClient: map['executionClient'] == null ? null : (map['executionClient']! as String).input(),
+      gethDetails: map['gethDetails'] == null ? null : (BlockchainNodesEthereumDetailsGethDetails.fromMap((map['gethDetails']! as Map).cast<String, dynamic>())).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      nodeType: map['nodeType'] == null ? null : (map['nodeType']! as String).input(),
+      validatorConfig: map['validatorConfig'] == null ? null : (BlockchainNodesEthereumDetailsValidatorConfig.fromMap((map['validatorConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

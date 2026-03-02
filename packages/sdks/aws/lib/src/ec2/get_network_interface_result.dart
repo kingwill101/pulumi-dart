@@ -122,11 +122,11 @@ class GetNetworkInterfaceResult {
   factory GetNetworkInterfaceResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceResult(
       arn: map['arn'] as String,
-      associations: pulumi.Input.decodeList<GetNetworkInterfaceAssociation>(map['associations'], (value) => GetNetworkInterfaceAssociation.fromMap((value as Map).cast<String, dynamic>())),
-      attachments: pulumi.Input.decodeList<GetNetworkInterfaceAttachment>(map['attachments'], (value) => GetNetworkInterfaceAttachment.fromMap((value as Map).cast<String, dynamic>())),
+      associations: pulumi.Input.decodeList<GetNetworkInterfaceAssociation>(map['associations']!, (value) => GetNetworkInterfaceAssociation.fromMap((value as Map).cast<String, dynamic>())),
+      attachments: pulumi.Input.decodeList<GetNetworkInterfaceAttachment>(map['attachments']!, (value) => GetNetworkInterfaceAttachment.fromMap((value as Map).cast<String, dynamic>())),
       availabilityZone: map['availabilityZone'] as String,
       description: map['description'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNetworkInterfaceFilter>(map['filters'], (value) => GetNetworkInterfaceFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNetworkInterfaceFilter>(map['filters']!, (value) => GetNetworkInterfaceFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       interfaceType: map['interfaceType'] as String,
       ipv6Addresses: (map['ipv6Addresses'] as List).cast<String>(),

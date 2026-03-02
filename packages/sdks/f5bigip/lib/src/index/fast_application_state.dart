@@ -40,10 +40,10 @@ class FastApplicationState {
 
   factory FastApplicationState.fromMap(Map<String, dynamic> map) {
     return FastApplicationState(
-      application: map['application'] == null ? null : (map['application'] as String).input(),
-      fastJson: map['fastJson'] == null ? null : (map['fastJson'] as String).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
+      application: map['application'] == null ? null : (map['application']! as String).input(),
+      fastJson: map['fastJson'] == null ? null : (map['fastJson']! as String).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
     );
   }
 }

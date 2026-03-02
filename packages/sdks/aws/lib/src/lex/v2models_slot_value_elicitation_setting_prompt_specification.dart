@@ -37,11 +37,11 @@ class V2modelsSlotValueElicitationSettingPromptSpecification {
 
   factory V2modelsSlotValueElicitationSettingPromptSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecification(
-      allowInterrupt: map['allowInterrupt'] == null ? null : (map['allowInterrupt'] as bool).input(),
+      allowInterrupt: map['allowInterrupt'] == null ? null : ((map['allowInterrupt'] as bool).input()).input(),
       maxRetries: (map['maxRetries'] as int).input(),
-      messageGroups: map['messageGroups'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup>(map['messageGroups'], (value) => V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      messageSelectionStrategy: map['messageSelectionStrategy'] == null ? null : (map['messageSelectionStrategy'] as String).input(),
-      promptAttemptsSpecifications: map['promptAttemptsSpecifications'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification>(map['promptAttemptsSpecifications'], (value) => V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      messageGroups: map['messageGroups'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup>(map['messageGroups']!, (value) => V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      messageSelectionStrategy: map['messageSelectionStrategy'] == null ? null : ((map['messageSelectionStrategy'] as String).input()).input(),
+      promptAttemptsSpecifications: map['promptAttemptsSpecifications'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification>(map['promptAttemptsSpecifications']!, (value) => V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

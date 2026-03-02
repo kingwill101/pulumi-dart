@@ -64,16 +64,16 @@ class GetZonesResult {
 
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
     return GetZonesResult(
-      category: map['category'] == null ? null : map['category'] as String,
-      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : map['dbInstanceStorageType'] as String,
-      engine: map['engine'] == null ? null : map['engine'] as String,
-      engineVersion: map['engineVersion'] == null ? null : map['engineVersion'] as String,
+      category: map['category'] == null ? null : map['category']! as String,
+      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : map['dbInstanceStorageType']! as String,
+      engine: map['engine'] == null ? null : map['engine']! as String,
+      engineVersion: map['engineVersion'] == null ? null : map['engineVersion']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType'] as String,
-      multi: map['multi'] == null ? null : map['multi'] as bool,
-      multiZone: map['multiZone'] == null ? null : map['multiZone'] as bool,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType']! as String,
+      multi: map['multi'] == null ? null : map['multi']! as bool,
+      multiZone: map['multiZone'] == null ? null : map['multiZone']! as bool,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       zones: pulumi.Input.decodeList<GetZonesZone>(map['zones'], (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

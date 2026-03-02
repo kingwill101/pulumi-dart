@@ -21,7 +21,7 @@ class ConfigurationSetEventDestinationEventDestinationCloudWatchDestination {
 
   factory ConfigurationSetEventDestinationEventDestinationCloudWatchDestination.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetEventDestinationEventDestinationCloudWatchDestination(
-      dimensionConfigurations: (pulumi.Input.decodeList<ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration>(map['dimensionConfigurations'], (value) => ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensionConfigurations: (pulumi.Input.decodeList<ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration>(map['dimensionConfigurations']!, (value) => ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

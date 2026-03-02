@@ -58,14 +58,14 @@ class FilesetState {
 
   factory FilesetState.fromMap(Map<String, dynamic> map) {
     return FilesetState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      fileSystemPath: map['fileSystemPath'] == null ? null : (map['fileSystemPath'] as String).input(),
-      filesetId: map['filesetId'] == null ? null : (map['filesetId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      fileSystemPath: map['fileSystemPath'] == null ? null : (map['fileSystemPath']! as String).input(),
+      filesetId: map['filesetId'] == null ? null : (map['filesetId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

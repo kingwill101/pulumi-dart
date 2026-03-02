@@ -25,8 +25,8 @@ class PoolStartTaskUserIdentityAutoUser {
 
   factory PoolStartTaskUserIdentityAutoUser.fromMap(Map<String, dynamic> map) {
     return PoolStartTaskUserIdentityAutoUser(
-      elevationLevel: map['elevationLevel'] == null ? null : (map['elevationLevel'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      elevationLevel: map['elevationLevel'] == null ? null : (map['elevationLevel']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

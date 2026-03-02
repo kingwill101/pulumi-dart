@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement {
 
   factory GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

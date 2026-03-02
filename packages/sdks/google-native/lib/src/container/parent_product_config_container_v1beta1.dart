@@ -26,8 +26,8 @@ class ParentProductConfigContainerV1beta1 {
 
   factory ParentProductConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ParentProductConfigContainerV1beta1(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      productName: map['productName'] == null ? null : (map['productName']! as String).input(),
     );
   }
 }

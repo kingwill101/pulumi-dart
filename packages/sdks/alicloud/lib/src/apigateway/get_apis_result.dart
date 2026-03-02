@@ -54,14 +54,14 @@ class GetApisResult {
 
   factory GetApisResult.fromMap(Map<String, dynamic> map) {
     return GetApisResult(
-      apiId: map['apiId'] == null ? null : map['apiId'] as String,
+      apiId: map['apiId'] == null ? null : map['apiId']! as String,
       apis: pulumi.Input.decodeList<GetApisApi>(map['apis'], (value) => GetApisApi.fromMap((value as Map).cast<String, dynamic>())),
-      groupId: map['groupId'] == null ? null : map['groupId'] as String,
+      groupId: map['groupId'] == null ? null : map['groupId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

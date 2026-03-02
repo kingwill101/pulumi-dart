@@ -20,7 +20,7 @@ class ConfigurationAzureSecurityBaseline {
 
   factory ConfigurationAzureSecurityBaseline.fromMap(Map<String, dynamic> map) {
     return ConfigurationAzureSecurityBaseline(
-      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType'] as String).input(),
+      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType']! as String).input(),
     );
   }
 }

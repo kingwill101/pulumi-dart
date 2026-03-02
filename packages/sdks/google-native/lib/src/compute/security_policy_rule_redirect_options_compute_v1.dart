@@ -26,8 +26,8 @@ class SecurityPolicyRuleRedirectOptionsComputeV1 {
 
   factory SecurityPolicyRuleRedirectOptionsComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRedirectOptionsComputeV1(
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      type: map['type'] == null ? null : (SecurityPolicyRuleRedirectOptionsTypeComputeV1.fromValue(map['type'] as String)).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      type: map['type'] == null ? null : (SecurityPolicyRuleRedirectOptionsTypeComputeV1.fromValue(map['type']! as String)).input(),
     );
   }
 }

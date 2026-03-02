@@ -51,12 +51,12 @@ class VMGalleryApplicationResponse {
 
   factory VMGalleryApplicationResponse.fromMap(Map<String, dynamic> map) {
     return VMGalleryApplicationResponse(
-      configurationReference: map['configurationReference'] == null ? null : (map['configurationReference'] as String).input(),
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade'] as bool).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
+      configurationReference: map['configurationReference'] == null ? null : (map['configurationReference']! as String).input(),
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade']! as bool).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
       packageReferenceId: (map['packageReferenceId'] as String).input(),
-      tags: map['tags'] == null ? null : (map['tags'] as String).input(),
-      treatFailureAsDeploymentFailure: map['treatFailureAsDeploymentFailure'] == null ? null : (map['treatFailureAsDeploymentFailure'] as bool).input(),
+      tags: map['tags'] == null ? null : (map['tags']! as String).input(),
+      treatFailureAsDeploymentFailure: map['treatFailureAsDeploymentFailure'] == null ? null : (map['treatFailureAsDeploymentFailure']! as bool).input(),
     );
   }
 }

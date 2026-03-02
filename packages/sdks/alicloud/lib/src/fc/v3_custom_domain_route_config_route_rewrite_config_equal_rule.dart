@@ -25,8 +25,8 @@ class V3CustomDomainRouteConfigRouteRewriteConfigEqualRule {
 
   factory V3CustomDomainRouteConfigRouteRewriteConfigEqualRule.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainRouteConfigRouteRewriteConfigEqualRule(
-      match: map['match'] == null ? null : (map['match'] as String).input(),
-      replacement: map['replacement'] == null ? null : (map['replacement'] as String).input(),
+      match: map['match'] == null ? null : (map['match']! as String).input(),
+      replacement: map['replacement'] == null ? null : (map['replacement']! as String).input(),
     );
   }
 }

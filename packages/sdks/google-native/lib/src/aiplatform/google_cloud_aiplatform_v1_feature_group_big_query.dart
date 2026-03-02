@@ -28,7 +28,7 @@ class GoogleCloudAiplatformV1FeatureGroupBigQuery {
   factory GoogleCloudAiplatformV1FeatureGroupBigQuery.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeatureGroupBigQuery(
       bigQuerySource: (GoogleCloudAiplatformV1BigQuerySource.fromMap((map['bigQuerySource'] as Map).cast<String, dynamic>())).input(),
-      entityIdColumns: map['entityIdColumns'] == null ? null : ((map['entityIdColumns'] as List).cast<String>()).input(),
+      entityIdColumns: map['entityIdColumns'] == null ? null : ((map['entityIdColumns']! as List).cast<String>()).input(),
     );
   }
 }

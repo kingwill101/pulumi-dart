@@ -37,10 +37,10 @@ class VolumeAttachmentStatusStorageK8sIoV1beta1 {
 
   factory VolumeAttachmentStatusStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentStatusStorageK8sIoV1beta1(
-      attachError: map['attachError'] == null ? null : (VolumeErrorStorageK8sIoV1beta1.fromMap((map['attachError'] as Map).cast<String, dynamic>())).input(),
+      attachError: map['attachError'] == null ? null : (VolumeErrorStorageK8sIoV1beta1.fromMap((map['attachError']! as Map).cast<String, dynamic>())).input(),
       attached: (map['attached'] as bool).input(),
-      attachmentMetadata: map['attachmentMetadata'] == null ? null : ((map['attachmentMetadata'] as Map).cast<String, String>()).input(),
-      detachError: map['detachError'] == null ? null : (VolumeErrorStorageK8sIoV1beta1.fromMap((map['detachError'] as Map).cast<String, dynamic>())).input(),
+      attachmentMetadata: map['attachmentMetadata'] == null ? null : ((map['attachmentMetadata']! as Map).cast<String, String>()).input(),
+      detachError: map['detachError'] == null ? null : (VolumeErrorStorageK8sIoV1beta1.fromMap((map['detachError']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

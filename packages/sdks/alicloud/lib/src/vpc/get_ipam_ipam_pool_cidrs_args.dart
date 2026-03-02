@@ -34,9 +34,9 @@ class GetIpamIpamPoolCidrsArgs {
 
   factory GetIpamIpamPoolCidrsArgs.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamPoolCidrsArgs(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
       ipamPoolId: (map['ipamPoolId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

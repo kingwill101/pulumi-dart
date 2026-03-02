@@ -80,16 +80,16 @@ class AiEndpointWithModelGardenDeploymentState {
 
   factory AiEndpointWithModelGardenDeploymentState.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentState(
-      deployConfig: map['deployConfig'] == null ? null : (AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((map['deployConfig'] as Map).cast<String, dynamic>())).input(),
-      deployedModelDisplayName: map['deployedModelDisplayName'] == null ? null : (map['deployedModelDisplayName'] as String).input(),
-      deployedModelId: map['deployedModelId'] == null ? null : (map['deployedModelId'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      endpointConfig: map['endpointConfig'] == null ? null : (AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap((map['endpointConfig'] as Map).cast<String, dynamic>())).input(),
-      huggingFaceModelId: map['huggingFaceModelId'] == null ? null : (map['huggingFaceModelId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      modelConfig: map['modelConfig'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfig.fromMap((map['modelConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      publisherModelName: map['publisherModelName'] == null ? null : (map['publisherModelName'] as String).input(),
+      deployConfig: map['deployConfig'] == null ? null : (AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((map['deployConfig']! as Map).cast<String, dynamic>())).input(),
+      deployedModelDisplayName: map['deployedModelDisplayName'] == null ? null : (map['deployedModelDisplayName']! as String).input(),
+      deployedModelId: map['deployedModelId'] == null ? null : (map['deployedModelId']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      endpointConfig: map['endpointConfig'] == null ? null : (AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap((map['endpointConfig']! as Map).cast<String, dynamic>())).input(),
+      huggingFaceModelId: map['huggingFaceModelId'] == null ? null : (map['huggingFaceModelId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      modelConfig: map['modelConfig'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfig.fromMap((map['modelConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      publisherModelName: map['publisherModelName'] == null ? null : (map['publisherModelName']! as String).input(),
     );
   }
 }

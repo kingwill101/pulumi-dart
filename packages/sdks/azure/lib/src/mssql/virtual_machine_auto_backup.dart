@@ -50,13 +50,13 @@ class VirtualMachineAutoBackup {
 
   factory VirtualMachineAutoBackup.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAutoBackup(
-      encryptionEnabled: map['encryptionEnabled'] == null ? null : (map['encryptionEnabled'] as bool).input(),
-      encryptionPassword: map['encryptionPassword'] == null ? null : (map['encryptionPassword'] as String).input(),
-      manualSchedule: map['manualSchedule'] == null ? null : (VirtualMachineAutoBackupManualSchedule.fromMap((map['manualSchedule'] as Map).cast<String, dynamic>())).input(),
+      encryptionEnabled: map['encryptionEnabled'] == null ? null : (map['encryptionEnabled']! as bool).input(),
+      encryptionPassword: map['encryptionPassword'] == null ? null : (map['encryptionPassword']! as String).input(),
+      manualSchedule: map['manualSchedule'] == null ? null : (VirtualMachineAutoBackupManualSchedule.fromMap((map['manualSchedule']! as Map).cast<String, dynamic>())).input(),
       retentionPeriodInDays: (map['retentionPeriodInDays'] as int).input(),
       storageAccountAccessKey: (map['storageAccountAccessKey'] as String).input(),
       storageBlobEndpoint: (map['storageBlobEndpoint'] as String).input(),
-      systemDatabasesBackupEnabled: map['systemDatabasesBackupEnabled'] == null ? null : (map['systemDatabasesBackupEnabled'] as bool).input(),
+      systemDatabasesBackupEnabled: map['systemDatabasesBackupEnabled'] == null ? null : (map['systemDatabasesBackupEnabled']! as bool).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfig {
 
   factory FleetDefaultClusterConfigBinaryAuthorizationConfig.fromMap(Map<String, dynamic> map) {
     return FleetDefaultClusterConfigBinaryAuthorizationConfig(
-      evaluationMode: map['evaluationMode'] == null ? null : (map['evaluationMode'] as String).input(),
-      policyBindings: map['policyBindings'] == null ? null : (pulumi.Input.decodeList<FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding>(map['policyBindings'], (value) => FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      evaluationMode: map['evaluationMode'] == null ? null : (map['evaluationMode']! as String).input(),
+      policyBindings: map['policyBindings'] == null ? null : (pulumi.Input.decodeList<FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding>(map['policyBindings']!, (value) => FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

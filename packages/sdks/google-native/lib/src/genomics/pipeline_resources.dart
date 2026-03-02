@@ -62,15 +62,15 @@ class PipelineResources {
 
   factory PipelineResources.fromMap(Map<String, dynamic> map) {
     return PipelineResources(
-      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount'] as String).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb'] as int).input(),
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<Disk>(map['disks'], (value) => Disk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      minimumCpuCores: map['minimumCpuCores'] == null ? null : (map['minimumCpuCores'] as int).input(),
-      minimumRamGb: map['minimumRamGb'] == null ? null : (map['minimumRamGb'] as double).input(),
-      noAddress: map['noAddress'] == null ? null : (map['noAddress'] as bool).input(),
-      preemptible: map['preemptible'] == null ? null : (map['preemptible'] as bool).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount']! as String).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb']! as int).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<Disk>(map['disks']!, (value) => Disk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      minimumCpuCores: map['minimumCpuCores'] == null ? null : (map['minimumCpuCores']! as int).input(),
+      minimumRamGb: map['minimumRamGb'] == null ? null : (map['minimumRamGb']! as double).input(),
+      noAddress: map['noAddress'] == null ? null : (map['noAddress']! as bool).input(),
+      preemptible: map['preemptible'] == null ? null : (map['preemptible']! as bool).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

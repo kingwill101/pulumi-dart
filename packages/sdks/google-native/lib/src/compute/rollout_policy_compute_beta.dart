@@ -26,8 +26,8 @@ class RolloutPolicyComputeBeta {
 
   factory RolloutPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return RolloutPolicyComputeBeta(
-      defaultRolloutTime: map['defaultRolloutTime'] == null ? null : (map['defaultRolloutTime'] as String).input(),
-      locationRolloutPolicies: map['locationRolloutPolicies'] == null ? null : ((map['locationRolloutPolicies'] as Map).cast<String, String>()).input(),
+      defaultRolloutTime: map['defaultRolloutTime'] == null ? null : (map['defaultRolloutTime']! as String).input(),
+      locationRolloutPolicies: map['locationRolloutPolicies'] == null ? null : ((map['locationRolloutPolicies']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ScheduleTargetSagemakerPipelineParameters {
 
   factory ScheduleTargetSagemakerPipelineParameters.fromMap(Map<String, dynamic> map) {
     return ScheduleTargetSagemakerPipelineParameters(
-      pipelineParameters: map['pipelineParameters'] == null ? null : (pulumi.Input.decodeList<ScheduleTargetSagemakerPipelineParametersPipelineParameter>(map['pipelineParameters'], (value) => ScheduleTargetSagemakerPipelineParametersPipelineParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pipelineParameters: map['pipelineParameters'] == null ? null : ((pulumi.Input.decodeList<ScheduleTargetSagemakerPipelineParametersPipelineParameter>(map['pipelineParameters']!, (value) => ScheduleTargetSagemakerPipelineParametersPipelineParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

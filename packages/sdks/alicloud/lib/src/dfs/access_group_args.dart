@@ -35,7 +35,7 @@ class AccessGroupArgs {
   factory AccessGroupArgs.fromMap(Map<String, dynamic> map) {
     return AccessGroupArgs(
       accessGroupName: (map['accessGroupName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       networkType: (map['networkType'] as String).input(),
     );
   }

@@ -48,9 +48,9 @@ class PodResourceClaim {
   factory PodResourceClaim.fromMap(Map<String, dynamic> map) {
     return PodResourceClaim(
       name: (map['name'] as String).input(),
-      resourceClaimName: map['resourceClaimName'] == null ? null : (map['resourceClaimName'] as String).input(),
-      resourceClaimTemplateName: map['resourceClaimTemplateName'] == null ? null : (map['resourceClaimTemplateName'] as String).input(),
-      source: map['source'] == null ? null : (ClaimSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      resourceClaimName: map['resourceClaimName'] == null ? null : (map['resourceClaimName']! as String).input(),
+      resourceClaimTemplateName: map['resourceClaimTemplateName'] == null ? null : (map['resourceClaimTemplateName']! as String).input(),
+      source: map['source'] == null ? null : (ClaimSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

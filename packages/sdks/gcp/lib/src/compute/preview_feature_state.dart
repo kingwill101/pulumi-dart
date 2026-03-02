@@ -40,10 +40,10 @@ class PreviewFeatureState {
 
   factory PreviewFeatureState.fromMap(Map<String, dynamic> map) {
     return PreviewFeatureState(
-      activationStatus: map['activationStatus'] == null ? null : (map['activationStatus'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rolloutOperation: map['rolloutOperation'] == null ? null : (PreviewFeatureRolloutOperation.fromMap((map['rolloutOperation'] as Map).cast<String, dynamic>())).input(),
+      activationStatus: map['activationStatus'] == null ? null : (map['activationStatus']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rolloutOperation: map['rolloutOperation'] == null ? null : (PreviewFeatureRolloutOperation.fromMap((map['rolloutOperation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

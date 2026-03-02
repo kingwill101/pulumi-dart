@@ -45,11 +45,11 @@ class GetRoleAssignmentsResult {
   factory GetRoleAssignmentsResult.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentsResult(
       id: map['id'] as String,
-      limitAtScope: map['limitAtScope'] == null ? null : map['limitAtScope'] as bool,
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
+      limitAtScope: map['limitAtScope'] == null ? null : map['limitAtScope']! as bool,
+      principalId: map['principalId'] == null ? null : map['principalId']! as String,
       roleAssignments: pulumi.Input.decodeList<GetRoleAssignmentsRoleAssignment>(map['roleAssignments'], (value) => GetRoleAssignmentsRoleAssignment.fromMap((value as Map).cast<String, dynamic>())),
       scope: map['scope'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
     );
   }
 }

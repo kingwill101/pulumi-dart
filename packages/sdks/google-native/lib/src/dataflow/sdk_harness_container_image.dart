@@ -36,10 +36,10 @@ class SdkHarnessContainerImage {
 
   factory SdkHarnessContainerImage.fromMap(Map<String, dynamic> map) {
     return SdkHarnessContainerImage(
-      capabilities: map['capabilities'] == null ? null : ((map['capabilities'] as List).cast<String>()).input(),
-      containerImage: map['containerImage'] == null ? null : (map['containerImage'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      useSingleCorePerContainer: map['useSingleCorePerContainer'] == null ? null : (map['useSingleCorePerContainer'] as bool).input(),
+      capabilities: map['capabilities'] == null ? null : ((map['capabilities']! as List).cast<String>()).input(),
+      containerImage: map['containerImage'] == null ? null : (map['containerImage']! as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      useSingleCorePerContainer: map['useSingleCorePerContainer'] == null ? null : (map['useSingleCorePerContainer']! as bool).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class GetSaslUsersArgs {
 
   factory GetSaslUsersArgs.fromMap(Map<String, dynamic> map) {
     return GetSaslUsersArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

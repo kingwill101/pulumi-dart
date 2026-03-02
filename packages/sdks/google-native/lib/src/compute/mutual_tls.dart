@@ -22,7 +22,7 @@ class MutualTls {
 
   factory MutualTls.fromMap(Map<String, dynamic> map) {
     return MutualTls(
-      mode: map['mode'] == null ? null : (MutualTlsMode.fromValue(map['mode'] as String)).input(),
+      mode: map['mode'] == null ? null : (MutualTlsMode.fromValue(map['mode']! as String)).input(),
     );
   }
 }

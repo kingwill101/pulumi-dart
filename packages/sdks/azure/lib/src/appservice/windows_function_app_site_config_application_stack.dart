@@ -47,12 +47,12 @@ class WindowsFunctionAppSiteConfigApplicationStack {
 
   factory WindowsFunctionAppSiteConfigApplicationStack.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppSiteConfigApplicationStack(
-      dotnetVersion: map['dotnetVersion'] == null ? null : (map['dotnetVersion'] as String).input(),
-      javaVersion: map['javaVersion'] == null ? null : (map['javaVersion'] as String).input(),
-      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion'] as String).input(),
-      powershellCoreVersion: map['powershellCoreVersion'] == null ? null : (map['powershellCoreVersion'] as String).input(),
-      useCustomRuntime: map['useCustomRuntime'] == null ? null : (map['useCustomRuntime'] as bool).input(),
-      useDotnetIsolatedRuntime: map['useDotnetIsolatedRuntime'] == null ? null : (map['useDotnetIsolatedRuntime'] as bool).input(),
+      dotnetVersion: map['dotnetVersion'] == null ? null : (map['dotnetVersion']! as String).input(),
+      javaVersion: map['javaVersion'] == null ? null : (map['javaVersion']! as String).input(),
+      nodeVersion: map['nodeVersion'] == null ? null : (map['nodeVersion']! as String).input(),
+      powershellCoreVersion: map['powershellCoreVersion'] == null ? null : (map['powershellCoreVersion']! as String).input(),
+      useCustomRuntime: map['useCustomRuntime'] == null ? null : (map['useCustomRuntime']! as bool).input(),
+      useDotnetIsolatedRuntime: map['useDotnetIsolatedRuntime'] == null ? null : (map['useDotnetIsolatedRuntime']! as bool).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class NetworkDomain {
 
   factory NetworkDomain.fromMap(Map<String, dynamic> map) {
     return NetworkDomain(
-      localOnly: map['localOnly'] == null ? null : (map['localOnly'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      localOnly: map['localOnly'] == null ? null : (map['localOnly']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

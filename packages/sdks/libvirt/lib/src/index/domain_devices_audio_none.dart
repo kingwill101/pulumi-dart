@@ -25,8 +25,8 @@ class DomainDevicesAudioNone {
 
   factory DomainDevicesAudioNone.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioNone(
-      input: map['input'] == null ? null : ((map['input'] as Map).cast<String, dynamic>()).input(),
-      output: map['output'] == null ? null : ((map['output'] as Map).cast<String, dynamic>()).input(),
+      input: map['input'] == null ? null : ((map['input']! as Map).cast<String, dynamic>()).input(),
+      output: map['output'] == null ? null : ((map['output']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

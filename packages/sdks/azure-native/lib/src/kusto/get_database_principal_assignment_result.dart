@@ -84,7 +84,7 @@ class GetDatabasePrincipalAssignmentResult {
       principalType: map['principalType'] as String,
       provisioningState: map['provisioningState'] as String,
       role: map['role'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       tenantName: map['tenantName'] as String,
       type: map['type'] as String,
     );

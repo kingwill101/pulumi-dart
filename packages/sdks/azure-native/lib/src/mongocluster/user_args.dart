@@ -41,9 +41,9 @@ class UserArgs {
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
       mongoClusterName: (map['mongoClusterName'] as String).input(),
-      properties: map['properties'] == null ? null : (UserProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (UserProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

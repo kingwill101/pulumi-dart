@@ -50,12 +50,12 @@ class ResponsePolicyRuleState {
 
   factory ResponsePolicyRuleState.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyRuleState(
-      behavior: map['behavior'] == null ? null : (map['behavior'] as String).input(),
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      localData: map['localData'] == null ? null : (ResponsePolicyRuleLocalData.fromMap((map['localData'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      responsePolicy: map['responsePolicy'] == null ? null : (map['responsePolicy'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      behavior: map['behavior'] == null ? null : (map['behavior']! as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
+      localData: map['localData'] == null ? null : (ResponsePolicyRuleLocalData.fromMap((map['localData']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      responsePolicy: map['responsePolicy'] == null ? null : (map['responsePolicy']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
     );
   }
 }

@@ -71,14 +71,14 @@ class KeystoresAliasesSelfSignedCertArgs {
   factory KeystoresAliasesSelfSignedCertArgs.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesSelfSignedCertArgs(
       alias: (map['alias'] as String).input(),
-      certValidityInDays: map['certValidityInDays'] == null ? null : (map['certValidityInDays'] as int).input(),
+      certValidityInDays: map['certValidityInDays'] == null ? null : (map['certValidityInDays']! as int).input(),
       environment: (map['environment'] as String).input(),
-      keySize: map['keySize'] == null ? null : (map['keySize'] as String).input(),
+      keySize: map['keySize'] == null ? null : (map['keySize']! as String).input(),
       keystore: (map['keystore'] as String).input(),
       orgId: (map['orgId'] as String).input(),
       sigAlg: (map['sigAlg'] as String).input(),
       subject: (KeystoresAliasesSelfSignedCertSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
-      subjectAlternativeDnsNames: map['subjectAlternativeDnsNames'] == null ? null : (KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap((map['subjectAlternativeDnsNames'] as Map).cast<String, dynamic>())).input(),
+      subjectAlternativeDnsNames: map['subjectAlternativeDnsNames'] == null ? null : (KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap((map['subjectAlternativeDnsNames']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

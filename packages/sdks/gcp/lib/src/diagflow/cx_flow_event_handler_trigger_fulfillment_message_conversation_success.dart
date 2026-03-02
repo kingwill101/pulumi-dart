@@ -20,7 +20,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess {
 
   factory CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess.fromMap(Map<String, dynamic> map) {
     return CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess(
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
     );
   }
 }

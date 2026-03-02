@@ -65,15 +65,15 @@ class ScheduledQueryRulesLogArgs {
 
   factory ScheduledQueryRulesLogArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRulesLogArgs(
-      authorizedResourceIds: map['authorizedResourceIds'] == null ? null : ((map['authorizedResourceIds'] as List).cast<String>()).input(),
+      authorizedResourceIds: map['authorizedResourceIds'] == null ? null : ((map['authorizedResourceIds']! as List).cast<String>()).input(),
       criteria: (ScheduledQueryRulesLogCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
       dataSourceId: (map['dataSourceId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class StarRocksInstanceVswitch {
   factory StarRocksInstanceVswitch.fromMap(Map<String, dynamic> map) {
     return StarRocksInstanceVswitch(
       vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

@@ -45,9 +45,9 @@ class DataExchangeSubscriptionDestinationDataset {
   factory DataExchangeSubscriptionDestinationDataset.fromMap(Map<String, dynamic> map) {
     return DataExchangeSubscriptionDestinationDataset(
       datasetReference: (DataExchangeSubscriptionDestinationDatasetDatasetReference.fromMap((map['datasetReference'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
     );
   }

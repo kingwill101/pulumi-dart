@@ -32,7 +32,7 @@ class GetInterconnectAttachmentArgs {
   factory GetInterconnectAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetInterconnectAttachmentArgs(
       interconnectAttachment: (map['interconnectAttachment'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

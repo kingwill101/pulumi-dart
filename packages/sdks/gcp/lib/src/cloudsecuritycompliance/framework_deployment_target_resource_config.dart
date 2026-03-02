@@ -29,8 +29,8 @@ class FrameworkDeploymentTargetResourceConfig {
 
   factory FrameworkDeploymentTargetResourceConfig.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentTargetResourceConfig(
-      existingTargetResource: map['existingTargetResource'] == null ? null : (map['existingTargetResource'] as String).input(),
-      targetResourceCreationConfig: map['targetResourceCreationConfig'] == null ? null : (FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig.fromMap((map['targetResourceCreationConfig'] as Map).cast<String, dynamic>())).input(),
+      existingTargetResource: map['existingTargetResource'] == null ? null : (map['existingTargetResource']! as String).input(),
+      targetResourceCreationConfig: map['targetResourceCreationConfig'] == null ? null : (FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig.fromMap((map['targetResourceCreationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

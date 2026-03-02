@@ -72,16 +72,16 @@ class HostnameConfiguration {
 
   factory HostnameConfiguration.fromMap(Map<String, dynamic> map) {
     return HostnameConfiguration(
-      certificate: map['certificate'] == null ? null : (CertificateInformation.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
-      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
-      certificateSource: map['certificateSource'] == null ? null : (map['certificateSource'] as String).input(),
-      certificateStatus: map['certificateStatus'] == null ? null : (map['certificateStatus'] as String).input(),
-      defaultSslBinding: map['defaultSslBinding'] == null ? null : (map['defaultSslBinding'] as bool).input(),
-      encodedCertificate: map['encodedCertificate'] == null ? null : (map['encodedCertificate'] as String).input(),
+      certificate: map['certificate'] == null ? null : (CertificateInformation.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input(),
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword']! as String).input(),
+      certificateSource: map['certificateSource'] == null ? null : (map['certificateSource']! as String).input(),
+      certificateStatus: map['certificateStatus'] == null ? null : (map['certificateStatus']! as String).input(),
+      defaultSslBinding: map['defaultSslBinding'] == null ? null : (map['defaultSslBinding']! as bool).input(),
+      encodedCertificate: map['encodedCertificate'] == null ? null : (map['encodedCertificate']! as String).input(),
       hostName: (map['hostName'] as String).input(),
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      negotiateClientCertificate: map['negotiateClientCertificate'] == null ? null : (map['negotiateClientCertificate'] as bool).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      negotiateClientCertificate: map['negotiateClientCertificate'] == null ? null : (map['negotiateClientCertificate']! as bool).input(),
       type: (map['type'] as String).input(),
     );
   }

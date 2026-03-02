@@ -71,15 +71,15 @@ class AssetEndpointProfileArgs {
 
   factory AssetEndpointProfileArgs.fromMap(Map<String, dynamic> map) {
     return AssetEndpointProfileArgs(
-      additionalConfiguration: map['additionalConfiguration'] == null ? null : (map['additionalConfiguration'] as String).input(),
-      assetEndpointProfileName: map['assetEndpointProfileName'] == null ? null : (map['assetEndpointProfileName'] as String).input(),
-      authentication: map['authentication'] == null ? null : (Authentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      discoveredAssetEndpointProfileRef: map['discoveredAssetEndpointProfileRef'] == null ? null : (map['discoveredAssetEndpointProfileRef'] as String).input(),
+      additionalConfiguration: map['additionalConfiguration'] == null ? null : (map['additionalConfiguration']! as String).input(),
+      assetEndpointProfileName: map['assetEndpointProfileName'] == null ? null : (map['assetEndpointProfileName']! as String).input(),
+      authentication: map['authentication'] == null ? null : (Authentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      discoveredAssetEndpointProfileRef: map['discoveredAssetEndpointProfileRef'] == null ? null : (map['discoveredAssetEndpointProfileRef']! as String).input(),
       endpointProfileType: (map['endpointProfileType'] as String).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       targetAddress: (map['targetAddress'] as String).input(),
     );
   }

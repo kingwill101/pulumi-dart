@@ -56,13 +56,13 @@ class QuotaV2State {
 
   factory QuotaV2State.fromMap(Map<String, dynamic> map) {
     return QuotaV2State(
-      apiExportSize: map['apiExportSize'] == null ? null : (map['apiExportSize'] as int).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      recordsetRecords: map['recordsetRecords'] == null ? null : (map['recordsetRecords'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      zoneRecords: map['zoneRecords'] == null ? null : (map['zoneRecords'] as int).input(),
-      zoneRecordsets: map['zoneRecordsets'] == null ? null : (map['zoneRecordsets'] as int).input(),
-      zones: map['zones'] == null ? null : (map['zones'] as int).input(),
+      apiExportSize: map['apiExportSize'] == null ? null : (map['apiExportSize']! as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      recordsetRecords: map['recordsetRecords'] == null ? null : (map['recordsetRecords']! as int).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      zoneRecords: map['zoneRecords'] == null ? null : (map['zoneRecords']! as int).input(),
+      zoneRecordsets: map['zoneRecordsets'] == null ? null : (map['zoneRecordsets']! as int).input(),
+      zones: map['zones'] == null ? null : (map['zones']! as int).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class GetConfigArgs {
     return GetConfigArgs(
       configId: (map['configId'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

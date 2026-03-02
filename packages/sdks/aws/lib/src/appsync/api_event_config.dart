@@ -45,11 +45,11 @@ class ApiEventConfig {
 
   factory ApiEventConfig.fromMap(Map<String, dynamic> map) {
     return ApiEventConfig(
-      authProviders: (pulumi.Input.decodeList<ApiEventConfigAuthProvider>(map['authProviders'], (value) => ApiEventConfigAuthProvider.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      connectionAuthModes: (pulumi.Input.decodeList<ApiEventConfigConnectionAuthMode>(map['connectionAuthModes'], (value) => ApiEventConfigConnectionAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultPublishAuthModes: (pulumi.Input.decodeList<ApiEventConfigDefaultPublishAuthMode>(map['defaultPublishAuthModes'], (value) => ApiEventConfigDefaultPublishAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultSubscribeAuthModes: (pulumi.Input.decodeList<ApiEventConfigDefaultSubscribeAuthMode>(map['defaultSubscribeAuthModes'], (value) => ApiEventConfigDefaultSubscribeAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logConfig: map['logConfig'] == null ? null : (ApiEventConfigLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
+      authProviders: (pulumi.Input.decodeList<ApiEventConfigAuthProvider>(map['authProviders']!, (value) => ApiEventConfigAuthProvider.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectionAuthModes: (pulumi.Input.decodeList<ApiEventConfigConnectionAuthMode>(map['connectionAuthModes']!, (value) => ApiEventConfigConnectionAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultPublishAuthModes: (pulumi.Input.decodeList<ApiEventConfigDefaultPublishAuthMode>(map['defaultPublishAuthModes']!, (value) => ApiEventConfigDefaultPublishAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultSubscribeAuthModes: (pulumi.Input.decodeList<ApiEventConfigDefaultSubscribeAuthMode>(map['defaultSubscribeAuthModes']!, (value) => ApiEventConfigDefaultSubscribeAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logConfig: map['logConfig'] == null ? null : ((ApiEventConfigLogConfig.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

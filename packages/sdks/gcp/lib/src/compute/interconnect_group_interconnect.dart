@@ -25,7 +25,7 @@ class InterconnectGroupInterconnect {
 
   factory InterconnectGroupInterconnect.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupInterconnect(
-      interconnect: map['interconnect'] == null ? null : (map['interconnect'] as String).input(),
+      interconnect: map['interconnect'] == null ? null : (map['interconnect']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

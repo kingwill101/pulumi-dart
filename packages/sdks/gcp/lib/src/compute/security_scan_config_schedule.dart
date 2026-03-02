@@ -28,7 +28,7 @@ class SecurityScanConfigSchedule {
   factory SecurityScanConfigSchedule.fromMap(Map<String, dynamic> map) {
     return SecurityScanConfigSchedule(
       intervalDurationDays: (map['intervalDurationDays'] as int).input(),
-      scheduleTime: map['scheduleTime'] == null ? null : (map['scheduleTime'] as String).input(),
+      scheduleTime: map['scheduleTime'] == null ? null : (map['scheduleTime']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class CapacityReservationGroupResponse {
 
   factory CapacityReservationGroupResponse.fromMap(Map<String, dynamic> map) {
     return CapacityReservationGroupResponse(
-      offer: map['offer'] == null ? null : (ServerlessOfferResponse.fromMap((map['offer'] as Map).cast<String, dynamic>())).input(),
+      offer: map['offer'] == null ? null : (ServerlessOfferResponse.fromMap((map['offer']! as Map).cast<String, dynamic>())).input(),
       reservedCapacity: (map['reservedCapacity'] as int).input(),
     );
   }

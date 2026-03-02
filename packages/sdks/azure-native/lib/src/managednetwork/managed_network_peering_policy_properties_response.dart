@@ -48,10 +48,10 @@ class ManagedNetworkPeeringPolicyPropertiesResponse {
   factory ManagedNetworkPeeringPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkPeeringPolicyPropertiesResponse(
       etag: (map['etag'] as String).input(),
-      hub: map['hub'] == null ? null : (ResourceIdResponse.fromMap((map['hub'] as Map).cast<String, dynamic>())).input(),
-      mesh: map['mesh'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['mesh'], (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hub: map['hub'] == null ? null : (ResourceIdResponse.fromMap((map['hub']! as Map).cast<String, dynamic>())).input(),
+      mesh: map['mesh'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['mesh']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      spokes: map['spokes'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['spokes'], (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      spokes: map['spokes'] == null ? null : (pulumi.Input.decodeList<ResourceIdResponse>(map['spokes']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

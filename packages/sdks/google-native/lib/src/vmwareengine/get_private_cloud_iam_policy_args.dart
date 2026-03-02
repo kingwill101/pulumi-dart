@@ -36,9 +36,9 @@ class GetPrivateCloudIamPolicyArgs {
   factory GetPrivateCloudIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudIamPolicyArgs(
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
       privateCloudId: (map['privateCloudId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

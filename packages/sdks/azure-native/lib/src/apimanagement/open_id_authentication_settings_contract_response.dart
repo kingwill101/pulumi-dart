@@ -26,8 +26,8 @@ class OpenIdAuthenticationSettingsContractResponse {
 
   factory OpenIdAuthenticationSettingsContractResponse.fromMap(Map<String, dynamic> map) {
     return OpenIdAuthenticationSettingsContractResponse(
-      bearerTokenSendingMethods: map['bearerTokenSendingMethods'] == null ? null : ((map['bearerTokenSendingMethods'] as List).cast<String>()).input(),
-      openidProviderId: map['openidProviderId'] == null ? null : (map['openidProviderId'] as String).input(),
+      bearerTokenSendingMethods: map['bearerTokenSendingMethods'] == null ? null : ((map['bearerTokenSendingMethods']! as List).cast<String>()).input(),
+      openidProviderId: map['openidProviderId'] == null ? null : (map['openidProviderId']! as String).input(),
     );
   }
 }

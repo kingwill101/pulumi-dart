@@ -92,19 +92,19 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      customerManagedKey: map['customerManagedKey'] == null ? null : (NamespaceCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (NamespaceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkRuleSet: map['networkRuleSet'] == null ? null : (NamespaceNetworkRuleSet.fromMap((map['networkRuleSet'] as Map).cast<String, dynamic>())).input(),
-      premiumMessagingPartitions: map['premiumMessagingPartitions'] == null ? null : (map['premiumMessagingPartitions'] as int).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : (NamespaceCustomerManagedKey.fromMap((map['customerManagedKey']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (NamespaceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkRuleSet: map['networkRuleSet'] == null ? null : (NamespaceNetworkRuleSet.fromMap((map['networkRuleSet']! as Map).cast<String, dynamic>())).input(),
+      premiumMessagingPartitions: map['premiumMessagingPartitions'] == null ? null : (map['premiumMessagingPartitions']! as int).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (map['sku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

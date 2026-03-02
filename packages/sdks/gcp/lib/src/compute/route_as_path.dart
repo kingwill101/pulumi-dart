@@ -31,8 +31,8 @@ class RouteAsPath {
 
   factory RouteAsPath.fromMap(Map<String, dynamic> map) {
     return RouteAsPath(
-      asLists: map['asLists'] == null ? null : ((map['asLists'] as List).cast<int>()).input(),
-      pathSegmentType: map['pathSegmentType'] == null ? null : (map['pathSegmentType'] as String).input(),
+      asLists: map['asLists'] == null ? null : ((map['asLists']! as List).cast<int>()).input(),
+      pathSegmentType: map['pathSegmentType'] == null ? null : (map['pathSegmentType']! as String).input(),
     );
   }
 }

@@ -39,7 +39,7 @@ class GetBlobArgs {
 
   factory GetBlobArgs.fromMap(Map<String, dynamic> map) {
     return GetBlobArgs(
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
       name: (map['name'] as String).input(),
       storageAccountName: (map['storageAccountName'] as String).input(),
       storageContainerName: (map['storageContainerName'] as String).input(),

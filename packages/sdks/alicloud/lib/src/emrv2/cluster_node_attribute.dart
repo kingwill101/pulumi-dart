@@ -60,13 +60,13 @@ class ClusterNodeAttribute {
 
   factory ClusterNodeAttribute.fromMap(Map<String, dynamic> map) {
     return ClusterNodeAttribute(
-      dataDiskEncrypted: map['dataDiskEncrypted'] == null ? null : (map['dataDiskEncrypted'] as bool).input(),
-      dataDiskKmsKeyId: map['dataDiskKmsKeyId'] == null ? null : (map['dataDiskKmsKeyId'] as String).input(),
+      dataDiskEncrypted: map['dataDiskEncrypted'] == null ? null : (map['dataDiskEncrypted']! as bool).input(),
+      dataDiskKmsKeyId: map['dataDiskKmsKeyId'] == null ? null : (map['dataDiskKmsKeyId']! as String).input(),
       keyPairName: (map['keyPairName'] as String).input(),
       ramRole: (map['ramRole'] as String).input(),
       securityGroupId: (map['securityGroupId'] as String).input(),
-      systemDiskEncrypted: map['systemDiskEncrypted'] == null ? null : (map['systemDiskEncrypted'] as bool).input(),
-      systemDiskKmsKeyId: map['systemDiskKmsKeyId'] == null ? null : (map['systemDiskKmsKeyId'] as String).input(),
+      systemDiskEncrypted: map['systemDiskEncrypted'] == null ? null : (map['systemDiskEncrypted']! as bool).input(),
+      systemDiskKmsKeyId: map['systemDiskKmsKeyId'] == null ? null : (map['systemDiskKmsKeyId']! as String).input(),
       vpcId: (map['vpcId'] as String).input(),
       zoneId: (map['zoneId'] as String).input(),
     );

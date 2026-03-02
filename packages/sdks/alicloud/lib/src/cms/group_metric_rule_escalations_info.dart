@@ -35,10 +35,10 @@ class GroupMetricRuleEscalationsInfo {
 
   factory GroupMetricRuleEscalationsInfo.fromMap(Map<String, dynamic> map) {
     return GroupMetricRuleEscalationsInfo(
-      comparisonOperator: map['comparisonOperator'] == null ? null : (map['comparisonOperator'] as String).input(),
-      statistics: map['statistics'] == null ? null : (map['statistics'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as String).input(),
-      times: map['times'] == null ? null : (map['times'] as int).input(),
+      comparisonOperator: map['comparisonOperator'] == null ? null : (map['comparisonOperator']! as String).input(),
+      statistics: map['statistics'] == null ? null : (map['statistics']! as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as String).input(),
+      times: map['times'] == null ? null : (map['times']! as int).input(),
     );
   }
 }

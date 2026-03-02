@@ -26,8 +26,8 @@ class GoogleCloudContentwarehouseV1MergeFieldsOptions {
 
   factory GoogleCloudContentwarehouseV1MergeFieldsOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1MergeFieldsOptions(
-      replaceMessageFields: map['replaceMessageFields'] == null ? null : (map['replaceMessageFields'] as bool).input(),
-      replaceRepeatedFields: map['replaceRepeatedFields'] == null ? null : (map['replaceRepeatedFields'] as bool).input(),
+      replaceMessageFields: map['replaceMessageFields'] == null ? null : (map['replaceMessageFields']! as bool).input(),
+      replaceRepeatedFields: map['replaceRepeatedFields'] == null ? null : (map['replaceRepeatedFields']! as bool).input(),
     );
   }
 }

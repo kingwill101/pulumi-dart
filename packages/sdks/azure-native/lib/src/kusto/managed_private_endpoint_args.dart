@@ -56,10 +56,10 @@ class ManagedPrivateEndpointArgs {
     return ManagedPrivateEndpointArgs(
       clusterName: (map['clusterName'] as String).input(),
       groupId: (map['groupId'] as String).input(),
-      managedPrivateEndpointName: map['managedPrivateEndpointName'] == null ? null : (map['managedPrivateEndpointName'] as String).input(),
+      managedPrivateEndpointName: map['managedPrivateEndpointName'] == null ? null : (map['managedPrivateEndpointName']! as String).input(),
       privateLinkResourceId: (map['privateLinkResourceId'] as String).input(),
-      privateLinkResourceRegion: map['privateLinkResourceRegion'] == null ? null : (map['privateLinkResourceRegion'] as String).input(),
-      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      privateLinkResourceRegion: map['privateLinkResourceRegion'] == null ? null : (map['privateLinkResourceRegion']! as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

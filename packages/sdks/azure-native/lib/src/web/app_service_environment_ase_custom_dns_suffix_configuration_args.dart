@@ -49,10 +49,10 @@ class AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs {
 
   factory AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs(
-      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
-      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix'] as String).input(),
-      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : (map['keyVaultReferenceIdentity'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl']! as String).input(),
+      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix']! as String).input(),
+      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : (map['keyVaultReferenceIdentity']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

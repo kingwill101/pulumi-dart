@@ -25,8 +25,8 @@ class ResiliencyPolicyPolicyRegion {
 
   factory ResiliencyPolicyPolicyRegion.fromMap(Map<String, dynamic> map) {
     return ResiliencyPolicyPolicyRegion(
-      rpo: map['rpo'] == null ? null : (map['rpo'] as String).input(),
-      rto: map['rto'] == null ? null : (map['rto'] as String).input(),
+      rpo: map['rpo'] == null ? null : ((map['rpo'] as String).input()).input(),
+      rto: map['rto'] == null ? null : ((map['rto'] as String).input()).input(),
     );
   }
 }

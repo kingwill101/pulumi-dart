@@ -54,10 +54,10 @@ class TrafficQosQueueArgs {
 
   factory TrafficQosQueueArgs.fromMap(Map<String, dynamic> map) {
     return TrafficQosQueueArgs(
-      bandwidthPercent: map['bandwidthPercent'] == null ? null : (map['bandwidthPercent'] as String).input(),
+      bandwidthPercent: map['bandwidthPercent'] == null ? null : (map['bandwidthPercent']! as String).input(),
       qosId: (map['qosId'] as String).input(),
-      queueDescription: map['queueDescription'] == null ? null : (map['queueDescription'] as String).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
+      queueDescription: map['queueDescription'] == null ? null : (map['queueDescription']! as String).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
       queueType: (map['queueType'] as String).input(),
     );
   }

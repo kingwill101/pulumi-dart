@@ -36,9 +36,9 @@ class GcpProjectDetailsResponse {
 
   factory GcpProjectDetailsResponse.fromMap(Map<String, dynamic> map) {
     return GcpProjectDetailsResponse(
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
       projectName: (map['projectName'] as String).input(),
-      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber']! as String).input(),
       workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
     );
   }

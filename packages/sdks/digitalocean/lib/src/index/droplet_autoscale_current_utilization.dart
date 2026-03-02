@@ -25,8 +25,8 @@ class DropletAutoscaleCurrentUtilization {
 
   factory DropletAutoscaleCurrentUtilization.fromMap(Map<String, dynamic> map) {
     return DropletAutoscaleCurrentUtilization(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as double).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as double).input(),
     );
   }
 }

@@ -41,7 +41,7 @@ class EventStreamArgs {
     return EventStreamArgs(
       applicationId: (map['applicationId'] as String).input(),
       destinationStreamArn: (map['destinationStreamArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
     );
   }

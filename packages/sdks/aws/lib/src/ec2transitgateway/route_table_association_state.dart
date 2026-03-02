@@ -46,12 +46,12 @@ class RouteTableAssociationState {
 
   factory RouteTableAssociationState.fromMap(Map<String, dynamic> map) {
     return RouteTableAssociationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replaceExistingAssociation: map['replaceExistingAssociation'] == null ? null : (map['replaceExistingAssociation'] as bool).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
-      transitGatewayRouteTableId: map['transitGatewayRouteTableId'] == null ? null : (map['transitGatewayRouteTableId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replaceExistingAssociation: map['replaceExistingAssociation'] == null ? null : ((map['replaceExistingAssociation'] as bool).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : ((map['transitGatewayAttachmentId'] as String).input()).input(),
+      transitGatewayRouteTableId: map['transitGatewayRouteTableId'] == null ? null : ((map['transitGatewayRouteTableId'] as String).input()).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class FhirServiceOciArtifact {
 
   factory FhirServiceOciArtifact.fromMap(Map<String, dynamic> map) {
     return FhirServiceOciArtifact(
-      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
       loginServer: (map['loginServer'] as String).input(),
     );
   }

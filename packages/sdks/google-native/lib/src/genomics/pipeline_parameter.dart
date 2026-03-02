@@ -37,9 +37,9 @@ class PipelineParameter {
 
   factory PipelineParameter.fromMap(Map<String, dynamic> map) {
     return PipelineParameter(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      localCopy: map['localCopy'] == null ? null : (LocalCopy.fromMap((map['localCopy'] as Map).cast<String, dynamic>())).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      localCopy: map['localCopy'] == null ? null : (LocalCopy.fromMap((map['localCopy']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

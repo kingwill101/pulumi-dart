@@ -36,7 +36,7 @@ class GroupGroupKey {
   factory GroupGroupKey.fromMap(Map<String, dynamic> map) {
     return GroupGroupKey(
       id: (map['id'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

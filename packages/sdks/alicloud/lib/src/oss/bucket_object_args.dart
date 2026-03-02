@@ -87,19 +87,19 @@ class BucketObjectArgs {
 
   factory BucketObjectArgs.fromMap(Map<String, dynamic> map) {
     return BucketObjectArgs(
-      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
+      acl: map['acl'] == null ? null : (map['acl']! as String).input(),
       bucket: (map['bucket'] as String).input(),
-      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition'] as String).input(),
-      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
-      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      expires: map['expires'] == null ? null : (map['expires'] as String).input(),
+      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl']! as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition']! as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding']! as String).input(),
+      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      expires: map['expires'] == null ? null : (map['expires']! as String).input(),
       key: (map['key'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      serverSideEncryption: map['serverSideEncryption'] == null ? null : (map['serverSideEncryption'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      serverSideEncryption: map['serverSideEncryption'] == null ? null : (map['serverSideEncryption']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

@@ -49,11 +49,11 @@ class GetManagedPrefixListArgs {
 
   factory GetManagedPrefixListArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedPrefixListArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetManagedPrefixListFilter>(map['filters'], (value) => GetManagedPrefixListFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetManagedPrefixListFilter>(map['filters']!, (value) => GetManagedPrefixListFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

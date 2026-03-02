@@ -65,14 +65,14 @@ class ListenerRuleArgs {
 
   factory ListenerRuleArgs.fromMap(Map<String, dynamic> map) {
     return ListenerRuleArgs(
-      action: (ListenerRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      action: (ListenerRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
       listenerIdentifier: (map['listenerIdentifier'] as String).input(),
-      match: (ListenerRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      match: (ListenerRuleMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       priority: (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serviceIdentifier: (map['serviceIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

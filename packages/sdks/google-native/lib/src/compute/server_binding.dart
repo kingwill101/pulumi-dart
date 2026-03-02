@@ -20,7 +20,7 @@ class ServerBinding {
 
   factory ServerBinding.fromMap(Map<String, dynamic> map) {
     return ServerBinding(
-      type: map['type'] == null ? null : (ServerBindingType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (ServerBindingType.fromValue(map['type']! as String)).input(),
     );
   }
 }

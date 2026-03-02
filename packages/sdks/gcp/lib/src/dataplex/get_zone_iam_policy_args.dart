@@ -44,8 +44,8 @@ class GetZoneIamPolicyArgs {
     return GetZoneIamPolicyArgs(
       dataplexZone: (map['dataplexZone'] as String).input(),
       lake: (map['lake'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

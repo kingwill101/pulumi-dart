@@ -55,12 +55,12 @@ class GetRouteMapsArgs {
   factory GetRouteMapsArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteMapsArgs(
       cenId: (map['cenId'] as String).input(),
-      cenRegionId: map['cenRegionId'] == null ? null : (map['cenRegionId'] as String).input(),
-      descriptionRegex: map['descriptionRegex'] == null ? null : (map['descriptionRegex'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transmitDirection: map['transmitDirection'] == null ? null : (map['transmitDirection'] as String).input(),
+      cenRegionId: map['cenRegionId'] == null ? null : (map['cenRegionId']! as String).input(),
+      descriptionRegex: map['descriptionRegex'] == null ? null : (map['descriptionRegex']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transmitDirection: map['transmitDirection'] == null ? null : (map['transmitDirection']! as String).input(),
     );
   }
 }

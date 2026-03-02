@@ -57,14 +57,14 @@ class RouterVpcAssociationState {
 
   factory RouterVpcAssociationState.fromMap(Map<String, dynamic> map) {
     return RouterVpcAssociationState(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes'] as List).cast<String>()).input(),
-      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
-      associationRegionId: map['associationRegionId'] == null ? null : (map['associationRegionId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      ecrId: map['ecrId'] == null ? null : (map['ecrId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vpcOwnerId: map['vpcOwnerId'] == null ? null : (map['vpcOwnerId'] as int).input(),
+      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes']! as List).cast<String>()).input(),
+      associationId: map['associationId'] == null ? null : (map['associationId']! as String).input(),
+      associationRegionId: map['associationRegionId'] == null ? null : (map['associationRegionId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      ecrId: map['ecrId'] == null ? null : (map['ecrId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vpcOwnerId: map['vpcOwnerId'] == null ? null : (map['vpcOwnerId']! as int).input(),
     );
   }
 }

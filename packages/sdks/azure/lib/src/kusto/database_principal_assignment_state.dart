@@ -66,16 +66,16 @@ class DatabasePrincipalAssignmentState {
 
   factory DatabasePrincipalAssignmentState.fromMap(Map<String, dynamic> map) {
     return DatabasePrincipalAssignmentState(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      principalName: map['principalName'] == null ? null : (map['principalName'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      tenantName: map['tenantName'] == null ? null : (map['tenantName'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      principalName: map['principalName'] == null ? null : (map['principalName']! as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      tenantName: map['tenantName'] == null ? null : (map['tenantName']! as String).input(),
     );
   }
 }

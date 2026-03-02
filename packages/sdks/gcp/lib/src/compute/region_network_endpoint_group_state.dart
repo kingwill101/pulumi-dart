@@ -115,20 +115,20 @@ class RegionNetworkEndpointGroupState {
 
   factory RegionNetworkEndpointGroupState.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointGroupState(
-      appEngine: map['appEngine'] == null ? null : (RegionNetworkEndpointGroupAppEngine.fromMap((map['appEngine'] as Map).cast<String, dynamic>())).input(),
-      cloudFunction: map['cloudFunction'] == null ? null : (RegionNetworkEndpointGroupCloudFunction.fromMap((map['cloudFunction'] as Map).cast<String, dynamic>())).input(),
-      cloudRun: map['cloudRun'] == null ? null : (RegionNetworkEndpointGroupCloudRun.fromMap((map['cloudRun'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      networkEndpointType: map['networkEndpointType'] == null ? null : (map['networkEndpointType'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pscData: map['pscData'] == null ? null : (RegionNetworkEndpointGroupPscData.fromMap((map['pscData'] as Map).cast<String, dynamic>())).input(),
-      pscTargetService: map['pscTargetService'] == null ? null : (map['pscTargetService'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      serverlessDeployment: map['serverlessDeployment'] == null ? null : (RegionNetworkEndpointGroupServerlessDeployment.fromMap((map['serverlessDeployment'] as Map).cast<String, dynamic>())).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      appEngine: map['appEngine'] == null ? null : (RegionNetworkEndpointGroupAppEngine.fromMap((map['appEngine']! as Map).cast<String, dynamic>())).input(),
+      cloudFunction: map['cloudFunction'] == null ? null : (RegionNetworkEndpointGroupCloudFunction.fromMap((map['cloudFunction']! as Map).cast<String, dynamic>())).input(),
+      cloudRun: map['cloudRun'] == null ? null : (RegionNetworkEndpointGroupCloudRun.fromMap((map['cloudRun']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      networkEndpointType: map['networkEndpointType'] == null ? null : (map['networkEndpointType']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pscData: map['pscData'] == null ? null : (RegionNetworkEndpointGroupPscData.fromMap((map['pscData']! as Map).cast<String, dynamic>())).input(),
+      pscTargetService: map['pscTargetService'] == null ? null : (map['pscTargetService']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      serverlessDeployment: map['serverlessDeployment'] == null ? null : (RegionNetworkEndpointGroupServerlessDeployment.fromMap((map['serverlessDeployment']! as Map).cast<String, dynamic>())).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

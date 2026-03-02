@@ -40,7 +40,7 @@ class TagArgs {
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
       key: (map['key'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       secretId: (map['secretId'] as String).input(),
       value: (map['value'] as String).input(),
     );

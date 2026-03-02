@@ -33,8 +33,8 @@ class GetKeyMultiRegionConfiguration {
   factory GetKeyMultiRegionConfiguration.fromMap(Map<String, dynamic> map) {
     return GetKeyMultiRegionConfiguration(
       multiRegionKeyType: (map['multiRegionKeyType'] as String).input(),
-      primaryKeys: (pulumi.Input.decodeList<GetKeyMultiRegionConfigurationPrimaryKey>(map['primaryKeys'], (value) => GetKeyMultiRegionConfigurationPrimaryKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replicaKeys: (pulumi.Input.decodeList<GetKeyMultiRegionConfigurationReplicaKey>(map['replicaKeys'], (value) => GetKeyMultiRegionConfigurationReplicaKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      primaryKeys: (pulumi.Input.decodeList<GetKeyMultiRegionConfigurationPrimaryKey>(map['primaryKeys']!, (value) => GetKeyMultiRegionConfigurationPrimaryKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicaKeys: (pulumi.Input.decodeList<GetKeyMultiRegionConfigurationReplicaKey>(map['replicaKeys']!, (value) => GetKeyMultiRegionConfigurationReplicaKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

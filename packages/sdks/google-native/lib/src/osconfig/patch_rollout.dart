@@ -28,8 +28,8 @@ class PatchRollout {
 
   factory PatchRollout.fromMap(Map<String, dynamic> map) {
     return PatchRollout(
-      disruptionBudget: map['disruptionBudget'] == null ? null : (FixedOrPercent.fromMap((map['disruptionBudget'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (PatchRolloutMode.fromValue(map['mode'] as String)).input(),
+      disruptionBudget: map['disruptionBudget'] == null ? null : (FixedOrPercent.fromMap((map['disruptionBudget']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (PatchRolloutMode.fromValue(map['mode']! as String)).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class Secrets {
 
   factory Secrets.fromMap(Map<String, dynamic> map) {
     return Secrets(
-      inline: map['inline'] == null ? null : (pulumi.Input.decodeList<InlineSecret>(map['inline'], (value) => InlineSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secretManager: map['secretManager'] == null ? null : (pulumi.Input.decodeList<SecretManagerSecret>(map['secretManager'], (value) => SecretManagerSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inline: map['inline'] == null ? null : (pulumi.Input.decodeList<InlineSecret>(map['inline']!, (value) => InlineSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secretManager: map['secretManager'] == null ? null : (pulumi.Input.decodeList<SecretManagerSecret>(map['secretManager']!, (value) => SecretManagerSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

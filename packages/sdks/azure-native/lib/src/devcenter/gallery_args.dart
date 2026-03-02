@@ -40,7 +40,7 @@ class GalleryArgs {
   factory GalleryArgs.fromMap(Map<String, dynamic> map) {
     return GalleryArgs(
       devCenterName: (map['devCenterName'] as String).input(),
-      galleryName: map['galleryName'] == null ? null : (map['galleryName'] as String).input(),
+      galleryName: map['galleryName'] == null ? null : (map['galleryName']! as String).input(),
       galleryResourceId: (map['galleryResourceId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

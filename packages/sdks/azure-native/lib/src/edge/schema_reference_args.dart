@@ -35,9 +35,9 @@ class SchemaReferenceArgs {
 
   factory SchemaReferenceArgs.fromMap(Map<String, dynamic> map) {
     return SchemaReferenceArgs(
-      properties: map['properties'] == null ? null : (SchemaReferenceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SchemaReferenceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceUri: (map['resourceUri'] as String).input(),
-      schemaReferenceName: map['schemaReferenceName'] == null ? null : (map['schemaReferenceName'] as String).input(),
+      schemaReferenceName: map['schemaReferenceName'] == null ? null : (map['schemaReferenceName']! as String).input(),
     );
   }
 }

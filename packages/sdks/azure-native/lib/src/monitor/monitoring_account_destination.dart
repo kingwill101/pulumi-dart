@@ -27,8 +27,8 @@ class MonitoringAccountDestination {
 
   factory MonitoringAccountDestination.fromMap(Map<String, dynamic> map) {
     return MonitoringAccountDestination(
-      accountResourceId: map['accountResourceId'] == null ? null : (map['accountResourceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accountResourceId: map['accountResourceId'] == null ? null : (map['accountResourceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

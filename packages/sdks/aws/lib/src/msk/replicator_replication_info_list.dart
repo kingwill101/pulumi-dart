@@ -50,13 +50,13 @@ class ReplicatorReplicationInfoList {
 
   factory ReplicatorReplicationInfoList.fromMap(Map<String, dynamic> map) {
     return ReplicatorReplicationInfoList(
-      consumerGroupReplications: (pulumi.Input.decodeList<ReplicatorReplicationInfoListConsumerGroupReplication>(map['consumerGroupReplications'], (value) => ReplicatorReplicationInfoListConsumerGroupReplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceKafkaClusterAlias: map['sourceKafkaClusterAlias'] == null ? null : (map['sourceKafkaClusterAlias'] as String).input(),
+      consumerGroupReplications: (pulumi.Input.decodeList<ReplicatorReplicationInfoListConsumerGroupReplication>(map['consumerGroupReplications']!, (value) => ReplicatorReplicationInfoListConsumerGroupReplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceKafkaClusterAlias: map['sourceKafkaClusterAlias'] == null ? null : ((map['sourceKafkaClusterAlias'] as String).input()).input(),
       sourceKafkaClusterArn: (map['sourceKafkaClusterArn'] as String).input(),
       targetCompressionType: (map['targetCompressionType'] as String).input(),
-      targetKafkaClusterAlias: map['targetKafkaClusterAlias'] == null ? null : (map['targetKafkaClusterAlias'] as String).input(),
+      targetKafkaClusterAlias: map['targetKafkaClusterAlias'] == null ? null : ((map['targetKafkaClusterAlias'] as String).input()).input(),
       targetKafkaClusterArn: (map['targetKafkaClusterArn'] as String).input(),
-      topicReplications: (pulumi.Input.decodeList<ReplicatorReplicationInfoListTopicReplication>(map['topicReplications'], (value) => ReplicatorReplicationInfoListTopicReplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      topicReplications: (pulumi.Input.decodeList<ReplicatorReplicationInfoListTopicReplication>(map['topicReplications']!, (value) => ReplicatorReplicationInfoListTopicReplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

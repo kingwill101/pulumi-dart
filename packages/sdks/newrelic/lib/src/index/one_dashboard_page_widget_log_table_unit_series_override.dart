@@ -25,8 +25,8 @@ class OneDashboardPageWidgetLogTableUnitSeriesOverride {
 
   factory OneDashboardPageWidgetLogTableUnitSeriesOverride.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetLogTableUnitSeriesOverride(
-      seriesName: map['seriesName'] == null ? null : (map['seriesName'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      seriesName: map['seriesName'] == null ? null : (map['seriesName']! as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

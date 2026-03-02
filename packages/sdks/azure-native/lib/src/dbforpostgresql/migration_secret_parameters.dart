@@ -33,8 +33,8 @@ class MigrationSecretParameters {
   factory MigrationSecretParameters.fromMap(Map<String, dynamic> map) {
     return MigrationSecretParameters(
       adminCredentials: (AdminCredentials.fromMap((map['adminCredentials'] as Map).cast<String, dynamic>())).input(),
-      sourceServerUsername: map['sourceServerUsername'] == null ? null : (map['sourceServerUsername'] as String).input(),
-      targetServerUsername: map['targetServerUsername'] == null ? null : (map['targetServerUsername'] as String).input(),
+      sourceServerUsername: map['sourceServerUsername'] == null ? null : (map['sourceServerUsername']! as String).input(),
+      targetServerUsername: map['targetServerUsername'] == null ? null : (map['targetServerUsername']! as String).input(),
     );
   }
 }

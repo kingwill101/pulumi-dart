@@ -72,14 +72,14 @@ class LbRouteExtensionArgs {
 
   factory LbRouteExtensionArgs.fromMap(Map<String, dynamic> map) {
     return LbRouteExtensionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       extensionChains: (pulumi.Input.decodeList<LbRouteExtensionExtensionChain>(map['extensionChains'], (value) => LbRouteExtensionExtensionChain.fromMap((value as Map).cast<String, dynamic>()))).input(),
       forwardingRules: ((map['forwardingRules'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       loadBalancingScheme: (map['loadBalancingScheme'] as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

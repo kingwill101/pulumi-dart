@@ -81,18 +81,18 @@ class LayerVersionArgs {
 
   factory LayerVersionArgs.fromMap(Map<String, dynamic> map) {
     return LayerVersionArgs(
-      code: map['code'] == null ? null : (map['code']).input(),
-      compatibleArchitectures: map['compatibleArchitectures'] == null ? null : ((map['compatibleArchitectures'] as List).cast<String>()).input(),
-      compatibleRuntimes: map['compatibleRuntimes'] == null ? null : ((map['compatibleRuntimes'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      code: map['code'] == null ? null : ((map['code']).input()).input(),
+      compatibleArchitectures: map['compatibleArchitectures'] == null ? null : (((map['compatibleArchitectures'] as List).cast<String>()).input()).input(),
+      compatibleRuntimes: map['compatibleRuntimes'] == null ? null : (((map['compatibleRuntimes'] as List).cast<String>()).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       layerName: (map['layerName'] as String).input(),
-      licenseInfo: map['licenseInfo'] == null ? null : (map['licenseInfo'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket'] as String).input(),
-      s3Key: map['s3Key'] == null ? null : (map['s3Key'] as String).input(),
-      s3ObjectVersion: map['s3ObjectVersion'] == null ? null : (map['s3ObjectVersion'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
-      sourceCodeHash: map['sourceCodeHash'] == null ? null : (map['sourceCodeHash'] as String).input(),
+      licenseInfo: map['licenseInfo'] == null ? null : ((map['licenseInfo'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3Bucket: map['s3Bucket'] == null ? null : ((map['s3Bucket'] as String).input()).input(),
+      s3Key: map['s3Key'] == null ? null : ((map['s3Key'] as String).input()).input(),
+      s3ObjectVersion: map['s3ObjectVersion'] == null ? null : ((map['s3ObjectVersion'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
+      sourceCodeHash: map['sourceCodeHash'] == null ? null : ((map['sourceCodeHash'] as String).input()).input(),
     );
   }
 }

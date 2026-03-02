@@ -41,11 +41,11 @@ class PolicyAttachmentState {
 
   factory PolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentState(
-      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyArn: map['policyArn'] == null ? null : (map['policyArn'] as String).input(),
-      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
-      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
+      groups: map['groups'] == null ? null : (((map['groups'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      policyArn: map['policyArn'] == null ? null : ((map['policyArn'] as String).input()).input(),
+      roles: map['roles'] == null ? null : (((map['roles'] as List).cast<String>()).input()).input(),
+      users: map['users'] == null ? null : (((map['users'] as List).cast<String>()).input()).input(),
     );
   }
 }

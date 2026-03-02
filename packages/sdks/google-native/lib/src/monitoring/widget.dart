@@ -91,19 +91,19 @@ class Widget {
 
   factory Widget.fromMap(Map<String, dynamic> map) {
     return Widget(
-      alertChart: map['alertChart'] == null ? null : (AlertChart.fromMap((map['alertChart'] as Map).cast<String, dynamic>())).input(),
-      blank: map['blank'] == null ? null : ((map['blank'] as Map).cast<String, dynamic>()).input(),
-      collapsibleGroup: map['collapsibleGroup'] == null ? null : (CollapsibleGroup.fromMap((map['collapsibleGroup'] as Map).cast<String, dynamic>())).input(),
-      errorReportingPanel: map['errorReportingPanel'] == null ? null : (ErrorReportingPanel.fromMap((map['errorReportingPanel'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      incidentList: map['incidentList'] == null ? null : (IncidentList.fromMap((map['incidentList'] as Map).cast<String, dynamic>())).input(),
-      logsPanel: map['logsPanel'] == null ? null : (LogsPanel.fromMap((map['logsPanel'] as Map).cast<String, dynamic>())).input(),
-      pieChart: map['pieChart'] == null ? null : (PieChart.fromMap((map['pieChart'] as Map).cast<String, dynamic>())).input(),
-      scorecard: map['scorecard'] == null ? null : (Scorecard.fromMap((map['scorecard'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (Text.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
-      timeSeriesTable: map['timeSeriesTable'] == null ? null : (TimeSeriesTable.fromMap((map['timeSeriesTable'] as Map).cast<String, dynamic>())).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
-      xyChart: map['xyChart'] == null ? null : (XyChart.fromMap((map['xyChart'] as Map).cast<String, dynamic>())).input(),
+      alertChart: map['alertChart'] == null ? null : (AlertChart.fromMap((map['alertChart']! as Map).cast<String, dynamic>())).input(),
+      blank: map['blank'] == null ? null : ((map['blank']! as Map).cast<String, dynamic>()).input(),
+      collapsibleGroup: map['collapsibleGroup'] == null ? null : (CollapsibleGroup.fromMap((map['collapsibleGroup']! as Map).cast<String, dynamic>())).input(),
+      errorReportingPanel: map['errorReportingPanel'] == null ? null : (ErrorReportingPanel.fromMap((map['errorReportingPanel']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      incidentList: map['incidentList'] == null ? null : (IncidentList.fromMap((map['incidentList']! as Map).cast<String, dynamic>())).input(),
+      logsPanel: map['logsPanel'] == null ? null : (LogsPanel.fromMap((map['logsPanel']! as Map).cast<String, dynamic>())).input(),
+      pieChart: map['pieChart'] == null ? null : (PieChart.fromMap((map['pieChart']! as Map).cast<String, dynamic>())).input(),
+      scorecard: map['scorecard'] == null ? null : (Scorecard.fromMap((map['scorecard']! as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (Text.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
+      timeSeriesTable: map['timeSeriesTable'] == null ? null : (TimeSeriesTable.fromMap((map['timeSeriesTable']! as Map).cast<String, dynamic>())).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
+      xyChart: map['xyChart'] == null ? null : (XyChart.fromMap((map['xyChart']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

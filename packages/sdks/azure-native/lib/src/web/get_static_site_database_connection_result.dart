@@ -69,10 +69,10 @@ class GetStaticSiteDatabaseConnectionResult {
     return GetStaticSiteDatabaseConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       configurationFiles: pulumi.Input.decodeList<StaticSiteDatabaseConnectionConfigurationFileOverviewResponse>(map['configurationFiles'], (value) => StaticSiteDatabaseConnectionConfigurationFileOverviewResponse.fromMap((value as Map).cast<String, dynamic>())),
-      connectionIdentity: map['connectionIdentity'] == null ? null : map['connectionIdentity'] as String,
-      connectionString: map['connectionString'] == null ? null : map['connectionString'] as String,
+      connectionIdentity: map['connectionIdentity'] == null ? null : map['connectionIdentity']! as String,
+      connectionString: map['connectionString'] == null ? null : map['connectionString']! as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       region: map['region'] as String,
       resourceId: map['resourceId'] as String,

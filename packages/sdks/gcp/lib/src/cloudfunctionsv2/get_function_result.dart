@@ -94,7 +94,7 @@ class GetFunctionResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       serviceConfigs: pulumi.Input.decodeList<GetFunctionServiceConfig>(map['serviceConfigs'], (value) => GetFunctionServiceConfig.fromMap((value as Map).cast<String, dynamic>())),
       state: map['state'] as String,

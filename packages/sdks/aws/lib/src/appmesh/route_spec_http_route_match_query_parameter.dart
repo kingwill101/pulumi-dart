@@ -26,7 +26,7 @@ class RouteSpecHttpRouteMatchQueryParameter {
 
   factory RouteSpecHttpRouteMatchQueryParameter.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttpRouteMatchQueryParameter(
-      match: map['match'] == null ? null : (RouteSpecHttpRouteMatchQueryParameterMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      match: map['match'] == null ? null : ((RouteSpecHttpRouteMatchQueryParameterMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

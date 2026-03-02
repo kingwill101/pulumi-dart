@@ -42,11 +42,11 @@ class EventRequestMessageResponse {
 
   factory EventRequestMessageResponse.fromMap(Map<String, dynamic> map) {
     return EventRequestMessageResponse(
-      content: map['content'] == null ? null : (EventContentResponse.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      requestUri: map['requestUri'] == null ? null : (map['requestUri'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      content: map['content'] == null ? null : (EventContentResponse.fromMap((map['content']! as Map).cast<String, dynamic>())).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      requestUri: map['requestUri'] == null ? null : (map['requestUri']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

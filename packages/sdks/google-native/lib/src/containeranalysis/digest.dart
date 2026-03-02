@@ -26,8 +26,8 @@ class Digest {
 
   factory Digest.fromMap(Map<String, dynamic> map) {
     return Digest(
-      algo: map['algo'] == null ? null : (map['algo'] as String).input(),
-      digestBytes: map['digestBytes'] == null ? null : (map['digestBytes'] as String).input(),
+      algo: map['algo'] == null ? null : (map['algo']! as String).input(),
+      digestBytes: map['digestBytes'] == null ? null : (map['digestBytes']! as String).input(),
     );
   }
 }

@@ -35,9 +35,9 @@ class TaskSetServiceRegistries {
 
   factory TaskSetServiceRegistries.fromMap(Map<String, dynamic> map) {
     return TaskSetServiceRegistries(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      containerName: map['containerName'] == null ? null : ((map['containerName'] as String).input()).input(),
+      containerPort: map['containerPort'] == null ? null : ((map['containerPort'] as int).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
       registryArn: (map['registryArn'] as String).input(),
     );
   }

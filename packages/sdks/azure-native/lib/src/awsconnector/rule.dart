@@ -101,22 +101,22 @@ class Rule {
 
   factory Rule.fromMap(Map<String, dynamic> map) {
     return Rule(
-      abortIncompleteMultipartUpload: map['abortIncompleteMultipartUpload'] == null ? null : (AbortIncompleteMultipartUpload.fromMap((map['abortIncompleteMultipartUpload'] as Map).cast<String, dynamic>())).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
-      expirationInDays: map['expirationInDays'] == null ? null : (map['expirationInDays'] as int).input(),
-      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : (map['expiredObjectDeleteMarker'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : (NoncurrentVersionExpiration.fromMap((map['noncurrentVersionExpiration'] as Map).cast<String, dynamic>())).input(),
-      noncurrentVersionExpirationInDays: map['noncurrentVersionExpirationInDays'] == null ? null : (map['noncurrentVersionExpirationInDays'] as int).input(),
-      noncurrentVersionTransition: map['noncurrentVersionTransition'] == null ? null : (NoncurrentVersionTransition.fromMap((map['noncurrentVersionTransition'] as Map).cast<String, dynamic>())).input(),
-      noncurrentVersionTransitions: map['noncurrentVersionTransitions'] == null ? null : (pulumi.Input.decodeList<NoncurrentVersionTransition>(map['noncurrentVersionTransitions'], (value) => NoncurrentVersionTransition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      objectSizeGreaterThan: map['objectSizeGreaterThan'] == null ? null : (map['objectSizeGreaterThan'] as String).input(),
-      objectSizeLessThan: map['objectSizeLessThan'] == null ? null : (map['objectSizeLessThan'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<TagFilter>(map['tagFilters'], (value) => TagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transition: map['transition'] == null ? null : (Transition.fromMap((map['transition'] as Map).cast<String, dynamic>())).input(),
-      transitions: map['transitions'] == null ? null : (pulumi.Input.decodeList<Transition>(map['transitions'], (value) => Transition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      abortIncompleteMultipartUpload: map['abortIncompleteMultipartUpload'] == null ? null : (AbortIncompleteMultipartUpload.fromMap((map['abortIncompleteMultipartUpload']! as Map).cast<String, dynamic>())).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
+      expirationInDays: map['expirationInDays'] == null ? null : (map['expirationInDays']! as int).input(),
+      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : (map['expiredObjectDeleteMarker']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : (NoncurrentVersionExpiration.fromMap((map['noncurrentVersionExpiration']! as Map).cast<String, dynamic>())).input(),
+      noncurrentVersionExpirationInDays: map['noncurrentVersionExpirationInDays'] == null ? null : (map['noncurrentVersionExpirationInDays']! as int).input(),
+      noncurrentVersionTransition: map['noncurrentVersionTransition'] == null ? null : (NoncurrentVersionTransition.fromMap((map['noncurrentVersionTransition']! as Map).cast<String, dynamic>())).input(),
+      noncurrentVersionTransitions: map['noncurrentVersionTransitions'] == null ? null : (pulumi.Input.decodeList<NoncurrentVersionTransition>(map['noncurrentVersionTransitions']!, (value) => NoncurrentVersionTransition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      objectSizeGreaterThan: map['objectSizeGreaterThan'] == null ? null : (map['objectSizeGreaterThan']! as String).input(),
+      objectSizeLessThan: map['objectSizeLessThan'] == null ? null : (map['objectSizeLessThan']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<TagFilter>(map['tagFilters']!, (value) => TagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transition: map['transition'] == null ? null : (Transition.fromMap((map['transition']! as Map).cast<String, dynamic>())).input(),
+      transitions: map['transitions'] == null ? null : (pulumi.Input.decodeList<Transition>(map['transitions']!, (value) => Transition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -37,9 +37,9 @@ class ManualJobTriggerConfigResponse {
 
   factory ManualJobTriggerConfigResponse.fromMap(Map<String, dynamic> map) {
     return ManualJobTriggerConfigResponse(
-      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
-      retryLimit: map['retryLimit'] == null ? null : (map['retryLimit'] as int).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
+      retryLimit: map['retryLimit'] == null ? null : (map['retryLimit']! as int).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as int).input(),
       triggerType: (map['triggerType'] as String).input(),
     );
   }

@@ -45,12 +45,12 @@ class SpacesBucketCorsConfigurationCorsRule {
 
   factory SpacesBucketCorsConfigurationCorsRule.fromMap(Map<String, dynamic> map) {
     return SpacesBucketCorsConfigurationCorsRule(
-      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders'] as List).cast<String>()).input(),
+      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders']! as List).cast<String>()).input(),
       allowedMethods: ((map['allowedMethods'] as List).cast<String>()).input(),
       allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
-      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : (map['maxAgeSeconds'] as int).input(),
+      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : (map['maxAgeSeconds']! as int).input(),
     );
   }
 }

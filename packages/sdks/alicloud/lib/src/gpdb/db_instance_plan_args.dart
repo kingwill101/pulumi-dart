@@ -68,12 +68,12 @@ class DbInstancePlanArgs {
       dbInstanceId: (map['dbInstanceId'] as String).input(),
       dbInstancePlanName: (map['dbInstancePlanName'] as String).input(),
       planConfigs: (pulumi.Input.decodeList<DbInstancePlanPlanConfig>(map['planConfigs'], (value) => DbInstancePlanPlanConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      planDesc: map['planDesc'] == null ? null : (map['planDesc'] as String).input(),
-      planEndDate: map['planEndDate'] == null ? null : (map['planEndDate'] as String).input(),
+      planDesc: map['planDesc'] == null ? null : (map['planDesc']! as String).input(),
+      planEndDate: map['planEndDate'] == null ? null : (map['planEndDate']! as String).input(),
       planScheduleType: (map['planScheduleType'] as String).input(),
-      planStartDate: map['planStartDate'] == null ? null : (map['planStartDate'] as String).input(),
+      planStartDate: map['planStartDate'] == null ? null : (map['planStartDate']! as String).input(),
       planType: (map['planType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

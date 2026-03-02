@@ -21,7 +21,7 @@ class DevCenterProjectCatalogSettingsResponse {
 
   factory DevCenterProjectCatalogSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DevCenterProjectCatalogSettingsResponse(
-      catalogItemSyncEnableStatus: map['catalogItemSyncEnableStatus'] == null ? null : (map['catalogItemSyncEnableStatus'] as String).input(),
+      catalogItemSyncEnableStatus: map['catalogItemSyncEnableStatus'] == null ? null : (map['catalogItemSyncEnableStatus']! as String).input(),
     );
   }
 }

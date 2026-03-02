@@ -21,7 +21,7 @@ class ConfigConnectorConfigContainerV1beta1 {
 
   factory ConfigConnectorConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ConfigConnectorConfigContainerV1beta1(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

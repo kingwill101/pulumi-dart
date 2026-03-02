@@ -20,7 +20,7 @@ class ThemeConfigurationSheetTileBorder {
 
   factory ThemeConfigurationSheetTileBorder.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheetTileBorder(
-      show: map['show'] == null ? null : (map['show'] as bool).input(),
+      show: map['show'] == null ? null : ((map['show'] as bool).input()).input(),
     );
   }
 }

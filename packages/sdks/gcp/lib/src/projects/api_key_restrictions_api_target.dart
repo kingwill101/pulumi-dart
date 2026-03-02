@@ -25,7 +25,7 @@ class ApiKeyRestrictionsApiTarget {
 
   factory ApiKeyRestrictionsApiTarget.fromMap(Map<String, dynamic> map) {
     return ApiKeyRestrictionsApiTarget(
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
       service: (map['service'] as String).input(),
     );
   }

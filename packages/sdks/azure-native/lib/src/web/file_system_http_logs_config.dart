@@ -35,9 +35,9 @@ class FileSystemHttpLogsConfig {
 
   factory FileSystemHttpLogsConfig.fromMap(Map<String, dynamic> map) {
     return FileSystemHttpLogsConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
-      retentionInMb: map['retentionInMb'] == null ? null : (map['retentionInMb'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays']! as int).input(),
+      retentionInMb: map['retentionInMb'] == null ? null : (map['retentionInMb']! as int).input(),
     );
   }
 }

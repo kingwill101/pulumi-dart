@@ -21,7 +21,7 @@ class ContinuousBackupsStatusEnumValue {
 
   factory ContinuousBackupsStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return ContinuousBackupsStatusEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

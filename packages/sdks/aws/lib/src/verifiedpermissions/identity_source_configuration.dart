@@ -27,8 +27,8 @@ class IdentitySourceConfiguration {
 
   factory IdentitySourceConfiguration.fromMap(Map<String, dynamic> map) {
     return IdentitySourceConfiguration(
-      cognitoUserPoolConfiguration: map['cognitoUserPoolConfiguration'] == null ? null : (IdentitySourceConfigurationCognitoUserPoolConfiguration.fromMap((map['cognitoUserPoolConfiguration'] as Map).cast<String, dynamic>())).input(),
-      openIdConnectConfiguration: map['openIdConnectConfiguration'] == null ? null : (IdentitySourceConfigurationOpenIdConnectConfiguration.fromMap((map['openIdConnectConfiguration'] as Map).cast<String, dynamic>())).input(),
+      cognitoUserPoolConfiguration: map['cognitoUserPoolConfiguration'] == null ? null : ((IdentitySourceConfigurationCognitoUserPoolConfiguration.fromMap((map['cognitoUserPoolConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      openIdConnectConfiguration: map['openIdConnectConfiguration'] == null ? null : ((IdentitySourceConfigurationOpenIdConnectConfiguration.fromMap((map['openIdConnectConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

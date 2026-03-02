@@ -28,8 +28,8 @@ class DefenderCspmAwsOfferingResponseCiem {
 
   factory DefenderCspmAwsOfferingResponseCiem.fromMap(Map<String, dynamic> map) {
     return DefenderCspmAwsOfferingResponseCiem(
-      ciemDiscovery: map['ciemDiscovery'] == null ? null : (DefenderCspmAwsOfferingResponseCiemDiscovery.fromMap((map['ciemDiscovery'] as Map).cast<String, dynamic>())).input(),
-      ciemOidc: map['ciemOidc'] == null ? null : (DefenderCspmAwsOfferingResponseCiemOidc.fromMap((map['ciemOidc'] as Map).cast<String, dynamic>())).input(),
+      ciemDiscovery: map['ciemDiscovery'] == null ? null : (DefenderCspmAwsOfferingResponseCiemDiscovery.fromMap((map['ciemDiscovery']! as Map).cast<String, dynamic>())).input(),
+      ciemOidc: map['ciemOidc'] == null ? null : (DefenderCspmAwsOfferingResponseCiemOidc.fromMap((map['ciemOidc']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

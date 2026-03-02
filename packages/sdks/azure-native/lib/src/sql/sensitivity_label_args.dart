@@ -83,17 +83,17 @@ class SensitivityLabelArgs {
 
   factory SensitivityLabelArgs.fromMap(Map<String, dynamic> map) {
     return SensitivityLabelArgs(
-      clientClassificationSource: map['clientClassificationSource'] == null ? null : (map['clientClassificationSource'] as String).input(),
+      clientClassificationSource: map['clientClassificationSource'] == null ? null : (map['clientClassificationSource']! as String).input(),
       columnName: (map['columnName'] as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      informationType: map['informationType'] == null ? null : (map['informationType'] as String).input(),
-      informationTypeId: map['informationTypeId'] == null ? null : (map['informationTypeId'] as String).input(),
-      labelId: map['labelId'] == null ? null : (map['labelId'] as String).input(),
-      labelName: map['labelName'] == null ? null : (map['labelName'] as String).input(),
-      rank: map['rank'] == null ? null : (SensitivityLabelRank.fromValue(map['rank'] as String)).input(),
+      informationType: map['informationType'] == null ? null : (map['informationType']! as String).input(),
+      informationTypeId: map['informationTypeId'] == null ? null : (map['informationTypeId']! as String).input(),
+      labelId: map['labelId'] == null ? null : (map['labelId']! as String).input(),
+      labelName: map['labelName'] == null ? null : (map['labelName']! as String).input(),
+      rank: map['rank'] == null ? null : (SensitivityLabelRank.fromValue(map['rank']! as String)).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       schemaName: (map['schemaName'] as String).input(),
-      sensitivityLabelSource: map['sensitivityLabelSource'] == null ? null : (map['sensitivityLabelSource'] as String).input(),
+      sensitivityLabelSource: map['sensitivityLabelSource'] == null ? null : (map['sensitivityLabelSource']! as String).input(),
       serverName: (map['serverName'] as String).input(),
       tableName: (map['tableName'] as String).input(),
     );

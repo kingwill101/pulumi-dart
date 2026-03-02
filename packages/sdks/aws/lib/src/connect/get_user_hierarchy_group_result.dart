@@ -61,7 +61,7 @@ class GetUserHierarchyGroupResult {
     return GetUserHierarchyGroupResult(
       arn: map['arn'] as String,
       hierarchyGroupId: map['hierarchyGroupId'] as String,
-      hierarchyPaths: pulumi.Input.decodeList<GetUserHierarchyGroupHierarchyPath>(map['hierarchyPaths'], (value) => GetUserHierarchyGroupHierarchyPath.fromMap((value as Map).cast<String, dynamic>())),
+      hierarchyPaths: pulumi.Input.decodeList<GetUserHierarchyGroupHierarchyPath>(map['hierarchyPaths']!, (value) => GetUserHierarchyGroupHierarchyPath.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
       levelId: map['levelId'] as String,

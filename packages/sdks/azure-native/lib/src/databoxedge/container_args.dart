@@ -44,7 +44,7 @@ class ContainerArgs {
 
   factory ContainerArgs.fromMap(Map<String, dynamic> map) {
     return ContainerArgs(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
       dataFormat: (map['dataFormat'] as String).input(),
       deviceName: (map['deviceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

@@ -42,7 +42,7 @@ class EntryGcsFilesetSpec {
   factory EntryGcsFilesetSpec.fromMap(Map<String, dynamic> map) {
     return EntryGcsFilesetSpec(
       filePatterns: ((map['filePatterns'] as List).cast<String>()).input(),
-      sampleGcsFileSpecs: map['sampleGcsFileSpecs'] == null ? null : (pulumi.Input.decodeList<EntryGcsFilesetSpecSampleGcsFileSpec>(map['sampleGcsFileSpecs'], (value) => EntryGcsFilesetSpecSampleGcsFileSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sampleGcsFileSpecs: map['sampleGcsFileSpecs'] == null ? null : (pulumi.Input.decodeList<EntryGcsFilesetSpecSampleGcsFileSpec>(map['sampleGcsFileSpecs']!, (value) => EntryGcsFilesetSpecSampleGcsFileSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

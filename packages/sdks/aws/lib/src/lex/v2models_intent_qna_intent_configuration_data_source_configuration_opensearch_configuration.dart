@@ -42,9 +42,9 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfi
   factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration(
       domainEndpoint: (map['domainEndpoint'] as String).input(),
-      exactResponse: map['exactResponse'] == null ? null : (map['exactResponse'] as bool).input(),
-      exactResponseFields: map['exactResponseFields'] == null ? null : (V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields.fromMap((map['exactResponseFields'] as Map).cast<String, dynamic>())).input(),
-      includeFields: map['includeFields'] == null ? null : ((map['includeFields'] as List).cast<String>()).input(),
+      exactResponse: map['exactResponse'] == null ? null : ((map['exactResponse'] as bool).input()).input(),
+      exactResponseFields: map['exactResponseFields'] == null ? null : ((V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfigurationExactResponseFields.fromMap((map['exactResponseFields']! as Map).cast<String, dynamic>())).input()).input(),
+      includeFields: map['includeFields'] == null ? null : (((map['includeFields'] as List).cast<String>()).input()).input(),
       indexName: (map['indexName'] as String).input(),
     );
   }

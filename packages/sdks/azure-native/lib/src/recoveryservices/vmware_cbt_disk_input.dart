@@ -51,13 +51,13 @@ class VMwareCbtDiskInput {
 
   factory VMwareCbtDiskInput.fromMap(Map<String, dynamic> map) {
     return VMwareCbtDiskInput(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
       diskId: (map['diskId'] as String).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
       isOSDisk: (map['isOSDisk'] as String).input(),
       logStorageAccountId: (map['logStorageAccountId'] as String).input(),
       logStorageAccountSasSecretName: (map['logStorageAccountSasSecretName'] as String).input(),
-      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes'] as int).input(),
+      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes']! as int).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class VolumeBackingStore {
 
   factory VolumeBackingStore.fromMap(Map<String, dynamic> map) {
     return VolumeBackingStore(
-      format: map['format'] == null ? null : (VolumeBackingStoreFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (VolumeBackingStoreFormat.fromMap((map['format']! as Map).cast<String, dynamic>())).input(),
       path: (map['path'] as String).input(),
-      permissions: map['permissions'] == null ? null : (VolumeBackingStorePermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
+      permissions: map['permissions'] == null ? null : (VolumeBackingStorePermissions.fromMap((map['permissions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

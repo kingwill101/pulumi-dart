@@ -65,14 +65,14 @@ class VolumeReplicationTransferStat {
 
   factory VolumeReplicationTransferStat.fromMap(Map<String, dynamic> map) {
     return VolumeReplicationTransferStat(
-      lagDuration: map['lagDuration'] == null ? null : (map['lagDuration'] as String).input(),
-      lastTransferBytes: map['lastTransferBytes'] == null ? null : (map['lastTransferBytes'] as String).input(),
-      lastTransferDuration: map['lastTransferDuration'] == null ? null : (map['lastTransferDuration'] as String).input(),
-      lastTransferEndTime: map['lastTransferEndTime'] == null ? null : (map['lastTransferEndTime'] as String).input(),
-      lastTransferError: map['lastTransferError'] == null ? null : (map['lastTransferError'] as String).input(),
-      totalTransferDuration: map['totalTransferDuration'] == null ? null : (map['totalTransferDuration'] as String).input(),
-      transferBytes: map['transferBytes'] == null ? null : (map['transferBytes'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      lagDuration: map['lagDuration'] == null ? null : (map['lagDuration']! as String).input(),
+      lastTransferBytes: map['lastTransferBytes'] == null ? null : (map['lastTransferBytes']! as String).input(),
+      lastTransferDuration: map['lastTransferDuration'] == null ? null : (map['lastTransferDuration']! as String).input(),
+      lastTransferEndTime: map['lastTransferEndTime'] == null ? null : (map['lastTransferEndTime']! as String).input(),
+      lastTransferError: map['lastTransferError'] == null ? null : (map['lastTransferError']! as String).input(),
+      totalTransferDuration: map['totalTransferDuration'] == null ? null : (map['totalTransferDuration']! as String).input(),
+      transferBytes: map['transferBytes'] == null ? null : (map['transferBytes']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

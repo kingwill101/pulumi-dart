@@ -60,14 +60,14 @@ class AgentcoreGatewayTargetState {
 
   factory AgentcoreGatewayTargetState.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetState(
-      credentialProviderConfiguration: map['credentialProviderConfiguration'] == null ? null : (AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap((map['credentialProviderConfiguration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gatewayIdentifier: map['gatewayIdentifier'] == null ? null : (map['gatewayIdentifier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetConfiguration: map['targetConfiguration'] == null ? null : (AgentcoreGatewayTargetTargetConfiguration.fromMap((map['targetConfiguration'] as Map).cast<String, dynamic>())).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentcoreGatewayTargetTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      credentialProviderConfiguration: map['credentialProviderConfiguration'] == null ? null : ((AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap((map['credentialProviderConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      gatewayIdentifier: map['gatewayIdentifier'] == null ? null : ((map['gatewayIdentifier'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      targetConfiguration: map['targetConfiguration'] == null ? null : ((AgentcoreGatewayTargetTargetConfiguration.fromMap((map['targetConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      targetId: map['targetId'] == null ? null : ((map['targetId'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentcoreGatewayTargetTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

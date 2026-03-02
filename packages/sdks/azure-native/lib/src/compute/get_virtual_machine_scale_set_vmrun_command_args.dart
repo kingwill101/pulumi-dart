@@ -44,7 +44,7 @@ class GetVirtualMachineScaleSetVMRunCommandArgs {
 
   factory GetVirtualMachineScaleSetVMRunCommandArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScaleSetVMRunCommandArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       runCommandName: (map['runCommandName'] as String).input(),

@@ -31,9 +31,9 @@ class ActionsResponse {
 
   factory ActionsResponse.fromMap(Map<String, dynamic> map) {
     return ActionsResponse(
-      actionGroups: map['actionGroups'] == null ? null : ((map['actionGroups'] as List).cast<String>()).input(),
-      actionProperties: map['actionProperties'] == null ? null : ((map['actionProperties'] as Map).cast<String, String>()).input(),
-      customProperties: map['customProperties'] == null ? null : ((map['customProperties'] as Map).cast<String, String>()).input(),
+      actionGroups: map['actionGroups'] == null ? null : ((map['actionGroups']! as List).cast<String>()).input(),
+      actionProperties: map['actionProperties'] == null ? null : ((map['actionProperties']! as Map).cast<String, String>()).input(),
+      customProperties: map['customProperties'] == null ? null : ((map['customProperties']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class PreparedStatementState {
 
   factory PreparedStatementState.fromMap(Map<String, dynamic> map) {
     return PreparedStatementState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      queryStatement: map['queryStatement'] == null ? null : (map['queryStatement'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      workgroup: map['workgroup'] == null ? null : (map['workgroup'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      queryStatement: map['queryStatement'] == null ? null : ((map['queryStatement'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      workgroup: map['workgroup'] == null ? null : ((map['workgroup'] as String).input()).input(),
     );
   }
 }

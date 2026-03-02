@@ -50,13 +50,13 @@ class ContainerUpload {
 
   factory ContainerUpload.fromMap(Map<String, dynamic> map) {
     return ContainerUpload(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      contentBase64: map['contentBase64'] == null ? null : (map['contentBase64'] as String).input(),
-      executable: map['executable'] == null ? null : (map['executable'] as bool).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      contentBase64: map['contentBase64'] == null ? null : (map['contentBase64']! as String).input(),
+      executable: map['executable'] == null ? null : (map['executable']! as bool).input(),
       file: (map['file'] as String).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      sourceHash: map['sourceHash'] == null ? null : (map['sourceHash'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      sourceHash: map['sourceHash'] == null ? null : (map['sourceHash']! as String).input(),
     );
   }
 }

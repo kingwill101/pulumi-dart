@@ -20,7 +20,7 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccess
 
   factory V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalDefaultBranchNextStepIntentSlotValue.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalDefaultBranchNextStepIntentSlotValue(
-      interpretedValue: map['interpretedValue'] == null ? null : (map['interpretedValue'] as String).input(),
+      interpretedValue: map['interpretedValue'] == null ? null : ((map['interpretedValue'] as String).input()).input(),
     );
   }
 }

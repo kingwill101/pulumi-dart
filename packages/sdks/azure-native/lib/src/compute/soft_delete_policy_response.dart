@@ -21,7 +21,7 @@ class SoftDeletePolicyResponse {
 
   factory SoftDeletePolicyResponse.fromMap(Map<String, dynamic> map) {
     return SoftDeletePolicyResponse(
-      isSoftDeleteEnabled: map['isSoftDeleteEnabled'] == null ? null : (map['isSoftDeleteEnabled'] as bool).input(),
+      isSoftDeleteEnabled: map['isSoftDeleteEnabled'] == null ? null : (map['isSoftDeleteEnabled']! as bool).input(),
     );
   }
 }

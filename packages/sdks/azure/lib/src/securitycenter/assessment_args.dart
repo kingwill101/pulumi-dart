@@ -40,7 +40,7 @@ class AssessmentArgs {
 
   factory AssessmentArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentArgs(
-      additionalData: map['additionalData'] == null ? null : ((map['additionalData'] as Map).cast<String, String>()).input(),
+      additionalData: map['additionalData'] == null ? null : ((map['additionalData']! as Map).cast<String, String>()).input(),
       assessmentPolicyId: (map['assessmentPolicyId'] as String).input(),
       status: (AssessmentStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
       targetResourceId: (map['targetResourceId'] as String).input(),

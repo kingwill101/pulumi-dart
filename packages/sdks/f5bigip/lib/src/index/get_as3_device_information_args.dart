@@ -27,7 +27,7 @@ class GetAs3DeviceInformationArgs {
 
   factory GetAs3DeviceInformationArgs.fromMap(Map<String, dynamic> map) {
     return GetAs3DeviceInformationArgs(
-      applications: map['applications'] == null ? null : ((map['applications'] as List).cast<String>()).input(),
+      applications: map['applications'] == null ? null : ((map['applications']! as List).cast<String>()).input(),
       tenant: (map['tenant'] as String).input(),
     );
   }

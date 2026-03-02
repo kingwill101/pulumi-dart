@@ -41,11 +41,11 @@ class EnvFeatureState {
 
   factory EnvFeatureState.fromMap(Map<String, dynamic> map) {
     return EnvFeatureState(
-      envFeatureName: map['envFeatureName'] == null ? null : (map['envFeatureName'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      featureVersion: map['featureVersion'] == null ? null : (map['featureVersion'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      envFeatureName: map['envFeatureName'] == null ? null : (map['envFeatureName']! as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      featureVersion: map['featureVersion'] == null ? null : (map['featureVersion']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

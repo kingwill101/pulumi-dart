@@ -21,7 +21,7 @@ class ExclusionByResourceTypes {
 
   factory ExclusionByResourceTypes.fromMap(Map<String, dynamic> map) {
     return ExclusionByResourceTypes(
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
     );
   }
 }

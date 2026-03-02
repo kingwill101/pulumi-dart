@@ -31,9 +31,9 @@ class CodePathOptions {
 
   factory CodePathOptions.fromMap(Map<String, dynamic> map) {
     return CodePathOptions(
-      extraExcludePackages: map['extraExcludePackages'] == null ? null : ((map['extraExcludePackages'] as List).cast<String>()).input(),
-      extraIncludePackages: map['extraIncludePackages'] == null ? null : ((map['extraIncludePackages'] as List).cast<String>()).input(),
-      extraIncludePaths: map['extraIncludePaths'] == null ? null : ((map['extraIncludePaths'] as List).cast<String>()).input(),
+      extraExcludePackages: map['extraExcludePackages'] == null ? null : (((map['extraExcludePackages'] as List).cast<String>()).input()).input(),
+      extraIncludePackages: map['extraIncludePackages'] == null ? null : (((map['extraIncludePackages'] as List).cast<String>()).input()).input(),
+      extraIncludePaths: map['extraIncludePaths'] == null ? null : (((map['extraIncludePaths'] as List).cast<String>()).input()).input(),
     );
   }
 }

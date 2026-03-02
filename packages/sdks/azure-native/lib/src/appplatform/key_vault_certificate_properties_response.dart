@@ -88,10 +88,10 @@ class KeyVaultCertificatePropertiesResponse {
   factory KeyVaultCertificatePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultCertificatePropertiesResponse(
       activateDate: (map['activateDate'] as String).input(),
-      autoSync: map['autoSync'] == null ? null : (map['autoSync'] as String).input(),
-      certVersion: map['certVersion'] == null ? null : (map['certVersion'] as String).input(),
+      autoSync: map['autoSync'] == null ? null : (map['autoSync']! as String).input(),
+      certVersion: map['certVersion'] == null ? null : (map['certVersion']! as String).input(),
       dnsNames: ((map['dnsNames'] as List).cast<String>()).input(),
-      excludePrivateKey: map['excludePrivateKey'] == null ? null : (map['excludePrivateKey'] as bool).input(),
+      excludePrivateKey: map['excludePrivateKey'] == null ? null : (map['excludePrivateKey']! as bool).input(),
       expirationDate: (map['expirationDate'] as String).input(),
       issuedDate: (map['issuedDate'] as String).input(),
       issuer: (map['issuer'] as String).input(),

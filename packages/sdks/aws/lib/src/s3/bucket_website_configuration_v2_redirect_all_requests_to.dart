@@ -26,7 +26,7 @@ class BucketWebsiteConfigurationV2RedirectAllRequestsTo {
   factory BucketWebsiteConfigurationV2RedirectAllRequestsTo.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteConfigurationV2RedirectAllRequestsTo(
       hostName: (map['hostName'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
     );
   }
 }

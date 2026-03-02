@@ -41,10 +41,10 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentManagementGroupId: map['parentManagementGroupId'] == null ? null : (map['parentManagementGroupId'] as String).input(),
-      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentManagementGroupId: map['parentManagementGroupId'] == null ? null : (map['parentManagementGroupId']! as String).input(),
+      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds']! as List).cast<String>()).input(),
     );
   }
 }

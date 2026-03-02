@@ -25,8 +25,8 @@ class ProfileRewriteResponse {
 
   factory ProfileRewriteResponse.fromMap(Map<String, dynamic> map) {
     return ProfileRewriteResponse(
-      rewriteContent: map['rewriteContent'] == null ? null : (map['rewriteContent'] as String).input(),
-      rewriteHeaders: map['rewriteHeaders'] == null ? null : (map['rewriteHeaders'] as String).input(),
+      rewriteContent: map['rewriteContent'] == null ? null : (map['rewriteContent']! as String).input(),
+      rewriteHeaders: map['rewriteHeaders'] == null ? null : (map['rewriteHeaders']! as String).input(),
     );
   }
 }

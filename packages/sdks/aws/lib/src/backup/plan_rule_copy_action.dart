@@ -27,7 +27,7 @@ class PlanRuleCopyAction {
   factory PlanRuleCopyAction.fromMap(Map<String, dynamic> map) {
     return PlanRuleCopyAction(
       destinationVaultArn: (map['destinationVaultArn'] as String).input(),
-      lifecycle: map['lifecycle'] == null ? null : (PlanRuleCopyActionLifecycle.fromMap((map['lifecycle'] as Map).cast<String, dynamic>())).input(),
+      lifecycle: map['lifecycle'] == null ? null : ((PlanRuleCopyActionLifecycle.fromMap((map['lifecycle']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

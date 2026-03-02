@@ -21,7 +21,7 @@ class GoogleCloudApigeeV1AnalyticsConfig {
 
   factory GoogleCloudApigeeV1AnalyticsConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1AnalyticsConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

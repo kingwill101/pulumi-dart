@@ -65,15 +65,15 @@ class GetCoreNetworkPolicyDocumentResult {
 
   factory GetCoreNetworkPolicyDocumentResult.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentResult(
-      attachmentPolicies: map['attachmentPolicies'] == null ? null : pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentPolicy>(map['attachmentPolicies'], (value) => GetCoreNetworkPolicyDocumentAttachmentPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      attachmentRoutingPolicyRules: map['attachmentRoutingPolicyRules'] == null ? null : pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule>(map['attachmentRoutingPolicyRules'], (value) => GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
-      coreNetworkConfigurations: pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentCoreNetworkConfiguration>(map['coreNetworkConfigurations'], (value) => GetCoreNetworkPolicyDocumentCoreNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      attachmentPolicies: map['attachmentPolicies'] == null ? null : pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentPolicy>(map['attachmentPolicies']!, (value) => GetCoreNetworkPolicyDocumentAttachmentPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      attachmentRoutingPolicyRules: map['attachmentRoutingPolicyRules'] == null ? null : pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule>(map['attachmentRoutingPolicyRules']!, (value) => GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
+      coreNetworkConfigurations: pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentCoreNetworkConfiguration>(map['coreNetworkConfigurations']!, (value) => GetCoreNetworkPolicyDocumentCoreNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       json: map['json'] as String,
-      networkFunctionGroups: map['networkFunctionGroups'] == null ? null : pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentNetworkFunctionGroup>(map['networkFunctionGroups'], (value) => GetCoreNetworkPolicyDocumentNetworkFunctionGroup.fromMap((value as Map).cast<String, dynamic>())),
-      routingPolicies: map['routingPolicies'] == null ? null : pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentRoutingPolicy>(map['routingPolicies'], (value) => GetCoreNetworkPolicyDocumentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      segmentActions: map['segmentActions'] == null ? null : pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentSegmentAction>(map['segmentActions'], (value) => GetCoreNetworkPolicyDocumentSegmentAction.fromMap((value as Map).cast<String, dynamic>())),
-      segments: pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentSegment>(map['segments'], (value) => GetCoreNetworkPolicyDocumentSegment.fromMap((value as Map).cast<String, dynamic>())),
+      networkFunctionGroups: map['networkFunctionGroups'] == null ? null : pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentNetworkFunctionGroup>(map['networkFunctionGroups']!, (value) => GetCoreNetworkPolicyDocumentNetworkFunctionGroup.fromMap((value as Map).cast<String, dynamic>())),
+      routingPolicies: map['routingPolicies'] == null ? null : pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentRoutingPolicy>(map['routingPolicies']!, (value) => GetCoreNetworkPolicyDocumentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      segmentActions: map['segmentActions'] == null ? null : pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentSegmentAction>(map['segmentActions']!, (value) => GetCoreNetworkPolicyDocumentSegmentAction.fromMap((value as Map).cast<String, dynamic>())),
+      segments: pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentSegment>(map['segments']!, (value) => GetCoreNetworkPolicyDocumentSegment.fromMap((value as Map).cast<String, dynamic>())),
       version: map['version'] == null ? null : map['version'] as String,
     );
   }

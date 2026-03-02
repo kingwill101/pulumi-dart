@@ -40,11 +40,11 @@ class ClusterNodePoolAutoscaling {
 
   factory ClusterNodePoolAutoscaling.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolAutoscaling(
-      locationPolicy: map['locationPolicy'] == null ? null : (map['locationPolicy'] as String).input(),
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount'] as int).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount'] as int).input(),
-      totalMaxNodeCount: map['totalMaxNodeCount'] == null ? null : (map['totalMaxNodeCount'] as int).input(),
-      totalMinNodeCount: map['totalMinNodeCount'] == null ? null : (map['totalMinNodeCount'] as int).input(),
+      locationPolicy: map['locationPolicy'] == null ? null : (map['locationPolicy']! as String).input(),
+      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as int).input(),
+      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as int).input(),
+      totalMaxNodeCount: map['totalMaxNodeCount'] == null ? null : (map['totalMaxNodeCount']! as int).input(),
+      totalMinNodeCount: map['totalMinNodeCount'] == null ? null : (map['totalMinNodeCount']! as int).input(),
     );
   }
 }

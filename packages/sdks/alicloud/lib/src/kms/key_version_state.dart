@@ -28,8 +28,8 @@ class KeyVersionState {
 
   factory KeyVersionState.fromMap(Map<String, dynamic> map) {
     return KeyVersionState(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      keyVersionId: map['keyVersionId'] == null ? null : (map['keyVersionId'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      keyVersionId: map['keyVersionId'] == null ? null : (map['keyVersionId']! as String).input(),
     );
   }
 }

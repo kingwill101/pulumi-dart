@@ -62,11 +62,11 @@ class RegionTargetHttpProxyArgs {
 
   factory RegionTargetHttpProxyArgs.fromMap(Map<String, dynamic> map) {
     return RegionTargetHttpProxyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       urlMap: (map['urlMap'] as String).input(),
     );
   }

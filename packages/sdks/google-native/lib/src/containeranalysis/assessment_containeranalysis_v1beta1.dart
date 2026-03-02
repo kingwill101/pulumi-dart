@@ -65,15 +65,15 @@ class AssessmentContaineranalysisV1beta1 {
 
   factory AssessmentContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return AssessmentContaineranalysisV1beta1(
-      cve: map['cve'] == null ? null : (map['cve'] as String).input(),
-      impacts: map['impacts'] == null ? null : ((map['impacts'] as List).cast<String>()).input(),
-      justification: map['justification'] == null ? null : (JustificationContaineranalysisV1beta1.fromMap((map['justification'] as Map).cast<String, dynamic>())).input(),
-      longDescription: map['longDescription'] == null ? null : (map['longDescription'] as String).input(),
-      relatedUris: map['relatedUris'] == null ? null : (pulumi.Input.decodeList<RelatedUrlContaineranalysisV1beta1>(map['relatedUris'], (value) => RelatedUrlContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      remediations: map['remediations'] == null ? null : (pulumi.Input.decodeList<RemediationContaineranalysisV1beta1>(map['remediations'], (value) => RemediationContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shortDescription: map['shortDescription'] == null ? null : (map['shortDescription'] as String).input(),
-      state: map['state'] == null ? null : (AssessmentStateContaineranalysisV1beta1.fromValue(map['state'] as String)).input(),
-      vulnerabilityId: map['vulnerabilityId'] == null ? null : (map['vulnerabilityId'] as String).input(),
+      cve: map['cve'] == null ? null : (map['cve']! as String).input(),
+      impacts: map['impacts'] == null ? null : ((map['impacts']! as List).cast<String>()).input(),
+      justification: map['justification'] == null ? null : (JustificationContaineranalysisV1beta1.fromMap((map['justification']! as Map).cast<String, dynamic>())).input(),
+      longDescription: map['longDescription'] == null ? null : (map['longDescription']! as String).input(),
+      relatedUris: map['relatedUris'] == null ? null : (pulumi.Input.decodeList<RelatedUrlContaineranalysisV1beta1>(map['relatedUris']!, (value) => RelatedUrlContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      remediations: map['remediations'] == null ? null : (pulumi.Input.decodeList<RemediationContaineranalysisV1beta1>(map['remediations']!, (value) => RemediationContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shortDescription: map['shortDescription'] == null ? null : (map['shortDescription']! as String).input(),
+      state: map['state'] == null ? null : (AssessmentStateContaineranalysisV1beta1.fromValue(map['state']! as String)).input(),
+      vulnerabilityId: map['vulnerabilityId'] == null ? null : (map['vulnerabilityId']! as String).input(),
     );
   }
 }

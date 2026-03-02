@@ -57,13 +57,13 @@ class AiFeatureGroupFeatureArgs {
 
   factory AiFeatureGroupFeatureArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupFeatureArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       featureGroup: (map['featureGroup'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      versionColumnName: map['versionColumnName'] == null ? null : (map['versionColumnName'] as String).input(),
+      versionColumnName: map['versionColumnName'] == null ? null : (map['versionColumnName']! as String).input(),
     );
   }
 }

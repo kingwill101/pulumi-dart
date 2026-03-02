@@ -20,7 +20,7 @@ class MulticastGroupConsumerActivationLogConfig {
 
   factory MulticastGroupConsumerActivationLogConfig.fromMap(Map<String, dynamic> map) {
     return MulticastGroupConsumerActivationLogConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

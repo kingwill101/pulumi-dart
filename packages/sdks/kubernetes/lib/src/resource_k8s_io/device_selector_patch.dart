@@ -22,7 +22,7 @@ class DeviceSelectorPatch {
 
   factory DeviceSelectorPatch.fromMap(Map<String, dynamic> map) {
     return DeviceSelectorPatch(
-      cel: map['cel'] == null ? null : (CELDeviceSelectorPatch.fromMap((map['cel'] as Map).cast<String, dynamic>())).input(),
+      cel: map['cel'] == null ? null : (CELDeviceSelectorPatch.fromMap((map['cel']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

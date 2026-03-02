@@ -34,9 +34,9 @@ class BackfillAllStrategy {
 
   factory BackfillAllStrategy.fromMap(Map<String, dynamic> map) {
     return BackfillAllStrategy(
-      mysqlExcludedObjects: map['mysqlExcludedObjects'] == null ? null : (MysqlRdbms.fromMap((map['mysqlExcludedObjects'] as Map).cast<String, dynamic>())).input(),
-      oracleExcludedObjects: map['oracleExcludedObjects'] == null ? null : (OracleRdbms.fromMap((map['oracleExcludedObjects'] as Map).cast<String, dynamic>())).input(),
-      postgresqlExcludedObjects: map['postgresqlExcludedObjects'] == null ? null : (PostgresqlRdbms.fromMap((map['postgresqlExcludedObjects'] as Map).cast<String, dynamic>())).input(),
+      mysqlExcludedObjects: map['mysqlExcludedObjects'] == null ? null : (MysqlRdbms.fromMap((map['mysqlExcludedObjects']! as Map).cast<String, dynamic>())).input(),
+      oracleExcludedObjects: map['oracleExcludedObjects'] == null ? null : (OracleRdbms.fromMap((map['oracleExcludedObjects']! as Map).cast<String, dynamic>())).input(),
+      postgresqlExcludedObjects: map['postgresqlExcludedObjects'] == null ? null : (PostgresqlRdbms.fromMap((map['postgresqlExcludedObjects']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

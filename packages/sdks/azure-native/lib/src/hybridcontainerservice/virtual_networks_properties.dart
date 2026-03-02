@@ -48,12 +48,12 @@ class VirtualNetworksProperties {
 
   factory VirtualNetworksProperties.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksProperties(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
-      infraVnetProfile: map['infraVnetProfile'] == null ? null : (VirtualNetworksPropertiesInfraVnetProfile.fromMap((map['infraVnetProfile'] as Map).cast<String, dynamic>())).input(),
-      ipAddressPrefix: map['ipAddressPrefix'] == null ? null : (map['ipAddressPrefix'] as String).input(),
-      vipPool: map['vipPool'] == null ? null : (pulumi.Input.decodeList<VirtualNetworksPropertiesVipPool>(map['vipPool'], (value) => VirtualNetworksPropertiesVipPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmipPool: map['vmipPool'] == null ? null : (pulumi.Input.decodeList<VirtualNetworksPropertiesVmipPool>(map['vmipPool'], (value) => VirtualNetworksPropertiesVmipPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
+      infraVnetProfile: map['infraVnetProfile'] == null ? null : (VirtualNetworksPropertiesInfraVnetProfile.fromMap((map['infraVnetProfile']! as Map).cast<String, dynamic>())).input(),
+      ipAddressPrefix: map['ipAddressPrefix'] == null ? null : (map['ipAddressPrefix']! as String).input(),
+      vipPool: map['vipPool'] == null ? null : (pulumi.Input.decodeList<VirtualNetworksPropertiesVipPool>(map['vipPool']!, (value) => VirtualNetworksPropertiesVipPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmipPool: map['vmipPool'] == null ? null : (pulumi.Input.decodeList<VirtualNetworksPropertiesVmipPool>(map['vmipPool']!, (value) => VirtualNetworksPropertiesVmipPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

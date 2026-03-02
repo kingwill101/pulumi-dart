@@ -69,16 +69,16 @@ class GetCustomResourceProviderResult {
 
   factory GetCustomResourceProviderResult.fromMap(Map<String, dynamic> map) {
     return GetCustomResourceProviderResult(
-      actions: map['actions'] == null ? null : pulumi.Input.decodeList<CustomRPActionRouteDefinitionResponse>(map['actions'], (value) => CustomRPActionRouteDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      actions: map['actions'] == null ? null : pulumi.Input.decodeList<CustomRPActionRouteDefinitionResponse>(map['actions']!, (value) => CustomRPActionRouteDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      resourceTypes: map['resourceTypes'] == null ? null : pulumi.Input.decodeList<CustomRPResourceTypeRouteDefinitionResponse>(map['resourceTypes'], (value) => CustomRPResourceTypeRouteDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      resourceTypes: map['resourceTypes'] == null ? null : pulumi.Input.decodeList<CustomRPResourceTypeRouteDefinitionResponse>(map['resourceTypes']!, (value) => CustomRPResourceTypeRouteDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      validations: map['validations'] == null ? null : pulumi.Input.decodeList<CustomRPValidationsResponse>(map['validations'], (value) => CustomRPValidationsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      validations: map['validations'] == null ? null : pulumi.Input.decodeList<CustomRPValidationsResponse>(map['validations']!, (value) => CustomRPValidationsResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

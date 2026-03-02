@@ -31,9 +31,9 @@ class Registry {
 
   factory Registry.fromMap(Map<String, dynamic> map) {
     return Registry(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

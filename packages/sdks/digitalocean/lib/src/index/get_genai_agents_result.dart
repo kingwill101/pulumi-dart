@@ -41,10 +41,10 @@ class GetGenaiAgentsResult {
   factory GetGenaiAgentsResult.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentsResult(
       agents: pulumi.Input.decodeList<GetGenaiAgentsAgent>(map['agents'], (value) => GetGenaiAgentsAgent.fromMap((value as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetGenaiAgentsFilter>(map['filters'], (value) => GetGenaiAgentsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetGenaiAgentsFilter>(map['filters']!, (value) => GetGenaiAgentsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      onlyDeployed: map['onlyDeployed'] == null ? null : map['onlyDeployed'] as bool,
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetGenaiAgentsSort>(map['sorts'], (value) => GetGenaiAgentsSort.fromMap((value as Map).cast<String, dynamic>())),
+      onlyDeployed: map['onlyDeployed'] == null ? null : map['onlyDeployed']! as bool,
+      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetGenaiAgentsSort>(map['sorts']!, (value) => GetGenaiAgentsSort.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

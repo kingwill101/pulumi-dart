@@ -20,7 +20,7 @@ class V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStepIntent
 
   factory V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStepIntentSlotValue.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStepIntentSlotValue(
-      interpretedValue: map['interpretedValue'] == null ? null : (map['interpretedValue'] as String).input(),
+      interpretedValue: map['interpretedValue'] == null ? null : ((map['interpretedValue'] as String).input()).input(),
     );
   }
 }

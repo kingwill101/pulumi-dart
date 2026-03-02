@@ -23,7 +23,7 @@ class FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy {
 
   factory FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(Map<String, dynamic> map) {
     return FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy(
-      allowedAccessReasons: map['allowedAccessReasons'] == null ? null : ((map['allowedAccessReasons'] as List).cast<String>()).input(),
+      allowedAccessReasons: map['allowedAccessReasons'] == null ? null : ((map['allowedAccessReasons']! as List).cast<String>()).input(),
     );
   }
 }

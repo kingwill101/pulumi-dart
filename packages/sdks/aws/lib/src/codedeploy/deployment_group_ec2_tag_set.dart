@@ -21,7 +21,7 @@ class DeploymentGroupEc2TagSet {
 
   factory DeploymentGroupEc2TagSet.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupEc2TagSet(
-      ec2TagFilters: map['ec2TagFilters'] == null ? null : (pulumi.Input.decodeList<DeploymentGroupEc2TagSetEc2TagFilter>(map['ec2TagFilters'], (value) => DeploymentGroupEc2TagSetEc2TagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ec2TagFilters: map['ec2TagFilters'] == null ? null : ((pulumi.Input.decodeList<DeploymentGroupEc2TagSetEc2TagFilter>(map['ec2TagFilters']!, (value) => DeploymentGroupEc2TagSetEc2TagFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

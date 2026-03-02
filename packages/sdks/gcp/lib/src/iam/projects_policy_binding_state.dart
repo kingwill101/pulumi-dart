@@ -127,22 +127,22 @@ class ProjectsPolicyBindingState {
 
   factory ProjectsPolicyBindingState.fromMap(Map<String, dynamic> map) {
     return ProjectsPolicyBindingState(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      condition: map['condition'] == null ? null : (ProjectsPolicyBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      policyBindingId: map['policyBindingId'] == null ? null : (map['policyBindingId'] as String).input(),
-      policyKind: map['policyKind'] == null ? null : (map['policyKind'] as String).input(),
-      policyUid: map['policyUid'] == null ? null : (map['policyUid'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      target: map['target'] == null ? null : (ProjectsPolicyBindingTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      condition: map['condition'] == null ? null : (ProjectsPolicyBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      policyBindingId: map['policyBindingId'] == null ? null : (map['policyBindingId']! as String).input(),
+      policyKind: map['policyKind'] == null ? null : (map['policyKind']! as String).input(),
+      policyUid: map['policyUid'] == null ? null : (map['policyUid']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      target: map['target'] == null ? null : (ProjectsPolicyBindingTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

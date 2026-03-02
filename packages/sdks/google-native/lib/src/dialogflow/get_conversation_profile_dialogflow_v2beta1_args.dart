@@ -33,7 +33,7 @@ class GetConversationProfileDialogflowV2beta1Args {
     return GetConversationProfileDialogflowV2beta1Args(
       conversationProfileId: (map['conversationProfileId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

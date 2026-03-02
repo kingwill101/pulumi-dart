@@ -29,8 +29,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations(
-      fieldTransformations: map['fieldTransformations'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation>(map['fieldTransformations'], (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recordSuppressions: map['recordSuppressions'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression>(map['recordSuppressions'], (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldTransformations: map['fieldTransformations'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation>(map['fieldTransformations']!, (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recordSuppressions: map['recordSuppressions'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression>(map['recordSuppressions']!, (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

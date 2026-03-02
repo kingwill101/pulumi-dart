@@ -26,8 +26,8 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappin
 
   factory ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings(
-      multiMeasureAttributeMappings: (pulumi.Input.decodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping>(map['multiMeasureAttributeMappings'], (value) => ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetMultiMeasureName: map['targetMultiMeasureName'] == null ? null : (map['targetMultiMeasureName'] as String).input(),
+      multiMeasureAttributeMappings: (pulumi.Input.decodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping>(map['multiMeasureAttributeMappings']!, (value) => ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetMultiMeasureName: map['targetMultiMeasureName'] == null ? null : ((map['targetMultiMeasureName'] as String).input()).input(),
     );
   }
 }

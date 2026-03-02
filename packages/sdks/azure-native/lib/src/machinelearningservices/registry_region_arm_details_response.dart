@@ -33,9 +33,9 @@ class RegistryRegionArmDetailsResponse {
 
   factory RegistryRegionArmDetailsResponse.fromMap(Map<String, dynamic> map) {
     return RegistryRegionArmDetailsResponse(
-      acrDetails: map['acrDetails'] == null ? null : (pulumi.Input.decodeList<AcrDetailsResponse>(map['acrDetails'], (value) => AcrDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      storageAccountDetails: map['storageAccountDetails'] == null ? null : (pulumi.Input.decodeList<StorageAccountDetailsResponse>(map['storageAccountDetails'], (value) => StorageAccountDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acrDetails: map['acrDetails'] == null ? null : (pulumi.Input.decodeList<AcrDetailsResponse>(map['acrDetails']!, (value) => AcrDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      storageAccountDetails: map['storageAccountDetails'] == null ? null : (pulumi.Input.decodeList<StorageAccountDetailsResponse>(map['storageAccountDetails']!, (value) => StorageAccountDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

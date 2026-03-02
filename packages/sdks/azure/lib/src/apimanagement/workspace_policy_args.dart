@@ -37,8 +37,8 @@ class WorkspacePolicyArgs {
   factory WorkspacePolicyArgs.fromMap(Map<String, dynamic> map) {
     return WorkspacePolicyArgs(
       apiManagementWorkspaceId: (map['apiManagementWorkspaceId'] as String).input(),
-      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent'] as String).input(),
-      xmlLink: map['xmlLink'] == null ? null : (map['xmlLink'] as String).input(),
+      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent']! as String).input(),
+      xmlLink: map['xmlLink'] == null ? null : (map['xmlLink']! as String).input(),
     );
   }
 }

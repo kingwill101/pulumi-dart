@@ -78,18 +78,18 @@ class AccessGrantState {
 
   factory AccessGrantState.fromMap(Map<String, dynamic> map) {
     return AccessGrantState(
-      accessGrantArn: map['accessGrantArn'] == null ? null : (map['accessGrantArn'] as String).input(),
-      accessGrantId: map['accessGrantId'] == null ? null : (map['accessGrantId'] as String).input(),
-      accessGrantsLocationConfiguration: map['accessGrantsLocationConfiguration'] == null ? null : (AccessGrantAccessGrantsLocationConfiguration.fromMap((map['accessGrantsLocationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      accessGrantsLocationId: map['accessGrantsLocationId'] == null ? null : (map['accessGrantsLocationId'] as String).input(),
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      grantScope: map['grantScope'] == null ? null : (map['grantScope'] as String).input(),
-      grantee: map['grantee'] == null ? null : (AccessGrantGrantee.fromMap((map['grantee'] as Map).cast<String, dynamic>())).input(),
-      permission: map['permission'] == null ? null : (map['permission'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3PrefixType: map['s3PrefixType'] == null ? null : (map['s3PrefixType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      accessGrantArn: map['accessGrantArn'] == null ? null : ((map['accessGrantArn'] as String).input()).input(),
+      accessGrantId: map['accessGrantId'] == null ? null : ((map['accessGrantId'] as String).input()).input(),
+      accessGrantsLocationConfiguration: map['accessGrantsLocationConfiguration'] == null ? null : ((AccessGrantAccessGrantsLocationConfiguration.fromMap((map['accessGrantsLocationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      accessGrantsLocationId: map['accessGrantsLocationId'] == null ? null : ((map['accessGrantsLocationId'] as String).input()).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      grantScope: map['grantScope'] == null ? null : ((map['grantScope'] as String).input()).input(),
+      grantee: map['grantee'] == null ? null : ((AccessGrantGrantee.fromMap((map['grantee']! as Map).cast<String, dynamic>())).input()).input(),
+      permission: map['permission'] == null ? null : ((map['permission'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3PrefixType: map['s3PrefixType'] == null ? null : ((map['s3PrefixType'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

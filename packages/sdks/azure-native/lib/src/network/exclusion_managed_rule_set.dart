@@ -32,7 +32,7 @@ class ExclusionManagedRuleSet {
 
   factory ExclusionManagedRuleSet.fromMap(Map<String, dynamic> map) {
     return ExclusionManagedRuleSet(
-      ruleGroups: map['ruleGroups'] == null ? null : (pulumi.Input.decodeList<ExclusionManagedRuleGroup>(map['ruleGroups'], (value) => ExclusionManagedRuleGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleGroups: map['ruleGroups'] == null ? null : (pulumi.Input.decodeList<ExclusionManagedRuleGroup>(map['ruleGroups']!, (value) => ExclusionManagedRuleGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ruleSetType: (map['ruleSetType'] as String).input(),
       ruleSetVersion: (map['ruleSetVersion'] as String).input(),
     );

@@ -30,9 +30,9 @@ class HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride {
 
   factory HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride.fromMap(Map<String, dynamic> map) {
     return HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride(
-      bandwidthPercentageSmb: map['bandwidthPercentageSmb'] == null ? null : (map['bandwidthPercentageSmb'] as String).input(),
-      priorityValue8021ActionCluster: map['priorityValue8021ActionCluster'] == null ? null : (map['priorityValue8021ActionCluster'] as String).input(),
-      priorityValue8021ActionSmb: map['priorityValue8021ActionSmb'] == null ? null : (map['priorityValue8021ActionSmb'] as String).input(),
+      bandwidthPercentageSmb: map['bandwidthPercentageSmb'] == null ? null : (map['bandwidthPercentageSmb']! as String).input(),
+      priorityValue8021ActionCluster: map['priorityValue8021ActionCluster'] == null ? null : (map['priorityValue8021ActionCluster']! as String).input(),
+      priorityValue8021ActionSmb: map['priorityValue8021ActionSmb'] == null ? null : (map['priorityValue8021ActionSmb']! as String).input(),
     );
   }
 }

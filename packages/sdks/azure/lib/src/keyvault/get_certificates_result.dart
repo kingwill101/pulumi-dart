@@ -43,7 +43,7 @@ class GetCertificatesResult {
     return GetCertificatesResult(
       certificates: pulumi.Input.decodeList<GetCertificatesCertificate>(map['certificates'], (value) => GetCertificatesCertificate.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      includePending: map['includePending'] == null ? null : map['includePending'] as bool,
+      includePending: map['includePending'] == null ? null : map['includePending']! as bool,
       keyVaultId: map['keyVaultId'] as String,
       names: (map['names'] as List).cast<String>(),
     );

@@ -37,7 +37,7 @@ class WindowsDetailContaineranalysisV1beta1 {
   factory WindowsDetailContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return WindowsDetailContaineranalysisV1beta1(
       cpeUri: (map['cpeUri'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       fixingKbs: (pulumi.Input.decodeList<KnowledgeBaseContaineranalysisV1beta1>(map['fixingKbs'], (value) => KnowledgeBaseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );

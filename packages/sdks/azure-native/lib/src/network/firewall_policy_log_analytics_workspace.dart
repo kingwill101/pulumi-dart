@@ -27,8 +27,8 @@ class FirewallPolicyLogAnalyticsWorkspace {
 
   factory FirewallPolicyLogAnalyticsWorkspace.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyLogAnalyticsWorkspace(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (SubResource.fromMap((map['workspaceId'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (SubResource.fromMap((map['workspaceId']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

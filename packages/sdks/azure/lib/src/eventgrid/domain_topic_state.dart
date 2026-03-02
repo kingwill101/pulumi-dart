@@ -31,9 +31,9 @@ class DomainTopicState {
 
   factory DomainTopicState.fromMap(Map<String, dynamic> map) {
     return DomainTopicState(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

@@ -50,14 +50,14 @@ class GetStackGroupsResult {
 
   factory GetStackGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetStackGroupsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       groups: pulumi.Input.decodeList<GetStackGroupsGroup>(map['groups'], (value) => GetStackGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

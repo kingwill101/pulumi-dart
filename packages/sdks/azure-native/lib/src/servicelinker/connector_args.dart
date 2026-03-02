@@ -85,18 +85,18 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      authInfo: map['authInfo'] == null ? null : (AccessKeyInfoBase.fromMap((map['authInfo'] as Map).cast<String, dynamic>())).input(),
-      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
-      configurationInfo: map['configurationInfo'] == null ? null : (ConfigurationInfo.fromMap((map['configurationInfo'] as Map).cast<String, dynamic>())).input(),
-      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
+      authInfo: map['authInfo'] == null ? null : (AccessKeyInfoBase.fromMap((map['authInfo']! as Map).cast<String, dynamic>())).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType']! as String).input(),
+      configurationInfo: map['configurationInfo'] == null ? null : (ConfigurationInfo.fromMap((map['configurationInfo']! as Map).cast<String, dynamic>())).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName']! as String).input(),
       location: (map['location'] as String).input(),
-      publicNetworkSolution: map['publicNetworkSolution'] == null ? null : (PublicNetworkSolution.fromMap((map['publicNetworkSolution'] as Map).cast<String, dynamic>())).input(),
+      publicNetworkSolution: map['publicNetworkSolution'] == null ? null : (PublicNetworkSolution.fromMap((map['publicNetworkSolution']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      secretStore: map['secretStore'] == null ? null : (SecretStore.fromMap((map['secretStore'] as Map).cast<String, dynamic>())).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      targetService: map['targetService'] == null ? null : (AzureResource.fromMap((map['targetService'] as Map).cast<String, dynamic>())).input(),
-      vNetSolution: map['vNetSolution'] == null ? null : (VNetSolution.fromMap((map['vNetSolution'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      secretStore: map['secretStore'] == null ? null : (SecretStore.fromMap((map['secretStore']! as Map).cast<String, dynamic>())).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      targetService: map['targetService'] == null ? null : (AzureResource.fromMap((map['targetService']! as Map).cast<String, dynamic>())).input(),
+      vNetSolution: map['vNetSolution'] == null ? null : (VNetSolution.fromMap((map['vNetSolution']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

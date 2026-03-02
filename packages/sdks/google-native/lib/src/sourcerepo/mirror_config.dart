@@ -31,9 +31,9 @@ class MirrorConfig {
 
   factory MirrorConfig.fromMap(Map<String, dynamic> map) {
     return MirrorConfig(
-      deployKeyId: map['deployKeyId'] == null ? null : (map['deployKeyId'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      webhookId: map['webhookId'] == null ? null : (map['webhookId'] as String).input(),
+      deployKeyId: map['deployKeyId'] == null ? null : (map['deployKeyId']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      webhookId: map['webhookId'] == null ? null : (map['webhookId']! as String).input(),
     );
   }
 }

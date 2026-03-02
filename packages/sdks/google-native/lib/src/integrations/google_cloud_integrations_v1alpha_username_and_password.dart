@@ -26,8 +26,8 @@ class GoogleCloudIntegrationsV1alphaUsernameAndPassword {
 
   factory GoogleCloudIntegrationsV1alphaUsernameAndPassword.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaUsernameAndPassword(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

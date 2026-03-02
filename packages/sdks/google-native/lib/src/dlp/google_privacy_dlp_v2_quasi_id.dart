@@ -38,10 +38,10 @@ class GooglePrivacyDlpV2QuasiId {
 
   factory GooglePrivacyDlpV2QuasiId.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2QuasiId(
-      customTag: map['customTag'] == null ? null : (map['customTag'] as String).input(),
+      customTag: map['customTag'] == null ? null : (map['customTag']! as String).input(),
       field: (GooglePrivacyDlpV2FieldId.fromMap((map['field'] as Map).cast<String, dynamic>())).input(),
-      inferred: map['inferred'] == null ? null : ((map['inferred'] as Map).cast<String, dynamic>()).input(),
-      infoType: map['infoType'] == null ? null : (GooglePrivacyDlpV2InfoType.fromMap((map['infoType'] as Map).cast<String, dynamic>())).input(),
+      inferred: map['inferred'] == null ? null : ((map['inferred']! as Map).cast<String, dynamic>()).input(),
+      infoType: map['infoType'] == null ? null : (GooglePrivacyDlpV2InfoType.fromMap((map['infoType']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

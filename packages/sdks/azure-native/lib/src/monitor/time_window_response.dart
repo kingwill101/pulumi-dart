@@ -33,7 +33,7 @@ class TimeWindowResponse {
     return TimeWindowResponse(
       end: (map['end'] as String).input(),
       start: (map['start'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

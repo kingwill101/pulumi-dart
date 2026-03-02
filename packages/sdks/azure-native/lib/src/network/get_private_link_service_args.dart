@@ -34,7 +34,7 @@ class GetPrivateLinkServiceArgs {
 
   factory GetPrivateLinkServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkServiceArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

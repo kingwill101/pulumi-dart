@@ -55,10 +55,10 @@ class DataLakeGen2PathArgs {
 
   factory DataLakeGen2PathArgs.fromMap(Map<String, dynamic> map) {
     return DataLakeGen2PathArgs(
-      aces: map['aces'] == null ? null : (pulumi.Input.decodeList<DataLakeGen2PathAce>(map['aces'], (value) => DataLakeGen2PathAce.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aces: map['aces'] == null ? null : (pulumi.Input.decodeList<DataLakeGen2PathAce>(map['aces']!, (value) => DataLakeGen2PathAce.fromMap((value as Map).cast<String, dynamic>()))).input(),
       filesystemName: (map['filesystemName'] as String).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
       path: (map['path'] as String).input(),
       resource: (map['resource'] as String).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),

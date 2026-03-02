@@ -93,21 +93,21 @@ class WorkspaceSamlConfigurationState {
 
   factory WorkspaceSamlConfigurationState.fromMap(Map<String, dynamic> map) {
     return WorkspaceSamlConfigurationState(
-      adminRoleValues: map['adminRoleValues'] == null ? null : ((map['adminRoleValues'] as List).cast<String>()).input(),
-      allowedOrganizations: map['allowedOrganizations'] == null ? null : ((map['allowedOrganizations'] as List).cast<String>()).input(),
-      editorRoleValues: map['editorRoleValues'] == null ? null : ((map['editorRoleValues'] as List).cast<String>()).input(),
-      emailAssertion: map['emailAssertion'] == null ? null : (map['emailAssertion'] as String).input(),
-      groupsAssertion: map['groupsAssertion'] == null ? null : (map['groupsAssertion'] as String).input(),
-      idpMetadataUrl: map['idpMetadataUrl'] == null ? null : (map['idpMetadataUrl'] as String).input(),
-      idpMetadataXml: map['idpMetadataXml'] == null ? null : (map['idpMetadataXml'] as String).input(),
-      loginAssertion: map['loginAssertion'] == null ? null : (map['loginAssertion'] as String).input(),
-      loginValidityDuration: map['loginValidityDuration'] == null ? null : (map['loginValidityDuration'] as int).input(),
-      nameAssertion: map['nameAssertion'] == null ? null : (map['nameAssertion'] as String).input(),
-      orgAssertion: map['orgAssertion'] == null ? null : (map['orgAssertion'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleAssertion: map['roleAssertion'] == null ? null : (map['roleAssertion'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      adminRoleValues: map['adminRoleValues'] == null ? null : (((map['adminRoleValues'] as List).cast<String>()).input()).input(),
+      allowedOrganizations: map['allowedOrganizations'] == null ? null : (((map['allowedOrganizations'] as List).cast<String>()).input()).input(),
+      editorRoleValues: map['editorRoleValues'] == null ? null : (((map['editorRoleValues'] as List).cast<String>()).input()).input(),
+      emailAssertion: map['emailAssertion'] == null ? null : ((map['emailAssertion'] as String).input()).input(),
+      groupsAssertion: map['groupsAssertion'] == null ? null : ((map['groupsAssertion'] as String).input()).input(),
+      idpMetadataUrl: map['idpMetadataUrl'] == null ? null : ((map['idpMetadataUrl'] as String).input()).input(),
+      idpMetadataXml: map['idpMetadataXml'] == null ? null : ((map['idpMetadataXml'] as String).input()).input(),
+      loginAssertion: map['loginAssertion'] == null ? null : ((map['loginAssertion'] as String).input()).input(),
+      loginValidityDuration: map['loginValidityDuration'] == null ? null : ((map['loginValidityDuration'] as int).input()).input(),
+      nameAssertion: map['nameAssertion'] == null ? null : ((map['nameAssertion'] as String).input()).input(),
+      orgAssertion: map['orgAssertion'] == null ? null : ((map['orgAssertion'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleAssertion: map['roleAssertion'] == null ? null : ((map['roleAssertion'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      workspaceId: map['workspaceId'] == null ? null : ((map['workspaceId'] as String).input()).input(),
     );
   }
 }

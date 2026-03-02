@@ -28,8 +28,8 @@ class GetSecretArgs {
 
   factory GetSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secrets: (pulumi.Input.decodeList<GetSecretSecret>(map['secrets'], (value) => GetSecretSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secrets: (pulumi.Input.decodeList<GetSecretSecret>(map['secrets']!, (value) => GetSecretSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -52,12 +52,12 @@ class GetMapDependencyViewForAllMachinesResult {
 
   factory GetMapDependencyViewForAllMachinesResult.fromMap(Map<String, dynamic> map) {
     return GetMapDependencyViewForAllMachinesResult(
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      error: map['error'] == null ? null : ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      endTime: map['endTime'] == null ? null : map['endTime']! as String,
+      error: map['error'] == null ? null : ErrorDetailResponse.fromMap((map['error']! as Map).cast<String, dynamic>()),
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       properties: GetDependencyViewForAllMachinesResultPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      startTime: map['startTime'] == null ? null : map['startTime']! as String,
       status: map['status'] as String,
     );
   }

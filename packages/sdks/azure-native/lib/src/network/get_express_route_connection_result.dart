@@ -72,17 +72,17 @@ class GetExpressRouteConnectionResult {
 
   factory GetExpressRouteConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteConnectionResult(
-      authorizationKey: map['authorizationKey'] == null ? null : map['authorizationKey'] as String,
+      authorizationKey: map['authorizationKey'] == null ? null : map['authorizationKey']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : map['enableInternetSecurity'] as bool,
-      enablePrivateLinkFastPath: map['enablePrivateLinkFastPath'] == null ? null : map['enablePrivateLinkFastPath'] as bool,
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : map['enableInternetSecurity']! as bool,
+      enablePrivateLinkFastPath: map['enablePrivateLinkFastPath'] == null ? null : map['enablePrivateLinkFastPath']! as bool,
       expressRouteCircuitPeering: ExpressRouteCircuitPeeringIdResponse.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>()),
-      expressRouteGatewayBypass: map['expressRouteGatewayBypass'] == null ? null : map['expressRouteGatewayBypass'] as bool,
-      id: map['id'] == null ? null : map['id'] as String,
+      expressRouteGatewayBypass: map['expressRouteGatewayBypass'] == null ? null : map['expressRouteGatewayBypass']! as bool,
+      id: map['id'] == null ? null : map['id']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      routingConfiguration: map['routingConfiguration'] == null ? null : RoutingConfigurationResponse.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>()),
-      routingWeight: map['routingWeight'] == null ? null : map['routingWeight'] as int,
+      routingConfiguration: map['routingConfiguration'] == null ? null : RoutingConfigurationResponse.fromMap((map['routingConfiguration']! as Map).cast<String, dynamic>()),
+      routingWeight: map['routingWeight'] == null ? null : map['routingWeight']! as int,
     );
   }
 }

@@ -93,20 +93,20 @@ class SourceArgs {
 
   factory SourceArgs.fromMap(Map<String, dynamic> map) {
     return SourceArgs(
-      credit: map['credit'] == null ? null : (Commitment.fromMap((map['credit'] as Map).cast<String, dynamic>())).input(),
+      credit: map['credit'] == null ? null : (Commitment.fromMap((map['credit']! as Map).cast<String, dynamic>())).input(),
       creditName: (map['creditName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      impactedBillingPeriod: map['impactedBillingPeriod'] == null ? null : (map['impactedBillingPeriod'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
-      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      impactedBillingPeriod: map['impactedBillingPeriod'] == null ? null : (map['impactedBillingPeriod']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy']! as String).input(),
+      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      sourceName: map['sourceName'] == null ? null : (map['sourceName'] as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      sourceName: map['sourceName'] == null ? null : (map['sourceName']! as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

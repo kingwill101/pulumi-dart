@@ -62,12 +62,12 @@ class JwtAuthModel {
 
   factory JwtAuthModel.fromMap(Map<String, dynamic> map) {
     return JwtAuthModel(
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      isCredentialsInHeaders: map['isCredentialsInHeaders'] == null ? null : (map['isCredentialsInHeaders'] as bool).input(),
-      isJsonRequest: map['isJsonRequest'] == null ? null : (map['isJsonRequest'] as bool).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      isCredentialsInHeaders: map['isCredentialsInHeaders'] == null ? null : (map['isCredentialsInHeaders']! as bool).input(),
+      isJsonRequest: map['isJsonRequest'] == null ? null : (map['isJsonRequest']! as bool).input(),
       password: ((map['password'] as Map).cast<String, String>()).input(),
-      queryParameters: map['queryParameters'] == null ? null : ((map['queryParameters'] as Map).cast<String, String>()).input(),
-      requestTimeoutInSeconds: map['requestTimeoutInSeconds'] == null ? null : (map['requestTimeoutInSeconds'] as int).input(),
+      queryParameters: map['queryParameters'] == null ? null : ((map['queryParameters']! as Map).cast<String, String>()).input(),
+      requestTimeoutInSeconds: map['requestTimeoutInSeconds'] == null ? null : (map['requestTimeoutInSeconds']! as int).input(),
       tokenEndpoint: (map['tokenEndpoint'] as String).input(),
       type: (map['type'] as String).input(),
       userName: ((map['userName'] as Map).cast<String, String>()).input(),

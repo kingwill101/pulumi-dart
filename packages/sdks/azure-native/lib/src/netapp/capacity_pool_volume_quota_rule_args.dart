@@ -70,15 +70,15 @@ class CapacityPoolVolumeQuotaRuleArgs {
   factory CapacityPoolVolumeQuotaRuleArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolVolumeQuotaRuleArgs(
       accountName: (map['accountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       poolName: (map['poolName'] as String).input(),
-      quotaSizeInKiBs: map['quotaSizeInKiBs'] == null ? null : (map['quotaSizeInKiBs'] as double).input(),
-      quotaTarget: map['quotaTarget'] == null ? null : (map['quotaTarget'] as String).input(),
-      quotaType: map['quotaType'] == null ? null : (map['quotaType'] as String).input(),
+      quotaSizeInKiBs: map['quotaSizeInKiBs'] == null ? null : (map['quotaSizeInKiBs']! as double).input(),
+      quotaTarget: map['quotaTarget'] == null ? null : (map['quotaTarget']! as String).input(),
+      quotaType: map['quotaType'] == null ? null : (map['quotaType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       volumeName: (map['volumeName'] as String).input(),
-      volumeQuotaRuleName: map['volumeQuotaRuleName'] == null ? null : (map['volumeQuotaRuleName'] as String).input(),
+      volumeQuotaRuleName: map['volumeQuotaRuleName'] == null ? null : (map['volumeQuotaRuleName']! as String).input(),
     );
   }
 }

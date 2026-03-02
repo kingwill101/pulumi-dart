@@ -30,8 +30,8 @@ class TransferJobEventStream {
 
   factory TransferJobEventStream.fromMap(Map<String, dynamic> map) {
     return TransferJobEventStream(
-      eventStreamExpirationTime: map['eventStreamExpirationTime'] == null ? null : (map['eventStreamExpirationTime'] as String).input(),
-      eventStreamStartTime: map['eventStreamStartTime'] == null ? null : (map['eventStreamStartTime'] as String).input(),
+      eventStreamExpirationTime: map['eventStreamExpirationTime'] == null ? null : (map['eventStreamExpirationTime']! as String).input(),
+      eventStreamStartTime: map['eventStreamStartTime'] == null ? null : (map['eventStreamStartTime']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -24,7 +24,7 @@ class GetContactsRotationRecurrenceShiftCoverage {
 
   factory GetContactsRotationRecurrenceShiftCoverage.fromMap(Map<String, dynamic> map) {
     return GetContactsRotationRecurrenceShiftCoverage(
-      coverageTimes: (pulumi.Input.decodeList<GetContactsRotationRecurrenceShiftCoverageCoverageTime>(map['coverageTimes'], (value) => GetContactsRotationRecurrenceShiftCoverageCoverageTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      coverageTimes: (pulumi.Input.decodeList<GetContactsRotationRecurrenceShiftCoverageCoverageTime>(map['coverageTimes']!, (value) => GetContactsRotationRecurrenceShiftCoverageCoverageTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
       mapBlockKey: (map['mapBlockKey'] as String).input(),
     );
   }

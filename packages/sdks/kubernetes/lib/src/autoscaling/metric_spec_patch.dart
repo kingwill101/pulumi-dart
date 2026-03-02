@@ -51,12 +51,12 @@ class MetricSpecPatch {
 
   factory MetricSpecPatch.fromMap(Map<String, dynamic> map) {
     return MetricSpecPatch(
-      containerResource: map['containerResource'] == null ? null : (ContainerResourceMetricSourcePatch.fromMap((map['containerResource'] as Map).cast<String, dynamic>())).input(),
-      external: map['external'] == null ? null : (ExternalMetricSourcePatch.fromMap((map['external'] as Map).cast<String, dynamic>())).input(),
-      object: map['object'] == null ? null : (ObjectMetricSourcePatch.fromMap((map['object'] as Map).cast<String, dynamic>())).input(),
-      pods: map['pods'] == null ? null : (PodsMetricSourcePatch.fromMap((map['pods'] as Map).cast<String, dynamic>())).input(),
-      resource: map['resource'] == null ? null : (ResourceMetricSourcePatch.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      containerResource: map['containerResource'] == null ? null : (ContainerResourceMetricSourcePatch.fromMap((map['containerResource']! as Map).cast<String, dynamic>())).input(),
+      external: map['external'] == null ? null : (ExternalMetricSourcePatch.fromMap((map['external']! as Map).cast<String, dynamic>())).input(),
+      object: map['object'] == null ? null : (ObjectMetricSourcePatch.fromMap((map['object']! as Map).cast<String, dynamic>())).input(),
+      pods: map['pods'] == null ? null : (PodsMetricSourcePatch.fromMap((map['pods']! as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (ResourceMetricSourcePatch.fromMap((map['resource']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

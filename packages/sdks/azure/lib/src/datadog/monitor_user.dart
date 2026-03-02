@@ -32,7 +32,7 @@ class MonitorUser {
     return MonitorUser(
       email: (map['email'] as String).input(),
       name: (map['name'] as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
     );
   }
 }

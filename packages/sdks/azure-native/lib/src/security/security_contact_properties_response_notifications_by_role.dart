@@ -26,8 +26,8 @@ class SecurityContactPropertiesResponseNotificationsByRole {
 
   factory SecurityContactPropertiesResponseNotificationsByRole.fromMap(Map<String, dynamic> map) {
     return SecurityContactPropertiesResponseNotificationsByRole(
-      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

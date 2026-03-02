@@ -36,8 +36,8 @@ class ServiceLevelObjective {
 
   factory ServiceLevelObjective.fromMap(Map<String, dynamic> map) {
     return ServiceLevelObjective(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       target: (map['target'] as double).input(),
       timeWindow: (ServiceLevelObjectiveTimeWindow.fromMap((map['timeWindow'] as Map).cast<String, dynamic>())).input(),
     );

@@ -49,12 +49,12 @@ class LedgerArgs {
 
   factory LedgerArgs.fromMap(Map<String, dynamic> map) {
     return LedgerArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : ((map['deletionProtection'] as bool).input()).input(),
+      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       permissionsMode: (map['permissionsMode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

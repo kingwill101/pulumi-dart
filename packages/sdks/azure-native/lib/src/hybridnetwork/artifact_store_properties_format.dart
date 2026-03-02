@@ -36,10 +36,10 @@ class ArtifactStorePropertiesFormat {
 
   factory ArtifactStorePropertiesFormat.fromMap(Map<String, dynamic> map) {
     return ArtifactStorePropertiesFormat(
-      backingResourcePublicNetworkAccess: map['backingResourcePublicNetworkAccess'] == null ? null : (map['backingResourcePublicNetworkAccess'] as String).input(),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ArtifactStorePropertiesFormatManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
-      replicationStrategy: map['replicationStrategy'] == null ? null : (map['replicationStrategy'] as String).input(),
-      storeType: map['storeType'] == null ? null : (map['storeType'] as String).input(),
+      backingResourcePublicNetworkAccess: map['backingResourcePublicNetworkAccess'] == null ? null : (map['backingResourcePublicNetworkAccess']! as String).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ArtifactStorePropertiesFormatManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration']! as Map).cast<String, dynamic>())).input(),
+      replicationStrategy: map['replicationStrategy'] == null ? null : (map['replicationStrategy']! as String).input(),
+      storeType: map['storeType'] == null ? null : (map['storeType']! as String).input(),
     );
   }
 }

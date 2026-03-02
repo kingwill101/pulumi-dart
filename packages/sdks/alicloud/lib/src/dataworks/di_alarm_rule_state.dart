@@ -59,14 +59,14 @@ class DiAlarmRuleState {
 
   factory DiAlarmRuleState.fromMap(Map<String, dynamic> map) {
     return DiAlarmRuleState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diAlarmRuleId: map['diAlarmRuleId'] == null ? null : (map['diAlarmRuleId'] as int).input(),
-      diAlarmRuleName: map['diAlarmRuleName'] == null ? null : (map['diAlarmRuleName'] as String).input(),
-      diJobId: map['diJobId'] == null ? null : (map['diJobId'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      metricType: map['metricType'] == null ? null : (map['metricType'] as String).input(),
-      notificationSettings: map['notificationSettings'] == null ? null : (DiAlarmRuleNotificationSettings.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>())).input(),
-      triggerConditions: map['triggerConditions'] == null ? null : (pulumi.Input.decodeList<DiAlarmRuleTriggerCondition>(map['triggerConditions'], (value) => DiAlarmRuleTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diAlarmRuleId: map['diAlarmRuleId'] == null ? null : (map['diAlarmRuleId']! as int).input(),
+      diAlarmRuleName: map['diAlarmRuleName'] == null ? null : (map['diAlarmRuleName']! as String).input(),
+      diJobId: map['diJobId'] == null ? null : (map['diJobId']! as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      metricType: map['metricType'] == null ? null : (map['metricType']! as String).input(),
+      notificationSettings: map['notificationSettings'] == null ? null : (DiAlarmRuleNotificationSettings.fromMap((map['notificationSettings']! as Map).cast<String, dynamic>())).input(),
+      triggerConditions: map['triggerConditions'] == null ? null : (pulumi.Input.decodeList<DiAlarmRuleTriggerCondition>(map['triggerConditions']!, (value) => DiAlarmRuleTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

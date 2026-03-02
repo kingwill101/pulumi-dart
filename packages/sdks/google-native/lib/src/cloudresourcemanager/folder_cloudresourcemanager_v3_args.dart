@@ -29,7 +29,7 @@ class FolderCloudresourcemanagerV3Args {
 
   factory FolderCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
     return FolderCloudresourcemanagerV3Args(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       parent: (map['parent'] as String).input(),
     );
   }

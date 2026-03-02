@@ -36,10 +36,10 @@ class SavedQueryState {
 
   factory SavedQueryState.fromMap(Map<String, dynamic> map) {
     return SavedQueryState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      savedQueryName: map['savedQueryName'] == null ? null : (map['savedQueryName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      savedQueryName: map['savedQueryName'] == null ? null : (map['savedQueryName']! as String).input(),
     );
   }
 }

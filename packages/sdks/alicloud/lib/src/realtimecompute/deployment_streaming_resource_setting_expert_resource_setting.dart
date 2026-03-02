@@ -25,8 +25,8 @@ class DeploymentStreamingResourceSettingExpertResourceSetting {
 
   factory DeploymentStreamingResourceSettingExpertResourceSetting.fromMap(Map<String, dynamic> map) {
     return DeploymentStreamingResourceSettingExpertResourceSetting(
-      jobmanagerResourceSettingSpec: map['jobmanagerResourceSettingSpec'] == null ? null : (DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec.fromMap((map['jobmanagerResourceSettingSpec'] as Map).cast<String, dynamic>())).input(),
-      resourcePlan: map['resourcePlan'] == null ? null : (map['resourcePlan'] as String).input(),
+      jobmanagerResourceSettingSpec: map['jobmanagerResourceSettingSpec'] == null ? null : (DeploymentStreamingResourceSettingExpertResourceSettingJobmanagerResourceSettingSpec.fromMap((map['jobmanagerResourceSettingSpec']! as Map).cast<String, dynamic>())).input(),
+      resourcePlan: map['resourcePlan'] == null ? null : (map['resourcePlan']! as String).input(),
     );
   }
 }

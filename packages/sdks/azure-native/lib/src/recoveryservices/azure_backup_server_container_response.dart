@@ -91,20 +91,20 @@ class AzureBackupServerContainerResponse {
 
   factory AzureBackupServerContainerResponse.fromMap(Map<String, dynamic> map) {
     return AzureBackupServerContainerResponse(
-      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType'] as String).input(),
-      canReRegister: map['canReRegister'] == null ? null : (map['canReRegister'] as bool).input(),
-      containerId: map['containerId'] == null ? null : (map['containerId'] as String).input(),
+      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType']! as String).input(),
+      canReRegister: map['canReRegister'] == null ? null : (map['canReRegister']! as bool).input(),
+      containerId: map['containerId'] == null ? null : (map['containerId']! as String).input(),
       containerType: (map['containerType'] as String).input(),
-      dpmAgentVersion: map['dpmAgentVersion'] == null ? null : (map['dpmAgentVersion'] as String).input(),
-      dpmServers: map['dpmServers'] == null ? null : ((map['dpmServers'] as List).cast<String>()).input(),
-      extendedInfo: map['extendedInfo'] == null ? null : (DPMContainerExtendedInfoResponse.fromMap((map['extendedInfo'] as Map).cast<String, dynamic>())).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus'] as String).input(),
-      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType'] as String).input(),
-      protectedItemCount: map['protectedItemCount'] == null ? null : (map['protectedItemCount'] as double).input(),
-      protectionStatus: map['protectionStatus'] == null ? null : (map['protectionStatus'] as String).input(),
-      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus'] as String).input(),
-      upgradeAvailable: map['upgradeAvailable'] == null ? null : (map['upgradeAvailable'] as bool).input(),
+      dpmAgentVersion: map['dpmAgentVersion'] == null ? null : (map['dpmAgentVersion']! as String).input(),
+      dpmServers: map['dpmServers'] == null ? null : ((map['dpmServers']! as List).cast<String>()).input(),
+      extendedInfo: map['extendedInfo'] == null ? null : (DPMContainerExtendedInfoResponse.fromMap((map['extendedInfo']! as Map).cast<String, dynamic>())).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus']! as String).input(),
+      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType']! as String).input(),
+      protectedItemCount: map['protectedItemCount'] == null ? null : (map['protectedItemCount']! as double).input(),
+      protectionStatus: map['protectionStatus'] == null ? null : (map['protectionStatus']! as String).input(),
+      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus']! as String).input(),
+      upgradeAvailable: map['upgradeAvailable'] == null ? null : (map['upgradeAvailable']! as bool).input(),
     );
   }
 }

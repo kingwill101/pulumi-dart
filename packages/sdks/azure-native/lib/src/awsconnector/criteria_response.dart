@@ -27,8 +27,8 @@ class CriteriaResponse {
 
   factory CriteriaResponse.fromMap(Map<String, dynamic> map) {
     return CriteriaResponse(
-      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
-      s3WordsList: map['s3WordsList'] == null ? null : (S3WordsListResponse.fromMap((map['s3WordsList'] as Map).cast<String, dynamic>())).input(),
+      regex: map['regex'] == null ? null : (map['regex']! as String).input(),
+      s3WordsList: map['s3WordsList'] == null ? null : (S3WordsListResponse.fromMap((map['s3WordsList']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

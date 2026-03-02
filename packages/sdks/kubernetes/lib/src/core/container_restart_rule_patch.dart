@@ -27,8 +27,8 @@ class ContainerRestartRulePatch {
 
   factory ContainerRestartRulePatch.fromMap(Map<String, dynamic> map) {
     return ContainerRestartRulePatch(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      exitCodes: map['exitCodes'] == null ? null : (ContainerRestartRuleOnExitCodesPatch.fromMap((map['exitCodes'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      exitCodes: map['exitCodes'] == null ? null : (ContainerRestartRuleOnExitCodesPatch.fromMap((map['exitCodes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

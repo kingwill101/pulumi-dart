@@ -57,13 +57,13 @@ class MetadataImportMetastoreV1betaArgs {
 
   factory MetadataImportMetastoreV1betaArgs.fromMap(Map<String, dynamic> map) {
     return MetadataImportMetastoreV1betaArgs(
-      databaseDump: map['databaseDump'] == null ? null : (DatabaseDumpMetastoreV1beta.fromMap((map['databaseDump'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      databaseDump: map['databaseDump'] == null ? null : (DatabaseDumpMetastoreV1beta.fromMap((map['databaseDump']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       metadataImportId: (map['metadataImportId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );
   }

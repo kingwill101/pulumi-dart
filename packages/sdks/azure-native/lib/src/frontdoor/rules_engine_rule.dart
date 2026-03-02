@@ -44,8 +44,8 @@ class RulesEngineRule {
   factory RulesEngineRule.fromMap(Map<String, dynamic> map) {
     return RulesEngineRule(
       action: (RulesEngineAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<RulesEngineMatchCondition>(map['matchConditions'], (value) => RulesEngineMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchProcessingBehavior: map['matchProcessingBehavior'] == null ? null : (map['matchProcessingBehavior'] as String).input(),
+      matchConditions: map['matchConditions'] == null ? null : (pulumi.Input.decodeList<RulesEngineMatchCondition>(map['matchConditions']!, (value) => RulesEngineMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchProcessingBehavior: map['matchProcessingBehavior'] == null ? null : (map['matchProcessingBehavior']! as String).input(),
       name: (map['name'] as String).input(),
       priority: (map['priority'] as int).input(),
     );

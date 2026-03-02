@@ -21,7 +21,7 @@ class CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRule {
 
   factory CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRule.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRule(
-      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
+      attribute: map['attribute'] == null ? null : (map['attribute']! as String).input(),
     );
   }
 }

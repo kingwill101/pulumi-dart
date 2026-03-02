@@ -139,12 +139,12 @@ class GetQueueResult {
       maxDeliveryCount: map['maxDeliveryCount'] as int,
       maxSizeInMegabytes: map['maxSizeInMegabytes'] as int,
       name: map['name'] as String,
-      namespaceId: map['namespaceId'] == null ? null : map['namespaceId'] as String,
-      namespaceName: map['namespaceName'] == null ? null : map['namespaceName'] as String,
+      namespaceId: map['namespaceId'] == null ? null : map['namespaceId']! as String,
+      namespaceName: map['namespaceName'] == null ? null : map['namespaceName']! as String,
       partitioningEnabled: map['partitioningEnabled'] as bool,
       requiresDuplicateDetection: map['requiresDuplicateDetection'] as bool,
       requiresSession: map['requiresSession'] as bool,
-      resourceGroupName: map['resourceGroupName'] == null ? null : map['resourceGroupName'] as String,
+      resourceGroupName: map['resourceGroupName'] == null ? null : map['resourceGroupName']! as String,
       status: map['status'] as String,
     );
   }

@@ -22,7 +22,7 @@ class RegionSecurityPolicyRulePreconfiguredWafConfig {
 
   factory RegionSecurityPolicyRulePreconfiguredWafConfig.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyRulePreconfiguredWafConfig(
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<RegionSecurityPolicyRulePreconfiguredWafConfigExclusion>(map['exclusions'], (value) => RegionSecurityPolicyRulePreconfiguredWafConfigExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<RegionSecurityPolicyRulePreconfiguredWafConfigExclusion>(map['exclusions']!, (value) => RegionSecurityPolicyRulePreconfiguredWafConfigExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

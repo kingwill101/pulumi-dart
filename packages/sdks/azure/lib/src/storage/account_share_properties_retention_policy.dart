@@ -20,7 +20,7 @@ class AccountSharePropertiesRetentionPolicy {
 
   factory AccountSharePropertiesRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return AccountSharePropertiesRetentionPolicy(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
     );
   }
 }

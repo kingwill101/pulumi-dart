@@ -79,18 +79,18 @@ class OrganizationState {
 
   factory OrganizationState.fromMap(Map<String, dynamic> map) {
     return OrganizationState(
-      accounts: map['accounts'] == null ? null : (pulumi.Input.decodeList<OrganizationAccount>(map['accounts'], (value) => OrganizationAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsServiceAccessPrincipals: map['awsServiceAccessPrincipals'] == null ? null : ((map['awsServiceAccessPrincipals'] as List).cast<String>()).input(),
-      enabledPolicyTypes: map['enabledPolicyTypes'] == null ? null : ((map['enabledPolicyTypes'] as List).cast<String>()).input(),
-      featureSet: map['featureSet'] == null ? null : (map['featureSet'] as String).input(),
-      masterAccountArn: map['masterAccountArn'] == null ? null : (map['masterAccountArn'] as String).input(),
-      masterAccountEmail: map['masterAccountEmail'] == null ? null : (map['masterAccountEmail'] as String).input(),
-      masterAccountId: map['masterAccountId'] == null ? null : (map['masterAccountId'] as String).input(),
-      masterAccountName: map['masterAccountName'] == null ? null : (map['masterAccountName'] as String).input(),
-      nonMasterAccounts: map['nonMasterAccounts'] == null ? null : (pulumi.Input.decodeList<OrganizationNonMasterAccount>(map['nonMasterAccounts'], (value) => OrganizationNonMasterAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      returnOrganizationOnly: map['returnOrganizationOnly'] == null ? null : (map['returnOrganizationOnly'] as bool).input(),
-      roots: map['roots'] == null ? null : (pulumi.Input.decodeList<OrganizationRoot>(map['roots'], (value) => OrganizationRoot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accounts: map['accounts'] == null ? null : ((pulumi.Input.decodeList<OrganizationAccount>(map['accounts']!, (value) => OrganizationAccount.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsServiceAccessPrincipals: map['awsServiceAccessPrincipals'] == null ? null : (((map['awsServiceAccessPrincipals'] as List).cast<String>()).input()).input(),
+      enabledPolicyTypes: map['enabledPolicyTypes'] == null ? null : (((map['enabledPolicyTypes'] as List).cast<String>()).input()).input(),
+      featureSet: map['featureSet'] == null ? null : ((map['featureSet'] as String).input()).input(),
+      masterAccountArn: map['masterAccountArn'] == null ? null : ((map['masterAccountArn'] as String).input()).input(),
+      masterAccountEmail: map['masterAccountEmail'] == null ? null : ((map['masterAccountEmail'] as String).input()).input(),
+      masterAccountId: map['masterAccountId'] == null ? null : ((map['masterAccountId'] as String).input()).input(),
+      masterAccountName: map['masterAccountName'] == null ? null : ((map['masterAccountName'] as String).input()).input(),
+      nonMasterAccounts: map['nonMasterAccounts'] == null ? null : ((pulumi.Input.decodeList<OrganizationNonMasterAccount>(map['nonMasterAccounts']!, (value) => OrganizationNonMasterAccount.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      returnOrganizationOnly: map['returnOrganizationOnly'] == null ? null : ((map['returnOrganizationOnly'] as bool).input()).input(),
+      roots: map['roots'] == null ? null : ((pulumi.Input.decodeList<OrganizationRoot>(map['roots']!, (value) => OrganizationRoot.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

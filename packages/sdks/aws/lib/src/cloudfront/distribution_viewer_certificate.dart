@@ -40,11 +40,11 @@ class DistributionViewerCertificate {
 
   factory DistributionViewerCertificate.fromMap(Map<String, dynamic> map) {
     return DistributionViewerCertificate(
-      acmCertificateArn: map['acmCertificateArn'] == null ? null : (map['acmCertificateArn'] as String).input(),
-      cloudfrontDefaultCertificate: map['cloudfrontDefaultCertificate'] == null ? null : (map['cloudfrontDefaultCertificate'] as bool).input(),
-      iamCertificateId: map['iamCertificateId'] == null ? null : (map['iamCertificateId'] as String).input(),
-      minimumProtocolVersion: map['minimumProtocolVersion'] == null ? null : (map['minimumProtocolVersion'] as String).input(),
-      sslSupportMethod: map['sslSupportMethod'] == null ? null : (map['sslSupportMethod'] as String).input(),
+      acmCertificateArn: map['acmCertificateArn'] == null ? null : ((map['acmCertificateArn'] as String).input()).input(),
+      cloudfrontDefaultCertificate: map['cloudfrontDefaultCertificate'] == null ? null : ((map['cloudfrontDefaultCertificate'] as bool).input()).input(),
+      iamCertificateId: map['iamCertificateId'] == null ? null : ((map['iamCertificateId'] as String).input()).input(),
+      minimumProtocolVersion: map['minimumProtocolVersion'] == null ? null : ((map['minimumProtocolVersion'] as String).input()).input(),
+      sslSupportMethod: map['sslSupportMethod'] == null ? null : ((map['sslSupportMethod'] as String).input()).input(),
     );
   }
 }

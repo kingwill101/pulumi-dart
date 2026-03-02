@@ -44,11 +44,11 @@ class SapInstanceArgs {
 
   factory SapInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SapInstanceArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sapDiscoverySiteName: (map['sapDiscoverySiteName'] as String).input(),
-      sapInstanceName: map['sapInstanceName'] == null ? null : (map['sapInstanceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sapInstanceName: map['sapInstanceName'] == null ? null : (map['sapInstanceName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

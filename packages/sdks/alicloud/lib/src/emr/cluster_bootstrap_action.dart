@@ -45,12 +45,12 @@ class ClusterBootstrapAction {
 
   factory ClusterBootstrapAction.fromMap(Map<String, dynamic> map) {
     return ClusterBootstrapAction(
-      arg: map['arg'] == null ? null : (map['arg'] as String).input(),
-      executionFailStrategy: map['executionFailStrategy'] == null ? null : (map['executionFailStrategy'] as String).input(),
-      executionMoment: map['executionMoment'] == null ? null : (map['executionMoment'] as String).input(),
-      executionTarget: map['executionTarget'] == null ? null : (map['executionTarget'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      arg: map['arg'] == null ? null : (map['arg']! as String).input(),
+      executionFailStrategy: map['executionFailStrategy'] == null ? null : (map['executionFailStrategy']! as String).input(),
+      executionMoment: map['executionMoment'] == null ? null : (map['executionMoment']! as String).input(),
+      executionTarget: map['executionTarget'] == null ? null : (map['executionTarget']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

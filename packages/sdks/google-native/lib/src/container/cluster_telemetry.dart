@@ -22,7 +22,7 @@ class ClusterTelemetry {
 
   factory ClusterTelemetry.fromMap(Map<String, dynamic> map) {
     return ClusterTelemetry(
-      type: map['type'] == null ? null : (ClusterTelemetryType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (ClusterTelemetryType.fromValue(map['type']! as String)).input(),
     );
   }
 }

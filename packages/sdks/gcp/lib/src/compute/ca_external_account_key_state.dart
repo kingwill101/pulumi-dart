@@ -53,12 +53,12 @@ class CaExternalAccountKeyState {
 
   factory CaExternalAccountKeyState.fromMap(Map<String, dynamic> map) {
     return CaExternalAccountKeyState(
-      b64MacKey: map['b64MacKey'] == null ? null : (map['b64MacKey'] as String).input(),
-      b64urlMacKey: map['b64urlMacKey'] == null ? null : (map['b64urlMacKey'] as String).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      b64MacKey: map['b64MacKey'] == null ? null : (map['b64MacKey']! as String).input(),
+      b64urlMacKey: map['b64urlMacKey'] == null ? null : (map['b64urlMacKey']! as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

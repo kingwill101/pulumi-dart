@@ -25,8 +25,8 @@ class DatasetCreateRequestQuery {
 
   factory DatasetCreateRequestQuery.fromMap(Map<String, dynamic> map) {
     return DatasetCreateRequestQuery(
-      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
+      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
     );
   }
 }

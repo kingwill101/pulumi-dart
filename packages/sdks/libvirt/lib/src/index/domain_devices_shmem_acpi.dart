@@ -20,7 +20,7 @@ class DomainDevicesShmemAcpi {
 
   factory DomainDevicesShmemAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesShmemAcpi(
-      index: map['index'] == null ? null : (map['index'] as double).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
     );
   }
 }

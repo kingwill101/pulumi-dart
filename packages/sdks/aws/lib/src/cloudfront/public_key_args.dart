@@ -41,10 +41,10 @@ class PublicKeyArgs {
 
   factory PublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return PublicKeyArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
       encodedKey: (map['encodedKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
     );
   }
 }

@@ -35,9 +35,9 @@ class CollectorPropertiesResponse {
 
   factory CollectorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CollectorPropertiesResponse(
-      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentPropertiesResponse.fromMap((map['agentProperties'] as Map).cast<String, dynamic>())).input(),
+      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentPropertiesResponse.fromMap((map['agentProperties']! as Map).cast<String, dynamic>())).input(),
       createdTimestamp: (map['createdTimestamp'] as String).input(),
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
       updatedTimestamp: (map['updatedTimestamp'] as String).input(),
     );
   }

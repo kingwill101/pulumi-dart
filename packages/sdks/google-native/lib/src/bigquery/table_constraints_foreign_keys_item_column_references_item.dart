@@ -23,8 +23,8 @@ class TableConstraintsForeignKeysItemColumnReferencesItem {
 
   factory TableConstraintsForeignKeysItemColumnReferencesItem.fromMap(Map<String, dynamic> map) {
     return TableConstraintsForeignKeysItemColumnReferencesItem(
-      referencedColumn: map['referencedColumn'] == null ? null : (map['referencedColumn'] as String).input(),
-      referencingColumn: map['referencingColumn'] == null ? null : (map['referencingColumn'] as String).input(),
+      referencedColumn: map['referencedColumn'] == null ? null : (map['referencedColumn']! as String).input(),
+      referencingColumn: map['referencingColumn'] == null ? null : (map['referencingColumn']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class OrganizationConfigurationState {
 
   factory OrganizationConfigurationState.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationState(
-      autoEnable: map['autoEnable'] == null ? null : (OrganizationConfigurationAutoEnable.fromMap((map['autoEnable'] as Map).cast<String, dynamic>())).input(),
-      maxAccountLimitReached: map['maxAccountLimitReached'] == null ? null : (map['maxAccountLimitReached'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      autoEnable: map['autoEnable'] == null ? null : ((OrganizationConfigurationAutoEnable.fromMap((map['autoEnable']! as Map).cast<String, dynamic>())).input()).input(),
+      maxAccountLimitReached: map['maxAccountLimitReached'] == null ? null : ((map['maxAccountLimitReached'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

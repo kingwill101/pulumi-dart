@@ -26,8 +26,8 @@ class PrefixListIdResponse {
 
   factory PrefixListIdResponse.fromMap(Map<String, dynamic> map) {
     return PrefixListIdResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId']! as String).input(),
     );
   }
 }

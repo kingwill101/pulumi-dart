@@ -41,7 +41,7 @@ class GetModifyParameterLogsArgs {
     return GetModifyParameterLogsArgs(
       dbInstanceId: (map['dbInstanceId'] as String).input(),
       endTime: (map['endTime'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       startTime: (map['startTime'] as String).input(),
     );
   }

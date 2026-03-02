@@ -41,7 +41,7 @@ class ConditionalForwarderArgs {
     return ConditionalForwarderArgs(
       directoryId: (map['directoryId'] as String).input(),
       dnsIps: ((map['dnsIps'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       remoteDomainName: (map['remoteDomainName'] as String).input(),
     );
   }

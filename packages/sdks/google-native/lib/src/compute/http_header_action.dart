@@ -37,10 +37,10 @@ class HttpHeaderAction {
 
   factory HttpHeaderAction.fromMap(Map<String, dynamic> map) {
     return HttpHeaderAction(
-      requestHeadersToAdd: map['requestHeadersToAdd'] == null ? null : (pulumi.Input.decodeList<HttpHeaderOption>(map['requestHeadersToAdd'], (value) => HttpHeaderOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestHeadersToRemove: map['requestHeadersToRemove'] == null ? null : ((map['requestHeadersToRemove'] as List).cast<String>()).input(),
-      responseHeadersToAdd: map['responseHeadersToAdd'] == null ? null : (pulumi.Input.decodeList<HttpHeaderOption>(map['responseHeadersToAdd'], (value) => HttpHeaderOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseHeadersToRemove: map['responseHeadersToRemove'] == null ? null : ((map['responseHeadersToRemove'] as List).cast<String>()).input(),
+      requestHeadersToAdd: map['requestHeadersToAdd'] == null ? null : (pulumi.Input.decodeList<HttpHeaderOption>(map['requestHeadersToAdd']!, (value) => HttpHeaderOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestHeadersToRemove: map['requestHeadersToRemove'] == null ? null : ((map['requestHeadersToRemove']! as List).cast<String>()).input(),
+      responseHeadersToAdd: map['responseHeadersToAdd'] == null ? null : (pulumi.Input.decodeList<HttpHeaderOption>(map['responseHeadersToAdd']!, (value) => HttpHeaderOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseHeadersToRemove: map['responseHeadersToRemove'] == null ? null : ((map['responseHeadersToRemove']! as List).cast<String>()).input(),
     );
   }
 }

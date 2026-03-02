@@ -72,15 +72,15 @@ class PeerExpressRouteCircuitConnectionResponse {
 
   factory PeerExpressRouteCircuitConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PeerExpressRouteCircuitConnectionResponse(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
-      authResourceGuid: map['authResourceGuid'] == null ? null : (map['authResourceGuid'] as String).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
+      authResourceGuid: map['authResourceGuid'] == null ? null : (map['authResourceGuid']! as String).input(),
       circuitConnectionStatus: (map['circuitConnectionStatus'] as String).input(),
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName']! as String).input(),
       etag: (map['etag'] as String).input(),
-      expressRouteCircuitPeering: map['expressRouteCircuitPeering'] == null ? null : (SubResourceResponse.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peerExpressRouteCircuitPeering: map['peerExpressRouteCircuitPeering'] == null ? null : (SubResourceResponse.fromMap((map['peerExpressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
+      expressRouteCircuitPeering: map['expressRouteCircuitPeering'] == null ? null : (SubResourceResponse.fromMap((map['expressRouteCircuitPeering']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peerExpressRouteCircuitPeering: map['peerExpressRouteCircuitPeering'] == null ? null : (SubResourceResponse.fromMap((map['peerExpressRouteCircuitPeering']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),
     );

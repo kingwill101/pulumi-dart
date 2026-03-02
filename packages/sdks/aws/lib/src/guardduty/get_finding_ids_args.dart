@@ -30,7 +30,7 @@ class GetFindingIdsArgs {
   factory GetFindingIdsArgs.fromMap(Map<String, dynamic> map) {
     return GetFindingIdsArgs(
       detectorId: (map['detectorId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

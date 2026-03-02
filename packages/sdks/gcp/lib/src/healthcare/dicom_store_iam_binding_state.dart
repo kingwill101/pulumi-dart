@@ -53,11 +53,11 @@ class DicomStoreIamBindingState {
 
   factory DicomStoreIamBindingState.fromMap(Map<String, dynamic> map) {
     return DicomStoreIamBindingState(
-      condition: map['condition'] == null ? null : (DicomStoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      dicomStoreId: map['dicomStoreId'] == null ? null : (map['dicomStoreId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (DicomStoreIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      dicomStoreId: map['dicomStoreId'] == null ? null : (map['dicomStoreId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

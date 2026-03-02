@@ -26,7 +26,7 @@ class MLTransformParameters {
 
   factory MLTransformParameters.fromMap(Map<String, dynamic> map) {
     return MLTransformParameters(
-      findMatchesParameters: (MLTransformParametersFindMatchesParameters.fromMap((map['findMatchesParameters'] as Map).cast<String, dynamic>())).input(),
+      findMatchesParameters: (MLTransformParametersFindMatchesParameters.fromMap((map['findMatchesParameters']! as Map).cast<String, dynamic>())).input(),
       transformType: (map['transformType'] as String).input(),
     );
   }

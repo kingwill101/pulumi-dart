@@ -20,7 +20,7 @@ class JobTemplateTemplateContainerResources {
 
   factory JobTemplateTemplateContainerResources.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateContainerResources(
-      limits: map['limits'] == null ? null : ((map['limits'] as Map).cast<String, String>()).input(),
+      limits: map['limits'] == null ? null : ((map['limits']! as Map).cast<String, String>()).input(),
     );
   }
 }

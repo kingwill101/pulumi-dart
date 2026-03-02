@@ -15,17 +15,17 @@ class ExampleStack extends pulumi.Stack {
       'python-zip',
       args: gcp.storage.BucketObjectArgs(
         bucket: bucket.name,
-        source: pulumi.FileArchive('pythonfunc'),
+        source: pulumi.FileArchive('pythonfunc').output(),
       ),
     );
 
     final pythonFunction = gcp.cloudfunctions.FunctionType(
       'python-func',
-      args: gcp.cloudfunctions.FunctionTypeArgs(
+      args: gcp.cloudfunctions.FunctionArgs(
         sourceArchiveBucket: bucket.name,
         runtime: 'python312'.output(),
         sourceArchiveObject: pythonArchive.name,
-        entryPoint: 'handler',
+        entryPoint: 'handler'.output(),
         triggerHttp: true.output(),
         availableMemoryMb: 128.output(),
       ),
@@ -37,8 +37,8 @@ class ExampleStack extends pulumi.Stack {
         project: pythonFunction.project,
         region: pythonFunction.region,
         cloudFunction: pythonFunction.name,
-        role: 'roles/cloudfunctions.invoker',
-        member: 'allUsers',
+        role: 'roles/cloudfunctions.invoker'.output(),
+        member: 'allUsers'.output(),
       ),
     );
 
@@ -46,17 +46,17 @@ class ExampleStack extends pulumi.Stack {
       'go-zip',
       args: gcp.storage.BucketObjectArgs(
         bucket: bucket.name,
-        source: pulumi.FileArchive('gofunc'),
+        source: pulumi.FileArchive('gofunc').output(),
       ),
     );
 
     final goFunction = gcp.cloudfunctions.FunctionType(
       'go-func',
-      args: gcp.cloudfunctions.FunctionTypeArgs(
+      args: gcp.cloudfunctions.FunctionArgs(
         sourceArchiveBucket: bucket.name,
         runtime: 'go123'.output(),
         sourceArchiveObject: goArchive.name,
-        entryPoint: 'Handler',
+        entryPoint: 'Handler'.output(),
         triggerHttp: true.output(),
         availableMemoryMb: 128.output(),
       ),
@@ -68,8 +68,8 @@ class ExampleStack extends pulumi.Stack {
         project: goFunction.project,
         region: goFunction.region,
         cloudFunction: goFunction.name,
-        role: 'roles/cloudfunctions.invoker',
-        member: 'allUsers',
+        role: 'roles/cloudfunctions.invoker'.output(),
+        member: 'allUsers'.output(),
       ),
     );
 
@@ -77,17 +77,17 @@ class ExampleStack extends pulumi.Stack {
       'ts-zip',
       args: gcp.storage.BucketObjectArgs(
         bucket: bucket.name,
-        source: pulumi.FileArchive('typescriptfunc'),
+        source: pulumi.FileArchive('typescriptfunc').output(),
       ),
     );
 
     final tsFunction = gcp.cloudfunctions.FunctionType(
       'ts-func',
-      args: gcp.cloudfunctions.FunctionTypeArgs(
+      args: gcp.cloudfunctions.FunctionArgs(
         sourceArchiveBucket: bucket.name,
         runtime: 'nodejs22'.output(),
         sourceArchiveObject: tsArchive.name,
-        entryPoint: 'handler',
+        entryPoint: 'handler'.output(),
         triggerHttp: true.output(),
         availableMemoryMb: 128.output(),
       ),
@@ -99,8 +99,8 @@ class ExampleStack extends pulumi.Stack {
         project: tsFunction.project,
         region: tsFunction.region,
         cloudFunction: tsFunction.name,
-        role: 'roles/cloudfunctions.invoker',
-        member: 'allUsers',
+        role: 'roles/cloudfunctions.invoker'.output(),
+        member: 'allUsers'.output(),
       ),
     );
 

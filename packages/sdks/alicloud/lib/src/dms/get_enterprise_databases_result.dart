@@ -49,8 +49,8 @@ class GetEnterpriseDatabasesResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

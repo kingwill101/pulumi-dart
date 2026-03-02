@@ -53,13 +53,13 @@ class LongRunningBackupArgs {
 
   factory LongRunningBackupArgs.fromMap(Map<String, dynamic> map) {
     return LongRunningBackupArgs(
-      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
-      backupNameV2: map['backupNameV2'] == null ? null : (map['backupNameV2'] as String).input(),
-      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
-      completedTime: map['completedTime'] == null ? null : (map['completedTime'] as String).input(),
+      backupName: map['backupName'] == null ? null : (map['backupName']! as String).input(),
+      backupNameV2: map['backupNameV2'] == null ? null : (map['backupNameV2']! as String).input(),
+      backupType: map['backupType'] == null ? null : (map['backupType']! as String).input(),
+      completedTime: map['completedTime'] == null ? null : (map['completedTime']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

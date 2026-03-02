@@ -30,7 +30,7 @@ class GrpcRouteRuleMatchMethod {
 
   factory GrpcRouteRuleMatchMethod.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRuleMatchMethod(
-      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
+      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive']! as bool).input(),
       grpcMethod: (map['grpcMethod'] as String).input(),
       grpcService: (map['grpcService'] as String).input(),
     );

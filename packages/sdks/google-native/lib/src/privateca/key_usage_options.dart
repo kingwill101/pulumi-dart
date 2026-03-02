@@ -61,15 +61,15 @@ class KeyUsageOptions {
 
   factory KeyUsageOptions.fromMap(Map<String, dynamic> map) {
     return KeyUsageOptions(
-      certSign: map['certSign'] == null ? null : (map['certSign'] as bool).input(),
-      contentCommitment: map['contentCommitment'] == null ? null : (map['contentCommitment'] as bool).input(),
-      crlSign: map['crlSign'] == null ? null : (map['crlSign'] as bool).input(),
-      dataEncipherment: map['dataEncipherment'] == null ? null : (map['dataEncipherment'] as bool).input(),
-      decipherOnly: map['decipherOnly'] == null ? null : (map['decipherOnly'] as bool).input(),
-      digitalSignature: map['digitalSignature'] == null ? null : (map['digitalSignature'] as bool).input(),
-      encipherOnly: map['encipherOnly'] == null ? null : (map['encipherOnly'] as bool).input(),
-      keyAgreement: map['keyAgreement'] == null ? null : (map['keyAgreement'] as bool).input(),
-      keyEncipherment: map['keyEncipherment'] == null ? null : (map['keyEncipherment'] as bool).input(),
+      certSign: map['certSign'] == null ? null : (map['certSign']! as bool).input(),
+      contentCommitment: map['contentCommitment'] == null ? null : (map['contentCommitment']! as bool).input(),
+      crlSign: map['crlSign'] == null ? null : (map['crlSign']! as bool).input(),
+      dataEncipherment: map['dataEncipherment'] == null ? null : (map['dataEncipherment']! as bool).input(),
+      decipherOnly: map['decipherOnly'] == null ? null : (map['decipherOnly']! as bool).input(),
+      digitalSignature: map['digitalSignature'] == null ? null : (map['digitalSignature']! as bool).input(),
+      encipherOnly: map['encipherOnly'] == null ? null : (map['encipherOnly']! as bool).input(),
+      keyAgreement: map['keyAgreement'] == null ? null : (map['keyAgreement']! as bool).input(),
+      keyEncipherment: map['keyEncipherment'] == null ? null : (map['keyEncipherment']! as bool).input(),
     );
   }
 }

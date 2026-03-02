@@ -71,17 +71,17 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      attachmentCount: map['attachmentCount'] == null ? null : (map['attachmentCount'] as int).input(),
-      delayAfterPolicyCreationInMs: map['delayAfterPolicyCreationInMs'] == null ? null : (map['delayAfterPolicyCreationInMs'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      attachmentCount: map['attachmentCount'] == null ? null : ((map['attachmentCount'] as int).input()).input(),
+      delayAfterPolicyCreationInMs: map['delayAfterPolicyCreationInMs'] == null ? null : ((map['delayAfterPolicyCreationInMs'] as int).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      policyId: map['policyId'] == null ? null : ((map['policyId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

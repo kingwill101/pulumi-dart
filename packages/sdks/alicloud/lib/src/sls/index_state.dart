@@ -57,14 +57,14 @@ class IndexState {
 
   factory IndexState.fromMap(Map<String, dynamic> map) {
     return IndexState(
-      keys: map['keys'] == null ? null : (map['keys'] as String).input(),
-      line: map['line'] == null ? null : (IndexLine.fromMap((map['line'] as Map).cast<String, dynamic>())).input(),
-      logReduce: map['logReduce'] == null ? null : (map['logReduce'] as bool).input(),
-      logReduceBlackLists: map['logReduceBlackLists'] == null ? null : ((map['logReduceBlackLists'] as List).cast<String>()).input(),
-      logReduceWhiteLists: map['logReduceWhiteLists'] == null ? null : ((map['logReduceWhiteLists'] as List).cast<String>()).input(),
-      logstoreName: map['logstoreName'] == null ? null : (map['logstoreName'] as String).input(),
-      maxTextLen: map['maxTextLen'] == null ? null : (map['maxTextLen'] as int).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      keys: map['keys'] == null ? null : (map['keys']! as String).input(),
+      line: map['line'] == null ? null : (IndexLine.fromMap((map['line']! as Map).cast<String, dynamic>())).input(),
+      logReduce: map['logReduce'] == null ? null : (map['logReduce']! as bool).input(),
+      logReduceBlackLists: map['logReduceBlackLists'] == null ? null : ((map['logReduceBlackLists']! as List).cast<String>()).input(),
+      logReduceWhiteLists: map['logReduceWhiteLists'] == null ? null : ((map['logReduceWhiteLists']! as List).cast<String>()).input(),
+      logstoreName: map['logstoreName'] == null ? null : (map['logstoreName']! as String).input(),
+      maxTextLen: map['maxTextLen'] == null ? null : (map['maxTextLen']! as int).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
     );
   }
 }

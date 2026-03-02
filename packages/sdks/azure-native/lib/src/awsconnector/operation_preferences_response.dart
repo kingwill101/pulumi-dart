@@ -46,12 +46,12 @@ class OperationPreferencesResponse {
 
   factory OperationPreferencesResponse.fromMap(Map<String, dynamic> map) {
     return OperationPreferencesResponse(
-      failureToleranceCount: map['failureToleranceCount'] == null ? null : (map['failureToleranceCount'] as int).input(),
-      failureTolerancePercentage: map['failureTolerancePercentage'] == null ? null : (map['failureTolerancePercentage'] as int).input(),
-      maxConcurrentCount: map['maxConcurrentCount'] == null ? null : (map['maxConcurrentCount'] as int).input(),
-      maxConcurrentPercentage: map['maxConcurrentPercentage'] == null ? null : (map['maxConcurrentPercentage'] as int).input(),
-      regionConcurrencyType: map['regionConcurrencyType'] == null ? null : (map['regionConcurrencyType'] as String).input(),
-      regionOrder: map['regionOrder'] == null ? null : ((map['regionOrder'] as List).cast<String>()).input(),
+      failureToleranceCount: map['failureToleranceCount'] == null ? null : (map['failureToleranceCount']! as int).input(),
+      failureTolerancePercentage: map['failureTolerancePercentage'] == null ? null : (map['failureTolerancePercentage']! as int).input(),
+      maxConcurrentCount: map['maxConcurrentCount'] == null ? null : (map['maxConcurrentCount']! as int).input(),
+      maxConcurrentPercentage: map['maxConcurrentPercentage'] == null ? null : (map['maxConcurrentPercentage']! as int).input(),
+      regionConcurrencyType: map['regionConcurrencyType'] == null ? null : (map['regionConcurrencyType']! as String).input(),
+      regionOrder: map['regionOrder'] == null ? null : ((map['regionOrder']! as List).cast<String>()).input(),
     );
   }
 }

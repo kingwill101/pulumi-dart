@@ -87,19 +87,19 @@ class LoadBalancingRule {
 
   factory LoadBalancingRule.fromMap(Map<String, dynamic> map) {
     return LoadBalancingRule(
-      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool'] as Map).cast<String, dynamic>())).input(),
-      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['backendAddressPools'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
-      disableOutboundSnat: map['disableOutboundSnat'] == null ? null : (map['disableOutboundSnat'] as bool).input(),
-      enableFloatingIP: map['enableFloatingIP'] == null ? null : (map['enableFloatingIP'] as bool).input(),
-      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset'] as bool).input(),
-      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResource.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      backendAddressPool: map['backendAddressPool'] == null ? null : (SubResource.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>())).input(),
+      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['backendAddressPools']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as int).input(),
+      disableOutboundSnat: map['disableOutboundSnat'] == null ? null : (map['disableOutboundSnat']! as bool).input(),
+      enableFloatingIP: map['enableFloatingIP'] == null ? null : (map['enableFloatingIP']! as bool).input(),
+      enableTcpReset: map['enableTcpReset'] == null ? null : (map['enableTcpReset']! as bool).input(),
+      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResource.fromMap((map['frontendIPConfiguration']! as Map).cast<String, dynamic>())).input(),
       frontendPort: (map['frontendPort'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      loadDistribution: map['loadDistribution'] == null ? null : (map['loadDistribution'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      probe: map['probe'] == null ? null : (SubResource.fromMap((map['probe'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
+      loadDistribution: map['loadDistribution'] == null ? null : (map['loadDistribution']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      probe: map['probe'] == null ? null : (SubResource.fromMap((map['probe']! as Map).cast<String, dynamic>())).input(),
       protocol: (map['protocol'] as String).input(),
     );
   }

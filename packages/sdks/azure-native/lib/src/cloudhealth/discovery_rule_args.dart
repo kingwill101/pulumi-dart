@@ -40,9 +40,9 @@ class DiscoveryRuleArgs {
 
   factory DiscoveryRuleArgs.fromMap(Map<String, dynamic> map) {
     return DiscoveryRuleArgs(
-      discoveryRuleName: map['discoveryRuleName'] == null ? null : (map['discoveryRuleName'] as String).input(),
+      discoveryRuleName: map['discoveryRuleName'] == null ? null : (map['discoveryRuleName']! as String).input(),
       healthModelName: (map['healthModelName'] as String).input(),
-      properties: map['properties'] == null ? null : (DiscoveryRuleProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (DiscoveryRuleProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

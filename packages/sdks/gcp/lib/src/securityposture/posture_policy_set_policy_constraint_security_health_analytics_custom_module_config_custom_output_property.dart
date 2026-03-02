@@ -30,7 +30,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
   factory PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty(
       name: (map['name'] as String).input(),
-      valueExpression: map['valueExpression'] == null ? null : (PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpression.fromMap((map['valueExpression'] as Map).cast<String, dynamic>())).input(),
+      valueExpression: map['valueExpression'] == null ? null : (PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpression.fromMap((map['valueExpression']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -70,15 +70,15 @@ class WatcherArgs {
   factory WatcherArgs.fromMap(Map<String, dynamic> map) {
     return WatcherArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      executionFrequencyInSeconds: map['executionFrequencyInSeconds'] == null ? null : (map['executionFrequencyInSeconds'] as double).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      executionFrequencyInSeconds: map['executionFrequencyInSeconds'] == null ? null : (map['executionFrequencyInSeconds']! as double).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scriptName: map['scriptName'] == null ? null : (map['scriptName'] as String).input(),
-      scriptParameters: map['scriptParameters'] == null ? null : ((map['scriptParameters'] as Map).cast<String, String>()).input(),
-      scriptRunOn: map['scriptRunOn'] == null ? null : (map['scriptRunOn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      watcherName: map['watcherName'] == null ? null : (map['watcherName'] as String).input(),
+      scriptName: map['scriptName'] == null ? null : (map['scriptName']! as String).input(),
+      scriptParameters: map['scriptParameters'] == null ? null : ((map['scriptParameters']! as Map).cast<String, String>()).input(),
+      scriptRunOn: map['scriptRunOn'] == null ? null : (map['scriptRunOn']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      watcherName: map['watcherName'] == null ? null : (map['watcherName']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class BucketBilling {
 
   factory BucketBilling.fromMap(Map<String, dynamic> map) {
     return BucketBilling(
-      requesterPays: map['requesterPays'] == null ? null : (map['requesterPays'] as bool).input(),
+      requesterPays: map['requesterPays'] == null ? null : (map['requesterPays']! as bool).input(),
     );
   }
 }

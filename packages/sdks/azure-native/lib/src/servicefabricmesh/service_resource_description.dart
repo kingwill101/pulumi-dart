@@ -60,14 +60,14 @@ class ServiceResourceDescription {
 
   factory ServiceResourceDescription.fromMap(Map<String, dynamic> map) {
     return ServiceResourceDescription(
-      autoScalingPolicies: map['autoScalingPolicies'] == null ? null : (pulumi.Input.decodeList<AutoScalingPolicy>(map['autoScalingPolicies'], (value) => AutoScalingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoScalingPolicies: map['autoScalingPolicies'] == null ? null : (pulumi.Input.decodeList<AutoScalingPolicy>(map['autoScalingPolicies']!, (value) => AutoScalingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
       codePackages: (pulumi.Input.decodeList<ContainerCodePackageProperties>(map['codePackages'], (value) => ContainerCodePackageProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diagnostics: map['diagnostics'] == null ? null : (DiagnosticsRef.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkRefs: map['networkRefs'] == null ? null : (pulumi.Input.decodeList<NetworkRef>(map['networkRefs'], (value) => NetworkRef.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diagnostics: map['diagnostics'] == null ? null : (DiagnosticsRef.fromMap((map['diagnostics']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkRefs: map['networkRefs'] == null ? null : (pulumi.Input.decodeList<NetworkRef>(map['networkRefs']!, (value) => NetworkRef.fromMap((value as Map).cast<String, dynamic>()))).input(),
       osType: (map['osType'] as String).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as int).input(),
     );
   }
 }

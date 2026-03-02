@@ -39,8 +39,8 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      endpointName: map['endpointName'] == null ? null : (map['endpointName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      endpointName: map['endpointName'] == null ? null : (map['endpointName']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
       resourceUri: (map['resourceUri'] as String).input(),
       type: (map['type'] as String).input(),
     );

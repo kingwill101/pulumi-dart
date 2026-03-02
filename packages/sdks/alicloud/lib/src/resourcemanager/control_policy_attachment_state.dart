@@ -30,8 +30,8 @@ class ControlPolicyAttachmentState {
 
   factory ControlPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return ControlPolicyAttachmentState(
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
     );
   }
 }

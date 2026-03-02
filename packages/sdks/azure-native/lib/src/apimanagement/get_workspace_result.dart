@@ -46,7 +46,7 @@ class GetWorkspaceResult {
   factory GetWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

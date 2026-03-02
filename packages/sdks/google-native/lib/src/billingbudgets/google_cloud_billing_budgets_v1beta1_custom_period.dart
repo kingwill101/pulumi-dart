@@ -27,7 +27,7 @@ class GoogleCloudBillingBudgetsV1beta1CustomPeriod {
 
   factory GoogleCloudBillingBudgetsV1beta1CustomPeriod.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBillingBudgetsV1beta1CustomPeriod(
-      endDate: map['endDate'] == null ? null : (GoogleTypeDateBillingbudgetsV1beta1.fromMap((map['endDate'] as Map).cast<String, dynamic>())).input(),
+      endDate: map['endDate'] == null ? null : (GoogleTypeDateBillingbudgetsV1beta1.fromMap((map['endDate']! as Map).cast<String, dynamic>())).input(),
       startDate: (GoogleTypeDateBillingbudgetsV1beta1.fromMap((map['startDate'] as Map).cast<String, dynamic>())).input(),
     );
   }

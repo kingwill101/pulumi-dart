@@ -25,8 +25,8 @@ class RouteSpecHttp2RouteMatchPath {
 
   factory RouteSpecHttp2RouteMatchPath.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttp2RouteMatchPath(
-      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
-      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
+      exact: map['exact'] == null ? null : ((map['exact'] as String).input()).input(),
+      regex: map['regex'] == null ? null : ((map['regex'] as String).input()).input(),
     );
   }
 }

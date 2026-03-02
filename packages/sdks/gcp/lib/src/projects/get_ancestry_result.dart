@@ -51,7 +51,7 @@ class GetAncestryResult {
       orgId: map['orgId'] as String,
       parentId: map['parentId'] as String,
       parentType: map['parentType'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
     );
   }
 }

@@ -50,12 +50,12 @@ class AgentDataSourceDataSourceConfiguration {
 
   factory AgentDataSourceDataSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfiguration(
-      confluenceConfiguration: map['confluenceConfiguration'] == null ? null : (AgentDataSourceDataSourceConfigurationConfluenceConfiguration.fromMap((map['confluenceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      s3Configuration: map['s3Configuration'] == null ? null : (AgentDataSourceDataSourceConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
-      salesforceConfiguration: map['salesforceConfiguration'] == null ? null : (AgentDataSourceDataSourceConfigurationSalesforceConfiguration.fromMap((map['salesforceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      sharePointConfiguration: map['sharePointConfiguration'] == null ? null : (AgentDataSourceDataSourceConfigurationSharePointConfiguration.fromMap((map['sharePointConfiguration'] as Map).cast<String, dynamic>())).input(),
+      confluenceConfiguration: map['confluenceConfiguration'] == null ? null : ((AgentDataSourceDataSourceConfigurationConfluenceConfiguration.fromMap((map['confluenceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      s3Configuration: map['s3Configuration'] == null ? null : ((AgentDataSourceDataSourceConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      salesforceConfiguration: map['salesforceConfiguration'] == null ? null : ((AgentDataSourceDataSourceConfigurationSalesforceConfiguration.fromMap((map['salesforceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      sharePointConfiguration: map['sharePointConfiguration'] == null ? null : ((AgentDataSourceDataSourceConfigurationSharePointConfiguration.fromMap((map['sharePointConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
-      webConfiguration: map['webConfiguration'] == null ? null : (AgentDataSourceDataSourceConfigurationWebConfiguration.fromMap((map['webConfiguration'] as Map).cast<String, dynamic>())).input(),
+      webConfiguration: map['webConfiguration'] == null ? null : ((AgentDataSourceDataSourceConfigurationWebConfiguration.fromMap((map['webConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

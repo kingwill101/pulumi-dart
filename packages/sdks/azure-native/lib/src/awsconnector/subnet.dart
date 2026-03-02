@@ -32,9 +32,9 @@ class Subnet {
 
   factory Subnet.fromMap(Map<String, dynamic> map) {
     return Subnet(
-      subnetAvailabilityZone: map['subnetAvailabilityZone'] == null ? null : (AvailabilityZone.fromMap((map['subnetAvailabilityZone'] as Map).cast<String, dynamic>())).input(),
-      subnetIdentifier: map['subnetIdentifier'] == null ? null : (map['subnetIdentifier'] as String).input(),
-      subnetStatus: map['subnetStatus'] == null ? null : (map['subnetStatus'] as String).input(),
+      subnetAvailabilityZone: map['subnetAvailabilityZone'] == null ? null : (AvailabilityZone.fromMap((map['subnetAvailabilityZone']! as Map).cast<String, dynamic>())).input(),
+      subnetIdentifier: map['subnetIdentifier'] == null ? null : (map['subnetIdentifier']! as String).input(),
+      subnetStatus: map['subnetStatus'] == null ? null : (map['subnetStatus']! as String).input(),
     );
   }
 }

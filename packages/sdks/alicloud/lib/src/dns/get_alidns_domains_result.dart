@@ -99,24 +99,24 @@ class GetAlidnsDomainsResult {
 
   factory GetAlidnsDomainsResult.fromMap(Map<String, dynamic> map) {
     return GetAlidnsDomainsResult(
-      aliDomain: map['aliDomain'] == null ? null : map['aliDomain'] as bool,
-      domainNameRegex: map['domainNameRegex'] == null ? null : map['domainNameRegex'] as String,
+      aliDomain: map['aliDomain'] == null ? null : map['aliDomain']! as bool,
+      domainNameRegex: map['domainNameRegex'] == null ? null : map['domainNameRegex']! as String,
       domains: pulumi.Input.decodeList<GetAlidnsDomainsDomain>(map['domains'], (value) => GetAlidnsDomainsDomain.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
-      groupId: map['groupId'] == null ? null : map['groupId'] as String,
-      groupNameRegex: map['groupNameRegex'] == null ? null : map['groupNameRegex'] as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      groupId: map['groupId'] == null ? null : map['groupId']! as String,
+      groupNameRegex: map['groupNameRegex'] == null ? null : map['groupNameRegex']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      keyWord: map['keyWord'] == null ? null : map['keyWord'] as String,
-      lang: map['lang'] == null ? null : map['lang'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
+      keyWord: map['keyWord'] == null ? null : map['keyWord']! as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      searchMode: map['searchMode'] == null ? null : map['searchMode'] as String,
-      starmark: map['starmark'] == null ? null : map['starmark'] as bool,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      versionCode: map['versionCode'] == null ? null : map['versionCode'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      searchMode: map['searchMode'] == null ? null : map['searchMode']! as String,
+      starmark: map['starmark'] == null ? null : map['starmark']! as bool,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      versionCode: map['versionCode'] == null ? null : map['versionCode']! as String,
     );
   }
 }

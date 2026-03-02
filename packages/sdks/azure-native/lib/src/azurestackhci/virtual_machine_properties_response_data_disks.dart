@@ -20,7 +20,7 @@ class VirtualMachinePropertiesResponseDataDisks {
 
   factory VirtualMachinePropertiesResponseDataDisks.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesResponseDataDisks(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

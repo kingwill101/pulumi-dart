@@ -30,9 +30,9 @@ class ComputeEnvironmentComputeResourcesEc2Configuration {
 
   factory ComputeEnvironmentComputeResourcesEc2Configuration.fromMap(Map<String, dynamic> map) {
     return ComputeEnvironmentComputeResourcesEc2Configuration(
-      imageIdOverride: map['imageIdOverride'] == null ? null : (map['imageIdOverride'] as String).input(),
-      imageKubernetesVersion: map['imageKubernetesVersion'] == null ? null : (map['imageKubernetesVersion'] as String).input(),
-      imageType: map['imageType'] == null ? null : (map['imageType'] as String).input(),
+      imageIdOverride: map['imageIdOverride'] == null ? null : ((map['imageIdOverride'] as String).input()).input(),
+      imageKubernetesVersion: map['imageKubernetesVersion'] == null ? null : ((map['imageKubernetesVersion'] as String).input()).input(),
+      imageType: map['imageType'] == null ? null : ((map['imageType'] as String).input()).input(),
     );
   }
 }

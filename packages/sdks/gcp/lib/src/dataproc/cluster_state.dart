@@ -74,15 +74,15 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      clusterConfig: map['clusterConfig'] == null ? null : (ClusterClusterConfig.fromMap((map['clusterConfig'] as Map).cast<String, dynamic>())).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      gracefulDecommissionTimeout: map['gracefulDecommissionTimeout'] == null ? null : (map['gracefulDecommissionTimeout'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      virtualClusterConfig: map['virtualClusterConfig'] == null ? null : (ClusterVirtualClusterConfig.fromMap((map['virtualClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      clusterConfig: map['clusterConfig'] == null ? null : (ClusterClusterConfig.fromMap((map['clusterConfig']! as Map).cast<String, dynamic>())).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      gracefulDecommissionTimeout: map['gracefulDecommissionTimeout'] == null ? null : (map['gracefulDecommissionTimeout']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      virtualClusterConfig: map['virtualClusterConfig'] == null ? null : (ClusterVirtualClusterConfig.fromMap((map['virtualClusterConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

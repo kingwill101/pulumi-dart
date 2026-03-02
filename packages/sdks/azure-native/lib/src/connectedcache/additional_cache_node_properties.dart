@@ -99,22 +99,22 @@ class AdditionalCacheNodeProperties {
 
   factory AdditionalCacheNodeProperties.fromMap(Map<String, dynamic> map) {
     return AdditionalCacheNodeProperties(
-      autoUpdateVersion: map['autoUpdateVersion'] == null ? null : (map['autoUpdateVersion'] as String).input(),
-      bgpConfiguration: map['bgpConfiguration'] == null ? null : (BgpConfiguration.fromMap((map['bgpConfiguration'] as Map).cast<String, dynamic>())).input(),
-      cacheNodePropertiesDetailsIssuesList: map['cacheNodePropertiesDetailsIssuesList'] == null ? null : ((map['cacheNodePropertiesDetailsIssuesList'] as List).cast<String>()).input(),
-      driveConfiguration: map['driveConfiguration'] == null ? null : (pulumi.Input.decodeList<CacheNodeDriveConfiguration>(map['driveConfiguration'], (value) => CacheNodeDriveConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isProxyRequired: map['isProxyRequired'] == null ? null : (map['isProxyRequired'] as String).input(),
-      optionalProperty1: map['optionalProperty1'] == null ? null : (map['optionalProperty1'] as String).input(),
-      optionalProperty2: map['optionalProperty2'] == null ? null : (map['optionalProperty2'] as String).input(),
-      optionalProperty3: map['optionalProperty3'] == null ? null : (map['optionalProperty3'] as String).input(),
-      optionalProperty4: map['optionalProperty4'] == null ? null : (map['optionalProperty4'] as String).input(),
-      optionalProperty5: map['optionalProperty5'] == null ? null : (map['optionalProperty5'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      proxyUrl: map['proxyUrl'] == null ? null : (map['proxyUrl'] as String).input(),
-      proxyUrlConfiguration: map['proxyUrlConfiguration'] == null ? null : (ProxyUrlConfiguration.fromMap((map['proxyUrlConfiguration'] as Map).cast<String, dynamic>())).input(),
-      updateCycleType: map['updateCycleType'] == null ? null : (map['updateCycleType'] as String).input(),
-      updateInfoDetails: map['updateInfoDetails'] == null ? null : (map['updateInfoDetails'] as String).input(),
-      updateRequestedDateTime: map['updateRequestedDateTime'] == null ? null : (map['updateRequestedDateTime'] as String).input(),
+      autoUpdateVersion: map['autoUpdateVersion'] == null ? null : (map['autoUpdateVersion']! as String).input(),
+      bgpConfiguration: map['bgpConfiguration'] == null ? null : (BgpConfiguration.fromMap((map['bgpConfiguration']! as Map).cast<String, dynamic>())).input(),
+      cacheNodePropertiesDetailsIssuesList: map['cacheNodePropertiesDetailsIssuesList'] == null ? null : ((map['cacheNodePropertiesDetailsIssuesList']! as List).cast<String>()).input(),
+      driveConfiguration: map['driveConfiguration'] == null ? null : (pulumi.Input.decodeList<CacheNodeDriveConfiguration>(map['driveConfiguration']!, (value) => CacheNodeDriveConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isProxyRequired: map['isProxyRequired'] == null ? null : (map['isProxyRequired']! as String).input(),
+      optionalProperty1: map['optionalProperty1'] == null ? null : (map['optionalProperty1']! as String).input(),
+      optionalProperty2: map['optionalProperty2'] == null ? null : (map['optionalProperty2']! as String).input(),
+      optionalProperty3: map['optionalProperty3'] == null ? null : (map['optionalProperty3']! as String).input(),
+      optionalProperty4: map['optionalProperty4'] == null ? null : (map['optionalProperty4']! as String).input(),
+      optionalProperty5: map['optionalProperty5'] == null ? null : (map['optionalProperty5']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      proxyUrl: map['proxyUrl'] == null ? null : (map['proxyUrl']! as String).input(),
+      proxyUrlConfiguration: map['proxyUrlConfiguration'] == null ? null : (ProxyUrlConfiguration.fromMap((map['proxyUrlConfiguration']! as Map).cast<String, dynamic>())).input(),
+      updateCycleType: map['updateCycleType'] == null ? null : (map['updateCycleType']! as String).input(),
+      updateInfoDetails: map['updateInfoDetails'] == null ? null : (map['updateInfoDetails']! as String).input(),
+      updateRequestedDateTime: map['updateRequestedDateTime'] == null ? null : (map['updateRequestedDateTime']! as String).input(),
     );
   }
 }

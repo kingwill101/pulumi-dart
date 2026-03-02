@@ -32,9 +32,9 @@ class HiveTableOptions {
 
   factory HiveTableOptions.fromMap(Map<String, dynamic> map) {
     return HiveTableOptions(
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      storageDescriptor: map['storageDescriptor'] == null ? null : (StorageDescriptor.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>())).input(),
-      tableType: map['tableType'] == null ? null : (map['tableType'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      storageDescriptor: map['storageDescriptor'] == null ? null : (StorageDescriptor.fromMap((map['storageDescriptor']! as Map).cast<String, dynamic>())).input(),
+      tableType: map['tableType'] == null ? null : (map['tableType']! as String).input(),
     );
   }
 }

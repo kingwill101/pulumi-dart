@@ -37,10 +37,10 @@ class MaintenanceWindowSqladminV1beta4 {
 
   factory MaintenanceWindowSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowSqladminV1beta4(
-      day: map['day'] == null ? null : (map['day'] as int).input(),
-      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      updateTrack: map['updateTrack'] == null ? null : (MaintenanceWindowUpdateTrackSqladminV1beta4.fromValue(map['updateTrack'] as String)).input(),
+      day: map['day'] == null ? null : (map['day']! as int).input(),
+      hour: map['hour'] == null ? null : (map['hour']! as int).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      updateTrack: map['updateTrack'] == null ? null : (MaintenanceWindowUpdateTrackSqladminV1beta4.fromValue(map['updateTrack']! as String)).input(),
     );
   }
 }

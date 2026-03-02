@@ -55,12 +55,12 @@ class VpcEndpointAssociationArgs {
 
   factory VpcEndpointAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointAssociationArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       firewallArn: (map['firewallArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetMapping: (VpcEndpointAssociationSubnetMapping.fromMap((map['subnetMapping'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (VpcEndpointAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subnetMapping: (VpcEndpointAssociationSubnetMapping.fromMap((map['subnetMapping']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((VpcEndpointAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

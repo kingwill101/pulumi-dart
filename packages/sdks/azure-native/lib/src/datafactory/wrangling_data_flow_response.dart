@@ -54,12 +54,12 @@ class WranglingDataFlowResponse {
 
   factory WranglingDataFlowResponse.fromMap(Map<String, dynamic> map) {
     return WranglingDataFlowResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      documentLocale: map['documentLocale'] == null ? null : (map['documentLocale'] as String).input(),
-      folder: map['folder'] == null ? null : (DataFlowResponseFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<PowerQuerySourceResponse>(map['sources'], (value) => PowerQuerySourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      documentLocale: map['documentLocale'] == null ? null : (map['documentLocale']! as String).input(),
+      folder: map['folder'] == null ? null : (DataFlowResponseFolder.fromMap((map['folder']! as Map).cast<String, dynamic>())).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<PowerQuerySourceResponse>(map['sources']!, (value) => PowerQuerySourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

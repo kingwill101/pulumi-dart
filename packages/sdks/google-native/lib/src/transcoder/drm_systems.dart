@@ -36,10 +36,10 @@ class DrmSystems {
 
   factory DrmSystems.fromMap(Map<String, dynamic> map) {
     return DrmSystems(
-      clearkey: map['clearkey'] == null ? null : ((map['clearkey'] as Map).cast<String, dynamic>()).input(),
-      fairplay: map['fairplay'] == null ? null : ((map['fairplay'] as Map).cast<String, dynamic>()).input(),
-      playready: map['playready'] == null ? null : ((map['playready'] as Map).cast<String, dynamic>()).input(),
-      widevine: map['widevine'] == null ? null : ((map['widevine'] as Map).cast<String, dynamic>()).input(),
+      clearkey: map['clearkey'] == null ? null : ((map['clearkey']! as Map).cast<String, dynamic>()).input(),
+      fairplay: map['fairplay'] == null ? null : ((map['fairplay']! as Map).cast<String, dynamic>()).input(),
+      playready: map['playready'] == null ? null : ((map['playready']! as Map).cast<String, dynamic>()).input(),
+      widevine: map['widevine'] == null ? null : ((map['widevine']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

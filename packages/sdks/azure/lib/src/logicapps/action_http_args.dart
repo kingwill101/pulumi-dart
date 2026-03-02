@@ -62,13 +62,13 @@ class ActionHttpArgs {
 
   factory ActionHttpArgs.fromMap(Map<String, dynamic> map) {
     return ActionHttpArgs(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
       logicAppId: (map['logicAppId'] as String).input(),
       method: (map['method'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      queries: map['queries'] == null ? null : ((map['queries'] as Map).cast<String, String>()).input(),
-      runAfters: map['runAfters'] == null ? null : (pulumi.Input.decodeList<ActionHttpRunAfter>(map['runAfters'], (value) => ActionHttpRunAfter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      queries: map['queries'] == null ? null : ((map['queries']! as Map).cast<String, String>()).input(),
+      runAfters: map['runAfters'] == null ? null : (pulumi.Input.decodeList<ActionHttpRunAfter>(map['runAfters']!, (value) => ActionHttpRunAfter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       uri: (map['uri'] as String).input(),
     );
   }

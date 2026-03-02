@@ -44,10 +44,10 @@ class ConfigurationArgs {
 
   factory ConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kafkaVersions: map['kafkaVersions'] == null ? null : ((map['kafkaVersions'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kafkaVersions: map['kafkaVersions'] == null ? null : (((map['kafkaVersions'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serverProperties: (map['serverProperties'] as String).input(),
     );
   }

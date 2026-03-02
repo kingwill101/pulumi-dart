@@ -68,14 +68,14 @@ class TriggerArgs {
 
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      configMns: map['configMns'] == null ? null : (map['configMns'] as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      configMns: map['configMns'] == null ? null : (map['configMns']! as String).input(),
       function: (map['function'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
       service: (map['service'] as String).input(),
-      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
+      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

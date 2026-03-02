@@ -26,8 +26,8 @@ class ListIpamPoolAssociatedResourcesResult {
 
   factory ListIpamPoolAssociatedResourcesResult.fromMap(Map<String, dynamic> map) {
     return ListIpamPoolAssociatedResourcesResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<PoolAssociationResponse>(map['value'], (value) => PoolAssociationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<PoolAssociationResponse>(map['value']!, (value) => PoolAssociationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

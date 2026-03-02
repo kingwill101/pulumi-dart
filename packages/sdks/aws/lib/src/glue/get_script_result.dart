@@ -49,8 +49,8 @@ class GetScriptResult {
 
   factory GetScriptResult.fromMap(Map<String, dynamic> map) {
     return GetScriptResult(
-      dagEdges: pulumi.Input.decodeList<GetScriptDagEdge>(map['dagEdges'], (value) => GetScriptDagEdge.fromMap((value as Map).cast<String, dynamic>())),
-      dagNodes: pulumi.Input.decodeList<GetScriptDagNode>(map['dagNodes'], (value) => GetScriptDagNode.fromMap((value as Map).cast<String, dynamic>())),
+      dagEdges: pulumi.Input.decodeList<GetScriptDagEdge>(map['dagEdges']!, (value) => GetScriptDagEdge.fromMap((value as Map).cast<String, dynamic>())),
+      dagNodes: pulumi.Input.decodeList<GetScriptDagNode>(map['dagNodes']!, (value) => GetScriptDagNode.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       language: map['language'] == null ? null : map['language'] as String,
       pythonScript: map['pythonScript'] as String,

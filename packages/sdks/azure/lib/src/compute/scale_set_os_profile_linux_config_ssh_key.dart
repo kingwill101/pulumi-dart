@@ -31,7 +31,7 @@ class ScaleSetOsProfileLinuxConfigSshKey {
 
   factory ScaleSetOsProfileLinuxConfigSshKey.fromMap(Map<String, dynamic> map) {
     return ScaleSetOsProfileLinuxConfigSshKey(
-      keyData: map['keyData'] == null ? null : (map['keyData'] as String).input(),
+      keyData: map['keyData'] == null ? null : (map['keyData']! as String).input(),
       path: (map['path'] as String).input(),
     );
   }

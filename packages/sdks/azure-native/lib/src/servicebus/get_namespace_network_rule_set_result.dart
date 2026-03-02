@@ -75,16 +75,16 @@ class GetNamespaceNetworkRuleSetResult {
   factory GetNamespaceNetworkRuleSetResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceNetworkRuleSetResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      defaultAction: map['defaultAction'] == null ? null : map['defaultAction'] as String,
+      defaultAction: map['defaultAction'] == null ? null : map['defaultAction']! as String,
       id: map['id'] as String,
-      ipRules: map['ipRules'] == null ? null : pulumi.Input.decodeList<NWRuleSetIpRulesResponse>(map['ipRules'], (value) => NWRuleSetIpRulesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      ipRules: map['ipRules'] == null ? null : pulumi.Input.decodeList<NWRuleSetIpRulesResponse>(map['ipRules']!, (value) => NWRuleSetIpRulesResponse.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess'] as String,
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : map['publicNetworkAccess']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      trustedServiceAccessEnabled: map['trustedServiceAccessEnabled'] == null ? null : map['trustedServiceAccessEnabled'] as bool,
+      trustedServiceAccessEnabled: map['trustedServiceAccessEnabled'] == null ? null : map['trustedServiceAccessEnabled']! as bool,
       type: map['type'] as String,
-      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : pulumi.Input.decodeList<NWRuleSetVirtualNetworkRulesResponse>(map['virtualNetworkRules'], (value) => NWRuleSetVirtualNetworkRulesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : pulumi.Input.decodeList<NWRuleSetVirtualNetworkRulesResponse>(map['virtualNetworkRules']!, (value) => NWRuleSetVirtualNetworkRulesResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

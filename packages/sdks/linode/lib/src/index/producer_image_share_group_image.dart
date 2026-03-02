@@ -32,9 +32,9 @@ class ProducerImageShareGroupImage {
 
   factory ProducerImageShareGroupImage.fromMap(Map<String, dynamic> map) {
     return ProducerImageShareGroupImage(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       id: (map['id'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
     );
   }
 }

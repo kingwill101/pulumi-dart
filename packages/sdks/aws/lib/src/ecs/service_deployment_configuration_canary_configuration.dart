@@ -25,8 +25,8 @@ class ServiceDeploymentConfigurationCanaryConfiguration {
 
   factory ServiceDeploymentConfigurationCanaryConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceDeploymentConfigurationCanaryConfiguration(
-      canaryBakeTimeInMinutes: map['canaryBakeTimeInMinutes'] == null ? null : (map['canaryBakeTimeInMinutes'] as String).input(),
-      canaryPercent: map['canaryPercent'] == null ? null : (map['canaryPercent'] as double).input(),
+      canaryBakeTimeInMinutes: map['canaryBakeTimeInMinutes'] == null ? null : ((map['canaryBakeTimeInMinutes'] as String).input()).input(),
+      canaryPercent: map['canaryPercent'] == null ? null : ((map['canaryPercent'] as double).input()).input(),
     );
   }
 }

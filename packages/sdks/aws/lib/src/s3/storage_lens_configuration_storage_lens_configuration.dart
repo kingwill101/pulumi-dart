@@ -50,12 +50,12 @@ class StorageLensConfigurationStorageLensConfiguration {
 
   factory StorageLensConfigurationStorageLensConfiguration.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfiguration(
-      accountLevel: (StorageLensConfigurationStorageLensConfigurationAccountLevel.fromMap((map['accountLevel'] as Map).cast<String, dynamic>())).input(),
-      awsOrg: map['awsOrg'] == null ? null : (StorageLensConfigurationStorageLensConfigurationAwsOrg.fromMap((map['awsOrg'] as Map).cast<String, dynamic>())).input(),
-      dataExport: map['dataExport'] == null ? null : (StorageLensConfigurationStorageLensConfigurationDataExport.fromMap((map['dataExport'] as Map).cast<String, dynamic>())).input(),
+      accountLevel: (StorageLensConfigurationStorageLensConfigurationAccountLevel.fromMap((map['accountLevel']! as Map).cast<String, dynamic>())).input(),
+      awsOrg: map['awsOrg'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationAwsOrg.fromMap((map['awsOrg']! as Map).cast<String, dynamic>())).input()).input(),
+      dataExport: map['dataExport'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationDataExport.fromMap((map['dataExport']! as Map).cast<String, dynamic>())).input()).input(),
       enabled: (map['enabled'] as bool).input(),
-      exclude: map['exclude'] == null ? null : (StorageLensConfigurationStorageLensConfigurationExclude.fromMap((map['exclude'] as Map).cast<String, dynamic>())).input(),
-      include: map['include'] == null ? null : (StorageLensConfigurationStorageLensConfigurationInclude.fromMap((map['include'] as Map).cast<String, dynamic>())).input(),
+      exclude: map['exclude'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationExclude.fromMap((map['exclude']! as Map).cast<String, dynamic>())).input()).input(),
+      include: map['include'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationInclude.fromMap((map['include']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

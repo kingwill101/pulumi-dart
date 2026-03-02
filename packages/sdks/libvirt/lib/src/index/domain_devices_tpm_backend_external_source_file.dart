@@ -31,9 +31,9 @@ class DomainDevicesTpmBackendExternalSourceFile {
 
   factory DomainDevicesTpmBackendExternalSourceFile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendExternalSourceFile(
-      append: map['append'] == null ? null : (map['append'] as String).input(),
+      append: map['append'] == null ? null : (map['append']! as String).input(),
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesTpmBackendExternalSourceFileSecLabel>(map['secLabels'], (value) => DomainDevicesTpmBackendExternalSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesTpmBackendExternalSourceFileSecLabel>(map['secLabels']!, (value) => DomainDevicesTpmBackendExternalSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

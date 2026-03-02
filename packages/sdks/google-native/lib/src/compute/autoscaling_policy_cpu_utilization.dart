@@ -27,8 +27,8 @@ class AutoscalingPolicyCpuUtilization {
 
   factory AutoscalingPolicyCpuUtilization.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyCpuUtilization(
-      predictiveMethod: map['predictiveMethod'] == null ? null : (AutoscalingPolicyCpuUtilizationPredictiveMethod.fromValue(map['predictiveMethod'] as String)).input(),
-      utilizationTarget: map['utilizationTarget'] == null ? null : (map['utilizationTarget'] as double).input(),
+      predictiveMethod: map['predictiveMethod'] == null ? null : (AutoscalingPolicyCpuUtilizationPredictiveMethod.fromValue(map['predictiveMethod']! as String)).input(),
+      utilizationTarget: map['utilizationTarget'] == null ? null : (map['utilizationTarget']! as double).input(),
     );
   }
 }

@@ -24,8 +24,8 @@ class OriginRequestPolicyHeadersConfig {
 
   factory OriginRequestPolicyHeadersConfig.fromMap(Map<String, dynamic> map) {
     return OriginRequestPolicyHeadersConfig(
-      headerBehavior: map['headerBehavior'] == null ? null : (map['headerBehavior'] as String).input(),
-      headers: map['headers'] == null ? null : (OriginRequestPolicyHeadersConfigHeaders.fromMap((map['headers'] as Map).cast<String, dynamic>())).input(),
+      headerBehavior: map['headerBehavior'] == null ? null : ((map['headerBehavior'] as String).input()).input(),
+      headers: map['headers'] == null ? null : ((OriginRequestPolicyHeadersConfigHeaders.fromMap((map['headers']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

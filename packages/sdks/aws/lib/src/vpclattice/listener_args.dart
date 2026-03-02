@@ -61,14 +61,14 @@ class ListenerArgs {
 
   factory ListenerArgs.fromMap(Map<String, dynamic> map) {
     return ListenerArgs(
-      defaultAction: (ListenerDefaultAction.fromMap((map['defaultAction'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      defaultAction: (ListenerDefaultAction.fromMap((map['defaultAction']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
       protocol: (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceArn: map['serviceArn'] == null ? null : (map['serviceArn'] as String).input(),
-      serviceIdentifier: map['serviceIdentifier'] == null ? null : (map['serviceIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceArn: map['serviceArn'] == null ? null : ((map['serviceArn'] as String).input()).input(),
+      serviceIdentifier: map['serviceIdentifier'] == null ? null : ((map['serviceIdentifier'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

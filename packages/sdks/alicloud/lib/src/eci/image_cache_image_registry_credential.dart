@@ -30,9 +30,9 @@ class ImageCacheImageRegistryCredential {
 
   factory ImageCacheImageRegistryCredential.fromMap(Map<String, dynamic> map) {
     return ImageCacheImageRegistryCredential(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

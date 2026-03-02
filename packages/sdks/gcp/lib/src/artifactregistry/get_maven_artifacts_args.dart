@@ -35,7 +35,7 @@ class GetMavenArtifactsArgs {
   factory GetMavenArtifactsArgs.fromMap(Map<String, dynamic> map) {
     return GetMavenArtifactsArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
     );
   }

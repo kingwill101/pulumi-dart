@@ -27,8 +27,8 @@ class InterconnectApplicationAwareInterconnectShapeAveragePercentage {
 
   factory InterconnectApplicationAwareInterconnectShapeAveragePercentage.fromMap(Map<String, dynamic> map) {
     return InterconnectApplicationAwareInterconnectShapeAveragePercentage(
-      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
-      trafficClass: map['trafficClass'] == null ? null : (map['trafficClass'] as String).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as int).input(),
+      trafficClass: map['trafficClass'] == null ? null : (map['trafficClass']! as String).input(),
     );
   }
 }

@@ -82,22 +82,22 @@ class GetInstancesResult {
 
   factory GetInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetInstancesResult(
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
-      dbInstanceCategories: map['dbInstanceCategories'] == null ? null : map['dbInstanceCategories'] as String,
-      dbInstanceModes: map['dbInstanceModes'] == null ? null : map['dbInstanceModes'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone']! as String,
+      dbInstanceCategories: map['dbInstanceCategories'] == null ? null : map['dbInstanceCategories']! as String,
+      dbInstanceModes: map['dbInstanceModes'] == null ? null : map['dbInstanceModes']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceNetworkType: map['instanceNetworkType'] == null ? null : map['instanceNetworkType'] as String,
+      instanceNetworkType: map['instanceNetworkType'] == null ? null : map['instanceNetworkType']! as String,
       instances: pulumi.Input.decodeList<GetInstancesInstance>(map['instances'], (value) => GetInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      vswitchId: map['vswitchId'] == null ? null : map['vswitchId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      vswitchId: map['vswitchId'] == null ? null : map['vswitchId']! as String,
     );
   }
 }

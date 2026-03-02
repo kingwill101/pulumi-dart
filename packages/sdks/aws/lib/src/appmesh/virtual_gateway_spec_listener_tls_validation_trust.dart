@@ -27,8 +27,8 @@ class VirtualGatewaySpecListenerTlsValidationTrust {
 
   factory VirtualGatewaySpecListenerTlsValidationTrust.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerTlsValidationTrust(
-      file: map['file'] == null ? null : (VirtualGatewaySpecListenerTlsValidationTrustFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
-      sds: map['sds'] == null ? null : (VirtualGatewaySpecListenerTlsValidationTrustSds.fromMap((map['sds'] as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : ((VirtualGatewaySpecListenerTlsValidationTrustFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input()).input(),
+      sds: map['sds'] == null ? null : ((VirtualGatewaySpecListenerTlsValidationTrustSds.fromMap((map['sds']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

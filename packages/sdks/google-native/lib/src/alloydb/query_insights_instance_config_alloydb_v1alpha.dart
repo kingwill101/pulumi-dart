@@ -36,10 +36,10 @@ class QueryInsightsInstanceConfigAlloydbV1alpha {
 
   factory QueryInsightsInstanceConfigAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return QueryInsightsInstanceConfigAlloydbV1alpha(
-      queryPlansPerMinute: map['queryPlansPerMinute'] == null ? null : (map['queryPlansPerMinute'] as int).input(),
-      queryStringLength: map['queryStringLength'] == null ? null : (map['queryStringLength'] as int).input(),
-      recordApplicationTags: map['recordApplicationTags'] == null ? null : (map['recordApplicationTags'] as bool).input(),
-      recordClientAddress: map['recordClientAddress'] == null ? null : (map['recordClientAddress'] as bool).input(),
+      queryPlansPerMinute: map['queryPlansPerMinute'] == null ? null : (map['queryPlansPerMinute']! as int).input(),
+      queryStringLength: map['queryStringLength'] == null ? null : (map['queryStringLength']! as int).input(),
+      recordApplicationTags: map['recordApplicationTags'] == null ? null : (map['recordApplicationTags']! as bool).input(),
+      recordClientAddress: map['recordClientAddress'] == null ? null : (map['recordClientAddress']! as bool).input(),
     );
   }
 }

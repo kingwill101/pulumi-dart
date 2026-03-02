@@ -60,13 +60,13 @@ class AutoSnapshotPolicyState {
 
   factory AutoSnapshotPolicyState.fromMap(Map<String, dynamic> map) {
     return AutoSnapshotPolicyState(
-      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : (map['autoSnapshotPolicyName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType'] as String).input(),
-      repeatWeekdays: map['repeatWeekdays'] == null ? null : ((map['repeatWeekdays'] as List).cast<String>()).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      timePoints: map['timePoints'] == null ? null : ((map['timePoints'] as List).cast<String>()).input(),
+      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : (map['autoSnapshotPolicyName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType']! as String).input(),
+      repeatWeekdays: map['repeatWeekdays'] == null ? null : ((map['repeatWeekdays']! as List).cast<String>()).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      timePoints: map['timePoints'] == null ? null : ((map['timePoints']! as List).cast<String>()).input(),
     );
   }
 }

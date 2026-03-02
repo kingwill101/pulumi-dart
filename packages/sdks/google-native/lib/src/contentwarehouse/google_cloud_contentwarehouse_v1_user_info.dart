@@ -26,8 +26,8 @@ class GoogleCloudContentwarehouseV1UserInfo {
 
   factory GoogleCloudContentwarehouseV1UserInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1UserInfo(
-      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

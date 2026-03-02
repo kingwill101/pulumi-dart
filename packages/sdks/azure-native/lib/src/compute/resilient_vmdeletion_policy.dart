@@ -21,7 +21,7 @@ class ResilientVMDeletionPolicy {
 
   factory ResilientVMDeletionPolicy.fromMap(Map<String, dynamic> map) {
     return ResilientVMDeletionPolicy(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

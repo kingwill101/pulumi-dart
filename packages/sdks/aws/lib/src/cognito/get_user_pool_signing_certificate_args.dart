@@ -29,7 +29,7 @@ class GetUserPoolSigningCertificateArgs {
 
   factory GetUserPoolSigningCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetUserPoolSigningCertificateArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       userPoolId: (map['userPoolId'] as String).input(),
     );
   }

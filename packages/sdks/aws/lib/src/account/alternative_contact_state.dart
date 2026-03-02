@@ -46,12 +46,12 @@ class AlternativeContactState {
 
   factory AlternativeContactState.fromMap(Map<String, dynamic> map) {
     return AlternativeContactState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      alternateContactType: map['alternateContactType'] == null ? null : (map['alternateContactType'] as String).input(),
-      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      alternateContactType: map['alternateContactType'] == null ? null : ((map['alternateContactType'] as String).input()).input(),
+      emailAddress: map['emailAddress'] == null ? null : ((map['emailAddress'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : ((map['phoneNumber'] as String).input()).input(),
+      title: map['title'] == null ? null : ((map['title'] as String).input()).input(),
     );
   }
 }

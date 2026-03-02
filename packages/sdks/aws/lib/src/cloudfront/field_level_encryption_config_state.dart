@@ -48,12 +48,12 @@ class FieldLevelEncryptionConfigState {
 
   factory FieldLevelEncryptionConfigState.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionConfigState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      callerReference: map['callerReference'] == null ? null : (map['callerReference'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      contentTypeProfileConfig: map['contentTypeProfileConfig'] == null ? null : (FieldLevelEncryptionConfigContentTypeProfileConfig.fromMap((map['contentTypeProfileConfig'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      queryArgProfileConfig: map['queryArgProfileConfig'] == null ? null : (FieldLevelEncryptionConfigQueryArgProfileConfig.fromMap((map['queryArgProfileConfig'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      callerReference: map['callerReference'] == null ? null : ((map['callerReference'] as String).input()).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      contentTypeProfileConfig: map['contentTypeProfileConfig'] == null ? null : ((FieldLevelEncryptionConfigContentTypeProfileConfig.fromMap((map['contentTypeProfileConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      queryArgProfileConfig: map['queryArgProfileConfig'] == null ? null : ((FieldLevelEncryptionConfigQueryArgProfileConfig.fromMap((map['queryArgProfileConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

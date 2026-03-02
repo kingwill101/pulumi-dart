@@ -44,9 +44,9 @@ class AddressPoolAddress {
     return AddressPoolAddress(
       address: (map['address'] as String).input(),
       attributeInfo: (map['attributeInfo'] as String).input(),
-      lbaWeight: map['lbaWeight'] == null ? null : (map['lbaWeight'] as int).input(),
+      lbaWeight: map['lbaWeight'] == null ? null : (map['lbaWeight']! as int).input(),
       mode: (map['mode'] as String).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
     );
   }
 }

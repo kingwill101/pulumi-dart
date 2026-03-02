@@ -33,8 +33,8 @@ class QuotaPlanQuotaParameter {
   factory QuotaPlanQuotaParameter.fromMap(Map<String, dynamic> map) {
     return QuotaPlanQuotaParameter(
       elasticReservedCu: (map['elasticReservedCu'] as int).input(),
-      maxCu: map['maxCu'] == null ? null : (map['maxCu'] as int).input(),
-      minCu: map['minCu'] == null ? null : (map['minCu'] as int).input(),
+      maxCu: map['maxCu'] == null ? null : (map['maxCu']! as int).input(),
+      minCu: map['minCu'] == null ? null : (map['minCu']! as int).input(),
     );
   }
 }

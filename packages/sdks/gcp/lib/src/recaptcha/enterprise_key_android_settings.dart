@@ -25,8 +25,8 @@ class EnterpriseKeyAndroidSettings {
 
   factory EnterpriseKeyAndroidSettings.fromMap(Map<String, dynamic> map) {
     return EnterpriseKeyAndroidSettings(
-      allowAllPackageNames: map['allowAllPackageNames'] == null ? null : (map['allowAllPackageNames'] as bool).input(),
-      allowedPackageNames: map['allowedPackageNames'] == null ? null : ((map['allowedPackageNames'] as List).cast<String>()).input(),
+      allowAllPackageNames: map['allowAllPackageNames'] == null ? null : (map['allowAllPackageNames']! as bool).input(),
+      allowedPackageNames: map['allowedPackageNames'] == null ? null : ((map['allowedPackageNames']! as List).cast<String>()).input(),
     );
   }
 }

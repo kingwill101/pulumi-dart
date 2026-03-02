@@ -61,14 +61,14 @@ class GetManagedInstanceLongTermRetentionPolicyResult {
   factory GetManagedInstanceLongTermRetentionPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetManagedInstanceLongTermRetentionPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      backupStorageAccessTier: map['backupStorageAccessTier'] == null ? null : map['backupStorageAccessTier'] as String,
+      backupStorageAccessTier: map['backupStorageAccessTier'] == null ? null : map['backupStorageAccessTier']! as String,
       id: map['id'] as String,
-      monthlyRetention: map['monthlyRetention'] == null ? null : map['monthlyRetention'] as String,
+      monthlyRetention: map['monthlyRetention'] == null ? null : map['monthlyRetention']! as String,
       name: map['name'] as String,
       type: map['type'] as String,
-      weekOfYear: map['weekOfYear'] == null ? null : map['weekOfYear'] as int,
-      weeklyRetention: map['weeklyRetention'] == null ? null : map['weeklyRetention'] as String,
-      yearlyRetention: map['yearlyRetention'] == null ? null : map['yearlyRetention'] as String,
+      weekOfYear: map['weekOfYear'] == null ? null : map['weekOfYear']! as int,
+      weeklyRetention: map['weeklyRetention'] == null ? null : map['weeklyRetention']! as String,
+      yearlyRetention: map['yearlyRetention'] == null ? null : map['yearlyRetention']! as String,
     );
   }
 }

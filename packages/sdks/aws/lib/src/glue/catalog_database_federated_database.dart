@@ -25,8 +25,8 @@ class CatalogDatabaseFederatedDatabase {
 
   factory CatalogDatabaseFederatedDatabase.fromMap(Map<String, dynamic> map) {
     return CatalogDatabaseFederatedDatabase(
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
-      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : ((map['connectionName'] as String).input()).input(),
+      identifier: map['identifier'] == null ? null : ((map['identifier'] as String).input()).input(),
     );
   }
 }

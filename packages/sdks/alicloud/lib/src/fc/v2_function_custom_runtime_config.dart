@@ -25,8 +25,8 @@ class V2FunctionCustomRuntimeConfig {
 
   factory V2FunctionCustomRuntimeConfig.fromMap(Map<String, dynamic> map) {
     return V2FunctionCustomRuntimeConfig(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
     );
   }
 }

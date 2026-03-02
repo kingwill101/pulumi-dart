@@ -49,12 +49,12 @@ class GoogleCloudDatacatalogV1RoutineSpec {
 
   factory GoogleCloudDatacatalogV1RoutineSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1RoutineSpec(
-      bigqueryRoutineSpec: map['bigqueryRoutineSpec'] == null ? null : (GoogleCloudDatacatalogV1BigQueryRoutineSpec.fromMap((map['bigqueryRoutineSpec'] as Map).cast<String, dynamic>())).input(),
-      definitionBody: map['definitionBody'] == null ? null : (map['definitionBody'] as String).input(),
-      language: map['language'] == null ? null : (map['language'] as String).input(),
-      returnType: map['returnType'] == null ? null : (map['returnType'] as String).input(),
-      routineArguments: map['routineArguments'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1RoutineSpecArgument>(map['routineArguments'], (value) => GoogleCloudDatacatalogV1RoutineSpecArgument.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routineType: map['routineType'] == null ? null : (GoogleCloudDatacatalogV1RoutineSpecRoutineType.fromValue(map['routineType'] as String)).input(),
+      bigqueryRoutineSpec: map['bigqueryRoutineSpec'] == null ? null : (GoogleCloudDatacatalogV1BigQueryRoutineSpec.fromMap((map['bigqueryRoutineSpec']! as Map).cast<String, dynamic>())).input(),
+      definitionBody: map['definitionBody'] == null ? null : (map['definitionBody']! as String).input(),
+      language: map['language'] == null ? null : (map['language']! as String).input(),
+      returnType: map['returnType'] == null ? null : (map['returnType']! as String).input(),
+      routineArguments: map['routineArguments'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1RoutineSpecArgument>(map['routineArguments']!, (value) => GoogleCloudDatacatalogV1RoutineSpecArgument.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routineType: map['routineType'] == null ? null : (GoogleCloudDatacatalogV1RoutineSpecRoutineType.fromValue(map['routineType']! as String)).input(),
     );
   }
 }

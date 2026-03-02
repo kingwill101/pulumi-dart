@@ -33,9 +33,9 @@ class ContainerResourceSettingsResponse {
 
   factory ContainerResourceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ContainerResourceSettingsResponse(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
-      gpu: map['gpu'] == null ? null : (map['gpu'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as String).input(),
+      gpu: map['gpu'] == null ? null : (map['gpu']! as String).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class VirtualApplianceIPConfigurationResponse {
 
   factory VirtualApplianceIPConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceIPConfigurationResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (VirtualApplianceIPConfigurationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (VirtualApplianceIPConfigurationPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

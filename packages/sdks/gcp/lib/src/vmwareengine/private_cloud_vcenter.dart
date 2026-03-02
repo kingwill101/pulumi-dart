@@ -36,10 +36,10 @@ class PrivateCloudVcenter {
 
   factory PrivateCloudVcenter.fromMap(Map<String, dynamic> map) {
     return PrivateCloudVcenter(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

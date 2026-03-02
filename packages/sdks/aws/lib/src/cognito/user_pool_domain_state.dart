@@ -71,17 +71,17 @@ class UserPoolDomainState {
 
   factory UserPoolDomainState.fromMap(Map<String, dynamic> map) {
     return UserPoolDomainState(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
-      cloudfrontDistribution: map['cloudfrontDistribution'] == null ? null : (map['cloudfrontDistribution'] as String).input(),
-      cloudfrontDistributionArn: map['cloudfrontDistributionArn'] == null ? null : (map['cloudfrontDistributionArn'] as String).input(),
-      cloudfrontDistributionZoneId: map['cloudfrontDistributionZoneId'] == null ? null : (map['cloudfrontDistributionZoneId'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      managedLoginVersion: map['managedLoginVersion'] == null ? null : (map['managedLoginVersion'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket'] as String).input(),
-      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      certificateArn: map['certificateArn'] == null ? null : ((map['certificateArn'] as String).input()).input(),
+      cloudfrontDistribution: map['cloudfrontDistribution'] == null ? null : ((map['cloudfrontDistribution'] as String).input()).input(),
+      cloudfrontDistributionArn: map['cloudfrontDistributionArn'] == null ? null : ((map['cloudfrontDistributionArn'] as String).input()).input(),
+      cloudfrontDistributionZoneId: map['cloudfrontDistributionZoneId'] == null ? null : ((map['cloudfrontDistributionZoneId'] as String).input()).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
+      managedLoginVersion: map['managedLoginVersion'] == null ? null : ((map['managedLoginVersion'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3Bucket: map['s3Bucket'] == null ? null : ((map['s3Bucket'] as String).input()).input(),
+      userPoolId: map['userPoolId'] == null ? null : ((map['userPoolId'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

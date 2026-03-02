@@ -29,9 +29,9 @@ class ContainerGroupContainerSecurityContext {
 
   factory ContainerGroupContainerSecurityContext.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerSecurityContext(
-      capabilities: map['capabilities'] == null ? null : (pulumi.Input.decodeList<ContainerGroupContainerSecurityContextCapability>(map['capabilities'], (value) => ContainerGroupContainerSecurityContextCapability.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privileged: map['privileged'] == null ? null : (map['privileged'] as bool).input(),
-      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
+      capabilities: map['capabilities'] == null ? null : (pulumi.Input.decodeList<ContainerGroupContainerSecurityContextCapability>(map['capabilities']!, (value) => ContainerGroupContainerSecurityContextCapability.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privileged: map['privileged'] == null ? null : (map['privileged']! as bool).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser']! as int).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class AppHostingTrafficCurrentSplit {
 
   factory AppHostingTrafficCurrentSplit.fromMap(Map<String, dynamic> map) {
     return AppHostingTrafficCurrentSplit(
-      build: map['build'] == null ? null : (map['build'] as String).input(),
-      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
+      build: map['build'] == null ? null : (map['build']! as String).input(),
+      percent: map['percent'] == null ? null : (map['percent']! as int).input(),
     );
   }
 }

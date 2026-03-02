@@ -39,10 +39,10 @@ class ComponentLinkedStorageAccountArgs {
 
   factory ComponentLinkedStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return ComponentLinkedStorageAccountArgs(
-      linkedStorageAccount: map['linkedStorageAccount'] == null ? null : (map['linkedStorageAccount'] as String).input(),
+      linkedStorageAccount: map['linkedStorageAccount'] == null ? null : (map['linkedStorageAccount']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
     );
   }
 }

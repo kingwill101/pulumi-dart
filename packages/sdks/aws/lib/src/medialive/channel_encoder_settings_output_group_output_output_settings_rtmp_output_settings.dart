@@ -36,10 +36,10 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings {
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettings(
-      certificateMode: map['certificateMode'] == null ? null : (map['certificateMode'] as String).input(),
-      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : (map['connectionRetryInterval'] as int).input(),
-      destination: (ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      numRetries: map['numRetries'] == null ? null : (map['numRetries'] as int).input(),
+      certificateMode: map['certificateMode'] == null ? null : ((map['certificateMode'] as String).input()).input(),
+      connectionRetryInterval: map['connectionRetryInterval'] == null ? null : ((map['connectionRetryInterval'] as int).input()).input(),
+      destination: (ChannelEncoderSettingsOutputGroupOutputOutputSettingsRtmpOutputSettingsDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      numRetries: map['numRetries'] == null ? null : ((map['numRetries'] as int).input()).input(),
     );
   }
 }

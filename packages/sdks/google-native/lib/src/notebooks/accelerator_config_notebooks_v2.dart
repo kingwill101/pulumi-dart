@@ -27,8 +27,8 @@ class AcceleratorConfigNotebooksV2 {
 
   factory AcceleratorConfigNotebooksV2.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfigNotebooksV2(
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as String).input(),
-      type: map['type'] == null ? null : (AcceleratorConfigTypeNotebooksV2.fromValue(map['type'] as String)).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as String).input(),
+      type: map['type'] == null ? null : (AcceleratorConfigTypeNotebooksV2.fromValue(map['type']! as String)).input(),
     );
   }
 }

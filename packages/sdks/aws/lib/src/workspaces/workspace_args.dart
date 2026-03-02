@@ -67,13 +67,13 @@ class WorkspaceArgs {
     return WorkspaceArgs(
       bundleId: (map['bundleId'] as String).input(),
       directoryId: (map['directoryId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rootVolumeEncryptionEnabled: map['rootVolumeEncryptionEnabled'] == null ? null : (map['rootVolumeEncryptionEnabled'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rootVolumeEncryptionEnabled: map['rootVolumeEncryptionEnabled'] == null ? null : ((map['rootVolumeEncryptionEnabled'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       userName: (map['userName'] as String).input(),
-      userVolumeEncryptionEnabled: map['userVolumeEncryptionEnabled'] == null ? null : (map['userVolumeEncryptionEnabled'] as bool).input(),
-      volumeEncryptionKey: map['volumeEncryptionKey'] == null ? null : (map['volumeEncryptionKey'] as String).input(),
-      workspaceProperties: map['workspaceProperties'] == null ? null : (WorkspaceWorkspaceProperties.fromMap((map['workspaceProperties'] as Map).cast<String, dynamic>())).input(),
+      userVolumeEncryptionEnabled: map['userVolumeEncryptionEnabled'] == null ? null : ((map['userVolumeEncryptionEnabled'] as bool).input()).input(),
+      volumeEncryptionKey: map['volumeEncryptionKey'] == null ? null : ((map['volumeEncryptionKey'] as String).input()).input(),
+      workspaceProperties: map['workspaceProperties'] == null ? null : ((WorkspaceWorkspaceProperties.fromMap((map['workspaceProperties']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

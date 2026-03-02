@@ -44,12 +44,12 @@ class LifecyclePolicyPolicyDetailsScheduleCreateRule {
 
   factory LifecyclePolicyPolicyDetailsScheduleCreateRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleCreateRule(
-      cronExpression: map['cronExpression'] == null ? null : (map['cronExpression'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      intervalUnit: map['intervalUnit'] == null ? null : (map['intervalUnit'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      scripts: map['scripts'] == null ? null : (LifecyclePolicyPolicyDetailsScheduleCreateRuleScripts.fromMap((map['scripts'] as Map).cast<String, dynamic>())).input(),
-      times: map['times'] == null ? null : (map['times'] as String).input(),
+      cronExpression: map['cronExpression'] == null ? null : ((map['cronExpression'] as String).input()).input(),
+      interval: map['interval'] == null ? null : ((map['interval'] as int).input()).input(),
+      intervalUnit: map['intervalUnit'] == null ? null : ((map['intervalUnit'] as String).input()).input(),
+      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
+      scripts: map['scripts'] == null ? null : ((LifecyclePolicyPolicyDetailsScheduleCreateRuleScripts.fromMap((map['scripts']! as Map).cast<String, dynamic>())).input()).input(),
+      times: map['times'] == null ? null : ((map['times'] as String).input()).input(),
     );
   }
 }

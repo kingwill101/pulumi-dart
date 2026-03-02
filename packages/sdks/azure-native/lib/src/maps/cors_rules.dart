@@ -22,7 +22,7 @@ class CorsRules {
 
   factory CorsRules.fromMap(Map<String, dynamic> map) {
     return CorsRules(
-      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<CorsRule>(map['corsRules'], (value) => CorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<CorsRule>(map['corsRules']!, (value) => CorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

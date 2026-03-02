@@ -74,17 +74,17 @@ class RoutingRuleResponse {
 
   factory RoutingRuleResponse.fromMap(Map<String, dynamic> map) {
     return RoutingRuleResponse(
-      acceptedProtocols: map['acceptedProtocols'] == null ? null : ((map['acceptedProtocols'] as List).cast<String>()).input(),
-      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
-      frontendEndpoints: map['frontendEndpoints'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['frontendEndpoints'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      patternsToMatch: map['patternsToMatch'] == null ? null : ((map['patternsToMatch'] as List).cast<String>()).input(),
+      acceptedProtocols: map['acceptedProtocols'] == null ? null : ((map['acceptedProtocols']! as List).cast<String>()).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
+      frontendEndpoints: map['frontendEndpoints'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['frontendEndpoints']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      patternsToMatch: map['patternsToMatch'] == null ? null : ((map['patternsToMatch']! as List).cast<String>()).input(),
       resourceState: (map['resourceState'] as String).input(),
-      routeConfiguration: map['routeConfiguration'] == null ? null : (ForwardingConfigurationResponse.fromMap((map['routeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      rulesEngine: map['rulesEngine'] == null ? null : (SubResourceResponse.fromMap((map['rulesEngine'] as Map).cast<String, dynamic>())).input(),
+      routeConfiguration: map['routeConfiguration'] == null ? null : (ForwardingConfigurationResponse.fromMap((map['routeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      rulesEngine: map['rulesEngine'] == null ? null : (SubResourceResponse.fromMap((map['rulesEngine']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      webApplicationFirewallPolicyLink: map['webApplicationFirewallPolicyLink'] == null ? null : (RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink.fromMap((map['webApplicationFirewallPolicyLink'] as Map).cast<String, dynamic>())).input(),
+      webApplicationFirewallPolicyLink: map['webApplicationFirewallPolicyLink'] == null ? null : (RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink.fromMap((map['webApplicationFirewallPolicyLink']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

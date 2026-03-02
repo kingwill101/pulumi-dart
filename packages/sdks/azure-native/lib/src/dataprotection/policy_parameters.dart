@@ -28,8 +28,8 @@ class PolicyParameters {
 
   factory PolicyParameters.fromMap(Map<String, dynamic> map) {
     return PolicyParameters(
-      backupDatasourceParametersList: map['backupDatasourceParametersList'] == null ? null : (pulumi.Input.decodeList<BlobBackupDatasourceParameters>(map['backupDatasourceParametersList'], (value) => BlobBackupDatasourceParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataStoreParametersList: map['dataStoreParametersList'] == null ? null : (pulumi.Input.decodeList<AzureOperationalStoreParameters>(map['dataStoreParametersList'], (value) => AzureOperationalStoreParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backupDatasourceParametersList: map['backupDatasourceParametersList'] == null ? null : (pulumi.Input.decodeList<BlobBackupDatasourceParameters>(map['backupDatasourceParametersList']!, (value) => BlobBackupDatasourceParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataStoreParametersList: map['dataStoreParametersList'] == null ? null : (pulumi.Input.decodeList<AzureOperationalStoreParameters>(map['dataStoreParametersList']!, (value) => AzureOperationalStoreParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class DiagnosticsDescriptionResponse {
 
   factory DiagnosticsDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticsDescriptionResponse(
-      defaultSinkRefs: map['defaultSinkRefs'] == null ? null : ((map['defaultSinkRefs'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      sinks: map['sinks'] == null ? null : (pulumi.Input.decodeList<AzureInternalMonitoringPipelineSinkDescriptionResponse>(map['sinks'], (value) => AzureInternalMonitoringPipelineSinkDescriptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultSinkRefs: map['defaultSinkRefs'] == null ? null : ((map['defaultSinkRefs']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      sinks: map['sinks'] == null ? null : (pulumi.Input.decodeList<AzureInternalMonitoringPipelineSinkDescriptionResponse>(map['sinks']!, (value) => AzureInternalMonitoringPipelineSinkDescriptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

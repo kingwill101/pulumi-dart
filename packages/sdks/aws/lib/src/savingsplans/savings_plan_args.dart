@@ -52,11 +52,11 @@ class SavingsPlanArgs {
   factory SavingsPlanArgs.fromMap(Map<String, dynamic> map) {
     return SavingsPlanArgs(
       commitment: (map['commitment'] as String).input(),
-      purchaseTime: map['purchaseTime'] == null ? null : (map['purchaseTime'] as String).input(),
+      purchaseTime: map['purchaseTime'] == null ? null : ((map['purchaseTime'] as String).input()).input(),
       savingsPlanOfferingId: (map['savingsPlanOfferingId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (SavingsPlanTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      upfrontPaymentAmount: map['upfrontPaymentAmount'] == null ? null : (map['upfrontPaymentAmount'] as String).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((SavingsPlanTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      upfrontPaymentAmount: map['upfrontPaymentAmount'] == null ? null : ((map['upfrontPaymentAmount'] as String).input()).input(),
     );
   }
 }

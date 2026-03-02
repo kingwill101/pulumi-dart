@@ -48,8 +48,8 @@ class SchedulerRuleArgs {
 
   factory SchedulerRuleArgs.fromMap(Map<String, dynamic> map) {
     return SchedulerRuleArgs(
-      param: map['param'] == null ? null : (map['param'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      param: map['param'] == null ? null : (map['param']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       ruleName: (map['ruleName'] as String).input(),
       ruleType: (map['ruleType'] as int).input(),
       rules: (pulumi.Input.decodeList<SchedulerRuleRule>(map['rules'], (value) => SchedulerRuleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),

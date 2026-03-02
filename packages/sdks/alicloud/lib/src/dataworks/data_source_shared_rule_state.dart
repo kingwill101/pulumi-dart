@@ -46,12 +46,12 @@ class DataSourceSharedRuleState {
 
   factory DataSourceSharedRuleState.fromMap(Map<String, dynamic> map) {
     return DataSourceSharedRuleState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as int).input(),
-      dataSourceSharedRuleId: map['dataSourceSharedRuleId'] == null ? null : (map['dataSourceSharedRuleId'] as String).input(),
-      envType: map['envType'] == null ? null : (map['envType'] as String).input(),
-      sharedUser: map['sharedUser'] == null ? null : (map['sharedUser'] as String).input(),
-      targetProjectId: map['targetProjectId'] == null ? null : (map['targetProjectId'] as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId']! as int).input(),
+      dataSourceSharedRuleId: map['dataSourceSharedRuleId'] == null ? null : (map['dataSourceSharedRuleId']! as String).input(),
+      envType: map['envType'] == null ? null : (map['envType']! as String).input(),
+      sharedUser: map['sharedUser'] == null ? null : (map['sharedUser']! as String).input(),
+      targetProjectId: map['targetProjectId'] == null ? null : (map['targetProjectId']! as int).input(),
     );
   }
 }

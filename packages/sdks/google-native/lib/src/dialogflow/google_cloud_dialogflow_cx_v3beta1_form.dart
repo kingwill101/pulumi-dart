@@ -22,7 +22,7 @@ class GoogleCloudDialogflowCxV3beta1Form {
 
   factory GoogleCloudDialogflowCxV3beta1Form.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1Form(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1FormParameter>(map['parameters'], (value) => GoogleCloudDialogflowCxV3beta1FormParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1FormParameter>(map['parameters']!, (value) => GoogleCloudDialogflowCxV3beta1FormParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

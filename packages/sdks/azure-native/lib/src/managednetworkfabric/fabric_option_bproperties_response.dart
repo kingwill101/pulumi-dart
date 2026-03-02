@@ -32,9 +32,9 @@ class FabricOptionBPropertiesResponse {
 
   factory FabricOptionBPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FabricOptionBPropertiesResponse(
-      exportRouteTargets: map['exportRouteTargets'] == null ? null : ((map['exportRouteTargets'] as List).cast<String>()).input(),
-      importRouteTargets: map['importRouteTargets'] == null ? null : ((map['importRouteTargets'] as List).cast<String>()).input(),
-      routeTargets: map['routeTargets'] == null ? null : (RouteTargetInformationResponse.fromMap((map['routeTargets'] as Map).cast<String, dynamic>())).input(),
+      exportRouteTargets: map['exportRouteTargets'] == null ? null : ((map['exportRouteTargets']! as List).cast<String>()).input(),
+      importRouteTargets: map['importRouteTargets'] == null ? null : ((map['importRouteTargets']! as List).cast<String>()).input(),
+      routeTargets: map['routeTargets'] == null ? null : (RouteTargetInformationResponse.fromMap((map['routeTargets']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

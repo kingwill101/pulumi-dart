@@ -41,11 +41,11 @@ class InstanceClusterAttachmentState {
 
   factory InstanceClusterAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceClusterAttachmentState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      clusterMemberIds: map['clusterMemberIds'] == null ? null : ((map['clusterMemberIds'] as Map).cast<String, String>()).input(),
-      ecuMap: map['ecuMap'] == null ? null : ((map['ecuMap'] as Map).cast<String, String>()).input(),
-      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
-      statusMap: map['statusMap'] == null ? null : ((map['statusMap'] as Map).cast<String, int>()).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      clusterMemberIds: map['clusterMemberIds'] == null ? null : ((map['clusterMemberIds']! as Map).cast<String, String>()).input(),
+      ecuMap: map['ecuMap'] == null ? null : ((map['ecuMap']! as Map).cast<String, String>()).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds']! as List).cast<String>()).input(),
+      statusMap: map['statusMap'] == null ? null : ((map['statusMap']! as Map).cast<String, int>()).input(),
     );
   }
 }

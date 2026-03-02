@@ -36,10 +36,10 @@ class DomainIdentityState {
 
   factory DomainIdentityState.fromMap(Map<String, dynamic> map) {
     return DomainIdentityState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      verificationToken: map['verificationToken'] == null ? null : (map['verificationToken'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      verificationToken: map['verificationToken'] == null ? null : ((map['verificationToken'] as String).input()).input(),
     );
   }
 }

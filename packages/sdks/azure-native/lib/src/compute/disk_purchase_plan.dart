@@ -38,7 +38,7 @@ class DiskPurchasePlan {
     return DiskPurchasePlan(
       name: (map['name'] as String).input(),
       product: (map['product'] as String).input(),
-      promotionCode: map['promotionCode'] == null ? null : (map['promotionCode'] as String).input(),
+      promotionCode: map['promotionCode'] == null ? null : (map['promotionCode']! as String).input(),
       publisher: (map['publisher'] as String).input(),
     );
   }

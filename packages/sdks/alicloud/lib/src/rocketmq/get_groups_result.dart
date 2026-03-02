@@ -62,16 +62,16 @@ class GetGroupsResult {
 
   factory GetGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetGroupsResult(
-      groupIdRegex: map['groupIdRegex'] == null ? null : map['groupIdRegex'] as String,
-      groupType: map['groupType'] == null ? null : map['groupType'] as String,
+      groupIdRegex: map['groupIdRegex'] == null ? null : map['groupIdRegex']! as String,
+      groupType: map['groupType'] == null ? null : map['groupType']! as String,
       groups: pulumi.Input.decodeList<GetGroupsGroup>(map['groups'], (value) => GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

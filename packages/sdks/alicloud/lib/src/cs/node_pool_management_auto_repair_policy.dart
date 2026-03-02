@@ -20,7 +20,7 @@ class NodePoolManagementAutoRepairPolicy {
 
   factory NodePoolManagementAutoRepairPolicy.fromMap(Map<String, dynamic> map) {
     return NodePoolManagementAutoRepairPolicy(
-      restartNode: map['restartNode'] == null ? null : (map['restartNode'] as bool).input(),
+      restartNode: map['restartNode'] == null ? null : (map['restartNode']! as bool).input(),
     );
   }
 }

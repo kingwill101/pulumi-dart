@@ -25,7 +25,7 @@ class ScaleSetBootDiagnostics {
 
   factory ScaleSetBootDiagnostics.fromMap(Map<String, dynamic> map) {
     return ScaleSetBootDiagnostics(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       storageUri: (map['storageUri'] as String).input(),
     );
   }

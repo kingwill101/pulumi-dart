@@ -92,21 +92,21 @@ class ProfessionalServiceResourceResponseProperties {
 
   factory ProfessionalServiceResourceResponseProperties.fromMap(Map<String, dynamic> map) {
     return ProfessionalServiceResourceResponseProperties(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      billingPeriod: map['billingPeriod'] == null ? null : (map['billingPeriod'] as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      billingPeriod: map['billingPeriod'] == null ? null : (map['billingPeriod']! as String).input(),
       created: (map['created'] as String).input(),
-      isFreeTrial: map['isFreeTrial'] == null ? null : (map['isFreeTrial'] as bool).input(),
-      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
-      offerId: map['offerId'] == null ? null : (map['offerId'] as String).input(),
-      paymentChannelMetadata: map['paymentChannelMetadata'] == null ? null : ((map['paymentChannelMetadata'] as Map).cast<String, String>()).input(),
-      paymentChannelType: map['paymentChannelType'] == null ? null : (map['paymentChannelType'] as String).input(),
-      publisherId: map['publisherId'] == null ? null : (map['publisherId'] as String).input(),
-      quoteId: map['quoteId'] == null ? null : (map['quoteId'] as String).input(),
-      skuId: map['skuId'] == null ? null : (map['skuId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      storeFront: map['storeFront'] == null ? null : (map['storeFront'] as String).input(),
-      term: map['term'] == null ? null : (ProfessionalServicePropertiesResponseTerm.fromMap((map['term'] as Map).cast<String, dynamic>())).input(),
-      termUnit: map['termUnit'] == null ? null : (map['termUnit'] as String).input(),
+      isFreeTrial: map['isFreeTrial'] == null ? null : (map['isFreeTrial']! as bool).input(),
+      lastModified: map['lastModified'] == null ? null : (map['lastModified']! as String).input(),
+      offerId: map['offerId'] == null ? null : (map['offerId']! as String).input(),
+      paymentChannelMetadata: map['paymentChannelMetadata'] == null ? null : ((map['paymentChannelMetadata']! as Map).cast<String, String>()).input(),
+      paymentChannelType: map['paymentChannelType'] == null ? null : (map['paymentChannelType']! as String).input(),
+      publisherId: map['publisherId'] == null ? null : (map['publisherId']! as String).input(),
+      quoteId: map['quoteId'] == null ? null : (map['quoteId']! as String).input(),
+      skuId: map['skuId'] == null ? null : (map['skuId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      storeFront: map['storeFront'] == null ? null : (map['storeFront']! as String).input(),
+      term: map['term'] == null ? null : (ProfessionalServicePropertiesResponseTerm.fromMap((map['term']! as Map).cast<String, dynamic>())).input(),
+      termUnit: map['termUnit'] == null ? null : (map['termUnit']! as String).input(),
     );
   }
 }

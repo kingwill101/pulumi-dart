@@ -53,13 +53,13 @@ class EmailTemplateState {
 
   factory EmailTemplateState.fromMap(Map<String, dynamic> map) {
     return EmailTemplateState(
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

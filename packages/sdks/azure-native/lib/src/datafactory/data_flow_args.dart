@@ -40,7 +40,7 @@ class DataFlowArgs {
 
   factory DataFlowArgs.fromMap(Map<String, dynamic> map) {
     return DataFlowArgs(
-      dataFlowName: map['dataFlowName'] == null ? null : (map['dataFlowName'] as String).input(),
+      dataFlowName: map['dataFlowName'] == null ? null : (map['dataFlowName']! as String).input(),
       factoryName: (map['factoryName'] as String).input(),
       properties: (Flowlet.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

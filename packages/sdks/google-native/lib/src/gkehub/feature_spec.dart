@@ -28,8 +28,8 @@ class FeatureSpec {
 
   factory FeatureSpec.fromMap(Map<String, dynamic> map) {
     return FeatureSpec(
-      defaultConfig: map['defaultConfig'] == null ? null : (MembershipSpec.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>())).input(),
-      provisionGoogleCa: map['provisionGoogleCa'] == null ? null : (FeatureSpecProvisionGoogleCa.fromValue(map['provisionGoogleCa'] as String)).input(),
+      defaultConfig: map['defaultConfig'] == null ? null : (MembershipSpec.fromMap((map['defaultConfig']! as Map).cast<String, dynamic>())).input(),
+      provisionGoogleCa: map['provisionGoogleCa'] == null ? null : (FeatureSpecProvisionGoogleCa.fromValue(map['provisionGoogleCa']! as String)).input(),
     );
   }
 }

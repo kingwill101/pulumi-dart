@@ -51,10 +51,10 @@ class GetServerGroupServerAttachmentsResult {
       attachments: pulumi.Input.decodeList<GetServerGroupServerAttachmentsAttachment>(map['attachments'], (value) => GetServerGroupServerAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      serverGroupId: map['serverGroupId'] == null ? null : map['serverGroupId'] as String,
-      serverIds: map['serverIds'] == null ? null : (map['serverIds'] as List).cast<String>(),
-      serverIps: map['serverIps'] == null ? null : (map['serverIps'] as List).cast<String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      serverGroupId: map['serverGroupId'] == null ? null : map['serverGroupId']! as String,
+      serverIds: map['serverIds'] == null ? null : (map['serverIds']! as List).cast<String>(),
+      serverIps: map['serverIps'] == null ? null : (map['serverIps']! as List).cast<String>(),
     );
   }
 }

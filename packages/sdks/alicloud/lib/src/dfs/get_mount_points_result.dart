@@ -45,9 +45,9 @@ class GetMountPointsResult {
       fileSystemId: map['fileSystemId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       points: pulumi.Input.decodeList<GetMountPointsPoint>(map['points'], (value) => GetMountPointsPoint.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

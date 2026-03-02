@@ -53,12 +53,12 @@ class ProbeResponse {
   factory ProbeResponse.fromMap(Map<String, dynamic> map) {
     return ProbeResponse(
       disableProbe: (map['disableProbe'] as bool).input(),
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      probeAction: map['probeAction'] == null ? null : (ExecActionResponse.fromMap((map['probeAction'] as Map).cast<String, dynamic>())).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      probeAction: map['probeAction'] == null ? null : (ExecActionResponse.fromMap((map['probeAction']! as Map).cast<String, dynamic>())).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as int).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

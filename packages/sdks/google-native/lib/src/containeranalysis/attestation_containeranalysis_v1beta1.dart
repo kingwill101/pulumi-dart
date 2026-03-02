@@ -27,8 +27,8 @@ class AttestationContaineranalysisV1beta1 {
 
   factory AttestationContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return AttestationContaineranalysisV1beta1(
-      genericSignedAttestation: map['genericSignedAttestation'] == null ? null : (GenericSignedAttestation.fromMap((map['genericSignedAttestation'] as Map).cast<String, dynamic>())).input(),
-      pgpSignedAttestation: map['pgpSignedAttestation'] == null ? null : (PgpSignedAttestationContaineranalysisV1beta1.fromMap((map['pgpSignedAttestation'] as Map).cast<String, dynamic>())).input(),
+      genericSignedAttestation: map['genericSignedAttestation'] == null ? null : (GenericSignedAttestation.fromMap((map['genericSignedAttestation']! as Map).cast<String, dynamic>())).input(),
+      pgpSignedAttestation: map['pgpSignedAttestation'] == null ? null : (PgpSignedAttestationContaineranalysisV1beta1.fromMap((map['pgpSignedAttestation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

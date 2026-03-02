@@ -44,11 +44,11 @@ class DeviceArgs {
 
   factory DeviceArgs.fromMap(Map<String, dynamic> map) {
     return DeviceArgs(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
       deviceType: (map['deviceType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

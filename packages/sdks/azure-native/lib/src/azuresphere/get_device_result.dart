@@ -78,7 +78,7 @@ class GetDeviceResult {
     return GetDeviceResult(
       azureApiVersion: map['azureApiVersion'] as String,
       chipSku: map['chipSku'] as String,
-      deviceId: map['deviceId'] == null ? null : map['deviceId'] as String,
+      deviceId: map['deviceId'] == null ? null : map['deviceId']! as String,
       id: map['id'] as String,
       lastAvailableOsVersion: map['lastAvailableOsVersion'] as String,
       lastInstalledOsVersion: map['lastInstalledOsVersion'] as String,

@@ -43,11 +43,11 @@ class RulesetState {
 
   factory RulesetState.fromMap(Map<String, dynamic> map) {
     return RulesetState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      metadatas: map['metadatas'] == null ? null : (pulumi.Input.decodeList<RulesetMetadata>(map['metadatas'], (value) => RulesetMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      source: map['source'] == null ? null : (RulesetSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      metadatas: map['metadatas'] == null ? null : (pulumi.Input.decodeList<RulesetMetadata>(map['metadatas']!, (value) => RulesetMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      source: map['source'] == null ? null : (RulesetSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

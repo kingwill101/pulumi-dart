@@ -37,7 +37,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {
     return EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd(
       headerName: (map['headerName'] as String).input(),
       headerValue: (map['headerValue'] as String).input(),
-      replace: map['replace'] == null ? null : (map['replace'] as bool).input(),
+      replace: map['replace'] == null ? null : (map['replace']! as bool).input(),
     );
   }
 }

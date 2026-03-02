@@ -55,12 +55,12 @@ class WorkerPoolTemplateVolume {
 
   factory WorkerPoolTemplateVolume.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateVolume(
-      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (WorkerPoolTemplateVolumeCloudSqlInstance.fromMap((map['cloudSqlInstance'] as Map).cast<String, dynamic>())).input(),
-      emptyDir: map['emptyDir'] == null ? null : (WorkerPoolTemplateVolumeEmptyDir.fromMap((map['emptyDir'] as Map).cast<String, dynamic>())).input(),
-      gcs: map['gcs'] == null ? null : (WorkerPoolTemplateVolumeGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>())).input(),
+      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (WorkerPoolTemplateVolumeCloudSqlInstance.fromMap((map['cloudSqlInstance']! as Map).cast<String, dynamic>())).input(),
+      emptyDir: map['emptyDir'] == null ? null : (WorkerPoolTemplateVolumeEmptyDir.fromMap((map['emptyDir']! as Map).cast<String, dynamic>())).input(),
+      gcs: map['gcs'] == null ? null : (WorkerPoolTemplateVolumeGcs.fromMap((map['gcs']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      nfs: map['nfs'] == null ? null : (WorkerPoolTemplateVolumeNfs.fromMap((map['nfs'] as Map).cast<String, dynamic>())).input(),
-      secret: map['secret'] == null ? null : (WorkerPoolTemplateVolumeSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      nfs: map['nfs'] == null ? null : (WorkerPoolTemplateVolumeNfs.fromMap((map['nfs']! as Map).cast<String, dynamic>())).input(),
+      secret: map['secret'] == null ? null : (WorkerPoolTemplateVolumeSecret.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

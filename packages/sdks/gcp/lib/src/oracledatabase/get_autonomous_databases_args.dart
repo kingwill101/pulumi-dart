@@ -33,7 +33,7 @@ class GetAutonomousDatabasesArgs {
   factory GetAutonomousDatabasesArgs.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasesArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

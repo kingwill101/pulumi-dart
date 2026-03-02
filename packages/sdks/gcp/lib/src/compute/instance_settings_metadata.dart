@@ -20,7 +20,7 @@ class InstanceSettingsMetadata {
 
   factory InstanceSettingsMetadata.fromMap(Map<String, dynamic> map) {
     return InstanceSettingsMetadata(
-      items: map['items'] == null ? null : ((map['items'] as Map).cast<String, String>()).input(),
+      items: map['items'] == null ? null : ((map['items']! as Map).cast<String, String>()).input(),
     );
   }
 }

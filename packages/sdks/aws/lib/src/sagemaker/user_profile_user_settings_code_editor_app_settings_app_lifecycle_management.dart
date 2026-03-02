@@ -21,7 +21,7 @@ class UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagement {
 
   factory UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagement.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagement(
-      idleSettings: map['idleSettings'] == null ? null : (UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings'] as Map).cast<String, dynamic>())).input(),
+      idleSettings: map['idleSettings'] == null ? null : ((UserProfileUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

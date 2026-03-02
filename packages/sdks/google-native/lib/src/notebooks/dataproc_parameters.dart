@@ -21,7 +21,7 @@ class DataprocParameters {
 
   factory DataprocParameters.fromMap(Map<String, dynamic> map) {
     return DataprocParameters(
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
     );
   }
 }

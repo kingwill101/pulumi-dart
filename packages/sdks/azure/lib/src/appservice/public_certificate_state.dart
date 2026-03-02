@@ -46,12 +46,12 @@ class PublicCertificateState {
 
   factory PublicCertificateState.fromMap(Map<String, dynamic> map) {
     return PublicCertificateState(
-      appServiceName: map['appServiceName'] == null ? null : (map['appServiceName'] as String).input(),
-      blob: map['blob'] == null ? null : (map['blob'] as String).input(),
-      certificateLocation: map['certificateLocation'] == null ? null : (map['certificateLocation'] as String).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      appServiceName: map['appServiceName'] == null ? null : (map['appServiceName']! as String).input(),
+      blob: map['blob'] == null ? null : (map['blob']! as String).input(),
+      certificateLocation: map['certificateLocation'] == null ? null : (map['certificateLocation']! as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

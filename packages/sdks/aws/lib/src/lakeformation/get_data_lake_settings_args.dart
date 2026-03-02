@@ -29,8 +29,8 @@ class GetDataLakeSettingsArgs {
 
   factory GetDataLakeSettingsArgs.fromMap(Map<String, dynamic> map) {
     return GetDataLakeSettingsArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

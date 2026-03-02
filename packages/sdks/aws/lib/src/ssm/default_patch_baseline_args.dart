@@ -53,7 +53,7 @@ class DefaultPatchBaselineArgs {
     return DefaultPatchBaselineArgs(
       baselineId: (map['baselineId'] as String).input(),
       operatingSystem: (map['operatingSystem'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -106,21 +106,21 @@ class ClusterClusterConfigSecurityConfigKerberosConfig {
 
   factory ClusterClusterConfigSecurityConfigKerberosConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigSecurityConfigKerberosConfig(
-      crossRealmTrustAdminServer: map['crossRealmTrustAdminServer'] == null ? null : (map['crossRealmTrustAdminServer'] as String).input(),
-      crossRealmTrustKdc: map['crossRealmTrustKdc'] == null ? null : (map['crossRealmTrustKdc'] as String).input(),
-      crossRealmTrustRealm: map['crossRealmTrustRealm'] == null ? null : (map['crossRealmTrustRealm'] as String).input(),
-      crossRealmTrustSharedPasswordUri: map['crossRealmTrustSharedPasswordUri'] == null ? null : (map['crossRealmTrustSharedPasswordUri'] as String).input(),
-      enableKerberos: map['enableKerberos'] == null ? null : (map['enableKerberos'] as bool).input(),
-      kdcDbKeyUri: map['kdcDbKeyUri'] == null ? null : (map['kdcDbKeyUri'] as String).input(),
-      keyPasswordUri: map['keyPasswordUri'] == null ? null : (map['keyPasswordUri'] as String).input(),
-      keystorePasswordUri: map['keystorePasswordUri'] == null ? null : (map['keystorePasswordUri'] as String).input(),
-      keystoreUri: map['keystoreUri'] == null ? null : (map['keystoreUri'] as String).input(),
+      crossRealmTrustAdminServer: map['crossRealmTrustAdminServer'] == null ? null : (map['crossRealmTrustAdminServer']! as String).input(),
+      crossRealmTrustKdc: map['crossRealmTrustKdc'] == null ? null : (map['crossRealmTrustKdc']! as String).input(),
+      crossRealmTrustRealm: map['crossRealmTrustRealm'] == null ? null : (map['crossRealmTrustRealm']! as String).input(),
+      crossRealmTrustSharedPasswordUri: map['crossRealmTrustSharedPasswordUri'] == null ? null : (map['crossRealmTrustSharedPasswordUri']! as String).input(),
+      enableKerberos: map['enableKerberos'] == null ? null : (map['enableKerberos']! as bool).input(),
+      kdcDbKeyUri: map['kdcDbKeyUri'] == null ? null : (map['kdcDbKeyUri']! as String).input(),
+      keyPasswordUri: map['keyPasswordUri'] == null ? null : (map['keyPasswordUri']! as String).input(),
+      keystorePasswordUri: map['keystorePasswordUri'] == null ? null : (map['keystorePasswordUri']! as String).input(),
+      keystoreUri: map['keystoreUri'] == null ? null : (map['keystoreUri']! as String).input(),
       kmsKeyUri: (map['kmsKeyUri'] as String).input(),
-      realm: map['realm'] == null ? null : (map['realm'] as String).input(),
+      realm: map['realm'] == null ? null : (map['realm']! as String).input(),
       rootPrincipalPasswordUri: (map['rootPrincipalPasswordUri'] as String).input(),
-      tgtLifetimeHours: map['tgtLifetimeHours'] == null ? null : (map['tgtLifetimeHours'] as int).input(),
-      truststorePasswordUri: map['truststorePasswordUri'] == null ? null : (map['truststorePasswordUri'] as String).input(),
-      truststoreUri: map['truststoreUri'] == null ? null : (map['truststoreUri'] as String).input(),
+      tgtLifetimeHours: map['tgtLifetimeHours'] == null ? null : (map['tgtLifetimeHours']! as int).input(),
+      truststorePasswordUri: map['truststorePasswordUri'] == null ? null : (map['truststorePasswordUri']! as String).input(),
+      truststoreUri: map['truststoreUri'] == null ? null : (map['truststoreUri']! as String).input(),
     );
   }
 }

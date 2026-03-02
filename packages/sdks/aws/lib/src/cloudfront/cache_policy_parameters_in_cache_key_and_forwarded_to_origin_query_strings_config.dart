@@ -27,7 +27,7 @@ class CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig {
   factory CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig.fromMap(Map<String, dynamic> map) {
     return CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig(
       queryStringBehavior: (map['queryStringBehavior'] as String).input(),
-      queryStrings: map['queryStrings'] == null ? null : (CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStrings.fromMap((map['queryStrings'] as Map).cast<String, dynamic>())).input(),
+      queryStrings: map['queryStrings'] == null ? null : ((CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryStrings.fromMap((map['queryStrings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

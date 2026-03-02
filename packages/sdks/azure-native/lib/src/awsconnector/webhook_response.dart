@@ -53,13 +53,13 @@ class WebhookResponse {
 
   factory WebhookResponse.fromMap(Map<String, dynamic> map) {
     return WebhookResponse(
-      branchFilter: map['branchFilter'] == null ? null : (map['branchFilter'] as String).input(),
-      buildType: map['buildType'] == null ? null : (WebhookBuildTypeEnumValueResponse.fromMap((map['buildType'] as Map).cast<String, dynamic>())).input(),
-      filterGroups: map['filterGroups'] == null ? null : (pulumi.Input.decodeList<FilterGroupResponse>(map['filterGroups'], (value) => FilterGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastModifiedSecret: map['lastModifiedSecret'] == null ? null : (map['lastModifiedSecret'] as String).input(),
-      payloadUrl: map['payloadUrl'] == null ? null : (map['payloadUrl'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      branchFilter: map['branchFilter'] == null ? null : (map['branchFilter']! as String).input(),
+      buildType: map['buildType'] == null ? null : (WebhookBuildTypeEnumValueResponse.fromMap((map['buildType']! as Map).cast<String, dynamic>())).input(),
+      filterGroups: map['filterGroups'] == null ? null : (pulumi.Input.decodeList<FilterGroupResponse>(map['filterGroups']!, (value) => FilterGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastModifiedSecret: map['lastModifiedSecret'] == null ? null : (map['lastModifiedSecret']! as String).input(),
+      payloadUrl: map['payloadUrl'] == null ? null : (map['payloadUrl']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

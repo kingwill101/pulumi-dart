@@ -33,8 +33,8 @@ class VMwareNodePoolStatus {
 
   factory VMwareNodePoolStatus.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<VMwareNodePoolStatusCondition>(map['conditions'], (value) => VMwareNodePoolStatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<VMwareNodePoolStatusCondition>(map['conditions']!, (value) => VMwareNodePoolStatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
     );
   }
 }

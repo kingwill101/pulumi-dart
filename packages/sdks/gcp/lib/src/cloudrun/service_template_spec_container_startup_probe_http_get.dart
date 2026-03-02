@@ -33,9 +33,9 @@ class ServiceTemplateSpecContainerStartupProbeHttpGet {
 
   factory ServiceTemplateSpecContainerStartupProbeHttpGet.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerStartupProbeHttpGet(
-      httpHeaders: map['httpHeaders'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader>(map['httpHeaders'], (value) => ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      httpHeaders: map['httpHeaders'] == null ? null : (pulumi.Input.decodeList<ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader>(map['httpHeaders']!, (value) => ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

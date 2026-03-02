@@ -46,12 +46,12 @@ class ClientKeyState {
 
   factory ClientKeyState.fromMap(Map<String, dynamic> map) {
     return ClientKeyState(
-      aapName: map['aapName'] == null ? null : (map['aapName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      privateKeyDataFile: map['privateKeyDataFile'] == null ? null : (map['privateKeyDataFile'] as String).input(),
+      aapName: map['aapName'] == null ? null : (map['aapName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      notAfter: map['notAfter'] == null ? null : (map['notAfter']! as String).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      privateKeyDataFile: map['privateKeyDataFile'] == null ? null : (map['privateKeyDataFile']! as String).input(),
     );
   }
 }

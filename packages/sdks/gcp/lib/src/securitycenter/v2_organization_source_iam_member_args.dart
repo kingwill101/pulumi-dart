@@ -56,7 +56,7 @@ class V2OrganizationSourceIamMemberArgs {
 
   factory V2OrganizationSourceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return V2OrganizationSourceIamMemberArgs(
-      condition: map['condition'] == null ? null : (V2OrganizationSourceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (V2OrganizationSourceIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
       organization: (map['organization'] as String).input(),
       role: (map['role'] as String).input(),

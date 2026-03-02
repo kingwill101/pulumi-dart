@@ -81,17 +81,17 @@ class VirtualMachineScaleSetExtensionPropertiesResponse {
 
   factory VirtualMachineScaleSetExtensionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetExtensionPropertiesResponse(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade'] as bool).input(),
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
-      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : (KeyVaultSecretReferenceResponse.fromMap((map['protectedSettingsFromKeyVault'] as Map).cast<String, dynamic>())).input(),
-      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions'] as List).cast<String>()).input(),
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion']! as bool).input(),
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade']! as bool).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag']! as String).input(),
+      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : (KeyVaultSecretReferenceResponse.fromMap((map['protectedSettingsFromKeyVault']! as Map).cast<String, dynamic>())).input(),
+      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : ((map['provisionAfterExtensions']! as List).cast<String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
-      settings: map['settings'] == null ? null : (map['settings']).input(),
-      suppressFailures: map['suppressFailures'] == null ? null : (map['suppressFailures'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
+      settings: map['settings'] == null ? null : (map['settings']!).input(),
+      suppressFailures: map['suppressFailures'] == null ? null : (map['suppressFailures']! as bool).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion']! as String).input(),
     );
   }
 }

@@ -57,13 +57,13 @@ class DeviceArgs {
 
   factory DeviceArgs.fromMap(Map<String, dynamic> map) {
     return DeviceArgs(
-      dataResidency: map['dataResidency'] == null ? null : (DataResidency.fromMap((map['dataResidency'] as Map).cast<String, dynamic>())).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      dataResidency: map['dataResidency'] == null ? null : (DataResidency.fromMap((map['dataResidency']! as Map).cast<String, dynamic>())).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

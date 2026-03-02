@@ -34,9 +34,9 @@ class HostingCustomDomainRequiredDnsUpdate {
 
   factory HostingCustomDomainRequiredDnsUpdate.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainRequiredDnsUpdate(
-      checkTime: map['checkTime'] == null ? null : (map['checkTime'] as String).input(),
-      desireds: map['desireds'] == null ? null : (pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdateDesired>(map['desireds'], (value) => HostingCustomDomainRequiredDnsUpdateDesired.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      discovereds: map['discovereds'] == null ? null : (pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdateDiscovered>(map['discovereds'], (value) => HostingCustomDomainRequiredDnsUpdateDiscovered.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      checkTime: map['checkTime'] == null ? null : (map['checkTime']! as String).input(),
+      desireds: map['desireds'] == null ? null : (pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdateDesired>(map['desireds']!, (value) => HostingCustomDomainRequiredDnsUpdateDesired.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      discovereds: map['discovereds'] == null ? null : (pulumi.Input.decodeList<HostingCustomDomainRequiredDnsUpdateDiscovered>(map['discovereds']!, (value) => HostingCustomDomainRequiredDnsUpdateDiscovered.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

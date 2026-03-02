@@ -44,9 +44,9 @@ class GatewayCertificateAuthorityArgs {
 
   factory GatewayCertificateAuthorityArgs.fromMap(Map<String, dynamic> map) {
     return GatewayCertificateAuthorityArgs(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
       gatewayId: (map['gatewayId'] as String).input(),
-      isTrusted: map['isTrusted'] == null ? null : (map['isTrusted'] as bool).input(),
+      isTrusted: map['isTrusted'] == null ? null : (map['isTrusted']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

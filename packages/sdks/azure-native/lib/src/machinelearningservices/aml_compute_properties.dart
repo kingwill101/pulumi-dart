@@ -75,17 +75,17 @@ class AmlComputeProperties {
 
   factory AmlComputeProperties.fromMap(Map<String, dynamic> map) {
     return AmlComputeProperties(
-      enableNodePublicIp: map['enableNodePublicIp'] == null ? null : (map['enableNodePublicIp'] as bool).input(),
-      isolatedNetwork: map['isolatedNetwork'] == null ? null : (map['isolatedNetwork'] as bool).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      propertyBag: map['propertyBag'] == null ? null : (map['propertyBag']).input(),
-      remoteLoginPortPublicAccess: map['remoteLoginPortPublicAccess'] == null ? null : (map['remoteLoginPortPublicAccess'] as String).input(),
-      scaleSettings: map['scaleSettings'] == null ? null : (ScaleSettings.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (ResourceId.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
-      userAccountCredentials: map['userAccountCredentials'] == null ? null : (UserAccountCredentials.fromMap((map['userAccountCredentials'] as Map).cast<String, dynamic>())).input(),
-      virtualMachineImage: map['virtualMachineImage'] == null ? null : (VirtualMachineImage.fromMap((map['virtualMachineImage'] as Map).cast<String, dynamic>())).input(),
-      vmPriority: map['vmPriority'] == null ? null : (map['vmPriority'] as String).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      enableNodePublicIp: map['enableNodePublicIp'] == null ? null : (map['enableNodePublicIp']! as bool).input(),
+      isolatedNetwork: map['isolatedNetwork'] == null ? null : (map['isolatedNetwork']! as bool).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      propertyBag: map['propertyBag'] == null ? null : (map['propertyBag']!).input(),
+      remoteLoginPortPublicAccess: map['remoteLoginPortPublicAccess'] == null ? null : (map['remoteLoginPortPublicAccess']! as String).input(),
+      scaleSettings: map['scaleSettings'] == null ? null : (ScaleSettings.fromMap((map['scaleSettings']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (ResourceId.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
+      userAccountCredentials: map['userAccountCredentials'] == null ? null : (UserAccountCredentials.fromMap((map['userAccountCredentials']! as Map).cast<String, dynamic>())).input(),
+      virtualMachineImage: map['virtualMachineImage'] == null ? null : (VirtualMachineImage.fromMap((map['virtualMachineImage']! as Map).cast<String, dynamic>())).input(),
+      vmPriority: map['vmPriority'] == null ? null : (map['vmPriority']! as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

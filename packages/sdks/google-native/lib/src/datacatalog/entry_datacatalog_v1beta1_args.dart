@@ -90,20 +90,20 @@ class EntryDatacatalogV1beta1Args {
 
   factory EntryDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return EntryDatacatalogV1beta1Args(
-      bigqueryDateShardedSpec: map['bigqueryDateShardedSpec'] == null ? null : ((map['bigqueryDateShardedSpec'] as Map).cast<String, dynamic>()).input(),
-      bigqueryTableSpec: map['bigqueryTableSpec'] == null ? null : (GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromMap((map['bigqueryTableSpec'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      bigqueryDateShardedSpec: map['bigqueryDateShardedSpec'] == null ? null : ((map['bigqueryDateShardedSpec']! as Map).cast<String, dynamic>()).input(),
+      bigqueryTableSpec: map['bigqueryTableSpec'] == null ? null : (GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromMap((map['bigqueryTableSpec']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       entryGroupId: (map['entryGroupId'] as String).input(),
       entryId: (map['entryId'] as String).input(),
-      gcsFilesetSpec: map['gcsFilesetSpec'] == null ? null : (GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromMap((map['gcsFilesetSpec'] as Map).cast<String, dynamic>())).input(),
-      linkedResource: map['linkedResource'] == null ? null : (map['linkedResource'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      schema: map['schema'] == null ? null : (GoogleCloudDatacatalogV1beta1Schema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (EntryTypeDatacatalogV1beta1.fromValue(map['type'] as String)).input(),
-      userSpecifiedSystem: map['userSpecifiedSystem'] == null ? null : (map['userSpecifiedSystem'] as String).input(),
-      userSpecifiedType: map['userSpecifiedType'] == null ? null : (map['userSpecifiedType'] as String).input(),
+      gcsFilesetSpec: map['gcsFilesetSpec'] == null ? null : (GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromMap((map['gcsFilesetSpec']! as Map).cast<String, dynamic>())).input(),
+      linkedResource: map['linkedResource'] == null ? null : (map['linkedResource']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      schema: map['schema'] == null ? null : (GoogleCloudDatacatalogV1beta1Schema.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (EntryTypeDatacatalogV1beta1.fromValue(map['type']! as String)).input(),
+      userSpecifiedSystem: map['userSpecifiedSystem'] == null ? null : (map['userSpecifiedSystem']! as String).input(),
+      userSpecifiedType: map['userSpecifiedType'] == null ? null : (map['userSpecifiedType']! as String).input(),
     );
   }
 }

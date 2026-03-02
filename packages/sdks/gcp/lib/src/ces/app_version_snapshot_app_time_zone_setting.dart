@@ -21,7 +21,7 @@ class AppVersionSnapshotAppTimeZoneSetting {
 
   factory AppVersionSnapshotAppTimeZoneSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppTimeZoneSetting(
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

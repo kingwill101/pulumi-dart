@@ -41,10 +41,10 @@ class GeneratorSummarizationContextFewShotExample {
 
   factory GeneratorSummarizationContextFewShotExample.fromMap(Map<String, dynamic> map) {
     return GeneratorSummarizationContextFewShotExample(
-      conversationContext: map['conversationContext'] == null ? null : (GeneratorSummarizationContextFewShotExampleConversationContext.fromMap((map['conversationContext'] as Map).cast<String, dynamic>())).input(),
-      extraInfo: map['extraInfo'] == null ? null : ((map['extraInfo'] as Map).cast<String, String>()).input(),
+      conversationContext: map['conversationContext'] == null ? null : (GeneratorSummarizationContextFewShotExampleConversationContext.fromMap((map['conversationContext']! as Map).cast<String, dynamic>())).input(),
+      extraInfo: map['extraInfo'] == null ? null : ((map['extraInfo']! as Map).cast<String, String>()).input(),
       output: (GeneratorSummarizationContextFewShotExampleOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
-      summarizationSectionList: map['summarizationSectionList'] == null ? null : (GeneratorSummarizationContextFewShotExampleSummarizationSectionList.fromMap((map['summarizationSectionList'] as Map).cast<String, dynamic>())).input(),
+      summarizationSectionList: map['summarizationSectionList'] == null ? null : (GeneratorSummarizationContextFewShotExampleSummarizationSectionList.fromMap((map['summarizationSectionList']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

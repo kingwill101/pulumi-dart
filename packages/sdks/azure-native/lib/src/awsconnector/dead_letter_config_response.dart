@@ -21,7 +21,7 @@ class DeadLetterConfigResponse {
 
   factory DeadLetterConfigResponse.fromMap(Map<String, dynamic> map) {
     return DeadLetterConfigResponse(
-      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
+      targetArn: map['targetArn'] == null ? null : (map['targetArn']! as String).input(),
     );
   }
 }

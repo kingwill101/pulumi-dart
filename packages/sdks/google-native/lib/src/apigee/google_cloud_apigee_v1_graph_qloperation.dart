@@ -26,7 +26,7 @@ class GoogleCloudApigeeV1GraphQLOperation {
 
   factory GoogleCloudApigeeV1GraphQLOperation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1GraphQLOperation(
-      operation: map['operation'] == null ? null : (map['operation'] as String).input(),
+      operation: map['operation'] == null ? null : (map['operation']! as String).input(),
       operationTypes: ((map['operationTypes'] as List).cast<String>()).input(),
     );
   }

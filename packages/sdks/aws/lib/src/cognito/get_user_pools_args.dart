@@ -30,7 +30,7 @@ class GetUserPoolsArgs {
   factory GetUserPoolsArgs.fromMap(Map<String, dynamic> map) {
     return GetUserPoolsArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

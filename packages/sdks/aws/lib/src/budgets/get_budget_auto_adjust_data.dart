@@ -32,7 +32,7 @@ class GetBudgetAutoAdjustData {
   factory GetBudgetAutoAdjustData.fromMap(Map<String, dynamic> map) {
     return GetBudgetAutoAdjustData(
       autoAdjustType: (map['autoAdjustType'] as String).input(),
-      historicalOptions: (pulumi.Input.decodeList<GetBudgetAutoAdjustDataHistoricalOption>(map['historicalOptions'], (value) => GetBudgetAutoAdjustDataHistoricalOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      historicalOptions: (pulumi.Input.decodeList<GetBudgetAutoAdjustDataHistoricalOption>(map['historicalOptions']!, (value) => GetBudgetAutoAdjustDataHistoricalOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
       lastAutoAdjustTime: (map['lastAutoAdjustTime'] as String).input(),
     );
   }

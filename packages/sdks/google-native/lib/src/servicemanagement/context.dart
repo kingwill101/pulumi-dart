@@ -22,7 +22,7 @@ class Context {
 
   factory Context.fromMap(Map<String, dynamic> map) {
     return Context(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ContextRule>(map['rules'], (value) => ContextRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ContextRule>(map['rules']!, (value) => ContextRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

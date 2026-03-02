@@ -35,10 +35,10 @@ class InstanceBindVpc {
 
   factory InstanceBindVpc.fromMap(Map<String, dynamic> map) {
     return InstanceBindVpc(
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vpcOwnerId: map['vpcOwnerId'] == null ? null : (map['vpcOwnerId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vpcOwnerId: map['vpcOwnerId'] == null ? null : (map['vpcOwnerId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

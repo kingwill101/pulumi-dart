@@ -56,13 +56,13 @@ class SpaceSpaceSettings {
 
   factory SpaceSpaceSettings.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettings(
-      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
-      codeEditorAppSettings: map['codeEditorAppSettings'] == null ? null : (SpaceSpaceSettingsCodeEditorAppSettings.fromMap((map['codeEditorAppSettings'] as Map).cast<String, dynamic>())).input(),
-      customFileSystems: map['customFileSystems'] == null ? null : (pulumi.Input.decodeList<SpaceSpaceSettingsCustomFileSystem>(map['customFileSystems'], (value) => SpaceSpaceSettingsCustomFileSystem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      jupyterLabAppSettings: map['jupyterLabAppSettings'] == null ? null : (SpaceSpaceSettingsJupyterLabAppSettings.fromMap((map['jupyterLabAppSettings'] as Map).cast<String, dynamic>())).input(),
-      jupyterServerAppSettings: map['jupyterServerAppSettings'] == null ? null : (SpaceSpaceSettingsJupyterServerAppSettings.fromMap((map['jupyterServerAppSettings'] as Map).cast<String, dynamic>())).input(),
-      kernelGatewayAppSettings: map['kernelGatewayAppSettings'] == null ? null : (SpaceSpaceSettingsKernelGatewayAppSettings.fromMap((map['kernelGatewayAppSettings'] as Map).cast<String, dynamic>())).input(),
-      spaceStorageSettings: map['spaceStorageSettings'] == null ? null : (SpaceSpaceSettingsSpaceStorageSettings.fromMap((map['spaceStorageSettings'] as Map).cast<String, dynamic>())).input(),
+      appType: map['appType'] == null ? null : ((map['appType'] as String).input()).input(),
+      codeEditorAppSettings: map['codeEditorAppSettings'] == null ? null : ((SpaceSpaceSettingsCodeEditorAppSettings.fromMap((map['codeEditorAppSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      customFileSystems: map['customFileSystems'] == null ? null : ((pulumi.Input.decodeList<SpaceSpaceSettingsCustomFileSystem>(map['customFileSystems']!, (value) => SpaceSpaceSettingsCustomFileSystem.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      jupyterLabAppSettings: map['jupyterLabAppSettings'] == null ? null : ((SpaceSpaceSettingsJupyterLabAppSettings.fromMap((map['jupyterLabAppSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      jupyterServerAppSettings: map['jupyterServerAppSettings'] == null ? null : ((SpaceSpaceSettingsJupyterServerAppSettings.fromMap((map['jupyterServerAppSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      kernelGatewayAppSettings: map['kernelGatewayAppSettings'] == null ? null : ((SpaceSpaceSettingsKernelGatewayAppSettings.fromMap((map['kernelGatewayAppSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      spaceStorageSettings: map['spaceStorageSettings'] == null ? null : ((SpaceSpaceSettingsSpaceStorageSettings.fromMap((map['spaceStorageSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

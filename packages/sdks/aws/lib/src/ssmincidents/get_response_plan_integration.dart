@@ -21,7 +21,7 @@ class GetResponsePlanIntegration {
 
   factory GetResponsePlanIntegration.fromMap(Map<String, dynamic> map) {
     return GetResponsePlanIntegration(
-      pagerduties: (pulumi.Input.decodeList<GetResponsePlanIntegrationPagerduty>(map['pagerduties'], (value) => GetResponsePlanIntegrationPagerduty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pagerduties: (pulumi.Input.decodeList<GetResponsePlanIntegrationPagerduty>(map['pagerduties']!, (value) => GetResponsePlanIntegrationPagerduty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

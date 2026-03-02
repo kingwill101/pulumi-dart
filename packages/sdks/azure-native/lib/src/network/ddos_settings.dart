@@ -27,8 +27,8 @@ class DdosSettings {
 
   factory DdosSettings.fromMap(Map<String, dynamic> map) {
     return DdosSettings(
-      ddosProtectionPlan: map['ddosProtectionPlan'] == null ? null : (SubResource.fromMap((map['ddosProtectionPlan'] as Map).cast<String, dynamic>())).input(),
-      protectionMode: map['protectionMode'] == null ? null : (map['protectionMode'] as String).input(),
+      ddosProtectionPlan: map['ddosProtectionPlan'] == null ? null : (SubResource.fromMap((map['ddosProtectionPlan']! as Map).cast<String, dynamic>())).input(),
+      protectionMode: map['protectionMode'] == null ? null : (map['protectionMode']! as String).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class ManagedClusterIdentityResponse {
 
   factory ManagedClusterIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterIdentityResponse(
-      delegatedResources: map['delegatedResources'] == null ? null : (pulumi.Input.decodeMapValues<DelegatedResourceResponse>(map['delegatedResources'], (value) => DelegatedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      delegatedResources: map['delegatedResources'] == null ? null : (pulumi.Input.decodeMapValues<DelegatedResourceResponse>(map['delegatedResources']!, (value) => DelegatedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       principalId: (map['principalId'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<ManagedClusterIdentityResponseUserAssignedIdentities>(map['userAssignedIdentities'], (value) => ManagedClusterIdentityResponseUserAssignedIdentities.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<ManagedClusterIdentityResponseUserAssignedIdentities>(map['userAssignedIdentities']!, (value) => ManagedClusterIdentityResponseUserAssignedIdentities.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -36,8 +36,8 @@ class LogTransformerArgs {
   factory LogTransformerArgs.fromMap(Map<String, dynamic> map) {
     return LogTransformerArgs(
       logGroupArn: (map['logGroupArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      transformerConfigs: (pulumi.Input.decodeList<LogTransformerTransformerConfig>(map['transformerConfigs'], (value) => LogTransformerTransformerConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      transformerConfigs: (pulumi.Input.decodeList<LogTransformerTransformerConfig>(map['transformerConfigs']!, (value) => LogTransformerTransformerConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

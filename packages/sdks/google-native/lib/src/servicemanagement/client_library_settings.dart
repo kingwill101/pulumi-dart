@@ -80,17 +80,17 @@ class ClientLibrarySettings {
 
   factory ClientLibrarySettings.fromMap(Map<String, dynamic> map) {
     return ClientLibrarySettings(
-      cppSettings: map['cppSettings'] == null ? null : (CppSettings.fromMap((map['cppSettings'] as Map).cast<String, dynamic>())).input(),
-      dotnetSettings: map['dotnetSettings'] == null ? null : (DotnetSettings.fromMap((map['dotnetSettings'] as Map).cast<String, dynamic>())).input(),
-      goSettings: map['goSettings'] == null ? null : (GoSettings.fromMap((map['goSettings'] as Map).cast<String, dynamic>())).input(),
-      javaSettings: map['javaSettings'] == null ? null : (JavaSettings.fromMap((map['javaSettings'] as Map).cast<String, dynamic>())).input(),
-      launchStage: map['launchStage'] == null ? null : (ClientLibrarySettingsLaunchStage.fromValue(map['launchStage'] as String)).input(),
-      nodeSettings: map['nodeSettings'] == null ? null : (NodeSettings.fromMap((map['nodeSettings'] as Map).cast<String, dynamic>())).input(),
-      phpSettings: map['phpSettings'] == null ? null : (PhpSettings.fromMap((map['phpSettings'] as Map).cast<String, dynamic>())).input(),
-      pythonSettings: map['pythonSettings'] == null ? null : (PythonSettings.fromMap((map['pythonSettings'] as Map).cast<String, dynamic>())).input(),
-      restNumericEnums: map['restNumericEnums'] == null ? null : (map['restNumericEnums'] as bool).input(),
-      rubySettings: map['rubySettings'] == null ? null : (RubySettings.fromMap((map['rubySettings'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      cppSettings: map['cppSettings'] == null ? null : (CppSettings.fromMap((map['cppSettings']! as Map).cast<String, dynamic>())).input(),
+      dotnetSettings: map['dotnetSettings'] == null ? null : (DotnetSettings.fromMap((map['dotnetSettings']! as Map).cast<String, dynamic>())).input(),
+      goSettings: map['goSettings'] == null ? null : (GoSettings.fromMap((map['goSettings']! as Map).cast<String, dynamic>())).input(),
+      javaSettings: map['javaSettings'] == null ? null : (JavaSettings.fromMap((map['javaSettings']! as Map).cast<String, dynamic>())).input(),
+      launchStage: map['launchStage'] == null ? null : (ClientLibrarySettingsLaunchStage.fromValue(map['launchStage']! as String)).input(),
+      nodeSettings: map['nodeSettings'] == null ? null : (NodeSettings.fromMap((map['nodeSettings']! as Map).cast<String, dynamic>())).input(),
+      phpSettings: map['phpSettings'] == null ? null : (PhpSettings.fromMap((map['phpSettings']! as Map).cast<String, dynamic>())).input(),
+      pythonSettings: map['pythonSettings'] == null ? null : (PythonSettings.fromMap((map['pythonSettings']! as Map).cast<String, dynamic>())).input(),
+      restNumericEnums: map['restNumericEnums'] == null ? null : (map['restNumericEnums']! as bool).input(),
+      rubySettings: map['rubySettings'] == null ? null : (RubySettings.fromMap((map['rubySettings']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

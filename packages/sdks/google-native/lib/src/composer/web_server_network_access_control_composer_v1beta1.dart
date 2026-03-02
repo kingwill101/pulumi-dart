@@ -22,7 +22,7 @@ class WebServerNetworkAccessControlComposerV1beta1 {
 
   factory WebServerNetworkAccessControlComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return WebServerNetworkAccessControlComposerV1beta1(
-      allowedIpRanges: map['allowedIpRanges'] == null ? null : (pulumi.Input.decodeList<AllowedIpRangeComposerV1beta1>(map['allowedIpRanges'], (value) => AllowedIpRangeComposerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedIpRanges: map['allowedIpRanges'] == null ? null : (pulumi.Input.decodeList<AllowedIpRangeComposerV1beta1>(map['allowedIpRanges']!, (value) => AllowedIpRangeComposerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

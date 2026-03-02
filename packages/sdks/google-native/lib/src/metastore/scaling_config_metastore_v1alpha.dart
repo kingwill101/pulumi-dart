@@ -27,8 +27,8 @@ class ScalingConfigMetastoreV1alpha {
 
   factory ScalingConfigMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return ScalingConfigMetastoreV1alpha(
-      instanceSize: map['instanceSize'] == null ? null : (ScalingConfigInstanceSizeMetastoreV1alpha.fromValue(map['instanceSize'] as String)).input(),
-      scalingFactor: map['scalingFactor'] == null ? null : (map['scalingFactor'] as double).input(),
+      instanceSize: map['instanceSize'] == null ? null : (ScalingConfigInstanceSizeMetastoreV1alpha.fromValue(map['instanceSize']! as String)).input(),
+      scalingFactor: map['scalingFactor'] == null ? null : (map['scalingFactor']! as double).input(),
     );
   }
 }

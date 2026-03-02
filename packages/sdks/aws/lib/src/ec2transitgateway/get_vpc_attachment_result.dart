@@ -83,7 +83,7 @@ class GetVpcAttachmentResult {
       applianceModeSupport: map['applianceModeSupport'] as String,
       arn: map['arn'] as String,
       dnsSupport: map['dnsSupport'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcAttachmentFilter>(map['filters'], (value) => GetVpcAttachmentFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcAttachmentFilter>(map['filters']!, (value) => GetVpcAttachmentFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipv6Support: map['ipv6Support'] as String,
       region: map['region'] as String,

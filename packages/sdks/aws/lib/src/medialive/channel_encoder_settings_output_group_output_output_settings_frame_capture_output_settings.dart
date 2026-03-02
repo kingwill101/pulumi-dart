@@ -20,7 +20,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSet
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings(
-      nameModifier: map['nameModifier'] == null ? null : (map['nameModifier'] as String).input(),
+      nameModifier: map['nameModifier'] == null ? null : ((map['nameModifier'] as String).input()).input(),
     );
   }
 }

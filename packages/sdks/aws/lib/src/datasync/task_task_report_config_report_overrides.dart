@@ -37,10 +37,10 @@ class TaskTaskReportConfigReportOverrides {
 
   factory TaskTaskReportConfigReportOverrides.fromMap(Map<String, dynamic> map) {
     return TaskTaskReportConfigReportOverrides(
-      deletedOverride: map['deletedOverride'] == null ? null : (map['deletedOverride'] as String).input(),
-      skippedOverride: map['skippedOverride'] == null ? null : (map['skippedOverride'] as String).input(),
-      transferredOverride: map['transferredOverride'] == null ? null : (map['transferredOverride'] as String).input(),
-      verifiedOverride: map['verifiedOverride'] == null ? null : (map['verifiedOverride'] as String).input(),
+      deletedOverride: map['deletedOverride'] == null ? null : ((map['deletedOverride'] as String).input()).input(),
+      skippedOverride: map['skippedOverride'] == null ? null : ((map['skippedOverride'] as String).input()).input(),
+      transferredOverride: map['transferredOverride'] == null ? null : ((map['transferredOverride'] as String).input()).input(),
+      verifiedOverride: map['verifiedOverride'] == null ? null : ((map['verifiedOverride'] as String).input()).input(),
     );
   }
 }

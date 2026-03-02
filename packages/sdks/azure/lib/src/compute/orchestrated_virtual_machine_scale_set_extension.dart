@@ -77,15 +77,15 @@ class OrchestratedVirtualMachineScaleSetExtension {
 
   factory OrchestratedVirtualMachineScaleSetExtension.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetExtension(
-      autoUpgradeMinorVersionEnabled: map['autoUpgradeMinorVersionEnabled'] == null ? null : (map['autoUpgradeMinorVersionEnabled'] as bool).input(),
-      extensionsToProvisionAfterVmCreations: map['extensionsToProvisionAfterVmCreations'] == null ? null : ((map['extensionsToProvisionAfterVmCreations'] as List).cast<String>()).input(),
-      failureSuppressionEnabled: map['failureSuppressionEnabled'] == null ? null : (map['failureSuppressionEnabled'] as bool).input(),
-      forceExtensionExecutionOnChange: map['forceExtensionExecutionOnChange'] == null ? null : (map['forceExtensionExecutionOnChange'] as String).input(),
+      autoUpgradeMinorVersionEnabled: map['autoUpgradeMinorVersionEnabled'] == null ? null : (map['autoUpgradeMinorVersionEnabled']! as bool).input(),
+      extensionsToProvisionAfterVmCreations: map['extensionsToProvisionAfterVmCreations'] == null ? null : ((map['extensionsToProvisionAfterVmCreations']! as List).cast<String>()).input(),
+      failureSuppressionEnabled: map['failureSuppressionEnabled'] == null ? null : (map['failureSuppressionEnabled']! as bool).input(),
+      forceExtensionExecutionOnChange: map['forceExtensionExecutionOnChange'] == null ? null : (map['forceExtensionExecutionOnChange']! as String).input(),
       name: (map['name'] as String).input(),
-      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings'] as String).input(),
-      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : (OrchestratedVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault.fromMap((map['protectedSettingsFromKeyVault'] as Map).cast<String, dynamic>())).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']! as String).input(),
+      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : (OrchestratedVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault.fromMap((map['protectedSettingsFromKeyVault']! as Map).cast<String, dynamic>())).input(),
       publisher: (map['publisher'] as String).input(),
-      settings: map['settings'] == null ? null : (map['settings'] as String).input(),
+      settings: map['settings'] == null ? null : (map['settings']! as String).input(),
       type: (map['type'] as String).input(),
       typeHandlerVersion: (map['typeHandlerVersion'] as String).input(),
     );

@@ -22,7 +22,7 @@ class PlacementV1ClusterAffinityResponse {
 
   factory PlacementV1ClusterAffinityResponse.fromMap(Map<String, dynamic> map) {
     return PlacementV1ClusterAffinityResponse(
-      requiredDuringSchedulingIgnoredDuringExecution: map['requiredDuringSchedulingIgnoredDuringExecution'] == null ? null : (PlacementV1ClusterSelectorResponse.fromMap((map['requiredDuringSchedulingIgnoredDuringExecution'] as Map).cast<String, dynamic>())).input(),
+      requiredDuringSchedulingIgnoredDuringExecution: map['requiredDuringSchedulingIgnoredDuringExecution'] == null ? null : (PlacementV1ClusterSelectorResponse.fromMap((map['requiredDuringSchedulingIgnoredDuringExecution']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

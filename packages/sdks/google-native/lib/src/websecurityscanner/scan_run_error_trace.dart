@@ -33,9 +33,9 @@ class ScanRunErrorTrace {
 
   factory ScanRunErrorTrace.fromMap(Map<String, dynamic> map) {
     return ScanRunErrorTrace(
-      code: map['code'] == null ? null : (ScanRunErrorTraceCode.fromValue(map['code'] as String)).input(),
-      mostCommonHttpErrorCode: map['mostCommonHttpErrorCode'] == null ? null : (map['mostCommonHttpErrorCode'] as int).input(),
-      scanConfigError: map['scanConfigError'] == null ? null : (ScanConfigError.fromMap((map['scanConfigError'] as Map).cast<String, dynamic>())).input(),
+      code: map['code'] == null ? null : (ScanRunErrorTraceCode.fromValue(map['code']! as String)).input(),
+      mostCommonHttpErrorCode: map['mostCommonHttpErrorCode'] == null ? null : (map['mostCommonHttpErrorCode']! as int).input(),
+      scanConfigError: map['scanConfigError'] == null ? null : (ScanConfigError.fromMap((map['scanConfigError']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

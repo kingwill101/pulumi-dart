@@ -22,7 +22,7 @@ class EndCondition {
 
   factory EndCondition.fromMap(Map<String, dynamic> map) {
     return EndCondition(
-      cardinality: map['cardinality'] == null ? null : (Cardinality.fromMap((map['cardinality'] as Map).cast<String, dynamic>())).input(),
+      cardinality: map['cardinality'] == null ? null : (Cardinality.fromMap((map['cardinality']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class StorageConfigurationResponse {
 
   factory StorageConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return StorageConfigurationResponse(
-      partitionSize: map['partitionSize'] == null ? null : (map['partitionSize'] as String).input(),
+      partitionSize: map['partitionSize'] == null ? null : (map['partitionSize']! as String).input(),
     );
   }
 }

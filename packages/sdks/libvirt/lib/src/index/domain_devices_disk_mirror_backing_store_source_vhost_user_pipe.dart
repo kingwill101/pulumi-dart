@@ -27,7 +27,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe {
   factory DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipe(
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel>(map['secLabels']!, (value) => DomainDevicesDiskMirrorBackingStoreSourceVhostUserPipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

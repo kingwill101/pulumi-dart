@@ -43,7 +43,7 @@ class FleetUpdateStrategyArgs {
       fleetName: (map['fleetName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       strategy: (UpdateRunStrategy.fromMap((map['strategy'] as Map).cast<String, dynamic>())).input(),
-      updateStrategyName: map['updateStrategyName'] == null ? null : (map['updateStrategyName'] as String).input(),
+      updateStrategyName: map['updateStrategyName'] == null ? null : (map['updateStrategyName']! as String).input(),
     );
   }
 }

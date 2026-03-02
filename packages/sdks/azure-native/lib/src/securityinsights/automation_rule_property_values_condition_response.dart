@@ -28,9 +28,9 @@ class AutomationRulePropertyValuesConditionResponse {
 
   factory AutomationRulePropertyValuesConditionResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRulePropertyValuesConditionResponse(
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      propertyName: map['propertyName'] == null ? null : (map['propertyName'] as String).input(),
-      propertyValues: map['propertyValues'] == null ? null : ((map['propertyValues'] as List).cast<String>()).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      propertyName: map['propertyName'] == null ? null : (map['propertyName']! as String).input(),
+      propertyValues: map['propertyValues'] == null ? null : ((map['propertyValues']! as List).cast<String>()).input(),
     );
   }
 }

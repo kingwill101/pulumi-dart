@@ -20,7 +20,7 @@ class IndexIndexStatisticFaqStatistic {
 
   factory IndexIndexStatisticFaqStatistic.fromMap(Map<String, dynamic> map) {
     return IndexIndexStatisticFaqStatistic(
-      indexedQuestionAnswersCount: map['indexedQuestionAnswersCount'] == null ? null : (map['indexedQuestionAnswersCount'] as int).input(),
+      indexedQuestionAnswersCount: map['indexedQuestionAnswersCount'] == null ? null : ((map['indexedQuestionAnswersCount'] as int).input()).input(),
     );
   }
 }

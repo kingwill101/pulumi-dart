@@ -43,10 +43,10 @@ class SettingsArgs {
 
   factory SettingsArgs.fromMap(Map<String, dynamic> map) {
     return SettingsArgs(
-      emailNotificationSettings: map['emailNotificationSettings'] == null ? null : (SettingsEmailNotificationSettings.fromMap((map['emailNotificationSettings'] as Map).cast<String, dynamic>())).input(),
+      emailNotificationSettings: map['emailNotificationSettings'] == null ? null : (SettingsEmailNotificationSettings.fromMap((map['emailNotificationSettings']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
       parent: (map['parent'] as String).input(),
-      serviceAccountApproverSettings: map['serviceAccountApproverSettings'] == null ? null : (SettingsServiceAccountApproverSettings.fromMap((map['serviceAccountApproverSettings'] as Map).cast<String, dynamic>())).input(),
+      serviceAccountApproverSettings: map['serviceAccountApproverSettings'] == null ? null : (SettingsServiceAccountApproverSettings.fromMap((map['serviceAccountApproverSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class ListWebAppHostKeysSlotResult {
 
   factory ListWebAppHostKeysSlotResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppHostKeysSlotResult(
-      functionKeys: map['functionKeys'] == null ? null : (map['functionKeys'] as Map).cast<String, String>(),
-      masterKey: map['masterKey'] == null ? null : map['masterKey'] as String,
-      systemKeys: map['systemKeys'] == null ? null : (map['systemKeys'] as Map).cast<String, String>(),
+      functionKeys: map['functionKeys'] == null ? null : (map['functionKeys']! as Map).cast<String, String>(),
+      masterKey: map['masterKey'] == null ? null : map['masterKey']! as String,
+      systemKeys: map['systemKeys'] == null ? null : (map['systemKeys']! as Map).cast<String, String>(),
     );
   }
 }

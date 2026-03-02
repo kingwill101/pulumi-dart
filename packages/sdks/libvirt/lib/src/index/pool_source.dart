@@ -80,17 +80,17 @@ class PoolSource {
 
   factory PoolSource.fromMap(Map<String, dynamic> map) {
     return PoolSource(
-      adapter: map['adapter'] == null ? null : (PoolSourceAdapter.fromMap((map['adapter'] as Map).cast<String, dynamic>())).input(),
-      auth: map['auth'] == null ? null : (PoolSourceAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
-      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<PoolSourceDevice>(map['devices'], (value) => PoolSourceDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dir: map['dir'] == null ? null : (PoolSourceDir.fromMap((map['dir'] as Map).cast<String, dynamic>())).input(),
-      format: map['format'] == null ? null : (PoolSourceFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
-      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<PoolSourceHost>(map['hosts'], (value) => PoolSourceHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initiator: map['initiator'] == null ? null : (PoolSourceInitiator.fromMap((map['initiator'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      product: map['product'] == null ? null : (PoolSourceProduct.fromMap((map['product'] as Map).cast<String, dynamic>())).input(),
-      protocol: map['protocol'] == null ? null : (PoolSourceProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())).input(),
-      vendor: map['vendor'] == null ? null : (PoolSourceVendor.fromMap((map['vendor'] as Map).cast<String, dynamic>())).input(),
+      adapter: map['adapter'] == null ? null : (PoolSourceAdapter.fromMap((map['adapter']! as Map).cast<String, dynamic>())).input(),
+      auth: map['auth'] == null ? null : (PoolSourceAuth.fromMap((map['auth']! as Map).cast<String, dynamic>())).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<PoolSourceDevice>(map['devices']!, (value) => PoolSourceDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dir: map['dir'] == null ? null : (PoolSourceDir.fromMap((map['dir']! as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (PoolSourceFormat.fromMap((map['format']! as Map).cast<String, dynamic>())).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<PoolSourceHost>(map['hosts']!, (value) => PoolSourceHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initiator: map['initiator'] == null ? null : (PoolSourceInitiator.fromMap((map['initiator']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      product: map['product'] == null ? null : (PoolSourceProduct.fromMap((map['product']! as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (PoolSourceProtocol.fromMap((map['protocol']! as Map).cast<String, dynamic>())).input(),
+      vendor: map['vendor'] == null ? null : (PoolSourceVendor.fromMap((map['vendor']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

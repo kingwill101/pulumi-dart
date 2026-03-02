@@ -22,7 +22,7 @@ class RuntimeResponseLogging {
 
   factory RuntimeResponseLogging.fromMap(Map<String, dynamic> map) {
     return RuntimeResponseLogging(
-      loggerSettings: map['loggerSettings'] == null ? null : (pulumi.Input.decodeList<LoggerSettingResponse>(map['loggerSettings'], (value) => LoggerSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loggerSettings: map['loggerSettings'] == null ? null : (pulumi.Input.decodeList<LoggerSettingResponse>(map['loggerSettings']!, (value) => LoggerSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

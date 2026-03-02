@@ -59,12 +59,12 @@ class CertificateManaged {
 
   factory CertificateManaged.fromMap(Map<String, dynamic> map) {
     return CertificateManaged(
-      authorizationAttemptInfos: map['authorizationAttemptInfos'] == null ? null : (pulumi.Input.decodeList<CertificateManagedAuthorizationAttemptInfo>(map['authorizationAttemptInfos'], (value) => CertificateManagedAuthorizationAttemptInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dnsAuthorizations: map['dnsAuthorizations'] == null ? null : ((map['dnsAuthorizations'] as List).cast<String>()).input(),
-      domains: map['domains'] == null ? null : ((map['domains'] as List).cast<String>()).input(),
-      issuanceConfig: map['issuanceConfig'] == null ? null : (map['issuanceConfig'] as String).input(),
-      provisioningIssues: map['provisioningIssues'] == null ? null : (pulumi.Input.decodeList<CertificateManagedProvisioningIssue>(map['provisioningIssues'], (value) => CertificateManagedProvisioningIssue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      authorizationAttemptInfos: map['authorizationAttemptInfos'] == null ? null : (pulumi.Input.decodeList<CertificateManagedAuthorizationAttemptInfo>(map['authorizationAttemptInfos']!, (value) => CertificateManagedAuthorizationAttemptInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsAuthorizations: map['dnsAuthorizations'] == null ? null : ((map['dnsAuthorizations']! as List).cast<String>()).input(),
+      domains: map['domains'] == null ? null : ((map['domains']! as List).cast<String>()).input(),
+      issuanceConfig: map['issuanceConfig'] == null ? null : (map['issuanceConfig']! as String).input(),
+      provisioningIssues: map['provisioningIssues'] == null ? null : (pulumi.Input.decodeList<CertificateManagedProvisioningIssue>(map['provisioningIssues']!, (value) => CertificateManagedProvisioningIssue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

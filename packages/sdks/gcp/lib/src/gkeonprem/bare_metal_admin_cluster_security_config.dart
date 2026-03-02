@@ -22,7 +22,7 @@ class BareMetalAdminClusterSecurityConfig {
 
   factory BareMetalAdminClusterSecurityConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterSecurityConfig(
-      authorization: map['authorization'] == null ? null : (BareMetalAdminClusterSecurityConfigAuthorization.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
+      authorization: map['authorization'] == null ? null : (BareMetalAdminClusterSecurityConfigAuthorization.fromMap((map['authorization']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

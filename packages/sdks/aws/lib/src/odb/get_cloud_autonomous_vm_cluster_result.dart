@@ -304,7 +304,7 @@ class GetCloudAutonomousVmClusterResult {
       id: map['id'] as String,
       isMtlsEnabledVmCluster: map['isMtlsEnabledVmCluster'] as bool,
       licenseModel: map['licenseModel'] as String,
-      maintenanceWindows: pulumi.Input.decodeList<GetCloudAutonomousVmClusterMaintenanceWindow>(map['maintenanceWindows'], (value) => GetCloudAutonomousVmClusterMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())),
+      maintenanceWindows: pulumi.Input.decodeList<GetCloudAutonomousVmClusterMaintenanceWindow>(map['maintenanceWindows']!, (value) => GetCloudAutonomousVmClusterMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>())),
       maxAcdsLowestScaledValue: map['maxAcdsLowestScaledValue'] as int,
       memoryPerOracleComputeUnitInGbs: map['memoryPerOracleComputeUnitInGbs'] as int,
       memorySizeInGbs: map['memorySizeInGbs'] as int,

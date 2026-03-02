@@ -93,14 +93,14 @@ class Notification {
   factory Notification.fromMap(Map<String, dynamic> map) {
     return Notification(
       contactEmails: ((map['contactEmails'] as List).cast<String>()).input(),
-      contactGroups: map['contactGroups'] == null ? null : ((map['contactGroups'] as List).cast<String>()).input(),
-      contactRoles: map['contactRoles'] == null ? null : ((map['contactRoles'] as List).cast<String>()).input(),
+      contactGroups: map['contactGroups'] == null ? null : ((map['contactGroups']! as List).cast<String>()).input(),
+      contactRoles: map['contactRoles'] == null ? null : ((map['contactRoles']! as List).cast<String>()).input(),
       enabled: (map['enabled'] as bool).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      locale: map['locale'] == null ? null : (map['locale'] as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      locale: map['locale'] == null ? null : (map['locale']! as String).input(),
       operator: (map['operator'] as String).input(),
       threshold: (map['threshold'] as double).input(),
-      thresholdType: map['thresholdType'] == null ? null : (map['thresholdType'] as String).input(),
+      thresholdType: map['thresholdType'] == null ? null : (map['thresholdType']! as String).input(),
     );
   }
 }

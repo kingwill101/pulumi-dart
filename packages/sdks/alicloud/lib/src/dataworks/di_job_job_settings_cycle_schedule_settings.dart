@@ -29,8 +29,8 @@ class DiJobJobSettingsCycleScheduleSettings {
 
   factory DiJobJobSettingsCycleScheduleSettings.fromMap(Map<String, dynamic> map) {
     return DiJobJobSettingsCycleScheduleSettings(
-      cycleMigrationType: map['cycleMigrationType'] == null ? null : (map['cycleMigrationType'] as String).input(),
-      scheduleParameters: map['scheduleParameters'] == null ? null : (map['scheduleParameters'] as String).input(),
+      cycleMigrationType: map['cycleMigrationType'] == null ? null : (map['cycleMigrationType']! as String).input(),
+      scheduleParameters: map['scheduleParameters'] == null ? null : (map['scheduleParameters']! as String).input(),
     );
   }
 }

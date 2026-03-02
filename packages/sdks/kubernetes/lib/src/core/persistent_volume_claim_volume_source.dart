@@ -27,7 +27,7 @@ class PersistentVolumeClaimVolumeSource {
   factory PersistentVolumeClaimVolumeSource.fromMap(Map<String, dynamic> map) {
     return PersistentVolumeClaimVolumeSource(
       claimName: (map['claimName'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

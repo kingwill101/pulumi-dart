@@ -46,11 +46,11 @@ class KeyHandleState {
 
   factory KeyHandleState.fromMap(Map<String, dynamic> map) {
     return KeyHandleState(
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resourceTypeSelector: map['resourceTypeSelector'] == null ? null : (map['resourceTypeSelector'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resourceTypeSelector: map['resourceTypeSelector'] == null ? null : (map['resourceTypeSelector']! as String).input(),
     );
   }
 }

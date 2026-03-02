@@ -66,15 +66,15 @@ class GetIpamIpamPoolAllocationsResult {
   factory GetIpamIpamPoolAllocationsResult.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamPoolAllocationsResult(
       allocations: pulumi.Input.decodeList<GetIpamIpamPoolAllocationsAllocation>(map['allocations'], (value) => GetIpamIpamPoolAllocationsAllocation.fromMap((value as Map).cast<String, dynamic>())),
-      cidr: map['cidr'] == null ? null : map['cidr'] as String,
+      cidr: map['cidr'] == null ? null : map['cidr']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ipamPoolAllocationId: map['ipamPoolAllocationId'] == null ? null : map['ipamPoolAllocationId'] as String,
-      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : map['ipamPoolAllocationName'] as String,
+      ipamPoolAllocationId: map['ipamPoolAllocationId'] == null ? null : map['ipamPoolAllocationId']! as String,
+      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : map['ipamPoolAllocationName']! as String,
       ipamPoolId: map['ipamPoolId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

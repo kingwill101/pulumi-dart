@@ -27,8 +27,8 @@ class ObjectLockConfigurationResponse {
 
   factory ObjectLockConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ObjectLockConfigurationResponse(
-      objectLockEnabled: map['objectLockEnabled'] == null ? null : (map['objectLockEnabled'] as String).input(),
-      rule: map['rule'] == null ? null : (ObjectLockRuleResponse.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      objectLockEnabled: map['objectLockEnabled'] == null ? null : (map['objectLockEnabled']! as String).input(),
+      rule: map['rule'] == null ? null : (ObjectLockRuleResponse.fromMap((map['rule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

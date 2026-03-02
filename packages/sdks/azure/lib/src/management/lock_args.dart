@@ -42,8 +42,8 @@ class LockArgs {
   factory LockArgs.fromMap(Map<String, dynamic> map) {
     return LockArgs(
       lockLevel: (map['lockLevel'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
       scope: (map['scope'] as String).input(),
     );
   }

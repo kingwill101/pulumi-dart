@@ -27,7 +27,7 @@ class AwsClusterAuthorization {
 
   factory AwsClusterAuthorization.fromMap(Map<String, dynamic> map) {
     return AwsClusterAuthorization(
-      adminGroups: map['adminGroups'] == null ? null : (pulumi.Input.decodeList<AwsClusterAuthorizationAdminGroup>(map['adminGroups'], (value) => AwsClusterAuthorizationAdminGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adminGroups: map['adminGroups'] == null ? null : (pulumi.Input.decodeList<AwsClusterAuthorizationAdminGroup>(map['adminGroups']!, (value) => AwsClusterAuthorizationAdminGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
       adminUsers: (pulumi.Input.decodeList<AwsClusterAuthorizationAdminUser>(map['adminUsers'], (value) => AwsClusterAuthorizationAdminUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

@@ -72,10 +72,10 @@ class AS2SecuritySettings {
       enableNRRForOutboundDecodedMessages: (map['enableNRRForOutboundDecodedMessages'] as bool).input(),
       enableNRRForOutboundEncodedMessages: (map['enableNRRForOutboundEncodedMessages'] as bool).input(),
       enableNRRForOutboundMDN: (map['enableNRRForOutboundMDN'] as bool).input(),
-      encryptionCertificateName: map['encryptionCertificateName'] == null ? null : (map['encryptionCertificateName'] as String).input(),
+      encryptionCertificateName: map['encryptionCertificateName'] == null ? null : (map['encryptionCertificateName']! as String).input(),
       overrideGroupSigningCertificate: (map['overrideGroupSigningCertificate'] as bool).input(),
-      sha2AlgorithmFormat: map['sha2AlgorithmFormat'] == null ? null : (map['sha2AlgorithmFormat'] as String).input(),
-      signingCertificateName: map['signingCertificateName'] == null ? null : (map['signingCertificateName'] as String).input(),
+      sha2AlgorithmFormat: map['sha2AlgorithmFormat'] == null ? null : (map['sha2AlgorithmFormat']! as String).input(),
+      signingCertificateName: map['signingCertificateName'] == null ? null : (map['signingCertificateName']! as String).input(),
     );
   }
 }

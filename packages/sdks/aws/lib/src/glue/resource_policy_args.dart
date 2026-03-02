@@ -34,9 +34,9 @@ class ResourcePolicyArgs {
 
   factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyArgs(
-      enableHybrid: map['enableHybrid'] == null ? null : (map['enableHybrid'] as String).input(),
+      enableHybrid: map['enableHybrid'] == null ? null : ((map['enableHybrid'] as String).input()).input(),
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

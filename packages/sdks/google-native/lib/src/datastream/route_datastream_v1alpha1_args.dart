@@ -62,13 +62,13 @@ class RouteDatastreamV1alpha1Args {
   factory RouteDatastreamV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return RouteDatastreamV1alpha1Args(
       destinationAddress: (map['destinationAddress'] as String).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as int).input(),
       displayName: (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       privateConnectionId: (map['privateConnectionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       routeId: (map['routeId'] as String).input(),
     );
   }

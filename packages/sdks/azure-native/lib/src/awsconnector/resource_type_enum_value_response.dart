@@ -21,7 +21,7 @@ class ResourceTypeEnumValueResponse {
 
   factory ResourceTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

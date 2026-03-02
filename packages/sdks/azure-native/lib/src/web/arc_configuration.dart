@@ -45,13 +45,13 @@ class ArcConfiguration {
 
   factory ArcConfiguration.fromMap(Map<String, dynamic> map) {
     return ArcConfiguration(
-      artifactStorageAccessMode: map['artifactStorageAccessMode'] == null ? null : (map['artifactStorageAccessMode'] as String).input(),
-      artifactStorageClassName: map['artifactStorageClassName'] == null ? null : (map['artifactStorageClassName'] as String).input(),
-      artifactStorageMountPath: map['artifactStorageMountPath'] == null ? null : (map['artifactStorageMountPath'] as String).input(),
-      artifactStorageNodeName: map['artifactStorageNodeName'] == null ? null : (map['artifactStorageNodeName'] as String).input(),
-      artifactsStorageType: map['artifactsStorageType'] == null ? null : (StorageType.fromValue(map['artifactsStorageType'] as String)).input(),
-      frontEndServiceConfiguration: map['frontEndServiceConfiguration'] == null ? null : (FrontEndConfiguration.fromMap((map['frontEndServiceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      kubeConfig: map['kubeConfig'] == null ? null : (map['kubeConfig'] as String).input(),
+      artifactStorageAccessMode: map['artifactStorageAccessMode'] == null ? null : (map['artifactStorageAccessMode']! as String).input(),
+      artifactStorageClassName: map['artifactStorageClassName'] == null ? null : (map['artifactStorageClassName']! as String).input(),
+      artifactStorageMountPath: map['artifactStorageMountPath'] == null ? null : (map['artifactStorageMountPath']! as String).input(),
+      artifactStorageNodeName: map['artifactStorageNodeName'] == null ? null : (map['artifactStorageNodeName']! as String).input(),
+      artifactsStorageType: map['artifactsStorageType'] == null ? null : (StorageType.fromValue(map['artifactsStorageType']! as String)).input(),
+      frontEndServiceConfiguration: map['frontEndServiceConfiguration'] == null ? null : (FrontEndConfiguration.fromMap((map['frontEndServiceConfiguration']! as Map).cast<String, dynamic>())).input(),
+      kubeConfig: map['kubeConfig'] == null ? null : (map['kubeConfig']! as String).input(),
     );
   }
 }

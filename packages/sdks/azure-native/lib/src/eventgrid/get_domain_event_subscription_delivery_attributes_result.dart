@@ -22,7 +22,7 @@ class GetDomainEventSubscriptionDeliveryAttributesResult {
 
   factory GetDomainEventSubscriptionDeliveryAttributesResult.fromMap(Map<String, dynamic> map) {
     return GetDomainEventSubscriptionDeliveryAttributesResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(map['value'], (value) => DynamicDeliveryAttributeMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(map['value']!, (value) => DynamicDeliveryAttributeMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

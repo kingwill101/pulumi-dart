@@ -37,8 +37,8 @@ class NextGenerationFirewallVirtualHubLocalRulestackDestinationNat {
 
   factory NextGenerationFirewallVirtualHubLocalRulestackDestinationNat.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubLocalRulestackDestinationNat(
-      backendConfig: map['backendConfig'] == null ? null : (NextGenerationFirewallVirtualHubLocalRulestackDestinationNatBackendConfig.fromMap((map['backendConfig'] as Map).cast<String, dynamic>())).input(),
-      frontendConfig: map['frontendConfig'] == null ? null : (NextGenerationFirewallVirtualHubLocalRulestackDestinationNatFrontendConfig.fromMap((map['frontendConfig'] as Map).cast<String, dynamic>())).input(),
+      backendConfig: map['backendConfig'] == null ? null : (NextGenerationFirewallVirtualHubLocalRulestackDestinationNatBackendConfig.fromMap((map['backendConfig']! as Map).cast<String, dynamic>())).input(),
+      frontendConfig: map['frontendConfig'] == null ? null : (NextGenerationFirewallVirtualHubLocalRulestackDestinationNatFrontendConfig.fromMap((map['frontendConfig']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       protocol: (map['protocol'] as String).input(),
     );

@@ -30,9 +30,9 @@ class EventGridTopicInputMappingDefaultValues {
 
   factory EventGridTopicInputMappingDefaultValues.fromMap(Map<String, dynamic> map) {
     return EventGridTopicInputMappingDefaultValues(
-      dataVersion: map['dataVersion'] == null ? null : (map['dataVersion'] as String).input(),
-      eventType: map['eventType'] == null ? null : (map['eventType'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      dataVersion: map['dataVersion'] == null ? null : (map['dataVersion']! as String).input(),
+      eventType: map['eventType'] == null ? null : (map['eventType']! as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
     );
   }
 }

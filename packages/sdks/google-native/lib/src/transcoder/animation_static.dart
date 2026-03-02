@@ -27,8 +27,8 @@ class AnimationStatic {
 
   factory AnimationStatic.fromMap(Map<String, dynamic> map) {
     return AnimationStatic(
-      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset'] as String).input(),
-      xy: map['xy'] == null ? null : (NormalizedCoordinate.fromMap((map['xy'] as Map).cast<String, dynamic>())).input(),
+      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset']! as String).input(),
+      xy: map['xy'] == null ? null : (NormalizedCoordinate.fromMap((map['xy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -38,9 +38,9 @@ class AuthzPolicyHttpRuleFromSource {
 
   factory AuthzPolicyHttpRuleFromSource.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleFromSource(
-      ipBlocks: map['ipBlocks'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleFromSourceIpBlock>(map['ipBlocks'], (value) => AuthzPolicyHttpRuleFromSourceIpBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      principals: map['principals'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleFromSourcePrincipal>(map['principals'], (value) => AuthzPolicyHttpRuleFromSourcePrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleFromSourceResource>(map['resources'], (value) => AuthzPolicyHttpRuleFromSourceResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipBlocks: map['ipBlocks'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleFromSourceIpBlock>(map['ipBlocks']!, (value) => AuthzPolicyHttpRuleFromSourceIpBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      principals: map['principals'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleFromSourcePrincipal>(map['principals']!, (value) => AuthzPolicyHttpRuleFromSourcePrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleFromSourceResource>(map['resources']!, (value) => AuthzPolicyHttpRuleFromSourceResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

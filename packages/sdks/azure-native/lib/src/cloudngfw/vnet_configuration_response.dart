@@ -38,7 +38,7 @@ class VnetConfigurationResponse {
 
   factory VnetConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VnetConfigurationResponse(
-      ipOfTrustSubnetForUdr: map['ipOfTrustSubnetForUdr'] == null ? null : (IPAddressResponse.fromMap((map['ipOfTrustSubnetForUdr'] as Map).cast<String, dynamic>())).input(),
+      ipOfTrustSubnetForUdr: map['ipOfTrustSubnetForUdr'] == null ? null : (IPAddressResponse.fromMap((map['ipOfTrustSubnetForUdr']! as Map).cast<String, dynamic>())).input(),
       trustSubnet: (IPAddressSpaceResponse.fromMap((map['trustSubnet'] as Map).cast<String, dynamic>())).input(),
       unTrustSubnet: (IPAddressSpaceResponse.fromMap((map['unTrustSubnet'] as Map).cast<String, dynamic>())).input(),
       vnet: (IPAddressSpaceResponse.fromMap((map['vnet'] as Map).cast<String, dynamic>())).input(),

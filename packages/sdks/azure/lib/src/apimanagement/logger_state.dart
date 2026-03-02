@@ -58,14 +58,14 @@ class LoggerState {
 
   factory LoggerState.fromMap(Map<String, dynamic> map) {
     return LoggerState(
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      applicationInsights: map['applicationInsights'] == null ? null : (LoggerApplicationInsights.fromMap((map['applicationInsights'] as Map).cast<String, dynamic>())).input(),
-      buffered: map['buffered'] == null ? null : (map['buffered'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eventhub: map['eventhub'] == null ? null : (LoggerEventhub.fromMap((map['eventhub'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      applicationInsights: map['applicationInsights'] == null ? null : (LoggerApplicationInsights.fromMap((map['applicationInsights']! as Map).cast<String, dynamic>())).input(),
+      buffered: map['buffered'] == null ? null : (map['buffered']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      eventhub: map['eventhub'] == null ? null : (LoggerEventhub.fromMap((map['eventhub']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

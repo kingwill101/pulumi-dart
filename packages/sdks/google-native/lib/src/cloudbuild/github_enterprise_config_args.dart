@@ -79,17 +79,17 @@ class GithubEnterpriseConfigArgs {
   factory GithubEnterpriseConfigArgs.fromMap(Map<String, dynamic> map) {
     return GithubEnterpriseConfigArgs(
       appId: (map['appId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      gheConfigId: map['gheConfigId'] == null ? null : (map['gheConfigId'] as String).input(),
-      hostUrl: map['hostUrl'] == null ? null : (map['hostUrl'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peeredNetwork: map['peeredNetwork'] == null ? null : (map['peeredNetwork'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      secrets: map['secrets'] == null ? null : (GitHubEnterpriseSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())).input(),
-      sslCa: map['sslCa'] == null ? null : (map['sslCa'] as String).input(),
-      webhookKey: map['webhookKey'] == null ? null : (map['webhookKey'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      gheConfigId: map['gheConfigId'] == null ? null : (map['gheConfigId']! as String).input(),
+      hostUrl: map['hostUrl'] == null ? null : (map['hostUrl']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peeredNetwork: map['peeredNetwork'] == null ? null : (map['peeredNetwork']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      secrets: map['secrets'] == null ? null : (GitHubEnterpriseSecrets.fromMap((map['secrets']! as Map).cast<String, dynamic>())).input(),
+      sslCa: map['sslCa'] == null ? null : (map['sslCa']! as String).input(),
+      webhookKey: map['webhookKey'] == null ? null : (map['webhookKey']! as String).input(),
     );
   }
 }

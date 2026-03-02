@@ -66,10 +66,10 @@ class RepositoryIamBindingArgs {
 
   factory RepositoryIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryIamBindingArgs(
-      condition: map['condition'] == null ? null : (RepositoryIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      condition: map['condition'] == null ? null : (RepositoryIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
       role: (map['role'] as String).input(),
     );

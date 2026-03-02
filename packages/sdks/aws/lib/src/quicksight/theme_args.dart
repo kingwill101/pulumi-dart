@@ -68,15 +68,15 @@ class ThemeArgs {
 
   factory ThemeArgs.fromMap(Map<String, dynamic> map) {
     return ThemeArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
       baseThemeId: (map['baseThemeId'] as String).input(),
-      configuration: map['configuration'] == null ? null : (ThemeConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<ThemePermission>(map['permissions'], (value) => ThemePermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      configuration: map['configuration'] == null ? null : ((ThemeConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      permissions: map['permissions'] == null ? null : ((pulumi.Input.decodeList<ThemePermission>(map['permissions']!, (value) => ThemePermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       themeId: (map['themeId'] as String).input(),
-      versionDescription: map['versionDescription'] == null ? null : (map['versionDescription'] as String).input(),
+      versionDescription: map['versionDescription'] == null ? null : ((map['versionDescription'] as String).input()).input(),
     );
   }
 }

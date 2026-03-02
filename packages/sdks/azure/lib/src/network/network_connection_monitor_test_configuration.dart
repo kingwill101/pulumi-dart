@@ -59,14 +59,14 @@ class NetworkConnectionMonitorTestConfiguration {
 
   factory NetworkConnectionMonitorTestConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorTestConfiguration(
-      httpConfiguration: map['httpConfiguration'] == null ? null : (NetworkConnectionMonitorTestConfigurationHttpConfiguration.fromMap((map['httpConfiguration'] as Map).cast<String, dynamic>())).input(),
-      icmpConfiguration: map['icmpConfiguration'] == null ? null : (NetworkConnectionMonitorTestConfigurationIcmpConfiguration.fromMap((map['icmpConfiguration'] as Map).cast<String, dynamic>())).input(),
+      httpConfiguration: map['httpConfiguration'] == null ? null : (NetworkConnectionMonitorTestConfigurationHttpConfiguration.fromMap((map['httpConfiguration']! as Map).cast<String, dynamic>())).input(),
+      icmpConfiguration: map['icmpConfiguration'] == null ? null : (NetworkConnectionMonitorTestConfigurationIcmpConfiguration.fromMap((map['icmpConfiguration']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      preferredIpVersion: map['preferredIpVersion'] == null ? null : (map['preferredIpVersion'] as String).input(),
+      preferredIpVersion: map['preferredIpVersion'] == null ? null : (map['preferredIpVersion']! as String).input(),
       protocol: (map['protocol'] as String).input(),
-      successThreshold: map['successThreshold'] == null ? null : (NetworkConnectionMonitorTestConfigurationSuccessThreshold.fromMap((map['successThreshold'] as Map).cast<String, dynamic>())).input(),
-      tcpConfiguration: map['tcpConfiguration'] == null ? null : (NetworkConnectionMonitorTestConfigurationTcpConfiguration.fromMap((map['tcpConfiguration'] as Map).cast<String, dynamic>())).input(),
-      testFrequencyInSeconds: map['testFrequencyInSeconds'] == null ? null : (map['testFrequencyInSeconds'] as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (NetworkConnectionMonitorTestConfigurationSuccessThreshold.fromMap((map['successThreshold']! as Map).cast<String, dynamic>())).input(),
+      tcpConfiguration: map['tcpConfiguration'] == null ? null : (NetworkConnectionMonitorTestConfigurationTcpConfiguration.fromMap((map['tcpConfiguration']! as Map).cast<String, dynamic>())).input(),
+      testFrequencyInSeconds: map['testFrequencyInSeconds'] == null ? null : (map['testFrequencyInSeconds']! as int).input(),
     );
   }
 }

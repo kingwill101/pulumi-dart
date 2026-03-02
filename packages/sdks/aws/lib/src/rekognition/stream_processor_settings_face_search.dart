@@ -26,7 +26,7 @@ class StreamProcessorSettingsFaceSearch {
   factory StreamProcessorSettingsFaceSearch.fromMap(Map<String, dynamic> map) {
     return StreamProcessorSettingsFaceSearch(
       collectionId: (map['collectionId'] as String).input(),
-      faceMatchThreshold: map['faceMatchThreshold'] == null ? null : (map['faceMatchThreshold'] as double).input(),
+      faceMatchThreshold: map['faceMatchThreshold'] == null ? null : ((map['faceMatchThreshold'] as double).input()).input(),
     );
   }
 }

@@ -41,9 +41,9 @@ class InstanceStorageConfigArgs {
   factory InstanceStorageConfigArgs.fromMap(Map<String, dynamic> map) {
     return InstanceStorageConfigArgs(
       instanceId: (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceType: (map['resourceType'] as String).input(),
-      storageConfig: (InstanceStorageConfigStorageConfig.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())).input(),
+      storageConfig: (InstanceStorageConfigStorageConfig.fromMap((map['storageConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

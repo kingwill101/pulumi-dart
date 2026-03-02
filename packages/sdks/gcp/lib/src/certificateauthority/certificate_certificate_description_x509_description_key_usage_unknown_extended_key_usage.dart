@@ -20,7 +20,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKey
 
   factory CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage(
-      objectIdPaths: map['objectIdPaths'] == null ? null : ((map['objectIdPaths'] as List).cast<int>()).input(),
+      objectIdPaths: map['objectIdPaths'] == null ? null : ((map['objectIdPaths']! as List).cast<int>()).input(),
     );
   }
 }

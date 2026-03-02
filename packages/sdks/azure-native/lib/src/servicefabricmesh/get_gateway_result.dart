@@ -95,9 +95,9 @@ class GetGatewayResult {
   factory GetGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetGatewayResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       destinationNetwork: NetworkRefResponse.fromMap((map['destinationNetwork'] as Map).cast<String, dynamic>()),
-      http: map['http'] == null ? null : pulumi.Input.decodeList<HttpConfigResponse>(map['http'], (value) => HttpConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
+      http: map['http'] == null ? null : pulumi.Input.decodeList<HttpConfigResponse>(map['http']!, (value) => HttpConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipAddress: map['ipAddress'] as String,
       location: map['location'] as String,
@@ -106,8 +106,8 @@ class GetGatewayResult {
       sourceNetwork: NetworkRefResponse.fromMap((map['sourceNetwork'] as Map).cast<String, dynamic>()),
       status: map['status'] as String,
       statusDetails: map['statusDetails'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tcp: map['tcp'] == null ? null : pulumi.Input.decodeList<TcpConfigResponse>(map['tcp'], (value) => TcpConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tcp: map['tcp'] == null ? null : pulumi.Input.decodeList<TcpConfigResponse>(map['tcp']!, (value) => TcpConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

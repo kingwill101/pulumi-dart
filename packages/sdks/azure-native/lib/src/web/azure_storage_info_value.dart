@@ -47,12 +47,12 @@ class AzureStorageInfoValue {
 
   factory AzureStorageInfoValue.fromMap(Map<String, dynamic> map) {
     return AzureStorageInfoValue(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
-      type: map['type'] == null ? null : (AzureStorageType.fromValue(map['type'] as String)).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
+      type: map['type'] == null ? null : (AzureStorageType.fromValue(map['type']! as String)).input(),
     );
   }
 }

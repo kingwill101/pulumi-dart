@@ -25,8 +25,8 @@ class AlertPolicyDocumentationLink {
 
   factory AlertPolicyDocumentationLink.fromMap(Map<String, dynamic> map) {
     return AlertPolicyDocumentationLink(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

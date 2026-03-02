@@ -20,7 +20,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementF
 
   factory WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchBody(
-      oversizeHandling: map['oversizeHandling'] == null ? null : (map['oversizeHandling'] as String).input(),
+      oversizeHandling: map['oversizeHandling'] == null ? null : ((map['oversizeHandling'] as String).input()).input(),
     );
   }
 }

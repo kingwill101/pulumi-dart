@@ -51,13 +51,13 @@ class ConnectionGatewayDefinitionProperties {
 
   factory ConnectionGatewayDefinitionProperties.fromMap(Map<String, dynamic> map) {
     return ConnectionGatewayDefinitionProperties(
-      backendUri: map['backendUri'] == null ? null : (map['backendUri'] as String).input(),
-      connectionGatewayInstallation: map['connectionGatewayInstallation'] == null ? null : (ConnectionGatewayReference.fromMap((map['connectionGatewayInstallation'] as Map).cast<String, dynamic>())).input(),
-      contactInformation: map['contactInformation'] == null ? null : ((map['contactInformation'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      machineName: map['machineName'] == null ? null : (map['machineName'] as String).input(),
-      status: map['status'] == null ? null : (map['status']).input(),
+      backendUri: map['backendUri'] == null ? null : (map['backendUri']! as String).input(),
+      connectionGatewayInstallation: map['connectionGatewayInstallation'] == null ? null : (ConnectionGatewayReference.fromMap((map['connectionGatewayInstallation']! as Map).cast<String, dynamic>())).input(),
+      contactInformation: map['contactInformation'] == null ? null : ((map['contactInformation']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      machineName: map['machineName'] == null ? null : (map['machineName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']!).input(),
     );
   }
 }

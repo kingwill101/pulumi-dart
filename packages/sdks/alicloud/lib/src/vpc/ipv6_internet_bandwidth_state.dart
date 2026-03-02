@@ -41,11 +41,11 @@ class Ipv6InternetBandwidthState {
 
   factory Ipv6InternetBandwidthState.fromMap(Map<String, dynamic> map) {
     return Ipv6InternetBandwidthState(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
-      ipv6AddressId: map['ipv6AddressId'] == null ? null : (map['ipv6AddressId'] as String).input(),
-      ipv6GatewayId: map['ipv6GatewayId'] == null ? null : (map['ipv6GatewayId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
+      ipv6AddressId: map['ipv6AddressId'] == null ? null : (map['ipv6AddressId']! as String).input(),
+      ipv6GatewayId: map['ipv6GatewayId'] == null ? null : (map['ipv6GatewayId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

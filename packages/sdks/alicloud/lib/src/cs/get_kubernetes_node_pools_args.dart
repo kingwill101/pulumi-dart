@@ -40,9 +40,9 @@ class GetKubernetesNodePoolsArgs {
   factory GetKubernetesNodePoolsArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesNodePoolsArgs(
       clusterId: (map['clusterId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nodePoolName: map['nodePoolName'] == null ? null : (map['nodePoolName'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nodePoolName: map['nodePoolName'] == null ? null : (map['nodePoolName']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

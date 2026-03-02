@@ -30,7 +30,7 @@ class RegistryTaskTimerTrigger {
 
   factory RegistryTaskTimerTrigger.fromMap(Map<String, dynamic> map) {
     return RegistryTaskTimerTrigger(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       name: (map['name'] as String).input(),
       schedule: (map['schedule'] as String).input(),
     );

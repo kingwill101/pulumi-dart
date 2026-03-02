@@ -19,7 +19,7 @@ class DomainDestroy {
 
   factory DomainDestroy.fromMap(Map<String, dynamic> map) {
     return DomainDestroy(
-      graceful: map['graceful'] == null ? null : (map['graceful'] as bool).input(),
+      graceful: map['graceful'] == null ? null : (map['graceful']! as bool).input(),
     );
   }
 }

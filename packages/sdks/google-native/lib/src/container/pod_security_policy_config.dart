@@ -21,7 +21,7 @@ class PodSecurityPolicyConfig {
 
   factory PodSecurityPolicyConfig.fromMap(Map<String, dynamic> map) {
     return PodSecurityPolicyConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

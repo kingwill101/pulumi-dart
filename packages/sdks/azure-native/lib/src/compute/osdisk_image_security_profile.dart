@@ -26,8 +26,8 @@ class OSDiskImageSecurityProfile {
 
   factory OSDiskImageSecurityProfile.fromMap(Map<String, dynamic> map) {
     return OSDiskImageSecurityProfile(
-      confidentialVMEncryptionType: map['confidentialVMEncryptionType'] == null ? null : (map['confidentialVMEncryptionType'] as String).input(),
-      secureVMDiskEncryptionSetId: map['secureVMDiskEncryptionSetId'] == null ? null : (map['secureVMDiskEncryptionSetId'] as String).input(),
+      confidentialVMEncryptionType: map['confidentialVMEncryptionType'] == null ? null : (map['confidentialVMEncryptionType']! as String).input(),
+      secureVMDiskEncryptionSetId: map['secureVMDiskEncryptionSetId'] == null ? null : (map['secureVMDiskEncryptionSetId']! as String).input(),
     );
   }
 }

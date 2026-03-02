@@ -130,22 +130,22 @@ class NetworkArgs {
 
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
-      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
-      availabilityZoneHints: map['availabilityZoneHints'] == null ? null : ((map['availabilityZoneHints'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dnsDomain: map['dnsDomain'] == null ? null : (map['dnsDomain'] as String).input(),
-      external: map['external'] == null ? null : (map['external'] as bool).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      portSecurityEnabled: map['portSecurityEnabled'] == null ? null : (map['portSecurityEnabled'] as bool).input(),
-      qosPolicyId: map['qosPolicyId'] == null ? null : (map['qosPolicyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      segments: map['segments'] == null ? null : (pulumi.Input.decodeList<NetworkSegment>(map['segments'], (value) => NetworkSegment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shared: map['shared'] == null ? null : (map['shared'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      transparentVlan: map['transparentVlan'] == null ? null : (map['transparentVlan'] as bool).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp']! as bool).input(),
+      availabilityZoneHints: map['availabilityZoneHints'] == null ? null : ((map['availabilityZoneHints']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dnsDomain: map['dnsDomain'] == null ? null : (map['dnsDomain']! as String).input(),
+      external: map['external'] == null ? null : (map['external']! as bool).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      portSecurityEnabled: map['portSecurityEnabled'] == null ? null : (map['portSecurityEnabled']! as bool).input(),
+      qosPolicyId: map['qosPolicyId'] == null ? null : (map['qosPolicyId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      segments: map['segments'] == null ? null : (pulumi.Input.decodeList<NetworkSegment>(map['segments']!, (value) => NetworkSegment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shared: map['shared'] == null ? null : (map['shared']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      transparentVlan: map['transparentVlan'] == null ? null : (map['transparentVlan']! as bool).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
     );
   }
 }

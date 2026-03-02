@@ -28,7 +28,7 @@ class FrontdoorFirewallPolicyLogScrubbing {
 
   factory FrontdoorFirewallPolicyLogScrubbing.fromMap(Map<String, dynamic> map) {
     return FrontdoorFirewallPolicyLogScrubbing(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       scrubbingRules: (pulumi.Input.decodeList<FrontdoorFirewallPolicyLogScrubbingScrubbingRule>(map['scrubbingRules'], (value) => FrontdoorFirewallPolicyLogScrubbingScrubbingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

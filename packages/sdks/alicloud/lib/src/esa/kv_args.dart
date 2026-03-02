@@ -54,13 +54,13 @@ class KvArgs {
 
   factory KvArgs.fromMap(Map<String, dynamic> map) {
     return KvArgs(
-      expiration: map['expiration'] == null ? null : (map['expiration'] as int).input(),
-      expirationTtl: map['expirationTtl'] == null ? null : (map['expirationTtl'] as int).input(),
-      isbase: map['isbase'] == null ? null : (map['isbase'] as bool).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration']! as int).input(),
+      expirationTtl: map['expirationTtl'] == null ? null : (map['expirationTtl']! as int).input(),
+      isbase: map['isbase'] == null ? null : (map['isbase']! as bool).input(),
       key: (map['key'] as String).input(),
       namespace: (map['namespace'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -68,16 +68,16 @@ class FirewallPolicyState {
 
   factory FirewallPolicyState.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      firewallPolicyId: map['firewallPolicyId'] == null ? null : (map['firewallPolicyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      ruleTupleCount: map['ruleTupleCount'] == null ? null : (map['ruleTupleCount'] as int).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId'] as String).input(),
-      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
+      firewallPolicyId: map['firewallPolicyId'] == null ? null : (map['firewallPolicyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      ruleTupleCount: map['ruleTupleCount'] == null ? null : (map['ruleTupleCount']! as int).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId']! as String).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName']! as String).input(),
     );
   }
 }

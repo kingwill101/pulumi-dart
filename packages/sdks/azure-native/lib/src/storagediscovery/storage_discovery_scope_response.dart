@@ -38,8 +38,8 @@ class StorageDiscoveryScopeResponse {
     return StorageDiscoveryScopeResponse(
       displayName: (map['displayName'] as String).input(),
       resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
-      tagKeysOnly: map['tagKeysOnly'] == null ? null : ((map['tagKeysOnly'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tagKeysOnly: map['tagKeysOnly'] == null ? null : ((map['tagKeysOnly']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

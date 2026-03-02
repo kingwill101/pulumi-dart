@@ -35,10 +35,10 @@ class ContainerPort {
 
   factory ContainerPort.fromMap(Map<String, dynamic> map) {
     return ContainerPort(
-      external: map['external'] == null ? null : (map['external'] as int).input(),
+      external: map['external'] == null ? null : (map['external']! as int).input(),
       internal: (map['internal'] as int).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

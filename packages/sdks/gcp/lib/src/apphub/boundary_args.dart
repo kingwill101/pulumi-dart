@@ -37,9 +37,9 @@ class BoundaryArgs {
 
   factory BoundaryArgs.fromMap(Map<String, dynamic> map) {
     return BoundaryArgs(
-      crmNode: map['crmNode'] == null ? null : (map['crmNode'] as String).input(),
+      crmNode: map['crmNode'] == null ? null : (map['crmNode']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class PrivateLinkServiceProxyResponse {
 
   factory PrivateLinkServiceProxyResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceProxyResponse(
-      groupConnectivityInformation: map['groupConnectivityInformation'] == null ? null : (pulumi.Input.decodeList<GroupConnectivityInformationResponse>(map['groupConnectivityInformation'], (value) => GroupConnectivityInformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      remotePrivateEndpointConnection: map['remotePrivateEndpointConnection'] == null ? null : (PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection.fromMap((map['remotePrivateEndpointConnection'] as Map).cast<String, dynamic>())).input(),
-      remotePrivateLinkServiceConnectionState: map['remotePrivateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStateResponse.fromMap((map['remotePrivateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      groupConnectivityInformation: map['groupConnectivityInformation'] == null ? null : (pulumi.Input.decodeList<GroupConnectivityInformationResponse>(map['groupConnectivityInformation']!, (value) => GroupConnectivityInformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      remotePrivateEndpointConnection: map['remotePrivateEndpointConnection'] == null ? null : (PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection.fromMap((map['remotePrivateEndpointConnection']! as Map).cast<String, dynamic>())).input(),
+      remotePrivateLinkServiceConnectionState: map['remotePrivateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStateResponse.fromMap((map['remotePrivateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

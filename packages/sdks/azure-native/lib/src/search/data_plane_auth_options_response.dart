@@ -27,8 +27,8 @@ class DataPlaneAuthOptionsResponse {
 
   factory DataPlaneAuthOptionsResponse.fromMap(Map<String, dynamic> map) {
     return DataPlaneAuthOptionsResponse(
-      aadOrApiKey: map['aadOrApiKey'] == null ? null : (DataPlaneAadOrApiKeyAuthOptionResponse.fromMap((map['aadOrApiKey'] as Map).cast<String, dynamic>())).input(),
-      apiKeyOnly: map['apiKeyOnly'] == null ? null : (map['apiKeyOnly']).input(),
+      aadOrApiKey: map['aadOrApiKey'] == null ? null : (DataPlaneAadOrApiKeyAuthOptionResponse.fromMap((map['aadOrApiKey']! as Map).cast<String, dynamic>())).input(),
+      apiKeyOnly: map['apiKeyOnly'] == null ? null : (map['apiKeyOnly']!).input(),
     );
   }
 }

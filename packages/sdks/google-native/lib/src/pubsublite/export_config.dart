@@ -33,9 +33,9 @@ class ExportConfig {
 
   factory ExportConfig.fromMap(Map<String, dynamic> map) {
     return ExportConfig(
-      deadLetterTopic: map['deadLetterTopic'] == null ? null : (map['deadLetterTopic'] as String).input(),
-      desiredState: map['desiredState'] == null ? null : (ExportConfigDesiredState.fromValue(map['desiredState'] as String)).input(),
-      pubsubConfig: map['pubsubConfig'] == null ? null : (PubSubConfig.fromMap((map['pubsubConfig'] as Map).cast<String, dynamic>())).input(),
+      deadLetterTopic: map['deadLetterTopic'] == null ? null : (map['deadLetterTopic']! as String).input(),
+      desiredState: map['desiredState'] == null ? null : (ExportConfigDesiredState.fromValue(map['desiredState']! as String)).input(),
+      pubsubConfig: map['pubsubConfig'] == null ? null : (PubSubConfig.fromMap((map['pubsubConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

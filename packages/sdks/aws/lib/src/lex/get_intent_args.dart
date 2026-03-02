@@ -35,8 +35,8 @@ class GetIntentArgs {
   factory GetIntentArgs.fromMap(Map<String, dynamic> map) {
     return GetIntentArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

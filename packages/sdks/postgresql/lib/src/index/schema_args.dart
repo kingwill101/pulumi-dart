@@ -52,12 +52,12 @@ class SchemaArgs {
 
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade'] as bool).input(),
-      ifNotExists: map['ifNotExists'] == null ? null : (map['ifNotExists'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<SchemaPolicy>(map['policies'], (value) => SchemaPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade']! as bool).input(),
+      ifNotExists: map['ifNotExists'] == null ? null : (map['ifNotExists']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<SchemaPolicy>(map['policies']!, (value) => SchemaPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -60,7 +60,7 @@ class GetUserResult {
   factory GetUserResult.fromMap(Map<String, dynamic> map) {
     return GetUserResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      encryptedPassword: map['encryptedPassword'] == null ? null : AsymmetricEncryptedSecretResponse.fromMap((map['encryptedPassword'] as Map).cast<String, dynamic>()),
+      encryptedPassword: map['encryptedPassword'] == null ? null : AsymmetricEncryptedSecretResponse.fromMap((map['encryptedPassword']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       shareAccessRights: pulumi.Input.decodeList<ShareAccessRightResponse>(map['shareAccessRights'], (value) => ShareAccessRightResponse.fromMap((value as Map).cast<String, dynamic>())),

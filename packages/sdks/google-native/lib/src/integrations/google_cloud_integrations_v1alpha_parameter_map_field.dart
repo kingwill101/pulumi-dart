@@ -27,8 +27,8 @@ class GoogleCloudIntegrationsV1alphaParameterMapField {
 
   factory GoogleCloudIntegrationsV1alphaParameterMapField.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaParameterMapField(
-      literalValue: map['literalValue'] == null ? null : (GoogleCloudIntegrationsV1alphaValueType.fromMap((map['literalValue'] as Map).cast<String, dynamic>())).input(),
-      referenceKey: map['referenceKey'] == null ? null : (map['referenceKey'] as String).input(),
+      literalValue: map['literalValue'] == null ? null : (GoogleCloudIntegrationsV1alphaValueType.fromMap((map['literalValue']! as Map).cast<String, dynamic>())).input(),
+      referenceKey: map['referenceKey'] == null ? null : (map['referenceKey']! as String).input(),
     );
   }
 }

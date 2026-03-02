@@ -75,16 +75,16 @@ class FirmwareArgs {
 
   factory FirmwareArgs.fromMap(Map<String, dynamic> map) {
     return FirmwareArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
-      fileSize: map['fileSize'] == null ? null : (map['fileSize'] as double).input(),
-      firmwareId: map['firmwareId'] == null ? null : (map['firmwareId'] as String).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
+      fileSize: map['fileSize'] == null ? null : (map['fileSize']! as double).input(),
+      firmwareId: map['firmwareId'] == null ? null : (map['firmwareId']! as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusMessages: map['statusMessages'] == null ? null : (pulumi.Input.decodeList<StatusMessage>(map['statusMessages'], (value) => StatusMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      statusMessages: map['statusMessages'] == null ? null : (pulumi.Input.decodeList<StatusMessage>(map['statusMessages']!, (value) => StatusMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vendor: map['vendor'] == null ? null : (map['vendor']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

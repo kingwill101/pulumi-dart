@@ -32,9 +32,9 @@ class GeoMatchSetState {
 
   factory GeoMatchSetState.fromMap(Map<String, dynamic> map) {
     return GeoMatchSetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      geoMatchConstraints: map['geoMatchConstraints'] == null ? null : (pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(map['geoMatchConstraints'], (value) => GeoMatchSetGeoMatchConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      geoMatchConstraints: map['geoMatchConstraints'] == null ? null : ((pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(map['geoMatchConstraints']!, (value) => GeoMatchSetGeoMatchConstraint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

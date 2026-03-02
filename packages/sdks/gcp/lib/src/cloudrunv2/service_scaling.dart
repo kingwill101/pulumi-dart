@@ -36,10 +36,10 @@ class ServiceScaling {
 
   factory ServiceScaling.fromMap(Map<String, dynamic> map) {
     return ServiceScaling(
-      manualInstanceCount: map['manualInstanceCount'] == null ? null : (map['manualInstanceCount'] as int).input(),
-      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount'] as int).input(),
-      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount'] as int).input(),
-      scalingMode: map['scalingMode'] == null ? null : (map['scalingMode'] as String).input(),
+      manualInstanceCount: map['manualInstanceCount'] == null ? null : (map['manualInstanceCount']! as int).input(),
+      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount']! as int).input(),
+      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount']! as int).input(),
+      scalingMode: map['scalingMode'] == null ? null : (map['scalingMode']! as String).input(),
     );
   }
 }

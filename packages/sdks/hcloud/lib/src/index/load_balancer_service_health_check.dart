@@ -46,7 +46,7 @@ class LoadBalancerServiceHealthCheck {
 
   factory LoadBalancerServiceHealthCheck.fromMap(Map<String, dynamic> map) {
     return LoadBalancerServiceHealthCheck(
-      http: map['http'] == null ? null : (LoadBalancerServiceHealthCheckHttp.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
+      http: map['http'] == null ? null : (LoadBalancerServiceHealthCheckHttp.fromMap((map['http']! as Map).cast<String, dynamic>())).input(),
       interval: (map['interval'] as int).input(),
       port: (map['port'] as int).input(),
       protocol: (map['protocol'] as String).input(),

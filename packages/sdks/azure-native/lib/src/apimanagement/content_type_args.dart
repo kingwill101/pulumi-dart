@@ -59,14 +59,14 @@ class ContentTypeArgs {
 
   factory ContentTypeArgs.fromMap(Map<String, dynamic> map) {
     return ContentTypeArgs(
-      contentTypeId: map['contentTypeId'] == null ? null : (map['contentTypeId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      contentTypeId: map['contentTypeId'] == null ? null : (map['contentTypeId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema']).input(),
+      schema: map['schema'] == null ? null : (map['schema']!).input(),
       serviceName: (map['serviceName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

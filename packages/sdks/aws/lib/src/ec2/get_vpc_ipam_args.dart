@@ -30,7 +30,7 @@ class GetVpcIpamArgs {
   factory GetVpcIpamArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcIpamArgs(
       id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class GoogleCloudContentwarehouseV1MapProperty {
 
   factory GoogleCloudContentwarehouseV1MapProperty.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1MapProperty(
-      fields: map['fields'] == null ? null : ((map['fields'] as Map).cast<String, String>()).input(),
+      fields: map['fields'] == null ? null : ((map['fields']! as Map).cast<String, String>()).input(),
     );
   }
 }

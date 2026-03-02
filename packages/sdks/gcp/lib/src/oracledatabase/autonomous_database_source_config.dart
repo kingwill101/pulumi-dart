@@ -25,8 +25,8 @@ class AutonomousDatabaseSourceConfig {
 
   factory AutonomousDatabaseSourceConfig.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabaseSourceConfig(
-      automaticBackupsReplicationEnabled: map['automaticBackupsReplicationEnabled'] == null ? null : (map['automaticBackupsReplicationEnabled'] as bool).input(),
-      autonomousDatabase: map['autonomousDatabase'] == null ? null : (map['autonomousDatabase'] as String).input(),
+      automaticBackupsReplicationEnabled: map['automaticBackupsReplicationEnabled'] == null ? null : (map['automaticBackupsReplicationEnabled']! as bool).input(),
+      autonomousDatabase: map['autonomousDatabase'] == null ? null : (map['autonomousDatabase']! as String).input(),
     );
   }
 }

@@ -56,12 +56,12 @@ class SingleNodeVirtualInstanceSingleServerConfiguration {
   factory SingleNodeVirtualInstanceSingleServerConfiguration.fromMap(Map<String, dynamic> map) {
     return SingleNodeVirtualInstanceSingleServerConfiguration(
       appResourceGroupName: (map['appResourceGroupName'] as String).input(),
-      databaseType: map['databaseType'] == null ? null : (map['databaseType'] as String).input(),
-      diskVolumeConfigurations: map['diskVolumeConfigurations'] == null ? null : (pulumi.Input.decodeList<SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration>(map['diskVolumeConfigurations'], (value) => SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secondaryIpEnabled: map['secondaryIpEnabled'] == null ? null : (map['secondaryIpEnabled'] as bool).input(),
+      databaseType: map['databaseType'] == null ? null : (map['databaseType']! as String).input(),
+      diskVolumeConfigurations: map['diskVolumeConfigurations'] == null ? null : (pulumi.Input.decodeList<SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration>(map['diskVolumeConfigurations']!, (value) => SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secondaryIpEnabled: map['secondaryIpEnabled'] == null ? null : (map['secondaryIpEnabled']! as bool).input(),
       subnetId: (map['subnetId'] as String).input(),
       virtualMachineConfiguration: (SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfiguration.fromMap((map['virtualMachineConfiguration'] as Map).cast<String, dynamic>())).input(),
-      virtualMachineResourceNames: map['virtualMachineResourceNames'] == null ? null : (SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNames.fromMap((map['virtualMachineResourceNames'] as Map).cast<String, dynamic>())).input(),
+      virtualMachineResourceNames: map['virtualMachineResourceNames'] == null ? null : (SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNames.fromMap((map['virtualMachineResourceNames']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

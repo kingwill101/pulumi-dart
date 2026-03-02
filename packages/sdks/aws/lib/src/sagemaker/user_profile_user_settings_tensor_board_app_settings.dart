@@ -21,7 +21,7 @@ class UserProfileUserSettingsTensorBoardAppSettings {
 
   factory UserProfileUserSettingsTensorBoardAppSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsTensorBoardAppSettings(
-      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : (UserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec'] as Map).cast<String, dynamic>())).input(),
+      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : ((UserProfileUserSettingsTensorBoardAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

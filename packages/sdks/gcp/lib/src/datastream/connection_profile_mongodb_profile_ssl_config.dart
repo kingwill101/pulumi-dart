@@ -64,13 +64,13 @@ class ConnectionProfileMongodbProfileSslConfig {
 
   factory ConnectionProfileMongodbProfileSslConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileMongodbProfileSslConfig(
-      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate'] as String).input(),
-      caCertificateSet: map['caCertificateSet'] == null ? null : (map['caCertificateSet'] as bool).input(),
-      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
-      clientCertificateSet: map['clientCertificateSet'] == null ? null : (map['clientCertificateSet'] as bool).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
-      clientKeySet: map['clientKeySet'] == null ? null : (map['clientKeySet'] as bool).input(),
-      secretManagerStoredClientKey: map['secretManagerStoredClientKey'] == null ? null : (map['secretManagerStoredClientKey'] as String).input(),
+      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate']! as String).input(),
+      caCertificateSet: map['caCertificateSet'] == null ? null : (map['caCertificateSet']! as bool).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate']! as String).input(),
+      clientCertificateSet: map['clientCertificateSet'] == null ? null : (map['clientCertificateSet']! as bool).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
+      clientKeySet: map['clientKeySet'] == null ? null : (map['clientKeySet']! as bool).input(),
+      secretManagerStoredClientKey: map['secretManagerStoredClientKey'] == null ? null : (map['secretManagerStoredClientKey']! as String).input(),
     );
   }
 }

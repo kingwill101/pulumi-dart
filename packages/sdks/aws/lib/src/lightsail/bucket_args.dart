@@ -47,10 +47,10 @@ class BucketArgs {
   factory BucketArgs.fromMap(Map<String, dynamic> map) {
     return BucketArgs(
       bundleId: (map['bundleId'] as String).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      forceDelete: map['forceDelete'] == null ? null : ((map['forceDelete'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

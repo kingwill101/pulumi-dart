@@ -20,7 +20,7 @@ class OpenApiValidation {
 
   factory OpenApiValidation.fromMap(Map<String, dynamic> map) {
     return OpenApiValidation(
-      allowNoncompliantCollectionResponse: map['allowNoncompliantCollectionResponse'] == null ? null : (map['allowNoncompliantCollectionResponse'] as bool).input(),
+      allowNoncompliantCollectionResponse: map['allowNoncompliantCollectionResponse'] == null ? null : (map['allowNoncompliantCollectionResponse']! as bool).input(),
     );
   }
 }

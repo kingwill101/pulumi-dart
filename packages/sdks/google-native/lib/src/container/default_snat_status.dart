@@ -21,7 +21,7 @@ class DefaultSnatStatus {
 
   factory DefaultSnatStatus.fromMap(Map<String, dynamic> map) {
     return DefaultSnatStatus(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
     );
   }
 }

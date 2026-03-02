@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesSysNice {
 
   factory DomainFeaturesCapabilitiesSysNice.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesSysNice(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

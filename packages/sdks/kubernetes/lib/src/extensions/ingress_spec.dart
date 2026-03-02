@@ -39,10 +39,10 @@ class IngressSpec {
 
   factory IngressSpec.fromMap(Map<String, dynamic> map) {
     return IngressSpec(
-      backend: map['backend'] == null ? null : (IngressBackend.fromMap((map['backend'] as Map).cast<String, dynamic>())).input(),
-      ingressClassName: map['ingressClassName'] == null ? null : (map['ingressClassName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<IngressRule>(map['rules'], (value) => IngressRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tls: map['tls'] == null ? null : (pulumi.Input.decodeList<IngressTLS>(map['tls'], (value) => IngressTLS.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backend: map['backend'] == null ? null : (IngressBackend.fromMap((map['backend']! as Map).cast<String, dynamic>())).input(),
+      ingressClassName: map['ingressClassName'] == null ? null : (map['ingressClassName']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<IngressRule>(map['rules']!, (value) => IngressRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tls: map['tls'] == null ? null : (pulumi.Input.decodeList<IngressTLS>(map['tls']!, (value) => IngressTLS.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

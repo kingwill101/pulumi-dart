@@ -53,13 +53,13 @@ class ReportConfigMigrationcenterV1alpha1Args {
 
   factory ReportConfigMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return ReportConfigMigrationcenterV1alpha1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       groupPreferencesetAssignments: (pulumi.Input.decodeList<ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1>(map['groupPreferencesetAssignments'], (value) => ReportConfigGroupPreferenceSetAssignmentMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       reportConfigId: (map['reportConfigId'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

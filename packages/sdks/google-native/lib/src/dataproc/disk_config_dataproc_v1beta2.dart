@@ -31,9 +31,9 @@ class DiskConfigDataprocV1beta2 {
 
   factory DiskConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return DiskConfigDataprocV1beta2(
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb'] as int).input(),
-      bootDiskType: map['bootDiskType'] == null ? null : (map['bootDiskType'] as String).input(),
-      numLocalSsds: map['numLocalSsds'] == null ? null : (map['numLocalSsds'] as int).input(),
+      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb']! as int).input(),
+      bootDiskType: map['bootDiskType'] == null ? null : (map['bootDiskType']! as String).input(),
+      numLocalSsds: map['numLocalSsds'] == null ? null : (map['numLocalSsds']! as int).input(),
     );
   }
 }

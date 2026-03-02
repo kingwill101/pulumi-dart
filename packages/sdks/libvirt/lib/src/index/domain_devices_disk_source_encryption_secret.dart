@@ -30,9 +30,9 @@ class DomainDevicesDiskSourceEncryptionSecret {
 
   factory DomainDevicesDiskSourceEncryptionSecret.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceEncryptionSecret(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      usage: map['usage'] == null ? null : (map['usage'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      usage: map['usage'] == null ? null : (map['usage']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

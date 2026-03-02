@@ -28,7 +28,7 @@ class ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails {
 
   factory ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails.fromMap(Map<String, dynamic> map) {
     return ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails(
-      availableSizeGbs: map['availableSizeGbs'] == null ? null : (map['availableSizeGbs'] as int).input(),
+      availableSizeGbs: map['availableSizeGbs'] == null ? null : (map['availableSizeGbs']! as int).input(),
       totalSizeGbs: (map['totalSizeGbs'] as int).input(),
     );
   }

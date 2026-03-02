@@ -27,8 +27,8 @@ class AuditLogConfigCloudfunctionsV2beta {
 
   factory AuditLogConfigCloudfunctionsV2beta.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigCloudfunctionsV2beta(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeCloudfunctionsV2beta.fromValue(map['logType'] as String)).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeCloudfunctionsV2beta.fromValue(map['logType']! as String)).input(),
     );
   }
 }

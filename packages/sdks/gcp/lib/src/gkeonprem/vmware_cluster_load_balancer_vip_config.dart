@@ -27,8 +27,8 @@ class VMwareClusterLoadBalancerVipConfig {
 
   factory VMwareClusterLoadBalancerVipConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterLoadBalancerVipConfig(
-      controlPlaneVip: map['controlPlaneVip'] == null ? null : (map['controlPlaneVip'] as String).input(),
-      ingressVip: map['ingressVip'] == null ? null : (map['ingressVip'] as String).input(),
+      controlPlaneVip: map['controlPlaneVip'] == null ? null : (map['controlPlaneVip']! as String).input(),
+      ingressVip: map['ingressVip'] == null ? null : (map['ingressVip']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class StorageProfile {
 
   factory StorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageProfile(
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<VirtualDisk>(map['disks'], (value) => VirtualDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<VirtualDisk>(map['disks']!, (value) => VirtualDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -84,7 +84,7 @@ class GetRestApiResult {
       arn: map['arn'] as String,
       binaryMediaTypes: (map['binaryMediaTypes'] as List).cast<String>(),
       description: map['description'] as String,
-      endpointConfigurations: pulumi.Input.decodeList<GetRestApiEndpointConfiguration>(map['endpointConfigurations'], (value) => GetRestApiEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      endpointConfigurations: pulumi.Input.decodeList<GetRestApiEndpointConfiguration>(map['endpointConfigurations']!, (value) => GetRestApiEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       executionArn: map['executionArn'] as String,
       id: map['id'] as String,
       minimumCompressionSize: map['minimumCompressionSize'] as String,

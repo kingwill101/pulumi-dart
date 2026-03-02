@@ -41,11 +41,11 @@ class DataflowSourceOperationSettingsResponse {
 
   factory DataflowSourceOperationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DataflowSourceOperationSettingsResponse(
-      assetRef: map['assetRef'] == null ? null : (map['assetRef'] as String).input(),
+      assetRef: map['assetRef'] == null ? null : (map['assetRef']! as String).input(),
       dataSources: ((map['dataSources'] as List).cast<String>()).input(),
       endpointRef: (map['endpointRef'] as String).input(),
-      schemaRef: map['schemaRef'] == null ? null : (map['schemaRef'] as String).input(),
-      serializationFormat: map['serializationFormat'] == null ? null : (map['serializationFormat'] as String).input(),
+      schemaRef: map['schemaRef'] == null ? null : (map['schemaRef']! as String).input(),
+      serializationFormat: map['serializationFormat'] == null ? null : (map['serializationFormat']! as String).input(),
     );
   }
 }

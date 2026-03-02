@@ -31,7 +31,7 @@ class ImmutableStorageWithVersioningResponse {
 
   factory ImmutableStorageWithVersioningResponse.fromMap(Map<String, dynamic> map) {
     return ImmutableStorageWithVersioningResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       migrationState: (map['migrationState'] as String).input(),
       timeStamp: (map['timeStamp'] as String).input(),
     );

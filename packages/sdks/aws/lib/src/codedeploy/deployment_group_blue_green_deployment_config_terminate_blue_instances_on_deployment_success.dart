@@ -27,8 +27,8 @@ class DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeployment
 
   factory DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      terminationWaitTimeInMinutes: map['terminationWaitTimeInMinutes'] == null ? null : (map['terminationWaitTimeInMinutes'] as int).input(),
+      action: map['action'] == null ? null : ((map['action'] as String).input()).input(),
+      terminationWaitTimeInMinutes: map['terminationWaitTimeInMinutes'] == null ? null : ((map['terminationWaitTimeInMinutes'] as int).input()).input(),
     );
   }
 }

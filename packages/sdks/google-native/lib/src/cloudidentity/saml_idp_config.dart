@@ -36,9 +36,9 @@ class SamlIdpConfig {
 
   factory SamlIdpConfig.fromMap(Map<String, dynamic> map) {
     return SamlIdpConfig(
-      changePasswordUri: map['changePasswordUri'] == null ? null : (map['changePasswordUri'] as String).input(),
+      changePasswordUri: map['changePasswordUri'] == null ? null : (map['changePasswordUri']! as String).input(),
       entityId: (map['entityId'] as String).input(),
-      logoutRedirectUri: map['logoutRedirectUri'] == null ? null : (map['logoutRedirectUri'] as String).input(),
+      logoutRedirectUri: map['logoutRedirectUri'] == null ? null : (map['logoutRedirectUri']! as String).input(),
       singleSignOnServiceUri: (map['singleSignOnServiceUri'] as String).input(),
     );
   }

@@ -27,8 +27,8 @@ class Justification {
 
   factory Justification.fromMap(Map<String, dynamic> map) {
     return Justification(
-      details: map['details'] == null ? null : (map['details'] as String).input(),
-      justificationType: map['justificationType'] == null ? null : (JustificationJustificationType.fromValue(map['justificationType'] as String)).input(),
+      details: map['details'] == null ? null : (map['details']! as String).input(),
+      justificationType: map['justificationType'] == null ? null : (JustificationJustificationType.fromValue(map['justificationType']! as String)).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class FileSystemAssociationCacheAttributes {
 
   factory FileSystemAssociationCacheAttributes.fromMap(Map<String, dynamic> map) {
     return FileSystemAssociationCacheAttributes(
-      cacheStaleTimeoutInSeconds: map['cacheStaleTimeoutInSeconds'] == null ? null : (map['cacheStaleTimeoutInSeconds'] as int).input(),
+      cacheStaleTimeoutInSeconds: map['cacheStaleTimeoutInSeconds'] == null ? null : ((map['cacheStaleTimeoutInSeconds'] as int).input()).input(),
     );
   }
 }

@@ -43,10 +43,10 @@ class QosMinimumBandwidthRuleArgs {
 
   factory QosMinimumBandwidthRuleArgs.fromMap(Map<String, dynamic> map) {
     return QosMinimumBandwidthRuleArgs(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
       minKbps: (map['minKbps'] as int).input(),
       qosPolicyId: (map['qosPolicyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -45,12 +45,12 @@ class AwsIntegrationsEc2 {
 
   factory AwsIntegrationsEc2.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsEc2(
-      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions'] as List).cast<String>()).input(),
-      duplicateEc2Tags: map['duplicateEc2Tags'] == null ? null : (map['duplicateEc2Tags'] as bool).input(),
-      fetchIpAddresses: map['fetchIpAddresses'] == null ? null : (map['fetchIpAddresses'] as bool).input(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
+      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions']! as List).cast<String>()).input(),
+      duplicateEc2Tags: map['duplicateEc2Tags'] == null ? null : (map['duplicateEc2Tags']! as bool).input(),
+      fetchIpAddresses: map['fetchIpAddresses'] == null ? null : (map['fetchIpAddresses']! as bool).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
     );
   }
 }

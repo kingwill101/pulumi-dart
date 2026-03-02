@@ -22,7 +22,7 @@ class ListBitLockerKeyResult {
 
   factory ListBitLockerKeyResult.fromMap(Map<String, dynamic> map) {
     return ListBitLockerKeyResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<DriveBitLockerKeyResponse>(map['value'], (value) => DriveBitLockerKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<DriveBitLockerKeyResponse>(map['value']!, (value) => DriveBitLockerKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

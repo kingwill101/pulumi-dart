@@ -22,7 +22,7 @@ class FleetObservabilityRoutingConfig {
 
   factory FleetObservabilityRoutingConfig.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityRoutingConfig(
-      mode: map['mode'] == null ? null : (FleetObservabilityRoutingConfigMode.fromValue(map['mode'] as String)).input(),
+      mode: map['mode'] == null ? null : (FleetObservabilityRoutingConfigMode.fromValue(map['mode']! as String)).input(),
     );
   }
 }

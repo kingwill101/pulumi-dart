@@ -43,11 +43,11 @@ class AiLogicPromptTemplateLockState {
 
   factory AiLogicPromptTemplateLockState.fromMap(Map<String, dynamic> map) {
     return AiLogicPromptTemplateLockState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
     );
   }
 }

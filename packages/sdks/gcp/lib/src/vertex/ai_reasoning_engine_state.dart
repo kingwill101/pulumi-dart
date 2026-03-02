@@ -71,15 +71,15 @@ class AiReasoningEngineState {
 
   factory AiReasoningEngineState.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiReasoningEngineEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      spec: map['spec'] == null ? null : (AiReasoningEngineSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiReasoningEngineEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      spec: map['spec'] == null ? null : (AiReasoningEngineSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

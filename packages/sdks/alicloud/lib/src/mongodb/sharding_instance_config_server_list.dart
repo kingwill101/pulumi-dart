@@ -55,14 +55,14 @@ class ShardingInstanceConfigServerList {
 
   factory ShardingInstanceConfigServerList.fromMap(Map<String, dynamic> map) {
     return ShardingInstanceConfigServerList(
-      connectString: map['connectString'] == null ? null : (map['connectString'] as String).input(),
-      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections'] as int).input(),
-      maxIops: map['maxIops'] == null ? null : (map['maxIops'] as int).input(),
-      nodeClass: map['nodeClass'] == null ? null : (map['nodeClass'] as String).input(),
-      nodeDescription: map['nodeDescription'] == null ? null : (map['nodeDescription'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      nodeStorage: map['nodeStorage'] == null ? null : (map['nodeStorage'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      connectString: map['connectString'] == null ? null : (map['connectString']! as String).input(),
+      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections']! as int).input(),
+      maxIops: map['maxIops'] == null ? null : (map['maxIops']! as int).input(),
+      nodeClass: map['nodeClass'] == null ? null : (map['nodeClass']! as String).input(),
+      nodeDescription: map['nodeDescription'] == null ? null : (map['nodeDescription']! as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      nodeStorage: map['nodeStorage'] == null ? null : (map['nodeStorage']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

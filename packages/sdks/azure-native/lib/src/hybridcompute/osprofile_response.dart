@@ -34,8 +34,8 @@ class OSProfileResponse {
   factory OSProfileResponse.fromMap(Map<String, dynamic> map) {
     return OSProfileResponse(
       computerName: (map['computerName'] as String).input(),
-      linuxConfiguration: map['linuxConfiguration'] == null ? null : (OSProfileResponseLinuxConfiguration.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>())).input(),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : (OSProfileResponseWindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      linuxConfiguration: map['linuxConfiguration'] == null ? null : (OSProfileResponseLinuxConfiguration.fromMap((map['linuxConfiguration']! as Map).cast<String, dynamic>())).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (OSProfileResponseWindowsConfiguration.fromMap((map['windowsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

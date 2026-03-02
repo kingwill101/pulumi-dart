@@ -53,13 +53,13 @@ class GetResolutionLinesArgs {
 
   factory GetResolutionLinesArgs.fromMap(Map<String, dynamic> map) {
     return GetResolutionLinesArgs(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      lineCodes: map['lineCodes'] == null ? null : ((map['lineCodes'] as List).cast<String>()).input(),
-      lineDisplayNames: map['lineDisplayNames'] == null ? null : ((map['lineDisplayNames'] as List).cast<String>()).input(),
-      lineNames: map['lineNames'] == null ? null : ((map['lineNames'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      lineCodes: map['lineCodes'] == null ? null : ((map['lineCodes']! as List).cast<String>()).input(),
+      lineDisplayNames: map['lineDisplayNames'] == null ? null : ((map['lineDisplayNames']! as List).cast<String>()).input(),
+      lineNames: map['lineNames'] == null ? null : ((map['lineNames']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp']! as String).input(),
     );
   }
 }

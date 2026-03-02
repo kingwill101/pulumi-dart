@@ -31,9 +31,9 @@ class ExpressRouteCircuitServiceProviderProperties {
 
   factory ExpressRouteCircuitServiceProviderProperties.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitServiceProviderProperties(
-      bandwidthInMbps: map['bandwidthInMbps'] == null ? null : (map['bandwidthInMbps'] as int).input(),
-      peeringLocation: map['peeringLocation'] == null ? null : (map['peeringLocation'] as String).input(),
-      serviceProviderName: map['serviceProviderName'] == null ? null : (map['serviceProviderName'] as String).input(),
+      bandwidthInMbps: map['bandwidthInMbps'] == null ? null : (map['bandwidthInMbps']! as int).input(),
+      peeringLocation: map['peeringLocation'] == null ? null : (map['peeringLocation']! as String).input(),
+      serviceProviderName: map['serviceProviderName'] == null ? null : (map['serviceProviderName']! as String).input(),
     );
   }
 }

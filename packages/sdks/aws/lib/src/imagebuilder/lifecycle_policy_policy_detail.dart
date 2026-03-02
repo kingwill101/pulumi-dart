@@ -35,9 +35,9 @@ class LifecyclePolicyPolicyDetail {
 
   factory LifecyclePolicyPolicyDetail.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetail(
-      action: (LifecyclePolicyPolicyDetailAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      exclusionRules: map['exclusionRules'] == null ? null : (LifecyclePolicyPolicyDetailExclusionRules.fromMap((map['exclusionRules'] as Map).cast<String, dynamic>())).input(),
-      filter: (LifecyclePolicyPolicyDetailFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      action: (LifecyclePolicyPolicyDetailAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      exclusionRules: map['exclusionRules'] == null ? null : ((LifecyclePolicyPolicyDetailExclusionRules.fromMap((map['exclusionRules']! as Map).cast<String, dynamic>())).input()).input(),
+      filter: (LifecyclePolicyPolicyDetailFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

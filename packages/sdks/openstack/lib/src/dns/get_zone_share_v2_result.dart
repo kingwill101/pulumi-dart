@@ -50,12 +50,12 @@ class GetZoneShareV2Result {
 
   factory GetZoneShareV2Result.fromMap(Map<String, dynamic> map) {
     return GetZoneShareV2Result(
-      allProjects: map['allProjects'] == null ? null : map['allProjects'] as String,
+      allProjects: map['allProjects'] == null ? null : map['allProjects']! as String,
       id: map['id'] as String,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
+      projectId: map['projectId'] == null ? null : map['projectId']! as String,
       region: map['region'] as String,
       shareId: map['shareId'] as String,
-      targetProjectId: map['targetProjectId'] == null ? null : map['targetProjectId'] as String,
+      targetProjectId: map['targetProjectId'] == null ? null : map['targetProjectId']! as String,
       zoneId: map['zoneId'] as String,
     );
   }

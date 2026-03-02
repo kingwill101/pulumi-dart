@@ -45,7 +45,7 @@ class ServiceTrustArgs {
   factory ServiceTrustArgs.fromMap(Map<String, dynamic> map) {
     return ServiceTrustArgs(
       domainServiceId: (map['domainServiceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       password: (map['password'] as String).input(),
       trustedDomainDnsIps: ((map['trustedDomainDnsIps'] as List).cast<String>()).input(),
       trustedDomainFqdn: (map['trustedDomainFqdn'] as String).input(),

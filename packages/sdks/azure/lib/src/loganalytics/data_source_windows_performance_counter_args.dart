@@ -57,7 +57,7 @@ class DataSourceWindowsPerformanceCounterArgs {
       counterName: (map['counterName'] as String).input(),
       instanceName: (map['instanceName'] as String).input(),
       intervalSeconds: (map['intervalSeconds'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       objectName: (map['objectName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),

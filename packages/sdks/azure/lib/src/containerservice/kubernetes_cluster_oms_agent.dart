@@ -32,8 +32,8 @@ class KubernetesClusterOmsAgent {
   factory KubernetesClusterOmsAgent.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterOmsAgent(
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      msiAuthForMonitoringEnabled: map['msiAuthForMonitoringEnabled'] == null ? null : (map['msiAuthForMonitoringEnabled'] as bool).input(),
-      omsAgentIdentities: map['omsAgentIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterOmsAgentOmsAgentIdentity>(map['omsAgentIdentities'], (value) => KubernetesClusterOmsAgentOmsAgentIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      msiAuthForMonitoringEnabled: map['msiAuthForMonitoringEnabled'] == null ? null : (map['msiAuthForMonitoringEnabled']! as bool).input(),
+      omsAgentIdentities: map['omsAgentIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterOmsAgentOmsAgentIdentity>(map['omsAgentIdentities']!, (value) => KubernetesClusterOmsAgentOmsAgentIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

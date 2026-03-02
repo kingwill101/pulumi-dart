@@ -35,8 +35,8 @@ class ConfigurationReferenceArgs {
 
   factory ConfigurationReferenceArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationReferenceArgs(
-      configurationReferenceName: map['configurationReferenceName'] == null ? null : (map['configurationReferenceName'] as String).input(),
-      properties: map['properties'] == null ? null : (ConfigurationReferenceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      configurationReferenceName: map['configurationReferenceName'] == null ? null : (map['configurationReferenceName']! as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationReferenceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceUri: (map['resourceUri'] as String).input(),
     );
   }

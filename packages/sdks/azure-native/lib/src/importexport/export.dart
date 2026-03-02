@@ -31,9 +31,9 @@ class Export {
 
   factory Export.fromMap(Map<String, dynamic> map) {
     return Export(
-      blobListBlobPath: map['blobListBlobPath'] == null ? null : (map['blobListBlobPath'] as String).input(),
-      blobPath: map['blobPath'] == null ? null : ((map['blobPath'] as List).cast<String>()).input(),
-      blobPathPrefix: map['blobPathPrefix'] == null ? null : ((map['blobPathPrefix'] as List).cast<String>()).input(),
+      blobListBlobPath: map['blobListBlobPath'] == null ? null : (map['blobListBlobPath']! as String).input(),
+      blobPath: map['blobPath'] == null ? null : ((map['blobPath']! as List).cast<String>()).input(),
+      blobPathPrefix: map['blobPathPrefix'] == null ? null : ((map['blobPathPrefix']! as List).cast<String>()).input(),
     );
   }
 }

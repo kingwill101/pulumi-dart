@@ -66,15 +66,15 @@ class ManagementOrganizationEventThreatDetectionCustomModuleState {
 
   factory ManagementOrganizationEventThreatDetectionCustomModuleState.fromMap(Map<String, dynamic> map) {
     return ManagementOrganizationEventThreatDetectionCustomModuleState(
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enablementState: map['enablementState'] == null ? null : (map['enablementState'] as String).input(),
-      lastEditor: map['lastEditor'] == null ? null : (map['lastEditor'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enablementState: map['enablementState'] == null ? null : (map['enablementState']! as String).input(),
+      lastEditor: map['lastEditor'] == null ? null : (map['lastEditor']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

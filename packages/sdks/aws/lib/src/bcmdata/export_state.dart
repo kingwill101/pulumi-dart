@@ -42,11 +42,11 @@ class ExportState {
 
   factory ExportState.fromMap(Map<String, dynamic> map) {
     return ExportState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      export: map['export'] == null ? null : (ExportExport.fromMap((map['export'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ExportTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      export: map['export'] == null ? null : ((ExportExport.fromMap((map['export']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ExportTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

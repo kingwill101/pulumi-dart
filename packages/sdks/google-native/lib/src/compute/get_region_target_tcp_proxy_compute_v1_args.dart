@@ -31,7 +31,7 @@ class GetRegionTargetTcpProxyComputeV1Args {
 
   factory GetRegionTargetTcpProxyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionTargetTcpProxyComputeV1Args(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       targetTcpProxy: (map['targetTcpProxy'] as String).input(),
     );

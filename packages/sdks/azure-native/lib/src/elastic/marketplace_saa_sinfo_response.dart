@@ -47,12 +47,12 @@ class MarketplaceSaaSInfoResponse {
 
   factory MarketplaceSaaSInfoResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceSaaSInfoResponse(
-      billedAzureSubscriptionId: map['billedAzureSubscriptionId'] == null ? null : (map['billedAzureSubscriptionId'] as String).input(),
-      marketplaceName: map['marketplaceName'] == null ? null : (map['marketplaceName'] as String).input(),
-      marketplaceResourceId: map['marketplaceResourceId'] == null ? null : (map['marketplaceResourceId'] as String).input(),
-      marketplaceStatus: map['marketplaceStatus'] == null ? null : (map['marketplaceStatus'] as String).input(),
-      marketplaceSubscription: map['marketplaceSubscription'] == null ? null : (MarketplaceSaaSInfoResponseMarketplaceSubscription.fromMap((map['marketplaceSubscription'] as Map).cast<String, dynamic>())).input(),
-      subscribed: map['subscribed'] == null ? null : (map['subscribed'] as bool).input(),
+      billedAzureSubscriptionId: map['billedAzureSubscriptionId'] == null ? null : (map['billedAzureSubscriptionId']! as String).input(),
+      marketplaceName: map['marketplaceName'] == null ? null : (map['marketplaceName']! as String).input(),
+      marketplaceResourceId: map['marketplaceResourceId'] == null ? null : (map['marketplaceResourceId']! as String).input(),
+      marketplaceStatus: map['marketplaceStatus'] == null ? null : (map['marketplaceStatus']! as String).input(),
+      marketplaceSubscription: map['marketplaceSubscription'] == null ? null : (MarketplaceSaaSInfoResponseMarketplaceSubscription.fromMap((map['marketplaceSubscription']! as Map).cast<String, dynamic>())).input(),
+      subscribed: map['subscribed'] == null ? null : (map['subscribed']! as bool).input(),
     );
   }
 }

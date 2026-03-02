@@ -27,7 +27,7 @@ class ListLabVhdsResult {
 
   factory ListLabVhdsResult.fromMap(Map<String, dynamic> map) {
     return ListLabVhdsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: pulumi.Input.decodeList<LabVhdResponse>(map['value'], (value) => LabVhdResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

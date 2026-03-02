@@ -68,14 +68,14 @@ class ExchangeArgs {
 
   factory ExchangeArgs.fromMap(Map<String, dynamic> map) {
     return ExchangeArgs(
-      alternateExchange: map['alternateExchange'] == null ? null : (map['alternateExchange'] as String).input(),
+      alternateExchange: map['alternateExchange'] == null ? null : (map['alternateExchange']! as String).input(),
       autoDeleteState: (map['autoDeleteState'] as bool).input(),
       exchangeName: (map['exchangeName'] as String).input(),
       exchangeType: (map['exchangeType'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       internal: (map['internal'] as bool).input(),
       virtualHostName: (map['virtualHostName'] as String).input(),
-      xDelayedType: map['xDelayedType'] == null ? null : (map['xDelayedType'] as String).input(),
+      xDelayedType: map['xDelayedType'] == null ? null : (map['xDelayedType']! as String).input(),
     );
   }
 }

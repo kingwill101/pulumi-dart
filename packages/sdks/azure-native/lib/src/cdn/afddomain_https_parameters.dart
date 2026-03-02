@@ -45,10 +45,10 @@ class AFDDomainHttpsParameters {
   factory AFDDomainHttpsParameters.fromMap(Map<String, dynamic> map) {
     return AFDDomainHttpsParameters(
       certificateType: (map['certificateType'] as String).input(),
-      cipherSuiteSetType: map['cipherSuiteSetType'] == null ? null : (map['cipherSuiteSetType'] as String).input(),
-      customizedCipherSuiteSet: map['customizedCipherSuiteSet'] == null ? null : (AFDDomainHttpsCustomizedCipherSuiteSet.fromMap((map['customizedCipherSuiteSet'] as Map).cast<String, dynamic>())).input(),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (AfdMinimumTlsVersion.fromValue(map['minimumTlsVersion'] as String)).input(),
-      secret: map['secret'] == null ? null : (ResourceReference.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      cipherSuiteSetType: map['cipherSuiteSetType'] == null ? null : (map['cipherSuiteSetType']! as String).input(),
+      customizedCipherSuiteSet: map['customizedCipherSuiteSet'] == null ? null : (AFDDomainHttpsCustomizedCipherSuiteSet.fromMap((map['customizedCipherSuiteSet']! as Map).cast<String, dynamic>())).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (AfdMinimumTlsVersion.fromValue(map['minimumTlsVersion']! as String)).input(),
+      secret: map['secret'] == null ? null : (ResourceReference.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

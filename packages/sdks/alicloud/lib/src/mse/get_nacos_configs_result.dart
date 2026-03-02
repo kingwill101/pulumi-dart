@@ -75,19 +75,19 @@ class GetNacosConfigsResult {
 
   factory GetNacosConfigsResult.fromMap(Map<String, dynamic> map) {
     return GetNacosConfigsResult(
-      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage'] as String,
-      appName: map['appName'] == null ? null : map['appName'] as String,
+      acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage']! as String,
+      appName: map['appName'] == null ? null : map['appName']! as String,
       configs: pulumi.Input.decodeList<GetNacosConfigsConfig>(map['configs'], (value) => GetNacosConfigsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      dataId: map['dataId'] == null ? null : map['dataId'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
-      group: map['group'] == null ? null : map['group'] as String,
+      dataId: map['dataId'] == null ? null : map['dataId']! as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      group: map['group'] == null ? null : map['group']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      namespaceId: map['namespaceId'] == null ? null : map['namespaceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      requestPars: map['requestPars'] == null ? null : map['requestPars'] as String,
-      tags: map['tags'] == null ? null : map['tags'] as String,
+      namespaceId: map['namespaceId'] == null ? null : map['namespaceId']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      requestPars: map['requestPars'] == null ? null : map['requestPars']! as String,
+      tags: map['tags'] == null ? null : map['tags']! as String,
     );
   }
 }

@@ -31,9 +31,9 @@ class LifecycleConfigDataprocV1beta2 {
 
   factory LifecycleConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return LifecycleConfigDataprocV1beta2(
-      autoDeleteTime: map['autoDeleteTime'] == null ? null : (map['autoDeleteTime'] as String).input(),
-      autoDeleteTtl: map['autoDeleteTtl'] == null ? null : (map['autoDeleteTtl'] as String).input(),
-      idleDeleteTtl: map['idleDeleteTtl'] == null ? null : (map['idleDeleteTtl'] as String).input(),
+      autoDeleteTime: map['autoDeleteTime'] == null ? null : (map['autoDeleteTime']! as String).input(),
+      autoDeleteTtl: map['autoDeleteTtl'] == null ? null : (map['autoDeleteTtl']! as String).input(),
+      idleDeleteTtl: map['idleDeleteTtl'] == null ? null : (map['idleDeleteTtl']! as String).input(),
     );
   }
 }

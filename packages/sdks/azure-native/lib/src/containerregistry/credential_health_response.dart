@@ -31,9 +31,9 @@ class CredentialHealthResponse {
 
   factory CredentialHealthResponse.fromMap(Map<String, dynamic> map) {
     return CredentialHealthResponse(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

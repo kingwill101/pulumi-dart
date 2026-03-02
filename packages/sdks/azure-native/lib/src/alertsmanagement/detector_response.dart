@@ -62,7 +62,7 @@ class DetectorResponse {
       imagePaths: ((map['imagePaths'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
       parameterDefinitions: (pulumi.Input.decodeList<DetectorParameterDefinitionResponse>(map['parameterDefinitions'], (value) => DetectorParameterDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, dynamic>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, dynamic>()).input(),
       supportedCadences: ((map['supportedCadences'] as List).cast<int>()).input(),
       supportedResourceTypes: ((map['supportedResourceTypes'] as List).cast<String>()).input(),
     );

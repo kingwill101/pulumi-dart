@@ -37,10 +37,10 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
 
   factory PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet.fromMap(Map<String, dynamic> map) {
     return PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySet(
-      firstEntries: map['firstEntries'] == null ? null : (pulumi.Input.decodeList<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry>(map['firstEntries'], (value) => PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      firstEntries: map['firstEntries'] == null ? null : ((pulumi.Input.decodeList<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry>(map['firstEntries']!, (value) => PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntry.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       forceRemediateForFirstEntries: (map['forceRemediateForFirstEntries'] as bool).input(),
       forceRemediateForLastEntries: (map['forceRemediateForLastEntries'] as bool).input(),
-      lastEntries: map['lastEntries'] == null ? null : (pulumi.Input.decodeList<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry>(map['lastEntries'], (value) => PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastEntries: map['lastEntries'] == null ? null : ((pulumi.Input.decodeList<PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry>(map['lastEntries']!, (value) => PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetLastEntry.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

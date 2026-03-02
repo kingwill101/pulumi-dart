@@ -36,9 +36,9 @@ class V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMe
 
   factory V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariationImageResponseCard.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariationImageResponseCard(
-      buttons: map['buttons'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton>(map['buttons'], (value) => V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      imageUrl: map['imageUrl'] == null ? null : (map['imageUrl'] as String).input(),
-      subtitle: map['subtitle'] == null ? null : (map['subtitle'] as String).input(),
+      buttons: map['buttons'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton>(map['buttons']!, (value) => V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariationImageResponseCardButton.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      imageUrl: map['imageUrl'] == null ? null : ((map['imageUrl'] as String).input()).input(),
+      subtitle: map['subtitle'] == null ? null : ((map['subtitle'] as String).input()).input(),
       title: (map['title'] as String).input(),
     );
   }

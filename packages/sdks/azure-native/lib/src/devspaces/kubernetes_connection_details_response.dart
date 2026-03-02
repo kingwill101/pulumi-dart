@@ -28,7 +28,7 @@ class KubernetesConnectionDetailsResponse {
   factory KubernetesConnectionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesConnectionDetailsResponse(
       instanceType: (map['instanceType'] as String).input(),
-      kubeConfig: map['kubeConfig'] == null ? null : (map['kubeConfig'] as String).input(),
+      kubeConfig: map['kubeConfig'] == null ? null : (map['kubeConfig']! as String).input(),
     );
   }
 }

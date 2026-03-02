@@ -112,7 +112,7 @@ class GetStoragePoolResult {
       poolProvisionedCapacityGb: map['poolProvisionedCapacityGb'] as String,
       poolProvisionedIops: map['poolProvisionedIops'] as String,
       poolProvisionedThroughput: map['poolProvisionedThroughput'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       resourceStatuses: pulumi.Input.decodeList<GetStoragePoolResourceStatus>(map['resourceStatuses'], (value) => GetStoragePoolResourceStatus.fromMap((value as Map).cast<String, dynamic>())),
       statuses: pulumi.Input.decodeList<GetStoragePoolStatus>(map['statuses'], (value) => GetStoragePoolStatus.fromMap((value as Map).cast<String, dynamic>())),

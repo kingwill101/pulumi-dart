@@ -63,14 +63,14 @@ class ResourceGroupTemplateDeploymentArgs {
 
   factory ResourceGroupTemplateDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGroupTemplateDeploymentArgs(
-      debugLevel: map['debugLevel'] == null ? null : (map['debugLevel'] as String).input(),
+      debugLevel: map['debugLevel'] == null ? null : (map['debugLevel']! as String).input(),
       deploymentMode: (map['deploymentMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parametersContent: map['parametersContent'] == null ? null : (map['parametersContent'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parametersContent: map['parametersContent'] == null ? null : (map['parametersContent']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      templateContent: map['templateContent'] == null ? null : (map['templateContent'] as String).input(),
-      templateSpecVersionId: map['templateSpecVersionId'] == null ? null : (map['templateSpecVersionId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      templateContent: map['templateContent'] == null ? null : (map['templateContent']! as String).input(),
+      templateSpecVersionId: map['templateSpecVersionId'] == null ? null : (map['templateSpecVersionId']! as String).input(),
     );
   }
 }

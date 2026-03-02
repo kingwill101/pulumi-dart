@@ -31,9 +31,9 @@ class GoogleCloudAiplatformV1beta1RaySpec {
 
   factory GoogleCloudAiplatformV1beta1RaySpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1RaySpec(
-      headNodeResourcePoolId: map['headNodeResourcePoolId'] == null ? null : (map['headNodeResourcePoolId'] as String).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
-      resourcePoolImages: map['resourcePoolImages'] == null ? null : ((map['resourcePoolImages'] as Map).cast<String, String>()).input(),
+      headNodeResourcePoolId: map['headNodeResourcePoolId'] == null ? null : (map['headNodeResourcePoolId']! as String).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      resourcePoolImages: map['resourcePoolImages'] == null ? null : ((map['resourcePoolImages']! as Map).cast<String, String>()).input(),
     );
   }
 }

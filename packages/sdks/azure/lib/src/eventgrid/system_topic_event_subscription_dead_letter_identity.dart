@@ -26,7 +26,7 @@ class SystemTopicEventSubscriptionDeadLetterIdentity {
   factory SystemTopicEventSubscriptionDeadLetterIdentity.fromMap(Map<String, dynamic> map) {
     return SystemTopicEventSubscriptionDeadLetterIdentity(
       type: (map['type'] as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
     );
   }
 }

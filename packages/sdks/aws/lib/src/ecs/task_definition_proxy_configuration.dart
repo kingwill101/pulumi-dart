@@ -31,8 +31,8 @@ class TaskDefinitionProxyConfiguration {
   factory TaskDefinitionProxyConfiguration.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionProxyConfiguration(
       containerName: (map['containerName'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      properties: map['properties'] == null ? null : (((map['properties'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

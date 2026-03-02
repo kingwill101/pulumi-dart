@@ -58,11 +58,11 @@ class GetAccessRulesResult {
       accessGroupName: map['accessGroupName'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       rules: pulumi.Input.decodeList<GetAccessRulesRule>(map['rules'], (value) => GetAccessRulesRule.fromMap((value as Map).cast<String, dynamic>())),
-      rwAccess: map['rwAccess'] == null ? null : map['rwAccess'] as String,
-      sourceCidrIp: map['sourceCidrIp'] == null ? null : map['sourceCidrIp'] as String,
-      userAccess: map['userAccess'] == null ? null : map['userAccess'] as String,
+      rwAccess: map['rwAccess'] == null ? null : map['rwAccess']! as String,
+      sourceCidrIp: map['sourceCidrIp'] == null ? null : map['sourceCidrIp']! as String,
+      userAccess: map['userAccess'] == null ? null : map['userAccess']! as String,
     );
   }
 }

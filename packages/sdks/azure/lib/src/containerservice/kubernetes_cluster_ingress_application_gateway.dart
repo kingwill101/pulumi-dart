@@ -50,12 +50,12 @@ class KubernetesClusterIngressApplicationGateway {
 
   factory KubernetesClusterIngressApplicationGateway.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterIngressApplicationGateway(
-      effectiveGatewayId: map['effectiveGatewayId'] == null ? null : (map['effectiveGatewayId'] as String).input(),
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
-      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
-      ingressApplicationGatewayIdentities: map['ingressApplicationGatewayIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterIngressApplicationGatewayIngressApplicationGatewayIdentity>(map['ingressApplicationGatewayIdentities'], (value) => KubernetesClusterIngressApplicationGatewayIngressApplicationGatewayIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subnetCidr: map['subnetCidr'] == null ? null : (map['subnetCidr'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      effectiveGatewayId: map['effectiveGatewayId'] == null ? null : (map['effectiveGatewayId']! as String).input(),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId']! as String).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName']! as String).input(),
+      ingressApplicationGatewayIdentities: map['ingressApplicationGatewayIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterIngressApplicationGatewayIngressApplicationGatewayIdentity>(map['ingressApplicationGatewayIdentities']!, (value) => KubernetesClusterIngressApplicationGatewayIngressApplicationGatewayIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnetCidr: map['subnetCidr'] == null ? null : (map['subnetCidr']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

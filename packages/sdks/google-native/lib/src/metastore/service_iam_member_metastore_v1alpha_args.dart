@@ -45,7 +45,7 @@ class ServiceIamMemberMetastoreV1alphaArgs {
 
   factory ServiceIamMemberMetastoreV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return ServiceIamMemberMetastoreV1alphaArgs(
-      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
       name: (map['name'] as String).input(),
       role: (map['role'] as String).input(),

@@ -20,7 +20,7 @@ class SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku {
 
   factory SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku(
-      category: map['category'] == null ? null : (SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory.fromMap((map['category'] as Map).cast<String, dynamic>())).input(),
+      category: map['category'] == null ? null : (SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory.fromMap((map['category']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

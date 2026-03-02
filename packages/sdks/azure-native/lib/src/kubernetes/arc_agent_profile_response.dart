@@ -38,10 +38,10 @@ class ArcAgentProfileResponse {
 
   factory ArcAgentProfileResponse.fromMap(Map<String, dynamic> map) {
     return ArcAgentProfileResponse(
-      agentAutoUpgrade: map['agentAutoUpgrade'] == null ? null : (map['agentAutoUpgrade'] as String).input(),
-      agentErrors: map['agentErrors'] == null ? null : (pulumi.Input.decodeList<AgentErrorResponse>(map['agentErrors'], (value) => AgentErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      desiredAgentVersion: map['desiredAgentVersion'] == null ? null : (map['desiredAgentVersion'] as String).input(),
-      systemComponents: map['systemComponents'] == null ? null : (pulumi.Input.decodeList<SystemComponentResponse>(map['systemComponents'], (value) => SystemComponentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      agentAutoUpgrade: map['agentAutoUpgrade'] == null ? null : (map['agentAutoUpgrade']! as String).input(),
+      agentErrors: map['agentErrors'] == null ? null : (pulumi.Input.decodeList<AgentErrorResponse>(map['agentErrors']!, (value) => AgentErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      desiredAgentVersion: map['desiredAgentVersion'] == null ? null : (map['desiredAgentVersion']! as String).input(),
+      systemComponents: map['systemComponents'] == null ? null : (pulumi.Input.decodeList<SystemComponentResponse>(map['systemComponents']!, (value) => SystemComponentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

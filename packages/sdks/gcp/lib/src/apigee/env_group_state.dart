@@ -32,9 +32,9 @@ class EnvGroupState {
 
   factory EnvGroupState.fromMap(Map<String, dynamic> map) {
     return EnvGroupState(
-      hostnames: map['hostnames'] == null ? null : ((map['hostnames'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
+      hostnames: map['hostnames'] == null ? null : ((map['hostnames']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
     );
   }
 }

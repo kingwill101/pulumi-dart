@@ -27,8 +27,8 @@ class AiIndexDeployedIndex {
 
   factory AiIndexDeployedIndex.fromMap(Map<String, dynamic> map) {
     return AiIndexDeployedIndex(
-      deployedIndexId: map['deployedIndexId'] == null ? null : (map['deployedIndexId'] as String).input(),
-      indexEndpoint: map['indexEndpoint'] == null ? null : (map['indexEndpoint'] as String).input(),
+      deployedIndexId: map['deployedIndexId'] == null ? null : (map['deployedIndexId']! as String).input(),
+      indexEndpoint: map['indexEndpoint'] == null ? null : (map['indexEndpoint']! as String).input(),
     );
   }
 }

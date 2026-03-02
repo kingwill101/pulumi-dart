@@ -61,14 +61,14 @@ class DomainDevicesConsole {
 
   factory DomainDevicesConsole.fromMap(Map<String, dynamic> map) {
     return DomainDevicesConsole(
-      acpi: map['acpi'] == null ? null : (DomainDevicesConsoleAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesConsoleAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      log: map['log'] == null ? null : (DomainDevicesConsoleLog.fromMap((map['log'] as Map).cast<String, dynamic>())).input(),
-      protocol: map['protocol'] == null ? null : (DomainDevicesConsoleProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (DomainDevicesConsoleSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (DomainDevicesConsoleTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      tty: map['tty'] == null ? null : (map['tty'] as String).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesConsoleAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesConsoleAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      log: map['log'] == null ? null : (DomainDevicesConsoleLog.fromMap((map['log']! as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (DomainDevicesConsoleProtocol.fromMap((map['protocol']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (DomainDevicesConsoleSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (DomainDevicesConsoleTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      tty: map['tty'] == null ? null : (map['tty']! as String).input(),
     );
   }
 }

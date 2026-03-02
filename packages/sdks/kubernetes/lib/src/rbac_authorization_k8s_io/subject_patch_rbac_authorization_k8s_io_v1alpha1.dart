@@ -36,10 +36,10 @@ class SubjectPatchRbacAuthorizationK8sIoV1alpha1 {
 
   factory SubjectPatchRbacAuthorizationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return SubjectPatchRbacAuthorizationK8sIoV1alpha1(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

@@ -35,7 +35,7 @@ class ConfigurationPolicyAssociationArgs {
   factory ConfigurationPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationPolicyAssociationArgs(
       policyId: (map['policyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       targetId: (map['targetId'] as String).input(),
     );
   }

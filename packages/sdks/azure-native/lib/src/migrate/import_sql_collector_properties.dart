@@ -21,7 +21,7 @@ class ImportSqlCollectorProperties {
 
   factory ImportSqlCollectorProperties.fromMap(Map<String, dynamic> map) {
     return ImportSqlCollectorProperties(
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
     );
   }
 }

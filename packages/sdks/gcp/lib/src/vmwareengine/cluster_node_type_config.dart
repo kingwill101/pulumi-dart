@@ -33,7 +33,7 @@ class ClusterNodeTypeConfig {
 
   factory ClusterNodeTypeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeTypeConfig(
-      customCoreCount: map['customCoreCount'] == null ? null : (map['customCoreCount'] as int).input(),
+      customCoreCount: map['customCoreCount'] == null ? null : (map['customCoreCount']! as int).input(),
       nodeCount: (map['nodeCount'] as int).input(),
       nodeTypeId: (map['nodeTypeId'] as String).input(),
     );

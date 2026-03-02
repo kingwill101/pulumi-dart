@@ -30,7 +30,7 @@ class ManagedCertificateArgs {
   factory ManagedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateArgs(
       customHostnameBindingId: (map['customHostnameBindingId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

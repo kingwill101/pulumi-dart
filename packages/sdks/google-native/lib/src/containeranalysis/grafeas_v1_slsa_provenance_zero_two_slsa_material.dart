@@ -24,8 +24,8 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial {
 
   factory GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial(
-      digest: map['digest'] == null ? null : ((map['digest'] as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      digest: map['digest'] == null ? null : ((map['digest']! as Map).cast<String, String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

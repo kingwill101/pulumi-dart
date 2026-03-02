@@ -23,7 +23,7 @@ class ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy {
 
   factory ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(Map<String, dynamic> map) {
     return ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy(
-      allowedAccessReasons: map['allowedAccessReasons'] == null ? null : ((map['allowedAccessReasons'] as List).cast<String>()).input(),
+      allowedAccessReasons: map['allowedAccessReasons'] == null ? null : ((map['allowedAccessReasons']! as List).cast<String>()).input(),
     );
   }
 }

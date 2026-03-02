@@ -29,7 +29,7 @@ class MetastoreServiceNetworkConfigConsumer {
 
   factory MetastoreServiceNetworkConfigConsumer.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceNetworkConfigConsumer(
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
       subnetwork: (map['subnetwork'] as String).input(),
     );
   }

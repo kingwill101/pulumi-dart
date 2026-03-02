@@ -28,8 +28,8 @@ class HttpFaultInjectionComputeV1 {
 
   factory HttpFaultInjectionComputeV1.fromMap(Map<String, dynamic> map) {
     return HttpFaultInjectionComputeV1(
-      abort: map['abort'] == null ? null : (HttpFaultAbortComputeV1.fromMap((map['abort'] as Map).cast<String, dynamic>())).input(),
-      delay: map['delay'] == null ? null : (HttpFaultDelayComputeV1.fromMap((map['delay'] as Map).cast<String, dynamic>())).input(),
+      abort: map['abort'] == null ? null : (HttpFaultAbortComputeV1.fromMap((map['abort']! as Map).cast<String, dynamic>())).input(),
+      delay: map['delay'] == null ? null : (HttpFaultDelayComputeV1.fromMap((map['delay']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

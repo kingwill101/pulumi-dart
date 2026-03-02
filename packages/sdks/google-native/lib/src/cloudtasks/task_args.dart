@@ -64,15 +64,15 @@ class TaskArgs {
 
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
-      appEngineHttpRequest: map['appEngineHttpRequest'] == null ? null : (AppEngineHttpRequest.fromMap((map['appEngineHttpRequest'] as Map).cast<String, dynamic>())).input(),
-      dispatchDeadline: map['dispatchDeadline'] == null ? null : (map['dispatchDeadline'] as String).input(),
-      httpRequest: map['httpRequest'] == null ? null : (HttpRequest.fromMap((map['httpRequest'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      appEngineHttpRequest: map['appEngineHttpRequest'] == null ? null : (AppEngineHttpRequest.fromMap((map['appEngineHttpRequest']! as Map).cast<String, dynamic>())).input(),
+      dispatchDeadline: map['dispatchDeadline'] == null ? null : (map['dispatchDeadline']! as String).input(),
+      httpRequest: map['httpRequest'] == null ? null : (HttpRequest.fromMap((map['httpRequest']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       queueId: (map['queueId'] as String).input(),
-      responseView: map['responseView'] == null ? null : (TaskResponseView.fromValue(map['responseView'] as String)).input(),
-      scheduleTime: map['scheduleTime'] == null ? null : (map['scheduleTime'] as String).input(),
+      responseView: map['responseView'] == null ? null : (TaskResponseView.fromValue(map['responseView']! as String)).input(),
+      scheduleTime: map['scheduleTime'] == null ? null : (map['scheduleTime']! as String).input(),
     );
   }
 }

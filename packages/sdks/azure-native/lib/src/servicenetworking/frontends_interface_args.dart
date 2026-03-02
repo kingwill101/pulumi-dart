@@ -44,10 +44,10 @@ class FrontendsInterfaceArgs {
 
   factory FrontendsInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return FrontendsInterfaceArgs(
-      frontendName: map['frontendName'] == null ? null : (map['frontendName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      frontendName: map['frontendName'] == null ? null : (map['frontendName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       trafficControllerName: (map['trafficControllerName'] as String).input(),
     );
   }

@@ -31,9 +31,9 @@ class NetworkInterfaceReferenceResponse {
 
   factory NetworkInterfaceReferenceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceReferenceResponse(
-      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
     );
   }
 }

@@ -59,14 +59,14 @@ class SubnetworkIamPolicyArgs {
 
   factory SubnetworkIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SubnetworkIamPolicyArgs(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfig>(map['auditConfigs'], (value) => AuditConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<Binding>(map['bindings'], (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfig>(map['auditConfigs']!, (value) => AuditConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<Binding>(map['bindings']!, (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       resource: (map['resource'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<Rule>(map['rules'], (value) => Rule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<Rule>(map['rules']!, (value) => Rule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

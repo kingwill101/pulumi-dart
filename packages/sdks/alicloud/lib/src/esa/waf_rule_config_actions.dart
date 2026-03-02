@@ -26,8 +26,8 @@ class WafRuleConfigActions {
 
   factory WafRuleConfigActions.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigActions(
-      bypass: map['bypass'] == null ? null : (WafRuleConfigActionsBypass.fromMap((map['bypass'] as Map).cast<String, dynamic>())).input(),
-      response: map['response'] == null ? null : (WafRuleConfigActionsResponse.fromMap((map['response'] as Map).cast<String, dynamic>())).input(),
+      bypass: map['bypass'] == null ? null : (WafRuleConfigActionsBypass.fromMap((map['bypass']! as Map).cast<String, dynamic>())).input(),
+      response: map['response'] == null ? null : (WafRuleConfigActionsResponse.fromMap((map['response']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

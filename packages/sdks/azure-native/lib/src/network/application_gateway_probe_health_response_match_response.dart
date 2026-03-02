@@ -26,8 +26,8 @@ class ApplicationGatewayProbeHealthResponseMatchResponse {
 
   factory ApplicationGatewayProbeHealthResponseMatchResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayProbeHealthResponseMatchResponse(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      statusCodes: map['statusCodes'] == null ? null : ((map['statusCodes'] as List).cast<String>()).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      statusCodes: map['statusCodes'] == null ? null : ((map['statusCodes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -64,10 +64,10 @@ class GetCassandraResourceCassandraRoleAssignmentResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
+      principalId: map['principalId'] == null ? null : map['principalId']! as String,
       provisioningState: map['provisioningState'] as String,
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : map['roleDefinitionId'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : map['roleDefinitionId']! as String,
+      scope: map['scope'] == null ? null : map['scope']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

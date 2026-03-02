@@ -35,10 +35,10 @@ class TaskNotebookInfrastructureSpecContainerImage {
 
   factory TaskNotebookInfrastructureSpecContainerImage.fromMap(Map<String, dynamic> map) {
     return TaskNotebookInfrastructureSpecContainerImage(
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      javaJars: map['javaJars'] == null ? null : ((map['javaJars'] as List).cast<String>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      pythonPackages: map['pythonPackages'] == null ? null : ((map['pythonPackages'] as List).cast<String>()).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      javaJars: map['javaJars'] == null ? null : ((map['javaJars']! as List).cast<String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      pythonPackages: map['pythonPackages'] == null ? null : ((map['pythonPackages']! as List).cast<String>()).input(),
     );
   }
 }

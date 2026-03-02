@@ -31,7 +31,7 @@ class ModuleResponse {
 
   factory ModuleResponse.fromMap(Map<String, dynamic> map) {
     return ModuleResponse(
-      args: map['args'] == null ? null : (map['args'] as String).input(),
+      args: map['args'] == null ? null : (map['args']! as String).input(),
       name: (map['name'] as String).input(),
       version: (map['version'] as String).input(),
     );

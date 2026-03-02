@@ -51,12 +51,12 @@ class EnterpriseCrmFrontendsEventbusProtoTaskEntity {
 
   factory EnterpriseCrmFrontendsEventbusProtoTaskEntity.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoTaskEntity(
-      disabledForVpcSc: map['disabledForVpcSc'] == null ? null : (map['disabledForVpcSc'] as bool).input(),
-      metadata: map['metadata'] == null ? null : (EnterpriseCrmEventbusProtoTaskMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      paramSpecs: map['paramSpecs'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage.fromMap((map['paramSpecs'] as Map).cast<String, dynamic>())).input(),
-      stats: map['stats'] == null ? null : (EnterpriseCrmEventbusStats.fromMap((map['stats'] as Map).cast<String, dynamic>())).input(),
-      taskType: map['taskType'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType.fromValue(map['taskType'] as String)).input(),
-      uiConfig: map['uiConfig'] == null ? null : (EnterpriseCrmEventbusProtoTaskUiConfig.fromMap((map['uiConfig'] as Map).cast<String, dynamic>())).input(),
+      disabledForVpcSc: map['disabledForVpcSc'] == null ? null : (map['disabledForVpcSc']! as bool).input(),
+      metadata: map['metadata'] == null ? null : (EnterpriseCrmEventbusProtoTaskMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      paramSpecs: map['paramSpecs'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage.fromMap((map['paramSpecs']! as Map).cast<String, dynamic>())).input(),
+      stats: map['stats'] == null ? null : (EnterpriseCrmEventbusStats.fromMap((map['stats']! as Map).cast<String, dynamic>())).input(),
+      taskType: map['taskType'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType.fromValue(map['taskType']! as String)).input(),
+      uiConfig: map['uiConfig'] == null ? null : (EnterpriseCrmEventbusProtoTaskUiConfig.fromMap((map['uiConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

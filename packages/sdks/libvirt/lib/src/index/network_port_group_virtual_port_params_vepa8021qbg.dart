@@ -35,10 +35,10 @@ class NetworkPortGroupVirtualPortParamsVepa8021qbg {
 
   factory NetworkPortGroupVirtualPortParamsVepa8021qbg.fromMap(Map<String, dynamic> map) {
     return NetworkPortGroupVirtualPortParamsVepa8021qbg(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      managerId: map['managerId'] == null ? null : (map['managerId'] as double).input(),
-      typeId: map['typeId'] == null ? null : (map['typeId'] as double).input(),
-      typeIdVersion: map['typeIdVersion'] == null ? null : (map['typeIdVersion'] as double).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      managerId: map['managerId'] == null ? null : (map['managerId']! as double).input(),
+      typeId: map['typeId'] == null ? null : (map['typeId']! as double).input(),
+      typeIdVersion: map['typeIdVersion'] == null ? null : (map['typeIdVersion']! as double).input(),
     );
   }
 }

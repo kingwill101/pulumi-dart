@@ -37,7 +37,7 @@ class GetInferenceProfilesResult {
   factory GetInferenceProfilesResult.fromMap(Map<String, dynamic> map) {
     return GetInferenceProfilesResult(
       id: map['id'] as String,
-      inferenceProfileSummaries: pulumi.Input.decodeList<GetInferenceProfilesInferenceProfileSummary>(map['inferenceProfileSummaries'], (value) => GetInferenceProfilesInferenceProfileSummary.fromMap((value as Map).cast<String, dynamic>())),
+      inferenceProfileSummaries: pulumi.Input.decodeList<GetInferenceProfilesInferenceProfileSummary>(map['inferenceProfileSummaries']!, (value) => GetInferenceProfilesInferenceProfileSummary.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       type: map['type'] == null ? null : map['type'] as String,
     );

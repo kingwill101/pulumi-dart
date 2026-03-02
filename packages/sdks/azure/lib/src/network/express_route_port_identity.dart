@@ -33,9 +33,9 @@ class ExpressRoutePortIdentity {
 
   factory ExpressRoutePortIdentity.fromMap(Map<String, dynamic> map) {
     return ExpressRoutePortIdentity(
-      identityIds: map['identityIds'] == null ? null : ((map['identityIds'] as List).cast<String>()).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      identityIds: map['identityIds'] == null ? null : ((map['identityIds']! as List).cast<String>()).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -28,8 +28,8 @@ class IngressBackendPatch {
 
   factory IngressBackendPatch.fromMap(Map<String, dynamic> map) {
     return IngressBackendPatch(
-      resource: map['resource'] == null ? null : (TypedLocalObjectReferencePatch.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
-      service: map['service'] == null ? null : (IngressServiceBackendPatch.fromMap((map['service'] as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (TypedLocalObjectReferencePatch.fromMap((map['resource']! as Map).cast<String, dynamic>())).input(),
+      service: map['service'] == null ? null : (IngressServiceBackendPatch.fromMap((map['service']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

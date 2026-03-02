@@ -71,16 +71,16 @@ class StatementArgs {
 
   factory StatementArgs.fromMap(Map<String, dynamic> map) {
     return StatementArgs(
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
       database: (map['database'] as String).input(),
-      dbUser: map['dbUser'] == null ? null : (map['dbUser'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<StatementParameter>(map['parameters'], (value) => StatementParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
+      dbUser: map['dbUser'] == null ? null : ((map['dbUser'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<StatementParameter>(map['parameters']!, (value) => StatementParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
       sql: (map['sql'] as String).input(),
-      statementName: map['statementName'] == null ? null : (map['statementName'] as String).input(),
-      withEvent: map['withEvent'] == null ? null : (map['withEvent'] as bool).input(),
-      workgroupName: map['workgroupName'] == null ? null : (map['workgroupName'] as String).input(),
+      statementName: map['statementName'] == null ? null : ((map['statementName'] as String).input()).input(),
+      withEvent: map['withEvent'] == null ? null : ((map['withEvent'] as bool).input()).input(),
+      workgroupName: map['workgroupName'] == null ? null : ((map['workgroupName'] as String).input()).input(),
     );
   }
 }

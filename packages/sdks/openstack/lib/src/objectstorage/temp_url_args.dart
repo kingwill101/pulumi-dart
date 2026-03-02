@@ -72,13 +72,13 @@ class TempUrlArgs {
   factory TempUrlArgs.fromMap(Map<String, dynamic> map) {
     return TempUrlArgs(
       container: (map['container'] as String).input(),
-      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
+      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
       object: (map['object'] as String).input(),
-      regenerate: map['regenerate'] == null ? null : (map['regenerate'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      split: map['split'] == null ? null : (map['split'] as String).input(),
+      regenerate: map['regenerate'] == null ? null : (map['regenerate']! as bool).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      split: map['split'] == null ? null : (map['split']! as String).input(),
       ttl: (map['ttl'] as int).input(),
     );
   }

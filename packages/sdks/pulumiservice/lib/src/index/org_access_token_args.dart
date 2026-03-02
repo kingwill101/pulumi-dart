@@ -39,8 +39,8 @@ class OrgAccessTokenArgs {
 
   factory OrgAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return OrgAccessTokenArgs(
-      admin: map['admin'] == null ? null : (map['admin'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      admin: map['admin'] == null ? null : (map['admin']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
       organizationName: (map['organizationName'] as String).input(),
     );

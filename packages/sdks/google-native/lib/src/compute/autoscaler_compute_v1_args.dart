@@ -53,13 +53,13 @@ class AutoscalerComputeV1Args {
 
   factory AutoscalerComputeV1Args.fromMap(Map<String, dynamic> map) {
     return AutoscalerComputeV1Args(
-      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (AutoscalingPolicyComputeV1.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (AutoscalingPolicyComputeV1.fromMap((map['autoscalingPolicy']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

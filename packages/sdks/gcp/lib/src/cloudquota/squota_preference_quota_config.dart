@@ -50,12 +50,12 @@ class SQuotaPreferenceQuotaConfig {
 
   factory SQuotaPreferenceQuotaConfig.fromMap(Map<String, dynamic> map) {
     return SQuotaPreferenceQuotaConfig(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      grantedValue: map['grantedValue'] == null ? null : (map['grantedValue'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      grantedValue: map['grantedValue'] == null ? null : (map['grantedValue']! as String).input(),
       preferredValue: (map['preferredValue'] as String).input(),
-      requestOrigin: map['requestOrigin'] == null ? null : (map['requestOrigin'] as String).input(),
-      stateDetail: map['stateDetail'] == null ? null : (map['stateDetail'] as String).input(),
-      traceId: map['traceId'] == null ? null : (map['traceId'] as String).input(),
+      requestOrigin: map['requestOrigin'] == null ? null : (map['requestOrigin']! as String).input(),
+      stateDetail: map['stateDetail'] == null ? null : (map['stateDetail']! as String).input(),
+      traceId: map['traceId'] == null ? null : (map['traceId']! as String).input(),
     );
   }
 }

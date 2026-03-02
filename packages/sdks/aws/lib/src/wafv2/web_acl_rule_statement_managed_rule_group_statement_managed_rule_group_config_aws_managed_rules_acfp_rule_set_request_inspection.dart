@@ -47,12 +47,12 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
 
   factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspection(
-      addressFields: map['addressFields'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionAddressFields.fromMap((map['addressFields'] as Map).cast<String, dynamic>())).input(),
-      emailField: map['emailField'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField.fromMap((map['emailField'] as Map).cast<String, dynamic>())).input(),
-      passwordField: map['passwordField'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPasswordField.fromMap((map['passwordField'] as Map).cast<String, dynamic>())).input(),
+      addressFields: map['addressFields'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionAddressFields.fromMap((map['addressFields']! as Map).cast<String, dynamic>())).input()).input(),
+      emailField: map['emailField'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionEmailField.fromMap((map['emailField']! as Map).cast<String, dynamic>())).input()).input(),
+      passwordField: map['passwordField'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPasswordField.fromMap((map['passwordField']! as Map).cast<String, dynamic>())).input()).input(),
       payloadType: (map['payloadType'] as String).input(),
-      phoneNumberFields: map['phoneNumberFields'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPhoneNumberFields.fromMap((map['phoneNumberFields'] as Map).cast<String, dynamic>())).input(),
-      usernameField: map['usernameField'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionUsernameField.fromMap((map['usernameField'] as Map).cast<String, dynamic>())).input(),
+      phoneNumberFields: map['phoneNumberFields'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionPhoneNumberFields.fromMap((map['phoneNumberFields']! as Map).cast<String, dynamic>())).input()).input(),
+      usernameField: map['usernameField'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSetRequestInspectionUsernameField.fromMap((map['usernameField']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

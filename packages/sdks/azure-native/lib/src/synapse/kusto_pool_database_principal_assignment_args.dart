@@ -66,12 +66,12 @@ class KustoPoolDatabasePrincipalAssignmentArgs {
     return KustoPoolDatabasePrincipalAssignmentArgs(
       databaseName: (map['databaseName'] as String).input(),
       kustoPoolName: (map['kustoPoolName'] as String).input(),
-      principalAssignmentName: map['principalAssignmentName'] == null ? null : (map['principalAssignmentName'] as String).input(),
+      principalAssignmentName: map['principalAssignmentName'] == null ? null : (map['principalAssignmentName']! as String).input(),
       principalId: (map['principalId'] as String).input(),
       principalType: (map['principalType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       role: (map['role'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

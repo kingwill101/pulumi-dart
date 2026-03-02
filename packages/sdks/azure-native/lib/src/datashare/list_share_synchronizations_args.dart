@@ -50,11 +50,11 @@ class ListShareSynchronizationsArgs {
   factory ListShareSynchronizationsArgs.fromMap(Map<String, dynamic> map) {
     return ListShareSynchronizationsArgs(
       accountName: (map['accountName'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      orderby: map['orderby'] == null ? null : (map['orderby'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      orderby: map['orderby'] == null ? null : (map['orderby']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       shareName: (map['shareName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
     );
   }
 }

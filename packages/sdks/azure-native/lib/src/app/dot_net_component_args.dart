@@ -51,12 +51,12 @@ class DotNetComponentArgs {
 
   factory DotNetComponentArgs.fromMap(Map<String, dynamic> map) {
     return DotNetComponentArgs(
-      componentType: map['componentType'] == null ? null : (map['componentType'] as String).input(),
-      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<DotNetComponentConfigurationProperty>(map['configurations'], (value) => DotNetComponentConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      componentType: map['componentType'] == null ? null : (map['componentType']! as String).input(),
+      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<DotNetComponentConfigurationProperty>(map['configurations']!, (value) => DotNetComponentConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
       environmentName: (map['environmentName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceBinds: map['serviceBinds'] == null ? null : (pulumi.Input.decodeList<DotNetComponentServiceBind>(map['serviceBinds'], (value) => DotNetComponentServiceBind.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceBinds: map['serviceBinds'] == null ? null : (pulumi.Input.decodeList<DotNetComponentServiceBind>(map['serviceBinds']!, (value) => DotNetComponentServiceBind.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

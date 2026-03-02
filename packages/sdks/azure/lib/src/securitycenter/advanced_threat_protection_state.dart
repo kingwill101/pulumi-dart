@@ -26,8 +26,8 @@ class AdvancedThreatProtectionState {
 
   factory AdvancedThreatProtectionState.fromMap(Map<String, dynamic> map) {
     return AdvancedThreatProtectionState(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
     );
   }
 }

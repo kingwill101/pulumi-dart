@@ -27,8 +27,8 @@ class URLMapDefaultRouteActionFaultInjectionPolicyAbort {
 
   factory URLMapDefaultRouteActionFaultInjectionPolicyAbort.fromMap(Map<String, dynamic> map) {
     return URLMapDefaultRouteActionFaultInjectionPolicyAbort(
-      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus'] as int).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as double).input(),
+      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus']! as int).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as double).input(),
     );
   }
 }

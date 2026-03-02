@@ -40,11 +40,11 @@ class EcsInstanceSetNetworkInterface {
 
   factory EcsInstanceSetNetworkInterface.fromMap(Map<String, dynamic> map) {
     return EcsInstanceSetNetworkInterface(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName'] as String).input(),
-      primaryIpAddress: map['primaryIpAddress'] == null ? null : (map['primaryIpAddress'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName']! as String).input(),
+      primaryIpAddress: map['primaryIpAddress'] == null ? null : (map['primaryIpAddress']! as String).input(),
       securityGroupId: (map['securityGroupId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

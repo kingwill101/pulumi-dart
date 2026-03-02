@@ -22,7 +22,7 @@ class MonitoringComponentConfigContainerV1beta1 {
 
   factory MonitoringComponentConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MonitoringComponentConfigContainerV1beta1(
-      enableComponents: map['enableComponents'] == null ? null : (pulumi.Input.decodeList<MonitoringComponentConfigEnableComponentsItemContainerV1beta1>(map['enableComponents'], (value) => MonitoringComponentConfigEnableComponentsItemContainerV1beta1.fromValue(value as String))).input(),
+      enableComponents: map['enableComponents'] == null ? null : (pulumi.Input.decodeList<MonitoringComponentConfigEnableComponentsItemContainerV1beta1>(map['enableComponents']!, (value) => MonitoringComponentConfigEnableComponentsItemContainerV1beta1.fromValue(value as String))).input(),
     );
   }
 }

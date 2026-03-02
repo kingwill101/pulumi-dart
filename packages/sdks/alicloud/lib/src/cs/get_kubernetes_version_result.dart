@@ -41,9 +41,9 @@ class GetKubernetesVersionResult {
     return GetKubernetesVersionResult(
       clusterType: map['clusterType'] as String,
       id: map['id'] as String,
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : map['kubernetesVersion'] as String,
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : map['kubernetesVersion']! as String,
       metadatas: pulumi.Input.decodeList<GetKubernetesVersionMetadata>(map['metadatas'], (value) => GetKubernetesVersionMetadata.fromMap((value as Map).cast<String, dynamic>())),
-      profile: map['profile'] == null ? null : map['profile'] as String,
+      profile: map['profile'] == null ? null : map['profile']! as String,
     );
   }
 }

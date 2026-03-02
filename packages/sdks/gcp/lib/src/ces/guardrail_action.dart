@@ -36,9 +36,9 @@ class GuardrailAction {
 
   factory GuardrailAction.fromMap(Map<String, dynamic> map) {
     return GuardrailAction(
-      generativeAnswer: map['generativeAnswer'] == null ? null : (GuardrailActionGenerativeAnswer.fromMap((map['generativeAnswer'] as Map).cast<String, dynamic>())).input(),
-      respondImmediately: map['respondImmediately'] == null ? null : (GuardrailActionRespondImmediately.fromMap((map['respondImmediately'] as Map).cast<String, dynamic>())).input(),
-      transferAgent: map['transferAgent'] == null ? null : (GuardrailActionTransferAgent.fromMap((map['transferAgent'] as Map).cast<String, dynamic>())).input(),
+      generativeAnswer: map['generativeAnswer'] == null ? null : (GuardrailActionGenerativeAnswer.fromMap((map['generativeAnswer']! as Map).cast<String, dynamic>())).input(),
+      respondImmediately: map['respondImmediately'] == null ? null : (GuardrailActionRespondImmediately.fromMap((map['respondImmediately']! as Map).cast<String, dynamic>())).input(),
+      transferAgent: map['transferAgent'] == null ? null : (GuardrailActionTransferAgent.fromMap((map['transferAgent']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

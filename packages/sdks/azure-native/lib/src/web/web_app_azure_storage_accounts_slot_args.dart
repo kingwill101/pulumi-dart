@@ -45,9 +45,9 @@ class WebAppAzureStorageAccountsSlotArgs {
 
   factory WebAppAzureStorageAccountsSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppAzureStorageAccountsSlotArgs(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeMapValues<AzureStorageInfoValue>(map['properties'], (value) => AzureStorageInfoValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeMapValues<AzureStorageInfoValue>(map['properties']!, (value) => AzureStorageInfoValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       slot: (map['slot'] as String).input(),
     );

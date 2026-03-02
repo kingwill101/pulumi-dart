@@ -76,16 +76,16 @@ class ProfileState {
 
   factory ProfileState.fromMap(Map<String, dynamic> map) {
     return ProfileState(
-      dnsConfig: map['dnsConfig'] == null ? null : (ProfileDnsConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      maxReturn: map['maxReturn'] == null ? null : (map['maxReturn'] as int).input(),
-      monitorConfig: map['monitorConfig'] == null ? null : (ProfileMonitorConfig.fromMap((map['monitorConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      profileStatus: map['profileStatus'] == null ? null : (map['profileStatus'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trafficRoutingMethod: map['trafficRoutingMethod'] == null ? null : (map['trafficRoutingMethod'] as String).input(),
-      trafficViewEnabled: map['trafficViewEnabled'] == null ? null : (map['trafficViewEnabled'] as bool).input(),
+      dnsConfig: map['dnsConfig'] == null ? null : (ProfileDnsConfig.fromMap((map['dnsConfig']! as Map).cast<String, dynamic>())).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      maxReturn: map['maxReturn'] == null ? null : (map['maxReturn']! as int).input(),
+      monitorConfig: map['monitorConfig'] == null ? null : (ProfileMonitorConfig.fromMap((map['monitorConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      profileStatus: map['profileStatus'] == null ? null : (map['profileStatus']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      trafficRoutingMethod: map['trafficRoutingMethod'] == null ? null : (map['trafficRoutingMethod']! as String).input(),
+      trafficViewEnabled: map['trafficViewEnabled'] == null ? null : (map['trafficViewEnabled']! as bool).input(),
     );
   }
 }

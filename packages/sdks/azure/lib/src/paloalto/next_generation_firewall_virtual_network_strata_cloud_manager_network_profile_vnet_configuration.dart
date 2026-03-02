@@ -35,9 +35,9 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfileVnetCo
 
   factory NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfileVnetConfiguration.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfileVnetConfiguration(
-      ipOfTrustForUserDefinedRoutes: map['ipOfTrustForUserDefinedRoutes'] == null ? null : (map['ipOfTrustForUserDefinedRoutes'] as String).input(),
-      trustedSubnetId: map['trustedSubnetId'] == null ? null : (map['trustedSubnetId'] as String).input(),
-      untrustedSubnetId: map['untrustedSubnetId'] == null ? null : (map['untrustedSubnetId'] as String).input(),
+      ipOfTrustForUserDefinedRoutes: map['ipOfTrustForUserDefinedRoutes'] == null ? null : (map['ipOfTrustForUserDefinedRoutes']! as String).input(),
+      trustedSubnetId: map['trustedSubnetId'] == null ? null : (map['trustedSubnetId']! as String).input(),
+      untrustedSubnetId: map['untrustedSubnetId'] == null ? null : (map['untrustedSubnetId']! as String).input(),
       virtualNetworkId: (map['virtualNetworkId'] as String).input(),
     );
   }

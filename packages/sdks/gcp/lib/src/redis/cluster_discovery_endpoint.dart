@@ -33,9 +33,9 @@ class ClusterDiscoveryEndpoint {
 
   factory ClusterDiscoveryEndpoint.fromMap(Map<String, dynamic> map) {
     return ClusterDiscoveryEndpoint(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      pscConfig: map['pscConfig'] == null ? null : (ClusterDiscoveryEndpointPscConfig.fromMap((map['pscConfig'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      pscConfig: map['pscConfig'] == null ? null : (ClusterDiscoveryEndpointPscConfig.fromMap((map['pscConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

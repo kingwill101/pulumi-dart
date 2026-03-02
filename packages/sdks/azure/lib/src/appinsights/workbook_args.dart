@@ -77,17 +77,17 @@ class WorkbookArgs {
 
   factory WorkbookArgs.fromMap(Map<String, dynamic> map) {
     return WorkbookArgs(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
       dataJson: (map['dataJson'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      identity: map['identity'] == null ? null : (WorkbookIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      identity: map['identity'] == null ? null : (WorkbookIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
-      storageContainerId: map['storageContainerId'] == null ? null : (map['storageContainerId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
+      storageContainerId: map['storageContainerId'] == null ? null : (map['storageContainerId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

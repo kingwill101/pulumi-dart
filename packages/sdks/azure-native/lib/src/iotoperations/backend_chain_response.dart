@@ -33,7 +33,7 @@ class BackendChainResponse {
     return BackendChainResponse(
       partitions: (map['partitions'] as int).input(),
       redundancyFactor: (map['redundancyFactor'] as int).input(),
-      workers: map['workers'] == null ? null : (map['workers'] as int).input(),
+      workers: map['workers'] == null ? null : (map['workers']! as int).input(),
     );
   }
 }

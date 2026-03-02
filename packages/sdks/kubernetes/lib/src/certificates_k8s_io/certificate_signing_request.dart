@@ -49,11 +49,11 @@ class CertificateSigningRequest {
 
   factory CertificateSigningRequest.fromMap(Map<String, dynamic> map) {
     return CertificateSigningRequest(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       spec: (CertificateSigningRequestSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (CertificateSigningRequestStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (CertificateSigningRequestStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

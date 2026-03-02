@@ -42,10 +42,10 @@ class ClusterKubernetesNetworkConfig {
 
   factory ClusterKubernetesNetworkConfig.fromMap(Map<String, dynamic> map) {
     return ClusterKubernetesNetworkConfig(
-      elasticLoadBalancing: map['elasticLoadBalancing'] == null ? null : (ClusterKubernetesNetworkConfigElasticLoadBalancing.fromMap((map['elasticLoadBalancing'] as Map).cast<String, dynamic>())).input(),
-      ipFamily: map['ipFamily'] == null ? null : (map['ipFamily'] as String).input(),
-      serviceIpv4Cidr: map['serviceIpv4Cidr'] == null ? null : (map['serviceIpv4Cidr'] as String).input(),
-      serviceIpv6Cidr: map['serviceIpv6Cidr'] == null ? null : (map['serviceIpv6Cidr'] as String).input(),
+      elasticLoadBalancing: map['elasticLoadBalancing'] == null ? null : ((ClusterKubernetesNetworkConfigElasticLoadBalancing.fromMap((map['elasticLoadBalancing']! as Map).cast<String, dynamic>())).input()).input(),
+      ipFamily: map['ipFamily'] == null ? null : ((map['ipFamily'] as String).input()).input(),
+      serviceIpv4Cidr: map['serviceIpv4Cidr'] == null ? null : ((map['serviceIpv4Cidr'] as String).input()).input(),
+      serviceIpv6Cidr: map['serviceIpv6Cidr'] == null ? null : ((map['serviceIpv6Cidr'] as String).input()).input(),
     );
   }
 }

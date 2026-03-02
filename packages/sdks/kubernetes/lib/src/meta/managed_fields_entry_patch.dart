@@ -51,13 +51,13 @@ class ManagedFieldsEntryPatch {
 
   factory ManagedFieldsEntryPatch.fromMap(Map<String, dynamic> map) {
     return ManagedFieldsEntryPatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      fieldsType: map['fieldsType'] == null ? null : (map['fieldsType'] as String).input(),
-      fieldsV1: map['fieldsV1'] == null ? null : (map['fieldsV1']).input(),
-      manager: map['manager'] == null ? null : (map['manager'] as String).input(),
-      operation: map['operation'] == null ? null : (map['operation'] as String).input(),
-      subresource: map['subresource'] == null ? null : (map['subresource'] as String).input(),
-      time: map['time'] == null ? null : (map['time'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      fieldsType: map['fieldsType'] == null ? null : (map['fieldsType']! as String).input(),
+      fieldsV1: map['fieldsV1'] == null ? null : (map['fieldsV1']!).input(),
+      manager: map['manager'] == null ? null : (map['manager']! as String).input(),
+      operation: map['operation'] == null ? null : (map['operation']! as String).input(),
+      subresource: map['subresource'] == null ? null : (map['subresource']! as String).input(),
+      time: map['time'] == null ? null : (map['time']! as String).input(),
     );
   }
 }

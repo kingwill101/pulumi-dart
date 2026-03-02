@@ -26,8 +26,8 @@ class GalleryImageVersionSafetyProfile {
 
   factory GalleryImageVersionSafetyProfile.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionSafetyProfile(
-      allowDeletionOfReplicatedLocations: map['allowDeletionOfReplicatedLocations'] == null ? null : (map['allowDeletionOfReplicatedLocations'] as bool).input(),
-      blockDeletionBeforeEndOfLife: map['blockDeletionBeforeEndOfLife'] == null ? null : (map['blockDeletionBeforeEndOfLife'] as bool).input(),
+      allowDeletionOfReplicatedLocations: map['allowDeletionOfReplicatedLocations'] == null ? null : (map['allowDeletionOfReplicatedLocations']! as bool).input(),
+      blockDeletionBeforeEndOfLife: map['blockDeletionBeforeEndOfLife'] == null ? null : (map['blockDeletionBeforeEndOfLife']! as bool).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class RoutineArgs {
 
   factory RoutineArgs.fromMap(Map<String, dynamic> map) {
     return RoutineArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -58,12 +58,12 @@ class FunctionAppFunctionArgs {
   factory FunctionAppFunctionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionAppFunctionArgs(
       configJson: (map['configJson'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      files: map['files'] == null ? null : (pulumi.Input.decodeList<FunctionAppFunctionFile>(map['files'], (value) => FunctionAppFunctionFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      files: map['files'] == null ? null : (pulumi.Input.decodeList<FunctionAppFunctionFile>(map['files']!, (value) => FunctionAppFunctionFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
       functionAppId: (map['functionAppId'] as String).input(),
-      language: map['language'] == null ? null : (map['language'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      testData: map['testData'] == null ? null : (map['testData'] as String).input(),
+      language: map['language'] == null ? null : (map['language']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      testData: map['testData'] == null ? null : (map['testData']! as String).input(),
     );
   }
 }

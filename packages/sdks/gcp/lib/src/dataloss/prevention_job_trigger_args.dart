@@ -63,12 +63,12 @@ class PreventionJobTriggerArgs {
 
   factory PreventionJobTriggerArgs.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      inspectJob: map['inspectJob'] == null ? null : (PreventionJobTriggerInspectJob.fromMap((map['inspectJob'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      inspectJob: map['inspectJob'] == null ? null : (PreventionJobTriggerInspectJob.fromMap((map['inspectJob']! as Map).cast<String, dynamic>())).input(),
       parent: (map['parent'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      triggerId: map['triggerId'] == null ? null : (map['triggerId'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      triggerId: map['triggerId'] == null ? null : (map['triggerId']! as String).input(),
       triggers: (pulumi.Input.decodeList<PreventionJobTriggerTrigger>(map['triggers'], (value) => PreventionJobTriggerTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

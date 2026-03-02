@@ -38,9 +38,9 @@ class GetDropletsArgs {
 
   factory GetDropletsArgs.fromMap(Map<String, dynamic> map) {
     return GetDropletsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDropletsFilter>(map['filters'], (value) => GetDropletsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gpus: map['gpus'] == null ? null : (map['gpus'] as bool).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetDropletsSort>(map['sorts'], (value) => GetDropletsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDropletsFilter>(map['filters']!, (value) => GetDropletsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gpus: map['gpus'] == null ? null : (map['gpus']! as bool).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetDropletsSort>(map['sorts']!, (value) => GetDropletsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

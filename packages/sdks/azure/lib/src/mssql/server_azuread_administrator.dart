@@ -35,10 +35,10 @@ class ServerAzureadAdministrator {
 
   factory ServerAzureadAdministrator.fromMap(Map<String, dynamic> map) {
     return ServerAzureadAdministrator(
-      azureadAuthenticationOnly: map['azureadAuthenticationOnly'] == null ? null : (map['azureadAuthenticationOnly'] as bool).input(),
+      azureadAuthenticationOnly: map['azureadAuthenticationOnly'] == null ? null : (map['azureadAuthenticationOnly']! as bool).input(),
       loginUsername: (map['loginUsername'] as String).input(),
       objectId: (map['objectId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

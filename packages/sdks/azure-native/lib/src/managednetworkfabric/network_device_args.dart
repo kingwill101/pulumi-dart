@@ -59,14 +59,14 @@ class NetworkDeviceArgs {
 
   factory NetworkDeviceArgs.fromMap(Map<String, dynamic> map) {
     return NetworkDeviceArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkDeviceName: map['networkDeviceName'] == null ? null : (map['networkDeviceName'] as String).input(),
-      networkDeviceSku: map['networkDeviceSku'] == null ? null : (map['networkDeviceSku'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkDeviceName: map['networkDeviceName'] == null ? null : (map['networkDeviceName']! as String).input(),
+      networkDeviceSku: map['networkDeviceSku'] == null ? null : (map['networkDeviceSku']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serialNumber: (map['serialNumber'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

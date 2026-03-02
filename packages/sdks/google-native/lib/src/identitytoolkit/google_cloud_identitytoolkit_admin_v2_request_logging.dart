@@ -21,7 +21,7 @@ class GoogleCloudIdentitytoolkitAdminV2RequestLogging {
 
   factory GoogleCloudIdentitytoolkitAdminV2RequestLogging.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2RequestLogging(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

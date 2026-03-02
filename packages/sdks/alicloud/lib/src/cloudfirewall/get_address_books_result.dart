@@ -50,12 +50,12 @@ class GetAddressBooksResult {
   factory GetAddressBooksResult.fromMap(Map<String, dynamic> map) {
     return GetAddressBooksResult(
       books: pulumi.Input.decodeList<GetAddressBooksBook>(map['books'], (value) => GetAddressBooksBook.fromMap((value as Map).cast<String, dynamic>())),
-      groupType: map['groupType'] == null ? null : map['groupType'] as String,
+      groupType: map['groupType'] == null ? null : map['groupType']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

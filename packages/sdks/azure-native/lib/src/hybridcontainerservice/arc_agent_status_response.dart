@@ -51,13 +51,13 @@ class ArcAgentStatusResponse {
 
   factory ArcAgentStatusResponse.fromMap(Map<String, dynamic> map) {
     return ArcAgentStatusResponse(
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as double).input(),
-      deploymentState: map['deploymentState'] == null ? null : (map['deploymentState'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      lastConnectivityTime: map['lastConnectivityTime'] == null ? null : (map['lastConnectivityTime'] as String).input(),
-      managedIdentityCertificateExpirationTime: map['managedIdentityCertificateExpirationTime'] == null ? null : (map['managedIdentityCertificateExpirationTime'] as String).input(),
-      onboardingPublicKey: map['onboardingPublicKey'] == null ? null : (map['onboardingPublicKey'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as double).input(),
+      deploymentState: map['deploymentState'] == null ? null : (map['deploymentState']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      lastConnectivityTime: map['lastConnectivityTime'] == null ? null : (map['lastConnectivityTime']! as String).input(),
+      managedIdentityCertificateExpirationTime: map['managedIdentityCertificateExpirationTime'] == null ? null : (map['managedIdentityCertificateExpirationTime']! as String).input(),
+      onboardingPublicKey: map['onboardingPublicKey'] == null ? null : (map['onboardingPublicKey']! as String).input(),
     );
   }
 }

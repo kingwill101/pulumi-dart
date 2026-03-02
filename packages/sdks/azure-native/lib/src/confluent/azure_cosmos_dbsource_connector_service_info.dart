@@ -53,12 +53,12 @@ class AzureCosmosDBSourceConnectorServiceInfo {
   factory AzureCosmosDBSourceConnectorServiceInfo.fromMap(Map<String, dynamic> map) {
     return AzureCosmosDBSourceConnectorServiceInfo(
       connectorServiceType: (map['connectorServiceType'] as String).input(),
-      cosmosConnectionEndpoint: map['cosmosConnectionEndpoint'] == null ? null : (map['cosmosConnectionEndpoint'] as String).input(),
-      cosmosContainersTopicMapping: map['cosmosContainersTopicMapping'] == null ? null : (map['cosmosContainersTopicMapping'] as String).input(),
-      cosmosDatabaseName: map['cosmosDatabaseName'] == null ? null : (map['cosmosDatabaseName'] as String).input(),
-      cosmosMasterKey: map['cosmosMasterKey'] == null ? null : (map['cosmosMasterKey'] as String).input(),
-      cosmosMessageKeyEnabled: map['cosmosMessageKeyEnabled'] == null ? null : (map['cosmosMessageKeyEnabled'] as bool).input(),
-      cosmosMessageKeyField: map['cosmosMessageKeyField'] == null ? null : (map['cosmosMessageKeyField'] as String).input(),
+      cosmosConnectionEndpoint: map['cosmosConnectionEndpoint'] == null ? null : (map['cosmosConnectionEndpoint']! as String).input(),
+      cosmosContainersTopicMapping: map['cosmosContainersTopicMapping'] == null ? null : (map['cosmosContainersTopicMapping']! as String).input(),
+      cosmosDatabaseName: map['cosmosDatabaseName'] == null ? null : (map['cosmosDatabaseName']! as String).input(),
+      cosmosMasterKey: map['cosmosMasterKey'] == null ? null : (map['cosmosMasterKey']! as String).input(),
+      cosmosMessageKeyEnabled: map['cosmosMessageKeyEnabled'] == null ? null : (map['cosmosMessageKeyEnabled']! as bool).input(),
+      cosmosMessageKeyField: map['cosmosMessageKeyField'] == null ? null : (map['cosmosMessageKeyField']! as String).input(),
     );
   }
 }

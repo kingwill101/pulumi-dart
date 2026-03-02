@@ -26,8 +26,8 @@ class MapperConnectionReferenceResponse {
 
   factory MapperConnectionReferenceResponse.fromMap(Map<String, dynamic> map) {
     return MapperConnectionReferenceResponse(
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

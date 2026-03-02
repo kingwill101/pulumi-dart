@@ -50,12 +50,12 @@ class DefaultSecurityGroupArgs {
 
   factory DefaultSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return DefaultSecurityGroupArgs(
-      egress: map['egress'] == null ? null : (pulumi.Input.decodeList<DefaultSecurityGroupEgress>(map['egress'], (value) => DefaultSecurityGroupEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<DefaultSecurityGroupIngress>(map['ingress'], (value) => DefaultSecurityGroupIngress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      revokeRulesOnDelete: map['revokeRulesOnDelete'] == null ? null : (map['revokeRulesOnDelete'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      egress: map['egress'] == null ? null : ((pulumi.Input.decodeList<DefaultSecurityGroupEgress>(map['egress']!, (value) => DefaultSecurityGroupEgress.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      ingress: map['ingress'] == null ? null : ((pulumi.Input.decodeList<DefaultSecurityGroupIngress>(map['ingress']!, (value) => DefaultSecurityGroupIngress.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      revokeRulesOnDelete: map['revokeRulesOnDelete'] == null ? null : ((map['revokeRulesOnDelete'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

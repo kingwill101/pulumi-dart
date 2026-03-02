@@ -46,12 +46,12 @@ class Provider {
 
   factory Provider.fromMap(Map<String, dynamic> map) {
     return Provider(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      instanceUri: map['instanceUri'] == null ? null : (map['instanceUri'] as String).input(),
-      providerId: map['providerId'] == null ? null : (map['providerId'] as String).input(),
-      providerSku: map['providerSku'] == null ? null : (map['providerSku'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      resourceUsageId: map['resourceUsageId'] == null ? null : (map['resourceUsageId'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      instanceUri: map['instanceUri'] == null ? null : (map['instanceUri']! as String).input(),
+      providerId: map['providerId'] == null ? null : (map['providerId']! as String).input(),
+      providerSku: map['providerSku'] == null ? null : (map['providerSku']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      resourceUsageId: map['resourceUsageId'] == null ? null : (map['resourceUsageId']! as String).input(),
     );
   }
 }

@@ -44,7 +44,7 @@ class OrderStatusResponse {
   factory OrderStatusResponse.fromMap(Map<String, dynamic> map) {
     return OrderStatusResponse(
       additionalOrderDetails: ((map['additionalOrderDetails'] as Map).cast<String, String>()).input(),
-      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
+      comments: map['comments'] == null ? null : (map['comments']! as String).input(),
       status: (map['status'] as String).input(),
       trackingInformation: (TrackingInfoResponse.fromMap((map['trackingInformation'] as Map).cast<String, dynamic>())).input(),
       updateDateTime: (map['updateDateTime'] as String).input(),

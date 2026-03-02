@@ -66,14 +66,14 @@ class GetSqlPoolWorkloadClassifierResult {
   factory GetSqlPoolWorkloadClassifierResult.fromMap(Map<String, dynamic> map) {
     return GetSqlPoolWorkloadClassifierResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      context: map['context'] == null ? null : map['context'] as String,
-      endTime: map['endTime'] == null ? null : map['endTime'] as String,
+      context: map['context'] == null ? null : map['context']! as String,
+      endTime: map['endTime'] == null ? null : map['endTime']! as String,
       id: map['id'] as String,
-      importance: map['importance'] == null ? null : map['importance'] as String,
-      label: map['label'] == null ? null : map['label'] as String,
+      importance: map['importance'] == null ? null : map['importance']! as String,
+      label: map['label'] == null ? null : map['label']! as String,
       memberName: map['memberName'] as String,
       name: map['name'] as String,
-      startTime: map['startTime'] == null ? null : map['startTime'] as String,
+      startTime: map['startTime'] == null ? null : map['startTime']! as String,
       type: map['type'] as String,
     );
   }

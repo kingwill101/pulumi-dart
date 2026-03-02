@@ -86,17 +86,17 @@ class TriggerArgs {
 
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
       destination: (TriggerDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      eventDataContentType: map['eventDataContentType'] == null ? null : (map['eventDataContentType'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      eventDataContentType: map['eventDataContentType'] == null ? null : (map['eventDataContentType']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       matchingCriterias: (pulumi.Input.decodeList<TriggerMatchingCriteria>(map['matchingCriterias'], (value) => TriggerMatchingCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (TriggerRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      transport: map['transport'] == null ? null : (TriggerTransport.fromMap((map['transport'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (TriggerRetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      transport: map['transport'] == null ? null : (TriggerTransport.fromMap((map['transport']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

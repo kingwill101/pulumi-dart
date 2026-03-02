@@ -33,8 +33,8 @@ class ScheduledSourceSynchronizationSettingResponse {
   factory ScheduledSourceSynchronizationSettingResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledSourceSynchronizationSettingResponse(
       kind: (map['kind'] as String).input(),
-      recurrenceInterval: map['recurrenceInterval'] == null ? null : (map['recurrenceInterval'] as String).input(),
-      synchronizationTime: map['synchronizationTime'] == null ? null : (map['synchronizationTime'] as String).input(),
+      recurrenceInterval: map['recurrenceInterval'] == null ? null : (map['recurrenceInterval']! as String).input(),
+      synchronizationTime: map['synchronizationTime'] == null ? null : (map['synchronizationTime']! as String).input(),
     );
   }
 }

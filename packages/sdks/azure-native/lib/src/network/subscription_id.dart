@@ -20,7 +20,7 @@ class SubscriptionId {
 
   factory SubscriptionId.fromMap(Map<String, dynamic> map) {
     return SubscriptionId(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

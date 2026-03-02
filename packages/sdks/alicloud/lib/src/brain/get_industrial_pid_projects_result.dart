@@ -56,11 +56,11 @@ class GetIndustrialPidProjectsResult {
     return GetIndustrialPidProjectsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pidOrganizationId: map['pidOrganizationId'] == null ? null : map['pidOrganizationId'] as String,
-      pidProjectName: map['pidProjectName'] == null ? null : map['pidProjectName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pidOrganizationId: map['pidOrganizationId'] == null ? null : map['pidOrganizationId']! as String,
+      pidProjectName: map['pidProjectName'] == null ? null : map['pidProjectName']! as String,
       projects: pulumi.Input.decodeList<GetIndustrialPidProjectsProject>(map['projects'], (value) => GetIndustrialPidProjectsProject.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

@@ -62,14 +62,14 @@ class MongoDBCollectionGetPropertiesResponseResource {
 
   factory MongoDBCollectionGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return MongoDBCollectionGetPropertiesResponseResource(
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as int).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl']! as int).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
       etag: (map['etag'] as String).input(),
       id: (map['id'] as String).input(),
-      indexes: map['indexes'] == null ? null : (pulumi.Input.decodeList<MongoIndexResponse>(map['indexes'], (value) => MongoIndexResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParametersResponse.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>())).input(),
+      indexes: map['indexes'] == null ? null : (pulumi.Input.decodeList<MongoIndexResponse>(map['indexes']!, (value) => MongoIndexResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParametersResponse.fromMap((map['restoreParameters']! as Map).cast<String, dynamic>())).input(),
       rid: (map['rid'] as String).input(),
-      shardKey: map['shardKey'] == null ? null : ((map['shardKey'] as Map).cast<String, String>()).input(),
+      shardKey: map['shardKey'] == null ? null : ((map['shardKey']! as Map).cast<String, String>()).input(),
       ts: (map['ts'] as double).input(),
     );
   }

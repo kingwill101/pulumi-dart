@@ -44,10 +44,10 @@ class DataStoreDocumentProcessingConfig {
 
   factory DataStoreDocumentProcessingConfig.fromMap(Map<String, dynamic> map) {
     return DataStoreDocumentProcessingConfig(
-      chunkingConfig: map['chunkingConfig'] == null ? null : (DataStoreDocumentProcessingConfigChunkingConfig.fromMap((map['chunkingConfig'] as Map).cast<String, dynamic>())).input(),
-      defaultParsingConfig: map['defaultParsingConfig'] == null ? null : (DataStoreDocumentProcessingConfigDefaultParsingConfig.fromMap((map['defaultParsingConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parsingConfigOverrides: map['parsingConfigOverrides'] == null ? null : (pulumi.Input.decodeList<DataStoreDocumentProcessingConfigParsingConfigOverride>(map['parsingConfigOverrides'], (value) => DataStoreDocumentProcessingConfigParsingConfigOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      chunkingConfig: map['chunkingConfig'] == null ? null : (DataStoreDocumentProcessingConfigChunkingConfig.fromMap((map['chunkingConfig']! as Map).cast<String, dynamic>())).input(),
+      defaultParsingConfig: map['defaultParsingConfig'] == null ? null : (DataStoreDocumentProcessingConfigDefaultParsingConfig.fromMap((map['defaultParsingConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parsingConfigOverrides: map['parsingConfigOverrides'] == null ? null : (pulumi.Input.decodeList<DataStoreDocumentProcessingConfigParsingConfigOverride>(map['parsingConfigOverrides']!, (value) => DataStoreDocumentProcessingConfigParsingConfigOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

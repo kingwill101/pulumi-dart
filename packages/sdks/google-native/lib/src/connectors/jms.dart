@@ -27,8 +27,8 @@ class JMS {
 
   factory JMS.fromMap(Map<String, dynamic> map) {
     return JMS(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (JMSType.fromValue(map['type'] as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (JMSType.fromValue(map['type']! as String)).input(),
     );
   }
 }

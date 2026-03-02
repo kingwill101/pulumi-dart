@@ -31,9 +31,9 @@ class PeriodicModePropertiesResponse {
 
   factory PeriodicModePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PeriodicModePropertiesResponse(
-      backupIntervalInMinutes: map['backupIntervalInMinutes'] == null ? null : (map['backupIntervalInMinutes'] as int).input(),
-      backupRetentionIntervalInHours: map['backupRetentionIntervalInHours'] == null ? null : (map['backupRetentionIntervalInHours'] as int).input(),
-      backupStorageRedundancy: map['backupStorageRedundancy'] == null ? null : (map['backupStorageRedundancy'] as String).input(),
+      backupIntervalInMinutes: map['backupIntervalInMinutes'] == null ? null : (map['backupIntervalInMinutes']! as int).input(),
+      backupRetentionIntervalInHours: map['backupRetentionIntervalInHours'] == null ? null : (map['backupRetentionIntervalInHours']! as int).input(),
+      backupStorageRedundancy: map['backupStorageRedundancy'] == null ? null : (map['backupStorageRedundancy']! as String).input(),
     );
   }
 }

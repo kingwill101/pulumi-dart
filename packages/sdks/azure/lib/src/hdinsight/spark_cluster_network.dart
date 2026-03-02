@@ -27,8 +27,8 @@ class SparkClusterNetwork {
 
   factory SparkClusterNetwork.fromMap(Map<String, dynamic> map) {
     return SparkClusterNetwork(
-      connectionDirection: map['connectionDirection'] == null ? null : (map['connectionDirection'] as String).input(),
-      privateLinkEnabled: map['privateLinkEnabled'] == null ? null : (map['privateLinkEnabled'] as bool).input(),
+      connectionDirection: map['connectionDirection'] == null ? null : (map['connectionDirection']! as String).input(),
+      privateLinkEnabled: map['privateLinkEnabled'] == null ? null : (map['privateLinkEnabled']! as bool).input(),
     );
   }
 }

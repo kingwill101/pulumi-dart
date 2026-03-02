@@ -26,8 +26,8 @@ class AnalyticsOutputSettingsResponse {
 
   factory AnalyticsOutputSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AnalyticsOutputSettingsResponse(
-      analyticsWorkspaceId: map['analyticsWorkspaceId'] == null ? null : (map['analyticsWorkspaceId'] as String).input(),
-      associatedIdentity: map['associatedIdentity'] == null ? null : (IdentitySelectorResponse.fromMap((map['associatedIdentity'] as Map).cast<String, dynamic>())).input(),
+      analyticsWorkspaceId: map['analyticsWorkspaceId'] == null ? null : (map['analyticsWorkspaceId']! as String).input(),
+      associatedIdentity: map['associatedIdentity'] == null ? null : (IdentitySelectorResponse.fromMap((map['associatedIdentity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

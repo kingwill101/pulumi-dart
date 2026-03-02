@@ -51,8 +51,8 @@ class RegistrationAssignmentPropertiesResponseRegistrationDefinition {
     return RegistrationAssignmentPropertiesResponseRegistrationDefinition(
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
-      plan: map['plan'] == null ? null : (PlanResponse.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (RegistrationAssignmentPropertiesResponseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      plan: map['plan'] == null ? null : (PlanResponse.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (RegistrationAssignmentPropertiesResponseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );

@@ -66,16 +66,16 @@ class PolicyPolicySettings {
 
   factory PolicyPolicySettings.fromMap(Map<String, dynamic> map) {
     return PolicyPolicySettings(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      fileUploadEnforcement: map['fileUploadEnforcement'] == null ? null : (map['fileUploadEnforcement'] as bool).input(),
-      fileUploadLimitInMb: map['fileUploadLimitInMb'] == null ? null : (map['fileUploadLimitInMb'] as int).input(),
-      jsChallengeCookieExpirationInMinutes: map['jsChallengeCookieExpirationInMinutes'] == null ? null : (map['jsChallengeCookieExpirationInMinutes'] as int).input(),
-      logScrubbing: map['logScrubbing'] == null ? null : (PolicyPolicySettingsLogScrubbing.fromMap((map['logScrubbing'] as Map).cast<String, dynamic>())).input(),
-      maxRequestBodySizeInKb: map['maxRequestBodySizeInKb'] == null ? null : (map['maxRequestBodySizeInKb'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      requestBodyCheck: map['requestBodyCheck'] == null ? null : (map['requestBodyCheck'] as bool).input(),
-      requestBodyEnforcement: map['requestBodyEnforcement'] == null ? null : (map['requestBodyEnforcement'] as bool).input(),
-      requestBodyInspectLimitInKb: map['requestBodyInspectLimitInKb'] == null ? null : (map['requestBodyInspectLimitInKb'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      fileUploadEnforcement: map['fileUploadEnforcement'] == null ? null : (map['fileUploadEnforcement']! as bool).input(),
+      fileUploadLimitInMb: map['fileUploadLimitInMb'] == null ? null : (map['fileUploadLimitInMb']! as int).input(),
+      jsChallengeCookieExpirationInMinutes: map['jsChallengeCookieExpirationInMinutes'] == null ? null : (map['jsChallengeCookieExpirationInMinutes']! as int).input(),
+      logScrubbing: map['logScrubbing'] == null ? null : (PolicyPolicySettingsLogScrubbing.fromMap((map['logScrubbing']! as Map).cast<String, dynamic>())).input(),
+      maxRequestBodySizeInKb: map['maxRequestBodySizeInKb'] == null ? null : (map['maxRequestBodySizeInKb']! as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      requestBodyCheck: map['requestBodyCheck'] == null ? null : (map['requestBodyCheck']! as bool).input(),
+      requestBodyEnforcement: map['requestBodyEnforcement'] == null ? null : (map['requestBodyEnforcement']! as bool).input(),
+      requestBodyInspectLimitInKb: map['requestBodyInspectLimitInKb'] == null ? null : (map['requestBodyInspectLimitInKb']! as int).input(),
     );
   }
 }

@@ -73,17 +73,17 @@ class GrantState {
 
   factory GrantState.fromMap(Map<String, dynamic> map) {
     return GrantState(
-      constraints: map['constraints'] == null ? null : (pulumi.Input.decodeList<GrantConstraint>(map['constraints'], (value) => GrantConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      grantCreationTokens: map['grantCreationTokens'] == null ? null : ((map['grantCreationTokens'] as List).cast<String>()).input(),
-      grantId: map['grantId'] == null ? null : (map['grantId'] as String).input(),
-      grantToken: map['grantToken'] == null ? null : (map['grantToken'] as String).input(),
-      granteePrincipal: map['granteePrincipal'] == null ? null : (map['granteePrincipal'] as String).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      operations: map['operations'] == null ? null : ((map['operations'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retireOnDelete: map['retireOnDelete'] == null ? null : (map['retireOnDelete'] as bool).input(),
-      retiringPrincipal: map['retiringPrincipal'] == null ? null : (map['retiringPrincipal'] as String).input(),
+      constraints: map['constraints'] == null ? null : ((pulumi.Input.decodeList<GrantConstraint>(map['constraints']!, (value) => GrantConstraint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      grantCreationTokens: map['grantCreationTokens'] == null ? null : (((map['grantCreationTokens'] as List).cast<String>()).input()).input(),
+      grantId: map['grantId'] == null ? null : ((map['grantId'] as String).input()).input(),
+      grantToken: map['grantToken'] == null ? null : ((map['grantToken'] as String).input()).input(),
+      granteePrincipal: map['granteePrincipal'] == null ? null : ((map['granteePrincipal'] as String).input()).input(),
+      keyId: map['keyId'] == null ? null : ((map['keyId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      operations: map['operations'] == null ? null : (((map['operations'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retireOnDelete: map['retireOnDelete'] == null ? null : ((map['retireOnDelete'] as bool).input()).input(),
+      retiringPrincipal: map['retiringPrincipal'] == null ? null : ((map['retiringPrincipal'] as String).input()).input(),
     );
   }
 }

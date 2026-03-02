@@ -89,18 +89,18 @@ class BackendArgs {
 
   factory BackendArgs.fromMap(Map<String, dynamic> map) {
     return BackendArgs(
-      backendId: map['backendId'] == null ? null : (map['backendId'] as String).input(),
-      circuitBreaker: map['circuitBreaker'] == null ? null : (BackendCircuitBreaker.fromMap((map['circuitBreaker'] as Map).cast<String, dynamic>())).input(),
-      credentials: map['credentials'] == null ? null : (BackendCredentialsContract.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      properties: map['properties'] == null ? null : (BackendProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      backendId: map['backendId'] == null ? null : (map['backendId']! as String).input(),
+      circuitBreaker: map['circuitBreaker'] == null ? null : (BackendCircuitBreaker.fromMap((map['circuitBreaker']! as Map).cast<String, dynamic>())).input(),
+      credentials: map['credentials'] == null ? null : (BackendCredentialsContract.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      properties: map['properties'] == null ? null : (BackendProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       protocol: (map['protocol'] as String).input(),
-      proxy: map['proxy'] == null ? null : (BackendProxyContract.fromMap((map['proxy'] as Map).cast<String, dynamic>())).input(),
+      proxy: map['proxy'] == null ? null : (BackendProxyContract.fromMap((map['proxy']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
-      tls: map['tls'] == null ? null : (BackendTlsProperties.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
+      tls: map['tls'] == null ? null : (BackendTlsProperties.fromMap((map['tls']! as Map).cast<String, dynamic>())).input(),
       url: (map['url'] as String).input(),
     );
   }

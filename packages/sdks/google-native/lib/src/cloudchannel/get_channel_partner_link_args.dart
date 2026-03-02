@@ -33,7 +33,7 @@ class GetChannelPartnerLinkArgs {
     return GetChannelPartnerLinkArgs(
       accountId: (map['accountId'] as String).input(),
       channelPartnerLinkId: (map['channelPartnerLinkId'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class EnterpriseCrmEventbusStats {
 
   factory EnterpriseCrmEventbusStats.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusStats(
-      dimensions: map['dimensions'] == null ? null : (EnterpriseCrmEventbusStatsDimensions.fromMap((map['dimensions'] as Map).cast<String, dynamic>())).input(),
-      durationInSeconds: map['durationInSeconds'] == null ? null : (map['durationInSeconds'] as double).input(),
-      errorRate: map['errorRate'] == null ? null : (map['errorRate'] as double).input(),
-      qps: map['qps'] == null ? null : (map['qps'] as double).input(),
-      warningRate: map['warningRate'] == null ? null : (map['warningRate'] as double).input(),
+      dimensions: map['dimensions'] == null ? null : (EnterpriseCrmEventbusStatsDimensions.fromMap((map['dimensions']! as Map).cast<String, dynamic>())).input(),
+      durationInSeconds: map['durationInSeconds'] == null ? null : (map['durationInSeconds']! as double).input(),
+      errorRate: map['errorRate'] == null ? null : (map['errorRate']! as double).input(),
+      qps: map['qps'] == null ? null : (map['qps']! as double).input(),
+      warningRate: map['warningRate'] == null ? null : (map['warningRate']! as double).input(),
     );
   }
 }

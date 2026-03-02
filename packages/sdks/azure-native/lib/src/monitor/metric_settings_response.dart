@@ -37,10 +37,10 @@ class MetricSettingsResponse {
 
   factory MetricSettingsResponse.fromMap(Map<String, dynamic> map) {
     return MetricSettingsResponse(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicyResponse.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain'] as String).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicyResponse.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain']! as String).input(),
     );
   }
 }

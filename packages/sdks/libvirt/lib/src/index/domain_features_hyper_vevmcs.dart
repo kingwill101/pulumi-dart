@@ -20,7 +20,7 @@ class DomainFeaturesHyperVEvmcs {
 
   factory DomainFeaturesHyperVEvmcs.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVEvmcs(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

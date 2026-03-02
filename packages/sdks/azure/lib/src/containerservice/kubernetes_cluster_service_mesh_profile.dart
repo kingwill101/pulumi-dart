@@ -45,9 +45,9 @@ class KubernetesClusterServiceMeshProfile {
 
   factory KubernetesClusterServiceMeshProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterServiceMeshProfile(
-      certificateAuthority: map['certificateAuthority'] == null ? null : (KubernetesClusterServiceMeshProfileCertificateAuthority.fromMap((map['certificateAuthority'] as Map).cast<String, dynamic>())).input(),
-      externalIngressGatewayEnabled: map['externalIngressGatewayEnabled'] == null ? null : (map['externalIngressGatewayEnabled'] as bool).input(),
-      internalIngressGatewayEnabled: map['internalIngressGatewayEnabled'] == null ? null : (map['internalIngressGatewayEnabled'] as bool).input(),
+      certificateAuthority: map['certificateAuthority'] == null ? null : (KubernetesClusterServiceMeshProfileCertificateAuthority.fromMap((map['certificateAuthority']! as Map).cast<String, dynamic>())).input(),
+      externalIngressGatewayEnabled: map['externalIngressGatewayEnabled'] == null ? null : (map['externalIngressGatewayEnabled']! as bool).input(),
+      internalIngressGatewayEnabled: map['internalIngressGatewayEnabled'] == null ? null : (map['internalIngressGatewayEnabled']! as bool).input(),
       mode: (map['mode'] as String).input(),
       revisions: ((map['revisions'] as List).cast<String>()).input(),
     );

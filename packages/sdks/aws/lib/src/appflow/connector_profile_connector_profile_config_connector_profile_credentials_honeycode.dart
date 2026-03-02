@@ -28,9 +28,9 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
-      oauthRequest: map['oauthRequest'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycodeOauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>())).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : ((map['accessToken'] as String).input()).input(),
+      oauthRequest: map['oauthRequest'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycodeOauthRequest.fromMap((map['oauthRequest']! as Map).cast<String, dynamic>())).input()).input(),
+      refreshToken: map['refreshToken'] == null ? null : ((map['refreshToken'] as String).input()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class LocationPolicy {
 
   factory LocationPolicy.fromMap(Map<String, dynamic> map) {
     return LocationPolicy(
-      allowedLocations: map['allowedLocations'] == null ? null : ((map['allowedLocations'] as List).cast<String>()).input(),
+      allowedLocations: map['allowedLocations'] == null ? null : ((map['allowedLocations']! as List).cast<String>()).input(),
     );
   }
 }

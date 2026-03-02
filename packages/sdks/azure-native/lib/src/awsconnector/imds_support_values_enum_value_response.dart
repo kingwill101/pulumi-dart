@@ -21,7 +21,7 @@ class ImdsSupportValuesEnumValueResponse {
 
   factory ImdsSupportValuesEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ImdsSupportValuesEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

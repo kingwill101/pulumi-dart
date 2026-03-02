@@ -31,7 +31,7 @@ class GetAccountLoginsResult {
 
   factory GetAccountLoginsResult.fromMap(Map<String, dynamic> map) {
     return GetAccountLoginsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAccountLoginsFilter>(map['filters'], (value) => GetAccountLoginsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAccountLoginsFilter>(map['filters']!, (value) => GetAccountLoginsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       logins: pulumi.Input.decodeList<GetAccountLoginsLogin>(map['logins'], (value) => GetAccountLoginsLogin.fromMap((value as Map).cast<String, dynamic>())),
     );

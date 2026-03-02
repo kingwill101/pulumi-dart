@@ -65,10 +65,10 @@ class DefenseRuleConfigCondition {
 
   factory DefenseRuleConfigCondition.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfigCondition(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      opValue: map['opValue'] == null ? null : (map['opValue'] as String).input(),
-      subKey: map['subKey'] == null ? null : (map['subKey'] as String).input(),
-      values: map['values'] == null ? null : (map['values'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      opValue: map['opValue'] == null ? null : (map['opValue']! as String).input(),
+      subKey: map['subKey'] == null ? null : (map['subKey']! as String).input(),
+      values: map['values'] == null ? null : (map['values']! as String).input(),
     );
   }
 }

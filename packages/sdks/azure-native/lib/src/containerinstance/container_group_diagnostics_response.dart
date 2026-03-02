@@ -22,7 +22,7 @@ class ContainerGroupDiagnosticsResponse {
 
   factory ContainerGroupDiagnosticsResponse.fromMap(Map<String, dynamic> map) {
     return ContainerGroupDiagnosticsResponse(
-      logAnalytics: map['logAnalytics'] == null ? null : (LogAnalyticsResponse.fromMap((map['logAnalytics'] as Map).cast<String, dynamic>())).input(),
+      logAnalytics: map['logAnalytics'] == null ? null : (LogAnalyticsResponse.fromMap((map['logAnalytics']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

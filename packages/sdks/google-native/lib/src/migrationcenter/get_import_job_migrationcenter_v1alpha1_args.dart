@@ -37,8 +37,8 @@ class GetImportJobMigrationcenterV1alpha1Args {
     return GetImportJobMigrationcenterV1alpha1Args(
       importJobId: (map['importJobId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

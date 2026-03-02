@@ -21,7 +21,7 @@ class BuildInfo {
 
   factory BuildInfo.fromMap(Map<String, dynamic> map) {
     return BuildInfo(
-      cloudBuildId: map['cloudBuildId'] == null ? null : (map['cloudBuildId'] as String).input(),
+      cloudBuildId: map['cloudBuildId'] == null ? null : (map['cloudBuildId']! as String).input(),
     );
   }
 }

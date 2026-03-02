@@ -22,7 +22,7 @@ class TopologiesProperties {
 
   factory TopologiesProperties.fromMap(Map<String, dynamic> map) {
     return TopologiesProperties(
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingProperties>(map['bindings'], (value) => BindingProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingProperties>(map['bindings']!, (value) => BindingProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

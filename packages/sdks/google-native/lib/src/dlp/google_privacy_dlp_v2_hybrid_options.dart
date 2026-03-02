@@ -37,10 +37,10 @@ class GooglePrivacyDlpV2HybridOptions {
 
   factory GooglePrivacyDlpV2HybridOptions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2HybridOptions(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      requiredFindingLabelKeys: map['requiredFindingLabelKeys'] == null ? null : ((map['requiredFindingLabelKeys'] as List).cast<String>()).input(),
-      tableOptions: map['tableOptions'] == null ? null : (GooglePrivacyDlpV2TableOptions.fromMap((map['tableOptions'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      requiredFindingLabelKeys: map['requiredFindingLabelKeys'] == null ? null : ((map['requiredFindingLabelKeys']! as List).cast<String>()).input(),
+      tableOptions: map['tableOptions'] == null ? null : (GooglePrivacyDlpV2TableOptions.fromMap((map['tableOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -45,11 +45,11 @@ class VirtualMachineConfigurationAssignmentConfiguration {
 
   factory VirtualMachineConfigurationAssignmentConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineConfigurationAssignmentConfiguration(
-      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType'] as String).input(),
-      contentHash: map['contentHash'] == null ? null : (map['contentHash'] as String).input(),
-      contentUri: map['contentUri'] == null ? null : (map['contentUri'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<VirtualMachineConfigurationAssignmentConfigurationParameter>(map['parameters'], (value) => VirtualMachineConfigurationAssignmentConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType']! as String).input(),
+      contentHash: map['contentHash'] == null ? null : (map['contentHash']! as String).input(),
+      contentUri: map['contentUri'] == null ? null : (map['contentUri']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<VirtualMachineConfigurationAssignmentConfigurationParameter>(map['parameters']!, (value) => VirtualMachineConfigurationAssignmentConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

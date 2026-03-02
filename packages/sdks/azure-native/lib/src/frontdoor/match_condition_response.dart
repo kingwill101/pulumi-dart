@@ -48,10 +48,10 @@ class MatchConditionResponse {
     return MatchConditionResponse(
       matchValue: ((map['matchValue'] as List).cast<String>()).input(),
       matchVariable: (map['matchVariable'] as String).input(),
-      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition']! as bool).input(),
       operator: (map['operator'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
-      transforms: map['transforms'] == null ? null : ((map['transforms'] as List).cast<String>()).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
+      transforms: map['transforms'] == null ? null : ((map['transforms']! as List).cast<String>()).input(),
     );
   }
 }

@@ -49,12 +49,12 @@ class LogViewIamPolicyState {
 
   factory LogViewIamPolicyState.fromMap(Map<String, dynamic> map) {
     return LogViewIamPolicyState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
     );
   }
 }

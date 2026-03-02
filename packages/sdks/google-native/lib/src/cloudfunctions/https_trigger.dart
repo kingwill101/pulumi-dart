@@ -22,7 +22,7 @@ class HttpsTrigger {
 
   factory HttpsTrigger.fromMap(Map<String, dynamic> map) {
     return HttpsTrigger(
-      securityLevel: map['securityLevel'] == null ? null : (HttpsTriggerSecurityLevel.fromValue(map['securityLevel'] as String)).input(),
+      securityLevel: map['securityLevel'] == null ? null : (HttpsTriggerSecurityLevel.fromValue(map['securityLevel']! as String)).input(),
     );
   }
 }

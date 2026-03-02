@@ -21,7 +21,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement
 
   factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement(
-      statements: (pulumi.Input.decodeList<WebAclRuleStatement>(map['statements'], (value) => WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statements: (pulumi.Input.decodeList<WebAclRuleStatement>(map['statements']!, (value) => WebAclRuleStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

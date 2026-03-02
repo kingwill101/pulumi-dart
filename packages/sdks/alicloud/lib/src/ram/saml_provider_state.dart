@@ -42,11 +42,11 @@ class SamlProviderState {
 
   factory SamlProviderState.fromMap(Map<String, dynamic> map) {
     return SamlProviderState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encodedsamlMetadataDocument: map['encodedsamlMetadataDocument'] == null ? null : (map['encodedsamlMetadataDocument'] as String).input(),
-      samlProviderName: map['samlProviderName'] == null ? null : (map['samlProviderName'] as String).input(),
-      updateDate: map['updateDate'] == null ? null : (map['updateDate'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encodedsamlMetadataDocument: map['encodedsamlMetadataDocument'] == null ? null : (map['encodedsamlMetadataDocument']! as String).input(),
+      samlProviderName: map['samlProviderName'] == null ? null : (map['samlProviderName']! as String).input(),
+      updateDate: map['updateDate'] == null ? null : (map['updateDate']! as String).input(),
     );
   }
 }

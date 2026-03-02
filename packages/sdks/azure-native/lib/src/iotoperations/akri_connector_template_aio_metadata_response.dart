@@ -26,8 +26,8 @@ class AkriConnectorTemplateAioMetadataResponse {
 
   factory AkriConnectorTemplateAioMetadataResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateAioMetadataResponse(
-      aioMaxVersion: map['aioMaxVersion'] == null ? null : (map['aioMaxVersion'] as String).input(),
-      aioMinVersion: map['aioMinVersion'] == null ? null : (map['aioMinVersion'] as String).input(),
+      aioMaxVersion: map['aioMaxVersion'] == null ? null : (map['aioMaxVersion']! as String).input(),
+      aioMinVersion: map['aioMinVersion'] == null ? null : (map['aioMinVersion']! as String).input(),
     );
   }
 }

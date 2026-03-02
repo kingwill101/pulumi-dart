@@ -95,20 +95,20 @@ class TableState {
 
   factory TableState.fromMap(Map<String, dynamic> map) {
     return TableState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      capacitySpecification: map['capacitySpecification'] == null ? null : (TableCapacitySpecification.fromMap((map['capacitySpecification'] as Map).cast<String, dynamic>())).input(),
-      clientSideTimestamps: map['clientSideTimestamps'] == null ? null : (TableClientSideTimestamps.fromMap((map['clientSideTimestamps'] as Map).cast<String, dynamic>())).input(),
-      comment: map['comment'] == null ? null : (TableComment.fromMap((map['comment'] as Map).cast<String, dynamic>())).input(),
-      defaultTimeToLive: map['defaultTimeToLive'] == null ? null : (map['defaultTimeToLive'] as int).input(),
-      encryptionSpecification: map['encryptionSpecification'] == null ? null : (TableEncryptionSpecification.fromMap((map['encryptionSpecification'] as Map).cast<String, dynamic>())).input(),
-      keyspaceName: map['keyspaceName'] == null ? null : (map['keyspaceName'] as String).input(),
-      pointInTimeRecovery: map['pointInTimeRecovery'] == null ? null : (TablePointInTimeRecovery.fromMap((map['pointInTimeRecovery'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      schemaDefinition: map['schemaDefinition'] == null ? null : (TableSchemaDefinition.fromMap((map['schemaDefinition'] as Map).cast<String, dynamic>())).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      ttl: map['ttl'] == null ? null : (TableTtl.fromMap((map['ttl'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      capacitySpecification: map['capacitySpecification'] == null ? null : ((TableCapacitySpecification.fromMap((map['capacitySpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      clientSideTimestamps: map['clientSideTimestamps'] == null ? null : ((TableClientSideTimestamps.fromMap((map['clientSideTimestamps']! as Map).cast<String, dynamic>())).input()).input(),
+      comment: map['comment'] == null ? null : ((TableComment.fromMap((map['comment']! as Map).cast<String, dynamic>())).input()).input(),
+      defaultTimeToLive: map['defaultTimeToLive'] == null ? null : ((map['defaultTimeToLive'] as int).input()).input(),
+      encryptionSpecification: map['encryptionSpecification'] == null ? null : ((TableEncryptionSpecification.fromMap((map['encryptionSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      keyspaceName: map['keyspaceName'] == null ? null : ((map['keyspaceName'] as String).input()).input(),
+      pointInTimeRecovery: map['pointInTimeRecovery'] == null ? null : ((TablePointInTimeRecovery.fromMap((map['pointInTimeRecovery']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      schemaDefinition: map['schemaDefinition'] == null ? null : ((TableSchemaDefinition.fromMap((map['schemaDefinition']! as Map).cast<String, dynamic>())).input()).input(),
+      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      ttl: map['ttl'] == null ? null : ((TableTtl.fromMap((map['ttl']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

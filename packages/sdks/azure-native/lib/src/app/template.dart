@@ -58,13 +58,13 @@ class Template {
 
   factory Template.fromMap(Map<String, dynamic> map) {
     return Template(
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<Container>(map['containers'], (value) => Container.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initContainers: map['initContainers'] == null ? null : (pulumi.Input.decodeList<InitContainer>(map['initContainers'], (value) => InitContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      revisionSuffix: map['revisionSuffix'] == null ? null : (map['revisionSuffix'] as String).input(),
-      scale: map['scale'] == null ? null : (Scale.fromMap((map['scale'] as Map).cast<String, dynamic>())).input(),
-      serviceBinds: map['serviceBinds'] == null ? null : (pulumi.Input.decodeList<ServiceBind>(map['serviceBinds'], (value) => ServiceBind.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds'] as double).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes'], (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<Container>(map['containers']!, (value) => Container.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initContainers: map['initContainers'] == null ? null : (pulumi.Input.decodeList<InitContainer>(map['initContainers']!, (value) => InitContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      revisionSuffix: map['revisionSuffix'] == null ? null : (map['revisionSuffix']! as String).input(),
+      scale: map['scale'] == null ? null : (Scale.fromMap((map['scale']! as Map).cast<String, dynamic>())).input(),
+      serviceBinds: map['serviceBinds'] == null ? null : (pulumi.Input.decodeList<ServiceBind>(map['serviceBinds']!, (value) => ServiceBind.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds']! as double).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes']!, (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

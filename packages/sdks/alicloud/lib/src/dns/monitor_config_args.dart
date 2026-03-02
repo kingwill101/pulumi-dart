@@ -64,7 +64,7 @@ class MonitorConfigArgs {
       evaluationCount: (map['evaluationCount'] as int).input(),
       interval: (map['interval'] as int).input(),
       ispCityNodes: (pulumi.Input.decodeList<MonitorConfigIspCityNode>(map['ispCityNodes'], (value) => MonitorConfigIspCityNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
       monitorExtendInfo: (map['monitorExtendInfo'] as String).input(),
       protocolType: (map['protocolType'] as String).input(),
       timeout: (map['timeout'] as int).input(),

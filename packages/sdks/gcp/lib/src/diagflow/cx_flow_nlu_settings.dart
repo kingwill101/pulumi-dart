@@ -37,9 +37,9 @@ class CxFlowNluSettings {
 
   factory CxFlowNluSettings.fromMap(Map<String, dynamic> map) {
     return CxFlowNluSettings(
-      classificationThreshold: map['classificationThreshold'] == null ? null : (map['classificationThreshold'] as double).input(),
-      modelTrainingMode: map['modelTrainingMode'] == null ? null : (map['modelTrainingMode'] as String).input(),
-      modelType: map['modelType'] == null ? null : (map['modelType'] as String).input(),
+      classificationThreshold: map['classificationThreshold'] == null ? null : (map['classificationThreshold']! as double).input(),
+      modelTrainingMode: map['modelTrainingMode'] == null ? null : (map['modelTrainingMode']! as String).input(),
+      modelType: map['modelType'] == null ? null : (map['modelType']! as String).input(),
     );
   }
 }

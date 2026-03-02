@@ -41,10 +41,10 @@ class GetDatabaseEnginesArgs {
 
   factory GetDatabaseEnginesArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseEnginesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDatabaseEnginesFilter>(map['filters'], (value) => GetDatabaseEnginesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
-      order: map['order'] == null ? null : (map['order'] as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDatabaseEnginesFilter>(map['filters']!, (value) => GetDatabaseEnginesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      latest: map['latest'] == null ? null : (map['latest']! as bool).input(),
+      order: map['order'] == null ? null : (map['order']! as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
     );
   }
 }

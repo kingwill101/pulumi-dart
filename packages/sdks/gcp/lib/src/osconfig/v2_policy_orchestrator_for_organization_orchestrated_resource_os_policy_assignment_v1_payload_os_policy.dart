@@ -61,8 +61,8 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
   factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy(
-      allowNoResourceGroupMatch: map['allowNoResourceGroupMatch'] == null ? null : (map['allowNoResourceGroupMatch'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      allowNoResourceGroupMatch: map['allowNoResourceGroupMatch'] == null ? null : (map['allowNoResourceGroupMatch']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       id: (map['id'] as String).input(),
       mode: (map['mode'] as String).input(),
       resourceGroups: (pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup>(map['resourceGroups'], (value) => V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),

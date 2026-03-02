@@ -27,7 +27,7 @@ class DatabaseClusterBackupRestore {
 
   factory DatabaseClusterBackupRestore.fromMap(Map<String, dynamic> map) {
     return DatabaseClusterBackupRestore(
-      backupCreatedAt: map['backupCreatedAt'] == null ? null : (map['backupCreatedAt'] as String).input(),
+      backupCreatedAt: map['backupCreatedAt'] == null ? null : (map['backupCreatedAt']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
     );
   }

@@ -41,8 +41,8 @@ class VpcEndpointServiceConnectionArgs {
 
   factory VpcEndpointServiceConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceConnectionArgs(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       endpointId: (map['endpointId'] as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );

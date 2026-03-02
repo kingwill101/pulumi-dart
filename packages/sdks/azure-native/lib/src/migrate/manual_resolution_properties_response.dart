@@ -21,7 +21,7 @@ class ManualResolutionPropertiesResponse {
 
   factory ManualResolutionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManualResolutionPropertiesResponse(
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
     );
   }
 }

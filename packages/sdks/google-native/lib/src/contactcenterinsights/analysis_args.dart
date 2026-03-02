@@ -42,11 +42,11 @@ class AnalysisArgs {
 
   factory AnalysisArgs.fromMap(Map<String, dynamic> map) {
     return AnalysisArgs(
-      annotatorSelector: map['annotatorSelector'] == null ? null : (GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromMap((map['annotatorSelector'] as Map).cast<String, dynamic>())).input(),
+      annotatorSelector: map['annotatorSelector'] == null ? null : (GoogleCloudContactcenterinsightsV1AnnotatorSelector.fromMap((map['annotatorSelector']! as Map).cast<String, dynamic>())).input(),
       conversationId: (map['conversationId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

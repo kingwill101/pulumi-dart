@@ -21,7 +21,7 @@ class GetFirewallFirewallStatusCapacityUsageSummary {
 
   factory GetFirewallFirewallStatusCapacityUsageSummary.fromMap(Map<String, dynamic> map) {
     return GetFirewallFirewallStatusCapacityUsageSummary(
-      cidrs: (pulumi.Input.decodeList<GetFirewallFirewallStatusCapacityUsageSummaryCidr>(map['cidrs'], (value) => GetFirewallFirewallStatusCapacityUsageSummaryCidr.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cidrs: (pulumi.Input.decodeList<GetFirewallFirewallStatusCapacityUsageSummaryCidr>(map['cidrs']!, (value) => GetFirewallFirewallStatusCapacityUsageSummaryCidr.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

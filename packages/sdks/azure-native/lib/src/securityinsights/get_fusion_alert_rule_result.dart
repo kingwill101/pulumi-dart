@@ -97,7 +97,7 @@ class GetFusionAlertRuleResult {
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       enabled: map['enabled'] as bool,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       lastModifiedUtc: map['lastModifiedUtc'] as String,

@@ -28,8 +28,8 @@ class WorkloadSpecPatch {
 
   factory WorkloadSpecPatch.fromMap(Map<String, dynamic> map) {
     return WorkloadSpecPatch(
-      controllerRef: map['controllerRef'] == null ? null : (TypedLocalObjectReferencePatch.fromMap((map['controllerRef'] as Map).cast<String, dynamic>())).input(),
-      podGroups: map['podGroups'] == null ? null : (pulumi.Input.decodeList<PodGroupPatch>(map['podGroups'], (value) => PodGroupPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      controllerRef: map['controllerRef'] == null ? null : (TypedLocalObjectReferencePatch.fromMap((map['controllerRef']! as Map).cast<String, dynamic>())).input(),
+      podGroups: map['podGroups'] == null ? null : (pulumi.Input.decodeList<PodGroupPatch>(map['podGroups']!, (value) => PodGroupPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -33,10 +33,10 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTl {
 
   factory GetVirtualGatewaySpecBackendDefaultClientPolicyTl.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecBackendDefaultClientPolicyTl(
-      certificates: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate>(map['certificates'], (value) => GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificates: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate>(map['certificates']!, (value) => GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
       enforce: (map['enforce'] as bool).input(),
       ports: ((map['ports'] as List).cast<int>()).input(),
-      validations: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation>(map['validations'], (value) => GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validations: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation>(map['validations']!, (value) => GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

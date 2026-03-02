@@ -38,10 +38,10 @@ class AccountNetworkAcls {
 
   factory AccountNetworkAcls.fromMap(Map<String, dynamic> map) {
     return AccountNetworkAcls(
-      bypass: map['bypass'] == null ? null : (map['bypass'] as String).input(),
+      bypass: map['bypass'] == null ? null : (map['bypass']! as String).input(),
       defaultAction: (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : ((map['ipRules'] as List).cast<String>()).input(),
-      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<AccountNetworkAclsVirtualNetworkRule>(map['virtualNetworkRules'], (value) => AccountNetworkAclsVirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipRules: map['ipRules'] == null ? null : ((map['ipRules']! as List).cast<String>()).input(),
+      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<AccountNetworkAclsVirtualNetworkRule>(map['virtualNetworkRules']!, (value) => AccountNetworkAclsVirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -59,7 +59,7 @@ class KeyVaultCertificateSourceParametersResponse {
       deleteRule: (map['deleteRule'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       secretName: (map['secretName'] as String).input(),
-      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion'] as String).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion']! as String).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
       typeName: (map['typeName'] as String).input(),
       updateRule: (map['updateRule'] as String).input(),

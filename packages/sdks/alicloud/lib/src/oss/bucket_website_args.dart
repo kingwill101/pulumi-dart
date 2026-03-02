@@ -43,9 +43,9 @@ class BucketWebsiteArgs {
   factory BucketWebsiteArgs.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteArgs(
       bucket: (map['bucket'] as String).input(),
-      errorDocument: map['errorDocument'] == null ? null : (BucketWebsiteErrorDocument.fromMap((map['errorDocument'] as Map).cast<String, dynamic>())).input(),
-      indexDocument: map['indexDocument'] == null ? null : (BucketWebsiteIndexDocument.fromMap((map['indexDocument'] as Map).cast<String, dynamic>())).input(),
-      routingRules: map['routingRules'] == null ? null : (BucketWebsiteRoutingRules.fromMap((map['routingRules'] as Map).cast<String, dynamic>())).input(),
+      errorDocument: map['errorDocument'] == null ? null : (BucketWebsiteErrorDocument.fromMap((map['errorDocument']! as Map).cast<String, dynamic>())).input(),
+      indexDocument: map['indexDocument'] == null ? null : (BucketWebsiteIndexDocument.fromMap((map['indexDocument']! as Map).cast<String, dynamic>())).input(),
+      routingRules: map['routingRules'] == null ? null : (BucketWebsiteRoutingRules.fromMap((map['routingRules']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

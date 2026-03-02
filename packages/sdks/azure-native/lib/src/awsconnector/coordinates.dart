@@ -26,8 +26,8 @@ class Coordinates {
 
   factory Coordinates.fromMap(Map<String, dynamic> map) {
     return Coordinates(
-      latitude: map['latitude'] == null ? null : (map['latitude'] as String).input(),
-      longitude: map['longitude'] == null ? null : (map['longitude'] as String).input(),
+      latitude: map['latitude'] == null ? null : (map['latitude']! as String).input(),
+      longitude: map['longitude'] == null ? null : (map['longitude']! as String).input(),
     );
   }
 }

@@ -71,16 +71,16 @@ class SecretSyncArgs {
 
   factory SecretSyncArgs.fromMap(Map<String, dynamic> map) {
     return SecretSyncArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      forceSynchronization: map['forceSynchronization'] == null ? null : (map['forceSynchronization'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      forceSynchronization: map['forceSynchronization'] == null ? null : (map['forceSynchronization']! as String).input(),
       kubernetesSecretType: (map['kubernetesSecretType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       objectSecretMapping: (pulumi.Input.decodeList<KubernetesSecretObjectMapping>(map['objectSecretMapping'], (value) => KubernetesSecretObjectMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       secretProviderClassName: (map['secretProviderClassName'] as String).input(),
-      secretSyncName: map['secretSyncName'] == null ? null : (map['secretSyncName'] as String).input(),
+      secretSyncName: map['secretSyncName'] == null ? null : (map['secretSyncName']! as String).input(),
       serviceAccountName: (map['serviceAccountName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

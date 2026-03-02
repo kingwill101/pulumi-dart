@@ -51,13 +51,13 @@ class HardwareProfile {
 
   factory HardwareProfile.fromMap(Map<String, dynamic> map) {
     return HardwareProfile(
-      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount'] as int).input(),
-      dynamicMemoryEnabled: map['dynamicMemoryEnabled'] == null ? null : (map['dynamicMemoryEnabled'] as String).input(),
-      dynamicMemoryMaxMB: map['dynamicMemoryMaxMB'] == null ? null : (map['dynamicMemoryMaxMB'] as int).input(),
-      dynamicMemoryMinMB: map['dynamicMemoryMinMB'] == null ? null : (map['dynamicMemoryMinMB'] as int).input(),
-      isHighlyAvailable: map['isHighlyAvailable'] == null ? null : (map['isHighlyAvailable'] as String).input(),
-      limitCpuForMigration: map['limitCpuForMigration'] == null ? null : (map['limitCpuForMigration'] as String).input(),
-      memoryMB: map['memoryMB'] == null ? null : (map['memoryMB'] as int).input(),
+      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount']! as int).input(),
+      dynamicMemoryEnabled: map['dynamicMemoryEnabled'] == null ? null : (map['dynamicMemoryEnabled']! as String).input(),
+      dynamicMemoryMaxMB: map['dynamicMemoryMaxMB'] == null ? null : (map['dynamicMemoryMaxMB']! as int).input(),
+      dynamicMemoryMinMB: map['dynamicMemoryMinMB'] == null ? null : (map['dynamicMemoryMinMB']! as int).input(),
+      isHighlyAvailable: map['isHighlyAvailable'] == null ? null : (map['isHighlyAvailable']! as String).input(),
+      limitCpuForMigration: map['limitCpuForMigration'] == null ? null : (map['limitCpuForMigration']! as String).input(),
+      memoryMB: map['memoryMB'] == null ? null : (map['memoryMB']! as int).input(),
     );
   }
 }

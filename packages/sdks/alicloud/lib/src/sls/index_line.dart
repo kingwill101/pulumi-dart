@@ -42,8 +42,8 @@ class IndexLine {
     return IndexLine(
       caseSensitive: (map['caseSensitive'] as bool).input(),
       chn: (map['chn'] as bool).input(),
-      excludeKeys: map['excludeKeys'] == null ? null : ((map['excludeKeys'] as List).cast<String>()).input(),
-      includeKeys: map['includeKeys'] == null ? null : ((map['includeKeys'] as List).cast<String>()).input(),
+      excludeKeys: map['excludeKeys'] == null ? null : ((map['excludeKeys']! as List).cast<String>()).input(),
+      includeKeys: map['includeKeys'] == null ? null : ((map['includeKeys']! as List).cast<String>()).input(),
       tokens: ((map['tokens'] as List).cast<String>()).input(),
     );
   }

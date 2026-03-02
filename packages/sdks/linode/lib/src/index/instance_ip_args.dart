@@ -39,10 +39,10 @@ class InstanceIpArgs {
 
   factory InstanceIpArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIpArgs(
-      applyImmediately: map['applyImmediately'] == null ? null : (map['applyImmediately'] as bool).input(),
+      applyImmediately: map['applyImmediately'] == null ? null : (map['applyImmediately']! as bool).input(),
       linodeId: (map['linodeId'] as int).input(),
-      public: map['public'] == null ? null : (map['public'] as bool).input(),
-      rdns: map['rdns'] == null ? null : (map['rdns'] as String).input(),
+      public: map['public'] == null ? null : (map['public']! as bool).input(),
+      rdns: map['rdns'] == null ? null : (map['rdns']! as String).input(),
     );
   }
 }

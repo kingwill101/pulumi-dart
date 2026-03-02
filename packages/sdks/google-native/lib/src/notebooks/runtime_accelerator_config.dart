@@ -27,8 +27,8 @@ class RuntimeAcceleratorConfig {
 
   factory RuntimeAcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeAcceleratorConfig(
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as String).input(),
-      type: map['type'] == null ? null : (RuntimeAcceleratorConfigType.fromValue(map['type'] as String)).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as String).input(),
+      type: map['type'] == null ? null : (RuntimeAcceleratorConfigType.fromValue(map['type']! as String)).input(),
     );
   }
 }

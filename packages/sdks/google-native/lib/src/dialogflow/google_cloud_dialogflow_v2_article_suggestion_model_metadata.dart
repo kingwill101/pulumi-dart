@@ -22,7 +22,7 @@ class GoogleCloudDialogflowV2ArticleSuggestionModelMetadata {
 
   factory GoogleCloudDialogflowV2ArticleSuggestionModelMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2ArticleSuggestionModelMetadata(
-      trainingModelType: map['trainingModelType'] == null ? null : (GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType.fromValue(map['trainingModelType'] as String)).input(),
+      trainingModelType: map['trainingModelType'] == null ? null : (GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType.fromValue(map['trainingModelType']! as String)).input(),
     );
   }
 }

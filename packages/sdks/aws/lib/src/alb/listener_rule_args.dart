@@ -57,13 +57,13 @@ class ListenerRuleArgs {
 
   factory ListenerRuleArgs.fromMap(Map<String, dynamic> map) {
     return ListenerRuleArgs(
-      actions: (pulumi.Input.decodeList<ListenerRuleAction>(map['actions'], (value) => ListenerRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      conditions: (pulumi.Input.decodeList<ListenerRuleCondition>(map['conditions'], (value) => ListenerRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: (pulumi.Input.decodeList<ListenerRuleAction>(map['actions']!, (value) => ListenerRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: (pulumi.Input.decodeList<ListenerRuleCondition>(map['conditions']!, (value) => ListenerRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       listenerArn: (map['listenerArn'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transforms: map['transforms'] == null ? null : (pulumi.Input.decodeList<ListenerRuleTransform>(map['transforms'], (value) => ListenerRuleTransform.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      transforms: map['transforms'] == null ? null : ((pulumi.Input.decodeList<ListenerRuleTransform>(map['transforms']!, (value) => ListenerRuleTransform.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

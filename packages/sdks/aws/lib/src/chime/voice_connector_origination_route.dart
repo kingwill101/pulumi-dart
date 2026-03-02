@@ -41,7 +41,7 @@ class VoiceConnectorOriginationRoute {
   factory VoiceConnectorOriginationRoute.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorOriginationRoute(
       host: (map['host'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
       priority: (map['priority'] as int).input(),
       protocol: (map['protocol'] as String).input(),
       weight: (map['weight'] as int).input(),

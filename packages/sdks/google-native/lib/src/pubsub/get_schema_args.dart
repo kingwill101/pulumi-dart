@@ -31,9 +31,9 @@ class GetSchemaArgs {
 
   factory GetSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       schemaId: (map['schemaId'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

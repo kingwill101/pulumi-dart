@@ -21,7 +21,7 @@ class PublicIPAddressArmReferenceResponse {
 
   factory PublicIPAddressArmReferenceResponse.fromMap(Map<String, dynamic> map) {
     return PublicIPAddressArmReferenceResponse(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

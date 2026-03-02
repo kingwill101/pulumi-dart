@@ -26,8 +26,8 @@ class DeploymentType {
 
   factory DeploymentType.fromMap(Map<String, dynamic> map) {
     return DeploymentType(
-      appSourceUri: map['appSourceUri'] == null ? null : (map['appSourceUri'] as String).input(),
-      languageRuntime: map['languageRuntime'] == null ? null : (map['languageRuntime'] as String).input(),
+      appSourceUri: map['appSourceUri'] == null ? null : (map['appSourceUri']! as String).input(),
+      languageRuntime: map['languageRuntime'] == null ? null : (map['languageRuntime']! as String).input(),
     );
   }
 }

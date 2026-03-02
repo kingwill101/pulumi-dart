@@ -81,17 +81,17 @@ class EntityTypeDialogflowV3beta1Args {
   factory EntityTypeDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return EntityTypeDialogflowV3beta1Args(
       agentId: (map['agentId'] as String).input(),
-      autoExpansionMode: map['autoExpansionMode'] == null ? null : (EntityTypeAutoExpansionModeDialogflowV3beta1.fromValue(map['autoExpansionMode'] as String)).input(),
+      autoExpansionMode: map['autoExpansionMode'] == null ? null : (EntityTypeAutoExpansionModeDialogflowV3beta1.fromValue(map['autoExpansionMode']! as String)).input(),
       displayName: (map['displayName'] as String).input(),
-      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction'] as bool).input(),
-      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>(map['entities'], (value) => GoogleCloudDialogflowCxV3beta1EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludedPhrases: map['excludedPhrases'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase>(map['excludedPhrases'], (value) => GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction']! as bool).input(),
+      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EntityTypeEntity>(map['entities']!, (value) => GoogleCloudDialogflowCxV3beta1EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludedPhrases: map['excludedPhrases'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase>(map['excludedPhrases']!, (value) => GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
       kind: (EntityTypeKindDialogflowV3beta1.fromValue(map['kind'] as String)).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      redact: map['redact'] == null ? null : (map['redact'] as bool).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      redact: map['redact'] == null ? null : (map['redact']! as bool).input(),
     );
   }
 }

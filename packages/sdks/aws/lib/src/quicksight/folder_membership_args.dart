@@ -46,11 +46,11 @@ class FolderMembershipArgs {
 
   factory FolderMembershipArgs.fromMap(Map<String, dynamic> map) {
     return FolderMembershipArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
       folderId: (map['folderId'] as String).input(),
       memberId: (map['memberId'] as String).input(),
       memberType: (map['memberType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

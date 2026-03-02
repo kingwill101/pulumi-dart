@@ -41,11 +41,11 @@ class StatefulSetConditionPatch {
 
   factory StatefulSetConditionPatch.fromMap(Map<String, dynamic> map) {
     return StatefulSetConditionPatch(
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

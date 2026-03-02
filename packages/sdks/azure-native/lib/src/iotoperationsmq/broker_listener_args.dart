@@ -96,21 +96,21 @@ class BrokerListenerArgs {
 
   factory BrokerListenerArgs.fromMap(Map<String, dynamic> map) {
     return BrokerListenerArgs(
-      authenticationEnabled: map['authenticationEnabled'] == null ? null : (map['authenticationEnabled'] as bool).input(),
-      authorizationEnabled: map['authorizationEnabled'] == null ? null : (map['authorizationEnabled'] as bool).input(),
+      authenticationEnabled: map['authenticationEnabled'] == null ? null : (map['authenticationEnabled']! as bool).input(),
+      authorizationEnabled: map['authorizationEnabled'] == null ? null : (map['authorizationEnabled']! as bool).input(),
       brokerName: (map['brokerName'] as String).input(),
       brokerRef: (map['brokerRef'] as String).input(),
       extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      listenerName: map['listenerName'] == null ? null : (map['listenerName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      listenerName: map['listenerName'] == null ? null : (map['listenerName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       mqName: (map['mqName'] as String).input(),
-      nodePort: map['nodePort'] == null ? null : (map['nodePort'] as int).input(),
+      nodePort: map['nodePort'] == null ? null : (map['nodePort']! as int).input(),
       port: (map['port'] as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tls: map['tls'] == null ? null : (TlsCertMethod.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tls: map['tls'] == null ? null : (TlsCertMethod.fromMap((map['tls']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

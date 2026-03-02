@@ -37,9 +37,9 @@ class ProfileScrubbingRules {
   factory ProfileScrubbingRules.fromMap(Map<String, dynamic> map) {
     return ProfileScrubbingRules(
       matchVariable: (map['matchVariable'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
       selectorMatchOperator: (map['selectorMatchOperator'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

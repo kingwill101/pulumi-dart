@@ -73,17 +73,17 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      autoConfigEnabled: map['autoConfigEnabled'] == null ? null : (map['autoConfigEnabled'] as bool).input(),
-      autoCreate: map['autoCreate'] == null ? null : (map['autoCreate'] as bool).input(),
-      cweMonitorEnabled: map['cweMonitorEnabled'] == null ? null : (map['cweMonitorEnabled'] as bool).input(),
-      groupingType: map['groupingType'] == null ? null : (map['groupingType'] as String).input(),
-      opsCenterEnabled: map['opsCenterEnabled'] == null ? null : (map['opsCenterEnabled'] as bool).input(),
-      opsItemSnsTopicArn: map['opsItemSnsTopicArn'] == null ? null : (map['opsItemSnsTopicArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      autoConfigEnabled: map['autoConfigEnabled'] == null ? null : ((map['autoConfigEnabled'] as bool).input()).input(),
+      autoCreate: map['autoCreate'] == null ? null : ((map['autoCreate'] as bool).input()).input(),
+      cweMonitorEnabled: map['cweMonitorEnabled'] == null ? null : ((map['cweMonitorEnabled'] as bool).input()).input(),
+      groupingType: map['groupingType'] == null ? null : ((map['groupingType'] as String).input()).input(),
+      opsCenterEnabled: map['opsCenterEnabled'] == null ? null : ((map['opsCenterEnabled'] as bool).input()).input(),
+      opsItemSnsTopicArn: map['opsItemSnsTopicArn'] == null ? null : ((map['opsItemSnsTopicArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : ((map['resourceGroupName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

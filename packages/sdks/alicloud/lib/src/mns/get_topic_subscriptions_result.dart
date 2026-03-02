@@ -46,9 +46,9 @@ class GetTopicSubscriptionsResult {
   factory GetTopicSubscriptionsResult.fromMap(Map<String, dynamic> map) {
     return GetTopicSubscriptionsResult(
       id: map['id'] as String,
-      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
+      namePrefix: map['namePrefix'] == null ? null : map['namePrefix']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       subscriptions: pulumi.Input.decodeList<GetTopicSubscriptionsSubscription>(map['subscriptions'], (value) => GetTopicSubscriptionsSubscription.fromMap((value as Map).cast<String, dynamic>())),
       topicName: map['topicName'] as String,
     );

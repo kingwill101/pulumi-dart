@@ -63,15 +63,15 @@ class LocalUserState {
 
   factory LocalUserState.fromMap(Map<String, dynamic> map) {
     return LocalUserState(
-      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      permissionScopes: map['permissionScopes'] == null ? null : (pulumi.Input.decodeList<LocalUserPermissionScope>(map['permissionScopes'], (value) => LocalUserPermissionScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
-      sshAuthorizedKeys: map['sshAuthorizedKeys'] == null ? null : (pulumi.Input.decodeList<LocalUserSshAuthorizedKey>(map['sshAuthorizedKeys'], (value) => LocalUserSshAuthorizedKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sshKeyEnabled: map['sshKeyEnabled'] == null ? null : (map['sshKeyEnabled'] as bool).input(),
-      sshPasswordEnabled: map['sshPasswordEnabled'] == null ? null : (map['sshPasswordEnabled'] as bool).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      permissionScopes: map['permissionScopes'] == null ? null : (pulumi.Input.decodeList<LocalUserPermissionScope>(map['permissionScopes']!, (value) => LocalUserPermissionScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sid: map['sid'] == null ? null : (map['sid']! as String).input(),
+      sshAuthorizedKeys: map['sshAuthorizedKeys'] == null ? null : (pulumi.Input.decodeList<LocalUserSshAuthorizedKey>(map['sshAuthorizedKeys']!, (value) => LocalUserSshAuthorizedKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sshKeyEnabled: map['sshKeyEnabled'] == null ? null : (map['sshKeyEnabled']! as bool).input(),
+      sshPasswordEnabled: map['sshPasswordEnabled'] == null ? null : (map['sshPasswordEnabled']! as bool).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
     );
   }
 }

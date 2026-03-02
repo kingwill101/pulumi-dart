@@ -21,7 +21,7 @@ class ResourceRecordSetFailoverEnumValueResponse {
 
   factory ResourceRecordSetFailoverEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ResourceRecordSetFailoverEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

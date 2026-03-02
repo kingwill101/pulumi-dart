@@ -22,7 +22,7 @@ class ConsentHeaderHandling {
 
   factory ConsentHeaderHandling.fromMap(Map<String, dynamic> map) {
     return ConsentHeaderHandling(
-      profile: map['profile'] == null ? null : (ConsentHeaderHandlingProfile.fromValue(map['profile'] as String)).input(),
+      profile: map['profile'] == null ? null : (ConsentHeaderHandlingProfile.fromValue(map['profile']! as String)).input(),
     );
   }
 }

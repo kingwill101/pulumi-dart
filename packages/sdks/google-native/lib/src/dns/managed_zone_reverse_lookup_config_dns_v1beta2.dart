@@ -19,7 +19,7 @@ class ManagedZoneReverseLookupConfigDnsV1beta2 {
 
   factory ManagedZoneReverseLookupConfigDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZoneReverseLookupConfigDnsV1beta2(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

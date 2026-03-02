@@ -42,10 +42,10 @@ class ManagementClusterResponse {
   factory ManagementClusterResponse.fromMap(Map<String, dynamic> map) {
     return ManagementClusterResponse(
       clusterId: (map['clusterId'] as int).input(),
-      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize'] as int).input(),
-      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
+      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize']! as int).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : (map['vsanDatastoreName'] as String).input(),
+      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : (map['vsanDatastoreName']! as String).input(),
     );
   }
 }

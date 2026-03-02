@@ -70,11 +70,11 @@ class GetDatastoreResult {
   factory GetDatastoreResult.fromMap(Map<String, dynamic> map) {
     return GetDatastoreResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      diskPoolVolume: map['diskPoolVolume'] == null ? null : DiskPoolVolumeResponse.fromMap((map['diskPoolVolume'] as Map).cast<String, dynamic>()),
-      elasticSanVolume: map['elasticSanVolume'] == null ? null : ElasticSanVolumeResponse.fromMap((map['elasticSanVolume'] as Map).cast<String, dynamic>()),
+      diskPoolVolume: map['diskPoolVolume'] == null ? null : DiskPoolVolumeResponse.fromMap((map['diskPoolVolume']! as Map).cast<String, dynamic>()),
+      elasticSanVolume: map['elasticSanVolume'] == null ? null : ElasticSanVolumeResponse.fromMap((map['elasticSanVolume']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
-      netAppVolume: map['netAppVolume'] == null ? null : NetAppVolumeResponse.fromMap((map['netAppVolume'] as Map).cast<String, dynamic>()),
+      netAppVolume: map['netAppVolume'] == null ? null : NetAppVolumeResponse.fromMap((map['netAppVolume']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       status: map['status'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

@@ -86,7 +86,7 @@ class GetAppTemplate {
       azureQueueScaleRules: (pulumi.Input.decodeList<GetAppTemplateAzureQueueScaleRule>(map['azureQueueScaleRules'], (value) => GetAppTemplateAzureQueueScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       containers: (pulumi.Input.decodeList<GetAppTemplateContainer>(map['containers'], (value) => GetAppTemplateContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
       cooldownPeriodInSeconds: (map['cooldownPeriodInSeconds'] as int).input(),
-      customScaleRules: map['customScaleRules'] == null ? null : (pulumi.Input.decodeList<GetAppTemplateCustomScaleRule>(map['customScaleRules'], (value) => GetAppTemplateCustomScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customScaleRules: map['customScaleRules'] == null ? null : (pulumi.Input.decodeList<GetAppTemplateCustomScaleRule>(map['customScaleRules']!, (value) => GetAppTemplateCustomScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       httpScaleRules: (pulumi.Input.decodeList<GetAppTemplateHttpScaleRule>(map['httpScaleRules'], (value) => GetAppTemplateHttpScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       initContainers: (pulumi.Input.decodeList<GetAppTemplateInitContainer>(map['initContainers'], (value) => GetAppTemplateInitContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
       maxReplicas: (map['maxReplicas'] as int).input(),

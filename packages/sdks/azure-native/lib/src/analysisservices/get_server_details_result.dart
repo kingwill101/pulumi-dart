@@ -104,22 +104,22 @@ class GetServerDetailsResult {
 
   factory GetServerDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetServerDetailsResult(
-      asAdministrators: map['asAdministrators'] == null ? null : ServerAdministratorsResponse.fromMap((map['asAdministrators'] as Map).cast<String, dynamic>()),
+      asAdministrators: map['asAdministrators'] == null ? null : ServerAdministratorsResponse.fromMap((map['asAdministrators']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      backupBlobContainerUri: map['backupBlobContainerUri'] == null ? null : map['backupBlobContainerUri'] as String,
-      gatewayDetails: map['gatewayDetails'] == null ? null : GatewayDetailsResponse.fromMap((map['gatewayDetails'] as Map).cast<String, dynamic>()),
+      backupBlobContainerUri: map['backupBlobContainerUri'] == null ? null : map['backupBlobContainerUri']! as String,
+      gatewayDetails: map['gatewayDetails'] == null ? null : GatewayDetailsResponse.fromMap((map['gatewayDetails']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      ipV4FirewallSettings: map['ipV4FirewallSettings'] == null ? null : IPv4FirewallSettingsResponse.fromMap((map['ipV4FirewallSettings'] as Map).cast<String, dynamic>()),
+      ipV4FirewallSettings: map['ipV4FirewallSettings'] == null ? null : IPv4FirewallSettingsResponse.fromMap((map['ipV4FirewallSettings']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
-      managedMode: map['managedMode'] == null ? null : map['managedMode'] as int,
+      managedMode: map['managedMode'] == null ? null : map['managedMode']! as int,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      querypoolConnectionMode: map['querypoolConnectionMode'] == null ? null : map['querypoolConnectionMode'] as String,
+      querypoolConnectionMode: map['querypoolConnectionMode'] == null ? null : map['querypoolConnectionMode']! as String,
       serverFullName: map['serverFullName'] as String,
-      serverMonitorMode: map['serverMonitorMode'] == null ? null : map['serverMonitorMode'] as int,
+      serverMonitorMode: map['serverMonitorMode'] == null ? null : map['serverMonitorMode']! as int,
       sku: ResourceSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

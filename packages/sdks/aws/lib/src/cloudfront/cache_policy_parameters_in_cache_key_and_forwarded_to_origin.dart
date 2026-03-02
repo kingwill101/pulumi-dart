@@ -43,11 +43,11 @@ class CachePolicyParametersInCacheKeyAndForwardedToOrigin {
 
   factory CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap(Map<String, dynamic> map) {
     return CachePolicyParametersInCacheKeyAndForwardedToOrigin(
-      cookiesConfig: (CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig.fromMap((map['cookiesConfig'] as Map).cast<String, dynamic>())).input(),
-      enableAcceptEncodingBrotli: map['enableAcceptEncodingBrotli'] == null ? null : (map['enableAcceptEncodingBrotli'] as bool).input(),
-      enableAcceptEncodingGzip: map['enableAcceptEncodingGzip'] == null ? null : (map['enableAcceptEncodingGzip'] as bool).input(),
-      headersConfig: (CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig.fromMap((map['headersConfig'] as Map).cast<String, dynamic>())).input(),
-      queryStringsConfig: (CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig.fromMap((map['queryStringsConfig'] as Map).cast<String, dynamic>())).input(),
+      cookiesConfig: (CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig.fromMap((map['cookiesConfig']! as Map).cast<String, dynamic>())).input(),
+      enableAcceptEncodingBrotli: map['enableAcceptEncodingBrotli'] == null ? null : ((map['enableAcceptEncodingBrotli'] as bool).input()).input(),
+      enableAcceptEncodingGzip: map['enableAcceptEncodingGzip'] == null ? null : ((map['enableAcceptEncodingGzip'] as bool).input()).input(),
+      headersConfig: (CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig.fromMap((map['headersConfig']! as Map).cast<String, dynamic>())).input(),
+      queryStringsConfig: (CachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig.fromMap((map['queryStringsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

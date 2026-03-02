@@ -32,7 +32,7 @@ class GetSessionArgs {
   factory GetSessionArgs.fromMap(Map<String, dynamic> map) {
     return GetSessionArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sessionId: (map['sessionId'] as String).input(),
     );
   }

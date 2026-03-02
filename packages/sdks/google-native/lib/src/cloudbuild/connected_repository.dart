@@ -31,9 +31,9 @@ class ConnectedRepository {
 
   factory ConnectedRepository.fromMap(Map<String, dynamic> map) {
     return ConnectedRepository(
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
       repository: (map['repository'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
     );
   }
 }

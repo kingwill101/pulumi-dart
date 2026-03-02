@@ -46,11 +46,11 @@ class QuobyteVolumeSource {
 
   factory QuobyteVolumeSource.fromMap(Map<String, dynamic> map) {
     return QuobyteVolumeSource(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
       registry: (map['registry'] as String).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
       volume: (map['volume'] as String).input(),
     );
   }

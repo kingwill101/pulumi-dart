@@ -21,7 +21,7 @@ class LogTransformerTransformerConfigTypeConverter {
 
   factory LogTransformerTransformerConfigTypeConverter.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigTypeConverter(
-      entries: (pulumi.Input.decodeList<LogTransformerTransformerConfigTypeConverterEntry>(map['entries'], (value) => LogTransformerTransformerConfigTypeConverterEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: (pulumi.Input.decodeList<LogTransformerTransformerConfigTypeConverterEntry>(map['entries']!, (value) => LogTransformerTransformerConfigTypeConverterEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

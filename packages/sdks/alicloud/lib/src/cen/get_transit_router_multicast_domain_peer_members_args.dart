@@ -56,12 +56,12 @@ class GetTransitRouterMulticastDomainPeerMembersArgs {
 
   factory GetTransitRouterMulticastDomainPeerMembersArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterMulticastDomainPeerMembersArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      peerTransitRouterMulticastDomains: map['peerTransitRouterMulticastDomains'] == null ? null : ((map['peerTransitRouterMulticastDomains'] as List).cast<String>()).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      peerTransitRouterMulticastDomains: map['peerTransitRouterMulticastDomains'] == null ? null : ((map['peerTransitRouterMulticastDomains']! as List).cast<String>()).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId']! as String).input(),
       transitRouterMulticastDomainId: (map['transitRouterMulticastDomainId'] as String).input(),
     );
   }

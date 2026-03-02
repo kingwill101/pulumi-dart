@@ -67,17 +67,17 @@ class GetInstanceEnginesResult {
 
   factory GetInstanceEnginesResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceEnginesResult(
-      category: map['category'] == null ? null : map['category'] as String,
-      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : map['dbInstanceStorageType'] as String,
-      engine: map['engine'] == null ? null : map['engine'] as String,
-      engineVersion: map['engineVersion'] == null ? null : map['engineVersion'] as String,
+      category: map['category'] == null ? null : map['category']! as String,
+      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : map['dbInstanceStorageType']! as String,
+      engine: map['engine'] == null ? null : map['engine']! as String,
+      engineVersion: map['engineVersion'] == null ? null : map['engineVersion']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType'] as String,
+      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType']! as String,
       instanceEngines: pulumi.Input.decodeList<GetInstanceEnginesInstanceEngine>(map['instanceEngines'], (value) => GetInstanceEnginesInstanceEngine.fromMap((value as Map).cast<String, dynamic>())),
-      multiZone: map['multiZone'] == null ? null : map['multiZone'] as bool,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      multiZone: map['multiZone'] == null ? null : map['multiZone']! as bool,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

@@ -25,8 +25,8 @@ class EnterpriseKeyIosSettings {
 
   factory EnterpriseKeyIosSettings.fromMap(Map<String, dynamic> map) {
     return EnterpriseKeyIosSettings(
-      allowAllBundleIds: map['allowAllBundleIds'] == null ? null : (map['allowAllBundleIds'] as bool).input(),
-      allowedBundleIds: map['allowedBundleIds'] == null ? null : ((map['allowedBundleIds'] as List).cast<String>()).input(),
+      allowAllBundleIds: map['allowAllBundleIds'] == null ? null : (map['allowAllBundleIds']! as bool).input(),
+      allowedBundleIds: map['allowedBundleIds'] == null ? null : ((map['allowedBundleIds']! as List).cast<String>()).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class VirtualNetworkRule {
 
   factory VirtualNetworkRule.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       virtualNetworkResourceId: (map['virtualNetworkResourceId'] as String).input(),
     );
   }

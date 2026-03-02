@@ -25,8 +25,8 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList {
 
   factory FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList.fromMap(Map<String, dynamic> map) {
     return FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList(
-      destinationCidr: map['destinationCidr'] == null ? null : (map['destinationCidr'] as String).input(),
-      nextHopInstanceId: map['nextHopInstanceId'] == null ? null : (map['nextHopInstanceId'] as String).input(),
+      destinationCidr: map['destinationCidr'] == null ? null : (map['destinationCidr']! as String).input(),
+      nextHopInstanceId: map['nextHopInstanceId'] == null ? null : (map['nextHopInstanceId']! as String).input(),
     );
   }
 }

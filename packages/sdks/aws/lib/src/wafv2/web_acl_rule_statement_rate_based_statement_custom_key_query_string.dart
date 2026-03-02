@@ -21,7 +21,7 @@ class WebAclRuleStatementRateBasedStatementCustomKeyQueryString {
 
   factory WebAclRuleStatementRateBasedStatementCustomKeyQueryString.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementCustomKeyQueryString(
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKeyQueryStringTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementRateBasedStatementCustomKeyQueryStringTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKeyQueryStringTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementRateBasedStatementCustomKeyQueryStringTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

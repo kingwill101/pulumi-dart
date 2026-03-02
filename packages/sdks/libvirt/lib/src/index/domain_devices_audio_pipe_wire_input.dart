@@ -30,9 +30,9 @@ class DomainDevicesAudioPipeWireInput {
 
   factory DomainDevicesAudioPipeWireInput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioPipeWireInput(
-      latency: map['latency'] == null ? null : (map['latency'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      streamName: map['streamName'] == null ? null : (map['streamName'] as String).input(),
+      latency: map['latency'] == null ? null : (map['latency']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      streamName: map['streamName'] == null ? null : (map['streamName']! as String).input(),
     );
   }
 }

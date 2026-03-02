@@ -55,13 +55,13 @@ class PrefixListArgs {
 
   factory PrefixListArgs.fromMap(Map<String, dynamic> map) {
     return PrefixListArgs(
-      entrys: map['entrys'] == null ? null : (pulumi.Input.decodeList<PrefixListEntry>(map['entrys'], (value) => PrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      maxEntries: map['maxEntries'] == null ? null : (map['maxEntries'] as int).input(),
-      prefixListDescription: map['prefixListDescription'] == null ? null : (map['prefixListDescription'] as String).input(),
-      prefixListName: map['prefixListName'] == null ? null : (map['prefixListName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      entrys: map['entrys'] == null ? null : (pulumi.Input.decodeList<PrefixListEntry>(map['entrys']!, (value) => PrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      maxEntries: map['maxEntries'] == null ? null : (map['maxEntries']! as int).input(),
+      prefixListDescription: map['prefixListDescription'] == null ? null : (map['prefixListDescription']! as String).input(),
+      prefixListName: map['prefixListName'] == null ? null : (map['prefixListName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

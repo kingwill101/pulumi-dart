@@ -41,11 +41,11 @@ class P2SVpnServerConfigRadiusClientRootCertificateResponse {
 
   factory P2SVpnServerConfigRadiusClientRootCertificateResponse.fromMap(Map<String, dynamic> map) {
     return P2SVpnServerConfigRadiusClientRootCertificateResponse(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

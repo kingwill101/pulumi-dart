@@ -26,7 +26,7 @@ class GetImageImageScanningConfiguration {
 
   factory GetImageImageScanningConfiguration.fromMap(Map<String, dynamic> map) {
     return GetImageImageScanningConfiguration(
-      ecrConfigurations: (pulumi.Input.decodeList<GetImageImageScanningConfigurationEcrConfiguration>(map['ecrConfigurations'], (value) => GetImageImageScanningConfigurationEcrConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ecrConfigurations: (pulumi.Input.decodeList<GetImageImageScanningConfigurationEcrConfiguration>(map['ecrConfigurations']!, (value) => GetImageImageScanningConfigurationEcrConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       imageScanningEnabled: (map['imageScanningEnabled'] as bool).input(),
     );
   }

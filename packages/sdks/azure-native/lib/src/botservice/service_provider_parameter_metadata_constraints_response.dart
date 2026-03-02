@@ -21,7 +21,7 @@ class ServiceProviderParameterMetadataConstraintsResponse {
 
   factory ServiceProviderParameterMetadataConstraintsResponse.fromMap(Map<String, dynamic> map) {
     return ServiceProviderParameterMetadataConstraintsResponse(
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      required: map['required'] == null ? null : (map['required']! as bool).input(),
     );
   }
 }

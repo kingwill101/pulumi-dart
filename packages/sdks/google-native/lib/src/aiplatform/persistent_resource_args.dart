@@ -75,17 +75,17 @@ class PersistentResourceArgs {
 
   factory PersistentResourceArgs.fromMap(Map<String, dynamic> map) {
     return PersistentResourceArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1beta1EncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
       persistentResourceId: (map['persistentResourceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reservedIpRanges: map['reservedIpRanges'] == null ? null : ((map['reservedIpRanges'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reservedIpRanges: map['reservedIpRanges'] == null ? null : ((map['reservedIpRanges']! as List).cast<String>()).input(),
       resourcePools: (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ResourcePool>(map['resourcePools'], (value) => GoogleCloudAiplatformV1beta1ResourcePool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceRuntimeSpec: map['resourceRuntimeSpec'] == null ? null : (GoogleCloudAiplatformV1beta1ResourceRuntimeSpec.fromMap((map['resourceRuntimeSpec'] as Map).cast<String, dynamic>())).input(),
+      resourceRuntimeSpec: map['resourceRuntimeSpec'] == null ? null : (GoogleCloudAiplatformV1beta1ResourceRuntimeSpec.fromMap((map['resourceRuntimeSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader 
   factory ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader(
       name: (map['name'] as String).input(),
-      value: (ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      value: (ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

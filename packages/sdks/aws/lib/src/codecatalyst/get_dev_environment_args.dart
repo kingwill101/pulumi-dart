@@ -59,14 +59,14 @@ class GetDevEnvironmentArgs {
 
   factory GetDevEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return GetDevEnvironmentArgs(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      creatorId: map['creatorId'] == null ? null : (map['creatorId'] as String).input(),
+      alias: map['alias'] == null ? null : ((map['alias'] as String).input()).input(),
+      creatorId: map['creatorId'] == null ? null : ((map['creatorId'] as String).input()).input(),
       envId: (map['envId'] as String).input(),
       projectName: (map['projectName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<GetDevEnvironmentRepository>(map['repositories'], (value) => GetDevEnvironmentRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      repositories: map['repositories'] == null ? null : ((pulumi.Input.decodeList<GetDevEnvironmentRepository>(map['repositories']!, (value) => GetDevEnvironmentRepository.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       spaceName: (map['spaceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

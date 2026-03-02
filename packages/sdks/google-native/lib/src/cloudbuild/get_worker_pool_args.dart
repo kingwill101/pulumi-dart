@@ -32,7 +32,7 @@ class GetWorkerPoolArgs {
   factory GetWorkerPoolArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workerPoolId: (map['workerPoolId'] as String).input(),
     );
   }

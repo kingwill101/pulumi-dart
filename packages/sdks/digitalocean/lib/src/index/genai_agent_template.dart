@@ -77,18 +77,18 @@ class GenaiAgentTemplate {
 
   factory GenaiAgentTemplate.fromMap(Map<String, dynamic> map) {
     return GenaiAgentTemplate(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instruction: map['instruction'] == null ? null : (map['instruction'] as String).input(),
-      k: map['k'] == null ? null : (map['k'] as int).input(),
-      knowledgeBases: map['knowledgeBases'] == null ? null : (pulumi.Input.decodeList<GenaiAgentTemplateKnowledgeBase>(map['knowledgeBases'], (value) => GenaiAgentTemplateKnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxTokens: map['maxTokens'] == null ? null : (map['maxTokens'] as int).input(),
-      models: map['models'] == null ? null : (pulumi.Input.decodeList<GenaiAgentTemplateModel>(map['models'], (value) => GenaiAgentTemplateModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      temperature: map['temperature'] == null ? null : (map['temperature'] as double).input(),
-      topP: map['topP'] == null ? null : (map['topP'] as double).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instruction: map['instruction'] == null ? null : (map['instruction']! as String).input(),
+      k: map['k'] == null ? null : (map['k']! as int).input(),
+      knowledgeBases: map['knowledgeBases'] == null ? null : (pulumi.Input.decodeList<GenaiAgentTemplateKnowledgeBase>(map['knowledgeBases']!, (value) => GenaiAgentTemplateKnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxTokens: map['maxTokens'] == null ? null : (map['maxTokens']! as int).input(),
+      models: map['models'] == null ? null : (pulumi.Input.decodeList<GenaiAgentTemplateModel>(map['models']!, (value) => GenaiAgentTemplateModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      temperature: map['temperature'] == null ? null : (map['temperature']! as double).input(),
+      topP: map['topP'] == null ? null : (map['topP']! as double).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent 
 
   factory CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

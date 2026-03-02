@@ -26,8 +26,8 @@ class RandomUuid7State {
 
   factory RandomUuid7State.fromMap(Map<String, dynamic> map) {
     return RandomUuid7State(
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
-      result: map['result'] == null ? null : (map['result'] as String).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
+      result: map['result'] == null ? null : (map['result']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class BucketObjectLockConfiguration {
 
   factory BucketObjectLockConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketObjectLockConfiguration(
-      objectLockEnabled: map['objectLockEnabled'] == null ? null : (map['objectLockEnabled'] as String).input(),
-      rule: map['rule'] == null ? null : (BucketObjectLockConfigurationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      objectLockEnabled: map['objectLockEnabled'] == null ? null : ((map['objectLockEnabled'] as String).input()).input(),
+      rule: map['rule'] == null ? null : ((BucketObjectLockConfigurationRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

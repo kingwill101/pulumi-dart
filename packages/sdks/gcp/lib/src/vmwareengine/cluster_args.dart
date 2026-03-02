@@ -46,9 +46,9 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      autoscalingSettings: map['autoscalingSettings'] == null ? null : (ClusterAutoscalingSettings.fromMap((map['autoscalingSettings'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeTypeConfigs: map['nodeTypeConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterNodeTypeConfig>(map['nodeTypeConfigs'], (value) => ClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoscalingSettings: map['autoscalingSettings'] == null ? null : (ClusterAutoscalingSettings.fromMap((map['autoscalingSettings']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeTypeConfigs: map['nodeTypeConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterNodeTypeConfig>(map['nodeTypeConfigs']!, (value) => ClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       parent: (map['parent'] as String).input(),
     );
   }

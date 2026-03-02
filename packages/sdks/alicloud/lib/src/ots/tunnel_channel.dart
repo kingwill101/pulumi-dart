@@ -40,11 +40,11 @@ class TunnelChannel {
 
   factory TunnelChannel.fromMap(Map<String, dynamic> map) {
     return TunnelChannel(
-      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
-      channelRpo: map['channelRpo'] == null ? null : (map['channelRpo'] as int).input(),
-      channelStatus: map['channelStatus'] == null ? null : (map['channelStatus'] as String).input(),
-      channelType: map['channelType'] == null ? null : (map['channelType'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      channelId: map['channelId'] == null ? null : (map['channelId']! as String).input(),
+      channelRpo: map['channelRpo'] == null ? null : (map['channelRpo']! as int).input(),
+      channelStatus: map['channelStatus'] == null ? null : (map['channelStatus']! as String).input(),
+      channelType: map['channelType'] == null ? null : (map['channelType']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
     );
   }
 }

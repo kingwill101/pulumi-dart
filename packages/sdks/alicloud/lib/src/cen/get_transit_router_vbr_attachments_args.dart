@@ -45,10 +45,10 @@ class GetTransitRouterVbrAttachmentsArgs {
   factory GetTransitRouterVbrAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterVbrAttachmentsArgs(
       cenId: (map['cenId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
     );
   }
 }

@@ -96,22 +96,22 @@ class VmUtilizationMetricsVmmigrationV1alpha1 {
 
   factory VmUtilizationMetricsVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return VmUtilizationMetricsVmmigrationV1alpha1(
-      cpuAverage: map['cpuAverage'] == null ? null : (map['cpuAverage'] as int).input(),
-      cpuAveragePercent: map['cpuAveragePercent'] == null ? null : (map['cpuAveragePercent'] as int).input(),
-      cpuMax: map['cpuMax'] == null ? null : (map['cpuMax'] as int).input(),
-      cpuMaxPercent: map['cpuMaxPercent'] == null ? null : (map['cpuMaxPercent'] as int).input(),
-      diskIoRateAverage: map['diskIoRateAverage'] == null ? null : (map['diskIoRateAverage'] as String).input(),
-      diskIoRateAverageKbps: map['diskIoRateAverageKbps'] == null ? null : (map['diskIoRateAverageKbps'] as String).input(),
-      diskIoRateMax: map['diskIoRateMax'] == null ? null : (map['diskIoRateMax'] as String).input(),
-      diskIoRateMaxKbps: map['diskIoRateMaxKbps'] == null ? null : (map['diskIoRateMaxKbps'] as String).input(),
-      memoryAverage: map['memoryAverage'] == null ? null : (map['memoryAverage'] as int).input(),
-      memoryAveragePercent: map['memoryAveragePercent'] == null ? null : (map['memoryAveragePercent'] as int).input(),
-      memoryMax: map['memoryMax'] == null ? null : (map['memoryMax'] as int).input(),
-      memoryMaxPercent: map['memoryMaxPercent'] == null ? null : (map['memoryMaxPercent'] as int).input(),
-      networkThroughputAverage: map['networkThroughputAverage'] == null ? null : (map['networkThroughputAverage'] as String).input(),
-      networkThroughputAverageKbps: map['networkThroughputAverageKbps'] == null ? null : (map['networkThroughputAverageKbps'] as String).input(),
-      networkThroughputMax: map['networkThroughputMax'] == null ? null : (map['networkThroughputMax'] as String).input(),
-      networkThroughputMaxKbps: map['networkThroughputMaxKbps'] == null ? null : (map['networkThroughputMaxKbps'] as String).input(),
+      cpuAverage: map['cpuAverage'] == null ? null : (map['cpuAverage']! as int).input(),
+      cpuAveragePercent: map['cpuAveragePercent'] == null ? null : (map['cpuAveragePercent']! as int).input(),
+      cpuMax: map['cpuMax'] == null ? null : (map['cpuMax']! as int).input(),
+      cpuMaxPercent: map['cpuMaxPercent'] == null ? null : (map['cpuMaxPercent']! as int).input(),
+      diskIoRateAverage: map['diskIoRateAverage'] == null ? null : (map['diskIoRateAverage']! as String).input(),
+      diskIoRateAverageKbps: map['diskIoRateAverageKbps'] == null ? null : (map['diskIoRateAverageKbps']! as String).input(),
+      diskIoRateMax: map['diskIoRateMax'] == null ? null : (map['diskIoRateMax']! as String).input(),
+      diskIoRateMaxKbps: map['diskIoRateMaxKbps'] == null ? null : (map['diskIoRateMaxKbps']! as String).input(),
+      memoryAverage: map['memoryAverage'] == null ? null : (map['memoryAverage']! as int).input(),
+      memoryAveragePercent: map['memoryAveragePercent'] == null ? null : (map['memoryAveragePercent']! as int).input(),
+      memoryMax: map['memoryMax'] == null ? null : (map['memoryMax']! as int).input(),
+      memoryMaxPercent: map['memoryMaxPercent'] == null ? null : (map['memoryMaxPercent']! as int).input(),
+      networkThroughputAverage: map['networkThroughputAverage'] == null ? null : (map['networkThroughputAverage']! as String).input(),
+      networkThroughputAverageKbps: map['networkThroughputAverageKbps'] == null ? null : (map['networkThroughputAverageKbps']! as String).input(),
+      networkThroughputMax: map['networkThroughputMax'] == null ? null : (map['networkThroughputMax']! as String).input(),
+      networkThroughputMaxKbps: map['networkThroughputMaxKbps'] == null ? null : (map['networkThroughputMaxKbps']! as String).input(),
     );
   }
 }

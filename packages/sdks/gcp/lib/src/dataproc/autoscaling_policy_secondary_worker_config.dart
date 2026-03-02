@@ -43,9 +43,9 @@ class AutoscalingPolicySecondaryWorkerConfig {
 
   factory AutoscalingPolicySecondaryWorkerConfig.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicySecondaryWorkerConfig(
-      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances'] as int).input(),
-      minInstances: map['minInstances'] == null ? null : (map['minInstances'] as int).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances']! as int).input(),
+      minInstances: map['minInstances'] == null ? null : (map['minInstances']! as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

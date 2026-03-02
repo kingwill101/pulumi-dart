@@ -55,8 +55,8 @@ class ReplicatedVMManagedDisk {
     return ReplicatedVMManagedDisk(
       diskId: (map['diskId'] as String).input(),
       stagingStorageAccountId: (map['stagingStorageAccountId'] as String).input(),
-      targetDiskEncryption: map['targetDiskEncryption'] == null ? null : (ReplicatedVMManagedDiskTargetDiskEncryption.fromMap((map['targetDiskEncryption'] as Map).cast<String, dynamic>())).input(),
-      targetDiskEncryptionSetId: map['targetDiskEncryptionSetId'] == null ? null : (map['targetDiskEncryptionSetId'] as String).input(),
+      targetDiskEncryption: map['targetDiskEncryption'] == null ? null : (ReplicatedVMManagedDiskTargetDiskEncryption.fromMap((map['targetDiskEncryption']! as Map).cast<String, dynamic>())).input(),
+      targetDiskEncryptionSetId: map['targetDiskEncryptionSetId'] == null ? null : (map['targetDiskEncryptionSetId']! as String).input(),
       targetDiskType: (map['targetDiskType'] as String).input(),
       targetReplicaDiskType: (map['targetReplicaDiskType'] as String).input(),
       targetResourceGroupId: (map['targetResourceGroupId'] as String).input(),

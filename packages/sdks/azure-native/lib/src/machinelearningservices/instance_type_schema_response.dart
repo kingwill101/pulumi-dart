@@ -27,8 +27,8 @@ class InstanceTypeSchemaResponse {
 
   factory InstanceTypeSchemaResponse.fromMap(Map<String, dynamic> map) {
     return InstanceTypeSchemaResponse(
-      nodeSelector: map['nodeSelector'] == null ? null : ((map['nodeSelector'] as Map).cast<String, String>()).input(),
-      resources: map['resources'] == null ? null : (InstanceTypeSchemaResponseResources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : ((map['nodeSelector']! as Map).cast<String, String>()).input(),
+      resources: map['resources'] == null ? null : (InstanceTypeSchemaResponseResources.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

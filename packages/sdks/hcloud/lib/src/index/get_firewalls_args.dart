@@ -29,8 +29,8 @@ class GetFirewallsArgs {
 
   factory GetFirewallsArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallsArgs(
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

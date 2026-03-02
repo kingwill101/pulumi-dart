@@ -21,7 +21,7 @@ class AppEngineVersionEndpointNetworkmanagementV1beta1 {
 
   factory AppEngineVersionEndpointNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return AppEngineVersionEndpointNetworkmanagementV1beta1(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

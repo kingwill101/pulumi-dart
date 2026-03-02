@@ -41,10 +41,10 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioning {
 
   factory StreamRuleSetCustomizationRuleBigqueryPartitioning.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetCustomizationRuleBigqueryPartitioning(
-      ingestionTimePartition: map['ingestionTimePartition'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition.fromMap((map['ingestionTimePartition'] as Map).cast<String, dynamic>())).input(),
-      integerRangePartition: map['integerRangePartition'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition.fromMap((map['integerRangePartition'] as Map).cast<String, dynamic>())).input(),
-      requirePartitionFilter: map['requirePartitionFilter'] == null ? null : (map['requirePartitionFilter'] as bool).input(),
-      timeUnitPartition: map['timeUnitPartition'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition.fromMap((map['timeUnitPartition'] as Map).cast<String, dynamic>())).input(),
+      ingestionTimePartition: map['ingestionTimePartition'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition.fromMap((map['ingestionTimePartition']! as Map).cast<String, dynamic>())).input(),
+      integerRangePartition: map['integerRangePartition'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition.fromMap((map['integerRangePartition']! as Map).cast<String, dynamic>())).input(),
+      requirePartitionFilter: map['requirePartitionFilter'] == null ? null : (map['requirePartitionFilter']! as bool).input(),
+      timeUnitPartition: map['timeUnitPartition'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition.fromMap((map['timeUnitPartition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

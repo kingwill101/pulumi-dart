@@ -50,12 +50,12 @@ class CacheRuleArgs {
 
   factory CacheRuleArgs.fromMap(Map<String, dynamic> map) {
     return CacheRuleArgs(
-      cacheRuleName: map['cacheRuleName'] == null ? null : (map['cacheRuleName'] as String).input(),
-      credentialSetResourceId: map['credentialSetResourceId'] == null ? null : (map['credentialSetResourceId'] as String).input(),
+      cacheRuleName: map['cacheRuleName'] == null ? null : (map['cacheRuleName']! as String).input(),
+      credentialSetResourceId: map['credentialSetResourceId'] == null ? null : (map['credentialSetResourceId']! as String).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sourceRepository: map['sourceRepository'] == null ? null : (map['sourceRepository'] as String).input(),
-      targetRepository: map['targetRepository'] == null ? null : (map['targetRepository'] as String).input(),
+      sourceRepository: map['sourceRepository'] == null ? null : (map['sourceRepository']! as String).input(),
+      targetRepository: map['targetRepository'] == null ? null : (map['targetRepository']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class LabelingJobHumanTaskConfigPublicWorkforceTaskPrice {
 
   factory LabelingJobHumanTaskConfigPublicWorkforceTaskPrice.fromMap(Map<String, dynamic> map) {
     return LabelingJobHumanTaskConfigPublicWorkforceTaskPrice(
-      amountInUsd: map['amountInUsd'] == null ? null : (LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd.fromMap((map['amountInUsd'] as Map).cast<String, dynamic>())).input(),
+      amountInUsd: map['amountInUsd'] == null ? null : ((LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd.fromMap((map['amountInUsd']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

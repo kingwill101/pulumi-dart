@@ -31,8 +31,8 @@ class DashboardPartMetadata {
 
   factory DashboardPartMetadata.fromMap(Map<String, dynamic> map) {
     return DashboardPartMetadata(
-      inputs: map['inputs'] == null ? null : ((map['inputs'] as List).cast<dynamic>()).input(),
-      settings: map['settings'] == null ? null : ((map['settings'] as Map).cast<String, dynamic>()).input(),
+      inputs: map['inputs'] == null ? null : ((map['inputs']! as List).cast<dynamic>()).input(),
+      settings: map['settings'] == null ? null : ((map['settings']! as Map).cast<String, dynamic>()).input(),
       type: (map['type'] as String).input(),
     );
   }

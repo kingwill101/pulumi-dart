@@ -37,8 +37,8 @@ class LogDeliveryConfigurationArgs {
 
   factory LogDeliveryConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return LogDeliveryConfigurationArgs(
-      logConfigurations: (pulumi.Input.decodeList<LogDeliveryConfigurationLogConfiguration>(map['logConfigurations'], (value) => LogDeliveryConfigurationLogConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      logConfigurations: (pulumi.Input.decodeList<LogDeliveryConfigurationLogConfiguration>(map['logConfigurations']!, (value) => LogDeliveryConfigurationLogConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       userPoolId: (map['userPoolId'] as String).input(),
     );
   }

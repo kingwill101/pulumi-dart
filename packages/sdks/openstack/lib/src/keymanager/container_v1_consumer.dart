@@ -26,8 +26,8 @@ class ContainerV1Consumer {
 
   factory ContainerV1Consumer.fromMap(Map<String, dynamic> map) {
     return ContainerV1Consumer(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

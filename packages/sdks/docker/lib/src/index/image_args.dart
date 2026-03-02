@@ -47,11 +47,11 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      build: map['build'] == null ? null : (DockerBuild.fromMap((map['build'] as Map).cast<String, dynamic>())).input(),
-      buildOnPreview: map['buildOnPreview'] == null ? null : (map['buildOnPreview'] as bool).input(),
+      build: map['build'] == null ? null : (DockerBuild.fromMap((map['build']! as Map).cast<String, dynamic>())).input(),
+      buildOnPreview: map['buildOnPreview'] == null ? null : (map['buildOnPreview']! as bool).input(),
       imageName: (map['imageName'] as String).input(),
-      registry: map['registry'] == null ? null : (Registry.fromMap((map['registry'] as Map).cast<String, dynamic>())).input(),
-      skipPush: map['skipPush'] == null ? null : (map['skipPush'] as bool).input(),
+      registry: map['registry'] == null ? null : (Registry.fromMap((map['registry']! as Map).cast<String, dynamic>())).input(),
+      skipPush: map['skipPush'] == null ? null : (map['skipPush']! as bool).input(),
     );
   }
 }

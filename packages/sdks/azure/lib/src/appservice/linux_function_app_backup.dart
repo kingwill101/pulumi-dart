@@ -36,7 +36,7 @@ class LinuxFunctionAppBackup {
 
   factory LinuxFunctionAppBackup.fromMap(Map<String, dynamic> map) {
     return LinuxFunctionAppBackup(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       name: (map['name'] as String).input(),
       schedule: (LinuxFunctionAppBackupSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
       storageAccountUrl: (map['storageAccountUrl'] as String).input(),

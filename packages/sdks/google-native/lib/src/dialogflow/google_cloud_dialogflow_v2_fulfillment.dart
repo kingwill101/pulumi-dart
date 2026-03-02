@@ -43,10 +43,10 @@ class GoogleCloudDialogflowV2Fulfillment {
 
   factory GoogleCloudDialogflowV2Fulfillment.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2Fulfillment(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      features: map['features'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2FulfillmentFeature>(map['features'], (value) => GoogleCloudDialogflowV2FulfillmentFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      genericWebService: map['genericWebService'] == null ? null : (GoogleCloudDialogflowV2FulfillmentGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      features: map['features'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2FulfillmentFeature>(map['features']!, (value) => GoogleCloudDialogflowV2FulfillmentFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      genericWebService: map['genericWebService'] == null ? null : (GoogleCloudDialogflowV2FulfillmentGenericWebService.fromMap((map['genericWebService']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

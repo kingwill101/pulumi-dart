@@ -21,7 +21,7 @@ class InterconnectAttachment {
 
   factory InterconnectAttachment.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachment(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

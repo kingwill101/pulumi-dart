@@ -32,9 +32,9 @@ class FSxWindowsFileServerVolumeConfiguration {
 
   factory FSxWindowsFileServerVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return FSxWindowsFileServerVolumeConfiguration(
-      authorizationConfig: map['authorizationConfig'] == null ? null : (FSxAuthorizationConfig.fromMap((map['authorizationConfig'] as Map).cast<String, dynamic>())).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      rootDirectory: map['rootDirectory'] == null ? null : (map['rootDirectory'] as String).input(),
+      authorizationConfig: map['authorizationConfig'] == null ? null : (FSxAuthorizationConfig.fromMap((map['authorizationConfig']! as Map).cast<String, dynamic>())).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      rootDirectory: map['rootDirectory'] == null ? null : (map['rootDirectory']! as String).input(),
     );
   }
 }

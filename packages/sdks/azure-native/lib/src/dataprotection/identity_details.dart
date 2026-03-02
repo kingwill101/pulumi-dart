@@ -25,8 +25,8 @@ class IdentityDetails {
 
   factory IdentityDetails.fromMap(Map<String, dynamic> map) {
     return IdentityDetails(
-      useSystemAssignedIdentity: map['useSystemAssignedIdentity'] == null ? null : (map['useSystemAssignedIdentity'] as bool).input(),
-      userAssignedIdentityArmUrl: map['userAssignedIdentityArmUrl'] == null ? null : (map['userAssignedIdentityArmUrl'] as String).input(),
+      useSystemAssignedIdentity: map['useSystemAssignedIdentity'] == null ? null : (map['useSystemAssignedIdentity']! as bool).input(),
+      userAssignedIdentityArmUrl: map['userAssignedIdentityArmUrl'] == null ? null : (map['userAssignedIdentityArmUrl']! as String).input(),
     );
   }
 }

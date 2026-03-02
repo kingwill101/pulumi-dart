@@ -33,8 +33,8 @@ class GatewayLocalResponseCachePerInstancePropertiesResponse {
   factory GatewayLocalResponseCachePerInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GatewayLocalResponseCachePerInstancePropertiesResponse(
       responseCacheType: (map['responseCacheType'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class GroupConnectivityInformation {
 
   factory GroupConnectivityInformation.fromMap(Map<String, dynamic> map) {
     return GroupConnectivityInformation(
-      customerVisibleFqdns: map['customerVisibleFqdns'] == null ? null : ((map['customerVisibleFqdns'] as List).cast<String>()).input(),
-      privateLinkServiceArmRegion: map['privateLinkServiceArmRegion'] == null ? null : (map['privateLinkServiceArmRegion'] as String).input(),
-      redirectMapId: map['redirectMapId'] == null ? null : (map['redirectMapId'] as String).input(),
+      customerVisibleFqdns: map['customerVisibleFqdns'] == null ? null : ((map['customerVisibleFqdns']! as List).cast<String>()).input(),
+      privateLinkServiceArmRegion: map['privateLinkServiceArmRegion'] == null ? null : (map['privateLinkServiceArmRegion']! as String).input(),
+      redirectMapId: map['redirectMapId'] == null ? null : (map['redirectMapId']! as String).input(),
     );
   }
 }

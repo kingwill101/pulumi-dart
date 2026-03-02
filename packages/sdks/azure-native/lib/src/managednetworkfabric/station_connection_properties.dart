@@ -31,9 +31,9 @@ class StationConnectionProperties {
 
   factory StationConnectionProperties.fromMap(Map<String, dynamic> map) {
     return StationConnectionProperties(
-      keepaliveIdleTime: map['keepaliveIdleTime'] == null ? null : (map['keepaliveIdleTime'] as int).input(),
-      probeCount: map['probeCount'] == null ? null : (map['probeCount'] as int).input(),
-      probeInterval: map['probeInterval'] == null ? null : (map['probeInterval'] as int).input(),
+      keepaliveIdleTime: map['keepaliveIdleTime'] == null ? null : (map['keepaliveIdleTime']! as int).input(),
+      probeCount: map['probeCount'] == null ? null : (map['probeCount']! as int).input(),
+      probeInterval: map['probeInterval'] == null ? null : (map['probeInterval']! as int).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
 
   factory ResourcePolicySnapshotSchedulePolicyRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicyRetentionPolicy(
-      maxRetentionDays: map['maxRetentionDays'] == null ? null : (map['maxRetentionDays'] as int).input(),
-      onPolicySwitch: map['onPolicySwitch'] == null ? null : (ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch.fromValue(map['onPolicySwitch'] as String)).input(),
-      onSourceDiskDelete: map['onSourceDiskDelete'] == null ? null : (ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete.fromValue(map['onSourceDiskDelete'] as String)).input(),
+      maxRetentionDays: map['maxRetentionDays'] == null ? null : (map['maxRetentionDays']! as int).input(),
+      onPolicySwitch: map['onPolicySwitch'] == null ? null : (ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitch.fromValue(map['onPolicySwitch']! as String)).input(),
+      onSourceDiskDelete: map['onSourceDiskDelete'] == null ? null : (ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDelete.fromValue(map['onSourceDiskDelete']! as String)).input(),
     );
   }
 }

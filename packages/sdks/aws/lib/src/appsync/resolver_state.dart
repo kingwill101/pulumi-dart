@@ -95,21 +95,21 @@ class ResolverState {
 
   factory ResolverState.fromMap(Map<String, dynamic> map) {
     return ResolverState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cachingConfig: map['cachingConfig'] == null ? null : (ResolverCachingConfig.fromMap((map['cachingConfig'] as Map).cast<String, dynamic>())).input(),
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      maxBatchSize: map['maxBatchSize'] == null ? null : (map['maxBatchSize'] as int).input(),
-      pipelineConfig: map['pipelineConfig'] == null ? null : (ResolverPipelineConfig.fromMap((map['pipelineConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requestTemplate: map['requestTemplate'] == null ? null : (map['requestTemplate'] as String).input(),
-      responseTemplate: map['responseTemplate'] == null ? null : (map['responseTemplate'] as String).input(),
-      runtime: map['runtime'] == null ? null : (ResolverRuntime.fromMap((map['runtime'] as Map).cast<String, dynamic>())).input(),
-      syncConfig: map['syncConfig'] == null ? null : (ResolverSyncConfig.fromMap((map['syncConfig'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      apiId: map['apiId'] == null ? null : ((map['apiId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      cachingConfig: map['cachingConfig'] == null ? null : ((ResolverCachingConfig.fromMap((map['cachingConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      code: map['code'] == null ? null : ((map['code'] as String).input()).input(),
+      dataSource: map['dataSource'] == null ? null : ((map['dataSource'] as String).input()).input(),
+      field: map['field'] == null ? null : ((map['field'] as String).input()).input(),
+      kind: map['kind'] == null ? null : ((map['kind'] as String).input()).input(),
+      maxBatchSize: map['maxBatchSize'] == null ? null : ((map['maxBatchSize'] as int).input()).input(),
+      pipelineConfig: map['pipelineConfig'] == null ? null : ((ResolverPipelineConfig.fromMap((map['pipelineConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requestTemplate: map['requestTemplate'] == null ? null : ((map['requestTemplate'] as String).input()).input(),
+      responseTemplate: map['responseTemplate'] == null ? null : ((map['responseTemplate'] as String).input()).input(),
+      runtime: map['runtime'] == null ? null : ((ResolverRuntime.fromMap((map['runtime']! as Map).cast<String, dynamic>())).input()).input(),
+      syncConfig: map['syncConfig'] == null ? null : ((ResolverSyncConfig.fromMap((map['syncConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

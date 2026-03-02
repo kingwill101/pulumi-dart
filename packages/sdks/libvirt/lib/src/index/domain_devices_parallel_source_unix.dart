@@ -37,10 +37,10 @@ class DomainDevicesParallelSourceUnix {
 
   factory DomainDevicesParallelSourceUnix.fromMap(Map<String, dynamic> map) {
     return DomainDevicesParallelSourceUnix(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      reconnect: map['reconnect'] == null ? null : (DomainDevicesParallelSourceUnixReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>())).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesParallelSourceUnixSecLabel>(map['secLabels'], (value) => DomainDevicesParallelSourceUnixSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      reconnect: map['reconnect'] == null ? null : (DomainDevicesParallelSourceUnixReconnect.fromMap((map['reconnect']! as Map).cast<String, dynamic>())).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesParallelSourceUnixSecLabel>(map['secLabels']!, (value) => DomainDevicesParallelSourceUnixSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

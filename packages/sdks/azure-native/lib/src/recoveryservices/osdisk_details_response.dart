@@ -31,9 +31,9 @@ class OSDiskDetailsResponse {
 
   factory OSDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return OSDiskDetailsResponse(
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      osVhdId: map['osVhdId'] == null ? null : (map['osVhdId'] as String).input(),
-      vhdName: map['vhdName'] == null ? null : (map['vhdName'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      osVhdId: map['osVhdId'] == null ? null : (map['osVhdId']! as String).input(),
+      vhdName: map['vhdName'] == null ? null : (map['vhdName']! as String).input(),
     );
   }
 }

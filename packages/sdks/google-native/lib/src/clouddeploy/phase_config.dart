@@ -50,10 +50,10 @@ class PhaseConfig {
     return PhaseConfig(
       percentage: (map['percentage'] as int).input(),
       phaseId: (map['phaseId'] as String).input(),
-      postdeploy: map['postdeploy'] == null ? null : (Postdeploy.fromMap((map['postdeploy'] as Map).cast<String, dynamic>())).input(),
-      predeploy: map['predeploy'] == null ? null : (Predeploy.fromMap((map['predeploy'] as Map).cast<String, dynamic>())).input(),
-      profiles: map['profiles'] == null ? null : ((map['profiles'] as List).cast<String>()).input(),
-      verify: map['verify'] == null ? null : (map['verify'] as bool).input(),
+      postdeploy: map['postdeploy'] == null ? null : (Postdeploy.fromMap((map['postdeploy']! as Map).cast<String, dynamic>())).input(),
+      predeploy: map['predeploy'] == null ? null : (Predeploy.fromMap((map['predeploy']! as Map).cast<String, dynamic>())).input(),
+      profiles: map['profiles'] == null ? null : ((map['profiles']! as List).cast<String>()).input(),
+      verify: map['verify'] == null ? null : (map['verify']! as bool).input(),
     );
   }
 }

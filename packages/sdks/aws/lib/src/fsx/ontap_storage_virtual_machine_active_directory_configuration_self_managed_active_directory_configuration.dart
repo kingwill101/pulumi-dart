@@ -47,8 +47,8 @@ class OntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDir
     return OntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration(
       dnsIps: ((map['dnsIps'] as List).cast<String>()).input(),
       domainName: (map['domainName'] as String).input(),
-      fileSystemAdministratorsGroup: map['fileSystemAdministratorsGroup'] == null ? null : (map['fileSystemAdministratorsGroup'] as String).input(),
-      organizationalUnitDistinguishedName: map['organizationalUnitDistinguishedName'] == null ? null : (map['organizationalUnitDistinguishedName'] as String).input(),
+      fileSystemAdministratorsGroup: map['fileSystemAdministratorsGroup'] == null ? null : ((map['fileSystemAdministratorsGroup'] as String).input()).input(),
+      organizationalUnitDistinguishedName: map['organizationalUnitDistinguishedName'] == null ? null : ((map['organizationalUnitDistinguishedName'] as String).input()).input(),
       password: (map['password'] as String).input(),
       username: (map['username'] as String).input(),
     );

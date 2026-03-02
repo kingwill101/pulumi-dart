@@ -70,16 +70,16 @@ class EventBusState {
 
   factory EventBusState.fromMap(Map<String, dynamic> map) {
     return EventBusState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deadLetterConfig: map['deadLetterConfig'] == null ? null : (EventBusDeadLetterConfig.fromMap((map['deadLetterConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eventSourceName: map['eventSourceName'] == null ? null : (map['eventSourceName'] as String).input(),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
-      logConfig: map['logConfig'] == null ? null : (EventBusLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deadLetterConfig: map['deadLetterConfig'] == null ? null : ((EventBusDeadLetterConfig.fromMap((map['deadLetterConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      eventSourceName: map['eventSourceName'] == null ? null : ((map['eventSourceName'] as String).input()).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
+      logConfig: map['logConfig'] == null ? null : ((EventBusLogConfig.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

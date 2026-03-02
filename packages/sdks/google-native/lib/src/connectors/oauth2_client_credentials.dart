@@ -27,8 +27,8 @@ class Oauth2ClientCredentials {
 
   factory Oauth2ClientCredentials.fromMap(Map<String, dynamic> map) {
     return Oauth2ClientCredentials(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (Secret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (Secret.fromMap((map['clientSecret']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

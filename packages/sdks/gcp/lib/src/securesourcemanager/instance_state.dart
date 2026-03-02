@@ -115,22 +115,22 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      hostConfigs: map['hostConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceHostConfig>(map['hostConfigs'], (value) => InstanceHostConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateConfig: map['privateConfig'] == null ? null : (InstancePrivateConfig.fromMap((map['privateConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      stateNote: map['stateNote'] == null ? null : (map['stateNote'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      workforceIdentityFederationConfig: map['workforceIdentityFederationConfig'] == null ? null : (InstanceWorkforceIdentityFederationConfig.fromMap((map['workforceIdentityFederationConfig'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      hostConfigs: map['hostConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceHostConfig>(map['hostConfigs']!, (value) => InstanceHostConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateConfig: map['privateConfig'] == null ? null : (InstancePrivateConfig.fromMap((map['privateConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      stateNote: map['stateNote'] == null ? null : (map['stateNote']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      workforceIdentityFederationConfig: map['workforceIdentityFederationConfig'] == null ? null : (InstanceWorkforceIdentityFederationConfig.fromMap((map['workforceIdentityFederationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

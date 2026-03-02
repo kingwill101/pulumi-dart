@@ -21,7 +21,7 @@ class InstanceBootModeValuesEnumValue {
 
   factory InstanceBootModeValuesEnumValue.fromMap(Map<String, dynamic> map) {
     return InstanceBootModeValuesEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

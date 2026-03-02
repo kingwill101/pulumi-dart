@@ -38,8 +38,8 @@ class ReportDefinitionResponse {
 
   factory ReportDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ReportDefinitionResponse(
-      dataset: map['dataset'] == null ? null : (ReportDatasetResponse.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      timePeriod: map['timePeriod'] == null ? null : (ReportTimePeriodResponse.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),
+      dataset: map['dataset'] == null ? null : (ReportDatasetResponse.fromMap((map['dataset']! as Map).cast<String, dynamic>())).input(),
+      timePeriod: map['timePeriod'] == null ? null : (ReportTimePeriodResponse.fromMap((map['timePeriod']! as Map).cast<String, dynamic>())).input(),
       timeframe: (map['timeframe'] as String).input(),
       type: (map['type'] as String).input(),
     );

@@ -36,10 +36,10 @@ class TrafficRoutingRule {
 
   factory TrafficRoutingRule.fromMap(Map<String, dynamic> map) {
     return TrafficRoutingRule(
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
-      trafficPercentage: map['trafficPercentage'] == null ? null : (map['trafficPercentage'] as int).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
+      trafficPercentage: map['trafficPercentage'] == null ? null : (map['trafficPercentage']! as int).input(),
     );
   }
 }

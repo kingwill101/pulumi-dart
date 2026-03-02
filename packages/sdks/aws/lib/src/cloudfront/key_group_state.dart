@@ -36,10 +36,10 @@ class KeyGroupState {
 
   factory KeyGroupState.fromMap(Map<String, dynamic> map) {
     return KeyGroupState(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      items: map['items'] == null ? null : (((map['items'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

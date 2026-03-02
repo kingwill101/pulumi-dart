@@ -26,8 +26,8 @@ class StorageSettingResponse {
 
   factory StorageSettingResponse.fromMap(Map<String, dynamic> map) {
     return StorageSettingResponse(
-      datastoreType: map['datastoreType'] == null ? null : (map['datastoreType'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      datastoreType: map['datastoreType'] == null ? null : (map['datastoreType']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

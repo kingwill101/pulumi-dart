@@ -28,8 +28,8 @@ class ProjectBuildBatchConfigRestrictions {
 
   factory ProjectBuildBatchConfigRestrictions.fromMap(Map<String, dynamic> map) {
     return ProjectBuildBatchConfigRestrictions(
-      computeTypesAlloweds: map['computeTypesAlloweds'] == null ? null : ((map['computeTypesAlloweds'] as List).cast<String>()).input(),
-      maximumBuildsAllowed: map['maximumBuildsAllowed'] == null ? null : (map['maximumBuildsAllowed'] as int).input(),
+      computeTypesAlloweds: map['computeTypesAlloweds'] == null ? null : (((map['computeTypesAlloweds'] as List).cast<String>()).input()).input(),
+      maximumBuildsAllowed: map['maximumBuildsAllowed'] == null ? null : ((map['maximumBuildsAllowed'] as int).input()).input(),
     );
   }
 }

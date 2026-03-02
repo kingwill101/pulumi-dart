@@ -25,8 +25,8 @@ class NetworkConnectionMonitorEndpointFilterItem {
 
   factory NetworkConnectionMonitorEndpointFilterItem.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorEndpointFilterItem(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

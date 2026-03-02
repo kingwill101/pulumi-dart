@@ -42,11 +42,11 @@ class ExtendedErrorInfoResponse {
 
   factory ExtendedErrorInfoResponse.fromMap(Map<String, dynamic> map) {
     return ExtendedErrorInfoResponse(
-      additionalInfo: map['additionalInfo'] == null ? null : (pulumi.Input.decodeList<TypedErrorInfoResponse>(map['additionalInfo'], (value) => TypedErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<ExtendedErrorInfoResponse>(map['details'], (value) => ExtendedErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      additionalInfo: map['additionalInfo'] == null ? null : (pulumi.Input.decodeList<TypedErrorInfoResponse>(map['additionalInfo']!, (value) => TypedErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<ExtendedErrorInfoResponse>(map['details']!, (value) => ExtendedErrorInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

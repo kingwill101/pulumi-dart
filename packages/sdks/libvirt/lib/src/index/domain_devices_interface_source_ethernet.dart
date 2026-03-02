@@ -27,8 +27,8 @@ class DomainDevicesInterfaceSourceEthernet {
 
   factory DomainDevicesInterfaceSourceEthernet.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceEthernet(
-      ips: map['ips'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfaceSourceEthernetIp>(map['ips'], (value) => DomainDevicesInterfaceSourceEthernetIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfaceSourceEthernetRoute>(map['routes'], (value) => DomainDevicesInterfaceSourceEthernetRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ips: map['ips'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfaceSourceEthernetIp>(map['ips']!, (value) => DomainDevicesInterfaceSourceEthernetIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfaceSourceEthernetRoute>(map['routes']!, (value) => DomainDevicesInterfaceSourceEthernetRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

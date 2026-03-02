@@ -78,17 +78,17 @@ class InstanceInterface {
 
   factory InstanceInterface.fromMap(Map<String, dynamic> map) {
     return InstanceInterface(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges'] as List).cast<String>()).input(),
-      ipamAddress: map['ipamAddress'] == null ? null : (map['ipamAddress'] as String).input(),
-      ipv4: map['ipv4'] == null ? null : (InstanceInterfaceIpv4.fromMap((map['ipv4'] as Map).cast<String, dynamic>())).input(),
-      ipv6: map['ipv6'] == null ? null : (InstanceInterfaceIpv6.fromMap((map['ipv6'] as Map).cast<String, dynamic>())).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges']! as List).cast<String>()).input(),
+      ipamAddress: map['ipamAddress'] == null ? null : (map['ipamAddress']! as String).input(),
+      ipv4: map['ipv4'] == null ? null : (InstanceInterfaceIpv4.fromMap((map['ipv4']! as Map).cast<String, dynamic>())).input(),
+      ipv6: map['ipv6'] == null ? null : (InstanceInterfaceIpv6.fromMap((map['ipv6']! as Map).cast<String, dynamic>())).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
       purpose: (map['purpose'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as int).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as int).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as int).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as int).input(),
     );
   }
 }

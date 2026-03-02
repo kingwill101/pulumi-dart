@@ -22,7 +22,7 @@ class PolicyControllerTemplateLibraryConfig {
 
   factory PolicyControllerTemplateLibraryConfig.fromMap(Map<String, dynamic> map) {
     return PolicyControllerTemplateLibraryConfig(
-      installation: map['installation'] == null ? null : (PolicyControllerTemplateLibraryConfigInstallation.fromValue(map['installation'] as String)).input(),
+      installation: map['installation'] == null ? null : (PolicyControllerTemplateLibraryConfigInstallation.fromValue(map['installation']! as String)).input(),
     );
   }
 }

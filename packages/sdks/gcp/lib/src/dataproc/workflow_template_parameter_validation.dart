@@ -27,8 +27,8 @@ class WorkflowTemplateParameterValidation {
 
   factory WorkflowTemplateParameterValidation.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateParameterValidation(
-      regex: map['regex'] == null ? null : (WorkflowTemplateParameterValidationRegex.fromMap((map['regex'] as Map).cast<String, dynamic>())).input(),
-      values: map['values'] == null ? null : (WorkflowTemplateParameterValidationValues.fromMap((map['values'] as Map).cast<String, dynamic>())).input(),
+      regex: map['regex'] == null ? null : (WorkflowTemplateParameterValidationRegex.fromMap((map['regex']! as Map).cast<String, dynamic>())).input(),
+      values: map['values'] == null ? null : (WorkflowTemplateParameterValidationValues.fromMap((map['values']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

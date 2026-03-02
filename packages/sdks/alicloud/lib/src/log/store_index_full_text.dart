@@ -30,9 +30,9 @@ class StoreIndexFullText {
 
   factory StoreIndexFullText.fromMap(Map<String, dynamic> map) {
     return StoreIndexFullText(
-      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
-      includeChinese: map['includeChinese'] == null ? null : (map['includeChinese'] as bool).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive']! as bool).input(),
+      includeChinese: map['includeChinese'] == null ? null : (map['includeChinese']! as bool).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

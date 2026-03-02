@@ -29,8 +29,8 @@ class FunctionBuildConfigSource {
 
   factory FunctionBuildConfigSource.fromMap(Map<String, dynamic> map) {
     return FunctionBuildConfigSource(
-      repoSource: map['repoSource'] == null ? null : (FunctionBuildConfigSourceRepoSource.fromMap((map['repoSource'] as Map).cast<String, dynamic>())).input(),
-      storageSource: map['storageSource'] == null ? null : (FunctionBuildConfigSourceStorageSource.fromMap((map['storageSource'] as Map).cast<String, dynamic>())).input(),
+      repoSource: map['repoSource'] == null ? null : (FunctionBuildConfigSourceRepoSource.fromMap((map['repoSource']! as Map).cast<String, dynamic>())).input(),
+      storageSource: map['storageSource'] == null ? null : (FunctionBuildConfigSourceStorageSource.fromMap((map['storageSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

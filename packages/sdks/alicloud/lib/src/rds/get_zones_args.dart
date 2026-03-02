@@ -59,14 +59,14 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : (map['dbInstanceStorageType'] as String).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
-      multi: map['multi'] == null ? null : (map['multi'] as bool).input(),
-      multiZone: map['multiZone'] == null ? null : (map['multiZone'] as bool).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : (map['dbInstanceStorageType']! as String).input(),
+      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion']! as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
+      multi: map['multi'] == null ? null : (map['multi']! as bool).input(),
+      multiZone: map['multiZone'] == null ? null : (map['multiZone']! as bool).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

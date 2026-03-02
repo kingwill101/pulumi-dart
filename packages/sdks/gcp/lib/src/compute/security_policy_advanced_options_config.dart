@@ -47,11 +47,11 @@ class SecurityPolicyAdvancedOptionsConfig {
 
   factory SecurityPolicyAdvancedOptionsConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdvancedOptionsConfig(
-      jsonCustomConfig: map['jsonCustomConfig'] == null ? null : (SecurityPolicyAdvancedOptionsConfigJsonCustomConfig.fromMap((map['jsonCustomConfig'] as Map).cast<String, dynamic>())).input(),
-      jsonParsing: map['jsonParsing'] == null ? null : (map['jsonParsing'] as String).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
-      requestBodyInspectionSize: map['requestBodyInspectionSize'] == null ? null : (map['requestBodyInspectionSize'] as String).input(),
-      userIpRequestHeaders: map['userIpRequestHeaders'] == null ? null : ((map['userIpRequestHeaders'] as List).cast<String>()).input(),
+      jsonCustomConfig: map['jsonCustomConfig'] == null ? null : (SecurityPolicyAdvancedOptionsConfigJsonCustomConfig.fromMap((map['jsonCustomConfig']! as Map).cast<String, dynamic>())).input(),
+      jsonParsing: map['jsonParsing'] == null ? null : (map['jsonParsing']! as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
+      requestBodyInspectionSize: map['requestBodyInspectionSize'] == null ? null : (map['requestBodyInspectionSize']! as String).input(),
+      userIpRequestHeaders: map['userIpRequestHeaders'] == null ? null : ((map['userIpRequestHeaders']! as List).cast<String>()).input(),
     );
   }
 }

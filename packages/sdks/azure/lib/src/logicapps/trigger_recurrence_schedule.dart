@@ -30,9 +30,9 @@ class TriggerRecurrenceSchedule {
 
   factory TriggerRecurrenceSchedule.fromMap(Map<String, dynamic> map) {
     return TriggerRecurrenceSchedule(
-      atTheseHours: map['atTheseHours'] == null ? null : ((map['atTheseHours'] as List).cast<int>()).input(),
-      atTheseMinutes: map['atTheseMinutes'] == null ? null : ((map['atTheseMinutes'] as List).cast<int>()).input(),
-      onTheseDays: map['onTheseDays'] == null ? null : ((map['onTheseDays'] as List).cast<String>()).input(),
+      atTheseHours: map['atTheseHours'] == null ? null : ((map['atTheseHours']! as List).cast<int>()).input(),
+      atTheseMinutes: map['atTheseMinutes'] == null ? null : ((map['atTheseMinutes']! as List).cast<int>()).input(),
+      onTheseDays: map['onTheseDays'] == null ? null : ((map['onTheseDays']! as List).cast<String>()).input(),
     );
   }
 }

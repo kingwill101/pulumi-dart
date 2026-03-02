@@ -20,7 +20,7 @@ class AvroOptions {
 
   factory AvroOptions.fromMap(Map<String, dynamic> map) {
     return AvroOptions(
-      useAvroLogicalTypes: map['useAvroLogicalTypes'] == null ? null : (map['useAvroLogicalTypes'] as bool).input(),
+      useAvroLogicalTypes: map['useAvroLogicalTypes'] == null ? null : (map['useAvroLogicalTypes']! as bool).input(),
     );
   }
 }

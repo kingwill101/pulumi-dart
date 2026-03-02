@@ -21,7 +21,7 @@ class JobDeliveryInfoResponse {
 
   factory JobDeliveryInfoResponse.fromMap(Map<String, dynamic> map) {
     return JobDeliveryInfoResponse(
-      scheduledDateTime: map['scheduledDateTime'] == null ? null : (map['scheduledDateTime'] as String).input(),
+      scheduledDateTime: map['scheduledDateTime'] == null ? null : (map['scheduledDateTime']! as String).input(),
     );
   }
 }

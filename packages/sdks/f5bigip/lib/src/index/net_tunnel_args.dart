@@ -104,23 +104,23 @@ class NetTunnelArgs {
 
   factory NetTunnelArgs.fromMap(Map<String, dynamic> map) {
     return NetTunnelArgs(
-      appService: map['appService'] == null ? null : (map['appService'] as String).input(),
-      autoLastHop: map['autoLastHop'] == null ? null : (map['autoLastHop'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout'] as int).input(),
-      key: map['key'] == null ? null : (map['key'] as int).input(),
+      appService: map['appService'] == null ? null : (map['appService']! as String).input(),
+      autoLastHop: map['autoLastHop'] == null ? null : (map['autoLastHop']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout']! as int).input(),
+      key: map['key'] == null ? null : (map['key']! as int).input(),
       localAddress: (map['localAddress'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
       name: (map['name'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
       profile: (map['profile'] as String).input(),
-      remoteAddress: map['remoteAddress'] == null ? null : (map['remoteAddress'] as String).input(),
-      secondaryAddress: map['secondaryAddress'] == null ? null : (map['secondaryAddress'] as String).input(),
-      tos: map['tos'] == null ? null : (map['tos'] as String).input(),
-      trafficGroup: map['trafficGroup'] == null ? null : (map['trafficGroup'] as String).input(),
-      transparent: map['transparent'] == null ? null : (map['transparent'] as String).input(),
-      usePmtu: map['usePmtu'] == null ? null : (map['usePmtu'] as String).input(),
+      remoteAddress: map['remoteAddress'] == null ? null : (map['remoteAddress']! as String).input(),
+      secondaryAddress: map['secondaryAddress'] == null ? null : (map['secondaryAddress']! as String).input(),
+      tos: map['tos'] == null ? null : (map['tos']! as String).input(),
+      trafficGroup: map['trafficGroup'] == null ? null : (map['trafficGroup']! as String).input(),
+      transparent: map['transparent'] == null ? null : (map['transparent']! as String).input(),
+      usePmtu: map['usePmtu'] == null ? null : (map['usePmtu']! as String).input(),
     );
   }
 }

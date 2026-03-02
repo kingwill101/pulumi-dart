@@ -68,15 +68,15 @@ class AccessPointArgs {
 
   factory AccessPointArgs.fromMap(Map<String, dynamic> map) {
     return AccessPointArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
       bucket: (map['bucket'] as String).input(),
-      bucketAccountId: map['bucketAccountId'] == null ? null : (map['bucketAccountId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : (AccessPointPublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : (AccessPointVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      bucketAccountId: map['bucketAccountId'] == null ? null : ((map['bucketAccountId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : ((AccessPointPublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : ((AccessPointVpcConfiguration.fromMap((map['vpcConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

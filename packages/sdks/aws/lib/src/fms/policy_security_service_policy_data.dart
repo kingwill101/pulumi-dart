@@ -31,8 +31,8 @@ class PolicySecurityServicePolicyData {
 
   factory PolicySecurityServicePolicyData.fromMap(Map<String, dynamic> map) {
     return PolicySecurityServicePolicyData(
-      managedServiceData: map['managedServiceData'] == null ? null : (map['managedServiceData'] as String).input(),
-      policyOption: map['policyOption'] == null ? null : (PolicySecurityServicePolicyDataPolicyOption.fromMap((map['policyOption'] as Map).cast<String, dynamic>())).input(),
+      managedServiceData: map['managedServiceData'] == null ? null : ((map['managedServiceData'] as String).input()).input(),
+      policyOption: map['policyOption'] == null ? null : ((PolicySecurityServicePolicyDataPolicyOption.fromMap((map['policyOption']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

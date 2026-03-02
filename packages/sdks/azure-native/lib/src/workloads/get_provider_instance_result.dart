@@ -69,7 +69,7 @@ class GetProviderInstanceResult {
       health: HealthResponse.fromMap((map['health'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
-      providerSettings: map['providerSettings'] == null ? null : Db2ProviderInstancePropertiesResponse.fromMap((map['providerSettings'] as Map).cast<String, dynamic>()),
+      providerSettings: map['providerSettings'] == null ? null : Db2ProviderInstancePropertiesResponse.fromMap((map['providerSettings']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

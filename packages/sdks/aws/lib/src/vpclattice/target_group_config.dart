@@ -51,13 +51,13 @@ class TargetGroupConfig {
 
   factory TargetGroupConfig.fromMap(Map<String, dynamic> map) {
     return TargetGroupConfig(
-      healthCheck: map['healthCheck'] == null ? null : (TargetGroupConfigHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      lambdaEventStructureVersion: map['lambdaEventStructureVersion'] == null ? null : (map['lambdaEventStructureVersion'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      protocolVersion: map['protocolVersion'] == null ? null : (map['protocolVersion'] as String).input(),
-      vpcIdentifier: map['vpcIdentifier'] == null ? null : (map['vpcIdentifier'] as String).input(),
+      healthCheck: map['healthCheck'] == null ? null : ((TargetGroupConfigHealthCheck.fromMap((map['healthCheck']! as Map).cast<String, dynamic>())).input()).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
+      lambdaEventStructureVersion: map['lambdaEventStructureVersion'] == null ? null : ((map['lambdaEventStructureVersion'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      protocolVersion: map['protocolVersion'] == null ? null : ((map['protocolVersion'] as String).input()).input(),
+      vpcIdentifier: map['vpcIdentifier'] == null ? null : ((map['vpcIdentifier'] as String).input()).input(),
     );
   }
 }

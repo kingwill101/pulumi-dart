@@ -25,8 +25,8 @@ class ScalingConfigurationInstanceTypeOverride {
 
   factory ScalingConfigurationInstanceTypeOverride.fromMap(Map<String, dynamic> map) {
     return ScalingConfigurationInstanceTypeOverride(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity'] as int).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity']! as int).input(),
     );
   }
 }

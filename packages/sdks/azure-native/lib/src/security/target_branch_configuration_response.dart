@@ -29,8 +29,8 @@ class TargetBranchConfigurationResponse {
 
   factory TargetBranchConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TargetBranchConfigurationResponse(
-      annotateDefaultBranch: map['annotateDefaultBranch'] == null ? null : (map['annotateDefaultBranch'] as String).input(),
-      branchNames: map['branchNames'] == null ? null : ((map['branchNames'] as List).cast<String>()).input(),
+      annotateDefaultBranch: map['annotateDefaultBranch'] == null ? null : (map['annotateDefaultBranch']! as String).input(),
+      branchNames: map['branchNames'] == null ? null : ((map['branchNames']! as List).cast<String>()).input(),
     );
   }
 }

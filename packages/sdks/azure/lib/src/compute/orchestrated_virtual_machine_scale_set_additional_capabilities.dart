@@ -20,7 +20,7 @@ class OrchestratedVirtualMachineScaleSetAdditionalCapabilities {
 
   factory OrchestratedVirtualMachineScaleSetAdditionalCapabilities.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetAdditionalCapabilities(
-      ultraSsdEnabled: map['ultraSsdEnabled'] == null ? null : (map['ultraSsdEnabled'] as bool).input(),
+      ultraSsdEnabled: map['ultraSsdEnabled'] == null ? null : (map['ultraSsdEnabled']! as bool).input(),
     );
   }
 }

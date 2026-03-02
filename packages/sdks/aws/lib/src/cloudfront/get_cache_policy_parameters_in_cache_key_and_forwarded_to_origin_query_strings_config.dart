@@ -27,7 +27,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig {
   factory GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig.fromMap(Map<String, dynamic> map) {
     return GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig(
       queryStringBehavior: (map['queryStringBehavior'] as String).input(),
-      queryStrings: (pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryString>(map['queryStrings'], (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryString.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryStrings: (pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryString>(map['queryStrings']!, (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfigQueryString.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

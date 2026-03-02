@@ -59,7 +59,7 @@ class EnvironmentIamBindingArgs {
 
   factory EnvironmentIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentIamBindingArgs(
-      condition: map['condition'] == null ? null : (EnvironmentIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (EnvironmentIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       envId: (map['envId'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
       orgId: (map['orgId'] as String).input(),

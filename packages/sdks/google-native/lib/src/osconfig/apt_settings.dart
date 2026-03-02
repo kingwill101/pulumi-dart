@@ -32,9 +32,9 @@ class AptSettings {
 
   factory AptSettings.fromMap(Map<String, dynamic> map) {
     return AptSettings(
-      excludes: map['excludes'] == null ? null : ((map['excludes'] as List).cast<String>()).input(),
-      exclusivePackages: map['exclusivePackages'] == null ? null : ((map['exclusivePackages'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (AptSettingsType.fromValue(map['type'] as String)).input(),
+      excludes: map['excludes'] == null ? null : ((map['excludes']! as List).cast<String>()).input(),
+      exclusivePackages: map['exclusivePackages'] == null ? null : ((map['exclusivePackages']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (AptSettingsType.fromValue(map['type']! as String)).input(),
     );
   }
 }

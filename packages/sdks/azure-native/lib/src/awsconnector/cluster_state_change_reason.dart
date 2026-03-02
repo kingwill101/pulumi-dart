@@ -27,8 +27,8 @@ class ClusterStateChangeReason {
 
   factory ClusterStateChangeReason.fromMap(Map<String, dynamic> map) {
     return ClusterStateChangeReason(
-      code: map['code'] == null ? null : (ClusterStateChangeReasonCodeEnumValue.fromMap((map['code'] as Map).cast<String, dynamic>())).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (ClusterStateChangeReasonCodeEnumValue.fromMap((map['code']! as Map).cast<String, dynamic>())).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

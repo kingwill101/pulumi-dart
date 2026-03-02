@@ -66,10 +66,10 @@ class GetReportByBillingAccountResult {
       azureApiVersion: map['azureApiVersion'] as String,
       definition: ReportDefinitionResponse.fromMap((map['definition'] as Map).cast<String, dynamic>()),
       deliveryInfo: ReportDeliveryInfoResponse.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>()),
-      format: map['format'] == null ? null : map['format'] as String,
+      format: map['format'] == null ? null : map['format']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      schedule: map['schedule'] == null ? null : ReportScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
+      schedule: map['schedule'] == null ? null : ReportScheduleResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>()),
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
     );

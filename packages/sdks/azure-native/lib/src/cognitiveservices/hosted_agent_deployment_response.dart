@@ -74,17 +74,17 @@ class HostedAgentDeploymentResponse {
 
   factory HostedAgentDeploymentResponse.fromMap(Map<String, dynamic> map) {
     return HostedAgentDeploymentResponse(
-      agents: map['agents'] == null ? null : (pulumi.Input.decodeList<VersionedAgentReferenceResponse>(map['agents'], (value) => VersionedAgentReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
+      agents: map['agents'] == null ? null : (pulumi.Input.decodeList<VersionedAgentReferenceResponse>(map['agents']!, (value) => VersionedAgentReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
       deploymentType: (map['deploymentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas'] as int).input(),
-      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas'] as int).input(),
-      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<AgentProtocolVersionResponse>(map['protocols'], (value) => AgentProtocolVersionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas']! as int).input(),
+      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas']! as int).input(),
+      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<AgentProtocolVersionResponse>(map['protocols']!, (value) => AgentProtocolVersionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

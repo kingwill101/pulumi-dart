@@ -41,11 +41,11 @@ class CacheAccessPolicyAssignmentState {
 
   factory CacheAccessPolicyAssignmentState.fromMap(Map<String, dynamic> map) {
     return CacheAccessPolicyAssignmentState(
-      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      objectIdAlias: map['objectIdAlias'] == null ? null : (map['objectIdAlias'] as String).input(),
-      redisCacheId: map['redisCacheId'] == null ? null : (map['redisCacheId'] as String).input(),
+      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      objectIdAlias: map['objectIdAlias'] == null ? null : (map['objectIdAlias']! as String).input(),
+      redisCacheId: map['redisCacheId'] == null ? null : (map['redisCacheId']! as String).input(),
     );
   }
 }

@@ -40,8 +40,8 @@ class KeyVaultPropertiesResponse {
 
   factory KeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPropertiesResponse(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
+      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier']! as String).input(),
       keyRotationEnabled: (map['keyRotationEnabled'] as bool).input(),
       lastKeyRotationTimestamp: (map['lastKeyRotationTimestamp'] as String).input(),
       versionedKeyIdentifier: (map['versionedKeyIdentifier'] as String).input(),

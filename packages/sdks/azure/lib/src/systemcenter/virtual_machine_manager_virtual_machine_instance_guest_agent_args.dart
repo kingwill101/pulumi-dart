@@ -40,7 +40,7 @@ class VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs {
   factory VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs(
       password: (map['password'] as String).input(),
-      provisioningAction: map['provisioningAction'] == null ? null : (map['provisioningAction'] as String).input(),
+      provisioningAction: map['provisioningAction'] == null ? null : (map['provisioningAction']! as String).input(),
       scopedResourceId: (map['scopedResourceId'] as String).input(),
       username: (map['username'] as String).input(),
     );

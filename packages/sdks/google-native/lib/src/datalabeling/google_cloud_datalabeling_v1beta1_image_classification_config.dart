@@ -32,9 +32,9 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
 
   factory GoogleCloudDatalabelingV1beta1ImageClassificationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1ImageClassificationConfig(
-      allowMultiLabel: map['allowMultiLabel'] == null ? null : (map['allowMultiLabel'] as bool).input(),
+      allowMultiLabel: map['allowMultiLabel'] == null ? null : (map['allowMultiLabel']! as bool).input(),
       annotationSpecSet: (map['annotationSpecSet'] as String).input(),
-      answerAggregationType: map['answerAggregationType'] == null ? null : (GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType.fromValue(map['answerAggregationType'] as String)).input(),
+      answerAggregationType: map['answerAggregationType'] == null ? null : (GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType.fromValue(map['answerAggregationType']! as String)).input(),
     );
   }
 }

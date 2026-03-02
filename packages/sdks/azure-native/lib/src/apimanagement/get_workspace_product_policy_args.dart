@@ -49,7 +49,7 @@ class GetWorkspaceProductPolicyArgs {
 
   factory GetWorkspaceProductPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceProductPolicyArgs(
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
       policyId: (map['policyId'] as String).input(),
       productId: (map['productId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

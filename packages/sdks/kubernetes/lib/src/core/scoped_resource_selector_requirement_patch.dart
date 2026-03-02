@@ -31,9 +31,9 @@ class ScopedResourceSelectorRequirementPatch {
 
   factory ScopedResourceSelectorRequirementPatch.fromMap(Map<String, dynamic> map) {
     return ScopedResourceSelectorRequirementPatch(
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      scopeName: map['scopeName'] == null ? null : (map['scopeName'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      scopeName: map['scopeName'] == null ? null : (map['scopeName']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

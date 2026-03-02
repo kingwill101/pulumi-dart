@@ -21,7 +21,7 @@ class StreamProcessorInput {
 
   factory StreamProcessorInput.fromMap(Map<String, dynamic> map) {
     return StreamProcessorInput(
-      kinesisVideoStream: (StreamProcessorInputKinesisVideoStream.fromMap((map['kinesisVideoStream'] as Map).cast<String, dynamic>())).input(),
+      kinesisVideoStream: (StreamProcessorInputKinesisVideoStream.fromMap((map['kinesisVideoStream']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

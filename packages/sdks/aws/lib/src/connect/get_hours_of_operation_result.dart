@@ -67,7 +67,7 @@ class GetHoursOfOperationResult {
   factory GetHoursOfOperationResult.fromMap(Map<String, dynamic> map) {
     return GetHoursOfOperationResult(
       arn: map['arn'] as String,
-      configs: pulumi.Input.decodeList<GetHoursOfOperationConfig>(map['configs'], (value) => GetHoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>())),
+      configs: pulumi.Input.decodeList<GetHoursOfOperationConfig>(map['configs']!, (value) => GetHoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       hoursOfOperationId: map['hoursOfOperationId'] as String,
       id: map['id'] as String,

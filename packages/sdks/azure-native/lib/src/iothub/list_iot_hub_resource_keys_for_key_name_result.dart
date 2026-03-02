@@ -36,9 +36,9 @@ class ListIotHubResourceKeysForKeyNameResult {
   factory ListIotHubResourceKeysForKeyNameResult.fromMap(Map<String, dynamic> map) {
     return ListIotHubResourceKeysForKeyNameResult(
       keyName: map['keyName'] as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as String,
+      primaryKey: map['primaryKey'] == null ? null : map['primaryKey']! as String,
       rights: map['rights'] as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey'] as String,
+      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey']! as String,
     );
   }
 }

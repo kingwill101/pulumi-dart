@@ -50,7 +50,7 @@ class GlobalSchemaArgs {
   factory GlobalSchemaArgs.fromMap(Map<String, dynamic> map) {
     return GlobalSchemaArgs(
       apiManagementName: (map['apiManagementName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       schemaId: (map['schemaId'] as String).input(),
       type: (map['type'] as String).input(),

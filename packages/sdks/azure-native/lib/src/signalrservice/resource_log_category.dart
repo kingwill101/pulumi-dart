@@ -30,8 +30,8 @@ class ResourceLogCategory {
 
   factory ResourceLogCategory.fromMap(Map<String, dynamic> map) {
     return ResourceLogCategory(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

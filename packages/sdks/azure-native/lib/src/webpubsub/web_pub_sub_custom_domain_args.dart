@@ -47,7 +47,7 @@ class WebPubSubCustomDomainArgs {
     return WebPubSubCustomDomainArgs(
       customCertificate: (ResourceReference.fromMap((map['customCertificate'] as Map).cast<String, dynamic>())).input(),
       domainName: (map['domainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

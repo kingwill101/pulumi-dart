@@ -69,16 +69,16 @@ class GetBasicEndpointsResult {
   factory GetBasicEndpointsResult.fromMap(Map<String, dynamic> map) {
     return GetBasicEndpointsResult(
       endpointGroupId: map['endpointGroupId'] as String,
-      endpointId: map['endpointId'] == null ? null : map['endpointId'] as String,
-      endpointType: map['endpointType'] == null ? null : map['endpointType'] as String,
+      endpointId: map['endpointId'] == null ? null : map['endpointId']! as String,
+      endpointType: map['endpointType'] == null ? null : map['endpointType']! as String,
       endpoints: pulumi.Input.decodeList<GetBasicEndpointsEndpoint>(map['endpoints'], (value) => GetBasicEndpointsEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

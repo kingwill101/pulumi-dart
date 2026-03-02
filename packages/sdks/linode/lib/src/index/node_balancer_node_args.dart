@@ -59,10 +59,10 @@ class NodeBalancerNodeArgs {
       address: (map['address'] as String).input(),
       configId: (map['configId'] as int).input(),
       label: (map['label'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
       nodebalancerId: (map['nodebalancerId'] as int).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as int).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

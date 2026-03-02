@@ -41,11 +41,11 @@ class HyperVReplicaAzureDiskInputDetails {
 
   factory HyperVReplicaAzureDiskInputDetails.fromMap(Map<String, dynamic> map) {
     return HyperVReplicaAzureDiskInputDetails(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      logStorageAccountId: map['logStorageAccountId'] == null ? null : (map['logStorageAccountId'] as String).input(),
-      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes'] as int).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      logStorageAccountId: map['logStorageAccountId'] == null ? null : (map['logStorageAccountId']! as String).input(),
+      sectorSizeInBytes: map['sectorSizeInBytes'] == null ? null : (map['sectorSizeInBytes']! as int).input(),
     );
   }
 }

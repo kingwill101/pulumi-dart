@@ -30,9 +30,9 @@ class DbClusterDbClusterAccessWhiteList {
 
   factory DbClusterDbClusterAccessWhiteList.fromMap(Map<String, dynamic> map) {
     return DbClusterDbClusterAccessWhiteList(
-      dbClusterIpArrayAttribute: map['dbClusterIpArrayAttribute'] == null ? null : (map['dbClusterIpArrayAttribute'] as String).input(),
-      dbClusterIpArrayName: map['dbClusterIpArrayName'] == null ? null : (map['dbClusterIpArrayName'] as String).input(),
-      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList'] as String).input(),
+      dbClusterIpArrayAttribute: map['dbClusterIpArrayAttribute'] == null ? null : (map['dbClusterIpArrayAttribute']! as String).input(),
+      dbClusterIpArrayName: map['dbClusterIpArrayName'] == null ? null : (map['dbClusterIpArrayName']! as String).input(),
+      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList']! as String).input(),
     );
   }
 }

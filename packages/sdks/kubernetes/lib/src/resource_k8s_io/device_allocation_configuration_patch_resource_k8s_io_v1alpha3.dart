@@ -32,9 +32,9 @@ class DeviceAllocationConfigurationPatchResourceK8sIoV1alpha3 {
 
   factory DeviceAllocationConfigurationPatchResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return DeviceAllocationConfigurationPatchResourceK8sIoV1alpha3(
-      opaque: map['opaque'] == null ? null : (OpaqueDeviceConfigurationPatchResourceK8sIoV1alpha3.fromMap((map['opaque'] as Map).cast<String, dynamic>())).input(),
-      requests: map['requests'] == null ? null : ((map['requests'] as List).cast<String>()).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      opaque: map['opaque'] == null ? null : (OpaqueDeviceConfigurationPatchResourceK8sIoV1alpha3.fromMap((map['opaque']! as Map).cast<String, dynamic>())).input(),
+      requests: map['requests'] == null ? null : ((map['requests']! as List).cast<String>()).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

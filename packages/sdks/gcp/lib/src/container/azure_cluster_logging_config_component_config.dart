@@ -20,7 +20,7 @@ class AzureClusterLoggingConfigComponentConfig {
 
   factory AzureClusterLoggingConfigComponentConfig.fromMap(Map<String, dynamic> map) {
     return AzureClusterLoggingConfigComponentConfig(
-      enableComponents: map['enableComponents'] == null ? null : ((map['enableComponents'] as List).cast<String>()).input(),
+      enableComponents: map['enableComponents'] == null ? null : ((map['enableComponents']! as List).cast<String>()).input(),
     );
   }
 }

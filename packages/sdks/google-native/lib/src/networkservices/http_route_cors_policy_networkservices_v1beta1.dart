@@ -56,14 +56,14 @@ class HttpRouteCorsPolicyNetworkservicesV1beta1 {
 
   factory HttpRouteCorsPolicyNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteCorsPolicyNetworkservicesV1beta1(
-      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials'] as bool).input(),
-      allowHeaders: map['allowHeaders'] == null ? null : ((map['allowHeaders'] as List).cast<String>()).input(),
-      allowMethods: map['allowMethods'] == null ? null : ((map['allowMethods'] as List).cast<String>()).input(),
-      allowOriginRegexes: map['allowOriginRegexes'] == null ? null : ((map['allowOriginRegexes'] as List).cast<String>()).input(),
-      allowOrigins: map['allowOrigins'] == null ? null : ((map['allowOrigins'] as List).cast<String>()).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders'] as List).cast<String>()).input(),
-      maxAge: map['maxAge'] == null ? null : (map['maxAge'] as String).input(),
+      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials']! as bool).input(),
+      allowHeaders: map['allowHeaders'] == null ? null : ((map['allowHeaders']! as List).cast<String>()).input(),
+      allowMethods: map['allowMethods'] == null ? null : ((map['allowMethods']! as List).cast<String>()).input(),
+      allowOriginRegexes: map['allowOriginRegexes'] == null ? null : ((map['allowOriginRegexes']! as List).cast<String>()).input(),
+      allowOrigins: map['allowOrigins'] == null ? null : ((map['allowOrigins']! as List).cast<String>()).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders']! as List).cast<String>()).input(),
+      maxAge: map['maxAge'] == null ? null : (map['maxAge']! as String).input(),
     );
   }
 }

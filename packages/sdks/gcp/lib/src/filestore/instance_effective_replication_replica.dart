@@ -40,10 +40,10 @@ class InstanceEffectiveReplicationReplica {
 
   factory InstanceEffectiveReplicationReplica.fromMap(Map<String, dynamic> map) {
     return InstanceEffectiveReplicationReplica(
-      lastActiveSyncTime: map['lastActiveSyncTime'] == null ? null : (map['lastActiveSyncTime'] as String).input(),
-      peerInstance: map['peerInstance'] == null ? null : (map['peerInstance'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      stateReasons: map['stateReasons'] == null ? null : ((map['stateReasons'] as List).cast<String>()).input(),
+      lastActiveSyncTime: map['lastActiveSyncTime'] == null ? null : (map['lastActiveSyncTime']! as String).input(),
+      peerInstance: map['peerInstance'] == null ? null : (map['peerInstance']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      stateReasons: map['stateReasons'] == null ? null : ((map['stateReasons']! as List).cast<String>()).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class GetSnoozeArgs {
 
   factory GetSnoozeArgs.fromMap(Map<String, dynamic> map) {
     return GetSnoozeArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       snoozeId: (map['snoozeId'] as String).input(),
     );
   }

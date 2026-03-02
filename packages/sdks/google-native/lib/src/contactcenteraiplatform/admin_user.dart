@@ -26,8 +26,8 @@ class AdminUser {
 
   factory AdminUser.fromMap(Map<String, dynamic> map) {
     return AdminUser(
-      familyName: map['familyName'] == null ? null : (map['familyName'] as String).input(),
-      givenName: map['givenName'] == null ? null : (map['givenName'] as String).input(),
+      familyName: map['familyName'] == null ? null : (map['familyName']! as String).input(),
+      givenName: map['givenName'] == null ? null : (map['givenName']! as String).input(),
     );
   }
 }

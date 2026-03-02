@@ -42,11 +42,11 @@ class ObjectReplicationState {
 
   factory ObjectReplicationState.fromMap(Map<String, dynamic> map) {
     return ObjectReplicationState(
-      destinationObjectReplicationId: map['destinationObjectReplicationId'] == null ? null : (map['destinationObjectReplicationId'] as String).input(),
-      destinationStorageAccountId: map['destinationStorageAccountId'] == null ? null : (map['destinationStorageAccountId'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ObjectReplicationRule>(map['rules'], (value) => ObjectReplicationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceObjectReplicationId: map['sourceObjectReplicationId'] == null ? null : (map['sourceObjectReplicationId'] as String).input(),
-      sourceStorageAccountId: map['sourceStorageAccountId'] == null ? null : (map['sourceStorageAccountId'] as String).input(),
+      destinationObjectReplicationId: map['destinationObjectReplicationId'] == null ? null : (map['destinationObjectReplicationId']! as String).input(),
+      destinationStorageAccountId: map['destinationStorageAccountId'] == null ? null : (map['destinationStorageAccountId']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ObjectReplicationRule>(map['rules']!, (value) => ObjectReplicationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceObjectReplicationId: map['sourceObjectReplicationId'] == null ? null : (map['sourceObjectReplicationId']! as String).input(),
+      sourceStorageAccountId: map['sourceStorageAccountId'] == null ? null : (map['sourceStorageAccountId']! as String).input(),
     );
   }
 }

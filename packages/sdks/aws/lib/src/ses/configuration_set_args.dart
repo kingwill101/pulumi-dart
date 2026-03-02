@@ -53,12 +53,12 @@ class ConfigurationSetArgs {
 
   factory ConfigurationSetArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetArgs(
-      deliveryOptions: map['deliveryOptions'] == null ? null : (ConfigurationSetDeliveryOptions.fromMap((map['deliveryOptions'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reputationMetricsEnabled: map['reputationMetricsEnabled'] == null ? null : (map['reputationMetricsEnabled'] as bool).input(),
-      sendingEnabled: map['sendingEnabled'] == null ? null : (map['sendingEnabled'] as bool).input(),
-      trackingOptions: map['trackingOptions'] == null ? null : (ConfigurationSetTrackingOptions.fromMap((map['trackingOptions'] as Map).cast<String, dynamic>())).input(),
+      deliveryOptions: map['deliveryOptions'] == null ? null : ((ConfigurationSetDeliveryOptions.fromMap((map['deliveryOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      reputationMetricsEnabled: map['reputationMetricsEnabled'] == null ? null : ((map['reputationMetricsEnabled'] as bool).input()).input(),
+      sendingEnabled: map['sendingEnabled'] == null ? null : ((map['sendingEnabled'] as bool).input()).input(),
+      trackingOptions: map['trackingOptions'] == null ? null : ((ConfigurationSetTrackingOptions.fromMap((map['trackingOptions']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

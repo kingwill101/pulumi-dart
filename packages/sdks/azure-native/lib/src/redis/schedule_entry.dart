@@ -33,7 +33,7 @@ class ScheduleEntry {
   factory ScheduleEntry.fromMap(Map<String, dynamic> map) {
     return ScheduleEntry(
       dayOfWeek: (DayOfWeek.fromValue(map['dayOfWeek'] as String)).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (map['maintenanceWindow'] as String).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (map['maintenanceWindow']! as String).input(),
       startHourUtc: (map['startHourUtc'] as int).input(),
     );
   }

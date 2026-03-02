@@ -21,7 +21,7 @@ class Tags {
 
   factory Tags.fromMap(Map<String, dynamic> map) {
     return Tags(
-      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
+      items: map['items'] == null ? null : ((map['items']! as List).cast<String>()).input(),
     );
   }
 }

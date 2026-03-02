@@ -30,8 +30,8 @@ class VersionArgs {
 
   factory VersionArgs.fromMap(Map<String, dynamic> map) {
     return VersionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
     );
   }
 }

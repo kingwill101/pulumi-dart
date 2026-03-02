@@ -21,7 +21,7 @@ class GoogleCloudDataplexV1DataAccessSpec {
 
   factory GoogleCloudDataplexV1DataAccessSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataAccessSpec(
-      readers: map['readers'] == null ? null : ((map['readers'] as List).cast<String>()).input(),
+      readers: map['readers'] == null ? null : ((map['readers']! as List).cast<String>()).input(),
     );
   }
 }

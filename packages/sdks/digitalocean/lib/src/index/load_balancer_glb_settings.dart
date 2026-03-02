@@ -41,9 +41,9 @@ class LoadBalancerGlbSettings {
 
   factory LoadBalancerGlbSettings.fromMap(Map<String, dynamic> map) {
     return LoadBalancerGlbSettings(
-      cdn: map['cdn'] == null ? null : (LoadBalancerGlbSettingsCdn.fromMap((map['cdn'] as Map).cast<String, dynamic>())).input(),
-      failoverThreshold: map['failoverThreshold'] == null ? null : (map['failoverThreshold'] as int).input(),
-      regionPriorities: map['regionPriorities'] == null ? null : ((map['regionPriorities'] as Map).cast<String, int>()).input(),
+      cdn: map['cdn'] == null ? null : (LoadBalancerGlbSettingsCdn.fromMap((map['cdn']! as Map).cast<String, dynamic>())).input(),
+      failoverThreshold: map['failoverThreshold'] == null ? null : (map['failoverThreshold']! as int).input(),
+      regionPriorities: map['regionPriorities'] == null ? null : ((map['regionPriorities']! as Map).cast<String, int>()).input(),
       targetPort: (map['targetPort'] as int).input(),
       targetProtocol: (map['targetProtocol'] as String).input(),
     );

@@ -21,7 +21,7 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectation
 
   factory AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds.fromMap(Map<String, dynamic> map) {
     return AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds(
-      toolInvocationParameterCorrectnessThreshold: map['toolInvocationParameterCorrectnessThreshold'] == null ? null : (map['toolInvocationParameterCorrectnessThreshold'] as double).input(),
+      toolInvocationParameterCorrectnessThreshold: map['toolInvocationParameterCorrectnessThreshold'] == null ? null : (map['toolInvocationParameterCorrectnessThreshold']! as double).input(),
     );
   }
 }

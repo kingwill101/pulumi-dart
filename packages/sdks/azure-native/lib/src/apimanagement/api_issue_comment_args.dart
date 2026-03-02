@@ -60,8 +60,8 @@ class ApiIssueCommentArgs {
   factory ApiIssueCommentArgs.fromMap(Map<String, dynamic> map) {
     return ApiIssueCommentArgs(
       apiId: (map['apiId'] as String).input(),
-      commentId: map['commentId'] == null ? null : (map['commentId'] as String).input(),
-      createdDate: map['createdDate'] == null ? null : (map['createdDate'] as String).input(),
+      commentId: map['commentId'] == null ? null : (map['commentId']! as String).input(),
+      createdDate: map['createdDate'] == null ? null : (map['createdDate']! as String).input(),
       issueId: (map['issueId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),

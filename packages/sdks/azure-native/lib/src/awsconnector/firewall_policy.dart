@@ -66,15 +66,15 @@ class FirewallPolicy {
 
   factory FirewallPolicy.fromMap(Map<String, dynamic> map) {
     return FirewallPolicy(
-      policyVariables: map['policyVariables'] == null ? null : (RuleVariablesModel.fromMap((map['policyVariables'] as Map).cast<String, dynamic>())).input(),
-      statefulDefaultActions: map['statefulDefaultActions'] == null ? null : ((map['statefulDefaultActions'] as List).cast<String>()).input(),
-      statefulEngineOptions: map['statefulEngineOptions'] == null ? null : (StatefulEngineOptions.fromMap((map['statefulEngineOptions'] as Map).cast<String, dynamic>())).input(),
-      statefulRuleGroupReferences: map['statefulRuleGroupReferences'] == null ? null : (pulumi.Input.decodeList<StatefulRuleGroupReference>(map['statefulRuleGroupReferences'], (value) => StatefulRuleGroupReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statelessCustomActions: map['statelessCustomActions'] == null ? null : (pulumi.Input.decodeList<CustomAction>(map['statelessCustomActions'], (value) => CustomAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statelessDefaultActions: map['statelessDefaultActions'] == null ? null : ((map['statelessDefaultActions'] as List).cast<String>()).input(),
-      statelessFragmentDefaultActions: map['statelessFragmentDefaultActions'] == null ? null : ((map['statelessFragmentDefaultActions'] as List).cast<String>()).input(),
-      statelessRuleGroupReferences: map['statelessRuleGroupReferences'] == null ? null : (pulumi.Input.decodeList<StatelessRuleGroupReference>(map['statelessRuleGroupReferences'], (value) => StatelessRuleGroupReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tlsInspectionConfigurationArn: map['tlsInspectionConfigurationArn'] == null ? null : (map['tlsInspectionConfigurationArn'] as String).input(),
+      policyVariables: map['policyVariables'] == null ? null : (RuleVariablesModel.fromMap((map['policyVariables']! as Map).cast<String, dynamic>())).input(),
+      statefulDefaultActions: map['statefulDefaultActions'] == null ? null : ((map['statefulDefaultActions']! as List).cast<String>()).input(),
+      statefulEngineOptions: map['statefulEngineOptions'] == null ? null : (StatefulEngineOptions.fromMap((map['statefulEngineOptions']! as Map).cast<String, dynamic>())).input(),
+      statefulRuleGroupReferences: map['statefulRuleGroupReferences'] == null ? null : (pulumi.Input.decodeList<StatefulRuleGroupReference>(map['statefulRuleGroupReferences']!, (value) => StatefulRuleGroupReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statelessCustomActions: map['statelessCustomActions'] == null ? null : (pulumi.Input.decodeList<CustomAction>(map['statelessCustomActions']!, (value) => CustomAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statelessDefaultActions: map['statelessDefaultActions'] == null ? null : ((map['statelessDefaultActions']! as List).cast<String>()).input(),
+      statelessFragmentDefaultActions: map['statelessFragmentDefaultActions'] == null ? null : ((map['statelessFragmentDefaultActions']! as List).cast<String>()).input(),
+      statelessRuleGroupReferences: map['statelessRuleGroupReferences'] == null ? null : (pulumi.Input.decodeList<StatelessRuleGroupReference>(map['statelessRuleGroupReferences']!, (value) => StatelessRuleGroupReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tlsInspectionConfigurationArn: map['tlsInspectionConfigurationArn'] == null ? null : (map['tlsInspectionConfigurationArn']! as String).input(),
     );
   }
 }

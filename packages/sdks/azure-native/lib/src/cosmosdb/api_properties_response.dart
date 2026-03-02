@@ -20,7 +20,7 @@ class ApiPropertiesResponse {
 
   factory ApiPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApiPropertiesResponse(
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
     );
   }
 }

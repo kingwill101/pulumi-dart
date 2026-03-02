@@ -113,7 +113,7 @@ class GetAuthScopeResult {
       region: map['region'] as String,
       roles: pulumi.Input.decodeList<GetAuthScopeRole>(map['roles'], (value) => GetAuthScopeRole.fromMap((value as Map).cast<String, dynamic>())),
       serviceCatalogs: pulumi.Input.decodeList<GetAuthScopeServiceCatalog>(map['serviceCatalogs'], (value) => GetAuthScopeServiceCatalog.fromMap((value as Map).cast<String, dynamic>())),
-      setTokenId: map['setTokenId'] == null ? null : map['setTokenId'] as bool,
+      setTokenId: map['setTokenId'] == null ? null : map['setTokenId']! as bool,
       tokenId: map['tokenId'] as String,
       userDomainId: map['userDomainId'] as String,
       userDomainName: map['userDomainName'] as String,

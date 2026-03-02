@@ -22,7 +22,7 @@ class GoogleCloudChannelV1CommitmentSettings {
 
   factory GoogleCloudChannelV1CommitmentSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1CommitmentSettings(
-      renewalSettings: map['renewalSettings'] == null ? null : (GoogleCloudChannelV1RenewalSettings.fromMap((map['renewalSettings'] as Map).cast<String, dynamic>())).input(),
+      renewalSettings: map['renewalSettings'] == null ? null : (GoogleCloudChannelV1RenewalSettings.fromMap((map['renewalSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

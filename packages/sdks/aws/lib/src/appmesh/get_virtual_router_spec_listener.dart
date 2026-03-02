@@ -20,7 +20,7 @@ class GetVirtualRouterSpecListener {
 
   factory GetVirtualRouterSpecListener.fromMap(Map<String, dynamic> map) {
     return GetVirtualRouterSpecListener(
-      portMappings: (pulumi.Input.decodeList<GetVirtualRouterSpecListenerPortMapping>(map['portMappings'], (value) => GetVirtualRouterSpecListenerPortMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portMappings: (pulumi.Input.decodeList<GetVirtualRouterSpecListenerPortMapping>(map['portMappings']!, (value) => GetVirtualRouterSpecListenerPortMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

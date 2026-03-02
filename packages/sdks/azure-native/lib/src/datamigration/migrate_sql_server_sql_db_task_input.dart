@@ -51,12 +51,12 @@ class MigrateSqlServerSqlDbTaskInput {
 
   factory MigrateSqlServerSqlDbTaskInput.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlDbTaskInput(
-      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields'] as String).input(),
+      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields']! as String).input(),
       selectedDatabases: (pulumi.Input.decodeList<MigrateSqlServerSqlDbDatabaseInput>(map['selectedDatabases'], (value) => MigrateSqlServerSqlDbDatabaseInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
       sourceConnectionInfo: (SqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
-      startedOn: map['startedOn'] == null ? null : (map['startedOn'] as String).input(),
+      startedOn: map['startedOn'] == null ? null : (map['startedOn']! as String).input(),
       targetConnectionInfo: (SqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
-      validationOptions: map['validationOptions'] == null ? null : (MigrationValidationOptions.fromMap((map['validationOptions'] as Map).cast<String, dynamic>())).input(),
+      validationOptions: map['validationOptions'] == null ? null : (MigrationValidationOptions.fromMap((map['validationOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

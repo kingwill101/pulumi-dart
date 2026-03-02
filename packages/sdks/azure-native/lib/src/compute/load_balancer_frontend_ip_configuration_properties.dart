@@ -32,9 +32,9 @@ class LoadBalancerFrontendIpConfigurationProperties {
 
   factory LoadBalancerFrontendIpConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return LoadBalancerFrontendIpConfigurationProperties(
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      publicIPAddress: map['publicIPAddress'] == null ? null : (SubResource.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (SubResource.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (SubResource.fromMap((map['publicIPAddress']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (SubResource.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

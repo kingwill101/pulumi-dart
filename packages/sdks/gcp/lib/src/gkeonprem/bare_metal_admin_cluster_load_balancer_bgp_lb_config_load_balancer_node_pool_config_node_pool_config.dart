@@ -47,11 +47,11 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
 
   factory BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig(
-      kubeletConfig: map['kubeletConfig'] == null ? null : (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig.fromMap((map['kubeletConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      nodeConfigs: map['nodeConfigs'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig>(map['nodeConfigs'], (value) => BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint>(map['taints'], (value) => BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kubeletConfig: map['kubeletConfig'] == null ? null : (BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig.fromMap((map['kubeletConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      nodeConfigs: map['nodeConfigs'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig>(map['nodeConfigs']!, (value) => BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem']! as String).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint>(map['taints']!, (value) => BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

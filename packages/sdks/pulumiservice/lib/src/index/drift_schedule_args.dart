@@ -44,7 +44,7 @@ class DriftScheduleArgs {
 
   factory DriftScheduleArgs.fromMap(Map<String, dynamic> map) {
     return DriftScheduleArgs(
-      autoRemediate: map['autoRemediate'] == null ? null : (map['autoRemediate'] as bool).input(),
+      autoRemediate: map['autoRemediate'] == null ? null : (map['autoRemediate']! as bool).input(),
       organization: (map['organization'] as String).input(),
       project: (map['project'] as String).input(),
       scheduleCron: (map['scheduleCron'] as String).input(),

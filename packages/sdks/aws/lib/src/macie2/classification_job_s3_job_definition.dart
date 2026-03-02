@@ -33,9 +33,9 @@ class ClassificationJobS3JobDefinition {
 
   factory ClassificationJobS3JobDefinition.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinition(
-      bucketCriteria: map['bucketCriteria'] == null ? null : (ClassificationJobS3JobDefinitionBucketCriteria.fromMap((map['bucketCriteria'] as Map).cast<String, dynamic>())).input(),
-      bucketDefinitions: map['bucketDefinitions'] == null ? null : (pulumi.Input.decodeList<ClassificationJobS3JobDefinitionBucketDefinition>(map['bucketDefinitions'], (value) => ClassificationJobS3JobDefinitionBucketDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scoping: map['scoping'] == null ? null : (ClassificationJobS3JobDefinitionScoping.fromMap((map['scoping'] as Map).cast<String, dynamic>())).input(),
+      bucketCriteria: map['bucketCriteria'] == null ? null : ((ClassificationJobS3JobDefinitionBucketCriteria.fromMap((map['bucketCriteria']! as Map).cast<String, dynamic>())).input()).input(),
+      bucketDefinitions: map['bucketDefinitions'] == null ? null : ((pulumi.Input.decodeList<ClassificationJobS3JobDefinitionBucketDefinition>(map['bucketDefinitions']!, (value) => ClassificationJobS3JobDefinitionBucketDefinition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      scoping: map['scoping'] == null ? null : ((ClassificationJobS3JobDefinitionScoping.fromMap((map['scoping']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

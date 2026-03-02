@@ -27,8 +27,8 @@ class DataRepositoryAssociationS3 {
 
   factory DataRepositoryAssociationS3.fromMap(Map<String, dynamic> map) {
     return DataRepositoryAssociationS3(
-      autoExportPolicy: map['autoExportPolicy'] == null ? null : (DataRepositoryAssociationS3AutoExportPolicy.fromMap((map['autoExportPolicy'] as Map).cast<String, dynamic>())).input(),
-      autoImportPolicy: map['autoImportPolicy'] == null ? null : (DataRepositoryAssociationS3AutoImportPolicy.fromMap((map['autoImportPolicy'] as Map).cast<String, dynamic>())).input(),
+      autoExportPolicy: map['autoExportPolicy'] == null ? null : ((DataRepositoryAssociationS3AutoExportPolicy.fromMap((map['autoExportPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      autoImportPolicy: map['autoImportPolicy'] == null ? null : ((DataRepositoryAssociationS3AutoImportPolicy.fromMap((map['autoImportPolicy']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

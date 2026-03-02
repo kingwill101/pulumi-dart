@@ -21,7 +21,7 @@ class VersioningConfiguration {
 
   factory VersioningConfiguration.fromMap(Map<String, dynamic> map) {
     return VersioningConfiguration(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

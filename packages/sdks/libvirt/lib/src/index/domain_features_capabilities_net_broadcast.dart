@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesNetBroadcast {
 
   factory DomainFeaturesCapabilitiesNetBroadcast.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesNetBroadcast(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

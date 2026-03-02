@@ -30,9 +30,9 @@ class EventSourceV2SourceScheduledEventParameters {
 
   factory EventSourceV2SourceScheduledEventParameters.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceScheduledEventParameters(
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
     );
   }
 }

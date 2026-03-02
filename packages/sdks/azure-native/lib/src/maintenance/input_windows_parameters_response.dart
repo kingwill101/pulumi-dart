@@ -36,10 +36,10 @@ class InputWindowsParametersResponse {
 
   factory InputWindowsParametersResponse.fromMap(Map<String, dynamic> map) {
     return InputWindowsParametersResponse(
-      classificationsToInclude: map['classificationsToInclude'] == null ? null : ((map['classificationsToInclude'] as List).cast<String>()).input(),
-      excludeKbsRequiringReboot: map['excludeKbsRequiringReboot'] == null ? null : (map['excludeKbsRequiringReboot'] as bool).input(),
-      kbNumbersToExclude: map['kbNumbersToExclude'] == null ? null : ((map['kbNumbersToExclude'] as List).cast<String>()).input(),
-      kbNumbersToInclude: map['kbNumbersToInclude'] == null ? null : ((map['kbNumbersToInclude'] as List).cast<String>()).input(),
+      classificationsToInclude: map['classificationsToInclude'] == null ? null : ((map['classificationsToInclude']! as List).cast<String>()).input(),
+      excludeKbsRequiringReboot: map['excludeKbsRequiringReboot'] == null ? null : (map['excludeKbsRequiringReboot']! as bool).input(),
+      kbNumbersToExclude: map['kbNumbersToExclude'] == null ? null : ((map['kbNumbersToExclude']! as List).cast<String>()).input(),
+      kbNumbersToInclude: map['kbNumbersToInclude'] == null ? null : ((map['kbNumbersToInclude']! as List).cast<String>()).input(),
     );
   }
 }

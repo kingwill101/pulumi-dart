@@ -46,11 +46,11 @@ class VoiceConnectorArgs {
 
   factory VoiceConnectorArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorArgs(
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      awsRegion: map['awsRegion'] == null ? null : ((map['awsRegion'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       requireEncryption: (map['requireEncryption'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

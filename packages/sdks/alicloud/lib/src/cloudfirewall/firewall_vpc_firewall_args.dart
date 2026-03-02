@@ -51,9 +51,9 @@ class FirewallVpcFirewallArgs {
 
   factory FirewallVpcFirewallArgs.fromMap(Map<String, dynamic> map) {
     return FirewallVpcFirewallArgs(
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
       localVpc: (FirewallVpcFirewallLocalVpc.fromMap((map['localVpc'] as Map).cast<String, dynamic>())).input(),
-      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as String).input(),
       peerVpc: (FirewallVpcFirewallPeerVpc.fromMap((map['peerVpc'] as Map).cast<String, dynamic>())).input(),
       status: (map['status'] as String).input(),
       vpcFirewallName: (map['vpcFirewallName'] as String).input(),

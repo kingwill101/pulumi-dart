@@ -41,11 +41,11 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
     );
   }
 }

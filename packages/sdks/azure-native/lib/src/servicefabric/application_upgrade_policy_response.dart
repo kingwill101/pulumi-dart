@@ -53,13 +53,13 @@ class ApplicationUpgradePolicyResponse {
 
   factory ApplicationUpgradePolicyResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationUpgradePolicyResponse(
-      applicationHealthPolicy: map['applicationHealthPolicy'] == null ? null : (ApplicationHealthPolicyResponse.fromMap((map['applicationHealthPolicy'] as Map).cast<String, dynamic>())).input(),
-      forceRestart: map['forceRestart'] == null ? null : (map['forceRestart'] as bool).input(),
-      instanceCloseDelayDuration: map['instanceCloseDelayDuration'] == null ? null : (map['instanceCloseDelayDuration'] as double).input(),
-      recreateApplication: map['recreateApplication'] == null ? null : (map['recreateApplication'] as bool).input(),
-      rollingUpgradeMonitoringPolicy: map['rollingUpgradeMonitoringPolicy'] == null ? null : (RollingUpgradeMonitoringPolicyResponse.fromMap((map['rollingUpgradeMonitoringPolicy'] as Map).cast<String, dynamic>())).input(),
-      upgradeMode: map['upgradeMode'] == null ? null : (map['upgradeMode'] as String).input(),
-      upgradeReplicaSetCheckTimeout: map['upgradeReplicaSetCheckTimeout'] == null ? null : (map['upgradeReplicaSetCheckTimeout'] as double).input(),
+      applicationHealthPolicy: map['applicationHealthPolicy'] == null ? null : (ApplicationHealthPolicyResponse.fromMap((map['applicationHealthPolicy']! as Map).cast<String, dynamic>())).input(),
+      forceRestart: map['forceRestart'] == null ? null : (map['forceRestart']! as bool).input(),
+      instanceCloseDelayDuration: map['instanceCloseDelayDuration'] == null ? null : (map['instanceCloseDelayDuration']! as double).input(),
+      recreateApplication: map['recreateApplication'] == null ? null : (map['recreateApplication']! as bool).input(),
+      rollingUpgradeMonitoringPolicy: map['rollingUpgradeMonitoringPolicy'] == null ? null : (RollingUpgradeMonitoringPolicyResponse.fromMap((map['rollingUpgradeMonitoringPolicy']! as Map).cast<String, dynamic>())).input(),
+      upgradeMode: map['upgradeMode'] == null ? null : (map['upgradeMode']! as String).input(),
+      upgradeReplicaSetCheckTimeout: map['upgradeReplicaSetCheckTimeout'] == null ? null : (map['upgradeReplicaSetCheckTimeout']! as double).input(),
     );
   }
 }

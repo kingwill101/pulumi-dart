@@ -42,11 +42,11 @@ class TaskTaskReportConfig {
 
   factory TaskTaskReportConfig.fromMap(Map<String, dynamic> map) {
     return TaskTaskReportConfig(
-      outputType: map['outputType'] == null ? null : (map['outputType'] as String).input(),
-      reportLevel: map['reportLevel'] == null ? null : (map['reportLevel'] as String).input(),
-      reportOverrides: map['reportOverrides'] == null ? null : (TaskTaskReportConfigReportOverrides.fromMap((map['reportOverrides'] as Map).cast<String, dynamic>())).input(),
-      s3Destination: (TaskTaskReportConfigS3Destination.fromMap((map['s3Destination'] as Map).cast<String, dynamic>())).input(),
-      s3ObjectVersioning: map['s3ObjectVersioning'] == null ? null : (map['s3ObjectVersioning'] as String).input(),
+      outputType: map['outputType'] == null ? null : ((map['outputType'] as String).input()).input(),
+      reportLevel: map['reportLevel'] == null ? null : ((map['reportLevel'] as String).input()).input(),
+      reportOverrides: map['reportOverrides'] == null ? null : ((TaskTaskReportConfigReportOverrides.fromMap((map['reportOverrides']! as Map).cast<String, dynamic>())).input()).input(),
+      s3Destination: (TaskTaskReportConfigS3Destination.fromMap((map['s3Destination']! as Map).cast<String, dynamic>())).input(),
+      s3ObjectVersioning: map['s3ObjectVersioning'] == null ? null : ((map['s3ObjectVersioning'] as String).input()).input(),
     );
   }
 }

@@ -53,12 +53,12 @@ class RdsBackupArgs {
 
   factory RdsBackupArgs.fromMap(Map<String, dynamic> map) {
     return RdsBackupArgs(
-      backupMethod: map['backupMethod'] == null ? null : (map['backupMethod'] as String).input(),
-      backupStrategy: map['backupStrategy'] == null ? null : (map['backupStrategy'] as String).input(),
-      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
+      backupMethod: map['backupMethod'] == null ? null : (map['backupMethod']! as String).input(),
+      backupStrategy: map['backupStrategy'] == null ? null : (map['backupStrategy']! as String).input(),
+      backupType: map['backupType'] == null ? null : (map['backupType']! as String).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
-      removeFromState: map['removeFromState'] == null ? null : (map['removeFromState'] as bool).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName']! as String).input(),
+      removeFromState: map['removeFromState'] == null ? null : (map['removeFromState']! as bool).input(),
     );
   }
 }

@@ -69,15 +69,15 @@ class GoogleCloudContentwarehouseV1Property {
 
   factory GoogleCloudContentwarehouseV1Property.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1Property(
-      dateTimeValues: map['dateTimeValues'] == null ? null : (GoogleCloudContentwarehouseV1DateTimeArray.fromMap((map['dateTimeValues'] as Map).cast<String, dynamic>())).input(),
-      enumValues: map['enumValues'] == null ? null : (GoogleCloudContentwarehouseV1EnumArray.fromMap((map['enumValues'] as Map).cast<String, dynamic>())).input(),
-      floatValues: map['floatValues'] == null ? null : (GoogleCloudContentwarehouseV1FloatArray.fromMap((map['floatValues'] as Map).cast<String, dynamic>())).input(),
-      integerValues: map['integerValues'] == null ? null : (GoogleCloudContentwarehouseV1IntegerArray.fromMap((map['integerValues'] as Map).cast<String, dynamic>())).input(),
-      mapProperty: map['mapProperty'] == null ? null : (GoogleCloudContentwarehouseV1MapProperty.fromMap((map['mapProperty'] as Map).cast<String, dynamic>())).input(),
+      dateTimeValues: map['dateTimeValues'] == null ? null : (GoogleCloudContentwarehouseV1DateTimeArray.fromMap((map['dateTimeValues']! as Map).cast<String, dynamic>())).input(),
+      enumValues: map['enumValues'] == null ? null : (GoogleCloudContentwarehouseV1EnumArray.fromMap((map['enumValues']! as Map).cast<String, dynamic>())).input(),
+      floatValues: map['floatValues'] == null ? null : (GoogleCloudContentwarehouseV1FloatArray.fromMap((map['floatValues']! as Map).cast<String, dynamic>())).input(),
+      integerValues: map['integerValues'] == null ? null : (GoogleCloudContentwarehouseV1IntegerArray.fromMap((map['integerValues']! as Map).cast<String, dynamic>())).input(),
+      mapProperty: map['mapProperty'] == null ? null : (GoogleCloudContentwarehouseV1MapProperty.fromMap((map['mapProperty']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      propertyValues: map['propertyValues'] == null ? null : (GoogleCloudContentwarehouseV1PropertyArray.fromMap((map['propertyValues'] as Map).cast<String, dynamic>())).input(),
-      textValues: map['textValues'] == null ? null : (GoogleCloudContentwarehouseV1TextArray.fromMap((map['textValues'] as Map).cast<String, dynamic>())).input(),
-      timestampValues: map['timestampValues'] == null ? null : (GoogleCloudContentwarehouseV1TimestampArray.fromMap((map['timestampValues'] as Map).cast<String, dynamic>())).input(),
+      propertyValues: map['propertyValues'] == null ? null : (GoogleCloudContentwarehouseV1PropertyArray.fromMap((map['propertyValues']! as Map).cast<String, dynamic>())).input(),
+      textValues: map['textValues'] == null ? null : (GoogleCloudContentwarehouseV1TextArray.fromMap((map['textValues']! as Map).cast<String, dynamic>())).input(),
+      timestampValues: map['timestampValues'] == null ? null : (GoogleCloudContentwarehouseV1TimestampArray.fromMap((map['timestampValues']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

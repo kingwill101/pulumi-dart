@@ -44,10 +44,10 @@ class AuthzPolicyHttpRuleToNotOperation {
 
   factory AuthzPolicyHttpRuleToNotOperation.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleToNotOperation(
-      headerSet: map['headerSet'] == null ? null : (AuthzPolicyHttpRuleToNotOperationHeaderSet.fromMap((map['headerSet'] as Map).cast<String, dynamic>())).input(),
-      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToNotOperationHost>(map['hosts'], (value) => AuthzPolicyHttpRuleToNotOperationHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
-      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToNotOperationPath>(map['paths'], (value) => AuthzPolicyHttpRuleToNotOperationPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headerSet: map['headerSet'] == null ? null : (AuthzPolicyHttpRuleToNotOperationHeaderSet.fromMap((map['headerSet']! as Map).cast<String, dynamic>())).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToNotOperationHost>(map['hosts']!, (value) => AuthzPolicyHttpRuleToNotOperationHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
+      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToNotOperationPath>(map['paths']!, (value) => AuthzPolicyHttpRuleToNotOperationPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

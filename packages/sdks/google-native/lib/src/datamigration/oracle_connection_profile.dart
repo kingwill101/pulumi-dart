@@ -65,13 +65,13 @@ class OracleConnectionProfile {
   factory OracleConnectionProfile.fromMap(Map<String, dynamic> map) {
     return OracleConnectionProfile(
       databaseService: (map['databaseService'] as String).input(),
-      forwardSshConnectivity: map['forwardSshConnectivity'] == null ? null : (ForwardSshTunnelConnectivity.fromMap((map['forwardSshConnectivity'] as Map).cast<String, dynamic>())).input(),
+      forwardSshConnectivity: map['forwardSshConnectivity'] == null ? null : (ForwardSshTunnelConnectivity.fromMap((map['forwardSshConnectivity']! as Map).cast<String, dynamic>())).input(),
       host: (map['host'] as String).input(),
       password: (map['password'] as String).input(),
       port: (map['port'] as int).input(),
-      privateConnectivity: map['privateConnectivity'] == null ? null : (PrivateConnectivity.fromMap((map['privateConnectivity'] as Map).cast<String, dynamic>())).input(),
-      ssl: map['ssl'] == null ? null : (SslConfig.fromMap((map['ssl'] as Map).cast<String, dynamic>())).input(),
-      staticServiceIpConnectivity: map['staticServiceIpConnectivity'] == null ? null : ((map['staticServiceIpConnectivity'] as Map).cast<String, dynamic>()).input(),
+      privateConnectivity: map['privateConnectivity'] == null ? null : (PrivateConnectivity.fromMap((map['privateConnectivity']! as Map).cast<String, dynamic>())).input(),
+      ssl: map['ssl'] == null ? null : (SslConfig.fromMap((map['ssl']! as Map).cast<String, dynamic>())).input(),
+      staticServiceIpConnectivity: map['staticServiceIpConnectivity'] == null ? null : ((map['staticServiceIpConnectivity']! as Map).cast<String, dynamic>()).input(),
       username: (map['username'] as String).input(),
     );
   }

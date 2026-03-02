@@ -95,16 +95,16 @@ class GetRecordsResourceRecordSet {
 
   factory GetRecordsResourceRecordSet.fromMap(Map<String, dynamic> map) {
     return GetRecordsResourceRecordSet(
-      aliasTarget: (GetRecordsResourceRecordSetAliasTarget.fromMap((map['aliasTarget'] as Map).cast<String, dynamic>())).input(),
-      cidrRoutingConfig: (GetRecordsResourceRecordSetCidrRoutingConfig.fromMap((map['cidrRoutingConfig'] as Map).cast<String, dynamic>())).input(),
+      aliasTarget: (GetRecordsResourceRecordSetAliasTarget.fromMap((map['aliasTarget']! as Map).cast<String, dynamic>())).input(),
+      cidrRoutingConfig: (GetRecordsResourceRecordSetCidrRoutingConfig.fromMap((map['cidrRoutingConfig']! as Map).cast<String, dynamic>())).input(),
       failover: (map['failover'] as String).input(),
-      geolocation: (GetRecordsResourceRecordSetGeolocation.fromMap((map['geolocation'] as Map).cast<String, dynamic>())).input(),
-      geoproximityLocation: (GetRecordsResourceRecordSetGeoproximityLocation.fromMap((map['geoproximityLocation'] as Map).cast<String, dynamic>())).input(),
+      geolocation: (GetRecordsResourceRecordSetGeolocation.fromMap((map['geolocation']! as Map).cast<String, dynamic>())).input(),
+      geoproximityLocation: (GetRecordsResourceRecordSetGeoproximityLocation.fromMap((map['geoproximityLocation']! as Map).cast<String, dynamic>())).input(),
       healthCheckId: (map['healthCheckId'] as String).input(),
       multiValueAnswer: (map['multiValueAnswer'] as bool).input(),
       name: (map['name'] as String).input(),
       region: (map['region'] as String).input(),
-      resourceRecords: (pulumi.Input.decodeList<GetRecordsResourceRecordSetResourceRecord>(map['resourceRecords'], (value) => GetRecordsResourceRecordSetResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceRecords: (pulumi.Input.decodeList<GetRecordsResourceRecordSetResourceRecord>(map['resourceRecords']!, (value) => GetRecordsResourceRecordSetResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
       setIdentifier: (map['setIdentifier'] as String).input(),
       trafficPolicyInstanceId: (map['trafficPolicyInstanceId'] as String).input(),
       ttl: (map['ttl'] as int).input(),

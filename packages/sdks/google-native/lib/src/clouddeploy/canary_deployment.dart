@@ -39,9 +39,9 @@ class CanaryDeployment {
   factory CanaryDeployment.fromMap(Map<String, dynamic> map) {
     return CanaryDeployment(
       percentages: ((map['percentages'] as List).cast<int>()).input(),
-      postdeploy: map['postdeploy'] == null ? null : (Postdeploy.fromMap((map['postdeploy'] as Map).cast<String, dynamic>())).input(),
-      predeploy: map['predeploy'] == null ? null : (Predeploy.fromMap((map['predeploy'] as Map).cast<String, dynamic>())).input(),
-      verify: map['verify'] == null ? null : (map['verify'] as bool).input(),
+      postdeploy: map['postdeploy'] == null ? null : (Postdeploy.fromMap((map['postdeploy']! as Map).cast<String, dynamic>())).input(),
+      predeploy: map['predeploy'] == null ? null : (Predeploy.fromMap((map['predeploy']! as Map).cast<String, dynamic>())).input(),
+      verify: map['verify'] == null ? null : (map['verify']! as bool).input(),
     );
   }
 }

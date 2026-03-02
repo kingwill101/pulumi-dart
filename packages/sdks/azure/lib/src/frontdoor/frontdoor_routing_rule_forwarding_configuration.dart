@@ -56,13 +56,13 @@ class FrontdoorRoutingRuleForwardingConfiguration {
   factory FrontdoorRoutingRuleForwardingConfiguration.fromMap(Map<String, dynamic> map) {
     return FrontdoorRoutingRuleForwardingConfiguration(
       backendPoolName: (map['backendPoolName'] as String).input(),
-      cacheDuration: map['cacheDuration'] == null ? null : (map['cacheDuration'] as String).input(),
-      cacheEnabled: map['cacheEnabled'] == null ? null : (map['cacheEnabled'] as bool).input(),
-      cacheQueryParameterStripDirective: map['cacheQueryParameterStripDirective'] == null ? null : (map['cacheQueryParameterStripDirective'] as String).input(),
-      cacheQueryParameters: map['cacheQueryParameters'] == null ? null : ((map['cacheQueryParameters'] as List).cast<String>()).input(),
-      cacheUseDynamicCompression: map['cacheUseDynamicCompression'] == null ? null : (map['cacheUseDynamicCompression'] as bool).input(),
-      customForwardingPath: map['customForwardingPath'] == null ? null : (map['customForwardingPath'] as String).input(),
-      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol'] as String).input(),
+      cacheDuration: map['cacheDuration'] == null ? null : (map['cacheDuration']! as String).input(),
+      cacheEnabled: map['cacheEnabled'] == null ? null : (map['cacheEnabled']! as bool).input(),
+      cacheQueryParameterStripDirective: map['cacheQueryParameterStripDirective'] == null ? null : (map['cacheQueryParameterStripDirective']! as String).input(),
+      cacheQueryParameters: map['cacheQueryParameters'] == null ? null : ((map['cacheQueryParameters']! as List).cast<String>()).input(),
+      cacheUseDynamicCompression: map['cacheUseDynamicCompression'] == null ? null : (map['cacheUseDynamicCompression']! as bool).input(),
+      customForwardingPath: map['customForwardingPath'] == null ? null : (map['customForwardingPath']! as String).input(),
+      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol']! as String).input(),
     );
   }
 }

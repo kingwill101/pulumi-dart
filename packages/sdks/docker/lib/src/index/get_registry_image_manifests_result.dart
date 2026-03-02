@@ -43,9 +43,9 @@ class GetRegistryImageManifestsResult {
 
   factory GetRegistryImageManifestsResult.fromMap(Map<String, dynamic> map) {
     return GetRegistryImageManifestsResult(
-      authConfig: map['authConfig'] == null ? null : GetRegistryImageManifestsAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>()),
+      authConfig: map['authConfig'] == null ? null : GetRegistryImageManifestsAuthConfig.fromMap((map['authConfig']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : map['insecureSkipVerify'] as bool,
+      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : map['insecureSkipVerify']! as bool,
       manifests: pulumi.Input.decodeList<GetRegistryImageManifestsManifest>(map['manifests'], (value) => GetRegistryImageManifestsManifest.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
     );

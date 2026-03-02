@@ -23,8 +23,8 @@ class FileCacheLustreConfigurationLogConfiguration {
 
   factory FileCacheLustreConfigurationLogConfiguration.fromMap(Map<String, dynamic> map) {
     return FileCacheLustreConfigurationLogConfiguration(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
+      destination: map['destination'] == null ? null : ((map['destination'] as String).input()).input(),
+      level: map['level'] == null ? null : ((map['level'] as String).input()).input(),
     );
   }
 }

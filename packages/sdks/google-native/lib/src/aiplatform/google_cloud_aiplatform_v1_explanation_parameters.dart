@@ -50,12 +50,12 @@ class GoogleCloudAiplatformV1ExplanationParameters {
 
   factory GoogleCloudAiplatformV1ExplanationParameters.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ExplanationParameters(
-      examples: map['examples'] == null ? null : (GoogleCloudAiplatformV1Examples.fromMap((map['examples'] as Map).cast<String, dynamic>())).input(),
-      integratedGradientsAttribution: map['integratedGradientsAttribution'] == null ? null : (GoogleCloudAiplatformV1IntegratedGradientsAttribution.fromMap((map['integratedGradientsAttribution'] as Map).cast<String, dynamic>())).input(),
-      outputIndices: map['outputIndices'] == null ? null : ((map['outputIndices'] as List).cast<dynamic>()).input(),
-      sampledShapleyAttribution: map['sampledShapleyAttribution'] == null ? null : (GoogleCloudAiplatformV1SampledShapleyAttribution.fromMap((map['sampledShapleyAttribution'] as Map).cast<String, dynamic>())).input(),
-      topK: map['topK'] == null ? null : (map['topK'] as int).input(),
-      xraiAttribution: map['xraiAttribution'] == null ? null : (GoogleCloudAiplatformV1XraiAttribution.fromMap((map['xraiAttribution'] as Map).cast<String, dynamic>())).input(),
+      examples: map['examples'] == null ? null : (GoogleCloudAiplatformV1Examples.fromMap((map['examples']! as Map).cast<String, dynamic>())).input(),
+      integratedGradientsAttribution: map['integratedGradientsAttribution'] == null ? null : (GoogleCloudAiplatformV1IntegratedGradientsAttribution.fromMap((map['integratedGradientsAttribution']! as Map).cast<String, dynamic>())).input(),
+      outputIndices: map['outputIndices'] == null ? null : ((map['outputIndices']! as List).cast<dynamic>()).input(),
+      sampledShapleyAttribution: map['sampledShapleyAttribution'] == null ? null : (GoogleCloudAiplatformV1SampledShapleyAttribution.fromMap((map['sampledShapleyAttribution']! as Map).cast<String, dynamic>())).input(),
+      topK: map['topK'] == null ? null : (map['topK']! as int).input(),
+      xraiAttribution: map['xraiAttribution'] == null ? null : (GoogleCloudAiplatformV1XraiAttribution.fromMap((map['xraiAttribution']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

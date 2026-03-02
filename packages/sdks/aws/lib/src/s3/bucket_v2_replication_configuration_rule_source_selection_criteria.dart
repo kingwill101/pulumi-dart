@@ -22,7 +22,7 @@ class BucketV2ReplicationConfigurationRuleSourceSelectionCriteria {
 
   factory BucketV2ReplicationConfigurationRuleSourceSelectionCriteria.fromMap(Map<String, dynamic> map) {
     return BucketV2ReplicationConfigurationRuleSourceSelectionCriteria(
-      sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null ? null : (pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject>(map['sseKmsEncryptedObjects'], (value) => BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null ? null : ((pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject>(map['sseKmsEncryptedObjects']!, (value) => BucketV2ReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

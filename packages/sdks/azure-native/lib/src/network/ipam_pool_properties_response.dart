@@ -46,10 +46,10 @@ class IpamPoolPropertiesResponse {
   factory IpamPoolPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IpamPoolPropertiesResponse(
       addressPrefixes: ((map['addressPrefixes'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       ipAddressType: ((map['ipAddressType'] as List).cast<String>()).input(),
-      parentPoolName: map['parentPoolName'] == null ? null : (map['parentPoolName'] as String).input(),
+      parentPoolName: map['parentPoolName'] == null ? null : (map['parentPoolName']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

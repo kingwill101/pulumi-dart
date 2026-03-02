@@ -86,19 +86,19 @@ class ResolverEndpointState {
 
   factory ResolverEndpointState.fromMap(Map<String, dynamic> map) {
     return ResolverEndpointState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      hostVpcId: map['hostVpcId'] == null ? null : (map['hostVpcId'] as String).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : (pulumi.Input.decodeList<ResolverEndpointIpAddress>(map['ipAddresses'], (value) => ResolverEndpointIpAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocols: map['protocols'] == null ? null : ((map['protocols'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resolverEndpointType: map['resolverEndpointType'] == null ? null : (map['resolverEndpointType'] as String).input(),
-      rniEnhancedMetricsEnabled: map['rniEnhancedMetricsEnabled'] == null ? null : (map['rniEnhancedMetricsEnabled'] as bool).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      targetNameServerMetricsEnabled: map['targetNameServerMetricsEnabled'] == null ? null : (map['targetNameServerMetricsEnabled'] as bool).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      direction: map['direction'] == null ? null : ((map['direction'] as String).input()).input(),
+      hostVpcId: map['hostVpcId'] == null ? null : ((map['hostVpcId'] as String).input()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((pulumi.Input.decodeList<ResolverEndpointIpAddress>(map['ipAddresses']!, (value) => ResolverEndpointIpAddress.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      protocols: map['protocols'] == null ? null : (((map['protocols'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resolverEndpointType: map['resolverEndpointType'] == null ? null : ((map['resolverEndpointType'] as String).input()).input(),
+      rniEnhancedMetricsEnabled: map['rniEnhancedMetricsEnabled'] == null ? null : ((map['rniEnhancedMetricsEnabled'] as bool).input()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      targetNameServerMetricsEnabled: map['targetNameServerMetricsEnabled'] == null ? null : ((map['targetNameServerMetricsEnabled'] as bool).input()).input(),
     );
   }
 }

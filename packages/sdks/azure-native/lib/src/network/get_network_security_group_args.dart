@@ -34,7 +34,7 @@ class GetNetworkSecurityGroupArgs {
 
   factory GetNetworkSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityGroupArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       networkSecurityGroupName: (map['networkSecurityGroupName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

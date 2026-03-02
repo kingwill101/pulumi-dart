@@ -50,9 +50,9 @@ class ResourceSliceResourceK8sIoV1beta2 {
 
   factory ResourceSliceResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return ResourceSliceResourceK8sIoV1beta2(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       spec: (ResourceSliceSpecResourceK8sIoV1beta2.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }

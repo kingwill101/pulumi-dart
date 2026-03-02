@@ -24,8 +24,8 @@ class GlossaryTermTermRelations {
 
   factory GlossaryTermTermRelations.fromMap(Map<String, dynamic> map) {
     return GlossaryTermTermRelations(
-      classifies: map['classifies'] == null ? null : ((map['classifies'] as List).cast<String>()).input(),
-      isAs: map['isAs'] == null ? null : ((map['isAs'] as List).cast<String>()).input(),
+      classifies: map['classifies'] == null ? null : (((map['classifies'] as List).cast<String>()).input()).input(),
+      isAs: map['isAs'] == null ? null : (((map['isAs'] as List).cast<String>()).input()).input(),
     );
   }
 }

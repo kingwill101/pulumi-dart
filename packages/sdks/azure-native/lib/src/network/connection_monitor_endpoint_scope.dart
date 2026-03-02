@@ -27,8 +27,8 @@ class ConnectionMonitorEndpointScope {
 
   factory ConnectionMonitorEndpointScope.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorEndpointScope(
-      exclude: map['exclude'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorEndpointScopeItem>(map['exclude'], (value) => ConnectionMonitorEndpointScopeItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      include: map['include'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorEndpointScopeItem>(map['include'], (value) => ConnectionMonitorEndpointScopeItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exclude: map['exclude'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorEndpointScopeItem>(map['exclude']!, (value) => ConnectionMonitorEndpointScopeItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      include: map['include'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorEndpointScopeItem>(map['include']!, (value) => ConnectionMonitorEndpointScopeItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

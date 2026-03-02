@@ -31,9 +31,9 @@ class ReplicaInfo {
 
   factory ReplicaInfo.fromMap(Map<String, dynamic> map) {
     return ReplicaInfo(
-      defaultLeaderLocation: map['defaultLeaderLocation'] == null ? null : (map['defaultLeaderLocation'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      type: map['type'] == null ? null : (ReplicaInfoType.fromValue(map['type'] as String)).input(),
+      defaultLeaderLocation: map['defaultLeaderLocation'] == null ? null : (map['defaultLeaderLocation']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      type: map['type'] == null ? null : (ReplicaInfoType.fromValue(map['type']! as String)).input(),
     );
   }
 }

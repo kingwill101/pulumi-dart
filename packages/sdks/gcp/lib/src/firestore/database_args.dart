@@ -105,17 +105,17 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      appEngineIntegrationMode: map['appEngineIntegrationMode'] == null ? null : (map['appEngineIntegrationMode'] as String).input(),
-      cmekConfig: map['cmekConfig'] == null ? null : (DatabaseCmekConfig.fromMap((map['cmekConfig'] as Map).cast<String, dynamic>())).input(),
-      concurrencyMode: map['concurrencyMode'] == null ? null : (map['concurrencyMode'] as String).input(),
-      databaseEdition: map['databaseEdition'] == null ? null : (map['databaseEdition'] as String).input(),
-      deleteProtectionState: map['deleteProtectionState'] == null ? null : (map['deleteProtectionState'] as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      appEngineIntegrationMode: map['appEngineIntegrationMode'] == null ? null : (map['appEngineIntegrationMode']! as String).input(),
+      cmekConfig: map['cmekConfig'] == null ? null : (DatabaseCmekConfig.fromMap((map['cmekConfig']! as Map).cast<String, dynamic>())).input(),
+      concurrencyMode: map['concurrencyMode'] == null ? null : (map['concurrencyMode']! as String).input(),
+      databaseEdition: map['databaseEdition'] == null ? null : (map['databaseEdition']! as String).input(),
+      deleteProtectionState: map['deleteProtectionState'] == null ? null : (map['deleteProtectionState']! as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
       locationId: (map['locationId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pointInTimeRecoveryEnablement: map['pointInTimeRecoveryEnablement'] == null ? null : (map['pointInTimeRecoveryEnablement'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pointInTimeRecoveryEnablement: map['pointInTimeRecoveryEnablement'] == null ? null : (map['pointInTimeRecoveryEnablement']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

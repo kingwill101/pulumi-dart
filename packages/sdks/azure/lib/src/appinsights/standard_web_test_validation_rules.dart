@@ -36,10 +36,10 @@ class StandardWebTestValidationRules {
 
   factory StandardWebTestValidationRules.fromMap(Map<String, dynamic> map) {
     return StandardWebTestValidationRules(
-      content: map['content'] == null ? null : (StandardWebTestValidationRulesContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
-      expectedStatusCode: map['expectedStatusCode'] == null ? null : (map['expectedStatusCode'] as int).input(),
-      sslCertRemainingLifetime: map['sslCertRemainingLifetime'] == null ? null : (map['sslCertRemainingLifetime'] as int).input(),
-      sslCheckEnabled: map['sslCheckEnabled'] == null ? null : (map['sslCheckEnabled'] as bool).input(),
+      content: map['content'] == null ? null : (StandardWebTestValidationRulesContent.fromMap((map['content']! as Map).cast<String, dynamic>())).input(),
+      expectedStatusCode: map['expectedStatusCode'] == null ? null : (map['expectedStatusCode']! as int).input(),
+      sslCertRemainingLifetime: map['sslCertRemainingLifetime'] == null ? null : (map['sslCertRemainingLifetime']! as int).input(),
+      sslCheckEnabled: map['sslCheckEnabled'] == null ? null : (map['sslCheckEnabled']! as bool).input(),
     );
   }
 }

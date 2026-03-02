@@ -30,9 +30,9 @@ class JobStatusErrorResult {
 
   factory JobStatusErrorResult.fromMap(Map<String, dynamic> map) {
     return JobStatusErrorResult(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

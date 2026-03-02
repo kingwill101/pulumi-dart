@@ -29,9 +29,9 @@ class WebAppIdentityProviderDetailsIdentityCenterConfig {
 
   factory WebAppIdentityProviderDetailsIdentityCenterConfig.fromMap(Map<String, dynamic> map) {
     return WebAppIdentityProviderDetailsIdentityCenterConfig(
-      applicationArn: map['applicationArn'] == null ? null : (map['applicationArn'] as String).input(),
-      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      applicationArn: map['applicationArn'] == null ? null : ((map['applicationArn'] as String).input()).input(),
+      instanceArn: map['instanceArn'] == null ? null : ((map['instanceArn'] as String).input()).input(),
+      role: map['role'] == null ? null : ((map['role'] as String).input()).input(),
     );
   }
 }

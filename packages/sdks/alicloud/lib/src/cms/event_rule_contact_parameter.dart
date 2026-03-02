@@ -30,9 +30,9 @@ class EventRuleContactParameter {
 
   factory EventRuleContactParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleContactParameter(
-      contactGroupName: map['contactGroupName'] == null ? null : (map['contactGroupName'] as String).input(),
-      contactParametersId: map['contactParametersId'] == null ? null : (map['contactParametersId'] as String).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
+      contactGroupName: map['contactGroupName'] == null ? null : (map['contactGroupName']! as String).input(),
+      contactParametersId: map['contactParametersId'] == null ? null : (map['contactParametersId']! as String).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
     );
   }
 }

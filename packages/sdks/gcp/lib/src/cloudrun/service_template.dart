@@ -35,8 +35,8 @@ class ServiceTemplate {
 
   factory ServiceTemplate.fromMap(Map<String, dynamic> map) {
     return ServiceTemplate(
-      metadata: map['metadata'] == null ? null : (ServiceTemplateMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (ServiceTemplateSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (ServiceTemplateMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (ServiceTemplateSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

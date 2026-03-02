@@ -36,10 +36,10 @@ class DomainDevicesHostdevSubsysMDev {
 
   factory DomainDevicesHostdevSubsysMDev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysMDev(
-      display: map['display'] == null ? null : (map['display'] as String).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      ramFb: map['ramFb'] == null ? null : (map['ramFb'] as String).input(),
-      source: map['source'] == null ? null : (DomainDevicesHostdevSubsysMDevSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      display: map['display'] == null ? null : (map['display']! as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      ramFb: map['ramFb'] == null ? null : (map['ramFb']! as String).input(),
+      source: map['source'] == null ? null : (DomainDevicesHostdevSubsysMDevSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

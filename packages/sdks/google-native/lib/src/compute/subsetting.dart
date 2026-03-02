@@ -26,8 +26,8 @@ class Subsetting {
 
   factory Subsetting.fromMap(Map<String, dynamic> map) {
     return Subsetting(
-      policy: map['policy'] == null ? null : (SubsettingPolicy.fromValue(map['policy'] as String)).input(),
-      subsetSize: map['subsetSize'] == null ? null : (map['subsetSize'] as int).input(),
+      policy: map['policy'] == null ? null : (SubsettingPolicy.fromValue(map['policy']! as String)).input(),
+      subsetSize: map['subsetSize'] == null ? null : (map['subsetSize']! as int).input(),
     );
   }
 }

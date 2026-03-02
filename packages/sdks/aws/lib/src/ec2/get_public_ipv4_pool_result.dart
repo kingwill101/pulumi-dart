@@ -63,7 +63,7 @@ class GetPublicIpv4PoolResult {
       description: map['description'] as String,
       id: map['id'] as String,
       networkBorderGroup: map['networkBorderGroup'] as String,
-      poolAddressRanges: pulumi.Input.decodeList<GetPublicIpv4PoolPoolAddressRange>(map['poolAddressRanges'], (value) => GetPublicIpv4PoolPoolAddressRange.fromMap((value as Map).cast<String, dynamic>())),
+      poolAddressRanges: pulumi.Input.decodeList<GetPublicIpv4PoolPoolAddressRange>(map['poolAddressRanges']!, (value) => GetPublicIpv4PoolPoolAddressRange.fromMap((value as Map).cast<String, dynamic>())),
       poolId: map['poolId'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),

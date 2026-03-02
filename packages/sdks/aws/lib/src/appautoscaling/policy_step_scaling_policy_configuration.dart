@@ -202,11 +202,11 @@ class PolicyStepScalingPolicyConfiguration {
 
   factory PolicyStepScalingPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return PolicyStepScalingPolicyConfiguration(
-      adjustmentType: map['adjustmentType'] == null ? null : (map['adjustmentType'] as String).input(),
-      cooldown: map['cooldown'] == null ? null : (map['cooldown'] as int).input(),
-      metricAggregationType: map['metricAggregationType'] == null ? null : (map['metricAggregationType'] as String).input(),
-      minAdjustmentMagnitude: map['minAdjustmentMagnitude'] == null ? null : (map['minAdjustmentMagnitude'] as int).input(),
-      stepAdjustments: map['stepAdjustments'] == null ? null : (pulumi.Input.decodeList<PolicyStepScalingPolicyConfigurationStepAdjustment>(map['stepAdjustments'], (value) => PolicyStepScalingPolicyConfigurationStepAdjustment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adjustmentType: map['adjustmentType'] == null ? null : ((map['adjustmentType'] as String).input()).input(),
+      cooldown: map['cooldown'] == null ? null : ((map['cooldown'] as int).input()).input(),
+      metricAggregationType: map['metricAggregationType'] == null ? null : ((map['metricAggregationType'] as String).input()).input(),
+      minAdjustmentMagnitude: map['minAdjustmentMagnitude'] == null ? null : ((map['minAdjustmentMagnitude'] as int).input()).input(),
+      stepAdjustments: map['stepAdjustments'] == null ? null : ((pulumi.Input.decodeList<PolicyStepScalingPolicyConfigurationStepAdjustment>(map['stepAdjustments']!, (value) => PolicyStepScalingPolicyConfigurationStepAdjustment.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

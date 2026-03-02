@@ -50,13 +50,13 @@ class WafPolicyIpException {
 
   factory WafPolicyIpException.fromMap(Map<String, dynamic> map) {
     return WafPolicyIpException(
-      blockRequests: map['blockRequests'] == null ? null : (map['blockRequests'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ignoreAnomalies: map['ignoreAnomalies'] == null ? null : (map['ignoreAnomalies'] as bool).input(),
-      ignoreIpreputation: map['ignoreIpreputation'] == null ? null : (map['ignoreIpreputation'] as bool).input(),
+      blockRequests: map['blockRequests'] == null ? null : (map['blockRequests']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ignoreAnomalies: map['ignoreAnomalies'] == null ? null : (map['ignoreAnomalies']! as bool).input(),
+      ignoreIpreputation: map['ignoreIpreputation'] == null ? null : (map['ignoreIpreputation']! as bool).input(),
       ipAddress: (map['ipAddress'] as String).input(),
       ipMask: (map['ipMask'] as String).input(),
-      trustedbyPolicybuilder: map['trustedbyPolicybuilder'] == null ? null : (map['trustedbyPolicybuilder'] as bool).input(),
+      trustedbyPolicybuilder: map['trustedbyPolicybuilder'] == null ? null : (map['trustedbyPolicybuilder']! as bool).input(),
     );
   }
 }

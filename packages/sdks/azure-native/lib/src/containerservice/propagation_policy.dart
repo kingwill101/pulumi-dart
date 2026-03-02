@@ -27,7 +27,7 @@ class PropagationPolicy {
 
   factory PropagationPolicy.fromMap(Map<String, dynamic> map) {
     return PropagationPolicy(
-      placementProfile: map['placementProfile'] == null ? null : (PlacementProfile.fromMap((map['placementProfile'] as Map).cast<String, dynamic>())).input(),
+      placementProfile: map['placementProfile'] == null ? null : (PlacementProfile.fromMap((map['placementProfile']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

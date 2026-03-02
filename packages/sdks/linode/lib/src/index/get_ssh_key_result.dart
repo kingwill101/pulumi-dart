@@ -35,7 +35,7 @@ class GetSshKeyResult {
   factory GetSshKeyResult.fromMap(Map<String, dynamic> map) {
     return GetSshKeyResult(
       created: map['created'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
       label: map['label'] as String,
       sshKey: map['sshKey'] as String,
     );

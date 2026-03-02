@@ -30,7 +30,7 @@ class ManagedClusterAuthenticationCertificate {
 
   factory ManagedClusterAuthenticationCertificate.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAuthenticationCertificate(
-      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
+      commonName: map['commonName'] == null ? null : (map['commonName']! as String).input(),
       thumbprint: (map['thumbprint'] as String).input(),
       type: (map['type'] as String).input(),
     );

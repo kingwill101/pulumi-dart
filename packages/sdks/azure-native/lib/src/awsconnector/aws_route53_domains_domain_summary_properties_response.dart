@@ -36,10 +36,10 @@ class AwsRoute53DomainsDomainSummaryPropertiesResponse {
 
   factory AwsRoute53DomainsDomainSummaryPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsRoute53DomainsDomainSummaryPropertiesResponse(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
-      transferLock: map['transferLock'] == null ? null : (map['transferLock'] as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
+      transferLock: map['transferLock'] == null ? null : (map['transferLock']! as bool).input(),
     );
   }
 }

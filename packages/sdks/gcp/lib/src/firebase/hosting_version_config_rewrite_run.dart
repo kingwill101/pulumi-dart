@@ -25,7 +25,7 @@ class HostingVersionConfigRewriteRun {
 
   factory HostingVersionConfigRewriteRun.fromMap(Map<String, dynamic> map) {
     return HostingVersionConfigRewriteRun(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );
   }

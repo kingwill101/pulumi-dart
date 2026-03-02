@@ -78,18 +78,18 @@ class OntapStorageVirtualMachineState {
 
   factory OntapStorageVirtualMachineState.fromMap(Map<String, dynamic> map) {
     return OntapStorageVirtualMachineState(
-      activeDirectoryConfiguration: map['activeDirectoryConfiguration'] == null ? null : (OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((map['activeDirectoryConfiguration'] as Map).cast<String, dynamic>())).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<OntapStorageVirtualMachineEndpoint>(map['endpoints'], (value) => OntapStorageVirtualMachineEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rootVolumeSecurityStyle: map['rootVolumeSecurityStyle'] == null ? null : (map['rootVolumeSecurityStyle'] as String).input(),
-      subtype: map['subtype'] == null ? null : (map['subtype'] as String).input(),
-      svmAdminPassword: map['svmAdminPassword'] == null ? null : (map['svmAdminPassword'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      activeDirectoryConfiguration: map['activeDirectoryConfiguration'] == null ? null : ((OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((map['activeDirectoryConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      endpoints: map['endpoints'] == null ? null : ((pulumi.Input.decodeList<OntapStorageVirtualMachineEndpoint>(map['endpoints']!, (value) => OntapStorageVirtualMachineEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : ((map['fileSystemId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rootVolumeSecurityStyle: map['rootVolumeSecurityStyle'] == null ? null : ((map['rootVolumeSecurityStyle'] as String).input()).input(),
+      subtype: map['subtype'] == null ? null : ((map['subtype'] as String).input()).input(),
+      svmAdminPassword: map['svmAdminPassword'] == null ? null : ((map['svmAdminPassword'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      uuid: map['uuid'] == null ? null : ((map['uuid'] as String).input()).input(),
     );
   }
 }

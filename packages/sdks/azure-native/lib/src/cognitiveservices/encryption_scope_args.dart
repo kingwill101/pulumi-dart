@@ -46,10 +46,10 @@ class EncryptionScopeArgs {
   factory EncryptionScopeArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionScopeArgs(
       accountName: (map['accountName'] as String).input(),
-      encryptionScopeName: map['encryptionScopeName'] == null ? null : (map['encryptionScopeName'] as String).input(),
-      properties: map['properties'] == null ? null : (EncryptionScopeProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      encryptionScopeName: map['encryptionScopeName'] == null ? null : (map['encryptionScopeName']! as String).input(),
+      properties: map['properties'] == null ? null : (EncryptionScopeProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

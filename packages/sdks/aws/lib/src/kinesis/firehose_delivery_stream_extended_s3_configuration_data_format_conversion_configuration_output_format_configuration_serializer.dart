@@ -27,8 +27,8 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 
   factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializer(
-      orcSerDe: map['orcSerDe'] == null ? null : (FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe.fromMap((map['orcSerDe'] as Map).cast<String, dynamic>())).input(),
-      parquetSerDe: map['parquetSerDe'] == null ? null : (FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe.fromMap((map['parquetSerDe'] as Map).cast<String, dynamic>())).input(),
+      orcSerDe: map['orcSerDe'] == null ? null : ((FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe.fromMap((map['orcSerDe']! as Map).cast<String, dynamic>())).input()).input(),
+      parquetSerDe: map['parquetSerDe'] == null ? null : ((FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe.fromMap((map['parquetSerDe']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

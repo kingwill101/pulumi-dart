@@ -37,10 +37,10 @@ class BqmlTrainingRun {
 
   factory BqmlTrainingRun.fromMap(Map<String, dynamic> map) {
     return BqmlTrainingRun(
-      iterationResults: map['iterationResults'] == null ? null : (pulumi.Input.decodeList<BqmlIterationResult>(map['iterationResults'], (value) => BqmlIterationResult.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      trainingOptions: map['trainingOptions'] == null ? null : (BqmlTrainingRunTrainingOptions.fromMap((map['trainingOptions'] as Map).cast<String, dynamic>())).input(),
+      iterationResults: map['iterationResults'] == null ? null : (pulumi.Input.decodeList<BqmlIterationResult>(map['iterationResults']!, (value) => BqmlIterationResult.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      trainingOptions: map['trainingOptions'] == null ? null : (BqmlTrainingRunTrainingOptions.fromMap((map['trainingOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

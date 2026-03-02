@@ -44,10 +44,10 @@ class FirewallPolicyFilterRuleResponse {
 
   factory FirewallPolicyFilterRuleResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFilterRuleResponse(
-      action: map['action'] == null ? null : (FirewallPolicyFilterRuleActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      ruleConditions: map['ruleConditions'] == null ? null : (pulumi.Input.decodeList<ApplicationRuleConditionResponse>(map['ruleConditions'], (value) => ApplicationRuleConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      action: map['action'] == null ? null : (FirewallPolicyFilterRuleActionResponse.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      ruleConditions: map['ruleConditions'] == null ? null : (pulumi.Input.decodeList<ApplicationRuleConditionResponse>(map['ruleConditions']!, (value) => ApplicationRuleConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ruleType: (map['ruleType'] as String).input(),
     );
   }

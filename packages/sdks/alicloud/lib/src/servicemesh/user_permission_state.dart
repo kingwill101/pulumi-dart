@@ -27,8 +27,8 @@ class UserPermissionState {
 
   factory UserPermissionState.fromMap(Map<String, dynamic> map) {
     return UserPermissionState(
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<UserPermissionPermission>(map['permissions'], (value) => UserPermissionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subAccountUserId: map['subAccountUserId'] == null ? null : (map['subAccountUserId'] as String).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<UserPermissionPermission>(map['permissions']!, (value) => UserPermissionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subAccountUserId: map['subAccountUserId'] == null ? null : (map['subAccountUserId']! as String).input(),
     );
   }
 }

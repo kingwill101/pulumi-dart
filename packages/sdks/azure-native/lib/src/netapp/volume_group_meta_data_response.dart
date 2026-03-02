@@ -42,10 +42,10 @@ class VolumeGroupMetaDataResponse {
 
   factory VolumeGroupMetaDataResponse.fromMap(Map<String, dynamic> map) {
     return VolumeGroupMetaDataResponse(
-      applicationIdentifier: map['applicationIdentifier'] == null ? null : (map['applicationIdentifier'] as String).input(),
-      applicationType: map['applicationType'] == null ? null : (map['applicationType'] as String).input(),
-      globalPlacementRules: map['globalPlacementRules'] == null ? null : (pulumi.Input.decodeList<PlacementKeyValuePairsResponse>(map['globalPlacementRules'], (value) => PlacementKeyValuePairsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      groupDescription: map['groupDescription'] == null ? null : (map['groupDescription'] as String).input(),
+      applicationIdentifier: map['applicationIdentifier'] == null ? null : (map['applicationIdentifier']! as String).input(),
+      applicationType: map['applicationType'] == null ? null : (map['applicationType']! as String).input(),
+      globalPlacementRules: map['globalPlacementRules'] == null ? null : (pulumi.Input.decodeList<PlacementKeyValuePairsResponse>(map['globalPlacementRules']!, (value) => PlacementKeyValuePairsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupDescription: map['groupDescription'] == null ? null : (map['groupDescription']! as String).input(),
       volumesCount: (map['volumesCount'] as double).input(),
     );
   }

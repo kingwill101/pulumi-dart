@@ -50,12 +50,12 @@ class LeaseCandidateSpec {
 
   factory LeaseCandidateSpec.fromMap(Map<String, dynamic> map) {
     return LeaseCandidateSpec(
-      binaryVersion: map['binaryVersion'] == null ? null : (map['binaryVersion'] as String).input(),
-      emulationVersion: map['emulationVersion'] == null ? null : (map['emulationVersion'] as String).input(),
+      binaryVersion: map['binaryVersion'] == null ? null : (map['binaryVersion']! as String).input(),
+      emulationVersion: map['emulationVersion'] == null ? null : (map['emulationVersion']! as String).input(),
       leaseName: (map['leaseName'] as String).input(),
-      pingTime: map['pingTime'] == null ? null : (map['pingTime'] as String).input(),
+      pingTime: map['pingTime'] == null ? null : (map['pingTime']! as String).input(),
       preferredStrategies: ((map['preferredStrategies'] as List).cast<String>()).input(),
-      renewTime: map['renewTime'] == null ? null : (map['renewTime'] as String).input(),
+      renewTime: map['renewTime'] == null ? null : (map['renewTime']! as String).input(),
     );
   }
 }

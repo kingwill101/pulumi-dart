@@ -26,8 +26,8 @@ class ErrorDetailProperties {
 
   factory ErrorDetailProperties.fromMap(Map<String, dynamic> map) {
     return ErrorDetailProperties(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
     );
   }
 }

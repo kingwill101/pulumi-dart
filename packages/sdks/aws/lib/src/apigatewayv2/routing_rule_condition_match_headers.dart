@@ -21,7 +21,7 @@ class RoutingRuleConditionMatchHeaders {
 
   factory RoutingRuleConditionMatchHeaders.fromMap(Map<String, dynamic> map) {
     return RoutingRuleConditionMatchHeaders(
-      anyOf: (RoutingRuleConditionMatchHeadersAnyOf.fromMap((map['anyOf'] as Map).cast<String, dynamic>())).input(),
+      anyOf: (RoutingRuleConditionMatchHeadersAnyOf.fromMap((map['anyOf']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

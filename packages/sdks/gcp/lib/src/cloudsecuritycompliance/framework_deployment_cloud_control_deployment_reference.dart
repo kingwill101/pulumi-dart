@@ -22,7 +22,7 @@ class FrameworkDeploymentCloudControlDeploymentReference {
 
   factory FrameworkDeploymentCloudControlDeploymentReference.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentCloudControlDeploymentReference(
-      cloudControlDeployment: map['cloudControlDeployment'] == null ? null : (map['cloudControlDeployment'] as String).input(),
+      cloudControlDeployment: map['cloudControlDeployment'] == null ? null : (map['cloudControlDeployment']! as String).input(),
     );
   }
 }

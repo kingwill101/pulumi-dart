@@ -36,7 +36,7 @@ class GetGroupArgs {
     return GetGroupArgs(
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

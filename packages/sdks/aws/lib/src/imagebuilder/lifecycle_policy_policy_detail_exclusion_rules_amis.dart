@@ -41,11 +41,11 @@ class LifecyclePolicyPolicyDetailExclusionRulesAmis {
 
   factory LifecyclePolicyPolicyDetailExclusionRulesAmis.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailExclusionRulesAmis(
-      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
-      lastLaunched: map['lastLaunched'] == null ? null : (LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched.fromMap((map['lastLaunched'] as Map).cast<String, dynamic>())).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      sharedAccounts: map['sharedAccounts'] == null ? null : ((map['sharedAccounts'] as List).cast<String>()).input(),
-      tagMap: map['tagMap'] == null ? null : ((map['tagMap'] as Map).cast<String, String>()).input(),
+      isPublic: map['isPublic'] == null ? null : ((map['isPublic'] as bool).input()).input(),
+      lastLaunched: map['lastLaunched'] == null ? null : ((LifecyclePolicyPolicyDetailExclusionRulesAmisLastLaunched.fromMap((map['lastLaunched']! as Map).cast<String, dynamic>())).input()).input(),
+      regions: map['regions'] == null ? null : (((map['regions'] as List).cast<String>()).input()).input(),
+      sharedAccounts: map['sharedAccounts'] == null ? null : (((map['sharedAccounts'] as List).cast<String>()).input()).input(),
+      tagMap: map['tagMap'] == null ? null : (((map['tagMap'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

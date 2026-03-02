@@ -47,12 +47,12 @@ class EnterpriseCrmEventbusProtoNextTask {
 
   factory EnterpriseCrmEventbusProtoNextTask.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoNextTask(
-      combinedConditions: map['combinedConditions'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmEventbusProtoCombinedCondition>(map['combinedConditions'], (value) => EnterpriseCrmEventbusProtoCombinedCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      taskConfigId: map['taskConfigId'] == null ? null : (map['taskConfigId'] as String).input(),
-      taskNumber: map['taskNumber'] == null ? null : (map['taskNumber'] as String).input(),
+      combinedConditions: map['combinedConditions'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmEventbusProtoCombinedCondition>(map['combinedConditions']!, (value) => EnterpriseCrmEventbusProtoCombinedCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      taskConfigId: map['taskConfigId'] == null ? null : (map['taskConfigId']! as String).input(),
+      taskNumber: map['taskNumber'] == null ? null : (map['taskNumber']! as String).input(),
     );
   }
 }

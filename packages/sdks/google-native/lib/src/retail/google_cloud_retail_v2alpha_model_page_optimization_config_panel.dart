@@ -34,7 +34,7 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel {
     return GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel(
       candidates: (pulumi.Input.decodeList<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate>(map['candidates'], (value) => GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate.fromMap((value as Map).cast<String, dynamic>()))).input(),
       defaultCandidate: (GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate.fromMap((map['defaultCandidate'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

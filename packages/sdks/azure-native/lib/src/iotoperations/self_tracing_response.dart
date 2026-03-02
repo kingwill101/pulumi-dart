@@ -26,8 +26,8 @@ class SelfTracingResponse {
 
   factory SelfTracingResponse.fromMap(Map<String, dynamic> map) {
     return SelfTracingResponse(
-      intervalSeconds: map['intervalSeconds'] == null ? null : (map['intervalSeconds'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      intervalSeconds: map['intervalSeconds'] == null ? null : (map['intervalSeconds']! as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

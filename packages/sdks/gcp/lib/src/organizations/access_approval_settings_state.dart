@@ -66,14 +66,14 @@ class AccessApprovalSettingsState {
 
   factory AccessApprovalSettingsState.fromMap(Map<String, dynamic> map) {
     return AccessApprovalSettingsState(
-      activeKeyVersion: map['activeKeyVersion'] == null ? null : (map['activeKeyVersion'] as String).input(),
-      ancestorHasActiveKeyVersion: map['ancestorHasActiveKeyVersion'] == null ? null : (map['ancestorHasActiveKeyVersion'] as bool).input(),
-      enrolledAncestor: map['enrolledAncestor'] == null ? null : (map['enrolledAncestor'] as bool).input(),
-      enrolledServices: map['enrolledServices'] == null ? null : (pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(map['enrolledServices'], (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      invalidKeyVersion: map['invalidKeyVersion'] == null ? null : (map['invalidKeyVersion'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationEmails: map['notificationEmails'] == null ? null : ((map['notificationEmails'] as List).cast<String>()).input(),
-      organizationId: map['organizationId'] == null ? null : (map['organizationId'] as String).input(),
+      activeKeyVersion: map['activeKeyVersion'] == null ? null : (map['activeKeyVersion']! as String).input(),
+      ancestorHasActiveKeyVersion: map['ancestorHasActiveKeyVersion'] == null ? null : (map['ancestorHasActiveKeyVersion']! as bool).input(),
+      enrolledAncestor: map['enrolledAncestor'] == null ? null : (map['enrolledAncestor']! as bool).input(),
+      enrolledServices: map['enrolledServices'] == null ? null : (pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(map['enrolledServices']!, (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      invalidKeyVersion: map['invalidKeyVersion'] == null ? null : (map['invalidKeyVersion']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationEmails: map['notificationEmails'] == null ? null : ((map['notificationEmails']! as List).cast<String>()).input(),
+      organizationId: map['organizationId'] == null ? null : (map['organizationId']! as String).input(),
     );
   }
 }

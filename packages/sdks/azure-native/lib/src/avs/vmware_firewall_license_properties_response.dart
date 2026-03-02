@@ -58,13 +58,13 @@ class VmwareFirewallLicensePropertiesResponse {
 
   factory VmwareFirewallLicensePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VmwareFirewallLicensePropertiesResponse(
-      broadcomContractNumber: map['broadcomContractNumber'] == null ? null : (map['broadcomContractNumber'] as String).input(),
-      broadcomSiteId: map['broadcomSiteId'] == null ? null : (map['broadcomSiteId'] as String).input(),
+      broadcomContractNumber: map['broadcomContractNumber'] == null ? null : (map['broadcomContractNumber']! as String).input(),
+      broadcomSiteId: map['broadcomSiteId'] == null ? null : (map['broadcomSiteId']! as String).input(),
       cores: (map['cores'] as int).input(),
       endDate: (map['endDate'] as String).input(),
       kind: (map['kind'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<LabelResponse>(map['labels'], (value) => LabelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      licenseKey: map['licenseKey'] == null ? null : (map['licenseKey'] as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<LabelResponse>(map['labels']!, (value) => LabelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      licenseKey: map['licenseKey'] == null ? null : (map['licenseKey']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

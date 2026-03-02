@@ -68,11 +68,11 @@ class TunnelDestGroupIamBindingArgs {
 
   factory TunnelDestGroupIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return TunnelDestGroupIamBindingArgs(
-      condition: map['condition'] == null ? null : (TunnelDestGroupIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (TunnelDestGroupIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       destGroup: (map['destGroup'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

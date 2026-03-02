@@ -37,7 +37,7 @@ class MarketplaceDetailsResponse {
   factory MarketplaceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceDetailsResponse(
       marketplaceSubscriptionId: (map['marketplaceSubscriptionId'] as String).input(),
-      marketplaceSubscriptionStatus: map['marketplaceSubscriptionStatus'] == null ? null : (map['marketplaceSubscriptionStatus'] as String).input(),
+      marketplaceSubscriptionStatus: map['marketplaceSubscriptionStatus'] == null ? null : (map['marketplaceSubscriptionStatus']! as String).input(),
       offerId: (map['offerId'] as String).input(),
       publisherId: (map['publisherId'] as String).input(),
     );

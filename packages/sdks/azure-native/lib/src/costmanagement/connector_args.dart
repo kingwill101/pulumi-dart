@@ -69,16 +69,16 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
-      credentialsKey: map['credentialsKey'] == null ? null : (map['credentialsKey'] as String).input(),
-      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      reportId: map['reportId'] == null ? null : (map['reportId'] as String).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName']! as String).input(),
+      credentialsKey: map['credentialsKey'] == null ? null : (map['credentialsKey']! as String).input(),
+      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      reportId: map['reportId'] == null ? null : (map['reportId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

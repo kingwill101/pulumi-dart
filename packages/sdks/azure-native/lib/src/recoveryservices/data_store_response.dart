@@ -41,11 +41,11 @@ class DataStoreResponse {
 
   factory DataStoreResponse.fromMap(Map<String, dynamic> map) {
     return DataStoreResponse(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as String).input(),
-      freeSpace: map['freeSpace'] == null ? null : (map['freeSpace'] as String).input(),
-      symbolicName: map['symbolicName'] == null ? null : (map['symbolicName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as String).input(),
+      freeSpace: map['freeSpace'] == null ? null : (map['freeSpace']! as String).input(),
+      symbolicName: map['symbolicName'] == null ? null : (map['symbolicName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

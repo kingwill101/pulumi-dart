@@ -83,19 +83,19 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface(
-      accessConfigs: map['accessConfigs'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig>(map['accessConfigs'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aliasIpRanges: map['aliasIpRanges'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange>(map['aliasIpRanges'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      internalIpv6PrefixLength: map['internalIpv6PrefixLength'] == null ? null : (map['internalIpv6PrefixLength'] as int).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      ipv6AccessConfigs: map['ipv6AccessConfigs'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig>(map['ipv6AccessConfigs'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType'] as String).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      networkAttachment: map['networkAttachment'] == null ? null : (map['networkAttachment'] as String).input(),
-      nicType: map['nicType'] == null ? null : (map['nicType'] as String).input(),
-      queueCount: map['queueCount'] == null ? null : (map['queueCount'] as int).input(),
-      stackType: map['stackType'] == null ? null : (map['stackType'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      accessConfigs: map['accessConfigs'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig>(map['accessConfigs']!, (value) => RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aliasIpRanges: map['aliasIpRanges'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange>(map['aliasIpRanges']!, (value) => RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      internalIpv6PrefixLength: map['internalIpv6PrefixLength'] == null ? null : (map['internalIpv6PrefixLength']! as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ipv6AccessConfigs: map['ipv6AccessConfigs'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig>(map['ipv6AccessConfigs']!, (value) => RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType']! as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      networkAttachment: map['networkAttachment'] == null ? null : (map['networkAttachment']! as String).input(),
+      nicType: map['nicType'] == null ? null : (map['nicType']! as String).input(),
+      queueCount: map['queueCount'] == null ? null : (map['queueCount']! as int).input(),
+      stackType: map['stackType'] == null ? null : (map['stackType']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

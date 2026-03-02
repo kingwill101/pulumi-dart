@@ -135,7 +135,7 @@ class MigrationItemPropertiesResponse {
       migrationStateDescription: (map['migrationStateDescription'] as String).input(),
       policyFriendlyName: (map['policyFriendlyName'] as String).input(),
       policyId: (map['policyId'] as String).input(),
-      providerSpecificDetails: map['providerSpecificDetails'] == null ? null : (VMwareCbtMigrationDetailsResponse.fromMap((map['providerSpecificDetails'] as Map).cast<String, dynamic>())).input(),
+      providerSpecificDetails: map['providerSpecificDetails'] == null ? null : (VMwareCbtMigrationDetailsResponse.fromMap((map['providerSpecificDetails']! as Map).cast<String, dynamic>())).input(),
       recoveryServicesProviderId: (map['recoveryServicesProviderId'] as String).input(),
       replicationStatus: (map['replicationStatus'] as String).input(),
       testMigrateState: (map['testMigrateState'] as String).input(),

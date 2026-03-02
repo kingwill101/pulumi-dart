@@ -91,20 +91,20 @@ class WorkloadImpactProperties {
 
   factory WorkloadImpactProperties.fromMap(Map<String, dynamic> map) {
     return WorkloadImpactProperties(
-      additionalProperties: map['additionalProperties'] == null ? null : (map['additionalProperties']).input(),
-      armCorrelationIds: map['armCorrelationIds'] == null ? null : ((map['armCorrelationIds'] as List).cast<String>()).input(),
-      clientIncidentDetails: map['clientIncidentDetails'] == null ? null : (ClientIncidentDetails.fromMap((map['clientIncidentDetails'] as Map).cast<String, dynamic>())).input(),
-      confidenceLevel: map['confidenceLevel'] == null ? null : (map['confidenceLevel'] as String).input(),
-      connectivity: map['connectivity'] == null ? null : (Connectivity.fromMap((map['connectivity'] as Map).cast<String, dynamic>())).input(),
-      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime'] as String).input(),
-      errorDetails: map['errorDetails'] == null ? null : (ErrorDetailProperties.fromMap((map['errorDetails'] as Map).cast<String, dynamic>())).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : (map['additionalProperties']!).input(),
+      armCorrelationIds: map['armCorrelationIds'] == null ? null : ((map['armCorrelationIds']! as List).cast<String>()).input(),
+      clientIncidentDetails: map['clientIncidentDetails'] == null ? null : (ClientIncidentDetails.fromMap((map['clientIncidentDetails']! as Map).cast<String, dynamic>())).input(),
+      confidenceLevel: map['confidenceLevel'] == null ? null : (map['confidenceLevel']! as String).input(),
+      connectivity: map['connectivity'] == null ? null : (Connectivity.fromMap((map['connectivity']! as Map).cast<String, dynamic>())).input(),
+      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime']! as String).input(),
+      errorDetails: map['errorDetails'] == null ? null : (ErrorDetailProperties.fromMap((map['errorDetails']! as Map).cast<String, dynamic>())).input(),
       impactCategory: (map['impactCategory'] as String).input(),
-      impactDescription: map['impactDescription'] == null ? null : (map['impactDescription'] as String).input(),
-      impactGroupId: map['impactGroupId'] == null ? null : (map['impactGroupId'] as String).input(),
+      impactDescription: map['impactDescription'] == null ? null : (map['impactDescription']! as String).input(),
+      impactGroupId: map['impactGroupId'] == null ? null : (map['impactGroupId']! as String).input(),
       impactedResourceId: (map['impactedResourceId'] as String).input(),
-      performance: map['performance'] == null ? null : (pulumi.Input.decodeList<Performance>(map['performance'], (value) => Performance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      performance: map['performance'] == null ? null : (pulumi.Input.decodeList<Performance>(map['performance']!, (value) => Performance.fromMap((value as Map).cast<String, dynamic>()))).input(),
       startDateTime: (map['startDateTime'] as String).input(),
-      workload: map['workload'] == null ? null : (Workload.fromMap((map['workload'] as Map).cast<String, dynamic>())).input(),
+      workload: map['workload'] == null ? null : (Workload.fromMap((map['workload']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -53,10 +53,10 @@ class VolumeQuotaRuleArgs {
 
   factory VolumeQuotaRuleArgs.fromMap(Map<String, dynamic> map) {
     return VolumeQuotaRuleArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       quotaSizeInKib: (map['quotaSizeInKib'] as int).input(),
-      quotaTarget: map['quotaTarget'] == null ? null : (map['quotaTarget'] as String).input(),
+      quotaTarget: map['quotaTarget'] == null ? null : (map['quotaTarget']! as String).input(),
       quotaType: (map['quotaType'] as String).input(),
       volumeId: (map['volumeId'] as String).input(),
     );

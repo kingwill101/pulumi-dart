@@ -28,8 +28,8 @@ class HttpRoute {
 
   factory HttpRoute.fromMap(Map<String, dynamic> map) {
     return HttpRoute(
-      action: map['action'] == null ? null : (HttpRouteAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      match: map['match'] == null ? null : (HttpRouteMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (HttpRouteAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      match: map['match'] == null ? null : (HttpRouteMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

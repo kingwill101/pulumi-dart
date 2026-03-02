@@ -26,8 +26,8 @@ class ProjectBadgeResponse {
 
   factory ProjectBadgeResponse.fromMap(Map<String, dynamic> map) {
     return ProjectBadgeResponse(
-      badgeEnabled: map['badgeEnabled'] == null ? null : (map['badgeEnabled'] as bool).input(),
-      badgeRequestUrl: map['badgeRequestUrl'] == null ? null : (map['badgeRequestUrl'] as String).input(),
+      badgeEnabled: map['badgeEnabled'] == null ? null : (map['badgeEnabled']! as bool).input(),
+      badgeRequestUrl: map['badgeRequestUrl'] == null ? null : (map['badgeRequestUrl']! as String).input(),
     );
   }
 }

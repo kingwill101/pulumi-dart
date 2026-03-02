@@ -31,9 +31,9 @@ class ResourceOptionsType {
 
   factory ResourceOptionsType.fromMap(Map<String, dynamic> map) {
     return ResourceOptionsType(
-      connectVersion: map['connectVersion'] == null ? null : (map['connectVersion'] as String).input(),
-      k8sVersion: map['k8sVersion'] == null ? null : (map['k8sVersion'] as String).input(),
-      v1beta1Crd: map['v1beta1Crd'] == null ? null : (map['v1beta1Crd'] as bool).input(),
+      connectVersion: map['connectVersion'] == null ? null : (map['connectVersion']! as String).input(),
+      k8sVersion: map['k8sVersion'] == null ? null : (map['k8sVersion']! as String).input(),
+      v1beta1Crd: map['v1beta1Crd'] == null ? null : (map['v1beta1Crd']! as bool).input(),
     );
   }
 }

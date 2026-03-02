@@ -45,12 +45,12 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig {
 
   factory DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig.fromMap(Map<String, dynamic> map) {
     return DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig(
-      enableImageAnnotation: map['enableImageAnnotation'] == null ? null : (map['enableImageAnnotation'] as bool).input(),
-      enableTableAnnotation: map['enableTableAnnotation'] == null ? null : (map['enableTableAnnotation'] as bool).input(),
-      excludeHtmlClasses: map['excludeHtmlClasses'] == null ? null : ((map['excludeHtmlClasses'] as List).cast<String>()).input(),
-      excludeHtmlElements: map['excludeHtmlElements'] == null ? null : ((map['excludeHtmlElements'] as List).cast<String>()).input(),
-      excludeHtmlIds: map['excludeHtmlIds'] == null ? null : ((map['excludeHtmlIds'] as List).cast<String>()).input(),
-      structuredContentTypes: map['structuredContentTypes'] == null ? null : ((map['structuredContentTypes'] as List).cast<String>()).input(),
+      enableImageAnnotation: map['enableImageAnnotation'] == null ? null : (map['enableImageAnnotation']! as bool).input(),
+      enableTableAnnotation: map['enableTableAnnotation'] == null ? null : (map['enableTableAnnotation']! as bool).input(),
+      excludeHtmlClasses: map['excludeHtmlClasses'] == null ? null : ((map['excludeHtmlClasses']! as List).cast<String>()).input(),
+      excludeHtmlElements: map['excludeHtmlElements'] == null ? null : ((map['excludeHtmlElements']! as List).cast<String>()).input(),
+      excludeHtmlIds: map['excludeHtmlIds'] == null ? null : ((map['excludeHtmlIds']! as List).cast<String>()).input(),
+      structuredContentTypes: map['structuredContentTypes'] == null ? null : ((map['structuredContentTypes']! as List).cast<String>()).input(),
     );
   }
 }

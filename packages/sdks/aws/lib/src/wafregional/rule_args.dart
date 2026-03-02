@@ -46,10 +46,10 @@ class RuleArgs {
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
       metricName: (map['metricName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      predicates: map['predicates'] == null ? null : (pulumi.Input.decodeList<RulePredicate>(map['predicates'], (value) => RulePredicate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      predicates: map['predicates'] == null ? null : ((pulumi.Input.decodeList<RulePredicate>(map['predicates']!, (value) => RulePredicate.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

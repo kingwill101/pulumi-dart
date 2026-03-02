@@ -30,9 +30,9 @@ class ManagedUserPoolClientTokenValidityUnits {
 
   factory ManagedUserPoolClientTokenValidityUnits.fromMap(Map<String, dynamic> map) {
     return ManagedUserPoolClientTokenValidityUnits(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
-      idToken: map['idToken'] == null ? null : (map['idToken'] as String).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : ((map['accessToken'] as String).input()).input(),
+      idToken: map['idToken'] == null ? null : ((map['idToken'] as String).input()).input(),
+      refreshToken: map['refreshToken'] == null ? null : ((map['refreshToken'] as String).input()).input(),
     );
   }
 }

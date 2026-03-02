@@ -26,8 +26,8 @@ class Schedule {
 
   factory Schedule.fromMap(Map<String, dynamic> map) {
     return Schedule(
-      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule'] as String).input(),
-      paused: map['paused'] == null ? null : (map['paused'] as bool).input(),
+      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule']! as String).input(),
+      paused: map['paused'] == null ? null : (map['paused']! as bool).input(),
     );
   }
 }

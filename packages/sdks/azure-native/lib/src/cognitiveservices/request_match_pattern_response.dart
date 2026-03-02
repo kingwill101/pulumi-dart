@@ -23,8 +23,8 @@ class RequestMatchPatternResponse {
 
   factory RequestMatchPatternResponse.fromMap(Map<String, dynamic> map) {
     return RequestMatchPatternResponse(
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

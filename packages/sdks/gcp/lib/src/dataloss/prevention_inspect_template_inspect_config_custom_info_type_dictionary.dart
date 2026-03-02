@@ -29,8 +29,8 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary {
 
   factory PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary(
-      cloudStoragePath: map['cloudStoragePath'] == null ? null : (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath.fromMap((map['cloudStoragePath'] as Map).cast<String, dynamic>())).input(),
-      wordList: map['wordList'] == null ? null : (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList.fromMap((map['wordList'] as Map).cast<String, dynamic>())).input(),
+      cloudStoragePath: map['cloudStoragePath'] == null ? null : (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath.fromMap((map['cloudStoragePath']! as Map).cast<String, dynamic>())).input(),
+      wordList: map['wordList'] == null ? null : (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList.fromMap((map['wordList']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

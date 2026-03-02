@@ -26,8 +26,8 @@ class VersionSource {
 
   factory VersionSource.fromMap(Map<String, dynamic> map) {
     return VersionSource(
-      mshField: map['mshField'] == null ? null : (map['mshField'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      mshField: map['mshField'] == null ? null : (map['mshField']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class VpnGatewayNatRule {
 
   factory VpnGatewayNatRule.fromMap(Map<String, dynamic> map) {
     return VpnGatewayNatRule(
-      externalMappings: map['externalMappings'] == null ? null : (pulumi.Input.decodeList<VpnNatRuleMapping>(map['externalMappings'], (value) => VpnNatRuleMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      internalMappings: map['internalMappings'] == null ? null : (pulumi.Input.decodeList<VpnNatRuleMapping>(map['internalMappings'], (value) => VpnNatRuleMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipConfigurationId: map['ipConfigurationId'] == null ? null : (map['ipConfigurationId'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      externalMappings: map['externalMappings'] == null ? null : (pulumi.Input.decodeList<VpnNatRuleMapping>(map['externalMappings']!, (value) => VpnNatRuleMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      internalMappings: map['internalMappings'] == null ? null : (pulumi.Input.decodeList<VpnNatRuleMapping>(map['internalMappings']!, (value) => VpnNatRuleMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipConfigurationId: map['ipConfigurationId'] == null ? null : (map['ipConfigurationId']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

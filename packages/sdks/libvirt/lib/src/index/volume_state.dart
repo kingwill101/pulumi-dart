@@ -88,20 +88,20 @@ class VolumeState {
 
   factory VolumeState.fromMap(Map<String, dynamic> map) {
     return VolumeState(
-      allocation: map['allocation'] == null ? null : (map['allocation'] as double).input(),
-      allocationUnit: map['allocationUnit'] == null ? null : (map['allocationUnit'] as String).input(),
-      backingStore: map['backingStore'] == null ? null : (VolumeBackingStore.fromMap((map['backingStore'] as Map).cast<String, dynamic>())).input(),
-      capacity: map['capacity'] == null ? null : (map['capacity'] as double).input(),
-      capacityUnit: map['capacityUnit'] == null ? null : (map['capacityUnit'] as String).input(),
-      create: map['create'] == null ? null : (VolumeCreate.fromMap((map['create'] as Map).cast<String, dynamic>())).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      physical: map['physical'] == null ? null : (map['physical'] as double).input(),
-      physicalUnit: map['physicalUnit'] == null ? null : (map['physicalUnit'] as String).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
-      target: map['target'] == null ? null : (VolumeTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      allocation: map['allocation'] == null ? null : (map['allocation']! as double).input(),
+      allocationUnit: map['allocationUnit'] == null ? null : (map['allocationUnit']! as String).input(),
+      backingStore: map['backingStore'] == null ? null : (VolumeBackingStore.fromMap((map['backingStore']! as Map).cast<String, dynamic>())).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as double).input(),
+      capacityUnit: map['capacityUnit'] == null ? null : (map['capacityUnit']! as String).input(),
+      create: map['create'] == null ? null : (VolumeCreate.fromMap((map['create']! as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      physical: map['physical'] == null ? null : (map['physical']! as double).input(),
+      physicalUnit: map['physicalUnit'] == null ? null : (map['physicalUnit']! as String).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
+      target: map['target'] == null ? null : (VolumeTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

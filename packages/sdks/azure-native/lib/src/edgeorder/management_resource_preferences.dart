@@ -21,7 +21,7 @@ class ManagementResourcePreferences {
 
   factory ManagementResourcePreferences.fromMap(Map<String, dynamic> map) {
     return ManagementResourcePreferences(
-      preferredManagementResourceId: map['preferredManagementResourceId'] == null ? null : (map['preferredManagementResourceId'] as String).input(),
+      preferredManagementResourceId: map['preferredManagementResourceId'] == null ? null : (map['preferredManagementResourceId']! as String).input(),
     );
   }
 }

@@ -34,10 +34,10 @@ class SourceIamPolicyState {
 
   factory SourceIamPolicyState.fromMap(Map<String, dynamic> map) {
     return SourceIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

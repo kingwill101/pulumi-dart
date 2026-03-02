@@ -31,9 +31,9 @@ class SecretAttributes {
 
   factory SecretAttributes.fromMap(Map<String, dynamic> map) {
     return SecretAttributes(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      expires: map['expires'] == null ? null : (map['expires'] as int).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      expires: map['expires'] == null ? null : (map['expires']! as int).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as int).input(),
     );
   }
 }

@@ -113,23 +113,23 @@ class RoutineArgs {
 
   factory RoutineArgs.fromMap(Map<String, dynamic> map) {
     return RoutineArgs(
-      arguments: map['arguments'] == null ? null : (pulumi.Input.decodeList<Argument>(map['arguments'], (value) => Argument.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataGovernanceType: map['dataGovernanceType'] == null ? null : (RoutineDataGovernanceType.fromValue(map['dataGovernanceType'] as String)).input(),
+      arguments: map['arguments'] == null ? null : (pulumi.Input.decodeList<Argument>(map['arguments']!, (value) => Argument.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataGovernanceType: map['dataGovernanceType'] == null ? null : (RoutineDataGovernanceType.fromValue(map['dataGovernanceType']! as String)).input(),
       datasetId: (map['datasetId'] as String).input(),
       definitionBody: (map['definitionBody'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      determinismLevel: map['determinismLevel'] == null ? null : (RoutineDeterminismLevel.fromValue(map['determinismLevel'] as String)).input(),
-      importedLibraries: map['importedLibraries'] == null ? null : ((map['importedLibraries'] as List).cast<String>()).input(),
-      language: map['language'] == null ? null : (RoutineLanguage.fromValue(map['language'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      remoteFunctionOptions: map['remoteFunctionOptions'] == null ? null : (RemoteFunctionOptions.fromMap((map['remoteFunctionOptions'] as Map).cast<String, dynamic>())).input(),
-      returnTableType: map['returnTableType'] == null ? null : (StandardSqlTableType.fromMap((map['returnTableType'] as Map).cast<String, dynamic>())).input(),
-      returnType: map['returnType'] == null ? null : (StandardSqlDataType.fromMap((map['returnType'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      determinismLevel: map['determinismLevel'] == null ? null : (RoutineDeterminismLevel.fromValue(map['determinismLevel']! as String)).input(),
+      importedLibraries: map['importedLibraries'] == null ? null : ((map['importedLibraries']! as List).cast<String>()).input(),
+      language: map['language'] == null ? null : (RoutineLanguage.fromValue(map['language']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      remoteFunctionOptions: map['remoteFunctionOptions'] == null ? null : (RemoteFunctionOptions.fromMap((map['remoteFunctionOptions']! as Map).cast<String, dynamic>())).input(),
+      returnTableType: map['returnTableType'] == null ? null : (StandardSqlTableType.fromMap((map['returnTableType']! as Map).cast<String, dynamic>())).input(),
+      returnType: map['returnType'] == null ? null : (StandardSqlDataType.fromMap((map['returnType']! as Map).cast<String, dynamic>())).input(),
       routineReference: (RoutineReference.fromMap((map['routineReference'] as Map).cast<String, dynamic>())).input(),
       routineType: (RoutineRoutineType.fromValue(map['routineType'] as String)).input(),
-      securityMode: map['securityMode'] == null ? null : (RoutineSecurityMode.fromValue(map['securityMode'] as String)).input(),
-      sparkOptions: map['sparkOptions'] == null ? null : (SparkOptions.fromMap((map['sparkOptions'] as Map).cast<String, dynamic>())).input(),
-      strictMode: map['strictMode'] == null ? null : (map['strictMode'] as bool).input(),
+      securityMode: map['securityMode'] == null ? null : (RoutineSecurityMode.fromValue(map['securityMode']! as String)).input(),
+      sparkOptions: map['sparkOptions'] == null ? null : (SparkOptions.fromMap((map['sparkOptions']! as Map).cast<String, dynamic>())).input(),
+      strictMode: map['strictMode'] == null ? null : (map['strictMode']! as bool).input(),
     );
   }
 }

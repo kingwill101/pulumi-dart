@@ -25,8 +25,8 @@ class CryptoKeyVersionExternalProtectionLevelOptions {
 
   factory CryptoKeyVersionExternalProtectionLevelOptions.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionExternalProtectionLevelOptions(
-      ekmConnectionKeyPath: map['ekmConnectionKeyPath'] == null ? null : (map['ekmConnectionKeyPath'] as String).input(),
-      externalKeyUri: map['externalKeyUri'] == null ? null : (map['externalKeyUri'] as String).input(),
+      ekmConnectionKeyPath: map['ekmConnectionKeyPath'] == null ? null : (map['ekmConnectionKeyPath']! as String).input(),
+      externalKeyUri: map['externalKeyUri'] == null ? null : (map['externalKeyUri']! as String).input(),
     );
   }
 }

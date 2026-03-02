@@ -36,10 +36,10 @@ class LogDestinationPolicyState {
 
   factory LogDestinationPolicyState.fromMap(Map<String, dynamic> map) {
     return LogDestinationPolicyState(
-      accessPolicy: map['accessPolicy'] == null ? null : (map['accessPolicy'] as String).input(),
-      destinationName: map['destinationName'] == null ? null : (map['destinationName'] as String).input(),
-      forceUpdate: map['forceUpdate'] == null ? null : (map['forceUpdate'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accessPolicy: map['accessPolicy'] == null ? null : ((map['accessPolicy'] as String).input()).input(),
+      destinationName: map['destinationName'] == null ? null : ((map['destinationName'] as String).input()).input(),
+      forceUpdate: map['forceUpdate'] == null ? null : ((map['forceUpdate'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

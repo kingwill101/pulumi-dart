@@ -54,11 +54,11 @@ class WorkspaceCertificateArgs {
   factory WorkspaceCertificateArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceCertificateArgs(
       apiManagementWorkspaceId: (map['apiManagementWorkspaceId'] as String).input(),
-      certificateDataBase64: map['certificateDataBase64'] == null ? null : (map['certificateDataBase64'] as String).input(),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      userAssignedIdentityClientId: map['userAssignedIdentityClientId'] == null ? null : (map['userAssignedIdentityClientId'] as String).input(),
+      certificateDataBase64: map['certificateDataBase64'] == null ? null : (map['certificateDataBase64']! as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      userAssignedIdentityClientId: map['userAssignedIdentityClientId'] == null ? null : (map['userAssignedIdentityClientId']! as String).input(),
     );
   }
 }

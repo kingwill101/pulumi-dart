@@ -40,11 +40,11 @@ class V3FunctionLogConfig {
 
   factory V3FunctionLogConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionLogConfig(
-      enableInstanceMetrics: map['enableInstanceMetrics'] == null ? null : (map['enableInstanceMetrics'] as bool).input(),
-      enableRequestMetrics: map['enableRequestMetrics'] == null ? null : (map['enableRequestMetrics'] as bool).input(),
-      logBeginRule: map['logBeginRule'] == null ? null : (map['logBeginRule'] as String).input(),
-      logstore: map['logstore'] == null ? null : (map['logstore'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      enableInstanceMetrics: map['enableInstanceMetrics'] == null ? null : (map['enableInstanceMetrics']! as bool).input(),
+      enableRequestMetrics: map['enableRequestMetrics'] == null ? null : (map['enableRequestMetrics']! as bool).input(),
+      logBeginRule: map['logBeginRule'] == null ? null : (map['logBeginRule']! as String).input(),
+      logstore: map['logstore'] == null ? null : (map['logstore']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

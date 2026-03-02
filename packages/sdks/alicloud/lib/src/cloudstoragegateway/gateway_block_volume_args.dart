@@ -94,21 +94,21 @@ class GatewayBlockVolumeArgs {
 
   factory GatewayBlockVolumeArgs.fromMap(Map<String, dynamic> map) {
     return GatewayBlockVolumeArgs(
-      cacheMode: map['cacheMode'] == null ? null : (map['cacheMode'] as String).input(),
-      chapEnabled: map['chapEnabled'] == null ? null : (map['chapEnabled'] as bool).input(),
-      chapInPassword: map['chapInPassword'] == null ? null : (map['chapInPassword'] as String).input(),
-      chapInUser: map['chapInUser'] == null ? null : (map['chapInUser'] as String).input(),
-      chunkSize: map['chunkSize'] == null ? null : (map['chunkSize'] as int).input(),
+      cacheMode: map['cacheMode'] == null ? null : (map['cacheMode']! as String).input(),
+      chapEnabled: map['chapEnabled'] == null ? null : (map['chapEnabled']! as bool).input(),
+      chapInPassword: map['chapInPassword'] == null ? null : (map['chapInPassword']! as String).input(),
+      chapInUser: map['chapInUser'] == null ? null : (map['chapInUser']! as String).input(),
+      chunkSize: map['chunkSize'] == null ? null : (map['chunkSize']! as int).input(),
       gatewayBlockVolumeName: (map['gatewayBlockVolumeName'] as String).input(),
       gatewayId: (map['gatewayId'] as String).input(),
-      isSourceDeletion: map['isSourceDeletion'] == null ? null : (map['isSourceDeletion'] as bool).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
+      isSourceDeletion: map['isSourceDeletion'] == null ? null : (map['isSourceDeletion']! as bool).input(),
+      localPath: map['localPath'] == null ? null : (map['localPath']! as String).input(),
       ossBucketName: (map['ossBucketName'] as String).input(),
-      ossBucketSsl: map['ossBucketSsl'] == null ? null : (map['ossBucketSsl'] as bool).input(),
+      ossBucketSsl: map['ossBucketSsl'] == null ? null : (map['ossBucketSsl']! as bool).input(),
       ossEndpoint: (map['ossEndpoint'] as String).input(),
       protocol: (map['protocol'] as String).input(),
-      recovery: map['recovery'] == null ? null : (map['recovery'] as bool).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      recovery: map['recovery'] == null ? null : (map['recovery']! as bool).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

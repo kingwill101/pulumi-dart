@@ -36,10 +36,10 @@ class SsisEnvironmentReferenceResponse {
 
   factory SsisEnvironmentReferenceResponse.fromMap(Map<String, dynamic> map) {
     return SsisEnvironmentReferenceResponse(
-      environmentFolderName: map['environmentFolderName'] == null ? null : (map['environmentFolderName'] as String).input(),
-      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as double).input(),
-      referenceType: map['referenceType'] == null ? null : (map['referenceType'] as String).input(),
+      environmentFolderName: map['environmentFolderName'] == null ? null : (map['environmentFolderName']! as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
+      referenceType: map['referenceType'] == null ? null : (map['referenceType']! as String).input(),
     );
   }
 }

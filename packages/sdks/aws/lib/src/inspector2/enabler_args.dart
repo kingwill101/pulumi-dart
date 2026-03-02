@@ -38,7 +38,7 @@ class EnablerArgs {
   factory EnablerArgs.fromMap(Map<String, dynamic> map) {
     return EnablerArgs(
       accountIds: ((map['accountIds'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
     );
   }

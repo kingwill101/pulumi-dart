@@ -44,10 +44,10 @@ class WorkloadNetworkPublicIPArgs {
 
   factory WorkloadNetworkPublicIPArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkPublicIPArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      numberOfPublicIPs: map['numberOfPublicIPs'] == null ? null : (map['numberOfPublicIPs'] as double).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      numberOfPublicIPs: map['numberOfPublicIPs'] == null ? null : (map['numberOfPublicIPs']! as double).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
-      publicIPId: map['publicIPId'] == null ? null : (map['publicIPId'] as String).input(),
+      publicIPId: map['publicIPId'] == null ? null : (map['publicIPId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

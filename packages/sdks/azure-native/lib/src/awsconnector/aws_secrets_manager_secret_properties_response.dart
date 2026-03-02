@@ -59,14 +59,14 @@ class AwsSecretsManagerSecretPropertiesResponse {
 
   factory AwsSecretsManagerSecretPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsSecretsManagerSecretPropertiesResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      generateSecretString: map['generateSecretString'] == null ? null : (GenerateSecretStringResponse.fromMap((map['generateSecretString'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      replicaRegions: map['replicaRegions'] == null ? null : (pulumi.Input.decodeList<ReplicaRegionResponse>(map['replicaRegions'], (value) => ReplicaRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secretString: map['secretString'] == null ? null : (map['secretString'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      generateSecretString: map['generateSecretString'] == null ? null : (GenerateSecretStringResponse.fromMap((map['generateSecretString']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      replicaRegions: map['replicaRegions'] == null ? null : (pulumi.Input.decodeList<ReplicaRegionResponse>(map['replicaRegions']!, (value) => ReplicaRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secretString: map['secretString'] == null ? null : (map['secretString']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

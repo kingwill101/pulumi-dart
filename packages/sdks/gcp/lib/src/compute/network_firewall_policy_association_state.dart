@@ -42,11 +42,11 @@ class NetworkFirewallPolicyAssociationState {
 
   factory NetworkFirewallPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyAssociationState(
-      attachmentTarget: map['attachmentTarget'] == null ? null : (map['attachmentTarget'] as String).input(),
-      firewallPolicy: map['firewallPolicy'] == null ? null : (map['firewallPolicy'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
+      attachmentTarget: map['attachmentTarget'] == null ? null : (map['attachmentTarget']! as String).input(),
+      firewallPolicy: map['firewallPolicy'] == null ? null : (map['firewallPolicy']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName']! as String).input(),
     );
   }
 }

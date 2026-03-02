@@ -43,10 +43,10 @@ class SourceNumericFilter {
   factory SourceNumericFilter.fromMap(Map<String, dynamic> map) {
     return SourceNumericFilter(
       numericFilterOption: (SourceNumericFilterNumericFilterOption.fromValue(map['numericFilterOption'] as String)).input(),
-      sourceMaxPrecisionFilter: map['sourceMaxPrecisionFilter'] == null ? null : (map['sourceMaxPrecisionFilter'] as int).input(),
-      sourceMaxScaleFilter: map['sourceMaxScaleFilter'] == null ? null : (map['sourceMaxScaleFilter'] as int).input(),
-      sourceMinPrecisionFilter: map['sourceMinPrecisionFilter'] == null ? null : (map['sourceMinPrecisionFilter'] as int).input(),
-      sourceMinScaleFilter: map['sourceMinScaleFilter'] == null ? null : (map['sourceMinScaleFilter'] as int).input(),
+      sourceMaxPrecisionFilter: map['sourceMaxPrecisionFilter'] == null ? null : (map['sourceMaxPrecisionFilter']! as int).input(),
+      sourceMaxScaleFilter: map['sourceMaxScaleFilter'] == null ? null : (map['sourceMaxScaleFilter']! as int).input(),
+      sourceMinPrecisionFilter: map['sourceMinPrecisionFilter'] == null ? null : (map['sourceMinPrecisionFilter']! as int).input(),
+      sourceMinScaleFilter: map['sourceMinScaleFilter'] == null ? null : (map['sourceMinScaleFilter']! as int).input(),
     );
   }
 }

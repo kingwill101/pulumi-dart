@@ -33,7 +33,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfiguration(
       logDriver: (map['logDriver'] as String).input(),
       options: ((map['options'] as Map).cast<String, String>()).input(),
-      secretOptions: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption>(map['secretOptions'], (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secretOptions: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption>(map['secretOptions']!, (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerLogConfigurationSecretOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

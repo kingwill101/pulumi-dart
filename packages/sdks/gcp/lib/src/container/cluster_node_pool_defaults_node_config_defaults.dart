@@ -37,10 +37,10 @@ class ClusterNodePoolDefaultsNodeConfigDefaults {
 
   factory ClusterNodePoolDefaultsNodeConfigDefaults.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolDefaultsNodeConfigDefaults(
-      containerdConfig: map['containerdConfig'] == null ? null : (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig.fromMap((map['containerdConfig'] as Map).cast<String, dynamic>())).input(),
-      gcfsConfig: map['gcfsConfig'] == null ? null : (ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig.fromMap((map['gcfsConfig'] as Map).cast<String, dynamic>())).input(),
-      insecureKubeletReadonlyPortEnabled: map['insecureKubeletReadonlyPortEnabled'] == null ? null : (map['insecureKubeletReadonlyPortEnabled'] as String).input(),
-      loggingVariant: map['loggingVariant'] == null ? null : (map['loggingVariant'] as String).input(),
+      containerdConfig: map['containerdConfig'] == null ? null : (ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig.fromMap((map['containerdConfig']! as Map).cast<String, dynamic>())).input(),
+      gcfsConfig: map['gcfsConfig'] == null ? null : (ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig.fromMap((map['gcfsConfig']! as Map).cast<String, dynamic>())).input(),
+      insecureKubeletReadonlyPortEnabled: map['insecureKubeletReadonlyPortEnabled'] == null ? null : (map['insecureKubeletReadonlyPortEnabled']! as String).input(),
+      loggingVariant: map['loggingVariant'] == null ? null : (map['loggingVariant']! as String).input(),
     );
   }
 }

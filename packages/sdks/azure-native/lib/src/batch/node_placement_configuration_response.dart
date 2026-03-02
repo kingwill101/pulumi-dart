@@ -21,7 +21,7 @@ class NodePlacementConfigurationResponse {
 
   factory NodePlacementConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NodePlacementConfigurationResponse(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
     );
   }
 }

@@ -59,12 +59,12 @@ class GetMongoDBResourceMongoRoleDefinitionResult {
   factory GetMongoDBResourceMongoRoleDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetMongoDBResourceMongoRoleDefinitionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
+      databaseName: map['databaseName'] == null ? null : map['databaseName']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      privileges: map['privileges'] == null ? null : pulumi.Input.decodeList<PrivilegeResponse>(map['privileges'], (value) => PrivilegeResponse.fromMap((value as Map).cast<String, dynamic>())),
-      roleName: map['roleName'] == null ? null : map['roleName'] as String,
-      roles: map['roles'] == null ? null : pulumi.Input.decodeList<RoleResponse>(map['roles'], (value) => RoleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      privileges: map['privileges'] == null ? null : pulumi.Input.decodeList<PrivilegeResponse>(map['privileges']!, (value) => PrivilegeResponse.fromMap((value as Map).cast<String, dynamic>())),
+      roleName: map['roleName'] == null ? null : map['roleName']! as String,
+      roles: map['roles'] == null ? null : pulumi.Input.decodeList<RoleResponse>(map['roles']!, (value) => RoleResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

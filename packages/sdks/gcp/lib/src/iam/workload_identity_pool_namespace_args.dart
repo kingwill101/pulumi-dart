@@ -55,9 +55,9 @@ class WorkloadIdentityPoolNamespaceArgs {
 
   factory WorkloadIdentityPoolNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolNamespaceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
       workloadIdentityPoolNamespaceId: (map['workloadIdentityPoolNamespaceId'] as String).input(),
     );

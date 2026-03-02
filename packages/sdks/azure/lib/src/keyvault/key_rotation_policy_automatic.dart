@@ -25,8 +25,8 @@ class KeyRotationPolicyAutomatic {
 
   factory KeyRotationPolicyAutomatic.fromMap(Map<String, dynamic> map) {
     return KeyRotationPolicyAutomatic(
-      timeAfterCreation: map['timeAfterCreation'] == null ? null : (map['timeAfterCreation'] as String).input(),
-      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : (map['timeBeforeExpiry'] as String).input(),
+      timeAfterCreation: map['timeAfterCreation'] == null ? null : (map['timeAfterCreation']! as String).input(),
+      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : (map['timeBeforeExpiry']! as String).input(),
     );
   }
 }

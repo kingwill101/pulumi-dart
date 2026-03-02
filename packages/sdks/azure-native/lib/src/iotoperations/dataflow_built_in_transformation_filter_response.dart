@@ -36,10 +36,10 @@ class DataflowBuiltInTransformationFilterResponse {
 
   factory DataflowBuiltInTransformationFilterResponse.fromMap(Map<String, dynamic> map) {
     return DataflowBuiltInTransformationFilterResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       inputs: ((map['inputs'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

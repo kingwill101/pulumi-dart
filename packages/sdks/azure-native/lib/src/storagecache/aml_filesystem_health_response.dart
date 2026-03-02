@@ -31,9 +31,9 @@ class AmlFilesystemHealthResponse {
 
   factory AmlFilesystemHealthResponse.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemHealthResponse(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
-      statusDescription: map['statusDescription'] == null ? null : (map['statusDescription'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as String).input(),
+      statusDescription: map['statusDescription'] == null ? null : (map['statusDescription']! as String).input(),
     );
   }
 }

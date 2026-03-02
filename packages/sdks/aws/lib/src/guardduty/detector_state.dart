@@ -57,14 +57,14 @@ class DetectorState {
 
   factory DetectorState.fromMap(Map<String, dynamic> map) {
     return DetectorState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      datasources: map['datasources'] == null ? null : (DetectorDatasources.fromMap((map['datasources'] as Map).cast<String, dynamic>())).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      findingPublishingFrequency: map['findingPublishingFrequency'] == null ? null : (map['findingPublishingFrequency'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      datasources: map['datasources'] == null ? null : ((DetectorDatasources.fromMap((map['datasources']! as Map).cast<String, dynamic>())).input()).input(),
+      enable: map['enable'] == null ? null : ((map['enable'] as bool).input()).input(),
+      findingPublishingFrequency: map['findingPublishingFrequency'] == null ? null : ((map['findingPublishingFrequency'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

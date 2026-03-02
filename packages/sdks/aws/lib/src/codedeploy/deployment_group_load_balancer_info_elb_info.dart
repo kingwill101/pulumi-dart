@@ -20,7 +20,7 @@ class DeploymentGroupLoadBalancerInfoElbInfo {
 
   factory DeploymentGroupLoadBalancerInfoElbInfo.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupLoadBalancerInfoElbInfo(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

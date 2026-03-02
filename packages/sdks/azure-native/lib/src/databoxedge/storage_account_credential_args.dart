@@ -75,17 +75,17 @@ class StorageAccountCredentialArgs {
 
   factory StorageAccountCredentialArgs.fromMap(Map<String, dynamic> map) {
     return StorageAccountCredentialArgs(
-      accountKey: map['accountKey'] == null ? null : (AsymmetricEncryptedSecret.fromMap((map['accountKey'] as Map).cast<String, dynamic>())).input(),
+      accountKey: map['accountKey'] == null ? null : (AsymmetricEncryptedSecret.fromMap((map['accountKey']! as Map).cast<String, dynamic>())).input(),
       accountType: (map['accountType'] as String).input(),
       alias: (map['alias'] as String).input(),
-      blobDomainName: map['blobDomainName'] == null ? null : (map['blobDomainName'] as String).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      blobDomainName: map['blobDomainName'] == null ? null : (map['blobDomainName']! as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
       deviceName: (map['deviceName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sslStatus: (map['sslStatus'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

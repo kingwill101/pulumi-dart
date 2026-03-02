@@ -58,14 +58,14 @@ class VaultState {
 
   factory VaultState.fromMap(Map<String, dynamic> map) {
     return VaultState(
-      accessPolicy: map['accessPolicy'] == null ? null : (map['accessPolicy'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notification: map['notification'] == null ? null : (VaultNotification.fromMap((map['notification'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      accessPolicy: map['accessPolicy'] == null ? null : ((map['accessPolicy'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      notification: map['notification'] == null ? null : ((VaultNotification.fromMap((map['notification']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

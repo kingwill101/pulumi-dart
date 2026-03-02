@@ -31,9 +31,9 @@ class AzureFileVolumeSourcePatch {
 
   factory AzureFileVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return AzureFileVolumeSourcePatch(
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStateme
 
   factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null ? null : (RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
-      sensitivityLevel: map['sensitivityLevel'] == null ? null : (map['sensitivityLevel'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementTextTransformation>(map['textTransformations'], (value) => RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
+      sensitivityLevel: map['sensitivityLevel'] == null ? null : ((map['sensitivityLevel'] as String).input()).input(),
+      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

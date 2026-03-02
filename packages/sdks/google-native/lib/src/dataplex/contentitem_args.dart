@@ -64,14 +64,14 @@ class ContentitemArgs {
   factory ContentitemArgs.fromMap(Map<String, dynamic> map) {
     return ContentitemArgs(
       dataText: (map['dataText'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       lakeId: (map['lakeId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      notebook: map['notebook'] == null ? null : (GoogleCloudDataplexV1ContentNotebook.fromMap((map['notebook'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      notebook: map['notebook'] == null ? null : (GoogleCloudDataplexV1ContentNotebook.fromMap((map['notebook']! as Map).cast<String, dynamic>())).input(),
       path: (map['path'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sqlScript: map['sqlScript'] == null ? null : (GoogleCloudDataplexV1ContentSqlScript.fromMap((map['sqlScript'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sqlScript: map['sqlScript'] == null ? null : (GoogleCloudDataplexV1ContentSqlScript.fromMap((map['sqlScript']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

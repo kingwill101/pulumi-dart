@@ -47,12 +47,12 @@ class DataSourceConfigurationS3Configuration {
 
   factory DataSourceConfigurationS3Configuration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationS3Configuration(
-      accessControlListConfiguration: map['accessControlListConfiguration'] == null ? null : (DataSourceConfigurationS3ConfigurationAccessControlListConfiguration.fromMap((map['accessControlListConfiguration'] as Map).cast<String, dynamic>())).input(),
+      accessControlListConfiguration: map['accessControlListConfiguration'] == null ? null : ((DataSourceConfigurationS3ConfigurationAccessControlListConfiguration.fromMap((map['accessControlListConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       bucketName: (map['bucketName'] as String).input(),
-      documentsMetadataConfiguration: map['documentsMetadataConfiguration'] == null ? null : (DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration.fromMap((map['documentsMetadataConfiguration'] as Map).cast<String, dynamic>())).input(),
-      exclusionPatterns: map['exclusionPatterns'] == null ? null : ((map['exclusionPatterns'] as List).cast<String>()).input(),
-      inclusionPatterns: map['inclusionPatterns'] == null ? null : ((map['inclusionPatterns'] as List).cast<String>()).input(),
-      inclusionPrefixes: map['inclusionPrefixes'] == null ? null : ((map['inclusionPrefixes'] as List).cast<String>()).input(),
+      documentsMetadataConfiguration: map['documentsMetadataConfiguration'] == null ? null : ((DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration.fromMap((map['documentsMetadataConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      exclusionPatterns: map['exclusionPatterns'] == null ? null : (((map['exclusionPatterns'] as List).cast<String>()).input()).input(),
+      inclusionPatterns: map['inclusionPatterns'] == null ? null : (((map['inclusionPatterns'] as List).cast<String>()).input()).input(),
+      inclusionPrefixes: map['inclusionPrefixes'] == null ? null : (((map['inclusionPrefixes'] as List).cast<String>()).input()).input(),
     );
   }
 }

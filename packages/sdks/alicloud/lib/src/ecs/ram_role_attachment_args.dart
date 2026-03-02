@@ -35,7 +35,7 @@ class RamRoleAttachmentArgs {
   factory RamRoleAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return RamRoleAttachmentArgs(
       instanceId: (map['instanceId'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
       ramRoleName: (map['ramRoleName'] as String).input(),
     );
   }

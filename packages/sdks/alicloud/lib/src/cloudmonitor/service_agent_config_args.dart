@@ -26,7 +26,7 @@ class ServiceAgentConfigArgs {
 
   factory ServiceAgentConfigArgs.fromMap(Map<String, dynamic> map) {
     return ServiceAgentConfigArgs(
-      enableInstallAgentNewEcs: map['enableInstallAgentNewEcs'] == null ? null : (map['enableInstallAgentNewEcs'] as bool).input(),
+      enableInstallAgentNewEcs: map['enableInstallAgentNewEcs'] == null ? null : (map['enableInstallAgentNewEcs']! as bool).input(),
     );
   }
 }

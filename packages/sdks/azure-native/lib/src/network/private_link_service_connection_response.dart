@@ -63,13 +63,13 @@ class PrivateLinkServiceConnectionResponse {
   factory PrivateLinkServiceConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionResponse(
       etag: (map['etag'] as String).input(),
-      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
-      privateLinkServiceId: map['privateLinkServiceId'] == null ? null : (map['privateLinkServiceId'] as String).input(),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
+      privateLinkServiceId: map['privateLinkServiceId'] == null ? null : (map['privateLinkServiceId']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

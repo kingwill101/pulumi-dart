@@ -37,10 +37,10 @@ class StructuredResourceHandlePatch {
 
   factory StructuredResourceHandlePatch.fromMap(Map<String, dynamic> map) {
     return StructuredResourceHandlePatch(
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      results: map['results'] == null ? null : (pulumi.Input.decodeList<DriverAllocationResultPatch>(map['results'], (value) => DriverAllocationResultPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vendorClaimParameters: map['vendorClaimParameters'] == null ? null : (map['vendorClaimParameters']).input(),
-      vendorClassParameters: map['vendorClassParameters'] == null ? null : (map['vendorClassParameters']).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      results: map['results'] == null ? null : (pulumi.Input.decodeList<DriverAllocationResultPatch>(map['results']!, (value) => DriverAllocationResultPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vendorClaimParameters: map['vendorClaimParameters'] == null ? null : (map['vendorClaimParameters']!).input(),
+      vendorClassParameters: map['vendorClassParameters'] == null ? null : (map['vendorClassParameters']!).input(),
     );
   }
 }

@@ -48,11 +48,11 @@ class DataConnectorMicrosoftCloudAppSecurityArgs {
 
   factory DataConnectorMicrosoftCloudAppSecurityArgs.fromMap(Map<String, dynamic> map) {
     return DataConnectorMicrosoftCloudAppSecurityArgs(
-      alertsEnabled: map['alertsEnabled'] == null ? null : (map['alertsEnabled'] as bool).input(),
-      discoveryLogsEnabled: map['discoveryLogsEnabled'] == null ? null : (map['discoveryLogsEnabled'] as bool).input(),
+      alertsEnabled: map['alertsEnabled'] == null ? null : (map['alertsEnabled']! as bool).input(),
+      discoveryLogsEnabled: map['discoveryLogsEnabled'] == null ? null : (map['discoveryLogsEnabled']! as bool).input(),
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

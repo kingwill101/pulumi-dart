@@ -35,10 +35,10 @@ class MonitorPlan {
 
   factory MonitorPlan.fromMap(Map<String, dynamic> map) {
     return MonitorPlan(
-      billingCycle: map['billingCycle'] == null ? null : (map['billingCycle'] as String).input(),
-      effectiveDate: map['effectiveDate'] == null ? null : (map['effectiveDate'] as String).input(),
+      billingCycle: map['billingCycle'] == null ? null : (map['billingCycle']! as String).input(),
+      effectiveDate: map['effectiveDate'] == null ? null : (map['effectiveDate']! as String).input(),
       plan: (map['plan'] as String).input(),
-      usageType: map['usageType'] == null ? null : (map['usageType'] as String).input(),
+      usageType: map['usageType'] == null ? null : (map['usageType']! as String).input(),
     );
   }
 }

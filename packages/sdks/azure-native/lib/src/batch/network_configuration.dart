@@ -44,11 +44,11 @@ class NetworkConfiguration {
 
   factory NetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkConfiguration(
-      dynamicVnetAssignmentScope: map['dynamicVnetAssignmentScope'] == null ? null : (DynamicVNetAssignmentScope.fromValue(map['dynamicVnetAssignmentScope'] as String)).input(),
-      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking'] as bool).input(),
-      endpointConfiguration: map['endpointConfiguration'] == null ? null : (PoolEndpointConfiguration.fromMap((map['endpointConfiguration'] as Map).cast<String, dynamic>())).input(),
-      publicIPAddressConfiguration: map['publicIPAddressConfiguration'] == null ? null : (PublicIPAddressConfiguration.fromMap((map['publicIPAddressConfiguration'] as Map).cast<String, dynamic>())).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      dynamicVnetAssignmentScope: map['dynamicVnetAssignmentScope'] == null ? null : (DynamicVNetAssignmentScope.fromValue(map['dynamicVnetAssignmentScope']! as String)).input(),
+      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking']! as bool).input(),
+      endpointConfiguration: map['endpointConfiguration'] == null ? null : (PoolEndpointConfiguration.fromMap((map['endpointConfiguration']! as Map).cast<String, dynamic>())).input(),
+      publicIPAddressConfiguration: map['publicIPAddressConfiguration'] == null ? null : (PublicIPAddressConfiguration.fromMap((map['publicIPAddressConfiguration']! as Map).cast<String, dynamic>())).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

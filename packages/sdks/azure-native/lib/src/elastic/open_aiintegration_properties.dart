@@ -31,9 +31,9 @@ class OpenAIIntegrationProperties {
 
   factory OpenAIIntegrationProperties.fromMap(Map<String, dynamic> map) {
     return OpenAIIntegrationProperties(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      openAIResourceEndpoint: map['openAIResourceEndpoint'] == null ? null : (map['openAIResourceEndpoint'] as String).input(),
-      openAIResourceId: map['openAIResourceId'] == null ? null : (map['openAIResourceId'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      openAIResourceEndpoint: map['openAIResourceEndpoint'] == null ? null : (map['openAIResourceEndpoint']! as String).input(),
+      openAIResourceId: map['openAIResourceId'] == null ? null : (map['openAIResourceId']! as String).input(),
     );
   }
 }

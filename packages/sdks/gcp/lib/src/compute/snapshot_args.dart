@@ -114,19 +114,19 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      chainName: map['chainName'] == null ? null : (map['chainName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      guestFlush: map['guestFlush'] == null ? null : (map['guestFlush'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      snapshotEncryptionKey: map['snapshotEncryptionKey'] == null ? null : (SnapshotSnapshotEncryptionKey.fromMap((map['snapshotEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType'] as String).input(),
-      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk'] as String).input(),
-      sourceDiskEncryptionKey: map['sourceDiskEncryptionKey'] == null ? null : (SnapshotSourceDiskEncryptionKey.fromMap((map['sourceDiskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      sourceInstantSnapshot: map['sourceInstantSnapshot'] == null ? null : (map['sourceInstantSnapshot'] as String).input(),
-      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations'] as List).cast<String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      chainName: map['chainName'] == null ? null : (map['chainName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      guestFlush: map['guestFlush'] == null ? null : (map['guestFlush']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      snapshotEncryptionKey: map['snapshotEncryptionKey'] == null ? null : (SnapshotSnapshotEncryptionKey.fromMap((map['snapshotEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType']! as String).input(),
+      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk']! as String).input(),
+      sourceDiskEncryptionKey: map['sourceDiskEncryptionKey'] == null ? null : (SnapshotSourceDiskEncryptionKey.fromMap((map['sourceDiskEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      sourceInstantSnapshot: map['sourceInstantSnapshot'] == null ? null : (map['sourceInstantSnapshot']! as String).input(),
+      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations']! as List).cast<String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

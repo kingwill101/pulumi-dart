@@ -44,7 +44,7 @@ class InfrastructureResourceArgs {
 
   factory InfrastructureResourceArgs.fromMap(Map<String, dynamic> map) {
     return InfrastructureResourceArgs(
-      infrastructureResourceName: map['infrastructureResourceName'] == null ? null : (map['infrastructureResourceName'] as String).input(),
+      infrastructureResourceName: map['infrastructureResourceName'] == null ? null : (map['infrastructureResourceName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceId: (map['resourceId'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),

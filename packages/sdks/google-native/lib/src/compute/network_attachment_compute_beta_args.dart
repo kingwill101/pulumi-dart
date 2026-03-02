@@ -62,15 +62,15 @@ class NetworkAttachmentComputeBetaArgs {
 
   factory NetworkAttachmentComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAttachmentComputeBetaArgs(
-      connectionPreference: map['connectionPreference'] == null ? null : (NetworkAttachmentConnectionPreferenceComputeBeta.fromValue(map['connectionPreference'] as String)).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      producerAcceptLists: map['producerAcceptLists'] == null ? null : ((map['producerAcceptLists'] as List).cast<String>()).input(),
-      producerRejectLists: map['producerRejectLists'] == null ? null : ((map['producerRejectLists'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      connectionPreference: map['connectionPreference'] == null ? null : (NetworkAttachmentConnectionPreferenceComputeBeta.fromValue(map['connectionPreference']! as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      producerAcceptLists: map['producerAcceptLists'] == null ? null : ((map['producerAcceptLists']! as List).cast<String>()).input(),
+      producerRejectLists: map['producerRejectLists'] == null ? null : ((map['producerRejectLists']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      subnetworks: map['subnetworks'] == null ? null : ((map['subnetworks'] as List).cast<String>()).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      subnetworks: map['subnetworks'] == null ? null : ((map['subnetworks']! as List).cast<String>()).input(),
     );
   }
 }

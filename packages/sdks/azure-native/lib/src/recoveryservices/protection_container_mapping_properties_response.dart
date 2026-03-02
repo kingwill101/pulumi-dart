@@ -73,17 +73,17 @@ class ProtectionContainerMappingPropertiesResponse {
 
   factory ProtectionContainerMappingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProtectionContainerMappingPropertiesResponse(
-      health: map['health'] == null ? null : (map['health'] as String).input(),
-      healthErrorDetails: map['healthErrorDetails'] == null ? null : (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrorDetails'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      policyFriendlyName: map['policyFriendlyName'] == null ? null : (map['policyFriendlyName'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      providerSpecificDetails: map['providerSpecificDetails'] == null ? null : (A2AProtectionContainerMappingDetailsResponse.fromMap((map['providerSpecificDetails'] as Map).cast<String, dynamic>())).input(),
-      sourceFabricFriendlyName: map['sourceFabricFriendlyName'] == null ? null : (map['sourceFabricFriendlyName'] as String).input(),
-      sourceProtectionContainerFriendlyName: map['sourceProtectionContainerFriendlyName'] == null ? null : (map['sourceProtectionContainerFriendlyName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      targetFabricFriendlyName: map['targetFabricFriendlyName'] == null ? null : (map['targetFabricFriendlyName'] as String).input(),
-      targetProtectionContainerFriendlyName: map['targetProtectionContainerFriendlyName'] == null ? null : (map['targetProtectionContainerFriendlyName'] as String).input(),
-      targetProtectionContainerId: map['targetProtectionContainerId'] == null ? null : (map['targetProtectionContainerId'] as String).input(),
+      health: map['health'] == null ? null : (map['health']! as String).input(),
+      healthErrorDetails: map['healthErrorDetails'] == null ? null : (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrorDetails']!, (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyFriendlyName: map['policyFriendlyName'] == null ? null : (map['policyFriendlyName']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      providerSpecificDetails: map['providerSpecificDetails'] == null ? null : (A2AProtectionContainerMappingDetailsResponse.fromMap((map['providerSpecificDetails']! as Map).cast<String, dynamic>())).input(),
+      sourceFabricFriendlyName: map['sourceFabricFriendlyName'] == null ? null : (map['sourceFabricFriendlyName']! as String).input(),
+      sourceProtectionContainerFriendlyName: map['sourceProtectionContainerFriendlyName'] == null ? null : (map['sourceProtectionContainerFriendlyName']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      targetFabricFriendlyName: map['targetFabricFriendlyName'] == null ? null : (map['targetFabricFriendlyName']! as String).input(),
+      targetProtectionContainerFriendlyName: map['targetProtectionContainerFriendlyName'] == null ? null : (map['targetProtectionContainerFriendlyName']! as String).input(),
+      targetProtectionContainerId: map['targetProtectionContainerId'] == null ? null : (map['targetProtectionContainerId']! as String).input(),
     );
   }
 }

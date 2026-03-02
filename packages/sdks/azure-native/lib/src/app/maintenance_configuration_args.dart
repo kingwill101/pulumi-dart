@@ -40,7 +40,7 @@ class MaintenanceConfigurationArgs {
 
   factory MaintenanceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceConfigurationArgs(
-      configName: map['configName'] == null ? null : (map['configName'] as String).input(),
+      configName: map['configName'] == null ? null : (map['configName']! as String).input(),
       environmentName: (map['environmentName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scheduledEntries: (pulumi.Input.decodeList<ScheduledEntry>(map['scheduledEntries'], (value) => ScheduledEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),

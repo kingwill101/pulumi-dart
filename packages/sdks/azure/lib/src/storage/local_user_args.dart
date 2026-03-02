@@ -56,12 +56,12 @@ class LocalUserArgs {
 
   factory LocalUserArgs.fromMap(Map<String, dynamic> map) {
     return LocalUserArgs(
-      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissionScopes: map['permissionScopes'] == null ? null : (pulumi.Input.decodeList<LocalUserPermissionScope>(map['permissionScopes'], (value) => LocalUserPermissionScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sshAuthorizedKeys: map['sshAuthorizedKeys'] == null ? null : (pulumi.Input.decodeList<LocalUserSshAuthorizedKey>(map['sshAuthorizedKeys'], (value) => LocalUserSshAuthorizedKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sshKeyEnabled: map['sshKeyEnabled'] == null ? null : (map['sshKeyEnabled'] as bool).input(),
-      sshPasswordEnabled: map['sshPasswordEnabled'] == null ? null : (map['sshPasswordEnabled'] as bool).input(),
+      homeDirectory: map['homeDirectory'] == null ? null : (map['homeDirectory']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      permissionScopes: map['permissionScopes'] == null ? null : (pulumi.Input.decodeList<LocalUserPermissionScope>(map['permissionScopes']!, (value) => LocalUserPermissionScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sshAuthorizedKeys: map['sshAuthorizedKeys'] == null ? null : (pulumi.Input.decodeList<LocalUserSshAuthorizedKey>(map['sshAuthorizedKeys']!, (value) => LocalUserSshAuthorizedKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sshKeyEnabled: map['sshKeyEnabled'] == null ? null : (map['sshKeyEnabled']! as bool).input(),
+      sshPasswordEnabled: map['sshPasswordEnabled'] == null ? null : (map['sshPasswordEnabled']! as bool).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }

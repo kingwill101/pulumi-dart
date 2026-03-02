@@ -35,8 +35,8 @@ class VpcBlockPublicAccessOptionsArgs {
   factory VpcBlockPublicAccessOptionsArgs.fromMap(Map<String, dynamic> map) {
     return VpcBlockPublicAccessOptionsArgs(
       internetGatewayBlockMode: (map['internetGatewayBlockMode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (VpcBlockPublicAccessOptionsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((VpcBlockPublicAccessOptionsTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -63,15 +63,15 @@ class PortfolioShareState {
 
   factory PortfolioShareState.fromMap(Map<String, dynamic> map) {
     return PortfolioShareState(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
-      accepted: map['accepted'] == null ? null : (map['accepted'] as bool).input(),
-      portfolioId: map['portfolioId'] == null ? null : (map['portfolioId'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sharePrincipals: map['sharePrincipals'] == null ? null : (map['sharePrincipals'] as bool).input(),
-      shareTagOptions: map['shareTagOptions'] == null ? null : (map['shareTagOptions'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      waitForAcceptance: map['waitForAcceptance'] == null ? null : (map['waitForAcceptance'] as bool).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
+      accepted: map['accepted'] == null ? null : ((map['accepted'] as bool).input()).input(),
+      portfolioId: map['portfolioId'] == null ? null : ((map['portfolioId'] as String).input()).input(),
+      principalId: map['principalId'] == null ? null : ((map['principalId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sharePrincipals: map['sharePrincipals'] == null ? null : ((map['sharePrincipals'] as bool).input()).input(),
+      shareTagOptions: map['shareTagOptions'] == null ? null : ((map['shareTagOptions'] as bool).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      waitForAcceptance: map['waitForAcceptance'] == null ? null : ((map['waitForAcceptance'] as bool).input()).input(),
     );
   }
 }

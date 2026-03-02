@@ -39,10 +39,10 @@ class RouteSpecHttpRouteRetryPolicy {
 
   factory RouteSpecHttpRouteRetryPolicy.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttpRouteRetryPolicy(
-      httpRetryEvents: map['httpRetryEvents'] == null ? null : ((map['httpRetryEvents'] as List).cast<String>()).input(),
+      httpRetryEvents: map['httpRetryEvents'] == null ? null : (((map['httpRetryEvents'] as List).cast<String>()).input()).input(),
       maxRetries: (map['maxRetries'] as int).input(),
-      perRetryTimeout: (RouteSpecHttpRouteRetryPolicyPerRetryTimeout.fromMap((map['perRetryTimeout'] as Map).cast<String, dynamic>())).input(),
-      tcpRetryEvents: map['tcpRetryEvents'] == null ? null : ((map['tcpRetryEvents'] as List).cast<String>()).input(),
+      perRetryTimeout: (RouteSpecHttpRouteRetryPolicyPerRetryTimeout.fromMap((map['perRetryTimeout']! as Map).cast<String, dynamic>())).input(),
+      tcpRetryEvents: map['tcpRetryEvents'] == null ? null : (((map['tcpRetryEvents'] as List).cast<String>()).input()).input(),
     );
   }
 }

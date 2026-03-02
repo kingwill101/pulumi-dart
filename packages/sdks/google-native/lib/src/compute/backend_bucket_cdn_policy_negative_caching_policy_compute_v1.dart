@@ -26,8 +26,8 @@ class BackendBucketCdnPolicyNegativeCachingPolicyComputeV1 {
 
   factory BackendBucketCdnPolicyNegativeCachingPolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return BackendBucketCdnPolicyNegativeCachingPolicyComputeV1(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
     );
   }
 }

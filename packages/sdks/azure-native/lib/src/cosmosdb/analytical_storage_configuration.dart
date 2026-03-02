@@ -21,7 +21,7 @@ class AnalyticalStorageConfiguration {
 
   factory AnalyticalStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return AnalyticalStorageConfiguration(
-      schemaType: map['schemaType'] == null ? null : (map['schemaType'] as String).input(),
+      schemaType: map['schemaType'] == null ? null : (map['schemaType']! as String).input(),
     );
   }
 }

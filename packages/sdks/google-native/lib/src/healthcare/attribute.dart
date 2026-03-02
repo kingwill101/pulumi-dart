@@ -26,7 +26,7 @@ class Attribute {
 
   factory Attribute.fromMap(Map<String, dynamic> map) {
     return Attribute(
-      attributeDefinitionId: map['attributeDefinitionId'] == null ? null : (map['attributeDefinitionId'] as String).input(),
+      attributeDefinitionId: map['attributeDefinitionId'] == null ? null : (map['attributeDefinitionId']! as String).input(),
       values: ((map['values'] as List).cast<String>()).input(),
     );
   }

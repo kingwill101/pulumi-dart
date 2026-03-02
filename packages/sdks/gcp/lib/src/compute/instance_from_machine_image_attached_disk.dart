@@ -60,14 +60,14 @@ class InstanceFromMachineImageAttachedDisk {
 
   factory InstanceFromMachineImageAttachedDisk.fromMap(Map<String, dynamic> map) {
     return InstanceFromMachineImageAttachedDisk(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      diskEncryptionKeyRaw: map['diskEncryptionKeyRaw'] == null ? null : (map['diskEncryptionKeyRaw'] as String).input(),
-      diskEncryptionKeyRsa: map['diskEncryptionKeyRsa'] == null ? null : (map['diskEncryptionKeyRsa'] as String).input(),
-      diskEncryptionKeySha256: map['diskEncryptionKeySha256'] == null ? null : (map['diskEncryptionKeySha256'] as String).input(),
-      diskEncryptionServiceAccount: map['diskEncryptionServiceAccount'] == null ? null : (map['diskEncryptionServiceAccount'] as String).input(),
-      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach'] as bool).input(),
-      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      diskEncryptionKeyRaw: map['diskEncryptionKeyRaw'] == null ? null : (map['diskEncryptionKeyRaw']! as String).input(),
+      diskEncryptionKeyRsa: map['diskEncryptionKeyRsa'] == null ? null : (map['diskEncryptionKeyRsa']! as String).input(),
+      diskEncryptionKeySha256: map['diskEncryptionKeySha256'] == null ? null : (map['diskEncryptionKeySha256']! as String).input(),
+      diskEncryptionServiceAccount: map['diskEncryptionServiceAccount'] == null ? null : (map['diskEncryptionServiceAccount']! as String).input(),
+      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach']! as bool).input(),
+      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
       source: (map['source'] as String).input(),
     );
   }

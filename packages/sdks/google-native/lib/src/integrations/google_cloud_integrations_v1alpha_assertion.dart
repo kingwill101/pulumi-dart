@@ -38,10 +38,10 @@ class GoogleCloudIntegrationsV1alphaAssertion {
 
   factory GoogleCloudIntegrationsV1alphaAssertion.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaAssertion(
-      assertionStrategy: map['assertionStrategy'] == null ? null : (GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy.fromValue(map['assertionStrategy'] as String)).input(),
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      parameter: map['parameter'] == null ? null : (GoogleCloudIntegrationsV1alphaEventParameter.fromMap((map['parameter'] as Map).cast<String, dynamic>())).input(),
-      retryCount: map['retryCount'] == null ? null : (map['retryCount'] as int).input(),
+      assertionStrategy: map['assertionStrategy'] == null ? null : (GoogleCloudIntegrationsV1alphaAssertionAssertionStrategy.fromValue(map['assertionStrategy']! as String)).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      parameter: map['parameter'] == null ? null : (GoogleCloudIntegrationsV1alphaEventParameter.fromMap((map['parameter']! as Map).cast<String, dynamic>())).input(),
+      retryCount: map['retryCount'] == null ? null : (map['retryCount']! as int).input(),
     );
   }
 }

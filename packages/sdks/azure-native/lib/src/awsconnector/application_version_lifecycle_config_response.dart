@@ -28,8 +28,8 @@ class ApplicationVersionLifecycleConfigResponse {
 
   factory ApplicationVersionLifecycleConfigResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationVersionLifecycleConfigResponse(
-      maxAgeRule: map['maxAgeRule'] == null ? null : (MaxAgeRuleResponse.fromMap((map['maxAgeRule'] as Map).cast<String, dynamic>())).input(),
-      maxCountRule: map['maxCountRule'] == null ? null : (MaxCountRuleResponse.fromMap((map['maxCountRule'] as Map).cast<String, dynamic>())).input(),
+      maxAgeRule: map['maxAgeRule'] == null ? null : (MaxAgeRuleResponse.fromMap((map['maxAgeRule']! as Map).cast<String, dynamic>())).input(),
+      maxCountRule: map['maxCountRule'] == null ? null : (MaxCountRuleResponse.fromMap((map['maxCountRule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -40,8 +40,8 @@ class GetHcVpnGatewayArgs {
   factory GetHcVpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetHcVpnGatewayArgs(
       name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

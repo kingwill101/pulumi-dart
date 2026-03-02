@@ -64,15 +64,15 @@ class EvidenceArgs {
 
   factory EvidenceArgs.fromMap(Map<String, dynamic> map) {
     return EvidenceArgs(
-      controlId: map['controlId'] == null ? null : (map['controlId'] as String).input(),
-      evidenceName: map['evidenceName'] == null ? null : (map['evidenceName'] as String).input(),
-      evidenceType: map['evidenceType'] == null ? null : (map['evidenceType'] as String).input(),
-      extraData: map['extraData'] == null ? null : (map['extraData'] as String).input(),
+      controlId: map['controlId'] == null ? null : (map['controlId']! as String).input(),
+      evidenceName: map['evidenceName'] == null ? null : (map['evidenceName']! as String).input(),
+      evidenceType: map['evidenceType'] == null ? null : (map['evidenceType']! as String).input(),
+      extraData: map['extraData'] == null ? null : (map['extraData']! as String).input(),
       filePath: (map['filePath'] as String).input(),
-      offerGuid: map['offerGuid'] == null ? null : (map['offerGuid'] as String).input(),
-      reportCreatorTenantId: map['reportCreatorTenantId'] == null ? null : (map['reportCreatorTenantId'] as String).input(),
+      offerGuid: map['offerGuid'] == null ? null : (map['offerGuid']! as String).input(),
+      reportCreatorTenantId: map['reportCreatorTenantId'] == null ? null : (map['reportCreatorTenantId']! as String).input(),
       reportName: (map['reportName'] as String).input(),
-      responsibilityId: map['responsibilityId'] == null ? null : (map['responsibilityId'] as String).input(),
+      responsibilityId: map['responsibilityId'] == null ? null : (map['responsibilityId']! as String).input(),
     );
   }
 }

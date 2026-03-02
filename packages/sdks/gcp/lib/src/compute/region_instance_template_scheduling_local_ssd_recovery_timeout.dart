@@ -29,7 +29,7 @@ class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
 
   factory RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout(
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
       seconds: (map['seconds'] as int).input(),
     );
   }

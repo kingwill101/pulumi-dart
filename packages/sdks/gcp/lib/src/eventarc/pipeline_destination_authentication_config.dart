@@ -35,8 +35,8 @@ class PipelineDestinationAuthenticationConfig {
 
   factory PipelineDestinationAuthenticationConfig.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationAuthenticationConfig(
-      googleOidc: map['googleOidc'] == null ? null : (PipelineDestinationAuthenticationConfigGoogleOidc.fromMap((map['googleOidc'] as Map).cast<String, dynamic>())).input(),
-      oauthToken: map['oauthToken'] == null ? null : (PipelineDestinationAuthenticationConfigOauthToken.fromMap((map['oauthToken'] as Map).cast<String, dynamic>())).input(),
+      googleOidc: map['googleOidc'] == null ? null : (PipelineDestinationAuthenticationConfigGoogleOidc.fromMap((map['googleOidc']! as Map).cast<String, dynamic>())).input(),
+      oauthToken: map['oauthToken'] == null ? null : (PipelineDestinationAuthenticationConfigOauthToken.fromMap((map['oauthToken']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

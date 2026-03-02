@@ -76,18 +76,18 @@ class BucketLifecycleRuleItemCondition {
 
   factory BucketLifecycleRuleItemCondition.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleItemCondition(
-      age: map['age'] == null ? null : (map['age'] as int).input(),
-      createdBefore: map['createdBefore'] == null ? null : (map['createdBefore'] as String).input(),
-      customTimeBefore: map['customTimeBefore'] == null ? null : (map['customTimeBefore'] as String).input(),
-      daysSinceCustomTime: map['daysSinceCustomTime'] == null ? null : (map['daysSinceCustomTime'] as int).input(),
-      daysSinceNoncurrentTime: map['daysSinceNoncurrentTime'] == null ? null : (map['daysSinceNoncurrentTime'] as int).input(),
-      isLive: map['isLive'] == null ? null : (map['isLive'] as bool).input(),
-      matchesPattern: map['matchesPattern'] == null ? null : (map['matchesPattern'] as String).input(),
-      matchesPrefix: map['matchesPrefix'] == null ? null : ((map['matchesPrefix'] as List).cast<String>()).input(),
-      matchesStorageClass: map['matchesStorageClass'] == null ? null : ((map['matchesStorageClass'] as List).cast<String>()).input(),
-      matchesSuffix: map['matchesSuffix'] == null ? null : ((map['matchesSuffix'] as List).cast<String>()).input(),
-      noncurrentTimeBefore: map['noncurrentTimeBefore'] == null ? null : (map['noncurrentTimeBefore'] as String).input(),
-      numNewerVersions: map['numNewerVersions'] == null ? null : (map['numNewerVersions'] as int).input(),
+      age: map['age'] == null ? null : (map['age']! as int).input(),
+      createdBefore: map['createdBefore'] == null ? null : (map['createdBefore']! as String).input(),
+      customTimeBefore: map['customTimeBefore'] == null ? null : (map['customTimeBefore']! as String).input(),
+      daysSinceCustomTime: map['daysSinceCustomTime'] == null ? null : (map['daysSinceCustomTime']! as int).input(),
+      daysSinceNoncurrentTime: map['daysSinceNoncurrentTime'] == null ? null : (map['daysSinceNoncurrentTime']! as int).input(),
+      isLive: map['isLive'] == null ? null : (map['isLive']! as bool).input(),
+      matchesPattern: map['matchesPattern'] == null ? null : (map['matchesPattern']! as String).input(),
+      matchesPrefix: map['matchesPrefix'] == null ? null : ((map['matchesPrefix']! as List).cast<String>()).input(),
+      matchesStorageClass: map['matchesStorageClass'] == null ? null : ((map['matchesStorageClass']! as List).cast<String>()).input(),
+      matchesSuffix: map['matchesSuffix'] == null ? null : ((map['matchesSuffix']! as List).cast<String>()).input(),
+      noncurrentTimeBefore: map['noncurrentTimeBefore'] == null ? null : (map['noncurrentTimeBefore']! as String).input(),
+      numNewerVersions: map['numNewerVersions'] == null ? null : (map['numNewerVersions']! as int).input(),
     );
   }
 }

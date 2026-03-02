@@ -61,13 +61,13 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      automount: map['automount'] == null ? null : (map['automount'] as bool).input(),
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      automount: map['automount'] == null ? null : (map['automount']! as bool).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
       size: (map['size'] as int).input(),
     );
   }

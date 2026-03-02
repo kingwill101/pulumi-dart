@@ -64,15 +64,15 @@ class EventEndpointState {
 
   factory EventEndpointState.fromMap(Map<String, dynamic> map) {
     return EventEndpointState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl'] as String).input(),
-      eventBuses: map['eventBuses'] == null ? null : (pulumi.Input.decodeList<EventEndpointEventBus>(map['eventBuses'], (value) => EventEndpointEventBus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replicationConfig: map['replicationConfig'] == null ? null : (EventEndpointReplicationConfig.fromMap((map['replicationConfig'] as Map).cast<String, dynamic>())).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      routingConfig: map['routingConfig'] == null ? null : (EventEndpointRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      endpointUrl: map['endpointUrl'] == null ? null : ((map['endpointUrl'] as String).input()).input(),
+      eventBuses: map['eventBuses'] == null ? null : ((pulumi.Input.decodeList<EventEndpointEventBus>(map['eventBuses']!, (value) => EventEndpointEventBus.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replicationConfig: map['replicationConfig'] == null ? null : ((EventEndpointReplicationConfig.fromMap((map['replicationConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      routingConfig: map['routingConfig'] == null ? null : ((EventEndpointRoutingConfig.fromMap((map['routingConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

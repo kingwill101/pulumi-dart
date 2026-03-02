@@ -64,12 +64,12 @@ class FactoryVSTSConfiguration {
     return FactoryVSTSConfiguration(
       accountName: (map['accountName'] as String).input(),
       collaborationBranch: (map['collaborationBranch'] as String).input(),
-      disablePublish: map['disablePublish'] == null ? null : (map['disablePublish'] as bool).input(),
-      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId'] as String).input(),
+      disablePublish: map['disablePublish'] == null ? null : (map['disablePublish']! as bool).input(),
+      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       repositoryName: (map['repositoryName'] as String).input(),
       rootFolder: (map['rootFolder'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

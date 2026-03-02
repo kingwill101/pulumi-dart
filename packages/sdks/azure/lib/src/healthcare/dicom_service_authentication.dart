@@ -26,8 +26,8 @@ class DicomServiceAuthentication {
 
   factory DicomServiceAuthentication.fromMap(Map<String, dynamic> map) {
     return DicomServiceAuthentication(
-      audiences: map['audiences'] == null ? null : ((map['audiences'] as List).cast<String>()).input(),
-      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
+      audiences: map['audiences'] == null ? null : ((map['audiences']! as List).cast<String>()).input(),
+      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
     );
   }
 }

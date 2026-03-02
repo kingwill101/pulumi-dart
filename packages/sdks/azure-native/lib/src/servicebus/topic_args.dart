@@ -90,20 +90,20 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      autoDeleteOnIdle: map['autoDeleteOnIdle'] == null ? null : (map['autoDeleteOnIdle'] as String).input(),
-      defaultMessageTimeToLive: map['defaultMessageTimeToLive'] == null ? null : (map['defaultMessageTimeToLive'] as String).input(),
-      duplicateDetectionHistoryTimeWindow: map['duplicateDetectionHistoryTimeWindow'] == null ? null : (map['duplicateDetectionHistoryTimeWindow'] as String).input(),
-      enableBatchedOperations: map['enableBatchedOperations'] == null ? null : (map['enableBatchedOperations'] as bool).input(),
-      enableExpress: map['enableExpress'] == null ? null : (map['enableExpress'] as bool).input(),
-      enablePartitioning: map['enablePartitioning'] == null ? null : (map['enablePartitioning'] as bool).input(),
-      maxMessageSizeInKilobytes: map['maxMessageSizeInKilobytes'] == null ? null : (map['maxMessageSizeInKilobytes'] as double).input(),
-      maxSizeInMegabytes: map['maxSizeInMegabytes'] == null ? null : (map['maxSizeInMegabytes'] as int).input(),
+      autoDeleteOnIdle: map['autoDeleteOnIdle'] == null ? null : (map['autoDeleteOnIdle']! as String).input(),
+      defaultMessageTimeToLive: map['defaultMessageTimeToLive'] == null ? null : (map['defaultMessageTimeToLive']! as String).input(),
+      duplicateDetectionHistoryTimeWindow: map['duplicateDetectionHistoryTimeWindow'] == null ? null : (map['duplicateDetectionHistoryTimeWindow']! as String).input(),
+      enableBatchedOperations: map['enableBatchedOperations'] == null ? null : (map['enableBatchedOperations']! as bool).input(),
+      enableExpress: map['enableExpress'] == null ? null : (map['enableExpress']! as bool).input(),
+      enablePartitioning: map['enablePartitioning'] == null ? null : (map['enablePartitioning']! as bool).input(),
+      maxMessageSizeInKilobytes: map['maxMessageSizeInKilobytes'] == null ? null : (map['maxMessageSizeInKilobytes']! as double).input(),
+      maxSizeInMegabytes: map['maxSizeInMegabytes'] == null ? null : (map['maxSizeInMegabytes']! as int).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      requiresDuplicateDetection: map['requiresDuplicateDetection'] == null ? null : (map['requiresDuplicateDetection'] as bool).input(),
+      requiresDuplicateDetection: map['requiresDuplicateDetection'] == null ? null : (map['requiresDuplicateDetection']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      status: map['status'] == null ? null : (EntityStatus.fromValue(map['status'] as String)).input(),
-      supportOrdering: map['supportOrdering'] == null ? null : (map['supportOrdering'] as bool).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
+      status: map['status'] == null ? null : (EntityStatus.fromValue(map['status']! as String)).input(),
+      supportOrdering: map['supportOrdering'] == null ? null : (map['supportOrdering']! as bool).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
     );
   }
 }

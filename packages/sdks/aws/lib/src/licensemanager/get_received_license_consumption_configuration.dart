@@ -31,8 +31,8 @@ class GetReceivedLicenseConsumptionConfiguration {
 
   factory GetReceivedLicenseConsumptionConfiguration.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseConsumptionConfiguration(
-      borrowConfigurations: (pulumi.Input.decodeList<GetReceivedLicenseConsumptionConfigurationBorrowConfiguration>(map['borrowConfigurations'], (value) => GetReceivedLicenseConsumptionConfigurationBorrowConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisionalConfigurations: (pulumi.Input.decodeList<GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration>(map['provisionalConfigurations'], (value) => GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      borrowConfigurations: (pulumi.Input.decodeList<GetReceivedLicenseConsumptionConfigurationBorrowConfiguration>(map['borrowConfigurations']!, (value) => GetReceivedLicenseConsumptionConfigurationBorrowConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisionalConfigurations: (pulumi.Input.decodeList<GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration>(map['provisionalConfigurations']!, (value) => GetReceivedLicenseConsumptionConfigurationProvisionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       renewType: (map['renewType'] as String).input(),
     );
   }

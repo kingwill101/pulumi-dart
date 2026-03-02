@@ -27,8 +27,8 @@ class CertificateTemplatePassthroughExtensions {
 
   factory CertificateTemplatePassthroughExtensions.fromMap(Map<String, dynamic> map) {
     return CertificateTemplatePassthroughExtensions(
-      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<CertificateTemplatePassthroughExtensionsAdditionalExtension>(map['additionalExtensions'], (value) => CertificateTemplatePassthroughExtensionsAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      knownExtensions: map['knownExtensions'] == null ? null : ((map['knownExtensions'] as List).cast<String>()).input(),
+      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<CertificateTemplatePassthroughExtensionsAdditionalExtension>(map['additionalExtensions']!, (value) => CertificateTemplatePassthroughExtensionsAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      knownExtensions: map['knownExtensions'] == null ? null : ((map['knownExtensions']! as List).cast<String>()).input(),
     );
   }
 }

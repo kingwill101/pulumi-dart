@@ -60,13 +60,13 @@ class GetCustomRoutingAcceleratorResult {
   factory GetCustomRoutingAcceleratorResult.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingAcceleratorResult(
       arn: map['arn'] as String,
-      attributes: pulumi.Input.decodeList<GetCustomRoutingAcceleratorAttribute>(map['attributes'], (value) => GetCustomRoutingAcceleratorAttribute.fromMap((value as Map).cast<String, dynamic>())),
+      attributes: pulumi.Input.decodeList<GetCustomRoutingAcceleratorAttribute>(map['attributes']!, (value) => GetCustomRoutingAcceleratorAttribute.fromMap((value as Map).cast<String, dynamic>())),
       dnsName: map['dnsName'] as String,
       enabled: map['enabled'] as bool,
       hostedZoneId: map['hostedZoneId'] as String,
       id: map['id'] as String,
       ipAddressType: map['ipAddressType'] as String,
-      ipSets: pulumi.Input.decodeList<GetCustomRoutingAcceleratorIpSet>(map['ipSets'], (value) => GetCustomRoutingAcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>())),
+      ipSets: pulumi.Input.decodeList<GetCustomRoutingAcceleratorIpSet>(map['ipSets']!, (value) => GetCustomRoutingAcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );

@@ -20,7 +20,7 @@ class RouterBgpPeerCustomLearnedIpRangeComputeBeta {
 
   factory RouterBgpPeerCustomLearnedIpRangeComputeBeta.fromMap(Map<String, dynamic> map) {
     return RouterBgpPeerCustomLearnedIpRangeComputeBeta(
-      range: map['range'] == null ? null : (map['range'] as String).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
     );
   }
 }

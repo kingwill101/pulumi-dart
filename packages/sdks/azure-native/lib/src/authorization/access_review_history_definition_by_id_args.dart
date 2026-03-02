@@ -62,14 +62,14 @@ class AccessReviewHistoryDefinitionByIdArgs {
 
   factory AccessReviewHistoryDefinitionByIdArgs.fromMap(Map<String, dynamic> map) {
     return AccessReviewHistoryDefinitionByIdArgs(
-      decisions: map['decisions'] == null ? null : ((map['decisions'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      historyDefinitionId: map['historyDefinitionId'] == null ? null : (map['historyDefinitionId'] as String).input(),
-      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<AccessReviewHistoryInstance>(map['instances'], (value) => AccessReviewHistoryInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      range: map['range'] == null ? null : (AccessReviewRecurrenceRange.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
-      scopes: map['scopes'] == null ? null : (pulumi.Input.decodeList<AccessReviewScope>(map['scopes'], (value) => AccessReviewScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      decisions: map['decisions'] == null ? null : ((map['decisions']! as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      historyDefinitionId: map['historyDefinitionId'] == null ? null : (map['historyDefinitionId']! as String).input(),
+      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<AccessReviewHistoryInstance>(map['instances']!, (value) => AccessReviewHistoryInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      range: map['range'] == null ? null : (AccessReviewRecurrenceRange.fromMap((map['range']! as Map).cast<String, dynamic>())).input(),
+      scopes: map['scopes'] == null ? null : (pulumi.Input.decodeList<AccessReviewScope>(map['scopes']!, (value) => AccessReviewScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

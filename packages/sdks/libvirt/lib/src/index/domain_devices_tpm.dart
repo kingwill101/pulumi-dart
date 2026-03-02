@@ -43,11 +43,11 @@ class DomainDevicesTpm {
 
   factory DomainDevicesTpm.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpm(
-      acpi: map['acpi'] == null ? null : (DomainDevicesTpmAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesTpmAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      backend: map['backend'] == null ? null : (DomainDevicesTpmBackend.fromMap((map['backend'] as Map).cast<String, dynamic>())).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesTpmAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesTpmAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      backend: map['backend'] == null ? null : (DomainDevicesTpmBackend.fromMap((map['backend']! as Map).cast<String, dynamic>())).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
     );
   }
 }

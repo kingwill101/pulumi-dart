@@ -43,10 +43,10 @@ class DiskSourceSnapshotEncryptionKey {
 
   factory DiskSourceSnapshotEncryptionKey.fromMap(Map<String, dynamic> map) {
     return DiskSourceSnapshotEncryptionKey(
-      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink'] as String).input(),
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount'] as String).input(),
-      rawKey: map['rawKey'] == null ? null : (map['rawKey'] as String).input(),
-      sha256: map['sha256'] == null ? null : (map['sha256'] as String).input(),
+      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink']! as String).input(),
+      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount']! as String).input(),
+      rawKey: map['rawKey'] == null ? null : (map['rawKey']! as String).input(),
+      sha256: map['sha256'] == null ? null : (map['sha256']! as String).input(),
     );
   }
 }

@@ -41,10 +41,10 @@ class PolicyDefinitionGroupResponse {
 
   factory PolicyDefinitionGroupResponse.fromMap(Map<String, dynamic> map) {
     return PolicyDefinitionGroupResponse(
-      additionalMetadataId: map['additionalMetadataId'] == null ? null : (map['additionalMetadataId'] as String).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      additionalMetadataId: map['additionalMetadataId'] == null ? null : (map['additionalMetadataId']! as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

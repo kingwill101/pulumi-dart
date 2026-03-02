@@ -43,11 +43,11 @@ class ValidationDetailsResponse {
 
   factory ValidationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ValidationDetailsResponse(
-      dbLevelValidationDetails: map['dbLevelValidationDetails'] == null ? null : (pulumi.Input.decodeList<DbLevelValidationStatusResponse>(map['dbLevelValidationDetails'], (value) => DbLevelValidationStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serverLevelValidationDetails: map['serverLevelValidationDetails'] == null ? null : (pulumi.Input.decodeList<ValidationSummaryItemResponse>(map['serverLevelValidationDetails'], (value) => ValidationSummaryItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      validationEndTimeInUtc: map['validationEndTimeInUtc'] == null ? null : (map['validationEndTimeInUtc'] as String).input(),
-      validationStartTimeInUtc: map['validationStartTimeInUtc'] == null ? null : (map['validationStartTimeInUtc'] as String).input(),
+      dbLevelValidationDetails: map['dbLevelValidationDetails'] == null ? null : (pulumi.Input.decodeList<DbLevelValidationStatusResponse>(map['dbLevelValidationDetails']!, (value) => DbLevelValidationStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serverLevelValidationDetails: map['serverLevelValidationDetails'] == null ? null : (pulumi.Input.decodeList<ValidationSummaryItemResponse>(map['serverLevelValidationDetails']!, (value) => ValidationSummaryItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      validationEndTimeInUtc: map['validationEndTimeInUtc'] == null ? null : (map['validationEndTimeInUtc']! as String).input(),
+      validationStartTimeInUtc: map['validationStartTimeInUtc'] == null ? null : (map['validationStartTimeInUtc']! as String).input(),
     );
   }
 }

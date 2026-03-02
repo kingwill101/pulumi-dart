@@ -59,13 +59,13 @@ class L2IsolationDomainArgs {
 
   factory L2IsolationDomainArgs.fromMap(Map<String, dynamic> map) {
     return L2IsolationDomainArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
-      l2IsolationDomainName: map['l2IsolationDomainName'] == null ? null : (map['l2IsolationDomainName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
+      l2IsolationDomainName: map['l2IsolationDomainName'] == null ? null : (map['l2IsolationDomainName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
       networkFabricId: (map['networkFabricId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vlanId: (map['vlanId'] as int).input(),
     );
   }

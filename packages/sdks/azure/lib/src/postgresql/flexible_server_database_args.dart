@@ -39,9 +39,9 @@ class FlexibleServerDatabaseArgs {
 
   factory FlexibleServerDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleServerDatabaseArgs(
-      charset: map['charset'] == null ? null : (map['charset'] as String).input(),
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      charset: map['charset'] == null ? null : (map['charset']! as String).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       serverId: (map['serverId'] as String).input(),
     );
   }

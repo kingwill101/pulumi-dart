@@ -27,7 +27,7 @@ class FrontendResponse {
   factory FrontendResponse.fromMap(Map<String, dynamic> map) {
     return FrontendResponse(
       replicas: (map['replicas'] as int).input(),
-      workers: map['workers'] == null ? null : (map['workers'] as int).input(),
+      workers: map['workers'] == null ? null : (map['workers']! as int).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ManagedEnvironmentResponsePeerAuthentication {
 
   factory ManagedEnvironmentResponsePeerAuthentication.fromMap(Map<String, dynamic> map) {
     return ManagedEnvironmentResponsePeerAuthentication(
-      mtls: map['mtls'] == null ? null : (MtlsResponse.fromMap((map['mtls'] as Map).cast<String, dynamic>())).input(),
+      mtls: map['mtls'] == null ? null : (MtlsResponse.fromMap((map['mtls']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

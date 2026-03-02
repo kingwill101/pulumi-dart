@@ -22,7 +22,7 @@ class GeneratorSummarizationContextFewShotExampleConversationContext {
 
   factory GeneratorSummarizationContextFewShotExampleConversationContext.fromMap(Map<String, dynamic> map) {
     return GeneratorSummarizationContextFewShotExampleConversationContext(
-      messageEntries: map['messageEntries'] == null ? null : (pulumi.Input.decodeList<GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry>(map['messageEntries'], (value) => GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      messageEntries: map['messageEntries'] == null ? null : (pulumi.Input.decodeList<GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry>(map['messageEntries']!, (value) => GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

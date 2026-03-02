@@ -47,12 +47,12 @@ class ServerGroupAttachmentState {
 
   factory ServerGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return ServerGroupAttachmentState(
-      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach'] as bool).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId'] as String).input(),
-      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach']! as bool).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId']! as String).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

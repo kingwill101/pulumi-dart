@@ -26,8 +26,8 @@ class EncryptionConfig {
 
   factory EncryptionConfig.fromMap(Map<String, dynamic> map) {
     return EncryptionConfig(
-      gcePdKmsKeyName: map['gcePdKmsKeyName'] == null ? null : (map['gcePdKmsKeyName'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      gcePdKmsKeyName: map['gcePdKmsKeyName'] == null ? null : (map['gcePdKmsKeyName']! as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
     );
   }
 }

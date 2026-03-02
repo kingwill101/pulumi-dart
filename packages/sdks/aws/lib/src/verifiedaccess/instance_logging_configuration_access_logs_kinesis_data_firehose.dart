@@ -25,7 +25,7 @@ class InstanceLoggingConfigurationAccessLogsKinesisDataFirehose {
 
   factory InstanceLoggingConfigurationAccessLogsKinesisDataFirehose.fromMap(Map<String, dynamic> map) {
     return InstanceLoggingConfigurationAccessLogsKinesisDataFirehose(
-      deliveryStream: map['deliveryStream'] == null ? null : (map['deliveryStream'] as String).input(),
+      deliveryStream: map['deliveryStream'] == null ? null : ((map['deliveryStream'] as String).input()).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

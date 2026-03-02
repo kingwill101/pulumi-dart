@@ -48,9 +48,9 @@ class FleetHubProfileResponse {
 
   factory FleetHubProfileResponse.fromMap(Map<String, dynamic> map) {
     return FleetHubProfileResponse(
-      agentProfile: map['agentProfile'] == null ? null : (AgentProfileResponse.fromMap((map['agentProfile'] as Map).cast<String, dynamic>())).input(),
-      apiServerAccessProfile: map['apiServerAccessProfile'] == null ? null : (APIServerAccessProfileResponse.fromMap((map['apiServerAccessProfile'] as Map).cast<String, dynamic>())).input(),
-      dnsPrefix: map['dnsPrefix'] == null ? null : (map['dnsPrefix'] as String).input(),
+      agentProfile: map['agentProfile'] == null ? null : (AgentProfileResponse.fromMap((map['agentProfile']! as Map).cast<String, dynamic>())).input(),
+      apiServerAccessProfile: map['apiServerAccessProfile'] == null ? null : (APIServerAccessProfileResponse.fromMap((map['apiServerAccessProfile']! as Map).cast<String, dynamic>())).input(),
+      dnsPrefix: map['dnsPrefix'] == null ? null : (map['dnsPrefix']! as String).input(),
       fqdn: (map['fqdn'] as String).input(),
       kubernetesVersion: (map['kubernetesVersion'] as String).input(),
       portalFqdn: (map['portalFqdn'] as String).input(),

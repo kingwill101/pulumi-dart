@@ -35,8 +35,8 @@ class GetDomainRecordArgs {
   factory GetDomainRecordArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainRecordArgs(
       domainId: (map['domainId'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

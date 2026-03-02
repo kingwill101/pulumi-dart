@@ -52,12 +52,12 @@ class ServerConfigurationsManagementSettingsResponse {
 
   factory ServerConfigurationsManagementSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ServerConfigurationsManagementSettingsResponse(
-      additionalFeaturesServerConfigurations: map['additionalFeaturesServerConfigurations'] == null ? null : (AdditionalFeaturesServerConfigurationsResponse.fromMap((map['additionalFeaturesServerConfigurations'] as Map).cast<String, dynamic>())).input(),
-      azureAdAuthenticationSettings: map['azureAdAuthenticationSettings'] == null ? null : (AADAuthenticationSettingsResponse.fromMap((map['azureAdAuthenticationSettings'] as Map).cast<String, dynamic>())).input(),
-      sqlConnectivityUpdateSettings: map['sqlConnectivityUpdateSettings'] == null ? null : (SqlConnectivityUpdateSettingsResponse.fromMap((map['sqlConnectivityUpdateSettings'] as Map).cast<String, dynamic>())).input(),
-      sqlInstanceSettings: map['sqlInstanceSettings'] == null ? null : (SQLInstanceSettingsResponse.fromMap((map['sqlInstanceSettings'] as Map).cast<String, dynamic>())).input(),
-      sqlStorageUpdateSettings: map['sqlStorageUpdateSettings'] == null ? null : (SqlStorageUpdateSettingsResponse.fromMap((map['sqlStorageUpdateSettings'] as Map).cast<String, dynamic>())).input(),
-      sqlWorkloadTypeUpdateSettings: map['sqlWorkloadTypeUpdateSettings'] == null ? null : (SqlWorkloadTypeUpdateSettingsResponse.fromMap((map['sqlWorkloadTypeUpdateSettings'] as Map).cast<String, dynamic>())).input(),
+      additionalFeaturesServerConfigurations: map['additionalFeaturesServerConfigurations'] == null ? null : (AdditionalFeaturesServerConfigurationsResponse.fromMap((map['additionalFeaturesServerConfigurations']! as Map).cast<String, dynamic>())).input(),
+      azureAdAuthenticationSettings: map['azureAdAuthenticationSettings'] == null ? null : (AADAuthenticationSettingsResponse.fromMap((map['azureAdAuthenticationSettings']! as Map).cast<String, dynamic>())).input(),
+      sqlConnectivityUpdateSettings: map['sqlConnectivityUpdateSettings'] == null ? null : (SqlConnectivityUpdateSettingsResponse.fromMap((map['sqlConnectivityUpdateSettings']! as Map).cast<String, dynamic>())).input(),
+      sqlInstanceSettings: map['sqlInstanceSettings'] == null ? null : (SQLInstanceSettingsResponse.fromMap((map['sqlInstanceSettings']! as Map).cast<String, dynamic>())).input(),
+      sqlStorageUpdateSettings: map['sqlStorageUpdateSettings'] == null ? null : (SqlStorageUpdateSettingsResponse.fromMap((map['sqlStorageUpdateSettings']! as Map).cast<String, dynamic>())).input(),
+      sqlWorkloadTypeUpdateSettings: map['sqlWorkloadTypeUpdateSettings'] == null ? null : (SqlWorkloadTypeUpdateSettingsResponse.fromMap((map['sqlWorkloadTypeUpdateSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

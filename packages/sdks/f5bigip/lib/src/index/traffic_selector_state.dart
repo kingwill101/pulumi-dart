@@ -67,16 +67,16 @@ class TrafficSelectorState {
 
   factory TrafficSelectorState.fromMap(Map<String, dynamic> map) {
     return TrafficSelectorState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationAddress: map['destinationAddress'] == null ? null : (map['destinationAddress'] as String).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as int).input(),
-      ipsecPolicy: map['ipsecPolicy'] == null ? null : (map['ipsecPolicy'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
-      sourceAddress: map['sourceAddress'] == null ? null : (map['sourceAddress'] as String).input(),
-      sourcePort: map['sourcePort'] == null ? null : (map['sourcePort'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationAddress: map['destinationAddress'] == null ? null : (map['destinationAddress']! as String).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as int).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as int).input(),
+      ipsecPolicy: map['ipsecPolicy'] == null ? null : (map['ipsecPolicy']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
+      sourceAddress: map['sourceAddress'] == null ? null : (map['sourceAddress']! as String).input(),
+      sourcePort: map['sourcePort'] == null ? null : (map['sourcePort']! as int).input(),
     );
   }
 }

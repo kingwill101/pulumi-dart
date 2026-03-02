@@ -38,9 +38,9 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment {
   factory DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment(
       percentages: ((map['percentages'] as List).cast<int>()).input(),
-      postdeploy: map['postdeploy'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy.fromMap((map['postdeploy'] as Map).cast<String, dynamic>())).input(),
-      predeploy: map['predeploy'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy.fromMap((map['predeploy'] as Map).cast<String, dynamic>())).input(),
-      verify: map['verify'] == null ? null : (map['verify'] as bool).input(),
+      postdeploy: map['postdeploy'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy.fromMap((map['postdeploy']! as Map).cast<String, dynamic>())).input(),
+      predeploy: map['predeploy'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy.fromMap((map['predeploy']! as Map).cast<String, dynamic>())).input(),
+      verify: map['verify'] == null ? null : (map['verify']! as bool).input(),
     );
   }
 }

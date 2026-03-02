@@ -26,8 +26,8 @@ class BatchingConfiguration {
 
   factory BatchingConfiguration.fromMap(Map<String, dynamic> map) {
     return BatchingConfiguration(
-      latencySeconds: map['latencySeconds'] == null ? null : (map['latencySeconds'] as int).input(),
-      maxMessages: map['maxMessages'] == null ? null : (map['maxMessages'] as int).input(),
+      latencySeconds: map['latencySeconds'] == null ? null : (map['latencySeconds']! as int).input(),
+      maxMessages: map['maxMessages'] == null ? null : (map['maxMessages']! as int).input(),
     );
   }
 }

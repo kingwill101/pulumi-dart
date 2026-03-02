@@ -27,8 +27,8 @@ class MapperPolicyResponse {
 
   factory MapperPolicyResponse.fromMap(Map<String, dynamic> map) {
     return MapperPolicyResponse(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      recurrence: map['recurrence'] == null ? null : (MapperPolicyRecurrenceResponse.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      recurrence: map['recurrence'] == null ? null : (MapperPolicyRecurrenceResponse.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -42,7 +42,7 @@ class SecurityProfileV2Args {
 
   factory SecurityProfileV2Args.fromMap(Map<String, dynamic> map) {
     return SecurityProfileV2Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       orgId: (map['orgId'] as String).input(),
       profileAssessmentConfigs: (pulumi.Input.decodeList<SecurityProfileV2ProfileAssessmentConfig>(map['profileAssessmentConfigs'], (value) => SecurityProfileV2ProfileAssessmentConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       profileId: (map['profileId'] as String).input(),

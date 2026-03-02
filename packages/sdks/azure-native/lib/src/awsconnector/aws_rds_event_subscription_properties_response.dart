@@ -52,13 +52,13 @@ class AwsRdsEventSubscriptionPropertiesResponse {
 
   factory AwsRdsEventSubscriptionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsRdsEventSubscriptionPropertiesResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      eventCategories: map['eventCategories'] == null ? null : ((map['eventCategories'] as List).cast<String>()).input(),
-      snsTopicArn: map['snsTopicArn'] == null ? null : (map['snsTopicArn'] as String).input(),
-      sourceIds: map['sourceIds'] == null ? null : ((map['sourceIds'] as List).cast<String>()).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
-      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      eventCategories: map['eventCategories'] == null ? null : ((map['eventCategories']! as List).cast<String>()).input(),
+      snsTopicArn: map['snsTopicArn'] == null ? null : (map['snsTopicArn']! as String).input(),
+      sourceIds: map['sourceIds'] == null ? null : ((map['sourceIds']! as List).cast<String>()).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
+      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

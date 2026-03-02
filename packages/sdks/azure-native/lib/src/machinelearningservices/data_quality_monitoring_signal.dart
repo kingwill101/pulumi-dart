@@ -64,13 +64,13 @@ class DataQualityMonitoringSignal {
 
   factory DataQualityMonitoringSignal.fromMap(Map<String, dynamic> map) {
     return DataQualityMonitoringSignal(
-      featureDataTypeOverride: map['featureDataTypeOverride'] == null ? null : ((map['featureDataTypeOverride'] as Map).cast<String, String>()).input(),
-      featureImportanceSettings: map['featureImportanceSettings'] == null ? null : (FeatureImportanceSettings.fromMap((map['featureImportanceSettings'] as Map).cast<String, dynamic>())).input(),
-      features: map['features'] == null ? null : (AllFeatures.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
+      featureDataTypeOverride: map['featureDataTypeOverride'] == null ? null : ((map['featureDataTypeOverride']! as Map).cast<String, String>()).input(),
+      featureImportanceSettings: map['featureImportanceSettings'] == null ? null : (FeatureImportanceSettings.fromMap((map['featureImportanceSettings']! as Map).cast<String, dynamic>())).input(),
+      features: map['features'] == null ? null : (AllFeatures.fromMap((map['features']! as Map).cast<String, dynamic>())).input(),
       metricThresholds: (pulumi.Input.decodeList<CategoricalDataQualityMetricThreshold>(map['metricThresholds'], (value) => CategoricalDataQualityMetricThreshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notificationTypes: map['notificationTypes'] == null ? null : ((map['notificationTypes'] as List).cast<String>()).input(),
+      notificationTypes: map['notificationTypes'] == null ? null : ((map['notificationTypes']! as List).cast<String>()).input(),
       productionData: (FixedInputData.fromMap((map['productionData'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       referenceData: (FixedInputData.fromMap((map['referenceData'] as Map).cast<String, dynamic>())).input(),
       signalType: (map['signalType'] as String).input(),
     );

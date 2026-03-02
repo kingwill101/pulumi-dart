@@ -69,12 +69,12 @@ class ProductDetailsResponse {
   factory ProductDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ProductDetailsResponse(
       childConfigurationDeviceDetails: (pulumi.Input.decodeList<ConfigurationDeviceDetailsResponse>(map['childConfigurationDeviceDetails'], (value) => ConfigurationDeviceDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      displayInfo: map['displayInfo'] == null ? null : (DisplayInfoResponse.fromMap((map['displayInfo'] as Map).cast<String, dynamic>())).input(),
+      displayInfo: map['displayInfo'] == null ? null : (DisplayInfoResponse.fromMap((map['displayInfo']! as Map).cast<String, dynamic>())).input(),
       hierarchyInformation: (HierarchyInformationResponse.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>())).input(),
       identificationType: (map['identificationType'] as String).input(),
-      optInAdditionalConfigurations: map['optInAdditionalConfigurations'] == null ? null : (pulumi.Input.decodeList<AdditionalConfigurationResponse>(map['optInAdditionalConfigurations'], (value) => AdditionalConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      optInAdditionalConfigurations: map['optInAdditionalConfigurations'] == null ? null : (pulumi.Input.decodeList<AdditionalConfigurationResponse>(map['optInAdditionalConfigurations']!, (value) => AdditionalConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       parentDeviceDetails: (DeviceDetailsResponse.fromMap((map['parentDeviceDetails'] as Map).cast<String, dynamic>())).input(),
-      parentProvisioningDetails: map['parentProvisioningDetails'] == null ? null : (ProvisioningDetailsResponse.fromMap((map['parentProvisioningDetails'] as Map).cast<String, dynamic>())).input(),
+      parentProvisioningDetails: map['parentProvisioningDetails'] == null ? null : (ProvisioningDetailsResponse.fromMap((map['parentProvisioningDetails']! as Map).cast<String, dynamic>())).input(),
       productDoubleEncryptionStatus: (map['productDoubleEncryptionStatus'] as String).input(),
       termCommitmentInformation: (TermCommitmentInformationResponse.fromMap((map['termCommitmentInformation'] as Map).cast<String, dynamic>())).input(),
     );

@@ -68,16 +68,16 @@ class ApiResourceMetadataResponse {
 
   factory ApiResourceMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ApiResourceMetadataResponse(
-      apiType: map['apiType'] == null ? null : (map['apiType'] as String).input(),
-      brandColor: map['brandColor'] == null ? null : (map['brandColor'] as String).input(),
-      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
-      deploymentParameters: map['deploymentParameters'] == null ? null : (ApiDeploymentParameterMetadataSetResponse.fromMap((map['deploymentParameters'] as Map).cast<String, dynamic>())).input(),
-      hideKey: map['hideKey'] == null ? null : (map['hideKey'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      wsdlImportMethod: map['wsdlImportMethod'] == null ? null : (map['wsdlImportMethod'] as String).input(),
-      wsdlService: map['wsdlService'] == null ? null : (WsdlServiceResponse.fromMap((map['wsdlService'] as Map).cast<String, dynamic>())).input(),
+      apiType: map['apiType'] == null ? null : (map['apiType']! as String).input(),
+      brandColor: map['brandColor'] == null ? null : (map['brandColor']! as String).input(),
+      connectionType: map['connectionType'] == null ? null : (map['connectionType']! as String).input(),
+      deploymentParameters: map['deploymentParameters'] == null ? null : (ApiDeploymentParameterMetadataSetResponse.fromMap((map['deploymentParameters']! as Map).cast<String, dynamic>())).input(),
+      hideKey: map['hideKey'] == null ? null : (map['hideKey']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      wsdlImportMethod: map['wsdlImportMethod'] == null ? null : (map['wsdlImportMethod']! as String).input(),
+      wsdlService: map['wsdlService'] == null ? null : (WsdlServiceResponse.fromMap((map['wsdlService']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

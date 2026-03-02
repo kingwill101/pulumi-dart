@@ -44,11 +44,11 @@ class SharedflowDeploymentState {
 
   factory SharedflowDeploymentState.fromMap(Map<String, dynamic> map) {
     return SharedflowDeploymentState(
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      sharedflowId: map['sharedflowId'] == null ? null : (map['sharedflowId'] as String).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      sharedflowId: map['sharedflowId'] == null ? null : (map['sharedflowId']! as String).input(),
     );
   }
 }

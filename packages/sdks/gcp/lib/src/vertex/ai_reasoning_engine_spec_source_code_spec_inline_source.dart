@@ -22,7 +22,7 @@ class AiReasoningEngineSpecSourceCodeSpecInlineSource {
 
   factory AiReasoningEngineSpecSourceCodeSpecInlineSource.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecSourceCodeSpecInlineSource(
-      sourceArchive: map['sourceArchive'] == null ? null : (map['sourceArchive'] as String).input(),
+      sourceArchive: map['sourceArchive'] == null ? null : (map['sourceArchive']! as String).input(),
     );
   }
 }

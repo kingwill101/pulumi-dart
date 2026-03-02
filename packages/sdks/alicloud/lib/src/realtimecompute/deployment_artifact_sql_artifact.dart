@@ -25,8 +25,8 @@ class DeploymentArtifactSqlArtifact {
 
   factory DeploymentArtifactSqlArtifact.fromMap(Map<String, dynamic> map) {
     return DeploymentArtifactSqlArtifact(
-      additionalDependencies: map['additionalDependencies'] == null ? null : ((map['additionalDependencies'] as List).cast<String>()).input(),
-      sqlScript: map['sqlScript'] == null ? null : (map['sqlScript'] as String).input(),
+      additionalDependencies: map['additionalDependencies'] == null ? null : ((map['additionalDependencies']! as List).cast<String>()).input(),
+      sqlScript: map['sqlScript'] == null ? null : (map['sqlScript']! as String).input(),
     );
   }
 }

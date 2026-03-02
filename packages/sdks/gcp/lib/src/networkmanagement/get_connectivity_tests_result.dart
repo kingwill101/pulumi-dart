@@ -37,7 +37,7 @@ class GetConnectivityTestsResult {
   factory GetConnectivityTestsResult.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestsResult(
       connectivityTests: pulumi.Input.decodeList<GetConnectivityTestsConnectivityTest>(map['connectivityTests'], (value) => GetConnectivityTestsConnectivityTest.fromMap((value as Map).cast<String, dynamic>())),
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       project: map['project'] as String,
     );

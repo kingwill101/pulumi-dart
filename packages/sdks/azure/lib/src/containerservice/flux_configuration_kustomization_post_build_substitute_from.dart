@@ -32,7 +32,7 @@ class FluxConfigurationKustomizationPostBuildSubstituteFrom {
     return FluxConfigurationKustomizationPostBuildSubstituteFrom(
       kind: (map['kind'] as String).input(),
       name: (map['name'] as String).input(),
-      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
+      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
     );
   }
 }

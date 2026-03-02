@@ -87,19 +87,19 @@ class MabContainerResponse {
 
   factory MabContainerResponse.fromMap(Map<String, dynamic> map) {
     return MabContainerResponse(
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
-      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType'] as String).input(),
-      canReRegister: map['canReRegister'] == null ? null : (map['canReRegister'] as bool).input(),
-      containerHealthState: map['containerHealthState'] == null ? null : (map['containerHealthState'] as String).input(),
-      containerId: map['containerId'] == null ? null : (map['containerId'] as double).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
+      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType']! as String).input(),
+      canReRegister: map['canReRegister'] == null ? null : (map['canReRegister']! as bool).input(),
+      containerHealthState: map['containerHealthState'] == null ? null : (map['containerHealthState']! as String).input(),
+      containerId: map['containerId'] == null ? null : (map['containerId']! as double).input(),
       containerType: (map['containerType'] as String).input(),
-      extendedInfo: map['extendedInfo'] == null ? null : (MabContainerExtendedInfoResponse.fromMap((map['extendedInfo'] as Map).cast<String, dynamic>())).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus'] as String).input(),
-      mabContainerHealthDetails: map['mabContainerHealthDetails'] == null ? null : (pulumi.Input.decodeList<MABContainerHealthDetailsResponse>(map['mabContainerHealthDetails'], (value) => MABContainerHealthDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType'] as String).input(),
-      protectedItemCount: map['protectedItemCount'] == null ? null : (map['protectedItemCount'] as double).input(),
-      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus'] as String).input(),
+      extendedInfo: map['extendedInfo'] == null ? null : (MabContainerExtendedInfoResponse.fromMap((map['extendedInfo']! as Map).cast<String, dynamic>())).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus']! as String).input(),
+      mabContainerHealthDetails: map['mabContainerHealthDetails'] == null ? null : (pulumi.Input.decodeList<MABContainerHealthDetailsResponse>(map['mabContainerHealthDetails']!, (value) => MABContainerHealthDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType']! as String).input(),
+      protectedItemCount: map['protectedItemCount'] == null ? null : (map['protectedItemCount']! as double).input(),
+      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus']! as String).input(),
     );
   }
 }

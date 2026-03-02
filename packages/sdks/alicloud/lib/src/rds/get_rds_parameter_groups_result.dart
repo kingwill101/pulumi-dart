@@ -46,13 +46,13 @@ class GetRdsParameterGroupsResult {
 
   factory GetRdsParameterGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetRdsParameterGroupsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       groups: pulumi.Input.decodeList<GetRdsParameterGroupsGroup>(map['groups'], (value) => GetRdsParameterGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

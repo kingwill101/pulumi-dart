@@ -64,14 +64,14 @@ class OSPolicyResourcePackageResourceOsconfigV1alpha {
 
   factory OSPolicyResourcePackageResourceOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceOsconfigV1alpha(
-      apt: map['apt'] == null ? null : (OSPolicyResourcePackageResourceAPTOsconfigV1alpha.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
-      deb: map['deb'] == null ? null : (OSPolicyResourcePackageResourceDebOsconfigV1alpha.fromMap((map['deb'] as Map).cast<String, dynamic>())).input(),
+      apt: map['apt'] == null ? null : (OSPolicyResourcePackageResourceAPTOsconfigV1alpha.fromMap((map['apt']! as Map).cast<String, dynamic>())).input(),
+      deb: map['deb'] == null ? null : (OSPolicyResourcePackageResourceDebOsconfigV1alpha.fromMap((map['deb']! as Map).cast<String, dynamic>())).input(),
       desiredState: (OSPolicyResourcePackageResourceDesiredStateOsconfigV1alpha.fromValue(map['desiredState'] as String)).input(),
-      googet: map['googet'] == null ? null : (OSPolicyResourcePackageResourceGooGetOsconfigV1alpha.fromMap((map['googet'] as Map).cast<String, dynamic>())).input(),
-      msi: map['msi'] == null ? null : (OSPolicyResourcePackageResourceMSIOsconfigV1alpha.fromMap((map['msi'] as Map).cast<String, dynamic>())).input(),
-      rpm: map['rpm'] == null ? null : (OSPolicyResourcePackageResourceRPMOsconfigV1alpha.fromMap((map['rpm'] as Map).cast<String, dynamic>())).input(),
-      yum: map['yum'] == null ? null : (OSPolicyResourcePackageResourceYUMOsconfigV1alpha.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
-      zypper: map['zypper'] == null ? null : (OSPolicyResourcePackageResourceZypperOsconfigV1alpha.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
+      googet: map['googet'] == null ? null : (OSPolicyResourcePackageResourceGooGetOsconfigV1alpha.fromMap((map['googet']! as Map).cast<String, dynamic>())).input(),
+      msi: map['msi'] == null ? null : (OSPolicyResourcePackageResourceMSIOsconfigV1alpha.fromMap((map['msi']! as Map).cast<String, dynamic>())).input(),
+      rpm: map['rpm'] == null ? null : (OSPolicyResourcePackageResourceRPMOsconfigV1alpha.fromMap((map['rpm']! as Map).cast<String, dynamic>())).input(),
+      yum: map['yum'] == null ? null : (OSPolicyResourcePackageResourceYUMOsconfigV1alpha.fromMap((map['yum']! as Map).cast<String, dynamic>())).input(),
+      zypper: map['zypper'] == null ? null : (OSPolicyResourcePackageResourceZypperOsconfigV1alpha.fromMap((map['zypper']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

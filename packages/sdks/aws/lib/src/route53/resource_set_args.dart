@@ -44,8 +44,8 @@ class ResourceSetArgs {
     return ResourceSetArgs(
       resourceSetName: (map['resourceSetName'] as String).input(),
       resourceSetType: (map['resourceSetType'] as String).input(),
-      resources: (pulumi.Input.decodeList<ResourceSetResource>(map['resources'], (value) => ResourceSetResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resources: (pulumi.Input.decodeList<ResourceSetResource>(map['resources']!, (value) => ResourceSetResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

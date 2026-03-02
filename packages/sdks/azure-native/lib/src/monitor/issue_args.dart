@@ -51,11 +51,11 @@ class IssueArgs {
   factory IssueArgs.fromMap(Map<String, dynamic> map) {
     return IssueArgs(
       azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
-      issueName: map['issueName'] == null ? null : (map['issueName'] as String).input(),
-      properties: map['properties'] == null ? null : (IssueProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      related: map['related'] == null ? null : (map['related'] as String).input(),
+      issueName: map['issueName'] == null ? null : (map['issueName']! as String).input(),
+      properties: map['properties'] == null ? null : (IssueProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      related: map['related'] == null ? null : (map['related']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      startInvestigation: map['startInvestigation'] == null ? null : (map['startInvestigation'] as bool).input(),
+      startInvestigation: map['startInvestigation'] == null ? null : (map['startInvestigation']! as bool).input(),
     );
   }
 }

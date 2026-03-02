@@ -32,8 +32,8 @@ class DomainAssociationCertificateSettings {
 
   factory DomainAssociationCertificateSettings.fromMap(Map<String, dynamic> map) {
     return DomainAssociationCertificateSettings(
-      certificateVerificationDnsRecord: map['certificateVerificationDnsRecord'] == null ? null : (map['certificateVerificationDnsRecord'] as String).input(),
-      customCertificateArn: map['customCertificateArn'] == null ? null : (map['customCertificateArn'] as String).input(),
+      certificateVerificationDnsRecord: map['certificateVerificationDnsRecord'] == null ? null : ((map['certificateVerificationDnsRecord'] as String).input()).input(),
+      customCertificateArn: map['customCertificateArn'] == null ? null : ((map['customCertificateArn'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

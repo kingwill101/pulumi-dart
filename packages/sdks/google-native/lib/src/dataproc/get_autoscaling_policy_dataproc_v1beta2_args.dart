@@ -33,7 +33,7 @@ class GetAutoscalingPolicyDataprocV1beta2Args {
     return GetAutoscalingPolicyDataprocV1beta2Args(
       autoscalingPolicyId: (map['autoscalingPolicyId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

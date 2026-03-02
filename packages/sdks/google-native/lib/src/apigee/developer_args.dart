@@ -74,12 +74,12 @@ class DeveloperArgs {
 
   factory DeveloperArgs.fromMap(Map<String, dynamic> map) {
     return DeveloperArgs(
-      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
-      appFamily: map['appFamily'] == null ? null : (map['appFamily'] as String).input(),
-      apps: map['apps'] == null ? null : ((map['apps'] as List).cast<String>()).input(),
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes'], (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      companies: map['companies'] == null ? null : ((map['companies'] as List).cast<String>()).input(),
-      developerId: map['developerId'] == null ? null : (map['developerId'] as String).input(),
+      accessType: map['accessType'] == null ? null : (map['accessType']! as String).input(),
+      appFamily: map['appFamily'] == null ? null : (map['appFamily']! as String).input(),
+      apps: map['apps'] == null ? null : ((map['apps']! as List).cast<String>()).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes']!, (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      companies: map['companies'] == null ? null : ((map['companies']! as List).cast<String>()).input(),
+      developerId: map['developerId'] == null ? null : (map['developerId']! as String).input(),
       email: (map['email'] as String).input(),
       firstName: (map['firstName'] as String).input(),
       lastName: (map['lastName'] as String).input(),

@@ -41,11 +41,11 @@ class LoadBalancerNetworkState {
 
   factory LoadBalancerNetworkState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerNetworkState(
-      enablePublicInterface: map['enablePublicInterface'] == null ? null : (map['enablePublicInterface'] as bool).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as int).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as int).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      enablePublicInterface: map['enablePublicInterface'] == null ? null : (map['enablePublicInterface']! as bool).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as int).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as int).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

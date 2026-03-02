@@ -36,10 +36,10 @@ class SessionRegistryCredentials {
 
   factory SessionRegistryCredentials.fromMap(Map<String, dynamic> map) {
     return SessionRegistryCredentials(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      passwordSecretRef: map['passwordSecretRef'] == null ? null : (map['passwordSecretRef'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
+      passwordSecretRef: map['passwordSecretRef'] == null ? null : (map['passwordSecretRef']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class OperationErrorSqladminV1beta4 {
 
   factory OperationErrorSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return OperationErrorSqladminV1beta4(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

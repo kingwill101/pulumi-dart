@@ -82,7 +82,7 @@ class GetLoadBalancersLoadBalancer {
       labels: ((map['labels'] as Map).cast<String, String>()).input(),
       loadBalancerType: (map['loadBalancerType'] as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkId: (map['networkId'] as int).input(),
       networkIp: (map['networkIp'] as String).input(),
       networkZone: (map['networkZone'] as String).input(),

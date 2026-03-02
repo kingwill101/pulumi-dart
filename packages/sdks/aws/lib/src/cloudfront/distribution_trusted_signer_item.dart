@@ -25,8 +25,8 @@ class DistributionTrustedSignerItem {
 
   factory DistributionTrustedSignerItem.fromMap(Map<String, dynamic> map) {
     return DistributionTrustedSignerItem(
-      awsAccountNumber: map['awsAccountNumber'] == null ? null : (map['awsAccountNumber'] as String).input(),
-      keyPairIds: map['keyPairIds'] == null ? null : ((map['keyPairIds'] as List).cast<String>()).input(),
+      awsAccountNumber: map['awsAccountNumber'] == null ? null : ((map['awsAccountNumber'] as String).input()).input(),
+      keyPairIds: map['keyPairIds'] == null ? null : (((map['keyPairIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

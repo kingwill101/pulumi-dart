@@ -35,9 +35,9 @@ class VolumeTypeAccessV3State {
 
   factory VolumeTypeAccessV3State.fromMap(Map<String, dynamic> map) {
     return VolumeTypeAccessV3State(
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      volumeTypeId: map['volumeTypeId'] == null ? null : (map['volumeTypeId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      volumeTypeId: map['volumeTypeId'] == null ? null : (map['volumeTypeId']! as String).input(),
     );
   }
 }

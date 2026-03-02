@@ -20,7 +20,7 @@ class DomainFeaturesHyperVTlbFlushExtended {
 
   factory DomainFeaturesHyperVTlbFlushExtended.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVTlbFlushExtended(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

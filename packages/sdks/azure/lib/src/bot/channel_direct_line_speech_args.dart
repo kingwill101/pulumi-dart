@@ -60,12 +60,12 @@ class ChannelDirectLineSpeechArgs {
   factory ChannelDirectLineSpeechArgs.fromMap(Map<String, dynamic> map) {
     return ChannelDirectLineSpeechArgs(
       botName: (map['botName'] as String).input(),
-      cognitiveAccountId: map['cognitiveAccountId'] == null ? null : (map['cognitiveAccountId'] as String).input(),
+      cognitiveAccountId: map['cognitiveAccountId'] == null ? null : (map['cognitiveAccountId']! as String).input(),
       cognitiveServiceAccessKey: (map['cognitiveServiceAccessKey'] as String).input(),
       cognitiveServiceLocation: (map['cognitiveServiceLocation'] as String).input(),
-      customSpeechModelId: map['customSpeechModelId'] == null ? null : (map['customSpeechModelId'] as String).input(),
-      customVoiceDeploymentId: map['customVoiceDeploymentId'] == null ? null : (map['customVoiceDeploymentId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      customSpeechModelId: map['customSpeechModelId'] == null ? null : (map['customSpeechModelId']! as String).input(),
+      customVoiceDeploymentId: map['customVoiceDeploymentId'] == null ? null : (map['customVoiceDeploymentId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

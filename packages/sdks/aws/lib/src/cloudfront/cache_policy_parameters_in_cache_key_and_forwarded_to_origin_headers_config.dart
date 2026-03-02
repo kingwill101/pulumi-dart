@@ -26,8 +26,8 @@ class CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig {
 
   factory CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig.fromMap(Map<String, dynamic> map) {
     return CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig(
-      headerBehavior: map['headerBehavior'] == null ? null : (map['headerBehavior'] as String).input(),
-      headers: map['headers'] == null ? null : (CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders.fromMap((map['headers'] as Map).cast<String, dynamic>())).input(),
+      headerBehavior: map['headerBehavior'] == null ? null : ((map['headerBehavior'] as String).input()).input(),
+      headers: map['headers'] == null ? null : ((CachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfigHeaders.fromMap((map['headers']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

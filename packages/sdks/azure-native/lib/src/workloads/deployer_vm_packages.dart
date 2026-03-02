@@ -26,8 +26,8 @@ class DeployerVmPackages {
 
   factory DeployerVmPackages.fromMap(Map<String, dynamic> map) {
     return DeployerVmPackages(
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

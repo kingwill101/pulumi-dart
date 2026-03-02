@@ -36,9 +36,9 @@ class ObjectStorageKeyBucketAccess {
   factory ObjectStorageKeyBucketAccess.fromMap(Map<String, dynamic> map) {
     return ObjectStorageKeyBucketAccess(
       bucketName: (map['bucketName'] as String).input(),
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
       permissions: (map['permissions'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

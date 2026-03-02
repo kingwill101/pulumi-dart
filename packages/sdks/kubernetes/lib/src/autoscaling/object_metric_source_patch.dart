@@ -34,9 +34,9 @@ class ObjectMetricSourcePatch {
 
   factory ObjectMetricSourcePatch.fromMap(Map<String, dynamic> map) {
     return ObjectMetricSourcePatch(
-      describedObject: map['describedObject'] == null ? null : (CrossVersionObjectReferencePatchAutoscalingV2.fromMap((map['describedObject'] as Map).cast<String, dynamic>())).input(),
-      metric: map['metric'] == null ? null : (MetricIdentifierPatch.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (MetricTargetPatch.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      describedObject: map['describedObject'] == null ? null : (CrossVersionObjectReferencePatchAutoscalingV2.fromMap((map['describedObject']! as Map).cast<String, dynamic>())).input(),
+      metric: map['metric'] == null ? null : (MetricIdentifierPatch.fromMap((map['metric']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (MetricTargetPatch.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

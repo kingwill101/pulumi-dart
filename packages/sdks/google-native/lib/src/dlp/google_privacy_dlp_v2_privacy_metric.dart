@@ -52,12 +52,12 @@ class GooglePrivacyDlpV2PrivacyMetric {
 
   factory GooglePrivacyDlpV2PrivacyMetric.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PrivacyMetric(
-      categoricalStatsConfig: map['categoricalStatsConfig'] == null ? null : (GooglePrivacyDlpV2CategoricalStatsConfig.fromMap((map['categoricalStatsConfig'] as Map).cast<String, dynamic>())).input(),
-      deltaPresenceEstimationConfig: map['deltaPresenceEstimationConfig'] == null ? null : (GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromMap((map['deltaPresenceEstimationConfig'] as Map).cast<String, dynamic>())).input(),
-      kAnonymityConfig: map['kAnonymityConfig'] == null ? null : (GooglePrivacyDlpV2KAnonymityConfig.fromMap((map['kAnonymityConfig'] as Map).cast<String, dynamic>())).input(),
-      kMapEstimationConfig: map['kMapEstimationConfig'] == null ? null : (GooglePrivacyDlpV2KMapEstimationConfig.fromMap((map['kMapEstimationConfig'] as Map).cast<String, dynamic>())).input(),
-      lDiversityConfig: map['lDiversityConfig'] == null ? null : (GooglePrivacyDlpV2LDiversityConfig.fromMap((map['lDiversityConfig'] as Map).cast<String, dynamic>())).input(),
-      numericalStatsConfig: map['numericalStatsConfig'] == null ? null : (GooglePrivacyDlpV2NumericalStatsConfig.fromMap((map['numericalStatsConfig'] as Map).cast<String, dynamic>())).input(),
+      categoricalStatsConfig: map['categoricalStatsConfig'] == null ? null : (GooglePrivacyDlpV2CategoricalStatsConfig.fromMap((map['categoricalStatsConfig']! as Map).cast<String, dynamic>())).input(),
+      deltaPresenceEstimationConfig: map['deltaPresenceEstimationConfig'] == null ? null : (GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromMap((map['deltaPresenceEstimationConfig']! as Map).cast<String, dynamic>())).input(),
+      kAnonymityConfig: map['kAnonymityConfig'] == null ? null : (GooglePrivacyDlpV2KAnonymityConfig.fromMap((map['kAnonymityConfig']! as Map).cast<String, dynamic>())).input(),
+      kMapEstimationConfig: map['kMapEstimationConfig'] == null ? null : (GooglePrivacyDlpV2KMapEstimationConfig.fromMap((map['kMapEstimationConfig']! as Map).cast<String, dynamic>())).input(),
+      lDiversityConfig: map['lDiversityConfig'] == null ? null : (GooglePrivacyDlpV2LDiversityConfig.fromMap((map['lDiversityConfig']! as Map).cast<String, dynamic>())).input(),
+      numericalStatsConfig: map['numericalStatsConfig'] == null ? null : (GooglePrivacyDlpV2NumericalStatsConfig.fromMap((map['numericalStatsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

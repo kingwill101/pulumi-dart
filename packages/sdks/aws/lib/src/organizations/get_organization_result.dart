@@ -83,7 +83,7 @@ class GetOrganizationResult {
 
   factory GetOrganizationResult.fromMap(Map<String, dynamic> map) {
     return GetOrganizationResult(
-      accounts: pulumi.Input.decodeList<GetOrganizationAccount>(map['accounts'], (value) => GetOrganizationAccount.fromMap((value as Map).cast<String, dynamic>())),
+      accounts: pulumi.Input.decodeList<GetOrganizationAccount>(map['accounts']!, (value) => GetOrganizationAccount.fromMap((value as Map).cast<String, dynamic>())),
       arn: map['arn'] as String,
       awsServiceAccessPrincipals: (map['awsServiceAccessPrincipals'] as List).cast<String>(),
       enabledPolicyTypes: (map['enabledPolicyTypes'] as List).cast<String>(),
@@ -93,9 +93,9 @@ class GetOrganizationResult {
       masterAccountEmail: map['masterAccountEmail'] as String,
       masterAccountId: map['masterAccountId'] as String,
       masterAccountName: map['masterAccountName'] as String,
-      nonMasterAccounts: pulumi.Input.decodeList<GetOrganizationNonMasterAccount>(map['nonMasterAccounts'], (value) => GetOrganizationNonMasterAccount.fromMap((value as Map).cast<String, dynamic>())),
+      nonMasterAccounts: pulumi.Input.decodeList<GetOrganizationNonMasterAccount>(map['nonMasterAccounts']!, (value) => GetOrganizationNonMasterAccount.fromMap((value as Map).cast<String, dynamic>())),
       returnOrganizationOnly: map['returnOrganizationOnly'] == null ? null : map['returnOrganizationOnly'] as bool,
-      roots: pulumi.Input.decodeList<GetOrganizationRoot>(map['roots'], (value) => GetOrganizationRoot.fromMap((value as Map).cast<String, dynamic>())),
+      roots: pulumi.Input.decodeList<GetOrganizationRoot>(map['roots']!, (value) => GetOrganizationRoot.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

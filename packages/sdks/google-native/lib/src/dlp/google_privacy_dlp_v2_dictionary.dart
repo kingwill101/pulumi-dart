@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2Dictionary {
 
   factory GooglePrivacyDlpV2Dictionary.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Dictionary(
-      cloudStoragePath: map['cloudStoragePath'] == null ? null : (GooglePrivacyDlpV2CloudStoragePath.fromMap((map['cloudStoragePath'] as Map).cast<String, dynamic>())).input(),
-      wordList: map['wordList'] == null ? null : (GooglePrivacyDlpV2WordList.fromMap((map['wordList'] as Map).cast<String, dynamic>())).input(),
+      cloudStoragePath: map['cloudStoragePath'] == null ? null : (GooglePrivacyDlpV2CloudStoragePath.fromMap((map['cloudStoragePath']! as Map).cast<String, dynamic>())).input(),
+      wordList: map['wordList'] == null ? null : (GooglePrivacyDlpV2WordList.fromMap((map['wordList']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

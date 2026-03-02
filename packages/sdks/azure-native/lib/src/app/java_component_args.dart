@@ -41,8 +41,8 @@ class JavaComponentArgs {
   factory JavaComponentArgs.fromMap(Map<String, dynamic> map) {
     return JavaComponentArgs(
       environmentName: (map['environmentName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (NacosComponent.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (NacosComponent.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

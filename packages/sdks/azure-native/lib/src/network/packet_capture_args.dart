@@ -89,19 +89,19 @@ class PacketCaptureArgs {
 
   factory PacketCaptureArgs.fromMap(Map<String, dynamic> map) {
     return PacketCaptureArgs(
-      bytesToCapturePerPacket: map['bytesToCapturePerPacket'] == null ? null : (map['bytesToCapturePerPacket'] as double).input(),
-      captureSettings: map['captureSettings'] == null ? null : (PacketCaptureSettings.fromMap((map['captureSettings'] as Map).cast<String, dynamic>())).input(),
-      continuousCapture: map['continuousCapture'] == null ? null : (map['continuousCapture'] as bool).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<PacketCaptureFilter>(map['filters'], (value) => PacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bytesToCapturePerPacket: map['bytesToCapturePerPacket'] == null ? null : (map['bytesToCapturePerPacket']! as double).input(),
+      captureSettings: map['captureSettings'] == null ? null : (PacketCaptureSettings.fromMap((map['captureSettings']! as Map).cast<String, dynamic>())).input(),
+      continuousCapture: map['continuousCapture'] == null ? null : (map['continuousCapture']! as bool).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<PacketCaptureFilter>(map['filters']!, (value) => PacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       networkWatcherName: (map['networkWatcherName'] as String).input(),
-      packetCaptureName: map['packetCaptureName'] == null ? null : (map['packetCaptureName'] as String).input(),
+      packetCaptureName: map['packetCaptureName'] == null ? null : (map['packetCaptureName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (PacketCaptureMachineScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (PacketCaptureMachineScope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
       storageLocation: (PacketCaptureStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())).input(),
       target: (map['target'] as String).input(),
-      targetType: map['targetType'] == null ? null : (PacketCaptureTargetType.fromValue(map['targetType'] as String)).input(),
-      timeLimitInSeconds: map['timeLimitInSeconds'] == null ? null : (map['timeLimitInSeconds'] as int).input(),
-      totalBytesPerSession: map['totalBytesPerSession'] == null ? null : (map['totalBytesPerSession'] as double).input(),
+      targetType: map['targetType'] == null ? null : (PacketCaptureTargetType.fromValue(map['targetType']! as String)).input(),
+      timeLimitInSeconds: map['timeLimitInSeconds'] == null ? null : (map['timeLimitInSeconds']! as int).input(),
+      totalBytesPerSession: map['totalBytesPerSession'] == null ? null : (map['totalBytesPerSession']! as double).input(),
     );
   }
 }

@@ -49,12 +49,12 @@ class CustomResourceDefinitionSpecPatch {
 
   factory CustomResourceDefinitionSpecPatch.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionSpecPatch(
-      conversion: map['conversion'] == null ? null : (CustomResourceConversionPatch.fromMap((map['conversion'] as Map).cast<String, dynamic>())).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      names: map['names'] == null ? null : (CustomResourceDefinitionNamesPatch.fromMap((map['names'] as Map).cast<String, dynamic>())).input(),
-      preserveUnknownFields: map['preserveUnknownFields'] == null ? null : (map['preserveUnknownFields'] as bool).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<CustomResourceDefinitionVersionPatch>(map['versions'], (value) => CustomResourceDefinitionVersionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conversion: map['conversion'] == null ? null : (CustomResourceConversionPatch.fromMap((map['conversion']! as Map).cast<String, dynamic>())).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      names: map['names'] == null ? null : (CustomResourceDefinitionNamesPatch.fromMap((map['names']! as Map).cast<String, dynamic>())).input(),
+      preserveUnknownFields: map['preserveUnknownFields'] == null ? null : (map['preserveUnknownFields']! as bool).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<CustomResourceDefinitionVersionPatch>(map['versions']!, (value) => CustomResourceDefinitionVersionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

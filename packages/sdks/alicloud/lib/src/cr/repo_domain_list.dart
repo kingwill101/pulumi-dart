@@ -30,9 +30,9 @@ class RepoDomainList {
 
   factory RepoDomainList.fromMap(Map<String, dynamic> map) {
     return RepoDomainList(
-      internal: map['internal'] == null ? null : (map['internal'] as String).input(),
-      public: map['public'] == null ? null : (map['public'] as String).input(),
-      vpc: map['vpc'] == null ? null : (map['vpc'] as String).input(),
+      internal: map['internal'] == null ? null : (map['internal']! as String).input(),
+      public: map['public'] == null ? null : (map['public']! as String).input(),
+      vpc: map['vpc'] == null ? null : (map['vpc']! as String).input(),
     );
   }
 }

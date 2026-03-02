@@ -41,11 +41,11 @@ class BanditPolicyResponse {
 
   factory BanditPolicyResponse.fromMap(Map<String, dynamic> map) {
     return BanditPolicyResponse(
-      delayEvaluation: map['delayEvaluation'] == null ? null : (map['delayEvaluation'] as int).input(),
-      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval'] as int).input(),
+      delayEvaluation: map['delayEvaluation'] == null ? null : (map['delayEvaluation']! as int).input(),
+      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval']! as int).input(),
       policyType: (map['policyType'] as String).input(),
-      slackAmount: map['slackAmount'] == null ? null : (map['slackAmount'] as double).input(),
-      slackFactor: map['slackFactor'] == null ? null : (map['slackFactor'] as double).input(),
+      slackAmount: map['slackAmount'] == null ? null : (map['slackAmount']! as double).input(),
+      slackFactor: map['slackFactor'] == null ? null : (map['slackFactor']! as double).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ConversationProfileLoggingConfig {
 
   factory ConversationProfileLoggingConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileLoggingConfig(
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging'] as bool).input(),
+      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging']! as bool).input(),
     );
   }
 }

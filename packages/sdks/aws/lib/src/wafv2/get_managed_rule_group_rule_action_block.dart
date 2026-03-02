@@ -20,7 +20,7 @@ class GetManagedRuleGroupRuleActionBlock {
 
   factory GetManagedRuleGroupRuleActionBlock.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionBlock(
-      customResponses: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionBlockCustomResponse>(map['customResponses'], (value) => GetManagedRuleGroupRuleActionBlockCustomResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customResponses: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionBlockCustomResponse>(map['customResponses']!, (value) => GetManagedRuleGroupRuleActionBlockCustomResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

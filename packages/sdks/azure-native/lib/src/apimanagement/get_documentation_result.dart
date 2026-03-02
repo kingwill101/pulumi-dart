@@ -46,10 +46,10 @@ class GetDocumentationResult {
   factory GetDocumentationResult.fromMap(Map<String, dynamic> map) {
     return GetDocumentationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      content: map['content'] == null ? null : map['content'] as String,
+      content: map['content'] == null ? null : map['content']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      title: map['title'] == null ? null : map['title'] as String,
+      title: map['title'] == null ? null : map['title']! as String,
       type: map['type'] as String,
     );
   }

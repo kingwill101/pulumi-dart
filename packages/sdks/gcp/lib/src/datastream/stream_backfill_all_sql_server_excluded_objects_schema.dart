@@ -28,7 +28,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchema {
   factory StreamBackfillAllSqlServerExcludedObjectsSchema.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllSqlServerExcludedObjectsSchema(
       schema: (map['schema'] as String).input(),
-      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllSqlServerExcludedObjectsSchemaTable>(map['tables'], (value) => StreamBackfillAllSqlServerExcludedObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllSqlServerExcludedObjectsSchemaTable>(map['tables']!, (value) => StreamBackfillAllSqlServerExcludedObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

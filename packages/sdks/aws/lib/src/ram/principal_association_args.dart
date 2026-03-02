@@ -35,7 +35,7 @@ class PrincipalAssociationArgs {
   factory PrincipalAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PrincipalAssociationArgs(
       principal: (map['principal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceShareArn: (map['resourceShareArn'] as String).input(),
     );
   }

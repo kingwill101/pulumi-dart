@@ -42,7 +42,7 @@ class ListEffectiveVirtualNetworkByNetworkGroupArgs {
       networkGroupName: (map['networkGroupName'] as String).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
     );
   }
 }

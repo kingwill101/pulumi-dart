@@ -63,15 +63,15 @@ class NetworkPolicyArgs {
 
   factory NetworkPolicyArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       edgeServicesCidr: (map['edgeServicesCidr'] as String).input(),
-      externalIp: map['externalIp'] == null ? null : (NetworkService.fromMap((map['externalIp'] as Map).cast<String, dynamic>())).input(),
-      internetAccess: map['internetAccess'] == null ? null : (NetworkService.fromMap((map['internetAccess'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      externalIp: map['externalIp'] == null ? null : (NetworkService.fromMap((map['externalIp']! as Map).cast<String, dynamic>())).input(),
+      internetAccess: map['internetAccess'] == null ? null : (NetworkService.fromMap((map['internetAccess']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       networkPolicyId: (map['networkPolicyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork']! as String).input(),
     );
   }
 }

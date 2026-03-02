@@ -47,11 +47,11 @@ class GetTagsResult {
 
   factory GetTagsResult.fromMap(Map<String, dynamic> map) {
     return GetTagsResult(
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       packageName: map['packageName'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       repositoryId: map['repositoryId'] as String,
       tags: pulumi.Input.decodeList<GetTagsTag>(map['tags'], (value) => GetTagsTag.fromMap((value as Map).cast<String, dynamic>())),
     );

@@ -41,11 +41,11 @@ class WeeklySchedule {
 
   factory WeeklySchedule.fromMap(Map<String, dynamic> map) {
     return WeeklySchedule(
-      day: map['day'] == null ? null : (map['day'] as String).input(),
-      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
-      minute: map['minute'] == null ? null : (map['minute'] as int).input(),
-      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep'] as int).input(),
-      usedBytes: map['usedBytes'] == null ? null : (map['usedBytes'] as double).input(),
+      day: map['day'] == null ? null : (map['day']! as String).input(),
+      hour: map['hour'] == null ? null : (map['hour']! as int).input(),
+      minute: map['minute'] == null ? null : (map['minute']! as int).input(),
+      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep']! as int).input(),
+      usedBytes: map['usedBytes'] == null ? null : (map['usedBytes']! as double).input(),
     );
   }
 }

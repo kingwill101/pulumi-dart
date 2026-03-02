@@ -42,9 +42,9 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
   factory GoogleCloudDatacatalogV1beta1ColumnSchema.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1beta1ColumnSchema(
       column: (map['column'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      subcolumns: map['subcolumns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1beta1ColumnSchema>(map['subcolumns'], (value) => GoogleCloudDatacatalogV1beta1ColumnSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      subcolumns: map['subcolumns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1beta1ColumnSchema>(map['subcolumns']!, (value) => GoogleCloudDatacatalogV1beta1ColumnSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

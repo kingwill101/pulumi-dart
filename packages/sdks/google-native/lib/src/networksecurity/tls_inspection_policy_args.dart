@@ -75,16 +75,16 @@ class TlsInspectionPolicyArgs {
   factory TlsInspectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return TlsInspectionPolicyArgs(
       caPool: (map['caPool'] as String).input(),
-      customTlsFeatures: map['customTlsFeatures'] == null ? null : ((map['customTlsFeatures'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      excludePublicCaSet: map['excludePublicCaSet'] == null ? null : (map['excludePublicCaSet'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      minTlsVersion: map['minTlsVersion'] == null ? null : (TlsInspectionPolicyMinTlsVersion.fromValue(map['minTlsVersion'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tlsFeatureProfile: map['tlsFeatureProfile'] == null ? null : (TlsInspectionPolicyTlsFeatureProfile.fromValue(map['tlsFeatureProfile'] as String)).input(),
+      customTlsFeatures: map['customTlsFeatures'] == null ? null : ((map['customTlsFeatures']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      excludePublicCaSet: map['excludePublicCaSet'] == null ? null : (map['excludePublicCaSet']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (TlsInspectionPolicyMinTlsVersion.fromValue(map['minTlsVersion']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tlsFeatureProfile: map['tlsFeatureProfile'] == null ? null : (TlsInspectionPolicyTlsFeatureProfile.fromValue(map['tlsFeatureProfile']! as String)).input(),
       tlsInspectionPolicyId: (map['tlsInspectionPolicyId'] as String).input(),
-      trustConfig: map['trustConfig'] == null ? null : (map['trustConfig'] as String).input(),
+      trustConfig: map['trustConfig'] == null ? null : (map['trustConfig']! as String).input(),
     );
   }
 }

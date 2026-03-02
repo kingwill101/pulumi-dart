@@ -73,15 +73,15 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleState {
 
   factory ManagementFolderSecurityHealthAnalyticsCustomModuleState.fromMap(Map<String, dynamic> map) {
     return ManagementFolderSecurityHealthAnalyticsCustomModuleState(
-      ancestorModule: map['ancestorModule'] == null ? null : (map['ancestorModule'] as String).input(),
-      customConfig: map['customConfig'] == null ? null : (ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enablementState: map['enablementState'] == null ? null : (map['enablementState'] as String).input(),
-      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
-      lastEditor: map['lastEditor'] == null ? null : (map['lastEditor'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      ancestorModule: map['ancestorModule'] == null ? null : (map['ancestorModule']! as String).input(),
+      customConfig: map['customConfig'] == null ? null : (ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((map['customConfig']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enablementState: map['enablementState'] == null ? null : (map['enablementState']! as String).input(),
+      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
+      lastEditor: map['lastEditor'] == null ? null : (map['lastEditor']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class HttpFaultDelayComputeBeta {
 
   factory HttpFaultDelayComputeBeta.fromMap(Map<String, dynamic> map) {
     return HttpFaultDelayComputeBeta(
-      fixedDelay: map['fixedDelay'] == null ? null : (DurationComputeBeta.fromMap((map['fixedDelay'] as Map).cast<String, dynamic>())).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as double).input(),
+      fixedDelay: map['fixedDelay'] == null ? null : (DurationComputeBeta.fromMap((map['fixedDelay']! as Map).cast<String, dynamic>())).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as double).input(),
     );
   }
 }

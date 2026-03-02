@@ -43,7 +43,7 @@ class EntryArgs {
     return EntryArgs(
       apiId: (map['apiId'] as String).input(),
       keyvaluemapId: (map['keyvaluemapId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
       value: (map['value'] as String).input(),
     );

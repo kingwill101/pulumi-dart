@@ -28,7 +28,7 @@ class TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval {
 
   factory TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval.fromMap(Map<String, dynamic> map) {
     return TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval(
-      settings: (TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      settings: (TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemovalSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
       status: (map['status'] as String).input(),
     );
   }

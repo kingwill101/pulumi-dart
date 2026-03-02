@@ -40,10 +40,10 @@ class BillingGroupArgs {
 
   factory BillingGroupArgs.fromMap(Map<String, dynamic> map) {
     return BillingGroupArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (BillingGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      properties: map['properties'] == null ? null : ((BillingGroupProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

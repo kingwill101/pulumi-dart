@@ -32,7 +32,7 @@ class GetInstanceTypesResult {
     return GetInstanceTypesResult(
       id: map['id'] as String,
       instanceTypes: pulumi.Input.decodeList<GetInstanceTypesInstanceType>(map['instanceTypes'], (value) => GetInstanceTypesInstanceType.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

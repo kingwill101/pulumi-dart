@@ -31,9 +31,9 @@ class LogDeliveryDestinationPolicyState {
 
   factory LogDeliveryDestinationPolicyState.fromMap(Map<String, dynamic> map) {
     return LogDeliveryDestinationPolicyState(
-      deliveryDestinationName: map['deliveryDestinationName'] == null ? null : (map['deliveryDestinationName'] as String).input(),
-      deliveryDestinationPolicy: map['deliveryDestinationPolicy'] == null ? null : (map['deliveryDestinationPolicy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      deliveryDestinationName: map['deliveryDestinationName'] == null ? null : ((map['deliveryDestinationName'] as String).input()).input(),
+      deliveryDestinationPolicy: map['deliveryDestinationPolicy'] == null ? null : ((map['deliveryDestinationPolicy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

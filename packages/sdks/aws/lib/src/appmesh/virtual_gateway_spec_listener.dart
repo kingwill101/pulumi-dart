@@ -39,10 +39,10 @@ class VirtualGatewaySpecListener {
 
   factory VirtualGatewaySpecListener.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListener(
-      connectionPool: map['connectionPool'] == null ? null : (VirtualGatewaySpecListenerConnectionPool.fromMap((map['connectionPool'] as Map).cast<String, dynamic>())).input(),
-      healthCheck: map['healthCheck'] == null ? null : (VirtualGatewaySpecListenerHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())).input(),
-      portMapping: (VirtualGatewaySpecListenerPortMapping.fromMap((map['portMapping'] as Map).cast<String, dynamic>())).input(),
-      tls: map['tls'] == null ? null : (VirtualGatewaySpecListenerTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      connectionPool: map['connectionPool'] == null ? null : ((VirtualGatewaySpecListenerConnectionPool.fromMap((map['connectionPool']! as Map).cast<String, dynamic>())).input()).input(),
+      healthCheck: map['healthCheck'] == null ? null : ((VirtualGatewaySpecListenerHealthCheck.fromMap((map['healthCheck']! as Map).cast<String, dynamic>())).input()).input(),
+      portMapping: (VirtualGatewaySpecListenerPortMapping.fromMap((map['portMapping']! as Map).cast<String, dynamic>())).input(),
+      tls: map['tls'] == null ? null : ((VirtualGatewaySpecListenerTls.fromMap((map['tls']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

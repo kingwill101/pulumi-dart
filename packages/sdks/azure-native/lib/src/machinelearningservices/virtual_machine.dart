@@ -47,12 +47,12 @@ class VirtualMachine {
 
   factory VirtualMachine.fromMap(Map<String, dynamic> map) {
     return VirtualMachine(
-      computeLocation: map['computeLocation'] == null ? null : (map['computeLocation'] as String).input(),
+      computeLocation: map['computeLocation'] == null ? null : (map['computeLocation']! as String).input(),
       computeType: (map['computeType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
-      properties: map['properties'] == null ? null : (VirtualMachineSchemaProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth']! as bool).input(),
+      properties: map['properties'] == null ? null : (VirtualMachineSchemaProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

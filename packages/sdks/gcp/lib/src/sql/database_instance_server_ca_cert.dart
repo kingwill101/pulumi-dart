@@ -40,11 +40,11 @@ class DatabaseInstanceServerCaCert {
 
   factory DatabaseInstanceServerCaCert.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceServerCaCert(
-      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
-      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
-      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : (map['sha1Fingerprint'] as String).input(),
+      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
+      commonName: map['commonName'] == null ? null : (map['commonName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime']! as String).input(),
+      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : (map['sha1Fingerprint']! as String).input(),
     );
   }
 }

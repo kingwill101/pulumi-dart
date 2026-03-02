@@ -44,11 +44,11 @@ class WindowsWebAppSiteConfigAutoHealSettingTrigger {
 
   factory WindowsWebAppSiteConfigAutoHealSettingTrigger.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSiteConfigAutoHealSettingTrigger(
-      privateMemoryKb: map['privateMemoryKb'] == null ? null : (map['privateMemoryKb'] as int).input(),
-      requests: map['requests'] == null ? null : (WindowsWebAppSiteConfigAutoHealSettingTriggerRequests.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
-      slowRequest: map['slowRequest'] == null ? null : (WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap((map['slowRequest'] as Map).cast<String, dynamic>())).input(),
-      slowRequestWithPaths: map['slowRequestWithPaths'] == null ? null : (pulumi.Input.decodeList<WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>(map['slowRequestWithPaths'], (value) => WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statusCodes: map['statusCodes'] == null ? null : (pulumi.Input.decodeList<WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode>(map['statusCodes'], (value) => WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateMemoryKb: map['privateMemoryKb'] == null ? null : (map['privateMemoryKb']! as int).input(),
+      requests: map['requests'] == null ? null : (WindowsWebAppSiteConfigAutoHealSettingTriggerRequests.fromMap((map['requests']! as Map).cast<String, dynamic>())).input(),
+      slowRequest: map['slowRequest'] == null ? null : (WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap((map['slowRequest']! as Map).cast<String, dynamic>())).input(),
+      slowRequestWithPaths: map['slowRequestWithPaths'] == null ? null : (pulumi.Input.decodeList<WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>(map['slowRequestWithPaths']!, (value) => WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statusCodes: map['statusCodes'] == null ? null : (pulumi.Input.decodeList<WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode>(map['statusCodes']!, (value) => WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -55,13 +55,13 @@ class HmacKeyState {
 
   factory HmacKeyState.fromMap(Map<String, dynamic> map) {
     return HmacKeyState(
-      accessId: map['accessId'] == null ? null : (map['accessId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated'] as String).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
+      accessId: map['accessId'] == null ? null : (map['accessId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated']! as String).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
     );
   }
 }

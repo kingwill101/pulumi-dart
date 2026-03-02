@@ -21,7 +21,7 @@ class AwsClusterLoggingConfig {
 
   factory AwsClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
     return AwsClusterLoggingConfig(
-      componentConfig: map['componentConfig'] == null ? null : (AwsClusterLoggingConfigComponentConfig.fromMap((map['componentConfig'] as Map).cast<String, dynamic>())).input(),
+      componentConfig: map['componentConfig'] == null ? null : (AwsClusterLoggingConfigComponentConfig.fromMap((map['componentConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class WsdlDefinition {
 
   factory WsdlDefinition.fromMap(Map<String, dynamic> map) {
     return WsdlDefinition(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      importMethod: map['importMethod'] == null ? null : (map['importMethod'] as String).input(),
-      service: map['service'] == null ? null : (WsdlService.fromMap((map['service'] as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      importMethod: map['importMethod'] == null ? null : (map['importMethod']! as String).input(),
+      service: map['service'] == null ? null : (WsdlService.fromMap((map['service']! as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

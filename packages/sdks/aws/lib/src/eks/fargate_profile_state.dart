@@ -69,16 +69,16 @@ class FargateProfileState {
 
   factory FargateProfileState.fromMap(Map<String, dynamic> map) {
     return FargateProfileState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      fargateProfileName: map['fargateProfileName'] == null ? null : (map['fargateProfileName'] as String).input(),
-      podExecutionRoleArn: map['podExecutionRoleArn'] == null ? null : (map['podExecutionRoleArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<FargateProfileSelector>(map['selectors'], (value) => FargateProfileSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      clusterName: map['clusterName'] == null ? null : ((map['clusterName'] as String).input()).input(),
+      fargateProfileName: map['fargateProfileName'] == null ? null : ((map['fargateProfileName'] as String).input()).input(),
+      podExecutionRoleArn: map['podExecutionRoleArn'] == null ? null : ((map['podExecutionRoleArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      selectors: map['selectors'] == null ? null : ((pulumi.Input.decodeList<FargateProfileSelector>(map['selectors']!, (value) => FargateProfileSelector.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

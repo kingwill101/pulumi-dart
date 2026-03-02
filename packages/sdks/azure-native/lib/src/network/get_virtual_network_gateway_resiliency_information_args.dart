@@ -34,7 +34,7 @@ class GetVirtualNetworkGatewayResiliencyInformationArgs {
 
   factory GetVirtualNetworkGatewayResiliencyInformationArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayResiliencyInformationArgs(
-      attemptRefresh: map['attemptRefresh'] == null ? null : (map['attemptRefresh'] as bool).input(),
+      attemptRefresh: map['attemptRefresh'] == null ? null : (map['attemptRefresh']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       virtualNetworkGatewayName: (map['virtualNetworkGatewayName'] as String).input(),
     );

@@ -42,10 +42,10 @@ class StorageDiscoveryWorkspacePropertiesResponse {
 
   factory StorageDiscoveryWorkspacePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StorageDiscoveryWorkspacePropertiesResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       scopes: (pulumi.Input.decodeList<StorageDiscoveryScopeResponse>(map['scopes'], (value) => StorageDiscoveryScopeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
       workspaceRoots: ((map['workspaceRoots'] as List).cast<String>()).input(),
     );
   }

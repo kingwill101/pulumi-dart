@@ -34,8 +34,8 @@ class VulWhitelistArgs {
 
   factory VulWhitelistArgs.fromMap(Map<String, dynamic> map) {
     return VulWhitelistArgs(
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      targetInfo: map['targetInfo'] == null ? null : (map['targetInfo'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      targetInfo: map['targetInfo'] == null ? null : (map['targetInfo']! as String).input(),
       whitelist: (map['whitelist'] as String).input(),
     );
   }

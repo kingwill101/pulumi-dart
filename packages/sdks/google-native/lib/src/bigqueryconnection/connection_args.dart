@@ -53,13 +53,13 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      cloudSql: map['cloudSql'] == null ? null : (CloudSqlProperties.fromMap((map['cloudSql'] as Map).cast<String, dynamic>())).input(),
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      cloudSql: map['cloudSql'] == null ? null : (CloudSqlProperties.fromMap((map['cloudSql']! as Map).cast<String, dynamic>())).input(),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -62,12 +62,12 @@ class UserStoreArgs {
 
   factory UserStoreArgs.fromMap(Map<String, dynamic> map) {
     return UserStoreArgs(
-      defaultLicenseConfig: map['defaultLicenseConfig'] == null ? null : (map['defaultLicenseConfig'] as String).input(),
-      enableExpiredLicenseAutoUpdate: map['enableExpiredLicenseAutoUpdate'] == null ? null : (map['enableExpiredLicenseAutoUpdate'] as bool).input(),
-      enableLicenseAutoRegister: map['enableLicenseAutoRegister'] == null ? null : (map['enableLicenseAutoRegister'] as bool).input(),
+      defaultLicenseConfig: map['defaultLicenseConfig'] == null ? null : (map['defaultLicenseConfig']! as String).input(),
+      enableExpiredLicenseAutoUpdate: map['enableExpiredLicenseAutoUpdate'] == null ? null : (map['enableExpiredLicenseAutoUpdate']! as bool).input(),
+      enableLicenseAutoRegister: map['enableLicenseAutoRegister'] == null ? null : (map['enableLicenseAutoRegister']! as bool).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      userStoreId: map['userStoreId'] == null ? null : (map['userStoreId'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      userStoreId: map['userStoreId'] == null ? null : (map['userStoreId']! as String).input(),
     );
   }
 }

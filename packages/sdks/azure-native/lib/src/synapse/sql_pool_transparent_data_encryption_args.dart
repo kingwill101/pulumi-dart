@@ -46,8 +46,8 @@ class SqlPoolTransparentDataEncryptionArgs {
     return SqlPoolTransparentDataEncryptionArgs(
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sqlPoolName: (map['sqlPoolName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transparentDataEncryptionName: map['transparentDataEncryptionName'] == null ? null : (map['transparentDataEncryptionName'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transparentDataEncryptionName: map['transparentDataEncryptionName'] == null ? null : (map['transparentDataEncryptionName']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

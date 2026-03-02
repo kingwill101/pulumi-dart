@@ -93,20 +93,20 @@ class FirewallState {
 
   factory FirewallState.fromMap(Map<String, dynamic> map) {
     return FirewallState(
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<FirewallDevice>(map['devices'], (value) => FirewallDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      inboundPolicy: map['inboundPolicy'] == null ? null : (map['inboundPolicy'] as String).input(),
-      inbounds: map['inbounds'] == null ? null : (pulumi.Input.decodeList<FirewallInbound>(map['inbounds'], (value) => FirewallInbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      interfaces: map['interfaces'] == null ? null : ((map['interfaces'] as List).cast<int>()).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      linodes: map['linodes'] == null ? null : ((map['linodes'] as List).cast<int>()).input(),
-      nodebalancers: map['nodebalancers'] == null ? null : ((map['nodebalancers'] as List).cast<int>()).input(),
-      outboundPolicy: map['outboundPolicy'] == null ? null : (map['outboundPolicy'] as String).input(),
-      outbounds: map['outbounds'] == null ? null : (pulumi.Input.decodeList<FirewallOutbound>(map['outbounds'], (value) => FirewallOutbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<FirewallDevice>(map['devices']!, (value) => FirewallDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      inboundPolicy: map['inboundPolicy'] == null ? null : (map['inboundPolicy']! as String).input(),
+      inbounds: map['inbounds'] == null ? null : (pulumi.Input.decodeList<FirewallInbound>(map['inbounds']!, (value) => FirewallInbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interfaces: map['interfaces'] == null ? null : ((map['interfaces']! as List).cast<int>()).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      linodes: map['linodes'] == null ? null : ((map['linodes']! as List).cast<int>()).input(),
+      nodebalancers: map['nodebalancers'] == null ? null : ((map['nodebalancers']! as List).cast<int>()).input(),
+      outboundPolicy: map['outboundPolicy'] == null ? null : (map['outboundPolicy']! as String).input(),
+      outbounds: map['outbounds'] == null ? null : (pulumi.Input.decodeList<FirewallOutbound>(map['outbounds']!, (value) => FirewallOutbound.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class GetIndexArgs {
   factory GetIndexArgs.fromMap(Map<String, dynamic> map) {
     return GetIndexArgs(
       indexId: (map['indexId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

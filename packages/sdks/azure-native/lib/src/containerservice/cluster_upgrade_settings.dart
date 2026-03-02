@@ -22,7 +22,7 @@ class ClusterUpgradeSettings {
 
   factory ClusterUpgradeSettings.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradeSettings(
-      overrideSettings: map['overrideSettings'] == null ? null : (UpgradeOverrideSettings.fromMap((map['overrideSettings'] as Map).cast<String, dynamic>())).input(),
+      overrideSettings: map['overrideSettings'] == null ? null : (UpgradeOverrideSettings.fromMap((map['overrideSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

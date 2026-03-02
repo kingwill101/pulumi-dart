@@ -38,10 +38,10 @@ class DeploymentConfigurationResponse {
 
   factory DeploymentConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentConfigurationResponse(
-      alarms: map['alarms'] == null ? null : (DeploymentAlarmsResponse.fromMap((map['alarms'] as Map).cast<String, dynamic>())).input(),
-      deploymentCircuitBreaker: map['deploymentCircuitBreaker'] == null ? null : (DeploymentCircuitBreakerResponse.fromMap((map['deploymentCircuitBreaker'] as Map).cast<String, dynamic>())).input(),
-      maximumPercent: map['maximumPercent'] == null ? null : (map['maximumPercent'] as int).input(),
-      minimumHealthyPercent: map['minimumHealthyPercent'] == null ? null : (map['minimumHealthyPercent'] as int).input(),
+      alarms: map['alarms'] == null ? null : (DeploymentAlarmsResponse.fromMap((map['alarms']! as Map).cast<String, dynamic>())).input(),
+      deploymentCircuitBreaker: map['deploymentCircuitBreaker'] == null ? null : (DeploymentCircuitBreakerResponse.fromMap((map['deploymentCircuitBreaker']! as Map).cast<String, dynamic>())).input(),
+      maximumPercent: map['maximumPercent'] == null ? null : (map['maximumPercent']! as int).input(),
+      minimumHealthyPercent: map['minimumHealthyPercent'] == null ? null : (map['minimumHealthyPercent']! as int).input(),
     );
   }
 }

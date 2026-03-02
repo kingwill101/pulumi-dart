@@ -31,9 +31,9 @@ class ManagedClusterAddonProfileResponseIdentity {
 
   factory ManagedClusterAddonProfileResponseIdentity.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAddonProfileResponseIdentity(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

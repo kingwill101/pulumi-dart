@@ -53,12 +53,12 @@ class ResourceClassParametersPatchArgs {
 
   factory ResourceClassParametersPatchArgs.fromMap(Map<String, dynamic> map) {
     return ResourceClassParametersPatchArgs(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<ResourceFilterPatch>(map['filters'], (value) => ResourceFilterPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      generatedFrom: map['generatedFrom'] == null ? null : (ResourceClassParametersReferencePatchResourceK8sIoV1alpha2.fromMap((map['generatedFrom'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      vendorParameters: map['vendorParameters'] == null ? null : (pulumi.Input.decodeList<VendorParametersPatch>(map['vendorParameters'], (value) => VendorParametersPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<ResourceFilterPatch>(map['filters']!, (value) => ResourceFilterPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      generatedFrom: map['generatedFrom'] == null ? null : (ResourceClassParametersReferencePatchResourceK8sIoV1alpha2.fromMap((map['generatedFrom']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      vendorParameters: map['vendorParameters'] == null ? null : (pulumi.Input.decodeList<VendorParametersPatch>(map['vendorParameters']!, (value) => VendorParametersPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

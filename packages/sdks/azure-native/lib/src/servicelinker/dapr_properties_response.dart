@@ -53,12 +53,12 @@ class DaprPropertiesResponse {
   factory DaprPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DaprPropertiesResponse(
       bindingComponentDirection: (map['bindingComponentDirection'] as String).input(),
-      componentType: map['componentType'] == null ? null : (map['componentType'] as String).input(),
-      metadata: map['metadata'] == null ? null : (pulumi.Input.decodeList<DaprMetadataResponse>(map['metadata'], (value) => DaprMetadataResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      componentType: map['componentType'] == null ? null : (map['componentType']! as String).input(),
+      metadata: map['metadata'] == null ? null : (pulumi.Input.decodeList<DaprMetadataResponse>(map['metadata']!, (value) => DaprMetadataResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       runtimeVersion: (map['runtimeVersion'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
-      secretStoreComponent: map['secretStoreComponent'] == null ? null : (map['secretStoreComponent'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      secretStoreComponent: map['secretStoreComponent'] == null ? null : (map['secretStoreComponent']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

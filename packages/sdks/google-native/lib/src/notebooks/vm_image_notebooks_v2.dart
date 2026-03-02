@@ -31,8 +31,8 @@ class VmImageNotebooksV2 {
 
   factory VmImageNotebooksV2.fromMap(Map<String, dynamic> map) {
     return VmImageNotebooksV2(
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       project: (map['project'] as String).input(),
     );
   }

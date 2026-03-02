@@ -41,11 +41,11 @@ class GuestOSCustomization {
 
   factory GuestOSCustomization.fromMap(Map<String, dynamic> map) {
     return GuestOSCustomization(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class VirtualHubRouteTableRouteState {
 
   factory VirtualHubRouteTableRouteState.fromMap(Map<String, dynamic> map) {
     return VirtualHubRouteTableRouteState(
-      destinations: map['destinations'] == null ? null : ((map['destinations'] as List).cast<String>()).input(),
-      destinationsType: map['destinationsType'] == null ? null : (map['destinationsType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nextHop: map['nextHop'] == null ? null : (map['nextHop'] as String).input(),
-      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType'] as String).input(),
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      destinations: map['destinations'] == null ? null : ((map['destinations']! as List).cast<String>()).input(),
+      destinationsType: map['destinationsType'] == null ? null : (map['destinationsType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nextHop: map['nextHop'] == null ? null : (map['nextHop']! as String).input(),
+      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType']! as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId']! as String).input(),
     );
   }
 }

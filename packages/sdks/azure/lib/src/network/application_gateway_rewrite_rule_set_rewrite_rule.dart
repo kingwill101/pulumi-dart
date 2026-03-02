@@ -49,12 +49,12 @@ class ApplicationGatewayRewriteRuleSetRewriteRule {
 
   factory ApplicationGatewayRewriteRuleSetRewriteRule.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRewriteRuleSetRewriteRule(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSetRewriteRuleCondition>(map['conditions'], (value) => ApplicationGatewayRewriteRuleSetRewriteRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSetRewriteRuleCondition>(map['conditions']!, (value) => ApplicationGatewayRewriteRuleSetRewriteRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      requestHeaderConfigurations: map['requestHeaderConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration>(map['requestHeaderConfigurations'], (value) => ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseHeaderConfigurations: map['responseHeaderConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration>(map['responseHeaderConfigurations'], (value) => ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestHeaderConfigurations: map['requestHeaderConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration>(map['requestHeaderConfigurations']!, (value) => ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseHeaderConfigurations: map['responseHeaderConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration>(map['responseHeaderConfigurations']!, (value) => ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ruleSequence: (map['ruleSequence'] as int).input(),
-      url: map['url'] == null ? null : (ApplicationGatewayRewriteRuleSetRewriteRuleUrl.fromMap((map['url'] as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (ApplicationGatewayRewriteRuleSetRewriteRuleUrl.fromMap((map['url']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

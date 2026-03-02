@@ -26,7 +26,7 @@ class CapabilityConfigurationArgoCdRbacRoleMapping {
 
   factory CapabilityConfigurationArgoCdRbacRoleMapping.fromMap(Map<String, dynamic> map) {
     return CapabilityConfigurationArgoCdRbacRoleMapping(
-      identities: (pulumi.Input.decodeList<CapabilityConfigurationArgoCdRbacRoleMappingIdentity>(map['identities'], (value) => CapabilityConfigurationArgoCdRbacRoleMappingIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identities: (pulumi.Input.decodeList<CapabilityConfigurationArgoCdRbacRoleMappingIdentity>(map['identities']!, (value) => CapabilityConfigurationArgoCdRbacRoleMappingIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
       role: (map['role'] as String).input(),
     );
   }

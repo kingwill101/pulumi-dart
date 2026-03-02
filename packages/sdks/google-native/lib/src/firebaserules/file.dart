@@ -32,7 +32,7 @@ class File {
   factory File.fromMap(Map<String, dynamic> map) {
     return File(
       content: (map['content'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

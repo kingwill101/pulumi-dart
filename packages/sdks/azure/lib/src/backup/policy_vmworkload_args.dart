@@ -51,7 +51,7 @@ class PolicyVMWorkloadArgs {
 
   factory PolicyVMWorkloadArgs.fromMap(Map<String, dynamic> map) {
     return PolicyVMWorkloadArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       protectionPolicies: (pulumi.Input.decodeList<PolicyVMWorkloadProtectionPolicy>(map['protectionPolicies'], (value) => PolicyVMWorkloadProtectionPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
       recoveryVaultName: (map['recoveryVaultName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

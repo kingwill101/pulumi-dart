@@ -36,7 +36,7 @@ class GetMultiRegionAccessPointsResult {
 
   factory GetMultiRegionAccessPointsResult.fromMap(Map<String, dynamic> map) {
     return GetMultiRegionAccessPointsResult(
-      accessPoints: pulumi.Input.decodeList<GetMultiRegionAccessPointsAccessPoint>(map['accessPoints'], (value) => GetMultiRegionAccessPointsAccessPoint.fromMap((value as Map).cast<String, dynamic>())),
+      accessPoints: pulumi.Input.decodeList<GetMultiRegionAccessPointsAccessPoint>(map['accessPoints']!, (value) => GetMultiRegionAccessPointsAccessPoint.fromMap((value as Map).cast<String, dynamic>())),
       accountId: map['accountId'] == null ? null : map['accountId'] as String,
       id: map['id'] as String,
       region: map['region'] as String,

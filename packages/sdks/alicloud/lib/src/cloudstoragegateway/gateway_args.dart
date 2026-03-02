@@ -78,18 +78,18 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gatewayClass: map['gatewayClass'] == null ? null : (map['gatewayClass'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      gatewayClass: map['gatewayClass'] == null ? null : (map['gatewayClass']! as String).input(),
       gatewayName: (map['gatewayName'] as String).input(),
       location: (map['location'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      publicNetworkBandwidth: map['publicNetworkBandwidth'] == null ? null : (map['publicNetworkBandwidth'] as int).input(),
-      reasonDetail: map['reasonDetail'] == null ? null : (map['reasonDetail'] as String).input(),
-      reasonType: map['reasonType'] == null ? null : (map['reasonType'] as String).input(),
-      releaseAfterExpiration: map['releaseAfterExpiration'] == null ? null : (map['releaseAfterExpiration'] as bool).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      publicNetworkBandwidth: map['publicNetworkBandwidth'] == null ? null : (map['publicNetworkBandwidth']! as int).input(),
+      reasonDetail: map['reasonDetail'] == null ? null : (map['reasonDetail']! as String).input(),
+      reasonType: map['reasonType'] == null ? null : (map['reasonType']! as String).input(),
+      releaseAfterExpiration: map['releaseAfterExpiration'] == null ? null : (map['releaseAfterExpiration']! as bool).input(),
       storageBundleId: (map['storageBundleId'] as String).input(),
       type: (map['type'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

@@ -54,12 +54,12 @@ class HostProjectRegistrationState {
 
   factory HostProjectRegistrationState.fromMap(Map<String, dynamic> map) {
     return HostProjectRegistrationState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      gcpProject: map['gcpProject'] == null ? null : (map['gcpProject'] as String).input(),
-      hostProjectRegistrationId: map['hostProjectRegistrationId'] == null ? null : (map['hostProjectRegistrationId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      gcpProject: map['gcpProject'] == null ? null : (map['gcpProject']! as String).input(),
+      hostProjectRegistrationId: map['hostProjectRegistrationId'] == null ? null : (map['hostProjectRegistrationId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

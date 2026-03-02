@@ -75,14 +75,14 @@ class PublicDelegatedPrefixArgs {
 
   factory PublicDelegatedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixArgs(
-      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      allocatablePrefixLength: map['allocatablePrefixLength'] == null ? null : (map['allocatablePrefixLength']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       ipCidrRange: (map['ipCidrRange'] as String).input(),
-      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration'] as bool).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration']! as bool).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       parentPrefix: (map['parentPrefix'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

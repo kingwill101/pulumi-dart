@@ -43,11 +43,11 @@ class ProvisionedConcurrencyConfigState {
 
   factory ProvisionedConcurrencyConfigState.fromMap(Map<String, dynamic> map) {
     return ProvisionedConcurrencyConfigState(
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      provisionedConcurrentExecutions: map['provisionedConcurrentExecutions'] == null ? null : (map['provisionedConcurrentExecutions'] as int).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      functionName: map['functionName'] == null ? null : ((map['functionName'] as String).input()).input(),
+      provisionedConcurrentExecutions: map['provisionedConcurrentExecutions'] == null ? null : ((map['provisionedConcurrentExecutions'] as int).input()).input(),
+      qualifier: map['qualifier'] == null ? null : ((map['qualifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
     );
   }
 }

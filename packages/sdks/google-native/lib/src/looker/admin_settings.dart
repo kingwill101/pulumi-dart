@@ -21,7 +21,7 @@ class AdminSettings {
 
   factory AdminSettings.fromMap(Map<String, dynamic> map) {
     return AdminSettings(
-      allowedEmailDomains: map['allowedEmailDomains'] == null ? null : ((map['allowedEmailDomains'] as List).cast<String>()).input(),
+      allowedEmailDomains: map['allowedEmailDomains'] == null ? null : ((map['allowedEmailDomains']! as List).cast<String>()).input(),
     );
   }
 }

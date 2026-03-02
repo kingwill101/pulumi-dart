@@ -22,7 +22,7 @@ class ActionDefinition {
 
   factory ActionDefinition.fromMap(Map<String, dynamic> map) {
     return ActionDefinition(
-      publishMetricAction: map['publishMetricAction'] == null ? null : (PublishMetricAction.fromMap((map['publishMetricAction'] as Map).cast<String, dynamic>())).input(),
+      publishMetricAction: map['publishMetricAction'] == null ? null : (PublishMetricAction.fromMap((map['publishMetricAction']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

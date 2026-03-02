@@ -64,12 +64,12 @@ class QueueHttpTargetUriOverride {
 
   factory QueueHttpTargetUriOverride.fromMap(Map<String, dynamic> map) {
     return QueueHttpTargetUriOverride(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      pathOverride: map['pathOverride'] == null ? null : (QueueHttpTargetUriOverridePathOverride.fromMap((map['pathOverride'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      queryOverride: map['queryOverride'] == null ? null : (QueueHttpTargetUriOverrideQueryOverride.fromMap((map['queryOverride'] as Map).cast<String, dynamic>())).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme'] as String).input(),
-      uriOverrideEnforceMode: map['uriOverrideEnforceMode'] == null ? null : (map['uriOverrideEnforceMode'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      pathOverride: map['pathOverride'] == null ? null : (QueueHttpTargetUriOverridePathOverride.fromMap((map['pathOverride']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      queryOverride: map['queryOverride'] == null ? null : (QueueHttpTargetUriOverrideQueryOverride.fromMap((map['queryOverride']! as Map).cast<String, dynamic>())).input(),
+      scheme: map['scheme'] == null ? null : (map['scheme']! as String).input(),
+      uriOverrideEnforceMode: map['uriOverrideEnforceMode'] == null ? null : (map['uriOverrideEnforceMode']! as String).input(),
     );
   }
 }

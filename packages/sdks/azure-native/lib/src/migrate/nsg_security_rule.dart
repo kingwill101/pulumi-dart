@@ -77,16 +77,16 @@ class NsgSecurityRule {
 
   factory NsgSecurityRule.fromMap(Map<String, dynamic> map) {
     return NsgSecurityRule(
-      access: map['access'] == null ? null : (map['access'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationAddressPrefix: map['destinationAddressPrefix'] == null ? null : (map['destinationAddressPrefix'] as String).input(),
-      destinationPortRange: map['destinationPortRange'] == null ? null : (map['destinationPortRange'] as String).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      sourceAddressPrefix: map['sourceAddressPrefix'] == null ? null : (map['sourceAddressPrefix'] as String).input(),
-      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange'] as String).input(),
+      access: map['access'] == null ? null : (map['access']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationAddressPrefix: map['destinationAddressPrefix'] == null ? null : (map['destinationAddressPrefix']! as String).input(),
+      destinationPortRange: map['destinationPortRange'] == null ? null : (map['destinationPortRange']! as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      sourceAddressPrefix: map['sourceAddressPrefix'] == null ? null : (map['sourceAddressPrefix']! as String).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange']! as String).input(),
     );
   }
 }

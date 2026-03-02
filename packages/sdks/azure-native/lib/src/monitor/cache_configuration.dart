@@ -26,8 +26,8 @@ class CacheConfiguration {
 
   factory CacheConfiguration.fromMap(Map<String, dynamic> map) {
     return CacheConfiguration(
-      maxStorageUsage: map['maxStorageUsage'] == null ? null : (map['maxStorageUsage'] as int).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
+      maxStorageUsage: map['maxStorageUsage'] == null ? null : (map['maxStorageUsage']! as int).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod']! as int).input(),
     );
   }
 }

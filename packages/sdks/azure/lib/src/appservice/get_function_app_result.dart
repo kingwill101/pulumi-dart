@@ -130,7 +130,7 @@ class GetFunctionAppResult {
       siteConfigs: pulumi.Input.decodeList<GetFunctionAppSiteConfig>(map['siteConfigs'], (value) => GetFunctionAppSiteConfig.fromMap((value as Map).cast<String, dynamic>())),
       siteCredentials: pulumi.Input.decodeList<GetFunctionAppSiteCredential>(map['siteCredentials'], (value) => GetFunctionAppSiteCredential.fromMap((value as Map).cast<String, dynamic>())),
       sourceControls: pulumi.Input.decodeList<GetFunctionAppSourceControl>(map['sourceControls'], (value) => GetFunctionAppSourceControl.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

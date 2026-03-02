@@ -118,7 +118,7 @@ class GetDomainNameResult {
       domainName: map['domainName'] as String,
       domainNameId: map['domainNameId'] as String,
       endpointAccessMode: map['endpointAccessMode'] as String,
-      endpointConfigurations: pulumi.Input.decodeList<GetDomainNameEndpointConfiguration>(map['endpointConfigurations'], (value) => GetDomainNameEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      endpointConfigurations: pulumi.Input.decodeList<GetDomainNameEndpointConfiguration>(map['endpointConfigurations']!, (value) => GetDomainNameEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       policy: map['policy'] as String,
       region: map['region'] as String,

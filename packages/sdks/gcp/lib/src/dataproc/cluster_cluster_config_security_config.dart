@@ -29,8 +29,8 @@ class ClusterClusterConfigSecurityConfig {
 
   factory ClusterClusterConfigSecurityConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigSecurityConfig(
-      identityConfig: map['identityConfig'] == null ? null : (ClusterClusterConfigSecurityConfigIdentityConfig.fromMap((map['identityConfig'] as Map).cast<String, dynamic>())).input(),
-      kerberosConfig: map['kerberosConfig'] == null ? null : (ClusterClusterConfigSecurityConfigKerberosConfig.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>())).input(),
+      identityConfig: map['identityConfig'] == null ? null : (ClusterClusterConfigSecurityConfigIdentityConfig.fromMap((map['identityConfig']! as Map).cast<String, dynamic>())).input(),
+      kerberosConfig: map['kerberosConfig'] == null ? null : (ClusterClusterConfigSecurityConfigKerberosConfig.fromMap((map['kerberosConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

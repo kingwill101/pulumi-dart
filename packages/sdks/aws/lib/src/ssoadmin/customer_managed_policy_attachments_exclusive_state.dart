@@ -44,11 +44,11 @@ class CustomerManagedPolicyAttachmentsExclusiveState {
 
   factory CustomerManagedPolicyAttachmentsExclusiveState.fromMap(Map<String, dynamic> map) {
     return CustomerManagedPolicyAttachmentsExclusiveState(
-      customerManagedPolicyReferences: map['customerManagedPolicyReferences'] == null ? null : (pulumi.Input.decodeList<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>(map['customerManagedPolicyReferences'], (value) => CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
-      permissionSetArn: map['permissionSetArn'] == null ? null : (map['permissionSetArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (CustomerManagedPolicyAttachmentsExclusiveTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      customerManagedPolicyReferences: map['customerManagedPolicyReferences'] == null ? null : ((pulumi.Input.decodeList<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>(map['customerManagedPolicyReferences']!, (value) => CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      instanceArn: map['instanceArn'] == null ? null : ((map['instanceArn'] as String).input()).input(),
+      permissionSetArn: map['permissionSetArn'] == null ? null : ((map['permissionSetArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((CustomerManagedPolicyAttachmentsExclusiveTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

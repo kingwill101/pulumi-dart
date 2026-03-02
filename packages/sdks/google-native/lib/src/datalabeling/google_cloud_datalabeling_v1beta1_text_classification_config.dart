@@ -32,9 +32,9 @@ class GoogleCloudDatalabelingV1beta1TextClassificationConfig {
 
   factory GoogleCloudDatalabelingV1beta1TextClassificationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1TextClassificationConfig(
-      allowMultiLabel: map['allowMultiLabel'] == null ? null : (map['allowMultiLabel'] as bool).input(),
+      allowMultiLabel: map['allowMultiLabel'] == null ? null : (map['allowMultiLabel']! as bool).input(),
       annotationSpecSet: (map['annotationSpecSet'] as String).input(),
-      sentimentConfig: map['sentimentConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1SentimentConfig.fromMap((map['sentimentConfig'] as Map).cast<String, dynamic>())).input(),
+      sentimentConfig: map['sentimentConfig'] == null ? null : (GoogleCloudDatalabelingV1beta1SentimentConfig.fromMap((map['sentimentConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -75,18 +75,18 @@ class DirectoryPasswordPolicy {
 
   factory DirectoryPasswordPolicy.fromMap(Map<String, dynamic> map) {
     return DirectoryPasswordPolicy(
-      hardExpire: map['hardExpire'] == null ? null : (map['hardExpire'] as bool).input(),
-      maxLoginAttempts: map['maxLoginAttempts'] == null ? null : (map['maxLoginAttempts'] as int).input(),
-      maxPasswordAge: map['maxPasswordAge'] == null ? null : (map['maxPasswordAge'] as int).input(),
-      maxPasswordLength: map['maxPasswordLength'] == null ? null : (map['maxPasswordLength'] as int).input(),
-      minPasswordDifferentChars: map['minPasswordDifferentChars'] == null ? null : (map['minPasswordDifferentChars'] as int).input(),
-      minPasswordLength: map['minPasswordLength'] == null ? null : (map['minPasswordLength'] as int).input(),
-      passwordNotContainUsername: map['passwordNotContainUsername'] == null ? null : (map['passwordNotContainUsername'] as bool).input(),
-      passwordReusePrevention: map['passwordReusePrevention'] == null ? null : (map['passwordReusePrevention'] as int).input(),
-      requireLowerCaseChars: map['requireLowerCaseChars'] == null ? null : (map['requireLowerCaseChars'] as bool).input(),
-      requireNumbers: map['requireNumbers'] == null ? null : (map['requireNumbers'] as bool).input(),
-      requireSymbols: map['requireSymbols'] == null ? null : (map['requireSymbols'] as bool).input(),
-      requireUpperCaseChars: map['requireUpperCaseChars'] == null ? null : (map['requireUpperCaseChars'] as bool).input(),
+      hardExpire: map['hardExpire'] == null ? null : (map['hardExpire']! as bool).input(),
+      maxLoginAttempts: map['maxLoginAttempts'] == null ? null : (map['maxLoginAttempts']! as int).input(),
+      maxPasswordAge: map['maxPasswordAge'] == null ? null : (map['maxPasswordAge']! as int).input(),
+      maxPasswordLength: map['maxPasswordLength'] == null ? null : (map['maxPasswordLength']! as int).input(),
+      minPasswordDifferentChars: map['minPasswordDifferentChars'] == null ? null : (map['minPasswordDifferentChars']! as int).input(),
+      minPasswordLength: map['minPasswordLength'] == null ? null : (map['minPasswordLength']! as int).input(),
+      passwordNotContainUsername: map['passwordNotContainUsername'] == null ? null : (map['passwordNotContainUsername']! as bool).input(),
+      passwordReusePrevention: map['passwordReusePrevention'] == null ? null : (map['passwordReusePrevention']! as int).input(),
+      requireLowerCaseChars: map['requireLowerCaseChars'] == null ? null : (map['requireLowerCaseChars']! as bool).input(),
+      requireNumbers: map['requireNumbers'] == null ? null : (map['requireNumbers']! as bool).input(),
+      requireSymbols: map['requireSymbols'] == null ? null : (map['requireSymbols']! as bool).input(),
+      requireUpperCaseChars: map['requireUpperCaseChars'] == null ? null : (map['requireUpperCaseChars']! as bool).input(),
     );
   }
 }

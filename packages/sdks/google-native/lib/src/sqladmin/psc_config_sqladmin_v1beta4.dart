@@ -26,8 +26,8 @@ class PscConfigSqladminV1beta4 {
 
   factory PscConfigSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return PscConfigSqladminV1beta4(
-      allowedConsumerProjects: map['allowedConsumerProjects'] == null ? null : ((map['allowedConsumerProjects'] as List).cast<String>()).input(),
-      pscEnabled: map['pscEnabled'] == null ? null : (map['pscEnabled'] as bool).input(),
+      allowedConsumerProjects: map['allowedConsumerProjects'] == null ? null : ((map['allowedConsumerProjects']! as List).cast<String>()).input(),
+      pscEnabled: map['pscEnabled'] == null ? null : (map['pscEnabled']! as bool).input(),
     );
   }
 }

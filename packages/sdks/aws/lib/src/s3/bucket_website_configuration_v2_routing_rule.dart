@@ -27,8 +27,8 @@ class BucketWebsiteConfigurationV2RoutingRule {
 
   factory BucketWebsiteConfigurationV2RoutingRule.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteConfigurationV2RoutingRule(
-      condition: map['condition'] == null ? null : (BucketWebsiteConfigurationV2RoutingRuleCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      redirect: (BucketWebsiteConfigurationV2RoutingRuleRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : ((BucketWebsiteConfigurationV2RoutingRuleCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input()).input(),
+      redirect: (BucketWebsiteConfigurationV2RoutingRuleRedirect.fromMap((map['redirect']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

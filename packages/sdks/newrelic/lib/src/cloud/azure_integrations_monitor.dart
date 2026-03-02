@@ -45,12 +45,12 @@ class AzureIntegrationsMonitor {
 
   factory AzureIntegrationsMonitor.fromMap(Map<String, dynamic> map) {
     return AzureIntegrationsMonitor(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      excludeTags: map['excludeTags'] == null ? null : ((map['excludeTags'] as List).cast<String>()).input(),
-      includeTags: map['includeTags'] == null ? null : ((map['includeTags'] as List).cast<String>()).input(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
-      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups'] as List).cast<String>()).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      excludeTags: map['excludeTags'] == null ? null : ((map['excludeTags']! as List).cast<String>()).input(),
+      includeTags: map['includeTags'] == null ? null : ((map['includeTags']! as List).cast<String>()).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups']! as List).cast<String>()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
     );
   }
 }

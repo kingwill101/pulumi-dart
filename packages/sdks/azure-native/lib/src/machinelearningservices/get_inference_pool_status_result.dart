@@ -35,10 +35,10 @@ class GetInferencePoolStatusResult {
 
   factory GetInferencePoolStatusResult.fromMap(Map<String, dynamic> map) {
     return GetInferencePoolStatusResult(
-      actualCapacity: map['actualCapacity'] == null ? null : map['actualCapacity'] as int,
-      groupCount: map['groupCount'] == null ? null : map['groupCount'] as int,
-      requestedCapacity: map['requestedCapacity'] == null ? null : map['requestedCapacity'] as int,
-      reservedCapacity: map['reservedCapacity'] == null ? null : map['reservedCapacity'] as int,
+      actualCapacity: map['actualCapacity'] == null ? null : map['actualCapacity']! as int,
+      groupCount: map['groupCount'] == null ? null : map['groupCount']! as int,
+      requestedCapacity: map['requestedCapacity'] == null ? null : map['requestedCapacity']! as int,
+      reservedCapacity: map['reservedCapacity'] == null ? null : map['reservedCapacity']! as int,
     );
   }
 }

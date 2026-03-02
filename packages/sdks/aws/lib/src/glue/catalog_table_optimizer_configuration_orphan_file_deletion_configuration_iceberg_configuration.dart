@@ -30,9 +30,9 @@ class CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergCo
 
   factory CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      orphanFileRetentionPeriodInDays: map['orphanFileRetentionPeriodInDays'] == null ? null : (map['orphanFileRetentionPeriodInDays'] as int).input(),
-      runRateInHours: map['runRateInHours'] == null ? null : (map['runRateInHours'] as int).input(),
+      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
+      orphanFileRetentionPeriodInDays: map['orphanFileRetentionPeriodInDays'] == null ? null : ((map['orphanFileRetentionPeriodInDays'] as int).input()).input(),
+      runRateInHours: map['runRateInHours'] == null ? null : ((map['runRateInHours'] as int).input()).input(),
     );
   }
 }

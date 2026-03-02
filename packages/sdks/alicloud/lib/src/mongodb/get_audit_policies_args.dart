@@ -30,7 +30,7 @@ class GetAuditPoliciesArgs {
   factory GetAuditPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetAuditPoliciesArgs(
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

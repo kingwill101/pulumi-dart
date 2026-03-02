@@ -79,17 +79,17 @@ class GuestConfigurationNavigationResponse {
   factory GuestConfigurationNavigationResponse.fromMap(Map<String, dynamic> map) {
     return GuestConfigurationNavigationResponse(
       assignmentSource: (map['assignmentSource'] as String).input(),
-      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType'] as String).input(),
-      configurationParameter: map['configurationParameter'] == null ? null : (pulumi.Input.decodeList<ConfigurationParameterResponse>(map['configurationParameter'], (value) => ConfigurationParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configurationProtectedParameter: map['configurationProtectedParameter'] == null ? null : (pulumi.Input.decodeList<ConfigurationParameterResponse>(map['configurationProtectedParameter'], (value) => ConfigurationParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType']! as String).input(),
+      configurationParameter: map['configurationParameter'] == null ? null : (pulumi.Input.decodeList<ConfigurationParameterResponse>(map['configurationParameter']!, (value) => ConfigurationParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationProtectedParameter: map['configurationProtectedParameter'] == null ? null : (pulumi.Input.decodeList<ConfigurationParameterResponse>(map['configurationProtectedParameter']!, (value) => ConfigurationParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       configurationSetting: (ConfigurationSettingResponse.fromMap((map['configurationSetting'] as Map).cast<String, dynamic>())).input(),
-      contentHash: map['contentHash'] == null ? null : (map['contentHash'] as String).input(),
-      contentManagedIdentity: map['contentManagedIdentity'] == null ? null : (map['contentManagedIdentity'] as String).input(),
+      contentHash: map['contentHash'] == null ? null : (map['contentHash']! as String).input(),
+      contentManagedIdentity: map['contentManagedIdentity'] == null ? null : (map['contentManagedIdentity']! as String).input(),
       contentType: (map['contentType'] as String).input(),
-      contentUri: map['contentUri'] == null ? null : (map['contentUri'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      contentUri: map['contentUri'] == null ? null : (map['contentUri']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

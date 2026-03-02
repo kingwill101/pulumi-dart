@@ -61,13 +61,13 @@ class GetEcsSnapshotGroupsResult {
       groups: pulumi.Input.decodeList<GetEcsSnapshotGroupsGroup>(map['groups'], (value) => GetEcsSnapshotGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      snapshotGroupName: map['snapshotGroupName'] == null ? null : map['snapshotGroupName'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      snapshotGroupName: map['snapshotGroupName'] == null ? null : map['snapshotGroupName']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

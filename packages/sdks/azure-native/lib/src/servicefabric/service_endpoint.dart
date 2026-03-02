@@ -26,7 +26,7 @@ class ServiceEndpoint {
 
   factory ServiceEndpoint.fromMap(Map<String, dynamic> map) {
     return ServiceEndpoint(
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
       service: (map['service'] as String).input(),
     );
   }

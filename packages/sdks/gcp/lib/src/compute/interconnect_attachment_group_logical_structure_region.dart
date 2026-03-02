@@ -31,8 +31,8 @@ class InterconnectAttachmentGroupLogicalStructureRegion {
 
   factory InterconnectAttachmentGroupLogicalStructureRegion.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupLogicalStructureRegion(
-      metros: map['metros'] == null ? null : (pulumi.Input.decodeList<InterconnectAttachmentGroupLogicalStructureRegionMetro>(map['metros'], (value) => InterconnectAttachmentGroupLogicalStructureRegionMetro.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      metros: map['metros'] == null ? null : (pulumi.Input.decodeList<InterconnectAttachmentGroupLogicalStructureRegionMetro>(map['metros']!, (value) => InterconnectAttachmentGroupLogicalStructureRegionMetro.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

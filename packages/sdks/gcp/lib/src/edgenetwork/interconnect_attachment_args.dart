@@ -74,14 +74,14 @@ class InterconnectAttachmentArgs {
 
   factory InterconnectAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       interconnect: (map['interconnect'] as String).input(),
       interconnectAttachmentId: (map['interconnectAttachmentId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
       network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       vlanId: (map['vlanId'] as int).input(),
       zone: (map['zone'] as String).input(),
     );

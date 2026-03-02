@@ -32,9 +32,9 @@ class ContainerResourceMetricStatusPatch {
 
   factory ContainerResourceMetricStatusPatch.fromMap(Map<String, dynamic> map) {
     return ContainerResourceMetricStatusPatch(
-      container: map['container'] == null ? null : (map['container'] as String).input(),
-      current: map['current'] == null ? null : (MetricValueStatusPatch.fromMap((map['current'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      container: map['container'] == null ? null : (map['container']! as String).input(),
+      current: map['current'] == null ? null : (MetricValueStatusPatch.fromMap((map['current']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -49,12 +49,12 @@ class SourceContaineranalysisV1alpha1 {
 
   factory SourceContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return SourceContaineranalysisV1alpha1(
-      additionalContexts: map['additionalContexts'] == null ? null : (pulumi.Input.decodeList<GoogleDevtoolsContaineranalysisV1alpha1SourceContext>(map['additionalContexts'], (value) => GoogleDevtoolsContaineranalysisV1alpha1SourceContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      artifactStorageSource: map['artifactStorageSource'] == null ? null : (StorageSource.fromMap((map['artifactStorageSource'] as Map).cast<String, dynamic>())).input(),
-      context: map['context'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1SourceContext.fromMap((map['context'] as Map).cast<String, dynamic>())).input(),
-      fileHashes: map['fileHashes'] == null ? null : ((map['fileHashes'] as Map).cast<String, String>()).input(),
-      repoSource: map['repoSource'] == null ? null : (RepoSource.fromMap((map['repoSource'] as Map).cast<String, dynamic>())).input(),
-      storageSource: map['storageSource'] == null ? null : (StorageSource.fromMap((map['storageSource'] as Map).cast<String, dynamic>())).input(),
+      additionalContexts: map['additionalContexts'] == null ? null : (pulumi.Input.decodeList<GoogleDevtoolsContaineranalysisV1alpha1SourceContext>(map['additionalContexts']!, (value) => GoogleDevtoolsContaineranalysisV1alpha1SourceContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      artifactStorageSource: map['artifactStorageSource'] == null ? null : (StorageSource.fromMap((map['artifactStorageSource']! as Map).cast<String, dynamic>())).input(),
+      context: map['context'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1SourceContext.fromMap((map['context']! as Map).cast<String, dynamic>())).input(),
+      fileHashes: map['fileHashes'] == null ? null : ((map['fileHashes']! as Map).cast<String, String>()).input(),
+      repoSource: map['repoSource'] == null ? null : (RepoSource.fromMap((map['repoSource']! as Map).cast<String, dynamic>())).input(),
+      storageSource: map['storageSource'] == null ? null : (StorageSource.fromMap((map['storageSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

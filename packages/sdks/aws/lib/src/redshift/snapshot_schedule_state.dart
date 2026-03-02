@@ -62,15 +62,15 @@ class SnapshotScheduleState {
 
   factory SnapshotScheduleState.fromMap(Map<String, dynamic> map) {
     return SnapshotScheduleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      definitions: map['definitions'] == null ? null : ((map['definitions'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
-      identifierPrefix: map['identifierPrefix'] == null ? null : (map['identifierPrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      definitions: map['definitions'] == null ? null : (((map['definitions'] as List).cast<String>()).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      identifier: map['identifier'] == null ? null : ((map['identifier'] as String).input()).input(),
+      identifierPrefix: map['identifierPrefix'] == null ? null : ((map['identifierPrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

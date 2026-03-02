@@ -35,8 +35,8 @@ class TagArgs {
   factory TagArgs.fromMap(Map<String, dynamic> map) {
     return TagArgs(
       apiManagementId: (map['apiManagementId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

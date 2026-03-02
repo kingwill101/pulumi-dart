@@ -26,8 +26,8 @@ class PrometheusRuleGroupActionResponse {
 
   factory PrometheusRuleGroupActionResponse.fromMap(Map<String, dynamic> map) {
     return PrometheusRuleGroupActionResponse(
-      actionGroupId: map['actionGroupId'] == null ? null : (map['actionGroupId'] as String).input(),
-      actionProperties: map['actionProperties'] == null ? null : ((map['actionProperties'] as Map).cast<String, String>()).input(),
+      actionGroupId: map['actionGroupId'] == null ? null : (map['actionGroupId']! as String).input(),
+      actionProperties: map['actionProperties'] == null ? null : ((map['actionProperties']! as Map).cast<String, String>()).input(),
     );
   }
 }

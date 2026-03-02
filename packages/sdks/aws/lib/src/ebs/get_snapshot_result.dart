@@ -125,7 +125,7 @@ class GetSnapshotResult {
       dataEncryptionKeyId: map['dataEncryptionKeyId'] as String,
       description: map['description'] as String,
       encrypted: map['encrypted'] as bool,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSnapshotFilter>(map['filters'], (value) => GetSnapshotFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSnapshotFilter>(map['filters']!, (value) => GetSnapshotFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
       mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,

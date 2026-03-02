@@ -46,13 +46,13 @@ class GetDbInstancesResult {
 
   factory GetDbInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetDbInstancesResult(
-      dbInstanceDescription: map['dbInstanceDescription'] == null ? null : map['dbInstanceDescription'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      dbInstanceDescription: map['dbInstanceDescription'] == null ? null : map['dbInstanceDescription']! as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instances: pulumi.Input.decodeList<GetDbInstancesInstance>(map['instances'], (value) => GetDbInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

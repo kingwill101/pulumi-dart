@@ -30,9 +30,9 @@ class EndpointInformation {
 
   factory EndpointInformation.fromMap(Map<String, dynamic> map) {
     return EndpointInformation(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion']! as String).input(),
     );
   }
 }

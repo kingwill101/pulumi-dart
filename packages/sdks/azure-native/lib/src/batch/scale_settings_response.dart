@@ -28,8 +28,8 @@ class ScaleSettingsResponse {
 
   factory ScaleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ScaleSettingsResponse(
-      autoScale: map['autoScale'] == null ? null : (AutoScaleSettingsResponse.fromMap((map['autoScale'] as Map).cast<String, dynamic>())).input(),
-      fixedScale: map['fixedScale'] == null ? null : (FixedScaleSettingsResponse.fromMap((map['fixedScale'] as Map).cast<String, dynamic>())).input(),
+      autoScale: map['autoScale'] == null ? null : (AutoScaleSettingsResponse.fromMap((map['autoScale']! as Map).cast<String, dynamic>())).input(),
+      fixedScale: map['fixedScale'] == null ? null : (FixedScaleSettingsResponse.fromMap((map['fixedScale']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

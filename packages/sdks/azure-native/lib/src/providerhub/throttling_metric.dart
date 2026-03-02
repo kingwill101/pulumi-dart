@@ -30,7 +30,7 @@ class ThrottlingMetric {
 
   factory ThrottlingMetric.fromMap(Map<String, dynamic> map) {
     return ThrottlingMetric(
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
       limit: (map['limit'] as double).input(),
       type: (map['type'] as String).input(),
     );

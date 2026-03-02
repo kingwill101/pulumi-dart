@@ -38,10 +38,10 @@ class GetNbTypesResult {
 
   factory GetNbTypesResult.fromMap(Map<String, dynamic> map) {
     return GetNbTypesResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNbTypesFilter>(map['filters'], (value) => GetNbTypesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNbTypesFilter>(map['filters']!, (value) => GetNbTypesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
       types: pulumi.Input.decodeList<GetNbTypesType>(map['types'], (value) => GetNbTypesType.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

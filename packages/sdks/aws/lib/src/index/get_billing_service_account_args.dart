@@ -24,7 +24,7 @@ class GetBillingServiceAccountArgs {
 
   factory GetBillingServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingServiceAccountArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
     );
   }
 }

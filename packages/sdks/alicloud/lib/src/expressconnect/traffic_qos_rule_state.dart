@@ -138,22 +138,22 @@ class TrafficQosRuleState {
 
   factory TrafficQosRuleState.fromMap(Map<String, dynamic> map) {
     return TrafficQosRuleState(
-      dstCidr: map['dstCidr'] == null ? null : (map['dstCidr'] as String).input(),
-      dstIpv6Cidr: map['dstIpv6Cidr'] == null ? null : (map['dstIpv6Cidr'] as String).input(),
-      dstPortRange: map['dstPortRange'] == null ? null : (map['dstPortRange'] as String).input(),
-      matchDscp: map['matchDscp'] == null ? null : (map['matchDscp'] as int).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      qosId: map['qosId'] == null ? null : (map['qosId'] as String).input(),
-      queueId: map['queueId'] == null ? null : (map['queueId'] as String).input(),
-      remarkingDscp: map['remarkingDscp'] == null ? null : (map['remarkingDscp'] as int).input(),
-      ruleDescription: map['ruleDescription'] == null ? null : (map['ruleDescription'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      srcCidr: map['srcCidr'] == null ? null : (map['srcCidr'] as String).input(),
-      srcIpv6Cidr: map['srcIpv6Cidr'] == null ? null : (map['srcIpv6Cidr'] as String).input(),
-      srcPortRange: map['srcPortRange'] == null ? null : (map['srcPortRange'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      dstCidr: map['dstCidr'] == null ? null : (map['dstCidr']! as String).input(),
+      dstIpv6Cidr: map['dstIpv6Cidr'] == null ? null : (map['dstIpv6Cidr']! as String).input(),
+      dstPortRange: map['dstPortRange'] == null ? null : (map['dstPortRange']! as String).input(),
+      matchDscp: map['matchDscp'] == null ? null : (map['matchDscp']! as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      qosId: map['qosId'] == null ? null : (map['qosId']! as String).input(),
+      queueId: map['queueId'] == null ? null : (map['queueId']! as String).input(),
+      remarkingDscp: map['remarkingDscp'] == null ? null : (map['remarkingDscp']! as int).input(),
+      ruleDescription: map['ruleDescription'] == null ? null : (map['ruleDescription']! as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      srcCidr: map['srcCidr'] == null ? null : (map['srcCidr']! as String).input(),
+      srcIpv6Cidr: map['srcIpv6Cidr'] == null ? null : (map['srcIpv6Cidr']! as String).input(),
+      srcPortRange: map['srcPortRange'] == null ? null : (map['srcPortRange']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class ApplicationMaximumCapacity {
   factory ApplicationMaximumCapacity.fromMap(Map<String, dynamic> map) {
     return ApplicationMaximumCapacity(
       cpu: (map['cpu'] as String).input(),
-      disk: map['disk'] == null ? null : (map['disk'] as String).input(),
+      disk: map['disk'] == null ? null : ((map['disk'] as String).input()).input(),
       memory: (map['memory'] as String).input(),
     );
   }

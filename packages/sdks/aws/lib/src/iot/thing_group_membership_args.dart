@@ -39,8 +39,8 @@ class ThingGroupMembershipArgs {
 
   factory ThingGroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return ThingGroupMembershipArgs(
-      overrideDynamicGroup: map['overrideDynamicGroup'] == null ? null : (map['overrideDynamicGroup'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      overrideDynamicGroup: map['overrideDynamicGroup'] == null ? null : ((map['overrideDynamicGroup'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       thingGroupName: (map['thingGroupName'] as String).input(),
       thingName: (map['thingName'] as String).input(),
     );

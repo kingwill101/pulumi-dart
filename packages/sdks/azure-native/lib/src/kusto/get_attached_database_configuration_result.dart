@@ -85,14 +85,14 @@ class GetAttachedDatabaseConfigurationResult {
       azureApiVersion: map['azureApiVersion'] as String,
       clusterResourceId: map['clusterResourceId'] as String,
       databaseName: map['databaseName'] as String,
-      databaseNameOverride: map['databaseNameOverride'] == null ? null : map['databaseNameOverride'] as String,
-      databaseNamePrefix: map['databaseNamePrefix'] == null ? null : map['databaseNamePrefix'] as String,
+      databaseNameOverride: map['databaseNameOverride'] == null ? null : map['databaseNameOverride']! as String,
+      databaseNamePrefix: map['databaseNamePrefix'] == null ? null : map['databaseNamePrefix']! as String,
       defaultPrincipalsModificationKind: map['defaultPrincipalsModificationKind'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : TableLevelSharingPropertiesResponse.fromMap((map['tableLevelSharingProperties'] as Map).cast<String, dynamic>()),
+      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : TableLevelSharingPropertiesResponse.fromMap((map['tableLevelSharingProperties']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

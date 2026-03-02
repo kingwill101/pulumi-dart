@@ -43,7 +43,7 @@ class ManagedClusterLbRule {
       backendPort: (map['backendPort'] as int).input(),
       frontendPort: (map['frontendPort'] as int).input(),
       probeProtocol: (map['probeProtocol'] as String).input(),
-      probeRequestPath: map['probeRequestPath'] == null ? null : (map['probeRequestPath'] as String).input(),
+      probeRequestPath: map['probeRequestPath'] == null ? null : (map['probeRequestPath']! as String).input(),
       protocol: (map['protocol'] as String).input(),
     );
   }

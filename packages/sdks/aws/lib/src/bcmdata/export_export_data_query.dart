@@ -26,7 +26,7 @@ class ExportExportDataQuery {
   factory ExportExportDataQuery.fromMap(Map<String, dynamic> map) {
     return ExportExportDataQuery(
       queryStatement: (map['queryStatement'] as String).input(),
-      tableConfigurations: map['tableConfigurations'] == null ? null : ((map['tableConfigurations'] as Map).cast<String, Map<String, String>>()).input(),
+      tableConfigurations: map['tableConfigurations'] == null ? null : (((map['tableConfigurations'] as Map).cast<String, Map<String, String>>()).input()).input(),
     );
   }
 }

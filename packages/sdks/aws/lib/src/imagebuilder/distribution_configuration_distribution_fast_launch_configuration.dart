@@ -44,9 +44,9 @@ class DistributionConfigurationDistributionFastLaunchConfiguration {
     return DistributionConfigurationDistributionFastLaunchConfiguration(
       accountId: (map['accountId'] as String).input(),
       enabled: (map['enabled'] as bool).input(),
-      launchTemplate: map['launchTemplate'] == null ? null : (DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate.fromMap((map['launchTemplate'] as Map).cast<String, dynamic>())).input(),
-      maxParallelLaunches: map['maxParallelLaunches'] == null ? null : (map['maxParallelLaunches'] as int).input(),
-      snapshotConfiguration: map['snapshotConfiguration'] == null ? null : (DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap((map['snapshotConfiguration'] as Map).cast<String, dynamic>())).input(),
+      launchTemplate: map['launchTemplate'] == null ? null : ((DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate.fromMap((map['launchTemplate']! as Map).cast<String, dynamic>())).input()).input(),
+      maxParallelLaunches: map['maxParallelLaunches'] == null ? null : ((map['maxParallelLaunches'] as int).input()).input(),
+      snapshotConfiguration: map['snapshotConfiguration'] == null ? null : ((DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap((map['snapshotConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

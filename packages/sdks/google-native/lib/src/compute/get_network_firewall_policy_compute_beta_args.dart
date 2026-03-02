@@ -28,7 +28,7 @@ class GetNetworkFirewallPolicyComputeBetaArgs {
   factory GetNetworkFirewallPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkFirewallPolicyComputeBetaArgs(
       firewallPolicy: (map['firewallPolicy'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -86,20 +86,20 @@ class ReportDefinitionState {
 
   factory ReportDefinitionState.fromMap(Map<String, dynamic> map) {
     return ReportDefinitionState(
-      additionalArtifacts: map['additionalArtifacts'] == null ? null : ((map['additionalArtifacts'] as List).cast<String>()).input(),
-      additionalSchemaElements: map['additionalSchemaElements'] == null ? null : ((map['additionalSchemaElements'] as List).cast<String>()).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      compression: map['compression'] == null ? null : (map['compression'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      refreshClosedReports: map['refreshClosedReports'] == null ? null : (map['refreshClosedReports'] as bool).input(),
-      reportName: map['reportName'] == null ? null : (map['reportName'] as String).input(),
-      reportVersioning: map['reportVersioning'] == null ? null : (map['reportVersioning'] as String).input(),
-      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket'] as String).input(),
-      s3Prefix: map['s3Prefix'] == null ? null : (map['s3Prefix'] as String).input(),
-      s3Region: map['s3Region'] == null ? null : (map['s3Region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeUnit: map['timeUnit'] == null ? null : (map['timeUnit'] as String).input(),
+      additionalArtifacts: map['additionalArtifacts'] == null ? null : (((map['additionalArtifacts'] as List).cast<String>()).input()).input(),
+      additionalSchemaElements: map['additionalSchemaElements'] == null ? null : (((map['additionalSchemaElements'] as List).cast<String>()).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      compression: map['compression'] == null ? null : ((map['compression'] as String).input()).input(),
+      format: map['format'] == null ? null : ((map['format'] as String).input()).input(),
+      refreshClosedReports: map['refreshClosedReports'] == null ? null : ((map['refreshClosedReports'] as bool).input()).input(),
+      reportName: map['reportName'] == null ? null : ((map['reportName'] as String).input()).input(),
+      reportVersioning: map['reportVersioning'] == null ? null : ((map['reportVersioning'] as String).input()).input(),
+      s3Bucket: map['s3Bucket'] == null ? null : ((map['s3Bucket'] as String).input()).input(),
+      s3Prefix: map['s3Prefix'] == null ? null : ((map['s3Prefix'] as String).input()).input(),
+      s3Region: map['s3Region'] == null ? null : ((map['s3Region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeUnit: map['timeUnit'] == null ? null : ((map['timeUnit'] as String).input()).input(),
     );
   }
 }

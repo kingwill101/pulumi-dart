@@ -31,9 +31,9 @@ class SnapshotCreateVolumePermissionState {
 
   factory SnapshotCreateVolumePermissionState.fromMap(Map<String, dynamic> map) {
     return SnapshotCreateVolumePermissionState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      snapshotId: map['snapshotId'] == null ? null : ((map['snapshotId'] as String).input()).input(),
     );
   }
 }

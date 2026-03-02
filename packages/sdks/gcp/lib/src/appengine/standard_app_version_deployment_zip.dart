@@ -25,7 +25,7 @@ class StandardAppVersionDeploymentZip {
 
   factory StandardAppVersionDeploymentZip.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionDeploymentZip(
-      filesCount: map['filesCount'] == null ? null : (map['filesCount'] as int).input(),
+      filesCount: map['filesCount'] == null ? null : (map['filesCount']! as int).input(),
       sourceUrl: (map['sourceUrl'] as String).input(),
     );
   }

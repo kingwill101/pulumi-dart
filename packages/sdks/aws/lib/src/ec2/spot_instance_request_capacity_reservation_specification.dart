@@ -28,8 +28,8 @@ class SpotInstanceRequestCapacityReservationSpecification {
 
   factory SpotInstanceRequestCapacityReservationSpecification.fromMap(Map<String, dynamic> map) {
     return SpotInstanceRequestCapacityReservationSpecification(
-      capacityReservationPreference: map['capacityReservationPreference'] == null ? null : (map['capacityReservationPreference'] as String).input(),
-      capacityReservationTarget: map['capacityReservationTarget'] == null ? null : (SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget.fromMap((map['capacityReservationTarget'] as Map).cast<String, dynamic>())).input(),
+      capacityReservationPreference: map['capacityReservationPreference'] == null ? null : ((map['capacityReservationPreference'] as String).input()).input(),
+      capacityReservationTarget: map['capacityReservationTarget'] == null ? null : ((SpotInstanceRequestCapacityReservationSpecificationCapacityReservationTarget.fromMap((map['capacityReservationTarget']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -55,14 +55,14 @@ class ApplicationGatewayFrontendIpConfiguration {
 
   factory ApplicationGatewayFrontendIpConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayFrontendIpConfiguration(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      privateIpAddressAllocation: map['privateIpAddressAllocation'] == null ? null : (map['privateIpAddressAllocation'] as String).input(),
-      privateLinkConfigurationId: map['privateLinkConfigurationId'] == null ? null : (map['privateLinkConfigurationId'] as String).input(),
-      privateLinkConfigurationName: map['privateLinkConfigurationName'] == null ? null : (map['privateLinkConfigurationName'] as String).input(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      privateIpAddressAllocation: map['privateIpAddressAllocation'] == null ? null : (map['privateIpAddressAllocation']! as String).input(),
+      privateLinkConfigurationId: map['privateLinkConfigurationId'] == null ? null : (map['privateLinkConfigurationId']! as String).input(),
+      privateLinkConfigurationName: map['privateLinkConfigurationName'] == null ? null : (map['privateLinkConfigurationName']! as String).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

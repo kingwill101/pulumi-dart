@@ -40,10 +40,10 @@ class SubscriptionPubsubV1beta1aArgs {
 
   factory SubscriptionPubsubV1beta1aArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionPubsubV1beta1aArgs(
-      ackDeadlineSeconds: map['ackDeadlineSeconds'] == null ? null : (map['ackDeadlineSeconds'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pushConfig: map['pushConfig'] == null ? null : (PushConfigPubsubV1beta1a.fromMap((map['pushConfig'] as Map).cast<String, dynamic>())).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      ackDeadlineSeconds: map['ackDeadlineSeconds'] == null ? null : (map['ackDeadlineSeconds']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pushConfig: map['pushConfig'] == null ? null : (PushConfigPubsubV1beta1a.fromMap((map['pushConfig']! as Map).cast<String, dynamic>())).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

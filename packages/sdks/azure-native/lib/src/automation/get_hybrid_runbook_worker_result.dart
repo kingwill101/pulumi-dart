@@ -73,15 +73,15 @@ class GetHybridRunbookWorkerResult {
     return GetHybridRunbookWorkerResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      ip: map['ip'] == null ? null : map['ip'] as String,
-      lastSeenDateTime: map['lastSeenDateTime'] == null ? null : map['lastSeenDateTime'] as String,
+      ip: map['ip'] == null ? null : map['ip']! as String,
+      lastSeenDateTime: map['lastSeenDateTime'] == null ? null : map['lastSeenDateTime']! as String,
       name: map['name'] as String,
-      registeredDateTime: map['registeredDateTime'] == null ? null : map['registeredDateTime'] as String,
+      registeredDateTime: map['registeredDateTime'] == null ? null : map['registeredDateTime']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      vmResourceId: map['vmResourceId'] == null ? null : map['vmResourceId'] as String,
-      workerName: map['workerName'] == null ? null : map['workerName'] as String,
-      workerType: map['workerType'] == null ? null : map['workerType'] as String,
+      vmResourceId: map['vmResourceId'] == null ? null : map['vmResourceId']! as String,
+      workerName: map['workerName'] == null ? null : map['workerName']! as String,
+      workerType: map['workerType'] == null ? null : map['workerType']! as String,
     );
   }
 }

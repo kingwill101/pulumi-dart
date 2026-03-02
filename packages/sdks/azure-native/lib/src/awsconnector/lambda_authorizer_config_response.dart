@@ -31,9 +31,9 @@ class LambdaAuthorizerConfigResponse {
 
   factory LambdaAuthorizerConfigResponse.fromMap(Map<String, dynamic> map) {
     return LambdaAuthorizerConfigResponse(
-      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : (map['authorizerResultTtlInSeconds'] as int).input(),
-      authorizerUri: map['authorizerUri'] == null ? null : (map['authorizerUri'] as String).input(),
-      identityValidationExpression: map['identityValidationExpression'] == null ? null : (map['identityValidationExpression'] as String).input(),
+      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : (map['authorizerResultTtlInSeconds']! as int).input(),
+      authorizerUri: map['authorizerUri'] == null ? null : (map['authorizerUri']! as String).input(),
+      identityValidationExpression: map['identityValidationExpression'] == null ? null : (map['identityValidationExpression']! as String).input(),
     );
   }
 }

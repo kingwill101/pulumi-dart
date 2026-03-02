@@ -34,7 +34,7 @@ class UserGroupArgs {
 
   factory UserGroupArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       userGroupName: (map['userGroupName'] as String).input(),
     );

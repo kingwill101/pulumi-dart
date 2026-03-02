@@ -21,7 +21,7 @@ class SSETypeEnumValue {
 
   factory SSETypeEnumValue.fromMap(Map<String, dynamic> map) {
     return SSETypeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -38,9 +38,9 @@ class EventConnectionAuthParametersOauth {
   factory EventConnectionAuthParametersOauth.fromMap(Map<String, dynamic> map) {
     return EventConnectionAuthParametersOauth(
       authorizationEndpoint: (map['authorizationEndpoint'] as String).input(),
-      clientParameters: map['clientParameters'] == null ? null : (EventConnectionAuthParametersOauthClientParameters.fromMap((map['clientParameters'] as Map).cast<String, dynamic>())).input(),
+      clientParameters: map['clientParameters'] == null ? null : ((EventConnectionAuthParametersOauthClientParameters.fromMap((map['clientParameters']! as Map).cast<String, dynamic>())).input()).input(),
       httpMethod: (map['httpMethod'] as String).input(),
-      oauthHttpParameters: (EventConnectionAuthParametersOauthOauthHttpParameters.fromMap((map['oauthHttpParameters'] as Map).cast<String, dynamic>())).input(),
+      oauthHttpParameters: (EventConnectionAuthParametersOauthOauthHttpParameters.fromMap((map['oauthHttpParameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

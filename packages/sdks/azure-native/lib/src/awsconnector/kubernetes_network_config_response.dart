@@ -32,9 +32,9 @@ class KubernetesNetworkConfigResponse {
 
   factory KubernetesNetworkConfigResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesNetworkConfigResponse(
-      ipFamily: map['ipFamily'] == null ? null : (IpFamilyEnumValue.fromMap((map['ipFamily'] as Map).cast<String, dynamic>())).input(),
-      serviceIpv4Cidr: map['serviceIpv4Cidr'] == null ? null : (map['serviceIpv4Cidr'] as String).input(),
-      serviceIpv6Cidr: map['serviceIpv6Cidr'] == null ? null : (map['serviceIpv6Cidr'] as String).input(),
+      ipFamily: map['ipFamily'] == null ? null : (IpFamilyEnumValue.fromMap((map['ipFamily']! as Map).cast<String, dynamic>())).input(),
+      serviceIpv4Cidr: map['serviceIpv4Cidr'] == null ? null : (map['serviceIpv4Cidr']! as String).input(),
+      serviceIpv6Cidr: map['serviceIpv6Cidr'] == null ? null : (map['serviceIpv6Cidr']! as String).input(),
     );
   }
 }

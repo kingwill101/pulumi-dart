@@ -41,7 +41,7 @@ class GetTaskDefinitionVolumeEfsVolumeConfiguration {
 
   factory GetTaskDefinitionVolumeEfsVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetTaskDefinitionVolumeEfsVolumeConfiguration(
-      authorizationConfigs: (pulumi.Input.decodeList<GetTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig>(map['authorizationConfigs'], (value) => GetTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authorizationConfigs: (pulumi.Input.decodeList<GetTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig>(map['authorizationConfigs']!, (value) => GetTaskDefinitionVolumeEfsVolumeConfigurationAuthorizationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
       rootDirectory: (map['rootDirectory'] as String).input(),
       transitEncryption: (map['transitEncryption'] as String).input(),

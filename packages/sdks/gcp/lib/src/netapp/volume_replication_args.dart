@@ -90,18 +90,18 @@ class VolumeReplicationArgs {
 
   factory VolumeReplicationArgs.fromMap(Map<String, dynamic> map) {
     return VolumeReplicationArgs(
-      deleteDestinationVolume: map['deleteDestinationVolume'] == null ? null : (map['deleteDestinationVolume'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationVolumeParameters: map['destinationVolumeParameters'] == null ? null : (VolumeReplicationDestinationVolumeParameters.fromMap((map['destinationVolumeParameters'] as Map).cast<String, dynamic>())).input(),
-      forceStopping: map['forceStopping'] == null ? null : (map['forceStopping'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      deleteDestinationVolume: map['deleteDestinationVolume'] == null ? null : (map['deleteDestinationVolume']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationVolumeParameters: map['destinationVolumeParameters'] == null ? null : (VolumeReplicationDestinationVolumeParameters.fromMap((map['destinationVolumeParameters']! as Map).cast<String, dynamic>())).input(),
+      forceStopping: map['forceStopping'] == null ? null : (map['forceStopping']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      replicationEnabled: map['replicationEnabled'] == null ? null : (map['replicationEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      replicationEnabled: map['replicationEnabled'] == null ? null : (map['replicationEnabled']! as bool).input(),
       replicationSchedule: (map['replicationSchedule'] as String).input(),
       volumeName: (map['volumeName'] as String).input(),
-      waitForMirror: map['waitForMirror'] == null ? null : (map['waitForMirror'] as bool).input(),
+      waitForMirror: map['waitForMirror'] == null ? null : (map['waitForMirror']! as bool).input(),
     );
   }
 }

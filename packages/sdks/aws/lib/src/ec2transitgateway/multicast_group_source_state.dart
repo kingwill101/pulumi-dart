@@ -36,10 +36,10 @@ class MulticastGroupSourceState {
 
   factory MulticastGroupSourceState.fromMap(Map<String, dynamic> map) {
     return MulticastGroupSourceState(
-      groupIpAddress: map['groupIpAddress'] == null ? null : (map['groupIpAddress'] as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      transitGatewayMulticastDomainId: map['transitGatewayMulticastDomainId'] == null ? null : (map['transitGatewayMulticastDomainId'] as String).input(),
+      groupIpAddress: map['groupIpAddress'] == null ? null : ((map['groupIpAddress'] as String).input()).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      transitGatewayMulticastDomainId: map['transitGatewayMulticastDomainId'] == null ? null : ((map['transitGatewayMulticastDomainId'] as String).input()).input(),
     );
   }
 }

@@ -92,21 +92,21 @@ class ManagedHardwareSecurityModuleState {
 
   factory ManagedHardwareSecurityModuleState.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleState(
-      adminObjectIds: map['adminObjectIds'] == null ? null : ((map['adminObjectIds'] as List).cast<String>()).input(),
-      hsmUri: map['hsmUri'] == null ? null : (map['hsmUri'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkAcls: map['networkAcls'] == null ? null : (ManagedHardwareSecurityModuleNetworkAcls.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      purgeProtectionEnabled: map['purgeProtectionEnabled'] == null ? null : (map['purgeProtectionEnabled'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      securityDomainEncryptedData: map['securityDomainEncryptedData'] == null ? null : (map['securityDomainEncryptedData'] as String).input(),
-      securityDomainKeyVaultCertificateIds: map['securityDomainKeyVaultCertificateIds'] == null ? null : ((map['securityDomainKeyVaultCertificateIds'] as List).cast<String>()).input(),
-      securityDomainQuorum: map['securityDomainQuorum'] == null ? null : (map['securityDomainQuorum'] as int).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      softDeleteRetentionDays: map['softDeleteRetentionDays'] == null ? null : (map['softDeleteRetentionDays'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      adminObjectIds: map['adminObjectIds'] == null ? null : ((map['adminObjectIds']! as List).cast<String>()).input(),
+      hsmUri: map['hsmUri'] == null ? null : (map['hsmUri']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkAcls: map['networkAcls'] == null ? null : (ManagedHardwareSecurityModuleNetworkAcls.fromMap((map['networkAcls']! as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      purgeProtectionEnabled: map['purgeProtectionEnabled'] == null ? null : (map['purgeProtectionEnabled']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      securityDomainEncryptedData: map['securityDomainEncryptedData'] == null ? null : (map['securityDomainEncryptedData']! as String).input(),
+      securityDomainKeyVaultCertificateIds: map['securityDomainKeyVaultCertificateIds'] == null ? null : ((map['securityDomainKeyVaultCertificateIds']! as List).cast<String>()).input(),
+      securityDomainQuorum: map['securityDomainQuorum'] == null ? null : (map['securityDomainQuorum']! as int).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      softDeleteRetentionDays: map['softDeleteRetentionDays'] == null ? null : (map['softDeleteRetentionDays']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

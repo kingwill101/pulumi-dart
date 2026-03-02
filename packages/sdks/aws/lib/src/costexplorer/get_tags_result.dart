@@ -49,13 +49,13 @@ class GetTagsResult {
 
   factory GetTagsResult.fromMap(Map<String, dynamic> map) {
     return GetTagsResult(
-      filter: map['filter'] == null ? null : GetTagsFilter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
+      filter: map['filter'] == null ? null : GetTagsFilter.fromMap((map['filter']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       searchString: map['searchString'] == null ? null : map['searchString'] as String,
-      sortBies: map['sortBies'] == null ? null : pulumi.Input.decodeList<GetTagsSortBy>(map['sortBies'], (value) => GetTagsSortBy.fromMap((value as Map).cast<String, dynamic>())),
+      sortBies: map['sortBies'] == null ? null : pulumi.Input.decodeList<GetTagsSortBy>(map['sortBies']!, (value) => GetTagsSortBy.fromMap((value as Map).cast<String, dynamic>())),
       tagKey: map['tagKey'] == null ? null : map['tagKey'] as String,
       tags: (map['tags'] as List).cast<String>(),
-      timePeriod: GetTagsTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>()),
+      timePeriod: GetTagsTimePeriod.fromMap((map['timePeriod']! as Map).cast<String, dynamic>()),
     );
   }
 }

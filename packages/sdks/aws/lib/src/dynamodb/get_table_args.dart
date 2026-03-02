@@ -39,9 +39,9 @@ class GetTableArgs {
   factory GetTableArgs.fromMap(Map<String, dynamic> map) {
     return GetTableArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serverSideEncryption: map['serverSideEncryption'] == null ? null : (GetTableServerSideEncryption.fromMap((map['serverSideEncryption'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serverSideEncryption: map['serverSideEncryption'] == null ? null : ((GetTableServerSideEncryption.fromMap((map['serverSideEncryption']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

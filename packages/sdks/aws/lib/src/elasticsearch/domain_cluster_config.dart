@@ -72,17 +72,17 @@ class DomainClusterConfig {
 
   factory DomainClusterConfig.fromMap(Map<String, dynamic> map) {
     return DomainClusterConfig(
-      coldStorageOptions: map['coldStorageOptions'] == null ? null : (DomainClusterConfigColdStorageOptions.fromMap((map['coldStorageOptions'] as Map).cast<String, dynamic>())).input(),
-      dedicatedMasterCount: map['dedicatedMasterCount'] == null ? null : (map['dedicatedMasterCount'] as int).input(),
-      dedicatedMasterEnabled: map['dedicatedMasterEnabled'] == null ? null : (map['dedicatedMasterEnabled'] as bool).input(),
-      dedicatedMasterType: map['dedicatedMasterType'] == null ? null : (map['dedicatedMasterType'] as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      warmCount: map['warmCount'] == null ? null : (map['warmCount'] as int).input(),
-      warmEnabled: map['warmEnabled'] == null ? null : (map['warmEnabled'] as bool).input(),
-      warmType: map['warmType'] == null ? null : (map['warmType'] as String).input(),
-      zoneAwarenessConfig: map['zoneAwarenessConfig'] == null ? null : (DomainClusterConfigZoneAwarenessConfig.fromMap((map['zoneAwarenessConfig'] as Map).cast<String, dynamic>())).input(),
-      zoneAwarenessEnabled: map['zoneAwarenessEnabled'] == null ? null : (map['zoneAwarenessEnabled'] as bool).input(),
+      coldStorageOptions: map['coldStorageOptions'] == null ? null : ((DomainClusterConfigColdStorageOptions.fromMap((map['coldStorageOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      dedicatedMasterCount: map['dedicatedMasterCount'] == null ? null : ((map['dedicatedMasterCount'] as int).input()).input(),
+      dedicatedMasterEnabled: map['dedicatedMasterEnabled'] == null ? null : ((map['dedicatedMasterEnabled'] as bool).input()).input(),
+      dedicatedMasterType: map['dedicatedMasterType'] == null ? null : ((map['dedicatedMasterType'] as String).input()).input(),
+      instanceCount: map['instanceCount'] == null ? null : ((map['instanceCount'] as int).input()).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      warmCount: map['warmCount'] == null ? null : ((map['warmCount'] as int).input()).input(),
+      warmEnabled: map['warmEnabled'] == null ? null : ((map['warmEnabled'] as bool).input()).input(),
+      warmType: map['warmType'] == null ? null : ((map['warmType'] as String).input()).input(),
+      zoneAwarenessConfig: map['zoneAwarenessConfig'] == null ? null : ((DomainClusterConfigZoneAwarenessConfig.fromMap((map['zoneAwarenessConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      zoneAwarenessEnabled: map['zoneAwarenessEnabled'] == null ? null : ((map['zoneAwarenessEnabled'] as bool).input()).input(),
     );
   }
 }

@@ -41,7 +41,7 @@ class GetRolloutArgs {
     return GetRolloutArgs(
       deliveryPipelineId: (map['deliveryPipelineId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       releaseId: (map['releaseId'] as String).input(),
       rolloutId: (map['rolloutId'] as String).input(),
     );

@@ -26,8 +26,8 @@ class ApplicationSecurityGroupAssociationState {
 
   factory ApplicationSecurityGroupAssociationState.fromMap(Map<String, dynamic> map) {
     return ApplicationSecurityGroupAssociationState(
-      applicationSecurityGroupId: map['applicationSecurityGroupId'] == null ? null : (map['applicationSecurityGroupId'] as String).input(),
-      privateEndpointId: map['privateEndpointId'] == null ? null : (map['privateEndpointId'] as String).input(),
+      applicationSecurityGroupId: map['applicationSecurityGroupId'] == null ? null : (map['applicationSecurityGroupId']! as String).input(),
+      privateEndpointId: map['privateEndpointId'] == null ? null : (map['privateEndpointId']! as String).input(),
     );
   }
 }

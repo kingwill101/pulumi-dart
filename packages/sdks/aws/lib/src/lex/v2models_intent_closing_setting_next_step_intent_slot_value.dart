@@ -20,7 +20,7 @@ class V2modelsIntentClosingSettingNextStepIntentSlotValue {
 
   factory V2modelsIntentClosingSettingNextStepIntentSlotValue.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentClosingSettingNextStepIntentSlotValue(
-      interpretedValue: map['interpretedValue'] == null ? null : (map['interpretedValue'] as String).input(),
+      interpretedValue: map['interpretedValue'] == null ? null : ((map['interpretedValue'] as String).input()).input(),
     );
   }
 }

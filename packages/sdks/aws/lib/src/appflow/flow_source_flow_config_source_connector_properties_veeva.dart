@@ -39,10 +39,10 @@ class FlowSourceFlowConfigSourceConnectorPropertiesVeeva {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesVeeva.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesVeeva(
-      documentType: map['documentType'] == null ? null : (map['documentType'] as String).input(),
-      includeAllVersions: map['includeAllVersions'] == null ? null : (map['includeAllVersions'] as bool).input(),
-      includeRenditions: map['includeRenditions'] == null ? null : (map['includeRenditions'] as bool).input(),
-      includeSourceFiles: map['includeSourceFiles'] == null ? null : (map['includeSourceFiles'] as bool).input(),
+      documentType: map['documentType'] == null ? null : ((map['documentType'] as String).input()).input(),
+      includeAllVersions: map['includeAllVersions'] == null ? null : ((map['includeAllVersions'] as bool).input()).input(),
+      includeRenditions: map['includeRenditions'] == null ? null : ((map['includeRenditions'] as bool).input()).input(),
+      includeSourceFiles: map['includeSourceFiles'] == null ? null : ((map['includeSourceFiles'] as bool).input()).input(),
       object: (map['object'] as String).input(),
     );
   }

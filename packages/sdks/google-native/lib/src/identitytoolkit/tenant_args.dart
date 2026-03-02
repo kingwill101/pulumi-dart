@@ -106,22 +106,22 @@ class TenantArgs {
 
   factory TenantArgs.fromMap(Map<String, dynamic> map) {
     return TenantArgs(
-      allowPasswordSignup: map['allowPasswordSignup'] == null ? null : (map['allowPasswordSignup'] as bool).input(),
-      autodeleteAnonymousUsers: map['autodeleteAnonymousUsers'] == null ? null : (map['autodeleteAnonymousUsers'] as bool).input(),
-      client: map['client'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig.fromMap((map['client'] as Map).cast<String, dynamic>())).input(),
-      disableAuth: map['disableAuth'] == null ? null : (map['disableAuth'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      emailPrivacyConfig: map['emailPrivacyConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig.fromMap((map['emailPrivacyConfig'] as Map).cast<String, dynamic>())).input(),
-      enableAnonymousUser: map['enableAnonymousUser'] == null ? null : (map['enableAnonymousUser'] as bool).input(),
-      enableEmailLinkSignin: map['enableEmailLinkSignin'] == null ? null : (map['enableEmailLinkSignin'] as bool).input(),
-      inheritance: map['inheritance'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2Inheritance.fromMap((map['inheritance'] as Map).cast<String, dynamic>())).input(),
-      mfaConfig: map['mfaConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig.fromMap((map['mfaConfig'] as Map).cast<String, dynamic>())).input(),
-      monitoring: map['monitoring'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2MonitoringConfig.fromMap((map['monitoring'] as Map).cast<String, dynamic>())).input(),
-      passwordPolicyConfig: map['passwordPolicyConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig.fromMap((map['passwordPolicyConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      recaptchaConfig: map['recaptchaConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig.fromMap((map['recaptchaConfig'] as Map).cast<String, dynamic>())).input(),
-      smsRegionConfig: map['smsRegionConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig.fromMap((map['smsRegionConfig'] as Map).cast<String, dynamic>())).input(),
-      testPhoneNumbers: map['testPhoneNumbers'] == null ? null : ((map['testPhoneNumbers'] as Map).cast<String, String>()).input(),
+      allowPasswordSignup: map['allowPasswordSignup'] == null ? null : (map['allowPasswordSignup']! as bool).input(),
+      autodeleteAnonymousUsers: map['autodeleteAnonymousUsers'] == null ? null : (map['autodeleteAnonymousUsers']! as bool).input(),
+      client: map['client'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig.fromMap((map['client']! as Map).cast<String, dynamic>())).input(),
+      disableAuth: map['disableAuth'] == null ? null : (map['disableAuth']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      emailPrivacyConfig: map['emailPrivacyConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig.fromMap((map['emailPrivacyConfig']! as Map).cast<String, dynamic>())).input(),
+      enableAnonymousUser: map['enableAnonymousUser'] == null ? null : (map['enableAnonymousUser']! as bool).input(),
+      enableEmailLinkSignin: map['enableEmailLinkSignin'] == null ? null : (map['enableEmailLinkSignin']! as bool).input(),
+      inheritance: map['inheritance'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2Inheritance.fromMap((map['inheritance']! as Map).cast<String, dynamic>())).input(),
+      mfaConfig: map['mfaConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig.fromMap((map['mfaConfig']! as Map).cast<String, dynamic>())).input(),
+      monitoring: map['monitoring'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2MonitoringConfig.fromMap((map['monitoring']! as Map).cast<String, dynamic>())).input(),
+      passwordPolicyConfig: map['passwordPolicyConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig.fromMap((map['passwordPolicyConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      recaptchaConfig: map['recaptchaConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig.fromMap((map['recaptchaConfig']! as Map).cast<String, dynamic>())).input(),
+      smsRegionConfig: map['smsRegionConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2SmsRegionConfig.fromMap((map['smsRegionConfig']! as Map).cast<String, dynamic>())).input(),
+      testPhoneNumbers: map['testPhoneNumbers'] == null ? null : ((map['testPhoneNumbers']! as Map).cast<String, String>()).input(),
     );
   }
 }

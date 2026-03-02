@@ -21,7 +21,7 @@ class GetThemeConfigurationSheetTile {
 
   factory GetThemeConfigurationSheetTile.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationSheetTile(
-      borders: (pulumi.Input.decodeList<GetThemeConfigurationSheetTileBorder>(map['borders'], (value) => GetThemeConfigurationSheetTileBorder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      borders: (pulumi.Input.decodeList<GetThemeConfigurationSheetTileBorder>(map['borders']!, (value) => GetThemeConfigurationSheetTileBorder.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

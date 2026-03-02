@@ -27,8 +27,8 @@ class DeploymentExtensionConfigItem {
 
   factory DeploymentExtensionConfigItem.fromMap(Map<String, dynamic> map) {
     return DeploymentExtensionConfigItem(
-      keyVaultReference: map['keyVaultReference'] == null ? null : (KeyVaultParameterReference.fromMap((map['keyVaultReference'] as Map).cast<String, dynamic>())).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      keyVaultReference: map['keyVaultReference'] == null ? null : (KeyVaultParameterReference.fromMap((map['keyVaultReference']! as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

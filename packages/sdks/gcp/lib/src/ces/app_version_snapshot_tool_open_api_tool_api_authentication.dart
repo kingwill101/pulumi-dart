@@ -47,10 +47,10 @@ class AppVersionSnapshotToolOpenApiToolApiAuthentication {
 
   factory AppVersionSnapshotToolOpenApiToolApiAuthentication.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolApiAuthentication(
-      apiKeyConfigs: map['apiKeyConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig>(map['apiKeyConfigs'], (value) => AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      oauthConfigs: map['oauthConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig>(map['oauthConfigs'], (value) => AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAccountAuthConfigs: map['serviceAccountAuthConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig>(map['serviceAccountAuthConfigs'], (value) => AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAgentIdTokenAuthConfigs: map['serviceAgentIdTokenAuthConfigs'] == null ? null : ((map['serviceAgentIdTokenAuthConfigs'] as List).cast<Map<String, dynamic>>()).input(),
+      apiKeyConfigs: map['apiKeyConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig>(map['apiKeyConfigs']!, (value) => AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oauthConfigs: map['oauthConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig>(map['oauthConfigs']!, (value) => AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAccountAuthConfigs: map['serviceAccountAuthConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig>(map['serviceAccountAuthConfigs']!, (value) => AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAgentIdTokenAuthConfigs: map['serviceAgentIdTokenAuthConfigs'] == null ? null : ((map['serviceAgentIdTokenAuthConfigs']! as List).cast<Map<String, dynamic>>()).input(),
     );
   }
 }

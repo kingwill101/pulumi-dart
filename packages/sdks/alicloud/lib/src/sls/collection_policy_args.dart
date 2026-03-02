@@ -71,15 +71,15 @@ class CollectionPolicyArgs {
 
   factory CollectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return CollectionPolicyArgs(
-      centralizeConfig: map['centralizeConfig'] == null ? null : (CollectionPolicyCentralizeConfig.fromMap((map['centralizeConfig'] as Map).cast<String, dynamic>())).input(),
-      centralizeEnabled: map['centralizeEnabled'] == null ? null : (map['centralizeEnabled'] as bool).input(),
+      centralizeConfig: map['centralizeConfig'] == null ? null : (CollectionPolicyCentralizeConfig.fromMap((map['centralizeConfig']! as Map).cast<String, dynamic>())).input(),
+      centralizeEnabled: map['centralizeEnabled'] == null ? null : (map['centralizeEnabled']! as bool).input(),
       dataCode: (map['dataCode'] as String).input(),
-      dataConfig: map['dataConfig'] == null ? null : (CollectionPolicyDataConfig.fromMap((map['dataConfig'] as Map).cast<String, dynamic>())).input(),
+      dataConfig: map['dataConfig'] == null ? null : (CollectionPolicyDataConfig.fromMap((map['dataConfig']! as Map).cast<String, dynamic>())).input(),
       enabled: (map['enabled'] as bool).input(),
       policyConfig: (CollectionPolicyPolicyConfig.fromMap((map['policyConfig'] as Map).cast<String, dynamic>())).input(),
       policyName: (map['policyName'] as String).input(),
       productCode: (map['productCode'] as String).input(),
-      resourceDirectory: map['resourceDirectory'] == null ? null : (CollectionPolicyResourceDirectory.fromMap((map['resourceDirectory'] as Map).cast<String, dynamic>())).input(),
+      resourceDirectory: map['resourceDirectory'] == null ? null : (CollectionPolicyResourceDirectory.fromMap((map['resourceDirectory']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

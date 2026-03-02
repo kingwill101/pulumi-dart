@@ -33,9 +33,9 @@ class NpbStaticRouteConfiguration {
 
   factory NpbStaticRouteConfiguration.fromMap(Map<String, dynamic> map) {
     return NpbStaticRouteConfiguration(
-      bfdConfiguration: map['bfdConfiguration'] == null ? null : (BfdConfiguration.fromMap((map['bfdConfiguration'] as Map).cast<String, dynamic>())).input(),
-      ipv4Routes: map['ipv4Routes'] == null ? null : (pulumi.Input.decodeList<StaticRouteProperties>(map['ipv4Routes'], (value) => StaticRouteProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv6Routes: map['ipv6Routes'] == null ? null : (pulumi.Input.decodeList<StaticRouteProperties>(map['ipv6Routes'], (value) => StaticRouteProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bfdConfiguration: map['bfdConfiguration'] == null ? null : (BfdConfiguration.fromMap((map['bfdConfiguration']! as Map).cast<String, dynamic>())).input(),
+      ipv4Routes: map['ipv4Routes'] == null ? null : (pulumi.Input.decodeList<StaticRouteProperties>(map['ipv4Routes']!, (value) => StaticRouteProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv6Routes: map['ipv6Routes'] == null ? null : (pulumi.Input.decodeList<StaticRouteProperties>(map['ipv6Routes']!, (value) => StaticRouteProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

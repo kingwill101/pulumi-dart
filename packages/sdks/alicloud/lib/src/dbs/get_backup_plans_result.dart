@@ -62,17 +62,17 @@ class GetBackupPlansResult {
 
   factory GetBackupPlansResult.fromMap(Map<String, dynamic> map) {
     return GetBackupPlansResult(
-      backupPlanName: map['backupPlanName'] == null ? null : map['backupPlanName'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      backupPlanName: map['backupPlanName'] == null ? null : map['backupPlanName']! as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
       plans: pulumi.Input.decodeList<GetBackupPlansPlan>(map['plans'], (value) => GetBackupPlansPlan.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

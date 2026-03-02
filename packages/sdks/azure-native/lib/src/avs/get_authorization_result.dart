@@ -64,7 +64,7 @@ class GetAuthorizationResult {
       azureApiVersion: map['azureApiVersion'] as String,
       expressRouteAuthorizationId: map['expressRouteAuthorizationId'] as String,
       expressRouteAuthorizationKey: map['expressRouteAuthorizationKey'] as String,
-      expressRouteId: map['expressRouteId'] == null ? null : map['expressRouteId'] as String,
+      expressRouteId: map['expressRouteId'] == null ? null : map['expressRouteId']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,

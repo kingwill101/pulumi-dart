@@ -42,11 +42,11 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
 
   factory GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2SynthesizeSpeechConfig(
-      effectsProfileId: map['effectsProfileId'] == null ? null : ((map['effectsProfileId'] as List).cast<String>()).input(),
-      pitch: map['pitch'] == null ? null : (map['pitch'] as double).input(),
-      speakingRate: map['speakingRate'] == null ? null : (map['speakingRate'] as double).input(),
-      voice: map['voice'] == null ? null : (GoogleCloudDialogflowV2VoiceSelectionParams.fromMap((map['voice'] as Map).cast<String, dynamic>())).input(),
-      volumeGainDb: map['volumeGainDb'] == null ? null : (map['volumeGainDb'] as double).input(),
+      effectsProfileId: map['effectsProfileId'] == null ? null : ((map['effectsProfileId']! as List).cast<String>()).input(),
+      pitch: map['pitch'] == null ? null : (map['pitch']! as double).input(),
+      speakingRate: map['speakingRate'] == null ? null : (map['speakingRate']! as double).input(),
+      voice: map['voice'] == null ? null : (GoogleCloudDialogflowV2VoiceSelectionParams.fromMap((map['voice']! as Map).cast<String, dynamic>())).input(),
+      volumeGainDb: map['volumeGainDb'] == null ? null : (map['volumeGainDb']! as double).input(),
     );
   }
 }

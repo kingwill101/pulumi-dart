@@ -27,8 +27,8 @@ class DiskRestorePointReplicationStatusResponse {
 
   factory DiskRestorePointReplicationStatusResponse.fromMap(Map<String, dynamic> map) {
     return DiskRestorePointReplicationStatusResponse(
-      completionPercent: map['completionPercent'] == null ? null : (map['completionPercent'] as int).input(),
-      status: map['status'] == null ? null : (InstanceViewStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      completionPercent: map['completionPercent'] == null ? null : (map['completionPercent']! as int).input(),
+      status: map['status'] == null ? null : (InstanceViewStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ApplyHash {
 
   factory ApplyHash.fromMap(Map<String, dynamic> map) {
     return ApplyHash(
-      uuidFromBytes: map['uuidFromBytes'] == null ? null : ((map['uuidFromBytes'] as Map).cast<String, dynamic>()).input(),
+      uuidFromBytes: map['uuidFromBytes'] == null ? null : ((map['uuidFromBytes']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

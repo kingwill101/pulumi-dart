@@ -63,14 +63,14 @@ class DefenderCspmAwsOfferingResponse {
 
   factory DefenderCspmAwsOfferingResponse.fromMap(Map<String, dynamic> map) {
     return DefenderCspmAwsOfferingResponse(
-      ciem: map['ciem'] == null ? null : (DefenderCspmAwsOfferingResponseCiem.fromMap((map['ciem'] as Map).cast<String, dynamic>())).input(),
-      dataSensitivityDiscovery: map['dataSensitivityDiscovery'] == null ? null : (DefenderCspmAwsOfferingResponseDataSensitivityDiscovery.fromMap((map['dataSensitivityDiscovery'] as Map).cast<String, dynamic>())).input(),
-      databasesDspm: map['databasesDspm'] == null ? null : (DefenderCspmAwsOfferingResponseDatabasesDspm.fromMap((map['databasesDspm'] as Map).cast<String, dynamic>())).input(),
+      ciem: map['ciem'] == null ? null : (DefenderCspmAwsOfferingResponseCiem.fromMap((map['ciem']! as Map).cast<String, dynamic>())).input(),
+      dataSensitivityDiscovery: map['dataSensitivityDiscovery'] == null ? null : (DefenderCspmAwsOfferingResponseDataSensitivityDiscovery.fromMap((map['dataSensitivityDiscovery']! as Map).cast<String, dynamic>())).input(),
+      databasesDspm: map['databasesDspm'] == null ? null : (DefenderCspmAwsOfferingResponseDatabasesDspm.fromMap((map['databasesDspm']! as Map).cast<String, dynamic>())).input(),
       description: (map['description'] as String).input(),
-      mdcContainersAgentlessDiscoveryK8s: map['mdcContainersAgentlessDiscoveryK8s'] == null ? null : (DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s.fromMap((map['mdcContainersAgentlessDiscoveryK8s'] as Map).cast<String, dynamic>())).input(),
-      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderCspmAwsOfferingResponseMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment'] as Map).cast<String, dynamic>())).input(),
+      mdcContainersAgentlessDiscoveryK8s: map['mdcContainersAgentlessDiscoveryK8s'] == null ? null : (DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s.fromMap((map['mdcContainersAgentlessDiscoveryK8s']! as Map).cast<String, dynamic>())).input(),
+      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderCspmAwsOfferingResponseMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment']! as Map).cast<String, dynamic>())).input(),
       offeringType: (map['offeringType'] as String).input(),
-      vmScanners: map['vmScanners'] == null ? null : (DefenderCspmAwsOfferingResponseVmScanners.fromMap((map['vmScanners'] as Map).cast<String, dynamic>())).input(),
+      vmScanners: map['vmScanners'] == null ? null : (DefenderCspmAwsOfferingResponseVmScanners.fromMap((map['vmScanners']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

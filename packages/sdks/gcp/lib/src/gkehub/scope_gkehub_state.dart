@@ -87,18 +87,18 @@ class ScopeGkehubState {
 
   factory ScopeGkehubState.fromMap(Map<String, dynamic> map) {
     return ScopeGkehubState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceLabels: map['namespaceLabels'] == null ? null : ((map['namespaceLabels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      scopeId: map['scopeId'] == null ? null : (map['scopeId'] as String).input(),
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<ScopeState>(map['states'], (value) => ScopeState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaceLabels: map['namespaceLabels'] == null ? null : ((map['namespaceLabels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      scopeId: map['scopeId'] == null ? null : (map['scopeId']! as String).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<ScopeState>(map['states']!, (value) => ScopeState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

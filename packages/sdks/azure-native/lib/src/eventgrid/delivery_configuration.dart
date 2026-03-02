@@ -33,9 +33,9 @@ class DeliveryConfiguration {
 
   factory DeliveryConfiguration.fromMap(Map<String, dynamic> map) {
     return DeliveryConfiguration(
-      deliveryMode: map['deliveryMode'] == null ? null : (map['deliveryMode'] as String).input(),
-      push: map['push'] == null ? null : (PushInfo.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
-      queue: map['queue'] == null ? null : (QueueInfo.fromMap((map['queue'] as Map).cast<String, dynamic>())).input(),
+      deliveryMode: map['deliveryMode'] == null ? null : (map['deliveryMode']! as String).input(),
+      push: map['push'] == null ? null : (PushInfo.fromMap((map['push']! as Map).cast<String, dynamic>())).input(),
+      queue: map['queue'] == null ? null : (QueueInfo.fromMap((map['queue']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

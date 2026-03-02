@@ -31,9 +31,9 @@ class WebAppActiveSlotState {
 
   factory WebAppActiveSlotState.fromMap(Map<String, dynamic> map) {
     return WebAppActiveSlotState(
-      lastSuccessfulSwap: map['lastSuccessfulSwap'] == null ? null : (map['lastSuccessfulSwap'] as String).input(),
-      overwriteNetworkConfig: map['overwriteNetworkConfig'] == null ? null : (map['overwriteNetworkConfig'] as bool).input(),
-      slotId: map['slotId'] == null ? null : (map['slotId'] as String).input(),
+      lastSuccessfulSwap: map['lastSuccessfulSwap'] == null ? null : (map['lastSuccessfulSwap']! as String).input(),
+      overwriteNetworkConfig: map['overwriteNetworkConfig'] == null ? null : (map['overwriteNetworkConfig']! as bool).input(),
+      slotId: map['slotId'] == null ? null : (map['slotId']! as String).input(),
     );
   }
 }

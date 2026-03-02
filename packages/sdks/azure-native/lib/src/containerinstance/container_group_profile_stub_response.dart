@@ -45,11 +45,11 @@ class ContainerGroupProfileStubResponse {
 
   factory ContainerGroupProfileStubResponse.fromMap(Map<String, dynamic> map) {
     return ContainerGroupProfileStubResponse(
-      containerGroupProperties: map['containerGroupProperties'] == null ? null : (NGroupContainerGroupPropertiesResponse.fromMap((map['containerGroupProperties'] as Map).cast<String, dynamic>())).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      resource: map['resource'] == null ? null : (ApiEntityReferenceResponse.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as int).input(),
-      storageProfile: map['storageProfile'] == null ? null : (StorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      containerGroupProperties: map['containerGroupProperties'] == null ? null : (NGroupContainerGroupPropertiesResponse.fromMap((map['containerGroupProperties']! as Map).cast<String, dynamic>())).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfileResponse.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (ApiEntityReferenceResponse.fromMap((map['resource']! as Map).cast<String, dynamic>())).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as int).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfileResponse.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

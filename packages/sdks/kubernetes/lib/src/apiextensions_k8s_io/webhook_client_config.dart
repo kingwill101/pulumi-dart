@@ -44,9 +44,9 @@ class WebhookClientConfig {
 
   factory WebhookClientConfig.fromMap(Map<String, dynamic> map) {
     return WebhookClientConfig(
-      caBundle: map['caBundle'] == null ? null : (map['caBundle'] as String).input(),
-      service: map['service'] == null ? null : (ServiceReference.fromMap((map['service'] as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      caBundle: map['caBundle'] == null ? null : (map['caBundle']! as String).input(),
+      service: map['service'] == null ? null : (ServiceReference.fromMap((map['service']! as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

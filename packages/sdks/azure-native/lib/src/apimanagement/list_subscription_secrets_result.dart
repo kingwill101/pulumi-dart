@@ -25,8 +25,8 @@ class ListSubscriptionSecretsResult {
 
   factory ListSubscriptionSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListSubscriptionSecretsResult(
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey'] as String,
+      primaryKey: map['primaryKey'] == null ? null : map['primaryKey']! as String,
+      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey']! as String,
     );
   }
 }

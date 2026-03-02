@@ -32,9 +32,9 @@ class ShareSettingsComputeBeta {
 
   factory ShareSettingsComputeBeta.fromMap(Map<String, dynamic> map) {
     return ShareSettingsComputeBeta(
-      projectMap: map['projectMap'] == null ? null : ((map['projectMap'] as Map).cast<String, String>()).input(),
-      projects: map['projects'] == null ? null : ((map['projects'] as List).cast<String>()).input(),
-      shareType: map['shareType'] == null ? null : (ShareSettingsShareTypeComputeBeta.fromValue(map['shareType'] as String)).input(),
+      projectMap: map['projectMap'] == null ? null : ((map['projectMap']! as Map).cast<String, String>()).input(),
+      projects: map['projects'] == null ? null : ((map['projects']! as List).cast<String>()).input(),
+      shareType: map['shareType'] == null ? null : (ShareSettingsShareTypeComputeBeta.fromValue(map['shareType']! as String)).input(),
     );
   }
 }

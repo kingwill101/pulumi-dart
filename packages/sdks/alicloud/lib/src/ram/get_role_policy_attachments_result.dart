@@ -43,7 +43,7 @@ class GetRolePolicyAttachmentsResult {
       attachments: pulumi.Input.decodeList<GetRolePolicyAttachmentsAttachment>(map['attachments'], (value) => GetRolePolicyAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       roleName: map['roleName'] as String,
     );
   }

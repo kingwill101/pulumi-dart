@@ -20,7 +20,7 @@ class RuntimeTemplateEucConfig {
 
   factory RuntimeTemplateEucConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateEucConfig(
-      eucDisabled: map['eucDisabled'] == null ? null : (map['eucDisabled'] as bool).input(),
+      eucDisabled: map['eucDisabled'] == null ? null : (map['eucDisabled']! as bool).input(),
     );
   }
 }

@@ -46,7 +46,7 @@ class GetPortfolioConstraintsResult {
   factory GetPortfolioConstraintsResult.fromMap(Map<String, dynamic> map) {
     return GetPortfolioConstraintsResult(
       acceptLanguage: map['acceptLanguage'] == null ? null : map['acceptLanguage'] as String,
-      details: pulumi.Input.decodeList<GetPortfolioConstraintsDetail>(map['details'], (value) => GetPortfolioConstraintsDetail.fromMap((value as Map).cast<String, dynamic>())),
+      details: pulumi.Input.decodeList<GetPortfolioConstraintsDetail>(map['details']!, (value) => GetPortfolioConstraintsDetail.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       portfolioId: map['portfolioId'] as String,
       productId: map['productId'] == null ? null : map['productId'] as String,

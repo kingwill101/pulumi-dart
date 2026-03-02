@@ -44,11 +44,11 @@ class PolicySpec {
 
   factory PolicySpec.fromMap(Map<String, dynamic> map) {
     return PolicySpec(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      inheritFromParent: map['inheritFromParent'] == null ? null : (map['inheritFromParent'] as bool).input(),
-      reset: map['reset'] == null ? null : (map['reset'] as bool).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicySpecRule>(map['rules'], (value) => PolicySpecRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      inheritFromParent: map['inheritFromParent'] == null ? null : (map['inheritFromParent']! as bool).input(),
+      reset: map['reset'] == null ? null : (map['reset']! as bool).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicySpecRule>(map['rules']!, (value) => PolicySpecRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

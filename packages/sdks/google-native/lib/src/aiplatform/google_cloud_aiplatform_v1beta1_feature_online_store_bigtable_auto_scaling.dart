@@ -30,7 +30,7 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling {
 
   factory GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureOnlineStoreBigtableAutoScaling(
-      cpuUtilizationTarget: map['cpuUtilizationTarget'] == null ? null : (map['cpuUtilizationTarget'] as int).input(),
+      cpuUtilizationTarget: map['cpuUtilizationTarget'] == null ? null : (map['cpuUtilizationTarget']! as int).input(),
       maxNodeCount: (map['maxNodeCount'] as int).input(),
       minNodeCount: (map['minNodeCount'] as int).input(),
     );

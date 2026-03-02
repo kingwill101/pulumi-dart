@@ -28,8 +28,8 @@ class EndpointMatcherMetadataLabelMatcher {
 
   factory EndpointMatcherMetadataLabelMatcher.fromMap(Map<String, dynamic> map) {
     return EndpointMatcherMetadataLabelMatcher(
-      metadataLabelMatchCriteria: map['metadataLabelMatchCriteria'] == null ? null : (EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria.fromValue(map['metadataLabelMatchCriteria'] as String)).input(),
-      metadataLabels: map['metadataLabels'] == null ? null : (pulumi.Input.decodeList<EndpointMatcherMetadataLabelMatcherMetadataLabels>(map['metadataLabels'], (value) => EndpointMatcherMetadataLabelMatcherMetadataLabels.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadataLabelMatchCriteria: map['metadataLabelMatchCriteria'] == null ? null : (EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteria.fromValue(map['metadataLabelMatchCriteria']! as String)).input(),
+      metadataLabels: map['metadataLabels'] == null ? null : (pulumi.Input.decodeList<EndpointMatcherMetadataLabelMatcherMetadataLabels>(map['metadataLabels']!, (value) => EndpointMatcherMetadataLabelMatcherMetadataLabels.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

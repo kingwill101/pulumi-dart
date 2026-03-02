@@ -36,10 +36,10 @@ class CombustionState {
 
   factory CombustionState.fromMap(Map<String, dynamic> map) {
     return CombustionState(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as double).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
     );
   }
 }

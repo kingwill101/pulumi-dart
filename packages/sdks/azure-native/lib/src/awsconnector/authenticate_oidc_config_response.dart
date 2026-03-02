@@ -76,18 +76,18 @@ class AuthenticateOidcConfigResponse {
 
   factory AuthenticateOidcConfigResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticateOidcConfigResponse(
-      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : ((map['authenticationRequestExtraParams'] as Map).cast<String, String>()).input(),
-      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : (map['authorizationEndpoint'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      onUnauthenticatedRequest: map['onUnauthenticatedRequest'] == null ? null : (map['onUnauthenticatedRequest'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      sessionCookieName: map['sessionCookieName'] == null ? null : (map['sessionCookieName'] as String).input(),
-      sessionTimeout: map['sessionTimeout'] == null ? null : (map['sessionTimeout'] as String).input(),
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint'] as String).input(),
-      useExistingClientSecret: map['useExistingClientSecret'] == null ? null : (map['useExistingClientSecret'] as bool).input(),
-      userInfoEndpoint: map['userInfoEndpoint'] == null ? null : (map['userInfoEndpoint'] as String).input(),
+      authenticationRequestExtraParams: map['authenticationRequestExtraParams'] == null ? null : ((map['authenticationRequestExtraParams']! as Map).cast<String, String>()).input(),
+      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : (map['authorizationEndpoint']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      onUnauthenticatedRequest: map['onUnauthenticatedRequest'] == null ? null : (map['onUnauthenticatedRequest']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      sessionCookieName: map['sessionCookieName'] == null ? null : (map['sessionCookieName']! as String).input(),
+      sessionTimeout: map['sessionTimeout'] == null ? null : (map['sessionTimeout']! as String).input(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint']! as String).input(),
+      useExistingClientSecret: map['useExistingClientSecret'] == null ? null : (map['useExistingClientSecret']! as bool).input(),
+      userInfoEndpoint: map['userInfoEndpoint'] == null ? null : (map['userInfoEndpoint']! as String).input(),
     );
   }
 }

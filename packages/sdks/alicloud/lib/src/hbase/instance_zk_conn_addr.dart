@@ -30,9 +30,9 @@ class InstanceZkConnAddr {
 
   factory InstanceZkConnAddr.fromMap(Map<String, dynamic> map) {
     return InstanceZkConnAddr(
-      connAddr: map['connAddr'] == null ? null : (map['connAddr'] as String).input(),
-      connAddrPort: map['connAddrPort'] == null ? null : (map['connAddrPort'] as String).input(),
-      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
+      connAddr: map['connAddr'] == null ? null : (map['connAddr']! as String).input(),
+      connAddrPort: map['connAddrPort'] == null ? null : (map['connAddrPort']! as String).input(),
+      netType: map['netType'] == null ? null : (map['netType']! as String).input(),
     );
   }
 }

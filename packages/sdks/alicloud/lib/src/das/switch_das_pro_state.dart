@@ -36,10 +36,10 @@ class SwitchDasProState {
 
   factory SwitchDasProState.fromMap(Map<String, dynamic> map) {
     return SwitchDasProState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      sqlRetention: map['sqlRetention'] == null ? null : (map['sqlRetention'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as bool).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      sqlRetention: map['sqlRetention'] == null ? null : (map['sqlRetention']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as bool).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

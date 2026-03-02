@@ -64,15 +64,15 @@ class GameServerDeploymentIamPolicyGameservicesV1betaArgs {
 
   factory GameServerDeploymentIamPolicyGameservicesV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GameServerDeploymentIamPolicyGameservicesV1betaArgs(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigGameservicesV1beta>(map['auditConfigs'], (value) => AuditConfigGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingGameservicesV1beta>(map['bindings'], (value) => BindingGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigGameservicesV1beta>(map['auditConfigs']!, (value) => AuditConfigGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingGameservicesV1beta>(map['bindings']!, (value) => BindingGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       gameServerDeploymentId: (map['gameServerDeploymentId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleGameservicesV1beta>(map['rules'], (value) => RuleGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleGameservicesV1beta>(map['rules']!, (value) => RuleGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

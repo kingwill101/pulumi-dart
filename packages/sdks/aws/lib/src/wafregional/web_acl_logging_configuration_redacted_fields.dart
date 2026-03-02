@@ -21,7 +21,7 @@ class WebAclLoggingConfigurationRedactedFields {
 
   factory WebAclLoggingConfigurationRedactedFields.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfigurationRedactedFields(
-      fieldToMatches: (pulumi.Input.decodeList<WebAclLoggingConfigurationRedactedFieldsFieldToMatch>(map['fieldToMatches'], (value) => WebAclLoggingConfigurationRedactedFieldsFieldToMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldToMatches: (pulumi.Input.decodeList<WebAclLoggingConfigurationRedactedFieldsFieldToMatch>(map['fieldToMatches']!, (value) => WebAclLoggingConfigurationRedactedFieldsFieldToMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

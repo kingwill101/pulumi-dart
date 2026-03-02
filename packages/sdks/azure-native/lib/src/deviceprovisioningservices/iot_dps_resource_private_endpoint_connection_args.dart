@@ -40,7 +40,7 @@ class IotDpsResourcePrivateEndpointConnectionArgs {
 
   factory IotDpsResourcePrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return IotDpsResourcePrivateEndpointConnectionArgs(
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName']! as String).input(),
       properties: (PrivateEndpointConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),

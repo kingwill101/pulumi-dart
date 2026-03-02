@@ -34,8 +34,8 @@ class AccessKeyArgs {
 
   factory AccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return AccessKeyArgs(
-      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      pgpKey: map['pgpKey'] == null ? null : ((map['pgpKey'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
       user: (map['user'] as String).input(),
     );
   }

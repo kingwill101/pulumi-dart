@@ -68,16 +68,16 @@ class TrackerState {
 
   factory TrackerState.fromMap(Map<String, dynamic> map) {
     return TrackerState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      positionFiltering: map['positionFiltering'] == null ? null : (map['positionFiltering'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      trackerArn: map['trackerArn'] == null ? null : (map['trackerArn'] as String).input(),
-      trackerName: map['trackerName'] == null ? null : (map['trackerName'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : ((map['createTime'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      positionFiltering: map['positionFiltering'] == null ? null : ((map['positionFiltering'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      trackerArn: map['trackerArn'] == null ? null : ((map['trackerArn'] as String).input()).input(),
+      trackerName: map['trackerName'] == null ? null : ((map['trackerName'] as String).input()).input(),
+      updateTime: map['updateTime'] == null ? null : ((map['updateTime'] as String).input()).input(),
     );
   }
 }

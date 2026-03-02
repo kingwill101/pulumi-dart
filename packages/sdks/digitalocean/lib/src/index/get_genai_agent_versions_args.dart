@@ -34,8 +34,8 @@ class GetGenaiAgentVersionsArgs {
   factory GetGenaiAgentVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentVersionsArgs(
       agentId: (map['agentId'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentVersionsFilter>(map['filters'], (value) => GetGenaiAgentVersionsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentVersionsSort>(map['sorts'], (value) => GetGenaiAgentVersionsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentVersionsFilter>(map['filters']!, (value) => GetGenaiAgentVersionsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentVersionsSort>(map['sorts']!, (value) => GetGenaiAgentVersionsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class AcceleratorConfigDataprocV1beta2 {
 
   factory AcceleratorConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfigDataprocV1beta2(
-      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount'] as int).input(),
-      acceleratorTypeUri: map['acceleratorTypeUri'] == null ? null : (map['acceleratorTypeUri'] as String).input(),
+      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount']! as int).input(),
+      acceleratorTypeUri: map['acceleratorTypeUri'] == null ? null : (map['acceleratorTypeUri']! as String).input(),
     );
   }
 }

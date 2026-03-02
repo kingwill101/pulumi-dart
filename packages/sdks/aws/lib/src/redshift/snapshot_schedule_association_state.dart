@@ -31,9 +31,9 @@ class SnapshotScheduleAssociationState {
 
   factory SnapshotScheduleAssociationState.fromMap(Map<String, dynamic> map) {
     return SnapshotScheduleAssociationState(
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scheduleIdentifier: map['scheduleIdentifier'] == null ? null : (map['scheduleIdentifier'] as String).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scheduleIdentifier: map['scheduleIdentifier'] == null ? null : ((map['scheduleIdentifier'] as String).input()).input(),
     );
   }
 }

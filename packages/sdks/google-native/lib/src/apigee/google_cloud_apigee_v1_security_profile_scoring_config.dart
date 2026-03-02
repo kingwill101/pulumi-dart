@@ -31,9 +31,9 @@ class GoogleCloudApigeeV1SecurityProfileScoringConfig {
 
   factory GoogleCloudApigeeV1SecurityProfileScoringConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityProfileScoringConfig(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      scorePath: map['scorePath'] == null ? null : (map['scorePath'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      scorePath: map['scorePath'] == null ? null : (map['scorePath']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

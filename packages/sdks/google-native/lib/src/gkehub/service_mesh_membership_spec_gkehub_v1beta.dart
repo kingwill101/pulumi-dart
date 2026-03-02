@@ -28,8 +28,8 @@ class ServiceMeshMembershipSpecGkehubV1beta {
 
   factory ServiceMeshMembershipSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMembershipSpecGkehubV1beta(
-      controlPlane: map['controlPlane'] == null ? null : (ServiceMeshMembershipSpecControlPlaneGkehubV1beta.fromValue(map['controlPlane'] as String)).input(),
-      management: map['management'] == null ? null : (ServiceMeshMembershipSpecManagementGkehubV1beta.fromValue(map['management'] as String)).input(),
+      controlPlane: map['controlPlane'] == null ? null : (ServiceMeshMembershipSpecControlPlaneGkehubV1beta.fromValue(map['controlPlane']! as String)).input(),
+      management: map['management'] == null ? null : (ServiceMeshMembershipSpecManagementGkehubV1beta.fromValue(map['management']! as String)).input(),
     );
   }
 }

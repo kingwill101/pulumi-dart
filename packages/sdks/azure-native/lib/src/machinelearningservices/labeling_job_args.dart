@@ -40,7 +40,7 @@ class LabelingJobArgs {
 
   factory LabelingJobArgs.fromMap(Map<String, dynamic> map) {
     return LabelingJobArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       labelingJobProperties: (map['labelingJobProperties'] as LabelingJobMachinelearningservices).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),

@@ -49,11 +49,11 @@ class AuthorizationRuleArgs {
 
   factory AuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationRuleArgs(
-      accessGroupId: map['accessGroupId'] == null ? null : (map['accessGroupId'] as String).input(),
-      authorizeAllGroups: map['authorizeAllGroups'] == null ? null : (map['authorizeAllGroups'] as bool).input(),
+      accessGroupId: map['accessGroupId'] == null ? null : ((map['accessGroupId'] as String).input()).input(),
+      authorizeAllGroups: map['authorizeAllGroups'] == null ? null : ((map['authorizeAllGroups'] as bool).input()).input(),
       clientVpnEndpointId: (map['clientVpnEndpointId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       targetNetworkCidr: (map['targetNetworkCidr'] as String).input(),
     );
   }

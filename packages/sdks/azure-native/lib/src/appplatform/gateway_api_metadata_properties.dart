@@ -41,11 +41,11 @@ class GatewayApiMetadataProperties {
 
   factory GatewayApiMetadataProperties.fromMap(Map<String, dynamic> map) {
     return GatewayApiMetadataProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      documentation: map['documentation'] == null ? null : (map['documentation'] as String).input(),
-      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      documentation: map['documentation'] == null ? null : (map['documentation']! as String).input(),
+      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

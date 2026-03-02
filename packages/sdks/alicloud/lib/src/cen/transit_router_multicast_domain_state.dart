@@ -52,13 +52,13 @@ class TransitRouterMulticastDomainState {
 
   factory TransitRouterMulticastDomainState.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainState(
-      options: map['options'] == null ? null : (TransitRouterMulticastDomainOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
-      transitRouterMulticastDomainDescription: map['transitRouterMulticastDomainDescription'] == null ? null : (map['transitRouterMulticastDomainDescription'] as String).input(),
-      transitRouterMulticastDomainName: map['transitRouterMulticastDomainName'] == null ? null : (map['transitRouterMulticastDomainName'] as String).input(),
+      options: map['options'] == null ? null : (TransitRouterMulticastDomainOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
+      transitRouterMulticastDomainDescription: map['transitRouterMulticastDomainDescription'] == null ? null : (map['transitRouterMulticastDomainDescription']! as String).input(),
+      transitRouterMulticastDomainName: map['transitRouterMulticastDomainName'] == null ? null : (map['transitRouterMulticastDomainName']! as String).input(),
     );
   }
 }

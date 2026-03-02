@@ -66,16 +66,16 @@ class DomainDevicesControllerDriver {
 
   factory DomainDevicesControllerDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerDriver(
-      ats: map['ats'] == null ? null : (map['ats'] as String).input(),
-      cmdPerLun: map['cmdPerLun'] == null ? null : (map['cmdPerLun'] as double).input(),
-      ioEventFd: map['ioEventFd'] == null ? null : (map['ioEventFd'] as String).input(),
-      ioThread: map['ioThread'] == null ? null : (map['ioThread'] as double).input(),
-      ioThreads: map['ioThreads'] == null ? null : (DomainDevicesControllerDriverIoThreads.fromMap((map['ioThreads'] as Map).cast<String, dynamic>())).input(),
-      iommu: map['iommu'] == null ? null : (map['iommu'] as String).input(),
-      maxSectors: map['maxSectors'] == null ? null : (map['maxSectors'] as double).input(),
-      packed: map['packed'] == null ? null : (map['packed'] as String).input(),
-      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq'] as String).input(),
-      queues: map['queues'] == null ? null : (map['queues'] as double).input(),
+      ats: map['ats'] == null ? null : (map['ats']! as String).input(),
+      cmdPerLun: map['cmdPerLun'] == null ? null : (map['cmdPerLun']! as double).input(),
+      ioEventFd: map['ioEventFd'] == null ? null : (map['ioEventFd']! as String).input(),
+      ioThread: map['ioThread'] == null ? null : (map['ioThread']! as double).input(),
+      ioThreads: map['ioThreads'] == null ? null : (DomainDevicesControllerDriverIoThreads.fromMap((map['ioThreads']! as Map).cast<String, dynamic>())).input(),
+      iommu: map['iommu'] == null ? null : (map['iommu']! as String).input(),
+      maxSectors: map['maxSectors'] == null ? null : (map['maxSectors']! as double).input(),
+      packed: map['packed'] == null ? null : (map['packed']! as String).input(),
+      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq']! as String).input(),
+      queues: map['queues'] == null ? null : (map['queues']! as double).input(),
     );
   }
 }

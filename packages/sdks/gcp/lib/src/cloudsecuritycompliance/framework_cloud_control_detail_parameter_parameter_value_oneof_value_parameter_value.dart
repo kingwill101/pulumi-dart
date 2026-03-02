@@ -37,10 +37,10 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue
 
   factory FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue.fromMap(Map<String, dynamic> map) {
     return FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue(
-      boolValue: map['boolValue'] == null ? null : (map['boolValue'] as bool).input(),
-      numberValue: map['numberValue'] == null ? null : (map['numberValue'] as double).input(),
-      stringListValue: map['stringListValue'] == null ? null : (FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue.fromMap((map['stringListValue'] as Map).cast<String, dynamic>())).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
+      boolValue: map['boolValue'] == null ? null : (map['boolValue']! as bool).input(),
+      numberValue: map['numberValue'] == null ? null : (map['numberValue']! as double).input(),
+      stringListValue: map['stringListValue'] == null ? null : (FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue.fromMap((map['stringListValue']! as Map).cast<String, dynamic>())).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
     );
   }
 }

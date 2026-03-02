@@ -34,10 +34,10 @@ class ApplicationIamIdentityCenterOptions {
 
   factory ApplicationIamIdentityCenterOptions.fromMap(Map<String, dynamic> map) {
     return ApplicationIamIdentityCenterOptions(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      iamIdentityCenterApplicationArn: map['iamIdentityCenterApplicationArn'] == null ? null : (map['iamIdentityCenterApplicationArn'] as String).input(),
-      iamIdentityCenterInstanceArn: map['iamIdentityCenterInstanceArn'] == null ? null : (map['iamIdentityCenterInstanceArn'] as String).input(),
-      iamRoleForIdentityCenterApplicationArn: map['iamRoleForIdentityCenterApplicationArn'] == null ? null : (map['iamRoleForIdentityCenterApplicationArn'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      iamIdentityCenterApplicationArn: map['iamIdentityCenterApplicationArn'] == null ? null : ((map['iamIdentityCenterApplicationArn'] as String).input()).input(),
+      iamIdentityCenterInstanceArn: map['iamIdentityCenterInstanceArn'] == null ? null : ((map['iamIdentityCenterInstanceArn'] as String).input()).input(),
+      iamRoleForIdentityCenterApplicationArn: map['iamRoleForIdentityCenterApplicationArn'] == null ? null : ((map['iamRoleForIdentityCenterApplicationArn'] as String).input()).input(),
     );
   }
 }

@@ -19,7 +19,7 @@ class ServerGroupRules {
 
   factory ServerGroupRules.fromMap(Map<String, dynamic> map) {
     return ServerGroupRules(
-      maxServerPerHost: map['maxServerPerHost'] == null ? null : (map['maxServerPerHost'] as int).input(),
+      maxServerPerHost: map['maxServerPerHost'] == null ? null : (map['maxServerPerHost']! as int).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class ResiliencyPolicy {
 
   factory ResiliencyPolicy.fromMap(Map<String, dynamic> map) {
     return ResiliencyPolicy(
-      automaticZoneRebalancingPolicy: map['automaticZoneRebalancingPolicy'] == null ? null : (AutomaticZoneRebalancingPolicy.fromMap((map['automaticZoneRebalancingPolicy'] as Map).cast<String, dynamic>())).input(),
-      resilientVMCreationPolicy: map['resilientVMCreationPolicy'] == null ? null : (ResilientVMCreationPolicy.fromMap((map['resilientVMCreationPolicy'] as Map).cast<String, dynamic>())).input(),
-      resilientVMDeletionPolicy: map['resilientVMDeletionPolicy'] == null ? null : (ResilientVMDeletionPolicy.fromMap((map['resilientVMDeletionPolicy'] as Map).cast<String, dynamic>())).input(),
+      automaticZoneRebalancingPolicy: map['automaticZoneRebalancingPolicy'] == null ? null : (AutomaticZoneRebalancingPolicy.fromMap((map['automaticZoneRebalancingPolicy']! as Map).cast<String, dynamic>())).input(),
+      resilientVMCreationPolicy: map['resilientVMCreationPolicy'] == null ? null : (ResilientVMCreationPolicy.fromMap((map['resilientVMCreationPolicy']! as Map).cast<String, dynamic>())).input(),
+      resilientVMDeletionPolicy: map['resilientVMDeletionPolicy'] == null ? null : (ResilientVMDeletionPolicy.fromMap((map['resilientVMDeletionPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

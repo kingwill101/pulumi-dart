@@ -52,13 +52,13 @@ class GetVirtualHubRouteTableV2Result {
 
   factory GetVirtualHubRouteTableV2Result.fromMap(Map<String, dynamic> map) {
     return GetVirtualHubRouteTableV2Result(
-      attachedConnections: map['attachedConnections'] == null ? null : (map['attachedConnections'] as List).cast<String>(),
+      attachedConnections: map['attachedConnections'] == null ? null : (map['attachedConnections']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       provisioningState: map['provisioningState'] as String,
-      routes: map['routes'] == null ? null : pulumi.Input.decodeList<VirtualHubRouteV2Response>(map['routes'], (value) => VirtualHubRouteV2Response.fromMap((value as Map).cast<String, dynamic>())),
+      routes: map['routes'] == null ? null : pulumi.Input.decodeList<VirtualHubRouteV2Response>(map['routes']!, (value) => VirtualHubRouteV2Response.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -26,7 +26,7 @@ class ContainerRegistryWithCustomImage {
 
   factory ContainerRegistryWithCustomImage.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryWithCustomImage(
-      image: map['image'] == null ? null : (map['image'] as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
       server: (map['server'] as String).input(),
     );
   }

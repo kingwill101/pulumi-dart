@@ -34,9 +34,9 @@ class FlexibleServerAuthentication {
 
   factory FlexibleServerAuthentication.fromMap(Map<String, dynamic> map) {
     return FlexibleServerAuthentication(
-      activeDirectoryAuthEnabled: map['activeDirectoryAuthEnabled'] == null ? null : (map['activeDirectoryAuthEnabled'] as bool).input(),
-      passwordAuthEnabled: map['passwordAuthEnabled'] == null ? null : (map['passwordAuthEnabled'] as bool).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      activeDirectoryAuthEnabled: map['activeDirectoryAuthEnabled'] == null ? null : (map['activeDirectoryAuthEnabled']! as bool).input(),
+      passwordAuthEnabled: map['passwordAuthEnabled'] == null ? null : (map['passwordAuthEnabled']! as bool).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

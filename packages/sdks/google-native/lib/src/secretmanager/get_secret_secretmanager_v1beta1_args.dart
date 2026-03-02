@@ -27,7 +27,7 @@ class GetSecretSecretmanagerV1beta1Args {
 
   factory GetSecretSecretmanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetSecretSecretmanagerV1beta1Args(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       secretId: (map['secretId'] as String).input(),
     );
   }

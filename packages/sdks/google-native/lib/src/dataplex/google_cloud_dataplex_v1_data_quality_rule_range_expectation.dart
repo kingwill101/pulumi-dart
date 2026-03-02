@@ -36,10 +36,10 @@ class GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
 
   factory GoogleCloudDataplexV1DataQualityRuleRangeExpectation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityRuleRangeExpectation(
-      maxValue: map['maxValue'] == null ? null : (map['maxValue'] as String).input(),
-      minValue: map['minValue'] == null ? null : (map['minValue'] as String).input(),
-      strictMaxEnabled: map['strictMaxEnabled'] == null ? null : (map['strictMaxEnabled'] as bool).input(),
-      strictMinEnabled: map['strictMinEnabled'] == null ? null : (map['strictMinEnabled'] as bool).input(),
+      maxValue: map['maxValue'] == null ? null : (map['maxValue']! as String).input(),
+      minValue: map['minValue'] == null ? null : (map['minValue']! as String).input(),
+      strictMaxEnabled: map['strictMaxEnabled'] == null ? null : (map['strictMaxEnabled']! as bool).input(),
+      strictMinEnabled: map['strictMinEnabled'] == null ? null : (map['strictMinEnabled']! as bool).input(),
     );
   }
 }

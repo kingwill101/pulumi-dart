@@ -38,10 +38,10 @@ class AnalyticsConfiguration {
 
   factory AnalyticsConfiguration.fromMap(Map<String, dynamic> map) {
     return AnalyticsConfiguration(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      storageClassAnalysis: map['storageClassAnalysis'] == null ? null : (StorageClassAnalysis.fromMap((map['storageClassAnalysis'] as Map).cast<String, dynamic>())).input(),
-      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<TagFilter>(map['tagFilters'], (value) => TagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      storageClassAnalysis: map['storageClassAnalysis'] == null ? null : (StorageClassAnalysis.fromMap((map['storageClassAnalysis']! as Map).cast<String, dynamic>())).input(),
+      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<TagFilter>(map['tagFilters']!, (value) => TagFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

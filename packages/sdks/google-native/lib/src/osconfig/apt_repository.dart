@@ -42,10 +42,10 @@ class AptRepository {
 
   factory AptRepository.fromMap(Map<String, dynamic> map) {
     return AptRepository(
-      archiveType: map['archiveType'] == null ? null : (AptRepositoryArchiveType.fromValue(map['archiveType'] as String)).input(),
+      archiveType: map['archiveType'] == null ? null : (AptRepositoryArchiveType.fromValue(map['archiveType']! as String)).input(),
       components: ((map['components'] as List).cast<String>()).input(),
       distribution: (map['distribution'] as String).input(),
-      gpgKey: map['gpgKey'] == null ? null : (map['gpgKey'] as String).input(),
+      gpgKey: map['gpgKey'] == null ? null : (map['gpgKey']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

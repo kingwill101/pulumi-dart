@@ -47,12 +47,12 @@ class NamespaceIamPolicyServicedirectoryV1beta1Args {
 
   factory NamespaceIamPolicyServicedirectoryV1beta1Args.fromMap(Map<String, dynamic> map) {
     return NamespaceIamPolicyServicedirectoryV1beta1Args(
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingServicedirectoryV1beta1>(map['bindings'], (value) => BindingServicedirectoryV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingServicedirectoryV1beta1>(map['bindings']!, (value) => BindingServicedirectoryV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       namespaceId: (map['namespaceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

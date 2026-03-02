@@ -27,8 +27,8 @@ class Autopilot {
 
   factory Autopilot.fromMap(Map<String, dynamic> map) {
     return Autopilot(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      workloadPolicyConfig: map['workloadPolicyConfig'] == null ? null : (WorkloadPolicyConfig.fromMap((map['workloadPolicyConfig'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      workloadPolicyConfig: map['workloadPolicyConfig'] == null ? null : (WorkloadPolicyConfig.fromMap((map['workloadPolicyConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

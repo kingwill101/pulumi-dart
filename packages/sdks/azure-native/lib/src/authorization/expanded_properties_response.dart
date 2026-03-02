@@ -34,9 +34,9 @@ class ExpandedPropertiesResponse {
 
   factory ExpandedPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ExpandedPropertiesResponse(
-      principal: map['principal'] == null ? null : (ExpandedPropertiesResponsePrincipal.fromMap((map['principal'] as Map).cast<String, dynamic>())).input(),
-      roleDefinition: map['roleDefinition'] == null ? null : (ExpandedPropertiesResponseRoleDefinition.fromMap((map['roleDefinition'] as Map).cast<String, dynamic>())).input(),
-      scope: map['scope'] == null ? null : (ExpandedPropertiesResponseScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
+      principal: map['principal'] == null ? null : (ExpandedPropertiesResponsePrincipal.fromMap((map['principal']! as Map).cast<String, dynamic>())).input(),
+      roleDefinition: map['roleDefinition'] == null ? null : (ExpandedPropertiesResponseRoleDefinition.fromMap((map['roleDefinition']! as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (ExpandedPropertiesResponseScope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

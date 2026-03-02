@@ -56,7 +56,7 @@ class DbInstanceEndpointArgs {
   factory DbInstanceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return DbInstanceEndpointArgs(
       connectionStringPrefix: (map['connectionStringPrefix'] as String).input(),
-      dbInstanceEndpointDescription: map['dbInstanceEndpointDescription'] == null ? null : (map['dbInstanceEndpointDescription'] as String).input(),
+      dbInstanceEndpointDescription: map['dbInstanceEndpointDescription'] == null ? null : (map['dbInstanceEndpointDescription']! as String).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),
       nodeItems: (pulumi.Input.decodeList<DbInstanceEndpointNodeItem>(map['nodeItems'], (value) => DbInstanceEndpointNodeItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
       port: (map['port'] as String).input(),

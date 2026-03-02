@@ -44,10 +44,10 @@ class AuthzPolicyHttpRuleToOperation {
 
   factory AuthzPolicyHttpRuleToOperation.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleToOperation(
-      headerSet: map['headerSet'] == null ? null : (AuthzPolicyHttpRuleToOperationHeaderSet.fromMap((map['headerSet'] as Map).cast<String, dynamic>())).input(),
-      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperationHost>(map['hosts'], (value) => AuthzPolicyHttpRuleToOperationHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
-      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperationPath>(map['paths'], (value) => AuthzPolicyHttpRuleToOperationPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headerSet: map['headerSet'] == null ? null : (AuthzPolicyHttpRuleToOperationHeaderSet.fromMap((map['headerSet']! as Map).cast<String, dynamic>())).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperationHost>(map['hosts']!, (value) => AuthzPolicyHttpRuleToOperationHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
+      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperationPath>(map['paths']!, (value) => AuthzPolicyHttpRuleToOperationPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

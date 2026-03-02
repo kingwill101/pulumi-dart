@@ -27,7 +27,7 @@ class DomainDevicesConsoleSourceDev {
   factory DomainDevicesConsoleSourceDev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesConsoleSourceDev(
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesConsoleSourceDevSecLabel>(map['secLabels'], (value) => DomainDevicesConsoleSourceDevSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesConsoleSourceDevSecLabel>(map['secLabels']!, (value) => DomainDevicesConsoleSourceDevSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

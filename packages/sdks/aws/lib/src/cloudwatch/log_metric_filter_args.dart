@@ -51,12 +51,12 @@ class LogMetricFilterArgs {
 
   factory LogMetricFilterArgs.fromMap(Map<String, dynamic> map) {
     return LogMetricFilterArgs(
-      applyOnTransformedLogs: map['applyOnTransformedLogs'] == null ? null : (map['applyOnTransformedLogs'] as bool).input(),
+      applyOnTransformedLogs: map['applyOnTransformedLogs'] == null ? null : ((map['applyOnTransformedLogs'] as bool).input()).input(),
       logGroupName: (map['logGroupName'] as String).input(),
-      metricTransformation: (LogMetricFilterMetricTransformation.fromMap((map['metricTransformation'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      metricTransformation: (LogMetricFilterMetricTransformation.fromMap((map['metricTransformation']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       pattern: (map['pattern'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

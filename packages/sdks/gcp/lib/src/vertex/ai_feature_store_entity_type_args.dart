@@ -55,12 +55,12 @@ class AiFeatureStoreEntityTypeArgs {
 
   factory AiFeatureStoreEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       featurestore: (map['featurestore'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      monitoringConfig: map['monitoringConfig'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfig.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      offlineStorageTtlDays: map['offlineStorageTtlDays'] == null ? null : (map['offlineStorageTtlDays'] as int).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      monitoringConfig: map['monitoringConfig'] == null ? null : (AiFeatureStoreEntityTypeMonitoringConfig.fromMap((map['monitoringConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      offlineStorageTtlDays: map['offlineStorageTtlDays'] == null ? null : (map['offlineStorageTtlDays']! as int).input(),
     );
   }
 }

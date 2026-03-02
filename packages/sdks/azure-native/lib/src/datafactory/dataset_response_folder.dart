@@ -21,7 +21,7 @@ class DatasetResponseFolder {
 
   factory DatasetResponseFolder.fromMap(Map<String, dynamic> map) {
     return DatasetResponseFolder(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

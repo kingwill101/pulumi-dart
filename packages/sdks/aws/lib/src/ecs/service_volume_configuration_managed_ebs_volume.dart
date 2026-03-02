@@ -71,17 +71,17 @@ class ServiceVolumeConfigurationManagedEbsVolume {
 
   factory ServiceVolumeConfigurationManagedEbsVolume.fromMap(Map<String, dynamic> map) {
     return ServiceVolumeConfigurationManagedEbsVolume(
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType'] as String).input(),
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
+      fileSystemType: map['fileSystemType'] == null ? null : ((map['fileSystemType'] as String).input()).input(),
+      iops: map['iops'] == null ? null : ((map['iops'] as int).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      sizeInGb: map['sizeInGb'] == null ? null : (map['sizeInGb'] as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
-      tagSpecifications: map['tagSpecifications'] == null ? null : (pulumi.Input.decodeList<ServiceVolumeConfigurationManagedEbsVolumeTagSpecification>(map['tagSpecifications'], (value) => ServiceVolumeConfigurationManagedEbsVolumeTagSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
-      volumeInitializationRate: map['volumeInitializationRate'] == null ? null : (map['volumeInitializationRate'] as int).input(),
-      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
+      sizeInGb: map['sizeInGb'] == null ? null : ((map['sizeInGb'] as int).input()).input(),
+      snapshotId: map['snapshotId'] == null ? null : ((map['snapshotId'] as String).input()).input(),
+      tagSpecifications: map['tagSpecifications'] == null ? null : ((pulumi.Input.decodeList<ServiceVolumeConfigurationManagedEbsVolumeTagSpecification>(map['tagSpecifications']!, (value) => ServiceVolumeConfigurationManagedEbsVolumeTagSpecification.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      throughput: map['throughput'] == null ? null : ((map['throughput'] as int).input()).input(),
+      volumeInitializationRate: map['volumeInitializationRate'] == null ? null : ((map['volumeInitializationRate'] as int).input()).input(),
+      volumeType: map['volumeType'] == null ? null : ((map['volumeType'] as String).input()).input(),
     );
   }
 }

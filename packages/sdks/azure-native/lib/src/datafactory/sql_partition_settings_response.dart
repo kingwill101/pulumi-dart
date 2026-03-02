@@ -31,9 +31,9 @@ class SqlPartitionSettingsResponse {
 
   factory SqlPartitionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlPartitionSettingsResponse(
-      partitionColumnName: map['partitionColumnName'] == null ? null : (map['partitionColumnName']).input(),
-      partitionLowerBound: map['partitionLowerBound'] == null ? null : (map['partitionLowerBound']).input(),
-      partitionUpperBound: map['partitionUpperBound'] == null ? null : (map['partitionUpperBound']).input(),
+      partitionColumnName: map['partitionColumnName'] == null ? null : (map['partitionColumnName']!).input(),
+      partitionLowerBound: map['partitionLowerBound'] == null ? null : (map['partitionLowerBound']!).input(),
+      partitionUpperBound: map['partitionUpperBound'] == null ? null : (map['partitionUpperBound']!).input(),
     );
   }
 }

@@ -87,19 +87,19 @@ class AppTemplate {
 
   factory AppTemplate.fromMap(Map<String, dynamic> map) {
     return AppTemplate(
-      azureQueueScaleRules: map['azureQueueScaleRules'] == null ? null : (pulumi.Input.decodeList<AppTemplateAzureQueueScaleRule>(map['azureQueueScaleRules'], (value) => AppTemplateAzureQueueScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureQueueScaleRules: map['azureQueueScaleRules'] == null ? null : (pulumi.Input.decodeList<AppTemplateAzureQueueScaleRule>(map['azureQueueScaleRules']!, (value) => AppTemplateAzureQueueScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       containers: (pulumi.Input.decodeList<AppTemplateContainer>(map['containers'], (value) => AppTemplateContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cooldownPeriodInSeconds: map['cooldownPeriodInSeconds'] == null ? null : (map['cooldownPeriodInSeconds'] as int).input(),
-      customScaleRules: map['customScaleRules'] == null ? null : (pulumi.Input.decodeList<AppTemplateCustomScaleRule>(map['customScaleRules'], (value) => AppTemplateCustomScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpScaleRules: map['httpScaleRules'] == null ? null : (pulumi.Input.decodeList<AppTemplateHttpScaleRule>(map['httpScaleRules'], (value) => AppTemplateHttpScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initContainers: map['initContainers'] == null ? null : (pulumi.Input.decodeList<AppTemplateInitContainer>(map['initContainers'], (value) => AppTemplateInitContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas'] as int).input(),
-      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas'] as int).input(),
-      pollingIntervalInSeconds: map['pollingIntervalInSeconds'] == null ? null : (map['pollingIntervalInSeconds'] as int).input(),
-      revisionSuffix: map['revisionSuffix'] == null ? null : (map['revisionSuffix'] as String).input(),
-      tcpScaleRules: map['tcpScaleRules'] == null ? null : (pulumi.Input.decodeList<AppTemplateTcpScaleRule>(map['tcpScaleRules'], (value) => AppTemplateTcpScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds'] as int).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<AppTemplateVolume>(map['volumes'], (value) => AppTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cooldownPeriodInSeconds: map['cooldownPeriodInSeconds'] == null ? null : (map['cooldownPeriodInSeconds']! as int).input(),
+      customScaleRules: map['customScaleRules'] == null ? null : (pulumi.Input.decodeList<AppTemplateCustomScaleRule>(map['customScaleRules']!, (value) => AppTemplateCustomScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpScaleRules: map['httpScaleRules'] == null ? null : (pulumi.Input.decodeList<AppTemplateHttpScaleRule>(map['httpScaleRules']!, (value) => AppTemplateHttpScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initContainers: map['initContainers'] == null ? null : (pulumi.Input.decodeList<AppTemplateInitContainer>(map['initContainers']!, (value) => AppTemplateInitContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas']! as int).input(),
+      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas']! as int).input(),
+      pollingIntervalInSeconds: map['pollingIntervalInSeconds'] == null ? null : (map['pollingIntervalInSeconds']! as int).input(),
+      revisionSuffix: map['revisionSuffix'] == null ? null : (map['revisionSuffix']! as String).input(),
+      tcpScaleRules: map['tcpScaleRules'] == null ? null : (pulumi.Input.decodeList<AppTemplateTcpScaleRule>(map['tcpScaleRules']!, (value) => AppTemplateTcpScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds']! as int).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<AppTemplateVolume>(map['volumes']!, (value) => AppTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

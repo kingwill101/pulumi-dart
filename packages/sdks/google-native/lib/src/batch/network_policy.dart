@@ -22,7 +22,7 @@ class NetworkPolicy {
 
   factory NetworkPolicy.fromMap(Map<String, dynamic> map) {
     return NetworkPolicy(
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces'], (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces']!, (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

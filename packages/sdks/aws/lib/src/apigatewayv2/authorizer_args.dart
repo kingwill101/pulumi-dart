@@ -88,16 +88,16 @@ class AuthorizerArgs {
   factory AuthorizerArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizerArgs(
       apiId: (map['apiId'] as String).input(),
-      authorizerCredentialsArn: map['authorizerCredentialsArn'] == null ? null : (map['authorizerCredentialsArn'] as String).input(),
-      authorizerPayloadFormatVersion: map['authorizerPayloadFormatVersion'] == null ? null : (map['authorizerPayloadFormatVersion'] as String).input(),
-      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : (map['authorizerResultTtlInSeconds'] as int).input(),
+      authorizerCredentialsArn: map['authorizerCredentialsArn'] == null ? null : ((map['authorizerCredentialsArn'] as String).input()).input(),
+      authorizerPayloadFormatVersion: map['authorizerPayloadFormatVersion'] == null ? null : ((map['authorizerPayloadFormatVersion'] as String).input()).input(),
+      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : ((map['authorizerResultTtlInSeconds'] as int).input()).input(),
       authorizerType: (map['authorizerType'] as String).input(),
-      authorizerUri: map['authorizerUri'] == null ? null : (map['authorizerUri'] as String).input(),
-      enableSimpleResponses: map['enableSimpleResponses'] == null ? null : (map['enableSimpleResponses'] as bool).input(),
-      identitySources: map['identitySources'] == null ? null : ((map['identitySources'] as List).cast<String>()).input(),
-      jwtConfiguration: map['jwtConfiguration'] == null ? null : (AuthorizerJwtConfiguration.fromMap((map['jwtConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      authorizerUri: map['authorizerUri'] == null ? null : ((map['authorizerUri'] as String).input()).input(),
+      enableSimpleResponses: map['enableSimpleResponses'] == null ? null : ((map['enableSimpleResponses'] as bool).input()).input(),
+      identitySources: map['identitySources'] == null ? null : (((map['identitySources'] as List).cast<String>()).input()).input(),
+      jwtConfiguration: map['jwtConfiguration'] == null ? null : ((AuthorizerJwtConfiguration.fromMap((map['jwtConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

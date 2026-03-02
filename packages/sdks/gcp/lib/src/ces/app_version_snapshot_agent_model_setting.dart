@@ -31,8 +31,8 @@ class AppVersionSnapshotAgentModelSetting {
 
   factory AppVersionSnapshotAgentModelSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAgentModelSetting(
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      temperature: map['temperature'] == null ? null : (map['temperature'] as double).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      temperature: map['temperature'] == null ? null : (map['temperature']! as double).input(),
     );
   }
 }

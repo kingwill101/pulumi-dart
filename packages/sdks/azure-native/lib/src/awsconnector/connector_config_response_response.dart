@@ -41,11 +41,11 @@ class ConnectorConfigResponseResponse {
 
   factory ConnectorConfigResponseResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorConfigResponseResponse(
-      activationCode: map['activationCode'] == null ? null : (map['activationCode'] as String).input(),
-      activationExpiry: map['activationExpiry'] == null ? null : (map['activationExpiry'] as String).input(),
-      activationId: map['activationId'] == null ? null : (map['activationId'] as String).input(),
-      provider: map['provider'] == null ? null : (map['provider'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      activationCode: map['activationCode'] == null ? null : (map['activationCode']! as String).input(),
+      activationExpiry: map['activationExpiry'] == null ? null : (map['activationExpiry']! as String).input(),
+      activationId: map['activationId'] == null ? null : (map['activationId']! as String).input(),
+      provider: map['provider'] == null ? null : (map['provider']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
     );
   }
 }

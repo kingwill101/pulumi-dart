@@ -23,7 +23,7 @@ class HBaseClusterRolesWorkerNodeAutoscale {
 
   factory HBaseClusterRolesWorkerNodeAutoscale.fromMap(Map<String, dynamic> map) {
     return HBaseClusterRolesWorkerNodeAutoscale(
-      recurrence: map['recurrence'] == null ? null : (HBaseClusterRolesWorkerNodeAutoscaleRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
+      recurrence: map['recurrence'] == null ? null : (HBaseClusterRolesWorkerNodeAutoscaleRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

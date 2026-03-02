@@ -26,7 +26,7 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders {
   factory WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders(
       port: (map['port'] as int).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

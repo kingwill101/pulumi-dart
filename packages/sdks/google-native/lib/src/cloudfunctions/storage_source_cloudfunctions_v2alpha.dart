@@ -31,9 +31,9 @@ class StorageSourceCloudfunctionsV2alpha {
 
   factory StorageSourceCloudfunctionsV2alpha.fromMap(Map<String, dynamic> map) {
     return StorageSourceCloudfunctionsV2alpha(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
-      object: map['object'] == null ? null : (map['object'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
+      object: map['object'] == null ? null : (map['object']! as String).input(),
     );
   }
 }

@@ -54,11 +54,11 @@ class GetSequencesResult {
     return GetSequencesResult(
       database: map['database'] as String,
       id: map['id'] as String,
-      likeAllPatterns: map['likeAllPatterns'] == null ? null : (map['likeAllPatterns'] as List).cast<String>(),
-      likeAnyPatterns: map['likeAnyPatterns'] == null ? null : (map['likeAnyPatterns'] as List).cast<String>(),
-      notLikeAllPatterns: map['notLikeAllPatterns'] == null ? null : (map['notLikeAllPatterns'] as List).cast<String>(),
-      regexPattern: map['regexPattern'] == null ? null : map['regexPattern'] as String,
-      schemas: map['schemas'] == null ? null : (map['schemas'] as List).cast<String>(),
+      likeAllPatterns: map['likeAllPatterns'] == null ? null : (map['likeAllPatterns']! as List).cast<String>(),
+      likeAnyPatterns: map['likeAnyPatterns'] == null ? null : (map['likeAnyPatterns']! as List).cast<String>(),
+      notLikeAllPatterns: map['notLikeAllPatterns'] == null ? null : (map['notLikeAllPatterns']! as List).cast<String>(),
+      regexPattern: map['regexPattern'] == null ? null : map['regexPattern']! as String,
+      schemas: map['schemas'] == null ? null : (map['schemas']! as List).cast<String>(),
       sequences: pulumi.Input.decodeList<GetSequencesSequence>(map['sequences'], (value) => GetSequencesSequence.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

@@ -55,14 +55,14 @@ class ApiReferenceResponse {
 
   factory ApiReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ApiReferenceResponse(
-      brandColor: map['brandColor'] == null ? null : (map['brandColor'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      iconUri: map['iconUri'] == null ? null : (map['iconUri'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      swagger: map['swagger'] == null ? null : (map['swagger']).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      brandColor: map['brandColor'] == null ? null : (map['brandColor']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      iconUri: map['iconUri'] == null ? null : (map['iconUri']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      swagger: map['swagger'] == null ? null : (map['swagger']!).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

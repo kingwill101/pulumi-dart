@@ -58,13 +58,13 @@ class WorkspaceNamedValueState {
 
   factory WorkspaceNamedValueState.fromMap(Map<String, dynamic> map) {
     return WorkspaceNamedValueState(
-      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : (map['apiManagementWorkspaceId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      valueFromKeyVault: map['valueFromKeyVault'] == null ? null : (WorkspaceNamedValueValueFromKeyVault.fromMap((map['valueFromKeyVault'] as Map).cast<String, dynamic>())).input(),
+      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : (map['apiManagementWorkspaceId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      valueFromKeyVault: map['valueFromKeyVault'] == null ? null : (WorkspaceNamedValueValueFromKeyVault.fromMap((map['valueFromKeyVault']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

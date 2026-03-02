@@ -21,7 +21,7 @@ class AdditionalPodRangesConfig {
 
   factory AdditionalPodRangesConfig.fromMap(Map<String, dynamic> map) {
     return AdditionalPodRangesConfig(
-      podRangeNames: map['podRangeNames'] == null ? null : ((map['podRangeNames'] as List).cast<String>()).input(),
+      podRangeNames: map['podRangeNames'] == null ? null : ((map['podRangeNames']! as List).cast<String>()).input(),
     );
   }
 }

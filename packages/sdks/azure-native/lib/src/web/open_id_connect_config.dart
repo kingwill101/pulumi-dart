@@ -41,11 +41,11 @@ class OpenIdConnectConfig {
 
   factory OpenIdConnectConfig.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectConfig(
-      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : (map['authorizationEndpoint'] as String).input(),
-      certificationUri: map['certificationUri'] == null ? null : (map['certificationUri'] as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint'] as String).input(),
-      wellKnownOpenIdConfiguration: map['wellKnownOpenIdConfiguration'] == null ? null : (map['wellKnownOpenIdConfiguration'] as String).input(),
+      authorizationEndpoint: map['authorizationEndpoint'] == null ? null : (map['authorizationEndpoint']! as String).input(),
+      certificationUri: map['certificationUri'] == null ? null : (map['certificationUri']! as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint']! as String).input(),
+      wellKnownOpenIdConfiguration: map['wellKnownOpenIdConfiguration'] == null ? null : (map['wellKnownOpenIdConfiguration']! as String).input(),
     );
   }
 }

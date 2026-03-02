@@ -44,11 +44,11 @@ class DataflowBuiltInTransformationSettings {
 
   factory DataflowBuiltInTransformationSettings.fromMap(Map<String, dynamic> map) {
     return DataflowBuiltInTransformationSettings(
-      datasets: map['datasets'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationDataset>(map['datasets'], (value) => DataflowBuiltInTransformationDataset.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationFilter>(map['filter'], (value) => DataflowBuiltInTransformationFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      map: map['map'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationMap>(map['map'], (value) => DataflowBuiltInTransformationMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schemaRef: map['schemaRef'] == null ? null : (map['schemaRef'] as String).input(),
-      serializationFormat: map['serializationFormat'] == null ? null : (map['serializationFormat'] as String).input(),
+      datasets: map['datasets'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationDataset>(map['datasets']!, (value) => DataflowBuiltInTransformationDataset.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationFilter>(map['filter']!, (value) => DataflowBuiltInTransformationFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      map: map['map'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationMap>(map['map']!, (value) => DataflowBuiltInTransformationMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schemaRef: map['schemaRef'] == null ? null : (map['schemaRef']! as String).input(),
+      serializationFormat: map['serializationFormat'] == null ? null : (map['serializationFormat']! as String).input(),
     );
   }
 }

@@ -43,12 +43,12 @@ class QuicksetupConfigurationManagerConfigurationDefinition {
 
   factory QuicksetupConfigurationManagerConfigurationDefinition.fromMap(Map<String, dynamic> map) {
     return QuicksetupConfigurationManagerConfigurationDefinition(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      localDeploymentAdministrationRoleArn: map['localDeploymentAdministrationRoleArn'] == null ? null : (map['localDeploymentAdministrationRoleArn'] as String).input(),
-      localDeploymentExecutionRoleName: map['localDeploymentExecutionRoleName'] == null ? null : (map['localDeploymentExecutionRoleName'] as String).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      localDeploymentAdministrationRoleArn: map['localDeploymentAdministrationRoleArn'] == null ? null : ((map['localDeploymentAdministrationRoleArn'] as String).input()).input(),
+      localDeploymentExecutionRoleName: map['localDeploymentExecutionRoleName'] == null ? null : ((map['localDeploymentExecutionRoleName'] as String).input()).input(),
       parameters: ((map['parameters'] as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
-      typeVersion: map['typeVersion'] == null ? null : (map['typeVersion'] as String).input(),
+      typeVersion: map['typeVersion'] == null ? null : ((map['typeVersion'] as String).input()).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class ClusterControlPlane {
 
   factory ClusterControlPlane.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlane(
-      local: map['local'] == null ? null : (ClusterControlPlaneLocal.fromMap((map['local'] as Map).cast<String, dynamic>())).input(),
-      remote: map['remote'] == null ? null : (ClusterControlPlaneRemote.fromMap((map['remote'] as Map).cast<String, dynamic>())).input(),
+      local: map['local'] == null ? null : (ClusterControlPlaneLocal.fromMap((map['local']! as Map).cast<String, dynamic>())).input(),
+      remote: map['remote'] == null ? null : (ClusterControlPlaneRemote.fromMap((map['remote']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

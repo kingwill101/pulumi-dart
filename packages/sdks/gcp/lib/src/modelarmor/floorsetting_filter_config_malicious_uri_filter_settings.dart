@@ -23,7 +23,7 @@ class FloorsettingFilterConfigMaliciousUriFilterSettings {
 
   factory FloorsettingFilterConfigMaliciousUriFilterSettings.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigMaliciousUriFilterSettings(
-      filterEnforcement: map['filterEnforcement'] == null ? null : (map['filterEnforcement'] as String).input(),
+      filterEnforcement: map['filterEnforcement'] == null ? null : (map['filterEnforcement']! as String).input(),
     );
   }
 }

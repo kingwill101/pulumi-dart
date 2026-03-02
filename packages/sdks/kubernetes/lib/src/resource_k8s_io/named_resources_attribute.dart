@@ -58,14 +58,14 @@ class NamedResourcesAttribute {
 
   factory NamedResourcesAttribute.fromMap(Map<String, dynamic> map) {
     return NamedResourcesAttribute(
-      bool: map['bool'] == null ? null : (map['bool'] as bool).input(),
-      int: map['int'] == null ? null : (map['int'] as int).input(),
-      intSlice: map['intSlice'] == null ? null : (NamedResourcesIntSlice.fromMap((map['intSlice'] as Map).cast<String, dynamic>())).input(),
+      bool: map['bool'] == null ? null : (map['bool']! as bool).input(),
+      int: map['int'] == null ? null : (map['int']! as int).input(),
+      intSlice: map['intSlice'] == null ? null : (NamedResourcesIntSlice.fromMap((map['intSlice']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      quantity: map['quantity'] == null ? null : (map['quantity'] as String).input(),
-      string: map['string'] == null ? null : (map['string'] as String).input(),
-      stringSlice: map['stringSlice'] == null ? null : (NamedResourcesStringSlice.fromMap((map['stringSlice'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity']! as String).input(),
+      string: map['string'] == null ? null : (map['string']! as String).input(),
+      stringSlice: map['stringSlice'] == null ? null : (NamedResourcesStringSlice.fromMap((map['stringSlice']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

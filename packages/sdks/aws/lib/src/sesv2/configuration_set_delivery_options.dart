@@ -30,9 +30,9 @@ class ConfigurationSetDeliveryOptions {
 
   factory ConfigurationSetDeliveryOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetDeliveryOptions(
-      maxDeliverySeconds: map['maxDeliverySeconds'] == null ? null : (map['maxDeliverySeconds'] as int).input(),
-      sendingPoolName: map['sendingPoolName'] == null ? null : (map['sendingPoolName'] as String).input(),
-      tlsPolicy: map['tlsPolicy'] == null ? null : (map['tlsPolicy'] as String).input(),
+      maxDeliverySeconds: map['maxDeliverySeconds'] == null ? null : ((map['maxDeliverySeconds'] as int).input()).input(),
+      sendingPoolName: map['sendingPoolName'] == null ? null : ((map['sendingPoolName'] as String).input()).input(),
+      tlsPolicy: map['tlsPolicy'] == null ? null : ((map['tlsPolicy'] as String).input()).input(),
     );
   }
 }

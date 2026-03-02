@@ -90,15 +90,15 @@ class AutonomousDatabasePropertiesConnectionStringProfile {
 
   factory AutonomousDatabasePropertiesConnectionStringProfile.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabasePropertiesConnectionStringProfile(
-      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      hostFormat: map['hostFormat'] == null ? null : (map['hostFormat'] as String).input(),
-      isRegional: map['isRegional'] == null ? null : (map['isRegional'] as bool).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      sessionMode: map['sessionMode'] == null ? null : (map['sessionMode'] as String).input(),
-      syntaxFormat: map['syntaxFormat'] == null ? null : (map['syntaxFormat'] as String).input(),
-      tlsAuthentication: map['tlsAuthentication'] == null ? null : (map['tlsAuthentication'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      hostFormat: map['hostFormat'] == null ? null : (map['hostFormat']! as String).input(),
+      isRegional: map['isRegional'] == null ? null : (map['isRegional']! as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      sessionMode: map['sessionMode'] == null ? null : (map['sessionMode']! as String).input(),
+      syntaxFormat: map['syntaxFormat'] == null ? null : (map['syntaxFormat']! as String).input(),
+      tlsAuthentication: map['tlsAuthentication'] == null ? null : (map['tlsAuthentication']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

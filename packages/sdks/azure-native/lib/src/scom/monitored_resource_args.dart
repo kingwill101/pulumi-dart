@@ -35,7 +35,7 @@ class MonitoredResourceArgs {
   factory MonitoredResourceArgs.fromMap(Map<String, dynamic> map) {
     return MonitoredResourceArgs(
       instanceName: (map['instanceName'] as String).input(),
-      monitoredResourceName: map['monitoredResourceName'] == null ? null : (map['monitoredResourceName'] as String).input(),
+      monitoredResourceName: map['monitoredResourceName'] == null ? null : (map['monitoredResourceName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

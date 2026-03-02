@@ -27,8 +27,8 @@ class PropagatedRouteTable {
 
   factory PropagatedRouteTable.fromMap(Map<String, dynamic> map) {
     return PropagatedRouteTable(
-      ids: map['ids'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['ids'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['ids']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
     );
   }
 }

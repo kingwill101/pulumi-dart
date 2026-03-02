@@ -78,17 +78,17 @@ class QueueCloudtasksV2beta3Args {
 
   factory QueueCloudtasksV2beta3Args.fromMap(Map<String, dynamic> map) {
     return QueueCloudtasksV2beta3Args(
-      appEngineHttpQueue: map['appEngineHttpQueue'] == null ? null : (AppEngineHttpQueue.fromMap((map['appEngineHttpQueue'] as Map).cast<String, dynamic>())).input(),
-      httpTarget: map['httpTarget'] == null ? null : (HttpTargetCloudtasksV2beta3.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rateLimits: map['rateLimits'] == null ? null : (RateLimitsCloudtasksV2beta3.fromMap((map['rateLimits'] as Map).cast<String, dynamic>())).input(),
-      retryConfig: map['retryConfig'] == null ? null : (RetryConfigCloudtasksV2beta3.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())).input(),
-      stackdriverLoggingConfig: map['stackdriverLoggingConfig'] == null ? null : (StackdriverLoggingConfigCloudtasksV2beta3.fromMap((map['stackdriverLoggingConfig'] as Map).cast<String, dynamic>())).input(),
-      taskTtl: map['taskTtl'] == null ? null : (map['taskTtl'] as String).input(),
-      tombstoneTtl: map['tombstoneTtl'] == null ? null : (map['tombstoneTtl'] as String).input(),
-      type: map['type'] == null ? null : (QueueType.fromValue(map['type'] as String)).input(),
+      appEngineHttpQueue: map['appEngineHttpQueue'] == null ? null : (AppEngineHttpQueue.fromMap((map['appEngineHttpQueue']! as Map).cast<String, dynamic>())).input(),
+      httpTarget: map['httpTarget'] == null ? null : (HttpTargetCloudtasksV2beta3.fromMap((map['httpTarget']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rateLimits: map['rateLimits'] == null ? null : (RateLimitsCloudtasksV2beta3.fromMap((map['rateLimits']! as Map).cast<String, dynamic>())).input(),
+      retryConfig: map['retryConfig'] == null ? null : (RetryConfigCloudtasksV2beta3.fromMap((map['retryConfig']! as Map).cast<String, dynamic>())).input(),
+      stackdriverLoggingConfig: map['stackdriverLoggingConfig'] == null ? null : (StackdriverLoggingConfigCloudtasksV2beta3.fromMap((map['stackdriverLoggingConfig']! as Map).cast<String, dynamic>())).input(),
+      taskTtl: map['taskTtl'] == null ? null : (map['taskTtl']! as String).input(),
+      tombstoneTtl: map['tombstoneTtl'] == null ? null : (map['tombstoneTtl']! as String).input(),
+      type: map['type'] == null ? null : (QueueType.fromValue(map['type']! as String)).input(),
     );
   }
 }

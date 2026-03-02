@@ -97,20 +97,20 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      autoDeleteOnIdle: map['autoDeleteOnIdle'] == null ? null : (map['autoDeleteOnIdle'] as String).input(),
-      batchedOperationsEnabled: map['batchedOperationsEnabled'] == null ? null : (map['batchedOperationsEnabled'] as bool).input(),
-      clientScopedSubscription: map['clientScopedSubscription'] == null ? null : (SubscriptionClientScopedSubscription.fromMap((map['clientScopedSubscription'] as Map).cast<String, dynamic>())).input(),
-      clientScopedSubscriptionEnabled: map['clientScopedSubscriptionEnabled'] == null ? null : (map['clientScopedSubscriptionEnabled'] as bool).input(),
-      deadLetteringOnFilterEvaluationError: map['deadLetteringOnFilterEvaluationError'] == null ? null : (map['deadLetteringOnFilterEvaluationError'] as bool).input(),
-      deadLetteringOnMessageExpiration: map['deadLetteringOnMessageExpiration'] == null ? null : (map['deadLetteringOnMessageExpiration'] as bool).input(),
-      defaultMessageTtl: map['defaultMessageTtl'] == null ? null : (map['defaultMessageTtl'] as String).input(),
-      forwardDeadLetteredMessagesTo: map['forwardDeadLetteredMessagesTo'] == null ? null : (map['forwardDeadLetteredMessagesTo'] as String).input(),
-      forwardTo: map['forwardTo'] == null ? null : (map['forwardTo'] as String).input(),
-      lockDuration: map['lockDuration'] == null ? null : (map['lockDuration'] as String).input(),
+      autoDeleteOnIdle: map['autoDeleteOnIdle'] == null ? null : (map['autoDeleteOnIdle']! as String).input(),
+      batchedOperationsEnabled: map['batchedOperationsEnabled'] == null ? null : (map['batchedOperationsEnabled']! as bool).input(),
+      clientScopedSubscription: map['clientScopedSubscription'] == null ? null : (SubscriptionClientScopedSubscription.fromMap((map['clientScopedSubscription']! as Map).cast<String, dynamic>())).input(),
+      clientScopedSubscriptionEnabled: map['clientScopedSubscriptionEnabled'] == null ? null : (map['clientScopedSubscriptionEnabled']! as bool).input(),
+      deadLetteringOnFilterEvaluationError: map['deadLetteringOnFilterEvaluationError'] == null ? null : (map['deadLetteringOnFilterEvaluationError']! as bool).input(),
+      deadLetteringOnMessageExpiration: map['deadLetteringOnMessageExpiration'] == null ? null : (map['deadLetteringOnMessageExpiration']! as bool).input(),
+      defaultMessageTtl: map['defaultMessageTtl'] == null ? null : (map['defaultMessageTtl']! as String).input(),
+      forwardDeadLetteredMessagesTo: map['forwardDeadLetteredMessagesTo'] == null ? null : (map['forwardDeadLetteredMessagesTo']! as String).input(),
+      forwardTo: map['forwardTo'] == null ? null : (map['forwardTo']! as String).input(),
+      lockDuration: map['lockDuration'] == null ? null : (map['lockDuration']! as String).input(),
       maxDeliveryCount: (map['maxDeliveryCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      requiresSession: map['requiresSession'] == null ? null : (map['requiresSession'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      requiresSession: map['requiresSession'] == null ? null : (map['requiresSession']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       topicId: (map['topicId'] as String).input(),
     );
   }

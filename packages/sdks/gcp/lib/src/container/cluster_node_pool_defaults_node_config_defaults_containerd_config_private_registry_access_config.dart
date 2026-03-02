@@ -26,7 +26,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
 
   factory ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig(
-      certificateAuthorityDomainConfigs: map['certificateAuthorityDomainConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>(map['certificateAuthorityDomainConfigs'], (value) => ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificateAuthorityDomainConfigs: map['certificateAuthorityDomainConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>(map['certificateAuthorityDomainConfigs']!, (value) => ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

@@ -21,7 +21,7 @@ class FileIODetails {
 
   factory FileIODetails.fromMap(Map<String, dynamic> map) {
     return FileIODetails(
-      filePattern: map['filePattern'] == null ? null : (map['filePattern'] as String).input(),
+      filePattern: map['filePattern'] == null ? null : (map['filePattern']! as String).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class NetworkRuleSetResponse {
   factory NetworkRuleSetResponse.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSetResponse(
       defaultAction: (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRuleResponse>(map['ipRules'], (value) => IPRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRuleResponse>(map['ipRules']!, (value) => IPRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

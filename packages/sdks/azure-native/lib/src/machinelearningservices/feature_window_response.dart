@@ -26,8 +26,8 @@ class FeatureWindowResponse {
 
   factory FeatureWindowResponse.fromMap(Map<String, dynamic> map) {
     return FeatureWindowResponse(
-      featureWindowEnd: map['featureWindowEnd'] == null ? null : (map['featureWindowEnd'] as String).input(),
-      featureWindowStart: map['featureWindowStart'] == null ? null : (map['featureWindowStart'] as String).input(),
+      featureWindowEnd: map['featureWindowEnd'] == null ? null : (map['featureWindowEnd']! as String).input(),
+      featureWindowStart: map['featureWindowStart'] == null ? null : (map['featureWindowStart']! as String).input(),
     );
   }
 }

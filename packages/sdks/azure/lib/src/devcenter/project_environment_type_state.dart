@@ -58,14 +58,14 @@ class ProjectEnvironmentTypeState {
 
   factory ProjectEnvironmentTypeState.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentTypeState(
-      creatorRoleAssignmentRoles: map['creatorRoleAssignmentRoles'] == null ? null : ((map['creatorRoleAssignmentRoles'] as List).cast<String>()).input(),
-      deploymentTargetId: map['deploymentTargetId'] == null ? null : (map['deploymentTargetId'] as String).input(),
-      devCenterProjectId: map['devCenterProjectId'] == null ? null : (map['devCenterProjectId'] as String).input(),
-      identity: map['identity'] == null ? null : (ProjectEnvironmentTypeIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userRoleAssignments: map['userRoleAssignments'] == null ? null : (pulumi.Input.decodeList<ProjectEnvironmentTypeUserRoleAssignment>(map['userRoleAssignments'], (value) => ProjectEnvironmentTypeUserRoleAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      creatorRoleAssignmentRoles: map['creatorRoleAssignmentRoles'] == null ? null : ((map['creatorRoleAssignmentRoles']! as List).cast<String>()).input(),
+      deploymentTargetId: map['deploymentTargetId'] == null ? null : (map['deploymentTargetId']! as String).input(),
+      devCenterProjectId: map['devCenterProjectId'] == null ? null : (map['devCenterProjectId']! as String).input(),
+      identity: map['identity'] == null ? null : (ProjectEnvironmentTypeIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      userRoleAssignments: map['userRoleAssignments'] == null ? null : (pulumi.Input.decodeList<ProjectEnvironmentTypeUserRoleAssignment>(map['userRoleAssignments']!, (value) => ProjectEnvironmentTypeUserRoleAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

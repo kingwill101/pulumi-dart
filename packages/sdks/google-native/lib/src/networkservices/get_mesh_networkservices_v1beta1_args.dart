@@ -33,7 +33,7 @@ class GetMeshNetworkservicesV1beta1Args {
     return GetMeshNetworkservicesV1beta1Args(
       location: (map['location'] as String).input(),
       meshId: (map['meshId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

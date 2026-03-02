@@ -22,7 +22,7 @@ class DnsDelegationsPropertiesResponse {
 
   factory DnsDelegationsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DnsDelegationsPropertiesResponse(
-      delegations: map['delegations'] == null ? null : (pulumi.Input.decodeList<DnsDelegationPropertiesResponse>(map['delegations'], (value) => DnsDelegationPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      delegations: map['delegations'] == null ? null : (pulumi.Input.decodeList<DnsDelegationPropertiesResponse>(map['delegations']!, (value) => DnsDelegationPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

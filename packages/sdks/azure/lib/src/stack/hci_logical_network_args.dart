@@ -61,12 +61,12 @@ class HciLogicalNetworkArgs {
   factory HciLogicalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return HciLogicalNetworkArgs(
       customLocationId: (map['customLocationId'] as String).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       subnet: (HciLogicalNetworkSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       virtualSwitchName: (map['virtualSwitchName'] as String).input(),
     );
   }

@@ -69,14 +69,14 @@ class GetManagedClusterSnapshotResult {
   factory GetManagedClusterSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetManagedClusterSnapshotResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      creationData: map['creationData'] == null ? null : CreationDataResponse.fromMap((map['creationData'] as Map).cast<String, dynamic>()),
+      creationData: map['creationData'] == null ? null : CreationDataResponse.fromMap((map['creationData']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       managedClusterPropertiesReadOnly: ManagedClusterPropertiesForSnapshotResponse.fromMap((map['managedClusterPropertiesReadOnly'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      snapshotType: map['snapshotType'] == null ? null : map['snapshotType'] as String,
+      snapshotType: map['snapshotType'] == null ? null : map['snapshotType']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

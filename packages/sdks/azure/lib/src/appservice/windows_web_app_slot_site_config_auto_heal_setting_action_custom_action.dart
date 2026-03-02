@@ -26,7 +26,7 @@ class WindowsWebAppSlotSiteConfigAutoHealSettingActionCustomAction {
   factory WindowsWebAppSlotSiteConfigAutoHealSettingActionCustomAction.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotSiteConfigAutoHealSettingActionCustomAction(
       executable: (map['executable'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
     );
   }
 }

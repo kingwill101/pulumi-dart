@@ -31,9 +31,9 @@ class RegistryInfo {
 
   factory RegistryInfo.fromMap(Map<String, dynamic> map) {
     return RegistryInfo(
-      registryPassword: map['registryPassword'] == null ? null : (map['registryPassword'] as String).input(),
-      registryUrl: map['registryUrl'] == null ? null : (map['registryUrl'] as String).input(),
-      registryUserName: map['registryUserName'] == null ? null : (map['registryUserName'] as String).input(),
+      registryPassword: map['registryPassword'] == null ? null : (map['registryPassword']! as String).input(),
+      registryUrl: map['registryUrl'] == null ? null : (map['registryUrl']! as String).input(),
+      registryUserName: map['registryUserName'] == null ? null : (map['registryUserName']! as String).input(),
     );
   }
 }

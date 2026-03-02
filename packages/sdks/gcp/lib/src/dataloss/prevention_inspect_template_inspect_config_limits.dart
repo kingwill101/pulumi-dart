@@ -32,7 +32,7 @@ class PreventionInspectTemplateInspectConfigLimits {
 
   factory PreventionInspectTemplateInspectConfigLimits.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigLimits(
-      maxFindingsPerInfoTypes: map['maxFindingsPerInfoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType>(map['maxFindingsPerInfoTypes'], (value) => PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxFindingsPerInfoTypes: map['maxFindingsPerInfoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType>(map['maxFindingsPerInfoTypes']!, (value) => PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
       maxFindingsPerItem: (map['maxFindingsPerItem'] as int).input(),
       maxFindingsPerRequest: (map['maxFindingsPerRequest'] as int).input(),
     );

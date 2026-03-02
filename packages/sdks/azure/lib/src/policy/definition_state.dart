@@ -68,16 +68,16 @@ class DefinitionState {
 
   factory DefinitionState.fromMap(Map<String, dynamic> map) {
     return DefinitionState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
-      policyRule: map['policyRule'] == null ? null : (map['policyRule'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      roleDefinitionIds: map['roleDefinitionIds'] == null ? null : ((map['roleDefinitionIds'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
+      policyRule: map['policyRule'] == null ? null : (map['policyRule']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      roleDefinitionIds: map['roleDefinitionIds'] == null ? null : ((map['roleDefinitionIds']! as List).cast<String>()).input(),
     );
   }
 }

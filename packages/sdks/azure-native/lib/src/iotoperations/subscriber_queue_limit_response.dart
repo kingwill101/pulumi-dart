@@ -26,8 +26,8 @@ class SubscriberQueueLimitResponse {
 
   factory SubscriberQueueLimitResponse.fromMap(Map<String, dynamic> map) {
     return SubscriberQueueLimitResponse(
-      length: map['length'] == null ? null : (map['length'] as double).input(),
-      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
+      length: map['length'] == null ? null : (map['length']! as double).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy']! as String).input(),
     );
   }
 }

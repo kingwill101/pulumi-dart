@@ -20,7 +20,7 @@ class DomainDevicesRngAcpi {
 
   factory DomainDevicesRngAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRngAcpi(
-      index: map['index'] == null ? null : (map['index'] as double).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
     );
   }
 }

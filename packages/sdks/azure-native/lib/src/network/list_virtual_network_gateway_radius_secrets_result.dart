@@ -27,8 +27,8 @@ class ListVirtualNetworkGatewayRadiusSecretsResult {
 
   factory ListVirtualNetworkGatewayRadiusSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListVirtualNetworkGatewayRadiusSecretsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<RadiusAuthServerResponse>(map['value'], (value) => RadiusAuthServerResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<RadiusAuthServerResponse>(map['value']!, (value) => RadiusAuthServerResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

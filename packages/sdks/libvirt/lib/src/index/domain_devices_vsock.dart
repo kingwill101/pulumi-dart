@@ -49,12 +49,12 @@ class DomainDevicesVsock {
 
   factory DomainDevicesVsock.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVsock(
-      acpi: map['acpi'] == null ? null : (DomainDevicesVsockAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesVsockAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      cid: map['cid'] == null ? null : (DomainDevicesVsockCid.fromMap((map['cid'] as Map).cast<String, dynamic>())).input(),
-      driver: map['driver'] == null ? null : (DomainDevicesVsockDriver.fromMap((map['driver'] as Map).cast<String, dynamic>())).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesVsockAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesVsockAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      cid: map['cid'] == null ? null : (DomainDevicesVsockCid.fromMap((map['cid']! as Map).cast<String, dynamic>())).input(),
+      driver: map['driver'] == null ? null : (DomainDevicesVsockDriver.fromMap((map['driver']! as Map).cast<String, dynamic>())).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
     );
   }
 }

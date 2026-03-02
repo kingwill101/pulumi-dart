@@ -45,11 +45,11 @@ class ReportDatasetResponse {
 
   factory ReportDatasetResponse.fromMap(Map<String, dynamic> map) {
     return ReportDatasetResponse(
-      aggregation: map['aggregation'] == null ? null : (pulumi.Input.decodeMapValues<ReportAggregationResponse>(map['aggregation'], (value) => ReportAggregationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configuration: map['configuration'] == null ? null : (ReportDatasetConfigurationResponse.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      filter: map['filter'] == null ? null : (ReportFilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      granularity: map['granularity'] == null ? null : (map['granularity'] as String).input(),
-      grouping: map['grouping'] == null ? null : (pulumi.Input.decodeList<ReportGroupingResponse>(map['grouping'], (value) => ReportGroupingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aggregation: map['aggregation'] == null ? null : (pulumi.Input.decodeMapValues<ReportAggregationResponse>(map['aggregation']!, (value) => ReportAggregationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configuration: map['configuration'] == null ? null : (ReportDatasetConfigurationResponse.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : (ReportFilterResponse.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      granularity: map['granularity'] == null ? null : (map['granularity']! as String).input(),
+      grouping: map['grouping'] == null ? null : (pulumi.Input.decodeList<ReportGroupingResponse>(map['grouping']!, (value) => ReportGroupingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

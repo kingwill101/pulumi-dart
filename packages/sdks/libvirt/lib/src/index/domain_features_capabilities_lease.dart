@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesLease {
 
   factory DomainFeaturesCapabilitiesLease.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesLease(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

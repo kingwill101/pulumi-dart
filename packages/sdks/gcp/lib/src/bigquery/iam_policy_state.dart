@@ -43,11 +43,11 @@ class IamPolicyState {
 
   factory IamPolicyState.fromMap(Map<String, dynamic> map) {
     return IamPolicyState(
-      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tableId: map['tableId'] == null ? null : (map['tableId'] as String).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tableId: map['tableId'] == null ? null : (map['tableId']! as String).input(),
     );
   }
 }

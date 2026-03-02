@@ -75,16 +75,16 @@ class StreamInputEventHubArgs {
 
   factory StreamInputEventHubArgs.fromMap(Map<String, dynamic> map) {
     return StreamInputEventHubArgs(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
-      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
+      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName']! as String).input(),
       eventhubName: (map['eventhubName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serialization: (StreamInputEventHubSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
       servicebusNamespace: (map['servicebusNamespace'] as String).input(),
-      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey'] as String).input(),
-      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName'] as String).input(),
+      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey']! as String).input(),
+      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName']! as String).input(),
       streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
     );
   }

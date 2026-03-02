@@ -49,12 +49,12 @@ class RepoArgs {
 
   factory RepoArgs.fromMap(Map<String, dynamic> map) {
     return RepoArgs(
-      mirrorConfig: map['mirrorConfig'] == null ? null : (MirrorConfig.fromMap((map['mirrorConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pubsubConfigs: map['pubsubConfigs'] == null ? null : ((map['pubsubConfigs'] as Map).cast<String, String>()).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      mirrorConfig: map['mirrorConfig'] == null ? null : (MirrorConfig.fromMap((map['mirrorConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pubsubConfigs: map['pubsubConfigs'] == null ? null : ((map['pubsubConfigs']! as Map).cast<String, String>()).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

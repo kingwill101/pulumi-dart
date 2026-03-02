@@ -35,7 +35,7 @@ class GetSelectionArgs {
   factory GetSelectionArgs.fromMap(Map<String, dynamic> map) {
     return GetSelectionArgs(
       planId: (map['planId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       selectionId: (map['selectionId'] as String).input(),
     );
   }

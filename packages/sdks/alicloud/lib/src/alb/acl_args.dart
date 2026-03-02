@@ -46,11 +46,11 @@ class AclArgs {
 
   factory AclArgs.fromMap(Map<String, dynamic> map) {
     return AclArgs(
-      aclEntries: map['aclEntries'] == null ? null : (pulumi.Input.decodeList<AclAclEntry>(map['aclEntries'], (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aclName: map['aclName'] == null ? null : (map['aclName'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      aclEntries: map['aclEntries'] == null ? null : (pulumi.Input.decodeList<AclAclEntry>(map['aclEntries']!, (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aclName: map['aclName'] == null ? null : (map['aclName']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

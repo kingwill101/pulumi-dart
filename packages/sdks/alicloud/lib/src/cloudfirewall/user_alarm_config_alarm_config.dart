@@ -45,12 +45,12 @@ class UserAlarmConfigAlarmConfig {
 
   factory UserAlarmConfigAlarmConfig.fromMap(Map<String, dynamic> map) {
     return UserAlarmConfigAlarmConfig(
-      alarmHour: map['alarmHour'] == null ? null : (map['alarmHour'] as String).input(),
-      alarmNotify: map['alarmNotify'] == null ? null : (map['alarmNotify'] as String).input(),
-      alarmPeriod: map['alarmPeriod'] == null ? null : (map['alarmPeriod'] as String).input(),
-      alarmType: map['alarmType'] == null ? null : (map['alarmType'] as String).input(),
-      alarmValue: map['alarmValue'] == null ? null : (map['alarmValue'] as String).input(),
-      alarmWeekDay: map['alarmWeekDay'] == null ? null : (map['alarmWeekDay'] as String).input(),
+      alarmHour: map['alarmHour'] == null ? null : (map['alarmHour']! as String).input(),
+      alarmNotify: map['alarmNotify'] == null ? null : (map['alarmNotify']! as String).input(),
+      alarmPeriod: map['alarmPeriod'] == null ? null : (map['alarmPeriod']! as String).input(),
+      alarmType: map['alarmType'] == null ? null : (map['alarmType']! as String).input(),
+      alarmValue: map['alarmValue'] == null ? null : (map['alarmValue']! as String).input(),
+      alarmWeekDay: map['alarmWeekDay'] == null ? null : (map['alarmWeekDay']! as String).input(),
     );
   }
 }

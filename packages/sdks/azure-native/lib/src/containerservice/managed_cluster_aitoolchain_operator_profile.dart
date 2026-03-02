@@ -21,7 +21,7 @@ class ManagedClusterAIToolchainOperatorProfile {
 
   factory ManagedClusterAIToolchainOperatorProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAIToolchainOperatorProfile(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

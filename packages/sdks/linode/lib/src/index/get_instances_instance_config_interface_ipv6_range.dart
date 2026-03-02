@@ -26,7 +26,7 @@ class GetInstancesInstanceConfigInterfaceIpv6Range {
   factory GetInstancesInstanceConfigInterfaceIpv6Range.fromMap(Map<String, dynamic> map) {
     return GetInstancesInstanceConfigInterfaceIpv6Range(
       assignedRange: (map['assignedRange'] as String).input(),
-      range: map['range'] == null ? null : (map['range'] as String).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class AgentcoreGatewayTargetCredentialProviderConfiguration {
 
   factory AgentcoreGatewayTargetCredentialProviderConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetCredentialProviderConfiguration(
-      apiKey: map['apiKey'] == null ? null : (AgentcoreGatewayTargetCredentialProviderConfigurationApiKey.fromMap((map['apiKey'] as Map).cast<String, dynamic>())).input(),
-      gatewayIamRole: map['gatewayIamRole'] == null ? null : ((map['gatewayIamRole'] as Map).cast<String, dynamic>()).input(),
-      oauth: map['oauth'] == null ? null : (AgentcoreGatewayTargetCredentialProviderConfigurationOauth.fromMap((map['oauth'] as Map).cast<String, dynamic>())).input(),
+      apiKey: map['apiKey'] == null ? null : ((AgentcoreGatewayTargetCredentialProviderConfigurationApiKey.fromMap((map['apiKey']! as Map).cast<String, dynamic>())).input()).input(),
+      gatewayIamRole: map['gatewayIamRole'] == null ? null : (((map['gatewayIamRole'] as Map).cast<String, dynamic>()).input()).input(),
+      oauth: map['oauth'] == null ? null : ((AgentcoreGatewayTargetCredentialProviderConfigurationOauth.fromMap((map['oauth']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

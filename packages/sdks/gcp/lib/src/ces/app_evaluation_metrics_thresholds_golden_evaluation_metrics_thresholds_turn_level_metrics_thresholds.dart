@@ -27,8 +27,8 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMe
 
   factory AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds.fromMap(Map<String, dynamic> map) {
     return AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds(
-      overallToolInvocationCorrectnessThreshold: map['overallToolInvocationCorrectnessThreshold'] == null ? null : (map['overallToolInvocationCorrectnessThreshold'] as double).input(),
-      semanticSimilaritySuccessThreshold: map['semanticSimilaritySuccessThreshold'] == null ? null : (map['semanticSimilaritySuccessThreshold'] as int).input(),
+      overallToolInvocationCorrectnessThreshold: map['overallToolInvocationCorrectnessThreshold'] == null ? null : (map['overallToolInvocationCorrectnessThreshold']! as double).input(),
+      semanticSimilaritySuccessThreshold: map['semanticSimilaritySuccessThreshold'] == null ? null : (map['semanticSimilaritySuccessThreshold']! as int).input(),
     );
   }
 }

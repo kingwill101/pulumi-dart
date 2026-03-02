@@ -37,7 +37,7 @@ class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSp
 
   factory GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec(
-      maxFailedTrialCount: map['maxFailedTrialCount'] == null ? null : (map['maxFailedTrialCount'] as int).input(),
+      maxFailedTrialCount: map['maxFailedTrialCount'] == null ? null : (map['maxFailedTrialCount']! as int).input(),
       maxParallelTrialCount: (map['maxParallelTrialCount'] as int).input(),
       maxTrialCount: (map['maxTrialCount'] as int).input(),
       searchTrialJobSpec: (GoogleCloudAiplatformV1beta1CustomJobSpec.fromMap((map['searchTrialJobSpec'] as Map).cast<String, dynamic>())).input(),

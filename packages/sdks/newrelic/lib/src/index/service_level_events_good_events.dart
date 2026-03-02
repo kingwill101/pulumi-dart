@@ -33,8 +33,8 @@ class ServiceLevelEventsGoodEvents {
   factory ServiceLevelEventsGoodEvents.fromMap(Map<String, dynamic> map) {
     return ServiceLevelEventsGoodEvents(
       from: (map['from'] as String).input(),
-      select: map['select'] == null ? null : (ServiceLevelEventsGoodEventsSelect.fromMap((map['select'] as Map).cast<String, dynamic>())).input(),
-      where: map['where'] == null ? null : (map['where'] as String).input(),
+      select: map['select'] == null ? null : (ServiceLevelEventsGoodEventsSelect.fromMap((map['select']! as Map).cast<String, dynamic>())).input(),
+      where: map['where'] == null ? null : (map['where']! as String).input(),
     );
   }
 }

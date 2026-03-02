@@ -22,7 +22,7 @@ class StorageSpacesPropertiesResponseStatus {
 
   factory StorageSpacesPropertiesResponseStatus.fromMap(Map<String, dynamic> map) {
     return StorageSpacesPropertiesResponseStatus(
-      provisioningStatus: map['provisioningStatus'] == null ? null : (StorageSpacesPropertiesResponseProvisioningStatus.fromMap((map['provisioningStatus'] as Map).cast<String, dynamic>())).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (StorageSpacesPropertiesResponseProvisioningStatus.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

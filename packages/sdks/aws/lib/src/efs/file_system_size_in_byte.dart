@@ -30,9 +30,9 @@ class FileSystemSizeInByte {
 
   factory FileSystemSizeInByte.fromMap(Map<String, dynamic> map) {
     return FileSystemSizeInByte(
-      value: map['value'] == null ? null : (map['value'] as int).input(),
-      valueInIa: map['valueInIa'] == null ? null : (map['valueInIa'] as int).input(),
-      valueInStandard: map['valueInStandard'] == null ? null : (map['valueInStandard'] as int).input(),
+      value: map['value'] == null ? null : ((map['value'] as int).input()).input(),
+      valueInIa: map['valueInIa'] == null ? null : ((map['valueInIa'] as int).input()).input(),
+      valueInStandard: map['valueInStandard'] == null ? null : ((map['valueInStandard'] as int).input()).input(),
     );
   }
 }

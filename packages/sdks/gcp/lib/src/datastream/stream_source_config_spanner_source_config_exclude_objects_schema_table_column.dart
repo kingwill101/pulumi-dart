@@ -39,10 +39,10 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn {
 
   factory StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn(
-      column: map['column'] == null ? null : (map['column'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      isPrimaryKey: map['isPrimaryKey'] == null ? null : (map['isPrimaryKey'] as bool).input(),
-      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition'] as int).input(),
+      column: map['column'] == null ? null : (map['column']! as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      isPrimaryKey: map['isPrimaryKey'] == null ? null : (map['isPrimaryKey']! as bool).input(),
+      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition']! as int).input(),
     );
   }
 }

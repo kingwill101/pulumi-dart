@@ -32,9 +32,9 @@ class Usage {
 
   factory Usage.fromMap(Map<String, dynamic> map) {
     return Usage(
-      producerNotificationChannel: map['producerNotificationChannel'] == null ? null : (map['producerNotificationChannel'] as String).input(),
-      requirements: map['requirements'] == null ? null : ((map['requirements'] as List).cast<String>()).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<UsageRule>(map['rules'], (value) => UsageRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      producerNotificationChannel: map['producerNotificationChannel'] == null ? null : (map['producerNotificationChannel']! as String).input(),
+      requirements: map['requirements'] == null ? null : ((map['requirements']! as List).cast<String>()).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<UsageRule>(map['rules']!, (value) => UsageRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

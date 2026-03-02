@@ -34,9 +34,9 @@ class GetSArgs {
 
   factory GetSArgs.fromMap(Map<String, dynamic> map) {
     return GetSArgs(
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      regex: map['regex'] == null ? null : (map['regex']! as String).input(),
     );
   }
 }

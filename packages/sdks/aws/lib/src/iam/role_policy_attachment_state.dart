@@ -26,8 +26,8 @@ class RolePolicyAttachmentState {
 
   factory RolePolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return RolePolicyAttachmentState(
-      policyArn: map['policyArn'] == null ? null : (map['policyArn'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      policyArn: map['policyArn'] == null ? null : ((map['policyArn'] as String).input()).input(),
+      role: map['role'] == null ? null : ((map['role'] as String).input()).input(),
     );
   }
 }

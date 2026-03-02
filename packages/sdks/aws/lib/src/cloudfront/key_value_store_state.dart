@@ -47,12 +47,12 @@ class KeyValueStoreState {
 
   factory KeyValueStoreState.fromMap(Map<String, dynamic> map) {
     return KeyValueStoreState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (KeyValueStoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : ((map['lastModifiedTime'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((KeyValueStoreTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

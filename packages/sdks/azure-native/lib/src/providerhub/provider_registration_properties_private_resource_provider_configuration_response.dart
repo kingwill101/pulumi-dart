@@ -21,7 +21,7 @@ class ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse
 
   factory ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse(
-      allowedSubscriptions: map['allowedSubscriptions'] == null ? null : ((map['allowedSubscriptions'] as List).cast<String>()).input(),
+      allowedSubscriptions: map['allowedSubscriptions'] == null ? null : ((map['allowedSubscriptions']! as List).cast<String>()).input(),
     );
   }
 }

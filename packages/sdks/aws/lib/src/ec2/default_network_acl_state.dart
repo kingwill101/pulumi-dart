@@ -70,16 +70,16 @@ class DefaultNetworkAclState {
 
   factory DefaultNetworkAclState.fromMap(Map<String, dynamic> map) {
     return DefaultNetworkAclState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      defaultNetworkAclId: map['defaultNetworkAclId'] == null ? null : (map['defaultNetworkAclId'] as String).input(),
-      egress: map['egress'] == null ? null : (pulumi.Input.decodeList<DefaultNetworkAclEgress>(map['egress'], (value) => DefaultNetworkAclEgress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<DefaultNetworkAclIngress>(map['ingress'], (value) => DefaultNetworkAclIngress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      defaultNetworkAclId: map['defaultNetworkAclId'] == null ? null : ((map['defaultNetworkAclId'] as String).input()).input(),
+      egress: map['egress'] == null ? null : ((pulumi.Input.decodeList<DefaultNetworkAclEgress>(map['egress']!, (value) => DefaultNetworkAclEgress.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      ingress: map['ingress'] == null ? null : ((pulumi.Input.decodeList<DefaultNetworkAclIngress>(map['ingress']!, (value) => DefaultNetworkAclIngress.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

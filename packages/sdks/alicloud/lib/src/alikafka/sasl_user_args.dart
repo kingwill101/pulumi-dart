@@ -58,11 +58,11 @@ class SaslUserArgs {
   factory SaslUserArgs.fromMap(Map<String, dynamic> map) {
     return SaslUserArgs(
       instanceId: (map['instanceId'] as String).input(),
-      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword'] as String).input(),
-      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext'] as Map).cast<String, String>()).input(),
-      mechanism: map['mechanism'] == null ? null : (map['mechanism'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword']! as String).input(),
+      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext']! as Map).cast<String, String>()).input(),
+      mechanism: map['mechanism'] == null ? null : (map['mechanism']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
       username: (map['username'] as String).input(),
     );
   }

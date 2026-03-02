@@ -31,7 +31,7 @@ class GetPublicDelegatedPrefixArgs {
 
   factory GetPublicDelegatedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicDelegatedPrefixArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       publicDelegatedPrefix: (map['publicDelegatedPrefix'] as String).input(),
       region: (map['region'] as String).input(),
     );

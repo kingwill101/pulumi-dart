@@ -77,18 +77,18 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      applicationMatcher: map['applicationMatcher'] == null ? null : (map['applicationMatcher'] as String).input(),
+      applicationMatcher: map['applicationMatcher'] == null ? null : (map['applicationMatcher']! as String).input(),
       basicProfile: (RuleBasicProfile.fromValue(map['basicProfile'] as String)).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
       gatewaySecurityPolicyId: (map['gatewaySecurityPolicyId'] as String).input(),
-      gatewaySecurityPolicyRuleId: map['gatewaySecurityPolicyRuleId'] == null ? null : (map['gatewaySecurityPolicyRuleId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      gatewaySecurityPolicyRuleId: map['gatewaySecurityPolicyRuleId'] == null ? null : (map['gatewaySecurityPolicyRuleId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
       priority: (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sessionMatcher: (map['sessionMatcher'] as String).input(),
-      tlsInspectionEnabled: map['tlsInspectionEnabled'] == null ? null : (map['tlsInspectionEnabled'] as bool).input(),
+      tlsInspectionEnabled: map['tlsInspectionEnabled'] == null ? null : (map['tlsInspectionEnabled']! as bool).input(),
     );
   }
 }

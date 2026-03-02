@@ -32,7 +32,7 @@ class GetAutoscalerComputeBetaArgs {
   factory GetAutoscalerComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetAutoscalerComputeBetaArgs(
       autoscaler: (map['autoscaler'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       zone: (map['zone'] as String).input(),
     );
   }

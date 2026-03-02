@@ -171,7 +171,7 @@ class GetSecurityGroupsGroup {
       name: (map['name'] as String).input(),
       resourceGroupId: (map['resourceGroupId'] as String).input(),
       securityGroupType: (map['securityGroupType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

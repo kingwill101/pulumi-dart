@@ -41,10 +41,10 @@ class AccessKeyArgs {
 
   factory AccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return AccessKeyArgs(
-      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
-      secretFile: map['secretFile'] == null ? null : (map['secretFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey']! as String).input(),
+      secretFile: map['secretFile'] == null ? null : (map['secretFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

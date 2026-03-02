@@ -105,21 +105,21 @@ class DeveloperAppState {
 
   factory DeveloperAppState.fromMap(Map<String, dynamic> map) {
     return DeveloperAppState(
-      apiProducts: map['apiProducts'] == null ? null : ((map['apiProducts'] as List).cast<String>()).input(),
-      appFamily: map['appFamily'] == null ? null : (map['appFamily'] as String).input(),
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAppAttribute>(map['attributes'], (value) => DeveloperAppAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      credentials: map['credentials'] == null ? null : (pulumi.Input.decodeList<DeveloperAppCredential>(map['credentials'], (value) => DeveloperAppCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      developerEmail: map['developerEmail'] == null ? null : (map['developerEmail'] as String).input(),
-      developerId: map['developerId'] == null ? null : (map['developerId'] as String).input(),
-      keyExpiresIn: map['keyExpiresIn'] == null ? null : (map['keyExpiresIn'] as String).input(),
-      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      apiProducts: map['apiProducts'] == null ? null : ((map['apiProducts']! as List).cast<String>()).input(),
+      appFamily: map['appFamily'] == null ? null : (map['appFamily']! as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAppAttribute>(map['attributes']!, (value) => DeveloperAppAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl']! as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      credentials: map['credentials'] == null ? null : (pulumi.Input.decodeList<DeveloperAppCredential>(map['credentials']!, (value) => DeveloperAppCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      developerEmail: map['developerEmail'] == null ? null : (map['developerEmail']! as String).input(),
+      developerId: map['developerId'] == null ? null : (map['developerId']! as String).input(),
+      keyExpiresIn: map['keyExpiresIn'] == null ? null : (map['keyExpiresIn']! as String).input(),
+      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

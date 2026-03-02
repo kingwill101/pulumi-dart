@@ -32,9 +32,9 @@ class HPAScalingRulesPatchAutoscalingV2beta2 {
 
   factory HPAScalingRulesPatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return HPAScalingRulesPatchAutoscalingV2beta2(
-      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<HPAScalingPolicyPatchAutoscalingV2beta2>(map['policies'], (value) => HPAScalingPolicyPatchAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selectPolicy: map['selectPolicy'] == null ? null : (map['selectPolicy'] as String).input(),
-      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] == null ? null : (map['stabilizationWindowSeconds'] as int).input(),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<HPAScalingPolicyPatchAutoscalingV2beta2>(map['policies']!, (value) => HPAScalingPolicyPatchAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectPolicy: map['selectPolicy'] == null ? null : (map['selectPolicy']! as String).input(),
+      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] == null ? null : (map['stabilizationWindowSeconds']! as int).input(),
     );
   }
 }

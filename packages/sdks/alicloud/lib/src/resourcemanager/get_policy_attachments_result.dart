@@ -68,13 +68,13 @@ class GetPolicyAttachmentsResult {
       attachments: pulumi.Input.decodeList<GetPolicyAttachmentsAttachment>(map['attachments'], (value) => GetPolicyAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      language: map['language'] == null ? null : map['language'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      policyName: map['policyName'] == null ? null : map['policyName'] as String,
-      policyType: map['policyType'] == null ? null : map['policyType'] as String,
-      principalName: map['principalName'] == null ? null : map['principalName'] as String,
-      principalType: map['principalType'] == null ? null : map['principalType'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
+      language: map['language'] == null ? null : map['language']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      policyName: map['policyName'] == null ? null : map['policyName']! as String,
+      policyType: map['policyType'] == null ? null : map['policyType']! as String,
+      principalName: map['principalName'] == null ? null : map['principalName']! as String,
+      principalType: map['principalType'] == null ? null : map['principalType']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
     );
   }
 }

@@ -25,8 +25,8 @@ class ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig {
 
   factory ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig(
-      enableEntityExtraction: map['enableEntityExtraction'] == null ? null : (map['enableEntityExtraction'] as bool).input(),
-      enableSentimentAnalysis: map['enableSentimentAnalysis'] == null ? null : (map['enableSentimentAnalysis'] as bool).input(),
+      enableEntityExtraction: map['enableEntityExtraction'] == null ? null : (map['enableEntityExtraction']! as bool).input(),
+      enableSentimentAnalysis: map['enableSentimentAnalysis'] == null ? null : (map['enableSentimentAnalysis']! as bool).input(),
     );
   }
 }

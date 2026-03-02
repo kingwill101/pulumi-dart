@@ -26,8 +26,8 @@ class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent
 
   factory ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent(
-      s3ContentLocation: map['s3ContentLocation'] == null ? null : (ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation.fromMap((map['s3ContentLocation'] as Map).cast<String, dynamic>())).input(),
-      textContent: map['textContent'] == null ? null : (map['textContent'] as String).input(),
+      s3ContentLocation: map['s3ContentLocation'] == null ? null : ((ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation.fromMap((map['s3ContentLocation']! as Map).cast<String, dynamic>())).input()).input(),
+      textContent: map['textContent'] == null ? null : ((map['textContent'] as String).input()).input(),
     );
   }
 }

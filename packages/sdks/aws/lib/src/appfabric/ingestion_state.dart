@@ -57,14 +57,14 @@ class IngestionState {
 
   factory IngestionState.fromMap(Map<String, dynamic> map) {
     return IngestionState(
-      app: map['app'] == null ? null : (map['app'] as String).input(),
-      appBundleArn: map['appBundleArn'] == null ? null : (map['appBundleArn'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      ingestionType: map['ingestionType'] == null ? null : (map['ingestionType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      app: map['app'] == null ? null : ((map['app'] as String).input()).input(),
+      appBundleArn: map['appBundleArn'] == null ? null : ((map['appBundleArn'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      ingestionType: map['ingestionType'] == null ? null : ((map['ingestionType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      tenantId: map['tenantId'] == null ? null : ((map['tenantId'] as String).input()).input(),
     );
   }
 }

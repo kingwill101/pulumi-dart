@@ -70,15 +70,15 @@ class OpenIdConnectProviderArgs {
   factory OpenIdConnectProviderArgs.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectProviderArgs(
       clientId: (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       metadataEndpoint: (map['metadataEndpoint'] as String).input(),
-      opid: map['opid'] == null ? null : (map['opid'] as String).input(),
+      opid: map['opid'] == null ? null : (map['opid']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      useInApiDocumentation: map['useInApiDocumentation'] == null ? null : (map['useInApiDocumentation'] as bool).input(),
-      useInTestConsole: map['useInTestConsole'] == null ? null : (map['useInTestConsole'] as bool).input(),
+      useInApiDocumentation: map['useInApiDocumentation'] == null ? null : (map['useInApiDocumentation']! as bool).input(),
+      useInTestConsole: map['useInTestConsole'] == null ? null : (map['useInTestConsole']! as bool).input(),
     );
   }
 }

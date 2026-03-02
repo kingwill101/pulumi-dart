@@ -25,8 +25,8 @@ class VpcIpamPoolCidrCidrAuthorizationContext {
 
   factory VpcIpamPoolCidrCidrAuthorizationContext.fromMap(Map<String, dynamic> map) {
     return VpcIpamPoolCidrCidrAuthorizationContext(
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      signature: map['signature'] == null ? null : (map['signature'] as String).input(),
+      message: map['message'] == null ? null : ((map['message'] as String).input()).input(),
+      signature: map['signature'] == null ? null : ((map['signature'] as String).input()).input(),
     );
   }
 }

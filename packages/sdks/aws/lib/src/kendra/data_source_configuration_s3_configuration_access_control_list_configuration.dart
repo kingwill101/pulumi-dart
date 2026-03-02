@@ -20,7 +20,7 @@ class DataSourceConfigurationS3ConfigurationAccessControlListConfiguration {
 
   factory DataSourceConfigurationS3ConfigurationAccessControlListConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationS3ConfigurationAccessControlListConfiguration(
-      keyPath: map['keyPath'] == null ? null : (map['keyPath'] as String).input(),
+      keyPath: map['keyPath'] == null ? null : ((map['keyPath'] as String).input()).input(),
     );
   }
 }

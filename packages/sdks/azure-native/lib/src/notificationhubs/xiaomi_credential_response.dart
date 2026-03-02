@@ -26,8 +26,8 @@ class XiaomiCredentialResponse {
 
   factory XiaomiCredentialResponse.fromMap(Map<String, dynamic> map) {
     return XiaomiCredentialResponse(
-      appSecret: map['appSecret'] == null ? null : (map['appSecret'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      appSecret: map['appSecret'] == null ? null : (map['appSecret']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
     );
   }
 }

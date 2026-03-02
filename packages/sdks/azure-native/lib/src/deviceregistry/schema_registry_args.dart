@@ -65,15 +65,15 @@ class SchemaRegistryArgs {
 
   factory SchemaRegistryArgs.fromMap(Map<String, dynamic> map) {
     return SchemaRegistryArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      identity: map['identity'] == null ? null : (SystemAssignedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       namespace: (map['namespace'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaRegistryName: map['schemaRegistryName'] == null ? null : (map['schemaRegistryName'] as String).input(),
+      schemaRegistryName: map['schemaRegistryName'] == null ? null : (map['schemaRegistryName']! as String).input(),
       storageAccountContainerUrl: (map['storageAccountContainerUrl'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -62,9 +62,9 @@ class GetDiskTypesResult {
       ids: (map['ids'] as List).cast<String>(),
       instanceChargeType: map['instanceChargeType'] as String,
       instanceType: map['instanceType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       types: pulumi.Input.decodeList<GetDiskTypesType>(map['types'], (value) => GetDiskTypesType.fromMap((value as Map).cast<String, dynamic>())),
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

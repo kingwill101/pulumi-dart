@@ -26,8 +26,8 @@ class LogPublishingOption {
 
   factory LogPublishingOption.fromMap(Map<String, dynamic> map) {
     return LogPublishingOption(
-      cloudWatchLogsLogGroupArn: map['cloudWatchLogsLogGroupArn'] == null ? null : (map['cloudWatchLogsLogGroupArn'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      cloudWatchLogsLogGroupArn: map['cloudWatchLogsLogGroupArn'] == null ? null : (map['cloudWatchLogsLogGroupArn']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

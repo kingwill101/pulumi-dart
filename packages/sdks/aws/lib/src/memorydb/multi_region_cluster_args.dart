@@ -80,18 +80,18 @@ class MultiRegionClusterArgs {
 
   factory MultiRegionClusterArgs.fromMap(Map<String, dynamic> map) {
     return MultiRegionClusterArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
+      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
       multiRegionClusterNameSuffix: (map['multiRegionClusterNameSuffix'] as String).input(),
-      multiRegionParameterGroupName: map['multiRegionParameterGroupName'] == null ? null : (map['multiRegionParameterGroupName'] as String).input(),
+      multiRegionParameterGroupName: map['multiRegionParameterGroupName'] == null ? null : ((map['multiRegionParameterGroupName'] as String).input()).input(),
       nodeType: (map['nodeType'] as String).input(),
-      numShards: map['numShards'] == null ? null : (map['numShards'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (MultiRegionClusterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      tlsEnabled: map['tlsEnabled'] == null ? null : (map['tlsEnabled'] as bool).input(),
-      updateStrategy: map['updateStrategy'] == null ? null : (map['updateStrategy'] as String).input(),
+      numShards: map['numShards'] == null ? null : ((map['numShards'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((MultiRegionClusterTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      tlsEnabled: map['tlsEnabled'] == null ? null : ((map['tlsEnabled'] as bool).input()).input(),
+      updateStrategy: map['updateStrategy'] == null ? null : ((map['updateStrategy'] as String).input()).input(),
     );
   }
 }

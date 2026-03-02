@@ -49,12 +49,12 @@ class AmiLaunchPermissionArgs {
 
   factory AmiLaunchPermissionArgs.fromMap(Map<String, dynamic> map) {
     return AmiLaunchPermissionArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      group: map['group'] == null ? null : ((map['group'] as String).input()).input(),
       imageId: (map['imageId'] as String).input(),
-      organizationArn: map['organizationArn'] == null ? null : (map['organizationArn'] as String).input(),
-      organizationalUnitArn: map['organizationalUnitArn'] == null ? null : (map['organizationalUnitArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      organizationArn: map['organizationArn'] == null ? null : ((map['organizationArn'] as String).input()).input(),
+      organizationalUnitArn: map['organizationalUnitArn'] == null ? null : ((map['organizationalUnitArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

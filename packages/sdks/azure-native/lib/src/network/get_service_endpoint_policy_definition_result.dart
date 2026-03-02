@@ -61,14 +61,14 @@ class GetServiceEndpointPolicyDefinitionResult {
   factory GetServiceEndpointPolicyDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetServiceEndpointPolicyDefinitionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       provisioningState: map['provisioningState'] as String,
-      service: map['service'] == null ? null : map['service'] as String,
-      serviceResources: map['serviceResources'] == null ? null : (map['serviceResources'] as List).cast<String>(),
-      type: map['type'] == null ? null : map['type'] as String,
+      service: map['service'] == null ? null : map['service']! as String,
+      serviceResources: map['serviceResources'] == null ? null : (map['serviceResources']! as List).cast<String>(),
+      type: map['type'] == null ? null : map['type']! as String,
     );
   }
 }

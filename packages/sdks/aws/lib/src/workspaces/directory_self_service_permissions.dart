@@ -40,11 +40,11 @@ class DirectorySelfServicePermissions {
 
   factory DirectorySelfServicePermissions.fromMap(Map<String, dynamic> map) {
     return DirectorySelfServicePermissions(
-      changeComputeType: map['changeComputeType'] == null ? null : (map['changeComputeType'] as bool).input(),
-      increaseVolumeSize: map['increaseVolumeSize'] == null ? null : (map['increaseVolumeSize'] as bool).input(),
-      rebuildWorkspace: map['rebuildWorkspace'] == null ? null : (map['rebuildWorkspace'] as bool).input(),
-      restartWorkspace: map['restartWorkspace'] == null ? null : (map['restartWorkspace'] as bool).input(),
-      switchRunningMode: map['switchRunningMode'] == null ? null : (map['switchRunningMode'] as bool).input(),
+      changeComputeType: map['changeComputeType'] == null ? null : ((map['changeComputeType'] as bool).input()).input(),
+      increaseVolumeSize: map['increaseVolumeSize'] == null ? null : ((map['increaseVolumeSize'] as bool).input()).input(),
+      rebuildWorkspace: map['rebuildWorkspace'] == null ? null : ((map['rebuildWorkspace'] as bool).input()).input(),
+      restartWorkspace: map['restartWorkspace'] == null ? null : ((map['restartWorkspace'] as bool).input()).input(),
+      switchRunningMode: map['switchRunningMode'] == null ? null : ((map['switchRunningMode'] as bool).input()).input(),
     );
   }
 }

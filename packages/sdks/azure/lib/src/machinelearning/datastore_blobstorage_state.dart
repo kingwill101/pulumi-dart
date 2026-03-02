@@ -65,15 +65,15 @@ class DatastoreBlobstorageState {
 
   factory DatastoreBlobstorageState.fromMap(Map<String, dynamic> map) {
     return DatastoreBlobstorageState(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serviceDataAuthIdentity: map['serviceDataAuthIdentity'] == null ? null : (map['serviceDataAuthIdentity'] as String).input(),
-      sharedAccessSignature: map['sharedAccessSignature'] == null ? null : (map['sharedAccessSignature'] as String).input(),
-      storageContainerId: map['storageContainerId'] == null ? null : (map['storageContainerId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serviceDataAuthIdentity: map['serviceDataAuthIdentity'] == null ? null : (map['serviceDataAuthIdentity']! as String).input(),
+      sharedAccessSignature: map['sharedAccessSignature'] == null ? null : (map['sharedAccessSignature']! as String).input(),
+      storageContainerId: map['storageContainerId'] == null ? null : (map['storageContainerId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ComputeIsolationProperties {
 
   factory ComputeIsolationProperties.fromMap(Map<String, dynamic> map) {
     return ComputeIsolationProperties(
-      enableComputeIsolation: map['enableComputeIsolation'] == null ? null : (map['enableComputeIsolation'] as bool).input(),
-      hostSku: map['hostSku'] == null ? null : (map['hostSku'] as String).input(),
+      enableComputeIsolation: map['enableComputeIsolation'] == null ? null : (map['enableComputeIsolation']! as bool).input(),
+      hostSku: map['hostSku'] == null ? null : (map['hostSku']! as String).input(),
     );
   }
 }

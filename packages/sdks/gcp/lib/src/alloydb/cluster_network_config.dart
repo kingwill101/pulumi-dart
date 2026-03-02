@@ -27,8 +27,8 @@ class ClusterNetworkConfig {
 
   factory ClusterNetworkConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNetworkConfig(
-      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
+      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
     );
   }
 }

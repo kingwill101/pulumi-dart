@@ -103,23 +103,23 @@ class GetWebAppSiteContainerResult {
 
   factory GetWebAppSiteContainerResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppSiteContainerResult(
-      authType: map['authType'] == null ? null : map['authType'] as String,
+      authType: map['authType'] == null ? null : map['authType']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       createdTime: map['createdTime'] as String,
-      environmentVariables: map['environmentVariables'] == null ? null : pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables'], (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>())),
+      environmentVariables: map['environmentVariables'] == null ? null : pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables']!, (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       image: map['image'] as String,
       isMain: map['isMain'] as bool,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       lastModifiedTime: map['lastModifiedTime'] as String,
       name: map['name'] as String,
-      passwordSecret: map['passwordSecret'] == null ? null : map['passwordSecret'] as String,
-      startUpCommand: map['startUpCommand'] == null ? null : map['startUpCommand'] as String,
-      targetPort: map['targetPort'] == null ? null : map['targetPort'] as String,
+      passwordSecret: map['passwordSecret'] == null ? null : map['passwordSecret']! as String,
+      startUpCommand: map['startUpCommand'] == null ? null : map['startUpCommand']! as String,
+      targetPort: map['targetPort'] == null ? null : map['targetPort']! as String,
       type: map['type'] as String,
-      userManagedIdentityClientId: map['userManagedIdentityClientId'] == null ? null : map['userManagedIdentityClientId'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
-      volumeMounts: map['volumeMounts'] == null ? null : pulumi.Input.decodeList<VolumeMountResponse>(map['volumeMounts'], (value) => VolumeMountResponse.fromMap((value as Map).cast<String, dynamic>())),
+      userManagedIdentityClientId: map['userManagedIdentityClientId'] == null ? null : map['userManagedIdentityClientId']! as String,
+      userName: map['userName'] == null ? null : map['userName']! as String,
+      volumeMounts: map['volumeMounts'] == null ? null : pulumi.Input.decodeList<VolumeMountResponse>(map['volumeMounts']!, (value) => VolumeMountResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -96,21 +96,21 @@ class PlanState {
 
   factory PlanState.fromMap(Map<String, dynamic> map) {
     return PlanState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      associatedAlarms: map['associatedAlarms'] == null ? null : (pulumi.Input.decodeList<PlanAssociatedAlarm>(map['associatedAlarms'], (value) => PlanAssociatedAlarm.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      executionRole: map['executionRole'] == null ? null : (map['executionRole'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryRegion: map['primaryRegion'] == null ? null : (map['primaryRegion'] as String).input(),
-      recoveryApproach: map['recoveryApproach'] == null ? null : (map['recoveryApproach'] as String).input(),
-      recoveryTimeObjectiveMinutes: map['recoveryTimeObjectiveMinutes'] == null ? null : (map['recoveryTimeObjectiveMinutes'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (PlanTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      triggers: map['triggers'] == null ? null : (pulumi.Input.decodeList<PlanTrigger>(map['triggers'], (value) => PlanTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workflows: map['workflows'] == null ? null : (pulumi.Input.decodeList<PlanWorkflow>(map['workflows'], (value) => PlanWorkflow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      associatedAlarms: map['associatedAlarms'] == null ? null : ((pulumi.Input.decodeList<PlanAssociatedAlarm>(map['associatedAlarms']!, (value) => PlanAssociatedAlarm.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      executionRole: map['executionRole'] == null ? null : ((map['executionRole'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      primaryRegion: map['primaryRegion'] == null ? null : ((map['primaryRegion'] as String).input()).input(),
+      recoveryApproach: map['recoveryApproach'] == null ? null : ((map['recoveryApproach'] as String).input()).input(),
+      recoveryTimeObjectiveMinutes: map['recoveryTimeObjectiveMinutes'] == null ? null : ((map['recoveryTimeObjectiveMinutes'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      regions: map['regions'] == null ? null : (((map['regions'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((PlanTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      triggers: map['triggers'] == null ? null : ((pulumi.Input.decodeList<PlanTrigger>(map['triggers']!, (value) => PlanTrigger.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      workflows: map['workflows'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflow>(map['workflows']!, (value) => PlanWorkflow.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

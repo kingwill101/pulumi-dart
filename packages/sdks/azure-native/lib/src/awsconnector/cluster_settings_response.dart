@@ -26,8 +26,8 @@ class ClusterSettingsResponse {
 
   factory ClusterSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ClusterSettingsResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

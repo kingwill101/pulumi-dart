@@ -23,8 +23,8 @@ class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSch
 
   factory ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap(
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      schemas: map['schemas'] == null ? null : ((map['schemas'] as List).cast<String>()).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      schemas: map['schemas'] == null ? null : ((map['schemas']! as List).cast<String>()).input(),
     );
   }
 }

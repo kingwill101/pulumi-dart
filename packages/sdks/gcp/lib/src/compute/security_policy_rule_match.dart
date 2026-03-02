@@ -44,10 +44,10 @@ class SecurityPolicyRuleMatch {
 
   factory SecurityPolicyRuleMatch.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleMatch(
-      config: map['config'] == null ? null : (SecurityPolicyRuleMatchConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      expr: map['expr'] == null ? null : (SecurityPolicyRuleMatchExpr.fromMap((map['expr'] as Map).cast<String, dynamic>())).input(),
-      exprOptions: map['exprOptions'] == null ? null : (SecurityPolicyRuleMatchExprOptions.fromMap((map['exprOptions'] as Map).cast<String, dynamic>())).input(),
-      versionedExpr: map['versionedExpr'] == null ? null : (map['versionedExpr'] as String).input(),
+      config: map['config'] == null ? null : (SecurityPolicyRuleMatchConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      expr: map['expr'] == null ? null : (SecurityPolicyRuleMatchExpr.fromMap((map['expr']! as Map).cast<String, dynamic>())).input(),
+      exprOptions: map['exprOptions'] == null ? null : (SecurityPolicyRuleMatchExprOptions.fromMap((map['exprOptions']! as Map).cast<String, dynamic>())).input(),
+      versionedExpr: map['versionedExpr'] == null ? null : (map['versionedExpr']! as String).input(),
     );
   }
 }

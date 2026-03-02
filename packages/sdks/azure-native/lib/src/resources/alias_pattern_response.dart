@@ -31,9 +31,9 @@ class AliasPatternResponse {
 
   factory AliasPatternResponse.fromMap(Map<String, dynamic> map) {
     return AliasPatternResponse(
-      phrase: map['phrase'] == null ? null : (map['phrase'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      variable: map['variable'] == null ? null : (map['variable'] as String).input(),
+      phrase: map['phrase'] == null ? null : (map['phrase']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      variable: map['variable'] == null ? null : (map['variable']! as String).input(),
     );
   }
 }

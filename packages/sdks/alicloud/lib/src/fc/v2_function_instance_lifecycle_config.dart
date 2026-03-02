@@ -27,8 +27,8 @@ class V2FunctionInstanceLifecycleConfig {
 
   factory V2FunctionInstanceLifecycleConfig.fromMap(Map<String, dynamic> map) {
     return V2FunctionInstanceLifecycleConfig(
-      preFreeze: map['preFreeze'] == null ? null : (V2FunctionInstanceLifecycleConfigPreFreeze.fromMap((map['preFreeze'] as Map).cast<String, dynamic>())).input(),
-      preStop: map['preStop'] == null ? null : (V2FunctionInstanceLifecycleConfigPreStop.fromMap((map['preStop'] as Map).cast<String, dynamic>())).input(),
+      preFreeze: map['preFreeze'] == null ? null : (V2FunctionInstanceLifecycleConfigPreFreeze.fromMap((map['preFreeze']! as Map).cast<String, dynamic>())).input(),
+      preStop: map['preStop'] == null ? null : (V2FunctionInstanceLifecycleConfigPreStop.fromMap((map['preStop']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -62,7 +62,7 @@ class MessageContactArgs {
       emailAddress: (map['emailAddress'] as String).input(),
       messageContactName: (map['messageContactName'] as String).input(),
       messageTypes: ((map['messageTypes'] as List).cast<String>()).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
       title: (map['title'] as String).input(),
     );
   }

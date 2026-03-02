@@ -26,8 +26,8 @@ class OpenIdConnectClientCredentialResponse {
 
   factory OpenIdConnectClientCredentialResponse.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectClientCredentialResponse(
-      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName'] as String).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
+      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName']! as String).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
     );
   }
 }

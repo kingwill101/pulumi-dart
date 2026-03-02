@@ -94,16 +94,16 @@ class GlobalAddressArgs {
 
   factory GlobalAddressArgs.fromMap(Map<String, dynamic> map) {
     return GlobalAddressArgs(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      addressType: map['addressType'] == null ? null : (map['addressType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      addressType: map['addressType'] == null ? null : (map['addressType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose']! as String).input(),
     );
   }
 }

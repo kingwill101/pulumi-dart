@@ -42,10 +42,10 @@ class ApiProductGraphqlOperationGroupOperationConfig {
 
   factory ApiProductGraphqlOperationGroupOperationConfig.fromMap(Map<String, dynamic> map) {
     return ApiProductGraphqlOperationGroupOperationConfig(
-      apiSource: map['apiSource'] == null ? null : (map['apiSource'] as String).input(),
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<ApiProductGraphqlOperationGroupOperationConfigAttribute>(map['attributes'], (value) => ApiProductGraphqlOperationGroupOperationConfigAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operations: map['operations'] == null ? null : (pulumi.Input.decodeList<ApiProductGraphqlOperationGroupOperationConfigOperation>(map['operations'], (value) => ApiProductGraphqlOperationGroupOperationConfigOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      quota: map['quota'] == null ? null : (ApiProductGraphqlOperationGroupOperationConfigQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
+      apiSource: map['apiSource'] == null ? null : (map['apiSource']! as String).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<ApiProductGraphqlOperationGroupOperationConfigAttribute>(map['attributes']!, (value) => ApiProductGraphqlOperationGroupOperationConfigAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operations: map['operations'] == null ? null : (pulumi.Input.decodeList<ApiProductGraphqlOperationGroupOperationConfigOperation>(map['operations']!, (value) => ApiProductGraphqlOperationGroupOperationConfigOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      quota: map['quota'] == null ? null : (ApiProductGraphqlOperationGroupOperationConfigQuota.fromMap((map['quota']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

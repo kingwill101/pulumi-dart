@@ -25,8 +25,8 @@ class AddressBookEcsTag {
 
   factory AddressBookEcsTag.fromMap(Map<String, dynamic> map) {
     return AddressBookEcsTag(
-      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
     );
   }
 }

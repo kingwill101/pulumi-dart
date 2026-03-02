@@ -40,11 +40,11 @@ class MonitorUser {
 
   factory MonitorUser.fromMap(Map<String, dynamic> map) {
     return MonitorUser(
-      country: map['country'] == null ? null : (map['country'] as String).input(),
+      country: map['country'] == null ? null : (map['country']! as String).input(),
       email: (map['email'] as String).input(),
       firstName: (map['firstName'] as String).input(),
       lastName: (map['lastName'] as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
     );
   }
 }

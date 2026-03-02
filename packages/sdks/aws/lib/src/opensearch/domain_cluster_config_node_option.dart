@@ -26,8 +26,8 @@ class DomainClusterConfigNodeOption {
 
   factory DomainClusterConfigNodeOption.fromMap(Map<String, dynamic> map) {
     return DomainClusterConfigNodeOption(
-      nodeConfig: map['nodeConfig'] == null ? null : (DomainClusterConfigNodeOptionNodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
-      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
+      nodeConfig: map['nodeConfig'] == null ? null : ((DomainClusterConfigNodeOptionNodeConfig.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      nodeType: map['nodeType'] == null ? null : ((map['nodeType'] as String).input()).input(),
     );
   }
 }

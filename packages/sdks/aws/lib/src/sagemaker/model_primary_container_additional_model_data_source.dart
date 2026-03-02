@@ -27,7 +27,7 @@ class ModelPrimaryContainerAdditionalModelDataSource {
   factory ModelPrimaryContainerAdditionalModelDataSource.fromMap(Map<String, dynamic> map) {
     return ModelPrimaryContainerAdditionalModelDataSource(
       channelName: (map['channelName'] as String).input(),
-      s3DataSources: (pulumi.Input.decodeList<ModelPrimaryContainerAdditionalModelDataSourceS3DataSource>(map['s3DataSources'], (value) => ModelPrimaryContainerAdditionalModelDataSourceS3DataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3DataSources: (pulumi.Input.decodeList<ModelPrimaryContainerAdditionalModelDataSourceS3DataSource>(map['s3DataSources']!, (value) => ModelPrimaryContainerAdditionalModelDataSourceS3DataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

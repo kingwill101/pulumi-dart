@@ -34,8 +34,8 @@ class VpcEndpointPolicyArgs {
 
   factory VpcEndpointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointPolicyArgs(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vpcEndpointId: (map['vpcEndpointId'] as String).input(),
     );
   }

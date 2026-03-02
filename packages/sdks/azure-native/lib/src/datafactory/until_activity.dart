@@ -72,15 +72,15 @@ class UntilActivity {
   factory UntilActivity.fromMap(Map<String, dynamic> map) {
     return UntilActivity(
       activities: (pulumi.Input.decodeList<AppendVariableActivity>(map['activities'], (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn']!, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (Expression.fromMap((map['expression'] as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']!).input(),
       type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties']!, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

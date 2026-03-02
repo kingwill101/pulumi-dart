@@ -25,8 +25,8 @@ class GatewayVswitch {
 
   factory GatewayVswitch.fromMap(Map<String, dynamic> map) {
     return GatewayVswitch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

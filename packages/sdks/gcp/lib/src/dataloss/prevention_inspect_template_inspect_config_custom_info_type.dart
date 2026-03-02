@@ -72,14 +72,14 @@ class PreventionInspectTemplateInspectConfigCustomInfoType {
 
   factory PreventionInspectTemplateInspectConfigCustomInfoType.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigCustomInfoType(
-      dictionary: map['dictionary'] == null ? null : (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary.fromMap((map['dictionary'] as Map).cast<String, dynamic>())).input(),
-      exclusionType: map['exclusionType'] == null ? null : (map['exclusionType'] as String).input(),
+      dictionary: map['dictionary'] == null ? null : (PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary.fromMap((map['dictionary']! as Map).cast<String, dynamic>())).input(),
+      exclusionType: map['exclusionType'] == null ? null : (map['exclusionType']! as String).input(),
       infoType: (PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType.fromMap((map['infoType'] as Map).cast<String, dynamic>())).input(),
-      likelihood: map['likelihood'] == null ? null : (map['likelihood'] as String).input(),
-      regex: map['regex'] == null ? null : (PreventionInspectTemplateInspectConfigCustomInfoTypeRegex.fromMap((map['regex'] as Map).cast<String, dynamic>())).input(),
-      sensitivityScore: map['sensitivityScore'] == null ? null : (PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore.fromMap((map['sensitivityScore'] as Map).cast<String, dynamic>())).input(),
-      storedType: map['storedType'] == null ? null : (PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType.fromMap((map['storedType'] as Map).cast<String, dynamic>())).input(),
-      surrogateType: map['surrogateType'] == null ? null : ((map['surrogateType'] as Map).cast<String, dynamic>()).input(),
+      likelihood: map['likelihood'] == null ? null : (map['likelihood']! as String).input(),
+      regex: map['regex'] == null ? null : (PreventionInspectTemplateInspectConfigCustomInfoTypeRegex.fromMap((map['regex']! as Map).cast<String, dynamic>())).input(),
+      sensitivityScore: map['sensitivityScore'] == null ? null : (PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore.fromMap((map['sensitivityScore']! as Map).cast<String, dynamic>())).input(),
+      storedType: map['storedType'] == null ? null : (PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType.fromMap((map['storedType']! as Map).cast<String, dynamic>())).input(),
+      surrogateType: map['surrogateType'] == null ? null : ((map['surrogateType']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

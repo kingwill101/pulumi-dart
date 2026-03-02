@@ -32,9 +32,9 @@ class IntegrationServiceEnvironmenEncryptionKeyReference {
 
   factory IntegrationServiceEnvironmenEncryptionKeyReference.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmenEncryptionKeyReference(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyVault: map['keyVault'] == null ? null : (ResourceReference.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyVault: map['keyVault'] == null ? null : (ResourceReference.fromMap((map['keyVault']! as Map).cast<String, dynamic>())).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
     );
   }
 }

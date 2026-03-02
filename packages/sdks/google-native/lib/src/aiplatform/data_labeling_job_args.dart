@@ -84,19 +84,19 @@ class DataLabelingJobArgs {
 
   factory DataLabelingJobArgs.fromMap(Map<String, dynamic> map) {
     return DataLabelingJobArgs(
-      activeLearningConfig: map['activeLearningConfig'] == null ? null : (GoogleCloudAiplatformV1ActiveLearningConfig.fromMap((map['activeLearningConfig'] as Map).cast<String, dynamic>())).input(),
-      annotationLabels: map['annotationLabels'] == null ? null : ((map['annotationLabels'] as Map).cast<String, String>()).input(),
+      activeLearningConfig: map['activeLearningConfig'] == null ? null : (GoogleCloudAiplatformV1ActiveLearningConfig.fromMap((map['activeLearningConfig']! as Map).cast<String, dynamic>())).input(),
+      annotationLabels: map['annotationLabels'] == null ? null : ((map['annotationLabels']! as Map).cast<String, String>()).input(),
       datasets: ((map['datasets'] as List).cast<String>()).input(),
       displayName: (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
       inputs: (map['inputs']).input(),
       inputsSchemaUri: (map['inputsSchemaUri'] as String).input(),
       instructionUri: (map['instructionUri'] as String).input(),
       labelerCount: (map['labelerCount'] as int).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      specialistPools: map['specialistPools'] == null ? null : ((map['specialistPools'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      specialistPools: map['specialistPools'] == null ? null : ((map['specialistPools']! as List).cast<String>()).input(),
     );
   }
 }

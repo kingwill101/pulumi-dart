@@ -24,7 +24,7 @@ class GetChildAccountsArgs {
 
   factory GetChildAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetChildAccountsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetChildAccountsFilter>(map['filters'], (value) => GetChildAccountsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetChildAccountsFilter>(map['filters']!, (value) => GetChildAccountsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

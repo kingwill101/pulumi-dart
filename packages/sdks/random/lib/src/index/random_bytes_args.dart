@@ -29,7 +29,7 @@ class RandomBytesArgs {
 
   factory RandomBytesArgs.fromMap(Map<String, dynamic> map) {
     return RandomBytesArgs(
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
       length: (map['length'] as int).input(),
     );
   }

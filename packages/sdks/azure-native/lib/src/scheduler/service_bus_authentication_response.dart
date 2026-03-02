@@ -30,9 +30,9 @@ class ServiceBusAuthenticationResponse {
 
   factory ServiceBusAuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return ServiceBusAuthenticationResponse(
-      sasKey: map['sasKey'] == null ? null : (map['sasKey'] as String).input(),
-      sasKeyName: map['sasKeyName'] == null ? null : (map['sasKeyName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      sasKey: map['sasKey'] == null ? null : (map['sasKey']! as String).input(),
+      sasKeyName: map['sasKeyName'] == null ? null : (map['sasKeyName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

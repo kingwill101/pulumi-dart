@@ -28,7 +28,7 @@ class UserOwnedDrydockNote {
   factory UserOwnedDrydockNote.fromMap(Map<String, dynamic> map) {
     return UserOwnedDrydockNote(
       noteReference: (map['noteReference'] as String).input(),
-      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<AttestorPublicKeyBinaryauthorizationV1beta1>(map['publicKeys'], (value) => AttestorPublicKeyBinaryauthorizationV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<AttestorPublicKeyBinaryauthorizationV1beta1>(map['publicKeys']!, (value) => AttestorPublicKeyBinaryauthorizationV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

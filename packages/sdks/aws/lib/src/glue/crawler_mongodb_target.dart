@@ -32,7 +32,7 @@ class CrawlerMongodbTarget {
     return CrawlerMongodbTarget(
       connectionName: (map['connectionName'] as String).input(),
       path: (map['path'] as String).input(),
-      scanAll: map['scanAll'] == null ? null : (map['scanAll'] as bool).input(),
+      scanAll: map['scanAll'] == null ? null : ((map['scanAll'] as bool).input()).input(),
     );
   }
 }

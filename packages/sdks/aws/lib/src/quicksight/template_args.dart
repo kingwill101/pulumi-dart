@@ -63,12 +63,12 @@ class TemplateArgs {
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<TemplatePermission>(map['permissions'], (value) => TemplatePermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceEntity: map['sourceEntity'] == null ? null : (TemplateSourceEntity.fromMap((map['sourceEntity'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      permissions: map['permissions'] == null ? null : ((pulumi.Input.decodeList<TemplatePermission>(map['permissions']!, (value) => TemplatePermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceEntity: map['sourceEntity'] == null ? null : ((TemplateSourceEntity.fromMap((map['sourceEntity']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       templateId: (map['templateId'] as String).input(),
       versionDescription: (map['versionDescription'] as String).input(),
     );

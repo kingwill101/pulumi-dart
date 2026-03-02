@@ -36,10 +36,10 @@ class NetworkingRoute {
 
   factory NetworkingRoute.fromMap(Map<String, dynamic> map) {
     return NetworkingRoute(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       receiver: (map['receiver'] as String).input(),
-      subdomain: map['subdomain'] == null ? null : (map['subdomain'] as String).input(),
+      subdomain: map['subdomain'] == null ? null : (map['subdomain']! as String).input(),
     );
   }
 }

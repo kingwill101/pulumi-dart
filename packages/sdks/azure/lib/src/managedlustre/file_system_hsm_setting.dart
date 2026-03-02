@@ -33,7 +33,7 @@ class FileSystemHsmSetting {
   factory FileSystemHsmSetting.fromMap(Map<String, dynamic> map) {
     return FileSystemHsmSetting(
       containerId: (map['containerId'] as String).input(),
-      importPrefix: map['importPrefix'] == null ? null : (map['importPrefix'] as String).input(),
+      importPrefix: map['importPrefix'] == null ? null : (map['importPrefix']! as String).input(),
       loggingContainerId: (map['loggingContainerId'] as String).input(),
     );
   }

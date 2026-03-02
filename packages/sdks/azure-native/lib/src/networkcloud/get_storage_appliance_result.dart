@@ -179,7 +179,7 @@ class GetStorageApplianceResult {
       serialNumber: map['serialNumber'] as String,
       storageApplianceSkuId: map['storageApplianceSkuId'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       version: map['version'] as String,
     );

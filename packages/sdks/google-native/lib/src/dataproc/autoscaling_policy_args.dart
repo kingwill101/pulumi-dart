@@ -53,12 +53,12 @@ class AutoscalingPolicyArgs {
 
   factory AutoscalingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyArgs(
-      basicAlgorithm: map['basicAlgorithm'] == null ? null : (BasicAutoscalingAlgorithm.fromMap((map['basicAlgorithm'] as Map).cast<String, dynamic>())).input(),
+      basicAlgorithm: map['basicAlgorithm'] == null ? null : (BasicAutoscalingAlgorithm.fromMap((map['basicAlgorithm']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : (InstanceGroupAutoscalingPolicyConfig.fromMap((map['secondaryWorkerConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : (InstanceGroupAutoscalingPolicyConfig.fromMap((map['secondaryWorkerConfig']! as Map).cast<String, dynamic>())).input(),
       workerConfig: (InstanceGroupAutoscalingPolicyConfig.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }

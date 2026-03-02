@@ -63,15 +63,15 @@ class LedgerState {
 
   factory LedgerState.fromMap(Map<String, dynamic> map) {
     return LedgerState(
-      azureadBasedServicePrincipals: map['azureadBasedServicePrincipals'] == null ? null : (pulumi.Input.decodeList<LedgerAzureadBasedServicePrincipal>(map['azureadBasedServicePrincipals'], (value) => LedgerAzureadBasedServicePrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      certificateBasedSecurityPrincipals: map['certificateBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<LedgerCertificateBasedSecurityPrincipal>(map['certificateBasedSecurityPrincipals'], (value) => LedgerCertificateBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identityServiceEndpoint: map['identityServiceEndpoint'] == null ? null : (map['identityServiceEndpoint'] as String).input(),
-      ledgerEndpoint: map['ledgerEndpoint'] == null ? null : (map['ledgerEndpoint'] as String).input(),
-      ledgerType: map['ledgerType'] == null ? null : (map['ledgerType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      azureadBasedServicePrincipals: map['azureadBasedServicePrincipals'] == null ? null : (pulumi.Input.decodeList<LedgerAzureadBasedServicePrincipal>(map['azureadBasedServicePrincipals']!, (value) => LedgerAzureadBasedServicePrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificateBasedSecurityPrincipals: map['certificateBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<LedgerCertificateBasedSecurityPrincipal>(map['certificateBasedSecurityPrincipals']!, (value) => LedgerCertificateBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identityServiceEndpoint: map['identityServiceEndpoint'] == null ? null : (map['identityServiceEndpoint']! as String).input(),
+      ledgerEndpoint: map['ledgerEndpoint'] == null ? null : (map['ledgerEndpoint']! as String).input(),
+      ledgerType: map['ledgerType'] == null ? null : (map['ledgerType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

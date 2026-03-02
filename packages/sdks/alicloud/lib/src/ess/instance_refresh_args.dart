@@ -93,18 +93,18 @@ class InstanceRefreshArgs {
 
   factory InstanceRefreshArgs.fromMap(Map<String, dynamic> map) {
     return InstanceRefreshArgs(
-      checkpointPauseTime: map['checkpointPauseTime'] == null ? null : (map['checkpointPauseTime'] as int).input(),
-      checkpoints: map['checkpoints'] == null ? null : (pulumi.Input.decodeList<InstanceRefreshCheckpoint>(map['checkpoints'], (value) => InstanceRefreshCheckpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      desiredConfigurationContainers: map['desiredConfigurationContainers'] == null ? null : (pulumi.Input.decodeList<InstanceRefreshDesiredConfigurationContainer>(map['desiredConfigurationContainers'], (value) => InstanceRefreshDesiredConfigurationContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      desiredConfigurationImageId: map['desiredConfigurationImageId'] == null ? null : (map['desiredConfigurationImageId'] as String).input(),
-      desiredConfigurationLaunchTemplateId: map['desiredConfigurationLaunchTemplateId'] == null ? null : (map['desiredConfigurationLaunchTemplateId'] as String).input(),
-      desiredConfigurationLaunchTemplateOverrides: map['desiredConfigurationLaunchTemplateOverrides'] == null ? null : (pulumi.Input.decodeList<InstanceRefreshDesiredConfigurationLaunchTemplateOverride>(map['desiredConfigurationLaunchTemplateOverrides'], (value) => InstanceRefreshDesiredConfigurationLaunchTemplateOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      desiredConfigurationLaunchTemplateVersion: map['desiredConfigurationLaunchTemplateVersion'] == null ? null : (map['desiredConfigurationLaunchTemplateVersion'] as String).input(),
-      maxHealthyPercentage: map['maxHealthyPercentage'] == null ? null : (map['maxHealthyPercentage'] as int).input(),
-      minHealthyPercentage: map['minHealthyPercentage'] == null ? null : (map['minHealthyPercentage'] as int).input(),
+      checkpointPauseTime: map['checkpointPauseTime'] == null ? null : (map['checkpointPauseTime']! as int).input(),
+      checkpoints: map['checkpoints'] == null ? null : (pulumi.Input.decodeList<InstanceRefreshCheckpoint>(map['checkpoints']!, (value) => InstanceRefreshCheckpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      desiredConfigurationContainers: map['desiredConfigurationContainers'] == null ? null : (pulumi.Input.decodeList<InstanceRefreshDesiredConfigurationContainer>(map['desiredConfigurationContainers']!, (value) => InstanceRefreshDesiredConfigurationContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      desiredConfigurationImageId: map['desiredConfigurationImageId'] == null ? null : (map['desiredConfigurationImageId']! as String).input(),
+      desiredConfigurationLaunchTemplateId: map['desiredConfigurationLaunchTemplateId'] == null ? null : (map['desiredConfigurationLaunchTemplateId']! as String).input(),
+      desiredConfigurationLaunchTemplateOverrides: map['desiredConfigurationLaunchTemplateOverrides'] == null ? null : (pulumi.Input.decodeList<InstanceRefreshDesiredConfigurationLaunchTemplateOverride>(map['desiredConfigurationLaunchTemplateOverrides']!, (value) => InstanceRefreshDesiredConfigurationLaunchTemplateOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      desiredConfigurationLaunchTemplateVersion: map['desiredConfigurationLaunchTemplateVersion'] == null ? null : (map['desiredConfigurationLaunchTemplateVersion']! as String).input(),
+      maxHealthyPercentage: map['maxHealthyPercentage'] == null ? null : (map['maxHealthyPercentage']! as int).input(),
+      minHealthyPercentage: map['minHealthyPercentage'] == null ? null : (map['minHealthyPercentage']! as int).input(),
       scalingGroupId: (map['scalingGroupId'] as String).input(),
-      skipMatching: map['skipMatching'] == null ? null : (map['skipMatching'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      skipMatching: map['skipMatching'] == null ? null : (map['skipMatching']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

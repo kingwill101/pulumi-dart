@@ -21,7 +21,7 @@ class ReadPoolConfig {
 
   factory ReadPoolConfig.fromMap(Map<String, dynamic> map) {
     return ReadPoolConfig(
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
     );
   }
 }

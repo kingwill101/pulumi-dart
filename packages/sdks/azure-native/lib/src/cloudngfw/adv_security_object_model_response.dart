@@ -28,7 +28,7 @@ class AdvSecurityObjectModelResponse {
   factory AdvSecurityObjectModelResponse.fromMap(Map<String, dynamic> map) {
     return AdvSecurityObjectModelResponse(
       entry: (pulumi.Input.decodeList<NameDescriptionObjectResponse>(map['entry'], (value) => NameDescriptionObjectResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

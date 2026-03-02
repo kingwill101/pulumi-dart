@@ -21,7 +21,7 @@ class ChatEngineChatEngineMetadata {
 
   factory ChatEngineChatEngineMetadata.fromMap(Map<String, dynamic> map) {
     return ChatEngineChatEngineMetadata(
-      dialogflowAgent: map['dialogflowAgent'] == null ? null : (map['dialogflowAgent'] as String).input(),
+      dialogflowAgent: map['dialogflowAgent'] == null ? null : (map['dialogflowAgent']! as String).input(),
     );
   }
 }

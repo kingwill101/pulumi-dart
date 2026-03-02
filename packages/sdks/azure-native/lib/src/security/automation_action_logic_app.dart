@@ -33,8 +33,8 @@ class AutomationActionLogicApp {
   factory AutomationActionLogicApp.fromMap(Map<String, dynamic> map) {
     return AutomationActionLogicApp(
       actionType: (map['actionType'] as String).input(),
-      logicAppResourceId: map['logicAppResourceId'] == null ? null : (map['logicAppResourceId'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      logicAppResourceId: map['logicAppResourceId'] == null ? null : (map['logicAppResourceId']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

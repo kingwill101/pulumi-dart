@@ -49,10 +49,10 @@ class GoogleDevtoolsCloudbuildV2GitLabConfig {
   factory GoogleDevtoolsCloudbuildV2GitLabConfig.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsCloudbuildV2GitLabConfig(
       authorizerCredential: (UserCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>())).input(),
-      hostUri: map['hostUri'] == null ? null : (map['hostUri'] as String).input(),
+      hostUri: map['hostUri'] == null ? null : (map['hostUri']! as String).input(),
       readAuthorizerCredential: (UserCredential.fromMap((map['readAuthorizerCredential'] as Map).cast<String, dynamic>())).input(),
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>())).input(),
-      sslCa: map['sslCa'] == null ? null : (map['sslCa'] as String).input(),
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig']! as Map).cast<String, dynamic>())).input(),
+      sslCa: map['sslCa'] == null ? null : (map['sslCa']! as String).input(),
       webhookSecretSecretVersion: (map['webhookSecretSecretVersion'] as String).input(),
     );
   }

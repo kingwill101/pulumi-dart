@@ -42,8 +42,8 @@ class TransitGatewayRouteTableAttachmentArgs {
   factory TransitGatewayRouteTableAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TransitGatewayRouteTableAttachmentArgs(
       peeringId: (map['peeringId'] as String).input(),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : ((map['routingPolicyLabel'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       transitGatewayRouteTableArn: (map['transitGatewayRouteTableArn'] as String).input(),
     );
   }

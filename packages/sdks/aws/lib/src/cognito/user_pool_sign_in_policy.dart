@@ -20,7 +20,7 @@ class UserPoolSignInPolicy {
 
   factory UserPoolSignInPolicy.fromMap(Map<String, dynamic> map) {
     return UserPoolSignInPolicy(
-      allowedFirstAuthFactors: map['allowedFirstAuthFactors'] == null ? null : ((map['allowedFirstAuthFactors'] as List).cast<String>()).input(),
+      allowedFirstAuthFactors: map['allowedFirstAuthFactors'] == null ? null : (((map['allowedFirstAuthFactors'] as List).cast<String>()).input()).input(),
     );
   }
 }

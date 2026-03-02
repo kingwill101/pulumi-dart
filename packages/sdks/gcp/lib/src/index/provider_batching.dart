@@ -23,8 +23,8 @@ class ProviderBatching {
 
   factory ProviderBatching.fromMap(Map<String, dynamic> map) {
     return ProviderBatching(
-      enableBatching: map['enableBatching'] == null ? null : (map['enableBatching'] as bool).input(),
-      sendAfter: map['sendAfter'] == null ? null : (map['sendAfter'] as String).input(),
+      enableBatching: map['enableBatching'] == null ? null : (map['enableBatching']! as bool).input(),
+      sendAfter: map['sendAfter'] == null ? null : (map['sendAfter']! as String).input(),
     );
   }
 }

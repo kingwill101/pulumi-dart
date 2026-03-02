@@ -42,9 +42,9 @@ class GetBucketsResult {
     return GetBucketsResult(
       buckets: pulumi.Input.decodeList<GetBucketsBucket>(map['buckets'], (value) => GetBucketsBucket.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

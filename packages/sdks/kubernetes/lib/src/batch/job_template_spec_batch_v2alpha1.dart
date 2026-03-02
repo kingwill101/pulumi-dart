@@ -28,8 +28,8 @@ class JobTemplateSpecBatchV2alpha1 {
 
   factory JobTemplateSpecBatchV2alpha1.fromMap(Map<String, dynamic> map) {
     return JobTemplateSpecBatchV2alpha1(
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (JobSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (JobSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

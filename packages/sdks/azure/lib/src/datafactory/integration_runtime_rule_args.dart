@@ -64,15 +64,15 @@ class IntegrationRuntimeRuleArgs {
 
   factory IntegrationRuntimeRuleArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeRuleArgs(
-      cleanupEnabled: map['cleanupEnabled'] == null ? null : (map['cleanupEnabled'] as bool).input(),
-      computeType: map['computeType'] == null ? null : (map['computeType'] as String).input(),
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as int).input(),
+      cleanupEnabled: map['cleanupEnabled'] == null ? null : (map['cleanupEnabled']! as bool).input(),
+      computeType: map['computeType'] == null ? null : (map['computeType']! as String).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as int).input(),
       dataFactoryId: (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      timeToLiveMin: map['timeToLiveMin'] == null ? null : (map['timeToLiveMin'] as int).input(),
-      virtualNetworkEnabled: map['virtualNetworkEnabled'] == null ? null : (map['virtualNetworkEnabled'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      timeToLiveMin: map['timeToLiveMin'] == null ? null : (map['timeToLiveMin']! as int).input(),
+      virtualNetworkEnabled: map['virtualNetworkEnabled'] == null ? null : (map['virtualNetworkEnabled']! as bool).input(),
     );
   }
 }

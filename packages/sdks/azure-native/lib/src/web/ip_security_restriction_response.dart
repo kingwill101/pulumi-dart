@@ -89,17 +89,17 @@ class IpSecurityRestrictionResponse {
 
   factory IpSecurityRestrictionResponse.fromMap(Map<String, dynamic> map) {
     return IpSecurityRestrictionResponse(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, List<String>>()).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask'] as String).input(),
-      subnetTrafficTag: map['subnetTrafficTag'] == null ? null : (map['subnetTrafficTag'] as int).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      vnetSubnetResourceId: map['vnetSubnetResourceId'] == null ? null : (map['vnetSubnetResourceId'] as String).input(),
-      vnetTrafficTag: map['vnetTrafficTag'] == null ? null : (map['vnetTrafficTag'] as int).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, List<String>>()).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask']! as String).input(),
+      subnetTrafficTag: map['subnetTrafficTag'] == null ? null : (map['subnetTrafficTag']! as int).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      vnetSubnetResourceId: map['vnetSubnetResourceId'] == null ? null : (map['vnetSubnetResourceId']! as String).input(),
+      vnetTrafficTag: map['vnetTrafficTag'] == null ? null : (map['vnetTrafficTag']! as int).input(),
     );
   }
 }

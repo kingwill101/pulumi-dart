@@ -28,7 +28,7 @@ class IosTestLoop {
   factory IosTestLoop.fromMap(Map<String, dynamic> map) {
     return IosTestLoop(
       appIpa: (FileReference.fromMap((map['appIpa'] as Map).cast<String, dynamic>())).input(),
-      scenarios: map['scenarios'] == null ? null : ((map['scenarios'] as List).cast<int>()).input(),
+      scenarios: map['scenarios'] == null ? null : ((map['scenarios']! as List).cast<int>()).input(),
     );
   }
 }

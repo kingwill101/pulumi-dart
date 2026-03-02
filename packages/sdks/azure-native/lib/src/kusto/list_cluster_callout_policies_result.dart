@@ -26,8 +26,8 @@ class ListClusterCalloutPoliciesResult {
 
   factory ListClusterCalloutPoliciesResult.fromMap(Map<String, dynamic> map) {
     return ListClusterCalloutPoliciesResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<CalloutPolicyResponse>(map['value'], (value) => CalloutPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<CalloutPolicyResponse>(map['value']!, (value) => CalloutPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

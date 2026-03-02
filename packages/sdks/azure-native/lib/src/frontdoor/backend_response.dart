@@ -76,18 +76,18 @@ class BackendResponse {
 
   factory BackendResponse.fromMap(Map<String, dynamic> map) {
     return BackendResponse(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      backendHostHeader: map['backendHostHeader'] == null ? null : (map['backendHostHeader'] as String).input(),
-      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
-      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
-      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      backendHostHeader: map['backendHostHeader'] == null ? null : (map['backendHostHeader']! as String).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort']! as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort']! as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       privateEndpointStatus: (map['privateEndpointStatus'] as String).input(),
-      privateLinkAlias: map['privateLinkAlias'] == null ? null : (map['privateLinkAlias'] as String).input(),
-      privateLinkApprovalMessage: map['privateLinkApprovalMessage'] == null ? null : (map['privateLinkApprovalMessage'] as String).input(),
-      privateLinkLocation: map['privateLinkLocation'] == null ? null : (map['privateLinkLocation'] as String).input(),
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      privateLinkAlias: map['privateLinkAlias'] == null ? null : (map['privateLinkAlias']! as String).input(),
+      privateLinkApprovalMessage: map['privateLinkApprovalMessage'] == null ? null : (map['privateLinkApprovalMessage']! as String).input(),
+      privateLinkLocation: map['privateLinkLocation'] == null ? null : (map['privateLinkLocation']! as String).input(),
+      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

@@ -76,17 +76,17 @@ class LinkedServiceWebArgs {
 
   factory LinkedServiceWebArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceWebArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
       authenticationType: (map['authenticationType'] as String).input(),
       dataFactoryId: (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       url: (map['url'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

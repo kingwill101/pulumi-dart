@@ -44,11 +44,11 @@ class HybridConnectionArgs {
 
   factory HybridConnectionArgs.fromMap(Map<String, dynamic> map) {
     return HybridConnectionArgs(
-      hybridConnectionName: map['hybridConnectionName'] == null ? null : (map['hybridConnectionName'] as String).input(),
+      hybridConnectionName: map['hybridConnectionName'] == null ? null : (map['hybridConnectionName']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : (map['requiresClientAuthorization'] as bool).input(),
+      requiresClientAuthorization: map['requiresClientAuthorization'] == null ? null : (map['requiresClientAuthorization']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata'] as String).input(),
+      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata']! as String).input(),
     );
   }
 }

@@ -66,15 +66,15 @@ class DedicatedHostArgs {
 
   factory DedicatedHostArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedHostArgs(
-      autoReplaceOnFailure: map['autoReplaceOnFailure'] == null ? null : (map['autoReplaceOnFailure'] as bool).input(),
+      autoReplaceOnFailure: map['autoReplaceOnFailure'] == null ? null : (map['autoReplaceOnFailure']! as bool).input(),
       hostGroupName: (map['hostGroupName'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      licenseType: map['licenseType'] == null ? null : (DedicatedHostLicenseTypes.fromValue(map['licenseType'] as String)).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      platformFaultDomain: map['platformFaultDomain'] == null ? null : (map['platformFaultDomain'] as int).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      licenseType: map['licenseType'] == null ? null : (DedicatedHostLicenseTypes.fromValue(map['licenseType']! as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      platformFaultDomain: map['platformFaultDomain'] == null ? null : (map['platformFaultDomain']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

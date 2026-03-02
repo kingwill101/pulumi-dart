@@ -66,13 +66,13 @@ class TrunkedNetworkArgs {
   factory TrunkedNetworkArgs.fromMap(Map<String, dynamic> map) {
     return TrunkedNetworkArgs(
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      hybridAksPluginType: map['hybridAksPluginType'] == null ? null : (map['hybridAksPluginType'] as String).input(),
-      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName'] as String).input(),
+      hybridAksPluginType: map['hybridAksPluginType'] == null ? null : (map['hybridAksPluginType']! as String).input(),
+      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName']! as String).input(),
       isolationDomainIds: ((map['isolationDomainIds'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trunkedNetworkName: map['trunkedNetworkName'] == null ? null : (map['trunkedNetworkName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      trunkedNetworkName: map['trunkedNetworkName'] == null ? null : (map['trunkedNetworkName']! as String).input(),
       vlans: ((map['vlans'] as List).cast<double>()).input(),
     );
   }

@@ -31,9 +31,9 @@ class ActionResponse {
 
   factory ActionResponse.fromMap(Map<String, dynamic> map) {
     return ActionResponse(
-      compatibilityLevel: map['compatibilityLevel'] == null ? null : (map['compatibilityLevel'] as int).input(),
-      requiresPreprocessing: map['requiresPreprocessing'] == null ? null : (map['requiresPreprocessing'] as bool).input(),
-      sqlExpression: map['sqlExpression'] == null ? null : (map['sqlExpression'] as String).input(),
+      compatibilityLevel: map['compatibilityLevel'] == null ? null : (map['compatibilityLevel']! as int).input(),
+      requiresPreprocessing: map['requiresPreprocessing'] == null ? null : (map['requiresPreprocessing']! as bool).input(),
+      sqlExpression: map['sqlExpression'] == null ? null : (map['sqlExpression']! as String).input(),
     );
   }
 }

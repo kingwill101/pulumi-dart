@@ -58,12 +58,12 @@ class ToolsetOpenApiToolset {
 
   factory ToolsetOpenApiToolset.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolset(
-      apiAuthentication: map['apiAuthentication'] == null ? null : (ToolsetOpenApiToolsetApiAuthentication.fromMap((map['apiAuthentication'] as Map).cast<String, dynamic>())).input(),
-      ignoreUnknownFields: map['ignoreUnknownFields'] == null ? null : (map['ignoreUnknownFields'] as bool).input(),
+      apiAuthentication: map['apiAuthentication'] == null ? null : (ToolsetOpenApiToolsetApiAuthentication.fromMap((map['apiAuthentication']! as Map).cast<String, dynamic>())).input(),
+      ignoreUnknownFields: map['ignoreUnknownFields'] == null ? null : (map['ignoreUnknownFields']! as bool).input(),
       openApiSchema: (map['openApiSchema'] as String).input(),
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>())).input(),
-      tlsConfig: map['tlsConfig'] == null ? null : (ToolsetOpenApiToolsetTlsConfig.fromMap((map['tlsConfig'] as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ToolsetOpenApiToolsetServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig']! as Map).cast<String, dynamic>())).input(),
+      tlsConfig: map['tlsConfig'] == null ? null : (ToolsetOpenApiToolsetTlsConfig.fromMap((map['tlsConfig']! as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

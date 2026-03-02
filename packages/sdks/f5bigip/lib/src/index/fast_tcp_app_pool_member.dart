@@ -41,10 +41,10 @@ class FastTcpAppPoolMember {
   factory FastTcpAppPoolMember.fromMap(Map<String, dynamic> map) {
     return FastTcpAppPoolMember(
       addresses: ((map['addresses'] as List).cast<String>()).input(),
-      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      priorityGroup: map['priorityGroup'] == null ? null : (map['priorityGroup'] as int).input(),
-      shareNodes: map['shareNodes'] == null ? null : (map['shareNodes'] as bool).input(),
+      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      priorityGroup: map['priorityGroup'] == null ? null : (map['priorityGroup']! as int).input(),
+      shareNodes: map['shareNodes'] == null ? null : (map['shareNodes']! as bool).input(),
     );
   }
 }

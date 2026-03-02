@@ -32,7 +32,7 @@ class AssetTypeFormsInput {
   factory AssetTypeFormsInput.fromMap(Map<String, dynamic> map) {
     return AssetTypeFormsInput(
       mapBlockKey: (map['mapBlockKey'] as String).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      required: map['required'] == null ? null : ((map['required'] as bool).input()).input(),
       typeIdentifier: (map['typeIdentifier'] as String).input(),
       typeRevision: (map['typeRevision'] as String).input(),
     );

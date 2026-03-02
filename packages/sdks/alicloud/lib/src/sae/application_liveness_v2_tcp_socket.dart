@@ -19,7 +19,7 @@ class ApplicationLivenessV2TcpSocket {
 
   factory ApplicationLivenessV2TcpSocket.fromMap(Map<String, dynamic> map) {
     return ApplicationLivenessV2TcpSocket(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

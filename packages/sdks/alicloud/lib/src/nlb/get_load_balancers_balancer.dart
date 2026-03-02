@@ -128,7 +128,7 @@ class GetLoadBalancersBalancer {
       resourceGroupId: (map['resourceGroupId'] as String).input(),
       securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
       status: (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
       zoneMappings: (pulumi.Input.decodeList<GetLoadBalancersBalancerZoneMapping>(map['zoneMappings'], (value) => GetLoadBalancersBalancerZoneMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

@@ -26,8 +26,8 @@ class Scope {
 
   factory Scope.fromMap(Map<String, dynamic> map) {
     return Scope(
-      scopeType: map['scopeType'] == null ? null : (map['scopeType'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      scopeType: map['scopeType'] == null ? null : (map['scopeType']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

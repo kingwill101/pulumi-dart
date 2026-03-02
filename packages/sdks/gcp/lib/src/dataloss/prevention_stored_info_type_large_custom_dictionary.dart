@@ -37,8 +37,8 @@ class PreventionStoredInfoTypeLargeCustomDictionary {
 
   factory PreventionStoredInfoTypeLargeCustomDictionary.fromMap(Map<String, dynamic> map) {
     return PreventionStoredInfoTypeLargeCustomDictionary(
-      bigQueryField: map['bigQueryField'] == null ? null : (PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField.fromMap((map['bigQueryField'] as Map).cast<String, dynamic>())).input(),
-      cloudStorageFileSet: map['cloudStorageFileSet'] == null ? null : (PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet.fromMap((map['cloudStorageFileSet'] as Map).cast<String, dynamic>())).input(),
+      bigQueryField: map['bigQueryField'] == null ? null : (PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField.fromMap((map['bigQueryField']! as Map).cast<String, dynamic>())).input(),
+      cloudStorageFileSet: map['cloudStorageFileSet'] == null ? null : (PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet.fromMap((map['cloudStorageFileSet']! as Map).cast<String, dynamic>())).input(),
       outputPath: (PreventionStoredInfoTypeLargeCustomDictionaryOutputPath.fromMap((map['outputPath'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -45,10 +45,10 @@ class FleetDatabaseArgs {
 
   factory FleetDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return FleetDatabaseArgs(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
       fleetName: (map['fleetName'] as String).input(),
       fleetspaceName: (map['fleetspaceName'] as String).input(),
-      properties: map['properties'] == null ? null : (FleetDatabaseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (FleetDatabaseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -47,10 +47,10 @@ class AiFeatureStoreEntityTypeFeatureArgs {
 
   factory AiFeatureStoreEntityTypeFeatureArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeFeatureArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       entitytype: (map['entitytype'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       valueType: (map['valueType'] as String).input(),
     );
   }

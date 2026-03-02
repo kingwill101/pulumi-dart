@@ -27,8 +27,8 @@ class ListCapacityPoolVolumeQuotaReportResult {
 
   factory ListCapacityPoolVolumeQuotaReportResult.fromMap(Map<String, dynamic> map) {
     return ListCapacityPoolVolumeQuotaReportResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<QuotaReportResponse>(map['value'], (value) => QuotaReportResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<QuotaReportResponse>(map['value']!, (value) => QuotaReportResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

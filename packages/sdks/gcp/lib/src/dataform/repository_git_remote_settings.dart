@@ -43,10 +43,10 @@ class RepositoryGitRemoteSettings {
 
   factory RepositoryGitRemoteSettings.fromMap(Map<String, dynamic> map) {
     return RepositoryGitRemoteSettings(
-      authenticationTokenSecretVersion: map['authenticationTokenSecretVersion'] == null ? null : (map['authenticationTokenSecretVersion'] as String).input(),
+      authenticationTokenSecretVersion: map['authenticationTokenSecretVersion'] == null ? null : (map['authenticationTokenSecretVersion']! as String).input(),
       defaultBranch: (map['defaultBranch'] as String).input(),
-      sshAuthenticationConfig: map['sshAuthenticationConfig'] == null ? null : (RepositoryGitRemoteSettingsSshAuthenticationConfig.fromMap((map['sshAuthenticationConfig'] as Map).cast<String, dynamic>())).input(),
-      tokenStatus: map['tokenStatus'] == null ? null : (map['tokenStatus'] as String).input(),
+      sshAuthenticationConfig: map['sshAuthenticationConfig'] == null ? null : (RepositoryGitRemoteSettingsSshAuthenticationConfig.fromMap((map['sshAuthenticationConfig']! as Map).cast<String, dynamic>())).input(),
+      tokenStatus: map['tokenStatus'] == null ? null : (map['tokenStatus']! as String).input(),
       url: (map['url'] as String).input(),
     );
   }

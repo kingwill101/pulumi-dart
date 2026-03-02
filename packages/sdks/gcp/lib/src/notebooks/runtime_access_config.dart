@@ -34,9 +34,9 @@ class RuntimeAccessConfig {
 
   factory RuntimeAccessConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeAccessConfig(
-      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
-      proxyUri: map['proxyUri'] == null ? null : (map['proxyUri'] as String).input(),
-      runtimeOwner: map['runtimeOwner'] == null ? null : (map['runtimeOwner'] as String).input(),
+      accessType: map['accessType'] == null ? null : (map['accessType']! as String).input(),
+      proxyUri: map['proxyUri'] == null ? null : (map['proxyUri']! as String).input(),
+      runtimeOwner: map['runtimeOwner'] == null ? null : (map['runtimeOwner']! as String).input(),
     );
   }
 }

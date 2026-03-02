@@ -29,8 +29,8 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector {
 
   factory V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector(
-      locationSelector: map['locationSelector'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelector.fromMap((map['locationSelector'] as Map).cast<String, dynamic>())).input(),
-      resourceHierarchySelector: map['resourceHierarchySelector'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelector.fromMap((map['resourceHierarchySelector'] as Map).cast<String, dynamic>())).input(),
+      locationSelector: map['locationSelector'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelector.fromMap((map['locationSelector']! as Map).cast<String, dynamic>())).input(),
+      resourceHierarchySelector: map['resourceHierarchySelector'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelector.fromMap((map['resourceHierarchySelector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

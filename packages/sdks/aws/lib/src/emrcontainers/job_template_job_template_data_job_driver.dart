@@ -27,8 +27,8 @@ class JobTemplateJobTemplateDataJobDriver {
 
   factory JobTemplateJobTemplateDataJobDriver.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateDataJobDriver(
-      sparkSqlJobDriver: map['sparkSqlJobDriver'] == null ? null : (JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver.fromMap((map['sparkSqlJobDriver'] as Map).cast<String, dynamic>())).input(),
-      sparkSubmitJobDriver: map['sparkSubmitJobDriver'] == null ? null : (JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver.fromMap((map['sparkSubmitJobDriver'] as Map).cast<String, dynamic>())).input(),
+      sparkSqlJobDriver: map['sparkSqlJobDriver'] == null ? null : ((JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver.fromMap((map['sparkSqlJobDriver']! as Map).cast<String, dynamic>())).input()).input(),
+      sparkSubmitJobDriver: map['sparkSubmitJobDriver'] == null ? null : ((JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver.fromMap((map['sparkSubmitJobDriver']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class GoogleCloudDatacatalogV1ServiceSpec {
 
   factory GoogleCloudDatacatalogV1ServiceSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1ServiceSpec(
-      cloudBigtableInstanceSpec: map['cloudBigtableInstanceSpec'] == null ? null : (GoogleCloudDatacatalogV1CloudBigtableInstanceSpec.fromMap((map['cloudBigtableInstanceSpec'] as Map).cast<String, dynamic>())).input(),
+      cloudBigtableInstanceSpec: map['cloudBigtableInstanceSpec'] == null ? null : (GoogleCloudDatacatalogV1CloudBigtableInstanceSpec.fromMap((map['cloudBigtableInstanceSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

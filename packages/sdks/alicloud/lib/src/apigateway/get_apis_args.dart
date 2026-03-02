@@ -44,11 +44,11 @@ class GetApisArgs {
 
   factory GetApisArgs.fromMap(Map<String, dynamic> map) {
     return GetApisArgs(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      apiId: map['apiId'] == null ? null : (map['apiId']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

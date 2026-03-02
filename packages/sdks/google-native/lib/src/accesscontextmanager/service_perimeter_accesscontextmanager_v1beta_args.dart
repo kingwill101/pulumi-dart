@@ -45,10 +45,10 @@ class ServicePerimeterAccesscontextmanagerV1betaArgs {
   factory ServicePerimeterAccesscontextmanagerV1betaArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterAccesscontextmanagerV1betaArgs(
       accessPolicyId: (map['accessPolicyId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      perimeterType: map['perimeterType'] == null ? null : (ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta.fromValue(map['perimeterType'] as String)).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      perimeterType: map['perimeterType'] == null ? null : (ServicePerimeterPerimeterTypeAccesscontextmanagerV1beta.fromValue(map['perimeterType']! as String)).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

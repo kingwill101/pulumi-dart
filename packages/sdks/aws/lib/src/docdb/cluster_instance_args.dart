@@ -104,23 +104,23 @@ class ClusterInstanceArgs {
 
   factory ClusterInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ClusterInstanceArgs(
-      applyImmediately: map['applyImmediately'] == null ? null : (map['applyImmediately'] as bool).input(),
-      autoMinorVersionUpgrade: map['autoMinorVersionUpgrade'] == null ? null : (map['autoMinorVersionUpgrade'] as bool).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      caCertIdentifier: map['caCertIdentifier'] == null ? null : (map['caCertIdentifier'] as String).input(),
-      certificateRotationRestart: map['certificateRotationRestart'] == null ? null : (map['certificateRotationRestart'] as String).input(),
+      applyImmediately: map['applyImmediately'] == null ? null : ((map['applyImmediately'] as bool).input()).input(),
+      autoMinorVersionUpgrade: map['autoMinorVersionUpgrade'] == null ? null : ((map['autoMinorVersionUpgrade'] as bool).input()).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      caCertIdentifier: map['caCertIdentifier'] == null ? null : ((map['caCertIdentifier'] as String).input()).input(),
+      certificateRotationRestart: map['certificateRotationRestart'] == null ? null : ((map['certificateRotationRestart'] as String).input()).input(),
       clusterIdentifier: (map['clusterIdentifier'] as String).input(),
-      copyTagsToSnapshot: map['copyTagsToSnapshot'] == null ? null : (map['copyTagsToSnapshot'] as bool).input(),
-      enablePerformanceInsights: map['enablePerformanceInsights'] == null ? null : (map['enablePerformanceInsights'] as bool).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
-      identifierPrefix: map['identifierPrefix'] == null ? null : (map['identifierPrefix'] as String).input(),
+      copyTagsToSnapshot: map['copyTagsToSnapshot'] == null ? null : ((map['copyTagsToSnapshot'] as bool).input()).input(),
+      enablePerformanceInsights: map['enablePerformanceInsights'] == null ? null : ((map['enablePerformanceInsights'] as bool).input()).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
+      identifier: map['identifier'] == null ? null : ((map['identifier'] as String).input()).input(),
+      identifierPrefix: map['identifierPrefix'] == null ? null : ((map['identifierPrefix'] as String).input()).input(),
       instanceClass: (map['instanceClass'] as String).input(),
-      performanceInsightsKmsKeyId: map['performanceInsightsKmsKeyId'] == null ? null : (map['performanceInsightsKmsKeyId'] as String).input(),
-      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : (map['preferredMaintenanceWindow'] as String).input(),
-      promotionTier: map['promotionTier'] == null ? null : (map['promotionTier'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      performanceInsightsKmsKeyId: map['performanceInsightsKmsKeyId'] == null ? null : ((map['performanceInsightsKmsKeyId'] as String).input()).input(),
+      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : ((map['preferredMaintenanceWindow'] as String).input()).input(),
+      promotionTier: map['promotionTier'] == null ? null : ((map['promotionTier'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

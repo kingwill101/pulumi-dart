@@ -32,8 +32,8 @@ class GooglePrivacyDlpV2Bucket {
 
   factory GooglePrivacyDlpV2Bucket.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Bucket(
-      max: map['max'] == null ? null : (GooglePrivacyDlpV2Value.fromMap((map['max'] as Map).cast<String, dynamic>())).input(),
-      min: map['min'] == null ? null : (GooglePrivacyDlpV2Value.fromMap((map['min'] as Map).cast<String, dynamic>())).input(),
+      max: map['max'] == null ? null : (GooglePrivacyDlpV2Value.fromMap((map['max']! as Map).cast<String, dynamic>())).input(),
+      min: map['min'] == null ? null : (GooglePrivacyDlpV2Value.fromMap((map['min']! as Map).cast<String, dynamic>())).input(),
       replacementValue: (GooglePrivacyDlpV2Value.fromMap((map['replacementValue'] as Map).cast<String, dynamic>())).input(),
     );
   }

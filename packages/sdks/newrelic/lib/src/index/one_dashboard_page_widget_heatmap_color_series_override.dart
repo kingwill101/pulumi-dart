@@ -25,8 +25,8 @@ class OneDashboardPageWidgetHeatmapColorSeriesOverride {
 
   factory OneDashboardPageWidgetHeatmapColorSeriesOverride.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetHeatmapColorSeriesOverride(
-      color: map['color'] == null ? null : (map['color'] as String).input(),
-      seriesName: map['seriesName'] == null ? null : (map['seriesName'] as String).input(),
+      color: map['color'] == null ? null : (map['color']! as String).input(),
+      seriesName: map['seriesName'] == null ? null : (map['seriesName']! as String).input(),
     );
   }
 }

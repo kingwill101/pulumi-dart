@@ -31,9 +31,9 @@ class CustomImagePropertiesFromPlan {
 
   factory CustomImagePropertiesFromPlan.fromMap(Map<String, dynamic> map) {
     return CustomImagePropertiesFromPlan(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      offer: map['offer'] == null ? null : (map['offer'] as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      offer: map['offer'] == null ? null : (map['offer']! as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
     );
   }
 }

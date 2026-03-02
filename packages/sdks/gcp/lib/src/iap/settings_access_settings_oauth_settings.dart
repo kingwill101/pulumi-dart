@@ -30,8 +30,8 @@ class SettingsAccessSettingsOauthSettings {
 
   factory SettingsAccessSettingsOauthSettings.fromMap(Map<String, dynamic> map) {
     return SettingsAccessSettingsOauthSettings(
-      loginHint: map['loginHint'] == null ? null : (map['loginHint'] as String).input(),
-      programmaticClients: map['programmaticClients'] == null ? null : ((map['programmaticClients'] as List).cast<String>()).input(),
+      loginHint: map['loginHint'] == null ? null : (map['loginHint']! as String).input(),
+      programmaticClients: map['programmaticClients'] == null ? null : ((map['programmaticClients']! as List).cast<String>()).input(),
     );
   }
 }

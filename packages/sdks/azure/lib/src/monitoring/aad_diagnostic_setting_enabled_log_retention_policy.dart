@@ -23,8 +23,8 @@ class AadDiagnosticSettingEnabledLogRetentionPolicy {
 
   factory AadDiagnosticSettingEnabledLogRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return AadDiagnosticSettingEnabledLogRetentionPolicy(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

@@ -72,16 +72,16 @@ class EventHubState {
 
   factory EventHubState.fromMap(Map<String, dynamic> map) {
     return EventHubState(
-      captureDescription: map['captureDescription'] == null ? null : (EventHubCaptureDescription.fromMap((map['captureDescription'] as Map).cast<String, dynamic>())).input(),
-      messageRetention: map['messageRetention'] == null ? null : (map['messageRetention'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
-      partitionIds: map['partitionIds'] == null ? null : ((map['partitionIds'] as List).cast<String>()).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      retentionDescription: map['retentionDescription'] == null ? null : (EventHubRetentionDescription.fromMap((map['retentionDescription'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      captureDescription: map['captureDescription'] == null ? null : (EventHubCaptureDescription.fromMap((map['captureDescription']! as Map).cast<String, dynamic>())).input(),
+      messageRetention: map['messageRetention'] == null ? null : (map['messageRetention']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount']! as int).input(),
+      partitionIds: map['partitionIds'] == null ? null : ((map['partitionIds']! as List).cast<String>()).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      retentionDescription: map['retentionDescription'] == null ? null : (EventHubRetentionDescription.fromMap((map['retentionDescription']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

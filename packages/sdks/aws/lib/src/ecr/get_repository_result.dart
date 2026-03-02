@@ -77,11 +77,11 @@ class GetRepositoryResult {
   factory GetRepositoryResult.fromMap(Map<String, dynamic> map) {
     return GetRepositoryResult(
       arn: map['arn'] as String,
-      encryptionConfigurations: pulumi.Input.decodeList<GetRepositoryEncryptionConfiguration>(map['encryptionConfigurations'], (value) => GetRepositoryEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      encryptionConfigurations: pulumi.Input.decodeList<GetRepositoryEncryptionConfiguration>(map['encryptionConfigurations']!, (value) => GetRepositoryEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      imageScanningConfigurations: pulumi.Input.decodeList<GetRepositoryImageScanningConfiguration>(map['imageScanningConfigurations'], (value) => GetRepositoryImageScanningConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      imageScanningConfigurations: pulumi.Input.decodeList<GetRepositoryImageScanningConfiguration>(map['imageScanningConfigurations']!, (value) => GetRepositoryImageScanningConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       imageTagMutability: map['imageTagMutability'] as String,
-      imageTagMutabilityExclusionFilters: pulumi.Input.decodeList<GetRepositoryImageTagMutabilityExclusionFilter>(map['imageTagMutabilityExclusionFilters'], (value) => GetRepositoryImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>())),
+      imageTagMutabilityExclusionFilters: pulumi.Input.decodeList<GetRepositoryImageTagMutabilityExclusionFilter>(map['imageTagMutabilityExclusionFilters']!, (value) => GetRepositoryImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>())),
       mostRecentImageTags: (map['mostRecentImageTags'] as List).cast<String>(),
       name: map['name'] as String,
       region: map['region'] as String,

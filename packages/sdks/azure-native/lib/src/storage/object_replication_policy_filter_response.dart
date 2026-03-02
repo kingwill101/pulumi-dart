@@ -26,8 +26,8 @@ class ObjectReplicationPolicyFilterResponse {
 
   factory ObjectReplicationPolicyFilterResponse.fromMap(Map<String, dynamic> map) {
     return ObjectReplicationPolicyFilterResponse(
-      minCreationTime: map['minCreationTime'] == null ? null : (map['minCreationTime'] as String).input(),
-      prefixMatch: map['prefixMatch'] == null ? null : ((map['prefixMatch'] as List).cast<String>()).input(),
+      minCreationTime: map['minCreationTime'] == null ? null : (map['minCreationTime']! as String).input(),
+      prefixMatch: map['prefixMatch'] == null ? null : ((map['prefixMatch']! as List).cast<String>()).input(),
     );
   }
 }

@@ -63,10 +63,10 @@ class LayerVersionPermissionArgs {
     return LayerVersionPermissionArgs(
       action: (map['action'] as String).input(),
       layerName: (map['layerName'] as String).input(),
-      organizationId: map['organizationId'] == null ? null : (map['organizationId'] as String).input(),
+      organizationId: map['organizationId'] == null ? null : ((map['organizationId'] as String).input()).input(),
       principal: (map['principal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
       statementId: (map['statementId'] as String).input(),
       versionNumber: (map['versionNumber'] as int).input(),
     );

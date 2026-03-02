@@ -67,10 +67,10 @@ class AlertPolicyConditionConditionAbsent {
 
   factory AlertPolicyConditionConditionAbsent.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionAbsent(
-      aggregations: map['aggregations'] == null ? null : (pulumi.Input.decodeList<AlertPolicyConditionConditionAbsentAggregation>(map['aggregations'], (value) => AlertPolicyConditionConditionAbsentAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aggregations: map['aggregations'] == null ? null : (pulumi.Input.decodeList<AlertPolicyConditionConditionAbsentAggregation>(map['aggregations']!, (value) => AlertPolicyConditionConditionAbsentAggregation.fromMap((value as Map).cast<String, dynamic>()))).input(),
       duration: (map['duration'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      trigger: map['trigger'] == null ? null : (AlertPolicyConditionConditionAbsentTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      trigger: map['trigger'] == null ? null : (AlertPolicyConditionConditionAbsentTrigger.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

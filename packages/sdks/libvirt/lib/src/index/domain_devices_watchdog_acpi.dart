@@ -20,7 +20,7 @@ class DomainDevicesWatchdogAcpi {
 
   factory DomainDevicesWatchdogAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesWatchdogAcpi(
-      index: map['index'] == null ? null : (map['index'] as double).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
     );
   }
 }

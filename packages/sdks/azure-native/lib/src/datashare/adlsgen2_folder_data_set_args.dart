@@ -71,7 +71,7 @@ class ADLSGen2FolderDataSetArgs {
   factory ADLSGen2FolderDataSetArgs.fromMap(Map<String, dynamic> map) {
     return ADLSGen2FolderDataSetArgs(
       accountName: (map['accountName'] as String).input(),
-      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName'] as String).input(),
+      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName']! as String).input(),
       fileSystem: (map['fileSystem'] as String).input(),
       folderPath: (map['folderPath'] as String).input(),
       kind: (map['kind'] as String).input(),

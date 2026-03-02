@@ -32,9 +32,9 @@ class AuditConfigComputeBeta {
 
   factory AuditConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return AuditConfigComputeBeta(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigComputeBeta>(map['auditLogConfigs'], (value) => AuditLogConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigComputeBeta>(map['auditLogConfigs']!, (value) => AuditLogConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

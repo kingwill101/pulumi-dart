@@ -62,15 +62,15 @@ class NetworkSecurityGroup {
 
   factory NetworkSecurityGroup.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroup(
-      defaultSecurityRules: map['defaultSecurityRules'] == null ? null : (pulumi.Input.decodeList<SecurityRule>(map['defaultSecurityRules'], (value) => SecurityRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      flushConnection: map['flushConnection'] == null ? null : (map['flushConnection'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      resourceGuid: map['resourceGuid'] == null ? null : (map['resourceGuid'] as String).input(),
-      securityRules: map['securityRules'] == null ? null : (pulumi.Input.decodeList<SecurityRule>(map['securityRules'], (value) => SecurityRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      defaultSecurityRules: map['defaultSecurityRules'] == null ? null : (pulumi.Input.decodeList<SecurityRule>(map['defaultSecurityRules']!, (value) => SecurityRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      flushConnection: map['flushConnection'] == null ? null : (map['flushConnection']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      resourceGuid: map['resourceGuid'] == null ? null : (map['resourceGuid']! as String).input(),
+      securityRules: map['securityRules'] == null ? null : (pulumi.Input.decodeList<SecurityRule>(map['securityRules']!, (value) => SecurityRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

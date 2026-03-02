@@ -28,7 +28,7 @@ class DataflowGraphConnectionInputResponse {
   factory DataflowGraphConnectionInputResponse.fromMap(Map<String, dynamic> map) {
     return DataflowGraphConnectionInputResponse(
       name: (map['name'] as String).input(),
-      schema: map['schema'] == null ? null : (DataflowGraphConnectionSchemaSettingsResponse.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      schema: map['schema'] == null ? null : (DataflowGraphConnectionSchemaSettingsResponse.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

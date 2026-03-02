@@ -57,11 +57,11 @@ class GetNetworkWatcherResult {
     return GetNetworkWatcherResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

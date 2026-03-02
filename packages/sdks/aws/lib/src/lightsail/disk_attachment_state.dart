@@ -36,10 +36,10 @@ class DiskAttachmentState {
 
   factory DiskAttachmentState.fromMap(Map<String, dynamic> map) {
     return DiskAttachmentState(
-      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
-      diskPath: map['diskPath'] == null ? null : (map['diskPath'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      diskName: map['diskName'] == null ? null : ((map['diskName'] as String).input()).input(),
+      diskPath: map['diskPath'] == null ? null : ((map['diskPath'] as String).input()).input(),
+      instanceName: map['instanceName'] == null ? null : ((map['instanceName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

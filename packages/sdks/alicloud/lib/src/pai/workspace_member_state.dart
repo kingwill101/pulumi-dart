@@ -41,11 +41,11 @@ class WorkspaceMemberState {
 
   factory WorkspaceMemberState.fromMap(Map<String, dynamic> map) {
     return WorkspaceMemberState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      memberId: map['memberId'] == null ? null : (map['memberId'] as String).input(),
-      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      memberId: map['memberId'] == null ? null : (map['memberId']! as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

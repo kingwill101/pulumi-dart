@@ -26,8 +26,8 @@ class TaskPropertiesResponse {
 
   factory TaskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TaskPropertiesResponse(
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

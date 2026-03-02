@@ -36,8 +36,8 @@ class VmwareReplicatedVmManagedDisk {
   factory VmwareReplicatedVmManagedDisk.fromMap(Map<String, dynamic> map) {
     return VmwareReplicatedVmManagedDisk(
       diskId: (map['diskId'] as String).input(),
-      logStorageAccountId: map['logStorageAccountId'] == null ? null : (map['logStorageAccountId'] as String).input(),
-      targetDiskEncryptionSetId: map['targetDiskEncryptionSetId'] == null ? null : (map['targetDiskEncryptionSetId'] as String).input(),
+      logStorageAccountId: map['logStorageAccountId'] == null ? null : (map['logStorageAccountId']! as String).input(),
+      targetDiskEncryptionSetId: map['targetDiskEncryptionSetId'] == null ? null : (map['targetDiskEncryptionSetId']! as String).input(),
       targetDiskType: (map['targetDiskType'] as String).input(),
     );
   }

@@ -34,9 +34,9 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment
 
   factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment.fromMap(Map<String, dynamic> map) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption'] as bool).input(),
-      audio: map['audio'] == null ? null : (map['audio'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption']! as bool).input(),
+      audio: map['audio'] == null ? null : (map['audio']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

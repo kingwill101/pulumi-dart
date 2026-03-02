@@ -69,16 +69,16 @@ class AutoImportJobArgs {
 
   factory AutoImportJobArgs.fromMap(Map<String, dynamic> map) {
     return AutoImportJobArgs(
-      adminStatus: map['adminStatus'] == null ? null : (map['adminStatus'] as String).input(),
+      adminStatus: map['adminStatus'] == null ? null : (map['adminStatus']! as String).input(),
       amlFilesystemName: (map['amlFilesystemName'] as String).input(),
-      autoImportJobName: map['autoImportJobName'] == null ? null : (map['autoImportJobName'] as String).input(),
-      autoImportPrefixes: map['autoImportPrefixes'] == null ? null : ((map['autoImportPrefixes'] as List).cast<String>()).input(),
-      conflictResolutionMode: map['conflictResolutionMode'] == null ? null : (map['conflictResolutionMode'] as String).input(),
-      enableDeletions: map['enableDeletions'] == null ? null : (map['enableDeletions'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maximumErrors: map['maximumErrors'] == null ? null : (map['maximumErrors'] as double).input(),
+      autoImportJobName: map['autoImportJobName'] == null ? null : (map['autoImportJobName']! as String).input(),
+      autoImportPrefixes: map['autoImportPrefixes'] == null ? null : ((map['autoImportPrefixes']! as List).cast<String>()).input(),
+      conflictResolutionMode: map['conflictResolutionMode'] == null ? null : (map['conflictResolutionMode']! as String).input(),
+      enableDeletions: map['enableDeletions'] == null ? null : (map['enableDeletions']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maximumErrors: map['maximumErrors'] == null ? null : (map['maximumErrors']! as double).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

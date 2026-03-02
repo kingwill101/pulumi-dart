@@ -25,8 +25,8 @@ class TriggerResponse {
 
   factory TriggerResponse.fromMap(Map<String, dynamic> map) {
     return TriggerResponse(
-      timeAfterCreate: map['timeAfterCreate'] == null ? null : (map['timeAfterCreate'] as String).input(),
-      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : (map['timeBeforeExpiry'] as String).input(),
+      timeAfterCreate: map['timeAfterCreate'] == null ? null : (map['timeAfterCreate']! as String).input(),
+      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : (map['timeBeforeExpiry']! as String).input(),
     );
   }
 }

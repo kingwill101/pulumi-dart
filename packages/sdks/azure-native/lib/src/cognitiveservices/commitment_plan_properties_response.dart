@@ -62,13 +62,13 @@ class CommitmentPlanPropertiesResponse {
 
   factory CommitmentPlanPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CommitmentPlanPropertiesResponse(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      commitmentPlanGuid: map['commitmentPlanGuid'] == null ? null : (map['commitmentPlanGuid'] as String).input(),
-      current: map['current'] == null ? null : (CommitmentPeriodResponse.fromMap((map['current'] as Map).cast<String, dynamic>())).input(),
-      hostingModel: map['hostingModel'] == null ? null : (map['hostingModel'] as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      commitmentPlanGuid: map['commitmentPlanGuid'] == null ? null : (map['commitmentPlanGuid']! as String).input(),
+      current: map['current'] == null ? null : (CommitmentPeriodResponse.fromMap((map['current']! as Map).cast<String, dynamic>())).input(),
+      hostingModel: map['hostingModel'] == null ? null : (map['hostingModel']! as String).input(),
       last: (CommitmentPeriodResponse.fromMap((map['last'] as Map).cast<String, dynamic>())).input(),
-      next: map['next'] == null ? null : (CommitmentPeriodResponse.fromMap((map['next'] as Map).cast<String, dynamic>())).input(),
-      planType: map['planType'] == null ? null : (map['planType'] as String).input(),
+      next: map['next'] == null ? null : (CommitmentPeriodResponse.fromMap((map['next']! as Map).cast<String, dynamic>())).input(),
+      planType: map['planType'] == null ? null : (map['planType']! as String).input(),
       provisioningIssues: ((map['provisioningIssues'] as List).cast<String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );

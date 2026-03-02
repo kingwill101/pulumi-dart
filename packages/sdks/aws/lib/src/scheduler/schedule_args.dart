@@ -93,20 +93,20 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      actionAfterCompletion: map['actionAfterCompletion'] == null ? null : (map['actionAfterCompletion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      flexibleTimeWindow: (ScheduleFlexibleTimeWindow.fromMap((map['flexibleTimeWindow'] as Map).cast<String, dynamic>())).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      actionAfterCompletion: map['actionAfterCompletion'] == null ? null : ((map['actionAfterCompletion'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      endDate: map['endDate'] == null ? null : ((map['endDate'] as String).input()).input(),
+      flexibleTimeWindow: (ScheduleFlexibleTimeWindow.fromMap((map['flexibleTimeWindow']! as Map).cast<String, dynamic>())).input(),
+      groupName: map['groupName'] == null ? null : ((map['groupName'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       scheduleExpression: (map['scheduleExpression'] as String).input(),
-      scheduleExpressionTimezone: map['scheduleExpressionTimezone'] == null ? null : (map['scheduleExpressionTimezone'] as String).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      target: (ScheduleTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      scheduleExpressionTimezone: map['scheduleExpressionTimezone'] == null ? null : ((map['scheduleExpressionTimezone'] as String).input()).input(),
+      startDate: map['startDate'] == null ? null : ((map['startDate'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      target: (ScheduleTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class SubnetworkParams {
 
   factory SubnetworkParams.fromMap(Map<String, dynamic> map) {
     return SubnetworkParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

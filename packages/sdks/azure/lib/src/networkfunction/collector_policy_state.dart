@@ -48,12 +48,12 @@ class CollectorPolicyState {
 
   factory CollectorPolicyState.fromMap(Map<String, dynamic> map) {
     return CollectorPolicyState(
-      ipfxEmission: map['ipfxEmission'] == null ? null : (CollectorPolicyIpfxEmission.fromMap((map['ipfxEmission'] as Map).cast<String, dynamic>())).input(),
-      ipfxIngestion: map['ipfxIngestion'] == null ? null : (CollectorPolicyIpfxIngestion.fromMap((map['ipfxIngestion'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trafficCollectorId: map['trafficCollectorId'] == null ? null : (map['trafficCollectorId'] as String).input(),
+      ipfxEmission: map['ipfxEmission'] == null ? null : (CollectorPolicyIpfxEmission.fromMap((map['ipfxEmission']! as Map).cast<String, dynamic>())).input(),
+      ipfxIngestion: map['ipfxIngestion'] == null ? null : (CollectorPolicyIpfxIngestion.fromMap((map['ipfxIngestion']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      trafficCollectorId: map['trafficCollectorId'] == null ? null : (map['trafficCollectorId']! as String).input(),
     );
   }
 }

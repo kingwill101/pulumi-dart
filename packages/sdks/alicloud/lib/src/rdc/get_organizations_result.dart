@@ -50,11 +50,11 @@ class GetOrganizationsResult {
     return GetOrganizationsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
       organizations: pulumi.Input.decodeList<GetOrganizationsOrganization>(map['organizations'], (value) => GetOrganizationsOrganization.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      realPk: map['realPk'] == null ? null : map['realPk'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      realPk: map['realPk'] == null ? null : map['realPk']! as String,
     );
   }
 }

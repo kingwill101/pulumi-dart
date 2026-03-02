@@ -88,19 +88,19 @@ class AttachedDisk {
 
   factory AttachedDisk.fromMap(Map<String, dynamic> map) {
     return AttachedDisk(
-      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete'] as bool).input(),
-      boot: map['boot'] == null ? null : (map['boot'] as bool).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : (CustomerEncryptionKey.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
-      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach'] as bool).input(),
-      guestOsFeatures: map['guestOsFeatures'] == null ? null : (pulumi.Input.decodeList<GuestOsFeature>(map['guestOsFeatures'], (value) => GuestOsFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initializeParams: map['initializeParams'] == null ? null : (AttachedDiskInitializeParams.fromMap((map['initializeParams'] as Map).cast<String, dynamic>())).input(),
-      interface: map['interface'] == null ? null : (AttachedDiskInterface.fromValue(map['interface'] as String)).input(),
-      mode: map['mode'] == null ? null : (AttachedDiskMode.fromValue(map['mode'] as String)).input(),
-      savedState: map['savedState'] == null ? null : (AttachedDiskSavedState.fromValue(map['savedState'] as String)).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      type: map['type'] == null ? null : (AttachedDiskType.fromValue(map['type'] as String)).input(),
+      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete']! as bool).input(),
+      boot: map['boot'] == null ? null : (map['boot']! as bool).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : (CustomerEncryptionKey.fromMap((map['diskEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as String).input(),
+      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach']! as bool).input(),
+      guestOsFeatures: map['guestOsFeatures'] == null ? null : (pulumi.Input.decodeList<GuestOsFeature>(map['guestOsFeatures']!, (value) => GuestOsFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initializeParams: map['initializeParams'] == null ? null : (AttachedDiskInitializeParams.fromMap((map['initializeParams']! as Map).cast<String, dynamic>())).input(),
+      interface: map['interface'] == null ? null : (AttachedDiskInterface.fromValue(map['interface']! as String)).input(),
+      mode: map['mode'] == null ? null : (AttachedDiskMode.fromValue(map['mode']! as String)).input(),
+      savedState: map['savedState'] == null ? null : (AttachedDiskSavedState.fromValue(map['savedState']! as String)).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      type: map['type'] == null ? null : (AttachedDiskType.fromValue(map['type']! as String)).input(),
     );
   }
 }

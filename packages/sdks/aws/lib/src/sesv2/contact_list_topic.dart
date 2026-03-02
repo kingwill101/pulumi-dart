@@ -38,7 +38,7 @@ class ContactListTopic {
   factory ContactListTopic.fromMap(Map<String, dynamic> map) {
     return ContactListTopic(
       defaultSubscriptionStatus: (map['defaultSubscriptionStatus'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       displayName: (map['displayName'] as String).input(),
       topicName: (map['topicName'] as String).input(),
     );

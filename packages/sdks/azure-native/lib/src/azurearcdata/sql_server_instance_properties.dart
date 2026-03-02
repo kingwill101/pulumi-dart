@@ -81,18 +81,18 @@ class SqlServerInstanceProperties {
 
   factory SqlServerInstanceProperties.fromMap(Map<String, dynamic> map) {
     return SqlServerInstanceProperties(
-      authentication: map['authentication'] == null ? null : (Authentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      backupPolicy: map['backupPolicy'] == null ? null : (BackupPolicy.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
-      clientConnection: map['clientConnection'] == null ? null : (ClientConnection.fromMap((map['clientConnection'] as Map).cast<String, dynamic>())).input(),
-      cores: map['cores'] == null ? null : (map['cores'] as String).input(),
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      hostType: map['hostType'] == null ? null : (map['hostType'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      migration: map['migration'] == null ? null : (Migration.fromMap((map['migration'] as Map).cast<String, dynamic>())).input(),
-      monitoring: map['monitoring'] == null ? null : (Monitoring.fromMap((map['monitoring'] as Map).cast<String, dynamic>())).input(),
-      serviceType: map['serviceType'] == null ? null : (map['serviceType'] as String).input(),
-      upgradeLockedUntil: map['upgradeLockedUntil'] == null ? null : (map['upgradeLockedUntil'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      authentication: map['authentication'] == null ? null : (Authentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      backupPolicy: map['backupPolicy'] == null ? null : (BackupPolicy.fromMap((map['backupPolicy']! as Map).cast<String, dynamic>())).input(),
+      clientConnection: map['clientConnection'] == null ? null : (ClientConnection.fromMap((map['clientConnection']! as Map).cast<String, dynamic>())).input(),
+      cores: map['cores'] == null ? null : (map['cores']! as String).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      hostType: map['hostType'] == null ? null : (map['hostType']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      migration: map['migration'] == null ? null : (Migration.fromMap((map['migration']! as Map).cast<String, dynamic>())).input(),
+      monitoring: map['monitoring'] == null ? null : (Monitoring.fromMap((map['monitoring']! as Map).cast<String, dynamic>())).input(),
+      serviceType: map['serviceType'] == null ? null : (map['serviceType']! as String).input(),
+      upgradeLockedUntil: map['upgradeLockedUntil'] == null ? null : (map['upgradeLockedUntil']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

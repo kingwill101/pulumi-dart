@@ -22,7 +22,7 @@ class UpdatePolicy {
 
   factory UpdatePolicy.fromMap(Map<String, dynamic> map) {
     return UpdatePolicy(
-      mode: map['mode'] == null ? null : (UpdatePolicyMode.fromValue(map['mode'] as String)).input(),
+      mode: map['mode'] == null ? null : (UpdatePolicyMode.fromValue(map['mode']! as String)).input(),
     );
   }
 }

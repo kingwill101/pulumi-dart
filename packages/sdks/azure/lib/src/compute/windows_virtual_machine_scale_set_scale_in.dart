@@ -25,8 +25,8 @@ class WindowsVirtualMachineScaleSetScaleIn {
 
   factory WindowsVirtualMachineScaleSetScaleIn.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineScaleSetScaleIn(
-      forceDeletionEnabled: map['forceDeletionEnabled'] == null ? null : (map['forceDeletionEnabled'] as bool).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      forceDeletionEnabled: map['forceDeletionEnabled'] == null ? null : (map['forceDeletionEnabled']! as bool).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
     );
   }
 }

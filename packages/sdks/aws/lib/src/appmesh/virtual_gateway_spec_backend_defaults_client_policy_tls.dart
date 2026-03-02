@@ -37,10 +37,10 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTls {
 
   factory VirtualGatewaySpecBackendDefaultsClientPolicyTls.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecBackendDefaultsClientPolicyTls(
-      certificate: map['certificate'] == null ? null : (VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
-      enforce: map['enforce'] == null ? null : (map['enforce'] as bool).input(),
-      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<int>()).input(),
-      validation: (VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
+      certificate: map['certificate'] == null ? null : ((VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input()).input(),
+      enforce: map['enforce'] == null ? null : ((map['enforce'] as bool).input()).input(),
+      ports: map['ports'] == null ? null : (((map['ports'] as List).cast<int>()).input()).input(),
+      validation: (VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation.fromMap((map['validation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

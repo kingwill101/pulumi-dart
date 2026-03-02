@@ -82,14 +82,14 @@ class PacketMirroringArgs {
   factory PacketMirroringArgs.fromMap(Map<String, dynamic> map) {
     return PacketMirroringArgs(
       collectorIlb: (PacketMirroringCollectorIlb.fromMap((map['collectorIlb'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      filter: map['filter'] == null ? null : (PacketMirroringFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      filter: map['filter'] == null ? null : (PacketMirroringFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
       mirroredResources: (PacketMirroringMirroredResources.fromMap((map['mirroredResources'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       network: (PacketMirroringNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

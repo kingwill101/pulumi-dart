@@ -36,7 +36,7 @@ class LoadBalancerIntranetArgs {
   factory LoadBalancerIntranetArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerIntranetArgs(
       appId: (map['appId'] as String).input(),
-      intranetSlbId: map['intranetSlbId'] == null ? null : (map['intranetSlbId'] as String).input(),
+      intranetSlbId: map['intranetSlbId'] == null ? null : (map['intranetSlbId']! as String).input(),
       intranets: (pulumi.Input.decodeList<LoadBalancerIntranetIntranet>(map['intranets'], (value) => LoadBalancerIntranetIntranet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

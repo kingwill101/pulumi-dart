@@ -67,12 +67,12 @@ class InstanceIAMMemberArgs {
 
   factory InstanceIAMMemberArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIAMMemberArgs(
-      condition: map['condition'] == null ? null : (InstanceIAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (InstanceIAMMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       instanceName: (map['instanceName'] as String).input(),
       member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

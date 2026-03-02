@@ -26,8 +26,8 @@ class LabelClassResponse {
 
   factory LabelClassResponse.fromMap(Map<String, dynamic> map) {
     return LabelClassResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      subclasses: map['subclasses'] == null ? null : (pulumi.Input.decodeMapValues<LabelClassResponse>(map['subclasses'], (value) => LabelClassResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      subclasses: map['subclasses'] == null ? null : (pulumi.Input.decodeMapValues<LabelClassResponse>(map['subclasses']!, (value) => LabelClassResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

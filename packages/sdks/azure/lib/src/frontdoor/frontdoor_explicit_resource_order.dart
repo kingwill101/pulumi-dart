@@ -35,11 +35,11 @@ class FrontdoorExplicitResourceOrder {
 
   factory FrontdoorExplicitResourceOrder.fromMap(Map<String, dynamic> map) {
     return FrontdoorExplicitResourceOrder(
-      backendPoolHealthProbeIds: map['backendPoolHealthProbeIds'] == null ? null : ((map['backendPoolHealthProbeIds'] as List).cast<String>()).input(),
-      backendPoolIds: map['backendPoolIds'] == null ? null : ((map['backendPoolIds'] as List).cast<String>()).input(),
-      backendPoolLoadBalancingIds: map['backendPoolLoadBalancingIds'] == null ? null : ((map['backendPoolLoadBalancingIds'] as List).cast<String>()).input(),
-      frontendEndpointIds: map['frontendEndpointIds'] == null ? null : ((map['frontendEndpointIds'] as List).cast<String>()).input(),
-      routingRuleIds: map['routingRuleIds'] == null ? null : ((map['routingRuleIds'] as List).cast<String>()).input(),
+      backendPoolHealthProbeIds: map['backendPoolHealthProbeIds'] == null ? null : ((map['backendPoolHealthProbeIds']! as List).cast<String>()).input(),
+      backendPoolIds: map['backendPoolIds'] == null ? null : ((map['backendPoolIds']! as List).cast<String>()).input(),
+      backendPoolLoadBalancingIds: map['backendPoolLoadBalancingIds'] == null ? null : ((map['backendPoolLoadBalancingIds']! as List).cast<String>()).input(),
+      frontendEndpointIds: map['frontendEndpointIds'] == null ? null : ((map['frontendEndpointIds']! as List).cast<String>()).input(),
+      routingRuleIds: map['routingRuleIds'] == null ? null : ((map['routingRuleIds']! as List).cast<String>()).input(),
     );
   }
 }

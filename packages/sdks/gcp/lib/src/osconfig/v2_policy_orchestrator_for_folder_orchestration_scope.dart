@@ -26,7 +26,7 @@ class V2PolicyOrchestratorForFolderOrchestrationScope {
 
   factory V2PolicyOrchestratorForFolderOrchestrationScope.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestrationScope(
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorForFolderOrchestrationScopeSelector>(map['selectors'], (value) => V2PolicyOrchestratorForFolderOrchestrationScopeSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorForFolderOrchestrationScopeSelector>(map['selectors']!, (value) => V2PolicyOrchestratorForFolderOrchestrationScopeSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

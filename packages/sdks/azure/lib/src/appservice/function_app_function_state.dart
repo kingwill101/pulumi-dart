@@ -89,20 +89,20 @@ class FunctionAppFunctionState {
 
   factory FunctionAppFunctionState.fromMap(Map<String, dynamic> map) {
     return FunctionAppFunctionState(
-      configJson: map['configJson'] == null ? null : (map['configJson'] as String).input(),
-      configUrl: map['configUrl'] == null ? null : (map['configUrl'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      files: map['files'] == null ? null : (pulumi.Input.decodeList<FunctionAppFunctionFile>(map['files'], (value) => FunctionAppFunctionFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      functionAppId: map['functionAppId'] == null ? null : (map['functionAppId'] as String).input(),
-      invocationUrl: map['invocationUrl'] == null ? null : (map['invocationUrl'] as String).input(),
-      language: map['language'] == null ? null : (map['language'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      scriptRootPathUrl: map['scriptRootPathUrl'] == null ? null : (map['scriptRootPathUrl'] as String).input(),
-      scriptUrl: map['scriptUrl'] == null ? null : (map['scriptUrl'] as String).input(),
-      secretsFileUrl: map['secretsFileUrl'] == null ? null : (map['secretsFileUrl'] as String).input(),
-      testData: map['testData'] == null ? null : (map['testData'] as String).input(),
-      testDataUrl: map['testDataUrl'] == null ? null : (map['testDataUrl'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      configJson: map['configJson'] == null ? null : (map['configJson']! as String).input(),
+      configUrl: map['configUrl'] == null ? null : (map['configUrl']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      files: map['files'] == null ? null : (pulumi.Input.decodeList<FunctionAppFunctionFile>(map['files']!, (value) => FunctionAppFunctionFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      functionAppId: map['functionAppId'] == null ? null : (map['functionAppId']! as String).input(),
+      invocationUrl: map['invocationUrl'] == null ? null : (map['invocationUrl']! as String).input(),
+      language: map['language'] == null ? null : (map['language']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      scriptRootPathUrl: map['scriptRootPathUrl'] == null ? null : (map['scriptRootPathUrl']! as String).input(),
+      scriptUrl: map['scriptUrl'] == null ? null : (map['scriptUrl']! as String).input(),
+      secretsFileUrl: map['secretsFileUrl'] == null ? null : (map['secretsFileUrl']! as String).input(),
+      testData: map['testData'] == null ? null : (map['testData']! as String).input(),
+      testDataUrl: map['testDataUrl'] == null ? null : (map['testDataUrl']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

@@ -55,11 +55,11 @@ class BackupInstanceKubernetesClusterArgs {
 
   factory BackupInstanceKubernetesClusterArgs.fromMap(Map<String, dynamic> map) {
     return BackupInstanceKubernetesClusterArgs(
-      backupDatasourceParameters: map['backupDatasourceParameters'] == null ? null : (BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap((map['backupDatasourceParameters'] as Map).cast<String, dynamic>())).input(),
+      backupDatasourceParameters: map['backupDatasourceParameters'] == null ? null : (BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap((map['backupDatasourceParameters']! as Map).cast<String, dynamic>())).input(),
       backupPolicyId: (map['backupPolicyId'] as String).input(),
       kubernetesClusterId: (map['kubernetesClusterId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       snapshotResourceGroupName: (map['snapshotResourceGroupName'] as String).input(),
       vaultId: (map['vaultId'] as String).input(),
     );

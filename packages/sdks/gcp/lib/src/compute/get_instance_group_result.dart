@@ -67,7 +67,7 @@ class GetInstanceGroupResult {
       description: map['description'] as String,
       id: map['id'] as String,
       instances: (map['instances'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       namedPorts: pulumi.Input.decodeList<GetInstanceGroupNamedPort>(map['namedPorts'], (value) => GetInstanceGroupNamedPort.fromMap((value as Map).cast<String, dynamic>())),
       network: map['network'] as String,
       project: map['project'] as String,

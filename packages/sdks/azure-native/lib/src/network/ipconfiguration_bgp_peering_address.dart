@@ -26,8 +26,8 @@ class IPConfigurationBgpPeeringAddress {
 
   factory IPConfigurationBgpPeeringAddress.fromMap(Map<String, dynamic> map) {
     return IPConfigurationBgpPeeringAddress(
-      customBgpIpAddresses: map['customBgpIpAddresses'] == null ? null : ((map['customBgpIpAddresses'] as List).cast<String>()).input(),
-      ipconfigurationId: map['ipconfigurationId'] == null ? null : (map['ipconfigurationId'] as String).input(),
+      customBgpIpAddresses: map['customBgpIpAddresses'] == null ? null : ((map['customBgpIpAddresses']! as List).cast<String>()).input(),
+      ipconfigurationId: map['ipconfigurationId'] == null ? null : (map['ipconfigurationId']! as String).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class GetBucketArgs {
   factory GetBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketArgs(
       name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

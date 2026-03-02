@@ -45,11 +45,11 @@ class ConfigurationState {
 
   factory ConfigurationState.fromMap(Map<String, dynamic> map) {
     return ConfigurationState(
-      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<ConfigurationConfiguration>(map['configurations'], (value) => ConfigurationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      datastore: map['datastore'] == null ? null : (ConfigurationDatastore.fromMap((map['datastore'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<ConfigurationConfiguration>(map['configurations']!, (value) => ConfigurationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      datastore: map['datastore'] == null ? null : (ConfigurationDatastore.fromMap((map['datastore']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

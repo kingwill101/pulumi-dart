@@ -27,8 +27,8 @@ class DatabasePropertiesGeoReplication {
 
   factory DatabasePropertiesGeoReplication.fromMap(Map<String, dynamic> map) {
     return DatabasePropertiesGeoReplication(
-      groupNickname: map['groupNickname'] == null ? null : (map['groupNickname'] as String).input(),
-      linkedDatabases: map['linkedDatabases'] == null ? null : (pulumi.Input.decodeList<LinkedDatabase>(map['linkedDatabases'], (value) => LinkedDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupNickname: map['groupNickname'] == null ? null : (map['groupNickname']! as String).input(),
+      linkedDatabases: map['linkedDatabases'] == null ? null : (pulumi.Input.decodeList<LinkedDatabase>(map['linkedDatabases']!, (value) => LinkedDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

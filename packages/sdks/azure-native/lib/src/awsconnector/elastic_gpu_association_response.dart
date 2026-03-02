@@ -36,10 +36,10 @@ class ElasticGpuAssociationResponse {
 
   factory ElasticGpuAssociationResponse.fromMap(Map<String, dynamic> map) {
     return ElasticGpuAssociationResponse(
-      elasticGpuAssociationId: map['elasticGpuAssociationId'] == null ? null : (map['elasticGpuAssociationId'] as String).input(),
-      elasticGpuAssociationState: map['elasticGpuAssociationState'] == null ? null : (map['elasticGpuAssociationState'] as String).input(),
-      elasticGpuAssociationTime: map['elasticGpuAssociationTime'] == null ? null : (map['elasticGpuAssociationTime'] as String).input(),
-      elasticGpuId: map['elasticGpuId'] == null ? null : (map['elasticGpuId'] as String).input(),
+      elasticGpuAssociationId: map['elasticGpuAssociationId'] == null ? null : (map['elasticGpuAssociationId']! as String).input(),
+      elasticGpuAssociationState: map['elasticGpuAssociationState'] == null ? null : (map['elasticGpuAssociationState']! as String).input(),
+      elasticGpuAssociationTime: map['elasticGpuAssociationTime'] == null ? null : (map['elasticGpuAssociationTime']! as String).input(),
+      elasticGpuId: map['elasticGpuId'] == null ? null : (map['elasticGpuId']! as String).input(),
     );
   }
 }

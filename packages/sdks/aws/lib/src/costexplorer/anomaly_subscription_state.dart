@@ -63,15 +63,15 @@ class AnomalySubscriptionState {
 
   factory AnomalySubscriptionState.fromMap(Map<String, dynamic> map) {
     return AnomalySubscriptionState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      monitorArnLists: map['monitorArnLists'] == null ? null : ((map['monitorArnLists'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subscribers: map['subscribers'] == null ? null : (pulumi.Input.decodeList<AnomalySubscriptionSubscriber>(map['subscribers'], (value) => AnomalySubscriptionSubscriber.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      thresholdExpression: map['thresholdExpression'] == null ? null : (AnomalySubscriptionThresholdExpression.fromMap((map['thresholdExpression'] as Map).cast<String, dynamic>())).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      frequency: map['frequency'] == null ? null : ((map['frequency'] as String).input()).input(),
+      monitorArnLists: map['monitorArnLists'] == null ? null : (((map['monitorArnLists'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      subscribers: map['subscribers'] == null ? null : ((pulumi.Input.decodeList<AnomalySubscriptionSubscriber>(map['subscribers']!, (value) => AnomalySubscriptionSubscriber.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      thresholdExpression: map['thresholdExpression'] == null ? null : ((AnomalySubscriptionThresholdExpression.fromMap((map['thresholdExpression']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

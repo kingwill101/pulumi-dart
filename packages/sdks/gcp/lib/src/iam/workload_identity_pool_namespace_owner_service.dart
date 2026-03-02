@@ -22,7 +22,7 @@ class WorkloadIdentityPoolNamespaceOwnerService {
 
   factory WorkloadIdentityPoolNamespaceOwnerService.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolNamespaceOwnerService(
-      principalSubject: map['principalSubject'] == null ? null : (map['principalSubject'] as String).input(),
+      principalSubject: map['principalSubject'] == null ? null : (map['principalSubject']! as String).input(),
     );
   }
 }

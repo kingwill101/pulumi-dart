@@ -38,7 +38,7 @@ class GetRecordsResourceRecordSetGeoproximityLocation {
     return GetRecordsResourceRecordSetGeoproximityLocation(
       awsRegion: (map['awsRegion'] as String).input(),
       bias: (map['bias'] as int).input(),
-      coordinates: (GetRecordsResourceRecordSetGeoproximityLocationCoordinates.fromMap((map['coordinates'] as Map).cast<String, dynamic>())).input(),
+      coordinates: (GetRecordsResourceRecordSetGeoproximityLocationCoordinates.fromMap((map['coordinates']! as Map).cast<String, dynamic>())).input(),
       localZoneGroup: (map['localZoneGroup'] as String).input(),
     );
   }

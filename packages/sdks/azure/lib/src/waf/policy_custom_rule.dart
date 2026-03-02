@@ -64,13 +64,13 @@ class PolicyCustomRule {
   factory PolicyCustomRule.fromMap(Map<String, dynamic> map) {
     return PolicyCustomRule(
       action: (map['action'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      groupRateLimitBy: map['groupRateLimitBy'] == null ? null : (map['groupRateLimitBy'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      groupRateLimitBy: map['groupRateLimitBy'] == null ? null : (map['groupRateLimitBy']! as String).input(),
       matchConditions: (pulumi.Input.decodeList<PolicyCustomRuleMatchCondition>(map['matchConditions'], (value) => PolicyCustomRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       priority: (map['priority'] as int).input(),
-      rateLimitDuration: map['rateLimitDuration'] == null ? null : (map['rateLimitDuration'] as String).input(),
-      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (map['rateLimitThreshold'] as int).input(),
+      rateLimitDuration: map['rateLimitDuration'] == null ? null : (map['rateLimitDuration']! as String).input(),
+      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (map['rateLimitThreshold']! as int).input(),
       ruleType: (map['ruleType'] as String).input(),
     );
   }

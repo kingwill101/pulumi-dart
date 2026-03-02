@@ -42,7 +42,7 @@ class GetSharedImageVersionsArgs {
       galleryName: (map['galleryName'] as String).input(),
       imageName: (map['imageName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tagsFilter: map['tagsFilter'] == null ? null : ((map['tagsFilter'] as Map).cast<String, String>()).input(),
+      tagsFilter: map['tagsFilter'] == null ? null : ((map['tagsFilter']! as Map).cast<String, String>()).input(),
     );
   }
 }

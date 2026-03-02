@@ -31,7 +31,7 @@ class HttpRouteMatchPath {
 
   factory HttpRouteMatchPath.fromMap(Map<String, dynamic> map) {
     return HttpRouteMatchPath(
-      rewrite: map['rewrite'] == null ? null : (map['rewrite'] as String).input(),
+      rewrite: map['rewrite'] == null ? null : (map['rewrite']! as String).input(),
       type: (map['type'] as String).input(),
       value: (map['value'] as String).input(),
     );

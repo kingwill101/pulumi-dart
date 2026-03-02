@@ -44,11 +44,11 @@ class GetConnectionsArgs {
 
   factory GetConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionsArgs(
-      customerGatewayId: map['customerGatewayId'] == null ? null : (map['customerGatewayId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
+      customerGatewayId: map['customerGatewayId'] == null ? null : (map['customerGatewayId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId']! as String).input(),
     );
   }
 }

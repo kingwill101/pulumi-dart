@@ -60,13 +60,13 @@ class ManagedFolderArgs {
   factory ManagedFolderArgs.fromMap(Map<String, dynamic> map) {
     return ManagedFolderArgs(
       bucket: (map['bucket'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metageneration: map['metageneration'] == null ? null : (map['metageneration'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metageneration: map['metageneration'] == null ? null : (map['metageneration']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

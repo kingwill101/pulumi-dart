@@ -26,8 +26,8 @@ class TokenReviewSpec {
 
   factory TokenReviewSpec.fromMap(Map<String, dynamic> map) {
     return TokenReviewSpec(
-      audiences: map['audiences'] == null ? null : ((map['audiences'] as List).cast<String>()).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      audiences: map['audiences'] == null ? null : ((map['audiences']! as List).cast<String>()).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

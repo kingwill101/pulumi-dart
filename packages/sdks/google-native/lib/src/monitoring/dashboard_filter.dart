@@ -37,10 +37,10 @@ class DashboardFilter {
 
   factory DashboardFilter.fromMap(Map<String, dynamic> map) {
     return DashboardFilter(
-      filterType: map['filterType'] == null ? null : (DashboardFilterFilterType.fromValue(map['filterType'] as String)).input(),
+      filterType: map['filterType'] == null ? null : (DashboardFilterFilterType.fromValue(map['filterType']! as String)).input(),
       labelKey: (map['labelKey'] as String).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
-      templateVariable: map['templateVariable'] == null ? null : (map['templateVariable'] as String).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
+      templateVariable: map['templateVariable'] == null ? null : (map['templateVariable']! as String).input(),
     );
   }
 }

@@ -101,22 +101,22 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfig {
 
   factory EnterpriseCrmFrontendsEventbusProtoTriggerConfig.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoTriggerConfig(
-      alertConfig: map['alertConfig'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmEventbusProtoWorkflowAlertConfig>(map['alertConfig'], (value) => EnterpriseCrmEventbusProtoWorkflowAlertConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cloudSchedulerConfig: map['cloudSchedulerConfig'] == null ? null : (EnterpriseCrmEventbusProtoCloudSchedulerConfig.fromMap((map['cloudSchedulerConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      alertConfig: map['alertConfig'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmEventbusProtoWorkflowAlertConfig>(map['alertConfig']!, (value) => EnterpriseCrmEventbusProtoWorkflowAlertConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudSchedulerConfig: map['cloudSchedulerConfig'] == null ? null : (EnterpriseCrmEventbusProtoCloudSchedulerConfig.fromMap((map['cloudSchedulerConfig']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       enabledClients: ((map['enabledClients'] as List).cast<String>()).input(),
-      errorCatcherId: map['errorCatcherId'] == null ? null : (map['errorCatcherId'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      nextTasksExecutionPolicy: map['nextTasksExecutionPolicy'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy.fromValue(map['nextTasksExecutionPolicy'] as String)).input(),
-      pauseWorkflowExecutions: map['pauseWorkflowExecutions'] == null ? null : (map['pauseWorkflowExecutions'] as bool).input(),
-      position: map['position'] == null ? null : (EnterpriseCrmEventbusProtoCoordinate.fromMap((map['position'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      startTasks: map['startTasks'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmEventbusProtoNextTask>(map['startTasks'], (value) => EnterpriseCrmEventbusProtoNextTask.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      triggerCriteria: map['triggerCriteria'] == null ? null : (EnterpriseCrmEventbusProtoTriggerCriteria.fromMap((map['triggerCriteria'] as Map).cast<String, dynamic>())).input(),
-      triggerId: map['triggerId'] == null ? null : (map['triggerId'] as String).input(),
-      triggerName: map['triggerName'] == null ? null : (map['triggerName'] as String).input(),
+      errorCatcherId: map['errorCatcherId'] == null ? null : (map['errorCatcherId']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      nextTasksExecutionPolicy: map['nextTasksExecutionPolicy'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy.fromValue(map['nextTasksExecutionPolicy']! as String)).input(),
+      pauseWorkflowExecutions: map['pauseWorkflowExecutions'] == null ? null : (map['pauseWorkflowExecutions']! as bool).input(),
+      position: map['position'] == null ? null : (EnterpriseCrmEventbusProtoCoordinate.fromMap((map['position']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      startTasks: map['startTasks'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmEventbusProtoNextTask>(map['startTasks']!, (value) => EnterpriseCrmEventbusProtoNextTask.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      triggerCriteria: map['triggerCriteria'] == null ? null : (EnterpriseCrmEventbusProtoTriggerCriteria.fromMap((map['triggerCriteria']! as Map).cast<String, dynamic>())).input(),
+      triggerId: map['triggerId'] == null ? null : (map['triggerId']! as String).input(),
+      triggerName: map['triggerName'] == null ? null : (map['triggerName']! as String).input(),
       triggerNumber: (map['triggerNumber'] as String).input(),
-      triggerType: map['triggerType'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType.fromValue(map['triggerType'] as String)).input(),
+      triggerType: map['triggerType'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType.fromValue(map['triggerType']! as String)).input(),
     );
   }
 }

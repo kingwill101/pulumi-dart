@@ -74,14 +74,14 @@ class GetTemplateSpecResult {
   factory GetTemplateSpecResult.fromMap(Map<String, dynamic> map) {
     return GetTemplateSpecResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      metadata: map['metadata'] == null ? null : map['metadata'],
+      metadata: map['metadata'] == null ? null : map['metadata']!,
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       versions: pulumi.Input.decodeMapValues<TemplateSpecVersionInfoResponse>(map['versions'], (value) => TemplateSpecVersionInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
     );

@@ -25,8 +25,8 @@ class ZoneUserInfo {
 
   factory ZoneUserInfo.fromMap(Map<String, dynamic> map) {
     return ZoneUserInfo(
-      regionIds: map['regionIds'] == null ? null : ((map['regionIds'] as List).cast<String>()).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      regionIds: map['regionIds'] == null ? null : ((map['regionIds']! as List).cast<String>()).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

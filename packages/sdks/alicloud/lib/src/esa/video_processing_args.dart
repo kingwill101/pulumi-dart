@@ -81,18 +81,18 @@ class VideoProcessingArgs {
 
   factory VideoProcessingArgs.fromMap(Map<String, dynamic> map) {
     return VideoProcessingArgs(
-      flvSeekEnd: map['flvSeekEnd'] == null ? null : (map['flvSeekEnd'] as String).input(),
-      flvSeekStart: map['flvSeekStart'] == null ? null : (map['flvSeekStart'] as String).input(),
-      flvVideoSeekMode: map['flvVideoSeekMode'] == null ? null : (map['flvVideoSeekMode'] as String).input(),
-      mp4SeekEnd: map['mp4SeekEnd'] == null ? null : (map['mp4SeekEnd'] as String).input(),
-      mp4SeekStart: map['mp4SeekStart'] == null ? null : (map['mp4SeekStart'] as String).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
+      flvSeekEnd: map['flvSeekEnd'] == null ? null : (map['flvSeekEnd']! as String).input(),
+      flvSeekStart: map['flvSeekStart'] == null ? null : (map['flvSeekStart']! as String).input(),
+      flvVideoSeekMode: map['flvVideoSeekMode'] == null ? null : (map['flvVideoSeekMode']! as String).input(),
+      mp4SeekEnd: map['mp4SeekEnd'] == null ? null : (map['mp4SeekEnd']! as String).input(),
+      mp4SeekStart: map['mp4SeekStart'] == null ? null : (map['mp4SeekStart']! as String).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence']! as int).input(),
       siteId: (map['siteId'] as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
-      videoSeekEnable: map['videoSeekEnable'] == null ? null : (map['videoSeekEnable'] as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
+      videoSeekEnable: map['videoSeekEnable'] == null ? null : (map['videoSeekEnable']! as String).input(),
     );
   }
 }

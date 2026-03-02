@@ -36,10 +36,10 @@ class YadifConfig {
 
   factory YadifConfig.fromMap(Map<String, dynamic> map) {
     return YadifConfig(
-      deinterlaceAllFrames: map['deinterlaceAllFrames'] == null ? null : (map['deinterlaceAllFrames'] as bool).input(),
-      disableSpatialInterlacing: map['disableSpatialInterlacing'] == null ? null : (map['disableSpatialInterlacing'] as bool).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      parity: map['parity'] == null ? null : (map['parity'] as String).input(),
+      deinterlaceAllFrames: map['deinterlaceAllFrames'] == null ? null : (map['deinterlaceAllFrames']! as bool).input(),
+      disableSpatialInterlacing: map['disableSpatialInterlacing'] == null ? null : (map['disableSpatialInterlacing']! as bool).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      parity: map['parity'] == null ? null : (map['parity']! as String).input(),
     );
   }
 }

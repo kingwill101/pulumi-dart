@@ -36,10 +36,10 @@ class LibraryInfo {
 
   factory LibraryInfo.fromMap(Map<String, dynamic> map) {
     return LibraryInfo(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

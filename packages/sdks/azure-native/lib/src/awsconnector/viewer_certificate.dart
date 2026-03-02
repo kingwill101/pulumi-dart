@@ -41,11 +41,11 @@ class ViewerCertificate {
 
   factory ViewerCertificate.fromMap(Map<String, dynamic> map) {
     return ViewerCertificate(
-      acmCertificateArn: map['acmCertificateArn'] == null ? null : (map['acmCertificateArn'] as String).input(),
-      cloudFrontDefaultCertificate: map['cloudFrontDefaultCertificate'] == null ? null : (map['cloudFrontDefaultCertificate'] as bool).input(),
-      iamCertificateId: map['iamCertificateId'] == null ? null : (map['iamCertificateId'] as String).input(),
-      minimumProtocolVersion: map['minimumProtocolVersion'] == null ? null : (map['minimumProtocolVersion'] as String).input(),
-      sslSupportMethod: map['sslSupportMethod'] == null ? null : (map['sslSupportMethod'] as String).input(),
+      acmCertificateArn: map['acmCertificateArn'] == null ? null : (map['acmCertificateArn']! as String).input(),
+      cloudFrontDefaultCertificate: map['cloudFrontDefaultCertificate'] == null ? null : (map['cloudFrontDefaultCertificate']! as bool).input(),
+      iamCertificateId: map['iamCertificateId'] == null ? null : (map['iamCertificateId']! as String).input(),
+      minimumProtocolVersion: map['minimumProtocolVersion'] == null ? null : (map['minimumProtocolVersion']! as String).input(),
+      sslSupportMethod: map['sslSupportMethod'] == null ? null : (map['sslSupportMethod']! as String).input(),
     );
   }
 }

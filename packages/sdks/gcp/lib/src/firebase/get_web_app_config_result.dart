@@ -78,7 +78,7 @@ class GetWebAppConfigResult {
       locationId: map['locationId'] as String,
       measurementId: map['measurementId'] as String,
       messagingSenderId: map['messagingSenderId'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       storageBucket: map['storageBucket'] as String,
       webAppId: map['webAppId'] as String,
     );

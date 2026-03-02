@@ -107,11 +107,11 @@ class GetConfigurationResult {
       isDynamicConfig: map['isDynamicConfig'] as bool,
       isReadOnly: map['isReadOnly'] as bool,
       name: map['name'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      source: map['source'] == null ? null : map['source']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       unit: map['unit'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

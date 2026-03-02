@@ -28,7 +28,7 @@ class WorkloadSpec {
 
   factory WorkloadSpec.fromMap(Map<String, dynamic> map) {
     return WorkloadSpec(
-      controllerRef: map['controllerRef'] == null ? null : (TypedLocalObjectReference.fromMap((map['controllerRef'] as Map).cast<String, dynamic>())).input(),
+      controllerRef: map['controllerRef'] == null ? null : (TypedLocalObjectReference.fromMap((map['controllerRef']! as Map).cast<String, dynamic>())).input(),
       podGroups: (pulumi.Input.decodeList<PodGroup>(map['podGroups'], (value) => PodGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

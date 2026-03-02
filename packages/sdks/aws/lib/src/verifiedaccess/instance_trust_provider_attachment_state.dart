@@ -31,9 +31,9 @@ class InstanceTrustProviderAttachmentState {
 
   factory InstanceTrustProviderAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceTrustProviderAttachmentState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      verifiedaccessInstanceId: map['verifiedaccessInstanceId'] == null ? null : (map['verifiedaccessInstanceId'] as String).input(),
-      verifiedaccessTrustProviderId: map['verifiedaccessTrustProviderId'] == null ? null : (map['verifiedaccessTrustProviderId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      verifiedaccessInstanceId: map['verifiedaccessInstanceId'] == null ? null : ((map['verifiedaccessInstanceId'] as String).input()).input(),
+      verifiedaccessTrustProviderId: map['verifiedaccessTrustProviderId'] == null ? null : ((map['verifiedaccessTrustProviderId'] as String).input()).input(),
     );
   }
 }

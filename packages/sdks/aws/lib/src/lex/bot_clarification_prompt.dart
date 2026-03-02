@@ -30,8 +30,8 @@ class BotClarificationPrompt {
   factory BotClarificationPrompt.fromMap(Map<String, dynamic> map) {
     return BotClarificationPrompt(
       maxAttempts: (map['maxAttempts'] as int).input(),
-      messages: (pulumi.Input.decodeList<BotClarificationPromptMessage>(map['messages'], (value) => BotClarificationPromptMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseCard: map['responseCard'] == null ? null : (map['responseCard'] as String).input(),
+      messages: (pulumi.Input.decodeList<BotClarificationPromptMessage>(map['messages']!, (value) => BotClarificationPromptMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseCard: map['responseCard'] == null ? null : ((map['responseCard'] as String).input()).input(),
     );
   }
 }

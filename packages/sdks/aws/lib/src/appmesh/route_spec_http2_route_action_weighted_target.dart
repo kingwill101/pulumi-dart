@@ -30,7 +30,7 @@ class RouteSpecHttp2RouteActionWeightedTarget {
 
   factory RouteSpecHttp2RouteActionWeightedTarget.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttp2RouteActionWeightedTarget(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
       virtualNode: (map['virtualNode'] as String).input(),
       weight: (map['weight'] as int).input(),
     );

@@ -46,9 +46,9 @@ class TableExternalDataConfigurationHivePartitioningOptions {
 
   factory TableExternalDataConfigurationHivePartitioningOptions.fromMap(Map<String, dynamic> map) {
     return TableExternalDataConfigurationHivePartitioningOptions(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      requirePartitionFilter: map['requirePartitionFilter'] == null ? null : (map['requirePartitionFilter'] as bool).input(),
-      sourceUriPrefix: map['sourceUriPrefix'] == null ? null : (map['sourceUriPrefix'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      requirePartitionFilter: map['requirePartitionFilter'] == null ? null : (map['requirePartitionFilter']! as bool).input(),
+      sourceUriPrefix: map['sourceUriPrefix'] == null ? null : (map['sourceUriPrefix']! as String).input(),
     );
   }
 }

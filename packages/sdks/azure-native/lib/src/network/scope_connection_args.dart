@@ -49,12 +49,12 @@ class ScopeConnectionArgs {
 
   factory ScopeConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ScopeConnectionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      scopeConnectionName: map['scopeConnectionName'] == null ? null : (map['scopeConnectionName'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      scopeConnectionName: map['scopeConnectionName'] == null ? null : (map['scopeConnectionName']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

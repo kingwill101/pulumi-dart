@@ -21,7 +21,7 @@ class NetworkTags {
 
   factory NetworkTags.fromMap(Map<String, dynamic> map) {
     return NetworkTags(
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

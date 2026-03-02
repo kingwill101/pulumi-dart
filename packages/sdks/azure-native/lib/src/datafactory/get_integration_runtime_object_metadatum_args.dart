@@ -41,7 +41,7 @@ class GetIntegrationRuntimeObjectMetadatumArgs {
     return GetIntegrationRuntimeObjectMetadatumArgs(
       factoryName: (map['factoryName'] as String).input(),
       integrationRuntimeName: (map['integrationRuntimeName'] as String).input(),
-      metadataPath: map['metadataPath'] == null ? null : (map['metadataPath'] as String).input(),
+      metadataPath: map['metadataPath'] == null ? null : (map['metadataPath']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

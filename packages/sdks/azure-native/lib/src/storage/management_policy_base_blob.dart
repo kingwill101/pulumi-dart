@@ -47,12 +47,12 @@ class ManagementPolicyBaseBlob {
 
   factory ManagementPolicyBaseBlob.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyBaseBlob(
-      delete: map['delete'] == null ? null : (DateAfterModification.fromMap((map['delete'] as Map).cast<String, dynamic>())).input(),
-      enableAutoTierToHotFromCool: map['enableAutoTierToHotFromCool'] == null ? null : (map['enableAutoTierToHotFromCool'] as bool).input(),
-      tierToArchive: map['tierToArchive'] == null ? null : (DateAfterModification.fromMap((map['tierToArchive'] as Map).cast<String, dynamic>())).input(),
-      tierToCold: map['tierToCold'] == null ? null : (DateAfterModification.fromMap((map['tierToCold'] as Map).cast<String, dynamic>())).input(),
-      tierToCool: map['tierToCool'] == null ? null : (DateAfterModification.fromMap((map['tierToCool'] as Map).cast<String, dynamic>())).input(),
-      tierToHot: map['tierToHot'] == null ? null : (DateAfterModification.fromMap((map['tierToHot'] as Map).cast<String, dynamic>())).input(),
+      delete: map['delete'] == null ? null : (DateAfterModification.fromMap((map['delete']! as Map).cast<String, dynamic>())).input(),
+      enableAutoTierToHotFromCool: map['enableAutoTierToHotFromCool'] == null ? null : (map['enableAutoTierToHotFromCool']! as bool).input(),
+      tierToArchive: map['tierToArchive'] == null ? null : (DateAfterModification.fromMap((map['tierToArchive']! as Map).cast<String, dynamic>())).input(),
+      tierToCold: map['tierToCold'] == null ? null : (DateAfterModification.fromMap((map['tierToCold']! as Map).cast<String, dynamic>())).input(),
+      tierToCool: map['tierToCool'] == null ? null : (DateAfterModification.fromMap((map['tierToCool']! as Map).cast<String, dynamic>())).input(),
+      tierToHot: map['tierToHot'] == null ? null : (DateAfterModification.fromMap((map['tierToHot']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

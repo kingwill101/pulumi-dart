@@ -37,10 +37,10 @@ class SqlAvailabilityGroupStaticIPListenerProperties {
 
   factory SqlAvailabilityGroupStaticIPListenerProperties.fromMap(Map<String, dynamic> map) {
     return SqlAvailabilityGroupStaticIPListenerProperties(
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      ipV4AddressesAndMasks: map['ipV4AddressesAndMasks'] == null ? null : (pulumi.Input.decodeList<SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks>(map['ipV4AddressesAndMasks'], (value) => SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipV6Addresses: map['ipV6Addresses'] == null ? null : ((map['ipV6Addresses'] as List).cast<String>()).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
+      ipV4AddressesAndMasks: map['ipV4AddressesAndMasks'] == null ? null : (pulumi.Input.decodeList<SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks>(map['ipV4AddressesAndMasks']!, (value) => SqlAvailabilityGroupStaticIPListenerPropertiesIpV4AddressesAndMasks.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipV6Addresses: map['ipV6Addresses'] == null ? null : ((map['ipV6Addresses']! as List).cast<String>()).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

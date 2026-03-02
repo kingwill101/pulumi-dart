@@ -35,8 +35,8 @@ class AuthorizedCertificateAppengineV1betaArgs {
   factory AuthorizedCertificateAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedCertificateAppengineV1betaArgs(
       appId: (map['appId'] as String).input(),
-      certificateRawData: map['certificateRawData'] == null ? null : (CertificateRawDataAppengineV1beta.fromMap((map['certificateRawData'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      certificateRawData: map['certificateRawData'] == null ? null : (CertificateRawDataAppengineV1beta.fromMap((map['certificateRawData']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

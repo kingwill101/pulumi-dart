@@ -49,12 +49,12 @@ class BasePathMappingArgs {
 
   factory BasePathMappingArgs.fromMap(Map<String, dynamic> map) {
     return BasePathMappingArgs(
-      basePath: map['basePath'] == null ? null : (map['basePath'] as String).input(),
+      basePath: map['basePath'] == null ? null : ((map['basePath'] as String).input()).input(),
       domainName: (map['domainName'] as String).input(),
-      domainNameId: map['domainNameId'] == null ? null : (map['domainNameId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      domainNameId: map['domainNameId'] == null ? null : ((map['domainNameId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       restApi: (map['restApi'] as String).input(),
-      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
+      stageName: map['stageName'] == null ? null : ((map['stageName'] as String).input()).input(),
     );
   }
 }

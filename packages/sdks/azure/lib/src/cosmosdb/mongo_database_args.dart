@@ -50,10 +50,10 @@ class MongoDatabaseArgs {
   factory MongoDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return MongoDatabaseArgs(
       accountName: (map['accountName'] as String).input(),
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : (MongoDatabaseAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (MongoDatabaseAutoscaleSettings.fromMap((map['autoscaleSettings']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
     );
   }
 }

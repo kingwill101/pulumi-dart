@@ -28,8 +28,8 @@ class ManagementSettingsDomainsV1beta1 {
 
   factory ManagementSettingsDomainsV1beta1.fromMap(Map<String, dynamic> map) {
     return ManagementSettingsDomainsV1beta1(
-      preferredRenewalMethod: map['preferredRenewalMethod'] == null ? null : (ManagementSettingsPreferredRenewalMethodDomainsV1beta1.fromValue(map['preferredRenewalMethod'] as String)).input(),
-      transferLockState: map['transferLockState'] == null ? null : (ManagementSettingsTransferLockStateDomainsV1beta1.fromValue(map['transferLockState'] as String)).input(),
+      preferredRenewalMethod: map['preferredRenewalMethod'] == null ? null : (ManagementSettingsPreferredRenewalMethodDomainsV1beta1.fromValue(map['preferredRenewalMethod']! as String)).input(),
+      transferLockState: map['transferLockState'] == null ? null : (ManagementSettingsTransferLockStateDomainsV1beta1.fromValue(map['transferLockState']! as String)).input(),
     );
   }
 }

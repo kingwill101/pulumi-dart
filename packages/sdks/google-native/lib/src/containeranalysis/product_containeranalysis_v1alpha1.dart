@@ -32,9 +32,9 @@ class ProductContaineranalysisV1alpha1 {
 
   factory ProductContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return ProductContaineranalysisV1alpha1(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      identifierHelper: map['identifierHelper'] == null ? null : (IdentifierHelper.fromMap((map['identifierHelper'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      identifierHelper: map['identifierHelper'] == null ? null : (IdentifierHelper.fromMap((map['identifierHelper']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

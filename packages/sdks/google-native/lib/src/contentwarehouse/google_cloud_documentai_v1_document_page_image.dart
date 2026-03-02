@@ -36,10 +36,10 @@ class GoogleCloudDocumentaiV1DocumentPageImage {
 
   factory GoogleCloudDocumentaiV1DocumentPageImage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageImage(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      height: map['height'] == null ? null : (map['height'] as int).input(),
-      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
-      width: map['width'] == null ? null : (map['width'] as int).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      height: map['height'] == null ? null : (map['height']! as int).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
+      width: map['width'] == null ? null : (map['width']! as int).input(),
     );
   }
 }

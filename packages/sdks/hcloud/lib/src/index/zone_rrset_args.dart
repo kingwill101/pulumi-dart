@@ -55,11 +55,11 @@ class ZoneRrsetArgs {
 
   factory ZoneRrsetArgs.fromMap(Map<String, dynamic> map) {
     return ZoneRrsetArgs(
-      changeProtection: map['changeProtection'] == null ? null : (map['changeProtection'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      changeProtection: map['changeProtection'] == null ? null : (map['changeProtection']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       records: (pulumi.Input.decodeList<ZoneRrsetRecord>(map['records'], (value) => ZoneRrsetRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
       type: (map['type'] as String).input(),
       zone: (map['zone'] as String).input(),
     );

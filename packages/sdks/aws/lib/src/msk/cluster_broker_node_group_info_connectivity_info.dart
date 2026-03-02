@@ -27,8 +27,8 @@ class ClusterBrokerNodeGroupInfoConnectivityInfo {
 
   factory ClusterBrokerNodeGroupInfoConnectivityInfo.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoConnectivityInfo(
-      publicAccess: map['publicAccess'] == null ? null : (ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess.fromMap((map['publicAccess'] as Map).cast<String, dynamic>())).input(),
-      vpcConnectivity: map['vpcConnectivity'] == null ? null : (ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity.fromMap((map['vpcConnectivity'] as Map).cast<String, dynamic>())).input(),
+      publicAccess: map['publicAccess'] == null ? null : ((ClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess.fromMap((map['publicAccess']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcConnectivity: map['vpcConnectivity'] == null ? null : ((ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity.fromMap((map['vpcConnectivity']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -40,10 +40,10 @@ class WorkstationConfigEphemeralDirectoryGcePd {
 
   factory WorkstationConfigEphemeralDirectoryGcePd.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigEphemeralDirectoryGcePd(
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      sourceImage: map['sourceImage'] == null ? null : (map['sourceImage'] as String).input(),
-      sourceSnapshot: map['sourceSnapshot'] == null ? null : (map['sourceSnapshot'] as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      sourceImage: map['sourceImage'] == null ? null : (map['sourceImage']! as String).input(),
+      sourceSnapshot: map['sourceSnapshot'] == null ? null : (map['sourceSnapshot']! as String).input(),
     );
   }
 }

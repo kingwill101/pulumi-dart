@@ -62,15 +62,15 @@ class LifecyclePolicyState {
 
   factory LifecyclePolicyState.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      defaultPolicy: map['defaultPolicy'] == null ? null : (map['defaultPolicy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
-      policyDetails: map['policyDetails'] == null ? null : (LifecyclePolicyPolicyDetails.fromMap((map['policyDetails'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      defaultPolicy: map['defaultPolicy'] == null ? null : ((map['defaultPolicy'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
+      policyDetails: map['policyDetails'] == null ? null : ((LifecyclePolicyPolicyDetails.fromMap((map['policyDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

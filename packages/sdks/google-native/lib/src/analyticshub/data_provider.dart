@@ -26,8 +26,8 @@ class DataProvider {
 
   factory DataProvider.fromMap(Map<String, dynamic> map) {
     return DataProvider(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact']! as String).input(),
     );
   }
 }

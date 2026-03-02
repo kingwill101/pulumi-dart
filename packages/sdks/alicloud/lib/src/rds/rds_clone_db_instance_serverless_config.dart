@@ -48,10 +48,10 @@ class RdsCloneDbInstanceServerlessConfig {
 
   factory RdsCloneDbInstanceServerlessConfig.fromMap(Map<String, dynamic> map) {
     return RdsCloneDbInstanceServerlessConfig(
-      autoPause: map['autoPause'] == null ? null : (map['autoPause'] as bool).input(),
+      autoPause: map['autoPause'] == null ? null : (map['autoPause']! as bool).input(),
       maxCapacity: (map['maxCapacity'] as double).input(),
       minCapacity: (map['minCapacity'] as double).input(),
-      switchForce: map['switchForce'] == null ? null : (map['switchForce'] as bool).input(),
+      switchForce: map['switchForce'] == null ? null : (map['switchForce']! as bool).input(),
     );
   }
 }

@@ -45,8 +45,8 @@ class LinkedSubscriptionArgs {
   factory LinkedSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return LinkedSubscriptionArgs(
       linkedSubscriptionId: (map['linkedSubscriptionId'] as String).input(),
-      linkedSubscriptionName: map['linkedSubscriptionName'] == null ? null : (map['linkedSubscriptionName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      linkedSubscriptionName: map['linkedSubscriptionName'] == null ? null : (map['linkedSubscriptionName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       registrationResourceId: (map['registrationResourceId'] as String).input(),
       resourceGroup: (map['resourceGroup'] as String).input(),
     );

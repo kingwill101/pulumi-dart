@@ -27,8 +27,8 @@ class OffPeakWindowOptionsResponse {
 
   factory OffPeakWindowOptionsResponse.fromMap(Map<String, dynamic> map) {
     return OffPeakWindowOptionsResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      offPeakWindow: map['offPeakWindow'] == null ? null : (OffPeakWindowResponse.fromMap((map['offPeakWindow'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      offPeakWindow: map['offPeakWindow'] == null ? null : (OffPeakWindowResponse.fromMap((map['offPeakWindow']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

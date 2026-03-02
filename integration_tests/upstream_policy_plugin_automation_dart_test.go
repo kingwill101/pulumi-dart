@@ -67,13 +67,25 @@ func rewritePolicyDependencies(projectDir string) error {
 	}
 	dependencies["pulumi"] = "^1.0.0"
 	dependencyOverrides["pulumi"] = map[string]string{"path": pulumiSdkPath}
+	dependencies["pulumi_policy"] = "^1.0.0"
 
-	policySdkPath, err := filepath.Abs("../packages/policy")
-	if err == nil {
-		if _, statErr := os.Stat(policySdkPath); statErr == nil {
-			dependencies["pulumi_policy"] = map[string]string{"path": policySdkPath}
-			dependencyOverrides["pulumi_policy"] = map[string]string{"path": policySdkPath}
+	candidates := []string{
+		"../packages/policy",
+		"../policy",
+		"../pulumi-policy",
+		"../pulumi_policy",
+	}
+	for _, candidate := range candidates {
+		policySdkPath, statErr := filepath.Abs(candidate)
+		if statErr != nil {
+			continue
 		}
+		if _, err := os.Stat(policySdkPath); err != nil {
+			continue
+		}
+		dependencies["pulumi_policy"] = map[string]string{"path": policySdkPath}
+		dependencyOverrides["pulumi_policy"] = map[string]string{"path": policySdkPath}
+		break
 	}
 
 	updated, err := yaml.Marshal(pubspec)

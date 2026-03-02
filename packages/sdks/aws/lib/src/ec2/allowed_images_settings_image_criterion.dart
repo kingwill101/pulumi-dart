@@ -42,11 +42,11 @@ class AllowedImagesSettingsImageCriterion {
 
   factory AllowedImagesSettingsImageCriterion.fromMap(Map<String, dynamic> map) {
     return AllowedImagesSettingsImageCriterion(
-      creationDateCondition: map['creationDateCondition'] == null ? null : (AllowedImagesSettingsImageCriterionCreationDateCondition.fromMap((map['creationDateCondition'] as Map).cast<String, dynamic>())).input(),
-      deprecationTimeCondition: map['deprecationTimeCondition'] == null ? null : (AllowedImagesSettingsImageCriterionDeprecationTimeCondition.fromMap((map['deprecationTimeCondition'] as Map).cast<String, dynamic>())).input(),
-      imageNames: map['imageNames'] == null ? null : ((map['imageNames'] as List).cast<String>()).input(),
-      imageProviders: map['imageProviders'] == null ? null : ((map['imageProviders'] as List).cast<String>()).input(),
-      marketplaceProductCodes: map['marketplaceProductCodes'] == null ? null : ((map['marketplaceProductCodes'] as List).cast<String>()).input(),
+      creationDateCondition: map['creationDateCondition'] == null ? null : ((AllowedImagesSettingsImageCriterionCreationDateCondition.fromMap((map['creationDateCondition']! as Map).cast<String, dynamic>())).input()).input(),
+      deprecationTimeCondition: map['deprecationTimeCondition'] == null ? null : ((AllowedImagesSettingsImageCriterionDeprecationTimeCondition.fromMap((map['deprecationTimeCondition']! as Map).cast<String, dynamic>())).input()).input(),
+      imageNames: map['imageNames'] == null ? null : (((map['imageNames'] as List).cast<String>()).input()).input(),
+      imageProviders: map['imageProviders'] == null ? null : (((map['imageProviders'] as List).cast<String>()).input()).input(),
+      marketplaceProductCodes: map['marketplaceProductCodes'] == null ? null : (((map['marketplaceProductCodes'] as List).cast<String>()).input()).input(),
     );
   }
 }

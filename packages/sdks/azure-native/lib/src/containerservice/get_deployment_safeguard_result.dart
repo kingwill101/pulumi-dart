@@ -68,7 +68,7 @@ class GetDeploymentSafeguardResult {
     return GetDeploymentSafeguardResult(
       azureApiVersion: map['azureApiVersion'] as String,
       eTag: map['eTag'] as String,
-      excludedNamespaces: map['excludedNamespaces'] == null ? null : (map['excludedNamespaces'] as List).cast<String>(),
+      excludedNamespaces: map['excludedNamespaces'] == null ? null : (map['excludedNamespaces']! as List).cast<String>(),
       id: map['id'] as String,
       level: map['level'] as String,
       name: map['name'] as String,

@@ -53,13 +53,13 @@ class HybridMonitorSlsTaskState {
 
   factory HybridMonitorSlsTaskState.fromMap(Map<String, dynamic> map) {
     return HybridMonitorSlsTaskState(
-      attachLabels: map['attachLabels'] == null ? null : (pulumi.Input.decodeList<HybridMonitorSlsTaskAttachLabel>(map['attachLabels'], (value) => HybridMonitorSlsTaskAttachLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      collectInterval: map['collectInterval'] == null ? null : (map['collectInterval'] as int).input(),
-      collectTargetType: map['collectTargetType'] == null ? null : (map['collectTargetType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      slsProcessConfig: map['slsProcessConfig'] == null ? null : (HybridMonitorSlsTaskSlsProcessConfig.fromMap((map['slsProcessConfig'] as Map).cast<String, dynamic>())).input(),
-      taskName: map['taskName'] == null ? null : (map['taskName'] as String).input(),
+      attachLabels: map['attachLabels'] == null ? null : (pulumi.Input.decodeList<HybridMonitorSlsTaskAttachLabel>(map['attachLabels']!, (value) => HybridMonitorSlsTaskAttachLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      collectInterval: map['collectInterval'] == null ? null : (map['collectInterval']! as int).input(),
+      collectTargetType: map['collectTargetType'] == null ? null : (map['collectTargetType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      slsProcessConfig: map['slsProcessConfig'] == null ? null : (HybridMonitorSlsTaskSlsProcessConfig.fromMap((map['slsProcessConfig']! as Map).cast<String, dynamic>())).input(),
+      taskName: map['taskName'] == null ? null : (map['taskName']! as String).input(),
     );
   }
 }

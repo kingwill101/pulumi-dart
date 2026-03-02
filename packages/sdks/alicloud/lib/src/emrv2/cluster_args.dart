@@ -104,22 +104,22 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      applicationConfigs: map['applicationConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterApplicationConfig>(map['applicationConfigs'], (value) => ClusterApplicationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationConfigs: map['applicationConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterApplicationConfig>(map['applicationConfigs']!, (value) => ClusterApplicationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       applications: ((map['applications'] as List).cast<String>()).input(),
-      bootstrapScripts: map['bootstrapScripts'] == null ? null : (pulumi.Input.decodeList<ClusterBootstrapScript>(map['bootstrapScripts'], (value) => ClusterBootstrapScript.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bootstrapScripts: map['bootstrapScripts'] == null ? null : (pulumi.Input.decodeList<ClusterBootstrapScript>(map['bootstrapScripts']!, (value) => ClusterBootstrapScript.fromMap((value as Map).cast<String, dynamic>()))).input(),
       clusterName: (map['clusterName'] as String).input(),
       clusterType: (map['clusterType'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      deployMode: map['deployMode'] == null ? null : (map['deployMode'] as String).input(),
-      logCollectStrategy: map['logCollectStrategy'] == null ? null : (map['logCollectStrategy'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      deployMode: map['deployMode'] == null ? null : (map['deployMode']! as String).input(),
+      logCollectStrategy: map['logCollectStrategy'] == null ? null : (map['logCollectStrategy']! as String).input(),
       nodeAttributes: (pulumi.Input.decodeList<ClusterNodeAttribute>(map['nodeAttributes'], (value) => ClusterNodeAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
       nodeGroups: (pulumi.Input.decodeList<ClusterNodeGroup>(map['nodeGroups'], (value) => ClusterNodeGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
       releaseVersion: (map['releaseVersion'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      securityMode: map['securityMode'] == null ? null : (map['securityMode'] as String).input(),
-      subscriptionConfig: map['subscriptionConfig'] == null ? null : (ClusterSubscriptionConfig.fromMap((map['subscriptionConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      securityMode: map['securityMode'] == null ? null : (map['securityMode']! as String).input(),
+      subscriptionConfig: map['subscriptionConfig'] == null ? null : (ClusterSubscriptionConfig.fromMap((map['subscriptionConfig']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -86,14 +86,14 @@ class RegionUrlMapPathMatcher {
 
   factory RegionUrlMapPathMatcher.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcher(
-      defaultRouteAction: map['defaultRouteAction'] == null ? null : (RegionUrlMapPathMatcherDefaultRouteAction.fromMap((map['defaultRouteAction'] as Map).cast<String, dynamic>())).input(),
-      defaultService: map['defaultService'] == null ? null : (map['defaultService'] as String).input(),
-      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (RegionUrlMapPathMatcherDefaultUrlRedirect.fromMap((map['defaultUrlRedirect'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (RegionUrlMapPathMatcherHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
+      defaultRouteAction: map['defaultRouteAction'] == null ? null : (RegionUrlMapPathMatcherDefaultRouteAction.fromMap((map['defaultRouteAction']! as Map).cast<String, dynamic>())).input(),
+      defaultService: map['defaultService'] == null ? null : (map['defaultService']! as String).input(),
+      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (RegionUrlMapPathMatcherDefaultUrlRedirect.fromMap((map['defaultUrlRedirect']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (RegionUrlMapPathMatcherHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<RegionUrlMapPathMatcherPathRule>(map['pathRules'], (value) => RegionUrlMapPathMatcherPathRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routeRules: map['routeRules'] == null ? null : (pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRule>(map['routeRules'], (value) => RegionUrlMapPathMatcherRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<RegionUrlMapPathMatcherPathRule>(map['pathRules']!, (value) => RegionUrlMapPathMatcherPathRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeRules: map['routeRules'] == null ? null : (pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRule>(map['routeRules']!, (value) => RegionUrlMapPathMatcherRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

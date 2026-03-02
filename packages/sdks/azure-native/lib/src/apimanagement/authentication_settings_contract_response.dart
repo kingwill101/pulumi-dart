@@ -38,10 +38,10 @@ class AuthenticationSettingsContractResponse {
 
   factory AuthenticationSettingsContractResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationSettingsContractResponse(
-      oAuth2: map['oAuth2'] == null ? null : (OAuth2AuthenticationSettingsContractResponse.fromMap((map['oAuth2'] as Map).cast<String, dynamic>())).input(),
-      oAuth2AuthenticationSettings: map['oAuth2AuthenticationSettings'] == null ? null : (pulumi.Input.decodeList<OAuth2AuthenticationSettingsContractResponse>(map['oAuth2AuthenticationSettings'], (value) => OAuth2AuthenticationSettingsContractResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      openid: map['openid'] == null ? null : (OpenIdAuthenticationSettingsContractResponse.fromMap((map['openid'] as Map).cast<String, dynamic>())).input(),
-      openidAuthenticationSettings: map['openidAuthenticationSettings'] == null ? null : (pulumi.Input.decodeList<OpenIdAuthenticationSettingsContractResponse>(map['openidAuthenticationSettings'], (value) => OpenIdAuthenticationSettingsContractResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oAuth2: map['oAuth2'] == null ? null : (OAuth2AuthenticationSettingsContractResponse.fromMap((map['oAuth2']! as Map).cast<String, dynamic>())).input(),
+      oAuth2AuthenticationSettings: map['oAuth2AuthenticationSettings'] == null ? null : (pulumi.Input.decodeList<OAuth2AuthenticationSettingsContractResponse>(map['oAuth2AuthenticationSettings']!, (value) => OAuth2AuthenticationSettingsContractResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      openid: map['openid'] == null ? null : (OpenIdAuthenticationSettingsContractResponse.fromMap((map['openid']! as Map).cast<String, dynamic>())).input(),
+      openidAuthenticationSettings: map['openidAuthenticationSettings'] == null ? null : (pulumi.Input.decodeList<OpenIdAuthenticationSettingsContractResponse>(map['openidAuthenticationSettings']!, (value) => OpenIdAuthenticationSettingsContractResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -44,9 +44,9 @@ class VpnConfigurationPropertiesResponse {
   factory VpnConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VpnConfigurationPropertiesResponse(
       administrativeState: (map['administrativeState'] as String).input(),
-      networkToNetworkInterconnectId: map['networkToNetworkInterconnectId'] == null ? null : (map['networkToNetworkInterconnectId'] as String).input(),
-      optionAProperties: map['optionAProperties'] == null ? null : (VpnConfigurationPropertiesResponseOptionAProperties.fromMap((map['optionAProperties'] as Map).cast<String, dynamic>())).input(),
-      optionBProperties: map['optionBProperties'] == null ? null : (FabricOptionBPropertiesResponse.fromMap((map['optionBProperties'] as Map).cast<String, dynamic>())).input(),
+      networkToNetworkInterconnectId: map['networkToNetworkInterconnectId'] == null ? null : (map['networkToNetworkInterconnectId']! as String).input(),
+      optionAProperties: map['optionAProperties'] == null ? null : (VpnConfigurationPropertiesResponseOptionAProperties.fromMap((map['optionAProperties']! as Map).cast<String, dynamic>())).input(),
+      optionBProperties: map['optionBProperties'] == null ? null : (FabricOptionBPropertiesResponse.fromMap((map['optionBProperties']! as Map).cast<String, dynamic>())).input(),
       peeringOption: (map['peeringOption'] as String).input(),
     );
   }

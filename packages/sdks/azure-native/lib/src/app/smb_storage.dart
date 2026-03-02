@@ -46,12 +46,12 @@ class SmbStorage {
 
   factory SmbStorage.fromMap(Map<String, dynamic> map) {
     return SmbStorage(
-      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      accessMode: map['accessMode'] == null ? null : (map['accessMode']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

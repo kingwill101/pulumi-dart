@@ -71,17 +71,17 @@ class DnsRecordState {
 
   factory DnsRecordState.fromMap(Map<String, dynamic> map) {
     return DnsRecordState(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      flags: map['flags'] == null ? null : (map['flags'] as int).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      flags: map['flags'] == null ? null : (map['flags']! as int).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

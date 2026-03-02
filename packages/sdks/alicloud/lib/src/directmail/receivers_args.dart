@@ -34,7 +34,7 @@ class ReceiversArgs {
 
   factory ReceiversArgs.fromMap(Map<String, dynamic> map) {
     return ReceiversArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       receiversAlias: (map['receiversAlias'] as String).input(),
       receiversName: (map['receiversName'] as String).input(),
     );

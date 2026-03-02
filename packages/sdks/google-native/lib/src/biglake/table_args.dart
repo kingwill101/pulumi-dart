@@ -59,12 +59,12 @@ class TableArgs {
     return TableArgs(
       catalogId: (map['catalogId'] as String).input(),
       databaseId: (map['databaseId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      hiveOptions: map['hiveOptions'] == null ? null : (HiveTableOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      hiveOptions: map['hiveOptions'] == null ? null : (HiveTableOptions.fromMap((map['hiveOptions']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tableId: (map['tableId'] as String).input(),
-      type: map['type'] == null ? null : (TableType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (TableType.fromValue(map['type']! as String)).input(),
     );
   }
 }

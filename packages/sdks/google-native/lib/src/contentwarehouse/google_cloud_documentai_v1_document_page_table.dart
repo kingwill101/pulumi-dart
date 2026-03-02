@@ -45,11 +45,11 @@ class GoogleCloudDocumentaiV1DocumentPageTable {
 
   factory GoogleCloudDocumentaiV1DocumentPageTable.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageTable(
-      bodyRows: map['bodyRows'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableTableRow>(map['bodyRows'], (value) => GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      detectedLanguages: map['detectedLanguages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(map['detectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      headerRows: map['headerRows'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableTableRow>(map['headerRows'], (value) => GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      layout: map['layout'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['layout'] as Map).cast<String, dynamic>())).input(),
-      provenance: map['provenance'] == null ? null : (GoogleCloudDocumentaiV1DocumentProvenance.fromMap((map['provenance'] as Map).cast<String, dynamic>())).input(),
+      bodyRows: map['bodyRows'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableTableRow>(map['bodyRows']!, (value) => GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      detectedLanguages: map['detectedLanguages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(map['detectedLanguages']!, (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headerRows: map['headerRows'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableTableRow>(map['headerRows']!, (value) => GoogleCloudDocumentaiV1DocumentPageTableTableRow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      layout: map['layout'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['layout']! as Map).cast<String, dynamic>())).input(),
+      provenance: map['provenance'] == null ? null : (GoogleCloudDocumentaiV1DocumentProvenance.fromMap((map['provenance']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

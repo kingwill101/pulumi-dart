@@ -40,11 +40,11 @@ class ListVendorSkusCredentialResult {
 
   factory ListVendorSkusCredentialResult.fromMap(Map<String, dynamic> map) {
     return ListVendorSkusCredentialResult(
-      acrServerUrl: map['acrServerUrl'] == null ? null : map['acrServerUrl'] as String,
-      acrToken: map['acrToken'] == null ? null : map['acrToken'] as String,
-      expiry: map['expiry'] == null ? null : map['expiry'] as String,
-      repositories: map['repositories'] == null ? null : (map['repositories'] as List).cast<String>(),
-      username: map['username'] == null ? null : map['username'] as String,
+      acrServerUrl: map['acrServerUrl'] == null ? null : map['acrServerUrl']! as String,
+      acrToken: map['acrToken'] == null ? null : map['acrToken']! as String,
+      expiry: map['expiry'] == null ? null : map['expiry']! as String,
+      repositories: map['repositories'] == null ? null : (map['repositories']! as List).cast<String>(),
+      username: map['username'] == null ? null : map['username']! as String,
     );
   }
 }

@@ -36,10 +36,10 @@ class ScheduledSnapshotsConfig {
 
   factory ScheduledSnapshotsConfig.fromMap(Map<String, dynamic> map) {
     return ScheduledSnapshotsConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      snapshotCreationSchedule: map['snapshotCreationSchedule'] == null ? null : (map['snapshotCreationSchedule'] as String).input(),
-      snapshotLocation: map['snapshotLocation'] == null ? null : (map['snapshotLocation'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      snapshotCreationSchedule: map['snapshotCreationSchedule'] == null ? null : (map['snapshotCreationSchedule']! as String).input(),
+      snapshotLocation: map['snapshotLocation'] == null ? null : (map['snapshotLocation']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

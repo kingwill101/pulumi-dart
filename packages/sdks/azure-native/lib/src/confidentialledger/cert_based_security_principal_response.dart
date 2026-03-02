@@ -26,8 +26,8 @@ class CertBasedSecurityPrincipalResponse {
 
   factory CertBasedSecurityPrincipalResponse.fromMap(Map<String, dynamic> map) {
     return CertBasedSecurityPrincipalResponse(
-      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
-      ledgerRoleName: map['ledgerRoleName'] == null ? null : (map['ledgerRoleName'] as String).input(),
+      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
+      ledgerRoleName: map['ledgerRoleName'] == null ? null : (map['ledgerRoleName']! as String).input(),
     );
   }
 }

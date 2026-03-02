@@ -27,7 +27,7 @@ class DistributeVersionerLatestResponse {
 
   factory DistributeVersionerLatestResponse.fromMap(Map<String, dynamic> map) {
     return DistributeVersionerLatestResponse(
-      major: map['major'] == null ? null : (map['major'] as int).input(),
+      major: map['major'] == null ? null : (map['major']! as int).input(),
       scheme: (map['scheme'] as String).input(),
     );
   }

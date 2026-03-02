@@ -45,9 +45,9 @@ class GetSpacesBucketObjectArgs {
     return GetSpacesBucketObjectArgs(
       bucket: (map['bucket'] as String).input(),
       key: (map['key'] as String).input(),
-      range: map['range'] == null ? null : (map['range'] as String).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
       region: (map['region'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
     );
   }
 }

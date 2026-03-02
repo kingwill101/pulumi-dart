@@ -64,15 +64,15 @@ class InventoryState {
 
   factory InventoryState.fromMap(Map<String, dynamic> map) {
     return InventoryState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      destination: map['destination'] == null ? null : (InventoryDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      filter: map['filter'] == null ? null : (InventoryFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      includedObjectVersions: map['includedObjectVersions'] == null ? null : (map['includedObjectVersions'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      optionalFields: map['optionalFields'] == null ? null : ((map['optionalFields'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      schedule: map['schedule'] == null ? null : (InventorySchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      destination: map['destination'] == null ? null : ((InventoryDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      filter: map['filter'] == null ? null : ((InventoryFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input()).input(),
+      includedObjectVersions: map['includedObjectVersions'] == null ? null : ((map['includedObjectVersions'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      optionalFields: map['optionalFields'] == null ? null : (((map['optionalFields'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      schedule: map['schedule'] == null ? null : ((InventorySchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

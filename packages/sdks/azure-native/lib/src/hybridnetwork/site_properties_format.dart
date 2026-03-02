@@ -22,7 +22,7 @@ class SitePropertiesFormat {
 
   factory SitePropertiesFormat.fromMap(Map<String, dynamic> map) {
     return SitePropertiesFormat(
-      nfvis: map['nfvis'] == null ? null : (pulumi.Input.decodeList<AzureArcK8sClusterNFVIDetails>(map['nfvis'], (value) => AzureArcK8sClusterNFVIDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nfvis: map['nfvis'] == null ? null : (pulumi.Input.decodeList<AzureArcK8sClusterNFVIDetails>(map['nfvis']!, (value) => AzureArcK8sClusterNFVIDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

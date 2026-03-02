@@ -30,8 +30,8 @@ class PrivateCloudManagementCluster {
 
   factory PrivateCloudManagementCluster.fromMap(Map<String, dynamic> map) {
     return PrivateCloudManagementCluster(
-      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as int).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
       size: (map['size'] as int).input(),
     );
   }

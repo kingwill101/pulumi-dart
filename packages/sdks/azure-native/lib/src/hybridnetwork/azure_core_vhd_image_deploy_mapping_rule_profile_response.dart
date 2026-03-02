@@ -27,8 +27,8 @@ class AzureCoreVhdImageDeployMappingRuleProfileResponse {
 
   factory AzureCoreVhdImageDeployMappingRuleProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureCoreVhdImageDeployMappingRuleProfileResponse(
-      applicationEnablement: map['applicationEnablement'] == null ? null : (map['applicationEnablement'] as String).input(),
-      vhdImageMappingRuleProfile: map['vhdImageMappingRuleProfile'] == null ? null : (VhdImageMappingRuleProfileResponse.fromMap((map['vhdImageMappingRuleProfile'] as Map).cast<String, dynamic>())).input(),
+      applicationEnablement: map['applicationEnablement'] == null ? null : (map['applicationEnablement']! as String).input(),
+      vhdImageMappingRuleProfile: map['vhdImageMappingRuleProfile'] == null ? null : (VhdImageMappingRuleProfileResponse.fromMap((map['vhdImageMappingRuleProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

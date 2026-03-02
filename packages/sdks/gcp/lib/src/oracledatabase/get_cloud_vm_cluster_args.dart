@@ -39,7 +39,7 @@ class GetCloudVmClusterArgs {
     return GetCloudVmClusterArgs(
       cloudVmClusterId: (map['cloudVmClusterId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class ThemeConfiguration {
 
   factory ThemeConfiguration.fromMap(Map<String, dynamic> map) {
     return ThemeConfiguration(
-      dataColorPalette: map['dataColorPalette'] == null ? null : (ThemeConfigurationDataColorPalette.fromMap((map['dataColorPalette'] as Map).cast<String, dynamic>())).input(),
-      sheet: map['sheet'] == null ? null : (ThemeConfigurationSheet.fromMap((map['sheet'] as Map).cast<String, dynamic>())).input(),
-      typography: map['typography'] == null ? null : (ThemeConfigurationTypography.fromMap((map['typography'] as Map).cast<String, dynamic>())).input(),
-      uiColorPalette: map['uiColorPalette'] == null ? null : (ThemeConfigurationUiColorPalette.fromMap((map['uiColorPalette'] as Map).cast<String, dynamic>())).input(),
+      dataColorPalette: map['dataColorPalette'] == null ? null : ((ThemeConfigurationDataColorPalette.fromMap((map['dataColorPalette']! as Map).cast<String, dynamic>())).input()).input(),
+      sheet: map['sheet'] == null ? null : ((ThemeConfigurationSheet.fromMap((map['sheet']! as Map).cast<String, dynamic>())).input()).input(),
+      typography: map['typography'] == null ? null : ((ThemeConfigurationTypography.fromMap((map['typography']! as Map).cast<String, dynamic>())).input()).input(),
+      uiColorPalette: map['uiColorPalette'] == null ? null : ((ThemeConfigurationUiColorPalette.fromMap((map['uiColorPalette']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

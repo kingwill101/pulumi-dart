@@ -38,9 +38,9 @@ class BrokerInstance {
 
   factory BrokerInstance.fromMap(Map<String, dynamic> map) {
     return BrokerInstance(
-      consoleUrl: map['consoleUrl'] == null ? null : (map['consoleUrl'] as String).input(),
-      endpoints: map['endpoints'] == null ? null : ((map['endpoints'] as List).cast<String>()).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      consoleUrl: map['consoleUrl'] == null ? null : ((map['consoleUrl'] as String).input()).input(),
+      endpoints: map['endpoints'] == null ? null : (((map['endpoints'] as List).cast<String>()).input()).input(),
+      ipAddress: map['ipAddress'] == null ? null : ((map['ipAddress'] as String).input()).input(),
     );
   }
 }

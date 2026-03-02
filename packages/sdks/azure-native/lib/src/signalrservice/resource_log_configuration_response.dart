@@ -22,7 +22,7 @@ class ResourceLogConfigurationResponse {
 
   factory ResourceLogConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceLogConfigurationResponse(
-      categories: map['categories'] == null ? null : (pulumi.Input.decodeList<ResourceLogCategoryResponse>(map['categories'], (value) => ResourceLogCategoryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      categories: map['categories'] == null ? null : (pulumi.Input.decodeList<ResourceLogCategoryResponse>(map['categories']!, (value) => ResourceLogCategoryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

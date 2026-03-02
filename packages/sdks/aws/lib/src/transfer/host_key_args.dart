@@ -50,12 +50,12 @@ class HostKeyArgs {
 
   factory HostKeyArgs.fromMap(Map<String, dynamic> map) {
     return HostKeyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      hostKeyBody: map['hostKeyBody'] == null ? null : (map['hostKeyBody'] as String).input(),
-      hostKeyBodyWo: map['hostKeyBodyWo'] == null ? null : (map['hostKeyBodyWo'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      hostKeyBody: map['hostKeyBody'] == null ? null : ((map['hostKeyBody'] as String).input()).input(),
+      hostKeyBodyWo: map['hostKeyBodyWo'] == null ? null : ((map['hostKeyBodyWo'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serverId: (map['serverId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

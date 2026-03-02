@@ -58,14 +58,14 @@ class Status {
 
   factory Status.fromMap(Map<String, dynamic> map) {
     return Status(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      details: map['details'] == null ? null : (StatusDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      details: map['details'] == null ? null : (StatusDetails.fromMap((map['details']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -69,16 +69,16 @@ class GalleryApplicationArgs {
 
   factory GalleryApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
-      eula: map['eula'] == null ? null : (map['eula'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
+      eula: map['eula'] == null ? null : (map['eula']! as String).input(),
       galleryId: (map['galleryId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri'] as String).input(),
-      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri']! as String).input(),
+      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri']! as String).input(),
       supportedOsType: (map['supportedOsType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

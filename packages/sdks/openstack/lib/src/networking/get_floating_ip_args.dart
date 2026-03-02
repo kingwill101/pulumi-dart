@@ -66,15 +66,15 @@ class GetFloatingIpArgs {
 
   factory GetFloatingIpArgs.fromMap(Map<String, dynamic> map) {
     return GetFloatingIpArgs(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp'] as String).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
-      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp']! as String).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
+      portId: map['portId'] == null ? null : (map['portId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

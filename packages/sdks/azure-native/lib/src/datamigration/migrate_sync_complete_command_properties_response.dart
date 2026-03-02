@@ -50,10 +50,10 @@ class MigrateSyncCompleteCommandPropertiesResponse {
 
   factory MigrateSyncCompleteCommandPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSyncCompleteCommandPropertiesResponse(
-      commandId: map['commandId'] == null ? null : (map['commandId'] as String).input(),
+      commandId: map['commandId'] == null ? null : (map['commandId']! as String).input(),
       commandType: (map['commandType'] as String).input(),
       errors: (pulumi.Input.decodeList<ODataErrorResponse>(map['errors'], (value) => ODataErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      input: map['input'] == null ? null : (MigrateSyncCompleteCommandInputResponse.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      input: map['input'] == null ? null : (MigrateSyncCompleteCommandInputResponse.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
       output: (MigrateSyncCompleteCommandOutputResponse.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
       state: (map['state'] as String).input(),
     );

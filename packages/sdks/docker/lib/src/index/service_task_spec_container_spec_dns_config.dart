@@ -31,8 +31,8 @@ class ServiceTaskSpecContainerSpecDnsConfig {
   factory ServiceTaskSpecContainerSpecDnsConfig.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecDnsConfig(
       nameservers: ((map['nameservers'] as List).cast<String>()).input(),
-      options: map['options'] == null ? null : ((map['options'] as List).cast<String>()).input(),
-      searches: map['searches'] == null ? null : ((map['searches'] as List).cast<String>()).input(),
+      options: map['options'] == null ? null : ((map['options']! as List).cast<String>()).input(),
+      searches: map['searches'] == null ? null : ((map['searches']! as List).cast<String>()).input(),
     );
   }
 }

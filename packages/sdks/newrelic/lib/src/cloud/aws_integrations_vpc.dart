@@ -45,12 +45,12 @@ class AwsIntegrationsVpc {
 
   factory AwsIntegrationsVpc.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsVpc(
-      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions'] as List).cast<String>()).input(),
-      fetchNatGateway: map['fetchNatGateway'] == null ? null : (map['fetchNatGateway'] as bool).input(),
-      fetchVpn: map['fetchVpn'] == null ? null : (map['fetchVpn'] as bool).input(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
+      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions']! as List).cast<String>()).input(),
+      fetchNatGateway: map['fetchNatGateway'] == null ? null : (map['fetchNatGateway']! as bool).input(),
+      fetchVpn: map['fetchVpn'] == null ? null : (map['fetchVpn']! as bool).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
     );
   }
 }

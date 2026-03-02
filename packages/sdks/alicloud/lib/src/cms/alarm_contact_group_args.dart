@@ -40,9 +40,9 @@ class AlarmContactGroupArgs {
   factory AlarmContactGroupArgs.fromMap(Map<String, dynamic> map) {
     return AlarmContactGroupArgs(
       alarmContactGroupName: (map['alarmContactGroupName'] as String).input(),
-      contacts: map['contacts'] == null ? null : ((map['contacts'] as List).cast<String>()).input(),
-      describe: map['describe'] == null ? null : (map['describe'] as String).input(),
-      enableSubscribed: map['enableSubscribed'] == null ? null : (map['enableSubscribed'] as bool).input(),
+      contacts: map['contacts'] == null ? null : ((map['contacts']! as List).cast<String>()).input(),
+      describe: map['describe'] == null ? null : (map['describe']! as String).input(),
+      enableSubscribed: map['enableSubscribed'] == null ? null : (map['enableSubscribed']! as bool).input(),
     );
   }
 }

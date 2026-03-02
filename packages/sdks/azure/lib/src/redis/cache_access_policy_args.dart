@@ -34,7 +34,7 @@ class CacheAccessPolicyArgs {
 
   factory CacheAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return CacheAccessPolicyArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       permissions: (map['permissions'] as String).input(),
       redisCacheId: (map['redisCacheId'] as String).input(),
     );

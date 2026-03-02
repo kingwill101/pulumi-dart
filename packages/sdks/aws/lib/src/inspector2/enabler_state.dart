@@ -34,9 +34,9 @@ class EnablerState {
 
   factory EnablerState.fromMap(Map<String, dynamic> map) {
     return EnablerState(
-      accountIds: map['accountIds'] == null ? null : ((map['accountIds'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      accountIds: map['accountIds'] == null ? null : (((map['accountIds'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : (((map['resourceTypes'] as List).cast<String>()).input()).input(),
     );
   }
 }

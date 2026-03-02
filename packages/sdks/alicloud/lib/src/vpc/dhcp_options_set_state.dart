@@ -84,18 +84,18 @@ class DhcpOptionsSetState {
 
   factory DhcpOptionsSetState.fromMap(Map<String, dynamic> map) {
     return DhcpOptionsSetState(
-      associateVpcs: map['associateVpcs'] == null ? null : (pulumi.Input.decodeList<DhcpOptionsSetAssociateVpc>(map['associateVpcs'], (value) => DhcpOptionsSetAssociateVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dhcpOptionsSetDescription: map['dhcpOptionsSetDescription'] == null ? null : (map['dhcpOptionsSetDescription'] as String).input(),
-      dhcpOptionsSetName: map['dhcpOptionsSetName'] == null ? null : (map['dhcpOptionsSetName'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      domainNameServers: map['domainNameServers'] == null ? null : (map['domainNameServers'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      ipv6LeaseTime: map['ipv6LeaseTime'] == null ? null : (map['ipv6LeaseTime'] as String).input(),
-      leaseTime: map['leaseTime'] == null ? null : (map['leaseTime'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      associateVpcs: map['associateVpcs'] == null ? null : (pulumi.Input.decodeList<DhcpOptionsSetAssociateVpc>(map['associateVpcs']!, (value) => DhcpOptionsSetAssociateVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dhcpOptionsSetDescription: map['dhcpOptionsSetDescription'] == null ? null : (map['dhcpOptionsSetDescription']! as String).input(),
+      dhcpOptionsSetName: map['dhcpOptionsSetName'] == null ? null : (map['dhcpOptionsSetName']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      domainNameServers: map['domainNameServers'] == null ? null : (map['domainNameServers']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      ipv6LeaseTime: map['ipv6LeaseTime'] == null ? null : (map['ipv6LeaseTime']! as String).input(),
+      leaseTime: map['leaseTime'] == null ? null : (map['leaseTime']! as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId']! as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

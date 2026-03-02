@@ -62,12 +62,12 @@ class FlowDefinitionHumanLoopConfig {
   factory FlowDefinitionHumanLoopConfig.fromMap(Map<String, dynamic> map) {
     return FlowDefinitionHumanLoopConfig(
       humanTaskUiArn: (map['humanTaskUiArn'] as String).input(),
-      publicWorkforceTaskPrice: map['publicWorkforceTaskPrice'] == null ? null : (FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice.fromMap((map['publicWorkforceTaskPrice'] as Map).cast<String, dynamic>())).input(),
-      taskAvailabilityLifetimeInSeconds: map['taskAvailabilityLifetimeInSeconds'] == null ? null : (map['taskAvailabilityLifetimeInSeconds'] as int).input(),
+      publicWorkforceTaskPrice: map['publicWorkforceTaskPrice'] == null ? null : ((FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice.fromMap((map['publicWorkforceTaskPrice']! as Map).cast<String, dynamic>())).input()).input(),
+      taskAvailabilityLifetimeInSeconds: map['taskAvailabilityLifetimeInSeconds'] == null ? null : ((map['taskAvailabilityLifetimeInSeconds'] as int).input()).input(),
       taskCount: (map['taskCount'] as int).input(),
       taskDescription: (map['taskDescription'] as String).input(),
-      taskKeywords: map['taskKeywords'] == null ? null : ((map['taskKeywords'] as List).cast<String>()).input(),
-      taskTimeLimitInSeconds: map['taskTimeLimitInSeconds'] == null ? null : (map['taskTimeLimitInSeconds'] as int).input(),
+      taskKeywords: map['taskKeywords'] == null ? null : (((map['taskKeywords'] as List).cast<String>()).input()).input(),
+      taskTimeLimitInSeconds: map['taskTimeLimitInSeconds'] == null ? null : ((map['taskTimeLimitInSeconds'] as int).input()).input(),
       taskTitle: (map['taskTitle'] as String).input(),
       workteamArn: (map['workteamArn'] as String).input(),
     );

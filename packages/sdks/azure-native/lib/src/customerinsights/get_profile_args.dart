@@ -40,7 +40,7 @@ class GetProfileArgs {
   factory GetProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetProfileArgs(
       hubName: (map['hubName'] as String).input(),
-      localeCode: map['localeCode'] == null ? null : (map['localeCode'] as String).input(),
+      localeCode: map['localeCode'] == null ? null : (map['localeCode']! as String).input(),
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

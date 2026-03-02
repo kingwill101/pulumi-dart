@@ -26,8 +26,8 @@ class StatusResponse {
 
   factory StatusResponse.fromMap(Map<String, dynamic> map) {
     return StatusResponse(
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

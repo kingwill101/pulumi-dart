@@ -22,7 +22,7 @@ class FhirStoreConsentConfigAccessDeterminationLogConfig {
 
   factory FhirStoreConsentConfigAccessDeterminationLogConfig.fromMap(Map<String, dynamic> map) {
     return FhirStoreConsentConfigAccessDeterminationLogConfig(
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
     );
   }
 }

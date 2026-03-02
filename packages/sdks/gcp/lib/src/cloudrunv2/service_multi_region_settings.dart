@@ -26,8 +26,8 @@ class ServiceMultiRegionSettings {
 
   factory ServiceMultiRegionSettings.fromMap(Map<String, dynamic> map) {
     return ServiceMultiRegionSettings(
-      multiRegionId: map['multiRegionId'] == null ? null : (map['multiRegionId'] as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      multiRegionId: map['multiRegionId'] == null ? null : (map['multiRegionId']! as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class BucketReplicationConfigurationRuleFilter {
 
   factory BucketReplicationConfigurationRuleFilter.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigurationRuleFilter(
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

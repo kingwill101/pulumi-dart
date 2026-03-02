@@ -68,13 +68,13 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPol
 
   factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy(
-      excludeHost: map['excludeHost'] == null ? null : (map['excludeHost'] as bool).input(),
-      excludeQueryString: map['excludeQueryString'] == null ? null : (map['excludeQueryString'] as bool).input(),
-      excludedQueryParameters: map['excludedQueryParameters'] == null ? null : ((map['excludedQueryParameters'] as List).cast<String>()).input(),
-      includeProtocol: map['includeProtocol'] == null ? null : (map['includeProtocol'] as bool).input(),
-      includedCookieNames: map['includedCookieNames'] == null ? null : ((map['includedCookieNames'] as List).cast<String>()).input(),
-      includedHeaderNames: map['includedHeaderNames'] == null ? null : ((map['includedHeaderNames'] as List).cast<String>()).input(),
-      includedQueryParameters: map['includedQueryParameters'] == null ? null : ((map['includedQueryParameters'] as List).cast<String>()).input(),
+      excludeHost: map['excludeHost'] == null ? null : (map['excludeHost']! as bool).input(),
+      excludeQueryString: map['excludeQueryString'] == null ? null : (map['excludeQueryString']! as bool).input(),
+      excludedQueryParameters: map['excludedQueryParameters'] == null ? null : ((map['excludedQueryParameters']! as List).cast<String>()).input(),
+      includeProtocol: map['includeProtocol'] == null ? null : (map['includeProtocol']! as bool).input(),
+      includedCookieNames: map['includedCookieNames'] == null ? null : ((map['includedCookieNames']! as List).cast<String>()).input(),
+      includedHeaderNames: map['includedHeaderNames'] == null ? null : ((map['includedHeaderNames']! as List).cast<String>()).input(),
+      includedQueryParameters: map['includedQueryParameters'] == null ? null : ((map['includedQueryParameters']! as List).cast<String>()).input(),
     );
   }
 }

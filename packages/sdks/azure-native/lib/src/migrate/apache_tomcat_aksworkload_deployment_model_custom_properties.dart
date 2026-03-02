@@ -28,7 +28,7 @@ class ApacheTomcatAKSWorkloadDeploymentModelCustomProperties {
 
   factory ApacheTomcatAKSWorkloadDeploymentModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return ApacheTomcatAKSWorkloadDeploymentModelCustomProperties(
-      apacheTomcatAksWorkloadDeploymentProperties: map['apacheTomcatAksWorkloadDeploymentProperties'] == null ? null : (ApacheTomcatAKSWorkloadDeployment.fromMap((map['apacheTomcatAksWorkloadDeploymentProperties'] as Map).cast<String, dynamic>())).input(),
+      apacheTomcatAksWorkloadDeploymentProperties: map['apacheTomcatAksWorkloadDeploymentProperties'] == null ? null : (ApacheTomcatAKSWorkloadDeployment.fromMap((map['apacheTomcatAksWorkloadDeploymentProperties']! as Map).cast<String, dynamic>())).input(),
       instanceType: (map['instanceType'] as String).input(),
     );
   }

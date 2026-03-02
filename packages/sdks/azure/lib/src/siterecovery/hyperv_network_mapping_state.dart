@@ -41,11 +41,11 @@ class HypervNetworkMappingState {
 
   factory HypervNetworkMappingState.fromMap(Map<String, dynamic> map) {
     return HypervNetworkMappingState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId'] as String).input(),
-      sourceNetworkName: map['sourceNetworkName'] == null ? null : (map['sourceNetworkName'] as String).input(),
-      sourceSystemCenterVirtualMachineManagerName: map['sourceSystemCenterVirtualMachineManagerName'] == null ? null : (map['sourceSystemCenterVirtualMachineManagerName'] as String).input(),
-      targetNetworkId: map['targetNetworkId'] == null ? null : (map['targetNetworkId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId']! as String).input(),
+      sourceNetworkName: map['sourceNetworkName'] == null ? null : (map['sourceNetworkName']! as String).input(),
+      sourceSystemCenterVirtualMachineManagerName: map['sourceSystemCenterVirtualMachineManagerName'] == null ? null : (map['sourceSystemCenterVirtualMachineManagerName']! as String).input(),
+      targetNetworkId: map['targetNetworkId'] == null ? null : (map['targetNetworkId']! as String).input(),
     );
   }
 }

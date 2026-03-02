@@ -21,7 +21,7 @@ class EncryptionConfigDataprocV1beta2 {
 
   factory EncryptionConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigDataprocV1beta2(
-      gcePdKmsKeyName: map['gcePdKmsKeyName'] == null ? null : (map['gcePdKmsKeyName'] as String).input(),
+      gcePdKmsKeyName: map['gcePdKmsKeyName'] == null ? null : (map['gcePdKmsKeyName']! as String).input(),
     );
   }
 }

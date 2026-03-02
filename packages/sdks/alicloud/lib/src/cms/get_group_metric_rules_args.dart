@@ -69,16 +69,16 @@ class GetGroupMetricRulesArgs {
 
   factory GetGroupMetricRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupMetricRulesArgs(
-      dimensions: map['dimensions'] == null ? null : (map['dimensions'] as String).input(),
-      enableState: map['enableState'] == null ? null : (map['enableState'] as bool).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      groupMetricRuleName: map['groupMetricRuleName'] == null ? null : (map['groupMetricRuleName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : (map['dimensions']! as String).input(),
+      enableState: map['enableState'] == null ? null : (map['enableState']! as bool).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      groupMetricRuleName: map['groupMetricRuleName'] == null ? null : (map['groupMetricRuleName']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

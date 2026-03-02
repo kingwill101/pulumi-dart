@@ -33,7 +33,7 @@ class GetTableIamPolicyArgs {
   factory GetTableIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTableIamPolicyArgs(
       instanceName: (map['instanceName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       table: (map['table'] as String).input(),
     );
   }

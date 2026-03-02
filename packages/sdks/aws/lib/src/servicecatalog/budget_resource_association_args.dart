@@ -35,7 +35,7 @@ class BudgetResourceAssociationArgs {
   factory BudgetResourceAssociationArgs.fromMap(Map<String, dynamic> map) {
     return BudgetResourceAssociationArgs(
       budgetName: (map['budgetName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

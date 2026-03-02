@@ -76,17 +76,17 @@ class SecurityGroupEgressRuleArgs {
 
   factory SecurityGroupEgressRuleArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGroupEgressRuleArgs(
-      cidrIpv4: map['cidrIpv4'] == null ? null : (map['cidrIpv4'] as String).input(),
-      cidrIpv6: map['cidrIpv6'] == null ? null : (map['cidrIpv6'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
+      cidrIpv4: map['cidrIpv4'] == null ? null : ((map['cidrIpv4'] as String).input()).input(),
+      cidrIpv6: map['cidrIpv6'] == null ? null : ((map['cidrIpv6'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      fromPort: map['fromPort'] == null ? null : ((map['fromPort'] as int).input()).input(),
       ipProtocol: (map['ipProtocol'] as String).input(),
-      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
-      referencedSecurityGroupId: map['referencedSecurityGroupId'] == null ? null : (map['referencedSecurityGroupId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      prefixListId: map['prefixListId'] == null ? null : ((map['prefixListId'] as String).input()).input(),
+      referencedSecurityGroupId: map['referencedSecurityGroupId'] == null ? null : ((map['referencedSecurityGroupId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       securityGroupId: (map['securityGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      toPort: map['toPort'] == null ? null : ((map['toPort'] as int).input()).input(),
     );
   }
 }

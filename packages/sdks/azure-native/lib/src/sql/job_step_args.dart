@@ -78,15 +78,15 @@ class JobStepArgs {
   factory JobStepArgs.fromMap(Map<String, dynamic> map) {
     return JobStepArgs(
       action: (JobStepAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      credential: map['credential'] == null ? null : (map['credential'] as String).input(),
-      executionOptions: map['executionOptions'] == null ? null : (JobStepExecutionOptions.fromMap((map['executionOptions'] as Map).cast<String, dynamic>())).input(),
+      credential: map['credential'] == null ? null : (map['credential']! as String).input(),
+      executionOptions: map['executionOptions'] == null ? null : (JobStepExecutionOptions.fromMap((map['executionOptions']! as Map).cast<String, dynamic>())).input(),
       jobAgentName: (map['jobAgentName'] as String).input(),
       jobName: (map['jobName'] as String).input(),
-      output: map['output'] == null ? null : (JobStepOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      output: map['output'] == null ? null : (JobStepOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      stepId: map['stepId'] == null ? null : (map['stepId'] as int).input(),
-      stepName: map['stepName'] == null ? null : (map['stepName'] as String).input(),
+      stepId: map['stepId'] == null ? null : (map['stepId']! as int).input(),
+      stepName: map['stepName'] == null ? null : (map['stepName']! as String).input(),
       targetGroup: (map['targetGroup'] as String).input(),
     );
   }

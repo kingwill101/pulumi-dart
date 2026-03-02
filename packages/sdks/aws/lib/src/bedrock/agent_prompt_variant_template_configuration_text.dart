@@ -29,8 +29,8 @@ class AgentPromptVariantTemplateConfigurationText {
 
   factory AgentPromptVariantTemplateConfigurationText.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationText(
-      cachePoint: map['cachePoint'] == null ? null : (AgentPromptVariantTemplateConfigurationTextCachePoint.fromMap((map['cachePoint'] as Map).cast<String, dynamic>())).input(),
-      inputVariables: map['inputVariables'] == null ? null : (pulumi.Input.decodeList<AgentPromptVariantTemplateConfigurationTextInputVariable>(map['inputVariables'], (value) => AgentPromptVariantTemplateConfigurationTextInputVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cachePoint: map['cachePoint'] == null ? null : ((AgentPromptVariantTemplateConfigurationTextCachePoint.fromMap((map['cachePoint']! as Map).cast<String, dynamic>())).input()).input(),
+      inputVariables: map['inputVariables'] == null ? null : ((pulumi.Input.decodeList<AgentPromptVariantTemplateConfigurationTextInputVariable>(map['inputVariables']!, (value) => AgentPromptVariantTemplateConfigurationTextInputVariable.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       text: (map['text'] as String).input(),
     );
   }

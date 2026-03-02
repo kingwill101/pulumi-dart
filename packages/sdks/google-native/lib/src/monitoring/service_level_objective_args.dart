@@ -73,15 +73,15 @@ class ServiceLevelObjectiveArgs {
 
   factory ServiceLevelObjectiveArgs.fromMap(Map<String, dynamic> map) {
     return ServiceLevelObjectiveArgs(
-      calendarPeriod: map['calendarPeriod'] == null ? null : (ServiceLevelObjectiveCalendarPeriod.fromValue(map['calendarPeriod'] as String)).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      goal: map['goal'] == null ? null : (map['goal'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rollingPeriod: map['rollingPeriod'] == null ? null : (map['rollingPeriod'] as String).input(),
+      calendarPeriod: map['calendarPeriod'] == null ? null : (ServiceLevelObjectiveCalendarPeriod.fromValue(map['calendarPeriod']! as String)).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      goal: map['goal'] == null ? null : (map['goal']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rollingPeriod: map['rollingPeriod'] == null ? null : (map['rollingPeriod']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
-      serviceLevelIndicator: map['serviceLevelIndicator'] == null ? null : (ServiceLevelIndicator.fromMap((map['serviceLevelIndicator'] as Map).cast<String, dynamic>())).input(),
-      serviceLevelObjectiveId: map['serviceLevelObjectiveId'] == null ? null : (map['serviceLevelObjectiveId'] as String).input(),
-      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
+      serviceLevelIndicator: map['serviceLevelIndicator'] == null ? null : (ServiceLevelIndicator.fromMap((map['serviceLevelIndicator']! as Map).cast<String, dynamic>())).input(),
+      serviceLevelObjectiveId: map['serviceLevelObjectiveId'] == null ? null : (map['serviceLevelObjectiveId']! as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels']! as Map).cast<String, String>()).input(),
       v3Id: (map['v3Id'] as String).input(),
       v3Id1: (map['v3Id1'] as String).input(),
     );

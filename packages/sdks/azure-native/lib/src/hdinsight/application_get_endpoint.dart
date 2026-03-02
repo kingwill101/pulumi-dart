@@ -36,10 +36,10 @@ class ApplicationGetEndpoint {
 
   factory ApplicationGetEndpoint.fromMap(Map<String, dynamic> map) {
     return ApplicationGetEndpoint(
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      publicPort: map['publicPort'] == null ? null : (map['publicPort'] as int).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      publicPort: map['publicPort'] == null ? null : (map['publicPort']! as int).input(),
     );
   }
 }

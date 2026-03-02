@@ -35,7 +35,7 @@ class AcceleratorSpareIpAttachmentArgs {
   factory AcceleratorSpareIpAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AcceleratorSpareIpAttachmentArgs(
       acceleratorId: (map['acceleratorId'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       spareIp: (map['spareIp'] as String).input(),
     );
   }

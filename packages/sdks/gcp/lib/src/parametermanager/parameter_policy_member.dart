@@ -33,8 +33,8 @@ class ParameterPolicyMember {
 
   factory ParameterPolicyMember.fromMap(Map<String, dynamic> map) {
     return ParameterPolicyMember(
-      iamPolicyNamePrincipal: map['iamPolicyNamePrincipal'] == null ? null : (map['iamPolicyNamePrincipal'] as String).input(),
-      iamPolicyUidPrincipal: map['iamPolicyUidPrincipal'] == null ? null : (map['iamPolicyUidPrincipal'] as String).input(),
+      iamPolicyNamePrincipal: map['iamPolicyNamePrincipal'] == null ? null : (map['iamPolicyNamePrincipal']! as String).input(),
+      iamPolicyUidPrincipal: map['iamPolicyUidPrincipal'] == null ? null : (map['iamPolicyUidPrincipal']! as String).input(),
     );
   }
 }

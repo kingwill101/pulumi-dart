@@ -27,8 +27,8 @@ class SubscriberNotificationConfiguration {
 
   factory SubscriberNotificationConfiguration.fromMap(Map<String, dynamic> map) {
     return SubscriberNotificationConfiguration(
-      httpsNotificationConfiguration: map['httpsNotificationConfiguration'] == null ? null : (SubscriberNotificationConfigurationHttpsNotificationConfiguration.fromMap((map['httpsNotificationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      sqsNotificationConfiguration: map['sqsNotificationConfiguration'] == null ? null : ((map['sqsNotificationConfiguration'] as Map).cast<String, dynamic>()).input(),
+      httpsNotificationConfiguration: map['httpsNotificationConfiguration'] == null ? null : ((SubscriberNotificationConfigurationHttpsNotificationConfiguration.fromMap((map['httpsNotificationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      sqsNotificationConfiguration: map['sqsNotificationConfiguration'] == null ? null : (((map['sqsNotificationConfiguration'] as Map).cast<String, dynamic>()).input()).input(),
     );
   }
 }

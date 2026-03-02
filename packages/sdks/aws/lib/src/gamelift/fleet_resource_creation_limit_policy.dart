@@ -25,8 +25,8 @@ class FleetResourceCreationLimitPolicy {
 
   factory FleetResourceCreationLimitPolicy.fromMap(Map<String, dynamic> map) {
     return FleetResourceCreationLimitPolicy(
-      newGameSessionsPerCreator: map['newGameSessionsPerCreator'] == null ? null : (map['newGameSessionsPerCreator'] as int).input(),
-      policyPeriodInMinutes: map['policyPeriodInMinutes'] == null ? null : (map['policyPeriodInMinutes'] as int).input(),
+      newGameSessionsPerCreator: map['newGameSessionsPerCreator'] == null ? null : ((map['newGameSessionsPerCreator'] as int).input()).input(),
+      policyPeriodInMinutes: map['policyPeriodInMinutes'] == null ? null : ((map['policyPeriodInMinutes'] as int).input()).input(),
     );
   }
 }

@@ -50,9 +50,9 @@ class FrontdoorCustomDomainArgs {
   factory FrontdoorCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorCustomDomainArgs(
       cdnFrontdoorProfileId: (map['cdnFrontdoorProfileId'] as String).input(),
-      dnsZoneId: map['dnsZoneId'] == null ? null : (map['dnsZoneId'] as String).input(),
+      dnsZoneId: map['dnsZoneId'] == null ? null : (map['dnsZoneId']! as String).input(),
       hostName: (map['hostName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       tls: (FrontdoorCustomDomainTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
     );
   }

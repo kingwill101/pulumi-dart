@@ -49,11 +49,11 @@ class HttpRequest {
 
   factory HttpRequest.fromMap(Map<String, dynamic> map) {
     return HttpRequest(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      httpMethod: map['httpMethod'] == null ? null : (HttpRequestHttpMethod.fromValue(map['httpMethod'] as String)).input(),
-      oauthToken: map['oauthToken'] == null ? null : (OAuthToken.fromMap((map['oauthToken'] as Map).cast<String, dynamic>())).input(),
-      oidcToken: map['oidcToken'] == null ? null : (OidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>())).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (HttpRequestHttpMethod.fromValue(map['httpMethod']! as String)).input(),
+      oauthToken: map['oauthToken'] == null ? null : (OAuthToken.fromMap((map['oauthToken']! as Map).cast<String, dynamic>())).input(),
+      oidcToken: map['oidcToken'] == null ? null : (OidcToken.fromMap((map['oidcToken']! as Map).cast<String, dynamic>())).input(),
       url: (map['url'] as String).input(),
     );
   }

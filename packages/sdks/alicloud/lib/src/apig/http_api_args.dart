@@ -49,12 +49,12 @@ class HttpApiArgs {
 
   factory HttpApiArgs.fromMap(Map<String, dynamic> map) {
     return HttpApiArgs(
-      basePath: map['basePath'] == null ? null : (map['basePath'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      basePath: map['basePath'] == null ? null : (map['basePath']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       httpApiName: (map['httpApiName'] as String).input(),
       protocols: ((map['protocols'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

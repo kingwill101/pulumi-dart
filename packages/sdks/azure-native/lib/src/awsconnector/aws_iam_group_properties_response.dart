@@ -42,11 +42,11 @@ class AwsIamGroupPropertiesResponse {
 
   factory AwsIamGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsIamGroupPropertiesResponse(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      managedPolicyArns: map['managedPolicyArns'] == null ? null : ((map['managedPolicyArns'] as List).cast<String>()).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<PolicyResponse>(map['policies'], (value) => PolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      managedPolicyArns: map['managedPolicyArns'] == null ? null : ((map['managedPolicyArns']! as List).cast<String>()).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<PolicyResponse>(map['policies']!, (value) => PolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

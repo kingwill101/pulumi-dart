@@ -20,7 +20,7 @@ class VirtualNetworkGatewayCustomRoute {
 
   factory VirtualNetworkGatewayCustomRoute.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayCustomRoute(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
     );
   }
 }

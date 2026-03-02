@@ -52,12 +52,12 @@ class TargetGroupAttachmentArgs {
 
   factory TargetGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TargetGroupAttachmentArgs(
-      instance: map['instance'] == null ? null : (map['instance'] as pulumi_aws_ec2.Instance).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      lambda: map['lambda'] == null ? null : (map['lambda'] as pulumi_aws_lambda.FunctionType).input(),
-      lambdaArn: map['lambdaArn'] == null ? null : (map['lambdaArn'] as String).input(),
-      targetGroup: map['targetGroup'] == null ? null : (map['targetGroup'] as pulumi_aws_lb.TargetGroup).input(),
-      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as pulumi_aws_ec2.Instance).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      lambda: map['lambda'] == null ? null : (map['lambda']! as pulumi_aws_lambda.FunctionType).input(),
+      lambdaArn: map['lambdaArn'] == null ? null : (map['lambdaArn']! as String).input(),
+      targetGroup: map['targetGroup'] == null ? null : (map['targetGroup']! as pulumi_aws_lb.TargetGroup).input(),
+      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn']! as String).input(),
     );
   }
 }

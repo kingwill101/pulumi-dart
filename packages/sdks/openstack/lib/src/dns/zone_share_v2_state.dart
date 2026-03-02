@@ -41,10 +41,10 @@ class ZoneShareV2State {
 
   factory ZoneShareV2State.fromMap(Map<String, dynamic> map) {
     return ZoneShareV2State(
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetProjectId: map['targetProjectId'] == null ? null : (map['targetProjectId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      targetProjectId: map['targetProjectId'] == null ? null : (map['targetProjectId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

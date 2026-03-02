@@ -40,10 +40,10 @@ class KeyPolicyState {
 
   factory KeyPolicyState.fromMap(Map<String, dynamic> map) {
     return KeyPolicyState(
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : ((map['bypassPolicyLockoutSafetyCheck'] as bool).input()).input(),
+      keyId: map['keyId'] == null ? null : ((map['keyId'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

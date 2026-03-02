@@ -75,18 +75,18 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      activeDate: map['activeDate'] == null ? null : (map['activeDate'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      inactiveDate: map['inactiveDate'] == null ? null : (map['inactiveDate'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      usage: map['usage'] == null ? null : (map['usage'] as String).input(),
+      activeDate: map['activeDate'] == null ? null : ((map['activeDate'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      certificate: map['certificate'] == null ? null : ((map['certificate'] as String).input()).input(),
+      certificateChain: map['certificateChain'] == null ? null : ((map['certificateChain'] as String).input()).input(),
+      certificateId: map['certificateId'] == null ? null : ((map['certificateId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      inactiveDate: map['inactiveDate'] == null ? null : ((map['inactiveDate'] as String).input()).input(),
+      privateKey: map['privateKey'] == null ? null : ((map['privateKey'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      usage: map['usage'] == null ? null : ((map['usage'] as String).input()).input(),
     );
   }
 }

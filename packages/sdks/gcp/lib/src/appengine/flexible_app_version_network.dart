@@ -50,12 +50,12 @@ class FlexibleAppVersionNetwork {
 
   factory FlexibleAppVersionNetwork.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionNetwork(
-      forwardedPorts: map['forwardedPorts'] == null ? null : ((map['forwardedPorts'] as List).cast<String>()).input(),
-      instanceIpMode: map['instanceIpMode'] == null ? null : (map['instanceIpMode'] as String).input(),
-      instanceTag: map['instanceTag'] == null ? null : (map['instanceTag'] as String).input(),
+      forwardedPorts: map['forwardedPorts'] == null ? null : ((map['forwardedPorts']! as List).cast<String>()).input(),
+      instanceIpMode: map['instanceIpMode'] == null ? null : (map['instanceIpMode']! as String).input(),
+      instanceTag: map['instanceTag'] == null ? null : (map['instanceTag']! as String).input(),
       name: (map['name'] as String).input(),
-      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity'] as bool).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity']! as bool).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

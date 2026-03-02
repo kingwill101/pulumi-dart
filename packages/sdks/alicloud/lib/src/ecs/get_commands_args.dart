@@ -59,14 +59,14 @@ class GetCommandsArgs {
 
   factory GetCommandsArgs.fromMap(Map<String, dynamic> map) {
     return GetCommandsArgs(
-      commandProvider: map['commandProvider'] == null ? null : (map['commandProvider'] as String).input(),
-      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      commandProvider: map['commandProvider'] == null ? null : (map['commandProvider']! as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

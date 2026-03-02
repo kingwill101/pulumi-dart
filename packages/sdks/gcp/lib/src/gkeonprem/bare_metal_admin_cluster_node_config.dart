@@ -21,7 +21,7 @@ class BareMetalAdminClusterNodeConfig {
 
   factory BareMetalAdminClusterNodeConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterNodeConfig(
-      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode'] as int).input(),
+      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode']! as int).input(),
     );
   }
 }

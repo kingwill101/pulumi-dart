@@ -54,12 +54,12 @@ class DatabaseReplicaArgs {
   factory DatabaseReplicaArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseReplicaArgs(
       clusterId: (map['clusterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateNetworkUuid: map['privateNetworkUuid'] == null ? null : (map['privateNetworkUuid'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
-      storageSizeMib: map['storageSizeMib'] == null ? null : (map['storageSizeMib'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateNetworkUuid: map['privateNetworkUuid'] == null ? null : (map['privateNetworkUuid']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
+      storageSizeMib: map['storageSizeMib'] == null ? null : (map['storageSizeMib']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

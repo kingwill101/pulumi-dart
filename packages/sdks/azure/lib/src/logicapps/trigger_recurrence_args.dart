@@ -60,10 +60,10 @@ class TriggerRecurrenceArgs {
       frequency: (map['frequency'] as String).input(),
       interval: (map['interval'] as int).input(),
       logicAppId: (map['logicAppId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      schedule: map['schedule'] == null ? null : (TriggerRecurrenceSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      schedule: map['schedule'] == null ? null : (TriggerRecurrenceSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

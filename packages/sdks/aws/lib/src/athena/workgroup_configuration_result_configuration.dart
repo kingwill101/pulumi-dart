@@ -37,10 +37,10 @@ class WorkgroupConfigurationResultConfiguration {
 
   factory WorkgroupConfigurationResultConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationResultConfiguration(
-      aclConfiguration: map['aclConfiguration'] == null ? null : (WorkgroupConfigurationResultConfigurationAclConfiguration.fromMap((map['aclConfiguration'] as Map).cast<String, dynamic>())).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (WorkgroupConfigurationResultConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      outputLocation: map['outputLocation'] == null ? null : (map['outputLocation'] as String).input(),
+      aclConfiguration: map['aclConfiguration'] == null ? null : ((WorkgroupConfigurationResultConfigurationAclConfiguration.fromMap((map['aclConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((WorkgroupConfigurationResultConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      outputLocation: map['outputLocation'] == null ? null : ((map['outputLocation'] as String).input()).input(),
     );
   }
 }

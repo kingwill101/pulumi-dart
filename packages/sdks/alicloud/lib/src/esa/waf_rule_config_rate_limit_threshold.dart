@@ -41,11 +41,11 @@ class WafRuleConfigRateLimitThreshold {
 
   factory WafRuleConfigRateLimitThreshold.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigRateLimitThreshold(
-      distinctManagedRules: map['distinctManagedRules'] == null ? null : (map['distinctManagedRules'] as int).input(),
-      managedRulesBlocked: map['managedRulesBlocked'] == null ? null : (map['managedRulesBlocked'] as int).input(),
-      request: map['request'] == null ? null : (map['request'] as int).input(),
-      responseStatus: map['responseStatus'] == null ? null : (WafRuleConfigRateLimitThresholdResponseStatus.fromMap((map['responseStatus'] as Map).cast<String, dynamic>())).input(),
-      traffic: map['traffic'] == null ? null : (map['traffic'] as String).input(),
+      distinctManagedRules: map['distinctManagedRules'] == null ? null : (map['distinctManagedRules']! as int).input(),
+      managedRulesBlocked: map['managedRulesBlocked'] == null ? null : (map['managedRulesBlocked']! as int).input(),
+      request: map['request'] == null ? null : (map['request']! as int).input(),
+      responseStatus: map['responseStatus'] == null ? null : (WafRuleConfigRateLimitThresholdResponseStatus.fromMap((map['responseStatus']! as Map).cast<String, dynamic>())).input(),
+      traffic: map['traffic'] == null ? null : (map['traffic']! as String).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class CollectorAgentPropertiesResponse {
     return CollectorAgentPropertiesResponse(
       id: (map['id'] as String).input(),
       lastHeartbeatUtc: (map['lastHeartbeatUtc'] as String).input(),
-      spnDetails: map['spnDetails'] == null ? null : (CollectorBodyAgentSpnPropertiesResponse.fromMap((map['spnDetails'] as Map).cast<String, dynamic>())).input(),
+      spnDetails: map['spnDetails'] == null ? null : (CollectorBodyAgentSpnPropertiesResponse.fromMap((map['spnDetails']! as Map).cast<String, dynamic>())).input(),
       version: (map['version'] as String).input(),
     );
   }

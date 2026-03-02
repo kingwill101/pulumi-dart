@@ -51,10 +51,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
   factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository(
-      apt: map['apt'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
-      goo: map['goo'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo.fromMap((map['goo'] as Map).cast<String, dynamic>())).input(),
-      yum: map['yum'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
-      zypper: map['zypper'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
+      apt: map['apt'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt.fromMap((map['apt']! as Map).cast<String, dynamic>())).input(),
+      goo: map['goo'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGoo.fromMap((map['goo']! as Map).cast<String, dynamic>())).input(),
+      yum: map['yum'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYum.fromMap((map['yum']! as Map).cast<String, dynamic>())).input(),
+      zypper: map['zypper'] == null ? null : (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypper.fromMap((map['zypper']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

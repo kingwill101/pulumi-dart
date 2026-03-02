@@ -32,8 +32,8 @@ class AnalysisRuleAnnotatorSelectorSummarizationConfig {
 
   factory AnalysisRuleAnnotatorSelectorSummarizationConfig.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleAnnotatorSelectorSummarizationConfig(
-      conversationProfile: map['conversationProfile'] == null ? null : (map['conversationProfile'] as String).input(),
-      summarizationModel: map['summarizationModel'] == null ? null : (map['summarizationModel'] as String).input(),
+      conversationProfile: map['conversationProfile'] == null ? null : (map['conversationProfile']! as String).input(),
+      summarizationModel: map['summarizationModel'] == null ? null : (map['summarizationModel']! as String).input(),
     );
   }
 }

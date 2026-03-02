@@ -22,7 +22,7 @@ class StorageAccountDetailsResponse {
 
   factory StorageAccountDetailsResponse.fromMap(Map<String, dynamic> map) {
     return StorageAccountDetailsResponse(
-      systemCreatedStorageAccount: map['systemCreatedStorageAccount'] == null ? null : (SystemCreatedStorageAccountResponse.fromMap((map['systemCreatedStorageAccount'] as Map).cast<String, dynamic>())).input(),
+      systemCreatedStorageAccount: map['systemCreatedStorageAccount'] == null ? null : (SystemCreatedStorageAccountResponse.fromMap((map['systemCreatedStorageAccount']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

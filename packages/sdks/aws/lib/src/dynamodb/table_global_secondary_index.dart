@@ -68,16 +68,16 @@ class TableGlobalSecondaryIndex {
 
   factory TableGlobalSecondaryIndex.fromMap(Map<String, dynamic> map) {
     return TableGlobalSecondaryIndex(
-      hashKey: map['hashKey'] == null ? null : (map['hashKey'] as String).input(),
-      keySchemas: map['keySchemas'] == null ? null : (pulumi.Input.decodeList<TableGlobalSecondaryIndexKeySchema>(map['keySchemas'], (value) => TableGlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hashKey: map['hashKey'] == null ? null : ((map['hashKey'] as String).input()).input(),
+      keySchemas: map['keySchemas'] == null ? null : ((pulumi.Input.decodeList<TableGlobalSecondaryIndexKeySchema>(map['keySchemas']!, (value) => TableGlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       name: (map['name'] as String).input(),
-      nonKeyAttributes: map['nonKeyAttributes'] == null ? null : ((map['nonKeyAttributes'] as List).cast<String>()).input(),
-      onDemandThroughput: map['onDemandThroughput'] == null ? null : (TableGlobalSecondaryIndexOnDemandThroughput.fromMap((map['onDemandThroughput'] as Map).cast<String, dynamic>())).input(),
+      nonKeyAttributes: map['nonKeyAttributes'] == null ? null : (((map['nonKeyAttributes'] as List).cast<String>()).input()).input(),
+      onDemandThroughput: map['onDemandThroughput'] == null ? null : ((TableGlobalSecondaryIndexOnDemandThroughput.fromMap((map['onDemandThroughput']! as Map).cast<String, dynamic>())).input()).input(),
       projectionType: (map['projectionType'] as String).input(),
-      rangeKey: map['rangeKey'] == null ? null : (map['rangeKey'] as String).input(),
-      readCapacity: map['readCapacity'] == null ? null : (map['readCapacity'] as int).input(),
-      warmThroughput: map['warmThroughput'] == null ? null : (TableGlobalSecondaryIndexWarmThroughput.fromMap((map['warmThroughput'] as Map).cast<String, dynamic>())).input(),
-      writeCapacity: map['writeCapacity'] == null ? null : (map['writeCapacity'] as int).input(),
+      rangeKey: map['rangeKey'] == null ? null : ((map['rangeKey'] as String).input()).input(),
+      readCapacity: map['readCapacity'] == null ? null : ((map['readCapacity'] as int).input()).input(),
+      warmThroughput: map['warmThroughput'] == null ? null : ((TableGlobalSecondaryIndexWarmThroughput.fromMap((map['warmThroughput']! as Map).cast<String, dynamic>())).input()).input(),
+      writeCapacity: map['writeCapacity'] == null ? null : ((map['writeCapacity'] as int).input()).input(),
     );
   }
 }

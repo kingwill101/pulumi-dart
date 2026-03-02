@@ -31,9 +31,9 @@ class Device {
 
   factory Device.fromMap(Map<String, dynamic> map) {
     return Device(
-      containerPath: map['containerPath'] == null ? null : (map['containerPath'] as String).input(),
-      hostPath: map['hostPath'] == null ? null : (map['hostPath'] as String).input(),
-      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
+      containerPath: map['containerPath'] == null ? null : (map['containerPath']! as String).input(),
+      hostPath: map['hostPath'] == null ? null : (map['hostPath']! as String).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions']! as List).cast<String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ActiveModel {
 
   factory ActiveModel.fromMap(Map<String, dynamic> map) {
     return ActiveModel(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
     );
   }
 }

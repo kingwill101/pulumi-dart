@@ -36,10 +36,10 @@ class WindowsPropertiesResponse {
 
   factory WindowsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WindowsPropertiesResponse(
-      excludedKbNumbers: map['excludedKbNumbers'] == null ? null : ((map['excludedKbNumbers'] as List).cast<String>()).input(),
-      includedKbNumbers: map['includedKbNumbers'] == null ? null : ((map['includedKbNumbers'] as List).cast<String>()).input(),
-      includedUpdateClassifications: map['includedUpdateClassifications'] == null ? null : (map['includedUpdateClassifications'] as String).input(),
-      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting'] as String).input(),
+      excludedKbNumbers: map['excludedKbNumbers'] == null ? null : ((map['excludedKbNumbers']! as List).cast<String>()).input(),
+      includedKbNumbers: map['includedKbNumbers'] == null ? null : ((map['includedKbNumbers']! as List).cast<String>()).input(),
+      includedUpdateClassifications: map['includedUpdateClassifications'] == null ? null : (map['includedUpdateClassifications']! as String).input(),
+      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting']! as String).input(),
     );
   }
 }

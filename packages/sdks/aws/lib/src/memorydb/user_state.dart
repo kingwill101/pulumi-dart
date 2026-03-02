@@ -59,14 +59,14 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      accessString: map['accessString'] == null ? null : (map['accessString'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      authenticationMode: map['authenticationMode'] == null ? null : (UserAuthenticationMode.fromMap((map['authenticationMode'] as Map).cast<String, dynamic>())).input(),
-      minimumEngineVersion: map['minimumEngineVersion'] == null ? null : (map['minimumEngineVersion'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      accessString: map['accessString'] == null ? null : ((map['accessString'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : ((UserAuthenticationMode.fromMap((map['authenticationMode']! as Map).cast<String, dynamic>())).input()).input(),
+      minimumEngineVersion: map['minimumEngineVersion'] == null ? null : ((map['minimumEngineVersion'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
     );
   }
 }

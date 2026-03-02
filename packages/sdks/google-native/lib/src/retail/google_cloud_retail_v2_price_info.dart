@@ -46,12 +46,12 @@ class GoogleCloudRetailV2PriceInfo {
 
   factory GoogleCloudRetailV2PriceInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2PriceInfo(
-      cost: map['cost'] == null ? null : (map['cost'] as double).input(),
-      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode'] as String).input(),
-      originalPrice: map['originalPrice'] == null ? null : (map['originalPrice'] as double).input(),
-      price: map['price'] == null ? null : (map['price'] as double).input(),
-      priceEffectiveTime: map['priceEffectiveTime'] == null ? null : (map['priceEffectiveTime'] as String).input(),
-      priceExpireTime: map['priceExpireTime'] == null ? null : (map['priceExpireTime'] as String).input(),
+      cost: map['cost'] == null ? null : (map['cost']! as double).input(),
+      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode']! as String).input(),
+      originalPrice: map['originalPrice'] == null ? null : (map['originalPrice']! as double).input(),
+      price: map['price'] == null ? null : (map['price']! as double).input(),
+      priceEffectiveTime: map['priceEffectiveTime'] == null ? null : (map['priceEffectiveTime']! as String).input(),
+      priceExpireTime: map['priceExpireTime'] == null ? null : (map['priceExpireTime']! as String).input(),
     );
   }
 }

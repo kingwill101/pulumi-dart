@@ -46,11 +46,11 @@ class EnterpriseCrmEventbusProtoTeardownTaskConfig {
 
   factory EnterpriseCrmEventbusProtoTeardownTaskConfig.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTeardownTaskConfig(
-      creatorEmail: map['creatorEmail'] == null ? null : (map['creatorEmail'] as String).input(),
+      creatorEmail: map['creatorEmail'] == null ? null : (map['creatorEmail']! as String).input(),
       name: (map['name'] as String).input(),
-      nextTeardownTask: map['nextTeardownTask'] == null ? null : (EnterpriseCrmEventbusProtoNextTeardownTask.fromMap((map['nextTeardownTask'] as Map).cast<String, dynamic>())).input(),
-      parameters: map['parameters'] == null ? null : (EnterpriseCrmEventbusProtoEventParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (EnterpriseCrmEventbusProtoEventBusProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      nextTeardownTask: map['nextTeardownTask'] == null ? null : (EnterpriseCrmEventbusProtoNextTeardownTask.fromMap((map['nextTeardownTask']! as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (EnterpriseCrmEventbusProtoEventParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (EnterpriseCrmEventbusProtoEventBusProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       teardownTaskImplementationClassName: (map['teardownTaskImplementationClassName'] as String).input(),
     );
   }

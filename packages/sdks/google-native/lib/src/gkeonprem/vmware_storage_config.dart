@@ -21,7 +21,7 @@ class VmwareStorageConfig {
 
   factory VmwareStorageConfig.fromMap(Map<String, dynamic> map) {
     return VmwareStorageConfig(
-      vsphereCsiDisabled: map['vsphereCsiDisabled'] == null ? null : (map['vsphereCsiDisabled'] as bool).input(),
+      vsphereCsiDisabled: map['vsphereCsiDisabled'] == null ? null : (map['vsphereCsiDisabled']! as bool).input(),
     );
   }
 }

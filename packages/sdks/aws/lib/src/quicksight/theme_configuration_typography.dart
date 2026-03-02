@@ -21,7 +21,7 @@ class ThemeConfigurationTypography {
 
   factory ThemeConfigurationTypography.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationTypography(
-      fontFamilies: map['fontFamilies'] == null ? null : (pulumi.Input.decodeList<ThemeConfigurationTypographyFontFamily>(map['fontFamilies'], (value) => ThemeConfigurationTypographyFontFamily.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fontFamilies: map['fontFamilies'] == null ? null : ((pulumi.Input.decodeList<ThemeConfigurationTypographyFontFamily>(map['fontFamilies']!, (value) => ThemeConfigurationTypographyFontFamily.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

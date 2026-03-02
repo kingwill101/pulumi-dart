@@ -39,8 +39,8 @@ class ManagedFolderArgs {
   factory ManagedFolderArgs.fromMap(Map<String, dynamic> map) {
     return ManagedFolderArgs(
       bucket: (map['bucket'] as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

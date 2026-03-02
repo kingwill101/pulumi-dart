@@ -20,7 +20,7 @@ class DomainDevicesParallelAcpi {
 
   factory DomainDevicesParallelAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesParallelAcpi(
-      index: map['index'] == null ? null : (map['index'] as double).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
     );
   }
 }

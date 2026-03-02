@@ -35,8 +35,8 @@ class ConnectionTypeField {
 
   factory ConnectionTypeField.fromMap(Map<String, dynamic> map) {
     return ConnectionTypeField(
-      isEncrypted: map['isEncrypted'] == null ? null : (map['isEncrypted'] as bool).input(),
-      isOptional: map['isOptional'] == null ? null : (map['isOptional'] as bool).input(),
+      isEncrypted: map['isEncrypted'] == null ? null : (map['isEncrypted']! as bool).input(),
+      isOptional: map['isOptional'] == null ? null : (map['isOptional']! as bool).input(),
       name: (map['name'] as String).input(),
       type: (map['type'] as String).input(),
     );

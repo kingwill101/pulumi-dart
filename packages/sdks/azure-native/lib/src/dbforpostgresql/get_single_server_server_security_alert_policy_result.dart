@@ -71,15 +71,15 @@ class GetSingleServerServerSecurityAlertPolicyResult {
   factory GetSingleServerServerSecurityAlertPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetSingleServerServerSecurityAlertPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      disabledAlerts: map['disabledAlerts'] == null ? null : (map['disabledAlerts'] as List).cast<String>(),
-      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : map['emailAccountAdmins'] as bool,
-      emailAddresses: map['emailAddresses'] == null ? null : (map['emailAddresses'] as List).cast<String>(),
+      disabledAlerts: map['disabledAlerts'] == null ? null : (map['disabledAlerts']! as List).cast<String>(),
+      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : map['emailAccountAdmins']! as bool,
+      emailAddresses: map['emailAddresses'] == null ? null : (map['emailAddresses']! as List).cast<String>(),
       id: map['id'] as String,
       name: map['name'] as String,
-      retentionDays: map['retentionDays'] == null ? null : map['retentionDays'] as int,
+      retentionDays: map['retentionDays'] == null ? null : map['retentionDays']! as int,
       state: map['state'] as String,
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : map['storageAccountAccessKey'] as String,
-      storageEndpoint: map['storageEndpoint'] == null ? null : map['storageEndpoint'] as String,
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : map['storageAccountAccessKey']! as String,
+      storageEndpoint: map['storageEndpoint'] == null ? null : map['storageEndpoint']! as String,
       type: map['type'] as String,
     );
   }

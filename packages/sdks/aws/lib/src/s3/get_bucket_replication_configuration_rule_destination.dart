@@ -48,12 +48,12 @@ class GetBucketReplicationConfigurationRuleDestination {
 
   factory GetBucketReplicationConfigurationRuleDestination.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationRuleDestination(
-      accessControlTranslations: (pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation>(map['accessControlTranslations'], (value) => GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessControlTranslations: (pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation>(map['accessControlTranslations']!, (value) => GetBucketReplicationConfigurationRuleDestinationAccessControlTranslation.fromMap((value as Map).cast<String, dynamic>()))).input(),
       account: (map['account'] as String).input(),
       bucket: (map['bucket'] as String).input(),
-      encryptionConfigurations: (pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration>(map['encryptionConfigurations'], (value) => GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metrics: (pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationMetric>(map['metrics'], (value) => GetBucketReplicationConfigurationRuleDestinationMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replicationTimes: (pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationReplicationTime>(map['replicationTimes'], (value) => GetBucketReplicationConfigurationRuleDestinationReplicationTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionConfigurations: (pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration>(map['encryptionConfigurations']!, (value) => GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metrics: (pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationMetric>(map['metrics']!, (value) => GetBucketReplicationConfigurationRuleDestinationMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicationTimes: (pulumi.Input.decodeList<GetBucketReplicationConfigurationRuleDestinationReplicationTime>(map['replicationTimes']!, (value) => GetBucketReplicationConfigurationRuleDestinationReplicationTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
       storageClass: (map['storageClass'] as String).input(),
     );
   }

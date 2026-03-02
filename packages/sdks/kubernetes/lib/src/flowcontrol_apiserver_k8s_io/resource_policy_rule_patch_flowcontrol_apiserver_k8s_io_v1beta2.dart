@@ -41,11 +41,11 @@ class ResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta2 {
 
   factory ResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyRulePatchFlowcontrolApiserverK8sIoV1beta2(
-      apiGroups: map['apiGroups'] == null ? null : ((map['apiGroups'] as List).cast<String>()).input(),
-      clusterScope: map['clusterScope'] == null ? null : (map['clusterScope'] as bool).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
-      verbs: map['verbs'] == null ? null : ((map['verbs'] as List).cast<String>()).input(),
+      apiGroups: map['apiGroups'] == null ? null : ((map['apiGroups']! as List).cast<String>()).input(),
+      clusterScope: map['clusterScope'] == null ? null : (map['clusterScope']! as bool).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
+      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
+      verbs: map['verbs'] == null ? null : ((map['verbs']! as List).cast<String>()).input(),
     );
   }
 }

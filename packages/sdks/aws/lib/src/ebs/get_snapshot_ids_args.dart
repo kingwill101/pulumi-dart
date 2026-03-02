@@ -40,10 +40,10 @@ class GetSnapshotIdsArgs {
 
   factory GetSnapshotIdsArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotIdsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSnapshotIdsFilter>(map['filters'], (value) => GetSnapshotIdsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      owners: map['owners'] == null ? null : ((map['owners'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restorableByUserIds: map['restorableByUserIds'] == null ? null : ((map['restorableByUserIds'] as List).cast<String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetSnapshotIdsFilter>(map['filters']!, (value) => GetSnapshotIdsFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      owners: map['owners'] == null ? null : (((map['owners'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restorableByUserIds: map['restorableByUserIds'] == null ? null : (((map['restorableByUserIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

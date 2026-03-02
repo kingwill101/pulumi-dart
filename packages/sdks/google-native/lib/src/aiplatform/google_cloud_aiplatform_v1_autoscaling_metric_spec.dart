@@ -27,7 +27,7 @@ class GoogleCloudAiplatformV1AutoscalingMetricSpec {
   factory GoogleCloudAiplatformV1AutoscalingMetricSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1AutoscalingMetricSpec(
       metricName: (map['metricName'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as int).input(),
+      target: map['target'] == null ? null : (map['target']! as int).input(),
     );
   }
 }

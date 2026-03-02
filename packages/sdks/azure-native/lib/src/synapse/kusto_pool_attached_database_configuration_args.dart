@@ -65,14 +65,14 @@ class KustoPoolAttachedDatabaseConfigurationArgs {
 
   factory KustoPoolAttachedDatabaseConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return KustoPoolAttachedDatabaseConfigurationArgs(
-      attachedDatabaseConfigurationName: map['attachedDatabaseConfigurationName'] == null ? null : (map['attachedDatabaseConfigurationName'] as String).input(),
+      attachedDatabaseConfigurationName: map['attachedDatabaseConfigurationName'] == null ? null : (map['attachedDatabaseConfigurationName']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
       defaultPrincipalsModificationKind: (map['defaultPrincipalsModificationKind'] as String).input(),
       kustoPoolName: (map['kustoPoolName'] as String).input(),
       kustoPoolResourceId: (map['kustoPoolResourceId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : (TableLevelSharingProperties.fromMap((map['tableLevelSharingProperties'] as Map).cast<String, dynamic>())).input(),
+      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : (TableLevelSharingProperties.fromMap((map['tableLevelSharingProperties']! as Map).cast<String, dynamic>())).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

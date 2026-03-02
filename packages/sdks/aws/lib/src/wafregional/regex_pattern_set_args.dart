@@ -34,9 +34,9 @@ class RegexPatternSetArgs {
 
   factory RegexPatternSetArgs.fromMap(Map<String, dynamic> map) {
     return RegexPatternSetArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      regexPatternStrings: map['regexPatternStrings'] == null ? null : ((map['regexPatternStrings'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      regexPatternStrings: map['regexPatternStrings'] == null ? null : (((map['regexPatternStrings'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

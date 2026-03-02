@@ -47,12 +47,12 @@ class ConditionAccesscontextmanagerV1beta {
 
   factory ConditionAccesscontextmanagerV1beta.fromMap(Map<String, dynamic> map) {
     return ConditionAccesscontextmanagerV1beta(
-      devicePolicy: map['devicePolicy'] == null ? null : (DevicePolicyAccesscontextmanagerV1beta.fromMap((map['devicePolicy'] as Map).cast<String, dynamic>())).input(),
-      ipSubnetworks: map['ipSubnetworks'] == null ? null : ((map['ipSubnetworks'] as List).cast<String>()).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      negate: map['negate'] == null ? null : (map['negate'] as bool).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      requiredAccessLevels: map['requiredAccessLevels'] == null ? null : ((map['requiredAccessLevels'] as List).cast<String>()).input(),
+      devicePolicy: map['devicePolicy'] == null ? null : (DevicePolicyAccesscontextmanagerV1beta.fromMap((map['devicePolicy']! as Map).cast<String, dynamic>())).input(),
+      ipSubnetworks: map['ipSubnetworks'] == null ? null : ((map['ipSubnetworks']! as List).cast<String>()).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      negate: map['negate'] == null ? null : (map['negate']! as bool).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
+      requiredAccessLevels: map['requiredAccessLevels'] == null ? null : ((map['requiredAccessLevels']! as List).cast<String>()).input(),
     );
   }
 }

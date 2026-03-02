@@ -45,8 +45,8 @@ class KubeconfigOptions {
 
   factory KubeconfigOptions.fromMap(Map<String, dynamic> map) {
     return KubeconfigOptions(
-      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
     );
   }
 }

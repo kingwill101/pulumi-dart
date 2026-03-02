@@ -56,12 +56,12 @@ class ServiceNetworkVpcAssociationArgs {
 
   factory ServiceNetworkVpcAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkVpcAssociationArgs(
-      dnsOptions: map['dnsOptions'] == null ? null : (ServiceNetworkVpcAssociationDnsOptions.fromMap((map['dnsOptions'] as Map).cast<String, dynamic>())).input(),
-      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      dnsOptions: map['dnsOptions'] == null ? null : ((ServiceNetworkVpcAssociationDnsOptions.fromMap((map['dnsOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : ((map['privateDnsEnabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
       serviceNetworkIdentifier: (map['serviceNetworkIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vpcIdentifier: (map['vpcIdentifier'] as String).input(),
     );
   }

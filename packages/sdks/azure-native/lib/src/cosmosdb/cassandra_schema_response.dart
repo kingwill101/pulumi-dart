@@ -34,9 +34,9 @@ class CassandraSchemaResponse {
 
   factory CassandraSchemaResponse.fromMap(Map<String, dynamic> map) {
     return CassandraSchemaResponse(
-      clusterKeys: map['clusterKeys'] == null ? null : (pulumi.Input.decodeList<ClusterKeyResponse>(map['clusterKeys'], (value) => ClusterKeyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<ColumnResponse>(map['columns'], (value) => ColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      partitionKeys: map['partitionKeys'] == null ? null : (pulumi.Input.decodeList<CassandraPartitionKeyResponse>(map['partitionKeys'], (value) => CassandraPartitionKeyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterKeys: map['clusterKeys'] == null ? null : (pulumi.Input.decodeList<ClusterKeyResponse>(map['clusterKeys']!, (value) => ClusterKeyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<ColumnResponse>(map['columns']!, (value) => ColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      partitionKeys: map['partitionKeys'] == null ? null : (pulumi.Input.decodeList<CassandraPartitionKeyResponse>(map['partitionKeys']!, (value) => CassandraPartitionKeyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class VerificationResultResponse {
 
   factory VerificationResultResponse.fromMap(Map<String, dynamic> map) {
     return VerificationResultResponse(
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
       result: (map['result'] as String).input(),
-      verificationName: map['verificationName'] == null ? null : (map['verificationName'] as String).input(),
+      verificationName: map['verificationName'] == null ? null : (map['verificationName']! as String).input(),
     );
   }
 }

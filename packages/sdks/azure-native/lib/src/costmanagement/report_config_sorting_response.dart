@@ -26,7 +26,7 @@ class ReportConfigSortingResponse {
 
   factory ReportConfigSortingResponse.fromMap(Map<String, dynamic> map) {
     return ReportConfigSortingResponse(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -26,8 +26,8 @@ class NotificationHubState {
 
   factory NotificationHubState.fromMap(Map<String, dynamic> map) {
     return NotificationHubState(
-      notificationHubRegion: map['notificationHubRegion'] == null ? null : (map['notificationHubRegion'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (NotificationHubTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      notificationHubRegion: map['notificationHubRegion'] == null ? null : ((map['notificationHubRegion'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((NotificationHubTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

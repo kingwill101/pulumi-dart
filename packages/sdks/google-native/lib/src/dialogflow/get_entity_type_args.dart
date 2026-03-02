@@ -36,9 +36,9 @@ class GetEntityTypeArgs {
   factory GetEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetEntityTypeArgs(
       entityTypeId: (map['entityTypeId'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

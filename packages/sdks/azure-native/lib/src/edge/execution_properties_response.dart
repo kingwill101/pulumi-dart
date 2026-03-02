@@ -38,7 +38,7 @@ class ExecutionPropertiesResponse {
   factory ExecutionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionPropertiesResponse(
       provisioningState: (map['provisioningState'] as String).input(),
-      specification: map['specification'] == null ? null : (map['specification']).input(),
+      specification: map['specification'] == null ? null : (map['specification']!).input(),
       status: (ExecutionStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
       workflowVersionId: (map['workflowVersionId'] as String).input(),
     );

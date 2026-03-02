@@ -66,16 +66,16 @@ class PoolAttachmentState {
 
   factory PoolAttachmentState.fromMap(Map<String, dynamic> map) {
     return PoolAttachmentState(
-      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit'] as int).input(),
-      connectionRateLimit: map['connectionRateLimit'] == null ? null : (map['connectionRateLimit'] as String).input(),
-      dynamicRatio: map['dynamicRatio'] == null ? null : (map['dynamicRatio'] as int).input(),
-      fqdnAutopopulate: map['fqdnAutopopulate'] == null ? null : (map['fqdnAutopopulate'] as String).input(),
-      monitor: map['monitor'] == null ? null : (map['monitor'] as String).input(),
-      node: map['node'] == null ? null : (map['node'] as String).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
-      priorityGroup: map['priorityGroup'] == null ? null : (map['priorityGroup'] as int).input(),
-      ratio: map['ratio'] == null ? null : (map['ratio'] as int).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      connectionLimit: map['connectionLimit'] == null ? null : (map['connectionLimit']! as int).input(),
+      connectionRateLimit: map['connectionRateLimit'] == null ? null : (map['connectionRateLimit']! as String).input(),
+      dynamicRatio: map['dynamicRatio'] == null ? null : (map['dynamicRatio']! as int).input(),
+      fqdnAutopopulate: map['fqdnAutopopulate'] == null ? null : (map['fqdnAutopopulate']! as String).input(),
+      monitor: map['monitor'] == null ? null : (map['monitor']! as String).input(),
+      node: map['node'] == null ? null : (map['node']! as String).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
+      priorityGroup: map['priorityGroup'] == null ? null : (map['priorityGroup']! as int).input(),
+      ratio: map['ratio'] == null ? null : (map['ratio']! as int).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

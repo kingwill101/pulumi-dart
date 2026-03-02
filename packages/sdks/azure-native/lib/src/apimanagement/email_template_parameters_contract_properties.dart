@@ -31,9 +31,9 @@ class EmailTemplateParametersContractProperties {
 
   factory EmailTemplateParametersContractProperties.fromMap(Map<String, dynamic> map) {
     return EmailTemplateParametersContractProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

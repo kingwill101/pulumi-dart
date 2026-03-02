@@ -25,8 +25,8 @@ class VpcIngressConnectionIngressVpcConfiguration {
 
   factory VpcIngressConnectionIngressVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return VpcIngressConnectionIngressVpcConfiguration(
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

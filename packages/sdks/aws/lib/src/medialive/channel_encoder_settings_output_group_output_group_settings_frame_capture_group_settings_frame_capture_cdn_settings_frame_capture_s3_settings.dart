@@ -20,7 +20,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSetti
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsFrameCaptureCdnSettingsFrameCaptureS3Settings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsFrameCaptureCdnSettingsFrameCaptureS3Settings(
-      cannedAcl: map['cannedAcl'] == null ? null : (map['cannedAcl'] as String).input(),
+      cannedAcl: map['cannedAcl'] == null ? null : ((map['cannedAcl'] as String).input()).input(),
     );
   }
 }

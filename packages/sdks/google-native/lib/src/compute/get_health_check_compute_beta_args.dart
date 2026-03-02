@@ -28,7 +28,7 @@ class GetHealthCheckComputeBetaArgs {
   factory GetHealthCheckComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckComputeBetaArgs(
       healthCheck: (map['healthCheck'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

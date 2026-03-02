@@ -63,13 +63,13 @@ class GetVolumeResult {
 
   factory GetVolumeResult.fromMap(Map<String, dynamic> map) {
     return GetVolumeResult(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       dropletIds: (map['dropletIds'] as List).cast<int>(),
       filesystemLabel: map['filesystemLabel'] as String,
       filesystemType: map['filesystemType'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      region: map['region'] == null ? null : map['region']! as String,
       size: map['size'] as int,
       tags: (map['tags'] as List).cast<String>(),
       urn: map['urn'] as String,

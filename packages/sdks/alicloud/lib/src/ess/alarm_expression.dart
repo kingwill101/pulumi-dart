@@ -40,11 +40,11 @@ class AlarmExpression {
 
   factory AlarmExpression.fromMap(Map<String, dynamic> map) {
     return AlarmExpression(
-      comparisonOperator: map['comparisonOperator'] == null ? null : (map['comparisonOperator'] as String).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      statistics: map['statistics'] == null ? null : (map['statistics'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as double).input(),
+      comparisonOperator: map['comparisonOperator'] == null ? null : (map['comparisonOperator']! as String).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      statistics: map['statistics'] == null ? null : (map['statistics']! as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as double).input(),
     );
   }
 }

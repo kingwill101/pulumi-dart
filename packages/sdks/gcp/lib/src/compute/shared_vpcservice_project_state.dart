@@ -31,9 +31,9 @@ class SharedVPCServiceProjectState {
 
   factory SharedVPCServiceProjectState.fromMap(Map<String, dynamic> map) {
     return SharedVPCServiceProjectState(
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      hostProject: map['hostProject'] == null ? null : (map['hostProject'] as String).input(),
-      serviceProject: map['serviceProject'] == null ? null : (map['serviceProject'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      hostProject: map['hostProject'] == null ? null : (map['hostProject']! as String).input(),
+      serviceProject: map['serviceProject'] == null ? null : (map['serviceProject']! as String).input(),
     );
   }
 }

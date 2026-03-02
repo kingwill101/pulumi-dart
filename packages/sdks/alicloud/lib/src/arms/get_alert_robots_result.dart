@@ -54,13 +54,13 @@ class GetAlertRobotsResult {
 
   factory GetAlertRobotsResult.fromMap(Map<String, dynamic> map) {
     return GetAlertRobotsResult(
-      alertRobotName: map['alertRobotName'] == null ? null : map['alertRobotName'] as String,
+      alertRobotName: map['alertRobotName'] == null ? null : map['alertRobotName']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      robotType: map['robotType'] == null ? null : map['robotType'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      robotType: map['robotType'] == null ? null : map['robotType']! as String,
       robots: pulumi.Input.decodeList<GetAlertRobotsRobot>(map['robots'], (value) => GetAlertRobotsRobot.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

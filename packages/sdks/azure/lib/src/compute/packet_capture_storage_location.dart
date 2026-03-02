@@ -32,9 +32,9 @@ class PacketCaptureStorageLocation {
 
   factory PacketCaptureStorageLocation.fromMap(Map<String, dynamic> map) {
     return PacketCaptureStorageLocation(
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      storagePath: map['storagePath'] == null ? null : (map['storagePath'] as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      storagePath: map['storagePath'] == null ? null : (map['storagePath']! as String).input(),
     );
   }
 }

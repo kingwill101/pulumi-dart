@@ -27,7 +27,7 @@ class TemplateSourceEntitySourceAnalysis {
   factory TemplateSourceEntitySourceAnalysis.fromMap(Map<String, dynamic> map) {
     return TemplateSourceEntitySourceAnalysis(
       arn: (map['arn'] as String).input(),
-      dataSetReferences: (pulumi.Input.decodeList<TemplateSourceEntitySourceAnalysisDataSetReference>(map['dataSetReferences'], (value) => TemplateSourceEntitySourceAnalysisDataSetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSetReferences: (pulumi.Input.decodeList<TemplateSourceEntitySourceAnalysisDataSetReference>(map['dataSetReferences']!, (value) => TemplateSourceEntitySourceAnalysisDataSetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

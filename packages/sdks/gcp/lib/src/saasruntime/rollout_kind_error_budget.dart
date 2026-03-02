@@ -27,8 +27,8 @@ class RolloutKindErrorBudget {
 
   factory RolloutKindErrorBudget.fromMap(Map<String, dynamic> map) {
     return RolloutKindErrorBudget(
-      allowedCount: map['allowedCount'] == null ? null : (map['allowedCount'] as int).input(),
-      allowedPercentage: map['allowedPercentage'] == null ? null : (map['allowedPercentage'] as int).input(),
+      allowedCount: map['allowedCount'] == null ? null : (map['allowedCount']! as int).input(),
+      allowedPercentage: map['allowedPercentage'] == null ? null : (map['allowedPercentage']! as int).input(),
     );
   }
 }

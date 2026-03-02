@@ -45,7 +45,7 @@ class GatewayVcoRouteArgs {
   factory GatewayVcoRouteArgs.fromMap(Map<String, dynamic> map) {
     return GatewayVcoRouteArgs(
       nextHop: (map['nextHop'] as String).input(),
-      overlayMode: map['overlayMode'] == null ? null : (map['overlayMode'] as String).input(),
+      overlayMode: map['overlayMode'] == null ? null : (map['overlayMode']! as String).input(),
       routeDest: (map['routeDest'] as String).input(),
       vpnConnectionId: (map['vpnConnectionId'] as String).input(),
       weight: (map['weight'] as int).input(),

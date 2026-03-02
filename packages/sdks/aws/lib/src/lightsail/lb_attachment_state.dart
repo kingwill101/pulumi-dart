@@ -33,9 +33,9 @@ class LbAttachmentState {
 
   factory LbAttachmentState.fromMap(Map<String, dynamic> map) {
     return LbAttachmentState(
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      lbName: map['lbName'] == null ? null : (map['lbName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : ((map['instanceName'] as String).input()).input(),
+      lbName: map['lbName'] == null ? null : ((map['lbName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

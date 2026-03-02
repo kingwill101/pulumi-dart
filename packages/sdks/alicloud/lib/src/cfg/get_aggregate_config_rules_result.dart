@@ -68,17 +68,17 @@ class GetAggregateConfigRulesResult {
 
   factory GetAggregateConfigRulesResult.fromMap(Map<String, dynamic> map) {
     return GetAggregateConfigRulesResult(
-      aggregateConfigRuleName: map['aggregateConfigRuleName'] == null ? null : map['aggregateConfigRuleName'] as String,
+      aggregateConfigRuleName: map['aggregateConfigRuleName'] == null ? null : map['aggregateConfigRuleName']! as String,
       aggregatorId: map['aggregatorId'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      riskLevel: map['riskLevel'] == null ? null : map['riskLevel'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      riskLevel: map['riskLevel'] == null ? null : map['riskLevel']! as int,
       rules: pulumi.Input.decodeList<GetAggregateConfigRulesRule>(map['rules'], (value) => GetAggregateConfigRulesRule.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

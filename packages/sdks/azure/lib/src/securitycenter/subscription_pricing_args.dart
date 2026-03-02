@@ -40,9 +40,9 @@ class SubscriptionPricingArgs {
 
   factory SubscriptionPricingArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionPricingArgs(
-      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<SubscriptionPricingExtension>(map['extensions'], (value) => SubscriptionPricingExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      subplan: map['subplan'] == null ? null : (map['subplan'] as String).input(),
+      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<SubscriptionPricingExtension>(map['extensions']!, (value) => SubscriptionPricingExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      subplan: map['subplan'] == null ? null : (map['subplan']! as String).input(),
       tier: (map['tier'] as String).input(),
     );
   }

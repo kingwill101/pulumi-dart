@@ -38,9 +38,9 @@ class OsPropertiesResponse {
   factory OsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return OsPropertiesResponse(
       customImageDisplayName: (map['customImageDisplayName'] as String).input(),
-      customImageId: map['customImageId'] == null ? null : (map['customImageId'] as String).input(),
-      osName: map['osName'] == null ? null : (map['osName'] as String).input(),
-      releaseProperties: map['releaseProperties'] == null ? null : (ReleasePropertiesResponse.fromMap((map['releaseProperties'] as Map).cast<String, dynamic>())).input(),
+      customImageId: map['customImageId'] == null ? null : (map['customImageId']! as String).input(),
+      osName: map['osName'] == null ? null : (map['osName']! as String).input(),
+      releaseProperties: map['releaseProperties'] == null ? null : (ReleasePropertiesResponse.fromMap((map['releaseProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

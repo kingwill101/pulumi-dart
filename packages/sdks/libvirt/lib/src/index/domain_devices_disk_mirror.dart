@@ -43,11 +43,11 @@ class DomainDevicesDiskMirror {
 
   factory DomainDevicesDiskMirror.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirror(
-      backingStore: map['backingStore'] == null ? null : (DomainDevicesDiskMirrorBackingStore.fromMap((map['backingStore'] as Map).cast<String, dynamic>())).input(),
-      format: map['format'] == null ? null : (DomainDevicesDiskMirrorFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
-      job: map['job'] == null ? null : (map['job'] as String).input(),
-      ready: map['ready'] == null ? null : (map['ready'] as String).input(),
-      source: map['source'] == null ? null : (DomainDevicesDiskMirrorSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      backingStore: map['backingStore'] == null ? null : (DomainDevicesDiskMirrorBackingStore.fromMap((map['backingStore']! as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (DomainDevicesDiskMirrorFormat.fromMap((map['format']! as Map).cast<String, dynamic>())).input(),
+      job: map['job'] == null ? null : (map['job']! as String).input(),
+      ready: map['ready'] == null ? null : (map['ready']! as String).input(),
+      source: map['source'] == null ? null : (DomainDevicesDiskMirrorSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

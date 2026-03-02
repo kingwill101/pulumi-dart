@@ -74,20 +74,20 @@ class GetVpcFlowLogsResult {
 
   factory GetVpcFlowLogsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcFlowLogsResult(
-      description: map['description'] == null ? null : map['description'] as String,
-      flowLogName: map['flowLogName'] == null ? null : map['flowLogName'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      flowLogName: map['flowLogName'] == null ? null : map['flowLogName']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      logStoreName: map['logStoreName'] == null ? null : map['logStoreName'] as String,
+      logStoreName: map['logStoreName'] == null ? null : map['logStoreName']! as String,
       logs: pulumi.Input.decodeList<GetVpcFlowLogsLog>(map['logs'], (value) => GetVpcFlowLogsLog.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      projectName: map['projectName'] == null ? null : map['projectName'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      trafficType: map['trafficType'] == null ? null : map['trafficType'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      projectName: map['projectName'] == null ? null : map['projectName']! as String,
+      resourceId: map['resourceId'] == null ? null : map['resourceId']! as String,
+      resourceType: map['resourceType'] == null ? null : map['resourceType']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      trafficType: map['trafficType'] == null ? null : map['trafficType']! as String,
     );
   }
 }

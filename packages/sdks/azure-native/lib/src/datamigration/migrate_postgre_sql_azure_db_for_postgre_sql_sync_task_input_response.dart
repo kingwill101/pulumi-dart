@@ -43,7 +43,7 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse {
 
   factory MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse(
-      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields'] as String).input(),
+      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields']! as String).input(),
       selectedDatabases: (pulumi.Input.decodeList<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse>(map['selectedDatabases'], (value) => MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       sourceConnectionInfo: (PostgreSqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
       startedOn: (map['startedOn'] as String).input(),

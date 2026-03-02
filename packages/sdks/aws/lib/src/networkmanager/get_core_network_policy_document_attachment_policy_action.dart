@@ -40,11 +40,11 @@ class GetCoreNetworkPolicyDocumentAttachmentPolicyAction {
 
   factory GetCoreNetworkPolicyDocumentAttachmentPolicyAction.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentAttachmentPolicyAction(
-      addToNetworkFunctionGroup: map['addToNetworkFunctionGroup'] == null ? null : (map['addToNetworkFunctionGroup'] as String).input(),
-      associationMethod: map['associationMethod'] == null ? null : (map['associationMethod'] as String).input(),
-      requireAcceptance: map['requireAcceptance'] == null ? null : (map['requireAcceptance'] as bool).input(),
-      segment: map['segment'] == null ? null : (map['segment'] as String).input(),
-      tagValueOfKey: map['tagValueOfKey'] == null ? null : (map['tagValueOfKey'] as String).input(),
+      addToNetworkFunctionGroup: map['addToNetworkFunctionGroup'] == null ? null : ((map['addToNetworkFunctionGroup'] as String).input()).input(),
+      associationMethod: map['associationMethod'] == null ? null : ((map['associationMethod'] as String).input()).input(),
+      requireAcceptance: map['requireAcceptance'] == null ? null : ((map['requireAcceptance'] as bool).input()).input(),
+      segment: map['segment'] == null ? null : ((map['segment'] as String).input()).input(),
+      tagValueOfKey: map['tagValueOfKey'] == null ? null : ((map['tagValueOfKey'] as String).input()).input(),
     );
   }
 }

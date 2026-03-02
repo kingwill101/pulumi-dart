@@ -27,8 +27,8 @@ class DataSourceConfigurationWebCrawlerConfigurationUrls {
 
   factory DataSourceConfigurationWebCrawlerConfigurationUrls.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationWebCrawlerConfigurationUrls(
-      seedUrlConfiguration: map['seedUrlConfiguration'] == null ? null : (DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration.fromMap((map['seedUrlConfiguration'] as Map).cast<String, dynamic>())).input(),
-      siteMapsConfiguration: map['siteMapsConfiguration'] == null ? null : (DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration.fromMap((map['siteMapsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      seedUrlConfiguration: map['seedUrlConfiguration'] == null ? null : ((DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration.fromMap((map['seedUrlConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      siteMapsConfiguration: map['siteMapsConfiguration'] == null ? null : ((DataSourceConfigurationWebCrawlerConfigurationUrlsSiteMapsConfiguration.fromMap((map['siteMapsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

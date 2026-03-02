@@ -73,14 +73,14 @@ class TaasTapMirrorV2Args {
 
   factory TaasTapMirrorV2Args.fromMap(Map<String, dynamic> map) {
     return TaasTapMirrorV2Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       directions: (TaasTapMirrorV2Directions.fromMap((map['directions'] as Map).cast<String, dynamic>())).input(),
       mirrorType: (map['mirrorType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       portId: (map['portId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       remoteIp: (map['remoteIp'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

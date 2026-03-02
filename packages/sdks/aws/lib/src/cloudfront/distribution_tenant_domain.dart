@@ -26,7 +26,7 @@ class DistributionTenantDomain {
   factory DistributionTenantDomain.fromMap(Map<String, dynamic> map) {
     return DistributionTenantDomain(
       domain: (map['domain'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

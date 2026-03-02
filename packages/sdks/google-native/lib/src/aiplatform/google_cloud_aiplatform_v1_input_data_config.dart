@@ -83,18 +83,18 @@ class GoogleCloudAiplatformV1InputDataConfig {
 
   factory GoogleCloudAiplatformV1InputDataConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1InputDataConfig(
-      annotationSchemaUri: map['annotationSchemaUri'] == null ? null : (map['annotationSchemaUri'] as String).input(),
-      annotationsFilter: map['annotationsFilter'] == null ? null : (map['annotationsFilter'] as String).input(),
-      bigqueryDestination: map['bigqueryDestination'] == null ? null : (GoogleCloudAiplatformV1BigQueryDestination.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>())).input(),
+      annotationSchemaUri: map['annotationSchemaUri'] == null ? null : (map['annotationSchemaUri']! as String).input(),
+      annotationsFilter: map['annotationsFilter'] == null ? null : (map['annotationsFilter']! as String).input(),
+      bigqueryDestination: map['bigqueryDestination'] == null ? null : (GoogleCloudAiplatformV1BigQueryDestination.fromMap((map['bigqueryDestination']! as Map).cast<String, dynamic>())).input(),
       datasetId: (map['datasetId'] as String).input(),
-      filterSplit: map['filterSplit'] == null ? null : (GoogleCloudAiplatformV1FilterSplit.fromMap((map['filterSplit'] as Map).cast<String, dynamic>())).input(),
-      fractionSplit: map['fractionSplit'] == null ? null : (GoogleCloudAiplatformV1FractionSplit.fromMap((map['fractionSplit'] as Map).cast<String, dynamic>())).input(),
-      gcsDestination: map['gcsDestination'] == null ? null : (GoogleCloudAiplatformV1GcsDestination.fromMap((map['gcsDestination'] as Map).cast<String, dynamic>())).input(),
-      persistMlUseAssignment: map['persistMlUseAssignment'] == null ? null : (map['persistMlUseAssignment'] as bool).input(),
-      predefinedSplit: map['predefinedSplit'] == null ? null : (GoogleCloudAiplatformV1PredefinedSplit.fromMap((map['predefinedSplit'] as Map).cast<String, dynamic>())).input(),
-      savedQueryId: map['savedQueryId'] == null ? null : (map['savedQueryId'] as String).input(),
-      stratifiedSplit: map['stratifiedSplit'] == null ? null : (GoogleCloudAiplatformV1StratifiedSplit.fromMap((map['stratifiedSplit'] as Map).cast<String, dynamic>())).input(),
-      timestampSplit: map['timestampSplit'] == null ? null : (GoogleCloudAiplatformV1TimestampSplit.fromMap((map['timestampSplit'] as Map).cast<String, dynamic>())).input(),
+      filterSplit: map['filterSplit'] == null ? null : (GoogleCloudAiplatformV1FilterSplit.fromMap((map['filterSplit']! as Map).cast<String, dynamic>())).input(),
+      fractionSplit: map['fractionSplit'] == null ? null : (GoogleCloudAiplatformV1FractionSplit.fromMap((map['fractionSplit']! as Map).cast<String, dynamic>())).input(),
+      gcsDestination: map['gcsDestination'] == null ? null : (GoogleCloudAiplatformV1GcsDestination.fromMap((map['gcsDestination']! as Map).cast<String, dynamic>())).input(),
+      persistMlUseAssignment: map['persistMlUseAssignment'] == null ? null : (map['persistMlUseAssignment']! as bool).input(),
+      predefinedSplit: map['predefinedSplit'] == null ? null : (GoogleCloudAiplatformV1PredefinedSplit.fromMap((map['predefinedSplit']! as Map).cast<String, dynamic>())).input(),
+      savedQueryId: map['savedQueryId'] == null ? null : (map['savedQueryId']! as String).input(),
+      stratifiedSplit: map['stratifiedSplit'] == null ? null : (GoogleCloudAiplatformV1StratifiedSplit.fromMap((map['stratifiedSplit']! as Map).cast<String, dynamic>())).input(),
+      timestampSplit: map['timestampSplit'] == null ? null : (GoogleCloudAiplatformV1TimestampSplit.fromMap((map['timestampSplit']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

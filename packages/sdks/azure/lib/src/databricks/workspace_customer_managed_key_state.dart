@@ -25,8 +25,8 @@ class WorkspaceCustomerManagedKeyState {
 
   factory WorkspaceCustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return WorkspaceCustomerManagedKeyState(
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

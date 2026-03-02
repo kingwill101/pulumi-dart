@@ -32,9 +32,9 @@ class AptSettingsOsconfigV1beta {
 
   factory AptSettingsOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return AptSettingsOsconfigV1beta(
-      excludes: map['excludes'] == null ? null : ((map['excludes'] as List).cast<String>()).input(),
-      exclusivePackages: map['exclusivePackages'] == null ? null : ((map['exclusivePackages'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (AptSettingsTypeOsconfigV1beta.fromValue(map['type'] as String)).input(),
+      excludes: map['excludes'] == null ? null : ((map['excludes']! as List).cast<String>()).input(),
+      exclusivePackages: map['exclusivePackages'] == null ? null : ((map['exclusivePackages']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (AptSettingsTypeOsconfigV1beta.fromValue(map['type']! as String)).input(),
     );
   }
 }

@@ -67,15 +67,15 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
 
   factory GoogleCloudDialogflowCxV3beta1ResponseMessage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ResponseMessage(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
-      conversationSuccess: map['conversationSuccess'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess.fromMap((map['conversationSuccess'] as Map).cast<String, dynamic>())).input(),
-      knowledgeInfoCard: map['knowledgeInfoCard'] == null ? null : ((map['knowledgeInfoCard'] as Map).cast<String, dynamic>()).input(),
-      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff'] as Map).cast<String, dynamic>())).input(),
-      outputAudioText: map['outputAudioText'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText.fromMap((map['outputAudioText'] as Map).cast<String, dynamic>())).input(),
-      payload: map['payload'] == null ? null : ((map['payload'] as Map).cast<String, String>()).input(),
-      playAudio: map['playAudio'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio.fromMap((map['playAudio'] as Map).cast<String, dynamic>())).input(),
-      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
+      conversationSuccess: map['conversationSuccess'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess.fromMap((map['conversationSuccess']! as Map).cast<String, dynamic>())).input(),
+      knowledgeInfoCard: map['knowledgeInfoCard'] == null ? null : ((map['knowledgeInfoCard']! as Map).cast<String, dynamic>()).input(),
+      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff']! as Map).cast<String, dynamic>())).input(),
+      outputAudioText: map['outputAudioText'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText.fromMap((map['outputAudioText']! as Map).cast<String, dynamic>())).input(),
+      payload: map['payload'] == null ? null : ((map['payload']! as Map).cast<String, String>()).input(),
+      playAudio: map['playAudio'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio.fromMap((map['playAudio']! as Map).cast<String, dynamic>())).input(),
+      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall']! as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (GoogleCloudDialogflowCxV3beta1ResponseMessageText.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

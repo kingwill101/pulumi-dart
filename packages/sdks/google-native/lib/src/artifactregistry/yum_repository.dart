@@ -22,7 +22,7 @@ class YumRepository {
 
   factory YumRepository.fromMap(Map<String, dynamic> map) {
     return YumRepository(
-      publicRepository: map['publicRepository'] == null ? null : (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository.fromMap((map['publicRepository'] as Map).cast<String, dynamic>())).input(),
+      publicRepository: map['publicRepository'] == null ? null : (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository.fromMap((map['publicRepository']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

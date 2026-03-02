@@ -30,9 +30,9 @@ class ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndSimpleCriterion {
 
   factory ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndSimpleCriterion.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndSimpleCriterion(
-      comparator: map['comparator'] == null ? null : (map['comparator'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      comparator: map['comparator'] == null ? null : ((map['comparator'] as String).input()).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      values: map['values'] == null ? null : (((map['values'] as List).cast<String>()).input()).input(),
     );
   }
 }

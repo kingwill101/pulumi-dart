@@ -46,10 +46,10 @@ class ServicePerimeterEgressPolicyEgressTo {
 
   factory ServicePerimeterEgressPolicyEgressTo.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterEgressPolicyEgressTo(
-      externalResources: map['externalResources'] == null ? null : ((map['externalResources'] as List).cast<String>()).input(),
-      operations: map['operations'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterEgressPolicyEgressToOperation>(map['operations'], (value) => ServicePerimeterEgressPolicyEgressToOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
-      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
+      externalResources: map['externalResources'] == null ? null : ((map['externalResources']! as List).cast<String>()).input(),
+      operations: map['operations'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterEgressPolicyEgressToOperation>(map['operations']!, (value) => ServicePerimeterEgressPolicyEgressToOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
+      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class GoogleCloudMlV1EnvVar {
 
   factory GoogleCloudMlV1EnvVar.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1EnvVar(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

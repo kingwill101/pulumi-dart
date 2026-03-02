@@ -59,14 +59,14 @@ class FabricPropertiesResponse {
 
   factory FabricPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FabricPropertiesResponse(
-      bcdrState: map['bcdrState'] == null ? null : (map['bcdrState'] as String).input(),
-      customDetails: map['customDetails'] == null ? null : (AzureFabricSpecificDetailsResponse.fromMap((map['customDetails'] as Map).cast<String, dynamic>())).input(),
-      encryptionDetails: map['encryptionDetails'] == null ? null : (EncryptionDetailsResponse.fromMap((map['encryptionDetails'] as Map).cast<String, dynamic>())).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      health: map['health'] == null ? null : (map['health'] as String).input(),
-      healthErrorDetails: map['healthErrorDetails'] == null ? null : (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrorDetails'], (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      internalIdentifier: map['internalIdentifier'] == null ? null : (map['internalIdentifier'] as String).input(),
-      rolloverEncryptionDetails: map['rolloverEncryptionDetails'] == null ? null : (EncryptionDetailsResponse.fromMap((map['rolloverEncryptionDetails'] as Map).cast<String, dynamic>())).input(),
+      bcdrState: map['bcdrState'] == null ? null : (map['bcdrState']! as String).input(),
+      customDetails: map['customDetails'] == null ? null : (AzureFabricSpecificDetailsResponse.fromMap((map['customDetails']! as Map).cast<String, dynamic>())).input(),
+      encryptionDetails: map['encryptionDetails'] == null ? null : (EncryptionDetailsResponse.fromMap((map['encryptionDetails']! as Map).cast<String, dynamic>())).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      health: map['health'] == null ? null : (map['health']! as String).input(),
+      healthErrorDetails: map['healthErrorDetails'] == null ? null : (pulumi.Input.decodeList<HealthErrorResponse>(map['healthErrorDetails']!, (value) => HealthErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      internalIdentifier: map['internalIdentifier'] == null ? null : (map['internalIdentifier']! as String).input(),
+      rolloverEncryptionDetails: map['rolloverEncryptionDetails'] == null ? null : (EncryptionDetailsResponse.fromMap((map['rolloverEncryptionDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

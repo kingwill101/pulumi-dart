@@ -74,16 +74,16 @@ class ScanRuleState {
 
   factory ScanRuleState.fromMap(Map<String, dynamic> map) {
     return ScanRuleState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
-      repoNames: map['repoNames'] == null ? null : ((map['repoNames'] as List).cast<String>()).input(),
-      repoTagFilterPattern: map['repoTagFilterPattern'] == null ? null : (map['repoTagFilterPattern'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      scanRuleId: map['scanRuleId'] == null ? null : (map['scanRuleId'] as String).input(),
-      scanScope: map['scanScope'] == null ? null : (map['scanScope'] as String).input(),
-      scanType: map['scanType'] == null ? null : (map['scanType'] as String).input(),
-      triggerType: map['triggerType'] == null ? null : (map['triggerType'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
+      repoNames: map['repoNames'] == null ? null : ((map['repoNames']! as List).cast<String>()).input(),
+      repoTagFilterPattern: map['repoTagFilterPattern'] == null ? null : (map['repoTagFilterPattern']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      scanRuleId: map['scanRuleId'] == null ? null : (map['scanRuleId']! as String).input(),
+      scanScope: map['scanScope'] == null ? null : (map['scanScope']! as String).input(),
+      scanType: map['scanType'] == null ? null : (map['scanType']! as String).input(),
+      triggerType: map['triggerType'] == null ? null : (map['triggerType']! as String).input(),
     );
   }
 }

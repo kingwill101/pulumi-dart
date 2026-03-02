@@ -46,9 +46,9 @@ class NetworkInterfaceAttachmentArgs {
     return NetworkInterfaceAttachmentArgs(
       deviceIndex: (map['deviceIndex'] as int).input(),
       instanceId: (map['instanceId'] as String).input(),
-      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
+      networkCardIndex: map['networkCardIndex'] == null ? null : ((map['networkCardIndex'] as int).input()).input(),
       networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

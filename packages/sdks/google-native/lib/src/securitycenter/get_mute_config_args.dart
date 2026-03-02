@@ -28,7 +28,7 @@ class GetMuteConfigArgs {
   factory GetMuteConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetMuteConfigArgs(
       muteConfigId: (map['muteConfigId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class PluginInstanceActionHubInstanceAction {
 
   factory PluginInstanceActionHubInstanceAction.fromMap(Map<String, dynamic> map) {
     return PluginInstanceActionHubInstanceAction(
-      currentExecutionState: map['currentExecutionState'] == null ? null : (map['currentExecutionState'] as String).input(),
-      lastExecutions: map['lastExecutions'] == null ? null : (pulumi.Input.decodeList<PluginInstanceActionHubInstanceActionLastExecution>(map['lastExecutions'], (value) => PluginInstanceActionHubInstanceActionLastExecution.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentExecutionState: map['currentExecutionState'] == null ? null : (map['currentExecutionState']! as String).input(),
+      lastExecutions: map['lastExecutions'] == null ? null : (pulumi.Input.decodeList<PluginInstanceActionHubInstanceActionLastExecution>(map['lastExecutions']!, (value) => PluginInstanceActionHubInstanceActionLastExecution.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

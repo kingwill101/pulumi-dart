@@ -21,7 +21,7 @@ class HttpProxyConfigurationResponse {
 
   factory HttpProxyConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return HttpProxyConfigurationResponse(
-      httpsProxy: map['httpsProxy'] == null ? null : (map['httpsProxy'] as String).input(),
+      httpsProxy: map['httpsProxy'] == null ? null : (map['httpsProxy']! as String).input(),
     );
   }
 }

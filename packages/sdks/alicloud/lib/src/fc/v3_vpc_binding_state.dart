@@ -26,8 +26,8 @@ class V3VpcBindingState {
 
   factory V3VpcBindingState.fromMap(Map<String, dynamic> map) {
     return V3VpcBindingState(
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

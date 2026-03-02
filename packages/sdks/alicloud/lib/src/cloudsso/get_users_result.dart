@@ -59,14 +59,14 @@ class GetUsersResult {
   factory GetUsersResult.fromMap(Map<String, dynamic> map) {
     return GetUsersResult(
       directoryId: map['directoryId'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      provisionType: map['provisionType'] == null ? null : map['provisionType'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      provisionType: map['provisionType'] == null ? null : map['provisionType']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
       users: pulumi.Input.decodeList<GetUsersUser>(map['users'], (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

@@ -21,7 +21,7 @@ class DSSEAttestationNote {
 
   factory DSSEAttestationNote.fromMap(Map<String, dynamic> map) {
     return DSSEAttestationNote(
-      hint: map['hint'] == null ? null : (DSSEHint.fromMap((map['hint'] as Map).cast<String, dynamic>())).input(),
+      hint: map['hint'] == null ? null : (DSSEHint.fromMap((map['hint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

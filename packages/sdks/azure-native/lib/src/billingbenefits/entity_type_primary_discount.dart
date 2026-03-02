@@ -58,14 +58,14 @@ class EntityTypePrimaryDiscount {
 
   factory EntityTypePrimaryDiscount.fromMap(Map<String, dynamic> map) {
     return EntityTypePrimaryDiscount(
-      appliedScopeType: map['appliedScopeType'] == null ? null : (map['appliedScopeType'] as String).input(),
-      discountTypeProperties: map['discountTypeProperties'] == null ? null : (DiscountCustomPrice.fromMap((map['discountTypeProperties'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      appliedScopeType: map['appliedScopeType'] == null ? null : (map['appliedScopeType']! as String).input(),
+      discountTypeProperties: map['discountTypeProperties'] == null ? null : (DiscountCustomPrice.fromMap((map['discountTypeProperties']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       endAt: (map['endAt'] as String).input(),
       entityType: (map['entityType'] as String).input(),
       productCode: (map['productCode'] as String).input(),
       startAt: (map['startAt'] as String).input(),
-      systemId: map['systemId'] == null ? null : (map['systemId'] as String).input(),
+      systemId: map['systemId'] == null ? null : (map['systemId']! as String).input(),
     );
   }
 }

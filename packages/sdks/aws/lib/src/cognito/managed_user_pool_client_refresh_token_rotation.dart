@@ -26,7 +26,7 @@ class ManagedUserPoolClientRefreshTokenRotation {
   factory ManagedUserPoolClientRefreshTokenRotation.fromMap(Map<String, dynamic> map) {
     return ManagedUserPoolClientRefreshTokenRotation(
       feature: (map['feature'] as String).input(),
-      retryGracePeriodSeconds: map['retryGracePeriodSeconds'] == null ? null : (map['retryGracePeriodSeconds'] as int).input(),
+      retryGracePeriodSeconds: map['retryGracePeriodSeconds'] == null ? null : ((map['retryGracePeriodSeconds'] as int).input()).input(),
     );
   }
 }

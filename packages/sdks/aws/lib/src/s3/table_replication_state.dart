@@ -41,11 +41,11 @@ class TableReplicationState {
 
   factory TableReplicationState.fromMap(Map<String, dynamic> map) {
     return TableReplicationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      rule: map['rule'] == null ? null : (TableReplicationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
-      tableArn: map['tableArn'] == null ? null : (map['tableArn'] as String).input(),
-      versionToken: map['versionToken'] == null ? null : (map['versionToken'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      role: map['role'] == null ? null : ((map['role'] as String).input()).input(),
+      rule: map['rule'] == null ? null : ((TableReplicationRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input()).input(),
+      tableArn: map['tableArn'] == null ? null : ((map['tableArn'] as String).input()).input(),
+      versionToken: map['versionToken'] == null ? null : ((map['versionToken'] as String).input()).input(),
     );
   }
 }

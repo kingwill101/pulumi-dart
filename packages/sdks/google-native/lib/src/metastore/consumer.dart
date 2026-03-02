@@ -21,7 +21,7 @@ class Consumer {
 
   factory Consumer.fromMap(Map<String, dynamic> map) {
     return Consumer(
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ClusterStateInfoUpdateInfo {
 
   factory ClusterStateInfoUpdateInfo.fromMap(Map<String, dynamic> map) {
     return ClusterStateInfoUpdateInfo(
-      targetReplicaCount: map['targetReplicaCount'] == null ? null : (map['targetReplicaCount'] as int).input(),
-      targetShardCount: map['targetShardCount'] == null ? null : (map['targetShardCount'] as int).input(),
+      targetReplicaCount: map['targetReplicaCount'] == null ? null : (map['targetReplicaCount']! as int).input(),
+      targetShardCount: map['targetShardCount'] == null ? null : (map['targetShardCount']! as int).input(),
     );
   }
 }

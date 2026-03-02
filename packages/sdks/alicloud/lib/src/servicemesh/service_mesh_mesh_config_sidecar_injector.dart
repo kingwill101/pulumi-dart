@@ -56,14 +56,14 @@ class ServiceMeshMeshConfigSidecarInjector {
 
   factory ServiceMeshMeshConfigSidecarInjector.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigSidecarInjector(
-      autoInjectionPolicyEnabled: map['autoInjectionPolicyEnabled'] == null ? null : (map['autoInjectionPolicyEnabled'] as bool).input(),
-      enableNamespacesByDefault: map['enableNamespacesByDefault'] == null ? null : (map['enableNamespacesByDefault'] as bool).input(),
-      initCniConfiguration: map['initCniConfiguration'] == null ? null : (ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration.fromMap((map['initCniConfiguration'] as Map).cast<String, dynamic>())).input(),
-      limitCpu: map['limitCpu'] == null ? null : (map['limitCpu'] as String).input(),
-      limitMemory: map['limitMemory'] == null ? null : (map['limitMemory'] as String).input(),
-      requestCpu: map['requestCpu'] == null ? null : (map['requestCpu'] as String).input(),
-      requestMemory: map['requestMemory'] == null ? null : (map['requestMemory'] as String).input(),
-      sidecarInjectorWebhookAsYaml: map['sidecarInjectorWebhookAsYaml'] == null ? null : (map['sidecarInjectorWebhookAsYaml'] as String).input(),
+      autoInjectionPolicyEnabled: map['autoInjectionPolicyEnabled'] == null ? null : (map['autoInjectionPolicyEnabled']! as bool).input(),
+      enableNamespacesByDefault: map['enableNamespacesByDefault'] == null ? null : (map['enableNamespacesByDefault']! as bool).input(),
+      initCniConfiguration: map['initCniConfiguration'] == null ? null : (ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration.fromMap((map['initCniConfiguration']! as Map).cast<String, dynamic>())).input(),
+      limitCpu: map['limitCpu'] == null ? null : (map['limitCpu']! as String).input(),
+      limitMemory: map['limitMemory'] == null ? null : (map['limitMemory']! as String).input(),
+      requestCpu: map['requestCpu'] == null ? null : (map['requestCpu']! as String).input(),
+      requestMemory: map['requestMemory'] == null ? null : (map['requestMemory']! as String).input(),
+      sidecarInjectorWebhookAsYaml: map['sidecarInjectorWebhookAsYaml'] == null ? null : (map['sidecarInjectorWebhookAsYaml']! as String).input(),
     );
   }
 }

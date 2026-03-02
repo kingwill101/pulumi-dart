@@ -46,12 +46,12 @@ class RecordSetResponse {
 
   factory RecordSetResponse.fromMap(Map<String, dynamic> map) {
     return RecordSetResponse(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      recordSetName: map['recordSetName'] == null ? null : (map['recordSetName'] as String).input(),
-      recordType: map['recordType'] == null ? null : (map['recordType'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      recordSetName: map['recordSetName'] == null ? null : (map['recordSetName']! as String).input(),
+      recordType: map['recordType'] == null ? null : (map['recordType']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
     );
   }
 }

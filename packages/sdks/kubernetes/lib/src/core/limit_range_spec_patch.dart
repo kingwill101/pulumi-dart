@@ -22,7 +22,7 @@ class LimitRangeSpecPatch {
 
   factory LimitRangeSpecPatch.fromMap(Map<String, dynamic> map) {
     return LimitRangeSpecPatch(
-      limits: map['limits'] == null ? null : (pulumi.Input.decodeList<LimitRangeItemPatch>(map['limits'], (value) => LimitRangeItemPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      limits: map['limits'] == null ? null : (pulumi.Input.decodeList<LimitRangeItemPatch>(map['limits']!, (value) => LimitRangeItemPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

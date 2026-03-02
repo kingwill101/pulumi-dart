@@ -61,14 +61,14 @@ class KubernetesClusterNetworkProfileLoadBalancerProfile {
 
   factory KubernetesClusterNetworkProfileLoadBalancerProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNetworkProfileLoadBalancerProfile(
-      backendPoolType: map['backendPoolType'] == null ? null : (map['backendPoolType'] as String).input(),
-      effectiveOutboundIps: map['effectiveOutboundIps'] == null ? null : ((map['effectiveOutboundIps'] as List).cast<String>()).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      managedOutboundIpCount: map['managedOutboundIpCount'] == null ? null : (map['managedOutboundIpCount'] as int).input(),
-      managedOutboundIpv6Count: map['managedOutboundIpv6Count'] == null ? null : (map['managedOutboundIpv6Count'] as int).input(),
-      outboundIpAddressIds: map['outboundIpAddressIds'] == null ? null : ((map['outboundIpAddressIds'] as List).cast<String>()).input(),
-      outboundIpPrefixIds: map['outboundIpPrefixIds'] == null ? null : ((map['outboundIpPrefixIds'] as List).cast<String>()).input(),
-      outboundPortsAllocated: map['outboundPortsAllocated'] == null ? null : (map['outboundPortsAllocated'] as int).input(),
+      backendPoolType: map['backendPoolType'] == null ? null : (map['backendPoolType']! as String).input(),
+      effectiveOutboundIps: map['effectiveOutboundIps'] == null ? null : ((map['effectiveOutboundIps']! as List).cast<String>()).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
+      managedOutboundIpCount: map['managedOutboundIpCount'] == null ? null : (map['managedOutboundIpCount']! as int).input(),
+      managedOutboundIpv6Count: map['managedOutboundIpv6Count'] == null ? null : (map['managedOutboundIpv6Count']! as int).input(),
+      outboundIpAddressIds: map['outboundIpAddressIds'] == null ? null : ((map['outboundIpAddressIds']! as List).cast<String>()).input(),
+      outboundIpPrefixIds: map['outboundIpPrefixIds'] == null ? null : ((map['outboundIpPrefixIds']! as List).cast<String>()).input(),
+      outboundPortsAllocated: map['outboundPortsAllocated'] == null ? null : (map['outboundPortsAllocated']! as int).input(),
     );
   }
 }

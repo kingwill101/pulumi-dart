@@ -21,7 +21,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
 
   factory CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase.fromMap(Map<String, dynamic> map) {
     return CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase(
-      cases: map['cases'] == null ? null : (map['cases'] as String).input(),
+      cases: map['cases'] == null ? null : (map['cases']! as String).input(),
     );
   }
 }

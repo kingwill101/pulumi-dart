@@ -50,12 +50,12 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
       environmentName: (map['environmentName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (CertificateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (CertificateProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -38,9 +38,9 @@ class TableExternalCatalogTableOptions {
 
   factory TableExternalCatalogTableOptions.fromMap(Map<String, dynamic> map) {
     return TableExternalCatalogTableOptions(
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      storageDescriptor: map['storageDescriptor'] == null ? null : (TableExternalCatalogTableOptionsStorageDescriptor.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>())).input(),
+      connectionId: map['connectionId'] == null ? null : (map['connectionId']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      storageDescriptor: map['storageDescriptor'] == null ? null : (TableExternalCatalogTableOptionsStorageDescriptor.fromMap((map['storageDescriptor']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -89,17 +89,17 @@ class ConnectionProfileDatastreamV1alpha1Args {
     return ConnectionProfileDatastreamV1alpha1Args(
       connectionProfileId: (map['connectionProfileId'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      forwardSshConnectivity: map['forwardSshConnectivity'] == null ? null : (ForwardSshTunnelConnectivityDatastreamV1alpha1.fromMap((map['forwardSshConnectivity'] as Map).cast<String, dynamic>())).input(),
-      gcsProfile: map['gcsProfile'] == null ? null : (GcsProfileDatastreamV1alpha1.fromMap((map['gcsProfile'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mysqlProfile: map['mysqlProfile'] == null ? null : (MysqlProfileDatastreamV1alpha1.fromMap((map['mysqlProfile'] as Map).cast<String, dynamic>())).input(),
-      noConnectivity: map['noConnectivity'] == null ? null : ((map['noConnectivity'] as Map).cast<String, dynamic>()).input(),
-      oracleProfile: map['oracleProfile'] == null ? null : (OracleProfileDatastreamV1alpha1.fromMap((map['oracleProfile'] as Map).cast<String, dynamic>())).input(),
-      privateConnectivity: map['privateConnectivity'] == null ? null : (PrivateConnectivityDatastreamV1alpha1.fromMap((map['privateConnectivity'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      staticServiceIpConnectivity: map['staticServiceIpConnectivity'] == null ? null : ((map['staticServiceIpConnectivity'] as Map).cast<String, dynamic>()).input(),
+      forwardSshConnectivity: map['forwardSshConnectivity'] == null ? null : (ForwardSshTunnelConnectivityDatastreamV1alpha1.fromMap((map['forwardSshConnectivity']! as Map).cast<String, dynamic>())).input(),
+      gcsProfile: map['gcsProfile'] == null ? null : (GcsProfileDatastreamV1alpha1.fromMap((map['gcsProfile']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mysqlProfile: map['mysqlProfile'] == null ? null : (MysqlProfileDatastreamV1alpha1.fromMap((map['mysqlProfile']! as Map).cast<String, dynamic>())).input(),
+      noConnectivity: map['noConnectivity'] == null ? null : ((map['noConnectivity']! as Map).cast<String, dynamic>()).input(),
+      oracleProfile: map['oracleProfile'] == null ? null : (OracleProfileDatastreamV1alpha1.fromMap((map['oracleProfile']! as Map).cast<String, dynamic>())).input(),
+      privateConnectivity: map['privateConnectivity'] == null ? null : (PrivateConnectivityDatastreamV1alpha1.fromMap((map['privateConnectivity']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      staticServiceIpConnectivity: map['staticServiceIpConnectivity'] == null ? null : ((map['staticServiceIpConnectivity']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

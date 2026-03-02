@@ -40,10 +40,10 @@ class SchemaVersionArgs {
 
   factory SchemaVersionArgs.fromMap(Map<String, dynamic> map) {
     return SchemaVersionArgs(
-      properties: map['properties'] == null ? null : (SchemaVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SchemaVersionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       schemaName: (map['schemaName'] as String).input(),
-      schemaVersionName: map['schemaVersionName'] == null ? null : (map['schemaVersionName'] as String).input(),
+      schemaVersionName: map['schemaVersionName'] == null ? null : (map['schemaVersionName']! as String).input(),
     );
   }
 }

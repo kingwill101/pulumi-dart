@@ -54,11 +54,11 @@ class PolicyTagIamBindingState {
 
   factory PolicyTagIamBindingState.fromMap(Map<String, dynamic> map) {
     return PolicyTagIamBindingState(
-      condition: map['condition'] == null ? null : (PolicyTagIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      policyTag: map['policyTag'] == null ? null : (map['policyTag'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (PolicyTagIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      policyTag: map['policyTag'] == null ? null : (map['policyTag']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

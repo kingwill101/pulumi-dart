@@ -80,9 +80,9 @@ class ReferenceListArgs {
       entries: (pulumi.Input.decodeList<ReferenceListEntry>(map['entries'], (value) => ReferenceListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
       instance: (map['instance'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       referenceListId: (map['referenceListId'] as String).input(),
-      scopeInfos: map['scopeInfos'] == null ? null : (pulumi.Input.decodeList<ReferenceListScopeInfo>(map['scopeInfos'], (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scopeInfos: map['scopeInfos'] == null ? null : (pulumi.Input.decodeList<ReferenceListScopeInfo>(map['scopeInfos']!, (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
       syntaxType: (map['syntaxType'] as String).input(),
     );
   }

@@ -27,7 +27,7 @@ class ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult {
 
   factory ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult.fromMap(Map<String, dynamic> map) {
     return ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: pulumi.Input.decodeList<EventImpactedResourceResponse>(map['value'], (value) => EventImpactedResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

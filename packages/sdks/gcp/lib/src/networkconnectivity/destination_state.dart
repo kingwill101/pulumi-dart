@@ -107,21 +107,21 @@ class DestinationState {
 
   factory DestinationState.fromMap(Map<String, dynamic> map) {
     return DestinationState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<DestinationEndpoint>(map['endpoints'], (value) => DestinationEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      ipPrefix: map['ipPrefix'] == null ? null : (map['ipPrefix'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      multicloudDataTransferConfig: map['multicloudDataTransferConfig'] == null ? null : (map['multicloudDataTransferConfig'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      stateTimelines: map['stateTimelines'] == null ? null : (pulumi.Input.decodeList<DestinationStateTimeline>(map['stateTimelines'], (value) => DestinationStateTimeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<DestinationEndpoint>(map['endpoints']!, (value) => DestinationEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      ipPrefix: map['ipPrefix'] == null ? null : (map['ipPrefix']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      multicloudDataTransferConfig: map['multicloudDataTransferConfig'] == null ? null : (map['multicloudDataTransferConfig']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      stateTimelines: map['stateTimelines'] == null ? null : (pulumi.Input.decodeList<DestinationStateTimeline>(map['stateTimelines']!, (value) => DestinationStateTimeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

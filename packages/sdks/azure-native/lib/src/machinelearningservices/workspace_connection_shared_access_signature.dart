@@ -19,7 +19,7 @@ class WorkspaceConnectionSharedAccessSignature {
 
   factory WorkspaceConnectionSharedAccessSignature.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionSharedAccessSignature(
-      sas: map['sas'] == null ? null : (map['sas'] as String).input(),
+      sas: map['sas'] == null ? null : (map['sas']! as String).input(),
     );
   }
 }

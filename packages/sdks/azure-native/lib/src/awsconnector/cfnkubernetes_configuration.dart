@@ -22,7 +22,7 @@ class CFNKubernetesConfiguration {
 
   factory CFNKubernetesConfiguration.fromMap(Map<String, dynamic> map) {
     return CFNKubernetesConfiguration(
-      auditLogs: map['auditLogs'] == null ? null : (CFNKubernetesAuditLogsConfiguration.fromMap((map['auditLogs'] as Map).cast<String, dynamic>())).input(),
+      auditLogs: map['auditLogs'] == null ? null : (CFNKubernetesAuditLogsConfiguration.fromMap((map['auditLogs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

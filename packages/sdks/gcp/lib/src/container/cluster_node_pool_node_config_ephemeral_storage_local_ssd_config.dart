@@ -25,7 +25,7 @@ class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
 
   factory ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(
-      dataCacheCount: map['dataCacheCount'] == null ? null : (map['dataCacheCount'] as int).input(),
+      dataCacheCount: map['dataCacheCount'] == null ? null : (map['dataCacheCount']! as int).input(),
       localSsdCount: (map['localSsdCount'] as int).input(),
     );
   }

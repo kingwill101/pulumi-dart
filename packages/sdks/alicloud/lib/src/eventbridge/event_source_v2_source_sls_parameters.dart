@@ -35,10 +35,10 @@ class EventSourceV2SourceSlsParameters {
 
   factory EventSourceV2SourceSlsParameters.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceSlsParameters(
-      consumePosition: map['consumePosition'] == null ? null : (map['consumePosition'] as String).input(),
-      logStore: map['logStore'] == null ? null : (map['logStore'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      consumePosition: map['consumePosition'] == null ? null : (map['consumePosition']! as String).input(),
+      logStore: map['logStore'] == null ? null : (map['logStore']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
     );
   }
 }

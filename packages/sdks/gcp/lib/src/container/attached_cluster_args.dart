@@ -138,22 +138,22 @@ class AttachedClusterArgs {
 
   factory AttachedClusterArgs.fromMap(Map<String, dynamic> map) {
     return AttachedClusterArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      authorization: map['authorization'] == null ? null : (AttachedClusterAuthorization.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
-      binaryAuthorization: map['binaryAuthorization'] == null ? null : (AttachedClusterBinaryAuthorization.fromMap((map['binaryAuthorization'] as Map).cast<String, dynamic>())).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      authorization: map['authorization'] == null ? null : (AttachedClusterAuthorization.fromMap((map['authorization']! as Map).cast<String, dynamic>())).input(),
+      binaryAuthorization: map['binaryAuthorization'] == null ? null : (AttachedClusterBinaryAuthorization.fromMap((map['binaryAuthorization']! as Map).cast<String, dynamic>())).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       distribution: (map['distribution'] as String).input(),
       fleet: (AttachedClusterFleet.fromMap((map['fleet'] as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (AttachedClusterLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
-      monitoringConfig: map['monitoringConfig'] == null ? null : (AttachedClusterMonitoringConfig.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (AttachedClusterLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
+      monitoringConfig: map['monitoringConfig'] == null ? null : (AttachedClusterMonitoringConfig.fromMap((map['monitoringConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       oidcConfig: (AttachedClusterOidcConfig.fromMap((map['oidcConfig'] as Map).cast<String, dynamic>())).input(),
       platformVersion: (map['platformVersion'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      proxyConfig: map['proxyConfig'] == null ? null : (AttachedClusterProxyConfig.fromMap((map['proxyConfig'] as Map).cast<String, dynamic>())).input(),
-      securityPostureConfig: map['securityPostureConfig'] == null ? null : (AttachedClusterSecurityPostureConfig.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      proxyConfig: map['proxyConfig'] == null ? null : (AttachedClusterProxyConfig.fromMap((map['proxyConfig']! as Map).cast<String, dynamic>())).input(),
+      securityPostureConfig: map['securityPostureConfig'] == null ? null : (AttachedClusterSecurityPostureConfig.fromMap((map['securityPostureConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfig {
 
   factory AiFeatureOnlineStoreFeatureviewVectorSearchConfig.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewVectorSearchConfig(
-      bruteForceConfig: map['bruteForceConfig'] == null ? null : ((map['bruteForceConfig'] as Map).cast<String, dynamic>()).input(),
-      crowdingColumn: map['crowdingColumn'] == null ? null : (map['crowdingColumn'] as String).input(),
-      distanceMeasureType: map['distanceMeasureType'] == null ? null : (map['distanceMeasureType'] as String).input(),
+      bruteForceConfig: map['bruteForceConfig'] == null ? null : ((map['bruteForceConfig']! as Map).cast<String, dynamic>()).input(),
+      crowdingColumn: map['crowdingColumn'] == null ? null : (map['crowdingColumn']! as String).input(),
+      distanceMeasureType: map['distanceMeasureType'] == null ? null : (map['distanceMeasureType']! as String).input(),
       embeddingColumn: (map['embeddingColumn'] as String).input(),
-      embeddingDimension: map['embeddingDimension'] == null ? null : (map['embeddingDimension'] as int).input(),
-      filterColumns: map['filterColumns'] == null ? null : ((map['filterColumns'] as List).cast<String>()).input(),
-      treeAhConfig: map['treeAhConfig'] == null ? null : (AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig.fromMap((map['treeAhConfig'] as Map).cast<String, dynamic>())).input(),
+      embeddingDimension: map['embeddingDimension'] == null ? null : (map['embeddingDimension']! as int).input(),
+      filterColumns: map['filterColumns'] == null ? null : ((map['filterColumns']! as List).cast<String>()).input(),
+      treeAhConfig: map['treeAhConfig'] == null ? null : (AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig.fromMap((map['treeAhConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

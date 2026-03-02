@@ -37,10 +37,10 @@ class InTotoProvenanceContaineranalysisV1alpha1 {
 
   factory InTotoProvenanceContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return InTotoProvenanceContaineranalysisV1alpha1(
-      builderConfig: map['builderConfig'] == null ? null : (BuilderConfigContaineranalysisV1alpha1.fromMap((map['builderConfig'] as Map).cast<String, dynamic>())).input(),
-      materials: map['materials'] == null ? null : ((map['materials'] as List).cast<String>()).input(),
-      metadata: map['metadata'] == null ? null : (MetadataContaineranalysisV1alpha1.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      recipe: map['recipe'] == null ? null : (RecipeContaineranalysisV1alpha1.fromMap((map['recipe'] as Map).cast<String, dynamic>())).input(),
+      builderConfig: map['builderConfig'] == null ? null : (BuilderConfigContaineranalysisV1alpha1.fromMap((map['builderConfig']! as Map).cast<String, dynamic>())).input(),
+      materials: map['materials'] == null ? null : ((map['materials']! as List).cast<String>()).input(),
+      metadata: map['metadata'] == null ? null : (MetadataContaineranalysisV1alpha1.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      recipe: map['recipe'] == null ? null : (RecipeContaineranalysisV1alpha1.fromMap((map['recipe']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class ResolverEndpointIpAddress {
 
   factory ResolverEndpointIpAddress.fromMap(Map<String, dynamic> map) {
     return ResolverEndpointIpAddress(
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      ipId: map['ipId'] == null ? null : (map['ipId'] as String).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as String).input(),
+      ip: map['ip'] == null ? null : ((map['ip'] as String).input()).input(),
+      ipId: map['ipId'] == null ? null : ((map['ipId'] as String).input()).input(),
+      ipv6: map['ipv6'] == null ? null : ((map['ipv6'] as String).input()).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

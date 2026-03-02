@@ -36,10 +36,10 @@ class ResourceTypeRegistrationPropertiesIdentityManagementResponse {
 
   factory ResourceTypeRegistrationPropertiesIdentityManagementResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesIdentityManagementResponse(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      applicationIds: map['applicationIds'] == null ? null : ((map['applicationIds'] as List).cast<String>()).input(),
-      delegationAppIds: map['delegationAppIds'] == null ? null : ((map['delegationAppIds'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      applicationIds: map['applicationIds'] == null ? null : ((map['applicationIds']! as List).cast<String>()).input(),
+      delegationAppIds: map['delegationAppIds'] == null ? null : ((map['delegationAppIds']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

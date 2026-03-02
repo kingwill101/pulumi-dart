@@ -72,14 +72,14 @@ class GetRoleAssignmentArtifactResult {
   factory GetRoleAssignmentArtifactResult.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentArtifactResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dependsOn: map['dependsOn'] == null ? null : (map['dependsOn'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      dependsOn: map['dependsOn'] == null ? null : (map['dependsOn']! as List).cast<String>(),
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
       principalIds: map['principalIds'],
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
+      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup']! as String,
       roleDefinitionId: map['roleDefinitionId'] as String,
       type: map['type'] as String,
     );

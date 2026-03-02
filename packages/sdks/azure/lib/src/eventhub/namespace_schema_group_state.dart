@@ -38,10 +38,10 @@ class NamespaceSchemaGroupState {
 
   factory NamespaceSchemaGroupState.fromMap(Map<String, dynamic> map) {
     return NamespaceSchemaGroupState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
-      schemaCompatibility: map['schemaCompatibility'] == null ? null : (map['schemaCompatibility'] as String).input(),
-      schemaType: map['schemaType'] == null ? null : (map['schemaType'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
+      schemaCompatibility: map['schemaCompatibility'] == null ? null : (map['schemaCompatibility']! as String).input(),
+      schemaType: map['schemaType'] == null ? null : (map['schemaType']! as String).input(),
     );
   }
 }

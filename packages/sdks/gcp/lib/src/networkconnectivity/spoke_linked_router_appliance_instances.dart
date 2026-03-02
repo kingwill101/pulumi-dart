@@ -33,7 +33,7 @@ class SpokeLinkedRouterApplianceInstances {
 
   factory SpokeLinkedRouterApplianceInstances.fromMap(Map<String, dynamic> map) {
     return SpokeLinkedRouterApplianceInstances(
-      includeImportRanges: map['includeImportRanges'] == null ? null : ((map['includeImportRanges'] as List).cast<String>()).input(),
+      includeImportRanges: map['includeImportRanges'] == null ? null : ((map['includeImportRanges']! as List).cast<String>()).input(),
       instances: (pulumi.Input.decodeList<SpokeLinkedRouterApplianceInstancesInstance>(map['instances'], (value) => SpokeLinkedRouterApplianceInstancesInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
       siteToSiteDataTransfer: (map['siteToSiteDataTransfer'] as bool).input(),
     );

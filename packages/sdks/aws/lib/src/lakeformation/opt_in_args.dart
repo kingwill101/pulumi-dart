@@ -42,10 +42,10 @@ class OptInArgs {
 
   factory OptInArgs.fromMap(Map<String, dynamic> map) {
     return OptInArgs(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<OptInCondition>(map['conditions'], (value) => OptInCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      principals: map['principals'] == null ? null : (pulumi.Input.decodeList<OptInPrincipal>(map['principals'], (value) => OptInPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceDatas: map['resourceDatas'] == null ? null : (pulumi.Input.decodeList<OptInResourceData>(map['resourceDatas'], (value) => OptInResourceData.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : ((pulumi.Input.decodeList<OptInCondition>(map['conditions']!, (value) => OptInCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      principals: map['principals'] == null ? null : ((pulumi.Input.decodeList<OptInPrincipal>(map['principals']!, (value) => OptInPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceDatas: map['resourceDatas'] == null ? null : ((pulumi.Input.decodeList<OptInResourceData>(map['resourceDatas']!, (value) => OptInResourceData.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

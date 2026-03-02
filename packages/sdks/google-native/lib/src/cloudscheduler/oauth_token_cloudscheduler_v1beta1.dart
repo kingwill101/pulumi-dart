@@ -26,8 +26,8 @@ class OAuthTokenCloudschedulerV1beta1 {
 
   factory OAuthTokenCloudschedulerV1beta1.fromMap(Map<String, dynamic> map) {
     return OAuthTokenCloudschedulerV1beta1(
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class DynamicTagGroupState {
 
   factory DynamicTagGroupState.fromMap(Map<String, dynamic> map) {
     return DynamicTagGroupState(
-      contactGroupLists: map['contactGroupLists'] == null ? null : ((map['contactGroupLists'] as List).cast<String>()).input(),
-      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : (map['matchExpressFilterRelation'] as String).input(),
-      matchExpresses: map['matchExpresses'] == null ? null : (pulumi.Input.decodeList<DynamicTagGroupMatchExpress>(map['matchExpresses'], (value) => DynamicTagGroupMatchExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
-      templateIdLists: map['templateIdLists'] == null ? null : ((map['templateIdLists'] as List).cast<String>()).input(),
+      contactGroupLists: map['contactGroupLists'] == null ? null : ((map['contactGroupLists']! as List).cast<String>()).input(),
+      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : (map['matchExpressFilterRelation']! as String).input(),
+      matchExpresses: map['matchExpresses'] == null ? null : (pulumi.Input.decodeList<DynamicTagGroupMatchExpress>(map['matchExpresses']!, (value) => DynamicTagGroupMatchExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
+      templateIdLists: map['templateIdLists'] == null ? null : ((map['templateIdLists']! as List).cast<String>()).input(),
     );
   }
 }

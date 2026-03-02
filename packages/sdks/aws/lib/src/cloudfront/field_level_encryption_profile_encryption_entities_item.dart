@@ -31,7 +31,7 @@ class FieldLevelEncryptionProfileEncryptionEntitiesItem {
 
   factory FieldLevelEncryptionProfileEncryptionEntitiesItem.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionProfileEncryptionEntitiesItem(
-      fieldPatterns: (FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns.fromMap((map['fieldPatterns'] as Map).cast<String, dynamic>())).input(),
+      fieldPatterns: (FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns.fromMap((map['fieldPatterns']! as Map).cast<String, dynamic>())).input(),
       providerId: (map['providerId'] as String).input(),
       publicKeyId: (map['publicKeyId'] as String).input(),
     );

@@ -67,12 +67,12 @@ class DeviceRequestResourceK8sIoV1alpha3 {
 
   factory DeviceRequestResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return DeviceRequestResourceK8sIoV1alpha3(
-      adminAccess: map['adminAccess'] == null ? null : (map['adminAccess'] as bool).input(),
-      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode'] as String).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
+      adminAccess: map['adminAccess'] == null ? null : (map['adminAccess']! as bool).input(),
+      allocationMode: map['allocationMode'] == null ? null : (map['allocationMode']! as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
       deviceClassName: (map['deviceClassName'] as String).input(),
       name: (map['name'] as String).input(),
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelectorResourceK8sIoV1alpha3>(map['selectors'], (value) => DeviceSelectorResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelectorResourceK8sIoV1alpha3>(map['selectors']!, (value) => DeviceSelectorResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

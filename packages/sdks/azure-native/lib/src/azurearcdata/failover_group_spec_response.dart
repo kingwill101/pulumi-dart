@@ -51,13 +51,13 @@ class FailoverGroupSpecResponse {
 
   factory FailoverGroupSpecResponse.fromMap(Map<String, dynamic> map) {
     return FailoverGroupSpecResponse(
-      partnerMI: map['partnerMI'] == null ? null : (map['partnerMI'] as String).input(),
-      partnerMirroringCert: map['partnerMirroringCert'] == null ? null : (map['partnerMirroringCert'] as String).input(),
-      partnerMirroringURL: map['partnerMirroringURL'] == null ? null : (map['partnerMirroringURL'] as String).input(),
-      partnerSyncMode: map['partnerSyncMode'] == null ? null : (map['partnerSyncMode'] as String).input(),
+      partnerMI: map['partnerMI'] == null ? null : (map['partnerMI']! as String).input(),
+      partnerMirroringCert: map['partnerMirroringCert'] == null ? null : (map['partnerMirroringCert']! as String).input(),
+      partnerMirroringURL: map['partnerMirroringURL'] == null ? null : (map['partnerMirroringURL']! as String).input(),
+      partnerSyncMode: map['partnerSyncMode'] == null ? null : (map['partnerSyncMode']! as String).input(),
       role: (map['role'] as String).input(),
-      sharedName: map['sharedName'] == null ? null : (map['sharedName'] as String).input(),
-      sourceMI: map['sourceMI'] == null ? null : (map['sourceMI'] as String).input(),
+      sharedName: map['sharedName'] == null ? null : (map['sharedName']! as String).input(),
+      sourceMI: map['sourceMI'] == null ? null : (map['sourceMI']! as String).input(),
     );
   }
 }

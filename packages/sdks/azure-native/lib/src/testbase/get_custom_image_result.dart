@@ -124,7 +124,7 @@ class GetCustomImageResult {
       validationResults: ImageValidationResultsResponse.fromMap((map['validationResults'] as Map).cast<String, dynamic>()),
       versionName: map['versionName'] as String,
       vhdFileName: map['vhdFileName'] as String,
-      vhdId: map['vhdId'] == null ? null : map['vhdId'] as String,
+      vhdId: map['vhdId'] == null ? null : map['vhdId']! as String,
     );
   }
 }

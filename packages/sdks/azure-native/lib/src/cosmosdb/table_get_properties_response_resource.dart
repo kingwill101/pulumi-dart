@@ -46,10 +46,10 @@ class TableGetPropertiesResponseResource {
 
   factory TableGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return TableGetPropertiesResponseResource(
-      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
       etag: (map['etag'] as String).input(),
       id: (map['id'] as String).input(),
-      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParametersResponse.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>())).input(),
+      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParametersResponse.fromMap((map['restoreParameters']! as Map).cast<String, dynamic>())).input(),
       rid: (map['rid'] as String).input(),
       ts: (map['ts'] as double).input(),
     );

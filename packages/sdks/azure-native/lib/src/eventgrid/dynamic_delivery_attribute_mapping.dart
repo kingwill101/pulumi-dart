@@ -32,8 +32,8 @@ class DynamicDeliveryAttributeMapping {
 
   factory DynamicDeliveryAttributeMapping.fromMap(Map<String, dynamic> map) {
     return DynamicDeliveryAttributeMapping(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sourceField: map['sourceField'] == null ? null : (map['sourceField'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sourceField: map['sourceField'] == null ? null : (map['sourceField']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

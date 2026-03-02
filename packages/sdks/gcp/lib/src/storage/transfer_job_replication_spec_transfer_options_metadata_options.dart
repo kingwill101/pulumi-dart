@@ -60,15 +60,15 @@ class TransferJobReplicationSpecTransferOptionsMetadataOptions {
 
   factory TransferJobReplicationSpecTransferOptionsMetadataOptions.fromMap(Map<String, dynamic> map) {
     return TransferJobReplicationSpecTransferOptionsMetadataOptions(
-      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
-      gid: map['gid'] == null ? null : (map['gid'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
-      symlink: map['symlink'] == null ? null : (map['symlink'] as String).input(),
-      temporaryHold: map['temporaryHold'] == null ? null : (map['temporaryHold'] as String).input(),
-      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      acl: map['acl'] == null ? null : (map['acl']! as String).input(),
+      gid: map['gid'] == null ? null : (map['gid']! as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      storageClass: map['storageClass'] == null ? null : (map['storageClass']! as String).input(),
+      symlink: map['symlink'] == null ? null : (map['symlink']! as String).input(),
+      temporaryHold: map['temporaryHold'] == null ? null : (map['temporaryHold']! as String).input(),
+      timeCreated: map['timeCreated'] == null ? null : (map['timeCreated']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

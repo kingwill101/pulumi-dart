@@ -26,8 +26,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply(
-      postbackData: map['postbackData'] == null ? null : (map['postbackData'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      postbackData: map['postbackData'] == null ? null : (map['postbackData']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

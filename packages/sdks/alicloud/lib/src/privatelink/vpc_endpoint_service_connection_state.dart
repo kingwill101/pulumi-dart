@@ -43,11 +43,11 @@ class VpcEndpointServiceConnectionState {
 
   factory VpcEndpointServiceConnectionState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceConnectionState(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

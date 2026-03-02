@@ -36,10 +36,10 @@ class Checkpoint {
 
   factory Checkpoint.fromMap(Map<String, dynamic> map) {
     return Checkpoint(
-      checkpointID: map['checkpointID'] == null ? null : (map['checkpointID'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentCheckpointID: map['parentCheckpointID'] == null ? null : (map['parentCheckpointID'] as String).input(),
+      checkpointID: map['checkpointID'] == null ? null : (map['checkpointID']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentCheckpointID: map['parentCheckpointID'] == null ? null : (map['parentCheckpointID']! as String).input(),
     );
   }
 }

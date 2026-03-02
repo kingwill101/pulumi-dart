@@ -50,7 +50,7 @@ class SearchIndexArgs {
       instanceName: (map['instanceName'] as String).input(),
       schemas: (pulumi.Input.decodeList<SearchIndexSchema>(map['schemas'], (value) => SearchIndexSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
       tableName: (map['tableName'] as String).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as int).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as int).input(),
     );
   }
 }

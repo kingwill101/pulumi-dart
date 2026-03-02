@@ -46,12 +46,12 @@ class SshKeyState {
 
   factory SshKeyState.fromMap(Map<String, dynamic> map) {
     return SshKeyState(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
-      sshPublicKeyId: map['sshPublicKeyId'] == null ? null : (map['sshPublicKeyId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      encoding: map['encoding'] == null ? null : ((map['encoding'] as String).input()).input(),
+      fingerprint: map['fingerprint'] == null ? null : ((map['fingerprint'] as String).input()).input(),
+      publicKey: map['publicKey'] == null ? null : ((map['publicKey'] as String).input()).input(),
+      sshPublicKeyId: map['sshPublicKeyId'] == null ? null : ((map['sshPublicKeyId'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      username: map['username'] == null ? null : ((map['username'] as String).input()).input(),
     );
   }
 }

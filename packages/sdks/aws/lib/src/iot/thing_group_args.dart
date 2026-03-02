@@ -45,11 +45,11 @@ class ThingGroupArgs {
 
   factory ThingGroupArgs.fromMap(Map<String, dynamic> map) {
     return ThingGroupArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentGroupName: map['parentGroupName'] == null ? null : (map['parentGroupName'] as String).input(),
-      properties: map['properties'] == null ? null : (ThingGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parentGroupName: map['parentGroupName'] == null ? null : ((map['parentGroupName'] as String).input()).input(),
+      properties: map['properties'] == null ? null : ((ThingGroupProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

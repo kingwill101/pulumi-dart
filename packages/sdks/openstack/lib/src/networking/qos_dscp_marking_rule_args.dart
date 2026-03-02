@@ -39,7 +39,7 @@ class QosDscpMarkingRuleArgs {
     return QosDscpMarkingRuleArgs(
       dscpMark: (map['dscpMark'] as int).input(),
       qosPolicyId: (map['qosPolicyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

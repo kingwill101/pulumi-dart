@@ -27,8 +27,8 @@ class AddressSpaceResponse {
 
   factory AddressSpaceResponse.fromMap(Map<String, dynamic> map) {
     return AddressSpaceResponse(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      ipamPoolPrefixAllocations: map['ipamPoolPrefixAllocations'] == null ? null : (pulumi.Input.decodeList<IpamPoolPrefixAllocationResponse>(map['ipamPoolPrefixAllocations'], (value) => IpamPoolPrefixAllocationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      ipamPoolPrefixAllocations: map['ipamPoolPrefixAllocations'] == null ? null : (pulumi.Input.decodeList<IpamPoolPrefixAllocationResponse>(map['ipamPoolPrefixAllocations']!, (value) => IpamPoolPrefixAllocationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -39,8 +39,8 @@ class GetMetastoreServiceIamPolicyArgs {
 
   factory GetMetastoreServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetMetastoreServiceIamPolicyArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );
   }

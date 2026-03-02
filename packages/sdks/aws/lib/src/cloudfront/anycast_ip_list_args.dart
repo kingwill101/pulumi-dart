@@ -42,9 +42,9 @@ class AnycastIpListArgs {
   factory AnycastIpListArgs.fromMap(Map<String, dynamic> map) {
     return AnycastIpListArgs(
       ipCount: (map['ipCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (AnycastIpListTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AnycastIpListTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

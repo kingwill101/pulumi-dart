@@ -33,7 +33,7 @@ class TimerTrigger {
     return TimerTrigger(
       name: (map['name'] as String).input(),
       schedule: (map['schedule'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

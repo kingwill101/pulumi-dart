@@ -112,22 +112,22 @@ class ObjectMetaPatch {
 
   factory ObjectMetaPatch.fromMap(Map<String, dynamic> map) {
     return ObjectMetaPatch(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      deletionGracePeriodSeconds: map['deletionGracePeriodSeconds'] == null ? null : (map['deletionGracePeriodSeconds'] as int).input(),
-      deletionTimestamp: map['deletionTimestamp'] == null ? null : (map['deletionTimestamp'] as String).input(),
-      finalizers: map['finalizers'] == null ? null : ((map['finalizers'] as List).cast<String>()).input(),
-      generateName: map['generateName'] == null ? null : (map['generateName'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as int).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      managedFields: map['managedFields'] == null ? null : (pulumi.Input.decodeList<ManagedFieldsEntryPatch>(map['managedFields'], (value) => ManagedFieldsEntryPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      ownerReferences: map['ownerReferences'] == null ? null : (pulumi.Input.decodeList<OwnerReferencePatch>(map['ownerReferences'], (value) => OwnerReferencePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      deletionGracePeriodSeconds: map['deletionGracePeriodSeconds'] == null ? null : (map['deletionGracePeriodSeconds']! as int).input(),
+      deletionTimestamp: map['deletionTimestamp'] == null ? null : (map['deletionTimestamp']! as String).input(),
+      finalizers: map['finalizers'] == null ? null : ((map['finalizers']! as List).cast<String>()).input(),
+      generateName: map['generateName'] == null ? null : (map['generateName']! as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as int).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      managedFields: map['managedFields'] == null ? null : (pulumi.Input.decodeList<ManagedFieldsEntryPatch>(map['managedFields']!, (value) => ManagedFieldsEntryPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      ownerReferences: map['ownerReferences'] == null ? null : (pulumi.Input.decodeList<OwnerReferencePatch>(map['ownerReferences']!, (value) => OwnerReferencePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

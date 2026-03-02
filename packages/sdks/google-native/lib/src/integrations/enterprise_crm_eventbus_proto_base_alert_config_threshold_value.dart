@@ -24,8 +24,8 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue {
 
   factory EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue(
-      absolute: map['absolute'] == null ? null : (map['absolute'] as String).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
+      absolute: map['absolute'] == null ? null : (map['absolute']! as String).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as int).input(),
     );
   }
 }

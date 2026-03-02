@@ -51,8 +51,8 @@ class AnalyticsItemArgs {
     return AnalyticsItemArgs(
       applicationInsightsId: (map['applicationInsightsId'] as String).input(),
       content: (map['content'] as String).input(),
-      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       scope: (map['scope'] as String).input(),
       type: (map['type'] as String).input(),
     );

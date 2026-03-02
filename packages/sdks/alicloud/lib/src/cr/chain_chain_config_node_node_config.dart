@@ -21,7 +21,7 @@ class ChainChainConfigNodeNodeConfig {
 
   factory ChainChainConfigNodeNodeConfig.fromMap(Map<String, dynamic> map) {
     return ChainChainConfigNodeNodeConfig(
-      denyPolicies: map['denyPolicies'] == null ? null : (pulumi.Input.decodeList<ChainChainConfigNodeNodeConfigDenyPolicy>(map['denyPolicies'], (value) => ChainChainConfigNodeNodeConfigDenyPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      denyPolicies: map['denyPolicies'] == null ? null : (pulumi.Input.decodeList<ChainChainConfigNodeNodeConfigDenyPolicy>(map['denyPolicies']!, (value) => ChainChainConfigNodeNodeConfigDenyPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class AzureOperatorNexusNetworkFunctionTemplateResponse {
 
   factory AzureOperatorNexusNetworkFunctionTemplateResponse.fromMap(Map<String, dynamic> map) {
     return AzureOperatorNexusNetworkFunctionTemplateResponse(
-      networkFunctionApplications: map['networkFunctionApplications'] == null ? null : (pulumi.Input.decodeList<AzureOperatorNexusNetworkFunctionArmTemplateApplicationResponse>(map['networkFunctionApplications'], (value) => AzureOperatorNexusNetworkFunctionArmTemplateApplicationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkFunctionApplications: map['networkFunctionApplications'] == null ? null : (pulumi.Input.decodeList<AzureOperatorNexusNetworkFunctionArmTemplateApplicationResponse>(map['networkFunctionApplications']!, (value) => AzureOperatorNexusNetworkFunctionArmTemplateApplicationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       nfviType: (map['nfviType'] as String).input(),
     );
   }

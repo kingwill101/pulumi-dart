@@ -81,18 +81,18 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      autoscalingConfig: map['autoscalingConfig'] == null ? null : (AutoscalingConfig.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>())).input(),
+      autoscalingConfig: map['autoscalingConfig'] == null ? null : (AutoscalingConfig.fromMap((map['autoscalingConfig']! as Map).cast<String, dynamic>())).input(),
       config: (map['config'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      endpointUris: map['endpointUris'] == null ? null : ((map['endpointUris'] as List).cast<String>()).input(),
-      freeInstanceMetadata: map['freeInstanceMetadata'] == null ? null : (FreeInstanceMetadata.fromMap((map['freeInstanceMetadata'] as Map).cast<String, dynamic>())).input(),
+      endpointUris: map['endpointUris'] == null ? null : ((map['endpointUris']! as List).cast<String>()).input(),
+      freeInstanceMetadata: map['freeInstanceMetadata'] == null ? null : (FreeInstanceMetadata.fromMap((map['freeInstanceMetadata']! as Map).cast<String, dynamic>())).input(),
       instanceId: (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (InstanceInstanceType.fromValue(map['instanceType'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (InstanceInstanceType.fromValue(map['instanceType']! as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

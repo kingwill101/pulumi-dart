@@ -34,7 +34,7 @@ class SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse {
   factory SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse.fromMap(Map<String, dynamic> map) {
     return SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse(
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (BusinessProcessDevelopmentArtifactPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (BusinessProcessDevelopmentArtifactPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
     );
   }

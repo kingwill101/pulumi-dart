@@ -92,21 +92,21 @@ class GetMachineExtensionResult {
 
   factory GetMachineExtensionResult.fromMap(Map<String, dynamic> map) {
     return GetMachineExtensionResult(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : map['autoUpgradeMinorVersion'] as bool,
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : map['autoUpgradeMinorVersion']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag'] as String,
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag']! as String,
       id: map['id'] as String,
-      instanceView: map['instanceView'] == null ? null : MachineExtensionPropertiesResponseInstanceView.fromMap((map['instanceView'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
+      instanceView: map['instanceView'] == null ? null : MachineExtensionPropertiesResponseInstanceView.fromMap((map['instanceView']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      protectedSettings: map['protectedSettings'] == null ? null : map['protectedSettings'],
+      protectedSettings: map['protectedSettings'] == null ? null : map['protectedSettings']!,
       provisioningState: map['provisioningState'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      settings: map['settings'] == null ? null : map['settings'],
+      publisher: map['publisher'] == null ? null : map['publisher']! as String,
+      settings: map['settings'] == null ? null : map['settings']!,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : map['typeHandlerVersion'] as String,
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : map['typeHandlerVersion']! as String,
     );
   }
 }

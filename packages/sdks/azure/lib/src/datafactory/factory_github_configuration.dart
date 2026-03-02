@@ -49,8 +49,8 @@ class FactoryGithubConfiguration {
     return FactoryGithubConfiguration(
       accountName: (map['accountName'] as String).input(),
       branchName: (map['branchName'] as String).input(),
-      gitUrl: map['gitUrl'] == null ? null : (map['gitUrl'] as String).input(),
-      publishingEnabled: map['publishingEnabled'] == null ? null : (map['publishingEnabled'] as bool).input(),
+      gitUrl: map['gitUrl'] == null ? null : (map['gitUrl']! as String).input(),
+      publishingEnabled: map['publishingEnabled'] == null ? null : (map['publishingEnabled']! as bool).input(),
       repositoryName: (map['repositoryName'] as String).input(),
       rootFolder: (map['rootFolder'] as String).input(),
     );

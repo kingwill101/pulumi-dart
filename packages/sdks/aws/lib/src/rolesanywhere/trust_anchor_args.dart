@@ -45,11 +45,11 @@ class TrustAnchorArgs {
 
   factory TrustAnchorArgs.fromMap(Map<String, dynamic> map) {
     return TrustAnchorArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationSettings: map['notificationSettings'] == null ? null : (pulumi.Input.decodeList<TrustAnchorNotificationSetting>(map['notificationSettings'], (value) => TrustAnchorNotificationSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      source: (TrustAnchorSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      notificationSettings: map['notificationSettings'] == null ? null : ((pulumi.Input.decodeList<TrustAnchorNotificationSetting>(map['notificationSettings']!, (value) => TrustAnchorNotificationSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      source: (TrustAnchorSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -40,7 +40,7 @@ class UserManagedHttpsParametersResponse {
     return UserManagedHttpsParametersResponse(
       certificateSource: (map['certificateSource'] as String).input(),
       certificateSourceParameters: (KeyVaultCertificateSourceParametersResponse.fromMap((map['certificateSourceParameters'] as Map).cast<String, dynamic>())).input(),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion'] as String).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion']! as String).input(),
       protocolType: (map['protocolType'] as String).input(),
     );
   }

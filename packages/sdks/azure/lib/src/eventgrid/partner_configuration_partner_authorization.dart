@@ -32,7 +32,7 @@ class PartnerConfigurationPartnerAuthorization {
 
   factory PartnerConfigurationPartnerAuthorization.fromMap(Map<String, dynamic> map) {
     return PartnerConfigurationPartnerAuthorization(
-      authorizationExpirationTimeInUtc: map['authorizationExpirationTimeInUtc'] == null ? null : (map['authorizationExpirationTimeInUtc'] as String).input(),
+      authorizationExpirationTimeInUtc: map['authorizationExpirationTimeInUtc'] == null ? null : (map['authorizationExpirationTimeInUtc']! as String).input(),
       partnerName: (map['partnerName'] as String).input(),
       partnerRegistrationId: (map['partnerRegistrationId'] as String).input(),
     );

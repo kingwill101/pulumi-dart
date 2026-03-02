@@ -90,19 +90,19 @@ class WorkforcePoolProviderScimTenantState {
 
   factory WorkforcePoolProviderScimTenantState.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderScimTenantState(
-      baseUri: map['baseUri'] == null ? null : (map['baseUri'] as String).input(),
-      claimMapping: map['claimMapping'] == null ? null : ((map['claimMapping'] as Map).cast<String, String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      hardDelete: map['hardDelete'] == null ? null : (map['hardDelete'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      providerId: map['providerId'] == null ? null : (map['providerId'] as String).input(),
-      purgeTime: map['purgeTime'] == null ? null : (map['purgeTime'] as String).input(),
-      scimTenantId: map['scimTenantId'] == null ? null : (map['scimTenantId'] as String).input(),
-      serviceAgent: map['serviceAgent'] == null ? null : (map['serviceAgent'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId'] as String).input(),
+      baseUri: map['baseUri'] == null ? null : (map['baseUri']! as String).input(),
+      claimMapping: map['claimMapping'] == null ? null : ((map['claimMapping']! as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      hardDelete: map['hardDelete'] == null ? null : (map['hardDelete']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      providerId: map['providerId'] == null ? null : (map['providerId']! as String).input(),
+      purgeTime: map['purgeTime'] == null ? null : (map['purgeTime']! as String).input(),
+      scimTenantId: map['scimTenantId'] == null ? null : (map['scimTenantId']! as String).input(),
+      serviceAgent: map['serviceAgent'] == null ? null : (map['serviceAgent']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId']! as String).input(),
     );
   }
 }

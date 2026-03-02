@@ -61,15 +61,15 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      publicData: map['publicData'] == null ? null : (map['publicData'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
-      thumbprintAlgorithm: map['thumbprintAlgorithm'] == null ? null : (map['thumbprintAlgorithm'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      publicData: map['publicData'] == null ? null : (map['publicData']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      thumbprintAlgorithm: map['thumbprintAlgorithm'] == null ? null : (map['thumbprintAlgorithm']! as String).input(),
     );
   }
 }

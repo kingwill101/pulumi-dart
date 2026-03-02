@@ -32,8 +32,8 @@ class DashboardPropertiesWithProvisioningStateResponse {
 
   factory DashboardPropertiesWithProvisioningStateResponse.fromMap(Map<String, dynamic> map) {
     return DashboardPropertiesWithProvisioningStateResponse(
-      lenses: map['lenses'] == null ? null : (pulumi.Input.decodeList<DashboardLensResponse>(map['lenses'], (value) => DashboardLensResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      lenses: map['lenses'] == null ? null : (pulumi.Input.decodeList<DashboardLensResponse>(map['lenses']!, (value) => DashboardLensResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

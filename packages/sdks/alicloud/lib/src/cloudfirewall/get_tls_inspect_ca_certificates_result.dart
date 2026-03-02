@@ -49,13 +49,13 @@ class GetTlsInspectCaCertificatesResult {
 
   factory GetTlsInspectCaCertificatesResult.fromMap(Map<String, dynamic> map) {
     return GetTlsInspectCaCertificatesResult(
-      caCertId: map['caCertId'] == null ? null : map['caCertId'] as String,
+      caCertId: map['caCertId'] == null ? null : map['caCertId']! as String,
       certificates: pulumi.Input.decodeList<GetTlsInspectCaCertificatesCertificate>(map['certificates'], (value) => GetTlsInspectCaCertificatesCertificate.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
     );
   }
 }

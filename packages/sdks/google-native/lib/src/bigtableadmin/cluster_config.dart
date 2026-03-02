@@ -22,7 +22,7 @@ class ClusterConfig {
 
   factory ClusterConfig.fromMap(Map<String, dynamic> map) {
     return ClusterConfig(
-      clusterAutoscalingConfig: map['clusterAutoscalingConfig'] == null ? null : (ClusterAutoscalingConfig.fromMap((map['clusterAutoscalingConfig'] as Map).cast<String, dynamic>())).input(),
+      clusterAutoscalingConfig: map['clusterAutoscalingConfig'] == null ? null : (ClusterAutoscalingConfig.fromMap((map['clusterAutoscalingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

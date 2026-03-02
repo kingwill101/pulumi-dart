@@ -31,9 +31,9 @@ class QueuingConfigurationFlowcontrolApiserverK8sIoV1beta2 {
 
   factory QueuingConfigurationFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return QueuingConfigurationFlowcontrolApiserverK8sIoV1beta2(
-      handSize: map['handSize'] == null ? null : (map['handSize'] as int).input(),
-      queueLengthLimit: map['queueLengthLimit'] == null ? null : (map['queueLengthLimit'] as int).input(),
-      queues: map['queues'] == null ? null : (map['queues'] as int).input(),
+      handSize: map['handSize'] == null ? null : (map['handSize']! as int).input(),
+      queueLengthLimit: map['queueLengthLimit'] == null ? null : (map['queueLengthLimit']! as int).input(),
+      queues: map['queues'] == null ? null : (map['queues']! as int).input(),
     );
   }
 }

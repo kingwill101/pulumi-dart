@@ -21,7 +21,7 @@ class LifecyclePolicyAction {
 
   factory LifecyclePolicyAction.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyAction(
-      type: (LifecyclePolicyActionType.fromValue(map['type'] as String)).input(),
+      type: (LifecyclePolicyActionType.fromValue(map['type']! as String)).input(),
     );
   }
 }

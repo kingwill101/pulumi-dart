@@ -31,9 +31,9 @@ class EnvironmentTypeState {
 
   factory EnvironmentTypeState.fromMap(Map<String, dynamic> map) {
     return EnvironmentTypeState(
-      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

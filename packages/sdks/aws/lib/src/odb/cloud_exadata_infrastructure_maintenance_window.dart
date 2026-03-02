@@ -63,14 +63,14 @@ class CloudExadataInfrastructureMaintenanceWindow {
   factory CloudExadataInfrastructureMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return CloudExadataInfrastructureMaintenanceWindow(
       customActionTimeoutInMins: (map['customActionTimeoutInMins'] as int).input(),
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : (pulumi.Input.decodeList<CloudExadataInfrastructureMaintenanceWindowDaysOfWeek>(map['daysOfWeeks'], (value) => CloudExadataInfrastructureMaintenanceWindowDaysOfWeek.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hoursOfDays: map['hoursOfDays'] == null ? null : ((map['hoursOfDays'] as List).cast<int>()).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((pulumi.Input.decodeList<CloudExadataInfrastructureMaintenanceWindowDaysOfWeek>(map['daysOfWeeks']!, (value) => CloudExadataInfrastructureMaintenanceWindowDaysOfWeek.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      hoursOfDays: map['hoursOfDays'] == null ? null : (((map['hoursOfDays'] as List).cast<int>()).input()).input(),
       isCustomActionTimeoutEnabled: (map['isCustomActionTimeoutEnabled'] as bool).input(),
-      leadTimeInWeeks: map['leadTimeInWeeks'] == null ? null : (map['leadTimeInWeeks'] as int).input(),
-      months: map['months'] == null ? null : (pulumi.Input.decodeList<CloudExadataInfrastructureMaintenanceWindowMonth>(map['months'], (value) => CloudExadataInfrastructureMaintenanceWindowMonth.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      leadTimeInWeeks: map['leadTimeInWeeks'] == null ? null : ((map['leadTimeInWeeks'] as int).input()).input(),
+      months: map['months'] == null ? null : ((pulumi.Input.decodeList<CloudExadataInfrastructureMaintenanceWindowMonth>(map['months']!, (value) => CloudExadataInfrastructureMaintenanceWindowMonth.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       patchingMode: (map['patchingMode'] as String).input(),
       preference: (map['preference'] as String).input(),
-      weeksOfMonths: map['weeksOfMonths'] == null ? null : ((map['weeksOfMonths'] as List).cast<int>()).input(),
+      weeksOfMonths: map['weeksOfMonths'] == null ? null : (((map['weeksOfMonths'] as List).cast<int>()).input()).input(),
     );
   }
 }

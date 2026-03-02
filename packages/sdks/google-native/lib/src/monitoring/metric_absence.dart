@@ -38,10 +38,10 @@ class MetricAbsence {
 
   factory MetricAbsence.fromMap(Map<String, dynamic> map) {
     return MetricAbsence(
-      aggregations: map['aggregations'] == null ? null : (pulumi.Input.decodeList<AggregationMonitoringV3>(map['aggregations'], (value) => AggregationMonitoringV3.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      aggregations: map['aggregations'] == null ? null : (pulumi.Input.decodeList<AggregationMonitoringV3>(map['aggregations']!, (value) => AggregationMonitoringV3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
       filter: (map['filter'] as String).input(),
-      trigger: map['trigger'] == null ? null : (Trigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      trigger: map['trigger'] == null ? null : (Trigger.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class WatchlistItemArgs {
 
   factory WatchlistItemArgs.fromMap(Map<String, dynamic> map) {
     return WatchlistItemArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       properties: ((map['properties'] as Map).cast<String, String>()).input(),
       watchlistId: (map['watchlistId'] as String).input(),
     );

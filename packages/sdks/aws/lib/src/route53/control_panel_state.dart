@@ -58,14 +58,14 @@ class ControlPanelState {
 
   factory ControlPanelState.fromMap(Map<String, dynamic> map) {
     return ControlPanelState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      clusterArn: map['clusterArn'] == null ? null : (map['clusterArn'] as String).input(),
-      defaultControlPanel: map['defaultControlPanel'] == null ? null : (map['defaultControlPanel'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      routingControlCount: map['routingControlCount'] == null ? null : (map['routingControlCount'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      clusterArn: map['clusterArn'] == null ? null : ((map['clusterArn'] as String).input()).input(),
+      defaultControlPanel: map['defaultControlPanel'] == null ? null : ((map['defaultControlPanel'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      routingControlCount: map['routingControlCount'] == null ? null : ((map['routingControlCount'] as int).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

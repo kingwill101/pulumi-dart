@@ -27,8 +27,8 @@ class ServiceEndpointState {
 
   factory ServiceEndpointState.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointState(
-      endpointEnabled: map['endpointEnabled'] == null ? null : (map['endpointEnabled'] as bool).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      endpointEnabled: map['endpointEnabled'] == null ? null : (map['endpointEnabled']! as bool).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
     );
   }
 }

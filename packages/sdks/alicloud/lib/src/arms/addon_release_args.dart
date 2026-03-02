@@ -50,11 +50,11 @@ class AddonReleaseArgs {
   factory AddonReleaseArgs.fromMap(Map<String, dynamic> map) {
     return AddonReleaseArgs(
       addonName: (map['addonName'] as String).input(),
-      addonReleaseName: map['addonReleaseName'] == null ? null : (map['addonReleaseName'] as String).input(),
+      addonReleaseName: map['addonReleaseName'] == null ? null : (map['addonReleaseName']! as String).input(),
       addonVersion: (map['addonVersion'] as String).input(),
-      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang']! as String).input(),
       environmentId: (map['environmentId'] as String).input(),
-      values: map['values'] == null ? null : (map['values'] as String).input(),
+      values: map['values'] == null ? null : (map['values']! as String).input(),
     );
   }
 }

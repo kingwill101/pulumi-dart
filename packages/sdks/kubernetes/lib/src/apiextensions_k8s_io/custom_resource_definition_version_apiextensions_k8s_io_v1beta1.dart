@@ -59,14 +59,14 @@ class CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1 {
 
   factory CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1(
-      additionalPrinterColumns: map['additionalPrinterColumns'] == null ? null : (pulumi.Input.decodeList<CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1>(map['additionalPrinterColumns'], (value) => CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deprecated: map['deprecated'] == null ? null : (map['deprecated'] as bool).input(),
-      deprecationWarning: map['deprecationWarning'] == null ? null : (map['deprecationWarning'] as String).input(),
+      additionalPrinterColumns: map['additionalPrinterColumns'] == null ? null : (pulumi.Input.decodeList<CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1>(map['additionalPrinterColumns']!, (value) => CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deprecated: map['deprecated'] == null ? null : (map['deprecated']! as bool).input(),
+      deprecationWarning: map['deprecationWarning'] == null ? null : (map['deprecationWarning']! as String).input(),
       name: (map['name'] as String).input(),
-      schema: map['schema'] == null ? null : (CustomResourceValidationApiextensionsK8sIoV1beta1.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      schema: map['schema'] == null ? null : (CustomResourceValidationApiextensionsK8sIoV1beta1.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
       served: (map['served'] as bool).input(),
       storage: (map['storage'] as bool).input(),
-      subresources: map['subresources'] == null ? null : (CustomResourceSubresourcesApiextensionsK8sIoV1beta1.fromMap((map['subresources'] as Map).cast<String, dynamic>())).input(),
+      subresources: map['subresources'] == null ? null : (CustomResourceSubresourcesApiextensionsK8sIoV1beta1.fromMap((map['subresources']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

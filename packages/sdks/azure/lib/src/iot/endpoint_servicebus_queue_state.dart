@@ -65,15 +65,15 @@ class EndpointServicebusQueueState {
 
   factory EndpointServicebusQueueState.fromMap(Map<String, dynamic> map) {
     return EndpointServicebusQueueState(
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
-      entityPath: map['entityPath'] == null ? null : (map['entityPath'] as String).input(),
-      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
-      iothubId: map['iothubId'] == null ? null : (map['iothubId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
+      entityPath: map['entityPath'] == null ? null : (map['entityPath']! as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId']! as String).input(),
+      iothubId: map['iothubId'] == null ? null : (map['iothubId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

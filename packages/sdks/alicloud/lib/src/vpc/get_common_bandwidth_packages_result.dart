@@ -68,17 +68,17 @@ class GetCommonBandwidthPackagesResult {
 
   factory GetCommonBandwidthPackagesResult.fromMap(Map<String, dynamic> map) {
     return GetCommonBandwidthPackagesResult(
-      bandwidthPackageName: map['bandwidthPackageName'] == null ? null : map['bandwidthPackageName'] as String,
-      dryRun: map['dryRun'] == null ? null : map['dryRun'] as bool,
+      bandwidthPackageName: map['bandwidthPackageName'] == null ? null : map['bandwidthPackageName']! as String,
+      dryRun: map['dryRun'] == null ? null : map['dryRun']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeReservationData: map['includeReservationData'] == null ? null : map['includeReservationData'] as bool,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      includeReservationData: map['includeReservationData'] == null ? null : map['includeReservationData']! as bool,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       packages: pulumi.Input.decodeList<GetCommonBandwidthPackagesPackage>(map['packages'], (value) => GetCommonBandwidthPackagesPackage.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

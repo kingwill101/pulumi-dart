@@ -56,13 +56,13 @@ class ListFirewallPolicyIdpsSignatureArgs {
 
   factory ListFirewallPolicyIdpsSignatureArgs.fromMap(Map<String, dynamic> map) {
     return ListFirewallPolicyIdpsSignatureArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<FilterItems>(map['filters'], (value) => FilterItems.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<FilterItems>(map['filters']!, (value) => FilterItems.fromMap((value as Map).cast<String, dynamic>()))).input(),
       firewallPolicyName: (map['firewallPolicyName'] as String).input(),
-      orderBy: map['orderBy'] == null ? null : (OrderBy.fromMap((map['orderBy'] as Map).cast<String, dynamic>())).input(),
+      orderBy: map['orderBy'] == null ? null : (OrderBy.fromMap((map['orderBy']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resultsPerPage: map['resultsPerPage'] == null ? null : (map['resultsPerPage'] as int).input(),
-      search: map['search'] == null ? null : (map['search'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as int).input(),
+      resultsPerPage: map['resultsPerPage'] == null ? null : (map['resultsPerPage']! as int).input(),
+      search: map['search'] == null ? null : (map['search']! as String).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as int).input(),
     );
   }
 }

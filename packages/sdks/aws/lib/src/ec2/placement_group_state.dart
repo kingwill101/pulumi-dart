@@ -64,15 +64,15 @@ class PlacementGroupState {
 
   factory PlacementGroupState.fromMap(Map<String, dynamic> map) {
     return PlacementGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
-      placementGroupId: map['placementGroupId'] == null ? null : (map['placementGroupId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      spreadLevel: map['spreadLevel'] == null ? null : (map['spreadLevel'] as String).input(),
-      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      partitionCount: map['partitionCount'] == null ? null : ((map['partitionCount'] as int).input()).input(),
+      placementGroupId: map['placementGroupId'] == null ? null : ((map['placementGroupId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      spreadLevel: map['spreadLevel'] == null ? null : ((map['spreadLevel'] as String).input()).input(),
+      strategy: map['strategy'] == null ? null : ((map['strategy'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

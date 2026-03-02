@@ -21,7 +21,7 @@ class AuthenticationTypeEnumValueResponse {
 
   factory AuthenticationTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig {
 
   factory WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
     );
   }
 }

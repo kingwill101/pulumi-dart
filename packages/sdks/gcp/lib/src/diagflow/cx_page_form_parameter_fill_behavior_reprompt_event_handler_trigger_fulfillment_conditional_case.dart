@@ -21,7 +21,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentCondi
 
   factory CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase(
-      cases: map['cases'] == null ? null : (map['cases'] as String).input(),
+      cases: map['cases'] == null ? null : (map['cases']! as String).input(),
     );
   }
 }

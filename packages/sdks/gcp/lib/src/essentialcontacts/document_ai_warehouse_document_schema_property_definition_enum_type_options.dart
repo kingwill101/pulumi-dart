@@ -26,7 +26,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions {
   factory DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions.fromMap(Map<String, dynamic> map) {
     return DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions(
       possibleValues: ((map['possibleValues'] as List).cast<String>()).input(),
-      validationCheckDisabled: map['validationCheckDisabled'] == null ? null : (map['validationCheckDisabled'] as bool).input(),
+      validationCheckDisabled: map['validationCheckDisabled'] == null ? null : (map['validationCheckDisabled']! as bool).input(),
     );
   }
 }

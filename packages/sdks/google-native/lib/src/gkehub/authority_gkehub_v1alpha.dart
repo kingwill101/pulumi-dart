@@ -26,8 +26,8 @@ class AuthorityGkehubV1alpha {
 
   factory AuthorityGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return AuthorityGkehubV1alpha(
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      oidcJwks: map['oidcJwks'] == null ? null : (map['oidcJwks'] as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      oidcJwks: map['oidcJwks'] == null ? null : (map['oidcJwks']! as String).input(),
     );
   }
 }

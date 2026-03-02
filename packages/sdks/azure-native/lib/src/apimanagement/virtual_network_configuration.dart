@@ -21,7 +21,7 @@ class VirtualNetworkConfiguration {
 
   factory VirtualNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkConfiguration(
-      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId'] as String).input(),
+      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId']! as String).input(),
     );
   }
 }

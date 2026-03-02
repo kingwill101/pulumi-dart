@@ -21,7 +21,7 @@ class CloudEndpoints {
 
   factory CloudEndpoints.fromMap(Map<String, dynamic> map) {
     return CloudEndpoints(
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

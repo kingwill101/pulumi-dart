@@ -21,7 +21,7 @@ class GoogleCloudApigeeV1MonetizationConfig {
 
   factory GoogleCloudApigeeV1MonetizationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1MonetizationConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

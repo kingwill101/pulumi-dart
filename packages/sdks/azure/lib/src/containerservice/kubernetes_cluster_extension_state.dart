@@ -78,18 +78,18 @@ class KubernetesClusterExtensionState {
 
   factory KubernetesClusterExtensionState.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterExtensionState(
-      aksAssignedIdentities: map['aksAssignedIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterExtensionAksAssignedIdentity>(map['aksAssignedIdentities'], (value) => KubernetesClusterExtensionAksAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : ((map['configurationProtectedSettings'] as Map).cast<String, String>()).input(),
-      configurationSettings: map['configurationSettings'] == null ? null : ((map['configurationSettings'] as Map).cast<String, String>()).input(),
-      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion'] as String).input(),
-      extensionType: map['extensionType'] == null ? null : (map['extensionType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      plan: map['plan'] == null ? null : (KubernetesClusterExtensionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      releaseNamespace: map['releaseNamespace'] == null ? null : (map['releaseNamespace'] as String).input(),
-      releaseTrain: map['releaseTrain'] == null ? null : (map['releaseTrain'] as String).input(),
-      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      aksAssignedIdentities: map['aksAssignedIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterExtensionAksAssignedIdentity>(map['aksAssignedIdentities']!, (value) => KubernetesClusterExtensionAksAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : ((map['configurationProtectedSettings']! as Map).cast<String, String>()).input(),
+      configurationSettings: map['configurationSettings'] == null ? null : ((map['configurationSettings']! as Map).cast<String, String>()).input(),
+      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion']! as String).input(),
+      extensionType: map['extensionType'] == null ? null : (map['extensionType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      plan: map['plan'] == null ? null : (KubernetesClusterExtensionPlan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      releaseNamespace: map['releaseNamespace'] == null ? null : (map['releaseNamespace']! as String).input(),
+      releaseTrain: map['releaseTrain'] == null ? null : (map['releaseTrain']! as String).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

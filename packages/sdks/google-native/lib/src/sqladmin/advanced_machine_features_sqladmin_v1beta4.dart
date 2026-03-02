@@ -21,7 +21,7 @@ class AdvancedMachineFeaturesSqladminV1beta4 {
 
   factory AdvancedMachineFeaturesSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return AdvancedMachineFeaturesSqladminV1beta4(
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore'] as int).input(),
+      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore']! as int).input(),
     );
   }
 }

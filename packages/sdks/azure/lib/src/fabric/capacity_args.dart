@@ -52,12 +52,12 @@ class CapacityArgs {
 
   factory CapacityArgs.fromMap(Map<String, dynamic> map) {
     return CapacityArgs(
-      administrationMembers: map['administrationMembers'] == null ? null : ((map['administrationMembers'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      administrationMembers: map['administrationMembers'] == null ? null : ((map['administrationMembers']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (CapacitySku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

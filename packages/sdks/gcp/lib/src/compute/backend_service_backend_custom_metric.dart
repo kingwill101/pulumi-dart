@@ -40,7 +40,7 @@ class BackendServiceBackendCustomMetric {
   factory BackendServiceBackendCustomMetric.fromMap(Map<String, dynamic> map) {
     return BackendServiceBackendCustomMetric(
       dryRun: (map['dryRun'] as bool).input(),
-      maxUtilization: map['maxUtilization'] == null ? null : (map['maxUtilization'] as double).input(),
+      maxUtilization: map['maxUtilization'] == null ? null : (map['maxUtilization']! as double).input(),
       name: (map['name'] as String).input(),
     );
   }

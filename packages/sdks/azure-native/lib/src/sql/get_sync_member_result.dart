@@ -91,20 +91,20 @@ class GetSyncMemberResult {
   factory GetSyncMemberResult.fromMap(Map<String, dynamic> map) {
     return GetSyncMemberResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
-      databaseType: map['databaseType'] == null ? null : map['databaseType'] as String,
+      databaseName: map['databaseName'] == null ? null : map['databaseName']! as String,
+      databaseType: map['databaseType'] == null ? null : map['databaseType']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       privateEndpointName: map['privateEndpointName'] as String,
-      serverName: map['serverName'] == null ? null : map['serverName'] as String,
-      sqlServerDatabaseId: map['sqlServerDatabaseId'] == null ? null : map['sqlServerDatabaseId'] as String,
-      syncAgentId: map['syncAgentId'] == null ? null : map['syncAgentId'] as String,
-      syncDirection: map['syncDirection'] == null ? null : map['syncDirection'] as String,
-      syncMemberAzureDatabaseResourceId: map['syncMemberAzureDatabaseResourceId'] == null ? null : map['syncMemberAzureDatabaseResourceId'] as String,
+      serverName: map['serverName'] == null ? null : map['serverName']! as String,
+      sqlServerDatabaseId: map['sqlServerDatabaseId'] == null ? null : map['sqlServerDatabaseId']! as String,
+      syncAgentId: map['syncAgentId'] == null ? null : map['syncAgentId']! as String,
+      syncDirection: map['syncDirection'] == null ? null : map['syncDirection']! as String,
+      syncMemberAzureDatabaseResourceId: map['syncMemberAzureDatabaseResourceId'] == null ? null : map['syncMemberAzureDatabaseResourceId']! as String,
       syncState: map['syncState'] as String,
       type: map['type'] as String,
-      usePrivateLinkConnection: map['usePrivateLinkConnection'] == null ? null : map['usePrivateLinkConnection'] as bool,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      usePrivateLinkConnection: map['usePrivateLinkConnection'] == null ? null : map['usePrivateLinkConnection']! as bool,
+      userName: map['userName'] == null ? null : map['userName']! as String,
     );
   }
 }

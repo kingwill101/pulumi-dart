@@ -32,9 +32,9 @@ class ProjectPropertiesEncryption {
 
   factory ProjectPropertiesEncryption.fromMap(Map<String, dynamic> map) {
     return ProjectPropertiesEncryption(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

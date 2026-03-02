@@ -22,7 +22,7 @@ class ProtocolSettingsResponse {
 
   factory ProtocolSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ProtocolSettingsResponse(
-      smb: map['smb'] == null ? null : (SmbSettingResponse.fromMap((map['smb'] as Map).cast<String, dynamic>())).input(),
+      smb: map['smb'] == null ? null : (SmbSettingResponse.fromMap((map['smb']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

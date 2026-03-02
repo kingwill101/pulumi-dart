@@ -21,7 +21,7 @@ class ResourceProviderManagementErrorResponseMessageOptions {
 
   factory ResourceProviderManagementErrorResponseMessageOptions.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManagementErrorResponseMessageOptions(
-      serverFailureResponseMessageType: map['serverFailureResponseMessageType'] == null ? null : (map['serverFailureResponseMessageType'] as String).input(),
+      serverFailureResponseMessageType: map['serverFailureResponseMessageType'] == null ? null : (map['serverFailureResponseMessageType']! as String).input(),
     );
   }
 }

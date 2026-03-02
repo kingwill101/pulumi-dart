@@ -39,9 +39,9 @@ class PageArgs {
 
   factory PageArgs.fromMap(Map<String, dynamic> map) {
     return PageArgs(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
       contentType: (map['contentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       pageName: (map['pageName'] as String).input(),
     );
   }

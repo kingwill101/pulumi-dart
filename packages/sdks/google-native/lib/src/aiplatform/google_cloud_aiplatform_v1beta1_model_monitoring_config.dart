@@ -39,10 +39,10 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringConfig {
 
   factory GoogleCloudAiplatformV1beta1ModelMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringConfig(
-      alertConfig: map['alertConfig'] == null ? null : (GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig.fromMap((map['alertConfig'] as Map).cast<String, dynamic>())).input(),
-      analysisInstanceSchemaUri: map['analysisInstanceSchemaUri'] == null ? null : (map['analysisInstanceSchemaUri'] as String).input(),
-      objectiveConfigs: map['objectiveConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig>(map['objectiveConfigs'], (value) => GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statsAnomaliesBaseDirectory: map['statsAnomaliesBaseDirectory'] == null ? null : (GoogleCloudAiplatformV1beta1GcsDestination.fromMap((map['statsAnomaliesBaseDirectory'] as Map).cast<String, dynamic>())).input(),
+      alertConfig: map['alertConfig'] == null ? null : (GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig.fromMap((map['alertConfig']! as Map).cast<String, dynamic>())).input(),
+      analysisInstanceSchemaUri: map['analysisInstanceSchemaUri'] == null ? null : (map['analysisInstanceSchemaUri']! as String).input(),
+      objectiveConfigs: map['objectiveConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig>(map['objectiveConfigs']!, (value) => GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statsAnomaliesBaseDirectory: map['statsAnomaliesBaseDirectory'] == null ? null : (GoogleCloudAiplatformV1beta1GcsDestination.fromMap((map['statsAnomaliesBaseDirectory']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

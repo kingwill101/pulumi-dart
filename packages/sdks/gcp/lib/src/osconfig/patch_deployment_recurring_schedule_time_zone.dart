@@ -26,7 +26,7 @@ class PatchDeploymentRecurringScheduleTimeZone {
   factory PatchDeploymentRecurringScheduleTimeZone.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentRecurringScheduleTimeZone(
       id: (map['id'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

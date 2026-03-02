@@ -26,8 +26,8 @@ class DeploymentCircuitBreakerResponse {
 
   factory DeploymentCircuitBreakerResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentCircuitBreakerResponse(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      rollback: map['rollback'] == null ? null : (map['rollback'] as bool).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      rollback: map['rollback'] == null ? null : (map['rollback']! as bool).input(),
     );
   }
 }

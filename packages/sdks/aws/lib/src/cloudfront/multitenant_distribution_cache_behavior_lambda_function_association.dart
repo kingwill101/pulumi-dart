@@ -31,7 +31,7 @@ class MultitenantDistributionCacheBehaviorLambdaFunctionAssociation {
   factory MultitenantDistributionCacheBehaviorLambdaFunctionAssociation.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionCacheBehaviorLambdaFunctionAssociation(
       eventType: (map['eventType'] as String).input(),
-      includeBody: map['includeBody'] == null ? null : (map['includeBody'] as bool).input(),
+      includeBody: map['includeBody'] == null ? null : ((map['includeBody'] as bool).input()).input(),
       lambdaFunctionArn: (map['lambdaFunctionArn'] as String).input(),
     );
   }

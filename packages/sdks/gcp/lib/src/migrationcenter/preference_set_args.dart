@@ -52,12 +52,12 @@ class PreferenceSetArgs {
 
   factory PreferenceSetArgs.fromMap(Map<String, dynamic> map) {
     return PreferenceSetArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       location: (map['location'] as String).input(),
       preferenceSetId: (map['preferenceSetId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      virtualMachinePreferences: map['virtualMachinePreferences'] == null ? null : (PreferenceSetVirtualMachinePreferences.fromMap((map['virtualMachinePreferences'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      virtualMachinePreferences: map['virtualMachinePreferences'] == null ? null : (PreferenceSetVirtualMachinePreferences.fromMap((map['virtualMachinePreferences']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

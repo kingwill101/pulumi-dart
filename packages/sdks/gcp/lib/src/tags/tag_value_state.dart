@@ -54,13 +54,13 @@ class TagValueState {
 
   factory TagValueState.fromMap(Map<String, dynamic> map) {
     return TagValueState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespacedName: map['namespacedName'] == null ? null : (map['namespacedName'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespacedName: map['namespacedName'] == null ? null : (map['namespacedName']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

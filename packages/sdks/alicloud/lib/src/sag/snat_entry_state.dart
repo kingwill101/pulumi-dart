@@ -31,9 +31,9 @@ class SnatEntryState {
 
   factory SnatEntryState.fromMap(Map<String, dynamic> map) {
     return SnatEntryState(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      sagId: map['sagId'] == null ? null : (map['sagId'] as String).input(),
-      snatIp: map['snatIp'] == null ? null : (map['snatIp'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
+      sagId: map['sagId'] == null ? null : (map['sagId']! as String).input(),
+      snatIp: map['snatIp'] == null ? null : (map['snatIp']! as String).input(),
     );
   }
 }

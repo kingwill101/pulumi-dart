@@ -49,7 +49,7 @@ class JobTargetGroupArgs {
       members: (pulumi.Input.decodeList<JobTarget>(map['members'], (value) => JobTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      targetGroupName: map['targetGroupName'] == null ? null : (map['targetGroupName'] as String).input(),
+      targetGroupName: map['targetGroupName'] == null ? null : (map['targetGroupName']! as String).input(),
     );
   }
 }

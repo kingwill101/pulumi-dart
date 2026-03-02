@@ -95,22 +95,22 @@ class AssessmentMetadataInSubscriptionArgs {
 
   factory AssessmentMetadataInSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentMetadataInSubscriptionArgs(
-      assessmentMetadataName: map['assessmentMetadataName'] == null ? null : (map['assessmentMetadataName'] as String).input(),
+      assessmentMetadataName: map['assessmentMetadataName'] == null ? null : (map['assessmentMetadataName']! as String).input(),
       assessmentType: (map['assessmentType'] as String).input(),
-      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      categories: map['categories'] == null ? null : ((map['categories']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      implementationEffort: map['implementationEffort'] == null ? null : (map['implementationEffort'] as String).input(),
-      partnerData: map['partnerData'] == null ? null : (SecurityAssessmentMetadataPartnerData.fromMap((map['partnerData'] as Map).cast<String, dynamic>())).input(),
-      plannedDeprecationDate: map['plannedDeprecationDate'] == null ? null : (map['plannedDeprecationDate'] as String).input(),
-      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
-      publishDates: map['publishDates'] == null ? null : (SecurityAssessmentMetadataPropertiesResponsePublishDates.fromMap((map['publishDates'] as Map).cast<String, dynamic>())).input(),
-      remediationDescription: map['remediationDescription'] == null ? null : (map['remediationDescription'] as String).input(),
+      implementationEffort: map['implementationEffort'] == null ? null : (map['implementationEffort']! as String).input(),
+      partnerData: map['partnerData'] == null ? null : (SecurityAssessmentMetadataPartnerData.fromMap((map['partnerData']! as Map).cast<String, dynamic>())).input(),
+      plannedDeprecationDate: map['plannedDeprecationDate'] == null ? null : (map['plannedDeprecationDate']! as String).input(),
+      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
+      publishDates: map['publishDates'] == null ? null : (SecurityAssessmentMetadataPropertiesResponsePublishDates.fromMap((map['publishDates']! as Map).cast<String, dynamic>())).input(),
+      remediationDescription: map['remediationDescription'] == null ? null : (map['remediationDescription']! as String).input(),
       severity: (map['severity'] as String).input(),
-      tactics: map['tactics'] == null ? null : ((map['tactics'] as List).cast<String>()).input(),
-      techniques: map['techniques'] == null ? null : ((map['techniques'] as List).cast<String>()).input(),
-      threats: map['threats'] == null ? null : ((map['threats'] as List).cast<String>()).input(),
-      userImpact: map['userImpact'] == null ? null : (map['userImpact'] as String).input(),
+      tactics: map['tactics'] == null ? null : ((map['tactics']! as List).cast<String>()).input(),
+      techniques: map['techniques'] == null ? null : ((map['techniques']! as List).cast<String>()).input(),
+      threats: map['threats'] == null ? null : ((map['threats']! as List).cast<String>()).input(),
+      userImpact: map['userImpact'] == null ? null : (map['userImpact']! as String).input(),
     );
   }
 }

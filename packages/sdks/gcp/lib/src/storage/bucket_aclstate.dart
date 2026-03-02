@@ -38,10 +38,10 @@ class BucketACLState {
 
   factory BucketACLState.fromMap(Map<String, dynamic> map) {
     return BucketACLState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      defaultAcl: map['defaultAcl'] == null ? null : (map['defaultAcl'] as String).input(),
-      predefinedAcl: map['predefinedAcl'] == null ? null : (map['predefinedAcl'] as String).input(),
-      roleEntities: map['roleEntities'] == null ? null : ((map['roleEntities'] as List).cast<String>()).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      defaultAcl: map['defaultAcl'] == null ? null : (map['defaultAcl']! as String).input(),
+      predefinedAcl: map['predefinedAcl'] == null ? null : (map['predefinedAcl']! as String).input(),
+      roleEntities: map['roleEntities'] == null ? null : ((map['roleEntities']! as List).cast<String>()).input(),
     );
   }
 }

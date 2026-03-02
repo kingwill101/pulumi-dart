@@ -27,8 +27,8 @@ class JsonPathMatcher {
 
   factory JsonPathMatcher.fromMap(Map<String, dynamic> map) {
     return JsonPathMatcher(
-      jsonMatcher: map['jsonMatcher'] == null ? null : (JsonPathMatcherJsonMatcher.fromValue(map['jsonMatcher'] as String)).input(),
-      jsonPath: map['jsonPath'] == null ? null : (map['jsonPath'] as String).input(),
+      jsonMatcher: map['jsonMatcher'] == null ? null : (JsonPathMatcherJsonMatcher.fromValue(map['jsonMatcher']! as String)).input(),
+      jsonPath: map['jsonPath'] == null ? null : (map['jsonPath']! as String).input(),
     );
   }
 }

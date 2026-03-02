@@ -57,14 +57,14 @@ class RegionSecurityPolicyRuleNetworkMatch {
 
   factory RegionSecurityPolicyRuleNetworkMatch.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyRuleNetworkMatch(
-      destIpRanges: map['destIpRanges'] == null ? null : ((map['destIpRanges'] as List).cast<String>()).input(),
-      destPorts: map['destPorts'] == null ? null : ((map['destPorts'] as List).cast<String>()).input(),
-      ipProtocols: map['ipProtocols'] == null ? null : ((map['ipProtocols'] as List).cast<String>()).input(),
-      srcAsns: map['srcAsns'] == null ? null : ((map['srcAsns'] as List).cast<int>()).input(),
-      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges'] as List).cast<String>()).input(),
-      srcPorts: map['srcPorts'] == null ? null : ((map['srcPorts'] as List).cast<String>()).input(),
-      srcRegionCodes: map['srcRegionCodes'] == null ? null : ((map['srcRegionCodes'] as List).cast<String>()).input(),
-      userDefinedFields: map['userDefinedFields'] == null ? null : (pulumi.Input.decodeList<RegionSecurityPolicyRuleNetworkMatchUserDefinedField>(map['userDefinedFields'], (value) => RegionSecurityPolicyRuleNetworkMatchUserDefinedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destIpRanges: map['destIpRanges'] == null ? null : ((map['destIpRanges']! as List).cast<String>()).input(),
+      destPorts: map['destPorts'] == null ? null : ((map['destPorts']! as List).cast<String>()).input(),
+      ipProtocols: map['ipProtocols'] == null ? null : ((map['ipProtocols']! as List).cast<String>()).input(),
+      srcAsns: map['srcAsns'] == null ? null : ((map['srcAsns']! as List).cast<int>()).input(),
+      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges']! as List).cast<String>()).input(),
+      srcPorts: map['srcPorts'] == null ? null : ((map['srcPorts']! as List).cast<String>()).input(),
+      srcRegionCodes: map['srcRegionCodes'] == null ? null : ((map['srcRegionCodes']! as List).cast<String>()).input(),
+      userDefinedFields: map['userDefinedFields'] == null ? null : (pulumi.Input.decodeList<RegionSecurityPolicyRuleNetworkMatchUserDefinedField>(map['userDefinedFields']!, (value) => RegionSecurityPolicyRuleNetworkMatchUserDefinedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

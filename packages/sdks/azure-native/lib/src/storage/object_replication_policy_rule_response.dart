@@ -38,8 +38,8 @@ class ObjectReplicationPolicyRuleResponse {
   factory ObjectReplicationPolicyRuleResponse.fromMap(Map<String, dynamic> map) {
     return ObjectReplicationPolicyRuleResponse(
       destinationContainer: (map['destinationContainer'] as String).input(),
-      filters: map['filters'] == null ? null : (ObjectReplicationPolicyFilterResponse.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      filters: map['filters'] == null ? null : (ObjectReplicationPolicyFilterResponse.fromMap((map['filters']! as Map).cast<String, dynamic>())).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
       sourceContainer: (map['sourceContainer'] as String).input(),
     );
   }

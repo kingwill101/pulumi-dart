@@ -32,9 +32,9 @@ class ApplicationGatewayRewriteRuleSet {
 
   factory ApplicationGatewayRewriteRuleSet.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRewriteRuleSet(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rewriteRules: map['rewriteRules'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRule>(map['rewriteRules'], (value) => ApplicationGatewayRewriteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rewriteRules: map['rewriteRules'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRule>(map['rewriteRules']!, (value) => ApplicationGatewayRewriteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

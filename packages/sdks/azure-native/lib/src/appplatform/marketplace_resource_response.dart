@@ -31,9 +31,9 @@ class MarketplaceResourceResponse {
 
   factory MarketplaceResourceResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceResourceResponse(
-      plan: map['plan'] == null ? null : (map['plan'] as String).input(),
-      product: map['product'] == null ? null : (map['product'] as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      plan: map['plan'] == null ? null : (map['plan']! as String).input(),
+      product: map['product'] == null ? null : (map['product']! as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
     );
   }
 }

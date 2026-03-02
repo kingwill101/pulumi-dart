@@ -36,10 +36,10 @@ class DomainDomainSettingsRStudioServerProDomainSettings {
 
   factory DomainDomainSettingsRStudioServerProDomainSettings.fromMap(Map<String, dynamic> map) {
     return DomainDomainSettingsRStudioServerProDomainSettings(
-      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : (DomainDomainSettingsRStudioServerProDomainSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec'] as Map).cast<String, dynamic>())).input(),
+      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : ((DomainDomainSettingsRStudioServerProDomainSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec']! as Map).cast<String, dynamic>())).input()).input(),
       domainExecutionRoleArn: (map['domainExecutionRoleArn'] as String).input(),
-      rStudioConnectUrl: map['rStudioConnectUrl'] == null ? null : (map['rStudioConnectUrl'] as String).input(),
-      rStudioPackageManagerUrl: map['rStudioPackageManagerUrl'] == null ? null : (map['rStudioPackageManagerUrl'] as String).input(),
+      rStudioConnectUrl: map['rStudioConnectUrl'] == null ? null : ((map['rStudioConnectUrl'] as String).input()).input(),
+      rStudioPackageManagerUrl: map['rStudioPackageManagerUrl'] == null ? null : ((map['rStudioPackageManagerUrl'] as String).input()).input(),
     );
   }
 }

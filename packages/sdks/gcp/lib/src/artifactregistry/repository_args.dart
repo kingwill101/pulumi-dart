@@ -134,21 +134,21 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      cleanupPolicies: map['cleanupPolicies'] == null ? null : (pulumi.Input.decodeList<RepositoryCleanupPolicy>(map['cleanupPolicies'], (value) => RepositoryCleanupPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cleanupPolicyDryRun: map['cleanupPolicyDryRun'] == null ? null : (map['cleanupPolicyDryRun'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dockerConfig: map['dockerConfig'] == null ? null : (RepositoryDockerConfig.fromMap((map['dockerConfig'] as Map).cast<String, dynamic>())).input(),
+      cleanupPolicies: map['cleanupPolicies'] == null ? null : (pulumi.Input.decodeList<RepositoryCleanupPolicy>(map['cleanupPolicies']!, (value) => RepositoryCleanupPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cleanupPolicyDryRun: map['cleanupPolicyDryRun'] == null ? null : (map['cleanupPolicyDryRun']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dockerConfig: map['dockerConfig'] == null ? null : (RepositoryDockerConfig.fromMap((map['dockerConfig']! as Map).cast<String, dynamic>())).input(),
       format: (map['format'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mavenConfig: map['mavenConfig'] == null ? null : (RepositoryMavenConfig.fromMap((map['mavenConfig'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      remoteRepositoryConfig: map['remoteRepositoryConfig'] == null ? null : (RepositoryRemoteRepositoryConfig.fromMap((map['remoteRepositoryConfig'] as Map).cast<String, dynamic>())).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mavenConfig: map['mavenConfig'] == null ? null : (RepositoryMavenConfig.fromMap((map['mavenConfig']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      remoteRepositoryConfig: map['remoteRepositoryConfig'] == null ? null : (RepositoryRemoteRepositoryConfig.fromMap((map['remoteRepositoryConfig']! as Map).cast<String, dynamic>())).input(),
       repositoryId: (map['repositoryId'] as String).input(),
-      virtualRepositoryConfig: map['virtualRepositoryConfig'] == null ? null : (RepositoryVirtualRepositoryConfig.fromMap((map['virtualRepositoryConfig'] as Map).cast<String, dynamic>())).input(),
-      vulnerabilityScanningConfig: map['vulnerabilityScanningConfig'] == null ? null : (RepositoryVulnerabilityScanningConfig.fromMap((map['vulnerabilityScanningConfig'] as Map).cast<String, dynamic>())).input(),
+      virtualRepositoryConfig: map['virtualRepositoryConfig'] == null ? null : (RepositoryVirtualRepositoryConfig.fromMap((map['virtualRepositoryConfig']! as Map).cast<String, dynamic>())).input(),
+      vulnerabilityScanningConfig: map['vulnerabilityScanningConfig'] == null ? null : (RepositoryVulnerabilityScanningConfig.fromMap((map['vulnerabilityScanningConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

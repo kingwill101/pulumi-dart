@@ -21,7 +21,7 @@ class TenancyEnumValueResponse {
 
   factory TenancyEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return TenancyEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

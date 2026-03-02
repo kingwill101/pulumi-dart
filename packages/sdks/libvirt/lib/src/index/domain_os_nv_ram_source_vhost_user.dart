@@ -101,21 +101,21 @@ class DomainOsNvRamSourceVhostUser {
 
   factory DomainOsNvRamSourceVhostUser.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceVhostUser(
-      dbus: map['dbus'] == null ? null : (DomainOsNvRamSourceVhostUserDbus.fromMap((map['dbus'] as Map).cast<String, dynamic>())).input(),
-      dev: map['dev'] == null ? null : (DomainOsNvRamSourceVhostUserDev.fromMap((map['dev'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (DomainOsNvRamSourceVhostUserFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
-      nmdm: map['nmdm'] == null ? null : (DomainOsNvRamSourceVhostUserNmdm.fromMap((map['nmdm'] as Map).cast<String, dynamic>())).input(),
-      null_: map['null'] == null ? null : (map['null'] as bool).input(),
-      pipe: map['pipe'] == null ? null : (DomainOsNvRamSourceVhostUserPipe.fromMap((map['pipe'] as Map).cast<String, dynamic>())).input(),
-      pty: map['pty'] == null ? null : (DomainOsNvRamSourceVhostUserPty.fromMap((map['pty'] as Map).cast<String, dynamic>())).input(),
-      qemuvdAgent: map['qemuvdAgent'] == null ? null : (DomainOsNvRamSourceVhostUserQemuvdAgent.fromMap((map['qemuvdAgent'] as Map).cast<String, dynamic>())).input(),
-      spicePort: map['spicePort'] == null ? null : (DomainOsNvRamSourceVhostUserSpicePort.fromMap((map['spicePort'] as Map).cast<String, dynamic>())).input(),
-      spiceVmc: map['spiceVmc'] == null ? null : (map['spiceVmc'] as bool).input(),
-      stdIo: map['stdIo'] == null ? null : (map['stdIo'] as bool).input(),
-      tcp: map['tcp'] == null ? null : (DomainOsNvRamSourceVhostUserTcp.fromMap((map['tcp'] as Map).cast<String, dynamic>())).input(),
-      udp: map['udp'] == null ? null : (DomainOsNvRamSourceVhostUserUdp.fromMap((map['udp'] as Map).cast<String, dynamic>())).input(),
-      unix: map['unix'] == null ? null : (DomainOsNvRamSourceVhostUserUnix.fromMap((map['unix'] as Map).cast<String, dynamic>())).input(),
-      vc: map['vc'] == null ? null : (map['vc'] as bool).input(),
+      dbus: map['dbus'] == null ? null : (DomainOsNvRamSourceVhostUserDbus.fromMap((map['dbus']! as Map).cast<String, dynamic>())).input(),
+      dev: map['dev'] == null ? null : (DomainOsNvRamSourceVhostUserDev.fromMap((map['dev']! as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (DomainOsNvRamSourceVhostUserFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
+      nmdm: map['nmdm'] == null ? null : (DomainOsNvRamSourceVhostUserNmdm.fromMap((map['nmdm']! as Map).cast<String, dynamic>())).input(),
+      null_: map['null'] == null ? null : (map['null']! as bool).input(),
+      pipe: map['pipe'] == null ? null : (DomainOsNvRamSourceVhostUserPipe.fromMap((map['pipe']! as Map).cast<String, dynamic>())).input(),
+      pty: map['pty'] == null ? null : (DomainOsNvRamSourceVhostUserPty.fromMap((map['pty']! as Map).cast<String, dynamic>())).input(),
+      qemuvdAgent: map['qemuvdAgent'] == null ? null : (DomainOsNvRamSourceVhostUserQemuvdAgent.fromMap((map['qemuvdAgent']! as Map).cast<String, dynamic>())).input(),
+      spicePort: map['spicePort'] == null ? null : (DomainOsNvRamSourceVhostUserSpicePort.fromMap((map['spicePort']! as Map).cast<String, dynamic>())).input(),
+      spiceVmc: map['spiceVmc'] == null ? null : (map['spiceVmc']! as bool).input(),
+      stdIo: map['stdIo'] == null ? null : (map['stdIo']! as bool).input(),
+      tcp: map['tcp'] == null ? null : (DomainOsNvRamSourceVhostUserTcp.fromMap((map['tcp']! as Map).cast<String, dynamic>())).input(),
+      udp: map['udp'] == null ? null : (DomainOsNvRamSourceVhostUserUdp.fromMap((map['udp']! as Map).cast<String, dynamic>())).input(),
+      unix: map['unix'] == null ? null : (DomainOsNvRamSourceVhostUserUnix.fromMap((map['unix']! as Map).cast<String, dynamic>())).input(),
+      vc: map['vc'] == null ? null : (map['vc']! as bool).input(),
     );
   }
 }

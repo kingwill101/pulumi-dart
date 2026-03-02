@@ -25,7 +25,7 @@ class EventHubNamespaceNetworkRulesetsVirtualNetworkRule {
 
   factory EventHubNamespaceNetworkRulesetsVirtualNetworkRule.fromMap(Map<String, dynamic> map) {
     return EventHubNamespaceNetworkRulesetsVirtualNetworkRule(
-      ignoreMissingVirtualNetworkServiceEndpoint: map['ignoreMissingVirtualNetworkServiceEndpoint'] == null ? null : (map['ignoreMissingVirtualNetworkServiceEndpoint'] as bool).input(),
+      ignoreMissingVirtualNetworkServiceEndpoint: map['ignoreMissingVirtualNetworkServiceEndpoint'] == null ? null : (map['ignoreMissingVirtualNetworkServiceEndpoint']! as bool).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

@@ -28,8 +28,8 @@ class KafkaRoutesResponse {
 
   factory KafkaRoutesResponse.fromMap(Map<String, dynamic> map) {
     return KafkaRoutesResponse(
-      kafkaToMqtt: map['kafkaToMqtt'] == null ? null : (KafkaToMqttRoutesResponse.fromMap((map['kafkaToMqtt'] as Map).cast<String, dynamic>())).input(),
-      mqttToKafka: map['mqttToKafka'] == null ? null : (MqttToKafkaRoutesResponse.fromMap((map['mqttToKafka'] as Map).cast<String, dynamic>())).input(),
+      kafkaToMqtt: map['kafkaToMqtt'] == null ? null : (KafkaToMqttRoutesResponse.fromMap((map['kafkaToMqtt']! as Map).cast<String, dynamic>())).input(),
+      mqttToKafka: map['mqttToKafka'] == null ? null : (MqttToKafkaRoutesResponse.fromMap((map['mqttToKafka']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

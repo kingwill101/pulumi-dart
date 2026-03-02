@@ -27,7 +27,7 @@ class DevToolPortalFeatureDetailResponse {
   factory DevToolPortalFeatureDetailResponse.fromMap(Map<String, dynamic> map) {
     return DevToolPortalFeatureDetailResponse(
       route: (map['route'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

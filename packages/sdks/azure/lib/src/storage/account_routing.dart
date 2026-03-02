@@ -30,9 +30,9 @@ class AccountRouting {
 
   factory AccountRouting.fromMap(Map<String, dynamic> map) {
     return AccountRouting(
-      choice: map['choice'] == null ? null : (map['choice'] as String).input(),
-      publishInternetEndpoints: map['publishInternetEndpoints'] == null ? null : (map['publishInternetEndpoints'] as bool).input(),
-      publishMicrosoftEndpoints: map['publishMicrosoftEndpoints'] == null ? null : (map['publishMicrosoftEndpoints'] as bool).input(),
+      choice: map['choice'] == null ? null : (map['choice']! as String).input(),
+      publishInternetEndpoints: map['publishInternetEndpoints'] == null ? null : (map['publishInternetEndpoints']! as bool).input(),
+      publishMicrosoftEndpoints: map['publishMicrosoftEndpoints'] == null ? null : (map['publishMicrosoftEndpoints']! as bool).input(),
     );
   }
 }

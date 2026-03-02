@@ -27,8 +27,8 @@ class GetBastionShareableLinkResult {
 
   factory GetBastionShareableLinkResult.fromMap(Map<String, dynamic> map) {
     return GetBastionShareableLinkResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<BastionShareableLinkResponse>(map['value'], (value) => BastionShareableLinkResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<BastionShareableLinkResponse>(map['value']!, (value) => BastionShareableLinkResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

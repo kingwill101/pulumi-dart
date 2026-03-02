@@ -30,7 +30,7 @@ class TopicRuleErrorActionCloudwatchLogs {
 
   factory TopicRuleErrorActionCloudwatchLogs.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionCloudwatchLogs(
-      batchMode: map['batchMode'] == null ? null : (map['batchMode'] as bool).input(),
+      batchMode: map['batchMode'] == null ? null : ((map['batchMode'] as bool).input()).input(),
       logGroupName: (map['logGroupName'] as String).input(),
       roleArn: (map['roleArn'] as String).input(),
     );

@@ -100,21 +100,21 @@ class GatewayAdvertisedRouteState {
 
   factory GatewayAdvertisedRouteState.fromMap(Map<String, dynamic> map) {
     return GatewayAdvertisedRouteState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      recipient: map['recipient'] == null ? null : (map['recipient'] as String).input(),
-      spoke: map['spoke'] == null ? null : (map['spoke'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      recipient: map['recipient'] == null ? null : (map['recipient']! as String).input(),
+      spoke: map['spoke'] == null ? null : (map['spoke']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

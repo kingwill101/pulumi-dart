@@ -95,20 +95,20 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementF
 
   factory WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatch.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatch(
-      allQueryArguments: map['allQueryArguments'] == null ? null : ((map['allQueryArguments'] as Map).cast<String, dynamic>()).input(),
-      body: map['body'] == null ? null : (WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchBody.fromMap((map['body'] as Map).cast<String, dynamic>())).input(),
-      cookies: map['cookies'] == null ? null : (WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchCookies.fromMap((map['cookies'] as Map).cast<String, dynamic>())).input(),
-      headerOrders: map['headerOrders'] == null ? null : (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchHeaderOrder>(map['headerOrders'], (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchHeaderOrder.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchHeader>(map['headers'], (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ja3Fingerprint: map['ja3Fingerprint'] == null ? null : (WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchJa3Fingerprint.fromMap((map['ja3Fingerprint'] as Map).cast<String, dynamic>())).input(),
-      ja4Fingerprint: map['ja4Fingerprint'] == null ? null : (WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchJa4Fingerprint.fromMap((map['ja4Fingerprint'] as Map).cast<String, dynamic>())).input(),
-      jsonBody: map['jsonBody'] == null ? null : (WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchJsonBody.fromMap((map['jsonBody'] as Map).cast<String, dynamic>())).input(),
-      method: map['method'] == null ? null : ((map['method'] as Map).cast<String, dynamic>()).input(),
-      queryString: map['queryString'] == null ? null : ((map['queryString'] as Map).cast<String, dynamic>()).input(),
-      singleHeader: map['singleHeader'] == null ? null : (WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchSingleHeader.fromMap((map['singleHeader'] as Map).cast<String, dynamic>())).input(),
-      singleQueryArgument: map['singleQueryArgument'] == null ? null : (WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchSingleQueryArgument.fromMap((map['singleQueryArgument'] as Map).cast<String, dynamic>())).input(),
-      uriFragment: map['uriFragment'] == null ? null : (WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchUriFragment.fromMap((map['uriFragment'] as Map).cast<String, dynamic>())).input(),
-      uriPath: map['uriPath'] == null ? null : ((map['uriPath'] as Map).cast<String, dynamic>()).input(),
+      allQueryArguments: map['allQueryArguments'] == null ? null : (((map['allQueryArguments'] as Map).cast<String, dynamic>()).input()).input(),
+      body: map['body'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchBody.fromMap((map['body']! as Map).cast<String, dynamic>())).input()).input(),
+      cookies: map['cookies'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchCookies.fromMap((map['cookies']! as Map).cast<String, dynamic>())).input()).input(),
+      headerOrders: map['headerOrders'] == null ? null : ((pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchHeaderOrder>(map['headerOrders']!, (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchHeaderOrder.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      headers: map['headers'] == null ? null : ((pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchHeader>(map['headers']!, (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      ja3Fingerprint: map['ja3Fingerprint'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchJa3Fingerprint.fromMap((map['ja3Fingerprint']! as Map).cast<String, dynamic>())).input()).input(),
+      ja4Fingerprint: map['ja4Fingerprint'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchJa4Fingerprint.fromMap((map['ja4Fingerprint']! as Map).cast<String, dynamic>())).input()).input(),
+      jsonBody: map['jsonBody'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchJsonBody.fromMap((map['jsonBody']! as Map).cast<String, dynamic>())).input()).input(),
+      method: map['method'] == null ? null : (((map['method'] as Map).cast<String, dynamic>()).input()).input(),
+      queryString: map['queryString'] == null ? null : (((map['queryString'] as Map).cast<String, dynamic>()).input()).input(),
+      singleHeader: map['singleHeader'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchSingleHeader.fromMap((map['singleHeader']! as Map).cast<String, dynamic>())).input()).input(),
+      singleQueryArgument: map['singleQueryArgument'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchSingleQueryArgument.fromMap((map['singleQueryArgument']! as Map).cast<String, dynamic>())).input()).input(),
+      uriFragment: map['uriFragment'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchUriFragment.fromMap((map['uriFragment']! as Map).cast<String, dynamic>())).input()).input(),
+      uriPath: map['uriPath'] == null ? null : (((map['uriPath'] as Map).cast<String, dynamic>()).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class GenericServiceTelemetry {
 
   factory GenericServiceTelemetry.fromMap(Map<String, dynamic> map) {
     return GenericServiceTelemetry(
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
     );
   }
 }

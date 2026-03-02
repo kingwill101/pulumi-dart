@@ -34,9 +34,9 @@ class GetAttachmentsArgs {
 
   factory GetAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetAttachmentsArgs(
-      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds']! as List).cast<String>()).input(),
       loadBalancerId: (map['loadBalancerId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class AwsNodePoolConfigAutoscalingMetricsCollection {
   factory AwsNodePoolConfigAutoscalingMetricsCollection.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolConfigAutoscalingMetricsCollection(
       granularity: (map['granularity'] as String).input(),
-      metrics: map['metrics'] == null ? null : ((map['metrics'] as List).cast<String>()).input(),
+      metrics: map['metrics'] == null ? null : ((map['metrics']! as List).cast<String>()).input(),
     );
   }
 }

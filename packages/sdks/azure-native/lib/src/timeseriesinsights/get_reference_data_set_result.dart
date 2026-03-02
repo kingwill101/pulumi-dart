@@ -69,13 +69,13 @@ class GetReferenceDataSetResult {
     return GetReferenceDataSetResult(
       azureApiVersion: map['azureApiVersion'] as String,
       creationTime: map['creationTime'] as String,
-      dataStringComparisonBehavior: map['dataStringComparisonBehavior'] == null ? null : map['dataStringComparisonBehavior'] as String,
+      dataStringComparisonBehavior: map['dataStringComparisonBehavior'] == null ? null : map['dataStringComparisonBehavior']! as String,
       id: map['id'] as String,
       keyProperties: pulumi.Input.decodeList<ReferenceDataSetKeyPropertyResponse>(map['keyProperties'], (value) => ReferenceDataSetKeyPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

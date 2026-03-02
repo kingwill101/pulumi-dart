@@ -26,8 +26,8 @@ class CaOptions {
 
   factory CaOptions.fromMap(Map<String, dynamic> map) {
     return CaOptions(
-      isCa: map['isCa'] == null ? null : (map['isCa'] as bool).input(),
-      maxIssuerPathLength: map['maxIssuerPathLength'] == null ? null : (map['maxIssuerPathLength'] as int).input(),
+      isCa: map['isCa'] == null ? null : (map['isCa']! as bool).input(),
+      maxIssuerPathLength: map['maxIssuerPathLength'] == null ? null : (map['maxIssuerPathLength']! as int).input(),
     );
   }
 }

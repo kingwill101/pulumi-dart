@@ -26,8 +26,8 @@ class MutationRecord {
 
   factory MutationRecord.fromMap(Map<String, dynamic> map) {
     return MutationRecord(
-      mutateTime: map['mutateTime'] == null ? null : (map['mutateTime'] as String).input(),
-      mutatedBy: map['mutatedBy'] == null ? null : (map['mutatedBy'] as String).input(),
+      mutateTime: map['mutateTime'] == null ? null : (map['mutateTime']! as String).input(),
+      mutatedBy: map['mutatedBy'] == null ? null : (map['mutatedBy']! as String).input(),
     );
   }
 }

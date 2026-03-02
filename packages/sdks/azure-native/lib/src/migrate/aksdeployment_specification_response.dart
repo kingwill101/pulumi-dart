@@ -31,9 +31,9 @@ class AKSDeploymentSpecificationResponse {
 
   factory AKSDeploymentSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return AKSDeploymentSpecificationResponse(
-      kubernetesObjectsYaml: map['kubernetesObjectsYaml'] == null ? null : (map['kubernetesObjectsYaml'] as String).input(),
-      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType'] as String).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as String).input(),
+      kubernetesObjectsYaml: map['kubernetesObjectsYaml'] == null ? null : (map['kubernetesObjectsYaml']! as String).input(),
+      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType']! as String).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as String).input(),
     );
   }
 }

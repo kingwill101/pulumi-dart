@@ -41,10 +41,10 @@ class GetDataSetLogicalTableMapSourceJoinInstruction {
 
   factory GetDataSetLogicalTableMapSourceJoinInstruction.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapSourceJoinInstruction(
-      leftJoinKeyProperties: (pulumi.Input.decodeList<GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty>(map['leftJoinKeyProperties'], (value) => GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      leftJoinKeyProperties: (pulumi.Input.decodeList<GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty>(map['leftJoinKeyProperties']!, (value) => GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
       leftOperand: (map['leftOperand'] as String).input(),
       onClause: (map['onClause'] as String).input(),
-      rightJoinKeyProperties: (pulumi.Input.decodeList<GetDataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperty>(map['rightJoinKeyProperties'], (value) => GetDataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rightJoinKeyProperties: (pulumi.Input.decodeList<GetDataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperty>(map['rightJoinKeyProperties']!, (value) => GetDataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
       rightOperand: (map['rightOperand'] as String).input(),
       type: (map['type'] as String).input(),
     );

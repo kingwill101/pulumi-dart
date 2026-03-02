@@ -21,7 +21,7 @@ class RestrictionEvaluations {
 
   factory RestrictionEvaluations.fromMap(Map<String, dynamic> map) {
     return RestrictionEvaluations(
-      memberRestrictionEvaluation: map['memberRestrictionEvaluation'] == null ? null : ((map['memberRestrictionEvaluation'] as Map).cast<String, dynamic>()).input(),
+      memberRestrictionEvaluation: map['memberRestrictionEvaluation'] == null ? null : ((map['memberRestrictionEvaluation']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

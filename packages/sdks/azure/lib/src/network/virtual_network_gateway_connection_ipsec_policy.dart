@@ -63,8 +63,8 @@ class VirtualNetworkGatewayConnectionIpsecPolicy {
       ipsecEncryption: (map['ipsecEncryption'] as String).input(),
       ipsecIntegrity: (map['ipsecIntegrity'] as String).input(),
       pfsGroup: (map['pfsGroup'] as String).input(),
-      saDatasize: map['saDatasize'] == null ? null : (map['saDatasize'] as int).input(),
-      saLifetime: map['saLifetime'] == null ? null : (map['saLifetime'] as int).input(),
+      saDatasize: map['saDatasize'] == null ? null : (map['saDatasize']! as int).input(),
+      saLifetime: map['saLifetime'] == null ? null : (map['saLifetime']! as int).input(),
     );
   }
 }

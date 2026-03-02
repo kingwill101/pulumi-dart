@@ -22,7 +22,7 @@ class ScanRunWarningTrace {
 
   factory ScanRunWarningTrace.fromMap(Map<String, dynamic> map) {
     return ScanRunWarningTrace(
-      code: map['code'] == null ? null : (ScanRunWarningTraceCode.fromValue(map['code'] as String)).input(),
+      code: map['code'] == null ? null : (ScanRunWarningTraceCode.fromValue(map['code']! as String)).input(),
     );
   }
 }

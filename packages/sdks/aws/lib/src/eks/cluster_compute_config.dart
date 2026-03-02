@@ -30,9 +30,9 @@ class ClusterComputeConfig {
 
   factory ClusterComputeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterComputeConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      nodePools: map['nodePools'] == null ? null : ((map['nodePools'] as List).cast<String>()).input(),
-      nodeRoleArn: map['nodeRoleArn'] == null ? null : (map['nodeRoleArn'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      nodePools: map['nodePools'] == null ? null : (((map['nodePools'] as List).cast<String>()).input()).input(),
+      nodeRoleArn: map['nodeRoleArn'] == null ? null : ((map['nodeRoleArn'] as String).input()).input(),
     );
   }
 }

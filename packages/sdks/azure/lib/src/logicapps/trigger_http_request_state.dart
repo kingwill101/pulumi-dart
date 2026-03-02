@@ -50,12 +50,12 @@ class TriggerHttpRequestState {
 
   factory TriggerHttpRequestState.fromMap(Map<String, dynamic> map) {
     return TriggerHttpRequestState(
-      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl'] as String).input(),
-      logicAppId: map['logicAppId'] == null ? null : (map['logicAppId'] as String).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl']! as String).input(),
+      logicAppId: map['logicAppId'] == null ? null : (map['logicAppId']! as String).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
     );
   }
 }

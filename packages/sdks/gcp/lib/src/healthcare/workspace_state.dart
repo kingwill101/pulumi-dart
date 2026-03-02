@@ -53,12 +53,12 @@ class WorkspaceState {
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      settings: map['settings'] == null ? null : (WorkspaceSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      settings: map['settings'] == null ? null : (WorkspaceSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

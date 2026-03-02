@@ -52,13 +52,13 @@ class GoogleCloudAiplatformV1StudySpecStudyStoppingConfig {
 
   factory GoogleCloudAiplatformV1StudySpecStudyStoppingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpecStudyStoppingConfig(
-      maxDurationNoProgress: map['maxDurationNoProgress'] == null ? null : (map['maxDurationNoProgress'] as String).input(),
-      maxNumTrials: map['maxNumTrials'] == null ? null : (map['maxNumTrials'] as int).input(),
-      maxNumTrialsNoProgress: map['maxNumTrialsNoProgress'] == null ? null : (map['maxNumTrialsNoProgress'] as int).input(),
-      maximumRuntimeConstraint: map['maximumRuntimeConstraint'] == null ? null : (GoogleCloudAiplatformV1StudyTimeConstraint.fromMap((map['maximumRuntimeConstraint'] as Map).cast<String, dynamic>())).input(),
-      minNumTrials: map['minNumTrials'] == null ? null : (map['minNumTrials'] as int).input(),
-      minimumRuntimeConstraint: map['minimumRuntimeConstraint'] == null ? null : (GoogleCloudAiplatformV1StudyTimeConstraint.fromMap((map['minimumRuntimeConstraint'] as Map).cast<String, dynamic>())).input(),
-      shouldStopAsap: map['shouldStopAsap'] == null ? null : (map['shouldStopAsap'] as bool).input(),
+      maxDurationNoProgress: map['maxDurationNoProgress'] == null ? null : (map['maxDurationNoProgress']! as String).input(),
+      maxNumTrials: map['maxNumTrials'] == null ? null : (map['maxNumTrials']! as int).input(),
+      maxNumTrialsNoProgress: map['maxNumTrialsNoProgress'] == null ? null : (map['maxNumTrialsNoProgress']! as int).input(),
+      maximumRuntimeConstraint: map['maximumRuntimeConstraint'] == null ? null : (GoogleCloudAiplatformV1StudyTimeConstraint.fromMap((map['maximumRuntimeConstraint']! as Map).cast<String, dynamic>())).input(),
+      minNumTrials: map['minNumTrials'] == null ? null : (map['minNumTrials']! as int).input(),
+      minimumRuntimeConstraint: map['minimumRuntimeConstraint'] == null ? null : (GoogleCloudAiplatformV1StudyTimeConstraint.fromMap((map['minimumRuntimeConstraint']! as Map).cast<String, dynamic>())).input(),
+      shouldStopAsap: map['shouldStopAsap'] == null ? null : (map['shouldStopAsap']! as bool).input(),
     );
   }
 }

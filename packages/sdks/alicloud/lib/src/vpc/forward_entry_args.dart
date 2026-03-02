@@ -68,13 +68,13 @@ class ForwardEntryArgs {
     return ForwardEntryArgs(
       externalIp: (map['externalIp'] as String).input(),
       externalPort: (map['externalPort'] as String).input(),
-      forwardEntryName: map['forwardEntryName'] == null ? null : (map['forwardEntryName'] as String).input(),
+      forwardEntryName: map['forwardEntryName'] == null ? null : (map['forwardEntryName']! as String).input(),
       forwardTableId: (map['forwardTableId'] as String).input(),
       internalIp: (map['internalIp'] as String).input(),
       internalPort: (map['internalPort'] as String).input(),
       ipProtocol: (map['ipProtocol'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      portBreak: map['portBreak'] == null ? null : (map['portBreak'] as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      portBreak: map['portBreak'] == null ? null : (map['portBreak']! as bool).input(),
     );
   }
 }

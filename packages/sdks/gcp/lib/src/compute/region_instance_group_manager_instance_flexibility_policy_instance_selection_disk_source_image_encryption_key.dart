@@ -36,10 +36,10 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSo
 
   factory RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskSourceImageEncryptionKey(
-      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink'] as String).input(),
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount'] as String).input(),
-      rawKey: map['rawKey'] == null ? null : (map['rawKey'] as String).input(),
-      rsaEncryptedKey: map['rsaEncryptedKey'] == null ? null : (map['rsaEncryptedKey'] as String).input(),
+      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink']! as String).input(),
+      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount']! as String).input(),
+      rawKey: map['rawKey'] == null ? null : (map['rawKey']! as String).input(),
+      rsaEncryptedKey: map['rsaEncryptedKey'] == null ? null : (map['rsaEncryptedKey']! as String).input(),
     );
   }
 }

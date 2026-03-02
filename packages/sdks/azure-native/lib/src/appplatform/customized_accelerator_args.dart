@@ -52,11 +52,11 @@ class CustomizedAcceleratorArgs {
   factory CustomizedAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return CustomizedAcceleratorArgs(
       applicationAcceleratorName: (map['applicationAcceleratorName'] as String).input(),
-      customizedAcceleratorName: map['customizedAcceleratorName'] == null ? null : (map['customizedAcceleratorName'] as String).input(),
-      properties: map['properties'] == null ? null : (CustomizedAcceleratorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      customizedAcceleratorName: map['customizedAcceleratorName'] == null ? null : (map['customizedAcceleratorName']! as String).input(),
+      properties: map['properties'] == null ? null : (CustomizedAcceleratorProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

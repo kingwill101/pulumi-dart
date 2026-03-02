@@ -34,7 +34,7 @@ class GetIpAllocationArgs {
 
   factory GetIpAllocationArgs.fromMap(Map<String, dynamic> map) {
     return GetIpAllocationArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       ipAllocationName: (map['ipAllocationName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

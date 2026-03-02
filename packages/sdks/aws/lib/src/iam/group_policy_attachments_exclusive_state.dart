@@ -26,8 +26,8 @@ class GroupPolicyAttachmentsExclusiveState {
 
   factory GroupPolicyAttachmentsExclusiveState.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAttachmentsExclusiveState(
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      policyArns: map['policyArns'] == null ? null : ((map['policyArns'] as List).cast<String>()).input(),
+      groupName: map['groupName'] == null ? null : ((map['groupName'] as String).input()).input(),
+      policyArns: map['policyArns'] == null ? null : (((map['policyArns'] as List).cast<String>()).input()).input(),
     );
   }
 }

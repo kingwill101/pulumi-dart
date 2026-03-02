@@ -27,8 +27,8 @@ class WorkbookTemplateLocalizedGallery {
 
   factory WorkbookTemplateLocalizedGallery.fromMap(Map<String, dynamic> map) {
     return WorkbookTemplateLocalizedGallery(
-      galleries: map['galleries'] == null ? null : (pulumi.Input.decodeList<WorkbookTemplateGallery>(map['galleries'], (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      templateData: map['templateData'] == null ? null : (map['templateData']).input(),
+      galleries: map['galleries'] == null ? null : (pulumi.Input.decodeList<WorkbookTemplateGallery>(map['galleries']!, (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templateData: map['templateData'] == null ? null : (map['templateData']!).input(),
     );
   }
 }

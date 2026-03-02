@@ -20,7 +20,7 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
 
   factory RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository.fromMap(Map<String, dynamic> map) {
     return RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

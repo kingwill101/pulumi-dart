@@ -83,19 +83,19 @@ class Condition {
 
   factory Condition.fromMap(Map<String, dynamic> map) {
     return Condition(
-      alertSensitivity: map['alertSensitivity'] == null ? null : (map['alertSensitivity'] as String).input(),
-      criterionType: map['criterionType'] == null ? null : (map['criterionType'] as String).input(),
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<Dimension>(map['dimensions'], (value) => Dimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      failingPeriods: map['failingPeriods'] == null ? null : (ConditionFailingPeriods.fromMap((map['failingPeriods'] as Map).cast<String, dynamic>())).input(),
-      ignoreDataBefore: map['ignoreDataBefore'] == null ? null : (map['ignoreDataBefore'] as String).input(),
-      metricMeasureColumn: map['metricMeasureColumn'] == null ? null : (map['metricMeasureColumn'] as String).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      minRecurrenceCount: map['minRecurrenceCount'] == null ? null : (map['minRecurrenceCount'] as double).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      resourceIdColumn: map['resourceIdColumn'] == null ? null : (map['resourceIdColumn'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as double).input(),
-      timeAggregation: map['timeAggregation'] == null ? null : (map['timeAggregation'] as String).input(),
+      alertSensitivity: map['alertSensitivity'] == null ? null : (map['alertSensitivity']! as String).input(),
+      criterionType: map['criterionType'] == null ? null : (map['criterionType']! as String).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<Dimension>(map['dimensions']!, (value) => Dimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failingPeriods: map['failingPeriods'] == null ? null : (ConditionFailingPeriods.fromMap((map['failingPeriods']! as Map).cast<String, dynamic>())).input(),
+      ignoreDataBefore: map['ignoreDataBefore'] == null ? null : (map['ignoreDataBefore']! as String).input(),
+      metricMeasureColumn: map['metricMeasureColumn'] == null ? null : (map['metricMeasureColumn']! as String).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      minRecurrenceCount: map['minRecurrenceCount'] == null ? null : (map['minRecurrenceCount']! as double).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      resourceIdColumn: map['resourceIdColumn'] == null ? null : (map['resourceIdColumn']! as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as double).input(),
+      timeAggregation: map['timeAggregation'] == null ? null : (map['timeAggregation']! as String).input(),
     );
   }
 }

@@ -96,22 +96,22 @@ class ExternalKeyState {
 
   factory ExternalKeyState.fromMap(Map<String, dynamic> map) {
     return ExternalKeyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
-      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : (map['deletionWindowInDays'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      expirationModel: map['expirationModel'] == null ? null : (map['expirationModel'] as String).input(),
-      keyMaterialBase64: map['keyMaterialBase64'] == null ? null : (map['keyMaterialBase64'] as String).input(),
-      keySpec: map['keySpec'] == null ? null : (map['keySpec'] as String).input(),
-      keyState: map['keyState'] == null ? null : (map['keyState'] as String).input(),
-      keyUsage: map['keyUsage'] == null ? null : (map['keyUsage'] as String).input(),
-      multiRegion: map['multiRegion'] == null ? null : (map['multiRegion'] as bool).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      validTo: map['validTo'] == null ? null : (map['validTo'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : ((map['bypassPolicyLockoutSafetyCheck'] as bool).input()).input(),
+      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : ((map['deletionWindowInDays'] as int).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      expirationModel: map['expirationModel'] == null ? null : ((map['expirationModel'] as String).input()).input(),
+      keyMaterialBase64: map['keyMaterialBase64'] == null ? null : ((map['keyMaterialBase64'] as String).input()).input(),
+      keySpec: map['keySpec'] == null ? null : ((map['keySpec'] as String).input()).input(),
+      keyState: map['keyState'] == null ? null : ((map['keyState'] as String).input()).input(),
+      keyUsage: map['keyUsage'] == null ? null : ((map['keyUsage'] as String).input()).input(),
+      multiRegion: map['multiRegion'] == null ? null : ((map['multiRegion'] as bool).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      validTo: map['validTo'] == null ? null : ((map['validTo'] as String).input()).input(),
     );
   }
 }

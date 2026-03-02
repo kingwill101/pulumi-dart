@@ -30,7 +30,7 @@ class GetConfigurationArgs {
   factory GetConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

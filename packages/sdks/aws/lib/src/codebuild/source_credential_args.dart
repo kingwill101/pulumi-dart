@@ -50,10 +50,10 @@ class SourceCredentialArgs {
   factory SourceCredentialArgs.fromMap(Map<String, dynamic> map) {
     return SourceCredentialArgs(
       authType: (map['authType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serverType: (map['serverType'] as String).input(),
       token: (map['token'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
     );
   }
 }

@@ -68,15 +68,15 @@ class AmiFromInstanceEbsBlockDevice {
 
   factory AmiFromInstanceEbsBlockDevice.fromMap(Map<String, dynamic> map) {
     return AmiFromInstanceEbsBlockDevice(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
-      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
-      volumeSize: map['volumeSize'] == null ? null : (map['volumeSize'] as int).input(),
-      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : ((map['deleteOnTermination'] as bool).input()).input(),
+      deviceName: map['deviceName'] == null ? null : ((map['deviceName'] as String).input()).input(),
+      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
+      iops: map['iops'] == null ? null : ((map['iops'] as int).input()).input(),
+      outpostArn: map['outpostArn'] == null ? null : ((map['outpostArn'] as String).input()).input(),
+      snapshotId: map['snapshotId'] == null ? null : ((map['snapshotId'] as String).input()).input(),
+      throughput: map['throughput'] == null ? null : ((map['throughput'] as int).input()).input(),
+      volumeSize: map['volumeSize'] == null ? null : ((map['volumeSize'] as int).input()).input(),
+      volumeType: map['volumeType'] == null ? null : ((map['volumeType'] as String).input()).input(),
     );
   }
 }

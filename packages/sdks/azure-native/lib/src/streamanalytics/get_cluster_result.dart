@@ -88,11 +88,11 @@ class GetClusterResult {
       createdDate: map['createdDate'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sku: map['sku'] == null ? null : ClusterSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      sku: map['sku'] == null ? null : ClusterSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

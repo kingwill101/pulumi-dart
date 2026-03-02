@@ -38,10 +38,10 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig {
 
   factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfig(
-      disableHighLatencyFeaturesSyncDelivery: map['disableHighLatencyFeaturesSyncDelivery'] == null ? null : (map['disableHighLatencyFeaturesSyncDelivery'] as bool).input(),
-      featureConfigs: map['featureConfigs'] == null ? null : (pulumi.Input.decodeList<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig>(map['featureConfigs'], (value) => ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      generators: map['generators'] == null ? null : ((map['generators'] as List).cast<String>()).input(),
-      groupSuggestionResponses: map['groupSuggestionResponses'] == null ? null : (map['groupSuggestionResponses'] as bool).input(),
+      disableHighLatencyFeaturesSyncDelivery: map['disableHighLatencyFeaturesSyncDelivery'] == null ? null : (map['disableHighLatencyFeaturesSyncDelivery']! as bool).input(),
+      featureConfigs: map['featureConfigs'] == null ? null : (pulumi.Input.decodeList<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig>(map['featureConfigs']!, (value) => ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      generators: map['generators'] == null ? null : ((map['generators']! as List).cast<String>()).input(),
+      groupSuggestionResponses: map['groupSuggestionResponses'] == null ? null : (map['groupSuggestionResponses']! as bool).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class ActivationState {
 
   factory ActivationState.fromMap(Map<String, dynamic> map) {
     return ActivationState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      ipAddressRange: map['ipAddressRange'] == null ? null : (map['ipAddressRange'] as String).input(),
-      timeToLiveInHours: map['timeToLiveInHours'] == null ? null : (map['timeToLiveInHours'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      ipAddressRange: map['ipAddressRange'] == null ? null : (map['ipAddressRange']! as String).input(),
+      timeToLiveInHours: map['timeToLiveInHours'] == null ? null : (map['timeToLiveInHours']! as int).input(),
     );
   }
 }

@@ -39,7 +39,7 @@ class DataflowEndpointDataExplorerResponse {
   factory DataflowEndpointDataExplorerResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointDataExplorerResponse(
       authentication: (DataflowEndpointDataExplorerAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      batching: map['batching'] == null ? null : (BatchingConfigurationResponse.fromMap((map['batching'] as Map).cast<String, dynamic>())).input(),
+      batching: map['batching'] == null ? null : (BatchingConfigurationResponse.fromMap((map['batching']! as Map).cast<String, dynamic>())).input(),
       database: (map['database'] as String).input(),
       host: (map['host'] as String).input(),
     );

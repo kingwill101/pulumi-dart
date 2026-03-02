@@ -45,8 +45,8 @@ class UserArgs {
     return UserArgs(
       authenticationDomainId: (map['authenticationDomainId'] as String).input(),
       emailId: (map['emailId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      userType: map['userType'] == null ? null : (map['userType']! as String).input(),
     );
   }
 }

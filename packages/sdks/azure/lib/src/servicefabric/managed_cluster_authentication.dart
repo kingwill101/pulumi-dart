@@ -27,8 +27,8 @@ class ManagedClusterAuthentication {
 
   factory ManagedClusterAuthentication.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAuthentication(
-      activeDirectory: map['activeDirectory'] == null ? null : (ManagedClusterAuthenticationActiveDirectory.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>())).input(),
-      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<ManagedClusterAuthenticationCertificate>(map['certificates'], (value) => ManagedClusterAuthenticationCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      activeDirectory: map['activeDirectory'] == null ? null : (ManagedClusterAuthenticationActiveDirectory.fromMap((map['activeDirectory']! as Map).cast<String, dynamic>())).input(),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<ManagedClusterAuthenticationCertificate>(map['certificates']!, (value) => ManagedClusterAuthenticationCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

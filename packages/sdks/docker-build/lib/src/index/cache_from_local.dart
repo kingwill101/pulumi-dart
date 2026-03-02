@@ -25,7 +25,7 @@ class CacheFromLocal {
 
   factory CacheFromLocal.fromMap(Map<String, dynamic> map) {
     return CacheFromLocal(
-      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
+      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
       src: (map['src'] as String).input(),
     );
   }

@@ -25,8 +25,8 @@ class EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig {
 
   factory EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig(
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
-      retentionMode: map['retentionMode'] == null ? null : (map['retentionMode'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      retentionMode: map['retentionMode'] == null ? null : (map['retentionMode']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class BatchOperationsJobBucketListBucketsPrefixList {
 
   factory BatchOperationsJobBucketListBucketsPrefixList.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobBucketListBucketsPrefixList(
-      includedObjectPrefixes: map['includedObjectPrefixes'] == null ? null : ((map['includedObjectPrefixes'] as List).cast<String>()).input(),
+      includedObjectPrefixes: map['includedObjectPrefixes'] == null ? null : ((map['includedObjectPrefixes']! as List).cast<String>()).input(),
     );
   }
 }

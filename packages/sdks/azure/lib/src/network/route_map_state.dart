@@ -32,9 +32,9 @@ class RouteMapState {
 
   factory RouteMapState.fromMap(Map<String, dynamic> map) {
     return RouteMapState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RouteMapRule>(map['rules'], (value) => RouteMapRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RouteMapRule>(map['rules']!, (value) => RouteMapRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId']! as String).input(),
     );
   }
 }

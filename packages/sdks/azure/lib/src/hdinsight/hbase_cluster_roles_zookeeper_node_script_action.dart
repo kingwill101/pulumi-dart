@@ -31,7 +31,7 @@ class HBaseClusterRolesZookeeperNodeScriptAction {
   factory HBaseClusterRolesZookeeperNodeScriptAction.fromMap(Map<String, dynamic> map) {
     return HBaseClusterRolesZookeeperNodeScriptAction(
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

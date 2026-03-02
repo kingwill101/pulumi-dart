@@ -33,9 +33,9 @@ class AutokeyConfigState {
 
   factory AutokeyConfigState.fromMap(Map<String, dynamic> map) {
     return AutokeyConfigState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
-      keyProject: map['keyProject'] == null ? null : (map['keyProject'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
+      keyProject: map['keyProject'] == null ? null : (map['keyProject']! as String).input(),
     );
   }
 }

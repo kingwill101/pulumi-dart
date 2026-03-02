@@ -26,8 +26,8 @@ class ExecutionTarget {
 
   factory ExecutionTarget.fromMap(Map<String, dynamic> map) {
     return ExecutionTarget(
-      excludePrefix: map['excludePrefix'] == null ? null : ((map['excludePrefix'] as List).cast<String>()).input(),
-      prefix: map['prefix'] == null ? null : ((map['prefix'] as List).cast<String>()).input(),
+      excludePrefix: map['excludePrefix'] == null ? null : ((map['excludePrefix']! as List).cast<String>()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix']! as List).cast<String>()).input(),
     );
   }
 }

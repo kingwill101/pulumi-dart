@@ -34,7 +34,7 @@ class GetRouteSpecHttp2RouteRetryPolicy {
     return GetRouteSpecHttp2RouteRetryPolicy(
       httpRetryEvents: ((map['httpRetryEvents'] as List).cast<String>()).input(),
       maxRetries: (map['maxRetries'] as int).input(),
-      perRetryTimeouts: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteRetryPolicyPerRetryTimeout>(map['perRetryTimeouts'], (value) => GetRouteSpecHttp2RouteRetryPolicyPerRetryTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      perRetryTimeouts: (pulumi.Input.decodeList<GetRouteSpecHttp2RouteRetryPolicyPerRetryTimeout>(map['perRetryTimeouts']!, (value) => GetRouteSpecHttp2RouteRetryPolicyPerRetryTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
       tcpRetryEvents: ((map['tcpRetryEvents'] as List).cast<String>()).input(),
     );
   }

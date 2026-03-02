@@ -21,7 +21,7 @@ class EmissionPolicyDestination {
 
   factory EmissionPolicyDestination.fromMap(Map<String, dynamic> map) {
     return EmissionPolicyDestination(
-      destinationType: map['destinationType'] == null ? null : (map['destinationType'] as String).input(),
+      destinationType: map['destinationType'] == null ? null : (map['destinationType']! as String).input(),
     );
   }
 }

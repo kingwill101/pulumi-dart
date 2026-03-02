@@ -92,20 +92,20 @@ class KafkaConnectorTopicMapArgs {
 
   factory KafkaConnectorTopicMapArgs.fromMap(Map<String, dynamic> map) {
     return KafkaConnectorTopicMapArgs(
-      batching: map['batching'] == null ? null : (KafkaTopicMapBatching.fromMap((map['batching'] as Map).cast<String, dynamic>())).input(),
-      compression: map['compression'] == null ? null : (map['compression'] as String).input(),
-      copyMqttProperties: map['copyMqttProperties'] == null ? null : (map['copyMqttProperties'] as String).input(),
+      batching: map['batching'] == null ? null : (KafkaTopicMapBatching.fromMap((map['batching']! as Map).cast<String, dynamic>())).input(),
+      compression: map['compression'] == null ? null : (map['compression']! as String).input(),
+      copyMqttProperties: map['copyMqttProperties'] == null ? null : (map['copyMqttProperties']! as String).input(),
       extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       kafkaConnectorName: (map['kafkaConnectorName'] as String).input(),
       kafkaConnectorRef: (map['kafkaConnectorRef'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       mqName: (map['mqName'] as String).input(),
-      partitionKeyProperty: map['partitionKeyProperty'] == null ? null : (map['partitionKeyProperty'] as String).input(),
-      partitionStrategy: map['partitionStrategy'] == null ? null : (map['partitionStrategy'] as String).input(),
+      partitionKeyProperty: map['partitionKeyProperty'] == null ? null : (map['partitionKeyProperty']! as String).input(),
+      partitionStrategy: map['partitionStrategy'] == null ? null : (map['partitionStrategy']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       routes: (pulumi.Input.decodeList<KafkaRoutes>(map['routes'], (value) => KafkaRoutes.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topicMapName: map['topicMapName'] == null ? null : (map['topicMapName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      topicMapName: map['topicMapName'] == null ? null : (map['topicMapName']! as String).input(),
     );
   }
 }

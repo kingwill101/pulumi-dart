@@ -47,7 +47,7 @@ class ReplicationPolicyArgs {
   factory ReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationPolicyArgs(
       applicationConsistentSnapshotFrequencyInMinutes: (map['applicationConsistentSnapshotFrequencyInMinutes'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       recoveryPointRetentionInMinutes: (map['recoveryPointRetentionInMinutes'] as int).input(),
       recoveryVaultName: (map['recoveryVaultName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

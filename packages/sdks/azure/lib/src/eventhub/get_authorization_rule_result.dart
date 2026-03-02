@@ -80,8 +80,8 @@ class GetAuthorizationRuleResult {
     return GetAuthorizationRuleResult(
       eventhubName: map['eventhubName'] as String,
       id: map['id'] as String,
-      listen: map['listen'] == null ? null : map['listen'] as bool,
-      manage: map['manage'] == null ? null : map['manage'] as bool,
+      listen: map['listen'] == null ? null : map['listen']! as bool,
+      manage: map['manage'] == null ? null : map['manage']! as bool,
       name: map['name'] as String,
       namespaceName: map['namespaceName'] as String,
       primaryConnectionString: map['primaryConnectionString'] as String,
@@ -91,7 +91,7 @@ class GetAuthorizationRuleResult {
       secondaryConnectionString: map['secondaryConnectionString'] as String,
       secondaryConnectionStringAlias: map['secondaryConnectionStringAlias'] as String,
       secondaryKey: map['secondaryKey'] as String,
-      send: map['send'] == null ? null : map['send'] as bool,
+      send: map['send'] == null ? null : map['send']! as bool,
     );
   }
 }

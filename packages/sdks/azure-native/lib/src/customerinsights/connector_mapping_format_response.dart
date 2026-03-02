@@ -46,12 +46,12 @@ class ConnectorMappingFormatResponse {
 
   factory ConnectorMappingFormatResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingFormatResponse(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
-      arraySeparator: map['arraySeparator'] == null ? null : (map['arraySeparator'] as String).input(),
-      columnDelimiter: map['columnDelimiter'] == null ? null : (map['columnDelimiter'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage']! as String).input(),
+      arraySeparator: map['arraySeparator'] == null ? null : (map['arraySeparator']! as String).input(),
+      columnDelimiter: map['columnDelimiter'] == null ? null : (map['columnDelimiter']! as String).input(),
       formatType: (map['formatType'] as String).input(),
-      quoteCharacter: map['quoteCharacter'] == null ? null : (map['quoteCharacter'] as String).input(),
-      quoteEscapeCharacter: map['quoteEscapeCharacter'] == null ? null : (map['quoteEscapeCharacter'] as String).input(),
+      quoteCharacter: map['quoteCharacter'] == null ? null : (map['quoteCharacter']! as String).input(),
+      quoteEscapeCharacter: map['quoteEscapeCharacter'] == null ? null : (map['quoteEscapeCharacter']! as String).input(),
     );
   }
 }

@@ -92,20 +92,20 @@ class GetConnectorResult {
 
   factory GetConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetConnectorResult(
-      authInfo: map['authInfo'] == null ? null : AccessKeyInfoBaseResponse.fromMap((map['authInfo'] as Map).cast<String, dynamic>()),
+      authInfo: map['authInfo'] == null ? null : AccessKeyInfoBaseResponse.fromMap((map['authInfo']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      clientType: map['clientType'] == null ? null : map['clientType'] as String,
-      configurationInfo: map['configurationInfo'] == null ? null : ConfigurationInfoResponse.fromMap((map['configurationInfo'] as Map).cast<String, dynamic>()),
+      clientType: map['clientType'] == null ? null : map['clientType']! as String,
+      configurationInfo: map['configurationInfo'] == null ? null : ConfigurationInfoResponse.fromMap((map['configurationInfo']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      publicNetworkSolution: map['publicNetworkSolution'] == null ? null : PublicNetworkSolutionResponse.fromMap((map['publicNetworkSolution'] as Map).cast<String, dynamic>()),
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      secretStore: map['secretStore'] == null ? null : SecretStoreResponse.fromMap((map['secretStore'] as Map).cast<String, dynamic>()),
+      publicNetworkSolution: map['publicNetworkSolution'] == null ? null : PublicNetworkSolutionResponse.fromMap((map['publicNetworkSolution']! as Map).cast<String, dynamic>()),
+      scope: map['scope'] == null ? null : map['scope']! as String,
+      secretStore: map['secretStore'] == null ? null : SecretStoreResponse.fromMap((map['secretStore']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      targetService: map['targetService'] == null ? null : AzureResourceResponse.fromMap((map['targetService'] as Map).cast<String, dynamic>()),
+      targetService: map['targetService'] == null ? null : AzureResourceResponse.fromMap((map['targetService']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      vNetSolution: map['vNetSolution'] == null ? null : VNetSolutionResponse.fromMap((map['vNetSolution'] as Map).cast<String, dynamic>()),
+      vNetSolution: map['vNetSolution'] == null ? null : VNetSolutionResponse.fromMap((map['vNetSolution']! as Map).cast<String, dynamic>()),
     );
   }
 }

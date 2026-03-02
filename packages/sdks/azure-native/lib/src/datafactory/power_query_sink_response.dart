@@ -59,14 +59,14 @@ class PowerQuerySinkResponse {
 
   factory PowerQuerySinkResponse.fromMap(Map<String, dynamic> map) {
     return PowerQuerySinkResponse(
-      dataset: map['dataset'] == null ? null : (DatasetReferenceResponse.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      flowlet: map['flowlet'] == null ? null : (DataFlowReferenceResponse.fromMap((map['flowlet'] as Map).cast<String, dynamic>())).input(),
-      linkedService: map['linkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedService'] as Map).cast<String, dynamic>())).input(),
+      dataset: map['dataset'] == null ? null : (DatasetReferenceResponse.fromMap((map['dataset']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      flowlet: map['flowlet'] == null ? null : (DataFlowReferenceResponse.fromMap((map['flowlet']! as Map).cast<String, dynamic>())).input(),
+      linkedService: map['linkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedService']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      rejectedDataLinkedService: map['rejectedDataLinkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['rejectedDataLinkedService'] as Map).cast<String, dynamic>())).input(),
-      schemaLinkedService: map['schemaLinkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['schemaLinkedService'] as Map).cast<String, dynamic>())).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
+      rejectedDataLinkedService: map['rejectedDataLinkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['rejectedDataLinkedService']! as Map).cast<String, dynamic>())).input(),
+      schemaLinkedService: map['schemaLinkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['schemaLinkedService']! as Map).cast<String, dynamic>())).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
     );
   }
 }

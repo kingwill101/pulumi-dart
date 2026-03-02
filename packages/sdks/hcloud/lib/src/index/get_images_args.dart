@@ -44,11 +44,11 @@ class GetImagesArgs {
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated'] as bool).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      withArchitectures: map['withArchitectures'] == null ? null : ((map['withArchitectures'] as List).cast<String>()).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
-      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses'] as List).cast<String>()).input(),
+      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated']! as bool).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
+      withArchitectures: map['withArchitectures'] == null ? null : ((map['withArchitectures']! as List).cast<String>()).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
+      withStatuses: map['withStatuses'] == null ? null : ((map['withStatuses']! as List).cast<String>()).input(),
     );
   }
 }

@@ -62,16 +62,16 @@ class GetIndustrialPidLoopsResult {
 
   factory GetIndustrialPidLoopsResult.fromMap(Map<String, dynamic> map) {
     return GetIndustrialPidLoopsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       loops: pulumi.Input.decodeList<GetIndustrialPidLoopsLoop>(map['loops'], (value) => GetIndustrialPidLoopsLoop.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pidLoopName: map['pidLoopName'] == null ? null : map['pidLoopName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pidLoopName: map['pidLoopName'] == null ? null : map['pidLoopName']! as String,
       pidProjectId: map['pidProjectId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

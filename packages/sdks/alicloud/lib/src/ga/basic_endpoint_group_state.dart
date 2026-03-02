@@ -56,14 +56,14 @@ class BasicEndpointGroupState {
 
   factory BasicEndpointGroupState.fromMap(Map<String, dynamic> map) {
     return BasicEndpointGroupState(
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
-      basicEndpointGroupName: map['basicEndpointGroupName'] == null ? null : (map['basicEndpointGroupName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endpointAddress: map['endpointAddress'] == null ? null : (map['endpointAddress'] as String).input(),
-      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : (map['endpointGroupRegion'] as String).input(),
-      endpointSubAddress: map['endpointSubAddress'] == null ? null : (map['endpointSubAddress'] as String).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
+      basicEndpointGroupName: map['basicEndpointGroupName'] == null ? null : (map['basicEndpointGroupName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endpointAddress: map['endpointAddress'] == null ? null : (map['endpointAddress']! as String).input(),
+      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : (map['endpointGroupRegion']! as String).input(),
+      endpointSubAddress: map['endpointSubAddress'] == null ? null : (map['endpointSubAddress']! as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

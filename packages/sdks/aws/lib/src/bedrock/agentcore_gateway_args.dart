@@ -89,19 +89,19 @@ class AgentcoreGatewayArgs {
 
   factory AgentcoreGatewayArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayArgs(
-      authorizerConfiguration: map['authorizerConfiguration'] == null ? null : (AgentcoreGatewayAuthorizerConfiguration.fromMap((map['authorizerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      authorizerConfiguration: map['authorizerConfiguration'] == null ? null : ((AgentcoreGatewayAuthorizerConfiguration.fromMap((map['authorizerConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       authorizerType: (map['authorizerType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      exceptionLevel: map['exceptionLevel'] == null ? null : (map['exceptionLevel'] as String).input(),
-      interceptorConfigurations: map['interceptorConfigurations'] == null ? null : (pulumi.Input.decodeList<AgentcoreGatewayInterceptorConfiguration>(map['interceptorConfigurations'], (value) => AgentcoreGatewayInterceptorConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocolConfiguration: map['protocolConfiguration'] == null ? null : (AgentcoreGatewayProtocolConfiguration.fromMap((map['protocolConfiguration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      exceptionLevel: map['exceptionLevel'] == null ? null : ((map['exceptionLevel'] as String).input()).input(),
+      interceptorConfigurations: map['interceptorConfigurations'] == null ? null : ((pulumi.Input.decodeList<AgentcoreGatewayInterceptorConfiguration>(map['interceptorConfigurations']!, (value) => AgentcoreGatewayInterceptorConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      protocolConfiguration: map['protocolConfiguration'] == null ? null : ((AgentcoreGatewayProtocolConfiguration.fromMap((map['protocolConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       protocolType: (map['protocolType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentcoreGatewayTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentcoreGatewayTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

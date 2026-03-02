@@ -40,11 +40,11 @@ class SecretReplica {
 
   factory SecretReplica.fromMap(Map<String, dynamic> map) {
     return SecretReplica(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      lastAccessedDate: map['lastAccessedDate'] == null ? null : (map['lastAccessedDate'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      lastAccessedDate: map['lastAccessedDate'] == null ? null : ((map['lastAccessedDate'] as String).input()).input(),
       region: (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      statusMessage: map['statusMessage'] == null ? null : ((map['statusMessage'] as String).input()).input(),
     );
   }
 }

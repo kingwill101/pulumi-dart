@@ -35,9 +35,9 @@ class GetMainVersionsArgs {
 
   factory GetMainVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetMainVersionsArgs(
-      clusterTypes: map['clusterTypes'] == null ? null : ((map['clusterTypes'] as List).cast<String>()).input(),
-      emrVersion: map['emrVersion'] == null ? null : (map['emrVersion'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      clusterTypes: map['clusterTypes'] == null ? null : ((map['clusterTypes']! as List).cast<String>()).input(),
+      emrVersion: map['emrVersion'] == null ? null : (map['emrVersion']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

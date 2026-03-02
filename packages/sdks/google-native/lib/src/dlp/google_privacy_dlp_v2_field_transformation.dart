@@ -40,10 +40,10 @@ class GooglePrivacyDlpV2FieldTransformation {
 
   factory GooglePrivacyDlpV2FieldTransformation.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2FieldTransformation(
-      condition: map['condition'] == null ? null : (GooglePrivacyDlpV2RecordCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (GooglePrivacyDlpV2RecordCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       fields: (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['fields'], (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      infoTypeTransformations: map['infoTypeTransformations'] == null ? null : (GooglePrivacyDlpV2InfoTypeTransformations.fromMap((map['infoTypeTransformations'] as Map).cast<String, dynamic>())).input(),
-      primitiveTransformation: map['primitiveTransformation'] == null ? null : (GooglePrivacyDlpV2PrimitiveTransformation.fromMap((map['primitiveTransformation'] as Map).cast<String, dynamic>())).input(),
+      infoTypeTransformations: map['infoTypeTransformations'] == null ? null : (GooglePrivacyDlpV2InfoTypeTransformations.fromMap((map['infoTypeTransformations']! as Map).cast<String, dynamic>())).input(),
+      primitiveTransformation: map['primitiveTransformation'] == null ? null : (GooglePrivacyDlpV2PrimitiveTransformation.fromMap((map['primitiveTransformation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

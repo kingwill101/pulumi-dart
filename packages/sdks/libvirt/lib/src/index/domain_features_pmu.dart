@@ -20,7 +20,7 @@ class DomainFeaturesPmu {
 
   factory DomainFeaturesPmu.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesPmu(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

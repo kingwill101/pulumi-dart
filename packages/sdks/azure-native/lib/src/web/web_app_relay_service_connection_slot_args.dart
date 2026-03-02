@@ -67,16 +67,16 @@ class WebAppRelayServiceConnectionSlotArgs {
 
   factory WebAppRelayServiceConnectionSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppRelayServiceConnectionSlotArgs(
-      biztalkUri: map['biztalkUri'] == null ? null : (map['biztalkUri'] as String).input(),
-      entityConnectionString: map['entityConnectionString'] == null ? null : (map['entityConnectionString'] as String).input(),
-      entityName: map['entityName'] == null ? null : (map['entityName'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      biztalkUri: map['biztalkUri'] == null ? null : (map['biztalkUri']! as String).input(),
+      entityConnectionString: map['entityConnectionString'] == null ? null : (map['entityConnectionString']! as String).input(),
+      entityName: map['entityName'] == null ? null : (map['entityName']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      resourceConnectionString: map['resourceConnectionString'] == null ? null : (map['resourceConnectionString'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      resourceConnectionString: map['resourceConnectionString'] == null ? null : (map['resourceConnectionString']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
       slot: (map['slot'] as String).input(),
     );
   }

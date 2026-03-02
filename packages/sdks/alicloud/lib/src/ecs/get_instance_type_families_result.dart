@@ -53,13 +53,13 @@ class GetInstanceTypeFamiliesResult {
   factory GetInstanceTypeFamiliesResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeFamiliesResult(
       families: pulumi.Input.decodeList<GetInstanceTypeFamiliesFamily>(map['families'], (value) => GetInstanceTypeFamiliesFamily.fromMap((value as Map).cast<String, dynamic>())),
-      generation: map['generation'] == null ? null : map['generation'] as String,
+      generation: map['generation'] == null ? null : map['generation']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      spotStrategy: map['spotStrategy'] == null ? null : map['spotStrategy'] as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      spotStrategy: map['spotStrategy'] == null ? null : map['spotStrategy']! as String,
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

@@ -40,7 +40,7 @@ class RegionalParameterVersionArgs {
 
   factory RegionalParameterVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegionalParameterVersionArgs(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       parameter: (map['parameter'] as String).input(),
       parameterData: (map['parameterData'] as String).input(),
       parameterVersionId: (map['parameterVersionId'] as String).input(),

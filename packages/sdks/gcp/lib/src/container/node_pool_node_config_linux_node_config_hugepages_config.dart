@@ -25,8 +25,8 @@ class NodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
 
   factory NodePoolNodeConfigLinuxNodeConfigHugepagesConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigLinuxNodeConfigHugepagesConfig(
-      hugepageSize1g: map['hugepageSize1g'] == null ? null : (map['hugepageSize1g'] as int).input(),
-      hugepageSize2m: map['hugepageSize2m'] == null ? null : (map['hugepageSize2m'] as int).input(),
+      hugepageSize1g: map['hugepageSize1g'] == null ? null : (map['hugepageSize1g']! as int).input(),
+      hugepageSize2m: map['hugepageSize2m'] == null ? null : (map['hugepageSize2m']! as int).input(),
     );
   }
 }

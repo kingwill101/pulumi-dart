@@ -21,7 +21,7 @@ class PrivateAtlasPropertiesResponse {
 
   factory PrivateAtlasPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PrivateAtlasPropertiesResponse(
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
     );
   }
 }

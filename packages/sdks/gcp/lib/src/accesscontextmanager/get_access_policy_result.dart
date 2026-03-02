@@ -41,7 +41,7 @@ class GetAccessPolicyResult {
       id: map['id'] as String,
       name: map['name'] as String,
       parent: map['parent'] as String,
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+      scopes: map['scopes'] == null ? null : (map['scopes']! as List).cast<String>(),
       title: map['title'] as String,
     );
   }

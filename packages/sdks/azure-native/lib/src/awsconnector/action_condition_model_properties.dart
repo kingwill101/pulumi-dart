@@ -21,7 +21,7 @@ class ActionConditionModelProperties {
 
   factory ActionConditionModelProperties.fromMap(Map<String, dynamic> map) {
     return ActionConditionModelProperties(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
     );
   }
 }

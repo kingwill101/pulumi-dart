@@ -56,14 +56,14 @@ class GrantState {
 
   factory GrantState.fromMap(Map<String, dynamic> map) {
     return GrantState(
-      columns: map['columns'] == null ? null : ((map['columns'] as List).cast<String>()).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType'] as String).input(),
-      objects: map['objects'] == null ? null : ((map['objects'] as List).cast<String>()).input(),
-      privileges: map['privileges'] == null ? null : ((map['privileges'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      withGrantOption: map['withGrantOption'] == null ? null : (map['withGrantOption'] as bool).input(),
+      columns: map['columns'] == null ? null : ((map['columns']! as List).cast<String>()).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
+      objects: map['objects'] == null ? null : ((map['objects']! as List).cast<String>()).input(),
+      privileges: map['privileges'] == null ? null : ((map['privileges']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      withGrantOption: map['withGrantOption'] == null ? null : (map['withGrantOption']! as bool).input(),
     );
   }
 }

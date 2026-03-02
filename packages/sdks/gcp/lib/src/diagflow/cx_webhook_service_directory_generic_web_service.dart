@@ -107,18 +107,18 @@ class CxWebhookServiceDirectoryGenericWebService {
 
   factory CxWebhookServiceDirectoryGenericWebService.fromMap(Map<String, dynamic> map) {
     return CxWebhookServiceDirectoryGenericWebService(
-      allowedCaCerts: map['allowedCaCerts'] == null ? null : ((map['allowedCaCerts'] as List).cast<String>()).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
-      oauthConfig: map['oauthConfig'] == null ? null : (CxWebhookServiceDirectoryGenericWebServiceOauthConfig.fromMap((map['oauthConfig'] as Map).cast<String, dynamic>())).input(),
-      parameterMapping: map['parameterMapping'] == null ? null : ((map['parameterMapping'] as Map).cast<String, String>()).input(),
-      requestBody: map['requestBody'] == null ? null : (map['requestBody'] as String).input(),
-      requestHeaders: map['requestHeaders'] == null ? null : ((map['requestHeaders'] as Map).cast<String, String>()).input(),
-      secretVersionForUsernamePassword: map['secretVersionForUsernamePassword'] == null ? null : (map['secretVersionForUsernamePassword'] as String).input(),
-      secretVersionsForRequestHeaders: map['secretVersionsForRequestHeaders'] == null ? null : (pulumi.Input.decodeList<CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader>(map['secretVersionsForRequestHeaders'], (value) => CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAccountAuthConfig: map['serviceAccountAuthConfig'] == null ? null : (CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig.fromMap((map['serviceAccountAuthConfig'] as Map).cast<String, dynamic>())).input(),
-      serviceAgentAuth: map['serviceAgentAuth'] == null ? null : (map['serviceAgentAuth'] as String).input(),
+      allowedCaCerts: map['allowedCaCerts'] == null ? null : ((map['allowedCaCerts']! as List).cast<String>()).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod']! as String).input(),
+      oauthConfig: map['oauthConfig'] == null ? null : (CxWebhookServiceDirectoryGenericWebServiceOauthConfig.fromMap((map['oauthConfig']! as Map).cast<String, dynamic>())).input(),
+      parameterMapping: map['parameterMapping'] == null ? null : ((map['parameterMapping']! as Map).cast<String, String>()).input(),
+      requestBody: map['requestBody'] == null ? null : (map['requestBody']! as String).input(),
+      requestHeaders: map['requestHeaders'] == null ? null : ((map['requestHeaders']! as Map).cast<String, String>()).input(),
+      secretVersionForUsernamePassword: map['secretVersionForUsernamePassword'] == null ? null : (map['secretVersionForUsernamePassword']! as String).input(),
+      secretVersionsForRequestHeaders: map['secretVersionsForRequestHeaders'] == null ? null : (pulumi.Input.decodeList<CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader>(map['secretVersionsForRequestHeaders']!, (value) => CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAccountAuthConfig: map['serviceAccountAuthConfig'] == null ? null : (CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig.fromMap((map['serviceAccountAuthConfig']! as Map).cast<String, dynamic>())).input(),
+      serviceAgentAuth: map['serviceAgentAuth'] == null ? null : (map['serviceAgentAuth']! as String).input(),
       uri: (map['uri'] as String).input(),
-      webhookType: map['webhookType'] == null ? null : (map['webhookType'] as String).input(),
+      webhookType: map['webhookType'] == null ? null : (map['webhookType']! as String).input(),
     );
   }
 }

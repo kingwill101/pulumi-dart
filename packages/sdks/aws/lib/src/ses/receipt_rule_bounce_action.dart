@@ -49,8 +49,8 @@ class ReceiptRuleBounceAction {
       position: (map['position'] as int).input(),
       sender: (map['sender'] as String).input(),
       smtpReplyCode: (map['smtpReplyCode'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
-      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
+      statusCode: map['statusCode'] == null ? null : ((map['statusCode'] as String).input()).input(),
+      topicArn: map['topicArn'] == null ? null : ((map['topicArn'] as String).input()).input(),
     );
   }
 }

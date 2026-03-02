@@ -100,21 +100,21 @@ class GetDiskEncryptionSetResult {
 
   factory GetDiskEncryptionSetResult.fromMap(Map<String, dynamic> map) {
     return GetDiskEncryptionSetResult(
-      activeKey: map['activeKey'] == null ? null : KeyForDiskEncryptionSetResponse.fromMap((map['activeKey'] as Map).cast<String, dynamic>()),
+      activeKey: map['activeKey'] == null ? null : KeyForDiskEncryptionSetResponse.fromMap((map['activeKey']! as Map).cast<String, dynamic>()),
       autoKeyRotationError: ApiErrorResponse.fromMap((map['autoKeyRotationError'] as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      encryptionType: map['encryptionType'] == null ? null : map['encryptionType'] as String,
-      federatedClientId: map['federatedClientId'] == null ? null : map['federatedClientId'] as String,
+      encryptionType: map['encryptionType'] == null ? null : map['encryptionType']! as String,
+      federatedClientId: map['federatedClientId'] == null ? null : map['federatedClientId']! as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : EncryptionSetIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : EncryptionSetIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       lastKeyRotationTimestamp: map['lastKeyRotationTimestamp'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       previousKeys: pulumi.Input.decodeList<KeyForDiskEncryptionSetResponse>(map['previousKeys'], (value) => KeyForDiskEncryptionSetResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : map['rotationToLatestKeyVersionEnabled'] as bool,
+      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : map['rotationToLatestKeyVersionEnabled']! as bool,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

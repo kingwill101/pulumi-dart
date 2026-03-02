@@ -72,17 +72,17 @@ class TargetState {
 
   factory TargetState.fromMap(Map<String, dynamic> map) {
     return TargetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      scalableDimension: map['scalableDimension'] == null ? null : (map['scalableDimension'] as String).input(),
-      serviceNamespace: map['serviceNamespace'] == null ? null : (map['serviceNamespace'] as String).input(),
-      suspendedState: map['suspendedState'] == null ? null : (TargetSuspendedState.fromMap((map['suspendedState'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : ((map['maxCapacity'] as int).input()).input(),
+      minCapacity: map['minCapacity'] == null ? null : ((map['minCapacity'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      scalableDimension: map['scalableDimension'] == null ? null : ((map['scalableDimension'] as String).input()).input(),
+      serviceNamespace: map['serviceNamespace'] == null ? null : ((map['serviceNamespace'] as String).input()).input(),
+      suspendedState: map['suspendedState'] == null ? null : ((TargetSuspendedState.fromMap((map['suspendedState']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

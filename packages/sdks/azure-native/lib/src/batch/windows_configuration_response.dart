@@ -21,7 +21,7 @@ class WindowsConfigurationResponse {
 
   factory WindowsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WindowsConfigurationResponse(
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates'] as bool).input(),
+      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates']! as bool).input(),
     );
   }
 }

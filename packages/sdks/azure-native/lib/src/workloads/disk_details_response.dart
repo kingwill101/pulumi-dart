@@ -52,13 +52,13 @@ class DiskDetailsResponse {
 
   factory DiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DiskDetailsResponse(
-      diskTier: map['diskTier'] == null ? null : (map['diskTier'] as String).input(),
-      iopsReadWrite: map['iopsReadWrite'] == null ? null : (map['iopsReadWrite'] as double).input(),
-      maximumSupportedDiskCount: map['maximumSupportedDiskCount'] == null ? null : (map['maximumSupportedDiskCount'] as double).input(),
-      mbpsReadWrite: map['mbpsReadWrite'] == null ? null : (map['mbpsReadWrite'] as double).input(),
-      minimumSupportedDiskCount: map['minimumSupportedDiskCount'] == null ? null : (map['minimumSupportedDiskCount'] as double).input(),
-      sizeGB: map['sizeGB'] == null ? null : (map['sizeGB'] as double).input(),
-      sku: map['sku'] == null ? null : (DiskSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      diskTier: map['diskTier'] == null ? null : (map['diskTier']! as String).input(),
+      iopsReadWrite: map['iopsReadWrite'] == null ? null : (map['iopsReadWrite']! as double).input(),
+      maximumSupportedDiskCount: map['maximumSupportedDiskCount'] == null ? null : (map['maximumSupportedDiskCount']! as double).input(),
+      mbpsReadWrite: map['mbpsReadWrite'] == null ? null : (map['mbpsReadWrite']! as double).input(),
+      minimumSupportedDiskCount: map['minimumSupportedDiskCount'] == null ? null : (map['minimumSupportedDiskCount']! as double).input(),
+      sizeGB: map['sizeGB'] == null ? null : (map['sizeGB']! as double).input(),
+      sku: map['sku'] == null ? null : (DiskSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

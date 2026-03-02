@@ -20,7 +20,7 @@ class DomainAimlOptionsNaturalLanguageQueryGenerationOptions {
 
   factory DomainAimlOptionsNaturalLanguageQueryGenerationOptions.fromMap(Map<String, dynamic> map) {
     return DomainAimlOptionsNaturalLanguageQueryGenerationOptions(
-      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      desiredState: map['desiredState'] == null ? null : ((map['desiredState'] as String).input()).input(),
     );
   }
 }

@@ -66,14 +66,14 @@ class VirtualMachineInstanceArgs {
 
   factory VirtualMachineInstanceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstanceArgs(
-      availabilitySets: map['availabilitySets'] == null ? null : (pulumi.Input.decodeList<VirtualMachineInstancePropertiesAvailabilitySets>(map['availabilitySets'], (value) => VirtualMachineInstancePropertiesAvailabilitySets.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      availabilitySets: map['availabilitySets'] == null ? null : (pulumi.Input.decodeList<VirtualMachineInstancePropertiesAvailabilitySets>(map['availabilitySets']!, (value) => VirtualMachineInstancePropertiesAvailabilitySets.fromMap((value as Map).cast<String, dynamic>()))).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfile.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())).input(),
-      infrastructureProfile: map['infrastructureProfile'] == null ? null : (InfrastructureProfile.fromMap((map['infrastructureProfile'] as Map).cast<String, dynamic>())).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      osProfile: map['osProfile'] == null ? null : (OsProfileForVMInstance.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfile.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>())).input(),
+      infrastructureProfile: map['infrastructureProfile'] == null ? null : (InfrastructureProfile.fromMap((map['infrastructureProfile']! as Map).cast<String, dynamic>())).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      osProfile: map['osProfile'] == null ? null : (OsProfileForVMInstance.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
       resourceUri: (map['resourceUri'] as String).input(),
-      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

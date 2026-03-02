@@ -42,11 +42,11 @@ class GetInferenceGroupDeltaModelsStatusAsyncResult {
 
   factory GetInferenceGroupDeltaModelsStatusAsyncResult.fromMap(Map<String, dynamic> map) {
     return GetInferenceGroupDeltaModelsStatusAsyncResult(
-      actualInstanceCount: map['actualInstanceCount'] == null ? null : map['actualInstanceCount'] as int,
-      deltaModels: map['deltaModels'] == null ? null : pulumi.Input.decodeMapValues<List<DeltaModelCurrentStateResponse>>(map['deltaModels'], (value) => pulumi.Input.decodeList<DeltaModelCurrentStateResponse>(value, (value) => DeltaModelCurrentStateResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      expectedInstanceCount: map['expectedInstanceCount'] == null ? null : map['expectedInstanceCount'] as int,
-      revisionId: map['revisionId'] == null ? null : map['revisionId'] as String,
-      targetBaseModel: map['targetBaseModel'] == null ? null : map['targetBaseModel'] as String,
+      actualInstanceCount: map['actualInstanceCount'] == null ? null : map['actualInstanceCount']! as int,
+      deltaModels: map['deltaModels'] == null ? null : pulumi.Input.decodeMapValues<List<DeltaModelCurrentStateResponse>>(map['deltaModels']!, (value) => pulumi.Input.decodeList<DeltaModelCurrentStateResponse>(value, (value) => DeltaModelCurrentStateResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      expectedInstanceCount: map['expectedInstanceCount'] == null ? null : map['expectedInstanceCount']! as int,
+      revisionId: map['revisionId'] == null ? null : map['revisionId']! as String,
+      targetBaseModel: map['targetBaseModel'] == null ? null : map['targetBaseModel']! as String,
     );
   }
 }

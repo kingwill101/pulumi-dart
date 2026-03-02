@@ -60,14 +60,14 @@ class DomainDevicesSmartcard {
 
   factory DomainDevicesSmartcard.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSmartcard(
-      acpi: map['acpi'] == null ? null : (DomainDevicesSmartcardAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesSmartcardAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as bool).input(),
-      hostCerts: map['hostCerts'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSmartcardHostCert>(map['hostCerts'], (value) => DomainDevicesSmartcardHostCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      passthrough: map['passthrough'] == null ? null : (DomainDevicesSmartcardPassthrough.fromMap((map['passthrough'] as Map).cast<String, dynamic>())).input(),
-      protocol: map['protocol'] == null ? null : (DomainDevicesSmartcardProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesSmartcardAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesSmartcardAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as bool).input(),
+      hostCerts: map['hostCerts'] == null ? null : (pulumi.Input.decodeList<DomainDevicesSmartcardHostCert>(map['hostCerts']!, (value) => DomainDevicesSmartcardHostCert.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      passthrough: map['passthrough'] == null ? null : (DomainDevicesSmartcardPassthrough.fromMap((map['passthrough']! as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (DomainDevicesSmartcardProtocol.fromMap((map['protocol']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

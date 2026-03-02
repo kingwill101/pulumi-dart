@@ -42,8 +42,8 @@ class SiteAgentPropertiesResponse {
   factory SiteAgentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SiteAgentPropertiesResponse(
       id: (map['id'] as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
       lastHeartBeatUtc: (map['lastHeartBeatUtc'] as String).input(),
       version: (map['version'] as String).input(),
     );

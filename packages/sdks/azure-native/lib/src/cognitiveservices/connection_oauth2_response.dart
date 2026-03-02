@@ -57,14 +57,14 @@ class ConnectionOAuth2Response {
 
   factory ConnectionOAuth2Response.fromMap(Map<String, dynamic> map) {
     return ConnectionOAuth2Response(
-      authUrl: map['authUrl'] == null ? null : (map['authUrl'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      developerToken: map['developerToken'] == null ? null : (map['developerToken'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      authUrl: map['authUrl'] == null ? null : (map['authUrl']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      developerToken: map['developerToken'] == null ? null : (map['developerToken']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

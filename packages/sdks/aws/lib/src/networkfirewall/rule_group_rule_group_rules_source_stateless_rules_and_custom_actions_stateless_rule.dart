@@ -27,7 +27,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule {
   factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule(
       priority: (map['priority'] as int).input(),
-      ruleDefinition: (RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition.fromMap((map['ruleDefinition'] as Map).cast<String, dynamic>())).input(),
+      ruleDefinition: (RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinition.fromMap((map['ruleDefinition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,8 +33,8 @@ class AiFeatureOnlineStoreBigtable {
   factory AiFeatureOnlineStoreBigtable.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreBigtable(
       autoScaling: (AiFeatureOnlineStoreBigtableAutoScaling.fromMap((map['autoScaling'] as Map).cast<String, dynamic>())).input(),
-      enableDirectBigtableAccess: map['enableDirectBigtableAccess'] == null ? null : (map['enableDirectBigtableAccess'] as bool).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      enableDirectBigtableAccess: map['enableDirectBigtableAccess'] == null ? null : (map['enableDirectBigtableAccess']! as bool).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

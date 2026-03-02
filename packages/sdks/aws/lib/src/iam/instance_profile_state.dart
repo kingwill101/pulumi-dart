@@ -61,15 +61,15 @@ class InstanceProfileState {
 
   factory InstanceProfileState.fromMap(Map<String, dynamic> map) {
     return InstanceProfileState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createDate: map['createDate'] == null ? null : (map['createDate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createDate: map['createDate'] == null ? null : ((map['createDate'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      role: map['role'] == null ? null : ((map['role'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      uniqueId: map['uniqueId'] == null ? null : ((map['uniqueId'] as String).input()).input(),
     );
   }
 }

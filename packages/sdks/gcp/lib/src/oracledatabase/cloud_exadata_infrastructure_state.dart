@@ -91,19 +91,19 @@ class CloudExadataInfrastructureState {
 
   factory CloudExadataInfrastructureState.fromMap(Map<String, dynamic> map) {
     return CloudExadataInfrastructureState(
-      cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] == null ? null : (map['cloudExadataInfrastructureId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      entitlementId: map['entitlementId'] == null ? null : (map['entitlementId'] as String).input(),
-      gcpOracleZone: map['gcpOracleZone'] == null ? null : (map['gcpOracleZone'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      properties: map['properties'] == null ? null : (CloudExadataInfrastructureProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] == null ? null : (map['cloudExadataInfrastructureId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      entitlementId: map['entitlementId'] == null ? null : (map['entitlementId']! as String).input(),
+      gcpOracleZone: map['gcpOracleZone'] == null ? null : (map['gcpOracleZone']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      properties: map['properties'] == null ? null : (CloudExadataInfrastructureProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

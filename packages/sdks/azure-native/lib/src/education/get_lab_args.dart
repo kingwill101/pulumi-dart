@@ -41,7 +41,7 @@ class GetLabArgs {
     return GetLabArgs(
       billingAccountName: (map['billingAccountName'] as String).input(),
       billingProfileName: (map['billingProfileName'] as String).input(),
-      includeBudget: map['includeBudget'] == null ? null : (map['includeBudget'] as bool).input(),
+      includeBudget: map['includeBudget'] == null ? null : (map['includeBudget']! as bool).input(),
       invoiceSectionName: (map['invoiceSectionName'] as String).input(),
     );
   }

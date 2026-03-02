@@ -32,8 +32,8 @@ class ResourceMetricSourceAutoscalingV2beta1 {
   factory ResourceMetricSourceAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return ResourceMetricSourceAutoscalingV2beta1(
       name: (map['name'] as String).input(),
-      targetAverageUtilization: map['targetAverageUtilization'] == null ? null : (map['targetAverageUtilization'] as int).input(),
-      targetAverageValue: map['targetAverageValue'] == null ? null : (map['targetAverageValue'] as String).input(),
+      targetAverageUtilization: map['targetAverageUtilization'] == null ? null : (map['targetAverageUtilization']! as int).input(),
+      targetAverageValue: map['targetAverageValue'] == null ? null : (map['targetAverageValue']! as String).input(),
     );
   }
 }

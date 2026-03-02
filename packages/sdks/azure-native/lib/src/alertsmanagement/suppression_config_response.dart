@@ -28,7 +28,7 @@ class SuppressionConfigResponse {
   factory SuppressionConfigResponse.fromMap(Map<String, dynamic> map) {
     return SuppressionConfigResponse(
       recurrenceType: (map['recurrenceType'] as String).input(),
-      schedule: map['schedule'] == null ? null : (SuppressionScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (SuppressionScheduleResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

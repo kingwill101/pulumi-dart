@@ -35,9 +35,9 @@ class ServicePerimeterSpecEgressPolicy {
 
   factory ServicePerimeterSpecEgressPolicy.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterSpecEgressPolicy(
-      egressFrom: map['egressFrom'] == null ? null : (ServicePerimeterSpecEgressPolicyEgressFrom.fromMap((map['egressFrom'] as Map).cast<String, dynamic>())).input(),
-      egressTo: map['egressTo'] == null ? null : (ServicePerimeterSpecEgressPolicyEgressTo.fromMap((map['egressTo'] as Map).cast<String, dynamic>())).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      egressFrom: map['egressFrom'] == null ? null : (ServicePerimeterSpecEgressPolicyEgressFrom.fromMap((map['egressFrom']! as Map).cast<String, dynamic>())).input(),
+      egressTo: map['egressTo'] == null ? null : (ServicePerimeterSpecEgressPolicyEgressTo.fromMap((map['egressTo']! as Map).cast<String, dynamic>())).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class GetResolverFirewallConfigArgs {
 
   factory GetResolverFirewallConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverFirewallConfigArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

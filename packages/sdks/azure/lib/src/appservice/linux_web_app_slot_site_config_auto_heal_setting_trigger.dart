@@ -39,10 +39,10 @@ class LinuxWebAppSlotSiteConfigAutoHealSettingTrigger {
 
   factory LinuxWebAppSlotSiteConfigAutoHealSettingTrigger.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSlotSiteConfigAutoHealSettingTrigger(
-      requests: map['requests'] == null ? null : (LinuxWebAppSlotSiteConfigAutoHealSettingTriggerRequests.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
-      slowRequest: map['slowRequest'] == null ? null : (LinuxWebAppSlotSiteConfigAutoHealSettingTriggerSlowRequest.fromMap((map['slowRequest'] as Map).cast<String, dynamic>())).input(),
-      slowRequestWithPaths: map['slowRequestWithPaths'] == null ? null : (pulumi.Input.decodeList<LinuxWebAppSlotSiteConfigAutoHealSettingTriggerSlowRequestWithPath>(map['slowRequestWithPaths'], (value) => LinuxWebAppSlotSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statusCodes: map['statusCodes'] == null ? null : (pulumi.Input.decodeList<LinuxWebAppSlotSiteConfigAutoHealSettingTriggerStatusCode>(map['statusCodes'], (value) => LinuxWebAppSlotSiteConfigAutoHealSettingTriggerStatusCode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requests: map['requests'] == null ? null : (LinuxWebAppSlotSiteConfigAutoHealSettingTriggerRequests.fromMap((map['requests']! as Map).cast<String, dynamic>())).input(),
+      slowRequest: map['slowRequest'] == null ? null : (LinuxWebAppSlotSiteConfigAutoHealSettingTriggerSlowRequest.fromMap((map['slowRequest']! as Map).cast<String, dynamic>())).input(),
+      slowRequestWithPaths: map['slowRequestWithPaths'] == null ? null : (pulumi.Input.decodeList<LinuxWebAppSlotSiteConfigAutoHealSettingTriggerSlowRequestWithPath>(map['slowRequestWithPaths']!, (value) => LinuxWebAppSlotSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statusCodes: map['statusCodes'] == null ? null : (pulumi.Input.decodeList<LinuxWebAppSlotSiteConfigAutoHealSettingTriggerStatusCode>(map['statusCodes']!, (value) => LinuxWebAppSlotSiteConfigAutoHealSettingTriggerStatusCode.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

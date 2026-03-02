@@ -30,9 +30,9 @@ class CodeRepositoryGitConfig {
 
   factory CodeRepositoryGitConfig.fromMap(Map<String, dynamic> map) {
     return CodeRepositoryGitConfig(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      branch: map['branch'] == null ? null : ((map['branch'] as String).input()).input(),
       repositoryUrl: (map['repositoryUrl'] as String).input(),
-      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
+      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
     );
   }
 }

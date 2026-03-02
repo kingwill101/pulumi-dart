@@ -29,8 +29,8 @@ class GetWorkspacesArgs {
 
   factory GetWorkspacesArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspacesArgs(
-      aliasPrefix: map['aliasPrefix'] == null ? null : (map['aliasPrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      aliasPrefix: map['aliasPrefix'] == null ? null : ((map['aliasPrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

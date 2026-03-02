@@ -30,8 +30,8 @@ class LifecyclePolicyPolicyDetailsActionCrossRegionCopy {
 
   factory LifecyclePolicyPolicyDetailsActionCrossRegionCopy.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsActionCrossRegionCopy(
-      encryptionConfiguration: (LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      retainRule: map['retainRule'] == null ? null : (LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule.fromMap((map['retainRule'] as Map).cast<String, dynamic>())).input(),
+      encryptionConfiguration: (LifecyclePolicyPolicyDetailsActionCrossRegionCopyEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      retainRule: map['retainRule'] == null ? null : ((LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule.fromMap((map['retainRule']! as Map).cast<String, dynamic>())).input()).input(),
       target: (map['target'] as String).input(),
     );
   }

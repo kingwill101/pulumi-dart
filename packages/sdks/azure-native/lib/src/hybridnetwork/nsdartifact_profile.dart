@@ -32,9 +32,9 @@ class NSDArtifactProfile {
 
   factory NSDArtifactProfile.fromMap(Map<String, dynamic> map) {
     return NSDArtifactProfile(
-      artifactName: map['artifactName'] == null ? null : (map['artifactName'] as String).input(),
-      artifactStoreReference: map['artifactStoreReference'] == null ? null : (ReferencedResource.fromMap((map['artifactStoreReference'] as Map).cast<String, dynamic>())).input(),
-      artifactVersion: map['artifactVersion'] == null ? null : (map['artifactVersion'] as String).input(),
+      artifactName: map['artifactName'] == null ? null : (map['artifactName']! as String).input(),
+      artifactStoreReference: map['artifactStoreReference'] == null ? null : (ReferencedResource.fromMap((map['artifactStoreReference']! as Map).cast<String, dynamic>())).input(),
+      artifactVersion: map['artifactVersion'] == null ? null : (map['artifactVersion']! as String).input(),
     );
   }
 }

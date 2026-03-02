@@ -79,15 +79,15 @@ class WebhookArgs {
     return WebhookArgs(
       active: (map['active'] as bool).input(),
       displayName: (map['displayName'] as String).input(),
-      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<WebhookFilters>(map['filters'], (value) => WebhookFilters.fromValue(value as String))).input(),
-      format: map['format'] == null ? null : (WebhookFormat.fromValue(map['format'] as String)).input(),
-      groups: map['groups'] == null ? null : (pulumi.Input.decodeList<WebhookGroup>(map['groups'], (value) => WebhookGroup.fromValue(value as String))).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName']! as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<WebhookFilters>(map['filters']!, (value) => WebhookFilters.fromValue(value as String))).input(),
+      format: map['format'] == null ? null : (WebhookFormat.fromValue(map['format']! as String)).input(),
+      groups: map['groups'] == null ? null : (pulumi.Input.decodeList<WebhookGroup>(map['groups']!, (value) => WebhookGroup.fromValue(value as String))).input(),
       organizationName: (map['organizationName'] as String).input(),
       payloadUrl: (map['payloadUrl'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      stackName: map['stackName'] == null ? null : (map['stackName'] as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      stackName: map['stackName'] == null ? null : (map['stackName']! as String).input(),
     );
   }
 }

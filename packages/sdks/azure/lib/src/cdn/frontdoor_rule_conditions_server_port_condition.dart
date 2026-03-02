@@ -31,7 +31,7 @@ class FrontdoorRuleConditionsServerPortCondition {
   factory FrontdoorRuleConditionsServerPortCondition.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleConditionsServerPortCondition(
       matchValues: ((map['matchValues'] as List).cast<String>()).input(),
-      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition']! as bool).input(),
       operator: (map['operator'] as String).input(),
     );
   }

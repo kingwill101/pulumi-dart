@@ -30,7 +30,7 @@ class GetInstanceKeywordsArgs {
   factory GetInstanceKeywordsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceKeywordsArgs(
       key: (map['key'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

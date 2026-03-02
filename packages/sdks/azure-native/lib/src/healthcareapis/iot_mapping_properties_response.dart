@@ -21,7 +21,7 @@ class IotMappingPropertiesResponse {
 
   factory IotMappingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IotMappingPropertiesResponse(
-      content: map['content'] == null ? null : (map['content']).input(),
+      content: map['content'] == null ? null : (map['content']!).input(),
     );
   }
 }

@@ -54,8 +54,8 @@ class OrganizationContactArgs {
       languageTag: (map['languageTag'] as String).input(),
       notificationCategorySubscriptions: (pulumi.Input.decodeList<OrganizationContactNotificationCategorySubscriptionsItem>(map['notificationCategorySubscriptions'], (value) => OrganizationContactNotificationCategorySubscriptionsItem.fromValue(value as String))).input(),
       organizationId: (map['organizationId'] as String).input(),
-      validateTime: map['validateTime'] == null ? null : (map['validateTime'] as String).input(),
-      validationState: map['validationState'] == null ? null : (OrganizationContactValidationState.fromValue(map['validationState'] as String)).input(),
+      validateTime: map['validateTime'] == null ? null : (map['validateTime']! as String).input(),
+      validationState: map['validationState'] == null ? null : (OrganizationContactValidationState.fromValue(map['validationState']! as String)).input(),
     );
   }
 }

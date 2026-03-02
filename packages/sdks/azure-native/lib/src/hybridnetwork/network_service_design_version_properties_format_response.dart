@@ -49,11 +49,11 @@ class NetworkServiceDesignVersionPropertiesFormatResponse {
 
   factory NetworkServiceDesignVersionPropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return NetworkServiceDesignVersionPropertiesFormatResponse(
-      configurationGroupSchemaReferences: map['configurationGroupSchemaReferences'] == null ? null : (pulumi.Input.decodeMapValues<ReferencedResourceResponse>(map['configurationGroupSchemaReferences'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      nfvisFromSite: map['nfvisFromSite'] == null ? null : (pulumi.Input.decodeMapValues<NfviDetailsResponse>(map['nfvisFromSite'], (value) => NfviDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationGroupSchemaReferences: map['configurationGroupSchemaReferences'] == null ? null : (pulumi.Input.decodeMapValues<ReferencedResourceResponse>(map['configurationGroupSchemaReferences']!, (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      nfvisFromSite: map['nfvisFromSite'] == null ? null : (pulumi.Input.decodeMapValues<NfviDetailsResponse>(map['nfvisFromSite']!, (value) => NfviDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      resourceElementTemplates: map['resourceElementTemplates'] == null ? null : (pulumi.Input.decodeList<ArmResourceDefinitionResourceElementTemplateDetailsResponse>(map['resourceElementTemplates'], (value) => ArmResourceDefinitionResourceElementTemplateDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceElementTemplates: map['resourceElementTemplates'] == null ? null : (pulumi.Input.decodeList<ArmResourceDefinitionResourceElementTemplateDetailsResponse>(map['resourceElementTemplates']!, (value) => ArmResourceDefinitionResourceElementTemplateDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       versionState: (map['versionState'] as String).input(),
     );
   }

@@ -55,14 +55,14 @@ class DomainDevicesIommuDriver {
 
   factory DomainDevicesIommuDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesIommuDriver(
-      awBits: map['awBits'] == null ? null : (map['awBits'] as double).input(),
-      cachingMode: map['cachingMode'] == null ? null : (map['cachingMode'] as String).input(),
-      dmaTranslation: map['dmaTranslation'] == null ? null : (map['dmaTranslation'] as String).input(),
-      eim: map['eim'] == null ? null : (map['eim'] as String).input(),
-      intRemap: map['intRemap'] == null ? null : (map['intRemap'] as String).input(),
-      iotlb: map['iotlb'] == null ? null : (map['iotlb'] as String).input(),
-      passthrough: map['passthrough'] == null ? null : (map['passthrough'] as String).input(),
-      xtSup: map['xtSup'] == null ? null : (map['xtSup'] as String).input(),
+      awBits: map['awBits'] == null ? null : (map['awBits']! as double).input(),
+      cachingMode: map['cachingMode'] == null ? null : (map['cachingMode']! as String).input(),
+      dmaTranslation: map['dmaTranslation'] == null ? null : (map['dmaTranslation']! as String).input(),
+      eim: map['eim'] == null ? null : (map['eim']! as String).input(),
+      intRemap: map['intRemap'] == null ? null : (map['intRemap']! as String).input(),
+      iotlb: map['iotlb'] == null ? null : (map['iotlb']! as String).input(),
+      passthrough: map['passthrough'] == null ? null : (map['passthrough']! as String).input(),
+      xtSup: map['xtSup'] == null ? null : (map['xtSup']! as String).input(),
     );
   }
 }

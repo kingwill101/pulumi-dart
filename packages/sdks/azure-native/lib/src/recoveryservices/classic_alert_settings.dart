@@ -24,8 +24,8 @@ class ClassicAlertSettings {
 
   factory ClassicAlertSettings.fromMap(Map<String, dynamic> map) {
     return ClassicAlertSettings(
-      alertsForCriticalOperations: map['alertsForCriticalOperations'] == null ? null : (map['alertsForCriticalOperations'] as String).input(),
-      emailNotificationsForSiteRecovery: map['emailNotificationsForSiteRecovery'] == null ? null : (map['emailNotificationsForSiteRecovery'] as String).input(),
+      alertsForCriticalOperations: map['alertsForCriticalOperations'] == null ? null : (map['alertsForCriticalOperations']! as String).input(),
+      emailNotificationsForSiteRecovery: map['emailNotificationsForSiteRecovery'] == null ? null : (map['emailNotificationsForSiteRecovery']! as String).input(),
     );
   }
 }

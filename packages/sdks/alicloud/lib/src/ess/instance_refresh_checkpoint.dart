@@ -20,7 +20,7 @@ class InstanceRefreshCheckpoint {
 
   factory InstanceRefreshCheckpoint.fromMap(Map<String, dynamic> map) {
     return InstanceRefreshCheckpoint(
-      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as int).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class HyperVReplicaAzurePolicyInput {
 
   factory HyperVReplicaAzurePolicyInput.fromMap(Map<String, dynamic> map) {
     return HyperVReplicaAzurePolicyInput(
-      applicationConsistentSnapshotFrequencyInHours: map['applicationConsistentSnapshotFrequencyInHours'] == null ? null : (map['applicationConsistentSnapshotFrequencyInHours'] as int).input(),
+      applicationConsistentSnapshotFrequencyInHours: map['applicationConsistentSnapshotFrequencyInHours'] == null ? null : (map['applicationConsistentSnapshotFrequencyInHours']! as int).input(),
       instanceType: (map['instanceType'] as String).input(),
-      onlineReplicationStartTime: map['onlineReplicationStartTime'] == null ? null : (map['onlineReplicationStartTime'] as String).input(),
-      recoveryPointHistoryDuration: map['recoveryPointHistoryDuration'] == null ? null : (map['recoveryPointHistoryDuration'] as int).input(),
-      replicationInterval: map['replicationInterval'] == null ? null : (map['replicationInterval'] as int).input(),
-      storageAccounts: map['storageAccounts'] == null ? null : ((map['storageAccounts'] as List).cast<String>()).input(),
+      onlineReplicationStartTime: map['onlineReplicationStartTime'] == null ? null : (map['onlineReplicationStartTime']! as String).input(),
+      recoveryPointHistoryDuration: map['recoveryPointHistoryDuration'] == null ? null : (map['recoveryPointHistoryDuration']! as int).input(),
+      replicationInterval: map['replicationInterval'] == null ? null : (map['replicationInterval']! as int).input(),
+      storageAccounts: map['storageAccounts'] == null ? null : ((map['storageAccounts']! as List).cast<String>()).input(),
     );
   }
 }

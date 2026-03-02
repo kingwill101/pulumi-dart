@@ -27,8 +27,8 @@ class AliasContextContaineranalysisV1beta1 {
 
   factory AliasContextContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return AliasContextContaineranalysisV1beta1(
-      kind: map['kind'] == null ? null : (AliasContextKindContaineranalysisV1beta1.fromValue(map['kind'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      kind: map['kind'] == null ? null : (AliasContextKindContaineranalysisV1beta1.fromValue(map['kind']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

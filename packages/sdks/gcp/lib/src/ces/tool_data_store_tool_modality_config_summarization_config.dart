@@ -32,9 +32,9 @@ class ToolDataStoreToolModalityConfigSummarizationConfig {
 
   factory ToolDataStoreToolModalityConfigSummarizationConfig.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolModalityConfigSummarizationConfig(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      modelSettings: map['modelSettings'] == null ? null : (ToolDataStoreToolModalityConfigSummarizationConfigModelSettings.fromMap((map['modelSettings'] as Map).cast<String, dynamic>())).input(),
-      prompt: map['prompt'] == null ? null : (map['prompt'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      modelSettings: map['modelSettings'] == null ? null : (ToolDataStoreToolModalityConfigSummarizationConfigModelSettings.fromMap((map['modelSettings']! as Map).cast<String, dynamic>())).input(),
+      prompt: map['prompt'] == null ? null : (map['prompt']! as String).input(),
     );
   }
 }

@@ -41,9 +41,9 @@ class AiLogicConfigGenerativeLanguageConfig {
 
   factory AiLogicConfigGenerativeLanguageConfig.fromMap(Map<String, dynamic> map) {
     return AiLogicConfigGenerativeLanguageConfig(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      apiKeyWo: map['apiKeyWo'] == null ? null : (map['apiKeyWo'] as String).input(),
-      apiKeyWoVersion: map['apiKeyWoVersion'] == null ? null : (map['apiKeyWoVersion'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      apiKeyWo: map['apiKeyWo'] == null ? null : (map['apiKeyWo']! as String).input(),
+      apiKeyWoVersion: map['apiKeyWoVersion'] == null ? null : (map['apiKeyWoVersion']! as String).input(),
     );
   }
 }

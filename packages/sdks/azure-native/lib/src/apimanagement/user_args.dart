@@ -85,19 +85,19 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
-      confirmation: map['confirmation'] == null ? null : (map['confirmation'] as String).input(),
+      appType: map['appType'] == null ? null : (map['appType']! as String).input(),
+      confirmation: map['confirmation'] == null ? null : (map['confirmation']! as String).input(),
       email: (map['email'] as String).input(),
       firstName: (map['firstName'] as String).input(),
-      identities: map['identities'] == null ? null : (pulumi.Input.decodeList<UserIdentityContract>(map['identities'], (value) => UserIdentityContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identities: map['identities'] == null ? null : (pulumi.Input.decodeList<UserIdentityContract>(map['identities']!, (value) => UserIdentityContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
       lastName: (map['lastName'] as String).input(),
-      note: map['note'] == null ? null : (map['note'] as String).input(),
-      notify: map['notify'] == null ? null : (map['notify'] as bool).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      note: map['note'] == null ? null : (map['note']! as String).input(),
+      notify: map['notify'] == null ? null : (map['notify']! as bool).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

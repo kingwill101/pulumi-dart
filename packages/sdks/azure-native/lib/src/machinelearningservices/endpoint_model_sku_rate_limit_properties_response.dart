@@ -31,9 +31,9 @@ class EndpointModelSkuRateLimitPropertiesResponse {
 
   factory EndpointModelSkuRateLimitPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointModelSkuRateLimitPropertiesResponse(
-      count: map['count'] == null ? null : (map['count'] as double).input(),
-      renewalPeriod: map['renewalPeriod'] == null ? null : (map['renewalPeriod'] as double).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<EndpointModelSkuRateLimitRulePropertiesResponse>(map['rules'], (value) => EndpointModelSkuRateLimitRulePropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      count: map['count'] == null ? null : (map['count']! as double).input(),
+      renewalPeriod: map['renewalPeriod'] == null ? null : (map['renewalPeriod']! as double).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<EndpointModelSkuRateLimitRulePropertiesResponse>(map['rules']!, (value) => EndpointModelSkuRateLimitRulePropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -40,8 +40,8 @@ class DatasetDelimitedTextHttpServerLocation {
 
   factory DatasetDelimitedTextHttpServerLocation.fromMap(Map<String, dynamic> map) {
     return DatasetDelimitedTextHttpServerLocation(
-      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : (map['dynamicFilenameEnabled'] as bool).input(),
-      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : (map['dynamicPathEnabled'] as bool).input(),
+      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : (map['dynamicFilenameEnabled']! as bool).input(),
+      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : (map['dynamicPathEnabled']! as bool).input(),
       filename: (map['filename'] as String).input(),
       path: (map['path'] as String).input(),
       relativeUrl: (map['relativeUrl'] as String).input(),

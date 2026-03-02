@@ -27,8 +27,8 @@ class ServicePerimeterSpecVpcAccessibleServices {
 
   factory ServicePerimeterSpecVpcAccessibleServices.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterSpecVpcAccessibleServices(
-      allowedServices: map['allowedServices'] == null ? null : ((map['allowedServices'] as List).cast<String>()).input(),
-      enableRestriction: map['enableRestriction'] == null ? null : (map['enableRestriction'] as bool).input(),
+      allowedServices: map['allowedServices'] == null ? null : ((map['allowedServices']! as List).cast<String>()).input(),
+      enableRestriction: map['enableRestriction'] == null ? null : (map['enableRestriction']! as bool).input(),
     );
   }
 }

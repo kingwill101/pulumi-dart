@@ -37,8 +37,8 @@ class RoutingControlArgs {
   factory RoutingControlArgs.fromMap(Map<String, dynamic> map) {
     return RoutingControlArgs(
       clusterArn: (map['clusterArn'] as String).input(),
-      controlPanelArn: map['controlPanelArn'] == null ? null : (map['controlPanelArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      controlPanelArn: map['controlPanelArn'] == null ? null : ((map['controlPanelArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

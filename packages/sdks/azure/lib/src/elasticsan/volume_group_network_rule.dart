@@ -25,7 +25,7 @@ class VolumeGroupNetworkRule {
 
   factory VolumeGroupNetworkRule.fromMap(Map<String, dynamic> map) {
     return VolumeGroupNetworkRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

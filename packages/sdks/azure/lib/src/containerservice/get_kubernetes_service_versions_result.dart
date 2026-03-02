@@ -49,10 +49,10 @@ class GetKubernetesServiceVersionsResult {
     return GetKubernetesServiceVersionsResult(
       defaultVersion: map['defaultVersion'] as String,
       id: map['id'] as String,
-      includePreview: map['includePreview'] == null ? null : map['includePreview'] as bool,
+      includePreview: map['includePreview'] == null ? null : map['includePreview']! as bool,
       latestVersion: map['latestVersion'] as String,
       location: map['location'] as String,
-      versionPrefix: map['versionPrefix'] == null ? null : map['versionPrefix'] as String,
+      versionPrefix: map['versionPrefix'] == null ? null : map['versionPrefix']! as String,
       versions: (map['versions'] as List).cast<String>(),
     );
   }

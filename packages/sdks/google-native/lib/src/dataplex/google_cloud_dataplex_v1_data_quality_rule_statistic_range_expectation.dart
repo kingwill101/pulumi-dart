@@ -42,11 +42,11 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
 
   factory GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation(
-      maxValue: map['maxValue'] == null ? null : (map['maxValue'] as String).input(),
-      minValue: map['minValue'] == null ? null : (map['minValue'] as String).input(),
-      statistic: map['statistic'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic.fromValue(map['statistic'] as String)).input(),
-      strictMaxEnabled: map['strictMaxEnabled'] == null ? null : (map['strictMaxEnabled'] as bool).input(),
-      strictMinEnabled: map['strictMinEnabled'] == null ? null : (map['strictMinEnabled'] as bool).input(),
+      maxValue: map['maxValue'] == null ? null : (map['maxValue']! as String).input(),
+      minValue: map['minValue'] == null ? null : (map['minValue']! as String).input(),
+      statistic: map['statistic'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic.fromValue(map['statistic']! as String)).input(),
+      strictMaxEnabled: map['strictMaxEnabled'] == null ? null : (map['strictMaxEnabled']! as bool).input(),
+      strictMinEnabled: map['strictMinEnabled'] == null ? null : (map['strictMinEnabled']! as bool).input(),
     );
   }
 }

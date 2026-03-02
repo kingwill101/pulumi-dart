@@ -55,12 +55,12 @@ class TagTemplateField {
 
   factory TagTemplateField.fromMap(Map<String, dynamic> map) {
     return TagTemplateField(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       fieldId: (map['fieldId'] as String).input(),
-      isRequired: map['isRequired'] == null ? null : (map['isRequired'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
+      isRequired: map['isRequired'] == null ? null : (map['isRequired']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
       type: (TagTemplateFieldType.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
     );
   }

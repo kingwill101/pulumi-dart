@@ -56,13 +56,13 @@ class NetworkSecurityGroupArgs {
 
   factory NetworkSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroupArgs(
-      flushConnection: map['flushConnection'] == null ? null : (map['flushConnection'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkSecurityGroupName: map['networkSecurityGroupName'] == null ? null : (map['networkSecurityGroupName'] as String).input(),
+      flushConnection: map['flushConnection'] == null ? null : (map['flushConnection']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkSecurityGroupName: map['networkSecurityGroupName'] == null ? null : (map['networkSecurityGroupName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityRules: map['securityRules'] == null ? null : ((map['securityRules'] as List).cast<SecurityRuleNetwork>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      securityRules: map['securityRules'] == null ? null : ((map['securityRules']! as List).cast<SecurityRuleNetwork>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

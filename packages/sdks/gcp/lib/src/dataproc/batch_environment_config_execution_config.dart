@@ -68,14 +68,14 @@ class BatchEnvironmentConfigExecutionConfig {
 
   factory BatchEnvironmentConfigExecutionConfig.fromMap(Map<String, dynamic> map) {
     return BatchEnvironmentConfigExecutionConfig(
-      authenticationConfig: map['authenticationConfig'] == null ? null : (BatchEnvironmentConfigExecutionConfigAuthenticationConfig.fromMap((map['authenticationConfig'] as Map).cast<String, dynamic>())).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      networkTags: map['networkTags'] == null ? null : ((map['networkTags'] as List).cast<String>()).input(),
-      networkUri: map['networkUri'] == null ? null : (map['networkUri'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      stagingBucket: map['stagingBucket'] == null ? null : (map['stagingBucket'] as String).input(),
-      subnetworkUri: map['subnetworkUri'] == null ? null : (map['subnetworkUri'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      authenticationConfig: map['authenticationConfig'] == null ? null : (BatchEnvironmentConfigExecutionConfigAuthenticationConfig.fromMap((map['authenticationConfig']! as Map).cast<String, dynamic>())).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      networkTags: map['networkTags'] == null ? null : ((map['networkTags']! as List).cast<String>()).input(),
+      networkUri: map['networkUri'] == null ? null : (map['networkUri']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      stagingBucket: map['stagingBucket'] == null ? null : (map['stagingBucket']! as String).input(),
+      subnetworkUri: map['subnetworkUri'] == null ? null : (map['subnetworkUri']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
     );
   }
 }

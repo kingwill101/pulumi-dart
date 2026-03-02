@@ -50,13 +50,13 @@ class NetworkDnsSrV {
 
   factory NetworkDnsSrV.fromMap(Map<String, dynamic> map) {
     return NetworkDnsSrV(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as double).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as double).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as double).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as double).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as double).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as double).input(),
     );
   }
 }

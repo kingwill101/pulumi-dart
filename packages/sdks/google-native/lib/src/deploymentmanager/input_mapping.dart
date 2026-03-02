@@ -37,10 +37,10 @@ class InputMapping {
 
   factory InputMapping.fromMap(Map<String, dynamic> map) {
     return InputMapping(
-      fieldName: map['fieldName'] == null ? null : (map['fieldName'] as String).input(),
-      location: map['location'] == null ? null : (InputMappingLocation.fromValue(map['location'] as String)).input(),
-      methodMatch: map['methodMatch'] == null ? null : (map['methodMatch'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
+      location: map['location'] == null ? null : (InputMappingLocation.fromValue(map['location']! as String)).input(),
+      methodMatch: map['methodMatch'] == null ? null : (map['methodMatch']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

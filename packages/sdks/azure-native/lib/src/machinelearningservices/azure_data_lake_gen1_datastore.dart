@@ -65,13 +65,13 @@ class AzureDataLakeGen1Datastore {
     return AzureDataLakeGen1Datastore(
       credentials: (AccountKeyDatastoreCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
       datastoreType: (map['datastoreType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : (map['serviceDataAccessAuthIdentity'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      serviceDataAccessAuthIdentity: map['serviceDataAccessAuthIdentity'] == null ? null : (map['serviceDataAccessAuthIdentity']! as String).input(),
       storeName: (map['storeName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

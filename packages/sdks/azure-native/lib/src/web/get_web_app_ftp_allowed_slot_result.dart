@@ -48,7 +48,7 @@ class GetWebAppFtpAllowedSlotResult {
       allow: map['allow'] as bool,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       type: map['type'] as String,
     );

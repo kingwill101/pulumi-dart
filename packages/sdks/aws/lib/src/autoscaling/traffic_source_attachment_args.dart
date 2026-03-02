@@ -36,8 +36,8 @@ class TrafficSourceAttachmentArgs {
   factory TrafficSourceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TrafficSourceAttachmentArgs(
       autoscalingGroupName: (map['autoscalingGroupName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      trafficSource: map['trafficSource'] == null ? null : (TrafficSourceAttachmentTrafficSource.fromMap((map['trafficSource'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      trafficSource: map['trafficSource'] == null ? null : ((TrafficSourceAttachmentTrafficSource.fromMap((map['trafficSource']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -91,19 +91,19 @@ class KxScalingGroupState {
 
   factory KxScalingGroupState.fromMap(Map<String, dynamic> map) {
     return KxScalingGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId'] as String).input(),
-      clusters: map['clusters'] == null ? null : ((map['clusters'] as List).cast<String>()).input(),
-      createdTimestamp: map['createdTimestamp'] == null ? null : (map['createdTimestamp'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      hostType: map['hostType'] == null ? null : (map['hostType'] as String).input(),
-      lastModifiedTimestamp: map['lastModifiedTimestamp'] == null ? null : (map['lastModifiedTimestamp'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusReason: map['statusReason'] == null ? null : (map['statusReason'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : ((map['availabilityZoneId'] as String).input()).input(),
+      clusters: map['clusters'] == null ? null : (((map['clusters'] as List).cast<String>()).input()).input(),
+      createdTimestamp: map['createdTimestamp'] == null ? null : ((map['createdTimestamp'] as String).input()).input(),
+      environmentId: map['environmentId'] == null ? null : ((map['environmentId'] as String).input()).input(),
+      hostType: map['hostType'] == null ? null : ((map['hostType'] as String).input()).input(),
+      lastModifiedTimestamp: map['lastModifiedTimestamp'] == null ? null : ((map['lastModifiedTimestamp'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      statusReason: map['statusReason'] == null ? null : ((map['statusReason'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

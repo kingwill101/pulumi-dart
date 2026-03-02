@@ -69,9 +69,9 @@ class GetServiceResult {
     return GetServiceResult(
       arn: map['arn'] as String,
       description: map['description'] as String,
-      dnsConfigs: pulumi.Input.decodeList<GetServiceDnsConfig>(map['dnsConfigs'], (value) => GetServiceDnsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      healthCheckConfigs: pulumi.Input.decodeList<GetServiceHealthCheckConfig>(map['healthCheckConfigs'], (value) => GetServiceHealthCheckConfig.fromMap((value as Map).cast<String, dynamic>())),
-      healthCheckCustomConfigs: pulumi.Input.decodeList<GetServiceHealthCheckCustomConfig>(map['healthCheckCustomConfigs'], (value) => GetServiceHealthCheckCustomConfig.fromMap((value as Map).cast<String, dynamic>())),
+      dnsConfigs: pulumi.Input.decodeList<GetServiceDnsConfig>(map['dnsConfigs']!, (value) => GetServiceDnsConfig.fromMap((value as Map).cast<String, dynamic>())),
+      healthCheckConfigs: pulumi.Input.decodeList<GetServiceHealthCheckConfig>(map['healthCheckConfigs']!, (value) => GetServiceHealthCheckConfig.fromMap((value as Map).cast<String, dynamic>())),
+      healthCheckCustomConfigs: pulumi.Input.decodeList<GetServiceHealthCheckCustomConfig>(map['healthCheckCustomConfigs']!, (value) => GetServiceHealthCheckCustomConfig.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       namespaceId: map['namespaceId'] as String,

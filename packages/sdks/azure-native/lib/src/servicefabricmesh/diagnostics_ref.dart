@@ -26,8 +26,8 @@ class DiagnosticsRef {
 
   factory DiagnosticsRef.fromMap(Map<String, dynamic> map) {
     return DiagnosticsRef(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      sinkRefs: map['sinkRefs'] == null ? null : ((map['sinkRefs'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      sinkRefs: map['sinkRefs'] == null ? null : ((map['sinkRefs']! as List).cast<String>()).input(),
     );
   }
 }

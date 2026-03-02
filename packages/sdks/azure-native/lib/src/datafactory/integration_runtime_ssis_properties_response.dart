@@ -62,14 +62,14 @@ class IntegrationRuntimeSsisPropertiesResponse {
 
   factory IntegrationRuntimeSsisPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisPropertiesResponse(
-      catalogInfo: map['catalogInfo'] == null ? null : (IntegrationRuntimeSsisCatalogInfoResponse.fromMap((map['catalogInfo'] as Map).cast<String, dynamic>())).input(),
-      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
-      customSetupScriptProperties: map['customSetupScriptProperties'] == null ? null : (IntegrationRuntimeCustomSetupScriptPropertiesResponse.fromMap((map['customSetupScriptProperties'] as Map).cast<String, dynamic>())).input(),
-      dataProxyProperties: map['dataProxyProperties'] == null ? null : (IntegrationRuntimeDataProxyPropertiesResponse.fromMap((map['dataProxyProperties'] as Map).cast<String, dynamic>())).input(),
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      expressCustomSetupProperties: map['expressCustomSetupProperties'] == null ? null : (pulumi.Input.decodeList<AzPowerShellSetupResponse>(map['expressCustomSetupProperties'], (value) => AzPowerShellSetupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
-      packageStores: map['packageStores'] == null ? null : (pulumi.Input.decodeList<PackageStoreResponse>(map['packageStores'], (value) => PackageStoreResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      catalogInfo: map['catalogInfo'] == null ? null : (IntegrationRuntimeSsisCatalogInfoResponse.fromMap((map['catalogInfo']! as Map).cast<String, dynamic>())).input(),
+      credential: map['credential'] == null ? null : (CredentialReferenceResponse.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
+      customSetupScriptProperties: map['customSetupScriptProperties'] == null ? null : (IntegrationRuntimeCustomSetupScriptPropertiesResponse.fromMap((map['customSetupScriptProperties']! as Map).cast<String, dynamic>())).input(),
+      dataProxyProperties: map['dataProxyProperties'] == null ? null : (IntegrationRuntimeDataProxyPropertiesResponse.fromMap((map['dataProxyProperties']! as Map).cast<String, dynamic>())).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      expressCustomSetupProperties: map['expressCustomSetupProperties'] == null ? null : (pulumi.Input.decodeList<AzPowerShellSetupResponse>(map['expressCustomSetupProperties']!, (value) => AzPowerShellSetupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
+      packageStores: map['packageStores'] == null ? null : (pulumi.Input.decodeList<PackageStoreResponse>(map['packageStores']!, (value) => PackageStoreResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class BillingAccountExclusionState {
 
   factory BillingAccountExclusionState.fromMap(Map<String, dynamic> map) {
     return BillingAccountExclusionState(
-      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

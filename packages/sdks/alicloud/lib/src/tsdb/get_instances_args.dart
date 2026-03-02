@@ -59,14 +59,14 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      appKey: map['appKey'] == null ? null : (map['appKey'] as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      engineType: map['engineType'] == null ? null : (map['engineType'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      queryStr: map['queryStr'] == null ? null : (map['queryStr'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusList: map['statusList'] == null ? null : (map['statusList'] as String).input(),
+      appKey: map['appKey'] == null ? null : (map['appKey']! as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      engineType: map['engineType'] == null ? null : (map['engineType']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      queryStr: map['queryStr'] == null ? null : (map['queryStr']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      statusList: map['statusList'] == null ? null : (map['statusList']! as String).input(),
     );
   }
 }

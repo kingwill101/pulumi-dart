@@ -26,8 +26,8 @@ class RuntimePlatformResponse {
 
   factory RuntimePlatformResponse.fromMap(Map<String, dynamic> map) {
     return RuntimePlatformResponse(
-      cpuArchitecture: map['cpuArchitecture'] == null ? null : (map['cpuArchitecture'] as String).input(),
-      operatingSystemFamily: map['operatingSystemFamily'] == null ? null : (map['operatingSystemFamily'] as String).input(),
+      cpuArchitecture: map['cpuArchitecture'] == null ? null : (map['cpuArchitecture']! as String).input(),
+      operatingSystemFamily: map['operatingSystemFamily'] == null ? null : (map['operatingSystemFamily']! as String).input(),
     );
   }
 }

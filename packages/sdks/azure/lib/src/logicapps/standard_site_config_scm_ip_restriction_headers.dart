@@ -35,10 +35,10 @@ class StandardSiteConfigScmIpRestrictionHeaders {
 
   factory StandardSiteConfigScmIpRestrictionHeaders.fromMap(Map<String, dynamic> map) {
     return StandardSiteConfigScmIpRestrictionHeaders(
-      xAzureFdids: map['xAzureFdids'] == null ? null : ((map['xAzureFdids'] as List).cast<String>()).input(),
-      xFdHealthProbe: map['xFdHealthProbe'] == null ? null : (map['xFdHealthProbe'] as String).input(),
-      xForwardedFors: map['xForwardedFors'] == null ? null : ((map['xForwardedFors'] as List).cast<String>()).input(),
-      xForwardedHosts: map['xForwardedHosts'] == null ? null : ((map['xForwardedHosts'] as List).cast<String>()).input(),
+      xAzureFdids: map['xAzureFdids'] == null ? null : ((map['xAzureFdids']! as List).cast<String>()).input(),
+      xFdHealthProbe: map['xFdHealthProbe'] == null ? null : (map['xFdHealthProbe']! as String).input(),
+      xForwardedFors: map['xForwardedFors'] == null ? null : ((map['xForwardedFors']! as List).cast<String>()).input(),
+      xForwardedHosts: map['xForwardedHosts'] == null ? null : ((map['xForwardedHosts']! as List).cast<String>()).input(),
     );
   }
 }

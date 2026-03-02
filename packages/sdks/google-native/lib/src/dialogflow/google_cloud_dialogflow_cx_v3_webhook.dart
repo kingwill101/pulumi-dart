@@ -48,12 +48,12 @@ class GoogleCloudDialogflowCxV3Webhook {
 
   factory GoogleCloudDialogflowCxV3Webhook.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3Webhook(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       displayName: (map['displayName'] as String).input(),
-      genericWebService: map['genericWebService'] == null ? null : (GoogleCloudDialogflowCxV3WebhookGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serviceDirectory: map['serviceDirectory'] == null ? null : (GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig.fromMap((map['serviceDirectory'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      genericWebService: map['genericWebService'] == null ? null : (GoogleCloudDialogflowCxV3WebhookGenericWebService.fromMap((map['genericWebService']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serviceDirectory: map['serviceDirectory'] == null ? null : (GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig.fromMap((map['serviceDirectory']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

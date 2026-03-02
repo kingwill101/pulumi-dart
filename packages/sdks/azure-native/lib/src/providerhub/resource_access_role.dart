@@ -25,8 +25,8 @@ class ResourceAccessRole {
 
   factory ResourceAccessRole.fromMap(Map<String, dynamic> map) {
     return ResourceAccessRole(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
-      allowedGroupClaims: map['allowedGroupClaims'] == null ? null : ((map['allowedGroupClaims'] as List).cast<String>()).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
+      allowedGroupClaims: map['allowedGroupClaims'] == null ? null : ((map['allowedGroupClaims']! as List).cast<String>()).input(),
     );
   }
 }

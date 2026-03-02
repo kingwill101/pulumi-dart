@@ -51,11 +51,11 @@ class MembershipArgs {
   factory MembershipArgs.fromMap(Map<String, dynamic> map) {
     return MembershipArgs(
       collaborationId: (map['collaborationId'] as String).input(),
-      defaultResultConfiguration: map['defaultResultConfiguration'] == null ? null : (MembershipDefaultResultConfiguration.fromMap((map['defaultResultConfiguration'] as Map).cast<String, dynamic>())).input(),
-      paymentConfiguration: map['paymentConfiguration'] == null ? null : (MembershipPaymentConfiguration.fromMap((map['paymentConfiguration'] as Map).cast<String, dynamic>())).input(),
+      defaultResultConfiguration: map['defaultResultConfiguration'] == null ? null : ((MembershipDefaultResultConfiguration.fromMap((map['defaultResultConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      paymentConfiguration: map['paymentConfiguration'] == null ? null : ((MembershipPaymentConfiguration.fromMap((map['paymentConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       queryLogStatus: (map['queryLogStatus'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

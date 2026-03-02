@@ -47,12 +47,12 @@ class ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRespo
 
   factory ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponse(
-      customEmails: map['customEmails'] == null ? null : ((map['customEmails'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      customEmails: map['customEmails'] == null ? null : ((map['customEmails']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       lastUpdatedTime: (map['lastUpdatedTime'] as String).input(),
       name: (map['name'] as String).input(),
-      ruleDefinitions: map['ruleDefinitions'] == null ? null : (ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions.fromMap((map['ruleDefinitions'] as Map).cast<String, dynamic>())).input(),
-      sendEmailsToSubscriptionOwners: map['sendEmailsToSubscriptionOwners'] == null ? null : (map['sendEmailsToSubscriptionOwners'] as bool).input(),
+      ruleDefinitions: map['ruleDefinitions'] == null ? null : (ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions.fromMap((map['ruleDefinitions']! as Map).cast<String, dynamic>())).input(),
+      sendEmailsToSubscriptionOwners: map['sendEmailsToSubscriptionOwners'] == null ? null : (map['sendEmailsToSubscriptionOwners']! as bool).input(),
     );
   }
 }

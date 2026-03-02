@@ -53,13 +53,13 @@ class MoveResourceDependencyResponse {
 
   factory MoveResourceDependencyResponse.fromMap(Map<String, dynamic> map) {
     return MoveResourceDependencyResponse(
-      automaticResolution: map['automaticResolution'] == null ? null : (AutomaticResolutionPropertiesResponse.fromMap((map['automaticResolution'] as Map).cast<String, dynamic>())).input(),
-      dependencyType: map['dependencyType'] == null ? null : (map['dependencyType'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      isOptional: map['isOptional'] == null ? null : (map['isOptional'] as String).input(),
-      manualResolution: map['manualResolution'] == null ? null : (ManualResolutionPropertiesResponse.fromMap((map['manualResolution'] as Map).cast<String, dynamic>())).input(),
-      resolutionStatus: map['resolutionStatus'] == null ? null : (map['resolutionStatus'] as String).input(),
-      resolutionType: map['resolutionType'] == null ? null : (map['resolutionType'] as String).input(),
+      automaticResolution: map['automaticResolution'] == null ? null : (AutomaticResolutionPropertiesResponse.fromMap((map['automaticResolution']! as Map).cast<String, dynamic>())).input(),
+      dependencyType: map['dependencyType'] == null ? null : (map['dependencyType']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      isOptional: map['isOptional'] == null ? null : (map['isOptional']! as String).input(),
+      manualResolution: map['manualResolution'] == null ? null : (ManualResolutionPropertiesResponse.fromMap((map['manualResolution']! as Map).cast<String, dynamic>())).input(),
+      resolutionStatus: map['resolutionStatus'] == null ? null : (map['resolutionStatus']! as String).input(),
+      resolutionType: map['resolutionType'] == null ? null : (map['resolutionType']! as String).input(),
     );
   }
 }

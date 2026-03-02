@@ -41,10 +41,10 @@ class ClusterRoleBindingListRbacAuthorizationK8sIoV1alpha1Args {
 
   factory ClusterRoleBindingListRbacAuthorizationK8sIoV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return ClusterRoleBindingListRbacAuthorizationK8sIoV1alpha1Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       items: ((map['items'] as List).cast<ClusterRoleBindingResource>()).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -37,8 +37,8 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse {
 
   factory MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse(
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      events: map['events'] == null ? null : (pulumi.Input.decodeList<SyncMigrationDatabaseErrorEventResponse>(map['events'], (value) => SyncMigrationDatabaseErrorEventResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      events: map['events'] == null ? null : (pulumi.Input.decodeList<SyncMigrationDatabaseErrorEventResponse>(map['events']!, (value) => SyncMigrationDatabaseErrorEventResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       id: (map['id'] as String).input(),
       resultType: (map['resultType'] as String).input(),
     );

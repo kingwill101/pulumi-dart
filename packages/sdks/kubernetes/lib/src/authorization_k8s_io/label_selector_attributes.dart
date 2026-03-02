@@ -27,8 +27,8 @@ class LabelSelectorAttributes {
 
   factory LabelSelectorAttributes.fromMap(Map<String, dynamic> map) {
     return LabelSelectorAttributes(
-      rawSelector: map['rawSelector'] == null ? null : (map['rawSelector'] as String).input(),
-      requirements: map['requirements'] == null ? null : (pulumi.Input.decodeList<LabelSelectorRequirement>(map['requirements'], (value) => LabelSelectorRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rawSelector: map['rawSelector'] == null ? null : (map['rawSelector']! as String).input(),
+      requirements: map['requirements'] == null ? null : (pulumi.Input.decodeList<LabelSelectorRequirement>(map['requirements']!, (value) => LabelSelectorRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -69,7 +69,7 @@ class GetDatastoreResult {
       location: map['location'] as String,
       name: map['name'] as String,
       nfsDatastores: pulumi.Input.decodeList<GetDatastoreNfsDatastore>(map['nfsDatastores'], (value) => GetDatastoreNfsDatastore.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       state: map['state'] as String,
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,

@@ -25,7 +25,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPattern(
-      amazonS3BucketRegex: map['amazonS3BucketRegex'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex.fromMap((map['amazonS3BucketRegex'] as Map).cast<String, dynamic>())).input(),
+      amazonS3BucketRegex: map['amazonS3BucketRegex'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex.fromMap((map['amazonS3BucketRegex']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

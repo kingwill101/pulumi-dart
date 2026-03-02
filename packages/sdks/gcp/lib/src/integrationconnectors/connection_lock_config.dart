@@ -26,7 +26,7 @@ class ConnectionLockConfig {
   factory ConnectionLockConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionLockConfig(
       locked: (map['locked'] as bool).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class VirtualEndpointArgs {
 
   factory VirtualEndpointArgs.fromMap(Map<String, dynamic> map) {
     return VirtualEndpointArgs(
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      virtualEndpointName: map['virtualEndpointName'] == null ? null : (map['virtualEndpointName'] as String).input(),
+      virtualEndpointName: map['virtualEndpointName'] == null ? null : (map['virtualEndpointName']! as String).input(),
     );
   }
 }

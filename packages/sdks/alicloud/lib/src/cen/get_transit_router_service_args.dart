@@ -26,7 +26,7 @@ class GetTransitRouterServiceArgs {
 
   factory GetTransitRouterServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterServiceArgs(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption {
 
   factory DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption(
-      actionOnTimeout: map['actionOnTimeout'] == null ? null : (map['actionOnTimeout'] as String).input(),
-      waitTimeInMinutes: map['waitTimeInMinutes'] == null ? null : (map['waitTimeInMinutes'] as int).input(),
+      actionOnTimeout: map['actionOnTimeout'] == null ? null : ((map['actionOnTimeout'] as String).input()).input(),
+      waitTimeInMinutes: map['waitTimeInMinutes'] == null ? null : ((map['waitTimeInMinutes'] as int).input()).input(),
     );
   }
 }

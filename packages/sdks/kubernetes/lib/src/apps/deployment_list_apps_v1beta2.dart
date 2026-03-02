@@ -38,10 +38,10 @@ class DeploymentListAppsV1beta2 {
 
   factory DeploymentListAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return DeploymentListAppsV1beta2(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       items: (pulumi.Input.decodeList<DeploymentAppsV1beta2>(map['items'], (value) => DeploymentAppsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

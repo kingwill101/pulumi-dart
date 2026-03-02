@@ -58,12 +58,12 @@ class TopicIngestionDataSourceSettings {
 
   factory TopicIngestionDataSourceSettings.fromMap(Map<String, dynamic> map) {
     return TopicIngestionDataSourceSettings(
-      awsKinesis: map['awsKinesis'] == null ? null : (TopicIngestionDataSourceSettingsAwsKinesis.fromMap((map['awsKinesis'] as Map).cast<String, dynamic>())).input(),
-      awsMsk: map['awsMsk'] == null ? null : (TopicIngestionDataSourceSettingsAwsMsk.fromMap((map['awsMsk'] as Map).cast<String, dynamic>())).input(),
-      azureEventHubs: map['azureEventHubs'] == null ? null : (TopicIngestionDataSourceSettingsAzureEventHubs.fromMap((map['azureEventHubs'] as Map).cast<String, dynamic>())).input(),
-      cloudStorage: map['cloudStorage'] == null ? null : (TopicIngestionDataSourceSettingsCloudStorage.fromMap((map['cloudStorage'] as Map).cast<String, dynamic>())).input(),
-      confluentCloud: map['confluentCloud'] == null ? null : (TopicIngestionDataSourceSettingsConfluentCloud.fromMap((map['confluentCloud'] as Map).cast<String, dynamic>())).input(),
-      platformLogsSettings: map['platformLogsSettings'] == null ? null : (TopicIngestionDataSourceSettingsPlatformLogsSettings.fromMap((map['platformLogsSettings'] as Map).cast<String, dynamic>())).input(),
+      awsKinesis: map['awsKinesis'] == null ? null : (TopicIngestionDataSourceSettingsAwsKinesis.fromMap((map['awsKinesis']! as Map).cast<String, dynamic>())).input(),
+      awsMsk: map['awsMsk'] == null ? null : (TopicIngestionDataSourceSettingsAwsMsk.fromMap((map['awsMsk']! as Map).cast<String, dynamic>())).input(),
+      azureEventHubs: map['azureEventHubs'] == null ? null : (TopicIngestionDataSourceSettingsAzureEventHubs.fromMap((map['azureEventHubs']! as Map).cast<String, dynamic>())).input(),
+      cloudStorage: map['cloudStorage'] == null ? null : (TopicIngestionDataSourceSettingsCloudStorage.fromMap((map['cloudStorage']! as Map).cast<String, dynamic>())).input(),
+      confluentCloud: map['confluentCloud'] == null ? null : (TopicIngestionDataSourceSettingsConfluentCloud.fromMap((map['confluentCloud']! as Map).cast<String, dynamic>())).input(),
+      platformLogsSettings: map['platformLogsSettings'] == null ? null : (TopicIngestionDataSourceSettingsPlatformLogsSettings.fromMap((map['platformLogsSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

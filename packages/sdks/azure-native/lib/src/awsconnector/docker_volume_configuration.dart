@@ -41,11 +41,11 @@ class DockerVolumeConfiguration {
 
   factory DockerVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return DockerVolumeConfiguration(
-      autoprovision: map['autoprovision'] == null ? null : (map['autoprovision'] as bool).input(),
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      driverOpts: map['driverOpts'] == null ? null : (map['driverOpts']).input(),
-      labels: map['labels'] == null ? null : (map['labels']).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      autoprovision: map['autoprovision'] == null ? null : (map['autoprovision']! as bool).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      driverOpts: map['driverOpts'] == null ? null : (map['driverOpts']!).input(),
+      labels: map['labels'] == null ? null : (map['labels']!).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

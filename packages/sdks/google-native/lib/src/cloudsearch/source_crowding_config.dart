@@ -26,8 +26,8 @@ class SourceCrowdingConfig {
 
   factory SourceCrowdingConfig.fromMap(Map<String, dynamic> map) {
     return SourceCrowdingConfig(
-      numResults: map['numResults'] == null ? null : (map['numResults'] as int).input(),
-      numSuggestions: map['numSuggestions'] == null ? null : (map['numSuggestions'] as int).input(),
+      numResults: map['numResults'] == null ? null : (map['numResults']! as int).input(),
+      numSuggestions: map['numSuggestions'] == null ? null : (map['numSuggestions']! as int).input(),
     );
   }
 }

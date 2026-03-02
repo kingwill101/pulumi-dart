@@ -41,11 +41,11 @@ class DomainDevicesHostdevSubsysScsi {
 
   factory DomainDevicesHostdevSubsysScsi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysScsi(
-      rawIo: map['rawIo'] == null ? null : (map['rawIo'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      sgio: map['sgio'] == null ? null : (map['sgio'] as String).input(),
-      shareable: map['shareable'] == null ? null : (map['shareable'] as bool).input(),
-      source: map['source'] == null ? null : (DomainDevicesHostdevSubsysScsiSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      rawIo: map['rawIo'] == null ? null : (map['rawIo']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      sgio: map['sgio'] == null ? null : (map['sgio']! as String).input(),
+      shareable: map['shareable'] == null ? null : (map['shareable']! as bool).input(),
+      source: map['source'] == null ? null : (DomainDevicesHostdevSubsysScsiSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

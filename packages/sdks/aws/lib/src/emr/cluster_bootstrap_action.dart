@@ -30,7 +30,7 @@ class ClusterBootstrapAction {
 
   factory ClusterBootstrapAction.fromMap(Map<String, dynamic> map) {
     return ClusterBootstrapAction(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      args: map['args'] == null ? null : (((map['args'] as List).cast<String>()).input()).input(),
       name: (map['name'] as String).input(),
       path: (map['path'] as String).input(),
     );

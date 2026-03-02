@@ -27,7 +27,7 @@ class JobQueryDefaultDataset {
   factory JobQueryDefaultDataset.fromMap(Map<String, dynamic> map) {
     return JobQueryDefaultDataset(
       datasetId: (map['datasetId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
     );
   }
 }

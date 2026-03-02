@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2EntityId {
 
   factory GooglePrivacyDlpV2EntityId.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2EntityId(
-      field: map['field'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['field'] as Map).cast<String, dynamic>())).input(),
+      field: map['field'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['field']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

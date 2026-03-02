@@ -25,7 +25,7 @@ class RuleGroupRuleGroupReferenceSetsIpSetReference {
 
   factory RuleGroupRuleGroupReferenceSetsIpSetReference.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupReferenceSetsIpSetReference(
-      ipSetReferences: (pulumi.Input.decodeList<RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference>(map['ipSetReferences'], (value) => RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipSetReferences: (pulumi.Input.decodeList<RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference>(map['ipSetReferences']!, (value) => RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       key: (map['key'] as String).input(),
     );
   }

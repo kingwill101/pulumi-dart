@@ -46,11 +46,11 @@ class ReservedInstanceArgs {
 
   factory ReservedInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ReservedInstanceArgs(
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      instanceCount: map['instanceCount'] == null ? null : ((map['instanceCount'] as int).input()).input(),
       offeringId: (map['offeringId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reservationId: map['reservationId'] == null ? null : (map['reservationId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      reservationId: map['reservationId'] == null ? null : ((map['reservationId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

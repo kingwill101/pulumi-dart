@@ -27,7 +27,7 @@ class ClusterDatabaseEncryption {
 
   factory ClusterDatabaseEncryption.fromMap(Map<String, dynamic> map) {
     return ClusterDatabaseEncryption(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
       state: (map['state'] as String).input(),
     );
   }

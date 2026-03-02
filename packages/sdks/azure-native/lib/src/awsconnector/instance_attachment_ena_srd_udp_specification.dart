@@ -21,7 +21,7 @@ class InstanceAttachmentEnaSrdUdpSpecification {
 
   factory InstanceAttachmentEnaSrdUdpSpecification.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentEnaSrdUdpSpecification(
-      enaSrdUdpEnabled: map['enaSrdUdpEnabled'] == null ? null : (map['enaSrdUdpEnabled'] as bool).input(),
+      enaSrdUdpEnabled: map['enaSrdUdpEnabled'] == null ? null : (map['enaSrdUdpEnabled']! as bool).input(),
     );
   }
 }

@@ -40,10 +40,10 @@ class GetApisArgs {
 
   factory GetApisArgs.fromMap(Map<String, dynamic> map) {
     return GetApisArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocolType: map['protocolType'] == null ? null : (map['protocolType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      protocolType: map['protocolType'] == null ? null : ((map['protocolType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

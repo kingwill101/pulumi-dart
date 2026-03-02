@@ -45,11 +45,11 @@ class CommonFeatureSpecGkehubV1beta {
 
   factory CommonFeatureSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return CommonFeatureSpecGkehubV1beta(
-      anthosobservability: map['anthosobservability'] == null ? null : (AnthosObservabilityFeatureSpecGkehubV1beta.fromMap((map['anthosobservability'] as Map).cast<String, dynamic>())).input(),
-      appdevexperience: map['appdevexperience'] == null ? null : ((map['appdevexperience'] as Map).cast<String, dynamic>()).input(),
-      clusterupgrade: map['clusterupgrade'] == null ? null : (ClusterUpgradeFleetSpecGkehubV1beta.fromMap((map['clusterupgrade'] as Map).cast<String, dynamic>())).input(),
-      fleetobservability: map['fleetobservability'] == null ? null : (FleetObservabilityFeatureSpecGkehubV1beta.fromMap((map['fleetobservability'] as Map).cast<String, dynamic>())).input(),
-      multiclusteringress: map['multiclusteringress'] == null ? null : (MultiClusterIngressFeatureSpecGkehubV1beta.fromMap((map['multiclusteringress'] as Map).cast<String, dynamic>())).input(),
+      anthosobservability: map['anthosobservability'] == null ? null : (AnthosObservabilityFeatureSpecGkehubV1beta.fromMap((map['anthosobservability']! as Map).cast<String, dynamic>())).input(),
+      appdevexperience: map['appdevexperience'] == null ? null : ((map['appdevexperience']! as Map).cast<String, dynamic>()).input(),
+      clusterupgrade: map['clusterupgrade'] == null ? null : (ClusterUpgradeFleetSpecGkehubV1beta.fromMap((map['clusterupgrade']! as Map).cast<String, dynamic>())).input(),
+      fleetobservability: map['fleetobservability'] == null ? null : (FleetObservabilityFeatureSpecGkehubV1beta.fromMap((map['fleetobservability']! as Map).cast<String, dynamic>())).input(),
+      multiclusteringress: map['multiclusteringress'] == null ? null : (MultiClusterIngressFeatureSpecGkehubV1beta.fromMap((map['multiclusteringress']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

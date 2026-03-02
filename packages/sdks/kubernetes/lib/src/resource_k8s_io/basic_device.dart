@@ -31,8 +31,8 @@ class BasicDevice {
 
   factory BasicDevice.fromMap(Map<String, dynamic> map) {
     return BasicDevice(
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeMapValues<DeviceAttributeResourceK8sIoV1alpha3>(map['attributes'], (value) => DeviceAttributeResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      capacity: map['capacity'] == null ? null : ((map['capacity'] as Map).cast<String, String>()).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeMapValues<DeviceAttributeResourceK8sIoV1alpha3>(map['attributes']!, (value) => DeviceAttributeResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      capacity: map['capacity'] == null ? null : ((map['capacity']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -79,9 +79,9 @@ class GetMySQLSiteResult {
       masterSiteId: map['masterSiteId'] as String,
       migrateProjectId: map['migrateProjectId'] as String,
       name: map['name'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

@@ -34,9 +34,9 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilter {
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetFilter.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilter(
-      collection: map['collection'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection.fromMap((map['collection'] as Map).cast<String, dynamic>())).input(),
-      others: map['others'] == null ? null : ((map['others'] as Map).cast<String, dynamic>()).input(),
-      singleResource: map['singleResource'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource.fromMap((map['singleResource'] as Map).cast<String, dynamic>())).input(),
+      collection: map['collection'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection.fromMap((map['collection']! as Map).cast<String, dynamic>())).input(),
+      others: map['others'] == null ? null : ((map['others']! as Map).cast<String, dynamic>()).input(),
+      singleResource: map['singleResource'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource.fromMap((map['singleResource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -79,16 +79,16 @@ class GetDaprSubscriptionResult {
   factory GetDaprSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetDaprSubscriptionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      bulkSubscribe: map['bulkSubscribe'] == null ? null : DaprSubscriptionBulkSubscribeOptionsResponse.fromMap((map['bulkSubscribe'] as Map).cast<String, dynamic>()),
-      deadLetterTopic: map['deadLetterTopic'] == null ? null : map['deadLetterTopic'] as String,
+      bulkSubscribe: map['bulkSubscribe'] == null ? null : DaprSubscriptionBulkSubscribeOptionsResponse.fromMap((map['bulkSubscribe']! as Map).cast<String, dynamic>()),
+      deadLetterTopic: map['deadLetterTopic'] == null ? null : map['deadLetterTopic']! as String,
       id: map['id'] as String,
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as Map).cast<String, String>(),
       name: map['name'] as String,
-      pubsubName: map['pubsubName'] == null ? null : map['pubsubName'] as String,
-      routes: map['routes'] == null ? null : DaprSubscriptionRoutesResponse.fromMap((map['routes'] as Map).cast<String, dynamic>()),
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+      pubsubName: map['pubsubName'] == null ? null : map['pubsubName']! as String,
+      routes: map['routes'] == null ? null : DaprSubscriptionRoutesResponse.fromMap((map['routes']! as Map).cast<String, dynamic>()),
+      scopes: map['scopes'] == null ? null : (map['scopes']! as List).cast<String>(),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      topic: map['topic'] == null ? null : map['topic'] as String,
+      topic: map['topic'] == null ? null : map['topic']! as String,
       type: map['type'] as String,
     );
   }

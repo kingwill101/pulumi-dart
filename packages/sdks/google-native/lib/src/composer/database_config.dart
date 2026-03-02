@@ -26,8 +26,8 @@ class DatabaseConfig {
 
   factory DatabaseConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseConfig(
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

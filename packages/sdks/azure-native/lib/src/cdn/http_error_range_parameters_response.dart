@@ -26,8 +26,8 @@ class HttpErrorRangeParametersResponse {
 
   factory HttpErrorRangeParametersResponse.fromMap(Map<String, dynamic> map) {
     return HttpErrorRangeParametersResponse(
-      begin: map['begin'] == null ? null : (map['begin'] as int).input(),
-      end: map['end'] == null ? null : (map['end'] as int).input(),
+      begin: map['begin'] == null ? null : (map['begin']! as int).input(),
+      end: map['end'] == null ? null : (map['end']! as int).input(),
     );
   }
 }

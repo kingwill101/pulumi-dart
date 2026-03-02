@@ -95,15 +95,15 @@ class SecurityPolicyRuleArgs {
   factory SecurityPolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleArgs(
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (SecurityPolicyRuleHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      match: map['match'] == null ? null : (SecurityPolicyRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      preconfiguredWafConfig: map['preconfiguredWafConfig'] == null ? null : (SecurityPolicyRulePreconfiguredWafConfig.fromMap((map['preconfiguredWafConfig'] as Map).cast<String, dynamic>())).input(),
-      preview: map['preview'] == null ? null : (map['preview'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (SecurityPolicyRuleHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      match: map['match'] == null ? null : (SecurityPolicyRuleMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      preconfiguredWafConfig: map['preconfiguredWafConfig'] == null ? null : (SecurityPolicyRulePreconfiguredWafConfig.fromMap((map['preconfiguredWafConfig']! as Map).cast<String, dynamic>())).input(),
+      preview: map['preview'] == null ? null : (map['preview']! as bool).input(),
       priority: (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rateLimitOptions: map['rateLimitOptions'] == null ? null : (SecurityPolicyRuleRateLimitOptions.fromMap((map['rateLimitOptions'] as Map).cast<String, dynamic>())).input(),
-      redirectOptions: map['redirectOptions'] == null ? null : (SecurityPolicyRuleRedirectOptions.fromMap((map['redirectOptions'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rateLimitOptions: map['rateLimitOptions'] == null ? null : (SecurityPolicyRuleRateLimitOptions.fromMap((map['rateLimitOptions']! as Map).cast<String, dynamic>())).input(),
+      redirectOptions: map['redirectOptions'] == null ? null : (SecurityPolicyRuleRedirectOptions.fromMap((map['redirectOptions']! as Map).cast<String, dynamic>())).input(),
       securityPolicy: (map['securityPolicy'] as String).input(),
     );
   }

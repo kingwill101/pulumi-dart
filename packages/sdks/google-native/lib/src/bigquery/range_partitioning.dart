@@ -26,8 +26,8 @@ class RangePartitioning {
 
   factory RangePartitioning.fromMap(Map<String, dynamic> map) {
     return RangePartitioning(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      range: map['range'] == null ? null : (RangePartitioningRange.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      range: map['range'] == null ? null : (RangePartitioningRange.fromMap((map['range']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

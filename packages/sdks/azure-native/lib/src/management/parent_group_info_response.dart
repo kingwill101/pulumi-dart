@@ -31,9 +31,9 @@ class ParentGroupInfoResponse {
 
   factory ParentGroupInfoResponse.fromMap(Map<String, dynamic> map) {
     return ParentGroupInfoResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

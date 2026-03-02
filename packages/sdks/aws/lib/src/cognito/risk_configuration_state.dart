@@ -49,12 +49,12 @@ class RiskConfigurationState {
 
   factory RiskConfigurationState.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationState(
-      accountTakeoverRiskConfiguration: map['accountTakeoverRiskConfiguration'] == null ? null : (RiskConfigurationAccountTakeoverRiskConfiguration.fromMap((map['accountTakeoverRiskConfiguration'] as Map).cast<String, dynamic>())).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      compromisedCredentialsRiskConfiguration: map['compromisedCredentialsRiskConfiguration'] == null ? null : (RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap((map['compromisedCredentialsRiskConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      riskExceptionConfiguration: map['riskExceptionConfiguration'] == null ? null : (RiskConfigurationRiskExceptionConfiguration.fromMap((map['riskExceptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
+      accountTakeoverRiskConfiguration: map['accountTakeoverRiskConfiguration'] == null ? null : ((RiskConfigurationAccountTakeoverRiskConfiguration.fromMap((map['accountTakeoverRiskConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      clientId: map['clientId'] == null ? null : ((map['clientId'] as String).input()).input(),
+      compromisedCredentialsRiskConfiguration: map['compromisedCredentialsRiskConfiguration'] == null ? null : ((RiskConfigurationCompromisedCredentialsRiskConfiguration.fromMap((map['compromisedCredentialsRiskConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      riskExceptionConfiguration: map['riskExceptionConfiguration'] == null ? null : ((RiskConfigurationRiskExceptionConfiguration.fromMap((map['riskExceptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      userPoolId: map['userPoolId'] == null ? null : ((map['userPoolId'] as String).input()).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class HostedPrivateVirtualInterfaceAccepterState {
 
   factory HostedPrivateVirtualInterfaceAccepterState.fromMap(Map<String, dynamic> map) {
     return HostedPrivateVirtualInterfaceAccepterState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      dxGatewayId: map['dxGatewayId'] == null ? null : (map['dxGatewayId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      virtualInterfaceId: map['virtualInterfaceId'] == null ? null : (map['virtualInterfaceId'] as String).input(),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      dxGatewayId: map['dxGatewayId'] == null ? null : ((map['dxGatewayId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      virtualInterfaceId: map['virtualInterfaceId'] == null ? null : ((map['virtualInterfaceId'] as String).input()).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : ((map['vpnGatewayId'] as String).input()).input(),
     );
   }
 }

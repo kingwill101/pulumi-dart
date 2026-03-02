@@ -41,8 +41,8 @@ class BasicIpSetArgs {
     return BasicIpSetArgs(
       accelerateRegionId: (map['accelerateRegionId'] as String).input(),
       acceleratorId: (map['acceleratorId'] as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      ispType: map['ispType'] == null ? null : (map['ispType'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      ispType: map['ispType'] == null ? null : (map['ispType']! as String).input(),
     );
   }
 }

@@ -61,15 +61,15 @@ class RouteResponse {
 
   factory RouteResponse.fromMap(Map<String, dynamic> map) {
     return RouteResponse(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
       etag: (map['etag'] as String).input(),
       hasBgpOverride: (map['hasBgpOverride'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress']! as String).input(),
       nextHopType: (map['nextHopType'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

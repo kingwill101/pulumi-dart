@@ -21,7 +21,7 @@ class Secret {
 
   factory Secret.fromMap(Map<String, dynamic> map) {
     return Secret(
-      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion'] as String).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion']! as String).input(),
     );
   }
 }

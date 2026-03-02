@@ -92,20 +92,20 @@ class ScalingPlanScalingInstruction {
 
   factory ScalingPlanScalingInstruction.fromMap(Map<String, dynamic> map) {
     return ScalingPlanScalingInstruction(
-      customizedLoadMetricSpecification: map['customizedLoadMetricSpecification'] == null ? null : (ScalingPlanScalingInstructionCustomizedLoadMetricSpecification.fromMap((map['customizedLoadMetricSpecification'] as Map).cast<String, dynamic>())).input(),
-      disableDynamicScaling: map['disableDynamicScaling'] == null ? null : (map['disableDynamicScaling'] as bool).input(),
+      customizedLoadMetricSpecification: map['customizedLoadMetricSpecification'] == null ? null : ((ScalingPlanScalingInstructionCustomizedLoadMetricSpecification.fromMap((map['customizedLoadMetricSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      disableDynamicScaling: map['disableDynamicScaling'] == null ? null : ((map['disableDynamicScaling'] as bool).input()).input(),
       maxCapacity: (map['maxCapacity'] as int).input(),
       minCapacity: (map['minCapacity'] as int).input(),
-      predefinedLoadMetricSpecification: map['predefinedLoadMetricSpecification'] == null ? null : (ScalingPlanScalingInstructionPredefinedLoadMetricSpecification.fromMap((map['predefinedLoadMetricSpecification'] as Map).cast<String, dynamic>())).input(),
-      predictiveScalingMaxCapacityBehavior: map['predictiveScalingMaxCapacityBehavior'] == null ? null : (map['predictiveScalingMaxCapacityBehavior'] as String).input(),
-      predictiveScalingMaxCapacityBuffer: map['predictiveScalingMaxCapacityBuffer'] == null ? null : (map['predictiveScalingMaxCapacityBuffer'] as int).input(),
-      predictiveScalingMode: map['predictiveScalingMode'] == null ? null : (map['predictiveScalingMode'] as String).input(),
+      predefinedLoadMetricSpecification: map['predefinedLoadMetricSpecification'] == null ? null : ((ScalingPlanScalingInstructionPredefinedLoadMetricSpecification.fromMap((map['predefinedLoadMetricSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      predictiveScalingMaxCapacityBehavior: map['predictiveScalingMaxCapacityBehavior'] == null ? null : ((map['predictiveScalingMaxCapacityBehavior'] as String).input()).input(),
+      predictiveScalingMaxCapacityBuffer: map['predictiveScalingMaxCapacityBuffer'] == null ? null : ((map['predictiveScalingMaxCapacityBuffer'] as int).input()).input(),
+      predictiveScalingMode: map['predictiveScalingMode'] == null ? null : ((map['predictiveScalingMode'] as String).input()).input(),
       resourceId: (map['resourceId'] as String).input(),
       scalableDimension: (map['scalableDimension'] as String).input(),
-      scalingPolicyUpdateBehavior: map['scalingPolicyUpdateBehavior'] == null ? null : (map['scalingPolicyUpdateBehavior'] as String).input(),
-      scheduledActionBufferTime: map['scheduledActionBufferTime'] == null ? null : (map['scheduledActionBufferTime'] as int).input(),
+      scalingPolicyUpdateBehavior: map['scalingPolicyUpdateBehavior'] == null ? null : ((map['scalingPolicyUpdateBehavior'] as String).input()).input(),
+      scheduledActionBufferTime: map['scheduledActionBufferTime'] == null ? null : ((map['scheduledActionBufferTime'] as int).input()).input(),
       serviceNamespace: (map['serviceNamespace'] as String).input(),
-      targetTrackingConfigurations: (pulumi.Input.decodeList<ScalingPlanScalingInstructionTargetTrackingConfiguration>(map['targetTrackingConfigurations'], (value) => ScalingPlanScalingInstructionTargetTrackingConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetTrackingConfigurations: (pulumi.Input.decodeList<ScalingPlanScalingInstructionTargetTrackingConfiguration>(map['targetTrackingConfigurations']!, (value) => ScalingPlanScalingInstructionTargetTrackingConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

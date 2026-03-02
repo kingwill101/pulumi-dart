@@ -26,8 +26,8 @@ class GoogleCloudApigeeV1SecurityActionConditionConfig {
 
   factory GoogleCloudApigeeV1SecurityActionConditionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityActionConditionConfig(
-      botReasons: map['botReasons'] == null ? null : ((map['botReasons'] as List).cast<String>()).input(),
-      ipAddressRanges: map['ipAddressRanges'] == null ? null : ((map['ipAddressRanges'] as List).cast<String>()).input(),
+      botReasons: map['botReasons'] == null ? null : ((map['botReasons']! as List).cast<String>()).input(),
+      ipAddressRanges: map['ipAddressRanges'] == null ? null : ((map['ipAddressRanges']! as List).cast<String>()).input(),
     );
   }
 }

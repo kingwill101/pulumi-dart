@@ -64,15 +64,15 @@ class CustomDataIdentifierArgs {
 
   factory CustomDataIdentifierArgs.fromMap(Map<String, dynamic> map) {
     return CustomDataIdentifierArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ignoreWords: map['ignoreWords'] == null ? null : ((map['ignoreWords'] as List).cast<String>()).input(),
-      keywords: map['keywords'] == null ? null : ((map['keywords'] as List).cast<String>()).input(),
-      maximumMatchDistance: map['maximumMatchDistance'] == null ? null : (map['maximumMatchDistance'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      ignoreWords: map['ignoreWords'] == null ? null : (((map['ignoreWords'] as List).cast<String>()).input()).input(),
+      keywords: map['keywords'] == null ? null : (((map['keywords'] as List).cast<String>()).input()).input(),
+      maximumMatchDistance: map['maximumMatchDistance'] == null ? null : ((map['maximumMatchDistance'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      regex: map['regex'] == null ? null : ((map['regex'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

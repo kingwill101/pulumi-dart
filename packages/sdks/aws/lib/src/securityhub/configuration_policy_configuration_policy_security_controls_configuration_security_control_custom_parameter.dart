@@ -26,7 +26,7 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
 
   factory ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter.fromMap(Map<String, dynamic> map) {
     return ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter(
-      parameters: (pulumi.Input.decodeList<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter>(map['parameters'], (value) => ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: (pulumi.Input.decodeList<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter>(map['parameters']!, (value) => ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       securityControlId: (map['securityControlId'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class CFNScanEc2InstanceWithFindingsConfiguration {
 
   factory CFNScanEc2InstanceWithFindingsConfiguration.fromMap(Map<String, dynamic> map) {
     return CFNScanEc2InstanceWithFindingsConfiguration(
-      ebsVolumes: map['ebsVolumes'] == null ? null : (map['ebsVolumes'] as bool).input(),
+      ebsVolumes: map['ebsVolumes'] == null ? null : (map['ebsVolumes']! as bool).input(),
     );
   }
 }

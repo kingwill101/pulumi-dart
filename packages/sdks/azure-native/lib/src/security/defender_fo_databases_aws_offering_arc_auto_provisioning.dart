@@ -32,9 +32,9 @@ class DefenderFoDatabasesAwsOfferingArcAutoProvisioning {
 
   factory DefenderFoDatabasesAwsOfferingArcAutoProvisioning.fromMap(Map<String, dynamic> map) {
     return DefenderFoDatabasesAwsOfferingArcAutoProvisioning(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
-      configuration: map['configuration'] == null ? null : (ArcAutoProvisioningConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
+      configuration: map['configuration'] == null ? null : (ArcAutoProvisioningConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption {
 
   factory SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption.fromMap(Map<String, dynamic> map) {
     return SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption(
-      jobBookmarksEncryptionMode: map['jobBookmarksEncryptionMode'] == null ? null : (map['jobBookmarksEncryptionMode'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      jobBookmarksEncryptionMode: map['jobBookmarksEncryptionMode'] == null ? null : ((map['jobBookmarksEncryptionMode'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
     );
   }
 }

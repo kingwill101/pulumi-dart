@@ -41,11 +41,11 @@ class WorkerResourceComposerV1beta1 {
 
   factory WorkerResourceComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return WorkerResourceComposerV1beta1(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      maxCount: map['maxCount'] == null ? null : (map['maxCount'] as int).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb'] as double).input(),
-      minCount: map['minCount'] == null ? null : (map['minCount'] as int).input(),
-      storageGb: map['storageGb'] == null ? null : (map['storageGb'] as double).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
+      maxCount: map['maxCount'] == null ? null : (map['maxCount']! as int).input(),
+      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as double).input(),
+      minCount: map['minCount'] == null ? null : (map['minCount']! as int).input(),
+      storageGb: map['storageGb'] == null ? null : (map['storageGb']! as double).input(),
     );
   }
 }

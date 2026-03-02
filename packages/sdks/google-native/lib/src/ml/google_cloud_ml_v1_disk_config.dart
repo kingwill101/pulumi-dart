@@ -26,8 +26,8 @@ class GoogleCloudMlV1DiskConfig {
 
   factory GoogleCloudMlV1DiskConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1DiskConfig(
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb'] as int).input(),
-      bootDiskType: map['bootDiskType'] == null ? null : (map['bootDiskType'] as String).input(),
+      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb']! as int).input(),
+      bootDiskType: map['bootDiskType'] == null ? null : (map['bootDiskType']! as String).input(),
     );
   }
 }

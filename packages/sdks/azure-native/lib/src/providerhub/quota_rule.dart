@@ -31,9 +31,9 @@ class QuotaRule {
 
   factory QuotaRule.fromMap(Map<String, dynamic> map) {
     return QuotaRule(
-      locationRules: map['locationRules'] == null ? null : (pulumi.Input.decodeList<LocationQuotaRule>(map['locationRules'], (value) => LocationQuotaRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      quotaPolicy: map['quotaPolicy'] == null ? null : (map['quotaPolicy'] as String).input(),
-      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
+      locationRules: map['locationRules'] == null ? null : (pulumi.Input.decodeList<LocationQuotaRule>(map['locationRules']!, (value) => LocationQuotaRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      quotaPolicy: map['quotaPolicy'] == null ? null : (map['quotaPolicy']! as String).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures']! as List).cast<String>()).input(),
     );
   }
 }

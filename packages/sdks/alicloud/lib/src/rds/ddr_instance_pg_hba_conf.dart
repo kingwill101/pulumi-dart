@@ -62,9 +62,9 @@ class DdrInstancePgHbaConf {
     return DdrInstancePgHbaConf(
       address: (map['address'] as String).input(),
       database: (map['database'] as String).input(),
-      mask: map['mask'] == null ? null : (map['mask'] as String).input(),
+      mask: map['mask'] == null ? null : (map['mask']! as String).input(),
       method: (map['method'] as String).input(),
-      option: map['option'] == null ? null : (map['option'] as String).input(),
+      option: map['option'] == null ? null : (map['option']! as String).input(),
       priorityId: (map['priorityId'] as int).input(),
       type: (map['type'] as String).input(),
       user: (map['user'] as String).input(),

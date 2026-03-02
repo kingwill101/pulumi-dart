@@ -41,11 +41,11 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      desktopId: map['desktopId'] == null ? null : (map['desktopId'] as String).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
-      sourceDiskType: map['sourceDiskType'] == null ? null : (map['sourceDiskType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      desktopId: map['desktopId'] == null ? null : (map['desktopId']! as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName']! as String).input(),
+      sourceDiskType: map['sourceDiskType'] == null ? null : (map['sourceDiskType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

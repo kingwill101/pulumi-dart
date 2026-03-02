@@ -20,7 +20,7 @@ class ServiceHealthCheckCustomConfig {
 
   factory ServiceHealthCheckCustomConfig.fromMap(Map<String, dynamic> map) {
     return ServiceHealthCheckCustomConfig(
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : ((map['failureThreshold'] as int).input()).input(),
     );
   }
 }

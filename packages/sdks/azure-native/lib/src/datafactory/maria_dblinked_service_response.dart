@@ -100,22 +100,22 @@ class MariaDBLinkedServiceResponse {
 
   factory MariaDBLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return MariaDBLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString']).input(),
-      database: map['database'] == null ? null : (map['database']).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      driverVersion: map['driverVersion'] == null ? null : (map['driverVersion']).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port']).input(),
-      server: map['server'] == null ? null : (map['server']).input(),
-      sslMode: map['sslMode'] == null ? null : (map['sslMode']).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']!).input(),
+      database: map['database'] == null ? null : (map['database']!).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      driverVersion: map['driverVersion'] == null ? null : (map['driverVersion']!).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']!).input(),
+      server: map['server'] == null ? null : (map['server']!).input(),
+      sslMode: map['sslMode'] == null ? null : (map['sslMode']!).input(),
       type: (map['type'] as String).input(),
-      useSystemTrustStore: map['useSystemTrustStore'] == null ? null : (map['useSystemTrustStore']).input(),
-      username: map['username'] == null ? null : (map['username']).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      useSystemTrustStore: map['useSystemTrustStore'] == null ? null : (map['useSystemTrustStore']!).input(),
+      username: map['username'] == null ? null : (map['username']!).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

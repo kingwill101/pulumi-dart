@@ -31,9 +31,9 @@ class AvailabilityProperties {
 
   factory AvailabilityProperties.fromMap(Map<String, dynamic> map) {
     return AvailabilityProperties(
-      secondaryZone: map['secondaryZone'] == null ? null : (map['secondaryZone'] as int).input(),
-      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as int).input(),
+      secondaryZone: map['secondaryZone'] == null ? null : (map['secondaryZone']! as int).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as int).input(),
     );
   }
 }

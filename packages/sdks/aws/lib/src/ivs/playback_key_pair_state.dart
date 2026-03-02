@@ -53,13 +53,13 @@ class PlaybackKeyPairState {
 
   factory PlaybackKeyPairState.fromMap(Map<String, dynamic> map) {
     return PlaybackKeyPairState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      fingerprint: map['fingerprint'] == null ? null : ((map['fingerprint'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      publicKey: map['publicKey'] == null ? null : ((map['publicKey'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

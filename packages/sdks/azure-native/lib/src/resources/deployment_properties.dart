@@ -63,14 +63,14 @@ class DeploymentProperties {
 
   factory DeploymentProperties.fromMap(Map<String, dynamic> map) {
     return DeploymentProperties(
-      debugSetting: map['debugSetting'] == null ? null : (DebugSetting.fromMap((map['debugSetting'] as Map).cast<String, dynamic>())).input(),
-      expressionEvaluationOptions: map['expressionEvaluationOptions'] == null ? null : (ExpressionEvaluationOptions.fromMap((map['expressionEvaluationOptions'] as Map).cast<String, dynamic>())).input(),
+      debugSetting: map['debugSetting'] == null ? null : (DebugSetting.fromMap((map['debugSetting']! as Map).cast<String, dynamic>())).input(),
+      expressionEvaluationOptions: map['expressionEvaluationOptions'] == null ? null : (ExpressionEvaluationOptions.fromMap((map['expressionEvaluationOptions']! as Map).cast<String, dynamic>())).input(),
       mode: (DeploymentMode.fromValue(map['mode'] as String)).input(),
-      onErrorDeployment: map['onErrorDeployment'] == null ? null : (OnErrorDeployment.fromMap((map['onErrorDeployment'] as Map).cast<String, dynamic>())).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<DeploymentParameter>(map['parameters'], (value) => DeploymentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parametersLink: map['parametersLink'] == null ? null : (ParametersLink.fromMap((map['parametersLink'] as Map).cast<String, dynamic>())).input(),
-      template: map['template'] == null ? null : (map['template']).input(),
-      templateLink: map['templateLink'] == null ? null : (TemplateLink.fromMap((map['templateLink'] as Map).cast<String, dynamic>())).input(),
+      onErrorDeployment: map['onErrorDeployment'] == null ? null : (OnErrorDeployment.fromMap((map['onErrorDeployment']! as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<DeploymentParameter>(map['parameters']!, (value) => DeploymentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parametersLink: map['parametersLink'] == null ? null : (ParametersLink.fromMap((map['parametersLink']! as Map).cast<String, dynamic>())).input(),
+      template: map['template'] == null ? null : (map['template']!).input(),
+      templateLink: map['templateLink'] == null ? null : (TemplateLink.fromMap((map['templateLink']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

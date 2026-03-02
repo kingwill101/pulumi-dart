@@ -46,12 +46,12 @@ class GlobalSchemaState {
 
   factory GlobalSchemaState.fromMap(Map<String, dynamic> map) {
     return GlobalSchemaState(
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

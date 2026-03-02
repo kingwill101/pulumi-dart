@@ -62,14 +62,14 @@ class PowerBIOutputDataSourceResponse {
 
   factory PowerBIOutputDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return PowerBIOutputDataSourceResponse(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
-      tokenUserDisplayName: map['tokenUserDisplayName'] == null ? null : (map['tokenUserDisplayName'] as String).input(),
-      tokenUserPrincipalName: map['tokenUserPrincipalName'] == null ? null : (map['tokenUserPrincipalName'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
+      tokenUserDisplayName: map['tokenUserDisplayName'] == null ? null : (map['tokenUserDisplayName']! as String).input(),
+      tokenUserPrincipalName: map['tokenUserPrincipalName'] == null ? null : (map['tokenUserPrincipalName']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

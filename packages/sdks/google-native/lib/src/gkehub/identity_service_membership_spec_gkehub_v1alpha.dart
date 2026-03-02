@@ -22,7 +22,7 @@ class IdentityServiceMembershipSpecGkehubV1alpha {
 
   factory IdentityServiceMembershipSpecGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return IdentityServiceMembershipSpecGkehubV1alpha(
-      authMethods: map['authMethods'] == null ? null : (pulumi.Input.decodeList<IdentityServiceAuthMethodGkehubV1alpha>(map['authMethods'], (value) => IdentityServiceAuthMethodGkehubV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authMethods: map['authMethods'] == null ? null : (pulumi.Input.decodeList<IdentityServiceAuthMethodGkehubV1alpha>(map['authMethods']!, (value) => IdentityServiceAuthMethodGkehubV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

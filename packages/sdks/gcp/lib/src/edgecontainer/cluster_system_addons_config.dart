@@ -24,7 +24,7 @@ class ClusterSystemAddonsConfig {
 
   factory ClusterSystemAddonsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterSystemAddonsConfig(
-      ingress: map['ingress'] == null ? null : (ClusterSystemAddonsConfigIngress.fromMap((map['ingress'] as Map).cast<String, dynamic>())).input(),
+      ingress: map['ingress'] == null ? null : (ClusterSystemAddonsConfigIngress.fromMap((map['ingress']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

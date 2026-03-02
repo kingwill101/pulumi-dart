@@ -67,15 +67,15 @@ class ShareArgs {
 
   factory ShareArgs.fromMap(Map<String, dynamic> map) {
     return ShareArgs(
-      backup: map['backup'] == null ? null : (map['backup'] as String).input(),
-      capacityGb: map['capacityGb'] == null ? null : (map['capacityGb'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      backup: map['backup'] == null ? null : (map['backup']! as String).input(),
+      capacityGb: map['capacityGb'] == null ? null : (map['capacityGb']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mountName: map['mountName'] == null ? null : (map['mountName'] as String).input(),
-      nfsExportOptions: map['nfsExportOptions'] == null ? null : (pulumi.Input.decodeList<NfsExportOptionsFileV1beta1>(map['nfsExportOptions'], (value) => NfsExportOptionsFileV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mountName: map['mountName'] == null ? null : (map['mountName']! as String).input(),
+      nfsExportOptions: map['nfsExportOptions'] == null ? null : (pulumi.Input.decodeList<NfsExportOptionsFileV1beta1>(map['nfsExportOptions']!, (value) => NfsExportOptionsFileV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       shareId: (map['shareId'] as String).input(),
     );
   }

@@ -32,7 +32,7 @@ class GetInstanceGroupComputeV1Args {
   factory GetInstanceGroupComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupComputeV1Args(
       instanceGroup: (map['instanceGroup'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       zone: (map['zone'] as String).input(),
     );
   }

@@ -26,8 +26,8 @@ class SkuZoneDetailResponse {
 
   factory SkuZoneDetailResponse.fromMap(Map<String, dynamic> map) {
     return SkuZoneDetailResponse(
-      capabilities: map['capabilities'] == null ? null : (pulumi.Input.decodeList<SkuCapabilityResponse>(map['capabilities'], (value) => SkuCapabilityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : ((map['name'] as List).cast<String>()).input(),
+      capabilities: map['capabilities'] == null ? null : (pulumi.Input.decodeList<SkuCapabilityResponse>(map['capabilities']!, (value) => SkuCapabilityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name']! as List).cast<String>()).input(),
     );
   }
 }

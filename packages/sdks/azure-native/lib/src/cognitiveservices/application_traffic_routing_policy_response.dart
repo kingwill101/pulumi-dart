@@ -27,8 +27,8 @@ class ApplicationTrafficRoutingPolicyResponse {
 
   factory ApplicationTrafficRoutingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationTrafficRoutingPolicyResponse(
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<TrafficRoutingRuleResponse>(map['rules'], (value) => TrafficRoutingRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<TrafficRoutingRuleResponse>(map['rules']!, (value) => TrafficRoutingRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

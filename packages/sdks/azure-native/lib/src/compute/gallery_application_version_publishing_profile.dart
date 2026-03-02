@@ -86,19 +86,19 @@ class GalleryApplicationVersionPublishingProfile {
 
   factory GalleryApplicationVersionPublishingProfile.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationVersionPublishingProfile(
-      advancedSettings: map['advancedSettings'] == null ? null : ((map['advancedSettings'] as Map).cast<String, String>()).input(),
-      customActions: map['customActions'] == null ? null : (pulumi.Input.decodeList<GalleryApplicationCustomAction>(map['customActions'], (value) => GalleryApplicationCustomAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableHealthCheck: map['enableHealthCheck'] == null ? null : (map['enableHealthCheck'] as bool).input(),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
-      manageActions: map['manageActions'] == null ? null : (UserArtifactManage.fromMap((map['manageActions'] as Map).cast<String, dynamic>())).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
-      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode'] as String).input(),
-      settings: map['settings'] == null ? null : (UserArtifactSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      advancedSettings: map['advancedSettings'] == null ? null : ((map['advancedSettings']! as Map).cast<String, String>()).input(),
+      customActions: map['customActions'] == null ? null : (pulumi.Input.decodeList<GalleryApplicationCustomAction>(map['customActions']!, (value) => GalleryApplicationCustomAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableHealthCheck: map['enableHealthCheck'] == null ? null : (map['enableHealthCheck']! as bool).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest']! as bool).input(),
+      manageActions: map['manageActions'] == null ? null : (UserArtifactManage.fromMap((map['manageActions']! as Map).cast<String, dynamic>())).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as int).input(),
+      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode']! as String).input(),
+      settings: map['settings'] == null ? null : (UserArtifactSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
       source: (UserArtifactSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
-      targetExtendedLocations: map['targetExtendedLocations'] == null ? null : (pulumi.Input.decodeList<GalleryTargetExtendedLocation>(map['targetExtendedLocations'], (value) => GalleryTargetExtendedLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegion>(map['targetRegions'], (value) => TargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
+      targetExtendedLocations: map['targetExtendedLocations'] == null ? null : (pulumi.Input.decodeList<GalleryTargetExtendedLocation>(map['targetExtendedLocations']!, (value) => GalleryTargetExtendedLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegion>(map['targetRegions']!, (value) => TargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

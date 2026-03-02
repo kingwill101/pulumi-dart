@@ -20,7 +20,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig 
 
   factory AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig(
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

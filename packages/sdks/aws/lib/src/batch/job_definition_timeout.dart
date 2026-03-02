@@ -20,7 +20,7 @@ class JobDefinitionTimeout {
 
   factory JobDefinitionTimeout.fromMap(Map<String, dynamic> map) {
     return JobDefinitionTimeout(
-      attemptDurationSeconds: map['attemptDurationSeconds'] == null ? null : (map['attemptDurationSeconds'] as int).input(),
+      attemptDurationSeconds: map['attemptDurationSeconds'] == null ? null : ((map['attemptDurationSeconds'] as int).input()).input(),
     );
   }
 }

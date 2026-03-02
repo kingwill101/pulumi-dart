@@ -40,9 +40,9 @@ class FabricAgentArgs {
 
   factory FabricAgentArgs.fromMap(Map<String, dynamic> map) {
     return FabricAgentArgs(
-      fabricAgentName: map['fabricAgentName'] == null ? null : (map['fabricAgentName'] as String).input(),
+      fabricAgentName: map['fabricAgentName'] == null ? null : (map['fabricAgentName']! as String).input(),
       fabricName: (map['fabricName'] as String).input(),
-      properties: map['properties'] == null ? null : (FabricAgentModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (FabricAgentModelProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -47,12 +47,12 @@ class ChannelFacebookState {
 
   factory ChannelFacebookState.fromMap(Map<String, dynamic> map) {
     return ChannelFacebookState(
-      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
-      facebookApplicationId: map['facebookApplicationId'] == null ? null : (map['facebookApplicationId'] as String).input(),
-      facebookApplicationSecret: map['facebookApplicationSecret'] == null ? null : (map['facebookApplicationSecret'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<ChannelFacebookPage>(map['pages'], (value) => ChannelFacebookPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      botName: map['botName'] == null ? null : (map['botName']! as String).input(),
+      facebookApplicationId: map['facebookApplicationId'] == null ? null : (map['facebookApplicationId']! as String).input(),
+      facebookApplicationSecret: map['facebookApplicationSecret'] == null ? null : (map['facebookApplicationSecret']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<ChannelFacebookPage>(map['pages']!, (value) => ChannelFacebookPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

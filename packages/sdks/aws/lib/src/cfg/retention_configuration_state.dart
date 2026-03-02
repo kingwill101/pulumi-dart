@@ -31,9 +31,9 @@ class RetentionConfigurationState {
 
   factory RetentionConfigurationState.fromMap(Map<String, dynamic> map) {
     return RetentionConfigurationState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : (map['retentionPeriodInDays'] as int).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : ((map['retentionPeriodInDays'] as int).input()).input(),
     );
   }
 }

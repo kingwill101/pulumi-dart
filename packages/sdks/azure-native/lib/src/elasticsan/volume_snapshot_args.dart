@@ -48,7 +48,7 @@ class VolumeSnapshotArgs {
       creationData: (SnapshotCreationData.fromMap((map['creationData'] as Map).cast<String, dynamic>())).input(),
       elasticSanName: (map['elasticSanName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName']! as String).input(),
       volumeGroupName: (map['volumeGroupName'] as String).input(),
     );
   }

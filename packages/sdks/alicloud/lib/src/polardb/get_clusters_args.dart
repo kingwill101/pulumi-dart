@@ -51,12 +51,12 @@ class GetClustersArgs {
 
   factory GetClustersArgs.fromMap(Map<String, dynamic> map) {
     return GetClustersArgs(
-      dbType: map['dbType'] == null ? null : (map['dbType'] as String).input(),
-      descriptionRegex: map['descriptionRegex'] == null ? null : (map['descriptionRegex'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      dbType: map['dbType'] == null ? null : (map['dbType']! as String).input(),
+      descriptionRegex: map['descriptionRegex'] == null ? null : (map['descriptionRegex']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -45,8 +45,8 @@ class OriginClientCertificateArgs {
   factory OriginClientCertificateArgs.fromMap(Map<String, dynamic> map) {
     return OriginClientCertificateArgs(
       certificate: (map['certificate'] as String).input(),
-      hostnames: map['hostnames'] == null ? null : ((map['hostnames'] as List).cast<String>()).input(),
-      originClientCertificateName: map['originClientCertificateName'] == null ? null : (map['originClientCertificateName'] as String).input(),
+      hostnames: map['hostnames'] == null ? null : ((map['hostnames']! as List).cast<String>()).input(),
+      originClientCertificateName: map['originClientCertificateName'] == null ? null : (map['originClientCertificateName']! as String).input(),
       privateKey: (map['privateKey'] as String).input(),
       siteId: (map['siteId'] as String).input(),
     );

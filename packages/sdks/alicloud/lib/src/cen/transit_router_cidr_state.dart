@@ -48,12 +48,12 @@ class TransitRouterCidrState {
 
   factory TransitRouterCidrState.fromMap(Map<String, dynamic> map) {
     return TransitRouterCidrState(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      publishCidrRoute: map['publishCidrRoute'] == null ? null : (map['publishCidrRoute'] as bool).input(),
-      transitRouterCidrId: map['transitRouterCidrId'] == null ? null : (map['transitRouterCidrId'] as String).input(),
-      transitRouterCidrName: map['transitRouterCidrName'] == null ? null : (map['transitRouterCidrName'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      publishCidrRoute: map['publishCidrRoute'] == null ? null : (map['publishCidrRoute']! as bool).input(),
+      transitRouterCidrId: map['transitRouterCidrId'] == null ? null : (map['transitRouterCidrId']! as String).input(),
+      transitRouterCidrName: map['transitRouterCidrName'] == null ? null : (map['transitRouterCidrName']! as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
     );
   }
 }

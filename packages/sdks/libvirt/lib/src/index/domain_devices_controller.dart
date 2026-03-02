@@ -83,18 +83,18 @@ class DomainDevicesController {
 
   factory DomainDevicesController.fromMap(Map<String, dynamic> map) {
     return DomainDevicesController(
-      acpi: map['acpi'] == null ? null : (DomainDevicesControllerAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesControllerAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      driver: map['driver'] == null ? null : (DomainDevicesControllerDriver.fromMap((map['driver'] as Map).cast<String, dynamic>())).input(),
-      index: map['index'] == null ? null : (map['index'] as double).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      nvme: map['nvme'] == null ? null : (DomainDevicesControllerNvme.fromMap((map['nvme'] as Map).cast<String, dynamic>())).input(),
-      pci: map['pci'] == null ? null : (DomainDevicesControllerPci.fromMap((map['pci'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesControllerAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesControllerAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      driver: map['driver'] == null ? null : (DomainDevicesControllerDriver.fromMap((map['driver']! as Map).cast<String, dynamic>())).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      nvme: map['nvme'] == null ? null : (DomainDevicesControllerNvme.fromMap((map['nvme']! as Map).cast<String, dynamic>())).input(),
+      pci: map['pci'] == null ? null : (DomainDevicesControllerPci.fromMap((map['pci']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      usb: map['usb'] == null ? null : (DomainDevicesControllerUsb.fromMap((map['usb'] as Map).cast<String, dynamic>())).input(),
-      virtIoSerial: map['virtIoSerial'] == null ? null : (DomainDevicesControllerVirtIoSerial.fromMap((map['virtIoSerial'] as Map).cast<String, dynamic>())).input(),
-      xenBus: map['xenBus'] == null ? null : (DomainDevicesControllerXenBus.fromMap((map['xenBus'] as Map).cast<String, dynamic>())).input(),
+      usb: map['usb'] == null ? null : (DomainDevicesControllerUsb.fromMap((map['usb']! as Map).cast<String, dynamic>())).input(),
+      virtIoSerial: map['virtIoSerial'] == null ? null : (DomainDevicesControllerVirtIoSerial.fromMap((map['virtIoSerial']! as Map).cast<String, dynamic>())).input(),
+      xenBus: map['xenBus'] == null ? null : (DomainDevicesControllerXenBus.fromMap((map['xenBus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

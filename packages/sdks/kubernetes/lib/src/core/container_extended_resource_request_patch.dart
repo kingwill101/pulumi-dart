@@ -31,9 +31,9 @@ class ContainerExtendedResourceRequestPatch {
 
   factory ContainerExtendedResourceRequestPatch.fromMap(Map<String, dynamic> map) {
     return ContainerExtendedResourceRequestPatch(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      requestName: map['requestName'] == null ? null : (map['requestName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      requestName: map['requestName'] == null ? null : (map['requestName']! as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
     );
   }
 }

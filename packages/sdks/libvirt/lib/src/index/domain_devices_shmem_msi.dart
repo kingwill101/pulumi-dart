@@ -30,9 +30,9 @@ class DomainDevicesShmemMsi {
 
   factory DomainDevicesShmemMsi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesShmemMsi(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
-      ioEventFd: map['ioEventFd'] == null ? null : (map['ioEventFd'] as String).input(),
-      vectors: map['vectors'] == null ? null : (map['vectors'] as double).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
+      ioEventFd: map['ioEventFd'] == null ? null : (map['ioEventFd']! as String).input(),
+      vectors: map['vectors'] == null ? null : (map['vectors']! as double).input(),
     );
   }
 }

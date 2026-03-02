@@ -25,8 +25,8 @@ class FleetScalingConfigurationTargetTrackingScalingConfig {
 
   factory FleetScalingConfigurationTargetTrackingScalingConfig.fromMap(Map<String, dynamic> map) {
     return FleetScalingConfigurationTargetTrackingScalingConfig(
-      metricType: map['metricType'] == null ? null : (map['metricType'] as String).input(),
-      targetValue: map['targetValue'] == null ? null : (map['targetValue'] as double).input(),
+      metricType: map['metricType'] == null ? null : ((map['metricType'] as String).input()).input(),
+      targetValue: map['targetValue'] == null ? null : ((map['targetValue'] as double).input()).input(),
     );
   }
 }

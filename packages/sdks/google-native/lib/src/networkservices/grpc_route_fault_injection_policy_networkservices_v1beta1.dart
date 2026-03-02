@@ -28,8 +28,8 @@ class GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1 {
 
   factory GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1(
-      abort: map['abort'] == null ? null : (GrpcRouteFaultInjectionPolicyAbortNetworkservicesV1beta1.fromMap((map['abort'] as Map).cast<String, dynamic>())).input(),
-      delay: map['delay'] == null ? null : (GrpcRouteFaultInjectionPolicyDelayNetworkservicesV1beta1.fromMap((map['delay'] as Map).cast<String, dynamic>())).input(),
+      abort: map['abort'] == null ? null : (GrpcRouteFaultInjectionPolicyAbortNetworkservicesV1beta1.fromMap((map['abort']! as Map).cast<String, dynamic>())).input(),
+      delay: map['delay'] == null ? null : (GrpcRouteFaultInjectionPolicyDelayNetworkservicesV1beta1.fromMap((map['delay']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class RuntimeProtectionConfiguration {
 
   factory RuntimeProtectionConfiguration.fromMap(Map<String, dynamic> map) {
     return RuntimeProtectionConfiguration(
-      enforcementLevel: map['enforcementLevel'] == null ? null : (map['enforcementLevel'] as String).input(),
+      enforcementLevel: map['enforcementLevel'] == null ? null : (map['enforcementLevel']! as String).input(),
     );
   }
 }

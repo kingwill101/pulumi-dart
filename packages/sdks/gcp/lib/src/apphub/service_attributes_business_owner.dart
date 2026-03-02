@@ -25,7 +25,7 @@ class ServiceAttributesBusinessOwner {
 
   factory ServiceAttributesBusinessOwner.fromMap(Map<String, dynamic> map) {
     return ServiceAttributesBusinessOwner(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       email: (map['email'] as String).input(),
     );
   }

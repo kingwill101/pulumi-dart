@@ -33,7 +33,7 @@ class GetRuntimeVersionsResult {
     return GetRuntimeVersionsResult(
       id: map['id'] as String,
       region: map['region'] as String,
-      runtimeVersions: pulumi.Input.decodeList<GetRuntimeVersionsRuntimeVersion>(map['runtimeVersions'], (value) => GetRuntimeVersionsRuntimeVersion.fromMap((value as Map).cast<String, dynamic>())),
+      runtimeVersions: pulumi.Input.decodeList<GetRuntimeVersionsRuntimeVersion>(map['runtimeVersions']!, (value) => GetRuntimeVersionsRuntimeVersion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

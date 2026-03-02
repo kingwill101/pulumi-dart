@@ -31,9 +31,9 @@ class QosPolicyOverrides {
 
   factory QosPolicyOverrides.fromMap(Map<String, dynamic> map) {
     return QosPolicyOverrides(
-      bandwidthPercentageSMB: map['bandwidthPercentageSMB'] == null ? null : (map['bandwidthPercentageSMB'] as String).input(),
-      priorityValue8021ActionCluster: map['priorityValue8021ActionCluster'] == null ? null : (map['priorityValue8021ActionCluster'] as String).input(),
-      priorityValue8021ActionSMB: map['priorityValue8021ActionSMB'] == null ? null : (map['priorityValue8021ActionSMB'] as String).input(),
+      bandwidthPercentageSMB: map['bandwidthPercentageSMB'] == null ? null : (map['bandwidthPercentageSMB']! as String).input(),
+      priorityValue8021ActionCluster: map['priorityValue8021ActionCluster'] == null ? null : (map['priorityValue8021ActionCluster']! as String).input(),
+      priorityValue8021ActionSMB: map['priorityValue8021ActionSMB'] == null ? null : (map['priorityValue8021ActionSMB']! as String).input(),
     );
   }
 }

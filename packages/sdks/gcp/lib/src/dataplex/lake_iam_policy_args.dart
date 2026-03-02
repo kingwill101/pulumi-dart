@@ -44,9 +44,9 @@ class LakeIamPolicyArgs {
   factory LakeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LakeIamPolicyArgs(
       lake: (map['lake'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

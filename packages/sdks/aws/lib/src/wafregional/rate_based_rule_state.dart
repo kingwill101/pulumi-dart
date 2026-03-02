@@ -62,15 +62,15 @@ class RateBasedRuleState {
 
   factory RateBasedRuleState.fromMap(Map<String, dynamic> map) {
     return RateBasedRuleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      predicates: map['predicates'] == null ? null : (pulumi.Input.decodeList<RateBasedRulePredicate>(map['predicates'], (value) => RateBasedRulePredicate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rateKey: map['rateKey'] == null ? null : (map['rateKey'] as String).input(),
-      rateLimit: map['rateLimit'] == null ? null : (map['rateLimit'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      metricName: map['metricName'] == null ? null : ((map['metricName'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      predicates: map['predicates'] == null ? null : ((pulumi.Input.decodeList<RateBasedRulePredicate>(map['predicates']!, (value) => RateBasedRulePredicate.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      rateKey: map['rateKey'] == null ? null : ((map['rateKey'] as String).input()).input(),
+      rateLimit: map['rateLimit'] == null ? null : ((map['rateLimit'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

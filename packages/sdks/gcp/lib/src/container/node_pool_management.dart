@@ -25,8 +25,8 @@ class NodePoolManagement {
 
   factory NodePoolManagement.fromMap(Map<String, dynamic> map) {
     return NodePoolManagement(
-      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair'] as bool).input(),
-      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade'] as bool).input(),
+      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair']! as bool).input(),
+      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade']! as bool).input(),
     );
   }
 }

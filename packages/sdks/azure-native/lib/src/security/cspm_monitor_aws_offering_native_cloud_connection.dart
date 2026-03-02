@@ -21,7 +21,7 @@ class CspmMonitorAwsOfferingNativeCloudConnection {
 
   factory CspmMonitorAwsOfferingNativeCloudConnection.fromMap(Map<String, dynamic> map) {
     return CspmMonitorAwsOfferingNativeCloudConnection(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class PlanMemberArgs {
 
   factory PlanMemberArgs.fromMap(Map<String, dynamic> map) {
     return PlanMemberArgs(
-      memberId: map['memberId'] == null ? null : (map['memberId'] as String).input(),
-      memberName: map['memberName'] == null ? null : (map['memberName'] as String).input(),
-      memberType: map['memberType'] == null ? null : (map['memberType'] as String).input(),
+      memberId: map['memberId'] == null ? null : (map['memberId']! as String).input(),
+      memberName: map['memberName'] == null ? null : (map['memberName']! as String).input(),
+      memberType: map['memberType'] == null ? null : (map['memberType']! as String).input(),
       planName: (map['planName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

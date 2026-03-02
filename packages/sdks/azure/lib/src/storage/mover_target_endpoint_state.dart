@@ -41,11 +41,11 @@ class MoverTargetEndpointState {
 
   factory MoverTargetEndpointState.fromMap(Map<String, dynamic> map) {
     return MoverTargetEndpointState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName'] as String).input(),
-      storageMoverId: map['storageMoverId'] == null ? null : (map['storageMoverId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName']! as String).input(),
+      storageMoverId: map['storageMoverId'] == null ? null : (map['storageMoverId']! as String).input(),
     );
   }
 }

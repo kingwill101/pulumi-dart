@@ -78,17 +78,17 @@ class DistributionTenantArgs {
 
   factory DistributionTenantArgs.fromMap(Map<String, dynamic> map) {
     return DistributionTenantArgs(
-      connectionGroupId: map['connectionGroupId'] == null ? null : (map['connectionGroupId'] as String).input(),
-      customizations: map['customizations'] == null ? null : (DistributionTenantCustomizations.fromMap((map['customizations'] as Map).cast<String, dynamic>())).input(),
+      connectionGroupId: map['connectionGroupId'] == null ? null : ((map['connectionGroupId'] as String).input()).input(),
+      customizations: map['customizations'] == null ? null : ((DistributionTenantCustomizations.fromMap((map['customizations']! as Map).cast<String, dynamic>())).input()).input(),
       distributionId: (map['distributionId'] as String).input(),
-      domains: map['domains'] == null ? null : (pulumi.Input.decodeList<DistributionTenantDomain>(map['domains'], (value) => DistributionTenantDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      managedCertificateRequest: map['managedCertificateRequest'] == null ? null : (DistributionTenantManagedCertificateRequest.fromMap((map['managedCertificateRequest'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<DistributionTenantParameter>(map['parameters'], (value) => DistributionTenantParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (DistributionTenantTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      waitForDeployment: map['waitForDeployment'] == null ? null : (map['waitForDeployment'] as bool).input(),
+      domains: map['domains'] == null ? null : ((pulumi.Input.decodeList<DistributionTenantDomain>(map['domains']!, (value) => DistributionTenantDomain.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      managedCertificateRequest: map['managedCertificateRequest'] == null ? null : ((DistributionTenantManagedCertificateRequest.fromMap((map['managedCertificateRequest']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<DistributionTenantParameter>(map['parameters']!, (value) => DistributionTenantParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DistributionTenantTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      waitForDeployment: map['waitForDeployment'] == null ? null : ((map['waitForDeployment'] as bool).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class RepositoryConfig {
 
   factory RepositoryConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryConfig(
-      pypiRepositoryConfig: map['pypiRepositoryConfig'] == null ? null : (PyPiRepositoryConfig.fromMap((map['pypiRepositoryConfig'] as Map).cast<String, dynamic>())).input(),
+      pypiRepositoryConfig: map['pypiRepositoryConfig'] == null ? null : (PyPiRepositoryConfig.fromMap((map['pypiRepositoryConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class LogtailConfigOutputDetail {
 
   factory LogtailConfigOutputDetail.fromMap(Map<String, dynamic> map) {
     return LogtailConfigOutputDetail(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      logstoreName: map['logstoreName'] == null ? null : (map['logstoreName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      logstoreName: map['logstoreName'] == null ? null : (map['logstoreName']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

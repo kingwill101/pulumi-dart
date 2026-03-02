@@ -27,8 +27,8 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes {
 
   factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes(
-      gatewayServiceMesh: map['gatewayServiceMesh'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh.fromMap((map['gatewayServiceMesh'] as Map).cast<String, dynamic>())).input(),
-      serviceNetworking: map['serviceNetworking'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking.fromMap((map['serviceNetworking'] as Map).cast<String, dynamic>())).input(),
+      gatewayServiceMesh: map['gatewayServiceMesh'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh.fromMap((map['gatewayServiceMesh']! as Map).cast<String, dynamic>())).input(),
+      serviceNetworking: map['serviceNetworking'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking.fromMap((map['serviceNetworking']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

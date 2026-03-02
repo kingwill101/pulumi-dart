@@ -54,10 +54,10 @@ class GetResponseHeadersPolicyCorsConfig {
   factory GetResponseHeadersPolicyCorsConfig.fromMap(Map<String, dynamic> map) {
     return GetResponseHeadersPolicyCorsConfig(
       accessControlAllowCredentials: (map['accessControlAllowCredentials'] as bool).input(),
-      accessControlAllowHeaders: (pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfigAccessControlAllowHeader>(map['accessControlAllowHeaders'], (value) => GetResponseHeadersPolicyCorsConfigAccessControlAllowHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      accessControlAllowMethods: (pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfigAccessControlAllowMethod>(map['accessControlAllowMethods'], (value) => GetResponseHeadersPolicyCorsConfigAccessControlAllowMethod.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      accessControlAllowOrigins: (pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfigAccessControlAllowOrigin>(map['accessControlAllowOrigins'], (value) => GetResponseHeadersPolicyCorsConfigAccessControlAllowOrigin.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      accessControlExposeHeaders: (pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader>(map['accessControlExposeHeaders'], (value) => GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessControlAllowHeaders: (pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfigAccessControlAllowHeader>(map['accessControlAllowHeaders']!, (value) => GetResponseHeadersPolicyCorsConfigAccessControlAllowHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessControlAllowMethods: (pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfigAccessControlAllowMethod>(map['accessControlAllowMethods']!, (value) => GetResponseHeadersPolicyCorsConfigAccessControlAllowMethod.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessControlAllowOrigins: (pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfigAccessControlAllowOrigin>(map['accessControlAllowOrigins']!, (value) => GetResponseHeadersPolicyCorsConfigAccessControlAllowOrigin.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessControlExposeHeaders: (pulumi.Input.decodeList<GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader>(map['accessControlExposeHeaders']!, (value) => GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
       accessControlMaxAgeSec: (map['accessControlMaxAgeSec'] as int).input(),
       originOverride: (map['originOverride'] as bool).input(),
     );

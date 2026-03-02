@@ -31,9 +31,9 @@ class MetricValueStatusPatchAutoscalingV2beta2 {
 
   factory MetricValueStatusPatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return MetricValueStatusPatchAutoscalingV2beta2(
-      averageUtilization: map['averageUtilization'] == null ? null : (map['averageUtilization'] as int).input(),
-      averageValue: map['averageValue'] == null ? null : (map['averageValue'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      averageUtilization: map['averageUtilization'] == null ? null : (map['averageUtilization']! as int).input(),
+      averageValue: map['averageValue'] == null ? null : (map['averageValue']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

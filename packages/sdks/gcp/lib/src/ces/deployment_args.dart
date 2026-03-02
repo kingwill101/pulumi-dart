@@ -60,7 +60,7 @@ class DeploymentArgs {
       channelProfile: (DeploymentChannelProfile.fromMap((map['channelProfile'] as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

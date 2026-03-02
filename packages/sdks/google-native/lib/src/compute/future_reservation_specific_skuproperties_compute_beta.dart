@@ -31,9 +31,9 @@ class FutureReservationSpecificSKUPropertiesComputeBeta {
 
   factory FutureReservationSpecificSKUPropertiesComputeBeta.fromMap(Map<String, dynamic> map) {
     return FutureReservationSpecificSKUPropertiesComputeBeta(
-      instanceProperties: map['instanceProperties'] == null ? null : (AllocationSpecificSKUAllocationReservedInstancePropertiesComputeBeta.fromMap((map['instanceProperties'] as Map).cast<String, dynamic>())).input(),
-      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null ? null : (map['sourceInstanceTemplate'] as String).input(),
-      totalCount: map['totalCount'] == null ? null : (map['totalCount'] as String).input(),
+      instanceProperties: map['instanceProperties'] == null ? null : (AllocationSpecificSKUAllocationReservedInstancePropertiesComputeBeta.fromMap((map['instanceProperties']! as Map).cast<String, dynamic>())).input(),
+      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null ? null : (map['sourceInstanceTemplate']! as String).input(),
+      totalCount: map['totalCount'] == null ? null : (map['totalCount']! as String).input(),
     );
   }
 }

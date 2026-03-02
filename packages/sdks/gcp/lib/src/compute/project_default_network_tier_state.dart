@@ -30,8 +30,8 @@ class ProjectDefaultNetworkTierState {
 
   factory ProjectDefaultNetworkTierState.fromMap(Map<String, dynamic> map) {
     return ProjectDefaultNetworkTierState(
-      networkTier: map['networkTier'] == null ? null : (map['networkTier'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      networkTier: map['networkTier'] == null ? null : (map['networkTier']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

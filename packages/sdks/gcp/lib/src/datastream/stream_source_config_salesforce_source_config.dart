@@ -34,8 +34,8 @@ class StreamSourceConfigSalesforceSourceConfig {
 
   factory StreamSourceConfigSalesforceSourceConfig.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSalesforceSourceConfig(
-      excludeObjects: map['excludeObjects'] == null ? null : (StreamSourceConfigSalesforceSourceConfigExcludeObjects.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>())).input(),
-      includeObjects: map['includeObjects'] == null ? null : (StreamSourceConfigSalesforceSourceConfigIncludeObjects.fromMap((map['includeObjects'] as Map).cast<String, dynamic>())).input(),
+      excludeObjects: map['excludeObjects'] == null ? null : (StreamSourceConfigSalesforceSourceConfigExcludeObjects.fromMap((map['excludeObjects']! as Map).cast<String, dynamic>())).input(),
+      includeObjects: map['includeObjects'] == null ? null : (StreamSourceConfigSalesforceSourceConfigIncludeObjects.fromMap((map['includeObjects']! as Map).cast<String, dynamic>())).input(),
       pollingInterval: (map['pollingInterval'] as String).input(),
     );
   }

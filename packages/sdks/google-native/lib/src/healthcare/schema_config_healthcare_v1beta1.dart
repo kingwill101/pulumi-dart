@@ -33,9 +33,9 @@ class SchemaConfigHealthcareV1beta1 {
 
   factory SchemaConfigHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return SchemaConfigHealthcareV1beta1(
-      lastUpdatedPartitionConfig: map['lastUpdatedPartitionConfig'] == null ? null : (TimePartitioningHealthcareV1beta1.fromMap((map['lastUpdatedPartitionConfig'] as Map).cast<String, dynamic>())).input(),
-      recursiveStructureDepth: map['recursiveStructureDepth'] == null ? null : (map['recursiveStructureDepth'] as String).input(),
-      schemaType: map['schemaType'] == null ? null : (SchemaConfigSchemaTypeHealthcareV1beta1.fromValue(map['schemaType'] as String)).input(),
+      lastUpdatedPartitionConfig: map['lastUpdatedPartitionConfig'] == null ? null : (TimePartitioningHealthcareV1beta1.fromMap((map['lastUpdatedPartitionConfig']! as Map).cast<String, dynamic>())).input(),
+      recursiveStructureDepth: map['recursiveStructureDepth'] == null ? null : (map['recursiveStructureDepth']! as String).input(),
+      schemaType: map['schemaType'] == null ? null : (SchemaConfigSchemaTypeHealthcareV1beta1.fromValue(map['schemaType']! as String)).input(),
     );
   }
 }

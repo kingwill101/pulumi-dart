@@ -66,12 +66,12 @@ class VirtualMachineManagerServerArgs {
     return VirtualMachineManagerServerArgs(
       customLocationId: (map['customLocationId'] as String).input(),
       fqdn: (map['fqdn'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       password: (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       username: (map['username'] as String).input(),
     );
   }

@@ -35,10 +35,10 @@ class NetworkInterfaceSubInterface {
 
   factory NetworkInterfaceSubInterface.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceSubInterface(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      ipAllocationMode: map['ipAllocationMode'] == null ? null : (NetworkInterfaceSubInterfaceIpAllocationMode.fromValue(map['ipAllocationMode'] as String)).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
-      vlan: map['vlan'] == null ? null : (map['vlan'] as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ipAllocationMode: map['ipAllocationMode'] == null ? null : (NetworkInterfaceSubInterfaceIpAllocationMode.fromValue(map['ipAllocationMode']! as String)).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      vlan: map['vlan'] == null ? null : (map['vlan']! as int).input(),
     );
   }
 }

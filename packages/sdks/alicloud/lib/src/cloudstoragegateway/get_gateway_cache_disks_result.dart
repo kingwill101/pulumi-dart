@@ -46,8 +46,8 @@ class GetGatewayCacheDisksResult {
       gatewayId: map['gatewayId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as int,
     );
   }
 }

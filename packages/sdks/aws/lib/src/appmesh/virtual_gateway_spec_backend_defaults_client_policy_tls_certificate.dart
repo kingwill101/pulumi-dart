@@ -27,8 +27,8 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate {
 
   factory VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate(
-      file: map['file'] == null ? null : (VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
-      sds: map['sds'] == null ? null : (VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds.fromMap((map['sds'] as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : ((VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input()).input(),
+      sds: map['sds'] == null ? null : ((VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificateSds.fromMap((map['sds']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -77,18 +77,18 @@ class FtpReadSettingsResponse {
 
   factory FtpReadSettingsResponse.fromMap(Map<String, dynamic> map) {
     return FtpReadSettingsResponse(
-      deleteFilesAfterCompletion: map['deleteFilesAfterCompletion'] == null ? null : (map['deleteFilesAfterCompletion']).input(),
-      disableChunking: map['disableChunking'] == null ? null : (map['disableChunking']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      enablePartitionDiscovery: map['enablePartitionDiscovery'] == null ? null : (map['enablePartitionDiscovery']).input(),
-      fileListPath: map['fileListPath'] == null ? null : (map['fileListPath']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      partitionRootPath: map['partitionRootPath'] == null ? null : (map['partitionRootPath']).input(),
-      recursive: map['recursive'] == null ? null : (map['recursive']).input(),
+      deleteFilesAfterCompletion: map['deleteFilesAfterCompletion'] == null ? null : (map['deleteFilesAfterCompletion']!).input(),
+      disableChunking: map['disableChunking'] == null ? null : (map['disableChunking']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      enablePartitionDiscovery: map['enablePartitionDiscovery'] == null ? null : (map['enablePartitionDiscovery']!).input(),
+      fileListPath: map['fileListPath'] == null ? null : (map['fileListPath']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      partitionRootPath: map['partitionRootPath'] == null ? null : (map['partitionRootPath']!).input(),
+      recursive: map['recursive'] == null ? null : (map['recursive']!).input(),
       type: (map['type'] as String).input(),
-      useBinaryTransfer: map['useBinaryTransfer'] == null ? null : (map['useBinaryTransfer']).input(),
-      wildcardFileName: map['wildcardFileName'] == null ? null : (map['wildcardFileName']).input(),
-      wildcardFolderPath: map['wildcardFolderPath'] == null ? null : (map['wildcardFolderPath']).input(),
+      useBinaryTransfer: map['useBinaryTransfer'] == null ? null : (map['useBinaryTransfer']!).input(),
+      wildcardFileName: map['wildcardFileName'] == null ? null : (map['wildcardFileName']!).input(),
+      wildcardFolderPath: map['wildcardFolderPath'] == null ? null : (map['wildcardFolderPath']!).input(),
     );
   }
 }

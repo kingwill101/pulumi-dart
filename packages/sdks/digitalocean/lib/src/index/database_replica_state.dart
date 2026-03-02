@@ -95,22 +95,22 @@ class DatabaseReplicaState {
 
   factory DatabaseReplicaState.fromMap(Map<String, dynamic> map) {
     return DatabaseReplicaState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      privateHost: map['privateHost'] == null ? null : (map['privateHost'] as String).input(),
-      privateNetworkUuid: map['privateNetworkUuid'] == null ? null : (map['privateNetworkUuid'] as String).input(),
-      privateUri: map['privateUri'] == null ? null : (map['privateUri'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
-      storageSizeMib: map['storageSizeMib'] == null ? null : (map['storageSizeMib'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      privateHost: map['privateHost'] == null ? null : (map['privateHost']! as String).input(),
+      privateNetworkUuid: map['privateNetworkUuid'] == null ? null : (map['privateNetworkUuid']! as String).input(),
+      privateUri: map['privateUri'] == null ? null : (map['privateUri']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
+      storageSizeMib: map['storageSizeMib'] == null ? null : (map['storageSizeMib']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

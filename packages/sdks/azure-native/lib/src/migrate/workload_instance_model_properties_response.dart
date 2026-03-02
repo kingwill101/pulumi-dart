@@ -95,19 +95,19 @@ class WorkloadInstanceModelPropertiesResponse {
     return WorkloadInstanceModelPropertiesResponse(
       allowedOperations: ((map['allowedOperations'] as List).cast<String>()).input(),
       currentJob: (WorkloadInstanceModelPropertiesResponseCurrentJob.fromMap((map['currentJob'] as Map).cast<String, dynamic>())).input(),
-      customProperties: map['customProperties'] == null ? null : (ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse.fromMap((map['customProperties'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      customProperties: map['customProperties'] == null ? null : (ApacheTomcatWorkloadInstanceModelCustomPropertiesResponse.fromMap((map['customProperties']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       healthErrors: (pulumi.Input.decodeList<HealthErrorModelResponse>(map['healthErrors'], (value) => HealthErrorModelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       lastSuccessfulReplicationCycleTime: (map['lastSuccessfulReplicationCycleTime'] as String).input(),
-      masterSiteName: map['masterSiteName'] == null ? null : (map['masterSiteName'] as String).input(),
-      migrateAgentId: map['migrateAgentId'] == null ? null : (map['migrateAgentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      masterSiteName: map['masterSiteName'] == null ? null : (map['masterSiteName']! as String).input(),
+      migrateAgentId: map['migrateAgentId'] == null ? null : (map['migrateAgentId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       replicationHealth: (map['replicationHealth'] as String).input(),
       replicationStatus: (map['replicationStatus'] as String).input(),
       replicationStatusDescription: (map['replicationStatusDescription'] as String).input(),
-      sourceName: map['sourceName'] == null ? null : (map['sourceName'] as String).input(),
-      sourcePlatform: map['sourcePlatform'] == null ? null : (map['sourcePlatform'] as String).input(),
+      sourceName: map['sourceName'] == null ? null : (map['sourceName']! as String).input(),
+      sourcePlatform: map['sourcePlatform'] == null ? null : (map['sourcePlatform']! as String).input(),
     );
   }
 }

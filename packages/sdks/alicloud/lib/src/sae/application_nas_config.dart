@@ -40,11 +40,11 @@ class ApplicationNasConfig {
 
   factory ApplicationNasConfig.fromMap(Map<String, dynamic> map) {
     return ApplicationNasConfig(
-      mountDomain: map['mountDomain'] == null ? null : (map['mountDomain'] as String).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      nasId: map['nasId'] == null ? null : (map['nasId'] as String).input(),
-      nasPath: map['nasPath'] == null ? null : (map['nasPath'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      mountDomain: map['mountDomain'] == null ? null : (map['mountDomain']! as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      nasId: map['nasId'] == null ? null : (map['nasId']! as String).input(),
+      nasPath: map['nasPath'] == null ? null : (map['nasPath']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class StorageClassAnalysis {
 
   factory StorageClassAnalysis.fromMap(Map<String, dynamic> map) {
     return StorageClassAnalysis(
-      dataExport: map['dataExport'] == null ? null : (DataExport.fromMap((map['dataExport'] as Map).cast<String, dynamic>())).input(),
+      dataExport: map['dataExport'] == null ? null : (DataExport.fromMap((map['dataExport']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

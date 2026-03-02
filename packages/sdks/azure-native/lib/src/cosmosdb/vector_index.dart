@@ -40,11 +40,11 @@ class VectorIndex {
 
   factory VectorIndex.fromMap(Map<String, dynamic> map) {
     return VectorIndex(
-      indexingSearchListSize: map['indexingSearchListSize'] == null ? null : (map['indexingSearchListSize'] as double).input(),
+      indexingSearchListSize: map['indexingSearchListSize'] == null ? null : (map['indexingSearchListSize']! as double).input(),
       path: (map['path'] as String).input(),
-      quantizationByteSize: map['quantizationByteSize'] == null ? null : (map['quantizationByteSize'] as double).input(),
+      quantizationByteSize: map['quantizationByteSize'] == null ? null : (map['quantizationByteSize']! as double).input(),
       type: (map['type'] as String).input(),
-      vectorIndexShardKey: map['vectorIndexShardKey'] == null ? null : ((map['vectorIndexShardKey'] as List).cast<String>()).input(),
+      vectorIndexShardKey: map['vectorIndexShardKey'] == null ? null : ((map['vectorIndexShardKey']! as List).cast<String>()).input(),
     );
   }
 }

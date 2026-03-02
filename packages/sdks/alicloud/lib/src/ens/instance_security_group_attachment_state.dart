@@ -26,8 +26,8 @@ class InstanceSecurityGroupAttachmentState {
 
   factory InstanceSecurityGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceSecurityGroupAttachmentState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
     );
   }
 }

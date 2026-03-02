@@ -48,7 +48,7 @@ class GetSecretVersionAccessResult {
   factory GetSecretVersionAccessResult.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionAccessResult(
       id: map['id'] as String,
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : map['isSecretDataBase64'] as bool,
+      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : map['isSecretDataBase64']! as bool,
       name: map['name'] as String,
       project: map['project'] as String,
       secret: map['secret'] as String,

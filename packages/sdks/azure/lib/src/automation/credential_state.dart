@@ -46,12 +46,12 @@ class CredentialState {
 
   factory CredentialState.fromMap(Map<String, dynamic> map) {
     return CredentialState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

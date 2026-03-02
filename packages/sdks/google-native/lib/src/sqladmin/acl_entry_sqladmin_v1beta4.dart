@@ -36,10 +36,10 @@ class AclEntrySqladminV1beta4 {
 
   factory AclEntrySqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return AclEntrySqladminV1beta4(
-      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

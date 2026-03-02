@@ -20,7 +20,7 @@ class GetVirtualNodeSpecLoggingAccessLog {
 
   factory GetVirtualNodeSpecLoggingAccessLog.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecLoggingAccessLog(
-      files: (pulumi.Input.decodeList<GetVirtualNodeSpecLoggingAccessLogFile>(map['files'], (value) => GetVirtualNodeSpecLoggingAccessLogFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      files: (pulumi.Input.decodeList<GetVirtualNodeSpecLoggingAccessLogFile>(map['files']!, (value) => GetVirtualNodeSpecLoggingAccessLogFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

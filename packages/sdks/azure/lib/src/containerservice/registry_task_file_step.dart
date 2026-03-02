@@ -45,12 +45,12 @@ class RegistryTaskFileStep {
 
   factory RegistryTaskFileStep.fromMap(Map<String, dynamic> map) {
     return RegistryTaskFileStep(
-      contextAccessToken: map['contextAccessToken'] == null ? null : (map['contextAccessToken'] as String).input(),
-      contextPath: map['contextPath'] == null ? null : (map['contextPath'] as String).input(),
-      secretValues: map['secretValues'] == null ? null : ((map['secretValues'] as Map).cast<String, String>()).input(),
+      contextAccessToken: map['contextAccessToken'] == null ? null : (map['contextAccessToken']! as String).input(),
+      contextPath: map['contextPath'] == null ? null : (map['contextPath']! as String).input(),
+      secretValues: map['secretValues'] == null ? null : ((map['secretValues']! as Map).cast<String, String>()).input(),
       taskFilePath: (map['taskFilePath'] as String).input(),
-      valueFilePath: map['valueFilePath'] == null ? null : (map['valueFilePath'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as Map).cast<String, String>()).input(),
+      valueFilePath: map['valueFilePath'] == null ? null : (map['valueFilePath']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as Map).cast<String, String>()).input(),
     );
   }
 }

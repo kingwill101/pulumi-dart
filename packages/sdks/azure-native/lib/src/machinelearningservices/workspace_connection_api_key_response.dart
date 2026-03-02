@@ -20,7 +20,7 @@ class WorkspaceConnectionApiKeyResponse {
 
   factory WorkspaceConnectionApiKeyResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionApiKeyResponse(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

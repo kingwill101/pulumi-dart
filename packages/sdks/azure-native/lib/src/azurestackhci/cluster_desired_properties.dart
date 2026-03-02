@@ -26,8 +26,8 @@ class ClusterDesiredProperties {
 
   factory ClusterDesiredProperties.fromMap(Map<String, dynamic> map) {
     return ClusterDesiredProperties(
-      diagnosticLevel: map['diagnosticLevel'] == null ? null : (map['diagnosticLevel'] as String).input(),
-      windowsServerSubscription: map['windowsServerSubscription'] == null ? null : (map['windowsServerSubscription'] as String).input(),
+      diagnosticLevel: map['diagnosticLevel'] == null ? null : (map['diagnosticLevel']! as String).input(),
+      windowsServerSubscription: map['windowsServerSubscription'] == null ? null : (map['windowsServerSubscription']! as String).input(),
     );
   }
 }

@@ -65,7 +65,7 @@ class GetMSTIDataConnectorResult {
     return GetMSTIDataConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
       dataTypes: MSTIDataConnectorDataTypesResponse.fromMap((map['dataTypes'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,

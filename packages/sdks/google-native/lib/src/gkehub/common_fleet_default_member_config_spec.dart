@@ -40,10 +40,10 @@ class CommonFleetDefaultMemberConfigSpec {
 
   factory CommonFleetDefaultMemberConfigSpec.fromMap(Map<String, dynamic> map) {
     return CommonFleetDefaultMemberConfigSpec(
-      configmanagement: map['configmanagement'] == null ? null : (ConfigManagementMembershipSpec.fromMap((map['configmanagement'] as Map).cast<String, dynamic>())).input(),
-      identityservice: map['identityservice'] == null ? null : (IdentityServiceMembershipSpec.fromMap((map['identityservice'] as Map).cast<String, dynamic>())).input(),
-      mesh: map['mesh'] == null ? null : (ServiceMeshMembershipSpec.fromMap((map['mesh'] as Map).cast<String, dynamic>())).input(),
-      policycontroller: map['policycontroller'] == null ? null : (PolicyControllerMembershipSpec.fromMap((map['policycontroller'] as Map).cast<String, dynamic>())).input(),
+      configmanagement: map['configmanagement'] == null ? null : (ConfigManagementMembershipSpec.fromMap((map['configmanagement']! as Map).cast<String, dynamic>())).input(),
+      identityservice: map['identityservice'] == null ? null : (IdentityServiceMembershipSpec.fromMap((map['identityservice']! as Map).cast<String, dynamic>())).input(),
+      mesh: map['mesh'] == null ? null : (ServiceMeshMembershipSpec.fromMap((map['mesh']! as Map).cast<String, dynamic>())).input(),
+      policycontroller: map['policycontroller'] == null ? null : (PolicyControllerMembershipSpec.fromMap((map['policycontroller']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

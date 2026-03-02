@@ -32,9 +32,9 @@ class AddOnResponse {
 
   factory AddOnResponse.fromMap(Map<String, dynamic> map) {
     return AddOnResponse(
-      addOnType: map['addOnType'] == null ? null : (map['addOnType'] as String).input(),
-      autoSnapshotAddOnRequest: map['autoSnapshotAddOnRequest'] == null ? null : (AutoSnapshotAddOnResponse.fromMap((map['autoSnapshotAddOnRequest'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      addOnType: map['addOnType'] == null ? null : (map['addOnType']! as String).input(),
+      autoSnapshotAddOnRequest: map['autoSnapshotAddOnRequest'] == null ? null : (AutoSnapshotAddOnResponse.fromMap((map['autoSnapshotAddOnRequest']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

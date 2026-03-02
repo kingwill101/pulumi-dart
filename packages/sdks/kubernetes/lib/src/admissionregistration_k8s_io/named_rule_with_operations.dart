@@ -52,12 +52,12 @@ class NamedRuleWithOperations {
 
   factory NamedRuleWithOperations.fromMap(Map<String, dynamic> map) {
     return NamedRuleWithOperations(
-      apiGroups: map['apiGroups'] == null ? null : ((map['apiGroups'] as List).cast<String>()).input(),
-      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions'] as List).cast<String>()).input(),
-      operations: map['operations'] == null ? null : ((map['operations'] as List).cast<String>()).input(),
-      resourceNames: map['resourceNames'] == null ? null : ((map['resourceNames'] as List).cast<String>()).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      apiGroups: map['apiGroups'] == null ? null : ((map['apiGroups']! as List).cast<String>()).input(),
+      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions']! as List).cast<String>()).input(),
+      operations: map['operations'] == null ? null : ((map['operations']! as List).cast<String>()).input(),
+      resourceNames: map['resourceNames'] == null ? null : ((map['resourceNames']! as List).cast<String>()).input(),
+      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

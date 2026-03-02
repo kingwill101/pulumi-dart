@@ -38,10 +38,10 @@ class GetOntapStorageVirtualMachineEndpoint {
 
   factory GetOntapStorageVirtualMachineEndpoint.fromMap(Map<String, dynamic> map) {
     return GetOntapStorageVirtualMachineEndpoint(
-      iscsis: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointIscsi>(map['iscsis'], (value) => GetOntapStorageVirtualMachineEndpointIscsi.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managements: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointManagement>(map['managements'], (value) => GetOntapStorageVirtualMachineEndpointManagement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nfs: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointNf>(map['nfs'], (value) => GetOntapStorageVirtualMachineEndpointNf.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      smbs: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointSmb>(map['smbs'], (value) => GetOntapStorageVirtualMachineEndpointSmb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      iscsis: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointIscsi>(map['iscsis']!, (value) => GetOntapStorageVirtualMachineEndpointIscsi.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managements: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointManagement>(map['managements']!, (value) => GetOntapStorageVirtualMachineEndpointManagement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nfs: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointNf>(map['nfs']!, (value) => GetOntapStorageVirtualMachineEndpointNf.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      smbs: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineEndpointSmb>(map['smbs']!, (value) => GetOntapStorageVirtualMachineEndpointSmb.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class CompositePath {
 
   factory CompositePath.fromMap(Map<String, dynamic> map) {
     return CompositePath(
-      order: map['order'] == null ? null : (map['order'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      order: map['order'] == null ? null : (map['order']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

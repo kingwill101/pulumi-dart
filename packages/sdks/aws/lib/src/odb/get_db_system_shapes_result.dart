@@ -36,7 +36,7 @@ class GetDbSystemShapesResult {
   factory GetDbSystemShapesResult.fromMap(Map<String, dynamic> map) {
     return GetDbSystemShapesResult(
       availabilityZoneId: map['availabilityZoneId'] == null ? null : map['availabilityZoneId'] as String,
-      dbSystemShapes: pulumi.Input.decodeList<GetDbSystemShapesDbSystemShape>(map['dbSystemShapes'], (value) => GetDbSystemShapesDbSystemShape.fromMap((value as Map).cast<String, dynamic>())),
+      dbSystemShapes: pulumi.Input.decodeList<GetDbSystemShapesDbSystemShape>(map['dbSystemShapes']!, (value) => GetDbSystemShapesDbSystemShape.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

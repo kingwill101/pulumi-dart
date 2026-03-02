@@ -26,8 +26,8 @@ class InlineSecret {
 
   factory InlineSecret.fromMap(Map<String, dynamic> map) {
     return InlineSecret(
-      envMap: map['envMap'] == null ? null : ((map['envMap'] as Map).cast<String, String>()).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      envMap: map['envMap'] == null ? null : ((map['envMap']! as Map).cast<String, String>()).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
     );
   }
 }

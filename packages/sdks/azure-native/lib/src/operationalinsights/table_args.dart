@@ -67,14 +67,14 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      plan: map['plan'] == null ? null : (map['plan'] as String).input(),
+      plan: map['plan'] == null ? null : (map['plan']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      restoredLogs: map['restoredLogs'] == null ? null : (RestoredLogs.fromMap((map['restoredLogs'] as Map).cast<String, dynamic>())).input(),
-      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
-      schema: map['schema'] == null ? null : (Schema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
-      searchResults: map['searchResults'] == null ? null : (SearchResults.fromMap((map['searchResults'] as Map).cast<String, dynamic>())).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
-      totalRetentionInDays: map['totalRetentionInDays'] == null ? null : (map['totalRetentionInDays'] as int).input(),
+      restoredLogs: map['restoredLogs'] == null ? null : (RestoredLogs.fromMap((map['restoredLogs']! as Map).cast<String, dynamic>())).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays']! as int).input(),
+      schema: map['schema'] == null ? null : (Schema.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
+      searchResults: map['searchResults'] == null ? null : (SearchResults.fromMap((map['searchResults']! as Map).cast<String, dynamic>())).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
+      totalRetentionInDays: map['totalRetentionInDays'] == null ? null : (map['totalRetentionInDays']! as int).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

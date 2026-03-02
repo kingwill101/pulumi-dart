@@ -25,8 +25,8 @@ class IndexCapacityUnits {
 
   factory IndexCapacityUnits.fromMap(Map<String, dynamic> map) {
     return IndexCapacityUnits(
-      queryCapacityUnits: map['queryCapacityUnits'] == null ? null : (map['queryCapacityUnits'] as int).input(),
-      storageCapacityUnits: map['storageCapacityUnits'] == null ? null : (map['storageCapacityUnits'] as int).input(),
+      queryCapacityUnits: map['queryCapacityUnits'] == null ? null : ((map['queryCapacityUnits'] as int).input()).input(),
+      storageCapacityUnits: map['storageCapacityUnits'] == null ? null : ((map['storageCapacityUnits'] as int).input()).input(),
     );
   }
 }

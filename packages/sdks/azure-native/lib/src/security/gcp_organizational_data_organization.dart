@@ -37,10 +37,10 @@ class GcpOrganizationalDataOrganization {
 
   factory GcpOrganizationalDataOrganization.fromMap(Map<String, dynamic> map) {
     return GcpOrganizationalDataOrganization(
-      excludedProjectNumbers: map['excludedProjectNumbers'] == null ? null : ((map['excludedProjectNumbers'] as List).cast<String>()).input(),
+      excludedProjectNumbers: map['excludedProjectNumbers'] == null ? null : ((map['excludedProjectNumbers']! as List).cast<String>()).input(),
       organizationMembershipType: (map['organizationMembershipType'] as String).input(),
-      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress'] as String).input(),
-      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId'] as String).input(),
+      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress']! as String).input(),
+      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId']! as String).input(),
     );
   }
 }

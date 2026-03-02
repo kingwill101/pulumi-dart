@@ -54,11 +54,11 @@ class KnowledgeSourceArgs {
 
   factory KnowledgeSourceArgs.fromMap(Map<String, dynamic> map) {
     return KnowledgeSourceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      knowledgeSourceName: map['knowledgeSourceName'] == null ? null : (map['knowledgeSourceName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      knowledgeSourceName: map['knowledgeSourceName'] == null ? null : (map['knowledgeSourceName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sourceType: (map['sourceType'] as String).input(),
-      updateFrequency: map['updateFrequency'] == null ? null : (map['updateFrequency'] as String).input(),
+      updateFrequency: map['updateFrequency'] == null ? null : (map['updateFrequency']! as String).input(),
       url: (map['url'] as String).input(),
       webAgentName: (map['webAgentName'] as String).input(),
     );

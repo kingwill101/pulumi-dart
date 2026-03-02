@@ -44,10 +44,10 @@ class UploadArgs {
 
   factory UploadArgs.fromMap(Map<String, dynamic> map) {
     return UploadArgs(
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      contentType: map['contentType'] == null ? null : ((map['contentType'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       projectArn: (map['projectArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

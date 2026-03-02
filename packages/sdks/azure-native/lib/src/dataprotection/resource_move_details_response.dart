@@ -41,11 +41,11 @@ class ResourceMoveDetailsResponse {
 
   factory ResourceMoveDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceMoveDetailsResponse(
-      completionTimeUtc: map['completionTimeUtc'] == null ? null : (map['completionTimeUtc'] as String).input(),
-      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
-      sourceResourcePath: map['sourceResourcePath'] == null ? null : (map['sourceResourcePath'] as String).input(),
-      startTimeUtc: map['startTimeUtc'] == null ? null : (map['startTimeUtc'] as String).input(),
-      targetResourcePath: map['targetResourcePath'] == null ? null : (map['targetResourcePath'] as String).input(),
+      completionTimeUtc: map['completionTimeUtc'] == null ? null : (map['completionTimeUtc']! as String).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
+      sourceResourcePath: map['sourceResourcePath'] == null ? null : (map['sourceResourcePath']! as String).input(),
+      startTimeUtc: map['startTimeUtc'] == null ? null : (map['startTimeUtc']! as String).input(),
+      targetResourcePath: map['targetResourcePath'] == null ? null : (map['targetResourcePath']! as String).input(),
     );
   }
 }

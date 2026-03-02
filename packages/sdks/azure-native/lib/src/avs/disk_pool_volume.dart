@@ -33,7 +33,7 @@ class DiskPoolVolume {
   factory DiskPoolVolume.fromMap(Map<String, dynamic> map) {
     return DiskPoolVolume(
       lunName: (map['lunName'] as String).input(),
-      mountOption: map['mountOption'] == null ? null : (map['mountOption'] as String).input(),
+      mountOption: map['mountOption'] == null ? null : (map['mountOption']! as String).input(),
       targetId: (map['targetId'] as String).input(),
     );
   }

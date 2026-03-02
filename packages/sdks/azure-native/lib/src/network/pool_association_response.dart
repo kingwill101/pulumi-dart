@@ -62,9 +62,9 @@ class PoolAssociationResponse {
     return PoolAssociationResponse(
       addressPrefixes: ((map['addressPrefixes'] as List).cast<String>()).input(),
       createdAt: (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       numberOfReservedIPAddresses: (map['numberOfReservedIPAddresses'] as String).input(),
-      poolId: map['poolId'] == null ? null : (map['poolId'] as String).input(),
+      poolId: map['poolId'] == null ? null : (map['poolId']! as String).input(),
       reservationExpiresAt: (map['reservationExpiresAt'] as String).input(),
       reservedPrefixes: ((map['reservedPrefixes'] as List).cast<String>()).input(),
       resourceId: (map['resourceId'] as String).input(),

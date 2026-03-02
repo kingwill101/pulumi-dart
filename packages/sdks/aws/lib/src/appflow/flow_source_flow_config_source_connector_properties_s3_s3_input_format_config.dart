@@ -20,7 +20,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesS3S3InputFormatConfig(
-      s3InputFileType: map['s3InputFileType'] == null ? null : (map['s3InputFileType'] as String).input(),
+      s3InputFileType: map['s3InputFileType'] == null ? null : ((map['s3InputFileType'] as String).input()).input(),
     );
   }
 }

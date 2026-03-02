@@ -36,7 +36,7 @@ class ListListFlowsByPipelineArgs {
     return ListListFlowsByPipelineArgs(
       pipelineName: (map['pipelineName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      value: map['value'] == null ? null : ((map['value'] as List).cast<String>()).input(),
+      value: map['value'] == null ? null : ((map['value']! as List).cast<String>()).input(),
     );
   }
 }

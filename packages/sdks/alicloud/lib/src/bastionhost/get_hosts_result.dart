@@ -74,20 +74,20 @@ class GetHostsResult {
 
   factory GetHostsResult.fromMap(Map<String, dynamic> map) {
     return GetHostsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
-      hostAddress: map['hostAddress'] == null ? null : map['hostAddress'] as String,
-      hostName: map['hostName'] == null ? null : map['hostName'] as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      hostAddress: map['hostAddress'] == null ? null : map['hostAddress']! as String,
+      hostName: map['hostName'] == null ? null : map['hostName']! as String,
       hosts: pulumi.Input.decodeList<GetHostsHost>(map['hosts'], (value) => GetHostsHost.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
-      sourceInstanceId: map['sourceInstanceId'] == null ? null : map['sourceInstanceId'] as String,
-      sourceInstanceState: map['sourceInstanceState'] == null ? null : map['sourceInstanceState'] as String,
+      osType: map['osType'] == null ? null : map['osType']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      source: map['source'] == null ? null : map['source']! as String,
+      sourceInstanceId: map['sourceInstanceId'] == null ? null : map['sourceInstanceId']! as String,
+      sourceInstanceState: map['sourceInstanceState'] == null ? null : map['sourceInstanceState']! as String,
     );
   }
 }

@@ -23,7 +23,7 @@ class ClusterUserCreatedConnectionsClusterEndpointConnection {
 
   factory ClusterUserCreatedConnectionsClusterEndpointConnection.fromMap(Map<String, dynamic> map) {
     return ClusterUserCreatedConnectionsClusterEndpointConnection(
-      pscConnection: map['pscConnection'] == null ? null : (ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection.fromMap((map['pscConnection'] as Map).cast<String, dynamic>())).input(),
+      pscConnection: map['pscConnection'] == null ? null : (ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection.fromMap((map['pscConnection']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

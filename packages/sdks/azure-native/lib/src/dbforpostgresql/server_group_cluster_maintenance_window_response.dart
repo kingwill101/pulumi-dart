@@ -36,10 +36,10 @@ class ServerGroupClusterMaintenanceWindowResponse {
 
   factory ServerGroupClusterMaintenanceWindowResponse.fromMap(Map<String, dynamic> map) {
     return ServerGroupClusterMaintenanceWindowResponse(
-      customWindow: map['customWindow'] == null ? null : (map['customWindow'] as String).input(),
-      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek'] as int).input(),
-      startHour: map['startHour'] == null ? null : (map['startHour'] as int).input(),
-      startMinute: map['startMinute'] == null ? null : (map['startMinute'] as int).input(),
+      customWindow: map['customWindow'] == null ? null : (map['customWindow']! as String).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek']! as int).input(),
+      startHour: map['startHour'] == null ? null : (map['startHour']! as int).input(),
+      startMinute: map['startMinute'] == null ? null : (map['startMinute']! as int).input(),
     );
   }
 }

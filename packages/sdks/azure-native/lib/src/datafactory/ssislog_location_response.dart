@@ -37,9 +37,9 @@ class SSISLogLocationResponse {
 
   factory SSISLogLocationResponse.fromMap(Map<String, dynamic> map) {
     return SSISLogLocationResponse(
-      accessCredential: map['accessCredential'] == null ? null : (SSISAccessCredentialResponse.fromMap((map['accessCredential'] as Map).cast<String, dynamic>())).input(),
+      accessCredential: map['accessCredential'] == null ? null : (SSISAccessCredentialResponse.fromMap((map['accessCredential']! as Map).cast<String, dynamic>())).input(),
       logPath: (map['logPath']).input(),
-      logRefreshInterval: map['logRefreshInterval'] == null ? null : (map['logRefreshInterval']).input(),
+      logRefreshInterval: map['logRefreshInterval'] == null ? null : (map['logRefreshInterval']!).input(),
       type: (map['type'] as String).input(),
     );
   }

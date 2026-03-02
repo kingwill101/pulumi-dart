@@ -61,13 +61,13 @@ class L2NetworkArgs {
   factory L2NetworkArgs.fromMap(Map<String, dynamic> map) {
     return L2NetworkArgs(
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      hybridAksPluginType: map['hybridAksPluginType'] == null ? null : (map['hybridAksPluginType'] as String).input(),
-      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName'] as String).input(),
+      hybridAksPluginType: map['hybridAksPluginType'] == null ? null : (map['hybridAksPluginType']! as String).input(),
+      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName']! as String).input(),
       l2IsolationDomainId: (map['l2IsolationDomainId'] as String).input(),
-      l2NetworkName: map['l2NetworkName'] == null ? null : (map['l2NetworkName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      l2NetworkName: map['l2NetworkName'] == null ? null : (map['l2NetworkName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

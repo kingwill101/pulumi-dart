@@ -30,7 +30,7 @@ class DatabasePostgresqlV2PrivateNetwork {
 
   factory DatabasePostgresqlV2PrivateNetwork.fromMap(Map<String, dynamic> map) {
     return DatabasePostgresqlV2PrivateNetwork(
-      publicAccess: map['publicAccess'] == null ? null : (map['publicAccess'] as bool).input(),
+      publicAccess: map['publicAccess'] == null ? null : (map['publicAccess']! as bool).input(),
       subnetId: (map['subnetId'] as int).input(),
       vpcId: (map['vpcId'] as int).input(),
     );

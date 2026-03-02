@@ -21,7 +21,7 @@ class NeighborAddress {
 
   factory NeighborAddress.fromMap(Map<String, dynamic> map) {
     return NeighborAddress(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
     );
   }
 }

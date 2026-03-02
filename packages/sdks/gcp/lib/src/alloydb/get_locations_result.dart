@@ -33,7 +33,7 @@ class GetLocationsResult {
     return GetLocationsResult(
       id: map['id'] as String,
       locations: pulumi.Input.decodeList<GetLocationsLocation>(map['locations'], (value) => GetLocationsLocation.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
     );
   }
 }

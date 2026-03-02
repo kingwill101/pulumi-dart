@@ -30,7 +30,7 @@ class TopicSchemaSettings {
 
   factory TopicSchemaSettings.fromMap(Map<String, dynamic> map) {
     return TopicSchemaSettings(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
       schema: (map['schema'] as String).input(),
     );
   }

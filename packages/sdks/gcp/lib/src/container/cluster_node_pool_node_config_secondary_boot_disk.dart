@@ -26,7 +26,7 @@ class ClusterNodePoolNodeConfigSecondaryBootDisk {
   factory ClusterNodePoolNodeConfigSecondaryBootDisk.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigSecondaryBootDisk(
       diskImage: (map['diskImage'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

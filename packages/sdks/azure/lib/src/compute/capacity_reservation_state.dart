@@ -42,11 +42,11 @@ class CapacityReservationState {
 
   factory CapacityReservationState.fromMap(Map<String, dynamic> map) {
     return CapacityReservationState(
-      capacityReservationGroupId: map['capacityReservationGroupId'] == null ? null : (map['capacityReservationGroupId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sku: map['sku'] == null ? null : (CapacityReservationSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      capacityReservationGroupId: map['capacityReservationGroupId'] == null ? null : (map['capacityReservationGroupId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sku: map['sku'] == null ? null : (CapacityReservationSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

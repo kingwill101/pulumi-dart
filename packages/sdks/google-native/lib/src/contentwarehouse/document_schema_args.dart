@@ -53,13 +53,13 @@ class DocumentSchemaArgs {
 
   factory DocumentSchemaArgs.fromMap(Map<String, dynamic> map) {
     return DocumentSchemaArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      documentIsFolder: map['documentIsFolder'] == null ? null : (map['documentIsFolder'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      propertyDefinitions: map['propertyDefinitions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1PropertyDefinition>(map['propertyDefinitions'], (value) => GoogleCloudContentwarehouseV1PropertyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      documentIsFolder: map['documentIsFolder'] == null ? null : (map['documentIsFolder']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      propertyDefinitions: map['propertyDefinitions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1PropertyDefinition>(map['propertyDefinitions']!, (value) => GoogleCloudContentwarehouseV1PropertyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

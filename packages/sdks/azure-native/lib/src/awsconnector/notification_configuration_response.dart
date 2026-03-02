@@ -40,10 +40,10 @@ class NotificationConfigurationResponse {
 
   factory NotificationConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NotificationConfigurationResponse(
-      eventBridgeConfiguration: map['eventBridgeConfiguration'] == null ? null : (EventBridgeConfigurationResponse.fromMap((map['eventBridgeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      lambdaConfigurations: map['lambdaConfigurations'] == null ? null : (pulumi.Input.decodeList<LambdaConfigurationResponse>(map['lambdaConfigurations'], (value) => LambdaConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queueConfigurations: map['queueConfigurations'] == null ? null : (pulumi.Input.decodeList<QueueConfigurationResponse>(map['queueConfigurations'], (value) => QueueConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      topicConfigurations: map['topicConfigurations'] == null ? null : (pulumi.Input.decodeList<TopicConfigurationResponse>(map['topicConfigurations'], (value) => TopicConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventBridgeConfiguration: map['eventBridgeConfiguration'] == null ? null : (EventBridgeConfigurationResponse.fromMap((map['eventBridgeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      lambdaConfigurations: map['lambdaConfigurations'] == null ? null : (pulumi.Input.decodeList<LambdaConfigurationResponse>(map['lambdaConfigurations']!, (value) => LambdaConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queueConfigurations: map['queueConfigurations'] == null ? null : (pulumi.Input.decodeList<QueueConfigurationResponse>(map['queueConfigurations']!, (value) => QueueConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      topicConfigurations: map['topicConfigurations'] == null ? null : (pulumi.Input.decodeList<TopicConfigurationResponse>(map['topicConfigurations']!, (value) => TopicConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

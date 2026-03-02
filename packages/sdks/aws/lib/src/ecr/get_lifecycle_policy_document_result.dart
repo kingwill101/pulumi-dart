@@ -33,7 +33,7 @@ class GetLifecyclePolicyDocumentResult {
     return GetLifecyclePolicyDocumentResult(
       id: map['id'] as String,
       json: map['json'] as String,
-      rules: pulumi.Input.decodeList<GetLifecyclePolicyDocumentRule>(map['rules'], (value) => GetLifecyclePolicyDocumentRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<GetLifecyclePolicyDocumentRule>(map['rules']!, (value) => GetLifecyclePolicyDocumentRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

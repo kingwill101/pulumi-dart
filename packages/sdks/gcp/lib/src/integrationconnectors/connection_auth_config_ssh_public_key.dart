@@ -39,9 +39,9 @@ class ConnectionAuthConfigSshPublicKey {
 
   factory ConnectionAuthConfigSshPublicKey.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigSshPublicKey(
-      certType: map['certType'] == null ? null : (map['certType'] as String).input(),
-      sshClientCert: map['sshClientCert'] == null ? null : (ConnectionAuthConfigSshPublicKeySshClientCert.fromMap((map['sshClientCert'] as Map).cast<String, dynamic>())).input(),
-      sshClientCertPass: map['sshClientCertPass'] == null ? null : (ConnectionAuthConfigSshPublicKeySshClientCertPass.fromMap((map['sshClientCertPass'] as Map).cast<String, dynamic>())).input(),
+      certType: map['certType'] == null ? null : (map['certType']! as String).input(),
+      sshClientCert: map['sshClientCert'] == null ? null : (ConnectionAuthConfigSshPublicKeySshClientCert.fromMap((map['sshClientCert']! as Map).cast<String, dynamic>())).input(),
+      sshClientCertPass: map['sshClientCertPass'] == null ? null : (ConnectionAuthConfigSshPublicKeySshClientCertPass.fromMap((map['sshClientCertPass']! as Map).cast<String, dynamic>())).input(),
       username: (map['username'] as String).input(),
     );
   }

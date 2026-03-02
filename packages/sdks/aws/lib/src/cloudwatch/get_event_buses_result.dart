@@ -35,7 +35,7 @@ class GetEventBusesResult {
 
   factory GetEventBusesResult.fromMap(Map<String, dynamic> map) {
     return GetEventBusesResult(
-      eventBuses: pulumi.Input.decodeList<GetEventBusesEventBus>(map['eventBuses'], (value) => GetEventBusesEventBus.fromMap((value as Map).cast<String, dynamic>())),
+      eventBuses: pulumi.Input.decodeList<GetEventBusesEventBus>(map['eventBuses']!, (value) => GetEventBusesEventBus.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
       region: map['region'] as String,

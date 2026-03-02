@@ -21,7 +21,7 @@ class AssignmentPropertiesAdditionalData {
 
   factory AssignmentPropertiesAdditionalData.fromMap(Map<String, dynamic> map) {
     return AssignmentPropertiesAdditionalData(
-      exemptionCategory: map['exemptionCategory'] == null ? null : (map['exemptionCategory'] as String).input(),
+      exemptionCategory: map['exemptionCategory'] == null ? null : (map['exemptionCategory']! as String).input(),
     );
   }
 }

@@ -110,21 +110,21 @@ class JobState {
 
   factory JobState.fromMap(Map<String, dynamic> map) {
     return JobState(
-      copy: map['copy'] == null ? null : (JobCopy.fromMap((map['copy'] as Map).cast<String, dynamic>())).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      extract: map['extract'] == null ? null : (JobExtract.fromMap((map['extract'] as Map).cast<String, dynamic>())).input(),
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      jobTimeoutMs: map['jobTimeoutMs'] == null ? null : (map['jobTimeoutMs'] as String).input(),
-      jobType: map['jobType'] == null ? null : (map['jobType'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      load: map['load'] == null ? null : (JobLoad.fromMap((map['load'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      query: map['query'] == null ? null : (JobQuery.fromMap((map['query'] as Map).cast<String, dynamic>())).input(),
-      reservation: map['reservation'] == null ? null : (map['reservation'] as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<JobStatus>(map['statuses'], (value) => JobStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userEmail: map['userEmail'] == null ? null : (map['userEmail'] as String).input(),
+      copy: map['copy'] == null ? null : (JobCopy.fromMap((map['copy']! as Map).cast<String, dynamic>())).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      extract: map['extract'] == null ? null : (JobExtract.fromMap((map['extract']! as Map).cast<String, dynamic>())).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
+      jobTimeoutMs: map['jobTimeoutMs'] == null ? null : (map['jobTimeoutMs']! as String).input(),
+      jobType: map['jobType'] == null ? null : (map['jobType']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      load: map['load'] == null ? null : (JobLoad.fromMap((map['load']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      query: map['query'] == null ? null : (JobQuery.fromMap((map['query']! as Map).cast<String, dynamic>())).input(),
+      reservation: map['reservation'] == null ? null : (map['reservation']! as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<JobStatus>(map['statuses']!, (value) => JobStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userEmail: map['userEmail'] == null ? null : (map['userEmail']! as String).input(),
     );
   }
 }

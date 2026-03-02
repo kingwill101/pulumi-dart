@@ -93,20 +93,20 @@ class ScanConfigArgs {
 
   factory ScanConfigArgs.fromMap(Map<String, dynamic> map) {
     return ScanConfigArgs(
-      authentication: map['authentication'] == null ? null : (Authentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      blacklistPatterns: map['blacklistPatterns'] == null ? null : ((map['blacklistPatterns'] as List).cast<String>()).input(),
+      authentication: map['authentication'] == null ? null : (Authentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      blacklistPatterns: map['blacklistPatterns'] == null ? null : ((map['blacklistPatterns']! as List).cast<String>()).input(),
       displayName: (map['displayName'] as String).input(),
-      exportToSecurityCommandCenter: map['exportToSecurityCommandCenter'] == null ? null : (ScanConfigExportToSecurityCommandCenter.fromValue(map['exportToSecurityCommandCenter'] as String)).input(),
-      ignoreHttpStatusErrors: map['ignoreHttpStatusErrors'] == null ? null : (map['ignoreHttpStatusErrors'] as bool).input(),
-      managedScan: map['managedScan'] == null ? null : (map['managedScan'] as bool).input(),
-      maxQps: map['maxQps'] == null ? null : (map['maxQps'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      riskLevel: map['riskLevel'] == null ? null : (ScanConfigRiskLevel.fromValue(map['riskLevel'] as String)).input(),
-      schedule: map['schedule'] == null ? null : (Schedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      exportToSecurityCommandCenter: map['exportToSecurityCommandCenter'] == null ? null : (ScanConfigExportToSecurityCommandCenter.fromValue(map['exportToSecurityCommandCenter']! as String)).input(),
+      ignoreHttpStatusErrors: map['ignoreHttpStatusErrors'] == null ? null : (map['ignoreHttpStatusErrors']! as bool).input(),
+      managedScan: map['managedScan'] == null ? null : (map['managedScan']! as bool).input(),
+      maxQps: map['maxQps'] == null ? null : (map['maxQps']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      riskLevel: map['riskLevel'] == null ? null : (ScanConfigRiskLevel.fromValue(map['riskLevel']! as String)).input(),
+      schedule: map['schedule'] == null ? null : (Schedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
       startingUrls: ((map['startingUrls'] as List).cast<String>()).input(),
-      staticIpScan: map['staticIpScan'] == null ? null : (map['staticIpScan'] as bool).input(),
-      userAgent: map['userAgent'] == null ? null : (ScanConfigUserAgent.fromValue(map['userAgent'] as String)).input(),
+      staticIpScan: map['staticIpScan'] == null ? null : (map['staticIpScan']! as bool).input(),
+      userAgent: map['userAgent'] == null ? null : (ScanConfigUserAgent.fromValue(map['userAgent']! as String)).input(),
     );
   }
 }

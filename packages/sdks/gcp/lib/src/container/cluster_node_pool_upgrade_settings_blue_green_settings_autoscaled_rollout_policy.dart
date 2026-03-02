@@ -20,7 +20,7 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy {
 
   factory ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy(
-      waitForDrainDuration: map['waitForDrainDuration'] == null ? null : (map['waitForDrainDuration'] as String).input(),
+      waitForDrainDuration: map['waitForDrainDuration'] == null ? null : (map['waitForDrainDuration']! as String).input(),
     );
   }
 }

@@ -51,10 +51,10 @@ class EndpointAccessArgs {
     return EndpointAccessArgs(
       clusterIdentifier: (map['clusterIdentifier'] as String).input(),
       endpointName: (map['endpointName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceOwner: map['resourceOwner'] == null ? null : (map['resourceOwner'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceOwner: map['resourceOwner'] == null ? null : ((map['resourceOwner'] as String).input()).input(),
       subnetGroupName: (map['subnetGroupName'] as String).input(),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : ((map['vpcSecurityGroupIds'] as List).cast<String>()).input(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : (((map['vpcSecurityGroupIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -39,8 +39,8 @@ class IPConfigurationPropertiesResponse {
     return IPConfigurationPropertiesResponse(
       gateway: (map['gateway'] as String).input(),
       prefixLength: (map['prefixLength'] as String).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      subnet: map['subnet'] == null ? null : (LogicalNetworkArmReferenceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      subnet: map['subnet'] == null ? null : (LogicalNetworkArmReferenceResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

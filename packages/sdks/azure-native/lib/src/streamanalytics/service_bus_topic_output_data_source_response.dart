@@ -57,13 +57,13 @@ class ServiceBusTopicOutputDataSourceResponse {
 
   factory ServiceBusTopicOutputDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return ServiceBusTopicOutputDataSourceResponse(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
-      propertyColumns: map['propertyColumns'] == null ? null : ((map['propertyColumns'] as List).cast<String>()).input(),
-      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : (map['serviceBusNamespace'] as String).input(),
-      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey'] as String).input(),
-      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName'] as String).input(),
-      systemPropertyColumns: map['systemPropertyColumns'] == null ? null : ((map['systemPropertyColumns'] as Map).cast<String, String>()).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
+      propertyColumns: map['propertyColumns'] == null ? null : ((map['propertyColumns']! as List).cast<String>()).input(),
+      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : (map['serviceBusNamespace']! as String).input(),
+      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey']! as String).input(),
+      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName']! as String).input(),
+      systemPropertyColumns: map['systemPropertyColumns'] == null ? null : ((map['systemPropertyColumns']! as Map).cast<String, String>()).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

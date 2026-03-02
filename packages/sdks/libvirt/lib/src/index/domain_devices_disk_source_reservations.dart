@@ -31,9 +31,9 @@ class DomainDevicesDiskSourceReservations {
 
   factory DomainDevicesDiskSourceReservations.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceReservations(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
-      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
-      source: map['source'] == null ? null : (DomainDevicesDiskSourceReservationsSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
+      managed: map['managed'] == null ? null : (map['managed']! as bool).input(),
+      source: map['source'] == null ? null : (DomainDevicesDiskSourceReservationsSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

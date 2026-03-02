@@ -31,9 +31,9 @@ class AzurePlanResponse {
 
   factory AzurePlanResponse.fromMap(Map<String, dynamic> map) {
     return AzurePlanResponse(
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
-      skuDescription: map['skuDescription'] == null ? null : (map['skuDescription'] as String).input(),
-      skuId: map['skuId'] == null ? null : (map['skuId'] as String).input(),
+      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
+      skuDescription: map['skuDescription'] == null ? null : (map['skuDescription']! as String).input(),
+      skuId: map['skuId'] == null ? null : (map['skuId']! as String).input(),
     );
   }
 }

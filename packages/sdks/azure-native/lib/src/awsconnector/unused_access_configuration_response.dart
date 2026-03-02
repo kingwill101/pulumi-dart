@@ -21,7 +21,7 @@ class UnusedAccessConfigurationResponse {
 
   factory UnusedAccessConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return UnusedAccessConfigurationResponse(
-      unusedAccessAge: map['unusedAccessAge'] == null ? null : (map['unusedAccessAge'] as int).input(),
+      unusedAccessAge: map['unusedAccessAge'] == null ? null : (map['unusedAccessAge']! as int).input(),
     );
   }
 }

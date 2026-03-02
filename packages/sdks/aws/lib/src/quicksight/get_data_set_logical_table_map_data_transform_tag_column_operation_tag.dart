@@ -24,7 +24,7 @@ class GetDataSetLogicalTableMapDataTransformTagColumnOperationTag {
 
   factory GetDataSetLogicalTableMapDataTransformTagColumnOperationTag.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransformTagColumnOperationTag(
-      columnDescriptions: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription>(map['columnDescriptions'], (value) => GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columnDescriptions: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription>(map['columnDescriptions']!, (value) => GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription.fromMap((value as Map).cast<String, dynamic>()))).input(),
       columnGeographicRole: (map['columnGeographicRole'] as String).input(),
     );
   }

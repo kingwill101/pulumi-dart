@@ -48,10 +48,10 @@ class ServiceLevelArgs {
 
   factory ServiceLevelArgs.fromMap(Map<String, dynamic> map) {
     return ServiceLevelArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       events: (ServiceLevelEvents.fromMap((map['events'] as Map).cast<String, dynamic>())).input(),
       guid: (map['guid'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       objective: (ServiceLevelObjective.fromMap((map['objective'] as Map).cast<String, dynamic>())).input(),
     );
   }

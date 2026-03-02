@@ -96,21 +96,21 @@ class OpenZfsVolumeArgs {
 
   factory OpenZfsVolumeArgs.fromMap(Map<String, dynamic> map) {
     return OpenZfsVolumeArgs(
-      copyTagsToSnapshots: map['copyTagsToSnapshots'] == null ? null : (map['copyTagsToSnapshots'] as bool).input(),
-      dataCompressionType: map['dataCompressionType'] == null ? null : (map['dataCompressionType'] as String).input(),
-      deleteVolumeOptions: map['deleteVolumeOptions'] == null ? null : (map['deleteVolumeOptions'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nfsExports: map['nfsExports'] == null ? null : (OpenZfsVolumeNfsExports.fromMap((map['nfsExports'] as Map).cast<String, dynamic>())).input(),
-      originSnapshot: map['originSnapshot'] == null ? null : (OpenZfsVolumeOriginSnapshot.fromMap((map['originSnapshot'] as Map).cast<String, dynamic>())).input(),
+      copyTagsToSnapshots: map['copyTagsToSnapshots'] == null ? null : ((map['copyTagsToSnapshots'] as bool).input()).input(),
+      dataCompressionType: map['dataCompressionType'] == null ? null : ((map['dataCompressionType'] as String).input()).input(),
+      deleteVolumeOptions: map['deleteVolumeOptions'] == null ? null : ((map['deleteVolumeOptions'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      nfsExports: map['nfsExports'] == null ? null : ((OpenZfsVolumeNfsExports.fromMap((map['nfsExports']! as Map).cast<String, dynamic>())).input()).input(),
+      originSnapshot: map['originSnapshot'] == null ? null : ((OpenZfsVolumeOriginSnapshot.fromMap((map['originSnapshot']! as Map).cast<String, dynamic>())).input()).input(),
       parentVolumeId: (map['parentVolumeId'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      recordSizeKib: map['recordSizeKib'] == null ? null : (map['recordSizeKib'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      storageCapacityQuotaGib: map['storageCapacityQuotaGib'] == null ? null : (map['storageCapacityQuotaGib'] as int).input(),
-      storageCapacityReservationGib: map['storageCapacityReservationGib'] == null ? null : (map['storageCapacityReservationGib'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userAndGroupQuotas: map['userAndGroupQuotas'] == null ? null : (pulumi.Input.decodeList<OpenZfsVolumeUserAndGroupQuota>(map['userAndGroupQuotas'], (value) => OpenZfsVolumeUserAndGroupQuota.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : ((map['readOnly'] as bool).input()).input(),
+      recordSizeKib: map['recordSizeKib'] == null ? null : ((map['recordSizeKib'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      storageCapacityQuotaGib: map['storageCapacityQuotaGib'] == null ? null : ((map['storageCapacityQuotaGib'] as int).input()).input(),
+      storageCapacityReservationGib: map['storageCapacityReservationGib'] == null ? null : ((map['storageCapacityReservationGib'] as int).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      userAndGroupQuotas: map['userAndGroupQuotas'] == null ? null : ((pulumi.Input.decodeList<OpenZfsVolumeUserAndGroupQuota>(map['userAndGroupQuotas']!, (value) => OpenZfsVolumeUserAndGroupQuota.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      volumeType: map['volumeType'] == null ? null : ((map['volumeType'] as String).input()).input(),
     );
   }
 }

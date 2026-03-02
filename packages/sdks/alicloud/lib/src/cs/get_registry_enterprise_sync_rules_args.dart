@@ -54,13 +54,13 @@ class GetRegistryEnterpriseSyncRulesArgs {
 
   factory GetRegistryEnterpriseSyncRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryEnterpriseSyncRulesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
-      targetInstanceId: map['targetInstanceId'] == null ? null : (map['targetInstanceId'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
+      targetInstanceId: map['targetInstanceId'] == null ? null : (map['targetInstanceId']! as String).input(),
     );
   }
 }

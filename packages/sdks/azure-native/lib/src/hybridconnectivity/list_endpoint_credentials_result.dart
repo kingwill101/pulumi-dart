@@ -46,11 +46,11 @@ class ListEndpointCredentialsResult {
   factory ListEndpointCredentialsResult.fromMap(Map<String, dynamic> map) {
     return ListEndpointCredentialsResult(
       accessKey: map['accessKey'] as String,
-      expiresOn: map['expiresOn'] == null ? null : map['expiresOn'] as double,
+      expiresOn: map['expiresOn'] == null ? null : map['expiresOn']! as double,
       hybridConnectionName: map['hybridConnectionName'] as String,
       namespaceName: map['namespaceName'] as String,
       namespaceNameSuffix: map['namespaceNameSuffix'] as String,
-      serviceConfigurationToken: map['serviceConfigurationToken'] == null ? null : map['serviceConfigurationToken'] as String,
+      serviceConfigurationToken: map['serviceConfigurationToken'] == null ? null : map['serviceConfigurationToken']! as String,
     );
   }
 }

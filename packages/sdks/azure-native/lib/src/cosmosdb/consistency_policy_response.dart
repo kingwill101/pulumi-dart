@@ -32,8 +32,8 @@ class ConsistencyPolicyResponse {
   factory ConsistencyPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ConsistencyPolicyResponse(
       defaultConsistencyLevel: (map['defaultConsistencyLevel'] as String).input(),
-      maxIntervalInSeconds: map['maxIntervalInSeconds'] == null ? null : (map['maxIntervalInSeconds'] as int).input(),
-      maxStalenessPrefix: map['maxStalenessPrefix'] == null ? null : (map['maxStalenessPrefix'] as double).input(),
+      maxIntervalInSeconds: map['maxIntervalInSeconds'] == null ? null : (map['maxIntervalInSeconds']! as int).input(),
+      maxStalenessPrefix: map['maxStalenessPrefix'] == null ? null : (map['maxStalenessPrefix']! as double).input(),
     );
   }
 }

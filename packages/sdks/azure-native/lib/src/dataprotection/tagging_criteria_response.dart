@@ -38,7 +38,7 @@ class TaggingCriteriaResponse {
 
   factory TaggingCriteriaResponse.fromMap(Map<String, dynamic> map) {
     return TaggingCriteriaResponse(
-      criteria: map['criteria'] == null ? null : (pulumi.Input.decodeList<ScheduleBasedBackupCriteriaResponse>(map['criteria'], (value) => ScheduleBasedBackupCriteriaResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      criteria: map['criteria'] == null ? null : (pulumi.Input.decodeList<ScheduleBasedBackupCriteriaResponse>(map['criteria']!, (value) => ScheduleBasedBackupCriteriaResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       isDefault: (map['isDefault'] as bool).input(),
       tagInfo: (RetentionTagResponse.fromMap((map['tagInfo'] as Map).cast<String, dynamic>())).input(),
       taggingPriority: (map['taggingPriority'] as double).input(),

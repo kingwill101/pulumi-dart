@@ -32,8 +32,8 @@ class VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse {
   factory VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse(
       assignmentType: (map['assignmentType'] as String).input(),
-      gpuName: map['gpuName'] == null ? null : (map['gpuName'] as String).input(),
-      partitionSizeMB: map['partitionSizeMB'] == null ? null : (map['partitionSizeMB'] as double).input(),
+      gpuName: map['gpuName'] == null ? null : (map['gpuName']! as String).input(),
+      partitionSizeMB: map['partitionSizeMB'] == null ? null : (map['partitionSizeMB']! as double).input(),
     );
   }
 }

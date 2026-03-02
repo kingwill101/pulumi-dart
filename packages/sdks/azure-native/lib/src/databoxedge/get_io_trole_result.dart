@@ -93,17 +93,17 @@ class GetIoTRoleResult {
   factory GetIoTRoleResult.fromMap(Map<String, dynamic> map) {
     return GetIoTRoleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      computeResource: map['computeResource'] == null ? null : ComputeResourceResponse.fromMap((map['computeResource'] as Map).cast<String, dynamic>()),
+      computeResource: map['computeResource'] == null ? null : ComputeResourceResponse.fromMap((map['computeResource']! as Map).cast<String, dynamic>()),
       hostPlatform: map['hostPlatform'] as String,
       hostPlatformType: map['hostPlatformType'] as String,
       id: map['id'] as String,
       ioTDeviceDetails: IoTDeviceInfoResponse.fromMap((map['ioTDeviceDetails'] as Map).cast<String, dynamic>()),
-      ioTEdgeAgentInfo: map['ioTEdgeAgentInfo'] == null ? null : IoTEdgeAgentInfoResponse.fromMap((map['ioTEdgeAgentInfo'] as Map).cast<String, dynamic>()),
+      ioTEdgeAgentInfo: map['ioTEdgeAgentInfo'] == null ? null : IoTEdgeAgentInfoResponse.fromMap((map['ioTEdgeAgentInfo']! as Map).cast<String, dynamic>()),
       ioTEdgeDeviceDetails: IoTDeviceInfoResponse.fromMap((map['ioTEdgeDeviceDetails'] as Map).cast<String, dynamic>()),
       kind: map['kind'] as String,
       name: map['name'] as String,
       roleStatus: map['roleStatus'] as String,
-      shareMappings: map['shareMappings'] == null ? null : pulumi.Input.decodeList<MountPointMapResponse>(map['shareMappings'], (value) => MountPointMapResponse.fromMap((value as Map).cast<String, dynamic>())),
+      shareMappings: map['shareMappings'] == null ? null : pulumi.Input.decodeList<MountPointMapResponse>(map['shareMappings']!, (value) => MountPointMapResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

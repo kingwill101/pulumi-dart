@@ -44,11 +44,11 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
       title: (map['title'] as String).input(),
-      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName']! as String).input(),
     );
   }
 }

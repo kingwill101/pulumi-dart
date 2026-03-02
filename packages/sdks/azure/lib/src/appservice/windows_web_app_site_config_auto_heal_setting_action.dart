@@ -32,8 +32,8 @@ class WindowsWebAppSiteConfigAutoHealSettingAction {
   factory WindowsWebAppSiteConfigAutoHealSettingAction.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSiteConfigAutoHealSettingAction(
       actionType: (map['actionType'] as String).input(),
-      customAction: map['customAction'] == null ? null : (WindowsWebAppSiteConfigAutoHealSettingActionCustomAction.fromMap((map['customAction'] as Map).cast<String, dynamic>())).input(),
-      minimumProcessExecutionTime: map['minimumProcessExecutionTime'] == null ? null : (map['minimumProcessExecutionTime'] as String).input(),
+      customAction: map['customAction'] == null ? null : (WindowsWebAppSiteConfigAutoHealSettingActionCustomAction.fromMap((map['customAction']! as Map).cast<String, dynamic>())).input(),
+      minimumProcessExecutionTime: map['minimumProcessExecutionTime'] == null ? null : (map['minimumProcessExecutionTime']! as String).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class PoolSecurityProfile {
 
   factory PoolSecurityProfile.fromMap(Map<String, dynamic> map) {
     return PoolSecurityProfile(
-      hostEncryptionEnabled: map['hostEncryptionEnabled'] == null ? null : (map['hostEncryptionEnabled'] as bool).input(),
-      secureBootEnabled: map['secureBootEnabled'] == null ? null : (map['secureBootEnabled'] as bool).input(),
-      securityType: map['securityType'] == null ? null : (map['securityType'] as String).input(),
-      vtpmEnabled: map['vtpmEnabled'] == null ? null : (map['vtpmEnabled'] as bool).input(),
+      hostEncryptionEnabled: map['hostEncryptionEnabled'] == null ? null : (map['hostEncryptionEnabled']! as bool).input(),
+      secureBootEnabled: map['secureBootEnabled'] == null ? null : (map['secureBootEnabled']! as bool).input(),
+      securityType: map['securityType'] == null ? null : (map['securityType']! as String).input(),
+      vtpmEnabled: map['vtpmEnabled'] == null ? null : (map['vtpmEnabled']! as bool).input(),
     );
   }
 }

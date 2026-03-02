@@ -80,18 +80,18 @@ class RolloutArgs {
 
   factory RolloutArgs.fromMap(Map<String, dynamic> map) {
     return RolloutArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       deliveryPipelineId: (map['deliveryPipelineId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       releaseId: (map['releaseId'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       rolloutId: (map['rolloutId'] as String).input(),
-      startingPhaseId: map['startingPhaseId'] == null ? null : (map['startingPhaseId'] as String).input(),
+      startingPhaseId: map['startingPhaseId'] == null ? null : (map['startingPhaseId']! as String).input(),
       targetId: (map['targetId'] as String).input(),
     );
   }

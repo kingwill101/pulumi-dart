@@ -27,8 +27,8 @@ class StatelessRule {
 
   factory StatelessRule.fromMap(Map<String, dynamic> map) {
     return StatelessRule(
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      ruleDefinition: map['ruleDefinition'] == null ? null : (RuleDefinition.fromMap((map['ruleDefinition'] as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      ruleDefinition: map['ruleDefinition'] == null ? null : (RuleDefinition.fromMap((map['ruleDefinition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -43,7 +43,7 @@ class AzureBackupRuleResponse {
 
   factory AzureBackupRuleResponse.fromMap(Map<String, dynamic> map) {
     return AzureBackupRuleResponse(
-      backupParameters: map['backupParameters'] == null ? null : (AzureBackupParamsResponse.fromMap((map['backupParameters'] as Map).cast<String, dynamic>())).input(),
+      backupParameters: map['backupParameters'] == null ? null : (AzureBackupParamsResponse.fromMap((map['backupParameters']! as Map).cast<String, dynamic>())).input(),
       dataStore: (DataStoreInfoBaseResponse.fromMap((map['dataStore'] as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       objectType: (map['objectType'] as String).input(),

@@ -67,14 +67,14 @@ class ClientTlsPolicyArgs {
 
   factory ClientTlsPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ClientTlsPolicyArgs(
-      clientCertificate: map['clientCertificate'] == null ? null : (ClientTlsPolicyClientCertificate.fromMap((map['clientCertificate'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serverValidationCas: map['serverValidationCas'] == null ? null : (pulumi.Input.decodeList<ClientTlsPolicyServerValidationCa>(map['serverValidationCas'], (value) => ClientTlsPolicyServerValidationCa.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sni: map['sni'] == null ? null : (map['sni'] as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (ClientTlsPolicyClientCertificate.fromMap((map['clientCertificate']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serverValidationCas: map['serverValidationCas'] == null ? null : (pulumi.Input.decodeList<ClientTlsPolicyServerValidationCa>(map['serverValidationCas']!, (value) => ClientTlsPolicyServerValidationCa.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sni: map['sni'] == null ? null : (map['sni']! as String).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class LifecyclePolicy {
 
   factory LifecyclePolicy.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicy(
-      lifecyclePolicyText: map['lifecyclePolicyText'] == null ? null : (map['lifecyclePolicyText'] as String).input(),
-      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
-      transitionToArchive: map['transitionToArchive'] == null ? null : (map['transitionToArchive'] as String).input(),
-      transitionToIA: map['transitionToIA'] == null ? null : (map['transitionToIA'] as String).input(),
-      transitionToPrimaryStorageClass: map['transitionToPrimaryStorageClass'] == null ? null : (map['transitionToPrimaryStorageClass'] as String).input(),
+      lifecyclePolicyText: map['lifecyclePolicyText'] == null ? null : (map['lifecyclePolicyText']! as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId']! as String).input(),
+      transitionToArchive: map['transitionToArchive'] == null ? null : (map['transitionToArchive']! as String).input(),
+      transitionToIA: map['transitionToIA'] == null ? null : (map['transitionToIA']! as String).input(),
+      transitionToPrimaryStorageClass: map['transitionToPrimaryStorageClass'] == null ? null : (map['transitionToPrimaryStorageClass']! as String).input(),
     );
   }
 }

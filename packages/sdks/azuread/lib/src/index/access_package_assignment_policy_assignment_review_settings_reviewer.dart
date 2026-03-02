@@ -30,8 +30,8 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer {
 
   factory AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer(
-      backup: map['backup'] == null ? null : (map['backup'] as bool).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      backup: map['backup'] == null ? null : (map['backup']! as bool).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
       subjectType: (map['subjectType'] as String).input(),
     );
   }

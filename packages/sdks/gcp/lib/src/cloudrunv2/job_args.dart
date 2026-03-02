@@ -103,18 +103,18 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      binaryAuthorization: map['binaryAuthorization'] == null ? null : (JobBinaryAuthorization.fromMap((map['binaryAuthorization'] as Map).cast<String, dynamic>())).input(),
-      client: map['client'] == null ? null : (map['client'] as String).input(),
-      clientVersion: map['clientVersion'] == null ? null : (map['clientVersion'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      launchStage: map['launchStage'] == null ? null : (map['launchStage'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      binaryAuthorization: map['binaryAuthorization'] == null ? null : (JobBinaryAuthorization.fromMap((map['binaryAuthorization']! as Map).cast<String, dynamic>())).input(),
+      client: map['client'] == null ? null : (map['client']! as String).input(),
+      clientVersion: map['clientVersion'] == null ? null : (map['clientVersion']! as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      launchStage: map['launchStage'] == null ? null : (map['launchStage']! as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      runExecutionToken: map['runExecutionToken'] == null ? null : (map['runExecutionToken'] as String).input(),
-      startExecutionToken: map['startExecutionToken'] == null ? null : (map['startExecutionToken'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      runExecutionToken: map['runExecutionToken'] == null ? null : (map['runExecutionToken']! as String).input(),
+      startExecutionToken: map['startExecutionToken'] == null ? null : (map['startExecutionToken']! as String).input(),
       template: (JobTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -77,18 +77,18 @@ class MigrationEntityProperties {
 
   factory MigrationEntityProperties.fromMap(Map<String, dynamic> map) {
     return MigrationEntityProperties(
-      assessedEntityArmId: map['assessedEntityArmId'] == null ? null : (map['assessedEntityArmId'] as String).input(),
-      associatedAssessmentId: map['associatedAssessmentId'] == null ? null : (map['associatedAssessmentId'] as String).input(),
+      assessedEntityArmId: map['assessedEntityArmId'] == null ? null : (map['assessedEntityArmId']! as String).input(),
+      associatedAssessmentId: map['associatedAssessmentId'] == null ? null : (map['associatedAssessmentId']! as String).input(),
       associatedInventoryResourceId: (map['associatedInventoryResourceId'] as String).input(),
-      associatedMigrationEntityGroupIds: map['associatedMigrationEntityGroupIds'] == null ? null : ((map['associatedMigrationEntityGroupIds'] as List).cast<String>()).input(),
-      associatedWaveId: map['associatedWaveId'] == null ? null : (map['associatedWaveId'] as String).input(),
+      associatedMigrationEntityGroupIds: map['associatedMigrationEntityGroupIds'] == null ? null : ((map['associatedMigrationEntityGroupIds']! as List).cast<String>()).input(),
+      associatedWaveId: map['associatedWaveId'] == null ? null : (map['associatedWaveId']! as String).input(),
       inventoryDisplayName: (map['inventoryDisplayName'] as String).input(),
-      migrationPath: map['migrationPath'] == null ? null : (map['migrationPath'] as String).input(),
-      migrationSpecificProperties: map['migrationSpecificProperties'] == null ? null : (ServerMigrationSpecificProperties.fromMap((map['migrationSpecificProperties'] as Map).cast<String, dynamic>())).input(),
-      migrationTool: map['migrationTool'] == null ? null : (map['migrationTool'] as String).input(),
-      partnerResourceArmId: map['partnerResourceArmId'] == null ? null : (map['partnerResourceArmId'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      targetAzureResourceArmId: map['targetAzureResourceArmId'] == null ? null : (map['targetAzureResourceArmId'] as String).input(),
+      migrationPath: map['migrationPath'] == null ? null : (map['migrationPath']! as String).input(),
+      migrationSpecificProperties: map['migrationSpecificProperties'] == null ? null : (ServerMigrationSpecificProperties.fromMap((map['migrationSpecificProperties']! as Map).cast<String, dynamic>())).input(),
+      migrationTool: map['migrationTool'] == null ? null : (map['migrationTool']! as String).input(),
+      partnerResourceArmId: map['partnerResourceArmId'] == null ? null : (map['partnerResourceArmId']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      targetAzureResourceArmId: map['targetAzureResourceArmId'] == null ? null : (map['targetAzureResourceArmId']! as String).input(),
     );
   }
 }

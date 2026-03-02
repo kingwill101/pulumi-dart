@@ -40,11 +40,11 @@ class ClusterPscConnection {
 
   factory ClusterPscConnection.fromMap(Map<String, dynamic> map) {
     return ClusterPscConnection(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      forwardingRule: map['forwardingRule'] == null ? null : (map['forwardingRule'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      pscConnectionId: map['pscConnectionId'] == null ? null : (map['pscConnectionId'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      forwardingRule: map['forwardingRule'] == null ? null : (map['forwardingRule']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      pscConnectionId: map['pscConnectionId'] == null ? null : (map['pscConnectionId']! as String).input(),
     );
   }
 }

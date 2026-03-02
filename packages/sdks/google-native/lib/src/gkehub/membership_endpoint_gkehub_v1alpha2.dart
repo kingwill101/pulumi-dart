@@ -52,12 +52,12 @@ class MembershipEndpointGkehubV1alpha2 {
 
   factory MembershipEndpointGkehubV1alpha2.fromMap(Map<String, dynamic> map) {
     return MembershipEndpointGkehubV1alpha2(
-      applianceCluster: map['applianceCluster'] == null ? null : (ApplianceClusterGkehubV1alpha2.fromMap((map['applianceCluster'] as Map).cast<String, dynamic>())).input(),
-      edgeCluster: map['edgeCluster'] == null ? null : (EdgeClusterGkehubV1alpha2.fromMap((map['edgeCluster'] as Map).cast<String, dynamic>())).input(),
-      gkeCluster: map['gkeCluster'] == null ? null : (GkeClusterGkehubV1alpha2.fromMap((map['gkeCluster'] as Map).cast<String, dynamic>())).input(),
-      kubernetesResource: map['kubernetesResource'] == null ? null : (KubernetesResourceGkehubV1alpha2.fromMap((map['kubernetesResource'] as Map).cast<String, dynamic>())).input(),
-      multiCloudCluster: map['multiCloudCluster'] == null ? null : (MultiCloudClusterGkehubV1alpha2.fromMap((map['multiCloudCluster'] as Map).cast<String, dynamic>())).input(),
-      onPremCluster: map['onPremCluster'] == null ? null : (OnPremClusterGkehubV1alpha2.fromMap((map['onPremCluster'] as Map).cast<String, dynamic>())).input(),
+      applianceCluster: map['applianceCluster'] == null ? null : (ApplianceClusterGkehubV1alpha2.fromMap((map['applianceCluster']! as Map).cast<String, dynamic>())).input(),
+      edgeCluster: map['edgeCluster'] == null ? null : (EdgeClusterGkehubV1alpha2.fromMap((map['edgeCluster']! as Map).cast<String, dynamic>())).input(),
+      gkeCluster: map['gkeCluster'] == null ? null : (GkeClusterGkehubV1alpha2.fromMap((map['gkeCluster']! as Map).cast<String, dynamic>())).input(),
+      kubernetesResource: map['kubernetesResource'] == null ? null : (KubernetesResourceGkehubV1alpha2.fromMap((map['kubernetesResource']! as Map).cast<String, dynamic>())).input(),
+      multiCloudCluster: map['multiCloudCluster'] == null ? null : (MultiCloudClusterGkehubV1alpha2.fromMap((map['multiCloudCluster']! as Map).cast<String, dynamic>())).input(),
+      onPremCluster: map['onPremCluster'] == null ? null : (OnPremClusterGkehubV1alpha2.fromMap((map['onPremCluster']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

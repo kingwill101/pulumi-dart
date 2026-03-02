@@ -56,14 +56,14 @@ class RaiTopicProperties {
 
   factory RaiTopicProperties.fromMap(Map<String, dynamic> map) {
     return RaiTopicProperties(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      failedReason: map['failedReason'] == null ? null : (map['failedReason'] as String).input(),
-      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt'] as String).input(),
-      sampleBlobUrl: map['sampleBlobUrl'] == null ? null : (map['sampleBlobUrl'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      topicId: map['topicId'] == null ? null : (map['topicId'] as String).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      failedReason: map['failedReason'] == null ? null : (map['failedReason']! as String).input(),
+      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt']! as String).input(),
+      sampleBlobUrl: map['sampleBlobUrl'] == null ? null : (map['sampleBlobUrl']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      topicId: map['topicId'] == null ? null : (map['topicId']! as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
     );
   }
 }

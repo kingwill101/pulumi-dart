@@ -25,8 +25,8 @@ class UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings {
 
   factory UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCanvasAppSettingsEmrServerlessSettings(
-      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

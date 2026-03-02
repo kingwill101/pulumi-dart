@@ -52,13 +52,13 @@ class InvitationState {
 
   factory InvitationState.fromMap(Map<String, dynamic> map) {
     return InvitationState(
-      message: map['message'] == null ? null : (InvitationMessage.fromMap((map['message'] as Map).cast<String, dynamic>())).input(),
-      redeemUrl: map['redeemUrl'] == null ? null : (map['redeemUrl'] as String).input(),
-      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
-      userDisplayName: map['userDisplayName'] == null ? null : (map['userDisplayName'] as String).input(),
-      userEmailAddress: map['userEmailAddress'] == null ? null : (map['userEmailAddress'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
-      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
+      message: map['message'] == null ? null : (InvitationMessage.fromMap((map['message']! as Map).cast<String, dynamic>())).input(),
+      redeemUrl: map['redeemUrl'] == null ? null : (map['redeemUrl']! as String).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl']! as String).input(),
+      userDisplayName: map['userDisplayName'] == null ? null : (map['userDisplayName']! as String).input(),
+      userEmailAddress: map['userEmailAddress'] == null ? null : (map['userEmailAddress']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      userType: map['userType'] == null ? null : (map['userType']! as String).input(),
     );
   }
 }

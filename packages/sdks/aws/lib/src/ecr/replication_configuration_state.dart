@@ -32,9 +32,9 @@ class ReplicationConfigurationState {
 
   factory ReplicationConfigurationState.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
-      replicationConfiguration: map['replicationConfiguration'] == null ? null : (ReplicationConfigurationReplicationConfiguration.fromMap((map['replicationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registryId: map['registryId'] == null ? null : ((map['registryId'] as String).input()).input(),
+      replicationConfiguration: map['replicationConfiguration'] == null ? null : ((ReplicationConfigurationReplicationConfiguration.fromMap((map['replicationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

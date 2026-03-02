@@ -38,8 +38,8 @@ class GetSubnetworkIamPolicyArgs {
 
   factory GetSubnetworkIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetworkIamPolicyArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       subnetwork: (map['subnetwork'] as String).input(),
     );
   }

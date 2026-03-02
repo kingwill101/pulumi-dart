@@ -38,7 +38,7 @@ class CooWebCcRuleArgs {
   factory CooWebCcRuleArgs.fromMap(Map<String, dynamic> map) {
     return CooWebCcRuleArgs(
       domain: (map['domain'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       ruleDetail: (CooWebCcRuleRuleDetail.fromMap((map['ruleDetail'] as Map).cast<String, dynamic>())).input(),
     );
   }

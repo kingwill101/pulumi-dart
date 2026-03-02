@@ -34,9 +34,9 @@ class UserMembershipV3State {
 
   factory UserMembershipV3State.fromMap(Map<String, dynamic> map) {
     return UserMembershipV3State(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

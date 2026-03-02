@@ -87,20 +87,20 @@ class SqlConnectionInfoResponse {
 
   factory SqlConnectionInfoResponse.fromMap(Map<String, dynamic> map) {
     return SqlConnectionInfoResponse(
-      additionalSettings: map['additionalSettings'] == null ? null : (map['additionalSettings'] as String).input(),
-      authentication: map['authentication'] == null ? null : (map['authentication'] as String).input(),
+      additionalSettings: map['additionalSettings'] == null ? null : (map['additionalSettings']! as String).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication']! as String).input(),
       dataSource: (map['dataSource'] as String).input(),
-      encryptConnection: map['encryptConnection'] == null ? null : (map['encryptConnection'] as bool).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      serverBrandVersion: map['serverBrandVersion'] == null ? null : (map['serverBrandVersion'] as String).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
-      trustServerCertificate: map['trustServerCertificate'] == null ? null : (map['trustServerCertificate'] as bool).input(),
+      encryptConnection: map['encryptConnection'] == null ? null : (map['encryptConnection']! as bool).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      serverBrandVersion: map['serverBrandVersion'] == null ? null : (map['serverBrandVersion']! as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
+      trustServerCertificate: map['trustServerCertificate'] == null ? null : (map['trustServerCertificate']! as bool).input(),
       type: (map['type'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

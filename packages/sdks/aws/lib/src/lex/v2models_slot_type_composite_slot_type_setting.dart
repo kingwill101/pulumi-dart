@@ -22,7 +22,7 @@ class V2modelsSlotTypeCompositeSlotTypeSetting {
 
   factory V2modelsSlotTypeCompositeSlotTypeSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotTypeCompositeSlotTypeSetting(
-      subSlots: map['subSlots'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>(map['subSlots'], (value) => V2modelsSlotTypeCompositeSlotTypeSettingSubSlot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subSlots: map['subSlots'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotTypeCompositeSlotTypeSettingSubSlot>(map['subSlots']!, (value) => V2modelsSlotTypeCompositeSlotTypeSettingSubSlot.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

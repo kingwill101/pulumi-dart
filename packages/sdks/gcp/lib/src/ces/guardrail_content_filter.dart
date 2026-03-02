@@ -44,10 +44,10 @@ class GuardrailContentFilter {
 
   factory GuardrailContentFilter.fromMap(Map<String, dynamic> map) {
     return GuardrailContentFilter(
-      bannedContents: map['bannedContents'] == null ? null : ((map['bannedContents'] as List).cast<String>()).input(),
-      bannedContentsInAgentResponses: map['bannedContentsInAgentResponses'] == null ? null : ((map['bannedContentsInAgentResponses'] as List).cast<String>()).input(),
-      bannedContentsInUserInputs: map['bannedContentsInUserInputs'] == null ? null : ((map['bannedContentsInUserInputs'] as List).cast<String>()).input(),
-      disregardDiacritics: map['disregardDiacritics'] == null ? null : (map['disregardDiacritics'] as bool).input(),
+      bannedContents: map['bannedContents'] == null ? null : ((map['bannedContents']! as List).cast<String>()).input(),
+      bannedContentsInAgentResponses: map['bannedContentsInAgentResponses'] == null ? null : ((map['bannedContentsInAgentResponses']! as List).cast<String>()).input(),
+      bannedContentsInUserInputs: map['bannedContentsInUserInputs'] == null ? null : ((map['bannedContentsInUserInputs']! as List).cast<String>()).input(),
+      disregardDiacritics: map['disregardDiacritics'] == null ? null : (map['disregardDiacritics']! as bool).input(),
       matchType: (map['matchType'] as String).input(),
     );
   }

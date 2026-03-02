@@ -25,7 +25,7 @@ class ClusterIpAllocationPolicyAdditionalIpRangesConfig {
 
   factory ClusterIpAllocationPolicyAdditionalIpRangesConfig.fromMap(Map<String, dynamic> map) {
     return ClusterIpAllocationPolicyAdditionalIpRangesConfig(
-      podIpv4RangeNames: map['podIpv4RangeNames'] == null ? null : ((map['podIpv4RangeNames'] as List).cast<String>()).input(),
+      podIpv4RangeNames: map['podIpv4RangeNames'] == null ? null : ((map['podIpv4RangeNames']! as List).cast<String>()).input(),
       subnetwork: (map['subnetwork'] as String).input(),
     );
   }

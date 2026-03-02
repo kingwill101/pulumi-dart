@@ -70,14 +70,14 @@ class AppVersionSnapshotToolset {
 
   factory AppVersionSnapshotToolset.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolset(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      executionType: map['executionType'] == null ? null : (map['executionType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      openApiToolsets: map['openApiToolsets'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolsetOpenApiToolset>(map['openApiToolsets'], (value) => AppVersionSnapshotToolsetOpenApiToolset.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      executionType: map['executionType'] == null ? null : (map['executionType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      openApiToolsets: map['openApiToolsets'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolsetOpenApiToolset>(map['openApiToolsets']!, (value) => AppVersionSnapshotToolsetOpenApiToolset.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

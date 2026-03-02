@@ -40,10 +40,10 @@ class AssociatedTenantArgs {
 
   factory AssociatedTenantArgs.fromMap(Map<String, dynamic> map) {
     return AssociatedTenantArgs(
-      associatedTenantName: map['associatedTenantName'] == null ? null : (map['associatedTenantName'] as String).input(),
+      associatedTenantName: map['associatedTenantName'] == null ? null : (map['associatedTenantName']! as String).input(),
       billingAccountName: (map['billingAccountName'] as String).input(),
-      properties: map['properties'] == null ? null : (AssociatedTenantProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : (AssociatedTenantProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

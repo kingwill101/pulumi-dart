@@ -41,9 +41,9 @@ class SettingsApplicationSettingsAttributePropagationSettings {
 
   factory SettingsApplicationSettingsAttributePropagationSettings.fromMap(Map<String, dynamic> map) {
     return SettingsApplicationSettingsAttributePropagationSettings(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      outputCredentials: map['outputCredentials'] == null ? null : ((map['outputCredentials'] as List).cast<String>()).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      outputCredentials: map['outputCredentials'] == null ? null : ((map['outputCredentials']! as List).cast<String>()).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class FindingAggregatorState {
 
   factory FindingAggregatorState.fromMap(Map<String, dynamic> map) {
     return FindingAggregatorState(
-      linkingMode: map['linkingMode'] == null ? null : (map['linkingMode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      specifiedRegions: map['specifiedRegions'] == null ? null : ((map['specifiedRegions'] as List).cast<String>()).input(),
+      linkingMode: map['linkingMode'] == null ? null : ((map['linkingMode'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      specifiedRegions: map['specifiedRegions'] == null ? null : (((map['specifiedRegions'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class Action {
 
   factory Action.fromMap(Map<String, dynamic> map) {
     return Action(
-      type: map['type'] == null ? null : (KeyRotationPolicyActionType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (KeyRotationPolicyActionType.fromValue(map['type']! as String)).input(),
     );
   }
 }

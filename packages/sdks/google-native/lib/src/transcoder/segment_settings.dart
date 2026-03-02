@@ -27,7 +27,7 @@ class SegmentSettings {
   factory SegmentSettings.fromMap(Map<String, dynamic> map) {
     return SegmentSettings(
       individualSegments: (map['individualSegments'] as bool).input(),
-      segmentDuration: map['segmentDuration'] == null ? null : (map['segmentDuration'] as String).input(),
+      segmentDuration: map['segmentDuration'] == null ? null : (map['segmentDuration']! as String).input(),
     );
   }
 }

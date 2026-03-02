@@ -33,7 +33,7 @@ class TaskSpecResponse {
     return TaskSpecResponse(
       name: (map['name'] as String).input(),
       specification: (map['specification']).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
     );
   }
 }

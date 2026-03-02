@@ -74,17 +74,17 @@ class SnapshotCopyArgs {
 
   factory SnapshotCopyArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotCopyArgs(
-      completionDurationMinutes: map['completionDurationMinutes'] == null ? null : (map['completionDurationMinutes'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      permanentRestore: map['permanentRestore'] == null ? null : (map['permanentRestore'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      completionDurationMinutes: map['completionDurationMinutes'] == null ? null : ((map['completionDurationMinutes'] as int).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      permanentRestore: map['permanentRestore'] == null ? null : ((map['permanentRestore'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       sourceRegion: (map['sourceRegion'] as String).input(),
       sourceSnapshotId: (map['sourceSnapshotId'] as String).input(),
-      storageTier: map['storageTier'] == null ? null : (map['storageTier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : (map['temporaryRestoreDays'] as int).input(),
+      storageTier: map['storageTier'] == null ? null : ((map['storageTier'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      temporaryRestoreDays: map['temporaryRestoreDays'] == null ? null : ((map['temporaryRestoreDays'] as int).input()).input(),
     );
   }
 }

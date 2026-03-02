@@ -39,10 +39,10 @@ class SecretVolumeSourcePatch {
 
   factory SecretVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return SecretVolumeSourcePatch(
-      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode'] as int).input(),
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<KeyToPathPatch>(map['items'], (value) => KeyToPathPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode']! as int).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<KeyToPathPatch>(map['items']!, (value) => KeyToPathPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
     );
   }
 }

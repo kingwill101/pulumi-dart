@@ -22,7 +22,7 @@ class DownwardAPIProjectionPatch {
 
   factory DownwardAPIProjectionPatch.fromMap(Map<String, dynamic> map) {
     return DownwardAPIProjectionPatch(
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<DownwardAPIVolumeFilePatch>(map['items'], (value) => DownwardAPIVolumeFilePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<DownwardAPIVolumeFilePatch>(map['items']!, (value) => DownwardAPIVolumeFilePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

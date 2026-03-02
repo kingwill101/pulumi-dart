@@ -109,12 +109,12 @@ class GetGen1EnvironmentResult {
       kind: map['kind'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      partitionKeyProperties: map['partitionKeyProperties'] == null ? null : pulumi.Input.decodeList<TimeSeriesIdPropertyResponse>(map['partitionKeyProperties'], (value) => TimeSeriesIdPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      partitionKeyProperties: map['partitionKeyProperties'] == null ? null : pulumi.Input.decodeList<TimeSeriesIdPropertyResponse>(map['partitionKeyProperties']!, (value) => TimeSeriesIdPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
       sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
       status: EnvironmentStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      storageLimitExceededBehavior: map['storageLimitExceededBehavior'] == null ? null : map['storageLimitExceededBehavior'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      storageLimitExceededBehavior: map['storageLimitExceededBehavior'] == null ? null : map['storageLimitExceededBehavior']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

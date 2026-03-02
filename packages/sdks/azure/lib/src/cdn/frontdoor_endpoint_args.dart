@@ -40,9 +40,9 @@ class FrontdoorEndpointArgs {
   factory FrontdoorEndpointArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorEndpointArgs(
       cdnFrontdoorProfileId: (map['cdnFrontdoorProfileId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

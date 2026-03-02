@@ -40,7 +40,7 @@ class TemplateSourceArgs {
 
   factory TemplateSourceArgs.fromMap(Map<String, dynamic> map) {
     return TemplateSourceArgs(
-      destination: map['destination'] == null ? null : (TemplateSourceDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      destination: map['destination'] == null ? null : (TemplateSourceDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
       organizationName: (map['organizationName'] as String).input(),
       sourceName: (map['sourceName'] as String).input(),
       sourceURL: (map['sourceURL'] as String).input(),

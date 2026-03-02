@@ -30,7 +30,7 @@ class AppHostingBackendCodebase {
   factory AppHostingBackendCodebase.fromMap(Map<String, dynamic> map) {
     return AppHostingBackendCodebase(
       repository: (map['repository'] as String).input(),
-      rootDirectory: map['rootDirectory'] == null ? null : (map['rootDirectory'] as String).input(),
+      rootDirectory: map['rootDirectory'] == null ? null : (map['rootDirectory']! as String).input(),
     );
   }
 }

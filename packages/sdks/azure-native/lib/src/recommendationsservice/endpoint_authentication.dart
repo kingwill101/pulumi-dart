@@ -31,9 +31,9 @@ class EndpointAuthentication {
 
   factory EndpointAuthentication.fromMap(Map<String, dynamic> map) {
     return EndpointAuthentication(
-      aadTenantID: map['aadTenantID'] == null ? null : (map['aadTenantID'] as String).input(),
-      principalID: map['principalID'] == null ? null : (map['principalID'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      aadTenantID: map['aadTenantID'] == null ? null : (map['aadTenantID']! as String).input(),
+      principalID: map['principalID'] == null ? null : (map['principalID']! as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
     );
   }
 }

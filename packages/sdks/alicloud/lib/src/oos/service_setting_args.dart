@@ -44,11 +44,11 @@ class ServiceSettingArgs {
 
   factory ServiceSettingArgs.fromMap(Map<String, dynamic> map) {
     return ServiceSettingArgs(
-      deliveryOssBucketName: map['deliveryOssBucketName'] == null ? null : (map['deliveryOssBucketName'] as String).input(),
-      deliveryOssEnabled: map['deliveryOssEnabled'] == null ? null : (map['deliveryOssEnabled'] as bool).input(),
-      deliveryOssKeyPrefix: map['deliveryOssKeyPrefix'] == null ? null : (map['deliveryOssKeyPrefix'] as String).input(),
-      deliverySlsEnabled: map['deliverySlsEnabled'] == null ? null : (map['deliverySlsEnabled'] as bool).input(),
-      deliverySlsProjectName: map['deliverySlsProjectName'] == null ? null : (map['deliverySlsProjectName'] as String).input(),
+      deliveryOssBucketName: map['deliveryOssBucketName'] == null ? null : (map['deliveryOssBucketName']! as String).input(),
+      deliveryOssEnabled: map['deliveryOssEnabled'] == null ? null : (map['deliveryOssEnabled']! as bool).input(),
+      deliveryOssKeyPrefix: map['deliveryOssKeyPrefix'] == null ? null : (map['deliveryOssKeyPrefix']! as String).input(),
+      deliverySlsEnabled: map['deliverySlsEnabled'] == null ? null : (map['deliverySlsEnabled']! as bool).input(),
+      deliverySlsProjectName: map['deliverySlsProjectName'] == null ? null : (map['deliverySlsProjectName']! as String).input(),
     );
   }
 }

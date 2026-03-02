@@ -20,7 +20,7 @@ class EndpointServicePrivateDnsVerificationTimeouts {
 
   factory EndpointServicePrivateDnsVerificationTimeouts.fromMap(Map<String, dynamic> map) {
     return EndpointServicePrivateDnsVerificationTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

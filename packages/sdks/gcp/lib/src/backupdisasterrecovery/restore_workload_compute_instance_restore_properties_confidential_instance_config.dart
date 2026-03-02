@@ -20,7 +20,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig 
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig(
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute'] as bool).input(),
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute']! as bool).input(),
     );
   }
 }

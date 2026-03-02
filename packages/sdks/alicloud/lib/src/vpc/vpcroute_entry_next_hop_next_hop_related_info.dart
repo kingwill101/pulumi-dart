@@ -30,9 +30,9 @@ class VPCRouteEntryNextHopNextHopRelatedInfo {
 
   factory VPCRouteEntryNextHopNextHopRelatedInfo.fromMap(Map<String, dynamic> map) {
     return VPCRouteEntryNextHopNextHopRelatedInfo(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
     );
   }
 }

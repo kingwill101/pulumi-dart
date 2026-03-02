@@ -97,18 +97,18 @@ class GetAssignmentResult {
   factory GetAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetAssignmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      blueprintId: map['blueprintId'] == null ? null : map['blueprintId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      blueprintId: map['blueprintId'] == null ? null : map['blueprintId']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       identity: ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
       location: map['location'] as String,
-      locks: map['locks'] == null ? null : AssignmentLockSettingsResponse.fromMap((map['locks'] as Map).cast<String, dynamic>()),
+      locks: map['locks'] == null ? null : AssignmentLockSettingsResponse.fromMap((map['locks']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       parameters: pulumi.Input.decodeMapValues<ParameterValueResponse>(map['parameters'], (value) => ParameterValueResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
       resourceGroups: pulumi.Input.decodeMapValues<ResourceGroupValueResponse>(map['resourceGroups'], (value) => ResourceGroupValueResponse.fromMap((value as Map).cast<String, dynamic>())),
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      scope: map['scope'] == null ? null : map['scope']! as String,
       status: AssignmentStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

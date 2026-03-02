@@ -76,7 +76,7 @@ class GetInferenceProfileResult {
       inferenceProfileArn: map['inferenceProfileArn'] as String,
       inferenceProfileId: map['inferenceProfileId'] as String,
       inferenceProfileName: map['inferenceProfileName'] as String,
-      models: pulumi.Input.decodeList<GetInferenceProfileModel>(map['models'], (value) => GetInferenceProfileModel.fromMap((value as Map).cast<String, dynamic>())),
+      models: pulumi.Input.decodeList<GetInferenceProfileModel>(map['models']!, (value) => GetInferenceProfileModel.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       status: map['status'] as String,
       type: map['type'] as String,

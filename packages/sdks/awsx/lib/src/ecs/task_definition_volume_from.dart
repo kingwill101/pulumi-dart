@@ -23,8 +23,8 @@ class TaskDefinitionVolumeFrom {
 
   factory TaskDefinitionVolumeFrom.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionVolumeFrom(
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      sourceContainer: map['sourceContainer'] == null ? null : (map['sourceContainer'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      sourceContainer: map['sourceContainer'] == null ? null : (map['sourceContainer']! as String).input(),
     );
   }
 }

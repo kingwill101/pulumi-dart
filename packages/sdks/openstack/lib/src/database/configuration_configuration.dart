@@ -31,7 +31,7 @@ class ConfigurationConfiguration {
   factory ConfigurationConfiguration.fromMap(Map<String, dynamic> map) {
     return ConfigurationConfiguration(
       name: (map['name'] as String).input(),
-      stringType: map['stringType'] == null ? null : (map['stringType'] as bool).input(),
+      stringType: map['stringType'] == null ? null : (map['stringType']! as bool).input(),
       value: (map['value'] as String).input(),
     );
   }

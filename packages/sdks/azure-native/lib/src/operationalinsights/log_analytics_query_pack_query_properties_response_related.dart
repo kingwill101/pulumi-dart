@@ -31,9 +31,9 @@ class LogAnalyticsQueryPackQueryPropertiesResponseRelated {
 
   factory LogAnalyticsQueryPackQueryPropertiesResponseRelated.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsQueryPackQueryPropertiesResponseRelated(
-      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
-      solutions: map['solutions'] == null ? null : ((map['solutions'] as List).cast<String>()).input(),
+      categories: map['categories'] == null ? null : ((map['categories']! as List).cast<String>()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
+      solutions: map['solutions'] == null ? null : ((map['solutions']! as List).cast<String>()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ListenerRuleMatchHttpMatchPathMatchMatch {
 
   factory ListenerRuleMatchHttpMatchPathMatchMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatchHttpMatchPathMatchMatch(
-      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      exact: map['exact'] == null ? null : ((map['exact'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig {
 
   factory LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig.fromMap(Map<String, dynamic> map) {
     return LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig(
-      volumeKmsKeyId: map['volumeKmsKeyId'] == null ? null : (map['volumeKmsKeyId'] as String).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : (LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      volumeKmsKeyId: map['volumeKmsKeyId'] == null ? null : ((map['volumeKmsKeyId'] as String).input()).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : ((LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

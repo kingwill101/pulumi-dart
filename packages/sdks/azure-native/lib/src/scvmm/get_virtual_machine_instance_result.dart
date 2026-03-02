@@ -94,18 +94,18 @@ class GetVirtualMachineInstanceResult {
 
   factory GetVirtualMachineInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineInstanceResult(
-      availabilitySets: map['availabilitySets'] == null ? null : pulumi.Input.decodeList<VirtualMachineInstancePropertiesResponseAvailabilitySets>(map['availabilitySets'], (value) => VirtualMachineInstancePropertiesResponseAvailabilitySets.fromMap((value as Map).cast<String, dynamic>())),
+      availabilitySets: map['availabilitySets'] == null ? null : pulumi.Input.decodeList<VirtualMachineInstancePropertiesResponseAvailabilitySets>(map['availabilitySets']!, (value) => VirtualMachineInstancePropertiesResponseAvailabilitySets.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
       extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
-      hardwareProfile: map['hardwareProfile'] == null ? null : HardwareProfileResponse.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>()),
+      hardwareProfile: map['hardwareProfile'] == null ? null : HardwareProfileResponse.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      infrastructureProfile: map['infrastructureProfile'] == null ? null : InfrastructureProfileResponse.fromMap((map['infrastructureProfile'] as Map).cast<String, dynamic>()),
+      infrastructureProfile: map['infrastructureProfile'] == null ? null : InfrastructureProfileResponse.fromMap((map['infrastructureProfile']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      networkProfile: map['networkProfile'] == null ? null : NetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>()),
-      osProfile: map['osProfile'] == null ? null : OsProfileForVMInstanceResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>()),
+      networkProfile: map['networkProfile'] == null ? null : NetworkProfileResponse.fromMap((map['networkProfile']! as Map).cast<String, dynamic>()),
+      osProfile: map['osProfile'] == null ? null : OsProfileForVMInstanceResponse.fromMap((map['osProfile']! as Map).cast<String, dynamic>()),
       powerState: map['powerState'] as String,
       provisioningState: map['provisioningState'] as String,
-      storageProfile: map['storageProfile'] == null ? null : StorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>()),
+      storageProfile: map['storageProfile'] == null ? null : StorageProfileResponse.fromMap((map['storageProfile']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

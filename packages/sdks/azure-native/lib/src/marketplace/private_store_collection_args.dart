@@ -54,13 +54,13 @@ class PrivateStoreCollectionArgs {
 
   factory PrivateStoreCollectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateStoreCollectionArgs(
-      allSubscriptions: map['allSubscriptions'] == null ? null : (map['allSubscriptions'] as bool).input(),
-      claim: map['claim'] == null ? null : (map['claim'] as String).input(),
-      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
-      collectionName: map['collectionName'] == null ? null : (map['collectionName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      allSubscriptions: map['allSubscriptions'] == null ? null : (map['allSubscriptions']! as bool).input(),
+      claim: map['claim'] == null ? null : (map['claim']! as String).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId']! as String).input(),
+      collectionName: map['collectionName'] == null ? null : (map['collectionName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       privateStoreId: (map['privateStoreId'] as String).input(),
-      subscriptionsList: map['subscriptionsList'] == null ? null : ((map['subscriptionsList'] as List).cast<String>()).input(),
+      subscriptionsList: map['subscriptionsList'] == null ? null : ((map['subscriptionsList']! as List).cast<String>()).input(),
     );
   }
 }

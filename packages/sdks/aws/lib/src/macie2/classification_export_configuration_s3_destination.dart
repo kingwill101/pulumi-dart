@@ -33,7 +33,7 @@ class ClassificationExportConfigurationS3Destination {
   factory ClassificationExportConfigurationS3Destination.fromMap(Map<String, dynamic> map) {
     return ClassificationExportConfigurationS3Destination(
       bucketName: (map['bucketName'] as String).input(),
-      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix'] as String).input(),
+      keyPrefix: map['keyPrefix'] == null ? null : ((map['keyPrefix'] as String).input()).input(),
       kmsKeyArn: (map['kmsKeyArn'] as String).input(),
     );
   }

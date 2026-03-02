@@ -26,8 +26,8 @@ class GoogleCloudApigeeV1Attribute {
 
   factory GoogleCloudApigeeV1Attribute.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1Attribute(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class InstanceQueryInsightsConfig {
 
   factory InstanceQueryInsightsConfig.fromMap(Map<String, dynamic> map) {
     return InstanceQueryInsightsConfig(
-      queryPlansPerMinute: map['queryPlansPerMinute'] == null ? null : (map['queryPlansPerMinute'] as int).input(),
-      queryStringLength: map['queryStringLength'] == null ? null : (map['queryStringLength'] as int).input(),
-      recordApplicationTags: map['recordApplicationTags'] == null ? null : (map['recordApplicationTags'] as bool).input(),
-      recordClientAddress: map['recordClientAddress'] == null ? null : (map['recordClientAddress'] as bool).input(),
+      queryPlansPerMinute: map['queryPlansPerMinute'] == null ? null : (map['queryPlansPerMinute']! as int).input(),
+      queryStringLength: map['queryStringLength'] == null ? null : (map['queryStringLength']! as int).input(),
+      recordApplicationTags: map['recordApplicationTags'] == null ? null : (map['recordApplicationTags']! as bool).input(),
+      recordClientAddress: map['recordClientAddress'] == null ? null : (map['recordClientAddress']! as bool).input(),
     );
   }
 }

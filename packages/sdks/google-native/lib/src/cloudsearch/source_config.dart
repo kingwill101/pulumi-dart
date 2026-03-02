@@ -34,9 +34,9 @@ class SourceConfig {
 
   factory SourceConfig.fromMap(Map<String, dynamic> map) {
     return SourceConfig(
-      crowdingConfig: map['crowdingConfig'] == null ? null : (SourceCrowdingConfig.fromMap((map['crowdingConfig'] as Map).cast<String, dynamic>())).input(),
-      scoringConfig: map['scoringConfig'] == null ? null : (SourceScoringConfig.fromMap((map['scoringConfig'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (Source.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      crowdingConfig: map['crowdingConfig'] == null ? null : (SourceCrowdingConfig.fromMap((map['crowdingConfig']! as Map).cast<String, dynamic>())).input(),
+      scoringConfig: map['scoringConfig'] == null ? null : (SourceScoringConfig.fromMap((map['scoringConfig']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (Source.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

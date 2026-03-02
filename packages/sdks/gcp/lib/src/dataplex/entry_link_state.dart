@@ -66,15 +66,15 @@ class EntryLinkState {
 
   factory EntryLinkState.fromMap(Map<String, dynamic> map) {
     return EntryLinkState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      entryGroupId: map['entryGroupId'] == null ? null : (map['entryGroupId'] as String).input(),
-      entryLinkId: map['entryLinkId'] == null ? null : (map['entryLinkId'] as String).input(),
-      entryLinkType: map['entryLinkType'] == null ? null : (map['entryLinkType'] as String).input(),
-      entryReferences: map['entryReferences'] == null ? null : (pulumi.Input.decodeList<EntryLinkEntryReference>(map['entryReferences'], (value) => EntryLinkEntryReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      entryGroupId: map['entryGroupId'] == null ? null : (map['entryGroupId']! as String).input(),
+      entryLinkId: map['entryLinkId'] == null ? null : (map['entryLinkId']! as String).input(),
+      entryLinkType: map['entryLinkType'] == null ? null : (map['entryLinkType']! as String).input(),
+      entryReferences: map['entryReferences'] == null ? null : (pulumi.Input.decodeList<EntryLinkEntryReference>(map['entryReferences']!, (value) => EntryLinkEntryReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class AgentFlowDefinitionNodeConfigurationStorage {
 
   factory AgentFlowDefinitionNodeConfigurationStorage.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationStorage(
-      serviceConfiguration: map['serviceConfiguration'] == null ? null : (AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration.fromMap((map['serviceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      serviceConfiguration: map['serviceConfiguration'] == null ? null : ((AgentFlowDefinitionNodeConfigurationStorageServiceConfiguration.fromMap((map['serviceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

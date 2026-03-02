@@ -109,9 +109,9 @@ class GetCommunityTrainingResult {
       portalOwnerEmailAddress: map['portalOwnerEmailAddress'] as String,
       portalOwnerOrganizationName: map['portalOwnerOrganizationName'] as String,
       provisioningState: map['provisioningState'] as String,
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       zoneRedundancyEnabled: map['zoneRedundancyEnabled'] as bool,
     );

@@ -52,8 +52,8 @@ class BuildpackBindingArgs {
     return BuildpackBindingArgs(
       buildServiceName: (map['buildServiceName'] as String).input(),
       builderName: (map['builderName'] as String).input(),
-      buildpackBindingName: map['buildpackBindingName'] == null ? null : (map['buildpackBindingName'] as String).input(),
-      properties: map['properties'] == null ? null : (BuildpackBindingProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      buildpackBindingName: map['buildpackBindingName'] == null ? null : (map['buildpackBindingName']! as String).input(),
+      properties: map['properties'] == null ? null : (BuildpackBindingProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

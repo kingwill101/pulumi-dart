@@ -45,11 +45,11 @@ class FlexibleAppVersionApiConfig {
 
   factory FlexibleAppVersionApiConfig.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionApiConfig(
-      authFailAction: map['authFailAction'] == null ? null : (map['authFailAction'] as String).input(),
-      login: map['login'] == null ? null : (map['login'] as String).input(),
+      authFailAction: map['authFailAction'] == null ? null : (map['authFailAction']! as String).input(),
+      login: map['login'] == null ? null : (map['login']! as String).input(),
       script: (map['script'] as String).input(),
-      securityLevel: map['securityLevel'] == null ? null : (map['securityLevel'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      securityLevel: map['securityLevel'] == null ? null : (map['securityLevel']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

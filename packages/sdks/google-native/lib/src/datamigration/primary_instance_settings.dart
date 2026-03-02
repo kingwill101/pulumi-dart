@@ -37,10 +37,10 @@ class PrimaryInstanceSettings {
 
   factory PrimaryInstanceSettings.fromMap(Map<String, dynamic> map) {
     return PrimaryInstanceSettings(
-      databaseFlags: map['databaseFlags'] == null ? null : ((map['databaseFlags'] as Map).cast<String, String>()).input(),
+      databaseFlags: map['databaseFlags'] == null ? null : ((map['databaseFlags']! as Map).cast<String, String>()).input(),
       id: (map['id'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      machineConfig: map['machineConfig'] == null ? null : (MachineConfig.fromMap((map['machineConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      machineConfig: map['machineConfig'] == null ? null : (MachineConfig.fromMap((map['machineConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

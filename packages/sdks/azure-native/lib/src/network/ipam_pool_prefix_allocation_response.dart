@@ -32,8 +32,8 @@ class IpamPoolPrefixAllocationResponse {
   factory IpamPoolPrefixAllocationResponse.fromMap(Map<String, dynamic> map) {
     return IpamPoolPrefixAllocationResponse(
       allocatedAddressPrefixes: ((map['allocatedAddressPrefixes'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      numberOfIpAddresses: map['numberOfIpAddresses'] == null ? null : (map['numberOfIpAddresses'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      numberOfIpAddresses: map['numberOfIpAddresses'] == null ? null : (map['numberOfIpAddresses']! as String).input(),
     );
   }
 }

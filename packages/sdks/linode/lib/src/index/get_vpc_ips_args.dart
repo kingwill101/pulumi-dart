@@ -35,9 +35,9 @@ class GetVpcIpsArgs {
 
   factory GetVpcIpsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcIpsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcIpsFilter>(map['filters'], (value) => GetVpcIpsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as bool).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as int).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpcIpsFilter>(map['filters']!, (value) => GetVpcIpsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6']! as bool).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as int).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class ManagedPrivateEndpointState {
 
   factory ManagedPrivateEndpointState.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointState(
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName'] as String).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName']! as String).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
     );
   }
 }

@@ -53,10 +53,10 @@ class EntityTypeArgs {
   factory EntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return EntityTypeArgs(
       displayName: (map['displayName'] as String).input(),
-      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction'] as bool).input(),
-      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<EntityTypeEntity>(map['entities'], (value) => EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction']! as bool).input(),
+      entities: map['entities'] == null ? null : (pulumi.Input.decodeList<EntityTypeEntity>(map['entities']!, (value) => EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
       kind: (map['kind'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

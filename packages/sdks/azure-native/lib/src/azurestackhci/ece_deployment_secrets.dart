@@ -31,9 +31,9 @@ class EceDeploymentSecrets {
 
   factory EceDeploymentSecrets.fromMap(Map<String, dynamic> map) {
     return EceDeploymentSecrets(
-      eceSecretName: map['eceSecretName'] == null ? null : (map['eceSecretName'] as String).input(),
-      secretLocation: map['secretLocation'] == null ? null : (map['secretLocation'] as String).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      eceSecretName: map['eceSecretName'] == null ? null : (map['eceSecretName']! as String).input(),
+      secretLocation: map['secretLocation'] == null ? null : (map['secretLocation']! as String).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
     );
   }
 }

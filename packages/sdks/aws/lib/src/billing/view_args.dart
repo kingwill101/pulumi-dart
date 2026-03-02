@@ -52,12 +52,12 @@ class ViewArgs {
 
   factory ViewArgs.fromMap(Map<String, dynamic> map) {
     return ViewArgs(
-      dataFilterExpression: map['dataFilterExpression'] == null ? null : (ViewDataFilterExpression.fromMap((map['dataFilterExpression'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sourceViews: map['sourceViews'] == null ? null : ((map['sourceViews'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ViewTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      dataFilterExpression: map['dataFilterExpression'] == null ? null : ((ViewDataFilterExpression.fromMap((map['dataFilterExpression']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      sourceViews: map['sourceViews'] == null ? null : (((map['sourceViews'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ViewTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

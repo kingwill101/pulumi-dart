@@ -26,8 +26,8 @@ class DataSourceHttpConfigAuthorizationConfig {
 
   factory DataSourceHttpConfigAuthorizationConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceHttpConfigAuthorizationConfig(
-      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
-      awsIamConfig: map['awsIamConfig'] == null ? null : (DataSourceHttpConfigAuthorizationConfigAwsIamConfig.fromMap((map['awsIamConfig'] as Map).cast<String, dynamic>())).input(),
+      authorizationType: map['authorizationType'] == null ? null : ((map['authorizationType'] as String).input()).input(),
+      awsIamConfig: map['awsIamConfig'] == null ? null : ((DataSourceHttpConfigAuthorizationConfigAwsIamConfig.fromMap((map['awsIamConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

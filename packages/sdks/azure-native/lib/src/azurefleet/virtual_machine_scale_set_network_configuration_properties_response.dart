@@ -77,17 +77,17 @@ class VirtualMachineScaleSetNetworkConfigurationPropertiesResponse {
 
   factory VirtualMachineScaleSetNetworkConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetNetworkConfigurationPropertiesResponse(
-      auxiliaryMode: map['auxiliaryMode'] == null ? null : (map['auxiliaryMode'] as String).input(),
-      auxiliarySku: map['auxiliarySku'] == null ? null : (map['auxiliarySku'] as String).input(),
-      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption'] as String).input(),
-      disableTcpStateTracking: map['disableTcpStateTracking'] == null ? null : (map['disableTcpStateTracking'] as bool).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
-      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking'] as bool).input(),
-      enableFpga: map['enableFpga'] == null ? null : (map['enableFpga'] as bool).input(),
-      enableIPForwarding: map['enableIPForwarding'] == null ? null : (map['enableIPForwarding'] as bool).input(),
+      auxiliaryMode: map['auxiliaryMode'] == null ? null : (map['auxiliaryMode']! as String).input(),
+      auxiliarySku: map['auxiliarySku'] == null ? null : (map['auxiliarySku']! as String).input(),
+      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption']! as String).input(),
+      disableTcpStateTracking: map['disableTcpStateTracking'] == null ? null : (map['disableTcpStateTracking']! as bool).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
+      enableAcceleratedNetworking: map['enableAcceleratedNetworking'] == null ? null : (map['enableAcceleratedNetworking']! as bool).input(),
+      enableFpga: map['enableFpga'] == null ? null : (map['enableFpga']! as bool).input(),
+      enableIPForwarding: map['enableIPForwarding'] == null ? null : (map['enableIPForwarding']! as bool).input(),
       ipConfigurations: (pulumi.Input.decodeList<VirtualMachineScaleSetIPConfigurationResponse>(map['ipConfigurations'], (value) => VirtualMachineScaleSetIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (SubResourceResponse.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>())).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (SubResourceResponse.fromMap((map['networkSecurityGroup']! as Map).cast<String, dynamic>())).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
     );
   }
 }

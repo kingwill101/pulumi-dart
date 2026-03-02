@@ -32,9 +32,9 @@ class TimeWindow {
 
   factory TimeWindow.fromMap(Map<String, dynamic> map) {
     return TimeWindow(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      maintenanceExclusionOptions: map['maintenanceExclusionOptions'] == null ? null : (MaintenanceExclusionOptions.fromMap((map['maintenanceExclusionOptions'] as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      maintenanceExclusionOptions: map['maintenanceExclusionOptions'] == null ? null : (MaintenanceExclusionOptions.fromMap((map['maintenanceExclusionOptions']! as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class StandardSqlField {
 
   factory StandardSqlField.fromMap(Map<String, dynamic> map) {
     return StandardSqlField(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (StandardSqlDataType.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (StandardSqlDataType.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

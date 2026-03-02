@@ -32,8 +32,8 @@ class BrokerAuthenticatorMethodSvidResponse {
   factory BrokerAuthenticatorMethodSvidResponse.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodSvidResponse(
       agentSocketPath: (map['agentSocketPath'] as String).input(),
-      identityMaxRetry: map['identityMaxRetry'] == null ? null : (map['identityMaxRetry'] as double).input(),
-      identityWaitRetryMs: map['identityWaitRetryMs'] == null ? null : (map['identityWaitRetryMs'] as double).input(),
+      identityMaxRetry: map['identityMaxRetry'] == null ? null : (map['identityMaxRetry']! as double).input(),
+      identityWaitRetryMs: map['identityWaitRetryMs'] == null ? null : (map['identityWaitRetryMs']! as double).input(),
     );
   }
 }

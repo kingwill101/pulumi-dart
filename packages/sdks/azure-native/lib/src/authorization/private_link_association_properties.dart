@@ -24,8 +24,8 @@ class PrivateLinkAssociationProperties {
 
   factory PrivateLinkAssociationProperties.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationProperties(
-      privateLink: map['privateLink'] == null ? null : (map['privateLink'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      privateLink: map['privateLink'] == null ? null : (map['privateLink']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
     );
   }
 }

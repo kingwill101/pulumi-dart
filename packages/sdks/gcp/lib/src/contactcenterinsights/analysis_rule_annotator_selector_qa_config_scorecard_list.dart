@@ -20,7 +20,7 @@ class AnalysisRuleAnnotatorSelectorQaConfigScorecardList {
 
   factory AnalysisRuleAnnotatorSelectorQaConfigScorecardList.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleAnnotatorSelectorQaConfigScorecardList(
-      qaScorecardRevisions: map['qaScorecardRevisions'] == null ? null : ((map['qaScorecardRevisions'] as List).cast<String>()).input(),
+      qaScorecardRevisions: map['qaScorecardRevisions'] == null ? null : ((map['qaScorecardRevisions']! as List).cast<String>()).input(),
     );
   }
 }

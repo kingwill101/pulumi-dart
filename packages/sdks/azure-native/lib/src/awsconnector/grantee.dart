@@ -42,11 +42,11 @@ class Grantee {
 
   factory Grantee.fromMap(Map<String, dynamic> map) {
     return Grantee(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      type: map['type'] == null ? null : (TypeEnumValue.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      type: map['type'] == null ? null : (TypeEnumValue.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

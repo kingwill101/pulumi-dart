@@ -36,9 +36,9 @@ class GetCertificatesResult {
   factory GetCertificatesResult.fromMap(Map<String, dynamic> map) {
     return GetCertificatesResult(
       certificates: pulumi.Input.decodeList<GetCertificatesCertificate>(map['certificates'], (value) => GetCertificatesCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      region: map['region'] == null ? null : map['region']! as String,
     );
   }
 }

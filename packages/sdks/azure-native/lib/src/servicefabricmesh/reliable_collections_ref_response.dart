@@ -26,7 +26,7 @@ class ReliableCollectionsRefResponse {
 
   factory ReliableCollectionsRefResponse.fromMap(Map<String, dynamic> map) {
     return ReliableCollectionsRefResponse(
-      doNotPersistState: map['doNotPersistState'] == null ? null : (map['doNotPersistState'] as bool).input(),
+      doNotPersistState: map['doNotPersistState'] == null ? null : (map['doNotPersistState']! as bool).input(),
       name: (map['name'] as String).input(),
     );
   }

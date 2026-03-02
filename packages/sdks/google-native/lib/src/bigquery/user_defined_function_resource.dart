@@ -26,8 +26,8 @@ class UserDefinedFunctionResource {
 
   factory UserDefinedFunctionResource.fromMap(Map<String, dynamic> map) {
     return UserDefinedFunctionResource(
-      inlineCode: map['inlineCode'] == null ? null : (map['inlineCode'] as String).input(),
-      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri'] as String).input(),
+      inlineCode: map['inlineCode'] == null ? null : (map['inlineCode']! as String).input(),
+      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri']! as String).input(),
     );
   }
 }

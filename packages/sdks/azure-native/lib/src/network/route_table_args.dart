@@ -56,13 +56,13 @@ class RouteTableArgs {
 
   factory RouteTableArgs.fromMap(Map<String, dynamic> map) {
     return RouteTableArgs(
-      disableBgpRoutePropagation: map['disableBgpRoutePropagation'] == null ? null : (map['disableBgpRoutePropagation'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      disableBgpRoutePropagation: map['disableBgpRoutePropagation'] == null ? null : (map['disableBgpRoutePropagation']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName'] as String).input(),
-      routes: map['routes'] == null ? null : ((map['routes'] as List).cast<RouteNetwork>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName']! as String).input(),
+      routes: map['routes'] == null ? null : ((map['routes']! as List).cast<RouteNetwork>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

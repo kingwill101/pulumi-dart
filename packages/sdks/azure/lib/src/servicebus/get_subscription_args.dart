@@ -42,10 +42,10 @@ class GetSubscriptionArgs {
   factory GetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionArgs(
       name: (map['name'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      topicId: map['topicId'] == null ? null : (map['topicId'] as String).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      topicId: map['topicId'] == null ? null : (map['topicId']! as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
     );
   }
 }

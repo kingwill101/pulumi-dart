@@ -21,7 +21,7 @@ class CxAgentAdvancedSettingsAudioExportGcsDestination {
 
   factory CxAgentAdvancedSettingsAudioExportGcsDestination.fromMap(Map<String, dynamic> map) {
     return CxAgentAdvancedSettingsAudioExportGcsDestination(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

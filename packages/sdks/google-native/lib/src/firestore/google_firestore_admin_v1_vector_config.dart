@@ -27,7 +27,7 @@ class GoogleFirestoreAdminV1VectorConfig {
   factory GoogleFirestoreAdminV1VectorConfig.fromMap(Map<String, dynamic> map) {
     return GoogleFirestoreAdminV1VectorConfig(
       dimension: (map['dimension'] as int).input(),
-      flat: map['flat'] == null ? null : ((map['flat'] as Map).cast<String, dynamic>()).input(),
+      flat: map['flat'] == null ? null : ((map['flat']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

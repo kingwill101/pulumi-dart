@@ -27,7 +27,7 @@ class AkriConnectorTemplateHelmContainerRegistrySettings {
 
   factory AkriConnectorTemplateHelmContainerRegistrySettings.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateHelmContainerRegistrySettings(
-      authSecretRef: map['authSecretRef'] == null ? null : (AkriConnectorTemplateHelmAuthSecretRef.fromMap((map['authSecretRef'] as Map).cast<String, dynamic>())).input(),
+      authSecretRef: map['authSecretRef'] == null ? null : (AkriConnectorTemplateHelmAuthSecretRef.fromMap((map['authSecretRef']! as Map).cast<String, dynamic>())).input(),
       registry: (map['registry'] as String).input(),
     );
   }

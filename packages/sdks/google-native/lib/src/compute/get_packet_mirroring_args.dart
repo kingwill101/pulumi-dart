@@ -32,7 +32,7 @@ class GetPacketMirroringArgs {
   factory GetPacketMirroringArgs.fromMap(Map<String, dynamic> map) {
     return GetPacketMirroringArgs(
       packetMirroring: (map['packetMirroring'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

@@ -51,13 +51,13 @@ class NetworkInterfaces {
 
   factory NetworkInterfaces.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaces(
-      ipv4AddressType: map['ipv4AddressType'] == null ? null : (map['ipv4AddressType'] as String).input(),
-      ipv6AddressType: map['ipv6AddressType'] == null ? null : (map['ipv6AddressType'] as String).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
-      macAddressType: map['macAddressType'] == null ? null : (map['macAddressType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nicId: map['nicId'] == null ? null : (map['nicId'] as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
+      ipv4AddressType: map['ipv4AddressType'] == null ? null : (map['ipv4AddressType']! as String).input(),
+      ipv6AddressType: map['ipv6AddressType'] == null ? null : (map['ipv6AddressType']! as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
+      macAddressType: map['macAddressType'] == null ? null : (map['macAddressType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nicId: map['nicId'] == null ? null : (map['nicId']! as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class VersionDetailsResponse {
 
   factory VersionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VersionDetailsResponse(
-      expiryDate: map['expiryDate'] == null ? null : (map['expiryDate'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      expiryDate: map['expiryDate'] == null ? null : (map['expiryDate']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

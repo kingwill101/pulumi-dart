@@ -173,7 +173,7 @@ class GetBucketResult {
       location: map['location'] as String,
       loggings: pulumi.Input.decodeList<GetBucketLogging>(map['loggings'], (value) => GetBucketLogging.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       projectNumber: map['projectNumber'] as int,
       publicAccessPrevention: map['publicAccessPrevention'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),

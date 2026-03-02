@@ -42,9 +42,9 @@ class URLMapDefaultRouteActionWeightedBackendService {
 
   factory URLMapDefaultRouteActionWeightedBackendService.fromMap(Map<String, dynamic> map) {
     return URLMapDefaultRouteActionWeightedBackendService(
-      backendService: map['backendService'] == null ? null : (map['backendService'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (URLMapDefaultRouteActionWeightedBackendServiceHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      backendService: map['backendService'] == null ? null : (map['backendService']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (URLMapDefaultRouteActionWeightedBackendServiceHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

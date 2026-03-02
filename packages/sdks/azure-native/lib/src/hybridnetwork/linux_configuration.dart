@@ -22,7 +22,7 @@ class LinuxConfiguration {
 
   factory LinuxConfiguration.fromMap(Map<String, dynamic> map) {
     return LinuxConfiguration(
-      ssh: map['ssh'] == null ? null : (SshConfiguration.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
+      ssh: map['ssh'] == null ? null : (SshConfiguration.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

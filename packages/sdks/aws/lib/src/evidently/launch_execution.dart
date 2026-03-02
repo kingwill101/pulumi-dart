@@ -25,8 +25,8 @@ class LaunchExecution {
 
   factory LaunchExecution.fromMap(Map<String, dynamic> map) {
     return LaunchExecution(
-      endedTime: map['endedTime'] == null ? null : (map['endedTime'] as String).input(),
-      startedTime: map['startedTime'] == null ? null : (map['startedTime'] as String).input(),
+      endedTime: map['endedTime'] == null ? null : ((map['endedTime'] as String).input()).input(),
+      startedTime: map['startedTime'] == null ? null : ((map['startedTime'] as String).input()).input(),
     );
   }
 }

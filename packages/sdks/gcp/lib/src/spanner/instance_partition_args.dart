@@ -65,10 +65,10 @@ class InstancePartitionArgs {
       config: (map['config'] as String).input(),
       displayName: (map['displayName'] as String).input(),
       instance: (map['instance'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

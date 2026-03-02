@@ -66,16 +66,16 @@ class StorageAccount {
 
   factory StorageAccount.fromMap(Map<String, dynamic> map) {
     return StorageAccount(
-      container: map['container'] == null ? null : (map['container'] as String).input(),
-      enableSecureChannel: map['enableSecureChannel'] == null ? null : (map['enableSecureChannel'] as bool).input(),
-      fileSystem: map['fileSystem'] == null ? null : (map['fileSystem'] as String).input(),
-      fileshare: map['fileshare'] == null ? null : (map['fileshare'] as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      msiResourceId: map['msiResourceId'] == null ? null : (map['msiResourceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      saskey: map['saskey'] == null ? null : (map['saskey'] as String).input(),
+      container: map['container'] == null ? null : (map['container']! as String).input(),
+      enableSecureChannel: map['enableSecureChannel'] == null ? null : (map['enableSecureChannel']! as bool).input(),
+      fileSystem: map['fileSystem'] == null ? null : (map['fileSystem']! as String).input(),
+      fileshare: map['fileshare'] == null ? null : (map['fileshare']! as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      msiResourceId: map['msiResourceId'] == null ? null : (map['msiResourceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      saskey: map['saskey'] == null ? null : (map['saskey']! as String).input(),
     );
   }
 }

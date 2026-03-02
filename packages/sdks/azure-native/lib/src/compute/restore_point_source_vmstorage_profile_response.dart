@@ -33,9 +33,9 @@ class RestorePointSourceVMStorageProfileResponse {
 
   factory RestorePointSourceVMStorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return RestorePointSourceVMStorageProfileResponse(
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<RestorePointSourceVMDataDiskResponse>(map['dataDisks'], (value) => RestorePointSourceVMDataDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<RestorePointSourceVMDataDiskResponse>(map['dataDisks']!, (value) => RestorePointSourceVMDataDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       diskControllerType: (map['diskControllerType'] as String).input(),
-      osDisk: map['osDisk'] == null ? null : (RestorePointSourceVMOSDiskResponse.fromMap((map['osDisk'] as Map).cast<String, dynamic>())).input(),
+      osDisk: map['osDisk'] == null ? null : (RestorePointSourceVMOSDiskResponse.fromMap((map['osDisk']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

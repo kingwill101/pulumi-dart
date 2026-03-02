@@ -57,13 +57,13 @@ class WorkflowWorkflowsV1betaArgs {
 
   factory WorkflowWorkflowsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowWorkflowsV1betaArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      sourceContents: map['sourceContents'] == null ? null : (map['sourceContents'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      sourceContents: map['sourceContents'] == null ? null : (map['sourceContents']! as String).input(),
       workflowId: (map['workflowId'] as String).input(),
     );
   }

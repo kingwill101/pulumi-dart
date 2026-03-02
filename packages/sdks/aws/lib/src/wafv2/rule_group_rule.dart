@@ -55,13 +55,13 @@ class RuleGroupRule {
 
   factory RuleGroupRule.fromMap(Map<String, dynamic> map) {
     return RuleGroupRule(
-      action: (RuleGroupRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      captchaConfig: map['captchaConfig'] == null ? null : (RuleGroupRuleCaptchaConfig.fromMap((map['captchaConfig'] as Map).cast<String, dynamic>())).input(),
+      action: (RuleGroupRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      captchaConfig: map['captchaConfig'] == null ? null : ((RuleGroupRuleCaptchaConfig.fromMap((map['captchaConfig']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
       priority: (map['priority'] as int).input(),
-      ruleLabels: map['ruleLabels'] == null ? null : (pulumi.Input.decodeList<RuleGroupRuleRuleLabel>(map['ruleLabels'], (value) => RuleGroupRuleRuleLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statement: (RuleGroupRuleStatement.fromMap((map['statement'] as Map).cast<String, dynamic>())).input(),
-      visibilityConfig: (RuleGroupRuleVisibilityConfig.fromMap((map['visibilityConfig'] as Map).cast<String, dynamic>())).input(),
+      ruleLabels: map['ruleLabels'] == null ? null : ((pulumi.Input.decodeList<RuleGroupRuleRuleLabel>(map['ruleLabels']!, (value) => RuleGroupRuleRuleLabel.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      statement: (RuleGroupRuleStatement.fromMap((map['statement']! as Map).cast<String, dynamic>())).input(),
+      visibilityConfig: (RuleGroupRuleVisibilityConfig.fromMap((map['visibilityConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

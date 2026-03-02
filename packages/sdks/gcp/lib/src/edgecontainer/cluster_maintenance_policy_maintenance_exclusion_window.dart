@@ -26,8 +26,8 @@ class ClusterMaintenancePolicyMaintenanceExclusionWindow {
 
   factory ClusterMaintenancePolicyMaintenanceExclusionWindow.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyMaintenanceExclusionWindow(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class VirtualMachineSshCredentialsResponse {
 
   factory VirtualMachineSshCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineSshCredentialsResponse(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      privateKeyData: map['privateKeyData'] == null ? null : (map['privateKeyData'] as String).input(),
-      publicKeyData: map['publicKeyData'] == null ? null : (map['publicKeyData'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      privateKeyData: map['privateKeyData'] == null ? null : (map['privateKeyData']! as String).input(),
+      publicKeyData: map['publicKeyData'] == null ? null : (map['publicKeyData']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

@@ -52,11 +52,11 @@ class BucketObjectLockConfigurationV2Args {
   factory BucketObjectLockConfigurationV2Args.fromMap(Map<String, dynamic> map) {
     return BucketObjectLockConfigurationV2Args(
       bucket: (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      objectLockEnabled: map['objectLockEnabled'] == null ? null : (map['objectLockEnabled'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rule: map['rule'] == null ? null : (BucketObjectLockConfigurationV2Rule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      objectLockEnabled: map['objectLockEnabled'] == null ? null : ((map['objectLockEnabled'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rule: map['rule'] == null ? null : ((BucketObjectLockConfigurationV2Rule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input()).input(),
+      token: map['token'] == null ? null : ((map['token'] as String).input()).input(),
     );
   }
 }

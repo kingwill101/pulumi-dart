@@ -38,8 +38,8 @@ class VolumeMountStatus {
     return VolumeMountStatus(
       mountPath: (map['mountPath'] as String).input(),
       name: (map['name'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      recursiveReadOnly: map['recursiveReadOnly'] == null ? null : (map['recursiveReadOnly'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      recursiveReadOnly: map['recursiveReadOnly'] == null ? null : (map['recursiveReadOnly']! as String).input(),
     );
   }
 }

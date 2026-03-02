@@ -31,9 +31,9 @@ class EncryptionKeyVaultProperties {
 
   factory EncryptionKeyVaultProperties.fromMap(Map<String, dynamic> map) {
     return EncryptionKeyVaultProperties(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl'] as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl']! as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings 
 
   factory SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings(
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : ((map['idleTimeoutInMinutes'] as int).input()).input(),
     );
   }
 }

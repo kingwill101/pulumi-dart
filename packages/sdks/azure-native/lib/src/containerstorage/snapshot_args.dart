@@ -41,7 +41,7 @@ class SnapshotArgs {
     return SnapshotArgs(
       poolName: (map['poolName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName']! as String).input(),
       source: (map['source'] as String).input(),
     );
   }

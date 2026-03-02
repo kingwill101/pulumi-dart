@@ -57,14 +57,14 @@ class ResourceBridgeApplianceState {
 
   factory ResourceBridgeApplianceState.fromMap(Map<String, dynamic> map) {
     return ResourceBridgeApplianceState(
-      distro: map['distro'] == null ? null : (map['distro'] as String).input(),
-      identity: map['identity'] == null ? null : (ResourceBridgeApplianceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      infrastructureProvider: map['infrastructureProvider'] == null ? null : (map['infrastructureProvider'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicKeyBase64: map['publicKeyBase64'] == null ? null : (map['publicKeyBase64'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      distro: map['distro'] == null ? null : (map['distro']! as String).input(),
+      identity: map['identity'] == null ? null : (ResourceBridgeApplianceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      infrastructureProvider: map['infrastructureProvider'] == null ? null : (map['infrastructureProvider']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicKeyBase64: map['publicKeyBase64'] == null ? null : (map['publicKeyBase64']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

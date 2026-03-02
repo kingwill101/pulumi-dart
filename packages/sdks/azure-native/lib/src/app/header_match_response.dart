@@ -41,11 +41,11 @@ class HeaderMatchResponse {
 
   factory HeaderMatchResponse.fromMap(Map<String, dynamic> map) {
     return HeaderMatchResponse(
-      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch'] as String).input(),
-      header: map['header'] == null ? null : (map['header'] as String).input(),
-      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch'] as String).input(),
-      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch'] as String).input(),
-      suffixMatch: map['suffixMatch'] == null ? null : (map['suffixMatch'] as String).input(),
+      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch']! as String).input(),
+      header: map['header'] == null ? null : (map['header']! as String).input(),
+      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch']! as String).input(),
+      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch']! as String).input(),
+      suffixMatch: map['suffixMatch'] == null ? null : (map['suffixMatch']! as String).input(),
     );
   }
 }

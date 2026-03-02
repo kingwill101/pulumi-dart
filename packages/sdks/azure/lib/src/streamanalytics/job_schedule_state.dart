@@ -38,10 +38,10 @@ class JobScheduleState {
 
   factory JobScheduleState.fromMap(Map<String, dynamic> map) {
     return JobScheduleState(
-      lastOutputTime: map['lastOutputTime'] == null ? null : (map['lastOutputTime'] as String).input(),
-      startMode: map['startMode'] == null ? null : (map['startMode'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : (map['streamAnalyticsJobId'] as String).input(),
+      lastOutputTime: map['lastOutputTime'] == null ? null : (map['lastOutputTime']! as String).input(),
+      startMode: map['startMode'] == null ? null : (map['startMode']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : (map['streamAnalyticsJobId']! as String).input(),
     );
   }
 }

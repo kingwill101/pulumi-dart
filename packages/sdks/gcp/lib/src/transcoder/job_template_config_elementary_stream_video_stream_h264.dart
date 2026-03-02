@@ -91,20 +91,20 @@ class JobTemplateConfigElementaryStreamVideoStreamH264 {
   factory JobTemplateConfigElementaryStreamVideoStreamH264.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigElementaryStreamVideoStreamH264(
       bitrateBps: (map['bitrateBps'] as int).input(),
-      crfLevel: map['crfLevel'] == null ? null : (map['crfLevel'] as int).input(),
-      entropyCoder: map['entropyCoder'] == null ? null : (map['entropyCoder'] as String).input(),
+      crfLevel: map['crfLevel'] == null ? null : (map['crfLevel']! as int).input(),
+      entropyCoder: map['entropyCoder'] == null ? null : (map['entropyCoder']! as String).input(),
       frameRate: (map['frameRate'] as int).input(),
-      gopDuration: map['gopDuration'] == null ? null : (map['gopDuration'] as String).input(),
-      heightPixels: map['heightPixels'] == null ? null : (map['heightPixels'] as int).input(),
-      hlg: map['hlg'] == null ? null : ((map['hlg'] as Map).cast<String, dynamic>()).input(),
-      pixelFormat: map['pixelFormat'] == null ? null : (map['pixelFormat'] as String).input(),
-      preset: map['preset'] == null ? null : (map['preset'] as String).input(),
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
-      rateControlMode: map['rateControlMode'] == null ? null : (map['rateControlMode'] as String).input(),
-      sdr: map['sdr'] == null ? null : ((map['sdr'] as Map).cast<String, dynamic>()).input(),
-      vbvFullnessBits: map['vbvFullnessBits'] == null ? null : (map['vbvFullnessBits'] as int).input(),
-      vbvSizeBits: map['vbvSizeBits'] == null ? null : (map['vbvSizeBits'] as int).input(),
-      widthPixels: map['widthPixels'] == null ? null : (map['widthPixels'] as int).input(),
+      gopDuration: map['gopDuration'] == null ? null : (map['gopDuration']! as String).input(),
+      heightPixels: map['heightPixels'] == null ? null : (map['heightPixels']! as int).input(),
+      hlg: map['hlg'] == null ? null : ((map['hlg']! as Map).cast<String, dynamic>()).input(),
+      pixelFormat: map['pixelFormat'] == null ? null : (map['pixelFormat']! as String).input(),
+      preset: map['preset'] == null ? null : (map['preset']! as String).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
+      rateControlMode: map['rateControlMode'] == null ? null : (map['rateControlMode']! as String).input(),
+      sdr: map['sdr'] == null ? null : ((map['sdr']! as Map).cast<String, dynamic>()).input(),
+      vbvFullnessBits: map['vbvFullnessBits'] == null ? null : (map['vbvFullnessBits']! as int).input(),
+      vbvSizeBits: map['vbvSizeBits'] == null ? null : (map['vbvSizeBits']! as int).input(),
+      widthPixels: map['widthPixels'] == null ? null : (map['widthPixels']! as int).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class LogicalNetworkArmReferenceResponse {
 
   factory LogicalNetworkArmReferenceResponse.fromMap(Map<String, dynamic> map) {
     return LogicalNetworkArmReferenceResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

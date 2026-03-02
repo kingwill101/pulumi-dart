@@ -27,8 +27,8 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfig {
 
   factory GoogleCloudPolicysimulatorV1beta1ReplayConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudPolicysimulatorV1beta1ReplayConfig(
-      logSource: map['logSource'] == null ? null : (GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource.fromValue(map['logSource'] as String)).input(),
-      policyOverlay: map['policyOverlay'] == null ? null : ((map['policyOverlay'] as Map).cast<String, String>()).input(),
+      logSource: map['logSource'] == null ? null : (GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource.fromValue(map['logSource']! as String)).input(),
+      policyOverlay: map['policyOverlay'] == null ? null : ((map['policyOverlay']! as Map).cast<String, String>()).input(),
     );
   }
 }

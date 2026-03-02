@@ -27,7 +27,7 @@ class SensitiveDataDiscoveryPropertiesResponse {
 
   factory SensitiveDataDiscoveryPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SensitiveDataDiscoveryPropertiesResponse(
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
       operationStatus: (OperationStatusResponse.fromMap((map['operationStatus'] as Map).cast<String, dynamic>())).input(),
     );
   }

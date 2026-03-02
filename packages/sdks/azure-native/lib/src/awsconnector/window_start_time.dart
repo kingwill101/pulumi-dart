@@ -26,8 +26,8 @@ class WindowStartTime {
 
   factory WindowStartTime.fromMap(Map<String, dynamic> map) {
     return WindowStartTime(
-      hours: map['hours'] == null ? null : (map['hours'] as double).input(),
-      minutes: map['minutes'] == null ? null : (map['minutes'] as double).input(),
+      hours: map['hours'] == null ? null : (map['hours']! as double).input(),
+      minutes: map['minutes'] == null ? null : (map['minutes']! as double).input(),
     );
   }
 }

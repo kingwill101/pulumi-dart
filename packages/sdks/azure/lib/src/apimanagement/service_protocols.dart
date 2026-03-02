@@ -24,8 +24,8 @@ class ServiceProtocols {
 
   factory ServiceProtocols.fromMap(Map<String, dynamic> map) {
     return ServiceProtocols(
-      enableHttp2: map['enableHttp2'] == null ? null : (map['enableHttp2'] as bool).input(),
-      http2Enabled: map['http2Enabled'] == null ? null : (map['http2Enabled'] as bool).input(),
+      enableHttp2: map['enableHttp2'] == null ? null : (map['enableHttp2']! as bool).input(),
+      http2Enabled: map['http2Enabled'] == null ? null : (map['http2Enabled']! as bool).input(),
     );
   }
 }

@@ -64,15 +64,15 @@ class AgentPoolArgs {
 
   factory AgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return AgentPoolArgs(
-      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName'] as String).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      os: map['os'] == null ? null : (map['os'] as String).input(),
+      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName']! as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      os: map['os'] == null ? null : (map['os']! as String).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
-      virtualNetworkSubnetResourceId: map['virtualNetworkSubnetResourceId'] == null ? null : (map['virtualNetworkSubnetResourceId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      virtualNetworkSubnetResourceId: map['virtualNetworkSubnetResourceId'] == null ? null : (map['virtualNetworkSubnetResourceId']! as String).input(),
     );
   }
 }

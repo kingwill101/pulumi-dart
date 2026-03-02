@@ -56,13 +56,13 @@ class WorkerPoolTemplateContainerStartupProbe {
 
   factory WorkerPoolTemplateContainerStartupProbe.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateContainerStartupProbe(
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      grpc: map['grpc'] == null ? null : (WorkerPoolTemplateContainerStartupProbeGrpc.fromMap((map['grpc'] as Map).cast<String, dynamic>())).input(),
-      httpGet: map['httpGet'] == null ? null : (WorkerPoolTemplateContainerStartupProbeHttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      tcpSocket: map['tcpSocket'] == null ? null : (WorkerPoolTemplateContainerStartupProbeTcpSocket.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      grpc: map['grpc'] == null ? null : (WorkerPoolTemplateContainerStartupProbeGrpc.fromMap((map['grpc']! as Map).cast<String, dynamic>())).input(),
+      httpGet: map['httpGet'] == null ? null : (WorkerPoolTemplateContainerStartupProbeHttpGet.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (WorkerPoolTemplateContainerStartupProbeTcpSocket.fromMap((map['tcpSocket']! as Map).cast<String, dynamic>())).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

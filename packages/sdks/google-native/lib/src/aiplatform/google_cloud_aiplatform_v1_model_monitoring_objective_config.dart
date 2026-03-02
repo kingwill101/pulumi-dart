@@ -40,10 +40,10 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfig {
 
   factory GoogleCloudAiplatformV1ModelMonitoringObjectiveConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelMonitoringObjectiveConfig(
-      explanationConfig: map['explanationConfig'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfig.fromMap((map['explanationConfig'] as Map).cast<String, dynamic>())).input(),
-      predictionDriftDetectionConfig: map['predictionDriftDetectionConfig'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig.fromMap((map['predictionDriftDetectionConfig'] as Map).cast<String, dynamic>())).input(),
-      trainingDataset: map['trainingDataset'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset.fromMap((map['trainingDataset'] as Map).cast<String, dynamic>())).input(),
-      trainingPredictionSkewDetectionConfig: map['trainingPredictionSkewDetectionConfig'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig.fromMap((map['trainingPredictionSkewDetectionConfig'] as Map).cast<String, dynamic>())).input(),
+      explanationConfig: map['explanationConfig'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfig.fromMap((map['explanationConfig']! as Map).cast<String, dynamic>())).input(),
+      predictionDriftDetectionConfig: map['predictionDriftDetectionConfig'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig.fromMap((map['predictionDriftDetectionConfig']! as Map).cast<String, dynamic>())).input(),
+      trainingDataset: map['trainingDataset'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset.fromMap((map['trainingDataset']! as Map).cast<String, dynamic>())).input(),
+      trainingPredictionSkewDetectionConfig: map['trainingPredictionSkewDetectionConfig'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfig.fromMap((map['trainingPredictionSkewDetectionConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class SecretResponse {
 
   factory SecretResponse.fromMap(Map<String, dynamic> map) {
     return SecretResponse(
-      encryptedSecret: map['encryptedSecret'] == null ? null : (AsymmetricEncryptedSecretResponse.fromMap((map['encryptedSecret'] as Map).cast<String, dynamic>())).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      encryptedSecret: map['encryptedSecret'] == null ? null : (AsymmetricEncryptedSecretResponse.fromMap((map['encryptedSecret']! as Map).cast<String, dynamic>())).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
     );
   }
 }

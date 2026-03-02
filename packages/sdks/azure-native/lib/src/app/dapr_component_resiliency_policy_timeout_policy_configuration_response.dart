@@ -21,7 +21,7 @@ class DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse {
 
   factory DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse(
-      responseTimeoutInSeconds: map['responseTimeoutInSeconds'] == null ? null : (map['responseTimeoutInSeconds'] as int).input(),
+      responseTimeoutInSeconds: map['responseTimeoutInSeconds'] == null ? null : (map['responseTimeoutInSeconds']! as int).input(),
     );
   }
 }

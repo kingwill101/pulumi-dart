@@ -21,7 +21,7 @@ class CacheResponseSku {
 
   factory CacheResponseSku.fromMap(Map<String, dynamic> map) {
     return CacheResponseSku(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class VirtualHubRouteResponse {
 
   factory VirtualHubRouteResponse.fromMap(Map<String, dynamic> map) {
     return VirtualHubRouteResponse(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress'] as String).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress']! as String).input(),
     );
   }
 }

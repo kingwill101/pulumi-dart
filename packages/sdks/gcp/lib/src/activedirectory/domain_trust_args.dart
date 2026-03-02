@@ -65,8 +65,8 @@ class DomainTrustArgs {
   factory DomainTrustArgs.fromMap(Map<String, dynamic> map) {
     return DomainTrustArgs(
       domain: (map['domain'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      selectiveAuthentication: map['selectiveAuthentication'] == null ? null : (map['selectiveAuthentication'] as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      selectiveAuthentication: map['selectiveAuthentication'] == null ? null : (map['selectiveAuthentication']! as bool).input(),
       targetDnsIpAddresses: ((map['targetDnsIpAddresses'] as List).cast<String>()).input(),
       targetDomainName: (map['targetDomainName'] as String).input(),
       trustDirection: (map['trustDirection'] as String).input(),

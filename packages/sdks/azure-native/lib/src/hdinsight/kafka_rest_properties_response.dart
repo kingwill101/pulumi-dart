@@ -27,8 +27,8 @@ class KafkaRestPropertiesResponse {
 
   factory KafkaRestPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KafkaRestPropertiesResponse(
-      clientGroupInfo: map['clientGroupInfo'] == null ? null : (ClientGroupInfoResponse.fromMap((map['clientGroupInfo'] as Map).cast<String, dynamic>())).input(),
-      configurationOverride: map['configurationOverride'] == null ? null : ((map['configurationOverride'] as Map).cast<String, String>()).input(),
+      clientGroupInfo: map['clientGroupInfo'] == null ? null : (ClientGroupInfoResponse.fromMap((map['clientGroupInfo']! as Map).cast<String, dynamic>())).input(),
+      configurationOverride: map['configurationOverride'] == null ? null : ((map['configurationOverride']! as Map).cast<String, String>()).input(),
     );
   }
 }

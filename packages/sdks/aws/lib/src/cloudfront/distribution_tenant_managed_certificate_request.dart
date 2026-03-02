@@ -30,9 +30,9 @@ class DistributionTenantManagedCertificateRequest {
 
   factory DistributionTenantManagedCertificateRequest.fromMap(Map<String, dynamic> map) {
     return DistributionTenantManagedCertificateRequest(
-      certificateTransparencyLoggingPreference: map['certificateTransparencyLoggingPreference'] == null ? null : (map['certificateTransparencyLoggingPreference'] as String).input(),
-      primaryDomainName: map['primaryDomainName'] == null ? null : (map['primaryDomainName'] as String).input(),
-      validationTokenHost: map['validationTokenHost'] == null ? null : (map['validationTokenHost'] as String).input(),
+      certificateTransparencyLoggingPreference: map['certificateTransparencyLoggingPreference'] == null ? null : ((map['certificateTransparencyLoggingPreference'] as String).input()).input(),
+      primaryDomainName: map['primaryDomainName'] == null ? null : ((map['primaryDomainName'] as String).input()).input(),
+      validationTokenHost: map['validationTokenHost'] == null ? null : ((map['validationTokenHost'] as String).input()).input(),
     );
   }
 }

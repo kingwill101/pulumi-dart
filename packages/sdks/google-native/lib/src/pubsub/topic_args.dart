@@ -64,14 +64,14 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      messageRetentionDuration: map['messageRetentionDuration'] == null ? null : (map['messageRetentionDuration'] as String).input(),
-      messageStoragePolicy: map['messageStoragePolicy'] == null ? null : (MessageStoragePolicy.fromMap((map['messageStoragePolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      satisfiesPzs: map['satisfiesPzs'] == null ? null : (map['satisfiesPzs'] as bool).input(),
-      schemaSettings: map['schemaSettings'] == null ? null : (SchemaSettings.fromMap((map['schemaSettings'] as Map).cast<String, dynamic>())).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      messageRetentionDuration: map['messageRetentionDuration'] == null ? null : (map['messageRetentionDuration']! as String).input(),
+      messageStoragePolicy: map['messageStoragePolicy'] == null ? null : (MessageStoragePolicy.fromMap((map['messageStoragePolicy']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      satisfiesPzs: map['satisfiesPzs'] == null ? null : (map['satisfiesPzs']! as bool).input(),
+      schemaSettings: map['schemaSettings'] == null ? null : (SchemaSettings.fromMap((map['schemaSettings']! as Map).cast<String, dynamic>())).input(),
       topicId: (map['topicId'] as String).input(),
     );
   }

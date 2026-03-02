@@ -24,8 +24,8 @@ class GroupResourcePatch {
 
   factory GroupResourcePatch.fromMap(Map<String, dynamic> map) {
     return GroupResourcePatch(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

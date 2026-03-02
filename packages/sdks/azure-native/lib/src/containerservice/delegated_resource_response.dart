@@ -36,10 +36,10 @@ class DelegatedResourceResponse {
 
   factory DelegatedResourceResponse.fromMap(Map<String, dynamic> map) {
     return DelegatedResourceResponse(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      referralResource: map['referralResource'] == null ? null : (map['referralResource'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      referralResource: map['referralResource'] == null ? null : (map['referralResource']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

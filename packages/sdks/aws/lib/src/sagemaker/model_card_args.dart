@@ -58,10 +58,10 @@ class ModelCardArgs {
       content: (map['content'] as String).input(),
       modelCardName: (map['modelCardName'] as String).input(),
       modelCardStatus: (map['modelCardStatus'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityConfig: map['securityConfig'] == null ? null : (ModelCardSecurityConfig.fromMap((map['securityConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ModelCardTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityConfig: map['securityConfig'] == null ? null : ((ModelCardSecurityConfig.fromMap((map['securityConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ModelCardTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

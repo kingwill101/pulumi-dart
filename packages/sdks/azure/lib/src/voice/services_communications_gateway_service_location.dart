@@ -42,9 +42,9 @@ class ServicesCommunicationsGatewayServiceLocation {
 
   factory ServicesCommunicationsGatewayServiceLocation.fromMap(Map<String, dynamic> map) {
     return ServicesCommunicationsGatewayServiceLocation(
-      allowedMediaSourceAddressPrefixes: map['allowedMediaSourceAddressPrefixes'] == null ? null : ((map['allowedMediaSourceAddressPrefixes'] as List).cast<String>()).input(),
-      allowedSignalingSourceAddressPrefixes: map['allowedSignalingSourceAddressPrefixes'] == null ? null : ((map['allowedSignalingSourceAddressPrefixes'] as List).cast<String>()).input(),
-      esrpAddresses: map['esrpAddresses'] == null ? null : ((map['esrpAddresses'] as List).cast<String>()).input(),
+      allowedMediaSourceAddressPrefixes: map['allowedMediaSourceAddressPrefixes'] == null ? null : ((map['allowedMediaSourceAddressPrefixes']! as List).cast<String>()).input(),
+      allowedSignalingSourceAddressPrefixes: map['allowedSignalingSourceAddressPrefixes'] == null ? null : ((map['allowedSignalingSourceAddressPrefixes']! as List).cast<String>()).input(),
+      esrpAddresses: map['esrpAddresses'] == null ? null : ((map['esrpAddresses']! as List).cast<String>()).input(),
       location: (map['location'] as String).input(),
       operatorAddresses: ((map['operatorAddresses'] as List).cast<String>()).input(),
     );

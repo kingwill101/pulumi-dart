@@ -36,10 +36,10 @@ class EnvironmentCustomDomainState {
 
   factory EnvironmentCustomDomainState.fromMap(Map<String, dynamic> map) {
     return EnvironmentCustomDomainState(
-      certificateBlobBase64: map['certificateBlobBase64'] == null ? null : (map['certificateBlobBase64'] as String).input(),
-      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
-      containerAppEnvironmentId: map['containerAppEnvironmentId'] == null ? null : (map['containerAppEnvironmentId'] as String).input(),
-      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix'] as String).input(),
+      certificateBlobBase64: map['certificateBlobBase64'] == null ? null : (map['certificateBlobBase64']! as String).input(),
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword']! as String).input(),
+      containerAppEnvironmentId: map['containerAppEnvironmentId'] == null ? null : (map['containerAppEnvironmentId']! as String).input(),
+      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix']! as String).input(),
     );
   }
 }

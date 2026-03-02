@@ -49,11 +49,11 @@ class InstancePscInstanceConfigPscAutoConnection {
 
   factory InstancePscInstanceConfigPscAutoConnection.fromMap(Map<String, dynamic> map) {
     return InstancePscInstanceConfigPscAutoConnection(
-      consumerNetwork: map['consumerNetwork'] == null ? null : (map['consumerNetwork'] as String).input(),
-      consumerNetworkStatus: map['consumerNetworkStatus'] == null ? null : (map['consumerNetworkStatus'] as String).input(),
-      consumerProject: map['consumerProject'] == null ? null : (map['consumerProject'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      consumerNetwork: map['consumerNetwork'] == null ? null : (map['consumerNetwork']! as String).input(),
+      consumerNetworkStatus: map['consumerNetworkStatus'] == null ? null : (map['consumerNetworkStatus']! as String).input(),
+      consumerProject: map['consumerProject'] == null ? null : (map['consumerProject']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

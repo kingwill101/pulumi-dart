@@ -25,8 +25,8 @@ class CustomSystemDisk {
 
   factory CustomSystemDisk.fromMap(Map<String, dynamic> map) {
     return CustomSystemDisk(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
     );
   }
 }

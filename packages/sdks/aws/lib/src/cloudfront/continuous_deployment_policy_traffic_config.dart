@@ -32,8 +32,8 @@ class ContinuousDeploymentPolicyTrafficConfig {
 
   factory ContinuousDeploymentPolicyTrafficConfig.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyTrafficConfig(
-      singleHeaderConfig: map['singleHeaderConfig'] == null ? null : (ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig.fromMap((map['singleHeaderConfig'] as Map).cast<String, dynamic>())).input(),
-      singleWeightConfig: map['singleWeightConfig'] == null ? null : (ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig.fromMap((map['singleWeightConfig'] as Map).cast<String, dynamic>())).input(),
+      singleHeaderConfig: map['singleHeaderConfig'] == null ? null : ((ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig.fromMap((map['singleHeaderConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      singleWeightConfig: map['singleWeightConfig'] == null ? null : ((ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig.fromMap((map['singleWeightConfig']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

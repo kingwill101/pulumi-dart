@@ -33,9 +33,9 @@ class DNSConfig {
 
   factory DNSConfig.fromMap(Map<String, dynamic> map) {
     return DNSConfig(
-      clusterDns: map['clusterDns'] == null ? null : (DNSConfigClusterDns.fromValue(map['clusterDns'] as String)).input(),
-      clusterDnsDomain: map['clusterDnsDomain'] == null ? null : (map['clusterDnsDomain'] as String).input(),
-      clusterDnsScope: map['clusterDnsScope'] == null ? null : (DNSConfigClusterDnsScope.fromValue(map['clusterDnsScope'] as String)).input(),
+      clusterDns: map['clusterDns'] == null ? null : (DNSConfigClusterDns.fromValue(map['clusterDns']! as String)).input(),
+      clusterDnsDomain: map['clusterDnsDomain'] == null ? null : (map['clusterDnsDomain']! as String).input(),
+      clusterDnsScope: map['clusterDnsScope'] == null ? null : (DNSConfigClusterDnsScope.fromValue(map['clusterDnsScope']! as String)).input(),
     );
   }
 }

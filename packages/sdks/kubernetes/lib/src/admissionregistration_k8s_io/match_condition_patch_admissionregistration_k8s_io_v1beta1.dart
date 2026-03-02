@@ -36,8 +36,8 @@ class MatchConditionPatchAdmissionregistrationK8sIoV1beta1 {
 
   factory MatchConditionPatchAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return MatchConditionPatchAdmissionregistrationK8sIoV1beta1(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

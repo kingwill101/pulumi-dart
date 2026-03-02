@@ -72,7 +72,7 @@ class ADLSGen2FileSystemDataSetMappingArgs {
     return ADLSGen2FileSystemDataSetMappingArgs(
       accountName: (map['accountName'] as String).input(),
       dataSetId: (map['dataSetId'] as String).input(),
-      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName'] as String).input(),
+      dataSetMappingName: map['dataSetMappingName'] == null ? null : (map['dataSetMappingName']! as String).input(),
       fileSystem: (map['fileSystem'] as String).input(),
       kind: (map['kind'] as String).input(),
       resourceGroup: (map['resourceGroup'] as String).input(),

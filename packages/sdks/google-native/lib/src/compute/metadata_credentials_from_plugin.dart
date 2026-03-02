@@ -26,8 +26,8 @@ class MetadataCredentialsFromPlugin {
 
   factory MetadataCredentialsFromPlugin.fromMap(Map<String, dynamic> map) {
     return MetadataCredentialsFromPlugin(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      structConfig: map['structConfig'] == null ? null : (map['structConfig'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      structConfig: map['structConfig'] == null ? null : (map['structConfig']! as String).input(),
     );
   }
 }

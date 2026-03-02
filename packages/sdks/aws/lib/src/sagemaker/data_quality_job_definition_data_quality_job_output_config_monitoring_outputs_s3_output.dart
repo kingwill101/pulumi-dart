@@ -30,8 +30,8 @@ class DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Outpu
 
   factory DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output(
-      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
-      s3UploadMode: map['s3UploadMode'] == null ? null : (map['s3UploadMode'] as String).input(),
+      localPath: map['localPath'] == null ? null : ((map['localPath'] as String).input()).input(),
+      s3UploadMode: map['s3UploadMode'] == null ? null : ((map['s3UploadMode'] as String).input()).input(),
       s3Uri: (map['s3Uri'] as String).input(),
     );
   }

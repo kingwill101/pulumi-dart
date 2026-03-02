@@ -36,10 +36,10 @@ class BucketAutoclass {
 
   factory BucketAutoclass.fromMap(Map<String, dynamic> map) {
     return BucketAutoclass(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      terminalStorageClass: map['terminalStorageClass'] == null ? null : (map['terminalStorageClass'] as String).input(),
-      terminalStorageClassUpdateTime: map['terminalStorageClassUpdateTime'] == null ? null : (map['terminalStorageClassUpdateTime'] as String).input(),
-      toggleTime: map['toggleTime'] == null ? null : (map['toggleTime'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      terminalStorageClass: map['terminalStorageClass'] == null ? null : (map['terminalStorageClass']! as String).input(),
+      terminalStorageClassUpdateTime: map['terminalStorageClassUpdateTime'] == null ? null : (map['terminalStorageClassUpdateTime']! as String).input(),
+      toggleTime: map['toggleTime'] == null ? null : (map['toggleTime']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class VirtualMachineAdditionalCapabilities {
 
   factory VirtualMachineAdditionalCapabilities.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAdditionalCapabilities(
-      installGpuDrivers: map['installGpuDrivers'] == null ? null : (EnableState.fromValue(map['installGpuDrivers'] as String)).input(),
+      installGpuDrivers: map['installGpuDrivers'] == null ? null : (EnableState.fromValue(map['installGpuDrivers']! as String)).input(),
     );
   }
 }

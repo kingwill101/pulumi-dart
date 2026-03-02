@@ -26,8 +26,8 @@ class ConversationProfileTtsConfigVoice {
 
   factory ConversationProfileTtsConfigVoice.fromMap(Map<String, dynamic> map) {
     return ConversationProfileTtsConfigVoice(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ssmlGender: map['ssmlGender'] == null ? null : (map['ssmlGender'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ssmlGender: map['ssmlGender'] == null ? null : (map['ssmlGender']! as String).input(),
     );
   }
 }

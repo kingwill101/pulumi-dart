@@ -41,10 +41,10 @@ class JobConfigElementaryStreamAudioStream {
   factory JobConfigElementaryStreamAudioStream.fromMap(Map<String, dynamic> map) {
     return JobConfigElementaryStreamAudioStream(
       bitrateBps: (map['bitrateBps'] as int).input(),
-      channelCount: map['channelCount'] == null ? null : (map['channelCount'] as int).input(),
-      channelLayouts: map['channelLayouts'] == null ? null : ((map['channelLayouts'] as List).cast<String>()).input(),
-      codec: map['codec'] == null ? null : (map['codec'] as String).input(),
-      sampleRateHertz: map['sampleRateHertz'] == null ? null : (map['sampleRateHertz'] as int).input(),
+      channelCount: map['channelCount'] == null ? null : (map['channelCount']! as int).input(),
+      channelLayouts: map['channelLayouts'] == null ? null : ((map['channelLayouts']! as List).cast<String>()).input(),
+      codec: map['codec'] == null ? null : (map['codec']! as String).input(),
+      sampleRateHertz: map['sampleRateHertz'] == null ? null : (map['sampleRateHertz']! as int).input(),
     );
   }
 }

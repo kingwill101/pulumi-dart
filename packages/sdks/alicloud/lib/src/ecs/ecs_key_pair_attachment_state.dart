@@ -36,10 +36,10 @@ class EcsKeyPairAttachmentState {
 
   factory EcsKeyPairAttachmentState.fromMap(Map<String, dynamic> map) {
     return EcsKeyPairAttachmentState(
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds']! as List).cast<String>()).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
     );
   }
 }

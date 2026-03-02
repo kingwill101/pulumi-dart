@@ -32,7 +32,7 @@ class GetTransferConfigArgs {
   factory GetTransferConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetTransferConfigArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       transferConfigId: (map['transferConfigId'] as String).input(),
     );
   }

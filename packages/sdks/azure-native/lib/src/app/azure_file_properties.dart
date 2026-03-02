@@ -42,11 +42,11 @@ class AzureFileProperties {
 
   factory AzureFileProperties.fromMap(Map<String, dynamic> map) {
     return AzureFileProperties(
-      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
-      accountKeyVaultProperties: map['accountKeyVaultProperties'] == null ? null : (SecretKeyVaultProperties.fromMap((map['accountKeyVaultProperties'] as Map).cast<String, dynamic>())).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      accessMode: map['accessMode'] == null ? null : (map['accessMode']! as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
+      accountKeyVaultProperties: map['accountKeyVaultProperties'] == null ? null : (SecretKeyVaultProperties.fromMap((map['accountKeyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class GatewayEndpointRouteTableAttachmentState {
 
   factory GatewayEndpointRouteTableAttachmentState.fromMap(Map<String, dynamic> map) {
     return GatewayEndpointRouteTableAttachmentState(
-      gatewayEndpointId: map['gatewayEndpointId'] == null ? null : (map['gatewayEndpointId'] as String).input(),
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      gatewayEndpointId: map['gatewayEndpointId'] == null ? null : (map['gatewayEndpointId']! as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

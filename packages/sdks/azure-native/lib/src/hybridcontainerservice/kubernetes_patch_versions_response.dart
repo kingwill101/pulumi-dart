@@ -27,8 +27,8 @@ class KubernetesPatchVersionsResponse {
 
   factory KubernetesPatchVersionsResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesPatchVersionsResponse(
-      readiness: map['readiness'] == null ? null : (pulumi.Input.decodeList<KubernetesVersionReadinessResponse>(map['readiness'], (value) => KubernetesVersionReadinessResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      upgrades: map['upgrades'] == null ? null : ((map['upgrades'] as List).cast<String>()).input(),
+      readiness: map['readiness'] == null ? null : (pulumi.Input.decodeList<KubernetesVersionReadinessResponse>(map['readiness']!, (value) => KubernetesVersionReadinessResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      upgrades: map['upgrades'] == null ? null : ((map['upgrades']! as List).cast<String>()).input(),
     );
   }
 }

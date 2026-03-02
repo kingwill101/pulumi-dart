@@ -111,19 +111,19 @@ class EncryptionControlArgs {
 
   factory EncryptionControlArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionControlArgs(
-      egressOnlyInternetGatewayExclusion: map['egressOnlyInternetGatewayExclusion'] == null ? null : (map['egressOnlyInternetGatewayExclusion'] as String).input(),
-      elasticFileSystemExclusion: map['elasticFileSystemExclusion'] == null ? null : (map['elasticFileSystemExclusion'] as String).input(),
-      internetGatewayExclusion: map['internetGatewayExclusion'] == null ? null : (map['internetGatewayExclusion'] as String).input(),
-      lambdaExclusion: map['lambdaExclusion'] == null ? null : (map['lambdaExclusion'] as String).input(),
+      egressOnlyInternetGatewayExclusion: map['egressOnlyInternetGatewayExclusion'] == null ? null : ((map['egressOnlyInternetGatewayExclusion'] as String).input()).input(),
+      elasticFileSystemExclusion: map['elasticFileSystemExclusion'] == null ? null : ((map['elasticFileSystemExclusion'] as String).input()).input(),
+      internetGatewayExclusion: map['internetGatewayExclusion'] == null ? null : ((map['internetGatewayExclusion'] as String).input()).input(),
+      lambdaExclusion: map['lambdaExclusion'] == null ? null : ((map['lambdaExclusion'] as String).input()).input(),
       mode: (map['mode'] as String).input(),
-      natGatewayExclusion: map['natGatewayExclusion'] == null ? null : (map['natGatewayExclusion'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (EncryptionControlTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      virtualPrivateGatewayExclusion: map['virtualPrivateGatewayExclusion'] == null ? null : (map['virtualPrivateGatewayExclusion'] as String).input(),
+      natGatewayExclusion: map['natGatewayExclusion'] == null ? null : ((map['natGatewayExclusion'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((EncryptionControlTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      virtualPrivateGatewayExclusion: map['virtualPrivateGatewayExclusion'] == null ? null : ((map['virtualPrivateGatewayExclusion'] as String).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
-      vpcLatticeExclusion: map['vpcLatticeExclusion'] == null ? null : (map['vpcLatticeExclusion'] as String).input(),
-      vpcPeeringExclusion: map['vpcPeeringExclusion'] == null ? null : (map['vpcPeeringExclusion'] as String).input(),
+      vpcLatticeExclusion: map['vpcLatticeExclusion'] == null ? null : ((map['vpcLatticeExclusion'] as String).input()).input(),
+      vpcPeeringExclusion: map['vpcPeeringExclusion'] == null ? null : ((map['vpcPeeringExclusion'] as String).input()).input(),
     );
   }
 }

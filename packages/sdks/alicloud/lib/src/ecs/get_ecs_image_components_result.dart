@@ -61,13 +61,13 @@ class GetEcsImageComponentsResult {
       components: pulumi.Input.decodeList<GetEcsImageComponentsComponent>(map['components'], (value) => GetEcsImageComponentsComponent.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      imageComponentName: map['imageComponentName'] == null ? null : map['imageComponentName'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      imageComponentName: map['imageComponentName'] == null ? null : map['imageComponentName']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      owner: map['owner'] == null ? null : map['owner'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      owner: map['owner'] == null ? null : map['owner']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

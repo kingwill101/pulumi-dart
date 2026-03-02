@@ -69,13 +69,13 @@ class InstanceIAMMemberState {
 
   factory InstanceIAMMemberState.fromMap(Map<String, dynamic> map) {
     return InstanceIAMMemberState(
-      condition: map['condition'] == null ? null : (InstanceIAMMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      condition: map['condition'] == null ? null : (InstanceIAMMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

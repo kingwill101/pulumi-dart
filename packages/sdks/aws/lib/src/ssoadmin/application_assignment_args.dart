@@ -42,7 +42,7 @@ class ApplicationAssignmentArgs {
       applicationArn: (map['applicationArn'] as String).input(),
       principalId: (map['principalId'] as String).input(),
       principalType: (map['principalType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

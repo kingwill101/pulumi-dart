@@ -69,16 +69,16 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
-      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
-      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
-      dnsEntries: map['dnsEntries'] == null ? null : (pulumi.Input.decodeList<ServiceDnsEntry>(map['dnsEntries'], (value) => ServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      authType: map['authType'] == null ? null : ((map['authType'] as String).input()).input(),
+      certificateArn: map['certificateArn'] == null ? null : ((map['certificateArn'] as String).input()).input(),
+      customDomainName: map['customDomainName'] == null ? null : ((map['customDomainName'] as String).input()).input(),
+      dnsEntries: map['dnsEntries'] == null ? null : ((pulumi.Input.decodeList<ServiceDnsEntry>(map['dnsEntries']!, (value) => ServiceDnsEntry.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -82,19 +82,19 @@ class ApplicationGatewayProbe {
 
   factory ApplicationGatewayProbe.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayProbe(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      match: map['match'] == null ? null : (ApplicationGatewayProbeHealthResponseMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      minServers: map['minServers'] == null ? null : (map['minServers'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      pickHostNameFromBackendHttpSettings: map['pickHostNameFromBackendHttpSettings'] == null ? null : (map['pickHostNameFromBackendHttpSettings'] as bool).input(),
-      pickHostNameFromBackendSettings: map['pickHostNameFromBackendSettings'] == null ? null : (map['pickHostNameFromBackendSettings'] as bool).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold'] as int).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      match: map['match'] == null ? null : (ApplicationGatewayProbeHealthResponseMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      minServers: map['minServers'] == null ? null : (map['minServers']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      pickHostNameFromBackendHttpSettings: map['pickHostNameFromBackendHttpSettings'] == null ? null : (map['pickHostNameFromBackendHttpSettings']! as bool).input(),
+      pickHostNameFromBackendSettings: map['pickHostNameFromBackendSettings'] == null ? null : (map['pickHostNameFromBackendSettings']! as bool).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold']! as int).input(),
     );
   }
 }

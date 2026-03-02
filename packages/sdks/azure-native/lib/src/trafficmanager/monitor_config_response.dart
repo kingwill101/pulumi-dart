@@ -63,15 +63,15 @@ class MonitorConfigResponse {
 
   factory MonitorConfigResponse.fromMap(Map<String, dynamic> map) {
     return MonitorConfigResponse(
-      customHeaders: map['customHeaders'] == null ? null : (pulumi.Input.decodeList<MonitorConfigCustomHeadersItemResponse>(map['customHeaders'], (value) => MonitorConfigCustomHeadersItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expectedStatusCodeRanges: map['expectedStatusCodeRanges'] == null ? null : (pulumi.Input.decodeList<MonitorConfigExpectedStatusCodeRangesItemResponse>(map['expectedStatusCodeRanges'], (value) => MonitorConfigExpectedStatusCodeRangesItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as double).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as double).input(),
-      profileMonitorStatus: map['profileMonitorStatus'] == null ? null : (map['profileMonitorStatus'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as double).input(),
-      toleratedNumberOfFailures: map['toleratedNumberOfFailures'] == null ? null : (map['toleratedNumberOfFailures'] as double).input(),
+      customHeaders: map['customHeaders'] == null ? null : (pulumi.Input.decodeList<MonitorConfigCustomHeadersItemResponse>(map['customHeaders']!, (value) => MonitorConfigCustomHeadersItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expectedStatusCodeRanges: map['expectedStatusCodeRanges'] == null ? null : (pulumi.Input.decodeList<MonitorConfigExpectedStatusCodeRangesItemResponse>(map['expectedStatusCodeRanges']!, (value) => MonitorConfigExpectedStatusCodeRangesItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as double).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as double).input(),
+      profileMonitorStatus: map['profileMonitorStatus'] == null ? null : (map['profileMonitorStatus']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as double).input(),
+      toleratedNumberOfFailures: map['toleratedNumberOfFailures'] == null ? null : (map['toleratedNumberOfFailures']! as double).input(),
     );
   }
 }

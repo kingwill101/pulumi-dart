@@ -54,13 +54,13 @@ class InstanceGroupConfigDataprocV1beta2 {
 
   factory InstanceGroupConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return InstanceGroupConfigDataprocV1beta2(
-      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<AcceleratorConfigDataprocV1beta2>(map['accelerators'], (value) => AcceleratorConfigDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diskConfig: map['diskConfig'] == null ? null : (DiskConfigDataprocV1beta2.fromMap((map['diskConfig'] as Map).cast<String, dynamic>())).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
-      machineTypeUri: map['machineTypeUri'] == null ? null : (map['machineTypeUri'] as String).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
-      numInstances: map['numInstances'] == null ? null : (map['numInstances'] as int).input(),
-      preemptibility: map['preemptibility'] == null ? null : (InstanceGroupConfigPreemptibilityDataprocV1beta2.fromValue(map['preemptibility'] as String)).input(),
+      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<AcceleratorConfigDataprocV1beta2>(map['accelerators']!, (value) => AcceleratorConfigDataprocV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskConfig: map['diskConfig'] == null ? null : (DiskConfigDataprocV1beta2.fromMap((map['diskConfig']! as Map).cast<String, dynamic>())).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      machineTypeUri: map['machineTypeUri'] == null ? null : (map['machineTypeUri']! as String).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
+      numInstances: map['numInstances'] == null ? null : (map['numInstances']! as int).input(),
+      preemptibility: map['preemptibility'] == null ? null : (InstanceGroupConfigPreemptibilityDataprocV1beta2.fromValue(map['preemptibility']! as String)).input(),
     );
   }
 }

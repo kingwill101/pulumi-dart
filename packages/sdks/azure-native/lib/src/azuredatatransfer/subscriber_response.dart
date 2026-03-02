@@ -25,8 +25,8 @@ class SubscriberResponse {
 
   factory SubscriberResponse.fromMap(Map<String, dynamic> map) {
     return SubscriberResponse(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      notifications: map['notifications'] == null ? null : (map['notifications'] as double).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      notifications: map['notifications'] == null ? null : (map['notifications']! as double).input(),
     );
   }
 }

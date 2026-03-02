@@ -20,7 +20,7 @@ class AliasState {
 
   factory AliasState.fromMap(Map<String, dynamic> map) {
     return AliasState(
-      accountAlias: map['accountAlias'] == null ? null : (map['accountAlias'] as String).input(),
+      accountAlias: map['accountAlias'] == null ? null : (map['accountAlias']! as String).input(),
     );
   }
 }

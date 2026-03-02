@@ -21,7 +21,7 @@ class GetVirtualClusterContainerProviderInfo {
 
   factory GetVirtualClusterContainerProviderInfo.fromMap(Map<String, dynamic> map) {
     return GetVirtualClusterContainerProviderInfo(
-      eksInfos: (pulumi.Input.decodeList<GetVirtualClusterContainerProviderInfoEksInfo>(map['eksInfos'], (value) => GetVirtualClusterContainerProviderInfoEksInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eksInfos: (pulumi.Input.decodeList<GetVirtualClusterContainerProviderInfoEksInfo>(map['eksInfos']!, (value) => GetVirtualClusterContainerProviderInfoEksInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

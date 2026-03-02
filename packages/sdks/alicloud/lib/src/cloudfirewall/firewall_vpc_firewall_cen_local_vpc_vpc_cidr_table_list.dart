@@ -26,8 +26,8 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableList {
 
   factory FirewallVpcFirewallCenLocalVpcVpcCidrTableList.fromMap(Map<String, dynamic> map) {
     return FirewallVpcFirewallCenLocalVpcVpcCidrTableList(
-      routeEntryLists: map['routeEntryLists'] == null ? null : (pulumi.Input.decodeList<FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList>(map['routeEntryLists'], (value) => FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      routeEntryLists: map['routeEntryLists'] == null ? null : (pulumi.Input.decodeList<FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList>(map['routeEntryLists']!, (value) => FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId']! as String).input(),
     );
   }
 }

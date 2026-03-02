@@ -51,7 +51,7 @@ class ListingSubscriptionArgs {
       destinationDataset: (ListingSubscriptionDestinationDataset.fromMap((map['destinationDataset'] as Map).cast<String, dynamic>())).input(),
       listingId: (map['listingId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class SqlServerAvailabilityGroupResourcePropertiesDatabases {
 
   factory SqlServerAvailabilityGroupResourcePropertiesDatabases.fromMap(Map<String, dynamic> map) {
     return SqlServerAvailabilityGroupResourcePropertiesDatabases(
-      value: map['value'] == null ? null : (pulumi.Input.decodeList<SqlAvailabilityGroupDatabaseReplicaResourceProperties>(map['value'], (value) => SqlAvailabilityGroupDatabaseReplicaResourceProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: map['value'] == null ? null : (pulumi.Input.decodeList<SqlAvailabilityGroupDatabaseReplicaResourceProperties>(map['value']!, (value) => SqlAvailabilityGroupDatabaseReplicaResourceProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

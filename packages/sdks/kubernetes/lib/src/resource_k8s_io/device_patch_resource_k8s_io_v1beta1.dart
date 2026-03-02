@@ -27,8 +27,8 @@ class DevicePatchResourceK8sIoV1beta1 {
 
   factory DevicePatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return DevicePatchResourceK8sIoV1beta1(
-      basic: map['basic'] == null ? null : (BasicDevicePatchResourceK8sIoV1beta1.fromMap((map['basic'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      basic: map['basic'] == null ? null : (BasicDevicePatchResourceK8sIoV1beta1.fromMap((map['basic']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

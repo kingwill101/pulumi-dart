@@ -92,20 +92,20 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      assignedVolumeCount: map['assignedVolumeCount'] == null ? null : (map['assignedVolumeCount'] as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dailyBackupLimit: map['dailyBackupLimit'] == null ? null : (map['dailyBackupLimit'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      monthlyBackupLimit: map['monthlyBackupLimit'] == null ? null : (map['monthlyBackupLimit'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      weeklyBackupLimit: map['weeklyBackupLimit'] == null ? null : (map['weeklyBackupLimit'] as int).input(),
+      assignedVolumeCount: map['assignedVolumeCount'] == null ? null : (map['assignedVolumeCount']! as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dailyBackupLimit: map['dailyBackupLimit'] == null ? null : (map['dailyBackupLimit']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      monthlyBackupLimit: map['monthlyBackupLimit'] == null ? null : (map['monthlyBackupLimit']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      weeklyBackupLimit: map['weeklyBackupLimit'] == null ? null : (map['weeklyBackupLimit']! as int).input(),
     );
   }
 }

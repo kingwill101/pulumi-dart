@@ -21,7 +21,7 @@ class ClientIPConfig {
 
   factory ClientIPConfig.fromMap(Map<String, dynamic> map) {
     return ClientIPConfig(
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

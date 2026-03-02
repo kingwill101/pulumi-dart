@@ -21,7 +21,7 @@ class ManagedClusterCostAnalysisResponse {
 
   factory ManagedClusterCostAnalysisResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterCostAnalysisResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

@@ -47,11 +47,11 @@ class WebAppSitesControllerArgs {
 
   factory WebAppSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSitesControllerArgs(
-      discoveryScenario: map['discoveryScenario'] == null ? null : (map['discoveryScenario'] as String).input(),
+      discoveryScenario: map['discoveryScenario'] == null ? null : (map['discoveryScenario']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteAppliancePropertiesCollection: map['siteAppliancePropertiesCollection'] == null ? null : (pulumi.Input.decodeList<SiteApplianceProperties>(map['siteAppliancePropertiesCollection'], (value) => SiteApplianceProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      siteAppliancePropertiesCollection: map['siteAppliancePropertiesCollection'] == null ? null : (pulumi.Input.decodeList<SiteApplianceProperties>(map['siteAppliancePropertiesCollection']!, (value) => SiteApplianceProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
       siteName: (map['siteName'] as String).input(),
-      webAppSiteName: map['webAppSiteName'] == null ? null : (map['webAppSiteName'] as String).input(),
+      webAppSiteName: map['webAppSiteName'] == null ? null : (map['webAppSiteName']! as String).input(),
     );
   }
 }

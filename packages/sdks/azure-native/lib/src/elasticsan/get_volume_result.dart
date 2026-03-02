@@ -75,9 +75,9 @@ class GetVolumeResult {
   factory GetVolumeResult.fromMap(Map<String, dynamic> map) {
     return GetVolumeResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      creationData: map['creationData'] == null ? null : SourceCreationDataResponse.fromMap((map['creationData'] as Map).cast<String, dynamic>()),
+      creationData: map['creationData'] == null ? null : SourceCreationDataResponse.fromMap((map['creationData']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      managedBy: map['managedBy'] == null ? null : ManagedByInfoResponse.fromMap((map['managedBy'] as Map).cast<String, dynamic>()),
+      managedBy: map['managedBy'] == null ? null : ManagedByInfoResponse.fromMap((map['managedBy']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       sizeGiB: map['sizeGiB'] as double,

@@ -21,7 +21,7 @@ class Users {
 
   factory Users.fromMap(Map<String, dynamic> map) {
     return Users(
-      viewersCanEdit: map['viewersCanEdit'] == null ? null : (map['viewersCanEdit'] as bool).input(),
+      viewersCanEdit: map['viewersCanEdit'] == null ? null : (map['viewersCanEdit']! as bool).input(),
     );
   }
 }

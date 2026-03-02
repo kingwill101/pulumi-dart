@@ -20,7 +20,7 @@ class AclConfigIdpConfigExternalIdpConfig {
 
   factory AclConfigIdpConfigExternalIdpConfig.fromMap(Map<String, dynamic> map) {
     return AclConfigIdpConfigExternalIdpConfig(
-      workforcePoolName: map['workforcePoolName'] == null ? null : (map['workforcePoolName'] as String).input(),
+      workforcePoolName: map['workforcePoolName'] == null ? null : (map['workforcePoolName']! as String).input(),
     );
   }
 }

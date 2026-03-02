@@ -61,7 +61,7 @@ class OnPremiseSettings {
       computeSettings: (ComputeSettings.fromMap((map['computeSettings'] as Map).cast<String, dynamic>())).input(),
       facilitySettings: (FacilitySettings.fromMap((map['facilitySettings'] as Map).cast<String, dynamic>())).input(),
       laborSettings: (LaborSettings.fromMap((map['laborSettings'] as Map).cast<String, dynamic>())).input(),
-      managementSettings: map['managementSettings'] == null ? null : (ManagementSettings.fromMap((map['managementSettings'] as Map).cast<String, dynamic>())).input(),
+      managementSettings: map['managementSettings'] == null ? null : (ManagementSettings.fromMap((map['managementSettings']! as Map).cast<String, dynamic>())).input(),
       networkSettings: (NetworkSettings.fromMap((map['networkSettings'] as Map).cast<String, dynamic>())).input(),
       securitySettings: (SecuritySettings.fromMap((map['securitySettings'] as Map).cast<String, dynamic>())).input(),
       storageSettings: (StorageSettings.fromMap((map['storageSettings'] as Map).cast<String, dynamic>())).input(),

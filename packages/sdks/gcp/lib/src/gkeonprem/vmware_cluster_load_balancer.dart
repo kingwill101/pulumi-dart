@@ -43,10 +43,10 @@ class VMwareClusterLoadBalancer {
 
   factory VMwareClusterLoadBalancer.fromMap(Map<String, dynamic> map) {
     return VMwareClusterLoadBalancer(
-      f5Config: map['f5Config'] == null ? null : (VMwareClusterLoadBalancerF5Config.fromMap((map['f5Config'] as Map).cast<String, dynamic>())).input(),
-      manualLbConfig: map['manualLbConfig'] == null ? null : (VMwareClusterLoadBalancerManualLbConfig.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>())).input(),
-      metalLbConfig: map['metalLbConfig'] == null ? null : (VMwareClusterLoadBalancerMetalLbConfig.fromMap((map['metalLbConfig'] as Map).cast<String, dynamic>())).input(),
-      vipConfig: map['vipConfig'] == null ? null : (VMwareClusterLoadBalancerVipConfig.fromMap((map['vipConfig'] as Map).cast<String, dynamic>())).input(),
+      f5Config: map['f5Config'] == null ? null : (VMwareClusterLoadBalancerF5Config.fromMap((map['f5Config']! as Map).cast<String, dynamic>())).input(),
+      manualLbConfig: map['manualLbConfig'] == null ? null : (VMwareClusterLoadBalancerManualLbConfig.fromMap((map['manualLbConfig']! as Map).cast<String, dynamic>())).input(),
+      metalLbConfig: map['metalLbConfig'] == null ? null : (VMwareClusterLoadBalancerMetalLbConfig.fromMap((map['metalLbConfig']! as Map).cast<String, dynamic>())).input(),
+      vipConfig: map['vipConfig'] == null ? null : (VMwareClusterLoadBalancerVipConfig.fromMap((map['vipConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

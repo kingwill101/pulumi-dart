@@ -59,14 +59,14 @@ class LocalNetworkGatewayState {
 
   factory LocalNetworkGatewayState.fromMap(Map<String, dynamic> map) {
     return LocalNetworkGatewayState(
-      addressSpaces: map['addressSpaces'] == null ? null : ((map['addressSpaces'] as List).cast<String>()).input(),
-      bgpSettings: map['bgpSettings'] == null ? null : (LocalNetworkGatewayBgpSettings.fromMap((map['bgpSettings'] as Map).cast<String, dynamic>())).input(),
-      gatewayAddress: map['gatewayAddress'] == null ? null : (map['gatewayAddress'] as String).input(),
-      gatewayFqdn: map['gatewayFqdn'] == null ? null : (map['gatewayFqdn'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      addressSpaces: map['addressSpaces'] == null ? null : ((map['addressSpaces']! as List).cast<String>()).input(),
+      bgpSettings: map['bgpSettings'] == null ? null : (LocalNetworkGatewayBgpSettings.fromMap((map['bgpSettings']! as Map).cast<String, dynamic>())).input(),
+      gatewayAddress: map['gatewayAddress'] == null ? null : (map['gatewayAddress']! as String).input(),
+      gatewayFqdn: map['gatewayFqdn'] == null ? null : (map['gatewayFqdn']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -50,7 +50,7 @@ class DefaultObjectAccessControlArgs {
     return DefaultObjectAccessControlArgs(
       bucket: (map['bucket'] as String).input(),
       entity: (map['entity'] as String).input(),
-      object: map['object'] == null ? null : (map['object'] as String).input(),
+      object: map['object'] == null ? null : (map['object']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

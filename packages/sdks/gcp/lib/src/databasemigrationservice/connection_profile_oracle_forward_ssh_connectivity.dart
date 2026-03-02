@@ -43,9 +43,9 @@ class ConnectionProfileOracleForwardSshConnectivity {
   factory ConnectionProfileOracleForwardSshConnectivity.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileOracleForwardSshConnectivity(
       hostname: (map['hostname'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       port: (map['port'] as int).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
       username: (map['username'] as String).input(),
     );
   }

@@ -26,8 +26,8 @@ class SuspendProcessState {
 
   factory SuspendProcessState.fromMap(Map<String, dynamic> map) {
     return SuspendProcessState(
-      process: map['process'] == null ? null : (map['process'] as String).input(),
-      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId'] as String).input(),
+      process: map['process'] == null ? null : (map['process']! as String).input(),
+      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId']! as String).input(),
     );
   }
 }

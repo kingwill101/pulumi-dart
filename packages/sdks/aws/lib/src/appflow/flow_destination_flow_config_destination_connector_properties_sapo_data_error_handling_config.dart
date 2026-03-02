@@ -30,9 +30,9 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandli
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
-      failOnFirstDestinationError: map['failOnFirstDestinationError'] == null ? null : (map['failOnFirstDestinationError'] as bool).input(),
+      bucketName: map['bucketName'] == null ? null : ((map['bucketName'] as String).input()).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
+      failOnFirstDestinationError: map['failOnFirstDestinationError'] == null ? null : ((map['failOnFirstDestinationError'] as bool).input()).input(),
     );
   }
 }

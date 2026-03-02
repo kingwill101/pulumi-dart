@@ -61,13 +61,13 @@ class GetNetworkExperimentProfileResult {
   factory GetNetworkExperimentProfileResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkExperimentProfileResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      enabledState: map['enabledState'] == null ? null : map['enabledState'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      enabledState: map['enabledState'] == null ? null : map['enabledState']! as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       resourceState: map['resourceState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

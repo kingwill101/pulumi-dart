@@ -39,8 +39,8 @@ class GetAspectTypeIamPolicyArgs {
   factory GetAspectTypeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAspectTypeIamPolicyArgs(
       aspectTypeId: (map['aspectTypeId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

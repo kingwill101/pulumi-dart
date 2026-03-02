@@ -45,9 +45,9 @@ class AwsEnvironmentDataResponse {
     return AwsEnvironmentDataResponse(
       accountName: (map['accountName'] as String).input(),
       environmentType: (map['environmentType'] as String).input(),
-      organizationalData: map['organizationalData'] == null ? null : (AwsOrganizationalDataMasterResponse.fromMap((map['organizationalData'] as Map).cast<String, dynamic>())).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval'] as double).input(),
+      organizationalData: map['organizationalData'] == null ? null : (AwsOrganizationalDataMasterResponse.fromMap((map['organizationalData']! as Map).cast<String, dynamic>())).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
+      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval']! as double).input(),
     );
   }
 }

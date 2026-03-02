@@ -49,11 +49,11 @@ class IntegrationFabricArgs {
 
   factory IntegrationFabricArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationFabricArgs(
-      integrationFabricName: map['integrationFabricName'] == null ? null : (map['integrationFabricName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (IntegrationFabricProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      integrationFabricName: map['integrationFabricName'] == null ? null : (map['integrationFabricName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (IntegrationFabricProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

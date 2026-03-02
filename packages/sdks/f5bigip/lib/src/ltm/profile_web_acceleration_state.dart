@@ -86,20 +86,20 @@ class ProfileWebAccelerationState {
 
   factory ProfileWebAccelerationState.fromMap(Map<String, dynamic> map) {
     return ProfileWebAccelerationState(
-      cacheAgingRate: map['cacheAgingRate'] == null ? null : (map['cacheAgingRate'] as int).input(),
-      cacheClientCacheControlMode: map['cacheClientCacheControlMode'] == null ? null : (map['cacheClientCacheControlMode'] as String).input(),
-      cacheInsertAgeHeader: map['cacheInsertAgeHeader'] == null ? null : (map['cacheInsertAgeHeader'] as String).input(),
-      cacheMaxAge: map['cacheMaxAge'] == null ? null : (map['cacheMaxAge'] as int).input(),
-      cacheMaxEntries: map['cacheMaxEntries'] == null ? null : (map['cacheMaxEntries'] as int).input(),
-      cacheObjectMaxSize: map['cacheObjectMaxSize'] == null ? null : (map['cacheObjectMaxSize'] as int).input(),
-      cacheObjectMinSize: map['cacheObjectMinSize'] == null ? null : (map['cacheObjectMinSize'] as int).input(),
-      cacheSize: map['cacheSize'] == null ? null : (map['cacheSize'] as int).input(),
-      cacheUriExcludes: map['cacheUriExcludes'] == null ? null : ((map['cacheUriExcludes'] as List).cast<String>()).input(),
-      cacheUriIncludeOverrides: map['cacheUriIncludeOverrides'] == null ? null : ((map['cacheUriIncludeOverrides'] as List).cast<String>()).input(),
-      cacheUriIncludes: map['cacheUriIncludes'] == null ? null : ((map['cacheUriIncludes'] as List).cast<String>()).input(),
-      cacheUriPinneds: map['cacheUriPinneds'] == null ? null : ((map['cacheUriPinneds'] as List).cast<String>()).input(),
-      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      cacheAgingRate: map['cacheAgingRate'] == null ? null : (map['cacheAgingRate']! as int).input(),
+      cacheClientCacheControlMode: map['cacheClientCacheControlMode'] == null ? null : (map['cacheClientCacheControlMode']! as String).input(),
+      cacheInsertAgeHeader: map['cacheInsertAgeHeader'] == null ? null : (map['cacheInsertAgeHeader']! as String).input(),
+      cacheMaxAge: map['cacheMaxAge'] == null ? null : (map['cacheMaxAge']! as int).input(),
+      cacheMaxEntries: map['cacheMaxEntries'] == null ? null : (map['cacheMaxEntries']! as int).input(),
+      cacheObjectMaxSize: map['cacheObjectMaxSize'] == null ? null : (map['cacheObjectMaxSize']! as int).input(),
+      cacheObjectMinSize: map['cacheObjectMinSize'] == null ? null : (map['cacheObjectMinSize']! as int).input(),
+      cacheSize: map['cacheSize'] == null ? null : (map['cacheSize']! as int).input(),
+      cacheUriExcludes: map['cacheUriExcludes'] == null ? null : ((map['cacheUriExcludes']! as List).cast<String>()).input(),
+      cacheUriIncludeOverrides: map['cacheUriIncludeOverrides'] == null ? null : ((map['cacheUriIncludeOverrides']! as List).cast<String>()).input(),
+      cacheUriIncludes: map['cacheUriIncludes'] == null ? null : ((map['cacheUriIncludes']! as List).cast<String>()).input(),
+      cacheUriPinneds: map['cacheUriPinneds'] == null ? null : ((map['cacheUriPinneds']! as List).cast<String>()).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

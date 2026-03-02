@@ -59,12 +59,12 @@ class MLTableData {
     return MLTableData(
       dataType: (map['dataType'] as String).input(),
       dataUri: (map['dataUri'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous'] as bool).input(),
-      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      referencedUris: map['referencedUris'] == null ? null : ((map['referencedUris'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous']! as bool).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived']! as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      referencedUris: map['referencedUris'] == null ? null : ((map['referencedUris']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

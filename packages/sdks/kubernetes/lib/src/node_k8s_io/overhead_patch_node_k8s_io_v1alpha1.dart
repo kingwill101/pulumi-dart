@@ -21,7 +21,7 @@ class OverheadPatchNodeK8sIoV1alpha1 {
 
   factory OverheadPatchNodeK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return OverheadPatchNodeK8sIoV1alpha1(
-      podFixed: map['podFixed'] == null ? null : ((map['podFixed'] as Map).cast<String, String>()).input(),
+      podFixed: map['podFixed'] == null ? null : ((map['podFixed']! as Map).cast<String, String>()).input(),
     );
   }
 }

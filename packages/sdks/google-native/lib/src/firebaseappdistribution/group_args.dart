@@ -39,9 +39,9 @@ class GroupArgs {
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
       displayName: (map['displayName'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -62,15 +62,15 @@ class VocabularyFilterState {
 
   factory VocabularyFilterState.fromMap(Map<String, dynamic> map) {
     return VocabularyFilterState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      downloadUri: map['downloadUri'] == null ? null : (map['downloadUri'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vocabularyFilterFileUri: map['vocabularyFilterFileUri'] == null ? null : (map['vocabularyFilterFileUri'] as String).input(),
-      vocabularyFilterName: map['vocabularyFilterName'] == null ? null : (map['vocabularyFilterName'] as String).input(),
-      words: map['words'] == null ? null : ((map['words'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      downloadUri: map['downloadUri'] == null ? null : ((map['downloadUri'] as String).input()).input(),
+      languageCode: map['languageCode'] == null ? null : ((map['languageCode'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vocabularyFilterFileUri: map['vocabularyFilterFileUri'] == null ? null : ((map['vocabularyFilterFileUri'] as String).input()).input(),
+      vocabularyFilterName: map['vocabularyFilterName'] == null ? null : ((map['vocabularyFilterName'] as String).input()).input(),
+      words: map['words'] == null ? null : (((map['words'] as List).cast<String>()).input()).input(),
     );
   }
 }

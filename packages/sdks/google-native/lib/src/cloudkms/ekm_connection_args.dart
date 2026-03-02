@@ -54,13 +54,13 @@ class EkmConnectionArgs {
 
   factory EkmConnectionArgs.fromMap(Map<String, dynamic> map) {
     return EkmConnectionArgs(
-      cryptoSpacePath: map['cryptoSpacePath'] == null ? null : (map['cryptoSpacePath'] as String).input(),
-      ekmConnectionId: map['ekmConnectionId'] == null ? null : (map['ekmConnectionId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      keyManagementMode: map['keyManagementMode'] == null ? null : (EkmConnectionKeyManagementMode.fromValue(map['keyManagementMode'] as String)).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceResolvers: map['serviceResolvers'] == null ? null : (pulumi.Input.decodeList<ServiceResolver>(map['serviceResolvers'], (value) => ServiceResolver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cryptoSpacePath: map['cryptoSpacePath'] == null ? null : (map['cryptoSpacePath']! as String).input(),
+      ekmConnectionId: map['ekmConnectionId'] == null ? null : (map['ekmConnectionId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      keyManagementMode: map['keyManagementMode'] == null ? null : (EkmConnectionKeyManagementMode.fromValue(map['keyManagementMode']! as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceResolvers: map['serviceResolvers'] == null ? null : (pulumi.Input.decodeList<ServiceResolver>(map['serviceResolvers']!, (value) => ServiceResolver.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

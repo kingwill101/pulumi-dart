@@ -46,12 +46,12 @@ class EndpointEventGridState {
 
   factory EndpointEventGridState.fromMap(Map<String, dynamic> map) {
     return EndpointEventGridState(
-      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret'] as String).input(),
-      digitalTwinsId: map['digitalTwinsId'] == null ? null : (map['digitalTwinsId'] as String).input(),
-      eventgridTopicEndpoint: map['eventgridTopicEndpoint'] == null ? null : (map['eventgridTopicEndpoint'] as String).input(),
-      eventgridTopicPrimaryAccessKey: map['eventgridTopicPrimaryAccessKey'] == null ? null : (map['eventgridTopicPrimaryAccessKey'] as String).input(),
-      eventgridTopicSecondaryAccessKey: map['eventgridTopicSecondaryAccessKey'] == null ? null : (map['eventgridTopicSecondaryAccessKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret']! as String).input(),
+      digitalTwinsId: map['digitalTwinsId'] == null ? null : (map['digitalTwinsId']! as String).input(),
+      eventgridTopicEndpoint: map['eventgridTopicEndpoint'] == null ? null : (map['eventgridTopicEndpoint']! as String).input(),
+      eventgridTopicPrimaryAccessKey: map['eventgridTopicPrimaryAccessKey'] == null ? null : (map['eventgridTopicPrimaryAccessKey']! as String).input(),
+      eventgridTopicSecondaryAccessKey: map['eventgridTopicSecondaryAccessKey'] == null ? null : (map['eventgridTopicSecondaryAccessKey']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

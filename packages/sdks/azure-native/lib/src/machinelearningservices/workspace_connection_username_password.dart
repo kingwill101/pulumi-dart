@@ -28,9 +28,9 @@ class WorkspaceConnectionUsernamePassword {
 
   factory WorkspaceConnectionUsernamePassword.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionUsernamePassword(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      securityToken: map['securityToken'] == null ? null : (map['securityToken'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      securityToken: map['securityToken'] == null ? null : (map['securityToken']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

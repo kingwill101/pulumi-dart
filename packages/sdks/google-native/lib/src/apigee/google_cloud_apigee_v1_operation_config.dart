@@ -40,9 +40,9 @@ class GoogleCloudApigeeV1OperationConfig {
   factory GoogleCloudApigeeV1OperationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1OperationConfig(
       apiSource: (map['apiSource'] as String).input(),
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes'], (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operations: map['operations'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Operation>(map['operations'], (value) => GoogleCloudApigeeV1Operation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      quota: map['quota'] == null ? null : (GoogleCloudApigeeV1Quota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes']!, (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operations: map['operations'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Operation>(map['operations']!, (value) => GoogleCloudApigeeV1Operation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      quota: map['quota'] == null ? null : (GoogleCloudApigeeV1Quota.fromMap((map['quota']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

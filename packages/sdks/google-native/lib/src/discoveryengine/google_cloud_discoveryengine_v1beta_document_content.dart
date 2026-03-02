@@ -31,9 +31,9 @@ class GoogleCloudDiscoveryengineV1betaDocumentContent {
 
   factory GoogleCloudDiscoveryengineV1betaDocumentContent.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1betaDocumentContent(
-      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
-      rawBytes: map['rawBytes'] == null ? null : (map['rawBytes'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
+      rawBytes: map['rawBytes'] == null ? null : (map['rawBytes']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

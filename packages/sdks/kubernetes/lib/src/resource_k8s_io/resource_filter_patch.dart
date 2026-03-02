@@ -27,8 +27,8 @@ class ResourceFilterPatch {
 
   factory ResourceFilterPatch.fromMap(Map<String, dynamic> map) {
     return ResourceFilterPatch(
-      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
-      namedResources: map['namedResources'] == null ? null : (NamedResourcesFilterPatch.fromMap((map['namedResources'] as Map).cast<String, dynamic>())).input(),
+      driverName: map['driverName'] == null ? null : (map['driverName']! as String).input(),
+      namedResources: map['namedResources'] == null ? null : (NamedResourcesFilterPatch.fromMap((map['namedResources']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class CollectorAgentPropertiesBaseResponse {
 
   factory CollectorAgentPropertiesBaseResponse.fromMap(Map<String, dynamic> map) {
     return CollectorAgentPropertiesBaseResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      lastHeartbeatUtc: map['lastHeartbeatUtc'] == null ? null : (map['lastHeartbeatUtc'] as String).input(),
-      spnDetails: map['spnDetails'] == null ? null : (CollectorAgentSpnPropertiesBaseResponse.fromMap((map['spnDetails'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      lastHeartbeatUtc: map['lastHeartbeatUtc'] == null ? null : (map['lastHeartbeatUtc']! as String).input(),
+      spnDetails: map['spnDetails'] == null ? null : (CollectorAgentSpnPropertiesBaseResponse.fromMap((map['spnDetails']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

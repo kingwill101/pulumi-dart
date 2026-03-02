@@ -51,13 +51,13 @@ class RouteState {
 
   factory RouteState.fromMap(Map<String, dynamic> map) {
     return RouteState(
-      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : (map['clientVpnEndpointId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
-      origin: map['origin'] == null ? null : (map['origin'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetVpcSubnetId: map['targetVpcSubnetId'] == null ? null : (map['targetVpcSubnetId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : ((map['clientVpnEndpointId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : ((map['destinationCidrBlock'] as String).input()).input(),
+      origin: map['origin'] == null ? null : ((map['origin'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      targetVpcSubnetId: map['targetVpcSubnetId'] == null ? null : ((map['targetVpcSubnetId'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

@@ -57,13 +57,13 @@ class ServingConfig {
 
   factory ServingConfig.fromMap(Map<String, dynamic> map) {
     return ServingConfig(
-      appAssociation: map['appAssociation'] == null ? null : (ServingConfigAppAssociation.fromValue(map['appAssociation'] as String)).input(),
-      cleanUrls: map['cleanUrls'] == null ? null : (map['cleanUrls'] as bool).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<Header>(map['headers'], (value) => Header.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      i18n: map['i18n'] == null ? null : (I18nConfig.fromMap((map['i18n'] as Map).cast<String, dynamic>())).input(),
-      redirects: map['redirects'] == null ? null : (pulumi.Input.decodeList<Redirect>(map['redirects'], (value) => Redirect.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rewrites: map['rewrites'] == null ? null : (pulumi.Input.decodeList<Rewrite>(map['rewrites'], (value) => Rewrite.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      trailingSlashBehavior: map['trailingSlashBehavior'] == null ? null : (ServingConfigTrailingSlashBehavior.fromValue(map['trailingSlashBehavior'] as String)).input(),
+      appAssociation: map['appAssociation'] == null ? null : (ServingConfigAppAssociation.fromValue(map['appAssociation']! as String)).input(),
+      cleanUrls: map['cleanUrls'] == null ? null : (map['cleanUrls']! as bool).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<Header>(map['headers']!, (value) => Header.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      i18n: map['i18n'] == null ? null : (I18nConfig.fromMap((map['i18n']! as Map).cast<String, dynamic>())).input(),
+      redirects: map['redirects'] == null ? null : (pulumi.Input.decodeList<Redirect>(map['redirects']!, (value) => Redirect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rewrites: map['rewrites'] == null ? null : (pulumi.Input.decodeList<Rewrite>(map['rewrites']!, (value) => Rewrite.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trailingSlashBehavior: map['trailingSlashBehavior'] == null ? null : (ServingConfigTrailingSlashBehavior.fromValue(map['trailingSlashBehavior']! as String)).input(),
     );
   }
 }

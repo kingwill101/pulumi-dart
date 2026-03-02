@@ -40,7 +40,7 @@ class SourceTriggerResponse {
       name: (map['name'] as String).input(),
       sourceRepository: (SourcePropertiesResponse.fromMap((map['sourceRepository'] as Map).cast<String, dynamic>())).input(),
       sourceTriggerEvents: ((map['sourceTriggerEvents'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

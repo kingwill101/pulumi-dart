@@ -60,14 +60,14 @@ class CloudConnectionArgs {
 
   factory CloudConnectionArgs.fromMap(Map<String, dynamic> map) {
     return CloudConnectionArgs(
-      cloudConnectionName: map['cloudConnectionName'] == null ? null : (map['cloudConnectionName'] as String).input(),
-      cloudConnector: map['cloudConnector'] == null ? null : (ResourceReference.fromMap((map['cloudConnector'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      remoteResourceId: map['remoteResourceId'] == null ? null : (map['remoteResourceId'] as String).input(),
+      cloudConnectionName: map['cloudConnectionName'] == null ? null : (map['cloudConnectionName']! as String).input(),
+      cloudConnector: map['cloudConnector'] == null ? null : (ResourceReference.fromMap((map['cloudConnector']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      remoteResourceId: map['remoteResourceId'] == null ? null : (map['remoteResourceId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualHub: map['virtualHub'] == null ? null : (ResourceReference.fromMap((map['virtualHub'] as Map).cast<String, dynamic>())).input(),
+      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualHub: map['virtualHub'] == null ? null : (ResourceReference.fromMap((map['virtualHub']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

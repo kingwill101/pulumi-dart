@@ -32,8 +32,8 @@ class TransferAllDetailsResponse {
   factory TransferAllDetailsResponse.fromMap(Map<String, dynamic> map) {
     return TransferAllDetailsResponse(
       dataAccountType: (map['dataAccountType'] as String).input(),
-      transferAllBlobs: map['transferAllBlobs'] == null ? null : (map['transferAllBlobs'] as bool).input(),
-      transferAllFiles: map['transferAllFiles'] == null ? null : (map['transferAllFiles'] as bool).input(),
+      transferAllBlobs: map['transferAllBlobs'] == null ? null : (map['transferAllBlobs']! as bool).input(),
+      transferAllFiles: map['transferAllFiles'] == null ? null : (map['transferAllFiles']! as bool).input(),
     );
   }
 }

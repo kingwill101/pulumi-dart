@@ -49,11 +49,11 @@ class PipelineDefinitionArgs {
 
   factory PipelineDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return PipelineDefinitionArgs(
-      parameterObjects: map['parameterObjects'] == null ? null : (pulumi.Input.decodeList<PipelineDefinitionParameterObject>(map['parameterObjects'], (value) => PipelineDefinitionParameterObject.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parameterValues: map['parameterValues'] == null ? null : (pulumi.Input.decodeList<PipelineDefinitionParameterValue>(map['parameterValues'], (value) => PipelineDefinitionParameterValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameterObjects: map['parameterObjects'] == null ? null : ((pulumi.Input.decodeList<PipelineDefinitionParameterObject>(map['parameterObjects']!, (value) => PipelineDefinitionParameterObject.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      parameterValues: map['parameterValues'] == null ? null : ((pulumi.Input.decodeList<PipelineDefinitionParameterValue>(map['parameterValues']!, (value) => PipelineDefinitionParameterValue.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       pipelineId: (map['pipelineId'] as String).input(),
-      pipelineObjects: (pulumi.Input.decodeList<PipelineDefinitionPipelineObject>(map['pipelineObjects'], (value) => PipelineDefinitionPipelineObject.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      pipelineObjects: (pulumi.Input.decodeList<PipelineDefinitionPipelineObject>(map['pipelineObjects']!, (value) => PipelineDefinitionPipelineObject.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

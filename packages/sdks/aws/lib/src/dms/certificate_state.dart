@@ -51,13 +51,13 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      certificatePem: map['certificatePem'] == null ? null : (map['certificatePem'] as String).input(),
-      certificateWallet: map['certificateWallet'] == null ? null : (map['certificateWallet'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      certificateArn: map['certificateArn'] == null ? null : ((map['certificateArn'] as String).input()).input(),
+      certificateId: map['certificateId'] == null ? null : ((map['certificateId'] as String).input()).input(),
+      certificatePem: map['certificatePem'] == null ? null : ((map['certificatePem'] as String).input()).input(),
+      certificateWallet: map['certificateWallet'] == null ? null : ((map['certificateWallet'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class DeviceTolerationPatch {
 
   factory DeviceTolerationPatch.fromMap(Map<String, dynamic> map) {
     return DeviceTolerationPatch(
-      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      tolerationSeconds: map['tolerationSeconds'] == null ? null : (map['tolerationSeconds'] as int).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      tolerationSeconds: map['tolerationSeconds'] == null ? null : (map['tolerationSeconds']! as int).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

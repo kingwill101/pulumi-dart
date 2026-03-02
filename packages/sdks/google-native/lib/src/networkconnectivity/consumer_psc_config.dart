@@ -31,9 +31,9 @@ class ConsumerPscConfig {
 
   factory ConsumerPscConfig.fromMap(Map<String, dynamic> map) {
     return ConsumerPscConfig(
-      disableGlobalAccess: map['disableGlobalAccess'] == null ? null : (map['disableGlobalAccess'] as bool).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      disableGlobalAccess: map['disableGlobalAccess'] == null ? null : (map['disableGlobalAccess']! as bool).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

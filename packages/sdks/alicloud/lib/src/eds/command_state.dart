@@ -46,12 +46,12 @@ class CommandState {
 
   factory CommandState.fromMap(Map<String, dynamic> map) {
     return CommandState(
-      commandContent: map['commandContent'] == null ? null : (map['commandContent'] as String).input(),
-      commandType: map['commandType'] == null ? null : (map['commandType'] as String).input(),
-      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
-      desktopId: map['desktopId'] == null ? null : (map['desktopId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      commandContent: map['commandContent'] == null ? null : (map['commandContent']! as String).input(),
+      commandType: map['commandType'] == null ? null : (map['commandType']! as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding']! as String).input(),
+      desktopId: map['desktopId'] == null ? null : (map['desktopId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

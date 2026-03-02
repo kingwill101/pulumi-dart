@@ -45,10 +45,10 @@ class MachineGroupArgs {
   factory MachineGroupArgs.fromMap(Map<String, dynamic> map) {
     return MachineGroupArgs(
       identifyLists: ((map['identifyLists'] as List).cast<String>()).input(),
-      identifyType: map['identifyType'] == null ? null : (map['identifyType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      identifyType: map['identifyType'] == null ? null : (map['identifyType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       project: (map['project'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

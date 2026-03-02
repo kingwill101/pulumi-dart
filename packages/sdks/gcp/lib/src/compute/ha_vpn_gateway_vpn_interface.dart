@@ -36,9 +36,9 @@ class HaVpnGatewayVpnInterface {
 
   factory HaVpnGatewayVpnInterface.fromMap(Map<String, dynamic> map) {
     return HaVpnGatewayVpnInterface(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      interconnectAttachment: map['interconnectAttachment'] == null ? null : (map['interconnectAttachment'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      interconnectAttachment: map['interconnectAttachment'] == null ? null : (map['interconnectAttachment']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
     );
   }
 }

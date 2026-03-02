@@ -27,8 +27,8 @@ class CloudServiceRoleProfilePropertiesResponse {
 
   factory CloudServiceRoleProfilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CloudServiceRoleProfilePropertiesResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sku: map['sku'] == null ? null : (CloudServiceRoleSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sku: map['sku'] == null ? null : (CloudServiceRoleSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

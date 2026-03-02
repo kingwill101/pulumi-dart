@@ -31,9 +31,9 @@ class GoogleCloudRetailV2RuleOnewaySynonymsAction {
 
   factory GoogleCloudRetailV2RuleOnewaySynonymsAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2RuleOnewaySynonymsAction(
-      onewayTerms: map['onewayTerms'] == null ? null : ((map['onewayTerms'] as List).cast<String>()).input(),
-      queryTerms: map['queryTerms'] == null ? null : ((map['queryTerms'] as List).cast<String>()).input(),
-      synonyms: map['synonyms'] == null ? null : ((map['synonyms'] as List).cast<String>()).input(),
+      onewayTerms: map['onewayTerms'] == null ? null : ((map['onewayTerms']! as List).cast<String>()).input(),
+      queryTerms: map['queryTerms'] == null ? null : ((map['queryTerms']! as List).cast<String>()).input(),
+      synonyms: map['synonyms'] == null ? null : ((map['synonyms']! as List).cast<String>()).input(),
     );
   }
 }

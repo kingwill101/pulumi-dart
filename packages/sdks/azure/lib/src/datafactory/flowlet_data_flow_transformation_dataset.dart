@@ -26,7 +26,7 @@ class FlowletDataFlowTransformationDataset {
   factory FlowletDataFlowTransformationDataset.fromMap(Map<String, dynamic> map) {
     return FlowletDataFlowTransformationDataset(
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

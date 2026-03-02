@@ -34,8 +34,8 @@ class GetPrivateLocationArgs {
 
   factory GetPrivateLocationArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateLocationArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      keys: map['keys'] == null ? null : ((map['keys'] as List).cast<String>()).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      keys: map['keys'] == null ? null : ((map['keys']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
     );
   }

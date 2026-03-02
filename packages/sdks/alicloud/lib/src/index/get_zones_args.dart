@@ -80,17 +80,17 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      availableDiskCategory: map['availableDiskCategory'] == null ? null : (map['availableDiskCategory'] as String).input(),
-      availableInstanceType: map['availableInstanceType'] == null ? null : (map['availableInstanceType'] as String).input(),
-      availableResourceCreation: map['availableResourceCreation'] == null ? null : (map['availableResourceCreation'] as String).input(),
-      availableSlbAddressIpVersion: map['availableSlbAddressIpVersion'] == null ? null : (map['availableSlbAddressIpVersion'] as String).input(),
-      availableSlbAddressType: map['availableSlbAddressType'] == null ? null : (map['availableSlbAddressType'] as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
-      multi: map['multi'] == null ? null : (map['multi'] as bool).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      spotStrategy: map['spotStrategy'] == null ? null : (map['spotStrategy'] as String).input(),
+      availableDiskCategory: map['availableDiskCategory'] == null ? null : (map['availableDiskCategory']! as String).input(),
+      availableInstanceType: map['availableInstanceType'] == null ? null : (map['availableInstanceType']! as String).input(),
+      availableResourceCreation: map['availableResourceCreation'] == null ? null : (map['availableResourceCreation']! as String).input(),
+      availableSlbAddressIpVersion: map['availableSlbAddressIpVersion'] == null ? null : (map['availableSlbAddressIpVersion']! as String).input(),
+      availableSlbAddressType: map['availableSlbAddressType'] == null ? null : (map['availableSlbAddressType']! as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
+      multi: map['multi'] == null ? null : (map['multi']! as bool).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      spotStrategy: map['spotStrategy'] == null ? null : (map['spotStrategy']! as String).input(),
     );
   }
 }

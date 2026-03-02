@@ -59,13 +59,13 @@ class Ipv4GatewayArgs {
 
   factory Ipv4GatewayArgs.fromMap(Map<String, dynamic> map) {
     return Ipv4GatewayArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      internetMode: map['internetMode'] == null ? null : (map['internetMode'] as String).input(),
-      ipv4GatewayDescription: map['ipv4GatewayDescription'] == null ? null : (map['ipv4GatewayDescription'] as String).input(),
-      ipv4GatewayName: map['ipv4GatewayName'] == null ? null : (map['ipv4GatewayName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      internetMode: map['internetMode'] == null ? null : (map['internetMode']! as String).input(),
+      ipv4GatewayDescription: map['ipv4GatewayDescription'] == null ? null : (map['ipv4GatewayDescription']! as String).input(),
+      ipv4GatewayName: map['ipv4GatewayName'] == null ? null : (map['ipv4GatewayName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

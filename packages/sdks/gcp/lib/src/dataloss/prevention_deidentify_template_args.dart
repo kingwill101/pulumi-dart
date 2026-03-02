@@ -53,10 +53,10 @@ class PreventionDeidentifyTemplateArgs {
   factory PreventionDeidentifyTemplateArgs.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateArgs(
       deidentifyConfig: (PreventionDeidentifyTemplateDeidentifyConfig.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       parent: (map['parent'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
     );
   }
 }

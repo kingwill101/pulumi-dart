@@ -58,16 +58,16 @@ class GetImagesResult {
 
   factory GetImagesResult.fromMap(Map<String, dynamic> map) {
     return GetImagesResult(
-      desktopInstanceType: map['desktopInstanceType'] == null ? null : map['desktopInstanceType'] as String,
+      desktopInstanceType: map['desktopInstanceType'] == null ? null : map['desktopInstanceType']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      imageType: map['imageType'] == null ? null : map['imageType'] as String,
+      imageType: map['imageType'] == null ? null : map['imageType']! as String,
       images: pulumi.Input.decodeList<GetImagesImage>(map['images'], (value) => GetImagesImage.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      osType: map['osType'] == null ? null : map['osType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      osType: map['osType'] == null ? null : map['osType']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

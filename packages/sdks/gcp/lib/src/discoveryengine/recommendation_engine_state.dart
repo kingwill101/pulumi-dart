@@ -82,17 +82,17 @@ class RecommendationEngineState {
 
   factory RecommendationEngineState.fromMap(Map<String, dynamic> map) {
     return RecommendationEngineState(
-      commonConfig: map['commonConfig'] == null ? null : (RecommendationEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataStoreIds: map['dataStoreIds'] == null ? null : ((map['dataStoreIds'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      engineId: map['engineId'] == null ? null : (map['engineId'] as String).input(),
-      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mediaRecommendationEngineConfig: map['mediaRecommendationEngineConfig'] == null ? null : (RecommendationEngineMediaRecommendationEngineConfig.fromMap((map['mediaRecommendationEngineConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      commonConfig: map['commonConfig'] == null ? null : (RecommendationEngineCommonConfig.fromMap((map['commonConfig']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataStoreIds: map['dataStoreIds'] == null ? null : ((map['dataStoreIds']! as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      engineId: map['engineId'] == null ? null : (map['engineId']! as String).input(),
+      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mediaRecommendationEngineConfig: map['mediaRecommendationEngineConfig'] == null ? null : (RecommendationEngineMediaRecommendationEngineConfig.fromMap((map['mediaRecommendationEngineConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

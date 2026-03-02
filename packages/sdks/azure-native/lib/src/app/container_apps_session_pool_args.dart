@@ -96,20 +96,20 @@ class ContainerAppsSessionPoolArgs {
 
   factory ContainerAppsSessionPoolArgs.fromMap(Map<String, dynamic> map) {
     return ContainerAppsSessionPoolArgs(
-      containerType: map['containerType'] == null ? null : (map['containerType'] as String).input(),
-      customContainerTemplate: map['customContainerTemplate'] == null ? null : (CustomContainerTemplate.fromMap((map['customContainerTemplate'] as Map).cast<String, dynamic>())).input(),
-      dynamicPoolConfiguration: map['dynamicPoolConfiguration'] == null ? null : (DynamicPoolConfiguration.fromMap((map['dynamicPoolConfiguration'] as Map).cast<String, dynamic>())).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedIdentitySettings: map['managedIdentitySettings'] == null ? null : (pulumi.Input.decodeList<ManagedIdentitySetting>(map['managedIdentitySettings'], (value) => ManagedIdentitySetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      poolManagementType: map['poolManagementType'] == null ? null : (map['poolManagementType'] as String).input(),
+      containerType: map['containerType'] == null ? null : (map['containerType']! as String).input(),
+      customContainerTemplate: map['customContainerTemplate'] == null ? null : (CustomContainerTemplate.fromMap((map['customContainerTemplate']! as Map).cast<String, dynamic>())).input(),
+      dynamicPoolConfiguration: map['dynamicPoolConfiguration'] == null ? null : (DynamicPoolConfiguration.fromMap((map['dynamicPoolConfiguration']! as Map).cast<String, dynamic>())).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedIdentitySettings: map['managedIdentitySettings'] == null ? null : (pulumi.Input.decodeList<ManagedIdentitySetting>(map['managedIdentitySettings']!, (value) => ManagedIdentitySetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      poolManagementType: map['poolManagementType'] == null ? null : (map['poolManagementType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scaleConfiguration: map['scaleConfiguration'] == null ? null : (ScaleConfiguration.fromMap((map['scaleConfiguration'] as Map).cast<String, dynamic>())).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<SessionPoolSecret>(map['secrets'], (value) => SessionPoolSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sessionNetworkConfiguration: map['sessionNetworkConfiguration'] == null ? null : (SessionNetworkConfiguration.fromMap((map['sessionNetworkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      sessionPoolName: map['sessionPoolName'] == null ? null : (map['sessionPoolName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      scaleConfiguration: map['scaleConfiguration'] == null ? null : (ScaleConfiguration.fromMap((map['scaleConfiguration']! as Map).cast<String, dynamic>())).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<SessionPoolSecret>(map['secrets']!, (value) => SessionPoolSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sessionNetworkConfiguration: map['sessionNetworkConfiguration'] == null ? null : (SessionNetworkConfiguration.fromMap((map['sessionNetworkConfiguration']! as Map).cast<String, dynamic>())).input(),
+      sessionPoolName: map['sessionPoolName'] == null ? null : (map['sessionPoolName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

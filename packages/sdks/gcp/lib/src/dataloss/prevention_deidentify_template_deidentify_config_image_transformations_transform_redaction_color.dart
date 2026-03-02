@@ -30,9 +30,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformR
 
   factory PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor(
-      blue: map['blue'] == null ? null : (map['blue'] as double).input(),
-      green: map['green'] == null ? null : (map['green'] as double).input(),
-      red: map['red'] == null ? null : (map['red'] as double).input(),
+      blue: map['blue'] == null ? null : (map['blue']! as double).input(),
+      green: map['green'] == null ? null : (map['green']! as double).input(),
+      red: map['red'] == null ? null : (map['red']! as double).input(),
     );
   }
 }

@@ -57,13 +57,13 @@ class BatchRuntimeInfoCurrentUsage {
 
   factory BatchRuntimeInfoCurrentUsage.fromMap(Map<String, dynamic> map) {
     return BatchRuntimeInfoCurrentUsage(
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
-      milliAccelerator: map['milliAccelerator'] == null ? null : (map['milliAccelerator'] as String).input(),
-      milliDcu: map['milliDcu'] == null ? null : (map['milliDcu'] as String).input(),
-      milliDcuPremium: map['milliDcuPremium'] == null ? null : (map['milliDcuPremium'] as String).input(),
-      shuffleStorageGb: map['shuffleStorageGb'] == null ? null : (map['shuffleStorageGb'] as String).input(),
-      shuffleStorageGbPremium: map['shuffleStorageGbPremium'] == null ? null : (map['shuffleStorageGbPremium'] as String).input(),
-      snapshotTime: map['snapshotTime'] == null ? null : (map['snapshotTime'] as String).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      milliAccelerator: map['milliAccelerator'] == null ? null : (map['milliAccelerator']! as String).input(),
+      milliDcu: map['milliDcu'] == null ? null : (map['milliDcu']! as String).input(),
+      milliDcuPremium: map['milliDcuPremium'] == null ? null : (map['milliDcuPremium']! as String).input(),
+      shuffleStorageGb: map['shuffleStorageGb'] == null ? null : (map['shuffleStorageGb']! as String).input(),
+      shuffleStorageGbPremium: map['shuffleStorageGbPremium'] == null ? null : (map['shuffleStorageGbPremium']! as String).input(),
+      snapshotTime: map['snapshotTime'] == null ? null : (map['snapshotTime']! as String).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class JobConfiguration {
 
   factory JobConfiguration.fromMap(Map<String, dynamic> map) {
     return JobConfiguration(
-      copy: map['copy'] == null ? null : (JobConfigurationTableCopy.fromMap((map['copy'] as Map).cast<String, dynamic>())).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      extract: map['extract'] == null ? null : (JobConfigurationExtract.fromMap((map['extract'] as Map).cast<String, dynamic>())).input(),
-      jobTimeoutMs: map['jobTimeoutMs'] == null ? null : (map['jobTimeoutMs'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      load: map['load'] == null ? null : (JobConfigurationLoad.fromMap((map['load'] as Map).cast<String, dynamic>())).input(),
-      query: map['query'] == null ? null : (JobConfigurationQuery.fromMap((map['query'] as Map).cast<String, dynamic>())).input(),
+      copy: map['copy'] == null ? null : (JobConfigurationTableCopy.fromMap((map['copy']! as Map).cast<String, dynamic>())).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      extract: map['extract'] == null ? null : (JobConfigurationExtract.fromMap((map['extract']! as Map).cast<String, dynamic>())).input(),
+      jobTimeoutMs: map['jobTimeoutMs'] == null ? null : (map['jobTimeoutMs']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      load: map['load'] == null ? null : (JobConfigurationLoad.fromMap((map['load']! as Map).cast<String, dynamic>())).input(),
+      query: map['query'] == null ? null : (JobConfigurationQuery.fromMap((map['query']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

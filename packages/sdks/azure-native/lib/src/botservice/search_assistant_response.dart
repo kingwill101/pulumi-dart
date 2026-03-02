@@ -38,8 +38,8 @@ class SearchAssistantResponse {
   factory SearchAssistantResponse.fromMap(Map<String, dynamic> map) {
     return SearchAssistantResponse(
       channelName: (map['channelName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

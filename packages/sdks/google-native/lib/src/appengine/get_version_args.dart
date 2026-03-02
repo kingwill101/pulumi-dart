@@ -38,7 +38,7 @@ class GetVersionArgs {
       appId: (map['appId'] as String).input(),
       serviceId: (map['serviceId'] as String).input(),
       versionId: (map['versionId'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

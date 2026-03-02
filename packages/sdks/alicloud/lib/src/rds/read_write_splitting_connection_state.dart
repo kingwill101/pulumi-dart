@@ -51,13 +51,13 @@ class ReadWriteSplittingConnectionState {
 
   factory ReadWriteSplittingConnectionState.fromMap(Map<String, dynamic> map) {
     return ReadWriteSplittingConnectionState(
-      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      distributionType: map['distributionType'] == null ? null : (map['distributionType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      maxDelayTime: map['maxDelayTime'] == null ? null : (map['maxDelayTime'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      weight: map['weight'] == null ? null : ((map['weight'] as Map).cast<String, String>()).input(),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix']! as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      distributionType: map['distributionType'] == null ? null : (map['distributionType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      maxDelayTime: map['maxDelayTime'] == null ? null : (map['maxDelayTime']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      weight: map['weight'] == null ? null : ((map['weight']! as Map).cast<String, String>()).input(),
     );
   }
 }

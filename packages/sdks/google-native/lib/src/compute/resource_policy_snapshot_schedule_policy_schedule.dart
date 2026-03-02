@@ -31,9 +31,9 @@ class ResourcePolicySnapshotSchedulePolicySchedule {
 
   factory ResourcePolicySnapshotSchedulePolicySchedule.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicySchedule(
-      dailySchedule: map['dailySchedule'] == null ? null : (ResourcePolicyDailyCycle.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>())).input(),
-      hourlySchedule: map['hourlySchedule'] == null ? null : (ResourcePolicyHourlyCycle.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>())).input(),
-      weeklySchedule: map['weeklySchedule'] == null ? null : (ResourcePolicyWeeklyCycle.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())).input(),
+      dailySchedule: map['dailySchedule'] == null ? null : (ResourcePolicyDailyCycle.fromMap((map['dailySchedule']! as Map).cast<String, dynamic>())).input(),
+      hourlySchedule: map['hourlySchedule'] == null ? null : (ResourcePolicyHourlyCycle.fromMap((map['hourlySchedule']! as Map).cast<String, dynamic>())).input(),
+      weeklySchedule: map['weeklySchedule'] == null ? null : (ResourcePolicyWeeklyCycle.fromMap((map['weeklySchedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

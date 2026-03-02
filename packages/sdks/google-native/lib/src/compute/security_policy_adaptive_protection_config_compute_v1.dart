@@ -22,7 +22,7 @@ class SecurityPolicyAdaptiveProtectionConfigComputeV1 {
 
   factory SecurityPolicyAdaptiveProtectionConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigComputeV1(
-      layer7DdosDefenseConfig: map['layer7DdosDefenseConfig'] == null ? null : (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeV1.fromMap((map['layer7DdosDefenseConfig'] as Map).cast<String, dynamic>())).input(),
+      layer7DdosDefenseConfig: map['layer7DdosDefenseConfig'] == null ? null : (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeV1.fromMap((map['layer7DdosDefenseConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

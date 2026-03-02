@@ -27,8 +27,8 @@ class ConfigMultiTenant {
 
   factory ConfigMultiTenant.fromMap(Map<String, dynamic> map) {
     return ConfigMultiTenant(
-      allowTenants: map['allowTenants'] == null ? null : (map['allowTenants'] as bool).input(),
-      defaultTenantLocation: map['defaultTenantLocation'] == null ? null : (map['defaultTenantLocation'] as String).input(),
+      allowTenants: map['allowTenants'] == null ? null : (map['allowTenants']! as bool).input(),
+      defaultTenantLocation: map['defaultTenantLocation'] == null ? null : (map['defaultTenantLocation']! as String).input(),
     );
   }
 }

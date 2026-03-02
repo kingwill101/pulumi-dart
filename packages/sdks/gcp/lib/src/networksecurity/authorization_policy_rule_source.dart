@@ -27,8 +27,8 @@ class AuthorizationPolicyRuleSource {
 
   factory AuthorizationPolicyRuleSource.fromMap(Map<String, dynamic> map) {
     return AuthorizationPolicyRuleSource(
-      ipBlocks: map['ipBlocks'] == null ? null : ((map['ipBlocks'] as List).cast<String>()).input(),
-      principals: map['principals'] == null ? null : ((map['principals'] as List).cast<String>()).input(),
+      ipBlocks: map['ipBlocks'] == null ? null : ((map['ipBlocks']! as List).cast<String>()).input(),
+      principals: map['principals'] == null ? null : ((map['principals']! as List).cast<String>()).input(),
     );
   }
 }

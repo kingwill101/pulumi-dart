@@ -47,12 +47,12 @@ class RoleBindingRecordResponse {
 
   factory RoleBindingRecordResponse.fromMap(Map<String, dynamic> map) {
     return RoleBindingRecordResponse(
-      crnPattern: map['crnPattern'] == null ? null : (map['crnPattern'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
+      crnPattern: map['crnPattern'] == null ? null : (map['crnPattern']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (MetadataEntityResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      principal: map['principal'] == null ? null : (map['principal']! as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
     );
   }
 }

@@ -38,8 +38,8 @@ class DirectoryKustomizeArgs {
   factory DirectoryKustomizeArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryKustomizeArgs(
       directory: (map['directory'] as String).input(),
-      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix'] as String).input(),
-      transformations: map['transformations'] == null ? null : ((map['transformations'] as List).cast<dynamic>()).input(),
+      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix']! as String).input(),
+      transformations: map['transformations'] == null ? null : ((map['transformations']! as List).cast<dynamic>()).input(),
     );
   }
 }

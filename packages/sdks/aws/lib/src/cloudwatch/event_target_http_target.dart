@@ -30,9 +30,9 @@ class EventTargetHttpTarget {
 
   factory EventTargetHttpTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetHttpTarget(
-      headerParameters: map['headerParameters'] == null ? null : ((map['headerParameters'] as Map).cast<String, String>()).input(),
-      pathParameterValues: map['pathParameterValues'] == null ? null : ((map['pathParameterValues'] as List).cast<String>()).input(),
-      queryStringParameters: map['queryStringParameters'] == null ? null : ((map['queryStringParameters'] as Map).cast<String, String>()).input(),
+      headerParameters: map['headerParameters'] == null ? null : (((map['headerParameters'] as Map).cast<String, String>()).input()).input(),
+      pathParameterValues: map['pathParameterValues'] == null ? null : (((map['pathParameterValues'] as List).cast<String>()).input()).input(),
+      queryStringParameters: map['queryStringParameters'] == null ? null : (((map['queryStringParameters'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

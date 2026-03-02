@@ -21,7 +21,7 @@ class Environment {
 
   factory Environment.fromMap(Map<String, dynamic> map) {
     return Environment(
-      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, String>()).input(),
+      variables: map['variables'] == null ? null : ((map['variables']! as Map).cast<String, String>()).input(),
     );
   }
 }

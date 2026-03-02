@@ -64,13 +64,13 @@ class GetEnterpriseUsersResult {
     return GetEnterpriseUsersResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      role: map['role'] == null ? null : map['role'] as String,
-      searchKey: map['searchKey'] == null ? null : map['searchKey'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tid: map['tid'] == null ? null : map['tid'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      role: map['role'] == null ? null : map['role']! as String,
+      searchKey: map['searchKey'] == null ? null : map['searchKey']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tid: map['tid'] == null ? null : map['tid']! as int,
       users: pulumi.Input.decodeList<GetEnterpriseUsersUser>(map['users'], (value) => GetEnterpriseUsersUser.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

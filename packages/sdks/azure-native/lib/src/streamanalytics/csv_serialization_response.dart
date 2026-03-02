@@ -32,8 +32,8 @@ class CsvSerializationResponse {
 
   factory CsvSerializationResponse.fromMap(Map<String, dynamic> map) {
     return CsvSerializationResponse(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

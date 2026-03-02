@@ -40,11 +40,11 @@ class FleetComputeConfiguration {
 
   factory FleetComputeConfiguration.fromMap(Map<String, dynamic> map) {
     return FleetComputeConfiguration(
-      disk: map['disk'] == null ? null : (map['disk'] as int).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as int).input(),
-      vcpu: map['vcpu'] == null ? null : (map['vcpu'] as int).input(),
+      disk: map['disk'] == null ? null : ((map['disk'] as int).input()).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      machineType: map['machineType'] == null ? null : ((map['machineType'] as String).input()).input(),
+      memory: map['memory'] == null ? null : ((map['memory'] as int).input()).input(),
+      vcpu: map['vcpu'] == null ? null : ((map['vcpu'] as int).input()).input(),
     );
   }
 }

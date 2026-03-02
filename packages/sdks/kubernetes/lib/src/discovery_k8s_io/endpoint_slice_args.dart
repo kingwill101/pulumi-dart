@@ -53,11 +53,11 @@ class EndpointSliceArgs {
   factory EndpointSliceArgs.fromMap(Map<String, dynamic> map) {
     return EndpointSliceArgs(
       addressType: (map['addressType'] as String).input(),
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       endpoints: (pulumi.Input.decodeList<Endpoint>(map['endpoints'], (value) => Endpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<EndpointPort>(map['ports'], (value) => EndpointPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<EndpointPort>(map['ports']!, (value) => EndpointPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

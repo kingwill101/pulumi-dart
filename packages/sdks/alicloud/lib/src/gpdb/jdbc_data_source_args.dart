@@ -54,12 +54,12 @@ class JdbcDataSourceArgs {
 
   factory JdbcDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return JdbcDataSourceArgs(
-      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription'] as String).input(),
-      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
-      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
+      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription']! as String).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName']! as String).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType']! as String).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      jdbcConnectionString: map['jdbcConnectionString'] == null ? null : (map['jdbcConnectionString'] as String).input(),
-      jdbcPassword: map['jdbcPassword'] == null ? null : (map['jdbcPassword'] as String).input(),
+      jdbcConnectionString: map['jdbcConnectionString'] == null ? null : (map['jdbcConnectionString']! as String).input(),
+      jdbcPassword: map['jdbcPassword'] == null ? null : (map['jdbcPassword']! as String).input(),
       jdbcUserName: (map['jdbcUserName'] as String).input(),
     );
   }

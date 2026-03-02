@@ -21,7 +21,7 @@ class DomainOsNvRamSourceNetworkInitiator {
 
   factory DomainOsNvRamSourceNetworkInitiator.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceNetworkInitiator(
-      iqn: map['iqn'] == null ? null : (DomainOsNvRamSourceNetworkInitiatorIqn.fromMap((map['iqn'] as Map).cast<String, dynamic>())).input(),
+      iqn: map['iqn'] == null ? null : (DomainOsNvRamSourceNetworkInitiatorIqn.fromMap((map['iqn']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

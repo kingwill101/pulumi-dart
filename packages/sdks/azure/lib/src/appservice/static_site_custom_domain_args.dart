@@ -36,7 +36,7 @@ class StaticSiteCustomDomainArgs {
     return StaticSiteCustomDomainArgs(
       domainName: (map['domainName'] as String).input(),
       staticSiteId: (map['staticSiteId'] as String).input(),
-      validationType: map['validationType'] == null ? null : (map['validationType'] as String).input(),
+      validationType: map['validationType'] == null ? null : (map['validationType']! as String).input(),
     );
   }
 }

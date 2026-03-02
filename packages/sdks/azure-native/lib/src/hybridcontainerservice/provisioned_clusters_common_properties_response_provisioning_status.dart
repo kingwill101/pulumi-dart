@@ -34,10 +34,10 @@ class ProvisionedClustersCommonPropertiesResponseProvisioningStatus {
 
   factory ProvisionedClustersCommonPropertiesResponseProvisioningStatus.fromMap(Map<String, dynamic> map) {
     return ProvisionedClustersCommonPropertiesResponseProvisioningStatus(
-      error: map['error'] == null ? null : (ProvisionedClustersCommonPropertiesResponseError.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
-      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      error: map['error'] == null ? null : (ProvisionedClustersCommonPropertiesResponseError.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
+      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

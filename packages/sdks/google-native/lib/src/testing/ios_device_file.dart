@@ -32,9 +32,9 @@ class IosDeviceFile {
 
   factory IosDeviceFile.fromMap(Map<String, dynamic> map) {
     return IosDeviceFile(
-      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
-      content: map['content'] == null ? null : (FileReference.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
-      devicePath: map['devicePath'] == null ? null : (map['devicePath'] as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId']! as String).input(),
+      content: map['content'] == null ? null : (FileReference.fromMap((map['content']! as Map).cast<String, dynamic>())).input(),
+      devicePath: map['devicePath'] == null ? null : (map['devicePath']! as String).input(),
     );
   }
 }

@@ -50,11 +50,11 @@ class WorkloadAttributes {
 
   factory WorkloadAttributes.fromMap(Map<String, dynamic> map) {
     return WorkloadAttributes(
-      businessOwners: map['businessOwners'] == null ? null : (pulumi.Input.decodeList<WorkloadAttributesBusinessOwner>(map['businessOwners'], (value) => WorkloadAttributesBusinessOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      criticality: map['criticality'] == null ? null : (WorkloadAttributesCriticality.fromMap((map['criticality'] as Map).cast<String, dynamic>())).input(),
-      developerOwners: map['developerOwners'] == null ? null : (pulumi.Input.decodeList<WorkloadAttributesDeveloperOwner>(map['developerOwners'], (value) => WorkloadAttributesDeveloperOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environment: map['environment'] == null ? null : (WorkloadAttributesEnvironment.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
-      operatorOwners: map['operatorOwners'] == null ? null : (pulumi.Input.decodeList<WorkloadAttributesOperatorOwner>(map['operatorOwners'], (value) => WorkloadAttributesOperatorOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      businessOwners: map['businessOwners'] == null ? null : (pulumi.Input.decodeList<WorkloadAttributesBusinessOwner>(map['businessOwners']!, (value) => WorkloadAttributesBusinessOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      criticality: map['criticality'] == null ? null : (WorkloadAttributesCriticality.fromMap((map['criticality']! as Map).cast<String, dynamic>())).input(),
+      developerOwners: map['developerOwners'] == null ? null : (pulumi.Input.decodeList<WorkloadAttributesDeveloperOwner>(map['developerOwners']!, (value) => WorkloadAttributesDeveloperOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environment: map['environment'] == null ? null : (WorkloadAttributesEnvironment.fromMap((map['environment']! as Map).cast<String, dynamic>())).input(),
+      operatorOwners: map['operatorOwners'] == null ? null : (pulumi.Input.decodeList<WorkloadAttributesOperatorOwner>(map['operatorOwners']!, (value) => WorkloadAttributesOperatorOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

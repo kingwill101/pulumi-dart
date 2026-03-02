@@ -31,8 +31,8 @@ class InstanceConfigDevice {
   factory InstanceConfigDevice.fromMap(Map<String, dynamic> map) {
     return InstanceConfigDevice(
       deviceName: (map['deviceName'] as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId'] as int).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as int).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as int).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as int).input(),
     );
   }
 }

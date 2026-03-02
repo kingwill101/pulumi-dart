@@ -30,8 +30,8 @@ class AccountQueuePropertiesMinuteMetrics {
 
   factory AccountQueuePropertiesMinuteMetrics.fromMap(Map<String, dynamic> map) {
     return AccountQueuePropertiesMinuteMetrics(
-      includeApis: map['includeApis'] == null ? null : (map['includeApis'] as bool).input(),
-      retentionPolicyDays: map['retentionPolicyDays'] == null ? null : (map['retentionPolicyDays'] as int).input(),
+      includeApis: map['includeApis'] == null ? null : (map['includeApis']! as bool).input(),
+      retentionPolicyDays: map['retentionPolicyDays'] == null ? null : (map['retentionPolicyDays']! as int).input(),
       version: (map['version'] as String).input(),
     );
   }

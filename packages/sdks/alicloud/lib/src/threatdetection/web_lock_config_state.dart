@@ -61,15 +61,15 @@ class WebLockConfigState {
 
   factory WebLockConfigState.fromMap(Map<String, dynamic> map) {
     return WebLockConfigState(
-      defenceMode: map['defenceMode'] == null ? null : (map['defenceMode'] as String).input(),
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
-      exclusiveDir: map['exclusiveDir'] == null ? null : (map['exclusiveDir'] as String).input(),
-      exclusiveFile: map['exclusiveFile'] == null ? null : (map['exclusiveFile'] as String).input(),
-      exclusiveFileType: map['exclusiveFileType'] == null ? null : (map['exclusiveFileType'] as String).input(),
-      inclusiveFileType: map['inclusiveFileType'] == null ? null : (map['inclusiveFileType'] as String).input(),
-      localBackupDir: map['localBackupDir'] == null ? null : (map['localBackupDir'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      defenceMode: map['defenceMode'] == null ? null : (map['defenceMode']! as String).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
+      exclusiveDir: map['exclusiveDir'] == null ? null : (map['exclusiveDir']! as String).input(),
+      exclusiveFile: map['exclusiveFile'] == null ? null : (map['exclusiveFile']! as String).input(),
+      exclusiveFileType: map['exclusiveFileType'] == null ? null : (map['exclusiveFileType']! as String).input(),
+      inclusiveFileType: map['inclusiveFileType'] == null ? null : (map['inclusiveFileType']! as String).input(),
+      localBackupDir: map['localBackupDir'] == null ? null : (map['localBackupDir']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

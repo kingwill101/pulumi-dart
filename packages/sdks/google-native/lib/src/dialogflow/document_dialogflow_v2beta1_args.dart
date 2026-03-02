@@ -82,19 +82,19 @@ class DocumentDialogflowV2beta1Args {
 
   factory DocumentDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return DocumentDialogflowV2beta1Args(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      contentUri: map['contentUri'] == null ? null : (map['contentUri'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      contentUri: map['contentUri'] == null ? null : (map['contentUri']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      enableAutoReload: map['enableAutoReload'] == null ? null : (map['enableAutoReload'] as bool).input(),
-      importGcsCustomMetadata: map['importGcsCustomMetadata'] == null ? null : (map['importGcsCustomMetadata'] as bool).input(),
+      enableAutoReload: map['enableAutoReload'] == null ? null : (map['enableAutoReload']! as bool).input(),
+      importGcsCustomMetadata: map['importGcsCustomMetadata'] == null ? null : (map['importGcsCustomMetadata']! as bool).input(),
       knowledgeBaseId: (map['knowledgeBaseId'] as String).input(),
       knowledgeTypes: (pulumi.Input.decodeList<DocumentKnowledgeTypesItemDialogflowV2beta1>(map['knowledgeTypes'], (value) => DocumentKnowledgeTypesItemDialogflowV2beta1.fromValue(value as String))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
       mimeType: (map['mimeType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rawContent: map['rawContent'] == null ? null : (map['rawContent'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rawContent: map['rawContent'] == null ? null : (map['rawContent']! as String).input(),
     );
   }
 }

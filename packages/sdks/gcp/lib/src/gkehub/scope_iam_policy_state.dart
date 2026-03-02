@@ -38,10 +38,10 @@ class ScopeIamPolicyState {
 
   factory ScopeIamPolicyState.fromMap(Map<String, dynamic> map) {
     return ScopeIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      scopeId: map['scopeId'] == null ? null : (map['scopeId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      scopeId: map['scopeId'] == null ? null : (map['scopeId']! as String).input(),
     );
   }
 }

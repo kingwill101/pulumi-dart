@@ -63,11 +63,11 @@ class GetApiGatewayConfigConnectionResult {
       azureApiVersion: map['azureApiVersion'] as String,
       defaultHostname: map['defaultHostname'] as String,
       etag: map['etag'] as String,
-      hostnames: map['hostnames'] == null ? null : (map['hostnames'] as List).cast<String>(),
+      hostnames: map['hostnames'] == null ? null : (map['hostnames']! as List).cast<String>(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sourceId: map['sourceId'] == null ? null : map['sourceId'] as String,
+      sourceId: map['sourceId'] == null ? null : map['sourceId']! as String,
       type: map['type'] as String,
     );
   }

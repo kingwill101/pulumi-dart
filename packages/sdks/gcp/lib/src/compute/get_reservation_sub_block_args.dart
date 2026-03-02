@@ -48,10 +48,10 @@ class GetReservationSubBlockArgs {
   factory GetReservationSubBlockArgs.fromMap(Map<String, dynamic> map) {
     return GetReservationSubBlockArgs(
       name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       reservation: (map['reservation'] as String).input(),
       reservationBlock: (map['reservationBlock'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class LifecyclePolicyState {
 
   factory LifecyclePolicyState.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyState(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registryId: map['registryId'] == null ? null : ((map['registryId'] as String).input()).input(),
+      repository: map['repository'] == null ? null : ((map['repository'] as String).input()).input(),
     );
   }
 }

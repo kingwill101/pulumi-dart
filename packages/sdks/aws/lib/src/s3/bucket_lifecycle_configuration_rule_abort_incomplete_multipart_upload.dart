@@ -20,7 +20,7 @@ class BucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload {
 
   factory BucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload(
-      daysAfterInitiation: map['daysAfterInitiation'] == null ? null : (map['daysAfterInitiation'] as int).input(),
+      daysAfterInitiation: map['daysAfterInitiation'] == null ? null : ((map['daysAfterInitiation'] as int).input()).input(),
     );
   }
 }

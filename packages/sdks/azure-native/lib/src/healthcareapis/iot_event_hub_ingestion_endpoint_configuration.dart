@@ -31,9 +31,9 @@ class IotEventHubIngestionEndpointConfiguration {
 
   factory IotEventHubIngestionEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return IotEventHubIngestionEndpointConfiguration(
-      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup'] as String).input(),
-      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName'] as String).input(),
-      fullyQualifiedEventHubNamespace: map['fullyQualifiedEventHubNamespace'] == null ? null : (map['fullyQualifiedEventHubNamespace'] as String).input(),
+      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup']! as String).input(),
+      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName']! as String).input(),
+      fullyQualifiedEventHubNamespace: map['fullyQualifiedEventHubNamespace'] == null ? null : (map['fullyQualifiedEventHubNamespace']! as String).input(),
     );
   }
 }

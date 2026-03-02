@@ -95,19 +95,19 @@ class GetNatGatewayResult {
     return GetNatGatewayResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes'] as int,
-      location: map['location'] == null ? null : map['location'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : map['idleTimeoutInMinutes']! as int,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      publicIpAddresses: map['publicIpAddresses'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['publicIpAddresses'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      publicIpPrefixes: map['publicIpPrefixes'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['publicIpPrefixes'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      publicIpAddresses: map['publicIpAddresses'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['publicIpAddresses']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      publicIpPrefixes: map['publicIpPrefixes'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['publicIpPrefixes']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
       resourceGuid: map['resourceGuid'] as String,
-      sku: map['sku'] == null ? null : NatGatewaySkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      sku: map['sku'] == null ? null : NatGatewaySkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
       subnets: pulumi.Input.decodeList<SubResourceResponse>(map['subnets'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
     );
   }
 }

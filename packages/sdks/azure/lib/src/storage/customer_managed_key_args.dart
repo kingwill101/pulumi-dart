@@ -59,15 +59,15 @@ class CustomerManagedKeyArgs {
 
   factory CustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return CustomerManagedKeyArgs(
-      federatedIdentityClientId: map['federatedIdentityClientId'] == null ? null : (map['federatedIdentityClientId'] as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
-      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri'] as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId'] as String).input(),
+      federatedIdentityClientId: map['federatedIdentityClientId'] == null ? null : (map['federatedIdentityClientId']! as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
+      keyVaultUri: map['keyVaultUri'] == null ? null : (map['keyVaultUri']! as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
+      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId']! as String).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

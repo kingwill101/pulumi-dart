@@ -26,8 +26,8 @@ class GuestCredentialResponse {
 
   factory GuestCredentialResponse.fromMap(Map<String, dynamic> map) {
     return GuestCredentialResponse(
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

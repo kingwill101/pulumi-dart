@@ -48,13 +48,13 @@ class GetInstanceMembersResult {
 
   factory GetInstanceMembersResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceMembersResult(
-      currentPage: map['currentPage'] == null ? null : map['currentPage'] as String,
+      currentPage: map['currentPage'] == null ? null : map['currentPage']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       members: pulumi.Input.decodeList<GetInstanceMembersMember>(map['members'], (value) => GetInstanceMembersMember.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
     );
   }
 }

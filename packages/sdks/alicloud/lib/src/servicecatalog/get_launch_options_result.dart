@@ -52,9 +52,9 @@ class GetLaunchOptionsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       launchOptions: pulumi.Input.decodeList<GetLaunchOptionsLaunchOption>(map['launchOptions'], (value) => GetLaunchOptionsLaunchOption.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       options: pulumi.Input.decodeList<GetLaunchOptionsOption>(map['options'], (value) => GetLaunchOptionsOption.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       productId: map['productId'] as String,
     );
   }

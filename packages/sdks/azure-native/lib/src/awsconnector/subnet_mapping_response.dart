@@ -41,11 +41,11 @@ class SubnetMappingResponse {
 
   factory SubnetMappingResponse.fromMap(Map<String, dynamic> map) {
     return SubnetMappingResponse(
-      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
-      iPv6Address: map['iPv6Address'] == null ? null : (map['iPv6Address'] as String).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      privateIPv4Address: map['privateIPv4Address'] == null ? null : (map['privateIPv4Address'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      allocationId: map['allocationId'] == null ? null : (map['allocationId']! as String).input(),
+      iPv6Address: map['iPv6Address'] == null ? null : (map['iPv6Address']! as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType']! as String).input(),
+      privateIPv4Address: map['privateIPv4Address'] == null ? null : (map['privateIPv4Address']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

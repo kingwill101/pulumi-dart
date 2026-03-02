@@ -36,10 +36,10 @@ class EventStreamState {
 
   factory EventStreamState.fromMap(Map<String, dynamic> map) {
     return EventStreamState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      destinationStreamArn: map['destinationStreamArn'] == null ? null : (map['destinationStreamArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
+      destinationStreamArn: map['destinationStreamArn'] == null ? null : ((map['destinationStreamArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

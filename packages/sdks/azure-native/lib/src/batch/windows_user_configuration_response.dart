@@ -21,7 +21,7 @@ class WindowsUserConfigurationResponse {
 
   factory WindowsUserConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WindowsUserConfigurationResponse(
-      loginMode: map['loginMode'] == null ? null : (map['loginMode'] as String).input(),
+      loginMode: map['loginMode'] == null ? null : (map['loginMode']! as String).input(),
     );
   }
 }

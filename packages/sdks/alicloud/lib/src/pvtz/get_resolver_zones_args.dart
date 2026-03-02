@@ -29,8 +29,8 @@ class GetResolverZonesArgs {
 
   factory GetResolverZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetResolverZonesArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -69,16 +69,16 @@ class GetCustomRoutingEndpointTrafficPoliciesResult {
   factory GetCustomRoutingEndpointTrafficPoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingEndpointTrafficPoliciesResult(
       acceleratorId: map['acceleratorId'] as String,
-      address: map['address'] == null ? null : map['address'] as String,
+      address: map['address'] == null ? null : map['address']! as String,
       customRoutingEndpointTrafficPolicies: pulumi.Input.decodeList<GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy>(map['customRoutingEndpointTrafficPolicies'], (value) => GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      endpointGroupId: map['endpointGroupId'] == null ? null : map['endpointGroupId'] as String,
-      endpointId: map['endpointId'] == null ? null : map['endpointId'] as String,
+      endpointGroupId: map['endpointGroupId'] == null ? null : map['endpointGroupId']! as String,
+      endpointId: map['endpointId'] == null ? null : map['endpointId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      listenerId: map['listenerId'] == null ? null : map['listenerId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      listenerId: map['listenerId'] == null ? null : map['listenerId']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
     );
   }
 }

@@ -26,7 +26,7 @@ class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig {
   factory AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig(
       enablePrivateServiceConnect: (map['enablePrivateServiceConnect'] as bool).input(),
-      projectAllowlists: map['projectAllowlists'] == null ? null : ((map['projectAllowlists'] as List).cast<String>()).input(),
+      projectAllowlists: map['projectAllowlists'] == null ? null : ((map['projectAllowlists']! as List).cast<String>()).input(),
     );
   }
 }

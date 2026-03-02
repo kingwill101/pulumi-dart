@@ -30,7 +30,7 @@ class GetBrokerNodesArgs {
   factory GetBrokerNodesArgs.fromMap(Map<String, dynamic> map) {
     return GetBrokerNodesArgs(
       clusterArn: (map['clusterArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

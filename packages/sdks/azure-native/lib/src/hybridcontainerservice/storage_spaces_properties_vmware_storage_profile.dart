@@ -35,10 +35,10 @@ class StorageSpacesPropertiesVmwareStorageProfile {
 
   factory StorageSpacesPropertiesVmwareStorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageSpacesPropertiesVmwareStorageProfile(
-      datacenter: map['datacenter'] == null ? null : (map['datacenter'] as String).input(),
-      datastore: map['datastore'] == null ? null : (map['datastore'] as String).input(),
-      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
-      resourcePool: map['resourcePool'] == null ? null : (map['resourcePool'] as String).input(),
+      datacenter: map['datacenter'] == null ? null : (map['datacenter']! as String).input(),
+      datastore: map['datastore'] == null ? null : (map['datastore']! as String).input(),
+      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
+      resourcePool: map['resourcePool'] == null ? null : (map['resourcePool']! as String).input(),
     );
   }
 }

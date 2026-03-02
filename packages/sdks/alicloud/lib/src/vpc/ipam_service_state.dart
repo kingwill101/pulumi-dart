@@ -21,7 +21,7 @@ class IpamServiceState {
 
   factory IpamServiceState.fromMap(Map<String, dynamic> map) {
     return IpamServiceState(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class DomainAttachmentState {
 
   factory DomainAttachmentState.fromMap(Map<String, dynamic> map) {
     return DomainAttachmentState(
-      domainNames: map['domainNames'] == null ? null : ((map['domainNames'] as List).cast<String>()).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      domainNames: map['domainNames'] == null ? null : ((map['domainNames']! as List).cast<String>()).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
     );
   }
 }

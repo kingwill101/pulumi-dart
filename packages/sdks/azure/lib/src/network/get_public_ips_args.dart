@@ -39,9 +39,9 @@ class GetPublicIPsArgs {
 
   factory GetPublicIPsArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicIPsArgs(
-      allocationType: map['allocationType'] == null ? null : (map['allocationType'] as String).input(),
-      attachmentStatus: map['attachmentStatus'] == null ? null : (map['attachmentStatus'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      allocationType: map['allocationType'] == null ? null : (map['allocationType']! as String).input(),
+      attachmentStatus: map['attachmentStatus'] == null ? null : (map['attachmentStatus']! as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

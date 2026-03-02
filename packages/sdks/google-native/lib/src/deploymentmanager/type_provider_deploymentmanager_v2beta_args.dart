@@ -67,15 +67,15 @@ class TypeProviderDeploymentmanagerV2betaArgs {
 
   factory TypeProviderDeploymentmanagerV2betaArgs.fromMap(Map<String, dynamic> map) {
     return TypeProviderDeploymentmanagerV2betaArgs(
-      collectionOverrides: map['collectionOverrides'] == null ? null : (pulumi.Input.decodeList<CollectionOverrideDeploymentmanagerV2beta>(map['collectionOverrides'], (value) => CollectionOverrideDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      credential: map['credential'] == null ? null : (CredentialDeploymentmanagerV2beta.fromMap((map['credential'] as Map).cast<String, dynamic>())).input(),
-      customCertificateAuthorityRoots: map['customCertificateAuthorityRoots'] == null ? null : ((map['customCertificateAuthorityRoots'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      descriptorUrl: map['descriptorUrl'] == null ? null : (map['descriptorUrl'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<TypeProviderLabelEntryDeploymentmanagerV2beta>(map['labels'], (value) => TypeProviderLabelEntryDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      options: map['options'] == null ? null : (OptionsDeploymentmanagerV2beta.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      collectionOverrides: map['collectionOverrides'] == null ? null : (pulumi.Input.decodeList<CollectionOverrideDeploymentmanagerV2beta>(map['collectionOverrides']!, (value) => CollectionOverrideDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      credential: map['credential'] == null ? null : (CredentialDeploymentmanagerV2beta.fromMap((map['credential']! as Map).cast<String, dynamic>())).input(),
+      customCertificateAuthorityRoots: map['customCertificateAuthorityRoots'] == null ? null : ((map['customCertificateAuthorityRoots']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      descriptorUrl: map['descriptorUrl'] == null ? null : (map['descriptorUrl']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<TypeProviderLabelEntryDeploymentmanagerV2beta>(map['labels']!, (value) => TypeProviderLabelEntryDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      options: map['options'] == null ? null : (OptionsDeploymentmanagerV2beta.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

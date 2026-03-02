@@ -36,10 +36,10 @@ class DirectoryRoleEligibilityScheduleRequestState {
 
   factory DirectoryRoleEligibilityScheduleRequestState.fromMap(Map<String, dynamic> map) {
     return DirectoryRoleEligibilityScheduleRequestState(
-      directoryScopeId: map['directoryScopeId'] == null ? null : (map['directoryScopeId'] as String).input(),
-      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      directoryScopeId: map['directoryScopeId'] == null ? null : (map['directoryScopeId']! as String).input(),
+      justification: map['justification'] == null ? null : (map['justification']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
     );
   }
 }

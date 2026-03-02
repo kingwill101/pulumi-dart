@@ -32,9 +32,9 @@ class IntuneEnrollmentMetadataResponse {
 
   factory IntuneEnrollmentMetadataResponse.fromMap(Map<String, dynamic> map) {
     return IntuneEnrollmentMetadataResponse(
-      appList: map['appList'] == null ? null : (pulumi.Input.decodeList<EnrolledIntuneAppResponse>(map['appList'], (value) => EnrolledIntuneAppResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      credentialId: map['credentialId'] == null ? null : (map['credentialId'] as String).input(),
-      expectedDeploymentDurationInMinute: map['expectedDeploymentDurationInMinute'] == null ? null : (map['expectedDeploymentDurationInMinute'] as int).input(),
+      appList: map['appList'] == null ? null : (pulumi.Input.decodeList<EnrolledIntuneAppResponse>(map['appList']!, (value) => EnrolledIntuneAppResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      credentialId: map['credentialId'] == null ? null : (map['credentialId']! as String).input(),
+      expectedDeploymentDurationInMinute: map['expectedDeploymentDurationInMinute'] == null ? null : (map['expectedDeploymentDurationInMinute']! as int).input(),
     );
   }
 }

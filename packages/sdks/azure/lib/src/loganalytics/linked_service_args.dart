@@ -41,10 +41,10 @@ class LinkedServiceArgs {
 
   factory LinkedServiceArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceArgs(
-      readAccessId: map['readAccessId'] == null ? null : (map['readAccessId'] as String).input(),
+      readAccessId: map['readAccessId'] == null ? null : (map['readAccessId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),
-      writeAccessId: map['writeAccessId'] == null ? null : (map['writeAccessId'] as String).input(),
+      writeAccessId: map['writeAccessId'] == null ? null : (map['writeAccessId']! as String).input(),
     );
   }
 }

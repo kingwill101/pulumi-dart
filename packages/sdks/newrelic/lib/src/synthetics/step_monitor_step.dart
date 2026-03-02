@@ -32,7 +32,7 @@ class StepMonitorStep {
     return StepMonitorStep(
       ordinal: (map['ordinal'] as int).input(),
       type: (map['type'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

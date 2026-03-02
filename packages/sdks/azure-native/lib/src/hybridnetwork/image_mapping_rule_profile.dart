@@ -21,7 +21,7 @@ class ImageMappingRuleProfile {
 
   factory ImageMappingRuleProfile.fromMap(Map<String, dynamic> map) {
     return ImageMappingRuleProfile(
-      userConfiguration: map['userConfiguration'] == null ? null : (map['userConfiguration'] as String).input(),
+      userConfiguration: map['userConfiguration'] == null ? null : (map['userConfiguration']! as String).input(),
     );
   }
 }

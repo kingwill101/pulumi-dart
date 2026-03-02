@@ -36,10 +36,10 @@ class NetworkManagerSecurityAdminConfigurationState {
 
   factory NetworkManagerSecurityAdminConfigurationState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerSecurityAdminConfigurationState(
-      applyOnNetworkIntentPolicyBasedServices: map['applyOnNetworkIntentPolicyBasedServices'] == null ? null : (map['applyOnNetworkIntentPolicyBasedServices'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId'] as String).input(),
+      applyOnNetworkIntentPolicyBasedServices: map['applyOnNetworkIntentPolicyBasedServices'] == null ? null : (map['applyOnNetworkIntentPolicyBasedServices']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId']! as String).input(),
     );
   }
 }

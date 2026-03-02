@@ -38,10 +38,10 @@ class GitHubActionConfiguration {
 
   factory GitHubActionConfiguration.fromMap(Map<String, dynamic> map) {
     return GitHubActionConfiguration(
-      codeConfiguration: map['codeConfiguration'] == null ? null : (GitHubActionCodeConfiguration.fromMap((map['codeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      containerConfiguration: map['containerConfiguration'] == null ? null : (GitHubActionContainerConfiguration.fromMap((map['containerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      generateWorkflowFile: map['generateWorkflowFile'] == null ? null : (map['generateWorkflowFile'] as bool).input(),
-      isLinux: map['isLinux'] == null ? null : (map['isLinux'] as bool).input(),
+      codeConfiguration: map['codeConfiguration'] == null ? null : (GitHubActionCodeConfiguration.fromMap((map['codeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      containerConfiguration: map['containerConfiguration'] == null ? null : (GitHubActionContainerConfiguration.fromMap((map['containerConfiguration']! as Map).cast<String, dynamic>())).input(),
+      generateWorkflowFile: map['generateWorkflowFile'] == null ? null : (map['generateWorkflowFile']! as bool).input(),
+      isLinux: map['isLinux'] == null ? null : (map['isLinux']! as bool).input(),
     );
   }
 }

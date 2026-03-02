@@ -25,8 +25,8 @@ class LicenseResourceRequirementsComputeBeta {
 
   factory LicenseResourceRequirementsComputeBeta.fromMap(Map<String, dynamic> map) {
     return LicenseResourceRequirementsComputeBeta(
-      minGuestCpuCount: map['minGuestCpuCount'] == null ? null : (map['minGuestCpuCount'] as int).input(),
-      minMemoryMb: map['minMemoryMb'] == null ? null : (map['minMemoryMb'] as int).input(),
+      minGuestCpuCount: map['minGuestCpuCount'] == null ? null : (map['minGuestCpuCount']! as int).input(),
+      minMemoryMb: map['minMemoryMb'] == null ? null : (map['minMemoryMb']! as int).input(),
     );
   }
 }

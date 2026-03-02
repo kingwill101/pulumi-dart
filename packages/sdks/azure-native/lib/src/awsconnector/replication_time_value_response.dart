@@ -21,7 +21,7 @@ class ReplicationTimeValueResponse {
 
   factory ReplicationTimeValueResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationTimeValueResponse(
-      minutes: map['minutes'] == null ? null : (map['minutes'] as int).input(),
+      minutes: map['minutes'] == null ? null : (map['minutes']! as int).input(),
     );
   }
 }

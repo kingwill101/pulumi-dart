@@ -26,8 +26,8 @@ class LifecyclePolicyPolicyDetailExclusionRules {
 
   factory LifecyclePolicyPolicyDetailExclusionRules.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailExclusionRules(
-      amis: map['amis'] == null ? null : (LifecyclePolicyPolicyDetailExclusionRulesAmis.fromMap((map['amis'] as Map).cast<String, dynamic>())).input(),
-      tagMap: map['tagMap'] == null ? null : ((map['tagMap'] as Map).cast<String, String>()).input(),
+      amis: map['amis'] == null ? null : ((LifecyclePolicyPolicyDetailExclusionRulesAmis.fromMap((map['amis']! as Map).cast<String, dynamic>())).input()).input(),
+      tagMap: map['tagMap'] == null ? null : (((map['tagMap'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

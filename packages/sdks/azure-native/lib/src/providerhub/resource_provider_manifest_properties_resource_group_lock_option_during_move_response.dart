@@ -21,7 +21,7 @@ class ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveRespons
 
   factory ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse(
-      blockActionVerb: map['blockActionVerb'] == null ? null : (map['blockActionVerb'] as String).input(),
+      blockActionVerb: map['blockActionVerb'] == null ? null : (map['blockActionVerb']! as String).input(),
     );
   }
 }

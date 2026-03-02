@@ -66,16 +66,16 @@ class OutputTableState {
 
   factory OutputTableState.fromMap(Map<String, dynamic> map) {
     return OutputTableState(
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
-      columnsToRemoves: map['columnsToRemoves'] == null ? null : ((map['columnsToRemoves'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      rowKey: map['rowKey'] == null ? null : (map['rowKey'] as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
-      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      batchSize: map['batchSize'] == null ? null : (map['batchSize']! as int).input(),
+      columnsToRemoves: map['columnsToRemoves'] == null ? null : ((map['columnsToRemoves']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      rowKey: map['rowKey'] == null ? null : (map['rowKey']! as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
+      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
     );
   }
 }

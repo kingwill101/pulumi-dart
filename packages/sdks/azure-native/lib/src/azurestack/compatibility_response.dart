@@ -36,10 +36,10 @@ class CompatibilityResponse {
 
   factory CompatibilityResponse.fromMap(Map<String, dynamic> map) {
     return CompatibilityResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isCompatible: map['isCompatible'] == null ? null : (map['isCompatible'] as bool).input(),
-      issues: map['issues'] == null ? null : ((map['issues'] as List).cast<String>()).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isCompatible: map['isCompatible'] == null ? null : (map['isCompatible']! as bool).input(),
+      issues: map['issues'] == null ? null : ((map['issues']! as List).cast<String>()).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

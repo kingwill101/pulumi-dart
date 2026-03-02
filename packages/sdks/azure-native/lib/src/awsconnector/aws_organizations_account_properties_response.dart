@@ -67,16 +67,16 @@ class AwsOrganizationsAccountPropertiesResponse {
 
   factory AwsOrganizationsAccountPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsOrganizationsAccountPropertiesResponse(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      joinedMethod: map['joinedMethod'] == null ? null : (map['joinedMethod'] as String).input(),
-      joinedTimestamp: map['joinedTimestamp'] == null ? null : (map['joinedTimestamp'] as String).input(),
-      parentIds: map['parentIds'] == null ? null : ((map['parentIds'] as List).cast<String>()).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      joinedMethod: map['joinedMethod'] == null ? null : (map['joinedMethod']! as String).input(),
+      joinedTimestamp: map['joinedTimestamp'] == null ? null : (map['joinedTimestamp']! as String).input(),
+      parentIds: map['parentIds'] == null ? null : ((map['parentIds']! as List).cast<String>()).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

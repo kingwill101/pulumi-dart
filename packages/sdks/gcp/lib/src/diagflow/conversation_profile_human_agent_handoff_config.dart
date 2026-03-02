@@ -22,7 +22,7 @@ class ConversationProfileHumanAgentHandoffConfig {
 
   factory ConversationProfileHumanAgentHandoffConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentHandoffConfig(
-      livePersonConfig: map['livePersonConfig'] == null ? null : (ConversationProfileHumanAgentHandoffConfigLivePersonConfig.fromMap((map['livePersonConfig'] as Map).cast<String, dynamic>())).input(),
+      livePersonConfig: map['livePersonConfig'] == null ? null : (ConversationProfileHumanAgentHandoffConfigLivePersonConfig.fromMap((map['livePersonConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

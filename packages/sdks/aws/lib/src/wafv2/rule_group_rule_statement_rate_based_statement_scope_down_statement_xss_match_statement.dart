@@ -29,8 +29,8 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatemen
 
   factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null ? null : (RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation>(map['textTransformations'], (value) => RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
+      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

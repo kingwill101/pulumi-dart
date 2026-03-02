@@ -27,8 +27,8 @@ class RuleRuleActionForwardGroupConfig {
 
   factory RuleRuleActionForwardGroupConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionForwardGroupConfig(
-      serverGroupStickySession: map['serverGroupStickySession'] == null ? null : (RuleRuleActionForwardGroupConfigServerGroupStickySession.fromMap((map['serverGroupStickySession'] as Map).cast<String, dynamic>())).input(),
-      serverGroupTuples: map['serverGroupTuples'] == null ? null : (pulumi.Input.decodeList<RuleRuleActionForwardGroupConfigServerGroupTuple>(map['serverGroupTuples'], (value) => RuleRuleActionForwardGroupConfigServerGroupTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serverGroupStickySession: map['serverGroupStickySession'] == null ? null : (RuleRuleActionForwardGroupConfigServerGroupStickySession.fromMap((map['serverGroupStickySession']! as Map).cast<String, dynamic>())).input(),
+      serverGroupTuples: map['serverGroupTuples'] == null ? null : (pulumi.Input.decodeList<RuleRuleActionForwardGroupConfigServerGroupTuple>(map['serverGroupTuples']!, (value) => RuleRuleActionForwardGroupConfigServerGroupTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

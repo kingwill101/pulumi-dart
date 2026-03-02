@@ -32,7 +32,7 @@ class DashboardLens {
 
   factory DashboardLens.fromMap(Map<String, dynamic> map) {
     return DashboardLens(
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
       order: (map['order'] as int).input(),
       parts: (pulumi.Input.decodeList<DashboardParts>(map['parts'], (value) => DashboardParts.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

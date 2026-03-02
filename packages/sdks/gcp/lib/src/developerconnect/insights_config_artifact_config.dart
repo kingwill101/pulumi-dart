@@ -37,9 +37,9 @@ class InsightsConfigArtifactConfig {
 
   factory InsightsConfigArtifactConfig.fromMap(Map<String, dynamic> map) {
     return InsightsConfigArtifactConfig(
-      googleArtifactAnalysis: map['googleArtifactAnalysis'] == null ? null : (InsightsConfigArtifactConfigGoogleArtifactAnalysis.fromMap((map['googleArtifactAnalysis'] as Map).cast<String, dynamic>())).input(),
-      googleArtifactRegistry: map['googleArtifactRegistry'] == null ? null : (InsightsConfigArtifactConfigGoogleArtifactRegistry.fromMap((map['googleArtifactRegistry'] as Map).cast<String, dynamic>())).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      googleArtifactAnalysis: map['googleArtifactAnalysis'] == null ? null : (InsightsConfigArtifactConfigGoogleArtifactAnalysis.fromMap((map['googleArtifactAnalysis']! as Map).cast<String, dynamic>())).input(),
+      googleArtifactRegistry: map['googleArtifactRegistry'] == null ? null : (InsightsConfigArtifactConfigGoogleArtifactRegistry.fromMap((map['googleArtifactRegistry']! as Map).cast<String, dynamic>())).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

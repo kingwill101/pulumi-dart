@@ -42,11 +42,11 @@ class Volume {
 
   factory Volume.fromMap(Map<String, dynamic> map) {
     return Volume(
-      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<SecretVolumeItem>(map['secrets'], (value) => SecretVolumeItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageName: map['storageName'] == null ? null : (map['storageName'] as String).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<SecretVolumeItem>(map['secrets']!, (value) => SecretVolumeItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageName: map['storageName'] == null ? null : (map['storageName']! as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
     );
   }
 }

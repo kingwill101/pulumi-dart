@@ -54,7 +54,7 @@ class GetDatabaseResult {
       id: map['id'] as String,
       instance: map['instance'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       selfLink: map['selfLink'] as String,
     );
   }

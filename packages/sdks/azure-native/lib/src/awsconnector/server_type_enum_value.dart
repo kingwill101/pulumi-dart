@@ -21,7 +21,7 @@ class ServerTypeEnumValue {
 
   factory ServerTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return ServerTypeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

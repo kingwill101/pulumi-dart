@@ -69,16 +69,16 @@ class Field {
 
   factory Field.fromMap(Map<String, dynamic> map) {
     return Field(
-      cardinality: map['cardinality'] == null ? null : (FieldCardinality.fromValue(map['cardinality'] as String)).input(),
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      jsonName: map['jsonName'] == null ? null : (map['jsonName'] as String).input(),
-      kind: map['kind'] == null ? null : (FieldKind.fromValue(map['kind'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      number: map['number'] == null ? null : (map['number'] as int).input(),
-      oneofIndex: map['oneofIndex'] == null ? null : (map['oneofIndex'] as int).input(),
-      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options'], (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      packed: map['packed'] == null ? null : (map['packed'] as bool).input(),
-      typeUrl: map['typeUrl'] == null ? null : (map['typeUrl'] as String).input(),
+      cardinality: map['cardinality'] == null ? null : (FieldCardinality.fromValue(map['cardinality']! as String)).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
+      jsonName: map['jsonName'] == null ? null : (map['jsonName']! as String).input(),
+      kind: map['kind'] == null ? null : (FieldKind.fromValue(map['kind']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      number: map['number'] == null ? null : (map['number']! as int).input(),
+      oneofIndex: map['oneofIndex'] == null ? null : (map['oneofIndex']! as int).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options']!, (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packed: map['packed'] == null ? null : (map['packed']! as bool).input(),
+      typeUrl: map['typeUrl'] == null ? null : (map['typeUrl']! as String).input(),
     );
   }
 }

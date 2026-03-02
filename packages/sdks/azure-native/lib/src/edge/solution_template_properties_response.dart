@@ -53,10 +53,10 @@ class SolutionTemplatePropertiesResponse {
     return SolutionTemplatePropertiesResponse(
       capabilities: ((map['capabilities'] as List).cast<String>()).input(),
       description: (map['description'] as String).input(),
-      enableExternalValidation: map['enableExternalValidation'] == null ? null : (map['enableExternalValidation'] as bool).input(),
+      enableExternalValidation: map['enableExternalValidation'] == null ? null : (map['enableExternalValidation']! as bool).input(),
       latestVersion: (map['latestVersion'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       uniqueIdentifier: (map['uniqueIdentifier'] as String).input(),
     );
   }

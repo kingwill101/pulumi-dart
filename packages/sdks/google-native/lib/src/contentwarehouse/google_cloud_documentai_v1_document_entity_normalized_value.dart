@@ -60,14 +60,14 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
 
   factory GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentEntityNormalizedValue(
-      addressValue: map['addressValue'] == null ? null : (GoogleTypePostalAddress.fromMap((map['addressValue'] as Map).cast<String, dynamic>())).input(),
-      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue'] as bool).input(),
-      dateValue: map['dateValue'] == null ? null : (GoogleTypeDate.fromMap((map['dateValue'] as Map).cast<String, dynamic>())).input(),
-      datetimeValue: map['datetimeValue'] == null ? null : (GoogleTypeDateTime.fromMap((map['datetimeValue'] as Map).cast<String, dynamic>())).input(),
-      floatValue: map['floatValue'] == null ? null : (map['floatValue'] as double).input(),
-      integerValue: map['integerValue'] == null ? null : (map['integerValue'] as int).input(),
-      moneyValue: map['moneyValue'] == null ? null : (GoogleTypeMoney.fromMap((map['moneyValue'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      addressValue: map['addressValue'] == null ? null : (GoogleTypePostalAddress.fromMap((map['addressValue']! as Map).cast<String, dynamic>())).input(),
+      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue']! as bool).input(),
+      dateValue: map['dateValue'] == null ? null : (GoogleTypeDate.fromMap((map['dateValue']! as Map).cast<String, dynamic>())).input(),
+      datetimeValue: map['datetimeValue'] == null ? null : (GoogleTypeDateTime.fromMap((map['datetimeValue']! as Map).cast<String, dynamic>())).input(),
+      floatValue: map['floatValue'] == null ? null : (map['floatValue']! as double).input(),
+      integerValue: map['integerValue'] == null ? null : (map['integerValue']! as int).input(),
+      moneyValue: map['moneyValue'] == null ? null : (GoogleTypeMoney.fromMap((map['moneyValue']! as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

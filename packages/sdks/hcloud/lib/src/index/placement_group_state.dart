@@ -35,10 +35,10 @@ class PlacementGroupState {
 
   factory PlacementGroupState.fromMap(Map<String, dynamic> map) {
     return PlacementGroupState(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      servers: map['servers'] == null ? null : ((map['servers'] as List).cast<int>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      servers: map['servers'] == null ? null : ((map['servers']! as List).cast<int>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

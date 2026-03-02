@@ -21,7 +21,7 @@ class GcsFuseCsiDriverConfig {
 
   factory GcsFuseCsiDriverConfig.fromMap(Map<String, dynamic> map) {
     return GcsFuseCsiDriverConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

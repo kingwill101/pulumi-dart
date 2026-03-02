@@ -33,8 +33,8 @@ class CloudControlRule {
 
   factory CloudControlRule.fromMap(Map<String, dynamic> map) {
     return CloudControlRule(
-      celExpression: map['celExpression'] == null ? null : (CloudControlRuleCelExpression.fromMap((map['celExpression'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      celExpression: map['celExpression'] == null ? null : (CloudControlRuleCelExpression.fromMap((map['celExpression']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       ruleActionTypes: ((map['ruleActionTypes'] as List).cast<String>()).input(),
     );
   }

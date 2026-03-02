@@ -76,17 +76,17 @@ class EnterpriseDatabaseState {
 
   factory EnterpriseDatabaseState.fromMap(Map<String, dynamic> map) {
     return EnterpriseDatabaseState(
-      clientProtocol: map['clientProtocol'] == null ? null : (map['clientProtocol'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      clusteringPolicy: map['clusteringPolicy'] == null ? null : (map['clusteringPolicy'] as String).input(),
-      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy'] as String).input(),
-      linkedDatabaseGroupNickname: map['linkedDatabaseGroupNickname'] == null ? null : (map['linkedDatabaseGroupNickname'] as String).input(),
-      linkedDatabaseIds: map['linkedDatabaseIds'] == null ? null : ((map['linkedDatabaseIds'] as List).cast<String>()).input(),
-      modules: map['modules'] == null ? null : (pulumi.Input.decodeList<EnterpriseDatabaseModule>(map['modules'], (value) => EnterpriseDatabaseModule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      primaryAccessKey: map['primaryAccessKey'] == null ? null : (map['primaryAccessKey'] as String).input(),
-      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : (map['secondaryAccessKey'] as String).input(),
+      clientProtocol: map['clientProtocol'] == null ? null : (map['clientProtocol']! as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      clusteringPolicy: map['clusteringPolicy'] == null ? null : (map['clusteringPolicy']! as String).input(),
+      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy']! as String).input(),
+      linkedDatabaseGroupNickname: map['linkedDatabaseGroupNickname'] == null ? null : (map['linkedDatabaseGroupNickname']! as String).input(),
+      linkedDatabaseIds: map['linkedDatabaseIds'] == null ? null : ((map['linkedDatabaseIds']! as List).cast<String>()).input(),
+      modules: map['modules'] == null ? null : (pulumi.Input.decodeList<EnterpriseDatabaseModule>(map['modules']!, (value) => EnterpriseDatabaseModule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      primaryAccessKey: map['primaryAccessKey'] == null ? null : (map['primaryAccessKey']! as String).input(),
+      secondaryAccessKey: map['secondaryAccessKey'] == null ? null : (map['secondaryAccessKey']! as String).input(),
     );
   }
 }

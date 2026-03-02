@@ -27,9 +27,9 @@ class MigrationAssessmentResponseImpactedObjects {
 
   factory MigrationAssessmentResponseImpactedObjects.fromMap(Map<String, dynamic> map) {
     return MigrationAssessmentResponseImpactedObjects(
-      impactDetail: map['impactDetail'] == null ? null : (map['impactDetail'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType'] as String).input(),
+      impactDetail: map['impactDetail'] == null ? null : (map['impactDetail']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class BucketV2Grant {
 
   factory BucketV2Grant.fromMap(Map<String, dynamic> map) {
     return BucketV2Grant(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
       permissions: ((map['permissions'] as List).cast<String>()).input(),
       type: (map['type'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
     );
   }
 }

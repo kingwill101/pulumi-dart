@@ -56,7 +56,7 @@ class GetMxRecordResult {
     return GetMxRecordResult(
       fqdn: map['fqdn'] as String,
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       records: pulumi.Input.decodeList<GetMxRecordRecord>(map['records'], (value) => GetMxRecordRecord.fromMap((value as Map).cast<String, dynamic>())),
       resourceGroupName: map['resourceGroupName'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),

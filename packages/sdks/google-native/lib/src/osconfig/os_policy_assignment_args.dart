@@ -65,14 +65,14 @@ class OsPolicyAssignmentArgs {
 
   factory OsPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       instanceFilter: (OSPolicyAssignmentInstanceFilter.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       osPolicies: (pulumi.Input.decodeList<OSPolicy>(map['osPolicies'], (value) => OSPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
       osPolicyAssignmentId: (map['osPolicyAssignmentId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rollout: (OSPolicyAssignmentRollout.fromMap((map['rollout'] as Map).cast<String, dynamic>())).input(),
     );
   }

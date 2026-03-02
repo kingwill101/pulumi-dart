@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2SensitivityScore {
 
   factory GooglePrivacyDlpV2SensitivityScore.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2SensitivityScore(
-      score: map['score'] == null ? null : (GooglePrivacyDlpV2SensitivityScoreScore.fromValue(map['score'] as String)).input(),
+      score: map['score'] == null ? null : (GooglePrivacyDlpV2SensitivityScoreScore.fromValue(map['score']! as String)).input(),
     );
   }
 }

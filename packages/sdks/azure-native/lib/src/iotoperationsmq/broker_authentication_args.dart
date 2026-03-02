@@ -67,14 +67,14 @@ class BrokerAuthenticationArgs {
   factory BrokerAuthenticationArgs.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticationArgs(
       authenticationMethods: (pulumi.Input.decodeList<BrokerAuthenticatorMethods>(map['authenticationMethods'], (value) => BrokerAuthenticatorMethods.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName'] as String).input(),
+      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName']! as String).input(),
       brokerName: (map['brokerName'] as String).input(),
       extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       listenerRef: ((map['listenerRef'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       mqName: (map['mqName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

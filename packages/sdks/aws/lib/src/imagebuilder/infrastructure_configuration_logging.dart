@@ -21,7 +21,7 @@ class InfrastructureConfigurationLogging {
 
   factory InfrastructureConfigurationLogging.fromMap(Map<String, dynamic> map) {
     return InfrastructureConfigurationLogging(
-      s3Logs: (InfrastructureConfigurationLoggingS3Logs.fromMap((map['s3Logs'] as Map).cast<String, dynamic>())).input(),
+      s3Logs: (InfrastructureConfigurationLoggingS3Logs.fromMap((map['s3Logs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

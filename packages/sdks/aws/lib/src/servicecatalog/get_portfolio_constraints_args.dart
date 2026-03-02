@@ -41,10 +41,10 @@ class GetPortfolioConstraintsArgs {
 
   factory GetPortfolioConstraintsArgs.fromMap(Map<String, dynamic> map) {
     return GetPortfolioConstraintsArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
       portfolioId: (map['portfolioId'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      productId: map['productId'] == null ? null : ((map['productId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -59,13 +59,13 @@ class TaskGroup {
 
   factory TaskGroup.fromMap(Map<String, dynamic> map) {
     return TaskGroup(
-      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as String).input(),
-      permissiveSsh: map['permissiveSsh'] == null ? null : (map['permissiveSsh'] as bool).input(),
-      requireHostsFile: map['requireHostsFile'] == null ? null : (map['requireHostsFile'] as bool).input(),
-      schedulingPolicy: map['schedulingPolicy'] == null ? null : (TaskGroupSchedulingPolicy.fromValue(map['schedulingPolicy'] as String)).input(),
-      taskCount: map['taskCount'] == null ? null : (map['taskCount'] as String).input(),
-      taskCountPerNode: map['taskCountPerNode'] == null ? null : (map['taskCountPerNode'] as String).input(),
-      taskEnvironments: map['taskEnvironments'] == null ? null : (pulumi.Input.decodeList<Environment>(map['taskEnvironments'], (value) => Environment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as String).input(),
+      permissiveSsh: map['permissiveSsh'] == null ? null : (map['permissiveSsh']! as bool).input(),
+      requireHostsFile: map['requireHostsFile'] == null ? null : (map['requireHostsFile']! as bool).input(),
+      schedulingPolicy: map['schedulingPolicy'] == null ? null : (TaskGroupSchedulingPolicy.fromValue(map['schedulingPolicy']! as String)).input(),
+      taskCount: map['taskCount'] == null ? null : (map['taskCount']! as String).input(),
+      taskCountPerNode: map['taskCountPerNode'] == null ? null : (map['taskCountPerNode']! as String).input(),
+      taskEnvironments: map['taskEnvironments'] == null ? null : (pulumi.Input.decodeList<Environment>(map['taskEnvironments']!, (value) => Environment.fromMap((value as Map).cast<String, dynamic>()))).input(),
       taskSpec: (TaskSpec.fromMap((map['taskSpec'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -56,14 +56,14 @@ class StaticSiteBuildProperties {
 
   factory StaticSiteBuildProperties.fromMap(Map<String, dynamic> map) {
     return StaticSiteBuildProperties(
-      apiBuildCommand: map['apiBuildCommand'] == null ? null : (map['apiBuildCommand'] as String).input(),
-      apiLocation: map['apiLocation'] == null ? null : (map['apiLocation'] as String).input(),
-      appArtifactLocation: map['appArtifactLocation'] == null ? null : (map['appArtifactLocation'] as String).input(),
-      appBuildCommand: map['appBuildCommand'] == null ? null : (map['appBuildCommand'] as String).input(),
-      appLocation: map['appLocation'] == null ? null : (map['appLocation'] as String).input(),
-      githubActionSecretNameOverride: map['githubActionSecretNameOverride'] == null ? null : (map['githubActionSecretNameOverride'] as String).input(),
-      outputLocation: map['outputLocation'] == null ? null : (map['outputLocation'] as String).input(),
-      skipGithubActionWorkflowGeneration: map['skipGithubActionWorkflowGeneration'] == null ? null : (map['skipGithubActionWorkflowGeneration'] as bool).input(),
+      apiBuildCommand: map['apiBuildCommand'] == null ? null : (map['apiBuildCommand']! as String).input(),
+      apiLocation: map['apiLocation'] == null ? null : (map['apiLocation']! as String).input(),
+      appArtifactLocation: map['appArtifactLocation'] == null ? null : (map['appArtifactLocation']! as String).input(),
+      appBuildCommand: map['appBuildCommand'] == null ? null : (map['appBuildCommand']! as String).input(),
+      appLocation: map['appLocation'] == null ? null : (map['appLocation']! as String).input(),
+      githubActionSecretNameOverride: map['githubActionSecretNameOverride'] == null ? null : (map['githubActionSecretNameOverride']! as String).input(),
+      outputLocation: map['outputLocation'] == null ? null : (map['outputLocation']! as String).input(),
+      skipGithubActionWorkflowGeneration: map['skipGithubActionWorkflowGeneration'] == null ? null : (map['skipGithubActionWorkflowGeneration']! as bool).input(),
     );
   }
 }

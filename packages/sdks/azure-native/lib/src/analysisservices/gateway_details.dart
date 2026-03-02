@@ -21,7 +21,7 @@ class GatewayDetails {
 
   factory GatewayDetails.fromMap(Map<String, dynamic> map) {
     return GatewayDetails(
-      gatewayResourceId: map['gatewayResourceId'] == null ? null : (map['gatewayResourceId'] as String).input(),
+      gatewayResourceId: map['gatewayResourceId'] == null ? null : (map['gatewayResourceId']! as String).input(),
     );
   }
 }

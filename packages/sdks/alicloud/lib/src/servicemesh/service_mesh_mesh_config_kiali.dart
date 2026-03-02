@@ -88,20 +88,20 @@ class ServiceMeshMeshConfigKiali {
 
   factory ServiceMeshMeshConfigKiali.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigKiali(
-      aggregatedKialiAddress: map['aggregatedKialiAddress'] == null ? null : (map['aggregatedKialiAddress'] as String).input(),
-      authStrategy: map['authStrategy'] == null ? null : (map['authStrategy'] as String).input(),
-      customPrometheusUrl: map['customPrometheusUrl'] == null ? null : (map['customPrometheusUrl'] as String).input(),
-      distributedKialiAccessTokens: map['distributedKialiAccessTokens'] == null ? null : (map['distributedKialiAccessTokens'] as String).input(),
-      distributedKialiAddresses: map['distributedKialiAddresses'] == null ? null : (map['distributedKialiAddresses'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      integrateClb: map['integrateClb'] == null ? null : (map['integrateClb'] as bool).input(),
-      kialiArmsAuthTokens: map['kialiArmsAuthTokens'] == null ? null : (map['kialiArmsAuthTokens'] as String).input(),
-      kialiServiceAnnotations: map['kialiServiceAnnotations'] == null ? null : (map['kialiServiceAnnotations'] as String).input(),
-      openIdConfig: map['openIdConfig'] == null ? null : (ServiceMeshMeshConfigKialiOpenIdConfig.fromMap((map['openIdConfig'] as Map).cast<String, dynamic>())).input(),
-      ramOauthConfig: map['ramOauthConfig'] == null ? null : (ServiceMeshMeshConfigKialiRamOauthConfig.fromMap((map['ramOauthConfig'] as Map).cast<String, dynamic>())).input(),
-      serverConfig: map['serverConfig'] == null ? null : (ServiceMeshMeshConfigKialiServerConfig.fromMap((map['serverConfig'] as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      usePopulatedArmsPrometheus: map['usePopulatedArmsPrometheus'] == null ? null : (map['usePopulatedArmsPrometheus'] as bool).input(),
+      aggregatedKialiAddress: map['aggregatedKialiAddress'] == null ? null : (map['aggregatedKialiAddress']! as String).input(),
+      authStrategy: map['authStrategy'] == null ? null : (map['authStrategy']! as String).input(),
+      customPrometheusUrl: map['customPrometheusUrl'] == null ? null : (map['customPrometheusUrl']! as String).input(),
+      distributedKialiAccessTokens: map['distributedKialiAccessTokens'] == null ? null : (map['distributedKialiAccessTokens']! as String).input(),
+      distributedKialiAddresses: map['distributedKialiAddresses'] == null ? null : (map['distributedKialiAddresses']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      integrateClb: map['integrateClb'] == null ? null : (map['integrateClb']! as bool).input(),
+      kialiArmsAuthTokens: map['kialiArmsAuthTokens'] == null ? null : (map['kialiArmsAuthTokens']! as String).input(),
+      kialiServiceAnnotations: map['kialiServiceAnnotations'] == null ? null : (map['kialiServiceAnnotations']! as String).input(),
+      openIdConfig: map['openIdConfig'] == null ? null : (ServiceMeshMeshConfigKialiOpenIdConfig.fromMap((map['openIdConfig']! as Map).cast<String, dynamic>())).input(),
+      ramOauthConfig: map['ramOauthConfig'] == null ? null : (ServiceMeshMeshConfigKialiRamOauthConfig.fromMap((map['ramOauthConfig']! as Map).cast<String, dynamic>())).input(),
+      serverConfig: map['serverConfig'] == null ? null : (ServiceMeshMeshConfigKialiServerConfig.fromMap((map['serverConfig']! as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      usePopulatedArmsPrometheus: map['usePopulatedArmsPrometheus'] == null ? null : (map['usePopulatedArmsPrometheus']! as bool).input(),
     );
   }
 }

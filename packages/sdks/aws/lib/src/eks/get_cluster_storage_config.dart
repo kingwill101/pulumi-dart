@@ -21,7 +21,7 @@ class GetClusterStorageConfig {
 
   factory GetClusterStorageConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterStorageConfig(
-      blockStorages: (pulumi.Input.decodeList<GetClusterStorageConfigBlockStorage>(map['blockStorages'], (value) => GetClusterStorageConfigBlockStorage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      blockStorages: (pulumi.Input.decodeList<GetClusterStorageConfigBlockStorage>(map['blockStorages']!, (value) => GetClusterStorageConfigBlockStorage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

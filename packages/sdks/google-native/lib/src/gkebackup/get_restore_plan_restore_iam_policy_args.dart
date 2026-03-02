@@ -40,8 +40,8 @@ class GetRestorePlanRestoreIamPolicyArgs {
   factory GetRestorePlanRestoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRestorePlanRestoreIamPolicyArgs(
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       restoreId: (map['restoreId'] as String).input(),
       restorePlanId: (map['restorePlanId'] as String).input(),
     );

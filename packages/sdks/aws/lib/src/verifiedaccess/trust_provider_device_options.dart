@@ -19,7 +19,7 @@ class TrustProviderDeviceOptions {
 
   factory TrustProviderDeviceOptions.fromMap(Map<String, dynamic> map) {
     return TrustProviderDeviceOptions(
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : ((map['tenantId'] as String).input()).input(),
     );
   }
 }

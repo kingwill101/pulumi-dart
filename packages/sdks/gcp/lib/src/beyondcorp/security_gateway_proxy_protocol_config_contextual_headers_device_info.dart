@@ -21,7 +21,7 @@ class SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo {
 
   factory SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo(
-      outputType: map['outputType'] == null ? null : (map['outputType'] as String).input(),
+      outputType: map['outputType'] == null ? null : (map['outputType']! as String).input(),
     );
   }
 }

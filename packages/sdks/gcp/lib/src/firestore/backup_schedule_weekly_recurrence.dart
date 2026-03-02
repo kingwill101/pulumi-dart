@@ -21,7 +21,7 @@ class BackupScheduleWeeklyRecurrence {
 
   factory BackupScheduleWeeklyRecurrence.fromMap(Map<String, dynamic> map) {
     return BackupScheduleWeeklyRecurrence(
-      day: map['day'] == null ? null : (map['day'] as String).input(),
+      day: map['day'] == null ? null : (map['day']! as String).input(),
     );
   }
 }

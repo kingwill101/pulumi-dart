@@ -26,8 +26,8 @@ class RegistryInfoResponse {
 
   factory RegistryInfoResponse.fromMap(Map<String, dynamic> map) {
     return RegistryInfoResponse(
-      registryUrl: map['registryUrl'] == null ? null : (map['registryUrl'] as String).input(),
-      registryUserName: map['registryUserName'] == null ? null : (map['registryUserName'] as String).input(),
+      registryUrl: map['registryUrl'] == null ? null : (map['registryUrl']! as String).input(),
+      registryUserName: map['registryUserName'] == null ? null : (map['registryUserName']! as String).input(),
     );
   }
 }

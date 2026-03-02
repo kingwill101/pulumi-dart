@@ -31,9 +31,9 @@ class RoleRefPatch {
 
   factory RoleRefPatch.fromMap(Map<String, dynamic> map) {
     return RoleRefPatch(
-      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

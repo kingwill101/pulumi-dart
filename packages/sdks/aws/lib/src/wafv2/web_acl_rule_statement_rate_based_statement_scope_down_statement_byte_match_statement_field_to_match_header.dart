@@ -31,7 +31,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementF
 
   factory WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchHeader.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchHeader(
-      matchPattern: (WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern'] as Map).cast<String, dynamic>())).input(),
+      matchPattern: (WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern']! as Map).cast<String, dynamic>())).input(),
       matchScope: (map['matchScope'] as String).input(),
       oversizeHandling: (map['oversizeHandling'] as String).input(),
     );

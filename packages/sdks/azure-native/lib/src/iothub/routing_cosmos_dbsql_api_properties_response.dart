@@ -82,19 +82,19 @@ class RoutingCosmosDBSqlApiPropertiesResponse {
 
   factory RoutingCosmosDBSqlApiPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RoutingCosmosDBSqlApiPropertiesResponse(
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
       containerName: (map['containerName'] as String).input(),
       databaseName: (map['databaseName'] as String).input(),
       endpointUri: (map['endpointUri'] as String).input(),
       id: (map['id'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      partitionKeyName: map['partitionKeyName'] == null ? null : (map['partitionKeyName'] as String).input(),
-      partitionKeyTemplate: map['partitionKeyTemplate'] == null ? null : (map['partitionKeyTemplate'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      partitionKeyName: map['partitionKeyName'] == null ? null : (map['partitionKeyName']! as String).input(),
+      partitionKeyTemplate: map['partitionKeyTemplate'] == null ? null : (map['partitionKeyTemplate']! as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

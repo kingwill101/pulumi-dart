@@ -31,9 +31,9 @@ class AutoscaleTimeAndCapacityResponse {
 
   factory AutoscaleTimeAndCapacityResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleTimeAndCapacityResponse(
-      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount'] as int).input(),
-      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount'] as int).input(),
-      time: map['time'] == null ? null : (map['time'] as String).input(),
+      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount']! as int).input(),
+      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount']! as int).input(),
+      time: map['time'] == null ? null : (map['time']! as String).input(),
     );
   }
 }

@@ -106,7 +106,7 @@ class GetDirectoryResult {
     return GetDirectoryResult(
       accessUrl: map['accessUrl'] as String,
       alias: map['alias'] as String,
-      connectSettings: pulumi.Input.decodeList<GetDirectoryConnectSetting>(map['connectSettings'], (value) => GetDirectoryConnectSetting.fromMap((value as Map).cast<String, dynamic>())),
+      connectSettings: pulumi.Input.decodeList<GetDirectoryConnectSetting>(map['connectSettings']!, (value) => GetDirectoryConnectSetting.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       directoryId: map['directoryId'] as String,
       dnsIpAddresses: (map['dnsIpAddresses'] as List).cast<String>(),
@@ -114,14 +114,14 @@ class GetDirectoryResult {
       enableSso: map['enableSso'] as bool,
       id: map['id'] as String,
       name: map['name'] as String,
-      radiusSettings: pulumi.Input.decodeList<GetDirectoryRadiusSetting>(map['radiusSettings'], (value) => GetDirectoryRadiusSetting.fromMap((value as Map).cast<String, dynamic>())),
+      radiusSettings: pulumi.Input.decodeList<GetDirectoryRadiusSetting>(map['radiusSettings']!, (value) => GetDirectoryRadiusSetting.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       securityGroupId: map['securityGroupId'] as String,
       shortName: map['shortName'] as String,
       size: map['size'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       type: map['type'] as String,
-      vpcSettings: pulumi.Input.decodeList<GetDirectoryVpcSetting>(map['vpcSettings'], (value) => GetDirectoryVpcSetting.fromMap((value as Map).cast<String, dynamic>())),
+      vpcSettings: pulumi.Input.decodeList<GetDirectoryVpcSetting>(map['vpcSettings']!, (value) => GetDirectoryVpcSetting.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

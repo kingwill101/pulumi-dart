@@ -31,9 +31,9 @@ class DatabaseInstanceIpAddress {
 
   factory DatabaseInstanceIpAddress.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceIpAddress(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      timeToRetire: map['timeToRetire'] == null ? null : (map['timeToRetire'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      timeToRetire: map['timeToRetire'] == null ? null : (map['timeToRetire']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

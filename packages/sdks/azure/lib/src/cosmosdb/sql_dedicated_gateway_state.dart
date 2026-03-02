@@ -31,9 +31,9 @@ class SqlDedicatedGatewayState {
 
   factory SqlDedicatedGatewayState.fromMap(Map<String, dynamic> map) {
     return SqlDedicatedGatewayState(
-      cosmosdbAccountId: map['cosmosdbAccountId'] == null ? null : (map['cosmosdbAccountId'] as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize'] as String).input(),
+      cosmosdbAccountId: map['cosmosdbAccountId'] == null ? null : (map['cosmosdbAccountId']! as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize']! as String).input(),
     );
   }
 }

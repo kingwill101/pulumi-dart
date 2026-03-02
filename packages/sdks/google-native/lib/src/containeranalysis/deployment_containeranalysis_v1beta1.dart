@@ -47,12 +47,12 @@ class DeploymentContaineranalysisV1beta1 {
 
   factory DeploymentContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return DeploymentContaineranalysisV1beta1(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      config: map['config'] == null ? null : (map['config'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
       deployTime: (map['deployTime'] as String).input(),
-      platform: map['platform'] == null ? null : (DeploymentPlatformContaineranalysisV1beta1.fromValue(map['platform'] as String)).input(),
-      undeployTime: map['undeployTime'] == null ? null : (map['undeployTime'] as String).input(),
-      userEmail: map['userEmail'] == null ? null : (map['userEmail'] as String).input(),
+      platform: map['platform'] == null ? null : (DeploymentPlatformContaineranalysisV1beta1.fromValue(map['platform']! as String)).input(),
+      undeployTime: map['undeployTime'] == null ? null : (map['undeployTime']! as String).input(),
+      userEmail: map['userEmail'] == null ? null : (map['userEmail']! as String).input(),
     );
   }
 }

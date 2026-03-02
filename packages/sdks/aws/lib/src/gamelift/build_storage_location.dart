@@ -37,7 +37,7 @@ class BuildStorageLocation {
     return BuildStorageLocation(
       bucket: (map['bucket'] as String).input(),
       key: (map['key'] as String).input(),
-      objectVersion: map['objectVersion'] == null ? null : (map['objectVersion'] as String).input(),
+      objectVersion: map['objectVersion'] == null ? null : ((map['objectVersion'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
     );
   }

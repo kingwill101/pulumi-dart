@@ -27,7 +27,7 @@ class DomainDevicesChannelSourcePipe {
   factory DomainDevicesChannelSourcePipe.fromMap(Map<String, dynamic> map) {
     return DomainDevicesChannelSourcePipe(
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesChannelSourcePipeSecLabel>(map['secLabels'], (value) => DomainDevicesChannelSourcePipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesChannelSourcePipeSecLabel>(map['secLabels']!, (value) => DomainDevicesChannelSourcePipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

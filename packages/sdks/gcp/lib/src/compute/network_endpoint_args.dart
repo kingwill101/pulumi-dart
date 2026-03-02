@@ -56,12 +56,12 @@ class NetworkEndpointArgs {
 
   factory NetworkEndpointArgs.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointArgs(
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
       ipAddress: (map['ipAddress'] as String).input(),
       networkEndpointGroup: (map['networkEndpointGroup'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

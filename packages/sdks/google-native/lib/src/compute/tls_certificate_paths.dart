@@ -26,8 +26,8 @@ class TlsCertificatePaths {
 
   factory TlsCertificatePaths.fromMap(Map<String, dynamic> map) {
     return TlsCertificatePaths(
-      certificatePath: map['certificatePath'] == null ? null : (map['certificatePath'] as String).input(),
-      privateKeyPath: map['privateKeyPath'] == null ? null : (map['privateKeyPath'] as String).input(),
+      certificatePath: map['certificatePath'] == null ? null : (map['certificatePath']! as String).input(),
+      privateKeyPath: map['privateKeyPath'] == null ? null : (map['privateKeyPath']! as String).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class GetOfferAccessTokenResult {
   factory GetOfferAccessTokenResult.fromMap(Map<String, dynamic> map) {
     return GetOfferAccessTokenResult(
       accessToken: map['accessToken'] as String,
-      diskId: map['diskId'] == null ? null : map['diskId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      diskId: map['diskId'] == null ? null : map['diskId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

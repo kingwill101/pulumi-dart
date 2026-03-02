@@ -27,8 +27,8 @@ class GroupMixedInstancesPolicy {
 
   factory GroupMixedInstancesPolicy.fromMap(Map<String, dynamic> map) {
     return GroupMixedInstancesPolicy(
-      instancesDistribution: map['instancesDistribution'] == null ? null : (GroupMixedInstancesPolicyInstancesDistribution.fromMap((map['instancesDistribution'] as Map).cast<String, dynamic>())).input(),
-      launchTemplate: (GroupMixedInstancesPolicyLaunchTemplate.fromMap((map['launchTemplate'] as Map).cast<String, dynamic>())).input(),
+      instancesDistribution: map['instancesDistribution'] == null ? null : ((GroupMixedInstancesPolicyInstancesDistribution.fromMap((map['instancesDistribution']! as Map).cast<String, dynamic>())).input()).input(),
+      launchTemplate: (GroupMixedInstancesPolicyLaunchTemplate.fromMap((map['launchTemplate']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

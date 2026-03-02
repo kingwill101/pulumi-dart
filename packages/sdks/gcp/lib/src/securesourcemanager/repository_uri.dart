@@ -33,9 +33,9 @@ class RepositoryUri {
 
   factory RepositoryUri.fromMap(Map<String, dynamic> map) {
     return RepositoryUri(
-      api: map['api'] == null ? null : (map['api'] as String).input(),
-      gitHttps: map['gitHttps'] == null ? null : (map['gitHttps'] as String).input(),
-      html: map['html'] == null ? null : (map['html'] as String).input(),
+      api: map['api'] == null ? null : (map['api']! as String).input(),
+      gitHttps: map['gitHttps'] == null ? null : (map['gitHttps']! as String).input(),
+      html: map['html'] == null ? null : (map['html']! as String).input(),
     );
   }
 }

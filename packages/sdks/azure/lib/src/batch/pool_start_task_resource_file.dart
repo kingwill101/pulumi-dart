@@ -52,13 +52,13 @@ class PoolStartTaskResourceFile {
 
   factory PoolStartTaskResourceFile.fromMap(Map<String, dynamic> map) {
     return PoolStartTaskResourceFile(
-      autoStorageContainerName: map['autoStorageContainerName'] == null ? null : (map['autoStorageContainerName'] as String).input(),
-      blobPrefix: map['blobPrefix'] == null ? null : (map['blobPrefix'] as String).input(),
-      fileMode: map['fileMode'] == null ? null : (map['fileMode'] as String).input(),
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
-      httpUrl: map['httpUrl'] == null ? null : (map['httpUrl'] as String).input(),
-      storageContainerUrl: map['storageContainerUrl'] == null ? null : (map['storageContainerUrl'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      autoStorageContainerName: map['autoStorageContainerName'] == null ? null : (map['autoStorageContainerName']! as String).input(),
+      blobPrefix: map['blobPrefix'] == null ? null : (map['blobPrefix']! as String).input(),
+      fileMode: map['fileMode'] == null ? null : (map['fileMode']! as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
+      httpUrl: map['httpUrl'] == null ? null : (map['httpUrl']! as String).input(),
+      storageContainerUrl: map['storageContainerUrl'] == null ? null : (map['storageContainerUrl']! as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

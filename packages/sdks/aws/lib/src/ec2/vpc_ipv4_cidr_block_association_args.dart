@@ -44,10 +44,10 @@ class VpcIpv4CidrBlockAssociationArgs {
 
   factory VpcIpv4CidrBlockAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpv4CidrBlockAssociationArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : (map['ipv4IpamPoolId'] as String).input(),
-      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : (map['ipv4NetmaskLength'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : ((map['cidrBlock'] as String).input()).input(),
+      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : ((map['ipv4IpamPoolId'] as String).input()).input(),
+      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : ((map['ipv4NetmaskLength'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

@@ -89,20 +89,20 @@ class GetProfileResult {
 
   factory GetProfileResult.fromMap(Map<String, dynamic> map) {
     return GetProfileResult(
-      allowedEndpointRecordTypes: map['allowedEndpointRecordTypes'] == null ? null : (map['allowedEndpointRecordTypes'] as List).cast<String>(),
+      allowedEndpointRecordTypes: map['allowedEndpointRecordTypes'] == null ? null : (map['allowedEndpointRecordTypes']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
-      dnsConfig: map['dnsConfig'] == null ? null : DnsConfigResponse.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>()),
-      endpoints: map['endpoints'] == null ? null : pulumi.Input.decodeList<EndpointResponse>(map['endpoints'], (value) => EndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      maxReturn: map['maxReturn'] == null ? null : map['maxReturn'] as double,
-      monitorConfig: map['monitorConfig'] == null ? null : MonitorConfigResponse.fromMap((map['monitorConfig'] as Map).cast<String, dynamic>()),
-      name: map['name'] == null ? null : map['name'] as String,
-      profileStatus: map['profileStatus'] == null ? null : map['profileStatus'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      trafficRoutingMethod: map['trafficRoutingMethod'] == null ? null : map['trafficRoutingMethod'] as String,
-      trafficViewEnrollmentStatus: map['trafficViewEnrollmentStatus'] == null ? null : map['trafficViewEnrollmentStatus'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      dnsConfig: map['dnsConfig'] == null ? null : DnsConfigResponse.fromMap((map['dnsConfig']! as Map).cast<String, dynamic>()),
+      endpoints: map['endpoints'] == null ? null : pulumi.Input.decodeList<EndpointResponse>(map['endpoints']!, (value) => EndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
+      id: map['id'] == null ? null : map['id']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      maxReturn: map['maxReturn'] == null ? null : map['maxReturn']! as double,
+      monitorConfig: map['monitorConfig'] == null ? null : MonitorConfigResponse.fromMap((map['monitorConfig']! as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : map['name']! as String,
+      profileStatus: map['profileStatus'] == null ? null : map['profileStatus']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      trafficRoutingMethod: map['trafficRoutingMethod'] == null ? null : map['trafficRoutingMethod']! as String,
+      trafficViewEnrollmentStatus: map['trafficViewEnrollmentStatus'] == null ? null : map['trafficViewEnrollmentStatus']! as String,
+      type: map['type'] == null ? null : map['type']! as String,
     );
   }
 }

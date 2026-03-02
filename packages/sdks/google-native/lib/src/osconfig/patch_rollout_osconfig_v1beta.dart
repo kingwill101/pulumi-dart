@@ -28,8 +28,8 @@ class PatchRolloutOsconfigV1beta {
 
   factory PatchRolloutOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return PatchRolloutOsconfigV1beta(
-      disruptionBudget: map['disruptionBudget'] == null ? null : (FixedOrPercentOsconfigV1beta.fromMap((map['disruptionBudget'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (PatchRolloutModeOsconfigV1beta.fromValue(map['mode'] as String)).input(),
+      disruptionBudget: map['disruptionBudget'] == null ? null : (FixedOrPercentOsconfigV1beta.fromMap((map['disruptionBudget']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (PatchRolloutModeOsconfigV1beta.fromValue(map['mode']! as String)).input(),
     );
   }
 }

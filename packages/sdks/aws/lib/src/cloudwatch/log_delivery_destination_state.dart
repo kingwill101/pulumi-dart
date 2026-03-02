@@ -57,14 +57,14 @@ class LogDeliveryDestinationState {
 
   factory LogDeliveryDestinationState.fromMap(Map<String, dynamic> map) {
     return LogDeliveryDestinationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deliveryDestinationConfiguration: map['deliveryDestinationConfiguration'] == null ? null : (LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap((map['deliveryDestinationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      deliveryDestinationType: map['deliveryDestinationType'] == null ? null : (map['deliveryDestinationType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deliveryDestinationConfiguration: map['deliveryDestinationConfiguration'] == null ? null : ((LogDeliveryDestinationDeliveryDestinationConfiguration.fromMap((map['deliveryDestinationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      deliveryDestinationType: map['deliveryDestinationType'] == null ? null : ((map['deliveryDestinationType'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      outputFormat: map['outputFormat'] == null ? null : ((map['outputFormat'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

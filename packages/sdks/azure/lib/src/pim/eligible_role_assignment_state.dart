@@ -65,15 +65,15 @@ class EligibleRoleAssignmentState {
 
   factory EligibleRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return EligibleRoleAssignmentState(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      conditionVersion: map['conditionVersion'] == null ? null : (map['conditionVersion'] as String).input(),
-      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
-      schedule: map['schedule'] == null ? null : (EligibleRoleAssignmentSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      ticket: map['ticket'] == null ? null : (EligibleRoleAssignmentTicket.fromMap((map['ticket'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      conditionVersion: map['conditionVersion'] == null ? null : (map['conditionVersion']! as String).input(),
+      justification: map['justification'] == null ? null : (map['justification']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
+      schedule: map['schedule'] == null ? null : (EligibleRoleAssignmentSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      ticket: map['ticket'] == null ? null : (EligibleRoleAssignmentTicket.fromMap((map['ticket']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class TagOptionResourceAssociationArgs {
 
   factory TagOptionResourceAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TagOptionResourceAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceId: (map['resourceId'] as String).input(),
       tagOptionId: (map['tagOptionId'] as String).input(),
     );

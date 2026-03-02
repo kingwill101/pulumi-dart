@@ -31,9 +31,9 @@ class EmailServiceDomainSenderUsernameState {
 
   factory EmailServiceDomainSenderUsernameState.fromMap(Map<String, dynamic> map) {
     return EmailServiceDomainSenderUsernameState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      emailServiceDomainId: map['emailServiceDomainId'] == null ? null : (map['emailServiceDomainId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      emailServiceDomainId: map['emailServiceDomainId'] == null ? null : (map['emailServiceDomainId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

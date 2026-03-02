@@ -26,8 +26,8 @@ class ReservationAutoscale {
 
   factory ReservationAutoscale.fromMap(Map<String, dynamic> map) {
     return ReservationAutoscale(
-      currentSlots: map['currentSlots'] == null ? null : (map['currentSlots'] as int).input(),
-      maxSlots: map['maxSlots'] == null ? null : (map['maxSlots'] as int).input(),
+      currentSlots: map['currentSlots'] == null ? null : (map['currentSlots']! as int).input(),
+      maxSlots: map['maxSlots'] == null ? null : (map['maxSlots']! as int).input(),
     );
   }
 }

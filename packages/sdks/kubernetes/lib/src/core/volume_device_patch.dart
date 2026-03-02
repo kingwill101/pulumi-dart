@@ -26,8 +26,8 @@ class VolumeDevicePatch {
 
   factory VolumeDevicePatch.fromMap(Map<String, dynamic> map) {
     return VolumeDevicePatch(
-      devicePath: map['devicePath'] == null ? null : (map['devicePath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      devicePath: map['devicePath'] == null ? null : (map['devicePath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

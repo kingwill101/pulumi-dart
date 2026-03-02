@@ -25,8 +25,8 @@ class DomainDomainSettingsDockerSettings {
 
   factory DomainDomainSettingsDockerSettings.fromMap(Map<String, dynamic> map) {
     return DomainDomainSettingsDockerSettings(
-      enableDockerAccess: map['enableDockerAccess'] == null ? null : (map['enableDockerAccess'] as String).input(),
-      vpcOnlyTrustedAccounts: map['vpcOnlyTrustedAccounts'] == null ? null : ((map['vpcOnlyTrustedAccounts'] as List).cast<String>()).input(),
+      enableDockerAccess: map['enableDockerAccess'] == null ? null : ((map['enableDockerAccess'] as String).input()).input(),
+      vpcOnlyTrustedAccounts: map['vpcOnlyTrustedAccounts'] == null ? null : (((map['vpcOnlyTrustedAccounts'] as List).cast<String>()).input()).input(),
     );
   }
 }

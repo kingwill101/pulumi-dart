@@ -40,11 +40,11 @@ class ServiceMeshMeshConfigProxy {
 
   factory ServiceMeshMeshConfigProxy.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigProxy(
-      clusterDomain: map['clusterDomain'] == null ? null : (map['clusterDomain'] as String).input(),
-      limitCpu: map['limitCpu'] == null ? null : (map['limitCpu'] as String).input(),
-      limitMemory: map['limitMemory'] == null ? null : (map['limitMemory'] as String).input(),
-      requestCpu: map['requestCpu'] == null ? null : (map['requestCpu'] as String).input(),
-      requestMemory: map['requestMemory'] == null ? null : (map['requestMemory'] as String).input(),
+      clusterDomain: map['clusterDomain'] == null ? null : (map['clusterDomain']! as String).input(),
+      limitCpu: map['limitCpu'] == null ? null : (map['limitCpu']! as String).input(),
+      limitMemory: map['limitMemory'] == null ? null : (map['limitMemory']! as String).input(),
+      requestCpu: map['requestCpu'] == null ? null : (map['requestCpu']! as String).input(),
+      requestMemory: map['requestMemory'] == null ? null : (map['requestMemory']! as String).input(),
     );
   }
 }

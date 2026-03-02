@@ -99,21 +99,21 @@ class AwsRoute53ResourceRecordSetPropertiesResponse {
 
   factory AwsRoute53ResourceRecordSetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsRoute53ResourceRecordSetPropertiesResponse(
-      aliasTarget: map['aliasTarget'] == null ? null : (AliasTargetResponse.fromMap((map['aliasTarget'] as Map).cast<String, dynamic>())).input(),
-      cidrRoutingConfig: map['cidrRoutingConfig'] == null ? null : (CidrRoutingConfigResponse.fromMap((map['cidrRoutingConfig'] as Map).cast<String, dynamic>())).input(),
-      failover: map['failover'] == null ? null : (ResourceRecordSetFailoverEnumValueResponse.fromMap((map['failover'] as Map).cast<String, dynamic>())).input(),
-      geoLocation: map['geoLocation'] == null ? null : (GeoLocationResponse.fromMap((map['geoLocation'] as Map).cast<String, dynamic>())).input(),
-      geoProximityLocation: map['geoProximityLocation'] == null ? null : (GeoProximityLocationResponse.fromMap((map['geoProximityLocation'] as Map).cast<String, dynamic>())).input(),
-      healthCheckId: map['healthCheckId'] == null ? null : (map['healthCheckId'] as String).input(),
-      multiValueAnswer: map['multiValueAnswer'] == null ? null : (map['multiValueAnswer'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (ResourceRecordSetRegionEnumValueResponse.fromMap((map['region'] as Map).cast<String, dynamic>())).input(),
-      resourceRecords: map['resourceRecords'] == null ? null : (pulumi.Input.decodeList<ResourceRecordResponse>(map['resourceRecords'], (value) => ResourceRecordResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      setIdentifier: map['setIdentifier'] == null ? null : (map['setIdentifier'] as String).input(),
-      trafficPolicyInstanceId: map['trafficPolicyInstanceId'] == null ? null : (map['trafficPolicyInstanceId'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as double).input(),
-      type: map['type'] == null ? null : (RRTypeEnumValueResponse.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as double).input(),
+      aliasTarget: map['aliasTarget'] == null ? null : (AliasTargetResponse.fromMap((map['aliasTarget']! as Map).cast<String, dynamic>())).input(),
+      cidrRoutingConfig: map['cidrRoutingConfig'] == null ? null : (CidrRoutingConfigResponse.fromMap((map['cidrRoutingConfig']! as Map).cast<String, dynamic>())).input(),
+      failover: map['failover'] == null ? null : (ResourceRecordSetFailoverEnumValueResponse.fromMap((map['failover']! as Map).cast<String, dynamic>())).input(),
+      geoLocation: map['geoLocation'] == null ? null : (GeoLocationResponse.fromMap((map['geoLocation']! as Map).cast<String, dynamic>())).input(),
+      geoProximityLocation: map['geoProximityLocation'] == null ? null : (GeoProximityLocationResponse.fromMap((map['geoProximityLocation']! as Map).cast<String, dynamic>())).input(),
+      healthCheckId: map['healthCheckId'] == null ? null : (map['healthCheckId']! as String).input(),
+      multiValueAnswer: map['multiValueAnswer'] == null ? null : (map['multiValueAnswer']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (ResourceRecordSetRegionEnumValueResponse.fromMap((map['region']! as Map).cast<String, dynamic>())).input(),
+      resourceRecords: map['resourceRecords'] == null ? null : (pulumi.Input.decodeList<ResourceRecordResponse>(map['resourceRecords']!, (value) => ResourceRecordResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      setIdentifier: map['setIdentifier'] == null ? null : (map['setIdentifier']! as String).input(),
+      trafficPolicyInstanceId: map['trafficPolicyInstanceId'] == null ? null : (map['trafficPolicyInstanceId']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as double).input(),
+      type: map['type'] == null ? null : (RRTypeEnumValueResponse.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as double).input(),
     );
   }
 }

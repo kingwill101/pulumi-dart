@@ -66,16 +66,16 @@ class BasicEndpointState {
 
   factory BasicEndpointState.fromMap(Map<String, dynamic> map) {
     return BasicEndpointState(
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
-      basicEndpointName: map['basicEndpointName'] == null ? null : (map['basicEndpointName'] as String).input(),
-      endpointAddress: map['endpointAddress'] == null ? null : (map['endpointAddress'] as String).input(),
-      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId'] as String).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      endpointSubAddress: map['endpointSubAddress'] == null ? null : (map['endpointSubAddress'] as String).input(),
-      endpointSubAddressType: map['endpointSubAddressType'] == null ? null : (map['endpointSubAddressType'] as String).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      endpointZoneId: map['endpointZoneId'] == null ? null : (map['endpointZoneId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
+      basicEndpointName: map['basicEndpointName'] == null ? null : (map['basicEndpointName']! as String).input(),
+      endpointAddress: map['endpointAddress'] == null ? null : (map['endpointAddress']! as String).input(),
+      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId']! as String).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
+      endpointSubAddress: map['endpointSubAddress'] == null ? null : (map['endpointSubAddress']! as String).input(),
+      endpointSubAddressType: map['endpointSubAddressType'] == null ? null : (map['endpointSubAddressType']! as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      endpointZoneId: map['endpointZoneId'] == null ? null : (map['endpointZoneId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

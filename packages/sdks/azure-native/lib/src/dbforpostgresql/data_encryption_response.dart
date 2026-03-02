@@ -52,12 +52,12 @@ class DataEncryptionResponse {
   factory DataEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return DataEncryptionResponse(
       geoBackupEncryptionKeyStatus: (map['geoBackupEncryptionKeyStatus'] as String).input(),
-      geoBackupKeyURI: map['geoBackupKeyURI'] == null ? null : (map['geoBackupKeyURI'] as String).input(),
-      geoBackupUserAssignedIdentityId: map['geoBackupUserAssignedIdentityId'] == null ? null : (map['geoBackupUserAssignedIdentityId'] as String).input(),
+      geoBackupKeyURI: map['geoBackupKeyURI'] == null ? null : (map['geoBackupKeyURI']! as String).input(),
+      geoBackupUserAssignedIdentityId: map['geoBackupUserAssignedIdentityId'] == null ? null : (map['geoBackupUserAssignedIdentityId']! as String).input(),
       primaryEncryptionKeyStatus: (map['primaryEncryptionKeyStatus'] as String).input(),
-      primaryKeyURI: map['primaryKeyURI'] == null ? null : (map['primaryKeyURI'] as String).input(),
-      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : (map['primaryUserAssignedIdentityId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      primaryKeyURI: map['primaryKeyURI'] == null ? null : (map['primaryKeyURI']! as String).input(),
+      primaryUserAssignedIdentityId: map['primaryUserAssignedIdentityId'] == null ? null : (map['primaryUserAssignedIdentityId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

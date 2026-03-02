@@ -51,12 +51,12 @@ class JobTargetResponse {
 
   factory JobTargetResponse.fromMap(Map<String, dynamic> map) {
     return JobTargetResponse(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      elasticPoolName: map['elasticPoolName'] == null ? null : (map['elasticPoolName'] as String).input(),
-      membershipType: map['membershipType'] == null ? null : (map['membershipType'] as String).input(),
-      refreshCredential: map['refreshCredential'] == null ? null : (map['refreshCredential'] as String).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
-      shardMapName: map['shardMapName'] == null ? null : (map['shardMapName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      elasticPoolName: map['elasticPoolName'] == null ? null : (map['elasticPoolName']! as String).input(),
+      membershipType: map['membershipType'] == null ? null : (map['membershipType']! as String).input(),
+      refreshCredential: map['refreshCredential'] == null ? null : (map['refreshCredential']! as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
+      shardMapName: map['shardMapName'] == null ? null : (map['shardMapName']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

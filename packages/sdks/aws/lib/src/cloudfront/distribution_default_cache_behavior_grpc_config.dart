@@ -20,7 +20,7 @@ class DistributionDefaultCacheBehaviorGrpcConfig {
 
   factory DistributionDefaultCacheBehaviorGrpcConfig.fromMap(Map<String, dynamic> map) {
     return DistributionDefaultCacheBehaviorGrpcConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
     );
   }
 }

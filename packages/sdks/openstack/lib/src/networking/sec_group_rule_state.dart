@@ -121,18 +121,18 @@ class SecGroupRuleState {
 
   factory SecGroupRuleState.fromMap(Map<String, dynamic> map) {
     return SecGroupRuleState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      ethertype: map['ethertype'] == null ? null : (map['ethertype'] as String).input(),
-      portRangeMax: map['portRangeMax'] == null ? null : (map['portRangeMax'] as int).input(),
-      portRangeMin: map['portRangeMin'] == null ? null : (map['portRangeMin'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      remoteAddressGroupId: map['remoteAddressGroupId'] == null ? null : (map['remoteAddressGroupId'] as String).input(),
-      remoteGroupId: map['remoteGroupId'] == null ? null : (map['remoteGroupId'] as String).input(),
-      remoteIpPrefix: map['remoteIpPrefix'] == null ? null : (map['remoteIpPrefix'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      ethertype: map['ethertype'] == null ? null : (map['ethertype']! as String).input(),
+      portRangeMax: map['portRangeMax'] == null ? null : (map['portRangeMax']! as int).input(),
+      portRangeMin: map['portRangeMin'] == null ? null : (map['portRangeMin']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      remoteAddressGroupId: map['remoteAddressGroupId'] == null ? null : (map['remoteAddressGroupId']! as String).input(),
+      remoteGroupId: map['remoteGroupId'] == null ? null : (map['remoteGroupId']! as String).input(),
+      remoteIpPrefix: map['remoteIpPrefix'] == null ? null : (map['remoteIpPrefix']! as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

@@ -79,7 +79,7 @@ class GetTopicsTopic {
       remark: (map['remark'] as String).input(),
       status: (map['status'] as int).input(),
       statusName: (map['statusName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       topic: (map['topic'] as String).input(),
     );
   }

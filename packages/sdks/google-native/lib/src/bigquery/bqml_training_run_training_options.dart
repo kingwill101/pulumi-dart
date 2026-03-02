@@ -52,15 +52,15 @@ class BqmlTrainingRunTrainingOptions {
 
   factory BqmlTrainingRunTrainingOptions.fromMap(Map<String, dynamic> map) {
     return BqmlTrainingRunTrainingOptions(
-      earlyStop: map['earlyStop'] == null ? null : (map['earlyStop'] as bool).input(),
-      l1Reg: map['l1Reg'] == null ? null : (map['l1Reg'] as double).input(),
-      l2Reg: map['l2Reg'] == null ? null : (map['l2Reg'] as double).input(),
-      learnRate: map['learnRate'] == null ? null : (map['learnRate'] as double).input(),
-      learnRateStrategy: map['learnRateStrategy'] == null ? null : (map['learnRateStrategy'] as String).input(),
-      lineSearchInitLearnRate: map['lineSearchInitLearnRate'] == null ? null : (map['lineSearchInitLearnRate'] as double).input(),
-      maxIteration: map['maxIteration'] == null ? null : (map['maxIteration'] as String).input(),
-      minRelProgress: map['minRelProgress'] == null ? null : (map['minRelProgress'] as double).input(),
-      warmStart: map['warmStart'] == null ? null : (map['warmStart'] as bool).input(),
+      earlyStop: map['earlyStop'] == null ? null : (map['earlyStop']! as bool).input(),
+      l1Reg: map['l1Reg'] == null ? null : (map['l1Reg']! as double).input(),
+      l2Reg: map['l2Reg'] == null ? null : (map['l2Reg']! as double).input(),
+      learnRate: map['learnRate'] == null ? null : (map['learnRate']! as double).input(),
+      learnRateStrategy: map['learnRateStrategy'] == null ? null : (map['learnRateStrategy']! as String).input(),
+      lineSearchInitLearnRate: map['lineSearchInitLearnRate'] == null ? null : (map['lineSearchInitLearnRate']! as double).input(),
+      maxIteration: map['maxIteration'] == null ? null : (map['maxIteration']! as String).input(),
+      minRelProgress: map['minRelProgress'] == null ? null : (map['minRelProgress']! as double).input(),
+      warmStart: map['warmStart'] == null ? null : (map['warmStart']! as bool).input(),
     );
   }
 }

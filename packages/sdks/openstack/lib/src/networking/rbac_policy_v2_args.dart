@@ -56,7 +56,7 @@ class RbacPolicyV2Args {
       action: (map['action'] as String).input(),
       objectId: (map['objectId'] as String).input(),
       objectType: (map['objectType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       targetTenant: (map['targetTenant'] as String).input(),
     );
   }

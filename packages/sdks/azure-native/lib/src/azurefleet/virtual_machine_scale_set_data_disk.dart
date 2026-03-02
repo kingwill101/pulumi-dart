@@ -83,16 +83,16 @@ class VirtualMachineScaleSetDataDisk {
 
   factory VirtualMachineScaleSetDataDisk.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetDataDisk(
-      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
+      caching: map['caching'] == null ? null : (map['caching']! as String).input(),
       createOption: (map['createOption'] as String).input(),
-      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption'] as String).input(),
-      diskIOPSReadWrite: map['diskIOPSReadWrite'] == null ? null : (map['diskIOPSReadWrite'] as double).input(),
-      diskMBpsReadWrite: map['diskMBpsReadWrite'] == null ? null : (map['diskMBpsReadWrite'] as double).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
+      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption']! as String).input(),
+      diskIOPSReadWrite: map['diskIOPSReadWrite'] == null ? null : (map['diskIOPSReadWrite']! as double).input(),
+      diskMBpsReadWrite: map['diskMBpsReadWrite'] == null ? null : (map['diskMBpsReadWrite']! as double).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
       lun: (map['lun'] as int).input(),
-      managedDisk: map['managedDisk'] == null ? null : (VirtualMachineScaleSetManagedDiskParameters.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
+      managedDisk: map['managedDisk'] == null ? null : (VirtualMachineScaleSetManagedDiskParameters.fromMap((map['managedDisk']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled']! as bool).input(),
     );
   }
 }

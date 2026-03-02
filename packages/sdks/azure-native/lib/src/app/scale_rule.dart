@@ -45,11 +45,11 @@ class ScaleRule {
 
   factory ScaleRule.fromMap(Map<String, dynamic> map) {
     return ScaleRule(
-      azureQueue: map['azureQueue'] == null ? null : (QueueScaleRule.fromMap((map['azureQueue'] as Map).cast<String, dynamic>())).input(),
-      custom: map['custom'] == null ? null : (CustomScaleRule.fromMap((map['custom'] as Map).cast<String, dynamic>())).input(),
-      http: map['http'] == null ? null : (HttpScaleRule.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tcp: map['tcp'] == null ? null : (TcpScaleRule.fromMap((map['tcp'] as Map).cast<String, dynamic>())).input(),
+      azureQueue: map['azureQueue'] == null ? null : (QueueScaleRule.fromMap((map['azureQueue']! as Map).cast<String, dynamic>())).input(),
+      custom: map['custom'] == null ? null : (CustomScaleRule.fromMap((map['custom']! as Map).cast<String, dynamic>())).input(),
+      http: map['http'] == null ? null : (HttpScaleRule.fromMap((map['http']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tcp: map['tcp'] == null ? null : (TcpScaleRule.fromMap((map['tcp']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

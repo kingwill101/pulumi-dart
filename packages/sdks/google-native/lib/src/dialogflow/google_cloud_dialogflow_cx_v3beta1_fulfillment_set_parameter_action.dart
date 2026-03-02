@@ -26,8 +26,8 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction {
 
   factory GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction(
-      parameter: map['parameter'] == null ? null : (map['parameter'] as String).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      parameter: map['parameter'] == null ? null : (map['parameter']! as String).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

@@ -45,12 +45,12 @@ class DeploymentArtifactPythonArtifact {
 
   factory DeploymentArtifactPythonArtifact.fromMap(Map<String, dynamic> map) {
     return DeploymentArtifactPythonArtifact(
-      additionalDependencies: map['additionalDependencies'] == null ? null : ((map['additionalDependencies'] as List).cast<String>()).input(),
-      additionalPythonArchives: map['additionalPythonArchives'] == null ? null : ((map['additionalPythonArchives'] as List).cast<String>()).input(),
-      additionalPythonLibraries: map['additionalPythonLibraries'] == null ? null : ((map['additionalPythonLibraries'] as List).cast<String>()).input(),
-      entryModule: map['entryModule'] == null ? null : (map['entryModule'] as String).input(),
-      mainArgs: map['mainArgs'] == null ? null : (map['mainArgs'] as String).input(),
-      pythonArtifactUri: map['pythonArtifactUri'] == null ? null : (map['pythonArtifactUri'] as String).input(),
+      additionalDependencies: map['additionalDependencies'] == null ? null : ((map['additionalDependencies']! as List).cast<String>()).input(),
+      additionalPythonArchives: map['additionalPythonArchives'] == null ? null : ((map['additionalPythonArchives']! as List).cast<String>()).input(),
+      additionalPythonLibraries: map['additionalPythonLibraries'] == null ? null : ((map['additionalPythonLibraries']! as List).cast<String>()).input(),
+      entryModule: map['entryModule'] == null ? null : (map['entryModule']! as String).input(),
+      mainArgs: map['mainArgs'] == null ? null : (map['mainArgs']! as String).input(),
+      pythonArtifactUri: map['pythonArtifactUri'] == null ? null : (map['pythonArtifactUri']! as String).input(),
     );
   }
 }

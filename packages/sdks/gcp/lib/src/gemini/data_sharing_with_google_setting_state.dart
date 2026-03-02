@@ -76,17 +76,17 @@ class DataSharingWithGoogleSettingState {
 
   factory DataSharingWithGoogleSettingState.fromMap(Map<String, dynamic> map) {
     return DataSharingWithGoogleSettingState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataSharingWithGoogleSettingId: map['dataSharingWithGoogleSettingId'] == null ? null : (map['dataSharingWithGoogleSettingId'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      enableDataSharing: map['enableDataSharing'] == null ? null : (map['enableDataSharing'] as bool).input(),
-      enablePreviewDataSharing: map['enablePreviewDataSharing'] == null ? null : (map['enablePreviewDataSharing'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataSharingWithGoogleSettingId: map['dataSharingWithGoogleSettingId'] == null ? null : (map['dataSharingWithGoogleSettingId']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      enableDataSharing: map['enableDataSharing'] == null ? null : (map['enableDataSharing']! as bool).input(),
+      enablePreviewDataSharing: map['enablePreviewDataSharing'] == null ? null : (map['enablePreviewDataSharing']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

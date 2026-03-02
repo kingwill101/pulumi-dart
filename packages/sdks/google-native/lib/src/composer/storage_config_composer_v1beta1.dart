@@ -21,7 +21,7 @@ class StorageConfigComposerV1beta1 {
 
   factory StorageConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return StorageConfigComposerV1beta1(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
     );
   }
 }

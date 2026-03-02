@@ -21,7 +21,7 @@ class DiskEncryptionConfigurationResponseAuth {
 
   factory DiskEncryptionConfigurationResponseAuth.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionConfigurationResponseAuth(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
     );
   }
 }

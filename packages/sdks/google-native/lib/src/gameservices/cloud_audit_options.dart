@@ -28,8 +28,8 @@ class CloudAuditOptions {
 
   factory CloudAuditOptions.fromMap(Map<String, dynamic> map) {
     return CloudAuditOptions(
-      authorizationLoggingOptions: map['authorizationLoggingOptions'] == null ? null : (AuthorizationLoggingOptions.fromMap((map['authorizationLoggingOptions'] as Map).cast<String, dynamic>())).input(),
-      logName: map['logName'] == null ? null : (CloudAuditOptionsLogName.fromValue(map['logName'] as String)).input(),
+      authorizationLoggingOptions: map['authorizationLoggingOptions'] == null ? null : (AuthorizationLoggingOptions.fromMap((map['authorizationLoggingOptions']! as Map).cast<String, dynamic>())).input(),
+      logName: map['logName'] == null ? null : (CloudAuditOptionsLogName.fromValue(map['logName']! as String)).input(),
     );
   }
 }

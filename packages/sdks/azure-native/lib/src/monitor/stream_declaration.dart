@@ -22,7 +22,7 @@ class StreamDeclaration {
 
   factory StreamDeclaration.fromMap(Map<String, dynamic> map) {
     return StreamDeclaration(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<ColumnDefinition>(map['columns'], (value) => ColumnDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<ColumnDefinition>(map['columns']!, (value) => ColumnDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

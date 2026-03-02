@@ -21,7 +21,7 @@ class AnalysisCompletedContaineranalysisV1alpha1 {
 
   factory AnalysisCompletedContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return AnalysisCompletedContaineranalysisV1alpha1(
-      analysisType: map['analysisType'] == null ? null : ((map['analysisType'] as List).cast<String>()).input(),
+      analysisType: map['analysisType'] == null ? null : ((map['analysisType']! as List).cast<String>()).input(),
     );
   }
 }

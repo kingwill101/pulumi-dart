@@ -47,10 +47,10 @@ class GetPrivateZonesArgs {
   factory GetPrivateZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetPrivateZonesArgs(
       cenId: (map['cenId'] as String).input(),
-      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -99,7 +99,7 @@ class GetImageApplication {
       description: (map['description'] as String).input(),
       displayName: (map['displayName'] as String).input(),
       enabled: (map['enabled'] as bool).input(),
-      iconS3Locations: (pulumi.Input.decodeList<GetImageApplicationIconS3Location>(map['iconS3Locations'], (value) => GetImageApplicationIconS3Location.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      iconS3Locations: (pulumi.Input.decodeList<GetImageApplicationIconS3Location>(map['iconS3Locations']!, (value) => GetImageApplicationIconS3Location.fromMap((value as Map).cast<String, dynamic>()))).input(),
       iconUrl: (map['iconUrl'] as String).input(),
       instanceFamilies: ((map['instanceFamilies'] as List).cast<String>()).input(),
       launchParameters: (map['launchParameters'] as String).input(),

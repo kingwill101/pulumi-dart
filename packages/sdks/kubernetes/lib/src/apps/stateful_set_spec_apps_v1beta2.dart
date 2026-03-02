@@ -60,14 +60,14 @@ class StatefulSetSpecAppsV1beta2 {
 
   factory StatefulSetSpecAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return StatefulSetSpecAppsV1beta2(
-      podManagementPolicy: map['podManagementPolicy'] == null ? null : (map['podManagementPolicy'] as String).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
-      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit'] as int).input(),
+      podManagementPolicy: map['podManagementPolicy'] == null ? null : (map['podManagementPolicy']! as String).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit']! as int).input(),
       selector: (LabelSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
       serviceName: (map['serviceName'] as String).input(),
       template: (PodTemplateSpec.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
-      updateStrategy: map['updateStrategy'] == null ? null : (StatefulSetUpdateStrategyAppsV1beta2.fromMap((map['updateStrategy'] as Map).cast<String, dynamic>())).input(),
-      volumeClaimTemplates: map['volumeClaimTemplates'] == null ? null : (pulumi.Input.decodeList<PersistentVolumeClaim>(map['volumeClaimTemplates'], (value) => PersistentVolumeClaim.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateStrategy: map['updateStrategy'] == null ? null : (StatefulSetUpdateStrategyAppsV1beta2.fromMap((map['updateStrategy']! as Map).cast<String, dynamic>())).input(),
+      volumeClaimTemplates: map['volumeClaimTemplates'] == null ? null : (pulumi.Input.decodeList<PersistentVolumeClaim>(map['volumeClaimTemplates']!, (value) => PersistentVolumeClaim.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

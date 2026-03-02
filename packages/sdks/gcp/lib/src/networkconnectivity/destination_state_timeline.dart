@@ -23,7 +23,7 @@ class DestinationStateTimeline {
 
   factory DestinationStateTimeline.fromMap(Map<String, dynamic> map) {
     return DestinationStateTimeline(
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<DestinationStateTimelineState>(map['states'], (value) => DestinationStateTimelineState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<DestinationStateTimelineState>(map['states']!, (value) => DestinationStateTimelineState.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

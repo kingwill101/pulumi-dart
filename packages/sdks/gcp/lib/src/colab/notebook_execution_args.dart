@@ -93,19 +93,19 @@ class NotebookExecutionArgs {
 
   factory NotebookExecutionArgs.fromMap(Map<String, dynamic> map) {
     return NotebookExecutionArgs(
-      customEnvironmentSpec: map['customEnvironmentSpec'] == null ? null : (NotebookExecutionCustomEnvironmentSpec.fromMap((map['customEnvironmentSpec'] as Map).cast<String, dynamic>())).input(),
-      dataformRepositorySource: map['dataformRepositorySource'] == null ? null : (NotebookExecutionDataformRepositorySource.fromMap((map['dataformRepositorySource'] as Map).cast<String, dynamic>())).input(),
-      directNotebookSource: map['directNotebookSource'] == null ? null : (NotebookExecutionDirectNotebookSource.fromMap((map['directNotebookSource'] as Map).cast<String, dynamic>())).input(),
+      customEnvironmentSpec: map['customEnvironmentSpec'] == null ? null : (NotebookExecutionCustomEnvironmentSpec.fromMap((map['customEnvironmentSpec']! as Map).cast<String, dynamic>())).input(),
+      dataformRepositorySource: map['dataformRepositorySource'] == null ? null : (NotebookExecutionDataformRepositorySource.fromMap((map['dataformRepositorySource']! as Map).cast<String, dynamic>())).input(),
+      directNotebookSource: map['directNotebookSource'] == null ? null : (NotebookExecutionDirectNotebookSource.fromMap((map['directNotebookSource']! as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
-      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout'] as String).input(),
-      executionUser: map['executionUser'] == null ? null : (map['executionUser'] as String).input(),
-      gcsNotebookSource: map['gcsNotebookSource'] == null ? null : (NotebookExecutionGcsNotebookSource.fromMap((map['gcsNotebookSource'] as Map).cast<String, dynamic>())).input(),
+      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout']! as String).input(),
+      executionUser: map['executionUser'] == null ? null : (map['executionUser']! as String).input(),
+      gcsNotebookSource: map['gcsNotebookSource'] == null ? null : (NotebookExecutionGcsNotebookSource.fromMap((map['gcsNotebookSource']! as Map).cast<String, dynamic>())).input(),
       gcsOutputUri: (map['gcsOutputUri'] as String).input(),
       location: (map['location'] as String).input(),
-      notebookExecutionJobId: map['notebookExecutionJobId'] == null ? null : (map['notebookExecutionJobId'] as String).input(),
-      notebookRuntimeTemplateResourceName: map['notebookRuntimeTemplateResourceName'] == null ? null : (map['notebookRuntimeTemplateResourceName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      notebookExecutionJobId: map['notebookExecutionJobId'] == null ? null : (map['notebookExecutionJobId']! as String).input(),
+      notebookRuntimeTemplateResourceName: map['notebookRuntimeTemplateResourceName'] == null ? null : (map['notebookRuntimeTemplateResourceName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
     );
   }
 }

@@ -55,13 +55,13 @@ class GetVolumeV3Args {
 
   factory GetVolumeV3Args.fromMap(Map<String, dynamic> map) {
     return GetVolumeV3Args(
-      bootable: map['bootable'] == null ? null : (map['bootable'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
+      bootable: map['bootable'] == null ? null : (map['bootable']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType']! as String).input(),
     );
   }
 }

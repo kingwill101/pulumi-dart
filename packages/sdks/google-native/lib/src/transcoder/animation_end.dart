@@ -21,7 +21,7 @@ class AnimationEnd {
 
   factory AnimationEnd.fromMap(Map<String, dynamic> map) {
     return AnimationEnd(
-      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset'] as String).input(),
+      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset']! as String).input(),
     );
   }
 }

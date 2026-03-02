@@ -57,7 +57,7 @@ class GetEventIntegrationResult {
     return GetEventIntegrationResult(
       arn: map['arn'] as String,
       description: map['description'] as String,
-      eventFilters: pulumi.Input.decodeList<GetEventIntegrationEventFilter>(map['eventFilters'], (value) => GetEventIntegrationEventFilter.fromMap((value as Map).cast<String, dynamic>())),
+      eventFilters: pulumi.Input.decodeList<GetEventIntegrationEventFilter>(map['eventFilters']!, (value) => GetEventIntegrationEventFilter.fromMap((value as Map).cast<String, dynamic>())),
       eventbridgeBus: map['eventbridgeBus'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

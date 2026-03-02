@@ -50,7 +50,7 @@ class GetRegisteredAsnResult {
 
   factory GetRegisteredAsnResult.fromMap(Map<String, dynamic> map) {
     return GetRegisteredAsnResult(
-      asn: map['asn'] == null ? null : map['asn'] as int,
+      asn: map['asn'] == null ? null : map['asn']! as int,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

@@ -28,7 +28,7 @@ class DefenderCspmJFrogOffering {
 
   factory DefenderCspmJFrogOffering.fromMap(Map<String, dynamic> map) {
     return DefenderCspmJFrogOffering(
-      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderCspmJFrogOfferingMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment'] as Map).cast<String, dynamic>())).input(),
+      mdcContainersImageAssessment: map['mdcContainersImageAssessment'] == null ? null : (DefenderCspmJFrogOfferingMdcContainersImageAssessment.fromMap((map['mdcContainersImageAssessment']! as Map).cast<String, dynamic>())).input(),
       offeringType: (map['offeringType'] as String).input(),
     );
   }

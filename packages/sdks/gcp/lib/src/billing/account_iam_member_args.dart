@@ -51,7 +51,7 @@ class AccountIamMemberArgs {
   factory AccountIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return AccountIamMemberArgs(
       billingAccountId: (map['billingAccountId'] as String).input(),
-      condition: map['condition'] == null ? null : (AccountIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (AccountIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
       role: (map['role'] as String).input(),
     );

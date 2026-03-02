@@ -47,7 +47,7 @@ class AudioMapping {
   factory AudioMapping.fromMap(Map<String, dynamic> map) {
     return AudioMapping(
       atomKey: (map['atomKey'] as String).input(),
-      gainDb: map['gainDb'] == null ? null : (map['gainDb'] as double).input(),
+      gainDb: map['gainDb'] == null ? null : (map['gainDb']! as double).input(),
       inputChannel: (map['inputChannel'] as int).input(),
       inputKey: (map['inputKey'] as String).input(),
       inputTrack: (map['inputTrack'] as int).input(),

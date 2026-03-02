@@ -35,7 +35,7 @@ class ListFeatureAccountArgs {
   factory ListFeatureAccountArgs.fromMap(Map<String, dynamic> map) {
     return ListFeatureAccountArgs(
       accountName: (map['accountName'] as String).input(),
-      features: map['features'] == null ? null : ((map['features'] as List).cast<String>()).input(),
+      features: map['features'] == null ? null : ((map['features']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -80,17 +80,17 @@ class ApplicationSettingsArgs {
 
   factory ApplicationSettingsArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationSettingsArgs(
-      appApdexThreshold: map['appApdexThreshold'] == null ? null : (map['appApdexThreshold'] as double).input(),
-      enableRealUserMonitoring: map['enableRealUserMonitoring'] == null ? null : (map['enableRealUserMonitoring'] as bool).input(),
-      enableSlowSql: map['enableSlowSql'] == null ? null : (map['enableSlowSql'] as bool).input(),
-      enableThreadProfiler: map['enableThreadProfiler'] == null ? null : (map['enableThreadProfiler'] as bool).input(),
-      endUserApdexThreshold: map['endUserApdexThreshold'] == null ? null : (map['endUserApdexThreshold'] as double).input(),
-      errorCollectors: map['errorCollectors'] == null ? null : (pulumi.Input.decodeList<ApplicationSettingsErrorCollector>(map['errorCollectors'], (value) => ApplicationSettingsErrorCollector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tracerType: map['tracerType'] == null ? null : (map['tracerType'] as String).input(),
-      transactionTracers: map['transactionTracers'] == null ? null : (pulumi.Input.decodeList<ApplicationSettingsTransactionTracer>(map['transactionTracers'], (value) => ApplicationSettingsTransactionTracer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      useServerSideConfig: map['useServerSideConfig'] == null ? null : (map['useServerSideConfig'] as bool).input(),
+      appApdexThreshold: map['appApdexThreshold'] == null ? null : (map['appApdexThreshold']! as double).input(),
+      enableRealUserMonitoring: map['enableRealUserMonitoring'] == null ? null : (map['enableRealUserMonitoring']! as bool).input(),
+      enableSlowSql: map['enableSlowSql'] == null ? null : (map['enableSlowSql']! as bool).input(),
+      enableThreadProfiler: map['enableThreadProfiler'] == null ? null : (map['enableThreadProfiler']! as bool).input(),
+      endUserApdexThreshold: map['endUserApdexThreshold'] == null ? null : (map['endUserApdexThreshold']! as double).input(),
+      errorCollectors: map['errorCollectors'] == null ? null : (pulumi.Input.decodeList<ApplicationSettingsErrorCollector>(map['errorCollectors']!, (value) => ApplicationSettingsErrorCollector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tracerType: map['tracerType'] == null ? null : (map['tracerType']! as String).input(),
+      transactionTracers: map['transactionTracers'] == null ? null : (pulumi.Input.decodeList<ApplicationSettingsTransactionTracer>(map['transactionTracers']!, (value) => ApplicationSettingsTransactionTracer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      useServerSideConfig: map['useServerSideConfig'] == null ? null : (map['useServerSideConfig']! as bool).input(),
     );
   }
 }

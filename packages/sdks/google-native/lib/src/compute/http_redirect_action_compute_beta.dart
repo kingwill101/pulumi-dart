@@ -47,12 +47,12 @@ class HttpRedirectActionComputeBeta {
 
   factory HttpRedirectActionComputeBeta.fromMap(Map<String, dynamic> map) {
     return HttpRedirectActionComputeBeta(
-      hostRedirect: map['hostRedirect'] == null ? null : (map['hostRedirect'] as String).input(),
-      httpsRedirect: map['httpsRedirect'] == null ? null : (map['httpsRedirect'] as bool).input(),
-      pathRedirect: map['pathRedirect'] == null ? null : (map['pathRedirect'] as String).input(),
-      prefixRedirect: map['prefixRedirect'] == null ? null : (map['prefixRedirect'] as String).input(),
-      redirectResponseCode: map['redirectResponseCode'] == null ? null : (HttpRedirectActionRedirectResponseCodeComputeBeta.fromValue(map['redirectResponseCode'] as String)).input(),
-      stripQuery: map['stripQuery'] == null ? null : (map['stripQuery'] as bool).input(),
+      hostRedirect: map['hostRedirect'] == null ? null : (map['hostRedirect']! as String).input(),
+      httpsRedirect: map['httpsRedirect'] == null ? null : (map['httpsRedirect']! as bool).input(),
+      pathRedirect: map['pathRedirect'] == null ? null : (map['pathRedirect']! as String).input(),
+      prefixRedirect: map['prefixRedirect'] == null ? null : (map['prefixRedirect']! as String).input(),
+      redirectResponseCode: map['redirectResponseCode'] == null ? null : (HttpRedirectActionRedirectResponseCodeComputeBeta.fromValue(map['redirectResponseCode']! as String)).input(),
+      stripQuery: map['stripQuery'] == null ? null : (map['stripQuery']! as bool).input(),
     );
   }
 }

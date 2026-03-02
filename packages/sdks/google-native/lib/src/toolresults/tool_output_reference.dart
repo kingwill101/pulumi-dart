@@ -34,9 +34,9 @@ class ToolOutputReference {
 
   factory ToolOutputReference.fromMap(Map<String, dynamic> map) {
     return ToolOutputReference(
-      creationTime: map['creationTime'] == null ? null : (Timestamp.fromMap((map['creationTime'] as Map).cast<String, dynamic>())).input(),
-      output: map['output'] == null ? null : (FileReference.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
-      testCase: map['testCase'] == null ? null : (TestCaseReference.fromMap((map['testCase'] as Map).cast<String, dynamic>())).input(),
+      creationTime: map['creationTime'] == null ? null : (Timestamp.fromMap((map['creationTime']! as Map).cast<String, dynamic>())).input(),
+      output: map['output'] == null ? null : (FileReference.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
+      testCase: map['testCase'] == null ? null : (TestCaseReference.fromMap((map['testCase']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

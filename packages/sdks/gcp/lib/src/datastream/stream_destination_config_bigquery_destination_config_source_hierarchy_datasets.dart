@@ -28,7 +28,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets {
   factory StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets.fromMap(Map<String, dynamic> map) {
     return StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets(
       datasetTemplate: (StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate.fromMap((map['datasetTemplate'] as Map).cast<String, dynamic>())).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
     );
   }
 }

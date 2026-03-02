@@ -31,9 +31,9 @@ class ApplicationClientDetailsResponse {
 
   factory ApplicationClientDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationClientDetailsResponse(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      oid: map['oid'] == null ? null : (map['oid'] as String).input(),
-      puid: map['puid'] == null ? null : (map['puid'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      oid: map['oid'] == null ? null : (map['oid']! as String).input(),
+      puid: map['puid'] == null ? null : (map['puid']! as String).input(),
     );
   }
 }

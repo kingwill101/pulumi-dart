@@ -51,7 +51,7 @@ class SynapseWorkspaceSqlPoolTableDataSetArgs {
   factory SynapseWorkspaceSqlPoolTableDataSetArgs.fromMap(Map<String, dynamic> map) {
     return SynapseWorkspaceSqlPoolTableDataSetArgs(
       accountName: (map['accountName'] as String).input(),
-      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName'] as String).input(),
+      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName']! as String).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       shareName: (map['shareName'] as String).input(),

@@ -60,7 +60,7 @@ class AlertRuleResourceArgs {
   factory AlertRuleResourceArgs.fromMap(Map<String, dynamic> map) {
     return AlertRuleResourceArgs(
       alertRuleResourceId: (map['alertRuleResourceId'] as String).input(),
-      alertRuleResourceName: map['alertRuleResourceName'] == null ? null : (map['alertRuleResourceName'] as String).input(),
+      alertRuleResourceName: map['alertRuleResourceName'] == null ? null : (map['alertRuleResourceName']! as String).input(),
       alertRuleTemplateId: (map['alertRuleTemplateId'] as String).input(),
       alertRuleTemplateVersion: (map['alertRuleTemplateVersion'] as String).input(),
       createdWithProperties: (map['createdWithProperties'] as String).input(),

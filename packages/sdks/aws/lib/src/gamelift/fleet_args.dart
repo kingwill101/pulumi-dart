@@ -98,21 +98,21 @@ class FleetArgs {
 
   factory FleetArgs.fromMap(Map<String, dynamic> map) {
     return FleetArgs(
-      buildId: map['buildId'] == null ? null : (map['buildId'] as String).input(),
-      certificateConfiguration: map['certificateConfiguration'] == null ? null : (FleetCertificateConfiguration.fromMap((map['certificateConfiguration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ec2InboundPermissions: map['ec2InboundPermissions'] == null ? null : (pulumi.Input.decodeList<FleetEc2InboundPermission>(map['ec2InboundPermissions'], (value) => FleetEc2InboundPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      buildId: map['buildId'] == null ? null : ((map['buildId'] as String).input()).input(),
+      certificateConfiguration: map['certificateConfiguration'] == null ? null : ((FleetCertificateConfiguration.fromMap((map['certificateConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      ec2InboundPermissions: map['ec2InboundPermissions'] == null ? null : ((pulumi.Input.decodeList<FleetEc2InboundPermission>(map['ec2InboundPermissions']!, (value) => FleetEc2InboundPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       ec2InstanceType: (map['ec2InstanceType'] as String).input(),
-      fleetType: map['fleetType'] == null ? null : (map['fleetType'] as String).input(),
-      instanceRoleArn: map['instanceRoleArn'] == null ? null : (map['instanceRoleArn'] as String).input(),
-      metricGroups: map['metricGroups'] == null ? null : ((map['metricGroups'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      newGameSessionProtectionPolicy: map['newGameSessionProtectionPolicy'] == null ? null : (map['newGameSessionProtectionPolicy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceCreationLimitPolicy: map['resourceCreationLimitPolicy'] == null ? null : (FleetResourceCreationLimitPolicy.fromMap((map['resourceCreationLimitPolicy'] as Map).cast<String, dynamic>())).input(),
-      runtimeConfiguration: map['runtimeConfiguration'] == null ? null : (FleetRuntimeConfiguration.fromMap((map['runtimeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      scriptId: map['scriptId'] == null ? null : (map['scriptId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      fleetType: map['fleetType'] == null ? null : ((map['fleetType'] as String).input()).input(),
+      instanceRoleArn: map['instanceRoleArn'] == null ? null : ((map['instanceRoleArn'] as String).input()).input(),
+      metricGroups: map['metricGroups'] == null ? null : (((map['metricGroups'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      newGameSessionProtectionPolicy: map['newGameSessionProtectionPolicy'] == null ? null : ((map['newGameSessionProtectionPolicy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceCreationLimitPolicy: map['resourceCreationLimitPolicy'] == null ? null : ((FleetResourceCreationLimitPolicy.fromMap((map['resourceCreationLimitPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      runtimeConfiguration: map['runtimeConfiguration'] == null ? null : ((FleetRuntimeConfiguration.fromMap((map['runtimeConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      scriptId: map['scriptId'] == null ? null : ((map['scriptId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

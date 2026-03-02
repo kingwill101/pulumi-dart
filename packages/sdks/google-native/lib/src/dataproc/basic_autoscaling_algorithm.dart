@@ -33,9 +33,9 @@ class BasicAutoscalingAlgorithm {
 
   factory BasicAutoscalingAlgorithm.fromMap(Map<String, dynamic> map) {
     return BasicAutoscalingAlgorithm(
-      cooldownPeriod: map['cooldownPeriod'] == null ? null : (map['cooldownPeriod'] as String).input(),
-      sparkStandaloneConfig: map['sparkStandaloneConfig'] == null ? null : (SparkStandaloneAutoscalingConfig.fromMap((map['sparkStandaloneConfig'] as Map).cast<String, dynamic>())).input(),
-      yarnConfig: map['yarnConfig'] == null ? null : (BasicYarnAutoscalingConfig.fromMap((map['yarnConfig'] as Map).cast<String, dynamic>())).input(),
+      cooldownPeriod: map['cooldownPeriod'] == null ? null : (map['cooldownPeriod']! as String).input(),
+      sparkStandaloneConfig: map['sparkStandaloneConfig'] == null ? null : (SparkStandaloneAutoscalingConfig.fromMap((map['sparkStandaloneConfig']! as Map).cast<String, dynamic>())).input(),
+      yarnConfig: map['yarnConfig'] == null ? null : (BasicYarnAutoscalingConfig.fromMap((map['yarnConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

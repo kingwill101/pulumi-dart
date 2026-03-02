@@ -21,7 +21,7 @@ class GkeBackupAgentConfig {
 
   factory GkeBackupAgentConfig.fromMap(Map<String, dynamic> map) {
     return GkeBackupAgentConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

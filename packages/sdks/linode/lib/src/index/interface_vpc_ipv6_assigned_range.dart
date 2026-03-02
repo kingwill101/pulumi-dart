@@ -20,7 +20,7 @@ class InterfaceVpcIpv6AssignedRange {
 
   factory InterfaceVpcIpv6AssignedRange.fromMap(Map<String, dynamic> map) {
     return InterfaceVpcIpv6AssignedRange(
-      range: map['range'] == null ? null : (map['range'] as String).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
     );
   }
 }

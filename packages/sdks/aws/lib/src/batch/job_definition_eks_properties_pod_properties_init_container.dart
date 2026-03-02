@@ -64,15 +64,15 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainer {
 
   factory JobDefinitionEksPropertiesPodPropertiesInitContainer.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesInitContainer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesInitContainerEnv>(map['envs'], (value) => JobDefinitionEksPropertiesPodPropertiesInitContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      args: map['args'] == null ? null : (((map['args'] as List).cast<String>()).input()).input(),
+      commands: map['commands'] == null ? null : (((map['commands'] as List).cast<String>()).input()).input(),
+      envs: map['envs'] == null ? null : ((pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesInitContainerEnv>(map['envs']!, (value) => JobDefinitionEksPropertiesPodPropertiesInitContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       image: (map['image'] as String).input(),
-      imagePullPolicy: map['imagePullPolicy'] == null ? null : (map['imagePullPolicy'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resources: map['resources'] == null ? null : (JobDefinitionEksPropertiesPodPropertiesInitContainerResources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
-      securityContext: map['securityContext'] == null ? null : (JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext.fromMap((map['securityContext'] as Map).cast<String, dynamic>())).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount>(map['volumeMounts'], (value) => JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imagePullPolicy: map['imagePullPolicy'] == null ? null : ((map['imagePullPolicy'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      resources: map['resources'] == null ? null : ((JobDefinitionEksPropertiesPodPropertiesInitContainerResources.fromMap((map['resources']! as Map).cast<String, dynamic>())).input()).input(),
+      securityContext: map['securityContext'] == null ? null : ((JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext.fromMap((map['securityContext']! as Map).cast<String, dynamic>())).input()).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : ((pulumi.Input.decodeList<JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount>(map['volumeMounts']!, (value) => JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

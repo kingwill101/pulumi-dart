@@ -32,9 +32,9 @@ class DeploymentGroupEc2TagSetEc2TagFilter {
 
   factory DeploymentGroupEc2TagSetEc2TagFilter.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupEc2TagSetEc2TagFilter(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

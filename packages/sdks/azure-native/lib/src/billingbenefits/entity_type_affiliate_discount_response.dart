@@ -87,12 +87,12 @@ class EntityTypeAffiliateDiscountResponse {
 
   factory EntityTypeAffiliateDiscountResponse.fromMap(Map<String, dynamic> map) {
     return EntityTypeAffiliateDiscountResponse(
-      appliedScopeType: map['appliedScopeType'] == null ? null : (map['appliedScopeType'] as String).input(),
+      appliedScopeType: map['appliedScopeType'] == null ? null : (map['appliedScopeType']! as String).input(),
       benefitResourceId: (map['benefitResourceId'] as String).input(),
       billingAccountResourceId: (map['billingAccountResourceId'] as String).input(),
       billingProfileResourceId: (map['billingProfileResourceId'] as String).input(),
       customerResourceId: (map['customerResourceId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       endAt: (map['endAt'] as String).input(),
       entityType: (map['entityType'] as String).input(),
       primaryResourceId: (map['primaryResourceId'] as String).input(),
@@ -100,7 +100,7 @@ class EntityTypeAffiliateDiscountResponse {
       provisioningState: (map['provisioningState'] as String).input(),
       startAt: (map['startAt'] as String).input(),
       status: (map['status'] as String).input(),
-      systemId: map['systemId'] == null ? null : (map['systemId'] as String).input(),
+      systemId: map['systemId'] == null ? null : (map['systemId']! as String).input(),
     );
   }
 }

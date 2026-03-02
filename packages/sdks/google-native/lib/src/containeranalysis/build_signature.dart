@@ -37,10 +37,10 @@ class BuildSignature {
 
   factory BuildSignature.fromMap(Map<String, dynamic> map) {
     return BuildSignature(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      keyType: map['keyType'] == null ? null : (BuildSignatureKeyType.fromValue(map['keyType'] as String)).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
-      signature: map['signature'] == null ? null : (map['signature'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      keyType: map['keyType'] == null ? null : (BuildSignatureKeyType.fromValue(map['keyType']! as String)).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
+      signature: map['signature'] == null ? null : (map['signature']! as String).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class SslVpnClientCertArgs {
 
   factory SslVpnClientCertArgs.fromMap(Map<String, dynamic> map) {
     return SslVpnClientCertArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       sslVpnServerId: (map['sslVpnServerId'] as String).input(),
     );
   }

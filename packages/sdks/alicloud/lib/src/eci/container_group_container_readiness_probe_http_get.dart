@@ -28,9 +28,9 @@ class ContainerGroupContainerReadinessProbeHttpGet {
 
   factory ContainerGroupContainerReadinessProbeHttpGet.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerReadinessProbeHttpGet(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      scheme: map['scheme'] == null ? null : (map['scheme']! as String).input(),
     );
   }
 }

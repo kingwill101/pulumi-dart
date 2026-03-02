@@ -83,17 +83,17 @@ class AssistantState {
 
   factory AssistantState.fromMap(Map<String, dynamic> map) {
     return AssistantState(
-      assistantId: map['assistantId'] == null ? null : (map['assistantId'] as String).input(),
-      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
-      customerPolicy: map['customerPolicy'] == null ? null : (AssistantCustomerPolicy.fromMap((map['customerPolicy'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      engineId: map['engineId'] == null ? null : (map['engineId'] as String).input(),
-      generationConfig: map['generationConfig'] == null ? null : (AssistantGenerationConfig.fromMap((map['generationConfig'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      webGroundingType: map['webGroundingType'] == null ? null : (map['webGroundingType'] as String).input(),
+      assistantId: map['assistantId'] == null ? null : (map['assistantId']! as String).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId']! as String).input(),
+      customerPolicy: map['customerPolicy'] == null ? null : (AssistantCustomerPolicy.fromMap((map['customerPolicy']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      engineId: map['engineId'] == null ? null : (map['engineId']! as String).input(),
+      generationConfig: map['generationConfig'] == null ? null : (AssistantGenerationConfig.fromMap((map['generationConfig']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      webGroundingType: map['webGroundingType'] == null ? null : (map['webGroundingType']! as String).input(),
     );
   }
 }

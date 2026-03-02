@@ -44,10 +44,10 @@ class BgpvpnNetworkAssociateV2State {
 
   factory BgpvpnNetworkAssociateV2State.fromMap(Map<String, dynamic> map) {
     return BgpvpnNetworkAssociateV2State(
-      bgpvpnId: map['bgpvpnId'] == null ? null : (map['bgpvpnId'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bgpvpnId: map['bgpvpnId'] == null ? null : (map['bgpvpnId']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

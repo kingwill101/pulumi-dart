@@ -58,13 +58,13 @@ class SharedAccessPolicyArgs {
 
   factory SharedAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SharedAccessPolicyArgs(
-      deviceConnect: map['deviceConnect'] == null ? null : (map['deviceConnect'] as bool).input(),
+      deviceConnect: map['deviceConnect'] == null ? null : (map['deviceConnect']! as bool).input(),
       iothubName: (map['iothubName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      registryRead: map['registryRead'] == null ? null : (map['registryRead'] as bool).input(),
-      registryWrite: map['registryWrite'] == null ? null : (map['registryWrite'] as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      registryRead: map['registryRead'] == null ? null : (map['registryRead']! as bool).input(),
+      registryWrite: map['registryWrite'] == null ? null : (map['registryWrite']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceConnect: map['serviceConnect'] == null ? null : (map['serviceConnect'] as bool).input(),
+      serviceConnect: map['serviceConnect'] == null ? null : (map['serviceConnect']! as bool).input(),
     );
   }
 }

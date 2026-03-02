@@ -32,7 +32,7 @@ class GetApplicationProvidersApplicationProvider {
   factory GetApplicationProvidersApplicationProvider.fromMap(Map<String, dynamic> map) {
     return GetApplicationProvidersApplicationProvider(
       applicationProviderArn: (map['applicationProviderArn'] as String).input(),
-      displayDatas: (pulumi.Input.decodeList<GetApplicationProvidersApplicationProviderDisplayData>(map['displayDatas'], (value) => GetApplicationProvidersApplicationProviderDisplayData.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayDatas: (pulumi.Input.decodeList<GetApplicationProvidersApplicationProviderDisplayData>(map['displayDatas']!, (value) => GetApplicationProvidersApplicationProviderDisplayData.fromMap((value as Map).cast<String, dynamic>()))).input(),
       federationProtocol: (map['federationProtocol'] as String).input(),
     );
   }

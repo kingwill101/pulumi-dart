@@ -29,8 +29,8 @@ class ClusterMaintenancePolicyWindowRecurringWindow {
 
   factory ClusterMaintenancePolicyWindowRecurringWindow.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyWindowRecurringWindow(
-      recurrence: map['recurrence'] == null ? null : (map['recurrence'] as String).input(),
-      window: map['window'] == null ? null : (ClusterMaintenancePolicyWindowRecurringWindowWindow.fromMap((map['window'] as Map).cast<String, dynamic>())).input(),
+      recurrence: map['recurrence'] == null ? null : (map['recurrence']! as String).input(),
+      window: map['window'] == null ? null : (ClusterMaintenancePolicyWindowRecurringWindowWindow.fromMap((map['window']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

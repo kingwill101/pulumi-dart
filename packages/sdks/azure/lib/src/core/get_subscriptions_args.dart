@@ -29,8 +29,8 @@ class GetSubscriptionsArgs {
 
   factory GetSubscriptionsArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionsArgs(
-      displayNameContains: map['displayNameContains'] == null ? null : (map['displayNameContains'] as String).input(),
-      displayNamePrefix: map['displayNamePrefix'] == null ? null : (map['displayNamePrefix'] as String).input(),
+      displayNameContains: map['displayNameContains'] == null ? null : (map['displayNameContains']! as String).input(),
+      displayNamePrefix: map['displayNamePrefix'] == null ? null : (map['displayNamePrefix']! as String).input(),
     );
   }
 }

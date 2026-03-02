@@ -108,20 +108,20 @@ class AutonomousDatabaseArgs {
 
   factory AutonomousDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabaseArgs(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
       autonomousDatabaseId: (map['autonomousDatabaseId'] as String).input(),
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      odbNetwork: map['odbNetwork'] == null ? null : (map['odbNetwork'] as String).input(),
-      odbSubnet: map['odbSubnet'] == null ? null : (map['odbSubnet'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      properties: map['properties'] == null ? null : (AutonomousDatabaseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      sourceConfig: map['sourceConfig'] == null ? null : (AutonomousDatabaseSourceConfig.fromMap((map['sourceConfig'] as Map).cast<String, dynamic>())).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      odbNetwork: map['odbNetwork'] == null ? null : (map['odbNetwork']! as String).input(),
+      odbSubnet: map['odbSubnet'] == null ? null : (map['odbSubnet']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      properties: map['properties'] == null ? null : (AutonomousDatabaseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      sourceConfig: map['sourceConfig'] == null ? null : (AutonomousDatabaseSourceConfig.fromMap((map['sourceConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -65,14 +65,14 @@ class MlflowTrackingServerArgs {
   factory MlflowTrackingServerArgs.fromMap(Map<String, dynamic> map) {
     return MlflowTrackingServerArgs(
       artifactStoreUri: (map['artifactStoreUri'] as String).input(),
-      automaticModelRegistration: map['automaticModelRegistration'] == null ? null : (map['automaticModelRegistration'] as bool).input(),
-      mlflowVersion: map['mlflowVersion'] == null ? null : (map['mlflowVersion'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      automaticModelRegistration: map['automaticModelRegistration'] == null ? null : ((map['automaticModelRegistration'] as bool).input()).input(),
+      mlflowVersion: map['mlflowVersion'] == null ? null : ((map['mlflowVersion'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       trackingServerName: (map['trackingServerName'] as String).input(),
-      trackingServerSize: map['trackingServerSize'] == null ? null : (map['trackingServerSize'] as String).input(),
-      weeklyMaintenanceWindowStart: map['weeklyMaintenanceWindowStart'] == null ? null : (map['weeklyMaintenanceWindowStart'] as String).input(),
+      trackingServerSize: map['trackingServerSize'] == null ? null : ((map['trackingServerSize'] as String).input()).input(),
+      weeklyMaintenanceWindowStart: map['weeklyMaintenanceWindowStart'] == null ? null : ((map['weeklyMaintenanceWindowStart'] as String).input()).input(),
     );
   }
 }

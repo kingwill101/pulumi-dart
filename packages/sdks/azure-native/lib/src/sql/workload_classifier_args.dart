@@ -74,16 +74,16 @@ class WorkloadClassifierArgs {
 
   factory WorkloadClassifierArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadClassifierArgs(
-      context: map['context'] == null ? null : (map['context'] as String).input(),
+      context: map['context'] == null ? null : (map['context']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      importance: map['importance'] == null ? null : (map['importance'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      importance: map['importance'] == null ? null : (map['importance']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
       memberName: (map['memberName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      workloadClassifierName: map['workloadClassifierName'] == null ? null : (map['workloadClassifierName'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      workloadClassifierName: map['workloadClassifierName'] == null ? null : (map['workloadClassifierName']! as String).input(),
       workloadGroupName: (map['workloadGroupName'] as String).input(),
     );
   }

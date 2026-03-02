@@ -27,8 +27,8 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpS
 
   factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

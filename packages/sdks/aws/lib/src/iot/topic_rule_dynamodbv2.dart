@@ -26,7 +26,7 @@ class TopicRuleDynamodbv2 {
 
   factory TopicRuleDynamodbv2.fromMap(Map<String, dynamic> map) {
     return TopicRuleDynamodbv2(
-      putItem: map['putItem'] == null ? null : (TopicRuleDynamodbv2PutItem.fromMap((map['putItem'] as Map).cast<String, dynamic>())).input(),
+      putItem: map['putItem'] == null ? null : ((TopicRuleDynamodbv2PutItem.fromMap((map['putItem']! as Map).cast<String, dynamic>())).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
     );
   }

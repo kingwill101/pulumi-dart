@@ -42,10 +42,10 @@ class BastionHostIPConfiguration {
 
   factory BastionHostIPConfiguration.fromMap(Map<String, dynamic> map) {
     return BastionHostIPConfiguration(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
-      publicIPAddress: map['publicIPAddress'] == null ? null : (SubResource.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (SubResource.fromMap((map['publicIPAddress']! as Map).cast<String, dynamic>())).input(),
       subnet: (SubResource.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
     );
   }

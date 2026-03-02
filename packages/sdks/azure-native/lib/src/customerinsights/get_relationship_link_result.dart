@@ -94,12 +94,12 @@ class GetRelationshipLinkResult {
   factory GetRelationshipLinkResult.fromMap(Map<String, dynamic> map) {
     return GetRelationshipLinkResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : (map['description'] as Map).cast<String, String>(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as Map).cast<String, String>(),
+      description: map['description'] == null ? null : (map['description']! as Map).cast<String, String>(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as Map).cast<String, String>(),
       id: map['id'] as String,
       interactionType: map['interactionType'] as String,
       linkName: map['linkName'] as String,
-      mappings: map['mappings'] == null ? null : pulumi.Input.decodeList<RelationshipLinkFieldMappingResponse>(map['mappings'], (value) => RelationshipLinkFieldMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      mappings: map['mappings'] == null ? null : pulumi.Input.decodeList<RelationshipLinkFieldMappingResponse>(map['mappings']!, (value) => RelationshipLinkFieldMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       profilePropertyReferences: pulumi.Input.decodeList<ParticipantProfilePropertyReferenceResponse>(map['profilePropertyReferences'], (value) => ParticipantProfilePropertyReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,

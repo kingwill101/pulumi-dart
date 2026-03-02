@@ -22,7 +22,7 @@ class NetworkConfig {
 
   factory NetworkConfig.fromMap(Map<String, dynamic> map) {
     return NetworkConfig(
-      consumers: map['consumers'] == null ? null : (pulumi.Input.decodeList<Consumer>(map['consumers'], (value) => Consumer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consumers: map['consumers'] == null ? null : (pulumi.Input.decodeList<Consumer>(map['consumers']!, (value) => Consumer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

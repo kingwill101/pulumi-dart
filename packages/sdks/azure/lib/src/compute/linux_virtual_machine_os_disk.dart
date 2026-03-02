@@ -85,15 +85,15 @@ class LinuxVirtualMachineOsDisk {
   factory LinuxVirtualMachineOsDisk.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineOsDisk(
       caching: (map['caching'] as String).input(),
-      diffDiskSettings: map['diffDiskSettings'] == null ? null : (LinuxVirtualMachineOsDiskDiffDiskSettings.fromMap((map['diffDiskSettings'] as Map).cast<String, dynamic>())).input(),
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secureVmDiskEncryptionSetId: map['secureVmDiskEncryptionSetId'] == null ? null : (map['secureVmDiskEncryptionSetId'] as String).input(),
-      securityEncryptionType: map['securityEncryptionType'] == null ? null : (map['securityEncryptionType'] as String).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
+      diffDiskSettings: map['diffDiskSettings'] == null ? null : (LinuxVirtualMachineOsDiskDiffDiskSettings.fromMap((map['diffDiskSettings']! as Map).cast<String, dynamic>())).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secureVmDiskEncryptionSetId: map['secureVmDiskEncryptionSetId'] == null ? null : (map['secureVmDiskEncryptionSetId']! as String).input(),
+      securityEncryptionType: map['securityEncryptionType'] == null ? null : (map['securityEncryptionType']! as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled']! as bool).input(),
     );
   }
 }

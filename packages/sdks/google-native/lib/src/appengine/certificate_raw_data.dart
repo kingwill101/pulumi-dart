@@ -26,8 +26,8 @@ class CertificateRawData {
 
   factory CertificateRawData.fromMap(Map<String, dynamic> map) {
     return CertificateRawData(
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      publicCertificate: map['publicCertificate'] == null ? null : (map['publicCertificate'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      publicCertificate: map['publicCertificate'] == null ? null : (map['publicCertificate']! as String).input(),
     );
   }
 }

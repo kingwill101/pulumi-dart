@@ -41,11 +41,11 @@ class ListWorkspaceKeysResult {
 
   factory ListWorkspaceKeysResult.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceKeysResult(
-      apiKeyEnabled: map['apiKeyEnabled'] == null ? null : map['apiKeyEnabled'] as bool,
+      apiKeyEnabled: map['apiKeyEnabled'] == null ? null : map['apiKeyEnabled']! as bool,
       primaryConnectionString: map['primaryConnectionString'] as String,
-      primaryKey: map['primaryKey'] == null ? null : ApiKeyResponse.fromMap((map['primaryKey'] as Map).cast<String, dynamic>()),
+      primaryKey: map['primaryKey'] == null ? null : ApiKeyResponse.fromMap((map['primaryKey']! as Map).cast<String, dynamic>()),
       secondaryConnectionString: map['secondaryConnectionString'] as String,
-      secondaryKey: map['secondaryKey'] == null ? null : ApiKeyResponse.fromMap((map['secondaryKey'] as Map).cast<String, dynamic>()),
+      secondaryKey: map['secondaryKey'] == null ? null : ApiKeyResponse.fromMap((map['secondaryKey']! as Map).cast<String, dynamic>()),
     );
   }
 }

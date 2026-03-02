@@ -20,7 +20,7 @@ class SecurityActionDeny {
 
   factory SecurityActionDeny.fromMap(Map<String, dynamic> map) {
     return SecurityActionDeny(
-      responseCode: map['responseCode'] == null ? null : (map['responseCode'] as int).input(),
+      responseCode: map['responseCode'] == null ? null : (map['responseCode']! as int).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ListDatabasePrincipalsResult {
 
   factory ListDatabasePrincipalsResult.fromMap(Map<String, dynamic> map) {
     return ListDatabasePrincipalsResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<DatabasePrincipalResponse>(map['value'], (value) => DatabasePrincipalResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<DatabasePrincipalResponse>(map['value']!, (value) => DatabasePrincipalResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -38,10 +38,10 @@ class StandardAssignmentPropertiesResponseAttestationData {
 
   factory StandardAssignmentPropertiesResponseAttestationData.fromMap(Map<String, dynamic> map) {
     return StandardAssignmentPropertiesResponseAttestationData(
-      assignedAssessment: map['assignedAssessment'] == null ? null : (AssignedAssessmentItemResponse.fromMap((map['assignedAssessment'] as Map).cast<String, dynamic>())).input(),
+      assignedAssessment: map['assignedAssessment'] == null ? null : (AssignedAssessmentItemResponse.fromMap((map['assignedAssessment']! as Map).cast<String, dynamic>())).input(),
       complianceDate: (map['complianceDate'] as String).input(),
-      complianceState: map['complianceState'] == null ? null : (map['complianceState'] as String).input(),
-      evidence: map['evidence'] == null ? null : (pulumi.Input.decodeList<AttestationEvidenceResponse>(map['evidence'], (value) => AttestationEvidenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      complianceState: map['complianceState'] == null ? null : (map['complianceState']! as String).input(),
+      evidence: map['evidence'] == null ? null : (pulumi.Input.decodeList<AttestationEvidenceResponse>(map['evidence']!, (value) => AttestationEvidenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

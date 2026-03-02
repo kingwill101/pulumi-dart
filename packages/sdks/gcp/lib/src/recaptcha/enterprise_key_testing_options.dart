@@ -25,8 +25,8 @@ class EnterpriseKeyTestingOptions {
 
   factory EnterpriseKeyTestingOptions.fromMap(Map<String, dynamic> map) {
     return EnterpriseKeyTestingOptions(
-      testingChallenge: map['testingChallenge'] == null ? null : (map['testingChallenge'] as String).input(),
-      testingScore: map['testingScore'] == null ? null : (map['testingScore'] as double).input(),
+      testingChallenge: map['testingChallenge'] == null ? null : (map['testingChallenge']! as String).input(),
+      testingScore: map['testingScore'] == null ? null : (map['testingScore']! as double).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class TimeSeriesTable {
 
   factory TimeSeriesTable.fromMap(Map<String, dynamic> map) {
     return TimeSeriesTable(
-      columnSettings: map['columnSettings'] == null ? null : (pulumi.Input.decodeList<ColumnSettings>(map['columnSettings'], (value) => ColumnSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columnSettings: map['columnSettings'] == null ? null : (pulumi.Input.decodeList<ColumnSettings>(map['columnSettings']!, (value) => ColumnSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dataSets: (pulumi.Input.decodeList<TableDataSet>(map['dataSets'], (value) => TableDataSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metricVisualization: map['metricVisualization'] == null ? null : (TimeSeriesTableMetricVisualization.fromValue(map['metricVisualization'] as String)).input(),
+      metricVisualization: map['metricVisualization'] == null ? null : (TimeSeriesTableMetricVisualization.fromValue(map['metricVisualization']! as String)).input(),
     );
   }
 }

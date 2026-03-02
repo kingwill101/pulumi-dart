@@ -37,9 +37,9 @@ class VirtualNetworkGatewayIpConfiguration {
 
   factory VirtualNetworkGatewayIpConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayIpConfiguration(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIpAddressAllocation: map['privateIpAddressAllocation'] == null ? null : (map['privateIpAddressAllocation'] as String).input(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIpAddressAllocation: map['privateIpAddressAllocation'] == null ? null : (map['privateIpAddressAllocation']! as String).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId']! as String).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

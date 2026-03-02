@@ -35,10 +35,10 @@ class ClusterPolicyState {
 
   factory ClusterPolicyState.fromMap(Map<String, dynamic> map) {
     return ClusterPolicyState(
-      clusterArn: map['clusterArn'] == null ? null : (map['clusterArn'] as String).input(),
-      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      clusterArn: map['clusterArn'] == null ? null : ((map['clusterArn'] as String).input()).input(),
+      currentVersion: map['currentVersion'] == null ? null : ((map['currentVersion'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

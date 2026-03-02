@@ -47,9 +47,9 @@ class AppAuthorizationConnectionArgs {
     return AppAuthorizationConnectionArgs(
       appAuthorizationArn: (map['appAuthorizationArn'] as String).input(),
       appBundleArn: (map['appBundleArn'] as String).input(),
-      authRequest: map['authRequest'] == null ? null : (AppAuthorizationConnectionAuthRequest.fromMap((map['authRequest'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (AppAuthorizationConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      authRequest: map['authRequest'] == null ? null : ((AppAuthorizationConnectionAuthRequest.fromMap((map['authRequest']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AppAuthorizationConnectionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class RuleGroupRuleCaptchaConfigImmunityTimeProperty {
 
   factory RuleGroupRuleCaptchaConfigImmunityTimeProperty.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleCaptchaConfigImmunityTimeProperty(
-      immunityTime: map['immunityTime'] == null ? null : (map['immunityTime'] as int).input(),
+      immunityTime: map['immunityTime'] == null ? null : ((map['immunityTime'] as int).input()).input(),
     );
   }
 }

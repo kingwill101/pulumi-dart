@@ -37,10 +37,10 @@ class CategoryInformationResponse {
 
   factory CategoryInformationResponse.fromMap(Map<String, dynamic> map) {
     return CategoryInformationResponse(
-      categoryDisplayName: map['categoryDisplayName'] == null ? null : (map['categoryDisplayName'] as String).input(),
-      categoryName: map['categoryName'] == null ? null : (map['categoryName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      links: map['links'] == null ? null : (pulumi.Input.decodeList<LinkResponse>(map['links'], (value) => LinkResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      categoryDisplayName: map['categoryDisplayName'] == null ? null : (map['categoryDisplayName']! as String).input(),
+      categoryName: map['categoryName'] == null ? null : (map['categoryName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      links: map['links'] == null ? null : (pulumi.Input.decodeList<LinkResponse>(map['links']!, (value) => LinkResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class ListenerXForwardedFor {
 
   factory ListenerXForwardedFor.fromMap(Map<String, dynamic> map) {
     return ListenerXForwardedFor(
-      retriveClientIp: map['retriveClientIp'] == null ? null : (map['retriveClientIp'] as bool).input(),
-      retriveSlbId: map['retriveSlbId'] == null ? null : (map['retriveSlbId'] as bool).input(),
-      retriveSlbIp: map['retriveSlbIp'] == null ? null : (map['retriveSlbIp'] as bool).input(),
-      retriveSlbProto: map['retriveSlbProto'] == null ? null : (map['retriveSlbProto'] as bool).input(),
+      retriveClientIp: map['retriveClientIp'] == null ? null : (map['retriveClientIp']! as bool).input(),
+      retriveSlbId: map['retriveSlbId'] == null ? null : (map['retriveSlbId']! as bool).input(),
+      retriveSlbIp: map['retriveSlbIp'] == null ? null : (map['retriveSlbIp']! as bool).input(),
+      retriveSlbProto: map['retriveSlbProto'] == null ? null : (map['retriveSlbProto']! as bool).input(),
     );
   }
 }

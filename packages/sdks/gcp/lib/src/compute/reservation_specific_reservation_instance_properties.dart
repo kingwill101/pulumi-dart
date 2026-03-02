@@ -55,12 +55,12 @@ class ReservationSpecificReservationInstanceProperties {
 
   factory ReservationSpecificReservationInstanceProperties.fromMap(Map<String, dynamic> map) {
     return ReservationSpecificReservationInstanceProperties(
-      guestAccelerators: map['guestAccelerators'] == null ? null : (pulumi.Input.decodeList<ReservationSpecificReservationInstancePropertiesGuestAccelerator>(map['guestAccelerators'], (value) => ReservationSpecificReservationInstancePropertiesGuestAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      localSsds: map['localSsds'] == null ? null : (pulumi.Input.decodeList<ReservationSpecificReservationInstancePropertiesLocalSsd>(map['localSsds'], (value) => ReservationSpecificReservationInstancePropertiesLocalSsd.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      locationHint: map['locationHint'] == null ? null : (map['locationHint'] as String).input(),
+      guestAccelerators: map['guestAccelerators'] == null ? null : (pulumi.Input.decodeList<ReservationSpecificReservationInstancePropertiesGuestAccelerator>(map['guestAccelerators']!, (value) => ReservationSpecificReservationInstancePropertiesGuestAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localSsds: map['localSsds'] == null ? null : (pulumi.Input.decodeList<ReservationSpecificReservationInstancePropertiesLocalSsd>(map['localSsds']!, (value) => ReservationSpecificReservationInstancePropertiesLocalSsd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locationHint: map['locationHint'] == null ? null : (map['locationHint']! as String).input(),
       machineType: (map['machineType'] as String).input(),
-      maintenanceInterval: map['maintenanceInterval'] == null ? null : (map['maintenanceInterval'] as String).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
+      maintenanceInterval: map['maintenanceInterval'] == null ? null : (map['maintenanceInterval']! as String).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
     );
   }
 }

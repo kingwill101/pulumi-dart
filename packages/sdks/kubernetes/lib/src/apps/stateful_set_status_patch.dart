@@ -67,16 +67,16 @@ class StatefulSetStatusPatch {
 
   factory StatefulSetStatusPatch.fromMap(Map<String, dynamic> map) {
     return StatefulSetStatusPatch(
-      availableReplicas: map['availableReplicas'] == null ? null : (map['availableReplicas'] as int).input(),
-      collisionCount: map['collisionCount'] == null ? null : (map['collisionCount'] as int).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<StatefulSetConditionPatch>(map['conditions'], (value) => StatefulSetConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      currentReplicas: map['currentReplicas'] == null ? null : (map['currentReplicas'] as int).input(),
-      currentRevision: map['currentRevision'] == null ? null : (map['currentRevision'] as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
-      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas'] as int).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
-      updateRevision: map['updateRevision'] == null ? null : (map['updateRevision'] as String).input(),
-      updatedReplicas: map['updatedReplicas'] == null ? null : (map['updatedReplicas'] as int).input(),
+      availableReplicas: map['availableReplicas'] == null ? null : (map['availableReplicas']! as int).input(),
+      collisionCount: map['collisionCount'] == null ? null : (map['collisionCount']! as int).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<StatefulSetConditionPatch>(map['conditions']!, (value) => StatefulSetConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentReplicas: map['currentReplicas'] == null ? null : (map['currentReplicas']! as int).input(),
+      currentRevision: map['currentRevision'] == null ? null : (map['currentRevision']! as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas']! as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      updateRevision: map['updateRevision'] == null ? null : (map['updateRevision']! as String).input(),
+      updatedReplicas: map['updatedReplicas'] == null ? null : (map['updatedReplicas']! as int).input(),
     );
   }
 }

@@ -45,11 +45,11 @@ class GlobalSecondaryIndex {
 
   factory GlobalSecondaryIndex.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndex(
-      contributorInsightsSpecification: map['contributorInsightsSpecification'] == null ? null : (ContributorInsightsSpecification.fromMap((map['contributorInsightsSpecification'] as Map).cast<String, dynamic>())).input(),
-      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
-      keySchema: map['keySchema'] == null ? null : (pulumi.Input.decodeList<KeySchema>(map['keySchema'], (value) => KeySchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      projection: map['projection'] == null ? null : (Projection.fromMap((map['projection'] as Map).cast<String, dynamic>())).input(),
-      provisionedThroughput: map['provisionedThroughput'] == null ? null : (ProvisionedThroughput.fromMap((map['provisionedThroughput'] as Map).cast<String, dynamic>())).input(),
+      contributorInsightsSpecification: map['contributorInsightsSpecification'] == null ? null : (ContributorInsightsSpecification.fromMap((map['contributorInsightsSpecification']! as Map).cast<String, dynamic>())).input(),
+      indexName: map['indexName'] == null ? null : (map['indexName']! as String).input(),
+      keySchema: map['keySchema'] == null ? null : (pulumi.Input.decodeList<KeySchema>(map['keySchema']!, (value) => KeySchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      projection: map['projection'] == null ? null : (Projection.fromMap((map['projection']! as Map).cast<String, dynamic>())).input(),
+      provisionedThroughput: map['provisionedThroughput'] == null ? null : (ProvisionedThroughput.fromMap((map['provisionedThroughput']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

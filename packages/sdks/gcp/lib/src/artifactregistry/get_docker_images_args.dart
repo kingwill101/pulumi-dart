@@ -35,7 +35,7 @@ class GetDockerImagesArgs {
   factory GetDockerImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetDockerImagesArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
     );
   }

@@ -71,16 +71,16 @@ class IfConditionActivity {
 
   factory IfConditionActivity.fromMap(Map<String, dynamic> map) {
     return IfConditionActivity(
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn']!, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (Expression.fromMap((map['expression'] as Map).cast<String, dynamic>())).input(),
-      ifFalseActivities: map['ifFalseActivities'] == null ? null : (pulumi.Input.decodeList<AppendVariableActivity>(map['ifFalseActivities'], (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ifTrueActivities: map['ifTrueActivities'] == null ? null : (pulumi.Input.decodeList<AppendVariableActivity>(map['ifTrueActivities'], (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ifFalseActivities: map['ifFalseActivities'] == null ? null : (pulumi.Input.decodeList<AppendVariableActivity>(map['ifFalseActivities']!, (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ifTrueActivities: map['ifTrueActivities'] == null ? null : (pulumi.Input.decodeList<AppendVariableActivity>(map['ifTrueActivities']!, (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties']!, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

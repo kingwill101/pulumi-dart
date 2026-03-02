@@ -79,18 +79,18 @@ class LinkServiceState {
 
   factory LinkServiceState.fromMap(Map<String, dynamic> map) {
     return LinkServiceState(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      autoApprovalSubscriptionIds: map['autoApprovalSubscriptionIds'] == null ? null : ((map['autoApprovalSubscriptionIds'] as List).cast<String>()).input(),
-      destinationIpAddress: map['destinationIpAddress'] == null ? null : (map['destinationIpAddress'] as String).input(),
-      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol'] as bool).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
-      loadBalancerFrontendIpConfigurationIds: map['loadBalancerFrontendIpConfigurationIds'] == null ? null : ((map['loadBalancerFrontendIpConfigurationIds'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      natIpConfigurations: map['natIpConfigurations'] == null ? null : (pulumi.Input.decodeList<LinkServiceNatIpConfiguration>(map['natIpConfigurations'], (value) => LinkServiceNatIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      visibilitySubscriptionIds: map['visibilitySubscriptionIds'] == null ? null : ((map['visibilitySubscriptionIds'] as List).cast<String>()).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      autoApprovalSubscriptionIds: map['autoApprovalSubscriptionIds'] == null ? null : ((map['autoApprovalSubscriptionIds']! as List).cast<String>()).input(),
+      destinationIpAddress: map['destinationIpAddress'] == null ? null : (map['destinationIpAddress']! as String).input(),
+      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol']! as bool).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
+      loadBalancerFrontendIpConfigurationIds: map['loadBalancerFrontendIpConfigurationIds'] == null ? null : ((map['loadBalancerFrontendIpConfigurationIds']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      natIpConfigurations: map['natIpConfigurations'] == null ? null : (pulumi.Input.decodeList<LinkServiceNatIpConfiguration>(map['natIpConfigurations']!, (value) => LinkServiceNatIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      visibilitySubscriptionIds: map['visibilitySubscriptionIds'] == null ? null : ((map['visibilitySubscriptionIds']! as List).cast<String>()).input(),
     );
   }
 }

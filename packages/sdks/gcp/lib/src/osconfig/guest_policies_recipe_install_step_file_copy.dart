@@ -43,8 +43,8 @@ class GuestPoliciesRecipeInstallStepFileCopy {
     return GuestPoliciesRecipeInstallStepFileCopy(
       artifactId: (map['artifactId'] as String).input(),
       destination: (map['destination'] as String).input(),
-      overwrite: map['overwrite'] == null ? null : (map['overwrite'] as bool).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      overwrite: map['overwrite'] == null ? null : (map['overwrite']! as bool).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
     );
   }
 }

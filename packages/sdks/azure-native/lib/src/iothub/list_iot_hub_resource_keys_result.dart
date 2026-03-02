@@ -28,7 +28,7 @@ class ListIotHubResourceKeysResult {
   factory ListIotHubResourceKeysResult.fromMap(Map<String, dynamic> map) {
     return ListIotHubResourceKeysResult(
       nextLink: map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<SharedAccessSignatureAuthorizationRuleResponse>(map['value'], (value) => SharedAccessSignatureAuthorizationRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<SharedAccessSignatureAuthorizationRuleResponse>(map['value']!, (value) => SharedAccessSignatureAuthorizationRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

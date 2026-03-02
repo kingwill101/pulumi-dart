@@ -22,7 +22,7 @@ class AdhocBasedTaggingCriteria {
 
   factory AdhocBasedTaggingCriteria.fromMap(Map<String, dynamic> map) {
     return AdhocBasedTaggingCriteria(
-      tagInfo: map['tagInfo'] == null ? null : (RetentionTag.fromMap((map['tagInfo'] as Map).cast<String, dynamic>())).input(),
+      tagInfo: map['tagInfo'] == null ? null : (RetentionTag.fromMap((map['tagInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

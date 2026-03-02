@@ -38,10 +38,10 @@ class TransitGatewayConnectPeerAssociationState {
 
   factory TransitGatewayConnectPeerAssociationState.fromMap(Map<String, dynamic> map) {
     return TransitGatewayConnectPeerAssociationState(
-      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
-      globalNetworkId: map['globalNetworkId'] == null ? null : (map['globalNetworkId'] as String).input(),
-      linkId: map['linkId'] == null ? null : (map['linkId'] as String).input(),
-      transitGatewayConnectPeerArn: map['transitGatewayConnectPeerArn'] == null ? null : (map['transitGatewayConnectPeerArn'] as String).input(),
+      deviceId: map['deviceId'] == null ? null : ((map['deviceId'] as String).input()).input(),
+      globalNetworkId: map['globalNetworkId'] == null ? null : ((map['globalNetworkId'] as String).input()).input(),
+      linkId: map['linkId'] == null ? null : ((map['linkId'] as String).input()).input(),
+      transitGatewayConnectPeerArn: map['transitGatewayConnectPeerArn'] == null ? null : ((map['transitGatewayConnectPeerArn'] as String).input()).input(),
     );
   }
 }

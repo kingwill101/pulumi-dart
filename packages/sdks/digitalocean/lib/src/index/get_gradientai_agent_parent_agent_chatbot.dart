@@ -45,12 +45,12 @@ class GetGradientaiAgentParentAgentChatbot {
 
   factory GetGradientaiAgentParentAgentChatbot.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentParentAgentChatbot(
-      buttonBackgroundColor: map['buttonBackgroundColor'] == null ? null : (map['buttonBackgroundColor'] as String).input(),
-      logo: map['logo'] == null ? null : (map['logo'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryColor: map['primaryColor'] == null ? null : (map['primaryColor'] as String).input(),
-      secondaryColor: map['secondaryColor'] == null ? null : (map['secondaryColor'] as String).input(),
-      startingMessage: map['startingMessage'] == null ? null : (map['startingMessage'] as String).input(),
+      buttonBackgroundColor: map['buttonBackgroundColor'] == null ? null : (map['buttonBackgroundColor']! as String).input(),
+      logo: map['logo'] == null ? null : (map['logo']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryColor: map['primaryColor'] == null ? null : (map['primaryColor']! as String).input(),
+      secondaryColor: map['secondaryColor'] == null ? null : (map['secondaryColor']! as String).input(),
+      startingMessage: map['startingMessage'] == null ? null : (map['startingMessage']! as String).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class TunnelQuotaTimerQuotaTimer {
     return TunnelQuotaTimerQuotaTimer(
       beginTime: (map['beginTime'] as String).input(),
       endTime: (map['endTime'] as String).input(),
-      tunnelQuotaParameter: map['tunnelQuotaParameter'] == null ? null : (TunnelQuotaTimerQuotaTimerTunnelQuotaParameter.fromMap((map['tunnelQuotaParameter'] as Map).cast<String, dynamic>())).input(),
+      tunnelQuotaParameter: map['tunnelQuotaParameter'] == null ? null : (TunnelQuotaTimerQuotaTimerTunnelQuotaParameter.fromMap((map['tunnelQuotaParameter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

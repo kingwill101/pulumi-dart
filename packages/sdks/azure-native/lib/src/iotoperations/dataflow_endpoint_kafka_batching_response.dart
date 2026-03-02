@@ -36,10 +36,10 @@ class DataflowEndpointKafkaBatchingResponse {
 
   factory DataflowEndpointKafkaBatchingResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointKafkaBatchingResponse(
-      latencyMs: map['latencyMs'] == null ? null : (map['latencyMs'] as int).input(),
-      maxBytes: map['maxBytes'] == null ? null : (map['maxBytes'] as int).input(),
-      maxMessages: map['maxMessages'] == null ? null : (map['maxMessages'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      latencyMs: map['latencyMs'] == null ? null : (map['latencyMs']! as int).input(),
+      maxBytes: map['maxBytes'] == null ? null : (map['maxBytes']! as int).input(),
+      maxMessages: map['maxMessages'] == null ? null : (map['maxMessages']! as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

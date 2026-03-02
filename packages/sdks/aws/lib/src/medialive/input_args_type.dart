@@ -78,17 +78,17 @@ class InputArgsType {
 
   factory InputArgsType.fromMap(Map<String, dynamic> map) {
     return InputArgsType(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<InputDestination>(map['destinations'], (value) => InputDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputDevices: map['inputDevices'] == null ? null : (pulumi.Input.decodeList<InputInputDevice>(map['inputDevices'], (value) => InputInputDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputSecurityGroups: map['inputSecurityGroups'] == null ? null : ((map['inputSecurityGroups'] as List).cast<String>()).input(),
-      mediaConnectFlows: map['mediaConnectFlows'] == null ? null : (pulumi.Input.decodeList<InputMediaConnectFlow>(map['mediaConnectFlows'], (value) => InputMediaConnectFlow.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<InputSource>(map['sources'], (value) => InputSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      destinations: map['destinations'] == null ? null : ((pulumi.Input.decodeList<InputDestination>(map['destinations']!, (value) => InputDestination.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      inputDevices: map['inputDevices'] == null ? null : ((pulumi.Input.decodeList<InputInputDevice>(map['inputDevices']!, (value) => InputInputDevice.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      inputSecurityGroups: map['inputSecurityGroups'] == null ? null : (((map['inputSecurityGroups'] as List).cast<String>()).input()).input(),
+      mediaConnectFlows: map['mediaConnectFlows'] == null ? null : ((pulumi.Input.decodeList<InputMediaConnectFlow>(map['mediaConnectFlows']!, (value) => InputMediaConnectFlow.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      sources: map['sources'] == null ? null : ((pulumi.Input.decodeList<InputSource>(map['sources']!, (value) => InputSource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       type: (map['type'] as String).input(),
-      vpc: map['vpc'] == null ? null : (InputVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())).input(),
+      vpc: map['vpc'] == null ? null : ((InputVpc.fromMap((map['vpc']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

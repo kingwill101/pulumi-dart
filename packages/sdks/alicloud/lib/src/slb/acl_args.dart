@@ -45,11 +45,11 @@ class AclArgs {
 
   factory AclArgs.fromMap(Map<String, dynamic> map) {
     return AclArgs(
-      entryLists: map['entryLists'] == null ? null : (pulumi.Input.decodeList<AclEntryList>(map['entryLists'], (value) => AclEntryList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      entryLists: map['entryLists'] == null ? null : (pulumi.Input.decodeList<AclEntryList>(map['entryLists']!, (value) => AclEntryList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

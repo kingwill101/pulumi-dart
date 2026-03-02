@@ -22,7 +22,7 @@ class OpenAuthenticationAccessPolicies {
 
   factory OpenAuthenticationAccessPolicies.fromMap(Map<String, dynamic> map) {
     return OpenAuthenticationAccessPolicies(
-      policies: map['policies'] == null ? null : (pulumi.Input.decodeMapValues<OpenAuthenticationAccessPolicy>(map['policies'], (value) => OpenAuthenticationAccessPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeMapValues<OpenAuthenticationAccessPolicy>(map['policies']!, (value) => OpenAuthenticationAccessPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

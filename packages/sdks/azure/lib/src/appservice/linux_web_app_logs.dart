@@ -37,10 +37,10 @@ class LinuxWebAppLogs {
 
   factory LinuxWebAppLogs.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppLogs(
-      applicationLogs: map['applicationLogs'] == null ? null : (LinuxWebAppLogsApplicationLogs.fromMap((map['applicationLogs'] as Map).cast<String, dynamic>())).input(),
-      detailedErrorMessages: map['detailedErrorMessages'] == null ? null : (map['detailedErrorMessages'] as bool).input(),
-      failedRequestTracing: map['failedRequestTracing'] == null ? null : (map['failedRequestTracing'] as bool).input(),
-      httpLogs: map['httpLogs'] == null ? null : (LinuxWebAppLogsHttpLogs.fromMap((map['httpLogs'] as Map).cast<String, dynamic>())).input(),
+      applicationLogs: map['applicationLogs'] == null ? null : (LinuxWebAppLogsApplicationLogs.fromMap((map['applicationLogs']! as Map).cast<String, dynamic>())).input(),
+      detailedErrorMessages: map['detailedErrorMessages'] == null ? null : (map['detailedErrorMessages']! as bool).input(),
+      failedRequestTracing: map['failedRequestTracing'] == null ? null : (map['failedRequestTracing']! as bool).input(),
+      httpLogs: map['httpLogs'] == null ? null : (LinuxWebAppLogsHttpLogs.fromMap((map['httpLogs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

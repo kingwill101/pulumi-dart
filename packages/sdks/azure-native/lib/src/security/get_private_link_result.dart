@@ -77,7 +77,7 @@ class GetPrivateLinkResult {
       privateLinkResources: pulumi.Input.decodeList<PrivateLinkResourceResponse>(map['privateLinkResources'], (value) => PrivateLinkResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

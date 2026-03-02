@@ -58,12 +58,12 @@ class GetSettingResult {
   factory GetSettingResult.fromMap(Map<String, dynamic> map) {
     return GetSettingResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      cache: map['cache'] == null ? null : pulumi.Input.decodeList<SettingsPropertiesResponseCache>(map['cache'], (value) => SettingsPropertiesResponseCache.fromMap((value as Map).cast<String, dynamic>())),
+      cache: map['cache'] == null ? null : pulumi.Input.decodeList<SettingsPropertiesResponseCache>(map['cache']!, (value) => SettingsPropertiesResponseCache.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
       scope: map['scope'] as String,
-      startOn: map['startOn'] == null ? null : map['startOn'] as String,
+      startOn: map['startOn'] == null ? null : map['startOn']! as String,
       type: map['type'] as String,
     );
   }

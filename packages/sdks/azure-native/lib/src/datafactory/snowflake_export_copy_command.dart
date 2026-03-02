@@ -37,9 +37,9 @@ class SnowflakeExportCopyCommand {
 
   factory SnowflakeExportCopyCommand.fromMap(Map<String, dynamic> map) {
     return SnowflakeExportCopyCommand(
-      additionalCopyOptions: map['additionalCopyOptions'] == null ? null : ((map['additionalCopyOptions'] as Map).cast<String, dynamic>()).input(),
-      additionalFormatOptions: map['additionalFormatOptions'] == null ? null : ((map['additionalFormatOptions'] as Map).cast<String, dynamic>()).input(),
-      storageIntegration: map['storageIntegration'] == null ? null : (map['storageIntegration']).input(),
+      additionalCopyOptions: map['additionalCopyOptions'] == null ? null : ((map['additionalCopyOptions']! as Map).cast<String, dynamic>()).input(),
+      additionalFormatOptions: map['additionalFormatOptions'] == null ? null : ((map['additionalFormatOptions']! as Map).cast<String, dynamic>()).input(),
+      storageIntegration: map['storageIntegration'] == null ? null : (map['storageIntegration']!).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -27,8 +27,8 @@ class AzureOperatorNexusArmTemplateDeployMappingRuleProfileResponse {
 
   factory AzureOperatorNexusArmTemplateDeployMappingRuleProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureOperatorNexusArmTemplateDeployMappingRuleProfileResponse(
-      applicationEnablement: map['applicationEnablement'] == null ? null : (map['applicationEnablement'] as String).input(),
-      templateMappingRuleProfile: map['templateMappingRuleProfile'] == null ? null : (ArmTemplateMappingRuleProfileResponse.fromMap((map['templateMappingRuleProfile'] as Map).cast<String, dynamic>())).input(),
+      applicationEnablement: map['applicationEnablement'] == null ? null : (map['applicationEnablement']! as String).input(),
+      templateMappingRuleProfile: map['templateMappingRuleProfile'] == null ? null : (ArmTemplateMappingRuleProfileResponse.fromMap((map['templateMappingRuleProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

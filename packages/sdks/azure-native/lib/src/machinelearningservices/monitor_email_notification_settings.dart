@@ -20,7 +20,7 @@ class MonitorEmailNotificationSettings {
 
   factory MonitorEmailNotificationSettings.fromMap(Map<String, dynamic> map) {
     return MonitorEmailNotificationSettings(
-      emails: map['emails'] == null ? null : ((map['emails'] as List).cast<String>()).input(),
+      emails: map['emails'] == null ? null : ((map['emails']! as List).cast<String>()).input(),
     );
   }
 }

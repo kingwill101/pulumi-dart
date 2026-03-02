@@ -39,7 +39,7 @@ class GetVirtualMachineExtensionArgs {
 
   factory GetVirtualMachineExtensionArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineExtensionArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       vmExtensionName: (map['vmExtensionName'] as String).input(),
       vmName: (map['vmName'] as String).input(),

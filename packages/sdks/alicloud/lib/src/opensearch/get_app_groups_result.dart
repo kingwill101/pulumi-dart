@@ -62,17 +62,17 @@ class GetAppGroupsResult {
 
   factory GetAppGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetAppGroupsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       groups: pulumi.Input.decodeList<GetAppGroupsGroup>(map['groups'], (value) => GetAppGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      type: map['type'] == null ? null : map['type']! as String,
     );
   }
 }

@@ -27,8 +27,8 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus {
 
   factory RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus.fromMap(Map<String, dynamic> map) {
     return RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

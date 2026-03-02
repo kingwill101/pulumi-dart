@@ -88,16 +88,16 @@ class GetAmiArgs {
 
   factory GetAmiArgs.fromMap(Map<String, dynamic> map) {
     return GetAmiArgs(
-      allowUnsafeFilter: map['allowUnsafeFilter'] == null ? null : (map['allowUnsafeFilter'] as bool).input(),
-      executableUsers: map['executableUsers'] == null ? null : ((map['executableUsers'] as List).cast<String>()).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAmiFilter>(map['filters'], (value) => GetAmiFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated'] as bool).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      owners: map['owners'] == null ? null : ((map['owners'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      uefiData: map['uefiData'] == null ? null : (map['uefiData'] as String).input(),
+      allowUnsafeFilter: map['allowUnsafeFilter'] == null ? null : ((map['allowUnsafeFilter'] as bool).input()).input(),
+      executableUsers: map['executableUsers'] == null ? null : (((map['executableUsers'] as List).cast<String>()).input()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetAmiFilter>(map['filters']!, (value) => GetAmiFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      includeDeprecated: map['includeDeprecated'] == null ? null : ((map['includeDeprecated'] as bool).input()).input(),
+      mostRecent: map['mostRecent'] == null ? null : ((map['mostRecent'] as bool).input()).input(),
+      nameRegex: map['nameRegex'] == null ? null : ((map['nameRegex'] as String).input()).input(),
+      owners: map['owners'] == null ? null : (((map['owners'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      uefiData: map['uefiData'] == null ? null : ((map['uefiData'] as String).input()).input(),
     );
   }
 }

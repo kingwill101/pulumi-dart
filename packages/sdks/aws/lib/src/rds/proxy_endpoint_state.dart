@@ -75,18 +75,18 @@ class ProxyEndpointState {
 
   factory ProxyEndpointState.fromMap(Map<String, dynamic> map) {
     return ProxyEndpointState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      dbProxyEndpointName: map['dbProxyEndpointName'] == null ? null : (map['dbProxyEndpointName'] as String).input(),
-      dbProxyName: map['dbProxyName'] == null ? null : (map['dbProxyName'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      targetRole: map['targetRole'] == null ? null : (map['targetRole'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : ((map['vpcSecurityGroupIds'] as List).cast<String>()).input(),
-      vpcSubnetIds: map['vpcSubnetIds'] == null ? null : ((map['vpcSubnetIds'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      dbProxyEndpointName: map['dbProxyEndpointName'] == null ? null : ((map['dbProxyEndpointName'] as String).input()).input(),
+      dbProxyName: map['dbProxyName'] == null ? null : ((map['dbProxyName'] as String).input()).input(),
+      endpoint: map['endpoint'] == null ? null : ((map['endpoint'] as String).input()).input(),
+      isDefault: map['isDefault'] == null ? null : ((map['isDefault'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      targetRole: map['targetRole'] == null ? null : ((map['targetRole'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : (((map['vpcSecurityGroupIds'] as List).cast<String>()).input()).input(),
+      vpcSubnetIds: map['vpcSubnetIds'] == null ? null : (((map['vpcSubnetIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

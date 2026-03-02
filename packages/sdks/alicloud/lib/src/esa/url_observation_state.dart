@@ -36,10 +36,10 @@ class UrlObservationState {
 
   factory UrlObservationState.fromMap(Map<String, dynamic> map) {
     return UrlObservationState(
-      configId: map['configId'] == null ? null : (map['configId'] as int).input(),
-      sdkType: map['sdkType'] == null ? null : (map['sdkType'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as int).input(),
+      sdkType: map['sdkType'] == null ? null : (map['sdkType']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

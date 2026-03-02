@@ -45,10 +45,10 @@ class ExtensionDataSource {
   factory ExtensionDataSource.fromMap(Map<String, dynamic> map) {
     return ExtensionDataSource(
       extensionName: (map['extensionName'] as String).input(),
-      extensionSettings: map['extensionSettings'] == null ? null : (map['extensionSettings']).input(),
-      inputDataSources: map['inputDataSources'] == null ? null : ((map['inputDataSources'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      streams: map['streams'] == null ? null : ((map['streams'] as List).cast<String>()).input(),
+      extensionSettings: map['extensionSettings'] == null ? null : (map['extensionSettings']!).input(),
+      inputDataSources: map['inputDataSources'] == null ? null : ((map['inputDataSources']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      streams: map['streams'] == null ? null : ((map['streams']! as List).cast<String>()).input(),
     );
   }
 }

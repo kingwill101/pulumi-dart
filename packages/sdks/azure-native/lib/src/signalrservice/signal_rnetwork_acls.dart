@@ -39,10 +39,10 @@ class SignalRNetworkACLs {
 
   factory SignalRNetworkACLs.fromMap(Map<String, dynamic> map) {
     return SignalRNetworkACLs(
-      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRule>(map['ipRules'], (value) => IPRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<PrivateEndpointACL>(map['privateEndpoints'], (value) => PrivateEndpointACL.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicNetwork: map['publicNetwork'] == null ? null : (NetworkACL.fromMap((map['publicNetwork'] as Map).cast<String, dynamic>())).input(),
+      defaultAction: map['defaultAction'] == null ? null : (map['defaultAction']! as String).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRule>(map['ipRules']!, (value) => IPRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<PrivateEndpointACL>(map['privateEndpoints']!, (value) => PrivateEndpointACL.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetwork: map['publicNetwork'] == null ? null : (NetworkACL.fromMap((map['publicNetwork']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -56,14 +56,14 @@ class ClientUserState {
 
   factory ClientUserState.fromMap(Map<String, dynamic> map) {
     return ClientUserState(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      clientIp: map['clientIp'] == null ? null : (map['clientIp'] as String).input(),
-      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword'] as String).input(),
-      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext'] as Map).cast<String, String>()).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      sagId: map['sagId'] == null ? null : (map['sagId'] as String).input(),
-      userMail: map['userMail'] == null ? null : (map['userMail'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      clientIp: map['clientIp'] == null ? null : (map['clientIp']! as String).input(),
+      kmsEncryptedPassword: map['kmsEncryptedPassword'] == null ? null : (map['kmsEncryptedPassword']! as String).input(),
+      kmsEncryptionContext: map['kmsEncryptionContext'] == null ? null : ((map['kmsEncryptionContext']! as Map).cast<String, String>()).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      sagId: map['sagId'] == null ? null : (map['sagId']! as String).input(),
+      userMail: map['userMail'] == null ? null : (map['userMail']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

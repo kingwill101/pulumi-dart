@@ -28,8 +28,8 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent {
 
   factory GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent(
-      additionalCases: map['additionalCases'] == null ? null : (GoogleCloudDialogflowCxV3FulfillmentConditionalCases.fromMap((map['additionalCases'] as Map).cast<String, dynamic>())).input(),
-      message: map['message'] == null ? null : (GoogleCloudDialogflowCxV3ResponseMessage.fromMap((map['message'] as Map).cast<String, dynamic>())).input(),
+      additionalCases: map['additionalCases'] == null ? null : (GoogleCloudDialogflowCxV3FulfillmentConditionalCases.fromMap((map['additionalCases']! as Map).cast<String, dynamic>())).input(),
+      message: map['message'] == null ? null : (GoogleCloudDialogflowCxV3ResponseMessage.fromMap((map['message']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

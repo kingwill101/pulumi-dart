@@ -53,10 +53,10 @@ class ContainerV1Args {
 
   factory ContainerV1Args.fromMap(Map<String, dynamic> map) {
     return ContainerV1Args(
-      acl: map['acl'] == null ? null : (ContainerV1Acl.fromMap((map['acl'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretRefs: map['secretRefs'] == null ? null : (pulumi.Input.decodeList<ContainerV1SecretRef>(map['secretRefs'], (value) => ContainerV1SecretRef.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acl: map['acl'] == null ? null : (ContainerV1Acl.fromMap((map['acl']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      secretRefs: map['secretRefs'] == null ? null : (pulumi.Input.decodeList<ContainerV1SecretRef>(map['secretRefs']!, (value) => ContainerV1SecretRef.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

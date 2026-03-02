@@ -52,13 +52,13 @@ class TxtRecordState {
 
   factory TxtRecordState.fromMap(Map<String, dynamic> map) {
     return TxtRecordState(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      records: map['records'] == null ? null : (pulumi.Input.decodeList<TxtRecordRecord>(map['records'], (value) => TxtRecordRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      zoneName: map['zoneName'] == null ? null : (map['zoneName'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      records: map['records'] == null ? null : (pulumi.Input.decodeList<TxtRecordRecord>(map['records']!, (value) => TxtRecordRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      zoneName: map['zoneName'] == null ? null : (map['zoneName']! as String).input(),
     );
   }
 }

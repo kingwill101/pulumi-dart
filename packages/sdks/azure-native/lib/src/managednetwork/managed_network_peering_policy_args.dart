@@ -45,10 +45,10 @@ class ManagedNetworkPeeringPolicyArgs {
 
   factory ManagedNetworkPeeringPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkPeeringPolicyArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managedNetworkName: (map['managedNetworkName'] as String).input(),
-      managedNetworkPeeringPolicyName: map['managedNetworkPeeringPolicyName'] == null ? null : (map['managedNetworkPeeringPolicyName'] as String).input(),
-      properties: map['properties'] == null ? null : (ManagedNetworkPeeringPolicyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      managedNetworkPeeringPolicyName: map['managedNetworkPeeringPolicyName'] == null ? null : (map['managedNetworkPeeringPolicyName']! as String).input(),
+      properties: map['properties'] == null ? null : (ManagedNetworkPeeringPolicyProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

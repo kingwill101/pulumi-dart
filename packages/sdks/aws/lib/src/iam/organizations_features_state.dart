@@ -21,7 +21,7 @@ class OrganizationsFeaturesState {
 
   factory OrganizationsFeaturesState.fromMap(Map<String, dynamic> map) {
     return OrganizationsFeaturesState(
-      enabledFeatures: map['enabledFeatures'] == null ? null : ((map['enabledFeatures'] as List).cast<String>()).input(),
+      enabledFeatures: map['enabledFeatures'] == null ? null : (((map['enabledFeatures'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
 
   factory V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification(
-      audioSpecification: map['audioSpecification'] == null ? null : (V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap((map['audioSpecification'] as Map).cast<String, dynamic>())).input(),
-      dtmfSpecification: map['dtmfSpecification'] == null ? null : (V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap((map['dtmfSpecification'] as Map).cast<String, dynamic>())).input(),
+      audioSpecification: map['audioSpecification'] == null ? null : ((V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification.fromMap((map['audioSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      dtmfSpecification: map['dtmfSpecification'] == null ? null : ((V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification.fromMap((map['dtmfSpecification']! as Map).cast<String, dynamic>())).input()).input(),
       startTimeoutMs: (map['startTimeoutMs'] as int).input(),
     );
   }

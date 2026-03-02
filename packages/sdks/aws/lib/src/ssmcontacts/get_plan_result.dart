@@ -38,7 +38,7 @@ class GetPlanResult {
       contactId: map['contactId'] as String,
       id: map['id'] as String,
       region: map['region'] as String,
-      stages: pulumi.Input.decodeList<GetPlanStage>(map['stages'], (value) => GetPlanStage.fromMap((value as Map).cast<String, dynamic>())),
+      stages: pulumi.Input.decodeList<GetPlanStage>(map['stages']!, (value) => GetPlanStage.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

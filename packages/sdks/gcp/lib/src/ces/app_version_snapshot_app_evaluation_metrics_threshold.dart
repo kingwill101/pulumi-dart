@@ -23,7 +23,7 @@ class AppVersionSnapshotAppEvaluationMetricsThreshold {
 
   factory AppVersionSnapshotAppEvaluationMetricsThreshold.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppEvaluationMetricsThreshold(
-      goldenEvaluationMetricsThresholds: map['goldenEvaluationMetricsThresholds'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold>(map['goldenEvaluationMetricsThresholds'], (value) => AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      goldenEvaluationMetricsThresholds: map['goldenEvaluationMetricsThresholds'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold>(map['goldenEvaluationMetricsThresholds']!, (value) => AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

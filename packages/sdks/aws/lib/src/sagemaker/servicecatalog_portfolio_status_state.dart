@@ -26,8 +26,8 @@ class ServicecatalogPortfolioStatusState {
 
   factory ServicecatalogPortfolioStatusState.fromMap(Map<String, dynamic> map) {
     return ServicecatalogPortfolioStatusState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

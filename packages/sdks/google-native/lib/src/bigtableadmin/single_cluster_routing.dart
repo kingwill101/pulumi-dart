@@ -26,8 +26,8 @@ class SingleClusterRouting {
 
   factory SingleClusterRouting.fromMap(Map<String, dynamic> map) {
     return SingleClusterRouting(
-      allowTransactionalWrites: map['allowTransactionalWrites'] == null ? null : (map['allowTransactionalWrites'] as bool).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      allowTransactionalWrites: map['allowTransactionalWrites'] == null ? null : (map['allowTransactionalWrites']! as bool).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
     );
   }
 }

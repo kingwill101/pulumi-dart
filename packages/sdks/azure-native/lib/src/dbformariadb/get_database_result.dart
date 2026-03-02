@@ -46,8 +46,8 @@ class GetDatabaseResult {
   factory GetDatabaseResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      charset: map['charset'] == null ? null : map['charset'] as String,
-      collation: map['collation'] == null ? null : map['collation'] as String,
+      charset: map['charset'] == null ? null : map['charset']! as String,
+      collation: map['collation'] == null ? null : map['collation']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,

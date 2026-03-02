@@ -28,7 +28,7 @@ class SqlServerAvailabilityGroupResourcePropertiesResponseDatabases {
   factory SqlServerAvailabilityGroupResourcePropertiesResponseDatabases.fromMap(Map<String, dynamic> map) {
     return SqlServerAvailabilityGroupResourcePropertiesResponseDatabases(
       nextLink: (map['nextLink'] as String).input(),
-      value: map['value'] == null ? null : (pulumi.Input.decodeList<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse>(map['value'], (value) => SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: map['value'] == null ? null : (pulumi.Input.decodeList<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse>(map['value']!, (value) => SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

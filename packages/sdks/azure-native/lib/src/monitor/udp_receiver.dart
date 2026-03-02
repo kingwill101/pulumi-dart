@@ -37,10 +37,10 @@ class UdpReceiver {
 
   factory UdpReceiver.fromMap(Map<String, dynamic> map) {
     return UdpReceiver(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
       endpoint: (map['endpoint'] as String).input(),
-      jsonArrayMapper: map['jsonArrayMapper'] == null ? null : (JsonArrayMapper.fromMap((map['jsonArrayMapper'] as Map).cast<String, dynamic>())).input(),
-      readQueueLength: map['readQueueLength'] == null ? null : (map['readQueueLength'] as int).input(),
+      jsonArrayMapper: map['jsonArrayMapper'] == null ? null : (JsonArrayMapper.fromMap((map['jsonArrayMapper']! as Map).cast<String, dynamic>())).input(),
+      readQueueLength: map['readQueueLength'] == null ? null : (map['readQueueLength']! as int).input(),
     );
   }
 }

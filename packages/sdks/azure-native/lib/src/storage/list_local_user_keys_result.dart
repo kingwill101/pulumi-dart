@@ -28,7 +28,7 @@ class ListLocalUserKeysResult {
   factory ListLocalUserKeysResult.fromMap(Map<String, dynamic> map) {
     return ListLocalUserKeysResult(
       sharedKey: map['sharedKey'] as String,
-      sshAuthorizedKeys: map['sshAuthorizedKeys'] == null ? null : pulumi.Input.decodeList<SshPublicKeyResponse>(map['sshAuthorizedKeys'], (value) => SshPublicKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      sshAuthorizedKeys: map['sshAuthorizedKeys'] == null ? null : pulumi.Input.decodeList<SshPublicKeyResponse>(map['sshAuthorizedKeys']!, (value) => SshPublicKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

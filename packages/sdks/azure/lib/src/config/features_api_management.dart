@@ -23,8 +23,8 @@ class FeaturesApiManagement {
 
   factory FeaturesApiManagement.fromMap(Map<String, dynamic> map) {
     return FeaturesApiManagement(
-      purgeSoftDeleteOnDestroy: map['purgeSoftDeleteOnDestroy'] == null ? null : (map['purgeSoftDeleteOnDestroy'] as bool).input(),
-      recoverSoftDeleted: map['recoverSoftDeleted'] == null ? null : (map['recoverSoftDeleted'] as bool).input(),
+      purgeSoftDeleteOnDestroy: map['purgeSoftDeleteOnDestroy'] == null ? null : (map['purgeSoftDeleteOnDestroy']! as bool).input(),
+      recoverSoftDeleted: map['recoverSoftDeleted'] == null ? null : (map['recoverSoftDeleted']! as bool).input(),
     );
   }
 }

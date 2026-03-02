@@ -40,9 +40,9 @@ class GooglePrivacyDlpV2Deidentify {
   factory GooglePrivacyDlpV2Deidentify.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Deidentify(
       cloudStorageOutput: (map['cloudStorageOutput'] as String).input(),
-      fileTypesToTransform: map['fileTypesToTransform'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem>(map['fileTypesToTransform'], (value) => GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem.fromValue(value as String))).input(),
-      transformationConfig: map['transformationConfig'] == null ? null : (GooglePrivacyDlpV2TransformationConfig.fromMap((map['transformationConfig'] as Map).cast<String, dynamic>())).input(),
-      transformationDetailsStorageConfig: map['transformationDetailsStorageConfig'] == null ? null : (GooglePrivacyDlpV2TransformationDetailsStorageConfig.fromMap((map['transformationDetailsStorageConfig'] as Map).cast<String, dynamic>())).input(),
+      fileTypesToTransform: map['fileTypesToTransform'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem>(map['fileTypesToTransform']!, (value) => GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem.fromValue(value as String))).input(),
+      transformationConfig: map['transformationConfig'] == null ? null : (GooglePrivacyDlpV2TransformationConfig.fromMap((map['transformationConfig']! as Map).cast<String, dynamic>())).input(),
+      transformationDetailsStorageConfig: map['transformationDetailsStorageConfig'] == null ? null : (GooglePrivacyDlpV2TransformationDetailsStorageConfig.fromMap((map['transformationDetailsStorageConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

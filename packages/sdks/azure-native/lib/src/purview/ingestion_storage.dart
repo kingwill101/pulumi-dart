@@ -21,7 +21,7 @@ class IngestionStorage {
 
   factory IngestionStorage.fromMap(Map<String, dynamic> map) {
     return IngestionStorage(
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
     );
   }
 }

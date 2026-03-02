@@ -41,7 +41,7 @@ class OccurenceAttestationSignature {
   factory OccurenceAttestationSignature.fromMap(Map<String, dynamic> map) {
     return OccurenceAttestationSignature(
       publicKeyId: (map['publicKeyId'] as String).input(),
-      signature: map['signature'] == null ? null : (map['signature'] as String).input(),
+      signature: map['signature'] == null ? null : (map['signature']! as String).input(),
     );
   }
 }

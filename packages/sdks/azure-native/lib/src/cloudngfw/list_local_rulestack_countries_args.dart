@@ -39,8 +39,8 @@ class ListLocalRulestackCountriesArgs {
     return ListLocalRulestackCountriesArgs(
       localRulestackName: (map['localRulestackName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as String).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
     );
   }
 }

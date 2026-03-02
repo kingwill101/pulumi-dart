@@ -44,11 +44,11 @@ class GetIndustrialPidProjectsArgs {
 
   factory GetIndustrialPidProjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetIndustrialPidProjectsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pidOrganizationId: map['pidOrganizationId'] == null ? null : (map['pidOrganizationId'] as String).input(),
-      pidProjectName: map['pidProjectName'] == null ? null : (map['pidProjectName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pidOrganizationId: map['pidOrganizationId'] == null ? null : (map['pidOrganizationId']! as String).input(),
+      pidProjectName: map['pidProjectName'] == null ? null : (map['pidProjectName']! as String).input(),
     );
   }
 }

@@ -47,10 +47,10 @@ class AccessPointArgs {
   factory AccessPointArgs.fromMap(Map<String, dynamic> map) {
     return AccessPointArgs(
       fileSystemId: (map['fileSystemId'] as String).input(),
-      posixUser: map['posixUser'] == null ? null : (AccessPointPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rootDirectory: map['rootDirectory'] == null ? null : (AccessPointRootDirectory.fromMap((map['rootDirectory'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      posixUser: map['posixUser'] == null ? null : ((AccessPointPosixUser.fromMap((map['posixUser']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rootDirectory: map['rootDirectory'] == null ? null : ((AccessPointRootDirectory.fromMap((map['rootDirectory']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

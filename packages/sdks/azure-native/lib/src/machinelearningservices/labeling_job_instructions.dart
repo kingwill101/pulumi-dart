@@ -21,7 +21,7 @@ class LabelingJobInstructions {
 
   factory LabelingJobInstructions.fromMap(Map<String, dynamic> map) {
     return LabelingJobInstructions(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

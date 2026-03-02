@@ -62,7 +62,7 @@ class GetEcsSnapshotGroupsGroup {
       snapshotGroupId: (map['snapshotGroupId'] as String).input(),
       snapshotGroupName: (map['snapshotGroupName'] as String).input(),
       status: (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

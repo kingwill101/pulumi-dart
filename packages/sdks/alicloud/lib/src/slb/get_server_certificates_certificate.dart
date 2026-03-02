@@ -96,9 +96,9 @@ class GetServerCertificatesCertificate {
       id: (map['id'] as String).input(),
       isAlicloudCertificate: (map['isAlicloudCertificate'] as bool).input(),
       name: (map['name'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       subjectAlternativeNames: ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

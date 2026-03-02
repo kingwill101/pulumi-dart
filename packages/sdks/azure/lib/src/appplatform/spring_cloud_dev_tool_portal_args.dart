@@ -50,12 +50,12 @@ class SpringCloudDevToolPortalArgs {
 
   factory SpringCloudDevToolPortalArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudDevToolPortalArgs(
-      applicationAcceleratorEnabled: map['applicationAcceleratorEnabled'] == null ? null : (map['applicationAcceleratorEnabled'] as bool).input(),
-      applicationLiveViewEnabled: map['applicationLiveViewEnabled'] == null ? null : (map['applicationLiveViewEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      applicationAcceleratorEnabled: map['applicationAcceleratorEnabled'] == null ? null : (map['applicationAcceleratorEnabled']! as bool).input(),
+      applicationLiveViewEnabled: map['applicationLiveViewEnabled'] == null ? null : (map['applicationLiveViewEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
       springCloudServiceId: (map['springCloudServiceId'] as String).input(),
-      sso: map['sso'] == null ? null : (SpringCloudDevToolPortalSso.fromMap((map['sso'] as Map).cast<String, dynamic>())).input(),
+      sso: map['sso'] == null ? null : (SpringCloudDevToolPortalSso.fromMap((map['sso']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

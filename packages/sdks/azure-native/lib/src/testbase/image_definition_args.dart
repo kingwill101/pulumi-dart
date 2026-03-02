@@ -50,7 +50,7 @@ class ImageDefinitionArgs {
   factory ImageDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return ImageDefinitionArgs(
       architecture: (map['architecture'] as String).input(),
-      imageDefinitionName: map['imageDefinitionName'] == null ? null : (map['imageDefinitionName'] as String).input(),
+      imageDefinitionName: map['imageDefinitionName'] == null ? null : (map['imageDefinitionName']! as String).input(),
       osState: (map['osState'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       securityType: (map['securityType'] as String).input(),

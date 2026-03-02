@@ -67,7 +67,7 @@ class GetAccountResult {
       id: map['id'] as String,
       member: map['member'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       uniqueId: map['uniqueId'] as String,
     );
   }

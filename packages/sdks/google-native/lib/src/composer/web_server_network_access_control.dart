@@ -22,7 +22,7 @@ class WebServerNetworkAccessControl {
 
   factory WebServerNetworkAccessControl.fromMap(Map<String, dynamic> map) {
     return WebServerNetworkAccessControl(
-      allowedIpRanges: map['allowedIpRanges'] == null ? null : (pulumi.Input.decodeList<AllowedIpRange>(map['allowedIpRanges'], (value) => AllowedIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedIpRanges: map['allowedIpRanges'] == null ? null : (pulumi.Input.decodeList<AllowedIpRange>(map['allowedIpRanges']!, (value) => AllowedIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

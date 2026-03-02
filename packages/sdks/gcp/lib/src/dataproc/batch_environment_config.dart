@@ -29,8 +29,8 @@ class BatchEnvironmentConfig {
 
   factory BatchEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return BatchEnvironmentConfig(
-      executionConfig: map['executionConfig'] == null ? null : (BatchEnvironmentConfigExecutionConfig.fromMap((map['executionConfig'] as Map).cast<String, dynamic>())).input(),
-      peripheralsConfig: map['peripheralsConfig'] == null ? null : (BatchEnvironmentConfigPeripheralsConfig.fromMap((map['peripheralsConfig'] as Map).cast<String, dynamic>())).input(),
+      executionConfig: map['executionConfig'] == null ? null : (BatchEnvironmentConfigExecutionConfig.fromMap((map['executionConfig']! as Map).cast<String, dynamic>())).input(),
+      peripheralsConfig: map['peripheralsConfig'] == null ? null : (BatchEnvironmentConfigPeripheralsConfig.fromMap((map['peripheralsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

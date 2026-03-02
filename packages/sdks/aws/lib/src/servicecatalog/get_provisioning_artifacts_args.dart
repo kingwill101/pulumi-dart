@@ -36,9 +36,9 @@ class GetProvisioningArtifactsArgs {
 
   factory GetProvisioningArtifactsArgs.fromMap(Map<String, dynamic> map) {
     return GetProvisioningArtifactsArgs(
-      acceptLanguage: map['acceptLanguage'] == null ? null : (map['acceptLanguage'] as String).input(),
+      acceptLanguage: map['acceptLanguage'] == null ? null : ((map['acceptLanguage'] as String).input()).input(),
       productId: (map['productId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

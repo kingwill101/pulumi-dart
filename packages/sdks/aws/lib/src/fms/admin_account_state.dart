@@ -21,7 +21,7 @@ class AdminAccountState {
 
   factory AdminAccountState.fromMap(Map<String, dynamic> map) {
     return AdminAccountState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
     );
   }
 }

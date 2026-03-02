@@ -74,17 +74,17 @@ class JobDefinitionArgs {
 
   factory JobDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return JobDefinitionArgs(
-      agentName: map['agentName'] == null ? null : (map['agentName'] as String).input(),
+      agentName: map['agentName'] == null ? null : (map['agentName']! as String).input(),
       copyMode: (map['copyMode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      jobDefinitionName: map['jobDefinitionName'] == null ? null : (map['jobDefinitionName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      jobDefinitionName: map['jobDefinitionName'] == null ? null : (map['jobDefinitionName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sourceName: (map['sourceName'] as String).input(),
-      sourceSubpath: map['sourceSubpath'] == null ? null : (map['sourceSubpath'] as String).input(),
+      sourceSubpath: map['sourceSubpath'] == null ? null : (map['sourceSubpath']! as String).input(),
       storageMoverName: (map['storageMoverName'] as String).input(),
       targetName: (map['targetName'] as String).input(),
-      targetSubpath: map['targetSubpath'] == null ? null : (map['targetSubpath'] as String).input(),
+      targetSubpath: map['targetSubpath'] == null ? null : (map['targetSubpath']! as String).input(),
     );
   }
 }

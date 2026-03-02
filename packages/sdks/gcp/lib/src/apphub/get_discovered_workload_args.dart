@@ -35,7 +35,7 @@ class GetDiscoveredWorkloadArgs {
   factory GetDiscoveredWorkloadArgs.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredWorkloadArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workloadUri: (map['workloadUri'] as String).input(),
     );
   }

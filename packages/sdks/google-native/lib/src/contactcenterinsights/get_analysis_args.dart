@@ -38,7 +38,7 @@ class GetAnalysisArgs {
       analysisId: (map['analysisId'] as String).input(),
       conversationId: (map['conversationId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

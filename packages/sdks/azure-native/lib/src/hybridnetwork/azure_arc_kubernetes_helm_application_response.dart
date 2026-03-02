@@ -45,11 +45,11 @@ class AzureArcKubernetesHelmApplicationResponse {
 
   factory AzureArcKubernetesHelmApplicationResponse.fromMap(Map<String, dynamic> map) {
     return AzureArcKubernetesHelmApplicationResponse(
-      artifactProfile: map['artifactProfile'] == null ? null : (AzureArcKubernetesArtifactProfileResponse.fromMap((map['artifactProfile'] as Map).cast<String, dynamic>())).input(),
+      artifactProfile: map['artifactProfile'] == null ? null : (AzureArcKubernetesArtifactProfileResponse.fromMap((map['artifactProfile']! as Map).cast<String, dynamic>())).input(),
       artifactType: (map['artifactType'] as String).input(),
-      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfileResponse.fromMap((map['dependsOnProfile'] as Map).cast<String, dynamic>())).input(),
-      deployParametersMappingRuleProfile: map['deployParametersMappingRuleProfile'] == null ? null : (AzureArcKubernetesDeployMappingRuleProfileResponse.fromMap((map['deployParametersMappingRuleProfile'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfileResponse.fromMap((map['dependsOnProfile']! as Map).cast<String, dynamic>())).input(),
+      deployParametersMappingRuleProfile: map['deployParametersMappingRuleProfile'] == null ? null : (AzureArcKubernetesDeployMappingRuleProfileResponse.fromMap((map['deployParametersMappingRuleProfile']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

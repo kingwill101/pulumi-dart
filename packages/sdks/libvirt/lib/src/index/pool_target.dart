@@ -38,10 +38,10 @@ class PoolTarget {
 
   factory PoolTarget.fromMap(Map<String, dynamic> map) {
     return PoolTarget(
-      encryption: map['encryption'] == null ? null : (PoolTargetEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      permissions: map['permissions'] == null ? null : (PoolTargetPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
-      timestamps: map['timestamps'] == null ? null : (PoolTargetTimestamps.fromMap((map['timestamps'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (PoolTargetEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      permissions: map['permissions'] == null ? null : (PoolTargetPermissions.fromMap((map['permissions']! as Map).cast<String, dynamic>())).input(),
+      timestamps: map['timestamps'] == null ? null : (PoolTargetTimestamps.fromMap((map['timestamps']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

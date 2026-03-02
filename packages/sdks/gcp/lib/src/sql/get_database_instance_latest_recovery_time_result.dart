@@ -43,7 +43,7 @@ class GetDatabaseInstanceLatestRecoveryTimeResult {
       instance: map['instance'] as String,
       latestRecoveryTime: map['latestRecoveryTime'] as String,
       project: map['project'] as String,
-      sourceInstanceDeletionTime: map['sourceInstanceDeletionTime'] == null ? null : map['sourceInstanceDeletionTime'] as String,
+      sourceInstanceDeletionTime: map['sourceInstanceDeletionTime'] == null ? null : map['sourceInstanceDeletionTime']! as String,
     );
   }
 }

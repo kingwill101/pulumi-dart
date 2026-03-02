@@ -64,7 +64,7 @@ class GetQuickConnectResult {
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
       name: map['name'] as String,
-      quickConnectConfigs: pulumi.Input.decodeList<GetQuickConnectQuickConnectConfig>(map['quickConnectConfigs'], (value) => GetQuickConnectQuickConnectConfig.fromMap((value as Map).cast<String, dynamic>())),
+      quickConnectConfigs: pulumi.Input.decodeList<GetQuickConnectQuickConnectConfig>(map['quickConnectConfigs']!, (value) => GetQuickConnectQuickConnectConfig.fromMap((value as Map).cast<String, dynamic>())),
       quickConnectId: map['quickConnectId'] as String,
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),

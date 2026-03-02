@@ -31,8 +31,8 @@ class DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest
   factory DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest.fromMap(Map<String, dynamic> map) {
     return DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest(
       catalogEncryptionMode: (map['catalogEncryptionMode'] as String).input(),
-      catalogEncryptionServiceRole: map['catalogEncryptionServiceRole'] == null ? null : (map['catalogEncryptionServiceRole'] as String).input(),
-      sseAwsKmsKeyId: map['sseAwsKmsKeyId'] == null ? null : (map['sseAwsKmsKeyId'] as String).input(),
+      catalogEncryptionServiceRole: map['catalogEncryptionServiceRole'] == null ? null : ((map['catalogEncryptionServiceRole'] as String).input()).input(),
+      sseAwsKmsKeyId: map['sseAwsKmsKeyId'] == null ? null : ((map['sseAwsKmsKeyId'] as String).input()).input(),
     );
   }
 }

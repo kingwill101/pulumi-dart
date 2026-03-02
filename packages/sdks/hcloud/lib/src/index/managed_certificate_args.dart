@@ -37,8 +37,8 @@ class ManagedCertificateArgs {
   factory ManagedCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateArgs(
       domainNames: ((map['domainNames'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

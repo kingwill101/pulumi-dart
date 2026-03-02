@@ -36,10 +36,10 @@ class ObjectLambdaAccessPointConfiguration {
 
   factory ObjectLambdaAccessPointConfiguration.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointConfiguration(
-      allowedFeatures: map['allowedFeatures'] == null ? null : ((map['allowedFeatures'] as List).cast<String>()).input(),
-      cloudWatchMetricsEnabled: map['cloudWatchMetricsEnabled'] == null ? null : (map['cloudWatchMetricsEnabled'] as bool).input(),
+      allowedFeatures: map['allowedFeatures'] == null ? null : (((map['allowedFeatures'] as List).cast<String>()).input()).input(),
+      cloudWatchMetricsEnabled: map['cloudWatchMetricsEnabled'] == null ? null : ((map['cloudWatchMetricsEnabled'] as bool).input()).input(),
       supportingAccessPoint: (map['supportingAccessPoint'] as String).input(),
-      transformationConfigurations: (pulumi.Input.decodeList<ObjectLambdaAccessPointConfigurationTransformationConfiguration>(map['transformationConfigurations'], (value) => ObjectLambdaAccessPointConfigurationTransformationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transformationConfigurations: (pulumi.Input.decodeList<ObjectLambdaAccessPointConfigurationTransformationConfiguration>(map['transformationConfigurations']!, (value) => ObjectLambdaAccessPointConfigurationTransformationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

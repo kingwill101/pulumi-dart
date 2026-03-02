@@ -37,7 +37,7 @@ class GetMembershipRbacRoleBindingArgs {
     return GetMembershipRbacRoleBindingArgs(
       location: (map['location'] as String).input(),
       membershipId: (map['membershipId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rbacrolebindingId: (map['rbacrolebindingId'] as String).input(),
     );
   }

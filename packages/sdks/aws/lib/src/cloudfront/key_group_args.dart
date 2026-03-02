@@ -34,9 +34,9 @@ class KeyGroupArgs {
 
   factory KeyGroupArgs.fromMap(Map<String, dynamic> map) {
     return KeyGroupArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
       items: ((map['items'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

@@ -65,16 +65,16 @@ class DomainLaunchSecuritySevsnp {
 
   factory DomainLaunchSecuritySevsnp.fromMap(Map<String, dynamic> map) {
     return DomainLaunchSecuritySevsnp(
-      authorKey: map['authorKey'] == null ? null : (map['authorKey'] as String).input(),
-      cbitPos: map['cbitPos'] == null ? null : (map['cbitPos'] as double).input(),
-      guestVisibleWorkarounds: map['guestVisibleWorkarounds'] == null ? null : (map['guestVisibleWorkarounds'] as String).input(),
-      hostData: map['hostData'] == null ? null : (map['hostData'] as String).input(),
-      idAuth: map['idAuth'] == null ? null : (map['idAuth'] as String).input(),
-      idBlock: map['idBlock'] == null ? null : (map['idBlock'] as String).input(),
-      kernelHashes: map['kernelHashes'] == null ? null : (map['kernelHashes'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as double).input(),
-      reducedPhysBits: map['reducedPhysBits'] == null ? null : (map['reducedPhysBits'] as double).input(),
-      vcek: map['vcek'] == null ? null : (map['vcek'] as String).input(),
+      authorKey: map['authorKey'] == null ? null : (map['authorKey']! as String).input(),
+      cbitPos: map['cbitPos'] == null ? null : (map['cbitPos']! as double).input(),
+      guestVisibleWorkarounds: map['guestVisibleWorkarounds'] == null ? null : (map['guestVisibleWorkarounds']! as String).input(),
+      hostData: map['hostData'] == null ? null : (map['hostData']! as String).input(),
+      idAuth: map['idAuth'] == null ? null : (map['idAuth']! as String).input(),
+      idBlock: map['idBlock'] == null ? null : (map['idBlock']! as String).input(),
+      kernelHashes: map['kernelHashes'] == null ? null : (map['kernelHashes']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as double).input(),
+      reducedPhysBits: map['reducedPhysBits'] == null ? null : (map['reducedPhysBits']! as double).input(),
+      vcek: map['vcek'] == null ? null : (map['vcek']! as String).input(),
     );
   }
 }

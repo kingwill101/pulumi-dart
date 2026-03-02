@@ -49,12 +49,12 @@ class ReadWriteSplittingConnectionArgs {
 
   factory ReadWriteSplittingConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ReadWriteSplittingConnectionArgs(
-      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix']! as String).input(),
       distributionType: (map['distributionType'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      maxDelayTime: map['maxDelayTime'] == null ? null : (map['maxDelayTime'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      weight: map['weight'] == null ? null : ((map['weight'] as Map).cast<String, String>()).input(),
+      maxDelayTime: map['maxDelayTime'] == null ? null : (map['maxDelayTime']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      weight: map['weight'] == null ? null : ((map['weight']! as Map).cast<String, String>()).input(),
     );
   }
 }

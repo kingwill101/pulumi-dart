@@ -42,11 +42,11 @@ class InfrastructureNetwork {
 
   factory InfrastructureNetwork.fromMap(Map<String, dynamic> map) {
     return InfrastructureNetwork(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
-      ipPools: map['ipPools'] == null ? null : (pulumi.Input.decodeList<IpPools>(map['ipPools'], (value) => IpPools.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask'] as String).input(),
-      useDhcp: map['useDhcp'] == null ? null : (map['useDhcp'] as bool).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
+      ipPools: map['ipPools'] == null ? null : (pulumi.Input.decodeList<IpPools>(map['ipPools']!, (value) => IpPools.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask']! as String).input(),
+      useDhcp: map['useDhcp'] == null ? null : (map['useDhcp']! as bool).input(),
     );
   }
 }

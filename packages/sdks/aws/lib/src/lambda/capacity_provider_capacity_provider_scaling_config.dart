@@ -33,7 +33,7 @@ class CapacityProviderCapacityProviderScalingConfig {
     return CapacityProviderCapacityProviderScalingConfig(
       maxVcpuCount: (map['maxVcpuCount'] as int).input(),
       scalingMode: (map['scalingMode'] as String).input(),
-      scalingPolicies: (pulumi.Input.decodeList<CapacityProviderCapacityProviderScalingConfigScalingPolicy>(map['scalingPolicies'], (value) => CapacityProviderCapacityProviderScalingConfigScalingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scalingPolicies: (pulumi.Input.decodeList<CapacityProviderCapacityProviderScalingConfigScalingPolicy>(map['scalingPolicies']!, (value) => CapacityProviderCapacityProviderScalingConfigScalingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

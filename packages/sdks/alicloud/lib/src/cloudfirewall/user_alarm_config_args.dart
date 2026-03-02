@@ -51,11 +51,11 @@ class UserAlarmConfigArgs {
   factory UserAlarmConfigArgs.fromMap(Map<String, dynamic> map) {
     return UserAlarmConfigArgs(
       alarmConfigs: (pulumi.Input.decodeList<UserAlarmConfigAlarmConfig>(map['alarmConfigs'], (value) => UserAlarmConfigAlarmConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      alarmLang: map['alarmLang'] == null ? null : (map['alarmLang'] as String).input(),
-      contactConfigs: map['contactConfigs'] == null ? null : (pulumi.Input.decodeList<UserAlarmConfigContactConfig>(map['contactConfigs'], (value) => UserAlarmConfigContactConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      notifyConfigs: map['notifyConfigs'] == null ? null : (pulumi.Input.decodeList<UserAlarmConfigNotifyConfig>(map['notifyConfigs'], (value) => UserAlarmConfigNotifyConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      useDefaultContact: map['useDefaultContact'] == null ? null : (map['useDefaultContact'] as String).input(),
+      alarmLang: map['alarmLang'] == null ? null : (map['alarmLang']! as String).input(),
+      contactConfigs: map['contactConfigs'] == null ? null : (pulumi.Input.decodeList<UserAlarmConfigContactConfig>(map['contactConfigs']!, (value) => UserAlarmConfigContactConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      notifyConfigs: map['notifyConfigs'] == null ? null : (pulumi.Input.decodeList<UserAlarmConfigNotifyConfig>(map['notifyConfigs']!, (value) => UserAlarmConfigNotifyConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      useDefaultContact: map['useDefaultContact'] == null ? null : (map['useDefaultContact']! as String).input(),
     );
   }
 }

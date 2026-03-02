@@ -84,19 +84,19 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      applicationGroupReferences: map['applicationGroupReferences'] == null ? null : ((map['applicationGroupReferences'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      identity: map['identity'] == null ? null : (ResourceModelWithAllowedPropertySetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
-      plan: map['plan'] == null ? null : (ResourceModelWithAllowedPropertySetPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      applicationGroupReferences: map['applicationGroupReferences'] == null ? null : ((map['applicationGroupReferences']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      identity: map['identity'] == null ? null : (ResourceModelWithAllowedPropertySetIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy']! as String).input(),
+      plan: map['plan'] == null ? null : (ResourceModelWithAllowedPropertySetPlan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (ResourceModelWithAllowedPropertySetSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
+      sku: map['sku'] == null ? null : (ResourceModelWithAllowedPropertySetSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName']! as String).input(),
     );
   }
 }

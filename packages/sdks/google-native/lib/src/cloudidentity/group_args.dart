@@ -56,11 +56,11 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      dynamicGroupMetadata: map['dynamicGroupMetadata'] == null ? null : (DynamicGroupMetadata.fromMap((map['dynamicGroupMetadata'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      dynamicGroupMetadata: map['dynamicGroupMetadata'] == null ? null : (DynamicGroupMetadata.fromMap((map['dynamicGroupMetadata']! as Map).cast<String, dynamic>())).input(),
       groupKey: (EntityKey.fromMap((map['groupKey'] as Map).cast<String, dynamic>())).input(),
-      initialGroupConfig: map['initialGroupConfig'] == null ? null : (map['initialGroupConfig'] as String).input(),
+      initialGroupConfig: map['initialGroupConfig'] == null ? null : (map['initialGroupConfig']! as String).input(),
       labels: ((map['labels'] as Map).cast<String, String>()).input(),
       parent: (map['parent'] as String).input(),
     );

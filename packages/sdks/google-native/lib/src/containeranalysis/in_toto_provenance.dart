@@ -37,10 +37,10 @@ class InTotoProvenance {
 
   factory InTotoProvenance.fromMap(Map<String, dynamic> map) {
     return InTotoProvenance(
-      builderConfig: map['builderConfig'] == null ? null : (BuilderConfig.fromMap((map['builderConfig'] as Map).cast<String, dynamic>())).input(),
-      materials: map['materials'] == null ? null : ((map['materials'] as List).cast<String>()).input(),
-      metadata: map['metadata'] == null ? null : (Metadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      recipe: map['recipe'] == null ? null : (Recipe.fromMap((map['recipe'] as Map).cast<String, dynamic>())).input(),
+      builderConfig: map['builderConfig'] == null ? null : (BuilderConfig.fromMap((map['builderConfig']! as Map).cast<String, dynamic>())).input(),
+      materials: map['materials'] == null ? null : ((map['materials']! as List).cast<String>()).input(),
+      metadata: map['metadata'] == null ? null : (Metadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      recipe: map['recipe'] == null ? null : (Recipe.fromMap((map['recipe']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

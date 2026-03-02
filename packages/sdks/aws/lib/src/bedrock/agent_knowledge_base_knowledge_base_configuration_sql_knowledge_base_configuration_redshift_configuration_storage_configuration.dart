@@ -32,8 +32,8 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration(
-      awsDataCatalogConfiguration: map['awsDataCatalogConfiguration'] == null ? null : (AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration.fromMap((map['awsDataCatalogConfiguration'] as Map).cast<String, dynamic>())).input(),
-      redshiftConfiguration: map['redshiftConfiguration'] == null ? null : (AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationRedshiftConfiguration.fromMap((map['redshiftConfiguration'] as Map).cast<String, dynamic>())).input(),
+      awsDataCatalogConfiguration: map['awsDataCatalogConfiguration'] == null ? null : ((AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationAwsDataCatalogConfiguration.fromMap((map['awsDataCatalogConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      redshiftConfiguration: map['redshiftConfiguration'] == null ? null : ((AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfigurationRedshiftConfiguration.fromMap((map['redshiftConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

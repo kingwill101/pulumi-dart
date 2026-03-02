@@ -66,7 +66,7 @@ class SqlDBTableDataSetArgs {
   factory SqlDBTableDataSetArgs.fromMap(Map<String, dynamic> map) {
     return SqlDBTableDataSetArgs(
       accountName: (map['accountName'] as String).input(),
-      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName'] as String).input(),
+      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

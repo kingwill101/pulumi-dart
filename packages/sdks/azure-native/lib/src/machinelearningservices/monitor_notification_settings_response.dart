@@ -21,7 +21,7 @@ class MonitorNotificationSettingsResponse {
 
   factory MonitorNotificationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return MonitorNotificationSettingsResponse(
-      emailNotificationSettings: map['emailNotificationSettings'] == null ? null : (MonitorEmailNotificationSettingsResponse.fromMap((map['emailNotificationSettings'] as Map).cast<String, dynamic>())).input(),
+      emailNotificationSettings: map['emailNotificationSettings'] == null ? null : (MonitorEmailNotificationSettingsResponse.fromMap((map['emailNotificationSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

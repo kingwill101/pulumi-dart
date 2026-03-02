@@ -21,7 +21,7 @@ class DomainProcessingStatusTypeEnumValueResponse {
 
   factory DomainProcessingStatusTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return DomainProcessingStatusTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ReplicationConfigurationReplicationConfiguration {
 
   factory ReplicationConfigurationReplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationReplicationConfiguration(
-      rules: (pulumi.Input.decodeList<ReplicationConfigurationReplicationConfigurationRule>(map['rules'], (value) => ReplicationConfigurationReplicationConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: (pulumi.Input.decodeList<ReplicationConfigurationReplicationConfigurationRule>(map['rules']!, (value) => ReplicationConfigurationReplicationConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

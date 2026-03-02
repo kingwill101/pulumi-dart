@@ -66,15 +66,15 @@ class SyncServerEndpointArgs {
 
   factory SyncServerEndpointArgs.fromMap(Map<String, dynamic> map) {
     return SyncServerEndpointArgs(
-      cloudTieringEnabled: map['cloudTieringEnabled'] == null ? null : (map['cloudTieringEnabled'] as bool).input(),
-      initialDownloadPolicy: map['initialDownloadPolicy'] == null ? null : (map['initialDownloadPolicy'] as String).input(),
-      localCacheMode: map['localCacheMode'] == null ? null : (map['localCacheMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      cloudTieringEnabled: map['cloudTieringEnabled'] == null ? null : (map['cloudTieringEnabled']! as bool).input(),
+      initialDownloadPolicy: map['initialDownloadPolicy'] == null ? null : (map['initialDownloadPolicy']! as String).input(),
+      localCacheMode: map['localCacheMode'] == null ? null : (map['localCacheMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       registeredServerId: (map['registeredServerId'] as String).input(),
       serverLocalPath: (map['serverLocalPath'] as String).input(),
       storageSyncGroupId: (map['storageSyncGroupId'] as String).input(),
-      tierFilesOlderThanDays: map['tierFilesOlderThanDays'] == null ? null : (map['tierFilesOlderThanDays'] as int).input(),
-      volumeFreeSpacePercent: map['volumeFreeSpacePercent'] == null ? null : (map['volumeFreeSpacePercent'] as int).input(),
+      tierFilesOlderThanDays: map['tierFilesOlderThanDays'] == null ? null : (map['tierFilesOlderThanDays']! as int).input(),
+      volumeFreeSpacePercent: map['volumeFreeSpacePercent'] == null ? null : (map['volumeFreeSpacePercent']! as int).input(),
     );
   }
 }

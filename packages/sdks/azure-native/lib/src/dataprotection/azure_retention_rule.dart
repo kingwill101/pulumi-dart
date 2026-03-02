@@ -34,7 +34,7 @@ class AzureRetentionRule {
 
   factory AzureRetentionRule.fromMap(Map<String, dynamic> map) {
     return AzureRetentionRule(
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
       lifecycles: (pulumi.Input.decodeList<SourceLifeCycle>(map['lifecycles'], (value) => SourceLifeCycle.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       objectType: (map['objectType'] as String).input(),

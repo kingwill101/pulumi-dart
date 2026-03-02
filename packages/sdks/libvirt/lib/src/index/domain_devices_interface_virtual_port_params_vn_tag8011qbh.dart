@@ -20,7 +20,7 @@ class DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh {
 
   factory DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh(
-      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId']! as String).input(),
     );
   }
 }

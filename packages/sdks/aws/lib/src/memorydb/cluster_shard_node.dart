@@ -35,10 +35,10 @@ class ClusterShardNode {
 
   factory ClusterShardNode.fromMap(Map<String, dynamic> map) {
     return ClusterShardNode(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<ClusterShardNodeEndpoint>(map['endpoints'], (value) => ClusterShardNodeEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      createTime: map['createTime'] == null ? null : ((map['createTime'] as String).input()).input(),
+      endpoints: map['endpoints'] == null ? null : ((pulumi.Input.decodeList<ClusterShardNodeEndpoint>(map['endpoints']!, (value) => ClusterShardNodeEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

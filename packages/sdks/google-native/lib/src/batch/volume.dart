@@ -43,11 +43,11 @@ class Volume {
 
   factory Volume.fromMap(Map<String, dynamic> map) {
     return Volume(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      gcs: map['gcs'] == null ? null : (GCS.fromMap((map['gcs'] as Map).cast<String, dynamic>())).input(),
-      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions'] as List).cast<String>()).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      nfs: map['nfs'] == null ? null : (NFS.fromMap((map['nfs'] as Map).cast<String, dynamic>())).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      gcs: map['gcs'] == null ? null : (GCS.fromMap((map['gcs']! as Map).cast<String, dynamic>())).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions']! as List).cast<String>()).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      nfs: map['nfs'] == null ? null : (NFS.fromMap((map['nfs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

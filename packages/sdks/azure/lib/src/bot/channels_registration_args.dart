@@ -103,22 +103,22 @@ class ChannelsRegistrationArgs {
 
   factory ChannelsRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return ChannelsRegistrationArgs(
-      cmkKeyVaultUrl: map['cmkKeyVaultUrl'] == null ? null : (map['cmkKeyVaultUrl'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      developerAppInsightsApiKey: map['developerAppInsightsApiKey'] == null ? null : (map['developerAppInsightsApiKey'] as String).input(),
-      developerAppInsightsApplicationId: map['developerAppInsightsApplicationId'] == null ? null : (map['developerAppInsightsApplicationId'] as String).input(),
-      developerAppInsightsKey: map['developerAppInsightsKey'] == null ? null : (map['developerAppInsightsKey'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      cmkKeyVaultUrl: map['cmkKeyVaultUrl'] == null ? null : (map['cmkKeyVaultUrl']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      developerAppInsightsApiKey: map['developerAppInsightsApiKey'] == null ? null : (map['developerAppInsightsApiKey']! as String).input(),
+      developerAppInsightsApplicationId: map['developerAppInsightsApplicationId'] == null ? null : (map['developerAppInsightsApplicationId']! as String).input(),
+      developerAppInsightsKey: map['developerAppInsightsKey'] == null ? null : (map['developerAppInsightsKey']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       microsoftAppId: (map['microsoftAppId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (map['sku'] as String).input(),
-      streamingEndpointEnabled: map['streamingEndpointEnabled'] == null ? null : (map['streamingEndpointEnabled'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      streamingEndpointEnabled: map['streamingEndpointEnabled'] == null ? null : (map['streamingEndpointEnabled']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

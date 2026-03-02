@@ -21,7 +21,7 @@ class FaultSimulationConstraintsResponse {
 
   factory FaultSimulationConstraintsResponse.fromMap(Map<String, dynamic> map) {
     return FaultSimulationConstraintsResponse(
-      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime']! as String).input(),
     );
   }
 }

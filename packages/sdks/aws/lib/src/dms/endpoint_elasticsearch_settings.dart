@@ -41,10 +41,10 @@ class EndpointElasticsearchSettings {
   factory EndpointElasticsearchSettings.fromMap(Map<String, dynamic> map) {
     return EndpointElasticsearchSettings(
       endpointUri: (map['endpointUri'] as String).input(),
-      errorRetryDuration: map['errorRetryDuration'] == null ? null : (map['errorRetryDuration'] as int).input(),
-      fullLoadErrorPercentage: map['fullLoadErrorPercentage'] == null ? null : (map['fullLoadErrorPercentage'] as int).input(),
+      errorRetryDuration: map['errorRetryDuration'] == null ? null : ((map['errorRetryDuration'] as int).input()).input(),
+      fullLoadErrorPercentage: map['fullLoadErrorPercentage'] == null ? null : ((map['fullLoadErrorPercentage'] as int).input()).input(),
       serviceAccessRoleArn: (map['serviceAccessRoleArn'] as String).input(),
-      useNewMappingType: map['useNewMappingType'] == null ? null : (map['useNewMappingType'] as bool).input(),
+      useNewMappingType: map['useNewMappingType'] == null ? null : ((map['useNewMappingType'] as bool).input()).input(),
     );
   }
 }

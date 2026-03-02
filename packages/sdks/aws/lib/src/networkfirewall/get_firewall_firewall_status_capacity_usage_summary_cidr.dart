@@ -32,7 +32,7 @@ class GetFirewallFirewallStatusCapacityUsageSummaryCidr {
   factory GetFirewallFirewallStatusCapacityUsageSummaryCidr.fromMap(Map<String, dynamic> map) {
     return GetFirewallFirewallStatusCapacityUsageSummaryCidr(
       availableCidrCount: (map['availableCidrCount'] as int).input(),
-      ipSetReferences: (pulumi.Input.decodeList<GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference>(map['ipSetReferences'], (value) => GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipSetReferences: (pulumi.Input.decodeList<GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference>(map['ipSetReferences']!, (value) => GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       utilizedCidrCount: (map['utilizedCidrCount'] as int).input(),
     );
   }

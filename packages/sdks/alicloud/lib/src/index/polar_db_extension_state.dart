@@ -46,12 +46,12 @@ class PolarDbExtensionState {
 
   factory PolarDbExtensionState.fromMap(Map<String, dynamic> map) {
     return PolarDbExtensionState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
-      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
-      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion'] as String).input(),
-      extensionName: map['extensionName'] == null ? null : (map['extensionName'] as String).input(),
-      installedVersion: map['installedVersion'] == null ? null : (map['installedVersion'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId']! as String).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName']! as String).input(),
+      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion']! as String).input(),
+      extensionName: map['extensionName'] == null ? null : (map['extensionName']! as String).input(),
+      installedVersion: map['installedVersion'] == null ? null : (map['installedVersion']! as String).input(),
     );
   }
 }

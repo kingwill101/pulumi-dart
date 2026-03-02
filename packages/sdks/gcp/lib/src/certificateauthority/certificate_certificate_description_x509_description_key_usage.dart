@@ -36,9 +36,9 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsage {
 
   factory CertificateCertificateDescriptionX509DescriptionKeyUsage.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionX509DescriptionKeyUsage(
-      baseKeyUsages: map['baseKeyUsages'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage>(map['baseKeyUsages'], (value) => CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      extendedKeyUsages: map['extendedKeyUsages'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage>(map['extendedKeyUsages'], (value) => CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage>(map['unknownExtendedKeyUsages'], (value) => CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      baseKeyUsages: map['baseKeyUsages'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage>(map['baseKeyUsages']!, (value) => CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extendedKeyUsages: map['extendedKeyUsages'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage>(map['extendedKeyUsages']!, (value) => CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage>(map['unknownExtendedKeyUsages']!, (value) => CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class LocalBrokerKubernetesAuthentication {
 
   factory LocalBrokerKubernetesAuthentication.fromMap(Map<String, dynamic> map) {
     return LocalBrokerKubernetesAuthentication(
-      secretPath: map['secretPath'] == null ? null : (map['secretPath'] as String).input(),
-      serviceAccountTokenName: map['serviceAccountTokenName'] == null ? null : (map['serviceAccountTokenName'] as String).input(),
+      secretPath: map['secretPath'] == null ? null : (map['secretPath']! as String).input(),
+      serviceAccountTokenName: map['serviceAccountTokenName'] == null ? null : (map['serviceAccountTokenName']! as String).input(),
     );
   }
 }

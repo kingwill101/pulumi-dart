@@ -33,7 +33,7 @@ class AcceleratorBasicAuthSettingResponse {
   factory AcceleratorBasicAuthSettingResponse.fromMap(Map<String, dynamic> map) {
     return AcceleratorBasicAuthSettingResponse(
       authType: (map['authType'] as String).input(),
-      caCertResourceId: map['caCertResourceId'] == null ? null : (map['caCertResourceId'] as String).input(),
+      caCertResourceId: map['caCertResourceId'] == null ? null : (map['caCertResourceId']! as String).input(),
       username: (map['username'] as String).input(),
     );
   }

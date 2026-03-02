@@ -46,12 +46,12 @@ class TableLevelSharingProperties {
 
   factory TableLevelSharingProperties.fromMap(Map<String, dynamic> map) {
     return TableLevelSharingProperties(
-      externalTablesToExclude: map['externalTablesToExclude'] == null ? null : ((map['externalTablesToExclude'] as List).cast<String>()).input(),
-      externalTablesToInclude: map['externalTablesToInclude'] == null ? null : ((map['externalTablesToInclude'] as List).cast<String>()).input(),
-      materializedViewsToExclude: map['materializedViewsToExclude'] == null ? null : ((map['materializedViewsToExclude'] as List).cast<String>()).input(),
-      materializedViewsToInclude: map['materializedViewsToInclude'] == null ? null : ((map['materializedViewsToInclude'] as List).cast<String>()).input(),
-      tablesToExclude: map['tablesToExclude'] == null ? null : ((map['tablesToExclude'] as List).cast<String>()).input(),
-      tablesToInclude: map['tablesToInclude'] == null ? null : ((map['tablesToInclude'] as List).cast<String>()).input(),
+      externalTablesToExclude: map['externalTablesToExclude'] == null ? null : ((map['externalTablesToExclude']! as List).cast<String>()).input(),
+      externalTablesToInclude: map['externalTablesToInclude'] == null ? null : ((map['externalTablesToInclude']! as List).cast<String>()).input(),
+      materializedViewsToExclude: map['materializedViewsToExclude'] == null ? null : ((map['materializedViewsToExclude']! as List).cast<String>()).input(),
+      materializedViewsToInclude: map['materializedViewsToInclude'] == null ? null : ((map['materializedViewsToInclude']! as List).cast<String>()).input(),
+      tablesToExclude: map['tablesToExclude'] == null ? null : ((map['tablesToExclude']! as List).cast<String>()).input(),
+      tablesToInclude: map['tablesToInclude'] == null ? null : ((map['tablesToInclude']! as List).cast<String>()).input(),
     );
   }
 }

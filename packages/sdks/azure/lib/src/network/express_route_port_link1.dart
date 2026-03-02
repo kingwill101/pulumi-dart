@@ -72,17 +72,17 @@ class ExpressRoutePortLink1 {
 
   factory ExpressRoutePortLink1.fromMap(Map<String, dynamic> map) {
     return ExpressRoutePortLink1(
-      adminEnabled: map['adminEnabled'] == null ? null : (map['adminEnabled'] as bool).input(),
-      connectorType: map['connectorType'] == null ? null : (map['connectorType'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName'] as String).input(),
-      macsecCakKeyvaultSecretId: map['macsecCakKeyvaultSecretId'] == null ? null : (map['macsecCakKeyvaultSecretId'] as String).input(),
-      macsecCipher: map['macsecCipher'] == null ? null : (map['macsecCipher'] as String).input(),
-      macsecCknKeyvaultSecretId: map['macsecCknKeyvaultSecretId'] == null ? null : (map['macsecCknKeyvaultSecretId'] as String).input(),
-      macsecSciEnabled: map['macsecSciEnabled'] == null ? null : (map['macsecSciEnabled'] as bool).input(),
-      patchPanelId: map['patchPanelId'] == null ? null : (map['patchPanelId'] as String).input(),
-      rackId: map['rackId'] == null ? null : (map['rackId'] as String).input(),
-      routerName: map['routerName'] == null ? null : (map['routerName'] as String).input(),
+      adminEnabled: map['adminEnabled'] == null ? null : (map['adminEnabled']! as bool).input(),
+      connectorType: map['connectorType'] == null ? null : (map['connectorType']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName']! as String).input(),
+      macsecCakKeyvaultSecretId: map['macsecCakKeyvaultSecretId'] == null ? null : (map['macsecCakKeyvaultSecretId']! as String).input(),
+      macsecCipher: map['macsecCipher'] == null ? null : (map['macsecCipher']! as String).input(),
+      macsecCknKeyvaultSecretId: map['macsecCknKeyvaultSecretId'] == null ? null : (map['macsecCknKeyvaultSecretId']! as String).input(),
+      macsecSciEnabled: map['macsecSciEnabled'] == null ? null : (map['macsecSciEnabled']! as bool).input(),
+      patchPanelId: map['patchPanelId'] == null ? null : (map['patchPanelId']! as String).input(),
+      rackId: map['rackId'] == null ? null : (map['rackId']! as String).input(),
+      routerName: map['routerName'] == null ? null : (map['routerName']! as String).input(),
     );
   }
 }

@@ -75,16 +75,16 @@ class ScriptArgs {
   factory ScriptArgs.fromMap(Map<String, dynamic> map) {
     return ScriptArgs(
       clusterName: (map['clusterName'] as String).input(),
-      continueOnErrors: map['continueOnErrors'] == null ? null : (map['continueOnErrors'] as bool).input(),
+      continueOnErrors: map['continueOnErrors'] == null ? null : (map['continueOnErrors']! as bool).input(),
       databaseName: (map['databaseName'] as String).input(),
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
-      principalPermissionsAction: map['principalPermissionsAction'] == null ? null : (map['principalPermissionsAction'] as String).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag']! as String).input(),
+      principalPermissionsAction: map['principalPermissionsAction'] == null ? null : (map['principalPermissionsAction']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scriptContent: map['scriptContent'] == null ? null : (map['scriptContent'] as String).input(),
-      scriptLevel: map['scriptLevel'] == null ? null : (map['scriptLevel'] as String).input(),
-      scriptName: map['scriptName'] == null ? null : (map['scriptName'] as String).input(),
-      scriptUrl: map['scriptUrl'] == null ? null : (map['scriptUrl'] as String).input(),
-      scriptUrlSasToken: map['scriptUrlSasToken'] == null ? null : (map['scriptUrlSasToken'] as String).input(),
+      scriptContent: map['scriptContent'] == null ? null : (map['scriptContent']! as String).input(),
+      scriptLevel: map['scriptLevel'] == null ? null : (map['scriptLevel']! as String).input(),
+      scriptName: map['scriptName'] == null ? null : (map['scriptName']! as String).input(),
+      scriptUrl: map['scriptUrl'] == null ? null : (map['scriptUrl']! as String).input(),
+      scriptUrlSasToken: map['scriptUrlSasToken'] == null ? null : (map['scriptUrlSasToken']! as String).input(),
     );
   }
 }

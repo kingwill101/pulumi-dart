@@ -45,10 +45,10 @@ class HPAScalingRulesPatch {
 
   factory HPAScalingRulesPatch.fromMap(Map<String, dynamic> map) {
     return HPAScalingRulesPatch(
-      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<HPAScalingPolicyPatch>(map['policies'], (value) => HPAScalingPolicyPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selectPolicy: map['selectPolicy'] == null ? null : (map['selectPolicy'] as String).input(),
-      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] == null ? null : (map['stabilizationWindowSeconds'] as int).input(),
-      tolerance: map['tolerance'] == null ? null : (map['tolerance'] as String).input(),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<HPAScalingPolicyPatch>(map['policies']!, (value) => HPAScalingPolicyPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectPolicy: map['selectPolicy'] == null ? null : (map['selectPolicy']! as String).input(),
+      stabilizationWindowSeconds: map['stabilizationWindowSeconds'] == null ? null : (map['stabilizationWindowSeconds']! as int).input(),
+      tolerance: map['tolerance'] == null ? null : (map['tolerance']! as String).input(),
     );
   }
 }

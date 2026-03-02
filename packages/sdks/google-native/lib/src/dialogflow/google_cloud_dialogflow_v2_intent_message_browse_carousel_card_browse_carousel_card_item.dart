@@ -43,9 +43,9 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
 
   factory GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      footer: map['footer'] == null ? null : (map['footer'] as String).input(),
-      image: map['image'] == null ? null : (GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      footer: map['footer'] == null ? null : (map['footer']! as String).input(),
+      image: map['image'] == null ? null : (GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
       openUriAction: (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromMap((map['openUriAction'] as Map).cast<String, dynamic>())).input(),
       title: (map['title'] as String).input(),
     );

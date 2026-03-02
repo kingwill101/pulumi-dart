@@ -69,13 +69,13 @@ class V2modelsBotLocaleArgs {
     return V2modelsBotLocaleArgs(
       botId: (map['botId'] as String).input(),
       botVersion: (map['botVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       localeId: (map['localeId'] as String).input(),
       nLuIntentConfidenceThreshold: (map['nLuIntentConfidenceThreshold'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (V2modelsBotLocaleTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      voiceSettings: map['voiceSettings'] == null ? null : (V2modelsBotLocaleVoiceSettings.fromMap((map['voiceSettings'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((V2modelsBotLocaleTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      voiceSettings: map['voiceSettings'] == null ? null : ((V2modelsBotLocaleVoiceSettings.fromMap((map['voiceSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

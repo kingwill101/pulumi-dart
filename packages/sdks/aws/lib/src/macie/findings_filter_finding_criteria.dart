@@ -21,7 +21,7 @@ class FindingsFilterFindingCriteria {
 
   factory FindingsFilterFindingCriteria.fromMap(Map<String, dynamic> map) {
     return FindingsFilterFindingCriteria(
-      criterions: map['criterions'] == null ? null : (pulumi.Input.decodeList<FindingsFilterFindingCriteriaCriterion>(map['criterions'], (value) => FindingsFilterFindingCriteriaCriterion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      criterions: map['criterions'] == null ? null : ((pulumi.Input.decodeList<FindingsFilterFindingCriteriaCriterion>(map['criterions']!, (value) => FindingsFilterFindingCriteriaCriterion.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

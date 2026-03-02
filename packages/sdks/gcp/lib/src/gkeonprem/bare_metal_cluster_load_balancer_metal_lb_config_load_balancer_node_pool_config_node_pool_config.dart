@@ -48,10 +48,10 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
 
   factory BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      nodeConfigs: map['nodeConfigs'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig>(map['nodeConfigs'], (value) => BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint>(map['taints'], (value) => BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      nodeConfigs: map['nodeConfigs'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig>(map['nodeConfigs']!, (value) => BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem']! as String).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint>(map['taints']!, (value) => BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

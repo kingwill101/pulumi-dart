@@ -20,7 +20,7 @@ class V2modelsIntentClosingSettingConditionalConditionalBranchNextStepIntentSlot
 
   factory V2modelsIntentClosingSettingConditionalConditionalBranchNextStepIntentSlotValue.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentClosingSettingConditionalConditionalBranchNextStepIntentSlotValue(
-      interpretedValue: map['interpretedValue'] == null ? null : (map['interpretedValue'] as String).input(),
+      interpretedValue: map['interpretedValue'] == null ? null : ((map['interpretedValue'] as String).input()).input(),
     );
   }
 }

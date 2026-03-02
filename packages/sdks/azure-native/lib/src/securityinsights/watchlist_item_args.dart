@@ -85,18 +85,18 @@ class WatchlistItemArgs {
 
   factory WatchlistItemArgs.fromMap(Map<String, dynamic> map) {
     return WatchlistItemArgs(
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (WatchlistUserInfo.fromMap((map['createdBy'] as Map).cast<String, dynamic>())).input(),
-      entityMapping: map['entityMapping'] == null ? null : (map['entityMapping']).input(),
-      isDeleted: map['isDeleted'] == null ? null : (map['isDeleted'] as bool).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      createdBy: map['createdBy'] == null ? null : (WatchlistUserInfo.fromMap((map['createdBy']! as Map).cast<String, dynamic>())).input(),
+      entityMapping: map['entityMapping'] == null ? null : (map['entityMapping']!).input(),
+      isDeleted: map['isDeleted'] == null ? null : (map['isDeleted']! as bool).input(),
       itemsKeyValue: (map['itemsKeyValue']).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
-      updatedBy: map['updatedBy'] == null ? null : (WatchlistUserInfo.fromMap((map['updatedBy'] as Map).cast<String, dynamic>())).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
+      updatedBy: map['updatedBy'] == null ? null : (WatchlistUserInfo.fromMap((map['updatedBy']! as Map).cast<String, dynamic>())).input(),
       watchlistAlias: (map['watchlistAlias'] as String).input(),
-      watchlistItemId: map['watchlistItemId'] == null ? null : (map['watchlistItemId'] as String).input(),
-      watchlistItemType: map['watchlistItemType'] == null ? null : (map['watchlistItemType'] as String).input(),
+      watchlistItemId: map['watchlistItemId'] == null ? null : (map['watchlistItemId']! as String).input(),
+      watchlistItemType: map['watchlistItemType'] == null ? null : (map['watchlistItemType']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

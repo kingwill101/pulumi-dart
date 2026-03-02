@@ -251,16 +251,16 @@ class As3State {
 
   factory As3State.fromMap(Map<String, dynamic> map) {
     return As3State(
-      applicationList: map['applicationList'] == null ? null : (map['applicationList'] as String).input(),
-      as3Json: map['as3Json'] == null ? null : (map['as3Json'] as String).input(),
-      controls: map['controls'] == null ? null : ((map['controls'] as Map).cast<String, String>()).input(),
-      deleteApps: map['deleteApps'] == null ? null : (As3DeleteApps.fromMap((map['deleteApps'] as Map).cast<String, dynamic>())).input(),
-      ignoreMetadata: map['ignoreMetadata'] == null ? null : (map['ignoreMetadata'] as bool).input(),
-      perAppMode: map['perAppMode'] == null ? null : (map['perAppMode'] as bool).input(),
-      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
-      tenantFilter: map['tenantFilter'] == null ? null : (map['tenantFilter'] as String).input(),
-      tenantList: map['tenantList'] == null ? null : (map['tenantList'] as String).input(),
-      tenantName: map['tenantName'] == null ? null : (map['tenantName'] as String).input(),
+      applicationList: map['applicationList'] == null ? null : (map['applicationList']! as String).input(),
+      as3Json: map['as3Json'] == null ? null : (map['as3Json']! as String).input(),
+      controls: map['controls'] == null ? null : ((map['controls']! as Map).cast<String, String>()).input(),
+      deleteApps: map['deleteApps'] == null ? null : (As3DeleteApps.fromMap((map['deleteApps']! as Map).cast<String, dynamic>())).input(),
+      ignoreMetadata: map['ignoreMetadata'] == null ? null : (map['ignoreMetadata']! as bool).input(),
+      perAppMode: map['perAppMode'] == null ? null : (map['perAppMode']! as bool).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId']! as String).input(),
+      tenantFilter: map['tenantFilter'] == null ? null : (map['tenantFilter']! as String).input(),
+      tenantList: map['tenantList'] == null ? null : (map['tenantList']! as String).input(),
+      tenantName: map['tenantName'] == null ? null : (map['tenantName']! as String).input(),
     );
   }
 }

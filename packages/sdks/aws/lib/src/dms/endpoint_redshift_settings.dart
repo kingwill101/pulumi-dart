@@ -40,11 +40,11 @@ class EndpointRedshiftSettings {
 
   factory EndpointRedshiftSettings.fromMap(Map<String, dynamic> map) {
     return EndpointRedshiftSettings(
-      bucketFolder: map['bucketFolder'] == null ? null : (map['bucketFolder'] as String).input(),
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      encryptionMode: map['encryptionMode'] == null ? null : (map['encryptionMode'] as String).input(),
-      serverSideEncryptionKmsKeyId: map['serverSideEncryptionKmsKeyId'] == null ? null : (map['serverSideEncryptionKmsKeyId'] as String).input(),
-      serviceAccessRoleArn: map['serviceAccessRoleArn'] == null ? null : (map['serviceAccessRoleArn'] as String).input(),
+      bucketFolder: map['bucketFolder'] == null ? null : ((map['bucketFolder'] as String).input()).input(),
+      bucketName: map['bucketName'] == null ? null : ((map['bucketName'] as String).input()).input(),
+      encryptionMode: map['encryptionMode'] == null ? null : ((map['encryptionMode'] as String).input()).input(),
+      serverSideEncryptionKmsKeyId: map['serverSideEncryptionKmsKeyId'] == null ? null : ((map['serverSideEncryptionKmsKeyId'] as String).input()).input(),
+      serviceAccessRoleArn: map['serviceAccessRoleArn'] == null ? null : ((map['serviceAccessRoleArn'] as String).input()).input(),
     );
   }
 }

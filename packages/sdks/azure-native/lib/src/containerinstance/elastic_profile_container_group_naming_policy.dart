@@ -21,7 +21,7 @@ class ElasticProfileContainerGroupNamingPolicy {
 
   factory ElasticProfileContainerGroupNamingPolicy.fromMap(Map<String, dynamic> map) {
     return ElasticProfileContainerGroupNamingPolicy(
-      guidNamingPolicy: map['guidNamingPolicy'] == null ? null : (ElasticProfileGuidNamingPolicy.fromMap((map['guidNamingPolicy'] as Map).cast<String, dynamic>())).input(),
+      guidNamingPolicy: map['guidNamingPolicy'] == null ? null : (ElasticProfileGuidNamingPolicy.fromMap((map['guidNamingPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

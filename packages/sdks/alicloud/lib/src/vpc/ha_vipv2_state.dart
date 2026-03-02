@@ -95,21 +95,21 @@ class HaVipv2State {
 
   factory HaVipv2State.fromMap(Map<String, dynamic> map) {
     return HaVipv2State(
-      associatedEipAddresses: map['associatedEipAddresses'] == null ? null : ((map['associatedEipAddresses'] as List).cast<String>()).input(),
-      associatedInstanceType: map['associatedInstanceType'] == null ? null : (map['associatedInstanceType'] as String).input(),
-      associatedInstances: map['associatedInstances'] == null ? null : ((map['associatedInstances'] as List).cast<String>()).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      haVipId: map['haVipId'] == null ? null : (map['haVipId'] as String).input(),
-      haVipName: map['haVipName'] == null ? null : (map['haVipName'] as String).input(),
-      havipName: map['havipName'] == null ? null : (map['havipName'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      masterInstanceId: map['masterInstanceId'] == null ? null : (map['masterInstanceId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      associatedEipAddresses: map['associatedEipAddresses'] == null ? null : ((map['associatedEipAddresses']! as List).cast<String>()).input(),
+      associatedInstanceType: map['associatedInstanceType'] == null ? null : (map['associatedInstanceType']! as String).input(),
+      associatedInstances: map['associatedInstances'] == null ? null : ((map['associatedInstances']! as List).cast<String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      haVipId: map['haVipId'] == null ? null : (map['haVipId']! as String).input(),
+      haVipName: map['haVipName'] == null ? null : (map['haVipName']! as String).input(),
+      havipName: map['havipName'] == null ? null : (map['havipName']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      masterInstanceId: map['masterInstanceId'] == null ? null : (map['masterInstanceId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

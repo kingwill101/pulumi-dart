@@ -26,8 +26,8 @@ class SpotRestorePolicyResponse {
 
   factory SpotRestorePolicyResponse.fromMap(Map<String, dynamic> map) {
     return SpotRestorePolicyResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      restoreTimeout: map['restoreTimeout'] == null ? null : (map['restoreTimeout'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      restoreTimeout: map['restoreTimeout'] == null ? null : (map['restoreTimeout']! as String).input(),
     );
   }
 }

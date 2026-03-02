@@ -47,8 +47,8 @@ class UserStackAssociationArgs {
   factory UserStackAssociationArgs.fromMap(Map<String, dynamic> map) {
     return UserStackAssociationArgs(
       authenticationType: (map['authenticationType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sendEmailNotification: map['sendEmailNotification'] == null ? null : (map['sendEmailNotification'] as bool).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sendEmailNotification: map['sendEmailNotification'] == null ? null : ((map['sendEmailNotification'] as bool).input()).input(),
       stackName: (map['stackName'] as String).input(),
       userName: (map['userName'] as String).input(),
     );

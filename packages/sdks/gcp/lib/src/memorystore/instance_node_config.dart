@@ -21,7 +21,7 @@ class InstanceNodeConfig {
 
   factory InstanceNodeConfig.fromMap(Map<String, dynamic> map) {
     return InstanceNodeConfig(
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as double).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as double).input(),
     );
   }
 }

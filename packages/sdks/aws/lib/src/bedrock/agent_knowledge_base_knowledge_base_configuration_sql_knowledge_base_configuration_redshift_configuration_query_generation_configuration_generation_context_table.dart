@@ -36,9 +36,9 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn>(map['columns'], (value) => AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      inclusion: map['inclusion'] == null ? null : (map['inclusion'] as String).input(),
+      columns: map['columns'] == null ? null : ((pulumi.Input.decodeList<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn>(map['columns']!, (value) => AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      inclusion: map['inclusion'] == null ? null : ((map['inclusion'] as String).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

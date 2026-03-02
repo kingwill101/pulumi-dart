@@ -45,10 +45,10 @@ class ZoneAttachmentArgs {
 
   factory ZoneAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ZoneAttachmentArgs(
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
-      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
-      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<ZoneAttachmentVpc>(map['vpcs'], (value) => ZoneAttachmentVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp']! as String).input(),
+      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds']! as List).cast<String>()).input(),
+      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<ZoneAttachmentVpc>(map['vpcs']!, (value) => ZoneAttachmentVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
       zoneId: (map['zoneId'] as String).input(),
     );
   }

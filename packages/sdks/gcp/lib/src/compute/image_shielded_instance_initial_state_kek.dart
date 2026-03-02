@@ -27,7 +27,7 @@ class ImageShieldedInstanceInitialStateKek {
   factory ImageShieldedInstanceInitialStateKek.fromMap(Map<String, dynamic> map) {
     return ImageShieldedInstanceInitialStateKek(
       content: (map['content'] as String).input(),
-      fileType: map['fileType'] == null ? null : (map['fileType'] as String).input(),
+      fileType: map['fileType'] == null ? null : (map['fileType']! as String).input(),
     );
   }
 }

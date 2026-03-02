@@ -64,15 +64,15 @@ class GetTransitRouterRouteTablesArgs {
 
   factory GetTransitRouterRouteTablesArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterRouteTablesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       transitRouterId: (map['transitRouterId'] as String).input(),
-      transitRouterRouteTableIds: map['transitRouterRouteTableIds'] == null ? null : ((map['transitRouterRouteTableIds'] as List).cast<String>()).input(),
-      transitRouterRouteTableNames: map['transitRouterRouteTableNames'] == null ? null : ((map['transitRouterRouteTableNames'] as List).cast<String>()).input(),
-      transitRouterRouteTableStatus: map['transitRouterRouteTableStatus'] == null ? null : (map['transitRouterRouteTableStatus'] as String).input(),
-      transitRouterRouteTableType: map['transitRouterRouteTableType'] == null ? null : (map['transitRouterRouteTableType'] as String).input(),
+      transitRouterRouteTableIds: map['transitRouterRouteTableIds'] == null ? null : ((map['transitRouterRouteTableIds']! as List).cast<String>()).input(),
+      transitRouterRouteTableNames: map['transitRouterRouteTableNames'] == null ? null : ((map['transitRouterRouteTableNames']! as List).cast<String>()).input(),
+      transitRouterRouteTableStatus: map['transitRouterRouteTableStatus'] == null ? null : (map['transitRouterRouteTableStatus']! as String).input(),
+      transitRouterRouteTableType: map['transitRouterRouteTableType'] == null ? null : (map['transitRouterRouteTableType']! as String).input(),
     );
   }
 }

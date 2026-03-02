@@ -32,9 +32,9 @@ class GenericContainerExtendedInfo {
 
   factory GenericContainerExtendedInfo.fromMap(Map<String, dynamic> map) {
     return GenericContainerExtendedInfo(
-      containerIdentityInfo: map['containerIdentityInfo'] == null ? null : (ContainerIdentityInfo.fromMap((map['containerIdentityInfo'] as Map).cast<String, dynamic>())).input(),
-      rawCertData: map['rawCertData'] == null ? null : (map['rawCertData'] as String).input(),
-      serviceEndpoints: map['serviceEndpoints'] == null ? null : ((map['serviceEndpoints'] as Map).cast<String, String>()).input(),
+      containerIdentityInfo: map['containerIdentityInfo'] == null ? null : (ContainerIdentityInfo.fromMap((map['containerIdentityInfo']! as Map).cast<String, dynamic>())).input(),
+      rawCertData: map['rawCertData'] == null ? null : (map['rawCertData']! as String).input(),
+      serviceEndpoints: map['serviceEndpoints'] == null ? null : ((map['serviceEndpoints']! as Map).cast<String, String>()).input(),
     );
   }
 }

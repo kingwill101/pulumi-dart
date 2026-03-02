@@ -54,7 +54,7 @@ class SearchResource {
       arn: (map['arn'] as String).input(),
       lastReportedAt: (map['lastReportedAt'] as String).input(),
       owningAccountId: (map['owningAccountId'] as String).input(),
-      properties: (pulumi.Input.decodeList<SearchResourceProperty>(map['properties'], (value) => SearchResourceProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: (pulumi.Input.decodeList<SearchResourceProperty>(map['properties']!, (value) => SearchResourceProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
       region: (map['region'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),
       service: (map['service'] as String).input(),

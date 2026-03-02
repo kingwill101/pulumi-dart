@@ -42,11 +42,11 @@ class CapacityProviderAutoScalingGroupProviderManagedScaling {
 
   factory CapacityProviderAutoScalingGroupProviderManagedScaling.fromMap(Map<String, dynamic> map) {
     return CapacityProviderAutoScalingGroupProviderManagedScaling(
-      instanceWarmupPeriod: map['instanceWarmupPeriod'] == null ? null : (map['instanceWarmupPeriod'] as int).input(),
-      maximumScalingStepSize: map['maximumScalingStepSize'] == null ? null : (map['maximumScalingStepSize'] as int).input(),
-      minimumScalingStepSize: map['minimumScalingStepSize'] == null ? null : (map['minimumScalingStepSize'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      targetCapacity: map['targetCapacity'] == null ? null : (map['targetCapacity'] as int).input(),
+      instanceWarmupPeriod: map['instanceWarmupPeriod'] == null ? null : ((map['instanceWarmupPeriod'] as int).input()).input(),
+      maximumScalingStepSize: map['maximumScalingStepSize'] == null ? null : ((map['maximumScalingStepSize'] as int).input()).input(),
+      minimumScalingStepSize: map['minimumScalingStepSize'] == null ? null : ((map['minimumScalingStepSize'] as int).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      targetCapacity: map['targetCapacity'] == null ? null : ((map['targetCapacity'] as int).input()).input(),
     );
   }
 }

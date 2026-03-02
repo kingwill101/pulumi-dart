@@ -46,11 +46,11 @@ class DirectoryConfigArgs {
 
   factory DirectoryConfigArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryConfigArgs(
-      certificateBasedAuthProperties: map['certificateBasedAuthProperties'] == null ? null : (DirectoryConfigCertificateBasedAuthProperties.fromMap((map['certificateBasedAuthProperties'] as Map).cast<String, dynamic>())).input(),
+      certificateBasedAuthProperties: map['certificateBasedAuthProperties'] == null ? null : ((DirectoryConfigCertificateBasedAuthProperties.fromMap((map['certificateBasedAuthProperties']! as Map).cast<String, dynamic>())).input()).input(),
       directoryName: (map['directoryName'] as String).input(),
       organizationalUnitDistinguishedNames: ((map['organizationalUnitDistinguishedNames'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceAccountCredentials: (DirectoryConfigServiceAccountCredentials.fromMap((map['serviceAccountCredentials'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceAccountCredentials: (DirectoryConfigServiceAccountCredentials.fromMap((map['serviceAccountCredentials']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

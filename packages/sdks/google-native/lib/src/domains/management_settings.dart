@@ -28,8 +28,8 @@ class ManagementSettings {
 
   factory ManagementSettings.fromMap(Map<String, dynamic> map) {
     return ManagementSettings(
-      preferredRenewalMethod: map['preferredRenewalMethod'] == null ? null : (ManagementSettingsPreferredRenewalMethod.fromValue(map['preferredRenewalMethod'] as String)).input(),
-      transferLockState: map['transferLockState'] == null ? null : (ManagementSettingsTransferLockState.fromValue(map['transferLockState'] as String)).input(),
+      preferredRenewalMethod: map['preferredRenewalMethod'] == null ? null : (ManagementSettingsPreferredRenewalMethod.fromValue(map['preferredRenewalMethod']! as String)).input(),
+      transferLockState: map['transferLockState'] == null ? null : (ManagementSettingsTransferLockState.fromValue(map['transferLockState']! as String)).input(),
     );
   }
 }

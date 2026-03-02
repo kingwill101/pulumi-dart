@@ -28,7 +28,7 @@ class ManagedDiskEncryptionSettings {
   factory ManagedDiskEncryptionSettings.fromMap(Map<String, dynamic> map) {
     return ManagedDiskEncryptionSettings(
       diskEncryptionKey: (ManagedDiskEncryptionSettingsDiskEncryptionKey.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (ManagedDiskEncryptionSettingsKeyEncryptionKey.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (ManagedDiskEncryptionSettingsKeyEncryptionKey.fromMap((map['keyEncryptionKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

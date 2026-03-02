@@ -36,7 +36,7 @@ class FrontdoorSecretArgs {
   factory FrontdoorSecretArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorSecretArgs(
       cdnFrontdoorProfileId: (map['cdnFrontdoorProfileId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       secret: (FrontdoorSecretSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
     );
   }

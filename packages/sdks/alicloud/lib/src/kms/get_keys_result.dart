@@ -53,14 +53,14 @@ class GetKeysResult {
 
   factory GetKeysResult.fromMap(Map<String, dynamic> map) {
     return GetKeysResult(
-      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
-      filters: map['filters'] == null ? null : map['filters'] as String,
+      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex']! as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      filters: map['filters'] == null ? null : map['filters']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       keys: pulumi.Input.decodeList<GetKeysKey>(map['keys'], (value) => GetKeysKey.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

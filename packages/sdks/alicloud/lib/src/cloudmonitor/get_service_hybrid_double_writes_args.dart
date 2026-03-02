@@ -49,12 +49,12 @@ class GetServiceHybridDoubleWritesArgs {
 
   factory GetServiceHybridDoubleWritesArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceHybridDoubleWritesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      sourceNamespace: map['sourceNamespace'] == null ? null : (map['sourceNamespace'] as String).input(),
-      sourceUserId: map['sourceUserId'] == null ? null : (map['sourceUserId'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      sourceNamespace: map['sourceNamespace'] == null ? null : (map['sourceNamespace']! as String).input(),
+      sourceUserId: map['sourceUserId'] == null ? null : (map['sourceUserId']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

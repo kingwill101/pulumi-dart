@@ -74,17 +74,17 @@ class FirehoseDeliveryStreamOpensearchserverlessConfiguration {
 
   factory FirehoseDeliveryStreamOpensearchserverlessConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamOpensearchserverlessConfiguration(
-      bufferingInterval: map['bufferingInterval'] == null ? null : (map['bufferingInterval'] as int).input(),
-      bufferingSize: map['bufferingSize'] == null ? null : (map['bufferingSize'] as int).input(),
-      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : (FirehoseDeliveryStreamOpensearchserverlessConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>())).input(),
+      bufferingInterval: map['bufferingInterval'] == null ? null : ((map['bufferingInterval'] as int).input()).input(),
+      bufferingSize: map['bufferingSize'] == null ? null : ((map['bufferingSize'] as int).input()).input(),
+      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : ((FirehoseDeliveryStreamOpensearchserverlessConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions']! as Map).cast<String, dynamic>())).input()).input(),
       collectionEndpoint: (map['collectionEndpoint'] as String).input(),
       indexName: (map['indexName'] as String).input(),
-      processingConfiguration: map['processingConfiguration'] == null ? null : (FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      retryDuration: map['retryDuration'] == null ? null : (map['retryDuration'] as int).input(),
+      processingConfiguration: map['processingConfiguration'] == null ? null : ((FirehoseDeliveryStreamOpensearchserverlessConfigurationProcessingConfiguration.fromMap((map['processingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      retryDuration: map['retryDuration'] == null ? null : ((map['retryDuration'] as int).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      s3BackupMode: map['s3BackupMode'] == null ? null : (map['s3BackupMode'] as String).input(),
-      s3Configuration: (FirehoseDeliveryStreamOpensearchserverlessConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : (FirehoseDeliveryStreamOpensearchserverlessConfigurationVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      s3BackupMode: map['s3BackupMode'] == null ? null : ((map['s3BackupMode'] as String).input()).input(),
+      s3Configuration: (FirehoseDeliveryStreamOpensearchserverlessConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : ((FirehoseDeliveryStreamOpensearchserverlessConfigurationVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

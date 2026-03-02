@@ -46,11 +46,11 @@ class EventTargetRedshiftTarget {
   factory EventTargetRedshiftTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetRedshiftTarget(
       database: (map['database'] as String).input(),
-      dbUser: map['dbUser'] == null ? null : (map['dbUser'] as String).input(),
-      secretsManagerArn: map['secretsManagerArn'] == null ? null : (map['secretsManagerArn'] as String).input(),
-      sql: map['sql'] == null ? null : (map['sql'] as String).input(),
-      statementName: map['statementName'] == null ? null : (map['statementName'] as String).input(),
-      withEvent: map['withEvent'] == null ? null : (map['withEvent'] as bool).input(),
+      dbUser: map['dbUser'] == null ? null : ((map['dbUser'] as String).input()).input(),
+      secretsManagerArn: map['secretsManagerArn'] == null ? null : ((map['secretsManagerArn'] as String).input()).input(),
+      sql: map['sql'] == null ? null : ((map['sql'] as String).input()).input(),
+      statementName: map['statementName'] == null ? null : ((map['statementName'] as String).input()).input(),
+      withEvent: map['withEvent'] == null ? null : ((map['withEvent'] as bool).input()).input(),
     );
   }
 }

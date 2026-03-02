@@ -21,7 +21,7 @@ class ThrottlingInformation {
 
   factory ThrottlingInformation.fromMap(Map<String, dynamic> map) {
     return ThrottlingInformation(
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
     );
   }
 }

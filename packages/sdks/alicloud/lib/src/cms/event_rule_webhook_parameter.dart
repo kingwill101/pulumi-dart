@@ -35,10 +35,10 @@ class EventRuleWebhookParameter {
 
   factory EventRuleWebhookParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleWebhookParameter(
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      webhookParametersId: map['webhookParametersId'] == null ? null : (map['webhookParametersId'] as String).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      webhookParametersId: map['webhookParametersId'] == null ? null : (map['webhookParametersId']! as String).input(),
     );
   }
 }

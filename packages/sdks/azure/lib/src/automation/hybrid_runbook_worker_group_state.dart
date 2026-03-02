@@ -36,10 +36,10 @@ class HybridRunbookWorkerGroupState {
 
   factory HybridRunbookWorkerGroupState.fromMap(Map<String, dynamic> map) {
     return HybridRunbookWorkerGroupState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
-      credentialName: map['credentialName'] == null ? null : (map['credentialName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
+      credentialName: map['credentialName'] == null ? null : (map['credentialName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

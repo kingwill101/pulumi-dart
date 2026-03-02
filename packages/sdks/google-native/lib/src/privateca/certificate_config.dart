@@ -34,7 +34,7 @@ class CertificateConfig {
 
   factory CertificateConfig.fromMap(Map<String, dynamic> map) {
     return CertificateConfig(
-      publicKey: map['publicKey'] == null ? null : (PublicKey.fromMap((map['publicKey'] as Map).cast<String, dynamic>())).input(),
+      publicKey: map['publicKey'] == null ? null : (PublicKey.fromMap((map['publicKey']! as Map).cast<String, dynamic>())).input(),
       subjectConfig: (SubjectConfig.fromMap((map['subjectConfig'] as Map).cast<String, dynamic>())).input(),
       x509Config: (X509Parameters.fromMap((map['x509Config'] as Map).cast<String, dynamic>())).input(),
     );

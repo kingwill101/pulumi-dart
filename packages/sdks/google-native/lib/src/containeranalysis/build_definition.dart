@@ -32,10 +32,10 @@ class BuildDefinition {
 
   factory BuildDefinition.fromMap(Map<String, dynamic> map) {
     return BuildDefinition(
-      buildType: map['buildType'] == null ? null : (map['buildType'] as String).input(),
-      externalParameters: map['externalParameters'] == null ? null : ((map['externalParameters'] as Map).cast<String, String>()).input(),
-      internalParameters: map['internalParameters'] == null ? null : ((map['internalParameters'] as Map).cast<String, String>()).input(),
-      resolvedDependencies: map['resolvedDependencies'] == null ? null : (pulumi.Input.decodeList<ResourceDescriptor>(map['resolvedDependencies'], (value) => ResourceDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      buildType: map['buildType'] == null ? null : (map['buildType']! as String).input(),
+      externalParameters: map['externalParameters'] == null ? null : ((map['externalParameters']! as Map).cast<String, String>()).input(),
+      internalParameters: map['internalParameters'] == null ? null : ((map['internalParameters']! as Map).cast<String, String>()).input(),
+      resolvedDependencies: map['resolvedDependencies'] == null ? null : (pulumi.Input.decodeList<ResourceDescriptor>(map['resolvedDependencies']!, (value) => ResourceDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

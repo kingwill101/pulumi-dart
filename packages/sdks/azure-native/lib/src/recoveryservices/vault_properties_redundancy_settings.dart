@@ -26,8 +26,8 @@ class VaultPropertiesRedundancySettings {
 
   factory VaultPropertiesRedundancySettings.fromMap(Map<String, dynamic> map) {
     return VaultPropertiesRedundancySettings(
-      crossRegionRestore: map['crossRegionRestore'] == null ? null : (map['crossRegionRestore'] as String).input(),
-      standardTierStorageRedundancy: map['standardTierStorageRedundancy'] == null ? null : (map['standardTierStorageRedundancy'] as String).input(),
+      crossRegionRestore: map['crossRegionRestore'] == null ? null : (map['crossRegionRestore']! as String).input(),
+      standardTierStorageRedundancy: map['standardTierStorageRedundancy'] == null ? null : (map['standardTierStorageRedundancy']! as String).input(),
     );
   }
 }

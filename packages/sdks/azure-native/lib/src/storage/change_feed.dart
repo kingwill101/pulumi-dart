@@ -26,8 +26,8 @@ class ChangeFeed {
 
   factory ChangeFeed.fromMap(Map<String, dynamic> map) {
     return ChangeFeed(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays']! as int).input(),
     );
   }
 }

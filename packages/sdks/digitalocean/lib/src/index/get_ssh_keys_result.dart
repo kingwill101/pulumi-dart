@@ -37,9 +37,9 @@ class GetSshKeysResult {
 
   factory GetSshKeysResult.fromMap(Map<String, dynamic> map) {
     return GetSshKeysResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSshKeysFilter>(map['filters'], (value) => GetSshKeysFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSshKeysFilter>(map['filters']!, (value) => GetSshKeysFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetSshKeysSort>(map['sorts'], (value) => GetSshKeysSort.fromMap((value as Map).cast<String, dynamic>())),
+      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetSshKeysSort>(map['sorts']!, (value) => GetSshKeysSort.fromMap((value as Map).cast<String, dynamic>())),
       sshKeys: pulumi.Input.decodeList<GetSshKeysSshKey>(map['sshKeys'], (value) => GetSshKeysSshKey.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

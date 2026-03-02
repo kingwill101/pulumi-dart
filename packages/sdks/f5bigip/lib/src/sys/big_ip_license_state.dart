@@ -26,8 +26,8 @@ class BigIpLicenseState {
 
   factory BigIpLicenseState.fromMap(Map<String, dynamic> map) {
     return BigIpLicenseState(
-      command: map['command'] == null ? null : (map['command'] as String).input(),
-      registrationKey: map['registrationKey'] == null ? null : (map['registrationKey'] as String).input(),
+      command: map['command'] == null ? null : (map['command']! as String).input(),
+      registrationKey: map['registrationKey'] == null ? null : (map['registrationKey']! as String).input(),
     );
   }
 }

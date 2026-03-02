@@ -50,12 +50,12 @@ class CapacityReservationGroupArgs {
 
   factory CapacityReservationGroupArgs.fromMap(Map<String, dynamic> map) {
     return CapacityReservationGroupArgs(
-      capacityReservationGroupName: map['capacityReservationGroupName'] == null ? null : (map['capacityReservationGroupName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      capacityReservationGroupName: map['capacityReservationGroupName'] == null ? null : (map['capacityReservationGroupName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sharingProfile: map['sharingProfile'] == null ? null : (ResourceSharingProfile.fromMap((map['sharingProfile'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      sharingProfile: map['sharingProfile'] == null ? null : (ResourceSharingProfile.fromMap((map['sharingProfile']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

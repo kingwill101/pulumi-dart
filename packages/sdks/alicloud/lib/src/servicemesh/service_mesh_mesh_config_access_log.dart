@@ -45,12 +45,12 @@ class ServiceMeshMeshConfigAccessLog {
 
   factory ServiceMeshMeshConfigAccessLog.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigAccessLog(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      gatewayEnabled: map['gatewayEnabled'] == null ? null : (map['gatewayEnabled'] as bool).input(),
-      gatewayLifecycle: map['gatewayLifecycle'] == null ? null : (map['gatewayLifecycle'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sidecarEnabled: map['sidecarEnabled'] == null ? null : (map['sidecarEnabled'] as bool).input(),
-      sidecarLifecycle: map['sidecarLifecycle'] == null ? null : (map['sidecarLifecycle'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      gatewayEnabled: map['gatewayEnabled'] == null ? null : (map['gatewayEnabled']! as bool).input(),
+      gatewayLifecycle: map['gatewayLifecycle'] == null ? null : (map['gatewayLifecycle']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sidecarEnabled: map['sidecarEnabled'] == null ? null : (map['sidecarEnabled']! as bool).input(),
+      sidecarLifecycle: map['sidecarLifecycle'] == null ? null : (map['sidecarLifecycle']! as int).input(),
     );
   }
 }

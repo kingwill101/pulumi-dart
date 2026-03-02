@@ -25,8 +25,8 @@ class DedicatedHostNetworkAttribute {
 
   factory DedicatedHostNetworkAttribute.fromMap(Map<String, dynamic> map) {
     return DedicatedHostNetworkAttribute(
-      slbUdpTimeout: map['slbUdpTimeout'] == null ? null : (map['slbUdpTimeout'] as int).input(),
-      udpTimeout: map['udpTimeout'] == null ? null : (map['udpTimeout'] as int).input(),
+      slbUdpTimeout: map['slbUdpTimeout'] == null ? null : (map['slbUdpTimeout']! as int).input(),
+      udpTimeout: map['udpTimeout'] == null ? null : (map['udpTimeout']! as int).input(),
     );
   }
 }

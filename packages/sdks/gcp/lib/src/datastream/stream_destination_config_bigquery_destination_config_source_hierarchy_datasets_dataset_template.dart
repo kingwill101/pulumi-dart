@@ -35,8 +35,8 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
 
   factory StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate.fromMap(Map<String, dynamic> map) {
     return StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate(
-      datasetIdPrefix: map['datasetIdPrefix'] == null ? null : (map['datasetIdPrefix'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      datasetIdPrefix: map['datasetIdPrefix'] == null ? null : (map['datasetIdPrefix']! as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
       location: (map['location'] as String).input(),
     );
   }

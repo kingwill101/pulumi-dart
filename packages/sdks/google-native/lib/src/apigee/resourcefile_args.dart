@@ -57,11 +57,11 @@ class ResourcefileArgs {
 
   factory ResourcefileArgs.fromMap(Map<String, dynamic> map) {
     return ResourcefileArgs(
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
       environmentId: (map['environmentId'] as String).input(),
-      extensions: map['extensions'] == null ? null : ((map['extensions'] as List).cast<Map<String, String>>()).input(),
-      file: map['file'] == null ? null : (map['file']).input(),
+      extensions: map['extensions'] == null ? null : ((map['extensions']! as List).cast<Map<String, String>>()).input(),
+      file: map['file'] == null ? null : (map['file']!).input(),
       name: (map['name'] as String).input(),
       organizationId: (map['organizationId'] as String).input(),
       type: (map['type'] as String).input(),

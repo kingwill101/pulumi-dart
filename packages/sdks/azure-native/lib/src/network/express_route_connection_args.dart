@@ -81,18 +81,18 @@ class ExpressRouteConnectionArgs {
 
   factory ExpressRouteConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteConnectionArgs(
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
-      enablePrivateLinkFastPath: map['enablePrivateLinkFastPath'] == null ? null : (map['enablePrivateLinkFastPath'] as bool).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName']! as String).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity']! as bool).input(),
+      enablePrivateLinkFastPath: map['enablePrivateLinkFastPath'] == null ? null : (map['enablePrivateLinkFastPath']! as bool).input(),
       expressRouteCircuitPeering: (ExpressRouteCircuitPeeringId.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
-      expressRouteGatewayBypass: map['expressRouteGatewayBypass'] == null ? null : (map['expressRouteGatewayBypass'] as bool).input(),
+      expressRouteGatewayBypass: map['expressRouteGatewayBypass'] == null ? null : (map['expressRouteGatewayBypass']! as bool).input(),
       expressRouteGatewayName: (map['expressRouteGatewayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfiguration.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      routingWeight: map['routingWeight'] == null ? null : (map['routingWeight'] as int).input(),
+      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfiguration.fromMap((map['routingConfiguration']! as Map).cast<String, dynamic>())).input(),
+      routingWeight: map['routingWeight'] == null ? null : (map['routingWeight']! as int).input(),
     );
   }
 }

@@ -94,19 +94,19 @@ class GetStandardResult {
   factory GetStandardResult.fromMap(Map<String, dynamic> map) {
     return GetStandardResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      category: map['category'] == null ? null : map['category'] as String,
-      components: map['components'] == null ? null : pulumi.Input.decodeList<StandardComponentPropertiesResponse>(map['components'], (value) => StandardComponentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      category: map['category'] == null ? null : map['category']! as String,
+      components: map['components'] == null ? null : pulumi.Input.decodeList<StandardComponentPropertiesResponse>(map['components']!, (value) => StandardComponentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       standardType: map['standardType'] as String,
-      supportedClouds: map['supportedClouds'] == null ? null : (map['supportedClouds'] as List).cast<String>(),
+      supportedClouds: map['supportedClouds'] == null ? null : (map['supportedClouds']! as List).cast<String>(),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

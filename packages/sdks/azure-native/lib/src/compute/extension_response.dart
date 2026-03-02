@@ -27,8 +27,8 @@ class ExtensionResponse {
 
   factory ExtensionResponse.fromMap(Map<String, dynamic> map) {
     return ExtensionResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (CloudServiceExtensionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (CloudServiceExtensionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

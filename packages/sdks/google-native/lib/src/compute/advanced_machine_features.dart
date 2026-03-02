@@ -47,12 +47,12 @@ class AdvancedMachineFeatures {
 
   factory AdvancedMachineFeatures.fromMap(Map<String, dynamic> map) {
     return AdvancedMachineFeatures(
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization'] as bool).input(),
-      enableUefiNetworking: map['enableUefiNetworking'] == null ? null : (map['enableUefiNetworking'] as bool).input(),
-      numaNodeCount: map['numaNodeCount'] == null ? null : (map['numaNodeCount'] as int).input(),
-      performanceMonitoringUnit: map['performanceMonitoringUnit'] == null ? null : (AdvancedMachineFeaturesPerformanceMonitoringUnit.fromValue(map['performanceMonitoringUnit'] as String)).input(),
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore'] as int).input(),
-      visibleCoreCount: map['visibleCoreCount'] == null ? null : (map['visibleCoreCount'] as int).input(),
+      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization']! as bool).input(),
+      enableUefiNetworking: map['enableUefiNetworking'] == null ? null : (map['enableUefiNetworking']! as bool).input(),
+      numaNodeCount: map['numaNodeCount'] == null ? null : (map['numaNodeCount']! as int).input(),
+      performanceMonitoringUnit: map['performanceMonitoringUnit'] == null ? null : (AdvancedMachineFeaturesPerformanceMonitoringUnit.fromValue(map['performanceMonitoringUnit']! as String)).input(),
+      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore']! as int).input(),
+      visibleCoreCount: map['visibleCoreCount'] == null ? null : (map['visibleCoreCount']! as int).input(),
     );
   }
 }

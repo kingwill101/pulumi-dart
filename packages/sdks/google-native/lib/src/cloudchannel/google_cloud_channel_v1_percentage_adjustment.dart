@@ -22,7 +22,7 @@ class GoogleCloudChannelV1PercentageAdjustment {
 
   factory GoogleCloudChannelV1PercentageAdjustment.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1PercentageAdjustment(
-      percentage: map['percentage'] == null ? null : (GoogleTypeDecimal.fromMap((map['percentage'] as Map).cast<String, dynamic>())).input(),
+      percentage: map['percentage'] == null ? null : (GoogleTypeDecimal.fromMap((map['percentage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

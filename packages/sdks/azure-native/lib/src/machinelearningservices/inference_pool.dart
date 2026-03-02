@@ -33,9 +33,9 @@ class InferencePool {
 
   factory InferencePool.fromMap(Map<String, dynamic> map) {
     return InferencePool(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePair>(map['properties'], (value) => StringStringKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scaleUnitConfiguration: map['scaleUnitConfiguration'] == null ? null : (ScaleUnitConfiguration.fromMap((map['scaleUnitConfiguration'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePair>(map['properties']!, (value) => StringStringKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scaleUnitConfiguration: map['scaleUnitConfiguration'] == null ? null : (ScaleUnitConfiguration.fromMap((map['scaleUnitConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -58,14 +58,14 @@ class PipeTargetParametersEcsTaskParametersOverridesContainerOverride {
 
   factory PipeTargetParametersEcsTaskParametersOverridesContainerOverride.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersEcsTaskParametersOverridesContainerOverride(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu'] as int).input(),
-      environmentFiles: map['environmentFiles'] == null ? null : (pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile>(map['environmentFiles'], (value) => PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environments: map['environments'] == null ? null : (pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment>(map['environments'], (value) => PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as int).input(),
-      memoryReservation: map['memoryReservation'] == null ? null : (map['memoryReservation'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceRequirements: map['resourceRequirements'] == null ? null : (pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement>(map['resourceRequirements'], (value) => PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commands: map['commands'] == null ? null : (((map['commands'] as List).cast<String>()).input()).input(),
+      cpu: map['cpu'] == null ? null : ((map['cpu'] as int).input()).input(),
+      environmentFiles: map['environmentFiles'] == null ? null : ((pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile>(map['environmentFiles']!, (value) => PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironmentFile.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      environments: map['environments'] == null ? null : ((pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment>(map['environments']!, (value) => PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      memory: map['memory'] == null ? null : ((map['memory'] as int).input()).input(),
+      memoryReservation: map['memoryReservation'] == null ? null : ((map['memoryReservation'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      resourceRequirements: map['resourceRequirements'] == null ? null : ((pulumi.Input.decodeList<PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement>(map['resourceRequirements']!, (value) => PipeTargetParametersEcsTaskParametersOverridesContainerOverrideResourceRequirement.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

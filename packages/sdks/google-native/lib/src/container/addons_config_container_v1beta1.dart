@@ -94,19 +94,19 @@ class AddonsConfigContainerV1beta1 {
 
   factory AddonsConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AddonsConfigContainerV1beta1(
-      cloudRunConfig: map['cloudRunConfig'] == null ? null : (CloudRunConfigContainerV1beta1.fromMap((map['cloudRunConfig'] as Map).cast<String, dynamic>())).input(),
-      configConnectorConfig: map['configConnectorConfig'] == null ? null : (ConfigConnectorConfigContainerV1beta1.fromMap((map['configConnectorConfig'] as Map).cast<String, dynamic>())).input(),
-      dnsCacheConfig: map['dnsCacheConfig'] == null ? null : (DnsCacheConfigContainerV1beta1.fromMap((map['dnsCacheConfig'] as Map).cast<String, dynamic>())).input(),
-      gcePersistentDiskCsiDriverConfig: map['gcePersistentDiskCsiDriverConfig'] == null ? null : (GcePersistentDiskCsiDriverConfigContainerV1beta1.fromMap((map['gcePersistentDiskCsiDriverConfig'] as Map).cast<String, dynamic>())).input(),
-      gcpFilestoreCsiDriverConfig: map['gcpFilestoreCsiDriverConfig'] == null ? null : (GcpFilestoreCsiDriverConfigContainerV1beta1.fromMap((map['gcpFilestoreCsiDriverConfig'] as Map).cast<String, dynamic>())).input(),
-      gcsFuseCsiDriverConfig: map['gcsFuseCsiDriverConfig'] == null ? null : (GcsFuseCsiDriverConfigContainerV1beta1.fromMap((map['gcsFuseCsiDriverConfig'] as Map).cast<String, dynamic>())).input(),
-      gkeBackupAgentConfig: map['gkeBackupAgentConfig'] == null ? null : (GkeBackupAgentConfigContainerV1beta1.fromMap((map['gkeBackupAgentConfig'] as Map).cast<String, dynamic>())).input(),
-      horizontalPodAutoscaling: map['horizontalPodAutoscaling'] == null ? null : (HorizontalPodAutoscalingContainerV1beta1.fromMap((map['horizontalPodAutoscaling'] as Map).cast<String, dynamic>())).input(),
-      httpLoadBalancing: map['httpLoadBalancing'] == null ? null : (HttpLoadBalancingContainerV1beta1.fromMap((map['httpLoadBalancing'] as Map).cast<String, dynamic>())).input(),
-      istioConfig: map['istioConfig'] == null ? null : (IstioConfig.fromMap((map['istioConfig'] as Map).cast<String, dynamic>())).input(),
-      kalmConfig: map['kalmConfig'] == null ? null : (KalmConfig.fromMap((map['kalmConfig'] as Map).cast<String, dynamic>())).input(),
-      kubernetesDashboard: map['kubernetesDashboard'] == null ? null : (KubernetesDashboardContainerV1beta1.fromMap((map['kubernetesDashboard'] as Map).cast<String, dynamic>())).input(),
-      networkPolicyConfig: map['networkPolicyConfig'] == null ? null : (NetworkPolicyConfigContainerV1beta1.fromMap((map['networkPolicyConfig'] as Map).cast<String, dynamic>())).input(),
+      cloudRunConfig: map['cloudRunConfig'] == null ? null : (CloudRunConfigContainerV1beta1.fromMap((map['cloudRunConfig']! as Map).cast<String, dynamic>())).input(),
+      configConnectorConfig: map['configConnectorConfig'] == null ? null : (ConfigConnectorConfigContainerV1beta1.fromMap((map['configConnectorConfig']! as Map).cast<String, dynamic>())).input(),
+      dnsCacheConfig: map['dnsCacheConfig'] == null ? null : (DnsCacheConfigContainerV1beta1.fromMap((map['dnsCacheConfig']! as Map).cast<String, dynamic>())).input(),
+      gcePersistentDiskCsiDriverConfig: map['gcePersistentDiskCsiDriverConfig'] == null ? null : (GcePersistentDiskCsiDriverConfigContainerV1beta1.fromMap((map['gcePersistentDiskCsiDriverConfig']! as Map).cast<String, dynamic>())).input(),
+      gcpFilestoreCsiDriverConfig: map['gcpFilestoreCsiDriverConfig'] == null ? null : (GcpFilestoreCsiDriverConfigContainerV1beta1.fromMap((map['gcpFilestoreCsiDriverConfig']! as Map).cast<String, dynamic>())).input(),
+      gcsFuseCsiDriverConfig: map['gcsFuseCsiDriverConfig'] == null ? null : (GcsFuseCsiDriverConfigContainerV1beta1.fromMap((map['gcsFuseCsiDriverConfig']! as Map).cast<String, dynamic>())).input(),
+      gkeBackupAgentConfig: map['gkeBackupAgentConfig'] == null ? null : (GkeBackupAgentConfigContainerV1beta1.fromMap((map['gkeBackupAgentConfig']! as Map).cast<String, dynamic>())).input(),
+      horizontalPodAutoscaling: map['horizontalPodAutoscaling'] == null ? null : (HorizontalPodAutoscalingContainerV1beta1.fromMap((map['horizontalPodAutoscaling']! as Map).cast<String, dynamic>())).input(),
+      httpLoadBalancing: map['httpLoadBalancing'] == null ? null : (HttpLoadBalancingContainerV1beta1.fromMap((map['httpLoadBalancing']! as Map).cast<String, dynamic>())).input(),
+      istioConfig: map['istioConfig'] == null ? null : (IstioConfig.fromMap((map['istioConfig']! as Map).cast<String, dynamic>())).input(),
+      kalmConfig: map['kalmConfig'] == null ? null : (KalmConfig.fromMap((map['kalmConfig']! as Map).cast<String, dynamic>())).input(),
+      kubernetesDashboard: map['kubernetesDashboard'] == null ? null : (KubernetesDashboardContainerV1beta1.fromMap((map['kubernetesDashboard']! as Map).cast<String, dynamic>())).input(),
+      networkPolicyConfig: map['networkPolicyConfig'] == null ? null : (NetworkPolicyConfigContainerV1beta1.fromMap((map['networkPolicyConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

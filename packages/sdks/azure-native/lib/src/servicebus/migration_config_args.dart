@@ -44,7 +44,7 @@ class MigrationConfigArgs {
 
   factory MigrationConfigArgs.fromMap(Map<String, dynamic> map) {
     return MigrationConfigArgs(
-      configName: map['configName'] == null ? null : (map['configName'] as String).input(),
+      configName: map['configName'] == null ? null : (map['configName']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       postMigrationName: (map['postMigrationName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

@@ -25,7 +25,7 @@ class VpcEndpointAssociationSubnetMapping {
 
   factory VpcEndpointAssociationSubnetMapping.fromMap(Map<String, dynamic> map) {
     return VpcEndpointAssociationSubnetMapping(
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

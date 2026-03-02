@@ -52,9 +52,9 @@ class GroupingConfigurationResponse {
   factory GroupingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return GroupingConfigurationResponse(
       enabled: (map['enabled'] as bool).input(),
-      groupByAlertDetails: map['groupByAlertDetails'] == null ? null : ((map['groupByAlertDetails'] as List).cast<String>()).input(),
-      groupByCustomDetails: map['groupByCustomDetails'] == null ? null : ((map['groupByCustomDetails'] as List).cast<String>()).input(),
-      groupByEntities: map['groupByEntities'] == null ? null : ((map['groupByEntities'] as List).cast<String>()).input(),
+      groupByAlertDetails: map['groupByAlertDetails'] == null ? null : ((map['groupByAlertDetails']! as List).cast<String>()).input(),
+      groupByCustomDetails: map['groupByCustomDetails'] == null ? null : ((map['groupByCustomDetails']! as List).cast<String>()).input(),
+      groupByEntities: map['groupByEntities'] == null ? null : ((map['groupByEntities']! as List).cast<String>()).input(),
       lookbackDuration: (map['lookbackDuration'] as String).input(),
       matchingMethod: (map['matchingMethod'] as String).input(),
       reopenClosedIncident: (map['reopenClosedIncident'] as bool).input(),

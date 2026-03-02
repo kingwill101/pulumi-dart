@@ -61,13 +61,13 @@ class HealthProbeSettingsModelResponse {
 
   factory HealthProbeSettingsModelResponse.fromMap(Map<String, dynamic> map) {
     return HealthProbeSettingsModelResponse(
-      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
-      healthProbeMethod: map['healthProbeMethod'] == null ? null : (map['healthProbeMethod'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
+      healthProbeMethod: map['healthProbeMethod'] == null ? null : (map['healthProbeMethod']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
       resourceState: (map['resourceState'] as String).input(),
       type: (map['type'] as String).input(),
     );

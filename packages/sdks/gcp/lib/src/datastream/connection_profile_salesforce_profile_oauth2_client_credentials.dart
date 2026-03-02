@@ -30,9 +30,9 @@ class ConnectionProfileSalesforceProfileOauth2ClientCredentials {
 
   factory ConnectionProfileSalesforceProfileOauth2ClientCredentials.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileSalesforceProfileOauth2ClientCredentials(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      secretManagerStoredClientSecret: map['secretManagerStoredClientSecret'] == null ? null : (map['secretManagerStoredClientSecret'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      secretManagerStoredClientSecret: map['secretManagerStoredClientSecret'] == null ? null : (map['secretManagerStoredClientSecret']! as String).input(),
     );
   }
 }

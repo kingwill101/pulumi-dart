@@ -38,7 +38,7 @@ class LbCertificateAttachmentArgs {
     return LbCertificateAttachmentArgs(
       certificateName: (map['certificateName'] as String).input(),
       lbName: (map['lbName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

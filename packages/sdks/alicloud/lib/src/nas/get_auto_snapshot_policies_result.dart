@@ -51,11 +51,11 @@ class GetAutoSnapshotPoliciesResult {
     return GetAutoSnapshotPoliciesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       policies: pulumi.Input.decodeList<GetAutoSnapshotPoliciesPolicy>(map['policies'], (value) => GetAutoSnapshotPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

@@ -43,11 +43,11 @@ class RecordingGroup {
 
   factory RecordingGroup.fromMap(Map<String, dynamic> map) {
     return RecordingGroup(
-      allSupported: map['allSupported'] == null ? null : (map['allSupported'] as bool).input(),
-      exclusionByResourceTypes: map['exclusionByResourceTypes'] == null ? null : (ExclusionByResourceTypes.fromMap((map['exclusionByResourceTypes'] as Map).cast<String, dynamic>())).input(),
-      includeGlobalResourceTypes: map['includeGlobalResourceTypes'] == null ? null : (map['includeGlobalResourceTypes'] as bool).input(),
-      recordingStrategy: map['recordingStrategy'] == null ? null : (RecordingStrategy.fromMap((map['recordingStrategy'] as Map).cast<String, dynamic>())).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      allSupported: map['allSupported'] == null ? null : (map['allSupported']! as bool).input(),
+      exclusionByResourceTypes: map['exclusionByResourceTypes'] == null ? null : (ExclusionByResourceTypes.fromMap((map['exclusionByResourceTypes']! as Map).cast<String, dynamic>())).input(),
+      includeGlobalResourceTypes: map['includeGlobalResourceTypes'] == null ? null : (map['includeGlobalResourceTypes']! as bool).input(),
+      recordingStrategy: map['recordingStrategy'] == null ? null : (RecordingStrategy.fromMap((map['recordingStrategy']! as Map).cast<String, dynamic>())).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
     );
   }
 }

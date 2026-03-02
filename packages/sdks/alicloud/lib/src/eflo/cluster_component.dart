@@ -26,8 +26,8 @@ class ClusterComponent {
 
   factory ClusterComponent.fromMap(Map<String, dynamic> map) {
     return ClusterComponent(
-      componentConfig: map['componentConfig'] == null ? null : (ClusterComponentComponentConfig.fromMap((map['componentConfig'] as Map).cast<String, dynamic>())).input(),
-      componentType: map['componentType'] == null ? null : (map['componentType'] as String).input(),
+      componentConfig: map['componentConfig'] == null ? null : (ClusterComponentComponentConfig.fromMap((map['componentConfig']! as Map).cast<String, dynamic>())).input(),
+      componentType: map['componentType'] == null ? null : (map['componentType']! as String).input(),
     );
   }
 }

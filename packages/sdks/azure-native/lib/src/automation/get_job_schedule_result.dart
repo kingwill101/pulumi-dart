@@ -64,12 +64,12 @@ class GetJobScheduleResult {
     return GetJobScheduleResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      jobScheduleId: map['jobScheduleId'] == null ? null : map['jobScheduleId'] as String,
+      jobScheduleId: map['jobScheduleId'] == null ? null : map['jobScheduleId']! as String,
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
-      runOn: map['runOn'] == null ? null : map['runOn'] as String,
-      runbook: map['runbook'] == null ? null : RunbookAssociationPropertyResponse.fromMap((map['runbook'] as Map).cast<String, dynamic>()),
-      schedule: map['schedule'] == null ? null : ScheduleAssociationPropertyResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as Map).cast<String, String>(),
+      runOn: map['runOn'] == null ? null : map['runOn']! as String,
+      runbook: map['runbook'] == null ? null : RunbookAssociationPropertyResponse.fromMap((map['runbook']! as Map).cast<String, dynamic>()),
+      schedule: map['schedule'] == null ? null : ScheduleAssociationPropertyResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

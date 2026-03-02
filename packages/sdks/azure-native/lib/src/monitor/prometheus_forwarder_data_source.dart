@@ -34,9 +34,9 @@ class PrometheusForwarderDataSource {
 
   factory PrometheusForwarderDataSource.fromMap(Map<String, dynamic> map) {
     return PrometheusForwarderDataSource(
-      labelIncludeFilter: map['labelIncludeFilter'] == null ? null : ((map['labelIncludeFilter'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      streams: map['streams'] == null ? null : ((map['streams'] as List).cast<String>()).input(),
+      labelIncludeFilter: map['labelIncludeFilter'] == null ? null : ((map['labelIncludeFilter']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      streams: map['streams'] == null ? null : ((map['streams']! as List).cast<String>()).input(),
     );
   }
 }

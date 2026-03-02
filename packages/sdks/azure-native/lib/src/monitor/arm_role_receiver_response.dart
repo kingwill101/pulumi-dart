@@ -33,7 +33,7 @@ class ArmRoleReceiverResponse {
     return ArmRoleReceiverResponse(
       name: (map['name'] as String).input(),
       roleId: (map['roleId'] as String).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
     );
   }
 }

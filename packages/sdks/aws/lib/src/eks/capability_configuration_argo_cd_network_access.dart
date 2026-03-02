@@ -20,7 +20,7 @@ class CapabilityConfigurationArgoCdNetworkAccess {
 
   factory CapabilityConfigurationArgoCdNetworkAccess.fromMap(Map<String, dynamic> map) {
     return CapabilityConfigurationArgoCdNetworkAccess(
-      vpceIds: map['vpceIds'] == null ? null : ((map['vpceIds'] as List).cast<String>()).input(),
+      vpceIds: map['vpceIds'] == null ? null : (((map['vpceIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

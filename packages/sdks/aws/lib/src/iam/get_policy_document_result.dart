@@ -68,7 +68,7 @@ class GetPolicyDocumentResult {
       policyId: map['policyId'] == null ? null : map['policyId'] as String,
       sourceJson: map['sourceJson'] == null ? null : map['sourceJson'] as String,
       sourcePolicyDocuments: map['sourcePolicyDocuments'] == null ? null : (map['sourcePolicyDocuments'] as List).cast<String>(),
-      statements: map['statements'] == null ? null : pulumi.Input.decodeList<GetPolicyDocumentStatement>(map['statements'], (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>())),
+      statements: map['statements'] == null ? null : pulumi.Input.decodeList<GetPolicyDocumentStatement>(map['statements']!, (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>())),
       version: map['version'] == null ? null : map['version'] as String,
     );
   }

@@ -32,9 +32,9 @@ class CloudToDeviceProperties {
 
   factory CloudToDeviceProperties.fromMap(Map<String, dynamic> map) {
     return CloudToDeviceProperties(
-      defaultTtlAsIso8601: map['defaultTtlAsIso8601'] == null ? null : (map['defaultTtlAsIso8601'] as String).input(),
-      feedback: map['feedback'] == null ? null : (FeedbackProperties.fromMap((map['feedback'] as Map).cast<String, dynamic>())).input(),
-      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount'] as int).input(),
+      defaultTtlAsIso8601: map['defaultTtlAsIso8601'] == null ? null : (map['defaultTtlAsIso8601']! as String).input(),
+      feedback: map['feedback'] == null ? null : (FeedbackProperties.fromMap((map['feedback']! as Map).cast<String, dynamic>())).input(),
+      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount']! as int).input(),
     );
   }
 }

@@ -56,12 +56,12 @@ class ConnectorProfileArgs {
   factory ConnectorProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileArgs(
       connectionMode: (map['connectionMode'] as String).input(),
-      connectorLabel: map['connectorLabel'] == null ? null : (map['connectorLabel'] as String).input(),
-      connectorProfileConfig: (ConnectorProfileConnectorProfileConfig.fromMap((map['connectorProfileConfig'] as Map).cast<String, dynamic>())).input(),
+      connectorLabel: map['connectorLabel'] == null ? null : ((map['connectorLabel'] as String).input()).input(),
+      connectorProfileConfig: (ConnectorProfileConnectorProfileConfig.fromMap((map['connectorProfileConfig']! as Map).cast<String, dynamic>())).input(),
       connectorType: (map['connectorType'] as String).input(),
-      kmsArn: map['kmsArn'] == null ? null : (map['kmsArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      kmsArn: map['kmsArn'] == null ? null : ((map['kmsArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

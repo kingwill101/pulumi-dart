@@ -31,8 +31,8 @@ class CrawlerDynamodbTarget {
   factory CrawlerDynamodbTarget.fromMap(Map<String, dynamic> map) {
     return CrawlerDynamodbTarget(
       path: (map['path'] as String).input(),
-      scanAll: map['scanAll'] == null ? null : (map['scanAll'] as bool).input(),
-      scanRate: map['scanRate'] == null ? null : (map['scanRate'] as double).input(),
+      scanAll: map['scanAll'] == null ? null : ((map['scanAll'] as bool).input()).input(),
+      scanRate: map['scanRate'] == null ? null : ((map['scanRate'] as double).input()).input(),
     );
   }
 }

@@ -67,10 +67,10 @@ class GetCloudServiceResult {
       location: map['location'] as String,
       name: map['name'] as String,
       properties: CloudServicePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      systemData: map['systemData'] == null ? null : SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      systemData: map['systemData'] == null ? null : SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
     );
   }
 }

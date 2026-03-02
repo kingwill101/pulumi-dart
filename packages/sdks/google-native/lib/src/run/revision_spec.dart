@@ -53,13 +53,13 @@ class RevisionSpec {
 
   factory RevisionSpec.fromMap(Map<String, dynamic> map) {
     return RevisionSpec(
-      containerConcurrency: map['containerConcurrency'] == null ? null : (map['containerConcurrency'] as int).input(),
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<Container>(map['containers'], (value) => Container.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableServiceLinks: map['enableServiceLinks'] == null ? null : (map['enableServiceLinks'] as bool).input(),
-      imagePullSecrets: map['imagePullSecrets'] == null ? null : (pulumi.Input.decodeList<LocalObjectReference>(map['imagePullSecrets'], (value) => LocalObjectReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAccountName: map['serviceAccountName'] == null ? null : (map['serviceAccountName'] as String).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes'], (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerConcurrency: map['containerConcurrency'] == null ? null : (map['containerConcurrency']! as int).input(),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<Container>(map['containers']!, (value) => Container.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableServiceLinks: map['enableServiceLinks'] == null ? null : (map['enableServiceLinks']! as bool).input(),
+      imagePullSecrets: map['imagePullSecrets'] == null ? null : (pulumi.Input.decodeList<LocalObjectReference>(map['imagePullSecrets']!, (value) => LocalObjectReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAccountName: map['serviceAccountName'] == null ? null : (map['serviceAccountName']! as String).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes']!, (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class UserProfileUserSettingsCanvasAppSettingsModelRegisterSettings {
 
   factory UserProfileUserSettingsCanvasAppSettingsModelRegisterSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCanvasAppSettingsModelRegisterSettings(
-      crossAccountModelRegisterRoleArn: map['crossAccountModelRegisterRoleArn'] == null ? null : (map['crossAccountModelRegisterRoleArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      crossAccountModelRegisterRoleArn: map['crossAccountModelRegisterRoleArn'] == null ? null : ((map['crossAccountModelRegisterRoleArn'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

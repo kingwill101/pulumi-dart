@@ -28,8 +28,8 @@ class RepositoryMavenConfig {
 
   factory RepositoryMavenConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryMavenConfig(
-      allowSnapshotOverwrites: map['allowSnapshotOverwrites'] == null ? null : (map['allowSnapshotOverwrites'] as bool).input(),
-      versionPolicy: map['versionPolicy'] == null ? null : (map['versionPolicy'] as String).input(),
+      allowSnapshotOverwrites: map['allowSnapshotOverwrites'] == null ? null : (map['allowSnapshotOverwrites']! as bool).input(),
+      versionPolicy: map['versionPolicy'] == null ? null : (map['versionPolicy']! as String).input(),
     );
   }
 }

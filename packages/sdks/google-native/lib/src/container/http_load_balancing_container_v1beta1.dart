@@ -21,7 +21,7 @@ class HttpLoadBalancingContainerV1beta1 {
 
   factory HttpLoadBalancingContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpLoadBalancingContainerV1beta1(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
     );
   }
 }

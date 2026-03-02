@@ -26,8 +26,8 @@ class GitHubActionCodeConfigurationResponse {
 
   factory GitHubActionCodeConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return GitHubActionCodeConfigurationResponse(
-      runtimeStack: map['runtimeStack'] == null ? null : (map['runtimeStack'] as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      runtimeStack: map['runtimeStack'] == null ? null : (map['runtimeStack']! as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
     );
   }
 }

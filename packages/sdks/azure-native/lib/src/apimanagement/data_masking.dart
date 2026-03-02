@@ -26,8 +26,8 @@ class DataMasking {
 
   factory DataMasking.fromMap(Map<String, dynamic> map) {
     return DataMasking(
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<DataMaskingEntity>(map['headers'], (value) => DataMaskingEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queryParams: map['queryParams'] == null ? null : (pulumi.Input.decodeList<DataMaskingEntity>(map['queryParams'], (value) => DataMaskingEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<DataMaskingEntity>(map['headers']!, (value) => DataMaskingEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryParams: map['queryParams'] == null ? null : (pulumi.Input.decodeList<DataMaskingEntity>(map['queryParams']!, (value) => DataMaskingEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

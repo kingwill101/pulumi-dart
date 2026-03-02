@@ -35,10 +35,10 @@ class ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
 
   factory ClusterControlPlaneEndpointsConfigDnsEndpointConfig.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneEndpointsConfigDnsEndpointConfig(
-      allowExternalTraffic: map['allowExternalTraffic'] == null ? null : (map['allowExternalTraffic'] as bool).input(),
-      enableK8sCertsViaDns: map['enableK8sCertsViaDns'] == null ? null : (map['enableK8sCertsViaDns'] as bool).input(),
-      enableK8sTokensViaDns: map['enableK8sTokensViaDns'] == null ? null : (map['enableK8sTokensViaDns'] as bool).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      allowExternalTraffic: map['allowExternalTraffic'] == null ? null : (map['allowExternalTraffic']! as bool).input(),
+      enableK8sCertsViaDns: map['enableK8sCertsViaDns'] == null ? null : (map['enableK8sCertsViaDns']! as bool).input(),
+      enableK8sTokensViaDns: map['enableK8sTokensViaDns'] == null ? null : (map['enableK8sTokensViaDns']! as bool).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
     );
   }
 }

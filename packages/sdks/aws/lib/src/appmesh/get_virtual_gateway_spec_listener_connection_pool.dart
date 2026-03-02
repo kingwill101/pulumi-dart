@@ -30,9 +30,9 @@ class GetVirtualGatewaySpecListenerConnectionPool {
 
   factory GetVirtualGatewaySpecListenerConnectionPool.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerConnectionPool(
-      grpcs: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerConnectionPoolGrpc>(map['grpcs'], (value) => GetVirtualGatewaySpecListenerConnectionPoolGrpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      http2s: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerConnectionPoolHttp2>(map['http2s'], (value) => GetVirtualGatewaySpecListenerConnectionPoolHttp2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      https: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerConnectionPoolHttp>(map['https'], (value) => GetVirtualGatewaySpecListenerConnectionPoolHttp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      grpcs: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerConnectionPoolGrpc>(map['grpcs']!, (value) => GetVirtualGatewaySpecListenerConnectionPoolGrpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      http2s: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerConnectionPoolHttp2>(map['http2s']!, (value) => GetVirtualGatewaySpecListenerConnectionPoolHttp2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      https: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerConnectionPoolHttp>(map['https']!, (value) => GetVirtualGatewaySpecListenerConnectionPoolHttp.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

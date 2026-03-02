@@ -30,7 +30,7 @@ class KeyPairArgs {
   factory KeyPairArgs.fromMap(Map<String, dynamic> map) {
     return KeyPairArgs(
       keyPairName: (map['keyPairName'] as String).input(),
-      publicKeyBody: map['publicKeyBody'] == null ? null : (map['publicKeyBody'] as String).input(),
+      publicKeyBody: map['publicKeyBody'] == null ? null : (map['publicKeyBody']! as String).input(),
     );
   }
 }

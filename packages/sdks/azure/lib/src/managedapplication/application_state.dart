@@ -67,16 +67,16 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      applicationDefinitionId: map['applicationDefinitionId'] == null ? null : (map['applicationDefinitionId'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputs: map['outputs'] == null ? null : ((map['outputs'] as Map).cast<String, String>()).input(),
-      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues'] as String).input(),
-      plan: map['plan'] == null ? null : (ApplicationPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      applicationDefinitionId: map['applicationDefinitionId'] == null ? null : (map['applicationDefinitionId']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outputs: map['outputs'] == null ? null : ((map['outputs']! as Map).cast<String, String>()).input(),
+      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues']! as String).input(),
+      plan: map['plan'] == null ? null : (ApplicationPlan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

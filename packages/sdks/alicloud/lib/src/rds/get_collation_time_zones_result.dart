@@ -34,10 +34,10 @@ class GetCollationTimeZonesResult {
 
   factory GetCollationTimeZonesResult.fromMap(Map<String, dynamic> map) {
     return GetCollationTimeZonesResult(
-      collationTimeZones: map['collationTimeZones'] == null ? null : pulumi.Input.decodeList<GetCollationTimeZonesCollationTimeZone>(map['collationTimeZones'], (value) => GetCollationTimeZonesCollationTimeZone.fromMap((value as Map).cast<String, dynamic>())),
+      collationTimeZones: map['collationTimeZones'] == null ? null : pulumi.Input.decodeList<GetCollationTimeZonesCollationTimeZone>(map['collationTimeZones']!, (value) => GetCollationTimeZonesCollationTimeZone.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

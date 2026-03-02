@@ -87,19 +87,19 @@ class Build {
 
   factory Build.fromMap(Map<String, dynamic> map) {
     return Build(
-      artifacts: map['artifacts'] == null ? null : (Artifacts.fromMap((map['artifacts'] as Map).cast<String, dynamic>())).input(),
-      availableSecrets: map['availableSecrets'] == null ? null : (Secrets.fromMap((map['availableSecrets'] as Map).cast<String, dynamic>())).input(),
-      images: map['images'] == null ? null : ((map['images'] as List).cast<String>()).input(),
-      logsBucket: map['logsBucket'] == null ? null : (map['logsBucket'] as String).input(),
-      options: map['options'] == null ? null : (BuildOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      queueTtl: map['queueTtl'] == null ? null : (map['queueTtl'] as String).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<Secret>(map['secrets'], (value) => Secret.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      source: map['source'] == null ? null : (Source.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      artifacts: map['artifacts'] == null ? null : (Artifacts.fromMap((map['artifacts']! as Map).cast<String, dynamic>())).input(),
+      availableSecrets: map['availableSecrets'] == null ? null : (Secrets.fromMap((map['availableSecrets']! as Map).cast<String, dynamic>())).input(),
+      images: map['images'] == null ? null : ((map['images']! as List).cast<String>()).input(),
+      logsBucket: map['logsBucket'] == null ? null : (map['logsBucket']! as String).input(),
+      options: map['options'] == null ? null : (BuildOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
+      queueTtl: map['queueTtl'] == null ? null : (map['queueTtl']! as String).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<Secret>(map['secrets']!, (value) => Secret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      source: map['source'] == null ? null : (Source.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
       steps: (pulumi.Input.decodeList<BuildStep>(map['steps'], (value) => BuildStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      substitutions: map['substitutions'] == null ? null : ((map['substitutions'] as Map).cast<String, String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      substitutions: map['substitutions'] == null ? null : ((map['substitutions']! as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

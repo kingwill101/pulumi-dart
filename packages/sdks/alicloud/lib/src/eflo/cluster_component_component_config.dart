@@ -26,8 +26,8 @@ class ClusterComponentComponentConfig {
 
   factory ClusterComponentComponentConfig.fromMap(Map<String, dynamic> map) {
     return ClusterComponentComponentConfig(
-      basicArgs: map['basicArgs'] == null ? null : (map['basicArgs'] as String).input(),
-      nodeUnits: map['nodeUnits'] == null ? null : ((map['nodeUnits'] as List).cast<String>()).input(),
+      basicArgs: map['basicArgs'] == null ? null : (map['basicArgs']! as String).input(),
+      nodeUnits: map['nodeUnits'] == null ? null : ((map['nodeUnits']! as List).cast<String>()).input(),
     );
   }
 }

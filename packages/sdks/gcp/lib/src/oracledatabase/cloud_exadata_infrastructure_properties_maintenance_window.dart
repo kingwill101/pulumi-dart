@@ -82,15 +82,15 @@ class CloudExadataInfrastructurePropertiesMaintenanceWindow {
 
   factory CloudExadataInfrastructurePropertiesMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return CloudExadataInfrastructurePropertiesMaintenanceWindow(
-      customActionTimeoutMins: map['customActionTimeoutMins'] == null ? null : (map['customActionTimeoutMins'] as int).input(),
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks'] as List).cast<String>()).input(),
-      hoursOfDays: map['hoursOfDays'] == null ? null : ((map['hoursOfDays'] as List).cast<int>()).input(),
-      isCustomActionTimeoutEnabled: map['isCustomActionTimeoutEnabled'] == null ? null : (map['isCustomActionTimeoutEnabled'] as bool).input(),
-      leadTimeWeek: map['leadTimeWeek'] == null ? null : (map['leadTimeWeek'] as int).input(),
-      months: map['months'] == null ? null : ((map['months'] as List).cast<String>()).input(),
-      patchingMode: map['patchingMode'] == null ? null : (map['patchingMode'] as String).input(),
-      preference: map['preference'] == null ? null : (map['preference'] as String).input(),
-      weeksOfMonths: map['weeksOfMonths'] == null ? null : ((map['weeksOfMonths'] as List).cast<int>()).input(),
+      customActionTimeoutMins: map['customActionTimeoutMins'] == null ? null : (map['customActionTimeoutMins']! as int).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks']! as List).cast<String>()).input(),
+      hoursOfDays: map['hoursOfDays'] == null ? null : ((map['hoursOfDays']! as List).cast<int>()).input(),
+      isCustomActionTimeoutEnabled: map['isCustomActionTimeoutEnabled'] == null ? null : (map['isCustomActionTimeoutEnabled']! as bool).input(),
+      leadTimeWeek: map['leadTimeWeek'] == null ? null : (map['leadTimeWeek']! as int).input(),
+      months: map['months'] == null ? null : ((map['months']! as List).cast<String>()).input(),
+      patchingMode: map['patchingMode'] == null ? null : (map['patchingMode']! as String).input(),
+      preference: map['preference'] == null ? null : (map['preference']! as String).input(),
+      weeksOfMonths: map['weeksOfMonths'] == null ? null : ((map['weeksOfMonths']! as List).cast<int>()).input(),
     );
   }
 }

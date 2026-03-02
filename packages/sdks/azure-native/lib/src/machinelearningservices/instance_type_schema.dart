@@ -27,8 +27,8 @@ class InstanceTypeSchema {
 
   factory InstanceTypeSchema.fromMap(Map<String, dynamic> map) {
     return InstanceTypeSchema(
-      nodeSelector: map['nodeSelector'] == null ? null : ((map['nodeSelector'] as Map).cast<String, String>()).input(),
-      resources: map['resources'] == null ? null : (InstanceTypeSchemaResources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : ((map['nodeSelector']! as Map).cast<String, String>()).input(),
+      resources: map['resources'] == null ? null : (InstanceTypeSchemaResources.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

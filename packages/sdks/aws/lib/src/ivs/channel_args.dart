@@ -54,13 +54,13 @@ class ChannelArgs {
 
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
-      authorized: map['authorized'] == null ? null : (map['authorized'] as bool).input(),
-      latencyMode: map['latencyMode'] == null ? null : (map['latencyMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recordingConfigurationArn: map['recordingConfigurationArn'] == null ? null : (map['recordingConfigurationArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      authorized: map['authorized'] == null ? null : ((map['authorized'] as bool).input()).input(),
+      latencyMode: map['latencyMode'] == null ? null : ((map['latencyMode'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      recordingConfigurationArn: map['recordingConfigurationArn'] == null ? null : ((map['recordingConfigurationArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

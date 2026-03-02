@@ -40,11 +40,11 @@ class DispatchRuleGroupRule {
 
   factory DispatchRuleGroupRule.fromMap(Map<String, dynamic> map) {
     return DispatchRuleGroupRule(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as int).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as int).input(),
       groupInterval: (map['groupInterval'] as int).input(),
       groupWaitTime: (map['groupWaitTime'] as int).input(),
       groupingFields: ((map['groupingFields'] as List).cast<String>()).input(),
-      repeatInterval: map['repeatInterval'] == null ? null : (map['repeatInterval'] as int).input(),
+      repeatInterval: map['repeatInterval'] == null ? null : (map['repeatInterval']! as int).input(),
     );
   }
 }

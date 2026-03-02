@@ -54,13 +54,13 @@ class TagTemplateState {
 
   factory TagTemplateState.fromMap(Map<String, dynamic> map) {
     return TagTemplateState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<TagTemplateField>(map['fields'], (value) => TagTemplateField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tagTemplateId: map['tagTemplateId'] == null ? null : (map['tagTemplateId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<TagTemplateField>(map['fields']!, (value) => TagTemplateField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tagTemplateId: map['tagTemplateId'] == null ? null : (map['tagTemplateId']! as String).input(),
     );
   }
 }

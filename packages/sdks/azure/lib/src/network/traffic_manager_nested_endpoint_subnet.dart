@@ -31,8 +31,8 @@ class TrafficManagerNestedEndpointSubnet {
   factory TrafficManagerNestedEndpointSubnet.fromMap(Map<String, dynamic> map) {
     return TrafficManagerNestedEndpointSubnet(
       first: (map['first'] as String).input(),
-      last: map['last'] == null ? null : (map['last'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as int).input(),
+      last: map['last'] == null ? null : (map['last']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as int).input(),
     );
   }
 }

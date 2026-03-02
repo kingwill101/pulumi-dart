@@ -67,15 +67,15 @@ class ExternalAddressState {
 
   factory ExternalAddressState.fromMap(Map<String, dynamic> map) {
     return ExternalAddressState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      externalIp: map['externalIp'] == null ? null : (map['externalIp']! as String).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

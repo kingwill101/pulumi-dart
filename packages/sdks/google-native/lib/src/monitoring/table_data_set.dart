@@ -38,9 +38,9 @@ class TableDataSet {
 
   factory TableDataSet.fromMap(Map<String, dynamic> map) {
     return TableDataSet(
-      minAlignmentPeriod: map['minAlignmentPeriod'] == null ? null : (map['minAlignmentPeriod'] as String).input(),
-      tableDisplayOptions: map['tableDisplayOptions'] == null ? null : (TableDisplayOptions.fromMap((map['tableDisplayOptions'] as Map).cast<String, dynamic>())).input(),
-      tableTemplate: map['tableTemplate'] == null ? null : (map['tableTemplate'] as String).input(),
+      minAlignmentPeriod: map['minAlignmentPeriod'] == null ? null : (map['minAlignmentPeriod']! as String).input(),
+      tableDisplayOptions: map['tableDisplayOptions'] == null ? null : (TableDisplayOptions.fromMap((map['tableDisplayOptions']! as Map).cast<String, dynamic>())).input(),
+      tableTemplate: map['tableTemplate'] == null ? null : (map['tableTemplate']! as String).input(),
       timeSeriesQuery: (TimeSeriesQuery.fromMap((map['timeSeriesQuery'] as Map).cast<String, dynamic>())).input(),
     );
   }

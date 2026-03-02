@@ -68,16 +68,16 @@ class VmwareNodeConfig {
 
   factory VmwareNodeConfig.fromMap(Map<String, dynamic> map) {
     return VmwareNodeConfig(
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb'] as String).input(),
-      cpus: map['cpus'] == null ? null : (map['cpus'] as String).input(),
-      enableLoadBalancer: map['enableLoadBalancer'] == null ? null : (map['enableLoadBalancer'] as bool).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
+      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb']! as String).input(),
+      cpus: map['cpus'] == null ? null : (map['cpus']! as String).input(),
+      enableLoadBalancer: map['enableLoadBalancer'] == null ? null : (map['enableLoadBalancer']! as bool).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
       imageType: (map['imageType'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      memoryMb: map['memoryMb'] == null ? null : (map['memoryMb'] as String).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as String).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<NodeTaint>(map['taints'], (value) => NodeTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vsphereConfig: map['vsphereConfig'] == null ? null : (VmwareVsphereConfig.fromMap((map['vsphereConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      memoryMb: map['memoryMb'] == null ? null : (map['memoryMb']! as String).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as String).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<NodeTaint>(map['taints']!, (value) => NodeTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vsphereConfig: map['vsphereConfig'] == null ? null : (VmwareVsphereConfig.fromMap((map['vsphereConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

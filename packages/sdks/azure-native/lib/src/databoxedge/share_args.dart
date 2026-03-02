@@ -84,17 +84,17 @@ class ShareArgs {
   factory ShareArgs.fromMap(Map<String, dynamic> map) {
     return ShareArgs(
       accessProtocol: (map['accessProtocol'] as String).input(),
-      azureContainerInfo: map['azureContainerInfo'] == null ? null : (AzureContainerInfo.fromMap((map['azureContainerInfo'] as Map).cast<String, dynamic>())).input(),
-      clientAccessRights: map['clientAccessRights'] == null ? null : (pulumi.Input.decodeList<ClientAccessRight>(map['clientAccessRights'], (value) => ClientAccessRight.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataPolicy: map['dataPolicy'] == null ? null : (map['dataPolicy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      azureContainerInfo: map['azureContainerInfo'] == null ? null : (AzureContainerInfo.fromMap((map['azureContainerInfo']! as Map).cast<String, dynamic>())).input(),
+      clientAccessRights: map['clientAccessRights'] == null ? null : (pulumi.Input.decodeList<ClientAccessRight>(map['clientAccessRights']!, (value) => ClientAccessRight.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataPolicy: map['dataPolicy'] == null ? null : (map['dataPolicy']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       deviceName: (map['deviceName'] as String).input(),
       monitoringStatus: (map['monitoringStatus'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      refreshDetails: map['refreshDetails'] == null ? null : (RefreshDetails.fromMap((map['refreshDetails'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      refreshDetails: map['refreshDetails'] == null ? null : (RefreshDetails.fromMap((map['refreshDetails']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       shareStatus: (map['shareStatus'] as String).input(),
-      userAccessRights: map['userAccessRights'] == null ? null : (pulumi.Input.decodeList<UserAccessRight>(map['userAccessRights'], (value) => UserAccessRight.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userAccessRights: map['userAccessRights'] == null ? null : (pulumi.Input.decodeList<UserAccessRight>(map['userAccessRights']!, (value) => UserAccessRight.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

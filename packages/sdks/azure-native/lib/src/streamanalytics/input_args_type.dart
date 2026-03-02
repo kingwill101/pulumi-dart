@@ -42,10 +42,10 @@ class InputArgsType {
 
   factory InputArgsType.fromMap(Map<String, dynamic> map) {
     return InputArgsType(
-      inputName: map['inputName'] == null ? null : (map['inputName'] as String).input(),
+      inputName: map['inputName'] == null ? null : (map['inputName']! as String).input(),
       jobName: (map['jobName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (ReferenceInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (ReferenceInputProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

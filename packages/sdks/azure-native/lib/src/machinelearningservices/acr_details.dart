@@ -22,7 +22,7 @@ class AcrDetails {
 
   factory AcrDetails.fromMap(Map<String, dynamic> map) {
     return AcrDetails(
-      systemCreatedAcrAccount: map['systemCreatedAcrAccount'] == null ? null : (SystemCreatedAcrAccount.fromMap((map['systemCreatedAcrAccount'] as Map).cast<String, dynamic>())).input(),
+      systemCreatedAcrAccount: map['systemCreatedAcrAccount'] == null ? null : (SystemCreatedAcrAccount.fromMap((map['systemCreatedAcrAccount']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

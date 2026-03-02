@@ -85,20 +85,20 @@ class NodePoolDataDisk {
 
   factory NodePoolDataDisk.fromMap(Map<String, dynamic> map) {
     return NodePoolDataDisk(
-      autoFormat: map['autoFormat'] == null ? null : (map['autoFormat'] as String).input(),
-      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] == null ? null : (map['autoSnapshotPolicyId'] as String).input(),
-      burstingEnabled: map['burstingEnabled'] == null ? null : (map['burstingEnabled'] as bool).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      device: map['device'] == null ? null : (map['device'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as String).input(),
-      fileSystem: map['fileSystem'] == null ? null : (map['fileSystem'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      mountTarget: map['mountTarget'] == null ? null : (map['mountTarget'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
-      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops'] as int).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      autoFormat: map['autoFormat'] == null ? null : (map['autoFormat']! as String).input(),
+      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] == null ? null : (map['autoSnapshotPolicyId']! as String).input(),
+      burstingEnabled: map['burstingEnabled'] == null ? null : (map['burstingEnabled']! as bool).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      device: map['device'] == null ? null : (map['device']! as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as String).input(),
+      fileSystem: map['fileSystem'] == null ? null : (map['fileSystem']! as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      mountTarget: map['mountTarget'] == null ? null : (map['mountTarget']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
+      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops']! as int).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
     );
   }
 }

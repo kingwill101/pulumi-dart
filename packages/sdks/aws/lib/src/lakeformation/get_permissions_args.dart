@@ -85,17 +85,17 @@ class GetPermissionsArgs {
 
   factory GetPermissionsArgs.fromMap(Map<String, dynamic> map) {
     return GetPermissionsArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      catalogResource: map['catalogResource'] == null ? null : (map['catalogResource'] as bool).input(),
-      dataCellsFilter: map['dataCellsFilter'] == null ? null : (GetPermissionsDataCellsFilter.fromMap((map['dataCellsFilter'] as Map).cast<String, dynamic>())).input(),
-      dataLocation: map['dataLocation'] == null ? null : (GetPermissionsDataLocation.fromMap((map['dataLocation'] as Map).cast<String, dynamic>())).input(),
-      database: map['database'] == null ? null : (GetPermissionsDatabase.fromMap((map['database'] as Map).cast<String, dynamic>())).input(),
-      lfTag: map['lfTag'] == null ? null : (GetPermissionsLfTag.fromMap((map['lfTag'] as Map).cast<String, dynamic>())).input(),
-      lfTagPolicy: map['lfTagPolicy'] == null ? null : (GetPermissionsLfTagPolicy.fromMap((map['lfTagPolicy'] as Map).cast<String, dynamic>())).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      catalogResource: map['catalogResource'] == null ? null : ((map['catalogResource'] as bool).input()).input(),
+      dataCellsFilter: map['dataCellsFilter'] == null ? null : ((GetPermissionsDataCellsFilter.fromMap((map['dataCellsFilter']! as Map).cast<String, dynamic>())).input()).input(),
+      dataLocation: map['dataLocation'] == null ? null : ((GetPermissionsDataLocation.fromMap((map['dataLocation']! as Map).cast<String, dynamic>())).input()).input(),
+      database: map['database'] == null ? null : ((GetPermissionsDatabase.fromMap((map['database']! as Map).cast<String, dynamic>())).input()).input(),
+      lfTag: map['lfTag'] == null ? null : ((GetPermissionsLfTag.fromMap((map['lfTag']! as Map).cast<String, dynamic>())).input()).input(),
+      lfTagPolicy: map['lfTagPolicy'] == null ? null : ((GetPermissionsLfTagPolicy.fromMap((map['lfTagPolicy']! as Map).cast<String, dynamic>())).input()).input(),
       principal: (map['principal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      table: map['table'] == null ? null : (GetPermissionsTable.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
-      tableWithColumns: map['tableWithColumns'] == null ? null : (GetPermissionsTableWithColumns.fromMap((map['tableWithColumns'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      table: map['table'] == null ? null : ((GetPermissionsTable.fromMap((map['table']! as Map).cast<String, dynamic>())).input()).input(),
+      tableWithColumns: map['tableWithColumns'] == null ? null : ((GetPermissionsTableWithColumns.fromMap((map['tableWithColumns']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

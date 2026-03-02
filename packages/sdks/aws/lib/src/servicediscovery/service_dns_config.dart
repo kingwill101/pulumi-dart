@@ -31,9 +31,9 @@ class ServiceDnsConfig {
 
   factory ServiceDnsConfig.fromMap(Map<String, dynamic> map) {
     return ServiceDnsConfig(
-      dnsRecords: (pulumi.Input.decodeList<ServiceDnsConfigDnsRecord>(map['dnsRecords'], (value) => ServiceDnsConfigDnsRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsRecords: (pulumi.Input.decodeList<ServiceDnsConfigDnsRecord>(map['dnsRecords']!, (value) => ServiceDnsConfigDnsRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
       namespaceId: (map['namespaceId'] as String).input(),
-      routingPolicy: map['routingPolicy'] == null ? null : (map['routingPolicy'] as String).input(),
+      routingPolicy: map['routingPolicy'] == null ? null : ((map['routingPolicy'] as String).input()).input(),
     );
   }
 }

@@ -38,11 +38,11 @@ class ServiceTagDestination {
 
   factory ServiceTagDestination.fromMap(Map<String, dynamic> map) {
     return ServiceTagDestination(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      portRanges: map['portRanges'] == null ? null : (map['portRanges'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      serviceTag: map['serviceTag'] == null ? null : (map['serviceTag'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      portRanges: map['portRanges'] == null ? null : (map['portRanges']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      serviceTag: map['serviceTag'] == null ? null : (map['serviceTag']! as String).input(),
     );
   }
 }

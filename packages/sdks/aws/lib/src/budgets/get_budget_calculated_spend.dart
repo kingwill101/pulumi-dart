@@ -20,7 +20,7 @@ class GetBudgetCalculatedSpend {
 
   factory GetBudgetCalculatedSpend.fromMap(Map<String, dynamic> map) {
     return GetBudgetCalculatedSpend(
-      actualSpends: (pulumi.Input.decodeList<GetBudgetCalculatedSpendActualSpend>(map['actualSpends'], (value) => GetBudgetCalculatedSpendActualSpend.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actualSpends: (pulumi.Input.decodeList<GetBudgetCalculatedSpendActualSpend>(map['actualSpends']!, (value) => GetBudgetCalculatedSpendActualSpend.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

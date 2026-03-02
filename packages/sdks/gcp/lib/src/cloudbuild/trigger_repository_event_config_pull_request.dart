@@ -31,9 +31,9 @@ class TriggerRepositoryEventConfigPullRequest {
 
   factory TriggerRepositoryEventConfigPullRequest.fromMap(Map<String, dynamic> map) {
     return TriggerRepositoryEventConfigPullRequest(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      commentControl: map['commentControl'] == null ? null : (map['commentControl'] as String).input(),
-      invertRegex: map['invertRegex'] == null ? null : (map['invertRegex'] as bool).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      commentControl: map['commentControl'] == null ? null : (map['commentControl']! as String).input(),
+      invertRegex: map['invertRegex'] == null ? null : (map['invertRegex']! as bool).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class TransferFilterDetailsResponse {
 
   factory TransferFilterDetailsResponse.fromMap(Map<String, dynamic> map) {
     return TransferFilterDetailsResponse(
-      azureFileFilterDetails: map['azureFileFilterDetails'] == null ? null : (AzureFileFilterDetailsResponse.fromMap((map['azureFileFilterDetails'] as Map).cast<String, dynamic>())).input(),
-      blobFilterDetails: map['blobFilterDetails'] == null ? null : (BlobFilterDetailsResponse.fromMap((map['blobFilterDetails'] as Map).cast<String, dynamic>())).input(),
+      azureFileFilterDetails: map['azureFileFilterDetails'] == null ? null : (AzureFileFilterDetailsResponse.fromMap((map['azureFileFilterDetails']! as Map).cast<String, dynamic>())).input(),
+      blobFilterDetails: map['blobFilterDetails'] == null ? null : (BlobFilterDetailsResponse.fromMap((map['blobFilterDetails']! as Map).cast<String, dynamic>())).input(),
       dataAccountType: (map['dataAccountType'] as String).input(),
-      filterFileDetails: map['filterFileDetails'] == null ? null : (pulumi.Input.decodeList<FilterFileDetailsResponse>(map['filterFileDetails'], (value) => FilterFileDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filterFileDetails: map['filterFileDetails'] == null ? null : (pulumi.Input.decodeList<FilterFileDetailsResponse>(map['filterFileDetails']!, (value) => FilterFileDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

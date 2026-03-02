@@ -26,8 +26,8 @@ class Identity {
 
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
-      revision: map['revision'] == null ? null : (map['revision'] as int).input(),
-      updateId: map['updateId'] == null ? null : (map['updateId'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as int).input(),
+      updateId: map['updateId'] == null ? null : (map['updateId']! as String).input(),
     );
   }
 }

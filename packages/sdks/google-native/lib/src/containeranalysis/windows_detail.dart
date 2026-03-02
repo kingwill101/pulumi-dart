@@ -37,7 +37,7 @@ class WindowsDetail {
   factory WindowsDetail.fromMap(Map<String, dynamic> map) {
     return WindowsDetail(
       cpeUri: (map['cpeUri'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       fixingKbs: (pulumi.Input.decodeList<KnowledgeBase>(map['fixingKbs'], (value) => KnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );

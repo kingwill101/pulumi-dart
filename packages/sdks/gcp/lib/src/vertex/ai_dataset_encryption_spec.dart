@@ -21,7 +21,7 @@ class AiDatasetEncryptionSpec {
 
   factory AiDatasetEncryptionSpec.fromMap(Map<String, dynamic> map) {
     return AiDatasetEncryptionSpec(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
     );
   }
 }

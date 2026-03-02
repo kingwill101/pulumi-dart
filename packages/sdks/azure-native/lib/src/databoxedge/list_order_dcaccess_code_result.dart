@@ -20,7 +20,7 @@ class ListOrderDCAccessCodeResult {
 
   factory ListOrderDCAccessCodeResult.fromMap(Map<String, dynamic> map) {
     return ListOrderDCAccessCodeResult(
-      authCode: map['authCode'] == null ? null : map['authCode'] as String,
+      authCode: map['authCode'] == null ? null : map['authCode']! as String,
     );
   }
 }

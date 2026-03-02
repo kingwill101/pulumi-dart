@@ -21,7 +21,7 @@ class DomainSysInfoFwCfg {
 
   factory DomainSysInfoFwCfg.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoFwCfg(
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoFwCfgEntry>(map['entries'], (value) => DomainSysInfoFwCfgEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoFwCfgEntry>(map['entries']!, (value) => DomainSysInfoFwCfgEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

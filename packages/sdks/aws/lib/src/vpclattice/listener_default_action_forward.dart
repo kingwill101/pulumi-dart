@@ -21,7 +21,7 @@ class ListenerDefaultActionForward {
 
   factory ListenerDefaultActionForward.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionForward(
-      targetGroups: map['targetGroups'] == null ? null : (pulumi.Input.decodeList<ListenerDefaultActionForwardTargetGroup>(map['targetGroups'], (value) => ListenerDefaultActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetGroups: map['targetGroups'] == null ? null : ((pulumi.Input.decodeList<ListenerDefaultActionForwardTargetGroup>(map['targetGroups']!, (value) => ListenerDefaultActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -57,14 +57,14 @@ class Oauth2AuthCodeFlow {
 
   factory Oauth2AuthCodeFlow.fromMap(Map<String, dynamic> map) {
     return Oauth2AuthCodeFlow(
-      authCode: map['authCode'] == null ? null : (map['authCode'] as String).input(),
-      authUri: map['authUri'] == null ? null : (map['authUri'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (Secret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
-      enablePkce: map['enablePkce'] == null ? null : (map['enablePkce'] as bool).input(),
-      pkceVerifier: map['pkceVerifier'] == null ? null : (map['pkceVerifier'] as String).input(),
-      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      authCode: map['authCode'] == null ? null : (map['authCode']! as String).input(),
+      authUri: map['authUri'] == null ? null : (map['authUri']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (Secret.fromMap((map['clientSecret']! as Map).cast<String, dynamic>())).input(),
+      enablePkce: map['enablePkce'] == null ? null : (map['enablePkce']! as bool).input(),
+      pkceVerifier: map['pkceVerifier'] == null ? null : (map['pkceVerifier']! as String).input(),
+      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri']! as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

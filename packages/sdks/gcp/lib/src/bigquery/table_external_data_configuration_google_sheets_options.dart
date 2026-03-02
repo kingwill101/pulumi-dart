@@ -30,8 +30,8 @@ class TableExternalDataConfigurationGoogleSheetsOptions {
 
   factory TableExternalDataConfigurationGoogleSheetsOptions.fromMap(Map<String, dynamic> map) {
     return TableExternalDataConfigurationGoogleSheetsOptions(
-      range: map['range'] == null ? null : (map['range'] as String).input(),
-      skipLeadingRows: map['skipLeadingRows'] == null ? null : (map['skipLeadingRows'] as int).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
+      skipLeadingRows: map['skipLeadingRows'] == null ? null : (map['skipLeadingRows']! as int).input(),
     );
   }
 }

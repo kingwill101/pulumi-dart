@@ -26,8 +26,8 @@ class WindowsVMGuestPatchAutomaticByPlatformSettings {
 
   factory WindowsVMGuestPatchAutomaticByPlatformSettings.fromMap(Map<String, dynamic> map) {
     return WindowsVMGuestPatchAutomaticByPlatformSettings(
-      bypassPlatformSafetyChecksOnUserSchedule: map['bypassPlatformSafetyChecksOnUserSchedule'] == null ? null : (map['bypassPlatformSafetyChecksOnUserSchedule'] as bool).input(),
-      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting'] as String).input(),
+      bypassPlatformSafetyChecksOnUserSchedule: map['bypassPlatformSafetyChecksOnUserSchedule'] == null ? null : (map['bypassPlatformSafetyChecksOnUserSchedule']! as bool).input(),
+      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting']! as String).input(),
     );
   }
 }

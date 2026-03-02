@@ -45,12 +45,12 @@ class PublicNetworkAddressReplicaSet {
 
   factory PublicNetworkAddressReplicaSet.fromMap(Map<String, dynamic> map) {
     return PublicNetworkAddressReplicaSet(
-      connectionDomain: map['connectionDomain'] == null ? null : (map['connectionDomain'] as String).input(),
-      connectionPort: map['connectionPort'] == null ? null : (map['connectionPort'] as String).input(),
-      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      replicaSetRole: map['replicaSetRole'] == null ? null : (map['replicaSetRole'] as String).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
+      connectionDomain: map['connectionDomain'] == null ? null : (map['connectionDomain']! as String).input(),
+      connectionPort: map['connectionPort'] == null ? null : (map['connectionPort']! as String).input(),
+      connectionType: map['connectionType'] == null ? null : (map['connectionType']! as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      replicaSetRole: map['replicaSetRole'] == null ? null : (map['replicaSetRole']! as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
     );
   }
 }

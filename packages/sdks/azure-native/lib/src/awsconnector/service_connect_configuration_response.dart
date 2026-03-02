@@ -38,10 +38,10 @@ class ServiceConnectConfigurationResponse {
 
   factory ServiceConnectConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ServiceConnectConfigurationResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      logConfiguration: map['logConfiguration'] == null ? null : (LogConfigurationResponse.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>())).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      services: map['services'] == null ? null : (pulumi.Input.decodeList<ServiceConnectServiceResponse>(map['services'], (value) => ServiceConnectServiceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      logConfiguration: map['logConfiguration'] == null ? null : (LogConfigurationResponse.fromMap((map['logConfiguration']! as Map).cast<String, dynamic>())).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeList<ServiceConnectServiceResponse>(map['services']!, (value) => ServiceConnectServiceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

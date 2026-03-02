@@ -63,15 +63,15 @@ class BundleState {
 
   factory BundleState.fromMap(Map<String, dynamic> map) {
     return BundleState(
-      bundleName: map['bundleName'] == null ? null : (map['bundleName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      desktopType: map['desktopType'] == null ? null : (map['desktopType'] as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      language: map['language'] == null ? null : (map['language'] as String).input(),
-      rootDiskPerformanceLevel: map['rootDiskPerformanceLevel'] == null ? null : (map['rootDiskPerformanceLevel'] as String).input(),
-      rootDiskSizeGib: map['rootDiskSizeGib'] == null ? null : (map['rootDiskSizeGib'] as int).input(),
-      userDiskPerformanceLevel: map['userDiskPerformanceLevel'] == null ? null : (map['userDiskPerformanceLevel'] as String).input(),
-      userDiskSizeGibs: map['userDiskSizeGibs'] == null ? null : ((map['userDiskSizeGibs'] as List).cast<int>()).input(),
+      bundleName: map['bundleName'] == null ? null : (map['bundleName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      desktopType: map['desktopType'] == null ? null : (map['desktopType']! as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
+      language: map['language'] == null ? null : (map['language']! as String).input(),
+      rootDiskPerformanceLevel: map['rootDiskPerformanceLevel'] == null ? null : (map['rootDiskPerformanceLevel']! as String).input(),
+      rootDiskSizeGib: map['rootDiskSizeGib'] == null ? null : (map['rootDiskSizeGib']! as int).input(),
+      userDiskPerformanceLevel: map['userDiskPerformanceLevel'] == null ? null : (map['userDiskPerformanceLevel']! as String).input(),
+      userDiskSizeGibs: map['userDiskSizeGibs'] == null ? null : ((map['userDiskSizeGibs']! as List).cast<int>()).input(),
     );
   }
 }

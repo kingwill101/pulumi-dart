@@ -72,15 +72,15 @@ class InstanceConfigState {
 
   factory InstanceConfigState.fromMap(Map<String, dynamic> map) {
     return InstanceConfigState(
-      baseConfig: map['baseConfig'] == null ? null : (map['baseConfig'] as String).input(),
-      configType: map['configType'] == null ? null : (map['configType'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<InstanceConfigReplica>(map['replicas'], (value) => InstanceConfigReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      baseConfig: map['baseConfig'] == null ? null : (map['baseConfig']! as String).input(),
+      configType: map['configType'] == null ? null : (map['configType']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<InstanceConfigReplica>(map['replicas']!, (value) => InstanceConfigReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

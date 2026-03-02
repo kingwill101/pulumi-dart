@@ -107,24 +107,24 @@ class EventGridDataConnectionArgs {
 
   factory EventGridDataConnectionArgs.fromMap(Map<String, dynamic> map) {
     return EventGridDataConnectionArgs(
-      blobStorageEventType: map['blobStorageEventType'] == null ? null : (map['blobStorageEventType'] as String).input(),
+      blobStorageEventType: map['blobStorageEventType'] == null ? null : (map['blobStorageEventType']! as String).input(),
       clusterName: (map['clusterName'] as String).input(),
-      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat'] as String).input(),
+      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      databaseRoutingType: map['databaseRoutingType'] == null ? null : (map['databaseRoutingType'] as String).input(),
-      eventgridEventSubscriptionId: map['eventgridEventSubscriptionId'] == null ? null : (map['eventgridEventSubscriptionId'] as String).input(),
-      eventgridResourceId: map['eventgridResourceId'] == null ? null : (map['eventgridResourceId'] as String).input(),
+      databaseRoutingType: map['databaseRoutingType'] == null ? null : (map['databaseRoutingType']! as String).input(),
+      eventgridEventSubscriptionId: map['eventgridEventSubscriptionId'] == null ? null : (map['eventgridEventSubscriptionId']! as String).input(),
+      eventgridResourceId: map['eventgridResourceId'] == null ? null : (map['eventgridResourceId']! as String).input(),
       eventhubConsumerGroupName: (map['eventhubConsumerGroupName'] as String).input(),
       eventhubId: (map['eventhubId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedIdentityId: map['managedIdentityId'] == null ? null : (map['managedIdentityId'] as String).input(),
-      managedIdentityResourceId: map['managedIdentityResourceId'] == null ? null : (map['managedIdentityResourceId'] as String).input(),
-      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedIdentityId: map['managedIdentityId'] == null ? null : (map['managedIdentityId']! as String).input(),
+      managedIdentityResourceId: map['managedIdentityResourceId'] == null ? null : (map['managedIdentityResourceId']! as String).input(),
+      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipFirstRecord: map['skipFirstRecord'] == null ? null : (map['skipFirstRecord'] as bool).input(),
+      skipFirstRecord: map['skipFirstRecord'] == null ? null : (map['skipFirstRecord']! as bool).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
     );
   }
 }

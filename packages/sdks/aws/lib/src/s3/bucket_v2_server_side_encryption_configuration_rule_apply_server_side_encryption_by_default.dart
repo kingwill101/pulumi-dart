@@ -25,7 +25,7 @@ class BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDe
 
   factory BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault.fromMap(Map<String, dynamic> map) {
     return BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault(
-      kmsMasterKeyId: map['kmsMasterKeyId'] == null ? null : (map['kmsMasterKeyId'] as String).input(),
+      kmsMasterKeyId: map['kmsMasterKeyId'] == null ? null : ((map['kmsMasterKeyId'] as String).input()).input(),
       sseAlgorithm: (map['sseAlgorithm'] as String).input(),
     );
   }

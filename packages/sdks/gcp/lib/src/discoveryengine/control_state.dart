@@ -111,21 +111,21 @@ class ControlState {
 
   factory ControlState.fromMap(Map<String, dynamic> map) {
     return ControlState(
-      boostAction: map['boostAction'] == null ? null : (ControlBoostAction.fromMap((map['boostAction'] as Map).cast<String, dynamic>())).input(),
-      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ControlCondition>(map['conditions'], (value) => ControlCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      controlId: map['controlId'] == null ? null : (map['controlId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      engineId: map['engineId'] == null ? null : (map['engineId'] as String).input(),
-      filterAction: map['filterAction'] == null ? null : (ControlFilterAction.fromMap((map['filterAction'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      promoteAction: map['promoteAction'] == null ? null : (ControlPromoteAction.fromMap((map['promoteAction'] as Map).cast<String, dynamic>())).input(),
-      redirectAction: map['redirectAction'] == null ? null : (ControlRedirectAction.fromMap((map['redirectAction'] as Map).cast<String, dynamic>())).input(),
-      solutionType: map['solutionType'] == null ? null : (map['solutionType'] as String).input(),
-      synonymsAction: map['synonymsAction'] == null ? null : (ControlSynonymsAction.fromMap((map['synonymsAction'] as Map).cast<String, dynamic>())).input(),
-      useCases: map['useCases'] == null ? null : ((map['useCases'] as List).cast<String>()).input(),
+      boostAction: map['boostAction'] == null ? null : (ControlBoostAction.fromMap((map['boostAction']! as Map).cast<String, dynamic>())).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId']! as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ControlCondition>(map['conditions']!, (value) => ControlCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      controlId: map['controlId'] == null ? null : (map['controlId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      engineId: map['engineId'] == null ? null : (map['engineId']! as String).input(),
+      filterAction: map['filterAction'] == null ? null : (ControlFilterAction.fromMap((map['filterAction']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      promoteAction: map['promoteAction'] == null ? null : (ControlPromoteAction.fromMap((map['promoteAction']! as Map).cast<String, dynamic>())).input(),
+      redirectAction: map['redirectAction'] == null ? null : (ControlRedirectAction.fromMap((map['redirectAction']! as Map).cast<String, dynamic>())).input(),
+      solutionType: map['solutionType'] == null ? null : (map['solutionType']! as String).input(),
+      synonymsAction: map['synonymsAction'] == null ? null : (ControlSynonymsAction.fromMap((map['synonymsAction']! as Map).cast<String, dynamic>())).input(),
+      useCases: map['useCases'] == null ? null : ((map['useCases']! as List).cast<String>()).input(),
     );
   }
 }

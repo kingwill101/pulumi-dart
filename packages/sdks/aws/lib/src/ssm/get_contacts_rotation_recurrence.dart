@@ -43,12 +43,12 @@ class GetContactsRotationRecurrence {
 
   factory GetContactsRotationRecurrence.fromMap(Map<String, dynamic> map) {
     return GetContactsRotationRecurrence(
-      dailySettings: (pulumi.Input.decodeList<GetContactsRotationRecurrenceDailySetting>(map['dailySettings'], (value) => GetContactsRotationRecurrenceDailySetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      monthlySettings: (pulumi.Input.decodeList<GetContactsRotationRecurrenceMonthlySetting>(map['monthlySettings'], (value) => GetContactsRotationRecurrenceMonthlySetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dailySettings: (pulumi.Input.decodeList<GetContactsRotationRecurrenceDailySetting>(map['dailySettings']!, (value) => GetContactsRotationRecurrenceDailySetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      monthlySettings: (pulumi.Input.decodeList<GetContactsRotationRecurrenceMonthlySetting>(map['monthlySettings']!, (value) => GetContactsRotationRecurrenceMonthlySetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
       numberOfOnCalls: (map['numberOfOnCalls'] as int).input(),
       recurrenceMultiplier: (map['recurrenceMultiplier'] as int).input(),
-      shiftCoverages: (pulumi.Input.decodeList<GetContactsRotationRecurrenceShiftCoverage>(map['shiftCoverages'], (value) => GetContactsRotationRecurrenceShiftCoverage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      weeklySettings: (pulumi.Input.decodeList<GetContactsRotationRecurrenceWeeklySetting>(map['weeklySettings'], (value) => GetContactsRotationRecurrenceWeeklySetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shiftCoverages: (pulumi.Input.decodeList<GetContactsRotationRecurrenceShiftCoverage>(map['shiftCoverages']!, (value) => GetContactsRotationRecurrenceShiftCoverage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      weeklySettings: (pulumi.Input.decodeList<GetContactsRotationRecurrenceWeeklySetting>(map['weeklySettings']!, (value) => GetContactsRotationRecurrenceWeeklySetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

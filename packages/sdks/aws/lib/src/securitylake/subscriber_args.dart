@@ -61,14 +61,14 @@ class SubscriberArgs {
 
   factory SubscriberArgs.fromMap(Map<String, dynamic> map) {
     return SubscriberArgs(
-      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sources: (pulumi.Input.decodeList<SubscriberSource>(map['sources'], (value) => SubscriberSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subscriberDescription: map['subscriberDescription'] == null ? null : (map['subscriberDescription'] as String).input(),
-      subscriberIdentity: (SubscriberSubscriberIdentity.fromMap((map['subscriberIdentity'] as Map).cast<String, dynamic>())).input(),
-      subscriberName: map['subscriberName'] == null ? null : (map['subscriberName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (SubscriberTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      accessType: map['accessType'] == null ? null : ((map['accessType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sources: (pulumi.Input.decodeList<SubscriberSource>(map['sources']!, (value) => SubscriberSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subscriberDescription: map['subscriberDescription'] == null ? null : ((map['subscriberDescription'] as String).input()).input(),
+      subscriberIdentity: (SubscriberSubscriberIdentity.fromMap((map['subscriberIdentity']! as Map).cast<String, dynamic>())).input(),
+      subscriberName: map['subscriberName'] == null ? null : ((map['subscriberName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((SubscriberTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

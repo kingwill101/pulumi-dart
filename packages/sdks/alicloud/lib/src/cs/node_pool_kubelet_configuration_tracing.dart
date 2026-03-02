@@ -25,8 +25,8 @@ class NodePoolKubeletConfigurationTracing {
 
   factory NodePoolKubeletConfigurationTracing.fromMap(Map<String, dynamic> map) {
     return NodePoolKubeletConfigurationTracing(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      samplingRatePerMillion: map['samplingRatePerMillion'] == null ? null : (map['samplingRatePerMillion'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      samplingRatePerMillion: map['samplingRatePerMillion'] == null ? null : (map['samplingRatePerMillion']! as String).input(),
     );
   }
 }

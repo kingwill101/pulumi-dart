@@ -30,9 +30,9 @@ class SourceControlSecurityTokenProperties {
 
   factory SourceControlSecurityTokenProperties.fromMap(Map<String, dynamic> map) {
     return SourceControlSecurityTokenProperties(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
-      tokenType: map['tokenType'] == null ? null : (map['tokenType'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as String).input(),
+      tokenType: map['tokenType'] == null ? null : (map['tokenType']! as String).input(),
     );
   }
 }

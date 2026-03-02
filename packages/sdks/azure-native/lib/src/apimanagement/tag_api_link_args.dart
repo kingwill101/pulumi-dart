@@ -45,7 +45,7 @@ class TagApiLinkArgs {
   factory TagApiLinkArgs.fromMap(Map<String, dynamic> map) {
     return TagApiLinkArgs(
       apiId: (map['apiId'] as String).input(),
-      apiLinkId: map['apiLinkId'] == null ? null : (map['apiLinkId'] as String).input(),
+      apiLinkId: map['apiLinkId'] == null ? null : (map['apiLinkId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
       tagId: (map['tagId'] as String).input(),

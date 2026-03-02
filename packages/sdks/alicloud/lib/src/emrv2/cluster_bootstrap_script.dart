@@ -54,7 +54,7 @@ class ClusterBootstrapScript {
       executionFailStrategy: (map['executionFailStrategy'] as String).input(),
       executionMoment: (map['executionMoment'] as String).input(),
       nodeSelector: (ClusterBootstrapScriptNodeSelector.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       scriptArgs: (map['scriptArgs'] as String).input(),
       scriptName: (map['scriptName'] as String).input(),
       scriptPath: (map['scriptPath'] as String).input(),

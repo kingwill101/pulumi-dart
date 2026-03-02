@@ -64,15 +64,15 @@ class VirtualWanArgs {
 
   factory VirtualWanArgs.fromMap(Map<String, dynamic> map) {
     return VirtualWanArgs(
-      allowBranchToBranchTraffic: map['allowBranchToBranchTraffic'] == null ? null : (map['allowBranchToBranchTraffic'] as bool).input(),
-      allowVnetToVnetTraffic: map['allowVnetToVnetTraffic'] == null ? null : (map['allowVnetToVnetTraffic'] as bool).input(),
-      disableVpnEncryption: map['disableVpnEncryption'] == null ? null : (map['disableVpnEncryption'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      allowBranchToBranchTraffic: map['allowBranchToBranchTraffic'] == null ? null : (map['allowBranchToBranchTraffic']! as bool).input(),
+      allowVnetToVnetTraffic: map['allowVnetToVnetTraffic'] == null ? null : (map['allowVnetToVnetTraffic']! as bool).input(),
+      disableVpnEncryption: map['disableVpnEncryption'] == null ? null : (map['disableVpnEncryption']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      virtualWANName: map['virtualWANName'] == null ? null : (map['virtualWANName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      virtualWANName: map['virtualWANName'] == null ? null : (map['virtualWANName']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ExcludedServicesConfigResponse {
 
   factory ExcludedServicesConfigResponse.fromMap(Map<String, dynamic> map) {
     return ExcludedServicesConfigResponse(
-      excludedServicesConfigId: map['excludedServicesConfigId'] == null ? null : (map['excludedServicesConfigId'] as String).input(),
-      excludedServicesList: map['excludedServicesList'] == null ? null : (map['excludedServicesList'] as String).input(),
+      excludedServicesConfigId: map['excludedServicesConfigId'] == null ? null : (map['excludedServicesConfigId']! as String).input(),
+      excludedServicesList: map['excludedServicesList'] == null ? null : (map['excludedServicesList']! as String).input(),
     );
   }
 }

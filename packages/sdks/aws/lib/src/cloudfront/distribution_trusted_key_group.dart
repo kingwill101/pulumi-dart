@@ -26,8 +26,8 @@ class DistributionTrustedKeyGroup {
 
   factory DistributionTrustedKeyGroup.fromMap(Map<String, dynamic> map) {
     return DistributionTrustedKeyGroup(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<DistributionTrustedKeyGroupItem>(map['items'], (value) => DistributionTrustedKeyGroupItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      items: map['items'] == null ? null : ((pulumi.Input.decodeList<DistributionTrustedKeyGroupItem>(map['items']!, (value) => DistributionTrustedKeyGroupItem.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

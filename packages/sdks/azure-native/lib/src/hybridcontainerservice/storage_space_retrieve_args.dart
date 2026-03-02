@@ -50,12 +50,12 @@ class StorageSpaceRetrieveArgs {
 
   factory StorageSpaceRetrieveArgs.fromMap(Map<String, dynamic> map) {
     return StorageSpaceRetrieveArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (StorageSpacesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (StorageSpacesProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (StorageSpacesExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (StorageSpacesProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageSpacesName: map['storageSpacesName'] == null ? null : (map['storageSpacesName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storageSpacesName: map['storageSpacesName'] == null ? null : (map['storageSpacesName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

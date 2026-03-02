@@ -65,13 +65,13 @@ class ConfigurationAssignmentArgs {
 
   factory ConfigurationAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationAssignmentArgs(
-      configurationAssignmentName: map['configurationAssignmentName'] == null ? null : (map['configurationAssignmentName'] as String).input(),
-      filter: map['filter'] == null ? null : (ConfigurationAssignmentFilterProperties.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId'] as String).input(),
+      configurationAssignmentName: map['configurationAssignmentName'] == null ? null : (map['configurationAssignmentName']! as String).input(),
+      filter: map['filter'] == null ? null : (ConfigurationAssignmentFilterProperties.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId']! as String).input(),
       providerName: (map['providerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
       resourceName: (map['resourceName'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),
     );

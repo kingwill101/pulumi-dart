@@ -21,7 +21,7 @@ class ConfigConnectorConfig {
 
   factory ConfigConnectorConfig.fromMap(Map<String, dynamic> map) {
     return ConfigConnectorConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

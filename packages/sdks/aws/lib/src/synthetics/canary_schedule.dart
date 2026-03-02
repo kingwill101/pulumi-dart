@@ -31,9 +31,9 @@ class CanarySchedule {
 
   factory CanarySchedule.fromMap(Map<String, dynamic> map) {
     return CanarySchedule(
-      durationInSeconds: map['durationInSeconds'] == null ? null : (map['durationInSeconds'] as int).input(),
+      durationInSeconds: map['durationInSeconds'] == null ? null : ((map['durationInSeconds'] as int).input()).input(),
       expression: (map['expression'] as String).input(),
-      retryConfig: map['retryConfig'] == null ? null : (CanaryScheduleRetryConfig.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())).input(),
+      retryConfig: map['retryConfig'] == null ? null : ((CanaryScheduleRetryConfig.fromMap((map['retryConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

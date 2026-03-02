@@ -113,7 +113,7 @@ class GetClusterResult {
       bootstrapBrokersSaslIam: map['bootstrapBrokersSaslIam'] as String,
       bootstrapBrokersSaslScram: map['bootstrapBrokersSaslScram'] as String,
       bootstrapBrokersTls: map['bootstrapBrokersTls'] as String,
-      brokerNodeGroupInfos: pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfo>(map['brokerNodeGroupInfos'], (value) => GetClusterBrokerNodeGroupInfo.fromMap((value as Map).cast<String, dynamic>())),
+      brokerNodeGroupInfos: pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfo>(map['brokerNodeGroupInfos']!, (value) => GetClusterBrokerNodeGroupInfo.fromMap((value as Map).cast<String, dynamic>())),
       clusterName: map['clusterName'] as String,
       clusterUuid: map['clusterUuid'] as String,
       id: map['id'] as String,

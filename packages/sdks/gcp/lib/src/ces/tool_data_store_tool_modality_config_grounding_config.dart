@@ -31,8 +31,8 @@ class ToolDataStoreToolModalityConfigGroundingConfig {
 
   factory ToolDataStoreToolModalityConfigGroundingConfig.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolModalityConfigGroundingConfig(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      groundingLevel: map['groundingLevel'] == null ? null : (map['groundingLevel'] as double).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      groundingLevel: map['groundingLevel'] == null ? null : (map['groundingLevel']! as double).input(),
     );
   }
 }

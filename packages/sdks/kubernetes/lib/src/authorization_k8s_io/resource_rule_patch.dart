@@ -37,10 +37,10 @@ class ResourceRulePatch {
 
   factory ResourceRulePatch.fromMap(Map<String, dynamic> map) {
     return ResourceRulePatch(
-      apiGroups: map['apiGroups'] == null ? null : ((map['apiGroups'] as List).cast<String>()).input(),
-      resourceNames: map['resourceNames'] == null ? null : ((map['resourceNames'] as List).cast<String>()).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
-      verbs: map['verbs'] == null ? null : ((map['verbs'] as List).cast<String>()).input(),
+      apiGroups: map['apiGroups'] == null ? null : ((map['apiGroups']! as List).cast<String>()).input(),
+      resourceNames: map['resourceNames'] == null ? null : ((map['resourceNames']! as List).cast<String>()).input(),
+      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
+      verbs: map['verbs'] == null ? null : ((map['verbs']! as List).cast<String>()).input(),
     );
   }
 }

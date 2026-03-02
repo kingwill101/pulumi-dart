@@ -30,7 +30,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter(
       osShortName: (map['osShortName'] as String).input(),
-      osVersion: map['osVersion'] == null ? null : (map['osVersion'] as String).input(),
+      osVersion: map['osVersion'] == null ? null : (map['osVersion']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class OneDashboardPageWidgetBarColor {
 
   factory OneDashboardPageWidgetBarColor.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetBarColor(
-      color: map['color'] == null ? null : (map['color'] as String).input(),
-      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetBarColorSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetBarColorSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      color: map['color'] == null ? null : (map['color']! as String).input(),
+      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetBarColorSeriesOverride>(map['seriesOverrides']!, (value) => OneDashboardPageWidgetBarColorSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

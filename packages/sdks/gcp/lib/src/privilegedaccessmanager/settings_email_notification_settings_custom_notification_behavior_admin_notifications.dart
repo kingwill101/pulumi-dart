@@ -39,10 +39,10 @@ class SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificati
 
   factory SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications.fromMap(Map<String, dynamic> map) {
     return SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications(
-      grantActivated: map['grantActivated'] == null ? null : (map['grantActivated'] as String).input(),
-      grantActivationFailed: map['grantActivationFailed'] == null ? null : (map['grantActivationFailed'] as String).input(),
-      grantEnded: map['grantEnded'] == null ? null : (map['grantEnded'] as String).input(),
-      grantExternallyModified: map['grantExternallyModified'] == null ? null : (map['grantExternallyModified'] as String).input(),
+      grantActivated: map['grantActivated'] == null ? null : (map['grantActivated']! as String).input(),
+      grantActivationFailed: map['grantActivationFailed'] == null ? null : (map['grantActivationFailed']! as String).input(),
+      grantEnded: map['grantEnded'] == null ? null : (map['grantEnded']! as String).input(),
+      grantExternallyModified: map['grantExternallyModified'] == null ? null : (map['grantExternallyModified']! as String).input(),
     );
   }
 }

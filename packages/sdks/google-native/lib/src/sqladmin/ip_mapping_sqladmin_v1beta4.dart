@@ -32,9 +32,9 @@ class IpMappingSqladminV1beta4 {
 
   factory IpMappingSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return IpMappingSqladminV1beta4(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      timeToRetire: map['timeToRetire'] == null ? null : (map['timeToRetire'] as String).input(),
-      type: map['type'] == null ? null : (IpMappingTypeSqladminV1beta4.fromValue(map['type'] as String)).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      timeToRetire: map['timeToRetire'] == null ? null : (map['timeToRetire']! as String).input(),
+      type: map['type'] == null ? null : (IpMappingTypeSqladminV1beta4.fromValue(map['type']! as String)).input(),
     );
   }
 }

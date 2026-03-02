@@ -62,14 +62,14 @@ class AzureTableSource {
 
   factory AzureTableSource.fromMap(Map<String, dynamic> map) {
     return AzureTableSource(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      azureTableSourceIgnoreTableNotFound: map['azureTableSourceIgnoreTableNotFound'] == null ? null : (map['azureTableSourceIgnoreTableNotFound']).input(),
-      azureTableSourceQuery: map['azureTableSourceQuery'] == null ? null : (map['azureTableSourceQuery']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      azureTableSourceIgnoreTableNotFound: map['azureTableSourceIgnoreTableNotFound'] == null ? null : (map['azureTableSourceIgnoreTableNotFound']!).input(),
+      azureTableSourceQuery: map['azureTableSourceQuery'] == null ? null : (map['azureTableSourceQuery']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
       type: (map['type'] as String).input(),
     );
   }

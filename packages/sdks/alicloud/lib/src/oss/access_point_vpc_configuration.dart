@@ -20,7 +20,7 @@ class AccessPointVpcConfiguration {
 
   factory AccessPointVpcConfiguration.fromMap(Map<String, dynamic> map) {
     return AccessPointVpcConfiguration(
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

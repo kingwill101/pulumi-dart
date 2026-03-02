@@ -64,15 +64,15 @@ class CosmosDbMongoDbApiLinkedService {
 
   factory CosmosDbMongoDbApiLinkedService.fromMap(Map<String, dynamic> map) {
     return CosmosDbMongoDbApiLinkedService(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
       connectionString: (map['connectionString']).input(),
       database: (map['database']).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isServerVersionAbove32: map['isServerVersionAbove32'] == null ? null : (map['isServerVersionAbove32']).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isServerVersionAbove32: map['isServerVersionAbove32'] == null ? null : (map['isServerVersionAbove32']!).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters']!, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

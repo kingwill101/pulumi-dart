@@ -21,7 +21,7 @@ class IpRule {
 
   factory IpRule.fromMap(Map<String, dynamic> map) {
     return IpRule(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -80,18 +80,18 @@ class VaultState {
 
   factory VaultState.fromMap(Map<String, dynamic> map) {
     return VaultState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptType: map['encryptType'] == null ? null : (map['encryptType'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vaultName: map['vaultName'] == null ? null : (map['vaultName'] as String).input(),
-      vaultStorageClass: map['vaultStorageClass'] == null ? null : (map['vaultStorageClass'] as String).input(),
-      vaultType: map['vaultType'] == null ? null : (map['vaultType'] as String).input(),
-      wormEnabled: map['wormEnabled'] == null ? null : (map['wormEnabled'] as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptType: map['encryptType'] == null ? null : (map['encryptType']! as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vaultName: map['vaultName'] == null ? null : (map['vaultName']! as String).input(),
+      vaultStorageClass: map['vaultStorageClass'] == null ? null : (map['vaultStorageClass']! as String).input(),
+      vaultType: map['vaultType'] == null ? null : (map['vaultType']! as String).input(),
+      wormEnabled: map['wormEnabled'] == null ? null : (map['wormEnabled']! as bool).input(),
     );
   }
 }

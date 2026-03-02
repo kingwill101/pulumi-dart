@@ -25,8 +25,8 @@ class SwaggerSpecification {
 
   factory SwaggerSpecification.fromMap(Map<String, dynamic> map) {
     return SwaggerSpecification(
-      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions'] as List).cast<String>()).input(),
-      swaggerSpecFolderUri: map['swaggerSpecFolderUri'] == null ? null : (map['swaggerSpecFolderUri'] as String).input(),
+      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions']! as List).cast<String>()).input(),
+      swaggerSpecFolderUri: map['swaggerSpecFolderUri'] == null ? null : (map['swaggerSpecFolderUri']! as String).input(),
     );
   }
 }

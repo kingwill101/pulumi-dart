@@ -41,9 +41,9 @@ class CustomRoutingEndpointGroupArgs {
 
   factory CustomRoutingEndpointGroupArgs.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupArgs(
-      destinationConfigurations: (pulumi.Input.decodeList<CustomRoutingEndpointGroupDestinationConfiguration>(map['destinationConfigurations'], (value) => CustomRoutingEndpointGroupDestinationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      endpointConfigurations: map['endpointConfigurations'] == null ? null : (pulumi.Input.decodeList<CustomRoutingEndpointGroupEndpointConfiguration>(map['endpointConfigurations'], (value) => CustomRoutingEndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : (map['endpointGroupRegion'] as String).input(),
+      destinationConfigurations: (pulumi.Input.decodeList<CustomRoutingEndpointGroupDestinationConfiguration>(map['destinationConfigurations']!, (value) => CustomRoutingEndpointGroupDestinationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpointConfigurations: map['endpointConfigurations'] == null ? null : ((pulumi.Input.decodeList<CustomRoutingEndpointGroupEndpointConfiguration>(map['endpointConfigurations']!, (value) => CustomRoutingEndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : ((map['endpointGroupRegion'] as String).input()).input(),
       listenerArn: (map['listenerArn'] as String).input(),
     );
   }

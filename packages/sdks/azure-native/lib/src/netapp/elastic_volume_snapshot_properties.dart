@@ -21,7 +21,7 @@ class ElasticVolumeSnapshotProperties {
 
   factory ElasticVolumeSnapshotProperties.fromMap(Map<String, dynamic> map) {
     return ElasticVolumeSnapshotProperties(
-      snapshotPolicyResourceId: map['snapshotPolicyResourceId'] == null ? null : (map['snapshotPolicyResourceId'] as String).input(),
+      snapshotPolicyResourceId: map['snapshotPolicyResourceId'] == null ? null : (map['snapshotPolicyResourceId']! as String).input(),
     );
   }
 }

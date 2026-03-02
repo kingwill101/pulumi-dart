@@ -73,15 +73,15 @@ class GetEncryptionSetResult {
   factory GetEncryptionSetResult.fromMap(Map<String, dynamic> map) {
     return GetEncryptionSetResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      devboxDisksEncryptionEnableStatus: map['devboxDisksEncryptionEnableStatus'] == null ? null : map['devboxDisksEncryptionEnableStatus'] as String,
+      devboxDisksEncryptionEnableStatus: map['devboxDisksEncryptionEnableStatus'] == null ? null : map['devboxDisksEncryptionEnableStatus']! as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : map['keyEncryptionKeyUrl'] as String,
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : map['keyEncryptionKeyUrl']! as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

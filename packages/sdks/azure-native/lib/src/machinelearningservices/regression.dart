@@ -103,21 +103,21 @@ class Regression {
 
   factory Regression.fromMap(Map<String, dynamic> map) {
     return Regression(
-      cvSplitColumnNames: map['cvSplitColumnNames'] == null ? null : ((map['cvSplitColumnNames'] as List).cast<String>()).input(),
-      featurizationSettings: map['featurizationSettings'] == null ? null : (TableVerticalFeaturizationSettings.fromMap((map['featurizationSettings'] as Map).cast<String, dynamic>())).input(),
-      limitSettings: map['limitSettings'] == null ? null : (TableVerticalLimitSettings.fromMap((map['limitSettings'] as Map).cast<String, dynamic>())).input(),
-      logVerbosity: map['logVerbosity'] == null ? null : (map['logVerbosity'] as String).input(),
-      nCrossValidations: map['nCrossValidations'] == null ? null : (AutoNCrossValidations.fromMap((map['nCrossValidations'] as Map).cast<String, dynamic>())).input(),
-      primaryMetric: map['primaryMetric'] == null ? null : (map['primaryMetric'] as String).input(),
-      targetColumnName: map['targetColumnName'] == null ? null : (map['targetColumnName'] as String).input(),
+      cvSplitColumnNames: map['cvSplitColumnNames'] == null ? null : ((map['cvSplitColumnNames']! as List).cast<String>()).input(),
+      featurizationSettings: map['featurizationSettings'] == null ? null : (TableVerticalFeaturizationSettings.fromMap((map['featurizationSettings']! as Map).cast<String, dynamic>())).input(),
+      limitSettings: map['limitSettings'] == null ? null : (TableVerticalLimitSettings.fromMap((map['limitSettings']! as Map).cast<String, dynamic>())).input(),
+      logVerbosity: map['logVerbosity'] == null ? null : (map['logVerbosity']! as String).input(),
+      nCrossValidations: map['nCrossValidations'] == null ? null : (AutoNCrossValidations.fromMap((map['nCrossValidations']! as Map).cast<String, dynamic>())).input(),
+      primaryMetric: map['primaryMetric'] == null ? null : (map['primaryMetric']! as String).input(),
+      targetColumnName: map['targetColumnName'] == null ? null : (map['targetColumnName']! as String).input(),
       taskType: (map['taskType'] as String).input(),
-      testData: map['testData'] == null ? null : (MLTableJobInput.fromMap((map['testData'] as Map).cast<String, dynamic>())).input(),
-      testDataSize: map['testDataSize'] == null ? null : (map['testDataSize'] as double).input(),
+      testData: map['testData'] == null ? null : (MLTableJobInput.fromMap((map['testData']! as Map).cast<String, dynamic>())).input(),
+      testDataSize: map['testDataSize'] == null ? null : (map['testDataSize']! as double).input(),
       trainingData: (MLTableJobInput.fromMap((map['trainingData'] as Map).cast<String, dynamic>())).input(),
-      trainingSettings: map['trainingSettings'] == null ? null : (RegressionTrainingSettings.fromMap((map['trainingSettings'] as Map).cast<String, dynamic>())).input(),
-      validationData: map['validationData'] == null ? null : (MLTableJobInput.fromMap((map['validationData'] as Map).cast<String, dynamic>())).input(),
-      validationDataSize: map['validationDataSize'] == null ? null : (map['validationDataSize'] as double).input(),
-      weightColumnName: map['weightColumnName'] == null ? null : (map['weightColumnName'] as String).input(),
+      trainingSettings: map['trainingSettings'] == null ? null : (RegressionTrainingSettings.fromMap((map['trainingSettings']! as Map).cast<String, dynamic>())).input(),
+      validationData: map['validationData'] == null ? null : (MLTableJobInput.fromMap((map['validationData']! as Map).cast<String, dynamic>())).input(),
+      validationDataSize: map['validationDataSize'] == null ? null : (map['validationDataSize']! as double).input(),
+      weightColumnName: map['weightColumnName'] == null ? null : (map['weightColumnName']! as String).input(),
     );
   }
 }

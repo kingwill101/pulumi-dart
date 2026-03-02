@@ -21,7 +21,7 @@ class WebAclCaptchaConfig {
 
   factory WebAclCaptchaConfig.fromMap(Map<String, dynamic> map) {
     return WebAclCaptchaConfig(
-      immunityTimeProperty: map['immunityTimeProperty'] == null ? null : (WebAclCaptchaConfigImmunityTimeProperty.fromMap((map['immunityTimeProperty'] as Map).cast<String, dynamic>())).input(),
+      immunityTimeProperty: map['immunityTimeProperty'] == null ? null : ((WebAclCaptchaConfigImmunityTimeProperty.fromMap((map['immunityTimeProperty']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

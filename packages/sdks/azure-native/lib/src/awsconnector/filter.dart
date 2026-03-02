@@ -57,14 +57,14 @@ class Filter {
 
   factory Filter.fromMap(Map<String, dynamic> map) {
     return Filter(
-      behavior: map['behavior'] == null ? null : (map['behavior'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contains: map['contains'] == null ? null : ((map['contains'] as List).cast<String>()).input(),
-      eq: map['eq'] == null ? null : ((map['eq'] as List).cast<String>()).input(),
-      exists: map['exists'] == null ? null : (map['exists'] as bool).input(),
-      neq: map['neq'] == null ? null : ((map['neq'] as List).cast<String>()).input(),
-      property: map['property'] == null ? null : (map['property'] as String).input(),
-      requirement: map['requirement'] == null ? null : (map['requirement'] as String).input(),
+      behavior: map['behavior'] == null ? null : (map['behavior']! as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions']!, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contains: map['contains'] == null ? null : ((map['contains']! as List).cast<String>()).input(),
+      eq: map['eq'] == null ? null : ((map['eq']! as List).cast<String>()).input(),
+      exists: map['exists'] == null ? null : (map['exists']! as bool).input(),
+      neq: map['neq'] == null ? null : ((map['neq']! as List).cast<String>()).input(),
+      property: map['property'] == null ? null : (map['property']! as String).input(),
+      requirement: map['requirement'] == null ? null : (map['requirement']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class Text {
 
   factory Text.fromMap(Map<String, dynamic> map) {
     return Text(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      format: map['format'] == null ? null : (TextFormat.fromValue(map['format'] as String)).input(),
-      style: map['style'] == null ? null : (TextStyle.fromMap((map['style'] as Map).cast<String, dynamic>())).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      format: map['format'] == null ? null : (TextFormat.fromValue(map['format']! as String)).input(),
+      style: map['style'] == null ? null : (TextStyle.fromMap((map['style']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

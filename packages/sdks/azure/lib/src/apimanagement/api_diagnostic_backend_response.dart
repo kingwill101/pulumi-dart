@@ -31,9 +31,9 @@ class ApiDiagnosticBackendResponse {
 
   factory ApiDiagnosticBackendResponse.fromMap(Map<String, dynamic> map) {
     return ApiDiagnosticBackendResponse(
-      bodyBytes: map['bodyBytes'] == null ? null : (map['bodyBytes'] as int).input(),
-      dataMasking: map['dataMasking'] == null ? null : (ApiDiagnosticBackendResponseDataMasking.fromMap((map['dataMasking'] as Map).cast<String, dynamic>())).input(),
-      headersToLogs: map['headersToLogs'] == null ? null : ((map['headersToLogs'] as List).cast<String>()).input(),
+      bodyBytes: map['bodyBytes'] == null ? null : (map['bodyBytes']! as int).input(),
+      dataMasking: map['dataMasking'] == null ? null : (ApiDiagnosticBackendResponseDataMasking.fromMap((map['dataMasking']! as Map).cast<String, dynamic>())).input(),
+      headersToLogs: map['headersToLogs'] == null ? null : ((map['headersToLogs']! as List).cast<String>()).input(),
     );
   }
 }

@@ -38,9 +38,9 @@ class GoogleCloudAiplatformV1DedicatedResources {
 
   factory GoogleCloudAiplatformV1DedicatedResources.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1DedicatedResources(
-      autoscalingMetricSpecs: map['autoscalingMetricSpecs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1AutoscalingMetricSpec>(map['autoscalingMetricSpecs'], (value) => GoogleCloudAiplatformV1AutoscalingMetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoscalingMetricSpecs: map['autoscalingMetricSpecs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1AutoscalingMetricSpec>(map['autoscalingMetricSpecs']!, (value) => GoogleCloudAiplatformV1AutoscalingMetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
       machineSpec: (GoogleCloudAiplatformV1MachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
-      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount'] as int).input(),
+      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount']! as int).input(),
       minReplicaCount: (map['minReplicaCount'] as int).input(),
     );
   }

@@ -38,10 +38,10 @@ class ApacheTomcatWorkloadInstanceModelCustomProperties {
 
   factory ApacheTomcatWorkloadInstanceModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return ApacheTomcatWorkloadInstanceModelCustomProperties(
-      apacheTomcatWebApplication: map['apacheTomcatWebApplication'] == null ? null : (ApacheTomcatWebApplication.fromMap((map['apacheTomcatWebApplication'] as Map).cast<String, dynamic>())).input(),
+      apacheTomcatWebApplication: map['apacheTomcatWebApplication'] == null ? null : (ApacheTomcatWebApplication.fromMap((map['apacheTomcatWebApplication']! as Map).cast<String, dynamic>())).input(),
       instanceType: (map['instanceType'] as String).input(),
-      webAppArmId: map['webAppArmId'] == null ? null : (map['webAppArmId'] as String).input(),
-      webAppSiteName: map['webAppSiteName'] == null ? null : (map['webAppSiteName'] as String).input(),
+      webAppArmId: map['webAppArmId'] == null ? null : (map['webAppArmId']! as String).input(),
+      webAppSiteName: map['webAppSiteName'] == null ? null : (map['webAppSiteName']! as String).input(),
     );
   }
 }

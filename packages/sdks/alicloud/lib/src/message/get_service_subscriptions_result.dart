@@ -64,12 +64,12 @@ class GetServiceSubscriptionsResult {
     return GetServiceSubscriptionsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      subscriptionName: map['subscriptionName'] == null ? null : map['subscriptionName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      subscriptionName: map['subscriptionName'] == null ? null : map['subscriptionName']! as String,
       subscriptions: pulumi.Input.decodeList<GetServiceSubscriptionsSubscription>(map['subscriptions'], (value) => GetServiceSubscriptionsSubscription.fromMap((value as Map).cast<String, dynamic>())),
       topicName: map['topicName'] as String,
     );

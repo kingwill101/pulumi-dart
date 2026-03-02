@@ -56,13 +56,13 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
-      identity: map['identity'] == null ? null : (UserAssignedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedRGConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName']! as String).input(),
+      identity: map['identity'] == null ? null : (UserAssignedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedRGConfiguration.fromMap((map['managedResourceGroupConfiguration']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sourceResourceId: (map['sourceResourceId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

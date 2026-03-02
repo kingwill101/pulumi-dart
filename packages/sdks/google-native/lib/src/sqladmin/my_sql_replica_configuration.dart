@@ -71,17 +71,17 @@ class MySqlReplicaConfiguration {
 
   factory MySqlReplicaConfiguration.fromMap(Map<String, dynamic> map) {
     return MySqlReplicaConfiguration(
-      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate'] as String).input(),
-      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
-      connectRetryInterval: map['connectRetryInterval'] == null ? null : (map['connectRetryInterval'] as int).input(),
-      dumpFilePath: map['dumpFilePath'] == null ? null : (map['dumpFilePath'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      masterHeartbeatPeriod: map['masterHeartbeatPeriod'] == null ? null : (map['masterHeartbeatPeriod'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      sslCipher: map['sslCipher'] == null ? null : (map['sslCipher'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
-      verifyServerCertificate: map['verifyServerCertificate'] == null ? null : (map['verifyServerCertificate'] as bool).input(),
+      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate']! as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate']! as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
+      connectRetryInterval: map['connectRetryInterval'] == null ? null : (map['connectRetryInterval']! as int).input(),
+      dumpFilePath: map['dumpFilePath'] == null ? null : (map['dumpFilePath']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      masterHeartbeatPeriod: map['masterHeartbeatPeriod'] == null ? null : (map['masterHeartbeatPeriod']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      sslCipher: map['sslCipher'] == null ? null : (map['sslCipher']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
+      verifyServerCertificate: map['verifyServerCertificate'] == null ? null : (map['verifyServerCertificate']! as bool).input(),
     );
   }
 }

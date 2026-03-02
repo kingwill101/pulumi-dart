@@ -46,7 +46,7 @@ class GetInstanceTypeOfferingsResult {
 
   factory GetInstanceTypeOfferingsResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeOfferingsResult(
-      brokerInstanceOptions: pulumi.Input.decodeList<GetInstanceTypeOfferingsBrokerInstanceOption>(map['brokerInstanceOptions'], (value) => GetInstanceTypeOfferingsBrokerInstanceOption.fromMap((value as Map).cast<String, dynamic>())),
+      brokerInstanceOptions: pulumi.Input.decodeList<GetInstanceTypeOfferingsBrokerInstanceOption>(map['brokerInstanceOptions']!, (value) => GetInstanceTypeOfferingsBrokerInstanceOption.fromMap((value as Map).cast<String, dynamic>())),
       engineType: map['engineType'] == null ? null : map['engineType'] as String,
       hostInstanceType: map['hostInstanceType'] == null ? null : map['hostInstanceType'] as String,
       id: map['id'] as String,

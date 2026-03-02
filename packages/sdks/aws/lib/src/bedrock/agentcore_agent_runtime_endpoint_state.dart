@@ -68,16 +68,16 @@ class AgentcoreAgentRuntimeEndpointState {
 
   factory AgentcoreAgentRuntimeEndpointState.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeEndpointState(
-      agentRuntimeArn: map['agentRuntimeArn'] == null ? null : (map['agentRuntimeArn'] as String).input(),
-      agentRuntimeEndpointArn: map['agentRuntimeEndpointArn'] == null ? null : (map['agentRuntimeEndpointArn'] as String).input(),
-      agentRuntimeId: map['agentRuntimeId'] == null ? null : (map['agentRuntimeId'] as String).input(),
-      agentRuntimeVersion: map['agentRuntimeVersion'] == null ? null : (map['agentRuntimeVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentcoreAgentRuntimeEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      agentRuntimeArn: map['agentRuntimeArn'] == null ? null : ((map['agentRuntimeArn'] as String).input()).input(),
+      agentRuntimeEndpointArn: map['agentRuntimeEndpointArn'] == null ? null : ((map['agentRuntimeEndpointArn'] as String).input()).input(),
+      agentRuntimeId: map['agentRuntimeId'] == null ? null : ((map['agentRuntimeId'] as String).input()).input(),
+      agentRuntimeVersion: map['agentRuntimeVersion'] == null ? null : ((map['agentRuntimeVersion'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentcoreAgentRuntimeEndpointTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

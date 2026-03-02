@@ -31,9 +31,9 @@ class GroupMembershipState {
 
   factory GroupMembershipState.fromMap(Map<String, dynamic> map) {
     return GroupMembershipState(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
+      group: map['group'] == null ? null : ((map['group'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      users: map['users'] == null ? null : (((map['users'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -49,12 +49,12 @@ class RouterTrAssociationArgs {
 
   factory RouterTrAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RouterTrAssociationArgs(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes'] as List).cast<String>()).input(),
+      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes']! as List).cast<String>()).input(),
       associationRegionId: (map['associationRegionId'] as String).input(),
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
       ecrId: (map['ecrId'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
-      transitRouterOwnerId: map['transitRouterOwnerId'] == null ? null : (map['transitRouterOwnerId'] as int).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
+      transitRouterOwnerId: map['transitRouterOwnerId'] == null ? null : (map['transitRouterOwnerId']! as int).input(),
     );
   }
 }

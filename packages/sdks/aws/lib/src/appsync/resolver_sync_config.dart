@@ -31,9 +31,9 @@ class ResolverSyncConfig {
 
   factory ResolverSyncConfig.fromMap(Map<String, dynamic> map) {
     return ResolverSyncConfig(
-      conflictDetection: map['conflictDetection'] == null ? null : (map['conflictDetection'] as String).input(),
-      conflictHandler: map['conflictHandler'] == null ? null : (map['conflictHandler'] as String).input(),
-      lambdaConflictHandlerConfig: map['lambdaConflictHandlerConfig'] == null ? null : (ResolverSyncConfigLambdaConflictHandlerConfig.fromMap((map['lambdaConflictHandlerConfig'] as Map).cast<String, dynamic>())).input(),
+      conflictDetection: map['conflictDetection'] == null ? null : ((map['conflictDetection'] as String).input()).input(),
+      conflictHandler: map['conflictHandler'] == null ? null : ((map['conflictHandler'] as String).input()).input(),
+      lambdaConflictHandlerConfig: map['lambdaConflictHandlerConfig'] == null ? null : ((ResolverSyncConfigLambdaConflictHandlerConfig.fromMap((map['lambdaConflictHandlerConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

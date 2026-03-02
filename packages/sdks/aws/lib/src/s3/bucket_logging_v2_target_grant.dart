@@ -26,7 +26,7 @@ class BucketLoggingV2TargetGrant {
 
   factory BucketLoggingV2TargetGrant.fromMap(Map<String, dynamic> map) {
     return BucketLoggingV2TargetGrant(
-      grantee: (BucketLoggingV2TargetGrantGrantee.fromMap((map['grantee'] as Map).cast<String, dynamic>())).input(),
+      grantee: (BucketLoggingV2TargetGrantGrantee.fromMap((map['grantee']! as Map).cast<String, dynamic>())).input(),
       permission: (map['permission'] as String).input(),
     );
   }

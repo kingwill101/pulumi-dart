@@ -31,7 +31,7 @@ class ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration {
   factory ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration(
       cpu: (map['cpu'] as String).input(),
-      disk: map['disk'] == null ? null : (map['disk'] as String).input(),
+      disk: map['disk'] == null ? null : ((map['disk'] as String).input()).input(),
       memory: (map['memory'] as String).input(),
     );
   }

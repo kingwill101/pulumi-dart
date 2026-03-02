@@ -37,10 +37,10 @@ class DdosSettingsResponse {
 
   factory DdosSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DdosSettingsResponse(
-      ddosCustomPolicy: map['ddosCustomPolicy'] == null ? null : (SubResourceResponse.fromMap((map['ddosCustomPolicy'] as Map).cast<String, dynamic>())).input(),
-      ddosProtectionPlan: map['ddosProtectionPlan'] == null ? null : (SubResourceResponse.fromMap((map['ddosProtectionPlan'] as Map).cast<String, dynamic>())).input(),
-      protectionCoverage: map['protectionCoverage'] == null ? null : (map['protectionCoverage'] as String).input(),
-      protectionMode: map['protectionMode'] == null ? null : (map['protectionMode'] as String).input(),
+      ddosCustomPolicy: map['ddosCustomPolicy'] == null ? null : (SubResourceResponse.fromMap((map['ddosCustomPolicy']! as Map).cast<String, dynamic>())).input(),
+      ddosProtectionPlan: map['ddosProtectionPlan'] == null ? null : (SubResourceResponse.fromMap((map['ddosProtectionPlan']! as Map).cast<String, dynamic>())).input(),
+      protectionCoverage: map['protectionCoverage'] == null ? null : (map['protectionCoverage']! as String).input(),
+      protectionMode: map['protectionMode'] == null ? null : (map['protectionMode']! as String).input(),
     );
   }
 }

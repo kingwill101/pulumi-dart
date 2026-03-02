@@ -26,8 +26,8 @@ class Certificate {
 
   factory Certificate.fromMap(Map<String, dynamic> map) {
     return Certificate(
-      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
+      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn']! as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class VirtualGatewaySpecListenerConnectionPoolHttp {
   factory VirtualGatewaySpecListenerConnectionPoolHttp.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerConnectionPoolHttp(
       maxConnections: (map['maxConnections'] as int).input(),
-      maxPendingRequests: map['maxPendingRequests'] == null ? null : (map['maxPendingRequests'] as int).input(),
+      maxPendingRequests: map['maxPendingRequests'] == null ? null : ((map['maxPendingRequests'] as int).input()).input(),
     );
   }
 }

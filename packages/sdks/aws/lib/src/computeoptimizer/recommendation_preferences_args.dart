@@ -73,16 +73,16 @@ class RecommendationPreferencesArgs {
 
   factory RecommendationPreferencesArgs.fromMap(Map<String, dynamic> map) {
     return RecommendationPreferencesArgs(
-      enhancedInfrastructureMetrics: map['enhancedInfrastructureMetrics'] == null ? null : (map['enhancedInfrastructureMetrics'] as String).input(),
-      externalMetricsPreference: map['externalMetricsPreference'] == null ? null : (RecommendationPreferencesExternalMetricsPreference.fromMap((map['externalMetricsPreference'] as Map).cast<String, dynamic>())).input(),
-      inferredWorkloadTypes: map['inferredWorkloadTypes'] == null ? null : (map['inferredWorkloadTypes'] as String).input(),
-      lookBackPeriod: map['lookBackPeriod'] == null ? null : (map['lookBackPeriod'] as String).input(),
-      preferredResources: map['preferredResources'] == null ? null : (pulumi.Input.decodeList<RecommendationPreferencesPreferredResource>(map['preferredResources'], (value) => RecommendationPreferencesPreferredResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      enhancedInfrastructureMetrics: map['enhancedInfrastructureMetrics'] == null ? null : ((map['enhancedInfrastructureMetrics'] as String).input()).input(),
+      externalMetricsPreference: map['externalMetricsPreference'] == null ? null : ((RecommendationPreferencesExternalMetricsPreference.fromMap((map['externalMetricsPreference']! as Map).cast<String, dynamic>())).input()).input(),
+      inferredWorkloadTypes: map['inferredWorkloadTypes'] == null ? null : ((map['inferredWorkloadTypes'] as String).input()).input(),
+      lookBackPeriod: map['lookBackPeriod'] == null ? null : ((map['lookBackPeriod'] as String).input()).input(),
+      preferredResources: map['preferredResources'] == null ? null : ((pulumi.Input.decodeList<RecommendationPreferencesPreferredResource>(map['preferredResources']!, (value) => RecommendationPreferencesPreferredResource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceType: (map['resourceType'] as String).input(),
-      savingsEstimationMode: map['savingsEstimationMode'] == null ? null : (map['savingsEstimationMode'] as String).input(),
-      scope: (RecommendationPreferencesScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      utilizationPreferences: map['utilizationPreferences'] == null ? null : (pulumi.Input.decodeList<RecommendationPreferencesUtilizationPreference>(map['utilizationPreferences'], (value) => RecommendationPreferencesUtilizationPreference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      savingsEstimationMode: map['savingsEstimationMode'] == null ? null : ((map['savingsEstimationMode'] as String).input()).input(),
+      scope: (RecommendationPreferencesScope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
+      utilizationPreferences: map['utilizationPreferences'] == null ? null : ((pulumi.Input.decodeList<RecommendationPreferencesUtilizationPreference>(map['utilizationPreferences']!, (value) => RecommendationPreferencesUtilizationPreference.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

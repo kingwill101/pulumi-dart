@@ -26,8 +26,8 @@ class ApplicationOwnerState {
 
   factory ApplicationOwnerState.fromMap(Map<String, dynamic> map) {
     return ApplicationOwnerState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      ownerObjectId: map['ownerObjectId'] == null ? null : (map['ownerObjectId'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      ownerObjectId: map['ownerObjectId'] == null ? null : (map['ownerObjectId']! as String).input(),
     );
   }
 }

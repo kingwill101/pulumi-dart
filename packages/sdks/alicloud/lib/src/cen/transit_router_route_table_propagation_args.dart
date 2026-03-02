@@ -36,7 +36,7 @@ class TransitRouterRouteTablePropagationArgs {
 
   factory TransitRouterRouteTablePropagationArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterRouteTablePropagationArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
       transitRouterRouteTableId: (map['transitRouterRouteTableId'] as String).input(),
     );

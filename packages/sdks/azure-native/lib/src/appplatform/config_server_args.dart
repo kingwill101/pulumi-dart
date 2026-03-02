@@ -35,7 +35,7 @@ class ConfigServerArgs {
 
   factory ConfigServerArgs.fromMap(Map<String, dynamic> map) {
     return ConfigServerArgs(
-      properties: map['properties'] == null ? null : (ConfigServerProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ConfigServerProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

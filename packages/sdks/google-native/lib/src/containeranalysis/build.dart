@@ -28,7 +28,7 @@ class Build {
   factory Build.fromMap(Map<String, dynamic> map) {
     return Build(
       builderVersion: (map['builderVersion'] as String).input(),
-      signature: map['signature'] == null ? null : (BuildSignatureContaineranalysisV1beta1.fromMap((map['signature'] as Map).cast<String, dynamic>())).input(),
+      signature: map['signature'] == null ? null : (BuildSignatureContaineranalysisV1beta1.fromMap((map['signature']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

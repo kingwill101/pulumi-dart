@@ -63,14 +63,14 @@ class ContainerServiceArgs {
 
   factory ContainerServiceArgs.fromMap(Map<String, dynamic> map) {
     return ContainerServiceArgs(
-      isDisabled: map['isDisabled'] == null ? null : (map['isDisabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      isDisabled: map['isDisabled'] == null ? null : ((map['isDisabled'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       power: (map['power'] as String).input(),
-      privateRegistryAccess: map['privateRegistryAccess'] == null ? null : (ContainerServicePrivateRegistryAccess.fromMap((map['privateRegistryAccess'] as Map).cast<String, dynamic>())).input(),
-      publicDomainNames: map['publicDomainNames'] == null ? null : (ContainerServicePublicDomainNames.fromMap((map['publicDomainNames'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      privateRegistryAccess: map['privateRegistryAccess'] == null ? null : ((ContainerServicePrivateRegistryAccess.fromMap((map['privateRegistryAccess']! as Map).cast<String, dynamic>())).input()).input(),
+      publicDomainNames: map['publicDomainNames'] == null ? null : ((ContainerServicePublicDomainNames.fromMap((map['publicDomainNames']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       scale: (map['scale'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

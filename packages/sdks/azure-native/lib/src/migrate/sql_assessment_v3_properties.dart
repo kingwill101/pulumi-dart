@@ -33,9 +33,9 @@ class SqlAssessmentV3Properties {
 
   factory SqlAssessmentV3Properties.fromMap(Map<String, dynamic> map) {
     return SqlAssessmentV3Properties(
-      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId'] as String).input(),
-      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (SqlAssessmentSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId']! as String).input(),
+      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (SqlAssessmentSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

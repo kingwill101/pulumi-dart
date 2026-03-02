@@ -36,9 +36,9 @@ class GetQueueCloudtasksV2beta2Args {
   factory GetQueueCloudtasksV2beta2Args.fromMap(Map<String, dynamic> map) {
     return GetQueueCloudtasksV2beta2Args(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       queueId: (map['queueId'] as String).input(),
-      readMask: map['readMask'] == null ? null : (map['readMask'] as String).input(),
+      readMask: map['readMask'] == null ? null : (map['readMask']! as String).input(),
     );
   }
 }

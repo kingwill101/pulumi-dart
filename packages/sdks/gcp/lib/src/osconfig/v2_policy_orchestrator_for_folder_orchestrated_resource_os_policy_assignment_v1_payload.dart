@@ -104,19 +104,19 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
   factory V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload(
-      baseline: map['baseline'] == null ? null : (map['baseline'] as bool).input(),
-      deleted: map['deleted'] == null ? null : (map['deleted'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      baseline: map['baseline'] == null ? null : (map['baseline']! as bool).input(),
+      deleted: map['deleted'] == null ? null : (map['deleted']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       instanceFilter: (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       osPolicies: (pulumi.Input.decodeList<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy>(map['osPolicies'], (value) => V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling'] as bool).input(),
-      revisionCreateTime: map['revisionCreateTime'] == null ? null : (map['revisionCreateTime'] as String).input(),
-      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
+      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
+      revisionCreateTime: map['revisionCreateTime'] == null ? null : (map['revisionCreateTime']! as String).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId']! as String).input(),
       rollout: (V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout.fromMap((map['rollout'] as Map).cast<String, dynamic>())).input(),
-      rolloutState: map['rolloutState'] == null ? null : (map['rolloutState'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      rolloutState: map['rolloutState'] == null ? null : (map['rolloutState']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

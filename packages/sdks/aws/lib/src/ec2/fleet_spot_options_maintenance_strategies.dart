@@ -21,7 +21,7 @@ class FleetSpotOptionsMaintenanceStrategies {
 
   factory FleetSpotOptionsMaintenanceStrategies.fromMap(Map<String, dynamic> map) {
     return FleetSpotOptionsMaintenanceStrategies(
-      capacityRebalance: map['capacityRebalance'] == null ? null : (FleetSpotOptionsMaintenanceStrategiesCapacityRebalance.fromMap((map['capacityRebalance'] as Map).cast<String, dynamic>())).input(),
+      capacityRebalance: map['capacityRebalance'] == null ? null : ((FleetSpotOptionsMaintenanceStrategiesCapacityRebalance.fromMap((map['capacityRebalance']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -56,13 +56,13 @@ class ZoneArgs {
 
   factory ZoneArgs.fromMap(Map<String, dynamic> map) {
     return ZoneArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      registrationVirtualNetworks: map['registrationVirtualNetworks'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['registrationVirtualNetworks'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resolutionVirtualNetworks: map['resolutionVirtualNetworks'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['resolutionVirtualNetworks'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      registrationVirtualNetworks: map['registrationVirtualNetworks'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['registrationVirtualNetworks']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resolutionVirtualNetworks: map['resolutionVirtualNetworks'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['resolutionVirtualNetworks']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneName: map['zoneName'] == null ? null : (map['zoneName'] as String).input(),
-      zoneType: map['zoneType'] == null ? null : (ZoneType.fromValue(map['zoneType'] as String)).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneName: map['zoneName'] == null ? null : (map['zoneName']! as String).input(),
+      zoneType: map['zoneType'] == null ? null : (ZoneType.fromValue(map['zoneType']! as String)).input(),
     );
   }
 }

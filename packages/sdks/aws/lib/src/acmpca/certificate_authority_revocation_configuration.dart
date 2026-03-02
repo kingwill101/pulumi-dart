@@ -28,8 +28,8 @@ class CertificateAuthorityRevocationConfiguration {
 
   factory CertificateAuthorityRevocationConfiguration.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityRevocationConfiguration(
-      crlConfiguration: map['crlConfiguration'] == null ? null : (CertificateAuthorityRevocationConfigurationCrlConfiguration.fromMap((map['crlConfiguration'] as Map).cast<String, dynamic>())).input(),
-      ocspConfiguration: map['ocspConfiguration'] == null ? null : (CertificateAuthorityRevocationConfigurationOcspConfiguration.fromMap((map['ocspConfiguration'] as Map).cast<String, dynamic>())).input(),
+      crlConfiguration: map['crlConfiguration'] == null ? null : ((CertificateAuthorityRevocationConfigurationCrlConfiguration.fromMap((map['crlConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      ocspConfiguration: map['ocspConfiguration'] == null ? null : ((CertificateAuthorityRevocationConfigurationOcspConfiguration.fromMap((map['ocspConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

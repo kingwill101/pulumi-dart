@@ -35,9 +35,9 @@ class GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource {
 
   factory GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap(Map<String, dynamic> map) {
     return GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource(
-      baseUrl: map['baseUrl'] == null ? null : (map['baseUrl'] as String).input(),
-      crawlingOption: map['crawlingOption'] == null ? null : (map['crawlingOption'] as String).input(),
-      embedMedia: map['embedMedia'] == null ? null : (map['embedMedia'] as bool).input(),
+      baseUrl: map['baseUrl'] == null ? null : (map['baseUrl']! as String).input(),
+      crawlingOption: map['crawlingOption'] == null ? null : (map['crawlingOption']! as String).input(),
+      embedMedia: map['embedMedia'] == null ? null : (map['embedMedia']! as bool).input(),
     );
   }
 }

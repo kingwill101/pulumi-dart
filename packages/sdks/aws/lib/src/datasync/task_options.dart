@@ -90,21 +90,21 @@ class TaskOptions {
 
   factory TaskOptions.fromMap(Map<String, dynamic> map) {
     return TaskOptions(
-      atime: map['atime'] == null ? null : (map['atime'] as String).input(),
-      bytesPerSecond: map['bytesPerSecond'] == null ? null : (map['bytesPerSecond'] as int).input(),
-      gid: map['gid'] == null ? null : (map['gid'] as String).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
-      mtime: map['mtime'] == null ? null : (map['mtime'] as String).input(),
-      objectTags: map['objectTags'] == null ? null : (map['objectTags'] as String).input(),
-      overwriteMode: map['overwriteMode'] == null ? null : (map['overwriteMode'] as String).input(),
-      posixPermissions: map['posixPermissions'] == null ? null : (map['posixPermissions'] as String).input(),
-      preserveDeletedFiles: map['preserveDeletedFiles'] == null ? null : (map['preserveDeletedFiles'] as String).input(),
-      preserveDevices: map['preserveDevices'] == null ? null : (map['preserveDevices'] as String).input(),
-      securityDescriptorCopyFlags: map['securityDescriptorCopyFlags'] == null ? null : (map['securityDescriptorCopyFlags'] as String).input(),
-      taskQueueing: map['taskQueueing'] == null ? null : (map['taskQueueing'] as String).input(),
-      transferMode: map['transferMode'] == null ? null : (map['transferMode'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      verifyMode: map['verifyMode'] == null ? null : (map['verifyMode'] as String).input(),
+      atime: map['atime'] == null ? null : ((map['atime'] as String).input()).input(),
+      bytesPerSecond: map['bytesPerSecond'] == null ? null : ((map['bytesPerSecond'] as int).input()).input(),
+      gid: map['gid'] == null ? null : ((map['gid'] as String).input()).input(),
+      logLevel: map['logLevel'] == null ? null : ((map['logLevel'] as String).input()).input(),
+      mtime: map['mtime'] == null ? null : ((map['mtime'] as String).input()).input(),
+      objectTags: map['objectTags'] == null ? null : ((map['objectTags'] as String).input()).input(),
+      overwriteMode: map['overwriteMode'] == null ? null : ((map['overwriteMode'] as String).input()).input(),
+      posixPermissions: map['posixPermissions'] == null ? null : ((map['posixPermissions'] as String).input()).input(),
+      preserveDeletedFiles: map['preserveDeletedFiles'] == null ? null : ((map['preserveDeletedFiles'] as String).input()).input(),
+      preserveDevices: map['preserveDevices'] == null ? null : ((map['preserveDevices'] as String).input()).input(),
+      securityDescriptorCopyFlags: map['securityDescriptorCopyFlags'] == null ? null : ((map['securityDescriptorCopyFlags'] as String).input()).input(),
+      taskQueueing: map['taskQueueing'] == null ? null : ((map['taskQueueing'] as String).input()).input(),
+      transferMode: map['transferMode'] == null ? null : ((map['transferMode'] as String).input()).input(),
+      uid: map['uid'] == null ? null : ((map['uid'] as String).input()).input(),
+      verifyMode: map['verifyMode'] == null ? null : ((map['verifyMode'] as String).input()).input(),
     );
   }
 }

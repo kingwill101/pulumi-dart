@@ -26,8 +26,8 @@ class K8stransparentDataEncryption {
 
   factory K8stransparentDataEncryption.fromMap(Map<String, dynamic> map) {
     return K8stransparentDataEncryption(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      protectorSecret: map['protectorSecret'] == null ? null : (map['protectorSecret'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      protectorSecret: map['protectorSecret'] == null ? null : (map['protectorSecret']! as String).input(),
     );
   }
 }

@@ -55,7 +55,7 @@ class GetFrameworkResult {
     return GetFrameworkResult(
       arn: map['arn'] as String,
       complianceType: map['complianceType'] as String,
-      controlSets: pulumi.Input.decodeList<GetFrameworkControlSet>(map['controlSets'], (value) => GetFrameworkControlSet.fromMap((value as Map).cast<String, dynamic>())),
+      controlSets: pulumi.Input.decodeList<GetFrameworkControlSet>(map['controlSets']!, (value) => GetFrameworkControlSet.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       frameworkType: map['frameworkType'] as String,
       id: map['id'] as String,

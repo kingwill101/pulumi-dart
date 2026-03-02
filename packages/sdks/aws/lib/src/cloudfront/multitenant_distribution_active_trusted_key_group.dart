@@ -26,8 +26,8 @@ class MultitenantDistributionActiveTrustedKeyGroup {
 
   factory MultitenantDistributionActiveTrustedKeyGroup.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionActiveTrustedKeyGroup(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionActiveTrustedKeyGroupItem>(map['items'], (value) => MultitenantDistributionActiveTrustedKeyGroupItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      items: map['items'] == null ? null : ((pulumi.Input.decodeList<MultitenantDistributionActiveTrustedKeyGroupItem>(map['items']!, (value) => MultitenantDistributionActiveTrustedKeyGroupItem.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

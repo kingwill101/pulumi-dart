@@ -24,7 +24,7 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class BackupInstanceMysqlFlexibleServerState {
 
   factory BackupInstanceMysqlFlexibleServerState.fromMap(Map<String, dynamic> map) {
     return BackupInstanceMysqlFlexibleServerState(
-      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

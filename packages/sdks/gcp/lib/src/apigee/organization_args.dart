@@ -110,20 +110,20 @@ class OrganizationArgs {
 
   factory OrganizationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationArgs(
-      analyticsRegion: map['analyticsRegion'] == null ? null : (map['analyticsRegion'] as String).input(),
-      apiConsumerDataEncryptionKeyName: map['apiConsumerDataEncryptionKeyName'] == null ? null : (map['apiConsumerDataEncryptionKeyName'] as String).input(),
-      apiConsumerDataLocation: map['apiConsumerDataLocation'] == null ? null : (map['apiConsumerDataLocation'] as String).input(),
-      authorizedNetwork: map['authorizedNetwork'] == null ? null : (map['authorizedNetwork'] as String).input(),
-      billingType: map['billingType'] == null ? null : (map['billingType'] as String).input(),
-      controlPlaneEncryptionKeyName: map['controlPlaneEncryptionKeyName'] == null ? null : (map['controlPlaneEncryptionKeyName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableVpcPeering: map['disableVpcPeering'] == null ? null : (map['disableVpcPeering'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      analyticsRegion: map['analyticsRegion'] == null ? null : (map['analyticsRegion']! as String).input(),
+      apiConsumerDataEncryptionKeyName: map['apiConsumerDataEncryptionKeyName'] == null ? null : (map['apiConsumerDataEncryptionKeyName']! as String).input(),
+      apiConsumerDataLocation: map['apiConsumerDataLocation'] == null ? null : (map['apiConsumerDataLocation']! as String).input(),
+      authorizedNetwork: map['authorizedNetwork'] == null ? null : (map['authorizedNetwork']! as String).input(),
+      billingType: map['billingType'] == null ? null : (map['billingType']! as String).input(),
+      controlPlaneEncryptionKeyName: map['controlPlaneEncryptionKeyName'] == null ? null : (map['controlPlaneEncryptionKeyName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disableVpcPeering: map['disableVpcPeering'] == null ? null : (map['disableVpcPeering']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       projectId: (map['projectId'] as String).input(),
-      properties: map['properties'] == null ? null : (OrganizationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as String).input(),
-      runtimeDatabaseEncryptionKeyName: map['runtimeDatabaseEncryptionKeyName'] == null ? null : (map['runtimeDatabaseEncryptionKeyName'] as String).input(),
-      runtimeType_: map['runtimeType'] == null ? null : (map['runtimeType'] as String).input(),
+      properties: map['properties'] == null ? null : (OrganizationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as String).input(),
+      runtimeDatabaseEncryptionKeyName: map['runtimeDatabaseEncryptionKeyName'] == null ? null : (map['runtimeDatabaseEncryptionKeyName']! as String).input(),
+      runtimeType_: map['runtimeType'] == null ? null : (map['runtimeType']! as String).input(),
     );
   }
 }

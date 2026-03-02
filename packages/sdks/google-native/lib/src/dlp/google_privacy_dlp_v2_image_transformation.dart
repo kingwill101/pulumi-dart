@@ -38,10 +38,10 @@ class GooglePrivacyDlpV2ImageTransformation {
 
   factory GooglePrivacyDlpV2ImageTransformation.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ImageTransformation(
-      allInfoTypes: map['allInfoTypes'] == null ? null : ((map['allInfoTypes'] as Map).cast<String, dynamic>()).input(),
-      allText: map['allText'] == null ? null : ((map['allText'] as Map).cast<String, dynamic>()).input(),
-      redactionColor: map['redactionColor'] == null ? null : (GooglePrivacyDlpV2Color.fromMap((map['redactionColor'] as Map).cast<String, dynamic>())).input(),
-      selectedInfoTypes: map['selectedInfoTypes'] == null ? null : (GooglePrivacyDlpV2SelectedInfoTypes.fromMap((map['selectedInfoTypes'] as Map).cast<String, dynamic>())).input(),
+      allInfoTypes: map['allInfoTypes'] == null ? null : ((map['allInfoTypes']! as Map).cast<String, dynamic>()).input(),
+      allText: map['allText'] == null ? null : ((map['allText']! as Map).cast<String, dynamic>()).input(),
+      redactionColor: map['redactionColor'] == null ? null : (GooglePrivacyDlpV2Color.fromMap((map['redactionColor']! as Map).cast<String, dynamic>())).input(),
+      selectedInfoTypes: map['selectedInfoTypes'] == null ? null : (GooglePrivacyDlpV2SelectedInfoTypes.fromMap((map['selectedInfoTypes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

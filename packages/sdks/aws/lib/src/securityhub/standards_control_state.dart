@@ -71,17 +71,17 @@ class StandardsControlState {
 
   factory StandardsControlState.fromMap(Map<String, dynamic> map) {
     return StandardsControlState(
-      controlId: map['controlId'] == null ? null : (map['controlId'] as String).input(),
-      controlStatus: map['controlStatus'] == null ? null : (map['controlStatus'] as String).input(),
-      controlStatusUpdatedAt: map['controlStatusUpdatedAt'] == null ? null : (map['controlStatusUpdatedAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabledReason: map['disabledReason'] == null ? null : (map['disabledReason'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      relatedRequirements: map['relatedRequirements'] == null ? null : ((map['relatedRequirements'] as List).cast<String>()).input(),
-      remediationUrl: map['remediationUrl'] == null ? null : (map['remediationUrl'] as String).input(),
-      severityRating: map['severityRating'] == null ? null : (map['severityRating'] as String).input(),
-      standardsControlArn: map['standardsControlArn'] == null ? null : (map['standardsControlArn'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      controlId: map['controlId'] == null ? null : ((map['controlId'] as String).input()).input(),
+      controlStatus: map['controlStatus'] == null ? null : ((map['controlStatus'] as String).input()).input(),
+      controlStatusUpdatedAt: map['controlStatusUpdatedAt'] == null ? null : ((map['controlStatusUpdatedAt'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      disabledReason: map['disabledReason'] == null ? null : ((map['disabledReason'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      relatedRequirements: map['relatedRequirements'] == null ? null : (((map['relatedRequirements'] as List).cast<String>()).input()).input(),
+      remediationUrl: map['remediationUrl'] == null ? null : ((map['remediationUrl'] as String).input()).input(),
+      severityRating: map['severityRating'] == null ? null : ((map['severityRating'] as String).input()).input(),
+      standardsControlArn: map['standardsControlArn'] == null ? null : ((map['standardsControlArn'] as String).input()).input(),
+      title: map['title'] == null ? null : ((map['title'] as String).input()).input(),
     );
   }
 }

@@ -79,17 +79,17 @@ class MetricStreamArgs {
 
   factory MetricStreamArgs.fromMap(Map<String, dynamic> map) {
     return MetricStreamArgs(
-      excludeFilters: map['excludeFilters'] == null ? null : (pulumi.Input.decodeList<MetricStreamExcludeFilter>(map['excludeFilters'], (value) => MetricStreamExcludeFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludeFilters: map['excludeFilters'] == null ? null : ((pulumi.Input.decodeList<MetricStreamExcludeFilter>(map['excludeFilters']!, (value) => MetricStreamExcludeFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       firehoseArn: (map['firehoseArn'] as String).input(),
-      includeFilters: map['includeFilters'] == null ? null : (pulumi.Input.decodeList<MetricStreamIncludeFilter>(map['includeFilters'], (value) => MetricStreamIncludeFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includeLinkedAccountsMetrics: map['includeLinkedAccountsMetrics'] == null ? null : (map['includeLinkedAccountsMetrics'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      includeFilters: map['includeFilters'] == null ? null : ((pulumi.Input.decodeList<MetricStreamIncludeFilter>(map['includeFilters']!, (value) => MetricStreamIncludeFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      includeLinkedAccountsMetrics: map['includeLinkedAccountsMetrics'] == null ? null : ((map['includeLinkedAccountsMetrics'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
       outputFormat: (map['outputFormat'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      statisticsConfigurations: map['statisticsConfigurations'] == null ? null : (pulumi.Input.decodeList<MetricStreamStatisticsConfiguration>(map['statisticsConfigurations'], (value) => MetricStreamStatisticsConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      statisticsConfigurations: map['statisticsConfigurations'] == null ? null : ((pulumi.Input.decodeList<MetricStreamStatisticsConfiguration>(map['statisticsConfigurations']!, (value) => MetricStreamStatisticsConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

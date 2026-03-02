@@ -32,9 +32,9 @@ class ResponseBasedOriginErrorDetectionParametersResponse {
 
   factory ResponseBasedOriginErrorDetectionParametersResponse.fromMap(Map<String, dynamic> map) {
     return ResponseBasedOriginErrorDetectionParametersResponse(
-      httpErrorRanges: map['httpErrorRanges'] == null ? null : (pulumi.Input.decodeList<HttpErrorRangeParametersResponse>(map['httpErrorRanges'], (value) => HttpErrorRangeParametersResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseBasedDetectedErrorTypes: map['responseBasedDetectedErrorTypes'] == null ? null : (map['responseBasedDetectedErrorTypes'] as String).input(),
-      responseBasedFailoverThresholdPercentage: map['responseBasedFailoverThresholdPercentage'] == null ? null : (map['responseBasedFailoverThresholdPercentage'] as int).input(),
+      httpErrorRanges: map['httpErrorRanges'] == null ? null : (pulumi.Input.decodeList<HttpErrorRangeParametersResponse>(map['httpErrorRanges']!, (value) => HttpErrorRangeParametersResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseBasedDetectedErrorTypes: map['responseBasedDetectedErrorTypes'] == null ? null : (map['responseBasedDetectedErrorTypes']! as String).input(),
+      responseBasedFailoverThresholdPercentage: map['responseBasedFailoverThresholdPercentage'] == null ? null : (map['responseBasedFailoverThresholdPercentage']! as int).input(),
     );
   }
 }

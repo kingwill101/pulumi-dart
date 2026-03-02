@@ -30,7 +30,7 @@ class GetGitHubOAuthArgs {
   factory GetGitHubOAuthArgs.fromMap(Map<String, dynamic> map) {
     return GetGitHubOAuthArgs(
       location: (map['location'] as String).input(),
-      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl']! as String).input(),
     );
   }
 }

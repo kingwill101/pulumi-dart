@@ -54,13 +54,13 @@ class GetRulesArgs {
 
   factory GetRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      listenerIds: map['listenerIds'] == null ? null : ((map['listenerIds'] as List).cast<String>()).input(),
-      loadBalancerIds: map['loadBalancerIds'] == null ? null : ((map['loadBalancerIds'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      ruleIds: map['ruleIds'] == null ? null : ((map['ruleIds'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      listenerIds: map['listenerIds'] == null ? null : ((map['listenerIds']! as List).cast<String>()).input(),
+      loadBalancerIds: map['loadBalancerIds'] == null ? null : ((map['loadBalancerIds']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      ruleIds: map['ruleIds'] == null ? null : ((map['ruleIds']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

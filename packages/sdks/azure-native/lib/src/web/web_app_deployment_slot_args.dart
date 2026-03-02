@@ -89,20 +89,20 @@ class WebAppDeploymentSlotArgs {
 
   factory WebAppDeploymentSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppDeploymentSlotArgs(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      author: map['author'] == null ? null : (map['author'] as String).input(),
-      authorEmail: map['authorEmail'] == null ? null : (map['authorEmail'] as String).input(),
-      deployer: map['deployer'] == null ? null : (map['deployer'] as String).input(),
-      details: map['details'] == null ? null : (map['details'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      author: map['author'] == null ? null : (map['author']! as String).input(),
+      authorEmail: map['authorEmail'] == null ? null : (map['authorEmail']! as String).input(),
+      deployer: map['deployer'] == null ? null : (map['deployer']! as String).input(),
+      details: map['details'] == null ? null : (map['details']! as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       slot: (map['slot'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
     );
   }
 }

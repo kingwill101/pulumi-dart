@@ -27,8 +27,8 @@ class InstanceCrossInstanceReplicationConfigMembership {
 
   factory InstanceCrossInstanceReplicationConfigMembership.fromMap(Map<String, dynamic> map) {
     return InstanceCrossInstanceReplicationConfigMembership(
-      primaryInstances: map['primaryInstances'] == null ? null : (pulumi.Input.decodeList<InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance>(map['primaryInstances'], (value) => InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secondaryInstances: map['secondaryInstances'] == null ? null : (pulumi.Input.decodeList<InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance>(map['secondaryInstances'], (value) => InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      primaryInstances: map['primaryInstances'] == null ? null : (pulumi.Input.decodeList<InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance>(map['primaryInstances']!, (value) => InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secondaryInstances: map['secondaryInstances'] == null ? null : (pulumi.Input.decodeList<InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance>(map['secondaryInstances']!, (value) => InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

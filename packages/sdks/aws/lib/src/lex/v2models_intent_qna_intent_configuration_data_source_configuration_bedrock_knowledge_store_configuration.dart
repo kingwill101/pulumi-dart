@@ -32,8 +32,8 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledg
   factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration(
       bedrockKnowledgeBaseArn: (map['bedrockKnowledgeBaseArn'] as String).input(),
-      exactResponse: map['exactResponse'] == null ? null : (map['exactResponse'] as bool).input(),
-      exactResponseFields: map['exactResponseFields'] == null ? null : (V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields.fromMap((map['exactResponseFields'] as Map).cast<String, dynamic>())).input(),
+      exactResponse: map['exactResponse'] == null ? null : ((map['exactResponse'] as bool).input()).input(),
+      exactResponseFields: map['exactResponseFields'] == null ? null : ((V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields.fromMap((map['exactResponseFields']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

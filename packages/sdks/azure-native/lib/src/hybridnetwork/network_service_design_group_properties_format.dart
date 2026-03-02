@@ -21,7 +21,7 @@ class NetworkServiceDesignGroupPropertiesFormat {
 
   factory NetworkServiceDesignGroupPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return NetworkServiceDesignGroupPropertiesFormat(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockIp {
 
   factory VMwareClusterNetworkConfigStaticIpConfigIpBlockIp.fromMap(Map<String, dynamic> map) {
     return VMwareClusterNetworkConfigStaticIpConfigIpBlockIp(
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
       ip: (map['ip'] as String).input(),
     );
   }

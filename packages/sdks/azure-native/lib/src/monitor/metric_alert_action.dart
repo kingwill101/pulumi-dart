@@ -26,8 +26,8 @@ class MetricAlertAction {
 
   factory MetricAlertAction.fromMap(Map<String, dynamic> map) {
     return MetricAlertAction(
-      actionGroupId: map['actionGroupId'] == null ? null : (map['actionGroupId'] as String).input(),
-      webHookProperties: map['webHookProperties'] == null ? null : ((map['webHookProperties'] as Map).cast<String, String>()).input(),
+      actionGroupId: map['actionGroupId'] == null ? null : (map['actionGroupId']! as String).input(),
+      webHookProperties: map['webHookProperties'] == null ? null : ((map['webHookProperties']! as Map).cast<String, String>()).input(),
     );
   }
 }

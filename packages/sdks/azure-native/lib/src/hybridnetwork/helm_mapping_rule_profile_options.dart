@@ -28,8 +28,8 @@ class HelmMappingRuleProfileOptions {
 
   factory HelmMappingRuleProfileOptions.fromMap(Map<String, dynamic> map) {
     return HelmMappingRuleProfileOptions(
-      installOptions: map['installOptions'] == null ? null : (HelmInstallOptions.fromMap((map['installOptions'] as Map).cast<String, dynamic>())).input(),
-      upgradeOptions: map['upgradeOptions'] == null ? null : (HelmUpgradeOptions.fromMap((map['upgradeOptions'] as Map).cast<String, dynamic>())).input(),
+      installOptions: map['installOptions'] == null ? null : (HelmInstallOptions.fromMap((map['installOptions']! as Map).cast<String, dynamic>())).input(),
+      upgradeOptions: map['upgradeOptions'] == null ? null : (HelmUpgradeOptions.fromMap((map['upgradeOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

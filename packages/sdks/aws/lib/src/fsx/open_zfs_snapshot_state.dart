@@ -50,13 +50,13 @@ class OpenZfsSnapshotState {
 
   factory OpenZfsSnapshotState.fromMap(Map<String, dynamic> map) {
     return OpenZfsSnapshotState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      creationTime: map['creationTime'] == null ? null : ((map['creationTime'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      volumeId: map['volumeId'] == null ? null : ((map['volumeId'] as String).input()).input(),
     );
   }
 }

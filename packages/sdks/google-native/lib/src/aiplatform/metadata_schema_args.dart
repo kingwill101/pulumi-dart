@@ -57,14 +57,14 @@ class MetadataSchemaArgs {
 
   factory MetadataSchemaArgs.fromMap(Map<String, dynamic> map) {
     return MetadataSchemaArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadataSchemaId: map['metadataSchemaId'] == null ? null : (map['metadataSchemaId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadataSchemaId: map['metadataSchemaId'] == null ? null : (map['metadataSchemaId']! as String).input(),
       metadataStoreId: (map['metadataStoreId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       schema: (map['schema'] as String).input(),
-      schemaType: map['schemaType'] == null ? null : (MetadataSchemaSchemaType.fromValue(map['schemaType'] as String)).input(),
-      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion'] as String).input(),
+      schemaType: map['schemaType'] == null ? null : (MetadataSchemaSchemaType.fromValue(map['schemaType']! as String)).input(),
+      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion']! as String).input(),
     );
   }
 }

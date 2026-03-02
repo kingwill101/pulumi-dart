@@ -48,11 +48,11 @@ class ExperimentTemplateAction {
   factory ExperimentTemplateAction.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateAction(
       actionId: (map['actionId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ExperimentTemplateActionParameter>(map['parameters'], (value) => ExperimentTemplateActionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startAfters: map['startAfters'] == null ? null : ((map['startAfters'] as List).cast<String>()).input(),
-      target: map['target'] == null ? null : (ExperimentTemplateActionTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<ExperimentTemplateActionParameter>(map['parameters']!, (value) => ExperimentTemplateActionParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      startAfters: map['startAfters'] == null ? null : (((map['startAfters'] as List).cast<String>()).input()).input(),
+      target: map['target'] == null ? null : ((ExperimentTemplateActionTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

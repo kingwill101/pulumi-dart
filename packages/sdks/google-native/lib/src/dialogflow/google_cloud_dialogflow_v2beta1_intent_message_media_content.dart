@@ -29,7 +29,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
   factory GoogleCloudDialogflowV2beta1IntentMessageMediaContent.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageMediaContent(
       mediaObjects: (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>(map['mediaObjects'], (value) => GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mediaType: map['mediaType'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType.fromValue(map['mediaType'] as String)).input(),
+      mediaType: map['mediaType'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaType.fromValue(map['mediaType']! as String)).input(),
     );
   }
 }

@@ -42,10 +42,10 @@ class ScopeArgs {
 
   factory ScopeArgs.fromMap(Map<String, dynamic> map) {
     return ScopeArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targets: (pulumi.Input.decodeList<ScopeTarget>(map['targets'], (value) => ScopeTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: map['timeouts'] == null ? null : (ScopeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      targets: (pulumi.Input.decodeList<ScopeTarget>(map['targets']!, (value) => ScopeTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeouts: map['timeouts'] == null ? null : ((ScopeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

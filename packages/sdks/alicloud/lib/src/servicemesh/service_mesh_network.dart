@@ -30,7 +30,7 @@ class ServiceMeshNetwork {
 
   factory ServiceMeshNetwork.fromMap(Map<String, dynamic> map) {
     return ServiceMeshNetwork(
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
       vpcId: (map['vpcId'] as String).input(),
       vswitcheList: (map['vswitcheList'] as String).input(),
     );

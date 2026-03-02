@@ -31,7 +31,7 @@ class ClusterClusterConfigInitializationAction {
   factory ClusterClusterConfigInitializationAction.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigInitializationAction(
       script: (map['script'] as String).input(),
-      timeoutSec: map['timeoutSec'] == null ? null : (map['timeoutSec'] as int).input(),
+      timeoutSec: map['timeoutSec'] == null ? null : (map['timeoutSec']! as int).input(),
     );
   }
 }

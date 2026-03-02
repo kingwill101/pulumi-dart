@@ -31,8 +31,8 @@ class FrontdoorRuleConditionsHttpVersionCondition {
   factory FrontdoorRuleConditionsHttpVersionCondition.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleConditionsHttpVersionCondition(
       matchValues: ((map['matchValues'] as List).cast<String>()).input(),
-      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition']! as bool).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
     );
   }
 }

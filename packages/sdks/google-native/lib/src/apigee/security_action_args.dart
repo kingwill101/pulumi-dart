@@ -81,18 +81,18 @@ class SecurityActionArgs {
 
   factory SecurityActionArgs.fromMap(Map<String, dynamic> map) {
     return SecurityActionArgs(
-      allow: map['allow'] == null ? null : ((map['allow'] as Map).cast<String, dynamic>()).input(),
+      allow: map['allow'] == null ? null : ((map['allow']! as Map).cast<String, dynamic>()).input(),
       conditionConfig: (GoogleCloudApigeeV1SecurityActionConditionConfig.fromMap((map['conditionConfig'] as Map).cast<String, dynamic>())).input(),
-      deny: map['deny'] == null ? null : (GoogleCloudApigeeV1SecurityActionDeny.fromMap((map['deny'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      deny: map['deny'] == null ? null : (GoogleCloudApigeeV1SecurityActionDeny.fromMap((map['deny']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       environmentId: (map['environmentId'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      flag: map['flag'] == null ? null : (GoogleCloudApigeeV1SecurityActionFlag.fromMap((map['flag'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      flag: map['flag'] == null ? null : (GoogleCloudApigeeV1SecurityActionFlag.fromMap((map['flag']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
       securityActionId: (map['securityActionId'] as String).input(),
       state: (SecurityActionState.fromValue(map['state'] as String)).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
     );
   }
 }

@@ -84,7 +84,7 @@ class GetConnectionResult {
       id: map['id'] as String,
       matchCriterias: (map['matchCriterias'] as List).cast<String>(),
       name: map['name'] as String,
-      physicalConnectionRequirements: pulumi.Input.decodeList<GetConnectionPhysicalConnectionRequirement>(map['physicalConnectionRequirements'], (value) => GetConnectionPhysicalConnectionRequirement.fromMap((value as Map).cast<String, dynamic>())),
+      physicalConnectionRequirements: pulumi.Input.decodeList<GetConnectionPhysicalConnectionRequirement>(map['physicalConnectionRequirements']!, (value) => GetConnectionPhysicalConnectionRequirement.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );

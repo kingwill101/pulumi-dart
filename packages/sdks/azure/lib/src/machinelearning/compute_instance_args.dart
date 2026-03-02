@@ -86,17 +86,17 @@ class ComputeInstanceArgs {
 
   factory ComputeInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceArgs(
-      assignToUser: map['assignToUser'] == null ? null : (ComputeInstanceAssignToUser.fromMap((map['assignToUser'] as Map).cast<String, dynamic>())).input(),
-      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      identity: map['identity'] == null ? null : (ComputeInstanceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
+      assignToUser: map['assignToUser'] == null ? null : (ComputeInstanceAssignToUser.fromMap((map['assignToUser']! as Map).cast<String, dynamic>())).input(),
+      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      identity: map['identity'] == null ? null : (ComputeInstanceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled']! as bool).input(),
       machineLearningWorkspaceId: (map['machineLearningWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodePublicIpEnabled: map['nodePublicIpEnabled'] == null ? null : (map['nodePublicIpEnabled'] as bool).input(),
-      ssh: map['ssh'] == null ? null : (ComputeInstanceSsh.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
-      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodePublicIpEnabled: map['nodePublicIpEnabled'] == null ? null : (map['nodePublicIpEnabled']! as bool).input(),
+      ssh: map['ssh'] == null ? null : (ComputeInstanceSsh.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
+      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       virtualMachineSize: (map['virtualMachineSize'] as String).input(),
     );
   }

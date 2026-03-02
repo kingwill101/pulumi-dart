@@ -69,15 +69,15 @@ class TaskExecutionStatusLatestJob {
 
   factory TaskExecutionStatusLatestJob.fromMap(Map<String, dynamic> map) {
     return TaskExecutionStatusLatestJob(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      retryCount: map['retryCount'] == null ? null : (map['retryCount'] as int).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      serviceJob: map['serviceJob'] == null ? null : (map['serviceJob'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      retryCount: map['retryCount'] == null ? null : (map['retryCount']! as int).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      serviceJob: map['serviceJob'] == null ? null : (map['serviceJob']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class InterconnectAttachmentGroupLogicalStructure {
 
   factory InterconnectAttachmentGroupLogicalStructure.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupLogicalStructure(
-      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<InterconnectAttachmentGroupLogicalStructureRegion>(map['regions'], (value) => InterconnectAttachmentGroupLogicalStructureRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<InterconnectAttachmentGroupLogicalStructureRegion>(map['regions']!, (value) => InterconnectAttachmentGroupLogicalStructureRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

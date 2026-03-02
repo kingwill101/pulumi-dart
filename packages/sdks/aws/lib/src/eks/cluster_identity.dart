@@ -21,7 +21,7 @@ class ClusterIdentity {
 
   factory ClusterIdentity.fromMap(Map<String, dynamic> map) {
     return ClusterIdentity(
-      oidcs: map['oidcs'] == null ? null : (pulumi.Input.decodeList<ClusterIdentityOidc>(map['oidcs'], (value) => ClusterIdentityOidc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oidcs: map['oidcs'] == null ? null : ((pulumi.Input.decodeList<ClusterIdentityOidc>(map['oidcs']!, (value) => ClusterIdentityOidc.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

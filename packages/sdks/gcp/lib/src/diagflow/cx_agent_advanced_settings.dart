@@ -54,10 +54,10 @@ class CxAgentAdvancedSettings {
 
   factory CxAgentAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentAdvancedSettings(
-      audioExportGcsDestination: map['audioExportGcsDestination'] == null ? null : (CxAgentAdvancedSettingsAudioExportGcsDestination.fromMap((map['audioExportGcsDestination'] as Map).cast<String, dynamic>())).input(),
-      dtmfSettings: map['dtmfSettings'] == null ? null : (CxAgentAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>())).input(),
-      loggingSettings: map['loggingSettings'] == null ? null : (CxAgentAdvancedSettingsLoggingSettings.fromMap((map['loggingSettings'] as Map).cast<String, dynamic>())).input(),
-      speechSettings: map['speechSettings'] == null ? null : (CxAgentAdvancedSettingsSpeechSettings.fromMap((map['speechSettings'] as Map).cast<String, dynamic>())).input(),
+      audioExportGcsDestination: map['audioExportGcsDestination'] == null ? null : (CxAgentAdvancedSettingsAudioExportGcsDestination.fromMap((map['audioExportGcsDestination']! as Map).cast<String, dynamic>())).input(),
+      dtmfSettings: map['dtmfSettings'] == null ? null : (CxAgentAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings']! as Map).cast<String, dynamic>())).input(),
+      loggingSettings: map['loggingSettings'] == null ? null : (CxAgentAdvancedSettingsLoggingSettings.fromMap((map['loggingSettings']! as Map).cast<String, dynamic>())).input(),
+      speechSettings: map['speechSettings'] == null ? null : (CxAgentAdvancedSettingsSpeechSettings.fromMap((map['speechSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

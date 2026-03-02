@@ -81,18 +81,18 @@ class ClassificationJobArgs {
 
   factory ClassificationJobArgs.fromMap(Map<String, dynamic> map) {
     return ClassificationJobArgs(
-      customDataIdentifierIds: map['customDataIdentifierIds'] == null ? null : ((map['customDataIdentifierIds'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      initialRun: map['initialRun'] == null ? null : (map['initialRun'] as bool).input(),
-      jobStatus: map['jobStatus'] == null ? null : (map['jobStatus'] as String).input(),
+      customDataIdentifierIds: map['customDataIdentifierIds'] == null ? null : (((map['customDataIdentifierIds'] as List).cast<String>()).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      initialRun: map['initialRun'] == null ? null : ((map['initialRun'] as bool).input()).input(),
+      jobStatus: map['jobStatus'] == null ? null : ((map['jobStatus'] as String).input()).input(),
       jobType: (map['jobType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3JobDefinition: (ClassificationJobS3JobDefinition.fromMap((map['s3JobDefinition'] as Map).cast<String, dynamic>())).input(),
-      samplingPercentage: map['samplingPercentage'] == null ? null : (map['samplingPercentage'] as int).input(),
-      scheduleFrequency: map['scheduleFrequency'] == null ? null : (ClassificationJobScheduleFrequency.fromMap((map['scheduleFrequency'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3JobDefinition: (ClassificationJobS3JobDefinition.fromMap((map['s3JobDefinition']! as Map).cast<String, dynamic>())).input(),
+      samplingPercentage: map['samplingPercentage'] == null ? null : ((map['samplingPercentage'] as int).input()).input(),
+      scheduleFrequency: map['scheduleFrequency'] == null ? null : ((ClassificationJobScheduleFrequency.fromMap((map['scheduleFrequency']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

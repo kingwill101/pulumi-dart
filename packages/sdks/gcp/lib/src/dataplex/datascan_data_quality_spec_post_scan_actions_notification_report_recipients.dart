@@ -20,7 +20,7 @@ class DatascanDataQualitySpecPostScanActionsNotificationReportRecipients {
 
   factory DatascanDataQualitySpecPostScanActionsNotificationReportRecipients.fromMap(Map<String, dynamic> map) {
     return DatascanDataQualitySpecPostScanActionsNotificationReportRecipients(
-      emails: map['emails'] == null ? null : ((map['emails'] as List).cast<String>()).input(),
+      emails: map['emails'] == null ? null : ((map['emails']! as List).cast<String>()).input(),
     );
   }
 }

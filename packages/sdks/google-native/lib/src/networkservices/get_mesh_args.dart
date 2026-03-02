@@ -33,7 +33,7 @@ class GetMeshArgs {
     return GetMeshArgs(
       location: (map['location'] as String).input(),
       meshId: (map['meshId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

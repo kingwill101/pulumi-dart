@@ -25,7 +25,7 @@ class RegisteredDomainNameServer {
 
   factory RegisteredDomainNameServer.fromMap(Map<String, dynamic> map) {
     return RegisteredDomainNameServer(
-      glueIps: map['glueIps'] == null ? null : ((map['glueIps'] as List).cast<String>()).input(),
+      glueIps: map['glueIps'] == null ? null : (((map['glueIps'] as List).cast<String>()).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

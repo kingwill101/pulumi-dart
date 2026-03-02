@@ -26,8 +26,8 @@ class ApplicationGatewayClientAuthConfigurationResponse {
 
   factory ApplicationGatewayClientAuthConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayClientAuthConfigurationResponse(
-      verifyClientCertIssuerDN: map['verifyClientCertIssuerDN'] == null ? null : (map['verifyClientCertIssuerDN'] as bool).input(),
-      verifyClientRevocation: map['verifyClientRevocation'] == null ? null : (map['verifyClientRevocation'] as String).input(),
+      verifyClientCertIssuerDN: map['verifyClientCertIssuerDN'] == null ? null : (map['verifyClientCertIssuerDN']! as bool).input(),
+      verifyClientRevocation: map['verifyClientRevocation'] == null ? null : (map['verifyClientRevocation']! as String).input(),
     );
   }
 }

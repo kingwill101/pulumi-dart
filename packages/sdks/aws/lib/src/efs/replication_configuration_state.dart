@@ -54,13 +54,13 @@ class ReplicationConfigurationState {
 
   factory ReplicationConfigurationState.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationState(
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      destination: map['destination'] == null ? null : (ReplicationConfigurationDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      originalSourceFileSystemArn: map['originalSourceFileSystemArn'] == null ? null : (map['originalSourceFileSystemArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceFileSystemArn: map['sourceFileSystemArn'] == null ? null : (map['sourceFileSystemArn'] as String).input(),
-      sourceFileSystemId: map['sourceFileSystemId'] == null ? null : (map['sourceFileSystemId'] as String).input(),
-      sourceFileSystemRegion: map['sourceFileSystemRegion'] == null ? null : (map['sourceFileSystemRegion'] as String).input(),
+      creationTime: map['creationTime'] == null ? null : ((map['creationTime'] as String).input()).input(),
+      destination: map['destination'] == null ? null : ((ReplicationConfigurationDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input()).input(),
+      originalSourceFileSystemArn: map['originalSourceFileSystemArn'] == null ? null : ((map['originalSourceFileSystemArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceFileSystemArn: map['sourceFileSystemArn'] == null ? null : ((map['sourceFileSystemArn'] as String).input()).input(),
+      sourceFileSystemId: map['sourceFileSystemId'] == null ? null : ((map['sourceFileSystemId'] as String).input()).input(),
+      sourceFileSystemRegion: map['sourceFileSystemRegion'] == null ? null : ((map['sourceFileSystemRegion'] as String).input()).input(),
     );
   }
 }

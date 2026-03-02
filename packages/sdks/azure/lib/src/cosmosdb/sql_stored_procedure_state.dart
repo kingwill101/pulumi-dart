@@ -46,12 +46,12 @@ class SqlStoredProcedureState {
 
   factory SqlStoredProcedureState.fromMap(Map<String, dynamic> map) {
     return SqlStoredProcedureState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

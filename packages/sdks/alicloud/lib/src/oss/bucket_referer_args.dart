@@ -50,11 +50,11 @@ class BucketRefererArgs {
   factory BucketRefererArgs.fromMap(Map<String, dynamic> map) {
     return BucketRefererArgs(
       allowEmptyReferer: (map['allowEmptyReferer'] as bool).input(),
-      allowTruncateQueryString: map['allowTruncateQueryString'] == null ? null : (map['allowTruncateQueryString'] as bool).input(),
+      allowTruncateQueryString: map['allowTruncateQueryString'] == null ? null : (map['allowTruncateQueryString']! as bool).input(),
       bucket: (map['bucket'] as String).input(),
-      refererBlacklists: map['refererBlacklists'] == null ? null : ((map['refererBlacklists'] as List).cast<String>()).input(),
-      refererLists: map['refererLists'] == null ? null : ((map['refererLists'] as List).cast<String>()).input(),
-      truncatePath: map['truncatePath'] == null ? null : (map['truncatePath'] as bool).input(),
+      refererBlacklists: map['refererBlacklists'] == null ? null : ((map['refererBlacklists']! as List).cast<String>()).input(),
+      refererLists: map['refererLists'] == null ? null : ((map['refererLists']! as List).cast<String>()).input(),
+      truncatePath: map['truncatePath'] == null ? null : (map['truncatePath']! as bool).input(),
     );
   }
 }

@@ -45,12 +45,12 @@ class InstanceSpec {
 
   factory InstanceSpec.fromMap(Map<String, dynamic> map) {
     return InstanceSpec(
-      acceleratedDevices: map['acceleratedDevices'] == null ? null : (map['acceleratedDevices'] as int).input(),
-      disk: map['disk'] == null ? null : (map['disk'] as int).input(),
-      gpus: map['gpus'] == null ? null : (map['gpus'] as int).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as int).input(),
-      transfer: map['transfer'] == null ? null : (map['transfer'] as int).input(),
-      vcpus: map['vcpus'] == null ? null : (map['vcpus'] as int).input(),
+      acceleratedDevices: map['acceleratedDevices'] == null ? null : (map['acceleratedDevices']! as int).input(),
+      disk: map['disk'] == null ? null : (map['disk']! as int).input(),
+      gpus: map['gpus'] == null ? null : (map['gpus']! as int).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as int).input(),
+      transfer: map['transfer'] == null ? null : (map['transfer']! as int).input(),
+      vcpus: map['vcpus'] == null ? null : (map['vcpus']! as int).input(),
     );
   }
 }

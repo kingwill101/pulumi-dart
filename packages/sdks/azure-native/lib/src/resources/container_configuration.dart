@@ -27,8 +27,8 @@ class ContainerConfiguration {
 
   factory ContainerConfiguration.fromMap(Map<String, dynamic> map) {
     return ContainerConfiguration(
-      containerGroupName: map['containerGroupName'] == null ? null : (map['containerGroupName'] as String).input(),
-      subnetIds: map['subnetIds'] == null ? null : (pulumi.Input.decodeList<ContainerGroupSubnetId>(map['subnetIds'], (value) => ContainerGroupSubnetId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerGroupName: map['containerGroupName'] == null ? null : (map['containerGroupName']! as String).input(),
+      subnetIds: map['subnetIds'] == null ? null : (pulumi.Input.decodeList<ContainerGroupSubnetId>(map['subnetIds']!, (value) => ContainerGroupSubnetId.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

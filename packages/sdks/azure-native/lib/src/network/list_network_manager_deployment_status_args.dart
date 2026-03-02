@@ -49,12 +49,12 @@ class ListNetworkManagerDeploymentStatusArgs {
 
   factory ListNetworkManagerDeploymentStatusArgs.fromMap(Map<String, dynamic> map) {
     return ListNetworkManagerDeploymentStatusArgs(
-      deploymentTypes: map['deploymentTypes'] == null ? null : ((map['deploymentTypes'] as List).cast<String>()).input(),
+      deploymentTypes: map['deploymentTypes'] == null ? null : ((map['deploymentTypes']! as List).cast<String>()).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
     );
   }
 }

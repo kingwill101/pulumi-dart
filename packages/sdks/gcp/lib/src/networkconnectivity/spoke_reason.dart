@@ -30,9 +30,9 @@ class SpokeReason {
 
   factory SpokeReason.fromMap(Map<String, dynamic> map) {
     return SpokeReason(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      userDetails: map['userDetails'] == null ? null : (map['userDetails'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      userDetails: map['userDetails'] == null ? null : (map['userDetails']! as String).input(),
     );
   }
 }

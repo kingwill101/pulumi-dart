@@ -63,10 +63,10 @@ class UserArgs {
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
       cluster: (map['cluster'] as String).input(),
-      databaseRoles: map['databaseRoles'] == null ? null : ((map['databaseRoles'] as List).cast<String>()).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      passwordWo: map['passwordWo'] == null ? null : (map['passwordWo'] as String).input(),
-      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion'] as String).input(),
+      databaseRoles: map['databaseRoles'] == null ? null : ((map['databaseRoles']! as List).cast<String>()).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      passwordWo: map['passwordWo'] == null ? null : (map['passwordWo']! as String).input(),
+      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion']! as String).input(),
       userId: (map['userId'] as String).input(),
       userType: (map['userType'] as String).input(),
     );

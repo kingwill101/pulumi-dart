@@ -49,10 +49,10 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      seatCount: map['seatCount'] == null ? null : (map['seatCount'] as String).input(),
+      seatCount: map['seatCount'] == null ? null : (map['seatCount']! as String).input(),
       sku: (SubscriptionSku.fromValue(map['sku'] as String)).input(),
       type: (SubscriptionType.fromValue(map['type'] as String)).input(),
     );

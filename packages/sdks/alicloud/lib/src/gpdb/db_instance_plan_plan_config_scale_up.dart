@@ -35,10 +35,10 @@ class DbInstancePlanPlanConfigScaleUp {
 
   factory DbInstancePlanPlanConfigScaleUp.fromMap(Map<String, dynamic> map) {
     return DbInstancePlanPlanConfigScaleUp(
-      executeTime: map['executeTime'] == null ? null : (map['executeTime'] as String).input(),
-      instanceSpec: map['instanceSpec'] == null ? null : (map['instanceSpec'] as String).input(),
-      planCronTime: map['planCronTime'] == null ? null : (map['planCronTime'] as String).input(),
-      planTaskStatus: map['planTaskStatus'] == null ? null : (map['planTaskStatus'] as String).input(),
+      executeTime: map['executeTime'] == null ? null : (map['executeTime']! as String).input(),
+      instanceSpec: map['instanceSpec'] == null ? null : (map['instanceSpec']! as String).input(),
+      planCronTime: map['planCronTime'] == null ? null : (map['planCronTime']! as String).input(),
+      planTaskStatus: map['planTaskStatus'] == null ? null : (map['planTaskStatus']! as String).input(),
     );
   }
 }

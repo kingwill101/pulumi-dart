@@ -65,15 +65,15 @@ class ManagementGroupDiagnosticSettingArgs {
 
   factory ManagementGroupDiagnosticSettingArgs.fromMap(Map<String, dynamic> map) {
     return ManagementGroupDiagnosticSettingArgs(
-      eventHubAuthorizationRuleId: map['eventHubAuthorizationRuleId'] == null ? null : (map['eventHubAuthorizationRuleId'] as String).input(),
-      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName'] as String).input(),
-      logs: map['logs'] == null ? null : (pulumi.Input.decodeList<ManagementGroupLogSettings>(map['logs'], (value) => ManagementGroupLogSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventHubAuthorizationRuleId: map['eventHubAuthorizationRuleId'] == null ? null : (map['eventHubAuthorizationRuleId']! as String).input(),
+      eventHubName: map['eventHubName'] == null ? null : (map['eventHubName']! as String).input(),
+      logs: map['logs'] == null ? null : (pulumi.Input.decodeList<ManagementGroupLogSettings>(map['logs']!, (value) => ManagementGroupLogSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
       managementGroupId: (map['managementGroupId'] as String).input(),
-      marketplacePartnerId: map['marketplacePartnerId'] == null ? null : (map['marketplacePartnerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serviceBusRuleId: map['serviceBusRuleId'] == null ? null : (map['serviceBusRuleId'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      marketplacePartnerId: map['marketplacePartnerId'] == null ? null : (map['marketplacePartnerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serviceBusRuleId: map['serviceBusRuleId'] == null ? null : (map['serviceBusRuleId']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

@@ -69,10 +69,10 @@ class GetNamespaceTopicEventSubscriptionResult {
   factory GetNamespaceTopicEventSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceTopicEventSubscriptionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      deliveryConfiguration: map['deliveryConfiguration'] == null ? null : DeliveryConfigurationResponse.fromMap((map['deliveryConfiguration'] as Map).cast<String, dynamic>()),
-      eventDeliverySchema: map['eventDeliverySchema'] == null ? null : map['eventDeliverySchema'] as String,
-      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : map['expirationTimeUtc'] as String,
-      filtersConfiguration: map['filtersConfiguration'] == null ? null : FiltersConfigurationResponse.fromMap((map['filtersConfiguration'] as Map).cast<String, dynamic>()),
+      deliveryConfiguration: map['deliveryConfiguration'] == null ? null : DeliveryConfigurationResponse.fromMap((map['deliveryConfiguration']! as Map).cast<String, dynamic>()),
+      eventDeliverySchema: map['eventDeliverySchema'] == null ? null : map['eventDeliverySchema']! as String,
+      expirationTimeUtc: map['expirationTimeUtc'] == null ? null : map['expirationTimeUtc']! as String,
+      filtersConfiguration: map['filtersConfiguration'] == null ? null : FiltersConfigurationResponse.fromMap((map['filtersConfiguration']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,

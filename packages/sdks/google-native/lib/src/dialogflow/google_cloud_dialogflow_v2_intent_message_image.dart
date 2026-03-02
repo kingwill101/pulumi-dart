@@ -26,8 +26,8 @@ class GoogleCloudDialogflowV2IntentMessageImage {
 
   factory GoogleCloudDialogflowV2IntentMessageImage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageImage(
-      accessibilityText: map['accessibilityText'] == null ? null : (map['accessibilityText'] as String).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
+      accessibilityText: map['accessibilityText'] == null ? null : (map['accessibilityText']! as String).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
     );
   }
 }

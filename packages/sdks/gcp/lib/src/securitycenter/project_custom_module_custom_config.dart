@@ -58,8 +58,8 @@ class ProjectCustomModuleCustomConfig {
 
   factory ProjectCustomModuleCustomConfig.fromMap(Map<String, dynamic> map) {
     return ProjectCustomModuleCustomConfig(
-      customOutput: map['customOutput'] == null ? null : (ProjectCustomModuleCustomConfigCustomOutput.fromMap((map['customOutput'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      customOutput: map['customOutput'] == null ? null : (ProjectCustomModuleCustomConfigCustomOutput.fromMap((map['customOutput']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       predicate: (ProjectCustomModuleCustomConfigPredicate.fromMap((map['predicate'] as Map).cast<String, dynamic>())).input(),
       recommendation: (map['recommendation'] as String).input(),
       resourceSelector: (ProjectCustomModuleCustomConfigResourceSelector.fromMap((map['resourceSelector'] as Map).cast<String, dynamic>())).input(),

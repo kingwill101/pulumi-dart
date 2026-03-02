@@ -41,11 +41,11 @@ class GoogleCloudApigeeV1SecurityReportQueryMetric {
 
   factory GoogleCloudApigeeV1SecurityReportQueryMetric.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityReportQueryMetric(
-      aggregationFunction: map['aggregationFunction'] == null ? null : (map['aggregationFunction'] as String).input(),
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      aggregationFunction: map['aggregationFunction'] == null ? null : (map['aggregationFunction']! as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
       name: (map['name'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

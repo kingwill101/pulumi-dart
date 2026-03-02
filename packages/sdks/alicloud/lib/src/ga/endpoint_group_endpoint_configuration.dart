@@ -67,13 +67,13 @@ class EndpointGroupEndpointConfiguration {
 
   factory EndpointGroupEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return EndpointGroupEndpointConfiguration(
-      enableClientipPreservation: map['enableClientipPreservation'] == null ? null : (map['enableClientipPreservation'] as bool).input(),
-      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol'] as bool).input(),
+      enableClientipPreservation: map['enableClientipPreservation'] == null ? null : (map['enableClientipPreservation']! as bool).input(),
+      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol']! as bool).input(),
       endpoint: (map['endpoint'] as String).input(),
-      subAddress: map['subAddress'] == null ? null : (map['subAddress'] as String).input(),
+      subAddress: map['subAddress'] == null ? null : (map['subAddress']! as String).input(),
       type: (map['type'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds']! as List).cast<String>()).input(),
       weight: (map['weight'] as int).input(),
     );
   }

@@ -58,13 +58,13 @@ class PreprocessingConfig {
 
   factory PreprocessingConfig.fromMap(Map<String, dynamic> map) {
     return PreprocessingConfig(
-      audio: map['audio'] == null ? null : (Audio.fromMap((map['audio'] as Map).cast<String, dynamic>())).input(),
-      color: map['color'] == null ? null : (Color.fromMap((map['color'] as Map).cast<String, dynamic>())).input(),
-      crop: map['crop'] == null ? null : (Crop.fromMap((map['crop'] as Map).cast<String, dynamic>())).input(),
-      deblock: map['deblock'] == null ? null : (Deblock.fromMap((map['deblock'] as Map).cast<String, dynamic>())).input(),
-      deinterlace: map['deinterlace'] == null ? null : (Deinterlace.fromMap((map['deinterlace'] as Map).cast<String, dynamic>())).input(),
-      denoise: map['denoise'] == null ? null : (Denoise.fromMap((map['denoise'] as Map).cast<String, dynamic>())).input(),
-      pad: map['pad'] == null ? null : (Pad.fromMap((map['pad'] as Map).cast<String, dynamic>())).input(),
+      audio: map['audio'] == null ? null : (Audio.fromMap((map['audio']! as Map).cast<String, dynamic>())).input(),
+      color: map['color'] == null ? null : (Color.fromMap((map['color']! as Map).cast<String, dynamic>())).input(),
+      crop: map['crop'] == null ? null : (Crop.fromMap((map['crop']! as Map).cast<String, dynamic>())).input(),
+      deblock: map['deblock'] == null ? null : (Deblock.fromMap((map['deblock']! as Map).cast<String, dynamic>())).input(),
+      deinterlace: map['deinterlace'] == null ? null : (Deinterlace.fromMap((map['deinterlace']! as Map).cast<String, dynamic>())).input(),
+      denoise: map['denoise'] == null ? null : (Denoise.fromMap((map['denoise']! as Map).cast<String, dynamic>())).input(),
+      pad: map['pad'] == null ? null : (Pad.fromMap((map['pad']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

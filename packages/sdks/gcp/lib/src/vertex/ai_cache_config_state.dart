@@ -32,9 +32,9 @@ class AiCacheConfigState {
 
   factory AiCacheConfigState.fromMap(Map<String, dynamic> map) {
     return AiCacheConfigState(
-      disableCache: map['disableCache'] == null ? null : (map['disableCache'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      disableCache: map['disableCache'] == null ? null : (map['disableCache']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class RetentionPolicyDetails {
 
   factory RetentionPolicyDetails.fromMap(Map<String, dynamic> map) {
     return RetentionPolicyDetails(
-      orchestrationState: map['orchestrationState'] == null ? null : (map['orchestrationState'] as String).input(),
+      orchestrationState: map['orchestrationState'] == null ? null : (map['orchestrationState']! as String).input(),
       retentionPeriodInDays: (map['retentionPeriodInDays'] as int).input(),
     );
   }

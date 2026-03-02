@@ -36,10 +36,10 @@ class PolicyBasedRouteFilter {
 
   factory PolicyBasedRouteFilter.fromMap(Map<String, dynamic> map) {
     return PolicyBasedRouteFilter(
-      destRange: map['destRange'] == null ? null : (map['destRange'] as String).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
+      destRange: map['destRange'] == null ? null : (map['destRange']! as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
       protocolVersion: (map['protocolVersion'] as String).input(),
-      srcRange: map['srcRange'] == null ? null : (map['srcRange'] as String).input(),
+      srcRange: map['srcRange'] == null ? null : (map['srcRange']! as String).input(),
     );
   }
 }

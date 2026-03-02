@@ -21,7 +21,7 @@ class ConfigManagementBinauthzConfigGkehubV1beta {
 
   factory ConfigManagementBinauthzConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ConfigManagementBinauthzConfigGkehubV1beta(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

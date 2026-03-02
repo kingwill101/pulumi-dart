@@ -34,9 +34,9 @@ class GroupQuotaArgs {
 
   factory GroupQuotaArgs.fromMap(Map<String, dynamic> map) {
     return GroupQuotaArgs(
-      groupQuotaName: map['groupQuotaName'] == null ? null : (map['groupQuotaName'] as String).input(),
+      groupQuotaName: map['groupQuotaName'] == null ? null : (map['groupQuotaName']! as String).input(),
       managementGroupId: (map['managementGroupId'] as String).input(),
-      properties: map['properties'] == null ? null : (GroupQuotasEntityProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (GroupQuotasEntityProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

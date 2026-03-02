@@ -27,8 +27,8 @@ class VpcAccessConnector {
 
   factory VpcAccessConnector.fromMap(Map<String, dynamic> map) {
     return VpcAccessConnector(
-      egressSetting: map['egressSetting'] == null ? null : (VpcAccessConnectorEgressSetting.fromValue(map['egressSetting'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      egressSetting: map['egressSetting'] == null ? null : (VpcAccessConnectorEgressSetting.fromValue(map['egressSetting']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

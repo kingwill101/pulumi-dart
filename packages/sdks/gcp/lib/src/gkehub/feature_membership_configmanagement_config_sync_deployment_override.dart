@@ -31,9 +31,9 @@ class FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
 
   factory FeatureMembershipConfigmanagementConfigSyncDeploymentOverride.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipConfigmanagementConfigSyncDeploymentOverride(
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer>(map['containers'], (value) => FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
-      deploymentNamespace: map['deploymentNamespace'] == null ? null : (map['deploymentNamespace'] as String).input(),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer>(map['containers']!, (value) => FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
+      deploymentNamespace: map['deploymentNamespace'] == null ? null : (map['deploymentNamespace']! as String).input(),
     );
   }
 }

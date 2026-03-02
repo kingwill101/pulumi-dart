@@ -57,12 +57,12 @@ class GetDatabaseAccountCassandraTableResult {
   factory GetDatabaseAccountCassandraTableResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseAccountCassandraTableResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      defaultTtl: map['defaultTtl'] == null ? null : map['defaultTtl'] as int,
+      defaultTtl: map['defaultTtl'] == null ? null : map['defaultTtl']! as int,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      schema: map['schema'] == null ? null : CassandraSchemaResponse.fromMap((map['schema'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      schema: map['schema'] == null ? null : CassandraSchemaResponse.fromMap((map['schema']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

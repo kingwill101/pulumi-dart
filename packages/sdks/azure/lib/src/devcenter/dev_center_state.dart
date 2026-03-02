@@ -52,13 +52,13 @@ class DevCenterState {
 
   factory DevCenterState.fromMap(Map<String, dynamic> map) {
     return DevCenterState(
-      devCenterUri: map['devCenterUri'] == null ? null : (map['devCenterUri'] as String).input(),
-      identity: map['identity'] == null ? null : (DevCenterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectCatalogItemSyncEnabled: map['projectCatalogItemSyncEnabled'] == null ? null : (map['projectCatalogItemSyncEnabled'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      devCenterUri: map['devCenterUri'] == null ? null : (map['devCenterUri']! as String).input(),
+      identity: map['identity'] == null ? null : (DevCenterIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectCatalogItemSyncEnabled: map['projectCatalogItemSyncEnabled'] == null ? null : (map['projectCatalogItemSyncEnabled']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

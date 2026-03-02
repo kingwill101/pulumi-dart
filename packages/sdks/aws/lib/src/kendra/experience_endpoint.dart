@@ -25,8 +25,8 @@ class ExperienceEndpoint {
 
   factory ExperienceEndpoint.fromMap(Map<String, dynamic> map) {
     return ExperienceEndpoint(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : ((map['endpoint'] as String).input()).input(),
+      endpointType: map['endpointType'] == null ? null : ((map['endpointType'] as String).input()).input(),
     );
   }
 }

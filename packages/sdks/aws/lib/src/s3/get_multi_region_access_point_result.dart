@@ -78,9 +78,9 @@ class GetMultiRegionAccessPointResult {
       domainName: map['domainName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      publicAccessBlocks: pulumi.Input.decodeList<GetMultiRegionAccessPointPublicAccessBlock>(map['publicAccessBlocks'], (value) => GetMultiRegionAccessPointPublicAccessBlock.fromMap((value as Map).cast<String, dynamic>())),
+      publicAccessBlocks: pulumi.Input.decodeList<GetMultiRegionAccessPointPublicAccessBlock>(map['publicAccessBlocks']!, (value) => GetMultiRegionAccessPointPublicAccessBlock.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
-      regions: pulumi.Input.decodeList<GetMultiRegionAccessPointRegion>(map['regions'], (value) => GetMultiRegionAccessPointRegion.fromMap((value as Map).cast<String, dynamic>())),
+      regions: pulumi.Input.decodeList<GetMultiRegionAccessPointRegion>(map['regions']!, (value) => GetMultiRegionAccessPointRegion.fromMap((value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
     );
   }

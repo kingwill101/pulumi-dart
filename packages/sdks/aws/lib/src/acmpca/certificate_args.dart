@@ -56,13 +56,13 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      apiPassthrough: map['apiPassthrough'] == null ? null : (map['apiPassthrough'] as String).input(),
+      apiPassthrough: map['apiPassthrough'] == null ? null : ((map['apiPassthrough'] as String).input()).input(),
       certificateAuthorityArn: (map['certificateAuthorityArn'] as String).input(),
       certificateSigningRequest: (map['certificateSigningRequest'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       signingAlgorithm: (map['signingAlgorithm'] as String).input(),
-      templateArn: map['templateArn'] == null ? null : (map['templateArn'] as String).input(),
-      validity: (CertificateValidity.fromMap((map['validity'] as Map).cast<String, dynamic>())).input(),
+      templateArn: map['templateArn'] == null ? null : ((map['templateArn'] as String).input()).input(),
+      validity: (CertificateValidity.fromMap((map['validity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

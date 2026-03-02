@@ -26,8 +26,8 @@ class BucketArchiveDirectReadState {
 
   factory BucketArchiveDirectReadState.fromMap(Map<String, dynamic> map) {
     return BucketArchiveDirectReadState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

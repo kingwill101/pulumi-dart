@@ -44,11 +44,11 @@ class KubernetesAddonArgs {
 
   factory KubernetesAddonArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesAddonArgs(
-      cleanupCloudResources: map['cleanupCloudResources'] == null ? null : (map['cleanupCloudResources'] as bool).input(),
+      cleanupCloudResources: map['cleanupCloudResources'] == null ? null : (map['cleanupCloudResources']! as bool).input(),
       clusterId: (map['clusterId'] as String).input(),
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

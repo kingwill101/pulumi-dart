@@ -99,19 +99,19 @@ class GetShareResult {
     return GetShareResult(
       accessProtocol: map['accessProtocol'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      azureContainerInfo: map['azureContainerInfo'] == null ? null : AzureContainerInfoResponse.fromMap((map['azureContainerInfo'] as Map).cast<String, dynamic>()),
-      clientAccessRights: map['clientAccessRights'] == null ? null : pulumi.Input.decodeList<ClientAccessRightResponse>(map['clientAccessRights'], (value) => ClientAccessRightResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dataPolicy: map['dataPolicy'] == null ? null : map['dataPolicy'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      azureContainerInfo: map['azureContainerInfo'] == null ? null : AzureContainerInfoResponse.fromMap((map['azureContainerInfo']! as Map).cast<String, dynamic>()),
+      clientAccessRights: map['clientAccessRights'] == null ? null : pulumi.Input.decodeList<ClientAccessRightResponse>(map['clientAccessRights']!, (value) => ClientAccessRightResponse.fromMap((value as Map).cast<String, dynamic>())),
+      dataPolicy: map['dataPolicy'] == null ? null : map['dataPolicy']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       monitoringStatus: map['monitoringStatus'] as String,
       name: map['name'] as String,
-      refreshDetails: map['refreshDetails'] == null ? null : RefreshDetailsResponse.fromMap((map['refreshDetails'] as Map).cast<String, dynamic>()),
+      refreshDetails: map['refreshDetails'] == null ? null : RefreshDetailsResponse.fromMap((map['refreshDetails']! as Map).cast<String, dynamic>()),
       shareMappings: pulumi.Input.decodeList<MountPointMapResponse>(map['shareMappings'], (value) => MountPointMapResponse.fromMap((value as Map).cast<String, dynamic>())),
       shareStatus: map['shareStatus'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      userAccessRights: map['userAccessRights'] == null ? null : pulumi.Input.decodeList<UserAccessRightResponse>(map['userAccessRights'], (value) => UserAccessRightResponse.fromMap((value as Map).cast<String, dynamic>())),
+      userAccessRights: map['userAccessRights'] == null ? null : pulumi.Input.decodeList<UserAccessRightResponse>(map['userAccessRights']!, (value) => UserAccessRightResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

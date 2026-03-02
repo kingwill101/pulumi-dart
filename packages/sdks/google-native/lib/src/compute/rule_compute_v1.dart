@@ -54,13 +54,13 @@ class RuleComputeV1 {
 
   factory RuleComputeV1.fromMap(Map<String, dynamic> map) {
     return RuleComputeV1(
-      action: map['action'] == null ? null : (RuleActionComputeV1.fromValue(map['action'] as String)).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionComputeV1>(map['conditions'], (value) => ConditionComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ins: map['ins'] == null ? null : ((map['ins'] as List).cast<String>()).input(),
-      logConfigs: map['logConfigs'] == null ? null : (pulumi.Input.decodeList<LogConfigComputeV1>(map['logConfigs'], (value) => LogConfigComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notIns: map['notIns'] == null ? null : ((map['notIns'] as List).cast<String>()).input(),
-      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
+      action: map['action'] == null ? null : (RuleActionComputeV1.fromValue(map['action']! as String)).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionComputeV1>(map['conditions']!, (value) => ConditionComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ins: map['ins'] == null ? null : ((map['ins']! as List).cast<String>()).input(),
+      logConfigs: map['logConfigs'] == null ? null : (pulumi.Input.decodeList<LogConfigComputeV1>(map['logConfigs']!, (value) => LogConfigComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notIns: map['notIns'] == null ? null : ((map['notIns']! as List).cast<String>()).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions']! as List).cast<String>()).input(),
     );
   }
 }

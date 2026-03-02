@@ -47,10 +47,10 @@ class CxToolOpenApiSpecAuthentication {
 
   factory CxToolOpenApiSpecAuthentication.fromMap(Map<String, dynamic> map) {
     return CxToolOpenApiSpecAuthentication(
-      apiKeyConfig: map['apiKeyConfig'] == null ? null : (CxToolOpenApiSpecAuthenticationApiKeyConfig.fromMap((map['apiKeyConfig'] as Map).cast<String, dynamic>())).input(),
-      bearerTokenConfig: map['bearerTokenConfig'] == null ? null : (CxToolOpenApiSpecAuthenticationBearerTokenConfig.fromMap((map['bearerTokenConfig'] as Map).cast<String, dynamic>())).input(),
-      oauthConfig: map['oauthConfig'] == null ? null : (CxToolOpenApiSpecAuthenticationOauthConfig.fromMap((map['oauthConfig'] as Map).cast<String, dynamic>())).input(),
-      serviceAgentAuthConfig: map['serviceAgentAuthConfig'] == null ? null : (CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig.fromMap((map['serviceAgentAuthConfig'] as Map).cast<String, dynamic>())).input(),
+      apiKeyConfig: map['apiKeyConfig'] == null ? null : (CxToolOpenApiSpecAuthenticationApiKeyConfig.fromMap((map['apiKeyConfig']! as Map).cast<String, dynamic>())).input(),
+      bearerTokenConfig: map['bearerTokenConfig'] == null ? null : (CxToolOpenApiSpecAuthenticationBearerTokenConfig.fromMap((map['bearerTokenConfig']! as Map).cast<String, dynamic>())).input(),
+      oauthConfig: map['oauthConfig'] == null ? null : (CxToolOpenApiSpecAuthenticationOauthConfig.fromMap((map['oauthConfig']! as Map).cast<String, dynamic>())).input(),
+      serviceAgentAuthConfig: map['serviceAgentAuthConfig'] == null ? null : (CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig.fromMap((map['serviceAgentAuthConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

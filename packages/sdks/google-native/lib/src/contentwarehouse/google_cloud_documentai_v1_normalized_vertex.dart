@@ -26,8 +26,8 @@ class GoogleCloudDocumentaiV1NormalizedVertex {
 
   factory GoogleCloudDocumentaiV1NormalizedVertex.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1NormalizedVertex(
-      x: map['x'] == null ? null : (map['x'] as double).input(),
-      y: map['y'] == null ? null : (map['y'] as double).input(),
+      x: map['x'] == null ? null : (map['x']! as double).input(),
+      y: map['y'] == null ? null : (map['y']! as double).input(),
     );
   }
 }

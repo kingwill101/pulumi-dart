@@ -34,8 +34,8 @@ class KubernetesRuntime {
 
   factory KubernetesRuntime.fromMap(Map<String, dynamic> map) {
     return KubernetesRuntime(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

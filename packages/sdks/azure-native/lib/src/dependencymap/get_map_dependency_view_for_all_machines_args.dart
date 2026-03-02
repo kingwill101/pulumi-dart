@@ -35,7 +35,7 @@ class GetMapDependencyViewForAllMachinesArgs {
 
   factory GetMapDependencyViewForAllMachinesArgs.fromMap(Map<String, dynamic> map) {
     return GetMapDependencyViewForAllMachinesArgs(
-      filters: map['filters'] == null ? null : (DependencyProcessFilter.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      filters: map['filters'] == null ? null : (DependencyProcessFilter.fromMap((map['filters']! as Map).cast<String, dynamic>())).input(),
       mapName: (map['mapName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

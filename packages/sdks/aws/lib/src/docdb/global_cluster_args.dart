@@ -60,14 +60,14 @@ class GlobalClusterArgs {
 
   factory GlobalClusterArgs.fromMap(Map<String, dynamic> map) {
     return GlobalClusterArgs(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : ((map['databaseName'] as String).input()).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : ((map['deletionProtection'] as bool).input()).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
+      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
       globalClusterIdentifier: (map['globalClusterIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceDbClusterIdentifier: map['sourceDbClusterIdentifier'] == null ? null : (map['sourceDbClusterIdentifier'] as String).input(),
-      storageEncrypted: map['storageEncrypted'] == null ? null : (map['storageEncrypted'] as bool).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceDbClusterIdentifier: map['sourceDbClusterIdentifier'] == null ? null : ((map['sourceDbClusterIdentifier'] as String).input()).input(),
+      storageEncrypted: map['storageEncrypted'] == null ? null : ((map['storageEncrypted'] as bool).input()).input(),
     );
   }
 }

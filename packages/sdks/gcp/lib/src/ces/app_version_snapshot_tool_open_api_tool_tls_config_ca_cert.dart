@@ -35,8 +35,8 @@ class AppVersionSnapshotToolOpenApiToolTlsConfigCaCert {
 
   factory AppVersionSnapshotToolOpenApiToolTlsConfigCaCert.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolTlsConfigCaCert(
-      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

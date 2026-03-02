@@ -47,7 +47,7 @@ class SlotStorageAccount {
     return SlotStorageAccount(
       accessKey: (map['accessKey'] as String).input(),
       accountName: (map['accountName'] as String).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
       name: (map['name'] as String).input(),
       shareName: (map['shareName'] as String).input(),
       type: (map['type'] as String).input(),

@@ -47,8 +47,8 @@ class EipInstanceAttachmentArgs {
     return EipInstanceAttachmentArgs(
       allocationId: (map['allocationId'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      standby: map['standby'] == null ? null : (map['standby'] as bool).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      standby: map['standby'] == null ? null : (map['standby']! as bool).input(),
     );
   }
 }

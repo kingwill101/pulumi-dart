@@ -29,7 +29,7 @@ class KubernetesRoleResources {
   factory KubernetesRoleResources.fromMap(Map<String, dynamic> map) {
     return KubernetesRoleResources(
       compute: (KubernetesRoleCompute.fromMap((map['compute'] as Map).cast<String, dynamic>())).input(),
-      storage: map['storage'] == null ? null : (KubernetesRoleStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
+      storage: map['storage'] == null ? null : (KubernetesRoleStorage.fromMap((map['storage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

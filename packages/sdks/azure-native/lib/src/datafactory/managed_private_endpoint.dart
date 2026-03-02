@@ -31,9 +31,9 @@ class ManagedPrivateEndpoint {
 
   factory ManagedPrivateEndpoint.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpoint(
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId'] as String).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId']! as String).input(),
     );
   }
 }

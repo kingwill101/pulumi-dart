@@ -45,11 +45,11 @@ class IpamIpamArgs {
 
   factory IpamIpamArgs.fromMap(Map<String, dynamic> map) {
     return IpamIpamArgs(
-      ipamDescription: map['ipamDescription'] == null ? null : (map['ipamDescription'] as String).input(),
-      ipamName: map['ipamName'] == null ? null : (map['ipamName'] as String).input(),
+      ipamDescription: map['ipamDescription'] == null ? null : (map['ipamDescription']! as String).input(),
+      ipamName: map['ipamName'] == null ? null : (map['ipamName']! as String).input(),
       operatingRegionLists: ((map['operatingRegionLists'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

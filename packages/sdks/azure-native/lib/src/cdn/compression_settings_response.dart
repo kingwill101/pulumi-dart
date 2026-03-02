@@ -26,8 +26,8 @@ class CompressionSettingsResponse {
 
   factory CompressionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return CompressionSettingsResponse(
-      contentTypesToCompress: map['contentTypesToCompress'] == null ? null : ((map['contentTypesToCompress'] as List).cast<String>()).input(),
-      isCompressionEnabled: map['isCompressionEnabled'] == null ? null : (map['isCompressionEnabled'] as bool).input(),
+      contentTypesToCompress: map['contentTypesToCompress'] == null ? null : ((map['contentTypesToCompress']! as List).cast<String>()).input(),
+      isCompressionEnabled: map['isCompressionEnabled'] == null ? null : (map['isCompressionEnabled']! as bool).input(),
     );
   }
 }

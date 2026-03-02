@@ -21,7 +21,7 @@ class Telemetry {
 
   factory Telemetry.fromMap(Map<String, dynamic> map) {
     return Telemetry(
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
     );
   }
 }

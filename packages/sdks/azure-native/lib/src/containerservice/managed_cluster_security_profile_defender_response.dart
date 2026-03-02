@@ -27,8 +27,8 @@ class ManagedClusterSecurityProfileDefenderResponse {
 
   factory ManagedClusterSecurityProfileDefenderResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterSecurityProfileDefenderResponse(
-      logAnalyticsWorkspaceResourceId: map['logAnalyticsWorkspaceResourceId'] == null ? null : (map['logAnalyticsWorkspaceResourceId'] as String).input(),
-      securityMonitoring: map['securityMonitoring'] == null ? null : (ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse.fromMap((map['securityMonitoring'] as Map).cast<String, dynamic>())).input(),
+      logAnalyticsWorkspaceResourceId: map['logAnalyticsWorkspaceResourceId'] == null ? null : (map['logAnalyticsWorkspaceResourceId']! as String).input(),
+      securityMonitoring: map['securityMonitoring'] == null ? null : (ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse.fromMap((map['securityMonitoring']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

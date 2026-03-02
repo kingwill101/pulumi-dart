@@ -50,13 +50,13 @@ class AutoscalerAutoscalingPolicyScalingSchedule {
 
   factory AutoscalerAutoscalingPolicyScalingSchedule.fromMap(Map<String, dynamic> map) {
     return AutoscalerAutoscalingPolicyScalingSchedule(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       durationSec: (map['durationSec'] as int).input(),
       minRequiredReplicas: (map['minRequiredReplicas'] as int).input(),
       name: (map['name'] as String).input(),
       schedule: (map['schedule'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

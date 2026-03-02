@@ -55,14 +55,14 @@ class DomainMemoryTune {
 
   factory DomainMemoryTune.fromMap(Map<String, dynamic> map) {
     return DomainMemoryTune(
-      hardLimit: map['hardLimit'] == null ? null : (map['hardLimit'] as double).input(),
-      hardLimitUnit: map['hardLimitUnit'] == null ? null : (map['hardLimitUnit'] as String).input(),
-      minGuarantee: map['minGuarantee'] == null ? null : (map['minGuarantee'] as double).input(),
-      minGuaranteeUnit: map['minGuaranteeUnit'] == null ? null : (map['minGuaranteeUnit'] as String).input(),
-      softLimit: map['softLimit'] == null ? null : (map['softLimit'] as double).input(),
-      softLimitUnit: map['softLimitUnit'] == null ? null : (map['softLimitUnit'] as String).input(),
-      swapHardLimit: map['swapHardLimit'] == null ? null : (map['swapHardLimit'] as double).input(),
-      swapHardLimitUnit: map['swapHardLimitUnit'] == null ? null : (map['swapHardLimitUnit'] as String).input(),
+      hardLimit: map['hardLimit'] == null ? null : (map['hardLimit']! as double).input(),
+      hardLimitUnit: map['hardLimitUnit'] == null ? null : (map['hardLimitUnit']! as String).input(),
+      minGuarantee: map['minGuarantee'] == null ? null : (map['minGuarantee']! as double).input(),
+      minGuaranteeUnit: map['minGuaranteeUnit'] == null ? null : (map['minGuaranteeUnit']! as String).input(),
+      softLimit: map['softLimit'] == null ? null : (map['softLimit']! as double).input(),
+      softLimitUnit: map['softLimitUnit'] == null ? null : (map['softLimitUnit']! as String).input(),
+      swapHardLimit: map['swapHardLimit'] == null ? null : (map['swapHardLimit']! as double).input(),
+      swapHardLimitUnit: map['swapHardLimitUnit'] == null ? null : (map['swapHardLimitUnit']! as String).input(),
     );
   }
 }

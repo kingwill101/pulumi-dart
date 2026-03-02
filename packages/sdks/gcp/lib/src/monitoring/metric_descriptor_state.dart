@@ -100,18 +100,18 @@ class MetricDescriptorState {
 
   factory MetricDescriptorState.fromMap(Map<String, dynamic> map) {
     return MetricDescriptorState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<MetricDescriptorLabel>(map['labels'], (value) => MetricDescriptorLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      launchStage: map['launchStage'] == null ? null : (map['launchStage'] as String).input(),
-      metadata: map['metadata'] == null ? null : (MetricDescriptorMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      metricKind: map['metricKind'] == null ? null : (map['metricKind'] as String).input(),
-      monitoredResourceTypes: map['monitoredResourceTypes'] == null ? null : ((map['monitoredResourceTypes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
-      valueType: map['valueType'] == null ? null : (map['valueType'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<MetricDescriptorLabel>(map['labels']!, (value) => MetricDescriptorLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchStage: map['launchStage'] == null ? null : (map['launchStage']! as String).input(),
+      metadata: map['metadata'] == null ? null : (MetricDescriptorMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      metricKind: map['metricKind'] == null ? null : (map['metricKind']! as String).input(),
+      monitoredResourceTypes: map['monitoredResourceTypes'] == null ? null : ((map['monitoredResourceTypes']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
+      valueType: map['valueType'] == null ? null : (map['valueType']! as String).input(),
     );
   }
 }

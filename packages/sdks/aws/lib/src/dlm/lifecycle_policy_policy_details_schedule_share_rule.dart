@@ -31,8 +31,8 @@ class LifecyclePolicyPolicyDetailsScheduleShareRule {
   factory LifecyclePolicyPolicyDetailsScheduleShareRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleShareRule(
       targetAccounts: ((map['targetAccounts'] as List).cast<String>()).input(),
-      unshareInterval: map['unshareInterval'] == null ? null : (map['unshareInterval'] as int).input(),
-      unshareIntervalUnit: map['unshareIntervalUnit'] == null ? null : (map['unshareIntervalUnit'] as String).input(),
+      unshareInterval: map['unshareInterval'] == null ? null : ((map['unshareInterval'] as int).input()).input(),
+      unshareIntervalUnit: map['unshareIntervalUnit'] == null ? null : ((map['unshareIntervalUnit'] as String).input()).input(),
     );
   }
 }

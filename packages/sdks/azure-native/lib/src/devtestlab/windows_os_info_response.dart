@@ -21,7 +21,7 @@ class WindowsOsInfoResponse {
 
   factory WindowsOsInfoResponse.fromMap(Map<String, dynamic> map) {
     return WindowsOsInfoResponse(
-      windowsOsState: map['windowsOsState'] == null ? null : (map['windowsOsState'] as String).input(),
+      windowsOsState: map['windowsOsState'] == null ? null : (map['windowsOsState']! as String).input(),
     );
   }
 }

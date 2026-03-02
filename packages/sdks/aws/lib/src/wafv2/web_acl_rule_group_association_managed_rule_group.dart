@@ -37,9 +37,9 @@ class WebAclRuleGroupAssociationManagedRuleGroup {
   factory WebAclRuleGroupAssociationManagedRuleGroup.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationManagedRuleGroup(
       name: (map['name'] as String).input(),
-      ruleActionOverrides: map['ruleActionOverrides'] == null ? null : (pulumi.Input.decodeList<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverride>(map['ruleActionOverrides'], (value) => WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleActionOverrides: map['ruleActionOverrides'] == null ? null : ((pulumi.Input.decodeList<WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverride>(map['ruleActionOverrides']!, (value) => WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverride.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       vendorName: (map['vendorName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

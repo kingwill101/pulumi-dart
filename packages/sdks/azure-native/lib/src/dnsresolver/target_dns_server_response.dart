@@ -27,7 +27,7 @@ class TargetDnsServerResponse {
   factory TargetDnsServerResponse.fromMap(Map<String, dynamic> map) {
     return TargetDnsServerResponse(
       ipAddress: (map['ipAddress'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

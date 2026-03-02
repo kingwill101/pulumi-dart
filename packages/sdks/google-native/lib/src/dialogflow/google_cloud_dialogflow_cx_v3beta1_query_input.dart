@@ -51,12 +51,12 @@ class GoogleCloudDialogflowCxV3beta1QueryInput {
 
   factory GoogleCloudDialogflowCxV3beta1QueryInput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1QueryInput(
-      audio: map['audio'] == null ? null : (GoogleCloudDialogflowCxV3beta1AudioInput.fromMap((map['audio'] as Map).cast<String, dynamic>())).input(),
-      dtmf: map['dtmf'] == null ? null : (GoogleCloudDialogflowCxV3beta1DtmfInput.fromMap((map['dtmf'] as Map).cast<String, dynamic>())).input(),
-      event: map['event'] == null ? null : (GoogleCloudDialogflowCxV3beta1EventInput.fromMap((map['event'] as Map).cast<String, dynamic>())).input(),
-      intent: map['intent'] == null ? null : (GoogleCloudDialogflowCxV3beta1IntentInput.fromMap((map['intent'] as Map).cast<String, dynamic>())).input(),
+      audio: map['audio'] == null ? null : (GoogleCloudDialogflowCxV3beta1AudioInput.fromMap((map['audio']! as Map).cast<String, dynamic>())).input(),
+      dtmf: map['dtmf'] == null ? null : (GoogleCloudDialogflowCxV3beta1DtmfInput.fromMap((map['dtmf']! as Map).cast<String, dynamic>())).input(),
+      event: map['event'] == null ? null : (GoogleCloudDialogflowCxV3beta1EventInput.fromMap((map['event']! as Map).cast<String, dynamic>())).input(),
+      intent: map['intent'] == null ? null : (GoogleCloudDialogflowCxV3beta1IntentInput.fromMap((map['intent']! as Map).cast<String, dynamic>())).input(),
       languageCode: (map['languageCode'] as String).input(),
-      text: map['text'] == null ? null : (GoogleCloudDialogflowCxV3beta1TextInput.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (GoogleCloudDialogflowCxV3beta1TextInput.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

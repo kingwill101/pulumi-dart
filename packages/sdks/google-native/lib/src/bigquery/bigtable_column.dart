@@ -44,12 +44,12 @@ class BigtableColumn {
 
   factory BigtableColumn.fromMap(Map<String, dynamic> map) {
     return BigtableColumn(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      fieldName: map['fieldName'] == null ? null : (map['fieldName'] as String).input(),
-      onlyReadLatest: map['onlyReadLatest'] == null ? null : (map['onlyReadLatest'] as bool).input(),
-      qualifierEncoded: map['qualifierEncoded'] == null ? null : (map['qualifierEncoded'] as String).input(),
-      qualifierString: map['qualifierString'] == null ? null : (map['qualifierString'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
+      onlyReadLatest: map['onlyReadLatest'] == null ? null : (map['onlyReadLatest']! as bool).input(),
+      qualifierEncoded: map['qualifierEncoded'] == null ? null : (map['qualifierEncoded']! as String).input(),
+      qualifierString: map['qualifierString'] == null ? null : (map['qualifierString']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

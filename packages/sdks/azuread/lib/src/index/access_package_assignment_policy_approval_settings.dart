@@ -36,10 +36,10 @@ class AccessPackageAssignmentPolicyApprovalSettings {
 
   factory AccessPackageAssignmentPolicyApprovalSettings.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyApprovalSettings(
-      approvalRequired: map['approvalRequired'] == null ? null : (map['approvalRequired'] as bool).input(),
-      approvalRequiredForExtension: map['approvalRequiredForExtension'] == null ? null : (map['approvalRequiredForExtension'] as bool).input(),
-      approvalStages: map['approvalStages'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyApprovalSettingsApprovalStage>(map['approvalStages'], (value) => AccessPackageAssignmentPolicyApprovalSettingsApprovalStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestorJustificationRequired: map['requestorJustificationRequired'] == null ? null : (map['requestorJustificationRequired'] as bool).input(),
+      approvalRequired: map['approvalRequired'] == null ? null : (map['approvalRequired']! as bool).input(),
+      approvalRequiredForExtension: map['approvalRequiredForExtension'] == null ? null : (map['approvalRequiredForExtension']! as bool).input(),
+      approvalStages: map['approvalStages'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyApprovalSettingsApprovalStage>(map['approvalStages']!, (value) => AccessPackageAssignmentPolicyApprovalSettingsApprovalStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestorJustificationRequired: map['requestorJustificationRequired'] == null ? null : (map['requestorJustificationRequired']! as bool).input(),
     );
   }
 }

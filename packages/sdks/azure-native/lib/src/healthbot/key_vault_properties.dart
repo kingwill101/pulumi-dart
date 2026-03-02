@@ -38,8 +38,8 @@ class KeyVaultProperties {
     return KeyVaultProperties(
       keyName: (map['keyName'] as String).input(),
       keyVaultUri: (map['keyVaultUri'] as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
-      userIdentity: map['userIdentity'] == null ? null : (map['userIdentity'] as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
+      userIdentity: map['userIdentity'] == null ? null : (map['userIdentity']! as String).input(),
     );
   }
 }

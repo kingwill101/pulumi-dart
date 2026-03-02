@@ -27,8 +27,8 @@ class CustomActionResponse {
 
   factory CustomActionResponse.fromMap(Map<String, dynamic> map) {
     return CustomActionResponse(
-      actionDefinition: map['actionDefinition'] == null ? null : (ActionDefinitionResponse.fromMap((map['actionDefinition'] as Map).cast<String, dynamic>())).input(),
-      actionName: map['actionName'] == null ? null : (map['actionName'] as String).input(),
+      actionDefinition: map['actionDefinition'] == null ? null : (ActionDefinitionResponse.fromMap((map['actionDefinition']! as Map).cast<String, dynamic>())).input(),
+      actionName: map['actionName'] == null ? null : (map['actionName']! as String).input(),
     );
   }
 }

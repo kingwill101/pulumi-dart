@@ -63,14 +63,14 @@ class SettingsState {
 
   factory SettingsState.fromMap(Map<String, dynamic> map) {
     return SettingsState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      emailNotificationSettings: map['emailNotificationSettings'] == null ? null : (SettingsEmailNotificationSettings.fromMap((map['emailNotificationSettings'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      serviceAccountApproverSettings: map['serviceAccountApproverSettings'] == null ? null : (SettingsServiceAccountApproverSettings.fromMap((map['serviceAccountApproverSettings'] as Map).cast<String, dynamic>())).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      emailNotificationSettings: map['emailNotificationSettings'] == null ? null : (SettingsEmailNotificationSettings.fromMap((map['emailNotificationSettings']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      serviceAccountApproverSettings: map['serviceAccountApproverSettings'] == null ? null : (SettingsServiceAccountApproverSettings.fromMap((map['serviceAccountApproverSettings']! as Map).cast<String, dynamic>())).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

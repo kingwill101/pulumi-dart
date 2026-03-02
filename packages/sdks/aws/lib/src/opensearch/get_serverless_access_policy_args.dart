@@ -35,7 +35,7 @@ class GetServerlessAccessPolicyArgs {
   factory GetServerlessAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServerlessAccessPolicyArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

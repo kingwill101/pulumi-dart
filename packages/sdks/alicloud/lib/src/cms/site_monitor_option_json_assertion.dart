@@ -37,9 +37,9 @@ class SiteMonitorOptionJsonAssertion {
 
   factory SiteMonitorOptionJsonAssertion.fromMap(Map<String, dynamic> map) {
     return SiteMonitorOptionJsonAssertion(
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

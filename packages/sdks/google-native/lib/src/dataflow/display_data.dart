@@ -76,18 +76,18 @@ class DisplayData {
 
   factory DisplayData.fromMap(Map<String, dynamic> map) {
     return DisplayData(
-      boolValue: map['boolValue'] == null ? null : (map['boolValue'] as bool).input(),
-      durationValue: map['durationValue'] == null ? null : (map['durationValue'] as String).input(),
-      floatValue: map['floatValue'] == null ? null : (map['floatValue'] as double).input(),
-      int64Value: map['int64Value'] == null ? null : (map['int64Value'] as String).input(),
-      javaClassValue: map['javaClassValue'] == null ? null : (map['javaClassValue'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      shortStrValue: map['shortStrValue'] == null ? null : (map['shortStrValue'] as String).input(),
-      strValue: map['strValue'] == null ? null : (map['strValue'] as String).input(),
-      timestampValue: map['timestampValue'] == null ? null : (map['timestampValue'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      boolValue: map['boolValue'] == null ? null : (map['boolValue']! as bool).input(),
+      durationValue: map['durationValue'] == null ? null : (map['durationValue']! as String).input(),
+      floatValue: map['floatValue'] == null ? null : (map['floatValue']! as double).input(),
+      int64Value: map['int64Value'] == null ? null : (map['int64Value']! as String).input(),
+      javaClassValue: map['javaClassValue'] == null ? null : (map['javaClassValue']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      shortStrValue: map['shortStrValue'] == null ? null : (map['shortStrValue']! as String).input(),
+      strValue: map['strValue'] == null ? null : (map['strValue']! as String).input(),
+      timestampValue: map['timestampValue'] == null ? null : (map['timestampValue']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

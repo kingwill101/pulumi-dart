@@ -55,13 +55,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMax(
-      dateValue: map['dateValue'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue.fromMap((map['dateValue'] as Map).cast<String, dynamic>())).input(),
-      dayOfWeekValue: map['dayOfWeekValue'] == null ? null : (map['dayOfWeekValue'] as String).input(),
-      floatValue: map['floatValue'] == null ? null : (map['floatValue'] as double).input(),
-      integerValue: map['integerValue'] == null ? null : (map['integerValue'] as String).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
-      timeValue: map['timeValue'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue.fromMap((map['timeValue'] as Map).cast<String, dynamic>())).input(),
-      timestampValue: map['timestampValue'] == null ? null : (map['timestampValue'] as String).input(),
+      dateValue: map['dateValue'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue.fromMap((map['dateValue']! as Map).cast<String, dynamic>())).input(),
+      dayOfWeekValue: map['dayOfWeekValue'] == null ? null : (map['dayOfWeekValue']! as String).input(),
+      floatValue: map['floatValue'] == null ? null : (map['floatValue']! as double).input(),
+      integerValue: map['integerValue'] == null ? null : (map['integerValue']! as String).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
+      timeValue: map['timeValue'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValue.fromMap((map['timeValue']! as Map).cast<String, dynamic>())).input(),
+      timestampValue: map['timestampValue'] == null ? null : (map['timestampValue']! as String).input(),
     );
   }
 }

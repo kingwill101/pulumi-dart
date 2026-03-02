@@ -25,8 +25,8 @@ class CrawlerLakeFormationConfiguration {
 
   factory CrawlerLakeFormationConfiguration.fromMap(Map<String, dynamic> map) {
     return CrawlerLakeFormationConfiguration(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      useLakeFormationCredentials: map['useLakeFormationCredentials'] == null ? null : (map['useLakeFormationCredentials'] as bool).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      useLakeFormationCredentials: map['useLakeFormationCredentials'] == null ? null : ((map['useLakeFormationCredentials'] as bool).input()).input(),
     );
   }
 }

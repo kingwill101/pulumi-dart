@@ -22,7 +22,7 @@ class DataPlaneAadOrApiKeyAuthOption {
 
   factory DataPlaneAadOrApiKeyAuthOption.fromMap(Map<String, dynamic> map) {
     return DataPlaneAadOrApiKeyAuthOption(
-      aadAuthFailureMode: map['aadAuthFailureMode'] == null ? null : (AadAuthFailureMode.fromValue(map['aadAuthFailureMode'] as String)).input(),
+      aadAuthFailureMode: map['aadAuthFailureMode'] == null ? null : (AadAuthFailureMode.fromValue(map['aadAuthFailureMode']! as String)).input(),
     );
   }
 }

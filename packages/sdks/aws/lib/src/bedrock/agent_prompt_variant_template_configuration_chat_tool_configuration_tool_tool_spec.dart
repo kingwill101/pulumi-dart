@@ -33,8 +33,8 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec {
 
   factory AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      inputSchema: map['inputSchema'] == null ? null : (AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema.fromMap((map['inputSchema'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      inputSchema: map['inputSchema'] == null ? null : ((AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema.fromMap((map['inputSchema']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

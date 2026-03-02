@@ -20,7 +20,7 @@ class PermissionTimeouts {
 
   factory PermissionTimeouts.fromMap(Map<String, dynamic> map) {
     return PermissionTimeouts(
-      delete: map['delete'] == null ? null : (map['delete'] as String).input(),
+      delete: map['delete'] == null ? null : ((map['delete'] as String).input()).input(),
     );
   }
 }

@@ -42,9 +42,9 @@ class InstanceProperties {
 
   factory InstanceProperties.fromMap(Map<String, dynamic> map) {
     return InstanceProperties(
-      activeState: map['activeState'] == null ? null : (map['activeState'] as String).input(),
-      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : (ReconciliationPolicyProperties.fromMap((map['reconciliationPolicy'] as Map).cast<String, dynamic>())).input(),
-      solutionScope: map['solutionScope'] == null ? null : (map['solutionScope'] as String).input(),
+      activeState: map['activeState'] == null ? null : (map['activeState']! as String).input(),
+      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : (ReconciliationPolicyProperties.fromMap((map['reconciliationPolicy']! as Map).cast<String, dynamic>())).input(),
+      solutionScope: map['solutionScope'] == null ? null : (map['solutionScope']! as String).input(),
       solutionVersionId: (map['solutionVersionId'] as String).input(),
       targetId: (map['targetId'] as String).input(),
     );

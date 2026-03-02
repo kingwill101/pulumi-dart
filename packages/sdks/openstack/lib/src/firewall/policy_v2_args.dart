@@ -80,14 +80,14 @@ class PolicyV2Args {
 
   factory PolicyV2Args.fromMap(Map<String, dynamic> map) {
     return PolicyV2Args(
-      audited: map['audited'] == null ? null : (map['audited'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rules: map['rules'] == null ? null : ((map['rules'] as List).cast<String>()).input(),
-      shared: map['shared'] == null ? null : (map['shared'] as bool).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      audited: map['audited'] == null ? null : (map['audited']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      rules: map['rules'] == null ? null : ((map['rules']! as List).cast<String>()).input(),
+      shared: map['shared'] == null ? null : (map['shared']! as bool).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

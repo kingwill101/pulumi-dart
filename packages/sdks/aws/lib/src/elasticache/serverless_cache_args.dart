@@ -98,21 +98,21 @@ class ServerlessCacheArgs {
 
   factory ServerlessCacheArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessCacheArgs(
-      cacheUsageLimits: map['cacheUsageLimits'] == null ? null : (ServerlessCacheCacheUsageLimits.fromMap((map['cacheUsageLimits'] as Map).cast<String, dynamic>())).input(),
-      dailySnapshotTime: map['dailySnapshotTime'] == null ? null : (map['dailySnapshotTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      cacheUsageLimits: map['cacheUsageLimits'] == null ? null : ((ServerlessCacheCacheUsageLimits.fromMap((map['cacheUsageLimits']! as Map).cast<String, dynamic>())).input()).input(),
+      dailySnapshotTime: map['dailySnapshotTime'] == null ? null : ((map['dailySnapshotTime'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       engine: (map['engine'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      majorEngineVersion: map['majorEngineVersion'] == null ? null : (map['majorEngineVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      snapshotArnsToRestores: map['snapshotArnsToRestores'] == null ? null : ((map['snapshotArnsToRestores'] as List).cast<String>()).input(),
-      snapshotRetentionLimit: map['snapshotRetentionLimit'] == null ? null : (map['snapshotRetentionLimit'] as int).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ServerlessCacheTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      userGroupId: map['userGroupId'] == null ? null : (map['userGroupId'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      majorEngineVersion: map['majorEngineVersion'] == null ? null : ((map['majorEngineVersion'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
+      snapshotArnsToRestores: map['snapshotArnsToRestores'] == null ? null : (((map['snapshotArnsToRestores'] as List).cast<String>()).input()).input(),
+      snapshotRetentionLimit: map['snapshotRetentionLimit'] == null ? null : ((map['snapshotRetentionLimit'] as int).input()).input(),
+      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ServerlessCacheTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      userGroupId: map['userGroupId'] == null ? null : ((map['userGroupId'] as String).input()).input(),
     );
   }
 }

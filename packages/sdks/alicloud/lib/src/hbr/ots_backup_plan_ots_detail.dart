@@ -20,7 +20,7 @@ class OtsBackupPlanOtsDetail {
 
   factory OtsBackupPlanOtsDetail.fromMap(Map<String, dynamic> map) {
     return OtsBackupPlanOtsDetail(
-      tableNames: map['tableNames'] == null ? null : ((map['tableNames'] as List).cast<String>()).input(),
+      tableNames: map['tableNames'] == null ? null : ((map['tableNames']! as List).cast<String>()).input(),
     );
   }
 }

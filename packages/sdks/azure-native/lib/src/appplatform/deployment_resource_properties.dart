@@ -33,9 +33,9 @@ class DeploymentResourceProperties {
 
   factory DeploymentResourceProperties.fromMap(Map<String, dynamic> map) {
     return DeploymentResourceProperties(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      deploymentSettings: map['deploymentSettings'] == null ? null : (DeploymentSettings.fromMap((map['deploymentSettings'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (BuildResultUserSourceInfo.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      deploymentSettings: map['deploymentSettings'] == null ? null : (DeploymentSettings.fromMap((map['deploymentSettings']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (BuildResultUserSourceInfo.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

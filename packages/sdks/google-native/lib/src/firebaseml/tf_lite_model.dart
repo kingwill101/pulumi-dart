@@ -26,8 +26,8 @@ class TfLiteModel {
 
   factory TfLiteModel.fromMap(Map<String, dynamic> map) {
     return TfLiteModel(
-      automlModel: map['automlModel'] == null ? null : (map['automlModel'] as String).input(),
-      gcsTfliteUri: map['gcsTfliteUri'] == null ? null : (map['gcsTfliteUri'] as String).input(),
+      automlModel: map['automlModel'] == null ? null : (map['automlModel']! as String).input(),
+      gcsTfliteUri: map['gcsTfliteUri'] == null ? null : (map['gcsTfliteUri']! as String).input(),
     );
   }
 }

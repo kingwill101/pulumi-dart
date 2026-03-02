@@ -34,7 +34,7 @@ class ProjectDefaultNetworkTierArgs {
   factory ProjectDefaultNetworkTierArgs.fromMap(Map<String, dynamic> map) {
     return ProjectDefaultNetworkTierArgs(
       networkTier: (map['networkTier'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

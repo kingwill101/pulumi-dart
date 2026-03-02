@@ -79,16 +79,16 @@ class ExportConfigurationArgs {
 
   factory ExportConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ExportConfigurationArgs(
-      destinationAccountId: map['destinationAccountId'] == null ? null : (map['destinationAccountId'] as String).input(),
-      destinationAddress: map['destinationAddress'] == null ? null : (map['destinationAddress'] as String).input(),
-      destinationStorageLocationId: map['destinationStorageLocationId'] == null ? null : (map['destinationStorageLocationId'] as String).input(),
-      destinationStorageSubscriptionId: map['destinationStorageSubscriptionId'] == null ? null : (map['destinationStorageSubscriptionId'] as String).input(),
-      destinationType: map['destinationType'] == null ? null : (map['destinationType'] as String).input(),
-      exportId: map['exportId'] == null ? null : (map['exportId'] as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as String).input(),
-      notificationQueueEnabled: map['notificationQueueEnabled'] == null ? null : (map['notificationQueueEnabled'] as String).input(),
-      notificationQueueUri: map['notificationQueueUri'] == null ? null : (map['notificationQueueUri'] as String).input(),
-      recordTypes: map['recordTypes'] == null ? null : (map['recordTypes'] as String).input(),
+      destinationAccountId: map['destinationAccountId'] == null ? null : (map['destinationAccountId']! as String).input(),
+      destinationAddress: map['destinationAddress'] == null ? null : (map['destinationAddress']! as String).input(),
+      destinationStorageLocationId: map['destinationStorageLocationId'] == null ? null : (map['destinationStorageLocationId']! as String).input(),
+      destinationStorageSubscriptionId: map['destinationStorageSubscriptionId'] == null ? null : (map['destinationStorageSubscriptionId']! as String).input(),
+      destinationType: map['destinationType'] == null ? null : (map['destinationType']! as String).input(),
+      exportId: map['exportId'] == null ? null : (map['exportId']! as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as String).input(),
+      notificationQueueEnabled: map['notificationQueueEnabled'] == null ? null : (map['notificationQueueEnabled']! as String).input(),
+      notificationQueueUri: map['notificationQueueUri'] == null ? null : (map['notificationQueueUri']! as String).input(),
+      recordTypes: map['recordTypes'] == null ? null : (map['recordTypes']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

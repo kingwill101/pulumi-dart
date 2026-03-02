@@ -21,7 +21,7 @@ class OSPolicyAssignmentLabelSetOsconfigV1alpha {
 
   factory OSPolicyAssignmentLabelSetOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyAssignmentLabelSetOsconfigV1alpha(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

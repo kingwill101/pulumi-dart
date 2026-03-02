@@ -68,16 +68,16 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      aclConfiguration: map['aclConfiguration'] == null ? null : (DatabaseAclConfiguration.fromMap((map['aclConfiguration'] as Map).cast<String, dynamic>())).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (DatabaseEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      workgroup: map['workgroup'] == null ? null : (map['workgroup'] as String).input(),
+      aclConfiguration: map['aclConfiguration'] == null ? null : ((DatabaseAclConfiguration.fromMap((map['aclConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((DatabaseEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      properties: map['properties'] == null ? null : (((map['properties'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      workgroup: map['workgroup'] == null ? null : ((map['workgroup'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class MethodSettings {
 
   factory MethodSettings.fromMap(Map<String, dynamic> map) {
     return MethodSettings(
-      longRunning: map['longRunning'] == null ? null : (LongRunning.fromMap((map['longRunning'] as Map).cast<String, dynamic>())).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      longRunning: map['longRunning'] == null ? null : (LongRunning.fromMap((map['longRunning']! as Map).cast<String, dynamic>())).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
     );
   }
 }

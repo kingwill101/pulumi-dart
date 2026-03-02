@@ -33,7 +33,7 @@ class HealthBotPropertiesResponse {
   factory HealthBotPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HealthBotPropertiesResponse(
       botManagementPortalLink: (map['botManagementPortalLink'] as String).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultPropertiesResponse.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

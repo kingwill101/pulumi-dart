@@ -77,15 +77,15 @@ class ConfigApigatewayV1betaArgs {
     return ConfigApigatewayV1betaArgs(
       apiConfigId: (map['apiConfigId'] as String).input(),
       apiId: (map['apiId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      gatewayConfig: map['gatewayConfig'] == null ? null : (ApigatewayGatewayConfig.fromMap((map['gatewayConfig'] as Map).cast<String, dynamic>())).input(),
-      gatewayServiceAccount: map['gatewayServiceAccount'] == null ? null : (map['gatewayServiceAccount'] as String).input(),
-      grpcServices: map['grpcServices'] == null ? null : (pulumi.Input.decodeList<ApigatewayApiConfigGrpcServiceDefinitionApigatewayV1beta>(map['grpcServices'], (value) => ApigatewayApiConfigGrpcServiceDefinitionApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedServiceConfigs: map['managedServiceConfigs'] == null ? null : (pulumi.Input.decodeList<ApigatewayApiConfigFileApigatewayV1beta>(map['managedServiceConfigs'], (value) => ApigatewayApiConfigFileApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      openapiDocuments: map['openapiDocuments'] == null ? null : (pulumi.Input.decodeList<ApigatewayApiConfigOpenApiDocumentApigatewayV1beta>(map['openapiDocuments'], (value) => ApigatewayApiConfigOpenApiDocumentApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      gatewayConfig: map['gatewayConfig'] == null ? null : (ApigatewayGatewayConfig.fromMap((map['gatewayConfig']! as Map).cast<String, dynamic>())).input(),
+      gatewayServiceAccount: map['gatewayServiceAccount'] == null ? null : (map['gatewayServiceAccount']! as String).input(),
+      grpcServices: map['grpcServices'] == null ? null : (pulumi.Input.decodeList<ApigatewayApiConfigGrpcServiceDefinitionApigatewayV1beta>(map['grpcServices']!, (value) => ApigatewayApiConfigGrpcServiceDefinitionApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedServiceConfigs: map['managedServiceConfigs'] == null ? null : (pulumi.Input.decodeList<ApigatewayApiConfigFileApigatewayV1beta>(map['managedServiceConfigs']!, (value) => ApigatewayApiConfigFileApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      openapiDocuments: map['openapiDocuments'] == null ? null : (pulumi.Input.decodeList<ApigatewayApiConfigOpenApiDocumentApigatewayV1beta>(map['openapiDocuments']!, (value) => ApigatewayApiConfigOpenApiDocumentApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class AccountManagementArgs {
 
   factory AccountManagementArgs.fromMap(Map<String, dynamic> map) {
     return AccountManagementArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

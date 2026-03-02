@@ -27,7 +27,7 @@ class KafkaRemoteBrokerConnectionTls {
   factory KafkaRemoteBrokerConnectionTls.fromMap(Map<String, dynamic> map) {
     return KafkaRemoteBrokerConnectionTls(
       tlsEnabled: (map['tlsEnabled'] as bool).input(),
-      trustedCaCertificateConfigMap: map['trustedCaCertificateConfigMap'] == null ? null : (map['trustedCaCertificateConfigMap'] as String).input(),
+      trustedCaCertificateConfigMap: map['trustedCaCertificateConfigMap'] == null ? null : (map['trustedCaCertificateConfigMap']! as String).input(),
     );
   }
 }

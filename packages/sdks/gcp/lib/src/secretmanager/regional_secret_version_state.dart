@@ -80,17 +80,17 @@ class RegionalSecretVersionState {
 
   factory RegionalSecretVersionState.fromMap(Map<String, dynamic> map) {
     return RegionalSecretVersionState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      customerManagedEncryptions: map['customerManagedEncryptions'] == null ? null : (pulumi.Input.decodeList<RegionalSecretVersionCustomerManagedEncryption>(map['customerManagedEncryptions'], (value) => RegionalSecretVersionCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      destroyTime: map['destroyTime'] == null ? null : (map['destroyTime'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      secretData: map['secretData'] == null ? null : (map['secretData'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      customerManagedEncryptions: map['customerManagedEncryptions'] == null ? null : (pulumi.Input.decodeList<RegionalSecretVersionCustomerManagedEncryption>(map['customerManagedEncryptions']!, (value) => RegionalSecretVersionCustomerManagedEncryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      destroyTime: map['destroyTime'] == null ? null : (map['destroyTime']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      secretData: map['secretData'] == null ? null : (map['secretData']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

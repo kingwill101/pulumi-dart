@@ -42,8 +42,8 @@ class GetDataGroupArgs {
     return GetDataGroupArgs(
       name: (map['name'] as String).input(),
       partition: (map['partition'] as String).input(),
-      records: map['records'] == null ? null : (pulumi.Input.decodeList<GetDataGroupRecord>(map['records'], (value) => GetDataGroupRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      records: map['records'] == null ? null : (pulumi.Input.decodeList<GetDataGroupRecord>(map['records']!, (value) => GetDataGroupRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

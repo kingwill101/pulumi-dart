@@ -32,9 +32,9 @@ class FileNote {
 
   factory FileNote.fromMap(Map<String, dynamic> map) {
     return FileNote(
-      checksum: map['checksum'] == null ? null : ((map['checksum'] as List).cast<String>()).input(),
-      fileType: map['fileType'] == null ? null : (FileNoteFileType.fromValue(map['fileType'] as String)).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      checksum: map['checksum'] == null ? null : ((map['checksum']! as List).cast<String>()).input(),
+      fileType: map['fileType'] == null ? null : (FileNoteFileType.fromValue(map['fileType']! as String)).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

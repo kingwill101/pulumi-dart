@@ -27,8 +27,8 @@ class PostgresqlSchema {
 
   factory PostgresqlSchema.fromMap(Map<String, dynamic> map) {
     return PostgresqlSchema(
-      postgresqlTables: map['postgresqlTables'] == null ? null : (pulumi.Input.decodeList<PostgresqlTable>(map['postgresqlTables'], (value) => PostgresqlTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      postgresqlTables: map['postgresqlTables'] == null ? null : (pulumi.Input.decodeList<PostgresqlTable>(map['postgresqlTables']!, (value) => PostgresqlTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
     );
   }
 }

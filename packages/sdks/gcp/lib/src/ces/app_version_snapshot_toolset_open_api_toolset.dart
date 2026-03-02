@@ -63,12 +63,12 @@ class AppVersionSnapshotToolsetOpenApiToolset {
 
   factory AppVersionSnapshotToolsetOpenApiToolset.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolsetOpenApiToolset(
-      apiAuthentications: map['apiAuthentications'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication>(map['apiAuthentications'], (value) => AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ignoreUnknownFields: map['ignoreUnknownFields'] == null ? null : (map['ignoreUnknownFields'] as bool).input(),
-      openApiSchema: map['openApiSchema'] == null ? null : (map['openApiSchema'] as String).input(),
-      serviceDirectoryConfigs: map['serviceDirectoryConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig>(map['serviceDirectoryConfigs'], (value) => AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tlsConfigs: map['tlsConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolsetOpenApiToolsetTlsConfig>(map['tlsConfigs'], (value) => AppVersionSnapshotToolsetOpenApiToolsetTlsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      apiAuthentications: map['apiAuthentications'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication>(map['apiAuthentications']!, (value) => AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ignoreUnknownFields: map['ignoreUnknownFields'] == null ? null : (map['ignoreUnknownFields']! as bool).input(),
+      openApiSchema: map['openApiSchema'] == null ? null : (map['openApiSchema']! as String).input(),
+      serviceDirectoryConfigs: map['serviceDirectoryConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig>(map['serviceDirectoryConfigs']!, (value) => AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tlsConfigs: map['tlsConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolsetOpenApiToolsetTlsConfig>(map['tlsConfigs']!, (value) => AppVersionSnapshotToolsetOpenApiToolsetTlsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

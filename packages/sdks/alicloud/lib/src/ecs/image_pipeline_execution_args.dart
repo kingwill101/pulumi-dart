@@ -31,7 +31,7 @@ class ImagePipelineExecutionArgs {
   factory ImagePipelineExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ImagePipelineExecutionArgs(
       imagePipelineId: (map['imagePipelineId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

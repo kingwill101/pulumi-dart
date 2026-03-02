@@ -16,42 +16,44 @@ class CloudRunDeployStack extends pulumi.Stack {
 
     final gcrDockerProvider = docker.providers.Docker(
       'gcr',
-      args: docker.ProviderArgs(
+      args: docker.providers.DockerArgs(
         registryAuth: [
-          docker.ProviderRegistryAuth(
-            address: 'gcr.io',
-            configFile: configFile,
+          docker.index.ProviderRegistryAuth(
+            address: 'gcr.io'.output(),
+            configFile: configFile.output(),
           ),
-        ],
+        ].output(),
       ),
     );
 
     final registryImage = pulumi.output(
-      docker.getRegistryImage(
-        docker.GetRegistryImageArgs(name: 'gcr.io/$project/$imageName:latest'),
+      docker.index.getRegistryImage(
+        docker.index.GetRegistryImageArgs(
+          name: 'gcr.io/$project/$imageName:latest'.output(),
+        ),
       ),
     );
 
     final dockerImage = registryImage.apply(
-      (image) => docker.RemoteImage(
+      (image) => docker.index.RemoteImage(
         '$imageName-docker-image',
-        args: docker.RemoteImageArgs(
+        args: docker.index.RemoteImageArgs(
           name: image.name,
-          pullTriggers: [image.sha256Digest],
-          keepLocally: true,
+          pullTriggers: image.sha256Digest.apply<List<String>>((digest) => [digest]),
+          keepLocally: true.output(),
         ),
         options: pulumi.CustomResourceOptions(provider: gcrDockerProvider),
       ),
     );
 
-    final truncatedSha = registryImage.apply(
+    final truncatedSha = registryImage.apply<String>(
       (image) => '$imageName-${image.sha256Digest.substring(8, 28)}',
     );
 
     final rubyService = gcp.cloudrun.Service(
       'ruby',
       args: gcp.cloudrun.ServiceArgs(
-        location: location,
+        location: location.output(),
         name: truncatedSha,
         template: gcp.cloudrun.ServiceTemplate(
           spec: gcp.cloudrun.ServiceTemplateSpec(
@@ -59,9 +61,9 @@ class CloudRunDeployStack extends pulumi.Stack {
               gcp.cloudrun.ServiceTemplateSpecContainer(
                 image: dockerImage.apply((image) => image.name),
               ),
-            ],
-          ),
-        ),
+            ].output(),
+          ).output(),
+        ).output(),
       ),
     );
 
@@ -69,9 +71,9 @@ class CloudRunDeployStack extends pulumi.Stack {
       'ruby-everyone',
       args: gcp.cloudrun.IamMemberArgs(
         service: rubyService.name,
-        location: location,
-        role: 'roles/run.invoker',
-        member: 'allUsers',
+        location: location.output(),
+        role: 'roles/run.invoker'.output(),
+        member: 'allUsers'.output(),
       ),
     );
 

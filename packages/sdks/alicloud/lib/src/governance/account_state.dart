@@ -74,15 +74,15 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as int).input(),
-      accountNamePrefix: map['accountNamePrefix'] == null ? null : (map['accountNamePrefix'] as String).input(),
-      accountTags: map['accountTags'] == null ? null : (pulumi.Input.decodeList<AccountAccountTag>(map['accountTags'], (value) => AccountAccountTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      baselineId: map['baselineId'] == null ? null : (map['baselineId'] as String).input(),
-      defaultDomainName: map['defaultDomainName'] == null ? null : (map['defaultDomainName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
-      payerAccountId: map['payerAccountId'] == null ? null : (map['payerAccountId'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as int).input(),
+      accountNamePrefix: map['accountNamePrefix'] == null ? null : (map['accountNamePrefix']! as String).input(),
+      accountTags: map['accountTags'] == null ? null : (pulumi.Input.decodeList<AccountAccountTag>(map['accountTags']!, (value) => AccountAccountTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      baselineId: map['baselineId'] == null ? null : (map['baselineId']! as String).input(),
+      defaultDomainName: map['defaultDomainName'] == null ? null : (map['defaultDomainName']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId']! as String).input(),
+      payerAccountId: map['payerAccountId'] == null ? null : (map['payerAccountId']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

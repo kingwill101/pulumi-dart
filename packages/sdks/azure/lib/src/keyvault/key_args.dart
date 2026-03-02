@@ -74,16 +74,16 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      curve: map['curve'] == null ? null : (map['curve'] as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      curve: map['curve'] == null ? null : (map['curve']! as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
       keyOpts: ((map['keyOpts'] as List).cast<String>()).input(),
-      keySize: map['keySize'] == null ? null : (map['keySize'] as int).input(),
+      keySize: map['keySize'] == null ? null : (map['keySize']! as int).input(),
       keyType: (map['keyType'] as String).input(),
       keyVaultId: (map['keyVaultId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notBeforeDate: map['notBeforeDate'] == null ? null : (map['notBeforeDate'] as String).input(),
-      rotationPolicy: map['rotationPolicy'] == null ? null : (KeyRotationPolicy.fromMap((map['rotationPolicy'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notBeforeDate: map['notBeforeDate'] == null ? null : (map['notBeforeDate']! as String).input(),
+      rotationPolicy: map['rotationPolicy'] == null ? null : (KeyRotationPolicy.fromMap((map['rotationPolicy']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

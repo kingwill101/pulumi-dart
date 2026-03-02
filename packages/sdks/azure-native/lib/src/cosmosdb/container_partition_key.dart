@@ -31,9 +31,9 @@ class ContainerPartitionKey {
 
   factory ContainerPartitionKey.fromMap(Map<String, dynamic> map) {
     return ContainerPartitionKey(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

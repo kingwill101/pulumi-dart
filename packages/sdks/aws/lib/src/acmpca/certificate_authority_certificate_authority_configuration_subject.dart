@@ -80,19 +80,19 @@ class CertificateAuthorityCertificateAuthorityConfigurationSubject {
 
   factory CertificateAuthorityCertificateAuthorityConfigurationSubject.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityCertificateAuthorityConfigurationSubject(
-      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
-      country: map['country'] == null ? null : (map['country'] as String).input(),
-      distinguishedNameQualifier: map['distinguishedNameQualifier'] == null ? null : (map['distinguishedNameQualifier'] as String).input(),
-      generationQualifier: map['generationQualifier'] == null ? null : (map['generationQualifier'] as String).input(),
-      givenName: map['givenName'] == null ? null : (map['givenName'] as String).input(),
-      initials: map['initials'] == null ? null : (map['initials'] as String).input(),
-      locality: map['locality'] == null ? null : (map['locality'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
-      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit'] as String).input(),
-      pseudonym: map['pseudonym'] == null ? null : (map['pseudonym'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      surname: map['surname'] == null ? null : (map['surname'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      commonName: map['commonName'] == null ? null : ((map['commonName'] as String).input()).input(),
+      country: map['country'] == null ? null : ((map['country'] as String).input()).input(),
+      distinguishedNameQualifier: map['distinguishedNameQualifier'] == null ? null : ((map['distinguishedNameQualifier'] as String).input()).input(),
+      generationQualifier: map['generationQualifier'] == null ? null : ((map['generationQualifier'] as String).input()).input(),
+      givenName: map['givenName'] == null ? null : ((map['givenName'] as String).input()).input(),
+      initials: map['initials'] == null ? null : ((map['initials'] as String).input()).input(),
+      locality: map['locality'] == null ? null : ((map['locality'] as String).input()).input(),
+      organization: map['organization'] == null ? null : ((map['organization'] as String).input()).input(),
+      organizationalUnit: map['organizationalUnit'] == null ? null : ((map['organizationalUnit'] as String).input()).input(),
+      pseudonym: map['pseudonym'] == null ? null : ((map['pseudonym'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      surname: map['surname'] == null ? null : ((map['surname'] as String).input()).input(),
+      title: map['title'] == null ? null : ((map['title'] as String).input()).input(),
     );
   }
 }

@@ -85,16 +85,16 @@ class SecurityProfileArgs {
 
   factory SecurityProfileArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileArgs(
-      customInterceptProfile: map['customInterceptProfile'] == null ? null : (SecurityProfileCustomInterceptProfile.fromMap((map['customInterceptProfile'] as Map).cast<String, dynamic>())).input(),
-      customMirroringProfile: map['customMirroringProfile'] == null ? null : (SecurityProfileCustomMirroringProfile.fromMap((map['customMirroringProfile'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (SecurityProfileThreatPreventionProfile.fromMap((map['threatPreventionProfile'] as Map).cast<String, dynamic>())).input(),
+      customInterceptProfile: map['customInterceptProfile'] == null ? null : (SecurityProfileCustomInterceptProfile.fromMap((map['customInterceptProfile']! as Map).cast<String, dynamic>())).input(),
+      customMirroringProfile: map['customMirroringProfile'] == null ? null : (SecurityProfileCustomMirroringProfile.fromMap((map['customMirroringProfile']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (SecurityProfileThreatPreventionProfile.fromMap((map['threatPreventionProfile']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (SecurityProfileUrlFilteringProfile.fromMap((map['urlFilteringProfile'] as Map).cast<String, dynamic>())).input(),
+      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (SecurityProfileUrlFilteringProfile.fromMap((map['urlFilteringProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

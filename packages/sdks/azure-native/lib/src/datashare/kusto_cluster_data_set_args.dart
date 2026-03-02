@@ -51,7 +51,7 @@ class KustoClusterDataSetArgs {
   factory KustoClusterDataSetArgs.fromMap(Map<String, dynamic> map) {
     return KustoClusterDataSetArgs(
       accountName: (map['accountName'] as String).input(),
-      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName'] as String).input(),
+      dataSetName: map['dataSetName'] == null ? null : (map['dataSetName']! as String).input(),
       kind: (map['kind'] as String).input(),
       kustoClusterResourceId: (map['kustoClusterResourceId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

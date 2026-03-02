@@ -27,8 +27,8 @@ class DeidentifiedStoreDestination {
 
   factory DeidentifiedStoreDestination.fromMap(Map<String, dynamic> map) {
     return DeidentifiedStoreDestination(
-      config: map['config'] == null ? null : (DeidentifyConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      store: map['store'] == null ? null : (map['store'] as String).input(),
+      config: map['config'] == null ? null : (DeidentifyConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      store: map['store'] == null ? null : (map['store']! as String).input(),
     );
   }
 }

@@ -119,9 +119,9 @@ class ScalingPlanSchedule {
       rampDownStartTime: (map['rampDownStartTime'] as String).input(),
       rampDownStopHostsWhen: (map['rampDownStopHostsWhen'] as String).input(),
       rampDownWaitTimeMinutes: (map['rampDownWaitTimeMinutes'] as int).input(),
-      rampUpCapacityThresholdPercent: map['rampUpCapacityThresholdPercent'] == null ? null : (map['rampUpCapacityThresholdPercent'] as int).input(),
+      rampUpCapacityThresholdPercent: map['rampUpCapacityThresholdPercent'] == null ? null : (map['rampUpCapacityThresholdPercent']! as int).input(),
       rampUpLoadBalancingAlgorithm: (map['rampUpLoadBalancingAlgorithm'] as String).input(),
-      rampUpMinimumHostsPercent: map['rampUpMinimumHostsPercent'] == null ? null : (map['rampUpMinimumHostsPercent'] as int).input(),
+      rampUpMinimumHostsPercent: map['rampUpMinimumHostsPercent'] == null ? null : (map['rampUpMinimumHostsPercent']! as int).input(),
       rampUpStartTime: (map['rampUpStartTime'] as String).input(),
     );
   }

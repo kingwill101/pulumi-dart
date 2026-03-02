@@ -20,7 +20,7 @@ class DomainDevicesSerialAcpi {
 
   factory DomainDevicesSerialAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSerialAcpi(
-      index: map['index'] == null ? null : (map['index'] as double).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
     );
   }
 }

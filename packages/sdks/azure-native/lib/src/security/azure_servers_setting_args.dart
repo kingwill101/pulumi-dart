@@ -37,7 +37,7 @@ class AzureServersSettingArgs {
     return AzureServersSettingArgs(
       kind: (map['kind'] as String).input(),
       selectedProvider: (map['selectedProvider'] as String).input(),
-      settingKind: map['settingKind'] == null ? null : (map['settingKind'] as String).input(),
+      settingKind: map['settingKind'] == null ? null : (map['settingKind']! as String).input(),
     );
   }
 }

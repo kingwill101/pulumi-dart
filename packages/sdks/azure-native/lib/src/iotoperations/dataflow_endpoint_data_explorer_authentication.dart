@@ -34,8 +34,8 @@ class DataflowEndpointDataExplorerAuthentication {
   factory DataflowEndpointDataExplorerAuthentication.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointDataExplorerAuthentication(
       method: (map['method']).input(),
-      systemAssignedManagedIdentitySettings: map['systemAssignedManagedIdentitySettings'] == null ? null : (DataflowEndpointAuthenticationSystemAssignedManagedIdentity.fromMap((map['systemAssignedManagedIdentitySettings'] as Map).cast<String, dynamic>())).input(),
-      userAssignedManagedIdentitySettings: map['userAssignedManagedIdentitySettings'] == null ? null : (DataflowEndpointAuthenticationUserAssignedManagedIdentity.fromMap((map['userAssignedManagedIdentitySettings'] as Map).cast<String, dynamic>())).input(),
+      systemAssignedManagedIdentitySettings: map['systemAssignedManagedIdentitySettings'] == null ? null : (DataflowEndpointAuthenticationSystemAssignedManagedIdentity.fromMap((map['systemAssignedManagedIdentitySettings']! as Map).cast<String, dynamic>())).input(),
+      userAssignedManagedIdentitySettings: map['userAssignedManagedIdentitySettings'] == null ? null : (DataflowEndpointAuthenticationUserAssignedManagedIdentity.fromMap((map['userAssignedManagedIdentitySettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

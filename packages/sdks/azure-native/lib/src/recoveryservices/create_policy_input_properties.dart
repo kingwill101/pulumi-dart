@@ -22,7 +22,7 @@ class CreatePolicyInputProperties {
 
   factory CreatePolicyInputProperties.fromMap(Map<String, dynamic> map) {
     return CreatePolicyInputProperties(
-      providerSpecificInput: map['providerSpecificInput'] == null ? null : (A2ACrossClusterMigrationPolicyCreationInput.fromMap((map['providerSpecificInput'] as Map).cast<String, dynamic>())).input(),
+      providerSpecificInput: map['providerSpecificInput'] == null ? null : (A2ACrossClusterMigrationPolicyCreationInput.fromMap((map['providerSpecificInput']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

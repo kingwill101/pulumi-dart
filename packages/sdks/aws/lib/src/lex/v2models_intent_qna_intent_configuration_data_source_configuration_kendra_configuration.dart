@@ -35,10 +35,10 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfigura
 
   factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration(
-      exactResponse: map['exactResponse'] == null ? null : (map['exactResponse'] as bool).input(),
+      exactResponse: map['exactResponse'] == null ? null : ((map['exactResponse'] as bool).input()).input(),
       kendraIndex: (map['kendraIndex'] as String).input(),
-      queryFilterString: map['queryFilterString'] == null ? null : (map['queryFilterString'] as String).input(),
-      queryFilterStringEnabled: map['queryFilterStringEnabled'] == null ? null : (map['queryFilterStringEnabled'] as bool).input(),
+      queryFilterString: map['queryFilterString'] == null ? null : ((map['queryFilterString'] as String).input()).input(),
+      queryFilterStringEnabled: map['queryFilterStringEnabled'] == null ? null : ((map['queryFilterStringEnabled'] as bool).input()).input(),
     );
   }
 }

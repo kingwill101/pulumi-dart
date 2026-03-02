@@ -68,14 +68,14 @@ class CxGeneratorState {
 
   factory CxGeneratorState.fromMap(Map<String, dynamic> map) {
     return CxGeneratorState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      llmModelSettings: map['llmModelSettings'] == null ? null : (CxGeneratorLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>())).input(),
-      modelParameter: map['modelParameter'] == null ? null : (CxGeneratorModelParameter.fromMap((map['modelParameter'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      placeholders: map['placeholders'] == null ? null : (pulumi.Input.decodeList<CxGeneratorPlaceholder>(map['placeholders'], (value) => CxGeneratorPlaceholder.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      promptText: map['promptText'] == null ? null : (CxGeneratorPromptText.fromMap((map['promptText'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      llmModelSettings: map['llmModelSettings'] == null ? null : (CxGeneratorLlmModelSettings.fromMap((map['llmModelSettings']! as Map).cast<String, dynamic>())).input(),
+      modelParameter: map['modelParameter'] == null ? null : (CxGeneratorModelParameter.fromMap((map['modelParameter']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      placeholders: map['placeholders'] == null ? null : (pulumi.Input.decodeList<CxGeneratorPlaceholder>(map['placeholders']!, (value) => CxGeneratorPlaceholder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      promptText: map['promptText'] == null ? null : (CxGeneratorPromptText.fromMap((map['promptText']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -97,20 +97,20 @@ class InsightsArgs {
   factory InsightsArgs.fromMap(Map<String, dynamic> map) {
     return InsightsArgs(
       applicationType: (map['applicationType'] as String).input(),
-      dailyDataCapInGb: map['dailyDataCapInGb'] == null ? null : (map['dailyDataCapInGb'] as double).input(),
-      dailyDataCapNotificationsDisabled: map['dailyDataCapNotificationsDisabled'] == null ? null : (map['dailyDataCapNotificationsDisabled'] as bool).input(),
-      disableIpMasking: map['disableIpMasking'] == null ? null : (map['disableIpMasking'] as bool).input(),
-      forceCustomerStorageForProfiler: map['forceCustomerStorageForProfiler'] == null ? null : (map['forceCustomerStorageForProfiler'] as bool).input(),
-      internetIngestionEnabled: map['internetIngestionEnabled'] == null ? null : (map['internetIngestionEnabled'] as bool).input(),
-      internetQueryEnabled: map['internetQueryEnabled'] == null ? null : (map['internetQueryEnabled'] as bool).input(),
-      localAuthenticationDisabled: map['localAuthenticationDisabled'] == null ? null : (map['localAuthenticationDisabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dailyDataCapInGb: map['dailyDataCapInGb'] == null ? null : (map['dailyDataCapInGb']! as double).input(),
+      dailyDataCapNotificationsDisabled: map['dailyDataCapNotificationsDisabled'] == null ? null : (map['dailyDataCapNotificationsDisabled']! as bool).input(),
+      disableIpMasking: map['disableIpMasking'] == null ? null : (map['disableIpMasking']! as bool).input(),
+      forceCustomerStorageForProfiler: map['forceCustomerStorageForProfiler'] == null ? null : (map['forceCustomerStorageForProfiler']! as bool).input(),
+      internetIngestionEnabled: map['internetIngestionEnabled'] == null ? null : (map['internetIngestionEnabled']! as bool).input(),
+      internetQueryEnabled: map['internetQueryEnabled'] == null ? null : (map['internetQueryEnabled']! as bool).input(),
+      localAuthenticationDisabled: map['localAuthenticationDisabled'] == null ? null : (map['localAuthenticationDisabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
-      samplingPercentage: map['samplingPercentage'] == null ? null : (map['samplingPercentage'] as double).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays']! as int).input(),
+      samplingPercentage: map['samplingPercentage'] == null ? null : (map['samplingPercentage']! as double).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

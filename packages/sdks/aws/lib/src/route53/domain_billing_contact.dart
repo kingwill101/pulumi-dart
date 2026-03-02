@@ -92,7 +92,7 @@ class DomainBillingContact {
       contactType: (map['contactType'] as String).input(),
       countryCode: (map['countryCode'] as String).input(),
       email: (map['email'] as String).input(),
-      extraParams: (pulumi.Input.decodeList<DomainBillingContactExtraParam>(map['extraParams'], (value) => DomainBillingContactExtraParam.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extraParams: (pulumi.Input.decodeList<DomainBillingContactExtraParam>(map['extraParams']!, (value) => DomainBillingContactExtraParam.fromMap((value as Map).cast<String, dynamic>()))).input(),
       fax: (map['fax'] as String).input(),
       firstName: (map['firstName'] as String).input(),
       lastName: (map['lastName'] as String).input(),

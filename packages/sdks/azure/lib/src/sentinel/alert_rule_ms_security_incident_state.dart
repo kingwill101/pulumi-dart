@@ -68,16 +68,16 @@ class AlertRuleMsSecurityIncidentState {
 
   factory AlertRuleMsSecurityIncidentState.fromMap(Map<String, dynamic> map) {
     return AlertRuleMsSecurityIncidentState(
-      alertRuleTemplateGuid: map['alertRuleTemplateGuid'] == null ? null : (map['alertRuleTemplateGuid'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      displayNameExcludeFilters: map['displayNameExcludeFilters'] == null ? null : ((map['displayNameExcludeFilters'] as List).cast<String>()).input(),
-      displayNameFilters: map['displayNameFilters'] == null ? null : ((map['displayNameFilters'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      productFilter: map['productFilter'] == null ? null : (map['productFilter'] as String).input(),
-      severityFilters: map['severityFilters'] == null ? null : ((map['severityFilters'] as List).cast<String>()).input(),
+      alertRuleTemplateGuid: map['alertRuleTemplateGuid'] == null ? null : (map['alertRuleTemplateGuid']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      displayNameExcludeFilters: map['displayNameExcludeFilters'] == null ? null : ((map['displayNameExcludeFilters']! as List).cast<String>()).input(),
+      displayNameFilters: map['displayNameFilters'] == null ? null : ((map['displayNameFilters']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      productFilter: map['productFilter'] == null ? null : (map['productFilter']! as String).input(),
+      severityFilters: map['severityFilters'] == null ? null : ((map['severityFilters']! as List).cast<String>()).input(),
     );
   }
 }

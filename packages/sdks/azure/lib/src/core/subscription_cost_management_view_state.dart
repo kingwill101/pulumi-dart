@@ -69,16 +69,16 @@ class SubscriptionCostManagementViewState {
 
   factory SubscriptionCostManagementViewState.fromMap(Map<String, dynamic> map) {
     return SubscriptionCostManagementViewState(
-      accumulated: map['accumulated'] == null ? null : (map['accumulated'] as bool).input(),
-      chartType: map['chartType'] == null ? null : (map['chartType'] as String).input(),
-      dataset: map['dataset'] == null ? null : (SubscriptionCostManagementViewDataset.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      kpis: map['kpis'] == null ? null : (pulumi.Input.decodeList<SubscriptionCostManagementViewKpi>(map['kpis'], (value) => SubscriptionCostManagementViewKpi.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pivots: map['pivots'] == null ? null : (pulumi.Input.decodeList<SubscriptionCostManagementViewPivot>(map['pivots'], (value) => SubscriptionCostManagementViewPivot.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      reportType: map['reportType'] == null ? null : (map['reportType'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      timeframe: map['timeframe'] == null ? null : (map['timeframe'] as String).input(),
+      accumulated: map['accumulated'] == null ? null : (map['accumulated']! as bool).input(),
+      chartType: map['chartType'] == null ? null : (map['chartType']! as String).input(),
+      dataset: map['dataset'] == null ? null : (SubscriptionCostManagementViewDataset.fromMap((map['dataset']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      kpis: map['kpis'] == null ? null : (pulumi.Input.decodeList<SubscriptionCostManagementViewKpi>(map['kpis']!, (value) => SubscriptionCostManagementViewKpi.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pivots: map['pivots'] == null ? null : (pulumi.Input.decodeList<SubscriptionCostManagementViewPivot>(map['pivots']!, (value) => SubscriptionCostManagementViewPivot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reportType: map['reportType'] == null ? null : (map['reportType']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      timeframe: map['timeframe'] == null ? null : (map['timeframe']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class GrantRoleState {
 
   factory GrantRoleState.fromMap(Map<String, dynamic> map) {
     return GrantRoleState(
-      grantRole: map['grantRole'] == null ? null : (map['grantRole'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      withAdminOption: map['withAdminOption'] == null ? null : (map['withAdminOption'] as bool).input(),
+      grantRole: map['grantRole'] == null ? null : (map['grantRole']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      withAdminOption: map['withAdminOption'] == null ? null : (map['withAdminOption']! as bool).input(),
     );
   }
 }

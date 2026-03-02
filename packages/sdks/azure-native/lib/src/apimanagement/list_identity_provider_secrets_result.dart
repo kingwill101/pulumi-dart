@@ -20,7 +20,7 @@ class ListIdentityProviderSecretsResult {
 
   factory ListIdentityProviderSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListIdentityProviderSecretsResult(
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
+      clientSecret: map['clientSecret'] == null ? null : map['clientSecret']! as String,
     );
   }
 }

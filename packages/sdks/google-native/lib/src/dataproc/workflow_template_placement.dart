@@ -28,8 +28,8 @@ class WorkflowTemplatePlacement {
 
   factory WorkflowTemplatePlacement.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacement(
-      clusterSelector: map['clusterSelector'] == null ? null : (ClusterSelector.fromMap((map['clusterSelector'] as Map).cast<String, dynamic>())).input(),
-      managedCluster: map['managedCluster'] == null ? null : (ManagedCluster.fromMap((map['managedCluster'] as Map).cast<String, dynamic>())).input(),
+      clusterSelector: map['clusterSelector'] == null ? null : (ClusterSelector.fromMap((map['clusterSelector']! as Map).cast<String, dynamic>())).input(),
+      managedCluster: map['managedCluster'] == null ? null : (ManagedCluster.fromMap((map['managedCluster']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

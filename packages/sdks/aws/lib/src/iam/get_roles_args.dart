@@ -29,8 +29,8 @@ class GetRolesArgs {
 
   factory GetRolesArgs.fromMap(Map<String, dynamic> map) {
     return GetRolesArgs(
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      pathPrefix: map['pathPrefix'] == null ? null : (map['pathPrefix'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : ((map['nameRegex'] as String).input()).input(),
+      pathPrefix: map['pathPrefix'] == null ? null : ((map['pathPrefix'] as String).input()).input(),
     );
   }
 }

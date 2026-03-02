@@ -55,12 +55,12 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partitionConfig: map['partitionConfig'] == null ? null : (PartitionConfig.fromMap((map['partitionConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reservationConfig: map['reservationConfig'] == null ? null : (ReservationConfig.fromMap((map['reservationConfig'] as Map).cast<String, dynamic>())).input(),
-      retentionConfig: map['retentionConfig'] == null ? null : (RetentionConfig.fromMap((map['retentionConfig'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partitionConfig: map['partitionConfig'] == null ? null : (PartitionConfig.fromMap((map['partitionConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reservationConfig: map['reservationConfig'] == null ? null : (ReservationConfig.fromMap((map['reservationConfig']! as Map).cast<String, dynamic>())).input(),
+      retentionConfig: map['retentionConfig'] == null ? null : (RetentionConfig.fromMap((map['retentionConfig']! as Map).cast<String, dynamic>())).input(),
       topicId: (map['topicId'] as String).input(),
     );
   }

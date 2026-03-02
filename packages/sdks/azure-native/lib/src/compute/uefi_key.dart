@@ -26,8 +26,8 @@ class UefiKey {
 
   factory UefiKey.fromMap(Map<String, dynamic> map) {
     return UefiKey(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : ((map['value'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : ((map['value']! as List).cast<String>()).input(),
     );
   }
 }

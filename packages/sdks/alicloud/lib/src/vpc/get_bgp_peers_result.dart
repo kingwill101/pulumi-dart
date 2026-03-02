@@ -46,13 +46,13 @@ class GetBgpPeersResult {
 
   factory GetBgpPeersResult.fromMap(Map<String, dynamic> map) {
     return GetBgpPeersResult(
-      bgpGroupId: map['bgpGroupId'] == null ? null : map['bgpGroupId'] as String,
+      bgpGroupId: map['bgpGroupId'] == null ? null : map['bgpGroupId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       peers: pulumi.Input.decodeList<GetBgpPeersPeer>(map['peers'], (value) => GetBgpPeersPeer.fromMap((value as Map).cast<String, dynamic>())),
-      routerId: map['routerId'] == null ? null : map['routerId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      routerId: map['routerId'] == null ? null : map['routerId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

@@ -44,11 +44,11 @@ class EnvCustomJobArgs {
 
   factory EnvCustomJobArgs.fromMap(Map<String, dynamic> map) {
     return EnvCustomJobArgs(
-      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang']! as String).input(),
       configYaml: (map['configYaml'] as String).input(),
       envCustomJobName: (map['envCustomJobName'] as String).input(),
       environmentId: (map['environmentId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

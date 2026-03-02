@@ -46,10 +46,10 @@ class DeploymentConditionAppsV1beta1 {
 
   factory DeploymentConditionAppsV1beta1.fromMap(Map<String, dynamic> map) {
     return DeploymentConditionAppsV1beta1(
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime'] as String).input(),
-      lastUpdateTime: map['lastUpdateTime'] == null ? null : (map['lastUpdateTime'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime']! as String).input(),
+      lastUpdateTime: map['lastUpdateTime'] == null ? null : (map['lastUpdateTime']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
       status: (map['status'] as String).input(),
       type: (map['type'] as String).input(),
     );

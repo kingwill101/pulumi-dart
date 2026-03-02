@@ -20,7 +20,7 @@ class GetFlowDestinationEndpointPortsResult {
 
   factory GetFlowDestinationEndpointPortsResult.fromMap(Map<String, dynamic> map) {
     return GetFlowDestinationEndpointPortsResult(
-      ports: map['ports'] == null ? null : (map['ports'] as List).cast<double>(),
+      ports: map['ports'] == null ? null : (map['ports']! as List).cast<double>(),
     );
   }
 }

@@ -34,7 +34,7 @@ class GetRestorePointCollectionArgs {
 
   factory GetRestorePointCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetRestorePointCollectionArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       restorePointCollectionName: (map['restorePointCollectionName'] as String).input(),
     );

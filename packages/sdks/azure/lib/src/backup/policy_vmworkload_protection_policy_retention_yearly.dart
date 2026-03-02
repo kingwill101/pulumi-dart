@@ -47,10 +47,10 @@ class PolicyVMWorkloadProtectionPolicyRetentionYearly {
     return PolicyVMWorkloadProtectionPolicyRetentionYearly(
       count: (map['count'] as int).input(),
       formatType: (map['formatType'] as String).input(),
-      monthdays: map['monthdays'] == null ? null : ((map['monthdays'] as List).cast<int>()).input(),
+      monthdays: map['monthdays'] == null ? null : ((map['monthdays']! as List).cast<int>()).input(),
       months: ((map['months'] as List).cast<String>()).input(),
-      weekdays: map['weekdays'] == null ? null : ((map['weekdays'] as List).cast<String>()).input(),
-      weeks: map['weeks'] == null ? null : ((map['weeks'] as List).cast<String>()).input(),
+      weekdays: map['weekdays'] == null ? null : ((map['weekdays']! as List).cast<String>()).input(),
+      weeks: map['weeks'] == null ? null : ((map['weeks']! as List).cast<String>()).input(),
     );
   }
 }

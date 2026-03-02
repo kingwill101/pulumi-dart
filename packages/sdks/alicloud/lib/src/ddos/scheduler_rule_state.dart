@@ -50,12 +50,12 @@ class SchedulerRuleState {
 
   factory SchedulerRuleState.fromMap(Map<String, dynamic> map) {
     return SchedulerRuleState(
-      cname: map['cname'] == null ? null : (map['cname'] as String).input(),
-      param: map['param'] == null ? null : (map['param'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as int).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<SchedulerRuleRule>(map['rules'], (value) => SchedulerRuleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cname: map['cname'] == null ? null : (map['cname']! as String).input(),
+      param: map['param'] == null ? null : (map['param']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType']! as int).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<SchedulerRuleRule>(map['rules']!, (value) => SchedulerRuleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

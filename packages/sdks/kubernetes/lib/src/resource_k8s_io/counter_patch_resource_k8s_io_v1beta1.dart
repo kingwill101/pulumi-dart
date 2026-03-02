@@ -21,7 +21,7 @@ class CounterPatchResourceK8sIoV1beta1 {
 
   factory CounterPatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CounterPatchResourceK8sIoV1beta1(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

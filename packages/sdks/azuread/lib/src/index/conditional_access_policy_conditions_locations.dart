@@ -25,7 +25,7 @@ class ConditionalAccessPolicyConditionsLocations {
 
   factory ConditionalAccessPolicyConditionsLocations.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyConditionsLocations(
-      excludedLocations: map['excludedLocations'] == null ? null : ((map['excludedLocations'] as List).cast<String>()).input(),
+      excludedLocations: map['excludedLocations'] == null ? null : ((map['excludedLocations']! as List).cast<String>()).input(),
       includedLocations: ((map['includedLocations'] as List).cast<String>()).input(),
     );
   }

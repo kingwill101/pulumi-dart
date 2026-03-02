@@ -22,7 +22,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecret {
 
   factory WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecret.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecret(
-      value: map['value'] == null ? null : (WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -75,14 +75,14 @@ class HostedPublicVirtualInterfaceArgs {
   factory HostedPublicVirtualInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return HostedPublicVirtualInterfaceArgs(
       addressFamily: (map['addressFamily'] as String).input(),
-      amazonAddress: map['amazonAddress'] == null ? null : (map['amazonAddress'] as String).input(),
+      amazonAddress: map['amazonAddress'] == null ? null : ((map['amazonAddress'] as String).input()).input(),
       bgpAsn: (map['bgpAsn'] as int).input(),
-      bgpAuthKey: map['bgpAuthKey'] == null ? null : (map['bgpAuthKey'] as String).input(),
+      bgpAuthKey: map['bgpAuthKey'] == null ? null : ((map['bgpAuthKey'] as String).input()).input(),
       connectionId: (map['connectionId'] as String).input(),
-      customerAddress: map['customerAddress'] == null ? null : (map['customerAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      customerAddress: map['customerAddress'] == null ? null : ((map['customerAddress'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       ownerAccountId: (map['ownerAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       routeFilterPrefixes: ((map['routeFilterPrefixes'] as List).cast<String>()).input(),
       vlan: (map['vlan'] as int).input(),
     );

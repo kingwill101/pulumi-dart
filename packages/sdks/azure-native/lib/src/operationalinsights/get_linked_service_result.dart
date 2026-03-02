@@ -58,11 +58,11 @@ class GetLinkedServiceResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
+      resourceId: map['resourceId'] == null ? null : map['resourceId']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      writeAccessResourceId: map['writeAccessResourceId'] == null ? null : map['writeAccessResourceId'] as String,
+      writeAccessResourceId: map['writeAccessResourceId'] == null ? null : map['writeAccessResourceId']! as String,
     );
   }
 }

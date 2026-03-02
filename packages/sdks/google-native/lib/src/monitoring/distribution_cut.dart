@@ -27,8 +27,8 @@ class DistributionCut {
 
   factory DistributionCut.fromMap(Map<String, dynamic> map) {
     return DistributionCut(
-      distributionFilter: map['distributionFilter'] == null ? null : (map['distributionFilter'] as String).input(),
-      range: map['range'] == null ? null : (GoogleMonitoringV3Range.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
+      distributionFilter: map['distributionFilter'] == null ? null : (map['distributionFilter']! as String).input(),
+      range: map['range'] == null ? null : (GoogleMonitoringV3Range.fromMap((map['range']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

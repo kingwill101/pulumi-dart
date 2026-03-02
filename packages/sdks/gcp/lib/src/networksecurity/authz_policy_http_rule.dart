@@ -34,9 +34,9 @@ class AuthzPolicyHttpRule {
 
   factory AuthzPolicyHttpRule.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRule(
-      from: map['from'] == null ? null : (AuthzPolicyHttpRuleFrom.fromMap((map['from'] as Map).cast<String, dynamic>())).input(),
-      to: map['to'] == null ? null : (AuthzPolicyHttpRuleTo.fromMap((map['to'] as Map).cast<String, dynamic>())).input(),
-      when: map['when'] == null ? null : (map['when'] as String).input(),
+      from: map['from'] == null ? null : (AuthzPolicyHttpRuleFrom.fromMap((map['from']! as Map).cast<String, dynamic>())).input(),
+      to: map['to'] == null ? null : (AuthzPolicyHttpRuleTo.fromMap((map['to']! as Map).cast<String, dynamic>())).input(),
+      when: map['when'] == null ? null : (map['when']! as String).input(),
     );
   }
 }

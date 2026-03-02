@@ -24,7 +24,7 @@ class GetPrimaryContactArgs {
 
   factory GetPrimaryContactArgs.fromMap(Map<String, dynamic> map) {
     return GetPrimaryContactArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
     );
   }
 }

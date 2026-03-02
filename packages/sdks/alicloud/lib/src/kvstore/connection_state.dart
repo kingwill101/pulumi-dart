@@ -36,10 +36,10 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
     );
   }
 }

@@ -72,7 +72,7 @@ class GetSyncAgentResult {
       lastAliveTime: map['lastAliveTime'] as String,
       name: map['name'] as String,
       state: map['state'] as String,
-      syncDatabaseId: map['syncDatabaseId'] == null ? null : map['syncDatabaseId'] as String,
+      syncDatabaseId: map['syncDatabaseId'] == null ? null : map['syncDatabaseId']! as String,
       type: map['type'] as String,
       version: map['version'] as String,
     );

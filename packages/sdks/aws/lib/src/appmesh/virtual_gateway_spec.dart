@@ -33,9 +33,9 @@ class VirtualGatewaySpec {
 
   factory VirtualGatewaySpec.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpec(
-      backendDefaults: map['backendDefaults'] == null ? null : (VirtualGatewaySpecBackendDefaults.fromMap((map['backendDefaults'] as Map).cast<String, dynamic>())).input(),
-      listeners: (pulumi.Input.decodeList<VirtualGatewaySpecListener>(map['listeners'], (value) => VirtualGatewaySpecListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logging: map['logging'] == null ? null : (VirtualGatewaySpecLogging.fromMap((map['logging'] as Map).cast<String, dynamic>())).input(),
+      backendDefaults: map['backendDefaults'] == null ? null : ((VirtualGatewaySpecBackendDefaults.fromMap((map['backendDefaults']! as Map).cast<String, dynamic>())).input()).input(),
+      listeners: (pulumi.Input.decodeList<VirtualGatewaySpecListener>(map['listeners']!, (value) => VirtualGatewaySpecListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logging: map['logging'] == null ? null : ((VirtualGatewaySpecLogging.fromMap((map['logging']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

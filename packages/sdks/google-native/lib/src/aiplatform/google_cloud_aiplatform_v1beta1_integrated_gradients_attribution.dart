@@ -33,8 +33,8 @@ class GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution {
 
   factory GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1IntegratedGradientsAttribution(
-      blurBaselineConfig: map['blurBaselineConfig'] == null ? null : (GoogleCloudAiplatformV1beta1BlurBaselineConfig.fromMap((map['blurBaselineConfig'] as Map).cast<String, dynamic>())).input(),
-      smoothGradConfig: map['smoothGradConfig'] == null ? null : (GoogleCloudAiplatformV1beta1SmoothGradConfig.fromMap((map['smoothGradConfig'] as Map).cast<String, dynamic>())).input(),
+      blurBaselineConfig: map['blurBaselineConfig'] == null ? null : (GoogleCloudAiplatformV1beta1BlurBaselineConfig.fromMap((map['blurBaselineConfig']! as Map).cast<String, dynamic>())).input(),
+      smoothGradConfig: map['smoothGradConfig'] == null ? null : (GoogleCloudAiplatformV1beta1SmoothGradConfig.fromMap((map['smoothGradConfig']! as Map).cast<String, dynamic>())).input(),
       stepCount: (map['stepCount'] as int).input(),
     );
   }

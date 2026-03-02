@@ -57,10 +57,10 @@ class SigningProfilePermissionArgs {
       action: (map['action'] as String).input(),
       principal: (map['principal'] as String).input(),
       profileName: (map['profileName'] as String).input(),
-      profileVersion: map['profileVersion'] == null ? null : (map['profileVersion'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      statementId: map['statementId'] == null ? null : (map['statementId'] as String).input(),
-      statementIdPrefix: map['statementIdPrefix'] == null ? null : (map['statementIdPrefix'] as String).input(),
+      profileVersion: map['profileVersion'] == null ? null : ((map['profileVersion'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      statementId: map['statementId'] == null ? null : ((map['statementId'] as String).input()).input(),
+      statementIdPrefix: map['statementIdPrefix'] == null ? null : ((map['statementIdPrefix'] as String).input()).input(),
     );
   }
 }

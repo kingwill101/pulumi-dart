@@ -57,11 +57,11 @@ class BgpPeerArgs {
   factory BgpPeerArgs.fromMap(Map<String, dynamic> map) {
     return BgpPeerArgs(
       addressFamily: (map['addressFamily'] as String).input(),
-      amazonAddress: map['amazonAddress'] == null ? null : (map['amazonAddress'] as String).input(),
+      amazonAddress: map['amazonAddress'] == null ? null : ((map['amazonAddress'] as String).input()).input(),
       bgpAsn: (map['bgpAsn'] as int).input(),
-      bgpAuthKey: map['bgpAuthKey'] == null ? null : (map['bgpAuthKey'] as String).input(),
-      customerAddress: map['customerAddress'] == null ? null : (map['customerAddress'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bgpAuthKey: map['bgpAuthKey'] == null ? null : ((map['bgpAuthKey'] as String).input()).input(),
+      customerAddress: map['customerAddress'] == null ? null : ((map['customerAddress'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       virtualInterfaceId: (map['virtualInterfaceId'] as String).input(),
     );
   }

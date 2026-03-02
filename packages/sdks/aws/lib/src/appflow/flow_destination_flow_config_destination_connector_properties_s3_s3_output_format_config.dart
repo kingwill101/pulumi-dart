@@ -37,10 +37,10 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatCon
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig(
-      aggregationConfig: map['aggregationConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigAggregationConfig.fromMap((map['aggregationConfig'] as Map).cast<String, dynamic>())).input(),
-      fileType: map['fileType'] == null ? null : (map['fileType'] as String).input(),
-      prefixConfig: map['prefixConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigPrefixConfig.fromMap((map['prefixConfig'] as Map).cast<String, dynamic>())).input(),
-      preserveSourceDataTyping: map['preserveSourceDataTyping'] == null ? null : (map['preserveSourceDataTyping'] as bool).input(),
+      aggregationConfig: map['aggregationConfig'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigAggregationConfig.fromMap((map['aggregationConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      fileType: map['fileType'] == null ? null : ((map['fileType'] as String).input()).input(),
+      prefixConfig: map['prefixConfig'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigPrefixConfig.fromMap((map['prefixConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      preserveSourceDataTyping: map['preserveSourceDataTyping'] == null ? null : ((map['preserveSourceDataTyping'] as bool).input()).input(),
     );
   }
 }

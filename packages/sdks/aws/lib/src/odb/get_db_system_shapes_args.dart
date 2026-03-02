@@ -29,8 +29,8 @@ class GetDbSystemShapesArgs {
 
   factory GetDbSystemShapesArgs.fromMap(Map<String, dynamic> map) {
     return GetDbSystemShapesArgs(
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : ((map['availabilityZoneId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

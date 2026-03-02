@@ -26,8 +26,8 @@ class DataSetLogicalTableMapDataTransformTagColumnOperationTag {
 
   factory DataSetLogicalTableMapDataTransformTagColumnOperationTag.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformTagColumnOperationTag(
-      columnDescription: map['columnDescription'] == null ? null : (DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription.fromMap((map['columnDescription'] as Map).cast<String, dynamic>())).input(),
-      columnGeographicRole: map['columnGeographicRole'] == null ? null : (map['columnGeographicRole'] as String).input(),
+      columnDescription: map['columnDescription'] == null ? null : ((DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription.fromMap((map['columnDescription']! as Map).cast<String, dynamic>())).input()).input(),
+      columnGeographicRole: map['columnGeographicRole'] == null ? null : ((map['columnGeographicRole'] as String).input()).input(),
     );
   }
 }

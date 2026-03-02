@@ -28,8 +28,8 @@ class HostedZoneDnsSecState {
 
   factory HostedZoneDnsSecState.fromMap(Map<String, dynamic> map) {
     return HostedZoneDnsSecState(
-      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
-      signingStatus: map['signingStatus'] == null ? null : (map['signingStatus'] as String).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : ((map['hostedZoneId'] as String).input()).input(),
+      signingStatus: map['signingStatus'] == null ? null : ((map['signingStatus'] as String).input()).input(),
     );
   }
 }

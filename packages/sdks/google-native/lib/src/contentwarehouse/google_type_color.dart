@@ -36,10 +36,10 @@ class GoogleTypeColor {
 
   factory GoogleTypeColor.fromMap(Map<String, dynamic> map) {
     return GoogleTypeColor(
-      alpha: map['alpha'] == null ? null : (map['alpha'] as double).input(),
-      blue: map['blue'] == null ? null : (map['blue'] as double).input(),
-      green: map['green'] == null ? null : (map['green'] as double).input(),
-      red: map['red'] == null ? null : (map['red'] as double).input(),
+      alpha: map['alpha'] == null ? null : (map['alpha']! as double).input(),
+      blue: map['blue'] == null ? null : (map['blue']! as double).input(),
+      green: map['green'] == null ? null : (map['green']! as double).input(),
+      red: map['red'] == null ? null : (map['red']! as double).input(),
     );
   }
 }

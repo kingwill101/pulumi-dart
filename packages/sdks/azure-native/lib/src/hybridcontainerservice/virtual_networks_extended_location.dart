@@ -25,8 +25,8 @@ class VirtualNetworksExtendedLocation {
 
   factory VirtualNetworksExtendedLocation.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksExtendedLocation(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

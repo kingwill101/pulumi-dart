@@ -25,7 +25,7 @@ class LifecyclePolicyPolicyDetailsEventSource {
 
   factory LifecyclePolicyPolicyDetailsEventSource.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsEventSource(
-      parameters: (LifecyclePolicyPolicyDetailsEventSourceParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      parameters: (LifecyclePolicyPolicyDetailsEventSourceParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

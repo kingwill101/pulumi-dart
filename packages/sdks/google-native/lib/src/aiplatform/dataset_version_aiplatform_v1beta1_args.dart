@@ -37,9 +37,9 @@ class DatasetVersionAiplatformV1beta1Args {
   factory DatasetVersionAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return DatasetVersionAiplatformV1beta1Args(
       datasetId: (map['datasetId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

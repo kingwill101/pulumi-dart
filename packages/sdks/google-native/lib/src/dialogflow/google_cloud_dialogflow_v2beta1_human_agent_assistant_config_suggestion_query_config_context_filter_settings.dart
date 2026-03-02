@@ -31,9 +31,9 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
 
   factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings(
-      dropHandoffMessages: map['dropHandoffMessages'] == null ? null : (map['dropHandoffMessages'] as bool).input(),
-      dropIvrMessages: map['dropIvrMessages'] == null ? null : (map['dropIvrMessages'] as bool).input(),
-      dropVirtualAgentMessages: map['dropVirtualAgentMessages'] == null ? null : (map['dropVirtualAgentMessages'] as bool).input(),
+      dropHandoffMessages: map['dropHandoffMessages'] == null ? null : (map['dropHandoffMessages']! as bool).input(),
+      dropIvrMessages: map['dropIvrMessages'] == null ? null : (map['dropIvrMessages']! as bool).input(),
+      dropVirtualAgentMessages: map['dropVirtualAgentMessages'] == null ? null : (map['dropVirtualAgentMessages']! as bool).input(),
     );
   }
 }

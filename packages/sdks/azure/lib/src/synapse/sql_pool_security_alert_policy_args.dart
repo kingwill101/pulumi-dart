@@ -59,14 +59,14 @@ class SqlPoolSecurityAlertPolicyArgs {
 
   factory SqlPoolSecurityAlertPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SqlPoolSecurityAlertPolicyArgs(
-      disabledAlerts: map['disabledAlerts'] == null ? null : ((map['disabledAlerts'] as List).cast<String>()).input(),
-      emailAccountAdminsEnabled: map['emailAccountAdminsEnabled'] == null ? null : (map['emailAccountAdminsEnabled'] as bool).input(),
-      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
+      disabledAlerts: map['disabledAlerts'] == null ? null : ((map['disabledAlerts']! as List).cast<String>()).input(),
+      emailAccountAdminsEnabled: map['emailAccountAdminsEnabled'] == null ? null : (map['emailAccountAdminsEnabled']! as bool).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses']! as List).cast<String>()).input(),
       policyState: (map['policyState'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
       sqlPoolId: (map['sqlPoolId'] as String).input(),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
-      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey']! as String).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint']! as String).input(),
     );
   }
 }

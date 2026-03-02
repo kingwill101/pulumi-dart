@@ -31,8 +31,8 @@ class GetAccessPackageCatalogRoleArgs {
 
   factory GetAccessPackageCatalogRoleArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPackageCatalogRoleArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
     );
   }
 }

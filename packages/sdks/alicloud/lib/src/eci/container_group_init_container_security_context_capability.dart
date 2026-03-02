@@ -19,7 +19,7 @@ class ContainerGroupInitContainerSecurityContextCapability {
 
   factory ContainerGroupInitContainerSecurityContextCapability.fromMap(Map<String, dynamic> map) {
     return ContainerGroupInitContainerSecurityContextCapability(
-      adds: map['adds'] == null ? null : ((map['adds'] as List).cast<String>()).input(),
+      adds: map['adds'] == null ? null : ((map['adds']! as List).cast<String>()).input(),
     );
   }
 }

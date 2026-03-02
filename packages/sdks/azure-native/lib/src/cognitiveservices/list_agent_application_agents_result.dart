@@ -27,8 +27,8 @@ class ListAgentApplicationAgentsResult {
 
   factory ListAgentApplicationAgentsResult.fromMap(Map<String, dynamic> map) {
     return ListAgentApplicationAgentsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<AgentReferenceResourceResponse>(map['value'], (value) => AgentReferenceResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<AgentReferenceResourceResponse>(map['value']!, (value) => AgentReferenceResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -26,8 +26,8 @@ class ApiConnectionTestLink {
 
   factory ApiConnectionTestLink.fromMap(Map<String, dynamic> map) {
     return ApiConnectionTestLink(
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      requestUri: map['requestUri'] == null ? null : (map['requestUri'] as String).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      requestUri: map['requestUri'] == null ? null : (map['requestUri']! as String).input(),
     );
   }
 }

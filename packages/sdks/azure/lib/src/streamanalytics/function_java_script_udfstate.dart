@@ -48,12 +48,12 @@ class FunctionJavaScriptUDFState {
 
   factory FunctionJavaScriptUDFState.fromMap(Map<String, dynamic> map) {
     return FunctionJavaScriptUDFState(
-      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<FunctionJavaScriptUDFInput>(map['inputs'], (value) => FunctionJavaScriptUDFInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      output: map['output'] == null ? null : (FunctionJavaScriptUDFOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
-      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName'] as String).input(),
+      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<FunctionJavaScriptUDFInput>(map['inputs']!, (value) => FunctionJavaScriptUDFInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      output: map['output'] == null ? null : (FunctionJavaScriptUDFOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
+      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName']! as String).input(),
     );
   }
 }

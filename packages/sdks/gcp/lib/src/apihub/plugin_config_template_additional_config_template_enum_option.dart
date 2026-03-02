@@ -30,7 +30,7 @@ class PluginConfigTemplateAdditionalConfigTemplateEnumOption {
 
   factory PluginConfigTemplateAdditionalConfigTemplateEnumOption.fromMap(Map<String, dynamic> map) {
     return PluginConfigTemplateAdditionalConfigTemplateEnumOption(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       id: (map['id'] as String).input(),
     );

@@ -54,10 +54,10 @@ class VmssFabricProfile {
     return VmssFabricProfile(
       images: (pulumi.Input.decodeList<PoolImage>(map['images'], (value) => PoolImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
       kind: (map['kind'] as String).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      osProfile: map['osProfile'] == null ? null : (OsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      osProfile: map['osProfile'] == null ? null : (OsProfile.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
       sku: (DevOpsAzureSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

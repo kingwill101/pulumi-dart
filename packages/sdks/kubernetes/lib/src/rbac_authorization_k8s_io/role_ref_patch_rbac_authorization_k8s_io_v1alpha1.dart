@@ -31,9 +31,9 @@ class RoleRefPatchRbacAuthorizationK8sIoV1alpha1 {
 
   factory RoleRefPatchRbacAuthorizationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return RoleRefPatchRbacAuthorizationK8sIoV1alpha1(
-      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class DomainDevicesDiskBackingStore {
 
   factory DomainDevicesDiskBackingStore.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStore(
-      format: map['format'] == null ? null : (DomainDevicesDiskBackingStoreFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
-      index: map['index'] == null ? null : (map['index'] as double).input(),
-      source: map['source'] == null ? null : (DomainDevicesDiskBackingStoreSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (DomainDevicesDiskBackingStoreFormat.fromMap((map['format']! as Map).cast<String, dynamic>())).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
+      source: map['source'] == null ? null : (DomainDevicesDiskBackingStoreSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

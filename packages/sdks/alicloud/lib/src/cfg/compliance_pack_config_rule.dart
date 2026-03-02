@@ -26,7 +26,7 @@ class CompliancePackConfigRule {
 
   factory CompliancePackConfigRule.fromMap(Map<String, dynamic> map) {
     return CompliancePackConfigRule(
-      configRuleParameters: map['configRuleParameters'] == null ? null : (pulumi.Input.decodeList<CompliancePackConfigRuleConfigRuleParameter>(map['configRuleParameters'], (value) => CompliancePackConfigRuleConfigRuleParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configRuleParameters: map['configRuleParameters'] == null ? null : (pulumi.Input.decodeList<CompliancePackConfigRuleConfigRuleParameter>(map['configRuleParameters']!, (value) => CompliancePackConfigRuleConfigRuleParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       managedRuleIdentifier: (map['managedRuleIdentifier'] as String).input(),
     );
   }

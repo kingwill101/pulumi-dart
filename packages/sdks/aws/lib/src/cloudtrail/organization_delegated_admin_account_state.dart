@@ -41,11 +41,11 @@ class OrganizationDelegatedAdminAccountState {
 
   factory OrganizationDelegatedAdminAccountState.fromMap(Map<String, dynamic> map) {
     return OrganizationDelegatedAdminAccountState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      servicePrincipal: map['servicePrincipal'] == null ? null : (map['servicePrincipal'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      servicePrincipal: map['servicePrincipal'] == null ? null : ((map['servicePrincipal'] as String).input()).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class KubernetesClusterHttpProxyConfig {
 
   factory KubernetesClusterHttpProxyConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterHttpProxyConfig(
-      httpProxy: map['httpProxy'] == null ? null : (map['httpProxy'] as String).input(),
-      httpsProxy: map['httpsProxy'] == null ? null : (map['httpsProxy'] as String).input(),
-      noProxies: map['noProxies'] == null ? null : ((map['noProxies'] as List).cast<String>()).input(),
-      trustedCa: map['trustedCa'] == null ? null : (map['trustedCa'] as String).input(),
+      httpProxy: map['httpProxy'] == null ? null : (map['httpProxy']! as String).input(),
+      httpsProxy: map['httpsProxy'] == null ? null : (map['httpsProxy']! as String).input(),
+      noProxies: map['noProxies'] == null ? null : ((map['noProxies']! as List).cast<String>()).input(),
+      trustedCa: map['trustedCa'] == null ? null : (map['trustedCa']! as String).input(),
     );
   }
 }

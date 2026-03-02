@@ -32,7 +32,7 @@ class AutomationRuleActionPlaybook {
     return AutomationRuleActionPlaybook(
       logicAppId: (map['logicAppId'] as String).input(),
       order: (map['order'] as int).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

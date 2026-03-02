@@ -49,10 +49,10 @@ class ResponsePolicyArgs {
 
   factory ResponsePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gkeClusters: map['gkeClusters'] == null ? null : (pulumi.Input.decodeList<ResponsePolicyGkeCluster>(map['gkeClusters'], (value) => ResponsePolicyGkeCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<ResponsePolicyNetwork>(map['networks'], (value) => ResponsePolicyNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      gkeClusters: map['gkeClusters'] == null ? null : (pulumi.Input.decodeList<ResponsePolicyGkeCluster>(map['gkeClusters']!, (value) => ResponsePolicyGkeCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<ResponsePolicyNetwork>(map['networks']!, (value) => ResponsePolicyNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       responsePolicyName: (map['responsePolicyName'] as String).input(),
     );
   }

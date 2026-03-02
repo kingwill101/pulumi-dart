@@ -33,9 +33,9 @@ class GkeNodePoolConfig {
 
   factory GkeNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return GkeNodePoolConfig(
-      autoscaling: map['autoscaling'] == null ? null : (GkeNodePoolAutoscalingConfig.fromMap((map['autoscaling'] as Map).cast<String, dynamic>())).input(),
-      config: map['config'] == null ? null : (GkeNodeConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
+      autoscaling: map['autoscaling'] == null ? null : (GkeNodePoolAutoscalingConfig.fromMap((map['autoscaling']! as Map).cast<String, dynamic>())).input(),
+      config: map['config'] == null ? null : (GkeNodeConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
     );
   }
 }

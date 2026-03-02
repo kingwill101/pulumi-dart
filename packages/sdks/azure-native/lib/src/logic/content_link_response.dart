@@ -46,7 +46,7 @@ class ContentLinkResponse {
       contentSize: (map['contentSize'] as double).input(),
       contentVersion: (map['contentVersion'] as String).input(),
       metadata: (map['metadata']).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs {
   factory ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs.fromMap(Map<String, dynamic> map) {
     return ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs(
       eventTrackingId: (map['eventTrackingId'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
     );
   }
 }

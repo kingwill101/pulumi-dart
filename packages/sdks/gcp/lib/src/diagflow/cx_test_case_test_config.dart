@@ -34,9 +34,9 @@ class CxTestCaseTestConfig {
 
   factory CxTestCaseTestConfig.fromMap(Map<String, dynamic> map) {
     return CxTestCaseTestConfig(
-      flow: map['flow'] == null ? null : (map['flow'] as String).input(),
-      page: map['page'] == null ? null : (map['page'] as String).input(),
-      trackingParameters: map['trackingParameters'] == null ? null : ((map['trackingParameters'] as List).cast<String>()).input(),
+      flow: map['flow'] == null ? null : (map['flow']! as String).input(),
+      page: map['page'] == null ? null : (map['page']! as String).input(),
+      trackingParameters: map['trackingParameters'] == null ? null : ((map['trackingParameters']! as List).cast<String>()).input(),
     );
   }
 }

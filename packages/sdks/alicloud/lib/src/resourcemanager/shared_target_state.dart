@@ -36,10 +36,10 @@ class SharedTargetState {
 
   factory SharedTargetState.fromMap(Map<String, dynamic> map) {
     return SharedTargetState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      resourceShareId: map['resourceShareId'] == null ? null : (map['resourceShareId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      resourceShareId: map['resourceShareId'] == null ? null : (map['resourceShareId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
     );
   }
 }

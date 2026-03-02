@@ -79,7 +79,7 @@ class GetIpPrefixResult {
   factory GetIpPrefixResult.fromMap(Map<String, dynamic> map) {
     return GetIpPrefixResult(
       administrativeState: map['administrativeState'] as String,
-      annotation: map['annotation'] == null ? null : map['annotation'] as String,
+      annotation: map['annotation'] == null ? null : map['annotation']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       configurationState: map['configurationState'] as String,
       id: map['id'] as String,
@@ -88,7 +88,7 @@ class GetIpPrefixResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

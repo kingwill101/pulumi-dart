@@ -49,12 +49,12 @@ class PullThroughCacheRuleArgs {
 
   factory PullThroughCacheRuleArgs.fromMap(Map<String, dynamic> map) {
     return PullThroughCacheRuleArgs(
-      credentialArn: map['credentialArn'] == null ? null : (map['credentialArn'] as String).input(),
-      customRoleArn: map['customRoleArn'] == null ? null : (map['customRoleArn'] as String).input(),
+      credentialArn: map['credentialArn'] == null ? null : ((map['credentialArn'] as String).input()).input(),
+      customRoleArn: map['customRoleArn'] == null ? null : ((map['customRoleArn'] as String).input()).input(),
       ecrRepositoryPrefix: (map['ecrRepositoryPrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       upstreamRegistryUrl: (map['upstreamRegistryUrl'] as String).input(),
-      upstreamRepositoryPrefix: map['upstreamRepositoryPrefix'] == null ? null : (map['upstreamRepositoryPrefix'] as String).input(),
+      upstreamRepositoryPrefix: map['upstreamRepositoryPrefix'] == null ? null : ((map['upstreamRepositoryPrefix'] as String).input()).input(),
     );
   }
 }

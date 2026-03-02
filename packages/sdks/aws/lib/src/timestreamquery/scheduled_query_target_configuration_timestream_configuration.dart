@@ -54,10 +54,10 @@ class ScheduledQueryTargetConfigurationTimestreamConfiguration {
   factory ScheduledQueryTargetConfigurationTimestreamConfiguration.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryTargetConfigurationTimestreamConfiguration(
       databaseName: (map['databaseName'] as String).input(),
-      dimensionMappings: (pulumi.Input.decodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping>(map['dimensionMappings'], (value) => ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      measureNameColumn: map['measureNameColumn'] == null ? null : (map['measureNameColumn'] as String).input(),
-      mixedMeasureMappings: map['mixedMeasureMappings'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping>(map['mixedMeasureMappings'], (value) => ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      multiMeasureMappings: map['multiMeasureMappings'] == null ? null : (ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings.fromMap((map['multiMeasureMappings'] as Map).cast<String, dynamic>())).input(),
+      dimensionMappings: (pulumi.Input.decodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping>(map['dimensionMappings']!, (value) => ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      measureNameColumn: map['measureNameColumn'] == null ? null : ((map['measureNameColumn'] as String).input()).input(),
+      mixedMeasureMappings: map['mixedMeasureMappings'] == null ? null : ((pulumi.Input.decodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping>(map['mixedMeasureMappings']!, (value) => ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      multiMeasureMappings: map['multiMeasureMappings'] == null ? null : ((ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings.fromMap((map['multiMeasureMappings']! as Map).cast<String, dynamic>())).input()).input(),
       tableName: (map['tableName'] as String).input(),
       timeColumn: (map['timeColumn'] as String).input(),
     );

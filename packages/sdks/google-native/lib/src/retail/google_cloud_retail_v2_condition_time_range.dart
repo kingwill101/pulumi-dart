@@ -26,8 +26,8 @@ class GoogleCloudRetailV2ConditionTimeRange {
 
   factory GoogleCloudRetailV2ConditionTimeRange.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2ConditionTimeRange(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

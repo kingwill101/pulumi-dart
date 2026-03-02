@@ -20,7 +20,7 @@ class LabelingJobInputConfigDataAttributes {
 
   factory LabelingJobInputConfigDataAttributes.fromMap(Map<String, dynamic> map) {
     return LabelingJobInputConfigDataAttributes(
-      contentClassifiers: map['contentClassifiers'] == null ? null : ((map['contentClassifiers'] as List).cast<String>()).input(),
+      contentClassifiers: map['contentClassifiers'] == null ? null : (((map['contentClassifiers'] as List).cast<String>()).input()).input(),
     );
   }
 }

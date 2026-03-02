@@ -31,7 +31,7 @@ class GetAccessLevelAccesscontextmanagerV1betaArgs {
 
   factory GetAccessLevelAccesscontextmanagerV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessLevelAccesscontextmanagerV1betaArgs(
-      accessLevelFormat: map['accessLevelFormat'] == null ? null : (map['accessLevelFormat'] as String).input(),
+      accessLevelFormat: map['accessLevelFormat'] == null ? null : (map['accessLevelFormat']! as String).input(),
       accessLevelId: (map['accessLevelId'] as String).input(),
       accessPolicyId: (map['accessPolicyId'] as String).input(),
     );

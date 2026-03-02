@@ -41,7 +41,7 @@ class ProductTagArgs {
     return ProductTagArgs(
       apiManagementName: (map['apiManagementName'] as String).input(),
       apiManagementProductId: (map['apiManagementProductId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

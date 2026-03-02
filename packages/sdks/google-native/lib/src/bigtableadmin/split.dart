@@ -21,7 +21,7 @@ class Split {
 
   factory Split.fromMap(Map<String, dynamic> map) {
     return Split(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

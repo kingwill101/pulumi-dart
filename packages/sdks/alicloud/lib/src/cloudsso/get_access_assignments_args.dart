@@ -54,13 +54,13 @@ class GetAccessAssignmentsArgs {
 
   factory GetAccessAssignmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessAssignmentsArgs(
-      accessConfigurationId: map['accessConfigurationId'] == null ? null : (map['accessConfigurationId'] as String).input(),
+      accessConfigurationId: map['accessConfigurationId'] == null ? null : (map['accessConfigurationId']! as String).input(),
       directoryId: (map['directoryId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
     );
   }
 }

@@ -70,16 +70,16 @@ class AttachedDatabaseConfigurationArgs {
 
   factory AttachedDatabaseConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return AttachedDatabaseConfigurationArgs(
-      attachedDatabaseConfigurationName: map['attachedDatabaseConfigurationName'] == null ? null : (map['attachedDatabaseConfigurationName'] as String).input(),
+      attachedDatabaseConfigurationName: map['attachedDatabaseConfigurationName'] == null ? null : (map['attachedDatabaseConfigurationName']! as String).input(),
       clusterName: (map['clusterName'] as String).input(),
       clusterResourceId: (map['clusterResourceId'] as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      databaseNameOverride: map['databaseNameOverride'] == null ? null : (map['databaseNameOverride'] as String).input(),
-      databaseNamePrefix: map['databaseNamePrefix'] == null ? null : (map['databaseNamePrefix'] as String).input(),
+      databaseNameOverride: map['databaseNameOverride'] == null ? null : (map['databaseNameOverride']! as String).input(),
+      databaseNamePrefix: map['databaseNamePrefix'] == null ? null : (map['databaseNamePrefix']! as String).input(),
       defaultPrincipalsModificationKind: (map['defaultPrincipalsModificationKind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : (TableLevelSharingProperties.fromMap((map['tableLevelSharingProperties'] as Map).cast<String, dynamic>())).input(),
+      tableLevelSharingProperties: map['tableLevelSharingProperties'] == null ? null : (TableLevelSharingProperties.fromMap((map['tableLevelSharingProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

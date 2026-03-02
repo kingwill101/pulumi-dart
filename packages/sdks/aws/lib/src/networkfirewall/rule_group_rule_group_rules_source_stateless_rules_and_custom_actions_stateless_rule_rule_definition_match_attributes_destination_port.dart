@@ -26,7 +26,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRu
   factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesDestinationPort(
       fromPort: (map['fromPort'] as int).input(),
-      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
+      toPort: map['toPort'] == null ? null : ((map['toPort'] as int).input()).input(),
     );
   }
 }

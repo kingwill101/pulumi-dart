@@ -46,10 +46,10 @@ class NetworkSettingsArgs {
 
   factory NetworkSettingsArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSettingsArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

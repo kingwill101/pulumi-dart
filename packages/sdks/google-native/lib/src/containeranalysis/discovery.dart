@@ -22,7 +22,7 @@ class Discovery {
 
   factory Discovery.fromMap(Map<String, dynamic> map) {
     return Discovery(
-      analysisKind: map['analysisKind'] == null ? null : (DiscoveryAnalysisKind.fromValue(map['analysisKind'] as String)).input(),
+      analysisKind: map['analysisKind'] == null ? null : (DiscoveryAnalysisKind.fromValue(map['analysisKind']! as String)).input(),
     );
   }
 }

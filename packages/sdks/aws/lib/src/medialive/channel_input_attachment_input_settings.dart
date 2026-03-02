@@ -73,17 +73,17 @@ class ChannelInputAttachmentInputSettings {
 
   factory ChannelInputAttachmentInputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettings(
-      audioSelectors: map['audioSelectors'] == null ? null : (pulumi.Input.decodeList<ChannelInputAttachmentInputSettingsAudioSelector>(map['audioSelectors'], (value) => ChannelInputAttachmentInputSettingsAudioSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      captionSelectors: map['captionSelectors'] == null ? null : (pulumi.Input.decodeList<ChannelInputAttachmentInputSettingsCaptionSelector>(map['captionSelectors'], (value) => ChannelInputAttachmentInputSettingsCaptionSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deblockFilter: map['deblockFilter'] == null ? null : (map['deblockFilter'] as String).input(),
-      denoiseFilter: map['denoiseFilter'] == null ? null : (map['denoiseFilter'] as String).input(),
-      filterStrength: map['filterStrength'] == null ? null : (map['filterStrength'] as int).input(),
-      inputFilter: map['inputFilter'] == null ? null : (map['inputFilter'] as String).input(),
-      networkInputSettings: map['networkInputSettings'] == null ? null : (ChannelInputAttachmentInputSettingsNetworkInputSettings.fromMap((map['networkInputSettings'] as Map).cast<String, dynamic>())).input(),
-      scte35Pid: map['scte35Pid'] == null ? null : (map['scte35Pid'] as int).input(),
-      smpte2038DataPreference: map['smpte2038DataPreference'] == null ? null : (map['smpte2038DataPreference'] as String).input(),
-      sourceEndBehavior: map['sourceEndBehavior'] == null ? null : (map['sourceEndBehavior'] as String).input(),
-      videoSelector: map['videoSelector'] == null ? null : (ChannelInputAttachmentInputSettingsVideoSelector.fromMap((map['videoSelector'] as Map).cast<String, dynamic>())).input(),
+      audioSelectors: map['audioSelectors'] == null ? null : ((pulumi.Input.decodeList<ChannelInputAttachmentInputSettingsAudioSelector>(map['audioSelectors']!, (value) => ChannelInputAttachmentInputSettingsAudioSelector.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      captionSelectors: map['captionSelectors'] == null ? null : ((pulumi.Input.decodeList<ChannelInputAttachmentInputSettingsCaptionSelector>(map['captionSelectors']!, (value) => ChannelInputAttachmentInputSettingsCaptionSelector.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      deblockFilter: map['deblockFilter'] == null ? null : ((map['deblockFilter'] as String).input()).input(),
+      denoiseFilter: map['denoiseFilter'] == null ? null : ((map['denoiseFilter'] as String).input()).input(),
+      filterStrength: map['filterStrength'] == null ? null : ((map['filterStrength'] as int).input()).input(),
+      inputFilter: map['inputFilter'] == null ? null : ((map['inputFilter'] as String).input()).input(),
+      networkInputSettings: map['networkInputSettings'] == null ? null : ((ChannelInputAttachmentInputSettingsNetworkInputSettings.fromMap((map['networkInputSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      scte35Pid: map['scte35Pid'] == null ? null : ((map['scte35Pid'] as int).input()).input(),
+      smpte2038DataPreference: map['smpte2038DataPreference'] == null ? null : ((map['smpte2038DataPreference'] as String).input()).input(),
+      sourceEndBehavior: map['sourceEndBehavior'] == null ? null : ((map['sourceEndBehavior'] as String).input()).input(),
+      videoSelector: map['videoSelector'] == null ? null : ((ChannelInputAttachmentInputSettingsVideoSelector.fromMap((map['videoSelector']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

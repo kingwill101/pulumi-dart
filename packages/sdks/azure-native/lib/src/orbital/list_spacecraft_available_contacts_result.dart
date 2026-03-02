@@ -28,7 +28,7 @@ class ListSpacecraftAvailableContactsResult {
   factory ListSpacecraftAvailableContactsResult.fromMap(Map<String, dynamic> map) {
     return ListSpacecraftAvailableContactsResult(
       nextLink: map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<AvailableContactsResponse>(map['value'], (value) => AvailableContactsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<AvailableContactsResponse>(map['value']!, (value) => AvailableContactsResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

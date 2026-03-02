@@ -36,7 +36,7 @@ class FrontdoorRuleActionsRequestHeaderAction {
     return FrontdoorRuleActionsRequestHeaderAction(
       headerAction: (map['headerAction'] as String).input(),
       headerName: (map['headerName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

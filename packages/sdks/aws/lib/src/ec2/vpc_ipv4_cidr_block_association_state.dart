@@ -41,11 +41,11 @@ class VpcIpv4CidrBlockAssociationState {
 
   factory VpcIpv4CidrBlockAssociationState.fromMap(Map<String, dynamic> map) {
     return VpcIpv4CidrBlockAssociationState(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : (map['ipv4IpamPoolId'] as String).input(),
-      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : (map['ipv4NetmaskLength'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : ((map['cidrBlock'] as String).input()).input(),
+      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : ((map['ipv4IpamPoolId'] as String).input()).input(),
+      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : ((map['ipv4NetmaskLength'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

@@ -48,11 +48,11 @@ class PreventionDiscoveryConfigTarget {
 
   factory PreventionDiscoveryConfigTarget.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTarget(
-      bigQueryTarget: map['bigQueryTarget'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTarget.fromMap((map['bigQueryTarget'] as Map).cast<String, dynamic>())).input(),
-      cloudSqlTarget: map['cloudSqlTarget'] == null ? null : (PreventionDiscoveryConfigTargetCloudSqlTarget.fromMap((map['cloudSqlTarget'] as Map).cast<String, dynamic>())).input(),
-      cloudStorageTarget: map['cloudStorageTarget'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTarget.fromMap((map['cloudStorageTarget'] as Map).cast<String, dynamic>())).input(),
-      otherCloudTarget: map['otherCloudTarget'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTarget.fromMap((map['otherCloudTarget'] as Map).cast<String, dynamic>())).input(),
-      secretsTarget: map['secretsTarget'] == null ? null : ((map['secretsTarget'] as Map).cast<String, dynamic>()).input(),
+      bigQueryTarget: map['bigQueryTarget'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTarget.fromMap((map['bigQueryTarget']! as Map).cast<String, dynamic>())).input(),
+      cloudSqlTarget: map['cloudSqlTarget'] == null ? null : (PreventionDiscoveryConfigTargetCloudSqlTarget.fromMap((map['cloudSqlTarget']! as Map).cast<String, dynamic>())).input(),
+      cloudStorageTarget: map['cloudStorageTarget'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTarget.fromMap((map['cloudStorageTarget']! as Map).cast<String, dynamic>())).input(),
+      otherCloudTarget: map['otherCloudTarget'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTarget.fromMap((map['otherCloudTarget']! as Map).cast<String, dynamic>())).input(),
+      secretsTarget: map['secretsTarget'] == null ? null : ((map['secretsTarget']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

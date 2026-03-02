@@ -54,13 +54,13 @@ class AutoscaleSettingResponse {
 
   factory AutoscaleSettingResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<AutoscaleNotificationResponse>(map['notifications'], (value) => AutoscaleNotificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      predictiveAutoscalePolicy: map['predictiveAutoscalePolicy'] == null ? null : (PredictiveAutoscalePolicyResponse.fromMap((map['predictiveAutoscalePolicy'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<AutoscaleNotificationResponse>(map['notifications']!, (value) => AutoscaleNotificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      predictiveAutoscalePolicy: map['predictiveAutoscalePolicy'] == null ? null : (PredictiveAutoscalePolicyResponse.fromMap((map['predictiveAutoscalePolicy']! as Map).cast<String, dynamic>())).input(),
       profiles: (pulumi.Input.decodeList<AutoscaleProfileResponse>(map['profiles'], (value) => AutoscaleProfileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetResourceLocation: map['targetResourceLocation'] == null ? null : (map['targetResourceLocation'] as String).input(),
-      targetResourceUri: map['targetResourceUri'] == null ? null : (map['targetResourceUri'] as String).input(),
+      targetResourceLocation: map['targetResourceLocation'] == null ? null : (map['targetResourceLocation']! as String).input(),
+      targetResourceUri: map['targetResourceUri'] == null ? null : (map['targetResourceUri']! as String).input(),
     );
   }
 }

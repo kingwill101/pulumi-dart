@@ -36,7 +36,7 @@ class GetRoleAssignmentArgs {
     return GetRoleAssignmentArgs(
       roleAssignmentName: (map['roleAssignmentName'] as String).input(),
       scope: (map['scope'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

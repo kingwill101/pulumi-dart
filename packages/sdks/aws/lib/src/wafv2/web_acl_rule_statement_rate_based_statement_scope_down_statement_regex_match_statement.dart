@@ -32,9 +32,9 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement
 
   factory WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null ? null : (WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
       regexString: (map['regexString'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

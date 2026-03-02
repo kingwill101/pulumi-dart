@@ -26,8 +26,8 @@ class VirtualHostState {
 
   factory VirtualHostState.fromMap(Map<String, dynamic> map) {
     return VirtualHostState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      virtualHostName: map['virtualHostName'] == null ? null : (map['virtualHostName'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      virtualHostName: map['virtualHostName'] == null ? null : (map['virtualHostName']! as String).input(),
     );
   }
 }

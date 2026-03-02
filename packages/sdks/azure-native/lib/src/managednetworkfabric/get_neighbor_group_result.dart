@@ -77,7 +77,7 @@ class GetNeighborGroupResult {
 
   factory GetNeighborGroupResult.fromMap(Map<String, dynamic> map) {
     return GetNeighborGroupResult(
-      annotation: map['annotation'] == null ? null : map['annotation'] as String,
+      annotation: map['annotation'] == null ? null : map['annotation']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       destination: NeighborGroupDestinationResponse.fromMap((map['destination'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
@@ -87,7 +87,7 @@ class GetNeighborGroupResult {
       networkTapRuleIds: (map['networkTapRuleIds'] as List).cast<String>(),
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

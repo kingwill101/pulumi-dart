@@ -67,16 +67,16 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      clusterConfigurations: map['clusterConfigurations'] == null ? null : (pulumi.Input.decodeList<SnapshotClusterConfiguration>(map['clusterConfigurations'], (value) => SnapshotClusterConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      clusterConfigurations: map['clusterConfigurations'] == null ? null : ((pulumi.Input.decodeList<SnapshotClusterConfiguration>(map['clusterConfigurations']!, (value) => SnapshotClusterConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      clusterName: map['clusterName'] == null ? null : ((map['clusterName'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

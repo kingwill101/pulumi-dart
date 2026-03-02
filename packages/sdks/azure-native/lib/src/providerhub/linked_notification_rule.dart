@@ -40,11 +40,11 @@ class LinkedNotificationRule {
 
   factory LinkedNotificationRule.fromMap(Map<String, dynamic> map) {
     return LinkedNotificationRule(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
-      actionsOnFailedOperation: map['actionsOnFailedOperation'] == null ? null : ((map['actionsOnFailedOperation'] as List).cast<String>()).input(),
-      fastPathActions: map['fastPathActions'] == null ? null : ((map['fastPathActions'] as List).cast<String>()).input(),
-      fastPathActionsOnFailedOperation: map['fastPathActionsOnFailedOperation'] == null ? null : ((map['fastPathActionsOnFailedOperation'] as List).cast<String>()).input(),
-      linkedNotificationTimeout: map['linkedNotificationTimeout'] == null ? null : (map['linkedNotificationTimeout'] as String).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
+      actionsOnFailedOperation: map['actionsOnFailedOperation'] == null ? null : ((map['actionsOnFailedOperation']! as List).cast<String>()).input(),
+      fastPathActions: map['fastPathActions'] == null ? null : ((map['fastPathActions']! as List).cast<String>()).input(),
+      fastPathActionsOnFailedOperation: map['fastPathActionsOnFailedOperation'] == null ? null : ((map['fastPathActionsOnFailedOperation']! as List).cast<String>()).input(),
+      linkedNotificationTimeout: map['linkedNotificationTimeout'] == null ? null : (map['linkedNotificationTimeout']! as String).input(),
     );
   }
 }

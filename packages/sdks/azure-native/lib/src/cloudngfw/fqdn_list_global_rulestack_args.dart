@@ -44,11 +44,11 @@ class FqdnListGlobalRulestackArgs {
 
   factory FqdnListGlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return FqdnListGlobalRulestackArgs(
-      auditComment: map['auditComment'] == null ? null : (map['auditComment'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      auditComment: map['auditComment'] == null ? null : (map['auditComment']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       fqdnList: ((map['fqdnList'] as List).cast<String>()).input(),
       globalRulestackName: (map['globalRulestackName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

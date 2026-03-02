@@ -22,7 +22,7 @@ class RouteTable {
 
   factory RouteTable.fromMap(Map<String, dynamic> map) {
     return RouteTable(
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<Route>(map['routes'], (value) => Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<Route>(map['routes']!, (value) => Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

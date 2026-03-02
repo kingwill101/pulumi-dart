@@ -45,11 +45,11 @@ class BackendCircuitBreakerRuleFailureCondition {
 
   factory BackendCircuitBreakerRuleFailureCondition.fromMap(Map<String, dynamic> map) {
     return BackendCircuitBreakerRuleFailureCondition(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      errorReasons: map['errorReasons'] == null ? null : ((map['errorReasons'] as List).cast<String>()).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      errorReasons: map['errorReasons'] == null ? null : ((map['errorReasons']! as List).cast<String>()).input(),
       intervalDuration: (map['intervalDuration'] as String).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
-      statusCodeRanges: map['statusCodeRanges'] == null ? null : (pulumi.Input.decodeList<BackendCircuitBreakerRuleFailureConditionStatusCodeRange>(map['statusCodeRanges'], (value) => BackendCircuitBreakerRuleFailureConditionStatusCodeRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as int).input(),
+      statusCodeRanges: map['statusCodeRanges'] == null ? null : (pulumi.Input.decodeList<BackendCircuitBreakerRuleFailureConditionStatusCodeRange>(map['statusCodeRanges']!, (value) => BackendCircuitBreakerRuleFailureConditionStatusCodeRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -37,8 +37,8 @@ class GetFunctionUrlArgs {
   factory GetFunctionUrlArgs.fromMap(Map<String, dynamic> map) {
     return GetFunctionUrlArgs(
       functionName: (map['functionName'] as String).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      qualifier: map['qualifier'] == null ? null : ((map['qualifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

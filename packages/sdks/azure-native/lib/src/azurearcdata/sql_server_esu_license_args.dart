@@ -45,11 +45,11 @@ class SqlServerEsuLicenseArgs {
 
   factory SqlServerEsuLicenseArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerEsuLicenseArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       properties: (SqlServerEsuLicenseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlServerEsuLicenseName: map['sqlServerEsuLicenseName'] == null ? null : (map['sqlServerEsuLicenseName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sqlServerEsuLicenseName: map['sqlServerEsuLicenseName'] == null ? null : (map['sqlServerEsuLicenseName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

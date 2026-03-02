@@ -22,7 +22,7 @@ class AccessLevelBasicConditionVpcNetworkSource {
 
   factory AccessLevelBasicConditionVpcNetworkSource.fromMap(Map<String, dynamic> map) {
     return AccessLevelBasicConditionVpcNetworkSource(
-      vpcSubnetwork: map['vpcSubnetwork'] == null ? null : (AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork.fromMap((map['vpcSubnetwork'] as Map).cast<String, dynamic>())).input(),
+      vpcSubnetwork: map['vpcSubnetwork'] == null ? null : (AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork.fromMap((map['vpcSubnetwork']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

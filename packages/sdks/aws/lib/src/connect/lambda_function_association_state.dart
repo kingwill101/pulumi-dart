@@ -31,9 +31,9 @@ class LambdaFunctionAssociationState {
 
   factory LambdaFunctionAssociationState.fromMap(Map<String, dynamic> map) {
     return LambdaFunctionAssociationState(
-      functionArn: map['functionArn'] == null ? null : (map['functionArn'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      functionArn: map['functionArn'] == null ? null : ((map['functionArn'] as String).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

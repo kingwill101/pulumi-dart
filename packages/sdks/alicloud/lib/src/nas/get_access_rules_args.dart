@@ -50,11 +50,11 @@ class GetAccessRulesArgs {
   factory GetAccessRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessRulesArgs(
       accessGroupName: (map['accessGroupName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      rwAccess: map['rwAccess'] == null ? null : (map['rwAccess'] as String).input(),
-      sourceCidrIp: map['sourceCidrIp'] == null ? null : (map['sourceCidrIp'] as String).input(),
-      userAccess: map['userAccess'] == null ? null : (map['userAccess'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      rwAccess: map['rwAccess'] == null ? null : (map['rwAccess']! as String).input(),
+      sourceCidrIp: map['sourceCidrIp'] == null ? null : (map['sourceCidrIp']! as String).input(),
+      userAccess: map['userAccess'] == null ? null : (map['userAccess']! as String).input(),
     );
   }
 }

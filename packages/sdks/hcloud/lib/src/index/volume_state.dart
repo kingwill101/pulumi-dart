@@ -63,15 +63,15 @@ class VolumeState {
 
   factory VolumeState.fromMap(Map<String, dynamic> map) {
     return VolumeState(
-      automount: map['automount'] == null ? null : (map['automount'] as bool).input(),
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      linuxDevice: map['linuxDevice'] == null ? null : (map['linuxDevice'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      automount: map['automount'] == null ? null : (map['automount']! as bool).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      linuxDevice: map['linuxDevice'] == null ? null : (map['linuxDevice']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

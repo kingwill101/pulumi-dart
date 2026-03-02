@@ -33,9 +33,9 @@ class EvaluationRule {
 
   factory EvaluationRule.fromMap(Map<String, dynamic> map) {
     return EvaluationRule(
-      degradedRule: map['degradedRule'] == null ? null : (ThresholdRule.fromMap((map['degradedRule'] as Map).cast<String, dynamic>())).input(),
-      dynamicDetectionRule: map['dynamicDetectionRule'] == null ? null : (DynamicDetectionRule.fromMap((map['dynamicDetectionRule'] as Map).cast<String, dynamic>())).input(),
-      unhealthyRule: map['unhealthyRule'] == null ? null : (ThresholdRule.fromMap((map['unhealthyRule'] as Map).cast<String, dynamic>())).input(),
+      degradedRule: map['degradedRule'] == null ? null : (ThresholdRule.fromMap((map['degradedRule']! as Map).cast<String, dynamic>())).input(),
+      dynamicDetectionRule: map['dynamicDetectionRule'] == null ? null : (DynamicDetectionRule.fromMap((map['dynamicDetectionRule']! as Map).cast<String, dynamic>())).input(),
+      unhealthyRule: map['unhealthyRule'] == null ? null : (ThresholdRule.fromMap((map['unhealthyRule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

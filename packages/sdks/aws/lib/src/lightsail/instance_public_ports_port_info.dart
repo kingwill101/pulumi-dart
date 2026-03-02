@@ -45,10 +45,10 @@ class InstancePublicPortsPortInfo {
 
   factory InstancePublicPortsPortInfo.fromMap(Map<String, dynamic> map) {
     return InstancePublicPortsPortInfo(
-      cidrListAliases: map['cidrListAliases'] == null ? null : ((map['cidrListAliases'] as List).cast<String>()).input(),
-      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
+      cidrListAliases: map['cidrListAliases'] == null ? null : (((map['cidrListAliases'] as List).cast<String>()).input()).input(),
+      cidrs: map['cidrs'] == null ? null : (((map['cidrs'] as List).cast<String>()).input()).input(),
       fromPort: (map['fromPort'] as int).input(),
-      ipv6Cidrs: map['ipv6Cidrs'] == null ? null : ((map['ipv6Cidrs'] as List).cast<String>()).input(),
+      ipv6Cidrs: map['ipv6Cidrs'] == null ? null : (((map['ipv6Cidrs'] as List).cast<String>()).input()).input(),
       protocol: (map['protocol'] as String).input(),
       toPort: (map['toPort'] as int).input(),
     );

@@ -82,18 +82,18 @@ class DataAccessLabelState {
 
   factory DataAccessLabelState.fromMap(Map<String, dynamic> map) {
     return DataAccessLabelState(
-      author: map['author'] == null ? null : (map['author'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataAccessLabelId: map['dataAccessLabelId'] == null ? null : (map['dataAccessLabelId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      lastEditor: map['lastEditor'] == null ? null : (map['lastEditor'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      udmQuery: map['udmQuery'] == null ? null : (map['udmQuery'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      author: map['author'] == null ? null : (map['author']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataAccessLabelId: map['dataAccessLabelId'] == null ? null : (map['dataAccessLabelId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      lastEditor: map['lastEditor'] == null ? null : (map['lastEditor']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      udmQuery: map['udmQuery'] == null ? null : (map['udmQuery']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

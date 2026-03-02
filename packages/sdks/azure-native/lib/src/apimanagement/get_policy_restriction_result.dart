@@ -48,8 +48,8 @@ class GetPolicyRestrictionResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      requireBase: map['requireBase'] == null ? null : map['requireBase'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      requireBase: map['requireBase'] == null ? null : map['requireBase']! as String,
+      scope: map['scope'] == null ? null : map['scope']! as String,
       type: map['type'] as String,
     );
   }

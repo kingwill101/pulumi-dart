@@ -22,7 +22,7 @@ class ActionList {
 
   factory ActionList.fromMap(Map<String, dynamic> map) {
     return ActionList(
-      actionGroups: map['actionGroups'] == null ? null : (pulumi.Input.decodeList<ActionGroup>(map['actionGroups'], (value) => ActionGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actionGroups: map['actionGroups'] == null ? null : (pulumi.Input.decodeList<ActionGroup>(map['actionGroups']!, (value) => ActionGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

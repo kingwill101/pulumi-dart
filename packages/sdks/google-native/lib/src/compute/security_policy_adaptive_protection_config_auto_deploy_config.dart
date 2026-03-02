@@ -32,10 +32,10 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
 
   factory SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig(
-      confidenceThreshold: map['confidenceThreshold'] == null ? null : (map['confidenceThreshold'] as double).input(),
-      expirationSec: map['expirationSec'] == null ? null : (map['expirationSec'] as int).input(),
-      impactedBaselineThreshold: map['impactedBaselineThreshold'] == null ? null : (map['impactedBaselineThreshold'] as double).input(),
-      loadThreshold: map['loadThreshold'] == null ? null : (map['loadThreshold'] as double).input(),
+      confidenceThreshold: map['confidenceThreshold'] == null ? null : (map['confidenceThreshold']! as double).input(),
+      expirationSec: map['expirationSec'] == null ? null : (map['expirationSec']! as int).input(),
+      impactedBaselineThreshold: map['impactedBaselineThreshold'] == null ? null : (map['impactedBaselineThreshold']! as double).input(),
+      loadThreshold: map['loadThreshold'] == null ? null : (map['loadThreshold']! as double).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting {
 
   factory DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCanvasAppSettingsIdentityProviderOauthSetting(
-      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : ((map['dataSourceName'] as String).input()).input(),
       secretArn: (map['secretArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

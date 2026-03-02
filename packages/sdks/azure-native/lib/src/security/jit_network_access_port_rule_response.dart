@@ -38,8 +38,8 @@ class JitNetworkAccessPortRuleResponse {
 
   factory JitNetworkAccessPortRuleResponse.fromMap(Map<String, dynamic> map) {
     return JitNetworkAccessPortRuleResponse(
-      allowedSourceAddressPrefix: map['allowedSourceAddressPrefix'] == null ? null : (map['allowedSourceAddressPrefix'] as String).input(),
-      allowedSourceAddressPrefixes: map['allowedSourceAddressPrefixes'] == null ? null : ((map['allowedSourceAddressPrefixes'] as List).cast<String>()).input(),
+      allowedSourceAddressPrefix: map['allowedSourceAddressPrefix'] == null ? null : (map['allowedSourceAddressPrefix']! as String).input(),
+      allowedSourceAddressPrefixes: map['allowedSourceAddressPrefixes'] == null ? null : ((map['allowedSourceAddressPrefixes']! as List).cast<String>()).input(),
       maxRequestAccessDuration: (map['maxRequestAccessDuration'] as String).input(),
       number: (map['number'] as int).input(),
       protocol: (map['protocol'] as String).input(),

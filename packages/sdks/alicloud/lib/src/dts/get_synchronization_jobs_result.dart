@@ -46,13 +46,13 @@ class GetSynchronizationJobsResult {
 
   factory GetSynchronizationJobsResult.fromMap(Map<String, dynamic> map) {
     return GetSynchronizationJobsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       jobs: pulumi.Input.decodeList<GetSynchronizationJobsJob>(map['jobs'], (value) => GetSynchronizationJobsJob.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

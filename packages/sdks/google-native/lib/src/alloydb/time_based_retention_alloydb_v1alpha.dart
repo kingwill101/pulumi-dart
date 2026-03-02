@@ -21,7 +21,7 @@ class TimeBasedRetentionAlloydbV1alpha {
 
   factory TimeBasedRetentionAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return TimeBasedRetentionAlloydbV1alpha(
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod']! as String).input(),
     );
   }
 }

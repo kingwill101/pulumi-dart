@@ -41,11 +41,11 @@ class MonitoringConfigGkehubV1alpha2 {
 
   factory MonitoringConfigGkehubV1alpha2.fromMap(Map<String, dynamic> map) {
     return MonitoringConfigGkehubV1alpha2(
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      clusterHash: map['clusterHash'] == null ? null : (map['clusterHash'] as String).input(),
-      kubernetesMetricsPrefix: map['kubernetesMetricsPrefix'] == null ? null : (map['kubernetesMetricsPrefix'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      clusterHash: map['clusterHash'] == null ? null : (map['clusterHash']! as String).input(),
+      kubernetesMetricsPrefix: map['kubernetesMetricsPrefix'] == null ? null : (map['kubernetesMetricsPrefix']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

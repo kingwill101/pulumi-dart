@@ -22,7 +22,7 @@ class FeedOutputConfig {
 
   factory FeedOutputConfig.fromMap(Map<String, dynamic> map) {
     return FeedOutputConfig(
-      pubsubDestination: map['pubsubDestination'] == null ? null : (PubsubDestination.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>())).input(),
+      pubsubDestination: map['pubsubDestination'] == null ? null : (PubsubDestination.fromMap((map['pubsubDestination']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

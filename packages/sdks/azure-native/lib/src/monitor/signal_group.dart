@@ -40,10 +40,10 @@ class SignalGroup {
 
   factory SignalGroup.fromMap(Map<String, dynamic> map) {
     return SignalGroup(
-      azureLogAnalytics: map['azureLogAnalytics'] == null ? null : (LogAnalyticsSignalGroup.fromMap((map['azureLogAnalytics'] as Map).cast<String, dynamic>())).input(),
-      azureMonitorWorkspace: map['azureMonitorWorkspace'] == null ? null : (AzureMonitorWorkspaceSignalGroup.fromMap((map['azureMonitorWorkspace'] as Map).cast<String, dynamic>())).input(),
-      azureResource: map['azureResource'] == null ? null : (AzureResourceSignalGroup.fromMap((map['azureResource'] as Map).cast<String, dynamic>())).input(),
-      dependencies: map['dependencies'] == null ? null : (DependenciesSignalGroup.fromMap((map['dependencies'] as Map).cast<String, dynamic>())).input(),
+      azureLogAnalytics: map['azureLogAnalytics'] == null ? null : (LogAnalyticsSignalGroup.fromMap((map['azureLogAnalytics']! as Map).cast<String, dynamic>())).input(),
+      azureMonitorWorkspace: map['azureMonitorWorkspace'] == null ? null : (AzureMonitorWorkspaceSignalGroup.fromMap((map['azureMonitorWorkspace']! as Map).cast<String, dynamic>())).input(),
+      azureResource: map['azureResource'] == null ? null : (AzureResourceSignalGroup.fromMap((map['azureResource']! as Map).cast<String, dynamic>())).input(),
+      dependencies: map['dependencies'] == null ? null : (DependenciesSignalGroup.fromMap((map['dependencies']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

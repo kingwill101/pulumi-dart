@@ -31,9 +31,9 @@ class GoogleCloudDocumentaiV1DocumentShardInfo {
 
   factory GoogleCloudDocumentaiV1DocumentShardInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentShardInfo(
-      shardCount: map['shardCount'] == null ? null : (map['shardCount'] as String).input(),
-      shardIndex: map['shardIndex'] == null ? null : (map['shardIndex'] as String).input(),
-      textOffset: map['textOffset'] == null ? null : (map['textOffset'] as String).input(),
+      shardCount: map['shardCount'] == null ? null : (map['shardCount']! as String).input(),
+      shardIndex: map['shardIndex'] == null ? null : (map['shardIndex']! as String).input(),
+      textOffset: map['textOffset'] == null ? null : (map['textOffset']! as String).input(),
     );
   }
 }

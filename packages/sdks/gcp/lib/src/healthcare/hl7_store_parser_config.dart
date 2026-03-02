@@ -39,10 +39,10 @@ class Hl7StoreParserConfig {
 
   factory Hl7StoreParserConfig.fromMap(Map<String, dynamic> map) {
     return Hl7StoreParserConfig(
-      allowNullHeader: map['allowNullHeader'] == null ? null : (map['allowNullHeader'] as bool).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      segmentTerminator: map['segmentTerminator'] == null ? null : (map['segmentTerminator'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      allowNullHeader: map['allowNullHeader'] == null ? null : (map['allowNullHeader']! as bool).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      segmentTerminator: map['segmentTerminator'] == null ? null : (map['segmentTerminator']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

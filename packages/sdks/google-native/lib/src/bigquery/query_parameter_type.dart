@@ -31,9 +31,9 @@ class QueryParameterType {
 
   factory QueryParameterType.fromMap(Map<String, dynamic> map) {
     return QueryParameterType(
-      arrayType: map['arrayType'] == null ? null : (QueryParameterType.fromMap((map['arrayType'] as Map).cast<String, dynamic>())).input(),
-      structTypes: map['structTypes'] == null ? null : (pulumi.Input.decodeList<QueryParameterTypeStructTypesItem>(map['structTypes'], (value) => QueryParameterTypeStructTypesItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arrayType: map['arrayType'] == null ? null : (QueryParameterType.fromMap((map['arrayType']! as Map).cast<String, dynamic>())).input(),
+      structTypes: map['structTypes'] == null ? null : (pulumi.Input.decodeList<QueryParameterTypeStructTypesItem>(map['structTypes']!, (value) => QueryParameterTypeStructTypesItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -86,18 +86,18 @@ class StreamDatastreamV1alpha1Args {
 
   factory StreamDatastreamV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return StreamDatastreamV1alpha1Args(
-      backfillAll: map['backfillAll'] == null ? null : (BackfillAllStrategyDatastreamV1alpha1.fromMap((map['backfillAll'] as Map).cast<String, dynamic>())).input(),
-      backfillNone: map['backfillNone'] == null ? null : ((map['backfillNone'] as Map).cast<String, dynamic>()).input(),
-      customerManagedEncryptionKey: map['customerManagedEncryptionKey'] == null ? null : (map['customerManagedEncryptionKey'] as String).input(),
+      backfillAll: map['backfillAll'] == null ? null : (BackfillAllStrategyDatastreamV1alpha1.fromMap((map['backfillAll']! as Map).cast<String, dynamic>())).input(),
+      backfillNone: map['backfillNone'] == null ? null : ((map['backfillNone']! as Map).cast<String, dynamic>()).input(),
+      customerManagedEncryptionKey: map['customerManagedEncryptionKey'] == null ? null : (map['customerManagedEncryptionKey']! as String).input(),
       destinationConfig: (DestinationConfigDatastreamV1alpha1.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       sourceConfig: (SourceConfigDatastreamV1alpha1.fromMap((map['sourceConfig'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (StreamStateDatastreamV1alpha1.fromValue(map['state'] as String)).input(),
+      state: map['state'] == null ? null : (StreamStateDatastreamV1alpha1.fromValue(map['state']! as String)).input(),
       streamId: (map['streamId'] as String).input(),
     );
   }

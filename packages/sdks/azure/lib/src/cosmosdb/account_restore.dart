@@ -44,11 +44,11 @@ class AccountRestore {
 
   factory AccountRestore.fromMap(Map<String, dynamic> map) {
     return AccountRestore(
-      databases: map['databases'] == null ? null : (pulumi.Input.decodeList<AccountRestoreDatabase>(map['databases'], (value) => AccountRestoreDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gremlinDatabases: map['gremlinDatabases'] == null ? null : (pulumi.Input.decodeList<AccountRestoreGremlinDatabase>(map['gremlinDatabases'], (value) => AccountRestoreGremlinDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databases: map['databases'] == null ? null : (pulumi.Input.decodeList<AccountRestoreDatabase>(map['databases']!, (value) => AccountRestoreDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gremlinDatabases: map['gremlinDatabases'] == null ? null : (pulumi.Input.decodeList<AccountRestoreGremlinDatabase>(map['gremlinDatabases']!, (value) => AccountRestoreGremlinDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
       restoreTimestampInUtc: (map['restoreTimestampInUtc'] as String).input(),
       sourceCosmosdbAccountId: (map['sourceCosmosdbAccountId'] as String).input(),
-      tablesToRestores: map['tablesToRestores'] == null ? null : ((map['tablesToRestores'] as List).cast<String>()).input(),
+      tablesToRestores: map['tablesToRestores'] == null ? null : ((map['tablesToRestores']! as List).cast<String>()).input(),
     );
   }
 }

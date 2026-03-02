@@ -39,10 +39,10 @@ class GetLocalDiskArgs {
 
   factory GetLocalDiskArgs.fromMap(Map<String, dynamic> map) {
     return GetLocalDiskArgs(
-      diskNode: map['diskNode'] == null ? null : (map['diskNode'] as String).input(),
-      diskPath: map['diskPath'] == null ? null : (map['diskPath'] as String).input(),
+      diskNode: map['diskNode'] == null ? null : ((map['diskNode'] as String).input()).input(),
+      diskPath: map['diskPath'] == null ? null : ((map['diskPath'] as String).input()).input(),
       gatewayArn: (map['gatewayArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

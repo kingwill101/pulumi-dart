@@ -20,7 +20,7 @@ class ResolverSyncConfigLambdaConflictHandlerConfig {
 
   factory ResolverSyncConfigLambdaConflictHandlerConfig.fromMap(Map<String, dynamic> map) {
     return ResolverSyncConfigLambdaConflictHandlerConfig(
-      lambdaConflictHandlerArn: map['lambdaConflictHandlerArn'] == null ? null : (map['lambdaConflictHandlerArn'] as String).input(),
+      lambdaConflictHandlerArn: map['lambdaConflictHandlerArn'] == null ? null : ((map['lambdaConflictHandlerArn'] as String).input()).input(),
     );
   }
 }

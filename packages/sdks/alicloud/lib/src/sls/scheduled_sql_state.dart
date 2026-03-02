@@ -57,13 +57,13 @@ class ScheduledSqlState {
 
   factory ScheduledSqlState.fromMap(Map<String, dynamic> map) {
     return ScheduledSqlState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      schedule: map['schedule'] == null ? null : (ScheduledSqlSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      scheduledSqlConfiguration: map['scheduledSqlConfiguration'] == null ? null : (ScheduledSqlScheduledSqlConfiguration.fromMap((map['scheduledSqlConfiguration'] as Map).cast<String, dynamic>())).input(),
-      scheduledSqlName: map['scheduledSqlName'] == null ? null : (map['scheduledSqlName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      schedule: map['schedule'] == null ? null : (ScheduledSqlSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      scheduledSqlConfiguration: map['scheduledSqlConfiguration'] == null ? null : (ScheduledSqlScheduledSqlConfiguration.fromMap((map['scheduledSqlConfiguration']! as Map).cast<String, dynamic>())).input(),
+      scheduledSqlName: map['scheduledSqlName'] == null ? null : (map['scheduledSqlName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

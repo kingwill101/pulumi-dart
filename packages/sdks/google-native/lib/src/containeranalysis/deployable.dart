@@ -21,7 +21,7 @@ class Deployable {
 
   factory Deployable.fromMap(Map<String, dynamic> map) {
     return Deployable(
-      resourceUri: map['resourceUri'] == null ? null : ((map['resourceUri'] as List).cast<String>()).input(),
+      resourceUri: map['resourceUri'] == null ? null : ((map['resourceUri']! as List).cast<String>()).input(),
     );
   }
 }

@@ -98,19 +98,19 @@ class BackendBucketState {
 
   factory BackendBucketState.fromMap(Map<String, dynamic> map) {
     return BackendBucketState(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      cdnPolicy: map['cdnPolicy'] == null ? null : (BackendBucketCdnPolicy.fromMap((map['cdnPolicy'] as Map).cast<String, dynamic>())).input(),
-      compressionMode: map['compressionMode'] == null ? null : (map['compressionMode'] as String).input(),
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      customResponseHeaders: map['customResponseHeaders'] == null ? null : ((map['customResponseHeaders'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      edgeSecurityPolicy: map['edgeSecurityPolicy'] == null ? null : (map['edgeSecurityPolicy'] as String).input(),
-      enableCdn: map['enableCdn'] == null ? null : (map['enableCdn'] as bool).input(),
-      loadBalancingScheme: map['loadBalancingScheme'] == null ? null : (map['loadBalancingScheme'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      params: map['params'] == null ? null : (BackendBucketParams.fromMap((map['params'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      cdnPolicy: map['cdnPolicy'] == null ? null : (BackendBucketCdnPolicy.fromMap((map['cdnPolicy']! as Map).cast<String, dynamic>())).input(),
+      compressionMode: map['compressionMode'] == null ? null : (map['compressionMode']! as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      customResponseHeaders: map['customResponseHeaders'] == null ? null : ((map['customResponseHeaders']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      edgeSecurityPolicy: map['edgeSecurityPolicy'] == null ? null : (map['edgeSecurityPolicy']! as String).input(),
+      enableCdn: map['enableCdn'] == null ? null : (map['enableCdn']! as bool).input(),
+      loadBalancingScheme: map['loadBalancingScheme'] == null ? null : (map['loadBalancingScheme']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      params: map['params'] == null ? null : (BackendBucketParams.fromMap((map['params']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
     );
   }
 }

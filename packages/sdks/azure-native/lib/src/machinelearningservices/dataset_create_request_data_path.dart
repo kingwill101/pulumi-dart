@@ -25,8 +25,8 @@ class DatasetCreateRequestDataPath {
 
   factory DatasetCreateRequestDataPath.fromMap(Map<String, dynamic> map) {
     return DatasetCreateRequestDataPath(
-      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName'] as String).input(),
-      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
+      datastoreName: map['datastoreName'] == null ? null : (map['datastoreName']! as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath']! as String).input(),
     );
   }
 }

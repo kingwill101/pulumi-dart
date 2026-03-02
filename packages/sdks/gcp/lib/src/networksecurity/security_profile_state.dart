@@ -115,22 +115,22 @@ class SecurityProfileState {
 
   factory SecurityProfileState.fromMap(Map<String, dynamic> map) {
     return SecurityProfileState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      customInterceptProfile: map['customInterceptProfile'] == null ? null : (SecurityProfileCustomInterceptProfile.fromMap((map['customInterceptProfile'] as Map).cast<String, dynamic>())).input(),
-      customMirroringProfile: map['customMirroringProfile'] == null ? null : (SecurityProfileCustomMirroringProfile.fromMap((map['customMirroringProfile'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (SecurityProfileThreatPreventionProfile.fromMap((map['threatPreventionProfile'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (SecurityProfileUrlFilteringProfile.fromMap((map['urlFilteringProfile'] as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      customInterceptProfile: map['customInterceptProfile'] == null ? null : (SecurityProfileCustomInterceptProfile.fromMap((map['customInterceptProfile']! as Map).cast<String, dynamic>())).input(),
+      customMirroringProfile: map['customMirroringProfile'] == null ? null : (SecurityProfileCustomMirroringProfile.fromMap((map['customMirroringProfile']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (SecurityProfileThreatPreventionProfile.fromMap((map['threatPreventionProfile']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (SecurityProfileUrlFilteringProfile.fromMap((map['urlFilteringProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

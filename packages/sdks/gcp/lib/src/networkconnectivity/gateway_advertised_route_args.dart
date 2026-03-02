@@ -70,14 +70,14 @@ class GatewayAdvertisedRouteArgs {
 
   factory GatewayAdvertisedRouteArgs.fromMap(Map<String, dynamic> map) {
     return GatewayAdvertisedRouteArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      recipient: map['recipient'] == null ? null : (map['recipient'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      recipient: map['recipient'] == null ? null : (map['recipient']! as String).input(),
       spoke: (map['spoke'] as String).input(),
     );
   }

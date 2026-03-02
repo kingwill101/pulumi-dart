@@ -33,9 +33,9 @@ class EnvFromSourcePatch {
 
   factory EnvFromSourcePatch.fromMap(Map<String, dynamic> map) {
     return EnvFromSourcePatch(
-      configMapRef: map['configMapRef'] == null ? null : (ConfigMapEnvSourcePatch.fromMap((map['configMapRef'] as Map).cast<String, dynamic>())).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      secretRef: map['secretRef'] == null ? null : (SecretEnvSourcePatch.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
+      configMapRef: map['configMapRef'] == null ? null : (ConfigMapEnvSourcePatch.fromMap((map['configMapRef']! as Map).cast<String, dynamic>())).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      secretRef: map['secretRef'] == null ? null : (SecretEnvSourcePatch.fromMap((map['secretRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

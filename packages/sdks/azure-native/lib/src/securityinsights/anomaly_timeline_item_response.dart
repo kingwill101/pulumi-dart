@@ -78,17 +78,17 @@ class AnomalyTimelineItemResponse {
   factory AnomalyTimelineItemResponse.fromMap(Map<String, dynamic> map) {
     return AnomalyTimelineItemResponse(
       azureResourceId: (map['azureResourceId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       endTimeUtc: (map['endTimeUtc'] as String).input(),
-      intent: map['intent'] == null ? null : (map['intent'] as String).input(),
+      intent: map['intent'] == null ? null : (map['intent']! as String).input(),
       kind: (map['kind'] as String).input(),
-      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
-      reasons: map['reasons'] == null ? null : ((map['reasons'] as List).cast<String>()).input(),
+      productName: map['productName'] == null ? null : (map['productName']! as String).input(),
+      reasons: map['reasons'] == null ? null : ((map['reasons']! as List).cast<String>()).input(),
       startTimeUtc: (map['startTimeUtc'] as String).input(),
-      techniques: map['techniques'] == null ? null : ((map['techniques'] as List).cast<String>()).input(),
+      techniques: map['techniques'] == null ? null : ((map['techniques']! as List).cast<String>()).input(),
       timeGenerated: (map['timeGenerated'] as String).input(),
-      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
+      vendor: map['vendor'] == null ? null : (map['vendor']! as String).input(),
     );
   }
 }

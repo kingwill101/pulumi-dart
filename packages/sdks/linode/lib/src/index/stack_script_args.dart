@@ -53,9 +53,9 @@ class StackScriptArgs {
     return StackScriptArgs(
       description: (map['description'] as String).input(),
       images: ((map['images'] as List).cast<String>()).input(),
-      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic']! as bool).input(),
       label: (map['label'] as String).input(),
-      revNote: map['revNote'] == null ? null : (map['revNote'] as String).input(),
+      revNote: map['revNote'] == null ? null : (map['revNote']! as String).input(),
       script: (map['script'] as String).input(),
     );
   }

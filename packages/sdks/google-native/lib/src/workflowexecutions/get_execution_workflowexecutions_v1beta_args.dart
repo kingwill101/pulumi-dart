@@ -41,8 +41,8 @@ class GetExecutionWorkflowexecutionsV1betaArgs {
     return GetExecutionWorkflowexecutionsV1betaArgs(
       executionId: (map['executionId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
       workflowId: (map['workflowId'] as String).input(),
     );
   }

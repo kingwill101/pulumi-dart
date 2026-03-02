@@ -25,8 +25,8 @@ class WorkloadResource {
 
   factory WorkloadResource.fromMap(Map<String, dynamic> map) {
     return WorkloadResource(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as int).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as int).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

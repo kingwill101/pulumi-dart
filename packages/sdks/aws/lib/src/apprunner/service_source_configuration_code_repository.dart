@@ -37,10 +37,10 @@ class ServiceSourceConfigurationCodeRepository {
 
   factory ServiceSourceConfigurationCodeRepository.fromMap(Map<String, dynamic> map) {
     return ServiceSourceConfigurationCodeRepository(
-      codeConfiguration: map['codeConfiguration'] == null ? null : (ServiceSourceConfigurationCodeRepositoryCodeConfiguration.fromMap((map['codeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      codeConfiguration: map['codeConfiguration'] == null ? null : ((ServiceSourceConfigurationCodeRepositoryCodeConfiguration.fromMap((map['codeConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       repositoryUrl: (map['repositoryUrl'] as String).input(),
-      sourceCodeVersion: (ServiceSourceConfigurationCodeRepositorySourceCodeVersion.fromMap((map['sourceCodeVersion'] as Map).cast<String, dynamic>())).input(),
-      sourceDirectory: map['sourceDirectory'] == null ? null : (map['sourceDirectory'] as String).input(),
+      sourceCodeVersion: (ServiceSourceConfigurationCodeRepositorySourceCodeVersion.fromMap((map['sourceCodeVersion']! as Map).cast<String, dynamic>())).input(),
+      sourceDirectory: map['sourceDirectory'] == null ? null : ((map['sourceDirectory'] as String).input()).input(),
     );
   }
 }

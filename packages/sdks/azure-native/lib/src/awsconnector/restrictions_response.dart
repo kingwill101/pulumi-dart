@@ -22,7 +22,7 @@ class RestrictionsResponse {
 
   factory RestrictionsResponse.fromMap(Map<String, dynamic> map) {
     return RestrictionsResponse(
-      geoRestriction: map['geoRestriction'] == null ? null : (GeoRestrictionResponse.fromMap((map['geoRestriction'] as Map).cast<String, dynamic>())).input(),
+      geoRestriction: map['geoRestriction'] == null ? null : (GeoRestrictionResponse.fromMap((map['geoRestriction']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

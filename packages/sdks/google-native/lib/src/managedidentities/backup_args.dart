@@ -39,8 +39,8 @@ class BackupArgs {
     return BackupArgs(
       backupId: (map['backupId'] as String).input(),
       domainId: (map['domainId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

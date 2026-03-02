@@ -26,8 +26,8 @@ class TrailAdvancedEventSelector {
 
   factory TrailAdvancedEventSelector.fromMap(Map<String, dynamic> map) {
     return TrailAdvancedEventSelector(
-      fieldSelectors: (pulumi.Input.decodeList<TrailAdvancedEventSelectorFieldSelector>(map['fieldSelectors'], (value) => TrailAdvancedEventSelectorFieldSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      fieldSelectors: (pulumi.Input.decodeList<TrailAdvancedEventSelectorFieldSelector>(map['fieldSelectors']!, (value) => TrailAdvancedEventSelectorFieldSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

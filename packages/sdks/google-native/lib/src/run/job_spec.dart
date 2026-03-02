@@ -22,7 +22,7 @@ class JobSpec {
 
   factory JobSpec.fromMap(Map<String, dynamic> map) {
     return JobSpec(
-      template: map['template'] == null ? null : (ExecutionTemplateSpec.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
+      template: map['template'] == null ? null : (ExecutionTemplateSpec.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

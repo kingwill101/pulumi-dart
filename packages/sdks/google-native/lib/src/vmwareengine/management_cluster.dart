@@ -34,7 +34,7 @@ class ManagementCluster {
     return ManagementCluster(
       clusterId: (map['clusterId'] as String).input(),
       nodeTypeConfigs: ((map['nodeTypeConfigs'] as Map).cast<String, String>()).input(),
-      stretchedClusterConfig: map['stretchedClusterConfig'] == null ? null : (StretchedClusterConfig.fromMap((map['stretchedClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      stretchedClusterConfig: map['stretchedClusterConfig'] == null ? null : (StretchedClusterConfig.fromMap((map['stretchedClusterConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

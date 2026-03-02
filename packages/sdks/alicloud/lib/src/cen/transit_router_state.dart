@@ -73,17 +73,17 @@ class TransitRouterState {
 
   factory TransitRouterState.fromMap(Map<String, dynamic> map) {
     return TransitRouterState(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      supportMulticast: map['supportMulticast'] == null ? null : (map['supportMulticast'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitRouterDescription: map['transitRouterDescription'] == null ? null : (map['transitRouterDescription'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
-      transitRouterName: map['transitRouterName'] == null ? null : (map['transitRouterName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      supportMulticast: map['supportMulticast'] == null ? null : (map['supportMulticast']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      transitRouterDescription: map['transitRouterDescription'] == null ? null : (map['transitRouterDescription']! as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
+      transitRouterName: map['transitRouterName'] == null ? null : (map['transitRouterName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

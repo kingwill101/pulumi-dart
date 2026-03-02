@@ -107,19 +107,19 @@ class EnvironmentArgs {
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
       application: (map['application'] as String).input(),
-      cnamePrefix: map['cnamePrefix'] == null ? null : (map['cnamePrefix'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      platformArn: map['platformArn'] == null ? null : (map['platformArn'] as String).input(),
-      pollInterval: map['pollInterval'] == null ? null : (map['pollInterval'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<EnvironmentSetting>(map['settings'], (value) => EnvironmentSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      solutionStackName: map['solutionStackName'] == null ? null : (map['solutionStackName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      waitForReadyTimeout: map['waitForReadyTimeout'] == null ? null : (map['waitForReadyTimeout'] as String).input(),
+      cnamePrefix: map['cnamePrefix'] == null ? null : ((map['cnamePrefix'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      platformArn: map['platformArn'] == null ? null : ((map['platformArn'] as String).input()).input(),
+      pollInterval: map['pollInterval'] == null ? null : ((map['pollInterval'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      settings: map['settings'] == null ? null : ((pulumi.Input.decodeList<EnvironmentSetting>(map['settings']!, (value) => EnvironmentSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      solutionStackName: map['solutionStackName'] == null ? null : ((map['solutionStackName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      templateName: map['templateName'] == null ? null : ((map['templateName'] as String).input()).input(),
+      tier: map['tier'] == null ? null : ((map['tier'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      waitForReadyTimeout: map['waitForReadyTimeout'] == null ? null : ((map['waitForReadyTimeout'] as String).input()).input(),
     );
   }
 }

@@ -68,13 +68,13 @@ class GetRegistryEnterpriseSyncRulesResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      namespaceName: map['namespaceName'] == null ? null : map['namespaceName'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      repoName: map['repoName'] == null ? null : map['repoName'] as String,
+      namespaceName: map['namespaceName'] == null ? null : map['namespaceName']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      repoName: map['repoName'] == null ? null : map['repoName']! as String,
       rules: pulumi.Input.decodeList<GetRegistryEnterpriseSyncRulesRule>(map['rules'], (value) => GetRegistryEnterpriseSyncRulesRule.fromMap((value as Map).cast<String, dynamic>())),
-      targetInstanceId: map['targetInstanceId'] == null ? null : map['targetInstanceId'] as String,
+      targetInstanceId: map['targetInstanceId'] == null ? null : map['targetInstanceId']! as String,
     );
   }
 }

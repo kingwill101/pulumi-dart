@@ -27,8 +27,8 @@ class AuditLogConfigGkehubV1beta {
 
   factory AuditLogConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigGkehubV1beta(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeGkehubV1beta.fromValue(map['logType'] as String)).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeGkehubV1beta.fromValue(map['logType']! as String)).input(),
     );
   }
 }

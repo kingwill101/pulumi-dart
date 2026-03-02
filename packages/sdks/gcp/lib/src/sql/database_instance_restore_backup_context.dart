@@ -32,8 +32,8 @@ class DatabaseInstanceRestoreBackupContext {
   factory DatabaseInstanceRestoreBackupContext.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceRestoreBackupContext(
       backupRunId: (map['backupRunId'] as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -110,21 +110,21 @@ class AiIndexEndpointDeployedIndexState {
 
   factory AiIndexEndpointDeployedIndexState.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexState(
-      automaticResources: map['automaticResources'] == null ? null : (AiIndexEndpointDeployedIndexAutomaticResources.fromMap((map['automaticResources'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dedicatedResources: map['dedicatedResources'] == null ? null : (AiIndexEndpointDeployedIndexDedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())).input(),
-      deployedIndexAuthConfig: map['deployedIndexAuthConfig'] == null ? null : (AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap((map['deployedIndexAuthConfig'] as Map).cast<String, dynamic>())).input(),
-      deployedIndexId: map['deployedIndexId'] == null ? null : (map['deployedIndexId'] as String).input(),
-      deploymentGroup: map['deploymentGroup'] == null ? null : (map['deploymentGroup'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enableAccessLogging: map['enableAccessLogging'] == null ? null : (map['enableAccessLogging'] as bool).input(),
-      index: map['index'] == null ? null : (map['index'] as String).input(),
-      indexEndpoint: map['indexEndpoint'] == null ? null : (map['indexEndpoint'] as String).input(),
-      indexSyncTime: map['indexSyncTime'] == null ? null : (map['indexSyncTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<AiIndexEndpointDeployedIndexPrivateEndpoint>(map['privateEndpoints'], (value) => AiIndexEndpointDeployedIndexPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reservedIpRanges: map['reservedIpRanges'] == null ? null : ((map['reservedIpRanges'] as List).cast<String>()).input(),
+      automaticResources: map['automaticResources'] == null ? null : (AiIndexEndpointDeployedIndexAutomaticResources.fromMap((map['automaticResources']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dedicatedResources: map['dedicatedResources'] == null ? null : (AiIndexEndpointDeployedIndexDedicatedResources.fromMap((map['dedicatedResources']! as Map).cast<String, dynamic>())).input(),
+      deployedIndexAuthConfig: map['deployedIndexAuthConfig'] == null ? null : (AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap((map['deployedIndexAuthConfig']! as Map).cast<String, dynamic>())).input(),
+      deployedIndexId: map['deployedIndexId'] == null ? null : (map['deployedIndexId']! as String).input(),
+      deploymentGroup: map['deploymentGroup'] == null ? null : (map['deploymentGroup']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enableAccessLogging: map['enableAccessLogging'] == null ? null : (map['enableAccessLogging']! as bool).input(),
+      index: map['index'] == null ? null : (map['index']! as String).input(),
+      indexEndpoint: map['indexEndpoint'] == null ? null : (map['indexEndpoint']! as String).input(),
+      indexSyncTime: map['indexSyncTime'] == null ? null : (map['indexSyncTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<AiIndexEndpointDeployedIndexPrivateEndpoint>(map['privateEndpoints']!, (value) => AiIndexEndpointDeployedIndexPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      reservedIpRanges: map['reservedIpRanges'] == null ? null : ((map['reservedIpRanges']! as List).cast<String>()).input(),
     );
   }
 }

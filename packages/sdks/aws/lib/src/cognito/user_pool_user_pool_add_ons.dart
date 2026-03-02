@@ -26,7 +26,7 @@ class UserPoolUserPoolAddOns {
 
   factory UserPoolUserPoolAddOns.fromMap(Map<String, dynamic> map) {
     return UserPoolUserPoolAddOns(
-      advancedSecurityAdditionalFlows: map['advancedSecurityAdditionalFlows'] == null ? null : (UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows.fromMap((map['advancedSecurityAdditionalFlows'] as Map).cast<String, dynamic>())).input(),
+      advancedSecurityAdditionalFlows: map['advancedSecurityAdditionalFlows'] == null ? null : ((UserPoolUserPoolAddOnsAdvancedSecurityAdditionalFlows.fromMap((map['advancedSecurityAdditionalFlows']! as Map).cast<String, dynamic>())).input()).input(),
       advancedSecurityMode: (map['advancedSecurityMode'] as String).input(),
     );
   }

@@ -64,15 +64,15 @@ class TargetSslProxyComputeBetaArgs {
 
   factory TargetSslProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return TargetSslProxyComputeBetaArgs(
-      certificateMap: map['certificateMap'] == null ? null : (map['certificateMap'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      proxyHeader: map['proxyHeader'] == null ? null : (TargetSslProxyProxyHeaderComputeBeta.fromValue(map['proxyHeader'] as String)).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      sslCertificates: map['sslCertificates'] == null ? null : ((map['sslCertificates'] as List).cast<String>()).input(),
-      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
+      certificateMap: map['certificateMap'] == null ? null : (map['certificateMap']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      proxyHeader: map['proxyHeader'] == null ? null : (TargetSslProxyProxyHeaderComputeBeta.fromValue(map['proxyHeader']! as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      sslCertificates: map['sslCertificates'] == null ? null : ((map['sslCertificates']! as List).cast<String>()).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy']! as String).input(),
     );
   }
 }

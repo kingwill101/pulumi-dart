@@ -39,10 +39,10 @@ class TrafficMirrorFilterArgs {
 
   factory TrafficMirrorFilterArgs.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorFilterArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      networkServices: map['networkServices'] == null ? null : ((map['networkServices'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      networkServices: map['networkServices'] == null ? null : (((map['networkServices'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

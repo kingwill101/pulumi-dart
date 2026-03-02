@@ -74,11 +74,11 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
   factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResource(
-      exec: map['exec'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      exec: map['exec'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExec.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
-      pkg: map['pkg'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg.fromMap((map['pkg'] as Map).cast<String, dynamic>())).input(),
-      repository: map['repository'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository.fromMap((map['repository'] as Map).cast<String, dynamic>())).input(),
+      pkg: map['pkg'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg.fromMap((map['pkg']! as Map).cast<String, dynamic>())).input(),
+      repository: map['repository'] == null ? null : (V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepository.fromMap((map['repository']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

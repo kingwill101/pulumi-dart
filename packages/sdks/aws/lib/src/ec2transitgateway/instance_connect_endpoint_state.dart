@@ -91,21 +91,21 @@ class InstanceConnectEndpointState {
 
   factory InstanceConnectEndpointState.fromMap(Map<String, dynamic> map) {
     return InstanceConnectEndpointState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      fipsDnsName: map['fipsDnsName'] == null ? null : (map['fipsDnsName'] as String).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      networkInterfaceIds: map['networkInterfaceIds'] == null ? null : ((map['networkInterfaceIds'] as List).cast<String>()).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      preserveClientIp: map['preserveClientIp'] == null ? null : (map['preserveClientIp'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (InstanceConnectEndpointTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      dnsName: map['dnsName'] == null ? null : ((map['dnsName'] as String).input()).input(),
+      fipsDnsName: map['fipsDnsName'] == null ? null : ((map['fipsDnsName'] as String).input()).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
+      networkInterfaceIds: map['networkInterfaceIds'] == null ? null : (((map['networkInterfaceIds'] as List).cast<String>()).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      preserveClientIp: map['preserveClientIp'] == null ? null : ((map['preserveClientIp'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((InstanceConnectEndpointTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

@@ -40,10 +40,10 @@ class SettingArgs {
 
   factory SettingArgs.fromMap(Map<String, dynamic> map) {
     return SettingArgs(
-      cache: map['cache'] == null ? null : (pulumi.Input.decodeList<SettingsPropertiesCache>(map['cache'], (value) => SettingsPropertiesCache.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cache: map['cache'] == null ? null : (pulumi.Input.decodeList<SettingsPropertiesCache>(map['cache']!, (value) => SettingsPropertiesCache.fromMap((value as Map).cast<String, dynamic>()))).input(),
       scope: (map['scope'] as String).input(),
-      settingName: map['settingName'] == null ? null : (map['settingName'] as String).input(),
-      startOn: map['startOn'] == null ? null : (map['startOn'] as String).input(),
+      settingName: map['settingName'] == null ? null : (map['settingName']! as String).input(),
+      startOn: map['startOn'] == null ? null : (map['startOn']! as String).input(),
     );
   }
 }

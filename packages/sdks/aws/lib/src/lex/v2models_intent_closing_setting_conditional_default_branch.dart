@@ -27,8 +27,8 @@ class V2modelsIntentClosingSettingConditionalDefaultBranch {
 
   factory V2modelsIntentClosingSettingConditionalDefaultBranch.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentClosingSettingConditionalDefaultBranch(
-      nextStep: map['nextStep'] == null ? null : (V2modelsIntentClosingSettingConditionalDefaultBranchNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>())).input(),
-      response: map['response'] == null ? null : (V2modelsIntentClosingSettingConditionalDefaultBranchResponse.fromMap((map['response'] as Map).cast<String, dynamic>())).input(),
+      nextStep: map['nextStep'] == null ? null : ((V2modelsIntentClosingSettingConditionalDefaultBranchNextStep.fromMap((map['nextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      response: map['response'] == null ? null : ((V2modelsIntentClosingSettingConditionalDefaultBranchResponse.fromMap((map['response']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

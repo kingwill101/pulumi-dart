@@ -20,7 +20,7 @@ class CosmosDbSettings {
 
   factory CosmosDbSettings.fromMap(Map<String, dynamic> map) {
     return CosmosDbSettings(
-      collectionsThroughput: map['collectionsThroughput'] == null ? null : (map['collectionsThroughput'] as int).input(),
+      collectionsThroughput: map['collectionsThroughput'] == null ? null : (map['collectionsThroughput']! as int).input(),
     );
   }
 }

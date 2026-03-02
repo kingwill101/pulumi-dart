@@ -44,11 +44,11 @@ class VmwareAdminClusterLoadBalancerManualLbConfig {
 
   factory VmwareAdminClusterLoadBalancerManualLbConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterLoadBalancerManualLbConfig(
-      addonsNodePort: map['addonsNodePort'] == null ? null : (map['addonsNodePort'] as int).input(),
-      controlPlaneNodePort: map['controlPlaneNodePort'] == null ? null : (map['controlPlaneNodePort'] as int).input(),
-      ingressHttpNodePort: map['ingressHttpNodePort'] == null ? null : (map['ingressHttpNodePort'] as int).input(),
-      ingressHttpsNodePort: map['ingressHttpsNodePort'] == null ? null : (map['ingressHttpsNodePort'] as int).input(),
-      konnectivityServerNodePort: map['konnectivityServerNodePort'] == null ? null : (map['konnectivityServerNodePort'] as int).input(),
+      addonsNodePort: map['addonsNodePort'] == null ? null : (map['addonsNodePort']! as int).input(),
+      controlPlaneNodePort: map['controlPlaneNodePort'] == null ? null : (map['controlPlaneNodePort']! as int).input(),
+      ingressHttpNodePort: map['ingressHttpNodePort'] == null ? null : (map['ingressHttpNodePort']! as int).input(),
+      ingressHttpsNodePort: map['ingressHttpsNodePort'] == null ? null : (map['ingressHttpsNodePort']! as int).input(),
+      konnectivityServerNodePort: map['konnectivityServerNodePort'] == null ? null : (map['konnectivityServerNodePort']! as int).input(),
     );
   }
 }

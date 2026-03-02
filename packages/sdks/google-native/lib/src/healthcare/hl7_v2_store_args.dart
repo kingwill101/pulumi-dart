@@ -64,14 +64,14 @@ class Hl7V2StoreArgs {
   factory Hl7V2StoreArgs.fromMap(Map<String, dynamic> map) {
     return Hl7V2StoreArgs(
       datasetId: (map['datasetId'] as String).input(),
-      hl7V2StoreId: map['hl7V2StoreId'] == null ? null : (map['hl7V2StoreId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationConfigs: map['notificationConfigs'] == null ? null : (pulumi.Input.decodeList<Hl7V2NotificationConfig>(map['notificationConfigs'], (value) => Hl7V2NotificationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parserConfig: map['parserConfig'] == null ? null : (ParserConfig.fromMap((map['parserConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rejectDuplicateMessage: map['rejectDuplicateMessage'] == null ? null : (map['rejectDuplicateMessage'] as bool).input(),
+      hl7V2StoreId: map['hl7V2StoreId'] == null ? null : (map['hl7V2StoreId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationConfigs: map['notificationConfigs'] == null ? null : (pulumi.Input.decodeList<Hl7V2NotificationConfig>(map['notificationConfigs']!, (value) => Hl7V2NotificationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parserConfig: map['parserConfig'] == null ? null : (ParserConfig.fromMap((map['parserConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rejectDuplicateMessage: map['rejectDuplicateMessage'] == null ? null : (map['rejectDuplicateMessage']! as bool).input(),
     );
   }
 }

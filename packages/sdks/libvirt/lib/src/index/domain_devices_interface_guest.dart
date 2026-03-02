@@ -25,8 +25,8 @@ class DomainDevicesInterfaceGuest {
 
   factory DomainDevicesInterfaceGuest.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceGuest(
-      actual: map['actual'] == null ? null : (map['actual'] as String).input(),
-      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
+      actual: map['actual'] == null ? null : (map['actual']! as String).input(),
+      dev: map['dev'] == null ? null : (map['dev']! as String).input(),
     );
   }
 }

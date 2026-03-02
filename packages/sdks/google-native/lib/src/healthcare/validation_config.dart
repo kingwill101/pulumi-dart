@@ -41,11 +41,11 @@ class ValidationConfig {
 
   factory ValidationConfig.fromMap(Map<String, dynamic> map) {
     return ValidationConfig(
-      disableFhirpathValidation: map['disableFhirpathValidation'] == null ? null : (map['disableFhirpathValidation'] as bool).input(),
-      disableProfileValidation: map['disableProfileValidation'] == null ? null : (map['disableProfileValidation'] as bool).input(),
-      disableReferenceTypeValidation: map['disableReferenceTypeValidation'] == null ? null : (map['disableReferenceTypeValidation'] as bool).input(),
-      disableRequiredFieldValidation: map['disableRequiredFieldValidation'] == null ? null : (map['disableRequiredFieldValidation'] as bool).input(),
-      enabledImplementationGuides: map['enabledImplementationGuides'] == null ? null : ((map['enabledImplementationGuides'] as List).cast<String>()).input(),
+      disableFhirpathValidation: map['disableFhirpathValidation'] == null ? null : (map['disableFhirpathValidation']! as bool).input(),
+      disableProfileValidation: map['disableProfileValidation'] == null ? null : (map['disableProfileValidation']! as bool).input(),
+      disableReferenceTypeValidation: map['disableReferenceTypeValidation'] == null ? null : (map['disableReferenceTypeValidation']! as bool).input(),
+      disableRequiredFieldValidation: map['disableRequiredFieldValidation'] == null ? null : (map['disableRequiredFieldValidation']! as bool).input(),
+      enabledImplementationGuides: map['enabledImplementationGuides'] == null ? null : ((map['enabledImplementationGuides']! as List).cast<String>()).input(),
     );
   }
 }

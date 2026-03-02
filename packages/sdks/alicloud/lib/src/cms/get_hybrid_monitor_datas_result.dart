@@ -54,8 +54,8 @@ class GetHybridMonitorDatasResult {
       end: map['end'] as String,
       id: map['id'] as String,
       namespace: map['namespace'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      period: map['period'] == null ? null : map['period'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      period: map['period'] == null ? null : map['period']! as String,
       promSql: map['promSql'] as String,
       start: map['start'] as String,
     );

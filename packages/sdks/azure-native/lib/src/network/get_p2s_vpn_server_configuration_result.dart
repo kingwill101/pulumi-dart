@@ -43,8 +43,8 @@ class GetP2sVpnServerConfigurationResult {
     return GetP2sVpnServerConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       properties: P2SVpnServerConfigurationPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
     );
   }

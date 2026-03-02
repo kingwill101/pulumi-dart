@@ -21,7 +21,7 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate {
 
   factory GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate(
-      servingConfigId: map['servingConfigId'] == null ? null : (map['servingConfigId'] as String).input(),
+      servingConfigId: map['servingConfigId'] == null ? null : (map['servingConfigId']! as String).input(),
     );
   }
 }

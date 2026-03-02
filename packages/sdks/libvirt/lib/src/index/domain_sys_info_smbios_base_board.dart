@@ -21,7 +21,7 @@ class DomainSysInfoSmbiosBaseBoard {
 
   factory DomainSysInfoSmbiosBaseBoard.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbiosBaseBoard(
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosBaseBoardEntry>(map['entries'], (value) => DomainSysInfoSmbiosBaseBoardEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosBaseBoardEntry>(map['entries']!, (value) => DomainSysInfoSmbiosBaseBoardEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

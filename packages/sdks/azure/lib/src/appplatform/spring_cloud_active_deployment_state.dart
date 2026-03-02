@@ -26,8 +26,8 @@ class SpringCloudActiveDeploymentState {
 
   factory SpringCloudActiveDeploymentState.fromMap(Map<String, dynamic> map) {
     return SpringCloudActiveDeploymentState(
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
-      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId'] as String).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
+      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId']! as String).input(),
     );
   }
 }

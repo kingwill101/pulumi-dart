@@ -73,14 +73,14 @@ class SmbAclAttachmentArgs {
 
   factory SmbAclAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return SmbAclAttachmentArgs(
-      enableAnonymousAccess: map['enableAnonymousAccess'] == null ? null : (map['enableAnonymousAccess'] as bool).input(),
-      encryptData: map['encryptData'] == null ? null : (map['encryptData'] as bool).input(),
+      enableAnonymousAccess: map['enableAnonymousAccess'] == null ? null : (map['enableAnonymousAccess']! as bool).input(),
+      encryptData: map['encryptData'] == null ? null : (map['encryptData']! as bool).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
-      homeDirPath: map['homeDirPath'] == null ? null : (map['homeDirPath'] as String).input(),
+      homeDirPath: map['homeDirPath'] == null ? null : (map['homeDirPath']! as String).input(),
       keytab: (map['keytab'] as String).input(),
       keytabMd5: (map['keytabMd5'] as String).input(),
-      rejectUnencryptedAccess: map['rejectUnencryptedAccess'] == null ? null : (map['rejectUnencryptedAccess'] as bool).input(),
-      superAdminSid: map['superAdminSid'] == null ? null : (map['superAdminSid'] as String).input(),
+      rejectUnencryptedAccess: map['rejectUnencryptedAccess'] == null ? null : (map['rejectUnencryptedAccess']! as bool).input(),
+      superAdminSid: map['superAdminSid'] == null ? null : (map['superAdminSid']! as String).input(),
     );
   }
 }

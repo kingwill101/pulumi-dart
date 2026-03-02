@@ -27,8 +27,8 @@ class AuditLogConfigPrivatecaV1beta1 {
 
   factory AuditLogConfigPrivatecaV1beta1.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigPrivatecaV1beta1(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (AuditLogConfigLogTypePrivatecaV1beta1.fromValue(map['logType'] as String)).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (AuditLogConfigLogTypePrivatecaV1beta1.fromValue(map['logType']! as String)).input(),
     );
   }
 }

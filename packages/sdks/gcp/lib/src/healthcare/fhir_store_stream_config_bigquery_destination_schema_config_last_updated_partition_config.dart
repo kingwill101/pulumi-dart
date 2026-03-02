@@ -26,7 +26,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionCo
 
   factory FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig.fromMap(Map<String, dynamic> map) {
     return FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig(
-      expirationMs: map['expirationMs'] == null ? null : (map['expirationMs'] as String).input(),
+      expirationMs: map['expirationMs'] == null ? null : (map['expirationMs']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

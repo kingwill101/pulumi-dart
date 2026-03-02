@@ -31,9 +31,9 @@ class KubernetesClusterClusterAutoscalerConfiguration {
 
   factory KubernetesClusterClusterAutoscalerConfiguration.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterClusterAutoscalerConfiguration(
-      expanders: map['expanders'] == null ? null : ((map['expanders'] as List).cast<String>()).input(),
-      scaleDownUnneededTime: map['scaleDownUnneededTime'] == null ? null : (map['scaleDownUnneededTime'] as String).input(),
-      scaleDownUtilizationThreshold: map['scaleDownUtilizationThreshold'] == null ? null : (map['scaleDownUtilizationThreshold'] as double).input(),
+      expanders: map['expanders'] == null ? null : ((map['expanders']! as List).cast<String>()).input(),
+      scaleDownUnneededTime: map['scaleDownUnneededTime'] == null ? null : (map['scaleDownUnneededTime']! as String).input(),
+      scaleDownUtilizationThreshold: map['scaleDownUtilizationThreshold'] == null ? null : (map['scaleDownUtilizationThreshold']! as double).input(),
     );
   }
 }

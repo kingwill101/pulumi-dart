@@ -73,15 +73,15 @@ class TrafficMirrorFilterEgressRuleArgs {
 
   factory TrafficMirrorFilterEgressRuleArgs.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorFilterEgressRuleArgs(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
-      destinationPortRange: map['destinationPortRange'] == null ? null : (map['destinationPortRange'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      destinationPortRange: map['destinationPortRange'] == null ? null : (map['destinationPortRange']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       priority: (map['priority'] as int).input(),
       protocol: (map['protocol'] as String).input(),
-      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction'] as String).input(),
+      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction']! as String).input(),
       sourceCidrBlock: (map['sourceCidrBlock'] as String).input(),
-      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange'] as String).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange']! as String).input(),
       trafficMirrorFilterId: (map['trafficMirrorFilterId'] as String).input(),
     );
   }

@@ -35,9 +35,9 @@ class HciNetworkInterfaceIpConfiguration {
 
   factory HciNetworkInterfaceIpConfiguration.fromMap(Map<String, dynamic> map) {
     return HciNetworkInterfaceIpConfiguration(
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
-      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

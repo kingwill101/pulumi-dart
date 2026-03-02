@@ -100,21 +100,21 @@ class PipeArgs {
 
   factory PipeArgs.fromMap(Map<String, dynamic> map) {
     return PipeArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
-      enrichment: map['enrichment'] == null ? null : (map['enrichment'] as String).input(),
-      enrichmentParameters: map['enrichmentParameters'] == null ? null : (PipeEnrichmentParameters.fromMap((map['enrichmentParameters'] as Map).cast<String, dynamic>())).input(),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
-      logConfiguration: map['logConfiguration'] == null ? null : (PipeLogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      desiredState: map['desiredState'] == null ? null : ((map['desiredState'] as String).input()).input(),
+      enrichment: map['enrichment'] == null ? null : ((map['enrichment'] as String).input()).input(),
+      enrichmentParameters: map['enrichmentParameters'] == null ? null : ((PipeEnrichmentParameters.fromMap((map['enrichmentParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
+      logConfiguration: map['logConfiguration'] == null ? null : ((PipeLogConfiguration.fromMap((map['logConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
       source: (map['source'] as String).input(),
-      sourceParameters: map['sourceParameters'] == null ? null : (PipeSourceParameters.fromMap((map['sourceParameters'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sourceParameters: map['sourceParameters'] == null ? null : ((PipeSourceParameters.fromMap((map['sourceParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       target: (map['target'] as String).input(),
-      targetParameters: map['targetParameters'] == null ? null : (PipeTargetParameters.fromMap((map['targetParameters'] as Map).cast<String, dynamic>())).input(),
+      targetParameters: map['targetParameters'] == null ? null : ((PipeTargetParameters.fromMap((map['targetParameters']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

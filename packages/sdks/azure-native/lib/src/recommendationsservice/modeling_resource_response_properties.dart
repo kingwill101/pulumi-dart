@@ -42,11 +42,11 @@ class ModelingResourceResponseProperties {
 
   factory ModelingResourceResponseProperties.fromMap(Map<String, dynamic> map) {
     return ModelingResourceResponseProperties(
-      features: map['features'] == null ? null : (map['features'] as String).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      inputData: map['inputData'] == null ? null : (ModelingInputDataResponse.fromMap((map['inputData'] as Map).cast<String, dynamic>())).input(),
+      features: map['features'] == null ? null : (map['features']! as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      inputData: map['inputData'] == null ? null : (ModelingInputDataResponse.fromMap((map['inputData']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
     );
   }
 }

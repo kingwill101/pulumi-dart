@@ -32,7 +32,7 @@ class ReceiptRuleWorkmailAction {
     return ReceiptRuleWorkmailAction(
       organizationArn: (map['organizationArn'] as String).input(),
       position: (map['position'] as int).input(),
-      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
+      topicArn: map['topicArn'] == null ? null : ((map['topicArn'] as String).input()).input(),
     );
   }
 }

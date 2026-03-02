@@ -27,8 +27,8 @@ class BrokerAuthenticatorMethodX509AttributesResponse {
 
   factory BrokerAuthenticatorMethodX509AttributesResponse.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodX509AttributesResponse(
-      keyVault: map['keyVault'] == null ? null : (KeyVaultSecretPropertiesResponse.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      keyVault: map['keyVault'] == null ? null : (KeyVaultSecretPropertiesResponse.fromMap((map['keyVault']! as Map).cast<String, dynamic>())).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
     );
   }
 }

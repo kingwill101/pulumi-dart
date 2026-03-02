@@ -33,9 +33,9 @@ class IstioServiceMesh {
 
   factory IstioServiceMesh.fromMap(Map<String, dynamic> map) {
     return IstioServiceMesh(
-      certificateAuthority: map['certificateAuthority'] == null ? null : (IstioCertificateAuthority.fromMap((map['certificateAuthority'] as Map).cast<String, dynamic>())).input(),
-      components: map['components'] == null ? null : (IstioComponents.fromMap((map['components'] as Map).cast<String, dynamic>())).input(),
-      revisions: map['revisions'] == null ? null : ((map['revisions'] as List).cast<String>()).input(),
+      certificateAuthority: map['certificateAuthority'] == null ? null : (IstioCertificateAuthority.fromMap((map['certificateAuthority']! as Map).cast<String, dynamic>())).input(),
+      components: map['components'] == null ? null : (IstioComponents.fromMap((map['components']! as Map).cast<String, dynamic>())).input(),
+      revisions: map['revisions'] == null ? null : ((map['revisions']! as List).cast<String>()).input(),
     );
   }
 }

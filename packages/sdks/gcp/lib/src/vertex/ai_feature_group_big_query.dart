@@ -28,7 +28,7 @@ class AiFeatureGroupBigQuery {
   factory AiFeatureGroupBigQuery.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupBigQuery(
       bigQuerySource: (AiFeatureGroupBigQueryBigQuerySource.fromMap((map['bigQuerySource'] as Map).cast<String, dynamic>())).input(),
-      entityIdColumns: map['entityIdColumns'] == null ? null : ((map['entityIdColumns'] as List).cast<String>()).input(),
+      entityIdColumns: map['entityIdColumns'] == null ? null : ((map['entityIdColumns']! as List).cast<String>()).input(),
     );
   }
 }

@@ -24,7 +24,7 @@ class SecurityActionFlag {
 
   factory SecurityActionFlag.fromMap(Map<String, dynamic> map) {
     return SecurityActionFlag(
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<SecurityActionFlagHeader>(map['headers'], (value) => SecurityActionFlagHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<SecurityActionFlagHeader>(map['headers']!, (value) => SecurityActionFlagHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

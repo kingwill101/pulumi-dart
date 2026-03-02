@@ -79,17 +79,17 @@ class GetSubscriptionDiagnosticSettingResult {
   factory GetSubscriptionDiagnosticSettingResult.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionDiagnosticSettingResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eventHubAuthorizationRuleId: map['eventHubAuthorizationRuleId'] == null ? null : map['eventHubAuthorizationRuleId'] as String,
-      eventHubName: map['eventHubName'] == null ? null : map['eventHubName'] as String,
+      eventHubAuthorizationRuleId: map['eventHubAuthorizationRuleId'] == null ? null : map['eventHubAuthorizationRuleId']! as String,
+      eventHubName: map['eventHubName'] == null ? null : map['eventHubName']! as String,
       id: map['id'] as String,
-      logs: map['logs'] == null ? null : pulumi.Input.decodeList<SubscriptionLogSettingsResponse>(map['logs'], (value) => SubscriptionLogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      marketplacePartnerId: map['marketplacePartnerId'] == null ? null : map['marketplacePartnerId'] as String,
+      logs: map['logs'] == null ? null : pulumi.Input.decodeList<SubscriptionLogSettingsResponse>(map['logs']!, (value) => SubscriptionLogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      marketplacePartnerId: map['marketplacePartnerId'] == null ? null : map['marketplacePartnerId']! as String,
       name: map['name'] as String,
-      serviceBusRuleId: map['serviceBusRuleId'] == null ? null : map['serviceBusRuleId'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
+      serviceBusRuleId: map['serviceBusRuleId'] == null ? null : map['serviceBusRuleId']! as String,
+      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      workspaceId: map['workspaceId'] == null ? null : map['workspaceId'] as String,
+      workspaceId: map['workspaceId'] == null ? null : map['workspaceId']! as String,
     );
   }
 }

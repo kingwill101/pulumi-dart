@@ -36,10 +36,10 @@ class SpringCloudStorageState {
 
   factory SpringCloudStorageState.fromMap(Map<String, dynamic> map) {
     return SpringCloudStorageState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId']! as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
     );
   }
 }

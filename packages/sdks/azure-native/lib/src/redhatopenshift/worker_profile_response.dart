@@ -51,13 +51,13 @@ class WorkerProfileResponse {
 
   factory WorkerProfileResponse.fromMap(Map<String, dynamic> map) {
     return WorkerProfileResponse(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
-      encryptionAtHost: map['encryptionAtHost'] == null ? null : (map['encryptionAtHost'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
+      encryptionAtHost: map['encryptionAtHost'] == null ? null : (map['encryptionAtHost']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

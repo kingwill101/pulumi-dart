@@ -36,10 +36,10 @@ class CognitoOptions {
 
   factory CognitoOptions.fromMap(Map<String, dynamic> map) {
     return CognitoOptions(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      identityPoolId: map['identityPoolId'] == null ? null : (map['identityPoolId'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      identityPoolId: map['identityPoolId'] == null ? null : (map['identityPoolId']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
+      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId']! as String).input(),
     );
   }
 }

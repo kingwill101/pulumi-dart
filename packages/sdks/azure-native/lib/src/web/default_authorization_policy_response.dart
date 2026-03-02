@@ -27,8 +27,8 @@ class DefaultAuthorizationPolicyResponse {
 
   factory DefaultAuthorizationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return DefaultAuthorizationPolicyResponse(
-      allowedApplications: map['allowedApplications'] == null ? null : ((map['allowedApplications'] as List).cast<String>()).input(),
-      allowedPrincipals: map['allowedPrincipals'] == null ? null : (AllowedPrincipalsResponse.fromMap((map['allowedPrincipals'] as Map).cast<String, dynamic>())).input(),
+      allowedApplications: map['allowedApplications'] == null ? null : ((map['allowedApplications']! as List).cast<String>()).input(),
+      allowedPrincipals: map['allowedPrincipals'] == null ? null : (AllowedPrincipalsResponse.fromMap((map['allowedPrincipals']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

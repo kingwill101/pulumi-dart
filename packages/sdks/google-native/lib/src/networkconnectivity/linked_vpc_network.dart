@@ -26,7 +26,7 @@ class LinkedVpcNetwork {
 
   factory LinkedVpcNetwork.fromMap(Map<String, dynamic> map) {
     return LinkedVpcNetwork(
-      excludeExportRanges: map['excludeExportRanges'] == null ? null : ((map['excludeExportRanges'] as List).cast<String>()).input(),
+      excludeExportRanges: map['excludeExportRanges'] == null ? null : ((map['excludeExportRanges']! as List).cast<String>()).input(),
       uri: (map['uri'] as String).input(),
     );
   }

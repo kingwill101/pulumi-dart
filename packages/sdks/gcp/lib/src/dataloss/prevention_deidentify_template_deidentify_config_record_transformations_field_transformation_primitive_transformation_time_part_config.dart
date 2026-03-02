@@ -21,7 +21,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfig(
-      partToExtract: map['partToExtract'] == null ? null : (map['partToExtract'] as String).input(),
+      partToExtract: map['partToExtract'] == null ? null : (map['partToExtract']! as String).input(),
     );
   }
 }

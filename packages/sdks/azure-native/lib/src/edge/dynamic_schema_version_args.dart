@@ -46,8 +46,8 @@ class DynamicSchemaVersionArgs {
   factory DynamicSchemaVersionArgs.fromMap(Map<String, dynamic> map) {
     return DynamicSchemaVersionArgs(
       dynamicSchemaName: (map['dynamicSchemaName'] as String).input(),
-      dynamicSchemaVersionName: map['dynamicSchemaVersionName'] == null ? null : (map['dynamicSchemaVersionName'] as String).input(),
-      properties: map['properties'] == null ? null : (SchemaVersionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      dynamicSchemaVersionName: map['dynamicSchemaVersionName'] == null ? null : (map['dynamicSchemaVersionName']! as String).input(),
+      properties: map['properties'] == null ? null : (SchemaVersionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       schemaName: (map['schemaName'] as String).input(),
     );

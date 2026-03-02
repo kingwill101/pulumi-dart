@@ -28,8 +28,8 @@ class InternetMonitorInternetMeasurementsLogDeliveryS3Config {
   factory InternetMonitorInternetMeasurementsLogDeliveryS3Config.fromMap(Map<String, dynamic> map) {
     return InternetMonitorInternetMeasurementsLogDeliveryS3Config(
       bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
-      logDeliveryStatus: map['logDeliveryStatus'] == null ? null : (map['logDeliveryStatus'] as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
+      logDeliveryStatus: map['logDeliveryStatus'] == null ? null : ((map['logDeliveryStatus'] as String).input()).input(),
     );
   }
 }

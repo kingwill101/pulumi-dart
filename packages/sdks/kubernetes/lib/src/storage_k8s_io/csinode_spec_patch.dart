@@ -22,7 +22,7 @@ class CSINodeSpecPatch {
 
   factory CSINodeSpecPatch.fromMap(Map<String, dynamic> map) {
     return CSINodeSpecPatch(
-      drivers: map['drivers'] == null ? null : (pulumi.Input.decodeList<CSINodeDriverPatch>(map['drivers'], (value) => CSINodeDriverPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      drivers: map['drivers'] == null ? null : (pulumi.Input.decodeList<CSINodeDriverPatch>(map['drivers']!, (value) => CSINodeDriverPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -60,9 +60,9 @@ class AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration {
       credentialsSecretArn: (map['credentialsSecretArn'] as String).input(),
       databaseName: (map['databaseName'] as String).input(),
       endpoint: (map['endpoint'] as String).input(),
-      endpointServiceName: map['endpointServiceName'] == null ? null : (map['endpointServiceName'] as String).input(),
-      fieldMapping: (AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfigurationFieldMapping.fromMap((map['fieldMapping'] as Map).cast<String, dynamic>())).input(),
-      textIndexName: map['textIndexName'] == null ? null : (map['textIndexName'] as String).input(),
+      endpointServiceName: map['endpointServiceName'] == null ? null : ((map['endpointServiceName'] as String).input()).input(),
+      fieldMapping: (AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfigurationFieldMapping.fromMap((map['fieldMapping']! as Map).cast<String, dynamic>())).input(),
+      textIndexName: map['textIndexName'] == null ? null : ((map['textIndexName'] as String).input()).input(),
       vectorIndexName: (map['vectorIndexName'] as String).input(),
     );
   }

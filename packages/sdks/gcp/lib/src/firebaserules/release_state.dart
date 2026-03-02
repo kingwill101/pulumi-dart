@@ -50,12 +50,12 @@ class ReleaseState {
 
   factory ReleaseState.fromMap(Map<String, dynamic> map) {
     return ReleaseState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rulesetName: map['rulesetName'] == null ? null : (map['rulesetName'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rulesetName: map['rulesetName'] == null ? null : (map['rulesetName']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

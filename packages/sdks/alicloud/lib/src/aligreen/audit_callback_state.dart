@@ -41,11 +41,11 @@ class AuditCallbackState {
 
   factory AuditCallbackState.fromMap(Map<String, dynamic> map) {
     return AuditCallbackState(
-      auditCallbackName: map['auditCallbackName'] == null ? null : (map['auditCallbackName'] as String).input(),
-      callbackSuggestions: map['callbackSuggestions'] == null ? null : ((map['callbackSuggestions'] as List).cast<String>()).input(),
-      callbackTypes: map['callbackTypes'] == null ? null : ((map['callbackTypes'] as List).cast<String>()).input(),
-      cryptType: map['cryptType'] == null ? null : (map['cryptType'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      auditCallbackName: map['auditCallbackName'] == null ? null : (map['auditCallbackName']! as String).input(),
+      callbackSuggestions: map['callbackSuggestions'] == null ? null : ((map['callbackSuggestions']! as List).cast<String>()).input(),
+      callbackTypes: map['callbackTypes'] == null ? null : ((map['callbackTypes']! as List).cast<String>()).input(),
+      cryptType: map['cryptType'] == null ? null : (map['cryptType']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

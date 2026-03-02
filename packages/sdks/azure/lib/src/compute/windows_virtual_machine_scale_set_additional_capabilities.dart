@@ -20,7 +20,7 @@ class WindowsVirtualMachineScaleSetAdditionalCapabilities {
 
   factory WindowsVirtualMachineScaleSetAdditionalCapabilities.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineScaleSetAdditionalCapabilities(
-      ultraSsdEnabled: map['ultraSsdEnabled'] == null ? null : (map['ultraSsdEnabled'] as bool).input(),
+      ultraSsdEnabled: map['ultraSsdEnabled'] == null ? null : (map['ultraSsdEnabled']! as bool).input(),
     );
   }
 }

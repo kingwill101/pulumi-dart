@@ -31,9 +31,9 @@ class EndpointConditions {
 
   factory EndpointConditions.fromMap(Map<String, dynamic> map) {
     return EndpointConditions(
-      ready: map['ready'] == null ? null : (map['ready'] as bool).input(),
-      serving: map['serving'] == null ? null : (map['serving'] as bool).input(),
-      terminating: map['terminating'] == null ? null : (map['terminating'] as bool).input(),
+      ready: map['ready'] == null ? null : (map['ready']! as bool).input(),
+      serving: map['serving'] == null ? null : (map['serving']! as bool).input(),
+      terminating: map['terminating'] == null ? null : (map['terminating']! as bool).input(),
     );
   }
 }

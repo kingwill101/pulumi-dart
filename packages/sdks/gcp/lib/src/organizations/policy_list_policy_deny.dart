@@ -25,8 +25,8 @@ class PolicyListPolicyDeny {
 
   factory PolicyListPolicyDeny.fromMap(Map<String, dynamic> map) {
     return PolicyListPolicyDeny(
-      all: map['all'] == null ? null : (map['all'] as bool).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      all: map['all'] == null ? null : (map['all']! as bool).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

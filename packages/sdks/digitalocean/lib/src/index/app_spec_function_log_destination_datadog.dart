@@ -26,7 +26,7 @@ class AppSpecFunctionLogDestinationDatadog {
   factory AppSpecFunctionLogDestinationDatadog.fromMap(Map<String, dynamic> map) {
     return AppSpecFunctionLogDestinationDatadog(
       apiKey: (map['apiKey'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
     );
   }
 }

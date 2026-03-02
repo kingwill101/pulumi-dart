@@ -36,8 +36,8 @@ class GetManagedFolderArgs {
   factory GetManagedFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedFolderArgs(
       bucket: (map['bucket'] as String).input(),
-      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : (map['ifMetagenerationMatch'] as String).input(),
-      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : (map['ifMetagenerationNotMatch'] as String).input(),
+      ifMetagenerationMatch: map['ifMetagenerationMatch'] == null ? null : (map['ifMetagenerationMatch']! as String).input(),
+      ifMetagenerationNotMatch: map['ifMetagenerationNotMatch'] == null ? null : (map['ifMetagenerationNotMatch']! as String).input(),
       managedFolder: (map['managedFolder'] as String).input(),
     );
   }

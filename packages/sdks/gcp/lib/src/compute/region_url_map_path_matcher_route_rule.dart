@@ -81,12 +81,12 @@ class RegionUrlMapPathMatcherRouteRule {
 
   factory RegionUrlMapPathMatcherRouteRule.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherRouteRule(
-      headerAction: map['headerAction'] == null ? null : (RegionUrlMapPathMatcherRouteRuleHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleMatchRule>(map['matchRules'], (value) => RegionUrlMapPathMatcherRouteRuleMatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headerAction: map['headerAction'] == null ? null : (RegionUrlMapPathMatcherRouteRuleHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleMatchRule>(map['matchRules']!, (value) => RegionUrlMapPathMatcherRouteRuleMatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       priority: (map['priority'] as int).input(),
-      routeAction: map['routeAction'] == null ? null : (RegionUrlMapPathMatcherRouteRuleRouteAction.fromMap((map['routeAction'] as Map).cast<String, dynamic>())).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      urlRedirect: map['urlRedirect'] == null ? null : (RegionUrlMapPathMatcherRouteRuleUrlRedirect.fromMap((map['urlRedirect'] as Map).cast<String, dynamic>())).input(),
+      routeAction: map['routeAction'] == null ? null : (RegionUrlMapPathMatcherRouteRuleRouteAction.fromMap((map['routeAction']! as Map).cast<String, dynamic>())).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      urlRedirect: map['urlRedirect'] == null ? null : (RegionUrlMapPathMatcherRouteRuleUrlRedirect.fromMap((map['urlRedirect']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

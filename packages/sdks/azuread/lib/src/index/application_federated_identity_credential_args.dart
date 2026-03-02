@@ -51,7 +51,7 @@ class ApplicationFederatedIdentityCredentialArgs {
     return ApplicationFederatedIdentityCredentialArgs(
       applicationId: (map['applicationId'] as String).input(),
       audiences: ((map['audiences'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       issuer: (map['issuer'] as String).input(),
       subject: (map['subject'] as String).input(),

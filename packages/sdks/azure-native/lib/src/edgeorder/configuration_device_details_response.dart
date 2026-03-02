@@ -51,7 +51,7 @@ class ConfigurationDeviceDetailsResponse {
   factory ConfigurationDeviceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationDeviceDetailsResponse(
       deviceDetails: (pulumi.Input.decodeList<DeviceDetailsResponse>(map['deviceDetails'], (value) => DeviceDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      displayInfo: map['displayInfo'] == null ? null : (DisplayInfoResponse.fromMap((map['displayInfo'] as Map).cast<String, dynamic>())).input(),
+      displayInfo: map['displayInfo'] == null ? null : (DisplayInfoResponse.fromMap((map['displayInfo']! as Map).cast<String, dynamic>())).input(),
       hierarchyInformation: (HierarchyInformationResponse.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>())).input(),
       identificationType: (map['identificationType'] as String).input(),
       quantity: (map['quantity'] as int).input(),

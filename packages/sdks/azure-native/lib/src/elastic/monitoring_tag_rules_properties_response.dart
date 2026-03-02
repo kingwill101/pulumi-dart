@@ -27,8 +27,8 @@ class MonitoringTagRulesPropertiesResponse {
 
   factory MonitoringTagRulesPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringTagRulesPropertiesResponse(
-      logRules: map['logRules'] == null ? null : (LogRulesResponse.fromMap((map['logRules'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      logRules: map['logRules'] == null ? null : (LogRulesResponse.fromMap((map['logRules']! as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
     );
   }
 }

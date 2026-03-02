@@ -45,10 +45,10 @@ class GetPageArgs {
     return GetPageArgs(
       agentId: (map['agentId'] as String).input(),
       flowId: (map['flowId'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
       location: (map['location'] as String).input(),
       pageId: (map['pageId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

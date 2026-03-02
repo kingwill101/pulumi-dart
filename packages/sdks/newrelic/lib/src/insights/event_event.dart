@@ -32,7 +32,7 @@ class EventEvent {
   factory EventEvent.fromMap(Map<String, dynamic> map) {
     return EventEvent(
       attributes: (pulumi.Input.decodeList<EventEventAttribute>(map['attributes'], (value) => EventEventAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as int).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp']! as int).input(),
       type: (map['type'] as String).input(),
     );
   }

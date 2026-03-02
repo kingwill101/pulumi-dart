@@ -26,8 +26,8 @@ class StorageBillingProperties {
 
   factory StorageBillingProperties.fromMap(Map<String, dynamic> map) {
     return StorageBillingProperties(
-      billingMode: map['billingMode'] == null ? null : (map['billingMode'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      billingMode: map['billingMode'] == null ? null : (map['billingMode']! as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
     );
   }
 }

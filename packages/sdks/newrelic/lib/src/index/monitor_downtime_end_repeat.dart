@@ -25,8 +25,8 @@ class MonitorDowntimeEndRepeat {
 
   factory MonitorDowntimeEndRepeat.fromMap(Map<String, dynamic> map) {
     return MonitorDowntimeEndRepeat(
-      onDate: map['onDate'] == null ? null : (map['onDate'] as String).input(),
-      onRepeat: map['onRepeat'] == null ? null : (map['onRepeat'] as int).input(),
+      onDate: map['onDate'] == null ? null : (map['onDate']! as String).input(),
+      onRepeat: map['onRepeat'] == null ? null : (map['onRepeat']! as int).input(),
     );
   }
 }

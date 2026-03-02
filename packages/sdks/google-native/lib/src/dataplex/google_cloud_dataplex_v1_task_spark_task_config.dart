@@ -57,14 +57,14 @@ class GoogleCloudDataplexV1TaskSparkTaskConfig {
 
   factory GoogleCloudDataplexV1TaskSparkTaskConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1TaskSparkTaskConfig(
-      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris'] as List).cast<String>()).input(),
-      fileUris: map['fileUris'] == null ? null : ((map['fileUris'] as List).cast<String>()).input(),
-      infrastructureSpec: map['infrastructureSpec'] == null ? null : (GoogleCloudDataplexV1TaskInfrastructureSpec.fromMap((map['infrastructureSpec'] as Map).cast<String, dynamic>())).input(),
-      mainClass: map['mainClass'] == null ? null : (map['mainClass'] as String).input(),
-      mainJarFileUri: map['mainJarFileUri'] == null ? null : (map['mainJarFileUri'] as String).input(),
-      pythonScriptFile: map['pythonScriptFile'] == null ? null : (map['pythonScriptFile'] as String).input(),
-      sqlScript: map['sqlScript'] == null ? null : (map['sqlScript'] as String).input(),
-      sqlScriptFile: map['sqlScriptFile'] == null ? null : (map['sqlScriptFile'] as String).input(),
+      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris']! as List).cast<String>()).input(),
+      fileUris: map['fileUris'] == null ? null : ((map['fileUris']! as List).cast<String>()).input(),
+      infrastructureSpec: map['infrastructureSpec'] == null ? null : (GoogleCloudDataplexV1TaskInfrastructureSpec.fromMap((map['infrastructureSpec']! as Map).cast<String, dynamic>())).input(),
+      mainClass: map['mainClass'] == null ? null : (map['mainClass']! as String).input(),
+      mainJarFileUri: map['mainJarFileUri'] == null ? null : (map['mainJarFileUri']! as String).input(),
+      pythonScriptFile: map['pythonScriptFile'] == null ? null : (map['pythonScriptFile']! as String).input(),
+      sqlScript: map['sqlScript'] == null ? null : (map['sqlScript']! as String).input(),
+      sqlScriptFile: map['sqlScriptFile'] == null ? null : (map['sqlScriptFile']! as String).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class WarUploadedUserSourceInfo {
 
   factory WarUploadedUserSourceInfo.fromMap(Map<String, dynamic> map) {
     return WarUploadedUserSourceInfo(
-      jvmOptions: map['jvmOptions'] == null ? null : (map['jvmOptions'] as String).input(),
-      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
+      jvmOptions: map['jvmOptions'] == null ? null : (map['jvmOptions']! as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath']! as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

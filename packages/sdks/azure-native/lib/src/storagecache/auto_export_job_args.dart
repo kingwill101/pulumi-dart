@@ -59,14 +59,14 @@ class AutoExportJobArgs {
 
   factory AutoExportJobArgs.fromMap(Map<String, dynamic> map) {
     return AutoExportJobArgs(
-      adminStatus: map['adminStatus'] == null ? null : (map['adminStatus'] as String).input(),
+      adminStatus: map['adminStatus'] == null ? null : (map['adminStatus']! as String).input(),
       amlFilesystemName: (map['amlFilesystemName'] as String).input(),
-      autoExportJobName: map['autoExportJobName'] == null ? null : (map['autoExportJobName'] as String).input(),
-      autoExportPrefixes: map['autoExportPrefixes'] == null ? null : ((map['autoExportPrefixes'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      autoExportJobName: map['autoExportJobName'] == null ? null : (map['autoExportJobName']! as String).input(),
+      autoExportPrefixes: map['autoExportPrefixes'] == null ? null : ((map['autoExportPrefixes']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

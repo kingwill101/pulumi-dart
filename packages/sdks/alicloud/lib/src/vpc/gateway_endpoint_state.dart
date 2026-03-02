@@ -67,16 +67,16 @@ class GatewayEndpointState {
 
   factory GatewayEndpointState.fromMap(Map<String, dynamic> map) {
     return GatewayEndpointState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      gatewayEndpointDescrption: map['gatewayEndpointDescrption'] == null ? null : (map['gatewayEndpointDescrption'] as String).input(),
-      gatewayEndpointName: map['gatewayEndpointName'] == null ? null : (map['gatewayEndpointName'] as String).input(),
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      routeTables: map['routeTables'] == null ? null : ((map['routeTables'] as List).cast<String>()).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      gatewayEndpointDescrption: map['gatewayEndpointDescrption'] == null ? null : (map['gatewayEndpointDescrption']! as String).input(),
+      gatewayEndpointName: map['gatewayEndpointName'] == null ? null : (map['gatewayEndpointName']! as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      routeTables: map['routeTables'] == null ? null : ((map['routeTables']! as List).cast<String>()).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

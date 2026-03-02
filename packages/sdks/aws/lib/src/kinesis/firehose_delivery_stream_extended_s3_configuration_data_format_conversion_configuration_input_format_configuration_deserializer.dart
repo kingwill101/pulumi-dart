@@ -27,8 +27,8 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 
   factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializer(
-      hiveJsonSerDe: map['hiveJsonSerDe'] == null ? null : (FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe.fromMap((map['hiveJsonSerDe'] as Map).cast<String, dynamic>())).input(),
-      openXJsonSerDe: map['openXJsonSerDe'] == null ? null : (FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe.fromMap((map['openXJsonSerDe'] as Map).cast<String, dynamic>())).input(),
+      hiveJsonSerDe: map['hiveJsonSerDe'] == null ? null : ((FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe.fromMap((map['hiveJsonSerDe']! as Map).cast<String, dynamic>())).input()).input(),
+      openXJsonSerDe: map['openXJsonSerDe'] == null ? null : ((FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDe.fromMap((map['openXJsonSerDe']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

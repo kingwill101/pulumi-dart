@@ -77,17 +77,17 @@ class CxWebhookState {
 
   factory CxWebhookState.fromMap(Map<String, dynamic> map) {
     return CxWebhookState(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enableSpellCorrection: map['enableSpellCorrection'] == null ? null : (map['enableSpellCorrection'] as bool).input(),
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging'] as bool).input(),
-      genericWebService: map['genericWebService'] == null ? null : (CxWebhookGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      securitySettings: map['securitySettings'] == null ? null : (map['securitySettings'] as String).input(),
-      serviceDirectory: map['serviceDirectory'] == null ? null : (CxWebhookServiceDirectory.fromMap((map['serviceDirectory'] as Map).cast<String, dynamic>())).input(),
-      startFlow: map['startFlow'] == null ? null : (map['startFlow'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enableSpellCorrection: map['enableSpellCorrection'] == null ? null : (map['enableSpellCorrection']! as bool).input(),
+      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : (map['enableStackdriverLogging']! as bool).input(),
+      genericWebService: map['genericWebService'] == null ? null : (CxWebhookGenericWebService.fromMap((map['genericWebService']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      securitySettings: map['securitySettings'] == null ? null : (map['securitySettings']! as String).input(),
+      serviceDirectory: map['serviceDirectory'] == null ? null : (CxWebhookServiceDirectory.fromMap((map['serviceDirectory']! as Map).cast<String, dynamic>())).input(),
+      startFlow: map['startFlow'] == null ? null : (map['startFlow']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

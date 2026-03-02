@@ -41,10 +41,10 @@ class GroupV3Args {
 
   factory GroupV3Args.fromMap(Map<String, dynamic> map) {
     return GroupV3Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

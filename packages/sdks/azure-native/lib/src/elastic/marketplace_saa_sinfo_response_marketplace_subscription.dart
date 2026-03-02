@@ -21,7 +21,7 @@ class MarketplaceSaaSInfoResponseMarketplaceSubscription {
 
   factory MarketplaceSaaSInfoResponseMarketplaceSubscription.fromMap(Map<String, dynamic> map) {
     return MarketplaceSaaSInfoResponseMarketplaceSubscription(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class GetIndustrialSericeArgs {
 
   factory GetIndustrialSericeArgs.fromMap(Map<String, dynamic> map) {
     return GetIndustrialSericeArgs(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
     );
   }
 }

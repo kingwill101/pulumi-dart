@@ -85,18 +85,18 @@ class LkeClusterArgs {
 
   factory LkeClusterArgs.fromMap(Map<String, dynamic> map) {
     return LkeClusterArgs(
-      aplEnabled: map['aplEnabled'] == null ? null : (map['aplEnabled'] as bool).input(),
-      controlPlane: map['controlPlane'] == null ? null : (LkeClusterControlPlane.fromMap((map['controlPlane'] as Map).cast<String, dynamic>())).input(),
-      externalPoolTags: map['externalPoolTags'] == null ? null : ((map['externalPoolTags'] as List).cast<String>()).input(),
+      aplEnabled: map['aplEnabled'] == null ? null : (map['aplEnabled']! as bool).input(),
+      controlPlane: map['controlPlane'] == null ? null : (LkeClusterControlPlane.fromMap((map['controlPlane']! as Map).cast<String, dynamic>())).input(),
+      externalPoolTags: map['externalPoolTags'] == null ? null : ((map['externalPoolTags']! as List).cast<String>()).input(),
       k8sVersion: (map['k8sVersion'] as String).input(),
       label: (map['label'] as String).input(),
       pools: (pulumi.Input.decodeList<LkeClusterPool>(map['pools'], (value) => LkeClusterPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
       region: (map['region'] as String).input(),
-      stackType: map['stackType'] == null ? null : (map['stackType'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as int).input(),
+      stackType: map['stackType'] == null ? null : (map['stackType']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as int).input(),
     );
   }
 }

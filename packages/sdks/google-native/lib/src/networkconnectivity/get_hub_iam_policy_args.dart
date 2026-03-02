@@ -32,8 +32,8 @@ class GetHubIamPolicyArgs {
   factory GetHubIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetHubIamPolicyArgs(
       hubId: (map['hubId'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

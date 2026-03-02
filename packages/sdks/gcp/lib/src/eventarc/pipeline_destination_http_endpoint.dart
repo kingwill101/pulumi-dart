@@ -185,7 +185,7 @@ class PipelineDestinationHttpEndpoint {
 
   factory PipelineDestinationHttpEndpoint.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationHttpEndpoint(
-      messageBindingTemplate: map['messageBindingTemplate'] == null ? null : (map['messageBindingTemplate'] as String).input(),
+      messageBindingTemplate: map['messageBindingTemplate'] == null ? null : (map['messageBindingTemplate']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

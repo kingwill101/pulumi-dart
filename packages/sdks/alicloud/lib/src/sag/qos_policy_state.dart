@@ -71,17 +71,17 @@ class QosPolicyState {
 
   factory QosPolicyState.fromMap(Map<String, dynamic> map) {
     return QosPolicyState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destCidr: map['destCidr'] == null ? null : (map['destCidr'] as String).input(),
-      destPortRange: map['destPortRange'] == null ? null : (map['destPortRange'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      qosId: map['qosId'] == null ? null : (map['qosId'] as String).input(),
-      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr'] as String).input(),
-      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destCidr: map['destCidr'] == null ? null : (map['destCidr']! as String).input(),
+      destPortRange: map['destPortRange'] == null ? null : (map['destPortRange']! as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      qosId: map['qosId'] == null ? null : (map['qosId']! as String).input(),
+      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr']! as String).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : (map['sourcePortRange']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

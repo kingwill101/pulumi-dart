@@ -69,13 +69,13 @@ class ListTaskRunDetailsResult {
 
   factory ListTaskRunDetailsResult.fromMap(Map<String, dynamic> map) {
     return ListTaskRunDetailsResult(
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag'] as String,
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag']! as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityPropertiesResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
+      identity: map['identity'] == null ? null : IdentityPropertiesResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      runRequest: map['runRequest'] == null ? null : DockerBuildRequestResponse.fromMap((map['runRequest'] as Map).cast<String, dynamic>()),
+      runRequest: map['runRequest'] == null ? null : DockerBuildRequestResponse.fromMap((map['runRequest']! as Map).cast<String, dynamic>()),
       runResult: RunResponse.fromMap((map['runResult'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

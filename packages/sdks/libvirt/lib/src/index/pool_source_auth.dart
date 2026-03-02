@@ -31,7 +31,7 @@ class PoolSourceAuth {
 
   factory PoolSourceAuth.fromMap(Map<String, dynamic> map) {
     return PoolSourceAuth(
-      secret: map['secret'] == null ? null : (PoolSourceAuthSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      secret: map['secret'] == null ? null : (PoolSourceAuthSecret.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
       username: (map['username'] as String).input(),
     );

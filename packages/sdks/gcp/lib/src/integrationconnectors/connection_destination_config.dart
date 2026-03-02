@@ -27,7 +27,7 @@ class ConnectionDestinationConfig {
 
   factory ConnectionDestinationConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionDestinationConfig(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<ConnectionDestinationConfigDestination>(map['destinations'], (value) => ConnectionDestinationConfigDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<ConnectionDestinationConfigDestination>(map['destinations']!, (value) => ConnectionDestinationConfigDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
       key: (map['key'] as String).input(),
     );
   }

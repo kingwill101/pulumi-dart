@@ -31,7 +31,7 @@ class ProjectEnvironmentEnvironmentVariable {
   factory ProjectEnvironmentEnvironmentVariable.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentEnvironmentVariable(
       name: (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
       value: (map['value'] as String).input(),
     );
   }

@@ -27,7 +27,7 @@ class RunAsUserStrategyOptions {
 
   factory RunAsUserStrategyOptions.fromMap(Map<String, dynamic> map) {
     return RunAsUserStrategyOptions(
-      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<IDRange>(map['ranges'], (value) => IDRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<IDRange>(map['ranges']!, (value) => IDRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
       rule: (map['rule'] as String).input(),
     );
   }

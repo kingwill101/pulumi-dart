@@ -20,7 +20,7 @@ class FastTcpAppMonitor {
 
   factory FastTcpAppMonitor.fromMap(Map<String, dynamic> map) {
     return FastTcpAppMonitor(
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
     );
   }
 }

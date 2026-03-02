@@ -42,10 +42,10 @@ class LifecyclePolicyRule {
 
   factory LifecyclePolicyRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyRule(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      maximumAgeLimit: map['maximumAgeLimit'] == null ? null : (map['maximumAgeLimit'] as double).input(),
-      maximumNumberOfImages: map['maximumNumberOfImages'] == null ? null : (map['maximumNumberOfImages'] as double).input(),
-      tagPrefixList: map['tagPrefixList'] == null ? null : ((map['tagPrefixList'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      maximumAgeLimit: map['maximumAgeLimit'] == null ? null : (map['maximumAgeLimit']! as double).input(),
+      maximumNumberOfImages: map['maximumNumberOfImages'] == null ? null : (map['maximumNumberOfImages']! as double).input(),
+      tagPrefixList: map['tagPrefixList'] == null ? null : ((map['tagPrefixList']! as List).cast<String>()).input(),
       tagStatus: (LifecycleTagStatus.fromValue(map['tagStatus'] as String)).input(),
     );
   }

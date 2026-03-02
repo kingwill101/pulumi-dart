@@ -20,7 +20,7 @@ class DomainFeaturesKvmDirtyRing {
 
   factory DomainFeaturesKvmDirtyRing.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesKvmDirtyRing(
-      size: map['size'] == null ? null : (map['size'] as double).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
     );
   }
 }

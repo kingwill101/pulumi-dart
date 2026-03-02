@@ -31,9 +31,9 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      backupPeriods: map['backupPeriods'] == null ? null : ((map['backupPeriods'] as List).cast<String>()).input(),
-      backupTime: map['backupTime'] == null ? null : (map['backupTime'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      backupPeriods: map['backupPeriods'] == null ? null : ((map['backupPeriods']! as List).cast<String>()).input(),
+      backupTime: map['backupTime'] == null ? null : (map['backupTime']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
     );
   }
 }

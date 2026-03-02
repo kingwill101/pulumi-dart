@@ -45,9 +45,9 @@ class IndexFirestoreV1beta2Args {
     return IndexFirestoreV1beta2Args(
       collectionGroupId: (map['collectionGroupId'] as String).input(),
       databaseId: (map['databaseId'] as String).input(),
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<GoogleFirestoreAdminV1beta2IndexField>(map['fields'], (value) => GoogleFirestoreAdminV1beta2IndexField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      queryScope: map['queryScope'] == null ? null : (IndexQueryScopeFirestoreV1beta2.fromValue(map['queryScope'] as String)).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<GoogleFirestoreAdminV1beta2IndexField>(map['fields']!, (value) => GoogleFirestoreAdminV1beta2IndexField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      queryScope: map['queryScope'] == null ? null : (IndexQueryScopeFirestoreV1beta2.fromValue(map['queryScope']! as String)).input(),
     );
   }
 }

@@ -65,15 +65,15 @@ class NetworkFunctionRoleConfiguration {
 
   factory NetworkFunctionRoleConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkFunctionRoleConfiguration(
-      customProfile: map['customProfile'] == null ? null : (CustomProfile.fromMap((map['customProfile'] as Map).cast<String, dynamic>())).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces'], (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osProfile: map['osProfile'] == null ? null : (OsProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      roleType: map['roleType'] == null ? null : (map['roleType'] as String).input(),
-      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
-      userDataParameters: map['userDataParameters'] == null ? null : (map['userDataParameters']).input(),
-      userDataTemplate: map['userDataTemplate'] == null ? null : (map['userDataTemplate']).input(),
-      virtualMachineSize: map['virtualMachineSize'] == null ? null : (map['virtualMachineSize'] as String).input(),
+      customProfile: map['customProfile'] == null ? null : (CustomProfile.fromMap((map['customProfile']! as Map).cast<String, dynamic>())).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces']!, (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osProfile: map['osProfile'] == null ? null : (OsProfile.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      roleType: map['roleType'] == null ? null : (map['roleType']! as String).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
+      userDataParameters: map['userDataParameters'] == null ? null : (map['userDataParameters']!).input(),
+      userDataTemplate: map['userDataTemplate'] == null ? null : (map['userDataTemplate']!).input(),
+      virtualMachineSize: map['virtualMachineSize'] == null ? null : (map['virtualMachineSize']! as String).input(),
     );
   }
 }

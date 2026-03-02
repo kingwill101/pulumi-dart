@@ -27,7 +27,7 @@ class GetImageRecipeComponent {
   factory GetImageRecipeComponent.fromMap(Map<String, dynamic> map) {
     return GetImageRecipeComponent(
       componentArn: (map['componentArn'] as String).input(),
-      parameters: (pulumi.Input.decodeList<GetImageRecipeComponentParameter>(map['parameters'], (value) => GetImageRecipeComponentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: (pulumi.Input.decodeList<GetImageRecipeComponentParameter>(map['parameters']!, (value) => GetImageRecipeComponentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

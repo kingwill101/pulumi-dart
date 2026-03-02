@@ -45,12 +45,12 @@ class FederatedIdentityCredentialState {
 
   factory FederatedIdentityCredentialState.fromMap(Map<String, dynamic> map) {
     return FederatedIdentityCredentialState(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
     );
   }
 }

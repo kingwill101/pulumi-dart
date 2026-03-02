@@ -45,12 +45,12 @@ class DomainSecLabel {
 
   factory DomainSecLabel.fromMap(Map<String, dynamic> map) {
     return DomainSecLabel(
-      baseLabel: map['baseLabel'] == null ? null : (map['baseLabel'] as String).input(),
-      imageLabel: map['imageLabel'] == null ? null : (map['imageLabel'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      relabel: map['relabel'] == null ? null : (map['relabel'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      baseLabel: map['baseLabel'] == null ? null : (map['baseLabel']! as String).input(),
+      imageLabel: map['imageLabel'] == null ? null : (map['imageLabel']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      relabel: map['relabel'] == null ? null : (map['relabel']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

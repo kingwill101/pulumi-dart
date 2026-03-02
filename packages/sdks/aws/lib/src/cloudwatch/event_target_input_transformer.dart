@@ -28,7 +28,7 @@ class EventTargetInputTransformer {
 
   factory EventTargetInputTransformer.fromMap(Map<String, dynamic> map) {
     return EventTargetInputTransformer(
-      inputPaths: map['inputPaths'] == null ? null : ((map['inputPaths'] as Map).cast<String, String>()).input(),
+      inputPaths: map['inputPaths'] == null ? null : (((map['inputPaths'] as Map).cast<String, String>()).input()).input(),
       inputTemplate: (map['inputTemplate'] as String).input(),
     );
   }

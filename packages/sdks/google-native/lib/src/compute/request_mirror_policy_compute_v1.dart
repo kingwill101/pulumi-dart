@@ -21,7 +21,7 @@ class RequestMirrorPolicyComputeV1 {
 
   factory RequestMirrorPolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return RequestMirrorPolicyComputeV1(
-      backendService: map['backendService'] == null ? null : (map['backendService'] as String).input(),
+      backendService: map['backendService'] == null ? null : (map['backendService']! as String).input(),
     );
   }
 }

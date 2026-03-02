@@ -21,7 +21,7 @@ class TrustedExternalTenantResponse {
 
   factory TrustedExternalTenantResponse.fromMap(Map<String, dynamic> map) {
     return TrustedExternalTenantResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

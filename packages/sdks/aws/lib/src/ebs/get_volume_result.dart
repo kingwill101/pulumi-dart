@@ -113,7 +113,7 @@ class GetVolumeResult {
       availabilityZone: map['availabilityZone'] as String,
       createTime: map['createTime'] as String,
       encrypted: map['encrypted'] as bool,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVolumeFilter>(map['filters'], (value) => GetVolumeFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVolumeFilter>(map['filters']!, (value) => GetVolumeFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       iops: map['iops'] as int,
       kmsKeyId: map['kmsKeyId'] as String,

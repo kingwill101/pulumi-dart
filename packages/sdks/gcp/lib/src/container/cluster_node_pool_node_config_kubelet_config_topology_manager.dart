@@ -27,8 +27,8 @@ class ClusterNodePoolNodeConfigKubeletConfigTopologyManager {
 
   factory ClusterNodePoolNodeConfigKubeletConfigTopologyManager.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigKubeletConfigTopologyManager(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

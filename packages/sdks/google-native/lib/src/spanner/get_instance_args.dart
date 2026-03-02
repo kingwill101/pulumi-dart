@@ -31,9 +31,9 @@ class GetInstanceArgs {
 
   factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceArgs(
-      fieldMask: map['fieldMask'] == null ? null : (map['fieldMask'] as String).input(),
+      fieldMask: map['fieldMask'] == null ? null : (map['fieldMask']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

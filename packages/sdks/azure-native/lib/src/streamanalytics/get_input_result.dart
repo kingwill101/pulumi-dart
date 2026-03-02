@@ -43,7 +43,7 @@ class GetInputResult {
     return GetInputResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       properties: ReferenceInputPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

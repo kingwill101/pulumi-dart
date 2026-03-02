@@ -27,8 +27,8 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpec {
 
   factory GoogleCloudOrgpolicyV2AlternatePolicySpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudOrgpolicyV2AlternatePolicySpec(
-      launch: map['launch'] == null ? null : (map['launch'] as String).input(),
-      spec: map['spec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      launch: map['launch'] == null ? null : (map['launch']! as String).input(),
+      spec: map['spec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

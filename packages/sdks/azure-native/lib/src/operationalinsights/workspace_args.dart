@@ -88,19 +88,19 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      defaultDataCollectionRuleResourceId: map['defaultDataCollectionRuleResourceId'] == null ? null : (map['defaultDataCollectionRuleResourceId'] as String).input(),
-      features: map['features'] == null ? null : (WorkspaceFeatures.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
-      forceCmkForQuery: map['forceCmkForQuery'] == null ? null : (map['forceCmkForQuery'] as bool).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      publicNetworkAccessForIngestion: map['publicNetworkAccessForIngestion'] == null ? null : (map['publicNetworkAccessForIngestion'] as String).input(),
-      publicNetworkAccessForQuery: map['publicNetworkAccessForQuery'] == null ? null : (map['publicNetworkAccessForQuery'] as String).input(),
+      defaultDataCollectionRuleResourceId: map['defaultDataCollectionRuleResourceId'] == null ? null : (map['defaultDataCollectionRuleResourceId']! as String).input(),
+      features: map['features'] == null ? null : (WorkspaceFeatures.fromMap((map['features']! as Map).cast<String, dynamic>())).input(),
+      forceCmkForQuery: map['forceCmkForQuery'] == null ? null : (map['forceCmkForQuery']! as bool).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      publicNetworkAccessForIngestion: map['publicNetworkAccessForIngestion'] == null ? null : (map['publicNetworkAccessForIngestion']! as String).input(),
+      publicNetworkAccessForQuery: map['publicNetworkAccessForQuery'] == null ? null : (map['publicNetworkAccessForQuery']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
-      sku: map['sku'] == null ? null : (WorkspaceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workspaceCapping: map['workspaceCapping'] == null ? null : (WorkspaceCapping.fromMap((map['workspaceCapping'] as Map).cast<String, dynamic>())).input(),
-      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays']! as int).input(),
+      sku: map['sku'] == null ? null : (WorkspaceSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workspaceCapping: map['workspaceCapping'] == null ? null : (WorkspaceCapping.fromMap((map['workspaceCapping']! as Map).cast<String, dynamic>())).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName']! as String).input(),
     );
   }
 }

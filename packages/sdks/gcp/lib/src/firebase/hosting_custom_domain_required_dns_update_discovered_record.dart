@@ -41,10 +41,10 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecord {
 
   factory HostingCustomDomainRequiredDnsUpdateDiscoveredRecord.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainRequiredDnsUpdateDiscoveredRecord(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      rdata: map['rdata'] == null ? null : (map['rdata'] as String).input(),
-      requiredAction: map['requiredAction'] == null ? null : (map['requiredAction'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      rdata: map['rdata'] == null ? null : (map['rdata']! as String).input(),
+      requiredAction: map['requiredAction'] == null ? null : (map['requiredAction']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

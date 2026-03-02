@@ -20,7 +20,7 @@ class DomainDevicesInterfaceCoalesceRxFrames {
 
   factory DomainDevicesInterfaceCoalesceRxFrames.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceCoalesceRxFrames(
-      max: map['max'] == null ? null : (map['max'] as double).input(),
+      max: map['max'] == null ? null : (map['max']! as double).input(),
     );
   }
 }

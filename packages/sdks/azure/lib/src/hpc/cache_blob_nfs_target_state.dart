@@ -63,15 +63,15 @@ class CacheBlobNfsTargetState {
 
   factory CacheBlobNfsTargetState.fromMap(Map<String, dynamic> map) {
     return CacheBlobNfsTargetState(
-      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName'] as String).input(),
-      cacheName: map['cacheName'] == null ? null : (map['cacheName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespacePath: map['namespacePath'] == null ? null : (map['namespacePath'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      storageContainerId: map['storageContainerId'] == null ? null : (map['storageContainerId'] as String).input(),
-      usageModel: map['usageModel'] == null ? null : (map['usageModel'] as String).input(),
-      verificationTimerInSeconds: map['verificationTimerInSeconds'] == null ? null : (map['verificationTimerInSeconds'] as int).input(),
-      writeBackTimerInSeconds: map['writeBackTimerInSeconds'] == null ? null : (map['writeBackTimerInSeconds'] as int).input(),
+      accessPolicyName: map['accessPolicyName'] == null ? null : (map['accessPolicyName']! as String).input(),
+      cacheName: map['cacheName'] == null ? null : (map['cacheName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespacePath: map['namespacePath'] == null ? null : (map['namespacePath']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      storageContainerId: map['storageContainerId'] == null ? null : (map['storageContainerId']! as String).input(),
+      usageModel: map['usageModel'] == null ? null : (map['usageModel']! as String).input(),
+      verificationTimerInSeconds: map['verificationTimerInSeconds'] == null ? null : (map['verificationTimerInSeconds']! as int).input(),
+      writeBackTimerInSeconds: map['writeBackTimerInSeconds'] == null ? null : (map['writeBackTimerInSeconds']! as int).input(),
     );
   }
 }

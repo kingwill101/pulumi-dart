@@ -53,13 +53,13 @@ class MethodResponseState {
 
   factory MethodResponseState.fromMap(Map<String, dynamic> map) {
     return MethodResponseState(
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      responseModels: map['responseModels'] == null ? null : ((map['responseModels'] as Map).cast<String, String>()).input(),
-      responseParameters: map['responseParameters'] == null ? null : ((map['responseParameters'] as Map).cast<String, bool>()).input(),
-      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
+      httpMethod: map['httpMethod'] == null ? null : ((map['httpMethod'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      responseModels: map['responseModels'] == null ? null : (((map['responseModels'] as Map).cast<String, String>()).input()).input(),
+      responseParameters: map['responseParameters'] == null ? null : (((map['responseParameters'] as Map).cast<String, bool>()).input()).input(),
+      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
+      statusCode: map['statusCode'] == null ? null : ((map['statusCode'] as String).input()).input(),
     );
   }
 }

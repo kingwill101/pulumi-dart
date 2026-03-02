@@ -26,8 +26,8 @@ class NotebookParameter {
 
   factory NotebookParameter.fromMap(Map<String, dynamic> map) {
     return NotebookParameter(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

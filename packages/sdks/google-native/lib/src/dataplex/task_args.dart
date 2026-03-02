@@ -75,15 +75,15 @@ class TaskArgs {
 
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       executionSpec: (GoogleCloudDataplexV1TaskExecutionSpec.fromMap((map['executionSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       lakeId: (map['lakeId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      notebook: map['notebook'] == null ? null : (GoogleCloudDataplexV1TaskNotebookTaskConfig.fromMap((map['notebook'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      spark: map['spark'] == null ? null : (GoogleCloudDataplexV1TaskSparkTaskConfig.fromMap((map['spark'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      notebook: map['notebook'] == null ? null : (GoogleCloudDataplexV1TaskNotebookTaskConfig.fromMap((map['notebook']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      spark: map['spark'] == null ? null : (GoogleCloudDataplexV1TaskSparkTaskConfig.fromMap((map['spark']! as Map).cast<String, dynamic>())).input(),
       taskId: (map['taskId'] as String).input(),
       triggerSpec: (GoogleCloudDataplexV1TaskTriggerSpec.fromMap((map['triggerSpec'] as Map).cast<String, dynamic>())).input(),
     );

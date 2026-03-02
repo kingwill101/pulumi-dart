@@ -46,12 +46,12 @@ class ClientCaCertificateState {
 
   factory ClientCaCertificateState.fromMap(Map<String, dynamic> map) {
     return ClientCaCertificateState(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      clientCaCertId: map['clientCaCertId'] == null ? null : (map['clientCaCertId'] as String).input(),
-      clientCaCertName: map['clientCaCertName'] == null ? null : (map['clientCaCertName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      clientCaCertId: map['clientCaCertId'] == null ? null : (map['clientCaCertId']! as String).input(),
+      clientCaCertName: map['clientCaCertName'] == null ? null : (map['clientCaCertName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

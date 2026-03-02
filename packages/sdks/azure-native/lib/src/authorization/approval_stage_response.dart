@@ -47,12 +47,12 @@ class ApprovalStageResponse {
 
   factory ApprovalStageResponse.fromMap(Map<String, dynamic> map) {
     return ApprovalStageResponse(
-      approvalStageTimeOutInDays: map['approvalStageTimeOutInDays'] == null ? null : (map['approvalStageTimeOutInDays'] as int).input(),
-      escalationApprovers: map['escalationApprovers'] == null ? null : (pulumi.Input.decodeList<UserSetResponse>(map['escalationApprovers'], (value) => UserSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      escalationTimeInMinutes: map['escalationTimeInMinutes'] == null ? null : (map['escalationTimeInMinutes'] as int).input(),
-      isApproverJustificationRequired: map['isApproverJustificationRequired'] == null ? null : (map['isApproverJustificationRequired'] as bool).input(),
-      isEscalationEnabled: map['isEscalationEnabled'] == null ? null : (map['isEscalationEnabled'] as bool).input(),
-      primaryApprovers: map['primaryApprovers'] == null ? null : (pulumi.Input.decodeList<UserSetResponse>(map['primaryApprovers'], (value) => UserSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      approvalStageTimeOutInDays: map['approvalStageTimeOutInDays'] == null ? null : (map['approvalStageTimeOutInDays']! as int).input(),
+      escalationApprovers: map['escalationApprovers'] == null ? null : (pulumi.Input.decodeList<UserSetResponse>(map['escalationApprovers']!, (value) => UserSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      escalationTimeInMinutes: map['escalationTimeInMinutes'] == null ? null : (map['escalationTimeInMinutes']! as int).input(),
+      isApproverJustificationRequired: map['isApproverJustificationRequired'] == null ? null : (map['isApproverJustificationRequired']! as bool).input(),
+      isEscalationEnabled: map['isEscalationEnabled'] == null ? null : (map['isEscalationEnabled']! as bool).input(),
+      primaryApprovers: map['primaryApprovers'] == null ? null : (pulumi.Input.decodeList<UserSetResponse>(map['primaryApprovers']!, (value) => UserSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

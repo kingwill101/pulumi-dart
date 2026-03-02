@@ -52,7 +52,7 @@ class RedisLinkedServerArgs {
     return RedisLinkedServerArgs(
       linkedRedisCacheId: (map['linkedRedisCacheId'] as String).input(),
       linkedRedisCacheLocation: (map['linkedRedisCacheLocation'] as String).input(),
-      linkedServerName: map['linkedServerName'] == null ? null : (map['linkedServerName'] as String).input(),
+      linkedServerName: map['linkedServerName'] == null ? null : (map['linkedServerName']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverRole: (ReplicationRole.fromValue(map['serverRole'] as String)).input(),

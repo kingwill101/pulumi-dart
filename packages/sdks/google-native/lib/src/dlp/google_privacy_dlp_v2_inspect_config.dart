@@ -68,15 +68,15 @@ class GooglePrivacyDlpV2InspectConfig {
 
   factory GooglePrivacyDlpV2InspectConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InspectConfig(
-      contentOptions: map['contentOptions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InspectConfigContentOptionsItem>(map['contentOptions'], (value) => GooglePrivacyDlpV2InspectConfigContentOptionsItem.fromValue(value as String))).input(),
-      customInfoTypes: map['customInfoTypes'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2CustomInfoType>(map['customInfoTypes'], (value) => GooglePrivacyDlpV2CustomInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : (map['excludeInfoTypes'] as bool).input(),
-      includeQuote: map['includeQuote'] == null ? null : (map['includeQuote'] as bool).input(),
-      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(map['infoTypes'], (value) => GooglePrivacyDlpV2InfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      limits: map['limits'] == null ? null : (GooglePrivacyDlpV2FindingLimits.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
-      minLikelihood: map['minLikelihood'] == null ? null : (GooglePrivacyDlpV2InspectConfigMinLikelihood.fromValue(map['minLikelihood'] as String)).input(),
-      minLikelihoodPerInfoType: map['minLikelihoodPerInfoType'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeLikelihood>(map['minLikelihoodPerInfoType'], (value) => GooglePrivacyDlpV2InfoTypeLikelihood.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleSet: map['ruleSet'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InspectionRuleSet>(map['ruleSet'], (value) => GooglePrivacyDlpV2InspectionRuleSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contentOptions: map['contentOptions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InspectConfigContentOptionsItem>(map['contentOptions']!, (value) => GooglePrivacyDlpV2InspectConfigContentOptionsItem.fromValue(value as String))).input(),
+      customInfoTypes: map['customInfoTypes'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2CustomInfoType>(map['customInfoTypes']!, (value) => GooglePrivacyDlpV2CustomInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : (map['excludeInfoTypes']! as bool).input(),
+      includeQuote: map['includeQuote'] == null ? null : (map['includeQuote']! as bool).input(),
+      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(map['infoTypes']!, (value) => GooglePrivacyDlpV2InfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      limits: map['limits'] == null ? null : (GooglePrivacyDlpV2FindingLimits.fromMap((map['limits']! as Map).cast<String, dynamic>())).input(),
+      minLikelihood: map['minLikelihood'] == null ? null : (GooglePrivacyDlpV2InspectConfigMinLikelihood.fromValue(map['minLikelihood']! as String)).input(),
+      minLikelihoodPerInfoType: map['minLikelihoodPerInfoType'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeLikelihood>(map['minLikelihoodPerInfoType']!, (value) => GooglePrivacyDlpV2InfoTypeLikelihood.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleSet: map['ruleSet'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InspectionRuleSet>(map['ruleSet']!, (value) => GooglePrivacyDlpV2InspectionRuleSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

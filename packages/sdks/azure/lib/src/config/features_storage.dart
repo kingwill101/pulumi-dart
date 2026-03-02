@@ -19,7 +19,7 @@ class FeaturesStorage {
 
   factory FeaturesStorage.fromMap(Map<String, dynamic> map) {
     return FeaturesStorage(
-      dataPlaneAvailable: map['dataPlaneAvailable'] == null ? null : (map['dataPlaneAvailable'] as bool).input(),
+      dataPlaneAvailable: map['dataPlaneAvailable'] == null ? null : (map['dataPlaneAvailable']! as bool).input(),
     );
   }
 }

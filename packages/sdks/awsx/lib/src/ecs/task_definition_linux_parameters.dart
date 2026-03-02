@@ -46,13 +46,13 @@ class TaskDefinitionLinuxParameters {
 
   factory TaskDefinitionLinuxParameters.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionLinuxParameters(
-      capabilities: map['capabilities'] == null ? null : (TaskDefinitionKernelCapabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>())).input(),
-      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionDevice>(map['devices'], (value) => TaskDefinitionDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initProcessEnabled: map['initProcessEnabled'] == null ? null : (map['initProcessEnabled'] as bool).input(),
-      maxSwap: map['maxSwap'] == null ? null : (map['maxSwap'] as int).input(),
-      sharedMemorySize: map['sharedMemorySize'] == null ? null : (map['sharedMemorySize'] as int).input(),
-      swappiness: map['swappiness'] == null ? null : (map['swappiness'] as int).input(),
-      tmpfs: map['tmpfs'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionTmpfs>(map['tmpfs'], (value) => TaskDefinitionTmpfs.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      capabilities: map['capabilities'] == null ? null : (TaskDefinitionKernelCapabilities.fromMap((map['capabilities']! as Map).cast<String, dynamic>())).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionDevice>(map['devices']!, (value) => TaskDefinitionDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initProcessEnabled: map['initProcessEnabled'] == null ? null : (map['initProcessEnabled']! as bool).input(),
+      maxSwap: map['maxSwap'] == null ? null : (map['maxSwap']! as int).input(),
+      sharedMemorySize: map['sharedMemorySize'] == null ? null : (map['sharedMemorySize']! as int).input(),
+      swappiness: map['swappiness'] == null ? null : (map['swappiness']! as int).input(),
+      tmpfs: map['tmpfs'] == null ? null : (pulumi.Input.decodeList<TaskDefinitionTmpfs>(map['tmpfs']!, (value) => TaskDefinitionTmpfs.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

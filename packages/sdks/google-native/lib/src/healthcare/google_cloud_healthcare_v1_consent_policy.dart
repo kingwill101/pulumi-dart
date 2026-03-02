@@ -29,7 +29,7 @@ class GoogleCloudHealthcareV1ConsentPolicy {
   factory GoogleCloudHealthcareV1ConsentPolicy.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1ConsentPolicy(
       authorizationRule: (Expr.fromMap((map['authorizationRule'] as Map).cast<String, dynamic>())).input(),
-      resourceAttributes: map['resourceAttributes'] == null ? null : (pulumi.Input.decodeList<Attribute>(map['resourceAttributes'], (value) => Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceAttributes: map['resourceAttributes'] == null ? null : (pulumi.Input.decodeList<Attribute>(map['resourceAttributes']!, (value) => Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

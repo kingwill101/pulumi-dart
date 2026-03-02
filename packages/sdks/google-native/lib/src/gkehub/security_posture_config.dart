@@ -28,8 +28,8 @@ class SecurityPostureConfig {
 
   factory SecurityPostureConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPostureConfig(
-      mode: map['mode'] == null ? null : (SecurityPostureConfigMode.fromValue(map['mode'] as String)).input(),
-      vulnerabilityMode: map['vulnerabilityMode'] == null ? null : (SecurityPostureConfigVulnerabilityMode.fromValue(map['vulnerabilityMode'] as String)).input(),
+      mode: map['mode'] == null ? null : (SecurityPostureConfigMode.fromValue(map['mode']! as String)).input(),
+      vulnerabilityMode: map['vulnerabilityMode'] == null ? null : (SecurityPostureConfigVulnerabilityMode.fromValue(map['vulnerabilityMode']! as String)).input(),
     );
   }
 }

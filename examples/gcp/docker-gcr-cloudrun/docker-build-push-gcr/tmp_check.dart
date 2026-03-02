@@ -1,14 +1,12 @@
 import 'package:pulumi_docker/pulumi_docker.dart' as docker;
+
 void main() {
-  docker.GetImage;
-  docker.GetImageArgs;
-  docker.getImage;
-  docker.ImageData;
-  docker.GetImageData;
-  docker.LookupImage;
-  docker.lookupImage;
-  docker.index.GetImage;
-  docker.index.GetImageArgs;
-  docker.index.getImage;
-  docker.registry.GetImage;
+  docker.index.Image;
+  docker.index.ImageArgs;
+  docker.index.DockerBuild;
+  docker.index.DockerBuildArgs;
+  docker.index.GetRegistryImageArgs;
+  docker.index.getRegistryImage;
+  docker.providers.Docker;
+  docker.providers.DockerArgs;
 }

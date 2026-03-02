@@ -60,14 +60,14 @@ class ConsumerQuotaOverrideState {
 
   factory ConsumerQuotaOverrideState.fromMap(Map<String, dynamic> map) {
     return ConsumerQuotaOverrideState(
-      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      limit: map['limit'] == null ? null : (map['limit'] as String).input(),
-      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      overrideValue: map['overrideValue'] == null ? null : (map['overrideValue'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions']! as Map).cast<String, String>()).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as String).input(),
+      metric: map['metric'] == null ? null : (map['metric']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      overrideValue: map['overrideValue'] == null ? null : (map['overrideValue']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

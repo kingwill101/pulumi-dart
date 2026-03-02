@@ -37,10 +37,10 @@ class IosXcTest {
 
   factory IosXcTest.fromMap(Map<String, dynamic> map) {
     return IosXcTest(
-      testSpecialEntitlements: map['testSpecialEntitlements'] == null ? null : (map['testSpecialEntitlements'] as bool).input(),
+      testSpecialEntitlements: map['testSpecialEntitlements'] == null ? null : (map['testSpecialEntitlements']! as bool).input(),
       testsZip: (FileReference.fromMap((map['testsZip'] as Map).cast<String, dynamic>())).input(),
-      xcodeVersion: map['xcodeVersion'] == null ? null : (map['xcodeVersion'] as String).input(),
-      xctestrun: map['xctestrun'] == null ? null : (FileReference.fromMap((map['xctestrun'] as Map).cast<String, dynamic>())).input(),
+      xcodeVersion: map['xcodeVersion'] == null ? null : (map['xcodeVersion']! as String).input(),
+      xctestrun: map['xctestrun'] == null ? null : (FileReference.fromMap((map['xctestrun']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class GlusterfsPersistentVolumeSourcePatch {
 
   factory GlusterfsPersistentVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return GlusterfsPersistentVolumeSourcePatch(
-      endpoints: map['endpoints'] == null ? null : (map['endpoints'] as String).input(),
-      endpointsNamespace: map['endpointsNamespace'] == null ? null : (map['endpointsNamespace'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      endpoints: map['endpoints'] == null ? null : (map['endpoints']! as String).input(),
+      endpointsNamespace: map['endpointsNamespace'] == null ? null : (map['endpointsNamespace']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

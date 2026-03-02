@@ -59,14 +59,14 @@ class NetworkInterfaceIpConfiguration {
 
   factory NetworkInterfaceIpConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceIpConfiguration(
-      gatewayLoadBalancerFrontendIpConfigurationId: map['gatewayLoadBalancerFrontendIpConfigurationId'] == null ? null : (map['gatewayLoadBalancerFrontendIpConfigurationId'] as String).input(),
+      gatewayLoadBalancerFrontendIpConfigurationId: map['gatewayLoadBalancerFrontendIpConfigurationId'] == null ? null : (map['gatewayLoadBalancerFrontendIpConfigurationId']! as String).input(),
       name: (map['name'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
       privateIpAddressAllocation: (map['privateIpAddressAllocation'] as String).input(),
-      privateIpAddressVersion: map['privateIpAddressVersion'] == null ? null : (map['privateIpAddressVersion'] as String).input(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      privateIpAddressVersion: map['privateIpAddressVersion'] == null ? null : (map['privateIpAddressVersion']! as String).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

@@ -58,10 +58,10 @@ class ConsentStoreArgs {
   factory ConsentStoreArgs.fromMap(Map<String, dynamic> map) {
     return ConsentStoreArgs(
       dataset: (map['dataset'] as String).input(),
-      defaultConsentTtl: map['defaultConsentTtl'] == null ? null : (map['defaultConsentTtl'] as String).input(),
-      enableConsentCreateOnUpdate: map['enableConsentCreateOnUpdate'] == null ? null : (map['enableConsentCreateOnUpdate'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      defaultConsentTtl: map['defaultConsentTtl'] == null ? null : (map['defaultConsentTtl']! as String).input(),
+      enableConsentCreateOnUpdate: map['enableConsentCreateOnUpdate'] == null ? null : (map['enableConsentCreateOnUpdate']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

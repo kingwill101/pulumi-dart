@@ -30,9 +30,9 @@ class GradientaiKnowledgeBaseDataSourceSpacesDataSource {
 
   factory GradientaiKnowledgeBaseDataSourceSpacesDataSource.fromMap(Map<String, dynamic> map) {
     return GradientaiKnowledgeBaseDataSourceSpacesDataSource(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      itemPath: map['itemPath'] == null ? null : (map['itemPath'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      itemPath: map['itemPath'] == null ? null : (map['itemPath']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

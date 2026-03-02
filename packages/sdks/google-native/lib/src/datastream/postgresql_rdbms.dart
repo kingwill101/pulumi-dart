@@ -22,7 +22,7 @@ class PostgresqlRdbms {
 
   factory PostgresqlRdbms.fromMap(Map<String, dynamic> map) {
     return PostgresqlRdbms(
-      postgresqlSchemas: map['postgresqlSchemas'] == null ? null : (pulumi.Input.decodeList<PostgresqlSchema>(map['postgresqlSchemas'], (value) => PostgresqlSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      postgresqlSchemas: map['postgresqlSchemas'] == null ? null : (pulumi.Input.decodeList<PostgresqlSchema>(map['postgresqlSchemas']!, (value) => PostgresqlSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

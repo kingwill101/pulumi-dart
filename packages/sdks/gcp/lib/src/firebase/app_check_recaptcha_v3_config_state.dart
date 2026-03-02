@@ -52,12 +52,12 @@ class AppCheckRecaptchaV3ConfigState {
 
   factory AppCheckRecaptchaV3ConfigState.fromMap(Map<String, dynamic> map) {
     return AppCheckRecaptchaV3ConfigState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      siteSecret: map['siteSecret'] == null ? null : (map['siteSecret'] as String).input(),
-      siteSecretSet: map['siteSecretSet'] == null ? null : (map['siteSecretSet'] as bool).input(),
-      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      siteSecret: map['siteSecret'] == null ? null : (map['siteSecret']! as String).input(),
+      siteSecretSet: map['siteSecretSet'] == null ? null : (map['siteSecretSet']! as bool).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl']! as String).input(),
     );
   }
 }

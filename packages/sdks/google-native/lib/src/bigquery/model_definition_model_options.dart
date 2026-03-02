@@ -28,9 +28,9 @@ class ModelDefinitionModelOptions {
 
   factory ModelDefinitionModelOptions.fromMap(Map<String, dynamic> map) {
     return ModelDefinitionModelOptions(
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
-      lossType: map['lossType'] == null ? null : (map['lossType'] as String).input(),
-      modelType: map['modelType'] == null ? null : (map['modelType'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
+      lossType: map['lossType'] == null ? null : (map['lossType']! as String).input(),
+      modelType: map['modelType'] == null ? null : (map['modelType']! as String).input(),
     );
   }
 }

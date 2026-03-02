@@ -25,8 +25,8 @@ class InterfacePublicIpv4Address {
 
   factory InterfacePublicIpv4Address.fromMap(Map<String, dynamic> map) {
     return InterfacePublicIpv4Address(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
     );
   }
 }

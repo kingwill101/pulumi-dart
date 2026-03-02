@@ -50,10 +50,10 @@ class IntegrationAccountSchemaArgs {
   factory IntegrationAccountSchemaArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountSchemaArgs(
       content: (map['content'] as String).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -40,11 +40,11 @@ class DomainSource {
 
   factory DomainSource.fromMap(Map<String, dynamic> map) {
     return DomainSource(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as String).input(),
     );
   }
 }

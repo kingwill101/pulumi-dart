@@ -43,11 +43,11 @@ class RouterInterfaceConnectionState {
 
   factory RouterInterfaceConnectionState.fromMap(Map<String, dynamic> map) {
     return RouterInterfaceConnectionState(
-      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId'] as String).input(),
-      oppositeInterfaceId: map['oppositeInterfaceId'] == null ? null : (map['oppositeInterfaceId'] as String).input(),
-      oppositeInterfaceOwnerId: map['oppositeInterfaceOwnerId'] == null ? null : (map['oppositeInterfaceOwnerId'] as String).input(),
-      oppositeRouterId: map['oppositeRouterId'] == null ? null : (map['oppositeRouterId'] as String).input(),
-      oppositeRouterType: map['oppositeRouterType'] == null ? null : (map['oppositeRouterType'] as String).input(),
+      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId']! as String).input(),
+      oppositeInterfaceId: map['oppositeInterfaceId'] == null ? null : (map['oppositeInterfaceId']! as String).input(),
+      oppositeInterfaceOwnerId: map['oppositeInterfaceOwnerId'] == null ? null : (map['oppositeInterfaceOwnerId']! as String).input(),
+      oppositeRouterId: map['oppositeRouterId'] == null ? null : (map['oppositeRouterId']! as String).input(),
+      oppositeRouterType: map['oppositeRouterType'] == null ? null : (map['oppositeRouterType']! as String).input(),
     );
   }
 }

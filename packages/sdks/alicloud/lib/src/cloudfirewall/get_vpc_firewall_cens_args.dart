@@ -72,17 +72,17 @@ class GetVpcFirewallCensArgs {
 
   factory GetVpcFirewallCensArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcFirewallCensArgs(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
-      networkInstanceId: map['networkInstanceId'] == null ? null : (map['networkInstanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId'] as String).input(),
-      vpcFirewallName: map['vpcFirewallName'] == null ? null : (map['vpcFirewallName'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as String).input(),
+      networkInstanceId: map['networkInstanceId'] == null ? null : (map['networkInstanceId']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId']! as String).input(),
+      vpcFirewallName: map['vpcFirewallName'] == null ? null : (map['vpcFirewallName']! as String).input(),
     );
   }
 }

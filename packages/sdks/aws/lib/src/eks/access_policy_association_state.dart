@@ -52,13 +52,13 @@ class AccessPolicyAssociationState {
 
   factory AccessPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssociationState(
-      accessScope: map['accessScope'] == null ? null : (AccessPolicyAssociationAccessScope.fromMap((map['accessScope'] as Map).cast<String, dynamic>())).input(),
-      associatedAt: map['associatedAt'] == null ? null : (map['associatedAt'] as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      modifiedAt: map['modifiedAt'] == null ? null : (map['modifiedAt'] as String).input(),
-      policyArn: map['policyArn'] == null ? null : (map['policyArn'] as String).input(),
-      principalArn: map['principalArn'] == null ? null : (map['principalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accessScope: map['accessScope'] == null ? null : ((AccessPolicyAssociationAccessScope.fromMap((map['accessScope']! as Map).cast<String, dynamic>())).input()).input(),
+      associatedAt: map['associatedAt'] == null ? null : ((map['associatedAt'] as String).input()).input(),
+      clusterName: map['clusterName'] == null ? null : ((map['clusterName'] as String).input()).input(),
+      modifiedAt: map['modifiedAt'] == null ? null : ((map['modifiedAt'] as String).input()).input(),
+      policyArn: map['policyArn'] == null ? null : ((map['policyArn'] as String).input()).input(),
+      principalArn: map['principalArn'] == null ? null : ((map['principalArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

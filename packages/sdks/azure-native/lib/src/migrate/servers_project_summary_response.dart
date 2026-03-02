@@ -62,15 +62,15 @@ class ServersProjectSummaryResponse {
 
   factory ServersProjectSummaryResponse.fromMap(Map<String, dynamic> map) {
     return ServersProjectSummaryResponse(
-      assessedCount: map['assessedCount'] == null ? null : (map['assessedCount'] as int).input(),
-      discoveredCount: map['discoveredCount'] == null ? null : (map['discoveredCount'] as int).input(),
-      extendedSummary: map['extendedSummary'] == null ? null : ((map['extendedSummary'] as Map).cast<String, String>()).input(),
+      assessedCount: map['assessedCount'] == null ? null : (map['assessedCount']! as int).input(),
+      discoveredCount: map['discoveredCount'] == null ? null : (map['discoveredCount']! as int).input(),
+      extendedSummary: map['extendedSummary'] == null ? null : ((map['extendedSummary']! as Map).cast<String, String>()).input(),
       instanceType: (map['instanceType'] as String).input(),
-      lastSummaryRefreshedTime: map['lastSummaryRefreshedTime'] == null ? null : (map['lastSummaryRefreshedTime'] as String).input(),
-      migratedCount: map['migratedCount'] == null ? null : (map['migratedCount'] as int).input(),
-      refreshSummaryState: map['refreshSummaryState'] == null ? null : (map['refreshSummaryState'] as String).input(),
-      replicatingCount: map['replicatingCount'] == null ? null : (map['replicatingCount'] as int).input(),
-      testMigratedCount: map['testMigratedCount'] == null ? null : (map['testMigratedCount'] as int).input(),
+      lastSummaryRefreshedTime: map['lastSummaryRefreshedTime'] == null ? null : (map['lastSummaryRefreshedTime']! as String).input(),
+      migratedCount: map['migratedCount'] == null ? null : (map['migratedCount']! as int).input(),
+      refreshSummaryState: map['refreshSummaryState'] == null ? null : (map['refreshSummaryState']! as String).input(),
+      replicatingCount: map['replicatingCount'] == null ? null : (map['replicatingCount']! as int).input(),
+      testMigratedCount: map['testMigratedCount'] == null ? null : (map['testMigratedCount']! as int).input(),
     );
   }
 }

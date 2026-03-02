@@ -32,7 +32,7 @@ class GetDbNodesArgs {
   factory GetDbNodesArgs.fromMap(Map<String, dynamic> map) {
     return GetDbNodesArgs(
       cloudVmClusterId: (map['cloudVmClusterId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

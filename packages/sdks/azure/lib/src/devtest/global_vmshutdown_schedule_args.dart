@@ -56,10 +56,10 @@ class GlobalVMShutdownScheduleArgs {
   factory GlobalVMShutdownScheduleArgs.fromMap(Map<String, dynamic> map) {
     return GlobalVMShutdownScheduleArgs(
       dailyRecurrenceTime: (map['dailyRecurrenceTime'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       notificationSettings: (GlobalVMShutdownScheduleNotificationSettings.fromMap((map['notificationSettings'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       timezone: (map['timezone'] as String).input(),
       virtualMachineId: (map['virtualMachineId'] as String).input(),
     );

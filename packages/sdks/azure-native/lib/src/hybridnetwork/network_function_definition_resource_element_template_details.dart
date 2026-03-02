@@ -39,9 +39,9 @@ class NetworkFunctionDefinitionResourceElementTemplateDetails {
 
   factory NetworkFunctionDefinitionResourceElementTemplateDetails.fromMap(Map<String, dynamic> map) {
     return NetworkFunctionDefinitionResourceElementTemplateDetails(
-      configuration: map['configuration'] == null ? null : (ArmResourceDefinitionResourceElementTemplate.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfile.fromMap((map['dependsOnProfile'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      configuration: map['configuration'] == null ? null : (ArmResourceDefinitionResourceElementTemplate.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfile.fromMap((map['dependsOnProfile']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceElementType: (map['resourceElementType'] as String).input(),
     );
   }

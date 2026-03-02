@@ -31,7 +31,7 @@ class GetWebTypeAppEngineIamPolicyArgs {
   factory GetWebTypeAppEngineIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWebTypeAppEngineIamPolicyArgs(
       appId: (map['appId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

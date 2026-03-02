@@ -58,14 +58,14 @@ class GetZonesResult {
 
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
     return GetZonesResult(
-      availableSlbAddressIpVersion: map['availableSlbAddressIpVersion'] == null ? null : map['availableSlbAddressIpVersion'] as String,
-      availableSlbAddressType: map['availableSlbAddressType'] == null ? null : map['availableSlbAddressType'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      availableSlbAddressIpVersion: map['availableSlbAddressIpVersion'] == null ? null : map['availableSlbAddressIpVersion']! as String,
+      availableSlbAddressType: map['availableSlbAddressType'] == null ? null : map['availableSlbAddressType']! as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      masterZoneId: map['masterZoneId'] == null ? null : map['masterZoneId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      slaveZoneId: map['slaveZoneId'] == null ? null : map['slaveZoneId'] as String,
+      masterZoneId: map['masterZoneId'] == null ? null : map['masterZoneId']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      slaveZoneId: map['slaveZoneId'] == null ? null : map['slaveZoneId']! as String,
       zones: pulumi.Input.decodeList<GetZonesZone>(map['zones'], (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

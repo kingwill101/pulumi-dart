@@ -57,14 +57,14 @@ class ConditionsResponse {
 
   factory ConditionsResponse.fromMap(Map<String, dynamic> map) {
     return ConditionsResponse(
-      alertContext: map['alertContext'] == null ? null : (ConditionResponse.fromMap((map['alertContext'] as Map).cast<String, dynamic>())).input(),
-      alertRuleId: map['alertRuleId'] == null ? null : (ConditionResponse.fromMap((map['alertRuleId'] as Map).cast<String, dynamic>())).input(),
-      alertRuleName: map['alertRuleName'] == null ? null : (ConditionResponse.fromMap((map['alertRuleName'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (ConditionResponse.fromMap((map['description'] as Map).cast<String, dynamic>())).input(),
-      monitorCondition: map['monitorCondition'] == null ? null : (ConditionResponse.fromMap((map['monitorCondition'] as Map).cast<String, dynamic>())).input(),
-      monitorService: map['monitorService'] == null ? null : (ConditionResponse.fromMap((map['monitorService'] as Map).cast<String, dynamic>())).input(),
-      severity: map['severity'] == null ? null : (ConditionResponse.fromMap((map['severity'] as Map).cast<String, dynamic>())).input(),
-      targetResourceType: map['targetResourceType'] == null ? null : (ConditionResponse.fromMap((map['targetResourceType'] as Map).cast<String, dynamic>())).input(),
+      alertContext: map['alertContext'] == null ? null : (ConditionResponse.fromMap((map['alertContext']! as Map).cast<String, dynamic>())).input(),
+      alertRuleId: map['alertRuleId'] == null ? null : (ConditionResponse.fromMap((map['alertRuleId']! as Map).cast<String, dynamic>())).input(),
+      alertRuleName: map['alertRuleName'] == null ? null : (ConditionResponse.fromMap((map['alertRuleName']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (ConditionResponse.fromMap((map['description']! as Map).cast<String, dynamic>())).input(),
+      monitorCondition: map['monitorCondition'] == null ? null : (ConditionResponse.fromMap((map['monitorCondition']! as Map).cast<String, dynamic>())).input(),
+      monitorService: map['monitorService'] == null ? null : (ConditionResponse.fromMap((map['monitorService']! as Map).cast<String, dynamic>())).input(),
+      severity: map['severity'] == null ? null : (ConditionResponse.fromMap((map['severity']! as Map).cast<String, dynamic>())).input(),
+      targetResourceType: map['targetResourceType'] == null ? null : (ConditionResponse.fromMap((map['targetResourceType']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

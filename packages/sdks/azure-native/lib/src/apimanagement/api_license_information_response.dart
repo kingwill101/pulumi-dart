@@ -26,8 +26,8 @@ class ApiLicenseInformationResponse {
 
   factory ApiLicenseInformationResponse.fromMap(Map<String, dynamic> map) {
     return ApiLicenseInformationResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

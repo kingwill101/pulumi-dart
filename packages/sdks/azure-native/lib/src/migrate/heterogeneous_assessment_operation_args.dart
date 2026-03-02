@@ -40,9 +40,9 @@ class HeterogeneousAssessmentOperationArgs {
 
   factory HeterogeneousAssessmentOperationArgs.fromMap(Map<String, dynamic> map) {
     return HeterogeneousAssessmentOperationArgs(
-      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName'] as String).input(),
+      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (HeterogeneousAssessmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (HeterogeneousAssessmentProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

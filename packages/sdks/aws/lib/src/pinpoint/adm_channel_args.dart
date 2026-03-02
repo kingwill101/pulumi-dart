@@ -47,8 +47,8 @@ class AdmChannelArgs {
       applicationId: (map['applicationId'] as String).input(),
       clientId: (map['clientId'] as String).input(),
       clientSecret: (map['clientSecret'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -39,8 +39,8 @@ class GetAccountJwtArgs {
 
   factory GetAccountJwtArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountJwtArgs(
-      delegates: map['delegates'] == null ? null : ((map['delegates'] as List).cast<String>()).input(),
-      expiresIn: map['expiresIn'] == null ? null : (map['expiresIn'] as int).input(),
+      delegates: map['delegates'] == null ? null : ((map['delegates']! as List).cast<String>()).input(),
+      expiresIn: map['expiresIn'] == null ? null : (map['expiresIn']! as int).input(),
       payload: (map['payload'] as String).input(),
       targetServiceAccount: (map['targetServiceAccount'] as String).input(),
     );

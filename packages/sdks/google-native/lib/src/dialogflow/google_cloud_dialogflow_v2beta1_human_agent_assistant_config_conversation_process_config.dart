@@ -21,7 +21,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessCo
 
   factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfig(
-      recentSentencesCount: map['recentSentencesCount'] == null ? null : (map['recentSentencesCount'] as int).input(),
+      recentSentencesCount: map['recentSentencesCount'] == null ? null : (map['recentSentencesCount']! as int).input(),
     );
   }
 }

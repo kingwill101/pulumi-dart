@@ -115,20 +115,20 @@ class ManagedZoneArgs {
 
   factory ManagedZoneArgs.fromMap(Map<String, dynamic> map) {
     return ManagedZoneArgs(
-      cloudLoggingConfig: map['cloudLoggingConfig'] == null ? null : (ManagedZoneCloudLoggingConfig.fromMap((map['cloudLoggingConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      cloudLoggingConfig: map['cloudLoggingConfig'] == null ? null : (ManagedZoneCloudLoggingConfig.fromMap((map['cloudLoggingConfig']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       dnsName: (map['dnsName'] as String).input(),
-      dnssecConfig: map['dnssecConfig'] == null ? null : (ManagedZoneDnssecConfig.fromMap((map['dnssecConfig'] as Map).cast<String, dynamic>())).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      forwardingConfig: map['forwardingConfig'] == null ? null : (ManagedZoneForwardingConfig.fromMap((map['forwardingConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peeringConfig: map['peeringConfig'] == null ? null : (ManagedZonePeeringConfig.fromMap((map['peeringConfig'] as Map).cast<String, dynamic>())).input(),
-      privateVisibilityConfig: map['privateVisibilityConfig'] == null ? null : (ManagedZonePrivateVisibilityConfig.fromMap((map['privateVisibilityConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reverseLookup: map['reverseLookup'] == null ? null : (map['reverseLookup'] as bool).input(),
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ManagedZoneServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>())).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
+      dnssecConfig: map['dnssecConfig'] == null ? null : (ManagedZoneDnssecConfig.fromMap((map['dnssecConfig']! as Map).cast<String, dynamic>())).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      forwardingConfig: map['forwardingConfig'] == null ? null : (ManagedZoneForwardingConfig.fromMap((map['forwardingConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peeringConfig: map['peeringConfig'] == null ? null : (ManagedZonePeeringConfig.fromMap((map['peeringConfig']! as Map).cast<String, dynamic>())).input(),
+      privateVisibilityConfig: map['privateVisibilityConfig'] == null ? null : (ManagedZonePrivateVisibilityConfig.fromMap((map['privateVisibilityConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reverseLookup: map['reverseLookup'] == null ? null : (map['reverseLookup']! as bool).input(),
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ManagedZoneServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig']! as Map).cast<String, dynamic>())).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
     );
   }
 }

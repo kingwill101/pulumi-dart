@@ -30,9 +30,9 @@ class DevicePoolRule {
 
   factory DevicePoolRule.fromMap(Map<String, dynamic> map) {
     return DevicePoolRule(
-      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      attribute: map['attribute'] == null ? null : ((map['attribute'] as String).input()).input(),
+      operator: map['operator'] == null ? null : ((map['operator'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class GetManagedZoneIamPolicyDnsV1beta2Args {
   factory GetManagedZoneIamPolicyDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetManagedZoneIamPolicyDnsV1beta2Args(
       managedZone: (map['managedZone'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -63,15 +63,15 @@ class RegionHealthCheckServiceComputeV1Args {
 
   factory RegionHealthCheckServiceComputeV1Args.fromMap(Map<String, dynamic> map) {
     return RegionHealthCheckServiceComputeV1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      healthChecks: map['healthChecks'] == null ? null : ((map['healthChecks'] as List).cast<String>()).input(),
-      healthStatusAggregationPolicy: map['healthStatusAggregationPolicy'] == null ? null : (RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1.fromValue(map['healthStatusAggregationPolicy'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkEndpointGroups: map['networkEndpointGroups'] == null ? null : ((map['networkEndpointGroups'] as List).cast<String>()).input(),
-      notificationEndpoints: map['notificationEndpoints'] == null ? null : ((map['notificationEndpoints'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      healthChecks: map['healthChecks'] == null ? null : ((map['healthChecks']! as List).cast<String>()).input(),
+      healthStatusAggregationPolicy: map['healthStatusAggregationPolicy'] == null ? null : (RegionHealthCheckServiceHealthStatusAggregationPolicyComputeV1.fromValue(map['healthStatusAggregationPolicy']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkEndpointGroups: map['networkEndpointGroups'] == null ? null : ((map['networkEndpointGroups']! as List).cast<String>()).input(),
+      notificationEndpoints: map['notificationEndpoints'] == null ? null : ((map['notificationEndpoints']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

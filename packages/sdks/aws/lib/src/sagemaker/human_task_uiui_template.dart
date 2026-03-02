@@ -30,9 +30,9 @@ class HumanTaskUIUiTemplate {
 
   factory HumanTaskUIUiTemplate.fromMap(Map<String, dynamic> map) {
     return HumanTaskUIUiTemplate(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      contentSha256: map['contentSha256'] == null ? null : (map['contentSha256'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      content: map['content'] == null ? null : ((map['content'] as String).input()).input(),
+      contentSha256: map['contentSha256'] == null ? null : ((map['contentSha256'] as String).input()).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
     );
   }
 }

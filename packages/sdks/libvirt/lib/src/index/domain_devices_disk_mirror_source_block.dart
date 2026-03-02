@@ -26,8 +26,8 @@ class DomainDevicesDiskMirrorSourceBlock {
 
   factory DomainDevicesDiskMirrorSourceBlock.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceBlock(
-      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorSourceBlockSecLabel>(map['secLabels'], (value) => DomainDevicesDiskMirrorSourceBlockSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dev: map['dev'] == null ? null : (map['dev']! as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskMirrorSourceBlockSecLabel>(map['secLabels']!, (value) => DomainDevicesDiskMirrorSourceBlockSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

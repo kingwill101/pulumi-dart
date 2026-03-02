@@ -27,7 +27,7 @@ class GetSiteArgs {
 
   factory GetSiteArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       siteId: (map['siteId'] as String).input(),
     );
   }

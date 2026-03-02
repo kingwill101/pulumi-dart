@@ -48,12 +48,12 @@ class TrafficPolicyState {
 
   factory TrafficPolicyState.fromMap(Map<String, dynamic> map) {
     return TrafficPolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      document: map['document'] == null ? null : (map['document'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      document: map['document'] == null ? null : ((map['document'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as int).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class DiskEncryptionStatusSqladminV1beta4 {
 
   factory DiskEncryptionStatusSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionStatusSqladminV1beta4(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      kmsKeyVersionName: map['kmsKeyVersionName'] == null ? null : (map['kmsKeyVersionName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      kmsKeyVersionName: map['kmsKeyVersionName'] == null ? null : (map['kmsKeyVersionName']! as String).input(),
     );
   }
 }

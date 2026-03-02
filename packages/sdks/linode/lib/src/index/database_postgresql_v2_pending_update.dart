@@ -30,9 +30,9 @@ class DatabasePostgresqlV2PendingUpdate {
 
   factory DatabasePostgresqlV2PendingUpdate.fromMap(Map<String, dynamic> map) {
     return DatabasePostgresqlV2PendingUpdate(
-      deadline: map['deadline'] == null ? null : (map['deadline'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      plannedFor: map['plannedFor'] == null ? null : (map['plannedFor'] as String).input(),
+      deadline: map['deadline'] == null ? null : (map['deadline']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      plannedFor: map['plannedFor'] == null ? null : (map['plannedFor']! as String).input(),
     );
   }
 }

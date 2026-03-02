@@ -28,7 +28,7 @@ class EncryptionV2 {
   factory EncryptionV2.fromMap(Map<String, dynamic> map) {
     return EncryptionV2(
       keySource: (map['keySource'] as String).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (EncryptionV2KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (EncryptionV2KeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

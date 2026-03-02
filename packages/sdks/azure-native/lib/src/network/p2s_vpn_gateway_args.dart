@@ -76,17 +76,17 @@ class P2sVpnGatewayArgs {
 
   factory P2sVpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return P2sVpnGatewayArgs(
-      customDnsServers: map['customDnsServers'] == null ? null : ((map['customDnsServers'] as List).cast<String>()).input(),
-      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      isRoutingPreferenceInternet: map['isRoutingPreferenceInternet'] == null ? null : (map['isRoutingPreferenceInternet'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      p2SConnectionConfigurations: map['p2SConnectionConfigurations'] == null ? null : (pulumi.Input.decodeList<P2SConnectionConfiguration>(map['p2SConnectionConfigurations'], (value) => P2SConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customDnsServers: map['customDnsServers'] == null ? null : ((map['customDnsServers']! as List).cast<String>()).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      isRoutingPreferenceInternet: map['isRoutingPreferenceInternet'] == null ? null : (map['isRoutingPreferenceInternet']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      p2SConnectionConfigurations: map['p2SConnectionConfigurations'] == null ? null : (pulumi.Input.decodeList<P2SConnectionConfiguration>(map['p2SConnectionConfigurations']!, (value) => P2SConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualHub: map['virtualHub'] == null ? null : (SubResource.fromMap((map['virtualHub'] as Map).cast<String, dynamic>())).input(),
-      vpnGatewayScaleUnit: map['vpnGatewayScaleUnit'] == null ? null : (map['vpnGatewayScaleUnit'] as int).input(),
-      vpnServerConfiguration: map['vpnServerConfiguration'] == null ? null : (SubResource.fromMap((map['vpnServerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualHub: map['virtualHub'] == null ? null : (SubResource.fromMap((map['virtualHub']! as Map).cast<String, dynamic>())).input(),
+      vpnGatewayScaleUnit: map['vpnGatewayScaleUnit'] == null ? null : (map['vpnGatewayScaleUnit']! as int).input(),
+      vpnServerConfiguration: map['vpnServerConfiguration'] == null ? null : (SubResource.fromMap((map['vpnServerConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

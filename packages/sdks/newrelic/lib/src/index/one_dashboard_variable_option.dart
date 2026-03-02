@@ -30,9 +30,9 @@ class OneDashboardVariableOption {
 
   factory OneDashboardVariableOption.fromMap(Map<String, dynamic> map) {
     return OneDashboardVariableOption(
-      excluded: map['excluded'] == null ? null : (map['excluded'] as bool).input(),
-      ignoreTimeRange: map['ignoreTimeRange'] == null ? null : (map['ignoreTimeRange'] as bool).input(),
-      showApplyAction: map['showApplyAction'] == null ? null : (map['showApplyAction'] as bool).input(),
+      excluded: map['excluded'] == null ? null : (map['excluded']! as bool).input(),
+      ignoreTimeRange: map['ignoreTimeRange'] == null ? null : (map['ignoreTimeRange']! as bool).input(),
+      showApplyAction: map['showApplyAction'] == null ? null : (map['showApplyAction']! as bool).input(),
     );
   }
 }

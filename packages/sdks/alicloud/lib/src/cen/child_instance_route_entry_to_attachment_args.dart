@@ -47,7 +47,7 @@ class ChildInstanceRouteEntryToAttachmentArgs {
       cenId: (map['cenId'] as String).input(),
       childInstanceRouteTableId: (map['childInstanceRouteTableId'] as String).input(),
       destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
     );
   }

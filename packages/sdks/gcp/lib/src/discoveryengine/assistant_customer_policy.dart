@@ -29,8 +29,8 @@ class AssistantCustomerPolicy {
 
   factory AssistantCustomerPolicy.fromMap(Map<String, dynamic> map) {
     return AssistantCustomerPolicy(
-      bannedPhrases: map['bannedPhrases'] == null ? null : (pulumi.Input.decodeList<AssistantCustomerPolicyBannedPhrase>(map['bannedPhrases'], (value) => AssistantCustomerPolicyBannedPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      modelArmorConfig: map['modelArmorConfig'] == null ? null : (AssistantCustomerPolicyModelArmorConfig.fromMap((map['modelArmorConfig'] as Map).cast<String, dynamic>())).input(),
+      bannedPhrases: map['bannedPhrases'] == null ? null : (pulumi.Input.decodeList<AssistantCustomerPolicyBannedPhrase>(map['bannedPhrases']!, (value) => AssistantCustomerPolicyBannedPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      modelArmorConfig: map['modelArmorConfig'] == null ? null : (AssistantCustomerPolicyModelArmorConfig.fromMap((map['modelArmorConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

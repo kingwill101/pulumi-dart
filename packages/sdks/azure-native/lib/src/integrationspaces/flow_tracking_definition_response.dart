@@ -28,8 +28,8 @@ class FlowTrackingDefinitionResponse {
 
   factory FlowTrackingDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return FlowTrackingDefinitionResponse(
-      correlationContext: map['correlationContext'] == null ? null : (TrackingCorrelationContextResponse.fromMap((map['correlationContext'] as Map).cast<String, dynamic>())).input(),
-      events: map['events'] == null ? null : (pulumi.Input.decodeMapValues<TrackingEventDefinitionResponse>(map['events'], (value) => TrackingEventDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      correlationContext: map['correlationContext'] == null ? null : (TrackingCorrelationContextResponse.fromMap((map['correlationContext']! as Map).cast<String, dynamic>())).input(),
+      events: map['events'] == null ? null : (pulumi.Input.decodeMapValues<TrackingEventDefinitionResponse>(map['events']!, (value) => TrackingEventDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

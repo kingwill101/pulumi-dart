@@ -45,9 +45,9 @@ class NatGatewayPropertiesResponse {
 
   factory NatGatewayPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NatGatewayPropertiesResponse(
-      inboundNATRules: map['inboundNATRules'] == null ? null : (pulumi.Input.decodeList<InboundNATRuleResponse>(map['inboundNATRules'], (value) => InboundNATRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inboundNATRules: map['inboundNATRules'] == null ? null : (pulumi.Input.decodeList<InboundNATRuleResponse>(map['inboundNATRules']!, (value) => InboundNATRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      publicIPAddresses: map['publicIPAddresses'] == null ? null : (pulumi.Input.decodeList<PublicIPAddressArmReferenceResponse>(map['publicIPAddresses'], (value) => PublicIPAddressArmReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicIPAddresses: map['publicIPAddresses'] == null ? null : (pulumi.Input.decodeList<PublicIPAddressArmReferenceResponse>(map['publicIPAddresses']!, (value) => PublicIPAddressArmReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       status: (NatGatewayStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
       subnets: (pulumi.Input.decodeList<VirtualNetworkSubnetArmReferenceResponse>(map['subnets'], (value) => VirtualNetworkSubnetArmReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

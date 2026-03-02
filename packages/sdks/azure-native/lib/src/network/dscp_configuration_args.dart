@@ -82,18 +82,18 @@ class DscpConfigurationArgs {
 
   factory DscpConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DscpConfigurationArgs(
-      destinationIpRanges: map['destinationIpRanges'] == null ? null : (pulumi.Input.decodeList<QosIpRange>(map['destinationIpRanges'], (value) => QosIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      destinationPortRanges: map['destinationPortRanges'] == null ? null : (pulumi.Input.decodeList<QosPortRange>(map['destinationPortRanges'], (value) => QosPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dscpConfigurationName: map['dscpConfigurationName'] == null ? null : (map['dscpConfigurationName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      markings: map['markings'] == null ? null : ((map['markings'] as List).cast<int>()).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      qosDefinitionCollection: map['qosDefinitionCollection'] == null ? null : (pulumi.Input.decodeList<QosDefinition>(map['qosDefinitionCollection'], (value) => QosDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationIpRanges: map['destinationIpRanges'] == null ? null : (pulumi.Input.decodeList<QosIpRange>(map['destinationIpRanges']!, (value) => QosIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationPortRanges: map['destinationPortRanges'] == null ? null : (pulumi.Input.decodeList<QosPortRange>(map['destinationPortRanges']!, (value) => QosPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dscpConfigurationName: map['dscpConfigurationName'] == null ? null : (map['dscpConfigurationName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      markings: map['markings'] == null ? null : ((map['markings']! as List).cast<int>()).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      qosDefinitionCollection: map['qosDefinitionCollection'] == null ? null : (pulumi.Input.decodeList<QosDefinition>(map['qosDefinitionCollection']!, (value) => QosDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sourceIpRanges: map['sourceIpRanges'] == null ? null : (pulumi.Input.decodeList<QosIpRange>(map['sourceIpRanges'], (value) => QosIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : (pulumi.Input.decodeList<QosPortRange>(map['sourcePortRanges'], (value) => QosPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sourceIpRanges: map['sourceIpRanges'] == null ? null : (pulumi.Input.decodeList<QosIpRange>(map['sourceIpRanges']!, (value) => QosIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourcePortRanges: map['sourcePortRanges'] == null ? null : (pulumi.Input.decodeList<QosPortRange>(map['sourcePortRanges']!, (value) => QosPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

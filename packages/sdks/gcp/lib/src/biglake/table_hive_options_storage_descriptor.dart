@@ -30,9 +30,9 @@ class TableHiveOptionsStorageDescriptor {
 
   factory TableHiveOptionsStorageDescriptor.fromMap(Map<String, dynamic> map) {
     return TableHiveOptionsStorageDescriptor(
-      inputFormat: map['inputFormat'] == null ? null : (map['inputFormat'] as String).input(),
-      locationUri: map['locationUri'] == null ? null : (map['locationUri'] as String).input(),
-      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
+      inputFormat: map['inputFormat'] == null ? null : (map['inputFormat']! as String).input(),
+      locationUri: map['locationUri'] == null ? null : (map['locationUri']! as String).input(),
+      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat']! as String).input(),
     );
   }
 }

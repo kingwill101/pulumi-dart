@@ -22,7 +22,7 @@ class GPUDriverInstallationConfig {
 
   factory GPUDriverInstallationConfig.fromMap(Map<String, dynamic> map) {
     return GPUDriverInstallationConfig(
-      gpuDriverVersion: map['gpuDriverVersion'] == null ? null : (GPUDriverInstallationConfigGpuDriverVersion.fromValue(map['gpuDriverVersion'] as String)).input(),
+      gpuDriverVersion: map['gpuDriverVersion'] == null ? null : (GPUDriverInstallationConfigGpuDriverVersion.fromValue(map['gpuDriverVersion']! as String)).input(),
     );
   }
 }

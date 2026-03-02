@@ -31,8 +31,8 @@ class ResourceClaimSpecPatchResourceK8sIoV1alpha3 {
 
   factory ResourceClaimSpecPatchResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return ResourceClaimSpecPatchResourceK8sIoV1alpha3(
-      controller: map['controller'] == null ? null : (map['controller'] as String).input(),
-      devices: map['devices'] == null ? null : (DeviceClaimPatchResourceK8sIoV1alpha3.fromMap((map['devices'] as Map).cast<String, dynamic>())).input(),
+      controller: map['controller'] == null ? null : (map['controller']! as String).input(),
+      devices: map['devices'] == null ? null : (DeviceClaimPatchResourceK8sIoV1alpha3.fromMap((map['devices']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

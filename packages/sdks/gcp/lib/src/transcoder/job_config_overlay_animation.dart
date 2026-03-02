@@ -22,7 +22,7 @@ class JobConfigOverlayAnimation {
 
   factory JobConfigOverlayAnimation.fromMap(Map<String, dynamic> map) {
     return JobConfigOverlayAnimation(
-      animationFade: map['animationFade'] == null ? null : (JobConfigOverlayAnimationAnimationFade.fromMap((map['animationFade'] as Map).cast<String, dynamic>())).input(),
+      animationFade: map['animationFade'] == null ? null : (JobConfigOverlayAnimationAnimationFade.fromMap((map['animationFade']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ClusterNodeConfigContainerdConfigRegistryHostHostCa {
 
   factory ClusterNodeConfigContainerdConfigRegistryHostHostCa.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigContainerdConfigRegistryHostHostCa(
-      gcpSecretManagerSecretUri: map['gcpSecretManagerSecretUri'] == null ? null : (map['gcpSecretManagerSecretUri'] as String).input(),
+      gcpSecretManagerSecretUri: map['gcpSecretManagerSecretUri'] == null ? null : (map['gcpSecretManagerSecretUri']! as String).input(),
     );
   }
 }

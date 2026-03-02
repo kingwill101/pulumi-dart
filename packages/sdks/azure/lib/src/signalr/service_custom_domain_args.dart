@@ -42,7 +42,7 @@ class ServiceCustomDomainArgs {
   factory ServiceCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return ServiceCustomDomainArgs(
       domainName: (map['domainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       signalrCustomCertificateId: (map['signalrCustomCertificateId'] as String).input(),
       signalrServiceId: (map['signalrServiceId'] as String).input(),
     );

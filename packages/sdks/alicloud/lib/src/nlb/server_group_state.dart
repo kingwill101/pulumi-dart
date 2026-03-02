@@ -117,22 +117,22 @@ class ServerGroupState {
 
   factory ServerGroupState.fromMap(Map<String, dynamic> map) {
     return ServerGroupState(
-      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion'] as String).input(),
-      anyPortEnabled: map['anyPortEnabled'] == null ? null : (map['anyPortEnabled'] as bool).input(),
-      connectionDrain: map['connectionDrain'] == null ? null : (map['connectionDrain'] as bool).input(),
-      connectionDrainEnabled: map['connectionDrainEnabled'] == null ? null : (map['connectionDrainEnabled'] as bool).input(),
-      connectionDrainTimeout: map['connectionDrainTimeout'] == null ? null : (map['connectionDrainTimeout'] as int).input(),
-      healthCheck: map['healthCheck'] == null ? null : (ServerGroupHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())).input(),
-      preserveClientIpEnabled: map['preserveClientIpEnabled'] == null ? null : (map['preserveClientIpEnabled'] as bool).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      scheduler: map['scheduler'] == null ? null : (map['scheduler'] as String).input(),
-      serverGroupName: map['serverGroupName'] == null ? null : (map['serverGroupName'] as String).input(),
-      serverGroupType: map['serverGroupType'] == null ? null : (map['serverGroupType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion']! as String).input(),
+      anyPortEnabled: map['anyPortEnabled'] == null ? null : (map['anyPortEnabled']! as bool).input(),
+      connectionDrain: map['connectionDrain'] == null ? null : (map['connectionDrain']! as bool).input(),
+      connectionDrainEnabled: map['connectionDrainEnabled'] == null ? null : (map['connectionDrainEnabled']! as bool).input(),
+      connectionDrainTimeout: map['connectionDrainTimeout'] == null ? null : (map['connectionDrainTimeout']! as int).input(),
+      healthCheck: map['healthCheck'] == null ? null : (ServerGroupHealthCheck.fromMap((map['healthCheck']! as Map).cast<String, dynamic>())).input(),
+      preserveClientIpEnabled: map['preserveClientIpEnabled'] == null ? null : (map['preserveClientIpEnabled']! as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      scheduler: map['scheduler'] == null ? null : (map['scheduler']! as String).input(),
+      serverGroupName: map['serverGroupName'] == null ? null : (map['serverGroupName']! as String).input(),
+      serverGroupType: map['serverGroupType'] == null ? null : (map['serverGroupType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

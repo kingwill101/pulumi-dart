@@ -25,8 +25,8 @@ class WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLoca
 
   factory WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation.fromMap(Map<String, dynamic> map) {
     return WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocationS3FileLocation(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
     );
   }
 }

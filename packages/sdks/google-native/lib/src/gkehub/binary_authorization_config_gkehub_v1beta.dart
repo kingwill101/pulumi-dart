@@ -28,8 +28,8 @@ class BinaryAuthorizationConfigGkehubV1beta {
 
   factory BinaryAuthorizationConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return BinaryAuthorizationConfigGkehubV1beta(
-      evaluationMode: map['evaluationMode'] == null ? null : (BinaryAuthorizationConfigEvaluationModeGkehubV1beta.fromValue(map['evaluationMode'] as String)).input(),
-      policyBindings: map['policyBindings'] == null ? null : (pulumi.Input.decodeList<PolicyBindingGkehubV1beta>(map['policyBindings'], (value) => PolicyBindingGkehubV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      evaluationMode: map['evaluationMode'] == null ? null : (BinaryAuthorizationConfigEvaluationModeGkehubV1beta.fromValue(map['evaluationMode']! as String)).input(),
+      policyBindings: map['policyBindings'] == null ? null : (pulumi.Input.decodeList<PolicyBindingGkehubV1beta>(map['policyBindings']!, (value) => PolicyBindingGkehubV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

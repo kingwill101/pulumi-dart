@@ -73,17 +73,17 @@ class LifecyclePolicyPolicyDetailsSchedule {
 
   factory LifecyclePolicyPolicyDetailsSchedule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsSchedule(
-      archiveRule: map['archiveRule'] == null ? null : (LifecyclePolicyPolicyDetailsScheduleArchiveRule.fromMap((map['archiveRule'] as Map).cast<String, dynamic>())).input(),
-      copyTags: map['copyTags'] == null ? null : (map['copyTags'] as bool).input(),
-      createRule: (LifecyclePolicyPolicyDetailsScheduleCreateRule.fromMap((map['createRule'] as Map).cast<String, dynamic>())).input(),
-      crossRegionCopyRules: map['crossRegionCopyRules'] == null ? null : (pulumi.Input.decodeList<LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule>(map['crossRegionCopyRules'], (value) => LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deprecateRule: map['deprecateRule'] == null ? null : (LifecyclePolicyPolicyDetailsScheduleDeprecateRule.fromMap((map['deprecateRule'] as Map).cast<String, dynamic>())).input(),
-      fastRestoreRule: map['fastRestoreRule'] == null ? null : (LifecyclePolicyPolicyDetailsScheduleFastRestoreRule.fromMap((map['fastRestoreRule'] as Map).cast<String, dynamic>())).input(),
+      archiveRule: map['archiveRule'] == null ? null : ((LifecyclePolicyPolicyDetailsScheduleArchiveRule.fromMap((map['archiveRule']! as Map).cast<String, dynamic>())).input()).input(),
+      copyTags: map['copyTags'] == null ? null : ((map['copyTags'] as bool).input()).input(),
+      createRule: (LifecyclePolicyPolicyDetailsScheduleCreateRule.fromMap((map['createRule']! as Map).cast<String, dynamic>())).input(),
+      crossRegionCopyRules: map['crossRegionCopyRules'] == null ? null : ((pulumi.Input.decodeList<LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule>(map['crossRegionCopyRules']!, (value) => LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      deprecateRule: map['deprecateRule'] == null ? null : ((LifecyclePolicyPolicyDetailsScheduleDeprecateRule.fromMap((map['deprecateRule']! as Map).cast<String, dynamic>())).input()).input(),
+      fastRestoreRule: map['fastRestoreRule'] == null ? null : ((LifecyclePolicyPolicyDetailsScheduleFastRestoreRule.fromMap((map['fastRestoreRule']! as Map).cast<String, dynamic>())).input()).input(),
       name: (map['name'] as String).input(),
-      retainRule: (LifecyclePolicyPolicyDetailsScheduleRetainRule.fromMap((map['retainRule'] as Map).cast<String, dynamic>())).input(),
-      shareRule: map['shareRule'] == null ? null : (LifecyclePolicyPolicyDetailsScheduleShareRule.fromMap((map['shareRule'] as Map).cast<String, dynamic>())).input(),
-      tagsToAdd: map['tagsToAdd'] == null ? null : ((map['tagsToAdd'] as Map).cast<String, String>()).input(),
-      variableTags: map['variableTags'] == null ? null : ((map['variableTags'] as Map).cast<String, String>()).input(),
+      retainRule: (LifecyclePolicyPolicyDetailsScheduleRetainRule.fromMap((map['retainRule']! as Map).cast<String, dynamic>())).input(),
+      shareRule: map['shareRule'] == null ? null : ((LifecyclePolicyPolicyDetailsScheduleShareRule.fromMap((map['shareRule']! as Map).cast<String, dynamic>())).input()).input(),
+      tagsToAdd: map['tagsToAdd'] == null ? null : (((map['tagsToAdd'] as Map).cast<String, String>()).input()).input(),
+      variableTags: map['variableTags'] == null ? null : (((map['variableTags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

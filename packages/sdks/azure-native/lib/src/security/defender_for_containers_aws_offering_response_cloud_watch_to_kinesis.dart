@@ -21,7 +21,7 @@ class DefenderForContainersAwsOfferingResponseCloudWatchToKinesis {
 
   factory DefenderForContainersAwsOfferingResponseCloudWatchToKinesis.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersAwsOfferingResponseCloudWatchToKinesis(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
     );
   }
 }

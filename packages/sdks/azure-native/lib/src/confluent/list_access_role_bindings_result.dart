@@ -33,9 +33,9 @@ class ListAccessRoleBindingsResult {
 
   factory ListAccessRoleBindingsResult.fromMap(Map<String, dynamic> map) {
     return ListAccessRoleBindingsResult(
-      data: map['data'] == null ? null : pulumi.Input.decodeList<RoleBindingRecordResponse>(map['data'], (value) => RoleBindingRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ConfluentListMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      data: map['data'] == null ? null : pulumi.Input.decodeList<RoleBindingRecordResponse>(map['data']!, (value) => RoleBindingRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
+      kind: map['kind'] == null ? null : map['kind']! as String,
+      metadata: map['metadata'] == null ? null : ConfluentListMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
     );
   }
 }

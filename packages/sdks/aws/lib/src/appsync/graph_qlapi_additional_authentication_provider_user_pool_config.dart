@@ -30,8 +30,8 @@ class GraphQLApiAdditionalAuthenticationProviderUserPoolConfig {
 
   factory GraphQLApiAdditionalAuthenticationProviderUserPoolConfig.fromMap(Map<String, dynamic> map) {
     return GraphQLApiAdditionalAuthenticationProviderUserPoolConfig(
-      appIdClientRegex: map['appIdClientRegex'] == null ? null : (map['appIdClientRegex'] as String).input(),
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
+      appIdClientRegex: map['appIdClientRegex'] == null ? null : ((map['appIdClientRegex'] as String).input()).input(),
+      awsRegion: map['awsRegion'] == null ? null : ((map['awsRegion'] as String).input()).input(),
       userPoolId: (map['userPoolId'] as String).input(),
     );
   }

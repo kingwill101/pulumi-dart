@@ -43,11 +43,11 @@ class ConnectionBgpConfig {
 
   factory ConnectionBgpConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionBgpConfig(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      localAsn: map['localAsn'] == null ? null : (map['localAsn'] as String).input(),
-      localBgpIp: map['localBgpIp'] == null ? null : (map['localBgpIp'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tunnelCidr: map['tunnelCidr'] == null ? null : (map['tunnelCidr'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      localAsn: map['localAsn'] == null ? null : (map['localAsn']! as String).input(),
+      localBgpIp: map['localBgpIp'] == null ? null : (map['localBgpIp']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tunnelCidr: map['tunnelCidr'] == null ? null : (map['tunnelCidr']! as String).input(),
     );
   }
 }

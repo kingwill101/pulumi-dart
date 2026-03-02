@@ -50,12 +50,12 @@ class SpacesBucketLifecycleRule {
 
   factory SpacesBucketLifecycleRule.fromMap(Map<String, dynamic> map) {
     return SpacesBucketLifecycleRule(
-      abortIncompleteMultipartUploadDays: map['abortIncompleteMultipartUploadDays'] == null ? null : (map['abortIncompleteMultipartUploadDays'] as int).input(),
+      abortIncompleteMultipartUploadDays: map['abortIncompleteMultipartUploadDays'] == null ? null : (map['abortIncompleteMultipartUploadDays']! as int).input(),
       enabled: (map['enabled'] as bool).input(),
-      expiration: map['expiration'] == null ? null : (SpacesBucketLifecycleRuleExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : (SpacesBucketLifecycleRuleNoncurrentVersionExpiration.fromMap((map['noncurrentVersionExpiration'] as Map).cast<String, dynamic>())).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      expiration: map['expiration'] == null ? null : (SpacesBucketLifecycleRuleExpiration.fromMap((map['expiration']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : (SpacesBucketLifecycleRuleNoncurrentVersionExpiration.fromMap((map['noncurrentVersionExpiration']! as Map).cast<String, dynamic>())).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
     );
   }
 }

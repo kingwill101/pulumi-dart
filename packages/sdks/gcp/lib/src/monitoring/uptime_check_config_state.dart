@@ -112,22 +112,22 @@ class UptimeCheckConfigState {
 
   factory UptimeCheckConfigState.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigState(
-      checkerType: map['checkerType'] == null ? null : (map['checkerType'] as String).input(),
-      contentMatchers: map['contentMatchers'] == null ? null : (pulumi.Input.decodeList<UptimeCheckConfigContentMatcher>(map['contentMatchers'], (value) => UptimeCheckConfigContentMatcher.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      httpCheck: map['httpCheck'] == null ? null : (UptimeCheckConfigHttpCheck.fromMap((map['httpCheck'] as Map).cast<String, dynamic>())).input(),
-      logCheckFailures: map['logCheckFailures'] == null ? null : (map['logCheckFailures'] as bool).input(),
-      monitoredResource: map['monitoredResource'] == null ? null : (UptimeCheckConfigMonitoredResource.fromMap((map['monitoredResource'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (UptimeCheckConfigResourceGroup.fromMap((map['resourceGroup'] as Map).cast<String, dynamic>())).input(),
-      selectedRegions: map['selectedRegions'] == null ? null : ((map['selectedRegions'] as List).cast<String>()).input(),
-      syntheticMonitor: map['syntheticMonitor'] == null ? null : (UptimeCheckConfigSyntheticMonitor.fromMap((map['syntheticMonitor'] as Map).cast<String, dynamic>())).input(),
-      tcpCheck: map['tcpCheck'] == null ? null : (UptimeCheckConfigTcpCheck.fromMap((map['tcpCheck'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
-      uptimeCheckId: map['uptimeCheckId'] == null ? null : (map['uptimeCheckId'] as String).input(),
-      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
+      checkerType: map['checkerType'] == null ? null : (map['checkerType']! as String).input(),
+      contentMatchers: map['contentMatchers'] == null ? null : (pulumi.Input.decodeList<UptimeCheckConfigContentMatcher>(map['contentMatchers']!, (value) => UptimeCheckConfigContentMatcher.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      httpCheck: map['httpCheck'] == null ? null : (UptimeCheckConfigHttpCheck.fromMap((map['httpCheck']! as Map).cast<String, dynamic>())).input(),
+      logCheckFailures: map['logCheckFailures'] == null ? null : (map['logCheckFailures']! as bool).input(),
+      monitoredResource: map['monitoredResource'] == null ? null : (UptimeCheckConfigMonitoredResource.fromMap((map['monitoredResource']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (UptimeCheckConfigResourceGroup.fromMap((map['resourceGroup']! as Map).cast<String, dynamic>())).input(),
+      selectedRegions: map['selectedRegions'] == null ? null : ((map['selectedRegions']! as List).cast<String>()).input(),
+      syntheticMonitor: map['syntheticMonitor'] == null ? null : (UptimeCheckConfigSyntheticMonitor.fromMap((map['syntheticMonitor']! as Map).cast<String, dynamic>())).input(),
+      tcpCheck: map['tcpCheck'] == null ? null : (UptimeCheckConfigTcpCheck.fromMap((map['tcpCheck']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      uptimeCheckId: map['uptimeCheckId'] == null ? null : (map['uptimeCheckId']! as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class GoogleCloudDialogflowCxV3beta1TestCaseResult {
 
   factory GoogleCloudDialogflowCxV3beta1TestCaseResult.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1TestCaseResult(
-      conversationTurns: map['conversationTurns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ConversationTurn>(map['conversationTurns'], (value) => GoogleCloudDialogflowCxV3beta1ConversationTurn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      testResult: map['testResult'] == null ? null : (GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult.fromValue(map['testResult'] as String)).input(),
-      testTime: map['testTime'] == null ? null : (map['testTime'] as String).input(),
+      conversationTurns: map['conversationTurns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ConversationTurn>(map['conversationTurns']!, (value) => GoogleCloudDialogflowCxV3beta1ConversationTurn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      testResult: map['testResult'] == null ? null : (GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult.fromValue(map['testResult']! as String)).input(),
+      testTime: map['testTime'] == null ? null : (map['testTime']! as String).input(),
     );
   }
 }

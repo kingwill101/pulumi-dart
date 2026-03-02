@@ -36,10 +36,10 @@ class LocationPreference {
 
   factory LocationPreference.fromMap(Map<String, dynamic> map) {
     return LocationPreference(
-      followGaeApplication: map['followGaeApplication'] == null ? null : (map['followGaeApplication'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      secondaryZone: map['secondaryZone'] == null ? null : (map['secondaryZone'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      followGaeApplication: map['followGaeApplication'] == null ? null : (map['followGaeApplication']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      secondaryZone: map['secondaryZone'] == null ? null : (map['secondaryZone']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

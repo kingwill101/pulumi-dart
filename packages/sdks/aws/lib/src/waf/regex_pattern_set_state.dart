@@ -31,9 +31,9 @@ class RegexPatternSetState {
 
   factory RegexPatternSetState.fromMap(Map<String, dynamic> map) {
     return RegexPatternSetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      regexPatternStrings: map['regexPatternStrings'] == null ? null : ((map['regexPatternStrings'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      regexPatternStrings: map['regexPatternStrings'] == null ? null : (((map['regexPatternStrings'] as List).cast<String>()).input()).input(),
     );
   }
 }

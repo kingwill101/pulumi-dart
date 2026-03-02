@@ -41,11 +41,11 @@ class MonitorLogResponse {
 
   factory MonitorLogResponse.fromMap(Map<String, dynamic> map) {
     return MonitorLogResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      workspace: map['workspace'] == null ? null : (map['workspace'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      workspace: map['workspace'] == null ? null : (map['workspace']! as String).input(),
     );
   }
 }

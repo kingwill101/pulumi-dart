@@ -45,12 +45,12 @@ class EmailTemplateState {
 
   factory EmailTemplateState.fromMap(Map<String, dynamic> map) {
     return EmailTemplateState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      emailTemplates: map['emailTemplates'] == null ? null : (pulumi.Input.decodeList<EmailTemplateEmailTemplate>(map['emailTemplates'], (value) => EmailTemplateEmailTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      emailTemplates: map['emailTemplates'] == null ? null : ((pulumi.Input.decodeList<EmailTemplateEmailTemplate>(map['emailTemplates']!, (value) => EmailTemplateEmailTemplate.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      templateName: map['templateName'] == null ? null : ((map['templateName'] as String).input()).input(),
     );
   }
 }

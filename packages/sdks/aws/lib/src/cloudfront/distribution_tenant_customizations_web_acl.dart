@@ -25,8 +25,8 @@ class DistributionTenantCustomizationsWebAcl {
 
   factory DistributionTenantCustomizationsWebAcl.fromMap(Map<String, dynamic> map) {
     return DistributionTenantCustomizationsWebAcl(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      action: map['action'] == null ? null : ((map['action'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
     );
   }
 }

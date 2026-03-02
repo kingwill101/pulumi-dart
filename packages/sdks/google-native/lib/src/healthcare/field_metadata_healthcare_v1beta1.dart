@@ -27,8 +27,8 @@ class FieldMetadataHealthcareV1beta1 {
 
   factory FieldMetadataHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return FieldMetadataHealthcareV1beta1(
-      action: map['action'] == null ? null : (FieldMetadataActionHealthcareV1beta1.fromValue(map['action'] as String)).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
+      action: map['action'] == null ? null : (FieldMetadataActionHealthcareV1beta1.fromValue(map['action']! as String)).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
     );
   }
 }

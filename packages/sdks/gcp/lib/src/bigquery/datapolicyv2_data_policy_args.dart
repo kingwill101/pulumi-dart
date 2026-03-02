@@ -73,13 +73,13 @@ class Datapolicyv2DataPolicyArgs {
 
   factory Datapolicyv2DataPolicyArgs.fromMap(Map<String, dynamic> map) {
     return Datapolicyv2DataPolicyArgs(
-      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : (Datapolicyv2DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy'] as Map).cast<String, dynamic>())).input(),
+      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : (Datapolicyv2DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy']! as Map).cast<String, dynamic>())).input(),
       dataPolicyId: (map['dataPolicyId'] as String).input(),
       dataPolicyType: (map['dataPolicyType'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      grantees: map['grantees'] == null ? null : ((map['grantees'] as List).cast<String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      grantees: map['grantees'] == null ? null : ((map['grantees']! as List).cast<String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

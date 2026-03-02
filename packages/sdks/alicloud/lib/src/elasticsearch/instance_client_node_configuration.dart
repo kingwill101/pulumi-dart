@@ -35,10 +35,10 @@ class InstanceClientNodeConfiguration {
 
   factory InstanceClientNodeConfiguration.fromMap(Map<String, dynamic> map) {
     return InstanceClientNodeConfiguration(
-      amount: map['amount'] == null ? null : (map['amount'] as int).input(),
-      disk: map['disk'] == null ? null : (map['disk'] as int).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as int).input(),
+      disk: map['disk'] == null ? null : (map['disk']! as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      spec: map['spec'] == null ? null : (map['spec']! as String).input(),
     );
   }
 }

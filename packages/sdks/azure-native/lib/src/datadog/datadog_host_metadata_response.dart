@@ -30,9 +30,9 @@ class DatadogHostMetadataResponse {
 
   factory DatadogHostMetadataResponse.fromMap(Map<String, dynamic> map) {
     return DatadogHostMetadataResponse(
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
-      installMethod: map['installMethod'] == null ? null : (DatadogInstallMethodResponse.fromMap((map['installMethod'] as Map).cast<String, dynamic>())).input(),
-      logsAgent: map['logsAgent'] == null ? null : (DatadogLogsAgentResponse.fromMap((map['logsAgent'] as Map).cast<String, dynamic>())).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
+      installMethod: map['installMethod'] == null ? null : (DatadogInstallMethodResponse.fromMap((map['installMethod']! as Map).cast<String, dynamic>())).input(),
+      logsAgent: map['logsAgent'] == null ? null : (DatadogLogsAgentResponse.fromMap((map['logsAgent']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

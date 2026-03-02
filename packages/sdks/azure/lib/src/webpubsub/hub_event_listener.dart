@@ -37,8 +37,8 @@ class HubEventListener {
     return HubEventListener(
       eventhubName: (map['eventhubName'] as String).input(),
       eventhubNamespaceName: (map['eventhubNamespaceName'] as String).input(),
-      systemEventNameFilters: map['systemEventNameFilters'] == null ? null : ((map['systemEventNameFilters'] as List).cast<String>()).input(),
-      userEventNameFilters: map['userEventNameFilters'] == null ? null : ((map['userEventNameFilters'] as List).cast<String>()).input(),
+      systemEventNameFilters: map['systemEventNameFilters'] == null ? null : ((map['systemEventNameFilters']! as List).cast<String>()).input(),
+      userEventNameFilters: map['userEventNameFilters'] == null ? null : ((map['userEventNameFilters']! as List).cast<String>()).input(),
     );
   }
 }

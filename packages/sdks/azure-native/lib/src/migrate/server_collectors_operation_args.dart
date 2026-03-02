@@ -50,12 +50,12 @@ class ServerCollectorsOperationArgs {
 
   factory ServerCollectorsOperationArgs.fromMap(Map<String, dynamic> map) {
     return ServerCollectorsOperationArgs(
-      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentPropertiesBase.fromMap((map['agentProperties'] as Map).cast<String, dynamic>())).input(),
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentPropertiesBase.fromMap((map['agentProperties']! as Map).cast<String, dynamic>())).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
       projectName: (map['projectName'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverCollectorName: map['serverCollectorName'] == null ? null : (map['serverCollectorName'] as String).input(),
+      serverCollectorName: map['serverCollectorName'] == null ? null : (map['serverCollectorName']! as String).input(),
     );
   }
 }

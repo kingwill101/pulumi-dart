@@ -25,8 +25,8 @@ class EndpointClientLoginBannerOptions {
 
   factory EndpointClientLoginBannerOptions.fromMap(Map<String, dynamic> map) {
     return EndpointClientLoginBannerOptions(
-      bannerText: map['bannerText'] == null ? null : (map['bannerText'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      bannerText: map['bannerText'] == null ? null : ((map['bannerText'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
     );
   }
 }

@@ -78,17 +78,17 @@ class AssessmentProjectsOperationArgs {
 
   factory AssessmentProjectsOperationArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentProjectsOperationArgs(
-      assessmentSolutionId: map['assessmentSolutionId'] == null ? null : (map['assessmentSolutionId'] as String).input(),
-      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : (map['customerStorageAccountArmId'] as String).input(),
-      customerWorkspaceId: map['customerWorkspaceId'] == null ? null : (map['customerWorkspaceId'] as String).input(),
-      customerWorkspaceLocation: map['customerWorkspaceLocation'] == null ? null : (map['customerWorkspaceLocation'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      projectStatus: map['projectStatus'] == null ? null : (map['projectStatus'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      assessmentSolutionId: map['assessmentSolutionId'] == null ? null : (map['assessmentSolutionId']! as String).input(),
+      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : (map['customerStorageAccountArmId']! as String).input(),
+      customerWorkspaceId: map['customerWorkspaceId'] == null ? null : (map['customerWorkspaceId']! as String).input(),
+      customerWorkspaceLocation: map['customerWorkspaceLocation'] == null ? null : (map['customerWorkspaceLocation']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      projectStatus: map['projectStatus'] == null ? null : (map['projectStatus']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class DomainFeaturesCcfAssist {
 
   factory DomainFeaturesCcfAssist.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCcfAssist(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

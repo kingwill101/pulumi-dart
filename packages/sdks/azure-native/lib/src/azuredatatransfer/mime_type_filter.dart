@@ -26,8 +26,8 @@ class MimeTypeFilter {
 
   factory MimeTypeFilter.fromMap(Map<String, dynamic> map) {
     return MimeTypeFilter(
-      extensions: map['extensions'] == null ? null : ((map['extensions'] as List).cast<String>()).input(),
-      media: map['media'] == null ? null : (map['media'] as String).input(),
+      extensions: map['extensions'] == null ? null : ((map['extensions']! as List).cast<String>()).input(),
+      media: map['media'] == null ? null : (map['media']! as String).input(),
     );
   }
 }

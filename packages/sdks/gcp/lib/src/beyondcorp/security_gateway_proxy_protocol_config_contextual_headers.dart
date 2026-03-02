@@ -42,10 +42,10 @@ class SecurityGatewayProxyProtocolConfigContextualHeaders {
 
   factory SecurityGatewayProxyProtocolConfigContextualHeaders.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayProxyProtocolConfigContextualHeaders(
-      deviceInfo: map['deviceInfo'] == null ? null : (SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo.fromMap((map['deviceInfo'] as Map).cast<String, dynamic>())).input(),
-      groupInfo: map['groupInfo'] == null ? null : (SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo.fromMap((map['groupInfo'] as Map).cast<String, dynamic>())).input(),
-      outputType: map['outputType'] == null ? null : (map['outputType'] as String).input(),
-      userInfo: map['userInfo'] == null ? null : (SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo.fromMap((map['userInfo'] as Map).cast<String, dynamic>())).input(),
+      deviceInfo: map['deviceInfo'] == null ? null : (SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo.fromMap((map['deviceInfo']! as Map).cast<String, dynamic>())).input(),
+      groupInfo: map['groupInfo'] == null ? null : (SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo.fromMap((map['groupInfo']! as Map).cast<String, dynamic>())).input(),
+      outputType: map['outputType'] == null ? null : (map['outputType']! as String).input(),
+      userInfo: map['userInfo'] == null ? null : (SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo.fromMap((map['userInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

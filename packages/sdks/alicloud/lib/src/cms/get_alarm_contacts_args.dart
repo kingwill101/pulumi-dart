@@ -46,11 +46,11 @@ class GetAlarmContactsArgs {
 
   factory GetAlarmContactsArgs.fromMap(Map<String, dynamic> map) {
     return GetAlarmContactsArgs(
-      chanelType: map['chanelType'] == null ? null : (map['chanelType'] as String).input(),
-      chanelValue: map['chanelValue'] == null ? null : (map['chanelValue'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      chanelType: map['chanelType'] == null ? null : (map['chanelType']! as String).input(),
+      chanelValue: map['chanelValue'] == null ? null : (map['chanelValue']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

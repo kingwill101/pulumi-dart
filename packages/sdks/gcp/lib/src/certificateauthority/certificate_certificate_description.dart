@@ -75,14 +75,14 @@ class CertificateCertificateDescription {
 
   factory CertificateCertificateDescription.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescription(
-      aiaIssuingCertificateUrls: map['aiaIssuingCertificateUrls'] == null ? null : ((map['aiaIssuingCertificateUrls'] as List).cast<String>()).input(),
-      authorityKeyIds: map['authorityKeyIds'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionAuthorityKeyId>(map['authorityKeyIds'], (value) => CertificateCertificateDescriptionAuthorityKeyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      certFingerprints: map['certFingerprints'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionCertFingerprint>(map['certFingerprints'], (value) => CertificateCertificateDescriptionCertFingerprint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      crlDistributionPoints: map['crlDistributionPoints'] == null ? null : ((map['crlDistributionPoints'] as List).cast<String>()).input(),
-      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionPublicKey>(map['publicKeys'], (value) => CertificateCertificateDescriptionPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subjectDescriptions: map['subjectDescriptions'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescription>(map['subjectDescriptions'], (value) => CertificateCertificateDescriptionSubjectDescription.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subjectKeyIds: map['subjectKeyIds'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectKeyId>(map['subjectKeyIds'], (value) => CertificateCertificateDescriptionSubjectKeyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      x509Descriptions: map['x509Descriptions'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509Description>(map['x509Descriptions'], (value) => CertificateCertificateDescriptionX509Description.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aiaIssuingCertificateUrls: map['aiaIssuingCertificateUrls'] == null ? null : ((map['aiaIssuingCertificateUrls']! as List).cast<String>()).input(),
+      authorityKeyIds: map['authorityKeyIds'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionAuthorityKeyId>(map['authorityKeyIds']!, (value) => CertificateCertificateDescriptionAuthorityKeyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certFingerprints: map['certFingerprints'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionCertFingerprint>(map['certFingerprints']!, (value) => CertificateCertificateDescriptionCertFingerprint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      crlDistributionPoints: map['crlDistributionPoints'] == null ? null : ((map['crlDistributionPoints']! as List).cast<String>()).input(),
+      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionPublicKey>(map['publicKeys']!, (value) => CertificateCertificateDescriptionPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subjectDescriptions: map['subjectDescriptions'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectDescription>(map['subjectDescriptions']!, (value) => CertificateCertificateDescriptionSubjectDescription.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subjectKeyIds: map['subjectKeyIds'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionSubjectKeyId>(map['subjectKeyIds']!, (value) => CertificateCertificateDescriptionSubjectKeyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      x509Descriptions: map['x509Descriptions'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509Description>(map['x509Descriptions']!, (value) => CertificateCertificateDescriptionX509Description.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

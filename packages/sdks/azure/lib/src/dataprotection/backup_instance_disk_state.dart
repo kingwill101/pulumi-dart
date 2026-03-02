@@ -56,14 +56,14 @@ class BackupInstanceDiskState {
 
   factory BackupInstanceDiskState.fromMap(Map<String, dynamic> map) {
     return BackupInstanceDiskState(
-      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId'] as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState'] as String).input(),
-      snapshotResourceGroupName: map['snapshotResourceGroupName'] == null ? null : (map['snapshotResourceGroupName'] as String).input(),
-      snapshotSubscriptionId: map['snapshotSubscriptionId'] == null ? null : (map['snapshotSubscriptionId'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId']! as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
+      snapshotResourceGroupName: map['snapshotResourceGroupName'] == null ? null : (map['snapshotResourceGroupName']! as String).input(),
+      snapshotSubscriptionId: map['snapshotSubscriptionId'] == null ? null : (map['snapshotSubscriptionId']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

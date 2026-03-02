@@ -27,8 +27,8 @@ class ShareSettingsComputeV1 {
 
   factory ShareSettingsComputeV1.fromMap(Map<String, dynamic> map) {
     return ShareSettingsComputeV1(
-      projectMap: map['projectMap'] == null ? null : ((map['projectMap'] as Map).cast<String, String>()).input(),
-      shareType: map['shareType'] == null ? null : (ShareSettingsShareTypeComputeV1.fromValue(map['shareType'] as String)).input(),
+      projectMap: map['projectMap'] == null ? null : ((map['projectMap']! as Map).cast<String, String>()).input(),
+      shareType: map['shareType'] == null ? null : (ShareSettingsShareTypeComputeV1.fromValue(map['shareType']! as String)).input(),
     );
   }
 }

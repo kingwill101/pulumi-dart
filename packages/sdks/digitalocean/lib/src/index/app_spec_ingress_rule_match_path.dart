@@ -20,7 +20,7 @@ class AppSpecIngressRuleMatchPath {
 
   factory AppSpecIngressRuleMatchPath.fromMap(Map<String, dynamic> map) {
     return AppSpecIngressRuleMatchPath(
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
     );
   }
 }

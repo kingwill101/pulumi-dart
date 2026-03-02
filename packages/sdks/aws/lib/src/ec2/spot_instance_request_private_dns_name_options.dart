@@ -30,9 +30,9 @@ class SpotInstanceRequestPrivateDnsNameOptions {
 
   factory SpotInstanceRequestPrivateDnsNameOptions.fromMap(Map<String, dynamic> map) {
     return SpotInstanceRequestPrivateDnsNameOptions(
-      enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] == null ? null : (map['enableResourceNameDnsARecord'] as bool).input(),
-      enableResourceNameDnsAaaaRecord: map['enableResourceNameDnsAaaaRecord'] == null ? null : (map['enableResourceNameDnsAaaaRecord'] as bool).input(),
-      hostnameType: map['hostnameType'] == null ? null : (map['hostnameType'] as String).input(),
+      enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] == null ? null : ((map['enableResourceNameDnsARecord'] as bool).input()).input(),
+      enableResourceNameDnsAaaaRecord: map['enableResourceNameDnsAaaaRecord'] == null ? null : ((map['enableResourceNameDnsAaaaRecord'] as bool).input()).input(),
+      hostnameType: map['hostnameType'] == null ? null : ((map['hostnameType'] as String).input()).input(),
     );
   }
 }

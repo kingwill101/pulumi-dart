@@ -37,10 +37,10 @@ class VirtualMachinePreferencesSizingOptimizationCustomParameters {
 
   factory VirtualMachinePreferencesSizingOptimizationCustomParameters.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePreferencesSizingOptimizationCustomParameters(
-      aggregationMethod: map['aggregationMethod'] == null ? null : (VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod.fromValue(map['aggregationMethod'] as String)).input(),
-      cpuUsagePercentage: map['cpuUsagePercentage'] == null ? null : (map['cpuUsagePercentage'] as int).input(),
-      memoryUsagePercentage: map['memoryUsagePercentage'] == null ? null : (map['memoryUsagePercentage'] as int).input(),
-      storageMultiplier: map['storageMultiplier'] == null ? null : (map['storageMultiplier'] as double).input(),
+      aggregationMethod: map['aggregationMethod'] == null ? null : (VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod.fromValue(map['aggregationMethod']! as String)).input(),
+      cpuUsagePercentage: map['cpuUsagePercentage'] == null ? null : (map['cpuUsagePercentage']! as int).input(),
+      memoryUsagePercentage: map['memoryUsagePercentage'] == null ? null : (map['memoryUsagePercentage']! as int).input(),
+      storageMultiplier: map['storageMultiplier'] == null ? null : (map['storageMultiplier']! as double).input(),
     );
   }
 }

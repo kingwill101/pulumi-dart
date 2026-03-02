@@ -36,7 +36,7 @@ class SyncGroupArgs {
     return SyncGroupArgs(
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       storageSyncServiceName: (map['storageSyncServiceName'] as String).input(),
-      syncGroupName: map['syncGroupName'] == null ? null : (map['syncGroupName'] as String).input(),
+      syncGroupName: map['syncGroupName'] == null ? null : (map['syncGroupName']! as String).input(),
     );
   }
 }

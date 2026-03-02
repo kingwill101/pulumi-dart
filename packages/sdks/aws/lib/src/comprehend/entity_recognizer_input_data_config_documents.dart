@@ -30,9 +30,9 @@ class EntityRecognizerInputDataConfigDocuments {
 
   factory EntityRecognizerInputDataConfigDocuments.fromMap(Map<String, dynamic> map) {
     return EntityRecognizerInputDataConfigDocuments(
-      inputFormat: map['inputFormat'] == null ? null : (map['inputFormat'] as String).input(),
+      inputFormat: map['inputFormat'] == null ? null : ((map['inputFormat'] as String).input()).input(),
       s3Uri: (map['s3Uri'] as String).input(),
-      testS3Uri: map['testS3Uri'] == null ? null : (map['testS3Uri'] as String).input(),
+      testS3Uri: map['testS3Uri'] == null ? null : ((map['testS3Uri'] as String).input()).input(),
     );
   }
 }

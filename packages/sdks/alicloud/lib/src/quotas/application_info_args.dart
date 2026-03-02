@@ -64,16 +64,16 @@ class ApplicationInfoArgs {
 
   factory ApplicationInfoArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationInfoArgs(
-      auditMode: map['auditMode'] == null ? null : (map['auditMode'] as String).input(),
+      auditMode: map['auditMode'] == null ? null : (map['auditMode']! as String).input(),
       desireValue: (map['desireValue'] as double).input(),
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<ApplicationInfoDimension>(map['dimensions'], (value) => ApplicationInfoDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
-      envLanguage: map['envLanguage'] == null ? null : (map['envLanguage'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      noticeType: map['noticeType'] == null ? null : (map['noticeType'] as int).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<ApplicationInfoDimension>(map['dimensions']!, (value) => ApplicationInfoDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime']! as String).input(),
+      envLanguage: map['envLanguage'] == null ? null : (map['envLanguage']! as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      noticeType: map['noticeType'] == null ? null : (map['noticeType']! as int).input(),
       productCode: (map['productCode'] as String).input(),
       quotaActionCode: (map['quotaActionCode'] as String).input(),
-      quotaCategory: map['quotaCategory'] == null ? null : (map['quotaCategory'] as String).input(),
+      quotaCategory: map['quotaCategory'] == null ? null : (map['quotaCategory']! as String).input(),
       reason: (map['reason'] as String).input(),
     );
   }

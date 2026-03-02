@@ -48,8 +48,8 @@ class WorkforcePoolKeyArgs {
 
   factory WorkforcePoolKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolKeyArgs(
-      keyData: map['keyData'] == null ? null : (KeyData.fromMap((map['keyData'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      keyData: map['keyData'] == null ? null : (KeyData.fromMap((map['keyData']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       providerId: (map['providerId'] as String).input(),
       use: (WorkforcePoolKeyUse.fromValue(map['use'] as String)).input(),
       workforcePoolId: (map['workforcePoolId'] as String).input(),

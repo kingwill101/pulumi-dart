@@ -46,12 +46,12 @@ class HostNameResponse {
 
   factory HostNameResponse.fromMap(Map<String, dynamic> map) {
     return HostNameResponse(
-      azureResourceName: map['azureResourceName'] == null ? null : (map['azureResourceName'] as String).input(),
-      azureResourceType: map['azureResourceType'] == null ? null : (map['azureResourceType'] as String).input(),
-      customHostNameDnsRecordType: map['customHostNameDnsRecordType'] == null ? null : (map['customHostNameDnsRecordType'] as String).input(),
-      hostNameType: map['hostNameType'] == null ? null : (map['hostNameType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      siteNames: map['siteNames'] == null ? null : ((map['siteNames'] as List).cast<String>()).input(),
+      azureResourceName: map['azureResourceName'] == null ? null : (map['azureResourceName']! as String).input(),
+      azureResourceType: map['azureResourceType'] == null ? null : (map['azureResourceType']! as String).input(),
+      customHostNameDnsRecordType: map['customHostNameDnsRecordType'] == null ? null : (map['customHostNameDnsRecordType']! as String).input(),
+      hostNameType: map['hostNameType'] == null ? null : (map['hostNameType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      siteNames: map['siteNames'] == null ? null : ((map['siteNames']! as List).cast<String>()).input(),
     );
   }
 }

@@ -40,7 +40,7 @@ class JWTAuthenticatorArgs {
 
   factory JWTAuthenticatorArgs.fromMap(Map<String, dynamic> map) {
     return JWTAuthenticatorArgs(
-      jwtAuthenticatorName: map['jwtAuthenticatorName'] == null ? null : (map['jwtAuthenticatorName'] as String).input(),
+      jwtAuthenticatorName: map['jwtAuthenticatorName'] == null ? null : (map['jwtAuthenticatorName']! as String).input(),
       properties: (JWTAuthenticatorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),

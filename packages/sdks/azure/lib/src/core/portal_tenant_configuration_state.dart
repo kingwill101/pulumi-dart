@@ -23,7 +23,7 @@ class PortalTenantConfigurationState {
 
   factory PortalTenantConfigurationState.fromMap(Map<String, dynamic> map) {
     return PortalTenantConfigurationState(
-      privateMarkdownStorageEnforced: map['privateMarkdownStorageEnforced'] == null ? null : (map['privateMarkdownStorageEnforced'] as bool).input(),
+      privateMarkdownStorageEnforced: map['privateMarkdownStorageEnforced'] == null ? null : (map['privateMarkdownStorageEnforced']! as bool).input(),
     );
   }
 }

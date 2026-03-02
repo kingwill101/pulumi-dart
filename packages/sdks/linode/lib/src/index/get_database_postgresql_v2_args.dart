@@ -30,7 +30,7 @@ class GetDatabasePostgresqlV2Args {
   factory GetDatabasePostgresqlV2Args.fromMap(Map<String, dynamic> map) {
     return GetDatabasePostgresqlV2Args(
       id: (map['id'] as String).input(),
-      updates: map['updates'] == null ? null : (GetDatabasePostgresqlV2Updates.fromMap((map['updates'] as Map).cast<String, dynamic>())).input(),
+      updates: map['updates'] == null ? null : (GetDatabasePostgresqlV2Updates.fromMap((map['updates']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

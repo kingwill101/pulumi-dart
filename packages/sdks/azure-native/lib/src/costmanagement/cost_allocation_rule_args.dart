@@ -36,8 +36,8 @@ class CostAllocationRuleArgs {
   factory CostAllocationRuleArgs.fromMap(Map<String, dynamic> map) {
     return CostAllocationRuleArgs(
       billingAccountId: (map['billingAccountId'] as String).input(),
-      properties: map['properties'] == null ? null : (CostAllocationRuleProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      properties: map['properties'] == null ? null : (CostAllocationRuleProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
     );
   }
 }

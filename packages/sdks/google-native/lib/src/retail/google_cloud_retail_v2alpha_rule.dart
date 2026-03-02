@@ -82,17 +82,17 @@ class GoogleCloudRetailV2alphaRule {
 
   factory GoogleCloudRetailV2alphaRule.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaRule(
-      boostAction: map['boostAction'] == null ? null : (GoogleCloudRetailV2alphaRuleBoostAction.fromMap((map['boostAction'] as Map).cast<String, dynamic>())).input(),
+      boostAction: map['boostAction'] == null ? null : (GoogleCloudRetailV2alphaRuleBoostAction.fromMap((map['boostAction']! as Map).cast<String, dynamic>())).input(),
       condition: (GoogleCloudRetailV2alphaCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      doNotAssociateAction: map['doNotAssociateAction'] == null ? null : (GoogleCloudRetailV2alphaRuleDoNotAssociateAction.fromMap((map['doNotAssociateAction'] as Map).cast<String, dynamic>())).input(),
-      filterAction: map['filterAction'] == null ? null : (GoogleCloudRetailV2alphaRuleFilterAction.fromMap((map['filterAction'] as Map).cast<String, dynamic>())).input(),
-      forceReturnFacetAction: map['forceReturnFacetAction'] == null ? null : (GoogleCloudRetailV2alphaRuleForceReturnFacetAction.fromMap((map['forceReturnFacetAction'] as Map).cast<String, dynamic>())).input(),
-      ignoreAction: map['ignoreAction'] == null ? null : (GoogleCloudRetailV2alphaRuleIgnoreAction.fromMap((map['ignoreAction'] as Map).cast<String, dynamic>())).input(),
-      onewaySynonymsAction: map['onewaySynonymsAction'] == null ? null : (GoogleCloudRetailV2alphaRuleOnewaySynonymsAction.fromMap((map['onewaySynonymsAction'] as Map).cast<String, dynamic>())).input(),
-      redirectAction: map['redirectAction'] == null ? null : (GoogleCloudRetailV2alphaRuleRedirectAction.fromMap((map['redirectAction'] as Map).cast<String, dynamic>())).input(),
-      removeFacetAction: map['removeFacetAction'] == null ? null : (GoogleCloudRetailV2alphaRuleRemoveFacetAction.fromMap((map['removeFacetAction'] as Map).cast<String, dynamic>())).input(),
-      replacementAction: map['replacementAction'] == null ? null : (GoogleCloudRetailV2alphaRuleReplacementAction.fromMap((map['replacementAction'] as Map).cast<String, dynamic>())).input(),
-      twowaySynonymsAction: map['twowaySynonymsAction'] == null ? null : (GoogleCloudRetailV2alphaRuleTwowaySynonymsAction.fromMap((map['twowaySynonymsAction'] as Map).cast<String, dynamic>())).input(),
+      doNotAssociateAction: map['doNotAssociateAction'] == null ? null : (GoogleCloudRetailV2alphaRuleDoNotAssociateAction.fromMap((map['doNotAssociateAction']! as Map).cast<String, dynamic>())).input(),
+      filterAction: map['filterAction'] == null ? null : (GoogleCloudRetailV2alphaRuleFilterAction.fromMap((map['filterAction']! as Map).cast<String, dynamic>())).input(),
+      forceReturnFacetAction: map['forceReturnFacetAction'] == null ? null : (GoogleCloudRetailV2alphaRuleForceReturnFacetAction.fromMap((map['forceReturnFacetAction']! as Map).cast<String, dynamic>())).input(),
+      ignoreAction: map['ignoreAction'] == null ? null : (GoogleCloudRetailV2alphaRuleIgnoreAction.fromMap((map['ignoreAction']! as Map).cast<String, dynamic>())).input(),
+      onewaySynonymsAction: map['onewaySynonymsAction'] == null ? null : (GoogleCloudRetailV2alphaRuleOnewaySynonymsAction.fromMap((map['onewaySynonymsAction']! as Map).cast<String, dynamic>())).input(),
+      redirectAction: map['redirectAction'] == null ? null : (GoogleCloudRetailV2alphaRuleRedirectAction.fromMap((map['redirectAction']! as Map).cast<String, dynamic>())).input(),
+      removeFacetAction: map['removeFacetAction'] == null ? null : (GoogleCloudRetailV2alphaRuleRemoveFacetAction.fromMap((map['removeFacetAction']! as Map).cast<String, dynamic>())).input(),
+      replacementAction: map['replacementAction'] == null ? null : (GoogleCloudRetailV2alphaRuleReplacementAction.fromMap((map['replacementAction']! as Map).cast<String, dynamic>())).input(),
+      twowaySynonymsAction: map['twowaySynonymsAction'] == null ? null : (GoogleCloudRetailV2alphaRuleTwowaySynonymsAction.fromMap((map['twowaySynonymsAction']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

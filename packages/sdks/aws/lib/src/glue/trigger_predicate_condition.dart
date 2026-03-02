@@ -40,11 +40,11 @@ class TriggerPredicateCondition {
 
   factory TriggerPredicateCondition.fromMap(Map<String, dynamic> map) {
     return TriggerPredicateCondition(
-      crawlState: map['crawlState'] == null ? null : (map['crawlState'] as String).input(),
-      crawlerName: map['crawlerName'] == null ? null : (map['crawlerName'] as String).input(),
-      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
-      logicalOperator: map['logicalOperator'] == null ? null : (map['logicalOperator'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      crawlState: map['crawlState'] == null ? null : ((map['crawlState'] as String).input()).input(),
+      crawlerName: map['crawlerName'] == null ? null : ((map['crawlerName'] as String).input()).input(),
+      jobName: map['jobName'] == null ? null : ((map['jobName'] as String).input()).input(),
+      logicalOperator: map['logicalOperator'] == null ? null : ((map['logicalOperator'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
     );
   }
 }

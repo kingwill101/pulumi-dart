@@ -40,10 +40,10 @@ class EndpointAuthenticationOption {
 
   factory EndpointAuthenticationOption.fromMap(Map<String, dynamic> map) {
     return EndpointAuthenticationOption(
-      activeDirectoryId: map['activeDirectoryId'] == null ? null : (map['activeDirectoryId'] as String).input(),
-      rootCertificateChainArn: map['rootCertificateChainArn'] == null ? null : (map['rootCertificateChainArn'] as String).input(),
-      samlProviderArn: map['samlProviderArn'] == null ? null : (map['samlProviderArn'] as String).input(),
-      selfServiceSamlProviderArn: map['selfServiceSamlProviderArn'] == null ? null : (map['selfServiceSamlProviderArn'] as String).input(),
+      activeDirectoryId: map['activeDirectoryId'] == null ? null : ((map['activeDirectoryId'] as String).input()).input(),
+      rootCertificateChainArn: map['rootCertificateChainArn'] == null ? null : ((map['rootCertificateChainArn'] as String).input()).input(),
+      samlProviderArn: map['samlProviderArn'] == null ? null : ((map['samlProviderArn'] as String).input()).input(),
+      selfServiceSamlProviderArn: map['selfServiceSamlProviderArn'] == null ? null : ((map['selfServiceSamlProviderArn'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

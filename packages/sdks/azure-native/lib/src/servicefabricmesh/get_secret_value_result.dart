@@ -60,9 +60,9 @@ class GetSecretValueResult {
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

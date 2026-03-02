@@ -41,9 +41,9 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec
   factory GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec(
       parameterSpec: (GoogleCloudAiplatformV1beta1StudySpecParameterSpec.fromMap((map['parameterSpec'] as Map).cast<String, dynamic>())).input(),
-      parentCategoricalValues: map['parentCategoricalValues'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition.fromMap((map['parentCategoricalValues'] as Map).cast<String, dynamic>())).input(),
-      parentDiscreteValues: map['parentDiscreteValues'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition.fromMap((map['parentDiscreteValues'] as Map).cast<String, dynamic>())).input(),
-      parentIntValues: map['parentIntValues'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition.fromMap((map['parentIntValues'] as Map).cast<String, dynamic>())).input(),
+      parentCategoricalValues: map['parentCategoricalValues'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecCategoricalValueCondition.fromMap((map['parentCategoricalValues']! as Map).cast<String, dynamic>())).input(),
+      parentDiscreteValues: map['parentDiscreteValues'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecDiscreteValueCondition.fromMap((map['parentDiscreteValues']! as Map).cast<String, dynamic>())).input(),
+      parentIntValues: map['parentIntValues'] == null ? null : (GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueCondition.fromMap((map['parentIntValues']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

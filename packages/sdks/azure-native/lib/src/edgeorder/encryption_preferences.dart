@@ -21,7 +21,7 @@ class EncryptionPreferences {
 
   factory EncryptionPreferences.fromMap(Map<String, dynamic> map) {
     return EncryptionPreferences(
-      doubleEncryptionStatus: map['doubleEncryptionStatus'] == null ? null : (map['doubleEncryptionStatus'] as String).input(),
+      doubleEncryptionStatus: map['doubleEncryptionStatus'] == null ? null : (map['doubleEncryptionStatus']! as String).input(),
     );
   }
 }

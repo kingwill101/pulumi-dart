@@ -40,10 +40,10 @@ class CertificateTemplatePredefinedValuesCaOptions {
 
   factory CertificateTemplatePredefinedValuesCaOptions.fromMap(Map<String, dynamic> map) {
     return CertificateTemplatePredefinedValuesCaOptions(
-      isCa: map['isCa'] == null ? null : (map['isCa'] as bool).input(),
-      maxIssuerPathLength: map['maxIssuerPathLength'] == null ? null : (map['maxIssuerPathLength'] as int).input(),
-      nullCa: map['nullCa'] == null ? null : (map['nullCa'] as bool).input(),
-      zeroMaxIssuerPathLength: map['zeroMaxIssuerPathLength'] == null ? null : (map['zeroMaxIssuerPathLength'] as bool).input(),
+      isCa: map['isCa'] == null ? null : (map['isCa']! as bool).input(),
+      maxIssuerPathLength: map['maxIssuerPathLength'] == null ? null : (map['maxIssuerPathLength']! as int).input(),
+      nullCa: map['nullCa'] == null ? null : (map['nullCa']! as bool).input(),
+      zeroMaxIssuerPathLength: map['zeroMaxIssuerPathLength'] == null ? null : (map['zeroMaxIssuerPathLength']! as bool).input(),
     );
   }
 }

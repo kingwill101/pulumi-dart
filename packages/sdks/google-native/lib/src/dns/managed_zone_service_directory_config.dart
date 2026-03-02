@@ -26,8 +26,8 @@ class ManagedZoneServiceDirectoryConfig {
 
   factory ManagedZoneServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneServiceDirectoryConfig(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      namespace: map['namespace'] == null ? null : (ManagedZoneServiceDirectoryConfigNamespace.fromMap((map['namespace'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      namespace: map['namespace'] == null ? null : (ManagedZoneServiceDirectoryConfigNamespace.fromMap((map['namespace']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

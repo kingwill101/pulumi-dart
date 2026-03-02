@@ -43,8 +43,8 @@ class OSPolicy {
 
   factory OSPolicy.fromMap(Map<String, dynamic> map) {
     return OSPolicy(
-      allowNoResourceGroupMatch: map['allowNoResourceGroupMatch'] == null ? null : (map['allowNoResourceGroupMatch'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      allowNoResourceGroupMatch: map['allowNoResourceGroupMatch'] == null ? null : (map['allowNoResourceGroupMatch']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       id: (map['id'] as String).input(),
       mode: (OSPolicyMode.fromValue(map['mode'] as String)).input(),
       resourceGroups: (pulumi.Input.decodeList<OSPolicyResourceGroup>(map['resourceGroups'], (value) => OSPolicyResourceGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),

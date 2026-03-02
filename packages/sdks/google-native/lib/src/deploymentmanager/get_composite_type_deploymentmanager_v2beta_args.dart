@@ -28,7 +28,7 @@ class GetCompositeTypeDeploymentmanagerV2betaArgs {
   factory GetCompositeTypeDeploymentmanagerV2betaArgs.fromMap(Map<String, dynamic> map) {
     return GetCompositeTypeDeploymentmanagerV2betaArgs(
       compositeType: (map['compositeType'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

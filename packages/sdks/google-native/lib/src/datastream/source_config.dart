@@ -39,9 +39,9 @@ class SourceConfig {
 
   factory SourceConfig.fromMap(Map<String, dynamic> map) {
     return SourceConfig(
-      mysqlSourceConfig: map['mysqlSourceConfig'] == null ? null : (MysqlSourceConfig.fromMap((map['mysqlSourceConfig'] as Map).cast<String, dynamic>())).input(),
-      oracleSourceConfig: map['oracleSourceConfig'] == null ? null : (OracleSourceConfig.fromMap((map['oracleSourceConfig'] as Map).cast<String, dynamic>())).input(),
-      postgresqlSourceConfig: map['postgresqlSourceConfig'] == null ? null : (PostgresqlSourceConfig.fromMap((map['postgresqlSourceConfig'] as Map).cast<String, dynamic>())).input(),
+      mysqlSourceConfig: map['mysqlSourceConfig'] == null ? null : (MysqlSourceConfig.fromMap((map['mysqlSourceConfig']! as Map).cast<String, dynamic>())).input(),
+      oracleSourceConfig: map['oracleSourceConfig'] == null ? null : (OracleSourceConfig.fromMap((map['oracleSourceConfig']! as Map).cast<String, dynamic>())).input(),
+      postgresqlSourceConfig: map['postgresqlSourceConfig'] == null ? null : (PostgresqlSourceConfig.fromMap((map['postgresqlSourceConfig']! as Map).cast<String, dynamic>())).input(),
       sourceConnectionProfile: (map['sourceConnectionProfile'] as String).input(),
     );
   }

@@ -38,10 +38,10 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 
   factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      inputFormatConfiguration: (FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration.fromMap((map['inputFormatConfiguration'] as Map).cast<String, dynamic>())).input(),
-      outputFormatConfiguration: (FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration.fromMap((map['outputFormatConfiguration'] as Map).cast<String, dynamic>())).input(),
-      schemaConfiguration: (FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration.fromMap((map['schemaConfiguration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      inputFormatConfiguration: (FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfiguration.fromMap((map['inputFormatConfiguration']! as Map).cast<String, dynamic>())).input(),
+      outputFormatConfiguration: (FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfiguration.fromMap((map['outputFormatConfiguration']! as Map).cast<String, dynamic>())).input(),
+      schemaConfiguration: (FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration.fromMap((map['schemaConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

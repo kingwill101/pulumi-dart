@@ -21,7 +21,7 @@ class OutputConfig {
 
   factory OutputConfig.fromMap(Map<String, dynamic> map) {
     return OutputConfig(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
     );
   }
 }

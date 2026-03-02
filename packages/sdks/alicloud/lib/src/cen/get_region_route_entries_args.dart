@@ -34,7 +34,7 @@ class GetRegionRouteEntriesArgs {
   factory GetRegionRouteEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionRouteEntriesArgs(
       instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       regionId: (map['regionId'] as String).input(),
     );
   }

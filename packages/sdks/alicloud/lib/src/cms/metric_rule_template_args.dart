@@ -72,16 +72,16 @@ class MetricRuleTemplateArgs {
 
   factory MetricRuleTemplateArgs.fromMap(Map<String, dynamic> map) {
     return MetricRuleTemplateArgs(
-      alertTemplates: map['alertTemplates'] == null ? null : (pulumi.Input.decodeList<MetricRuleTemplateAlertTemplate>(map['alertTemplates'], (value) => MetricRuleTemplateAlertTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      applyMode: map['applyMode'] == null ? null : (map['applyMode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableEndTime: map['enableEndTime'] == null ? null : (map['enableEndTime'] as String).input(),
-      enableStartTime: map['enableStartTime'] == null ? null : (map['enableStartTime'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      alertTemplates: map['alertTemplates'] == null ? null : (pulumi.Input.decodeList<MetricRuleTemplateAlertTemplate>(map['alertTemplates']!, (value) => MetricRuleTemplateAlertTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applyMode: map['applyMode'] == null ? null : (map['applyMode']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableEndTime: map['enableEndTime'] == null ? null : (map['enableEndTime']! as String).input(),
+      enableStartTime: map['enableStartTime'] == null ? null : (map['enableStartTime']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
       metricRuleTemplateName: (map['metricRuleTemplateName'] as String).input(),
-      notifyLevel: map['notifyLevel'] == null ? null : (map['notifyLevel'] as String).input(),
-      silenceTime: map['silenceTime'] == null ? null : (map['silenceTime'] as int).input(),
-      webhook: map['webhook'] == null ? null : (map['webhook'] as String).input(),
+      notifyLevel: map['notifyLevel'] == null ? null : (map['notifyLevel']! as String).input(),
+      silenceTime: map['silenceTime'] == null ? null : (map['silenceTime']! as int).input(),
+      webhook: map['webhook'] == null ? null : (map['webhook']! as String).input(),
     );
   }
 }

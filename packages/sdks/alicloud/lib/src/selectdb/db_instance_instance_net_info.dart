@@ -46,12 +46,12 @@ class DbInstanceInstanceNetInfo {
 
   factory DbInstanceInstanceNetInfo.fromMap(Map<String, dynamic> map) {
     return DbInstanceInstanceNetInfo(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      dbIp: map['dbIp'] == null ? null : (map['dbIp'] as String).input(),
-      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
-      portLists: map['portLists'] == null ? null : (pulumi.Input.decodeList<DbInstanceInstanceNetInfoPortList>(map['portLists'], (value) => DbInstanceInstanceNetInfoPortList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcInstanceId: map['vpcInstanceId'] == null ? null : (map['vpcInstanceId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      dbIp: map['dbIp'] == null ? null : (map['dbIp']! as String).input(),
+      netType: map['netType'] == null ? null : (map['netType']! as String).input(),
+      portLists: map['portLists'] == null ? null : (pulumi.Input.decodeList<DbInstanceInstanceNetInfoPortList>(map['portLists']!, (value) => DbInstanceInstanceNetInfoPortList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcInstanceId: map['vpcInstanceId'] == null ? null : (map['vpcInstanceId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

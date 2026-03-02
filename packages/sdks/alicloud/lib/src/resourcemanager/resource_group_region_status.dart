@@ -25,8 +25,8 @@ class ResourceGroupRegionStatus {
 
   factory ResourceGroupRegionStatus.fromMap(Map<String, dynamic> map) {
     return ResourceGroupRegionStatus(
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

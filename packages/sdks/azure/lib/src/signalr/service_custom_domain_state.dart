@@ -38,10 +38,10 @@ class ServiceCustomDomainState {
 
   factory ServiceCustomDomainState.fromMap(Map<String, dynamic> map) {
     return ServiceCustomDomainState(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      signalrCustomCertificateId: map['signalrCustomCertificateId'] == null ? null : (map['signalrCustomCertificateId'] as String).input(),
-      signalrServiceId: map['signalrServiceId'] == null ? null : (map['signalrServiceId'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      signalrCustomCertificateId: map['signalrCustomCertificateId'] == null ? null : (map['signalrCustomCertificateId']! as String).input(),
+      signalrServiceId: map['signalrServiceId'] == null ? null : (map['signalrServiceId']! as String).input(),
     );
   }
 }

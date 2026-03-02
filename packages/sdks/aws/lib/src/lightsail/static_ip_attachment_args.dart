@@ -37,7 +37,7 @@ class StaticIpAttachmentArgs {
   factory StaticIpAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return StaticIpAttachmentArgs(
       instanceName: (map['instanceName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       staticIpName: (map['staticIpName'] as String).input(),
     );
   }

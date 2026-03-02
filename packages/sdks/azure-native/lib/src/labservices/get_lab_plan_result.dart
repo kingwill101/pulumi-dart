@@ -107,22 +107,22 @@ class GetLabPlanResult {
 
   factory GetLabPlanResult.fromMap(Map<String, dynamic> map) {
     return GetLabPlanResult(
-      allowedRegions: map['allowedRegions'] == null ? null : (map['allowedRegions'] as List).cast<String>(),
+      allowedRegions: map['allowedRegions'] == null ? null : (map['allowedRegions']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
-      defaultAutoShutdownProfile: map['defaultAutoShutdownProfile'] == null ? null : AutoShutdownProfileResponse.fromMap((map['defaultAutoShutdownProfile'] as Map).cast<String, dynamic>()),
-      defaultConnectionProfile: map['defaultConnectionProfile'] == null ? null : ConnectionProfileResponse.fromMap((map['defaultConnectionProfile'] as Map).cast<String, dynamic>()),
-      defaultNetworkProfile: map['defaultNetworkProfile'] == null ? null : LabPlanNetworkProfileResponse.fromMap((map['defaultNetworkProfile'] as Map).cast<String, dynamic>()),
+      defaultAutoShutdownProfile: map['defaultAutoShutdownProfile'] == null ? null : AutoShutdownProfileResponse.fromMap((map['defaultAutoShutdownProfile']! as Map).cast<String, dynamic>()),
+      defaultConnectionProfile: map['defaultConnectionProfile'] == null ? null : ConnectionProfileResponse.fromMap((map['defaultConnectionProfile']! as Map).cast<String, dynamic>()),
+      defaultNetworkProfile: map['defaultNetworkProfile'] == null ? null : LabPlanNetworkProfileResponse.fromMap((map['defaultNetworkProfile']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      linkedLmsInstance: map['linkedLmsInstance'] == null ? null : map['linkedLmsInstance'] as String,
+      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      linkedLmsInstance: map['linkedLmsInstance'] == null ? null : map['linkedLmsInstance']! as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceOperationError: ResourceOperationErrorResponse.fromMap((map['resourceOperationError'] as Map).cast<String, dynamic>()),
-      sharedGalleryId: map['sharedGalleryId'] == null ? null : map['sharedGalleryId'] as String,
-      supportInfo: map['supportInfo'] == null ? null : SupportInfoResponse.fromMap((map['supportInfo'] as Map).cast<String, dynamic>()),
+      sharedGalleryId: map['sharedGalleryId'] == null ? null : map['sharedGalleryId']! as String,
+      supportInfo: map['supportInfo'] == null ? null : SupportInfoResponse.fromMap((map['supportInfo']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

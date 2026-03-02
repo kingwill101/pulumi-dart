@@ -46,11 +46,11 @@ class DocumentClassifierInputDataConfig {
 
   factory DocumentClassifierInputDataConfig.fromMap(Map<String, dynamic> map) {
     return DocumentClassifierInputDataConfig(
-      augmentedManifests: map['augmentedManifests'] == null ? null : (pulumi.Input.decodeList<DocumentClassifierInputDataConfigAugmentedManifest>(map['augmentedManifests'], (value) => DocumentClassifierInputDataConfigAugmentedManifest.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat'] as String).input(),
-      labelDelimiter: map['labelDelimiter'] == null ? null : (map['labelDelimiter'] as String).input(),
-      s3Uri: map['s3Uri'] == null ? null : (map['s3Uri'] as String).input(),
-      testS3Uri: map['testS3Uri'] == null ? null : (map['testS3Uri'] as String).input(),
+      augmentedManifests: map['augmentedManifests'] == null ? null : ((pulumi.Input.decodeList<DocumentClassifierInputDataConfigAugmentedManifest>(map['augmentedManifests']!, (value) => DocumentClassifierInputDataConfigAugmentedManifest.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      dataFormat: map['dataFormat'] == null ? null : ((map['dataFormat'] as String).input()).input(),
+      labelDelimiter: map['labelDelimiter'] == null ? null : ((map['labelDelimiter'] as String).input()).input(),
+      s3Uri: map['s3Uri'] == null ? null : ((map['s3Uri'] as String).input()).input(),
+      testS3Uri: map['testS3Uri'] == null ? null : ((map['testS3Uri'] as String).input()).input(),
     );
   }
 }

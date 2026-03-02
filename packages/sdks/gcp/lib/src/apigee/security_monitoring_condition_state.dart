@@ -68,16 +68,16 @@ class SecurityMonitoringConditionState {
 
   factory SecurityMonitoringConditionState.fromMap(Map<String, dynamic> map) {
     return SecurityMonitoringConditionState(
-      conditionId: map['conditionId'] == null ? null : (map['conditionId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      includeAllResources: map['includeAllResources'] == null ? null : ((map['includeAllResources'] as Map).cast<String, dynamic>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      totalDeployedResources: map['totalDeployedResources'] == null ? null : (map['totalDeployedResources'] as int).input(),
-      totalMonitoredResources: map['totalMonitoredResources'] == null ? null : (map['totalMonitoredResources'] as int).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      conditionId: map['conditionId'] == null ? null : (map['conditionId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      includeAllResources: map['includeAllResources'] == null ? null : ((map['includeAllResources']! as Map).cast<String, dynamic>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      totalDeployedResources: map['totalDeployedResources'] == null ? null : (map['totalDeployedResources']! as int).input(),
+      totalMonitoredResources: map['totalMonitoredResources'] == null ? null : (map['totalMonitoredResources']! as int).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

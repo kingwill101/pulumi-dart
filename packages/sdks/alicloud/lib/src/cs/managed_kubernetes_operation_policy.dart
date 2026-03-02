@@ -21,7 +21,7 @@ class ManagedKubernetesOperationPolicy {
 
   factory ManagedKubernetesOperationPolicy.fromMap(Map<String, dynamic> map) {
     return ManagedKubernetesOperationPolicy(
-      clusterAutoUpgrade: map['clusterAutoUpgrade'] == null ? null : (ManagedKubernetesOperationPolicyClusterAutoUpgrade.fromMap((map['clusterAutoUpgrade'] as Map).cast<String, dynamic>())).input(),
+      clusterAutoUpgrade: map['clusterAutoUpgrade'] == null ? null : (ManagedKubernetesOperationPolicyClusterAutoUpgrade.fromMap((map['clusterAutoUpgrade']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

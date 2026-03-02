@@ -33,9 +33,9 @@ class DataConnectorDynamics365State {
 
   factory DataConnectorDynamics365State.fromMap(Map<String, dynamic> map) {
     return DataConnectorDynamics365State(
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

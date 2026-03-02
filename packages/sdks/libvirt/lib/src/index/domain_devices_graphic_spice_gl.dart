@@ -25,8 +25,8 @@ class DomainDevicesGraphicSpiceGl {
 
   factory DomainDevicesGraphicSpiceGl.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicSpiceGl(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
-      renderNode: map['renderNode'] == null ? null : (map['renderNode'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
+      renderNode: map['renderNode'] == null ? null : (map['renderNode']! as String).input(),
     );
   }
 }

@@ -76,18 +76,18 @@ class AwsEc2VPCEndpointProperties {
 
   factory AwsEc2VPCEndpointProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2VPCEndpointProperties(
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      dnsEntries: map['dnsEntries'] == null ? null : ((map['dnsEntries'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      networkInterfaceIds: map['networkInterfaceIds'] == null ? null : ((map['networkInterfaceIds'] as List).cast<String>()).input(),
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument']).input(),
-      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled'] as bool).input(),
-      routeTableIds: map['routeTableIds'] == null ? null : ((map['routeTableIds'] as List).cast<String>()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcEndpointType: map['vpcEndpointType'] == null ? null : (map['vpcEndpointType'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      dnsEntries: map['dnsEntries'] == null ? null : ((map['dnsEntries']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      networkInterfaceIds: map['networkInterfaceIds'] == null ? null : ((map['networkInterfaceIds']! as List).cast<String>()).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument']!).input(),
+      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled']! as bool).input(),
+      routeTableIds: map['routeTableIds'] == null ? null : ((map['routeTableIds']! as List).cast<String>()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds']! as List).cast<String>()).input(),
+      vpcEndpointType: map['vpcEndpointType'] == null ? null : (map['vpcEndpointType']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

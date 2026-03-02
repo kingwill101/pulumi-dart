@@ -27,8 +27,8 @@ class IncludedPathResponse {
 
   factory IncludedPathResponse.fromMap(Map<String, dynamic> map) {
     return IncludedPathResponse(
-      indexes: map['indexes'] == null ? null : (pulumi.Input.decodeList<IndexesResponse>(map['indexes'], (value) => IndexesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      indexes: map['indexes'] == null ? null : (pulumi.Input.decodeList<IndexesResponse>(map['indexes']!, (value) => IndexesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

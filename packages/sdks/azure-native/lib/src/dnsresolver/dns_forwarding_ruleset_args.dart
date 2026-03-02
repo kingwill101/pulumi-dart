@@ -45,11 +45,11 @@ class DnsForwardingRulesetArgs {
 
   factory DnsForwardingRulesetArgs.fromMap(Map<String, dynamic> map) {
     return DnsForwardingRulesetArgs(
-      dnsForwardingRulesetName: map['dnsForwardingRulesetName'] == null ? null : (map['dnsForwardingRulesetName'] as String).input(),
+      dnsForwardingRulesetName: map['dnsForwardingRulesetName'] == null ? null : (map['dnsForwardingRulesetName']! as String).input(),
       dnsResolverOutboundEndpoints: (pulumi.Input.decodeList<SubResource>(map['dnsResolverOutboundEndpoints'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

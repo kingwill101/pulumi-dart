@@ -26,8 +26,8 @@ class GoogleCloudRunV2ContainerPort {
 
   factory GoogleCloudRunV2ContainerPort.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ContainerPort(
-      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      containerPort: map['containerPort'] == null ? null : (map['containerPort']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

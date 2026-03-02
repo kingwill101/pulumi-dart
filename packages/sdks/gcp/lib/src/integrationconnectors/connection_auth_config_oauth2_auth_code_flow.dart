@@ -41,11 +41,11 @@ class ConnectionAuthConfigOauth2AuthCodeFlow {
 
   factory ConnectionAuthConfigOauth2AuthCodeFlow.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigOauth2AuthCodeFlow(
-      authUri: map['authUri'] == null ? null : (map['authUri'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (ConnectionAuthConfigOauth2AuthCodeFlowClientSecret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
-      enablePkce: map['enablePkce'] == null ? null : (map['enablePkce'] as bool).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      authUri: map['authUri'] == null ? null : (map['authUri']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (ConnectionAuthConfigOauth2AuthCodeFlowClientSecret.fromMap((map['clientSecret']! as Map).cast<String, dynamic>())).input(),
+      enablePkce: map['enablePkce'] == null ? null : (map['enablePkce']! as bool).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

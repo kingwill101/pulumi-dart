@@ -64,13 +64,13 @@ class GetSecurityContactResult {
   factory GetSecurityContactResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityContactResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      emails: map['emails'] == null ? null : map['emails'] as String,
+      emails: map['emails'] == null ? null : map['emails']! as String,
       id: map['id'] as String,
-      isEnabled: map['isEnabled'] == null ? null : map['isEnabled'] as bool,
+      isEnabled: map['isEnabled'] == null ? null : map['isEnabled']! as bool,
       name: map['name'] as String,
-      notificationsByRole: map['notificationsByRole'] == null ? null : SecurityContactPropertiesResponseNotificationsByRole.fromMap((map['notificationsByRole'] as Map).cast<String, dynamic>()),
-      notificationsSources: map['notificationsSources'] == null ? null : pulumi.Input.decodeList<NotificationsSourceAlertResponse>(map['notificationsSources'], (value) => NotificationsSourceAlertResponse.fromMap((value as Map).cast<String, dynamic>())),
-      phone: map['phone'] == null ? null : map['phone'] as String,
+      notificationsByRole: map['notificationsByRole'] == null ? null : SecurityContactPropertiesResponseNotificationsByRole.fromMap((map['notificationsByRole']! as Map).cast<String, dynamic>()),
+      notificationsSources: map['notificationsSources'] == null ? null : pulumi.Input.decodeList<NotificationsSourceAlertResponse>(map['notificationsSources']!, (value) => NotificationsSourceAlertResponse.fromMap((value as Map).cast<String, dynamic>())),
+      phone: map['phone'] == null ? null : map['phone']! as String,
       type: map['type'] as String,
     );
   }

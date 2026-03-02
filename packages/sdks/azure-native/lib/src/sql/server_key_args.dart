@@ -44,11 +44,11 @@ class ServerKeyArgs {
 
   factory ServerKeyArgs.fromMap(Map<String, dynamic> map) {
     return ServerKeyArgs(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverKeyType: (map['serverKeyType'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

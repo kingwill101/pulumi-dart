@@ -26,8 +26,8 @@ class JwtClaimChecks {
 
   factory JwtClaimChecks.fromMap(Map<String, dynamic> map) {
     return JwtClaimChecks(
-      allowedClientApplications: map['allowedClientApplications'] == null ? null : ((map['allowedClientApplications'] as List).cast<String>()).input(),
-      allowedGroups: map['allowedGroups'] == null ? null : ((map['allowedGroups'] as List).cast<String>()).input(),
+      allowedClientApplications: map['allowedClientApplications'] == null ? null : ((map['allowedClientApplications']! as List).cast<String>()).input(),
+      allowedGroups: map['allowedGroups'] == null ? null : ((map['allowedGroups']! as List).cast<String>()).input(),
     );
   }
 }

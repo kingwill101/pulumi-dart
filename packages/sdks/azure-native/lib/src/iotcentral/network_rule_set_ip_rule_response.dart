@@ -32,8 +32,8 @@ class NetworkRuleSetIpRuleResponse {
   factory NetworkRuleSetIpRuleResponse.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSetIpRuleResponse(
       action: (map['action'] as String).input(),
-      filterName: map['filterName'] == null ? null : (map['filterName'] as String).input(),
-      ipMask: map['ipMask'] == null ? null : (map['ipMask'] as String).input(),
+      filterName: map['filterName'] == null ? null : (map['filterName']! as String).input(),
+      ipMask: map['ipMask'] == null ? null : (map['ipMask']! as String).input(),
     );
   }
 }

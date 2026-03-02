@@ -37,9 +37,9 @@ class BuildSignatureContaineranalysisV1beta1 {
 
   factory BuildSignatureContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return BuildSignatureContaineranalysisV1beta1(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      keyType: map['keyType'] == null ? null : (BuildSignatureKeyTypeContaineranalysisV1beta1.fromValue(map['keyType'] as String)).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      keyType: map['keyType'] == null ? null : (BuildSignatureKeyTypeContaineranalysisV1beta1.fromValue(map['keyType']! as String)).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
       signature: (map['signature'] as String).input(),
     );
   }

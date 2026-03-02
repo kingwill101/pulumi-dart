@@ -42,7 +42,7 @@ class DbResourceGroupArgs {
       dbInstanceId: (map['dbInstanceId'] as String).input(),
       resourceGroupConfig: (map['resourceGroupConfig'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      roleLists: map['roleLists'] == null ? null : ((map['roleLists'] as List).cast<String>()).input(),
+      roleLists: map['roleLists'] == null ? null : ((map['roleLists']! as List).cast<String>()).input(),
     );
   }
 }

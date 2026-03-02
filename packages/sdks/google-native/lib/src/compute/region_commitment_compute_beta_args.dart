@@ -93,20 +93,20 @@ class RegionCommitmentComputeBetaArgs {
 
   factory RegionCommitmentComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return RegionCommitmentComputeBetaArgs(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      category: map['category'] == null ? null : (RegionCommitmentCategoryComputeBeta.fromValue(map['category'] as String)).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      licenseResource: map['licenseResource'] == null ? null : (LicenseResourceCommitmentComputeBeta.fromMap((map['licenseResource'] as Map).cast<String, dynamic>())).input(),
-      mergeSourceCommitments: map['mergeSourceCommitments'] == null ? null : ((map['mergeSourceCommitments'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      plan: map['plan'] == null ? null : (RegionCommitmentPlanComputeBeta.fromValue(map['plan'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      category: map['category'] == null ? null : (RegionCommitmentCategoryComputeBeta.fromValue(map['category']! as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      licenseResource: map['licenseResource'] == null ? null : (LicenseResourceCommitmentComputeBeta.fromMap((map['licenseResource']! as Map).cast<String, dynamic>())).input(),
+      mergeSourceCommitments: map['mergeSourceCommitments'] == null ? null : ((map['mergeSourceCommitments']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      plan: map['plan'] == null ? null : (RegionCommitmentPlanComputeBeta.fromValue(map['plan']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      reservations: map['reservations'] == null ? null : ((map['reservations'] as List).cast<ReservationResource>()).input(),
-      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<ResourceCommitmentComputeBeta>(map['resources'], (value) => ResourceCommitmentComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      splitSourceCommitment: map['splitSourceCommitment'] == null ? null : (map['splitSourceCommitment'] as String).input(),
-      type: map['type'] == null ? null : (RegionCommitmentTypeComputeBeta.fromValue(map['type'] as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      reservations: map['reservations'] == null ? null : ((map['reservations']! as List).cast<ReservationResource>()).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<ResourceCommitmentComputeBeta>(map['resources']!, (value) => ResourceCommitmentComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      splitSourceCommitment: map['splitSourceCommitment'] == null ? null : (map['splitSourceCommitment']! as String).input(),
+      type: map['type'] == null ? null : (RegionCommitmentTypeComputeBeta.fromValue(map['type']! as String)).input(),
     );
   }
 }

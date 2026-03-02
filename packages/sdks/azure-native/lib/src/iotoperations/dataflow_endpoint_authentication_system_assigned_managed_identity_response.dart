@@ -21,7 +21,7 @@ class DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
 
   factory DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
     );
   }
 }

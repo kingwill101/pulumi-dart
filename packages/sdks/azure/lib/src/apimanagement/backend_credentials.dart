@@ -36,10 +36,10 @@ class BackendCredentials {
 
   factory BackendCredentials.fromMap(Map<String, dynamic> map) {
     return BackendCredentials(
-      authorization: map['authorization'] == null ? null : (BackendCredentialsAuthorization.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
-      certificates: map['certificates'] == null ? null : ((map['certificates'] as List).cast<String>()).input(),
-      header: map['header'] == null ? null : ((map['header'] as Map).cast<String, String>()).input(),
-      query: map['query'] == null ? null : ((map['query'] as Map).cast<String, String>()).input(),
+      authorization: map['authorization'] == null ? null : (BackendCredentialsAuthorization.fromMap((map['authorization']! as Map).cast<String, dynamic>())).input(),
+      certificates: map['certificates'] == null ? null : ((map['certificates']! as List).cast<String>()).input(),
+      header: map['header'] == null ? null : ((map['header']! as Map).cast<String, String>()).input(),
+      query: map['query'] == null ? null : ((map['query']! as Map).cast<String, String>()).input(),
     );
   }
 }

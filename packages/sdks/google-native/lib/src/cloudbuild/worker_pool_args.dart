@@ -48,11 +48,11 @@ class WorkerPoolArgs {
 
   factory WorkerPoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkerPoolArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      privatePoolV1Config: map['privatePoolV1Config'] == null ? null : (PrivatePoolV1Config.fromMap((map['privatePoolV1Config'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      privatePoolV1Config: map['privatePoolV1Config'] == null ? null : (PrivatePoolV1Config.fromMap((map['privatePoolV1Config']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workerPoolId: (map['workerPoolId'] as String).input(),
     );
   }

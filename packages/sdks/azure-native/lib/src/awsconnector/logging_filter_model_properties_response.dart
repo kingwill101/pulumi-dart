@@ -27,8 +27,8 @@ class LoggingFilterModelPropertiesResponse {
 
   factory LoggingFilterModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LoggingFilterModelPropertiesResponse(
-      defaultBehavior: map['defaultBehavior'] == null ? null : (map['defaultBehavior'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<FilterResponse>(map['filters'], (value) => FilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultBehavior: map['defaultBehavior'] == null ? null : (map['defaultBehavior']! as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<FilterResponse>(map['filters']!, (value) => FilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

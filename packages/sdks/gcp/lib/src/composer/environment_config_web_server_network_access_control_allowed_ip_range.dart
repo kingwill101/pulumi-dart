@@ -25,7 +25,7 @@ class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
 
   factory EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

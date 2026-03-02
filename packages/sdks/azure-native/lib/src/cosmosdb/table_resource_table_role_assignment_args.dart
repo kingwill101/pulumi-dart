@@ -50,11 +50,11 @@ class TableResourceTableRoleAssignmentArgs {
   factory TableResourceTableRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return TableResourceTableRoleAssignmentArgs(
       accountName: (map['accountName'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      roleAssignmentId: map['roleAssignmentId'] == null ? null : (map['roleAssignmentId'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      roleAssignmentId: map['roleAssignmentId'] == null ? null : (map['roleAssignmentId']! as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

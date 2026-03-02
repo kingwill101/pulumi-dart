@@ -33,9 +33,9 @@ class ClusterMaintenancePolicyMaintenanceExclusion {
 
   factory ClusterMaintenancePolicyMaintenanceExclusion.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyMaintenanceExclusion(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       exclusionName: (map['exclusionName'] as String).input(),
-      exclusionOptions: map['exclusionOptions'] == null ? null : (ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions.fromMap((map['exclusionOptions'] as Map).cast<String, dynamic>())).input(),
+      exclusionOptions: map['exclusionOptions'] == null ? null : (ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions.fromMap((map['exclusionOptions']! as Map).cast<String, dynamic>())).input(),
       startTime: (map['startTime'] as String).input(),
     );
   }

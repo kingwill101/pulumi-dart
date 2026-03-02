@@ -20,7 +20,7 @@ class CrossSubscriptionRestoreSettingsResponse {
 
   factory CrossSubscriptionRestoreSettingsResponse.fromMap(Map<String, dynamic> map) {
     return CrossSubscriptionRestoreSettingsResponse(
-      crossSubscriptionRestoreState: map['crossSubscriptionRestoreState'] == null ? null : (map['crossSubscriptionRestoreState'] as String).input(),
+      crossSubscriptionRestoreState: map['crossSubscriptionRestoreState'] == null ? null : (map['crossSubscriptionRestoreState']! as String).input(),
     );
   }
 }

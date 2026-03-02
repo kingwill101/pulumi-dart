@@ -40,9 +40,9 @@ class ClusterMaintenanceSchedule {
 
   factory ClusterMaintenanceSchedule.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenanceSchedule(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      scheduleDeadlineTime: map['scheduleDeadlineTime'] == null ? null : (map['scheduleDeadlineTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      scheduleDeadlineTime: map['scheduleDeadlineTime'] == null ? null : (map['scheduleDeadlineTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

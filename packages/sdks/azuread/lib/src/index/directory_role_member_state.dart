@@ -26,8 +26,8 @@ class DirectoryRoleMemberState {
 
   factory DirectoryRoleMemberState.fromMap(Map<String, dynamic> map) {
     return DirectoryRoleMemberState(
-      memberObjectId: map['memberObjectId'] == null ? null : (map['memberObjectId'] as String).input(),
-      roleObjectId: map['roleObjectId'] == null ? null : (map['roleObjectId'] as String).input(),
+      memberObjectId: map['memberObjectId'] == null ? null : (map['memberObjectId']! as String).input(),
+      roleObjectId: map['roleObjectId'] == null ? null : (map['roleObjectId']! as String).input(),
     );
   }
 }

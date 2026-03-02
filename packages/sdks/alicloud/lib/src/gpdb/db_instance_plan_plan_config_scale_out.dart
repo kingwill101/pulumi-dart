@@ -35,10 +35,10 @@ class DbInstancePlanPlanConfigScaleOut {
 
   factory DbInstancePlanPlanConfigScaleOut.fromMap(Map<String, dynamic> map) {
     return DbInstancePlanPlanConfigScaleOut(
-      executeTime: map['executeTime'] == null ? null : (map['executeTime'] as String).input(),
-      planCronTime: map['planCronTime'] == null ? null : (map['planCronTime'] as String).input(),
-      planTaskStatus: map['planTaskStatus'] == null ? null : (map['planTaskStatus'] as String).input(),
-      segmentNodeNum: map['segmentNodeNum'] == null ? null : (map['segmentNodeNum'] as String).input(),
+      executeTime: map['executeTime'] == null ? null : (map['executeTime']! as String).input(),
+      planCronTime: map['planCronTime'] == null ? null : (map['planCronTime']! as String).input(),
+      planTaskStatus: map['planTaskStatus'] == null ? null : (map['planTaskStatus']! as String).input(),
+      segmentNodeNum: map['segmentNodeNum'] == null ? null : (map['segmentNodeNum']! as String).input(),
     );
   }
 }

@@ -64,13 +64,13 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
 
   factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig(
-      confidenceThreshold: map['confidenceThreshold'] == null ? null : (map['confidenceThreshold'] as double).input(),
-      contextFilterSettings: map['contextFilterSettings'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings.fromMap((map['contextFilterSettings'] as Map).cast<String, dynamic>())).input(),
-      dialogflowQuerySource: map['dialogflowQuerySource'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource.fromMap((map['dialogflowQuerySource'] as Map).cast<String, dynamic>())).input(),
-      documentQuerySource: map['documentQuerySource'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource.fromMap((map['documentQuerySource'] as Map).cast<String, dynamic>())).input(),
-      knowledgeBaseQuerySource: map['knowledgeBaseQuerySource'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource.fromMap((map['knowledgeBaseQuerySource'] as Map).cast<String, dynamic>())).input(),
-      maxResults: map['maxResults'] == null ? null : (map['maxResults'] as int).input(),
-      sections: map['sections'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections.fromMap((map['sections'] as Map).cast<String, dynamic>())).input(),
+      confidenceThreshold: map['confidenceThreshold'] == null ? null : (map['confidenceThreshold']! as double).input(),
+      contextFilterSettings: map['contextFilterSettings'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings.fromMap((map['contextFilterSettings']! as Map).cast<String, dynamic>())).input(),
+      dialogflowQuerySource: map['dialogflowQuerySource'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySource.fromMap((map['dialogflowQuerySource']! as Map).cast<String, dynamic>())).input(),
+      documentQuerySource: map['documentQuerySource'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDocumentQuerySource.fromMap((map['documentQuerySource']! as Map).cast<String, dynamic>())).input(),
+      knowledgeBaseQuerySource: map['knowledgeBaseQuerySource'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource.fromMap((map['knowledgeBaseQuerySource']! as Map).cast<String, dynamic>())).input(),
+      maxResults: map['maxResults'] == null ? null : (map['maxResults']! as int).input(),
+      sections: map['sections'] == null ? null : (ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections.fromMap((map['sections']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

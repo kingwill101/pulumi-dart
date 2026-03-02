@@ -53,12 +53,12 @@ class AutonomousDatabasePropertiesConnectionString {
 
   factory AutonomousDatabasePropertiesConnectionString.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabasePropertiesConnectionString(
-      allConnectionStrings: map['allConnectionStrings'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesConnectionStringAllConnectionString>(map['allConnectionStrings'], (value) => AutonomousDatabasePropertiesConnectionStringAllConnectionString.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dedicated: map['dedicated'] == null ? null : (map['dedicated'] as String).input(),
-      high: map['high'] == null ? null : (map['high'] as String).input(),
-      low: map['low'] == null ? null : (map['low'] as String).input(),
-      medium: map['medium'] == null ? null : (map['medium'] as String).input(),
-      profiles: map['profiles'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesConnectionStringProfile>(map['profiles'], (value) => AutonomousDatabasePropertiesConnectionStringProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allConnectionStrings: map['allConnectionStrings'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesConnectionStringAllConnectionString>(map['allConnectionStrings']!, (value) => AutonomousDatabasePropertiesConnectionStringAllConnectionString.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dedicated: map['dedicated'] == null ? null : (map['dedicated']! as String).input(),
+      high: map['high'] == null ? null : (map['high']! as String).input(),
+      low: map['low'] == null ? null : (map['low']! as String).input(),
+      medium: map['medium'] == null ? null : (map['medium']! as String).input(),
+      profiles: map['profiles'] == null ? null : (pulumi.Input.decodeList<AutonomousDatabasePropertiesConnectionStringProfile>(map['profiles']!, (value) => AutonomousDatabasePropertiesConnectionStringProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class GetDeviceArgs {
   factory GetDeviceArgs.fromMap(Map<String, dynamic> map) {
     return GetDeviceArgs(
       deviceId: (map['deviceId'] as String).input(),
-      fieldMask: map['fieldMask'] == null ? null : (map['fieldMask'] as String).input(),
+      fieldMask: map['fieldMask'] == null ? null : (map['fieldMask']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       registryId: (map['registryId'] as String).input(),
     );
   }

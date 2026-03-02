@@ -54,12 +54,12 @@ class EndpointPatchDiscoveryK8sIoV1beta1 {
 
   factory EndpointPatchDiscoveryK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return EndpointPatchDiscoveryK8sIoV1beta1(
-      addresses: map['addresses'] == null ? null : ((map['addresses'] as List).cast<String>()).input(),
-      conditions: map['conditions'] == null ? null : (EndpointConditionsPatchDiscoveryK8sIoV1beta1.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      targetRef: map['targetRef'] == null ? null : (ObjectReferencePatch.fromMap((map['targetRef'] as Map).cast<String, dynamic>())).input(),
-      topology: map['topology'] == null ? null : ((map['topology'] as Map).cast<String, String>()).input(),
+      addresses: map['addresses'] == null ? null : ((map['addresses']! as List).cast<String>()).input(),
+      conditions: map['conditions'] == null ? null : (EndpointConditionsPatchDiscoveryK8sIoV1beta1.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      targetRef: map['targetRef'] == null ? null : (ObjectReferencePatch.fromMap((map['targetRef']! as Map).cast<String, dynamic>())).input(),
+      topology: map['topology'] == null ? null : ((map['topology']! as Map).cast<String, String>()).input(),
     );
   }
 }

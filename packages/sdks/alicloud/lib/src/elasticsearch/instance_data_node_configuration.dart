@@ -45,11 +45,11 @@ class InstanceDataNodeConfiguration {
 
   factory InstanceDataNodeConfiguration.fromMap(Map<String, dynamic> map) {
     return InstanceDataNodeConfiguration(
-      amount: map['amount'] == null ? null : (map['amount'] as int).input(),
-      disk: map['disk'] == null ? null : (map['disk'] as int).input(),
-      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption'] as bool).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as int).input(),
+      disk: map['disk'] == null ? null : (map['disk']! as int).input(),
+      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption']! as bool).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
       spec: (map['spec'] as String).input(),
     );
   }

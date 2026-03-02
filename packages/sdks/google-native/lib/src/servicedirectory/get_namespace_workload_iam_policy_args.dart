@@ -37,7 +37,7 @@ class GetNamespaceWorkloadIamPolicyArgs {
     return GetNamespaceWorkloadIamPolicyArgs(
       location: (map['location'] as String).input(),
       namespaceId: (map['namespaceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workloadId: (map['workloadId'] as String).input(),
     );
   }

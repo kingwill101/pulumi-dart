@@ -39,7 +39,7 @@ class AttachedNetworkByDevCenterArgs {
 
   factory AttachedNetworkByDevCenterArgs.fromMap(Map<String, dynamic> map) {
     return AttachedNetworkByDevCenterArgs(
-      attachedNetworkConnectionName: map['attachedNetworkConnectionName'] == null ? null : (map['attachedNetworkConnectionName'] as String).input(),
+      attachedNetworkConnectionName: map['attachedNetworkConnectionName'] == null ? null : (map['attachedNetworkConnectionName']! as String).input(),
       devCenterName: (map['devCenterName'] as String).input(),
       networkConnectionId: (map['networkConnectionId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

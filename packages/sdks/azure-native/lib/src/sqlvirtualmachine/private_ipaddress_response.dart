@@ -26,8 +26,8 @@ class PrivateIPAddressResponse {
 
   factory PrivateIPAddressResponse.fromMap(Map<String, dynamic> map) {
     return PrivateIPAddressResponse(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId']! as String).input(),
     );
   }
 }

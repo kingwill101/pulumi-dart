@@ -22,7 +22,7 @@ class GoogleCloudApigeeV1SecurityActionFlag {
 
   factory GoogleCloudApigeeV1SecurityActionFlag.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityActionFlag(
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1SecurityActionHttpHeader>(map['headers'], (value) => GoogleCloudApigeeV1SecurityActionHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1SecurityActionHttpHeader>(map['headers']!, (value) => GoogleCloudApigeeV1SecurityActionHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

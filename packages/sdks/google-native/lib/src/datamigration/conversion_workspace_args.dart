@@ -65,12 +65,12 @@ class ConversionWorkspaceArgs {
     return ConversionWorkspaceArgs(
       conversionWorkspaceId: (map['conversionWorkspaceId'] as String).input(),
       destination: (DatabaseEngineInfo.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      globalSettings: map['globalSettings'] == null ? null : ((map['globalSettings'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      globalSettings: map['globalSettings'] == null ? null : ((map['globalSettings']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       source: (DatabaseEngineInfo.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

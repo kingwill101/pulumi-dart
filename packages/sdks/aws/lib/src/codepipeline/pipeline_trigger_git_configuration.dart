@@ -32,8 +32,8 @@ class PipelineTriggerGitConfiguration {
 
   factory PipelineTriggerGitConfiguration.fromMap(Map<String, dynamic> map) {
     return PipelineTriggerGitConfiguration(
-      pullRequests: map['pullRequests'] == null ? null : (pulumi.Input.decodeList<PipelineTriggerGitConfigurationPullRequest>(map['pullRequests'], (value) => PipelineTriggerGitConfigurationPullRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pushes: map['pushes'] == null ? null : (pulumi.Input.decodeList<PipelineTriggerGitConfigurationPush>(map['pushes'], (value) => PipelineTriggerGitConfigurationPush.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pullRequests: map['pullRequests'] == null ? null : ((pulumi.Input.decodeList<PipelineTriggerGitConfigurationPullRequest>(map['pullRequests']!, (value) => PipelineTriggerGitConfigurationPullRequest.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      pushes: map['pushes'] == null ? null : ((pulumi.Input.decodeList<PipelineTriggerGitConfigurationPush>(map['pushes']!, (value) => PipelineTriggerGitConfigurationPush.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       sourceActionName: (map['sourceActionName'] as String).input(),
     );
   }

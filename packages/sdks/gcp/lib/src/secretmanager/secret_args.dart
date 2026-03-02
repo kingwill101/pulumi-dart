@@ -129,19 +129,19 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       replication: (SecretReplication.fromMap((map['replication'] as Map).cast<String, dynamic>())).input(),
-      rotation: map['rotation'] == null ? null : (SecretRotation.fromMap((map['rotation'] as Map).cast<String, dynamic>())).input(),
-      secretId: map['secretId'] == null ? null : (map['secretId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topics: map['topics'] == null ? null : (pulumi.Input.decodeList<SecretTopic>(map['topics'], (value) => SecretTopic.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
-      versionAliases: map['versionAliases'] == null ? null : ((map['versionAliases'] as Map).cast<String, String>()).input(),
-      versionDestroyTtl: map['versionDestroyTtl'] == null ? null : (map['versionDestroyTtl'] as String).input(),
+      rotation: map['rotation'] == null ? null : (SecretRotation.fromMap((map['rotation']! as Map).cast<String, dynamic>())).input(),
+      secretId: map['secretId'] == null ? null : (map['secretId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      topics: map['topics'] == null ? null : (pulumi.Input.decodeList<SecretTopic>(map['topics']!, (value) => SecretTopic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
+      versionAliases: map['versionAliases'] == null ? null : ((map['versionAliases']! as Map).cast<String, String>()).input(),
+      versionDestroyTtl: map['versionDestroyTtl'] == null ? null : (map['versionDestroyTtl']! as String).input(),
     );
   }
 }

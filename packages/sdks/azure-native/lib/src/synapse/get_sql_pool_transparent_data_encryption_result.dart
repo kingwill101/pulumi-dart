@@ -49,7 +49,7 @@ class GetSqlPoolTransparentDataEncryptionResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
       type: map['type'] as String,
     );
   }

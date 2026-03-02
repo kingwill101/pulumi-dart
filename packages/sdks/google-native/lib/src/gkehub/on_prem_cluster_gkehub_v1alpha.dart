@@ -32,9 +32,9 @@ class OnPremClusterGkehubV1alpha {
 
   factory OnPremClusterGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return OnPremClusterGkehubV1alpha(
-      adminCluster: map['adminCluster'] == null ? null : (map['adminCluster'] as bool).input(),
-      clusterType: map['clusterType'] == null ? null : (OnPremClusterClusterTypeGkehubV1alpha.fromValue(map['clusterType'] as String)).input(),
-      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink'] as String).input(),
+      adminCluster: map['adminCluster'] == null ? null : (map['adminCluster']! as bool).input(),
+      clusterType: map['clusterType'] == null ? null : (OnPremClusterClusterTypeGkehubV1alpha.fromValue(map['clusterType']! as String)).input(),
+      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink']! as String).input(),
     );
   }
 }

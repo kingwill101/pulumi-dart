@@ -32,9 +32,9 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

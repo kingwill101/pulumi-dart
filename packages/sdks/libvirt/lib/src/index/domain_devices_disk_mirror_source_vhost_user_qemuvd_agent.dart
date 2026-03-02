@@ -27,8 +27,8 @@ class DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent {
 
   factory DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorSourceVhostUserQemuvdAgent(
-      clipBoard: map['clipBoard'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard.fromMap((map['clipBoard'] as Map).cast<String, dynamic>())).input(),
-      mouse: map['mouse'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse.fromMap((map['mouse'] as Map).cast<String, dynamic>())).input(),
+      clipBoard: map['clipBoard'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard.fromMap((map['clipBoard']! as Map).cast<String, dynamic>())).input(),
+      mouse: map['mouse'] == null ? null : (DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse.fromMap((map['mouse']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

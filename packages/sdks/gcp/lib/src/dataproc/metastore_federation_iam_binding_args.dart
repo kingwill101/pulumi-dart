@@ -66,11 +66,11 @@ class MetastoreFederationIamBindingArgs {
 
   factory MetastoreFederationIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return MetastoreFederationIamBindingArgs(
-      condition: map['condition'] == null ? null : (MetastoreFederationIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (MetastoreFederationIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       federationId: (map['federationId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

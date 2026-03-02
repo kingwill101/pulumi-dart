@@ -102,20 +102,20 @@ class ConfigurationStoreArgs {
 
   factory ConfigurationStoreArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationStoreArgs(
-      dataPlaneProxyAuthenticationMode: map['dataPlaneProxyAuthenticationMode'] == null ? null : (map['dataPlaneProxyAuthenticationMode'] as String).input(),
-      dataPlaneProxyPrivateLinkDelegationEnabled: map['dataPlaneProxyPrivateLinkDelegationEnabled'] == null ? null : (map['dataPlaneProxyPrivateLinkDelegationEnabled'] as bool).input(),
-      encryption: map['encryption'] == null ? null : (ConfigurationStoreEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ConfigurationStoreIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      purgeProtectionEnabled: map['purgeProtectionEnabled'] == null ? null : (map['purgeProtectionEnabled'] as bool).input(),
-      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<ConfigurationStoreReplica>(map['replicas'], (value) => ConfigurationStoreReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataPlaneProxyAuthenticationMode: map['dataPlaneProxyAuthenticationMode'] == null ? null : (map['dataPlaneProxyAuthenticationMode']! as String).input(),
+      dataPlaneProxyPrivateLinkDelegationEnabled: map['dataPlaneProxyPrivateLinkDelegationEnabled'] == null ? null : (map['dataPlaneProxyPrivateLinkDelegationEnabled']! as bool).input(),
+      encryption: map['encryption'] == null ? null : (ConfigurationStoreEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ConfigurationStoreIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      purgeProtectionEnabled: map['purgeProtectionEnabled'] == null ? null : (map['purgeProtectionEnabled']! as bool).input(),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<ConfigurationStoreReplica>(map['replicas']!, (value) => ConfigurationStoreReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      softDeleteRetentionDays: map['softDeleteRetentionDays'] == null ? null : (map['softDeleteRetentionDays'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      softDeleteRetentionDays: map['softDeleteRetentionDays'] == null ? null : (map['softDeleteRetentionDays']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

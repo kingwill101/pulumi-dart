@@ -20,7 +20,7 @@ class MonitoringThresholdResponse {
 
   factory MonitoringThresholdResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringThresholdResponse(
-      value: map['value'] == null ? null : (map['value'] as double).input(),
+      value: map['value'] == null ? null : (map['value']! as double).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
 
   factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary(
-      cloudStoragePath: map['cloudStoragePath'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath.fromMap((map['cloudStoragePath'] as Map).cast<String, dynamic>())).input(),
-      wordList: map['wordList'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList.fromMap((map['wordList'] as Map).cast<String, dynamic>())).input(),
+      cloudStoragePath: map['cloudStoragePath'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath.fromMap((map['cloudStoragePath']! as Map).cast<String, dynamic>())).input(),
+      wordList: map['wordList'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList.fromMap((map['wordList']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

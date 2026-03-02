@@ -38,10 +38,10 @@ class DatasetResponse {
 
   factory DatasetResponse.fromMap(Map<String, dynamic> map) {
     return DatasetResponse(
-      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<DataPointResponse>(map['dataPoints'], (value) => DataPointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      datasetConfiguration: map['datasetConfiguration'] == null ? null : (map['datasetConfiguration'] as String).input(),
+      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<DataPointResponse>(map['dataPoints']!, (value) => DataPointResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      datasetConfiguration: map['datasetConfiguration'] == null ? null : (map['datasetConfiguration']! as String).input(),
       name: (map['name'] as String).input(),
-      topic: map['topic'] == null ? null : (TopicResponse.fromMap((map['topic'] as Map).cast<String, dynamic>())).input(),
+      topic: map['topic'] == null ? null : (TopicResponse.fromMap((map['topic']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

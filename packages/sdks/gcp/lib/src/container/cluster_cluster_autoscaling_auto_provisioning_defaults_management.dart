@@ -33,9 +33,9 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement {
 
   factory ClusterClusterAutoscalingAutoProvisioningDefaultsManagement.fromMap(Map<String, dynamic> map) {
     return ClusterClusterAutoscalingAutoProvisioningDefaultsManagement(
-      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair'] as bool).input(),
-      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade'] as bool).input(),
-      upgradeOptions: map['upgradeOptions'] == null ? null : (pulumi.Input.decodeList<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption>(map['upgradeOptions'], (value) => ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair']! as bool).input(),
+      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade']! as bool).input(),
+      upgradeOptions: map['upgradeOptions'] == null ? null : (pulumi.Input.decodeList<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption>(map['upgradeOptions']!, (value) => ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

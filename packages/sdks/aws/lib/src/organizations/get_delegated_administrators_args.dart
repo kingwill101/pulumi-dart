@@ -24,7 +24,7 @@ class GetDelegatedAdministratorsArgs {
 
   factory GetDelegatedAdministratorsArgs.fromMap(Map<String, dynamic> map) {
     return GetDelegatedAdministratorsArgs(
-      servicePrincipal: map['servicePrincipal'] == null ? null : (map['servicePrincipal'] as String).input(),
+      servicePrincipal: map['servicePrincipal'] == null ? null : ((map['servicePrincipal'] as String).input()).input(),
     );
   }
 }

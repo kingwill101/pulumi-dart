@@ -34,7 +34,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable {
     return PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable(
       datasetId: (map['datasetId'] as String).input(),
       projectId: (map['projectId'] as String).input(),
-      tableId: map['tableId'] == null ? null : (map['tableId'] as String).input(),
+      tableId: map['tableId'] == null ? null : (map['tableId']! as String).input(),
     );
   }
 }

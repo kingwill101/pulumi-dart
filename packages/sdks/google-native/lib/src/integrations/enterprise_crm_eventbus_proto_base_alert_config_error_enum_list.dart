@@ -25,8 +25,8 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList {
 
   factory EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList(
-      enumStrings: map['enumStrings'] == null ? null : ((map['enumStrings'] as List).cast<String>()).input(),
-      filterType: map['filterType'] == null ? null : (EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType.fromValue(map['filterType'] as String)).input(),
+      enumStrings: map['enumStrings'] == null ? null : ((map['enumStrings']! as List).cast<String>()).input(),
+      filterType: map['filterType'] == null ? null : (EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType.fromValue(map['filterType']! as String)).input(),
     );
   }
 }

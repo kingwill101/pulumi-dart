@@ -42,11 +42,11 @@ class FlexVolumeSourcePatch {
 
   factory FlexVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return FlexVolumeSourcePatch(
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      secretRef: map['secretRef'] == null ? null : (LocalObjectReferencePatch.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      options: map['options'] == null ? null : ((map['options']! as Map).cast<String, String>()).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      secretRef: map['secretRef'] == null ? null : (LocalObjectReferencePatch.fromMap((map['secretRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

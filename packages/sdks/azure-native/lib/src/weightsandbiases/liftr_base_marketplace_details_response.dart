@@ -33,7 +33,7 @@ class LiftrBaseMarketplaceDetailsResponse {
   factory LiftrBaseMarketplaceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return LiftrBaseMarketplaceDetailsResponse(
       offerDetails: (LiftrBaseOfferDetailsResponse.fromMap((map['offerDetails'] as Map).cast<String, dynamic>())).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
       subscriptionStatus: (map['subscriptionStatus'] as String).input(),
     );
   }

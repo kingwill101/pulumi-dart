@@ -32,9 +32,9 @@ class PolicyAssignmentPropertiesResponsePolicy {
 
   factory PolicyAssignmentPropertiesResponsePolicy.fromMap(Map<String, dynamic> map) {
     return PolicyAssignmentPropertiesResponsePolicy(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       lastModifiedBy: (PrincipalResponse.fromMap((map['lastModifiedBy'] as Map).cast<String, dynamic>())).input(),
-      lastModifiedDateTime: map['lastModifiedDateTime'] == null ? null : (map['lastModifiedDateTime'] as String).input(),
+      lastModifiedDateTime: map['lastModifiedDateTime'] == null ? null : (map['lastModifiedDateTime']! as String).input(),
     );
   }
 }

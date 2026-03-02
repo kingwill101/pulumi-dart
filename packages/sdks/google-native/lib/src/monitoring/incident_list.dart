@@ -27,8 +27,8 @@ class IncidentList {
 
   factory IncidentList.fromMap(Map<String, dynamic> map) {
     return IncidentList(
-      monitoredResources: map['monitoredResources'] == null ? null : (pulumi.Input.decodeList<MonitoredResource>(map['monitoredResources'], (value) => MonitoredResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      policyNames: map['policyNames'] == null ? null : ((map['policyNames'] as List).cast<String>()).input(),
+      monitoredResources: map['monitoredResources'] == null ? null : (pulumi.Input.decodeList<MonitoredResource>(map['monitoredResources']!, (value) => MonitoredResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyNames: map['policyNames'] == null ? null : ((map['policyNames']! as List).cast<String>()).input(),
     );
   }
 }

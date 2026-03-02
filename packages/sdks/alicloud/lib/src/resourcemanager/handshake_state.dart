@@ -70,16 +70,16 @@ class HandshakeState {
 
   factory HandshakeState.fromMap(Map<String, dynamic> map) {
     return HandshakeState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      masterAccountId: map['masterAccountId'] == null ? null : (map['masterAccountId'] as String).input(),
-      masterAccountName: map['masterAccountName'] == null ? null : (map['masterAccountName'] as String).input(),
-      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime'] as String).input(),
-      note: map['note'] == null ? null : (map['note'] as String).input(),
-      resourceDirectoryId: map['resourceDirectoryId'] == null ? null : (map['resourceDirectoryId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      targetEntity: map['targetEntity'] == null ? null : (map['targetEntity'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      masterAccountId: map['masterAccountId'] == null ? null : (map['masterAccountId']! as String).input(),
+      masterAccountName: map['masterAccountName'] == null ? null : (map['masterAccountName']! as String).input(),
+      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime']! as String).input(),
+      note: map['note'] == null ? null : (map['note']! as String).input(),
+      resourceDirectoryId: map['resourceDirectoryId'] == null ? null : (map['resourceDirectoryId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      targetEntity: map['targetEntity'] == null ? null : (map['targetEntity']! as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
     );
   }
 }

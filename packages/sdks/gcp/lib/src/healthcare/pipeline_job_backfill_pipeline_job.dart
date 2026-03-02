@@ -21,7 +21,7 @@ class PipelineJobBackfillPipelineJob {
 
   factory PipelineJobBackfillPipelineJob.fromMap(Map<String, dynamic> map) {
     return PipelineJobBackfillPipelineJob(
-      mappingPipelineJob: map['mappingPipelineJob'] == null ? null : (map['mappingPipelineJob'] as String).input(),
+      mappingPipelineJob: map['mappingPipelineJob'] == null ? null : (map['mappingPipelineJob']! as String).input(),
     );
   }
 }

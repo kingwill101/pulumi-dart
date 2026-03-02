@@ -28,7 +28,7 @@ class BareMetalLvpShareConfig {
   factory BareMetalLvpShareConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalLvpShareConfig(
       lvpConfig: (BareMetalLvpConfig.fromMap((map['lvpConfig'] as Map).cast<String, dynamic>())).input(),
-      sharedPathPvCount: map['sharedPathPvCount'] == null ? null : (map['sharedPathPvCount'] as int).input(),
+      sharedPathPvCount: map['sharedPathPvCount'] == null ? null : (map['sharedPathPvCount']! as int).input(),
     );
   }
 }

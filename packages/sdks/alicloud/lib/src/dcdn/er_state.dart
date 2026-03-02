@@ -32,9 +32,9 @@ class ErState {
 
   factory ErState.fromMap(Map<String, dynamic> map) {
     return ErState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      envConf: map['envConf'] == null ? null : (ErEnvConf.fromMap((map['envConf'] as Map).cast<String, dynamic>())).input(),
-      erName: map['erName'] == null ? null : (map['erName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      envConf: map['envConf'] == null ? null : (ErEnvConf.fromMap((map['envConf']! as Map).cast<String, dynamic>())).input(),
+      erName: map['erName'] == null ? null : (map['erName']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class Deinterlace {
 
   factory Deinterlace.fromMap(Map<String, dynamic> map) {
     return Deinterlace(
-      bwdif: map['bwdif'] == null ? null : (BwdifConfig.fromMap((map['bwdif'] as Map).cast<String, dynamic>())).input(),
-      yadif: map['yadif'] == null ? null : (YadifConfig.fromMap((map['yadif'] as Map).cast<String, dynamic>())).input(),
+      bwdif: map['bwdif'] == null ? null : (BwdifConfig.fromMap((map['bwdif']! as Map).cast<String, dynamic>())).input(),
+      yadif: map['yadif'] == null ? null : (YadifConfig.fromMap((map['yadif']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

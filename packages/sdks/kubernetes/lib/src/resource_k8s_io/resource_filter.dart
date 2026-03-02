@@ -27,8 +27,8 @@ class ResourceFilter {
 
   factory ResourceFilter.fromMap(Map<String, dynamic> map) {
     return ResourceFilter(
-      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
-      namedResources: map['namedResources'] == null ? null : (NamedResourcesFilter.fromMap((map['namedResources'] as Map).cast<String, dynamic>())).input(),
+      driverName: map['driverName'] == null ? null : (map['driverName']! as String).input(),
+      namedResources: map['namedResources'] == null ? null : (NamedResourcesFilter.fromMap((map['namedResources']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

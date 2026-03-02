@@ -31,9 +31,9 @@ class RedrivePolicyState {
 
   factory RedrivePolicyState.fromMap(Map<String, dynamic> map) {
     return RedrivePolicyState(
-      queueUrl: map['queueUrl'] == null ? null : (map['queueUrl'] as String).input(),
-      redrivePolicy: map['redrivePolicy'] == null ? null : (map['redrivePolicy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      queueUrl: map['queueUrl'] == null ? null : ((map['queueUrl'] as String).input()).input(),
+      redrivePolicy: map['redrivePolicy'] == null ? null : ((map['redrivePolicy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

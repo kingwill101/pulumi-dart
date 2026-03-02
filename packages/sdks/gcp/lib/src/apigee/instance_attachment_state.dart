@@ -32,9 +32,9 @@ class InstanceAttachmentState {
 
   factory InstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentState(
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

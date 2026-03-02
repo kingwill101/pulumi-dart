@@ -45,10 +45,10 @@ class PartitionIndexArgs {
 
   factory PartitionIndexArgs.fromMap(Map<String, dynamic> map) {
     return PartitionIndexArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
-      partitionIndex: (PartitionIndexPartitionIndex.fromMap((map['partitionIndex'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      partitionIndex: (PartitionIndexPartitionIndex.fromMap((map['partitionIndex']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       tableName: (map['tableName'] as String).input(),
     );
   }

@@ -22,7 +22,7 @@ class GethDetails {
 
   factory GethDetails.fromMap(Map<String, dynamic> map) {
     return GethDetails(
-      garbageCollectionMode: map['garbageCollectionMode'] == null ? null : (GethDetailsGarbageCollectionMode.fromValue(map['garbageCollectionMode'] as String)).input(),
+      garbageCollectionMode: map['garbageCollectionMode'] == null ? null : (GethDetailsGarbageCollectionMode.fromValue(map['garbageCollectionMode']! as String)).input(),
     );
   }
 }

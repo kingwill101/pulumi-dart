@@ -102,19 +102,19 @@ class ReferenceListState {
 
   factory ReferenceListState.fromMap(Map<String, dynamic> map) {
     return ReferenceListState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<ReferenceListEntry>(map['entries'], (value) => ReferenceListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      referenceListId: map['referenceListId'] == null ? null : (map['referenceListId'] as String).input(),
-      revisionCreateTime: map['revisionCreateTime'] == null ? null : (map['revisionCreateTime'] as String).input(),
-      ruleAssociationsCount: map['ruleAssociationsCount'] == null ? null : (map['ruleAssociationsCount'] as int).input(),
-      rules: map['rules'] == null ? null : ((map['rules'] as List).cast<String>()).input(),
-      scopeInfos: map['scopeInfos'] == null ? null : (pulumi.Input.decodeList<ReferenceListScopeInfo>(map['scopeInfos'], (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      syntaxType: map['syntaxType'] == null ? null : (map['syntaxType'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<ReferenceListEntry>(map['entries']!, (value) => ReferenceListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      referenceListId: map['referenceListId'] == null ? null : (map['referenceListId']! as String).input(),
+      revisionCreateTime: map['revisionCreateTime'] == null ? null : (map['revisionCreateTime']! as String).input(),
+      ruleAssociationsCount: map['ruleAssociationsCount'] == null ? null : (map['ruleAssociationsCount']! as int).input(),
+      rules: map['rules'] == null ? null : ((map['rules']! as List).cast<String>()).input(),
+      scopeInfos: map['scopeInfos'] == null ? null : (pulumi.Input.decodeList<ReferenceListScopeInfo>(map['scopeInfos']!, (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      syntaxType: map['syntaxType'] == null ? null : (map['syntaxType']! as String).input(),
     );
   }
 }

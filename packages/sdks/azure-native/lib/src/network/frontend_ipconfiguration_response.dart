@@ -105,22 +105,22 @@ class FrontendIPConfigurationResponse {
   factory FrontendIPConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FrontendIPConfigurationResponse(
       etag: (map['etag'] as String).input(),
-      gatewayLoadBalancer: map['gatewayLoadBalancer'] == null ? null : (SubResourceResponse.fromMap((map['gatewayLoadBalancer'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      gatewayLoadBalancer: map['gatewayLoadBalancer'] == null ? null : (SubResourceResponse.fromMap((map['gatewayLoadBalancer']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       inboundNatPools: (pulumi.Input.decodeList<SubResourceResponse>(map['inboundNatPools'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       inboundNatRules: (pulumi.Input.decodeList<SubResourceResponse>(map['inboundNatRules'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       loadBalancingRules: (pulumi.Input.decodeList<SubResourceResponse>(map['loadBalancingRules'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       outboundRules: (pulumi.Input.decodeList<SubResourceResponse>(map['outboundRules'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : (map['privateIPAddressVersion'] as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : (map['privateIPAddressVersion']! as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      publicIPAddress: map['publicIPAddress'] == null ? null : (PublicIPAddressResponse.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
-      publicIPPrefix: map['publicIPPrefix'] == null ? null : (SubResourceResponse.fromMap((map['publicIPPrefix'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (PublicIPAddressResponse.fromMap((map['publicIPAddress']! as Map).cast<String, dynamic>())).input(),
+      publicIPPrefix: map['publicIPPrefix'] == null ? null : (SubResourceResponse.fromMap((map['publicIPPrefix']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (SubnetResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

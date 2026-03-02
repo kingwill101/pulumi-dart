@@ -32,9 +32,9 @@ class FloorsettingGoogleMcpServerFloorSetting {
 
   factory FloorsettingGoogleMcpServerFloorSetting.fromMap(Map<String, dynamic> map) {
     return FloorsettingGoogleMcpServerFloorSetting(
-      enableCloudLogging: map['enableCloudLogging'] == null ? null : (map['enableCloudLogging'] as bool).input(),
-      inspectAndBlock: map['inspectAndBlock'] == null ? null : (map['inspectAndBlock'] as bool).input(),
-      inspectOnly: map['inspectOnly'] == null ? null : (map['inspectOnly'] as bool).input(),
+      enableCloudLogging: map['enableCloudLogging'] == null ? null : (map['enableCloudLogging']! as bool).input(),
+      inspectAndBlock: map['inspectAndBlock'] == null ? null : (map['inspectAndBlock']! as bool).input(),
+      inspectOnly: map['inspectOnly'] == null ? null : (map['inspectOnly']! as bool).input(),
     );
   }
 }

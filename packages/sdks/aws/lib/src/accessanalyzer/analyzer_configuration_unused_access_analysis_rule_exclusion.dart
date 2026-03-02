@@ -25,8 +25,8 @@ class AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion {
 
   factory AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion.fromMap(Map<String, dynamic> map) {
     return AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion(
-      accountIds: map['accountIds'] == null ? null : ((map['accountIds'] as List).cast<String>()).input(),
-      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags'] as List).cast<Map<String, String>>()).input(),
+      accountIds: map['accountIds'] == null ? null : (((map['accountIds'] as List).cast<String>()).input()).input(),
+      resourceTags: map['resourceTags'] == null ? null : (((map['resourceTags'] as List).cast<Map<String, String>>()).input()).input(),
     );
   }
 }

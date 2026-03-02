@@ -26,8 +26,8 @@ class ServiceConfigState {
 
   factory ServiceConfigState.fromMap(Map<String, dynamic> map) {
     return ServiceConfigState(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

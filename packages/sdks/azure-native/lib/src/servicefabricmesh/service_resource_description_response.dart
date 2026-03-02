@@ -95,17 +95,17 @@ class ServiceResourceDescriptionResponse {
 
   factory ServiceResourceDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return ServiceResourceDescriptionResponse(
-      autoScalingPolicies: map['autoScalingPolicies'] == null ? null : (pulumi.Input.decodeList<AutoScalingPolicyResponse>(map['autoScalingPolicies'], (value) => AutoScalingPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoScalingPolicies: map['autoScalingPolicies'] == null ? null : (pulumi.Input.decodeList<AutoScalingPolicyResponse>(map['autoScalingPolicies']!, (value) => AutoScalingPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       codePackages: (pulumi.Input.decodeList<ContainerCodePackagePropertiesResponse>(map['codePackages'], (value) => ContainerCodePackagePropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diagnostics: map['diagnostics'] == null ? null : (DiagnosticsRefResponse.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diagnostics: map['diagnostics'] == null ? null : (DiagnosticsRefResponse.fromMap((map['diagnostics']! as Map).cast<String, dynamic>())).input(),
       healthState: (map['healthState'] as String).input(),
       id: (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkRefs: map['networkRefs'] == null ? null : (pulumi.Input.decodeList<NetworkRefResponse>(map['networkRefs'], (value) => NetworkRefResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkRefs: map['networkRefs'] == null ? null : (pulumi.Input.decodeList<NetworkRefResponse>(map['networkRefs']!, (value) => NetworkRefResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       osType: (map['osType'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as int).input(),
       status: (map['status'] as String).input(),
       statusDetails: (map['statusDetails'] as String).input(),
       type: (map['type'] as String).input(),

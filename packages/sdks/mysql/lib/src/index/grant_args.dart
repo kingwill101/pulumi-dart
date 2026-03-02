@@ -65,14 +65,14 @@ class GrantArgs {
   factory GrantArgs.fromMap(Map<String, dynamic> map) {
     return GrantArgs(
       database: (map['database'] as String).input(),
-      grant: map['grant'] == null ? null : (map['grant'] as bool).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      privileges: map['privileges'] == null ? null : ((map['privileges'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
-      tlsOption: map['tlsOption'] == null ? null : (map['tlsOption'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      grant: map['grant'] == null ? null : (map['grant']! as bool).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      privileges: map['privileges'] == null ? null : ((map['privileges']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
+      tlsOption: map['tlsOption'] == null ? null : (map['tlsOption']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

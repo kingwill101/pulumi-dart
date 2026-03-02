@@ -31,8 +31,8 @@ class EcsPrefixListEntry {
 
   factory EcsPrefixListEntry.fromMap(Map<String, dynamic> map) {
     return EcsPrefixListEntry(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class GcpIntegrationsAlloyDb {
 
   factory GcpIntegrationsAlloyDb.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsAlloyDb(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

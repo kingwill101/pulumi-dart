@@ -49,13 +49,13 @@ class ResourceSetResourceSet {
 
   factory ResourceSetResourceSet.fromMap(Map<String, dynamic> map) {
     return ResourceSetResourceSet(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      lastUpdateTime: map['lastUpdateTime'] == null ? null : (map['lastUpdateTime'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      lastUpdateTime: map['lastUpdateTime'] == null ? null : ((map['lastUpdateTime'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      resourceSetStatus: map['resourceSetStatus'] == null ? null : (map['resourceSetStatus'] as String).input(),
-      resourceTypeLists: map['resourceTypeLists'] == null ? null : ((map['resourceTypeLists'] as List).cast<String>()).input(),
-      updateToken: map['updateToken'] == null ? null : (map['updateToken'] as String).input(),
+      resourceSetStatus: map['resourceSetStatus'] == null ? null : ((map['resourceSetStatus'] as String).input()).input(),
+      resourceTypeLists: map['resourceTypeLists'] == null ? null : (((map['resourceTypeLists'] as List).cast<String>()).input()).input(),
+      updateToken: map['updateToken'] == null ? null : ((map['updateToken'] as String).input()).input(),
     );
   }
 }

@@ -60,8 +60,8 @@ class GetClusterInstanceHybridIdentityMetadatumResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      publicKey: map['publicKey'] == null ? null : map['publicKey'] as String,
-      resourceUid: map['resourceUid'] == null ? null : map['resourceUid'] as String,
+      publicKey: map['publicKey'] == null ? null : map['publicKey']! as String,
+      resourceUid: map['resourceUid'] == null ? null : map['resourceUid']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

@@ -65,16 +65,16 @@ class DnsDomainState {
 
   factory DnsDomainState.fromMap(Map<String, dynamic> map) {
     return DnsDomainState(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      punyCode: map['punyCode'] == null ? null : (map['punyCode'] as String).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      punyCode: map['punyCode'] == null ? null : (map['punyCode']! as String).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

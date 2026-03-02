@@ -33,7 +33,7 @@ class WorkspacePropertiesAccessConnector {
     return WorkspacePropertiesAccessConnector(
       id: (map['id'] as String).input(),
       identityType: (map['identityType'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

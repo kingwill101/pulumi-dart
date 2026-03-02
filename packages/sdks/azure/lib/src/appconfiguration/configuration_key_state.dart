@@ -72,16 +72,16 @@ class ConfigurationKeyState {
 
   factory ConfigurationKeyState.fromMap(Map<String, dynamic> map) {
     return ConfigurationKeyState(
-      configurationStoreId: map['configurationStoreId'] == null ? null : (map['configurationStoreId'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      vaultKeyReference: map['vaultKeyReference'] == null ? null : (map['vaultKeyReference'] as String).input(),
+      configurationStoreId: map['configurationStoreId'] == null ? null : (map['configurationStoreId']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      vaultKeyReference: map['vaultKeyReference'] == null ? null : (map['vaultKeyReference']! as String).input(),
     );
   }
 }

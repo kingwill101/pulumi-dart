@@ -68,12 +68,12 @@ class MetastoreFederationArgs {
   factory MetastoreFederationArgs.fromMap(Map<String, dynamic> map) {
     return MetastoreFederationArgs(
       backendMetastores: (pulumi.Input.decodeList<MetastoreFederationBackendMetastore>(map['backendMetastores'], (value) => MetastoreFederationBackendMetastore.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
       federationId: (map['federationId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       version: (map['version'] as String).input(),
     );
   }

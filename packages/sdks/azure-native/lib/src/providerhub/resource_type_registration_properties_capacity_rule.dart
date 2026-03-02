@@ -26,8 +26,8 @@ class ResourceTypeRegistrationPropertiesCapacityRule {
 
   factory ResourceTypeRegistrationPropertiesCapacityRule.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesCapacityRule(
-      capacityPolicy: map['capacityPolicy'] == null ? null : (map['capacityPolicy'] as String).input(),
-      skuAlias: map['skuAlias'] == null ? null : (map['skuAlias'] as String).input(),
+      capacityPolicy: map['capacityPolicy'] == null ? null : (map['capacityPolicy']! as String).input(),
+      skuAlias: map['skuAlias'] == null ? null : (map['skuAlias']! as String).input(),
     );
   }
 }

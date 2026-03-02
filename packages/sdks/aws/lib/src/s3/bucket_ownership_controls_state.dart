@@ -32,9 +32,9 @@ class BucketOwnershipControlsState {
 
   factory BucketOwnershipControlsState.fromMap(Map<String, dynamic> map) {
     return BucketOwnershipControlsState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rule: map['rule'] == null ? null : (BucketOwnershipControlsRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rule: map['rule'] == null ? null : ((BucketOwnershipControlsRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

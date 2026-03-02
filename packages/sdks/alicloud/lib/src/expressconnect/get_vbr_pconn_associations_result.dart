@@ -51,10 +51,10 @@ class GetVbrPconnAssociationsResult {
       associations: pulumi.Input.decodeList<GetVbrPconnAssociationsAssociation>(map['associations'], (value) => GetVbrPconnAssociationsAssociation.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      vbrId: map['vbrId'] == null ? null : map['vbrId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      vbrId: map['vbrId'] == null ? null : map['vbrId']! as String,
     );
   }
 }

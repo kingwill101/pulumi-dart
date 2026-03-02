@@ -37,10 +37,10 @@ class GoogleCloudIdentitytoolkitAdminV2IdpConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2IdpConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2IdpConfig(
-      idpCertificates: map['idpCertificates'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2IdpCertificate>(map['idpCertificates'], (value) => GoogleCloudIdentitytoolkitAdminV2IdpCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      idpEntityId: map['idpEntityId'] == null ? null : (map['idpEntityId'] as String).input(),
-      signRequest: map['signRequest'] == null ? null : (map['signRequest'] as bool).input(),
-      ssoUrl: map['ssoUrl'] == null ? null : (map['ssoUrl'] as String).input(),
+      idpCertificates: map['idpCertificates'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2IdpCertificate>(map['idpCertificates']!, (value) => GoogleCloudIdentitytoolkitAdminV2IdpCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      idpEntityId: map['idpEntityId'] == null ? null : (map['idpEntityId']! as String).input(),
+      signRequest: map['signRequest'] == null ? null : (map['signRequest']! as bool).input(),
+      ssoUrl: map['ssoUrl'] == null ? null : (map['ssoUrl']! as String).input(),
     );
   }
 }

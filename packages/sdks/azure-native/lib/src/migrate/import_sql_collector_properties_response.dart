@@ -37,7 +37,7 @@ class ImportSqlCollectorPropertiesResponse {
   factory ImportSqlCollectorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ImportSqlCollectorPropertiesResponse(
       createdTimestamp: (map['createdTimestamp'] as String).input(),
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       updatedTimestamp: (map['updatedTimestamp'] as String).input(),
     );

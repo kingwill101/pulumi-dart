@@ -41,7 +41,7 @@ class RoutePropertiesResponse {
 
   factory RoutePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RoutePropertiesResponse(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
       endpointNames: ((map['endpointNames'] as List).cast<String>()).input(),
       isEnabled: (map['isEnabled'] as bool).input(),
       name: (map['name'] as String).input(),

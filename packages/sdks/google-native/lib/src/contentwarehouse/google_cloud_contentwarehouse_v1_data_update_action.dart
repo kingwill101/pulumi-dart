@@ -21,7 +21,7 @@ class GoogleCloudContentwarehouseV1DataUpdateAction {
 
   factory GoogleCloudContentwarehouseV1DataUpdateAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1DataUpdateAction(
-      entries: map['entries'] == null ? null : ((map['entries'] as Map).cast<String, String>()).input(),
+      entries: map['entries'] == null ? null : ((map['entries']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class UserProfileUserSettingsSpaceStorageSettings {
 
   factory UserProfileUserSettingsSpaceStorageSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsSpaceStorageSettings(
-      defaultEbsStorageSettings: map['defaultEbsStorageSettings'] == null ? null : (UserProfileUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings.fromMap((map['defaultEbsStorageSettings'] as Map).cast<String, dynamic>())).input(),
+      defaultEbsStorageSettings: map['defaultEbsStorageSettings'] == null ? null : ((UserProfileUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings.fromMap((map['defaultEbsStorageSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -53,13 +53,13 @@ class Method {
 
   factory Method.fromMap(Map<String, dynamic> map) {
     return Method(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options'], (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestStreaming: map['requestStreaming'] == null ? null : (map['requestStreaming'] as bool).input(),
-      requestTypeUrl: map['requestTypeUrl'] == null ? null : (map['requestTypeUrl'] as String).input(),
-      responseStreaming: map['responseStreaming'] == null ? null : (map['responseStreaming'] as bool).input(),
-      responseTypeUrl: map['responseTypeUrl'] == null ? null : (map['responseTypeUrl'] as String).input(),
-      syntax: map['syntax'] == null ? null : (MethodSyntax.fromValue(map['syntax'] as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options']!, (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestStreaming: map['requestStreaming'] == null ? null : (map['requestStreaming']! as bool).input(),
+      requestTypeUrl: map['requestTypeUrl'] == null ? null : (map['requestTypeUrl']! as String).input(),
+      responseStreaming: map['responseStreaming'] == null ? null : (map['responseStreaming']! as bool).input(),
+      responseTypeUrl: map['responseTypeUrl'] == null ? null : (map['responseTypeUrl']! as String).input(),
+      syntax: map['syntax'] == null ? null : (MethodSyntax.fromValue(map['syntax']! as String)).input(),
     );
   }
 }

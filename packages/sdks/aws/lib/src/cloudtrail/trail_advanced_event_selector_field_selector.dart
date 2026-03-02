@@ -50,13 +50,13 @@ class TrailAdvancedEventSelectorFieldSelector {
 
   factory TrailAdvancedEventSelectorFieldSelector.fromMap(Map<String, dynamic> map) {
     return TrailAdvancedEventSelectorFieldSelector(
-      endsWiths: map['endsWiths'] == null ? null : ((map['endsWiths'] as List).cast<String>()).input(),
-      equals: map['equals'] == null ? null : ((map['equals'] as List).cast<String>()).input(),
+      endsWiths: map['endsWiths'] == null ? null : (((map['endsWiths'] as List).cast<String>()).input()).input(),
+      equals: map['equals'] == null ? null : (((map['equals'] as List).cast<String>()).input()).input(),
       field: (map['field'] as String).input(),
-      notEndsWiths: map['notEndsWiths'] == null ? null : ((map['notEndsWiths'] as List).cast<String>()).input(),
-      notEquals: map['notEquals'] == null ? null : ((map['notEquals'] as List).cast<String>()).input(),
-      notStartsWiths: map['notStartsWiths'] == null ? null : ((map['notStartsWiths'] as List).cast<String>()).input(),
-      startsWiths: map['startsWiths'] == null ? null : ((map['startsWiths'] as List).cast<String>()).input(),
+      notEndsWiths: map['notEndsWiths'] == null ? null : (((map['notEndsWiths'] as List).cast<String>()).input()).input(),
+      notEquals: map['notEquals'] == null ? null : (((map['notEquals'] as List).cast<String>()).input()).input(),
+      notStartsWiths: map['notStartsWiths'] == null ? null : (((map['notStartsWiths'] as List).cast<String>()).input()).input(),
+      startsWiths: map['startsWiths'] == null ? null : (((map['startsWiths'] as List).cast<String>()).input()).input(),
     );
   }
 }

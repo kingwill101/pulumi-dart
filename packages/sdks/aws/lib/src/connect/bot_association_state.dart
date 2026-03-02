@@ -32,9 +32,9 @@ class BotAssociationState {
 
   factory BotAssociationState.fromMap(Map<String, dynamic> map) {
     return BotAssociationState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      lexBot: map['lexBot'] == null ? null : (BotAssociationLexBot.fromMap((map['lexBot'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      lexBot: map['lexBot'] == null ? null : ((BotAssociationLexBot.fromMap((map['lexBot']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

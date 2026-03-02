@@ -27,8 +27,8 @@ class SettingsEmailNotificationSettings {
 
   factory SettingsEmailNotificationSettings.fromMap(Map<String, dynamic> map) {
     return SettingsEmailNotificationSettings(
-      customNotificationBehavior: map['customNotificationBehavior'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehavior.fromMap((map['customNotificationBehavior'] as Map).cast<String, dynamic>())).input(),
-      disableAllNotifications: map['disableAllNotifications'] == null ? null : ((map['disableAllNotifications'] as Map).cast<String, dynamic>()).input(),
+      customNotificationBehavior: map['customNotificationBehavior'] == null ? null : (SettingsEmailNotificationSettingsCustomNotificationBehavior.fromMap((map['customNotificationBehavior']! as Map).cast<String, dynamic>())).input(),
+      disableAllNotifications: map['disableAllNotifications'] == null ? null : ((map['disableAllNotifications']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

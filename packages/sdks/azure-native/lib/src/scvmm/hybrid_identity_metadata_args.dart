@@ -44,10 +44,10 @@ class HybridIdentityMetadataArgs {
 
   factory HybridIdentityMetadataArgs.fromMap(Map<String, dynamic> map) {
     return HybridIdentityMetadataArgs(
-      metadataName: map['metadataName'] == null ? null : (map['metadataName'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      metadataName: map['metadataName'] == null ? null : (map['metadataName']! as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid'] as String).input(),
+      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid']! as String).input(),
       virtualMachineName: (map['virtualMachineName'] as String).input(),
     );
   }

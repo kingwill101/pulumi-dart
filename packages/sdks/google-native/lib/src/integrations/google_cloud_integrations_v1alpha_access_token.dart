@@ -41,11 +41,11 @@ class GoogleCloudIntegrationsV1alphaAccessToken {
 
   factory GoogleCloudIntegrationsV1alphaAccessToken.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaAccessToken(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
       accessTokenExpireTime: (map['accessTokenExpireTime'] as String).input(),
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
-      refreshTokenExpireTime: map['refreshTokenExpireTime'] == null ? null : (map['refreshTokenExpireTime'] as String).input(),
-      tokenType: map['tokenType'] == null ? null : (map['tokenType'] as String).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as String).input(),
+      refreshTokenExpireTime: map['refreshTokenExpireTime'] == null ? null : (map['refreshTokenExpireTime']! as String).input(),
+      tokenType: map['tokenType'] == null ? null : (map['tokenType']! as String).input(),
     );
   }
 }

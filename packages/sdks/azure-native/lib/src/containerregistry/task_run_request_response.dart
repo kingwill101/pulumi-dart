@@ -48,10 +48,10 @@ class TaskRunRequestResponse {
 
   factory TaskRunRequestResponse.fromMap(Map<String, dynamic> map) {
     return TaskRunRequestResponse(
-      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName'] as String).input(),
-      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled'] as bool).input(),
-      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate'] as String).input(),
-      overrideTaskStepProperties: map['overrideTaskStepProperties'] == null ? null : (OverrideTaskStepPropertiesResponse.fromMap((map['overrideTaskStepProperties'] as Map).cast<String, dynamic>())).input(),
+      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName']! as String).input(),
+      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled']! as bool).input(),
+      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate']! as String).input(),
+      overrideTaskStepProperties: map['overrideTaskStepProperties'] == null ? null : (OverrideTaskStepPropertiesResponse.fromMap((map['overrideTaskStepProperties']! as Map).cast<String, dynamic>())).input(),
       taskId: (map['taskId'] as String).input(),
       type: (map['type'] as String).input(),
     );

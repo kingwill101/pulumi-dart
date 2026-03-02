@@ -43,11 +43,11 @@ class PublishingDestinationState {
 
   factory PublishingDestinationState.fromMap(Map<String, dynamic> map) {
     return PublishingDestinationState(
-      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn'] as String).input(),
-      destinationType: map['destinationType'] == null ? null : (map['destinationType'] as String).input(),
-      detectorId: map['detectorId'] == null ? null : (map['detectorId'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      destinationArn: map['destinationArn'] == null ? null : ((map['destinationArn'] as String).input()).input(),
+      destinationType: map['destinationType'] == null ? null : ((map['destinationType'] as String).input()).input(),
+      detectorId: map['detectorId'] == null ? null : ((map['detectorId'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

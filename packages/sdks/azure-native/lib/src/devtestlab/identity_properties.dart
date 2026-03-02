@@ -36,10 +36,10 @@ class IdentityProperties {
 
   factory IdentityProperties.fromMap(Map<String, dynamic> map) {
     return IdentityProperties(
-      clientSecretUrl: map['clientSecretUrl'] == null ? null : (map['clientSecretUrl'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      clientSecretUrl: map['clientSecretUrl'] == null ? null : (map['clientSecretUrl']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationServerlessConfigurationAuthConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationServerlessConfigurationAuthConfiguration(
       type: (map['type'] as String).input(),
-      usernamePasswordSecretArn: map['usernamePasswordSecretArn'] == null ? null : (map['usernamePasswordSecretArn'] as String).input(),
+      usernamePasswordSecretArn: map['usernamePasswordSecretArn'] == null ? null : ((map['usernamePasswordSecretArn'] as String).input()).input(),
     );
   }
 }

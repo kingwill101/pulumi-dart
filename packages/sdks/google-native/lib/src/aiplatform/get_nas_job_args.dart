@@ -33,7 +33,7 @@ class GetNasJobArgs {
     return GetNasJobArgs(
       location: (map['location'] as String).input(),
       nasJobId: (map['nasJobId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

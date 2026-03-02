@@ -40,10 +40,10 @@ class ReplicationConfigurationTemplatePitPolicy {
 
   factory ReplicationConfigurationTemplatePitPolicy.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationTemplatePitPolicy(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
       interval: (map['interval'] as int).input(),
       retentionDuration: (map['retentionDuration'] as int).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as int).input(),
+      ruleId: map['ruleId'] == null ? null : ((map['ruleId'] as int).input()).input(),
       units: (map['units'] as String).input(),
     );
   }

@@ -32,9 +32,9 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema(
-      recordColumns: (pulumi.Input.decodeList<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn>(map['recordColumns'], (value) => ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recordEncoding: map['recordEncoding'] == null ? null : (map['recordEncoding'] as String).input(),
-      recordFormat: (ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat.fromMap((map['recordFormat'] as Map).cast<String, dynamic>())).input(),
+      recordColumns: (pulumi.Input.decodeList<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn>(map['recordColumns']!, (value) => ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recordEncoding: map['recordEncoding'] == null ? null : ((map['recordEncoding'] as String).input()).input(),
+      recordFormat: (ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat.fromMap((map['recordFormat']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

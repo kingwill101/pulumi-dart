@@ -30,8 +30,8 @@ class BackendServiceLocalityLbPolicy {
 
   factory BackendServiceLocalityLbPolicy.fromMap(Map<String, dynamic> map) {
     return BackendServiceLocalityLbPolicy(
-      customPolicy: map['customPolicy'] == null ? null : (BackendServiceLocalityLbPolicyCustomPolicy.fromMap((map['customPolicy'] as Map).cast<String, dynamic>())).input(),
-      policy: map['policy'] == null ? null : (BackendServiceLocalityLbPolicyPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      customPolicy: map['customPolicy'] == null ? null : (BackendServiceLocalityLbPolicyCustomPolicy.fromMap((map['customPolicy']! as Map).cast<String, dynamic>())).input(),
+      policy: map['policy'] == null ? null : (BackendServiceLocalityLbPolicyPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -48,12 +48,12 @@ class OverrideTaskStepPropertiesResponse {
 
   factory OverrideTaskStepPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return OverrideTaskStepPropertiesResponse(
-      arguments: map['arguments'] == null ? null : (pulumi.Input.decodeList<ArgumentResponse>(map['arguments'], (value) => ArgumentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contextPath: map['contextPath'] == null ? null : (map['contextPath'] as String).input(),
-      file: map['file'] == null ? null : (map['file'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      updateTriggerToken: map['updateTriggerToken'] == null ? null : (map['updateTriggerToken'] as String).input(),
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValueResponse>(map['values'], (value) => SetValueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arguments: map['arguments'] == null ? null : (pulumi.Input.decodeList<ArgumentResponse>(map['arguments']!, (value) => ArgumentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contextPath: map['contextPath'] == null ? null : (map['contextPath']! as String).input(),
+      file: map['file'] == null ? null : (map['file']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      updateTriggerToken: map['updateTriggerToken'] == null ? null : (map['updateTriggerToken']! as String).input(),
+      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValueResponse>(map['values']!, (value) => SetValueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -63,13 +63,13 @@ class CustomActionTypeArgs {
   factory CustomActionTypeArgs.fromMap(Map<String, dynamic> map) {
     return CustomActionTypeArgs(
       category: (map['category'] as String).input(),
-      configurationProperties: map['configurationProperties'] == null ? null : (pulumi.Input.decodeList<CustomActionTypeConfigurationProperty>(map['configurationProperties'], (value) => CustomActionTypeConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputArtifactDetails: (CustomActionTypeInputArtifactDetails.fromMap((map['inputArtifactDetails'] as Map).cast<String, dynamic>())).input(),
-      outputArtifactDetails: (CustomActionTypeOutputArtifactDetails.fromMap((map['outputArtifactDetails'] as Map).cast<String, dynamic>())).input(),
+      configurationProperties: map['configurationProperties'] == null ? null : ((pulumi.Input.decodeList<CustomActionTypeConfigurationProperty>(map['configurationProperties']!, (value) => CustomActionTypeConfigurationProperty.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      inputArtifactDetails: (CustomActionTypeInputArtifactDetails.fromMap((map['inputArtifactDetails']! as Map).cast<String, dynamic>())).input(),
+      outputArtifactDetails: (CustomActionTypeOutputArtifactDetails.fromMap((map['outputArtifactDetails']! as Map).cast<String, dynamic>())).input(),
       providerName: (map['providerName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      settings: map['settings'] == null ? null : (CustomActionTypeSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      settings: map['settings'] == null ? null : ((CustomActionTypeSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       version: (map['version'] as String).input(),
     );
   }

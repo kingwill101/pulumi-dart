@@ -27,7 +27,7 @@ class ObjectLambdaAccessPointConfigurationTransformationConfiguration {
   factory ObjectLambdaAccessPointConfigurationTransformationConfiguration.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointConfigurationTransformationConfiguration(
       actions: ((map['actions'] as List).cast<String>()).input(),
-      contentTransformation: (ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation.fromMap((map['contentTransformation'] as Map).cast<String, dynamic>())).input(),
+      contentTransformation: (ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformation.fromMap((map['contentTransformation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -70,12 +70,12 @@ class GetHubRouteTableResult {
       associatedConnections: (map['associatedConnections'] as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      labels: map['labels'] == null ? null : (map['labels']! as List).cast<String>(),
+      name: map['name'] == null ? null : map['name']! as String,
       propagatingConnections: (map['propagatingConnections'] as List).cast<String>(),
       provisioningState: map['provisioningState'] as String,
-      routes: map['routes'] == null ? null : pulumi.Input.decodeList<HubRouteResponse>(map['routes'], (value) => HubRouteResponse.fromMap((value as Map).cast<String, dynamic>())),
+      routes: map['routes'] == null ? null : pulumi.Input.decodeList<HubRouteResponse>(map['routes']!, (value) => HubRouteResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

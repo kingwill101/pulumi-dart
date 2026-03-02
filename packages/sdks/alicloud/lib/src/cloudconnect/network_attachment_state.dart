@@ -26,8 +26,8 @@ class NetworkAttachmentState {
 
   factory NetworkAttachmentState.fromMap(Map<String, dynamic> map) {
     return NetworkAttachmentState(
-      ccnId: map['ccnId'] == null ? null : (map['ccnId'] as String).input(),
-      sagId: map['sagId'] == null ? null : (map['sagId'] as String).input(),
+      ccnId: map['ccnId'] == null ? null : (map['ccnId']! as String).input(),
+      sagId: map['sagId'] == null ? null : (map['sagId']! as String).input(),
     );
   }
 }

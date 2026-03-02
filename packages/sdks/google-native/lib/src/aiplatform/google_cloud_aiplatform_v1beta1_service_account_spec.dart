@@ -27,7 +27,7 @@ class GoogleCloudAiplatformV1beta1ServiceAccountSpec {
   factory GoogleCloudAiplatformV1beta1ServiceAccountSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ServiceAccountSpec(
       enableCustomServiceAccount: (map['enableCustomServiceAccount'] as bool).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
     );
   }
 }

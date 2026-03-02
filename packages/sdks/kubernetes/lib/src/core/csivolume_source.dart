@@ -43,10 +43,10 @@ class CSIVolumeSource {
   factory CSIVolumeSource.fromMap(Map<String, dynamic> map) {
     return CSIVolumeSource(
       driver: (map['driver'] as String).input(),
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      nodePublishSecretRef: map['nodePublishSecretRef'] == null ? null : (LocalObjectReference.fromMap((map['nodePublishSecretRef'] as Map).cast<String, dynamic>())).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      volumeAttributes: map['volumeAttributes'] == null ? null : ((map['volumeAttributes'] as Map).cast<String, String>()).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      nodePublishSecretRef: map['nodePublishSecretRef'] == null ? null : (LocalObjectReference.fromMap((map['nodePublishSecretRef']! as Map).cast<String, dynamic>())).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      volumeAttributes: map['volumeAttributes'] == null ? null : ((map['volumeAttributes']! as Map).cast<String, String>()).input(),
     );
   }
 }

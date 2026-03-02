@@ -71,13 +71,13 @@ class VirtualMachineScaleSetOSProfileResponse {
 
   factory VirtualMachineScaleSetOSProfileResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetOSProfileResponse(
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
-      allowExtensionOperations: map['allowExtensionOperations'] == null ? null : (map['allowExtensionOperations'] as bool).input(),
-      computerNamePrefix: map['computerNamePrefix'] == null ? null : (map['computerNamePrefix'] as String).input(),
-      linuxConfiguration: map['linuxConfiguration'] == null ? null : (LinuxConfigurationResponse.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>())).input(),
-      requireGuestProvisionSignal: map['requireGuestProvisionSignal'] == null ? null : (map['requireGuestProvisionSignal'] as bool).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<VaultSecretGroupResponse>(map['secrets'], (value) => VaultSecretGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : (WindowsConfigurationResponse.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername']! as String).input(),
+      allowExtensionOperations: map['allowExtensionOperations'] == null ? null : (map['allowExtensionOperations']! as bool).input(),
+      computerNamePrefix: map['computerNamePrefix'] == null ? null : (map['computerNamePrefix']! as String).input(),
+      linuxConfiguration: map['linuxConfiguration'] == null ? null : (LinuxConfigurationResponse.fromMap((map['linuxConfiguration']! as Map).cast<String, dynamic>())).input(),
+      requireGuestProvisionSignal: map['requireGuestProvisionSignal'] == null ? null : (map['requireGuestProvisionSignal']! as bool).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<VaultSecretGroupResponse>(map['secrets']!, (value) => VaultSecretGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (WindowsConfigurationResponse.fromMap((map['windowsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -45,8 +45,8 @@ class MetadataSchemaArgs {
 
   factory MetadataSchemaArgs.fromMap(Map<String, dynamic> map) {
     return MetadataSchemaArgs(
-      assignedTo: map['assignedTo'] == null ? null : (pulumi.Input.decodeList<MetadataAssignment>(map['assignedTo'], (value) => MetadataAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadataSchemaName: map['metadataSchemaName'] == null ? null : (map['metadataSchemaName'] as String).input(),
+      assignedTo: map['assignedTo'] == null ? null : (pulumi.Input.decodeList<MetadataAssignment>(map['assignedTo']!, (value) => MetadataAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadataSchemaName: map['metadataSchemaName'] == null ? null : (map['metadataSchemaName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       schema: (map['schema'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),

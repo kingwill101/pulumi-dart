@@ -57,11 +57,11 @@ class BlockchainNodesArgs {
   factory BlockchainNodesArgs.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesArgs(
       blockchainNodeId: (map['blockchainNodeId'] as String).input(),
-      blockchainType: map['blockchainType'] == null ? null : (map['blockchainType'] as String).input(),
-      ethereumDetails: map['ethereumDetails'] == null ? null : (BlockchainNodesEthereumDetails.fromMap((map['ethereumDetails'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      blockchainType: map['blockchainType'] == null ? null : (map['blockchainType']! as String).input(),
+      ethereumDetails: map['ethereumDetails'] == null ? null : (BlockchainNodesEthereumDetails.fromMap((map['ethereumDetails']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

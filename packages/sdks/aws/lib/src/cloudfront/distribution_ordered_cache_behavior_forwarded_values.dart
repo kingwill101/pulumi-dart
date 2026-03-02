@@ -36,10 +36,10 @@ class DistributionOrderedCacheBehaviorForwardedValues {
 
   factory DistributionOrderedCacheBehaviorForwardedValues.fromMap(Map<String, dynamic> map) {
     return DistributionOrderedCacheBehaviorForwardedValues(
-      cookies: (DistributionOrderedCacheBehaviorForwardedValuesCookies.fromMap((map['cookies'] as Map).cast<String, dynamic>())).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as List).cast<String>()).input(),
+      cookies: (DistributionOrderedCacheBehaviorForwardedValuesCookies.fromMap((map['cookies']! as Map).cast<String, dynamic>())).input(),
+      headers: map['headers'] == null ? null : (((map['headers'] as List).cast<String>()).input()).input(),
       queryString: (map['queryString'] as bool).input(),
-      queryStringCacheKeys: map['queryStringCacheKeys'] == null ? null : ((map['queryStringCacheKeys'] as List).cast<String>()).input(),
+      queryStringCacheKeys: map['queryStringCacheKeys'] == null ? null : (((map['queryStringCacheKeys'] as List).cast<String>()).input()).input(),
     );
   }
 }

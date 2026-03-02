@@ -27,8 +27,8 @@ class GatewayRouteSpecHttpRoute {
 
   factory GatewayRouteSpecHttpRoute.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttpRoute(
-      action: (GatewayRouteSpecHttpRouteAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      match: (GatewayRouteSpecHttpRouteMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      action: (GatewayRouteSpecHttpRouteAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      match: (GatewayRouteSpecHttpRouteMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class EnvironmentStorageState {
 
   factory EnvironmentStorageState.fromMap(Map<String, dynamic> map) {
     return EnvironmentStorageState(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      containerAppEnvironmentId: map['containerAppEnvironmentId'] == null ? null : (map['containerAppEnvironmentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nfsServerUrl: map['nfsServerUrl'] == null ? null : (map['nfsServerUrl'] as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
+      accessMode: map['accessMode'] == null ? null : (map['accessMode']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      containerAppEnvironmentId: map['containerAppEnvironmentId'] == null ? null : (map['containerAppEnvironmentId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nfsServerUrl: map['nfsServerUrl'] == null ? null : (map['nfsServerUrl']! as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
     );
   }
 }

@@ -102,22 +102,22 @@ class ConnectedClusterArgs {
 
   factory ConnectedClusterArgs.fromMap(Map<String, dynamic> map) {
     return ConnectedClusterArgs(
-      aadProfile: map['aadProfile'] == null ? null : (AadProfile.fromMap((map['aadProfile'] as Map).cast<String, dynamic>())).input(),
+      aadProfile: map['aadProfile'] == null ? null : (AadProfile.fromMap((map['aadProfile']! as Map).cast<String, dynamic>())).input(),
       agentPublicKeyCertificate: (map['agentPublicKeyCertificate'] as String).input(),
-      arcAgentProfile: map['arcAgentProfile'] == null ? null : (ArcAgentProfile.fromMap((map['arcAgentProfile'] as Map).cast<String, dynamic>())).input(),
-      azureHybridBenefit: map['azureHybridBenefit'] == null ? null : (map['azureHybridBenefit'] as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      distribution: map['distribution'] == null ? null : (map['distribution'] as String).input(),
-      distributionVersion: map['distributionVersion'] == null ? null : (map['distributionVersion'] as String).input(),
+      arcAgentProfile: map['arcAgentProfile'] == null ? null : (ArcAgentProfile.fromMap((map['arcAgentProfile']! as Map).cast<String, dynamic>())).input(),
+      azureHybridBenefit: map['azureHybridBenefit'] == null ? null : (map['azureHybridBenefit']! as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      distribution: map['distribution'] == null ? null : (map['distribution']! as String).input(),
+      distributionVersion: map['distributionVersion'] == null ? null : (map['distributionVersion']! as String).input(),
       identity: (ConnectedClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      infrastructure: map['infrastructure'] == null ? null : (map['infrastructure'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      privateLinkScopeResourceId: map['privateLinkScopeResourceId'] == null ? null : (map['privateLinkScopeResourceId'] as String).input(),
-      privateLinkState: map['privateLinkState'] == null ? null : (map['privateLinkState'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      infrastructure: map['infrastructure'] == null ? null : (map['infrastructure']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      privateLinkScopeResourceId: map['privateLinkScopeResourceId'] == null ? null : (map['privateLinkScopeResourceId']! as String).input(),
+      privateLinkState: map['privateLinkState'] == null ? null : (map['privateLinkState']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

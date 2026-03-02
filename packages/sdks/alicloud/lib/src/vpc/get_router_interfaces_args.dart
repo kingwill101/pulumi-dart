@@ -70,16 +70,16 @@ class GetRouterInterfacesArgs {
 
   factory GetRouterInterfacesArgs.fromMap(Map<String, dynamic> map) {
     return GetRouterInterfacesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      oppositeInterfaceId: map['oppositeInterfaceId'] == null ? null : (map['oppositeInterfaceId'] as String).input(),
-      oppositeInterfaceOwnerId: map['oppositeInterfaceOwnerId'] == null ? null : (map['oppositeInterfaceOwnerId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
-      routerType: map['routerType'] == null ? null : (map['routerType'] as String).input(),
-      specification: map['specification'] == null ? null : (map['specification'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      oppositeInterfaceId: map['oppositeInterfaceId'] == null ? null : (map['oppositeInterfaceId']! as String).input(),
+      oppositeInterfaceOwnerId: map['oppositeInterfaceOwnerId'] == null ? null : (map['oppositeInterfaceOwnerId']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId']! as String).input(),
+      routerType: map['routerType'] == null ? null : (map['routerType']! as String).input(),
+      specification: map['specification'] == null ? null : (map['specification']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

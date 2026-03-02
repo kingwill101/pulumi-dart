@@ -81,18 +81,18 @@ class OrchestratorInstanceServiceDetailsArgs {
 
   factory OrchestratorInstanceServiceDetailsArgs.fromMap(Map<String, dynamic> map) {
     return OrchestratorInstanceServiceDetailsArgs(
-      apiServerEndpoint: map['apiServerEndpoint'] == null ? null : (map['apiServerEndpoint'] as String).input(),
-      clusterRootCA: map['clusterRootCA'] == null ? null : (map['clusterRootCA'] as String).input(),
+      apiServerEndpoint: map['apiServerEndpoint'] == null ? null : (map['apiServerEndpoint']! as String).input(),
+      clusterRootCA: map['clusterRootCA'] == null ? null : (map['clusterRootCA']! as String).input(),
       controllerDetails: (map['controllerDetails'] as ControllerDetailsDelegatednetwork).input(),
-      identity: map['identity'] == null ? null : (OrchestratorIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (OrchestratorIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      orchestratorAppId: map['orchestratorAppId'] == null ? null : (map['orchestratorAppId'] as String).input(),
-      orchestratorTenantId: map['orchestratorTenantId'] == null ? null : (map['orchestratorTenantId'] as String).input(),
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      orchestratorAppId: map['orchestratorAppId'] == null ? null : (map['orchestratorAppId']! as String).input(),
+      orchestratorTenantId: map['orchestratorTenantId'] == null ? null : (map['orchestratorTenantId']! as String).input(),
+      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

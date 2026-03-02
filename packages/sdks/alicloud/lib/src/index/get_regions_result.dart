@@ -48,7 +48,7 @@ class GetRegionsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       name: map['name'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       regions: pulumi.Input.decodeList<GetRegionsRegion>(map['regions'], (value) => GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

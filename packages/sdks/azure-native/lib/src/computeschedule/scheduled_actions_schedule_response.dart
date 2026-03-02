@@ -52,8 +52,8 @@ class ScheduledActionsScheduleResponse {
 
   factory ScheduledActionsScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledActionsScheduleResponse(
-      deadlineType: map['deadlineType'] == null ? null : (map['deadlineType'] as String).input(),
-      executionParameters: map['executionParameters'] == null ? null : (ExecutionParametersResponse.fromMap((map['executionParameters'] as Map).cast<String, dynamic>())).input(),
+      deadlineType: map['deadlineType'] == null ? null : (map['deadlineType']! as String).input(),
+      executionParameters: map['executionParameters'] == null ? null : (ExecutionParametersResponse.fromMap((map['executionParameters']! as Map).cast<String, dynamic>())).input(),
       requestedDaysOfTheMonth: ((map['requestedDaysOfTheMonth'] as List).cast<int>()).input(),
       requestedMonths: ((map['requestedMonths'] as List).cast<String>()).input(),
       requestedWeekDays: ((map['requestedWeekDays'] as List).cast<String>()).input(),

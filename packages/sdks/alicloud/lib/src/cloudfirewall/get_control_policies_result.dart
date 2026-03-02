@@ -79,19 +79,19 @@ class GetControlPoliciesResult {
 
   factory GetControlPoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetControlPoliciesResult(
-      aclAction: map['aclAction'] == null ? null : map['aclAction'] as String,
-      aclUuid: map['aclUuid'] == null ? null : map['aclUuid'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      destination: map['destination'] == null ? null : map['destination'] as String,
+      aclAction: map['aclAction'] == null ? null : map['aclAction']! as String,
+      aclUuid: map['aclUuid'] == null ? null : map['aclUuid']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      destination: map['destination'] == null ? null : map['destination']! as String,
       direction: map['direction'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ipVersion: map['ipVersion'] == null ? null : map['ipVersion'] as String,
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      ipVersion: map['ipVersion'] == null ? null : map['ipVersion']! as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       policies: pulumi.Input.decodeList<GetControlPoliciesPolicy>(map['policies'], (value) => GetControlPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      proto: map['proto'] == null ? null : map['proto'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      proto: map['proto'] == null ? null : map['proto']! as String,
+      source: map['source'] == null ? null : map['source']! as String,
     );
   }
 }

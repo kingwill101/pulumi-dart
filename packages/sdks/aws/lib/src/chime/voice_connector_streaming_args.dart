@@ -51,10 +51,10 @@ class VoiceConnectorStreamingArgs {
   factory VoiceConnectorStreamingArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorStreamingArgs(
       dataRetention: (map['dataRetention'] as int).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      mediaInsightsConfiguration: map['mediaInsightsConfiguration'] == null ? null : (VoiceConnectorStreamingMediaInsightsConfiguration.fromMap((map['mediaInsightsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      streamingNotificationTargets: map['streamingNotificationTargets'] == null ? null : ((map['streamingNotificationTargets'] as List).cast<String>()).input(),
+      disabled: map['disabled'] == null ? null : ((map['disabled'] as bool).input()).input(),
+      mediaInsightsConfiguration: map['mediaInsightsConfiguration'] == null ? null : ((VoiceConnectorStreamingMediaInsightsConfiguration.fromMap((map['mediaInsightsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      streamingNotificationTargets: map['streamingNotificationTargets'] == null ? null : (((map['streamingNotificationTargets'] as List).cast<String>()).input()).input(),
       voiceConnectorId: (map['voiceConnectorId'] as String).input(),
     );
   }

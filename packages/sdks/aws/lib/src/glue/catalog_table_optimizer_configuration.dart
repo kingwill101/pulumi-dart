@@ -38,8 +38,8 @@ class CatalogTableOptimizerConfiguration {
   factory CatalogTableOptimizerConfiguration.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerConfiguration(
       enabled: (map['enabled'] as bool).input(),
-      orphanFileDeletionConfiguration: map['orphanFileDeletionConfiguration'] == null ? null : (CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration.fromMap((map['orphanFileDeletionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      retentionConfiguration: map['retentionConfiguration'] == null ? null : (CatalogTableOptimizerConfigurationRetentionConfiguration.fromMap((map['retentionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      orphanFileDeletionConfiguration: map['orphanFileDeletionConfiguration'] == null ? null : ((CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration.fromMap((map['orphanFileDeletionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      retentionConfiguration: map['retentionConfiguration'] == null ? null : ((CatalogTableOptimizerConfigurationRetentionConfiguration.fromMap((map['retentionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
     );
   }

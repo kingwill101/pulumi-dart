@@ -26,8 +26,8 @@ class ApiTagState {
 
   factory ApiTagState.fromMap(Map<String, dynamic> map) {
     return ApiTagState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      apiId: map['apiId'] == null ? null : (map['apiId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

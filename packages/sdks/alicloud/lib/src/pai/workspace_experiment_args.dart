@@ -39,7 +39,7 @@ class WorkspaceExperimentArgs {
 
   factory WorkspaceExperimentArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceExperimentArgs(
-      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
+      accessibility: map['accessibility'] == null ? null : (map['accessibility']! as String).input(),
       artifactUri: (map['artifactUri'] as String).input(),
       experimentName: (map['experimentName'] as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),

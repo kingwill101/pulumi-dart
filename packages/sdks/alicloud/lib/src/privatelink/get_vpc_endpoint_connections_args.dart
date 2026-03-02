@@ -44,11 +44,11 @@ class GetVpcEndpointConnectionsArgs {
 
   factory GetVpcEndpointConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointConnectionsArgs(
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      endpointOwnerId: map['endpointOwnerId'] == null ? null : (map['endpointOwnerId'] as int).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
+      endpointOwnerId: map['endpointOwnerId'] == null ? null : (map['endpointOwnerId']! as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

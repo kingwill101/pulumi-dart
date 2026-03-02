@@ -61,11 +61,11 @@ class SaaSArgs {
 
   factory SaaSArgs.fromMap(Map<String, dynamic> map) {
     return SaaSArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      locations: map['locations'] == null ? null : (pulumi.Input.decodeList<SaaSLocation>(map['locations'], (value) => SaaSLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      locations: map['locations'] == null ? null : (pulumi.Input.decodeList<SaaSLocation>(map['locations']!, (value) => SaaSLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       saasId: (map['saasId'] as String).input(),
     );
   }

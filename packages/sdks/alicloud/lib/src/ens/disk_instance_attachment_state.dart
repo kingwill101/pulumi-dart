@@ -31,9 +31,9 @@ class DiskInstanceAttachmentState {
 
   factory DiskInstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return DiskInstanceAttachmentState(
-      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance'] as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance']! as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
     );
   }
 }

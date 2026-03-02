@@ -100,22 +100,22 @@ class BlobState {
 
   factory BlobState.fromMap(Map<String, dynamic> map) {
     return BlobState(
-      accessTier: map['accessTier'] == null ? null : (map['accessTier'] as String).input(),
-      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl'] as String).input(),
-      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      encryptionScope: map['encryptionScope'] == null ? null : (map['encryptionScope'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      source: map['source'] == null ? null : (map['source']).input(),
-      sourceContent: map['sourceContent'] == null ? null : (map['sourceContent'] as String).input(),
-      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
-      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      accessTier: map['accessTier'] == null ? null : (map['accessTier']! as String).input(),
+      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl']! as String).input(),
+      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      encryptionScope: map['encryptionScope'] == null ? null : (map['encryptionScope']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      source: map['source'] == null ? null : (map['source']!).input(),
+      sourceContent: map['sourceContent'] == null ? null : (map['sourceContent']! as String).input(),
+      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
+      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class AlertRuleFusionSource {
 
   factory AlertRuleFusionSource.fromMap(Map<String, dynamic> map) {
     return AlertRuleFusionSource(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       name: (map['name'] as String).input(),
-      subTypes: map['subTypes'] == null ? null : (pulumi.Input.decodeList<AlertRuleFusionSourceSubType>(map['subTypes'], (value) => AlertRuleFusionSourceSubType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subTypes: map['subTypes'] == null ? null : (pulumi.Input.decodeList<AlertRuleFusionSourceSubType>(map['subTypes']!, (value) => AlertRuleFusionSourceSubType.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

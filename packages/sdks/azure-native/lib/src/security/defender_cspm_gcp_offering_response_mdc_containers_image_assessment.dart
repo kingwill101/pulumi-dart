@@ -31,9 +31,9 @@ class DefenderCspmGcpOfferingResponseMdcContainersImageAssessment {
 
   factory DefenderCspmGcpOfferingResponseMdcContainersImageAssessment.fromMap(Map<String, dynamic> map) {
     return DefenderCspmGcpOfferingResponseMdcContainersImageAssessment(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress'] as String).input(),
-      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress']! as String).input(),
+      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId']! as String).input(),
     );
   }
 }

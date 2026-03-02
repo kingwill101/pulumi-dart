@@ -50,11 +50,11 @@ class LanguageModelArgs {
   factory LanguageModelArgs.fromMap(Map<String, dynamic> map) {
     return LanguageModelArgs(
       baseModelName: (map['baseModelName'] as String).input(),
-      inputDataConfig: (LanguageModelInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())).input(),
+      inputDataConfig: (LanguageModelInputDataConfig.fromMap((map['inputDataConfig']! as Map).cast<String, dynamic>())).input(),
       languageCode: (map['languageCode'] as String).input(),
       modelName: (map['modelName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

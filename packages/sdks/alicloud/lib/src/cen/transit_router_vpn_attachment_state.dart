@@ -90,19 +90,19 @@ class TransitRouterVpnAttachmentState {
 
   factory TransitRouterVpnAttachmentState.fromMap(Map<String, dynamic> map) {
     return TransitRouterVpnAttachmentState(
-      autoPublishRouteEnabled: map['autoPublishRouteEnabled'] == null ? null : (map['autoPublishRouteEnabled'] as bool).input(),
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      chargeType: map['chargeType'] == null ? null : (map['chargeType'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitRouterAttachmentDescription: map['transitRouterAttachmentDescription'] == null ? null : (map['transitRouterAttachmentDescription'] as String).input(),
-      transitRouterAttachmentName: map['transitRouterAttachmentName'] == null ? null : (map['transitRouterAttachmentName'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
-      vpnId: map['vpnId'] == null ? null : (map['vpnId'] as String).input(),
-      vpnOwnerId: map['vpnOwnerId'] == null ? null : (map['vpnOwnerId'] as String).input(),
-      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<TransitRouterVpnAttachmentZone>(map['zones'], (value) => TransitRouterVpnAttachmentZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoPublishRouteEnabled: map['autoPublishRouteEnabled'] == null ? null : (map['autoPublishRouteEnabled']! as bool).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      chargeType: map['chargeType'] == null ? null : (map['chargeType']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      transitRouterAttachmentDescription: map['transitRouterAttachmentDescription'] == null ? null : (map['transitRouterAttachmentDescription']! as String).input(),
+      transitRouterAttachmentName: map['transitRouterAttachmentName'] == null ? null : (map['transitRouterAttachmentName']! as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
+      vpnId: map['vpnId'] == null ? null : (map['vpnId']! as String).input(),
+      vpnOwnerId: map['vpnOwnerId'] == null ? null : (map['vpnOwnerId']! as String).input(),
+      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<TransitRouterVpnAttachmentZone>(map['zones']!, (value) => TransitRouterVpnAttachmentZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

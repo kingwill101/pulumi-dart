@@ -37,9 +37,9 @@ class CertificateConfigurationResponse {
 
   factory CertificateConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CertificateConfigurationResponse(
-      certificate: map['certificate'] == null ? null : (CertificateInformationResponse.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
-      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
-      encodedCertificate: map['encodedCertificate'] == null ? null : (map['encodedCertificate'] as String).input(),
+      certificate: map['certificate'] == null ? null : (CertificateInformationResponse.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input(),
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword']! as String).input(),
+      encodedCertificate: map['encodedCertificate'] == null ? null : (map['encodedCertificate']! as String).input(),
       storeName: (map['storeName'] as String).input(),
     );
   }

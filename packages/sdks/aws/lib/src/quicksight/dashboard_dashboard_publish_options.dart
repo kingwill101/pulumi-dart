@@ -75,16 +75,16 @@ class DashboardDashboardPublishOptions {
 
   factory DashboardDashboardPublishOptions.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptions(
-      adHocFilteringOption: map['adHocFilteringOption'] == null ? null : (DashboardDashboardPublishOptionsAdHocFilteringOption.fromMap((map['adHocFilteringOption'] as Map).cast<String, dynamic>())).input(),
-      dataPointDrillUpDownOption: map['dataPointDrillUpDownOption'] == null ? null : (DashboardDashboardPublishOptionsDataPointDrillUpDownOption.fromMap((map['dataPointDrillUpDownOption'] as Map).cast<String, dynamic>())).input(),
-      dataPointMenuLabelOption: map['dataPointMenuLabelOption'] == null ? null : (DashboardDashboardPublishOptionsDataPointMenuLabelOption.fromMap((map['dataPointMenuLabelOption'] as Map).cast<String, dynamic>())).input(),
-      dataPointTooltipOption: map['dataPointTooltipOption'] == null ? null : (DashboardDashboardPublishOptionsDataPointTooltipOption.fromMap((map['dataPointTooltipOption'] as Map).cast<String, dynamic>())).input(),
-      exportToCsvOption: map['exportToCsvOption'] == null ? null : (DashboardDashboardPublishOptionsExportToCsvOption.fromMap((map['exportToCsvOption'] as Map).cast<String, dynamic>())).input(),
-      exportWithHiddenFieldsOption: map['exportWithHiddenFieldsOption'] == null ? null : (DashboardDashboardPublishOptionsExportWithHiddenFieldsOption.fromMap((map['exportWithHiddenFieldsOption'] as Map).cast<String, dynamic>())).input(),
-      sheetControlsOption: map['sheetControlsOption'] == null ? null : (DashboardDashboardPublishOptionsSheetControlsOption.fromMap((map['sheetControlsOption'] as Map).cast<String, dynamic>())).input(),
-      sheetLayoutElementMaximizationOption: map['sheetLayoutElementMaximizationOption'] == null ? null : (DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption.fromMap((map['sheetLayoutElementMaximizationOption'] as Map).cast<String, dynamic>())).input(),
-      visualAxisSortOption: map['visualAxisSortOption'] == null ? null : (DashboardDashboardPublishOptionsVisualAxisSortOption.fromMap((map['visualAxisSortOption'] as Map).cast<String, dynamic>())).input(),
-      visualMenuOption: map['visualMenuOption'] == null ? null : (DashboardDashboardPublishOptionsVisualMenuOption.fromMap((map['visualMenuOption'] as Map).cast<String, dynamic>())).input(),
+      adHocFilteringOption: map['adHocFilteringOption'] == null ? null : ((DashboardDashboardPublishOptionsAdHocFilteringOption.fromMap((map['adHocFilteringOption']! as Map).cast<String, dynamic>())).input()).input(),
+      dataPointDrillUpDownOption: map['dataPointDrillUpDownOption'] == null ? null : ((DashboardDashboardPublishOptionsDataPointDrillUpDownOption.fromMap((map['dataPointDrillUpDownOption']! as Map).cast<String, dynamic>())).input()).input(),
+      dataPointMenuLabelOption: map['dataPointMenuLabelOption'] == null ? null : ((DashboardDashboardPublishOptionsDataPointMenuLabelOption.fromMap((map['dataPointMenuLabelOption']! as Map).cast<String, dynamic>())).input()).input(),
+      dataPointTooltipOption: map['dataPointTooltipOption'] == null ? null : ((DashboardDashboardPublishOptionsDataPointTooltipOption.fromMap((map['dataPointTooltipOption']! as Map).cast<String, dynamic>())).input()).input(),
+      exportToCsvOption: map['exportToCsvOption'] == null ? null : ((DashboardDashboardPublishOptionsExportToCsvOption.fromMap((map['exportToCsvOption']! as Map).cast<String, dynamic>())).input()).input(),
+      exportWithHiddenFieldsOption: map['exportWithHiddenFieldsOption'] == null ? null : ((DashboardDashboardPublishOptionsExportWithHiddenFieldsOption.fromMap((map['exportWithHiddenFieldsOption']! as Map).cast<String, dynamic>())).input()).input(),
+      sheetControlsOption: map['sheetControlsOption'] == null ? null : ((DashboardDashboardPublishOptionsSheetControlsOption.fromMap((map['sheetControlsOption']! as Map).cast<String, dynamic>())).input()).input(),
+      sheetLayoutElementMaximizationOption: map['sheetLayoutElementMaximizationOption'] == null ? null : ((DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption.fromMap((map['sheetLayoutElementMaximizationOption']! as Map).cast<String, dynamic>())).input()).input(),
+      visualAxisSortOption: map['visualAxisSortOption'] == null ? null : ((DashboardDashboardPublishOptionsVisualAxisSortOption.fromMap((map['visualAxisSortOption']! as Map).cast<String, dynamic>())).input()).input(),
+      visualMenuOption: map['visualMenuOption'] == null ? null : ((DashboardDashboardPublishOptionsVisualMenuOption.fromMap((map['visualMenuOption']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

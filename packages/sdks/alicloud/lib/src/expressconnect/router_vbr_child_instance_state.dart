@@ -58,14 +58,14 @@ class RouterVbrChildInstanceState {
 
   factory RouterVbrChildInstanceState.fromMap(Map<String, dynamic> map) {
     return RouterVbrChildInstanceState(
-      childInstanceId: map['childInstanceId'] == null ? null : (map['childInstanceId'] as String).input(),
-      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId'] as String).input(),
-      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : (map['childInstanceRegionId'] as String).input(),
-      childInstanceType: map['childInstanceType'] == null ? null : (map['childInstanceType'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ecrId: map['ecrId'] == null ? null : (map['ecrId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      childInstanceId: map['childInstanceId'] == null ? null : (map['childInstanceId']! as String).input(),
+      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId']! as String).input(),
+      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : (map['childInstanceRegionId']! as String).input(),
+      childInstanceType: map['childInstanceType'] == null ? null : (map['childInstanceType']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ecrId: map['ecrId'] == null ? null : (map['ecrId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

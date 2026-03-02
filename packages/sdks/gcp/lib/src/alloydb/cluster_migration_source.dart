@@ -30,9 +30,9 @@ class ClusterMigrationSource {
 
   factory ClusterMigrationSource.fromMap(Map<String, dynamic> map) {
     return ClusterMigrationSource(
-      hostPort: map['hostPort'] == null ? null : (map['hostPort'] as String).input(),
-      referenceId: map['referenceId'] == null ? null : (map['referenceId'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      hostPort: map['hostPort'] == null ? null : (map['hostPort']! as String).input(),
+      referenceId: map['referenceId'] == null ? null : (map['referenceId']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
     );
   }
 }

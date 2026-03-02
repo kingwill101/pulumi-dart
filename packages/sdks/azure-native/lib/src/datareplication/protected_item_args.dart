@@ -41,7 +41,7 @@ class ProtectedItemArgs {
   factory ProtectedItemArgs.fromMap(Map<String, dynamic> map) {
     return ProtectedItemArgs(
       properties: (ProtectedItemModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      protectedItemName: map['protectedItemName'] == null ? null : (map['protectedItemName'] as String).input(),
+      protectedItemName: map['protectedItemName'] == null ? null : (map['protectedItemName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       vaultName: (map['vaultName'] as String).input(),
     );

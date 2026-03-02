@@ -33,7 +33,7 @@ class HealthModelPropertiesResponse {
   factory HealthModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HealthModelPropertiesResponse(
       dataplaneEndpoint: (map['dataplaneEndpoint'] as String).input(),
-      discovery: map['discovery'] == null ? null : (ModelDiscoverySettingsResponse.fromMap((map['discovery'] as Map).cast<String, dynamic>())).input(),
+      discovery: map['discovery'] == null ? null : (ModelDiscoverySettingsResponse.fromMap((map['discovery']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

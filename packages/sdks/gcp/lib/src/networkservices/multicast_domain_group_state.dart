@@ -29,7 +29,7 @@ class MulticastDomainGroupState {
 
   factory MulticastDomainGroupState.fromMap(Map<String, dynamic> map) {
     return MulticastDomainGroupState(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

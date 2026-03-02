@@ -23,8 +23,8 @@ class TaskDefinitionHostEntry {
 
   factory TaskDefinitionHostEntry.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionHostEntry(
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
     );
   }
 }

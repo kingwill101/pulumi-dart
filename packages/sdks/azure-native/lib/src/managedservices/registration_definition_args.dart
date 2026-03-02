@@ -41,9 +41,9 @@ class RegistrationDefinitionArgs {
 
   factory RegistrationDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return RegistrationDefinitionArgs(
-      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (RegistrationDefinitionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      registrationDefinitionId: map['registrationDefinitionId'] == null ? null : (map['registrationDefinitionId'] as String).input(),
+      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (RegistrationDefinitionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      registrationDefinitionId: map['registrationDefinitionId'] == null ? null : (map['registrationDefinitionId']! as String).input(),
       scope: (map['scope'] as String).input(),
     );
   }

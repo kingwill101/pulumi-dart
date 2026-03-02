@@ -31,9 +31,9 @@ class AdvancedQueryTemplateState {
 
   factory AdvancedQueryTemplateState.fromMap(Map<String, dynamic> map) {
     return AdvancedQueryTemplateState(
-      simpleQuery: map['simpleQuery'] == null ? null : (map['simpleQuery'] as bool).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
-      templateSql: map['templateSql'] == null ? null : (map['templateSql'] as String).input(),
+      simpleQuery: map['simpleQuery'] == null ? null : (map['simpleQuery']! as bool).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
+      templateSql: map['templateSql'] == null ? null : (map['templateSql']! as String).input(),
     );
   }
 }

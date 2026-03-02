@@ -59,11 +59,11 @@ class TemplateArgs {
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
       filterConfig: (TemplateFilterConfig.fromMap((map['filterConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       templateId: (map['templateId'] as String).input(),
-      templateMetadata: map['templateMetadata'] == null ? null : (TemplateTemplateMetadata.fromMap((map['templateMetadata'] as Map).cast<String, dynamic>())).input(),
+      templateMetadata: map['templateMetadata'] == null ? null : (TemplateTemplateMetadata.fromMap((map['templateMetadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class DomainDevicesTpmBackendPassthrough {
 
   factory DomainDevicesTpmBackendPassthrough.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendPassthrough(
-      device: map['device'] == null ? null : (DomainDevicesTpmBackendPassthroughDevice.fromMap((map['device'] as Map).cast<String, dynamic>())).input(),
+      device: map['device'] == null ? null : (DomainDevicesTpmBackendPassthroughDevice.fromMap((map['device']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

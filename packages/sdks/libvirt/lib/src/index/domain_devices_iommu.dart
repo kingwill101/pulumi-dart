@@ -43,10 +43,10 @@ class DomainDevicesIommu {
 
   factory DomainDevicesIommu.fromMap(Map<String, dynamic> map) {
     return DomainDevicesIommu(
-      acpi: map['acpi'] == null ? null : (DomainDevicesIommuAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesIommuAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      driver: map['driver'] == null ? null : (DomainDevicesIommuDriver.fromMap((map['driver'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesIommuAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesIommuAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      driver: map['driver'] == null ? null : (DomainDevicesIommuDriver.fromMap((map['driver']! as Map).cast<String, dynamic>())).input(),
       model: (map['model'] as String).input(),
     );
   }

@@ -20,7 +20,7 @@ class QueueHttpTargetUriOverrideQueryOverride {
 
   factory QueueHttpTargetUriOverrideQueryOverride.fromMap(Map<String, dynamic> map) {
     return QueueHttpTargetUriOverrideQueryOverride(
-      queryParams: map['queryParams'] == null ? null : (map['queryParams'] as String).input(),
+      queryParams: map['queryParams'] == null ? null : (map['queryParams']! as String).input(),
     );
   }
 }

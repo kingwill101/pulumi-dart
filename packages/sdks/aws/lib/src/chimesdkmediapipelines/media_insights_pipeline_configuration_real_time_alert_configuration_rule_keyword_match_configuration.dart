@@ -31,7 +31,7 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMat
   factory MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration.fromMap(Map<String, dynamic> map) {
     return MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration(
       keywords: ((map['keywords'] as List).cast<String>()).input(),
-      negate: map['negate'] == null ? null : (map['negate'] as bool).input(),
+      negate: map['negate'] == null ? null : ((map['negate'] as bool).input()).input(),
       ruleName: (map['ruleName'] as String).input(),
     );
   }

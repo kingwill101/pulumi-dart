@@ -21,7 +21,7 @@ class ActionCondition {
 
   factory ActionCondition.fromMap(Map<String, dynamic> map) {
     return ActionCondition(
-      exitCodes: map['exitCodes'] == null ? null : ((map['exitCodes'] as List).cast<int>()).input(),
+      exitCodes: map['exitCodes'] == null ? null : ((map['exitCodes']! as List).cast<int>()).input(),
     );
   }
 }

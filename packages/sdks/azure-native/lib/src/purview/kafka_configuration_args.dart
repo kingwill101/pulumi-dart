@@ -70,14 +70,14 @@ class KafkaConfigurationArgs {
   factory KafkaConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return KafkaConfigurationArgs(
       accountName: (map['accountName'] as String).input(),
-      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup'] as String).input(),
-      credentials: map['credentials'] == null ? null : (Credentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      eventHubPartitionId: map['eventHubPartitionId'] == null ? null : (map['eventHubPartitionId'] as String).input(),
-      eventHubResourceId: map['eventHubResourceId'] == null ? null : (map['eventHubResourceId'] as String).input(),
-      eventHubType: map['eventHubType'] == null ? null : (map['eventHubType'] as String).input(),
-      eventStreamingState: map['eventStreamingState'] == null ? null : (map['eventStreamingState'] as String).input(),
-      eventStreamingType: map['eventStreamingType'] == null ? null : (map['eventStreamingType'] as String).input(),
-      kafkaConfigurationName: map['kafkaConfigurationName'] == null ? null : (map['kafkaConfigurationName'] as String).input(),
+      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup']! as String).input(),
+      credentials: map['credentials'] == null ? null : (Credentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
+      eventHubPartitionId: map['eventHubPartitionId'] == null ? null : (map['eventHubPartitionId']! as String).input(),
+      eventHubResourceId: map['eventHubResourceId'] == null ? null : (map['eventHubResourceId']! as String).input(),
+      eventHubType: map['eventHubType'] == null ? null : (map['eventHubType']! as String).input(),
+      eventStreamingState: map['eventStreamingState'] == null ? null : (map['eventStreamingState']! as String).input(),
+      eventStreamingType: map['eventStreamingType'] == null ? null : (map['eventStreamingType']! as String).input(),
+      kafkaConfigurationName: map['kafkaConfigurationName'] == null ? null : (map['kafkaConfigurationName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -28,8 +28,8 @@ class ServiceStatusPatch {
 
   factory ServiceStatusPatch.fromMap(Map<String, dynamic> map) {
     return ServiceStatusPatch(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancer: map['loadBalancer'] == null ? null : (LoadBalancerStatusPatch.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>())).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions']!, (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancer: map['loadBalancer'] == null ? null : (LoadBalancerStatusPatch.fromMap((map['loadBalancer']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

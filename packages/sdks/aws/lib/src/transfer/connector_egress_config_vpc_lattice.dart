@@ -25,7 +25,7 @@ class ConnectorEgressConfigVpcLattice {
 
   factory ConnectorEgressConfigVpcLattice.fromMap(Map<String, dynamic> map) {
     return ConnectorEgressConfigVpcLattice(
-      portNumber: map['portNumber'] == null ? null : (map['portNumber'] as int).input(),
+      portNumber: map['portNumber'] == null ? null : ((map['portNumber'] as int).input()).input(),
       resourceConfigurationArn: (map['resourceConfigurationArn'] as String).input(),
     );
   }

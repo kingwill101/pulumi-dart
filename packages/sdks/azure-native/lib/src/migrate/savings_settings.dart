@@ -26,8 +26,8 @@ class SavingsSettings {
 
   factory SavingsSettings.fromMap(Map<String, dynamic> map) {
     return SavingsSettings(
-      azureOfferCode: map['azureOfferCode'] == null ? null : (map['azureOfferCode'] as String).input(),
-      savingsOptions: map['savingsOptions'] == null ? null : (map['savingsOptions'] as String).input(),
+      azureOfferCode: map['azureOfferCode'] == null ? null : (map['azureOfferCode']! as String).input(),
+      savingsOptions: map['savingsOptions'] == null ? null : (map['savingsOptions']! as String).input(),
     );
   }
 }

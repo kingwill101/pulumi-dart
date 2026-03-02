@@ -21,7 +21,7 @@ class CustomPluginLocation {
 
   factory CustomPluginLocation.fromMap(Map<String, dynamic> map) {
     return CustomPluginLocation(
-      s3: (CustomPluginLocationS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      s3: (CustomPluginLocationS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

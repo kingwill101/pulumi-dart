@@ -76,17 +76,17 @@ class GetPartnerResult {
   factory GetPartnerResult.fromMap(Map<String, dynamic> map) {
     return GetPartnerResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      createdTime: map['createdTime'] == null ? null : map['createdTime'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as int,
+      createdTime: map['createdTime'] == null ? null : map['createdTime']! as String,
+      etag: map['etag'] == null ? null : map['etag']! as int,
       id: map['id'] as String,
       name: map['name'] as String,
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
-      partnerId: map['partnerId'] == null ? null : map['partnerId'] as String,
-      partnerName: map['partnerName'] == null ? null : map['partnerName'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      objectId: map['objectId'] == null ? null : map['objectId']! as String,
+      partnerId: map['partnerId'] == null ? null : map['partnerId']! as String,
+      partnerName: map['partnerName'] == null ? null : map['partnerName']! as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
-      updatedTime: map['updatedTime'] == null ? null : map['updatedTime'] as String,
-      version: map['version'] == null ? null : map['version'] as int,
+      updatedTime: map['updatedTime'] == null ? null : map['updatedTime']! as String,
+      version: map['version'] == null ? null : map['version']! as int,
     );
   }
 }

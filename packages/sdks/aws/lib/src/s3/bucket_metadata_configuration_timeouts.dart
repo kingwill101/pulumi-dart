@@ -20,7 +20,7 @@ class BucketMetadataConfigurationTimeouts {
 
   factory BucketMetadataConfigurationTimeouts.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

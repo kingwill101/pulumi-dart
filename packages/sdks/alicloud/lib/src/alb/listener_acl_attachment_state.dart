@@ -38,10 +38,10 @@ class ListenerAclAttachmentState {
 
   factory ListenerAclAttachmentState.fromMap(Map<String, dynamic> map) {
     return ListenerAclAttachmentState(
-      aclId: map['aclId'] == null ? null : (map['aclId'] as String).input(),
-      aclType: map['aclType'] == null ? null : (map['aclType'] as String).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      aclId: map['aclId'] == null ? null : (map['aclId']! as String).input(),
+      aclType: map['aclType'] == null ? null : (map['aclType']! as String).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

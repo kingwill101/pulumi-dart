@@ -37,10 +37,10 @@ class ModelingResourceProperties {
 
   factory ModelingResourceProperties.fromMap(Map<String, dynamic> map) {
     return ModelingResourceProperties(
-      features: map['features'] == null ? null : (map['features'] as String).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      inputData: map['inputData'] == null ? null : (ModelingInputData.fromMap((map['inputData'] as Map).cast<String, dynamic>())).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
+      features: map['features'] == null ? null : (map['features']! as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      inputData: map['inputData'] == null ? null : (ModelingInputData.fromMap((map['inputData']! as Map).cast<String, dynamic>())).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
     );
   }
 }

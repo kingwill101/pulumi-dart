@@ -32,9 +32,9 @@ class DataImportSourcesEventHub {
 
   factory DataImportSourcesEventHub.fromMap(Map<String, dynamic> map) {
     return DataImportSourcesEventHub(
-      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      stream: map['stream'] == null ? null : (map['stream'] as String).input(),
+      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      stream: map['stream'] == null ? null : (map['stream']! as String).input(),
     );
   }
 }

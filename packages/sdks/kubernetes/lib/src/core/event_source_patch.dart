@@ -26,8 +26,8 @@ class EventSourcePatch {
 
   factory EventSourcePatch.fromMap(Map<String, dynamic> map) {
     return EventSourcePatch(
-      component: map['component'] == null ? null : (map['component'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
+      component: map['component'] == null ? null : (map['component']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
     );
   }
 }

@@ -35,9 +35,9 @@ class AllocationResult {
 
   factory AllocationResult.fromMap(Map<String, dynamic> map) {
     return AllocationResult(
-      allocationTimestamp: map['allocationTimestamp'] == null ? null : (map['allocationTimestamp'] as String).input(),
-      devices: map['devices'] == null ? null : (DeviceAllocationResult.fromMap((map['devices'] as Map).cast<String, dynamic>())).input(),
-      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelector.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
+      allocationTimestamp: map['allocationTimestamp'] == null ? null : (map['allocationTimestamp']! as String).input(),
+      devices: map['devices'] == null ? null : (DeviceAllocationResult.fromMap((map['devices']! as Map).cast<String, dynamic>())).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelector.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

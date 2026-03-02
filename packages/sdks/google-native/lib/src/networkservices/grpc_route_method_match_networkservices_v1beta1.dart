@@ -37,10 +37,10 @@ class GrpcRouteMethodMatchNetworkservicesV1beta1 {
 
   factory GrpcRouteMethodMatchNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return GrpcRouteMethodMatchNetworkservicesV1beta1(
-      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
+      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive']! as bool).input(),
       grpcMethod: (map['grpcMethod'] as String).input(),
       grpcService: (map['grpcService'] as String).input(),
-      type: map['type'] == null ? null : (GrpcRouteMethodMatchTypeNetworkservicesV1beta1.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (GrpcRouteMethodMatchTypeNetworkservicesV1beta1.fromValue(map['type']! as String)).input(),
     );
   }
 }

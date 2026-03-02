@@ -33,8 +33,8 @@ class FrontendResponse {
   factory FrontendResponse.fromMap(Map<String, dynamic> map) {
     return FrontendResponse(
       replicas: (map['replicas'] as int).input(),
-      temporaryResourceLimits: map['temporaryResourceLimits'] == null ? null : (TemporaryResourceLimitsConfigResponse.fromMap((map['temporaryResourceLimits'] as Map).cast<String, dynamic>())).input(),
-      workers: map['workers'] == null ? null : (map['workers'] as int).input(),
+      temporaryResourceLimits: map['temporaryResourceLimits'] == null ? null : (TemporaryResourceLimitsConfigResponse.fromMap((map['temporaryResourceLimits']! as Map).cast<String, dynamic>())).input(),
+      workers: map['workers'] == null ? null : (map['workers']! as int).input(),
     );
   }
 }

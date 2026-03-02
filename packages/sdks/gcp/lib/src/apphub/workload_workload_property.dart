@@ -56,12 +56,12 @@ class WorkloadWorkloadProperty {
 
   factory WorkloadWorkloadProperty.fromMap(Map<String, dynamic> map) {
     return WorkloadWorkloadProperty(
-      extendedMetadatas: map['extendedMetadatas'] == null ? null : (pulumi.Input.decodeList<WorkloadWorkloadPropertyExtendedMetadata>(map['extendedMetadatas'], (value) => WorkloadWorkloadPropertyExtendedMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      functionalTypes: map['functionalTypes'] == null ? null : (pulumi.Input.decodeList<WorkloadWorkloadPropertyFunctionalType>(map['functionalTypes'], (value) => WorkloadWorkloadPropertyFunctionalType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gcpProject: map['gcpProject'] == null ? null : (map['gcpProject'] as String).input(),
-      identities: map['identities'] == null ? null : (pulumi.Input.decodeList<WorkloadWorkloadPropertyIdentity>(map['identities'], (value) => WorkloadWorkloadPropertyIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      extendedMetadatas: map['extendedMetadatas'] == null ? null : (pulumi.Input.decodeList<WorkloadWorkloadPropertyExtendedMetadata>(map['extendedMetadatas']!, (value) => WorkloadWorkloadPropertyExtendedMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      functionalTypes: map['functionalTypes'] == null ? null : (pulumi.Input.decodeList<WorkloadWorkloadPropertyFunctionalType>(map['functionalTypes']!, (value) => WorkloadWorkloadPropertyFunctionalType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gcpProject: map['gcpProject'] == null ? null : (map['gcpProject']! as String).input(),
+      identities: map['identities'] == null ? null : (pulumi.Input.decodeList<WorkloadWorkloadPropertyIdentity>(map['identities']!, (value) => WorkloadWorkloadPropertyIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class InstanceControlledEgressConfig {
 
   factory InstanceControlledEgressConfig.fromMap(Map<String, dynamic> map) {
     return InstanceControlledEgressConfig(
-      egressFqdns: map['egressFqdns'] == null ? null : ((map['egressFqdns'] as List).cast<String>()).input(),
-      marketplaceEnabled: map['marketplaceEnabled'] == null ? null : (map['marketplaceEnabled'] as bool).input(),
+      egressFqdns: map['egressFqdns'] == null ? null : ((map['egressFqdns']! as List).cast<String>()).input(),
+      marketplaceEnabled: map['marketplaceEnabled'] == null ? null : (map['marketplaceEnabled']! as bool).input(),
     );
   }
 }

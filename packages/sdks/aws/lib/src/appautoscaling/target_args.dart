@@ -67,13 +67,13 @@ class TargetArgs {
     return TargetArgs(
       maxCapacity: (map['maxCapacity'] as int).input(),
       minCapacity: (map['minCapacity'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceId: (map['resourceId'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
       scalableDimension: (map['scalableDimension'] as String).input(),
       serviceNamespace: (map['serviceNamespace'] as String).input(),
-      suspendedState: map['suspendedState'] == null ? null : (TargetSuspendedState.fromMap((map['suspendedState'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      suspendedState: map['suspendedState'] == null ? null : ((TargetSuspendedState.fromMap((map['suspendedState']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

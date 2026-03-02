@@ -21,7 +21,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
 
   factory CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId(
-      objectIdPaths: map['objectIdPaths'] == null ? null : ((map['objectIdPaths'] as List).cast<int>()).input(),
+      objectIdPaths: map['objectIdPaths'] == null ? null : ((map['objectIdPaths']! as List).cast<int>()).input(),
     );
   }
 }

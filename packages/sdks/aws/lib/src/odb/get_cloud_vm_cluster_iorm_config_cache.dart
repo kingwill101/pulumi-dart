@@ -32,7 +32,7 @@ class GetCloudVmClusterIormConfigCache {
 
   factory GetCloudVmClusterIormConfigCache.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterIormConfigCache(
-      dbPlans: (pulumi.Input.decodeList<GetCloudVmClusterIormConfigCacheDbPlan>(map['dbPlans'], (value) => GetCloudVmClusterIormConfigCacheDbPlan.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbPlans: (pulumi.Input.decodeList<GetCloudVmClusterIormConfigCacheDbPlan>(map['dbPlans']!, (value) => GetCloudVmClusterIormConfigCacheDbPlan.fromMap((value as Map).cast<String, dynamic>()))).input(),
       lifecycleDetails: (map['lifecycleDetails'] as String).input(),
       lifecycleState: (map['lifecycleState'] as String).input(),
       objective: (map['objective'] as String).input(),

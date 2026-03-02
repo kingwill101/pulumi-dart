@@ -47,11 +47,11 @@ class GalleryScriptProperties {
 
   factory GalleryScriptProperties.fromMap(Map<String, dynamic> map) {
     return GalleryScriptProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
-      eula: map['eula'] == null ? null : (map['eula'] as String).input(),
-      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri'] as String).input(),
-      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
+      eula: map['eula'] == null ? null : (map['eula']! as String).input(),
+      privacyStatementUri: map['privacyStatementUri'] == null ? null : (map['privacyStatementUri']! as String).input(),
+      releaseNoteUri: map['releaseNoteUri'] == null ? null : (map['releaseNoteUri']! as String).input(),
       supportedOSType: (OperatingSystemTypes.fromValue(map['supportedOSType'] as String)).input(),
     );
   }

@@ -30,7 +30,7 @@ class AlertContactGroupArgs {
   factory AlertContactGroupArgs.fromMap(Map<String, dynamic> map) {
     return AlertContactGroupArgs(
       alertContactGroupName: (map['alertContactGroupName'] as String).input(),
-      contactIds: map['contactIds'] == null ? null : ((map['contactIds'] as List).cast<String>()).input(),
+      contactIds: map['contactIds'] == null ? null : ((map['contactIds']! as List).cast<String>()).input(),
     );
   }
 }

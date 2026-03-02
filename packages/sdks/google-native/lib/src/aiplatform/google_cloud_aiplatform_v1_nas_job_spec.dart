@@ -32,9 +32,9 @@ class GoogleCloudAiplatformV1NasJobSpec {
 
   factory GoogleCloudAiplatformV1NasJobSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1NasJobSpec(
-      multiTrialAlgorithmSpec: map['multiTrialAlgorithmSpec'] == null ? null : (GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpec.fromMap((map['multiTrialAlgorithmSpec'] as Map).cast<String, dynamic>())).input(),
-      resumeNasJobId: map['resumeNasJobId'] == null ? null : (map['resumeNasJobId'] as String).input(),
-      searchSpaceSpec: map['searchSpaceSpec'] == null ? null : (map['searchSpaceSpec'] as String).input(),
+      multiTrialAlgorithmSpec: map['multiTrialAlgorithmSpec'] == null ? null : (GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpec.fromMap((map['multiTrialAlgorithmSpec']! as Map).cast<String, dynamic>())).input(),
+      resumeNasJobId: map['resumeNasJobId'] == null ? null : (map['resumeNasJobId']! as String).input(),
+      searchSpaceSpec: map['searchSpaceSpec'] == null ? null : (map['searchSpaceSpec']! as String).input(),
     );
   }
 }

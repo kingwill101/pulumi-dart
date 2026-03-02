@@ -22,7 +22,7 @@ class OracleRdbmsDatastreamV1alpha1 {
 
   factory OracleRdbmsDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleRdbmsDatastreamV1alpha1(
-      oracleSchemas: map['oracleSchemas'] == null ? null : (pulumi.Input.decodeList<OracleSchemaDatastreamV1alpha1>(map['oracleSchemas'], (value) => OracleSchemaDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oracleSchemas: map['oracleSchemas'] == null ? null : (pulumi.Input.decodeList<OracleSchemaDatastreamV1alpha1>(map['oracleSchemas']!, (value) => OracleSchemaDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

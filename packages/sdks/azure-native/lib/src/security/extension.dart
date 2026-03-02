@@ -31,7 +31,7 @@ class Extension {
 
   factory Extension.fromMap(Map<String, dynamic> map) {
     return Extension(
-      additionalExtensionProperties: map['additionalExtensionProperties'] == null ? null : (map['additionalExtensionProperties']).input(),
+      additionalExtensionProperties: map['additionalExtensionProperties'] == null ? null : (map['additionalExtensionProperties']!).input(),
       isEnabled: (map['isEnabled'] as String).input(),
       name: (map['name'] as String).input(),
     );

@@ -77,17 +77,17 @@ class GraphArgs {
 
   factory GraphArgs.fromMap(Map<String, dynamic> map) {
     return GraphArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      graphName: map['graphName'] == null ? null : (map['graphName'] as String).input(),
-      graphNamePrefix: map['graphNamePrefix'] == null ? null : (map['graphNamePrefix'] as String).input(),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : ((map['deletionProtection'] as bool).input()).input(),
+      graphName: map['graphName'] == null ? null : ((map['graphName'] as String).input()).input(),
+      graphNamePrefix: map['graphNamePrefix'] == null ? null : ((map['graphNamePrefix'] as String).input()).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
       provisionedMemory: (map['provisionedMemory'] as int).input(),
-      publicConnectivity: map['publicConnectivity'] == null ? null : (map['publicConnectivity'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (GraphTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vectorSearchConfiguration: map['vectorSearchConfiguration'] == null ? null : (GraphVectorSearchConfiguration.fromMap((map['vectorSearchConfiguration'] as Map).cast<String, dynamic>())).input(),
+      publicConnectivity: map['publicConnectivity'] == null ? null : ((map['publicConnectivity'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replicaCount: map['replicaCount'] == null ? null : ((map['replicaCount'] as int).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((GraphTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vectorSearchConfiguration: map['vectorSearchConfiguration'] == null ? null : ((GraphVectorSearchConfiguration.fromMap((map['vectorSearchConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

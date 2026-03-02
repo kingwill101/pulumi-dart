@@ -35,10 +35,10 @@ class DomainDevicesVsockDriver {
 
   factory DomainDevicesVsockDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVsockDriver(
-      ats: map['ats'] == null ? null : (map['ats'] as String).input(),
-      iommu: map['iommu'] == null ? null : (map['iommu'] as String).input(),
-      packed: map['packed'] == null ? null : (map['packed'] as String).input(),
-      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq'] as String).input(),
+      ats: map['ats'] == null ? null : (map['ats']! as String).input(),
+      iommu: map['iommu'] == null ? null : (map['iommu']! as String).input(),
+      packed: map['packed'] == null ? null : (map['packed']! as String).input(),
+      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq']! as String).input(),
     );
   }
 }

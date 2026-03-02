@@ -42,11 +42,11 @@ class SharedPrivateLinkResourcePropertiesResponse {
 
   factory SharedPrivateLinkResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourcePropertiesResponse(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      privateLink: map['privateLink'] == null ? null : (ResourceReferenceResponse.fromMap((map['privateLink'] as Map).cast<String, dynamic>())).input(),
-      privateLinkLocation: map['privateLinkLocation'] == null ? null : (map['privateLinkLocation'] as String).input(),
-      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      privateLink: map['privateLink'] == null ? null : (ResourceReferenceResponse.fromMap((map['privateLink']! as Map).cast<String, dynamic>())).input(),
+      privateLinkLocation: map['privateLinkLocation'] == null ? null : (map['privateLinkLocation']! as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

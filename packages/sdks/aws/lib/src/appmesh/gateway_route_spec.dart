@@ -38,10 +38,10 @@ class GatewayRouteSpec {
 
   factory GatewayRouteSpec.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpec(
-      grpcRoute: map['grpcRoute'] == null ? null : (GatewayRouteSpecGrpcRoute.fromMap((map['grpcRoute'] as Map).cast<String, dynamic>())).input(),
-      http2Route: map['http2Route'] == null ? null : (GatewayRouteSpecHttp2Route.fromMap((map['http2Route'] as Map).cast<String, dynamic>())).input(),
-      httpRoute: map['httpRoute'] == null ? null : (GatewayRouteSpecHttpRoute.fromMap((map['httpRoute'] as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      grpcRoute: map['grpcRoute'] == null ? null : ((GatewayRouteSpecGrpcRoute.fromMap((map['grpcRoute']! as Map).cast<String, dynamic>())).input()).input(),
+      http2Route: map['http2Route'] == null ? null : ((GatewayRouteSpecHttp2Route.fromMap((map['http2Route']! as Map).cast<String, dynamic>())).input()).input(),
+      httpRoute: map['httpRoute'] == null ? null : ((GatewayRouteSpecHttpRoute.fromMap((map['httpRoute']! as Map).cast<String, dynamic>())).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
     );
   }
 }

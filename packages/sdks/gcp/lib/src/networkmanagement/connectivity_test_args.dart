@@ -91,15 +91,15 @@ class ConnectivityTestArgs {
 
   factory ConnectivityTestArgs.fromMap(Map<String, dynamic> map) {
     return ConnectivityTestArgs(
-      bypassFirewallChecks: map['bypassFirewallChecks'] == null ? null : (map['bypassFirewallChecks'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      bypassFirewallChecks: map['bypassFirewallChecks'] == null ? null : (map['bypassFirewallChecks']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destination: (ConnectivityTestDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      relatedProjects: map['relatedProjects'] == null ? null : ((map['relatedProjects'] as List).cast<String>()).input(),
-      roundTrip: map['roundTrip'] == null ? null : (map['roundTrip'] as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      relatedProjects: map['relatedProjects'] == null ? null : ((map['relatedProjects']! as List).cast<String>()).input(),
+      roundTrip: map['roundTrip'] == null ? null : (map['roundTrip']! as bool).input(),
       source: (ConnectivityTestSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

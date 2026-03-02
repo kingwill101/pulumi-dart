@@ -26,8 +26,8 @@ class BackupVaultCustomerManagedKeyState {
 
   factory BackupVaultCustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return BackupVaultCustomerManagedKeyState(
-      dataProtectionBackupVaultId: map['dataProtectionBackupVaultId'] == null ? null : (map['dataProtectionBackupVaultId'] as String).input(),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
+      dataProtectionBackupVaultId: map['dataProtectionBackupVaultId'] == null ? null : (map['dataProtectionBackupVaultId']! as String).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
     );
   }
 }

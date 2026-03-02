@@ -34,7 +34,7 @@ class GetVirtualRouterArgs {
 
   factory GetVirtualRouterArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualRouterArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       virtualRouterName: (map['virtualRouterName'] as String).input(),
     );

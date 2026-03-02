@@ -57,14 +57,14 @@ class GradientaiOpenaiApiKeyState {
 
   factory GradientaiOpenaiApiKeyState.fromMap(Map<String, dynamic> map) {
     return GradientaiOpenaiApiKeyState(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
-      deletedAt: map['deletedAt'] == null ? null : (map['deletedAt'] as String).input(),
-      models: map['models'] == null ? null : (pulumi.Input.decodeList<GradientaiOpenaiApiKeyModel>(map['models'], (value) => GradientaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy']! as String).input(),
+      deletedAt: map['deletedAt'] == null ? null : (map['deletedAt']! as String).input(),
+      models: map['models'] == null ? null : (pulumi.Input.decodeList<GradientaiOpenaiApiKeyModel>(map['models']!, (value) => GradientaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class LogTransformerTransformerConfigSubstituteString {
 
   factory LogTransformerTransformerConfigSubstituteString.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigSubstituteString(
-      entries: (pulumi.Input.decodeList<LogTransformerTransformerConfigSubstituteStringEntry>(map['entries'], (value) => LogTransformerTransformerConfigSubstituteStringEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: (pulumi.Input.decodeList<LogTransformerTransformerConfigSubstituteStringEntry>(map['entries']!, (value) => LogTransformerTransformerConfigSubstituteStringEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -73,11 +73,11 @@ class AuthorizedOrgsDescArgs {
 
   factory AuthorizedOrgsDescArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedOrgsDescArgs(
-      assetType: map['assetType'] == null ? null : (map['assetType'] as String).input(),
-      authorizationDirection: map['authorizationDirection'] == null ? null : (map['authorizationDirection'] as String).input(),
-      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgs: map['orgs'] == null ? null : ((map['orgs'] as List).cast<String>()).input(),
+      assetType: map['assetType'] == null ? null : (map['assetType']! as String).input(),
+      authorizationDirection: map['authorizationDirection'] == null ? null : (map['authorizationDirection']! as String).input(),
+      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgs: map['orgs'] == null ? null : ((map['orgs']! as List).cast<String>()).input(),
       parent: (map['parent'] as String).input(),
     );
   }

@@ -41,8 +41,8 @@ class GetTrafficManagerProfileArgs {
     return GetTrafficManagerProfileArgs(
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trafficViewEnabled: map['trafficViewEnabled'] == null ? null : (map['trafficViewEnabled'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      trafficViewEnabled: map['trafficViewEnabled'] == null ? null : (map['trafficViewEnabled']! as bool).input(),
     );
   }
 }

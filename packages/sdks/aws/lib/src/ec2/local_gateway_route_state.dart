@@ -36,10 +36,10 @@ class LocalGatewayRouteState {
 
   factory LocalGatewayRouteState.fromMap(Map<String, dynamic> map) {
     return LocalGatewayRouteState(
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
-      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : (map['localGatewayRouteTableId'] as String).input(),
-      localGatewayVirtualInterfaceGroupId: map['localGatewayVirtualInterfaceGroupId'] == null ? null : (map['localGatewayVirtualInterfaceGroupId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : ((map['destinationCidrBlock'] as String).input()).input(),
+      localGatewayRouteTableId: map['localGatewayRouteTableId'] == null ? null : ((map['localGatewayRouteTableId'] as String).input()).input(),
+      localGatewayVirtualInterfaceGroupId: map['localGatewayVirtualInterfaceGroupId'] == null ? null : ((map['localGatewayVirtualInterfaceGroupId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

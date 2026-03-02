@@ -93,19 +93,19 @@ class PolicyBindingArgs {
 
   factory PolicyBindingArgs.fromMap(Map<String, dynamic> map) {
     return PolicyBindingArgs(
-      advancedOptions: map['advancedOptions'] == null ? null : (PolicyBindingAdvancedOptions.fromMap((map['advancedOptions'] as Map).cast<String, dynamic>())).input(),
-      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName'] as String).input(),
-      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType'] as String).input(),
-      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId'] as int).input(),
-      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      exclude: map['exclude'] == null ? null : (map['exclude'] as String).input(),
-      include: map['include'] == null ? null : (map['include'] as String).input(),
-      policyBindingDescription: map['policyBindingDescription'] == null ? null : (map['policyBindingDescription'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
-      speedLimit: map['speedLimit'] == null ? null : (map['speedLimit'] as String).input(),
+      advancedOptions: map['advancedOptions'] == null ? null : (PolicyBindingAdvancedOptions.fromMap((map['advancedOptions']! as Map).cast<String, dynamic>())).input(),
+      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName']! as String).input(),
+      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType']! as String).input(),
+      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId']! as int).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      exclude: map['exclude'] == null ? null : (map['exclude']! as String).input(),
+      include: map['include'] == null ? null : (map['include']! as String).input(),
+      policyBindingDescription: map['policyBindingDescription'] == null ? null : (map['policyBindingDescription']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
+      speedLimit: map['speedLimit'] == null ? null : (map['speedLimit']! as String).input(),
     );
   }
 }

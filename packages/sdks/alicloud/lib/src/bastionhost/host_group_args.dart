@@ -34,7 +34,7 @@ class HostGroupArgs {
 
   factory HostGroupArgs.fromMap(Map<String, dynamic> map) {
     return HostGroupArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
       hostGroupName: (map['hostGroupName'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
     );

@@ -85,18 +85,18 @@ class PrivateConnectionState {
 
   factory PrivateConnectionState.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionState(
-      createWithoutValidation: map['createWithoutValidation'] == null ? null : (map['createWithoutValidation'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<PrivateConnectionError>(map['errors'], (value) => PrivateConnectionError.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateConnectionId: map['privateConnectionId'] == null ? null : (map['privateConnectionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      vpcPeeringConfig: map['vpcPeeringConfig'] == null ? null : (PrivateConnectionVpcPeeringConfig.fromMap((map['vpcPeeringConfig'] as Map).cast<String, dynamic>())).input(),
+      createWithoutValidation: map['createWithoutValidation'] == null ? null : (map['createWithoutValidation']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<PrivateConnectionError>(map['errors']!, (value) => PrivateConnectionError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateConnectionId: map['privateConnectionId'] == null ? null : (map['privateConnectionId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      vpcPeeringConfig: map['vpcPeeringConfig'] == null ? null : (PrivateConnectionVpcPeeringConfig.fromMap((map['vpcPeeringConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

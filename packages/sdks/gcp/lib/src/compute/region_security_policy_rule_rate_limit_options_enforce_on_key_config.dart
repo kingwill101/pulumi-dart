@@ -39,8 +39,8 @@ class RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
 
   factory RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig(
-      enforceOnKeyName: map['enforceOnKeyName'] == null ? null : (map['enforceOnKeyName'] as String).input(),
-      enforceOnKeyType: map['enforceOnKeyType'] == null ? null : (map['enforceOnKeyType'] as String).input(),
+      enforceOnKeyName: map['enforceOnKeyName'] == null ? null : (map['enforceOnKeyName']! as String).input(),
+      enforceOnKeyType: map['enforceOnKeyType'] == null ? null : (map['enforceOnKeyType']! as String).input(),
     );
   }
 }

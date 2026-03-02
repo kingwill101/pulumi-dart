@@ -63,15 +63,15 @@ class GetPolicyDocumentStatement {
 
   factory GetPolicyDocumentStatement.fromMap(Map<String, dynamic> map) {
     return GetPolicyDocumentStatement(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GetPolicyDocumentStatementCondition>(map['conditions'], (value) => GetPolicyDocumentStatementCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
-      notActions: map['notActions'] == null ? null : ((map['notActions'] as List).cast<String>()).input(),
-      notPrincipals: map['notPrincipals'] == null ? null : (pulumi.Input.decodeList<GetPolicyDocumentStatementNotPrincipal>(map['notPrincipals'], (value) => GetPolicyDocumentStatementNotPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notResources: map['notResources'] == null ? null : ((map['notResources'] as List).cast<String>()).input(),
-      principals: map['principals'] == null ? null : (pulumi.Input.decodeList<GetPolicyDocumentStatementPrincipal>(map['principals'], (value) => GetPolicyDocumentStatementPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
-      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
+      actions: map['actions'] == null ? null : (((map['actions'] as List).cast<String>()).input()).input(),
+      conditions: map['conditions'] == null ? null : ((pulumi.Input.decodeList<GetPolicyDocumentStatementCondition>(map['conditions']!, (value) => GetPolicyDocumentStatementCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      effect: map['effect'] == null ? null : ((map['effect'] as String).input()).input(),
+      notActions: map['notActions'] == null ? null : (((map['notActions'] as List).cast<String>()).input()).input(),
+      notPrincipals: map['notPrincipals'] == null ? null : ((pulumi.Input.decodeList<GetPolicyDocumentStatementNotPrincipal>(map['notPrincipals']!, (value) => GetPolicyDocumentStatementNotPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      notResources: map['notResources'] == null ? null : (((map['notResources'] as List).cast<String>()).input()).input(),
+      principals: map['principals'] == null ? null : ((pulumi.Input.decodeList<GetPolicyDocumentStatementPrincipal>(map['principals']!, (value) => GetPolicyDocumentStatementPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      resources: map['resources'] == null ? null : (((map['resources'] as List).cast<String>()).input()).input(),
+      sid: map['sid'] == null ? null : ((map['sid'] as String).input()).input(),
     );
   }
 }

@@ -62,7 +62,7 @@ class GetSecurityUserConfigurationResult {
   factory GetSecurityUserConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityUserConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

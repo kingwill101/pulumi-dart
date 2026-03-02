@@ -37,10 +37,10 @@ class SecuritySettingsComputeBeta {
 
   factory SecuritySettingsComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecuritySettingsComputeBeta(
-      authentication: map['authentication'] == null ? null : (map['authentication'] as String).input(),
-      awsV4Authentication: map['awsV4Authentication'] == null ? null : (AWSV4SignatureComputeBeta.fromMap((map['awsV4Authentication'] as Map).cast<String, dynamic>())).input(),
-      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : (map['clientTlsPolicy'] as String).input(),
-      subjectAltNames: map['subjectAltNames'] == null ? null : ((map['subjectAltNames'] as List).cast<String>()).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication']! as String).input(),
+      awsV4Authentication: map['awsV4Authentication'] == null ? null : (AWSV4SignatureComputeBeta.fromMap((map['awsV4Authentication']! as Map).cast<String, dynamic>())).input(),
+      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : (map['clientTlsPolicy']! as String).input(),
+      subjectAltNames: map['subjectAltNames'] == null ? null : ((map['subjectAltNames']! as List).cast<String>()).input(),
     );
   }
 }

@@ -33,8 +33,8 @@ class EncryptionSettingsCollectionResponse {
   factory EncryptionSettingsCollectionResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionSettingsCollectionResponse(
       enabled: (map['enabled'] as bool).input(),
-      encryptionSettings: map['encryptionSettings'] == null ? null : (pulumi.Input.decodeList<EncryptionSettingsElementResponse>(map['encryptionSettings'], (value) => EncryptionSettingsElementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encryptionSettingsVersion: map['encryptionSettingsVersion'] == null ? null : (map['encryptionSettingsVersion'] as String).input(),
+      encryptionSettings: map['encryptionSettings'] == null ? null : (pulumi.Input.decodeList<EncryptionSettingsElementResponse>(map['encryptionSettings']!, (value) => EncryptionSettingsElementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionSettingsVersion: map['encryptionSettingsVersion'] == null ? null : (map['encryptionSettingsVersion']! as String).input(),
     );
   }
 }

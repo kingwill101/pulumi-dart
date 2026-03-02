@@ -47,10 +47,10 @@ class DataSetLogicalTableMapSourceJoinInstruction {
 
   factory DataSetLogicalTableMapSourceJoinInstruction.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapSourceJoinInstruction(
-      leftJoinKeyProperties: map['leftJoinKeyProperties'] == null ? null : (DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties.fromMap((map['leftJoinKeyProperties'] as Map).cast<String, dynamic>())).input(),
+      leftJoinKeyProperties: map['leftJoinKeyProperties'] == null ? null : ((DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties.fromMap((map['leftJoinKeyProperties']! as Map).cast<String, dynamic>())).input()).input(),
       leftOperand: (map['leftOperand'] as String).input(),
       onClause: (map['onClause'] as String).input(),
-      rightJoinKeyProperties: map['rightJoinKeyProperties'] == null ? null : (DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties.fromMap((map['rightJoinKeyProperties'] as Map).cast<String, dynamic>())).input(),
+      rightJoinKeyProperties: map['rightJoinKeyProperties'] == null ? null : ((DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties.fromMap((map['rightJoinKeyProperties']! as Map).cast<String, dynamic>())).input()).input(),
       rightOperand: (map['rightOperand'] as String).input(),
       type: (map['type'] as String).input(),
     );

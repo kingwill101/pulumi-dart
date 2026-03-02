@@ -65,14 +65,14 @@ class VpcEndpointServiceArgs {
   factory VpcEndpointServiceArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceArgs(
       acceptanceRequired: (map['acceptanceRequired'] as bool).input(),
-      allowedPrincipals: map['allowedPrincipals'] == null ? null : ((map['allowedPrincipals'] as List).cast<String>()).input(),
-      gatewayLoadBalancerArns: map['gatewayLoadBalancerArns'] == null ? null : ((map['gatewayLoadBalancerArns'] as List).cast<String>()).input(),
-      networkLoadBalancerArns: map['networkLoadBalancerArns'] == null ? null : ((map['networkLoadBalancerArns'] as List).cast<String>()).input(),
-      privateDnsName: map['privateDnsName'] == null ? null : (map['privateDnsName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      supportedIpAddressTypes: map['supportedIpAddressTypes'] == null ? null : ((map['supportedIpAddressTypes'] as List).cast<String>()).input(),
-      supportedRegions: map['supportedRegions'] == null ? null : ((map['supportedRegions'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      allowedPrincipals: map['allowedPrincipals'] == null ? null : (((map['allowedPrincipals'] as List).cast<String>()).input()).input(),
+      gatewayLoadBalancerArns: map['gatewayLoadBalancerArns'] == null ? null : (((map['gatewayLoadBalancerArns'] as List).cast<String>()).input()).input(),
+      networkLoadBalancerArns: map['networkLoadBalancerArns'] == null ? null : (((map['networkLoadBalancerArns'] as List).cast<String>()).input()).input(),
+      privateDnsName: map['privateDnsName'] == null ? null : ((map['privateDnsName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      supportedIpAddressTypes: map['supportedIpAddressTypes'] == null ? null : (((map['supportedIpAddressTypes'] as List).cast<String>()).input()).input(),
+      supportedRegions: map['supportedRegions'] == null ? null : (((map['supportedRegions'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

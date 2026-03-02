@@ -32,7 +32,7 @@ class FloorsettingFilterConfigRaiSettingsRaiFilter {
 
   factory FloorsettingFilterConfigRaiSettingsRaiFilter.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigRaiSettingsRaiFilter(
-      confidenceLevel: map['confidenceLevel'] == null ? null : (map['confidenceLevel'] as String).input(),
+      confidenceLevel: map['confidenceLevel'] == null ? null : (map['confidenceLevel']! as String).input(),
       filterType: (map['filterType'] as String).input(),
     );
   }

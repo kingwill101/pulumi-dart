@@ -36,8 +36,8 @@ class GenaiOpenaiApiKeyArgs {
   factory GenaiOpenaiApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return GenaiOpenaiApiKeyArgs(
       apiKey: (map['apiKey'] as String).input(),
-      models: map['models'] == null ? null : (pulumi.Input.decodeList<GenaiOpenaiApiKeyModel>(map['models'], (value) => GenaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      models: map['models'] == null ? null : (pulumi.Input.decodeList<GenaiOpenaiApiKeyModel>(map['models']!, (value) => GenaiOpenaiApiKeyModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

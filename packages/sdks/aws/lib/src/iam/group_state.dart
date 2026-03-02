@@ -36,10 +36,10 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      uniqueId: map['uniqueId'] == null ? null : (map['uniqueId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      uniqueId: map['uniqueId'] == null ? null : ((map['uniqueId'] as String).input()).input(),
     );
   }
 }

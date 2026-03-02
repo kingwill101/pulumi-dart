@@ -74,17 +74,17 @@ class IndexEndpointArgs {
 
   factory IndexEndpointArgs.fromMap(Map<String, dynamic> map) {
     return IndexEndpointArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      enablePrivateServiceConnect: map['enablePrivateServiceConnect'] == null ? null : (map['enablePrivateServiceConnect'] as bool).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (GoogleCloudAiplatformV1PrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : (map['publicEndpointEnabled'] as bool).input(),
+      enablePrivateServiceConnect: map['enablePrivateServiceConnect'] == null ? null : (map['enablePrivateServiceConnect']! as bool).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (GoogleCloudAiplatformV1PrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : (map['publicEndpointEnabled']! as bool).input(),
     );
   }
 }

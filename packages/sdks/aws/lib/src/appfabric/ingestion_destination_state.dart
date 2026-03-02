@@ -63,15 +63,15 @@ class IngestionDestinationState {
 
   factory IngestionDestinationState.fromMap(Map<String, dynamic> map) {
     return IngestionDestinationState(
-      appBundleArn: map['appBundleArn'] == null ? null : (map['appBundleArn'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      destinationConfiguration: map['destinationConfiguration'] == null ? null : (IngestionDestinationDestinationConfiguration.fromMap((map['destinationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      ingestionArn: map['ingestionArn'] == null ? null : (map['ingestionArn'] as String).input(),
-      processingConfiguration: map['processingConfiguration'] == null ? null : (IngestionDestinationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (IngestionDestinationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      appBundleArn: map['appBundleArn'] == null ? null : ((map['appBundleArn'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      destinationConfiguration: map['destinationConfiguration'] == null ? null : ((IngestionDestinationDestinationConfiguration.fromMap((map['destinationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      ingestionArn: map['ingestionArn'] == null ? null : ((map['ingestionArn'] as String).input()).input(),
+      processingConfiguration: map['processingConfiguration'] == null ? null : ((IngestionDestinationProcessingConfiguration.fromMap((map['processingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((IngestionDestinationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

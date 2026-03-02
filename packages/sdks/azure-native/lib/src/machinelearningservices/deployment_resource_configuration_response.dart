@@ -30,9 +30,9 @@ class DeploymentResourceConfigurationResponse {
 
   factory DeploymentResourceConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentResourceConfigurationResponse(
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, dynamic>()).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

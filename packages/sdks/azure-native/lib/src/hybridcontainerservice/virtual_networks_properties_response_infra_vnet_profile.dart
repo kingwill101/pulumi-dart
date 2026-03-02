@@ -33,9 +33,9 @@ class VirtualNetworksPropertiesResponseInfraVnetProfile {
 
   factory VirtualNetworksPropertiesResponseInfraVnetProfile.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksPropertiesResponseInfraVnetProfile(
-      hci: map['hci'] == null ? null : (VirtualNetworksPropertiesResponseHci.fromMap((map['hci'] as Map).cast<String, dynamic>())).input(),
-      networkCloud: map['networkCloud'] == null ? null : (VirtualNetworksPropertiesResponseNetworkCloud.fromMap((map['networkCloud'] as Map).cast<String, dynamic>())).input(),
-      vmware: map['vmware'] == null ? null : (VirtualNetworksPropertiesResponseVmware.fromMap((map['vmware'] as Map).cast<String, dynamic>())).input(),
+      hci: map['hci'] == null ? null : (VirtualNetworksPropertiesResponseHci.fromMap((map['hci']! as Map).cast<String, dynamic>())).input(),
+      networkCloud: map['networkCloud'] == null ? null : (VirtualNetworksPropertiesResponseNetworkCloud.fromMap((map['networkCloud']! as Map).cast<String, dynamic>())).input(),
+      vmware: map['vmware'] == null ? null : (VirtualNetworksPropertiesResponseVmware.fromMap((map['vmware']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

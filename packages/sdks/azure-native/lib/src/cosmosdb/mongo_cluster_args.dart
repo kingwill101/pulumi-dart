@@ -71,16 +71,16 @@ class MongoClusterArgs {
 
   factory MongoClusterArgs.fromMap(Map<String, dynamic> map) {
     return MongoClusterArgs(
-      administratorLogin: map['administratorLogin'] == null ? null : (map['administratorLogin'] as String).input(),
-      administratorLoginPassword: map['administratorLoginPassword'] == null ? null : (map['administratorLoginPassword'] as String).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mongoClusterName: map['mongoClusterName'] == null ? null : (map['mongoClusterName'] as String).input(),
-      nodeGroupSpecs: map['nodeGroupSpecs'] == null ? null : (pulumi.Input.decodeList<NodeGroupSpec>(map['nodeGroupSpecs'], (value) => NodeGroupSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      administratorLogin: map['administratorLogin'] == null ? null : (map['administratorLogin']! as String).input(),
+      administratorLoginPassword: map['administratorLoginPassword'] == null ? null : (map['administratorLoginPassword']! as String).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mongoClusterName: map['mongoClusterName'] == null ? null : (map['mongoClusterName']! as String).input(),
+      nodeGroupSpecs: map['nodeGroupSpecs'] == null ? null : (pulumi.Input.decodeList<NodeGroupSpec>(map['nodeGroupSpecs']!, (value) => NodeGroupSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      restoreParameters: map['restoreParameters'] == null ? null : (MongoClusterRestoreParameters.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>())).input(),
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      restoreParameters: map['restoreParameters'] == null ? null : (MongoClusterRestoreParameters.fromMap((map['restoreParameters']! as Map).cast<String, dynamic>())).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

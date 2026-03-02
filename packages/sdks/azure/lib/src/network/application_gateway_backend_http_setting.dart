@@ -97,22 +97,22 @@ class ApplicationGatewayBackendHttpSetting {
 
   factory ApplicationGatewayBackendHttpSetting.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendHttpSetting(
-      affinityCookieName: map['affinityCookieName'] == null ? null : (map['affinityCookieName'] as String).input(),
-      authenticationCertificates: map['authenticationCertificates'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendHttpSettingAuthenticationCertificate>(map['authenticationCertificates'], (value) => ApplicationGatewayBackendHttpSettingAuthenticationCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      connectionDraining: map['connectionDraining'] == null ? null : (ApplicationGatewayBackendHttpSettingConnectionDraining.fromMap((map['connectionDraining'] as Map).cast<String, dynamic>())).input(),
+      affinityCookieName: map['affinityCookieName'] == null ? null : (map['affinityCookieName']! as String).input(),
+      authenticationCertificates: map['authenticationCertificates'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendHttpSettingAuthenticationCertificate>(map['authenticationCertificates']!, (value) => ApplicationGatewayBackendHttpSettingAuthenticationCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectionDraining: map['connectionDraining'] == null ? null : (ApplicationGatewayBackendHttpSettingConnectionDraining.fromMap((map['connectionDraining']! as Map).cast<String, dynamic>())).input(),
       cookieBasedAffinity: (map['cookieBasedAffinity'] as String).input(),
-      dedicatedBackendConnectionEnabled: map['dedicatedBackendConnectionEnabled'] == null ? null : (map['dedicatedBackendConnectionEnabled'] as bool).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      dedicatedBackendConnectionEnabled: map['dedicatedBackendConnectionEnabled'] == null ? null : (map['dedicatedBackendConnectionEnabled']! as bool).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      pickHostNameFromBackendAddress: map['pickHostNameFromBackendAddress'] == null ? null : (map['pickHostNameFromBackendAddress'] as bool).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      pickHostNameFromBackendAddress: map['pickHostNameFromBackendAddress'] == null ? null : (map['pickHostNameFromBackendAddress']! as bool).input(),
       port: (map['port'] as int).input(),
-      probeId: map['probeId'] == null ? null : (map['probeId'] as String).input(),
-      probeName: map['probeName'] == null ? null : (map['probeName'] as String).input(),
+      probeId: map['probeId'] == null ? null : (map['probeId']! as String).input(),
+      probeName: map['probeName'] == null ? null : (map['probeName']! as String).input(),
       protocol: (map['protocol'] as String).input(),
-      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout'] as int).input(),
-      trustedRootCertificateNames: map['trustedRootCertificateNames'] == null ? null : ((map['trustedRootCertificateNames'] as List).cast<String>()).input(),
+      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout']! as int).input(),
+      trustedRootCertificateNames: map['trustedRootCertificateNames'] == null ? null : ((map['trustedRootCertificateNames']! as List).cast<String>()).input(),
     );
   }
 }

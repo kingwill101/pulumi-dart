@@ -46,7 +46,7 @@ class GetGraphQLApiResolverPolicyResult {
   factory GetGraphQLApiResolverPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetGraphQLApiResolverPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      format: map['format'] == null ? null : map['format'] as String,
+      format: map['format'] == null ? null : map['format']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,

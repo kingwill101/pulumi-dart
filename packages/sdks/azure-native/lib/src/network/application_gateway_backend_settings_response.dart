@@ -78,16 +78,16 @@ class ApplicationGatewayBackendSettingsResponse {
   factory ApplicationGatewayBackendSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendSettingsResponse(
       etag: (map['etag'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pickHostNameFromBackendAddress: map['pickHostNameFromBackendAddress'] == null ? null : (map['pickHostNameFromBackendAddress'] as bool).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      probe: map['probe'] == null ? null : (SubResourceResponse.fromMap((map['probe'] as Map).cast<String, dynamic>())).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pickHostNameFromBackendAddress: map['pickHostNameFromBackendAddress'] == null ? null : (map['pickHostNameFromBackendAddress']! as bool).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      probe: map['probe'] == null ? null : (SubResourceResponse.fromMap((map['probe']! as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      trustedRootCertificates: map['trustedRootCertificates'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['trustedRootCertificates'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      trustedRootCertificates: map['trustedRootCertificates'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['trustedRootCertificates']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

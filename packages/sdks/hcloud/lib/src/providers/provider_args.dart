@@ -44,11 +44,11 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      endpointHetzner: map['endpointHetzner'] == null ? null : (map['endpointHetzner'] as String).input(),
-      pollFunction: map['pollFunction'] == null ? null : (map['pollFunction'] as String).input(),
-      pollInterval: map['pollInterval'] == null ? null : (map['pollInterval'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      endpointHetzner: map['endpointHetzner'] == null ? null : (map['endpointHetzner']! as String).input(),
+      pollFunction: map['pollFunction'] == null ? null : (map['pollFunction']! as String).input(),
+      pollInterval: map['pollInterval'] == null ? null : (map['pollInterval']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class GetLogDataProtectionPolicyDocumentStatementOperation {
 
   factory GetLogDataProtectionPolicyDocumentStatementOperation.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentStatementOperation(
-      audit: map['audit'] == null ? null : (GetLogDataProtectionPolicyDocumentStatementOperationAudit.fromMap((map['audit'] as Map).cast<String, dynamic>())).input(),
-      deidentify: map['deidentify'] == null ? null : (GetLogDataProtectionPolicyDocumentStatementOperationDeidentify.fromMap((map['deidentify'] as Map).cast<String, dynamic>())).input(),
+      audit: map['audit'] == null ? null : ((GetLogDataProtectionPolicyDocumentStatementOperationAudit.fromMap((map['audit']! as Map).cast<String, dynamic>())).input()).input(),
+      deidentify: map['deidentify'] == null ? null : ((GetLogDataProtectionPolicyDocumentStatementOperationDeidentify.fromMap((map['deidentify']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

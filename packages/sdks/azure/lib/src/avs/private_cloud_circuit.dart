@@ -35,10 +35,10 @@ class PrivateCloudCircuit {
 
   factory PrivateCloudCircuit.fromMap(Map<String, dynamic> map) {
     return PrivateCloudCircuit(
-      expressRouteId: map['expressRouteId'] == null ? null : (map['expressRouteId'] as String).input(),
-      expressRoutePrivatePeeringId: map['expressRoutePrivatePeeringId'] == null ? null : (map['expressRoutePrivatePeeringId'] as String).input(),
-      primarySubnetCidr: map['primarySubnetCidr'] == null ? null : (map['primarySubnetCidr'] as String).input(),
-      secondarySubnetCidr: map['secondarySubnetCidr'] == null ? null : (map['secondarySubnetCidr'] as String).input(),
+      expressRouteId: map['expressRouteId'] == null ? null : (map['expressRouteId']! as String).input(),
+      expressRoutePrivatePeeringId: map['expressRoutePrivatePeeringId'] == null ? null : (map['expressRoutePrivatePeeringId']! as String).input(),
+      primarySubnetCidr: map['primarySubnetCidr'] == null ? null : (map['primarySubnetCidr']! as String).input(),
+      secondarySubnetCidr: map['secondarySubnetCidr'] == null ? null : (map['secondarySubnetCidr']! as String).input(),
     );
   }
 }

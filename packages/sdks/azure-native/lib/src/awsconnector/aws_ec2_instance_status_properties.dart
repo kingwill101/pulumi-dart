@@ -54,13 +54,13 @@ class AwsEc2InstanceStatusProperties {
 
   factory AwsEc2InstanceStatusProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2InstanceStatusProperties(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      events: map['events'] == null ? null : (pulumi.Input.decodeList<InstanceStatusEvent>(map['events'], (value) => InstanceStatusEvent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceState: map['instanceState'] == null ? null : (InstanceState.fromMap((map['instanceState'] as Map).cast<String, dynamic>())).input(),
-      instanceStatus: map['instanceStatus'] == null ? null : (InstanceStatusSummary.fromMap((map['instanceStatus'] as Map).cast<String, dynamic>())).input(),
-      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn'] as String).input(),
-      systemStatus: map['systemStatus'] == null ? null : (InstanceStatusSummary.fromMap((map['systemStatus'] as Map).cast<String, dynamic>())).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
+      events: map['events'] == null ? null : (pulumi.Input.decodeList<InstanceStatusEvent>(map['events']!, (value) => InstanceStatusEvent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceState: map['instanceState'] == null ? null : (InstanceState.fromMap((map['instanceState']! as Map).cast<String, dynamic>())).input(),
+      instanceStatus: map['instanceStatus'] == null ? null : (InstanceStatusSummary.fromMap((map['instanceStatus']! as Map).cast<String, dynamic>())).input(),
+      outpostArn: map['outpostArn'] == null ? null : (map['outpostArn']! as String).input(),
+      systemStatus: map['systemStatus'] == null ? null : (InstanceStatusSummary.fromMap((map['systemStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

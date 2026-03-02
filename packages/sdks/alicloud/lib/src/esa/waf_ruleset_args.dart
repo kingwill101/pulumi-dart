@@ -43,11 +43,11 @@ class WafRulesetArgs {
 
   factory WafRulesetArgs.fromMap(Map<String, dynamic> map) {
     return WafRulesetArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       phase: (map['phase'] as String).input(),
       siteId: (map['siteId'] as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

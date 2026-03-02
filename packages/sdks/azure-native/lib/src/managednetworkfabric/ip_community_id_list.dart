@@ -21,7 +21,7 @@ class IpCommunityIdList {
 
   factory IpCommunityIdList.fromMap(Map<String, dynamic> map) {
     return IpCommunityIdList(
-      ipCommunityIds: map['ipCommunityIds'] == null ? null : ((map['ipCommunityIds'] as List).cast<String>()).input(),
+      ipCommunityIds: map['ipCommunityIds'] == null ? null : ((map['ipCommunityIds']! as List).cast<String>()).input(),
     );
   }
 }

@@ -34,8 +34,8 @@ class OSPolicyResourceGroupOsconfigV1alpha {
 
   factory OSPolicyResourceGroupOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceGroupOsconfigV1alpha(
-      inventoryFilters: map['inventoryFilters'] == null ? null : (pulumi.Input.decodeList<OSPolicyInventoryFilterOsconfigV1alpha>(map['inventoryFilters'], (value) => OSPolicyInventoryFilterOsconfigV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osFilter: map['osFilter'] == null ? null : (OSPolicyOSFilter.fromMap((map['osFilter'] as Map).cast<String, dynamic>())).input(),
+      inventoryFilters: map['inventoryFilters'] == null ? null : (pulumi.Input.decodeList<OSPolicyInventoryFilterOsconfigV1alpha>(map['inventoryFilters']!, (value) => OSPolicyInventoryFilterOsconfigV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osFilter: map['osFilter'] == null ? null : (OSPolicyOSFilter.fromMap((map['osFilter']! as Map).cast<String, dynamic>())).input(),
       resources: (pulumi.Input.decodeList<OSPolicyResourceOsconfigV1alpha>(map['resources'], (value) => OSPolicyResourceOsconfigV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

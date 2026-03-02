@@ -30,8 +30,8 @@ class AliasArgs {
 
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
-      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
-      properties: map['properties'] == null ? null : (PutAliasRequestProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      aliasName: map['aliasName'] == null ? null : (map['aliasName']! as String).input(),
+      properties: map['properties'] == null ? null : (PutAliasRequestProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

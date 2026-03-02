@@ -30,8 +30,8 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSucce
 
   factory V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranchNextStepDialogAction.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranchNextStepDialogAction(
-      slotToElicit: map['slotToElicit'] == null ? null : (map['slotToElicit'] as String).input(),
-      suppressNextMessage: map['suppressNextMessage'] == null ? null : (map['suppressNextMessage'] as bool).input(),
+      slotToElicit: map['slotToElicit'] == null ? null : ((map['slotToElicit'] as String).input()).input(),
+      suppressNextMessage: map['suppressNextMessage'] == null ? null : ((map['suppressNextMessage'] as bool).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

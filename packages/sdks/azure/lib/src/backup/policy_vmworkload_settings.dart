@@ -25,7 +25,7 @@ class PolicyVMWorkloadSettings {
 
   factory PolicyVMWorkloadSettings.fromMap(Map<String, dynamic> map) {
     return PolicyVMWorkloadSettings(
-      compressionEnabled: map['compressionEnabled'] == null ? null : (map['compressionEnabled'] as bool).input(),
+      compressionEnabled: map['compressionEnabled'] == null ? null : (map['compressionEnabled']! as bool).input(),
       timeZone: (map['timeZone'] as String).input(),
     );
   }

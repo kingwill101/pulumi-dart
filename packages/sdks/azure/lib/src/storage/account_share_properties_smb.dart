@@ -40,11 +40,11 @@ class AccountSharePropertiesSmb {
 
   factory AccountSharePropertiesSmb.fromMap(Map<String, dynamic> map) {
     return AccountSharePropertiesSmb(
-      authenticationTypes: map['authenticationTypes'] == null ? null : ((map['authenticationTypes'] as List).cast<String>()).input(),
-      channelEncryptionTypes: map['channelEncryptionTypes'] == null ? null : ((map['channelEncryptionTypes'] as List).cast<String>()).input(),
-      kerberosTicketEncryptionTypes: map['kerberosTicketEncryptionTypes'] == null ? null : ((map['kerberosTicketEncryptionTypes'] as List).cast<String>()).input(),
-      multichannelEnabled: map['multichannelEnabled'] == null ? null : (map['multichannelEnabled'] as bool).input(),
-      versions: map['versions'] == null ? null : ((map['versions'] as List).cast<String>()).input(),
+      authenticationTypes: map['authenticationTypes'] == null ? null : ((map['authenticationTypes']! as List).cast<String>()).input(),
+      channelEncryptionTypes: map['channelEncryptionTypes'] == null ? null : ((map['channelEncryptionTypes']! as List).cast<String>()).input(),
+      kerberosTicketEncryptionTypes: map['kerberosTicketEncryptionTypes'] == null ? null : ((map['kerberosTicketEncryptionTypes']! as List).cast<String>()).input(),
+      multichannelEnabled: map['multichannelEnabled'] == null ? null : (map['multichannelEnabled']! as bool).input(),
+      versions: map['versions'] == null ? null : ((map['versions']! as List).cast<String>()).input(),
     );
   }
 }

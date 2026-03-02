@@ -78,7 +78,7 @@ class GetRegionalSecretVersionResult {
       destroyTime: map['destroyTime'] as String,
       enabled: map['enabled'] as bool,
       id: map['id'] as String,
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : map['isSecretDataBase64'] as bool,
+      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : map['isSecretDataBase64']! as bool,
       location: map['location'] as String,
       name: map['name'] as String,
       project: map['project'] as String,

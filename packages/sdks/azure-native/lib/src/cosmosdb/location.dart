@@ -31,9 +31,9 @@ class Location {
 
   factory Location.fromMap(Map<String, dynamic> map) {
     return Location(
-      failoverPriority: map['failoverPriority'] == null ? null : (map['failoverPriority'] as int).input(),
-      isZoneRedundant: map['isZoneRedundant'] == null ? null : (map['isZoneRedundant'] as bool).input(),
-      locationName: map['locationName'] == null ? null : (map['locationName'] as String).input(),
+      failoverPriority: map['failoverPriority'] == null ? null : (map['failoverPriority']! as int).input(),
+      isZoneRedundant: map['isZoneRedundant'] == null ? null : (map['isZoneRedundant']! as bool).input(),
+      locationName: map['locationName'] == null ? null : (map['locationName']! as String).input(),
     );
   }
 }

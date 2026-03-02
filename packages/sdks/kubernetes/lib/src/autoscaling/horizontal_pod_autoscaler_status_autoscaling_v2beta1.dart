@@ -49,11 +49,11 @@ class HorizontalPodAutoscalerStatusAutoscalingV2beta1 {
   factory HorizontalPodAutoscalerStatusAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalerStatusAutoscalingV2beta1(
       conditions: (pulumi.Input.decodeList<HorizontalPodAutoscalerConditionAutoscalingV2beta1>(map['conditions'], (value) => HorizontalPodAutoscalerConditionAutoscalingV2beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      currentMetrics: map['currentMetrics'] == null ? null : (pulumi.Input.decodeList<MetricStatusAutoscalingV2beta1>(map['currentMetrics'], (value) => MetricStatusAutoscalingV2beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentMetrics: map['currentMetrics'] == null ? null : (pulumi.Input.decodeList<MetricStatusAutoscalingV2beta1>(map['currentMetrics']!, (value) => MetricStatusAutoscalingV2beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
       currentReplicas: (map['currentReplicas'] as int).input(),
       desiredReplicas: (map['desiredReplicas'] as int).input(),
-      lastScaleTime: map['lastScaleTime'] == null ? null : (map['lastScaleTime'] as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
+      lastScaleTime: map['lastScaleTime'] == null ? null : (map['lastScaleTime']! as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
     );
   }
 }

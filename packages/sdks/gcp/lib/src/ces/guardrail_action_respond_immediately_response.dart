@@ -26,7 +26,7 @@ class GuardrailActionRespondImmediatelyResponse {
 
   factory GuardrailActionRespondImmediatelyResponse.fromMap(Map<String, dynamic> map) {
     return GuardrailActionRespondImmediatelyResponse(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       text: (map['text'] as String).input(),
     );
   }

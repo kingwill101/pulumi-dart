@@ -28,7 +28,7 @@ class GetManagedZoneIamPolicyArgs {
   factory GetManagedZoneIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetManagedZoneIamPolicyArgs(
       managedZone: (map['managedZone'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

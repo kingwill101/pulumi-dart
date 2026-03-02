@@ -48,12 +48,12 @@ class IISWorkloadInstanceModelCustomPropertiesResponse {
 
   factory IISWorkloadInstanceModelCustomPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IISWorkloadInstanceModelCustomPropertiesResponse(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      fileshareName: map['fileshareName'] == null ? null : (map['fileshareName'] as String).input(),
-      iisWebApplication: map['iisWebApplication'] == null ? null : (IISWebApplicationResponse.fromMap((map['iisWebApplication'] as Map).cast<String, dynamic>())).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      fileshareName: map['fileshareName'] == null ? null : (map['fileshareName']! as String).input(),
+      iisWebApplication: map['iisWebApplication'] == null ? null : (IISWebApplicationResponse.fromMap((map['iisWebApplication']! as Map).cast<String, dynamic>())).input(),
       instanceType: (map['instanceType'] as String).input(),
-      webAppArmId: map['webAppArmId'] == null ? null : (map['webAppArmId'] as String).input(),
-      webAppSiteName: map['webAppSiteName'] == null ? null : (map['webAppSiteName'] as String).input(),
+      webAppArmId: map['webAppArmId'] == null ? null : (map['webAppArmId']! as String).input(),
+      webAppSiteName: map['webAppSiteName'] == null ? null : (map['webAppSiteName']! as String).input(),
     );
   }
 }

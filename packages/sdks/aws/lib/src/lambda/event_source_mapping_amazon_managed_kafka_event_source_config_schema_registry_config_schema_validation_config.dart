@@ -20,7 +20,7 @@ class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigS
 
   factory EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig(
-      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
+      attribute: map['attribute'] == null ? null : ((map['attribute'] as String).input()).input(),
     );
   }
 }

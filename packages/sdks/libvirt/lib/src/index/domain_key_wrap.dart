@@ -21,7 +21,7 @@ class DomainKeyWrap {
 
   factory DomainKeyWrap.fromMap(Map<String, dynamic> map) {
     return DomainKeyWrap(
-      ciphers: map['ciphers'] == null ? null : (pulumi.Input.decodeList<DomainKeyWrapCipher>(map['ciphers'], (value) => DomainKeyWrapCipher.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ciphers: map['ciphers'] == null ? null : (pulumi.Input.decodeList<DomainKeyWrapCipher>(map['ciphers']!, (value) => DomainKeyWrapCipher.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

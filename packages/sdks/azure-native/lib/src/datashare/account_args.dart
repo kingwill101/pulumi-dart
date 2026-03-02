@@ -45,11 +45,11 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
       identity: (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

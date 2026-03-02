@@ -58,11 +58,11 @@ class ContactsRotationArgs {
   factory ContactsRotationArgs.fromMap(Map<String, dynamic> map) {
     return ContactsRotationArgs(
       contactIds: ((map['contactIds'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recurrence: (ContactsRotationRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      recurrence: (ContactsRotationRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      startTime: map['startTime'] == null ? null : ((map['startTime'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       timeZoneId: (map['timeZoneId'] as String).input(),
     );
   }

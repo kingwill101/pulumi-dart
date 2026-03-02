@@ -31,9 +31,9 @@ class VpcAssociationAuthorizationState {
 
   factory VpcAssociationAuthorizationState.fromMap(Map<String, dynamic> map) {
     return VpcAssociationAuthorizationState(
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vpcRegion: map['vpcRegion'] == null ? null : (map['vpcRegion'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      vpcRegion: map['vpcRegion'] == null ? null : ((map['vpcRegion'] as String).input()).input(),
+      zoneId: map['zoneId'] == null ? null : ((map['zoneId'] as String).input()).input(),
     );
   }
 }

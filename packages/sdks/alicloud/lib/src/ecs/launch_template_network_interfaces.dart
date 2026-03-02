@@ -44,12 +44,12 @@ class LaunchTemplateNetworkInterfaces {
 
   factory LaunchTemplateNetworkInterfaces.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateNetworkInterfaces(
-      deleteOnRelease: map['deleteOnRelease'] == null ? null : (map['deleteOnRelease'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryIp: map['primaryIp'] == null ? null : (map['primaryIp'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      deleteOnRelease: map['deleteOnRelease'] == null ? null : (map['deleteOnRelease']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryIp: map['primaryIp'] == null ? null : (map['primaryIp']! as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

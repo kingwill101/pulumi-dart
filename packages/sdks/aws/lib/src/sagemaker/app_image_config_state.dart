@@ -61,14 +61,14 @@ class AppImageConfigState {
 
   factory AppImageConfigState.fromMap(Map<String, dynamic> map) {
     return AppImageConfigState(
-      appImageConfigName: map['appImageConfigName'] == null ? null : (map['appImageConfigName'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      codeEditorAppImageConfig: map['codeEditorAppImageConfig'] == null ? null : (AppImageConfigCodeEditorAppImageConfig.fromMap((map['codeEditorAppImageConfig'] as Map).cast<String, dynamic>())).input(),
-      jupyterLabImageConfig: map['jupyterLabImageConfig'] == null ? null : (AppImageConfigJupyterLabImageConfig.fromMap((map['jupyterLabImageConfig'] as Map).cast<String, dynamic>())).input(),
-      kernelGatewayImageConfig: map['kernelGatewayImageConfig'] == null ? null : (AppImageConfigKernelGatewayImageConfig.fromMap((map['kernelGatewayImageConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      appImageConfigName: map['appImageConfigName'] == null ? null : ((map['appImageConfigName'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      codeEditorAppImageConfig: map['codeEditorAppImageConfig'] == null ? null : ((AppImageConfigCodeEditorAppImageConfig.fromMap((map['codeEditorAppImageConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      jupyterLabImageConfig: map['jupyterLabImageConfig'] == null ? null : ((AppImageConfigJupyterLabImageConfig.fromMap((map['jupyterLabImageConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      kernelGatewayImageConfig: map['kernelGatewayImageConfig'] == null ? null : ((AppImageConfigKernelGatewayImageConfig.fromMap((map['kernelGatewayImageConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -79,14 +79,14 @@ class GCPolicyArgs {
   factory GCPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GCPolicyArgs(
       columnFamily: (map['columnFamily'] as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      gcRules: map['gcRules'] == null ? null : (map['gcRules'] as String).input(),
-      ignoreWarnings: map['ignoreWarnings'] == null ? null : (map['ignoreWarnings'] as bool).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      gcRules: map['gcRules'] == null ? null : (map['gcRules']! as String).input(),
+      ignoreWarnings: map['ignoreWarnings'] == null ? null : (map['ignoreWarnings']! as bool).input(),
       instanceName: (map['instanceName'] as String).input(),
-      maxAge: map['maxAge'] == null ? null : (GCPolicyMaxAge.fromMap((map['maxAge'] as Map).cast<String, dynamic>())).input(),
-      maxVersions: map['maxVersions'] == null ? null : (pulumi.Input.decodeList<GCPolicyMaxVersion>(map['maxVersions'], (value) => GCPolicyMaxVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      maxAge: map['maxAge'] == null ? null : (GCPolicyMaxAge.fromMap((map['maxAge']! as Map).cast<String, dynamic>())).input(),
+      maxVersions: map['maxVersions'] == null ? null : (pulumi.Input.decodeList<GCPolicyMaxVersion>(map['maxVersions']!, (value) => GCPolicyMaxVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       table: (map['table'] as String).input(),
     );
   }

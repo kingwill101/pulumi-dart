@@ -28,8 +28,8 @@ class AgriServiceResourceProperties {
 
   factory AgriServiceResourceProperties.fromMap(Map<String, dynamic> map) {
     return AgriServiceResourceProperties(
-      dataConnectorCredentials: map['dataConnectorCredentials'] == null ? null : (pulumi.Input.decodeList<DataConnectorCredentialMap>(map['dataConnectorCredentials'], (value) => DataConnectorCredentialMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      installedSolutions: map['installedSolutions'] == null ? null : (pulumi.Input.decodeList<InstalledSolutionMap>(map['installedSolutions'], (value) => InstalledSolutionMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataConnectorCredentials: map['dataConnectorCredentials'] == null ? null : (pulumi.Input.decodeList<DataConnectorCredentialMap>(map['dataConnectorCredentials']!, (value) => DataConnectorCredentialMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      installedSolutions: map['installedSolutions'] == null ? null : (pulumi.Input.decodeList<InstalledSolutionMap>(map['installedSolutions']!, (value) => InstalledSolutionMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

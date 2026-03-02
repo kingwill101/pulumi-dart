@@ -31,7 +31,7 @@ class PolicyInfoResponse {
   factory PolicyInfoResponse.fromMap(Map<String, dynamic> map) {
     return PolicyInfoResponse(
       policyId: (map['policyId'] as String).input(),
-      policyParameters: map['policyParameters'] == null ? null : (PolicyParametersResponse.fromMap((map['policyParameters'] as Map).cast<String, dynamic>())).input(),
+      policyParameters: map['policyParameters'] == null ? null : (PolicyParametersResponse.fromMap((map['policyParameters']! as Map).cast<String, dynamic>())).input(),
       policyVersion: (map['policyVersion'] as String).input(),
     );
   }

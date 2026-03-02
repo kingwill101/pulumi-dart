@@ -21,7 +21,7 @@ class MigrationAssessment {
 
   factory MigrationAssessment.fromMap(Map<String, dynamic> map) {
     return MigrationAssessment(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

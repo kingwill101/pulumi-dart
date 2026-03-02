@@ -24,7 +24,7 @@ class SecretStorePropertiesResponse {
   factory SecretStorePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SecretStorePropertiesResponse(
       inputType: (map['inputType'] as String).input(),
-      secretStoreId: map['secretStoreId'] == null ? null : (map['secretStoreId'] as String).input(),
+      secretStoreId: map['secretStoreId'] == null ? null : (map['secretStoreId']! as String).input(),
     );
   }
 }

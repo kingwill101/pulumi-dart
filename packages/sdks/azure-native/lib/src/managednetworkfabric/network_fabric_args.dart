@@ -96,20 +96,20 @@ class NetworkFabricArgs {
 
   factory NetworkFabricArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFabricArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
       fabricASN: (map['fabricASN'] as double).input(),
-      fabricVersion: map['fabricVersion'] == null ? null : (map['fabricVersion'] as String).input(),
+      fabricVersion: map['fabricVersion'] == null ? null : (map['fabricVersion']! as String).input(),
       ipv4Prefix: (map['ipv4Prefix'] as String).input(),
-      ipv6Prefix: map['ipv6Prefix'] == null ? null : (map['ipv6Prefix'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      ipv6Prefix: map['ipv6Prefix'] == null ? null : (map['ipv6Prefix']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managementNetworkConfiguration: (ManagementNetworkConfigurationProperties.fromMap((map['managementNetworkConfiguration'] as Map).cast<String, dynamic>())).input(),
       networkFabricControllerId: (map['networkFabricControllerId'] as String).input(),
-      networkFabricName: map['networkFabricName'] == null ? null : (map['networkFabricName'] as String).input(),
+      networkFabricName: map['networkFabricName'] == null ? null : (map['networkFabricName']! as String).input(),
       networkFabricSku: (map['networkFabricSku'] as String).input(),
-      rackCount: map['rackCount'] == null ? null : (map['rackCount'] as int).input(),
+      rackCount: map['rackCount'] == null ? null : (map['rackCount']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverCountPerRack: (map['serverCountPerRack'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       terminalServerConfiguration: (TerminalServerConfiguration.fromMap((map['terminalServerConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }

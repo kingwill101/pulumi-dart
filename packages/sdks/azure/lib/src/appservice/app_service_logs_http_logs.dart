@@ -27,8 +27,8 @@ class AppServiceLogsHttpLogs {
 
   factory AppServiceLogsHttpLogs.fromMap(Map<String, dynamic> map) {
     return AppServiceLogsHttpLogs(
-      azureBlobStorage: map['azureBlobStorage'] == null ? null : (AppServiceLogsHttpLogsAzureBlobStorage.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>())).input(),
-      fileSystem: map['fileSystem'] == null ? null : (AppServiceLogsHttpLogsFileSystem.fromMap((map['fileSystem'] as Map).cast<String, dynamic>())).input(),
+      azureBlobStorage: map['azureBlobStorage'] == null ? null : (AppServiceLogsHttpLogsAzureBlobStorage.fromMap((map['azureBlobStorage']! as Map).cast<String, dynamic>())).input(),
+      fileSystem: map['fileSystem'] == null ? null : (AppServiceLogsHttpLogsFileSystem.fromMap((map['fileSystem']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

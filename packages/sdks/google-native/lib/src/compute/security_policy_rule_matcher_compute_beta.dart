@@ -40,10 +40,10 @@ class SecurityPolicyRuleMatcherComputeBeta {
 
   factory SecurityPolicyRuleMatcherComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleMatcherComputeBeta(
-      config: map['config'] == null ? null : (SecurityPolicyRuleMatcherConfigComputeBeta.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      expr: map['expr'] == null ? null : (ExprComputeBeta.fromMap((map['expr'] as Map).cast<String, dynamic>())).input(),
-      exprOptions: map['exprOptions'] == null ? null : (SecurityPolicyRuleMatcherExprOptionsComputeBeta.fromMap((map['exprOptions'] as Map).cast<String, dynamic>())).input(),
-      versionedExpr: map['versionedExpr'] == null ? null : (SecurityPolicyRuleMatcherVersionedExprComputeBeta.fromValue(map['versionedExpr'] as String)).input(),
+      config: map['config'] == null ? null : (SecurityPolicyRuleMatcherConfigComputeBeta.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      expr: map['expr'] == null ? null : (ExprComputeBeta.fromMap((map['expr']! as Map).cast<String, dynamic>())).input(),
+      exprOptions: map['exprOptions'] == null ? null : (SecurityPolicyRuleMatcherExprOptionsComputeBeta.fromMap((map['exprOptions']! as Map).cast<String, dynamic>())).input(),
+      versionedExpr: map['versionedExpr'] == null ? null : (SecurityPolicyRuleMatcherVersionedExprComputeBeta.fromValue(map['versionedExpr']! as String)).input(),
     );
   }
 }

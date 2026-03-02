@@ -26,8 +26,8 @@ class FieldMappingResponse {
 
   factory FieldMappingResponse.fromMap(Map<String, dynamic> map) {
     return FieldMappingResponse(
-      columnName: map['columnName'] == null ? null : (map['columnName'] as String).input(),
-      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
+      columnName: map['columnName'] == null ? null : (map['columnName']! as String).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier']! as String).input(),
     );
   }
 }

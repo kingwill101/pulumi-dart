@@ -29,7 +29,7 @@ class GoogleCloudDialogflowCxV3FormParameterFillBehavior {
   factory GoogleCloudDialogflowCxV3FormParameterFillBehavior.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3FormParameterFillBehavior(
       initialPromptFulfillment: (GoogleCloudDialogflowCxV3Fulfillment.fromMap((map['initialPromptFulfillment'] as Map).cast<String, dynamic>())).input(),
-      repromptEventHandlers: map['repromptEventHandlers'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EventHandler>(map['repromptEventHandlers'], (value) => GoogleCloudDialogflowCxV3EventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      repromptEventHandlers: map['repromptEventHandlers'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EventHandler>(map['repromptEventHandlers']!, (value) => GoogleCloudDialogflowCxV3EventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

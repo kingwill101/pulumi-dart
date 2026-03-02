@@ -41,11 +41,11 @@ class VaultNotificationsState {
 
   factory VaultNotificationsState.fromMap(Map<String, dynamic> map) {
     return VaultNotificationsState(
-      backupVaultArn: map['backupVaultArn'] == null ? null : (map['backupVaultArn'] as String).input(),
-      backupVaultEvents: map['backupVaultEvents'] == null ? null : ((map['backupVaultEvents'] as List).cast<String>()).input(),
-      backupVaultName: map['backupVaultName'] == null ? null : (map['backupVaultName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snsTopicArn: map['snsTopicArn'] == null ? null : (map['snsTopicArn'] as String).input(),
+      backupVaultArn: map['backupVaultArn'] == null ? null : ((map['backupVaultArn'] as String).input()).input(),
+      backupVaultEvents: map['backupVaultEvents'] == null ? null : (((map['backupVaultEvents'] as List).cast<String>()).input()).input(),
+      backupVaultName: map['backupVaultName'] == null ? null : ((map['backupVaultName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      snsTopicArn: map['snsTopicArn'] == null ? null : ((map['snsTopicArn'] as String).input()).input(),
     );
   }
 }

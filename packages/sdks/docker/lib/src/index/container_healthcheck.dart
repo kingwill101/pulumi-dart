@@ -45,12 +45,12 @@ class ContainerHealthcheck {
 
   factory ContainerHealthcheck.fromMap(Map<String, dynamic> map) {
     return ContainerHealthcheck(
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      retries: map['retries'] == null ? null : (map['retries'] as int).input(),
-      startInterval: map['startInterval'] == null ? null : (map['startInterval'] as String).input(),
-      startPeriod: map['startPeriod'] == null ? null : (map['startPeriod'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
+      retries: map['retries'] == null ? null : (map['retries']! as int).input(),
+      startInterval: map['startInterval'] == null ? null : (map['startInterval']! as String).input(),
+      startPeriod: map['startPeriod'] == null ? null : (map['startPeriod']! as String).input(),
       tests: ((map['tests'] as List).cast<String>()).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

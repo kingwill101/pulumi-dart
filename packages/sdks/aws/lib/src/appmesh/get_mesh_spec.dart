@@ -25,8 +25,8 @@ class GetMeshSpec {
 
   factory GetMeshSpec.fromMap(Map<String, dynamic> map) {
     return GetMeshSpec(
-      egressFilters: (pulumi.Input.decodeList<GetMeshSpecEgressFilter>(map['egressFilters'], (value) => GetMeshSpecEgressFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceDiscoveries: (pulumi.Input.decodeList<GetMeshSpecServiceDiscovery>(map['serviceDiscoveries'], (value) => GetMeshSpecServiceDiscovery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      egressFilters: (pulumi.Input.decodeList<GetMeshSpecEgressFilter>(map['egressFilters']!, (value) => GetMeshSpecEgressFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceDiscoveries: (pulumi.Input.decodeList<GetMeshSpecServiceDiscovery>(map['serviceDiscoveries']!, (value) => GetMeshSpecServiceDiscovery.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

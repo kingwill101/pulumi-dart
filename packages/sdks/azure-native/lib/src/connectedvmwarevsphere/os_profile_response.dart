@@ -73,17 +73,17 @@ class OsProfileResponse {
 
   factory OsProfileResponse.fromMap(Map<String, dynamic> map) {
     return OsProfileResponse(
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername']! as String).input(),
       allowExtensionOperations: (map['allowExtensionOperations'] as bool).input(),
-      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
-      guestId: map['guestId'] == null ? null : (map['guestId'] as String).input(),
-      linuxConfiguration: map['linuxConfiguration'] == null ? null : (OsProfileResponseLinuxConfiguration.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>())).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
+      guestId: map['guestId'] == null ? null : (map['guestId']! as String).input(),
+      linuxConfiguration: map['linuxConfiguration'] == null ? null : (OsProfileResponseLinuxConfiguration.fromMap((map['linuxConfiguration']! as Map).cast<String, dynamic>())).input(),
       osName: (map['osName'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
       toolsRunningStatus: (map['toolsRunningStatus'] as String).input(),
       toolsVersion: (map['toolsVersion'] as String).input(),
       toolsVersionStatus: (map['toolsVersionStatus'] as String).input(),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : (OsProfileResponseWindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (OsProfileResponseWindowsConfiguration.fromMap((map['windowsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

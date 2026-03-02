@@ -42,7 +42,7 @@ class EmailIdentityPolicyArgs {
       emailIdentity: (map['emailIdentity'] as String).input(),
       policy: (map['policy'] as String).input(),
       policyName: (map['policyName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class EligibleRoleAssignmentSchedule {
 
   factory EligibleRoleAssignmentSchedule.fromMap(Map<String, dynamic> map) {
     return EligibleRoleAssignmentSchedule(
-      expiration: map['expiration'] == null ? null : (EligibleRoleAssignmentScheduleExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>())).input(),
-      startDateTime: map['startDateTime'] == null ? null : (map['startDateTime'] as String).input(),
+      expiration: map['expiration'] == null ? null : (EligibleRoleAssignmentScheduleExpiration.fromMap((map['expiration']! as Map).cast<String, dynamic>())).input(),
+      startDateTime: map['startDateTime'] == null ? null : (map['startDateTime']! as String).input(),
     );
   }
 }

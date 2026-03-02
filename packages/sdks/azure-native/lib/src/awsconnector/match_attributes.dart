@@ -49,12 +49,12 @@ class MatchAttributes {
 
   factory MatchAttributes.fromMap(Map<String, dynamic> map) {
     return MatchAttributes(
-      destinationPorts: map['destinationPorts'] == null ? null : (pulumi.Input.decodeList<PortRange>(map['destinationPorts'], (value) => PortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<Address>(map['destinations'], (value) => Address.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      protocols: map['protocols'] == null ? null : ((map['protocols'] as List).cast<int>()).input(),
-      sourcePorts: map['sourcePorts'] == null ? null : (pulumi.Input.decodeList<PortRange>(map['sourcePorts'], (value) => PortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<Address>(map['sources'], (value) => Address.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tcpFlags: map['tcpFlags'] == null ? null : (pulumi.Input.decodeList<TCPFlagField>(map['tcpFlags'], (value) => TCPFlagField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationPorts: map['destinationPorts'] == null ? null : (pulumi.Input.decodeList<PortRange>(map['destinationPorts']!, (value) => PortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<Address>(map['destinations']!, (value) => Address.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protocols: map['protocols'] == null ? null : ((map['protocols']! as List).cast<int>()).input(),
+      sourcePorts: map['sourcePorts'] == null ? null : (pulumi.Input.decodeList<PortRange>(map['sourcePorts']!, (value) => PortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<Address>(map['sources']!, (value) => Address.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tcpFlags: map['tcpFlags'] == null ? null : (pulumi.Input.decodeList<TCPFlagField>(map['tcpFlags']!, (value) => TCPFlagField.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

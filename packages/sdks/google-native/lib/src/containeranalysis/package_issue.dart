@@ -61,11 +61,11 @@ class PackageIssue {
       affectedCpeUri: (map['affectedCpeUri'] as String).input(),
       affectedPackage: (map['affectedPackage'] as String).input(),
       affectedVersion: (Version.fromMap((map['affectedVersion'] as Map).cast<String, dynamic>())).input(),
-      fileLocation: map['fileLocation'] == null ? null : (pulumi.Input.decodeList<GrafeasV1FileLocation>(map['fileLocation'], (value) => GrafeasV1FileLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fixedCpeUri: map['fixedCpeUri'] == null ? null : (map['fixedCpeUri'] as String).input(),
-      fixedPackage: map['fixedPackage'] == null ? null : (map['fixedPackage'] as String).input(),
+      fileLocation: map['fileLocation'] == null ? null : (pulumi.Input.decodeList<GrafeasV1FileLocation>(map['fileLocation']!, (value) => GrafeasV1FileLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fixedCpeUri: map['fixedCpeUri'] == null ? null : (map['fixedCpeUri']! as String).input(),
+      fixedPackage: map['fixedPackage'] == null ? null : (map['fixedPackage']! as String).input(),
       fixedVersion: (Version.fromMap((map['fixedVersion'] as Map).cast<String, dynamic>())).input(),
-      packageType: map['packageType'] == null ? null : (map['packageType'] as String).input(),
+      packageType: map['packageType'] == null ? null : (map['packageType']! as String).input(),
     );
   }
 }

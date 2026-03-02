@@ -28,8 +28,8 @@ class AutoHealRules {
 
   factory AutoHealRules.fromMap(Map<String, dynamic> map) {
     return AutoHealRules(
-      actions: map['actions'] == null ? null : (AutoHealActions.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
-      triggers: map['triggers'] == null ? null : (AutoHealTriggers.fromMap((map['triggers'] as Map).cast<String, dynamic>())).input(),
+      actions: map['actions'] == null ? null : (AutoHealActions.fromMap((map['actions']! as Map).cast<String, dynamic>())).input(),
+      triggers: map['triggers'] == null ? null : (AutoHealTriggers.fromMap((map['triggers']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

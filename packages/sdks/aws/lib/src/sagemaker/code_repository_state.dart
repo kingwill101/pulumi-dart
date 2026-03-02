@@ -47,12 +47,12 @@ class CodeRepositoryState {
 
   factory CodeRepositoryState.fromMap(Map<String, dynamic> map) {
     return CodeRepositoryState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      codeRepositoryName: map['codeRepositoryName'] == null ? null : (map['codeRepositoryName'] as String).input(),
-      gitConfig: map['gitConfig'] == null ? null : (CodeRepositoryGitConfig.fromMap((map['gitConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      codeRepositoryName: map['codeRepositoryName'] == null ? null : ((map['codeRepositoryName'] as String).input()).input(),
+      gitConfig: map['gitConfig'] == null ? null : ((CodeRepositoryGitConfig.fromMap((map['gitConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

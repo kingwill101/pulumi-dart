@@ -72,16 +72,16 @@ class CatalogDatabaseArgs {
 
   factory CatalogDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return CatalogDatabaseArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      createTableDefaultPermissions: map['createTableDefaultPermissions'] == null ? null : (pulumi.Input.decodeList<CatalogDatabaseCreateTableDefaultPermission>(map['createTableDefaultPermissions'], (value) => CatalogDatabaseCreateTableDefaultPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      federatedDatabase: map['federatedDatabase'] == null ? null : (CatalogDatabaseFederatedDatabase.fromMap((map['federatedDatabase'] as Map).cast<String, dynamic>())).input(),
-      locationUri: map['locationUri'] == null ? null : (map['locationUri'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetDatabase: map['targetDatabase'] == null ? null : (CatalogDatabaseTargetDatabase.fromMap((map['targetDatabase'] as Map).cast<String, dynamic>())).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      createTableDefaultPermissions: map['createTableDefaultPermissions'] == null ? null : ((pulumi.Input.decodeList<CatalogDatabaseCreateTableDefaultPermission>(map['createTableDefaultPermissions']!, (value) => CatalogDatabaseCreateTableDefaultPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      federatedDatabase: map['federatedDatabase'] == null ? null : ((CatalogDatabaseFederatedDatabase.fromMap((map['federatedDatabase']! as Map).cast<String, dynamic>())).input()).input(),
+      locationUri: map['locationUri'] == null ? null : ((map['locationUri'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      targetDatabase: map['targetDatabase'] == null ? null : ((CatalogDatabaseTargetDatabase.fromMap((map['targetDatabase']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

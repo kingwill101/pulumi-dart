@@ -28,8 +28,8 @@ class LogsConfigResponse {
 
   factory LogsConfigResponse.fromMap(Map<String, dynamic> map) {
     return LogsConfigResponse(
-      cloudWatchLogs: map['cloudWatchLogs'] == null ? null : (CloudWatchLogsConfigResponse.fromMap((map['cloudWatchLogs'] as Map).cast<String, dynamic>())).input(),
-      s3Logs: map['s3Logs'] == null ? null : (S3LogsConfigResponse.fromMap((map['s3Logs'] as Map).cast<String, dynamic>())).input(),
+      cloudWatchLogs: map['cloudWatchLogs'] == null ? null : (CloudWatchLogsConfigResponse.fromMap((map['cloudWatchLogs']! as Map).cast<String, dynamic>())).input(),
+      s3Logs: map['s3Logs'] == null ? null : (S3LogsConfigResponse.fromMap((map['s3Logs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

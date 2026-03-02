@@ -119,10 +119,10 @@ class GetSigningJobResult {
       profileVersion: map['profileVersion'] as String,
       region: map['region'] as String,
       requestedBy: map['requestedBy'] as String,
-      revocationRecords: pulumi.Input.decodeList<GetSigningJobRevocationRecord>(map['revocationRecords'], (value) => GetSigningJobRevocationRecord.fromMap((value as Map).cast<String, dynamic>())),
+      revocationRecords: pulumi.Input.decodeList<GetSigningJobRevocationRecord>(map['revocationRecords']!, (value) => GetSigningJobRevocationRecord.fromMap((value as Map).cast<String, dynamic>())),
       signatureExpiresAt: map['signatureExpiresAt'] as String,
-      signedObjects: pulumi.Input.decodeList<GetSigningJobSignedObject>(map['signedObjects'], (value) => GetSigningJobSignedObject.fromMap((value as Map).cast<String, dynamic>())),
-      sources: pulumi.Input.decodeList<GetSigningJobSource>(map['sources'], (value) => GetSigningJobSource.fromMap((value as Map).cast<String, dynamic>())),
+      signedObjects: pulumi.Input.decodeList<GetSigningJobSignedObject>(map['signedObjects']!, (value) => GetSigningJobSignedObject.fromMap((value as Map).cast<String, dynamic>())),
+      sources: pulumi.Input.decodeList<GetSigningJobSource>(map['sources']!, (value) => GetSigningJobSource.fromMap((value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       statusReason: map['statusReason'] as String,
     );

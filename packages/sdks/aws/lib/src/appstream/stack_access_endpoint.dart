@@ -27,7 +27,7 @@ class StackAccessEndpoint {
   factory StackAccessEndpoint.fromMap(Map<String, dynamic> map) {
     return StackAccessEndpoint(
       endpointType: (map['endpointType'] as String).input(),
-      vpceId: map['vpceId'] == null ? null : (map['vpceId'] as String).input(),
+      vpceId: map['vpceId'] == null ? null : ((map['vpceId'] as String).input()).input(),
     );
   }
 }

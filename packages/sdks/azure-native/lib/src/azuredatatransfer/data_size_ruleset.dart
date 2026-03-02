@@ -26,8 +26,8 @@ class DataSizeRuleset {
 
   factory DataSizeRuleset.fromMap(Map<String, dynamic> map) {
     return DataSizeRuleset(
-      maximum: map['maximum'] == null ? null : (map['maximum'] as double).input(),
-      minimum: map['minimum'] == null ? null : (map['minimum'] as double).input(),
+      maximum: map['maximum'] == null ? null : (map['maximum']! as double).input(),
+      minimum: map['minimum'] == null ? null : (map['minimum']! as double).input(),
     );
   }
 }

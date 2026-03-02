@@ -33,7 +33,7 @@ class GetPrivateConnectionDatastreamV1alpha1Args {
     return GetPrivateConnectionDatastreamV1alpha1Args(
       location: (map['location'] as String).input(),
       privateConnectionId: (map['privateConnectionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

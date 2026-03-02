@@ -42,11 +42,11 @@ class DomainEndpointOptions {
 
   factory DomainEndpointOptions.fromMap(Map<String, dynamic> map) {
     return DomainEndpointOptions(
-      customEndpoint: map['customEndpoint'] == null ? null : (map['customEndpoint'] as String).input(),
-      customEndpointCertificateArn: map['customEndpointCertificateArn'] == null ? null : (map['customEndpointCertificateArn'] as String).input(),
-      customEndpointEnabled: map['customEndpointEnabled'] == null ? null : (map['customEndpointEnabled'] as bool).input(),
-      enforceHTTPS: map['enforceHTTPS'] == null ? null : (map['enforceHTTPS'] as bool).input(),
-      tlsSecurityPolicy: map['tlsSecurityPolicy'] == null ? null : (TLSSecurityPolicyEnumValue.fromMap((map['tlsSecurityPolicy'] as Map).cast<String, dynamic>())).input(),
+      customEndpoint: map['customEndpoint'] == null ? null : (map['customEndpoint']! as String).input(),
+      customEndpointCertificateArn: map['customEndpointCertificateArn'] == null ? null : (map['customEndpointCertificateArn']! as String).input(),
+      customEndpointEnabled: map['customEndpointEnabled'] == null ? null : (map['customEndpointEnabled']! as bool).input(),
+      enforceHTTPS: map['enforceHTTPS'] == null ? null : (map['enforceHTTPS']! as bool).input(),
+      tlsSecurityPolicy: map['tlsSecurityPolicy'] == null ? null : (TLSSecurityPolicyEnumValue.fromMap((map['tlsSecurityPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

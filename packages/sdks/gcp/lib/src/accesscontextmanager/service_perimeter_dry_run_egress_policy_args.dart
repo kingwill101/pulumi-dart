@@ -44,10 +44,10 @@ class ServicePerimeterDryRunEgressPolicyArgs {
 
   factory ServicePerimeterDryRunEgressPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterDryRunEgressPolicyArgs(
-      egressFrom: map['egressFrom'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap((map['egressFrom'] as Map).cast<String, dynamic>())).input(),
-      egressTo: map['egressTo'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressTo.fromMap((map['egressTo'] as Map).cast<String, dynamic>())).input(),
+      egressFrom: map['egressFrom'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressFrom.fromMap((map['egressFrom']! as Map).cast<String, dynamic>())).input(),
+      egressTo: map['egressTo'] == null ? null : (ServicePerimeterDryRunEgressPolicyEgressTo.fromMap((map['egressTo']! as Map).cast<String, dynamic>())).input(),
       perimeter: (map['perimeter'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

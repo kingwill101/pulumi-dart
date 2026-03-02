@@ -26,8 +26,8 @@ class X509CertificateNameResponse {
 
   factory X509CertificateNameResponse.fromMap(Map<String, dynamic> map) {
     return X509CertificateNameResponse(
-      issuerCertificateThumbprint: map['issuerCertificateThumbprint'] == null ? null : (map['issuerCertificateThumbprint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      issuerCertificateThumbprint: map['issuerCertificateThumbprint'] == null ? null : (map['issuerCertificateThumbprint']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

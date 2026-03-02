@@ -64,15 +64,15 @@ class NetworkProfileResponse {
 
   factory NetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return NetworkProfileResponse(
-      appNetworkResourceGroup: map['appNetworkResourceGroup'] == null ? null : (map['appNetworkResourceGroup'] as String).input(),
-      appSubnetId: map['appSubnetId'] == null ? null : (map['appSubnetId'] as String).input(),
-      ingressConfig: map['ingressConfig'] == null ? null : (IngressConfigResponse.fromMap((map['ingressConfig'] as Map).cast<String, dynamic>())).input(),
+      appNetworkResourceGroup: map['appNetworkResourceGroup'] == null ? null : (map['appNetworkResourceGroup']! as String).input(),
+      appSubnetId: map['appSubnetId'] == null ? null : (map['appSubnetId']! as String).input(),
+      ingressConfig: map['ingressConfig'] == null ? null : (IngressConfigResponse.fromMap((map['ingressConfig']! as Map).cast<String, dynamic>())).input(),
       outboundIPs: (NetworkProfileResponseOutboundIPs.fromMap((map['outboundIPs'] as Map).cast<String, dynamic>())).input(),
-      outboundType: map['outboundType'] == null ? null : (map['outboundType'] as String).input(),
+      outboundType: map['outboundType'] == null ? null : (map['outboundType']! as String).input(),
       requiredTraffics: (pulumi.Input.decodeList<RequiredTrafficResponse>(map['requiredTraffics'], (value) => RequiredTrafficResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr'] as String).input(),
-      serviceRuntimeNetworkResourceGroup: map['serviceRuntimeNetworkResourceGroup'] == null ? null : (map['serviceRuntimeNetworkResourceGroup'] as String).input(),
-      serviceRuntimeSubnetId: map['serviceRuntimeSubnetId'] == null ? null : (map['serviceRuntimeSubnetId'] as String).input(),
+      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr']! as String).input(),
+      serviceRuntimeNetworkResourceGroup: map['serviceRuntimeNetworkResourceGroup'] == null ? null : (map['serviceRuntimeNetworkResourceGroup']! as String).input(),
+      serviceRuntimeSubnetId: map['serviceRuntimeSubnetId'] == null ? null : (map['serviceRuntimeSubnetId']! as String).input(),
     );
   }
 }

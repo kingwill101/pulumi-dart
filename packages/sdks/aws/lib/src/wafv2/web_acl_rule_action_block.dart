@@ -21,7 +21,7 @@ class WebAclRuleActionBlock {
 
   factory WebAclRuleActionBlock.fromMap(Map<String, dynamic> map) {
     return WebAclRuleActionBlock(
-      customResponse: map['customResponse'] == null ? null : (WebAclRuleActionBlockCustomResponse.fromMap((map['customResponse'] as Map).cast<String, dynamic>())).input(),
+      customResponse: map['customResponse'] == null ? null : ((WebAclRuleActionBlockCustomResponse.fromMap((map['customResponse']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

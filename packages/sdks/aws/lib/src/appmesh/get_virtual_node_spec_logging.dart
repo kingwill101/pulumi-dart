@@ -20,7 +20,7 @@ class GetVirtualNodeSpecLogging {
 
   factory GetVirtualNodeSpecLogging.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecLogging(
-      accessLogs: (pulumi.Input.decodeList<GetVirtualNodeSpecLoggingAccessLog>(map['accessLogs'], (value) => GetVirtualNodeSpecLoggingAccessLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessLogs: (pulumi.Input.decodeList<GetVirtualNodeSpecLoggingAccessLog>(map['accessLogs']!, (value) => GetVirtualNodeSpecLoggingAccessLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

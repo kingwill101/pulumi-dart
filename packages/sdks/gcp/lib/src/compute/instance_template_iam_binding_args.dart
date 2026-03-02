@@ -60,10 +60,10 @@ class InstanceTemplateIamBindingArgs {
 
   factory InstanceTemplateIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return InstanceTemplateIamBindingArgs(
-      condition: map['condition'] == null ? null : (InstanceTemplateIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (InstanceTemplateIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

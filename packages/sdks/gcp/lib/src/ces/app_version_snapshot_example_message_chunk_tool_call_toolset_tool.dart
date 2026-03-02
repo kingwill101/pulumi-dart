@@ -29,8 +29,8 @@ class AppVersionSnapshotExampleMessageChunkToolCallToolsetTool {
 
   factory AppVersionSnapshotExampleMessageChunkToolCallToolsetTool.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotExampleMessageChunkToolCallToolsetTool(
-      toolId: map['toolId'] == null ? null : (map['toolId'] as String).input(),
-      toolset: map['toolset'] == null ? null : (map['toolset'] as String).input(),
+      toolId: map['toolId'] == null ? null : (map['toolId']! as String).input(),
+      toolset: map['toolset'] == null ? null : (map['toolset']! as String).input(),
     );
   }
 }

@@ -35,9 +35,9 @@ class JobStepOutputTarget {
 
   factory JobStepOutputTarget.fromMap(Map<String, dynamic> map) {
     return JobStepOutputTarget(
-      jobCredentialId: map['jobCredentialId'] == null ? null : (map['jobCredentialId'] as String).input(),
+      jobCredentialId: map['jobCredentialId'] == null ? null : (map['jobCredentialId']! as String).input(),
       mssqlDatabaseId: (map['mssqlDatabaseId'] as String).input(),
-      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
+      schemaName: map['schemaName'] == null ? null : (map['schemaName']! as String).input(),
       tableName: (map['tableName'] as String).input(),
     );
   }

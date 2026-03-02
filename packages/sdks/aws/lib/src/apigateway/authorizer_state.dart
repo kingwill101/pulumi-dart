@@ -72,17 +72,17 @@ class AuthorizerState {
 
   factory AuthorizerState.fromMap(Map<String, dynamic> map) {
     return AuthorizerState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      authorizerCredentials: map['authorizerCredentials'] == null ? null : (map['authorizerCredentials'] as String).input(),
-      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : (map['authorizerResultTtlInSeconds'] as int).input(),
-      authorizerUri: map['authorizerUri'] == null ? null : (map['authorizerUri'] as String).input(),
-      identitySource: map['identitySource'] == null ? null : (map['identitySource'] as String).input(),
-      identityValidationExpression: map['identityValidationExpression'] == null ? null : (map['identityValidationExpression'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      providerArns: map['providerArns'] == null ? null : ((map['providerArns'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      authorizerCredentials: map['authorizerCredentials'] == null ? null : ((map['authorizerCredentials'] as String).input()).input(),
+      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : ((map['authorizerResultTtlInSeconds'] as int).input()).input(),
+      authorizerUri: map['authorizerUri'] == null ? null : ((map['authorizerUri'] as String).input()).input(),
+      identitySource: map['identitySource'] == null ? null : ((map['identitySource'] as String).input()).input(),
+      identityValidationExpression: map['identityValidationExpression'] == null ? null : ((map['identityValidationExpression'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      providerArns: map['providerArns'] == null ? null : (((map['providerArns'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

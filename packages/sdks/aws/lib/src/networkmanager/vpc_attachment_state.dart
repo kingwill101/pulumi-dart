@@ -99,22 +99,22 @@ class VpcAttachmentState {
 
   factory VpcAttachmentState.fromMap(Map<String, dynamic> map) {
     return VpcAttachmentState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      attachmentPolicyRuleNumber: map['attachmentPolicyRuleNumber'] == null ? null : (map['attachmentPolicyRuleNumber'] as int).input(),
-      attachmentType: map['attachmentType'] == null ? null : (map['attachmentType'] as String).input(),
-      coreNetworkArn: map['coreNetworkArn'] == null ? null : (map['coreNetworkArn'] as String).input(),
-      coreNetworkId: map['coreNetworkId'] == null ? null : (map['coreNetworkId'] as String).input(),
-      edgeLocation: map['edgeLocation'] == null ? null : (map['edgeLocation'] as String).input(),
-      options: map['options'] == null ? null : (VpcAttachmentOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
-      segmentName: map['segmentName'] == null ? null : (map['segmentName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      subnetArns: map['subnetArns'] == null ? null : ((map['subnetArns'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpcArn: map['vpcArn'] == null ? null : (map['vpcArn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      attachmentPolicyRuleNumber: map['attachmentPolicyRuleNumber'] == null ? null : ((map['attachmentPolicyRuleNumber'] as int).input()).input(),
+      attachmentType: map['attachmentType'] == null ? null : ((map['attachmentType'] as String).input()).input(),
+      coreNetworkArn: map['coreNetworkArn'] == null ? null : ((map['coreNetworkArn'] as String).input()).input(),
+      coreNetworkId: map['coreNetworkId'] == null ? null : ((map['coreNetworkId'] as String).input()).input(),
+      edgeLocation: map['edgeLocation'] == null ? null : ((map['edgeLocation'] as String).input()).input(),
+      options: map['options'] == null ? null : ((VpcAttachmentOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input()).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : ((map['ownerAccountId'] as String).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : ((map['routingPolicyLabel'] as String).input()).input(),
+      segmentName: map['segmentName'] == null ? null : ((map['segmentName'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      subnetArns: map['subnetArns'] == null ? null : (((map['subnetArns'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpcArn: map['vpcArn'] == null ? null : ((map['vpcArn'] as String).input()).input(),
     );
   }
 }

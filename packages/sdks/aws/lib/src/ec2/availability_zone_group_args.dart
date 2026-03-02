@@ -36,7 +36,7 @@ class AvailabilityZoneGroupArgs {
     return AvailabilityZoneGroupArgs(
       groupName: (map['groupName'] as String).input(),
       optInStatus: (map['optInStatus'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

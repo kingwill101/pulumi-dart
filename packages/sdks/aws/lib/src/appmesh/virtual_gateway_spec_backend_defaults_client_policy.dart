@@ -21,7 +21,7 @@ class VirtualGatewaySpecBackendDefaultsClientPolicy {
 
   factory VirtualGatewaySpecBackendDefaultsClientPolicy.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecBackendDefaultsClientPolicy(
-      tls: map['tls'] == null ? null : (VirtualGatewaySpecBackendDefaultsClientPolicyTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      tls: map['tls'] == null ? null : ((VirtualGatewaySpecBackendDefaultsClientPolicyTls.fromMap((map['tls']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

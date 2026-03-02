@@ -41,7 +41,7 @@ class GkeServiceAccountStack extends pulumi.Stack {
       args: gcp.projects.IAMBindingArgs(
         role: 'roles/pubsub.subscriber'.output(),
         project: project.output(),
-        members: serviceAccount.email.apply(
+        members: serviceAccount.email.apply<List<String>>(
           (email) => ['serviceAccount:$email'],
         ),
       ),
@@ -53,7 +53,7 @@ class GkeServiceAccountStack extends pulumi.Stack {
         name: name.output(),
         location: zone.output(),
         initialNodeCount: 1.output(),
-        removeDefaultNodePool: true,
+        removeDefaultNodePool: true.output(),
       ),
     );
 
@@ -64,16 +64,16 @@ class GkeServiceAccountStack extends pulumi.Stack {
         location: cluster.location,
         initialNodeCount: 2.output(),
         nodeConfig: gcp.container.NodePoolNodeConfig(
-          preemptible: true,
-          machineType: machineType,
+          preemptible: true.output(),
+          machineType: machineType.output(),
           oauthScopes: const [
             'https://www.googleapis.com/auth/compute',
             'https://www.googleapis.com/auth/devstorage.read_only',
             'https://www.googleapis.com/auth/logging.write',
             'https://www.googleapis.com/auth/monitoring',
-          ],
-        ),
-        management: gcp.container.NodePoolManagement(autoRepair: true),
+          ].output(),
+        ).output(),
+        management: gcp.container.NodePoolManagement(autoRepair: true.output()).output(),
       ),
       options: pulumi.CustomResourceOptions(dependsOn: [cluster]),
     );
@@ -124,10 +124,10 @@ users:
       'pubsub-ns',
       args: k8score.NamespaceArgs(
         metadata: k8smeta.ObjectMeta(
-          name: 'pubsub',
-          labels: appLabels,
+          name: 'pubsub'.output(),
+          labels: appLabels.output(),
         ).output(),
-      ),
+        ),
       options: pulumi.CustomResourceOptions(provider: k8sProvider),
     );
 
@@ -135,11 +135,11 @@ users:
       'gcp-credentials',
       args: k8score.SecretArgs(
         metadata: k8smeta.ObjectMeta(
-          namespace: ns.metadata.apply((m) => m.name ?? 'pubsub'),
-          labels: appLabels,
+          namespace: ns.metadata.apply<String>((m) => m.name ?? 'pubsub'),
+          labels: appLabels.output(),
         ).output(),
-        type: 'Opaque',
-        stringData: serviceAccountKey.privateKey.apply((key) {
+        type: 'Opaque'.output(),
+        stringData: serviceAccountKey.privateKey.apply<Map<String, String>>((key) {
           final decoded = utf8.decode(base64Decode(key));
           return {'gcp-credentials.json': decoded};
         }),
@@ -151,45 +151,47 @@ users:
       'pubsub',
       args: k8sapps.DeploymentArgs(
         metadata: k8smeta.ObjectMeta(
-          namespace: ns.metadata.apply((m) => m.name ?? 'pubsub'),
-          labels: appLabels,
+          namespace: ns.metadata.apply<String>((m) => m.name ?? 'pubsub'),
+          labels: appLabels.output(),
         ).output(),
         spec: k8sapps.DeploymentSpec(
-          replicas: 1,
-          selector: k8smeta.LabelSelector(matchLabels: appLabels),
+          replicas: 1.output(),
+          selector: k8smeta.LabelSelector(
+            matchLabels: appLabels.output(),
+          ).output(),
           template: k8score.PodTemplateSpec(
-            metadata: k8smeta.ObjectMeta(labels: appLabels),
+            metadata: k8smeta.ObjectMeta(labels: appLabels.output()).output(),
             spec: k8score.PodSpec(
               volumes: [
                 k8score.Volume(
-                  name: 'google-cloud-key',
+                  name: 'google-cloud-key'.output(),
                   secret: k8score.SecretVolumeSource(
-                    secretName: credentialsSecret.metadata.apply(
-                      (m) => m.name ?? 'gcp-credentials',
-                    ),
+                  secretName: credentialsSecret.metadata.apply<String>(
+                    (m) => m.name ?? 'gcp-credentials',
                   ),
+                  ).output(),
                 ),
-              ],
+              ].output(),
               containers: [
                 k8score.Container(
-                  name: 'pubsub-example',
-                  image: 'gcr.io/google-samples/pubsub-sample:v1',
+                  name: 'pubsub-example'.output(),
+                  image: 'gcr.io/google-samples/pubsub-sample:v1'.output(),
                   volumeMounts: [
                     k8score.VolumeMount(
-                      name: 'google-cloud-key',
-                      mountPath: '/var/secrets/google',
-                    ),
-                  ],
-                  env: [
-                    k8score.EnvVar(
-                      name: 'GOOGLE_APPLICATION_CREDENTIALS',
-                      value: '/var/secrets/google/gcp-credentials.json',
-                    ),
-                  ],
+                        name: 'google-cloud-key'.output(),
+                        mountPath: '/var/secrets/google'.output(),
+                      ),
+                    ].output(),
+                    env: [
+                      k8score.EnvVar(
+                        name: 'GOOGLE_APPLICATION_CREDENTIALS'.output(),
+                        value: '/var/secrets/google/gcp-credentials.json'.output(),
+                      ),
+                    ].output(),
                 ),
-              ],
-            ),
-          ),
+              ].output(),
+            ).output(),
+          ).output(),
         ).output(),
       ),
       options: pulumi.CustomResourceOptions(provider: k8sProvider),

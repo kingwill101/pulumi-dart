@@ -34,9 +34,9 @@ class AnalyticsApplicationInputsSchema {
 
   factory AnalyticsApplicationInputsSchema.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsSchema(
-      recordColumns: (pulumi.Input.decodeList<AnalyticsApplicationInputsSchemaRecordColumn>(map['recordColumns'], (value) => AnalyticsApplicationInputsSchemaRecordColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recordEncoding: map['recordEncoding'] == null ? null : (map['recordEncoding'] as String).input(),
-      recordFormat: (AnalyticsApplicationInputsSchemaRecordFormat.fromMap((map['recordFormat'] as Map).cast<String, dynamic>())).input(),
+      recordColumns: (pulumi.Input.decodeList<AnalyticsApplicationInputsSchemaRecordColumn>(map['recordColumns']!, (value) => AnalyticsApplicationInputsSchemaRecordColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recordEncoding: map['recordEncoding'] == null ? null : ((map['recordEncoding'] as String).input()).input(),
+      recordFormat: (AnalyticsApplicationInputsSchemaRecordFormat.fromMap((map['recordFormat']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

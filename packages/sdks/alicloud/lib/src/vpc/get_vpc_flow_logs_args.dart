@@ -74,17 +74,17 @@ class GetVpcFlowLogsArgs {
 
   factory GetVpcFlowLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcFlowLogsArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      logStoreName: map['logStoreName'] == null ? null : (map['logStoreName'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      trafficType: map['trafficType'] == null ? null : (map['trafficType'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      logStoreName: map['logStoreName'] == null ? null : (map['logStoreName']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      trafficType: map['trafficType'] == null ? null : (map['trafficType']! as String).input(),
     );
   }
 }

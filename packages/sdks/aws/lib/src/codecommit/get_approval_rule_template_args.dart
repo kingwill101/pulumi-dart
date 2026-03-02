@@ -30,7 +30,7 @@ class GetApprovalRuleTemplateArgs {
   factory GetApprovalRuleTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetApprovalRuleTemplateArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

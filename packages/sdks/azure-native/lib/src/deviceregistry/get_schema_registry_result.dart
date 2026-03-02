@@ -88,17 +88,17 @@ class GetSchemaRegistryResult {
   factory GetSchemaRegistryResult.fromMap(Map<String, dynamic> map) {
     return GetSchemaRegistryResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : SystemAssignedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : SystemAssignedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
       namespace: map['namespace'] as String,
       provisioningState: map['provisioningState'] as String,
       storageAccountContainerUrl: map['storageAccountContainerUrl'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       uuid: map['uuid'] as String,
     );

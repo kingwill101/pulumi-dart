@@ -29,8 +29,8 @@ class AppArmorProfilePatch {
 
   factory AppArmorProfilePatch.fromMap(Map<String, dynamic> map) {
     return AppArmorProfilePatch(
-      localhostProfile: map['localhostProfile'] == null ? null : (map['localhostProfile'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      localhostProfile: map['localhostProfile'] == null ? null : (map['localhostProfile']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

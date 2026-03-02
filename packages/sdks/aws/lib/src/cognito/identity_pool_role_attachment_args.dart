@@ -41,8 +41,8 @@ class IdentityPoolRoleAttachmentArgs {
   factory IdentityPoolRoleAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return IdentityPoolRoleAttachmentArgs(
       identityPoolId: (map['identityPoolId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleMappings: map['roleMappings'] == null ? null : (pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMapping>(map['roleMappings'], (value) => IdentityPoolRoleAttachmentRoleMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleMappings: map['roleMappings'] == null ? null : ((pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMapping>(map['roleMappings']!, (value) => IdentityPoolRoleAttachmentRoleMapping.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       roles: ((map['roles'] as Map).cast<String, String>()).input(),
     );
   }

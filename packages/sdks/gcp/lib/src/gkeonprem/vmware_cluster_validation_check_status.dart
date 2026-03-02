@@ -23,7 +23,7 @@ class VMwareClusterValidationCheckStatus {
 
   factory VMwareClusterValidationCheckStatus.fromMap(Map<String, dynamic> map) {
     return VMwareClusterValidationCheckStatus(
-      results: map['results'] == null ? null : (pulumi.Input.decodeList<VMwareClusterValidationCheckStatusResult>(map['results'], (value) => VMwareClusterValidationCheckStatusResult.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      results: map['results'] == null ? null : (pulumi.Input.decodeList<VMwareClusterValidationCheckStatusResult>(map['results']!, (value) => VMwareClusterValidationCheckStatusResult.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

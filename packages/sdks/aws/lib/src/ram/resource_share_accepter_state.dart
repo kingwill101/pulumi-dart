@@ -61,15 +61,15 @@ class ResourceShareAccepterState {
 
   factory ResourceShareAccepterState.fromMap(Map<String, dynamic> map) {
     return ResourceShareAccepterState(
-      invitationArn: map['invitationArn'] == null ? null : (map['invitationArn'] as String).input(),
-      receiverAccountId: map['receiverAccountId'] == null ? null : (map['receiverAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
-      senderAccountId: map['senderAccountId'] == null ? null : (map['senderAccountId'] as String).input(),
-      shareArn: map['shareArn'] == null ? null : (map['shareArn'] as String).input(),
-      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      invitationArn: map['invitationArn'] == null ? null : ((map['invitationArn'] as String).input()).input(),
+      receiverAccountId: map['receiverAccountId'] == null ? null : ((map['receiverAccountId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resources: map['resources'] == null ? null : (((map['resources'] as List).cast<String>()).input()).input(),
+      senderAccountId: map['senderAccountId'] == null ? null : ((map['senderAccountId'] as String).input()).input(),
+      shareArn: map['shareArn'] == null ? null : ((map['shareArn'] as String).input()).input(),
+      shareId: map['shareId'] == null ? null : ((map['shareId'] as String).input()).input(),
+      shareName: map['shareName'] == null ? null : ((map['shareName'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

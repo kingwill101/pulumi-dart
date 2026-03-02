@@ -34,9 +34,9 @@ class ServiceLevelIndicator {
 
   factory ServiceLevelIndicator.fromMap(Map<String, dynamic> map) {
     return ServiceLevelIndicator(
-      basicSli: map['basicSli'] == null ? null : (BasicSli.fromMap((map['basicSli'] as Map).cast<String, dynamic>())).input(),
-      requestBased: map['requestBased'] == null ? null : (RequestBasedSli.fromMap((map['requestBased'] as Map).cast<String, dynamic>())).input(),
-      windowsBased: map['windowsBased'] == null ? null : (WindowsBasedSli.fromMap((map['windowsBased'] as Map).cast<String, dynamic>())).input(),
+      basicSli: map['basicSli'] == null ? null : (BasicSli.fromMap((map['basicSli']! as Map).cast<String, dynamic>())).input(),
+      requestBased: map['requestBased'] == null ? null : (RequestBasedSli.fromMap((map['requestBased']! as Map).cast<String, dynamic>())).input(),
+      windowsBased: map['windowsBased'] == null ? null : (WindowsBasedSli.fromMap((map['windowsBased']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

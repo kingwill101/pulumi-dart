@@ -37,10 +37,10 @@ class WindowsWebAppLogs {
 
   factory WindowsWebAppLogs.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppLogs(
-      applicationLogs: map['applicationLogs'] == null ? null : (WindowsWebAppLogsApplicationLogs.fromMap((map['applicationLogs'] as Map).cast<String, dynamic>())).input(),
-      detailedErrorMessages: map['detailedErrorMessages'] == null ? null : (map['detailedErrorMessages'] as bool).input(),
-      failedRequestTracing: map['failedRequestTracing'] == null ? null : (map['failedRequestTracing'] as bool).input(),
-      httpLogs: map['httpLogs'] == null ? null : (WindowsWebAppLogsHttpLogs.fromMap((map['httpLogs'] as Map).cast<String, dynamic>())).input(),
+      applicationLogs: map['applicationLogs'] == null ? null : (WindowsWebAppLogsApplicationLogs.fromMap((map['applicationLogs']! as Map).cast<String, dynamic>())).input(),
+      detailedErrorMessages: map['detailedErrorMessages'] == null ? null : (map['detailedErrorMessages']! as bool).input(),
+      failedRequestTracing: map['failedRequestTracing'] == null ? null : (map['failedRequestTracing']! as bool).input(),
+      httpLogs: map['httpLogs'] == null ? null : (WindowsWebAppLogsHttpLogs.fromMap((map['httpLogs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

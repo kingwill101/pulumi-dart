@@ -26,8 +26,8 @@ class CapabilitiesPatch {
 
   factory CapabilitiesPatch.fromMap(Map<String, dynamic> map) {
     return CapabilitiesPatch(
-      add: map['add'] == null ? null : ((map['add'] as List).cast<String>()).input(),
-      drop: map['drop'] == null ? null : ((map['drop'] as List).cast<String>()).input(),
+      add: map['add'] == null ? null : ((map['add']! as List).cast<String>()).input(),
+      drop: map['drop'] == null ? null : ((map['drop']! as List).cast<String>()).input(),
     );
   }
 }

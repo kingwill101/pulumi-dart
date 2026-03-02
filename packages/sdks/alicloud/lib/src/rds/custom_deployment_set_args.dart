@@ -57,11 +57,11 @@ class CustomDeploymentSetArgs {
 
   factory CustomDeploymentSetArgs.fromMap(Map<String, dynamic> map) {
     return CustomDeploymentSetArgs(
-      customDeploymentSetName: map['customDeploymentSetName'] == null ? null : (map['customDeploymentSetName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      groupCount: map['groupCount'] == null ? null : (map['groupCount'] as int).input(),
-      onUnableToRedeployFailedInstance: map['onUnableToRedeployFailedInstance'] == null ? null : (map['onUnableToRedeployFailedInstance'] as String).input(),
-      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
+      customDeploymentSetName: map['customDeploymentSetName'] == null ? null : (map['customDeploymentSetName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      groupCount: map['groupCount'] == null ? null : (map['groupCount']! as int).input(),
+      onUnableToRedeployFailedInstance: map['onUnableToRedeployFailedInstance'] == null ? null : (map['onUnableToRedeployFailedInstance']! as String).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy']! as String).input(),
     );
   }
 }

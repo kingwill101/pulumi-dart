@@ -81,18 +81,18 @@ class NetworkArgs {
 
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
-      attachable: map['attachable'] == null ? null : (map['attachable'] as bool).input(),
-      checkDuplicate: map['checkDuplicate'] == null ? null : (map['checkDuplicate'] as bool).input(),
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      ingress: map['ingress'] == null ? null : (map['ingress'] as bool).input(),
-      internal: map['internal'] == null ? null : (map['internal'] as bool).input(),
-      ipamConfigs: map['ipamConfigs'] == null ? null : (pulumi.Input.decodeList<NetworkIpamConfig>(map['ipamConfigs'], (value) => NetworkIpamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipamDriver: map['ipamDriver'] == null ? null : (map['ipamDriver'] as String).input(),
-      ipamOptions: map['ipamOptions'] == null ? null : ((map['ipamOptions'] as Map).cast<String, String>()).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as bool).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<NetworkLabel>(map['labels'], (value) => NetworkLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
+      attachable: map['attachable'] == null ? null : (map['attachable']! as bool).input(),
+      checkDuplicate: map['checkDuplicate'] == null ? null : (map['checkDuplicate']! as bool).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      ingress: map['ingress'] == null ? null : (map['ingress']! as bool).input(),
+      internal: map['internal'] == null ? null : (map['internal']! as bool).input(),
+      ipamConfigs: map['ipamConfigs'] == null ? null : (pulumi.Input.decodeList<NetworkIpamConfig>(map['ipamConfigs']!, (value) => NetworkIpamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipamDriver: map['ipamDriver'] == null ? null : (map['ipamDriver']! as String).input(),
+      ipamOptions: map['ipamOptions'] == null ? null : ((map['ipamOptions']! as Map).cast<String, String>()).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6']! as bool).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<NetworkLabel>(map['labels']!, (value) => NetworkLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      options: map['options'] == null ? null : ((map['options']! as Map).cast<String, String>()).input(),
     );
   }
 }

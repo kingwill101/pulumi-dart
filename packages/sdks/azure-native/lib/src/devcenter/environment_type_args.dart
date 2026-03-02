@@ -45,10 +45,10 @@ class EnvironmentTypeArgs {
   factory EnvironmentTypeArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentTypeArgs(
       devCenterName: (map['devCenterName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      environmentTypeName: map['environmentTypeName'] == null ? null : (map['environmentTypeName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      environmentTypeName: map['environmentTypeName'] == null ? null : (map['environmentTypeName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

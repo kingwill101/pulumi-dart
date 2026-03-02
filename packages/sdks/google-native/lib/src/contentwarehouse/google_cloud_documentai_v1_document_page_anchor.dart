@@ -22,7 +22,7 @@ class GoogleCloudDocumentaiV1DocumentPageAnchor {
 
   factory GoogleCloudDocumentaiV1DocumentPageAnchor.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageAnchor(
-      pageRefs: map['pageRefs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageAnchorPageRef>(map['pageRefs'], (value) => GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pageRefs: map['pageRefs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageAnchorPageRef>(map['pageRefs']!, (value) => GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

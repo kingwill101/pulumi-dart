@@ -26,8 +26,8 @@ class FunctionsAlwaysReadyConfig {
 
   factory FunctionsAlwaysReadyConfig.fromMap(Map<String, dynamic> map) {
     return FunctionsAlwaysReadyConfig(
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class AccessPolicyAssociationAccessScope {
 
   factory AccessPolicyAssociationAccessScope.fromMap(Map<String, dynamic> map) {
     return AccessPolicyAssociationAccessScope(
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
+      namespaces: map['namespaces'] == null ? null : (((map['namespaces'] as List).cast<String>()).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

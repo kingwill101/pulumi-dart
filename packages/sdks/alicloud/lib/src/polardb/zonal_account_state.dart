@@ -41,11 +41,11 @@ class ZonalAccountState {
 
   factory ZonalAccountState.fromMap(Map<String, dynamic> map) {
     return ZonalAccountState(
-      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
-      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
-      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
+      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId']! as String).input(),
     );
   }
 }

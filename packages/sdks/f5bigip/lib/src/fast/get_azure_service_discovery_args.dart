@@ -73,17 +73,17 @@ class GetAzureServiceDiscoveryArgs {
 
   factory GetAzureServiceDiscoveryArgs.fromMap(Map<String, dynamic> map) {
     return GetAzureServiceDiscoveryArgs(
-      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm'] as String).input(),
-      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate'] as bool).input(),
-      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      addressRealm: map['addressRealm'] == null ? null : (map['addressRealm']! as String).input(),
+      credentialUpdate: map['credentialUpdate'] == null ? null : (map['credentialUpdate']! as bool).input(),
+      minimumMonitors: map['minimumMonitors'] == null ? null : (map['minimumMonitors']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       resourceGroup: (map['resourceGroup'] as String).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction'] as String).input(),
-      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval'] as String).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      undetectableAction: map['undetectableAction'] == null ? null : (map['undetectableAction']! as String).input(),
+      updateInterval: map['updateInterval'] == null ? null : (map['updateInterval']! as String).input(),
     );
   }
 }

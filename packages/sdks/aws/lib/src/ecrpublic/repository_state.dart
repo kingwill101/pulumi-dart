@@ -61,15 +61,15 @@ class RepositoryState {
 
   factory RepositoryState.fromMap(Map<String, dynamic> map) {
     return RepositoryState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      catalogData: map['catalogData'] == null ? null : (RepositoryCatalogData.fromMap((map['catalogData'] as Map).cast<String, dynamic>())).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
-      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
-      repositoryUri: map['repositoryUri'] == null ? null : (map['repositoryUri'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      catalogData: map['catalogData'] == null ? null : ((RepositoryCatalogData.fromMap((map['catalogData']! as Map).cast<String, dynamic>())).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registryId: map['registryId'] == null ? null : ((map['registryId'] as String).input()).input(),
+      repositoryName: map['repositoryName'] == null ? null : ((map['repositoryName'] as String).input()).input(),
+      repositoryUri: map['repositoryUri'] == null ? null : ((map['repositoryUri'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

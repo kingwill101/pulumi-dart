@@ -37,10 +37,10 @@ class VirtualMachineOsProfile {
 
   factory VirtualMachineOsProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachineOsProfile(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
       adminUsername: (map['adminUsername'] as String).input(),
       computerName: (map['computerName'] as String).input(),
-      customData: map['customData'] == null ? null : (map['customData'] as String).input(),
+      customData: map['customData'] == null ? null : (map['customData']! as String).input(),
     );
   }
 }

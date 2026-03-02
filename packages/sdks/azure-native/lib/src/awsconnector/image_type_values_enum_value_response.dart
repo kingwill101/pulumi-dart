@@ -21,7 +21,7 @@ class ImageTypeValuesEnumValueResponse {
 
   factory ImageTypeValuesEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ImageTypeValuesEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

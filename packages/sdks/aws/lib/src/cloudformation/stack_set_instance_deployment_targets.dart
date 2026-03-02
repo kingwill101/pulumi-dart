@@ -35,10 +35,10 @@ class StackSetInstanceDeploymentTargets {
 
   factory StackSetInstanceDeploymentTargets.fromMap(Map<String, dynamic> map) {
     return StackSetInstanceDeploymentTargets(
-      accountFilterType: map['accountFilterType'] == null ? null : (map['accountFilterType'] as String).input(),
-      accounts: map['accounts'] == null ? null : ((map['accounts'] as List).cast<String>()).input(),
-      accountsUrl: map['accountsUrl'] == null ? null : (map['accountsUrl'] as String).input(),
-      organizationalUnitIds: map['organizationalUnitIds'] == null ? null : ((map['organizationalUnitIds'] as List).cast<String>()).input(),
+      accountFilterType: map['accountFilterType'] == null ? null : ((map['accountFilterType'] as String).input()).input(),
+      accounts: map['accounts'] == null ? null : (((map['accounts'] as List).cast<String>()).input()).input(),
+      accountsUrl: map['accountsUrl'] == null ? null : ((map['accountsUrl'] as String).input()).input(),
+      organizationalUnitIds: map['organizationalUnitIds'] == null ? null : (((map['organizationalUnitIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

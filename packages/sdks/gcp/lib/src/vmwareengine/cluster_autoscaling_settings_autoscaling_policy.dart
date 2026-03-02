@@ -53,11 +53,11 @@ class ClusterAutoscalingSettingsAutoscalingPolicy {
   factory ClusterAutoscalingSettingsAutoscalingPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterAutoscalingSettingsAutoscalingPolicy(
       autoscalePolicyId: (map['autoscalePolicyId'] as String).input(),
-      consumedMemoryThresholds: map['consumedMemoryThresholds'] == null ? null : (ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds.fromMap((map['consumedMemoryThresholds'] as Map).cast<String, dynamic>())).input(),
-      cpuThresholds: map['cpuThresholds'] == null ? null : (ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds.fromMap((map['cpuThresholds'] as Map).cast<String, dynamic>())).input(),
+      consumedMemoryThresholds: map['consumedMemoryThresholds'] == null ? null : (ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds.fromMap((map['consumedMemoryThresholds']! as Map).cast<String, dynamic>())).input(),
+      cpuThresholds: map['cpuThresholds'] == null ? null : (ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds.fromMap((map['cpuThresholds']! as Map).cast<String, dynamic>())).input(),
       nodeTypeId: (map['nodeTypeId'] as String).input(),
       scaleOutSize: (map['scaleOutSize'] as int).input(),
-      storageThresholds: map['storageThresholds'] == null ? null : (ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds.fromMap((map['storageThresholds'] as Map).cast<String, dynamic>())).input(),
+      storageThresholds: map['storageThresholds'] == null ? null : (ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds.fromMap((map['storageThresholds']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

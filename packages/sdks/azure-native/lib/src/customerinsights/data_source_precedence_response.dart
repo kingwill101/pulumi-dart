@@ -50,7 +50,7 @@ class DataSourcePrecedenceResponse {
       dataSourceType: (map['dataSourceType'] as String).input(),
       id: (map['id'] as int).input(),
       name: (map['name'] as String).input(),
-      precedence: map['precedence'] == null ? null : (map['precedence'] as int).input(),
+      precedence: map['precedence'] == null ? null : (map['precedence']! as int).input(),
       status: (map['status'] as String).input(),
     );
   }

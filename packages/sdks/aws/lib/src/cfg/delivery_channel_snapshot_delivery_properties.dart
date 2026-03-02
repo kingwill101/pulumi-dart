@@ -20,7 +20,7 @@ class DeliveryChannelSnapshotDeliveryProperties {
 
   factory DeliveryChannelSnapshotDeliveryProperties.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelSnapshotDeliveryProperties(
-      deliveryFrequency: map['deliveryFrequency'] == null ? null : (map['deliveryFrequency'] as String).input(),
+      deliveryFrequency: map['deliveryFrequency'] == null ? null : ((map['deliveryFrequency'] as String).input()).input(),
     );
   }
 }

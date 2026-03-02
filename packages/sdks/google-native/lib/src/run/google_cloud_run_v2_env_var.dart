@@ -33,8 +33,8 @@ class GoogleCloudRunV2EnvVar {
   factory GoogleCloudRunV2EnvVar.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2EnvVar(
       name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      valueSource: map['valueSource'] == null ? null : (GoogleCloudRunV2EnvVarSource.fromMap((map['valueSource'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      valueSource: map['valueSource'] == null ? null : (GoogleCloudRunV2EnvVarSource.fromMap((map['valueSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -44,8 +44,8 @@ class ConfigMapNodeConfigSource {
       kubeletConfigKey: (map['kubeletConfigKey'] as String).input(),
       name: (map['name'] as String).input(),
       namespace: (map['namespace'] as String).input(),
-      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

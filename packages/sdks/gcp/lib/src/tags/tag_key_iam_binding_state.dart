@@ -54,11 +54,11 @@ class TagKeyIamBindingState {
 
   factory TagKeyIamBindingState.fromMap(Map<String, dynamic> map) {
     return TagKeyIamBindingState(
-      condition: map['condition'] == null ? null : (TagKeyIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
+      condition: map['condition'] == null ? null : (TagKeyIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
     );
   }
 }

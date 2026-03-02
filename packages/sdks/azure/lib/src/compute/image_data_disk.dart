@@ -50,12 +50,12 @@ class ImageDataDisk {
 
   factory ImageDataDisk.fromMap(Map<String, dynamic> map) {
     return ImageDataDisk(
-      blobUri: map['blobUri'] == null ? null : (map['blobUri'] as String).input(),
-      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      lun: map['lun'] == null ? null : (map['lun'] as int).input(),
-      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId'] as String).input(),
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as int).input(),
+      blobUri: map['blobUri'] == null ? null : (map['blobUri']! as String).input(),
+      caching: map['caching'] == null ? null : (map['caching']! as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      lun: map['lun'] == null ? null : (map['lun']! as int).input(),
+      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId']! as String).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as int).input(),
       storageType: (map['storageType'] as String).input(),
     );
   }

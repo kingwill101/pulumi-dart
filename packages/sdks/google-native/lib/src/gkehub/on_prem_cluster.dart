@@ -32,9 +32,9 @@ class OnPremCluster {
 
   factory OnPremCluster.fromMap(Map<String, dynamic> map) {
     return OnPremCluster(
-      adminCluster: map['adminCluster'] == null ? null : (map['adminCluster'] as bool).input(),
-      clusterType: map['clusterType'] == null ? null : (OnPremClusterClusterType.fromValue(map['clusterType'] as String)).input(),
-      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink'] as String).input(),
+      adminCluster: map['adminCluster'] == null ? null : (map['adminCluster']! as bool).input(),
+      clusterType: map['clusterType'] == null ? null : (OnPremClusterClusterType.fromValue(map['clusterType']! as String)).input(),
+      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink']! as String).input(),
     );
   }
 }

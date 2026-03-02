@@ -25,8 +25,8 @@ class VolumeLicenseDetails {
 
   factory VolumeLicenseDetails.fromMap(Map<String, dynamic> map) {
     return VolumeLicenseDetails(
-      invoiceId: map['invoiceId'] == null ? null : (map['invoiceId'] as String).input(),
-      programYear: map['programYear'] == null ? null : (map['programYear'] as String).input(),
+      invoiceId: map['invoiceId'] == null ? null : (map['invoiceId']! as String).input(),
+      programYear: map['programYear'] == null ? null : (map['programYear']! as String).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class SslConfig {
   factory SslConfig.fromMap(Map<String, dynamic> map) {
     return SslConfig(
       caCertificate: (map['caCertificate'] as String).input(),
-      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate']! as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
     );
   }
 }

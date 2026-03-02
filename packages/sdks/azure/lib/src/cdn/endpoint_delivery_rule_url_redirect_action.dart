@@ -45,11 +45,11 @@ class EndpointDeliveryRuleUrlRedirectAction {
 
   factory EndpointDeliveryRuleUrlRedirectAction.fromMap(Map<String, dynamic> map) {
     return EndpointDeliveryRuleUrlRedirectAction(
-      fragment: map['fragment'] == null ? null : (map['fragment'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      queryString: map['queryString'] == null ? null : (map['queryString'] as String).input(),
+      fragment: map['fragment'] == null ? null : (map['fragment']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      queryString: map['queryString'] == null ? null : (map['queryString']! as String).input(),
       redirectType: (map['redirectType'] as String).input(),
     );
   }

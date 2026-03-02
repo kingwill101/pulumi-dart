@@ -49,10 +49,10 @@ class GetMailAddressesResult {
       addresses: pulumi.Input.decodeList<GetMailAddressesAddress>(map['addresses'], (value) => GetMailAddressesAddress.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyWord: map['keyWord'] == null ? null : map['keyWord'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      sendtype: map['sendtype'] == null ? null : map['sendtype'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      keyWord: map['keyWord'] == null ? null : map['keyWord']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      sendtype: map['sendtype'] == null ? null : map['sendtype']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

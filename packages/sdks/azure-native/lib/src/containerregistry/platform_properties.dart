@@ -31,9 +31,9 @@ class PlatformProperties {
 
   factory PlatformProperties.fromMap(Map<String, dynamic> map) {
     return PlatformProperties(
-      architecture: map['architecture'] == null ? null : (map['architecture'] as String).input(),
+      architecture: map['architecture'] == null ? null : (map['architecture']! as String).input(),
       os: (map['os'] as String).input(),
-      variant: map['variant'] == null ? null : (map['variant'] as String).input(),
+      variant: map['variant'] == null ? null : (map['variant']! as String).input(),
     );
   }
 }

@@ -50,12 +50,12 @@ class VolumeQuotaRuleState {
 
   factory VolumeQuotaRuleState.fromMap(Map<String, dynamic> map) {
     return VolumeQuotaRuleState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      quotaSizeInKib: map['quotaSizeInKib'] == null ? null : (map['quotaSizeInKib'] as int).input(),
-      quotaTarget: map['quotaTarget'] == null ? null : (map['quotaTarget'] as String).input(),
-      quotaType: map['quotaType'] == null ? null : (map['quotaType'] as String).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      quotaSizeInKib: map['quotaSizeInKib'] == null ? null : (map['quotaSizeInKib']! as int).input(),
+      quotaTarget: map['quotaTarget'] == null ? null : (map['quotaTarget']! as String).input(),
+      quotaType: map['quotaType'] == null ? null : (map['quotaType']! as String).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as String).input(),
     );
   }
 }

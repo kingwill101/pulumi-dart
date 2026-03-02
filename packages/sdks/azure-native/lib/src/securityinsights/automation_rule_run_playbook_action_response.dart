@@ -31,7 +31,7 @@ class AutomationRuleRunPlaybookActionResponse {
 
   factory AutomationRuleRunPlaybookActionResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRuleRunPlaybookActionResponse(
-      actionConfiguration: map['actionConfiguration'] == null ? null : (PlaybookActionPropertiesResponse.fromMap((map['actionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      actionConfiguration: map['actionConfiguration'] == null ? null : (PlaybookActionPropertiesResponse.fromMap((map['actionConfiguration']! as Map).cast<String, dynamic>())).input(),
       actionType: (map['actionType'] as String).input(),
       order: (map['order'] as int).input(),
     );

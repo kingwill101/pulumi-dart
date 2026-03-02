@@ -44,11 +44,11 @@ class HAVipAttachmentArgs {
 
   factory HAVipAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return HAVipAttachmentArgs(
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      haVipId: map['haVipId'] == null ? null : (map['haVipId'] as String).input(),
-      havipId: map['havipId'] == null ? null : (map['havipId'] as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      haVipId: map['haVipId'] == null ? null : (map['haVipId']! as String).input(),
+      havipId: map['havipId'] == null ? null : (map['havipId']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
     );
   }
 }

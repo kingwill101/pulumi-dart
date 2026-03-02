@@ -41,11 +41,11 @@ class VpcBlockPublicAccessOptionsState {
 
   factory VpcBlockPublicAccessOptionsState.fromMap(Map<String, dynamic> map) {
     return VpcBlockPublicAccessOptionsState(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
-      internetGatewayBlockMode: map['internetGatewayBlockMode'] == null ? null : (map['internetGatewayBlockMode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (VpcBlockPublicAccessOptionsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      awsRegion: map['awsRegion'] == null ? null : ((map['awsRegion'] as String).input()).input(),
+      internetGatewayBlockMode: map['internetGatewayBlockMode'] == null ? null : ((map['internetGatewayBlockMode'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((VpcBlockPublicAccessOptionsTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

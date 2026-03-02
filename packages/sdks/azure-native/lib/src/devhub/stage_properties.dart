@@ -29,9 +29,9 @@ class StageProperties {
 
   factory StageProperties.fromMap(Map<String, dynamic> map) {
     return StageProperties(
-      dependencies: map['dependencies'] == null ? null : ((map['dependencies'] as List).cast<String>()).input(),
-      gitEnvironment: map['gitEnvironment'] == null ? null : (map['gitEnvironment'] as String).input(),
-      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
+      dependencies: map['dependencies'] == null ? null : ((map['dependencies']! as List).cast<String>()).input(),
+      gitEnvironment: map['gitEnvironment'] == null ? null : (map['gitEnvironment']! as String).input(),
+      stageName: map['stageName'] == null ? null : (map['stageName']! as String).input(),
     );
   }
 }

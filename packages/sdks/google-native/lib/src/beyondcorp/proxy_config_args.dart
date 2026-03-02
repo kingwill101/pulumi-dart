@@ -60,12 +60,12 @@ class ProxyConfigArgs {
 
   factory ProxyConfigArgs.fromMap(Map<String, dynamic> map) {
     return ProxyConfigArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      encryptionInfo: map['encryptionInfo'] == null ? null : (GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo.fromMap((map['encryptionInfo'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      encryptionInfo: map['encryptionInfo'] == null ? null : (GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo.fromMap((map['encryptionInfo']! as Map).cast<String, dynamic>())).input(),
       organizationId: (map['organizationId'] as String).input(),
       partnerTenantId: (map['partnerTenantId'] as String).input(),
       proxyUri: (map['proxyUri'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       routingInfo: (GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo.fromMap((map['routingInfo'] as Map).cast<String, dynamic>())).input(),
       transportInfo: (GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo.fromMap((map['transportInfo'] as Map).cast<String, dynamic>())).input(),
     );

@@ -49,11 +49,11 @@ class InterfaceAttachArgs {
 
   factory InterfaceAttachArgs.fromMap(Map<String, dynamic> map) {
     return InterfaceAttachArgs(
-      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp'] as String).input(),
+      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
-      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
+      portId: map['portId'] == null ? null : (map['portId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

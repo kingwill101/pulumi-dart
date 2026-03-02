@@ -30,7 +30,7 @@ class GetInstanceTypeArgs {
   factory GetInstanceTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeArgs(
       instanceType: (map['instanceType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

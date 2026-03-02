@@ -62,15 +62,15 @@ class MembershipRbacRoleBindingGkehubV1betaArgs {
 
   factory MembershipRbacRoleBindingGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
     return MembershipRbacRoleBindingGkehubV1betaArgs(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       membershipId: (map['membershipId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rbacrolebindingId: (map['rbacrolebindingId'] as String).input(),
       role: (RoleGkehubV1beta.fromMap((map['role'] as Map).cast<String, dynamic>())).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

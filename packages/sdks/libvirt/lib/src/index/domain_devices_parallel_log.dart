@@ -25,7 +25,7 @@ class DomainDevicesParallelLog {
 
   factory DomainDevicesParallelLog.fromMap(Map<String, dynamic> map) {
     return DomainDevicesParallelLog(
-      append: map['append'] == null ? null : (map['append'] as String).input(),
+      append: map['append'] == null ? null : (map['append']! as String).input(),
       file: (map['file'] as String).input(),
     );
   }

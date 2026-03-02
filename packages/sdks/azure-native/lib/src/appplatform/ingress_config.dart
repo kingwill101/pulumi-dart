@@ -21,7 +21,7 @@ class IngressConfig {
 
   factory IngressConfig.fromMap(Map<String, dynamic> map) {
     return IngressConfig(
-      readTimeoutInSeconds: map['readTimeoutInSeconds'] == null ? null : (map['readTimeoutInSeconds'] as int).input(),
+      readTimeoutInSeconds: map['readTimeoutInSeconds'] == null ? null : (map['readTimeoutInSeconds']! as int).input(),
     );
   }
 }

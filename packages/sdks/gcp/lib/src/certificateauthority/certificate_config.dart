@@ -48,7 +48,7 @@ class CertificateConfig {
     return CertificateConfig(
       publicKey: (CertificateConfigPublicKey.fromMap((map['publicKey'] as Map).cast<String, dynamic>())).input(),
       subjectConfig: (CertificateConfigSubjectConfig.fromMap((map['subjectConfig'] as Map).cast<String, dynamic>())).input(),
-      subjectKeyId: map['subjectKeyId'] == null ? null : (CertificateConfigSubjectKeyId.fromMap((map['subjectKeyId'] as Map).cast<String, dynamic>())).input(),
+      subjectKeyId: map['subjectKeyId'] == null ? null : (CertificateConfigSubjectKeyId.fromMap((map['subjectKeyId']! as Map).cast<String, dynamic>())).input(),
       x509Config: (CertificateConfigX509Config.fromMap((map['x509Config'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -60,9 +60,9 @@ class MachineGroupArgs {
 
   factory MachineGroupArgs.fromMap(Map<String, dynamic> map) {
     return MachineGroupArgs(
-      groupAttribute: map['groupAttribute'] == null ? null : (MachineGroupGroupAttribute.fromMap((map['groupAttribute'] as Map).cast<String, dynamic>())).input(),
+      groupAttribute: map['groupAttribute'] == null ? null : (MachineGroupGroupAttribute.fromMap((map['groupAttribute']! as Map).cast<String, dynamic>())).input(),
       groupName: (map['groupName'] as String).input(),
-      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType']! as String).input(),
       machineIdentifyType: (map['machineIdentifyType'] as String).input(),
       machineLists: ((map['machineLists'] as List).cast<String>()).input(),
       projectName: (map['projectName'] as String).input(),

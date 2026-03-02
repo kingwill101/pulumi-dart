@@ -20,7 +20,7 @@ class DashboardDashboardPublishOptionsVisualAxisSortOption {
 
   factory DashboardDashboardPublishOptionsVisualAxisSortOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsVisualAxisSortOption(
-      availabilityStatus: map['availabilityStatus'] == null ? null : (map['availabilityStatus'] as String).input(),
+      availabilityStatus: map['availabilityStatus'] == null ? null : ((map['availabilityStatus'] as String).input()).input(),
     );
   }
 }

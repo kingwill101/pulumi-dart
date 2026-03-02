@@ -33,7 +33,7 @@ class GatewayDetailsResponse {
     return GatewayDetailsResponse(
       dmtsClusterUri: (map['dmtsClusterUri'] as String).input(),
       gatewayObjectId: (map['gatewayObjectId'] as String).input(),
-      gatewayResourceId: map['gatewayResourceId'] == null ? null : (map['gatewayResourceId'] as String).input(),
+      gatewayResourceId: map['gatewayResourceId'] == null ? null : (map['gatewayResourceId']! as String).input(),
     );
   }
 }

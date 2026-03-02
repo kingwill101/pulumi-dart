@@ -27,7 +27,7 @@ class NodeInitializationActionDataprocV1beta2 {
   factory NodeInitializationActionDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return NodeInitializationActionDataprocV1beta2(
       executableFile: (map['executableFile'] as String).input(),
-      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout'] as String).input(),
+      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout']! as String).input(),
     );
   }
 }

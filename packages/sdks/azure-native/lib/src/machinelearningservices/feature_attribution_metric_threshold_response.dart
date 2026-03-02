@@ -27,7 +27,7 @@ class FeatureAttributionMetricThresholdResponse {
   factory FeatureAttributionMetricThresholdResponse.fromMap(Map<String, dynamic> map) {
     return FeatureAttributionMetricThresholdResponse(
       metric: (map['metric'] as String).input(),
-      threshold: map['threshold'] == null ? null : (MonitoringThresholdResponse.fromMap((map['threshold'] as Map).cast<String, dynamic>())).input(),
+      threshold: map['threshold'] == null ? null : (MonitoringThresholdResponse.fromMap((map['threshold']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

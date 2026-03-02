@@ -55,7 +55,7 @@ class GetReservedCacheNodeOfferingArgs {
       duration: (map['duration'] as String).input(),
       offeringType: (map['offeringType'] as String).input(),
       productDescription: (map['productDescription'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

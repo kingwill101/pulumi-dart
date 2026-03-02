@@ -19,7 +19,7 @@ class ContainerGroupContainerReadinessProbeTcpSocket {
 
   factory ContainerGroupContainerReadinessProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerReadinessProbeTcpSocket(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

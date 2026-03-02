@@ -21,7 +21,7 @@ class ManagedClusterStorageProfileSnapshotController {
 
   factory ManagedClusterStorageProfileSnapshotController.fromMap(Map<String, dynamic> map) {
     return ManagedClusterStorageProfileSnapshotController(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

@@ -68,16 +68,16 @@ class CompressionRuleState {
 
   factory CompressionRuleState.fromMap(Map<String, dynamic> map) {
     return CompressionRuleState(
-      brotli: map['brotli'] == null ? null : (map['brotli'] as String).input(),
-      configId: map['configId'] == null ? null : (map['configId'] as int).input(),
-      gzip: map['gzip'] == null ? null : (map['gzip'] as String).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
-      zstd: map['zstd'] == null ? null : (map['zstd'] as String).input(),
+      brotli: map['brotli'] == null ? null : (map['brotli']! as String).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as int).input(),
+      gzip: map['gzip'] == null ? null : (map['gzip']! as String).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence']! as int).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
+      zstd: map['zstd'] == null ? null : (map['zstd']! as String).input(),
     );
   }
 }

@@ -49,12 +49,12 @@ class ProfilesResourceAssociationArgs {
 
   factory ProfilesResourceAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ProfilesResourceAssociationArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       profileId: (map['profileId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceArn: (map['resourceArn'] as String).input(),
-      resourceProperties: map['resourceProperties'] == null ? null : (map['resourceProperties'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ProfilesResourceAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      resourceProperties: map['resourceProperties'] == null ? null : ((map['resourceProperties'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ProfilesResourceAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

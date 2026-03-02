@@ -43,11 +43,11 @@ class ObjectMetricSourcePatchAutoscalingV2beta1 {
 
   factory ObjectMetricSourcePatchAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return ObjectMetricSourcePatchAutoscalingV2beta1(
-      averageValue: map['averageValue'] == null ? null : (map['averageValue'] as String).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (CrossVersionObjectReferencePatchAutoscalingV2beta1.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      targetValue: map['targetValue'] == null ? null : (map['targetValue'] as String).input(),
+      averageValue: map['averageValue'] == null ? null : (map['averageValue']! as String).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (CrossVersionObjectReferencePatchAutoscalingV2beta1.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      targetValue: map['targetValue'] == null ? null : (map['targetValue']! as String).input(),
     );
   }
 }

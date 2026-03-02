@@ -21,7 +21,7 @@ class VirtualNodeSpecListenerTimeoutTcp {
 
   factory VirtualNodeSpecListenerTimeoutTcp.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTimeoutTcp(
-      idle: map['idle'] == null ? null : (VirtualNodeSpecListenerTimeoutTcpIdle.fromMap((map['idle'] as Map).cast<String, dynamic>())).input(),
+      idle: map['idle'] == null ? null : ((VirtualNodeSpecListenerTimeoutTcpIdle.fromMap((map['idle']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

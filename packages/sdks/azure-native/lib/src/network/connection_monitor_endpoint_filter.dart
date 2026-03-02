@@ -27,8 +27,8 @@ class ConnectionMonitorEndpointFilter {
 
   factory ConnectionMonitorEndpointFilter.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorEndpointFilter(
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorEndpointFilterItem>(map['items'], (value) => ConnectionMonitorEndpointFilterItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorEndpointFilterItem>(map['items']!, (value) => ConnectionMonitorEndpointFilterItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

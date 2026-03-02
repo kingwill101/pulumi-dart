@@ -73,13 +73,13 @@ class ChatEngineArgs {
     return ChatEngineArgs(
       chatEngineConfig: (ChatEngineChatEngineConfig.fromMap((map['chatEngineConfig'] as Map).cast<String, dynamic>())).input(),
       collectionId: (map['collectionId'] as String).input(),
-      commonConfig: map['commonConfig'] == null ? null : (ChatEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>())).input(),
+      commonConfig: map['commonConfig'] == null ? null : (ChatEngineCommonConfig.fromMap((map['commonConfig']! as Map).cast<String, dynamic>())).input(),
       dataStoreIds: ((map['dataStoreIds'] as List).cast<String>()).input(),
       displayName: (map['displayName'] as String).input(),
       engineId: (map['engineId'] as String).input(),
-      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical'] as String).input(),
+      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

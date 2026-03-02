@@ -44,11 +44,11 @@ class GoogleCloudHealthcareV1beta1DeidentifyOptions {
 
   factory GoogleCloudHealthcareV1beta1DeidentifyOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1beta1DeidentifyOptions(
-      characterMaskConfig: map['characterMaskConfig'] == null ? null : (CharacterMaskConfigHealthcareV1beta1.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>())).input(),
-      contextualDeid: map['contextualDeid'] == null ? null : ((map['contextualDeid'] as Map).cast<String, dynamic>()).input(),
-      cryptoHashConfig: map['cryptoHashConfig'] == null ? null : (CryptoHashConfigHealthcareV1beta1.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>())).input(),
-      dateShiftConfig: map['dateShiftConfig'] == null ? null : (DateShiftConfigHealthcareV1beta1.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>())).input(),
-      keepExtensions: map['keepExtensions'] == null ? null : ((map['keepExtensions'] as Map).cast<String, dynamic>()).input(),
+      characterMaskConfig: map['characterMaskConfig'] == null ? null : (CharacterMaskConfigHealthcareV1beta1.fromMap((map['characterMaskConfig']! as Map).cast<String, dynamic>())).input(),
+      contextualDeid: map['contextualDeid'] == null ? null : ((map['contextualDeid']! as Map).cast<String, dynamic>()).input(),
+      cryptoHashConfig: map['cryptoHashConfig'] == null ? null : (CryptoHashConfigHealthcareV1beta1.fromMap((map['cryptoHashConfig']! as Map).cast<String, dynamic>())).input(),
+      dateShiftConfig: map['dateShiftConfig'] == null ? null : (DateShiftConfigHealthcareV1beta1.fromMap((map['dateShiftConfig']! as Map).cast<String, dynamic>())).input(),
+      keepExtensions: map['keepExtensions'] == null ? null : ((map['keepExtensions']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

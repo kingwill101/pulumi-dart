@@ -20,7 +20,7 @@ class ScheduleTargetSqsParameters {
 
   factory ScheduleTargetSqsParameters.fromMap(Map<String, dynamic> map) {
     return ScheduleTargetSqsParameters(
-      messageGroupId: map['messageGroupId'] == null ? null : (map['messageGroupId'] as String).input(),
+      messageGroupId: map['messageGroupId'] == null ? null : ((map['messageGroupId'] as String).input()).input(),
     );
   }
 }

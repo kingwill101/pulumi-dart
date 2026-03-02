@@ -51,13 +51,13 @@ class ResourceShareState {
 
   factory ResourceShareState.fromMap(Map<String, dynamic> map) {
     return ResourceShareState(
-      allowExternalPrincipals: map['allowExternalPrincipals'] == null ? null : (map['allowExternalPrincipals'] as bool).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissionArns: map['permissionArns'] == null ? null : ((map['permissionArns'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      allowExternalPrincipals: map['allowExternalPrincipals'] == null ? null : ((map['allowExternalPrincipals'] as bool).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      permissionArns: map['permissionArns'] == null ? null : (((map['permissionArns'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

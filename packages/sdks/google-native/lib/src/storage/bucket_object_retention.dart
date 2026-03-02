@@ -26,8 +26,8 @@ class BucketObjectRetention {
 
   factory BucketObjectRetention.fromMap(Map<String, dynamic> map) {
     return BucketObjectRetention(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      retainUntilTime: map['retainUntilTime'] == null ? null : (map['retainUntilTime'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      retainUntilTime: map['retainUntilTime'] == null ? null : (map['retainUntilTime']! as String).input(),
     );
   }
 }

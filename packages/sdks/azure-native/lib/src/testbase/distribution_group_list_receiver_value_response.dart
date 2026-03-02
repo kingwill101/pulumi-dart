@@ -21,7 +21,7 @@ class DistributionGroupListReceiverValueResponse {
 
   factory DistributionGroupListReceiverValueResponse.fromMap(Map<String, dynamic> map) {
     return DistributionGroupListReceiverValueResponse(
-      distributionGroups: map['distributionGroups'] == null ? null : ((map['distributionGroups'] as List).cast<String>()).input(),
+      distributionGroups: map['distributionGroups'] == null ? null : ((map['distributionGroups']! as List).cast<String>()).input(),
     );
   }
 }

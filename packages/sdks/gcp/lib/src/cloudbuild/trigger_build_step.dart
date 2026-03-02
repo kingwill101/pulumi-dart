@@ -140,20 +140,20 @@ class TriggerBuildStep {
 
   factory TriggerBuildStep.fromMap(Map<String, dynamic> map) {
     return TriggerBuildStep(
-      allowExitCodes: map['allowExitCodes'] == null ? null : ((map['allowExitCodes'] as List).cast<int>()).input(),
-      allowFailure: map['allowFailure'] == null ? null : (map['allowFailure'] as bool).input(),
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
-      entrypoint: map['entrypoint'] == null ? null : (map['entrypoint'] as String).input(),
-      envs: map['envs'] == null ? null : ((map['envs'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      allowExitCodes: map['allowExitCodes'] == null ? null : ((map['allowExitCodes']! as List).cast<int>()).input(),
+      allowFailure: map['allowFailure'] == null ? null : (map['allowFailure']! as bool).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
+      entrypoint: map['entrypoint'] == null ? null : (map['entrypoint']! as String).input(),
+      envs: map['envs'] == null ? null : ((map['envs']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
-      secretEnvs: map['secretEnvs'] == null ? null : ((map['secretEnvs'] as List).cast<String>()).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
-      timing: map['timing'] == null ? null : (map['timing'] as String).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<TriggerBuildStepVolume>(map['volumes'], (value) => TriggerBuildStepVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      waitFors: map['waitFors'] == null ? null : ((map['waitFors'] as List).cast<String>()).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
+      secretEnvs: map['secretEnvs'] == null ? null : ((map['secretEnvs']! as List).cast<String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      timing: map['timing'] == null ? null : (map['timing']! as String).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<TriggerBuildStepVolume>(map['volumes']!, (value) => TriggerBuildStepVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      waitFors: map['waitFors'] == null ? null : ((map['waitFors']! as List).cast<String>()).input(),
     );
   }
 }

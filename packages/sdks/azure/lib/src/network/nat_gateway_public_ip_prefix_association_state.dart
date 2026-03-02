@@ -26,8 +26,8 @@ class NatGatewayPublicIpPrefixAssociationState {
 
   factory NatGatewayPublicIpPrefixAssociationState.fromMap(Map<String, dynamic> map) {
     return NatGatewayPublicIpPrefixAssociationState(
-      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId'] as String).input(),
-      publicIpPrefixId: map['publicIpPrefixId'] == null ? null : (map['publicIpPrefixId'] as String).input(),
+      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId']! as String).input(),
+      publicIpPrefixId: map['publicIpPrefixId'] == null ? null : (map['publicIpPrefixId']! as String).input(),
     );
   }
 }

@@ -79,16 +79,16 @@ class EnterpriseSnapshotPolicyArgs {
 
   factory EnterpriseSnapshotPolicyArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyArgs(
-      crossRegionCopyInfo: map['crossRegionCopyInfo'] == null ? null : (EnterpriseSnapshotPolicyCrossRegionCopyInfo.fromMap((map['crossRegionCopyInfo'] as Map).cast<String, dynamic>())).input(),
-      desc: map['desc'] == null ? null : (map['desc'] as String).input(),
+      crossRegionCopyInfo: map['crossRegionCopyInfo'] == null ? null : (EnterpriseSnapshotPolicyCrossRegionCopyInfo.fromMap((map['crossRegionCopyInfo']! as Map).cast<String, dynamic>())).input(),
+      desc: map['desc'] == null ? null : (map['desc']! as String).input(),
       enterpriseSnapshotPolicyName: (map['enterpriseSnapshotPolicyName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       retainRule: (EnterpriseSnapshotPolicyRetainRule.fromMap((map['retainRule'] as Map).cast<String, dynamic>())).input(),
       schedule: (EnterpriseSnapshotPolicySchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      specialRetainRules: map['specialRetainRules'] == null ? null : (EnterpriseSnapshotPolicySpecialRetainRules.fromMap((map['specialRetainRules'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      storageRule: map['storageRule'] == null ? null : (EnterpriseSnapshotPolicyStorageRule.fromMap((map['storageRule'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      specialRetainRules: map['specialRetainRules'] == null ? null : (EnterpriseSnapshotPolicySpecialRetainRules.fromMap((map['specialRetainRules']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      storageRule: map['storageRule'] == null ? null : (EnterpriseSnapshotPolicyStorageRule.fromMap((map['storageRule']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       targetType: (map['targetType'] as String).input(),
     );
   }

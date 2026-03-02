@@ -51,7 +51,7 @@ class Hl7StoreIamBindingArgs {
 
   factory Hl7StoreIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return Hl7StoreIamBindingArgs(
-      condition: map['condition'] == null ? null : (Hl7StoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (Hl7StoreIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       hl7V2StoreId: (map['hl7V2StoreId'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
       role: (map['role'] as String).input(),

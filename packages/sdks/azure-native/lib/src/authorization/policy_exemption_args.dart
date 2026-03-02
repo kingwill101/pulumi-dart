@@ -75,16 +75,16 @@ class PolicyExemptionArgs {
 
   factory PolicyExemptionArgs.fromMap(Map<String, dynamic> map) {
     return PolicyExemptionArgs(
-      assignmentScopeValidation: map['assignmentScopeValidation'] == null ? null : (map['assignmentScopeValidation'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      assignmentScopeValidation: map['assignmentScopeValidation'] == null ? null : (map['assignmentScopeValidation']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       exemptionCategory: (map['exemptionCategory'] as String).input(),
-      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
       policyAssignmentId: (map['policyAssignmentId'] as String).input(),
-      policyDefinitionReferenceIds: map['policyDefinitionReferenceIds'] == null ? null : ((map['policyDefinitionReferenceIds'] as List).cast<String>()).input(),
-      policyExemptionName: map['policyExemptionName'] == null ? null : (map['policyExemptionName'] as String).input(),
-      resourceSelectors: map['resourceSelectors'] == null ? null : (pulumi.Input.decodeList<ResourceSelector>(map['resourceSelectors'], (value) => ResourceSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyDefinitionReferenceIds: map['policyDefinitionReferenceIds'] == null ? null : ((map['policyDefinitionReferenceIds']! as List).cast<String>()).input(),
+      policyExemptionName: map['policyExemptionName'] == null ? null : (map['policyExemptionName']! as String).input(),
+      resourceSelectors: map['resourceSelectors'] == null ? null : (pulumi.Input.decodeList<ResourceSelector>(map['resourceSelectors']!, (value) => ResourceSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
       scope: (map['scope'] as String).input(),
     );
   }

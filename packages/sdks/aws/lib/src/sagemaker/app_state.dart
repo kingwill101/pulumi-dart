@@ -67,16 +67,16 @@ class AppState {
 
   factory AppState.fromMap(Map<String, dynamic> map) {
     return AppState(
-      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
-      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceSpec: map['resourceSpec'] == null ? null : (AppResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())).input(),
-      spaceName: map['spaceName'] == null ? null : (map['spaceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      userProfileName: map['userProfileName'] == null ? null : (map['userProfileName'] as String).input(),
+      appName: map['appName'] == null ? null : ((map['appName'] as String).input()).input(),
+      appType: map['appType'] == null ? null : ((map['appType'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      domainId: map['domainId'] == null ? null : ((map['domainId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceSpec: map['resourceSpec'] == null ? null : ((AppResourceSpec.fromMap((map['resourceSpec']! as Map).cast<String, dynamic>())).input()).input(),
+      spaceName: map['spaceName'] == null ? null : ((map['spaceName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      userProfileName: map['userProfileName'] == null ? null : ((map['userProfileName'] as String).input()).input(),
     );
   }
 }

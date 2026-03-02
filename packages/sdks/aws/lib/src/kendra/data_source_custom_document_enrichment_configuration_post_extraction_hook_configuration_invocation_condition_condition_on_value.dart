@@ -34,10 +34,10 @@ class DataSourceCustomDocumentEnrichmentConfigurationPostExtractionHookConfigura
 
   factory DataSourceCustomDocumentEnrichmentConfigurationPostExtractionHookConfigurationInvocationConditionConditionOnValue.fromMap(Map<String, dynamic> map) {
     return DataSourceCustomDocumentEnrichmentConfigurationPostExtractionHookConfigurationInvocationConditionConditionOnValue(
-      dateValue: map['dateValue'] == null ? null : (map['dateValue'] as String).input(),
-      longValue: map['longValue'] == null ? null : (map['longValue'] as int).input(),
-      stringListValues: map['stringListValues'] == null ? null : ((map['stringListValues'] as List).cast<String>()).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
+      dateValue: map['dateValue'] == null ? null : ((map['dateValue'] as String).input()).input(),
+      longValue: map['longValue'] == null ? null : ((map['longValue'] as int).input()).input(),
+      stringListValues: map['stringListValues'] == null ? null : (((map['stringListValues'] as List).cast<String>()).input()).input(),
+      stringValue: map['stringValue'] == null ? null : ((map['stringValue'] as String).input()).input(),
     );
   }
 }

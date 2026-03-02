@@ -36,9 +36,9 @@ class DomainDkimState {
 
   factory DomainDkimState.fromMap(Map<String, dynamic> map) {
     return DomainDkimState(
-      dkimTokens: map['dkimTokens'] == null ? null : ((map['dkimTokens'] as List).cast<String>()).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      dkimTokens: map['dkimTokens'] == null ? null : (((map['dkimTokens'] as List).cast<String>()).input()).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

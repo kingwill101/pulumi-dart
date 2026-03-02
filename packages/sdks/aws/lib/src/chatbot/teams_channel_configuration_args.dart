@@ -92,19 +92,19 @@ class TeamsChannelConfigurationArgs {
   factory TeamsChannelConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return TeamsChannelConfigurationArgs(
       channelId: (map['channelId'] as String).input(),
-      channelName: map['channelName'] == null ? null : (map['channelName'] as String).input(),
+      channelName: map['channelName'] == null ? null : ((map['channelName'] as String).input()).input(),
       configurationName: (map['configurationName'] as String).input(),
-      guardrailPolicyArns: map['guardrailPolicyArns'] == null ? null : ((map['guardrailPolicyArns'] as List).cast<String>()).input(),
+      guardrailPolicyArns: map['guardrailPolicyArns'] == null ? null : (((map['guardrailPolicyArns'] as List).cast<String>()).input()).input(),
       iamRoleArn: (map['iamRoleArn'] as String).input(),
-      loggingLevel: map['loggingLevel'] == null ? null : (map['loggingLevel'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snsTopicArns: map['snsTopicArns'] == null ? null : ((map['snsTopicArns'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      loggingLevel: map['loggingLevel'] == null ? null : ((map['loggingLevel'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      snsTopicArns: map['snsTopicArns'] == null ? null : (((map['snsTopicArns'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       teamId: (map['teamId'] as String).input(),
-      teamName: map['teamName'] == null ? null : (map['teamName'] as String).input(),
+      teamName: map['teamName'] == null ? null : ((map['teamName'] as String).input()).input(),
       tenantId: (map['tenantId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (TeamsChannelConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      userAuthorizationRequired: map['userAuthorizationRequired'] == null ? null : (map['userAuthorizationRequired'] as bool).input(),
+      timeouts: map['timeouts'] == null ? null : ((TeamsChannelConfigurationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      userAuthorizationRequired: map['userAuthorizationRequired'] == null ? null : ((map['userAuthorizationRequired'] as bool).input()).input(),
     );
   }
 }

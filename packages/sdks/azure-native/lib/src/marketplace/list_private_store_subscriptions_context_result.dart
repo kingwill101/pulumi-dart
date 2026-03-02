@@ -19,7 +19,7 @@ class ListPrivateStoreSubscriptionsContextResult {
 
   factory ListPrivateStoreSubscriptionsContextResult.fromMap(Map<String, dynamic> map) {
     return ListPrivateStoreSubscriptionsContextResult(
-      subscriptionsIds: map['subscriptionsIds'] == null ? null : (map['subscriptionsIds'] as List).cast<String>(),
+      subscriptionsIds: map['subscriptionsIds'] == null ? null : (map['subscriptionsIds']! as List).cast<String>(),
     );
   }
 }

@@ -33,7 +33,7 @@ class ProvisionOsJobProperties {
 
   factory ProvisionOsJobProperties.fromMap(Map<String, dynamic> map) {
     return ProvisionOsJobProperties(
-      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode'] as String).input(),
+      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode']! as String).input(),
       jobType: (map['jobType'] as String).input(),
       provisioningRequest: (ProvisioningRequest.fromMap((map['provisioningRequest'] as Map).cast<String, dynamic>())).input(),
     );

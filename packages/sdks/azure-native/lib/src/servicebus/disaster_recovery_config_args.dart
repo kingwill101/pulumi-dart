@@ -44,10 +44,10 @@ class DisasterRecoveryConfigArgs {
 
   factory DisasterRecoveryConfigArgs.fromMap(Map<String, dynamic> map) {
     return DisasterRecoveryConfigArgs(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      alternateName: map['alternateName'] == null ? null : (map['alternateName'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      alternateName: map['alternateName'] == null ? null : (map['alternateName']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      partnerNamespace: map['partnerNamespace'] == null ? null : (map['partnerNamespace'] as String).input(),
+      partnerNamespace: map['partnerNamespace'] == null ? null : (map['partnerNamespace']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

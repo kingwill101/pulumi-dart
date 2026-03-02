@@ -25,8 +25,8 @@ class VoiceConnectorStreamingMediaInsightsConfiguration {
 
   factory VoiceConnectorStreamingMediaInsightsConfiguration.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorStreamingMediaInsightsConfiguration(
-      configurationArn: map['configurationArn'] == null ? null : (map['configurationArn'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      configurationArn: map['configurationArn'] == null ? null : ((map['configurationArn'] as String).input()).input(),
+      disabled: map['disabled'] == null ? null : ((map['disabled'] as bool).input()).input(),
     );
   }
 }

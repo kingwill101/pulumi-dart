@@ -27,8 +27,8 @@ class ServiceTemplateVolumeEmptyDir {
 
   factory ServiceTemplateVolumeEmptyDir.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateVolumeEmptyDir(
-      medium: map['medium'] == null ? null : (map['medium'] as String).input(),
-      sizeLimit: map['sizeLimit'] == null ? null : (map['sizeLimit'] as String).input(),
+      medium: map['medium'] == null ? null : (map['medium']! as String).input(),
+      sizeLimit: map['sizeLimit'] == null ? null : (map['sizeLimit']! as String).input(),
     );
   }
 }

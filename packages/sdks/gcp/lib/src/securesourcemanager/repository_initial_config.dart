@@ -38,10 +38,10 @@ class RepositoryInitialConfig {
 
   factory RepositoryInitialConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryInitialConfig(
-      defaultBranch: map['defaultBranch'] == null ? null : (map['defaultBranch'] as String).input(),
-      gitignores: map['gitignores'] == null ? null : ((map['gitignores'] as List).cast<String>()).input(),
-      license: map['license'] == null ? null : (map['license'] as String).input(),
-      readme: map['readme'] == null ? null : (map['readme'] as String).input(),
+      defaultBranch: map['defaultBranch'] == null ? null : (map['defaultBranch']! as String).input(),
+      gitignores: map['gitignores'] == null ? null : ((map['gitignores']! as List).cast<String>()).input(),
+      license: map['license'] == null ? null : (map['license']! as String).input(),
+      readme: map['readme'] == null ? null : (map['readme']! as String).input(),
     );
   }
 }

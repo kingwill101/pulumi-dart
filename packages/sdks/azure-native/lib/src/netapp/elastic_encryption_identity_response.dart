@@ -27,7 +27,7 @@ class ElasticEncryptionIdentityResponse {
   factory ElasticEncryptionIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ElasticEncryptionIdentityResponse(
       principalId: (map['principalId'] as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
     );
   }
 }

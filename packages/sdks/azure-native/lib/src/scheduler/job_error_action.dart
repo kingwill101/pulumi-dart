@@ -51,12 +51,12 @@ class JobErrorAction {
 
   factory JobErrorAction.fromMap(Map<String, dynamic> map) {
     return JobErrorAction(
-      queueMessage: map['queueMessage'] == null ? null : (StorageQueueMessage.fromMap((map['queueMessage'] as Map).cast<String, dynamic>())).input(),
-      request: map['request'] == null ? null : (HttpRequest.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
-      serviceBusQueueMessage: map['serviceBusQueueMessage'] == null ? null : (ServiceBusQueueMessage.fromMap((map['serviceBusQueueMessage'] as Map).cast<String, dynamic>())).input(),
-      serviceBusTopicMessage: map['serviceBusTopicMessage'] == null ? null : (ServiceBusTopicMessage.fromMap((map['serviceBusTopicMessage'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (JobActionType.fromValue(map['type'] as String)).input(),
+      queueMessage: map['queueMessage'] == null ? null : (StorageQueueMessage.fromMap((map['queueMessage']! as Map).cast<String, dynamic>())).input(),
+      request: map['request'] == null ? null : (HttpRequest.fromMap((map['request']! as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
+      serviceBusQueueMessage: map['serviceBusQueueMessage'] == null ? null : (ServiceBusQueueMessage.fromMap((map['serviceBusQueueMessage']! as Map).cast<String, dynamic>())).input(),
+      serviceBusTopicMessage: map['serviceBusTopicMessage'] == null ? null : (ServiceBusTopicMessage.fromMap((map['serviceBusTopicMessage']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (JobActionType.fromValue(map['type']! as String)).input(),
     );
   }
 }

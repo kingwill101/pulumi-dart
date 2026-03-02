@@ -46,11 +46,11 @@ class ParameterDefinitionResponse {
 
   factory ParameterDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ParameterDefinitionResponse(
-      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues'] as List).cast<dynamic>()).input(),
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      strongType: map['strongType'] == null ? null : (map['strongType'] as String).input(),
+      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues']! as List).cast<dynamic>()).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']!).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      strongType: map['strongType'] == null ? null : (map['strongType']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

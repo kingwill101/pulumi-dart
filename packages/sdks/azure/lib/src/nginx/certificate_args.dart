@@ -47,7 +47,7 @@ class CertificateArgs {
       certificateVirtualPath: (map['certificateVirtualPath'] as String).input(),
       keyVaultSecretId: (map['keyVaultSecretId'] as String).input(),
       keyVirtualPath: (map['keyVirtualPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nginxDeploymentId: (map['nginxDeploymentId'] as String).input(),
     );
   }

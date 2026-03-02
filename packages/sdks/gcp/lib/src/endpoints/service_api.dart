@@ -36,10 +36,10 @@ class ServiceApi {
 
   factory ServiceApi.fromMap(Map<String, dynamic> map) {
     return ServiceApi(
-      methods: map['methods'] == null ? null : (pulumi.Input.decodeList<ServiceApiMethod>(map['methods'], (value) => ServiceApiMethod.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      syntax: map['syntax'] == null ? null : (map['syntax'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      methods: map['methods'] == null ? null : (pulumi.Input.decodeList<ServiceApiMethod>(map['methods']!, (value) => ServiceApiMethod.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      syntax: map['syntax'] == null ? null : (map['syntax']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

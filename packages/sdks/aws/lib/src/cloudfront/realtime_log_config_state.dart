@@ -42,11 +42,11 @@ class RealtimeLogConfigState {
 
   factory RealtimeLogConfigState.fromMap(Map<String, dynamic> map) {
     return RealtimeLogConfigState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (RealtimeLogConfigEndpoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
-      fields: map['fields'] == null ? null : ((map['fields'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      samplingRate: map['samplingRate'] == null ? null : (map['samplingRate'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      endpoint: map['endpoint'] == null ? null : ((RealtimeLogConfigEndpoint.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input()).input(),
+      fields: map['fields'] == null ? null : (((map['fields'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      samplingRate: map['samplingRate'] == null ? null : ((map['samplingRate'] as int).input()).input(),
     );
   }
 }

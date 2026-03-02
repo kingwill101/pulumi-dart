@@ -39,7 +39,7 @@ class StackArgs {
 
   factory StackArgs.fromMap(Map<String, dynamic> map) {
     return StackArgs(
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
       organizationName: (map['organizationName'] as String).input(),
       projectName: (map['projectName'] as String).input(),
       stackName: (map['stackName'] as String).input(),

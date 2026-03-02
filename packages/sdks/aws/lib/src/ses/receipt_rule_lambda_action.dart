@@ -36,9 +36,9 @@ class ReceiptRuleLambdaAction {
   factory ReceiptRuleLambdaAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleLambdaAction(
       functionArn: (map['functionArn'] as String).input(),
-      invocationType: map['invocationType'] == null ? null : (map['invocationType'] as String).input(),
+      invocationType: map['invocationType'] == null ? null : ((map['invocationType'] as String).input()).input(),
       position: (map['position'] as int).input(),
-      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
+      topicArn: map['topicArn'] == null ? null : ((map['topicArn'] as String).input()).input(),
     );
   }
 }

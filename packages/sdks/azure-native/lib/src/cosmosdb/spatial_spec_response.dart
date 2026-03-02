@@ -25,8 +25,8 @@ class SpatialSpecResponse {
 
   factory SpatialSpecResponse.fromMap(Map<String, dynamic> map) {
     return SpatialSpecResponse(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      types: map['types'] == null ? null : ((map['types'] as List).cast<String>()).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      types: map['types'] == null ? null : ((map['types']! as List).cast<String>()).input(),
     );
   }
 }

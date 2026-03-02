@@ -28,7 +28,7 @@ class ListHostPoolRegistrationTokensResult {
   factory ListHostPoolRegistrationTokensResult.fromMap(Map<String, dynamic> map) {
     return ListHostPoolRegistrationTokensResult(
       nextLink: map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<RegistrationTokenMinimalResponse>(map['value'], (value) => RegistrationTokenMinimalResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<RegistrationTokenMinimalResponse>(map['value']!, (value) => RegistrationTokenMinimalResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

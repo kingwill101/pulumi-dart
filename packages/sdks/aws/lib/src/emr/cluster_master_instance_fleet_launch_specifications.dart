@@ -27,8 +27,8 @@ class ClusterMasterInstanceFleetLaunchSpecifications {
 
   factory ClusterMasterInstanceFleetLaunchSpecifications.fromMap(Map<String, dynamic> map) {
     return ClusterMasterInstanceFleetLaunchSpecifications(
-      onDemandSpecifications: map['onDemandSpecifications'] == null ? null : (pulumi.Input.decodeList<ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification>(map['onDemandSpecifications'], (value) => ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      spotSpecifications: map['spotSpecifications'] == null ? null : (pulumi.Input.decodeList<ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification>(map['spotSpecifications'], (value) => ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onDemandSpecifications: map['onDemandSpecifications'] == null ? null : ((pulumi.Input.decodeList<ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification>(map['onDemandSpecifications']!, (value) => ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      spotSpecifications: map['spotSpecifications'] == null ? null : ((pulumi.Input.decodeList<ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification>(map['spotSpecifications']!, (value) => ClusterMasterInstanceFleetLaunchSpecificationsSpotSpecification.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

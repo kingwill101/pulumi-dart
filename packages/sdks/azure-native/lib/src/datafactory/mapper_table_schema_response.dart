@@ -26,8 +26,8 @@ class MapperTableSchemaResponse {
 
   factory MapperTableSchemaResponse.fromMap(Map<String, dynamic> map) {
     return MapperTableSchemaResponse(
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

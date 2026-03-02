@@ -25,8 +25,8 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
   factory DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource.fromMap(Map<String, dynamic> map) {
     return DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      processorType: map['processorType'] == null ? null : (map['processorType'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      processorType: map['processorType'] == null ? null : (map['processorType']! as String).input(),
     );
   }
 }

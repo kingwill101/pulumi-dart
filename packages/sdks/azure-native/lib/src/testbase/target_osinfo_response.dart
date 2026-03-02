@@ -41,11 +41,11 @@ class TargetOSInfoResponse {
 
   factory TargetOSInfoResponse.fromMap(Map<String, dynamic> map) {
     return TargetOSInfoResponse(
-      baselineOSs: map['baselineOSs'] == null ? null : ((map['baselineOSs'] as List).cast<String>()).input(),
-      insiderChannelIds: map['insiderChannelIds'] == null ? null : ((map['insiderChannelIds'] as List).cast<String>()).input(),
+      baselineOSs: map['baselineOSs'] == null ? null : ((map['baselineOSs']! as List).cast<String>()).input(),
+      insiderChannelIds: map['insiderChannelIds'] == null ? null : ((map['insiderChannelIds']! as List).cast<String>()).input(),
       osUpdateType: (map['osUpdateType'] as String).input(),
-      targetOSImageIds: map['targetOSImageIds'] == null ? null : ((map['targetOSImageIds'] as List).cast<String>()).input(),
-      targetOSs: map['targetOSs'] == null ? null : ((map['targetOSs'] as List).cast<String>()).input(),
+      targetOSImageIds: map['targetOSImageIds'] == null ? null : ((map['targetOSImageIds']! as List).cast<String>()).input(),
+      targetOSs: map['targetOSs'] == null ? null : ((map['targetOSs']! as List).cast<String>()).input(),
     );
   }
 }

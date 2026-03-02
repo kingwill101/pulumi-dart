@@ -38,10 +38,10 @@ class IosTestSetup {
 
   factory IosTestSetup.fromMap(Map<String, dynamic> map) {
     return IosTestSetup(
-      additionalIpas: map['additionalIpas'] == null ? null : (pulumi.Input.decodeList<FileReference>(map['additionalIpas'], (value) => FileReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkProfile: map['networkProfile'] == null ? null : (map['networkProfile'] as String).input(),
-      pullDirectories: map['pullDirectories'] == null ? null : (pulumi.Input.decodeList<IosDeviceFile>(map['pullDirectories'], (value) => IosDeviceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pushFiles: map['pushFiles'] == null ? null : (pulumi.Input.decodeList<IosDeviceFile>(map['pushFiles'], (value) => IosDeviceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalIpas: map['additionalIpas'] == null ? null : (pulumi.Input.decodeList<FileReference>(map['additionalIpas']!, (value) => FileReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkProfile: map['networkProfile'] == null ? null : (map['networkProfile']! as String).input(),
+      pullDirectories: map['pullDirectories'] == null ? null : (pulumi.Input.decodeList<IosDeviceFile>(map['pullDirectories']!, (value) => IosDeviceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pushFiles: map['pushFiles'] == null ? null : (pulumi.Input.decodeList<IosDeviceFile>(map['pushFiles']!, (value) => IosDeviceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

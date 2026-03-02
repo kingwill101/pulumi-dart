@@ -21,7 +21,7 @@ class AwsNodePoolUpdateSettings {
 
   factory AwsNodePoolUpdateSettings.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolUpdateSettings(
-      surgeSettings: map['surgeSettings'] == null ? null : (AwsNodePoolUpdateSettingsSurgeSettings.fromMap((map['surgeSettings'] as Map).cast<String, dynamic>())).input(),
+      surgeSettings: map['surgeSettings'] == null ? null : (AwsNodePoolUpdateSettingsSurgeSettings.fromMap((map['surgeSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

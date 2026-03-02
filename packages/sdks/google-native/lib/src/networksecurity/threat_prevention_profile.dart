@@ -28,8 +28,8 @@ class ThreatPreventionProfile {
 
   factory ThreatPreventionProfile.fromMap(Map<String, dynamic> map) {
     return ThreatPreventionProfile(
-      severityOverrides: map['severityOverrides'] == null ? null : (pulumi.Input.decodeList<SeverityOverride>(map['severityOverrides'], (value) => SeverityOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      threatOverrides: map['threatOverrides'] == null ? null : (pulumi.Input.decodeList<ThreatOverride>(map['threatOverrides'], (value) => ThreatOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      severityOverrides: map['severityOverrides'] == null ? null : (pulumi.Input.decodeList<SeverityOverride>(map['severityOverrides']!, (value) => SeverityOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      threatOverrides: map['threatOverrides'] == null ? null : (pulumi.Input.decodeList<ThreatOverride>(map['threatOverrides']!, (value) => ThreatOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

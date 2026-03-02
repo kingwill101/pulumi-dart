@@ -40,9 +40,9 @@ class NetworkSecurityPerimeterLoggingConfigurationArgs {
 
   factory NetworkSecurityPerimeterLoggingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterLoggingConfigurationArgs(
-      loggingConfigurationName: map['loggingConfigurationName'] == null ? null : (map['loggingConfigurationName'] as String).input(),
+      loggingConfigurationName: map['loggingConfigurationName'] == null ? null : (map['loggingConfigurationName']! as String).input(),
       networkSecurityPerimeterName: (map['networkSecurityPerimeterName'] as String).input(),
-      properties: map['properties'] == null ? null : (NspLoggingConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (NspLoggingConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

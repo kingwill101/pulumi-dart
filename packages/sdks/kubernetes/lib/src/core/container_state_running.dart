@@ -21,7 +21,7 @@ class ContainerStateRunning {
 
   factory ContainerStateRunning.fromMap(Map<String, dynamic> map) {
     return ContainerStateRunning(
-      startedAt: map['startedAt'] == null ? null : (map['startedAt'] as String).input(),
+      startedAt: map['startedAt'] == null ? null : (map['startedAt']! as String).input(),
     );
   }
 }

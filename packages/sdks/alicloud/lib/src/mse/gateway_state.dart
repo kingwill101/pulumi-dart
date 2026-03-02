@@ -77,18 +77,18 @@ class GatewayState {
 
   factory GatewayState.fromMap(Map<String, dynamic> map) {
     return GatewayState(
-      backupVswitchId: map['backupVswitchId'] == null ? null : (map['backupVswitchId'] as String).input(),
-      deleteSlb: map['deleteSlb'] == null ? null : (map['deleteSlb'] as bool).input(),
-      enterpriseSecurityGroup: map['enterpriseSecurityGroup'] == null ? null : (map['enterpriseSecurityGroup'] as bool).input(),
-      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
-      internetSlbSpec: map['internetSlbSpec'] == null ? null : (map['internetSlbSpec'] as String).input(),
-      replica: map['replica'] == null ? null : (map['replica'] as int).input(),
-      slbLists: map['slbLists'] == null ? null : (pulumi.Input.decodeList<GatewaySlbList>(map['slbLists'], (value) => GatewaySlbList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      slbSpec: map['slbSpec'] == null ? null : (map['slbSpec'] as String).input(),
-      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      backupVswitchId: map['backupVswitchId'] == null ? null : (map['backupVswitchId']! as String).input(),
+      deleteSlb: map['deleteSlb'] == null ? null : (map['deleteSlb']! as bool).input(),
+      enterpriseSecurityGroup: map['enterpriseSecurityGroup'] == null ? null : (map['enterpriseSecurityGroup']! as bool).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName']! as String).input(),
+      internetSlbSpec: map['internetSlbSpec'] == null ? null : (map['internetSlbSpec']! as String).input(),
+      replica: map['replica'] == null ? null : (map['replica']! as int).input(),
+      slbLists: map['slbLists'] == null ? null : (pulumi.Input.decodeList<GatewaySlbList>(map['slbLists']!, (value) => GatewaySlbList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slbSpec: map['slbSpec'] == null ? null : (map['slbSpec']! as String).input(),
+      spec: map['spec'] == null ? null : (map['spec']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

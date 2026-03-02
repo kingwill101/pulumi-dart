@@ -56,14 +56,14 @@ class KubernetesAddonState {
 
   factory KubernetesAddonState.fromMap(Map<String, dynamic> map) {
     return KubernetesAddonState(
-      canUpgrade: map['canUpgrade'] == null ? null : (map['canUpgrade'] as bool).input(),
-      cleanupCloudResources: map['cleanupCloudResources'] == null ? null : (map['cleanupCloudResources'] as bool).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nextVersion: map['nextVersion'] == null ? null : (map['nextVersion'] as String).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      canUpgrade: map['canUpgrade'] == null ? null : (map['canUpgrade']! as bool).input(),
+      cleanupCloudResources: map['cleanupCloudResources'] == null ? null : (map['cleanupCloudResources']! as bool).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nextVersion: map['nextVersion'] == null ? null : (map['nextVersion']! as String).input(),
+      required: map['required'] == null ? null : (map['required']! as bool).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

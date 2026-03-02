@@ -236,7 +236,7 @@ class GetLinuxFunctionAppSiteConfig {
       remoteDebuggingEnabled: (map['remoteDebuggingEnabled'] as bool).input(),
       remoteDebuggingVersion: (map['remoteDebuggingVersion'] as String).input(),
       runtimeScaleMonitoringEnabled: (map['runtimeScaleMonitoringEnabled'] as bool).input(),
-      scmIpRestrictionDefaultAction: map['scmIpRestrictionDefaultAction'] == null ? null : (map['scmIpRestrictionDefaultAction'] as String).input(),
+      scmIpRestrictionDefaultAction: map['scmIpRestrictionDefaultAction'] == null ? null : (map['scmIpRestrictionDefaultAction']! as String).input(),
       scmIpRestrictions: (pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigScmIpRestriction>(map['scmIpRestrictions'], (value) => GetLinuxFunctionAppSiteConfigScmIpRestriction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       scmMinimumTlsVersion: (map['scmMinimumTlsVersion'] as String).input(),
       scmType: (map['scmType'] as String).input(),

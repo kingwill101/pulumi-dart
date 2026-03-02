@@ -28,7 +28,7 @@ class PersistentVolumeClaimTemplate {
 
   factory PersistentVolumeClaimTemplate.fromMap(Map<String, dynamic> map) {
     return PersistentVolumeClaimTemplate(
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       spec: (PersistentVolumeClaimSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }

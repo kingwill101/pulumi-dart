@@ -54,11 +54,11 @@ class TeamArgs {
 
   factory TeamArgs.fromMap(Map<String, dynamic> map) {
     return TeamArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      githubTeamId: map['githubTeamId'] == null ? null : (map['githubTeamId'] as double).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      githubTeamId: map['githubTeamId'] == null ? null : (map['githubTeamId']! as double).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationName: (map['organizationName'] as String).input(),
       teamType: (map['teamType'] as String).input(),
     );

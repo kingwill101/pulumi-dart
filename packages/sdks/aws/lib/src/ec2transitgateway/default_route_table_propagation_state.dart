@@ -40,11 +40,11 @@ class DefaultRouteTablePropagationState {
 
   factory DefaultRouteTablePropagationState.fromMap(Map<String, dynamic> map) {
     return DefaultRouteTablePropagationState(
-      originalDefaultRouteTableId: map['originalDefaultRouteTableId'] == null ? null : (map['originalDefaultRouteTableId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (DefaultRouteTablePropagationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
-      transitGatewayRouteTableId: map['transitGatewayRouteTableId'] == null ? null : (map['transitGatewayRouteTableId'] as String).input(),
+      originalDefaultRouteTableId: map['originalDefaultRouteTableId'] == null ? null : ((map['originalDefaultRouteTableId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DefaultRouteTablePropagationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
+      transitGatewayRouteTableId: map['transitGatewayRouteTableId'] == null ? null : ((map['transitGatewayRouteTableId'] as String).input()).input(),
     );
   }
 }

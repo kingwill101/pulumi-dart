@@ -26,8 +26,8 @@ class GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2AppleSignInConfig(
-      bundleIds: map['bundleIds'] == null ? null : ((map['bundleIds'] as List).cast<String>()).input(),
-      codeFlowConfig: map['codeFlowConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig.fromMap((map['codeFlowConfig'] as Map).cast<String, dynamic>())).input(),
+      bundleIds: map['bundleIds'] == null ? null : ((map['bundleIds']! as List).cast<String>()).input(),
+      codeFlowConfig: map['codeFlowConfig'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig.fromMap((map['codeFlowConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

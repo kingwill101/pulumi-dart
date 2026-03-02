@@ -26,7 +26,7 @@ class DomainNameMutualTlsAuthentication {
   factory DomainNameMutualTlsAuthentication.fromMap(Map<String, dynamic> map) {
     return DomainNameMutualTlsAuthentication(
       truststoreUri: (map['truststoreUri'] as String).input(),
-      truststoreVersion: map['truststoreVersion'] == null ? null : (map['truststoreVersion'] as String).input(),
+      truststoreVersion: map['truststoreVersion'] == null ? null : ((map['truststoreVersion'] as String).input()).input(),
     );
   }
 }

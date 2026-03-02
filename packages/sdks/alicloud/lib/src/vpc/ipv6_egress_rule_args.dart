@@ -44,10 +44,10 @@ class Ipv6EgressRuleArgs {
 
   factory Ipv6EgressRuleArgs.fromMap(Map<String, dynamic> map) {
     return Ipv6EgressRuleArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      ipv6EgressRuleName: map['ipv6EgressRuleName'] == null ? null : (map['ipv6EgressRuleName'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      ipv6EgressRuleName: map['ipv6EgressRuleName'] == null ? null : (map['ipv6EgressRuleName']! as String).input(),
       ipv6GatewayId: (map['ipv6GatewayId'] as String).input(),
     );
   }

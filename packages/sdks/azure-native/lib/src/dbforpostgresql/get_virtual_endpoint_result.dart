@@ -57,9 +57,9 @@ class GetVirtualEndpointResult {
   factory GetVirtualEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualEndpointResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      endpointType: map['endpointType'] == null ? null : map['endpointType'] as String,
+      endpointType: map['endpointType'] == null ? null : map['endpointType']! as String,
       id: map['id'] as String,
-      members: map['members'] == null ? null : (map['members'] as List).cast<String>(),
+      members: map['members'] == null ? null : (map['members']! as List).cast<String>(),
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

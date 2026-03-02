@@ -36,7 +36,7 @@ class BackendCircuitBreakerRule {
 
   factory BackendCircuitBreakerRule.fromMap(Map<String, dynamic> map) {
     return BackendCircuitBreakerRule(
-      acceptRetryAfterEnabled: map['acceptRetryAfterEnabled'] == null ? null : (map['acceptRetryAfterEnabled'] as bool).input(),
+      acceptRetryAfterEnabled: map['acceptRetryAfterEnabled'] == null ? null : (map['acceptRetryAfterEnabled']! as bool).input(),
       failureCondition: (BackendCircuitBreakerRuleFailureCondition.fromMap((map['failureCondition'] as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       tripDuration: (map['tripDuration'] as String).input(),

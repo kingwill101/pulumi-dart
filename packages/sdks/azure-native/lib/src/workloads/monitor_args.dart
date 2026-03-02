@@ -82,18 +82,18 @@ class MonitorArgs {
 
   factory MonitorArgs.fromMap(Map<String, dynamic> map) {
     return MonitorArgs(
-      appLocation: map['appLocation'] == null ? null : (map['appLocation'] as String).input(),
-      appServicePlanConfiguration: map['appServicePlanConfiguration'] == null ? null : (AppServicePlanConfiguration.fromMap((map['appServicePlanConfiguration'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logAnalyticsWorkspaceArmId: map['logAnalyticsWorkspaceArmId'] == null ? null : (map['logAnalyticsWorkspaceArmId'] as String).input(),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
-      monitorName: map['monitorName'] == null ? null : (map['monitorName'] as String).input(),
-      monitorSubnet: map['monitorSubnet'] == null ? null : (map['monitorSubnet'] as String).input(),
+      appLocation: map['appLocation'] == null ? null : (map['appLocation']! as String).input(),
+      appServicePlanConfiguration: map['appServicePlanConfiguration'] == null ? null : (AppServicePlanConfiguration.fromMap((map['appServicePlanConfiguration']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logAnalyticsWorkspaceArmId: map['logAnalyticsWorkspaceArmId'] == null ? null : (map['logAnalyticsWorkspaceArmId']! as String).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration']! as Map).cast<String, dynamic>())).input(),
+      monitorName: map['monitorName'] == null ? null : (map['monitorName']! as String).input(),
+      monitorSubnet: map['monitorSubnet'] == null ? null : (map['monitorSubnet']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routingPreference: map['routingPreference'] == null ? null : (map['routingPreference'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneRedundancyPreference: map['zoneRedundancyPreference'] == null ? null : (map['zoneRedundancyPreference'] as String).input(),
+      routingPreference: map['routingPreference'] == null ? null : (map['routingPreference']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneRedundancyPreference: map['zoneRedundancyPreference'] == null ? null : (map['zoneRedundancyPreference']! as String).input(),
     );
   }
 }

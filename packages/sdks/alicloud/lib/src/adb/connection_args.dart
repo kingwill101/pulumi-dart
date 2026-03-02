@@ -29,7 +29,7 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix']! as String).input(),
       dbClusterId: (map['dbClusterId'] as String).input(),
     );
   }

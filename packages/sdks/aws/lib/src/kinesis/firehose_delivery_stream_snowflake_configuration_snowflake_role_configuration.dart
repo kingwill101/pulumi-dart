@@ -25,8 +25,8 @@ class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration {
 
   factory FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      snowflakeRole: map['snowflakeRole'] == null ? null : (map['snowflakeRole'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      snowflakeRole: map['snowflakeRole'] == null ? null : ((map['snowflakeRole'] as String).input()).input(),
     );
   }
 }

@@ -88,17 +88,17 @@ class GetAccountResult {
 
   factory GetAccountResult.fromMap(Map<String, dynamic> map) {
     return GetAccountResult(
-      accountId: map['accountId'] == null ? null : map['accountId'] as String,
+      accountId: map['accountId'] == null ? null : map['accountId']! as String,
       accountName: map['accountName'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      storageServices: map['storageServices'] == null ? null : StorageServicesForPutRequestResponse.fromMap((map['storageServices'] as Map).cast<String, dynamic>()),
+      storageServices: map['storageServices'] == null ? null : StorageServicesForPutRequestResponse.fromMap((map['storageServices']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       tenantId: map['tenantId'] as String,
       totalSecondsIndexed: map['totalSecondsIndexed'] as int,
       type: map['type'] as String,

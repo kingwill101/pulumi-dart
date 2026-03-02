@@ -47,11 +47,11 @@ class PartnerTopicInfo {
 
   factory PartnerTopicInfo.fromMap(Map<String, dynamic> map) {
     return PartnerTopicInfo(
-      azureSubscriptionId: map['azureSubscriptionId'] == null ? null : (map['azureSubscriptionId'] as String).input(),
-      eventTypeInfo: map['eventTypeInfo'] == null ? null : (EventTypeInfo.fromMap((map['eventTypeInfo'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      azureSubscriptionId: map['azureSubscriptionId'] == null ? null : (map['azureSubscriptionId']! as String).input(),
+      eventTypeInfo: map['eventTypeInfo'] == null ? null : (EventTypeInfo.fromMap((map['eventTypeInfo']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

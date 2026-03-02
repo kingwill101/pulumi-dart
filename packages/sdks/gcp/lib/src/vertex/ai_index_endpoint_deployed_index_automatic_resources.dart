@@ -27,8 +27,8 @@ class AiIndexEndpointDeployedIndexAutomaticResources {
 
   factory AiIndexEndpointDeployedIndexAutomaticResources.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexAutomaticResources(
-      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount'] as int).input(),
-      minReplicaCount: map['minReplicaCount'] == null ? null : (map['minReplicaCount'] as int).input(),
+      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount']! as int).input(),
+      minReplicaCount: map['minReplicaCount'] == null ? null : (map['minReplicaCount']! as int).input(),
     );
   }
 }

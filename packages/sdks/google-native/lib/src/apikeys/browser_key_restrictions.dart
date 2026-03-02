@@ -21,7 +21,7 @@ class BrowserKeyRestrictions {
 
   factory BrowserKeyRestrictions.fromMap(Map<String, dynamic> map) {
     return BrowserKeyRestrictions(
-      allowedReferrers: map['allowedReferrers'] == null ? null : ((map['allowedReferrers'] as List).cast<String>()).input(),
+      allowedReferrers: map['allowedReferrers'] == null ? null : ((map['allowedReferrers']! as List).cast<String>()).input(),
     );
   }
 }

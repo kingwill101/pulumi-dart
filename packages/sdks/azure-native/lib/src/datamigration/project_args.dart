@@ -75,16 +75,16 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      azureAuthenticationInfo: map['azureAuthenticationInfo'] == null ? null : (AzureActiveDirectoryApp.fromMap((map['azureAuthenticationInfo'] as Map).cast<String, dynamic>())).input(),
-      databasesInfo: map['databasesInfo'] == null ? null : (pulumi.Input.decodeList<DatabaseInfo>(map['databasesInfo'], (value) => DatabaseInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureAuthenticationInfo: map['azureAuthenticationInfo'] == null ? null : (AzureActiveDirectoryApp.fromMap((map['azureAuthenticationInfo']! as Map).cast<String, dynamic>())).input(),
+      databasesInfo: map['databasesInfo'] == null ? null : (pulumi.Input.decodeList<DatabaseInfo>(map['databasesInfo']!, (value) => DatabaseInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
       groupName: (map['groupName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      sourceConnectionInfo: map['sourceConnectionInfo'] == null ? null : (MiSqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      sourceConnectionInfo: map['sourceConnectionInfo'] == null ? null : (MiSqlConnectionInfo.fromMap((map['sourceConnectionInfo']! as Map).cast<String, dynamic>())).input(),
       sourcePlatform: (map['sourcePlatform'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetConnectionInfo: map['targetConnectionInfo'] == null ? null : (MiSqlConnectionInfo.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetConnectionInfo: map['targetConnectionInfo'] == null ? null : (MiSqlConnectionInfo.fromMap((map['targetConnectionInfo']! as Map).cast<String, dynamic>())).input(),
       targetPlatform: (map['targetPlatform'] as String).input(),
     );
   }

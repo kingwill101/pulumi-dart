@@ -35,10 +35,10 @@ class NfsFileShareNfsFileShareDefaults {
 
   factory NfsFileShareNfsFileShareDefaults.fromMap(Map<String, dynamic> map) {
     return NfsFileShareNfsFileShareDefaults(
-      directoryMode: map['directoryMode'] == null ? null : (map['directoryMode'] as String).input(),
-      fileMode: map['fileMode'] == null ? null : (map['fileMode'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
+      directoryMode: map['directoryMode'] == null ? null : ((map['directoryMode'] as String).input()).input(),
+      fileMode: map['fileMode'] == null ? null : ((map['fileMode'] as String).input()).input(),
+      groupId: map['groupId'] == null ? null : ((map['groupId'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
     );
   }
 }

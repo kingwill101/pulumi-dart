@@ -41,9 +41,9 @@ class InstanceStateArgs {
 
   factory InstanceStateArgs.fromMap(Map<String, dynamic> map) {
     return InstanceStateArgs(
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      force: map['force'] == null ? null : ((map['force'] as bool).input()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       state: (map['state'] as String).input(),
     );
   }

@@ -25,8 +25,8 @@ class CollectionPolicyDataConfig {
 
   factory CollectionPolicyDataConfig.fromMap(Map<String, dynamic> map) {
     return CollectionPolicyDataConfig(
-      dataProject: map['dataProject'] == null ? null : (map['dataProject'] as String).input(),
-      dataRegion: map['dataRegion'] == null ? null : (map['dataRegion'] as String).input(),
+      dataProject: map['dataProject'] == null ? null : (map['dataProject']! as String).input(),
+      dataRegion: map['dataRegion'] == null ? null : (map['dataRegion']! as String).input(),
     );
   }
 }

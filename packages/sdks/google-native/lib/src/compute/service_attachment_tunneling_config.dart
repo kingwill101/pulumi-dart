@@ -28,8 +28,8 @@ class ServiceAttachmentTunnelingConfig {
 
   factory ServiceAttachmentTunnelingConfig.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentTunnelingConfig(
-      encapsulationProfile: map['encapsulationProfile'] == null ? null : (ServiceAttachmentTunnelingConfigEncapsulationProfile.fromValue(map['encapsulationProfile'] as String)).input(),
-      routingMode: map['routingMode'] == null ? null : (ServiceAttachmentTunnelingConfigRoutingMode.fromValue(map['routingMode'] as String)).input(),
+      encapsulationProfile: map['encapsulationProfile'] == null ? null : (ServiceAttachmentTunnelingConfigEncapsulationProfile.fromValue(map['encapsulationProfile']! as String)).input(),
+      routingMode: map['routingMode'] == null ? null : (ServiceAttachmentTunnelingConfigRoutingMode.fromValue(map['routingMode']! as String)).input(),
     );
   }
 }

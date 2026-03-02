@@ -28,7 +28,7 @@ class ResourceClaimTemplateSpecResourceK8sIoV1beta1 {
 
   factory ResourceClaimTemplateSpecResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ResourceClaimTemplateSpecResourceK8sIoV1beta1(
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       spec: (ResourceClaimSpecResourceK8sIoV1beta1.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }

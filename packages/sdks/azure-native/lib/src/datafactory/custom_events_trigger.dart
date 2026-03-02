@@ -58,13 +58,13 @@ class CustomEventsTrigger {
 
   factory CustomEventsTrigger.fromMap(Map<String, dynamic> map) {
     return CustomEventsTrigger(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       events: ((map['events'] as List).cast<dynamic>()).input(),
-      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerPipelineReference>(map['pipelines'], (value) => TriggerPipelineReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerPipelineReference>(map['pipelines']!, (value) => TriggerPipelineReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       scope: (map['scope'] as String).input(),
-      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : (map['subjectBeginsWith'] as String).input(),
-      subjectEndsWith: map['subjectEndsWith'] == null ? null : (map['subjectEndsWith'] as String).input(),
+      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : (map['subjectBeginsWith']! as String).input(),
+      subjectEndsWith: map['subjectEndsWith'] == null ? null : (map['subjectEndsWith']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

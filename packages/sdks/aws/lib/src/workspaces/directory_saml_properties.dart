@@ -30,9 +30,9 @@ class DirectorySamlProperties {
 
   factory DirectorySamlProperties.fromMap(Map<String, dynamic> map) {
     return DirectorySamlProperties(
-      relayStateParameterName: map['relayStateParameterName'] == null ? null : (map['relayStateParameterName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      userAccessUrl: map['userAccessUrl'] == null ? null : (map['userAccessUrl'] as String).input(),
+      relayStateParameterName: map['relayStateParameterName'] == null ? null : ((map['relayStateParameterName'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      userAccessUrl: map['userAccessUrl'] == null ? null : ((map['userAccessUrl'] as String).input()).input(),
     );
   }
 }

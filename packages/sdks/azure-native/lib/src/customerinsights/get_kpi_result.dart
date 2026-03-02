@@ -136,19 +136,19 @@ class GetKpiResult {
 
   factory GetKpiResult.fromMap(Map<String, dynamic> map) {
     return GetKpiResult(
-      aliases: map['aliases'] == null ? null : pulumi.Input.decodeList<KpiAliasResponse>(map['aliases'], (value) => KpiAliasResponse.fromMap((value as Map).cast<String, dynamic>())),
+      aliases: map['aliases'] == null ? null : pulumi.Input.decodeList<KpiAliasResponse>(map['aliases']!, (value) => KpiAliasResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
       calculationWindow: map['calculationWindow'] as String,
-      calculationWindowFieldName: map['calculationWindowFieldName'] == null ? null : map['calculationWindowFieldName'] as String,
-      description: map['description'] == null ? null : (map['description'] as Map).cast<String, String>(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as Map).cast<String, String>(),
+      calculationWindowFieldName: map['calculationWindowFieldName'] == null ? null : map['calculationWindowFieldName']! as String,
+      description: map['description'] == null ? null : (map['description']! as Map).cast<String, String>(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as Map).cast<String, String>(),
       entityType: map['entityType'] as String,
       entityTypeName: map['entityTypeName'] as String,
       expression: map['expression'] as String,
-      extracts: map['extracts'] == null ? null : pulumi.Input.decodeList<KpiExtractResponse>(map['extracts'], (value) => KpiExtractResponse.fromMap((value as Map).cast<String, dynamic>())),
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      extracts: map['extracts'] == null ? null : pulumi.Input.decodeList<KpiExtractResponse>(map['extracts']!, (value) => KpiExtractResponse.fromMap((value as Map).cast<String, dynamic>())),
+      filter: map['filter'] == null ? null : map['filter']! as String,
       function: map['function'] as String,
-      groupBy: map['groupBy'] == null ? null : (map['groupBy'] as List).cast<String>(),
+      groupBy: map['groupBy'] == null ? null : (map['groupBy']! as List).cast<String>(),
       groupByMetadata: pulumi.Input.decodeList<KpiGroupByMetadataResponse>(map['groupByMetadata'], (value) => KpiGroupByMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       kpiName: map['kpiName'] as String,
@@ -156,9 +156,9 @@ class GetKpiResult {
       participantProfilesMetadata: pulumi.Input.decodeList<KpiParticipantProfilesMetadataResponse>(map['participantProfilesMetadata'], (value) => KpiParticipantProfilesMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
       tenantId: map['tenantId'] as String,
-      thresHolds: map['thresHolds'] == null ? null : KpiThresholdsResponse.fromMap((map['thresHolds'] as Map).cast<String, dynamic>()),
+      thresHolds: map['thresHolds'] == null ? null : KpiThresholdsResponse.fromMap((map['thresHolds']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      unit: map['unit'] == null ? null : map['unit'] as String,
+      unit: map['unit'] == null ? null : map['unit']! as String,
     );
   }
 }

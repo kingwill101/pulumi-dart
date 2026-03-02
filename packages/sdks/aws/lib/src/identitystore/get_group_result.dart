@@ -54,10 +54,10 @@ class GetGroupResult {
 
   factory GetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetGroupResult(
-      alternateIdentifier: map['alternateIdentifier'] == null ? null : GetGroupAlternateIdentifier.fromMap((map['alternateIdentifier'] as Map).cast<String, dynamic>()),
+      alternateIdentifier: map['alternateIdentifier'] == null ? null : GetGroupAlternateIdentifier.fromMap((map['alternateIdentifier']! as Map).cast<String, dynamic>()),
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      externalIds: pulumi.Input.decodeList<GetGroupExternalId>(map['externalIds'], (value) => GetGroupExternalId.fromMap((value as Map).cast<String, dynamic>())),
+      externalIds: pulumi.Input.decodeList<GetGroupExternalId>(map['externalIds']!, (value) => GetGroupExternalId.fromMap((value as Map).cast<String, dynamic>())),
       groupId: map['groupId'] as String,
       id: map['id'] as String,
       identityStoreId: map['identityStoreId'] as String,

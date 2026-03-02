@@ -46,12 +46,12 @@ class NetworkInterfaceIPConfiguration {
 
   factory NetworkInterfaceIPConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceIPConfiguration(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      ipAllocationMethod: map['ipAllocationMethod'] == null ? null : (map['ipAllocationMethod'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ipAllocationMethod: map['ipAllocationMethod'] == null ? null : (map['ipAllocationMethod']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
     );
   }
 }

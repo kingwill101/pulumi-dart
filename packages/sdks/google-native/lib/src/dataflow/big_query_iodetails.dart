@@ -36,10 +36,10 @@ class BigQueryIODetails {
 
   factory BigQueryIODetails.fromMap(Map<String, dynamic> map) {
     return BigQueryIODetails(
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
     );
   }
 }

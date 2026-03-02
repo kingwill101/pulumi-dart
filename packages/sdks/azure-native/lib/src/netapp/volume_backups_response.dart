@@ -36,10 +36,10 @@ class VolumeBackupsResponse {
 
   factory VolumeBackupsResponse.fromMap(Map<String, dynamic> map) {
     return VolumeBackupsResponse(
-      backupsCount: map['backupsCount'] == null ? null : (map['backupsCount'] as int).input(),
-      policyEnabled: map['policyEnabled'] == null ? null : (map['policyEnabled'] as bool).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
-      volumeResourceId: map['volumeResourceId'] == null ? null : (map['volumeResourceId'] as String).input(),
+      backupsCount: map['backupsCount'] == null ? null : (map['backupsCount']! as int).input(),
+      policyEnabled: map['policyEnabled'] == null ? null : (map['policyEnabled']! as bool).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
+      volumeResourceId: map['volumeResourceId'] == null ? null : (map['volumeResourceId']! as String).input(),
     );
   }
 }

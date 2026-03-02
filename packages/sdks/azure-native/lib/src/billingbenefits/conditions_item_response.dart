@@ -29,9 +29,9 @@ class ConditionsItemResponse {
 
   factory ConditionsItemResponse.fromMap(Map<String, dynamic> map) {
     return ConditionsItemResponse(
-      conditionName: map['conditionName'] == null ? null : (map['conditionName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : ((map['value'] as List).cast<String>()).input(),
+      conditionName: map['conditionName'] == null ? null : (map['conditionName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : ((map['value']! as List).cast<String>()).input(),
     );
   }
 }

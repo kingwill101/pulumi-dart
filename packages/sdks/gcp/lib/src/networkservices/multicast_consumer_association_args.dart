@@ -65,13 +65,13 @@ class MulticastConsumerAssociationArgs {
 
   factory MulticastConsumerAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastConsumerAssociationArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       multicastConsumerAssociationId: (map['multicastConsumerAssociationId'] as String).input(),
       multicastDomainActivation: (map['multicastDomainActivation'] as String).input(),
       network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

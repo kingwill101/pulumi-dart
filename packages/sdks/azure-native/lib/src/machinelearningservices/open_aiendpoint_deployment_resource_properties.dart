@@ -47,12 +47,12 @@ class OpenAIEndpointDeploymentResourceProperties {
 
   factory OpenAIEndpointDeploymentResourceProperties.fromMap(Map<String, dynamic> map) {
     return OpenAIEndpointDeploymentResourceProperties(
-      failureReason: map['failureReason'] == null ? null : (map['failureReason'] as String).input(),
+      failureReason: map['failureReason'] == null ? null : (map['failureReason']! as String).input(),
       model: (EndpointDeploymentModel.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
-      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName'] as String).input(),
-      sku: map['sku'] == null ? null : (CognitiveServicesSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName']! as String).input(),
+      sku: map['sku'] == null ? null : (CognitiveServicesSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : (map['versionUpgradeOption'] as String).input(),
+      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : (map['versionUpgradeOption']! as String).input(),
     );
   }
 }

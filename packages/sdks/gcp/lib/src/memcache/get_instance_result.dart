@@ -127,9 +127,9 @@ class GetInstanceResult {
       name: map['name'] as String,
       nodeConfigs: pulumi.Input.decodeList<GetInstanceNodeConfig>(map['nodeConfigs'], (value) => GetInstanceNodeConfig.fromMap((value as Map).cast<String, dynamic>())),
       nodeCount: map['nodeCount'] as int,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      region: map['region'] == null ? null : map['region'] as String,
+      region: map['region'] == null ? null : map['region']! as String,
       reservedIpRangeIds: (map['reservedIpRangeIds'] as List).cast<String>(),
       zones: (map['zones'] as List).cast<String>(),
     );

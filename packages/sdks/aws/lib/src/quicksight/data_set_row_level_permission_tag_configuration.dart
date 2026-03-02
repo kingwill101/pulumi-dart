@@ -26,8 +26,8 @@ class DataSetRowLevelPermissionTagConfiguration {
 
   factory DataSetRowLevelPermissionTagConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSetRowLevelPermissionTagConfiguration(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tagRules: (pulumi.Input.decodeList<DataSetRowLevelPermissionTagConfigurationTagRule>(map['tagRules'], (value) => DataSetRowLevelPermissionTagConfigurationTagRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tagRules: (pulumi.Input.decodeList<DataSetRowLevelPermissionTagConfigurationTagRule>(map['tagRules']!, (value) => DataSetRowLevelPermissionTagConfigurationTagRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

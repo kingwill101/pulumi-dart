@@ -26,8 +26,8 @@ class DBSnapshotAttributeResponse {
 
   factory DBSnapshotAttributeResponse.fromMap(Map<String, dynamic> map) {
     return DBSnapshotAttributeResponse(
-      attributeName: map['attributeName'] == null ? null : (map['attributeName'] as String).input(),
-      attributeValues: map['attributeValues'] == null ? null : ((map['attributeValues'] as List).cast<String>()).input(),
+      attributeName: map['attributeName'] == null ? null : (map['attributeName']! as String).input(),
+      attributeValues: map['attributeValues'] == null ? null : ((map['attributeValues']! as List).cast<String>()).input(),
     );
   }
 }

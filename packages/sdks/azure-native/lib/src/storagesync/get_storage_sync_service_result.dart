@@ -101,8 +101,8 @@ class GetStorageSyncServiceResult {
     return GetStorageSyncServiceResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      incomingTrafficPolicy: map['incomingTrafficPolicy'] == null ? null : map['incomingTrafficPolicy'] as String,
+      identity: map['identity'] == null ? null : ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      incomingTrafficPolicy: map['incomingTrafficPolicy'] == null ? null : map['incomingTrafficPolicy']! as String,
       lastOperationName: map['lastOperationName'] as String,
       lastWorkflowId: map['lastWorkflowId'] as String,
       location: map['location'] as String,
@@ -112,7 +112,7 @@ class GetStorageSyncServiceResult {
       storageSyncServiceStatus: map['storageSyncServiceStatus'] as int,
       storageSyncServiceUid: map['storageSyncServiceUid'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       useIdentity: map['useIdentity'] as bool,
     );

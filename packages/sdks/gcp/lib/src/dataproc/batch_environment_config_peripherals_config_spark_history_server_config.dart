@@ -20,7 +20,7 @@ class BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig {
 
   factory BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig.fromMap(Map<String, dynamic> map) {
     return BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig(
-      dataprocCluster: map['dataprocCluster'] == null ? null : (map['dataprocCluster'] as String).input(),
+      dataprocCluster: map['dataprocCluster'] == null ? null : (map['dataprocCluster']! as String).input(),
     );
   }
 }

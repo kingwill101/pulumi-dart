@@ -22,7 +22,7 @@ class TextMatchingRuleset {
 
   factory TextMatchingRuleset.fromMap(Map<String, dynamic> map) {
     return TextMatchingRuleset(
-      deny: map['deny'] == null ? null : (pulumi.Input.decodeList<TextMatch>(map['deny'], (value) => TextMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deny: map['deny'] == null ? null : (pulumi.Input.decodeList<TextMatch>(map['deny']!, (value) => TextMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

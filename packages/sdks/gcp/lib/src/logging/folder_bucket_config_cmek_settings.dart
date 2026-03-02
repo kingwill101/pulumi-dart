@@ -48,9 +48,9 @@ class FolderBucketConfigCmekSettings {
   factory FolderBucketConfigCmekSettings.fromMap(Map<String, dynamic> map) {
     return FolderBucketConfigCmekSettings(
       kmsKeyName: (map['kmsKeyName'] as String).input(),
-      kmsKeyVersionName: map['kmsKeyVersionName'] == null ? null : (map['kmsKeyVersionName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
+      kmsKeyVersionName: map['kmsKeyVersionName'] == null ? null : (map['kmsKeyVersionName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId']! as String).input(),
     );
   }
 }

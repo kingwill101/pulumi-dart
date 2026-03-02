@@ -27,7 +27,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStat
   factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatement(
       countryCodes: ((map['countryCodes'] as List).cast<String>()).input(),
-      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig.fromMap((map['forwardedIpConfig'] as Map).cast<String, dynamic>())).input(),
+      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig.fromMap((map['forwardedIpConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

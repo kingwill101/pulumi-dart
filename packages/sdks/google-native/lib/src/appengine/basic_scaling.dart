@@ -26,8 +26,8 @@ class BasicScaling {
 
   factory BasicScaling.fromMap(Map<String, dynamic> map) {
     return BasicScaling(
-      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout'] as String).input(),
-      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances'] as int).input(),
+      idleTimeout: map['idleTimeout'] == null ? null : (map['idleTimeout']! as String).input(),
+      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances']! as int).input(),
     );
   }
 }

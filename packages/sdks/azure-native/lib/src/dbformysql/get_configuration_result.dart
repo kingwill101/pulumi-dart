@@ -98,7 +98,7 @@ class GetConfigurationResult {
     return GetConfigurationResult(
       allowedValues: map['allowedValues'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      currentValue: map['currentValue'] == null ? null : map['currentValue'] as String,
+      currentValue: map['currentValue'] == null ? null : map['currentValue']! as String,
       dataType: map['dataType'] as String,
       defaultValue: map['defaultValue'] as String,
       description: map['description'] as String,
@@ -108,10 +108,10 @@ class GetConfigurationResult {
       isDynamicConfig: map['isDynamicConfig'] as String,
       isReadOnly: map['isReadOnly'] as String,
       name: map['name'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      source: map['source'] == null ? null : map['source']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

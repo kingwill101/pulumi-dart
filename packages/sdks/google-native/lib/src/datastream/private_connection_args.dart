@@ -59,13 +59,13 @@ class PrivateConnectionArgs {
   factory PrivateConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionArgs(
       displayName: (map['displayName'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       privateConnectionId: (map['privateConnectionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      vpcPeeringConfig: map['vpcPeeringConfig'] == null ? null : (VpcPeeringConfig.fromMap((map['vpcPeeringConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      vpcPeeringConfig: map['vpcPeeringConfig'] == null ? null : (VpcPeeringConfig.fromMap((map['vpcPeeringConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class VmwareStaticIpConfig {
 
   factory VmwareStaticIpConfig.fromMap(Map<String, dynamic> map) {
     return VmwareStaticIpConfig(
-      ipBlocks: map['ipBlocks'] == null ? null : (pulumi.Input.decodeList<VmwareIpBlock>(map['ipBlocks'], (value) => VmwareIpBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipBlocks: map['ipBlocks'] == null ? null : (pulumi.Input.decodeList<VmwareIpBlock>(map['ipBlocks']!, (value) => VmwareIpBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

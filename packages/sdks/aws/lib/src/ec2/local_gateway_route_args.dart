@@ -42,7 +42,7 @@ class LocalGatewayRouteArgs {
       destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
       localGatewayRouteTableId: (map['localGatewayRouteTableId'] as String).input(),
       localGatewayVirtualInterfaceGroupId: (map['localGatewayVirtualInterfaceGroupId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

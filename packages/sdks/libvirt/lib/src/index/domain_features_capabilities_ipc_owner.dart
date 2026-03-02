@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesIpcOwner {
 
   factory DomainFeaturesCapabilitiesIpcOwner.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesIpcOwner(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

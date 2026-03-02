@@ -72,17 +72,17 @@ class ClusterExtensionState {
 
   factory ClusterExtensionState.fromMap(Map<String, dynamic> map) {
     return ClusterExtensionState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : ((map['configurationProtectedSettings'] as Map).cast<String, String>()).input(),
-      configurationSettings: map['configurationSettings'] == null ? null : ((map['configurationSettings'] as Map).cast<String, String>()).input(),
-      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion'] as String).input(),
-      extensionType: map['extensionType'] == null ? null : (map['extensionType'] as String).input(),
-      identity: map['identity'] == null ? null : (ClusterExtensionIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      releaseNamespace: map['releaseNamespace'] == null ? null : (map['releaseNamespace'] as String).input(),
-      releaseTrain: map['releaseTrain'] == null ? null : (map['releaseTrain'] as String).input(),
-      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : ((map['configurationProtectedSettings']! as Map).cast<String, String>()).input(),
+      configurationSettings: map['configurationSettings'] == null ? null : ((map['configurationSettings']! as Map).cast<String, String>()).input(),
+      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion']! as String).input(),
+      extensionType: map['extensionType'] == null ? null : (map['extensionType']! as String).input(),
+      identity: map['identity'] == null ? null : (ClusterExtensionIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      releaseNamespace: map['releaseNamespace'] == null ? null : (map['releaseNamespace']! as String).input(),
+      releaseTrain: map['releaseTrain'] == null ? null : (map['releaseTrain']! as String).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

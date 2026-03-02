@@ -69,16 +69,16 @@ class DataProtectionSettingsState {
 
   factory DataProtectionSettingsState.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsState(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : ((map['additionalEncryptionContext'] as Map).cast<String, String>()).input(),
-      associatedPortalArns: map['associatedPortalArns'] == null ? null : ((map['associatedPortalArns'] as List).cast<String>()).input(),
-      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as String).input(),
-      dataProtectionSettingsArn: map['dataProtectionSettingsArn'] == null ? null : (map['dataProtectionSettingsArn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      inlineRedactionConfiguration: map['inlineRedactionConfiguration'] == null ? null : (DataProtectionSettingsInlineRedactionConfiguration.fromMap((map['inlineRedactionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : (((map['additionalEncryptionContext'] as Map).cast<String, String>()).input()).input(),
+      associatedPortalArns: map['associatedPortalArns'] == null ? null : (((map['associatedPortalArns'] as List).cast<String>()).input()).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : ((map['customerManagedKey'] as String).input()).input(),
+      dataProtectionSettingsArn: map['dataProtectionSettingsArn'] == null ? null : ((map['dataProtectionSettingsArn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
+      inlineRedactionConfiguration: map['inlineRedactionConfiguration'] == null ? null : ((DataProtectionSettingsInlineRedactionConfiguration.fromMap((map['inlineRedactionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

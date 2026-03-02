@@ -40,9 +40,9 @@ class DocumentationPartArgs {
 
   factory DocumentationPartArgs.fromMap(Map<String, dynamic> map) {
     return DocumentationPartArgs(
-      location: (DocumentationPartLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
+      location: (DocumentationPartLocation.fromMap((map['location']! as Map).cast<String, dynamic>())).input(),
       properties: (map['properties'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       restApiId: (map['restApiId'] as String).input(),
     );
   }

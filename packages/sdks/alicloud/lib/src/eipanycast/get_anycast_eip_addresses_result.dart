@@ -75,19 +75,19 @@ class GetAnycastEipAddressesResult {
   factory GetAnycastEipAddressesResult.fromMap(Map<String, dynamic> map) {
     return GetAnycastEipAddressesResult(
       addresses: pulumi.Input.decodeList<GetAnycastEipAddressesAddress>(map['addresses'], (value) => GetAnycastEipAddressesAddress.fromMap((value as Map).cast<String, dynamic>())),
-      anycastEipAddressName: map['anycastEipAddressName'] == null ? null : map['anycastEipAddressName'] as String,
-      bindInstanceIds: map['bindInstanceIds'] == null ? null : (map['bindInstanceIds'] as List).cast<String>(),
-      businessStatus: map['businessStatus'] == null ? null : map['businessStatus'] as String,
+      anycastEipAddressName: map['anycastEipAddressName'] == null ? null : map['anycastEipAddressName']! as String,
+      bindInstanceIds: map['bindInstanceIds'] == null ? null : (map['bindInstanceIds']! as List).cast<String>(),
+      businessStatus: map['businessStatus'] == null ? null : map['businessStatus']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      internetChargeType: map['internetChargeType'] == null ? null : map['internetChargeType'] as String,
-      ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      internetChargeType: map['internetChargeType'] == null ? null : map['internetChargeType']! as String,
+      ipAddress: map['ipAddress'] == null ? null : map['ipAddress']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      paymentType: map['paymentType'] == null ? null : map['paymentType'] as String,
-      serviceLocation: map['serviceLocation'] == null ? null : map['serviceLocation'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      paymentType: map['paymentType'] == null ? null : map['paymentType']! as String,
+      serviceLocation: map['serviceLocation'] == null ? null : map['serviceLocation']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

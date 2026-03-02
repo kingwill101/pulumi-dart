@@ -79,11 +79,11 @@ class MatchResourcesAdmissionregistrationK8sIoV1beta1 {
 
   factory MatchResourcesAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return MatchResourcesAdmissionregistrationK8sIoV1beta1(
-      excludeResourceRules: map['excludeResourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperationsAdmissionregistrationK8sIoV1beta1>(map['excludeResourceRules'], (value) => NamedRuleWithOperationsAdmissionregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchPolicy: map['matchPolicy'] == null ? null : (map['matchPolicy'] as String).input(),
-      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelector.fromMap((map['namespaceSelector'] as Map).cast<String, dynamic>())).input(),
-      objectSelector: map['objectSelector'] == null ? null : (LabelSelector.fromMap((map['objectSelector'] as Map).cast<String, dynamic>())).input(),
-      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperationsAdmissionregistrationK8sIoV1beta1>(map['resourceRules'], (value) => NamedRuleWithOperationsAdmissionregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludeResourceRules: map['excludeResourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperationsAdmissionregistrationK8sIoV1beta1>(map['excludeResourceRules']!, (value) => NamedRuleWithOperationsAdmissionregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchPolicy: map['matchPolicy'] == null ? null : (map['matchPolicy']! as String).input(),
+      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelector.fromMap((map['namespaceSelector']! as Map).cast<String, dynamic>())).input(),
+      objectSelector: map['objectSelector'] == null ? null : (LabelSelector.fromMap((map['objectSelector']! as Map).cast<String, dynamic>())).input(),
+      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperationsAdmissionregistrationK8sIoV1beta1>(map['resourceRules']!, (value) => NamedRuleWithOperationsAdmissionregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

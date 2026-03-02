@@ -41,8 +41,8 @@ class LoadBalancerBackendServerPolicyArgs {
     return LoadBalancerBackendServerPolicyArgs(
       instancePort: (map['instancePort'] as int).input(),
       loadBalancerName: (map['loadBalancerName'] as String).input(),
-      policyNames: map['policyNames'] == null ? null : ((map['policyNames'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      policyNames: map['policyNames'] == null ? null : (((map['policyNames'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

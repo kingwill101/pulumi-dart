@@ -41,10 +41,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
   factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig(
-      charactersToIgnores: map['charactersToIgnores'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore>(map['charactersToIgnores'], (value) => PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maskingCharacter: map['maskingCharacter'] == null ? null : (map['maskingCharacter'] as String).input(),
-      numberToMask: map['numberToMask'] == null ? null : (map['numberToMask'] as int).input(),
-      reverseOrder: map['reverseOrder'] == null ? null : (map['reverseOrder'] as bool).input(),
+      charactersToIgnores: map['charactersToIgnores'] == null ? null : (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore>(map['charactersToIgnores']!, (value) => PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maskingCharacter: map['maskingCharacter'] == null ? null : (map['maskingCharacter']! as String).input(),
+      numberToMask: map['numberToMask'] == null ? null : (map['numberToMask']! as int).input(),
+      reverseOrder: map['reverseOrder'] == null ? null : (map['reverseOrder']! as bool).input(),
     );
   }
 }

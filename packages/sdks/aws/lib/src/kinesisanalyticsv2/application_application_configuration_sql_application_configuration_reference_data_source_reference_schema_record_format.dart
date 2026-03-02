@@ -26,7 +26,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat(
-      mappingParameters: (ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters.fromMap((map['mappingParameters'] as Map).cast<String, dynamic>())).input(),
+      mappingParameters: (ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters.fromMap((map['mappingParameters']! as Map).cast<String, dynamic>())).input(),
       recordFormatType: (map['recordFormatType'] as String).input(),
     );
   }

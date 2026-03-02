@@ -26,8 +26,8 @@ class NamedPortComputeBeta {
 
   factory NamedPortComputeBeta.fromMap(Map<String, dynamic> map) {
     return NamedPortComputeBeta(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

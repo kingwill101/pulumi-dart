@@ -36,7 +36,7 @@ class GetCertificateArgs {
     return GetCertificateArgs(
       arn: (map['arn'] as String).input(),
       certificateAuthorityArn: (map['certificateAuthorityArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

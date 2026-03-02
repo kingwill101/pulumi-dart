@@ -30,7 +30,7 @@ class GetRegistryArgs {
   factory GetRegistryArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

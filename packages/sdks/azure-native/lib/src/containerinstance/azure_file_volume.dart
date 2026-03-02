@@ -41,10 +41,10 @@ class AzureFileVolume {
 
   factory AzureFileVolume.fromMap(Map<String, dynamic> map) {
     return AzureFileVolume(
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
       shareName: (map['shareName'] as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
-      storageAccountKeyReference: map['storageAccountKeyReference'] == null ? null : (map['storageAccountKeyReference'] as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
+      storageAccountKeyReference: map['storageAccountKeyReference'] == null ? null : (map['storageAccountKeyReference']! as String).input(),
       storageAccountName: (map['storageAccountName'] as String).input(),
     );
   }

@@ -63,15 +63,15 @@ class RegistrationAssignmentPropertiesResponseProperties {
 
   factory RegistrationAssignmentPropertiesResponseProperties.fromMap(Map<String, dynamic> map) {
     return RegistrationAssignmentPropertiesResponseProperties(
-      authorizations: map['authorizations'] == null ? null : (pulumi.Input.decodeList<AuthorizationResponse>(map['authorizations'], (value) => AuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : (pulumi.Input.decodeList<EligibleAuthorizationResponse>(map['eligibleAuthorizations'], (value) => EligibleAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managedByTenantId: map['managedByTenantId'] == null ? null : (map['managedByTenantId'] as String).input(),
-      managedByTenantName: map['managedByTenantName'] == null ? null : (map['managedByTenantName'] as String).input(),
-      manageeTenantId: map['manageeTenantId'] == null ? null : (map['manageeTenantId'] as String).input(),
-      manageeTenantName: map['manageeTenantName'] == null ? null : (map['manageeTenantName'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      registrationDefinitionName: map['registrationDefinitionName'] == null ? null : (map['registrationDefinitionName'] as String).input(),
+      authorizations: map['authorizations'] == null ? null : (pulumi.Input.decodeList<AuthorizationResponse>(map['authorizations']!, (value) => AuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : (pulumi.Input.decodeList<EligibleAuthorizationResponse>(map['eligibleAuthorizations']!, (value) => EligibleAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedByTenantId: map['managedByTenantId'] == null ? null : (map['managedByTenantId']! as String).input(),
+      managedByTenantName: map['managedByTenantName'] == null ? null : (map['managedByTenantName']! as String).input(),
+      manageeTenantId: map['manageeTenantId'] == null ? null : (map['manageeTenantId']! as String).input(),
+      manageeTenantName: map['manageeTenantName'] == null ? null : (map['manageeTenantName']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      registrationDefinitionName: map['registrationDefinitionName'] == null ? null : (map['registrationDefinitionName']! as String).input(),
     );
   }
 }

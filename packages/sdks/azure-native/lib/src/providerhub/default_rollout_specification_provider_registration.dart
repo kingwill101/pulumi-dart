@@ -26,8 +26,8 @@ class DefaultRolloutSpecificationProviderRegistration {
 
   factory DefaultRolloutSpecificationProviderRegistration.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutSpecificationProviderRegistration(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      properties: map['properties'] == null ? null : (ProviderRegistrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      properties: map['properties'] == null ? null : (ProviderRegistrationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

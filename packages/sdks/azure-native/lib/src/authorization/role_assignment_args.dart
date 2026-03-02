@@ -64,13 +64,13 @@ class RoleAssignmentArgs {
 
   factory RoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return RoleAssignmentArgs(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      conditionVersion: map['conditionVersion'] == null ? null : (map['conditionVersion'] as String).input(),
-      delegatedManagedIdentityResourceId: map['delegatedManagedIdentityResourceId'] == null ? null : (map['delegatedManagedIdentityResourceId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      conditionVersion: map['conditionVersion'] == null ? null : (map['conditionVersion']! as String).input(),
+      delegatedManagedIdentityResourceId: map['delegatedManagedIdentityResourceId'] == null ? null : (map['delegatedManagedIdentityResourceId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       principalId: (map['principalId'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      roleAssignmentName: map['roleAssignmentName'] == null ? null : (map['roleAssignmentName'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
+      roleAssignmentName: map['roleAssignmentName'] == null ? null : (map['roleAssignmentName']! as String).input(),
       roleDefinitionId: (map['roleDefinitionId'] as String).input(),
       scope: (map['scope'] as String).input(),
     );

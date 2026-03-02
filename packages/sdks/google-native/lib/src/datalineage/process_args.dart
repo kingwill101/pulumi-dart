@@ -53,13 +53,13 @@ class ProcessArgs {
 
   factory ProcessArgs.fromMap(Map<String, dynamic> map) {
     return ProcessArgs(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      origin: map['origin'] == null ? null : (GoogleCloudDatacatalogLineageV1Origin.fromMap((map['origin'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      attributes: map['attributes'] == null ? null : ((map['attributes']! as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      origin: map['origin'] == null ? null : (GoogleCloudDatacatalogLineageV1Origin.fromMap((map['origin']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources {
 
   factory GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources(
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount'] as int).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as int).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
     );
   }
 }

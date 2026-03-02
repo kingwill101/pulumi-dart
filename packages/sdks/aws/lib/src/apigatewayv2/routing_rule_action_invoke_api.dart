@@ -32,7 +32,7 @@ class RoutingRuleActionInvokeApi {
     return RoutingRuleActionInvokeApi(
       apiId: (map['apiId'] as String).input(),
       stage: (map['stage'] as String).input(),
-      stripBasePath: map['stripBasePath'] == null ? null : (map['stripBasePath'] as bool).input(),
+      stripBasePath: map['stripBasePath'] == null ? null : ((map['stripBasePath'] as bool).input()).input(),
     );
   }
 }

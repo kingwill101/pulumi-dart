@@ -44,7 +44,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition {
       comparisonOperator: (map['comparisonOperator'] as String).input(),
       metricName: (map['metricName'] as String).input(),
       statistics: (map['statistics'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag>(map['tags'], (value) => ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag>(map['tags']!, (value) => ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
       threshold: (map['threshold'] as double).input(),
     );
   }

@@ -97,7 +97,7 @@ class GetSecurityGroupRuleResult {
       cidrIpv4: map['cidrIpv4'] as String,
       cidrIpv6: map['cidrIpv6'] as String,
       description: map['description'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSecurityGroupRuleFilter>(map['filters'], (value) => GetSecurityGroupRuleFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSecurityGroupRuleFilter>(map['filters']!, (value) => GetSecurityGroupRuleFilter.fromMap((value as Map).cast<String, dynamic>())),
       fromPort: map['fromPort'] as int,
       id: map['id'] as String,
       ipProtocol: map['ipProtocol'] as String,

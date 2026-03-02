@@ -44,11 +44,11 @@ class DaemonSetSpecAppsV1beta2 {
 
   factory DaemonSetSpecAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return DaemonSetSpecAppsV1beta2(
-      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds'] as int).input(),
-      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit'] as int).input(),
+      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds']! as int).input(),
+      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit']! as int).input(),
       selector: (LabelSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
       template: (PodTemplateSpec.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
-      updateStrategy: map['updateStrategy'] == null ? null : (DaemonSetUpdateStrategyAppsV1beta2.fromMap((map['updateStrategy'] as Map).cast<String, dynamic>())).input(),
+      updateStrategy: map['updateStrategy'] == null ? null : (DaemonSetUpdateStrategyAppsV1beta2.fromMap((map['updateStrategy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

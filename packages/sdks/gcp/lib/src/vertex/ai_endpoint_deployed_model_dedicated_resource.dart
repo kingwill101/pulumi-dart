@@ -43,10 +43,10 @@ class AiEndpointDeployedModelDedicatedResource {
 
   factory AiEndpointDeployedModelDedicatedResource.fromMap(Map<String, dynamic> map) {
     return AiEndpointDeployedModelDedicatedResource(
-      autoscalingMetricSpecs: map['autoscalingMetricSpecs'] == null ? null : (pulumi.Input.decodeList<AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec>(map['autoscalingMetricSpecs'], (value) => AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      machineSpecs: map['machineSpecs'] == null ? null : (pulumi.Input.decodeList<AiEndpointDeployedModelDedicatedResourceMachineSpec>(map['machineSpecs'], (value) => AiEndpointDeployedModelDedicatedResourceMachineSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount'] as int).input(),
-      minReplicaCount: map['minReplicaCount'] == null ? null : (map['minReplicaCount'] as int).input(),
+      autoscalingMetricSpecs: map['autoscalingMetricSpecs'] == null ? null : (pulumi.Input.decodeList<AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec>(map['autoscalingMetricSpecs']!, (value) => AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      machineSpecs: map['machineSpecs'] == null ? null : (pulumi.Input.decodeList<AiEndpointDeployedModelDedicatedResourceMachineSpec>(map['machineSpecs']!, (value) => AiEndpointDeployedModelDedicatedResourceMachineSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount']! as int).input(),
+      minReplicaCount: map['minReplicaCount'] == null ? null : (map['minReplicaCount']! as int).input(),
     );
   }
 }

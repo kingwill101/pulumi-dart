@@ -57,14 +57,14 @@ class DeploymentStatusPatch {
 
   factory DeploymentStatusPatch.fromMap(Map<String, dynamic> map) {
     return DeploymentStatusPatch(
-      availableReplicas: map['availableReplicas'] == null ? null : (map['availableReplicas'] as int).input(),
-      collisionCount: map['collisionCount'] == null ? null : (map['collisionCount'] as int).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<DeploymentConditionPatch>(map['conditions'], (value) => DeploymentConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
-      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas'] as int).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
-      unavailableReplicas: map['unavailableReplicas'] == null ? null : (map['unavailableReplicas'] as int).input(),
-      updatedReplicas: map['updatedReplicas'] == null ? null : (map['updatedReplicas'] as int).input(),
+      availableReplicas: map['availableReplicas'] == null ? null : (map['availableReplicas']! as int).input(),
+      collisionCount: map['collisionCount'] == null ? null : (map['collisionCount']! as int).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<DeploymentConditionPatch>(map['conditions']!, (value) => DeploymentConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas']! as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      unavailableReplicas: map['unavailableReplicas'] == null ? null : (map['unavailableReplicas']! as int).input(),
+      updatedReplicas: map['updatedReplicas'] == null ? null : (map['updatedReplicas']! as int).input(),
     );
   }
 }

@@ -50,12 +50,12 @@ class ConfigManagementMembershipSpecGkehubV1alpha {
 
   factory ConfigManagementMembershipSpecGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return ConfigManagementMembershipSpecGkehubV1alpha(
-      binauthz: map['binauthz'] == null ? null : (ConfigManagementBinauthzConfig.fromMap((map['binauthz'] as Map).cast<String, dynamic>())).input(),
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      configSync: map['configSync'] == null ? null : (ConfigManagementConfigSyncGkehubV1alpha.fromMap((map['configSync'] as Map).cast<String, dynamic>())).input(),
-      hierarchyController: map['hierarchyController'] == null ? null : (ConfigManagementHierarchyControllerConfigGkehubV1alpha.fromMap((map['hierarchyController'] as Map).cast<String, dynamic>())).input(),
-      policyController: map['policyController'] == null ? null : (ConfigManagementPolicyControllerGkehubV1alpha.fromMap((map['policyController'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      binauthz: map['binauthz'] == null ? null : (ConfigManagementBinauthzConfig.fromMap((map['binauthz']! as Map).cast<String, dynamic>())).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      configSync: map['configSync'] == null ? null : (ConfigManagementConfigSyncGkehubV1alpha.fromMap((map['configSync']! as Map).cast<String, dynamic>())).input(),
+      hierarchyController: map['hierarchyController'] == null ? null : (ConfigManagementHierarchyControllerConfigGkehubV1alpha.fromMap((map['hierarchyController']! as Map).cast<String, dynamic>())).input(),
+      policyController: map['policyController'] == null ? null : (ConfigManagementPolicyControllerGkehubV1alpha.fromMap((map['policyController']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

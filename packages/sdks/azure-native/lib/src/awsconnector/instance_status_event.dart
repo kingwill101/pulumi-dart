@@ -47,12 +47,12 @@ class InstanceStatusEvent {
 
   factory InstanceStatusEvent.fromMap(Map<String, dynamic> map) {
     return InstanceStatusEvent(
-      code: map['code'] == null ? null : (EventCodeEnumValue.fromMap((map['code'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceEventId: map['instanceEventId'] == null ? null : (map['instanceEventId'] as String).input(),
-      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as String).input(),
-      notBeforeDeadline: map['notBeforeDeadline'] == null ? null : (map['notBeforeDeadline'] as String).input(),
+      code: map['code'] == null ? null : (EventCodeEnumValue.fromMap((map['code']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceEventId: map['instanceEventId'] == null ? null : (map['instanceEventId']! as String).input(),
+      notAfter: map['notAfter'] == null ? null : (map['notAfter']! as String).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as String).input(),
+      notBeforeDeadline: map['notBeforeDeadline'] == null ? null : (map['notBeforeDeadline']! as String).input(),
     );
   }
 }

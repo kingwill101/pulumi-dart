@@ -117,21 +117,21 @@ class InstanceGceSetup {
 
   factory InstanceGceSetup.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetup(
-      acceleratorConfigs: map['acceleratorConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceGceSetupAcceleratorConfig>(map['acceleratorConfigs'], (value) => InstanceGceSetupAcceleratorConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bootDisk: map['bootDisk'] == null ? null : (InstanceGceSetupBootDisk.fromMap((map['bootDisk'] as Map).cast<String, dynamic>())).input(),
-      confidentialInstanceConfig: map['confidentialInstanceConfig'] == null ? null : (InstanceGceSetupConfidentialInstanceConfig.fromMap((map['confidentialInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      containerImage: map['containerImage'] == null ? null : (InstanceGceSetupContainerImage.fromMap((map['containerImage'] as Map).cast<String, dynamic>())).input(),
-      dataDisks: map['dataDisks'] == null ? null : (InstanceGceSetupDataDisks.fromMap((map['dataDisks'] as Map).cast<String, dynamic>())).input(),
-      disablePublicIp: map['disablePublicIp'] == null ? null : (map['disablePublicIp'] as bool).input(),
-      enableIpForwarding: map['enableIpForwarding'] == null ? null : (map['enableIpForwarding'] as bool).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<InstanceGceSetupNetworkInterface>(map['networkInterfaces'], (value) => InstanceGceSetupNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      reservationAffinity: map['reservationAffinity'] == null ? null : (InstanceGceSetupReservationAffinity.fromMap((map['reservationAffinity'] as Map).cast<String, dynamic>())).input(),
-      serviceAccounts: map['serviceAccounts'] == null ? null : (pulumi.Input.decodeList<InstanceGceSetupServiceAccount>(map['serviceAccounts'], (value) => InstanceGceSetupServiceAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (InstanceGceSetupShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      vmImage: map['vmImage'] == null ? null : (InstanceGceSetupVmImage.fromMap((map['vmImage'] as Map).cast<String, dynamic>())).input(),
+      acceleratorConfigs: map['acceleratorConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceGceSetupAcceleratorConfig>(map['acceleratorConfigs']!, (value) => InstanceGceSetupAcceleratorConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bootDisk: map['bootDisk'] == null ? null : (InstanceGceSetupBootDisk.fromMap((map['bootDisk']! as Map).cast<String, dynamic>())).input(),
+      confidentialInstanceConfig: map['confidentialInstanceConfig'] == null ? null : (InstanceGceSetupConfidentialInstanceConfig.fromMap((map['confidentialInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      containerImage: map['containerImage'] == null ? null : (InstanceGceSetupContainerImage.fromMap((map['containerImage']! as Map).cast<String, dynamic>())).input(),
+      dataDisks: map['dataDisks'] == null ? null : (InstanceGceSetupDataDisks.fromMap((map['dataDisks']! as Map).cast<String, dynamic>())).input(),
+      disablePublicIp: map['disablePublicIp'] == null ? null : (map['disablePublicIp']! as bool).input(),
+      enableIpForwarding: map['enableIpForwarding'] == null ? null : (map['enableIpForwarding']! as bool).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<InstanceGceSetupNetworkInterface>(map['networkInterfaces']!, (value) => InstanceGceSetupNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reservationAffinity: map['reservationAffinity'] == null ? null : (InstanceGceSetupReservationAffinity.fromMap((map['reservationAffinity']! as Map).cast<String, dynamic>())).input(),
+      serviceAccounts: map['serviceAccounts'] == null ? null : (pulumi.Input.decodeList<InstanceGceSetupServiceAccount>(map['serviceAccounts']!, (value) => InstanceGceSetupServiceAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (InstanceGceSetupShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      vmImage: map['vmImage'] == null ? null : (InstanceGceSetupVmImage.fromMap((map['vmImage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

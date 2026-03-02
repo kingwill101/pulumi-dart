@@ -80,18 +80,18 @@ class TeamDeskLinkedService {
 
   factory TeamDeskLinkedService.fromMap(Map<String, dynamic> map) {
     return TeamDeskLinkedService(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      apiToken: map['apiToken'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['apiToken'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      apiToken: map['apiToken'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['apiToken']! as Map).cast<String, dynamic>())).input(),
       authenticationType: (map['authenticationType'] as String).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReference.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters']!, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
       url: (map['url']).input(),
-      userName: map['userName'] == null ? null : (map['userName']).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']!).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader 
 
   factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader(
-      matchPattern: (RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern'] as Map).cast<String, dynamic>())).input(),
+      matchPattern: (RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern']! as Map).cast<String, dynamic>())).input(),
       matchScope: (map['matchScope'] as String).input(),
       oversizeHandling: (map['oversizeHandling'] as String).input(),
     );

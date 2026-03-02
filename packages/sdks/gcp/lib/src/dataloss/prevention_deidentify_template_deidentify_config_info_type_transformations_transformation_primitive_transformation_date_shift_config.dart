@@ -41,8 +41,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
   factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig(
-      context: map['context'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext.fromMap((map['context'] as Map).cast<String, dynamic>())).input(),
-      cryptoKey: map['cryptoKey'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey.fromMap((map['cryptoKey'] as Map).cast<String, dynamic>())).input(),
+      context: map['context'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext.fromMap((map['context']! as Map).cast<String, dynamic>())).input(),
+      cryptoKey: map['cryptoKey'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey.fromMap((map['cryptoKey']! as Map).cast<String, dynamic>())).input(),
       lowerBoundDays: (map['lowerBoundDays'] as int).input(),
       upperBoundDays: (map['upperBoundDays'] as int).input(),
     );

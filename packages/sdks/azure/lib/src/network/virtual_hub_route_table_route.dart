@@ -46,7 +46,7 @@ class VirtualHubRouteTableRoute {
       destinationsType: (map['destinationsType'] as String).input(),
       name: (map['name'] as String).input(),
       nextHop: (map['nextHop'] as String).input(),
-      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType'] as String).input(),
+      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType']! as String).input(),
     );
   }
 }

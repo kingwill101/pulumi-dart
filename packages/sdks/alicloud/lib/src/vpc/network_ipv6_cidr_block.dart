@@ -33,8 +33,8 @@ class NetworkIpv6CidrBlock {
 
   factory NetworkIpv6CidrBlock.fromMap(Map<String, dynamic> map) {
     return NetworkIpv6CidrBlock(
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
-      ipv6Isp: map['ipv6Isp'] == null ? null : (map['ipv6Isp'] as String).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock']! as String).input(),
+      ipv6Isp: map['ipv6Isp'] == null ? null : (map['ipv6Isp']! as String).input(),
     );
   }
 }

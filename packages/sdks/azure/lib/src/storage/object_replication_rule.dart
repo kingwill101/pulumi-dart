@@ -39,10 +39,10 @@ class ObjectReplicationRule {
 
   factory ObjectReplicationRule.fromMap(Map<String, dynamic> map) {
     return ObjectReplicationRule(
-      copyBlobsCreatedAfter: map['copyBlobsCreatedAfter'] == null ? null : (map['copyBlobsCreatedAfter'] as String).input(),
+      copyBlobsCreatedAfter: map['copyBlobsCreatedAfter'] == null ? null : (map['copyBlobsCreatedAfter']! as String).input(),
       destinationContainerName: (map['destinationContainerName'] as String).input(),
-      filterOutBlobsWithPrefixes: map['filterOutBlobsWithPrefixes'] == null ? null : ((map['filterOutBlobsWithPrefixes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      filterOutBlobsWithPrefixes: map['filterOutBlobsWithPrefixes'] == null ? null : ((map['filterOutBlobsWithPrefixes']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       sourceContainerName: (map['sourceContainerName'] as String).input(),
     );
   }

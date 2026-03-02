@@ -101,22 +101,22 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      deleteAllPolicyResources: map['deleteAllPolicyResources'] == null ? null : (map['deleteAllPolicyResources'] as bool).input(),
-      deleteUnusedFmManagedResources: map['deleteUnusedFmManagedResources'] == null ? null : (map['deleteUnusedFmManagedResources'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      excludeMap: map['excludeMap'] == null ? null : (PolicyExcludeMap.fromMap((map['excludeMap'] as Map).cast<String, dynamic>())).input(),
+      deleteAllPolicyResources: map['deleteAllPolicyResources'] == null ? null : ((map['deleteAllPolicyResources'] as bool).input()).input(),
+      deleteUnusedFmManagedResources: map['deleteUnusedFmManagedResources'] == null ? null : ((map['deleteUnusedFmManagedResources'] as bool).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      excludeMap: map['excludeMap'] == null ? null : ((PolicyExcludeMap.fromMap((map['excludeMap']! as Map).cast<String, dynamic>())).input()).input(),
       excludeResourceTags: (map['excludeResourceTags'] as bool).input(),
-      includeMap: map['includeMap'] == null ? null : (PolicyIncludeMap.fromMap((map['includeMap'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      remediationEnabled: map['remediationEnabled'] == null ? null : (map['remediationEnabled'] as bool).input(),
-      resourceSetIds: map['resourceSetIds'] == null ? null : ((map['resourceSetIds'] as List).cast<String>()).input(),
-      resourceTagLogicalOperator: map['resourceTagLogicalOperator'] == null ? null : (map['resourceTagLogicalOperator'] as String).input(),
-      resourceTags: map['resourceTags'] == null ? null : ((map['resourceTags'] as Map).cast<String, String>()).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      resourceTypeLists: map['resourceTypeLists'] == null ? null : ((map['resourceTypeLists'] as List).cast<String>()).input(),
-      securityServicePolicyData: (PolicySecurityServicePolicyData.fromMap((map['securityServicePolicyData'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      includeMap: map['includeMap'] == null ? null : ((PolicyIncludeMap.fromMap((map['includeMap']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      remediationEnabled: map['remediationEnabled'] == null ? null : ((map['remediationEnabled'] as bool).input()).input(),
+      resourceSetIds: map['resourceSetIds'] == null ? null : (((map['resourceSetIds'] as List).cast<String>()).input()).input(),
+      resourceTagLogicalOperator: map['resourceTagLogicalOperator'] == null ? null : ((map['resourceTagLogicalOperator'] as String).input()).input(),
+      resourceTags: map['resourceTags'] == null ? null : (((map['resourceTags'] as Map).cast<String, String>()).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      resourceTypeLists: map['resourceTypeLists'] == null ? null : (((map['resourceTypeLists'] as List).cast<String>()).input()).input(),
+      securityServicePolicyData: (PolicySecurityServicePolicyData.fromMap((map['securityServicePolicyData']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

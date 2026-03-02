@@ -69,13 +69,13 @@ class AppHostingBuildArgs {
 
   factory AppHostingBuildArgs.fromMap(Map<String, dynamic> map) {
     return AppHostingBuildArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       backend: (map['backend'] as String).input(),
       buildId: (map['buildId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       source: (AppHostingBuildSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

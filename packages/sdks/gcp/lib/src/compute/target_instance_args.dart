@@ -74,14 +74,14 @@ class TargetInstanceArgs {
 
   factory TargetInstanceArgs.fromMap(Map<String, dynamic> map) {
     return TargetInstanceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       instance: (map['instance'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      natPolicy: map['natPolicy'] == null ? null : (map['natPolicy'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      natPolicy: map['natPolicy'] == null ? null : (map['natPolicy']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

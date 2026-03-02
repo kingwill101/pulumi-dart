@@ -21,7 +21,7 @@ class GitHubResourceInfoResponse {
 
   factory GitHubResourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return GitHubResourceInfoResponse(
-      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId'] as String).input(),
+      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId']! as String).input(),
     );
   }
 }

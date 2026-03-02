@@ -64,15 +64,15 @@ class BucketV2LifecycleRule {
 
   factory BucketV2LifecycleRule.fromMap(Map<String, dynamic> map) {
     return BucketV2LifecycleRule(
-      abortIncompleteMultipartUploadDays: map['abortIncompleteMultipartUploadDays'] == null ? null : (map['abortIncompleteMultipartUploadDays'] as int).input(),
+      abortIncompleteMultipartUploadDays: map['abortIncompleteMultipartUploadDays'] == null ? null : ((map['abortIncompleteMultipartUploadDays'] as int).input()).input(),
       enabled: (map['enabled'] as bool).input(),
-      expirations: map['expirations'] == null ? null : (pulumi.Input.decodeList<BucketV2LifecycleRuleExpiration>(map['expirations'], (value) => BucketV2LifecycleRuleExpiration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      noncurrentVersionExpirations: map['noncurrentVersionExpirations'] == null ? null : (pulumi.Input.decodeList<BucketV2LifecycleRuleNoncurrentVersionExpiration>(map['noncurrentVersionExpirations'], (value) => BucketV2LifecycleRuleNoncurrentVersionExpiration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      noncurrentVersionTransitions: map['noncurrentVersionTransitions'] == null ? null : (pulumi.Input.decodeList<BucketV2LifecycleRuleNoncurrentVersionTransition>(map['noncurrentVersionTransitions'], (value) => BucketV2LifecycleRuleNoncurrentVersionTransition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitions: map['transitions'] == null ? null : (pulumi.Input.decodeList<BucketV2LifecycleRuleTransition>(map['transitions'], (value) => BucketV2LifecycleRuleTransition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expirations: map['expirations'] == null ? null : ((pulumi.Input.decodeList<BucketV2LifecycleRuleExpiration>(map['expirations']!, (value) => BucketV2LifecycleRuleExpiration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      noncurrentVersionExpirations: map['noncurrentVersionExpirations'] == null ? null : ((pulumi.Input.decodeList<BucketV2LifecycleRuleNoncurrentVersionExpiration>(map['noncurrentVersionExpirations']!, (value) => BucketV2LifecycleRuleNoncurrentVersionExpiration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      noncurrentVersionTransitions: map['noncurrentVersionTransitions'] == null ? null : ((pulumi.Input.decodeList<BucketV2LifecycleRuleNoncurrentVersionTransition>(map['noncurrentVersionTransitions']!, (value) => BucketV2LifecycleRuleNoncurrentVersionTransition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      transitions: map['transitions'] == null ? null : ((pulumi.Input.decodeList<BucketV2LifecycleRuleTransition>(map['transitions']!, (value) => BucketV2LifecycleRuleTransition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

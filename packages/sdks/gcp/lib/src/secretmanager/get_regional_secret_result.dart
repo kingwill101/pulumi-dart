@@ -111,7 +111,7 @@ class GetRegionalSecretResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       rotations: pulumi.Input.decodeList<GetRegionalSecretRotation>(map['rotations'], (value) => GetRegionalSecretRotation.fromMap((value as Map).cast<String, dynamic>())),
       secretId: map['secretId'] as String,

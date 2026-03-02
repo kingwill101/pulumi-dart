@@ -42,10 +42,10 @@ class AvroWriteSettingsResponse {
 
   factory AvroWriteSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AvroWriteSettingsResponse(
-      fileNamePrefix: map['fileNamePrefix'] == null ? null : (map['fileNamePrefix']).input(),
-      maxRowsPerFile: map['maxRowsPerFile'] == null ? null : (map['maxRowsPerFile']).input(),
-      recordName: map['recordName'] == null ? null : (map['recordName'] as String).input(),
-      recordNamespace: map['recordNamespace'] == null ? null : (map['recordNamespace'] as String).input(),
+      fileNamePrefix: map['fileNamePrefix'] == null ? null : (map['fileNamePrefix']!).input(),
+      maxRowsPerFile: map['maxRowsPerFile'] == null ? null : (map['maxRowsPerFile']!).input(),
+      recordName: map['recordName'] == null ? null : (map['recordName']! as String).input(),
+      recordNamespace: map['recordNamespace'] == null ? null : (map['recordNamespace']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

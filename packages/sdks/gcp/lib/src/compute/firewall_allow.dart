@@ -33,7 +33,7 @@ class FirewallAllow {
 
   factory FirewallAllow.fromMap(Map<String, dynamic> map) {
     return FirewallAllow(
-      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<String>()).input(),
+      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<String>()).input(),
       protocol: (map['protocol'] as String).input(),
     );
   }

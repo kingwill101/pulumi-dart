@@ -22,7 +22,7 @@ class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings {
 
   factory GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings(
-      githubSettings: map['githubSettings'] == null ? null : (GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings.fromMap((map['githubSettings'] as Map).cast<String, dynamic>())).input(),
+      githubSettings: map['githubSettings'] == null ? null : (GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettingsGithubSettings.fromMap((map['githubSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

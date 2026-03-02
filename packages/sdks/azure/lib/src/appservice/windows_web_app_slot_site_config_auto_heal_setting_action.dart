@@ -32,8 +32,8 @@ class WindowsWebAppSlotSiteConfigAutoHealSettingAction {
   factory WindowsWebAppSlotSiteConfigAutoHealSettingAction.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotSiteConfigAutoHealSettingAction(
       actionType: (map['actionType'] as String).input(),
-      customAction: map['customAction'] == null ? null : (WindowsWebAppSlotSiteConfigAutoHealSettingActionCustomAction.fromMap((map['customAction'] as Map).cast<String, dynamic>())).input(),
-      minimumProcessExecutionTime: map['minimumProcessExecutionTime'] == null ? null : (map['minimumProcessExecutionTime'] as String).input(),
+      customAction: map['customAction'] == null ? null : (WindowsWebAppSlotSiteConfigAutoHealSettingActionCustomAction.fromMap((map['customAction']! as Map).cast<String, dynamic>())).input(),
+      minimumProcessExecutionTime: map['minimumProcessExecutionTime'] == null ? null : (map['minimumProcessExecutionTime']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class PreBuildStep {
 
   factory PreBuildStep.fromMap(Map<String, dynamic> map) {
     return PreBuildStep(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      httpGet: map['httpGet'] == null ? null : (HttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
-      scripts: map['scripts'] == null ? null : ((map['scripts'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      httpGet: map['httpGet'] == null ? null : (HttpGet.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
+      scripts: map['scripts'] == null ? null : ((map['scripts']! as List).cast<String>()).input(),
     );
   }
 }

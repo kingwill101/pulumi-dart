@@ -36,9 +36,9 @@ class RouterRoutesV2State {
 
   factory RouterRoutesV2State.fromMap(Map<String, dynamic> map) {
     return RouterRoutesV2State(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routerId: map['routerId'] == null ? null : (map['routerId'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<RouterRoutesV2Route>(map['routes'], (value) => RouterRoutesV2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      routerId: map['routerId'] == null ? null : (map['routerId']! as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<RouterRoutesV2Route>(map['routes']!, (value) => RouterRoutesV2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

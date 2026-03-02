@@ -70,16 +70,16 @@ class TemplateSpecVersionArgs {
 
   factory TemplateSpecVersionArgs.fromMap(Map<String, dynamic> map) {
     return TemplateSpecVersionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      linkedTemplates: map['linkedTemplates'] == null ? null : (pulumi.Input.decodeList<LinkedTemplateArtifact>(map['linkedTemplates'], (value) => LinkedTemplateArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mainTemplate: map['mainTemplate'] == null ? null : (map['mainTemplate']).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      linkedTemplates: map['linkedTemplates'] == null ? null : (pulumi.Input.decodeList<LinkedTemplateArtifact>(map['linkedTemplates']!, (value) => LinkedTemplateArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mainTemplate: map['mainTemplate'] == null ? null : (map['mainTemplate']!).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       templateSpecName: (map['templateSpecName'] as String).input(),
-      templateSpecVersion: map['templateSpecVersion'] == null ? null : (map['templateSpecVersion'] as String).input(),
-      uiFormDefinition: map['uiFormDefinition'] == null ? null : (map['uiFormDefinition']).input(),
+      templateSpecVersion: map['templateSpecVersion'] == null ? null : (map['templateSpecVersion']! as String).input(),
+      uiFormDefinition: map['uiFormDefinition'] == null ? null : (map['uiFormDefinition']!).input(),
     );
   }
 }

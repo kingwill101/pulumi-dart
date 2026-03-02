@@ -47,8 +47,8 @@ class NetworkInterfacePermissionArgs {
       awsAccountId: (map['awsAccountId'] as String).input(),
       networkInterfaceId: (map['networkInterfaceId'] as String).input(),
       permission: (map['permission'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (NetworkInterfacePermissionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((NetworkInterfacePermissionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

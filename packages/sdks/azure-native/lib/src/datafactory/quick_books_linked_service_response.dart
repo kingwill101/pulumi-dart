@@ -100,22 +100,22 @@ class QuickBooksLinkedServiceResponse {
 
   factory QuickBooksLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return QuickBooksLinkedServiceResponse(
-      accessToken: map['accessToken'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['accessToken'] as Map).cast<String, dynamic>())).input(),
-      accessTokenSecret: map['accessTokenSecret'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['accessTokenSecret'] as Map).cast<String, dynamic>())).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      companyId: map['companyId'] == null ? null : (map['companyId']).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      connectionProperties: map['connectionProperties'] == null ? null : (map['connectionProperties']).input(),
-      consumerKey: map['consumerKey'] == null ? null : (map['consumerKey']).input(),
-      consumerSecret: map['consumerSecret'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['consumerSecret'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint']).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      refreshToken: map['refreshToken'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['refreshToken'] as Map).cast<String, dynamic>())).input(),
+      accessToken: map['accessToken'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['accessToken']! as Map).cast<String, dynamic>())).input(),
+      accessTokenSecret: map['accessTokenSecret'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['accessTokenSecret']! as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      companyId: map['companyId'] == null ? null : (map['companyId']!).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      connectionProperties: map['connectionProperties'] == null ? null : (map['connectionProperties']!).input(),
+      consumerKey: map['consumerKey'] == null ? null : (map['consumerKey']!).input(),
+      consumerSecret: map['consumerSecret'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['consumerSecret']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']!).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      refreshToken: map['refreshToken'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['refreshToken']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : (map['useEncryptedEndpoints']).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      useEncryptedEndpoints: map['useEncryptedEndpoints'] == null ? null : (map['useEncryptedEndpoints']!).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

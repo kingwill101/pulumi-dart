@@ -27,7 +27,7 @@ class ManagedIdentitySetting {
   factory ManagedIdentitySetting.fromMap(Map<String, dynamic> map) {
     return ManagedIdentitySetting(
       identity: (map['identity'] as String).input(),
-      lifecycle: map['lifecycle'] == null ? null : (map['lifecycle'] as String).input(),
+      lifecycle: map['lifecycle'] == null ? null : (map['lifecycle']! as String).input(),
     );
   }
 }

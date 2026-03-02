@@ -99,17 +99,17 @@ class SubnetArgs {
 
   factory SubnetArgs.fromMap(Map<String, dynamic> map) {
     return SubnetArgs(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      defaultOutboundAccessEnabled: map['defaultOutboundAccessEnabled'] == null ? null : (map['defaultOutboundAccessEnabled'] as bool).input(),
-      delegations: map['delegations'] == null ? null : (pulumi.Input.decodeList<SubnetDelegation>(map['delegations'], (value) => SubnetDelegation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipAddressPool: map['ipAddressPool'] == null ? null : (SubnetIpAddressPool.fromMap((map['ipAddressPool'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateEndpointNetworkPolicies: map['privateEndpointNetworkPolicies'] == null ? null : (map['privateEndpointNetworkPolicies'] as String).input(),
-      privateLinkServiceNetworkPoliciesEnabled: map['privateLinkServiceNetworkPoliciesEnabled'] == null ? null : (map['privateLinkServiceNetworkPoliciesEnabled'] as bool).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      defaultOutboundAccessEnabled: map['defaultOutboundAccessEnabled'] == null ? null : (map['defaultOutboundAccessEnabled']! as bool).input(),
+      delegations: map['delegations'] == null ? null : (pulumi.Input.decodeList<SubnetDelegation>(map['delegations']!, (value) => SubnetDelegation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipAddressPool: map['ipAddressPool'] == null ? null : (SubnetIpAddressPool.fromMap((map['ipAddressPool']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateEndpointNetworkPolicies: map['privateEndpointNetworkPolicies'] == null ? null : (map['privateEndpointNetworkPolicies']! as String).input(),
+      privateLinkServiceNetworkPoliciesEnabled: map['privateLinkServiceNetworkPoliciesEnabled'] == null ? null : (map['privateLinkServiceNetworkPoliciesEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceEndpointPolicyIds: map['serviceEndpointPolicyIds'] == null ? null : ((map['serviceEndpointPolicyIds'] as List).cast<String>()).input(),
-      serviceEndpoints: map['serviceEndpoints'] == null ? null : ((map['serviceEndpoints'] as List).cast<String>()).input(),
-      sharingScope: map['sharingScope'] == null ? null : (map['sharingScope'] as String).input(),
+      serviceEndpointPolicyIds: map['serviceEndpointPolicyIds'] == null ? null : ((map['serviceEndpointPolicyIds']! as List).cast<String>()).input(),
+      serviceEndpoints: map['serviceEndpoints'] == null ? null : ((map['serviceEndpoints']! as List).cast<String>()).input(),
+      sharingScope: map['sharingScope'] == null ? null : (map['sharingScope']! as String).input(),
       virtualNetworkName: (map['virtualNetworkName'] as String).input(),
     );
   }

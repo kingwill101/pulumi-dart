@@ -55,13 +55,13 @@ class ResourceDirectoryState {
 
   factory ResourceDirectoryState.fromMap(Map<String, dynamic> map) {
     return ResourceDirectoryState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      masterAccountId: map['masterAccountId'] == null ? null : (map['masterAccountId'] as String).input(),
-      masterAccountName: map['masterAccountName'] == null ? null : (map['masterAccountName'] as String).input(),
-      memberAccountDisplayNameSyncStatus: map['memberAccountDisplayNameSyncStatus'] == null ? null : (map['memberAccountDisplayNameSyncStatus'] as String).input(),
-      memberDeletionStatus: map['memberDeletionStatus'] == null ? null : (map['memberDeletionStatus'] as String).input(),
-      rootFolderId: map['rootFolderId'] == null ? null : (map['rootFolderId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      masterAccountId: map['masterAccountId'] == null ? null : (map['masterAccountId']! as String).input(),
+      masterAccountName: map['masterAccountName'] == null ? null : (map['masterAccountName']! as String).input(),
+      memberAccountDisplayNameSyncStatus: map['memberAccountDisplayNameSyncStatus'] == null ? null : (map['memberAccountDisplayNameSyncStatus']! as String).input(),
+      memberDeletionStatus: map['memberDeletionStatus'] == null ? null : (map['memberDeletionStatus']! as String).input(),
+      rootFolderId: map['rootFolderId'] == null ? null : (map['rootFolderId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

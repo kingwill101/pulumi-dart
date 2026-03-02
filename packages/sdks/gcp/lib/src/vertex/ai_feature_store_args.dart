@@ -67,14 +67,14 @@ class AiFeatureStoreArgs {
 
   factory AiFeatureStoreArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreArgs(
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiFeatureStoreEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      onlineServingConfig: map['onlineServingConfig'] == null ? null : (AiFeatureStoreOnlineServingConfig.fromMap((map['onlineServingConfig'] as Map).cast<String, dynamic>())).input(),
-      onlineStorageTtlDays: map['onlineStorageTtlDays'] == null ? null : (map['onlineStorageTtlDays'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiFeatureStoreEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      onlineServingConfig: map['onlineServingConfig'] == null ? null : (AiFeatureStoreOnlineServingConfig.fromMap((map['onlineServingConfig']! as Map).cast<String, dynamic>())).input(),
+      onlineStorageTtlDays: map['onlineStorageTtlDays'] == null ? null : (map['onlineStorageTtlDays']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -118,25 +118,25 @@ class PrivateLinkServiceResponse {
 
   factory PrivateLinkServiceResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceResponse(
-      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
+      accessMode: map['accessMode'] == null ? null : (map['accessMode']! as String).input(),
       alias: (map['alias'] as String).input(),
-      autoApproval: map['autoApproval'] == null ? null : (PrivateLinkServicePropertiesResponseAutoApproval.fromMap((map['autoApproval'] as Map).cast<String, dynamic>())).input(),
-      destinationIPAddress: map['destinationIPAddress'] == null ? null : (map['destinationIPAddress'] as String).input(),
-      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol'] as bool).input(),
+      autoApproval: map['autoApproval'] == null ? null : (PrivateLinkServicePropertiesResponseAutoApproval.fromMap((map['autoApproval']! as Map).cast<String, dynamic>())).input(),
+      destinationIPAddress: map['destinationIPAddress'] == null ? null : (map['destinationIPAddress']! as String).input(),
+      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol']! as bool).input(),
       etag: (map['etag'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceIpConfigurationResponse>(map['ipConfigurations'], (value) => PrivateLinkServiceIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancerFrontendIpConfigurations: map['loadBalancerFrontendIpConfigurations'] == null ? null : (pulumi.Input.decodeList<FrontendIPConfigurationResponse>(map['loadBalancerFrontendIpConfigurations'], (value) => FrontendIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceIpConfigurationResponse>(map['ipConfigurations']!, (value) => PrivateLinkServiceIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerFrontendIpConfigurations: map['loadBalancerFrontendIpConfigurations'] == null ? null : (pulumi.Input.decodeList<FrontendIPConfigurationResponse>(map['loadBalancerFrontendIpConfigurations']!, (value) => FrontendIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
       networkInterfaces: (pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
-      visibility: map['visibility'] == null ? null : (PrivateLinkServicePropertiesResponseVisibility.fromMap((map['visibility'] as Map).cast<String, dynamic>())).input(),
+      visibility: map['visibility'] == null ? null : (PrivateLinkServicePropertiesResponseVisibility.fromMap((map['visibility']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

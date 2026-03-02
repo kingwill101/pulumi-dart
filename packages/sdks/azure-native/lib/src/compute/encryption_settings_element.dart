@@ -28,8 +28,8 @@ class EncryptionSettingsElement {
 
   factory EncryptionSettingsElement.fromMap(Map<String, dynamic> map) {
     return EncryptionSettingsElement(
-      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : (KeyVaultAndSecretReference.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyVaultAndKeyReference.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : (KeyVaultAndSecretReference.fromMap((map['diskEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyVaultAndKeyReference.fromMap((map['keyEncryptionKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

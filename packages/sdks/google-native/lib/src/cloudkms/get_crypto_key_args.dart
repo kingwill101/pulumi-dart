@@ -38,7 +38,7 @@ class GetCryptoKeyArgs {
       cryptoKeyId: (map['cryptoKeyId'] as String).input(),
       keyRingId: (map['keyRingId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

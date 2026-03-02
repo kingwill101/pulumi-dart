@@ -24,8 +24,8 @@ class NetworkInsightsAnalysisForwardPathComponentAdditionalDetail {
 
   factory NetworkInsightsAnalysisForwardPathComponentAdditionalDetail.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisForwardPathComponentAdditionalDetail(
-      additionalDetailType: map['additionalDetailType'] == null ? null : (map['additionalDetailType'] as String).input(),
-      components: map['components'] == null ? null : (pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent>(map['components'], (value) => NetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalDetailType: map['additionalDetailType'] == null ? null : ((map['additionalDetailType'] as String).input()).input(),
+      components: map['components'] == null ? null : ((pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent>(map['components']!, (value) => NetworkInsightsAnalysisForwardPathComponentAdditionalDetailComponent.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

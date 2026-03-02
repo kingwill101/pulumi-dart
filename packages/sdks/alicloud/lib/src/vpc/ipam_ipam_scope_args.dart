@@ -55,11 +55,11 @@ class IpamIpamScopeArgs {
   factory IpamIpamScopeArgs.fromMap(Map<String, dynamic> map) {
     return IpamIpamScopeArgs(
       ipamId: (map['ipamId'] as String).input(),
-      ipamScopeDescription: map['ipamScopeDescription'] == null ? null : (map['ipamScopeDescription'] as String).input(),
-      ipamScopeName: map['ipamScopeName'] == null ? null : (map['ipamScopeName'] as String).input(),
-      ipamScopeType: map['ipamScopeType'] == null ? null : (map['ipamScopeType'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      ipamScopeDescription: map['ipamScopeDescription'] == null ? null : (map['ipamScopeDescription']! as String).input(),
+      ipamScopeName: map['ipamScopeName'] == null ? null : (map['ipamScopeName']! as String).input(),
+      ipamScopeType: map['ipamScopeType'] == null ? null : (map['ipamScopeType']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

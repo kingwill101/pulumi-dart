@@ -40,10 +40,10 @@ class TaskExecutionSpec {
 
   factory TaskExecutionSpec.fromMap(Map<String, dynamic> map) {
     return TaskExecutionSpec(
-      args: map['args'] == null ? null : ((map['args'] as Map).cast<String, String>()).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      maxJobExecutionLifetime: map['maxJobExecutionLifetime'] == null ? null : (map['maxJobExecutionLifetime'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      args: map['args'] == null ? null : ((map['args']! as Map).cast<String, String>()).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      maxJobExecutionLifetime: map['maxJobExecutionLifetime'] == null ? null : (map['maxJobExecutionLifetime']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceAccount: (map['serviceAccount'] as String).input(),
     );
   }

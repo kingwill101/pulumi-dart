@@ -45,12 +45,12 @@ class ClusterFleet {
 
   factory ClusterFleet.fromMap(Map<String, dynamic> map) {
     return ClusterFleet(
-      membership: map['membership'] == null ? null : (map['membership'] as String).input(),
-      membershipId: map['membershipId'] == null ? null : (map['membershipId'] as String).input(),
-      membershipLocation: map['membershipLocation'] == null ? null : (map['membershipLocation'] as String).input(),
-      membershipType: map['membershipType'] == null ? null : (map['membershipType'] as String).input(),
-      preRegistered: map['preRegistered'] == null ? null : (map['preRegistered'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      membership: map['membership'] == null ? null : (map['membership']! as String).input(),
+      membershipId: map['membershipId'] == null ? null : (map['membershipId']! as String).input(),
+      membershipLocation: map['membershipLocation'] == null ? null : (map['membershipLocation']! as String).input(),
+      membershipType: map['membershipType'] == null ? null : (map['membershipType']! as String).input(),
+      preRegistered: map['preRegistered'] == null ? null : (map['preRegistered']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

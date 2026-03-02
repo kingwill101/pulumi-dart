@@ -22,7 +22,7 @@ class HealthModelProperties {
 
   factory HealthModelProperties.fromMap(Map<String, dynamic> map) {
     return HealthModelProperties(
-      discovery: map['discovery'] == null ? null : (ModelDiscoverySettings.fromMap((map['discovery'] as Map).cast<String, dynamic>())).input(),
+      discovery: map['discovery'] == null ? null : (ModelDiscoverySettings.fromMap((map['discovery']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

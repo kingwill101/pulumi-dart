@@ -36,10 +36,10 @@ class MulticastDomainAssociationState {
 
   factory MulticastDomainAssociationState.fromMap(Map<String, dynamic> map) {
     return MulticastDomainAssociationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
-      transitGatewayMulticastDomainId: map['transitGatewayMulticastDomainId'] == null ? null : (map['transitGatewayMulticastDomainId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : ((map['transitGatewayAttachmentId'] as String).input()).input(),
+      transitGatewayMulticastDomainId: map['transitGatewayMulticastDomainId'] == null ? null : ((map['transitGatewayMulticastDomainId'] as String).input()).input(),
     );
   }
 }

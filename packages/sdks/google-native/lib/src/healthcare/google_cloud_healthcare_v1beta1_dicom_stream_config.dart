@@ -22,7 +22,7 @@ class GoogleCloudHealthcareV1beta1DicomStreamConfig {
 
   factory GoogleCloudHealthcareV1beta1DicomStreamConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1beta1DicomStreamConfig(
-      bigqueryDestination: map['bigqueryDestination'] == null ? null : (GoogleCloudHealthcareV1beta1DicomBigQueryDestination.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>())).input(),
+      bigqueryDestination: map['bigqueryDestination'] == null ? null : (GoogleCloudHealthcareV1beta1DicomBigQueryDestination.fromMap((map['bigqueryDestination']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

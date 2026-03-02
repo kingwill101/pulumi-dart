@@ -35,8 +35,8 @@ class ServiceTemplateSpecVolumeCsi {
   factory ServiceTemplateSpecVolumeCsi.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecVolumeCsi(
       driver: (map['driver'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      volumeAttributes: map['volumeAttributes'] == null ? null : ((map['volumeAttributes'] as Map).cast<String, String>()).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      volumeAttributes: map['volumeAttributes'] == null ? null : ((map['volumeAttributes']! as Map).cast<String, String>()).input(),
     );
   }
 }

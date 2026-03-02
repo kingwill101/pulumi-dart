@@ -65,15 +65,15 @@ class MembershipGkehubV1alphaArgs {
 
   factory MembershipGkehubV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return MembershipGkehubV1alphaArgs(
-      authority: map['authority'] == null ? null : (AuthorityGkehubV1alpha.fromMap((map['authority'] as Map).cast<String, dynamic>())).input(),
-      endpoint: map['endpoint'] == null ? null : (MembershipEndpointGkehubV1alpha.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      authority: map['authority'] == null ? null : (AuthorityGkehubV1alpha.fromMap((map['authority']! as Map).cast<String, dynamic>())).input(),
+      endpoint: map['endpoint'] == null ? null : (MembershipEndpointGkehubV1alpha.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       membershipId: (map['membershipId'] as String).input(),
-      monitoringConfig: map['monitoringConfig'] == null ? null : (MonitoringConfigGkehubV1alpha.fromMap((map['monitoringConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      monitoringConfig: map['monitoringConfig'] == null ? null : (MonitoringConfigGkehubV1alpha.fromMap((map['monitoringConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

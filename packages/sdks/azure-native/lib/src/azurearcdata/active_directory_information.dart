@@ -22,7 +22,7 @@ class ActiveDirectoryInformation {
 
   factory ActiveDirectoryInformation.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryInformation(
-      keytabInformation: map['keytabInformation'] == null ? null : (KeytabInformation.fromMap((map['keytabInformation'] as Map).cast<String, dynamic>())).input(),
+      keytabInformation: map['keytabInformation'] == null ? null : (KeytabInformation.fromMap((map['keytabInformation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

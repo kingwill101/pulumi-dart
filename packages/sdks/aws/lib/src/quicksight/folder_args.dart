@@ -62,14 +62,14 @@ class FolderArgs {
 
   factory FolderArgs.fromMap(Map<String, dynamic> map) {
     return FolderArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
       folderId: (map['folderId'] as String).input(),
-      folderType: map['folderType'] == null ? null : (map['folderType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentFolderArn: map['parentFolderArn'] == null ? null : (map['parentFolderArn'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<FolderPermission>(map['permissions'], (value) => FolderPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      folderType: map['folderType'] == null ? null : ((map['folderType'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parentFolderArn: map['parentFolderArn'] == null ? null : ((map['parentFolderArn'] as String).input()).input(),
+      permissions: map['permissions'] == null ? null : ((pulumi.Input.decodeList<FolderPermission>(map['permissions']!, (value) => FolderPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

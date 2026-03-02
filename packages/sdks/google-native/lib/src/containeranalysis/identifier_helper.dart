@@ -27,8 +27,8 @@ class IdentifierHelper {
 
   factory IdentifierHelper.fromMap(Map<String, dynamic> map) {
     return IdentifierHelper(
-      field: map['field'] == null ? null : (IdentifierHelperField.fromValue(map['field'] as String)).input(),
-      genericUri: map['genericUri'] == null ? null : (map['genericUri'] as String).input(),
+      field: map['field'] == null ? null : (IdentifierHelperField.fromValue(map['field']! as String)).input(),
+      genericUri: map['genericUri'] == null ? null : (map['genericUri']! as String).input(),
     );
   }
 }

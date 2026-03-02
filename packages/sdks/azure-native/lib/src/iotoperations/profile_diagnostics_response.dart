@@ -28,8 +28,8 @@ class ProfileDiagnosticsResponse {
 
   factory ProfileDiagnosticsResponse.fromMap(Map<String, dynamic> map) {
     return ProfileDiagnosticsResponse(
-      logs: map['logs'] == null ? null : (DiagnosticsLogsResponse.fromMap((map['logs'] as Map).cast<String, dynamic>())).input(),
-      metrics: map['metrics'] == null ? null : (MetricsResponse.fromMap((map['metrics'] as Map).cast<String, dynamic>())).input(),
+      logs: map['logs'] == null ? null : (DiagnosticsLogsResponse.fromMap((map['logs']! as Map).cast<String, dynamic>())).input(),
+      metrics: map['metrics'] == null ? null : (MetricsResponse.fromMap((map['metrics']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class TableSignedIdentifierResponse {
 
   factory TableSignedIdentifierResponse.fromMap(Map<String, dynamic> map) {
     return TableSignedIdentifierResponse(
-      accessPolicy: map['accessPolicy'] == null ? null : (TableAccessPolicyResponse.fromMap((map['accessPolicy'] as Map).cast<String, dynamic>())).input(),
+      accessPolicy: map['accessPolicy'] == null ? null : (TableAccessPolicyResponse.fromMap((map['accessPolicy']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
     );
   }

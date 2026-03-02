@@ -27,8 +27,8 @@ class ScriptsToExecuteResponse {
 
   factory ScriptsToExecuteResponse.fromMap(Map<String, dynamic> map) {
     return ScriptsToExecuteResponse(
-      creationScript: map['creationScript'] == null ? null : (ScriptReferenceResponse.fromMap((map['creationScript'] as Map).cast<String, dynamic>())).input(),
-      startupScript: map['startupScript'] == null ? null : (ScriptReferenceResponse.fromMap((map['startupScript'] as Map).cast<String, dynamic>())).input(),
+      creationScript: map['creationScript'] == null ? null : (ScriptReferenceResponse.fromMap((map['creationScript']! as Map).cast<String, dynamic>())).input(),
+      startupScript: map['startupScript'] == null ? null : (ScriptReferenceResponse.fromMap((map['startupScript']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

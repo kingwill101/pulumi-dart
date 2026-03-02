@@ -41,7 +41,7 @@ class NamespaceSchemaGroupArgs {
 
   factory NamespaceSchemaGroupArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceSchemaGroupArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       namespaceId: (map['namespaceId'] as String).input(),
       schemaCompatibility: (map['schemaCompatibility'] as String).input(),
       schemaType: (map['schemaType'] as String).input(),

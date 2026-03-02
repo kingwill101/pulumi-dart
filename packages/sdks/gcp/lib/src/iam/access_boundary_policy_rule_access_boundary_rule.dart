@@ -32,9 +32,9 @@ class AccessBoundaryPolicyRuleAccessBoundaryRule {
 
   factory AccessBoundaryPolicyRuleAccessBoundaryRule.fromMap(Map<String, dynamic> map) {
     return AccessBoundaryPolicyRuleAccessBoundaryRule(
-      availabilityCondition: map['availabilityCondition'] == null ? null : (AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition.fromMap((map['availabilityCondition'] as Map).cast<String, dynamic>())).input(),
-      availablePermissions: map['availablePermissions'] == null ? null : ((map['availablePermissions'] as List).cast<String>()).input(),
-      availableResource: map['availableResource'] == null ? null : (map['availableResource'] as String).input(),
+      availabilityCondition: map['availabilityCondition'] == null ? null : (AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition.fromMap((map['availabilityCondition']! as Map).cast<String, dynamic>())).input(),
+      availablePermissions: map['availablePermissions'] == null ? null : ((map['availablePermissions']! as List).cast<String>()).input(),
+      availableResource: map['availableResource'] == null ? null : (map['availableResource']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class PublisherPropertiesFormat {
 
   factory PublisherPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return PublisherPropertiesFormat(
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

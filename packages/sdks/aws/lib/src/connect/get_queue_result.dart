@@ -81,7 +81,7 @@ class GetQueueResult {
       instanceId: map['instanceId'] as String,
       maxContacts: map['maxContacts'] as int,
       name: map['name'] as String,
-      outboundCallerConfigs: pulumi.Input.decodeList<GetQueueOutboundCallerConfig>(map['outboundCallerConfigs'], (value) => GetQueueOutboundCallerConfig.fromMap((value as Map).cast<String, dynamic>())),
+      outboundCallerConfigs: pulumi.Input.decodeList<GetQueueOutboundCallerConfig>(map['outboundCallerConfigs']!, (value) => GetQueueOutboundCallerConfig.fromMap((value as Map).cast<String, dynamic>())),
       queueId: map['queueId'] as String,
       region: map['region'] as String,
       status: map['status'] as String,

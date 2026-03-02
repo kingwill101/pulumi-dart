@@ -27,9 +27,9 @@ class TableExportIncrementalExportSpecification {
 
   factory TableExportIncrementalExportSpecification.fromMap(Map<String, dynamic> map) {
     return TableExportIncrementalExportSpecification(
-      exportFromTime: map['exportFromTime'] == null ? null : (map['exportFromTime'] as String).input(),
-      exportToTime: map['exportToTime'] == null ? null : (map['exportToTime'] as String).input(),
-      exportViewType: map['exportViewType'] == null ? null : (map['exportViewType'] as String).input(),
+      exportFromTime: map['exportFromTime'] == null ? null : ((map['exportFromTime'] as String).input()).input(),
+      exportToTime: map['exportToTime'] == null ? null : ((map['exportToTime'] as String).input()).input(),
+      exportViewType: map['exportViewType'] == null ? null : ((map['exportViewType'] as String).input()).input(),
     );
   }
 }

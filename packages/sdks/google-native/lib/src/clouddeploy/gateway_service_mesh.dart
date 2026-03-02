@@ -38,7 +38,7 @@ class GatewayServiceMesh {
     return GatewayServiceMesh(
       deployment: (map['deployment'] as String).input(),
       httpRoute: (map['httpRoute'] as String).input(),
-      routeUpdateWaitTime: map['routeUpdateWaitTime'] == null ? null : (map['routeUpdateWaitTime'] as String).input(),
+      routeUpdateWaitTime: map['routeUpdateWaitTime'] == null ? null : (map['routeUpdateWaitTime']! as String).input(),
       service: (map['service'] as String).input(),
     );
   }

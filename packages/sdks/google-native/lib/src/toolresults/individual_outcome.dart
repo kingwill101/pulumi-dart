@@ -36,10 +36,10 @@ class IndividualOutcome {
 
   factory IndividualOutcome.fromMap(Map<String, dynamic> map) {
     return IndividualOutcome(
-      multistepNumber: map['multistepNumber'] == null ? null : (map['multistepNumber'] as int).input(),
-      outcomeSummary: map['outcomeSummary'] == null ? null : (IndividualOutcomeOutcomeSummary.fromValue(map['outcomeSummary'] as String)).input(),
-      runDuration: map['runDuration'] == null ? null : (Duration.fromMap((map['runDuration'] as Map).cast<String, dynamic>())).input(),
-      stepId: map['stepId'] == null ? null : (map['stepId'] as String).input(),
+      multistepNumber: map['multistepNumber'] == null ? null : (map['multistepNumber']! as int).input(),
+      outcomeSummary: map['outcomeSummary'] == null ? null : (IndividualOutcomeOutcomeSummary.fromValue(map['outcomeSummary']! as String)).input(),
+      runDuration: map['runDuration'] == null ? null : (Duration.fromMap((map['runDuration']! as Map).cast<String, dynamic>())).input(),
+      stepId: map['stepId'] == null ? null : (map['stepId']! as String).input(),
     );
   }
 }

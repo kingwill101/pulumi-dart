@@ -20,7 +20,7 @@ class ListBuildServiceBuilderDeploymentsResult {
 
   factory ListBuildServiceBuilderDeploymentsResult.fromMap(Map<String, dynamic> map) {
     return ListBuildServiceBuilderDeploymentsResult(
-      deployments: map['deployments'] == null ? null : (map['deployments'] as List).cast<String>(),
+      deployments: map['deployments'] == null ? null : (map['deployments']! as List).cast<String>(),
     );
   }
 }

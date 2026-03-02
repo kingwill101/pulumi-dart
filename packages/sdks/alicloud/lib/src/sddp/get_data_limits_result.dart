@@ -48,9 +48,9 @@ class GetDataLimitsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       limits: pulumi.Input.decodeList<GetDataLimitsLimit>(map['limits'], (value) => GetDataLimitsLimit.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      parentId: map['parentId'] == null ? null : map['parentId'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      parentId: map['parentId'] == null ? null : map['parentId']! as String,
+      resourceType: map['resourceType'] == null ? null : map['resourceType']! as String,
     );
   }
 }

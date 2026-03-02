@@ -49,11 +49,11 @@ class DeploymentResourcePropertiesResponse {
 
   factory DeploymentResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentResourcePropertiesResponse(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      deploymentSettings: map['deploymentSettings'] == null ? null : (DeploymentSettingsResponse.fromMap((map['deploymentSettings'] as Map).cast<String, dynamic>())).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      deploymentSettings: map['deploymentSettings'] == null ? null : (DeploymentSettingsResponse.fromMap((map['deploymentSettings']! as Map).cast<String, dynamic>())).input(),
       instances: (pulumi.Input.decodeList<DeploymentInstanceResponse>(map['instances'], (value) => DeploymentInstanceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      source: map['source'] == null ? null : (BuildResultUserSourceInfoResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (BuildResultUserSourceInfoResponse.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
       status: (map['status'] as String).input(),
     );
   }

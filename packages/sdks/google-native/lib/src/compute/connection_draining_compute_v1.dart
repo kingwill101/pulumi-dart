@@ -21,7 +21,7 @@ class ConnectionDrainingComputeV1 {
 
   factory ConnectionDrainingComputeV1.fromMap(Map<String, dynamic> map) {
     return ConnectionDrainingComputeV1(
-      drainingTimeoutSec: map['drainingTimeoutSec'] == null ? null : (map['drainingTimeoutSec'] as int).input(),
+      drainingTimeoutSec: map['drainingTimeoutSec'] == null ? null : (map['drainingTimeoutSec']! as int).input(),
     );
   }
 }

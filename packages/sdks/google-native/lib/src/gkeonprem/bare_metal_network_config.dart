@@ -39,10 +39,10 @@ class BareMetalNetworkConfig {
 
   factory BareMetalNetworkConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalNetworkConfig(
-      advancedNetworking: map['advancedNetworking'] == null ? null : (map['advancedNetworking'] as bool).input(),
-      islandModeCidr: map['islandModeCidr'] == null ? null : (BareMetalIslandModeCidrConfig.fromMap((map['islandModeCidr'] as Map).cast<String, dynamic>())).input(),
-      multipleNetworkInterfacesConfig: map['multipleNetworkInterfacesConfig'] == null ? null : (BareMetalMultipleNetworkInterfacesConfig.fromMap((map['multipleNetworkInterfacesConfig'] as Map).cast<String, dynamic>())).input(),
-      srIovConfig: map['srIovConfig'] == null ? null : (BareMetalSrIovConfig.fromMap((map['srIovConfig'] as Map).cast<String, dynamic>())).input(),
+      advancedNetworking: map['advancedNetworking'] == null ? null : (map['advancedNetworking']! as bool).input(),
+      islandModeCidr: map['islandModeCidr'] == null ? null : (BareMetalIslandModeCidrConfig.fromMap((map['islandModeCidr']! as Map).cast<String, dynamic>())).input(),
+      multipleNetworkInterfacesConfig: map['multipleNetworkInterfacesConfig'] == null ? null : (BareMetalMultipleNetworkInterfacesConfig.fromMap((map['multipleNetworkInterfacesConfig']! as Map).cast<String, dynamic>())).input(),
+      srIovConfig: map['srIovConfig'] == null ? null : (BareMetalSrIovConfig.fromMap((map['srIovConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

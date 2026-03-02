@@ -46,12 +46,12 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      accessControlRules: map['accessControlRules'] == null ? null : (map['accessControlRules'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kmsInstanceId: map['kmsInstanceId'] == null ? null : (map['kmsInstanceId'] as String).input(),
-      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
+      accessControlRules: map['accessControlRules'] == null ? null : (map['accessControlRules']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      kmsInstanceId: map['kmsInstanceId'] == null ? null : (map['kmsInstanceId']! as String).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions']! as List).cast<String>()).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
     );
   }
 }

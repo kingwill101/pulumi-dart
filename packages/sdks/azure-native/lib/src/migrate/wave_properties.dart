@@ -43,9 +43,9 @@ class WaveProperties {
   factory WaveProperties.fromMap(Map<String, dynamic> map) {
     return WaveProperties(
       arg: (Arg.fromMap((map['arg'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      plannedCompletionDate: map['plannedCompletionDate'] == null ? null : (map['plannedCompletionDate'] as String).input(),
+      plannedCompletionDate: map['plannedCompletionDate'] == null ? null : (map['plannedCompletionDate']! as String).input(),
       plannedStartDate: (map['plannedStartDate'] as String).input(),
     );
   }

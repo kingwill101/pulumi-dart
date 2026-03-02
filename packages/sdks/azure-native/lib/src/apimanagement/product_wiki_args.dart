@@ -40,7 +40,7 @@ class ProductWikiArgs {
 
   factory ProductWikiArgs.fromMap(Map<String, dynamic> map) {
     return ProductWikiArgs(
-      documents: map['documents'] == null ? null : (pulumi.Input.decodeList<WikiDocumentationContract>(map['documents'], (value) => WikiDocumentationContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      documents: map['documents'] == null ? null : (pulumi.Input.decodeList<WikiDocumentationContract>(map['documents']!, (value) => WikiDocumentationContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
       productId: (map['productId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),

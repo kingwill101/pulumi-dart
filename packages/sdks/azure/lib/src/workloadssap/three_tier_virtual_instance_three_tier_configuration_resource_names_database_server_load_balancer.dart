@@ -35,10 +35,10 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerL
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerLoadBalancer.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerLoadBalancer(
-      backendPoolNames: map['backendPoolNames'] == null ? null : ((map['backendPoolNames'] as List).cast<String>()).input(),
-      frontendIpConfigurationNames: map['frontendIpConfigurationNames'] == null ? null : ((map['frontendIpConfigurationNames'] as List).cast<String>()).input(),
-      healthProbeNames: map['healthProbeNames'] == null ? null : ((map['healthProbeNames'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      backendPoolNames: map['backendPoolNames'] == null ? null : ((map['backendPoolNames']! as List).cast<String>()).input(),
+      frontendIpConfigurationNames: map['frontendIpConfigurationNames'] == null ? null : ((map['frontendIpConfigurationNames']! as List).cast<String>()).input(),
+      healthProbeNames: map['healthProbeNames'] == null ? null : ((map['healthProbeNames']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

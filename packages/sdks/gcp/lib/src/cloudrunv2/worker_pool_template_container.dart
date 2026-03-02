@@ -80,17 +80,17 @@ class WorkerPoolTemplateContainer {
 
   factory WorkerPoolTemplateContainer.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateContainer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      dependsOns: map['dependsOns'] == null ? null : ((map['dependsOns'] as List).cast<String>()).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<WorkerPoolTemplateContainerEnv>(map['envs'], (value) => WorkerPoolTemplateContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      dependsOns: map['dependsOns'] == null ? null : ((map['dependsOns']! as List).cast<String>()).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<WorkerPoolTemplateContainerEnv>(map['envs']!, (value) => WorkerPoolTemplateContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
       image: (map['image'] as String).input(),
-      livenessProbe: map['livenessProbe'] == null ? null : (WorkerPoolTemplateContainerLivenessProbe.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resources: map['resources'] == null ? null : (WorkerPoolTemplateContainerResources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
-      startupProbe: map['startupProbe'] == null ? null : (WorkerPoolTemplateContainerStartupProbe.fromMap((map['startupProbe'] as Map).cast<String, dynamic>())).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<WorkerPoolTemplateContainerVolumeMount>(map['volumeMounts'], (value) => WorkerPoolTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
+      livenessProbe: map['livenessProbe'] == null ? null : (WorkerPoolTemplateContainerLivenessProbe.fromMap((map['livenessProbe']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resources: map['resources'] == null ? null : (WorkerPoolTemplateContainerResources.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
+      startupProbe: map['startupProbe'] == null ? null : (WorkerPoolTemplateContainerStartupProbe.fromMap((map['startupProbe']! as Map).cast<String, dynamic>())).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<WorkerPoolTemplateContainerVolumeMount>(map['volumeMounts']!, (value) => WorkerPoolTemplateContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir']! as String).input(),
     );
   }
 }

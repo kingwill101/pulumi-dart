@@ -112,7 +112,7 @@ class GetImageResult {
 
   factory GetImageResult.fromMap(Map<String, dynamic> map) {
     return GetImageResult(
-      applications: pulumi.Input.decodeList<GetImageApplication>(map['applications'], (value) => GetImageApplication.fromMap((value as Map).cast<String, dynamic>())),
+      applications: pulumi.Input.decodeList<GetImageApplication>(map['applications']!, (value) => GetImageApplication.fromMap((value as Map).cast<String, dynamic>())),
       appstreamAgentVersion: map['appstreamAgentVersion'] as String,
       arn: map['arn'] as String,
       baseImageArn: map['baseImageArn'] as String,
@@ -122,7 +122,7 @@ class GetImageResult {
       id: map['id'] as String,
       imageBuilderName: map['imageBuilderName'] as String,
       imageBuilderSupported: map['imageBuilderSupported'] as bool,
-      imagePermissions: pulumi.Input.decodeList<GetImageImagePermission>(map['imagePermissions'], (value) => GetImageImagePermission.fromMap((value as Map).cast<String, dynamic>())),
+      imagePermissions: pulumi.Input.decodeList<GetImageImagePermission>(map['imagePermissions']!, (value) => GetImageImagePermission.fromMap((value as Map).cast<String, dynamic>())),
       mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
       name: map['name'] as String,
       nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
@@ -130,7 +130,7 @@ class GetImageResult {
       publicBaseImageReleasedDate: map['publicBaseImageReleasedDate'] as String,
       region: map['region'] as String,
       state: map['state'] as String,
-      stateChangeReasons: pulumi.Input.decodeList<GetImageStateChangeReason>(map['stateChangeReasons'], (value) => GetImageStateChangeReason.fromMap((value as Map).cast<String, dynamic>())),
+      stateChangeReasons: pulumi.Input.decodeList<GetImageStateChangeReason>(map['stateChangeReasons']!, (value) => GetImageStateChangeReason.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] == null ? null : map['type'] as String,
     );
   }

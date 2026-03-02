@@ -22,7 +22,7 @@ class V2QueuedResourceTpu {
 
   factory V2QueuedResourceTpu.fromMap(Map<String, dynamic> map) {
     return V2QueuedResourceTpu(
-      nodeSpecs: map['nodeSpecs'] == null ? null : (pulumi.Input.decodeList<V2QueuedResourceTpuNodeSpec>(map['nodeSpecs'], (value) => V2QueuedResourceTpuNodeSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeSpecs: map['nodeSpecs'] == null ? null : (pulumi.Input.decodeList<V2QueuedResourceTpuNodeSpec>(map['nodeSpecs']!, (value) => V2QueuedResourceTpuNodeSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

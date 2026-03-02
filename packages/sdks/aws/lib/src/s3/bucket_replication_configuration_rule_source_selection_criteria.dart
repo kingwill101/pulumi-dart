@@ -22,7 +22,7 @@ class BucketReplicationConfigurationRuleSourceSelectionCriteria {
 
   factory BucketReplicationConfigurationRuleSourceSelectionCriteria.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigurationRuleSourceSelectionCriteria(
-      sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null ? null : (BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects.fromMap((map['sseKmsEncryptedObjects'] as Map).cast<String, dynamic>())).input(),
+      sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null ? null : ((BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects.fromMap((map['sseKmsEncryptedObjects']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

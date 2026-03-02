@@ -22,7 +22,7 @@ class ComputeSchedulesResponse {
 
   factory ComputeSchedulesResponse.fromMap(Map<String, dynamic> map) {
     return ComputeSchedulesResponse(
-      computeStartStop: map['computeStartStop'] == null ? null : (pulumi.Input.decodeList<ComputeStartStopScheduleResponse>(map['computeStartStop'], (value) => ComputeStartStopScheduleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      computeStartStop: map['computeStartStop'] == null ? null : (pulumi.Input.decodeList<ComputeStartStopScheduleResponse>(map['computeStartStop']!, (value) => ComputeStartStopScheduleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

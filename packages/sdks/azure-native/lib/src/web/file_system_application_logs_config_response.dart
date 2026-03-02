@@ -21,7 +21,7 @@ class FileSystemApplicationLogsConfigResponse {
 
   factory FileSystemApplicationLogsConfigResponse.fromMap(Map<String, dynamic> map) {
     return FileSystemApplicationLogsConfigResponse(
-      level: map['level'] == null ? null : (map['level'] as String).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
     );
   }
 }

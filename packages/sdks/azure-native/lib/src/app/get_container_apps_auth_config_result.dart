@@ -78,14 +78,14 @@ class GetContainerAppsAuthConfigResult {
   factory GetContainerAppsAuthConfigResult.fromMap(Map<String, dynamic> map) {
     return GetContainerAppsAuthConfigResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      encryptionSettings: map['encryptionSettings'] == null ? null : EncryptionSettingsResponse.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>()),
-      globalValidation: map['globalValidation'] == null ? null : GlobalValidationResponse.fromMap((map['globalValidation'] as Map).cast<String, dynamic>()),
-      httpSettings: map['httpSettings'] == null ? null : HttpSettingsResponse.fromMap((map['httpSettings'] as Map).cast<String, dynamic>()),
+      encryptionSettings: map['encryptionSettings'] == null ? null : EncryptionSettingsResponse.fromMap((map['encryptionSettings']! as Map).cast<String, dynamic>()),
+      globalValidation: map['globalValidation'] == null ? null : GlobalValidationResponse.fromMap((map['globalValidation']! as Map).cast<String, dynamic>()),
+      httpSettings: map['httpSettings'] == null ? null : HttpSettingsResponse.fromMap((map['httpSettings']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      identityProviders: map['identityProviders'] == null ? null : IdentityProvidersResponse.fromMap((map['identityProviders'] as Map).cast<String, dynamic>()),
-      login: map['login'] == null ? null : LoginResponse.fromMap((map['login'] as Map).cast<String, dynamic>()),
+      identityProviders: map['identityProviders'] == null ? null : IdentityProvidersResponse.fromMap((map['identityProviders']! as Map).cast<String, dynamic>()),
+      login: map['login'] == null ? null : LoginResponse.fromMap((map['login']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      platform: map['platform'] == null ? null : AuthPlatformResponse.fromMap((map['platform'] as Map).cast<String, dynamic>()),
+      platform: map['platform'] == null ? null : AuthPlatformResponse.fromMap((map['platform']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

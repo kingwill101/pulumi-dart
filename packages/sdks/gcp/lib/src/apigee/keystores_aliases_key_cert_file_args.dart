@@ -65,11 +65,11 @@ class KeystoresAliasesKeyCertFileArgs {
       alias: (map['alias'] as String).input(),
       cert: (map['cert'] as String).input(),
       environment: (map['environment'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
       keystore: (map['keystore'] as String).input(),
       orgId: (map['orgId'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (KeystoresAliasesKeyCertFileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      timeouts: map['timeouts'] == null ? null : (KeystoresAliasesKeyCertFileTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

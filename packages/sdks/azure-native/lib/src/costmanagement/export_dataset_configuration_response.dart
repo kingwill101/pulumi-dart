@@ -21,7 +21,7 @@ class ExportDatasetConfigurationResponse {
 
   factory ExportDatasetConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ExportDatasetConfigurationResponse(
-      columns: map['columns'] == null ? null : ((map['columns'] as List).cast<String>()).input(),
+      columns: map['columns'] == null ? null : ((map['columns']! as List).cast<String>()).input(),
     );
   }
 }

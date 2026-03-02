@@ -94,23 +94,23 @@ class GetRouterResult {
 
   factory GetRouterResult.fromMap(Map<String, dynamic> map) {
     return GetRouterResult(
-      adminStateUp: map['adminStateUp'] == null ? null : map['adminStateUp'] as bool,
+      adminStateUp: map['adminStateUp'] == null ? null : map['adminStateUp']! as bool,
       allTags: (map['allTags'] as List).cast<String>(),
       availabilityZoneHints: (map['availabilityZoneHints'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      distributed: map['distributed'] == null ? null : map['distributed'] as bool,
+      description: map['description'] == null ? null : map['description']! as String,
+      distributed: map['distributed'] == null ? null : map['distributed']! as bool,
       enableSnat: map['enableSnat'] as bool,
       externalFixedIps: pulumi.Input.decodeList<GetRouterExternalFixedIp>(map['externalFixedIps'], (value) => GetRouterExternalFixedIp.fromMap((value as Map).cast<String, dynamic>())),
       externalNetworkId: map['externalNetworkId'] as String,
       externalQosPolicyId: map['externalQosPolicyId'] as String,
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      routerId: map['routerId'] == null ? null : map['routerId'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      region: map['region'] == null ? null : map['region']! as String,
+      routerId: map['routerId'] == null ? null : map['routerId']! as String,
       routes: pulumi.Input.decodeList<GetRouterRoute>(map['routes'], (value) => GetRouterRoute.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
     );
   }
 }

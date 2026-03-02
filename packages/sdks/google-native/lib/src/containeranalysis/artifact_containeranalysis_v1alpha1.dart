@@ -36,10 +36,10 @@ class ArtifactContaineranalysisV1alpha1 {
 
   factory ArtifactContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return ArtifactContaineranalysisV1alpha1(
-      checksum: map['checksum'] == null ? null : (map['checksum'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      names: map['names'] == null ? null : ((map['names'] as List).cast<String>()).input(),
+      checksum: map['checksum'] == null ? null : (map['checksum']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      names: map['names'] == null ? null : ((map['names']! as List).cast<String>()).input(),
     );
   }
 }

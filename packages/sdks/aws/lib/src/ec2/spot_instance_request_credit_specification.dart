@@ -20,7 +20,7 @@ class SpotInstanceRequestCreditSpecification {
 
   factory SpotInstanceRequestCreditSpecification.fromMap(Map<String, dynamic> map) {
     return SpotInstanceRequestCreditSpecification(
-      cpuCredits: map['cpuCredits'] == null ? null : (map['cpuCredits'] as String).input(),
+      cpuCredits: map['cpuCredits'] == null ? null : ((map['cpuCredits'] as String).input()).input(),
     );
   }
 }

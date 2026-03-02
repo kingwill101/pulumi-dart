@@ -22,7 +22,7 @@ class AutomationResourceSelector {
 
   factory AutomationResourceSelector.fromMap(Map<String, dynamic> map) {
     return AutomationResourceSelector(
-      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<TargetAttribute>(map['targets'], (value) => TargetAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<TargetAttribute>(map['targets']!, (value) => TargetAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

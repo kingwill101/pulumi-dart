@@ -41,11 +41,11 @@ class ContextRule {
 
   factory ContextRule.fromMap(Map<String, dynamic> map) {
     return ContextRule(
-      allowedRequestExtensions: map['allowedRequestExtensions'] == null ? null : ((map['allowedRequestExtensions'] as List).cast<String>()).input(),
-      allowedResponseExtensions: map['allowedResponseExtensions'] == null ? null : ((map['allowedResponseExtensions'] as List).cast<String>()).input(),
-      provided: map['provided'] == null ? null : ((map['provided'] as List).cast<String>()).input(),
-      requested: map['requested'] == null ? null : ((map['requested'] as List).cast<String>()).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      allowedRequestExtensions: map['allowedRequestExtensions'] == null ? null : ((map['allowedRequestExtensions']! as List).cast<String>()).input(),
+      allowedResponseExtensions: map['allowedResponseExtensions'] == null ? null : ((map['allowedResponseExtensions']! as List).cast<String>()).input(),
+      provided: map['provided'] == null ? null : ((map['provided']! as List).cast<String>()).input(),
+      requested: map['requested'] == null ? null : ((map['requested']! as List).cast<String>()).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
     );
   }
 }

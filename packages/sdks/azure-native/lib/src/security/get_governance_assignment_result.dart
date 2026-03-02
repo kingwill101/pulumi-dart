@@ -68,15 +68,15 @@ class GetGovernanceAssignmentResult {
 
   factory GetGovernanceAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetGovernanceAssignmentResult(
-      additionalData: map['additionalData'] == null ? null : GovernanceAssignmentAdditionalDataResponse.fromMap((map['additionalData'] as Map).cast<String, dynamic>()),
+      additionalData: map['additionalData'] == null ? null : GovernanceAssignmentAdditionalDataResponse.fromMap((map['additionalData']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      governanceEmailNotification: map['governanceEmailNotification'] == null ? null : GovernanceEmailNotificationResponse.fromMap((map['governanceEmailNotification'] as Map).cast<String, dynamic>()),
+      governanceEmailNotification: map['governanceEmailNotification'] == null ? null : GovernanceEmailNotificationResponse.fromMap((map['governanceEmailNotification']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      isGracePeriod: map['isGracePeriod'] == null ? null : map['isGracePeriod'] as bool,
+      isGracePeriod: map['isGracePeriod'] == null ? null : map['isGracePeriod']! as bool,
       name: map['name'] as String,
-      owner: map['owner'] == null ? null : map['owner'] as String,
+      owner: map['owner'] == null ? null : map['owner']! as String,
       remediationDueDate: map['remediationDueDate'] as String,
-      remediationEta: map['remediationEta'] == null ? null : RemediationEtaResponse.fromMap((map['remediationEta'] as Map).cast<String, dynamic>()),
+      remediationEta: map['remediationEta'] == null ? null : RemediationEtaResponse.fromMap((map['remediationEta']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

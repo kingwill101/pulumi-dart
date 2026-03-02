@@ -90,20 +90,20 @@ class GroupContainer {
 
   factory GroupContainer.fromMap(Map<String, dynamic> map) {
     return GroupContainer(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
       cpu: (map['cpu'] as double).input(),
-      cpuLimit: map['cpuLimit'] == null ? null : (map['cpuLimit'] as double).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
+      cpuLimit: map['cpuLimit'] == null ? null : (map['cpuLimit']! as double).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
       image: (map['image'] as String).input(),
-      livenessProbe: map['livenessProbe'] == null ? null : (GroupContainerLivenessProbe.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>())).input(),
+      livenessProbe: map['livenessProbe'] == null ? null : (GroupContainerLivenessProbe.fromMap((map['livenessProbe']! as Map).cast<String, dynamic>())).input(),
       memory: (map['memory'] as double).input(),
-      memoryLimit: map['memoryLimit'] == null ? null : (map['memoryLimit'] as double).input(),
+      memoryLimit: map['memoryLimit'] == null ? null : (map['memoryLimit']! as double).input(),
       name: (map['name'] as String).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<GroupContainerPort>(map['ports'], (value) => GroupContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      readinessProbe: map['readinessProbe'] == null ? null : (GroupContainerReadinessProbe.fromMap((map['readinessProbe'] as Map).cast<String, dynamic>())).input(),
-      secureEnvironmentVariables: map['secureEnvironmentVariables'] == null ? null : ((map['secureEnvironmentVariables'] as Map).cast<String, String>()).input(),
-      securities: map['securities'] == null ? null : (pulumi.Input.decodeList<GroupContainerSecurity>(map['securities'], (value) => GroupContainerSecurity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<GroupContainerVolume>(map['volumes'], (value) => GroupContainerVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<GroupContainerPort>(map['ports']!, (value) => GroupContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      readinessProbe: map['readinessProbe'] == null ? null : (GroupContainerReadinessProbe.fromMap((map['readinessProbe']! as Map).cast<String, dynamic>())).input(),
+      secureEnvironmentVariables: map['secureEnvironmentVariables'] == null ? null : ((map['secureEnvironmentVariables']! as Map).cast<String, String>()).input(),
+      securities: map['securities'] == null ? null : (pulumi.Input.decodeList<GroupContainerSecurity>(map['securities']!, (value) => GroupContainerSecurity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<GroupContainerVolume>(map['volumes']!, (value) => GroupContainerVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

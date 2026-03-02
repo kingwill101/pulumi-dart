@@ -25,7 +25,7 @@ class OptInResourceDataDataLocation {
 
   factory OptInResourceDataDataLocation.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataDataLocation(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       resourceArn: (map['resourceArn'] as String).input(),
     );
   }

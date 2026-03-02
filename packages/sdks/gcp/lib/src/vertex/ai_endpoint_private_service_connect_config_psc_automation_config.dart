@@ -49,12 +49,12 @@ class AiEndpointPrivateServiceConnectConfigPscAutomationConfig {
 
   factory AiEndpointPrivateServiceConnectConfigPscAutomationConfig.fromMap(Map<String, dynamic> map) {
     return AiEndpointPrivateServiceConnectConfigPscAutomationConfig(
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      forwardingRule: map['forwardingRule'] == null ? null : (map['forwardingRule'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      forwardingRule: map['forwardingRule'] == null ? null : (map['forwardingRule']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
       network: (map['network'] as String).input(),
       projectId: (map['projectId'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

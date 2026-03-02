@@ -49,11 +49,11 @@ class UserGroupArgs {
 
   factory UserGroupArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      precedence: map['precedence'] == null ? null : (map['precedence'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      precedence: map['precedence'] == null ? null : ((map['precedence'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
       userPoolId: (map['userPoolId'] as String).input(),
     );
   }

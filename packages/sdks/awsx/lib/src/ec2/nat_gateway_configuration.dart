@@ -27,7 +27,7 @@ class NatGatewayConfiguration {
 
   factory NatGatewayConfiguration.fromMap(Map<String, dynamic> map) {
     return NatGatewayConfiguration(
-      elasticIpAllocationIds: map['elasticIpAllocationIds'] == null ? null : ((map['elasticIpAllocationIds'] as List).cast<String>()).input(),
+      elasticIpAllocationIds: map['elasticIpAllocationIds'] == null ? null : ((map['elasticIpAllocationIds']! as List).cast<String>()).input(),
       strategy: (NatGatewayStrategy.fromValue(map['strategy'] as String)).input(),
     );
   }

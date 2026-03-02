@@ -129,22 +129,22 @@ class RegionHealthCheckArgs {
 
   factory RegionHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return RegionHealthCheckArgs(
-      checkIntervalSec: map['checkIntervalSec'] == null ? null : (map['checkIntervalSec'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      grpcHealthCheck: map['grpcHealthCheck'] == null ? null : (RegionHealthCheckGrpcHealthCheck.fromMap((map['grpcHealthCheck'] as Map).cast<String, dynamic>())).input(),
-      grpcTlsHealthCheck: map['grpcTlsHealthCheck'] == null ? null : (RegionHealthCheckGrpcTlsHealthCheck.fromMap((map['grpcTlsHealthCheck'] as Map).cast<String, dynamic>())).input(),
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold'] as int).input(),
-      http2HealthCheck: map['http2HealthCheck'] == null ? null : (RegionHealthCheckHttp2HealthCheck.fromMap((map['http2HealthCheck'] as Map).cast<String, dynamic>())).input(),
-      httpHealthCheck: map['httpHealthCheck'] == null ? null : (RegionHealthCheckHttpHealthCheck.fromMap((map['httpHealthCheck'] as Map).cast<String, dynamic>())).input(),
-      httpsHealthCheck: map['httpsHealthCheck'] == null ? null : (RegionHealthCheckHttpsHealthCheck.fromMap((map['httpsHealthCheck'] as Map).cast<String, dynamic>())).input(),
-      logConfig: map['logConfig'] == null ? null : (RegionHealthCheckLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sslHealthCheck: map['sslHealthCheck'] == null ? null : (RegionHealthCheckSslHealthCheck.fromMap((map['sslHealthCheck'] as Map).cast<String, dynamic>())).input(),
-      tcpHealthCheck: map['tcpHealthCheck'] == null ? null : (RegionHealthCheckTcpHealthCheck.fromMap((map['tcpHealthCheck'] as Map).cast<String, dynamic>())).input(),
-      timeoutSec: map['timeoutSec'] == null ? null : (map['timeoutSec'] as int).input(),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold'] as int).input(),
+      checkIntervalSec: map['checkIntervalSec'] == null ? null : (map['checkIntervalSec']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      grpcHealthCheck: map['grpcHealthCheck'] == null ? null : (RegionHealthCheckGrpcHealthCheck.fromMap((map['grpcHealthCheck']! as Map).cast<String, dynamic>())).input(),
+      grpcTlsHealthCheck: map['grpcTlsHealthCheck'] == null ? null : (RegionHealthCheckGrpcTlsHealthCheck.fromMap((map['grpcTlsHealthCheck']! as Map).cast<String, dynamic>())).input(),
+      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold']! as int).input(),
+      http2HealthCheck: map['http2HealthCheck'] == null ? null : (RegionHealthCheckHttp2HealthCheck.fromMap((map['http2HealthCheck']! as Map).cast<String, dynamic>())).input(),
+      httpHealthCheck: map['httpHealthCheck'] == null ? null : (RegionHealthCheckHttpHealthCheck.fromMap((map['httpHealthCheck']! as Map).cast<String, dynamic>())).input(),
+      httpsHealthCheck: map['httpsHealthCheck'] == null ? null : (RegionHealthCheckHttpsHealthCheck.fromMap((map['httpsHealthCheck']! as Map).cast<String, dynamic>())).input(),
+      logConfig: map['logConfig'] == null ? null : (RegionHealthCheckLogConfig.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      sslHealthCheck: map['sslHealthCheck'] == null ? null : (RegionHealthCheckSslHealthCheck.fromMap((map['sslHealthCheck']! as Map).cast<String, dynamic>())).input(),
+      tcpHealthCheck: map['tcpHealthCheck'] == null ? null : (RegionHealthCheckTcpHealthCheck.fromMap((map['tcpHealthCheck']! as Map).cast<String, dynamic>())).input(),
+      timeoutSec: map['timeoutSec'] == null ? null : (map['timeoutSec']! as int).input(),
+      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold']! as int).input(),
     );
   }
 }

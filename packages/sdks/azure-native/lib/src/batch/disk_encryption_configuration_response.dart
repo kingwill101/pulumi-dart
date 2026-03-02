@@ -21,7 +21,7 @@ class DiskEncryptionConfigurationResponse {
 
   factory DiskEncryptionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionConfigurationResponse(
-      targets: map['targets'] == null ? null : ((map['targets'] as List).cast<String>()).input(),
+      targets: map['targets'] == null ? null : ((map['targets']! as List).cast<String>()).input(),
     );
   }
 }

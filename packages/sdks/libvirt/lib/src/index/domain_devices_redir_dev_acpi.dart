@@ -20,7 +20,7 @@ class DomainDevicesRedirDevAcpi {
 
   factory DomainDevicesRedirDevAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRedirDevAcpi(
-      index: map['index'] == null ? null : (map['index'] as double).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class CspmMonitorAwsOfferingResponse {
   factory CspmMonitorAwsOfferingResponse.fromMap(Map<String, dynamic> map) {
     return CspmMonitorAwsOfferingResponse(
       description: (map['description'] as String).input(),
-      nativeCloudConnection: map['nativeCloudConnection'] == null ? null : (CspmMonitorAwsOfferingResponseNativeCloudConnection.fromMap((map['nativeCloudConnection'] as Map).cast<String, dynamic>())).input(),
+      nativeCloudConnection: map['nativeCloudConnection'] == null ? null : (CspmMonitorAwsOfferingResponseNativeCloudConnection.fromMap((map['nativeCloudConnection']! as Map).cast<String, dynamic>())).input(),
       offeringType: (map['offeringType'] as String).input(),
     );
   }

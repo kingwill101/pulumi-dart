@@ -46,12 +46,12 @@ class AuthorizationRuleState {
 
   factory AuthorizationRuleState.fromMap(Map<String, dynamic> map) {
     return AuthorizationRuleState(
-      accessGroupId: map['accessGroupId'] == null ? null : (map['accessGroupId'] as String).input(),
-      authorizeAllGroups: map['authorizeAllGroups'] == null ? null : (map['authorizeAllGroups'] as bool).input(),
-      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : (map['clientVpnEndpointId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetNetworkCidr: map['targetNetworkCidr'] == null ? null : (map['targetNetworkCidr'] as String).input(),
+      accessGroupId: map['accessGroupId'] == null ? null : ((map['accessGroupId'] as String).input()).input(),
+      authorizeAllGroups: map['authorizeAllGroups'] == null ? null : ((map['authorizeAllGroups'] as bool).input()).input(),
+      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : ((map['clientVpnEndpointId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      targetNetworkCidr: map['targetNetworkCidr'] == null ? null : ((map['targetNetworkCidr'] as String).input()).input(),
     );
   }
 }

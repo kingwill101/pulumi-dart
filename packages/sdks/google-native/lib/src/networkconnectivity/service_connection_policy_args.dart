@@ -73,17 +73,17 @@ class ServiceConnectionPolicyArgs {
 
   factory ServiceConnectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pscConfig: map['pscConfig'] == null ? null : (PscConfig.fromMap((map['pscConfig'] as Map).cast<String, dynamic>())).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      serviceClass: map['serviceClass'] == null ? null : (map['serviceClass'] as String).input(),
-      serviceConnectionPolicyId: map['serviceConnectionPolicyId'] == null ? null : (map['serviceConnectionPolicyId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pscConfig: map['pscConfig'] == null ? null : (PscConfig.fromMap((map['pscConfig']! as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      serviceClass: map['serviceClass'] == null ? null : (map['serviceClass']! as String).input(),
+      serviceConnectionPolicyId: map['serviceConnectionPolicyId'] == null ? null : (map['serviceConnectionPolicyId']! as String).input(),
     );
   }
 }

@@ -40,11 +40,11 @@ class NodeGroupNode {
 
   factory NodeGroupNode.fromMap(Map<String, dynamic> map) {
     return NodeGroupNode(
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      loginPassword: map['loginPassword'] == null ? null : (map['loginPassword'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      loginPassword: map['loginPassword'] == null ? null : (map['loginPassword']! as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

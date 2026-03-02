@@ -81,22 +81,22 @@ class GetAwsServiceDiscoveryResult {
 
   factory GetAwsServiceDiscoveryResult.fromMap(Map<String, dynamic> map) {
     return GetAwsServiceDiscoveryResult(
-      addressRealm: map['addressRealm'] == null ? null : map['addressRealm'] as String,
-      awsAccessKey: map['awsAccessKey'] == null ? null : map['awsAccessKey'] as String,
+      addressRealm: map['addressRealm'] == null ? null : map['addressRealm']! as String,
+      awsAccessKey: map['awsAccessKey'] == null ? null : map['awsAccessKey']! as String,
       awsRegion: map['awsRegion'] as String,
       awsSdJson: map['awsSdJson'] as String,
-      awsSecretAccessKey: map['awsSecretAccessKey'] == null ? null : map['awsSecretAccessKey'] as String,
-      credentialUpdate: map['credentialUpdate'] == null ? null : map['credentialUpdate'] as bool,
+      awsSecretAccessKey: map['awsSecretAccessKey'] == null ? null : map['awsSecretAccessKey']! as String,
+      credentialUpdate: map['credentialUpdate'] == null ? null : map['credentialUpdate']! as bool,
       externalId: map['externalId'] as String,
       id: map['id'] as String,
-      minimumMonitors: map['minimumMonitors'] == null ? null : map['minimumMonitors'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      minimumMonitors: map['minimumMonitors'] == null ? null : map['minimumMonitors']! as String,
+      port: map['port'] == null ? null : map['port']! as int,
       roleArn: map['roleArn'] as String,
       tagKey: map['tagKey'] as String,
       tagValue: map['tagValue'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
-      undetectableAction: map['undetectableAction'] == null ? null : map['undetectableAction'] as String,
-      updateInterval: map['updateInterval'] == null ? null : map['updateInterval'] as String,
+      type: map['type'] == null ? null : map['type']! as String,
+      undetectableAction: map['undetectableAction'] == null ? null : map['undetectableAction']! as String,
+      updateInterval: map['updateInterval'] == null ? null : map['updateInterval']! as String,
     );
   }
 }

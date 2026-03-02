@@ -37,10 +37,10 @@ class ExpressRouteLink {
 
   factory ExpressRouteLink.fromMap(Map<String, dynamic> map) {
     return ExpressRouteLink(
-      adminState: map['adminState'] == null ? null : (map['adminState'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      macSecConfig: map['macSecConfig'] == null ? null : (ExpressRouteLinkMacSecConfig.fromMap((map['macSecConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      adminState: map['adminState'] == null ? null : (map['adminState']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      macSecConfig: map['macSecConfig'] == null ? null : (ExpressRouteLinkMacSecConfig.fromMap((map['macSecConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

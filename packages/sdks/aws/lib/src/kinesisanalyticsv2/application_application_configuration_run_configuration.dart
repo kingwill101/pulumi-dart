@@ -27,8 +27,8 @@ class ApplicationApplicationConfigurationRunConfiguration {
 
   factory ApplicationApplicationConfigurationRunConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationRunConfiguration(
-      applicationRestoreConfiguration: map['applicationRestoreConfiguration'] == null ? null : (ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration.fromMap((map['applicationRestoreConfiguration'] as Map).cast<String, dynamic>())).input(),
-      flinkRunConfiguration: map['flinkRunConfiguration'] == null ? null : (ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration.fromMap((map['flinkRunConfiguration'] as Map).cast<String, dynamic>())).input(),
+      applicationRestoreConfiguration: map['applicationRestoreConfiguration'] == null ? null : ((ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration.fromMap((map['applicationRestoreConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      flinkRunConfiguration: map['flinkRunConfiguration'] == null ? null : ((ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration.fromMap((map['flinkRunConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

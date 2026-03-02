@@ -32,8 +32,8 @@ class DnsConfigurationResponse {
   factory DnsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DnsConfigurationResponse(
       nameServers: ((map['nameServers'] as List).cast<String>()).input(),
-      options: map['options'] == null ? null : (map['options'] as String).input(),
-      searchDomains: map['searchDomains'] == null ? null : (map['searchDomains'] as String).input(),
+      options: map['options'] == null ? null : (map['options']! as String).input(),
+      searchDomains: map['searchDomains'] == null ? null : (map['searchDomains']! as String).input(),
     );
   }
 }

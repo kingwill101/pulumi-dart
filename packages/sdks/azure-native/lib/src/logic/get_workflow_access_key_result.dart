@@ -46,10 +46,10 @@ class GetWorkflowAccessKeyResult {
   factory GetWorkflowAccessKeyResult.fromMap(Map<String, dynamic> map) {
     return GetWorkflowAccessKeyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
       name: map['name'] as String,
-      notAfter: map['notAfter'] == null ? null : map['notAfter'] as String,
-      notBefore: map['notBefore'] == null ? null : map['notBefore'] as String,
+      notAfter: map['notAfter'] == null ? null : map['notAfter']! as String,
+      notBefore: map['notBefore'] == null ? null : map['notBefore']! as String,
       type: map['type'] as String,
     );
   }

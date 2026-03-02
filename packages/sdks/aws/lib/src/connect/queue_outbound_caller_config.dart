@@ -30,9 +30,9 @@ class QueueOutboundCallerConfig {
 
   factory QueueOutboundCallerConfig.fromMap(Map<String, dynamic> map) {
     return QueueOutboundCallerConfig(
-      outboundCallerIdName: map['outboundCallerIdName'] == null ? null : (map['outboundCallerIdName'] as String).input(),
-      outboundCallerIdNumberId: map['outboundCallerIdNumberId'] == null ? null : (map['outboundCallerIdNumberId'] as String).input(),
-      outboundFlowId: map['outboundFlowId'] == null ? null : (map['outboundFlowId'] as String).input(),
+      outboundCallerIdName: map['outboundCallerIdName'] == null ? null : ((map['outboundCallerIdName'] as String).input()).input(),
+      outboundCallerIdNumberId: map['outboundCallerIdNumberId'] == null ? null : ((map['outboundCallerIdNumberId'] as String).input()).input(),
+      outboundFlowId: map['outboundFlowId'] == null ? null : ((map['outboundFlowId'] as String).input()).input(),
     );
   }
 }

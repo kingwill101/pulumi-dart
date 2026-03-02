@@ -28,7 +28,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
 
   factory GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard(
-      imageDisplayOptions: map['imageDisplayOptions'] == null ? null : (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions.fromValue(map['imageDisplayOptions'] as String)).input(),
+      imageDisplayOptions: map['imageDisplayOptions'] == null ? null : (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions.fromValue(map['imageDisplayOptions']! as String)).input(),
       items: (pulumi.Input.decodeList<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>(map['items'], (value) => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

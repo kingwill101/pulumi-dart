@@ -46,12 +46,12 @@ class QuotaReportResponse {
 
   factory QuotaReportResponse.fromMap(Map<String, dynamic> map) {
     return QuotaReportResponse(
-      isDerivedQuota: map['isDerivedQuota'] == null ? null : (map['isDerivedQuota'] as bool).input(),
-      percentageUsed: map['percentageUsed'] == null ? null : (map['percentageUsed'] as double).input(),
-      quotaLimitTotalInKiBs: map['quotaLimitTotalInKiBs'] == null ? null : (map['quotaLimitTotalInKiBs'] as double).input(),
-      quotaLimitUsedInKiBs: map['quotaLimitUsedInKiBs'] == null ? null : (map['quotaLimitUsedInKiBs'] as double).input(),
-      quotaTarget: map['quotaTarget'] == null ? null : (map['quotaTarget'] as String).input(),
-      quotaType: map['quotaType'] == null ? null : (map['quotaType'] as String).input(),
+      isDerivedQuota: map['isDerivedQuota'] == null ? null : (map['isDerivedQuota']! as bool).input(),
+      percentageUsed: map['percentageUsed'] == null ? null : (map['percentageUsed']! as double).input(),
+      quotaLimitTotalInKiBs: map['quotaLimitTotalInKiBs'] == null ? null : (map['quotaLimitTotalInKiBs']! as double).input(),
+      quotaLimitUsedInKiBs: map['quotaLimitUsedInKiBs'] == null ? null : (map['quotaLimitUsedInKiBs']! as double).input(),
+      quotaTarget: map['quotaTarget'] == null ? null : (map['quotaTarget']! as String).input(),
+      quotaType: map['quotaType'] == null ? null : (map['quotaType']! as String).input(),
     );
   }
 }

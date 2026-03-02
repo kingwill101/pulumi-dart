@@ -213,7 +213,7 @@ class GetTableResult {
       numBytes: map['numBytes'] as int,
       numLongTermBytes: map['numLongTermBytes'] as int,
       numRows: map['numRows'] as int,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       rangePartitionings: pulumi.Input.decodeList<GetTableRangePartitioning>(map['rangePartitionings'], (value) => GetTableRangePartitioning.fromMap((value as Map).cast<String, dynamic>())),
       requirePartitionFilter: map['requirePartitionFilter'] as bool,

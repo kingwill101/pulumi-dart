@@ -82,19 +82,19 @@ class WorkspaceState {
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
-      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rootVolumeEncryptionEnabled: map['rootVolumeEncryptionEnabled'] == null ? null : (map['rootVolumeEncryptionEnabled'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
-      userVolumeEncryptionEnabled: map['userVolumeEncryptionEnabled'] == null ? null : (map['userVolumeEncryptionEnabled'] as bool).input(),
-      volumeEncryptionKey: map['volumeEncryptionKey'] == null ? null : (map['volumeEncryptionKey'] as String).input(),
-      workspaceProperties: map['workspaceProperties'] == null ? null : (WorkspaceWorkspaceProperties.fromMap((map['workspaceProperties'] as Map).cast<String, dynamic>())).input(),
+      bundleId: map['bundleId'] == null ? null : ((map['bundleId'] as String).input()).input(),
+      computerName: map['computerName'] == null ? null : ((map['computerName'] as String).input()).input(),
+      directoryId: map['directoryId'] == null ? null : ((map['directoryId'] as String).input()).input(),
+      ipAddress: map['ipAddress'] == null ? null : ((map['ipAddress'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rootVolumeEncryptionEnabled: map['rootVolumeEncryptionEnabled'] == null ? null : ((map['rootVolumeEncryptionEnabled'] as bool).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
+      userVolumeEncryptionEnabled: map['userVolumeEncryptionEnabled'] == null ? null : ((map['userVolumeEncryptionEnabled'] as bool).input()).input(),
+      volumeEncryptionKey: map['volumeEncryptionKey'] == null ? null : ((map['volumeEncryptionKey'] as String).input()).input(),
+      workspaceProperties: map['workspaceProperties'] == null ? null : ((WorkspaceWorkspaceProperties.fromMap((map['workspaceProperties']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

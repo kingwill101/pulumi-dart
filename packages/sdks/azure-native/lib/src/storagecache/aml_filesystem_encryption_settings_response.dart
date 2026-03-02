@@ -22,7 +22,7 @@ class AmlFilesystemEncryptionSettingsResponse {
 
   factory AmlFilesystemEncryptionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemEncryptionSettingsResponse(
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyVaultKeyReferenceResponse.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>())).input(),
+      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyVaultKeyReferenceResponse.fromMap((map['keyEncryptionKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

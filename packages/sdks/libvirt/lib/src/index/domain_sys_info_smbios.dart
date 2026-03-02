@@ -57,13 +57,13 @@ class DomainSysInfoSmbios {
 
   factory DomainSysInfoSmbios.fromMap(Map<String, dynamic> map) {
     return DomainSysInfoSmbios(
-      baseBoards: map['baseBoards'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosBaseBoard>(map['baseBoards'], (value) => DomainSysInfoSmbiosBaseBoard.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bios: map['bios'] == null ? null : (DomainSysInfoSmbiosBios.fromMap((map['bios'] as Map).cast<String, dynamic>())).input(),
-      chassis: map['chassis'] == null ? null : (DomainSysInfoSmbiosChassis.fromMap((map['chassis'] as Map).cast<String, dynamic>())).input(),
-      memories: map['memories'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosMemory>(map['memories'], (value) => DomainSysInfoSmbiosMemory.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      oemStrings: map['oemStrings'] == null ? null : (DomainSysInfoSmbiosOemStrings.fromMap((map['oemStrings'] as Map).cast<String, dynamic>())).input(),
-      processors: map['processors'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosProcessor>(map['processors'], (value) => DomainSysInfoSmbiosProcessor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      system: map['system'] == null ? null : (DomainSysInfoSmbiosSystem.fromMap((map['system'] as Map).cast<String, dynamic>())).input(),
+      baseBoards: map['baseBoards'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosBaseBoard>(map['baseBoards']!, (value) => DomainSysInfoSmbiosBaseBoard.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bios: map['bios'] == null ? null : (DomainSysInfoSmbiosBios.fromMap((map['bios']! as Map).cast<String, dynamic>())).input(),
+      chassis: map['chassis'] == null ? null : (DomainSysInfoSmbiosChassis.fromMap((map['chassis']! as Map).cast<String, dynamic>())).input(),
+      memories: map['memories'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosMemory>(map['memories']!, (value) => DomainSysInfoSmbiosMemory.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oemStrings: map['oemStrings'] == null ? null : (DomainSysInfoSmbiosOemStrings.fromMap((map['oemStrings']! as Map).cast<String, dynamic>())).input(),
+      processors: map['processors'] == null ? null : (pulumi.Input.decodeList<DomainSysInfoSmbiosProcessor>(map['processors']!, (value) => DomainSysInfoSmbiosProcessor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      system: map['system'] == null ? null : (DomainSysInfoSmbiosSystem.fromMap((map['system']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

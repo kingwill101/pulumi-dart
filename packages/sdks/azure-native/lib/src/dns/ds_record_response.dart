@@ -32,9 +32,9 @@ class DsRecordResponse {
 
   factory DsRecordResponse.fromMap(Map<String, dynamic> map) {
     return DsRecordResponse(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as int).input(),
-      digest: map['digest'] == null ? null : (DigestResponse.fromMap((map['digest'] as Map).cast<String, dynamic>())).input(),
-      keyTag: map['keyTag'] == null ? null : (map['keyTag'] as int).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as int).input(),
+      digest: map['digest'] == null ? null : (DigestResponse.fromMap((map['digest']! as Map).cast<String, dynamic>())).input(),
+      keyTag: map['keyTag'] == null ? null : (map['keyTag']! as int).input(),
     );
   }
 }

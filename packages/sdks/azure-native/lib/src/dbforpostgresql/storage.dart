@@ -46,12 +46,12 @@ class Storage {
 
   factory Storage.fromMap(Map<String, dynamic> map) {
     return Storage(
-      autoGrow: map['autoGrow'] == null ? null : (map['autoGrow'] as String).input(),
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
-      storageSizeGB: map['storageSizeGB'] == null ? null : (map['storageSizeGB'] as int).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      autoGrow: map['autoGrow'] == null ? null : (map['autoGrow']! as String).input(),
+      iops: map['iops'] == null ? null : (map['iops']! as int).input(),
+      storageSizeGB: map['storageSizeGB'] == null ? null : (map['storageSizeGB']! as int).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

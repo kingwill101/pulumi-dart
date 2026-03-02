@@ -37,7 +37,7 @@ class HostVpcConfiguration {
     return HostVpcConfiguration(
       securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      tlsCertificate: map['tlsCertificate'] == null ? null : (map['tlsCertificate'] as String).input(),
+      tlsCertificate: map['tlsCertificate'] == null ? null : ((map['tlsCertificate'] as String).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

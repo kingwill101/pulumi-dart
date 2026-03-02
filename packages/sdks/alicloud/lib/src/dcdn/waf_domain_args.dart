@@ -29,7 +29,7 @@ class WafDomainArgs {
 
   factory WafDomainArgs.fromMap(Map<String, dynamic> map) {
     return WafDomainArgs(
-      clientIpTag: map['clientIpTag'] == null ? null : (map['clientIpTag'] as String).input(),
+      clientIpTag: map['clientIpTag'] == null ? null : (map['clientIpTag']! as String).input(),
       domainName: (map['domainName'] as String).input(),
     );
   }

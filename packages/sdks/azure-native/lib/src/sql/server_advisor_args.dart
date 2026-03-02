@@ -40,7 +40,7 @@ class ServerAdvisorArgs {
 
   factory ServerAdvisorArgs.fromMap(Map<String, dynamic> map) {
     return ServerAdvisorArgs(
-      advisorName: map['advisorName'] == null ? null : (map['advisorName'] as String).input(),
+      advisorName: map['advisorName'] == null ? null : (map['advisorName']! as String).input(),
       autoExecuteStatus: (AutoExecuteStatus.fromValue(map['autoExecuteStatus'] as String)).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),

@@ -34,7 +34,7 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
   factory GoogleCloudDialogflowV2beta1IntentTrainingPhrase.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentTrainingPhrase(
       parts: (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart>(map['parts'], (value) => GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timesAddedCount: map['timesAddedCount'] == null ? null : (map['timesAddedCount'] as int).input(),
+      timesAddedCount: map['timesAddedCount'] == null ? null : (map['timesAddedCount']! as int).input(),
       type: (GoogleCloudDialogflowV2beta1IntentTrainingPhraseType.fromValue(map['type'] as String)).input(),
     );
   }

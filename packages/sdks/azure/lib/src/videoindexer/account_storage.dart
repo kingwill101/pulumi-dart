@@ -26,7 +26,7 @@ class AccountStorage {
   factory AccountStorage.fromMap(Map<String, dynamic> map) {
     return AccountStorage(
       storageAccountId: (map['storageAccountId'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

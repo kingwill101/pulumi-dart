@@ -46,12 +46,12 @@ class HostNameSslStateResponse {
 
   factory HostNameSslStateResponse.fromMap(Map<String, dynamic> map) {
     return HostNameSslStateResponse(
-      hostType: map['hostType'] == null ? null : (map['hostType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sslState: map['sslState'] == null ? null : (map['sslState'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
-      toUpdate: map['toUpdate'] == null ? null : (map['toUpdate'] as bool).input(),
-      virtualIP: map['virtualIP'] == null ? null : (map['virtualIP'] as String).input(),
+      hostType: map['hostType'] == null ? null : (map['hostType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sslState: map['sslState'] == null ? null : (map['sslState']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      toUpdate: map['toUpdate'] == null ? null : (map['toUpdate']! as bool).input(),
+      virtualIP: map['virtualIP'] == null ? null : (map['virtualIP']! as String).input(),
     );
   }
 }

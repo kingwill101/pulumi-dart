@@ -23,8 +23,8 @@ class BgpSpeakerV2AdvertisedRoute {
 
   factory BgpSpeakerV2AdvertisedRoute.fromMap(Map<String, dynamic> map) {
     return BgpSpeakerV2AdvertisedRoute(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      nextHop: map['nextHop'] == null ? null : (map['nextHop'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      nextHop: map['nextHop'] == null ? null : (map['nextHop']! as String).input(),
     );
   }
 }

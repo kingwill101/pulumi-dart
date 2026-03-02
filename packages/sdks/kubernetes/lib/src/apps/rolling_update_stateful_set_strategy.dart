@@ -26,8 +26,8 @@ class RollingUpdateStatefulSetStrategy {
 
   factory RollingUpdateStatefulSetStrategy.fromMap(Map<String, dynamic> map) {
     return RollingUpdateStatefulSetStrategy(
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as int).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as int).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as int).input(),
     );
   }
 }

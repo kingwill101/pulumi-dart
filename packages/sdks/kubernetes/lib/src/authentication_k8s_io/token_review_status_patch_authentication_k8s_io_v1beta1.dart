@@ -37,10 +37,10 @@ class TokenReviewStatusPatchAuthenticationK8sIoV1beta1 {
 
   factory TokenReviewStatusPatchAuthenticationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return TokenReviewStatusPatchAuthenticationK8sIoV1beta1(
-      audiences: map['audiences'] == null ? null : ((map['audiences'] as List).cast<String>()).input(),
-      authenticated: map['authenticated'] == null ? null : (map['authenticated'] as bool).input(),
-      error: map['error'] == null ? null : (map['error'] as String).input(),
-      user: map['user'] == null ? null : (UserInfoPatchAuthenticationK8sIoV1beta1.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
+      audiences: map['audiences'] == null ? null : ((map['audiences']! as List).cast<String>()).input(),
+      authenticated: map['authenticated'] == null ? null : (map['authenticated']! as bool).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
+      user: map['user'] == null ? null : (UserInfoPatchAuthenticationK8sIoV1beta1.fromMap((map['user']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

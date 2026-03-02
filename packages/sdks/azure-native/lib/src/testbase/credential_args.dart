@@ -44,7 +44,7 @@ class CredentialArgs {
 
   factory CredentialArgs.fromMap(Map<String, dynamic> map) {
     return CredentialArgs(
-      credentialName: map['credentialName'] == null ? null : (map['credentialName'] as String).input(),
+      credentialName: map['credentialName'] == null ? null : (map['credentialName']! as String).input(),
       credentialType: (map['credentialType'] as String).input(),
       displayName: (map['displayName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

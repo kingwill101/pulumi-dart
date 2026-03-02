@@ -25,8 +25,8 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourc
 
   factory PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
     );
   }
 }

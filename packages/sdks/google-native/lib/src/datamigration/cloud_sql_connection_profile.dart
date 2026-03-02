@@ -22,7 +22,7 @@ class CloudSqlConnectionProfile {
 
   factory CloudSqlConnectionProfile.fromMap(Map<String, dynamic> map) {
     return CloudSqlConnectionProfile(
-      settings: map['settings'] == null ? null : (CloudSqlSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (CloudSqlSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

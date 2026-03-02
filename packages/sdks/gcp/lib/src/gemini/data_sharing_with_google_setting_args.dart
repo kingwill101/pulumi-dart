@@ -53,11 +53,11 @@ class DataSharingWithGoogleSettingArgs {
   factory DataSharingWithGoogleSettingArgs.fromMap(Map<String, dynamic> map) {
     return DataSharingWithGoogleSettingArgs(
       dataSharingWithGoogleSettingId: (map['dataSharingWithGoogleSettingId'] as String).input(),
-      enableDataSharing: map['enableDataSharing'] == null ? null : (map['enableDataSharing'] as bool).input(),
-      enablePreviewDataSharing: map['enablePreviewDataSharing'] == null ? null : (map['enablePreviewDataSharing'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      enableDataSharing: map['enableDataSharing'] == null ? null : (map['enableDataSharing']! as bool).input(),
+      enablePreviewDataSharing: map['enablePreviewDataSharing'] == null ? null : (map['enablePreviewDataSharing']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

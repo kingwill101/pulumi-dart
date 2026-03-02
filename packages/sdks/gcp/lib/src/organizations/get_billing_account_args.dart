@@ -42,10 +42,10 @@ class GetBillingAccountArgs {
 
   factory GetBillingAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountArgs(
-      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      lookupProjects: map['lookupProjects'] == null ? null : (map['lookupProjects'] as bool).input(),
-      open: map['open'] == null ? null : (map['open'] as bool).input(),
+      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      lookupProjects: map['lookupProjects'] == null ? null : (map['lookupProjects']! as bool).input(),
+      open: map['open'] == null ? null : (map['open']! as bool).input(),
     );
   }
 }

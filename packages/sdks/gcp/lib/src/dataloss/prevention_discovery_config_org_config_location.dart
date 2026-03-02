@@ -25,8 +25,8 @@ class PreventionDiscoveryConfigOrgConfigLocation {
 
   factory PreventionDiscoveryConfigOrgConfigLocation.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigOrgConfigLocation(
-      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
-      organizationId: map['organizationId'] == null ? null : (map['organizationId'] as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId']! as String).input(),
+      organizationId: map['organizationId'] == null ? null : (map['organizationId']! as String).input(),
     );
   }
 }

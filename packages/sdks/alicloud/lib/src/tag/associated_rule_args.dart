@@ -36,7 +36,7 @@ class AssociatedRuleArgs {
     return AssociatedRuleArgs(
       associatedSettingName: (map['associatedSettingName'] as String).input(),
       status: (map['status'] as String).input(),
-      tagKeys: map['tagKeys'] == null ? null : ((map['tagKeys'] as List).cast<String>()).input(),
+      tagKeys: map['tagKeys'] == null ? null : ((map['tagKeys']! as List).cast<String>()).input(),
     );
   }
 }

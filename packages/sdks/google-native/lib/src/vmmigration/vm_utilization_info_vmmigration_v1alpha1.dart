@@ -33,9 +33,9 @@ class VmUtilizationInfoVmmigrationV1alpha1 {
 
   factory VmUtilizationInfoVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return VmUtilizationInfoVmmigrationV1alpha1(
-      utilization: map['utilization'] == null ? null : (VmUtilizationMetricsVmmigrationV1alpha1.fromMap((map['utilization'] as Map).cast<String, dynamic>())).input(),
-      vmId: map['vmId'] == null ? null : (map['vmId'] as String).input(),
-      vmwareVmDetails: map['vmwareVmDetails'] == null ? null : (VmwareVmDetailsVmmigrationV1alpha1.fromMap((map['vmwareVmDetails'] as Map).cast<String, dynamic>())).input(),
+      utilization: map['utilization'] == null ? null : (VmUtilizationMetricsVmmigrationV1alpha1.fromMap((map['utilization']! as Map).cast<String, dynamic>())).input(),
+      vmId: map['vmId'] == null ? null : (map['vmId']! as String).input(),
+      vmwareVmDetails: map['vmwareVmDetails'] == null ? null : (VmwareVmDetailsVmmigrationV1alpha1.fromMap((map['vmwareVmDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

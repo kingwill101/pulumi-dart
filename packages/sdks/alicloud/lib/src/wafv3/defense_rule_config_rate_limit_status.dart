@@ -30,9 +30,9 @@ class DefenseRuleConfigRateLimitStatus {
 
   factory DefenseRuleConfigRateLimitStatus.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfigRateLimitStatus(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      ratio: map['ratio'] == null ? null : (map['ratio'] as int).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      ratio: map['ratio'] == null ? null : (map['ratio']! as int).input(),
     );
   }
 }

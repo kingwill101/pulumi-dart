@@ -44,11 +44,11 @@ class SnapshotArgs {
 
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
       instanceId: (map['instanceId'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName']! as String).input(),
     );
   }
 }

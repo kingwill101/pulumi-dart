@@ -20,7 +20,7 @@ class QueueHttpTargetUriOverridePathOverride {
 
   factory QueueHttpTargetUriOverridePathOverride.fromMap(Map<String, dynamic> map) {
     return QueueHttpTargetUriOverridePathOverride(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class GatewaySmbUserState {
 
   factory GatewaySmbUserState.fromMap(Map<String, dynamic> map) {
     return GatewaySmbUserState(
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

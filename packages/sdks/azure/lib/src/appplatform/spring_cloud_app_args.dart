@@ -83,18 +83,18 @@ class SpringCloudAppArgs {
 
   factory SpringCloudAppArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppArgs(
-      addonJson: map['addonJson'] == null ? null : (map['addonJson'] as String).input(),
-      customPersistentDisks: map['customPersistentDisks'] == null ? null : (pulumi.Input.decodeList<SpringCloudAppCustomPersistentDisk>(map['customPersistentDisks'], (value) => SpringCloudAppCustomPersistentDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
-      identity: map['identity'] == null ? null : (SpringCloudAppIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      ingressSettings: map['ingressSettings'] == null ? null : (SpringCloudAppIngressSettings.fromMap((map['ingressSettings'] as Map).cast<String, dynamic>())).input(),
-      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      persistentDisk: map['persistentDisk'] == null ? null : (SpringCloudAppPersistentDisk.fromMap((map['persistentDisk'] as Map).cast<String, dynamic>())).input(),
-      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : (map['publicEndpointEnabled'] as bool).input(),
+      addonJson: map['addonJson'] == null ? null : (map['addonJson']! as String).input(),
+      customPersistentDisks: map['customPersistentDisks'] == null ? null : (pulumi.Input.decodeList<SpringCloudAppCustomPersistentDisk>(map['customPersistentDisks']!, (value) => SpringCloudAppCustomPersistentDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly']! as bool).input(),
+      identity: map['identity'] == null ? null : (SpringCloudAppIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      ingressSettings: map['ingressSettings'] == null ? null : (SpringCloudAppIngressSettings.fromMap((map['ingressSettings']! as Map).cast<String, dynamic>())).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      persistentDisk: map['persistentDisk'] == null ? null : (SpringCloudAppPersistentDisk.fromMap((map['persistentDisk']! as Map).cast<String, dynamic>())).input(),
+      publicEndpointEnabled: map['publicEndpointEnabled'] == null ? null : (map['publicEndpointEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      tlsEnabled: map['tlsEnabled'] == null ? null : (map['tlsEnabled'] as bool).input(),
+      tlsEnabled: map['tlsEnabled'] == null ? null : (map['tlsEnabled']! as bool).input(),
     );
   }
 }

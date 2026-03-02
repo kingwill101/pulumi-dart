@@ -31,9 +31,9 @@ class PredictionResponseSystemGeneratedEntities {
 
   factory PredictionResponseSystemGeneratedEntities.fromMap(Map<String, dynamic> map) {
     return PredictionResponseSystemGeneratedEntities(
-      generatedInteractionTypes: map['generatedInteractionTypes'] == null ? null : ((map['generatedInteractionTypes'] as List).cast<String>()).input(),
-      generatedKpis: map['generatedKpis'] == null ? null : ((map['generatedKpis'] as Map).cast<String, String>()).input(),
-      generatedLinks: map['generatedLinks'] == null ? null : ((map['generatedLinks'] as List).cast<String>()).input(),
+      generatedInteractionTypes: map['generatedInteractionTypes'] == null ? null : ((map['generatedInteractionTypes']! as List).cast<String>()).input(),
+      generatedKpis: map['generatedKpis'] == null ? null : ((map['generatedKpis']! as Map).cast<String, String>()).input(),
+      generatedLinks: map['generatedLinks'] == null ? null : ((map['generatedLinks']! as List).cast<String>()).input(),
     );
   }
 }

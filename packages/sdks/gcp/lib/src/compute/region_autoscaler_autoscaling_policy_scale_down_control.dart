@@ -28,8 +28,8 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControl {
 
   factory RegionAutoscalerAutoscalingPolicyScaleDownControl.fromMap(Map<String, dynamic> map) {
     return RegionAutoscalerAutoscalingPolicyScaleDownControl(
-      maxScaledDownReplicas: map['maxScaledDownReplicas'] == null ? null : (RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas.fromMap((map['maxScaledDownReplicas'] as Map).cast<String, dynamic>())).input(),
-      timeWindowSec: map['timeWindowSec'] == null ? null : (map['timeWindowSec'] as int).input(),
+      maxScaledDownReplicas: map['maxScaledDownReplicas'] == null ? null : (RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas.fromMap((map['maxScaledDownReplicas']! as Map).cast<String, dynamic>())).input(),
+      timeWindowSec: map['timeWindowSec'] == null ? null : (map['timeWindowSec']! as int).input(),
     );
   }
 }

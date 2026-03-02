@@ -27,8 +27,8 @@ class ManagedClusterNATGatewayProfile {
 
   factory ManagedClusterNATGatewayProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterNATGatewayProfile(
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      managedOutboundIPProfile: map['managedOutboundIPProfile'] == null ? null : (ManagedClusterManagedOutboundIPProfile.fromMap((map['managedOutboundIPProfile'] as Map).cast<String, dynamic>())).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
+      managedOutboundIPProfile: map['managedOutboundIPProfile'] == null ? null : (ManagedClusterManagedOutboundIPProfile.fromMap((map['managedOutboundIPProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

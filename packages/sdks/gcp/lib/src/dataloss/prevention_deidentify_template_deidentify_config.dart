@@ -36,9 +36,9 @@ class PreventionDeidentifyTemplateDeidentifyConfig {
 
   factory PreventionDeidentifyTemplateDeidentifyConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfig(
-      imageTransformations: map['imageTransformations'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigImageTransformations.fromMap((map['imageTransformations'] as Map).cast<String, dynamic>())).input(),
-      infoTypeTransformations: map['infoTypeTransformations'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations.fromMap((map['infoTypeTransformations'] as Map).cast<String, dynamic>())).input(),
-      recordTransformations: map['recordTransformations'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations.fromMap((map['recordTransformations'] as Map).cast<String, dynamic>())).input(),
+      imageTransformations: map['imageTransformations'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigImageTransformations.fromMap((map['imageTransformations']! as Map).cast<String, dynamic>())).input(),
+      infoTypeTransformations: map['infoTypeTransformations'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations.fromMap((map['infoTypeTransformations']! as Map).cast<String, dynamic>())).input(),
+      recordTransformations: map['recordTransformations'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations.fromMap((map['recordTransformations']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

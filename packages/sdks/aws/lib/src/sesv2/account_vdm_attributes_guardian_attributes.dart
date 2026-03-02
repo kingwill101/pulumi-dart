@@ -20,7 +20,7 @@ class AccountVdmAttributesGuardianAttributes {
 
   factory AccountVdmAttributesGuardianAttributes.fromMap(Map<String, dynamic> map) {
     return AccountVdmAttributesGuardianAttributes(
-      optimizedSharedDelivery: map['optimizedSharedDelivery'] == null ? null : (map['optimizedSharedDelivery'] as String).input(),
+      optimizedSharedDelivery: map['optimizedSharedDelivery'] == null ? null : ((map['optimizedSharedDelivery'] as String).input()).input(),
     );
   }
 }

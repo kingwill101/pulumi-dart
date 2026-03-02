@@ -43,10 +43,10 @@ class TableExternalCatalogTableOptionsStorageDescriptor {
 
   factory TableExternalCatalogTableOptionsStorageDescriptor.fromMap(Map<String, dynamic> map) {
     return TableExternalCatalogTableOptionsStorageDescriptor(
-      inputFormat: map['inputFormat'] == null ? null : (map['inputFormat'] as String).input(),
-      locationUri: map['locationUri'] == null ? null : (map['locationUri'] as String).input(),
-      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
-      serdeInfo: map['serdeInfo'] == null ? null : (TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo.fromMap((map['serdeInfo'] as Map).cast<String, dynamic>())).input(),
+      inputFormat: map['inputFormat'] == null ? null : (map['inputFormat']! as String).input(),
+      locationUri: map['locationUri'] == null ? null : (map['locationUri']! as String).input(),
+      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat']! as String).input(),
+      serdeInfo: map['serdeInfo'] == null ? null : (TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo.fromMap((map['serdeInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

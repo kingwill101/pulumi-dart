@@ -31,8 +31,8 @@ class AutomationRuleAdvanceRolloutRule {
   factory AutomationRuleAdvanceRolloutRule.fromMap(Map<String, dynamic> map) {
     return AutomationRuleAdvanceRolloutRule(
       id: (map['id'] as String).input(),
-      sourcePhases: map['sourcePhases'] == null ? null : ((map['sourcePhases'] as List).cast<String>()).input(),
-      wait: map['wait'] == null ? null : (map['wait'] as String).input(),
+      sourcePhases: map['sourcePhases'] == null ? null : ((map['sourcePhases']! as List).cast<String>()).input(),
+      wait: map['wait'] == null ? null : (map['wait']! as String).input(),
     );
   }
 }

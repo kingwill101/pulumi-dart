@@ -34,7 +34,7 @@ class ManagedDiskEncryption {
     return ManagedDiskEncryption(
       keySource: (map['keySource'] as String).input(),
       keyVaultProperties: (ManagedDiskEncryptionKeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
-      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : (map['rotationToLatestKeyVersionEnabled'] as bool).input(),
+      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : (map['rotationToLatestKeyVersionEnabled']! as bool).input(),
     );
   }
 }

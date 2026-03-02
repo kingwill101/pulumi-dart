@@ -26,8 +26,8 @@ class SkuProfileVMSizeResponse {
 
   factory SkuProfileVMSizeResponse.fromMap(Map<String, dynamic> map) {
     return SkuProfileVMSizeResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rank: map['rank'] == null ? null : (map['rank'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rank: map['rank'] == null ? null : (map['rank']! as int).input(),
     );
   }
 }

@@ -64,13 +64,13 @@ class ConnectivityTestNetworkmanagementV1beta1Args {
 
   factory ConnectivityTestNetworkmanagementV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ConnectivityTestNetworkmanagementV1beta1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destination: (EndpointNetworkmanagementV1beta1.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      relatedProjects: map['relatedProjects'] == null ? null : ((map['relatedProjects'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      relatedProjects: map['relatedProjects'] == null ? null : ((map['relatedProjects']! as List).cast<String>()).input(),
       source: (EndpointNetworkmanagementV1beta1.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
       testId: (map['testId'] as String).input(),
     );

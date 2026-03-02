@@ -31,7 +31,7 @@ class MonitoringSubscriptionArgs {
   factory MonitoringSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return MonitoringSubscriptionArgs(
       distributionId: (map['distributionId'] as String).input(),
-      monitoringSubscription: (MonitoringSubscriptionMonitoringSubscription.fromMap((map['monitoringSubscription'] as Map).cast<String, dynamic>())).input(),
+      monitoringSubscription: (MonitoringSubscriptionMonitoringSubscription.fromMap((map['monitoringSubscription']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -83,18 +83,18 @@ class CVSSContaineranalysisV1beta1 {
 
   factory CVSSContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return CVSSContaineranalysisV1beta1(
-      attackComplexity: map['attackComplexity'] == null ? null : (CVSSAttackComplexityContaineranalysisV1beta1.fromValue(map['attackComplexity'] as String)).input(),
-      attackVector: map['attackVector'] == null ? null : (CVSSAttackVectorContaineranalysisV1beta1.fromValue(map['attackVector'] as String)).input(),
-      authentication: map['authentication'] == null ? null : (CVSSAuthenticationContaineranalysisV1beta1.fromValue(map['authentication'] as String)).input(),
-      availabilityImpact: map['availabilityImpact'] == null ? null : (CVSSAvailabilityImpactContaineranalysisV1beta1.fromValue(map['availabilityImpact'] as String)).input(),
-      baseScore: map['baseScore'] == null ? null : (map['baseScore'] as double).input(),
-      confidentialityImpact: map['confidentialityImpact'] == null ? null : (CVSSConfidentialityImpactContaineranalysisV1beta1.fromValue(map['confidentialityImpact'] as String)).input(),
-      exploitabilityScore: map['exploitabilityScore'] == null ? null : (map['exploitabilityScore'] as double).input(),
-      impactScore: map['impactScore'] == null ? null : (map['impactScore'] as double).input(),
-      integrityImpact: map['integrityImpact'] == null ? null : (CVSSIntegrityImpactContaineranalysisV1beta1.fromValue(map['integrityImpact'] as String)).input(),
-      privilegesRequired: map['privilegesRequired'] == null ? null : (CVSSPrivilegesRequiredContaineranalysisV1beta1.fromValue(map['privilegesRequired'] as String)).input(),
-      scope: map['scope'] == null ? null : (CVSSScopeContaineranalysisV1beta1.fromValue(map['scope'] as String)).input(),
-      userInteraction: map['userInteraction'] == null ? null : (CVSSUserInteractionContaineranalysisV1beta1.fromValue(map['userInteraction'] as String)).input(),
+      attackComplexity: map['attackComplexity'] == null ? null : (CVSSAttackComplexityContaineranalysisV1beta1.fromValue(map['attackComplexity']! as String)).input(),
+      attackVector: map['attackVector'] == null ? null : (CVSSAttackVectorContaineranalysisV1beta1.fromValue(map['attackVector']! as String)).input(),
+      authentication: map['authentication'] == null ? null : (CVSSAuthenticationContaineranalysisV1beta1.fromValue(map['authentication']! as String)).input(),
+      availabilityImpact: map['availabilityImpact'] == null ? null : (CVSSAvailabilityImpactContaineranalysisV1beta1.fromValue(map['availabilityImpact']! as String)).input(),
+      baseScore: map['baseScore'] == null ? null : (map['baseScore']! as double).input(),
+      confidentialityImpact: map['confidentialityImpact'] == null ? null : (CVSSConfidentialityImpactContaineranalysisV1beta1.fromValue(map['confidentialityImpact']! as String)).input(),
+      exploitabilityScore: map['exploitabilityScore'] == null ? null : (map['exploitabilityScore']! as double).input(),
+      impactScore: map['impactScore'] == null ? null : (map['impactScore']! as double).input(),
+      integrityImpact: map['integrityImpact'] == null ? null : (CVSSIntegrityImpactContaineranalysisV1beta1.fromValue(map['integrityImpact']! as String)).input(),
+      privilegesRequired: map['privilegesRequired'] == null ? null : (CVSSPrivilegesRequiredContaineranalysisV1beta1.fromValue(map['privilegesRequired']! as String)).input(),
+      scope: map['scope'] == null ? null : (CVSSScopeContaineranalysisV1beta1.fromValue(map['scope']! as String)).input(),
+      userInteraction: map['userInteraction'] == null ? null : (CVSSUserInteractionContaineranalysisV1beta1.fromValue(map['userInteraction']! as String)).input(),
     );
   }
 }

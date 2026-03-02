@@ -47,10 +47,10 @@ class PrivateEndpointIPConfigurationResponse {
   factory PrivateEndpointIPConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointIPConfigurationResponse(
       etag: (map['etag'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      memberName: map['memberName'] == null ? null : (map['memberName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      memberName: map['memberName'] == null ? null : (map['memberName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

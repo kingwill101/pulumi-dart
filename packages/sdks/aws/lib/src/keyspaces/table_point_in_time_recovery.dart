@@ -20,7 +20,7 @@ class TablePointInTimeRecovery {
 
   factory TablePointInTimeRecovery.fromMap(Map<String, dynamic> map) {
     return TablePointInTimeRecovery(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

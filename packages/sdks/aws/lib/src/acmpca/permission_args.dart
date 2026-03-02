@@ -47,8 +47,8 @@ class PermissionArgs {
       actions: ((map['actions'] as List).cast<String>()).input(),
       certificateAuthorityArn: (map['certificateAuthorityArn'] as String).input(),
       principal: (map['principal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceAccount: map['sourceAccount'] == null ? null : (map['sourceAccount'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceAccount: map['sourceAccount'] == null ? null : ((map['sourceAccount'] as String).input()).input(),
     );
   }
 }

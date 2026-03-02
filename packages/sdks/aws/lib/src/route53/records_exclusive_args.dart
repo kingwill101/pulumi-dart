@@ -38,8 +38,8 @@ class RecordsExclusiveArgs {
 
   factory RecordsExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return RecordsExclusiveArgs(
-      resourceRecordSets: map['resourceRecordSets'] == null ? null : (pulumi.Input.decodeList<RecordsExclusiveResourceRecordSet>(map['resourceRecordSets'], (value) => RecordsExclusiveResourceRecordSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: map['timeouts'] == null ? null : (RecordsExclusiveTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      resourceRecordSets: map['resourceRecordSets'] == null ? null : ((pulumi.Input.decodeList<RecordsExclusiveResourceRecordSet>(map['resourceRecordSets']!, (value) => RecordsExclusiveResourceRecordSet.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((RecordsExclusiveTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       zoneId: (map['zoneId'] as String).input(),
     );
   }

@@ -63,14 +63,14 @@ class ApiConfigIamPolicyApigatewayV1betaArgs {
   factory ApiConfigIamPolicyApigatewayV1betaArgs.fromMap(Map<String, dynamic> map) {
     return ApiConfigIamPolicyApigatewayV1betaArgs(
       apiId: (map['apiId'] as String).input(),
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<ApigatewayAuditConfigApigatewayV1beta>(map['auditConfigs'], (value) => ApigatewayAuditConfigApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<ApigatewayBindingApigatewayV1beta>(map['bindings'], (value) => ApigatewayBindingApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<ApigatewayAuditConfigApigatewayV1beta>(map['auditConfigs']!, (value) => ApigatewayAuditConfigApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<ApigatewayBindingApigatewayV1beta>(map['bindings']!, (value) => ApigatewayBindingApigatewayV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
       configId: (map['configId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

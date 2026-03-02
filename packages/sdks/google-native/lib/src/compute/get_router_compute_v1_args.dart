@@ -31,7 +31,7 @@ class GetRouterComputeV1Args {
 
   factory GetRouterComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRouterComputeV1Args(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       router: (map['router'] as String).input(),
     );

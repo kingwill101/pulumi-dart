@@ -99,21 +99,21 @@ class ReservedInstanceArgs {
 
   factory ReservedInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ReservedInstanceArgs(
-      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceAmount: map['instanceAmount'] == null ? null : (map['instanceAmount'] as int).input(),
+      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceAmount: map['instanceAmount'] == null ? null : (map['instanceAmount']! as int).input(),
       instanceType: (map['instanceType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      offeringType: map['offeringType'] == null ? null : (map['offeringType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus'] as String).input(),
-      reservedInstanceName: map['reservedInstanceName'] == null ? null : (map['reservedInstanceName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      offeringType: map['offeringType'] == null ? null : (map['offeringType']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus']! as String).input(),
+      reservedInstanceName: map['reservedInstanceName'] == null ? null : (map['reservedInstanceName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

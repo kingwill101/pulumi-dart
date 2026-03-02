@@ -61,14 +61,14 @@ class AFDCustomDomainArgs {
 
   factory AFDCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return AFDCustomDomainArgs(
-      azureDnsZone: map['azureDnsZone'] == null ? null : (ResourceReference.fromMap((map['azureDnsZone'] as Map).cast<String, dynamic>())).input(),
-      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
-      extendedProperties: map['extendedProperties'] == null ? null : ((map['extendedProperties'] as Map).cast<String, String>()).input(),
+      azureDnsZone: map['azureDnsZone'] == null ? null : (ResourceReference.fromMap((map['azureDnsZone']! as Map).cast<String, dynamic>())).input(),
+      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName']! as String).input(),
+      extendedProperties: map['extendedProperties'] == null ? null : ((map['extendedProperties']! as Map).cast<String, String>()).input(),
       hostName: (map['hostName'] as String).input(),
-      preValidatedCustomDomainResourceId: map['preValidatedCustomDomainResourceId'] == null ? null : (ResourceReference.fromMap((map['preValidatedCustomDomainResourceId'] as Map).cast<String, dynamic>())).input(),
+      preValidatedCustomDomainResourceId: map['preValidatedCustomDomainResourceId'] == null ? null : (ResourceReference.fromMap((map['preValidatedCustomDomainResourceId']! as Map).cast<String, dynamic>())).input(),
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tlsSettings: map['tlsSettings'] == null ? null : (AFDDomainHttpsParameters.fromMap((map['tlsSettings'] as Map).cast<String, dynamic>())).input(),
+      tlsSettings: map['tlsSettings'] == null ? null : (AFDDomainHttpsParameters.fromMap((map['tlsSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

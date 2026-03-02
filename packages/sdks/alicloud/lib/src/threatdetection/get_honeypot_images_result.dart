@@ -52,10 +52,10 @@ class GetHoneypotImagesResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       images: pulumi.Input.decodeList<GetHoneypotImagesImage>(map['images'], (value) => GetHoneypotImagesImage.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      nodeId: map['nodeId'] == null ? null : map['nodeId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      nodeId: map['nodeId'] == null ? null : map['nodeId']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

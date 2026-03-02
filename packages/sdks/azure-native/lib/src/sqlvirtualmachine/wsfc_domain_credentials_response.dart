@@ -31,9 +31,9 @@ class WsfcDomainCredentialsResponse {
 
   factory WsfcDomainCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return WsfcDomainCredentialsResponse(
-      clusterBootstrapAccountPassword: map['clusterBootstrapAccountPassword'] == null ? null : (map['clusterBootstrapAccountPassword'] as String).input(),
-      clusterOperatorAccountPassword: map['clusterOperatorAccountPassword'] == null ? null : (map['clusterOperatorAccountPassword'] as String).input(),
-      sqlServiceAccountPassword: map['sqlServiceAccountPassword'] == null ? null : (map['sqlServiceAccountPassword'] as String).input(),
+      clusterBootstrapAccountPassword: map['clusterBootstrapAccountPassword'] == null ? null : (map['clusterBootstrapAccountPassword']! as String).input(),
+      clusterOperatorAccountPassword: map['clusterOperatorAccountPassword'] == null ? null : (map['clusterOperatorAccountPassword']! as String).input(),
+      sqlServiceAccountPassword: map['sqlServiceAccountPassword'] == null ? null : (map['sqlServiceAccountPassword']! as String).input(),
     );
   }
 }

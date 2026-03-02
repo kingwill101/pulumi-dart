@@ -31,9 +31,9 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

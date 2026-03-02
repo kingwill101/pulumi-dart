@@ -95,16 +95,16 @@ class RolloutKindArgs {
 
   factory RolloutKindArgs.fromMap(Map<String, dynamic> map) {
     return RolloutKindArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      errorBudget: map['errorBudget'] == null ? null : (RolloutKindErrorBudget.fromMap((map['errorBudget'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      errorBudget: map['errorBudget'] == null ? null : (RolloutKindErrorBudget.fromMap((map['errorBudget']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rolloutKindId: (map['rolloutKindId'] as String).input(),
-      rolloutOrchestrationStrategy: map['rolloutOrchestrationStrategy'] == null ? null : (map['rolloutOrchestrationStrategy'] as String).input(),
-      unitFilter: map['unitFilter'] == null ? null : (map['unitFilter'] as String).input(),
+      rolloutOrchestrationStrategy: map['rolloutOrchestrationStrategy'] == null ? null : (map['rolloutOrchestrationStrategy']! as String).input(),
+      unitFilter: map['unitFilter'] == null ? null : (map['unitFilter']! as String).input(),
       unitKind: (map['unitKind'] as String).input(),
-      updateUnitKindStrategy: map['updateUnitKindStrategy'] == null ? null : (map['updateUnitKindStrategy'] as String).input(),
+      updateUnitKindStrategy: map['updateUnitKindStrategy'] == null ? null : (map['updateUnitKindStrategy']! as String).input(),
     );
   }
 }

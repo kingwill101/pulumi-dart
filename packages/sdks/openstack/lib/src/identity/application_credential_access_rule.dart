@@ -45,7 +45,7 @@ class ApplicationCredentialAccessRule {
 
   factory ApplicationCredentialAccessRule.fromMap(Map<String, dynamic> map) {
     return ApplicationCredentialAccessRule(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       method: (map['method'] as String).input(),
       path: (map['path'] as String).input(),
       service: (map['service'] as String).input(),

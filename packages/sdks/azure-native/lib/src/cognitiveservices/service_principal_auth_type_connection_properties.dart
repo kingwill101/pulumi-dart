@@ -69,17 +69,17 @@ class ServicePrincipalAuthTypeConnectionProperties {
   factory ServicePrincipalAuthTypeConnectionProperties.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalAuthTypeConnectionProperties(
       authType: (map['authType'] as String).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      credentials: map['credentials'] == null ? null : (ConnectionServicePrincipal.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      error: map['error'] == null ? null : (map['error'] as String).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
-      isSharedToAll: map['isSharedToAll'] == null ? null : (map['isSharedToAll'] as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      peRequirement: map['peRequirement'] == null ? null : (map['peRequirement'] as String).input(),
-      peStatus: map['peStatus'] == null ? null : (map['peStatus'] as String).input(),
-      sharedUserList: map['sharedUserList'] == null ? null : ((map['sharedUserList'] as List).cast<String>()).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      useWorkspaceManagedIdentity: map['useWorkspaceManagedIdentity'] == null ? null : (map['useWorkspaceManagedIdentity'] as bool).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      credentials: map['credentials'] == null ? null : (ConnectionServicePrincipal.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
+      isSharedToAll: map['isSharedToAll'] == null ? null : (map['isSharedToAll']! as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      peRequirement: map['peRequirement'] == null ? null : (map['peRequirement']! as String).input(),
+      peStatus: map['peStatus'] == null ? null : (map['peStatus']! as String).input(),
+      sharedUserList: map['sharedUserList'] == null ? null : ((map['sharedUserList']! as List).cast<String>()).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      useWorkspaceManagedIdentity: map['useWorkspaceManagedIdentity'] == null ? null : (map['useWorkspaceManagedIdentity']! as bool).input(),
     );
   }
 }

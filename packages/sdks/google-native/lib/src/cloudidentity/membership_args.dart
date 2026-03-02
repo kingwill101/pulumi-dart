@@ -37,7 +37,7 @@ class MembershipArgs {
     return MembershipArgs(
       groupId: (map['groupId'] as String).input(),
       preferredMemberKey: (EntityKey.fromMap((map['preferredMemberKey'] as Map).cast<String, dynamic>())).input(),
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<MembershipRole>(map['roles'], (value) => MembershipRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<MembershipRole>(map['roles']!, (value) => MembershipRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

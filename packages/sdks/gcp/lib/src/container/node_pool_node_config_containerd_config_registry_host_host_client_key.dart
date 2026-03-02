@@ -20,7 +20,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey {
 
   factory NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey(
-      gcpSecretManagerSecretUri: map['gcpSecretManagerSecretUri'] == null ? null : (map['gcpSecretManagerSecretUri'] as String).input(),
+      gcpSecretManagerSecretUri: map['gcpSecretManagerSecretUri'] == null ? null : (map['gcpSecretManagerSecretUri']! as String).input(),
     );
   }
 }

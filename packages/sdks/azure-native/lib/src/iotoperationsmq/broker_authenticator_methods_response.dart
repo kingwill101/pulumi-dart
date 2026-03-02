@@ -46,11 +46,11 @@ class BrokerAuthenticatorMethodsResponse {
 
   factory BrokerAuthenticatorMethodsResponse.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodsResponse(
-      custom: map['custom'] == null ? null : (BrokerAuthenticatorMethodCustomResponse.fromMap((map['custom'] as Map).cast<String, dynamic>())).input(),
-      sat: map['sat'] == null ? null : (BrokerAuthenticatorMethodSatResponse.fromMap((map['sat'] as Map).cast<String, dynamic>())).input(),
-      svid: map['svid'] == null ? null : (BrokerAuthenticatorMethodSvidResponse.fromMap((map['svid'] as Map).cast<String, dynamic>())).input(),
-      usernamePassword: map['usernamePassword'] == null ? null : (BrokerAuthenticatorMethodUsernamePasswordResponse.fromMap((map['usernamePassword'] as Map).cast<String, dynamic>())).input(),
-      x509: map['x509'] == null ? null : (BrokerAuthenticatorMethodX509Response.fromMap((map['x509'] as Map).cast<String, dynamic>())).input(),
+      custom: map['custom'] == null ? null : (BrokerAuthenticatorMethodCustomResponse.fromMap((map['custom']! as Map).cast<String, dynamic>())).input(),
+      sat: map['sat'] == null ? null : (BrokerAuthenticatorMethodSatResponse.fromMap((map['sat']! as Map).cast<String, dynamic>())).input(),
+      svid: map['svid'] == null ? null : (BrokerAuthenticatorMethodSvidResponse.fromMap((map['svid']! as Map).cast<String, dynamic>())).input(),
+      usernamePassword: map['usernamePassword'] == null ? null : (BrokerAuthenticatorMethodUsernamePasswordResponse.fromMap((map['usernamePassword']! as Map).cast<String, dynamic>())).input(),
+      x509: map['x509'] == null ? null : (BrokerAuthenticatorMethodX509Response.fromMap((map['x509']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

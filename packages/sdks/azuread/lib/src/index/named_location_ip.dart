@@ -26,7 +26,7 @@ class NamedLocationIp {
   factory NamedLocationIp.fromMap(Map<String, dynamic> map) {
     return NamedLocationIp(
       ipRanges: ((map['ipRanges'] as List).cast<String>()).input(),
-      trusted: map['trusted'] == null ? null : (map['trusted'] as bool).input(),
+      trusted: map['trusted'] == null ? null : (map['trusted']! as bool).input(),
     );
   }
 }

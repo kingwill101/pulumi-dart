@@ -34,9 +34,9 @@ class FunctionAppConfigResponse {
 
   factory FunctionAppConfigResponse.fromMap(Map<String, dynamic> map) {
     return FunctionAppConfigResponse(
-      deployment: map['deployment'] == null ? null : (FunctionsDeploymentResponse.fromMap((map['deployment'] as Map).cast<String, dynamic>())).input(),
-      runtime: map['runtime'] == null ? null : (FunctionsRuntimeResponse.fromMap((map['runtime'] as Map).cast<String, dynamic>())).input(),
-      scaleAndConcurrency: map['scaleAndConcurrency'] == null ? null : (FunctionsScaleAndConcurrencyResponse.fromMap((map['scaleAndConcurrency'] as Map).cast<String, dynamic>())).input(),
+      deployment: map['deployment'] == null ? null : (FunctionsDeploymentResponse.fromMap((map['deployment']! as Map).cast<String, dynamic>())).input(),
+      runtime: map['runtime'] == null ? null : (FunctionsRuntimeResponse.fromMap((map['runtime']! as Map).cast<String, dynamic>())).input(),
+      scaleAndConcurrency: map['scaleAndConcurrency'] == null ? null : (FunctionsScaleAndConcurrencyResponse.fromMap((map['scaleAndConcurrency']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

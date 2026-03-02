@@ -38,10 +38,10 @@ class ForwardingRuleRuleCondition {
 
   factory ForwardingRuleRuleCondition.fromMap(Map<String, dynamic> map) {
     return ForwardingRuleRuleCondition(
-      hostConfigs: map['hostConfigs'] == null ? null : (pulumi.Input.decodeList<ForwardingRuleRuleConditionHostConfig>(map['hostConfigs'], (value) => ForwardingRuleRuleConditionHostConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pathConfig: map['pathConfig'] == null ? null : (ForwardingRuleRuleConditionPathConfig.fromMap((map['pathConfig'] as Map).cast<String, dynamic>())).input(),
+      hostConfigs: map['hostConfigs'] == null ? null : (pulumi.Input.decodeList<ForwardingRuleRuleConditionHostConfig>(map['hostConfigs']!, (value) => ForwardingRuleRuleConditionHostConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pathConfig: map['pathConfig'] == null ? null : (ForwardingRuleRuleConditionPathConfig.fromMap((map['pathConfig']! as Map).cast<String, dynamic>())).input(),
       ruleConditionType: (map['ruleConditionType'] as String).input(),
-      ruleConditionValue: map['ruleConditionValue'] == null ? null : (map['ruleConditionValue'] as String).input(),
+      ruleConditionValue: map['ruleConditionValue'] == null ? null : (map['ruleConditionValue']! as String).input(),
     );
   }
 }

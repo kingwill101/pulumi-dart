@@ -21,7 +21,7 @@ class IPSet {
 
   factory IPSet.fromMap(Map<String, dynamic> map) {
     return IPSet(
-      definition: map['definition'] == null ? null : ((map['definition'] as List).cast<String>()).input(),
+      definition: map['definition'] == null ? null : ((map['definition']! as List).cast<String>()).input(),
     );
   }
 }

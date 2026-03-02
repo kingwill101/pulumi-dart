@@ -31,7 +31,7 @@ class GetScriptDagNodeArg {
   factory GetScriptDagNodeArg.fromMap(Map<String, dynamic> map) {
     return GetScriptDagNodeArg(
       name: (map['name'] as String).input(),
-      param: map['param'] == null ? null : (map['param'] as bool).input(),
+      param: map['param'] == null ? null : ((map['param'] as bool).input()).input(),
       value: (map['value'] as String).input(),
     );
   }

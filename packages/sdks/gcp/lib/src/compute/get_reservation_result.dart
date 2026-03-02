@@ -120,7 +120,7 @@ class GetReservationResult {
       kind: map['kind'] as String,
       linkedCommitments: (map['linkedCommitments'] as List).cast<String>(),
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       reservationBlockCount: map['reservationBlockCount'] as int,
       reservationSharingPolicies: pulumi.Input.decodeList<GetReservationReservationSharingPolicy>(map['reservationSharingPolicies'], (value) => GetReservationReservationSharingPolicy.fromMap((value as Map).cast<String, dynamic>())),
       resourceStatuses: pulumi.Input.decodeList<GetReservationResourceStatus>(map['resourceStatuses'], (value) => GetReservationResourceStatus.fromMap((value as Map).cast<String, dynamic>())),

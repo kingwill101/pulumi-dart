@@ -57,13 +57,13 @@ class LimitV3State {
 
   factory LimitV3State.fromMap(Map<String, dynamic> map) {
     return LimitV3State(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceLimit: map['resourceLimit'] == null ? null : (map['resourceLimit'] as int).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      resourceLimit: map['resourceLimit'] == null ? null : (map['resourceLimit']! as int).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
     );
   }
 }

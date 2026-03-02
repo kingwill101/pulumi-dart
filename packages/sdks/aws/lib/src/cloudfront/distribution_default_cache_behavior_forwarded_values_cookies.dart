@@ -26,7 +26,7 @@ class DistributionDefaultCacheBehaviorForwardedValuesCookies {
   factory DistributionDefaultCacheBehaviorForwardedValuesCookies.fromMap(Map<String, dynamic> map) {
     return DistributionDefaultCacheBehaviorForwardedValuesCookies(
       forward: (map['forward'] as String).input(),
-      whitelistedNames: map['whitelistedNames'] == null ? null : ((map['whitelistedNames'] as List).cast<String>()).input(),
+      whitelistedNames: map['whitelistedNames'] == null ? null : (((map['whitelistedNames'] as List).cast<String>()).input()).input(),
     );
   }
 }

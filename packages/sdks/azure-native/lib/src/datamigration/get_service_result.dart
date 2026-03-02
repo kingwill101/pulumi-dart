@@ -91,22 +91,22 @@ class GetServiceResult {
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
-      autoStopDelay: map['autoStopDelay'] == null ? null : map['autoStopDelay'] as String,
+      autoStopDelay: map['autoStopDelay'] == null ? null : map['autoStopDelay']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      deleteResourcesOnStop: map['deleteResourcesOnStop'] == null ? null : map['deleteResourcesOnStop'] as bool,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      deleteResourcesOnStop: map['deleteResourcesOnStop'] == null ? null : map['deleteResourcesOnStop']! as bool,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      publicKey: map['publicKey'] == null ? null : map['publicKey'] as String,
-      sku: map['sku'] == null ? null : ServiceSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      publicKey: map['publicKey'] == null ? null : map['publicKey']! as String,
+      sku: map['sku'] == null ? null : ServiceSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      virtualNicId: map['virtualNicId'] == null ? null : map['virtualNicId'] as String,
-      virtualSubnetId: map['virtualSubnetId'] == null ? null : map['virtualSubnetId'] as String,
+      virtualNicId: map['virtualNicId'] == null ? null : map['virtualNicId']! as String,
+      virtualSubnetId: map['virtualSubnetId'] == null ? null : map['virtualSubnetId']! as String,
     );
   }
 }

@@ -26,8 +26,8 @@ class UserPolicyAttachmentState {
 
   factory UserPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return UserPolicyAttachmentState(
-      policyArn: map['policyArn'] == null ? null : (map['policyArn'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      policyArn: map['policyArn'] == null ? null : ((map['policyArn'] as String).input()).input(),
+      user: map['user'] == null ? null : ((map['user'] as String).input()).input(),
     );
   }
 }

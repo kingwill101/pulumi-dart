@@ -40,11 +40,11 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBase {
 
   factory AgentFlowDefinitionNodeConfigurationKnowledgeBase.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationKnowledgeBase(
-      guardrailConfiguration: map['guardrailConfiguration'] == null ? null : (AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration.fromMap((map['guardrailConfiguration'] as Map).cast<String, dynamic>())).input(),
-      inferenceConfiguration: map['inferenceConfiguration'] == null ? null : (AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration.fromMap((map['inferenceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      guardrailConfiguration: map['guardrailConfiguration'] == null ? null : ((AgentFlowDefinitionNodeConfigurationKnowledgeBaseGuardrailConfiguration.fromMap((map['guardrailConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      inferenceConfiguration: map['inferenceConfiguration'] == null ? null : ((AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration.fromMap((map['inferenceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       knowledgeBaseId: (map['knowledgeBaseId'] as String).input(),
       modelId: (map['modelId'] as String).input(),
-      numberOfResults: map['numberOfResults'] == null ? null : (map['numberOfResults'] as int).input(),
+      numberOfResults: map['numberOfResults'] == null ? null : ((map['numberOfResults'] as int).input()).input(),
     );
   }
 }

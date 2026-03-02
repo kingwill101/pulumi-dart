@@ -26,7 +26,7 @@ class PhotonPersistentDiskVolumeSource {
 
   factory PhotonPersistentDiskVolumeSource.fromMap(Map<String, dynamic> map) {
     return PhotonPersistentDiskVolumeSource(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
       pdID: (map['pdID'] as String).input(),
     );
   }

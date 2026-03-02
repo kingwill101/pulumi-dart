@@ -38,7 +38,7 @@ class GetArtifactArgs {
       artifactId: (map['artifactId'] as String).input(),
       location: (map['location'] as String).input(),
       metadataStoreId: (map['metadataStoreId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

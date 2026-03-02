@@ -21,7 +21,7 @@ class GooglePrivacyDlpV2KindExpression {
 
   factory GooglePrivacyDlpV2KindExpression.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2KindExpression(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

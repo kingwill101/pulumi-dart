@@ -57,11 +57,11 @@ class GetApiToolResult {
   factory GetApiToolResult.fromMap(Map<String, dynamic> map) {
     return GetApiToolResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      operationId: map['operationId'] == null ? null : map['operationId'] as String,
+      operationId: map['operationId'] == null ? null : map['operationId']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

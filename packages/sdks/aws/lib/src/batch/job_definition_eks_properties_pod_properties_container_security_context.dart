@@ -44,12 +44,12 @@ class JobDefinitionEksPropertiesPodPropertiesContainerSecurityContext {
 
   factory JobDefinitionEksPropertiesPodPropertiesContainerSecurityContext.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesContainerSecurityContext(
-      allowPrivilegeEscalation: map['allowPrivilegeEscalation'] == null ? null : (map['allowPrivilegeEscalation'] as bool).input(),
-      privileged: map['privileged'] == null ? null : (map['privileged'] as bool).input(),
-      readOnlyRootFileSystem: map['readOnlyRootFileSystem'] == null ? null : (map['readOnlyRootFileSystem'] as bool).input(),
-      runAsGroup: map['runAsGroup'] == null ? null : (map['runAsGroup'] as int).input(),
-      runAsNonRoot: map['runAsNonRoot'] == null ? null : (map['runAsNonRoot'] as bool).input(),
-      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
+      allowPrivilegeEscalation: map['allowPrivilegeEscalation'] == null ? null : ((map['allowPrivilegeEscalation'] as bool).input()).input(),
+      privileged: map['privileged'] == null ? null : ((map['privileged'] as bool).input()).input(),
+      readOnlyRootFileSystem: map['readOnlyRootFileSystem'] == null ? null : ((map['readOnlyRootFileSystem'] as bool).input()).input(),
+      runAsGroup: map['runAsGroup'] == null ? null : ((map['runAsGroup'] as int).input()).input(),
+      runAsNonRoot: map['runAsNonRoot'] == null ? null : ((map['runAsNonRoot'] as bool).input()).input(),
+      runAsUser: map['runAsUser'] == null ? null : ((map['runAsUser'] as int).input()).input(),
     );
   }
 }

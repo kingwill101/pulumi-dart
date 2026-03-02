@@ -88,19 +88,19 @@ class CloudExadataInfrastructureArgs {
 
   factory CloudExadataInfrastructureArgs.fromMap(Map<String, dynamic> map) {
     return CloudExadataInfrastructureArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
       availabilityZoneId: (map['availabilityZoneId'] as String).input(),
-      computeCount: map['computeCount'] == null ? null : (map['computeCount'] as int).input(),
-      customerContactsToSendToOcis: map['customerContactsToSendToOcis'] == null ? null : (pulumi.Input.decodeList<CloudExadataInfrastructureCustomerContactsToSendToOci>(map['customerContactsToSendToOcis'], (value) => CloudExadataInfrastructureCustomerContactsToSendToOci.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      databaseServerType: map['databaseServerType'] == null ? null : (map['databaseServerType'] as String).input(),
+      computeCount: map['computeCount'] == null ? null : ((map['computeCount'] as int).input()).input(),
+      customerContactsToSendToOcis: map['customerContactsToSendToOcis'] == null ? null : ((pulumi.Input.decodeList<CloudExadataInfrastructureCustomerContactsToSendToOci>(map['customerContactsToSendToOcis']!, (value) => CloudExadataInfrastructureCustomerContactsToSendToOci.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      databaseServerType: map['databaseServerType'] == null ? null : ((map['databaseServerType'] as String).input()).input(),
       displayName: (map['displayName'] as String).input(),
-      maintenanceWindow: (CloudExadataInfrastructureMaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      maintenanceWindow: (CloudExadataInfrastructureMaintenanceWindow.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       shape: (map['shape'] as String).input(),
-      storageCount: map['storageCount'] == null ? null : (map['storageCount'] as int).input(),
-      storageServerType: map['storageServerType'] == null ? null : (map['storageServerType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (CloudExadataInfrastructureTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      storageCount: map['storageCount'] == null ? null : ((map['storageCount'] as int).input()).input(),
+      storageServerType: map['storageServerType'] == null ? null : ((map['storageServerType'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((CloudExadataInfrastructureTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

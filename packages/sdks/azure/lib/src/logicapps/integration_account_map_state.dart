@@ -46,12 +46,12 @@ class IntegrationAccountMapState {
 
   factory IntegrationAccountMapState.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountMapState(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName'] as String).input(),
-      mapType: map['mapType'] == null ? null : (map['mapType'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName']! as String).input(),
+      mapType: map['mapType'] == null ? null : (map['mapType']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

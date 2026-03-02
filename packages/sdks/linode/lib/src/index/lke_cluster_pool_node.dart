@@ -30,9 +30,9 @@ class LkeClusterPoolNode {
 
   factory LkeClusterPoolNode.fromMap(Map<String, dynamic> map) {
     return LkeClusterPoolNode(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

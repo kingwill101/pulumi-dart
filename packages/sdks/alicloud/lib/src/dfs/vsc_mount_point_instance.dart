@@ -31,9 +31,9 @@ class VscMountPointInstance {
 
   factory VscMountPointInstance.fromMap(Map<String, dynamic> map) {
     return VscMountPointInstance(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vscs: map['vscs'] == null ? null : (pulumi.Input.decodeList<VscMountPointInstanceVsc>(map['vscs'], (value) => VscMountPointInstanceVsc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vscs: map['vscs'] == null ? null : (pulumi.Input.decodeList<VscMountPointInstanceVsc>(map['vscs']!, (value) => VscMountPointInstanceVsc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

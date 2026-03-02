@@ -21,7 +21,7 @@ class EventSourceMappingDestinationConfig {
 
   factory EventSourceMappingDestinationConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingDestinationConfig(
-      onFailure: map['onFailure'] == null ? null : (EventSourceMappingDestinationConfigOnFailure.fromMap((map['onFailure'] as Map).cast<String, dynamic>())).input(),
+      onFailure: map['onFailure'] == null ? null : ((EventSourceMappingDestinationConfigOnFailure.fromMap((map['onFailure']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

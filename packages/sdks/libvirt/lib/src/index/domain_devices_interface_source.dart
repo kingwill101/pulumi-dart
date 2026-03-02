@@ -104,21 +104,21 @@ class DomainDevicesInterfaceSource {
 
   factory DomainDevicesInterfaceSource.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSource(
-      bridge: map['bridge'] == null ? null : (DomainDevicesInterfaceSourceBridge.fromMap((map['bridge'] as Map).cast<String, dynamic>())).input(),
-      client: map['client'] == null ? null : (DomainDevicesInterfaceSourceClient.fromMap((map['client'] as Map).cast<String, dynamic>())).input(),
-      direct: map['direct'] == null ? null : (DomainDevicesInterfaceSourceDirect.fromMap((map['direct'] as Map).cast<String, dynamic>())).input(),
-      ethernet: map['ethernet'] == null ? null : (DomainDevicesInterfaceSourceEthernet.fromMap((map['ethernet'] as Map).cast<String, dynamic>())).input(),
-      hostdev: map['hostdev'] == null ? null : (DomainDevicesInterfaceSourceHostdev.fromMap((map['hostdev'] as Map).cast<String, dynamic>())).input(),
-      internal: map['internal'] == null ? null : (DomainDevicesInterfaceSourceInternal.fromMap((map['internal'] as Map).cast<String, dynamic>())).input(),
-      mcast: map['mcast'] == null ? null : (DomainDevicesInterfaceSourceMcast.fromMap((map['mcast'] as Map).cast<String, dynamic>())).input(),
-      network: map['network'] == null ? null : (DomainDevicesInterfaceSourceNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
-      null_: map['null'] == null ? null : (map['null'] as bool).input(),
-      server: map['server'] == null ? null : (DomainDevicesInterfaceSourceServer.fromMap((map['server'] as Map).cast<String, dynamic>())).input(),
-      udp: map['udp'] == null ? null : (DomainDevicesInterfaceSourceUdp.fromMap((map['udp'] as Map).cast<String, dynamic>())).input(),
-      user: map['user'] == null ? null : (DomainDevicesInterfaceSourceUser.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
-      vdpa: map['vdpa'] == null ? null : (DomainDevicesInterfaceSourceVdpa.fromMap((map['vdpa'] as Map).cast<String, dynamic>())).input(),
-      vds: map['vds'] == null ? null : (DomainDevicesInterfaceSourceVds.fromMap((map['vds'] as Map).cast<String, dynamic>())).input(),
-      vhostUser: map['vhostUser'] == null ? null : (DomainDevicesInterfaceSourceVhostUser.fromMap((map['vhostUser'] as Map).cast<String, dynamic>())).input(),
+      bridge: map['bridge'] == null ? null : (DomainDevicesInterfaceSourceBridge.fromMap((map['bridge']! as Map).cast<String, dynamic>())).input(),
+      client: map['client'] == null ? null : (DomainDevicesInterfaceSourceClient.fromMap((map['client']! as Map).cast<String, dynamic>())).input(),
+      direct: map['direct'] == null ? null : (DomainDevicesInterfaceSourceDirect.fromMap((map['direct']! as Map).cast<String, dynamic>())).input(),
+      ethernet: map['ethernet'] == null ? null : (DomainDevicesInterfaceSourceEthernet.fromMap((map['ethernet']! as Map).cast<String, dynamic>())).input(),
+      hostdev: map['hostdev'] == null ? null : (DomainDevicesInterfaceSourceHostdev.fromMap((map['hostdev']! as Map).cast<String, dynamic>())).input(),
+      internal: map['internal'] == null ? null : (DomainDevicesInterfaceSourceInternal.fromMap((map['internal']! as Map).cast<String, dynamic>())).input(),
+      mcast: map['mcast'] == null ? null : (DomainDevicesInterfaceSourceMcast.fromMap((map['mcast']! as Map).cast<String, dynamic>())).input(),
+      network: map['network'] == null ? null : (DomainDevicesInterfaceSourceNetwork.fromMap((map['network']! as Map).cast<String, dynamic>())).input(),
+      null_: map['null'] == null ? null : (map['null']! as bool).input(),
+      server: map['server'] == null ? null : (DomainDevicesInterfaceSourceServer.fromMap((map['server']! as Map).cast<String, dynamic>())).input(),
+      udp: map['udp'] == null ? null : (DomainDevicesInterfaceSourceUdp.fromMap((map['udp']! as Map).cast<String, dynamic>())).input(),
+      user: map['user'] == null ? null : (DomainDevicesInterfaceSourceUser.fromMap((map['user']! as Map).cast<String, dynamic>())).input(),
+      vdpa: map['vdpa'] == null ? null : (DomainDevicesInterfaceSourceVdpa.fromMap((map['vdpa']! as Map).cast<String, dynamic>())).input(),
+      vds: map['vds'] == null ? null : (DomainDevicesInterfaceSourceVds.fromMap((map['vds']! as Map).cast<String, dynamic>())).input(),
+      vhostUser: map['vhostUser'] == null ? null : (DomainDevicesInterfaceSourceVhostUser.fromMap((map['vhostUser']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

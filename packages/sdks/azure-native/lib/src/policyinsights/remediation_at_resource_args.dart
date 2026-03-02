@@ -66,14 +66,14 @@ class RemediationAtResourceArgs {
 
   factory RemediationAtResourceArgs.fromMap(Map<String, dynamic> map) {
     return RemediationAtResourceArgs(
-      failureThreshold: map['failureThreshold'] == null ? null : (RemediationPropertiesFailureThreshold.fromMap((map['failureThreshold'] as Map).cast<String, dynamic>())).input(),
-      filters: map['filters'] == null ? null : (RemediationFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
-      parallelDeployments: map['parallelDeployments'] == null ? null : (map['parallelDeployments'] as int).input(),
-      policyAssignmentId: map['policyAssignmentId'] == null ? null : (map['policyAssignmentId'] as String).input(),
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
-      remediationName: map['remediationName'] == null ? null : (map['remediationName'] as String).input(),
-      resourceCount: map['resourceCount'] == null ? null : (map['resourceCount'] as int).input(),
-      resourceDiscoveryMode: map['resourceDiscoveryMode'] == null ? null : (map['resourceDiscoveryMode'] as String).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (RemediationPropertiesFailureThreshold.fromMap((map['failureThreshold']! as Map).cast<String, dynamic>())).input(),
+      filters: map['filters'] == null ? null : (RemediationFilters.fromMap((map['filters']! as Map).cast<String, dynamic>())).input(),
+      parallelDeployments: map['parallelDeployments'] == null ? null : (map['parallelDeployments']! as int).input(),
+      policyAssignmentId: map['policyAssignmentId'] == null ? null : (map['policyAssignmentId']! as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId']! as String).input(),
+      remediationName: map['remediationName'] == null ? null : (map['remediationName']! as String).input(),
+      resourceCount: map['resourceCount'] == null ? null : (map['resourceCount']! as int).input(),
+      resourceDiscoveryMode: map['resourceDiscoveryMode'] == null ? null : (map['resourceDiscoveryMode']! as String).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

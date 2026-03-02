@@ -40,10 +40,10 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      policyDescription: map['policyDescription'] == null ? null : (map['policyDescription'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRule>(map['rules'], (value) => PolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyDescription: map['policyDescription'] == null ? null : (map['policyDescription']! as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRule>(map['rules']!, (value) => PolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

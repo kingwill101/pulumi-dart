@@ -100,21 +100,21 @@ class HealthCheckTemplateArgs {
 
   factory HealthCheckTemplateArgs.fromMap(Map<String, dynamic> map) {
     return HealthCheckTemplateArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      healthCheckCodes: map['healthCheckCodes'] == null ? null : ((map['healthCheckCodes'] as List).cast<String>()).input(),
-      healthCheckConnectPort: map['healthCheckConnectPort'] == null ? null : (map['healthCheckConnectPort'] as int).input(),
-      healthCheckHost: map['healthCheckHost'] == null ? null : (map['healthCheckHost'] as String).input(),
-      healthCheckHttpVersion: map['healthCheckHttpVersion'] == null ? null : (map['healthCheckHttpVersion'] as String).input(),
-      healthCheckInterval: map['healthCheckInterval'] == null ? null : (map['healthCheckInterval'] as int).input(),
-      healthCheckMethod: map['healthCheckMethod'] == null ? null : (map['healthCheckMethod'] as String).input(),
-      healthCheckPath: map['healthCheckPath'] == null ? null : (map['healthCheckPath'] as String).input(),
-      healthCheckProtocol: map['healthCheckProtocol'] == null ? null : (map['healthCheckProtocol'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      healthCheckCodes: map['healthCheckCodes'] == null ? null : ((map['healthCheckCodes']! as List).cast<String>()).input(),
+      healthCheckConnectPort: map['healthCheckConnectPort'] == null ? null : (map['healthCheckConnectPort']! as int).input(),
+      healthCheckHost: map['healthCheckHost'] == null ? null : (map['healthCheckHost']! as String).input(),
+      healthCheckHttpVersion: map['healthCheckHttpVersion'] == null ? null : (map['healthCheckHttpVersion']! as String).input(),
+      healthCheckInterval: map['healthCheckInterval'] == null ? null : (map['healthCheckInterval']! as int).input(),
+      healthCheckMethod: map['healthCheckMethod'] == null ? null : (map['healthCheckMethod']! as String).input(),
+      healthCheckPath: map['healthCheckPath'] == null ? null : (map['healthCheckPath']! as String).input(),
+      healthCheckProtocol: map['healthCheckProtocol'] == null ? null : (map['healthCheckProtocol']! as String).input(),
       healthCheckTemplateName: (map['healthCheckTemplateName'] as String).input(),
-      healthCheckTimeout: map['healthCheckTimeout'] == null ? null : (map['healthCheckTimeout'] as int).input(),
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold'] as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold'] as int).input(),
+      healthCheckTimeout: map['healthCheckTimeout'] == null ? null : (map['healthCheckTimeout']! as int).input(),
+      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold']! as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold']! as int).input(),
     );
   }
 }

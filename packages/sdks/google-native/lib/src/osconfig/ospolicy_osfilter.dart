@@ -26,8 +26,8 @@ class OSPolicyOSFilter {
 
   factory OSPolicyOSFilter.fromMap(Map<String, dynamic> map) {
     return OSPolicyOSFilter(
-      osShortName: map['osShortName'] == null ? null : (map['osShortName'] as String).input(),
-      osVersion: map['osVersion'] == null ? null : (map['osVersion'] as String).input(),
+      osShortName: map['osShortName'] == null ? null : (map['osShortName']! as String).input(),
+      osVersion: map['osVersion'] == null ? null : (map['osVersion']! as String).input(),
     );
   }
 }

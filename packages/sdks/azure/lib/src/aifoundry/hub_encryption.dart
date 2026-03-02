@@ -34,7 +34,7 @@ class HubEncryption {
     return HubEncryption(
       keyId: (map['keyId'] as String).input(),
       keyVaultId: (map['keyVaultId'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

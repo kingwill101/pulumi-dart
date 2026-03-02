@@ -66,16 +66,16 @@ class PrivateKeyState {
 
   factory PrivateKeyState.fromMap(Map<String, dynamic> map) {
     return PrivateKeyState(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
-      ecdsaCurve: map['ecdsaCurve'] == null ? null : (map['ecdsaCurve'] as String).input(),
-      privateKeyOpenssh: map['privateKeyOpenssh'] == null ? null : (map['privateKeyOpenssh'] as String).input(),
-      privateKeyPem: map['privateKeyPem'] == null ? null : (map['privateKeyPem'] as String).input(),
-      privateKeyPemPkcs8: map['privateKeyPemPkcs8'] == null ? null : (map['privateKeyPemPkcs8'] as String).input(),
-      publicKeyFingerprintMd5: map['publicKeyFingerprintMd5'] == null ? null : (map['publicKeyFingerprintMd5'] as String).input(),
-      publicKeyFingerprintSha256: map['publicKeyFingerprintSha256'] == null ? null : (map['publicKeyFingerprintSha256'] as String).input(),
-      publicKeyOpenssh: map['publicKeyOpenssh'] == null ? null : (map['publicKeyOpenssh'] as String).input(),
-      publicKeyPem: map['publicKeyPem'] == null ? null : (map['publicKeyPem'] as String).input(),
-      rsaBits: map['rsaBits'] == null ? null : (map['rsaBits'] as int).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as String).input(),
+      ecdsaCurve: map['ecdsaCurve'] == null ? null : (map['ecdsaCurve']! as String).input(),
+      privateKeyOpenssh: map['privateKeyOpenssh'] == null ? null : (map['privateKeyOpenssh']! as String).input(),
+      privateKeyPem: map['privateKeyPem'] == null ? null : (map['privateKeyPem']! as String).input(),
+      privateKeyPemPkcs8: map['privateKeyPemPkcs8'] == null ? null : (map['privateKeyPemPkcs8']! as String).input(),
+      publicKeyFingerprintMd5: map['publicKeyFingerprintMd5'] == null ? null : (map['publicKeyFingerprintMd5']! as String).input(),
+      publicKeyFingerprintSha256: map['publicKeyFingerprintSha256'] == null ? null : (map['publicKeyFingerprintSha256']! as String).input(),
+      publicKeyOpenssh: map['publicKeyOpenssh'] == null ? null : (map['publicKeyOpenssh']! as String).input(),
+      publicKeyPem: map['publicKeyPem'] == null ? null : (map['publicKeyPem']! as String).input(),
+      rsaBits: map['rsaBits'] == null ? null : (map['rsaBits']! as int).input(),
     );
   }
 }

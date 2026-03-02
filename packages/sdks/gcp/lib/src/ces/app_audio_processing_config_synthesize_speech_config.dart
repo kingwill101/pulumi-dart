@@ -36,8 +36,8 @@ class AppAudioProcessingConfigSynthesizeSpeechConfig {
   factory AppAudioProcessingConfigSynthesizeSpeechConfig.fromMap(Map<String, dynamic> map) {
     return AppAudioProcessingConfigSynthesizeSpeechConfig(
       languageCode: (map['languageCode'] as String).input(),
-      speakingRate: map['speakingRate'] == null ? null : (map['speakingRate'] as double).input(),
-      voice: map['voice'] == null ? null : (map['voice'] as String).input(),
+      speakingRate: map['speakingRate'] == null ? null : (map['speakingRate']! as double).input(),
+      voice: map['voice'] == null ? null : (map['voice']! as String).input(),
     );
   }
 }

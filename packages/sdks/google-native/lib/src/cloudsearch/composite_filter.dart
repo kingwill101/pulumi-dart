@@ -27,8 +27,8 @@ class CompositeFilter {
 
   factory CompositeFilter.fromMap(Map<String, dynamic> map) {
     return CompositeFilter(
-      logicOperator: map['logicOperator'] == null ? null : (CompositeFilterLogicOperator.fromValue(map['logicOperator'] as String)).input(),
-      subFilters: map['subFilters'] == null ? null : (pulumi.Input.decodeList<Filter>(map['subFilters'], (value) => Filter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logicOperator: map['logicOperator'] == null ? null : (CompositeFilterLogicOperator.fromValue(map['logicOperator']! as String)).input(),
+      subFilters: map['subFilters'] == null ? null : (pulumi.Input.decodeList<Filter>(map['subFilters']!, (value) => Filter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

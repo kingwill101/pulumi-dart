@@ -25,8 +25,8 @@ class DirectoryUserProvisioningConfiguration {
 
   factory DirectoryUserProvisioningConfiguration.fromMap(Map<String, dynamic> map) {
     return DirectoryUserProvisioningConfiguration(
-      defaultLandingPage: map['defaultLandingPage'] == null ? null : (map['defaultLandingPage'] as String).input(),
-      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration'] as String).input(),
+      defaultLandingPage: map['defaultLandingPage'] == null ? null : (map['defaultLandingPage']! as String).input(),
+      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration']! as String).input(),
     );
   }
 }

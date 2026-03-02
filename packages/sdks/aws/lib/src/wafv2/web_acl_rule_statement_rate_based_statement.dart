@@ -50,12 +50,12 @@ class WebAclRuleStatementRateBasedStatement {
 
   factory WebAclRuleStatementRateBasedStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatement(
-      aggregateKeyType: map['aggregateKeyType'] == null ? null : (map['aggregateKeyType'] as String).input(),
-      customKeys: map['customKeys'] == null ? null : (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKey>(map['customKeys'], (value) => WebAclRuleStatementRateBasedStatementCustomKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      evaluationWindowSec: map['evaluationWindowSec'] == null ? null : (map['evaluationWindowSec'] as int).input(),
-      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : (WebAclRuleStatementRateBasedStatementForwardedIpConfig.fromMap((map['forwardedIpConfig'] as Map).cast<String, dynamic>())).input(),
+      aggregateKeyType: map['aggregateKeyType'] == null ? null : ((map['aggregateKeyType'] as String).input()).input(),
+      customKeys: map['customKeys'] == null ? null : ((pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKey>(map['customKeys']!, (value) => WebAclRuleStatementRateBasedStatementCustomKey.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      evaluationWindowSec: map['evaluationWindowSec'] == null ? null : ((map['evaluationWindowSec'] as int).input()).input(),
+      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : ((WebAclRuleStatementRateBasedStatementForwardedIpConfig.fromMap((map['forwardedIpConfig']! as Map).cast<String, dynamic>())).input()).input(),
       limit: (map['limit'] as int).input(),
-      scopeDownStatement: map['scopeDownStatement'] == null ? null : (WebAclRuleStatementRateBasedStatementScopeDownStatement.fromMap((map['scopeDownStatement'] as Map).cast<String, dynamic>())).input(),
+      scopeDownStatement: map['scopeDownStatement'] == null ? null : ((WebAclRuleStatementRateBasedStatementScopeDownStatement.fromMap((map['scopeDownStatement']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

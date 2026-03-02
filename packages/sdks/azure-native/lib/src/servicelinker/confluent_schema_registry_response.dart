@@ -27,7 +27,7 @@ class ConfluentSchemaRegistryResponse {
 
   factory ConfluentSchemaRegistryResponse.fromMap(Map<String, dynamic> map) {
     return ConfluentSchemaRegistryResponse(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

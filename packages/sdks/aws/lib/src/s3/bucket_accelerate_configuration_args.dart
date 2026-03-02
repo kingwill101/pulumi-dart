@@ -40,8 +40,8 @@ class BucketAccelerateConfigurationArgs {
   factory BucketAccelerateConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return BucketAccelerateConfigurationArgs(
       bucket: (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       status: (map['status'] as String).input(),
     );
   }

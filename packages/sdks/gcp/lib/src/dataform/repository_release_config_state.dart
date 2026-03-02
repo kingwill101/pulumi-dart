@@ -66,15 +66,15 @@ class RepositoryReleaseConfigState {
 
   factory RepositoryReleaseConfigState.fromMap(Map<String, dynamic> map) {
     return RepositoryReleaseConfigState(
-      codeCompilationConfig: map['codeCompilationConfig'] == null ? null : (RepositoryReleaseConfigCodeCompilationConfig.fromMap((map['codeCompilationConfig'] as Map).cast<String, dynamic>())).input(),
-      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule'] as String).input(),
-      gitCommitish: map['gitCommitish'] == null ? null : (map['gitCommitish'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      recentScheduledReleaseRecords: map['recentScheduledReleaseRecords'] == null ? null : (pulumi.Input.decodeList<RepositoryReleaseConfigRecentScheduledReleaseRecord>(map['recentScheduledReleaseRecords'], (value) => RepositoryReleaseConfigRecentScheduledReleaseRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      codeCompilationConfig: map['codeCompilationConfig'] == null ? null : (RepositoryReleaseConfigCodeCompilationConfig.fromMap((map['codeCompilationConfig']! as Map).cast<String, dynamic>())).input(),
+      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule']! as String).input(),
+      gitCommitish: map['gitCommitish'] == null ? null : (map['gitCommitish']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      recentScheduledReleaseRecords: map['recentScheduledReleaseRecords'] == null ? null : (pulumi.Input.decodeList<RepositoryReleaseConfigRecentScheduledReleaseRecord>(map['recentScheduledReleaseRecords']!, (value) => RepositoryReleaseConfigRecentScheduledReleaseRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

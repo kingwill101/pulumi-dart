@@ -25,8 +25,8 @@ class NestServiceInstanceCommodity {
 
   factory NestServiceInstanceCommodity.fromMap(Map<String, dynamic> map) {
     return NestServiceInstanceCommodity(
-      payPeriod: map['payPeriod'] == null ? null : (map['payPeriod'] as int).input(),
-      payPeriodUnit: map['payPeriodUnit'] == null ? null : (map['payPeriodUnit'] as String).input(),
+      payPeriod: map['payPeriod'] == null ? null : (map['payPeriod']! as int).input(),
+      payPeriodUnit: map['payPeriodUnit'] == null ? null : (map['payPeriodUnit']! as String).input(),
     );
   }
 }

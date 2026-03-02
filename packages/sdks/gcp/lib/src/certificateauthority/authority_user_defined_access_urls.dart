@@ -25,8 +25,8 @@ class AuthorityUserDefinedAccessUrls {
 
   factory AuthorityUserDefinedAccessUrls.fromMap(Map<String, dynamic> map) {
     return AuthorityUserDefinedAccessUrls(
-      aiaIssuingCertificateUrls: map['aiaIssuingCertificateUrls'] == null ? null : ((map['aiaIssuingCertificateUrls'] as List).cast<String>()).input(),
-      crlAccessUrls: map['crlAccessUrls'] == null ? null : ((map['crlAccessUrls'] as List).cast<String>()).input(),
+      aiaIssuingCertificateUrls: map['aiaIssuingCertificateUrls'] == null ? null : ((map['aiaIssuingCertificateUrls']! as List).cast<String>()).input(),
+      crlAccessUrls: map['crlAccessUrls'] == null ? null : ((map['crlAccessUrls']! as List).cast<String>()).input(),
     );
   }
 }

@@ -45,11 +45,11 @@ class FrontdoorRuleActions {
 
   factory FrontdoorRuleActions.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleActions(
-      requestHeaderActions: map['requestHeaderActions'] == null ? null : (pulumi.Input.decodeList<FrontdoorRuleActionsRequestHeaderAction>(map['requestHeaderActions'], (value) => FrontdoorRuleActionsRequestHeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseHeaderActions: map['responseHeaderActions'] == null ? null : (pulumi.Input.decodeList<FrontdoorRuleActionsResponseHeaderAction>(map['responseHeaderActions'], (value) => FrontdoorRuleActionsResponseHeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routeConfigurationOverrideAction: map['routeConfigurationOverrideAction'] == null ? null : (FrontdoorRuleActionsRouteConfigurationOverrideAction.fromMap((map['routeConfigurationOverrideAction'] as Map).cast<String, dynamic>())).input(),
-      urlRedirectAction: map['urlRedirectAction'] == null ? null : (FrontdoorRuleActionsUrlRedirectAction.fromMap((map['urlRedirectAction'] as Map).cast<String, dynamic>())).input(),
-      urlRewriteAction: map['urlRewriteAction'] == null ? null : (FrontdoorRuleActionsUrlRewriteAction.fromMap((map['urlRewriteAction'] as Map).cast<String, dynamic>())).input(),
+      requestHeaderActions: map['requestHeaderActions'] == null ? null : (pulumi.Input.decodeList<FrontdoorRuleActionsRequestHeaderAction>(map['requestHeaderActions']!, (value) => FrontdoorRuleActionsRequestHeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseHeaderActions: map['responseHeaderActions'] == null ? null : (pulumi.Input.decodeList<FrontdoorRuleActionsResponseHeaderAction>(map['responseHeaderActions']!, (value) => FrontdoorRuleActionsResponseHeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeConfigurationOverrideAction: map['routeConfigurationOverrideAction'] == null ? null : (FrontdoorRuleActionsRouteConfigurationOverrideAction.fromMap((map['routeConfigurationOverrideAction']! as Map).cast<String, dynamic>())).input(),
+      urlRedirectAction: map['urlRedirectAction'] == null ? null : (FrontdoorRuleActionsUrlRedirectAction.fromMap((map['urlRedirectAction']! as Map).cast<String, dynamic>())).input(),
+      urlRewriteAction: map['urlRewriteAction'] == null ? null : (FrontdoorRuleActionsUrlRewriteAction.fromMap((map['urlRewriteAction']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class GoogleCloudDataplexV1DataScanExecutionSpec {
 
   factory GoogleCloudDataplexV1DataScanExecutionSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataScanExecutionSpec(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      trigger: map['trigger'] == null ? null : (GoogleCloudDataplexV1Trigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      trigger: map['trigger'] == null ? null : (GoogleCloudDataplexV1Trigger.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

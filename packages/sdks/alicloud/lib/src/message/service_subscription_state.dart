@@ -74,16 +74,16 @@ class ServiceSubscriptionState {
 
   factory ServiceSubscriptionState.fromMap(Map<String, dynamic> map) {
     return ServiceSubscriptionState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      dlqPolicy: map['dlqPolicy'] == null ? null : (ServiceSubscriptionDlqPolicy.fromMap((map['dlqPolicy'] as Map).cast<String, dynamic>())).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      filterTag: map['filterTag'] == null ? null : (map['filterTag'] as String).input(),
-      notifyContentFormat: map['notifyContentFormat'] == null ? null : (map['notifyContentFormat'] as String).input(),
-      notifyStrategy: map['notifyStrategy'] == null ? null : (map['notifyStrategy'] as String).input(),
-      pushType: map['pushType'] == null ? null : (map['pushType'] as String).input(),
-      stsRoleArn: map['stsRoleArn'] == null ? null : (map['stsRoleArn'] as String).input(),
-      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName'] as String).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      dlqPolicy: map['dlqPolicy'] == null ? null : (ServiceSubscriptionDlqPolicy.fromMap((map['dlqPolicy']! as Map).cast<String, dynamic>())).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      filterTag: map['filterTag'] == null ? null : (map['filterTag']! as String).input(),
+      notifyContentFormat: map['notifyContentFormat'] == null ? null : (map['notifyContentFormat']! as String).input(),
+      notifyStrategy: map['notifyStrategy'] == null ? null : (map['notifyStrategy']! as String).input(),
+      pushType: map['pushType'] == null ? null : (map['pushType']! as String).input(),
+      stsRoleArn: map['stsRoleArn'] == null ? null : (map['stsRoleArn']! as String).input(),
+      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName']! as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
     );
   }
 }

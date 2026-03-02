@@ -21,7 +21,7 @@ class GoogleCloudContactcenterinsightsV1DialogflowSource {
 
   factory GoogleCloudContactcenterinsightsV1DialogflowSource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1DialogflowSource(
-      audioUri: map['audioUri'] == null ? null : (map['audioUri'] as String).input(),
+      audioUri: map['audioUri'] == null ? null : (map['audioUri']! as String).input(),
     );
   }
 }

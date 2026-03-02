@@ -26,7 +26,7 @@ class DomainCpuTuneMemoryTuneNode {
   factory DomainCpuTuneMemoryTuneNode.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneMemoryTuneNode(
       bandwidth: (map['bandwidth'] as double).input(),
-      id: map['id'] == null ? null : (map['id'] as double).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
     );
   }
 }

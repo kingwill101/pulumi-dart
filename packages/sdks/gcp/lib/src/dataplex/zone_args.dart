@@ -74,14 +74,14 @@ class ZoneArgs {
 
   factory ZoneArgs.fromMap(Map<String, dynamic> map) {
     return ZoneArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       discoverySpec: (ZoneDiscoverySpec.fromMap((map['discoverySpec'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       lake: (map['lake'] as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       resourceSpec: (ZoneResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );

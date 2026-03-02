@@ -35,8 +35,8 @@ class GetRegistryImageManifestsArgs {
 
   factory GetRegistryImageManifestsArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryImageManifestsArgs(
-      authConfig: map['authConfig'] == null ? null : (GetRegistryImageManifestsAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>())).input(),
-      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify'] as bool).input(),
+      authConfig: map['authConfig'] == null ? null : (GetRegistryImageManifestsAuthConfig.fromMap((map['authConfig']! as Map).cast<String, dynamic>())).input(),
+      insecureSkipVerify: map['insecureSkipVerify'] == null ? null : (map['insecureSkipVerify']! as bool).input(),
       name: (map['name'] as String).input(),
     );
   }

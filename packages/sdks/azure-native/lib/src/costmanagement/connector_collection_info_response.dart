@@ -42,8 +42,8 @@ class ConnectorCollectionInfoResponse {
 
   factory ConnectorCollectionInfoResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorCollectionInfoResponse(
-      error: map['error'] == null ? null : (ConnectorCollectionErrorInfoResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      lastChecked: map['lastChecked'] == null ? null : (map['lastChecked'] as String).input(),
+      error: map['error'] == null ? null : (ConnectorCollectionErrorInfoResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
+      lastChecked: map['lastChecked'] == null ? null : (map['lastChecked']! as String).input(),
       lastRun: (map['lastRun'] as String).input(),
       lastUpdated: (map['lastUpdated'] as String).input(),
       sourceLastUpdated: (map['sourceLastUpdated'] as String).input(),

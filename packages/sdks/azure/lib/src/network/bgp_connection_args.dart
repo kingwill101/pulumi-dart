@@ -44,11 +44,11 @@ class BgpConnectionArgs {
 
   factory BgpConnectionArgs.fromMap(Map<String, dynamic> map) {
     return BgpConnectionArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       peerAsn: (map['peerAsn'] as int).input(),
       peerIp: (map['peerIp'] as String).input(),
       virtualHubId: (map['virtualHubId'] as String).input(),
-      virtualNetworkConnectionId: map['virtualNetworkConnectionId'] == null ? null : (map['virtualNetworkConnectionId'] as String).input(),
+      virtualNetworkConnectionId: map['virtualNetworkConnectionId'] == null ? null : (map['virtualNetworkConnectionId']! as String).input(),
     );
   }
 }

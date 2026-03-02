@@ -21,7 +21,7 @@ class MachineConfigAlloydbV1alpha {
 
   factory MachineConfigAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return MachineConfigAlloydbV1alpha(
-      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount'] as int).input(),
+      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount']! as int).input(),
     );
   }
 }

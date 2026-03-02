@@ -297,10 +297,10 @@ class ManagedKubernetesAddon {
 
   factory ManagedKubernetesAddon.fromMap(Map<String, dynamic> map) {
     return ManagedKubernetesAddon(
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class VpnServerConfigRadiusClientRootCertificateResponse {
 
   factory VpnServerConfigRadiusClientRootCertificateResponse.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigRadiusClientRootCertificateResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

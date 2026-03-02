@@ -68,15 +68,15 @@ class GetShareNetworkArgs {
 
   factory GetShareNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetShareNetworkArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      neutronNetId: map['neutronNetId'] == null ? null : (map['neutronNetId'] as String).input(),
-      neutronSubnetId: map['neutronSubnetId'] == null ? null : (map['neutronSubnetId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityServiceId: map['securityServiceId'] == null ? null : (map['securityServiceId'] as String).input(),
-      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      neutronNetId: map['neutronNetId'] == null ? null : (map['neutronNetId']! as String).input(),
+      neutronSubnetId: map['neutronSubnetId'] == null ? null : (map['neutronSubnetId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      securityServiceId: map['securityServiceId'] == null ? null : (map['securityServiceId']! as String).input(),
+      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId']! as int).input(),
     );
   }
 }

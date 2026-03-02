@@ -38,10 +38,10 @@ class BindingPatch {
 
   factory BindingPatch.fromMap(Map<String, dynamic> map) {
     return BindingPatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (ObjectReferencePatch.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (ObjectReferencePatch.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

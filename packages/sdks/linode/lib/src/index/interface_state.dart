@@ -50,12 +50,12 @@ class InterfaceState {
 
   factory InterfaceState.fromMap(Map<String, dynamic> map) {
     return InterfaceState(
-      defaultRoute: map['defaultRoute'] == null ? null : (InterfaceDefaultRoute.fromMap((map['defaultRoute'] as Map).cast<String, dynamic>())).input(),
-      firewallId: map['firewallId'] == null ? null : (map['firewallId'] as int).input(),
-      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
-      public: map['public'] == null ? null : (InterfacePublic.fromMap((map['public'] as Map).cast<String, dynamic>())).input(),
-      vlan: map['vlan'] == null ? null : (InterfaceVlan.fromMap((map['vlan'] as Map).cast<String, dynamic>())).input(),
-      vpc: map['vpc'] == null ? null : (InterfaceVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())).input(),
+      defaultRoute: map['defaultRoute'] == null ? null : (InterfaceDefaultRoute.fromMap((map['defaultRoute']! as Map).cast<String, dynamic>())).input(),
+      firewallId: map['firewallId'] == null ? null : (map['firewallId']! as int).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
+      public: map['public'] == null ? null : (InterfacePublic.fromMap((map['public']! as Map).cast<String, dynamic>())).input(),
+      vlan: map['vlan'] == null ? null : (InterfaceVlan.fromMap((map['vlan']! as Map).cast<String, dynamic>())).input(),
+      vpc: map['vpc'] == null ? null : (InterfaceVpc.fromMap((map['vpc']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

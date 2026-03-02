@@ -27,8 +27,8 @@ class DWCopyCommandSettings {
 
   factory DWCopyCommandSettings.fromMap(Map<String, dynamic> map) {
     return DWCopyCommandSettings(
-      additionalOptions: map['additionalOptions'] == null ? null : ((map['additionalOptions'] as Map).cast<String, String>()).input(),
-      defaultValues: map['defaultValues'] == null ? null : (pulumi.Input.decodeList<DWCopyCommandDefaultValue>(map['defaultValues'], (value) => DWCopyCommandDefaultValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalOptions: map['additionalOptions'] == null ? null : ((map['additionalOptions']! as Map).cast<String, String>()).input(),
+      defaultValues: map['defaultValues'] == null ? null : (pulumi.Input.decodeList<DWCopyCommandDefaultValue>(map['defaultValues']!, (value) => DWCopyCommandDefaultValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class Criteria {
 
   factory Criteria.fromMap(Map<String, dynamic> map) {
     return Criteria(
-      policies: map['policies'] == null ? null : ((map['policies'] as List).cast<String>()).input(),
+      policies: map['policies'] == null ? null : ((map['policies']! as List).cast<String>()).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappin
     return ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappingsMultiMeasureAttributeMapping(
       measureValueType: (map['measureValueType'] as String).input(),
       sourceColumn: (map['sourceColumn'] as String).input(),
-      targetMultiMeasureAttributeName: map['targetMultiMeasureAttributeName'] == null ? null : (map['targetMultiMeasureAttributeName'] as String).input(),
+      targetMultiMeasureAttributeName: map['targetMultiMeasureAttributeName'] == null ? null : ((map['targetMultiMeasureAttributeName'] as String).input()).input(),
     );
   }
 }

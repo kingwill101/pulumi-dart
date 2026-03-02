@@ -77,18 +77,18 @@ class UserProvisioningState {
 
   factory UserProvisioningState.fromMap(Map<String, dynamic> map) {
     return UserProvisioningState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deletionStrategy: map['deletionStrategy'] == null ? null : (map['deletionStrategy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      duplicationStrategy: map['duplicationStrategy'] == null ? null : (map['duplicationStrategy'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
-      userProvisioningId: map['userProvisioningId'] == null ? null : (map['userProvisioningId'] as String).input(),
-      userProvisioningStatistics: map['userProvisioningStatistics'] == null ? null : (pulumi.Input.decodeList<UserProvisioningUserProvisioningStatistic>(map['userProvisioningStatistics'], (value) => UserProvisioningUserProvisioningStatistic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deletionStrategy: map['deletionStrategy'] == null ? null : (map['deletionStrategy']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId']! as String).input(),
+      duplicationStrategy: map['duplicationStrategy'] == null ? null : (map['duplicationStrategy']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
+      userProvisioningId: map['userProvisioningId'] == null ? null : (map['userProvisioningId']! as String).input(),
+      userProvisioningStatistics: map['userProvisioningStatistics'] == null ? null : (pulumi.Input.decodeList<UserProvisioningUserProvisioningStatistic>(map['userProvisioningStatistics']!, (value) => UserProvisioningUserProvisioningStatistic.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

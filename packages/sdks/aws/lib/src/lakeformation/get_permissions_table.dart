@@ -40,7 +40,7 @@ class GetPermissionsTable {
       catalogId: (map['catalogId'] as String).input(),
       databaseName: (map['databaseName'] as String).input(),
       name: (map['name'] as String).input(),
-      wildcard: map['wildcard'] == null ? null : (map['wildcard'] as bool).input(),
+      wildcard: map['wildcard'] == null ? null : ((map['wildcard'] as bool).input()).input(),
     );
   }
 }

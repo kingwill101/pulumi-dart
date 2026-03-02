@@ -98,20 +98,20 @@ class GetEventHubDataConnectionResult {
   factory GetEventHubDataConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetEventHubDataConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      compression: map['compression'] == null ? null : map['compression'] as String,
+      compression: map['compression'] == null ? null : map['compression']! as String,
       consumerGroup: map['consumerGroup'] as String,
-      dataFormat: map['dataFormat'] == null ? null : map['dataFormat'] as String,
+      dataFormat: map['dataFormat'] == null ? null : map['dataFormat']! as String,
       eventHubResourceId: map['eventHubResourceId'] as String,
-      eventSystemProperties: map['eventSystemProperties'] == null ? null : (map['eventSystemProperties'] as List).cast<String>(),
+      eventSystemProperties: map['eventSystemProperties'] == null ? null : (map['eventSystemProperties']! as List).cast<String>(),
       id: map['id'] as String,
       kind: map['kind'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      managedIdentityResourceId: map['managedIdentityResourceId'] == null ? null : map['managedIdentityResourceId'] as String,
-      mappingRuleName: map['mappingRuleName'] == null ? null : map['mappingRuleName'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      managedIdentityResourceId: map['managedIdentityResourceId'] == null ? null : map['managedIdentityResourceId']! as String,
+      mappingRuleName: map['mappingRuleName'] == null ? null : map['mappingRuleName']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tableName: map['tableName'] == null ? null : map['tableName'] as String,
+      tableName: map['tableName'] == null ? null : map['tableName']! as String,
       type: map['type'] as String,
     );
   }

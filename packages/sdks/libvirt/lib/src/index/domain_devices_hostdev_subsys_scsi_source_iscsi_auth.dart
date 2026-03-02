@@ -26,8 +26,8 @@ class DomainDevicesHostdevSubsysScsiSourceIscsiAuth {
 
   factory DomainDevicesHostdevSubsysScsiSourceIscsiAuth.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysScsiSourceIscsiAuth(
-      secret: map['secret'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      secret: map['secret'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceIscsiAuthSecret.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

@@ -62,15 +62,15 @@ class JobConfigurationExtract {
 
   factory JobConfigurationExtract.fromMap(Map<String, dynamic> map) {
     return JobConfigurationExtract(
-      compression: map['compression'] == null ? null : (map['compression'] as String).input(),
-      destinationFormat: map['destinationFormat'] == null ? null : (map['destinationFormat'] as String).input(),
-      destinationUri: map['destinationUri'] == null ? null : (map['destinationUri'] as String).input(),
-      destinationUris: map['destinationUris'] == null ? null : ((map['destinationUris'] as List).cast<String>()).input(),
-      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter'] as String).input(),
-      printHeader: map['printHeader'] == null ? null : (map['printHeader'] as bool).input(),
-      sourceModel: map['sourceModel'] == null ? null : (ModelReference.fromMap((map['sourceModel'] as Map).cast<String, dynamic>())).input(),
-      sourceTable: map['sourceTable'] == null ? null : (TableReference.fromMap((map['sourceTable'] as Map).cast<String, dynamic>())).input(),
-      useAvroLogicalTypes: map['useAvroLogicalTypes'] == null ? null : (map['useAvroLogicalTypes'] as bool).input(),
+      compression: map['compression'] == null ? null : (map['compression']! as String).input(),
+      destinationFormat: map['destinationFormat'] == null ? null : (map['destinationFormat']! as String).input(),
+      destinationUri: map['destinationUri'] == null ? null : (map['destinationUri']! as String).input(),
+      destinationUris: map['destinationUris'] == null ? null : ((map['destinationUris']! as List).cast<String>()).input(),
+      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter']! as String).input(),
+      printHeader: map['printHeader'] == null ? null : (map['printHeader']! as bool).input(),
+      sourceModel: map['sourceModel'] == null ? null : (ModelReference.fromMap((map['sourceModel']! as Map).cast<String, dynamic>())).input(),
+      sourceTable: map['sourceTable'] == null ? null : (TableReference.fromMap((map['sourceTable']! as Map).cast<String, dynamic>())).input(),
+      useAvroLogicalTypes: map['useAvroLogicalTypes'] == null ? null : (map['useAvroLogicalTypes']! as bool).input(),
     );
   }
 }

@@ -47,11 +47,11 @@ class WorkloadIdentityPoolArgs {
 
   factory WorkloadIdentityPoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
     );
   }

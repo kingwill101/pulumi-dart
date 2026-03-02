@@ -25,8 +25,8 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfigurationBedrockEmbeddingModelConfiguration(
-      dimensions: map['dimensions'] == null ? null : (map['dimensions'] as int).input(),
-      embeddingDataType: map['embeddingDataType'] == null ? null : (map['embeddingDataType'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as int).input()).input(),
+      embeddingDataType: map['embeddingDataType'] == null ? null : ((map['embeddingDataType'] as String).input()).input(),
     );
   }
 }

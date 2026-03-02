@@ -27,8 +27,8 @@ class DebugOptions {
 
   factory DebugOptions.fromMap(Map<String, dynamic> map) {
     return DebugOptions(
-      dataSampling: map['dataSampling'] == null ? null : (DataSamplingConfig.fromMap((map['dataSampling'] as Map).cast<String, dynamic>())).input(),
-      enableHotKeyLogging: map['enableHotKeyLogging'] == null ? null : (map['enableHotKeyLogging'] as bool).input(),
+      dataSampling: map['dataSampling'] == null ? null : (DataSamplingConfig.fromMap((map['dataSampling']! as Map).cast<String, dynamic>())).input(),
+      enableHotKeyLogging: map['enableHotKeyLogging'] == null ? null : (map['enableHotKeyLogging']! as bool).input(),
     );
   }
 }

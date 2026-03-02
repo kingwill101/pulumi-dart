@@ -40,11 +40,11 @@ class ManagementPolicyRuleActionsSnapshot {
 
   factory ManagementPolicyRuleActionsSnapshot.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyRuleActionsSnapshot(
-      changeTierToArchiveAfterDaysSinceCreation: map['changeTierToArchiveAfterDaysSinceCreation'] == null ? null : (map['changeTierToArchiveAfterDaysSinceCreation'] as int).input(),
-      changeTierToCoolAfterDaysSinceCreation: map['changeTierToCoolAfterDaysSinceCreation'] == null ? null : (map['changeTierToCoolAfterDaysSinceCreation'] as int).input(),
-      deleteAfterDaysSinceCreationGreaterThan: map['deleteAfterDaysSinceCreationGreaterThan'] == null ? null : (map['deleteAfterDaysSinceCreationGreaterThan'] as int).input(),
-      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] as int).input(),
-      tierToColdAfterDaysSinceCreationGreaterThan: map['tierToColdAfterDaysSinceCreationGreaterThan'] == null ? null : (map['tierToColdAfterDaysSinceCreationGreaterThan'] as int).input(),
+      changeTierToArchiveAfterDaysSinceCreation: map['changeTierToArchiveAfterDaysSinceCreation'] == null ? null : (map['changeTierToArchiveAfterDaysSinceCreation']! as int).input(),
+      changeTierToCoolAfterDaysSinceCreation: map['changeTierToCoolAfterDaysSinceCreation'] == null ? null : (map['changeTierToCoolAfterDaysSinceCreation']! as int).input(),
+      deleteAfterDaysSinceCreationGreaterThan: map['deleteAfterDaysSinceCreationGreaterThan'] == null ? null : (map['deleteAfterDaysSinceCreationGreaterThan']! as int).input(),
+      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan']! as int).input(),
+      tierToColdAfterDaysSinceCreationGreaterThan: map['tierToColdAfterDaysSinceCreationGreaterThan'] == null ? null : (map['tierToColdAfterDaysSinceCreationGreaterThan']! as int).input(),
     );
   }
 }

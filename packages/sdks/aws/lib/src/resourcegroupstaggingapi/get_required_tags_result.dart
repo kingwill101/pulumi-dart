@@ -33,7 +33,7 @@ class GetRequiredTagsResult {
     return GetRequiredTagsResult(
       id: map['id'] as String,
       region: map['region'] as String,
-      requiredTags: pulumi.Input.decodeList<GetRequiredTagsRequiredTag>(map['requiredTags'], (value) => GetRequiredTagsRequiredTag.fromMap((value as Map).cast<String, dynamic>())),
+      requiredTags: pulumi.Input.decodeList<GetRequiredTagsRequiredTag>(map['requiredTags']!, (value) => GetRequiredTagsRequiredTag.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

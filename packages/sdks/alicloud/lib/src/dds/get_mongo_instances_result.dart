@@ -66,18 +66,18 @@ class GetMongoInstancesResult {
 
   factory GetMongoInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetMongoInstancesResult(
-      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      availabilityZone: map['availabilityZone'] == null ? null : map['availabilityZone']! as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceClass: map['instanceClass'] == null ? null : map['instanceClass'] as String,
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
+      instanceClass: map['instanceClass'] == null ? null : map['instanceClass']! as String,
+      instanceType: map['instanceType'] == null ? null : map['instanceType']! as String,
       instances: pulumi.Input.decodeList<GetMongoInstancesInstance>(map['instances'], (value) => GetMongoInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

@@ -26,8 +26,8 @@ class LoggingRuleHiddenPropertyPaths {
 
   factory LoggingRuleHiddenPropertyPaths.fromMap(Map<String, dynamic> map) {
     return LoggingRuleHiddenPropertyPaths(
-      hiddenPathsOnRequest: map['hiddenPathsOnRequest'] == null ? null : ((map['hiddenPathsOnRequest'] as List).cast<String>()).input(),
-      hiddenPathsOnResponse: map['hiddenPathsOnResponse'] == null ? null : ((map['hiddenPathsOnResponse'] as List).cast<String>()).input(),
+      hiddenPathsOnRequest: map['hiddenPathsOnRequest'] == null ? null : ((map['hiddenPathsOnRequest']! as List).cast<String>()).input(),
+      hiddenPathsOnResponse: map['hiddenPathsOnResponse'] == null ? null : ((map['hiddenPathsOnResponse']! as List).cast<String>()).input(),
     );
   }
 }

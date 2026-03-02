@@ -79,17 +79,17 @@ class TenantActionGroupArgs {
 
   factory TenantActionGroupArgs.fromMap(Map<String, dynamic> map) {
     return TenantActionGroupArgs(
-      azureAppPushReceivers: map['azureAppPushReceivers'] == null ? null : (pulumi.Input.decodeList<AzureAppPushReceiver>(map['azureAppPushReceivers'], (value) => AzureAppPushReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      emailReceivers: map['emailReceivers'] == null ? null : (pulumi.Input.decodeList<EmailReceiver>(map['emailReceivers'], (value) => EmailReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureAppPushReceivers: map['azureAppPushReceivers'] == null ? null : (pulumi.Input.decodeList<AzureAppPushReceiver>(map['azureAppPushReceivers']!, (value) => AzureAppPushReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      emailReceivers: map['emailReceivers'] == null ? null : (pulumi.Input.decodeList<EmailReceiver>(map['emailReceivers']!, (value) => EmailReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
       enabled: (map['enabled'] as bool).input(),
       groupShortName: (map['groupShortName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managementGroupId: (map['managementGroupId'] as String).input(),
-      smsReceivers: map['smsReceivers'] == null ? null : (pulumi.Input.decodeList<SmsReceiver>(map['smsReceivers'], (value) => SmsReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenantActionGroupName: map['tenantActionGroupName'] == null ? null : (map['tenantActionGroupName'] as String).input(),
-      voiceReceivers: map['voiceReceivers'] == null ? null : (pulumi.Input.decodeList<VoiceReceiver>(map['voiceReceivers'], (value) => VoiceReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      webhookReceivers: map['webhookReceivers'] == null ? null : (pulumi.Input.decodeList<WebhookReceiver>(map['webhookReceivers'], (value) => WebhookReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      smsReceivers: map['smsReceivers'] == null ? null : (pulumi.Input.decodeList<SmsReceiver>(map['smsReceivers']!, (value) => SmsReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tenantActionGroupName: map['tenantActionGroupName'] == null ? null : (map['tenantActionGroupName']! as String).input(),
+      voiceReceivers: map['voiceReceivers'] == null ? null : (pulumi.Input.decodeList<VoiceReceiver>(map['voiceReceivers']!, (value) => VoiceReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      webhookReceivers: map['webhookReceivers'] == null ? null : (pulumi.Input.decodeList<WebhookReceiver>(map['webhookReceivers']!, (value) => WebhookReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ServiceProviderParameterMetadataResponse {
 
   factory ServiceProviderParameterMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ServiceProviderParameterMetadataResponse(
-      constraints: map['constraints'] == null ? null : (ServiceProviderParameterMetadataConstraintsResponse.fromMap((map['constraints'] as Map).cast<String, dynamic>())).input(),
+      constraints: map['constraints'] == null ? null : (ServiceProviderParameterMetadataConstraintsResponse.fromMap((map['constraints']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

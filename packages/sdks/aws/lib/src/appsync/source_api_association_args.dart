@@ -59,14 +59,14 @@ class SourceApiAssociationArgs {
 
   factory SourceApiAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SourceApiAssociationArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      mergedApiArn: map['mergedApiArn'] == null ? null : (map['mergedApiArn'] as String).input(),
-      mergedApiId: map['mergedApiId'] == null ? null : (map['mergedApiId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceApiArn: map['sourceApiArn'] == null ? null : (map['sourceApiArn'] as String).input(),
-      sourceApiAssociationConfigs: map['sourceApiAssociationConfigs'] == null ? null : (pulumi.Input.decodeList<SourceApiAssociationSourceApiAssociationConfig>(map['sourceApiAssociationConfigs'], (value) => SourceApiAssociationSourceApiAssociationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceApiId: map['sourceApiId'] == null ? null : (map['sourceApiId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (SourceApiAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      mergedApiArn: map['mergedApiArn'] == null ? null : ((map['mergedApiArn'] as String).input()).input(),
+      mergedApiId: map['mergedApiId'] == null ? null : ((map['mergedApiId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceApiArn: map['sourceApiArn'] == null ? null : ((map['sourceApiArn'] as String).input()).input(),
+      sourceApiAssociationConfigs: map['sourceApiAssociationConfigs'] == null ? null : ((pulumi.Input.decodeList<SourceApiAssociationSourceApiAssociationConfig>(map['sourceApiAssociationConfigs']!, (value) => SourceApiAssociationSourceApiAssociationConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      sourceApiId: map['sourceApiId'] == null ? null : ((map['sourceApiId'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((SourceApiAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

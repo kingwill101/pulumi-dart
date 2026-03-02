@@ -39,9 +39,9 @@ class EmailTemplateArgs {
 
   factory EmailTemplateArgs.fromMap(Map<String, dynamic> map) {
     return EmailTemplateArgs(
-      emailTemplates: map['emailTemplates'] == null ? null : (pulumi.Input.decodeList<EmailTemplateEmailTemplate>(map['emailTemplates'], (value) => EmailTemplateEmailTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      emailTemplates: map['emailTemplates'] == null ? null : ((pulumi.Input.decodeList<EmailTemplateEmailTemplate>(map['emailTemplates']!, (value) => EmailTemplateEmailTemplate.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       templateName: (map['templateName'] as String).input(),
     );
   }

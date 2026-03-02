@@ -58,10 +58,10 @@ class BackendBucketIamMemberArgs {
 
   factory BackendBucketIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return BackendBucketIamMemberArgs(
-      condition: map['condition'] == null ? null : (BackendBucketIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (BackendBucketIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

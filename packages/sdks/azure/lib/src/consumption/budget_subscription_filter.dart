@@ -27,8 +27,8 @@ class BudgetSubscriptionFilter {
 
   factory BudgetSubscriptionFilter.fromMap(Map<String, dynamic> map) {
     return BudgetSubscriptionFilter(
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<BudgetSubscriptionFilterDimension>(map['dimensions'], (value) => BudgetSubscriptionFilterDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<BudgetSubscriptionFilterTag>(map['tags'], (value) => BudgetSubscriptionFilterTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<BudgetSubscriptionFilterDimension>(map['dimensions']!, (value) => BudgetSubscriptionFilterDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<BudgetSubscriptionFilterTag>(map['tags']!, (value) => BudgetSubscriptionFilterTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

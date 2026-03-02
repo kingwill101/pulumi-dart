@@ -31,9 +31,9 @@ class AttachedNetworkState {
 
   factory AttachedNetworkState.fromMap(Map<String, dynamic> map) {
     return AttachedNetworkState(
-      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConnectionId: map['networkConnectionId'] == null ? null : (map['networkConnectionId'] as String).input(),
+      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkConnectionId: map['networkConnectionId'] == null ? null : (map['networkConnectionId']! as String).input(),
     );
   }
 }

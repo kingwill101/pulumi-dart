@@ -53,10 +53,10 @@ class SnapshotCopyArgs {
     return SnapshotCopyArgs(
       clusterIdentifier: (map['clusterIdentifier'] as String).input(),
       destinationRegion: (map['destinationRegion'] as String).input(),
-      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : (map['manualSnapshotRetentionPeriod'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
-      snapshotCopyGrantName: map['snapshotCopyGrantName'] == null ? null : (map['snapshotCopyGrantName'] as String).input(),
+      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : ((map['manualSnapshotRetentionPeriod'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : ((map['retentionPeriod'] as int).input()).input(),
+      snapshotCopyGrantName: map['snapshotCopyGrantName'] == null ? null : ((map['snapshotCopyGrantName'] as String).input()).input(),
     );
   }
 }

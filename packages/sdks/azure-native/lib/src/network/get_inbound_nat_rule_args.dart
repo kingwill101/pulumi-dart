@@ -39,7 +39,7 @@ class GetInboundNatRuleArgs {
 
   factory GetInboundNatRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetInboundNatRuleArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       inboundNatRuleName: (map['inboundNatRuleName'] as String).input(),
       loadBalancerName: (map['loadBalancerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

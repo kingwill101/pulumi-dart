@@ -20,7 +20,7 @@ class DatadogLogsAgentResponse {
 
   factory DatadogLogsAgentResponse.fromMap(Map<String, dynamic> map) {
     return DatadogLogsAgentResponse(
-      transport: map['transport'] == null ? null : (map['transport'] as String).input(),
+      transport: map['transport'] == null ? null : (map['transport']! as String).input(),
     );
   }
 }

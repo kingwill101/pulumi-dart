@@ -79,16 +79,16 @@ class DeveloperAppArgs {
 
   factory DeveloperAppArgs.fromMap(Map<String, dynamic> map) {
     return DeveloperAppArgs(
-      apiProducts: map['apiProducts'] == null ? null : ((map['apiProducts'] as List).cast<String>()).input(),
-      appFamily: map['appFamily'] == null ? null : (map['appFamily'] as String).input(),
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAppAttribute>(map['attributes'], (value) => DeveloperAppAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiProducts: map['apiProducts'] == null ? null : ((map['apiProducts']! as List).cast<String>()).input(),
+      appFamily: map['appFamily'] == null ? null : (map['appFamily']! as String).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAppAttribute>(map['attributes']!, (value) => DeveloperAppAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
       callbackUrl: (map['callbackUrl'] as String).input(),
       developerEmail: (map['developerEmail'] as String).input(),
-      keyExpiresIn: map['keyExpiresIn'] == null ? null : (map['keyExpiresIn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      keyExpiresIn: map['keyExpiresIn'] == null ? null : (map['keyExpiresIn']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       orgId: (map['orgId'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

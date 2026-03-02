@@ -61,15 +61,15 @@ class ApprovalRuleTemplateState {
 
   factory ApprovalRuleTemplateState.fromMap(Map<String, dynamic> map) {
     return ApprovalRuleTemplateState(
-      approvalRuleTemplateId: map['approvalRuleTemplateId'] == null ? null : (map['approvalRuleTemplateId'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      creationDate: map['creationDate'] == null ? null : (map['creationDate'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      lastModifiedDate: map['lastModifiedDate'] == null ? null : (map['lastModifiedDate'] as String).input(),
-      lastModifiedUser: map['lastModifiedUser'] == null ? null : (map['lastModifiedUser'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleContentSha256: map['ruleContentSha256'] == null ? null : (map['ruleContentSha256'] as String).input(),
+      approvalRuleTemplateId: map['approvalRuleTemplateId'] == null ? null : ((map['approvalRuleTemplateId'] as String).input()).input(),
+      content: map['content'] == null ? null : ((map['content'] as String).input()).input(),
+      creationDate: map['creationDate'] == null ? null : ((map['creationDate'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      lastModifiedDate: map['lastModifiedDate'] == null ? null : ((map['lastModifiedDate'] as String).input()).input(),
+      lastModifiedUser: map['lastModifiedUser'] == null ? null : ((map['lastModifiedUser'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleContentSha256: map['ruleContentSha256'] == null ? null : ((map['ruleContentSha256'] as String).input()).input(),
     );
   }
 }

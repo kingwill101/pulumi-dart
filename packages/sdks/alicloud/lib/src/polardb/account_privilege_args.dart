@@ -40,7 +40,7 @@ class AccountPrivilegeArgs {
   factory AccountPrivilegeArgs.fromMap(Map<String, dynamic> map) {
     return AccountPrivilegeArgs(
       accountName: (map['accountName'] as String).input(),
-      accountPrivilege: map['accountPrivilege'] == null ? null : (map['accountPrivilege'] as String).input(),
+      accountPrivilege: map['accountPrivilege'] == null ? null : (map['accountPrivilege']! as String).input(),
       dbClusterId: (map['dbClusterId'] as String).input(),
       dbNames: ((map['dbNames'] as List).cast<String>()).input(),
     );

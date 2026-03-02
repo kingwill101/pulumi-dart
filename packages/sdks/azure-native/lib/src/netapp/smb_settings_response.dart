@@ -31,9 +31,9 @@ class SmbSettingsResponse {
 
   factory SmbSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SmbSettingsResponse(
-      smbAccessBasedEnumeration: map['smbAccessBasedEnumeration'] == null ? null : (map['smbAccessBasedEnumeration'] as String).input(),
-      smbEncryption: map['smbEncryption'] == null ? null : (map['smbEncryption'] as String).input(),
-      smbNonBrowsable: map['smbNonBrowsable'] == null ? null : (map['smbNonBrowsable'] as String).input(),
+      smbAccessBasedEnumeration: map['smbAccessBasedEnumeration'] == null ? null : (map['smbAccessBasedEnumeration']! as String).input(),
+      smbEncryption: map['smbEncryption'] == null ? null : (map['smbEncryption']! as String).input(),
+      smbNonBrowsable: map['smbNonBrowsable'] == null ? null : (map['smbNonBrowsable']! as String).input(),
     );
   }
 }

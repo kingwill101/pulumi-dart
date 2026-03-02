@@ -54,7 +54,7 @@ class GetClusterVersionsResult {
   factory GetClusterVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetClusterVersionsResult(
       clusterType: map['clusterType'] == null ? null : map['clusterType'] as String,
-      clusterVersions: pulumi.Input.decodeList<GetClusterVersionsClusterVersion>(map['clusterVersions'], (value) => GetClusterVersionsClusterVersion.fromMap((value as Map).cast<String, dynamic>())),
+      clusterVersions: pulumi.Input.decodeList<GetClusterVersionsClusterVersion>(map['clusterVersions']!, (value) => GetClusterVersionsClusterVersion.fromMap((value as Map).cast<String, dynamic>())),
       clusterVersionsOnlies: map['clusterVersionsOnlies'] == null ? null : (map['clusterVersionsOnlies'] as List).cast<String>(),
       defaultOnly: map['defaultOnly'] == null ? null : map['defaultOnly'] as bool,
       id: map['id'] as String,

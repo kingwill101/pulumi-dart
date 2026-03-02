@@ -63,14 +63,14 @@ class JobExtract {
 
   factory JobExtract.fromMap(Map<String, dynamic> map) {
     return JobExtract(
-      compression: map['compression'] == null ? null : (map['compression'] as String).input(),
-      destinationFormat: map['destinationFormat'] == null ? null : (map['destinationFormat'] as String).input(),
+      compression: map['compression'] == null ? null : (map['compression']! as String).input(),
+      destinationFormat: map['destinationFormat'] == null ? null : (map['destinationFormat']! as String).input(),
       destinationUris: ((map['destinationUris'] as List).cast<String>()).input(),
-      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter'] as String).input(),
-      printHeader: map['printHeader'] == null ? null : (map['printHeader'] as bool).input(),
-      sourceModel: map['sourceModel'] == null ? null : (JobExtractSourceModel.fromMap((map['sourceModel'] as Map).cast<String, dynamic>())).input(),
-      sourceTable: map['sourceTable'] == null ? null : (JobExtractSourceTable.fromMap((map['sourceTable'] as Map).cast<String, dynamic>())).input(),
-      useAvroLogicalTypes: map['useAvroLogicalTypes'] == null ? null : (map['useAvroLogicalTypes'] as bool).input(),
+      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter']! as String).input(),
+      printHeader: map['printHeader'] == null ? null : (map['printHeader']! as bool).input(),
+      sourceModel: map['sourceModel'] == null ? null : (JobExtractSourceModel.fromMap((map['sourceModel']! as Map).cast<String, dynamic>())).input(),
+      sourceTable: map['sourceTable'] == null ? null : (JobExtractSourceTable.fromMap((map['sourceTable']! as Map).cast<String, dynamic>())).input(),
+      useAvroLogicalTypes: map['useAvroLogicalTypes'] == null ? null : (map['useAvroLogicalTypes']! as bool).input(),
     );
   }
 }

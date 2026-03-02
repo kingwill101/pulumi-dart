@@ -45,11 +45,11 @@ class DeidentifyConfig {
 
   factory DeidentifyConfig.fromMap(Map<String, dynamic> map) {
     return DeidentifyConfig(
-      dicom: map['dicom'] == null ? null : (DicomConfig.fromMap((map['dicom'] as Map).cast<String, dynamic>())).input(),
-      fhir: map['fhir'] == null ? null : (FhirConfig.fromMap((map['fhir'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (ImageConfig.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (TextConfig.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
-      useRegionalDataProcessing: map['useRegionalDataProcessing'] == null ? null : (map['useRegionalDataProcessing'] as bool).input(),
+      dicom: map['dicom'] == null ? null : (DicomConfig.fromMap((map['dicom']! as Map).cast<String, dynamic>())).input(),
+      fhir: map['fhir'] == null ? null : (FhirConfig.fromMap((map['fhir']! as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (ImageConfig.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (TextConfig.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
+      useRegionalDataProcessing: map['useRegionalDataProcessing'] == null ? null : (map['useRegionalDataProcessing']! as bool).input(),
     );
   }
 }

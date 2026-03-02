@@ -88,19 +88,19 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationDefinitionId: map['applicationDefinitionId'] == null ? null : (map['applicationDefinitionId'] as String).input(),
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      jitAccessPolicy: map['jitAccessPolicy'] == null ? null : (ApplicationJitAccessPolicy.fromMap((map['jitAccessPolicy'] as Map).cast<String, dynamic>())).input(),
+      applicationDefinitionId: map['applicationDefinitionId'] == null ? null : (map['applicationDefinitionId']! as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      jitAccessPolicy: map['jitAccessPolicy'] == null ? null : (ApplicationJitAccessPolicy.fromMap((map['jitAccessPolicy']! as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
-      managedResourceGroupId: map['managedResourceGroupId'] == null ? null : (map['managedResourceGroupId'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters']).input(),
-      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy']! as String).input(),
+      managedResourceGroupId: map['managedResourceGroupId'] == null ? null : (map['managedResourceGroupId']! as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']!).input(),
+      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

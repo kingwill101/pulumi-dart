@@ -71,16 +71,16 @@ class GetPortfoliosResult {
     return GetPortfoliosResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
       portfolios: pulumi.Input.decodeList<GetPortfoliosPortfolio>(map['portfolios'], (value) => GetPortfoliosPortfolio.fromMap((value as Map).cast<String, dynamic>())),
-      productId: map['productId'] == null ? null : map['productId'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
-      sortBy: map['sortBy'] == null ? null : map['sortBy'] as String,
-      sortOrder: map['sortOrder'] == null ? null : map['sortOrder'] as String,
+      productId: map['productId'] == null ? null : map['productId']! as String,
+      scope: map['scope'] == null ? null : map['scope']! as String,
+      sortBy: map['sortBy'] == null ? null : map['sortBy']! as String,
+      sortOrder: map['sortOrder'] == null ? null : map['sortOrder']! as String,
     );
   }
 }

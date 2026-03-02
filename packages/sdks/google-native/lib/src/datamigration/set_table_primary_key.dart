@@ -26,7 +26,7 @@ class SetTablePrimaryKey {
 
   factory SetTablePrimaryKey.fromMap(Map<String, dynamic> map) {
     return SetTablePrimaryKey(
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
       primaryKeyColumns: ((map['primaryKeyColumns'] as List).cast<String>()).input(),
     );
   }

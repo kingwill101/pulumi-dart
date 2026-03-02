@@ -60,7 +60,7 @@ class GetRoleDefinitionResult {
       name: map['name'] as String,
       permissions: pulumi.Input.decodeList<GetRoleDefinitionPermission>(map['permissions'], (value) => GetRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>())),
       roleDefinitionId: map['roleDefinitionId'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      scope: map['scope'] == null ? null : map['scope']! as String,
       type: map['type'] as String,
     );
   }

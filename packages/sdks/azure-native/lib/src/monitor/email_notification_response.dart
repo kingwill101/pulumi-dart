@@ -31,9 +31,9 @@ class EmailNotificationResponse {
 
   factory EmailNotificationResponse.fromMap(Map<String, dynamic> map) {
     return EmailNotificationResponse(
-      customEmails: map['customEmails'] == null ? null : ((map['customEmails'] as List).cast<String>()).input(),
-      sendToSubscriptionAdministrator: map['sendToSubscriptionAdministrator'] == null ? null : (map['sendToSubscriptionAdministrator'] as bool).input(),
-      sendToSubscriptionCoAdministrators: map['sendToSubscriptionCoAdministrators'] == null ? null : (map['sendToSubscriptionCoAdministrators'] as bool).input(),
+      customEmails: map['customEmails'] == null ? null : ((map['customEmails']! as List).cast<String>()).input(),
+      sendToSubscriptionAdministrator: map['sendToSubscriptionAdministrator'] == null ? null : (map['sendToSubscriptionAdministrator']! as bool).input(),
+      sendToSubscriptionCoAdministrators: map['sendToSubscriptionCoAdministrators'] == null ? null : (map['sendToSubscriptionCoAdministrators']! as bool).input(),
     );
   }
 }

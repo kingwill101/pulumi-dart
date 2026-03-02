@@ -22,7 +22,7 @@ class ListLinkerConfigurationsResult {
 
   factory ListLinkerConfigurationsResult.fromMap(Map<String, dynamic> map) {
     return ListLinkerConfigurationsResult(
-      configurations: map['configurations'] == null ? null : pulumi.Input.decodeList<SourceConfigurationResponse>(map['configurations'], (value) => SourceConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      configurations: map['configurations'] == null ? null : pulumi.Input.decodeList<SourceConfigurationResponse>(map['configurations']!, (value) => SourceConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

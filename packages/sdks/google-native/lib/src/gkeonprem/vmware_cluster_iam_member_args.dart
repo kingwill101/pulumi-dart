@@ -45,7 +45,7 @@ class VmwareClusterIamMemberArgs {
 
   factory VmwareClusterIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return VmwareClusterIamMemberArgs(
-      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
       name: (map['name'] as String).input(),
       role: (map['role'] as String).input(),

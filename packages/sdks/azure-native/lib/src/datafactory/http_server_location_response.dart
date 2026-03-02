@@ -37,9 +37,9 @@ class HttpServerLocationResponse {
 
   factory HttpServerLocationResponse.fromMap(Map<String, dynamic> map) {
     return HttpServerLocationResponse(
-      fileName: map['fileName'] == null ? null : (map['fileName']).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath']).input(),
-      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl']).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']!).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']!).input(),
+      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl']!).input(),
       type: (map['type'] as String).input(),
     );
   }

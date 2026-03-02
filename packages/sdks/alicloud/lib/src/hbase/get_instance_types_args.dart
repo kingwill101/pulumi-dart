@@ -59,14 +59,14 @@ class GetInstanceTypesArgs {
 
   factory GetInstanceTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypesArgs(
-      chargeType: map['chargeType'] == null ? null : (map['chargeType'] as String).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      chargeType: map['chargeType'] == null ? null : (map['chargeType']! as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

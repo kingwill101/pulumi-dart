@@ -63,13 +63,13 @@ class AllocatedDeviceStatus {
 
   factory AllocatedDeviceStatus.fromMap(Map<String, dynamic> map) {
     return AllocatedDeviceStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      data: map['data'] == null ? null : (map['data']).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions']!, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      data: map['data'] == null ? null : (map['data']!).input(),
       device: (map['device'] as String).input(),
       driver: (map['driver'] as String).input(),
-      networkData: map['networkData'] == null ? null : (NetworkDeviceData.fromMap((map['networkData'] as Map).cast<String, dynamic>())).input(),
+      networkData: map['networkData'] == null ? null : (NetworkDeviceData.fromMap((map['networkData']! as Map).cast<String, dynamic>())).input(),
       pool: (map['pool'] as String).input(),
-      shareID: map['shareID'] == null ? null : (map['shareID'] as String).input(),
+      shareID: map['shareID'] == null ? null : (map['shareID']! as String).input(),
     );
   }
 }

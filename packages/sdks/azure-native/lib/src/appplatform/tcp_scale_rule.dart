@@ -27,8 +27,8 @@ class TcpScaleRule {
 
   factory TcpScaleRule.fromMap(Map<String, dynamic> map) {
     return TcpScaleRule(
-      auth: map['auth'] == null ? null : (pulumi.Input.decodeList<ScaleRuleAuth>(map['auth'], (value) => ScaleRuleAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      auth: map['auth'] == null ? null : (pulumi.Input.decodeList<ScaleRuleAuth>(map['auth']!, (value) => ScaleRuleAuth.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
     );
   }
 }

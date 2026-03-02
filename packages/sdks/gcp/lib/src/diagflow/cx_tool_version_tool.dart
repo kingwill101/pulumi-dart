@@ -70,14 +70,14 @@ class CxToolVersionTool {
 
   factory CxToolVersionTool.fromMap(Map<String, dynamic> map) {
     return CxToolVersionTool(
-      connectorSpec: map['connectorSpec'] == null ? null : (CxToolVersionToolConnectorSpec.fromMap((map['connectorSpec'] as Map).cast<String, dynamic>())).input(),
-      dataStoreSpec: map['dataStoreSpec'] == null ? null : (CxToolVersionToolDataStoreSpec.fromMap((map['dataStoreSpec'] as Map).cast<String, dynamic>())).input(),
+      connectorSpec: map['connectorSpec'] == null ? null : (CxToolVersionToolConnectorSpec.fromMap((map['connectorSpec']! as Map).cast<String, dynamic>())).input(),
+      dataStoreSpec: map['dataStoreSpec'] == null ? null : (CxToolVersionToolDataStoreSpec.fromMap((map['dataStoreSpec']! as Map).cast<String, dynamic>())).input(),
       description: (map['description'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      functionSpec: map['functionSpec'] == null ? null : (CxToolVersionToolFunctionSpec.fromMap((map['functionSpec'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      openApiSpec: map['openApiSpec'] == null ? null : (CxToolVersionToolOpenApiSpec.fromMap((map['openApiSpec'] as Map).cast<String, dynamic>())).input(),
-      toolType: map['toolType'] == null ? null : (map['toolType'] as String).input(),
+      functionSpec: map['functionSpec'] == null ? null : (CxToolVersionToolFunctionSpec.fromMap((map['functionSpec']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      openApiSpec: map['openApiSpec'] == null ? null : (CxToolVersionToolOpenApiSpec.fromMap((map['openApiSpec']! as Map).cast<String, dynamic>())).input(),
+      toolType: map['toolType'] == null ? null : (map['toolType']! as String).input(),
     );
   }
 }

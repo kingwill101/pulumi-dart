@@ -66,14 +66,14 @@ class IntegrationResponseArgs {
 
   factory IntegrationResponseArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationResponseArgs(
-      contentHandling: map['contentHandling'] == null ? null : (map['contentHandling'] as String).input(),
+      contentHandling: map['contentHandling'] == null ? null : ((map['contentHandling'] as String).input()).input(),
       httpMethod: (map['httpMethod'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceId: (map['resourceId'] as String).input(),
-      responseParameters: map['responseParameters'] == null ? null : ((map['responseParameters'] as Map).cast<String, String>()).input(),
-      responseTemplates: map['responseTemplates'] == null ? null : ((map['responseTemplates'] as Map).cast<String, String>()).input(),
+      responseParameters: map['responseParameters'] == null ? null : (((map['responseParameters'] as Map).cast<String, String>()).input()).input(),
+      responseTemplates: map['responseTemplates'] == null ? null : (((map['responseTemplates'] as Map).cast<String, String>()).input()).input(),
       restApi: (map['restApi'] as String).input(),
-      selectionPattern: map['selectionPattern'] == null ? null : (map['selectionPattern'] as String).input(),
+      selectionPattern: map['selectionPattern'] == null ? null : ((map['selectionPattern'] as String).input()).input(),
       statusCode: (map['statusCode'] as String).input(),
     );
   }

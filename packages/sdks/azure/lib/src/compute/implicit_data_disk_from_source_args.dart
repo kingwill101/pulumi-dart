@@ -67,14 +67,14 @@ class ImplicitDataDiskFromSourceArgs {
 
   factory ImplicitDataDiskFromSourceArgs.fromMap(Map<String, dynamic> map) {
     return ImplicitDataDiskFromSourceArgs(
-      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
+      caching: map['caching'] == null ? null : (map['caching']! as String).input(),
       createOption: (map['createOption'] as String).input(),
       diskSizeGb: (map['diskSizeGb'] as int).input(),
       lun: (map['lun'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       sourceResourceId: (map['sourceResourceId'] as String).input(),
       virtualMachineId: (map['virtualMachineId'] as String).input(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled']! as bool).input(),
     );
   }
 }

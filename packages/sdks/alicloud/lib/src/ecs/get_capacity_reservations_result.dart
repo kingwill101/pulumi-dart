@@ -79,19 +79,19 @@ class GetCapacityReservationsResult {
 
   factory GetCapacityReservationsResult.fromMap(Map<String, dynamic> map) {
     return GetCapacityReservationsResult(
-      capacityReservationIds: map['capacityReservationIds'] == null ? null : (map['capacityReservationIds'] as List).cast<String>(),
+      capacityReservationIds: map['capacityReservationIds'] == null ? null : (map['capacityReservationIds']! as List).cast<String>(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceType: map['instanceType'] == null ? null : map['instanceType'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      instanceType: map['instanceType'] == null ? null : map['instanceType']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      paymentType: map['paymentType'] == null ? null : map['paymentType'] as String,
-      platform: map['platform'] == null ? null : map['platform'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      paymentType: map['paymentType'] == null ? null : map['paymentType']! as String,
+      platform: map['platform'] == null ? null : map['platform']! as String,
       reservations: pulumi.Input.decodeList<GetCapacityReservationsReservation>(map['reservations'], (value) => GetCapacityReservationsReservation.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

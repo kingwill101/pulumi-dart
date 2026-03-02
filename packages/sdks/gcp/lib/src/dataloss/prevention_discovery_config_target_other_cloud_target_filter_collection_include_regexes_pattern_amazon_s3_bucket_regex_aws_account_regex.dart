@@ -20,7 +20,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegex.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegex(
-      accountIdRegex: map['accountIdRegex'] == null ? null : (map['accountIdRegex'] as String).input(),
+      accountIdRegex: map['accountIdRegex'] == null ? null : (map['accountIdRegex']! as String).input(),
     );
   }
 }

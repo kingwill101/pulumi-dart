@@ -29,7 +29,7 @@ class ListFeatureSubscriptionArgs {
 
   factory ListFeatureSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return ListFeatureSubscriptionArgs(
-      features: map['features'] == null ? null : ((map['features'] as List).cast<String>()).input(),
+      features: map['features'] == null ? null : ((map['features']! as List).cast<String>()).input(),
       locations: (map['locations'] as String).input(),
     );
   }

@@ -31,9 +31,9 @@ class KeyToPathPatch {
 
   factory KeyToPathPatch.fromMap(Map<String, dynamic> map) {
     return KeyToPathPatch(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

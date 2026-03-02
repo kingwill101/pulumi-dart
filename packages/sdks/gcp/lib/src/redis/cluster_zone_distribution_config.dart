@@ -27,8 +27,8 @@ class ClusterZoneDistributionConfig {
 
   factory ClusterZoneDistributionConfig.fromMap(Map<String, dynamic> map) {
     return ClusterZoneDistributionConfig(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

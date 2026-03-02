@@ -36,10 +36,10 @@ class BucketWebsiteRoutingRulesRoutingRuleCondition {
 
   factory BucketWebsiteRoutingRulesRoutingRuleCondition.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleCondition(
-      httpErrorCodeReturnedEquals: map['httpErrorCodeReturnedEquals'] == null ? null : (map['httpErrorCodeReturnedEquals'] as String).input(),
-      includeHeaders: map['includeHeaders'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader>(map['includeHeaders'], (value) => BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      keyPrefixEquals: map['keyPrefixEquals'] == null ? null : (map['keyPrefixEquals'] as String).input(),
-      keySuffixEquals: map['keySuffixEquals'] == null ? null : (map['keySuffixEquals'] as String).input(),
+      httpErrorCodeReturnedEquals: map['httpErrorCodeReturnedEquals'] == null ? null : (map['httpErrorCodeReturnedEquals']! as String).input(),
+      includeHeaders: map['includeHeaders'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader>(map['includeHeaders']!, (value) => BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyPrefixEquals: map['keyPrefixEquals'] == null ? null : (map['keyPrefixEquals']! as String).input(),
+      keySuffixEquals: map['keySuffixEquals'] == null ? null : (map['keySuffixEquals']! as String).input(),
     );
   }
 }

@@ -52,12 +52,12 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
 
   factory AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfig(
-      clientCredentialsWoVersion: map['clientCredentialsWoVersion'] == null ? null : (map['clientCredentialsWoVersion'] as int).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientIdWo: map['clientIdWo'] == null ? null : (map['clientIdWo'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      clientSecretWo: map['clientSecretWo'] == null ? null : (map['clientSecretWo'] as String).input(),
-      oauthDiscovery: map['oauthDiscovery'] == null ? null : (AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery.fromMap((map['oauthDiscovery'] as Map).cast<String, dynamic>())).input(),
+      clientCredentialsWoVersion: map['clientCredentialsWoVersion'] == null ? null : ((map['clientCredentialsWoVersion'] as int).input()).input(),
+      clientId: map['clientId'] == null ? null : ((map['clientId'] as String).input()).input(),
+      clientIdWo: map['clientIdWo'] == null ? null : ((map['clientIdWo'] as String).input()).input(),
+      clientSecret: map['clientSecret'] == null ? null : ((map['clientSecret'] as String).input()).input(),
+      clientSecretWo: map['clientSecretWo'] == null ? null : ((map['clientSecretWo'] as String).input()).input(),
+      oauthDiscovery: map['oauthDiscovery'] == null ? null : ((AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscovery.fromMap((map['oauthDiscovery']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -48,11 +48,11 @@ class MigrateSqlServerSqlDbTaskProperties {
 
   factory MigrateSqlServerSqlDbTaskProperties.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlDbTaskProperties(
-      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
-      createdOn: map['createdOn'] == null ? null : (map['createdOn'] as String).input(),
-      input: map['input'] == null ? null : (MigrateSqlServerSqlDbTaskInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      isCloneable: map['isCloneable'] == null ? null : (map['isCloneable'] as bool).input(),
-      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
+      clientData: map['clientData'] == null ? null : ((map['clientData']! as Map).cast<String, String>()).input(),
+      createdOn: map['createdOn'] == null ? null : (map['createdOn']! as String).input(),
+      input: map['input'] == null ? null : (MigrateSqlServerSqlDbTaskInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
+      isCloneable: map['isCloneable'] == null ? null : (map['isCloneable']! as bool).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId']! as String).input(),
       taskType: (map['taskType'] as String).input(),
     );
   }

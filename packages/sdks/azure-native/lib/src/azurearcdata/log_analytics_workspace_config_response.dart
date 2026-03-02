@@ -21,7 +21,7 @@ class LogAnalyticsWorkspaceConfigResponse {
 
   factory LogAnalyticsWorkspaceConfigResponse.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsWorkspaceConfigResponse(
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

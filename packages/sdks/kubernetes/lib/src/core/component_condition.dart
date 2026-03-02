@@ -36,8 +36,8 @@ class ComponentCondition {
 
   factory ComponentCondition.fromMap(Map<String, dynamic> map) {
     return ComponentCondition(
-      error: map['error'] == null ? null : (map['error'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
       status: (map['status'] as String).input(),
       type: (map['type'] as String).input(),
     );

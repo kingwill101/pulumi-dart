@@ -27,8 +27,8 @@ class ListConfigurationStoreKeysResult {
 
   factory ListConfigurationStoreKeysResult.fromMap(Map<String, dynamic> map) {
     return ListConfigurationStoreKeysResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ApiKeyResponse>(map['value'], (value) => ApiKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ApiKeyResponse>(map['value']!, (value) => ApiKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

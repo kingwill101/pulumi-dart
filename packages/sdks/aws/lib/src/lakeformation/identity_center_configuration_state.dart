@@ -44,11 +44,11 @@ class IdentityCenterConfigurationState {
 
   factory IdentityCenterConfigurationState.fromMap(Map<String, dynamic> map) {
     return IdentityCenterConfigurationState(
-      applicationArn: map['applicationArn'] == null ? null : (map['applicationArn'] as String).input(),
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceShare: map['resourceShare'] == null ? null : (map['resourceShare'] as String).input(),
+      applicationArn: map['applicationArn'] == null ? null : ((map['applicationArn'] as String).input()).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      instanceArn: map['instanceArn'] == null ? null : ((map['instanceArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceShare: map['resourceShare'] == null ? null : ((map['resourceShare'] as String).input()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class CertifiateCertificatePolicyLifetimeActionTrigger {
 
   factory CertifiateCertificatePolicyLifetimeActionTrigger.fromMap(Map<String, dynamic> map) {
     return CertifiateCertificatePolicyLifetimeActionTrigger(
-      daysBeforeExpiry: map['daysBeforeExpiry'] == null ? null : (map['daysBeforeExpiry'] as int).input(),
-      lifetimePercentage: map['lifetimePercentage'] == null ? null : (map['lifetimePercentage'] as int).input(),
+      daysBeforeExpiry: map['daysBeforeExpiry'] == null ? null : (map['daysBeforeExpiry']! as int).input(),
+      lifetimePercentage: map['lifetimePercentage'] == null ? null : (map['lifetimePercentage']! as int).input(),
     );
   }
 }

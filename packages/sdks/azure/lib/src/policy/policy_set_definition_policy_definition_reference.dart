@@ -40,11 +40,11 @@ class PolicySetDefinitionPolicyDefinitionReference {
 
   factory PolicySetDefinitionPolicyDefinitionReference.fromMap(Map<String, dynamic> map) {
     return PolicySetDefinitionPolicyDefinitionReference(
-      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues'] as String).input(),
+      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues']! as String).input(),
       policyDefinitionId: (map['policyDefinitionId'] as String).input(),
-      policyGroupNames: map['policyGroupNames'] == null ? null : ((map['policyGroupNames'] as List).cast<String>()).input(),
-      referenceId: map['referenceId'] == null ? null : (map['referenceId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      policyGroupNames: map['policyGroupNames'] == null ? null : ((map['policyGroupNames']! as List).cast<String>()).input(),
+      referenceId: map['referenceId'] == null ? null : (map['referenceId']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class ResourceProviderRequiredPermissionsResponse {
 
   factory ResourceProviderRequiredPermissionsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceProviderRequiredPermissionsResponse(
-      action: map['action'] == null ? null : (map['action'] as bool).input(),
-      delete: map['delete'] == null ? null : (map['delete'] as bool).input(),
-      read: map['read'] == null ? null : (map['read'] as bool).input(),
-      write: map['write'] == null ? null : (map['write'] as bool).input(),
+      action: map['action'] == null ? null : (map['action']! as bool).input(),
+      delete: map['delete'] == null ? null : (map['delete']! as bool).input(),
+      read: map['read'] == null ? null : (map['read']! as bool).input(),
+      write: map['write'] == null ? null : (map['write']! as bool).input(),
     );
   }
 }

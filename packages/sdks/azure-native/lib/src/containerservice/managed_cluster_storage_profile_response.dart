@@ -40,10 +40,10 @@ class ManagedClusterStorageProfileResponse {
 
   factory ManagedClusterStorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterStorageProfileResponse(
-      blobCSIDriver: map['blobCSIDriver'] == null ? null : (ManagedClusterStorageProfileBlobCSIDriverResponse.fromMap((map['blobCSIDriver'] as Map).cast<String, dynamic>())).input(),
-      diskCSIDriver: map['diskCSIDriver'] == null ? null : (ManagedClusterStorageProfileDiskCSIDriverResponse.fromMap((map['diskCSIDriver'] as Map).cast<String, dynamic>())).input(),
-      fileCSIDriver: map['fileCSIDriver'] == null ? null : (ManagedClusterStorageProfileFileCSIDriverResponse.fromMap((map['fileCSIDriver'] as Map).cast<String, dynamic>())).input(),
-      snapshotController: map['snapshotController'] == null ? null : (ManagedClusterStorageProfileSnapshotControllerResponse.fromMap((map['snapshotController'] as Map).cast<String, dynamic>())).input(),
+      blobCSIDriver: map['blobCSIDriver'] == null ? null : (ManagedClusterStorageProfileBlobCSIDriverResponse.fromMap((map['blobCSIDriver']! as Map).cast<String, dynamic>())).input(),
+      diskCSIDriver: map['diskCSIDriver'] == null ? null : (ManagedClusterStorageProfileDiskCSIDriverResponse.fromMap((map['diskCSIDriver']! as Map).cast<String, dynamic>())).input(),
+      fileCSIDriver: map['fileCSIDriver'] == null ? null : (ManagedClusterStorageProfileFileCSIDriverResponse.fromMap((map['fileCSIDriver']! as Map).cast<String, dynamic>())).input(),
+      snapshotController: map['snapshotController'] == null ? null : (ManagedClusterStorageProfileSnapshotControllerResponse.fromMap((map['snapshotController']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

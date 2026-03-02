@@ -31,7 +31,7 @@ class FlexibleAppVersionDeploymentFile {
   factory FlexibleAppVersionDeploymentFile.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionDeploymentFile(
       name: (map['name'] as String).input(),
-      sha1Sum: map['sha1Sum'] == null ? null : (map['sha1Sum'] as String).input(),
+      sha1Sum: map['sha1Sum'] == null ? null : (map['sha1Sum']! as String).input(),
       sourceUrl: (map['sourceUrl'] as String).input(),
     );
   }

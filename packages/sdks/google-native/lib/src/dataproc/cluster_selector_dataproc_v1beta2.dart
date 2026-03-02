@@ -27,7 +27,7 @@ class ClusterSelectorDataprocV1beta2 {
   factory ClusterSelectorDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return ClusterSelectorDataprocV1beta2(
       clusterLabels: ((map['clusterLabels'] as Map).cast<String, String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

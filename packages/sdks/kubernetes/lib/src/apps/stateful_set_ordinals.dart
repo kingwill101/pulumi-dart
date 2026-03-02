@@ -24,7 +24,7 @@ class StatefulSetOrdinals {
 
   factory StatefulSetOrdinals.fromMap(Map<String, dynamic> map) {
     return StatefulSetOrdinals(
-      start: map['start'] == null ? null : (map['start'] as int).input(),
+      start: map['start'] == null ? null : (map['start']! as int).input(),
     );
   }
 }

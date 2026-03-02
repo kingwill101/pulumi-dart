@@ -49,9 +49,9 @@ class SettingsArgs {
 
   factory SettingsArgs.fromMap(Map<String, dynamic> map) {
     return SettingsArgs(
-      accessSettings: map['accessSettings'] == null ? null : (SettingsAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>())).input(),
-      applicationSettings: map['applicationSettings'] == null ? null : (SettingsApplicationSettings.fromMap((map['applicationSettings'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accessSettings: map['accessSettings'] == null ? null : (SettingsAccessSettings.fromMap((map['accessSettings']! as Map).cast<String, dynamic>())).input(),
+      applicationSettings: map['applicationSettings'] == null ? null : (SettingsApplicationSettings.fromMap((map['applicationSettings']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

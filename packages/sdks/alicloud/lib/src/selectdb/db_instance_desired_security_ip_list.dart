@@ -25,8 +25,8 @@ class DbInstanceDesiredSecurityIpList {
 
   factory DbInstanceDesiredSecurityIpList.fromMap(Map<String, dynamic> map) {
     return DbInstanceDesiredSecurityIpList(
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList']! as String).input(),
     );
   }
 }

@@ -57,14 +57,14 @@ class NetworkProfileResponse {
 
   factory NetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return NetworkProfileResponse(
-      dnsServiceIP: map['dnsServiceIP'] == null ? null : (map['dnsServiceIP'] as String).input(),
-      loadBalancerProfile: map['loadBalancerProfile'] == null ? null : (LoadBalancerProfileResponse.fromMap((map['loadBalancerProfile'] as Map).cast<String, dynamic>())).input(),
-      loadBalancerSku: map['loadBalancerSku'] == null ? null : (map['loadBalancerSku'] as String).input(),
-      networkPolicy: map['networkPolicy'] == null ? null : (map['networkPolicy'] as String).input(),
-      podCidr: map['podCidr'] == null ? null : (map['podCidr'] as String).input(),
-      podCidrs: map['podCidrs'] == null ? null : ((map['podCidrs'] as List).cast<String>()).input(),
-      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr'] as String).input(),
-      serviceCidrs: map['serviceCidrs'] == null ? null : ((map['serviceCidrs'] as List).cast<String>()).input(),
+      dnsServiceIP: map['dnsServiceIP'] == null ? null : (map['dnsServiceIP']! as String).input(),
+      loadBalancerProfile: map['loadBalancerProfile'] == null ? null : (LoadBalancerProfileResponse.fromMap((map['loadBalancerProfile']! as Map).cast<String, dynamic>())).input(),
+      loadBalancerSku: map['loadBalancerSku'] == null ? null : (map['loadBalancerSku']! as String).input(),
+      networkPolicy: map['networkPolicy'] == null ? null : (map['networkPolicy']! as String).input(),
+      podCidr: map['podCidr'] == null ? null : (map['podCidr']! as String).input(),
+      podCidrs: map['podCidrs'] == null ? null : ((map['podCidrs']! as List).cast<String>()).input(),
+      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr']! as String).input(),
+      serviceCidrs: map['serviceCidrs'] == null ? null : ((map['serviceCidrs']! as List).cast<String>()).input(),
     );
   }
 }

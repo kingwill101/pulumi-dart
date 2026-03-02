@@ -62,10 +62,10 @@ class ChannelSlackArgs {
       botName: (map['botName'] as String).input(),
       clientId: (map['clientId'] as String).input(),
       clientSecret: (map['clientSecret'] as String).input(),
-      landingPageUrl: map['landingPageUrl'] == null ? null : (map['landingPageUrl'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      landingPageUrl: map['landingPageUrl'] == null ? null : (map['landingPageUrl']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      signingSecret: map['signingSecret'] == null ? null : (map['signingSecret'] as String).input(),
+      signingSecret: map['signingSecret'] == null ? null : (map['signingSecret']! as String).input(),
       verificationToken: (map['verificationToken'] as String).input(),
     );
   }

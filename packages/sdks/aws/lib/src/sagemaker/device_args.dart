@@ -35,9 +35,9 @@ class DeviceArgs {
 
   factory DeviceArgs.fromMap(Map<String, dynamic> map) {
     return DeviceArgs(
-      device: (DeviceDevice.fromMap((map['device'] as Map).cast<String, dynamic>())).input(),
+      device: (DeviceDevice.fromMap((map['device']! as Map).cast<String, dynamic>())).input(),
       deviceFleetName: (map['deviceFleetName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

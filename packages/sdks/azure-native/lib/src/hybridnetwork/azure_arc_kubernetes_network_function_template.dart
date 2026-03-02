@@ -28,7 +28,7 @@ class AzureArcKubernetesNetworkFunctionTemplate {
 
   factory AzureArcKubernetesNetworkFunctionTemplate.fromMap(Map<String, dynamic> map) {
     return AzureArcKubernetesNetworkFunctionTemplate(
-      networkFunctionApplications: map['networkFunctionApplications'] == null ? null : (pulumi.Input.decodeList<AzureArcKubernetesHelmApplication>(map['networkFunctionApplications'], (value) => AzureArcKubernetesHelmApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkFunctionApplications: map['networkFunctionApplications'] == null ? null : (pulumi.Input.decodeList<AzureArcKubernetesHelmApplication>(map['networkFunctionApplications']!, (value) => AzureArcKubernetesHelmApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
       nfviType: (map['nfviType'] as String).input(),
     );
   }

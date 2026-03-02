@@ -40,11 +40,11 @@ class EventRuleMnsParameter {
 
   factory EventRuleMnsParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleMnsParameter(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      mnsParametersId: map['mnsParametersId'] == null ? null : (map['mnsParametersId'] as String).input(),
-      queue: map['queue'] == null ? null : (map['queue'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      mnsParametersId: map['mnsParametersId'] == null ? null : (map['mnsParametersId']! as String).input(),
+      queue: map['queue'] == null ? null : (map['queue']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

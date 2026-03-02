@@ -34,8 +34,8 @@ class MoverProjectArgs {
 
   factory MoverProjectArgs.fromMap(Map<String, dynamic> map) {
     return MoverProjectArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       storageMoverId: (map['storageMoverId'] as String).input(),
     );
   }

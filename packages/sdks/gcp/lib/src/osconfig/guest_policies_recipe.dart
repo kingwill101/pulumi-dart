@@ -62,12 +62,12 @@ class GuestPoliciesRecipe {
 
   factory GuestPoliciesRecipe.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipe(
-      artifacts: map['artifacts'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesRecipeArtifact>(map['artifacts'], (value) => GuestPoliciesRecipeArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
-      installSteps: map['installSteps'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesRecipeInstallStep>(map['installSteps'], (value) => GuestPoliciesRecipeInstallStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      artifacts: map['artifacts'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesRecipeArtifact>(map['artifacts']!, (value) => GuestPoliciesRecipeArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState']! as String).input(),
+      installSteps: map['installSteps'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesRecipeInstallStep>(map['installSteps']!, (value) => GuestPoliciesRecipeInstallStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      updateSteps: map['updateSteps'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesRecipeUpdateStep>(map['updateSteps'], (value) => GuestPoliciesRecipeUpdateStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      updateSteps: map['updateSteps'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesRecipeUpdateStep>(map['updateSteps']!, (value) => GuestPoliciesRecipeUpdateStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

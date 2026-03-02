@@ -62,13 +62,13 @@ class InvitationArgs {
   factory InvitationArgs.fromMap(Map<String, dynamic> map) {
     return InvitationArgs(
       accountName: (map['accountName'] as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
-      invitationName: map['invitationName'] == null ? null : (map['invitationName'] as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
+      invitationName: map['invitationName'] == null ? null : (map['invitationName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       shareName: (map['shareName'] as String).input(),
-      targetActiveDirectoryId: map['targetActiveDirectoryId'] == null ? null : (map['targetActiveDirectoryId'] as String).input(),
-      targetEmail: map['targetEmail'] == null ? null : (map['targetEmail'] as String).input(),
-      targetObjectId: map['targetObjectId'] == null ? null : (map['targetObjectId'] as String).input(),
+      targetActiveDirectoryId: map['targetActiveDirectoryId'] == null ? null : (map['targetActiveDirectoryId']! as String).input(),
+      targetEmail: map['targetEmail'] == null ? null : (map['targetEmail']! as String).input(),
+      targetObjectId: map['targetObjectId'] == null ? null : (map['targetObjectId']! as String).input(),
     );
   }
 }

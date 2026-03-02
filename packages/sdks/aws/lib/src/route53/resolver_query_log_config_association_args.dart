@@ -34,7 +34,7 @@ class ResolverQueryLogConfigAssociationArgs {
 
   factory ResolverQueryLogConfigAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ResolverQueryLogConfigAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resolverQueryLogConfigId: (map['resolverQueryLogConfigId'] as String).input(),
       resourceId: (map['resourceId'] as String).input(),
     );

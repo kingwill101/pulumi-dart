@@ -33,7 +33,7 @@ class GetPreferenceSetMigrationcenterV1alpha1Args {
     return GetPreferenceSetMigrationcenterV1alpha1Args(
       location: (map['location'] as String).input(),
       preferenceSetId: (map['preferenceSetId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

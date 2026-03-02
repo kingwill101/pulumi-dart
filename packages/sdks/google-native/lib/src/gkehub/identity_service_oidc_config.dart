@@ -81,19 +81,19 @@ class IdentityServiceOidcConfig {
 
   factory IdentityServiceOidcConfig.fromMap(Map<String, dynamic> map) {
     return IdentityServiceOidcConfig(
-      certificateAuthorityData: map['certificateAuthorityData'] == null ? null : (map['certificateAuthorityData'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      deployCloudConsoleProxy: map['deployCloudConsoleProxy'] == null ? null : (map['deployCloudConsoleProxy'] as bool).input(),
-      enableAccessToken: map['enableAccessToken'] == null ? null : (map['enableAccessToken'] as bool).input(),
-      extraParams: map['extraParams'] == null ? null : (map['extraParams'] as String).input(),
-      groupPrefix: map['groupPrefix'] == null ? null : (map['groupPrefix'] as String).input(),
-      groupsClaim: map['groupsClaim'] == null ? null : (map['groupsClaim'] as String).input(),
-      issuerUri: map['issuerUri'] == null ? null : (map['issuerUri'] as String).input(),
-      kubectlRedirectUri: map['kubectlRedirectUri'] == null ? null : (map['kubectlRedirectUri'] as String).input(),
-      scopes: map['scopes'] == null ? null : (map['scopes'] as String).input(),
-      userClaim: map['userClaim'] == null ? null : (map['userClaim'] as String).input(),
-      userPrefix: map['userPrefix'] == null ? null : (map['userPrefix'] as String).input(),
+      certificateAuthorityData: map['certificateAuthorityData'] == null ? null : (map['certificateAuthorityData']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      deployCloudConsoleProxy: map['deployCloudConsoleProxy'] == null ? null : (map['deployCloudConsoleProxy']! as bool).input(),
+      enableAccessToken: map['enableAccessToken'] == null ? null : (map['enableAccessToken']! as bool).input(),
+      extraParams: map['extraParams'] == null ? null : (map['extraParams']! as String).input(),
+      groupPrefix: map['groupPrefix'] == null ? null : (map['groupPrefix']! as String).input(),
+      groupsClaim: map['groupsClaim'] == null ? null : (map['groupsClaim']! as String).input(),
+      issuerUri: map['issuerUri'] == null ? null : (map['issuerUri']! as String).input(),
+      kubectlRedirectUri: map['kubectlRedirectUri'] == null ? null : (map['kubectlRedirectUri']! as String).input(),
+      scopes: map['scopes'] == null ? null : (map['scopes']! as String).input(),
+      userClaim: map['userClaim'] == null ? null : (map['userClaim']! as String).input(),
+      userPrefix: map['userPrefix'] == null ? null : (map['userPrefix']! as String).input(),
     );
   }
 }

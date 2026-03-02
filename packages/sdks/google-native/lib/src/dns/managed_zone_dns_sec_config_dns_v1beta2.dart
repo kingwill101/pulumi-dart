@@ -37,10 +37,10 @@ class ManagedZoneDnsSecConfigDnsV1beta2 {
 
   factory ManagedZoneDnsSecConfigDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZoneDnsSecConfigDnsV1beta2(
-      defaultKeySpecs: map['defaultKeySpecs'] == null ? null : (pulumi.Input.decodeList<DnsKeySpecDnsV1beta2>(map['defaultKeySpecs'], (value) => DnsKeySpecDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      nonExistence: map['nonExistence'] == null ? null : (ManagedZoneDnsSecConfigNonExistenceDnsV1beta2.fromValue(map['nonExistence'] as String)).input(),
-      state: map['state'] == null ? null : (ManagedZoneDnsSecConfigStateDnsV1beta2.fromValue(map['state'] as String)).input(),
+      defaultKeySpecs: map['defaultKeySpecs'] == null ? null : (pulumi.Input.decodeList<DnsKeySpecDnsV1beta2>(map['defaultKeySpecs']!, (value) => DnsKeySpecDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      nonExistence: map['nonExistence'] == null ? null : (ManagedZoneDnsSecConfigNonExistenceDnsV1beta2.fromValue(map['nonExistence']! as String)).input(),
+      state: map['state'] == null ? null : (ManagedZoneDnsSecConfigStateDnsV1beta2.fromValue(map['state']! as String)).input(),
     );
   }
 }

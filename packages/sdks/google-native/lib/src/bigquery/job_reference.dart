@@ -30,9 +30,9 @@ class JobReference {
 
   factory JobReference.fromMap(Map<String, dynamic> map) {
     return JobReference(
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

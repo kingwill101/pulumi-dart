@@ -25,8 +25,8 @@ class GetKeysZoneSigningKeyDigest {
 
   factory GetKeysZoneSigningKeyDigest.fromMap(Map<String, dynamic> map) {
     return GetKeysZoneSigningKeyDigest(
-      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

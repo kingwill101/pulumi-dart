@@ -25,8 +25,8 @@ class KMSEnvMap {
 
   factory KMSEnvMap.fromMap(Map<String, dynamic> map) {
     return KMSEnvMap(
-      cipherText: map['cipherText'] == null ? null : (map['cipherText'] as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      cipherText: map['cipherText'] == null ? null : (map['cipherText']! as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
     );
   }
 }

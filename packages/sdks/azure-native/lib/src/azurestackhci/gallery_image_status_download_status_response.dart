@@ -21,7 +21,7 @@ class GalleryImageStatusDownloadStatusResponse {
 
   factory GalleryImageStatusDownloadStatusResponse.fromMap(Map<String, dynamic> map) {
     return GalleryImageStatusDownloadStatusResponse(
-      downloadSizeInMB: map['downloadSizeInMB'] == null ? null : (map['downloadSizeInMB'] as double).input(),
+      downloadSizeInMB: map['downloadSizeInMB'] == null ? null : (map['downloadSizeInMB']! as double).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class AntiBruteForceRuleProtocolType {
 
   factory AntiBruteForceRuleProtocolType.fromMap(Map<String, dynamic> map) {
     return AntiBruteForceRuleProtocolType(
-      rdp: map['rdp'] == null ? null : (map['rdp'] as String).input(),
-      sqlServer: map['sqlServer'] == null ? null : (map['sqlServer'] as String).input(),
-      ssh: map['ssh'] == null ? null : (map['ssh'] as String).input(),
+      rdp: map['rdp'] == null ? null : (map['rdp']! as String).input(),
+      sqlServer: map['sqlServer'] == null ? null : (map['sqlServer']! as String).input(),
+      ssh: map['ssh'] == null ? null : (map['ssh']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfig
 
   factory AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration(
-      patternObjectFilters: map['patternObjectFilters'] == null ? null : (pulumi.Input.decodeList<AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter>(map['patternObjectFilters'], (value) => AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      patternObjectFilters: map['patternObjectFilters'] == null ? null : ((pulumi.Input.decodeList<AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter>(map['patternObjectFilters']!, (value) => AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfigurationPatternObjectFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

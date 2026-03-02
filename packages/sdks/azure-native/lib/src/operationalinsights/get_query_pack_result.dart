@@ -78,7 +78,7 @@ class GetQueryPackResult {
       provisioningState: map['provisioningState'] as String,
       queryPackId: map['queryPackId'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       timeCreated: map['timeCreated'] as String,
       timeModified: map['timeModified'] as String,
       type: map['type'] as String,

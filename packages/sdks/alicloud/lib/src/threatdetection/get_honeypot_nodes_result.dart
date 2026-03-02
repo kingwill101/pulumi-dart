@@ -65,14 +65,14 @@ class GetHoneypotNodesResult {
     return GetHoneypotNodesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      nodeId: map['nodeId'] == null ? null : map['nodeId'] as String,
-      nodeName: map['nodeName'] == null ? null : map['nodeName'] as String,
+      nodeId: map['nodeId'] == null ? null : map['nodeId']! as String,
+      nodeName: map['nodeName'] == null ? null : map['nodeName']! as String,
       nodes: pulumi.Input.decodeList<GetHoneypotNodesNode>(map['nodes'], (value) => GetHoneypotNodesNode.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
     );
   }
 }

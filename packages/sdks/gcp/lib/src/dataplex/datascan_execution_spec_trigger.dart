@@ -34,9 +34,9 @@ class DatascanExecutionSpecTrigger {
 
   factory DatascanExecutionSpecTrigger.fromMap(Map<String, dynamic> map) {
     return DatascanExecutionSpecTrigger(
-      onDemand: map['onDemand'] == null ? null : ((map['onDemand'] as Map).cast<String, dynamic>()).input(),
-      oneTime: map['oneTime'] == null ? null : (DatascanExecutionSpecTriggerOneTime.fromMap((map['oneTime'] as Map).cast<String, dynamic>())).input(),
-      schedule: map['schedule'] == null ? null : (DatascanExecutionSpecTriggerSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      onDemand: map['onDemand'] == null ? null : ((map['onDemand']! as Map).cast<String, dynamic>()).input(),
+      oneTime: map['oneTime'] == null ? null : (DatascanExecutionSpecTriggerOneTime.fromMap((map['oneTime']! as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (DatascanExecutionSpecTriggerSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

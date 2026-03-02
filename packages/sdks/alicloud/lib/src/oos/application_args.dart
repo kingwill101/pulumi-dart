@@ -40,9 +40,9 @@ class ApplicationArgs {
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
       applicationName: (map['applicationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

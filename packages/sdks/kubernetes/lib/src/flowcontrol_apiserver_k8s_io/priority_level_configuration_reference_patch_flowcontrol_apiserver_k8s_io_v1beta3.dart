@@ -21,7 +21,7 @@ class PriorityLevelConfigurationReferencePatchFlowcontrolApiserverK8sIoV1beta3 {
 
   factory PriorityLevelConfigurationReferencePatchFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationReferencePatchFlowcontrolApiserverK8sIoV1beta3(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

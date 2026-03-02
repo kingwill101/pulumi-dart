@@ -39,8 +39,8 @@ class RouteTableAssociationArgs {
 
   factory RouteTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RouteTableAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replaceExistingAssociation: map['replaceExistingAssociation'] == null ? null : (map['replaceExistingAssociation'] as bool).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replaceExistingAssociation: map['replaceExistingAssociation'] == null ? null : ((map['replaceExistingAssociation'] as bool).input()).input(),
       transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
       transitGatewayRouteTableId: (map['transitGatewayRouteTableId'] as String).input(),
     );

@@ -26,7 +26,7 @@ class ApplicationInitialCapacityInitialCapacityConfig {
 
   factory ApplicationInitialCapacityInitialCapacityConfig.fromMap(Map<String, dynamic> map) {
     return ApplicationInitialCapacityInitialCapacityConfig(
-      workerConfiguration: map['workerConfiguration'] == null ? null : (ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration.fromMap((map['workerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      workerConfiguration: map['workerConfiguration'] == null ? null : ((ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration.fromMap((map['workerConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       workerCount: (map['workerCount'] as int).input(),
     );
   }

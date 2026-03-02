@@ -36,10 +36,10 @@ class DeviceAttributeResourceK8sIoV1beta2 {
 
   factory DeviceAttributeResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceAttributeResourceK8sIoV1beta2(
-      bool: map['bool'] == null ? null : (map['bool'] as bool).input(),
-      int: map['int'] == null ? null : (map['int'] as int).input(),
-      string: map['string'] == null ? null : (map['string'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      bool: map['bool'] == null ? null : (map['bool']! as bool).input(),
+      int: map['int'] == null ? null : (map['int']! as int).input(),
+      string: map['string'] == null ? null : (map['string']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

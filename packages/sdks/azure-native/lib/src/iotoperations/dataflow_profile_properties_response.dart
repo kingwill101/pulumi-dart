@@ -32,8 +32,8 @@ class DataflowProfilePropertiesResponse {
 
   factory DataflowProfilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataflowProfilePropertiesResponse(
-      diagnostics: map['diagnostics'] == null ? null : (ProfileDiagnosticsResponse.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      diagnostics: map['diagnostics'] == null ? null : (ProfileDiagnosticsResponse.fromMap((map['diagnostics']! as Map).cast<String, dynamic>())).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

@@ -32,9 +32,9 @@ class VMwareClusterNetworkConfigHostConfig {
 
   factory VMwareClusterNetworkConfigHostConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterNetworkConfigHostConfig(
-      dnsSearchDomains: map['dnsSearchDomains'] == null ? null : ((map['dnsSearchDomains'] as List).cast<String>()).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      ntpServers: map['ntpServers'] == null ? null : ((map['ntpServers'] as List).cast<String>()).input(),
+      dnsSearchDomains: map['dnsSearchDomains'] == null ? null : ((map['dnsSearchDomains']! as List).cast<String>()).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      ntpServers: map['ntpServers'] == null ? null : ((map['ntpServers']! as List).cast<String>()).input(),
     );
   }
 }

@@ -56,13 +56,13 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      keyTypes: map['keyTypes'] == null ? null : ((map['keyTypes'] as List).cast<String>()).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      statuses: map['statuses'] == null ? null : ((map['statuses'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      types: map['types'] == null ? null : ((map['types'] as List).cast<String>()).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
+      keyTypes: map['keyTypes'] == null ? null : (((map['keyTypes'] as List).cast<String>()).input()).input(),
+      mostRecent: map['mostRecent'] == null ? null : ((map['mostRecent'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      statuses: map['statuses'] == null ? null : (((map['statuses'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      types: map['types'] == null ? null : (((map['types'] as List).cast<String>()).input()).input(),
     );
   }
 }

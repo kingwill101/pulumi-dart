@@ -25,8 +25,8 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
 
   factory V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetail.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetail(
-      typeUrl: map['typeUrl'] == null ? null : (map['typeUrl'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      typeUrl: map['typeUrl'] == null ? null : (map['typeUrl']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

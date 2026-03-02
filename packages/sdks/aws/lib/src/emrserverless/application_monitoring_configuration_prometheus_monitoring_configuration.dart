@@ -20,7 +20,7 @@ class ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration {
 
   factory ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationMonitoringConfigurationPrometheusMonitoringConfiguration(
-      remoteWriteUrl: map['remoteWriteUrl'] == null ? null : (map['remoteWriteUrl'] as String).input(),
+      remoteWriteUrl: map['remoteWriteUrl'] == null ? null : ((map['remoteWriteUrl'] as String).input()).input(),
     );
   }
 }

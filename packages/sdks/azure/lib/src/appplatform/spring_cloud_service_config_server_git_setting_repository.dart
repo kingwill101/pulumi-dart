@@ -52,12 +52,12 @@ class SpringCloudServiceConfigServerGitSettingRepository {
 
   factory SpringCloudServiceConfigServerGitSettingRepository.fromMap(Map<String, dynamic> map) {
     return SpringCloudServiceConfigServerGitSettingRepository(
-      httpBasicAuth: map['httpBasicAuth'] == null ? null : (SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuth.fromMap((map['httpBasicAuth'] as Map).cast<String, dynamic>())).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      httpBasicAuth: map['httpBasicAuth'] == null ? null : (SpringCloudServiceConfigServerGitSettingRepositoryHttpBasicAuth.fromMap((map['httpBasicAuth']! as Map).cast<String, dynamic>())).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
       name: (map['name'] as String).input(),
-      patterns: map['patterns'] == null ? null : ((map['patterns'] as List).cast<String>()).input(),
-      searchPaths: map['searchPaths'] == null ? null : ((map['searchPaths'] as List).cast<String>()).input(),
-      sshAuth: map['sshAuth'] == null ? null : (SpringCloudServiceConfigServerGitSettingRepositorySshAuth.fromMap((map['sshAuth'] as Map).cast<String, dynamic>())).input(),
+      patterns: map['patterns'] == null ? null : ((map['patterns']! as List).cast<String>()).input(),
+      searchPaths: map['searchPaths'] == null ? null : ((map['searchPaths']! as List).cast<String>()).input(),
+      sshAuth: map['sshAuth'] == null ? null : (SpringCloudServiceConfigServerGitSettingRepositorySshAuth.fromMap((map['sshAuth']! as Map).cast<String, dynamic>())).input(),
       uri: (map['uri'] as String).input(),
     );
   }

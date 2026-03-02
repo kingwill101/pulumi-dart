@@ -52,12 +52,12 @@ class LoginResponse {
 
   factory LoginResponse.fromMap(Map<String, dynamic> map) {
     return LoginResponse(
-      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : ((map['allowedExternalRedirectUrls'] as List).cast<String>()).input(),
-      cookieExpiration: map['cookieExpiration'] == null ? null : (CookieExpirationResponse.fromMap((map['cookieExpiration'] as Map).cast<String, dynamic>())).input(),
-      nonce: map['nonce'] == null ? null : (NonceResponse.fromMap((map['nonce'] as Map).cast<String, dynamic>())).input(),
-      preserveUrlFragmentsForLogins: map['preserveUrlFragmentsForLogins'] == null ? null : (map['preserveUrlFragmentsForLogins'] as bool).input(),
-      routes: map['routes'] == null ? null : (LoginRoutesResponse.fromMap((map['routes'] as Map).cast<String, dynamic>())).input(),
-      tokenStore: map['tokenStore'] == null ? null : (TokenStoreResponse.fromMap((map['tokenStore'] as Map).cast<String, dynamic>())).input(),
+      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : ((map['allowedExternalRedirectUrls']! as List).cast<String>()).input(),
+      cookieExpiration: map['cookieExpiration'] == null ? null : (CookieExpirationResponse.fromMap((map['cookieExpiration']! as Map).cast<String, dynamic>())).input(),
+      nonce: map['nonce'] == null ? null : (NonceResponse.fromMap((map['nonce']! as Map).cast<String, dynamic>())).input(),
+      preserveUrlFragmentsForLogins: map['preserveUrlFragmentsForLogins'] == null ? null : (map['preserveUrlFragmentsForLogins']! as bool).input(),
+      routes: map['routes'] == null ? null : (LoginRoutesResponse.fromMap((map['routes']! as Map).cast<String, dynamic>())).input(),
+      tokenStore: map['tokenStore'] == null ? null : (TokenStoreResponse.fromMap((map['tokenStore']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

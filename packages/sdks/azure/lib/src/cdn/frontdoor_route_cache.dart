@@ -39,10 +39,10 @@ class FrontdoorRouteCache {
 
   factory FrontdoorRouteCache.fromMap(Map<String, dynamic> map) {
     return FrontdoorRouteCache(
-      compressionEnabled: map['compressionEnabled'] == null ? null : (map['compressionEnabled'] as bool).input(),
-      contentTypesToCompresses: map['contentTypesToCompresses'] == null ? null : ((map['contentTypesToCompresses'] as List).cast<String>()).input(),
-      queryStringCachingBehavior: map['queryStringCachingBehavior'] == null ? null : (map['queryStringCachingBehavior'] as String).input(),
-      queryStrings: map['queryStrings'] == null ? null : ((map['queryStrings'] as List).cast<String>()).input(),
+      compressionEnabled: map['compressionEnabled'] == null ? null : (map['compressionEnabled']! as bool).input(),
+      contentTypesToCompresses: map['contentTypesToCompresses'] == null ? null : ((map['contentTypesToCompresses']! as List).cast<String>()).input(),
+      queryStringCachingBehavior: map['queryStringCachingBehavior'] == null ? null : (map['queryStringCachingBehavior']! as String).input(),
+      queryStrings: map['queryStrings'] == null ? null : ((map['queryStrings']! as List).cast<String>()).input(),
     );
   }
 }

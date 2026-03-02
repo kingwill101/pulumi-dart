@@ -29,9 +29,9 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
 
   factory HybridMonitorSlsTaskSlsProcessConfigFilterFilter.fromMap(Map<String, dynamic> map) {
     return HybridMonitorSlsTaskSlsProcessConfigFilterFilter(
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      slsKeyName: map['slsKeyName'] == null ? null : (map['slsKeyName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      slsKeyName: map['slsKeyName'] == null ? null : (map['slsKeyName']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class DefinitionEligibleAuthorizationJustInTimeAccessPolicy {
 
   factory DefinitionEligibleAuthorizationJustInTimeAccessPolicy.fromMap(Map<String, dynamic> map) {
     return DefinitionEligibleAuthorizationJustInTimeAccessPolicy(
-      approvers: map['approvers'] == null ? null : (pulumi.Input.decodeList<DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover>(map['approvers'], (value) => DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maximumActivationDuration: map['maximumActivationDuration'] == null ? null : (map['maximumActivationDuration'] as String).input(),
-      multiFactorAuthProvider: map['multiFactorAuthProvider'] == null ? null : (map['multiFactorAuthProvider'] as String).input(),
+      approvers: map['approvers'] == null ? null : (pulumi.Input.decodeList<DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover>(map['approvers']!, (value) => DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maximumActivationDuration: map['maximumActivationDuration'] == null ? null : (map['maximumActivationDuration']! as String).input(),
+      multiFactorAuthProvider: map['multiFactorAuthProvider'] == null ? null : (map['multiFactorAuthProvider']! as String).input(),
     );
   }
 }

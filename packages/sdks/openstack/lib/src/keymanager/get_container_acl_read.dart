@@ -37,9 +37,9 @@ class GetContainerAclRead {
   factory GetContainerAclRead.fromMap(Map<String, dynamic> map) {
     return GetContainerAclRead(
       createdAt: (map['createdAt'] as String).input(),
-      projectAccess: map['projectAccess'] == null ? null : (map['projectAccess'] as bool).input(),
+      projectAccess: map['projectAccess'] == null ? null : (map['projectAccess']! as bool).input(),
       updatedAt: (map['updatedAt'] as String).input(),
-      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
+      users: map['users'] == null ? null : ((map['users']! as List).cast<String>()).input(),
     );
   }
 }

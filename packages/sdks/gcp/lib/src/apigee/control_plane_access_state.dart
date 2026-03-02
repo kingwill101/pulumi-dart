@@ -36,9 +36,9 @@ class ControlPlaneAccessState {
 
   factory ControlPlaneAccessState.fromMap(Map<String, dynamic> map) {
     return ControlPlaneAccessState(
-      analyticsPublisherIdentities: map['analyticsPublisherIdentities'] == null ? null : ((map['analyticsPublisherIdentities'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      synchronizerIdentities: map['synchronizerIdentities'] == null ? null : ((map['synchronizerIdentities'] as List).cast<String>()).input(),
+      analyticsPublisherIdentities: map['analyticsPublisherIdentities'] == null ? null : ((map['analyticsPublisherIdentities']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      synchronizerIdentities: map['synchronizerIdentities'] == null ? null : ((map['synchronizerIdentities']! as List).cast<String>()).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class WebAclRuleStatementXssMatchStatementFieldToMatchCookies {
 
   factory WebAclRuleStatementXssMatchStatementFieldToMatchCookies.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementXssMatchStatementFieldToMatchCookies(
-      matchPatterns: (pulumi.Input.decodeList<WebAclRuleStatementXssMatchStatementFieldToMatchCookiesMatchPattern>(map['matchPatterns'], (value) => WebAclRuleStatementXssMatchStatementFieldToMatchCookiesMatchPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchPatterns: (pulumi.Input.decodeList<WebAclRuleStatementXssMatchStatementFieldToMatchCookiesMatchPattern>(map['matchPatterns']!, (value) => WebAclRuleStatementXssMatchStatementFieldToMatchCookiesMatchPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
       matchScope: (map['matchScope'] as String).input(),
       oversizeHandling: (map['oversizeHandling'] as String).input(),
     );

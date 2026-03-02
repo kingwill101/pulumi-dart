@@ -46,8 +46,8 @@ class NodeCustomizationScriptResponse {
     return NodeCustomizationScriptResponse(
       executionPoint: (map['executionPoint'] as String).input(),
       name: (map['name'] as String).input(),
-      rebootAfter: map['rebootAfter'] == null ? null : (map['rebootAfter'] as bool).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
+      rebootAfter: map['rebootAfter'] == null ? null : (map['rebootAfter']! as bool).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
       scriptType: (map['scriptType'] as String).input(),
     );
   }

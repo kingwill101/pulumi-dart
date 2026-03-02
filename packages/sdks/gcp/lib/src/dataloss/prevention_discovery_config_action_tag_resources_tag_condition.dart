@@ -29,8 +29,8 @@ class PreventionDiscoveryConfigActionTagResourcesTagCondition {
 
   factory PreventionDiscoveryConfigActionTagResourcesTagCondition.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionTagResourcesTagCondition(
-      sensitivityScore: map['sensitivityScore'] == null ? null : (PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore.fromMap((map['sensitivityScore'] as Map).cast<String, dynamic>())).input(),
-      tag: map['tag'] == null ? null : (PreventionDiscoveryConfigActionTagResourcesTagConditionTag.fromMap((map['tag'] as Map).cast<String, dynamic>())).input(),
+      sensitivityScore: map['sensitivityScore'] == null ? null : (PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore.fromMap((map['sensitivityScore']! as Map).cast<String, dynamic>())).input(),
+      tag: map['tag'] == null ? null : (PreventionDiscoveryConfigActionTagResourcesTagConditionTag.fromMap((map['tag']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

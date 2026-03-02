@@ -48,8 +48,8 @@ class SnoozeArgs {
       criteria: (Criteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
       interval: (TimeInterval.fromMap((map['interval'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

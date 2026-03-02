@@ -106,22 +106,22 @@ class EdgeContainerAppState {
 
   factory EdgeContainerAppState.fromMap(Map<String, dynamic> map) {
     return EdgeContainerAppState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      edgeContainerAppName: map['edgeContainerAppName'] == null ? null : (map['edgeContainerAppName'] as String).input(),
-      healthCheckFailTimes: map['healthCheckFailTimes'] == null ? null : (map['healthCheckFailTimes'] as int).input(),
-      healthCheckHost: map['healthCheckHost'] == null ? null : (map['healthCheckHost'] as String).input(),
-      healthCheckHttpCode: map['healthCheckHttpCode'] == null ? null : (map['healthCheckHttpCode'] as String).input(),
-      healthCheckInterval: map['healthCheckInterval'] == null ? null : (map['healthCheckInterval'] as int).input(),
-      healthCheckMethod: map['healthCheckMethod'] == null ? null : (map['healthCheckMethod'] as String).input(),
-      healthCheckPort: map['healthCheckPort'] == null ? null : (map['healthCheckPort'] as int).input(),
-      healthCheckSuccTimes: map['healthCheckSuccTimes'] == null ? null : (map['healthCheckSuccTimes'] as int).input(),
-      healthCheckTimeout: map['healthCheckTimeout'] == null ? null : (map['healthCheckTimeout'] as int).input(),
-      healthCheckType: map['healthCheckType'] == null ? null : (map['healthCheckType'] as String).input(),
-      healthCheckUri: map['healthCheckUri'] == null ? null : (map['healthCheckUri'] as String).input(),
-      remarks: map['remarks'] == null ? null : (map['remarks'] as String).input(),
-      servicePort: map['servicePort'] == null ? null : (map['servicePort'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      targetPort: map['targetPort'] == null ? null : (map['targetPort'] as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      edgeContainerAppName: map['edgeContainerAppName'] == null ? null : (map['edgeContainerAppName']! as String).input(),
+      healthCheckFailTimes: map['healthCheckFailTimes'] == null ? null : (map['healthCheckFailTimes']! as int).input(),
+      healthCheckHost: map['healthCheckHost'] == null ? null : (map['healthCheckHost']! as String).input(),
+      healthCheckHttpCode: map['healthCheckHttpCode'] == null ? null : (map['healthCheckHttpCode']! as String).input(),
+      healthCheckInterval: map['healthCheckInterval'] == null ? null : (map['healthCheckInterval']! as int).input(),
+      healthCheckMethod: map['healthCheckMethod'] == null ? null : (map['healthCheckMethod']! as String).input(),
+      healthCheckPort: map['healthCheckPort'] == null ? null : (map['healthCheckPort']! as int).input(),
+      healthCheckSuccTimes: map['healthCheckSuccTimes'] == null ? null : (map['healthCheckSuccTimes']! as int).input(),
+      healthCheckTimeout: map['healthCheckTimeout'] == null ? null : (map['healthCheckTimeout']! as int).input(),
+      healthCheckType: map['healthCheckType'] == null ? null : (map['healthCheckType']! as String).input(),
+      healthCheckUri: map['healthCheckUri'] == null ? null : (map['healthCheckUri']! as String).input(),
+      remarks: map['remarks'] == null ? null : (map['remarks']! as String).input(),
+      servicePort: map['servicePort'] == null ? null : (map['servicePort']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      targetPort: map['targetPort'] == null ? null : (map['targetPort']! as int).input(),
     );
   }
 }

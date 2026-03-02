@@ -31,9 +31,9 @@ class IndexesResponse {
 
   factory IndexesResponse.fromMap(Map<String, dynamic> map) {
     return IndexesResponse(
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      precision: map['precision'] == null ? null : (map['precision'] as int).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      precision: map['precision'] == null ? null : (map['precision']! as int).input(),
     );
   }
 }

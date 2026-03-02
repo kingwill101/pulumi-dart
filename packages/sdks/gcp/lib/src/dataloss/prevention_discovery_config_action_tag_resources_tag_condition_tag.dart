@@ -20,7 +20,7 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionTag {
 
   factory PreventionDiscoveryConfigActionTagResourcesTagConditionTag.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionTagResourcesTagConditionTag(
-      namespacedValue: map['namespacedValue'] == null ? null : (map['namespacedValue'] as String).input(),
+      namespacedValue: map['namespacedValue'] == null ? null : (map['namespacedValue']! as String).input(),
     );
   }
 }

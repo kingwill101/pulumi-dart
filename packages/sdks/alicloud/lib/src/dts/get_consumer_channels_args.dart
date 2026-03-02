@@ -35,8 +35,8 @@ class GetConsumerChannelsArgs {
   factory GetConsumerChannelsArgs.fromMap(Map<String, dynamic> map) {
     return GetConsumerChannelsArgs(
       dtsInstanceId: (map['dtsInstanceId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

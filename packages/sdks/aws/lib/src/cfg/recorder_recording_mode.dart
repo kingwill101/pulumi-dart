@@ -26,8 +26,8 @@ class RecorderRecordingMode {
 
   factory RecorderRecordingMode.fromMap(Map<String, dynamic> map) {
     return RecorderRecordingMode(
-      recordingFrequency: map['recordingFrequency'] == null ? null : (map['recordingFrequency'] as String).input(),
-      recordingModeOverride: map['recordingModeOverride'] == null ? null : (RecorderRecordingModeRecordingModeOverride.fromMap((map['recordingModeOverride'] as Map).cast<String, dynamic>())).input(),
+      recordingFrequency: map['recordingFrequency'] == null ? null : ((map['recordingFrequency'] as String).input()).input(),
+      recordingModeOverride: map['recordingModeOverride'] == null ? null : ((RecorderRecordingModeRecordingModeOverride.fromMap((map['recordingModeOverride']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

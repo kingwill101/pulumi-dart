@@ -55,12 +55,12 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
 
   factory CxTestCaseLastTestResultConversationTurnVirtualAgentOutput.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurnVirtualAgentOutput(
-      currentPage: map['currentPage'] == null ? null : (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage.fromMap((map['currentPage'] as Map).cast<String, dynamic>())).input(),
-      differences: map['differences'] == null ? null : (pulumi.Input.decodeList<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference>(map['differences'], (value) => CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sessionParameters: map['sessionParameters'] == null ? null : (map['sessionParameters'] as String).input(),
-      status: map['status'] == null ? null : (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      textResponses: map['textResponses'] == null ? null : (pulumi.Input.decodeList<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse>(map['textResponses'], (value) => CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      triggeredIntent: map['triggeredIntent'] == null ? null : (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent.fromMap((map['triggeredIntent'] as Map).cast<String, dynamic>())).input(),
+      currentPage: map['currentPage'] == null ? null : (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage.fromMap((map['currentPage']! as Map).cast<String, dynamic>())).input(),
+      differences: map['differences'] == null ? null : (pulumi.Input.decodeList<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference>(map['differences']!, (value) => CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sessionParameters: map['sessionParameters'] == null ? null : (map['sessionParameters']! as String).input(),
+      status: map['status'] == null ? null : (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      textResponses: map['textResponses'] == null ? null : (pulumi.Input.decodeList<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse>(map['textResponses']!, (value) => CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      triggeredIntent: map['triggeredIntent'] == null ? null : (CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent.fromMap((map['triggeredIntent']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

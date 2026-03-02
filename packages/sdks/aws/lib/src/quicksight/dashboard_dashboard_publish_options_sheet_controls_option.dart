@@ -20,7 +20,7 @@ class DashboardDashboardPublishOptionsSheetControlsOption {
 
   factory DashboardDashboardPublishOptionsSheetControlsOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsSheetControlsOption(
-      visibilityState: map['visibilityState'] == null ? null : (map['visibilityState'] as String).input(),
+      visibilityState: map['visibilityState'] == null ? null : ((map['visibilityState'] as String).input()).input(),
     );
   }
 }

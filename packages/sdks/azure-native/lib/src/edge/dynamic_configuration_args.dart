@@ -41,8 +41,8 @@ class DynamicConfigurationArgs {
   factory DynamicConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DynamicConfigurationArgs(
       configurationName: (map['configurationName'] as String).input(),
-      dynamicConfigurationName: map['dynamicConfigurationName'] == null ? null : (map['dynamicConfigurationName'] as String).input(),
-      properties: map['properties'] == null ? null : (DynamicConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      dynamicConfigurationName: map['dynamicConfigurationName'] == null ? null : (map['dynamicConfigurationName']! as String).input(),
+      properties: map['properties'] == null ? null : (DynamicConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

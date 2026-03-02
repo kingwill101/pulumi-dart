@@ -35,10 +35,10 @@ class ServiceDelegation {
 
   factory ServiceDelegation.fromMap(Map<String, dynamic> map) {
     return ServiceDelegation(
-      subscriptionsEnabled: map['subscriptionsEnabled'] == null ? null : (map['subscriptionsEnabled'] as bool).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      userRegistrationEnabled: map['userRegistrationEnabled'] == null ? null : (map['userRegistrationEnabled'] as bool).input(),
-      validationKey: map['validationKey'] == null ? null : (map['validationKey'] as String).input(),
+      subscriptionsEnabled: map['subscriptionsEnabled'] == null ? null : (map['subscriptionsEnabled']! as bool).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      userRegistrationEnabled: map['userRegistrationEnabled'] == null ? null : (map['userRegistrationEnabled']! as bool).input(),
+      validationKey: map['validationKey'] == null ? null : (map['validationKey']! as String).input(),
     );
   }
 }

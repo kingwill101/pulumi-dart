@@ -32,7 +32,7 @@ class GetTopicArgs {
   factory GetTopicArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       topicId: (map['topicId'] as String).input(),
     );
   }

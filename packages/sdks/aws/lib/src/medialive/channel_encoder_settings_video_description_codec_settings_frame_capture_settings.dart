@@ -25,8 +25,8 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings {
 
   factory ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings(
-      captureInterval: map['captureInterval'] == null ? null : (map['captureInterval'] as int).input(),
-      captureIntervalUnits: map['captureIntervalUnits'] == null ? null : (map['captureIntervalUnits'] as String).input(),
+      captureInterval: map['captureInterval'] == null ? null : ((map['captureInterval'] as int).input()).input(),
+      captureIntervalUnits: map['captureIntervalUnits'] == null ? null : ((map['captureIntervalUnits'] as String).input()).input(),
     );
   }
 }

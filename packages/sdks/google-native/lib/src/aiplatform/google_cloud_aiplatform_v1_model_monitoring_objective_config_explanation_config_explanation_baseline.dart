@@ -34,9 +34,9 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExpl
 
   factory GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline(
-      bigquery: map['bigquery'] == null ? null : (GoogleCloudAiplatformV1BigQueryDestination.fromMap((map['bigquery'] as Map).cast<String, dynamic>())).input(),
-      gcs: map['gcs'] == null ? null : (GoogleCloudAiplatformV1GcsDestination.fromMap((map['gcs'] as Map).cast<String, dynamic>())).input(),
-      predictionFormat: map['predictionFormat'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat.fromValue(map['predictionFormat'] as String)).input(),
+      bigquery: map['bigquery'] == null ? null : (GoogleCloudAiplatformV1BigQueryDestination.fromMap((map['bigquery']! as Map).cast<String, dynamic>())).input(),
+      gcs: map['gcs'] == null ? null : (GoogleCloudAiplatformV1GcsDestination.fromMap((map['gcs']! as Map).cast<String, dynamic>())).input(),
+      predictionFormat: map['predictionFormat'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat.fromValue(map['predictionFormat']! as String)).input(),
     );
   }
 }

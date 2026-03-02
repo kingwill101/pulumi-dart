@@ -42,11 +42,11 @@ class LoadBalancerConfigurationResponse {
 
   factory LoadBalancerConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerConfigurationResponse(
-      loadBalancerResourceId: map['loadBalancerResourceId'] == null ? null : (map['loadBalancerResourceId'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (PrivateIPAddressResponse.fromMap((map['privateIpAddress'] as Map).cast<String, dynamic>())).input(),
-      probePort: map['probePort'] == null ? null : (map['probePort'] as int).input(),
-      publicIpAddressResourceId: map['publicIpAddressResourceId'] == null ? null : (map['publicIpAddressResourceId'] as String).input(),
-      sqlVirtualMachineInstances: map['sqlVirtualMachineInstances'] == null ? null : ((map['sqlVirtualMachineInstances'] as List).cast<String>()).input(),
+      loadBalancerResourceId: map['loadBalancerResourceId'] == null ? null : (map['loadBalancerResourceId']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (PrivateIPAddressResponse.fromMap((map['privateIpAddress']! as Map).cast<String, dynamic>())).input(),
+      probePort: map['probePort'] == null ? null : (map['probePort']! as int).input(),
+      publicIpAddressResourceId: map['publicIpAddressResourceId'] == null ? null : (map['publicIpAddressResourceId']! as String).input(),
+      sqlVirtualMachineInstances: map['sqlVirtualMachineInstances'] == null ? null : ((map['sqlVirtualMachineInstances']! as List).cast<String>()).input(),
     );
   }
 }

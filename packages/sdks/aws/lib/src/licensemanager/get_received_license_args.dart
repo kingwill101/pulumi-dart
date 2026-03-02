@@ -30,7 +30,7 @@ class GetReceivedLicenseArgs {
   factory GetReceivedLicenseArgs.fromMap(Map<String, dynamic> map) {
     return GetReceivedLicenseArgs(
       licenseArn: (map['licenseArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class PlanStage {
   factory PlanStage.fromMap(Map<String, dynamic> map) {
     return PlanStage(
       durationInMinutes: (map['durationInMinutes'] as int).input(),
-      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<PlanStageTarget>(map['targets'], (value) => PlanStageTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targets: map['targets'] == null ? null : ((pulumi.Input.decodeList<PlanStageTarget>(map['targets']!, (value) => PlanStageTarget.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -90,19 +90,19 @@ class ApacheTomcatAKSWorkloadDeployment {
 
   factory ApacheTomcatAKSWorkloadDeployment.fromMap(Map<String, dynamic> map) {
     return ApacheTomcatAKSWorkloadDeployment(
-      automationArtifactProperties: map['automationArtifactProperties'] == null ? null : (AutomationArtifact.fromMap((map['automationArtifactProperties'] as Map).cast<String, dynamic>())).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<Binding>(map['bindings'], (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      buildContainerImages: map['buildContainerImages'] == null ? null : (pulumi.Input.decodeList<ContainerImageProperties>(map['buildContainerImages'], (value) => ContainerImageProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clusterProperties: map['clusterProperties'] == null ? null : (AKSDeploymentProperties.fromMap((map['clusterProperties'] as Map).cast<String, dynamic>())).input(),
-      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<WebApplicationConfiguration>(map['configurations'], (value) => WebApplicationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      containerImageProperties: map['containerImageProperties'] == null ? null : (ContainerImageProperties.fromMap((map['containerImageProperties'] as Map).cast<String, dynamic>())).input(),
-      deploymentNamePrefix: map['deploymentNamePrefix'] == null ? null : (map['deploymentNamePrefix'] as String).input(),
-      deploymentSpec: map['deploymentSpec'] == null ? null : (AKSDeploymentSpecification.fromMap((map['deploymentSpec'] as Map).cast<String, dynamic>())).input(),
-      directories: map['directories'] == null ? null : (pulumi.Input.decodeList<WebApplicationDirectory>(map['directories'], (value) => WebApplicationDirectory.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      limits: map['limits'] == null ? null : (ResourceRequirements.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
-      monitoringProperties: map['monitoringProperties'] == null ? null : (AppInsightMonitoringProperties.fromMap((map['monitoringProperties'] as Map).cast<String, dynamic>())).input(),
-      requests: map['requests'] == null ? null : (ResourceRequirements.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
-      targetPlatformIdentity: map['targetPlatformIdentity'] == null ? null : (map['targetPlatformIdentity'] as String).input(),
+      automationArtifactProperties: map['automationArtifactProperties'] == null ? null : (AutomationArtifact.fromMap((map['automationArtifactProperties']! as Map).cast<String, dynamic>())).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<Binding>(map['bindings']!, (value) => Binding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      buildContainerImages: map['buildContainerImages'] == null ? null : (pulumi.Input.decodeList<ContainerImageProperties>(map['buildContainerImages']!, (value) => ContainerImageProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterProperties: map['clusterProperties'] == null ? null : (AKSDeploymentProperties.fromMap((map['clusterProperties']! as Map).cast<String, dynamic>())).input(),
+      configurations: map['configurations'] == null ? null : (pulumi.Input.decodeList<WebApplicationConfiguration>(map['configurations']!, (value) => WebApplicationConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerImageProperties: map['containerImageProperties'] == null ? null : (ContainerImageProperties.fromMap((map['containerImageProperties']! as Map).cast<String, dynamic>())).input(),
+      deploymentNamePrefix: map['deploymentNamePrefix'] == null ? null : (map['deploymentNamePrefix']! as String).input(),
+      deploymentSpec: map['deploymentSpec'] == null ? null : (AKSDeploymentSpecification.fromMap((map['deploymentSpec']! as Map).cast<String, dynamic>())).input(),
+      directories: map['directories'] == null ? null : (pulumi.Input.decodeList<WebApplicationDirectory>(map['directories']!, (value) => WebApplicationDirectory.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      limits: map['limits'] == null ? null : (ResourceRequirements.fromMap((map['limits']! as Map).cast<String, dynamic>())).input(),
+      monitoringProperties: map['monitoringProperties'] == null ? null : (AppInsightMonitoringProperties.fromMap((map['monitoringProperties']! as Map).cast<String, dynamic>())).input(),
+      requests: map['requests'] == null ? null : (ResourceRequirements.fromMap((map['requests']! as Map).cast<String, dynamic>())).input(),
+      targetPlatformIdentity: map['targetPlatformIdentity'] == null ? null : (map['targetPlatformIdentity']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class SubscriberSourceAwsLogSourceResource {
   factory SubscriberSourceAwsLogSourceResource.fromMap(Map<String, dynamic> map) {
     return SubscriberSourceAwsLogSourceResource(
       sourceName: (map['sourceName'] as String).input(),
-      sourceVersion: map['sourceVersion'] == null ? null : (map['sourceVersion'] as String).input(),
+      sourceVersion: map['sourceVersion'] == null ? null : ((map['sourceVersion'] as String).input()).input(),
     );
   }
 }

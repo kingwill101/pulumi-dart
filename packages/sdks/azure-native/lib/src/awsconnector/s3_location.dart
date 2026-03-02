@@ -36,10 +36,10 @@ class S3Location {
 
   factory S3Location.fromMap(Map<String, dynamic> map) {
     return S3Location(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

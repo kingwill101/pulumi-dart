@@ -31,9 +31,9 @@ class GlusterfsVolumeSourcePatch {
 
   factory GlusterfsVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return GlusterfsVolumeSourcePatch(
-      endpoints: map['endpoints'] == null ? null : (map['endpoints'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      endpoints: map['endpoints'] == null ? null : (map['endpoints']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

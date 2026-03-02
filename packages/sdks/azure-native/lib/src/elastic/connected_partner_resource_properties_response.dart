@@ -36,10 +36,10 @@ class ConnectedPartnerResourcePropertiesResponse {
 
   factory ConnectedPartnerResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConnectedPartnerResourcePropertiesResponse(
-      azureResourceId: map['azureResourceId'] == null ? null : (map['azureResourceId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      partnerDeploymentName: map['partnerDeploymentName'] == null ? null : (map['partnerDeploymentName'] as String).input(),
-      partnerDeploymentUri: map['partnerDeploymentUri'] == null ? null : (map['partnerDeploymentUri'] as String).input(),
+      azureResourceId: map['azureResourceId'] == null ? null : (map['azureResourceId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      partnerDeploymentName: map['partnerDeploymentName'] == null ? null : (map['partnerDeploymentName']! as String).input(),
+      partnerDeploymentUri: map['partnerDeploymentUri'] == null ? null : (map['partnerDeploymentUri']! as String).input(),
     );
   }
 }

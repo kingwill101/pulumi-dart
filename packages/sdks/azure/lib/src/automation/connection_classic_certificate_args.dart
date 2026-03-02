@@ -56,8 +56,8 @@ class ConnectionClassicCertificateArgs {
     return ConnectionClassicCertificateArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
       certificateAssetName: (map['certificateAssetName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
       subscriptionName: (map['subscriptionName'] as String).input(),

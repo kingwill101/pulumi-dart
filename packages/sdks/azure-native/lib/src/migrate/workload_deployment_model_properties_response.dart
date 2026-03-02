@@ -107,8 +107,8 @@ class WorkloadDeploymentModelPropertiesResponse {
       allowedOperations: ((map['allowedOperations'] as List).cast<String>()).input(),
       correlationId: (map['correlationId'] as String).input(),
       currentJob: (WorkloadDeploymentModelPropertiesResponseCurrentJob.fromMap((map['currentJob'] as Map).cast<String, dynamic>())).input(),
-      customProperties: map['customProperties'] == null ? null : (ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesResponse.fromMap((map['customProperties'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      customProperties: map['customProperties'] == null ? null : (ApacheTomcatAKSWorkloadDeploymentModelCustomPropertiesResponse.fromMap((map['customProperties']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       healthErrors: (pulumi.Input.decodeList<HealthErrorModelResponse>(map['healthErrors'], (value) => HealthErrorModelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       lastSuccessfulMigrateTime: (map['lastSuccessfulMigrateTime'] as String).input(),
       lastSuccessfulTestMigrateTime: (map['lastSuccessfulTestMigrateTime'] as String).input(),
@@ -117,10 +117,10 @@ class WorkloadDeploymentModelPropertiesResponse {
       provisioningState: (map['provisioningState'] as String).input(),
       status: (map['status'] as String).input(),
       statusDescription: (map['statusDescription'] as String).input(),
-      targetPlatform: map['targetPlatform'] == null ? null : (map['targetPlatform'] as String).input(),
+      targetPlatform: map['targetPlatform'] == null ? null : (map['targetPlatform']! as String).input(),
       testMigrationStatus: (map['testMigrationStatus'] as String).input(),
       testMigrationStatusDescription: (map['testMigrationStatusDescription'] as String).input(),
-      workloadInstanceProperties: map['workloadInstanceProperties'] == null ? null : (WorkloadInstanceModelPropertiesResponse.fromMap((map['workloadInstanceProperties'] as Map).cast<String, dynamic>())).input(),
+      workloadInstanceProperties: map['workloadInstanceProperties'] == null ? null : (WorkloadInstanceModelPropertiesResponse.fromMap((map['workloadInstanceProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ResourceRequestPatch {
 
   factory ResourceRequestPatch.fromMap(Map<String, dynamic> map) {
     return ResourceRequestPatch(
-      namedResources: map['namedResources'] == null ? null : (NamedResourcesRequestPatch.fromMap((map['namedResources'] as Map).cast<String, dynamic>())).input(),
-      vendorParameters: map['vendorParameters'] == null ? null : (map['vendorParameters']).input(),
+      namedResources: map['namedResources'] == null ? null : (NamedResourcesRequestPatch.fromMap((map['namedResources']! as Map).cast<String, dynamic>())).input(),
+      vendorParameters: map['vendorParameters'] == null ? null : (map['vendorParameters']!).input(),
     );
   }
 }

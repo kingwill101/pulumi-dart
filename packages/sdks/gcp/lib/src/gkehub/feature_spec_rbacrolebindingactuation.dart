@@ -20,7 +20,7 @@ class FeatureSpecRbacrolebindingactuation {
 
   factory FeatureSpecRbacrolebindingactuation.fromMap(Map<String, dynamic> map) {
     return FeatureSpecRbacrolebindingactuation(
-      allowedCustomRoles: map['allowedCustomRoles'] == null ? null : ((map['allowedCustomRoles'] as List).cast<String>()).input(),
+      allowedCustomRoles: map['allowedCustomRoles'] == null ? null : ((map['allowedCustomRoles']! as List).cast<String>()).input(),
     );
   }
 }

@@ -117,18 +117,18 @@ class DevicePatch {
 
   factory DevicePatch.fromMap(Map<String, dynamic> map) {
     return DevicePatch(
-      allNodes: map['allNodes'] == null ? null : (map['allNodes'] as bool).input(),
-      allowMultipleAllocations: map['allowMultipleAllocations'] == null ? null : (map['allowMultipleAllocations'] as bool).input(),
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeMapValues<DeviceAttribute>(map['attributes'], (value) => DeviceAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindingConditions: map['bindingConditions'] == null ? null : ((map['bindingConditions'] as List).cast<String>()).input(),
-      bindingFailureConditions: map['bindingFailureConditions'] == null ? null : ((map['bindingFailureConditions'] as List).cast<String>()).input(),
-      bindsToNode: map['bindsToNode'] == null ? null : (map['bindsToNode'] as bool).input(),
-      capacity: map['capacity'] == null ? null : (pulumi.Input.decodeMapValues<DeviceCapacity>(map['capacity'], (value) => DeviceCapacity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      consumesCounters: map['consumesCounters'] == null ? null : (pulumi.Input.decodeList<DeviceCounterConsumptionPatch>(map['consumesCounters'], (value) => DeviceCounterConsumptionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelectorPatch.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<DeviceTaintPatch>(map['taints'], (value) => DeviceTaintPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allNodes: map['allNodes'] == null ? null : (map['allNodes']! as bool).input(),
+      allowMultipleAllocations: map['allowMultipleAllocations'] == null ? null : (map['allowMultipleAllocations']! as bool).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeMapValues<DeviceAttribute>(map['attributes']!, (value) => DeviceAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindingConditions: map['bindingConditions'] == null ? null : ((map['bindingConditions']! as List).cast<String>()).input(),
+      bindingFailureConditions: map['bindingFailureConditions'] == null ? null : ((map['bindingFailureConditions']! as List).cast<String>()).input(),
+      bindsToNode: map['bindsToNode'] == null ? null : (map['bindsToNode']! as bool).input(),
+      capacity: map['capacity'] == null ? null : (pulumi.Input.decodeMapValues<DeviceCapacity>(map['capacity']!, (value) => DeviceCapacity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consumesCounters: map['consumesCounters'] == null ? null : (pulumi.Input.decodeList<DeviceCounterConsumptionPatch>(map['consumesCounters']!, (value) => DeviceCounterConsumptionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelectorPatch.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>())).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<DeviceTaintPatch>(map['taints']!, (value) => DeviceTaintPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

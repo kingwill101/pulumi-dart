@@ -26,8 +26,8 @@ class HeaderField {
 
   factory HeaderField.fromMap(Map<String, dynamic> map) {
     return HeaderField(
-      headerFieldName: map['headerFieldName'] == null ? null : (map['headerFieldName'] as String).input(),
-      headerFieldValue: map['headerFieldValue'] == null ? null : (map['headerFieldValue'] as String).input(),
+      headerFieldName: map['headerFieldName'] == null ? null : (map['headerFieldName']! as String).input(),
+      headerFieldValue: map['headerFieldValue'] == null ? null : (map['headerFieldValue']! as String).input(),
     );
   }
 }

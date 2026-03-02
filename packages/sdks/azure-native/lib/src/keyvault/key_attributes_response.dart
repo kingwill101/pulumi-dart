@@ -52,10 +52,10 @@ class KeyAttributesResponse {
   factory KeyAttributesResponse.fromMap(Map<String, dynamic> map) {
     return KeyAttributesResponse(
       created: (map['created'] as double).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      expires: map['expires'] == null ? null : (map['expires'] as double).input(),
-      exportable: map['exportable'] == null ? null : (map['exportable'] as bool).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as double).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      expires: map['expires'] == null ? null : (map['expires']! as double).input(),
+      exportable: map['exportable'] == null ? null : (map['exportable']! as bool).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as double).input(),
       recoveryLevel: (map['recoveryLevel'] as String).input(),
       updated: (map['updated'] as double).input(),
     );

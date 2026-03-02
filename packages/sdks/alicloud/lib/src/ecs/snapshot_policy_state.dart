@@ -85,20 +85,20 @@ class SnapshotPolicyState {
 
   factory SnapshotPolicyState.fromMap(Map<String, dynamic> map) {
     return SnapshotPolicyState(
-      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : (map['autoSnapshotPolicyName'] as String).input(),
-      copiedSnapshotsRetentionDays: map['copiedSnapshotsRetentionDays'] == null ? null : (map['copiedSnapshotsRetentionDays'] as int).input(),
-      copyEncryptionConfiguration: map['copyEncryptionConfiguration'] == null ? null : (SnapshotPolicyCopyEncryptionConfiguration.fromMap((map['copyEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      enableCrossRegionCopy: map['enableCrossRegionCopy'] == null ? null : (map['enableCrossRegionCopy'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      repeatWeekdays: map['repeatWeekdays'] == null ? null : ((map['repeatWeekdays'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetCopyRegions: map['targetCopyRegions'] == null ? null : ((map['targetCopyRegions'] as List).cast<String>()).input(),
-      timePoints: map['timePoints'] == null ? null : ((map['timePoints'] as List).cast<String>()).input(),
+      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : (map['autoSnapshotPolicyName']! as String).input(),
+      copiedSnapshotsRetentionDays: map['copiedSnapshotsRetentionDays'] == null ? null : (map['copiedSnapshotsRetentionDays']! as int).input(),
+      copyEncryptionConfiguration: map['copyEncryptionConfiguration'] == null ? null : (SnapshotPolicyCopyEncryptionConfiguration.fromMap((map['copyEncryptionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      enableCrossRegionCopy: map['enableCrossRegionCopy'] == null ? null : (map['enableCrossRegionCopy']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      repeatWeekdays: map['repeatWeekdays'] == null ? null : ((map['repeatWeekdays']! as List).cast<String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetCopyRegions: map['targetCopyRegions'] == null ? null : ((map['targetCopyRegions']! as List).cast<String>()).input(),
+      timePoints: map['timePoints'] == null ? null : ((map['timePoints']! as List).cast<String>()).input(),
     );
   }
 }

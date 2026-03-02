@@ -39,7 +39,7 @@ class FlowProfileProperties {
     return FlowProfileProperties(
       description: (map['description'] as String).input(),
       replicationScenario: (map['replicationScenario'] as String).input(),
-      rulesets: map['rulesets'] == null ? null : (FlowProfileRulesets.fromMap((map['rulesets'] as Map).cast<String, dynamic>())).input(),
+      rulesets: map['rulesets'] == null ? null : (FlowProfileRulesets.fromMap((map['rulesets']! as Map).cast<String, dynamic>())).input(),
       status: (map['status'] as String).input(),
     );
   }

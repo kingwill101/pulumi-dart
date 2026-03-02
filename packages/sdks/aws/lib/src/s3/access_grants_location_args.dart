@@ -45,11 +45,11 @@ class AccessGrantsLocationArgs {
 
   factory AccessGrantsLocationArgs.fromMap(Map<String, dynamic> map) {
     return AccessGrantsLocationArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
       iamRoleArn: (map['iamRoleArn'] as String).input(),
       locationScope: (map['locationScope'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

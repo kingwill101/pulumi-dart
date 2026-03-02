@@ -22,7 +22,7 @@ class NotificationConfigContainerV1beta1 {
 
   factory NotificationConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NotificationConfigContainerV1beta1(
-      pubsub: map['pubsub'] == null ? null : (PubSubContainerV1beta1.fromMap((map['pubsub'] as Map).cast<String, dynamic>())).input(),
+      pubsub: map['pubsub'] == null ? null : (PubSubContainerV1beta1.fromMap((map['pubsub']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

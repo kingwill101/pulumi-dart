@@ -35,10 +35,10 @@ class WorkerPoolWorkerConfig {
 
   factory WorkerPoolWorkerConfig.fromMap(Map<String, dynamic> map) {
     return WorkerPoolWorkerConfig(
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization'] as bool).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      noExternalIp: map['noExternalIp'] == null ? null : (map['noExternalIp'] as bool).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization']! as bool).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      noExternalIp: map['noExternalIp'] == null ? null : (map['noExternalIp']! as bool).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class DomainDevicesDiskAuth {
 
   factory DomainDevicesDiskAuth.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskAuth(
-      secret: map['secret'] == null ? null : (DomainDevicesDiskAuthSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      secret: map['secret'] == null ? null : (DomainDevicesDiskAuthSecret.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

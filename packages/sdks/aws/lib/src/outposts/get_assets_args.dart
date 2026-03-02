@@ -40,9 +40,9 @@ class GetAssetsArgs {
   factory GetAssetsArgs.fromMap(Map<String, dynamic> map) {
     return GetAssetsArgs(
       arn: (map['arn'] as String).input(),
-      hostIdFilters: map['hostIdFilters'] == null ? null : ((map['hostIdFilters'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      statusIdFilters: map['statusIdFilters'] == null ? null : ((map['statusIdFilters'] as List).cast<String>()).input(),
+      hostIdFilters: map['hostIdFilters'] == null ? null : (((map['hostIdFilters'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      statusIdFilters: map['statusIdFilters'] == null ? null : (((map['statusIdFilters'] as List).cast<String>()).input()).input(),
     );
   }
 }

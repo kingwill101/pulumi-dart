@@ -21,7 +21,7 @@ class SourceRepository {
 
   factory SourceRepository.fromMap(Map<String, dynamic> map) {
     return SourceRepository(
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

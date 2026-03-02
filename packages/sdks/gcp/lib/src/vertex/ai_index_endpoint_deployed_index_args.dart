@@ -90,17 +90,17 @@ class AiIndexEndpointDeployedIndexArgs {
 
   factory AiIndexEndpointDeployedIndexArgs.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexArgs(
-      automaticResources: map['automaticResources'] == null ? null : (AiIndexEndpointDeployedIndexAutomaticResources.fromMap((map['automaticResources'] as Map).cast<String, dynamic>())).input(),
-      dedicatedResources: map['dedicatedResources'] == null ? null : (AiIndexEndpointDeployedIndexDedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())).input(),
-      deployedIndexAuthConfig: map['deployedIndexAuthConfig'] == null ? null : (AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap((map['deployedIndexAuthConfig'] as Map).cast<String, dynamic>())).input(),
+      automaticResources: map['automaticResources'] == null ? null : (AiIndexEndpointDeployedIndexAutomaticResources.fromMap((map['automaticResources']! as Map).cast<String, dynamic>())).input(),
+      dedicatedResources: map['dedicatedResources'] == null ? null : (AiIndexEndpointDeployedIndexDedicatedResources.fromMap((map['dedicatedResources']! as Map).cast<String, dynamic>())).input(),
+      deployedIndexAuthConfig: map['deployedIndexAuthConfig'] == null ? null : (AiIndexEndpointDeployedIndexDeployedIndexAuthConfig.fromMap((map['deployedIndexAuthConfig']! as Map).cast<String, dynamic>())).input(),
       deployedIndexId: (map['deployedIndexId'] as String).input(),
-      deploymentGroup: map['deploymentGroup'] == null ? null : (map['deploymentGroup'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enableAccessLogging: map['enableAccessLogging'] == null ? null : (map['enableAccessLogging'] as bool).input(),
+      deploymentGroup: map['deploymentGroup'] == null ? null : (map['deploymentGroup']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enableAccessLogging: map['enableAccessLogging'] == null ? null : (map['enableAccessLogging']! as bool).input(),
       index: (map['index'] as String).input(),
       indexEndpoint: (map['indexEndpoint'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reservedIpRanges: map['reservedIpRanges'] == null ? null : ((map['reservedIpRanges'] as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      reservedIpRanges: map['reservedIpRanges'] == null ? null : ((map['reservedIpRanges']! as List).cast<String>()).input(),
     );
   }
 }

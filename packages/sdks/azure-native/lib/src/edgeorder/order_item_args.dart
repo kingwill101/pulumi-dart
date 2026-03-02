@@ -62,14 +62,14 @@ class OrderItemArgs {
 
   factory OrderItemArgs.fromMap(Map<String, dynamic> map) {
     return OrderItemArgs(
-      addressDetails: map['addressDetails'] == null ? null : (AddressDetails.fromMap((map['addressDetails'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      addressDetails: map['addressDetails'] == null ? null : (AddressDetails.fromMap((map['addressDetails']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       orderId: (map['orderId'] as String).input(),
       orderItemDetails: (OrderItemDetails.fromMap((map['orderItemDetails'] as Map).cast<String, dynamic>())).input(),
-      orderItemName: map['orderItemName'] == null ? null : (map['orderItemName'] as String).input(),
+      orderItemName: map['orderItemName'] == null ? null : (map['orderItemName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

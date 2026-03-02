@@ -41,11 +41,11 @@ class ReceiptFilterState {
 
   factory ReceiptFilterState.fromMap(Map<String, dynamic> map) {
     return ReceiptFilterState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      cidr: map['cidr'] == null ? null : ((map['cidr'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

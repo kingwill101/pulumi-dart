@@ -37,7 +37,7 @@ class RepositoryPubsubConfig {
   factory RepositoryPubsubConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryPubsubConfig(
       messageFormat: (map['messageFormat'] as String).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
       topic: (map['topic'] as String).input(),
     );
   }

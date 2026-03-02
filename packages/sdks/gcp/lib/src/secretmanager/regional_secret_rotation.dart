@@ -30,8 +30,8 @@ class RegionalSecretRotation {
 
   factory RegionalSecretRotation.fromMap(Map<String, dynamic> map) {
     return RegionalSecretRotation(
-      nextRotationTime: map['nextRotationTime'] == null ? null : (map['nextRotationTime'] as String).input(),
-      rotationPeriod: map['rotationPeriod'] == null ? null : (map['rotationPeriod'] as String).input(),
+      nextRotationTime: map['nextRotationTime'] == null ? null : (map['nextRotationTime']! as String).input(),
+      rotationPeriod: map['rotationPeriod'] == null ? null : (map['rotationPeriod']! as String).input(),
     );
   }
 }

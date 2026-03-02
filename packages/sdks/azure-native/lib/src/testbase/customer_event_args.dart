@@ -45,7 +45,7 @@ class CustomerEventArgs {
 
   factory CustomerEventArgs.fromMap(Map<String, dynamic> map) {
     return CustomerEventArgs(
-      customerEventName: map['customerEventName'] == null ? null : (map['customerEventName'] as String).input(),
+      customerEventName: map['customerEventName'] == null ? null : (map['customerEventName']! as String).input(),
       eventName: (map['eventName'] as String).input(),
       receivers: (pulumi.Input.decodeList<NotificationEventReceiver>(map['receivers'], (value) => NotificationEventReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

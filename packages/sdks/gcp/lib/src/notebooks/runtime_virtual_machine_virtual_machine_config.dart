@@ -145,22 +145,22 @@ class RuntimeVirtualMachineVirtualMachineConfig {
 
   factory RuntimeVirtualMachineVirtualMachineConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeVirtualMachineVirtualMachineConfig(
-      acceleratorConfig: map['acceleratorConfig'] == null ? null : (RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig.fromMap((map['acceleratorConfig'] as Map).cast<String, dynamic>())).input(),
-      containerImages: map['containerImages'] == null ? null : (pulumi.Input.decodeList<RuntimeVirtualMachineVirtualMachineConfigContainerImage>(map['containerImages'], (value) => RuntimeVirtualMachineVirtualMachineConfigContainerImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acceleratorConfig: map['acceleratorConfig'] == null ? null : (RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig.fromMap((map['acceleratorConfig']! as Map).cast<String, dynamic>())).input(),
+      containerImages: map['containerImages'] == null ? null : (pulumi.Input.decodeList<RuntimeVirtualMachineVirtualMachineConfigContainerImage>(map['containerImages']!, (value) => RuntimeVirtualMachineVirtualMachineConfigContainerImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dataDisk: (RuntimeVirtualMachineVirtualMachineConfigDataDisk.fromMap((map['dataDisk'] as Map).cast<String, dynamic>())).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      guestAttributes: map['guestAttributes'] == null ? null : ((map['guestAttributes'] as Map).cast<String, String>()).input(),
-      internalIpOnly: map['internalIpOnly'] == null ? null : (map['internalIpOnly'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      guestAttributes: map['guestAttributes'] == null ? null : ((map['guestAttributes']! as Map).cast<String, String>()).input(),
+      internalIpOnly: map['internalIpOnly'] == null ? null : (map['internalIpOnly']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       machineType: (map['machineType'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      nicType: map['nicType'] == null ? null : (map['nicType'] as String).input(),
-      reservedIpRange: map['reservedIpRange'] == null ? null : (map['reservedIpRange'] as String).input(),
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      nicType: map['nicType'] == null ? null : (map['nicType']! as String).input(),
+      reservedIpRange: map['reservedIpRange'] == null ? null : (map['reservedIpRange']! as String).input(),
+      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

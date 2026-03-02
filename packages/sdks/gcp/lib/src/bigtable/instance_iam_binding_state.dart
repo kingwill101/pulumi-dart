@@ -57,12 +57,12 @@ class InstanceIamBindingState {
 
   factory InstanceIamBindingState.fromMap(Map<String, dynamic> map) {
     return InstanceIamBindingState(
-      condition: map['condition'] == null ? null : (InstanceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (InstanceIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

@@ -52,10 +52,10 @@ class RouterVbrChildInstanceArgs {
   factory RouterVbrChildInstanceArgs.fromMap(Map<String, dynamic> map) {
     return RouterVbrChildInstanceArgs(
       childInstanceId: (map['childInstanceId'] as String).input(),
-      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId'] as String).input(),
+      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId']! as String).input(),
       childInstanceRegionId: (map['childInstanceRegionId'] as String).input(),
       childInstanceType: (map['childInstanceType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       ecrId: (map['ecrId'] as String).input(),
     );
   }

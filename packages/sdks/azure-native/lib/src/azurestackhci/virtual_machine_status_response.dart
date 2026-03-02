@@ -36,10 +36,10 @@ class VirtualMachineStatusResponse {
 
   factory VirtualMachineStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineStatusResponse(
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      powerState: map['powerState'] == null ? null : (map['powerState'] as String).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (VirtualMachineStatusResponseProvisioningStatus.fromMap((map['provisioningStatus'] as Map).cast<String, dynamic>())).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      powerState: map['powerState'] == null ? null : (map['powerState']! as String).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (VirtualMachineStatusResponseProvisioningStatus.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

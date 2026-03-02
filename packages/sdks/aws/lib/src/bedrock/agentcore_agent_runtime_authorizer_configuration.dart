@@ -21,7 +21,7 @@ class AgentcoreAgentRuntimeAuthorizerConfiguration {
 
   factory AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeAuthorizerConfiguration(
-      customJwtAuthorizer: map['customJwtAuthorizer'] == null ? null : (AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer.fromMap((map['customJwtAuthorizer'] as Map).cast<String, dynamic>())).input(),
+      customJwtAuthorizer: map['customJwtAuthorizer'] == null ? null : ((AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer.fromMap((map['customJwtAuthorizer']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

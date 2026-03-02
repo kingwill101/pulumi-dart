@@ -63,13 +63,13 @@ class GeminiGcpEnablementSettingArgs {
 
   factory GeminiGcpEnablementSettingArgs.fromMap(Map<String, dynamic> map) {
     return GeminiGcpEnablementSettingArgs(
-      disableWebGrounding: map['disableWebGrounding'] == null ? null : (map['disableWebGrounding'] as bool).input(),
-      enableCustomerDataSharing: map['enableCustomerDataSharing'] == null ? null : (map['enableCustomerDataSharing'] as bool).input(),
+      disableWebGrounding: map['disableWebGrounding'] == null ? null : (map['disableWebGrounding']! as bool).input(),
+      enableCustomerDataSharing: map['enableCustomerDataSharing'] == null ? null : (map['enableCustomerDataSharing']! as bool).input(),
       geminiGcpEnablementSettingId: (map['geminiGcpEnablementSettingId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      webGroundingType: map['webGroundingType'] == null ? null : (map['webGroundingType'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      webGroundingType: map['webGroundingType'] == null ? null : (map['webGroundingType']! as String).input(),
     );
   }
 }

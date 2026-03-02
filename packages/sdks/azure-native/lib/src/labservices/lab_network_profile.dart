@@ -31,9 +31,9 @@ class LabNetworkProfile {
 
   factory LabNetworkProfile.fromMap(Map<String, dynamic> map) {
     return LabNetworkProfile(
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
-      publicIpId: map['publicIpId'] == null ? null : (map['publicIpId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
+      publicIpId: map['publicIpId'] == null ? null : (map['publicIpId']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

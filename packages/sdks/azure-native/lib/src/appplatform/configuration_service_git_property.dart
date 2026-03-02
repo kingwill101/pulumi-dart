@@ -22,7 +22,7 @@ class ConfigurationServiceGitProperty {
 
   factory ConfigurationServiceGitProperty.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceGitProperty(
-      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<ConfigurationServiceGitRepository>(map['repositories'], (value) => ConfigurationServiceGitRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<ConfigurationServiceGitRepository>(map['repositories']!, (value) => ConfigurationServiceGitRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

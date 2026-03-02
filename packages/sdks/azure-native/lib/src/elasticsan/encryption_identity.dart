@@ -21,7 +21,7 @@ class EncryptionIdentity {
 
   factory EncryptionIdentity.fromMap(Map<String, dynamic> map) {
     return EncryptionIdentity(
-      encryptionUserAssignedIdentity: map['encryptionUserAssignedIdentity'] == null ? null : (map['encryptionUserAssignedIdentity'] as String).input(),
+      encryptionUserAssignedIdentity: map['encryptionUserAssignedIdentity'] == null ? null : (map['encryptionUserAssignedIdentity']! as String).input(),
     );
   }
 }

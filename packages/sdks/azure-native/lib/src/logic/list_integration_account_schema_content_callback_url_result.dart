@@ -48,9 +48,9 @@ class ListIntegrationAccountSchemaContentCallbackUrlResult {
     return ListIntegrationAccountSchemaContentCallbackUrlResult(
       basePath: map['basePath'] as String,
       method: map['method'] as String,
-      queries: map['queries'] == null ? null : WorkflowTriggerListCallbackUrlQueriesResponse.fromMap((map['queries'] as Map).cast<String, dynamic>()),
+      queries: map['queries'] == null ? null : WorkflowTriggerListCallbackUrlQueriesResponse.fromMap((map['queries']! as Map).cast<String, dynamic>()),
       relativePath: map['relativePath'] as String,
-      relativePathParameters: map['relativePathParameters'] == null ? null : (map['relativePathParameters'] as List).cast<String>(),
+      relativePathParameters: map['relativePathParameters'] == null ? null : (map['relativePathParameters']! as List).cast<String>(),
       value: map['value'] as String,
     );
   }

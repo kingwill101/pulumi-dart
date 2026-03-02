@@ -24,8 +24,8 @@ class WafPolicySignaturesSetting {
 
   factory WafPolicySignaturesSetting.fromMap(Map<String, dynamic> map) {
     return WafPolicySignaturesSetting(
-      placesignaturesInStaging: map['placesignaturesInStaging'] == null ? null : (map['placesignaturesInStaging'] as bool).input(),
-      signatureStaging: map['signatureStaging'] == null ? null : (map['signatureStaging'] as bool).input(),
+      placesignaturesInStaging: map['placesignaturesInStaging'] == null ? null : (map['placesignaturesInStaging']! as bool).input(),
+      signatureStaging: map['signatureStaging'] == null ? null : (map['signatureStaging']! as bool).input(),
     );
   }
 }

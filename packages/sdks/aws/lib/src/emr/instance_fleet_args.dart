@@ -57,12 +57,12 @@ class InstanceFleetArgs {
   factory InstanceFleetArgs.fromMap(Map<String, dynamic> map) {
     return InstanceFleetArgs(
       clusterId: (map['clusterId'] as String).input(),
-      instanceTypeConfigs: map['instanceTypeConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceFleetInstanceTypeConfig>(map['instanceTypeConfigs'], (value) => InstanceFleetInstanceTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      launchSpecifications: map['launchSpecifications'] == null ? null : (InstanceFleetLaunchSpecifications.fromMap((map['launchSpecifications'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetOnDemandCapacity: map['targetOnDemandCapacity'] == null ? null : (map['targetOnDemandCapacity'] as int).input(),
-      targetSpotCapacity: map['targetSpotCapacity'] == null ? null : (map['targetSpotCapacity'] as int).input(),
+      instanceTypeConfigs: map['instanceTypeConfigs'] == null ? null : ((pulumi.Input.decodeList<InstanceFleetInstanceTypeConfig>(map['instanceTypeConfigs']!, (value) => InstanceFleetInstanceTypeConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      launchSpecifications: map['launchSpecifications'] == null ? null : ((InstanceFleetLaunchSpecifications.fromMap((map['launchSpecifications']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      targetOnDemandCapacity: map['targetOnDemandCapacity'] == null ? null : ((map['targetOnDemandCapacity'] as int).input()).input(),
+      targetSpotCapacity: map['targetSpotCapacity'] == null ? null : ((map['targetSpotCapacity'] as int).input()).input(),
     );
   }
 }

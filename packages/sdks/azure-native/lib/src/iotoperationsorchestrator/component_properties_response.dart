@@ -36,9 +36,9 @@ class ComponentPropertiesResponse {
 
   factory ComponentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ComponentPropertiesResponse(
-      dependencies: map['dependencies'] == null ? null : ((map['dependencies'] as List).cast<String>()).input(),
+      dependencies: map['dependencies'] == null ? null : ((map['dependencies']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (map['properties']).input(),
+      properties: map['properties'] == null ? null : (map['properties']!).input(),
       type: (map['type'] as String).input(),
     );
   }

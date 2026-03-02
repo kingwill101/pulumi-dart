@@ -34,9 +34,9 @@ class CooWebCcRuleState {
 
   factory CooWebCcRuleState.fromMap(Map<String, dynamic> map) {
     return CooWebCcRuleState(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ruleDetail: map['ruleDetail'] == null ? null : (CooWebCcRuleRuleDetail.fromMap((map['ruleDetail'] as Map).cast<String, dynamic>())).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ruleDetail: map['ruleDetail'] == null ? null : (CooWebCcRuleRuleDetail.fromMap((map['ruleDetail']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

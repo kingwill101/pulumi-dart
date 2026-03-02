@@ -27,8 +27,8 @@ class DeploymentGroupAutoRollbackConfiguration {
 
   factory DeploymentGroupAutoRollbackConfiguration.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupAutoRollbackConfiguration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      events: map['events'] == null ? null : (((map['events'] as List).cast<String>()).input()).input(),
     );
   }
 }

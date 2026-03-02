@@ -39,7 +39,7 @@ class GetStorageBoxSubaccountsResult {
       id: map['id'] as String,
       storageBoxId: map['storageBoxId'] as int,
       subaccounts: pulumi.Input.decodeList<GetStorageBoxSubaccountsSubaccount>(map['subaccounts'], (value) => GetStorageBoxSubaccountsSubaccount.fromMap((value as Map).cast<String, dynamic>())),
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

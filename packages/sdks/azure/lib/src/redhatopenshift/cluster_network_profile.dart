@@ -35,9 +35,9 @@ class ClusterNetworkProfile {
 
   factory ClusterNetworkProfile.fromMap(Map<String, dynamic> map) {
     return ClusterNetworkProfile(
-      outboundType: map['outboundType'] == null ? null : (map['outboundType'] as String).input(),
+      outboundType: map['outboundType'] == null ? null : (map['outboundType']! as String).input(),
       podCidr: (map['podCidr'] as String).input(),
-      preconfiguredNetworkSecurityGroupEnabled: map['preconfiguredNetworkSecurityGroupEnabled'] == null ? null : (map['preconfiguredNetworkSecurityGroupEnabled'] as bool).input(),
+      preconfiguredNetworkSecurityGroupEnabled: map['preconfiguredNetworkSecurityGroupEnabled'] == null ? null : (map['preconfiguredNetworkSecurityGroupEnabled']! as bool).input(),
       serviceCidr: (map['serviceCidr'] as String).input(),
     );
   }

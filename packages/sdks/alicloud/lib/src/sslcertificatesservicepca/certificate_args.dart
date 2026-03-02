@@ -115,22 +115,22 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
-      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
-      certificateType: map['certificateType'] == null ? null : (map['certificateType'] as String).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as String).input(),
+      aliasName: map['aliasName'] == null ? null : (map['aliasName']! as String).input(),
+      certificateType: map['certificateType'] == null ? null : (map['certificateType']! as String).input(),
       commonName: (map['commonName'] as String).input(),
-      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
-      crlDay: map['crlDay'] == null ? null : (map['crlDay'] as int).input(),
-      enableCrl: map['enableCrl'] == null ? null : (map['enableCrl'] as bool).input(),
-      extendedKeyUsages: map['extendedKeyUsages'] == null ? null : ((map['extendedKeyUsages'] as List).cast<String>()).input(),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode']! as String).input(),
+      crlDay: map['crlDay'] == null ? null : (map['crlDay']! as int).input(),
+      enableCrl: map['enableCrl'] == null ? null : (map['enableCrl']! as bool).input(),
+      extendedKeyUsages: map['extendedKeyUsages'] == null ? null : ((map['extendedKeyUsages']! as List).cast<String>()).input(),
       locality: (map['locality'] as String).input(),
       organization: (map['organization'] as String).input(),
       organizationUnit: (map['organizationUnit'] as String).input(),
-      parentIdentifier: map['parentIdentifier'] == null ? null : (map['parentIdentifier'] as String).input(),
-      pathLenConstraint: map['pathLenConstraint'] == null ? null : (map['pathLenConstraint'] as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      parentIdentifier: map['parentIdentifier'] == null ? null : (map['parentIdentifier']! as String).input(),
+      pathLenConstraint: map['pathLenConstraint'] == null ? null : (map['pathLenConstraint']! as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       state: (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       years: (map['years'] as int).input(),
     );
   }

@@ -32,9 +32,9 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation
 
   factory GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocation(
-      configSource: map['configSource'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource.fromMap((map['configSource'] as Map).cast<String, dynamic>())).input(),
-      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      configSource: map['configSource'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource.fromMap((map['configSource']! as Map).cast<String, dynamic>())).input(),
+      environment: map['environment'] == null ? null : ((map['environment']! as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

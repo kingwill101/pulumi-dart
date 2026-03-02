@@ -97,20 +97,20 @@ class ManagementPolicyRuleActionsBaseBlob {
 
   factory ManagementPolicyRuleActionsBaseBlob.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyRuleActionsBaseBlob(
-      autoTierToHotFromCoolEnabled: map['autoTierToHotFromCoolEnabled'] == null ? null : (map['autoTierToHotFromCoolEnabled'] as bool).input(),
-      deleteAfterDaysSinceCreationGreaterThan: map['deleteAfterDaysSinceCreationGreaterThan'] == null ? null : (map['deleteAfterDaysSinceCreationGreaterThan'] as int).input(),
-      deleteAfterDaysSinceLastAccessTimeGreaterThan: map['deleteAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : (map['deleteAfterDaysSinceLastAccessTimeGreaterThan'] as int).input(),
-      deleteAfterDaysSinceModificationGreaterThan: map['deleteAfterDaysSinceModificationGreaterThan'] == null ? null : (map['deleteAfterDaysSinceModificationGreaterThan'] as int).input(),
-      tierToArchiveAfterDaysSinceCreationGreaterThan: map['tierToArchiveAfterDaysSinceCreationGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceCreationGreaterThan'] as int).input(),
-      tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan: map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan'] as int).input(),
-      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] as int).input(),
-      tierToArchiveAfterDaysSinceModificationGreaterThan: map['tierToArchiveAfterDaysSinceModificationGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceModificationGreaterThan'] as int).input(),
-      tierToColdAfterDaysSinceCreationGreaterThan: map['tierToColdAfterDaysSinceCreationGreaterThan'] == null ? null : (map['tierToColdAfterDaysSinceCreationGreaterThan'] as int).input(),
-      tierToColdAfterDaysSinceLastAccessTimeGreaterThan: map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : (map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan'] as int).input(),
-      tierToColdAfterDaysSinceModificationGreaterThan: map['tierToColdAfterDaysSinceModificationGreaterThan'] == null ? null : (map['tierToColdAfterDaysSinceModificationGreaterThan'] as int).input(),
-      tierToCoolAfterDaysSinceCreationGreaterThan: map['tierToCoolAfterDaysSinceCreationGreaterThan'] == null ? null : (map['tierToCoolAfterDaysSinceCreationGreaterThan'] as int).input(),
-      tierToCoolAfterDaysSinceLastAccessTimeGreaterThan: map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : (map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan'] as int).input(),
-      tierToCoolAfterDaysSinceModificationGreaterThan: map['tierToCoolAfterDaysSinceModificationGreaterThan'] == null ? null : (map['tierToCoolAfterDaysSinceModificationGreaterThan'] as int).input(),
+      autoTierToHotFromCoolEnabled: map['autoTierToHotFromCoolEnabled'] == null ? null : (map['autoTierToHotFromCoolEnabled']! as bool).input(),
+      deleteAfterDaysSinceCreationGreaterThan: map['deleteAfterDaysSinceCreationGreaterThan'] == null ? null : (map['deleteAfterDaysSinceCreationGreaterThan']! as int).input(),
+      deleteAfterDaysSinceLastAccessTimeGreaterThan: map['deleteAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : (map['deleteAfterDaysSinceLastAccessTimeGreaterThan']! as int).input(),
+      deleteAfterDaysSinceModificationGreaterThan: map['deleteAfterDaysSinceModificationGreaterThan'] == null ? null : (map['deleteAfterDaysSinceModificationGreaterThan']! as int).input(),
+      tierToArchiveAfterDaysSinceCreationGreaterThan: map['tierToArchiveAfterDaysSinceCreationGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceCreationGreaterThan']! as int).input(),
+      tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan: map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceLastAccessTimeGreaterThan']! as int).input(),
+      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan']! as int).input(),
+      tierToArchiveAfterDaysSinceModificationGreaterThan: map['tierToArchiveAfterDaysSinceModificationGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceModificationGreaterThan']! as int).input(),
+      tierToColdAfterDaysSinceCreationGreaterThan: map['tierToColdAfterDaysSinceCreationGreaterThan'] == null ? null : (map['tierToColdAfterDaysSinceCreationGreaterThan']! as int).input(),
+      tierToColdAfterDaysSinceLastAccessTimeGreaterThan: map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : (map['tierToColdAfterDaysSinceLastAccessTimeGreaterThan']! as int).input(),
+      tierToColdAfterDaysSinceModificationGreaterThan: map['tierToColdAfterDaysSinceModificationGreaterThan'] == null ? null : (map['tierToColdAfterDaysSinceModificationGreaterThan']! as int).input(),
+      tierToCoolAfterDaysSinceCreationGreaterThan: map['tierToCoolAfterDaysSinceCreationGreaterThan'] == null ? null : (map['tierToCoolAfterDaysSinceCreationGreaterThan']! as int).input(),
+      tierToCoolAfterDaysSinceLastAccessTimeGreaterThan: map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan'] == null ? null : (map['tierToCoolAfterDaysSinceLastAccessTimeGreaterThan']! as int).input(),
+      tierToCoolAfterDaysSinceModificationGreaterThan: map['tierToCoolAfterDaysSinceModificationGreaterThan'] == null ? null : (map['tierToCoolAfterDaysSinceModificationGreaterThan']! as int).input(),
     );
   }
 }

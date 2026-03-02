@@ -28,8 +28,8 @@ class BinaryAuthorizationConfig {
 
   factory BinaryAuthorizationConfig.fromMap(Map<String, dynamic> map) {
     return BinaryAuthorizationConfig(
-      evaluationMode: map['evaluationMode'] == null ? null : (BinaryAuthorizationConfigEvaluationMode.fromValue(map['evaluationMode'] as String)).input(),
-      policyBindings: map['policyBindings'] == null ? null : (pulumi.Input.decodeList<PolicyBinding>(map['policyBindings'], (value) => PolicyBinding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      evaluationMode: map['evaluationMode'] == null ? null : (BinaryAuthorizationConfigEvaluationMode.fromValue(map['evaluationMode']! as String)).input(),
+      policyBindings: map['policyBindings'] == null ? null : (pulumi.Input.decodeList<PolicyBinding>(map['policyBindings']!, (value) => PolicyBinding.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

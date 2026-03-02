@@ -25,8 +25,8 @@ class StreamProcessorSettingsConnectedHome {
 
   factory StreamProcessorSettingsConnectedHome.fromMap(Map<String, dynamic> map) {
     return StreamProcessorSettingsConnectedHome(
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
-      minConfidence: map['minConfidence'] == null ? null : (map['minConfidence'] as double).input(),
+      labels: map['labels'] == null ? null : (((map['labels'] as List).cast<String>()).input()).input(),
+      minConfidence: map['minConfidence'] == null ? null : ((map['minConfidence'] as double).input()).input(),
     );
   }
 }

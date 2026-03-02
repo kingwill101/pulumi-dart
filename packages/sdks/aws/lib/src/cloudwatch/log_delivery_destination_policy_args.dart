@@ -36,7 +36,7 @@ class LogDeliveryDestinationPolicyArgs {
     return LogDeliveryDestinationPolicyArgs(
       deliveryDestinationName: (map['deliveryDestinationName'] as String).input(),
       deliveryDestinationPolicy: (map['deliveryDestinationPolicy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

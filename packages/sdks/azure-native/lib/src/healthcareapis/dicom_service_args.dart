@@ -73,15 +73,15 @@ class DicomServiceArgs {
 
   factory DicomServiceArgs.fromMap(Map<String, dynamic> map) {
     return DicomServiceArgs(
-      corsConfiguration: map['corsConfiguration'] == null ? null : (CorsConfiguration.fromMap((map['corsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      dicomServiceName: map['dicomServiceName'] == null ? null : (map['dicomServiceName'] as String).input(),
-      enableDataPartitions: map['enableDataPartitions'] == null ? null : (map['enableDataPartitions'] as bool).input(),
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ServiceManagedIdentityIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      corsConfiguration: map['corsConfiguration'] == null ? null : (CorsConfiguration.fromMap((map['corsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      dicomServiceName: map['dicomServiceName'] == null ? null : (map['dicomServiceName']! as String).input(),
+      enableDataPartitions: map['enableDataPartitions'] == null ? null : (map['enableDataPartitions']! as bool).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ServiceManagedIdentityIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageConfiguration: map['storageConfiguration'] == null ? null : (StorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storageConfiguration: map['storageConfiguration'] == null ? null : (StorageConfiguration.fromMap((map['storageConfiguration']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

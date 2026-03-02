@@ -29,8 +29,8 @@ class FeatureSpecFleetobservabilityLoggingConfig {
 
   factory FeatureSpecFleetobservabilityLoggingConfig.fromMap(Map<String, dynamic> map) {
     return FeatureSpecFleetobservabilityLoggingConfig(
-      defaultConfig: map['defaultConfig'] == null ? null : (FeatureSpecFleetobservabilityLoggingConfigDefaultConfig.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>())).input(),
-      fleetScopeLogsConfig: map['fleetScopeLogsConfig'] == null ? null : (FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig.fromMap((map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>())).input(),
+      defaultConfig: map['defaultConfig'] == null ? null : (FeatureSpecFleetobservabilityLoggingConfigDefaultConfig.fromMap((map['defaultConfig']! as Map).cast<String, dynamic>())).input(),
+      fleetScopeLogsConfig: map['fleetScopeLogsConfig'] == null ? null : (FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig.fromMap((map['fleetScopeLogsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class AzureClusterControlPlaneMainVolume {
 
   factory AzureClusterControlPlaneMainVolume.fromMap(Map<String, dynamic> map) {
     return AzureClusterControlPlaneMainVolume(
-      sizeGib: map['sizeGib'] == null ? null : (map['sizeGib'] as int).input(),
+      sizeGib: map['sizeGib'] == null ? null : (map['sizeGib']! as int).input(),
     );
   }
 }

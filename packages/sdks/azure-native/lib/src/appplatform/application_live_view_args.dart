@@ -34,7 +34,7 @@ class ApplicationLiveViewArgs {
 
   factory ApplicationLiveViewArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationLiveViewArgs(
-      applicationLiveViewName: map['applicationLiveViewName'] == null ? null : (map['applicationLiveViewName'] as String).input(),
+      applicationLiveViewName: map['applicationLiveViewName'] == null ? null : (map['applicationLiveViewName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

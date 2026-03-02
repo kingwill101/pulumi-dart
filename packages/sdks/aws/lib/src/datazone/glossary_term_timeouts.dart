@@ -20,7 +20,7 @@ class GlossaryTermTimeouts {
 
   factory GlossaryTermTimeouts.fromMap(Map<String, dynamic> map) {
     return GlossaryTermTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

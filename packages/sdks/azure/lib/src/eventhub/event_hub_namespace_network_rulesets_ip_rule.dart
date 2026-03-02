@@ -25,7 +25,7 @@ class EventHubNamespaceNetworkRulesetsIpRule {
 
   factory EventHubNamespaceNetworkRulesetsIpRule.fromMap(Map<String, dynamic> map) {
     return EventHubNamespaceNetworkRulesetsIpRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       ipMask: (map['ipMask'] as String).input(),
     );
   }

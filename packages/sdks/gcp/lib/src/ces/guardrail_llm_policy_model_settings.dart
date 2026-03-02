@@ -29,8 +29,8 @@ class GuardrailLlmPolicyModelSettings {
 
   factory GuardrailLlmPolicyModelSettings.fromMap(Map<String, dynamic> map) {
     return GuardrailLlmPolicyModelSettings(
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      temperature: map['temperature'] == null ? null : (map['temperature'] as double).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      temperature: map['temperature'] == null ? null : (map['temperature']! as double).input(),
     );
   }
 }

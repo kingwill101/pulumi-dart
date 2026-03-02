@@ -31,7 +31,7 @@ class HciLogicalNetworkSubnetRoute {
   factory HciLogicalNetworkSubnetRoute.fromMap(Map<String, dynamic> map) {
     return HciLogicalNetworkSubnetRoute(
       addressPrefix: (map['addressPrefix'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nextHopIpAddress: (map['nextHopIpAddress'] as String).input(),
     );
   }

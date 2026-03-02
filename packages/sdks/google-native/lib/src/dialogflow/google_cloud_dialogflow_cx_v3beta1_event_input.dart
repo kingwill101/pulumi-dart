@@ -21,7 +21,7 @@ class GoogleCloudDialogflowCxV3beta1EventInput {
 
   factory GoogleCloudDialogflowCxV3beta1EventInput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1EventInput(
-      event: map['event'] == null ? null : (map['event'] as String).input(),
+      event: map['event'] == null ? null : (map['event']! as String).input(),
     );
   }
 }

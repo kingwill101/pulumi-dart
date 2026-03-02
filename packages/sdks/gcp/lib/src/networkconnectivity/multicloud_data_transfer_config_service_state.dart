@@ -25,8 +25,8 @@ class MulticloudDataTransferConfigServiceState {
 
   factory MulticloudDataTransferConfigServiceState.fromMap(Map<String, dynamic> map) {
     return MulticloudDataTransferConfigServiceState(
-      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class AttachedClusterBinaryAuthorization {
 
   factory AttachedClusterBinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return AttachedClusterBinaryAuthorization(
-      evaluationMode: map['evaluationMode'] == null ? null : (map['evaluationMode'] as String).input(),
+      evaluationMode: map['evaluationMode'] == null ? null : (map['evaluationMode']! as String).input(),
     );
   }
 }

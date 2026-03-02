@@ -50,12 +50,12 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      peering: map['peering'] == null ? null : (map['peering'] as String).input(),
-      reservedPeeringRanges: map['reservedPeeringRanges'] == null ? null : ((map['reservedPeeringRanges'] as List).cast<String>()).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      updateOnCreationFail: map['updateOnCreationFail'] == null ? null : (map['updateOnCreationFail'] as bool).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      peering: map['peering'] == null ? null : (map['peering']! as String).input(),
+      reservedPeeringRanges: map['reservedPeeringRanges'] == null ? null : ((map['reservedPeeringRanges']! as List).cast<String>()).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      updateOnCreationFail: map['updateOnCreationFail'] == null ? null : (map['updateOnCreationFail']! as bool).input(),
     );
   }
 }

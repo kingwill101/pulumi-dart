@@ -27,7 +27,7 @@ class OSPolicyResourcePackageResourceDebOsconfigV1alpha {
 
   factory OSPolicyResourcePackageResourceDebOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceDebOsconfigV1alpha(
-      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps'] as bool).input(),
+      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps']! as bool).input(),
       source: (OSPolicyResourceFileOsconfigV1alpha.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -21,7 +21,7 @@ class BandwidthLimit {
 
   factory BandwidthLimit.fromMap(Map<String, dynamic> map) {
     return BandwidthLimit(
-      limitMbps: map['limitMbps'] == null ? null : (map['limitMbps'] as String).input(),
+      limitMbps: map['limitMbps'] == null ? null : (map['limitMbps']! as String).input(),
     );
   }
 }

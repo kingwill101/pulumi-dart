@@ -36,7 +36,7 @@ class GetAndroidMAMPolicyByNameArgs {
     return GetAndroidMAMPolicyByNameArgs(
       hostName: (map['hostName'] as String).input(),
       policyName: (map['policyName'] as String).input(),
-      select: map['select'] == null ? null : (map['select'] as String).input(),
+      select: map['select'] == null ? null : (map['select']! as String).input(),
     );
   }
 }

@@ -41,8 +41,8 @@ class CassandraDataCenterArgs {
   factory CassandraDataCenterArgs.fromMap(Map<String, dynamic> map) {
     return CassandraDataCenterArgs(
       clusterName: (map['clusterName'] as String).input(),
-      dataCenterName: map['dataCenterName'] == null ? null : (map['dataCenterName'] as String).input(),
-      properties: map['properties'] == null ? null : (DataCenterResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      dataCenterName: map['dataCenterName'] == null ? null : (map['dataCenterName']! as String).input(),
+      properties: map['properties'] == null ? null : (DataCenterResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

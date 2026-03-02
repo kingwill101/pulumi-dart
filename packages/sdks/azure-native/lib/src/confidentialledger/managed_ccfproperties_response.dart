@@ -60,12 +60,12 @@ class ManagedCCFPropertiesResponse {
     return ManagedCCFPropertiesResponse(
       appName: (map['appName'] as String).input(),
       appUri: (map['appUri'] as String).input(),
-      deploymentType: map['deploymentType'] == null ? null : (DeploymentTypeResponse.fromMap((map['deploymentType'] as Map).cast<String, dynamic>())).input(),
+      deploymentType: map['deploymentType'] == null ? null : (DeploymentTypeResponse.fromMap((map['deploymentType']! as Map).cast<String, dynamic>())).input(),
       identityServiceUri: (map['identityServiceUri'] as String).input(),
-      memberIdentityCertificates: map['memberIdentityCertificates'] == null ? null : (pulumi.Input.decodeList<MemberIdentityCertificateResponse>(map['memberIdentityCertificates'], (value) => MemberIdentityCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
+      memberIdentityCertificates: map['memberIdentityCertificates'] == null ? null : (pulumi.Input.decodeList<MemberIdentityCertificateResponse>(map['memberIdentityCertificates']!, (value) => MemberIdentityCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      runningState: map['runningState'] == null ? null : (map['runningState'] as String).input(),
+      runningState: map['runningState'] == null ? null : (map['runningState']! as String).input(),
     );
   }
 }

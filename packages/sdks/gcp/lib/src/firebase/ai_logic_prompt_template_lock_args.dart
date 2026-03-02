@@ -36,7 +36,7 @@ class AiLogicPromptTemplateLockArgs {
   factory AiLogicPromptTemplateLockArgs.fromMap(Map<String, dynamic> map) {
     return AiLogicPromptTemplateLockArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       templateId: (map['templateId'] as String).input(),
     );
   }

@@ -40,9 +40,9 @@ class AnnotationSpecSetArgs {
   factory AnnotationSpecSetArgs.fromMap(Map<String, dynamic> map) {
     return AnnotationSpecSetArgs(
       annotationSpecs: (pulumi.Input.decodeList<GoogleCloudDatalabelingV1beta1AnnotationSpec>(map['annotationSpecs'], (value) => GoogleCloudDatalabelingV1beta1AnnotationSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject {
 
   factory StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject(
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField>(map['fields'], (value) => StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      objectName: map['objectName'] == null ? null : (map['objectName'] as String).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField>(map['fields']!, (value) => StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      objectName: map['objectName'] == null ? null : (map['objectName']! as String).input(),
     );
   }
 }

@@ -64,14 +64,14 @@ class OutputResponse {
 
   factory OutputResponse.fromMap(Map<String, dynamic> map) {
     return OutputResponse(
-      datasource: map['datasource'] == null ? null : (AzureDataLakeStoreOutputDataSourceResponse.fromMap((map['datasource'] as Map).cast<String, dynamic>())).input(),
+      datasource: map['datasource'] == null ? null : (AzureDataLakeStoreOutputDataSourceResponse.fromMap((map['datasource']! as Map).cast<String, dynamic>())).input(),
       diagnostics: (DiagnosticsResponse.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())).input(),
       etag: (map['etag'] as String).input(),
       id: (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serialization: map['serialization'] == null ? null : (AvroSerializationResponse.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
-      sizeWindow: map['sizeWindow'] == null ? null : (map['sizeWindow'] as int).input(),
-      timeWindow: map['timeWindow'] == null ? null : (map['timeWindow'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serialization: map['serialization'] == null ? null : (AvroSerializationResponse.fromMap((map['serialization']! as Map).cast<String, dynamic>())).input(),
+      sizeWindow: map['sizeWindow'] == null ? null : (map['sizeWindow']! as int).input(),
+      timeWindow: map['timeWindow'] == null ? null : (map['timeWindow']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

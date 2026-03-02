@@ -68,9 +68,9 @@ class GetRoleManagementPolicyAssignmentResult {
       id: map['id'] as String,
       name: map['name'] as String,
       policyAssignmentProperties: PolicyAssignmentPropertiesResponse.fromMap((map['policyAssignmentProperties'] as Map).cast<String, dynamic>()),
-      policyId: map['policyId'] == null ? null : map['policyId'] as String,
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : map['roleDefinitionId'] as String,
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      policyId: map['policyId'] == null ? null : map['policyId']! as String,
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : map['roleDefinitionId']! as String,
+      scope: map['scope'] == null ? null : map['scope']! as String,
       type: map['type'] as String,
     );
   }

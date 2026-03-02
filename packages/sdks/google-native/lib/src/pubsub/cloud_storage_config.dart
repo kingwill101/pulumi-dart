@@ -52,13 +52,13 @@ class CloudStorageConfig {
 
   factory CloudStorageConfig.fromMap(Map<String, dynamic> map) {
     return CloudStorageConfig(
-      avroConfig: map['avroConfig'] == null ? null : (AvroConfig.fromMap((map['avroConfig'] as Map).cast<String, dynamic>())).input(),
+      avroConfig: map['avroConfig'] == null ? null : (AvroConfig.fromMap((map['avroConfig']! as Map).cast<String, dynamic>())).input(),
       bucket: (map['bucket'] as String).input(),
-      filenamePrefix: map['filenamePrefix'] == null ? null : (map['filenamePrefix'] as String).input(),
-      filenameSuffix: map['filenameSuffix'] == null ? null : (map['filenameSuffix'] as String).input(),
-      maxBytes: map['maxBytes'] == null ? null : (map['maxBytes'] as String).input(),
-      maxDuration: map['maxDuration'] == null ? null : (map['maxDuration'] as String).input(),
-      textConfig: map['textConfig'] == null ? null : ((map['textConfig'] as Map).cast<String, dynamic>()).input(),
+      filenamePrefix: map['filenamePrefix'] == null ? null : (map['filenamePrefix']! as String).input(),
+      filenameSuffix: map['filenameSuffix'] == null ? null : (map['filenameSuffix']! as String).input(),
+      maxBytes: map['maxBytes'] == null ? null : (map['maxBytes']! as String).input(),
+      maxDuration: map['maxDuration'] == null ? null : (map['maxDuration']! as String).input(),
+      textConfig: map['textConfig'] == null ? null : ((map['textConfig']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

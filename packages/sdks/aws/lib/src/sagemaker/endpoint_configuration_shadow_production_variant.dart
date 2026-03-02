@@ -94,21 +94,21 @@ class EndpointConfigurationShadowProductionVariant {
 
   factory EndpointConfigurationShadowProductionVariant.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationShadowProductionVariant(
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
-      containerStartupHealthCheckTimeoutInSeconds: map['containerStartupHealthCheckTimeoutInSeconds'] == null ? null : (map['containerStartupHealthCheckTimeoutInSeconds'] as int).input(),
-      coreDumpConfig: map['coreDumpConfig'] == null ? null : (EndpointConfigurationShadowProductionVariantCoreDumpConfig.fromMap((map['coreDumpConfig'] as Map).cast<String, dynamic>())).input(),
-      enableSsmAccess: map['enableSsmAccess'] == null ? null : (map['enableSsmAccess'] as bool).input(),
-      inferenceAmiVersion: map['inferenceAmiVersion'] == null ? null : (map['inferenceAmiVersion'] as String).input(),
-      initialInstanceCount: map['initialInstanceCount'] == null ? null : (map['initialInstanceCount'] as int).input(),
-      initialVariantWeight: map['initialVariantWeight'] == null ? null : (map['initialVariantWeight'] as double).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      managedInstanceScaling: map['managedInstanceScaling'] == null ? null : (EndpointConfigurationShadowProductionVariantManagedInstanceScaling.fromMap((map['managedInstanceScaling'] as Map).cast<String, dynamic>())).input(),
-      modelDataDownloadTimeoutInSeconds: map['modelDataDownloadTimeoutInSeconds'] == null ? null : (map['modelDataDownloadTimeoutInSeconds'] as int).input(),
-      modelName: map['modelName'] == null ? null : (map['modelName'] as String).input(),
-      routingConfigs: map['routingConfigs'] == null ? null : (pulumi.Input.decodeList<EndpointConfigurationShadowProductionVariantRoutingConfig>(map['routingConfigs'], (value) => EndpointConfigurationShadowProductionVariantRoutingConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serverlessConfig: map['serverlessConfig'] == null ? null : (EndpointConfigurationShadowProductionVariantServerlessConfig.fromMap((map['serverlessConfig'] as Map).cast<String, dynamic>())).input(),
-      variantName: map['variantName'] == null ? null : (map['variantName'] as String).input(),
-      volumeSizeInGb: map['volumeSizeInGb'] == null ? null : (map['volumeSizeInGb'] as int).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : ((map['acceleratorType'] as String).input()).input(),
+      containerStartupHealthCheckTimeoutInSeconds: map['containerStartupHealthCheckTimeoutInSeconds'] == null ? null : ((map['containerStartupHealthCheckTimeoutInSeconds'] as int).input()).input(),
+      coreDumpConfig: map['coreDumpConfig'] == null ? null : ((EndpointConfigurationShadowProductionVariantCoreDumpConfig.fromMap((map['coreDumpConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      enableSsmAccess: map['enableSsmAccess'] == null ? null : ((map['enableSsmAccess'] as bool).input()).input(),
+      inferenceAmiVersion: map['inferenceAmiVersion'] == null ? null : ((map['inferenceAmiVersion'] as String).input()).input(),
+      initialInstanceCount: map['initialInstanceCount'] == null ? null : ((map['initialInstanceCount'] as int).input()).input(),
+      initialVariantWeight: map['initialVariantWeight'] == null ? null : ((map['initialVariantWeight'] as double).input()).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      managedInstanceScaling: map['managedInstanceScaling'] == null ? null : ((EndpointConfigurationShadowProductionVariantManagedInstanceScaling.fromMap((map['managedInstanceScaling']! as Map).cast<String, dynamic>())).input()).input(),
+      modelDataDownloadTimeoutInSeconds: map['modelDataDownloadTimeoutInSeconds'] == null ? null : ((map['modelDataDownloadTimeoutInSeconds'] as int).input()).input(),
+      modelName: map['modelName'] == null ? null : ((map['modelName'] as String).input()).input(),
+      routingConfigs: map['routingConfigs'] == null ? null : ((pulumi.Input.decodeList<EndpointConfigurationShadowProductionVariantRoutingConfig>(map['routingConfigs']!, (value) => EndpointConfigurationShadowProductionVariantRoutingConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      serverlessConfig: map['serverlessConfig'] == null ? null : ((EndpointConfigurationShadowProductionVariantServerlessConfig.fromMap((map['serverlessConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      variantName: map['variantName'] == null ? null : ((map['variantName'] as String).input()).input(),
+      volumeSizeInGb: map['volumeSizeInGb'] == null ? null : ((map['volumeSizeInGb'] as int).input()).input(),
     );
   }
 }

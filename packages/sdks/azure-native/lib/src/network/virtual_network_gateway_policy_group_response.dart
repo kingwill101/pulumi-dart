@@ -59,9 +59,9 @@ class VirtualNetworkGatewayPolicyGroupResponse {
   factory VirtualNetworkGatewayPolicyGroupResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayPolicyGroupResponse(
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       isDefault: (map['isDefault'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       policyMembers: (pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroupMemberResponse>(map['policyMembers'], (value) => VirtualNetworkGatewayPolicyGroupMemberResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       priority: (map['priority'] as int).input(),
       provisioningState: (map['provisioningState'] as String).input(),

@@ -45,10 +45,10 @@ class ControllerRevisionAppsV1beta1Args {
 
   factory ControllerRevisionAppsV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ControllerRevisionAppsV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      data: map['data'] == null ? null : (map['data']).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      data: map['data'] == null ? null : (map['data']!).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       revision: (map['revision'] as int).input(),
     );
   }

@@ -69,16 +69,16 @@ class ApplicationState {
 
   factory ApplicationState.fromMap(Map<String, dynamic> map) {
     return ApplicationState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      identity: map['identity'] == null ? null : (ApplicationIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      subDomain: map['subDomain'] == null ? null : (map['subDomain'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      identity: map['identity'] == null ? null : (ApplicationIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      subDomain: map['subDomain'] == null ? null : (map['subDomain']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
     );
   }
 }

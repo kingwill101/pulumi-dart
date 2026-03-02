@@ -89,18 +89,18 @@ class GameServerGroupArgs {
 
   factory GameServerGroupArgs.fromMap(Map<String, dynamic> map) {
     return GameServerGroupArgs(
-      autoScalingPolicy: map['autoScalingPolicy'] == null ? null : (GameServerGroupAutoScalingPolicy.fromMap((map['autoScalingPolicy'] as Map).cast<String, dynamic>())).input(),
-      balancingStrategy: map['balancingStrategy'] == null ? null : (map['balancingStrategy'] as String).input(),
+      autoScalingPolicy: map['autoScalingPolicy'] == null ? null : ((GameServerGroupAutoScalingPolicy.fromMap((map['autoScalingPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      balancingStrategy: map['balancingStrategy'] == null ? null : ((map['balancingStrategy'] as String).input()).input(),
       gameServerGroupName: (map['gameServerGroupName'] as String).input(),
-      gameServerProtectionPolicy: map['gameServerProtectionPolicy'] == null ? null : (map['gameServerProtectionPolicy'] as String).input(),
-      instanceDefinitions: (pulumi.Input.decodeList<GameServerGroupInstanceDefinition>(map['instanceDefinitions'], (value) => GameServerGroupInstanceDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      launchTemplate: (GameServerGroupLaunchTemplate.fromMap((map['launchTemplate'] as Map).cast<String, dynamic>())).input(),
+      gameServerProtectionPolicy: map['gameServerProtectionPolicy'] == null ? null : ((map['gameServerProtectionPolicy'] as String).input()).input(),
+      instanceDefinitions: (pulumi.Input.decodeList<GameServerGroupInstanceDefinition>(map['instanceDefinitions']!, (value) => GameServerGroupInstanceDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchTemplate: (GameServerGroupLaunchTemplate.fromMap((map['launchTemplate']! as Map).cast<String, dynamic>())).input(),
       maxSize: (map['maxSize'] as int).input(),
       minSize: (map['minSize'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcSubnets: map['vpcSubnets'] == null ? null : ((map['vpcSubnets'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vpcSubnets: map['vpcSubnets'] == null ? null : (((map['vpcSubnets'] as List).cast<String>()).input()).input(),
     );
   }
 }

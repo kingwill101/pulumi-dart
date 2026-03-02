@@ -72,16 +72,16 @@ class CustomResourceDefinitionSpecApiextensionsK8sIoV1beta1 {
 
   factory CustomResourceDefinitionSpecApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionSpecApiextensionsK8sIoV1beta1(
-      additionalPrinterColumns: map['additionalPrinterColumns'] == null ? null : (pulumi.Input.decodeList<CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1>(map['additionalPrinterColumns'], (value) => CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      conversion: map['conversion'] == null ? null : (CustomResourceConversionApiextensionsK8sIoV1beta1.fromMap((map['conversion'] as Map).cast<String, dynamic>())).input(),
+      additionalPrinterColumns: map['additionalPrinterColumns'] == null ? null : (pulumi.Input.decodeList<CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1>(map['additionalPrinterColumns']!, (value) => CustomResourceColumnDefinitionApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conversion: map['conversion'] == null ? null : (CustomResourceConversionApiextensionsK8sIoV1beta1.fromMap((map['conversion']! as Map).cast<String, dynamic>())).input(),
       group: (map['group'] as String).input(),
       names: (CustomResourceDefinitionNamesApiextensionsK8sIoV1beta1.fromMap((map['names'] as Map).cast<String, dynamic>())).input(),
-      preserveUnknownFields: map['preserveUnknownFields'] == null ? null : (map['preserveUnknownFields'] as bool).input(),
+      preserveUnknownFields: map['preserveUnknownFields'] == null ? null : (map['preserveUnknownFields']! as bool).input(),
       scope: (map['scope'] as String).input(),
-      subresources: map['subresources'] == null ? null : (CustomResourceSubresourcesApiextensionsK8sIoV1beta1.fromMap((map['subresources'] as Map).cast<String, dynamic>())).input(),
-      validation: map['validation'] == null ? null : (CustomResourceValidationApiextensionsK8sIoV1beta1.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1>(map['versions'], (value) => CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subresources: map['subresources'] == null ? null : (CustomResourceSubresourcesApiextensionsK8sIoV1beta1.fromMap((map['subresources']! as Map).cast<String, dynamic>())).input(),
+      validation: map['validation'] == null ? null : (CustomResourceValidationApiextensionsK8sIoV1beta1.fromMap((map['validation']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
+      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1>(map['versions']!, (value) => CustomResourceDefinitionVersionApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

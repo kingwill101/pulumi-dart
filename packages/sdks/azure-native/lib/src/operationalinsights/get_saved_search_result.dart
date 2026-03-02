@@ -80,15 +80,15 @@ class GetSavedSearchResult {
       azureApiVersion: map['azureApiVersion'] as String,
       category: map['category'] as String,
       displayName: map['displayName'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
-      functionAlias: map['functionAlias'] == null ? null : map['functionAlias'] as String,
-      functionParameters: map['functionParameters'] == null ? null : map['functionParameters'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
+      functionAlias: map['functionAlias'] == null ? null : map['functionAlias']! as String,
+      functionParameters: map['functionParameters'] == null ? null : map['functionParameters']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       query: map['query'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as double,
+      version: map['version'] == null ? null : map['version']! as double,
     );
   }
 }

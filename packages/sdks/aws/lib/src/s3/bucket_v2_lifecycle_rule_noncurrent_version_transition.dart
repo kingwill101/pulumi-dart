@@ -25,7 +25,7 @@ class BucketV2LifecycleRuleNoncurrentVersionTransition {
 
   factory BucketV2LifecycleRuleNoncurrentVersionTransition.fromMap(Map<String, dynamic> map) {
     return BucketV2LifecycleRuleNoncurrentVersionTransition(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
+      days: map['days'] == null ? null : ((map['days'] as int).input()).input(),
       storageClass: (map['storageClass'] as String).input(),
     );
   }

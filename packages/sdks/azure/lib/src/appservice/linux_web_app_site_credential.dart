@@ -27,8 +27,8 @@ class LinuxWebAppSiteCredential {
 
   factory LinuxWebAppSiteCredential.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSiteCredential(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class AliasIpRangeComputeV1 {
 
   factory AliasIpRangeComputeV1.fromMap(Map<String, dynamic> map) {
     return AliasIpRangeComputeV1(
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      subnetworkRangeName: map['subnetworkRangeName'] == null ? null : (map['subnetworkRangeName'] as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      subnetworkRangeName: map['subnetworkRangeName'] == null ? null : (map['subnetworkRangeName']! as String).input(),
     );
   }
 }

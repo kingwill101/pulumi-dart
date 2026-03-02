@@ -65,15 +65,15 @@ class AgentAgentCollaboratorArgs {
 
   factory AgentAgentCollaboratorArgs.fromMap(Map<String, dynamic> map) {
     return AgentAgentCollaboratorArgs(
-      agentDescriptor: (AgentAgentCollaboratorAgentDescriptor.fromMap((map['agentDescriptor'] as Map).cast<String, dynamic>())).input(),
+      agentDescriptor: (AgentAgentCollaboratorAgentDescriptor.fromMap((map['agentDescriptor']! as Map).cast<String, dynamic>())).input(),
       agentId: (map['agentId'] as String).input(),
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : ((map['agentVersion'] as String).input()).input(),
       collaborationInstruction: (map['collaborationInstruction'] as String).input(),
       collaboratorName: (map['collaboratorName'] as String).input(),
-      prepareAgent: map['prepareAgent'] == null ? null : (map['prepareAgent'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      relayConversationHistory: map['relayConversationHistory'] == null ? null : (map['relayConversationHistory'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentAgentCollaboratorTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      prepareAgent: map['prepareAgent'] == null ? null : ((map['prepareAgent'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      relayConversationHistory: map['relayConversationHistory'] == null ? null : ((map['relayConversationHistory'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentAgentCollaboratorTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

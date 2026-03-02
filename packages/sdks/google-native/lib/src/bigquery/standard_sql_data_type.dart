@@ -38,9 +38,9 @@ class StandardSqlDataType {
 
   factory StandardSqlDataType.fromMap(Map<String, dynamic> map) {
     return StandardSqlDataType(
-      arrayElementType: map['arrayElementType'] == null ? null : (StandardSqlDataType.fromMap((map['arrayElementType'] as Map).cast<String, dynamic>())).input(),
-      rangeElementType: map['rangeElementType'] == null ? null : (StandardSqlDataType.fromMap((map['rangeElementType'] as Map).cast<String, dynamic>())).input(),
-      structType: map['structType'] == null ? null : (StandardSqlStructType.fromMap((map['structType'] as Map).cast<String, dynamic>())).input(),
+      arrayElementType: map['arrayElementType'] == null ? null : (StandardSqlDataType.fromMap((map['arrayElementType']! as Map).cast<String, dynamic>())).input(),
+      rangeElementType: map['rangeElementType'] == null ? null : (StandardSqlDataType.fromMap((map['rangeElementType']! as Map).cast<String, dynamic>())).input(),
+      structType: map['structType'] == null ? null : (StandardSqlStructType.fromMap((map['structType']! as Map).cast<String, dynamic>())).input(),
       typeKind: (StandardSqlDataTypeTypeKind.fromValue(map['typeKind'] as String)).input(),
     );
   }

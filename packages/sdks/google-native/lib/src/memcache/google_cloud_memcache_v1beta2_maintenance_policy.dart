@@ -27,7 +27,7 @@ class GoogleCloudMemcacheV1beta2MaintenancePolicy {
 
   factory GoogleCloudMemcacheV1beta2MaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMemcacheV1beta2MaintenancePolicy(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       weeklyMaintenanceWindow: (pulumi.Input.decodeList<WeeklyMaintenanceWindowMemcacheV1beta2>(map['weeklyMaintenanceWindow'], (value) => WeeklyMaintenanceWindowMemcacheV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

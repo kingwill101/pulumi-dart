@@ -67,13 +67,13 @@ class AvailabilityGroupListenerArgs {
 
   factory AvailabilityGroupListenerArgs.fromMap(Map<String, dynamic> map) {
     return AvailabilityGroupListenerArgs(
-      availabilityGroupConfiguration: map['availabilityGroupConfiguration'] == null ? null : (AgConfiguration.fromMap((map['availabilityGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
-      availabilityGroupListenerName: map['availabilityGroupListenerName'] == null ? null : (map['availabilityGroupListenerName'] as String).input(),
-      availabilityGroupName: map['availabilityGroupName'] == null ? null : (map['availabilityGroupName'] as String).input(),
-      createDefaultAvailabilityGroupIfNotExist: map['createDefaultAvailabilityGroupIfNotExist'] == null ? null : (map['createDefaultAvailabilityGroupIfNotExist'] as bool).input(),
-      loadBalancerConfigurations: map['loadBalancerConfigurations'] == null ? null : (pulumi.Input.decodeList<LoadBalancerConfiguration>(map['loadBalancerConfigurations'], (value) => LoadBalancerConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      multiSubnetIpConfigurations: map['multiSubnetIpConfigurations'] == null ? null : (pulumi.Input.decodeList<MultiSubnetIpConfiguration>(map['multiSubnetIpConfigurations'], (value) => MultiSubnetIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      availabilityGroupConfiguration: map['availabilityGroupConfiguration'] == null ? null : (AgConfiguration.fromMap((map['availabilityGroupConfiguration']! as Map).cast<String, dynamic>())).input(),
+      availabilityGroupListenerName: map['availabilityGroupListenerName'] == null ? null : (map['availabilityGroupListenerName']! as String).input(),
+      availabilityGroupName: map['availabilityGroupName'] == null ? null : (map['availabilityGroupName']! as String).input(),
+      createDefaultAvailabilityGroupIfNotExist: map['createDefaultAvailabilityGroupIfNotExist'] == null ? null : (map['createDefaultAvailabilityGroupIfNotExist']! as bool).input(),
+      loadBalancerConfigurations: map['loadBalancerConfigurations'] == null ? null : (pulumi.Input.decodeList<LoadBalancerConfiguration>(map['loadBalancerConfigurations']!, (value) => LoadBalancerConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      multiSubnetIpConfigurations: map['multiSubnetIpConfigurations'] == null ? null : (pulumi.Input.decodeList<MultiSubnetIpConfiguration>(map['multiSubnetIpConfigurations']!, (value) => MultiSubnetIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sqlVirtualMachineGroupName: (map['sqlVirtualMachineGroupName'] as String).input(),
     );

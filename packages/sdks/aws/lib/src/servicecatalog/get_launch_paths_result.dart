@@ -43,7 +43,7 @@ class GetLaunchPathsResult {
       id: map['id'] as String,
       productId: map['productId'] as String,
       region: map['region'] as String,
-      summaries: pulumi.Input.decodeList<GetLaunchPathsSummary>(map['summaries'], (value) => GetLaunchPathsSummary.fromMap((value as Map).cast<String, dynamic>())),
+      summaries: pulumi.Input.decodeList<GetLaunchPathsSummary>(map['summaries']!, (value) => GetLaunchPathsSummary.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

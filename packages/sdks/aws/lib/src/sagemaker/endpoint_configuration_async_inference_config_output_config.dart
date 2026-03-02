@@ -36,9 +36,9 @@ class EndpointConfigurationAsyncInferenceConfigOutputConfig {
 
   factory EndpointConfigurationAsyncInferenceConfigOutputConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationAsyncInferenceConfigOutputConfig(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
-      s3FailurePath: map['s3FailurePath'] == null ? null : (map['s3FailurePath'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : ((EndpointConfigurationAsyncInferenceConfigOutputConfigNotificationConfig.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      s3FailurePath: map['s3FailurePath'] == null ? null : ((map['s3FailurePath'] as String).input()).input(),
       s3OutputPath: (map['s3OutputPath'] as String).input(),
     );
   }

@@ -65,13 +65,13 @@ class AnalysisRuleArgs {
 
   factory AnalysisRuleArgs.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleArgs(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      analysisPercentage: map['analysisPercentage'] == null ? null : (map['analysisPercentage'] as double).input(),
-      annotatorSelector: map['annotatorSelector'] == null ? null : (AnalysisRuleAnnotatorSelector.fromMap((map['annotatorSelector'] as Map).cast<String, dynamic>())).input(),
-      conversationFilter: map['conversationFilter'] == null ? null : (map['conversationFilter'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      analysisPercentage: map['analysisPercentage'] == null ? null : (map['analysisPercentage']! as double).input(),
+      annotatorSelector: map['annotatorSelector'] == null ? null : (AnalysisRuleAnnotatorSelector.fromMap((map['annotatorSelector']! as Map).cast<String, dynamic>())).input(),
+      conversationFilter: map['conversationFilter'] == null ? null : (map['conversationFilter']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

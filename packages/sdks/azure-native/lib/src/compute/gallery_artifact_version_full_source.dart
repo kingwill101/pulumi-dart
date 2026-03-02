@@ -31,9 +31,9 @@ class GalleryArtifactVersionFullSource {
 
   factory GalleryArtifactVersionFullSource.fromMap(Map<String, dynamic> map) {
     return GalleryArtifactVersionFullSource(
-      communityGalleryImageId: map['communityGalleryImageId'] == null ? null : (map['communityGalleryImageId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
+      communityGalleryImageId: map['communityGalleryImageId'] == null ? null : (map['communityGalleryImageId']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId']! as String).input(),
     );
   }
 }

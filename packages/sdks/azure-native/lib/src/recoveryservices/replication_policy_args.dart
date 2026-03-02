@@ -40,8 +40,8 @@ class ReplicationPolicyArgs {
 
   factory ReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationPolicyArgs(
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      properties: map['properties'] == null ? null : (CreatePolicyInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      properties: map['properties'] == null ? null : (CreatePolicyInputProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

@@ -48,7 +48,7 @@ class TrustedAccessRoleBindingArgs {
       resourceName: (map['resourceName'] as String).input(),
       roles: ((map['roles'] as List).cast<String>()).input(),
       sourceResourceId: (map['sourceResourceId'] as String).input(),
-      trustedAccessRoleBindingName: map['trustedAccessRoleBindingName'] == null ? null : (map['trustedAccessRoleBindingName'] as String).input(),
+      trustedAccessRoleBindingName: map['trustedAccessRoleBindingName'] == null ? null : (map['trustedAccessRoleBindingName']! as String).input(),
     );
   }
 }

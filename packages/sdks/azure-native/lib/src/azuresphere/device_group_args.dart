@@ -64,15 +64,15 @@ class DeviceGroupArgs {
 
   factory DeviceGroupArgs.fromMap(Map<String, dynamic> map) {
     return DeviceGroupArgs(
-      allowCrashDumpsCollection: map['allowCrashDumpsCollection'] == null ? null : (map['allowCrashDumpsCollection'] as String).input(),
+      allowCrashDumpsCollection: map['allowCrashDumpsCollection'] == null ? null : (map['allowCrashDumpsCollection']! as String).input(),
       catalogName: (map['catalogName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      deviceGroupName: map['deviceGroupName'] == null ? null : (map['deviceGroupName'] as String).input(),
-      osFeedType: map['osFeedType'] == null ? null : (map['osFeedType'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      deviceGroupName: map['deviceGroupName'] == null ? null : (map['deviceGroupName']! as String).input(),
+      osFeedType: map['osFeedType'] == null ? null : (map['osFeedType']! as String).input(),
       productName: (map['productName'] as String).input(),
-      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary'] as String).input(),
+      regionalDataBoundary: map['regionalDataBoundary'] == null ? null : (map['regionalDataBoundary']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      updatePolicy: map['updatePolicy'] == null ? null : (map['updatePolicy'] as String).input(),
+      updatePolicy: map['updatePolicy'] == null ? null : (map['updatePolicy']! as String).input(),
     );
   }
 }

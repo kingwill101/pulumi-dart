@@ -77,17 +77,17 @@ class MarketplaceGalleryImageArgs {
 
   factory MarketplaceGalleryImageArgs.fromMap(Map<String, dynamic> map) {
     return MarketplaceGalleryImageArgs(
-      cloudInitDataSource: map['cloudInitDataSource'] == null ? null : (map['cloudInitDataSource'] as String).input(),
-      containerId: map['containerId'] == null ? null : (map['containerId'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration'] as String).input(),
-      identifier: map['identifier'] == null ? null : (GalleryImageIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      marketplaceGalleryImageName: map['marketplaceGalleryImageName'] == null ? null : (map['marketplaceGalleryImageName'] as String).input(),
+      cloudInitDataSource: map['cloudInitDataSource'] == null ? null : (map['cloudInitDataSource']! as String).input(),
+      containerId: map['containerId'] == null ? null : (map['containerId']! as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration']! as String).input(),
+      identifier: map['identifier'] == null ? null : (GalleryImageIdentifier.fromMap((map['identifier']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      marketplaceGalleryImageName: map['marketplaceGalleryImageName'] == null ? null : (map['marketplaceGalleryImageName']! as String).input(),
       osType: (map['osType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (GalleryImageVersion.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (GalleryImageVersion.fromMap((map['version']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

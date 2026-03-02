@@ -25,7 +25,7 @@ class MetricStreamExcludeFilter {
 
   factory MetricStreamExcludeFilter.fromMap(Map<String, dynamic> map) {
     return MetricStreamExcludeFilter(
-      metricNames: map['metricNames'] == null ? null : ((map['metricNames'] as List).cast<String>()).input(),
+      metricNames: map['metricNames'] == null ? null : (((map['metricNames'] as List).cast<String>()).input()).input(),
       namespace: (map['namespace'] as String).input(),
     );
   }

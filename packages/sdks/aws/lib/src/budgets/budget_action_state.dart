@@ -89,20 +89,20 @@ class BudgetActionState {
 
   factory BudgetActionState.fromMap(Map<String, dynamic> map) {
     return BudgetActionState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      actionId: map['actionId'] == null ? null : (map['actionId'] as String).input(),
-      actionThreshold: map['actionThreshold'] == null ? null : (BudgetActionActionThreshold.fromMap((map['actionThreshold'] as Map).cast<String, dynamic>())).input(),
-      actionType: map['actionType'] == null ? null : (map['actionType'] as String).input(),
-      approvalModel: map['approvalModel'] == null ? null : (map['approvalModel'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      budgetName: map['budgetName'] == null ? null : (map['budgetName'] as String).input(),
-      definition: map['definition'] == null ? null : (BudgetActionDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
-      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
-      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      subscribers: map['subscribers'] == null ? null : (pulumi.Input.decodeList<BudgetActionSubscriber>(map['subscribers'], (value) => BudgetActionSubscriber.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      actionId: map['actionId'] == null ? null : ((map['actionId'] as String).input()).input(),
+      actionThreshold: map['actionThreshold'] == null ? null : ((BudgetActionActionThreshold.fromMap((map['actionThreshold']! as Map).cast<String, dynamic>())).input()).input(),
+      actionType: map['actionType'] == null ? null : ((map['actionType'] as String).input()).input(),
+      approvalModel: map['approvalModel'] == null ? null : ((map['approvalModel'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      budgetName: map['budgetName'] == null ? null : ((map['budgetName'] as String).input()).input(),
+      definition: map['definition'] == null ? null : ((BudgetActionDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())).input()).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
+      notificationType: map['notificationType'] == null ? null : ((map['notificationType'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      subscribers: map['subscribers'] == null ? null : ((pulumi.Input.decodeList<BudgetActionSubscriber>(map['subscribers']!, (value) => BudgetActionSubscriber.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

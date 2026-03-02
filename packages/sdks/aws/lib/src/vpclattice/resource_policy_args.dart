@@ -35,7 +35,7 @@ class ResourcePolicyArgs {
   factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyArgs(
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceArn: (map['resourceArn'] as String).input(),
     );
   }

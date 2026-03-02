@@ -32,9 +32,9 @@ class DomainDevicesNvram {
 
   factory DomainDevicesNvram.fromMap(Map<String, dynamic> map) {
     return DomainDevicesNvram(
-      acpi: map['acpi'] == null ? null : (DomainDevicesNvramAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesNvramAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesNvramAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesNvramAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

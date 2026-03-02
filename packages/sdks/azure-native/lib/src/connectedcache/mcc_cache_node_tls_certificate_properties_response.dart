@@ -34,7 +34,7 @@ class MccCacheNodeTlsCertificatePropertiesResponse {
     return MccCacheNodeTlsCertificatePropertiesResponse(
       cacheNodeId: (map['cacheNodeId'] as String).input(),
       customerId: (map['customerId'] as String).input(),
-      tlsCertificateHistory: map['tlsCertificateHistory'] == null ? null : (pulumi.Input.decodeList<MccCacheNodeTlsCertificateResponse>(map['tlsCertificateHistory'], (value) => MccCacheNodeTlsCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tlsCertificateHistory: map['tlsCertificateHistory'] == null ? null : (pulumi.Input.decodeList<MccCacheNodeTlsCertificateResponse>(map['tlsCertificateHistory']!, (value) => MccCacheNodeTlsCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class Powershell72ModuleModuleLink {
 
   factory Powershell72ModuleModuleLink.fromMap(Map<String, dynamic> map) {
     return Powershell72ModuleModuleLink(
-      hash: map['hash'] == null ? null : (Powershell72ModuleModuleLinkHash.fromMap((map['hash'] as Map).cast<String, dynamic>())).input(),
+      hash: map['hash'] == null ? null : (Powershell72ModuleModuleLinkHash.fromMap((map['hash']! as Map).cast<String, dynamic>())).input(),
       uri: (map['uri'] as String).input(),
     );
   }

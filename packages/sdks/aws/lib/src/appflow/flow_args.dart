@@ -74,16 +74,16 @@ class FlowArgs {
 
   factory FlowArgs.fromMap(Map<String, dynamic> map) {
     return FlowArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationFlowConfigs: (pulumi.Input.decodeList<FlowDestinationFlowConfig>(map['destinationFlowConfigs'], (value) => FlowDestinationFlowConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kmsArn: map['kmsArn'] == null ? null : (map['kmsArn'] as String).input(),
-      metadataCatalogConfig: map['metadataCatalogConfig'] == null ? null : (FlowMetadataCatalogConfig.fromMap((map['metadataCatalogConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceFlowConfig: (FlowSourceFlowConfig.fromMap((map['sourceFlowConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tasks: (pulumi.Input.decodeList<FlowTask>(map['tasks'], (value) => FlowTask.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      triggerConfig: (FlowTriggerConfig.fromMap((map['triggerConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      destinationFlowConfigs: (pulumi.Input.decodeList<FlowDestinationFlowConfig>(map['destinationFlowConfigs']!, (value) => FlowDestinationFlowConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kmsArn: map['kmsArn'] == null ? null : ((map['kmsArn'] as String).input()).input(),
+      metadataCatalogConfig: map['metadataCatalogConfig'] == null ? null : ((FlowMetadataCatalogConfig.fromMap((map['metadataCatalogConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceFlowConfig: (FlowSourceFlowConfig.fromMap((map['sourceFlowConfig']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tasks: (pulumi.Input.decodeList<FlowTask>(map['tasks']!, (value) => FlowTask.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      triggerConfig: (FlowTriggerConfig.fromMap((map['triggerConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

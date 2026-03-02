@@ -21,7 +21,7 @@ class PipelineTriggerPropertiesResponse {
 
   factory PipelineTriggerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PipelineTriggerPropertiesResponse(
-      sourceTrigger: map['sourceTrigger'] == null ? null : (PipelineSourceTriggerPropertiesResponse.fromMap((map['sourceTrigger'] as Map).cast<String, dynamic>())).input(),
+      sourceTrigger: map['sourceTrigger'] == null ? null : (PipelineSourceTriggerPropertiesResponse.fromMap((map['sourceTrigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

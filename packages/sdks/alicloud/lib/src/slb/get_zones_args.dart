@@ -52,12 +52,12 @@ class GetZonesArgs {
 
   factory GetZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetZonesArgs(
-      availableSlbAddressIpVersion: map['availableSlbAddressIpVersion'] == null ? null : (map['availableSlbAddressIpVersion'] as String).input(),
-      availableSlbAddressType: map['availableSlbAddressType'] == null ? null : (map['availableSlbAddressType'] as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      masterZoneId: map['masterZoneId'] == null ? null : (map['masterZoneId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      slaveZoneId: map['slaveZoneId'] == null ? null : (map['slaveZoneId'] as String).input(),
+      availableSlbAddressIpVersion: map['availableSlbAddressIpVersion'] == null ? null : (map['availableSlbAddressIpVersion']! as String).input(),
+      availableSlbAddressType: map['availableSlbAddressType'] == null ? null : (map['availableSlbAddressType']! as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      masterZoneId: map['masterZoneId'] == null ? null : (map['masterZoneId']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      slaveZoneId: map['slaveZoneId'] == null ? null : (map['slaveZoneId']! as String).input(),
     );
   }
 }

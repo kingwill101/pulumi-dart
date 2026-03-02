@@ -91,17 +91,17 @@ class GetDedicatedHsmResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      managementNetworkProfile: map['managementNetworkProfile'] == null ? null : NetworkProfileResponse.fromMap((map['managementNetworkProfile'] as Map).cast<String, dynamic>()),
+      managementNetworkProfile: map['managementNetworkProfile'] == null ? null : NetworkProfileResponse.fromMap((map['managementNetworkProfile']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      networkProfile: map['networkProfile'] == null ? null : NetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>()),
+      networkProfile: map['networkProfile'] == null ? null : NetworkProfileResponse.fromMap((map['networkProfile']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      stampId: map['stampId'] == null ? null : map['stampId'] as String,
+      stampId: map['stampId'] == null ? null : map['stampId']! as String,
       statusMessage: map['statusMessage'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
     );
   }
 }

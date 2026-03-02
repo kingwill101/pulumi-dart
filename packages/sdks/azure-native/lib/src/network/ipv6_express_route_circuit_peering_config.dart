@@ -43,11 +43,11 @@ class Ipv6ExpressRouteCircuitPeeringConfig {
 
   factory Ipv6ExpressRouteCircuitPeeringConfig.fromMap(Map<String, dynamic> map) {
     return Ipv6ExpressRouteCircuitPeeringConfig(
-      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : (ExpressRouteCircuitPeeringConfig.fromMap((map['microsoftPeeringConfig'] as Map).cast<String, dynamic>())).input(),
-      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : (map['primaryPeerAddressPrefix'] as String).input(),
-      routeFilter: map['routeFilter'] == null ? null : (SubResource.fromMap((map['routeFilter'] as Map).cast<String, dynamic>())).input(),
-      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : (map['secondaryPeerAddressPrefix'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : (ExpressRouteCircuitPeeringConfig.fromMap((map['microsoftPeeringConfig']! as Map).cast<String, dynamic>())).input(),
+      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : (map['primaryPeerAddressPrefix']! as String).input(),
+      routeFilter: map['routeFilter'] == null ? null : (SubResource.fromMap((map['routeFilter']! as Map).cast<String, dynamic>())).input(),
+      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : (map['secondaryPeerAddressPrefix']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -77,18 +77,18 @@ class DbInstanceEndpointState {
 
   factory DbInstanceEndpointState.fromMap(Map<String, dynamic> map) {
     return DbInstanceEndpointState(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix'] as String).input(),
-      dbInstanceEndpointDescription: map['dbInstanceEndpointDescription'] == null ? null : (map['dbInstanceEndpointDescription'] as String).input(),
-      dbInstanceEndpointId: map['dbInstanceEndpointId'] == null ? null : (map['dbInstanceEndpointId'] as String).input(),
-      dbInstanceEndpointType: map['dbInstanceEndpointType'] == null ? null : (map['dbInstanceEndpointType'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      ipType: map['ipType'] == null ? null : (map['ipType'] as String).input(),
-      nodeItems: map['nodeItems'] == null ? null : (pulumi.Input.decodeList<DbInstanceEndpointNodeItem>(map['nodeItems'], (value) => DbInstanceEndpointNodeItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix']! as String).input(),
+      dbInstanceEndpointDescription: map['dbInstanceEndpointDescription'] == null ? null : (map['dbInstanceEndpointDescription']! as String).input(),
+      dbInstanceEndpointId: map['dbInstanceEndpointId'] == null ? null : (map['dbInstanceEndpointId']! as String).input(),
+      dbInstanceEndpointType: map['dbInstanceEndpointType'] == null ? null : (map['dbInstanceEndpointType']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      ipType: map['ipType'] == null ? null : (map['ipType']! as String).input(),
+      nodeItems: map['nodeItems'] == null ? null : (pulumi.Input.decodeList<DbInstanceEndpointNodeItem>(map['nodeItems']!, (value) => DbInstanceEndpointNodeItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

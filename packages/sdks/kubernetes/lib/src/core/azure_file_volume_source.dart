@@ -31,7 +31,7 @@ class AzureFileVolumeSource {
 
   factory AzureFileVolumeSource.fromMap(Map<String, dynamic> map) {
     return AzureFileVolumeSource(
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
       secretName: (map['secretName'] as String).input(),
       shareName: (map['shareName'] as String).input(),
     );

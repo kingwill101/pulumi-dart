@@ -30,8 +30,8 @@ class FleetLaunchTemplateConfigLaunchTemplateSpecification {
 
   factory FleetLaunchTemplateConfigLaunchTemplateSpecification.fromMap(Map<String, dynamic> map) {
     return FleetLaunchTemplateConfigLaunchTemplateSpecification(
-      launchTemplateId: map['launchTemplateId'] == null ? null : (map['launchTemplateId'] as String).input(),
-      launchTemplateName: map['launchTemplateName'] == null ? null : (map['launchTemplateName'] as String).input(),
+      launchTemplateId: map['launchTemplateId'] == null ? null : ((map['launchTemplateId'] as String).input()).input(),
+      launchTemplateName: map['launchTemplateName'] == null ? null : ((map['launchTemplateName'] as String).input()).input(),
       version: (map['version'] as String).input(),
     );
   }

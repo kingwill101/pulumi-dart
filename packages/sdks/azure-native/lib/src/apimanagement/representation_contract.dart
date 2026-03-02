@@ -44,10 +44,10 @@ class RepresentationContract {
   factory RepresentationContract.fromMap(Map<String, dynamic> map) {
     return RepresentationContract(
       contentType: (map['contentType'] as String).input(),
-      examples: map['examples'] == null ? null : (pulumi.Input.decodeMapValues<ParameterExampleContract>(map['examples'], (value) => ParameterExampleContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      formParameters: map['formParameters'] == null ? null : (pulumi.Input.decodeList<ParameterContract>(map['formParameters'], (value) => ParameterContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
-      typeName: map['typeName'] == null ? null : (map['typeName'] as String).input(),
+      examples: map['examples'] == null ? null : (pulumi.Input.decodeMapValues<ParameterExampleContract>(map['examples']!, (value) => ParameterExampleContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      formParameters: map['formParameters'] == null ? null : (pulumi.Input.decodeList<ParameterContract>(map['formParameters']!, (value) => ParameterContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId']! as String).input(),
+      typeName: map['typeName'] == null ? null : (map['typeName']! as String).input(),
     );
   }
 }

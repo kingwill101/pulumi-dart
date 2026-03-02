@@ -59,14 +59,14 @@ class AnycastEipAddressArgs {
 
   factory AnycastEipAddressArgs.fromMap(Map<String, dynamic> map) {
     return AnycastEipAddressArgs(
-      anycastEipAddressName: map['anycastEipAddressName'] == null ? null : (map['anycastEipAddressName'] as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      anycastEipAddressName: map['anycastEipAddressName'] == null ? null : (map['anycastEipAddressName']! as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       serviceLocation: (map['serviceLocation'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

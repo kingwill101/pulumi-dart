@@ -56,14 +56,14 @@ class LocalDNSOverride {
 
   factory LocalDNSOverride.fromMap(Map<String, dynamic> map) {
     return LocalDNSOverride(
-      cacheDurationInSeconds: map['cacheDurationInSeconds'] == null ? null : (map['cacheDurationInSeconds'] as int).input(),
-      forwardDestination: map['forwardDestination'] == null ? null : (map['forwardDestination'] as String).input(),
-      forwardPolicy: map['forwardPolicy'] == null ? null : (map['forwardPolicy'] as String).input(),
-      maxConcurrent: map['maxConcurrent'] == null ? null : (map['maxConcurrent'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      queryLogging: map['queryLogging'] == null ? null : (map['queryLogging'] as String).input(),
-      serveStale: map['serveStale'] == null ? null : (map['serveStale'] as String).input(),
-      serveStaleDurationInSeconds: map['serveStaleDurationInSeconds'] == null ? null : (map['serveStaleDurationInSeconds'] as int).input(),
+      cacheDurationInSeconds: map['cacheDurationInSeconds'] == null ? null : (map['cacheDurationInSeconds']! as int).input(),
+      forwardDestination: map['forwardDestination'] == null ? null : (map['forwardDestination']! as String).input(),
+      forwardPolicy: map['forwardPolicy'] == null ? null : (map['forwardPolicy']! as String).input(),
+      maxConcurrent: map['maxConcurrent'] == null ? null : (map['maxConcurrent']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      queryLogging: map['queryLogging'] == null ? null : (map['queryLogging']! as String).input(),
+      serveStale: map['serveStale'] == null ? null : (map['serveStale']! as String).input(),
+      serveStaleDurationInSeconds: map['serveStaleDurationInSeconds'] == null ? null : (map['serveStaleDurationInSeconds']! as int).input(),
     );
   }
 }

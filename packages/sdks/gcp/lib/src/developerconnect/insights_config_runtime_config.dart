@@ -46,9 +46,9 @@ class InsightsConfigRuntimeConfig {
 
   factory InsightsConfigRuntimeConfig.fromMap(Map<String, dynamic> map) {
     return InsightsConfigRuntimeConfig(
-      appHubWorkload: map['appHubWorkload'] == null ? null : (InsightsConfigRuntimeConfigAppHubWorkload.fromMap((map['appHubWorkload'] as Map).cast<String, dynamic>())).input(),
-      gkeWorkload: map['gkeWorkload'] == null ? null : (InsightsConfigRuntimeConfigGkeWorkload.fromMap((map['gkeWorkload'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      appHubWorkload: map['appHubWorkload'] == null ? null : (InsightsConfigRuntimeConfigAppHubWorkload.fromMap((map['appHubWorkload']! as Map).cast<String, dynamic>())).input(),
+      gkeWorkload: map['gkeWorkload'] == null ? null : (InsightsConfigRuntimeConfigGkeWorkload.fromMap((map['gkeWorkload']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

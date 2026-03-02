@@ -62,11 +62,11 @@ class OutputPowerbiArgs {
       dataset: (map['dataset'] as String).input(),
       groupId: (map['groupId'] as String).input(),
       groupName: (map['groupName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       streamAnalyticsJobId: (map['streamAnalyticsJobId'] as String).input(),
       table: (map['table'] as String).input(),
-      tokenUserDisplayName: map['tokenUserDisplayName'] == null ? null : (map['tokenUserDisplayName'] as String).input(),
-      tokenUserPrincipalName: map['tokenUserPrincipalName'] == null ? null : (map['tokenUserPrincipalName'] as String).input(),
+      tokenUserDisplayName: map['tokenUserDisplayName'] == null ? null : (map['tokenUserDisplayName']! as String).input(),
+      tokenUserPrincipalName: map['tokenUserPrincipalName'] == null ? null : (map['tokenUserPrincipalName']! as String).input(),
     );
   }
 }

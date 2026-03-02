@@ -33,9 +33,9 @@ class TokenPasswordState {
 
   factory TokenPasswordState.fromMap(Map<String, dynamic> map) {
     return TokenPasswordState(
-      containerRegistryTokenId: map['containerRegistryTokenId'] == null ? null : (map['containerRegistryTokenId'] as String).input(),
-      password1: map['password1'] == null ? null : (TokenPasswordPassword1.fromMap((map['password1'] as Map).cast<String, dynamic>())).input(),
-      password2: map['password2'] == null ? null : (TokenPasswordPassword2.fromMap((map['password2'] as Map).cast<String, dynamic>())).input(),
+      containerRegistryTokenId: map['containerRegistryTokenId'] == null ? null : (map['containerRegistryTokenId']! as String).input(),
+      password1: map['password1'] == null ? null : (TokenPasswordPassword1.fromMap((map['password1']! as Map).cast<String, dynamic>())).input(),
+      password2: map['password2'] == null ? null : (TokenPasswordPassword2.fromMap((map['password2']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

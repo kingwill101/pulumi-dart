@@ -41,7 +41,7 @@ class GetWorkloadDeploymentSecretConfigurationsArgs {
     return GetWorkloadDeploymentSecretConfigurationsArgs(
       modernizeProjectName: (map['modernizeProjectName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
       workloadDeploymentName: (map['workloadDeploymentName'] as String).input(),
     );
   }

@@ -26,8 +26,8 @@ class DefaultCatalogProperties {
 
   factory DefaultCatalogProperties.fromMap(Map<String, dynamic> map) {
     return DefaultCatalogProperties(
-      initialName: map['initialName'] == null ? null : (map['initialName'] as String).input(),
-      initialType: map['initialType'] == null ? null : (map['initialType'] as String).input(),
+      initialName: map['initialName'] == null ? null : (map['initialName']! as String).input(),
+      initialType: map['initialType'] == null ? null : (map['initialType']! as String).input(),
     );
   }
 }

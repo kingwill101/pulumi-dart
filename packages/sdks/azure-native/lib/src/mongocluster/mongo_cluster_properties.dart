@@ -78,17 +78,17 @@ class MongoClusterProperties {
 
   factory MongoClusterProperties.fromMap(Map<String, dynamic> map) {
     return MongoClusterProperties(
-      administrator: map['administrator'] == null ? null : (AdministratorProperties.fromMap((map['administrator'] as Map).cast<String, dynamic>())).input(),
-      compute: map['compute'] == null ? null : (ComputeProperties.fromMap((map['compute'] as Map).cast<String, dynamic>())).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
-      highAvailability: map['highAvailability'] == null ? null : (HighAvailabilityProperties.fromMap((map['highAvailability'] as Map).cast<String, dynamic>())).input(),
-      previewFeatures: map['previewFeatures'] == null ? null : ((map['previewFeatures'] as List).cast<String>()).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      replicaParameters: map['replicaParameters'] == null ? null : (MongoClusterReplicaParameters.fromMap((map['replicaParameters'] as Map).cast<String, dynamic>())).input(),
-      restoreParameters: map['restoreParameters'] == null ? null : (MongoClusterRestoreParameters.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>())).input(),
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
-      sharding: map['sharding'] == null ? null : (ShardingProperties.fromMap((map['sharding'] as Map).cast<String, dynamic>())).input(),
-      storage: map['storage'] == null ? null : (StorageProperties.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
+      administrator: map['administrator'] == null ? null : (AdministratorProperties.fromMap((map['administrator']! as Map).cast<String, dynamic>())).input(),
+      compute: map['compute'] == null ? null : (ComputeProperties.fromMap((map['compute']! as Map).cast<String, dynamic>())).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
+      highAvailability: map['highAvailability'] == null ? null : (HighAvailabilityProperties.fromMap((map['highAvailability']! as Map).cast<String, dynamic>())).input(),
+      previewFeatures: map['previewFeatures'] == null ? null : ((map['previewFeatures']! as List).cast<String>()).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      replicaParameters: map['replicaParameters'] == null ? null : (MongoClusterReplicaParameters.fromMap((map['replicaParameters']! as Map).cast<String, dynamic>())).input(),
+      restoreParameters: map['restoreParameters'] == null ? null : (MongoClusterRestoreParameters.fromMap((map['restoreParameters']! as Map).cast<String, dynamic>())).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
+      sharding: map['sharding'] == null ? null : (ShardingProperties.fromMap((map['sharding']! as Map).cast<String, dynamic>())).input(),
+      storage: map['storage'] == null ? null : (StorageProperties.fromMap((map['storage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

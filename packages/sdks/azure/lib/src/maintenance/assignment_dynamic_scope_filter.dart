@@ -46,12 +46,12 @@ class AssignmentDynamicScopeFilter {
 
   factory AssignmentDynamicScopeFilter.fromMap(Map<String, dynamic> map) {
     return AssignmentDynamicScopeFilter(
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      osTypes: map['osTypes'] == null ? null : ((map['osTypes'] as List).cast<String>()).input(),
-      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups'] as List).cast<String>()).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
-      tagFilter: map['tagFilter'] == null ? null : (map['tagFilter'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<AssignmentDynamicScopeFilterTag>(map['tags'], (value) => AssignmentDynamicScopeFilterTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      osTypes: map['osTypes'] == null ? null : ((map['osTypes']! as List).cast<String>()).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups']! as List).cast<String>()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
+      tagFilter: map['tagFilter'] == null ? null : (map['tagFilter']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<AssignmentDynamicScopeFilterTag>(map['tags']!, (value) => AssignmentDynamicScopeFilterTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

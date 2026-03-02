@@ -30,9 +30,9 @@ class ActivityLogAlertCriteriaServiceHealth {
 
   factory ActivityLogAlertCriteriaServiceHealth.fromMap(Map<String, dynamic> map) {
     return ActivityLogAlertCriteriaServiceHealth(
-      events: map['events'] == null ? null : ((map['events'] as List).cast<String>()).input(),
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      services: map['services'] == null ? null : ((map['services'] as List).cast<String>()).input(),
+      events: map['events'] == null ? null : ((map['events']! as List).cast<String>()).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      services: map['services'] == null ? null : ((map['services']! as List).cast<String>()).input(),
     );
   }
 }

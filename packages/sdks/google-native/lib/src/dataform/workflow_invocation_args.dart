@@ -47,12 +47,12 @@ class WorkflowInvocationArgs {
 
   factory WorkflowInvocationArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowInvocationArgs(
-      compilationResult: map['compilationResult'] == null ? null : (map['compilationResult'] as String).input(),
-      invocationConfig: map['invocationConfig'] == null ? null : (InvocationConfig.fromMap((map['invocationConfig'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      compilationResult: map['compilationResult'] == null ? null : (map['compilationResult']! as String).input(),
+      invocationConfig: map['invocationConfig'] == null ? null : (InvocationConfig.fromMap((map['invocationConfig']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
-      workflowConfig: map['workflowConfig'] == null ? null : (map['workflowConfig'] as String).input(),
+      workflowConfig: map['workflowConfig'] == null ? null : (map['workflowConfig']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class TlsRouteRuleAction {
 
   factory TlsRouteRuleAction.fromMap(Map<String, dynamic> map) {
     return TlsRouteRuleAction(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<TlsRouteRuleActionDestination>(map['destinations'], (value) => TlsRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<TlsRouteRuleActionDestination>(map['destinations']!, (value) => TlsRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -42,8 +42,8 @@ class ResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta2 {
   factory ResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyRuleFlowcontrolApiserverK8sIoV1beta2(
       apiGroups: ((map['apiGroups'] as List).cast<String>()).input(),
-      clusterScope: map['clusterScope'] == null ? null : (map['clusterScope'] as bool).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
+      clusterScope: map['clusterScope'] == null ? null : (map['clusterScope']! as bool).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
       resources: ((map['resources'] as List).cast<String>()).input(),
       verbs: ((map['verbs'] as List).cast<String>()).input(),
     );

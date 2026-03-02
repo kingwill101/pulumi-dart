@@ -57,14 +57,14 @@ class ConnectToSourceSqlServerTaskInput {
 
   factory ConnectToSourceSqlServerTaskInput.fromMap(Map<String, dynamic> map) {
     return ConnectToSourceSqlServerTaskInput(
-      checkPermissionsGroup: map['checkPermissionsGroup'] == null ? null : (map['checkPermissionsGroup'] as String).input(),
-      collectAgentJobs: map['collectAgentJobs'] == null ? null : (map['collectAgentJobs'] as bool).input(),
-      collectDatabases: map['collectDatabases'] == null ? null : (map['collectDatabases'] as bool).input(),
-      collectLogins: map['collectLogins'] == null ? null : (map['collectLogins'] as bool).input(),
-      collectTdeCertificateInfo: map['collectTdeCertificateInfo'] == null ? null : (map['collectTdeCertificateInfo'] as bool).input(),
-      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields'] as String).input(),
+      checkPermissionsGroup: map['checkPermissionsGroup'] == null ? null : (map['checkPermissionsGroup']! as String).input(),
+      collectAgentJobs: map['collectAgentJobs'] == null ? null : (map['collectAgentJobs']! as bool).input(),
+      collectDatabases: map['collectDatabases'] == null ? null : (map['collectDatabases']! as bool).input(),
+      collectLogins: map['collectLogins'] == null ? null : (map['collectLogins']! as bool).input(),
+      collectTdeCertificateInfo: map['collectTdeCertificateInfo'] == null ? null : (map['collectTdeCertificateInfo']! as bool).input(),
+      encryptedKeyForSecureFields: map['encryptedKeyForSecureFields'] == null ? null : (map['encryptedKeyForSecureFields']! as String).input(),
       sourceConnectionInfo: (SqlConnectionInfo.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
-      validateSsisCatalogOnly: map['validateSsisCatalogOnly'] == null ? null : (map['validateSsisCatalogOnly'] as bool).input(),
+      validateSsisCatalogOnly: map['validateSsisCatalogOnly'] == null ? null : (map['validateSsisCatalogOnly']! as bool).input(),
     );
   }
 }

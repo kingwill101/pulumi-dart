@@ -41,11 +41,11 @@ class CreatorState {
 
   factory CreatorState.fromMap(Map<String, dynamic> map) {
     return CreatorState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mapsAccountId: map['mapsAccountId'] == null ? null : (map['mapsAccountId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageUnits: map['storageUnits'] == null ? null : (map['storageUnits'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mapsAccountId: map['mapsAccountId'] == null ? null : (map['mapsAccountId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageUnits: map['storageUnits'] == null ? null : (map['storageUnits']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

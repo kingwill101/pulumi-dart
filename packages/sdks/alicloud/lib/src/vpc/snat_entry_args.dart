@@ -49,12 +49,12 @@ class SnatEntryArgs {
 
   factory SnatEntryArgs.fromMap(Map<String, dynamic> map) {
     return SnatEntryArgs(
-      eipAffinity: map['eipAffinity'] == null ? null : (map['eipAffinity'] as int).input(),
-      snatEntryName: map['snatEntryName'] == null ? null : (map['snatEntryName'] as String).input(),
+      eipAffinity: map['eipAffinity'] == null ? null : (map['eipAffinity']! as int).input(),
+      snatEntryName: map['snatEntryName'] == null ? null : (map['snatEntryName']! as String).input(),
       snatIp: (map['snatIp'] as String).input(),
       snatTableId: (map['snatTableId'] as String).input(),
-      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr'] as String).input(),
-      sourceVswitchId: map['sourceVswitchId'] == null ? null : (map['sourceVswitchId'] as String).input(),
+      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr']! as String).input(),
+      sourceVswitchId: map['sourceVswitchId'] == null ? null : (map['sourceVswitchId']! as String).input(),
     );
   }
 }

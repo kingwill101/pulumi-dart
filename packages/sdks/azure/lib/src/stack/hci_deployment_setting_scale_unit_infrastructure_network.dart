@@ -43,7 +43,7 @@ class HciDeploymentSettingScaleUnitInfrastructureNetwork {
 
   factory HciDeploymentSettingScaleUnitInfrastructureNetwork.fromMap(Map<String, dynamic> map) {
     return HciDeploymentSettingScaleUnitInfrastructureNetwork(
-      dhcpEnabled: map['dhcpEnabled'] == null ? null : (map['dhcpEnabled'] as bool).input(),
+      dhcpEnabled: map['dhcpEnabled'] == null ? null : (map['dhcpEnabled']! as bool).input(),
       dnsServers: ((map['dnsServers'] as List).cast<String>()).input(),
       gateway: (map['gateway'] as String).input(),
       ipPools: (pulumi.Input.decodeList<HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool>(map['ipPools'], (value) => HciDeploymentSettingScaleUnitInfrastructureNetworkIpPool.fromMap((value as Map).cast<String, dynamic>()))).input(),

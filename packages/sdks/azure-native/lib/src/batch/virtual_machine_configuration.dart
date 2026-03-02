@@ -89,18 +89,18 @@ class VirtualMachineConfiguration {
 
   factory VirtualMachineConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineConfiguration(
-      containerConfiguration: map['containerConfiguration'] == null ? null : (ContainerConfiguration.fromMap((map['containerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<DataDisk>(map['dataDisks'], (value) => DataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diskEncryptionConfiguration: map['diskEncryptionConfiguration'] == null ? null : (DiskEncryptionConfiguration.fromMap((map['diskEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<VMExtension>(map['extensions'], (value) => VMExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerConfiguration: map['containerConfiguration'] == null ? null : (ContainerConfiguration.fromMap((map['containerConfiguration']! as Map).cast<String, dynamic>())).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<DataDisk>(map['dataDisks']!, (value) => DataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskEncryptionConfiguration: map['diskEncryptionConfiguration'] == null ? null : (DiskEncryptionConfiguration.fromMap((map['diskEncryptionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<VMExtension>(map['extensions']!, (value) => VMExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
       imageReference: (ImageReference.fromMap((map['imageReference'] as Map).cast<String, dynamic>())).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
       nodeAgentSkuId: (map['nodeAgentSkuId'] as String).input(),
-      nodePlacementConfiguration: map['nodePlacementConfiguration'] == null ? null : (NodePlacementConfiguration.fromMap((map['nodePlacementConfiguration'] as Map).cast<String, dynamic>())).input(),
-      osDisk: map['osDisk'] == null ? null : (OSDisk.fromMap((map['osDisk'] as Map).cast<String, dynamic>())).input(),
-      securityProfile: map['securityProfile'] == null ? null : (SecurityProfile.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
-      serviceArtifactReference: map['serviceArtifactReference'] == null ? null : (ServiceArtifactReference.fromMap((map['serviceArtifactReference'] as Map).cast<String, dynamic>())).input(),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : (WindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      nodePlacementConfiguration: map['nodePlacementConfiguration'] == null ? null : (NodePlacementConfiguration.fromMap((map['nodePlacementConfiguration']! as Map).cast<String, dynamic>())).input(),
+      osDisk: map['osDisk'] == null ? null : (OSDisk.fromMap((map['osDisk']! as Map).cast<String, dynamic>())).input(),
+      securityProfile: map['securityProfile'] == null ? null : (SecurityProfile.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
+      serviceArtifactReference: map['serviceArtifactReference'] == null ? null : (ServiceArtifactReference.fromMap((map['serviceArtifactReference']! as Map).cast<String, dynamic>())).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (WindowsConfiguration.fromMap((map['windowsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

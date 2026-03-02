@@ -56,13 +56,13 @@ class GetConnectionsResult {
   factory GetConnectionsResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionsResult(
       connections: pulumi.Input.decodeList<GetConnectionsConnection>(map['connections'], (value) => GetConnectionsConnection.fromMap((value as Map).cast<String, dynamic>())),
-      customerGatewayId: map['customerGatewayId'] == null ? null : map['customerGatewayId'] as String,
+      customerGatewayId: map['customerGatewayId'] == null ? null : map['customerGatewayId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : map['vpnGatewayId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : map['vpnGatewayId']! as String,
     );
   }
 }

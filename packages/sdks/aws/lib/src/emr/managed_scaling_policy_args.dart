@@ -46,10 +46,10 @@ class ManagedScalingPolicyArgs {
   factory ManagedScalingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedScalingPolicyArgs(
       clusterId: (map['clusterId'] as String).input(),
-      computeLimits: (pulumi.Input.decodeList<ManagedScalingPolicyComputeLimit>(map['computeLimits'], (value) => ManagedScalingPolicyComputeLimit.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scalingStrategy: map['scalingStrategy'] == null ? null : (map['scalingStrategy'] as String).input(),
-      utilizationPerformanceIndex: map['utilizationPerformanceIndex'] == null ? null : (map['utilizationPerformanceIndex'] as int).input(),
+      computeLimits: (pulumi.Input.decodeList<ManagedScalingPolicyComputeLimit>(map['computeLimits']!, (value) => ManagedScalingPolicyComputeLimit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scalingStrategy: map['scalingStrategy'] == null ? null : ((map['scalingStrategy'] as String).input()).input(),
+      utilizationPerformanceIndex: map['utilizationPerformanceIndex'] == null ? null : ((map['utilizationPerformanceIndex'] as int).input()).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class IpAccessSettingsIpRule {
 
   factory IpAccessSettingsIpRule.fromMap(Map<String, dynamic> map) {
     return IpAccessSettingsIpRule(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       ipRange: (map['ipRange'] as String).input(),
     );
   }

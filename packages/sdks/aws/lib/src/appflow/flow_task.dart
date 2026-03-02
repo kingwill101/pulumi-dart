@@ -41,10 +41,10 @@ class FlowTask {
 
   factory FlowTask.fromMap(Map<String, dynamic> map) {
     return FlowTask(
-      connectorOperators: map['connectorOperators'] == null ? null : (pulumi.Input.decodeList<FlowTaskConnectorOperator>(map['connectorOperators'], (value) => FlowTaskConnectorOperator.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      destinationField: map['destinationField'] == null ? null : (map['destinationField'] as String).input(),
-      sourceFields: map['sourceFields'] == null ? null : ((map['sourceFields'] as List).cast<String>()).input(),
-      taskProperties: map['taskProperties'] == null ? null : ((map['taskProperties'] as Map).cast<String, String>()).input(),
+      connectorOperators: map['connectorOperators'] == null ? null : ((pulumi.Input.decodeList<FlowTaskConnectorOperator>(map['connectorOperators']!, (value) => FlowTaskConnectorOperator.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      destinationField: map['destinationField'] == null ? null : ((map['destinationField'] as String).input()).input(),
+      sourceFields: map['sourceFields'] == null ? null : (((map['sourceFields'] as List).cast<String>()).input()).input(),
+      taskProperties: map['taskProperties'] == null ? null : (((map['taskProperties'] as Map).cast<String, String>()).input()).input(),
       taskType: (map['taskType'] as String).input(),
     );
   }

@@ -26,8 +26,8 @@ class ApiBridgeProperties {
 
   factory ApiBridgeProperties.fromMap(Map<String, dynamic> map) {
     return ApiBridgeProperties(
-      allowedAddressPrefixes: map['allowedAddressPrefixes'] == null ? null : ((map['allowedAddressPrefixes'] as List).cast<String>()).input(),
-      configureApiBridge: map['configureApiBridge'] == null ? null : (map['configureApiBridge'] as String).input(),
+      allowedAddressPrefixes: map['allowedAddressPrefixes'] == null ? null : ((map['allowedAddressPrefixes']! as List).cast<String>()).input(),
+      configureApiBridge: map['configureApiBridge'] == null ? null : (map['configureApiBridge']! as String).input(),
     );
   }
 }

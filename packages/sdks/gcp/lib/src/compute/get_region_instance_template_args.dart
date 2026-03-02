@@ -48,11 +48,11 @@ class GetRegionInstanceTemplateArgs {
 
   factory GetRegionInstanceTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateArgs(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class ContainerImage {
   factory ContainerImage.fromMap(Map<String, dynamic> map) {
     return ContainerImage(
       repository: (map['repository'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

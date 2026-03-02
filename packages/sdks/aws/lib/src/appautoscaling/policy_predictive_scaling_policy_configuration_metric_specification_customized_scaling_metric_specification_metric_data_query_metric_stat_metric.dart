@@ -31,9 +31,9 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedSca
 
   factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetric.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetric(
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimension>(map['dimensions'], (value) => PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((pulumi.Input.decodeList<PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimension>(map['dimensions']!, (value) => PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      metricName: map['metricName'] == null ? null : ((map['metricName'] as String).input()).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
     );
   }
 }

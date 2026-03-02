@@ -23,7 +23,7 @@ class GetGradientaiRegionsSort {
 
   factory GetGradientaiRegionsSort.fromMap(Map<String, dynamic> map) {
     return GetGradientaiRegionsSort(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
       key: (map['key'] as String).input(),
     );
   }

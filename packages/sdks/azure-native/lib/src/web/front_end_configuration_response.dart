@@ -19,7 +19,7 @@ class FrontEndConfigurationResponse {
 
   factory FrontEndConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FrontEndConfigurationResponse(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

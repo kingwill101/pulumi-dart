@@ -24,8 +24,8 @@ class EnergyServiceProperties {
 
   factory EnergyServiceProperties.fromMap(Map<String, dynamic> map) {
     return EnergyServiceProperties(
-      authAppId: map['authAppId'] == null ? null : (map['authAppId'] as String).input(),
-      dataPartitionNames: map['dataPartitionNames'] == null ? null : (pulumi.Input.decodeList<DataPartitionNames>(map['dataPartitionNames'], (value) => DataPartitionNames.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authAppId: map['authAppId'] == null ? null : (map['authAppId']! as String).input(),
+      dataPartitionNames: map['dataPartitionNames'] == null ? null : (pulumi.Input.decodeList<DataPartitionNames>(map['dataPartitionNames']!, (value) => DataPartitionNames.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

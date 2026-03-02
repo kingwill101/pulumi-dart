@@ -31,9 +31,9 @@ class HttpFilterConfig {
 
   factory HttpFilterConfig.fromMap(Map<String, dynamic> map) {
     return HttpFilterConfig(
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      configTypeUrl: map['configTypeUrl'] == null ? null : (map['configTypeUrl'] as String).input(),
-      filterName: map['filterName'] == null ? null : (map['filterName'] as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      configTypeUrl: map['configTypeUrl'] == null ? null : (map['configTypeUrl']! as String).input(),
+      filterName: map['filterName'] == null ? null : (map['filterName']! as String).input(),
     );
   }
 }

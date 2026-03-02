@@ -31,9 +31,9 @@ class GoogleCloudAiplatformV1beta1FractionSplit {
 
   factory GoogleCloudAiplatformV1beta1FractionSplit.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FractionSplit(
-      testFraction: map['testFraction'] == null ? null : (map['testFraction'] as double).input(),
-      trainingFraction: map['trainingFraction'] == null ? null : (map['trainingFraction'] as double).input(),
-      validationFraction: map['validationFraction'] == null ? null : (map['validationFraction'] as double).input(),
+      testFraction: map['testFraction'] == null ? null : (map['testFraction']! as double).input(),
+      trainingFraction: map['trainingFraction'] == null ? null : (map['trainingFraction']! as double).input(),
+      validationFraction: map['validationFraction'] == null ? null : (map['validationFraction']! as double).input(),
     );
   }
 }

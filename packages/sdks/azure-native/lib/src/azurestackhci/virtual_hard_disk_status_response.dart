@@ -44,11 +44,11 @@ class VirtualHardDiskStatusResponse {
 
   factory VirtualHardDiskStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualHardDiskStatusResponse(
-      downloadStatus: map['downloadStatus'] == null ? null : (VirtualHardDiskDownloadStatusResponse.fromMap((map['downloadStatus'] as Map).cast<String, dynamic>())).input(),
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (VirtualHardDiskStatusProvisioningStatusResponse.fromMap((map['provisioningStatus'] as Map).cast<String, dynamic>())).input(),
-      uploadStatus: map['uploadStatus'] == null ? null : (VirtualHardDiskUploadStatusResponse.fromMap((map['uploadStatus'] as Map).cast<String, dynamic>())).input(),
+      downloadStatus: map['downloadStatus'] == null ? null : (VirtualHardDiskDownloadStatusResponse.fromMap((map['downloadStatus']! as Map).cast<String, dynamic>())).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (VirtualHardDiskStatusProvisioningStatusResponse.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
+      uploadStatus: map['uploadStatus'] == null ? null : (VirtualHardDiskUploadStatusResponse.fromMap((map['uploadStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

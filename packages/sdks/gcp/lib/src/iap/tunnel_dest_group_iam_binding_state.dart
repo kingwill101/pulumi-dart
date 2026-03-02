@@ -70,13 +70,13 @@ class TunnelDestGroupIamBindingState {
 
   factory TunnelDestGroupIamBindingState.fromMap(Map<String, dynamic> map) {
     return TunnelDestGroupIamBindingState(
-      condition: map['condition'] == null ? null : (TunnelDestGroupIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      destGroup: map['destGroup'] == null ? null : (map['destGroup'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (TunnelDestGroupIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      destGroup: map['destGroup'] == null ? null : (map['destGroup']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

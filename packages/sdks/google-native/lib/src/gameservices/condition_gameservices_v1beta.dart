@@ -44,11 +44,11 @@ class ConditionGameservicesV1beta {
 
   factory ConditionGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return ConditionGameservicesV1beta(
-      iam: map['iam'] == null ? null : (ConditionIamGameservicesV1beta.fromValue(map['iam'] as String)).input(),
-      op: map['op'] == null ? null : (ConditionOpGameservicesV1beta.fromValue(map['op'] as String)).input(),
-      svc: map['svc'] == null ? null : (map['svc'] as String).input(),
-      sys: map['sys'] == null ? null : (ConditionSysGameservicesV1beta.fromValue(map['sys'] as String)).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      iam: map['iam'] == null ? null : (ConditionIamGameservicesV1beta.fromValue(map['iam']! as String)).input(),
+      op: map['op'] == null ? null : (ConditionOpGameservicesV1beta.fromValue(map['op']! as String)).input(),
+      svc: map['svc'] == null ? null : (map['svc']! as String).input(),
+      sys: map['sys'] == null ? null : (ConditionSysGameservicesV1beta.fromValue(map['sys']! as String)).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

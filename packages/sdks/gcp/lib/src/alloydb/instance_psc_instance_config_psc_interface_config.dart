@@ -22,7 +22,7 @@ class InstancePscInstanceConfigPscInterfaceConfig {
 
   factory InstancePscInstanceConfigPscInterfaceConfig.fromMap(Map<String, dynamic> map) {
     return InstancePscInstanceConfigPscInterfaceConfig(
-      networkAttachmentResource: map['networkAttachmentResource'] == null ? null : (map['networkAttachmentResource'] as String).input(),
+      networkAttachmentResource: map['networkAttachmentResource'] == null ? null : (map['networkAttachmentResource']! as String).input(),
     );
   }
 }

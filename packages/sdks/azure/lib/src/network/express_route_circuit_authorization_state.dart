@@ -41,11 +41,11 @@ class ExpressRouteCircuitAuthorizationState {
 
   factory ExpressRouteCircuitAuthorizationState.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitAuthorizationState(
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
-      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : (map['authorizationUseStatus'] as String).input(),
-      expressRouteCircuitName: map['expressRouteCircuitName'] == null ? null : (map['expressRouteCircuitName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
+      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : (map['authorizationUseStatus']! as String).input(),
+      expressRouteCircuitName: map['expressRouteCircuitName'] == null ? null : (map['expressRouteCircuitName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

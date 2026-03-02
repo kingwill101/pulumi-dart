@@ -22,7 +22,7 @@ class IapCredentialWebsecurityscannerV1beta {
 
   factory IapCredentialWebsecurityscannerV1beta.fromMap(Map<String, dynamic> map) {
     return IapCredentialWebsecurityscannerV1beta(
-      iapTestServiceAccountInfo: map['iapTestServiceAccountInfo'] == null ? null : (IapTestServiceAccountInfoWebsecurityscannerV1beta.fromMap((map['iapTestServiceAccountInfo'] as Map).cast<String, dynamic>())).input(),
+      iapTestServiceAccountInfo: map['iapTestServiceAccountInfo'] == null ? null : (IapTestServiceAccountInfoWebsecurityscannerV1beta.fromMap((map['iapTestServiceAccountInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

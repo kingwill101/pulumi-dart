@@ -41,9 +41,9 @@ class GetPolicyDocumentResult {
     return GetPolicyDocumentResult(
       document: map['document'] as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      statements: map['statements'] == null ? null : pulumi.Input.decodeList<GetPolicyDocumentStatement>(map['statements'], (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>())),
-      version: map['version'] == null ? null : map['version'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      statements: map['statements'] == null ? null : pulumi.Input.decodeList<GetPolicyDocumentStatement>(map['statements']!, (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>())),
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

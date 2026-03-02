@@ -61,15 +61,15 @@ class GrafanaManagedPrivateEndpointState {
 
   factory GrafanaManagedPrivateEndpointState.fromMap(Map<String, dynamic> map) {
     return GrafanaManagedPrivateEndpointState(
-      grafanaId: map['grafanaId'] == null ? null : (map['grafanaId'] as String).input(),
-      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId'] as String).input(),
-      privateLinkResourceRegion: map['privateLinkResourceRegion'] == null ? null : (map['privateLinkResourceRegion'] as String).input(),
-      privateLinkServiceUrl: map['privateLinkServiceUrl'] == null ? null : (map['privateLinkServiceUrl'] as String).input(),
-      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      grafanaId: map['grafanaId'] == null ? null : (map['grafanaId']! as String).input(),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateLinkResourceId: map['privateLinkResourceId'] == null ? null : (map['privateLinkResourceId']! as String).input(),
+      privateLinkResourceRegion: map['privateLinkResourceRegion'] == null ? null : (map['privateLinkResourceRegion']! as String).input(),
+      privateLinkServiceUrl: map['privateLinkServiceUrl'] == null ? null : (map['privateLinkServiceUrl']! as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

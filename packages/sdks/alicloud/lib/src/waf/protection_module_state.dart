@@ -46,11 +46,11 @@ class ProtectionModuleState {
 
   factory ProtectionModuleState.fromMap(Map<String, dynamic> map) {
     return ProtectionModuleState(
-      defenseType: map['defenseType'] == null ? null : (map['defenseType'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
+      defenseType: map['defenseType'] == null ? null : (map['defenseType']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
     );
   }
 }

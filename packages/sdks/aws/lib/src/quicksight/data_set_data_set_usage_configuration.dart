@@ -25,8 +25,8 @@ class DataSetDataSetUsageConfiguration {
 
   factory DataSetDataSetUsageConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSetDataSetUsageConfiguration(
-      disableUseAsDirectQuerySource: map['disableUseAsDirectQuerySource'] == null ? null : (map['disableUseAsDirectQuerySource'] as bool).input(),
-      disableUseAsImportedSource: map['disableUseAsImportedSource'] == null ? null : (map['disableUseAsImportedSource'] as bool).input(),
+      disableUseAsDirectQuerySource: map['disableUseAsDirectQuerySource'] == null ? null : ((map['disableUseAsDirectQuerySource'] as bool).input()).input(),
+      disableUseAsImportedSource: map['disableUseAsImportedSource'] == null ? null : ((map['disableUseAsImportedSource'] as bool).input()).input(),
     );
   }
 }

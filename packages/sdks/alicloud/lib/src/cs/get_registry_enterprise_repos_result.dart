@@ -58,14 +58,14 @@ class GetRegistryEnterpriseReposResult {
 
   factory GetRegistryEnterpriseReposResult.fromMap(Map<String, dynamic> map) {
     return GetRegistryEnterpriseReposResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      namespace: map['namespace'] == null ? null : map['namespace']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       repos: pulumi.Input.decodeList<GetRegistryEnterpriseReposRepo>(map['repos'], (value) => GetRegistryEnterpriseReposRepo.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

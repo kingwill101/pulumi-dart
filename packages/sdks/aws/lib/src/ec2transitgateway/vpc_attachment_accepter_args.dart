@@ -44,11 +44,11 @@ class VpcAttachmentAccepterArgs {
 
   factory VpcAttachmentAccepterArgs.fromMap(Map<String, dynamic> map) {
     return VpcAttachmentAccepterArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
-      transitGatewayDefaultRouteTableAssociation: map['transitGatewayDefaultRouteTableAssociation'] == null ? null : (map['transitGatewayDefaultRouteTableAssociation'] as bool).input(),
-      transitGatewayDefaultRouteTablePropagation: map['transitGatewayDefaultRouteTablePropagation'] == null ? null : (map['transitGatewayDefaultRouteTablePropagation'] as bool).input(),
+      transitGatewayDefaultRouteTableAssociation: map['transitGatewayDefaultRouteTableAssociation'] == null ? null : ((map['transitGatewayDefaultRouteTableAssociation'] as bool).input()).input(),
+      transitGatewayDefaultRouteTablePropagation: map['transitGatewayDefaultRouteTablePropagation'] == null ? null : ((map['transitGatewayDefaultRouteTablePropagation'] as bool).input()).input(),
     );
   }
 }

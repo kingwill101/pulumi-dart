@@ -44,8 +44,8 @@ class ReplicationLinkArgs {
   factory ReplicationLinkArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationLinkArgs(
       databaseName: (map['databaseName'] as String).input(),
-      linkId: map['linkId'] == null ? null : (map['linkId'] as String).input(),
-      linkType: map['linkType'] == null ? null : (map['linkType'] as String).input(),
+      linkId: map['linkId'] == null ? null : (map['linkId']! as String).input(),
+      linkType: map['linkType'] == null ? null : (map['linkType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
     );

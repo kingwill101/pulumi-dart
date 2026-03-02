@@ -90,19 +90,19 @@ class GetAssessmentsMetadataSubscriptionResult {
     return GetAssessmentsMetadataSubscriptionResult(
       assessmentType: map['assessmentType'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      categories: map['categories'] == null ? null : (map['categories'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
+      categories: map['categories'] == null ? null : (map['categories']! as List).cast<String>(),
+      description: map['description'] == null ? null : map['description']! as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
-      implementationEffort: map['implementationEffort'] == null ? null : map['implementationEffort'] as String,
+      implementationEffort: map['implementationEffort'] == null ? null : map['implementationEffort']! as String,
       name: map['name'] as String,
       policyDefinitionId: map['policyDefinitionId'] as String,
-      preview: map['preview'] == null ? null : map['preview'] as bool,
-      remediationDescription: map['remediationDescription'] == null ? null : map['remediationDescription'] as String,
+      preview: map['preview'] == null ? null : map['preview']! as bool,
+      remediationDescription: map['remediationDescription'] == null ? null : map['remediationDescription']! as String,
       severity: map['severity'] as String,
-      threats: map['threats'] == null ? null : (map['threats'] as List).cast<String>(),
+      threats: map['threats'] == null ? null : (map['threats']! as List).cast<String>(),
       type: map['type'] as String,
-      userImpact: map['userImpact'] == null ? null : map['userImpact'] as String,
+      userImpact: map['userImpact'] == null ? null : map['userImpact']! as String,
     );
   }
 }

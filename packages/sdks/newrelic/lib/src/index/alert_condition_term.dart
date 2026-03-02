@@ -41,8 +41,8 @@ class AlertConditionTerm {
   factory AlertConditionTerm.fromMap(Map<String, dynamic> map) {
     return AlertConditionTerm(
       duration: (map['duration'] as int).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as String).input(),
       threshold: (map['threshold'] as double).input(),
       timeFunction: (map['timeFunction'] as String).input(),
     );

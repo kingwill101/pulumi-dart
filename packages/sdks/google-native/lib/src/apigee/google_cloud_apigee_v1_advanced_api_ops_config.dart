@@ -21,7 +21,7 @@ class GoogleCloudApigeeV1AdvancedApiOpsConfig {
 
   factory GoogleCloudApigeeV1AdvancedApiOpsConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1AdvancedApiOpsConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

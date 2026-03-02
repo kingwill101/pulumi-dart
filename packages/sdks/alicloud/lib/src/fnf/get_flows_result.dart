@@ -49,10 +49,10 @@ class GetFlowsResult {
       flows: pulumi.Input.decodeList<GetFlowsFlow>(map['flows'], (value) => GetFlowsFlow.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      limit: map['limit'] == null ? null : map['limit'] as int,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      limit: map['limit'] == null ? null : map['limit']! as int,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

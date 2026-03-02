@@ -38,11 +38,11 @@ class GetNetworkingIpsResult {
 
   factory GetNetworkingIpsResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkingIpsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNetworkingIpsFilter>(map['filters'], (value) => GetNetworkingIpsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNetworkingIpsFilter>(map['filters']!, (value) => GetNetworkingIpsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipAddresses: pulumi.Input.decodeList<GetNetworkingIpsIpAddress>(map['ipAddresses'], (value) => GetNetworkingIpsIpAddress.fromMap((value as Map).cast<String, dynamic>())),
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
     );
   }
 }

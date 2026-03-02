@@ -32,8 +32,8 @@ class JsonSerializationResponse {
 
   factory JsonSerializationResponse.fromMap(Map<String, dynamic> map) {
     return JsonSerializationResponse(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -45,12 +45,12 @@ class RaiPolicyPropertiesResponse {
 
   factory RaiPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RaiPolicyPropertiesResponse(
-      basePolicyName: map['basePolicyName'] == null ? null : (map['basePolicyName'] as String).input(),
-      completionBlocklists: map['completionBlocklists'] == null ? null : (pulumi.Input.decodeList<RaiBlocklistConfigResponse>(map['completionBlocklists'], (value) => RaiBlocklistConfigResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contentFilters: map['contentFilters'] == null ? null : (pulumi.Input.decodeList<RaiPolicyContentFilterResponse>(map['contentFilters'], (value) => RaiPolicyContentFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      promptBlocklists: map['promptBlocklists'] == null ? null : (pulumi.Input.decodeList<RaiBlocklistConfigResponse>(map['promptBlocklists'], (value) => RaiBlocklistConfigResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      basePolicyName: map['basePolicyName'] == null ? null : (map['basePolicyName']! as String).input(),
+      completionBlocklists: map['completionBlocklists'] == null ? null : (pulumi.Input.decodeList<RaiBlocklistConfigResponse>(map['completionBlocklists']!, (value) => RaiBlocklistConfigResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contentFilters: map['contentFilters'] == null ? null : (pulumi.Input.decodeList<RaiPolicyContentFilterResponse>(map['contentFilters']!, (value) => RaiPolicyContentFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      promptBlocklists: map['promptBlocklists'] == null ? null : (pulumi.Input.decodeList<RaiBlocklistConfigResponse>(map['promptBlocklists']!, (value) => RaiBlocklistConfigResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

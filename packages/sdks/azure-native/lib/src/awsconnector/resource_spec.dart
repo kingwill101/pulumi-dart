@@ -31,9 +31,9 @@ class ResourceSpec {
 
   factory ResourceSpec.fromMap(Map<String, dynamic> map) {
     return ResourceSpec(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      sageMakerImageArn: map['sageMakerImageArn'] == null ? null : (map['sageMakerImageArn'] as String).input(),
-      sageMakerImageVersionArn: map['sageMakerImageVersionArn'] == null ? null : (map['sageMakerImageVersionArn'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      sageMakerImageArn: map['sageMakerImageArn'] == null ? null : (map['sageMakerImageArn']! as String).input(),
+      sageMakerImageVersionArn: map['sageMakerImageVersionArn'] == null ? null : (map['sageMakerImageVersionArn']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class DefenderCspmGcpOfferingCiemDiscovery {
 
   factory DefenderCspmGcpOfferingCiemDiscovery.fromMap(Map<String, dynamic> map) {
     return DefenderCspmGcpOfferingCiemDiscovery(
-      azureActiveDirectoryAppName: map['azureActiveDirectoryAppName'] == null ? null : (map['azureActiveDirectoryAppName'] as String).input(),
-      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress'] as String).input(),
-      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId'] as String).input(),
+      azureActiveDirectoryAppName: map['azureActiveDirectoryAppName'] == null ? null : (map['azureActiveDirectoryAppName']! as String).input(),
+      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress']! as String).input(),
+      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId']! as String).input(),
     );
   }
 }

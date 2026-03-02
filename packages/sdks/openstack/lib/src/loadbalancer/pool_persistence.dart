@@ -27,7 +27,7 @@ class PoolPersistence {
 
   factory PoolPersistence.fromMap(Map<String, dynamic> map) {
     return PoolPersistence(
-      cookieName: map['cookieName'] == null ? null : (map['cookieName'] as String).input(),
+      cookieName: map['cookieName'] == null ? null : (map['cookieName']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -56,13 +56,13 @@ class URLMapTest {
 
   factory URLMapTest.fromMap(Map<String, dynamic> map) {
     return URLMapTest(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expectedOutputUrl: map['expectedOutputUrl'] == null ? null : (map['expectedOutputUrl'] as String).input(),
-      expectedRedirectResponseCode: map['expectedRedirectResponseCode'] == null ? null : (map['expectedRedirectResponseCode'] as int).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<URLMapTestHeader>(map['headers'], (value) => URLMapTestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expectedOutputUrl: map['expectedOutputUrl'] == null ? null : (map['expectedOutputUrl']! as String).input(),
+      expectedRedirectResponseCode: map['expectedRedirectResponseCode'] == null ? null : (map['expectedRedirectResponseCode']! as int).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<URLMapTestHeader>(map['headers']!, (value) => URLMapTestHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
       host: (map['host'] as String).input(),
       path: (map['path'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

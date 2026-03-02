@@ -32,9 +32,9 @@ class SecretProperties {
 
   factory SecretProperties.fromMap(Map<String, dynamic> map) {
     return SecretProperties(
-      attributes: map['attributes'] == null ? null : (SecretAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      attributes: map['attributes'] == null ? null : (SecretAttributes.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

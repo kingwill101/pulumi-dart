@@ -65,14 +65,14 @@ class ServerPropertiesForRestore {
   factory ServerPropertiesForRestore.fromMap(Map<String, dynamic> map) {
     return ServerPropertiesForRestore(
       createMode: (map['createMode'] as String).input(),
-      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : (map['infrastructureEncryption'] as String).input(),
-      minimalTlsVersion: map['minimalTlsVersion'] == null ? null : (map['minimalTlsVersion'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : (map['infrastructureEncryption']! as String).input(),
+      minimalTlsVersion: map['minimalTlsVersion'] == null ? null : (map['minimalTlsVersion']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       restorePointInTime: (map['restorePointInTime'] as String).input(),
       sourceServerId: (map['sourceServerId'] as String).input(),
-      sslEnforcement: map['sslEnforcement'] == null ? null : (SslEnforcementEnum.fromValue(map['sslEnforcement'] as String)).input(),
-      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      sslEnforcement: map['sslEnforcement'] == null ? null : (SslEnforcementEnum.fromValue(map['sslEnforcement']! as String)).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

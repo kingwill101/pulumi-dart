@@ -27,8 +27,8 @@ class GoogleCloudChannelV1Parameter {
 
   factory GoogleCloudChannelV1Parameter.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1Parameter(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (GoogleCloudChannelV1Value.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (GoogleCloudChannelV1Value.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

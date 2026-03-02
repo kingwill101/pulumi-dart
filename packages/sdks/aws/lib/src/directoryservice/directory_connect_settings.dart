@@ -44,8 +44,8 @@ class DirectoryConnectSettings {
 
   factory DirectoryConnectSettings.fromMap(Map<String, dynamic> map) {
     return DirectoryConnectSettings(
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
-      connectIps: map['connectIps'] == null ? null : ((map['connectIps'] as List).cast<String>()).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : (((map['availabilityZones'] as List).cast<String>()).input()).input(),
+      connectIps: map['connectIps'] == null ? null : (((map['connectIps'] as List).cast<String>()).input()).input(),
       customerDnsIps: ((map['customerDnsIps'] as List).cast<String>()).input(),
       customerUsername: (map['customerUsername'] as String).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),

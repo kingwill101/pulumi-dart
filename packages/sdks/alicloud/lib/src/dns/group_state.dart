@@ -21,7 +21,7 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

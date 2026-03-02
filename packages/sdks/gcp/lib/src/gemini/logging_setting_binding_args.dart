@@ -58,11 +58,11 @@ class LoggingSettingBindingArgs {
 
   factory LoggingSettingBindingArgs.fromMap(Map<String, dynamic> map) {
     return LoggingSettingBindingArgs(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       loggingSettingId: (map['loggingSettingId'] as String).input(),
-      product: map['product'] == null ? null : (map['product'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      product: map['product'] == null ? null : (map['product']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       settingBindingId: (map['settingBindingId'] as String).input(),
       target: (map['target'] as String).input(),
     );

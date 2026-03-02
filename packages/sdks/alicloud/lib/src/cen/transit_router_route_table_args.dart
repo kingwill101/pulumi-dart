@@ -44,11 +44,11 @@ class TransitRouterRouteTableArgs {
 
   factory TransitRouterRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterRouteTableArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       transitRouterId: (map['transitRouterId'] as String).input(),
-      transitRouterRouteTableDescription: map['transitRouterRouteTableDescription'] == null ? null : (map['transitRouterRouteTableDescription'] as String).input(),
-      transitRouterRouteTableName: map['transitRouterRouteTableName'] == null ? null : (map['transitRouterRouteTableName'] as String).input(),
+      transitRouterRouteTableDescription: map['transitRouterRouteTableDescription'] == null ? null : (map['transitRouterRouteTableDescription']! as String).input(),
+      transitRouterRouteTableName: map['transitRouterRouteTableName'] == null ? null : (map['transitRouterRouteTableName']! as String).input(),
     );
   }
 }

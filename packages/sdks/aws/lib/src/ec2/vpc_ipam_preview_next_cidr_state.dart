@@ -41,11 +41,11 @@ class VpcIpamPreviewNextCidrState {
 
   factory VpcIpamPreviewNextCidrState.fromMap(Map<String, dynamic> map) {
     return VpcIpamPreviewNextCidrState(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      disallowedCidrs: map['disallowedCidrs'] == null ? null : ((map['disallowedCidrs'] as List).cast<String>()).input(),
-      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
-      netmaskLength: map['netmaskLength'] == null ? null : (map['netmaskLength'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      cidr: map['cidr'] == null ? null : ((map['cidr'] as String).input()).input(),
+      disallowedCidrs: map['disallowedCidrs'] == null ? null : (((map['disallowedCidrs'] as List).cast<String>()).input()).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : ((map['ipamPoolId'] as String).input()).input(),
+      netmaskLength: map['netmaskLength'] == null ? null : ((map['netmaskLength'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

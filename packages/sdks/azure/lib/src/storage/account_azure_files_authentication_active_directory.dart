@@ -47,10 +47,10 @@ class AccountAzureFilesAuthenticationActiveDirectory {
     return AccountAzureFilesAuthenticationActiveDirectory(
       domainGuid: (map['domainGuid'] as String).input(),
       domainName: (map['domainName'] as String).input(),
-      domainSid: map['domainSid'] == null ? null : (map['domainSid'] as String).input(),
-      forestName: map['forestName'] == null ? null : (map['forestName'] as String).input(),
-      netbiosDomainName: map['netbiosDomainName'] == null ? null : (map['netbiosDomainName'] as String).input(),
-      storageSid: map['storageSid'] == null ? null : (map['storageSid'] as String).input(),
+      domainSid: map['domainSid'] == null ? null : (map['domainSid']! as String).input(),
+      forestName: map['forestName'] == null ? null : (map['forestName']! as String).input(),
+      netbiosDomainName: map['netbiosDomainName'] == null ? null : (map['netbiosDomainName']! as String).input(),
+      storageSid: map['storageSid'] == null ? null : (map['storageSid']! as String).input(),
     );
   }
 }

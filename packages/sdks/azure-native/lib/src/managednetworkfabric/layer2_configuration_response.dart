@@ -26,8 +26,8 @@ class Layer2ConfigurationResponse {
 
   factory Layer2ConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return Layer2ConfigurationResponse(
-      interfaces: map['interfaces'] == null ? null : ((map['interfaces'] as List).cast<String>()).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
+      interfaces: map['interfaces'] == null ? null : ((map['interfaces']! as List).cast<String>()).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
     );
   }
 }

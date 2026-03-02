@@ -160,7 +160,7 @@ class GetVirtualMachineTemplateResult {
       extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
       generation: map['generation'] as int,
       id: map['id'] as String,
-      inventoryItemId: map['inventoryItemId'] == null ? null : map['inventoryItemId'] as String,
+      inventoryItemId: map['inventoryItemId'] == null ? null : map['inventoryItemId']! as String,
       isCustomizable: map['isCustomizable'] as String,
       isHighlyAvailable: map['isHighlyAvailable'] as String,
       limitCpuForMigration: map['limitCpuForMigration'] as String,
@@ -172,10 +172,10 @@ class GetVirtualMachineTemplateResult {
       osType: map['osType'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      uuid: map['uuid'] == null ? null : map['uuid'] as String,
-      vmmServerId: map['vmmServerId'] == null ? null : map['vmmServerId'] as String,
+      uuid: map['uuid'] == null ? null : map['uuid']! as String,
+      vmmServerId: map['vmmServerId'] == null ? null : map['vmmServerId']! as String,
     );
   }
 }

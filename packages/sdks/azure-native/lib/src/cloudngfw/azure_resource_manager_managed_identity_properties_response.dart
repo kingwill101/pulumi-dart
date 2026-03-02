@@ -40,7 +40,7 @@ class AzureResourceManagerManagedIdentityPropertiesResponse {
       principalId: (map['principalId'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),
       type: (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<AzureResourceManagerUserAssignedIdentityResponse>(map['userAssignedIdentities'], (value) => AzureResourceManagerUserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<AzureResourceManagerUserAssignedIdentityResponse>(map['userAssignedIdentities']!, (value) => AzureResourceManagerUserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

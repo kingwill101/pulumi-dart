@@ -26,8 +26,8 @@ class IngressConfigurationScale {
 
   factory IngressConfigurationScale.fromMap(Map<String, dynamic> map) {
     return IngressConfigurationScale(
-      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas'] as int).input(),
-      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas'] as int).input(),
+      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas']! as int).input(),
+      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas']! as int).input(),
     );
   }
 }

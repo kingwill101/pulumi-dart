@@ -51,14 +51,14 @@ class GetBackupJobsResult {
 
   factory GetBackupJobsResult.fromMap(Map<String, dynamic> map) {
     return GetBackupJobsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetBackupJobsFilter>(map['filters'], (value) => GetBackupJobsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetBackupJobsFilter>(map['filters']!, (value) => GetBackupJobsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       jobs: pulumi.Input.decodeList<GetBackupJobsJob>(map['jobs'], (value) => GetBackupJobsJob.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      sortDirection: map['sortDirection'] == null ? null : map['sortDirection'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      sortDirection: map['sortDirection'] == null ? null : map['sortDirection']! as String,
       sourceType: map['sourceType'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

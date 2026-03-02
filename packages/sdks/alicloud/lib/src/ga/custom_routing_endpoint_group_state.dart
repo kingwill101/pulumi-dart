@@ -46,12 +46,12 @@ class CustomRoutingEndpointGroupState {
 
   factory CustomRoutingEndpointGroupState.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupState(
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
-      customRoutingEndpointGroupName: map['customRoutingEndpointGroupName'] == null ? null : (map['customRoutingEndpointGroupName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : (map['endpointGroupRegion'] as String).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
+      customRoutingEndpointGroupName: map['customRoutingEndpointGroupName'] == null ? null : (map['customRoutingEndpointGroupName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : (map['endpointGroupRegion']! as String).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

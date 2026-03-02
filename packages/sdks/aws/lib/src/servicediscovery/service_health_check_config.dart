@@ -30,9 +30,9 @@ class ServiceHealthCheckConfig {
 
   factory ServiceHealthCheckConfig.fromMap(Map<String, dynamic> map) {
     return ServiceHealthCheckConfig(
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      resourcePath: map['resourcePath'] == null ? null : (map['resourcePath'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : ((map['failureThreshold'] as int).input()).input(),
+      resourcePath: map['resourcePath'] == null ? null : ((map['resourcePath'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

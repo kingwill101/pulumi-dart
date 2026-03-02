@@ -86,20 +86,20 @@ class IotHubDataConnectionState {
 
   factory IotHubDataConnectionState.fromMap(Map<String, dynamic> map) {
     return IotHubDataConnectionState(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup'] as String).input(),
-      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      databaseRoutingType: map['databaseRoutingType'] == null ? null : (map['databaseRoutingType'] as String).input(),
-      eventSystemProperties: map['eventSystemProperties'] == null ? null : ((map['eventSystemProperties'] as List).cast<String>()).input(),
-      iothubId: map['iothubId'] == null ? null : (map['iothubId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      retrievalStartDate: map['retrievalStartDate'] == null ? null : (map['retrievalStartDate'] as String).input(),
-      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      consumerGroup: map['consumerGroup'] == null ? null : (map['consumerGroup']! as String).input(),
+      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat']! as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      databaseRoutingType: map['databaseRoutingType'] == null ? null : (map['databaseRoutingType']! as String).input(),
+      eventSystemProperties: map['eventSystemProperties'] == null ? null : ((map['eventSystemProperties']! as List).cast<String>()).input(),
+      iothubId: map['iothubId'] == null ? null : (map['iothubId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      retrievalStartDate: map['retrievalStartDate'] == null ? null : (map['retrievalStartDate']! as String).input(),
+      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName']! as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class GetBucketReplicationConfigurationArgs {
   factory GetBucketReplicationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketReplicationConfigurationArgs(
       bucket: (map['bucket'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

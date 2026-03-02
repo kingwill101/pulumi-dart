@@ -20,7 +20,7 @@ class ServiceNetworkConfigurationIngressConfiguration {
 
   factory ServiceNetworkConfigurationIngressConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkConfigurationIngressConfiguration(
-      isPubliclyAccessible: map['isPubliclyAccessible'] == null ? null : (map['isPubliclyAccessible'] as bool).input(),
+      isPubliclyAccessible: map['isPubliclyAccessible'] == null ? null : ((map['isPubliclyAccessible'] as bool).input()).input(),
     );
   }
 }

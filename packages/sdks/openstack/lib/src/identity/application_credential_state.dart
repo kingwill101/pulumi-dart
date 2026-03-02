@@ -81,15 +81,15 @@ class ApplicationCredentialState {
 
   factory ApplicationCredentialState.fromMap(Map<String, dynamic> map) {
     return ApplicationCredentialState(
-      accessRules: map['accessRules'] == null ? null : (pulumi.Input.decodeList<ApplicationCredentialAccessRule>(map['accessRules'], (value) => ApplicationCredentialAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      unrestricted: map['unrestricted'] == null ? null : (map['unrestricted'] as bool).input(),
+      accessRules: map['accessRules'] == null ? null : (pulumi.Input.decodeList<ApplicationCredentialAccessRule>(map['accessRules']!, (value) => ApplicationCredentialAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      unrestricted: map['unrestricted'] == null ? null : (map['unrestricted']! as bool).input(),
     );
   }
 }

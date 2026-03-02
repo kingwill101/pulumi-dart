@@ -51,13 +51,13 @@ class DomainSamlOptionsSamlOptions {
 
   factory DomainSamlOptionsSamlOptions.fromMap(Map<String, dynamic> map) {
     return DomainSamlOptionsSamlOptions(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      idp: map['idp'] == null ? null : (DomainSamlOptionsSamlOptionsIdp.fromMap((map['idp'] as Map).cast<String, dynamic>())).input(),
-      masterBackendRole: map['masterBackendRole'] == null ? null : (map['masterBackendRole'] as String).input(),
-      masterUserName: map['masterUserName'] == null ? null : (map['masterUserName'] as String).input(),
-      rolesKey: map['rolesKey'] == null ? null : (map['rolesKey'] as String).input(),
-      sessionTimeoutMinutes: map['sessionTimeoutMinutes'] == null ? null : (map['sessionTimeoutMinutes'] as int).input(),
-      subjectKey: map['subjectKey'] == null ? null : (map['subjectKey'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      idp: map['idp'] == null ? null : ((DomainSamlOptionsSamlOptionsIdp.fromMap((map['idp']! as Map).cast<String, dynamic>())).input()).input(),
+      masterBackendRole: map['masterBackendRole'] == null ? null : ((map['masterBackendRole'] as String).input()).input(),
+      masterUserName: map['masterUserName'] == null ? null : ((map['masterUserName'] as String).input()).input(),
+      rolesKey: map['rolesKey'] == null ? null : ((map['rolesKey'] as String).input()).input(),
+      sessionTimeoutMinutes: map['sessionTimeoutMinutes'] == null ? null : ((map['sessionTimeoutMinutes'] as int).input()).input(),
+      subjectKey: map['subjectKey'] == null ? null : ((map['subjectKey'] as String).input()).input(),
     );
   }
 }

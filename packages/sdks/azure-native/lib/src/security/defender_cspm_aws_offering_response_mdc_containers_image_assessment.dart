@@ -26,8 +26,8 @@ class DefenderCspmAwsOfferingResponseMdcContainersImageAssessment {
 
   factory DefenderCspmAwsOfferingResponseMdcContainersImageAssessment.fromMap(Map<String, dynamic> map) {
     return DefenderCspmAwsOfferingResponseMdcContainersImageAssessment(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

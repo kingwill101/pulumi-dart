@@ -62,15 +62,15 @@ class MsSqlServerProviderInstancePropertiesResponse {
 
   factory MsSqlServerProviderInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MsSqlServerProviderInstancePropertiesResponse(
-      dbPassword: map['dbPassword'] == null ? null : (map['dbPassword'] as String).input(),
-      dbPasswordUri: map['dbPasswordUri'] == null ? null : (map['dbPasswordUri'] as String).input(),
-      dbPort: map['dbPort'] == null ? null : (map['dbPort'] as String).input(),
-      dbUsername: map['dbUsername'] == null ? null : (map['dbUsername'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      dbPassword: map['dbPassword'] == null ? null : (map['dbPassword']! as String).input(),
+      dbPasswordUri: map['dbPasswordUri'] == null ? null : (map['dbPasswordUri']! as String).input(),
+      dbPort: map['dbPort'] == null ? null : (map['dbPort']! as String).input(),
+      dbUsername: map['dbUsername'] == null ? null : (map['dbUsername']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
       providerType: (map['providerType'] as String).input(),
-      sapSid: map['sapSid'] == null ? null : (map['sapSid'] as String).input(),
-      sslCertificateUri: map['sslCertificateUri'] == null ? null : (map['sslCertificateUri'] as String).input(),
-      sslPreference: map['sslPreference'] == null ? null : (map['sslPreference'] as String).input(),
+      sapSid: map['sapSid'] == null ? null : (map['sapSid']! as String).input(),
+      sslCertificateUri: map['sslCertificateUri'] == null ? null : (map['sslCertificateUri']! as String).input(),
+      sslPreference: map['sslPreference'] == null ? null : (map['sslPreference']! as String).input(),
     );
   }
 }

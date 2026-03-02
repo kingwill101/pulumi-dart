@@ -21,7 +21,7 @@ class UserSubjectPatch {
 
   factory UserSubjectPatch.fromMap(Map<String, dynamic> map) {
     return UserSubjectPatch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -66,15 +66,15 @@ class SecurityGroupArgs {
 
   factory SecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      innerAccess: map['innerAccess'] == null ? null : (map['innerAccess'] as bool).input(),
-      innerAccessPolicy: map['innerAccessPolicy'] == null ? null : (map['innerAccessPolicy'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      securityGroupName: map['securityGroupName'] == null ? null : (map['securityGroupName'] as String).input(),
-      securityGroupType: map['securityGroupType'] == null ? null : (map['securityGroupType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      innerAccess: map['innerAccess'] == null ? null : (map['innerAccess']! as bool).input(),
+      innerAccessPolicy: map['innerAccessPolicy'] == null ? null : (map['innerAccessPolicy']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      securityGroupName: map['securityGroupName'] == null ? null : (map['securityGroupName']! as String).input(),
+      securityGroupType: map['securityGroupType'] == null ? null : (map['securityGroupType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

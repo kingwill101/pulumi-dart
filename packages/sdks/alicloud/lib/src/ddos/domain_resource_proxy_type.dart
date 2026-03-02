@@ -26,7 +26,7 @@ class DomainResourceProxyType {
   factory DomainResourceProxyType.fromMap(Map<String, dynamic> map) {
     return DomainResourceProxyType(
       proxyPorts: ((map['proxyPorts'] as List).cast<int>()).input(),
-      proxyType: map['proxyType'] == null ? null : (map['proxyType'] as String).input(),
+      proxyType: map['proxyType'] == null ? null : (map['proxyType']! as String).input(),
     );
   }
 }

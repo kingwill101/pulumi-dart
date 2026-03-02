@@ -90,20 +90,20 @@ class ConversationArgs {
 
   factory ConversationArgs.fromMap(Map<String, dynamic> map) {
     return ConversationArgs(
-      agentId: map['agentId'] == null ? null : (map['agentId'] as String).input(),
-      callMetadata: map['callMetadata'] == null ? null : (GoogleCloudContactcenterinsightsV1ConversationCallMetadata.fromMap((map['callMetadata'] as Map).cast<String, dynamic>())).input(),
-      conversationId: map['conversationId'] == null ? null : (map['conversationId'] as String).input(),
-      dataSource: map['dataSource'] == null ? null : (GoogleCloudContactcenterinsightsV1ConversationDataSource.fromMap((map['dataSource'] as Map).cast<String, dynamic>())).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      medium: map['medium'] == null ? null : (ConversationMedium.fromValue(map['medium'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      obfuscatedUserId: map['obfuscatedUserId'] == null ? null : (map['obfuscatedUserId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      agentId: map['agentId'] == null ? null : (map['agentId']! as String).input(),
+      callMetadata: map['callMetadata'] == null ? null : (GoogleCloudContactcenterinsightsV1ConversationCallMetadata.fromMap((map['callMetadata']! as Map).cast<String, dynamic>())).input(),
+      conversationId: map['conversationId'] == null ? null : (map['conversationId']! as String).input(),
+      dataSource: map['dataSource'] == null ? null : (GoogleCloudContactcenterinsightsV1ConversationDataSource.fromMap((map['dataSource']! as Map).cast<String, dynamic>())).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      medium: map['medium'] == null ? null : (ConversationMedium.fromValue(map['medium']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      obfuscatedUserId: map['obfuscatedUserId'] == null ? null : (map['obfuscatedUserId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
     );
   }
 }

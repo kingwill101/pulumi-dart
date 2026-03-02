@@ -51,13 +51,13 @@ class V3AliasState {
 
   factory V3AliasState.fromMap(Map<String, dynamic> map) {
     return V3AliasState(
-      additionalVersionWeight: map['additionalVersionWeight'] == null ? null : ((map['additionalVersionWeight'] as Map).cast<String, double>()).input(),
-      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      additionalVersionWeight: map['additionalVersionWeight'] == null ? null : ((map['additionalVersionWeight']! as Map).cast<String, double>()).input(),
+      aliasName: map['aliasName'] == null ? null : (map['aliasName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
     );
   }
 }

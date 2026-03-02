@@ -23,8 +23,8 @@ class TaskDefinitionFirelensConfiguration {
 
   factory TaskDefinitionFirelensConfiguration.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionFirelensConfiguration(
-      options: map['options'] == null ? null : (map['options']).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      options: map['options'] == null ? null : (map['options']!).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

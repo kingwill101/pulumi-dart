@@ -34,9 +34,9 @@ class PolicyRulesWithSubjectsPatch {
 
   factory PolicyRulesWithSubjectsPatch.fromMap(Map<String, dynamic> map) {
     return PolicyRulesWithSubjectsPatch(
-      nonResourceRules: map['nonResourceRules'] == null ? null : (pulumi.Input.decodeList<NonResourcePolicyRulePatch>(map['nonResourceRules'], (value) => NonResourcePolicyRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyRulePatch>(map['resourceRules'], (value) => ResourcePolicyRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<SubjectPatch>(map['subjects'], (value) => SubjectPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nonResourceRules: map['nonResourceRules'] == null ? null : (pulumi.Input.decodeList<NonResourcePolicyRulePatch>(map['nonResourceRules']!, (value) => NonResourcePolicyRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyRulePatch>(map['resourceRules']!, (value) => ResourcePolicyRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<SubjectPatch>(map['subjects']!, (value) => SubjectPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -72,14 +72,14 @@ class MetastoreDatabaseIamMemberState {
 
   factory MetastoreDatabaseIamMemberState.fromMap(Map<String, dynamic> map) {
     return MetastoreDatabaseIamMemberState(
-      condition: map['condition'] == null ? null : (MetastoreDatabaseIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      condition: map['condition'] == null ? null : (MetastoreDatabaseIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
     );
   }
 }

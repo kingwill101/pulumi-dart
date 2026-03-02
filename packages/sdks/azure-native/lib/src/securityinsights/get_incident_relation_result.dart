@@ -67,7 +67,7 @@ class GetIncidentRelationResult {
   factory GetIncidentRelationResult.fromMap(Map<String, dynamic> map) {
     return GetIncidentRelationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       relatedResourceId: map['relatedResourceId'] as String,

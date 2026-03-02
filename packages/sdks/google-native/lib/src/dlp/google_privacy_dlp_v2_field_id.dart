@@ -21,7 +21,7 @@ class GooglePrivacyDlpV2FieldId {
 
   factory GooglePrivacyDlpV2FieldId.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2FieldId(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

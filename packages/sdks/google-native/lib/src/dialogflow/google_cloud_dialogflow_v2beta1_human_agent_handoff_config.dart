@@ -28,8 +28,8 @@ class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig {
 
   factory GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig(
-      livePersonConfig: map['livePersonConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig.fromMap((map['livePersonConfig'] as Map).cast<String, dynamic>())).input(),
-      salesforceLiveAgentConfig: map['salesforceLiveAgentConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig.fromMap((map['salesforceLiveAgentConfig'] as Map).cast<String, dynamic>())).input(),
+      livePersonConfig: map['livePersonConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig.fromMap((map['livePersonConfig']! as Map).cast<String, dynamic>())).input(),
+      salesforceLiveAgentConfig: map['salesforceLiveAgentConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfig.fromMap((map['salesforceLiveAgentConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

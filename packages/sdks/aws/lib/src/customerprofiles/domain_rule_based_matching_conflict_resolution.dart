@@ -26,7 +26,7 @@ class DomainRuleBasedMatchingConflictResolution {
   factory DomainRuleBasedMatchingConflictResolution.fromMap(Map<String, dynamic> map) {
     return DomainRuleBasedMatchingConflictResolution(
       conflictResolvingModel: (map['conflictResolvingModel'] as String).input(),
-      sourceName: map['sourceName'] == null ? null : (map['sourceName'] as String).input(),
+      sourceName: map['sourceName'] == null ? null : ((map['sourceName'] as String).input()).input(),
     );
   }
 }

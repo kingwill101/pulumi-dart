@@ -34,9 +34,9 @@ class GetKubernetesServiceVersionsArgs {
 
   factory GetKubernetesServiceVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesServiceVersionsArgs(
-      includePreview: map['includePreview'] == null ? null : (map['includePreview'] as bool).input(),
+      includePreview: map['includePreview'] == null ? null : (map['includePreview']! as bool).input(),
       location: (map['location'] as String).input(),
-      versionPrefix: map['versionPrefix'] == null ? null : (map['versionPrefix'] as String).input(),
+      versionPrefix: map['versionPrefix'] == null ? null : (map['versionPrefix']! as String).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class KeyVaultCertificateProperties {
   factory KeyVaultCertificateProperties.fromMap(Map<String, dynamic> map) {
     return KeyVaultCertificateProperties(
       vault: (KeyVaultConnectionProperties.fromMap((map['vault'] as Map).cast<String, dynamic>())).input(),
-      vaultCaChainSecret: map['vaultCaChainSecret'] == null ? null : (KeyVaultSecretObject.fromMap((map['vaultCaChainSecret'] as Map).cast<String, dynamic>())).input(),
+      vaultCaChainSecret: map['vaultCaChainSecret'] == null ? null : (KeyVaultSecretObject.fromMap((map['vaultCaChainSecret']! as Map).cast<String, dynamic>())).input(),
       vaultCert: (KeyVaultSecretObject.fromMap((map['vaultCert'] as Map).cast<String, dynamic>())).input(),
     );
   }

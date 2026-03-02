@@ -42,11 +42,11 @@ class QueueingPolicy {
 
   factory QueueingPolicy.fromMap(Map<String, dynamic> map) {
     return QueueingPolicy(
-      validAfterDuration: map['validAfterDuration'] == null ? null : (map['validAfterDuration'] as String).input(),
-      validAfterTime: map['validAfterTime'] == null ? null : (map['validAfterTime'] as String).input(),
-      validInterval: map['validInterval'] == null ? null : (Interval.fromMap((map['validInterval'] as Map).cast<String, dynamic>())).input(),
-      validUntilDuration: map['validUntilDuration'] == null ? null : (map['validUntilDuration'] as String).input(),
-      validUntilTime: map['validUntilTime'] == null ? null : (map['validUntilTime'] as String).input(),
+      validAfterDuration: map['validAfterDuration'] == null ? null : (map['validAfterDuration']! as String).input(),
+      validAfterTime: map['validAfterTime'] == null ? null : (map['validAfterTime']! as String).input(),
+      validInterval: map['validInterval'] == null ? null : (Interval.fromMap((map['validInterval']! as Map).cast<String, dynamic>())).input(),
+      validUntilDuration: map['validUntilDuration'] == null ? null : (map['validUntilDuration']! as String).input(),
+      validUntilTime: map['validUntilTime'] == null ? null : (map['validUntilTime']! as String).input(),
     );
   }
 }

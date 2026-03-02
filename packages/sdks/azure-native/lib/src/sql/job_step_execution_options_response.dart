@@ -41,11 +41,11 @@ class JobStepExecutionOptionsResponse {
 
   factory JobStepExecutionOptionsResponse.fromMap(Map<String, dynamic> map) {
     return JobStepExecutionOptionsResponse(
-      initialRetryIntervalSeconds: map['initialRetryIntervalSeconds'] == null ? null : (map['initialRetryIntervalSeconds'] as int).input(),
-      maximumRetryIntervalSeconds: map['maximumRetryIntervalSeconds'] == null ? null : (map['maximumRetryIntervalSeconds'] as int).input(),
-      retryAttempts: map['retryAttempts'] == null ? null : (map['retryAttempts'] as int).input(),
-      retryIntervalBackoffMultiplier: map['retryIntervalBackoffMultiplier'] == null ? null : (map['retryIntervalBackoffMultiplier'] as double).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      initialRetryIntervalSeconds: map['initialRetryIntervalSeconds'] == null ? null : (map['initialRetryIntervalSeconds']! as int).input(),
+      maximumRetryIntervalSeconds: map['maximumRetryIntervalSeconds'] == null ? null : (map['maximumRetryIntervalSeconds']! as int).input(),
+      retryAttempts: map['retryAttempts'] == null ? null : (map['retryAttempts']! as int).input(),
+      retryIntervalBackoffMultiplier: map['retryIntervalBackoffMultiplier'] == null ? null : (map['retryIntervalBackoffMultiplier']! as double).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

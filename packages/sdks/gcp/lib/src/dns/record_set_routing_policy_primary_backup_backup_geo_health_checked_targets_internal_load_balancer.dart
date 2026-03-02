@@ -52,11 +52,11 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
     return RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer(
       ipAddress: (map['ipAddress'] as String).input(),
       ipProtocol: (map['ipProtocol'] as String).input(),
-      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType'] as String).input(),
+      loadBalancerType: map['loadBalancerType'] == null ? null : (map['loadBalancerType']! as String).input(),
       networkUrl: (map['networkUrl'] as String).input(),
       port: (map['port'] as String).input(),
       project: (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

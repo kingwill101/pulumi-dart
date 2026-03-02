@@ -35,8 +35,8 @@ class SubscriberNotificationArgs {
 
   factory SubscriberNotificationArgs.fromMap(Map<String, dynamic> map) {
     return SubscriberNotificationArgs(
-      configuration: (SubscriberNotificationConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      configuration: (SubscriberNotificationConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       subscriberId: (map['subscriberId'] as String).input(),
     );
   }

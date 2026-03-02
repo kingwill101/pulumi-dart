@@ -22,7 +22,7 @@ class InterconnectGroupIntent {
 
   factory InterconnectGroupIntent.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupIntent(
-      topologyCapability: map['topologyCapability'] == null ? null : (map['topologyCapability'] as String).input(),
+      topologyCapability: map['topologyCapability'] == null ? null : (map['topologyCapability']! as String).input(),
     );
   }
 }

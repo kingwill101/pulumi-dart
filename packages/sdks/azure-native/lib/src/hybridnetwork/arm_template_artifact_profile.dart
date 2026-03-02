@@ -26,8 +26,8 @@ class ArmTemplateArtifactProfile {
 
   factory ArmTemplateArtifactProfile.fromMap(Map<String, dynamic> map) {
     return ArmTemplateArtifactProfile(
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
-      templateVersion: map['templateVersion'] == null ? null : (map['templateVersion'] as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
+      templateVersion: map['templateVersion'] == null ? null : (map['templateVersion']! as String).input(),
     );
   }
 }

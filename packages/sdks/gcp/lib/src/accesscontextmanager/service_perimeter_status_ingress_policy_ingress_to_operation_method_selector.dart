@@ -28,8 +28,8 @@ class ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector {
 
   factory ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector(
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      permission: map['permission'] == null ? null : (map['permission'] as String).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      permission: map['permission'] == null ? null : (map['permission']! as String).input(),
     );
   }
 }

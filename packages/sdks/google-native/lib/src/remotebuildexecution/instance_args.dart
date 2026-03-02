@@ -44,11 +44,11 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      featurePolicy: map['featurePolicy'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy.fromMap((map['featurePolicy'] as Map).cast<String, dynamic>())).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      featurePolicy: map['featurePolicy'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy.fromMap((map['featurePolicy']! as Map).cast<String, dynamic>())).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

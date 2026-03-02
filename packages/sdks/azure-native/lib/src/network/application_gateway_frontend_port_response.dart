@@ -47,9 +47,9 @@ class ApplicationGatewayFrontendPortResponse {
   factory ApplicationGatewayFrontendPortResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayFrontendPortResponse(
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),
     );

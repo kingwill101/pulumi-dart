@@ -45,7 +45,7 @@ class ArchiveVersionArgs {
   factory ArchiveVersionArgs.fromMap(Map<String, dynamic> map) {
     return ArchiveVersionArgs(
       archiveName: (map['archiveName'] as String).input(),
-      archiveVersionName: map['archiveVersionName'] == null ? null : (map['archiveVersionName'] as String).input(),
+      archiveVersionName: map['archiveVersionName'] == null ? null : (map['archiveVersionName']! as String).input(),
       packageType: (map['packageType'] as String).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

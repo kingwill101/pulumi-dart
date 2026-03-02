@@ -23,7 +23,7 @@ class EdgeCacheOriginFlexShielding {
 
   factory EdgeCacheOriginFlexShielding.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginFlexShielding(
-      flexShieldingRegions: map['flexShieldingRegions'] == null ? null : (map['flexShieldingRegions'] as String).input(),
+      flexShieldingRegions: map['flexShieldingRegions'] == null ? null : (map['flexShieldingRegions']! as String).input(),
     );
   }
 }

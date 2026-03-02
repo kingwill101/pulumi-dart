@@ -54,12 +54,12 @@ class HypervClusterControllerClusterArgs {
 
   factory HypervClusterControllerClusterArgs.fromMap(Map<String, dynamic> map) {
     return HypervClusterControllerClusterArgs(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      hostFqdnList: map['hostFqdnList'] == null ? null : ((map['hostFqdnList'] as List).cast<String>()).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      hostFqdnList: map['hostFqdnList'] == null ? null : ((map['hostFqdnList']! as List).cast<String>()).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId']! as String).input(),
       siteName: (map['siteName'] as String).input(),
     );
   }

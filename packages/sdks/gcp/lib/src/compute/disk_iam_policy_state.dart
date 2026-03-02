@@ -45,11 +45,11 @@ class DiskIamPolicyState {
 
   factory DiskIamPolicyState.fromMap(Map<String, dynamic> map) {
     return DiskIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

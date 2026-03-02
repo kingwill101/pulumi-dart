@@ -26,8 +26,8 @@ class SkipErrorFile {
 
   factory SkipErrorFile.fromMap(Map<String, dynamic> map) {
     return SkipErrorFile(
-      dataInconsistency: map['dataInconsistency'] == null ? null : (map['dataInconsistency']).input(),
-      fileMissing: map['fileMissing'] == null ? null : (map['fileMissing']).input(),
+      dataInconsistency: map['dataInconsistency'] == null ? null : (map['dataInconsistency']!).input(),
+      fileMissing: map['fileMissing'] == null ? null : (map['fileMissing']!).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class ScopeResponse {
 
   factory ScopeResponse.fromMap(Map<String, dynamic> map) {
     return ScopeResponse(
-      cluster: map['cluster'] == null ? null : (ScopeClusterResponse.fromMap((map['cluster'] as Map).cast<String, dynamic>())).input(),
-      namespace: map['namespace'] == null ? null : (ScopeNamespaceResponse.fromMap((map['namespace'] as Map).cast<String, dynamic>())).input(),
+      cluster: map['cluster'] == null ? null : (ScopeClusterResponse.fromMap((map['cluster']! as Map).cast<String, dynamic>())).input(),
+      namespace: map['namespace'] == null ? null : (ScopeNamespaceResponse.fromMap((map['namespace']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

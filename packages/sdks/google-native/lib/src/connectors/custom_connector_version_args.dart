@@ -69,10 +69,10 @@ class CustomConnectorVersionArgs {
       customConnectorId: (map['customConnectorId'] as String).input(),
       customConnectorVersionId: (map['customConnectorVersionId'] as String).input(),
       destinationConfig: (DestinationConfig.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())).input(),
-      enableBackendDestinationConfig: map['enableBackendDestinationConfig'] == null ? null : (map['enableBackendDestinationConfig'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      specLocation: map['specLocation'] == null ? null : (map['specLocation'] as String).input(),
+      enableBackendDestinationConfig: map['enableBackendDestinationConfig'] == null ? null : (map['enableBackendDestinationConfig']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      specLocation: map['specLocation'] == null ? null : (map['specLocation']! as String).input(),
       type: (CustomConnectorVersionType.fromValue(map['type'] as String)).input(),
     );
   }

@@ -27,7 +27,7 @@ class ClusterNodePoolNodeConfigConfidentialNodes {
 
   factory ClusterNodePoolNodeConfigConfidentialNodes.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigConfidentialNodes(
-      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (map['confidentialInstanceType'] as String).input(),
+      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (map['confidentialInstanceType']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

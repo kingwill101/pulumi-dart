@@ -60,15 +60,15 @@ class GetServiceMetricAlarmRulesResult {
 
   factory GetServiceMetricAlarmRulesResult.fromMap(Map<String, dynamic> map) {
     return GetServiceMetricAlarmRulesResult(
-      dimensions: map['dimensions'] == null ? null : map['dimensions'] as String,
+      dimensions: map['dimensions'] == null ? null : map['dimensions']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      metricName: map['metricName'] == null ? null : map['metricName'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      ruleName: map['ruleName'] == null ? null : map['ruleName'] as String,
+      metricName: map['metricName'] == null ? null : map['metricName']! as String,
+      namespace: map['namespace'] == null ? null : map['namespace']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      ruleName: map['ruleName'] == null ? null : map['ruleName']! as String,
       rules: pulumi.Input.decodeList<GetServiceMetricAlarmRulesRule>(map['rules'], (value) => GetServiceMetricAlarmRulesRule.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as bool,
+      status: map['status'] == null ? null : map['status']! as bool,
     );
   }
 }

@@ -33,7 +33,7 @@ class KafkaTokenKeyVaultPropertiesResponse {
 
   factory KafkaTokenKeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KafkaTokenKeyVaultPropertiesResponse(
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
       vault: (KeyVaultConnectionPropertiesResponse.fromMap((map['vault'] as Map).cast<String, dynamic>())).input(),
       vaultSecret: (KeyVaultSecretObjectResponse.fromMap((map['vaultSecret'] as Map).cast<String, dynamic>())).input(),
     );

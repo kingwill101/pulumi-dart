@@ -26,7 +26,7 @@ class ListenerRuleActionForwardTargetGroup {
   factory ListenerRuleActionForwardTargetGroup.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionForwardTargetGroup(
       arn: (map['arn'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      weight: map['weight'] == null ? null : ((map['weight'] as int).input()).input(),
     );
   }
 }

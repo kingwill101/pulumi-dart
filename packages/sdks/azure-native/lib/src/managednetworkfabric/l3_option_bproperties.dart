@@ -32,9 +32,9 @@ class L3OptionBProperties {
 
   factory L3OptionBProperties.fromMap(Map<String, dynamic> map) {
     return L3OptionBProperties(
-      exportRouteTargets: map['exportRouteTargets'] == null ? null : ((map['exportRouteTargets'] as List).cast<String>()).input(),
-      importRouteTargets: map['importRouteTargets'] == null ? null : ((map['importRouteTargets'] as List).cast<String>()).input(),
-      routeTargets: map['routeTargets'] == null ? null : (RouteTargetInformation.fromMap((map['routeTargets'] as Map).cast<String, dynamic>())).input(),
+      exportRouteTargets: map['exportRouteTargets'] == null ? null : ((map['exportRouteTargets']! as List).cast<String>()).input(),
+      importRouteTargets: map['importRouteTargets'] == null ? null : ((map['importRouteTargets']! as List).cast<String>()).input(),
+      routeTargets: map['routeTargets'] == null ? null : (RouteTargetInformation.fromMap((map['routeTargets']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

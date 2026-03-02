@@ -27,8 +27,8 @@ class GCPolicyMaxAge {
 
   factory GCPolicyMaxAge.fromMap(Map<String, dynamic> map) {
     return GCPolicyMaxAge(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
     );
   }
 }

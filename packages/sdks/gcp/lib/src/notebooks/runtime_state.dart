@@ -97,18 +97,18 @@ class RuntimeState {
 
   factory RuntimeState.fromMap(Map<String, dynamic> map) {
     return RuntimeState(
-      accessConfig: map['accessConfig'] == null ? null : (RuntimeAccessConfig.fromMap((map['accessConfig'] as Map).cast<String, dynamic>())).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      healthState: map['healthState'] == null ? null : (map['healthState'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<RuntimeMetric>(map['metrics'], (value) => RuntimeMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      softwareConfig: map['softwareConfig'] == null ? null : (RuntimeSoftwareConfig.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      virtualMachine: map['virtualMachine'] == null ? null : (RuntimeVirtualMachine.fromMap((map['virtualMachine'] as Map).cast<String, dynamic>())).input(),
+      accessConfig: map['accessConfig'] == null ? null : (RuntimeAccessConfig.fromMap((map['accessConfig']! as Map).cast<String, dynamic>())).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      healthState: map['healthState'] == null ? null : (map['healthState']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<RuntimeMetric>(map['metrics']!, (value) => RuntimeMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      softwareConfig: map['softwareConfig'] == null ? null : (RuntimeSoftwareConfig.fromMap((map['softwareConfig']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      virtualMachine: map['virtualMachine'] == null ? null : (RuntimeVirtualMachine.fromMap((map['virtualMachine']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

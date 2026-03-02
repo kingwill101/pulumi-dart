@@ -55,12 +55,12 @@ class GetListenerRuleCondition {
 
   factory GetListenerRuleCondition.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleCondition(
-      hostHeaders: map['hostHeaders'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleConditionHostHeader>(map['hostHeaders'], (value) => GetListenerRuleConditionHostHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpHeaders: map['httpHeaders'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleConditionHttpHeader>(map['httpHeaders'], (value) => GetListenerRuleConditionHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpRequestMethods: map['httpRequestMethods'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleConditionHttpRequestMethod>(map['httpRequestMethods'], (value) => GetListenerRuleConditionHttpRequestMethod.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pathPatterns: map['pathPatterns'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleConditionPathPattern>(map['pathPatterns'], (value) => GetListenerRuleConditionPathPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queryStrings: map['queryStrings'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleConditionQueryString>(map['queryStrings'], (value) => GetListenerRuleConditionQueryString.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceIps: map['sourceIps'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleConditionSourceIp>(map['sourceIps'], (value) => GetListenerRuleConditionSourceIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostHeaders: map['hostHeaders'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleConditionHostHeader>(map['hostHeaders']!, (value) => GetListenerRuleConditionHostHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      httpHeaders: map['httpHeaders'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleConditionHttpHeader>(map['httpHeaders']!, (value) => GetListenerRuleConditionHttpHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      httpRequestMethods: map['httpRequestMethods'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleConditionHttpRequestMethod>(map['httpRequestMethods']!, (value) => GetListenerRuleConditionHttpRequestMethod.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      pathPatterns: map['pathPatterns'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleConditionPathPattern>(map['pathPatterns']!, (value) => GetListenerRuleConditionPathPattern.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      queryStrings: map['queryStrings'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleConditionQueryString>(map['queryStrings']!, (value) => GetListenerRuleConditionQueryString.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      sourceIps: map['sourceIps'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleConditionSourceIp>(map['sourceIps']!, (value) => GetListenerRuleConditionSourceIp.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class VaultMonitoring {
 
   factory VaultMonitoring.fromMap(Map<String, dynamic> map) {
     return VaultMonitoring(
-      alertsForAllJobFailuresEnabled: map['alertsForAllJobFailuresEnabled'] == null ? null : (map['alertsForAllJobFailuresEnabled'] as bool).input(),
-      alertsForCriticalOperationFailuresEnabled: map['alertsForCriticalOperationFailuresEnabled'] == null ? null : (map['alertsForCriticalOperationFailuresEnabled'] as bool).input(),
+      alertsForAllJobFailuresEnabled: map['alertsForAllJobFailuresEnabled'] == null ? null : (map['alertsForAllJobFailuresEnabled']! as bool).input(),
+      alertsForCriticalOperationFailuresEnabled: map['alertsForCriticalOperationFailuresEnabled'] == null ? null : (map['alertsForCriticalOperationFailuresEnabled']! as bool).input(),
     );
   }
 }

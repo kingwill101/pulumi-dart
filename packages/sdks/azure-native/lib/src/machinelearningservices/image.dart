@@ -26,8 +26,8 @@ class Image {
 
   factory Image.fromMap(Map<String, dynamic> map) {
     return Image(
-      reference: map['reference'] == null ? null : (map['reference'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      reference: map['reference'] == null ? null : (map['reference']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

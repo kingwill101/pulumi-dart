@@ -54,13 +54,13 @@ class SqlServerRegistrationArgs {
 
   factory SqlServerRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerRegistrationArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      propertyBag: map['propertyBag'] == null ? null : (map['propertyBag'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      propertyBag: map['propertyBag'] == null ? null : (map['propertyBag']! as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sqlServerRegistrationName: map['sqlServerRegistrationName'] == null ? null : (map['sqlServerRegistrationName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sqlServerRegistrationName: map['sqlServerRegistrationName'] == null ? null : (map['sqlServerRegistrationName']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -40,8 +40,8 @@ class ConfigurationServiceArgs {
 
   factory ConfigurationServiceArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceArgs(
-      configurationServiceName: map['configurationServiceName'] == null ? null : (map['configurationServiceName'] as String).input(),
-      properties: map['properties'] == null ? null : (ConfigurationServiceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      configurationServiceName: map['configurationServiceName'] == null ? null : (map['configurationServiceName']! as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationServiceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

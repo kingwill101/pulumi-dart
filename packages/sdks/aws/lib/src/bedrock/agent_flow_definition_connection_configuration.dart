@@ -27,8 +27,8 @@ class AgentFlowDefinitionConnectionConfiguration {
 
   factory AgentFlowDefinitionConnectionConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionConnectionConfiguration(
-      conditional: map['conditional'] == null ? null : (AgentFlowDefinitionConnectionConfigurationConditional.fromMap((map['conditional'] as Map).cast<String, dynamic>())).input(),
-      data: map['data'] == null ? null : (AgentFlowDefinitionConnectionConfigurationData.fromMap((map['data'] as Map).cast<String, dynamic>())).input(),
+      conditional: map['conditional'] == null ? null : ((AgentFlowDefinitionConnectionConfigurationConditional.fromMap((map['conditional']! as Map).cast<String, dynamic>())).input()).input(),
+      data: map['data'] == null ? null : ((AgentFlowDefinitionConnectionConfigurationData.fromMap((map['data']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

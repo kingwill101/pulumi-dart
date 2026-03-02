@@ -39,10 +39,10 @@ class DashboardParameters {
 
   factory DashboardParameters.fromMap(Map<String, dynamic> map) {
     return DashboardParameters(
-      dateTimeParameters: map['dateTimeParameters'] == null ? null : (pulumi.Input.decodeList<DashboardParametersDateTimeParameter>(map['dateTimeParameters'], (value) => DashboardParametersDateTimeParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      decimalParameters: map['decimalParameters'] == null ? null : (pulumi.Input.decodeList<DashboardParametersDecimalParameter>(map['decimalParameters'], (value) => DashboardParametersDecimalParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      integerParameters: map['integerParameters'] == null ? null : (pulumi.Input.decodeList<DashboardParametersIntegerParameter>(map['integerParameters'], (value) => DashboardParametersIntegerParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stringParameters: map['stringParameters'] == null ? null : (pulumi.Input.decodeList<DashboardParametersStringParameter>(map['stringParameters'], (value) => DashboardParametersStringParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dateTimeParameters: map['dateTimeParameters'] == null ? null : ((pulumi.Input.decodeList<DashboardParametersDateTimeParameter>(map['dateTimeParameters']!, (value) => DashboardParametersDateTimeParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      decimalParameters: map['decimalParameters'] == null ? null : ((pulumi.Input.decodeList<DashboardParametersDecimalParameter>(map['decimalParameters']!, (value) => DashboardParametersDecimalParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      integerParameters: map['integerParameters'] == null ? null : ((pulumi.Input.decodeList<DashboardParametersIntegerParameter>(map['integerParameters']!, (value) => DashboardParametersIntegerParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      stringParameters: map['stringParameters'] == null ? null : ((pulumi.Input.decodeList<DashboardParametersStringParameter>(map['stringParameters']!, (value) => DashboardParametersStringParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

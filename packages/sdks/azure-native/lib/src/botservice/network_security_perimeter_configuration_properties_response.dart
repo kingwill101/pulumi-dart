@@ -46,8 +46,8 @@ class NetworkSecurityPerimeterConfigurationPropertiesResponse {
     return NetworkSecurityPerimeterConfigurationPropertiesResponse(
       networkSecurityPerimeter: (NetworkSecurityPerimeterResponse.fromMap((map['networkSecurityPerimeter'] as Map).cast<String, dynamic>())).input(),
       profile: (ProfileResponse.fromMap((map['profile'] as Map).cast<String, dynamic>())).input(),
-      provisioningIssues: map['provisioningIssues'] == null ? null : (pulumi.Input.decodeList<ProvisioningIssueResponse>(map['provisioningIssues'], (value) => ProvisioningIssueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      provisioningIssues: map['provisioningIssues'] == null ? null : (pulumi.Input.decodeList<ProvisioningIssueResponse>(map['provisioningIssues']!, (value) => ProvisioningIssueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceAssociation: (ResourceAssociationResponse.fromMap((map['resourceAssociation'] as Map).cast<String, dynamic>())).input(),
     );
   }

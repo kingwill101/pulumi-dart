@@ -96,21 +96,21 @@ class PipelineState {
 
   factory PipelineState.fromMap(Map<String, dynamic> map) {
     return PipelineState(
-      bufferOptions: map['bufferOptions'] == null ? null : (PipelineBufferOptions.fromMap((map['bufferOptions'] as Map).cast<String, dynamic>())).input(),
-      encryptionAtRestOptions: map['encryptionAtRestOptions'] == null ? null : (PipelineEncryptionAtRestOptions.fromMap((map['encryptionAtRestOptions'] as Map).cast<String, dynamic>())).input(),
-      ingestEndpointUrls: map['ingestEndpointUrls'] == null ? null : ((map['ingestEndpointUrls'] as List).cast<String>()).input(),
-      logPublishingOptions: map['logPublishingOptions'] == null ? null : (PipelineLogPublishingOptions.fromMap((map['logPublishingOptions'] as Map).cast<String, dynamic>())).input(),
-      maxUnits: map['maxUnits'] == null ? null : (map['maxUnits'] as int).input(),
-      minUnits: map['minUnits'] == null ? null : (map['minUnits'] as int).input(),
-      pipelineArn: map['pipelineArn'] == null ? null : (map['pipelineArn'] as String).input(),
-      pipelineConfigurationBody: map['pipelineConfigurationBody'] == null ? null : (map['pipelineConfigurationBody'] as String).input(),
-      pipelineName: map['pipelineName'] == null ? null : (map['pipelineName'] as String).input(),
-      pipelineRoleArn: map['pipelineRoleArn'] == null ? null : (map['pipelineRoleArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (PipelineTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vpcOptions: map['vpcOptions'] == null ? null : (PipelineVpcOptions.fromMap((map['vpcOptions'] as Map).cast<String, dynamic>())).input(),
+      bufferOptions: map['bufferOptions'] == null ? null : ((PipelineBufferOptions.fromMap((map['bufferOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      encryptionAtRestOptions: map['encryptionAtRestOptions'] == null ? null : ((PipelineEncryptionAtRestOptions.fromMap((map['encryptionAtRestOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      ingestEndpointUrls: map['ingestEndpointUrls'] == null ? null : (((map['ingestEndpointUrls'] as List).cast<String>()).input()).input(),
+      logPublishingOptions: map['logPublishingOptions'] == null ? null : ((PipelineLogPublishingOptions.fromMap((map['logPublishingOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      maxUnits: map['maxUnits'] == null ? null : ((map['maxUnits'] as int).input()).input(),
+      minUnits: map['minUnits'] == null ? null : ((map['minUnits'] as int).input()).input(),
+      pipelineArn: map['pipelineArn'] == null ? null : ((map['pipelineArn'] as String).input()).input(),
+      pipelineConfigurationBody: map['pipelineConfigurationBody'] == null ? null : ((map['pipelineConfigurationBody'] as String).input()).input(),
+      pipelineName: map['pipelineName'] == null ? null : ((map['pipelineName'] as String).input()).input(),
+      pipelineRoleArn: map['pipelineRoleArn'] == null ? null : ((map['pipelineRoleArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((PipelineTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcOptions: map['vpcOptions'] == null ? null : ((PipelineVpcOptions.fromMap((map['vpcOptions']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

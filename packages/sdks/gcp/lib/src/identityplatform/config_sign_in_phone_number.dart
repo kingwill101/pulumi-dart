@@ -26,7 +26,7 @@ class ConfigSignInPhoneNumber {
   factory ConfigSignInPhoneNumber.fromMap(Map<String, dynamic> map) {
     return ConfigSignInPhoneNumber(
       enabled: (map['enabled'] as bool).input(),
-      testPhoneNumbers: map['testPhoneNumbers'] == null ? null : ((map['testPhoneNumbers'] as Map).cast<String, String>()).input(),
+      testPhoneNumbers: map['testPhoneNumbers'] == null ? null : ((map['testPhoneNumbers']! as Map).cast<String, String>()).input(),
     );
   }
 }

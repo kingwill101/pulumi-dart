@@ -41,11 +41,11 @@ class DaprAppHealth {
 
   factory DaprAppHealth.fromMap(Map<String, dynamic> map) {
     return DaprAppHealth(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      probeIntervalSeconds: map['probeIntervalSeconds'] == null ? null : (map['probeIntervalSeconds'] as int).input(),
-      probeTimeoutMilliseconds: map['probeTimeoutMilliseconds'] == null ? null : (map['probeTimeoutMilliseconds'] as int).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      probeIntervalSeconds: map['probeIntervalSeconds'] == null ? null : (map['probeIntervalSeconds']! as int).input(),
+      probeTimeoutMilliseconds: map['probeTimeoutMilliseconds'] == null ? null : (map['probeTimeoutMilliseconds']! as int).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as int).input(),
     );
   }
 }

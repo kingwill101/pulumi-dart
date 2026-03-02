@@ -53,13 +53,13 @@ class KeyProperties {
 
   factory KeyProperties.fromMap(Map<String, dynamic> map) {
     return KeyProperties(
-      attributes: map['attributes'] == null ? null : (KeyAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
-      curveName: map['curveName'] == null ? null : (map['curveName'] as String).input(),
-      keyOps: map['keyOps'] == null ? null : ((map['keyOps'] as List).cast<String>()).input(),
-      keySize: map['keySize'] == null ? null : (map['keySize'] as int).input(),
-      kty: map['kty'] == null ? null : (map['kty'] as String).input(),
-      releasePolicy: map['releasePolicy'] == null ? null : (KeyReleasePolicy.fromMap((map['releasePolicy'] as Map).cast<String, dynamic>())).input(),
-      rotationPolicy: map['rotationPolicy'] == null ? null : (RotationPolicy.fromMap((map['rotationPolicy'] as Map).cast<String, dynamic>())).input(),
+      attributes: map['attributes'] == null ? null : (KeyAttributes.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input(),
+      curveName: map['curveName'] == null ? null : (map['curveName']! as String).input(),
+      keyOps: map['keyOps'] == null ? null : ((map['keyOps']! as List).cast<String>()).input(),
+      keySize: map['keySize'] == null ? null : (map['keySize']! as int).input(),
+      kty: map['kty'] == null ? null : (map['kty']! as String).input(),
+      releasePolicy: map['releasePolicy'] == null ? null : (KeyReleasePolicy.fromMap((map['releasePolicy']! as Map).cast<String, dynamic>())).input(),
+      rotationPolicy: map['rotationPolicy'] == null ? null : (RotationPolicy.fromMap((map['rotationPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

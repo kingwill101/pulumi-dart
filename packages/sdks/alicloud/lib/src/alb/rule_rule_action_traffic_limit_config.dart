@@ -25,8 +25,8 @@ class RuleRuleActionTrafficLimitConfig {
 
   factory RuleRuleActionTrafficLimitConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionTrafficLimitConfig(
-      perIpQps: map['perIpQps'] == null ? null : (map['perIpQps'] as int).input(),
-      qps: map['qps'] == null ? null : (map['qps'] as int).input(),
+      perIpQps: map['perIpQps'] == null ? null : (map['perIpQps']! as int).input(),
+      qps: map['qps'] == null ? null : (map['qps']! as int).input(),
     );
   }
 }

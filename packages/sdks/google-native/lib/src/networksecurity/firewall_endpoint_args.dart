@@ -52,13 +52,13 @@ class FirewallEndpointArgs {
 
   factory FirewallEndpointArgs.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointArgs(
-      billingProjectId: map['billingProjectId'] == null ? null : (map['billingProjectId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      billingProjectId: map['billingProjectId'] == null ? null : (map['billingProjectId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       firewallEndpointId: (map['firewallEndpointId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

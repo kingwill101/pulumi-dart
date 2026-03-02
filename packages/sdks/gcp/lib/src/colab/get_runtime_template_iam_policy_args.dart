@@ -37,8 +37,8 @@ class GetRuntimeTemplateIamPolicyArgs {
 
   factory GetRuntimeTemplateIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeTemplateIamPolicyArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       runtimeTemplate: (map['runtimeTemplate'] as String).input(),
     );
   }

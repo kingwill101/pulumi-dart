@@ -67,15 +67,15 @@ class PatchConfig {
 
   factory PatchConfig.fromMap(Map<String, dynamic> map) {
     return PatchConfig(
-      apt: map['apt'] == null ? null : (AptSettings.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
-      goo: map['goo'] == null ? null : ((map['goo'] as Map).cast<String, dynamic>()).input(),
-      migInstancesAllowed: map['migInstancesAllowed'] == null ? null : (map['migInstancesAllowed'] as bool).input(),
-      postStep: map['postStep'] == null ? null : (ExecStep.fromMap((map['postStep'] as Map).cast<String, dynamic>())).input(),
-      preStep: map['preStep'] == null ? null : (ExecStep.fromMap((map['preStep'] as Map).cast<String, dynamic>())).input(),
-      rebootConfig: map['rebootConfig'] == null ? null : (PatchConfigRebootConfig.fromValue(map['rebootConfig'] as String)).input(),
-      windowsUpdate: map['windowsUpdate'] == null ? null : (WindowsUpdateSettings.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>())).input(),
-      yum: map['yum'] == null ? null : (YumSettings.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
-      zypper: map['zypper'] == null ? null : (ZypperSettings.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
+      apt: map['apt'] == null ? null : (AptSettings.fromMap((map['apt']! as Map).cast<String, dynamic>())).input(),
+      goo: map['goo'] == null ? null : ((map['goo']! as Map).cast<String, dynamic>()).input(),
+      migInstancesAllowed: map['migInstancesAllowed'] == null ? null : (map['migInstancesAllowed']! as bool).input(),
+      postStep: map['postStep'] == null ? null : (ExecStep.fromMap((map['postStep']! as Map).cast<String, dynamic>())).input(),
+      preStep: map['preStep'] == null ? null : (ExecStep.fromMap((map['preStep']! as Map).cast<String, dynamic>())).input(),
+      rebootConfig: map['rebootConfig'] == null ? null : (PatchConfigRebootConfig.fromValue(map['rebootConfig']! as String)).input(),
+      windowsUpdate: map['windowsUpdate'] == null ? null : (WindowsUpdateSettings.fromMap((map['windowsUpdate']! as Map).cast<String, dynamic>())).input(),
+      yum: map['yum'] == null ? null : (YumSettings.fromMap((map['yum']! as Map).cast<String, dynamic>())).input(),
+      zypper: map['zypper'] == null ? null : (ZypperSettings.fromMap((map['zypper']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class AlertRuleAnomalyBuiltInSingleSelectObservation {
 
   factory AlertRuleAnomalyBuiltInSingleSelectObservation.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyBuiltInSingleSelectObservation(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      supportedValues: map['supportedValues'] == null ? null : ((map['supportedValues'] as List).cast<String>()).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      supportedValues: map['supportedValues'] == null ? null : ((map['supportedValues']! as List).cast<String>()).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

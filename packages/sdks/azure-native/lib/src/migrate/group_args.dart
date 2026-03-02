@@ -45,8 +45,8 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       properties: (GroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

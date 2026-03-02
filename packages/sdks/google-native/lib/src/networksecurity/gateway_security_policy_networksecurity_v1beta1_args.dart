@@ -47,12 +47,12 @@ class GatewaySecurityPolicyNetworksecurityV1beta1Args {
 
   factory GatewaySecurityPolicyNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GatewaySecurityPolicyNetworksecurityV1beta1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       gatewaySecurityPolicyId: (map['gatewaySecurityPolicyId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tlsInspectionPolicy: map['tlsInspectionPolicy'] == null ? null : (map['tlsInspectionPolicy'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tlsInspectionPolicy: map['tlsInspectionPolicy'] == null ? null : (map['tlsInspectionPolicy']! as String).input(),
     );
   }
 }

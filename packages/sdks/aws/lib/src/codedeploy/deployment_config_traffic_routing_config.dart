@@ -32,9 +32,9 @@ class DeploymentConfigTrafficRoutingConfig {
 
   factory DeploymentConfigTrafficRoutingConfig.fromMap(Map<String, dynamic> map) {
     return DeploymentConfigTrafficRoutingConfig(
-      timeBasedCanary: map['timeBasedCanary'] == null ? null : (DeploymentConfigTrafficRoutingConfigTimeBasedCanary.fromMap((map['timeBasedCanary'] as Map).cast<String, dynamic>())).input(),
-      timeBasedLinear: map['timeBasedLinear'] == null ? null : (DeploymentConfigTrafficRoutingConfigTimeBasedLinear.fromMap((map['timeBasedLinear'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      timeBasedCanary: map['timeBasedCanary'] == null ? null : ((DeploymentConfigTrafficRoutingConfigTimeBasedCanary.fromMap((map['timeBasedCanary']! as Map).cast<String, dynamic>())).input()).input(),
+      timeBasedLinear: map['timeBasedLinear'] == null ? null : ((DeploymentConfigTrafficRoutingConfigTimeBasedLinear.fromMap((map['timeBasedLinear']! as Map).cast<String, dynamic>())).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class DatabaseLogsinkOpensearchArgs {
 
   factory DatabaseLogsinkOpensearchArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseLogsinkOpensearchArgs(
-      caCert: map['caCert'] == null ? null : (map['caCert'] as String).input(),
+      caCert: map['caCert'] == null ? null : (map['caCert']! as String).input(),
       clusterId: (map['clusterId'] as String).input(),
       endpoint: (map['endpoint'] as String).input(),
-      indexDaysMax: map['indexDaysMax'] == null ? null : (map['indexDaysMax'] as int).input(),
+      indexDaysMax: map['indexDaysMax'] == null ? null : (map['indexDaysMax']! as int).input(),
       indexPrefix: (map['indexPrefix'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

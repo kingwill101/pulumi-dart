@@ -21,7 +21,7 @@ class LocalRulestackOutboundTrustCertificateAssociationState {
 
   factory LocalRulestackOutboundTrustCertificateAssociationState.fromMap(Map<String, dynamic> map) {
     return LocalRulestackOutboundTrustCertificateAssociationState(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
     );
   }
 }

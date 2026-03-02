@@ -40,11 +40,11 @@ class GetNodeFqdn {
 
   factory GetNodeFqdn.fromMap(Map<String, dynamic> map) {
     return GetNodeFqdn(
-      addressFamily: map['addressFamily'] == null ? null : (map['addressFamily'] as String).input(),
+      addressFamily: map['addressFamily'] == null ? null : (map['addressFamily']! as String).input(),
       autopopulate: (map['autopopulate'] as String).input(),
       downinterval: (map['downinterval'] as int).input(),
       interval: (map['interval'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

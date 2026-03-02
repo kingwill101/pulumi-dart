@@ -68,16 +68,16 @@ class LayerVersionPermissionState {
 
   factory LayerVersionPermissionState.fromMap(Map<String, dynamic> map) {
     return LayerVersionPermissionState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      layerName: map['layerName'] == null ? null : (map['layerName'] as String).input(),
-      organizationId: map['organizationId'] == null ? null : (map['organizationId'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
-      statementId: map['statementId'] == null ? null : (map['statementId'] as String).input(),
-      versionNumber: map['versionNumber'] == null ? null : (map['versionNumber'] as int).input(),
+      action: map['action'] == null ? null : ((map['action'] as String).input()).input(),
+      layerName: map['layerName'] == null ? null : ((map['layerName'] as String).input()).input(),
+      organizationId: map['organizationId'] == null ? null : ((map['organizationId'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      principal: map['principal'] == null ? null : ((map['principal'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      revisionId: map['revisionId'] == null ? null : ((map['revisionId'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
+      statementId: map['statementId'] == null ? null : ((map['statementId'] as String).input()).input(),
+      versionNumber: map['versionNumber'] == null ? null : ((map['versionNumber'] as int).input()).input(),
     );
   }
 }

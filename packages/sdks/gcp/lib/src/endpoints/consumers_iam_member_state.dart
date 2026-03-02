@@ -59,12 +59,12 @@ class ConsumersIamMemberState {
 
   factory ConsumersIamMemberState.fromMap(Map<String, dynamic> map) {
     return ConsumersIamMemberState(
-      condition: map['condition'] == null ? null : (ConsumersIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      consumerProject: map['consumerProject'] == null ? null : (map['consumerProject'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      condition: map['condition'] == null ? null : (ConsumersIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      consumerProject: map['consumerProject'] == null ? null : (map['consumerProject']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

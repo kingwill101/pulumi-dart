@@ -46,12 +46,12 @@ class NrqlDropRuleState {
 
   factory NrqlDropRuleState.fromMap(Map<String, dynamic> map) {
     return NrqlDropRuleState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      nrql: map['nrql'] == null ? null : (map['nrql'] as String).input(),
-      pipelineCloudRuleEntityId: map['pipelineCloudRuleEntityId'] == null ? null : (map['pipelineCloudRuleEntityId'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      nrql: map['nrql'] == null ? null : (map['nrql']! as String).input(),
+      pipelineCloudRuleEntityId: map['pipelineCloudRuleEntityId'] == null ? null : (map['pipelineCloudRuleEntityId']! as String).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as String).input(),
     );
   }
 }

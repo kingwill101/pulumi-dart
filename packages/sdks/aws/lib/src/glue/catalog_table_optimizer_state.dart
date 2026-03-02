@@ -47,12 +47,12 @@ class CatalogTableOptimizerState {
 
   factory CatalogTableOptimizerState.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerState(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      configuration: map['configuration'] == null ? null : (CatalogTableOptimizerConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      configuration: map['configuration'] == null ? null : ((CatalogTableOptimizerConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      databaseName: map['databaseName'] == null ? null : ((map['databaseName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

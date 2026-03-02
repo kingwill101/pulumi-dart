@@ -92,19 +92,19 @@ class GetTargetResult {
   factory GetTargetResult.fromMap(Map<String, dynamic> map) {
     return GetTargetResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      components: map['components'] == null ? null : pulumi.Input.decodeList<ComponentPropertiesResponse>(map['components'], (value) => ComponentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      components: map['components'] == null ? null : pulumi.Input.decodeList<ComponentPropertiesResponse>(map['components']!, (value) => ComponentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
       extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : ReconciliationPolicyResponse.fromMap((map['reconciliationPolicy'] as Map).cast<String, dynamic>()),
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : ReconciliationPolicyResponse.fromMap((map['reconciliationPolicy']! as Map).cast<String, dynamic>()),
+      scope: map['scope'] == null ? null : map['scope']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      topologies: map['topologies'] == null ? null : pulumi.Input.decodeList<TopologiesPropertiesResponse>(map['topologies'], (value) => TopologiesPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      topologies: map['topologies'] == null ? null : pulumi.Input.decodeList<TopologiesPropertiesResponse>(map['topologies']!, (value) => TopologiesPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

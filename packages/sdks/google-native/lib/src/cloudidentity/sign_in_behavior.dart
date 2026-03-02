@@ -22,7 +22,7 @@ class SignInBehavior {
 
   factory SignInBehavior.fromMap(Map<String, dynamic> map) {
     return SignInBehavior(
-      redirectCondition: map['redirectCondition'] == null ? null : (SignInBehaviorRedirectCondition.fromValue(map['redirectCondition'] as String)).input(),
+      redirectCondition: map['redirectCondition'] == null ? null : (SignInBehaviorRedirectCondition.fromValue(map['redirectCondition']! as String)).input(),
     );
   }
 }

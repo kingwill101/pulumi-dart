@@ -30,8 +30,8 @@ class DataSetFieldFolder {
 
   factory DataSetFieldFolder.fromMap(Map<String, dynamic> map) {
     return DataSetFieldFolder(
-      columns: map['columns'] == null ? null : ((map['columns'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      columns: map['columns'] == null ? null : (((map['columns'] as List).cast<String>()).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       fieldFoldersId: (map['fieldFoldersId'] as String).input(),
     );
   }

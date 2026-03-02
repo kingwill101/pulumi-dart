@@ -41,11 +41,11 @@ class CipherGroupState {
 
   factory CipherGroupState.fromMap(Map<String, dynamic> map) {
     return CipherGroupState(
-      allows: map['allows'] == null ? null : ((map['allows'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ordering: map['ordering'] == null ? null : (map['ordering'] as String).input(),
-      requires: map['requires'] == null ? null : ((map['requires'] as List).cast<String>()).input(),
+      allows: map['allows'] == null ? null : ((map['allows']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ordering: map['ordering'] == null ? null : (map['ordering']! as String).input(),
+      requires: map['requires'] == null ? null : ((map['requires']! as List).cast<String>()).input(),
     );
   }
 }

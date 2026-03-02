@@ -77,16 +77,16 @@ class GoogleCloudMlV1StudyConfigParameterSpec {
 
   factory GoogleCloudMlV1StudyConfigParameterSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpec(
-      categoricalValueSpec: map['categoricalValueSpec'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromMap((map['categoricalValueSpec'] as Map).cast<String, dynamic>())).input(),
-      childParameterSpecs: map['childParameterSpecs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1StudyConfigParameterSpec>(map['childParameterSpecs'], (value) => GoogleCloudMlV1StudyConfigParameterSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      discreteValueSpec: map['discreteValueSpec'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromMap((map['discreteValueSpec'] as Map).cast<String, dynamic>())).input(),
-      doubleValueSpec: map['doubleValueSpec'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromMap((map['doubleValueSpec'] as Map).cast<String, dynamic>())).input(),
-      integerValueSpec: map['integerValueSpec'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromMap((map['integerValueSpec'] as Map).cast<String, dynamic>())).input(),
+      categoricalValueSpec: map['categoricalValueSpec'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromMap((map['categoricalValueSpec']! as Map).cast<String, dynamic>())).input(),
+      childParameterSpecs: map['childParameterSpecs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1StudyConfigParameterSpec>(map['childParameterSpecs']!, (value) => GoogleCloudMlV1StudyConfigParameterSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      discreteValueSpec: map['discreteValueSpec'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromMap((map['discreteValueSpec']! as Map).cast<String, dynamic>())).input(),
+      doubleValueSpec: map['doubleValueSpec'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromMap((map['doubleValueSpec']! as Map).cast<String, dynamic>())).input(),
+      integerValueSpec: map['integerValueSpec'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromMap((map['integerValueSpec']! as Map).cast<String, dynamic>())).input(),
       parameter: (map['parameter'] as String).input(),
-      parentCategoricalValues: map['parentCategoricalValues'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec.fromMap((map['parentCategoricalValues'] as Map).cast<String, dynamic>())).input(),
-      parentDiscreteValues: map['parentDiscreteValues'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec.fromMap((map['parentDiscreteValues'] as Map).cast<String, dynamic>())).input(),
-      parentIntValues: map['parentIntValues'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec.fromMap((map['parentIntValues'] as Map).cast<String, dynamic>())).input(),
-      scaleType: map['scaleType'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecScaleType.fromValue(map['scaleType'] as String)).input(),
+      parentCategoricalValues: map['parentCategoricalValues'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec.fromMap((map['parentCategoricalValues']! as Map).cast<String, dynamic>())).input(),
+      parentDiscreteValues: map['parentDiscreteValues'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec.fromMap((map['parentDiscreteValues']! as Map).cast<String, dynamic>())).input(),
+      parentIntValues: map['parentIntValues'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec.fromMap((map['parentIntValues']! as Map).cast<String, dynamic>())).input(),
+      scaleType: map['scaleType'] == null ? null : (GoogleCloudMlV1StudyConfigParameterSpecScaleType.fromValue(map['scaleType']! as String)).input(),
       type: (GoogleCloudMlV1StudyConfigParameterSpecType.fromValue(map['type'] as String)).input(),
     );
   }

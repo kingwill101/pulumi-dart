@@ -68,14 +68,14 @@ class GetZoneRecordsArgs {
 
   factory GetZoneRecordsArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneRecordsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      searchMode: map['searchMode'] == null ? null : (map['searchMode'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      searchMode: map['searchMode'] == null ? null : (map['searchMode']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp']! as String).input(),
       zoneId: (map['zoneId'] as String).input(),
     );
   }

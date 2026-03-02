@@ -42,9 +42,9 @@ class GetAccountAccessTokenResult {
   factory GetAccountAccessTokenResult.fromMap(Map<String, dynamic> map) {
     return GetAccountAccessTokenResult(
       accessToken: map['accessToken'] as String,
-      delegates: map['delegates'] == null ? null : (map['delegates'] as List).cast<String>(),
+      delegates: map['delegates'] == null ? null : (map['delegates']! as List).cast<String>(),
       id: map['id'] as String,
-      lifetime: map['lifetime'] == null ? null : map['lifetime'] as String,
+      lifetime: map['lifetime'] == null ? null : map['lifetime']! as String,
       scopes: (map['scopes'] as List).cast<String>(),
       targetServiceAccount: map['targetServiceAccount'] as String,
     );

@@ -32,8 +32,8 @@ class DataTransferServiceResourceCreateUpdateProperties {
 
   factory DataTransferServiceResourceCreateUpdateProperties.fromMap(Map<String, dynamic> map) {
     return DataTransferServiceResourceCreateUpdateProperties(
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize'] as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize']! as String).input(),
       serviceType: (map['serviceType'] as String).input(),
     );
   }

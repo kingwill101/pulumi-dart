@@ -35,10 +35,10 @@ class ImageImageSharingSharedBy {
 
   factory ImageImageSharingSharedBy.fromMap(Map<String, dynamic> map) {
     return ImageImageSharingSharedBy(
-      sharegroupId: map['sharegroupId'] == null ? null : (map['sharegroupId'] as int).input(),
-      sharegroupLabel: map['sharegroupLabel'] == null ? null : (map['sharegroupLabel'] as String).input(),
-      sharegroupUuid: map['sharegroupUuid'] == null ? null : (map['sharegroupUuid'] as String).input(),
-      sourceImageId: map['sourceImageId'] == null ? null : (map['sourceImageId'] as String).input(),
+      sharegroupId: map['sharegroupId'] == null ? null : (map['sharegroupId']! as int).input(),
+      sharegroupLabel: map['sharegroupLabel'] == null ? null : (map['sharegroupLabel']! as String).input(),
+      sharegroupUuid: map['sharegroupUuid'] == null ? null : (map['sharegroupUuid']! as String).input(),
+      sourceImageId: map['sourceImageId'] == null ? null : (map['sourceImageId']! as String).input(),
     );
   }
 }

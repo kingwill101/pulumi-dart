@@ -84,18 +84,18 @@ class DpsSharedAccessPolicyState {
 
   factory DpsSharedAccessPolicyState.fromMap(Map<String, dynamic> map) {
     return DpsSharedAccessPolicyState(
-      enrollmentRead: map['enrollmentRead'] == null ? null : (map['enrollmentRead'] as bool).input(),
-      enrollmentWrite: map['enrollmentWrite'] == null ? null : (map['enrollmentWrite'] as bool).input(),
-      iothubDpsName: map['iothubDpsName'] == null ? null : (map['iothubDpsName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryConnectionString: map['primaryConnectionString'] == null ? null : (map['primaryConnectionString'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
-      registrationRead: map['registrationRead'] == null ? null : (map['registrationRead'] as bool).input(),
-      registrationWrite: map['registrationWrite'] == null ? null : (map['registrationWrite'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : (map['secondaryConnectionString'] as String).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
-      serviceConfig: map['serviceConfig'] == null ? null : (map['serviceConfig'] as bool).input(),
+      enrollmentRead: map['enrollmentRead'] == null ? null : (map['enrollmentRead']! as bool).input(),
+      enrollmentWrite: map['enrollmentWrite'] == null ? null : (map['enrollmentWrite']! as bool).input(),
+      iothubDpsName: map['iothubDpsName'] == null ? null : (map['iothubDpsName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryConnectionString: map['primaryConnectionString'] == null ? null : (map['primaryConnectionString']! as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
+      registrationRead: map['registrationRead'] == null ? null : (map['registrationRead']! as bool).input(),
+      registrationWrite: map['registrationWrite'] == null ? null : (map['registrationWrite']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : (map['secondaryConnectionString']! as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
+      serviceConfig: map['serviceConfig'] == null ? null : (map['serviceConfig']! as bool).input(),
     );
   }
 }

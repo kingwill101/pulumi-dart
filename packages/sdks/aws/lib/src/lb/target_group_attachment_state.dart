@@ -48,12 +48,12 @@ class TargetGroupAttachmentState {
 
   factory TargetGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return TargetGroupAttachmentState(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      quicServerId: map['quicServerId'] == null ? null : (map['quicServerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn'] as String).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      quicServerId: map['quicServerId'] == null ? null : ((map['quicServerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      targetGroupArn: map['targetGroupArn'] == null ? null : ((map['targetGroupArn'] as String).input()).input(),
+      targetId: map['targetId'] == null ? null : ((map['targetId'] as String).input()).input(),
     );
   }
 }

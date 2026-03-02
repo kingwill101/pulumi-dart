@@ -66,18 +66,18 @@ class GetStacksResult {
 
   factory GetStacksResult.fromMap(Map<String, dynamic> map) {
     return GetStacksResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      parentStackId: map['parentStackId'] == null ? null : map['parentStackId'] as String,
-      showNestedStack: map['showNestedStack'] == null ? null : map['showNestedStack'] as bool,
-      stackName: map['stackName'] == null ? null : map['stackName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      parentStackId: map['parentStackId'] == null ? null : map['parentStackId']! as String,
+      showNestedStack: map['showNestedStack'] == null ? null : map['showNestedStack']! as bool,
+      stackName: map['stackName'] == null ? null : map['stackName']! as String,
       stacks: pulumi.Input.decodeList<GetStacksStack>(map['stacks'], (value) => GetStacksStack.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

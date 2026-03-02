@@ -66,16 +66,16 @@ class Port {
 
   factory Port.fromMap(Map<String, dynamic> map) {
     return Port(
-      accessDirection: map['accessDirection'] == null ? null : (map['accessDirection'] as String).input(),
-      accessFrom: map['accessFrom'] == null ? null : (map['accessFrom'] as String).input(),
-      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
-      cidrListAliases: map['cidrListAliases'] == null ? null : ((map['cidrListAliases'] as List).cast<String>()).input(),
-      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
-      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
-      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
-      ipv6Cidrs: map['ipv6Cidrs'] == null ? null : ((map['ipv6Cidrs'] as List).cast<String>()).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
+      accessDirection: map['accessDirection'] == null ? null : (map['accessDirection']! as String).input(),
+      accessFrom: map['accessFrom'] == null ? null : (map['accessFrom']! as String).input(),
+      accessType: map['accessType'] == null ? null : (map['accessType']! as String).input(),
+      cidrListAliases: map['cidrListAliases'] == null ? null : ((map['cidrListAliases']! as List).cast<String>()).input(),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs']! as List).cast<String>()).input(),
+      commonName: map['commonName'] == null ? null : (map['commonName']! as String).input(),
+      fromPort: map['fromPort'] == null ? null : (map['fromPort']! as int).input(),
+      ipv6Cidrs: map['ipv6Cidrs'] == null ? null : ((map['ipv6Cidrs']! as List).cast<String>()).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      toPort: map['toPort'] == null ? null : (map['toPort']! as int).input(),
     );
   }
 }

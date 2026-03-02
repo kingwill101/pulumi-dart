@@ -50,12 +50,12 @@ class CustomDomainConfigurationResponse {
 
   factory CustomDomainConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CustomDomainConfigurationResponse(
-      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
-      expectedTxtRecordName: map['expectedTxtRecordName'] == null ? null : (map['expectedTxtRecordName'] as String).input(),
-      expectedTxtRecordValue: map['expectedTxtRecordValue'] == null ? null : (map['expectedTxtRecordValue'] as String).input(),
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl']! as String).input(),
+      expectedTxtRecordName: map['expectedTxtRecordName'] == null ? null : (map['expectedTxtRecordName']! as String).input(),
+      expectedTxtRecordValue: map['expectedTxtRecordValue'] == null ? null : (map['expectedTxtRecordValue']! as String).input(),
       fullyQualifiedDomainName: (map['fullyQualifiedDomainName'] as String).input(),
-      identity: map['identity'] == null ? null : (CustomDomainIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      validationState: map['validationState'] == null ? null : (map['validationState'] as String).input(),
+      identity: map['identity'] == null ? null : (CustomDomainIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      validationState: map['validationState'] == null ? null : (map['validationState']! as String).input(),
     );
   }
 }

@@ -54,12 +54,12 @@ class SharedPrivateLinkResourceArgs {
 
   factory SharedPrivateLinkResourceArgs.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceArgs(
-      dnsZone: map['dnsZone'] == null ? null : (map['dnsZone'] as String).input(),
+      dnsZone: map['dnsZone'] == null ? null : (map['dnsZone']! as String).input(),
       groupId: (map['groupId'] as String).input(),
       privateLinkResourceId: (map['privateLinkResourceId'] as String).input(),
       requestMessage: (map['requestMessage'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sharedPrivateLinkResourceName: map['sharedPrivateLinkResourceName'] == null ? null : (map['sharedPrivateLinkResourceName'] as String).input(),
+      sharedPrivateLinkResourceName: map['sharedPrivateLinkResourceName'] == null ? null : (map['sharedPrivateLinkResourceName']! as String).input(),
       watcherName: (map['watcherName'] as String).input(),
     );
   }

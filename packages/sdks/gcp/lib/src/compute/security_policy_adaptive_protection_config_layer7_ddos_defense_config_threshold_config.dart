@@ -61,15 +61,15 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
 
   factory SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig(
-      autoDeployConfidenceThreshold: map['autoDeployConfidenceThreshold'] == null ? null : (map['autoDeployConfidenceThreshold'] as double).input(),
-      autoDeployExpirationSec: map['autoDeployExpirationSec'] == null ? null : (map['autoDeployExpirationSec'] as int).input(),
-      autoDeployImpactedBaselineThreshold: map['autoDeployImpactedBaselineThreshold'] == null ? null : (map['autoDeployImpactedBaselineThreshold'] as double).input(),
-      autoDeployLoadThreshold: map['autoDeployLoadThreshold'] == null ? null : (map['autoDeployLoadThreshold'] as double).input(),
-      detectionAbsoluteQps: map['detectionAbsoluteQps'] == null ? null : (map['detectionAbsoluteQps'] as double).input(),
-      detectionLoadThreshold: map['detectionLoadThreshold'] == null ? null : (map['detectionLoadThreshold'] as double).input(),
-      detectionRelativeToBaselineQps: map['detectionRelativeToBaselineQps'] == null ? null : (map['detectionRelativeToBaselineQps'] as double).input(),
+      autoDeployConfidenceThreshold: map['autoDeployConfidenceThreshold'] == null ? null : (map['autoDeployConfidenceThreshold']! as double).input(),
+      autoDeployExpirationSec: map['autoDeployExpirationSec'] == null ? null : (map['autoDeployExpirationSec']! as int).input(),
+      autoDeployImpactedBaselineThreshold: map['autoDeployImpactedBaselineThreshold'] == null ? null : (map['autoDeployImpactedBaselineThreshold']! as double).input(),
+      autoDeployLoadThreshold: map['autoDeployLoadThreshold'] == null ? null : (map['autoDeployLoadThreshold']! as double).input(),
+      detectionAbsoluteQps: map['detectionAbsoluteQps'] == null ? null : (map['detectionAbsoluteQps']! as double).input(),
+      detectionLoadThreshold: map['detectionLoadThreshold'] == null ? null : (map['detectionLoadThreshold']! as double).input(),
+      detectionRelativeToBaselineQps: map['detectionRelativeToBaselineQps'] == null ? null : (map['detectionRelativeToBaselineQps']! as double).input(),
       name: (map['name'] as String).input(),
-      trafficGranularityConfigs: map['trafficGranularityConfigs'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>(map['trafficGranularityConfigs'], (value) => SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trafficGranularityConfigs: map['trafficGranularityConfigs'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig>(map['trafficGranularityConfigs']!, (value) => SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

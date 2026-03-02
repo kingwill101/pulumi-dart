@@ -28,7 +28,7 @@ class SharingStatusResponse {
   factory SharingStatusResponse.fromMap(Map<String, dynamic> map) {
     return SharingStatusResponse(
       aggregatedState: (map['aggregatedState'] as String).input(),
-      summary: map['summary'] == null ? null : (pulumi.Input.decodeList<RegionalSharingStatusResponse>(map['summary'], (value) => RegionalSharingStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      summary: map['summary'] == null ? null : (pulumi.Input.decodeList<RegionalSharingStatusResponse>(map['summary']!, (value) => RegionalSharingStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

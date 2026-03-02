@@ -43,13 +43,13 @@ class EndpointRdsOptions {
 
   factory EndpointRdsOptions.fromMap(Map<String, dynamic> map) {
     return EndpointRdsOptions(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      rdsDbClusterArn: map['rdsDbClusterArn'] == null ? null : (map['rdsDbClusterArn'] as String).input(),
-      rdsDbInstanceArn: map['rdsDbInstanceArn'] == null ? null : (map['rdsDbInstanceArn'] as String).input(),
-      rdsDbProxyArn: map['rdsDbProxyArn'] == null ? null : (map['rdsDbProxyArn'] as String).input(),
-      rdsEndpoint: map['rdsEndpoint'] == null ? null : (map['rdsEndpoint'] as String).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      rdsDbClusterArn: map['rdsDbClusterArn'] == null ? null : ((map['rdsDbClusterArn'] as String).input()).input(),
+      rdsDbInstanceArn: map['rdsDbInstanceArn'] == null ? null : ((map['rdsDbInstanceArn'] as String).input()).input(),
+      rdsDbProxyArn: map['rdsDbProxyArn'] == null ? null : ((map['rdsDbProxyArn'] as String).input()).input(),
+      rdsEndpoint: map['rdsEndpoint'] == null ? null : ((map['rdsEndpoint'] as String).input()).input(),
+      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

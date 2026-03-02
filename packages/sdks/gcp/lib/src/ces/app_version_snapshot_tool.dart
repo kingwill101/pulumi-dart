@@ -119,19 +119,19 @@ class AppVersionSnapshotTool {
 
   factory AppVersionSnapshotTool.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotTool(
-      clientFunctions: map['clientFunctions'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolClientFunction>(map['clientFunctions'], (value) => AppVersionSnapshotToolClientFunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataStoreTools: map['dataStoreTools'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreTool>(map['dataStoreTools'], (value) => AppVersionSnapshotToolDataStoreTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      executionType: map['executionType'] == null ? null : (map['executionType'] as String).input(),
-      generatedSummary: map['generatedSummary'] == null ? null : (map['generatedSummary'] as String).input(),
-      googleSearchTools: map['googleSearchTools'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolGoogleSearchTool>(map['googleSearchTools'], (value) => AppVersionSnapshotToolGoogleSearchTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      openApiTools: map['openApiTools'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiTool>(map['openApiTools'], (value) => AppVersionSnapshotToolOpenApiTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pythonFunctions: map['pythonFunctions'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolPythonFunction>(map['pythonFunctions'], (value) => AppVersionSnapshotToolPythonFunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      systemTools: map['systemTools'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolSystemTool>(map['systemTools'], (value) => AppVersionSnapshotToolSystemTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      clientFunctions: map['clientFunctions'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolClientFunction>(map['clientFunctions']!, (value) => AppVersionSnapshotToolClientFunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataStoreTools: map['dataStoreTools'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreTool>(map['dataStoreTools']!, (value) => AppVersionSnapshotToolDataStoreTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      executionType: map['executionType'] == null ? null : (map['executionType']! as String).input(),
+      generatedSummary: map['generatedSummary'] == null ? null : (map['generatedSummary']! as String).input(),
+      googleSearchTools: map['googleSearchTools'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolGoogleSearchTool>(map['googleSearchTools']!, (value) => AppVersionSnapshotToolGoogleSearchTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      openApiTools: map['openApiTools'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolOpenApiTool>(map['openApiTools']!, (value) => AppVersionSnapshotToolOpenApiTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pythonFunctions: map['pythonFunctions'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolPythonFunction>(map['pythonFunctions']!, (value) => AppVersionSnapshotToolPythonFunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      systemTools: map['systemTools'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolSystemTool>(map['systemTools']!, (value) => AppVersionSnapshotToolSystemTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

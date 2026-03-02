@@ -20,7 +20,7 @@ class FunctionEphemeralStorage {
 
   factory FunctionEphemeralStorage.fromMap(Map<String, dynamic> map) {
     return FunctionEphemeralStorage(
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      size: map['size'] == null ? null : ((map['size'] as int).input()).input(),
     );
   }
 }

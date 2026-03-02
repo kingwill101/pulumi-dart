@@ -50,11 +50,11 @@ class ShareArgs {
   factory ShareArgs.fromMap(Map<String, dynamic> map) {
     return ShareArgs(
       accountName: (map['accountName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      shareKind: map['shareKind'] == null ? null : (map['shareKind'] as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
-      terms: map['terms'] == null ? null : (map['terms'] as String).input(),
+      shareKind: map['shareKind'] == null ? null : (map['shareKind']! as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
+      terms: map['terms'] == null ? null : (map['terms']! as String).input(),
     );
   }
 }

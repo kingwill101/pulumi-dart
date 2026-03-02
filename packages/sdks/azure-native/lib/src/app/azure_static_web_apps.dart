@@ -27,8 +27,8 @@ class AzureStaticWebApps {
 
   factory AzureStaticWebApps.fromMap(Map<String, dynamic> map) {
     return AzureStaticWebApps(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      registration: map['registration'] == null ? null : (AzureStaticWebAppsRegistration.fromMap((map['registration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      registration: map['registration'] == null ? null : (AzureStaticWebAppsRegistration.fromMap((map['registration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

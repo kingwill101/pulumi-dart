@@ -92,16 +92,16 @@ class GroupV2Args {
 
   factory GroupV2Args.fromMap(Map<String, dynamic> map) {
     return GroupV2Args(
-      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      egressFirewallPolicyId: map['egressFirewallPolicyId'] == null ? null : (map['egressFirewallPolicyId'] as String).input(),
-      ingressFirewallPolicyId: map['ingressFirewallPolicyId'] == null ? null : (map['ingressFirewallPolicyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<String>()).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shared: map['shared'] == null ? null : (map['shared'] as bool).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      egressFirewallPolicyId: map['egressFirewallPolicyId'] == null ? null : (map['egressFirewallPolicyId']! as String).input(),
+      ingressFirewallPolicyId: map['ingressFirewallPolicyId'] == null ? null : (map['ingressFirewallPolicyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<String>()).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      shared: map['shared'] == null ? null : (map['shared']! as bool).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

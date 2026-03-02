@@ -38,10 +38,10 @@ class TableMaterializedView {
 
   factory TableMaterializedView.fromMap(Map<String, dynamic> map) {
     return TableMaterializedView(
-      allowNonIncrementalDefinition: map['allowNonIncrementalDefinition'] == null ? null : (map['allowNonIncrementalDefinition'] as bool).input(),
-      enableRefresh: map['enableRefresh'] == null ? null : (map['enableRefresh'] as bool).input(),
+      allowNonIncrementalDefinition: map['allowNonIncrementalDefinition'] == null ? null : (map['allowNonIncrementalDefinition']! as bool).input(),
+      enableRefresh: map['enableRefresh'] == null ? null : (map['enableRefresh']! as bool).input(),
       query: (map['query'] as String).input(),
-      refreshIntervalMs: map['refreshIntervalMs'] == null ? null : (map['refreshIntervalMs'] as int).input(),
+      refreshIntervalMs: map['refreshIntervalMs'] == null ? null : (map['refreshIntervalMs']! as int).input(),
     );
   }
 }

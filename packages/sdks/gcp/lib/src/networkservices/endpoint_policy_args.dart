@@ -77,15 +77,15 @@ class EndpointPolicyArgs {
 
   factory EndpointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return EndpointPolicyArgs(
-      authorizationPolicy: map['authorizationPolicy'] == null ? null : (map['authorizationPolicy'] as String).input(),
-      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : (map['clientTlsPolicy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      authorizationPolicy: map['authorizationPolicy'] == null ? null : (map['authorizationPolicy']! as String).input(),
+      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : (map['clientTlsPolicy']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       endpointMatcher: (EndpointPolicyEndpointMatcher.fromMap((map['endpointMatcher'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy'] as String).input(),
-      trafficPortSelector: map['trafficPortSelector'] == null ? null : (EndpointPolicyTrafficPortSelector.fromMap((map['trafficPortSelector'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy']! as String).input(),
+      trafficPortSelector: map['trafficPortSelector'] == null ? null : (EndpointPolicyTrafficPortSelector.fromMap((map['trafficPortSelector']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

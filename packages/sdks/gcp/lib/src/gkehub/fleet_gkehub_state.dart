@@ -64,14 +64,14 @@ class FleetGkehubState {
 
   factory FleetGkehubState.fromMap(Map<String, dynamic> map) {
     return FleetGkehubState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      defaultClusterConfig: map['defaultClusterConfig'] == null ? null : (FleetDefaultClusterConfig.fromMap((map['defaultClusterConfig'] as Map).cast<String, dynamic>())).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<FleetState>(map['states'], (value) => FleetState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      defaultClusterConfig: map['defaultClusterConfig'] == null ? null : (FleetDefaultClusterConfig.fromMap((map['defaultClusterConfig']! as Map).cast<String, dynamic>())).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<FleetState>(map['states']!, (value) => FleetState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

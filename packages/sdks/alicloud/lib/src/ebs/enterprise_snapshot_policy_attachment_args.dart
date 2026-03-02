@@ -29,7 +29,7 @@ class EnterpriseSnapshotPolicyAttachmentArgs {
 
   factory EnterpriseSnapshotPolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyAttachmentArgs(
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
       policyId: (map['policyId'] as String).input(),
     );
   }

@@ -51,13 +51,13 @@ class LifecycleHookSpecificationResponse {
 
   factory LifecycleHookSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return LifecycleHookSpecificationResponse(
-      defaultResult: map['defaultResult'] == null ? null : (map['defaultResult'] as String).input(),
-      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : (map['heartbeatTimeout'] as int).input(),
-      lifecycleHookName: map['lifecycleHookName'] == null ? null : (map['lifecycleHookName'] as String).input(),
-      lifecycleTransition: map['lifecycleTransition'] == null ? null : (map['lifecycleTransition'] as String).input(),
-      notificationMetadata: map['notificationMetadata'] == null ? null : (map['notificationMetadata'] as String).input(),
-      notificationTargetARN: map['notificationTargetARN'] == null ? null : (map['notificationTargetARN'] as String).input(),
-      roleARN: map['roleARN'] == null ? null : (map['roleARN'] as String).input(),
+      defaultResult: map['defaultResult'] == null ? null : (map['defaultResult']! as String).input(),
+      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : (map['heartbeatTimeout']! as int).input(),
+      lifecycleHookName: map['lifecycleHookName'] == null ? null : (map['lifecycleHookName']! as String).input(),
+      lifecycleTransition: map['lifecycleTransition'] == null ? null : (map['lifecycleTransition']! as String).input(),
+      notificationMetadata: map['notificationMetadata'] == null ? null : (map['notificationMetadata']! as String).input(),
+      notificationTargetARN: map['notificationTargetARN'] == null ? null : (map['notificationTargetARN']! as String).input(),
+      roleARN: map['roleARN'] == null ? null : (map['roleARN']! as String).input(),
     );
   }
 }

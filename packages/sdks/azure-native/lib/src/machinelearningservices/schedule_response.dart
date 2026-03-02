@@ -59,12 +59,12 @@ class ScheduleResponse {
   factory ScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ScheduleResponse(
       action: (CreateMonitorActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       trigger: (CronTriggerResponse.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
     );
   }

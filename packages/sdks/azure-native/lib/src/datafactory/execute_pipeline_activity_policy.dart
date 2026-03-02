@@ -21,7 +21,7 @@ class ExecutePipelineActivityPolicy {
 
   factory ExecutePipelineActivityPolicy.fromMap(Map<String, dynamic> map) {
     return ExecutePipelineActivityPolicy(
-      secureInput: map['secureInput'] == null ? null : (map['secureInput'] as bool).input(),
+      secureInput: map['secureInput'] == null ? null : (map['secureInput']! as bool).input(),
     );
   }
 }

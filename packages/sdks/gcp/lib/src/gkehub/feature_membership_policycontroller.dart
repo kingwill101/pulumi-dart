@@ -27,7 +27,7 @@ class FeatureMembershipPolicycontroller {
   factory FeatureMembershipPolicycontroller.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipPolicycontroller(
       policyControllerHubConfig: (FeatureMembershipPolicycontrollerPolicyControllerHubConfig.fromMap((map['policyControllerHubConfig'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

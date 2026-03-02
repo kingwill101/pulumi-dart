@@ -20,7 +20,7 @@ class GetGradientaiAgentsAgentChatbotIdentifier {
 
   factory GetGradientaiAgentsAgentChatbotIdentifier.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsAgentChatbotIdentifier(
-      chatbotId: map['chatbotId'] == null ? null : (map['chatbotId'] as String).input(),
+      chatbotId: map['chatbotId'] == null ? null : (map['chatbotId']! as String).input(),
     );
   }
 }

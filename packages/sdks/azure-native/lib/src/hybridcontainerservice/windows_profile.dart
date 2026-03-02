@@ -36,10 +36,10 @@ class WindowsProfile {
 
   factory WindowsProfile.fromMap(Map<String, dynamic> map) {
     return WindowsProfile(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
-      enableCsiProxy: map['enableCsiProxy'] == null ? null : (map['enableCsiProxy'] as bool).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername']! as String).input(),
+      enableCsiProxy: map['enableCsiProxy'] == null ? null : (map['enableCsiProxy']! as bool).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
     );
   }
 }

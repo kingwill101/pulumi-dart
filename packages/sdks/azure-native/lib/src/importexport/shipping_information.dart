@@ -56,14 +56,14 @@ class ShippingInformation {
 
   factory ShippingInformation.fromMap(Map<String, dynamic> map) {
     return ShippingInformation(
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      countryOrRegion: map['countryOrRegion'] == null ? null : (map['countryOrRegion'] as String).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
-      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
-      recipientName: map['recipientName'] == null ? null : (map['recipientName'] as String).input(),
-      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince'] as String).input(),
-      streetAddress1: map['streetAddress1'] == null ? null : (map['streetAddress1'] as String).input(),
-      streetAddress2: map['streetAddress2'] == null ? null : (map['streetAddress2'] as String).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
+      countryOrRegion: map['countryOrRegion'] == null ? null : (map['countryOrRegion']! as String).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode']! as String).input(),
+      recipientName: map['recipientName'] == null ? null : (map['recipientName']! as String).input(),
+      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince']! as String).input(),
+      streetAddress1: map['streetAddress1'] == null ? null : (map['streetAddress1']! as String).input(),
+      streetAddress2: map['streetAddress2'] == null ? null : (map['streetAddress2']! as String).input(),
     );
   }
 }

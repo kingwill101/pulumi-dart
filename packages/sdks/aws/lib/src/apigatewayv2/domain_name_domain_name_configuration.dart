@@ -52,11 +52,11 @@ class DomainNameDomainNameConfiguration {
     return DomainNameDomainNameConfiguration(
       certificateArn: (map['certificateArn'] as String).input(),
       endpointType: (map['endpointType'] as String).input(),
-      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      ownershipVerificationCertificateArn: map['ownershipVerificationCertificateArn'] == null ? null : (map['ownershipVerificationCertificateArn'] as String).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : ((map['hostedZoneId'] as String).input()).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
+      ownershipVerificationCertificateArn: map['ownershipVerificationCertificateArn'] == null ? null : ((map['ownershipVerificationCertificateArn'] as String).input()).input(),
       securityPolicy: (map['securityPolicy'] as String).input(),
-      targetDomainName: map['targetDomainName'] == null ? null : (map['targetDomainName'] as String).input(),
+      targetDomainName: map['targetDomainName'] == null ? null : ((map['targetDomainName'] as String).input()).input(),
     );
   }
 }

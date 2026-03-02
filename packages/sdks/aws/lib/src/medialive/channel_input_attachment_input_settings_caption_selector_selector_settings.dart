@@ -56,13 +56,13 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings {
 
   factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings(
-      ancillarySourceSettings: map['ancillarySourceSettings'] == null ? null : (ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsAncillarySourceSettings.fromMap((map['ancillarySourceSettings'] as Map).cast<String, dynamic>())).input(),
-      aribSourceSettings: map['aribSourceSettings'] == null ? null : ((map['aribSourceSettings'] as Map).cast<String, dynamic>()).input(),
-      dvbSubSourceSettings: map['dvbSubSourceSettings'] == null ? null : (ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings.fromMap((map['dvbSubSourceSettings'] as Map).cast<String, dynamic>())).input(),
-      embeddedSourceSettings: map['embeddedSourceSettings'] == null ? null : (ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsEmbeddedSourceSettings.fromMap((map['embeddedSourceSettings'] as Map).cast<String, dynamic>())).input(),
-      scte20SourceSettings: map['scte20SourceSettings'] == null ? null : (ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings.fromMap((map['scte20SourceSettings'] as Map).cast<String, dynamic>())).input(),
-      scte27SourceSettings: map['scte27SourceSettings'] == null ? null : (ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings.fromMap((map['scte27SourceSettings'] as Map).cast<String, dynamic>())).input(),
-      teletextSourceSettings: map['teletextSourceSettings'] == null ? null : (ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettings.fromMap((map['teletextSourceSettings'] as Map).cast<String, dynamic>())).input(),
+      ancillarySourceSettings: map['ancillarySourceSettings'] == null ? null : ((ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsAncillarySourceSettings.fromMap((map['ancillarySourceSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      aribSourceSettings: map['aribSourceSettings'] == null ? null : (((map['aribSourceSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      dvbSubSourceSettings: map['dvbSubSourceSettings'] == null ? null : ((ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings.fromMap((map['dvbSubSourceSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      embeddedSourceSettings: map['embeddedSourceSettings'] == null ? null : ((ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsEmbeddedSourceSettings.fromMap((map['embeddedSourceSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      scte20SourceSettings: map['scte20SourceSettings'] == null ? null : ((ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings.fromMap((map['scte20SourceSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      scte27SourceSettings: map['scte27SourceSettings'] == null ? null : ((ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings.fromMap((map['scte27SourceSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      teletextSourceSettings: map['teletextSourceSettings'] == null ? null : ((ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettings.fromMap((map['teletextSourceSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

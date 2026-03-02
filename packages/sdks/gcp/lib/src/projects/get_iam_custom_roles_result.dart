@@ -40,10 +40,10 @@ class GetIamCustomRolesResult {
   factory GetIamCustomRolesResult.fromMap(Map<String, dynamic> map) {
     return GetIamCustomRolesResult(
       id: map['id'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       roles: pulumi.Input.decodeList<GetIamCustomRolesRole>(map['roles'], (value) => GetIamCustomRolesRole.fromMap((value as Map).cast<String, dynamic>())),
-      showDeleted: map['showDeleted'] == null ? null : map['showDeleted'] as bool,
-      view: map['view'] == null ? null : map['view'] as String,
+      showDeleted: map['showDeleted'] == null ? null : map['showDeleted']! as bool,
+      view: map['view'] == null ? null : map['view']! as String,
     );
   }
 }

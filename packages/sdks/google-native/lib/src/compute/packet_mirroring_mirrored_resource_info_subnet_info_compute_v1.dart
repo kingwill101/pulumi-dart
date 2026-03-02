@@ -20,7 +20,7 @@ class PacketMirroringMirroredResourceInfoSubnetInfoComputeV1 {
 
   factory PacketMirroringMirroredResourceInfoSubnetInfoComputeV1.fromMap(Map<String, dynamic> map) {
     return PacketMirroringMirroredResourceInfoSubnetInfoComputeV1(
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

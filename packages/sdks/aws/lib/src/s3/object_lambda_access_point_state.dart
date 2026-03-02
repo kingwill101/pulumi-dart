@@ -47,12 +47,12 @@ class ObjectLambdaAccessPointState {
 
   factory ObjectLambdaAccessPointState.fromMap(Map<String, dynamic> map) {
     return ObjectLambdaAccessPointState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configuration: map['configuration'] == null ? null : (ObjectLambdaAccessPointConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      alias: map['alias'] == null ? null : ((map['alias'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configuration: map['configuration'] == null ? null : ((ObjectLambdaAccessPointConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

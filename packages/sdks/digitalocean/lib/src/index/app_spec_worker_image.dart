@@ -51,13 +51,13 @@ class AppSpecWorkerImage {
 
   factory AppSpecWorkerImage.fromMap(Map<String, dynamic> map) {
     return AppSpecWorkerImage(
-      deployOnPushes: map['deployOnPushes'] == null ? null : (pulumi.Input.decodeList<AppSpecWorkerImageDeployOnPush>(map['deployOnPushes'], (value) => AppSpecWorkerImageDeployOnPush.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
-      registry: map['registry'] == null ? null : (map['registry'] as String).input(),
-      registryCredentials: map['registryCredentials'] == null ? null : (map['registryCredentials'] as String).input(),
+      deployOnPushes: map['deployOnPushes'] == null ? null : (pulumi.Input.decodeList<AppSpecWorkerImageDeployOnPush>(map['deployOnPushes']!, (value) => AppSpecWorkerImageDeployOnPush.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
+      registry: map['registry'] == null ? null : (map['registry']! as String).input(),
+      registryCredentials: map['registryCredentials'] == null ? null : (map['registryCredentials']! as String).input(),
       registryType: (map['registryType'] as String).input(),
       repository: (map['repository'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

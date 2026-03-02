@@ -40,11 +40,11 @@ class DirectoryWorkspaceCreationProperties {
 
   factory DirectoryWorkspaceCreationProperties.fromMap(Map<String, dynamic> map) {
     return DirectoryWorkspaceCreationProperties(
-      customSecurityGroupId: map['customSecurityGroupId'] == null ? null : (map['customSecurityGroupId'] as String).input(),
-      defaultOu: map['defaultOu'] == null ? null : (map['defaultOu'] as String).input(),
-      enableInternetAccess: map['enableInternetAccess'] == null ? null : (map['enableInternetAccess'] as bool).input(),
-      enableMaintenanceMode: map['enableMaintenanceMode'] == null ? null : (map['enableMaintenanceMode'] as bool).input(),
-      userEnabledAsLocalAdministrator: map['userEnabledAsLocalAdministrator'] == null ? null : (map['userEnabledAsLocalAdministrator'] as bool).input(),
+      customSecurityGroupId: map['customSecurityGroupId'] == null ? null : ((map['customSecurityGroupId'] as String).input()).input(),
+      defaultOu: map['defaultOu'] == null ? null : ((map['defaultOu'] as String).input()).input(),
+      enableInternetAccess: map['enableInternetAccess'] == null ? null : ((map['enableInternetAccess'] as bool).input()).input(),
+      enableMaintenanceMode: map['enableMaintenanceMode'] == null ? null : ((map['enableMaintenanceMode'] as bool).input()).input(),
+      userEnabledAsLocalAdministrator: map['userEnabledAsLocalAdministrator'] == null ? null : ((map['userEnabledAsLocalAdministrator'] as bool).input()).input(),
     );
   }
 }

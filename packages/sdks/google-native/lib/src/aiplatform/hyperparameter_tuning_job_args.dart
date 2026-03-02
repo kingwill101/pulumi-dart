@@ -71,13 +71,13 @@ class HyperparameterTuningJobArgs {
   factory HyperparameterTuningJobArgs.fromMap(Map<String, dynamic> map) {
     return HyperparameterTuningJobArgs(
       displayName: (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maxFailedTrialCount: map['maxFailedTrialCount'] == null ? null : (map['maxFailedTrialCount'] as int).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maxFailedTrialCount: map['maxFailedTrialCount'] == null ? null : (map['maxFailedTrialCount']! as int).input(),
       maxTrialCount: (map['maxTrialCount'] as int).input(),
       parallelTrialCount: (map['parallelTrialCount'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       studySpec: (GoogleCloudAiplatformV1StudySpec.fromMap((map['studySpec'] as Map).cast<String, dynamic>())).input(),
       trialJobSpec: (GoogleCloudAiplatformV1CustomJobSpec.fromMap((map['trialJobSpec'] as Map).cast<String, dynamic>())).input(),
     );

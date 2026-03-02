@@ -34,9 +34,9 @@ class StreamDestinationConfig {
 
   factory StreamDestinationConfig.fromMap(Map<String, dynamic> map) {
     return StreamDestinationConfig(
-      bigqueryDestinationConfig: map['bigqueryDestinationConfig'] == null ? null : (StreamDestinationConfigBigqueryDestinationConfig.fromMap((map['bigqueryDestinationConfig'] as Map).cast<String, dynamic>())).input(),
+      bigqueryDestinationConfig: map['bigqueryDestinationConfig'] == null ? null : (StreamDestinationConfigBigqueryDestinationConfig.fromMap((map['bigqueryDestinationConfig']! as Map).cast<String, dynamic>())).input(),
       destinationConnectionProfile: (map['destinationConnectionProfile'] as String).input(),
-      gcsDestinationConfig: map['gcsDestinationConfig'] == null ? null : (StreamDestinationConfigGcsDestinationConfig.fromMap((map['gcsDestinationConfig'] as Map).cast<String, dynamic>())).input(),
+      gcsDestinationConfig: map['gcsDestinationConfig'] == null ? null : (StreamDestinationConfigGcsDestinationConfig.fromMap((map['gcsDestinationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

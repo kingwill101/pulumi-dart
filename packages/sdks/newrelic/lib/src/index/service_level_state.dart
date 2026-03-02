@@ -55,13 +55,13 @@ class ServiceLevelState {
 
   factory ServiceLevelState.fromMap(Map<String, dynamic> map) {
     return ServiceLevelState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      events: map['events'] == null ? null : (ServiceLevelEvents.fromMap((map['events'] as Map).cast<String, dynamic>())).input(),
-      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      objective: map['objective'] == null ? null : (ServiceLevelObjective.fromMap((map['objective'] as Map).cast<String, dynamic>())).input(),
-      sliGuid: map['sliGuid'] == null ? null : (map['sliGuid'] as String).input(),
-      sliId: map['sliId'] == null ? null : (map['sliId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      events: map['events'] == null ? null : (ServiceLevelEvents.fromMap((map['events']! as Map).cast<String, dynamic>())).input(),
+      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      objective: map['objective'] == null ? null : (ServiceLevelObjective.fromMap((map['objective']! as Map).cast<String, dynamic>())).input(),
+      sliGuid: map['sliGuid'] == null ? null : (map['sliGuid']! as String).input(),
+      sliId: map['sliId'] == null ? null : (map['sliId']! as String).input(),
     );
   }
 }

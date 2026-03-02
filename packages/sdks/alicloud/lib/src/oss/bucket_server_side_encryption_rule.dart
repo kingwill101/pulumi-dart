@@ -30,8 +30,8 @@ class BucketServerSideEncryptionRule {
 
   factory BucketServerSideEncryptionRule.fromMap(Map<String, dynamic> map) {
     return BucketServerSideEncryptionRule(
-      kmsDataEncryption: map['kmsDataEncryption'] == null ? null : (map['kmsDataEncryption'] as String).input(),
-      kmsMasterKeyId: map['kmsMasterKeyId'] == null ? null : (map['kmsMasterKeyId'] as String).input(),
+      kmsDataEncryption: map['kmsDataEncryption'] == null ? null : (map['kmsDataEncryption']! as String).input(),
+      kmsMasterKeyId: map['kmsMasterKeyId'] == null ? null : (map['kmsMasterKeyId']! as String).input(),
       sseAlgorithm: (map['sseAlgorithm'] as String).input(),
     );
   }

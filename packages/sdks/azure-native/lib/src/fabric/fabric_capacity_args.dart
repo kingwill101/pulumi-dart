@@ -52,11 +52,11 @@ class FabricCapacityArgs {
   factory FabricCapacityArgs.fromMap(Map<String, dynamic> map) {
     return FabricCapacityArgs(
       administration: (CapacityAdministration.fromMap((map['administration'] as Map).cast<String, dynamic>())).input(),
-      capacityName: map['capacityName'] == null ? null : (map['capacityName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      capacityName: map['capacityName'] == null ? null : (map['capacityName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (RpSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

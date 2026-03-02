@@ -47,12 +47,12 @@ class EbsInstanceBlockDeviceResponse {
 
   factory EbsInstanceBlockDeviceResponse.fromMap(Map<String, dynamic> map) {
     return EbsInstanceBlockDeviceResponse(
-      associatedResource: map['associatedResource'] == null ? null : (map['associatedResource'] as String).input(),
-      attachTime: map['attachTime'] == null ? null : (map['attachTime'] as String).input(),
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
-      status: map['status'] == null ? null : (AttachmentStatusEnumValueResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
-      volumeOwnerId: map['volumeOwnerId'] == null ? null : (map['volumeOwnerId'] as String).input(),
+      associatedResource: map['associatedResource'] == null ? null : (map['associatedResource']! as String).input(),
+      attachTime: map['attachTime'] == null ? null : (map['attachTime']! as String).input(),
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination']! as bool).input(),
+      status: map['status'] == null ? null : (AttachmentStatusEnumValueResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as String).input(),
+      volumeOwnerId: map['volumeOwnerId'] == null ? null : (map['volumeOwnerId']! as String).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class CustomContainerResponse {
 
   factory CustomContainerResponse.fromMap(Map<String, dynamic> map) {
     return CustomContainerResponse(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
-      containerImage: map['containerImage'] == null ? null : (map['containerImage'] as String).input(),
-      imageRegistryCredential: map['imageRegistryCredential'] == null ? null : (ImageRegistryCredentialResponse.fromMap((map['imageRegistryCredential'] as Map).cast<String, dynamic>())).input(),
-      languageFramework: map['languageFramework'] == null ? null : (map['languageFramework'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
+      containerImage: map['containerImage'] == null ? null : (map['containerImage']! as String).input(),
+      imageRegistryCredential: map['imageRegistryCredential'] == null ? null : (ImageRegistryCredentialResponse.fromMap((map['imageRegistryCredential']! as Map).cast<String, dynamic>())).input(),
+      languageFramework: map['languageFramework'] == null ? null : (map['languageFramework']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
     );
   }
 }

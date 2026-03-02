@@ -38,10 +38,10 @@ class AgentcoreWorkloadIdentityState {
 
   factory AgentcoreWorkloadIdentityState.fromMap(Map<String, dynamic> map) {
     return AgentcoreWorkloadIdentityState(
-      allowedResourceOauth2ReturnUrls: map['allowedResourceOauth2ReturnUrls'] == null ? null : ((map['allowedResourceOauth2ReturnUrls'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      workloadIdentityArn: map['workloadIdentityArn'] == null ? null : (map['workloadIdentityArn'] as String).input(),
+      allowedResourceOauth2ReturnUrls: map['allowedResourceOauth2ReturnUrls'] == null ? null : (((map['allowedResourceOauth2ReturnUrls'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      workloadIdentityArn: map['workloadIdentityArn'] == null ? null : ((map['workloadIdentityArn'] as String).input()).input(),
     );
   }
 }

@@ -49,11 +49,11 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule {
 
   factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule(
-      dictionary: map['dictionary'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary.fromMap((map['dictionary'] as Map).cast<String, dynamic>())).input(),
-      excludeByHotword: map['excludeByHotword'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword.fromMap((map['excludeByHotword'] as Map).cast<String, dynamic>())).input(),
-      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes.fromMap((map['excludeInfoTypes'] as Map).cast<String, dynamic>())).input(),
+      dictionary: map['dictionary'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary.fromMap((map['dictionary']! as Map).cast<String, dynamic>())).input(),
+      excludeByHotword: map['excludeByHotword'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword.fromMap((map['excludeByHotword']! as Map).cast<String, dynamic>())).input(),
+      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes.fromMap((map['excludeInfoTypes']! as Map).cast<String, dynamic>())).input(),
       matchingType: (map['matchingType'] as String).input(),
-      regex: map['regex'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex.fromMap((map['regex'] as Map).cast<String, dynamic>())).input(),
+      regex: map['regex'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex.fromMap((map['regex']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

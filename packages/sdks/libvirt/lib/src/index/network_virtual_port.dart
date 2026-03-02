@@ -21,7 +21,7 @@ class NetworkVirtualPort {
 
   factory NetworkVirtualPort.fromMap(Map<String, dynamic> map) {
     return NetworkVirtualPort(
-      params: map['params'] == null ? null : (NetworkVirtualPortParams.fromMap((map['params'] as Map).cast<String, dynamic>())).input(),
+      params: map['params'] == null ? null : (NetworkVirtualPortParams.fromMap((map['params']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

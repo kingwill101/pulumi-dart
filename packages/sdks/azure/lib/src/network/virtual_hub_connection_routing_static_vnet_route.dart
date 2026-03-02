@@ -30,9 +30,9 @@ class VirtualHubConnectionRoutingStaticVnetRoute {
 
   factory VirtualHubConnectionRoutingStaticVnetRoute.fromMap(Map<String, dynamic> map) {
     return VirtualHubConnectionRoutingStaticVnetRoute(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress'] as String).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : (map['nextHopIpAddress']! as String).input(),
     );
   }
 }

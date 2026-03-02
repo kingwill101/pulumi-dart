@@ -22,7 +22,7 @@ class CxAgentGitIntegrationSettings {
 
   factory CxAgentGitIntegrationSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentGitIntegrationSettings(
-      githubSettings: map['githubSettings'] == null ? null : (CxAgentGitIntegrationSettingsGithubSettings.fromMap((map['githubSettings'] as Map).cast<String, dynamic>())).input(),
+      githubSettings: map['githubSettings'] == null ? null : (CxAgentGitIntegrationSettingsGithubSettings.fromMap((map['githubSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

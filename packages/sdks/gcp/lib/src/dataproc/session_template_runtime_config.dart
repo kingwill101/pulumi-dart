@@ -36,10 +36,10 @@ class SessionTemplateRuntimeConfig {
 
   factory SessionTemplateRuntimeConfig.fromMap(Map<String, dynamic> map) {
     return SessionTemplateRuntimeConfig(
-      containerImage: map['containerImage'] == null ? null : (map['containerImage'] as String).input(),
-      effectiveProperties: map['effectiveProperties'] == null ? null : ((map['effectiveProperties'] as Map).cast<String, String>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      containerImage: map['containerImage'] == null ? null : (map['containerImage']! as String).input(),
+      effectiveProperties: map['effectiveProperties'] == null ? null : ((map['effectiveProperties']! as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

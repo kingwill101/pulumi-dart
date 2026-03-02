@@ -33,9 +33,9 @@ class PipelineTriggerGitConfigurationPush {
 
   factory PipelineTriggerGitConfigurationPush.fromMap(Map<String, dynamic> map) {
     return PipelineTriggerGitConfigurationPush(
-      branches: map['branches'] == null ? null : (PipelineTriggerGitConfigurationPushBranches.fromMap((map['branches'] as Map).cast<String, dynamic>())).input(),
-      filePaths: map['filePaths'] == null ? null : (PipelineTriggerGitConfigurationPushFilePaths.fromMap((map['filePaths'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (PipelineTriggerGitConfigurationPushTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      branches: map['branches'] == null ? null : ((PipelineTriggerGitConfigurationPushBranches.fromMap((map['branches']! as Map).cast<String, dynamic>())).input()).input(),
+      filePaths: map['filePaths'] == null ? null : ((PipelineTriggerGitConfigurationPushFilePaths.fromMap((map['filePaths']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : ((PipelineTriggerGitConfigurationPushTags.fromMap((map['tags']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

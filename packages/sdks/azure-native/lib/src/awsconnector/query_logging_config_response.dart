@@ -21,7 +21,7 @@ class QueryLoggingConfigResponse {
 
   factory QueryLoggingConfigResponse.fromMap(Map<String, dynamic> map) {
     return QueryLoggingConfigResponse(
-      cloudWatchLogsLogGroupArn: map['cloudWatchLogsLogGroupArn'] == null ? null : (map['cloudWatchLogsLogGroupArn'] as String).input(),
+      cloudWatchLogsLogGroupArn: map['cloudWatchLogsLogGroupArn'] == null ? null : (map['cloudWatchLogsLogGroupArn']! as String).input(),
     );
   }
 }

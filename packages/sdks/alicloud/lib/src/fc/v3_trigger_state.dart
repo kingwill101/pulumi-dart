@@ -87,20 +87,20 @@ class V3TriggerState {
 
   factory V3TriggerState.fromMap(Map<String, dynamic> map) {
     return V3TriggerState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      httpTrigger: map['httpTrigger'] == null ? null : (V3TriggerHttpTrigger.fromMap((map['httpTrigger'] as Map).cast<String, dynamic>())).input(),
-      invocationRole: map['invocationRole'] == null ? null : (map['invocationRole'] as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
-      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
-      triggerConfig: map['triggerConfig'] == null ? null : (map['triggerConfig'] as String).input(),
-      triggerId: map['triggerId'] == null ? null : (map['triggerId'] as String).input(),
-      triggerName: map['triggerName'] == null ? null : (map['triggerName'] as String).input(),
-      triggerType: map['triggerType'] == null ? null : (map['triggerType'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      httpTrigger: map['httpTrigger'] == null ? null : (V3TriggerHttpTrigger.fromMap((map['httpTrigger']! as Map).cast<String, dynamic>())).input(),
+      invocationRole: map['invocationRole'] == null ? null : (map['invocationRole']! as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier']! as String).input(),
+      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      targetArn: map['targetArn'] == null ? null : (map['targetArn']! as String).input(),
+      triggerConfig: map['triggerConfig'] == null ? null : (map['triggerConfig']! as String).input(),
+      triggerId: map['triggerId'] == null ? null : (map['triggerId']! as String).input(),
+      triggerName: map['triggerName'] == null ? null : (map['triggerName']! as String).input(),
+      triggerType: map['triggerType'] == null ? null : (map['triggerType']! as String).input(),
     );
   }
 }

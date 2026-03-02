@@ -22,7 +22,7 @@ class ResourceTypeRegistrationPropertiesExtensionOptions {
 
   factory ResourceTypeRegistrationPropertiesExtensionOptions.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesExtensionOptions(
-      resourceCreationBegin: map['resourceCreationBegin'] == null ? null : (ResourceTypeExtensionOptionsResourceCreationBegin.fromMap((map['resourceCreationBegin'] as Map).cast<String, dynamic>())).input(),
+      resourceCreationBegin: map['resourceCreationBegin'] == null ? null : (ResourceTypeExtensionOptionsResourceCreationBegin.fromMap((map['resourceCreationBegin']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

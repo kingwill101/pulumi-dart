@@ -62,15 +62,15 @@ class PolicySettings {
 
   factory PolicySettings.fromMap(Map<String, dynamic> map) {
     return PolicySettings(
-      customBlockResponseBody: map['customBlockResponseBody'] == null ? null : (map['customBlockResponseBody'] as String).input(),
-      customBlockResponseStatusCode: map['customBlockResponseStatusCode'] == null ? null : (map['customBlockResponseStatusCode'] as int).input(),
-      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
-      javascriptChallengeExpirationInMinutes: map['javascriptChallengeExpirationInMinutes'] == null ? null : (map['javascriptChallengeExpirationInMinutes'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
-      requestBodyCheck: map['requestBodyCheck'] == null ? null : (map['requestBodyCheck'] as String).input(),
-      scrubbingRules: map['scrubbingRules'] == null ? null : (pulumi.Input.decodeList<WebApplicationFirewallScrubbingRules>(map['scrubbingRules'], (value) => WebApplicationFirewallScrubbingRules.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      customBlockResponseBody: map['customBlockResponseBody'] == null ? null : (map['customBlockResponseBody']! as String).input(),
+      customBlockResponseStatusCode: map['customBlockResponseStatusCode'] == null ? null : (map['customBlockResponseStatusCode']! as int).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
+      javascriptChallengeExpirationInMinutes: map['javascriptChallengeExpirationInMinutes'] == null ? null : (map['javascriptChallengeExpirationInMinutes']! as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl']! as String).input(),
+      requestBodyCheck: map['requestBodyCheck'] == null ? null : (map['requestBodyCheck']! as String).input(),
+      scrubbingRules: map['scrubbingRules'] == null ? null : (pulumi.Input.decodeList<WebApplicationFirewallScrubbingRules>(map['scrubbingRules']!, (value) => WebApplicationFirewallScrubbingRules.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

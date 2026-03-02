@@ -32,9 +32,9 @@ class ErrorHandlerAppengineV1beta {
 
   factory ErrorHandlerAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ErrorHandlerAppengineV1beta(
-      errorCode: map['errorCode'] == null ? null : (ErrorHandlerErrorCodeAppengineV1beta.fromValue(map['errorCode'] as String)).input(),
-      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
-      staticFile: map['staticFile'] == null ? null : (map['staticFile'] as String).input(),
+      errorCode: map['errorCode'] == null ? null : (ErrorHandlerErrorCodeAppengineV1beta.fromValue(map['errorCode']! as String)).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
+      staticFile: map['staticFile'] == null ? null : (map['staticFile']! as String).input(),
     );
   }
 }

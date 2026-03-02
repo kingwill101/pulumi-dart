@@ -93,20 +93,20 @@ class ScriptActivityResponse {
 
   factory ScriptActivityResponse.fromMap(Map<String, dynamic> map) {
     return ScriptActivityResponse(
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn']!, (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       linkedServiceName: (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      logSettings: map['logSettings'] == null ? null : (ScriptActivityTypePropertiesResponseLogSettings.fromMap((map['logSettings'] as Map).cast<String, dynamic>())).input(),
+      logSettings: map['logSettings'] == null ? null : (ScriptActivityTypePropertiesResponseLogSettings.fromMap((map['logSettings']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      policy: map['policy'] == null ? null : (ActivityPolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      returnMultistatementResult: map['returnMultistatementResult'] == null ? null : (map['returnMultistatementResult']).input(),
-      scriptBlockExecutionTimeout: map['scriptBlockExecutionTimeout'] == null ? null : (map['scriptBlockExecutionTimeout']).input(),
-      scripts: map['scripts'] == null ? null : (pulumi.Input.decodeList<ScriptActivityScriptBlockResponse>(map['scripts'], (value) => ScriptActivityScriptBlockResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      treatDecimalAsString: map['treatDecimalAsString'] == null ? null : (map['treatDecimalAsString']).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicyResponse.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      returnMultistatementResult: map['returnMultistatementResult'] == null ? null : (map['returnMultistatementResult']!).input(),
+      scriptBlockExecutionTimeout: map['scriptBlockExecutionTimeout'] == null ? null : (map['scriptBlockExecutionTimeout']!).input(),
+      scripts: map['scripts'] == null ? null : (pulumi.Input.decodeList<ScriptActivityScriptBlockResponse>(map['scripts']!, (value) => ScriptActivityScriptBlockResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      treatDecimalAsString: map['treatDecimalAsString'] == null ? null : (map['treatDecimalAsString']!).input(),
       type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties']!, (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

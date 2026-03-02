@@ -33,7 +33,7 @@ class GetCustomConnectorVersionArgs {
     return GetCustomConnectorVersionArgs(
       customConnectorId: (map['customConnectorId'] as String).input(),
       customConnectorVersionId: (map['customConnectorVersionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

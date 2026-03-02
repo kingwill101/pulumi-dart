@@ -39,11 +39,11 @@ class GetInstancesResult {
 
   factory GetInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetInstancesResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInstancesFilter>(map['filters'], (value) => GetInstancesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInstancesFilter>(map['filters']!, (value) => GetInstancesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instances: pulumi.Input.decodeList<GetInstancesInstance>(map['instances'], (value) => GetInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
     );
   }
 }

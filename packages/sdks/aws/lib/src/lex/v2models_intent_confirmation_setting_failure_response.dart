@@ -26,8 +26,8 @@ class V2modelsIntentConfirmationSettingFailureResponse {
 
   factory V2modelsIntentConfirmationSettingFailureResponse.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingFailureResponse(
-      allowInterrupt: map['allowInterrupt'] == null ? null : (map['allowInterrupt'] as bool).input(),
-      messageGroups: map['messageGroups'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingFailureResponseMessageGroup>(map['messageGroups'], (value) => V2modelsIntentConfirmationSettingFailureResponseMessageGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowInterrupt: map['allowInterrupt'] == null ? null : ((map['allowInterrupt'] as bool).input()).input(),
+      messageGroups: map['messageGroups'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentConfirmationSettingFailureResponseMessageGroup>(map['messageGroups']!, (value) => V2modelsIntentConfirmationSettingFailureResponseMessageGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

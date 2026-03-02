@@ -73,15 +73,15 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      deliveryInfo: map['deliveryInfo'] == null ? null : (JobDeliveryInfo.fromMap((map['deliveryInfo'] as Map).cast<String, dynamic>())).input(),
-      deliveryType: map['deliveryType'] == null ? null : (map['deliveryType'] as String).input(),
-      details: map['details'] == null ? null : (DataBoxCustomerDiskJobDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      deliveryInfo: map['deliveryInfo'] == null ? null : (JobDeliveryInfo.fromMap((map['deliveryInfo']! as Map).cast<String, dynamic>())).input(),
+      deliveryType: map['deliveryType'] == null ? null : (map['deliveryType']! as String).input(),
+      details: map['details'] == null ? null : (DataBoxCustomerDiskJobDetails.fromMap((map['details']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       transferType: (map['transferType'] as String).input(),
     );
   }

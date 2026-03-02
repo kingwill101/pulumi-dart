@@ -49,8 +49,8 @@ class DataPartitionRuleArgs {
 
   factory DataPartitionRuleArgs.fromMap(Map<String, dynamic> map) {
     return DataPartitionRuleArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
       nrql: (map['nrql'] as String).input(),
       retentionPolicy: (map['retentionPolicy'] as String).input(),

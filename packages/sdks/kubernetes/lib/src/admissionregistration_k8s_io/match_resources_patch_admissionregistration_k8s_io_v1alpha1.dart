@@ -79,11 +79,11 @@ class MatchResourcesPatchAdmissionregistrationK8sIoV1alpha1 {
 
   factory MatchResourcesPatchAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return MatchResourcesPatchAdmissionregistrationK8sIoV1alpha1(
-      excludeResourceRules: map['excludeResourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1>(map['excludeResourceRules'], (value) => NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchPolicy: map['matchPolicy'] == null ? null : (map['matchPolicy'] as String).input(),
-      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['namespaceSelector'] as Map).cast<String, dynamic>())).input(),
-      objectSelector: map['objectSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['objectSelector'] as Map).cast<String, dynamic>())).input(),
-      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1>(map['resourceRules'], (value) => NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludeResourceRules: map['excludeResourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1>(map['excludeResourceRules']!, (value) => NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchPolicy: map['matchPolicy'] == null ? null : (map['matchPolicy']! as String).input(),
+      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['namespaceSelector']! as Map).cast<String, dynamic>())).input(),
+      objectSelector: map['objectSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['objectSelector']! as Map).cast<String, dynamic>())).input(),
+      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1>(map['resourceRules']!, (value) => NamedRuleWithOperationsPatchAdmissionregistrationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

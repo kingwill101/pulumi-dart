@@ -48,12 +48,12 @@ class DomainEntryState {
 
   factory DomainEntryState.fromMap(Map<String, dynamic> map) {
     return DomainEntryState(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      isAlias: map['isAlias'] == null ? null : (map['isAlias'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      isAlias: map['isAlias'] == null ? null : ((map['isAlias'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      target: map['target'] == null ? null : ((map['target'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

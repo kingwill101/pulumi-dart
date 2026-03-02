@@ -21,7 +21,7 @@ class DelegateAccountState {
 
   factory DelegateAccountState.fromMap(Map<String, dynamic> map) {
     return DelegateAccountState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
     );
   }
 }

@@ -38,7 +38,7 @@ class JobStorageAccountArgs {
   factory JobStorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return JobStorageAccountArgs(
       authenticationMode: (map['authenticationMode'] as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
       storageAccountName: (map['storageAccountName'] as String).input(),
       streamAnalyticsJobId: (map['streamAnalyticsJobId'] as String).input(),
     );

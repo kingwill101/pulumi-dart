@@ -33,9 +33,9 @@ class MonitorProperties {
 
   factory MonitorProperties.fromMap(Map<String, dynamic> map) {
     return MonitorProperties(
-      datadogOrganizationProperties: map['datadogOrganizationProperties'] == null ? null : (DatadogOrganizationProperties.fromMap((map['datadogOrganizationProperties'] as Map).cast<String, dynamic>())).input(),
-      monitoringStatus: map['monitoringStatus'] == null ? null : (map['monitoringStatus'] as String).input(),
-      userInfo: map['userInfo'] == null ? null : (UserInfo.fromMap((map['userInfo'] as Map).cast<String, dynamic>())).input(),
+      datadogOrganizationProperties: map['datadogOrganizationProperties'] == null ? null : (DatadogOrganizationProperties.fromMap((map['datadogOrganizationProperties']! as Map).cast<String, dynamic>())).input(),
+      monitoringStatus: map['monitoringStatus'] == null ? null : (map['monitoringStatus']! as String).input(),
+      userInfo: map['userInfo'] == null ? null : (UserInfo.fromMap((map['userInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

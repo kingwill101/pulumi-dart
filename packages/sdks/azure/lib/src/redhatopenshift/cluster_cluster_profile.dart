@@ -46,10 +46,10 @@ class ClusterClusterProfile {
   factory ClusterClusterProfile.fromMap(Map<String, dynamic> map) {
     return ClusterClusterProfile(
       domain: (map['domain'] as String).input(),
-      fipsEnabled: map['fipsEnabled'] == null ? null : (map['fipsEnabled'] as bool).input(),
-      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName'] as String).input(),
-      pullSecret: map['pullSecret'] == null ? null : (map['pullSecret'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      fipsEnabled: map['fipsEnabled'] == null ? null : (map['fipsEnabled']! as bool).input(),
+      managedResourceGroupName: map['managedResourceGroupName'] == null ? null : (map['managedResourceGroupName']! as String).input(),
+      pullSecret: map['pullSecret'] == null ? null : (map['pullSecret']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       version: (map['version'] as String).input(),
     );
   }

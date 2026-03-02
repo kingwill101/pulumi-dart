@@ -63,15 +63,15 @@ class WebHookEventSubscriptionDestinationResponse {
 
   factory WebHookEventSubscriptionDestinationResponse.fromMap(Map<String, dynamic> map) {
     return WebHookEventSubscriptionDestinationResponse(
-      azureActiveDirectoryApplicationIdOrUri: map['azureActiveDirectoryApplicationIdOrUri'] == null ? null : (map['azureActiveDirectoryApplicationIdOrUri'] as String).input(),
-      azureActiveDirectoryTenantId: map['azureActiveDirectoryTenantId'] == null ? null : (map['azureActiveDirectoryTenantId'] as String).input(),
-      deliveryAttributeMappings: map['deliveryAttributeMappings'] == null ? null : (pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(map['deliveryAttributeMappings'], (value) => DynamicDeliveryAttributeMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureActiveDirectoryApplicationIdOrUri: map['azureActiveDirectoryApplicationIdOrUri'] == null ? null : (map['azureActiveDirectoryApplicationIdOrUri']! as String).input(),
+      azureActiveDirectoryTenantId: map['azureActiveDirectoryTenantId'] == null ? null : (map['azureActiveDirectoryTenantId']! as String).input(),
+      deliveryAttributeMappings: map['deliveryAttributeMappings'] == null ? null : (pulumi.Input.decodeList<DynamicDeliveryAttributeMappingResponse>(map['deliveryAttributeMappings']!, (value) => DynamicDeliveryAttributeMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       endpointBaseUrl: (map['endpointBaseUrl'] as String).input(),
       endpointType: (map['endpointType'] as String).input(),
-      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl'] as String).input(),
-      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : (map['maxEventsPerBatch'] as int).input(),
-      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : (map['minimumTlsVersionAllowed'] as String).input(),
-      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : (map['preferredBatchSizeInKilobytes'] as int).input(),
+      endpointUrl: map['endpointUrl'] == null ? null : (map['endpointUrl']! as String).input(),
+      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : (map['maxEventsPerBatch']! as int).input(),
+      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : (map['minimumTlsVersionAllowed']! as String).input(),
+      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : (map['preferredBatchSizeInKilobytes']! as int).input(),
     );
   }
 }

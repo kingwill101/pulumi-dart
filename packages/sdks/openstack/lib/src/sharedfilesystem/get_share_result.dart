@@ -96,7 +96,7 @@ class GetShareResult {
     return GetShareResult(
       availabilityZone: map['availabilityZone'] as String,
       description: map['description'] as String,
-      exportLocationPath: map['exportLocationPath'] == null ? null : map['exportLocationPath'] as String,
+      exportLocationPath: map['exportLocationPath'] == null ? null : map['exportLocationPath']! as String,
       exportLocations: pulumi.Input.decodeList<GetShareExportLocation>(map['exportLocations'], (value) => GetShareExportLocation.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       isPublic: map['isPublic'] as bool,

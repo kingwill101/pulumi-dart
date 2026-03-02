@@ -33,8 +33,8 @@ class GetHoursOfOperationConfig {
   factory GetHoursOfOperationConfig.fromMap(Map<String, dynamic> map) {
     return GetHoursOfOperationConfig(
       day: (map['day'] as String).input(),
-      endTimes: (pulumi.Input.decodeList<GetHoursOfOperationConfigEndTime>(map['endTimes'], (value) => GetHoursOfOperationConfigEndTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startTimes: (pulumi.Input.decodeList<GetHoursOfOperationConfigStartTime>(map['startTimes'], (value) => GetHoursOfOperationConfigStartTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endTimes: (pulumi.Input.decodeList<GetHoursOfOperationConfigEndTime>(map['endTimes']!, (value) => GetHoursOfOperationConfigEndTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startTimes: (pulumi.Input.decodeList<GetHoursOfOperationConfigStartTime>(map['startTimes']!, (value) => GetHoursOfOperationConfigStartTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

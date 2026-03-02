@@ -63,13 +63,13 @@ class MirroringDeploymentArgs {
 
   factory MirroringDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return MirroringDeploymentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       forwardingRule: (map['forwardingRule'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       mirroringDeploymentGroup: (map['mirroringDeploymentGroup'] as String).input(),
       mirroringDeploymentId: (map['mirroringDeploymentId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

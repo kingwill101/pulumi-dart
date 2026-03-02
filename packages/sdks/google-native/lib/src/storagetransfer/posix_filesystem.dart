@@ -21,7 +21,7 @@ class PosixFilesystem {
 
   factory PosixFilesystem.fromMap(Map<String, dynamic> map) {
     return PosixFilesystem(
-      rootDirectory: map['rootDirectory'] == null ? null : (map['rootDirectory'] as String).input(),
+      rootDirectory: map['rootDirectory'] == null ? null : (map['rootDirectory']! as String).input(),
     );
   }
 }

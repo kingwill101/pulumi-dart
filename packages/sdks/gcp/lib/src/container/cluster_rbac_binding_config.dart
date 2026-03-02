@@ -31,8 +31,8 @@ class ClusterRbacBindingConfig {
 
   factory ClusterRbacBindingConfig.fromMap(Map<String, dynamic> map) {
     return ClusterRbacBindingConfig(
-      enableInsecureBindingSystemAuthenticated: map['enableInsecureBindingSystemAuthenticated'] == null ? null : (map['enableInsecureBindingSystemAuthenticated'] as bool).input(),
-      enableInsecureBindingSystemUnauthenticated: map['enableInsecureBindingSystemUnauthenticated'] == null ? null : (map['enableInsecureBindingSystemUnauthenticated'] as bool).input(),
+      enableInsecureBindingSystemAuthenticated: map['enableInsecureBindingSystemAuthenticated'] == null ? null : (map['enableInsecureBindingSystemAuthenticated']! as bool).input(),
+      enableInsecureBindingSystemUnauthenticated: map['enableInsecureBindingSystemUnauthenticated'] == null ? null : (map['enableInsecureBindingSystemUnauthenticated']! as bool).input(),
     );
   }
 }

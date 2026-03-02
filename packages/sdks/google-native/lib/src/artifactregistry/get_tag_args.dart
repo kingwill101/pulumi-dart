@@ -41,7 +41,7 @@ class GetTagArgs {
     return GetTagArgs(
       location: (map['location'] as String).input(),
       packageId: (map['packageId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
       tagId: (map['tagId'] as String).input(),
     );

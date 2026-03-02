@@ -37,10 +37,10 @@ class EncryptionServicesResponse {
 
   factory EncryptionServicesResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionServicesResponse(
-      blob: map['blob'] == null ? null : (EncryptionServiceResponse.fromMap((map['blob'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (EncryptionServiceResponse.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
-      queue: map['queue'] == null ? null : (EncryptionServiceResponse.fromMap((map['queue'] as Map).cast<String, dynamic>())).input(),
-      table: map['table'] == null ? null : (EncryptionServiceResponse.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
+      blob: map['blob'] == null ? null : (EncryptionServiceResponse.fromMap((map['blob']! as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (EncryptionServiceResponse.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
+      queue: map['queue'] == null ? null : (EncryptionServiceResponse.fromMap((map['queue']! as Map).cast<String, dynamic>())).input(),
+      table: map['table'] == null ? null : (EncryptionServiceResponse.fromMap((map['table']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

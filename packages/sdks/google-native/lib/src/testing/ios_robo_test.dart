@@ -32,9 +32,9 @@ class IosRoboTest {
 
   factory IosRoboTest.fromMap(Map<String, dynamic> map) {
     return IosRoboTest(
-      appBundleId: map['appBundleId'] == null ? null : (map['appBundleId'] as String).input(),
+      appBundleId: map['appBundleId'] == null ? null : (map['appBundleId']! as String).input(),
       appIpa: (FileReference.fromMap((map['appIpa'] as Map).cast<String, dynamic>())).input(),
-      roboScript: map['roboScript'] == null ? null : (FileReference.fromMap((map['roboScript'] as Map).cast<String, dynamic>())).input(),
+      roboScript: map['roboScript'] == null ? null : (FileReference.fromMap((map['roboScript']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

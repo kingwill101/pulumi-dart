@@ -70,12 +70,12 @@ class FloorsettingArgs {
 
   factory FloorsettingArgs.fromMap(Map<String, dynamic> map) {
     return FloorsettingArgs(
-      aiPlatformFloorSetting: map['aiPlatformFloorSetting'] == null ? null : (FloorsettingAiPlatformFloorSetting.fromMap((map['aiPlatformFloorSetting'] as Map).cast<String, dynamic>())).input(),
-      enableFloorSettingEnforcement: map['enableFloorSettingEnforcement'] == null ? null : (map['enableFloorSettingEnforcement'] as bool).input(),
+      aiPlatformFloorSetting: map['aiPlatformFloorSetting'] == null ? null : (FloorsettingAiPlatformFloorSetting.fromMap((map['aiPlatformFloorSetting']! as Map).cast<String, dynamic>())).input(),
+      enableFloorSettingEnforcement: map['enableFloorSettingEnforcement'] == null ? null : (map['enableFloorSettingEnforcement']! as bool).input(),
       filterConfig: (FloorsettingFilterConfig.fromMap((map['filterConfig'] as Map).cast<String, dynamic>())).input(),
-      floorSettingMetadata: map['floorSettingMetadata'] == null ? null : (FloorsettingFloorSettingMetadata.fromMap((map['floorSettingMetadata'] as Map).cast<String, dynamic>())).input(),
-      googleMcpServerFloorSetting: map['googleMcpServerFloorSetting'] == null ? null : (FloorsettingGoogleMcpServerFloorSetting.fromMap((map['googleMcpServerFloorSetting'] as Map).cast<String, dynamic>())).input(),
-      integratedServices: map['integratedServices'] == null ? null : ((map['integratedServices'] as List).cast<String>()).input(),
+      floorSettingMetadata: map['floorSettingMetadata'] == null ? null : (FloorsettingFloorSettingMetadata.fromMap((map['floorSettingMetadata']! as Map).cast<String, dynamic>())).input(),
+      googleMcpServerFloorSetting: map['googleMcpServerFloorSetting'] == null ? null : (FloorsettingGoogleMcpServerFloorSetting.fromMap((map['googleMcpServerFloorSetting']! as Map).cast<String, dynamic>())).input(),
+      integratedServices: map['integratedServices'] == null ? null : ((map['integratedServices']! as List).cast<String>()).input(),
       location: (map['location'] as String).input(),
       parent: (map['parent'] as String).input(),
     );

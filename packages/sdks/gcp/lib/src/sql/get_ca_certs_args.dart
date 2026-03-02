@@ -30,7 +30,7 @@ class GetCaCertsArgs {
   factory GetCaCertsArgs.fromMap(Map<String, dynamic> map) {
     return GetCaCertsArgs(
       instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

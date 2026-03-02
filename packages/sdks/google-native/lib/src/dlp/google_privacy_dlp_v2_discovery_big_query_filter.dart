@@ -27,8 +27,8 @@ class GooglePrivacyDlpV2DiscoveryBigQueryFilter {
 
   factory GooglePrivacyDlpV2DiscoveryBigQueryFilter.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryBigQueryFilter(
-      otherTables: map['otherTables'] == null ? null : ((map['otherTables'] as Map).cast<String, dynamic>()).input(),
-      tables: map['tables'] == null ? null : (GooglePrivacyDlpV2BigQueryTableCollection.fromMap((map['tables'] as Map).cast<String, dynamic>())).input(),
+      otherTables: map['otherTables'] == null ? null : ((map['otherTables']! as Map).cast<String, dynamic>()).input(),
+      tables: map['tables'] == null ? null : (GooglePrivacyDlpV2BigQueryTableCollection.fromMap((map['tables']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

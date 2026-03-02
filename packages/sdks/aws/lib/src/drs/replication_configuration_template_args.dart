@@ -108,21 +108,21 @@ class ReplicationConfigurationTemplateArgs {
   factory ReplicationConfigurationTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationTemplateArgs(
       associateDefaultSecurityGroup: (map['associateDefaultSecurityGroup'] as bool).input(),
-      autoReplicateNewDisks: map['autoReplicateNewDisks'] == null ? null : (map['autoReplicateNewDisks'] as bool).input(),
+      autoReplicateNewDisks: map['autoReplicateNewDisks'] == null ? null : ((map['autoReplicateNewDisks'] as bool).input()).input(),
       bandwidthThrottling: (map['bandwidthThrottling'] as int).input(),
       createPublicIp: (map['createPublicIp'] as bool).input(),
       dataPlaneRouting: (map['dataPlaneRouting'] as String).input(),
       defaultLargeStagingDiskType: (map['defaultLargeStagingDiskType'] as String).input(),
       ebsEncryption: (map['ebsEncryption'] as String).input(),
-      ebsEncryptionKeyArn: map['ebsEncryptionKeyArn'] == null ? null : (map['ebsEncryptionKeyArn'] as String).input(),
-      pitPolicies: map['pitPolicies'] == null ? null : (pulumi.Input.decodeList<ReplicationConfigurationTemplatePitPolicy>(map['pitPolicies'], (value) => ReplicationConfigurationTemplatePitPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ebsEncryptionKeyArn: map['ebsEncryptionKeyArn'] == null ? null : ((map['ebsEncryptionKeyArn'] as String).input()).input(),
+      pitPolicies: map['pitPolicies'] == null ? null : ((pulumi.Input.decodeList<ReplicationConfigurationTemplatePitPolicy>(map['pitPolicies']!, (value) => ReplicationConfigurationTemplatePitPolicy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       replicationServerInstanceType: (map['replicationServerInstanceType'] as String).input(),
       replicationServersSecurityGroupsIds: ((map['replicationServersSecurityGroupsIds'] as List).cast<String>()).input(),
       stagingAreaSubnetId: (map['stagingAreaSubnetId'] as String).input(),
       stagingAreaTags: ((map['stagingAreaTags'] as Map).cast<String, String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ReplicationConfigurationTemplateTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ReplicationConfigurationTemplateTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       useDedicatedReplicationServer: (map['useDedicatedReplicationServer'] as bool).input(),
     );
   }

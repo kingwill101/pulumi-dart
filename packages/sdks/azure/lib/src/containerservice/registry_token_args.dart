@@ -45,8 +45,8 @@ class RegistryTokenArgs {
   factory RegistryTokenArgs.fromMap(Map<String, dynamic> map) {
     return RegistryTokenArgs(
       containerRegistryName: (map['containerRegistryName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scopeMapId: (map['scopeMapId'] as String).input(),
     );

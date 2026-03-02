@@ -43,11 +43,11 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesComputeV1 {
 
   factory AllocationSpecificSKUAllocationReservedInstancePropertiesComputeV1.fromMap(Map<String, dynamic> map) {
     return AllocationSpecificSKUAllocationReservedInstancePropertiesComputeV1(
-      guestAccelerators: map['guestAccelerators'] == null ? null : (pulumi.Input.decodeList<AcceleratorConfigComputeV1>(map['guestAccelerators'], (value) => AcceleratorConfigComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      localSsds: map['localSsds'] == null ? null : (pulumi.Input.decodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeV1>(map['localSsds'], (value) => AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      locationHint: map['locationHint'] == null ? null : (map['locationHint'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
+      guestAccelerators: map['guestAccelerators'] == null ? null : (pulumi.Input.decodeList<AcceleratorConfigComputeV1>(map['guestAccelerators']!, (value) => AcceleratorConfigComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localSsds: map['localSsds'] == null ? null : (pulumi.Input.decodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeV1>(map['localSsds']!, (value) => AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locationHint: map['locationHint'] == null ? null : (map['locationHint']! as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
     );
   }
 }

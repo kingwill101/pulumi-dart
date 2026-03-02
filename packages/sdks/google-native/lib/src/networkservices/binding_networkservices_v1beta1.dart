@@ -32,9 +32,9 @@ class BindingNetworkservicesV1beta1 {
 
   factory BindingNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return BindingNetworkservicesV1beta1(
-      condition: map['condition'] == null ? null : (ExprNetworkservicesV1beta1.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (ExprNetworkservicesV1beta1.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

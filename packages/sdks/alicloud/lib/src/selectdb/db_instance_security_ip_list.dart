@@ -40,11 +40,11 @@ class DbInstanceSecurityIpList {
 
   factory DbInstanceSecurityIpList.fromMap(Map<String, dynamic> map) {
     return DbInstanceSecurityIpList(
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      groupTag: map['groupTag'] == null ? null : (map['groupTag'] as String).input(),
-      listNetType: map['listNetType'] == null ? null : (map['listNetType'] as String).input(),
-      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList'] as String).input(),
-      securityIpType: map['securityIpType'] == null ? null : (map['securityIpType'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      groupTag: map['groupTag'] == null ? null : (map['groupTag']! as String).input(),
+      listNetType: map['listNetType'] == null ? null : (map['listNetType']! as String).input(),
+      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList']! as String).input(),
+      securityIpType: map['securityIpType'] == null ? null : (map['securityIpType']! as String).input(),
     );
   }
 }

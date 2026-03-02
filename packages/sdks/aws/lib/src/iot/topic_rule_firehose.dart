@@ -35,10 +35,10 @@ class TopicRuleFirehose {
 
   factory TopicRuleFirehose.fromMap(Map<String, dynamic> map) {
     return TopicRuleFirehose(
-      batchMode: map['batchMode'] == null ? null : (map['batchMode'] as bool).input(),
+      batchMode: map['batchMode'] == null ? null : ((map['batchMode'] as bool).input()).input(),
       deliveryStreamName: (map['deliveryStreamName'] as String).input(),
       roleArn: (map['roleArn'] as String).input(),
-      separator: map['separator'] == null ? null : (map['separator'] as String).input(),
+      separator: map['separator'] == null ? null : ((map['separator'] as String).input()).input(),
     );
   }
 }

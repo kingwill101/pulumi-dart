@@ -41,10 +41,10 @@ class GrpcRouteRuleAction {
 
   factory GrpcRouteRuleAction.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRuleAction(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<GrpcRouteRuleActionDestination>(map['destinations'], (value) => GrpcRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : (GrpcRouteRuleActionFaultInjectionPolicy.fromMap((map['faultInjectionPolicy'] as Map).cast<String, dynamic>())).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (GrpcRouteRuleActionRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<GrpcRouteRuleActionDestination>(map['destinations']!, (value) => GrpcRouteRuleActionDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : (GrpcRouteRuleActionFaultInjectionPolicy.fromMap((map['faultInjectionPolicy']! as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (GrpcRouteRuleActionRetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

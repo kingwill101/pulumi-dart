@@ -53,11 +53,11 @@ class InstanceCrossInstanceReplicationConfig {
 
   factory InstanceCrossInstanceReplicationConfig.fromMap(Map<String, dynamic> map) {
     return InstanceCrossInstanceReplicationConfig(
-      instanceRole: map['instanceRole'] == null ? null : (map['instanceRole'] as String).input(),
-      memberships: map['memberships'] == null ? null : (pulumi.Input.decodeList<InstanceCrossInstanceReplicationConfigMembership>(map['memberships'], (value) => InstanceCrossInstanceReplicationConfigMembership.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      primaryInstance: map['primaryInstance'] == null ? null : (InstanceCrossInstanceReplicationConfigPrimaryInstance.fromMap((map['primaryInstance'] as Map).cast<String, dynamic>())).input(),
-      secondaryInstances: map['secondaryInstances'] == null ? null : (pulumi.Input.decodeList<InstanceCrossInstanceReplicationConfigSecondaryInstance>(map['secondaryInstances'], (value) => InstanceCrossInstanceReplicationConfigSecondaryInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      instanceRole: map['instanceRole'] == null ? null : (map['instanceRole']! as String).input(),
+      memberships: map['memberships'] == null ? null : (pulumi.Input.decodeList<InstanceCrossInstanceReplicationConfigMembership>(map['memberships']!, (value) => InstanceCrossInstanceReplicationConfigMembership.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      primaryInstance: map['primaryInstance'] == null ? null : (InstanceCrossInstanceReplicationConfigPrimaryInstance.fromMap((map['primaryInstance']! as Map).cast<String, dynamic>())).input(),
+      secondaryInstances: map['secondaryInstances'] == null ? null : (pulumi.Input.decodeList<InstanceCrossInstanceReplicationConfigSecondaryInstance>(map['secondaryInstances']!, (value) => InstanceCrossInstanceReplicationConfigSecondaryInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

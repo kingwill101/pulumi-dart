@@ -111,23 +111,23 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      computePolicies: map['computePolicies'] == null ? null : (pulumi.Input.decodeList<CreateComputePolicyWithAccountParameters>(map['computePolicies'], (value) => CreateComputePolicyWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      computePolicies: map['computePolicies'] == null ? null : (pulumi.Input.decodeList<CreateComputePolicyWithAccountParameters>(map['computePolicies']!, (value) => CreateComputePolicyWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dataLakeStoreAccounts: (pulumi.Input.decodeList<AddDataLakeStoreWithAccountParameters>(map['dataLakeStoreAccounts'], (value) => AddDataLakeStoreWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
       defaultDataLakeStoreAccount: (map['defaultDataLakeStoreAccount'] as String).input(),
-      firewallAllowAzureIps: map['firewallAllowAzureIps'] == null ? null : (FirewallAllowAzureIpsState.fromValue(map['firewallAllowAzureIps'] as String)).input(),
-      firewallRules: map['firewallRules'] == null ? null : (pulumi.Input.decodeList<CreateFirewallRuleWithAccountParameters>(map['firewallRules'], (value) => CreateFirewallRuleWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      firewallState: map['firewallState'] == null ? null : (FirewallState.fromValue(map['firewallState'] as String)).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maxDegreeOfParallelism: map['maxDegreeOfParallelism'] == null ? null : (map['maxDegreeOfParallelism'] as int).input(),
-      maxDegreeOfParallelismPerJob: map['maxDegreeOfParallelismPerJob'] == null ? null : (map['maxDegreeOfParallelismPerJob'] as int).input(),
-      maxJobCount: map['maxJobCount'] == null ? null : (map['maxJobCount'] as int).input(),
-      minPriorityPerJob: map['minPriorityPerJob'] == null ? null : (map['minPriorityPerJob'] as int).input(),
-      newTier: map['newTier'] == null ? null : (TierType.fromValue(map['newTier'] as String)).input(),
-      queryStoreRetention: map['queryStoreRetention'] == null ? null : (map['queryStoreRetention'] as int).input(),
+      firewallAllowAzureIps: map['firewallAllowAzureIps'] == null ? null : (FirewallAllowAzureIpsState.fromValue(map['firewallAllowAzureIps']! as String)).input(),
+      firewallRules: map['firewallRules'] == null ? null : (pulumi.Input.decodeList<CreateFirewallRuleWithAccountParameters>(map['firewallRules']!, (value) => CreateFirewallRuleWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      firewallState: map['firewallState'] == null ? null : (FirewallState.fromValue(map['firewallState']! as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maxDegreeOfParallelism: map['maxDegreeOfParallelism'] == null ? null : (map['maxDegreeOfParallelism']! as int).input(),
+      maxDegreeOfParallelismPerJob: map['maxDegreeOfParallelismPerJob'] == null ? null : (map['maxDegreeOfParallelismPerJob']! as int).input(),
+      maxJobCount: map['maxJobCount'] == null ? null : (map['maxJobCount']! as int).input(),
+      minPriorityPerJob: map['minPriorityPerJob'] == null ? null : (map['minPriorityPerJob']! as int).input(),
+      newTier: map['newTier'] == null ? null : (TierType.fromValue(map['newTier']! as String)).input(),
+      queryStoreRetention: map['queryStoreRetention'] == null ? null : (map['queryStoreRetention']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageAccounts: map['storageAccounts'] == null ? null : (pulumi.Input.decodeList<AddStorageAccountWithAccountParameters>(map['storageAccounts'], (value) => AddStorageAccountWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storageAccounts: map['storageAccounts'] == null ? null : (pulumi.Input.decodeList<AddStorageAccountWithAccountParameters>(map['storageAccounts']!, (value) => AddStorageAccountWithAccountParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

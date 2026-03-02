@@ -20,7 +20,7 @@ class DomainDevicesPstoreAcpi {
 
   factory DomainDevicesPstoreAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesPstoreAcpi(
-      index: map['index'] == null ? null : (map['index'] as double).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
     );
   }
 }

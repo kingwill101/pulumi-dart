@@ -24,8 +24,8 @@ class ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
 
   factory ContainerGroupVolumeConfigFileVolumeConfigFileToPath.fromMap(Map<String, dynamic> map) {
     return ContainerGroupVolumeConfigFileVolumeConfigFileToPath(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

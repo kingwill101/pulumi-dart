@@ -79,16 +79,16 @@ class ScheduledScalingRuleArgs {
   factory ScheduledScalingRuleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledScalingRuleArgs(
       durationMinutes: (map['durationMinutes'] as int).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
       firstScheduledTime: (map['firstScheduledTime'] as int).input(),
       instanceId: (map['instanceId'] as String).input(),
-      repeatType: map['repeatType'] == null ? null : (map['repeatType'] as String).input(),
+      repeatType: map['repeatType'] == null ? null : (map['repeatType']! as String).input(),
       reservedPubFlow: (map['reservedPubFlow'] as int).input(),
       reservedSubFlow: (map['reservedSubFlow'] as int).input(),
       ruleName: (map['ruleName'] as String).input(),
       scheduleType: (map['scheduleType'] as String).input(),
       timeZone: (map['timeZone'] as String).input(),
-      weeklyTypes: map['weeklyTypes'] == null ? null : ((map['weeklyTypes'] as List).cast<String>()).input(),
+      weeklyTypes: map['weeklyTypes'] == null ? null : ((map['weeklyTypes']! as List).cast<String>()).input(),
     );
   }
 }

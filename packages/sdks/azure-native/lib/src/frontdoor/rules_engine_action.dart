@@ -33,9 +33,9 @@ class RulesEngineAction {
 
   factory RulesEngineAction.fromMap(Map<String, dynamic> map) {
     return RulesEngineAction(
-      requestHeaderActions: map['requestHeaderActions'] == null ? null : (pulumi.Input.decodeList<HeaderAction>(map['requestHeaderActions'], (value) => HeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseHeaderActions: map['responseHeaderActions'] == null ? null : (pulumi.Input.decodeList<HeaderAction>(map['responseHeaderActions'], (value) => HeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routeConfigurationOverride: map['routeConfigurationOverride'] == null ? null : (ForwardingConfiguration.fromMap((map['routeConfigurationOverride'] as Map).cast<String, dynamic>())).input(),
+      requestHeaderActions: map['requestHeaderActions'] == null ? null : (pulumi.Input.decodeList<HeaderAction>(map['requestHeaderActions']!, (value) => HeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseHeaderActions: map['responseHeaderActions'] == null ? null : (pulumi.Input.decodeList<HeaderAction>(map['responseHeaderActions']!, (value) => HeaderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeConfigurationOverride: map['routeConfigurationOverride'] == null ? null : (ForwardingConfiguration.fromMap((map['routeConfigurationOverride']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class FlexibleServerHighAvailability {
   factory FlexibleServerHighAvailability.fromMap(Map<String, dynamic> map) {
     return FlexibleServerHighAvailability(
       mode: (map['mode'] as String).input(),
-      standbyAvailabilityZone: map['standbyAvailabilityZone'] == null ? null : (map['standbyAvailabilityZone'] as String).input(),
+      standbyAvailabilityZone: map['standbyAvailabilityZone'] == null ? null : (map['standbyAvailabilityZone']! as String).input(),
     );
   }
 }

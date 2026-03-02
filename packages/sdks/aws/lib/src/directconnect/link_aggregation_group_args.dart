@@ -59,14 +59,14 @@ class LinkAggregationGroupArgs {
 
   factory LinkAggregationGroupArgs.fromMap(Map<String, dynamic> map) {
     return LinkAggregationGroupArgs(
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
+      connectionId: map['connectionId'] == null ? null : ((map['connectionId'] as String).input()).input(),
       connectionsBandwidth: (map['connectionsBandwidth'] as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      providerName: map['providerName'] == null ? null : ((map['providerName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

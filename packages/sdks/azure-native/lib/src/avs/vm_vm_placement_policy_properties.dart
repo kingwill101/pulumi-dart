@@ -43,8 +43,8 @@ class VmVmPlacementPolicyProperties {
   factory VmVmPlacementPolicyProperties.fromMap(Map<String, dynamic> map) {
     return VmVmPlacementPolicyProperties(
       affinityType: (map['affinityType'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       type: (map['type'] as String).input(),
       vmMembers: ((map['vmMembers'] as List).cast<String>()).input(),
     );

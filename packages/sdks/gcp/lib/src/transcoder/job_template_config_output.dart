@@ -20,7 +20,7 @@ class JobTemplateConfigOutput {
 
   factory JobTemplateConfigOutput.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigOutput(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class VirtualMachineGroupState {
 
   factory VirtualMachineGroupState.fromMap(Map<String, dynamic> map) {
     return VirtualMachineGroupState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sqlImageOffer: map['sqlImageOffer'] == null ? null : (map['sqlImageOffer'] as String).input(),
-      sqlImageSku: map['sqlImageSku'] == null ? null : (map['sqlImageSku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      wsfcDomainProfile: map['wsfcDomainProfile'] == null ? null : (VirtualMachineGroupWsfcDomainProfile.fromMap((map['wsfcDomainProfile'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sqlImageOffer: map['sqlImageOffer'] == null ? null : (map['sqlImageOffer']! as String).input(),
+      sqlImageSku: map['sqlImageSku'] == null ? null : (map['sqlImageSku']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      wsfcDomainProfile: map['wsfcDomainProfile'] == null ? null : (VirtualMachineGroupWsfcDomainProfile.fromMap((map['wsfcDomainProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

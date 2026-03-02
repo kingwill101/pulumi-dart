@@ -51,12 +51,12 @@ class MonitoringInstanceProperties {
 
   factory MonitoringInstanceProperties.fromMap(Map<String, dynamic> map) {
     return MonitoringInstanceProperties(
-      azureHybridBenefit: map['azureHybridBenefit'] == null ? null : (AzureHybridBenefitProperties.fromMap((map['azureHybridBenefit'] as Map).cast<String, dynamic>())).input(),
-      databaseInstance: map['databaseInstance'] == null ? null : (DatabaseInstanceProperties.fromMap((map['databaseInstance'] as Map).cast<String, dynamic>())).input(),
-      domainController: map['domainController'] == null ? null : (DomainControllerProperties.fromMap((map['domainController'] as Map).cast<String, dynamic>())).input(),
-      domainUserCredentials: map['domainUserCredentials'] == null ? null : (DomainUserCredentials.fromMap((map['domainUserCredentials'] as Map).cast<String, dynamic>())).input(),
-      gmsaDetails: map['gmsaDetails'] == null ? null : (GmsaDetails.fromMap((map['gmsaDetails'] as Map).cast<String, dynamic>())).input(),
-      vNetSubnetId: map['vNetSubnetId'] == null ? null : (map['vNetSubnetId'] as String).input(),
+      azureHybridBenefit: map['azureHybridBenefit'] == null ? null : (AzureHybridBenefitProperties.fromMap((map['azureHybridBenefit']! as Map).cast<String, dynamic>())).input(),
+      databaseInstance: map['databaseInstance'] == null ? null : (DatabaseInstanceProperties.fromMap((map['databaseInstance']! as Map).cast<String, dynamic>())).input(),
+      domainController: map['domainController'] == null ? null : (DomainControllerProperties.fromMap((map['domainController']! as Map).cast<String, dynamic>())).input(),
+      domainUserCredentials: map['domainUserCredentials'] == null ? null : (DomainUserCredentials.fromMap((map['domainUserCredentials']! as Map).cast<String, dynamic>())).input(),
+      gmsaDetails: map['gmsaDetails'] == null ? null : (GmsaDetails.fromMap((map['gmsaDetails']! as Map).cast<String, dynamic>())).input(),
+      vNetSubnetId: map['vNetSubnetId'] == null ? null : (map['vNetSubnetId']! as String).input(),
     );
   }
 }

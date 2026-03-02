@@ -28,8 +28,8 @@ class EndpointHintsPatch {
 
   factory EndpointHintsPatch.fromMap(Map<String, dynamic> map) {
     return EndpointHintsPatch(
-      forNodes: map['forNodes'] == null ? null : (pulumi.Input.decodeList<ForNodePatch>(map['forNodes'], (value) => ForNodePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      forZones: map['forZones'] == null ? null : (pulumi.Input.decodeList<ForZonePatch>(map['forZones'], (value) => ForZonePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forNodes: map['forNodes'] == null ? null : (pulumi.Input.decodeList<ForNodePatch>(map['forNodes']!, (value) => ForNodePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forZones: map['forZones'] == null ? null : (pulumi.Input.decodeList<ForZonePatch>(map['forZones']!, (value) => ForZonePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

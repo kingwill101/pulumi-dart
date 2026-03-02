@@ -61,15 +61,15 @@ class ScheduleGroupState {
 
   factory ScheduleGroupState.fromMap(Map<String, dynamic> map) {
     return ScheduleGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      creationDate: map['creationDate'] == null ? null : (map['creationDate'] as String).input(),
-      lastModificationDate: map['lastModificationDate'] == null ? null : (map['lastModificationDate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      creationDate: map['creationDate'] == null ? null : ((map['creationDate'] as String).input()).input(),
+      lastModificationDate: map['lastModificationDate'] == null ? null : ((map['lastModificationDate'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

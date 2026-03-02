@@ -36,10 +36,10 @@ class TruncationSelectionPolicyResponse {
 
   factory TruncationSelectionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TruncationSelectionPolicyResponse(
-      delayEvaluation: map['delayEvaluation'] == null ? null : (map['delayEvaluation'] as int).input(),
-      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval'] as int).input(),
+      delayEvaluation: map['delayEvaluation'] == null ? null : (map['delayEvaluation']! as int).input(),
+      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval']! as int).input(),
       policyType: (map['policyType'] as String).input(),
-      truncationPercentage: map['truncationPercentage'] == null ? null : (map['truncationPercentage'] as int).input(),
+      truncationPercentage: map['truncationPercentage'] == null ? null : (map['truncationPercentage']! as int).input(),
     );
   }
 }

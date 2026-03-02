@@ -20,7 +20,7 @@ class LocationSmbMountOptions {
 
   factory LocationSmbMountOptions.fromMap(Map<String, dynamic> map) {
     return LocationSmbMountOptions(
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

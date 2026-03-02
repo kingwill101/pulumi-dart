@@ -63,14 +63,14 @@ class GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig {
   factory GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig(
       apiKey: (map['apiKey'] as String).input(),
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId'] as String).input(),
-      appSlug: map['appSlug'] == null ? null : (map['appSlug'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId']! as String).input(),
+      appSlug: map['appSlug'] == null ? null : (map['appSlug']! as String).input(),
       hostUri: (map['hostUri'] as String).input(),
-      privateKeySecretVersion: map['privateKeySecretVersion'] == null ? null : (map['privateKeySecretVersion'] as String).input(),
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>())).input(),
-      sslCa: map['sslCa'] == null ? null : (map['sslCa'] as String).input(),
-      webhookSecretSecretVersion: map['webhookSecretSecretVersion'] == null ? null : (map['webhookSecretSecretVersion'] as String).input(),
+      privateKeySecretVersion: map['privateKeySecretVersion'] == null ? null : (map['privateKeySecretVersion']! as String).input(),
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig']! as Map).cast<String, dynamic>())).input(),
+      sslCa: map['sslCa'] == null ? null : (map['sslCa']! as String).input(),
+      webhookSecretSecretVersion: map['webhookSecretSecretVersion'] == null ? null : (map['webhookSecretSecretVersion']! as String).input(),
     );
   }
 }

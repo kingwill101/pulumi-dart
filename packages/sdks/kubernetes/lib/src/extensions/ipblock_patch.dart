@@ -26,8 +26,8 @@ class IPBlockPatch {
 
   factory IPBlockPatch.fromMap(Map<String, dynamic> map) {
     return IPBlockPatch(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      except: map['except'] == null ? null : ((map['except'] as List).cast<String>()).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      except: map['except'] == null ? null : ((map['except']! as List).cast<String>()).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class SettingsAccessSettingsWorkforceIdentitySettingsOauth2 {
 
   factory SettingsAccessSettingsWorkforceIdentitySettingsOauth2.fromMap(Map<String, dynamic> map) {
     return SettingsAccessSettingsWorkforceIdentitySettingsOauth2(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      clientSecretSha256: map['clientSecretSha256'] == null ? null : (map['clientSecretSha256'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      clientSecretSha256: map['clientSecretSha256'] == null ? null : (map['clientSecretSha256']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class V3CustomDomainRouteConfigRouteRewriteConfig {
 
   factory V3CustomDomainRouteConfigRouteRewriteConfig.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainRouteConfigRouteRewriteConfig(
-      equalRules: map['equalRules'] == null ? null : (pulumi.Input.decodeList<V3CustomDomainRouteConfigRouteRewriteConfigEqualRule>(map['equalRules'], (value) => V3CustomDomainRouteConfigRouteRewriteConfigEqualRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regexRules: map['regexRules'] == null ? null : (pulumi.Input.decodeList<V3CustomDomainRouteConfigRouteRewriteConfigRegexRule>(map['regexRules'], (value) => V3CustomDomainRouteConfigRouteRewriteConfigRegexRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      wildcardRules: map['wildcardRules'] == null ? null : (pulumi.Input.decodeList<V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule>(map['wildcardRules'], (value) => V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      equalRules: map['equalRules'] == null ? null : (pulumi.Input.decodeList<V3CustomDomainRouteConfigRouteRewriteConfigEqualRule>(map['equalRules']!, (value) => V3CustomDomainRouteConfigRouteRewriteConfigEqualRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regexRules: map['regexRules'] == null ? null : (pulumi.Input.decodeList<V3CustomDomainRouteConfigRouteRewriteConfigRegexRule>(map['regexRules']!, (value) => V3CustomDomainRouteConfigRouteRewriteConfigRegexRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      wildcardRules: map['wildcardRules'] == null ? null : (pulumi.Input.decodeList<V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule>(map['wildcardRules']!, (value) => V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

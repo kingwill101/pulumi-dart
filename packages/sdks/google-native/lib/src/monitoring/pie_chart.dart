@@ -35,7 +35,7 @@ class PieChart {
     return PieChart(
       chartType: (PieChartChartType.fromValue(map['chartType'] as String)).input(),
       dataSets: (pulumi.Input.decodeList<PieChartDataSet>(map['dataSets'], (value) => PieChartDataSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      showLabels: map['showLabels'] == null ? null : (map['showLabels'] as bool).input(),
+      showLabels: map['showLabels'] == null ? null : (map['showLabels']! as bool).input(),
     );
   }
 }

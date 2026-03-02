@@ -37,10 +37,10 @@ class BucketLifecycleConfigurationV2RuleFilterAnd {
 
   factory BucketLifecycleConfigurationV2RuleFilterAnd.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationV2RuleFilterAnd(
-      objectSizeGreaterThan: map['objectSizeGreaterThan'] == null ? null : (map['objectSizeGreaterThan'] as int).input(),
-      objectSizeLessThan: map['objectSizeLessThan'] == null ? null : (map['objectSizeLessThan'] as int).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      objectSizeGreaterThan: map['objectSizeGreaterThan'] == null ? null : ((map['objectSizeGreaterThan'] as int).input()).input(),
+      objectSizeLessThan: map['objectSizeLessThan'] == null ? null : ((map['objectSizeLessThan'] as int).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

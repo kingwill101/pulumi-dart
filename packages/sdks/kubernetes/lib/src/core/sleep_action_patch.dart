@@ -21,7 +21,7 @@ class SleepActionPatch {
 
   factory SleepActionPatch.fromMap(Map<String, dynamic> map) {
     return SleepActionPatch(
-      seconds: map['seconds'] == null ? null : (map['seconds'] as int).input(),
+      seconds: map['seconds'] == null ? null : (map['seconds']! as int).input(),
     );
   }
 }

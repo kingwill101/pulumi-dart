@@ -25,8 +25,8 @@ class DatasetCreateRequestTimeSeries {
 
   factory DatasetCreateRequestTimeSeries.fromMap(Map<String, dynamic> map) {
     return DatasetCreateRequestTimeSeries(
-      coarseGrainTimestamp: map['coarseGrainTimestamp'] == null ? null : (map['coarseGrainTimestamp'] as String).input(),
-      fineGrainTimestamp: map['fineGrainTimestamp'] == null ? null : (map['fineGrainTimestamp'] as String).input(),
+      coarseGrainTimestamp: map['coarseGrainTimestamp'] == null ? null : (map['coarseGrainTimestamp']! as String).input(),
+      fineGrainTimestamp: map['fineGrainTimestamp'] == null ? null : (map['fineGrainTimestamp']! as String).input(),
     );
   }
 }

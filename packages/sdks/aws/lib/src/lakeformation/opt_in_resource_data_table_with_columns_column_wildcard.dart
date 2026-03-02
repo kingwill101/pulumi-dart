@@ -19,7 +19,7 @@ class OptInResourceDataTableWithColumnsColumnWildcard {
 
   factory OptInResourceDataTableWithColumnsColumnWildcard.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataTableWithColumnsColumnWildcard(
-      excludedColumnNames: map['excludedColumnNames'] == null ? null : ((map['excludedColumnNames'] as List).cast<String>()).input(),
+      excludedColumnNames: map['excludedColumnNames'] == null ? null : (((map['excludedColumnNames'] as List).cast<String>()).input()).input(),
     );
   }
 }

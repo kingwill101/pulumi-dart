@@ -27,8 +27,8 @@ class GoogleCloudDialogflowCxV3beta1VariantsHistory {
 
   factory GoogleCloudDialogflowCxV3beta1VariantsHistory.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1VariantsHistory(
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      versionVariants: map['versionVariants'] == null ? null : (GoogleCloudDialogflowCxV3beta1VersionVariants.fromMap((map['versionVariants'] as Map).cast<String, dynamic>())).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      versionVariants: map['versionVariants'] == null ? null : (GoogleCloudDialogflowCxV3beta1VersionVariants.fromMap((map['versionVariants']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

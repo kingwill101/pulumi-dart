@@ -33,8 +33,8 @@ class NetworkManagerPropertiesResponseNetworkManagerScopes {
   factory NetworkManagerPropertiesResponseNetworkManagerScopes.fromMap(Map<String, dynamic> map) {
     return NetworkManagerPropertiesResponseNetworkManagerScopes(
       crossTenantScopes: (pulumi.Input.decodeList<CrossTenantScopesResponse>(map['crossTenantScopes'], (value) => CrossTenantScopesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managementGroups: map['managementGroups'] == null ? null : ((map['managementGroups'] as List).cast<String>()).input(),
-      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions'] as List).cast<String>()).input(),
+      managementGroups: map['managementGroups'] == null ? null : ((map['managementGroups']! as List).cast<String>()).input(),
+      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions']! as List).cast<String>()).input(),
     );
   }
 }

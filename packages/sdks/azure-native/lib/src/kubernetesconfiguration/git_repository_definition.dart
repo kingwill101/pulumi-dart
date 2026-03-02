@@ -57,14 +57,14 @@ class GitRepositoryDefinition {
 
   factory GitRepositoryDefinition.fromMap(Map<String, dynamic> map) {
     return GitRepositoryDefinition(
-      httpsCACert: map['httpsCACert'] == null ? null : (map['httpsCACert'] as String).input(),
-      httpsUser: map['httpsUser'] == null ? null : (map['httpsUser'] as String).input(),
-      localAuthRef: map['localAuthRef'] == null ? null : (map['localAuthRef'] as String).input(),
-      repositoryRef: map['repositoryRef'] == null ? null : (RepositoryRefDefinition.fromMap((map['repositoryRef'] as Map).cast<String, dynamic>())).input(),
-      sshKnownHosts: map['sshKnownHosts'] == null ? null : (map['sshKnownHosts'] as String).input(),
-      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds'] as double).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as double).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      httpsCACert: map['httpsCACert'] == null ? null : (map['httpsCACert']! as String).input(),
+      httpsUser: map['httpsUser'] == null ? null : (map['httpsUser']! as String).input(),
+      localAuthRef: map['localAuthRef'] == null ? null : (map['localAuthRef']! as String).input(),
+      repositoryRef: map['repositoryRef'] == null ? null : (RepositoryRefDefinition.fromMap((map['repositoryRef']! as Map).cast<String, dynamic>())).input(),
+      sshKnownHosts: map['sshKnownHosts'] == null ? null : (map['sshKnownHosts']! as String).input(),
+      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds']! as double).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as double).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

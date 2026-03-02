@@ -71,13 +71,13 @@ class GetVolumeResult {
       id: map['id'] as int,
       labels: (map['labels'] as Map).cast<String, String>(),
       linuxDevice: map['linuxDevice'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      selector: map['selector'] == null ? null : map['selector'] as String,
-      serverId: map['serverId'] == null ? null : map['serverId'] as int,
+      selector: map['selector'] == null ? null : map['selector']! as String,
+      serverId: map['serverId'] == null ? null : map['serverId']! as int,
       size: map['size'] as int,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
-      withStatuses: map['withStatuses'] == null ? null : (map['withStatuses'] as List).cast<String>(),
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
+      withStatuses: map['withStatuses'] == null ? null : (map['withStatuses']! as List).cast<String>(),
     );
   }
 }

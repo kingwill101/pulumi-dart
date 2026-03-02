@@ -36,8 +36,8 @@ class VpcEndpointArgs {
   factory VpcEndpointArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointArgs(
       domainArn: (map['domainArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpcOptions: (VpcEndpointVpcOptions.fromMap((map['vpcOptions'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpcOptions: (VpcEndpointVpcOptions.fromMap((map['vpcOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

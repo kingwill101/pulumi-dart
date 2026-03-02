@@ -28,7 +28,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRu
   factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag(
       flags: ((map['flags'] as List).cast<String>()).input(),
-      masks: map['masks'] == null ? null : ((map['masks'] as List).cast<String>()).input(),
+      masks: map['masks'] == null ? null : (((map['masks'] as List).cast<String>()).input()).input(),
     );
   }
 }

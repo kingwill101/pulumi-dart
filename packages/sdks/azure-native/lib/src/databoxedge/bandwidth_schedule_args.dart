@@ -56,7 +56,7 @@ class BandwidthScheduleArgs {
     return BandwidthScheduleArgs(
       days: ((map['days'] as List).cast<String>()).input(),
       deviceName: (map['deviceName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       rateInMbps: (map['rateInMbps'] as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       start: (map['start'] as String).input(),

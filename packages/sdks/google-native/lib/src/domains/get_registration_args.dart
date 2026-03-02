@@ -32,7 +32,7 @@ class GetRegistrationArgs {
   factory GetRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistrationArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       registrationId: (map['registrationId'] as String).input(),
     );
   }

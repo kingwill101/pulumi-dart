@@ -42,8 +42,8 @@ class FixedInputData {
 
   factory FixedInputData.fromMap(Map<String, dynamic> map) {
     return FixedInputData(
-      columns: map['columns'] == null ? null : ((map['columns'] as Map).cast<String, String>()).input(),
-      dataContext: map['dataContext'] == null ? null : (map['dataContext'] as String).input(),
+      columns: map['columns'] == null ? null : ((map['columns']! as Map).cast<String, String>()).input(),
+      dataContext: map['dataContext'] == null ? null : (map['dataContext']! as String).input(),
       inputDataType: (map['inputDataType'] as String).input(),
       jobInputType: (map['jobInputType'] as String).input(),
       uri: (map['uri'] as String).input(),

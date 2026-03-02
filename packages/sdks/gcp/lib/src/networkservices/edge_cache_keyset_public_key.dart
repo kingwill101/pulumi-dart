@@ -35,8 +35,8 @@ class EdgeCacheKeysetPublicKey {
   factory EdgeCacheKeysetPublicKey.fromMap(Map<String, dynamic> map) {
     return EdgeCacheKeysetPublicKey(
       id: (map['id'] as String).input(),
-      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      managed: map['managed'] == null ? null : (map['managed']! as bool).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

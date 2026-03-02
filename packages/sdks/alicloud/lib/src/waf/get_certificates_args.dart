@@ -44,11 +44,11 @@ class GetCertificatesArgs {
 
   factory GetCertificatesArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificatesArgs(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

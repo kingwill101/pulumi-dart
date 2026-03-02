@@ -26,8 +26,8 @@ class IngressProfile {
 
   factory IngressProfile.fromMap(Map<String, dynamic> map) {
     return IngressProfile(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
     );
   }
 }

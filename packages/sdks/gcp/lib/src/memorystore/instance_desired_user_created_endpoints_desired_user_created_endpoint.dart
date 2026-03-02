@@ -21,7 +21,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint {
 
   factory InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint.fromMap(Map<String, dynamic> map) {
     return InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint(
-      connections: map['connections'] == null ? null : (pulumi.Input.decodeList<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection>(map['connections'], (value) => InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connections: map['connections'] == null ? null : (pulumi.Input.decodeList<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection>(map['connections']!, (value) => InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class UpdateProfileResponseRollingUpdateProfile {
 
   factory UpdateProfileResponseRollingUpdateProfile.fromMap(Map<String, dynamic> map) {
     return UpdateProfileResponseRollingUpdateProfile(
-      inPlaceUpdate: map['inPlaceUpdate'] == null ? null : (map['inPlaceUpdate'] as bool).input(),
-      maxBatchPercent: map['maxBatchPercent'] == null ? null : (map['maxBatchPercent'] as int).input(),
-      maxUnhealthyPercent: map['maxUnhealthyPercent'] == null ? null : (map['maxUnhealthyPercent'] as int).input(),
-      pauseTimeBetweenBatches: map['pauseTimeBetweenBatches'] == null ? null : (map['pauseTimeBetweenBatches'] as String).input(),
+      inPlaceUpdate: map['inPlaceUpdate'] == null ? null : (map['inPlaceUpdate']! as bool).input(),
+      maxBatchPercent: map['maxBatchPercent'] == null ? null : (map['maxBatchPercent']! as int).input(),
+      maxUnhealthyPercent: map['maxUnhealthyPercent'] == null ? null : (map['maxUnhealthyPercent']! as int).input(),
+      pauseTimeBetweenBatches: map['pauseTimeBetweenBatches'] == null ? null : (map['pauseTimeBetweenBatches']! as String).input(),
     );
   }
 }

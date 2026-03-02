@@ -46,12 +46,12 @@ class ImageRegistryCredential {
 
   factory ImageRegistryCredential.fromMap(Map<String, dynamic> map) {
     return ImageRegistryCredential(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      identityUrl: map['identityUrl'] == null ? null : (map['identityUrl'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      passwordReference: map['passwordReference'] == null ? null : (map['passwordReference'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
+      identityUrl: map['identityUrl'] == null ? null : (map['identityUrl']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      passwordReference: map['passwordReference'] == null ? null : (map['passwordReference']! as String).input(),
       server: (map['server'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class AuthenticationProfileArgs {
     return AuthenticationProfileArgs(
       authenticationProfileContent: (map['authenticationProfileContent'] as String).input(),
       authenticationProfileName: (map['authenticationProfileName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

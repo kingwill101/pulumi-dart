@@ -26,8 +26,8 @@ class NspLoggingConfigurationProperties {
 
   factory NspLoggingConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return NspLoggingConfigurationProperties(
-      enabledLogCategories: map['enabledLogCategories'] == null ? null : ((map['enabledLogCategories'] as List).cast<String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      enabledLogCategories: map['enabledLogCategories'] == null ? null : ((map['enabledLogCategories']! as List).cast<String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

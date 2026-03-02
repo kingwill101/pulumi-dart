@@ -37,10 +37,10 @@ class AssessmentState {
 
   factory AssessmentState.fromMap(Map<String, dynamic> map) {
     return AssessmentState(
-      additionalData: map['additionalData'] == null ? null : ((map['additionalData'] as Map).cast<String, String>()).input(),
-      assessmentPolicyId: map['assessmentPolicyId'] == null ? null : (map['assessmentPolicyId'] as String).input(),
-      status: map['status'] == null ? null : (AssessmentStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      additionalData: map['additionalData'] == null ? null : ((map['additionalData']! as Map).cast<String, String>()).input(),
+      assessmentPolicyId: map['assessmentPolicyId'] == null ? null : (map['assessmentPolicyId']! as String).input(),
+      status: map['status'] == null ? null : (AssessmentStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
     );
   }
 }

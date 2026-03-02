@@ -90,11 +90,11 @@ class AutoscalerAutoscalingPolicyMetric {
 
   factory AutoscalerAutoscalingPolicyMetric.fromMap(Map<String, dynamic> map) {
     return AutoscalerAutoscalingPolicyMetric(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       name: (map['name'] as String).input(),
-      singleInstanceAssignment: map['singleInstanceAssignment'] == null ? null : (map['singleInstanceAssignment'] as double).input(),
-      target: map['target'] == null ? null : (map['target'] as double).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      singleInstanceAssignment: map['singleInstanceAssignment'] == null ? null : (map['singleInstanceAssignment']! as double).input(),
+      target: map['target'] == null ? null : (map['target']! as double).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

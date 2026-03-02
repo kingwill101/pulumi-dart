@@ -22,7 +22,7 @@ class AttackPathSensitiveAssetConfigState {
 
   factory AttackPathSensitiveAssetConfigState.fromMap(Map<String, dynamic> map) {
     return AttackPathSensitiveAssetConfigState(
-      attackPathAssetLists: map['attackPathAssetLists'] == null ? null : (pulumi.Input.decodeList<AttackPathSensitiveAssetConfigAttackPathAssetList>(map['attackPathAssetLists'], (value) => AttackPathSensitiveAssetConfigAttackPathAssetList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attackPathAssetLists: map['attackPathAssetLists'] == null ? null : (pulumi.Input.decodeList<AttackPathSensitiveAssetConfigAttackPathAssetList>(map['attackPathAssetLists']!, (value) => AttackPathSensitiveAssetConfigAttackPathAssetList.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

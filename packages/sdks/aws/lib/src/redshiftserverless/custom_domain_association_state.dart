@@ -41,11 +41,11 @@ class CustomDomainAssociationState {
 
   factory CustomDomainAssociationState.fromMap(Map<String, dynamic> map) {
     return CustomDomainAssociationState(
-      customDomainCertificateArn: map['customDomainCertificateArn'] == null ? null : (map['customDomainCertificateArn'] as String).input(),
-      customDomainCertificateExpiryTime: map['customDomainCertificateExpiryTime'] == null ? null : (map['customDomainCertificateExpiryTime'] as String).input(),
-      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      workgroupName: map['workgroupName'] == null ? null : (map['workgroupName'] as String).input(),
+      customDomainCertificateArn: map['customDomainCertificateArn'] == null ? null : ((map['customDomainCertificateArn'] as String).input()).input(),
+      customDomainCertificateExpiryTime: map['customDomainCertificateExpiryTime'] == null ? null : ((map['customDomainCertificateExpiryTime'] as String).input()).input(),
+      customDomainName: map['customDomainName'] == null ? null : ((map['customDomainName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      workgroupName: map['workgroupName'] == null ? null : ((map['workgroupName'] as String).input()).input(),
     );
   }
 }

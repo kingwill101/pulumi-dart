@@ -38,10 +38,10 @@ class RouteMapRule {
 
   factory RouteMapRule.fromMap(Map<String, dynamic> map) {
     return RouteMapRule(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<Action>(map['actions'], (value) => Action.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchCriteria: map['matchCriteria'] == null ? null : (pulumi.Input.decodeList<Criterion>(map['matchCriteria'], (value) => Criterion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nextStepIfMatched: map['nextStepIfMatched'] == null ? null : (map['nextStepIfMatched'] as String).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<Action>(map['actions']!, (value) => Action.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchCriteria: map['matchCriteria'] == null ? null : (pulumi.Input.decodeList<Criterion>(map['matchCriteria']!, (value) => Criterion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nextStepIfMatched: map['nextStepIfMatched'] == null ? null : (map['nextStepIfMatched']! as String).input(),
     );
   }
 }

@@ -86,18 +86,18 @@ class SecurityRuleArgs {
   factory SecurityRuleArgs.fromMap(Map<String, dynamic> map) {
     return SecurityRuleArgs(
       access: (map['access'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationAddressPrefixes: map['destinationAddressPrefixes'] == null ? null : ((map['destinationAddressPrefixes'] as List).cast<String>()).input(),
-      destinationPortRanges: map['destinationPortRanges'] == null ? null : ((map['destinationPortRanges'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationAddressPrefixes: map['destinationAddressPrefixes'] == null ? null : ((map['destinationAddressPrefixes']! as List).cast<String>()).input(),
+      destinationPortRanges: map['destinationPortRanges'] == null ? null : ((map['destinationPortRanges']! as List).cast<String>()).input(),
       direction: (map['direction'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
       networkSecurityGroupName: (map['networkSecurityGroupName'] as String).input(),
       priority: (map['priority'] as int).input(),
       protocol: (map['protocol'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityRuleName: map['securityRuleName'] == null ? null : (map['securityRuleName'] as String).input(),
-      sourceAddressPrefixes: map['sourceAddressPrefixes'] == null ? null : ((map['sourceAddressPrefixes'] as List).cast<String>()).input(),
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges'] as List).cast<String>()).input(),
+      securityRuleName: map['securityRuleName'] == null ? null : (map['securityRuleName']! as String).input(),
+      sourceAddressPrefixes: map['sourceAddressPrefixes'] == null ? null : ((map['sourceAddressPrefixes']! as List).cast<String>()).input(),
+      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges']! as List).cast<String>()).input(),
     );
   }
 }

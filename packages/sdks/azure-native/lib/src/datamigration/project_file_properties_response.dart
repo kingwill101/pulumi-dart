@@ -41,10 +41,10 @@ class ProjectFilePropertiesResponse {
 
   factory ProjectFilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProjectFilePropertiesResponse(
-      extension: map['extension'] == null ? null : (map['extension'] as String).input(),
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
+      extension: map['extension'] == null ? null : (map['extension']! as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
       lastModified: (map['lastModified'] as String).input(),
-      mediaType: map['mediaType'] == null ? null : (map['mediaType'] as String).input(),
+      mediaType: map['mediaType'] == null ? null : (map['mediaType']! as String).input(),
       size: (map['size'] as double).input(),
     );
   }

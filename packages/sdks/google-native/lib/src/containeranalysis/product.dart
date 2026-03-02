@@ -31,9 +31,9 @@ class Product {
 
   factory Product.fromMap(Map<String, dynamic> map) {
     return Product(
-      genericUri: map['genericUri'] == null ? null : (map['genericUri'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      genericUri: map['genericUri'] == null ? null : (map['genericUri']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

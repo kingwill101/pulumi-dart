@@ -31,9 +31,9 @@ class ApplicationInfoJobsV4 {
 
   factory ApplicationInfoJobsV4.fromMap(Map<String, dynamic> map) {
     return ApplicationInfoJobsV4(
-      emails: map['emails'] == null ? null : ((map['emails'] as List).cast<String>()).input(),
-      instruction: map['instruction'] == null ? null : (map['instruction'] as String).input(),
-      uris: map['uris'] == null ? null : ((map['uris'] as List).cast<String>()).input(),
+      emails: map['emails'] == null ? null : ((map['emails']! as List).cast<String>()).input(),
+      instruction: map['instruction'] == null ? null : (map['instruction']! as String).input(),
+      uris: map['uris'] == null ? null : ((map['uris']! as List).cast<String>()).input(),
     );
   }
 }

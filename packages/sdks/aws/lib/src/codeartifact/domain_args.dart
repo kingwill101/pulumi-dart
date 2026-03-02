@@ -40,9 +40,9 @@ class DomainArgs {
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
       domain: (map['domain'] as String).input(),
-      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      encryptionKey: map['encryptionKey'] == null ? null : ((map['encryptionKey'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

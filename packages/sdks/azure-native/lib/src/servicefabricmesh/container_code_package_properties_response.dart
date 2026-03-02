@@ -102,21 +102,21 @@ class ContainerCodePackagePropertiesResponse {
 
   factory ContainerCodePackagePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ContainerCodePackagePropertiesResponse(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      diagnostics: map['diagnostics'] == null ? null : (DiagnosticsRefResponse.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())).input(),
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<EndpointPropertiesResponse>(map['endpoints'], (value) => EndpointPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      entrypoint: map['entrypoint'] == null ? null : (map['entrypoint'] as String).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables'], (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      diagnostics: map['diagnostics'] == null ? null : (DiagnosticsRefResponse.fromMap((map['diagnostics']! as Map).cast<String, dynamic>())).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<EndpointPropertiesResponse>(map['endpoints']!, (value) => EndpointPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entrypoint: map['entrypoint'] == null ? null : (map['entrypoint']! as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables']!, (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       image: (map['image'] as String).input(),
-      imageRegistryCredential: map['imageRegistryCredential'] == null ? null : (ImageRegistryCredentialResponse.fromMap((map['imageRegistryCredential'] as Map).cast<String, dynamic>())).input(),
+      imageRegistryCredential: map['imageRegistryCredential'] == null ? null : (ImageRegistryCredentialResponse.fromMap((map['imageRegistryCredential']! as Map).cast<String, dynamic>())).input(),
       instanceView: (ContainerInstanceViewResponse.fromMap((map['instanceView'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<ContainerLabelResponse>(map['labels'], (value) => ContainerLabelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<ContainerLabelResponse>(map['labels']!, (value) => ContainerLabelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      reliableCollectionsRefs: map['reliableCollectionsRefs'] == null ? null : (pulumi.Input.decodeList<ReliableCollectionsRefResponse>(map['reliableCollectionsRefs'], (value) => ReliableCollectionsRefResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reliableCollectionsRefs: map['reliableCollectionsRefs'] == null ? null : (pulumi.Input.decodeList<ReliableCollectionsRefResponse>(map['reliableCollectionsRefs']!, (value) => ReliableCollectionsRefResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resources: (ResourceRequirementsResponse.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<SettingResponse>(map['settings'], (value) => SettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumeRefs: map['volumeRefs'] == null ? null : (pulumi.Input.decodeList<VolumeReferenceResponse>(map['volumeRefs'], (value) => VolumeReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<ApplicationScopedVolumeResponse>(map['volumes'], (value) => ApplicationScopedVolumeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<SettingResponse>(map['settings']!, (value) => SettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeRefs: map['volumeRefs'] == null ? null : (pulumi.Input.decodeList<VolumeReferenceResponse>(map['volumeRefs']!, (value) => VolumeReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<ApplicationScopedVolumeResponse>(map['volumes']!, (value) => ApplicationScopedVolumeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

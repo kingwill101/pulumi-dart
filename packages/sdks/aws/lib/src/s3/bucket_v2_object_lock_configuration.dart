@@ -26,8 +26,8 @@ class BucketV2ObjectLockConfiguration {
 
   factory BucketV2ObjectLockConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketV2ObjectLockConfiguration(
-      objectLockEnabled: map['objectLockEnabled'] == null ? null : (map['objectLockEnabled'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketV2ObjectLockConfigurationRule>(map['rules'], (value) => BucketV2ObjectLockConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      objectLockEnabled: map['objectLockEnabled'] == null ? null : ((map['objectLockEnabled'] as String).input()).input(),
+      rules: map['rules'] == null ? null : ((pulumi.Input.decodeList<BucketV2ObjectLockConfigurationRule>(map['rules']!, (value) => BucketV2ObjectLockConfigurationRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

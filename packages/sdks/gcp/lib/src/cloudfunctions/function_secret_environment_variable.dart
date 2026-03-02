@@ -36,7 +36,7 @@ class FunctionSecretEnvironmentVariable {
   factory FunctionSecretEnvironmentVariable.fromMap(Map<String, dynamic> map) {
     return FunctionSecretEnvironmentVariable(
       key: (map['key'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
       secret: (map['secret'] as String).input(),
       version: (map['version'] as String).input(),
     );

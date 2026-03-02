@@ -39,10 +39,10 @@ class GooglePrivacyDlpV2DiscoveryBigQueryConditions {
 
   factory GooglePrivacyDlpV2DiscoveryBigQueryConditions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryBigQueryConditions(
-      createdAfter: map['createdAfter'] == null ? null : (map['createdAfter'] as String).input(),
-      orConditions: map['orConditions'] == null ? null : (GooglePrivacyDlpV2OrConditions.fromMap((map['orConditions'] as Map).cast<String, dynamic>())).input(),
-      typeCollection: map['typeCollection'] == null ? null : (GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection.fromValue(map['typeCollection'] as String)).input(),
-      types: map['types'] == null ? null : (GooglePrivacyDlpV2BigQueryTableTypes.fromMap((map['types'] as Map).cast<String, dynamic>())).input(),
+      createdAfter: map['createdAfter'] == null ? null : (map['createdAfter']! as String).input(),
+      orConditions: map['orConditions'] == null ? null : (GooglePrivacyDlpV2OrConditions.fromMap((map['orConditions']! as Map).cast<String, dynamic>())).input(),
+      typeCollection: map['typeCollection'] == null ? null : (GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection.fromValue(map['typeCollection']! as String)).input(),
+      types: map['types'] == null ? null : (GooglePrivacyDlpV2BigQueryTableTypes.fromMap((map['types']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

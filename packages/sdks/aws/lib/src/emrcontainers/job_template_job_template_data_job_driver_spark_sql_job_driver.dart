@@ -25,8 +25,8 @@ class JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver {
 
   factory JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver(
-      entryPoint: map['entryPoint'] == null ? null : (map['entryPoint'] as String).input(),
-      sparkSqlParameters: map['sparkSqlParameters'] == null ? null : (map['sparkSqlParameters'] as String).input(),
+      entryPoint: map['entryPoint'] == null ? null : ((map['entryPoint'] as String).input()).input(),
+      sparkSqlParameters: map['sparkSqlParameters'] == null ? null : ((map['sparkSqlParameters'] as String).input()).input(),
     );
   }
 }

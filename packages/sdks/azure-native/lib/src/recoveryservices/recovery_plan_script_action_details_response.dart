@@ -40,7 +40,7 @@ class RecoveryPlanScriptActionDetailsResponse {
       fabricLocation: (map['fabricLocation'] as String).input(),
       instanceType: (map['instanceType'] as String).input(),
       path: (map['path'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

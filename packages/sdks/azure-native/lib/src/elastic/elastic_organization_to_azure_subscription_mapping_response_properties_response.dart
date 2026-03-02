@@ -37,9 +37,9 @@ class ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse {
 
   factory ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse(
-      billedAzureSubscriptionId: map['billedAzureSubscriptionId'] == null ? null : (map['billedAzureSubscriptionId'] as String).input(),
-      elasticOrganizationId: map['elasticOrganizationId'] == null ? null : (map['elasticOrganizationId'] as String).input(),
-      elasticOrganizationName: map['elasticOrganizationName'] == null ? null : (map['elasticOrganizationName'] as String).input(),
+      billedAzureSubscriptionId: map['billedAzureSubscriptionId'] == null ? null : (map['billedAzureSubscriptionId']! as String).input(),
+      elasticOrganizationId: map['elasticOrganizationId'] == null ? null : (map['elasticOrganizationId']! as String).input(),
+      elasticOrganizationName: map['elasticOrganizationName'] == null ? null : (map['elasticOrganizationName']! as String).input(),
       marketplaceSaasInfo: (MarketplaceSaaSInfoResponse.fromMap((map['marketplaceSaasInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }

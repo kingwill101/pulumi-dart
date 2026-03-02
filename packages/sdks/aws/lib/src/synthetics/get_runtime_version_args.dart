@@ -41,10 +41,10 @@ class GetRuntimeVersionArgs {
 
   factory GetRuntimeVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeVersionArgs(
-      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
+      latest: map['latest'] == null ? null : ((map['latest'] as bool).input()).input(),
       prefix: (map['prefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

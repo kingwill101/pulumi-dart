@@ -34,9 +34,9 @@ class GetEntitlementArgs {
 
   factory GetEntitlementArgs.fromMap(Map<String, dynamic> map) {
     return GetEntitlementArgs(
-      entitlementId: map['entitlementId'] == null ? null : (map['entitlementId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      entitlementId: map['entitlementId'] == null ? null : (map['entitlementId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
     );
   }
 }

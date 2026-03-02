@@ -41,11 +41,11 @@ class EipDomainNameState {
 
   factory EipDomainNameState.fromMap(Map<String, dynamic> map) {
     return EipDomainNameState(
-      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      ptrRecord: map['ptrRecord'] == null ? null : (map['ptrRecord'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (EipDomainNameTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      allocationId: map['allocationId'] == null ? null : ((map['allocationId'] as String).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      ptrRecord: map['ptrRecord'] == null ? null : ((map['ptrRecord'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((EipDomainNameTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class NodeInfoResponse {
 
   factory NodeInfoResponse.fromMap(Map<String, dynamic> map) {
     return NodeInfoResponse(
-      ipConfiguration: map['ipConfiguration'] == null ? null : (pulumi.Input.decodeList<KubernetesIPConfigurationResponse>(map['ipConfiguration'], (value) => KubernetesIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipConfiguration: map['ipConfiguration'] == null ? null : (pulumi.Input.decodeList<KubernetesIPConfigurationResponse>(map['ipConfiguration']!, (value) => KubernetesIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       type: (map['type'] as String).input(),
     );

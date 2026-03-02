@@ -24,7 +24,7 @@ class ListProviderActionInUseStorageAccountsArgs {
 
   factory ListProviderActionInUseStorageAccountsArgs.fromMap(Map<String, dynamic> map) {
     return ListProviderActionInUseStorageAccountsArgs(
-      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds'] as List).cast<String>()).input(),
+      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds']! as List).cast<String>()).input(),
     );
   }
 }

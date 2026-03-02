@@ -61,11 +61,11 @@ class RouteEntryArgs {
 
   factory RouteEntryArgs.fromMap(Map<String, dynamic> map) {
     return RouteEntryArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationCidrblock: map['destinationCidrblock'] == null ? null : (map['destinationCidrblock'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nexthopId: map['nexthopId'] == null ? null : (map['nexthopId'] as String).input(),
-      nexthopType: map['nexthopType'] == null ? null : (map['nexthopType'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationCidrblock: map['destinationCidrblock'] == null ? null : (map['destinationCidrblock']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nexthopId: map['nexthopId'] == null ? null : (map['nexthopId']! as String).input(),
+      nexthopType: map['nexthopType'] == null ? null : (map['nexthopType']! as String).input(),
       routeTableId: (map['routeTableId'] as String).input(),
     );
   }

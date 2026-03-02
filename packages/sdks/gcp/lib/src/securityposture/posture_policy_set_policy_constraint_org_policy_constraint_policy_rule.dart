@@ -47,11 +47,11 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule {
 
   factory PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule(
-      allowAll: map['allowAll'] == null ? null : (map['allowAll'] as bool).input(),
-      condition: map['condition'] == null ? null : (PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      denyAll: map['denyAll'] == null ? null : (map['denyAll'] as bool).input(),
-      enforce: map['enforce'] == null ? null : (map['enforce'] as bool).input(),
-      values: map['values'] == null ? null : (PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues.fromMap((map['values'] as Map).cast<String, dynamic>())).input(),
+      allowAll: map['allowAll'] == null ? null : (map['allowAll']! as bool).input(),
+      condition: map['condition'] == null ? null : (PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      denyAll: map['denyAll'] == null ? null : (map['denyAll']! as bool).input(),
+      enforce: map['enforce'] == null ? null : (map['enforce']! as bool).input(),
+      values: map['values'] == null ? null : (PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues.fromMap((map['values']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class GetAddressGroupNetworksecurityV1beta1Args {
     return GetAddressGroupNetworksecurityV1beta1Args(
       addressGroupId: (map['addressGroupId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

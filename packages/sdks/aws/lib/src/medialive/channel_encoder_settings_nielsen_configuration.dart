@@ -25,8 +25,8 @@ class ChannelEncoderSettingsNielsenConfiguration {
 
   factory ChannelEncoderSettingsNielsenConfiguration.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsNielsenConfiguration(
-      distributorId: map['distributorId'] == null ? null : (map['distributorId'] as String).input(),
-      nielsenPcmToId3Tagging: map['nielsenPcmToId3Tagging'] == null ? null : (map['nielsenPcmToId3Tagging'] as String).input(),
+      distributorId: map['distributorId'] == null ? null : ((map['distributorId'] as String).input()).input(),
+      nielsenPcmToId3Tagging: map['nielsenPcmToId3Tagging'] == null ? null : ((map['nielsenPcmToId3Tagging'] as String).input()).input(),
     );
   }
 }

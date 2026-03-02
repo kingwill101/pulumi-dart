@@ -34,9 +34,9 @@ class PortStatusPatch {
 
   factory PortStatusPatch.fromMap(Map<String, dynamic> map) {
     return PortStatusPatch(
-      error: map['error'] == null ? null : (map['error'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

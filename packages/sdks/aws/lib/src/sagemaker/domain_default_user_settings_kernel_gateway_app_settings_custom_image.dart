@@ -32,7 +32,7 @@ class DomainDefaultUserSettingsKernelGatewayAppSettingsCustomImage {
     return DomainDefaultUserSettingsKernelGatewayAppSettingsCustomImage(
       appImageConfigName: (map['appImageConfigName'] as String).input(),
       imageName: (map['imageName'] as String).input(),
-      imageVersionNumber: map['imageVersionNumber'] == null ? null : (map['imageVersionNumber'] as int).input(),
+      imageVersionNumber: map['imageVersionNumber'] == null ? null : ((map['imageVersionNumber'] as int).input()).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class InstanceTemplateSchedulingGracefulShutdownMaxDuration {
 
   factory InstanceTemplateSchedulingGracefulShutdownMaxDuration.fromMap(Map<String, dynamic> map) {
     return InstanceTemplateSchedulingGracefulShutdownMaxDuration(
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
       seconds: (map['seconds'] as int).input(),
     );
   }

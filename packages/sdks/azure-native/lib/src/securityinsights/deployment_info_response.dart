@@ -32,9 +32,9 @@ class DeploymentInfoResponse {
 
   factory DeploymentInfoResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentInfoResponse(
-      deployment: map['deployment'] == null ? null : (DeploymentResponse.fromMap((map['deployment'] as Map).cast<String, dynamic>())).input(),
-      deploymentFetchStatus: map['deploymentFetchStatus'] == null ? null : (map['deploymentFetchStatus'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      deployment: map['deployment'] == null ? null : (DeploymentResponse.fromMap((map['deployment']! as Map).cast<String, dynamic>())).input(),
+      deploymentFetchStatus: map['deploymentFetchStatus'] == null ? null : (map['deploymentFetchStatus']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

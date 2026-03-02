@@ -20,7 +20,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorIqn {
 
   factory DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorIqn.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceNetworkInitiatorIqn(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

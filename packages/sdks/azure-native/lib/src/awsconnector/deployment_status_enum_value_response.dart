@@ -21,7 +21,7 @@ class DeploymentStatusEnumValueResponse {
 
   factory DeploymentStatusEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentStatusEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

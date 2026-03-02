@@ -33,9 +33,9 @@ class GetTagsFilterOr {
 
   factory GetTagsFilterOr.fromMap(Map<String, dynamic> map) {
     return GetTagsFilterOr(
-      costCategory: map['costCategory'] == null ? null : (GetTagsFilterOrCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>())).input(),
-      dimension: map['dimension'] == null ? null : (GetTagsFilterOrDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (GetTagsFilterOrTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      costCategory: map['costCategory'] == null ? null : ((GetTagsFilterOrCostCategory.fromMap((map['costCategory']! as Map).cast<String, dynamic>())).input()).input(),
+      dimension: map['dimension'] == null ? null : ((GetTagsFilterOrDimension.fromMap((map['dimension']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : ((GetTagsFilterOrTags.fromMap((map['tags']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

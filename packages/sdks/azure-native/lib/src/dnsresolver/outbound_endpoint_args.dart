@@ -51,11 +51,11 @@ class OutboundEndpointArgs {
   factory OutboundEndpointArgs.fromMap(Map<String, dynamic> map) {
     return OutboundEndpointArgs(
       dnsResolverName: (map['dnsResolverName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      outboundEndpointName: map['outboundEndpointName'] == null ? null : (map['outboundEndpointName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      outboundEndpointName: map['outboundEndpointName'] == null ? null : (map['outboundEndpointName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       subnet: (SubResource.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

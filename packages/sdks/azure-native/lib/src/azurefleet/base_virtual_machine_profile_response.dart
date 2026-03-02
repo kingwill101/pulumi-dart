@@ -126,21 +126,21 @@ class BaseVirtualMachineProfileResponse {
 
   factory BaseVirtualMachineProfileResponse.fromMap(Map<String, dynamic> map) {
     return BaseVirtualMachineProfileResponse(
-      applicationProfile: map['applicationProfile'] == null ? null : (ApplicationProfileResponse.fromMap((map['applicationProfile'] as Map).cast<String, dynamic>())).input(),
-      capacityReservation: map['capacityReservation'] == null ? null : (CapacityReservationProfileResponse.fromMap((map['capacityReservation'] as Map).cast<String, dynamic>())).input(),
-      diagnosticsProfile: map['diagnosticsProfile'] == null ? null : (DiagnosticsProfileResponse.fromMap((map['diagnosticsProfile'] as Map).cast<String, dynamic>())).input(),
-      extensionProfile: map['extensionProfile'] == null ? null : (VirtualMachineScaleSetExtensionProfileResponse.fromMap((map['extensionProfile'] as Map).cast<String, dynamic>())).input(),
-      hardwareProfile: map['hardwareProfile'] == null ? null : (VirtualMachineScaleSetHardwareProfileResponse.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
-      networkProfile: map['networkProfile'] == null ? null : (VirtualMachineScaleSetNetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      osProfile: map['osProfile'] == null ? null : (VirtualMachineScaleSetOSProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
-      scheduledEventsProfile: map['scheduledEventsProfile'] == null ? null : (ScheduledEventsProfileResponse.fromMap((map['scheduledEventsProfile'] as Map).cast<String, dynamic>())).input(),
-      securityPostureReference: map['securityPostureReference'] == null ? null : (SecurityPostureReferenceResponse.fromMap((map['securityPostureReference'] as Map).cast<String, dynamic>())).input(),
-      securityProfile: map['securityProfile'] == null ? null : (SecurityProfileResponse.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
-      serviceArtifactReference: map['serviceArtifactReference'] == null ? null : (ServiceArtifactReferenceResponse.fromMap((map['serviceArtifactReference'] as Map).cast<String, dynamic>())).input(),
-      storageProfile: map['storageProfile'] == null ? null : (VirtualMachineScaleSetStorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      applicationProfile: map['applicationProfile'] == null ? null : (ApplicationProfileResponse.fromMap((map['applicationProfile']! as Map).cast<String, dynamic>())).input(),
+      capacityReservation: map['capacityReservation'] == null ? null : (CapacityReservationProfileResponse.fromMap((map['capacityReservation']! as Map).cast<String, dynamic>())).input(),
+      diagnosticsProfile: map['diagnosticsProfile'] == null ? null : (DiagnosticsProfileResponse.fromMap((map['diagnosticsProfile']! as Map).cast<String, dynamic>())).input(),
+      extensionProfile: map['extensionProfile'] == null ? null : (VirtualMachineScaleSetExtensionProfileResponse.fromMap((map['extensionProfile']! as Map).cast<String, dynamic>())).input(),
+      hardwareProfile: map['hardwareProfile'] == null ? null : (VirtualMachineScaleSetHardwareProfileResponse.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>())).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (VirtualMachineScaleSetNetworkProfileResponse.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      osProfile: map['osProfile'] == null ? null : (VirtualMachineScaleSetOSProfileResponse.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
+      scheduledEventsProfile: map['scheduledEventsProfile'] == null ? null : (ScheduledEventsProfileResponse.fromMap((map['scheduledEventsProfile']! as Map).cast<String, dynamic>())).input(),
+      securityPostureReference: map['securityPostureReference'] == null ? null : (SecurityPostureReferenceResponse.fromMap((map['securityPostureReference']! as Map).cast<String, dynamic>())).input(),
+      securityProfile: map['securityProfile'] == null ? null : (SecurityProfileResponse.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
+      serviceArtifactReference: map['serviceArtifactReference'] == null ? null : (ServiceArtifactReferenceResponse.fromMap((map['serviceArtifactReference']! as Map).cast<String, dynamic>())).input(),
+      storageProfile: map['storageProfile'] == null ? null : (VirtualMachineScaleSetStorageProfileResponse.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
       timeCreated: (map['timeCreated'] as String).input(),
-      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
+      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
     );
   }
 }

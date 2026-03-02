@@ -38,9 +38,9 @@ class FrontdoorOriginGroupHealthProbe {
   factory FrontdoorOriginGroupHealthProbe.fromMap(Map<String, dynamic> map) {
     return FrontdoorOriginGroupHealthProbe(
       intervalInSeconds: (map['intervalInSeconds'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       protocol: (map['protocol'] as String).input(),
-      requestType: map['requestType'] == null ? null : (map['requestType'] as String).input(),
+      requestType: map['requestType'] == null ? null : (map['requestType']! as String).input(),
     );
   }
 }

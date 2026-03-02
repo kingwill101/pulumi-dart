@@ -81,13 +81,13 @@ class RegionSslPolicyArgs {
 
   factory RegionSslPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegionSslPolicyArgs(
-      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

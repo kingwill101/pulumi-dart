@@ -39,10 +39,10 @@ class DeployPolicyRuleRolloutRestriction {
 
   factory DeployPolicyRuleRolloutRestriction.fromMap(Map<String, dynamic> map) {
     return DeployPolicyRuleRolloutRestriction(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
       id: (map['id'] as String).input(),
-      invokers: map['invokers'] == null ? null : ((map['invokers'] as List).cast<String>()).input(),
-      timeWindows: map['timeWindows'] == null ? null : (DeployPolicyRuleRolloutRestrictionTimeWindows.fromMap((map['timeWindows'] as Map).cast<String, dynamic>())).input(),
+      invokers: map['invokers'] == null ? null : ((map['invokers']! as List).cast<String>()).input(),
+      timeWindows: map['timeWindows'] == null ? null : (DeployPolicyRuleRolloutRestrictionTimeWindows.fromMap((map['timeWindows']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

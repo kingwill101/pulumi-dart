@@ -20,7 +20,7 @@ class AgentcoreAgentRuntimeProtocolConfiguration {
 
   factory AgentcoreAgentRuntimeProtocolConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeProtocolConfiguration(
-      serverProtocol: map['serverProtocol'] == null ? null : (map['serverProtocol'] as String).input(),
+      serverProtocol: map['serverProtocol'] == null ? null : ((map['serverProtocol'] as String).input()).input(),
     );
   }
 }

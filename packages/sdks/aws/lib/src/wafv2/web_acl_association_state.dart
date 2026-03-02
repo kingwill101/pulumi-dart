@@ -31,9 +31,9 @@ class WebAclAssociationState {
 
   factory WebAclAssociationState.fromMap(Map<String, dynamic> map) {
     return WebAclAssociationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
-      webAclArn: map['webAclArn'] == null ? null : (map['webAclArn'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
+      webAclArn: map['webAclArn'] == null ? null : ((map['webAclArn'] as String).input()).input(),
     );
   }
 }

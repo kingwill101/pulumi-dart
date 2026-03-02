@@ -55,13 +55,13 @@ class GetVpcEndpointConnectionsResult {
   factory GetVpcEndpointConnectionsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointConnectionsResult(
       connections: pulumi.Input.decodeList<GetVpcEndpointConnectionsConnection>(map['connections'], (value) => GetVpcEndpointConnectionsConnection.fromMap((value as Map).cast<String, dynamic>())),
-      endpointId: map['endpointId'] == null ? null : map['endpointId'] as String,
-      endpointOwnerId: map['endpointOwnerId'] == null ? null : map['endpointOwnerId'] as int,
+      endpointId: map['endpointId'] == null ? null : map['endpointId']! as String,
+      endpointOwnerId: map['endpointOwnerId'] == null ? null : map['endpointOwnerId']! as int,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       serviceId: map['serviceId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

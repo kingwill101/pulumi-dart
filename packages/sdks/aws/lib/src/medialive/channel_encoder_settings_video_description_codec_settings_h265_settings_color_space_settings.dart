@@ -41,11 +41,11 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceS
 
   factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings(
-      colorSpacePassthroughSettings: map['colorSpacePassthroughSettings'] == null ? null : ((map['colorSpacePassthroughSettings'] as Map).cast<String, dynamic>()).input(),
-      dolbyVision81Settings: map['dolbyVision81Settings'] == null ? null : ((map['dolbyVision81Settings'] as Map).cast<String, dynamic>()).input(),
-      hdr10Settings: map['hdr10Settings'] == null ? null : (ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings.fromMap((map['hdr10Settings'] as Map).cast<String, dynamic>())).input(),
-      rec601Settings: map['rec601Settings'] == null ? null : ((map['rec601Settings'] as Map).cast<String, dynamic>()).input(),
-      rec709Settings: map['rec709Settings'] == null ? null : ((map['rec709Settings'] as Map).cast<String, dynamic>()).input(),
+      colorSpacePassthroughSettings: map['colorSpacePassthroughSettings'] == null ? null : (((map['colorSpacePassthroughSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      dolbyVision81Settings: map['dolbyVision81Settings'] == null ? null : (((map['dolbyVision81Settings'] as Map).cast<String, dynamic>()).input()).input(),
+      hdr10Settings: map['hdr10Settings'] == null ? null : ((ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings.fromMap((map['hdr10Settings']! as Map).cast<String, dynamic>())).input()).input(),
+      rec601Settings: map['rec601Settings'] == null ? null : (((map['rec601Settings'] as Map).cast<String, dynamic>()).input()).input(),
+      rec709Settings: map['rec709Settings'] == null ? null : (((map['rec709Settings'] as Map).cast<String, dynamic>()).input()).input(),
     );
   }
 }

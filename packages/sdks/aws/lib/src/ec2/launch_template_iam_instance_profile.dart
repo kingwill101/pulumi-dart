@@ -25,8 +25,8 @@ class LaunchTemplateIamInstanceProfile {
 
   factory LaunchTemplateIamInstanceProfile.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateIamInstanceProfile(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

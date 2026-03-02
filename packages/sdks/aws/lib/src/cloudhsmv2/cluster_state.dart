@@ -77,18 +77,18 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      clusterCertificates: map['clusterCertificates'] == null ? null : (pulumi.Input.decodeList<ClusterClusterCertificate>(map['clusterCertificates'], (value) => ClusterClusterCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      clusterState: map['clusterState'] == null ? null : (map['clusterState'] as String).input(),
-      hsmType: map['hsmType'] == null ? null : (map['hsmType'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      sourceBackupIdentifier: map['sourceBackupIdentifier'] == null ? null : (map['sourceBackupIdentifier'] as String).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      clusterCertificates: map['clusterCertificates'] == null ? null : ((pulumi.Input.decodeList<ClusterClusterCertificate>(map['clusterCertificates']!, (value) => ClusterClusterCertificate.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      clusterId: map['clusterId'] == null ? null : ((map['clusterId'] as String).input()).input(),
+      clusterState: map['clusterState'] == null ? null : ((map['clusterState'] as String).input()).input(),
+      hsmType: map['hsmType'] == null ? null : ((map['hsmType'] as String).input()).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : ((map['securityGroupId'] as String).input()).input(),
+      sourceBackupIdentifier: map['sourceBackupIdentifier'] == null ? null : ((map['sourceBackupIdentifier'] as String).input()).input(),
+      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

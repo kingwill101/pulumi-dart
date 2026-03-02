@@ -22,7 +22,7 @@ class NetworkFunctionTemplateResponse {
 
   factory NetworkFunctionTemplateResponse.fromMap(Map<String, dynamic> map) {
     return NetworkFunctionTemplateResponse(
-      networkFunctionRoleConfigurations: map['networkFunctionRoleConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkFunctionRoleConfigurationResponse>(map['networkFunctionRoleConfigurations'], (value) => NetworkFunctionRoleConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkFunctionRoleConfigurations: map['networkFunctionRoleConfigurations'] == null ? null : (pulumi.Input.decodeList<NetworkFunctionRoleConfigurationResponse>(map['networkFunctionRoleConfigurations']!, (value) => NetworkFunctionRoleConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

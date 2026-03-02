@@ -25,8 +25,8 @@ class ScraperRoleConfiguration {
 
   factory ScraperRoleConfiguration.fromMap(Map<String, dynamic> map) {
     return ScraperRoleConfiguration(
-      sourceRoleArn: map['sourceRoleArn'] == null ? null : (map['sourceRoleArn'] as String).input(),
-      targetRoleArn: map['targetRoleArn'] == null ? null : (map['targetRoleArn'] as String).input(),
+      sourceRoleArn: map['sourceRoleArn'] == null ? null : ((map['sourceRoleArn'] as String).input()).input(),
+      targetRoleArn: map['targetRoleArn'] == null ? null : ((map['targetRoleArn'] as String).input()).input(),
     );
   }
 }

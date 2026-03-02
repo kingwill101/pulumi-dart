@@ -20,7 +20,7 @@ class DomainDevicesHostdevSubsysMDevSourceAddress {
 
   factory DomainDevicesHostdevSubsysMDevSourceAddress.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysMDevSourceAddress(
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

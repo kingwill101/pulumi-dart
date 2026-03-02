@@ -28,8 +28,8 @@ class ExternalMetricSourcePatchAutoscalingV2beta2 {
 
   factory ExternalMetricSourcePatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return ExternalMetricSourcePatchAutoscalingV2beta2(
-      metric: map['metric'] == null ? null : (MetricIdentifierPatchAutoscalingV2beta2.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (MetricTargetPatchAutoscalingV2beta2.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      metric: map['metric'] == null ? null : (MetricIdentifierPatchAutoscalingV2beta2.fromMap((map['metric']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (MetricTargetPatchAutoscalingV2beta2.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

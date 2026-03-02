@@ -32,9 +32,9 @@ class ConnStringInfo {
 
   factory ConnStringInfo.fromMap(Map<String, dynamic> map) {
     return ConnStringInfo(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (ConnectionStringType.fromValue(map['type'] as String)).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (ConnectionStringType.fromValue(map['type']! as String)).input(),
     );
   }
 }

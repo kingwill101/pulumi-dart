@@ -43,11 +43,11 @@ class AwsRedshiftClusterParameterGroupPropertiesResponse {
 
   factory AwsRedshiftClusterParameterGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsRedshiftClusterParameterGroupPropertiesResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      parameterGroupFamily: map['parameterGroupFamily'] == null ? null : (map['parameterGroupFamily'] as String).input(),
-      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ParameterResponse>(map['parameters'], (value) => ParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      parameterGroupFamily: map['parameterGroupFamily'] == null ? null : (map['parameterGroupFamily']! as String).input(),
+      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ParameterResponse>(map['parameters']!, (value) => ParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

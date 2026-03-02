@@ -57,14 +57,14 @@ class DeploymentStatusResponse {
 
   factory DeploymentStatusResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentStatusResponse(
-      deployed: map['deployed'] == null ? null : (map['deployed'] as int).input(),
-      expectedRunningJobId: map['expectedRunningJobId'] == null ? null : (map['expectedRunningJobId'] as int).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as int).input(),
-      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
-      runningJobId: map['runningJobId'] == null ? null : (map['runningJobId'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusDetails: map['statusDetails'] == null ? null : (map['statusDetails'] as String).input(),
-      targetStatuses: map['targetStatuses'] == null ? null : (pulumi.Input.decodeList<TargetStatusResponse>(map['targetStatuses'], (value) => TargetStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deployed: map['deployed'] == null ? null : (map['deployed']! as int).input(),
+      expectedRunningJobId: map['expectedRunningJobId'] == null ? null : (map['expectedRunningJobId']! as int).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as int).input(),
+      lastModified: map['lastModified'] == null ? null : (map['lastModified']! as String).input(),
+      runningJobId: map['runningJobId'] == null ? null : (map['runningJobId']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      statusDetails: map['statusDetails'] == null ? null : (map['statusDetails']! as String).input(),
+      targetStatuses: map['targetStatuses'] == null ? null : (pulumi.Input.decodeList<TargetStatusResponse>(map['targetStatuses']!, (value) => TargetStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

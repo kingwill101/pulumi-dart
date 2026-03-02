@@ -51,7 +51,7 @@ class DicomStoreIamBindingArgs {
 
   factory DicomStoreIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return DicomStoreIamBindingArgs(
-      condition: map['condition'] == null ? null : (DicomStoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (DicomStoreIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       dicomStoreId: (map['dicomStoreId'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
       role: (map['role'] as String).input(),

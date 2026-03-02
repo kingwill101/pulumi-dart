@@ -28,8 +28,8 @@ class ConfigMfaProviderConfig {
 
   factory ConfigMfaProviderConfig.fromMap(Map<String, dynamic> map) {
     return ConfigMfaProviderConfig(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      totpProviderConfig: map['totpProviderConfig'] == null ? null : (ConfigMfaProviderConfigTotpProviderConfig.fromMap((map['totpProviderConfig'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      totpProviderConfig: map['totpProviderConfig'] == null ? null : (ConfigMfaProviderConfigTotpProviderConfig.fromMap((map['totpProviderConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

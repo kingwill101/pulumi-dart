@@ -100,20 +100,20 @@ class GetBackupPolicyResult {
     return GetBackupPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
       backupPolicyId: map['backupPolicyId'] as String,
-      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : map['dailyBackupsToKeep'] as int,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : map['dailyBackupsToKeep']! as int,
+      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
       etag: map['etag'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : map['monthlyBackupsToKeep'] as int,
+      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : map['monthlyBackupsToKeep']! as int,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       volumeBackups: pulumi.Input.decodeList<VolumeBackupsResponse>(map['volumeBackups'], (value) => VolumeBackupsResponse.fromMap((value as Map).cast<String, dynamic>())),
       volumesAssigned: map['volumesAssigned'] as int,
-      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : map['weeklyBackupsToKeep'] as int,
+      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : map['weeklyBackupsToKeep']! as int,
     );
   }
 }

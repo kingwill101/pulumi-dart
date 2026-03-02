@@ -44,10 +44,10 @@ class GetImageUploadUrlForEntityTypeArgs {
 
   factory GetImageUploadUrlForEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetImageUploadUrlForEntityTypeArgs(
-      entityType: map['entityType'] == null ? null : (map['entityType'] as String).input(),
-      entityTypeName: map['entityTypeName'] == null ? null : (map['entityTypeName'] as String).input(),
+      entityType: map['entityType'] == null ? null : (map['entityType']! as String).input(),
+      entityTypeName: map['entityTypeName'] == null ? null : (map['entityTypeName']! as String).input(),
       hubName: (map['hubName'] as String).input(),
-      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

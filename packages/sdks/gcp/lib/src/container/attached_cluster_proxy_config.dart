@@ -22,7 +22,7 @@ class AttachedClusterProxyConfig {
 
   factory AttachedClusterProxyConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterProxyConfig(
-      kubernetesSecret: map['kubernetesSecret'] == null ? null : (AttachedClusterProxyConfigKubernetesSecret.fromMap((map['kubernetesSecret'] as Map).cast<String, dynamic>())).input(),
+      kubernetesSecret: map['kubernetesSecret'] == null ? null : (AttachedClusterProxyConfigKubernetesSecret.fromMap((map['kubernetesSecret']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

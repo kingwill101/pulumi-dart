@@ -28,8 +28,8 @@ class Installation {
 
   factory Installation.fromMap(Map<String, dynamic> map) {
     return Installation(
-      license: map['license'] == null ? null : (LicenseContaineranalysisV1alpha1.fromMap((map['license'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (pulumi.Input.decodeList<LocationContaineranalysisV1alpha1>(map['location'], (value) => LocationContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      license: map['license'] == null ? null : (LicenseContaineranalysisV1alpha1.fromMap((map['license']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (pulumi.Input.decodeList<LocationContaineranalysisV1alpha1>(map['location']!, (value) => LocationContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

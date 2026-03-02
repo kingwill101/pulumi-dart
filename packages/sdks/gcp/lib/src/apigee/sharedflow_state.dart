@@ -59,14 +59,14 @@ class SharedflowState {
 
   factory SharedflowState.fromMap(Map<String, dynamic> map) {
     return SharedflowState(
-      configBundle: map['configBundle'] == null ? null : (map['configBundle'] as String).input(),
-      detectMd5hash: map['detectMd5hash'] == null ? null : (map['detectMd5hash'] as String).input(),
-      latestRevisionId: map['latestRevisionId'] == null ? null : (map['latestRevisionId'] as String).input(),
-      md5hash: map['md5hash'] == null ? null : (map['md5hash'] as String).input(),
-      metaDatas: map['metaDatas'] == null ? null : (pulumi.Input.decodeList<SharedflowMetaData>(map['metaDatas'], (value) => SharedflowMetaData.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      revisions: map['revisions'] == null ? null : ((map['revisions'] as List).cast<String>()).input(),
+      configBundle: map['configBundle'] == null ? null : (map['configBundle']! as String).input(),
+      detectMd5hash: map['detectMd5hash'] == null ? null : (map['detectMd5hash']! as String).input(),
+      latestRevisionId: map['latestRevisionId'] == null ? null : (map['latestRevisionId']! as String).input(),
+      md5hash: map['md5hash'] == null ? null : (map['md5hash']! as String).input(),
+      metaDatas: map['metaDatas'] == null ? null : (pulumi.Input.decodeList<SharedflowMetaData>(map['metaDatas']!, (value) => SharedflowMetaData.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      revisions: map['revisions'] == null ? null : ((map['revisions']! as List).cast<String>()).input(),
     );
   }
 }

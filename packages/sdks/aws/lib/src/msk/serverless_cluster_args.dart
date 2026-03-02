@@ -46,11 +46,11 @@ class ServerlessClusterArgs {
 
   factory ServerlessClusterArgs.fromMap(Map<String, dynamic> map) {
     return ServerlessClusterArgs(
-      clientAuthentication: (ServerlessClusterClientAuthentication.fromMap((map['clientAuthentication'] as Map).cast<String, dynamic>())).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcConfigs: (pulumi.Input.decodeList<ServerlessClusterVpcConfig>(map['vpcConfigs'], (value) => ServerlessClusterVpcConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientAuthentication: (ServerlessClusterClientAuthentication.fromMap((map['clientAuthentication']! as Map).cast<String, dynamic>())).input(),
+      clusterName: map['clusterName'] == null ? null : ((map['clusterName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vpcConfigs: (pulumi.Input.decodeList<ServerlessClusterVpcConfig>(map['vpcConfigs']!, (value) => ServerlessClusterVpcConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class PipelineDefinitionParameterObject {
 
   factory PipelineDefinitionParameterObject.fromMap(Map<String, dynamic> map) {
     return PipelineDefinitionParameterObject(
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<PipelineDefinitionParameterObjectAttribute>(map['attributes'], (value) => PipelineDefinitionParameterObjectAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attributes: map['attributes'] == null ? null : ((pulumi.Input.decodeList<PipelineDefinitionParameterObjectAttribute>(map['attributes']!, (value) => PipelineDefinitionParameterObjectAttribute.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       id: (map['id'] as String).input(),
     );
   }

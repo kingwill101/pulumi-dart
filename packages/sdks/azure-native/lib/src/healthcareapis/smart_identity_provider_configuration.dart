@@ -27,8 +27,8 @@ class SmartIdentityProviderConfiguration {
 
   factory SmartIdentityProviderConfiguration.fromMap(Map<String, dynamic> map) {
     return SmartIdentityProviderConfiguration(
-      applications: map['applications'] == null ? null : (pulumi.Input.decodeList<SmartIdentityProviderApplication>(map['applications'], (value) => SmartIdentityProviderApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
+      applications: map['applications'] == null ? null : (pulumi.Input.decodeList<SmartIdentityProviderApplication>(map['applications']!, (value) => SmartIdentityProviderApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
     );
   }
 }

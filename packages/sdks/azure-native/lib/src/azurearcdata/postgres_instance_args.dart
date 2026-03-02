@@ -57,13 +57,13 @@ class PostgresInstanceArgs {
 
   factory PostgresInstanceArgs.fromMap(Map<String, dynamic> map) {
     return PostgresInstanceArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      postgresInstanceName: map['postgresInstanceName'] == null ? null : (map['postgresInstanceName'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      postgresInstanceName: map['postgresInstanceName'] == null ? null : (map['postgresInstanceName']! as String).input(),
       properties: (PostgresInstanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (PostgresInstanceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (PostgresInstanceSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class Cookies {
 
   factory Cookies.fromMap(Map<String, dynamic> map) {
     return Cookies(
-      forward: map['forward'] == null ? null : (map['forward'] as String).input(),
-      whitelistedNames: map['whitelistedNames'] == null ? null : ((map['whitelistedNames'] as List).cast<String>()).input(),
+      forward: map['forward'] == null ? null : (map['forward']! as String).input(),
+      whitelistedNames: map['whitelistedNames'] == null ? null : ((map['whitelistedNames']! as List).cast<String>()).input(),
     );
   }
 }

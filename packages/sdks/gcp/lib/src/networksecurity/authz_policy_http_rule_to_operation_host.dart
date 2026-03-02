@@ -48,11 +48,11 @@ class AuthzPolicyHttpRuleToOperationHost {
 
   factory AuthzPolicyHttpRuleToOperationHost.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleToOperationHost(
-      contains: map['contains'] == null ? null : (map['contains'] as String).input(),
-      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
-      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
+      contains: map['contains'] == null ? null : (map['contains']! as String).input(),
+      exact: map['exact'] == null ? null : (map['exact']! as String).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase']! as bool).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
     );
   }
 }

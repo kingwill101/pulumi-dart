@@ -23,8 +23,8 @@ class GetUserAuthenticationMode {
 
   factory GetUserAuthenticationMode.fromMap(Map<String, dynamic> map) {
     return GetUserAuthenticationMode(
-      passwordCount: map['passwordCount'] == null ? null : (map['passwordCount'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      passwordCount: map['passwordCount'] == null ? null : ((map['passwordCount'] as int).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

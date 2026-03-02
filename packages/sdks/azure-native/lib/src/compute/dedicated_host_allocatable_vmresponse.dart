@@ -26,8 +26,8 @@ class DedicatedHostAllocatableVMResponse {
 
   factory DedicatedHostAllocatableVMResponse.fromMap(Map<String, dynamic> map) {
     return DedicatedHostAllocatableVMResponse(
-      count: map['count'] == null ? null : (map['count'] as double).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as double).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

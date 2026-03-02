@@ -62,15 +62,15 @@ class GetProjectIdsV3Result {
     return GetProjectIdsV3Result(
       description: map['description'] as String,
       domainId: map['domainId'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      isDomain: map['isDomain'] == null ? null : map['isDomain'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
-      parentId: map['parentId'] == null ? null : map['parentId'] as String,
+      isDomain: map['isDomain'] == null ? null : map['isDomain']! as bool,
+      name: map['name'] == null ? null : map['name']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
+      parentId: map['parentId'] == null ? null : map['parentId']! as String,
       region: map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
     );
   }
 }

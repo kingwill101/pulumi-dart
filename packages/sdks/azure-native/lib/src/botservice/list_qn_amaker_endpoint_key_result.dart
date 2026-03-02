@@ -35,10 +35,10 @@ class ListQnAMakerEndpointKeyResult {
 
   factory ListQnAMakerEndpointKeyResult.fromMap(Map<String, dynamic> map) {
     return ListQnAMakerEndpointKeyResult(
-      installedVersion: map['installedVersion'] == null ? null : map['installedVersion'] as String,
-      lastStableVersion: map['lastStableVersion'] == null ? null : map['lastStableVersion'] as String,
-      primaryEndpointKey: map['primaryEndpointKey'] == null ? null : map['primaryEndpointKey'] as String,
-      secondaryEndpointKey: map['secondaryEndpointKey'] == null ? null : map['secondaryEndpointKey'] as String,
+      installedVersion: map['installedVersion'] == null ? null : map['installedVersion']! as String,
+      lastStableVersion: map['lastStableVersion'] == null ? null : map['lastStableVersion']! as String,
+      primaryEndpointKey: map['primaryEndpointKey'] == null ? null : map['primaryEndpointKey']! as String,
+      secondaryEndpointKey: map['secondaryEndpointKey'] == null ? null : map['secondaryEndpointKey']! as String,
     );
   }
 }

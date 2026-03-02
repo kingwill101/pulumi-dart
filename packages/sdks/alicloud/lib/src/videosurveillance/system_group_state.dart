@@ -91,21 +91,21 @@ class SystemGroupState {
 
   factory SystemGroupState.fromMap(Map<String, dynamic> map) {
     return SystemGroupState(
-      callback: map['callback'] == null ? null : (map['callback'] as String).input(),
-      captureImage: map['captureImage'] == null ? null : (map['captureImage'] as int).input(),
-      captureInterval: map['captureInterval'] == null ? null : (map['captureInterval'] as int).input(),
-      captureOssBucket: map['captureOssBucket'] == null ? null : (map['captureOssBucket'] as String).input(),
-      captureOssPath: map['captureOssPath'] == null ? null : (map['captureOssPath'] as String).input(),
-      captureVideo: map['captureVideo'] == null ? null : (map['captureVideo'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      inProtocol: map['inProtocol'] == null ? null : (map['inProtocol'] as String).input(),
-      lazyPull: map['lazyPull'] == null ? null : (map['lazyPull'] as bool).input(),
-      outProtocol: map['outProtocol'] == null ? null : (map['outProtocol'] as String).input(),
-      playDomain: map['playDomain'] == null ? null : (map['playDomain'] as String).input(),
-      pushDomain: map['pushDomain'] == null ? null : (map['pushDomain'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as bool).input(),
+      callback: map['callback'] == null ? null : (map['callback']! as String).input(),
+      captureImage: map['captureImage'] == null ? null : (map['captureImage']! as int).input(),
+      captureInterval: map['captureInterval'] == null ? null : (map['captureInterval']! as int).input(),
+      captureOssBucket: map['captureOssBucket'] == null ? null : (map['captureOssBucket']! as String).input(),
+      captureOssPath: map['captureOssPath'] == null ? null : (map['captureOssPath']! as String).input(),
+      captureVideo: map['captureVideo'] == null ? null : (map['captureVideo']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      inProtocol: map['inProtocol'] == null ? null : (map['inProtocol']! as String).input(),
+      lazyPull: map['lazyPull'] == null ? null : (map['lazyPull']! as bool).input(),
+      outProtocol: map['outProtocol'] == null ? null : (map['outProtocol']! as String).input(),
+      playDomain: map['playDomain'] == null ? null : (map['playDomain']! as String).input(),
+      pushDomain: map['pushDomain'] == null ? null : (map['pushDomain']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as bool).input(),
     );
   }
 }

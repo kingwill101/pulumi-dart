@@ -82,17 +82,17 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      accessKeysAuthentication: map['accessKeysAuthentication'] == null ? null : (map['accessKeysAuthentication'] as String).input(),
-      clientProtocol: map['clientProtocol'] == null ? null : (map['clientProtocol'] as String).input(),
+      accessKeysAuthentication: map['accessKeysAuthentication'] == null ? null : (map['accessKeysAuthentication']! as String).input(),
+      clientProtocol: map['clientProtocol'] == null ? null : (map['clientProtocol']! as String).input(),
       clusterName: (map['clusterName'] as String).input(),
-      clusteringPolicy: map['clusteringPolicy'] == null ? null : (map['clusteringPolicy'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      deferUpgrade: map['deferUpgrade'] == null ? null : (map['deferUpgrade'] as String).input(),
-      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy'] as String).input(),
-      geoReplication: map['geoReplication'] == null ? null : (DatabasePropertiesGeoReplication.fromMap((map['geoReplication'] as Map).cast<String, dynamic>())).input(),
-      modules: map['modules'] == null ? null : (pulumi.Input.decodeList<Module>(map['modules'], (value) => Module.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      persistence: map['persistence'] == null ? null : (Persistence.fromMap((map['persistence'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      clusteringPolicy: map['clusteringPolicy'] == null ? null : (map['clusteringPolicy']! as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      deferUpgrade: map['deferUpgrade'] == null ? null : (map['deferUpgrade']! as String).input(),
+      evictionPolicy: map['evictionPolicy'] == null ? null : (map['evictionPolicy']! as String).input(),
+      geoReplication: map['geoReplication'] == null ? null : (DatabasePropertiesGeoReplication.fromMap((map['geoReplication']! as Map).cast<String, dynamic>())).input(),
+      modules: map['modules'] == null ? null : (pulumi.Input.decodeList<Module>(map['modules']!, (value) => Module.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      persistence: map['persistence'] == null ? null : (Persistence.fromMap((map['persistence']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

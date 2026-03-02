@@ -53,8 +53,8 @@ class DBAuditInstanceArgs {
       description: (map['description'] as String).input(),
       period: (map['period'] as int).input(),
       planCode: (map['planCode'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vswitchId: (map['vswitchId'] as String).input(),
     );
   }

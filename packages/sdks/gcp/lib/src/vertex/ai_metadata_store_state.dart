@@ -21,7 +21,7 @@ class AiMetadataStoreState {
 
   factory AiMetadataStoreState.fromMap(Map<String, dynamic> map) {
     return AiMetadataStoreState(
-      diskUtilizationBytes: map['diskUtilizationBytes'] == null ? null : (map['diskUtilizationBytes'] as String).input(),
+      diskUtilizationBytes: map['diskUtilizationBytes'] == null ? null : (map['diskUtilizationBytes']! as String).input(),
     );
   }
 }

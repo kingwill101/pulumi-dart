@@ -30,9 +30,9 @@ class DomainDevicesHostdevSubsysUsbSourceAddress {
 
   factory DomainDevicesHostdevSubsysUsbSourceAddress.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysUsbSourceAddress(
-      bus: map['bus'] == null ? null : (map['bus'] as double).input(),
-      device: map['device'] == null ? null : (map['device'] as double).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      bus: map['bus'] == null ? null : (map['bus']! as double).input(),
+      device: map['device'] == null ? null : (map['device']! as double).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
     );
   }
 }

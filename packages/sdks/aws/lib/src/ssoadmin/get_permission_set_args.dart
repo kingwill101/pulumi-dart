@@ -46,11 +46,11 @@ class GetPermissionSetArgs {
 
   factory GetPermissionSetArgs.fromMap(Map<String, dynamic> map) {
     return GetPermissionSetArgs(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
       instanceArn: (map['instanceArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

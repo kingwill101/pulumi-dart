@@ -27,7 +27,7 @@ class FleetUpdateRunManagedClusterUpdate {
 
   factory FleetUpdateRunManagedClusterUpdate.fromMap(Map<String, dynamic> map) {
     return FleetUpdateRunManagedClusterUpdate(
-      nodeImageSelection: map['nodeImageSelection'] == null ? null : (FleetUpdateRunManagedClusterUpdateNodeImageSelection.fromMap((map['nodeImageSelection'] as Map).cast<String, dynamic>())).input(),
+      nodeImageSelection: map['nodeImageSelection'] == null ? null : (FleetUpdateRunManagedClusterUpdateNodeImageSelection.fromMap((map['nodeImageSelection']! as Map).cast<String, dynamic>())).input(),
       upgrade: (FleetUpdateRunManagedClusterUpdateUpgrade.fromMap((map['upgrade'] as Map).cast<String, dynamic>())).input(),
     );
   }

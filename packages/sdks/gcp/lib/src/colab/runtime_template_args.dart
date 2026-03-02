@@ -113,21 +113,21 @@ class RuntimeTemplateArgs {
 
   factory RuntimeTemplateArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateArgs(
-      dataPersistentDiskSpec: map['dataPersistentDiskSpec'] == null ? null : (RuntimeTemplateDataPersistentDiskSpec.fromMap((map['dataPersistentDiskSpec'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dataPersistentDiskSpec: map['dataPersistentDiskSpec'] == null ? null : (RuntimeTemplateDataPersistentDiskSpec.fromMap((map['dataPersistentDiskSpec']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (RuntimeTemplateEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      eucConfig: map['eucConfig'] == null ? null : (RuntimeTemplateEucConfig.fromMap((map['eucConfig'] as Map).cast<String, dynamic>())).input(),
-      idleShutdownConfig: map['idleShutdownConfig'] == null ? null : (RuntimeTemplateIdleShutdownConfig.fromMap((map['idleShutdownConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (RuntimeTemplateEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      eucConfig: map['eucConfig'] == null ? null : (RuntimeTemplateEucConfig.fromMap((map['eucConfig']! as Map).cast<String, dynamic>())).input(),
+      idleShutdownConfig: map['idleShutdownConfig'] == null ? null : (RuntimeTemplateIdleShutdownConfig.fromMap((map['idleShutdownConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      machineSpec: map['machineSpec'] == null ? null : (RuntimeTemplateMachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkSpec: map['networkSpec'] == null ? null : (RuntimeTemplateNetworkSpec.fromMap((map['networkSpec'] as Map).cast<String, dynamic>())).input(),
-      networkTags: map['networkTags'] == null ? null : ((map['networkTags'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      shieldedVmConfig: map['shieldedVmConfig'] == null ? null : (RuntimeTemplateShieldedVmConfig.fromMap((map['shieldedVmConfig'] as Map).cast<String, dynamic>())).input(),
-      softwareConfig: map['softwareConfig'] == null ? null : (RuntimeTemplateSoftwareConfig.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>())).input(),
+      machineSpec: map['machineSpec'] == null ? null : (RuntimeTemplateMachineSpec.fromMap((map['machineSpec']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkSpec: map['networkSpec'] == null ? null : (RuntimeTemplateNetworkSpec.fromMap((map['networkSpec']! as Map).cast<String, dynamic>())).input(),
+      networkTags: map['networkTags'] == null ? null : ((map['networkTags']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      shieldedVmConfig: map['shieldedVmConfig'] == null ? null : (RuntimeTemplateShieldedVmConfig.fromMap((map['shieldedVmConfig']! as Map).cast<String, dynamic>())).input(),
+      softwareConfig: map['softwareConfig'] == null ? null : (RuntimeTemplateSoftwareConfig.fromMap((map['softwareConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

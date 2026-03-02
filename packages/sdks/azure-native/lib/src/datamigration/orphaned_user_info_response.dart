@@ -26,8 +26,8 @@ class OrphanedUserInfoResponse {
 
   factory OrphanedUserInfoResponse.fromMap(Map<String, dynamic> map) {
     return OrphanedUserInfoResponse(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

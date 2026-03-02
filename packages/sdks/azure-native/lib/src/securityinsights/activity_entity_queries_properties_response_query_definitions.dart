@@ -21,7 +21,7 @@ class ActivityEntityQueriesPropertiesResponseQueryDefinitions {
 
   factory ActivityEntityQueriesPropertiesResponseQueryDefinitions.fromMap(Map<String, dynamic> map) {
     return ActivityEntityQueriesPropertiesResponseQueryDefinitions(
-      query: map['query'] == null ? null : (map['query'] as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
     );
   }
 }

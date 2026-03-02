@@ -33,7 +33,7 @@ class GetInstanceStorageConfigStorageConfigS3Config {
     return GetInstanceStorageConfigStorageConfigS3Config(
       bucketName: (map['bucketName'] as String).input(),
       bucketPrefix: (map['bucketPrefix'] as String).input(),
-      encryptionConfigs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig>(map['encryptionConfigs'], (value) => GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionConfigs: (pulumi.Input.decodeList<GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig>(map['encryptionConfigs']!, (value) => GetInstanceStorageConfigStorageConfigS3ConfigEncryptionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

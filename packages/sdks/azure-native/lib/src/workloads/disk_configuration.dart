@@ -22,7 +22,7 @@ class DiskConfiguration {
 
   factory DiskConfiguration.fromMap(Map<String, dynamic> map) {
     return DiskConfiguration(
-      diskVolumeConfigurations: map['diskVolumeConfigurations'] == null ? null : (pulumi.Input.decodeMapValues<DiskVolumeConfiguration>(map['diskVolumeConfigurations'], (value) => DiskVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskVolumeConfigurations: map['diskVolumeConfigurations'] == null ? null : (pulumi.Input.decodeMapValues<DiskVolumeConfiguration>(map['diskVolumeConfigurations']!, (value) => DiskVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

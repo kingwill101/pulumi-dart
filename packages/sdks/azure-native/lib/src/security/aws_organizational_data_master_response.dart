@@ -32,9 +32,9 @@ class AwsOrganizationalDataMasterResponse {
 
   factory AwsOrganizationalDataMasterResponse.fromMap(Map<String, dynamic> map) {
     return AwsOrganizationalDataMasterResponse(
-      excludedAccountIds: map['excludedAccountIds'] == null ? null : ((map['excludedAccountIds'] as List).cast<String>()).input(),
+      excludedAccountIds: map['excludedAccountIds'] == null ? null : ((map['excludedAccountIds']! as List).cast<String>()).input(),
       organizationMembershipType: (map['organizationMembershipType'] as String).input(),
-      stacksetName: map['stacksetName'] == null ? null : (map['stacksetName'] as String).input(),
+      stacksetName: map['stacksetName'] == null ? null : (map['stacksetName']! as String).input(),
     );
   }
 }

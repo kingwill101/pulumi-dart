@@ -90,20 +90,20 @@ class MigratingVmVmmigrationV1alpha1Args {
 
   factory MigratingVmVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return MigratingVmVmmigrationV1alpha1Args(
-      computeEngineDisksTargetDefaults: map['computeEngineDisksTargetDefaults'] == null ? null : (ComputeEngineDisksTargetDefaultsVmmigrationV1alpha1.fromMap((map['computeEngineDisksTargetDefaults'] as Map).cast<String, dynamic>())).input(),
-      computeEngineTargetDefaults: map['computeEngineTargetDefaults'] == null ? null : (ComputeEngineTargetDefaultsVmmigrationV1alpha1.fromMap((map['computeEngineTargetDefaults'] as Map).cast<String, dynamic>())).input(),
-      computeEngineVmDefaults: map['computeEngineVmDefaults'] == null ? null : (TargetVMDetails.fromMap((map['computeEngineVmDefaults'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      computeEngineDisksTargetDefaults: map['computeEngineDisksTargetDefaults'] == null ? null : (ComputeEngineDisksTargetDefaultsVmmigrationV1alpha1.fromMap((map['computeEngineDisksTargetDefaults']! as Map).cast<String, dynamic>())).input(),
+      computeEngineTargetDefaults: map['computeEngineTargetDefaults'] == null ? null : (ComputeEngineTargetDefaultsVmmigrationV1alpha1.fromMap((map['computeEngineTargetDefaults']! as Map).cast<String, dynamic>())).input(),
+      computeEngineVmDefaults: map['computeEngineVmDefaults'] == null ? null : (TargetVMDetails.fromMap((map['computeEngineVmDefaults']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       migratingVmId: (map['migratingVmId'] as String).input(),
-      policy: map['policy'] == null ? null : (SchedulePolicyVmmigrationV1alpha1.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      policy: map['policy'] == null ? null : (SchedulePolicyVmmigrationV1alpha1.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       sourceId: (map['sourceId'] as String).input(),
-      sourceVmId: map['sourceVmId'] == null ? null : (map['sourceVmId'] as String).input(),
-      targetDefaults: map['targetDefaults'] == null ? null : (TargetVMDetails.fromMap((map['targetDefaults'] as Map).cast<String, dynamic>())).input(),
+      sourceVmId: map['sourceVmId'] == null ? null : (map['sourceVmId']! as String).input(),
+      targetDefaults: map['targetDefaults'] == null ? null : (TargetVMDetails.fromMap((map['targetDefaults']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

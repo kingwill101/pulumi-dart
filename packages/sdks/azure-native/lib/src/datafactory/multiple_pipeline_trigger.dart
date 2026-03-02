@@ -38,9 +38,9 @@ class MultiplePipelineTrigger {
 
   factory MultiplePipelineTrigger.fromMap(Map<String, dynamic> map) {
     return MultiplePipelineTrigger(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerPipelineReference>(map['pipelines'], (value) => TriggerPipelineReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerPipelineReference>(map['pipelines']!, (value) => TriggerPipelineReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

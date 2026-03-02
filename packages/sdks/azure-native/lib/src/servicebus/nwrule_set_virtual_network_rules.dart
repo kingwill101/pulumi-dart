@@ -27,8 +27,8 @@ class NWRuleSetVirtualNetworkRules {
 
   factory NWRuleSetVirtualNetworkRules.fromMap(Map<String, dynamic> map) {
     return NWRuleSetVirtualNetworkRules(
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint'] as bool).input(),
-      subnet: map['subnet'] == null ? null : (Subnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint']! as bool).input(),
+      subnet: map['subnet'] == null ? null : (Subnet.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -24,7 +24,7 @@ class GetOrganizationApiKeyArgs {
 
   factory GetOrganizationApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationApiKeyArgs(
-      emailId: map['emailId'] == null ? null : (map['emailId'] as String).input(),
+      emailId: map['emailId'] == null ? null : (map['emailId']! as String).input(),
     );
   }
 }

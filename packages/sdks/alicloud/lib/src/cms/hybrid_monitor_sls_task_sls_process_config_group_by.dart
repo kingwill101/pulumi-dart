@@ -25,8 +25,8 @@ class HybridMonitorSlsTaskSlsProcessConfigGroupBy {
 
   factory HybridMonitorSlsTaskSlsProcessConfigGroupBy.fromMap(Map<String, dynamic> map) {
     return HybridMonitorSlsTaskSlsProcessConfigGroupBy(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      slsKeyName: map['slsKeyName'] == null ? null : (map['slsKeyName'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      slsKeyName: map['slsKeyName'] == null ? null : (map['slsKeyName']! as String).input(),
     );
   }
 }

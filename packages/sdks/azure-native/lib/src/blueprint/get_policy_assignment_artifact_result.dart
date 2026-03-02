@@ -74,15 +74,15 @@ class GetPolicyAssignmentArtifactResult {
   factory GetPolicyAssignmentArtifactResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyAssignmentArtifactResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dependsOn: map['dependsOn'] == null ? null : (map['dependsOn'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      dependsOn: map['dependsOn'] == null ? null : (map['dependsOn']! as List).cast<String>(),
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
       parameters: pulumi.Input.decodeMapValues<ParameterValueResponse>(map['parameters'], (value) => ParameterValueResponse.fromMap((value as Map).cast<String, dynamic>())),
       policyDefinitionId: map['policyDefinitionId'] as String,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
+      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup']! as String,
       type: map['type'] as String,
     );
   }

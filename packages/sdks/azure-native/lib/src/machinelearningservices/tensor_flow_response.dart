@@ -33,8 +33,8 @@ class TensorFlowResponse {
   factory TensorFlowResponse.fromMap(Map<String, dynamic> map) {
     return TensorFlowResponse(
       distributionType: (map['distributionType'] as String).input(),
-      parameterServerCount: map['parameterServerCount'] == null ? null : (map['parameterServerCount'] as int).input(),
-      workerCount: map['workerCount'] == null ? null : (map['workerCount'] as int).input(),
+      parameterServerCount: map['parameterServerCount'] == null ? null : (map['parameterServerCount']! as int).input(),
+      workerCount: map['workerCount'] == null ? null : (map['workerCount']! as int).input(),
     );
   }
 }

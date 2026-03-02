@@ -76,17 +76,17 @@ class GetGatewayResult {
 
   factory GetGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetGatewayResult(
-      allowedFeatures: map['allowedFeatures'] == null ? null : (map['allowedFeatures'] as List).cast<String>(),
+      allowedFeatures: map['allowedFeatures'] == null ? null : (map['allowedFeatures']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       gatewayEndpoint: map['gatewayEndpoint'] as String,
       gatewayId: map['gatewayId'] as String,
-      gatewayType: map['gatewayType'] == null ? null : map['gatewayType'] as String,
+      gatewayType: map['gatewayType'] == null ? null : map['gatewayType']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

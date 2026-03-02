@@ -25,7 +25,7 @@ class FlexibleAppVersionDeploymentZip {
 
   factory FlexibleAppVersionDeploymentZip.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionDeploymentZip(
-      filesCount: map['filesCount'] == null ? null : (map['filesCount'] as int).input(),
+      filesCount: map['filesCount'] == null ? null : (map['filesCount']! as int).input(),
       sourceUrl: (map['sourceUrl'] as String).input(),
     );
   }

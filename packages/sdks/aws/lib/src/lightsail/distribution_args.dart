@@ -81,16 +81,16 @@ class DistributionArgs {
   factory DistributionArgs.fromMap(Map<String, dynamic> map) {
     return DistributionArgs(
       bundleId: (map['bundleId'] as String).input(),
-      cacheBehaviorSettings: map['cacheBehaviorSettings'] == null ? null : (DistributionCacheBehaviorSettings.fromMap((map['cacheBehaviorSettings'] as Map).cast<String, dynamic>())).input(),
-      cacheBehaviors: map['cacheBehaviors'] == null ? null : (pulumi.Input.decodeList<DistributionCacheBehavior>(map['cacheBehaviors'], (value) => DistributionCacheBehavior.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
-      defaultCacheBehavior: (DistributionDefaultCacheBehavior.fromMap((map['defaultCacheBehavior'] as Map).cast<String, dynamic>())).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      origin: (DistributionOrigin.fromMap((map['origin'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      cacheBehaviorSettings: map['cacheBehaviorSettings'] == null ? null : ((DistributionCacheBehaviorSettings.fromMap((map['cacheBehaviorSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      cacheBehaviors: map['cacheBehaviors'] == null ? null : ((pulumi.Input.decodeList<DistributionCacheBehavior>(map['cacheBehaviors']!, (value) => DistributionCacheBehavior.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      certificateName: map['certificateName'] == null ? null : ((map['certificateName'] as String).input()).input(),
+      defaultCacheBehavior: (DistributionDefaultCacheBehavior.fromMap((map['defaultCacheBehavior']! as Map).cast<String, dynamic>())).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
+      isEnabled: map['isEnabled'] == null ? null : ((map['isEnabled'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      origin: (DistributionOrigin.fromMap((map['origin']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

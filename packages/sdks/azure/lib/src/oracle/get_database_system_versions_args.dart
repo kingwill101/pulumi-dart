@@ -49,12 +49,12 @@ class GetDatabaseSystemVersionsArgs {
 
   factory GetDatabaseSystemVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseSystemVersionsArgs(
-      databaseSoftwareImageSupported: map['databaseSoftwareImageSupported'] == null ? null : (map['databaseSoftwareImageSupported'] as bool).input(),
-      databaseSystemShape: map['databaseSystemShape'] == null ? null : (map['databaseSystemShape'] as String).input(),
+      databaseSoftwareImageSupported: map['databaseSoftwareImageSupported'] == null ? null : (map['databaseSoftwareImageSupported']! as bool).input(),
+      databaseSystemShape: map['databaseSystemShape'] == null ? null : (map['databaseSystemShape']! as String).input(),
       location: (map['location'] as String).input(),
-      shapeFamily: map['shapeFamily'] == null ? null : (map['shapeFamily'] as String).input(),
-      storageManagement: map['storageManagement'] == null ? null : (map['storageManagement'] as String).input(),
-      upgradeSupported: map['upgradeSupported'] == null ? null : (map['upgradeSupported'] as bool).input(),
+      shapeFamily: map['shapeFamily'] == null ? null : (map['shapeFamily']! as String).input(),
+      storageManagement: map['storageManagement'] == null ? null : (map['storageManagement']! as String).input(),
+      upgradeSupported: map['upgradeSupported'] == null ? null : (map['upgradeSupported']! as bool).input(),
     );
   }
 }

@@ -70,16 +70,16 @@ class PartnerDestinationArgs {
 
   factory PartnerDestinationArgs.fromMap(Map<String, dynamic> map) {
     return PartnerDestinationArgs(
-      activationState: map['activationState'] == null ? null : (map['activationState'] as String).input(),
-      endpointBaseUrl: map['endpointBaseUrl'] == null ? null : (map['endpointBaseUrl'] as String).input(),
-      endpointServiceContext: map['endpointServiceContext'] == null ? null : (map['endpointServiceContext'] as String).input(),
-      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : (map['expirationTimeIfNotActivatedUtc'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      messageForActivation: map['messageForActivation'] == null ? null : (map['messageForActivation'] as String).input(),
-      partnerDestinationName: map['partnerDestinationName'] == null ? null : (map['partnerDestinationName'] as String).input(),
-      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : (map['partnerRegistrationImmutableId'] as String).input(),
+      activationState: map['activationState'] == null ? null : (map['activationState']! as String).input(),
+      endpointBaseUrl: map['endpointBaseUrl'] == null ? null : (map['endpointBaseUrl']! as String).input(),
+      endpointServiceContext: map['endpointServiceContext'] == null ? null : (map['endpointServiceContext']! as String).input(),
+      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : (map['expirationTimeIfNotActivatedUtc']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      messageForActivation: map['messageForActivation'] == null ? null : (map['messageForActivation']! as String).input(),
+      partnerDestinationName: map['partnerDestinationName'] == null ? null : (map['partnerDestinationName']! as String).input(),
+      partnerRegistrationImmutableId: map['partnerRegistrationImmutableId'] == null ? null : (map['partnerRegistrationImmutableId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

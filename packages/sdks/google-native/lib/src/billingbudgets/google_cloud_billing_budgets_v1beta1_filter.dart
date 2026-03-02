@@ -64,15 +64,15 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
 
   factory GoogleCloudBillingBudgetsV1beta1Filter.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBillingBudgetsV1beta1Filter(
-      calendarPeriod: map['calendarPeriod'] == null ? null : (GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod.fromValue(map['calendarPeriod'] as String)).input(),
-      creditTypes: map['creditTypes'] == null ? null : ((map['creditTypes'] as List).cast<String>()).input(),
-      creditTypesTreatment: map['creditTypesTreatment'] == null ? null : (GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment.fromValue(map['creditTypesTreatment'] as String)).input(),
-      customPeriod: map['customPeriod'] == null ? null : (GoogleCloudBillingBudgetsV1beta1CustomPeriod.fromMap((map['customPeriod'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      projects: map['projects'] == null ? null : ((map['projects'] as List).cast<String>()).input(),
-      resourceAncestors: map['resourceAncestors'] == null ? null : ((map['resourceAncestors'] as List).cast<String>()).input(),
-      services: map['services'] == null ? null : ((map['services'] as List).cast<String>()).input(),
-      subaccounts: map['subaccounts'] == null ? null : ((map['subaccounts'] as List).cast<String>()).input(),
+      calendarPeriod: map['calendarPeriod'] == null ? null : (GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriod.fromValue(map['calendarPeriod']! as String)).input(),
+      creditTypes: map['creditTypes'] == null ? null : ((map['creditTypes']! as List).cast<String>()).input(),
+      creditTypesTreatment: map['creditTypesTreatment'] == null ? null : (GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatment.fromValue(map['creditTypesTreatment']! as String)).input(),
+      customPeriod: map['customPeriod'] == null ? null : (GoogleCloudBillingBudgetsV1beta1CustomPeriod.fromMap((map['customPeriod']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      projects: map['projects'] == null ? null : ((map['projects']! as List).cast<String>()).input(),
+      resourceAncestors: map['resourceAncestors'] == null ? null : ((map['resourceAncestors']! as List).cast<String>()).input(),
+      services: map['services'] == null ? null : ((map['services']! as List).cast<String>()).input(),
+      subaccounts: map['subaccounts'] == null ? null : ((map['subaccounts']! as List).cast<String>()).input(),
     );
   }
 }

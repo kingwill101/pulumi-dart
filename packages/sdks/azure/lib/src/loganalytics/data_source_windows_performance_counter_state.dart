@@ -51,13 +51,13 @@ class DataSourceWindowsPerformanceCounterState {
 
   factory DataSourceWindowsPerformanceCounterState.fromMap(Map<String, dynamic> map) {
     return DataSourceWindowsPerformanceCounterState(
-      counterName: map['counterName'] == null ? null : (map['counterName'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      intervalSeconds: map['intervalSeconds'] == null ? null : (map['intervalSeconds'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      objectName: map['objectName'] == null ? null : (map['objectName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
+      counterName: map['counterName'] == null ? null : (map['counterName']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      intervalSeconds: map['intervalSeconds'] == null ? null : (map['intervalSeconds']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      objectName: map['objectName'] == null ? null : (map['objectName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName']! as String).input(),
     );
   }
 }

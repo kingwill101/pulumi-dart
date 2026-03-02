@@ -34,9 +34,9 @@ class OrganizationalUnitArgs {
 
   factory OrganizationalUnitArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationalUnitArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       parentId: (map['parentId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

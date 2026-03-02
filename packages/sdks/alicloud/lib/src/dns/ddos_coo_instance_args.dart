@@ -104,23 +104,23 @@ class DdosCooInstanceArgs {
 
   factory DdosCooInstanceArgs.fromMap(Map<String, dynamic> map) {
     return DdosCooInstanceArgs(
-      addressType: map['addressType'] == null ? null : (map['addressType'] as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as String).input(),
-      bandwidthMode: map['bandwidthMode'] == null ? null : (map['bandwidthMode'] as String).input(),
-      baseBandwidth: map['baseBandwidth'] == null ? null : (map['baseBandwidth'] as String).input(),
+      addressType: map['addressType'] == null ? null : (map['addressType']! as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as String).input(),
+      bandwidthMode: map['bandwidthMode'] == null ? null : (map['bandwidthMode']! as String).input(),
+      baseBandwidth: map['baseBandwidth'] == null ? null : (map['baseBandwidth']! as String).input(),
       domainCount: (map['domainCount'] as String).input(),
-      editionSale: map['editionSale'] == null ? null : (map['editionSale'] as String).input(),
-      functionVersion: map['functionVersion'] == null ? null : (map['functionVersion'] as String).input(),
-      modifyType: map['modifyType'] == null ? null : (map['modifyType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      normalBandwidth: map['normalBandwidth'] == null ? null : (map['normalBandwidth'] as String).input(),
-      normalQps: map['normalQps'] == null ? null : (map['normalQps'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
+      editionSale: map['editionSale'] == null ? null : (map['editionSale']! as String).input(),
+      functionVersion: map['functionVersion'] == null ? null : (map['functionVersion']! as String).input(),
+      modifyType: map['modifyType'] == null ? null : (map['modifyType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      normalBandwidth: map['normalBandwidth'] == null ? null : (map['normalBandwidth']! as String).input(),
+      normalQps: map['normalQps'] == null ? null : (map['normalQps']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
       portCount: (map['portCount'] as String).input(),
-      productPlan: map['productPlan'] == null ? null : (map['productPlan'] as String).input(),
-      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
-      serviceBandwidth: map['serviceBandwidth'] == null ? null : (map['serviceBandwidth'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      productPlan: map['productPlan'] == null ? null : (map['productPlan']! as String).input(),
+      productType: map['productType'] == null ? null : (map['productType']! as String).input(),
+      serviceBandwidth: map['serviceBandwidth'] == null ? null : (map['serviceBandwidth']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

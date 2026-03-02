@@ -59,14 +59,14 @@ class EndpointPatch {
 
   factory EndpointPatch.fromMap(Map<String, dynamic> map) {
     return EndpointPatch(
-      addresses: map['addresses'] == null ? null : ((map['addresses'] as List).cast<String>()).input(),
-      conditions: map['conditions'] == null ? null : (EndpointConditionsPatch.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      deprecatedTopology: map['deprecatedTopology'] == null ? null : ((map['deprecatedTopology'] as Map).cast<String, String>()).input(),
-      hints: map['hints'] == null ? null : (EndpointHintsPatch.fromMap((map['hints'] as Map).cast<String, dynamic>())).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      targetRef: map['targetRef'] == null ? null : (ObjectReferencePatch.fromMap((map['targetRef'] as Map).cast<String, dynamic>())).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      addresses: map['addresses'] == null ? null : ((map['addresses']! as List).cast<String>()).input(),
+      conditions: map['conditions'] == null ? null : (EndpointConditionsPatch.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      deprecatedTopology: map['deprecatedTopology'] == null ? null : ((map['deprecatedTopology']! as Map).cast<String, String>()).input(),
+      hints: map['hints'] == null ? null : (EndpointHintsPatch.fromMap((map['hints']! as Map).cast<String, dynamic>())).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      targetRef: map['targetRef'] == null ? null : (ObjectReferencePatch.fromMap((map['targetRef']! as Map).cast<String, dynamic>())).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

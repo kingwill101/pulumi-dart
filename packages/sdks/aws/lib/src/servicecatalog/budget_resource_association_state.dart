@@ -31,9 +31,9 @@ class BudgetResourceAssociationState {
 
   factory BudgetResourceAssociationState.fromMap(Map<String, dynamic> map) {
     return BudgetResourceAssociationState(
-      budgetName: map['budgetName'] == null ? null : (map['budgetName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      budgetName: map['budgetName'] == null ? null : ((map['budgetName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
     );
   }
 }

@@ -57,11 +57,11 @@ class GetTableResourceTableResult {
     return GetTableResourceTableResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      options: map['options'] == null ? null : TableGetPropertiesResponseOptions.fromMap((map['options'] as Map).cast<String, dynamic>()),
-      resource: map['resource'] == null ? null : TableGetPropertiesResponseResource.fromMap((map['resource'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      options: map['options'] == null ? null : TableGetPropertiesResponseOptions.fromMap((map['options']! as Map).cast<String, dynamic>()),
+      resource: map['resource'] == null ? null : TableGetPropertiesResponseResource.fromMap((map['resource']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

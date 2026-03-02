@@ -62,14 +62,14 @@ class ClientArgs {
 
   factory ClientArgs.fromMap(Map<String, dynamic> map) {
     return ClientArgs(
-      attributes: map['attributes'] == null ? null : (map['attributes']).input(),
-      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName'] as String).input(),
-      clientCertificateAuthentication: map['clientCertificateAuthentication'] == null ? null : (ClientCertificateAuthentication.fromMap((map['clientCertificateAuthentication'] as Map).cast<String, dynamic>())).input(),
-      clientName: map['clientName'] == null ? null : (map['clientName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      attributes: map['attributes'] == null ? null : (map['attributes']!).input(),
+      authenticationName: map['authenticationName'] == null ? null : (map['authenticationName']! as String).input(),
+      clientCertificateAuthentication: map['clientCertificateAuthentication'] == null ? null : (ClientCertificateAuthentication.fromMap((map['clientCertificateAuthentication']! as Map).cast<String, dynamic>())).input(),
+      clientName: map['clientName'] == null ? null : (map['clientName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

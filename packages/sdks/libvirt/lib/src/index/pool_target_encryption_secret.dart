@@ -26,7 +26,7 @@ class PoolTargetEncryptionSecret {
   factory PoolTargetEncryptionSecret.fromMap(Map<String, dynamic> map) {
     return PoolTargetEncryptionSecret(
       type: (map['type'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

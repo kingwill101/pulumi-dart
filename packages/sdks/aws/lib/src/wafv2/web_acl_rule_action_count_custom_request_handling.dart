@@ -21,7 +21,7 @@ class WebAclRuleActionCountCustomRequestHandling {
 
   factory WebAclRuleActionCountCustomRequestHandling.fromMap(Map<String, dynamic> map) {
     return WebAclRuleActionCountCustomRequestHandling(
-      insertHeaders: (pulumi.Input.decodeList<WebAclRuleActionCountCustomRequestHandlingInsertHeader>(map['insertHeaders'], (value) => WebAclRuleActionCountCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      insertHeaders: (pulumi.Input.decodeList<WebAclRuleActionCountCustomRequestHandlingInsertHeader>(map['insertHeaders']!, (value) => WebAclRuleActionCountCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

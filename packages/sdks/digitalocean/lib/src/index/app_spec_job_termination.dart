@@ -22,7 +22,7 @@ class AppSpecJobTermination {
 
   factory AppSpecJobTermination.fromMap(Map<String, dynamic> map) {
     return AppSpecJobTermination(
-      gracePeriodSeconds: map['gracePeriodSeconds'] == null ? null : (map['gracePeriodSeconds'] as int).input(),
+      gracePeriodSeconds: map['gracePeriodSeconds'] == null ? null : (map['gracePeriodSeconds']! as int).input(),
     );
   }
 }

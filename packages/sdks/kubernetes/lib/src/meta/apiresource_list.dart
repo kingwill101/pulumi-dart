@@ -37,9 +37,9 @@ class APIResourceList {
 
   factory APIResourceList.fromMap(Map<String, dynamic> map) {
     return APIResourceList(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       groupVersion: (map['groupVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       resources: (pulumi.Input.decodeList<APIResource>(map['resources'], (value) => APIResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

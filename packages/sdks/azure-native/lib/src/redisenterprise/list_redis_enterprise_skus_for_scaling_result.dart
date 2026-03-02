@@ -22,7 +22,7 @@ class ListRedisEnterpriseSkusForScalingResult {
 
   factory ListRedisEnterpriseSkusForScalingResult.fromMap(Map<String, dynamic> map) {
     return ListRedisEnterpriseSkusForScalingResult(
-      skus: map['skus'] == null ? null : pulumi.Input.decodeList<SkuDetailsResponse>(map['skus'], (value) => SkuDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      skus: map['skus'] == null ? null : pulumi.Input.decodeList<SkuDetailsResponse>(map['skus']!, (value) => SkuDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

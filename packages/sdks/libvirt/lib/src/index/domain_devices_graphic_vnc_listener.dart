@@ -33,9 +33,9 @@ class DomainDevicesGraphicVncListener {
 
   factory DomainDevicesGraphicVncListener.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicVncListener(
-      address: map['address'] == null ? null : (DomainDevicesGraphicVncListenerAddress.fromMap((map['address'] as Map).cast<String, dynamic>())).input(),
-      network: map['network'] == null ? null : (DomainDevicesGraphicVncListenerNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
-      socket: map['socket'] == null ? null : (DomainDevicesGraphicVncListenerSocket.fromMap((map['socket'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : (DomainDevicesGraphicVncListenerAddress.fromMap((map['address']! as Map).cast<String, dynamic>())).input(),
+      network: map['network'] == null ? null : (DomainDevicesGraphicVncListenerNetwork.fromMap((map['network']! as Map).cast<String, dynamic>())).input(),
+      socket: map['socket'] == null ? null : (DomainDevicesGraphicVncListenerSocket.fromMap((map['socket']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

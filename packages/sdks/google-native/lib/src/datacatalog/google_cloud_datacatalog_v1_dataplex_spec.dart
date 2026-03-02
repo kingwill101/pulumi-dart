@@ -37,10 +37,10 @@ class GoogleCloudDatacatalogV1DataplexSpec {
 
   factory GoogleCloudDatacatalogV1DataplexSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1DataplexSpec(
-      asset: map['asset'] == null ? null : (map['asset'] as String).input(),
-      compressionFormat: map['compressionFormat'] == null ? null : (map['compressionFormat'] as String).input(),
-      dataFormat: map['dataFormat'] == null ? null : (GoogleCloudDatacatalogV1PhysicalSchema.fromMap((map['dataFormat'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      asset: map['asset'] == null ? null : (map['asset']! as String).input(),
+      compressionFormat: map['compressionFormat'] == null ? null : (map['compressionFormat']! as String).input(),
+      dataFormat: map['dataFormat'] == null ? null : (GoogleCloudDatacatalogV1PhysicalSchema.fromMap((map['dataFormat']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

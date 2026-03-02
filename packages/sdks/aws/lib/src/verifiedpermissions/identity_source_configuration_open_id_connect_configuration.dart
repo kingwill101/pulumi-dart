@@ -37,10 +37,10 @@ class IdentitySourceConfigurationOpenIdConnectConfiguration {
 
   factory IdentitySourceConfigurationOpenIdConnectConfiguration.fromMap(Map<String, dynamic> map) {
     return IdentitySourceConfigurationOpenIdConnectConfiguration(
-      entityIdPrefix: map['entityIdPrefix'] == null ? null : (map['entityIdPrefix'] as String).input(),
-      groupConfiguration: map['groupConfiguration'] == null ? null : (IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration.fromMap((map['groupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      entityIdPrefix: map['entityIdPrefix'] == null ? null : ((map['entityIdPrefix'] as String).input()).input(),
+      groupConfiguration: map['groupConfiguration'] == null ? null : ((IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration.fromMap((map['groupConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       issuer: (map['issuer'] as String).input(),
-      tokenSelection: (IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection.fromMap((map['tokenSelection'] as Map).cast<String, dynamic>())).input(),
+      tokenSelection: (IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection.fromMap((map['tokenSelection']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

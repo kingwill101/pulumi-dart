@@ -32,8 +32,8 @@ class AgentcoreMemoryStrategyConfiguration {
 
   factory AgentcoreMemoryStrategyConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreMemoryStrategyConfiguration(
-      consolidation: map['consolidation'] == null ? null : (AgentcoreMemoryStrategyConfigurationConsolidation.fromMap((map['consolidation'] as Map).cast<String, dynamic>())).input(),
-      extraction: map['extraction'] == null ? null : (AgentcoreMemoryStrategyConfigurationExtraction.fromMap((map['extraction'] as Map).cast<String, dynamic>())).input(),
+      consolidation: map['consolidation'] == null ? null : ((AgentcoreMemoryStrategyConfigurationConsolidation.fromMap((map['consolidation']! as Map).cast<String, dynamic>())).input()).input(),
+      extraction: map['extraction'] == null ? null : ((AgentcoreMemoryStrategyConfigurationExtraction.fromMap((map['extraction']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -46,12 +46,12 @@ class EditingProjectState {
 
   factory EditingProjectState.fromMap(Map<String, dynamic> map) {
     return EditingProjectState(
-      coverUrl: map['coverUrl'] == null ? null : (map['coverUrl'] as String).input(),
-      division: map['division'] == null ? null : (map['division'] as String).input(),
-      editingProjectName: map['editingProjectName'] == null ? null : (map['editingProjectName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      timeline: map['timeline'] == null ? null : (map['timeline'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      coverUrl: map['coverUrl'] == null ? null : (map['coverUrl']! as String).input(),
+      division: map['division'] == null ? null : (map['division']! as String).input(),
+      editingProjectName: map['editingProjectName'] == null ? null : (map['editingProjectName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      timeline: map['timeline'] == null ? null : (map['timeline']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

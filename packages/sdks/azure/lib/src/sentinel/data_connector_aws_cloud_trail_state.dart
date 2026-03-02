@@ -31,9 +31,9 @@ class DataConnectorAwsCloudTrailState {
 
   factory DataConnectorAwsCloudTrailState.fromMap(Map<String, dynamic> map) {
     return DataConnectorAwsCloudTrailState(
-      awsRoleArn: map['awsRoleArn'] == null ? null : (map['awsRoleArn'] as String).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      awsRoleArn: map['awsRoleArn'] == null ? null : (map['awsRoleArn']! as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

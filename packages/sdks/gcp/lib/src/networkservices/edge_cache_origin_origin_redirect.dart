@@ -23,7 +23,7 @@ class EdgeCacheOriginOriginRedirect {
 
   factory EdgeCacheOriginOriginRedirect.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginOriginRedirect(
-      redirectConditions: map['redirectConditions'] == null ? null : ((map['redirectConditions'] as List).cast<String>()).input(),
+      redirectConditions: map['redirectConditions'] == null ? null : ((map['redirectConditions']! as List).cast<String>()).input(),
     );
   }
 }

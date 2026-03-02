@@ -26,7 +26,7 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser {
 
   factory ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser(
-      externalTenants: map['externalTenants'] == null ? null : (pulumi.Input.decodeList<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant>(map['externalTenants'], (value) => ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      externalTenants: map['externalTenants'] == null ? null : (pulumi.Input.decodeList<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant>(map['externalTenants']!, (value) => ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant.fromMap((value as Map).cast<String, dynamic>()))).input(),
       guestOrExternalUserTypes: ((map['guestOrExternalUserTypes'] as List).cast<String>()).input(),
     );
   }

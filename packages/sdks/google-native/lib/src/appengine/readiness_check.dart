@@ -51,13 +51,13 @@ class ReadinessCheck {
 
   factory ReadinessCheck.fromMap(Map<String, dynamic> map) {
     return ReadinessCheck(
-      appStartTimeout: map['appStartTimeout'] == null ? null : (map['appStartTimeout'] as String).input(),
-      checkInterval: map['checkInterval'] == null ? null : (map['checkInterval'] as String).input(),
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold'] as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      appStartTimeout: map['appStartTimeout'] == null ? null : (map['appStartTimeout']! as String).input(),
+      checkInterval: map['checkInterval'] == null ? null : (map['checkInterval']! as String).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      successThreshold: map['successThreshold'] == null ? null : (map['successThreshold']! as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

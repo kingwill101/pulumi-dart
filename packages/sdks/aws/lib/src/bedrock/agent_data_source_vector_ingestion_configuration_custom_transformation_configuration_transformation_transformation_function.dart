@@ -21,7 +21,7 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
 
   factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction(
-      transformationLambdaConfiguration: map['transformationLambdaConfiguration'] == null ? null : (AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration.fromMap((map['transformationLambdaConfiguration'] as Map).cast<String, dynamic>())).input(),
+      transformationLambdaConfiguration: map['transformationLambdaConfiguration'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration.fromMap((map['transformationLambdaConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

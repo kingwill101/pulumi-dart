@@ -28,8 +28,8 @@ class MetadataLabelMatcher {
 
   factory MetadataLabelMatcher.fromMap(Map<String, dynamic> map) {
     return MetadataLabelMatcher(
-      metadataLabelMatchCriteria: map['metadataLabelMatchCriteria'] == null ? null : (MetadataLabelMatcherMetadataLabelMatchCriteria.fromValue(map['metadataLabelMatchCriteria'] as String)).input(),
-      metadataLabels: map['metadataLabels'] == null ? null : (pulumi.Input.decodeList<MetadataLabels>(map['metadataLabels'], (value) => MetadataLabels.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadataLabelMatchCriteria: map['metadataLabelMatchCriteria'] == null ? null : (MetadataLabelMatcherMetadataLabelMatchCriteria.fromValue(map['metadataLabelMatchCriteria']! as String)).input(),
+      metadataLabels: map['metadataLabels'] == null ? null : (pulumi.Input.decodeList<MetadataLabels>(map['metadataLabels']!, (value) => MetadataLabels.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

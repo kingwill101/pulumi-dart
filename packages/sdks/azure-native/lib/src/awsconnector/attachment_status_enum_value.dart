@@ -21,7 +21,7 @@ class AttachmentStatusEnumValue {
 
   factory AttachmentStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return AttachmentStatusEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

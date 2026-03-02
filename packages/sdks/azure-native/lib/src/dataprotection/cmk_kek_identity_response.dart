@@ -26,8 +26,8 @@ class CmkKekIdentityResponse {
 
   factory CmkKekIdentityResponse.fromMap(Map<String, dynamic> map) {
     return CmkKekIdentityResponse(
-      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
-      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId']! as String).input(),
+      identityType: map['identityType'] == null ? null : (map['identityType']! as String).input(),
     );
   }
 }

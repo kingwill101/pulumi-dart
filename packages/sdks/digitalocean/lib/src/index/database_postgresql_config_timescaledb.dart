@@ -19,7 +19,7 @@ class DatabasePostgresqlConfigTimescaledb {
 
   factory DatabasePostgresqlConfigTimescaledb.fromMap(Map<String, dynamic> map) {
     return DatabasePostgresqlConfigTimescaledb(
-      maxBackgroundWorkers: map['maxBackgroundWorkers'] == null ? null : (map['maxBackgroundWorkers'] as int).input(),
+      maxBackgroundWorkers: map['maxBackgroundWorkers'] == null ? null : (map['maxBackgroundWorkers']! as int).input(),
     );
   }
 }

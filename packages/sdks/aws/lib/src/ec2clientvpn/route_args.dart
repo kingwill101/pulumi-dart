@@ -45,9 +45,9 @@ class RouteArgs {
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
       clientVpnEndpointId: (map['clientVpnEndpointId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       targetVpcSubnetId: (map['targetVpcSubnetId'] as String).input(),
     );
   }

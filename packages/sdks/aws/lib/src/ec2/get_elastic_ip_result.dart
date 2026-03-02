@@ -120,7 +120,7 @@ class GetElasticIpResult {
       customerOwnedIp: map['customerOwnedIp'] as String,
       customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] as String,
       domain: map['domain'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetElasticIpFilter>(map['filters'], (value) => GetElasticIpFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetElasticIpFilter>(map['filters']!, (value) => GetElasticIpFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
       ipamPoolId: map['ipamPoolId'] as String,

@@ -38,10 +38,10 @@ class NotificationState {
 
   factory NotificationState.fromMap(Map<String, dynamic> map) {
     return NotificationState(
-      groupNames: map['groupNames'] == null ? null : ((map['groupNames'] as List).cast<String>()).input(),
-      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<NotificationType>(map['notifications'], (value) => NotificationType.fromValue(value as String))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
+      groupNames: map['groupNames'] == null ? null : (((map['groupNames'] as List).cast<String>()).input()).input(),
+      notifications: map['notifications'] == null ? null : ((pulumi.Input.decodeList<NotificationType>(map['notifications']!, (value) => NotificationType.fromValue(value as String))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      topicArn: map['topicArn'] == null ? null : ((map['topicArn'] as String).input()).input(),
     );
   }
 }

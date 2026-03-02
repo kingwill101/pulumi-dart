@@ -22,7 +22,7 @@ class NotificationConfig {
 
   factory NotificationConfig.fromMap(Map<String, dynamic> map) {
     return NotificationConfig(
-      pubsub: map['pubsub'] == null ? null : (PubSub.fromMap((map['pubsub'] as Map).cast<String, dynamic>())).input(),
+      pubsub: map['pubsub'] == null ? null : (PubSub.fromMap((map['pubsub']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

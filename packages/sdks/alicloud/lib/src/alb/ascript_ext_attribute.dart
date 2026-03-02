@@ -25,8 +25,8 @@ class AScriptExtAttribute {
 
   factory AScriptExtAttribute.fromMap(Map<String, dynamic> map) {
     return AScriptExtAttribute(
-      attributeKey: map['attributeKey'] == null ? null : (map['attributeKey'] as String).input(),
-      attributeValue: map['attributeValue'] == null ? null : (map['attributeValue'] as String).input(),
+      attributeKey: map['attributeKey'] == null ? null : (map['attributeKey']! as String).input(),
+      attributeValue: map['attributeValue'] == null ? null : (map['attributeValue']! as String).input(),
     );
   }
 }

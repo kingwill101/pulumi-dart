@@ -39,11 +39,11 @@ class GetFirewallsResult {
 
   factory GetFirewallsResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetFirewallsFilter>(map['filters'], (value) => GetFirewallsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetFirewallsFilter>(map['filters']!, (value) => GetFirewallsFilter.fromMap((value as Map).cast<String, dynamic>())),
       firewalls: pulumi.Input.decodeList<GetFirewallsFirewall>(map['firewalls'], (value) => GetFirewallsFirewall.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
     );
   }
 }

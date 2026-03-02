@@ -34,9 +34,9 @@ class ResourceTypeRegistrationPropertiesResourceManagementOptions {
 
   factory ResourceTypeRegistrationPropertiesResourceManagementOptions.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceManagementOptions(
-      batchProvisioningSupport: map['batchProvisioningSupport'] == null ? null : (ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport.fromMap((map['batchProvisioningSupport'] as Map).cast<String, dynamic>())).input(),
-      deleteDependencies: map['deleteDependencies'] == null ? null : (pulumi.Input.decodeList<DeleteDependency>(map['deleteDependencies'], (value) => DeleteDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nestedProvisioningSupport: map['nestedProvisioningSupport'] == null ? null : (ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport.fromMap((map['nestedProvisioningSupport'] as Map).cast<String, dynamic>())).input(),
+      batchProvisioningSupport: map['batchProvisioningSupport'] == null ? null : (ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport.fromMap((map['batchProvisioningSupport']! as Map).cast<String, dynamic>())).input(),
+      deleteDependencies: map['deleteDependencies'] == null ? null : (pulumi.Input.decodeList<DeleteDependency>(map['deleteDependencies']!, (value) => DeleteDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nestedProvisioningSupport: map['nestedProvisioningSupport'] == null ? null : (ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport.fromMap((map['nestedProvisioningSupport']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

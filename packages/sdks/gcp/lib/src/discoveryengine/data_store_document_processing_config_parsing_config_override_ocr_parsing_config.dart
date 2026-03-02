@@ -20,7 +20,7 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig {
 
   factory DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig.fromMap(Map<String, dynamic> map) {
     return DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig(
-      useNativeText: map['useNativeText'] == null ? null : (map['useNativeText'] as bool).input(),
+      useNativeText: map['useNativeText'] == null ? null : (map['useNativeText']! as bool).input(),
     );
   }
 }

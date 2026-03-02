@@ -69,16 +69,16 @@ class MigrationInstanceArgs {
 
   factory MigrationInstanceArgs.fromMap(Map<String, dynamic> map) {
     return MigrationInstanceArgs(
-      computeUnit: map['computeUnit'] == null ? null : (map['computeUnit'] as int).input(),
-      databaseCount: map['databaseCount'] == null ? null : (map['databaseCount'] as int).input(),
+      computeUnit: map['computeUnit'] == null ? null : (map['computeUnit']! as int).input(),
+      databaseCount: map['databaseCount'] == null ? null : (map['databaseCount']! as int).input(),
       destinationEndpointEngineName: (map['destinationEndpointEngineName'] as String).input(),
       destinationEndpointRegion: (map['destinationEndpointRegion'] as String).input(),
-      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass'] as String).input(),
+      instanceClass: map['instanceClass'] == null ? null : (map['instanceClass']! as String).input(),
       paymentType: (map['paymentType'] as String).input(),
       sourceEndpointEngineName: (map['sourceEndpointEngineName'] as String).input(),
       sourceEndpointRegion: (map['sourceEndpointRegion'] as String).input(),
-      syncArchitecture: map['syncArchitecture'] == null ? null : (map['syncArchitecture'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      syncArchitecture: map['syncArchitecture'] == null ? null : (map['syncArchitecture']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

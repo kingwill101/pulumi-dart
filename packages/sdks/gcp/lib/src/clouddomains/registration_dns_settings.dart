@@ -29,8 +29,8 @@ class RegistrationDnsSettings {
 
   factory RegistrationDnsSettings.fromMap(Map<String, dynamic> map) {
     return RegistrationDnsSettings(
-      customDns: map['customDns'] == null ? null : (RegistrationDnsSettingsCustomDns.fromMap((map['customDns'] as Map).cast<String, dynamic>())).input(),
-      glueRecords: map['glueRecords'] == null ? null : (pulumi.Input.decodeList<RegistrationDnsSettingsGlueRecord>(map['glueRecords'], (value) => RegistrationDnsSettingsGlueRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customDns: map['customDns'] == null ? null : (RegistrationDnsSettingsCustomDns.fromMap((map['customDns']! as Map).cast<String, dynamic>())).input(),
+      glueRecords: map['glueRecords'] == null ? null : (pulumi.Input.decodeList<RegistrationDnsSettingsGlueRecord>(map['glueRecords']!, (value) => RegistrationDnsSettingsGlueRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

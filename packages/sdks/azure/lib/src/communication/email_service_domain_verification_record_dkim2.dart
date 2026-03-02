@@ -35,10 +35,10 @@ class EmailServiceDomainVerificationRecordDkim2 {
 
   factory EmailServiceDomainVerificationRecordDkim2.fromMap(Map<String, dynamic> map) {
     return EmailServiceDomainVerificationRecordDkim2(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

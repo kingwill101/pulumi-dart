@@ -26,8 +26,8 @@ class AdvancedScheduleMonthlyOccurrenceResponse {
 
   factory AdvancedScheduleMonthlyOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return AdvancedScheduleMonthlyOccurrenceResponse(
-      day: map['day'] == null ? null : (map['day'] as String).input(),
-      occurrence: map['occurrence'] == null ? null : (map['occurrence'] as int).input(),
+      day: map['day'] == null ? null : (map['day']! as String).input(),
+      occurrence: map['occurrence'] == null ? null : (map['occurrence']! as int).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel {
 
   factory AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel(
-      inlinePayload: map['inlinePayload'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload.fromMap((map['inlinePayload'] as Map).cast<String, dynamic>())).input(),
-      s3: map['s3'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      inlinePayload: map['inlinePayload'] == null ? null : ((AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload.fromMap((map['inlinePayload']! as Map).cast<String, dynamic>())).input()).input(),
+      s3: map['s3'] == null ? null : ((AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class SecurityPolicyRuleMatcherConfig {
 
   factory SecurityPolicyRuleMatcherConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleMatcherConfig(
-      destIpRanges: map['destIpRanges'] == null ? null : ((map['destIpRanges'] as List).cast<String>()).input(),
-      destPorts: map['destPorts'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRuleMatcherConfigDestinationPort>(map['destPorts'], (value) => SecurityPolicyRuleMatcherConfigDestinationPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      layer4Configs: map['layer4Configs'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRuleMatcherConfigLayer4Config>(map['layer4Configs'], (value) => SecurityPolicyRuleMatcherConfigLayer4Config.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges'] as List).cast<String>()).input(),
+      destIpRanges: map['destIpRanges'] == null ? null : ((map['destIpRanges']! as List).cast<String>()).input(),
+      destPorts: map['destPorts'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRuleMatcherConfigDestinationPort>(map['destPorts']!, (value) => SecurityPolicyRuleMatcherConfigDestinationPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      layer4Configs: map['layer4Configs'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRuleMatcherConfigLayer4Config>(map['layer4Configs']!, (value) => SecurityPolicyRuleMatcherConfigLayer4Config.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges']! as List).cast<String>()).input(),
     );
   }
 }

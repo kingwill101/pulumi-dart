@@ -34,8 +34,8 @@ class ResolverFirewallConfigArgs {
 
   factory ResolverFirewallConfigArgs.fromMap(Map<String, dynamic> map) {
     return ResolverFirewallConfigArgs(
-      firewallFailOpen: map['firewallFailOpen'] == null ? null : (map['firewallFailOpen'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      firewallFailOpen: map['firewallFailOpen'] == null ? null : ((map['firewallFailOpen'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

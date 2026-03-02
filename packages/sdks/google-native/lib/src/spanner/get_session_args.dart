@@ -37,7 +37,7 @@ class GetSessionArgs {
     return GetSessionArgs(
       databaseId: (map['databaseId'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sessionId: (map['sessionId'] as String).input(),
     );
   }

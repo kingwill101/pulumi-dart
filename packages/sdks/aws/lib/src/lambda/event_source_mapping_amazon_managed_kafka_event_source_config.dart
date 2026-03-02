@@ -26,8 +26,8 @@ class EventSourceMappingAmazonManagedKafkaEventSourceConfig {
 
   factory EventSourceMappingAmazonManagedKafkaEventSourceConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingAmazonManagedKafkaEventSourceConfig(
-      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId'] as String).input(),
-      schemaRegistryConfig: map['schemaRegistryConfig'] == null ? null : (EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig.fromMap((map['schemaRegistryConfig'] as Map).cast<String, dynamic>())).input(),
+      consumerGroupId: map['consumerGroupId'] == null ? null : ((map['consumerGroupId'] as String).input()).input(),
+      schemaRegistryConfig: map['schemaRegistryConfig'] == null ? null : ((EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfig.fromMap((map['schemaRegistryConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

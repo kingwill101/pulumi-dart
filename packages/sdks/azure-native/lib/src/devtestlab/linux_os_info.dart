@@ -21,7 +21,7 @@ class LinuxOsInfo {
 
   factory LinuxOsInfo.fromMap(Map<String, dynamic> map) {
     return LinuxOsInfo(
-      linuxOsState: map['linuxOsState'] == null ? null : (map['linuxOsState'] as String).input(),
+      linuxOsState: map['linuxOsState'] == null ? null : (map['linuxOsState']! as String).input(),
     );
   }
 }

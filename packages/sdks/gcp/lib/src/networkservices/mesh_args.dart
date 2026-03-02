@@ -56,12 +56,12 @@ class MeshArgs {
 
   factory MeshArgs.fromMap(Map<String, dynamic> map) {
     return MeshArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      interceptionPort: map['interceptionPort'] == null ? null : (map['interceptionPort'] as int).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      interceptionPort: map['interceptionPort'] == null ? null : (map['interceptionPort']! as int).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

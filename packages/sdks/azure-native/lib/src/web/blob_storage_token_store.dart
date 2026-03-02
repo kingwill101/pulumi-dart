@@ -21,7 +21,7 @@ class BlobStorageTokenStore {
 
   factory BlobStorageTokenStore.fromMap(Map<String, dynamic> map) {
     return BlobStorageTokenStore(
-      sasUrlSettingName: map['sasUrlSettingName'] == null ? null : (map['sasUrlSettingName'] as String).input(),
+      sasUrlSettingName: map['sasUrlSettingName'] == null ? null : (map['sasUrlSettingName']! as String).input(),
     );
   }
 }

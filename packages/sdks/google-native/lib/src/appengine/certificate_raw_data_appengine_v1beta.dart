@@ -26,8 +26,8 @@ class CertificateRawDataAppengineV1beta {
 
   factory CertificateRawDataAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return CertificateRawDataAppengineV1beta(
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      publicCertificate: map['publicCertificate'] == null ? null : (map['publicCertificate'] as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      publicCertificate: map['publicCertificate'] == null ? null : (map['publicCertificate']! as String).input(),
     );
   }
 }

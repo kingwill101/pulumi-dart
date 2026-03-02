@@ -21,7 +21,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialo
 
   factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig(
-      agent: map['agent'] == null ? null : (map['agent'] as String).input(),
+      agent: map['agent'] == null ? null : (map['agent']! as String).input(),
     );
   }
 }

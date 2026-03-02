@@ -74,7 +74,7 @@ class GetStorageContainerResult {
   factory GetStorageContainerResult.fromMap(Map<String, dynamic> map) {
     return GetStorageContainerResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
+      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
@@ -82,7 +82,7 @@ class GetStorageContainerResult {
       provisioningState: map['provisioningState'] as String,
       status: StorageContainerStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

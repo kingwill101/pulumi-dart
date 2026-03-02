@@ -42,8 +42,8 @@ class GetDatasetHl7V2StoreIamPolicyHealthcareV1beta1Args {
       datasetId: (map['datasetId'] as String).input(),
       hl7V2StoreId: (map['hl7V2StoreId'] as String).input(),
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

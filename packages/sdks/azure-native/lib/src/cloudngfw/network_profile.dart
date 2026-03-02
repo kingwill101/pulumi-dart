@@ -59,14 +59,14 @@ class NetworkProfile {
 
   factory NetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkProfile(
-      egressNatIp: map['egressNatIp'] == null ? null : (pulumi.Input.decodeList<IPAddress>(map['egressNatIp'], (value) => IPAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      egressNatIp: map['egressNatIp'] == null ? null : (pulumi.Input.decodeList<IPAddress>(map['egressNatIp']!, (value) => IPAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
       enableEgressNat: (map['enableEgressNat'] as String).input(),
       networkType: (map['networkType'] as String).input(),
-      privateSourceNatRulesDestination: map['privateSourceNatRulesDestination'] == null ? null : ((map['privateSourceNatRulesDestination'] as List).cast<String>()).input(),
+      privateSourceNatRulesDestination: map['privateSourceNatRulesDestination'] == null ? null : ((map['privateSourceNatRulesDestination']! as List).cast<String>()).input(),
       publicIps: (pulumi.Input.decodeList<IPAddress>(map['publicIps'], (value) => IPAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      trustedRanges: map['trustedRanges'] == null ? null : ((map['trustedRanges'] as List).cast<String>()).input(),
-      vnetConfiguration: map['vnetConfiguration'] == null ? null : (VnetConfiguration.fromMap((map['vnetConfiguration'] as Map).cast<String, dynamic>())).input(),
-      vwanConfiguration: map['vwanConfiguration'] == null ? null : (VwanConfiguration.fromMap((map['vwanConfiguration'] as Map).cast<String, dynamic>())).input(),
+      trustedRanges: map['trustedRanges'] == null ? null : ((map['trustedRanges']! as List).cast<String>()).input(),
+      vnetConfiguration: map['vnetConfiguration'] == null ? null : (VnetConfiguration.fromMap((map['vnetConfiguration']! as Map).cast<String, dynamic>())).input(),
+      vwanConfiguration: map['vwanConfiguration'] == null ? null : (VwanConfiguration.fromMap((map['vwanConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

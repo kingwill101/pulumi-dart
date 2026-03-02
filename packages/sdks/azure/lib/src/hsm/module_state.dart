@@ -65,15 +65,15 @@ class ModuleState {
 
   factory ModuleState.fromMap(Map<String, dynamic> map) {
     return ModuleState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managementNetworkProfile: map['managementNetworkProfile'] == null ? null : (ModuleManagementNetworkProfile.fromMap((map['managementNetworkProfile'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkProfile: map['networkProfile'] == null ? null : (ModuleNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      stampId: map['stampId'] == null ? null : (map['stampId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managementNetworkProfile: map['managementNetworkProfile'] == null ? null : (ModuleManagementNetworkProfile.fromMap((map['managementNetworkProfile']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (ModuleNetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      stampId: map['stampId'] == null ? null : (map['stampId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

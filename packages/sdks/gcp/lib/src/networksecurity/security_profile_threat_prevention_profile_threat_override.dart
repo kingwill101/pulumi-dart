@@ -34,7 +34,7 @@ class SecurityProfileThreatPreventionProfileThreatOverride {
     return SecurityProfileThreatPreventionProfileThreatOverride(
       action: (map['action'] as String).input(),
       threatId: (map['threatId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

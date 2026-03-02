@@ -74,13 +74,13 @@ class VPCRouteEntryArgs {
 
   factory VPCRouteEntryArgs.fromMap(Map<String, dynamic> map) {
     return VPCRouteEntryArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
-      nextHops: map['nextHops'] == null ? null : (pulumi.Input.decodeList<VPCRouteEntryNextHop>(map['nextHops'], (value) => VPCRouteEntryNextHop.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nexthopId: map['nexthopId'] == null ? null : (map['nexthopId'] as String).input(),
-      nexthopType: map['nexthopType'] == null ? null : (map['nexthopType'] as String).input(),
-      routeEntryName: map['routeEntryName'] == null ? null : (map['routeEntryName'] as String).input(),
-      routePublishTargets: map['routePublishTargets'] == null ? null : (pulumi.Input.decodeList<VPCRouteEntryRoutePublishTarget>(map['routePublishTargets'], (value) => VPCRouteEntryRoutePublishTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nextHops: map['nextHops'] == null ? null : (pulumi.Input.decodeList<VPCRouteEntryNextHop>(map['nextHops']!, (value) => VPCRouteEntryNextHop.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nexthopId: map['nexthopId'] == null ? null : (map['nexthopId']! as String).input(),
+      nexthopType: map['nexthopType'] == null ? null : (map['nexthopType']! as String).input(),
+      routeEntryName: map['routeEntryName'] == null ? null : (map['routeEntryName']! as String).input(),
+      routePublishTargets: map['routePublishTargets'] == null ? null : (pulumi.Input.decodeList<VPCRouteEntryRoutePublishTarget>(map['routePublishTargets']!, (value) => VPCRouteEntryRoutePublishTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
       routeTableId: (map['routeTableId'] as String).input(),
     );
   }

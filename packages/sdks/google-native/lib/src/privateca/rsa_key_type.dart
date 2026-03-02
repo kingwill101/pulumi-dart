@@ -26,8 +26,8 @@ class RsaKeyType {
 
   factory RsaKeyType.fromMap(Map<String, dynamic> map) {
     return RsaKeyType(
-      maxModulusSize: map['maxModulusSize'] == null ? null : (map['maxModulusSize'] as String).input(),
-      minModulusSize: map['minModulusSize'] == null ? null : (map['minModulusSize'] as String).input(),
+      maxModulusSize: map['maxModulusSize'] == null ? null : (map['maxModulusSize']! as String).input(),
+      minModulusSize: map['minModulusSize'] == null ? null : (map['minModulusSize']! as String).input(),
     );
   }
 }

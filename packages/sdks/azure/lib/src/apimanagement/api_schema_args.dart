@@ -61,12 +61,12 @@ class ApiSchemaArgs {
     return ApiSchemaArgs(
       apiManagementName: (map['apiManagementName'] as String).input(),
       apiName: (map['apiName'] as String).input(),
-      components: map['components'] == null ? null : (map['components'] as String).input(),
+      components: map['components'] == null ? null : (map['components']! as String).input(),
       contentType: (map['contentType'] as String).input(),
-      definitions: map['definitions'] == null ? null : (map['definitions'] as String).input(),
+      definitions: map['definitions'] == null ? null : (map['definitions']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       schemaId: (map['schemaId'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

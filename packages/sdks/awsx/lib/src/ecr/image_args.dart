@@ -75,17 +75,17 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      args: map['args'] == null ? null : ((map['args'] as Map).cast<String, String>()).input(),
-      builderVersion: map['builderVersion'] == null ? null : (BuilderVersion.fromValue(map['builderVersion'] as String)).input(),
-      cacheFrom: map['cacheFrom'] == null ? null : ((map['cacheFrom'] as List).cast<String>()).input(),
-      context: map['context'] == null ? null : (map['context'] as String).input(),
-      dockerfile: map['dockerfile'] == null ? null : (map['dockerfile'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
-      imageTag: map['imageTag'] == null ? null : (map['imageTag'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
+      args: map['args'] == null ? null : ((map['args']! as Map).cast<String, String>()).input(),
+      builderVersion: map['builderVersion'] == null ? null : (BuilderVersion.fromValue(map['builderVersion']! as String)).input(),
+      cacheFrom: map['cacheFrom'] == null ? null : ((map['cacheFrom']! as List).cast<String>()).input(),
+      context: map['context'] == null ? null : (map['context']! as String).input(),
+      dockerfile: map['dockerfile'] == null ? null : (map['dockerfile']! as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
+      imageTag: map['imageTag'] == null ? null : (map['imageTag']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      registryId: map['registryId'] == null ? null : (map['registryId']! as String).input(),
       repositoryUrl: (map['repositoryUrl'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

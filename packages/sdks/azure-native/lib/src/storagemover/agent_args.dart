@@ -55,13 +55,13 @@ class AgentArgs {
 
   factory AgentArgs.fromMap(Map<String, dynamic> map) {
     return AgentArgs(
-      agentName: map['agentName'] == null ? null : (map['agentName'] as String).input(),
+      agentName: map['agentName'] == null ? null : (map['agentName']! as String).input(),
       arcResourceId: (map['arcResourceId'] as String).input(),
       arcVmUuid: (map['arcVmUuid'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       storageMoverName: (map['storageMoverName'] as String).input(),
-      uploadLimitSchedule: map['uploadLimitSchedule'] == null ? null : (UploadLimitSchedule.fromMap((map['uploadLimitSchedule'] as Map).cast<String, dynamic>())).input(),
+      uploadLimitSchedule: map['uploadLimitSchedule'] == null ? null : (UploadLimitSchedule.fromMap((map['uploadLimitSchedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

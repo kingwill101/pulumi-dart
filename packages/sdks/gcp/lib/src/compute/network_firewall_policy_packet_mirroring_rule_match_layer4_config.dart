@@ -28,7 +28,7 @@ class NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config {
   factory NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config.fromMap(Map<String, dynamic> map) {
     return NetworkFirewallPolicyPacketMirroringRuleMatchLayer4Config(
       ipProtocol: (map['ipProtocol'] as String).input(),
-      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<String>()).input(),
+      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<String>()).input(),
     );
   }
 }

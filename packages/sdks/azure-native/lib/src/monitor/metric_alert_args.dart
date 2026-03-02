@@ -96,20 +96,20 @@ class MetricAlertArgs {
 
   factory MetricAlertArgs.fromMap(Map<String, dynamic> map) {
     return MetricAlertArgs(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<MetricAlertAction>(map['actions'], (value) => MetricAlertAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      autoMitigate: map['autoMitigate'] == null ? null : (map['autoMitigate'] as bool).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<MetricAlertAction>(map['actions']!, (value) => MetricAlertAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoMitigate: map['autoMitigate'] == null ? null : (map['autoMitigate']! as bool).input(),
       criteria: (MetricAlertMultipleResourceMultipleMetricCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
       evaluationFrequency: (map['evaluationFrequency'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
       scopes: ((map['scopes'] as List).cast<String>()).input(),
       severity: (map['severity'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetResourceRegion: map['targetResourceRegion'] == null ? null : (map['targetResourceRegion'] as String).input(),
-      targetResourceType: map['targetResourceType'] == null ? null : (map['targetResourceType'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetResourceRegion: map['targetResourceRegion'] == null ? null : (map['targetResourceRegion']! as String).input(),
+      targetResourceType: map['targetResourceType'] == null ? null : (map['targetResourceType']! as String).input(),
       windowSize: (map['windowSize'] as String).input(),
     );
   }

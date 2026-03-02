@@ -47,11 +47,11 @@ class AzureFileVolume {
 
   factory AzureFileVolume.fromMap(Map<String, dynamic> map) {
     return AzureFileVolume(
-      enableSubPath: map['enableSubPath'] == null ? null : (map['enableSubPath'] as bool).input(),
-      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions'] as List).cast<String>()).input(),
+      enableSubPath: map['enableSubPath'] == null ? null : (map['enableSubPath']! as bool).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((map['mountOptions']! as List).cast<String>()).input(),
       mountPath: (map['mountPath'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

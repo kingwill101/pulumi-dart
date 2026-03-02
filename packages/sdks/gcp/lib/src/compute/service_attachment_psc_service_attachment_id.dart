@@ -27,8 +27,8 @@ class ServiceAttachmentPscServiceAttachmentId {
 
   factory ServiceAttachmentPscServiceAttachmentId.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentPscServiceAttachmentId(
-      high: map['high'] == null ? null : (map['high'] as String).input(),
-      low: map['low'] == null ? null : (map['low'] as String).input(),
+      high: map['high'] == null ? null : (map['high']! as String).input(),
+      low: map['low'] == null ? null : (map['low']! as String).input(),
     );
   }
 }

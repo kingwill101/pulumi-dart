@@ -22,7 +22,7 @@ class ServiceNetworkSettingsNetworkSettings {
 
   factory ServiceNetworkSettingsNetworkSettings.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkSettingsNetworkSettings(
-      ingressTrafficAllowed: map['ingressTrafficAllowed'] == null ? null : (map['ingressTrafficAllowed'] as String).input(),
+      ingressTrafficAllowed: map['ingressTrafficAllowed'] == null ? null : (map['ingressTrafficAllowed']! as String).input(),
     );
   }
 }

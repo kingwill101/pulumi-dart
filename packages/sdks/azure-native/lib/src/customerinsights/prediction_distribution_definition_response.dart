@@ -32,9 +32,9 @@ class PredictionDistributionDefinitionResponse {
 
   factory PredictionDistributionDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return PredictionDistributionDefinitionResponse(
-      distributions: map['distributions'] == null ? null : (pulumi.Input.decodeList<PredictionDistributionDefinitionResponseDistributions>(map['distributions'], (value) => PredictionDistributionDefinitionResponseDistributions.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      totalNegatives: map['totalNegatives'] == null ? null : (map['totalNegatives'] as double).input(),
-      totalPositives: map['totalPositives'] == null ? null : (map['totalPositives'] as double).input(),
+      distributions: map['distributions'] == null ? null : (pulumi.Input.decodeList<PredictionDistributionDefinitionResponseDistributions>(map['distributions']!, (value) => PredictionDistributionDefinitionResponseDistributions.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      totalNegatives: map['totalNegatives'] == null ? null : (map['totalNegatives']! as double).input(),
+      totalPositives: map['totalPositives'] == null ? null : (map['totalPositives']! as double).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class ResourceClaimTemplateSpecPatch {
 
   factory ResourceClaimTemplateSpecPatch.fromMap(Map<String, dynamic> map) {
     return ResourceClaimTemplateSpecPatch(
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (ResourceClaimSpecPatch.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (ResourceClaimSpecPatch.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

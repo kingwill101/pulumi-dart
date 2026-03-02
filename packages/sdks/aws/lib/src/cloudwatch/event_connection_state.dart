@@ -63,15 +63,15 @@ class EventConnectionState {
 
   factory EventConnectionState.fromMap(Map<String, dynamic> map) {
     return EventConnectionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      authParameters: map['authParameters'] == null ? null : (EventConnectionAuthParameters.fromMap((map['authParameters'] as Map).cast<String, dynamic>())).input(),
-      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      invocationConnectivityParameters: map['invocationConnectivityParameters'] == null ? null : (EventConnectionInvocationConnectivityParameters.fromMap((map['invocationConnectivityParameters'] as Map).cast<String, dynamic>())).input(),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      authParameters: map['authParameters'] == null ? null : ((EventConnectionAuthParameters.fromMap((map['authParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      authorizationType: map['authorizationType'] == null ? null : ((map['authorizationType'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      invocationConnectivityParameters: map['invocationConnectivityParameters'] == null ? null : ((EventConnectionInvocationConnectivityParameters.fromMap((map['invocationConnectivityParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
     );
   }
 }

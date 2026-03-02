@@ -102,18 +102,18 @@ class PhysicalConnectionArgs {
   factory PhysicalConnectionArgs.fromMap(Map<String, dynamic> map) {
     return PhysicalConnectionArgs(
       accessPointId: (map['accessPointId'] as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as String).input(),
-      circuitCode: map['circuitCode'] == null ? null : (map['circuitCode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as String).input(),
+      circuitCode: map['circuitCode'] == null ? null : (map['circuitCode']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       lineOperator: (map['lineOperator'] as String).input(),
-      peerLocation: map['peerLocation'] == null ? null : (map['peerLocation'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      physicalConnectionName: map['physicalConnectionName'] == null ? null : (map['physicalConnectionName'] as String).input(),
-      portType: map['portType'] == null ? null : (map['portType'] as String).input(),
-      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle'] as String).input(),
-      redundantPhysicalConnectionId: map['redundantPhysicalConnectionId'] == null ? null : (map['redundantPhysicalConnectionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      peerLocation: map['peerLocation'] == null ? null : (map['peerLocation']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      physicalConnectionName: map['physicalConnectionName'] == null ? null : (map['physicalConnectionName']! as String).input(),
+      portType: map['portType'] == null ? null : (map['portType']! as String).input(),
+      pricingCycle: map['pricingCycle'] == null ? null : (map['pricingCycle']! as String).input(),
+      redundantPhysicalConnectionId: map['redundantPhysicalConnectionId'] == null ? null : (map['redundantPhysicalConnectionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

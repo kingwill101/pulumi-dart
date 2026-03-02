@@ -27,8 +27,8 @@ class ResponseStatusCode {
 
   factory ResponseStatusCode.fromMap(Map<String, dynamic> map) {
     return ResponseStatusCode(
-      statusClass: map['statusClass'] == null ? null : (ResponseStatusCodeStatusClass.fromValue(map['statusClass'] as String)).input(),
-      statusValue: map['statusValue'] == null ? null : (map['statusValue'] as int).input(),
+      statusClass: map['statusClass'] == null ? null : (ResponseStatusCodeStatusClass.fromValue(map['statusClass']! as String)).input(),
+      statusValue: map['statusValue'] == null ? null : (map['statusValue']! as int).input(),
     );
   }
 }

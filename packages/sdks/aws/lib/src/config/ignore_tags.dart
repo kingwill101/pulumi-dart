@@ -25,8 +25,8 @@ class IgnoreTags {
 
   factory IgnoreTags.fromMap(Map<String, dynamic> map) {
     return IgnoreTags(
-      keyPrefixes: map['keyPrefixes'] == null ? null : ((map['keyPrefixes'] as List).cast<String>()).input(),
-      keys: map['keys'] == null ? null : ((map['keys'] as List).cast<String>()).input(),
+      keyPrefixes: map['keyPrefixes'] == null ? null : (((map['keyPrefixes'] as List).cast<String>()).input()).input(),
+      keys: map['keys'] == null ? null : (((map['keys'] as List).cast<String>()).input()).input(),
     );
   }
 }

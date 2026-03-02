@@ -46,8 +46,8 @@ class GetLakeAssetIamPolicyArgs {
       assetId: (map['assetId'] as String).input(),
       lakeId: (map['lakeId'] as String).input(),
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       zone: (map['zone'] as String).input(),
     );
   }

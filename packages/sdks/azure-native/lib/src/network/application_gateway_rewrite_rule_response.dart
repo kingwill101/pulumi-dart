@@ -38,10 +38,10 @@ class ApplicationGatewayRewriteRuleResponse {
 
   factory ApplicationGatewayRewriteRuleResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRewriteRuleResponse(
-      actionSet: map['actionSet'] == null ? null : (ApplicationGatewayRewriteRuleActionSetResponse.fromMap((map['actionSet'] as Map).cast<String, dynamic>())).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRuleConditionResponse>(map['conditions'], (value) => ApplicationGatewayRewriteRuleConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ruleSequence: map['ruleSequence'] == null ? null : (map['ruleSequence'] as int).input(),
+      actionSet: map['actionSet'] == null ? null : (ApplicationGatewayRewriteRuleActionSetResponse.fromMap((map['actionSet']! as Map).cast<String, dynamic>())).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayRewriteRuleConditionResponse>(map['conditions']!, (value) => ApplicationGatewayRewriteRuleConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ruleSequence: map['ruleSequence'] == null ? null : (map['ruleSequence']! as int).input(),
     );
   }
 }

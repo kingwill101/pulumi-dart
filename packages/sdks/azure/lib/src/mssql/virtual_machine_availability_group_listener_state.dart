@@ -56,13 +56,13 @@ class VirtualMachineAvailabilityGroupListenerState {
 
   factory VirtualMachineAvailabilityGroupListenerState.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAvailabilityGroupListenerState(
-      availabilityGroupName: map['availabilityGroupName'] == null ? null : (map['availabilityGroupName'] as String).input(),
-      loadBalancerConfiguration: map['loadBalancerConfiguration'] == null ? null : (VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration.fromMap((map['loadBalancerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      multiSubnetIpConfigurations: map['multiSubnetIpConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>(map['multiSubnetIpConfigurations'], (value) => VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerReplica>(map['replicas'], (value) => VirtualMachineAvailabilityGroupListenerReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sqlVirtualMachineGroupId: map['sqlVirtualMachineGroupId'] == null ? null : (map['sqlVirtualMachineGroupId'] as String).input(),
+      availabilityGroupName: map['availabilityGroupName'] == null ? null : (map['availabilityGroupName']! as String).input(),
+      loadBalancerConfiguration: map['loadBalancerConfiguration'] == null ? null : (VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration.fromMap((map['loadBalancerConfiguration']! as Map).cast<String, dynamic>())).input(),
+      multiSubnetIpConfigurations: map['multiSubnetIpConfigurations'] == null ? null : (pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>(map['multiSubnetIpConfigurations']!, (value) => VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerReplica>(map['replicas']!, (value) => VirtualMachineAvailabilityGroupListenerReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sqlVirtualMachineGroupId: map['sqlVirtualMachineGroupId'] == null ? null : (map['sqlVirtualMachineGroupId']! as String).input(),
     );
   }
 }

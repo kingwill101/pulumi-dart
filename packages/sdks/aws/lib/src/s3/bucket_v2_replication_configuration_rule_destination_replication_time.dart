@@ -25,8 +25,8 @@ class BucketV2ReplicationConfigurationRuleDestinationReplicationTime {
 
   factory BucketV2ReplicationConfigurationRuleDestinationReplicationTime.fromMap(Map<String, dynamic> map) {
     return BucketV2ReplicationConfigurationRuleDestinationReplicationTime(
-      minutes: map['minutes'] == null ? null : (map['minutes'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      minutes: map['minutes'] == null ? null : ((map['minutes'] as int).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

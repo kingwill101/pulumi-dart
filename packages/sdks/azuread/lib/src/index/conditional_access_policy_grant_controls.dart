@@ -42,11 +42,11 @@ class ConditionalAccessPolicyGrantControls {
 
   factory ConditionalAccessPolicyGrantControls.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyGrantControls(
-      authenticationStrengthPolicyId: map['authenticationStrengthPolicyId'] == null ? null : (map['authenticationStrengthPolicyId'] as String).input(),
-      builtInControls: map['builtInControls'] == null ? null : ((map['builtInControls'] as List).cast<String>()).input(),
-      customAuthenticationFactors: map['customAuthenticationFactors'] == null ? null : ((map['customAuthenticationFactors'] as List).cast<String>()).input(),
+      authenticationStrengthPolicyId: map['authenticationStrengthPolicyId'] == null ? null : (map['authenticationStrengthPolicyId']! as String).input(),
+      builtInControls: map['builtInControls'] == null ? null : ((map['builtInControls']! as List).cast<String>()).input(),
+      customAuthenticationFactors: map['customAuthenticationFactors'] == null ? null : ((map['customAuthenticationFactors']! as List).cast<String>()).input(),
       operator: (map['operator'] as String).input(),
-      termsOfUses: map['termsOfUses'] == null ? null : ((map['termsOfUses'] as List).cast<String>()).input(),
+      termsOfUses: map['termsOfUses'] == null ? null : ((map['termsOfUses']! as List).cast<String>()).input(),
     );
   }
 }

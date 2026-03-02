@@ -24,7 +24,7 @@ class SecurityProfileUrlFilteringProfile {
 
   factory SecurityProfileUrlFilteringProfile.fromMap(Map<String, dynamic> map) {
     return SecurityProfileUrlFilteringProfile(
-      urlFilters: map['urlFilters'] == null ? null : (pulumi.Input.decodeList<SecurityProfileUrlFilteringProfileUrlFilter>(map['urlFilters'], (value) => SecurityProfileUrlFilteringProfileUrlFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      urlFilters: map['urlFilters'] == null ? null : (pulumi.Input.decodeList<SecurityProfileUrlFilteringProfileUrlFilter>(map['urlFilters']!, (value) => SecurityProfileUrlFilteringProfileUrlFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

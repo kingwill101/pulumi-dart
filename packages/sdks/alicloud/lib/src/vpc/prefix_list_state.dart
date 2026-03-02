@@ -78,18 +78,18 @@ class PrefixListState {
 
   factory PrefixListState.fromMap(Map<String, dynamic> map) {
     return PrefixListState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      entrys: map['entrys'] == null ? null : (pulumi.Input.decodeList<PrefixListEntry>(map['entrys'], (value) => PrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      maxEntries: map['maxEntries'] == null ? null : (map['maxEntries'] as int).input(),
-      prefixListAssociations: map['prefixListAssociations'] == null ? null : (pulumi.Input.decodeList<PrefixListPrefixListAssociation>(map['prefixListAssociations'], (value) => PrefixListPrefixListAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prefixListDescription: map['prefixListDescription'] == null ? null : (map['prefixListDescription'] as String).input(),
-      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
-      prefixListName: map['prefixListName'] == null ? null : (map['prefixListName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      shareType: map['shareType'] == null ? null : (map['shareType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      entrys: map['entrys'] == null ? null : (pulumi.Input.decodeList<PrefixListEntry>(map['entrys']!, (value) => PrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      maxEntries: map['maxEntries'] == null ? null : (map['maxEntries']! as int).input(),
+      prefixListAssociations: map['prefixListAssociations'] == null ? null : (pulumi.Input.decodeList<PrefixListPrefixListAssociation>(map['prefixListAssociations']!, (value) => PrefixListPrefixListAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prefixListDescription: map['prefixListDescription'] == null ? null : (map['prefixListDescription']! as String).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId']! as String).input(),
+      prefixListName: map['prefixListName'] == null ? null : (map['prefixListName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      shareType: map['shareType'] == null ? null : (map['shareType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessT
 
   factory IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly.fromMap(Map<String, dynamic> map) {
     return IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelectionAccessTokenOnly(
-      audiences: map['audiences'] == null ? null : ((map['audiences'] as List).cast<String>()).input(),
-      principalIdClaim: map['principalIdClaim'] == null ? null : (map['principalIdClaim'] as String).input(),
+      audiences: map['audiences'] == null ? null : (((map['audiences'] as List).cast<String>()).input()).input(),
+      principalIdClaim: map['principalIdClaim'] == null ? null : ((map['principalIdClaim'] as String).input()).input(),
     );
   }
 }

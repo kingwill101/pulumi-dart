@@ -39,10 +39,10 @@ class AzureTrafficCollectorArgs {
 
   factory AzureTrafficCollectorArgs.fromMap(Map<String, dynamic> map) {
     return AzureTrafficCollectorArgs(
-      azureTrafficCollectorName: map['azureTrafficCollectorName'] == null ? null : (map['azureTrafficCollectorName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      azureTrafficCollectorName: map['azureTrafficCollectorName'] == null ? null : (map['azureTrafficCollectorName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

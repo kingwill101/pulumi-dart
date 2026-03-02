@@ -24,7 +24,7 @@ class GetHostedZoneArgs {
 
   factory GetHostedZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetHostedZoneArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

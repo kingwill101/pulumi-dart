@@ -58,14 +58,14 @@ class HTTPSHealthCheck {
 
   factory HTTPSHealthCheck.fromMap(Map<String, dynamic> map) {
     return HTTPSHealthCheck(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      portName: map['portName'] == null ? null : (map['portName'] as String).input(),
-      portSpecification: map['portSpecification'] == null ? null : (HTTPSHealthCheckPortSpecification.fromValue(map['portSpecification'] as String)).input(),
-      proxyHeader: map['proxyHeader'] == null ? null : (HTTPSHealthCheckProxyHeader.fromValue(map['proxyHeader'] as String)).input(),
-      requestPath: map['requestPath'] == null ? null : (map['requestPath'] as String).input(),
-      response: map['response'] == null ? null : (map['response'] as String).input(),
-      weightReportMode: map['weightReportMode'] == null ? null : (HTTPSHealthCheckWeightReportMode.fromValue(map['weightReportMode'] as String)).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      portName: map['portName'] == null ? null : (map['portName']! as String).input(),
+      portSpecification: map['portSpecification'] == null ? null : (HTTPSHealthCheckPortSpecification.fromValue(map['portSpecification']! as String)).input(),
+      proxyHeader: map['proxyHeader'] == null ? null : (HTTPSHealthCheckProxyHeader.fromValue(map['proxyHeader']! as String)).input(),
+      requestPath: map['requestPath'] == null ? null : (map['requestPath']! as String).input(),
+      response: map['response'] == null ? null : (map['response']! as String).input(),
+      weightReportMode: map['weightReportMode'] == null ? null : (HTTPSHealthCheckWeightReportMode.fromValue(map['weightReportMode']! as String)).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy {
   factory RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy(
       backendService: (map['backendService'] as String).input(),
-      mirrorPercent: map['mirrorPercent'] == null ? null : (map['mirrorPercent'] as double).input(),
+      mirrorPercent: map['mirrorPercent'] == null ? null : (map['mirrorPercent']! as double).input(),
     );
   }
 }

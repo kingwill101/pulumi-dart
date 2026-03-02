@@ -41,10 +41,10 @@ class DataSetRowLevelPermissionDataSet {
   factory DataSetRowLevelPermissionDataSet.fromMap(Map<String, dynamic> map) {
     return DataSetRowLevelPermissionDataSet(
       arn: (map['arn'] as String).input(),
-      formatVersion: map['formatVersion'] == null ? null : (map['formatVersion'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      formatVersion: map['formatVersion'] == null ? null : ((map['formatVersion'] as String).input()).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
       permissionPolicy: (map['permissionPolicy'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

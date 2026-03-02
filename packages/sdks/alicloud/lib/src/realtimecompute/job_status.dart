@@ -42,11 +42,11 @@ class JobStatus {
 
   factory JobStatus.fromMap(Map<String, dynamic> map) {
     return JobStatus(
-      currentJobStatus: map['currentJobStatus'] == null ? null : (map['currentJobStatus'] as String).input(),
-      failure: map['failure'] == null ? null : (JobStatusFailure.fromMap((map['failure'] as Map).cast<String, dynamic>())).input(),
-      healthScore: map['healthScore'] == null ? null : (map['healthScore'] as int).input(),
-      riskLevel: map['riskLevel'] == null ? null : (map['riskLevel'] as String).input(),
-      running: map['running'] == null ? null : (JobStatusRunning.fromMap((map['running'] as Map).cast<String, dynamic>())).input(),
+      currentJobStatus: map['currentJobStatus'] == null ? null : (map['currentJobStatus']! as String).input(),
+      failure: map['failure'] == null ? null : (JobStatusFailure.fromMap((map['failure']! as Map).cast<String, dynamic>())).input(),
+      healthScore: map['healthScore'] == null ? null : (map['healthScore']! as int).input(),
+      riskLevel: map['riskLevel'] == null ? null : (map['riskLevel']! as String).input(),
+      running: map['running'] == null ? null : (JobStatusRunning.fromMap((map['running']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

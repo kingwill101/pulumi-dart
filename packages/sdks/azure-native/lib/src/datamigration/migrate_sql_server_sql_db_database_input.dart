@@ -46,12 +46,12 @@ class MigrateSqlServerSqlDbDatabaseInput {
 
   factory MigrateSqlServerSqlDbDatabaseInput.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlDbDatabaseInput(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      makeSourceDbReadOnly: map['makeSourceDbReadOnly'] == null ? null : (map['makeSourceDbReadOnly'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      schemaSetting: map['schemaSetting'] == null ? null : (map['schemaSetting']).input(),
-      tableMap: map['tableMap'] == null ? null : ((map['tableMap'] as Map).cast<String, String>()).input(),
-      targetDatabaseName: map['targetDatabaseName'] == null ? null : (map['targetDatabaseName'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      makeSourceDbReadOnly: map['makeSourceDbReadOnly'] == null ? null : (map['makeSourceDbReadOnly']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      schemaSetting: map['schemaSetting'] == null ? null : (map['schemaSetting']!).input(),
+      tableMap: map['tableMap'] == null ? null : ((map['tableMap']! as Map).cast<String, String>()).input(),
+      targetDatabaseName: map['targetDatabaseName'] == null ? null : (map['targetDatabaseName']! as String).input(),
     );
   }
 }

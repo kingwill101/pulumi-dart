@@ -110,24 +110,24 @@ class OneDashboardPageWidgetHistogram {
 
   factory OneDashboardPageWidgetHistogram.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetHistogram(
-      colors: map['colors'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramColor>(map['colors'], (value) => OneDashboardPageWidgetHistogramColor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      colors: map['colors'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramColor>(map['colors']!, (value) => OneDashboardPageWidgetHistogramColor.fromMap((value as Map).cast<String, dynamic>()))).input(),
       column: (map['column'] as int).input(),
-      dataFormats: map['dataFormats'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramDataFormat>(map['dataFormats'], (value) => OneDashboardPageWidgetHistogramDataFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      facetShowOtherSeries: map['facetShowOtherSeries'] == null ? null : (map['facetShowOtherSeries'] as bool).input(),
-      height: map['height'] == null ? null : (map['height'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ignoreTimeRange: map['ignoreTimeRange'] == null ? null : (map['ignoreTimeRange'] as bool).input(),
-      initialSorting: map['initialSorting'] == null ? null : (OneDashboardPageWidgetHistogramInitialSorting.fromMap((map['initialSorting'] as Map).cast<String, dynamic>())).input(),
-      legendEnabled: map['legendEnabled'] == null ? null : (map['legendEnabled'] as bool).input(),
+      dataFormats: map['dataFormats'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramDataFormat>(map['dataFormats']!, (value) => OneDashboardPageWidgetHistogramDataFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      facetShowOtherSeries: map['facetShowOtherSeries'] == null ? null : (map['facetShowOtherSeries']! as bool).input(),
+      height: map['height'] == null ? null : (map['height']! as int).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ignoreTimeRange: map['ignoreTimeRange'] == null ? null : (map['ignoreTimeRange']! as bool).input(),
+      initialSorting: map['initialSorting'] == null ? null : (OneDashboardPageWidgetHistogramInitialSorting.fromMap((map['initialSorting']! as Map).cast<String, dynamic>())).input(),
+      legendEnabled: map['legendEnabled'] == null ? null : (map['legendEnabled']! as bool).input(),
       nrqlQueries: (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramNrqlQuery>(map['nrqlQueries'], (value) => OneDashboardPageWidgetHistogramNrqlQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nullValues: map['nullValues'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramNullValue>(map['nullValues'], (value) => OneDashboardPageWidgetHistogramNullValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      refreshRate: map['refreshRate'] == null ? null : (map['refreshRate'] as String).input(),
+      nullValues: map['nullValues'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramNullValue>(map['nullValues']!, (value) => OneDashboardPageWidgetHistogramNullValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      refreshRate: map['refreshRate'] == null ? null : (map['refreshRate']! as String).input(),
       row: (map['row'] as int).input(),
       title: (map['title'] as String).input(),
-      units: map['units'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramUnit>(map['units'], (value) => OneDashboardPageWidgetHistogramUnit.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      width: map['width'] == null ? null : (map['width'] as int).input(),
-      yAxisLeftMax: map['yAxisLeftMax'] == null ? null : (map['yAxisLeftMax'] as double).input(),
-      yAxisLeftMin: map['yAxisLeftMin'] == null ? null : (map['yAxisLeftMin'] as double).input(),
+      units: map['units'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramUnit>(map['units']!, (value) => OneDashboardPageWidgetHistogramUnit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      width: map['width'] == null ? null : (map['width']! as int).input(),
+      yAxisLeftMax: map['yAxisLeftMax'] == null ? null : (map['yAxisLeftMax']! as double).input(),
+      yAxisLeftMin: map['yAxisLeftMin'] == null ? null : (map['yAxisLeftMin']! as double).input(),
     );
   }
 }

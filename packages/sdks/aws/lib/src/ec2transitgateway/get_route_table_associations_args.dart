@@ -40,8 +40,8 @@ class GetRouteTableAssociationsArgs {
 
   factory GetRouteTableAssociationsArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteTableAssociationsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetRouteTableAssociationsFilter>(map['filters'], (value) => GetRouteTableAssociationsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetRouteTableAssociationsFilter>(map['filters']!, (value) => GetRouteTableAssociationsFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       transitGatewayRouteTableId: (map['transitGatewayRouteTableId'] as String).input(),
     );
   }

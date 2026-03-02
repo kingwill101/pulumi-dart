@@ -48,9 +48,9 @@ class ConnectionProfileSqlServerProfile {
     return ConnectionProfileSqlServerProfile(
       database: (map['database'] as String).input(),
       hostname: (map['hostname'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      secretManagerStoredPassword: map['secretManagerStoredPassword'] == null ? null : (map['secretManagerStoredPassword'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      secretManagerStoredPassword: map['secretManagerStoredPassword'] == null ? null : (map['secretManagerStoredPassword']! as String).input(),
       username: (map['username'] as String).input(),
     );
   }

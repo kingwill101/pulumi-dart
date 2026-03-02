@@ -73,16 +73,16 @@ class NetworkInsightsPathArgs {
 
   factory NetworkInsightsPathArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsPathArgs(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      destinationIp: map['destinationIp'] == null ? null : (map['destinationIp'] as String).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
-      filterAtDestination: map['filterAtDestination'] == null ? null : (NetworkInsightsPathFilterAtDestination.fromMap((map['filterAtDestination'] as Map).cast<String, dynamic>())).input(),
-      filterAtSource: map['filterAtSource'] == null ? null : (NetworkInsightsPathFilterAtSource.fromMap((map['filterAtSource'] as Map).cast<String, dynamic>())).input(),
+      destination: map['destination'] == null ? null : ((map['destination'] as String).input()).input(),
+      destinationIp: map['destinationIp'] == null ? null : ((map['destinationIp'] as String).input()).input(),
+      destinationPort: map['destinationPort'] == null ? null : ((map['destinationPort'] as int).input()).input(),
+      filterAtDestination: map['filterAtDestination'] == null ? null : ((NetworkInsightsPathFilterAtDestination.fromMap((map['filterAtDestination']! as Map).cast<String, dynamic>())).input()).input(),
+      filterAtSource: map['filterAtSource'] == null ? null : ((NetworkInsightsPathFilterAtSource.fromMap((map['filterAtSource']! as Map).cast<String, dynamic>())).input()).input(),
       protocol: (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       source: (map['source'] as String).input(),
-      sourceIp: map['sourceIp'] == null ? null : (map['sourceIp'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sourceIp: map['sourceIp'] == null ? null : ((map['sourceIp'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

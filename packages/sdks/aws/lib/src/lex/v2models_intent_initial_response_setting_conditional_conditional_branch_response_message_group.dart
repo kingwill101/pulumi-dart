@@ -27,8 +27,8 @@ class V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMe
 
   factory V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroup.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroup(
-      message: map['message'] == null ? null : (V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupMessage.fromMap((map['message'] as Map).cast<String, dynamic>())).input(),
-      variations: map['variations'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariation>(map['variations'], (value) => V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : ((V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupMessage.fromMap((map['message']! as Map).cast<String, dynamic>())).input()).input(),
+      variations: map['variations'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariation>(map['variations']!, (value) => V2modelsIntentInitialResponseSettingConditionalConditionalBranchResponseMessageGroupVariation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

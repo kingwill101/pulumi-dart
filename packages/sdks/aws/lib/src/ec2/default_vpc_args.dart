@@ -65,17 +65,17 @@ class DefaultVpcArgs {
 
   factory DefaultVpcArgs.fromMap(Map<String, dynamic> map) {
     return DefaultVpcArgs(
-      assignGeneratedIpv6CidrBlock: map['assignGeneratedIpv6CidrBlock'] == null ? null : (map['assignGeneratedIpv6CidrBlock'] as bool).input(),
-      enableDnsHostnames: map['enableDnsHostnames'] == null ? null : (map['enableDnsHostnames'] as bool).input(),
-      enableDnsSupport: map['enableDnsSupport'] == null ? null : (map['enableDnsSupport'] as bool).input(),
-      enableNetworkAddressUsageMetrics: map['enableNetworkAddressUsageMetrics'] == null ? null : (map['enableNetworkAddressUsageMetrics'] as bool).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
-      ipv6CidrBlockNetworkBorderGroup: map['ipv6CidrBlockNetworkBorderGroup'] == null ? null : (map['ipv6CidrBlockNetworkBorderGroup'] as String).input(),
-      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : (map['ipv6IpamPoolId'] as String).input(),
-      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : (map['ipv6NetmaskLength'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      assignGeneratedIpv6CidrBlock: map['assignGeneratedIpv6CidrBlock'] == null ? null : ((map['assignGeneratedIpv6CidrBlock'] as bool).input()).input(),
+      enableDnsHostnames: map['enableDnsHostnames'] == null ? null : ((map['enableDnsHostnames'] as bool).input()).input(),
+      enableDnsSupport: map['enableDnsSupport'] == null ? null : ((map['enableDnsSupport'] as bool).input()).input(),
+      enableNetworkAddressUsageMetrics: map['enableNetworkAddressUsageMetrics'] == null ? null : ((map['enableNetworkAddressUsageMetrics'] as bool).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : ((map['ipv6CidrBlock'] as String).input()).input(),
+      ipv6CidrBlockNetworkBorderGroup: map['ipv6CidrBlockNetworkBorderGroup'] == null ? null : ((map['ipv6CidrBlockNetworkBorderGroup'] as String).input()).input(),
+      ipv6IpamPoolId: map['ipv6IpamPoolId'] == null ? null : ((map['ipv6IpamPoolId'] as String).input()).input(),
+      ipv6NetmaskLength: map['ipv6NetmaskLength'] == null ? null : ((map['ipv6NetmaskLength'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

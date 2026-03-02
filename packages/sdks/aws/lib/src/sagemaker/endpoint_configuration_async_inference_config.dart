@@ -27,8 +27,8 @@ class EndpointConfigurationAsyncInferenceConfig {
 
   factory EndpointConfigurationAsyncInferenceConfig.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationAsyncInferenceConfig(
-      clientConfig: map['clientConfig'] == null ? null : (EndpointConfigurationAsyncInferenceConfigClientConfig.fromMap((map['clientConfig'] as Map).cast<String, dynamic>())).input(),
-      outputConfig: (EndpointConfigurationAsyncInferenceConfigOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())).input(),
+      clientConfig: map['clientConfig'] == null ? null : ((EndpointConfigurationAsyncInferenceConfigClientConfig.fromMap((map['clientConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      outputConfig: (EndpointConfigurationAsyncInferenceConfigOutputConfig.fromMap((map['outputConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

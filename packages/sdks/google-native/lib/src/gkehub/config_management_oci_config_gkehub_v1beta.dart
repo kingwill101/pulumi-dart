@@ -41,11 +41,11 @@ class ConfigManagementOciConfigGkehubV1beta {
 
   factory ConfigManagementOciConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return ConfigManagementOciConfigGkehubV1beta(
-      gcpServiceAccountEmail: map['gcpServiceAccountEmail'] == null ? null : (map['gcpServiceAccountEmail'] as String).input(),
-      policyDir: map['policyDir'] == null ? null : (map['policyDir'] as String).input(),
-      secretType: map['secretType'] == null ? null : (map['secretType'] as String).input(),
-      syncRepo: map['syncRepo'] == null ? null : (map['syncRepo'] as String).input(),
-      syncWaitSecs: map['syncWaitSecs'] == null ? null : (map['syncWaitSecs'] as String).input(),
+      gcpServiceAccountEmail: map['gcpServiceAccountEmail'] == null ? null : (map['gcpServiceAccountEmail']! as String).input(),
+      policyDir: map['policyDir'] == null ? null : (map['policyDir']! as String).input(),
+      secretType: map['secretType'] == null ? null : (map['secretType']! as String).input(),
+      syncRepo: map['syncRepo'] == null ? null : (map['syncRepo']! as String).input(),
+      syncWaitSecs: map['syncWaitSecs'] == null ? null : (map['syncWaitSecs']! as String).input(),
     );
   }
 }

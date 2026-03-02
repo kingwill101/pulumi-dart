@@ -23,8 +23,8 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
 
   factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsTotalLocalStorageGb.fromMap(Map<String, dynamic> map) {
     return CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsTotalLocalStorageGb(
-      max: map['max'] == null ? null : (map['max'] as double).input(),
-      min: map['min'] == null ? null : (map['min'] as double).input(),
+      max: map['max'] == null ? null : ((map['max'] as double).input()).input(),
+      min: map['min'] == null ? null : ((map['min'] as double).input()).input(),
     );
   }
 }

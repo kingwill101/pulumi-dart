@@ -71,17 +71,17 @@ class ActivationState {
 
   factory ActivationState.fromMap(Map<String, dynamic> map) {
     return ActivationState(
-      activationCode: map['activationCode'] == null ? null : (map['activationCode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
-      expired: map['expired'] == null ? null : (map['expired'] as bool).input(),
-      iamRole: map['iamRole'] == null ? null : (map['iamRole'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registrationCount: map['registrationCount'] == null ? null : (map['registrationCount'] as int).input(),
-      registrationLimit: map['registrationLimit'] == null ? null : (map['registrationLimit'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      activationCode: map['activationCode'] == null ? null : ((map['activationCode'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      expirationDate: map['expirationDate'] == null ? null : ((map['expirationDate'] as String).input()).input(),
+      expired: map['expired'] == null ? null : ((map['expired'] as bool).input()).input(),
+      iamRole: map['iamRole'] == null ? null : ((map['iamRole'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registrationCount: map['registrationCount'] == null ? null : ((map['registrationCount'] as int).input()).input(),
+      registrationLimit: map['registrationLimit'] == null ? null : ((map['registrationLimit'] as int).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

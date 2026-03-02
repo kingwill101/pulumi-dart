@@ -37,10 +37,10 @@ class WebAclRuleStatementByteMatchStatement {
 
   factory WebAclRuleStatementByteMatchStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementByteMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null ? null : (WebAclRuleStatementByteMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((WebAclRuleStatementByteMatchStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
       positionalConstraint: (map['positionalConstraint'] as String).input(),
       searchString: (map['searchString'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementByteMatchStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementByteMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementByteMatchStatementTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementByteMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

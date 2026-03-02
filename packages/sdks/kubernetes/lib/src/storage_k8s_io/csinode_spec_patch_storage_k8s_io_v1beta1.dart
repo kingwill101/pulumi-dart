@@ -22,7 +22,7 @@ class CSINodeSpecPatchStorageK8sIoV1beta1 {
 
   factory CSINodeSpecPatchStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CSINodeSpecPatchStorageK8sIoV1beta1(
-      drivers: map['drivers'] == null ? null : (pulumi.Input.decodeList<CSINodeDriverPatchStorageK8sIoV1beta1>(map['drivers'], (value) => CSINodeDriverPatchStorageK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      drivers: map['drivers'] == null ? null : (pulumi.Input.decodeList<CSINodeDriverPatchStorageK8sIoV1beta1>(map['drivers']!, (value) => CSINodeDriverPatchStorageK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

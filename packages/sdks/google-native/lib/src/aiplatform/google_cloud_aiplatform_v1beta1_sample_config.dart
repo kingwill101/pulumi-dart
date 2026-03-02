@@ -32,9 +32,9 @@ class GoogleCloudAiplatformV1beta1SampleConfig {
 
   factory GoogleCloudAiplatformV1beta1SampleConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1SampleConfig(
-      followingBatchSamplePercentage: map['followingBatchSamplePercentage'] == null ? null : (map['followingBatchSamplePercentage'] as int).input(),
-      initialBatchSamplePercentage: map['initialBatchSamplePercentage'] == null ? null : (map['initialBatchSamplePercentage'] as int).input(),
-      sampleStrategy: map['sampleStrategy'] == null ? null : (GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy.fromValue(map['sampleStrategy'] as String)).input(),
+      followingBatchSamplePercentage: map['followingBatchSamplePercentage'] == null ? null : (map['followingBatchSamplePercentage']! as int).input(),
+      initialBatchSamplePercentage: map['initialBatchSamplePercentage'] == null ? null : (map['initialBatchSamplePercentage']! as int).input(),
+      sampleStrategy: map['sampleStrategy'] == null ? null : (GoogleCloudAiplatformV1beta1SampleConfigSampleStrategy.fromValue(map['sampleStrategy']! as String)).input(),
     );
   }
 }

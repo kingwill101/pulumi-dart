@@ -21,7 +21,7 @@ class HibernationOptions {
 
   factory HibernationOptions.fromMap(Map<String, dynamic> map) {
     return HibernationOptions(
-      configured: map['configured'] == null ? null : (map['configured'] as bool).input(),
+      configured: map['configured'] == null ? null : (map['configured']! as bool).input(),
     );
   }
 }

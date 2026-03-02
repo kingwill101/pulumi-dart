@@ -35,10 +35,10 @@ class ResolverRuleTargetIp {
 
   factory ResolverRuleTargetIp.fromMap(Map<String, dynamic> map) {
     return ResolverRuleTargetIp(
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      ip: map['ip'] == null ? null : ((map['ip'] as String).input()).input(),
+      ipv6: map['ipv6'] == null ? null : ((map['ipv6'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
     );
   }
 }

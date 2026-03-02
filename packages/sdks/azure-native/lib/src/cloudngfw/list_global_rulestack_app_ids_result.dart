@@ -25,7 +25,7 @@ class ListGlobalRulestackAppIdsResult {
 
   factory ListGlobalRulestackAppIdsResult.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackAppIdsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: (map['value'] as List).cast<String>(),
     );
   }

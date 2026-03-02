@@ -43,7 +43,7 @@ class GetSecurityOperatorResult {
     return GetSecurityOperatorResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       type: map['type'] as String,
     );

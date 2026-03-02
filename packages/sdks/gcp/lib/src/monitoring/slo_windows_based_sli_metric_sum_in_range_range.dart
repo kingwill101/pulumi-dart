@@ -29,8 +29,8 @@ class SloWindowsBasedSliMetricSumInRangeRange {
 
   factory SloWindowsBasedSliMetricSumInRangeRange.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSliMetricSumInRangeRange(
-      max: map['max'] == null ? null : (map['max'] as double).input(),
-      min: map['min'] == null ? null : (map['min'] as double).input(),
+      max: map['max'] == null ? null : (map['max']! as double).input(),
+      min: map['min'] == null ? null : (map['min']! as double).input(),
     );
   }
 }

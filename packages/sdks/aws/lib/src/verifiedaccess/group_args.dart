@@ -52,11 +52,11 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sseConfiguration: map['sseConfiguration'] == null ? null : (GroupSseConfiguration.fromMap((map['sseConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      policyDocument: map['policyDocument'] == null ? null : ((map['policyDocument'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sseConfiguration: map['sseConfiguration'] == null ? null : ((GroupSseConfiguration.fromMap((map['sseConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       verifiedaccessInstanceId: (map['verifiedaccessInstanceId'] as String).input(),
     );
   }

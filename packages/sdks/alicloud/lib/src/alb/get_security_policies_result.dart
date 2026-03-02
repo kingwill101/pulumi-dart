@@ -64,15 +64,15 @@ class GetSecurityPoliciesResult {
     return GetSecurityPoliciesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       policies: pulumi.Input.decodeList<GetSecurityPoliciesPolicy>(map['policies'], (value) => GetSecurityPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      securityPolicyIds: map['securityPolicyIds'] == null ? null : (map['securityPolicyIds'] as List).cast<String>(),
-      securityPolicyName: map['securityPolicyName'] == null ? null : map['securityPolicyName'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      securityPolicyIds: map['securityPolicyIds'] == null ? null : (map['securityPolicyIds']! as List).cast<String>(),
+      securityPolicyName: map['securityPolicyName'] == null ? null : map['securityPolicyName']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

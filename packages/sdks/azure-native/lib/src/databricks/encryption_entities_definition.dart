@@ -28,8 +28,8 @@ class EncryptionEntitiesDefinition {
 
   factory EncryptionEntitiesDefinition.fromMap(Map<String, dynamic> map) {
     return EncryptionEntitiesDefinition(
-      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskEncryption.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
-      managedServices: map['managedServices'] == null ? null : (EncryptionV2.fromMap((map['managedServices'] as Map).cast<String, dynamic>())).input(),
+      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskEncryption.fromMap((map['managedDisk']! as Map).cast<String, dynamic>())).input(),
+      managedServices: map['managedServices'] == null ? null : (EncryptionV2.fromMap((map['managedServices']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class OpenApiConfiguration {
 
   factory OpenApiConfiguration.fromMap(Map<String, dynamic> map) {
     return OpenApiConfiguration(
-      validation: map['validation'] == null ? null : (OpenApiValidation.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
+      validation: map['validation'] == null ? null : (OpenApiValidation.fromMap((map['validation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

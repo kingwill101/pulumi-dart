@@ -35,10 +35,10 @@ class UserAlarmConfigContactConfig {
 
   factory UserAlarmConfigContactConfig.fromMap(Map<String, dynamic> map) {
     return UserAlarmConfigContactConfig(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      mobilePhone: map['mobilePhone'] == null ? null : (map['mobilePhone'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      mobilePhone: map['mobilePhone'] == null ? null : (map['mobilePhone']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

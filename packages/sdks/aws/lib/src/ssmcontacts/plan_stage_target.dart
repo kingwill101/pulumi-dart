@@ -27,8 +27,8 @@ class PlanStageTarget {
 
   factory PlanStageTarget.fromMap(Map<String, dynamic> map) {
     return PlanStageTarget(
-      channelTargetInfo: map['channelTargetInfo'] == null ? null : (PlanStageTargetChannelTargetInfo.fromMap((map['channelTargetInfo'] as Map).cast<String, dynamic>())).input(),
-      contactTargetInfo: map['contactTargetInfo'] == null ? null : (PlanStageTargetContactTargetInfo.fromMap((map['contactTargetInfo'] as Map).cast<String, dynamic>())).input(),
+      channelTargetInfo: map['channelTargetInfo'] == null ? null : ((PlanStageTargetChannelTargetInfo.fromMap((map['channelTargetInfo']! as Map).cast<String, dynamic>())).input()).input(),
+      contactTargetInfo: map['contactTargetInfo'] == null ? null : ((PlanStageTargetContactTargetInfo.fromMap((map['contactTargetInfo']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

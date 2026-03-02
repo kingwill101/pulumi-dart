@@ -26,8 +26,8 @@ class CommitmentPlanAssociationResponse {
 
   factory CommitmentPlanAssociationResponse.fromMap(Map<String, dynamic> map) {
     return CommitmentPlanAssociationResponse(
-      commitmentPlanId: map['commitmentPlanId'] == null ? null : (map['commitmentPlanId'] as String).input(),
-      commitmentPlanLocation: map['commitmentPlanLocation'] == null ? null : (map['commitmentPlanLocation'] as String).input(),
+      commitmentPlanId: map['commitmentPlanId'] == null ? null : (map['commitmentPlanId']! as String).input(),
+      commitmentPlanLocation: map['commitmentPlanLocation'] == null ? null : (map['commitmentPlanLocation']! as String).input(),
     );
   }
 }

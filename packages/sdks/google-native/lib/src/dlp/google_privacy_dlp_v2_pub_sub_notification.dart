@@ -39,10 +39,10 @@ class GooglePrivacyDlpV2PubSubNotification {
 
   factory GooglePrivacyDlpV2PubSubNotification.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PubSubNotification(
-      detailOfMessage: map['detailOfMessage'] == null ? null : (GooglePrivacyDlpV2PubSubNotificationDetailOfMessage.fromValue(map['detailOfMessage'] as String)).input(),
-      event: map['event'] == null ? null : (GooglePrivacyDlpV2PubSubNotificationEvent.fromValue(map['event'] as String)).input(),
-      pubsubCondition: map['pubsubCondition'] == null ? null : (GooglePrivacyDlpV2DataProfilePubSubCondition.fromMap((map['pubsubCondition'] as Map).cast<String, dynamic>())).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      detailOfMessage: map['detailOfMessage'] == null ? null : (GooglePrivacyDlpV2PubSubNotificationDetailOfMessage.fromValue(map['detailOfMessage']! as String)).input(),
+      event: map['event'] == null ? null : (GooglePrivacyDlpV2PubSubNotificationEvent.fromValue(map['event']! as String)).input(),
+      pubsubCondition: map['pubsubCondition'] == null ? null : (GooglePrivacyDlpV2DataProfilePubSubCondition.fromMap((map['pubsubCondition']! as Map).cast<String, dynamic>())).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

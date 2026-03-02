@@ -26,8 +26,8 @@ class ResourceVersionPolicyConfigurationResponse {
 
   factory ResourceVersionPolicyConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceVersionPolicyConfigurationResponse(
-      default_: map['default'] == null ? null : (map['default'] as String).input(),
-      resourceTypeOverrides: map['resourceTypeOverrides'] == null ? null : ((map['resourceTypeOverrides'] as Map).cast<String, String>()).input(),
+      default_: map['default'] == null ? null : (map['default']! as String).input(),
+      resourceTypeOverrides: map['resourceTypeOverrides'] == null ? null : ((map['resourceTypeOverrides']! as Map).cast<String, String>()).input(),
     );
   }
 }

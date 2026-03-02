@@ -64,15 +64,15 @@ class NotificationHubAuthorizationRuleArgs {
 
   factory NotificationHubAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return NotificationHubAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       notificationHubName: (map['notificationHubName'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       rights: ((map['rights'] as List).cast<String>()).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

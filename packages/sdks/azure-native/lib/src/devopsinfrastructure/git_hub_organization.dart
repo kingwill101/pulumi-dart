@@ -26,7 +26,7 @@ class GitHubOrganization {
 
   factory GitHubOrganization.fromMap(Map<String, dynamic> map) {
     return GitHubOrganization(
-      repositories: map['repositories'] == null ? null : ((map['repositories'] as List).cast<String>()).input(),
+      repositories: map['repositories'] == null ? null : ((map['repositories']! as List).cast<String>()).input(),
       url: (map['url'] as String).input(),
     );
   }

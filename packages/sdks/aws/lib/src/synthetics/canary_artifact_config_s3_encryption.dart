@@ -25,8 +25,8 @@ class CanaryArtifactConfigS3Encryption {
 
   factory CanaryArtifactConfigS3Encryption.fromMap(Map<String, dynamic> map) {
     return CanaryArtifactConfigS3Encryption(
-      encryptionMode: map['encryptionMode'] == null ? null : (map['encryptionMode'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      encryptionMode: map['encryptionMode'] == null ? null : ((map['encryptionMode'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
     );
   }
 }

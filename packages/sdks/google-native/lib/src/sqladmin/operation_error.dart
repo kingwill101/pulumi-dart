@@ -31,9 +31,9 @@ class OperationError {
 
   factory OperationError.fromMap(Map<String, dynamic> map) {
     return OperationError(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

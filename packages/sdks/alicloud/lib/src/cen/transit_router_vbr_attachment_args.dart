@@ -81,18 +81,18 @@ class TransitRouterVbrAttachmentArgs {
 
   factory TransitRouterVbrAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterVbrAttachmentArgs(
-      autoPublishRouteEnabled: map['autoPublishRouteEnabled'] == null ? null : (map['autoPublishRouteEnabled'] as bool).input(),
+      autoPublishRouteEnabled: map['autoPublishRouteEnabled'] == null ? null : (map['autoPublishRouteEnabled']! as bool).input(),
       cenId: (map['cenId'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      routeTableAssociationEnabled: map['routeTableAssociationEnabled'] == null ? null : (map['routeTableAssociationEnabled'] as bool).input(),
-      routeTablePropagationEnabled: map['routeTablePropagationEnabled'] == null ? null : (map['routeTablePropagationEnabled'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitRouterAttachmentDescription: map['transitRouterAttachmentDescription'] == null ? null : (map['transitRouterAttachmentDescription'] as String).input(),
-      transitRouterAttachmentName: map['transitRouterAttachmentName'] == null ? null : (map['transitRouterAttachmentName'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      routeTableAssociationEnabled: map['routeTableAssociationEnabled'] == null ? null : (map['routeTableAssociationEnabled']! as bool).input(),
+      routeTablePropagationEnabled: map['routeTablePropagationEnabled'] == null ? null : (map['routeTablePropagationEnabled']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      transitRouterAttachmentDescription: map['transitRouterAttachmentDescription'] == null ? null : (map['transitRouterAttachmentDescription']! as String).input(),
+      transitRouterAttachmentName: map['transitRouterAttachmentName'] == null ? null : (map['transitRouterAttachmentName']! as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
       vbrId: (map['vbrId'] as String).input(),
-      vbrOwnerId: map['vbrOwnerId'] == null ? null : (map['vbrOwnerId'] as String).input(),
+      vbrOwnerId: map['vbrOwnerId'] == null ? null : (map['vbrOwnerId']! as String).input(),
     );
   }
 }

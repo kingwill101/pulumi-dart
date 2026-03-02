@@ -23,8 +23,8 @@ class EnvelopeSignature {
 
   factory EnvelopeSignature.fromMap(Map<String, dynamic> map) {
     return EnvelopeSignature(
-      keyid: map['keyid'] == null ? null : (map['keyid'] as String).input(),
-      sig: map['sig'] == null ? null : (map['sig'] as String).input(),
+      keyid: map['keyid'] == null ? null : (map['keyid']! as String).input(),
+      sig: map['sig'] == null ? null : (map['sig']! as String).input(),
     );
   }
 }

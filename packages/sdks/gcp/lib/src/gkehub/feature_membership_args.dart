@@ -62,14 +62,14 @@ class FeatureMembershipArgs {
 
   factory FeatureMembershipArgs.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipArgs(
-      configmanagement: map['configmanagement'] == null ? null : (FeatureMembershipConfigmanagement.fromMap((map['configmanagement'] as Map).cast<String, dynamic>())).input(),
+      configmanagement: map['configmanagement'] == null ? null : (FeatureMembershipConfigmanagement.fromMap((map['configmanagement']! as Map).cast<String, dynamic>())).input(),
       feature: (map['feature'] as String).input(),
       location: (map['location'] as String).input(),
       membership: (map['membership'] as String).input(),
-      membershipLocation: map['membershipLocation'] == null ? null : (map['membershipLocation'] as String).input(),
-      mesh: map['mesh'] == null ? null : (FeatureMembershipMesh.fromMap((map['mesh'] as Map).cast<String, dynamic>())).input(),
-      policycontroller: map['policycontroller'] == null ? null : (FeatureMembershipPolicycontroller.fromMap((map['policycontroller'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      membershipLocation: map['membershipLocation'] == null ? null : (map['membershipLocation']! as String).input(),
+      mesh: map['mesh'] == null ? null : (FeatureMembershipMesh.fromMap((map['mesh']! as Map).cast<String, dynamic>())).input(),
+      policycontroller: map['policycontroller'] == null ? null : (FeatureMembershipPolicycontroller.fromMap((map['policycontroller']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

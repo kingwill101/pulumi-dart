@@ -27,8 +27,8 @@ class PublicKeyCredential {
 
   factory PublicKeyCredential.fromMap(Map<String, dynamic> map) {
     return PublicKeyCredential(
-      format: map['format'] == null ? null : (PublicKeyCredentialFormat.fromValue(map['format'] as String)).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      format: map['format'] == null ? null : (PublicKeyCredentialFormat.fromValue(map['format']! as String)).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

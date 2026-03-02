@@ -50,7 +50,7 @@ class WorkspaceProductApiLinkArgs {
   factory WorkspaceProductApiLinkArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceProductApiLinkArgs(
       apiId: (map['apiId'] as String).input(),
-      apiLinkId: map['apiLinkId'] == null ? null : (map['apiLinkId'] as String).input(),
+      apiLinkId: map['apiLinkId'] == null ? null : (map['apiLinkId']! as String).input(),
       productId: (map['productId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),

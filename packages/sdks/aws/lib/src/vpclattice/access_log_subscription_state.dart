@@ -56,14 +56,14 @@ class AccessLogSubscriptionState {
 
   factory AccessLogSubscriptionState.fromMap(Map<String, dynamic> map) {
     return AccessLogSubscriptionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
-      resourceIdentifier: map['resourceIdentifier'] == null ? null : (map['resourceIdentifier'] as String).input(),
-      serviceNetworkLogType: map['serviceNetworkLogType'] == null ? null : (map['serviceNetworkLogType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      destinationArn: map['destinationArn'] == null ? null : ((map['destinationArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
+      resourceIdentifier: map['resourceIdentifier'] == null ? null : ((map['resourceIdentifier'] as String).input()).input(),
+      serviceNetworkLogType: map['serviceNetworkLogType'] == null ? null : ((map['serviceNetworkLogType'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

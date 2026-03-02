@@ -67,13 +67,13 @@ class WasmPluginArgs {
 
   factory WasmPluginArgs.fromMap(Map<String, dynamic> map) {
     return WasmPluginArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logConfig: map['logConfig'] == null ? null : (WasmPluginLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logConfig: map['logConfig'] == null ? null : (WasmPluginLogConfig.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input(),
       mainVersionId: (map['mainVersionId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       versions: (pulumi.Input.decodeList<WasmPluginVersion>(map['versions'], (value) => WasmPluginVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

@@ -33,7 +33,7 @@ class GetModelDeploymentMonitoringJobArgs {
     return GetModelDeploymentMonitoringJobArgs(
       location: (map['location'] as String).input(),
       modelDeploymentMonitoringJobId: (map['modelDeploymentMonitoringJobId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

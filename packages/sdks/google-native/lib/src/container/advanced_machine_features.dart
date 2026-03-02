@@ -21,7 +21,7 @@ class AdvancedMachineFeatures {
 
   factory AdvancedMachineFeatures.fromMap(Map<String, dynamic> map) {
     return AdvancedMachineFeatures(
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore'] as String).input(),
+      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore']! as String).input(),
     );
   }
 }

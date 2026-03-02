@@ -33,9 +33,9 @@ class EventSubscriptionDestination {
 
   factory EventSubscriptionDestination.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionDestination(
-      endpoint: map['endpoint'] == null ? null : (EndPoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      type: map['type'] == null ? null : (EventSubscriptionDestinationType.fromValue(map['type'] as String)).input(),
+      endpoint: map['endpoint'] == null ? null : (EndPoint.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      type: map['type'] == null ? null : (EventSubscriptionDestinationType.fromValue(map['type']! as String)).input(),
     );
   }
 }

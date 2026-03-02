@@ -53,13 +53,13 @@ class StorageCapacityUnitState {
 
   factory StorageCapacityUnitState.fromMap(Map<String, dynamic> map) {
     return StorageCapacityUnitState(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      storageCapacityUnitName: map['storageCapacityUnitName'] == null ? null : (map['storageCapacityUnitName'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      storageCapacityUnitName: map['storageCapacityUnitName'] == null ? null : (map['storageCapacityUnitName']! as String).input(),
     );
   }
 }

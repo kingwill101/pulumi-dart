@@ -32,9 +32,9 @@ class CronJobStatusPatch {
 
   factory CronJobStatusPatch.fromMap(Map<String, dynamic> map) {
     return CronJobStatusPatch(
-      active: map['active'] == null ? null : (pulumi.Input.decodeList<ObjectReferencePatch>(map['active'], (value) => ObjectReferencePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastScheduleTime: map['lastScheduleTime'] == null ? null : (map['lastScheduleTime'] as String).input(),
-      lastSuccessfulTime: map['lastSuccessfulTime'] == null ? null : (map['lastSuccessfulTime'] as String).input(),
+      active: map['active'] == null ? null : (pulumi.Input.decodeList<ObjectReferencePatch>(map['active']!, (value) => ObjectReferencePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastScheduleTime: map['lastScheduleTime'] == null ? null : (map['lastScheduleTime']! as String).input(),
+      lastSuccessfulTime: map['lastSuccessfulTime'] == null ? null : (map['lastSuccessfulTime']! as String).input(),
     );
   }
 }

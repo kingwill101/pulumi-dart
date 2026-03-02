@@ -46,11 +46,11 @@ class GetSnapshotArgs {
 
   factory GetSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      shareId: map['shareId'] == null ? null : (map['shareId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

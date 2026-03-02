@@ -21,7 +21,7 @@ class NsRecord {
 
   factory NsRecord.fromMap(Map<String, dynamic> map) {
     return NsRecord(
-      nsdname: map['nsdname'] == null ? null : (map['nsdname'] as String).input(),
+      nsdname: map['nsdname'] == null ? null : (map['nsdname']! as String).input(),
     );
   }
 }

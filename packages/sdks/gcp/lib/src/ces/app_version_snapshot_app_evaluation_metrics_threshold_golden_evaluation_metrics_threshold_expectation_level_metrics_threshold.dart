@@ -22,7 +22,7 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
 
   factory AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold(
-      toolInvocationParameterCorrectnessThreshold: map['toolInvocationParameterCorrectnessThreshold'] == null ? null : (map['toolInvocationParameterCorrectnessThreshold'] as double).input(),
+      toolInvocationParameterCorrectnessThreshold: map['toolInvocationParameterCorrectnessThreshold'] == null ? null : (map['toolInvocationParameterCorrectnessThreshold']! as double).input(),
     );
   }
 }

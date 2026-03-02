@@ -20,7 +20,7 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField {
 
   factory StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectField(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

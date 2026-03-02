@@ -107,7 +107,7 @@ class GetImageResult {
       regions: (map['regions'] as List).cast<String>(),
       sizeGigabytes: map['sizeGigabytes'] as double,
       slug: map['slug'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      source: map['source'] == null ? null : map['source']! as String,
       status: map['status'] as String,
       tags: (map['tags'] as List).cast<String>(),
       type: map['type'] as String,

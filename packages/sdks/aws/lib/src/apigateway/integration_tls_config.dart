@@ -20,7 +20,7 @@ class IntegrationTlsConfig {
 
   factory IntegrationTlsConfig.fromMap(Map<String, dynamic> map) {
     return IntegrationTlsConfig(
-      insecureSkipVerification: map['insecureSkipVerification'] == null ? null : (map['insecureSkipVerification'] as bool).input(),
+      insecureSkipVerification: map['insecureSkipVerification'] == null ? null : ((map['insecureSkipVerification'] as bool).input()).input(),
     );
   }
 }

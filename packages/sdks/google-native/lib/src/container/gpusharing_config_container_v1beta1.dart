@@ -27,8 +27,8 @@ class GPUSharingConfigContainerV1beta1 {
 
   factory GPUSharingConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return GPUSharingConfigContainerV1beta1(
-      gpuSharingStrategy: map['gpuSharingStrategy'] == null ? null : (GPUSharingConfigGpuSharingStrategyContainerV1beta1.fromValue(map['gpuSharingStrategy'] as String)).input(),
-      maxSharedClientsPerGpu: map['maxSharedClientsPerGpu'] == null ? null : (map['maxSharedClientsPerGpu'] as String).input(),
+      gpuSharingStrategy: map['gpuSharingStrategy'] == null ? null : (GPUSharingConfigGpuSharingStrategyContainerV1beta1.fromValue(map['gpuSharingStrategy']! as String)).input(),
+      maxSharedClientsPerGpu: map['maxSharedClientsPerGpu'] == null ? null : (map['maxSharedClientsPerGpu']! as String).input(),
     );
   }
 }

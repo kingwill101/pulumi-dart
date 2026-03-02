@@ -32,9 +32,9 @@ class TokenRequestSpecPatch {
 
   factory TokenRequestSpecPatch.fromMap(Map<String, dynamic> map) {
     return TokenRequestSpecPatch(
-      audiences: map['audiences'] == null ? null : ((map['audiences'] as List).cast<String>()).input(),
-      boundObjectRef: map['boundObjectRef'] == null ? null : (BoundObjectReferencePatch.fromMap((map['boundObjectRef'] as Map).cast<String, dynamic>())).input(),
-      expirationSeconds: map['expirationSeconds'] == null ? null : (map['expirationSeconds'] as int).input(),
+      audiences: map['audiences'] == null ? null : ((map['audiences']! as List).cast<String>()).input(),
+      boundObjectRef: map['boundObjectRef'] == null ? null : (BoundObjectReferencePatch.fromMap((map['boundObjectRef']! as Map).cast<String, dynamic>())).input(),
+      expirationSeconds: map['expirationSeconds'] == null ? null : (map['expirationSeconds']! as int).input(),
     );
   }
 }

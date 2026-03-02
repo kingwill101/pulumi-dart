@@ -28,7 +28,7 @@ class JFrogEnvironmentDataResponse {
   factory JFrogEnvironmentDataResponse.fromMap(Map<String, dynamic> map) {
     return JFrogEnvironmentDataResponse(
       environmentType: (map['environmentType'] as String).input(),
-      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval'] as int).input(),
+      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval']! as int).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class CassandraPartitionKeyResponse {
 
   factory CassandraPartitionKeyResponse.fromMap(Map<String, dynamic> map) {
     return CassandraPartitionKeyResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

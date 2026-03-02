@@ -46,11 +46,11 @@ class AddressGroupV2State {
 
   factory AddressGroupV2State.fromMap(Map<String, dynamic> map) {
     return AddressGroupV2State(
-      addresses: map['addresses'] == null ? null : ((map['addresses'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      addresses: map['addresses'] == null ? null : ((map['addresses']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

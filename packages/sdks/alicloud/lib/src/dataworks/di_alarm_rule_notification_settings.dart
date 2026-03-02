@@ -32,9 +32,9 @@ class DiAlarmRuleNotificationSettings {
 
   factory DiAlarmRuleNotificationSettings.fromMap(Map<String, dynamic> map) {
     return DiAlarmRuleNotificationSettings(
-      inhibitionInterval: map['inhibitionInterval'] == null ? null : (map['inhibitionInterval'] as int).input(),
-      notificationChannels: map['notificationChannels'] == null ? null : (pulumi.Input.decodeList<DiAlarmRuleNotificationSettingsNotificationChannel>(map['notificationChannels'], (value) => DiAlarmRuleNotificationSettingsNotificationChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notificationReceivers: map['notificationReceivers'] == null ? null : (pulumi.Input.decodeList<DiAlarmRuleNotificationSettingsNotificationReceiver>(map['notificationReceivers'], (value) => DiAlarmRuleNotificationSettingsNotificationReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inhibitionInterval: map['inhibitionInterval'] == null ? null : (map['inhibitionInterval']! as int).input(),
+      notificationChannels: map['notificationChannels'] == null ? null : (pulumi.Input.decodeList<DiAlarmRuleNotificationSettingsNotificationChannel>(map['notificationChannels']!, (value) => DiAlarmRuleNotificationSettingsNotificationChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notificationReceivers: map['notificationReceivers'] == null ? null : (pulumi.Input.decodeList<DiAlarmRuleNotificationSettingsNotificationReceiver>(map['notificationReceivers']!, (value) => DiAlarmRuleNotificationSettingsNotificationReceiver.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

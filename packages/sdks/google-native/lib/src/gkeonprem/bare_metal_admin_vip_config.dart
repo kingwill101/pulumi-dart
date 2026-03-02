@@ -21,7 +21,7 @@ class BareMetalAdminVipConfig {
 
   factory BareMetalAdminVipConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminVipConfig(
-      controlPlaneVip: map['controlPlaneVip'] == null ? null : (map['controlPlaneVip'] as String).input(),
+      controlPlaneVip: map['controlPlaneVip'] == null ? null : (map['controlPlaneVip']! as String).input(),
     );
   }
 }

@@ -44,9 +44,9 @@ class GetDistributionConfigurationDistributionFastLaunchConfiguration {
     return GetDistributionConfigurationDistributionFastLaunchConfiguration(
       accountId: (map['accountId'] as String).input(),
       enabled: (map['enabled'] as bool).input(),
-      launchTemplates: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate>(map['launchTemplates'], (value) => GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchTemplates: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate>(map['launchTemplates']!, (value) => GetDistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
       maxParallelLaunches: (map['maxParallelLaunches'] as int).input(),
-      snapshotConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration>(map['snapshotConfigurations'], (value) => GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      snapshotConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration>(map['snapshotConfigurations']!, (value) => GetDistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

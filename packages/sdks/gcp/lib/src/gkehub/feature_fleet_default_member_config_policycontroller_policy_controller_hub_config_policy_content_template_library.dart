@@ -21,7 +21,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
 
   factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary(
-      installation: map['installation'] == null ? null : (map['installation'] as String).input(),
+      installation: map['installation'] == null ? null : (map['installation']! as String).input(),
     );
   }
 }

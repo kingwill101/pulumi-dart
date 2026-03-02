@@ -39,8 +39,8 @@ class KeyvaluestoreKeysExclusiveArgs {
   factory KeyvaluestoreKeysExclusiveArgs.fromMap(Map<String, dynamic> map) {
     return KeyvaluestoreKeysExclusiveArgs(
       keyValueStoreArn: (map['keyValueStoreArn'] as String).input(),
-      maxBatchSize: map['maxBatchSize'] == null ? null : (map['maxBatchSize'] as int).input(),
-      resourceKeyValuePairs: map['resourceKeyValuePairs'] == null ? null : (pulumi.Input.decodeList<KeyvaluestoreKeysExclusiveResourceKeyValuePair>(map['resourceKeyValuePairs'], (value) => KeyvaluestoreKeysExclusiveResourceKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxBatchSize: map['maxBatchSize'] == null ? null : ((map['maxBatchSize'] as int).input()).input(),
+      resourceKeyValuePairs: map['resourceKeyValuePairs'] == null ? null : ((pulumi.Input.decodeList<KeyvaluestoreKeysExclusiveResourceKeyValuePair>(map['resourceKeyValuePairs']!, (value) => KeyvaluestoreKeysExclusiveResourceKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

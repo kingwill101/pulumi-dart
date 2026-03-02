@@ -33,9 +33,9 @@ class OpenIdConnectRegistration {
 
   factory OpenIdConnectRegistration.fromMap(Map<String, dynamic> map) {
     return OpenIdConnectRegistration(
-      clientCredential: map['clientCredential'] == null ? null : (OpenIdConnectClientCredential.fromMap((map['clientCredential'] as Map).cast<String, dynamic>())).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      openIdConnectConfiguration: map['openIdConnectConfiguration'] == null ? null : (OpenIdConnectConfig.fromMap((map['openIdConnectConfiguration'] as Map).cast<String, dynamic>())).input(),
+      clientCredential: map['clientCredential'] == null ? null : (OpenIdConnectClientCredential.fromMap((map['clientCredential']! as Map).cast<String, dynamic>())).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      openIdConnectConfiguration: map['openIdConnectConfiguration'] == null ? null : (OpenIdConnectConfig.fromMap((map['openIdConnectConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

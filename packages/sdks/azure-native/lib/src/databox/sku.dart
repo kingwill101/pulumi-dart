@@ -31,8 +31,8 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

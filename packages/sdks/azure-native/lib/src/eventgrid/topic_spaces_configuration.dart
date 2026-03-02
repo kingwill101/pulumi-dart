@@ -58,13 +58,13 @@ class TopicSpacesConfiguration {
 
   factory TopicSpacesConfiguration.fromMap(Map<String, dynamic> map) {
     return TopicSpacesConfiguration(
-      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomainConfiguration>(map['customDomains'], (value) => CustomDomainConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maximumClientSessionsPerAuthenticationName: map['maximumClientSessionsPerAuthenticationName'] == null ? null : (map['maximumClientSessionsPerAuthenticationName'] as int).input(),
-      maximumSessionExpiryInHours: map['maximumSessionExpiryInHours'] == null ? null : (map['maximumSessionExpiryInHours'] as int).input(),
-      routeTopicResourceId: map['routeTopicResourceId'] == null ? null : (map['routeTopicResourceId'] as String).input(),
-      routingEnrichments: map['routingEnrichments'] == null ? null : (RoutingEnrichments.fromMap((map['routingEnrichments'] as Map).cast<String, dynamic>())).input(),
-      routingIdentityInfo: map['routingIdentityInfo'] == null ? null : (RoutingIdentityInfo.fromMap((map['routingIdentityInfo'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomainConfiguration>(map['customDomains']!, (value) => CustomDomainConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maximumClientSessionsPerAuthenticationName: map['maximumClientSessionsPerAuthenticationName'] == null ? null : (map['maximumClientSessionsPerAuthenticationName']! as int).input(),
+      maximumSessionExpiryInHours: map['maximumSessionExpiryInHours'] == null ? null : (map['maximumSessionExpiryInHours']! as int).input(),
+      routeTopicResourceId: map['routeTopicResourceId'] == null ? null : (map['routeTopicResourceId']! as String).input(),
+      routingEnrichments: map['routingEnrichments'] == null ? null : (RoutingEnrichments.fromMap((map['routingEnrichments']! as Map).cast<String, dynamic>())).input(),
+      routingIdentityInfo: map['routingIdentityInfo'] == null ? null : (RoutingIdentityInfo.fromMap((map['routingIdentityInfo']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

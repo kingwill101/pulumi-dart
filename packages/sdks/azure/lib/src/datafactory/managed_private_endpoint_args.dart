@@ -47,9 +47,9 @@ class ManagedPrivateEndpointArgs {
   factory ManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointArgs(
       dataFactoryId: (map['dataFactoryId'] as String).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName'] as String).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName']! as String).input(),
       targetResourceId: (map['targetResourceId'] as String).input(),
     );
   }

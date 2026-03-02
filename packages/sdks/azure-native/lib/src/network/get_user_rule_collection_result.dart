@@ -65,7 +65,7 @@ class GetUserRuleCollectionResult {
     return GetUserRuleCollectionResult(
       appliesToGroups: pulumi.Input.decodeList<NetworkManagerSecurityGroupItemResponse>(map['appliesToGroups'], (value) => NetworkManagerSecurityGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

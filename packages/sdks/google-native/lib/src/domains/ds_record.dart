@@ -38,10 +38,10 @@ class DsRecord {
 
   factory DsRecord.fromMap(Map<String, dynamic> map) {
     return DsRecord(
-      algorithm: map['algorithm'] == null ? null : (DsRecordAlgorithm.fromValue(map['algorithm'] as String)).input(),
-      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
-      digestType: map['digestType'] == null ? null : (DsRecordDigestType.fromValue(map['digestType'] as String)).input(),
-      keyTag: map['keyTag'] == null ? null : (map['keyTag'] as int).input(),
+      algorithm: map['algorithm'] == null ? null : (DsRecordAlgorithm.fromValue(map['algorithm']! as String)).input(),
+      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
+      digestType: map['digestType'] == null ? null : (DsRecordDigestType.fromValue(map['digestType']! as String)).input(),
+      keyTag: map['keyTag'] == null ? null : (map['keyTag']! as int).input(),
     );
   }
 }

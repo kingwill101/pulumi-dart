@@ -20,7 +20,7 @@ class FlavorData {
 
   factory FlavorData.fromMap(Map<String, dynamic> map) {
     return FlavorData(
-      data: map['data'] == null ? null : ((map['data'] as Map).cast<String, String>()).input(),
+      data: map['data'] == null ? null : ((map['data']! as Map).cast<String, String>()).input(),
     );
   }
 }

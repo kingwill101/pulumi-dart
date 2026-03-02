@@ -38,9 +38,9 @@ class AiEndpointWithModelGardenDeploymentEndpointConfig {
 
   factory AiEndpointWithModelGardenDeploymentEndpointConfig.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentEndpointConfig(
-      dedicatedEndpointEnabled: map['dedicatedEndpointEnabled'] == null ? null : (map['dedicatedEndpointEnabled'] as bool).input(),
-      endpointDisplayName: map['endpointDisplayName'] == null ? null : (map['endpointDisplayName'] as String).input(),
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())).input(),
+      dedicatedEndpointEnabled: map['dedicatedEndpointEnabled'] == null ? null : (map['dedicatedEndpointEnabled']! as bool).input(),
+      endpointDisplayName: map['endpointDisplayName'] == null ? null : (map['endpointDisplayName']! as String).input(),
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -98,19 +98,19 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      accessLoggingConfig: map['accessLoggingConfig'] == null ? null : (InstanceAccessLoggingConfig.fromMap((map['accessLoggingConfig'] as Map).cast<String, dynamic>())).input(),
-      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : ((map['consumerAcceptLists'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diskEncryptionKeyName: map['diskEncryptionKeyName'] == null ? null : (map['diskEncryptionKeyName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      peeringCidrRange: map['peeringCidrRange'] == null ? null : (map['peeringCidrRange'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
+      accessLoggingConfig: map['accessLoggingConfig'] == null ? null : (InstanceAccessLoggingConfig.fromMap((map['accessLoggingConfig']! as Map).cast<String, dynamic>())).input(),
+      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : ((map['consumerAcceptLists']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diskEncryptionKeyName: map['diskEncryptionKeyName'] == null ? null : (map['diskEncryptionKeyName']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      peeringCidrRange: map['peeringCidrRange'] == null ? null : (map['peeringCidrRange']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment']! as String).input(),
     );
   }
 }

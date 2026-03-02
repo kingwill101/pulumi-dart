@@ -26,7 +26,7 @@ class DomainDevicesInterfaceTarget {
   factory DomainDevicesInterfaceTarget.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceTarget(
       dev: (map['dev'] as String).input(),
-      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
+      managed: map['managed'] == null ? null : (map['managed']! as bool).input(),
     );
   }
 }

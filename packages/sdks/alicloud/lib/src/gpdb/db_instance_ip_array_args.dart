@@ -56,9 +56,9 @@ class DbInstanceIpArrayArgs {
   factory DbInstanceIpArrayArgs.fromMap(Map<String, dynamic> map) {
     return DbInstanceIpArrayArgs(
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      dbInstanceIpArrayAttribute: map['dbInstanceIpArrayAttribute'] == null ? null : (map['dbInstanceIpArrayAttribute'] as String).input(),
+      dbInstanceIpArrayAttribute: map['dbInstanceIpArrayAttribute'] == null ? null : (map['dbInstanceIpArrayAttribute']! as String).input(),
       dbInstanceIpArrayName: (map['dbInstanceIpArrayName'] as String).input(),
-      modifyMode: map['modifyMode'] == null ? null : (map['modifyMode'] as String).input(),
+      modifyMode: map['modifyMode'] == null ? null : (map['modifyMode']! as String).input(),
       securityIpLists: ((map['securityIpLists'] as List).cast<String>()).input(),
     );
   }

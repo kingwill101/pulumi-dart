@@ -67,15 +67,15 @@ class MountTargetState {
 
   factory MountTargetState.fromMap(Map<String, dynamic> map) {
     return MountTargetState(
-      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
-      dualStack: map['dualStack'] == null ? null : (map['dualStack'] as bool).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      mountTargetDomain: map['mountTargetDomain'] == null ? null : (map['mountTargetDomain'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName']! as String).input(),
+      dualStack: map['dualStack'] == null ? null : (map['dualStack']! as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      mountTargetDomain: map['mountTargetDomain'] == null ? null : (map['mountTargetDomain']! as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

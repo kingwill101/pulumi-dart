@@ -55,14 +55,14 @@ class PrefixListPrefixListAssociation {
 
   factory PrefixListPrefixListAssociation.fromMap(Map<String, dynamic> map) {
     return PrefixListPrefixListAssociation(
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId']! as String).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

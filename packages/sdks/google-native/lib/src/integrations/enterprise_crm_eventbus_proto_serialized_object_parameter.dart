@@ -19,7 +19,7 @@ class EnterpriseCrmEventbusProtoSerializedObjectParameter {
 
   factory EnterpriseCrmEventbusProtoSerializedObjectParameter.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoSerializedObjectParameter(
-      objectValue: map['objectValue'] == null ? null : (map['objectValue'] as String).input(),
+      objectValue: map['objectValue'] == null ? null : (map['objectValue']! as String).input(),
     );
   }
 }

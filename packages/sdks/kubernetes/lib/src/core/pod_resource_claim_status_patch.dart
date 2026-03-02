@@ -26,8 +26,8 @@ class PodResourceClaimStatusPatch {
 
   factory PodResourceClaimStatusPatch.fromMap(Map<String, dynamic> map) {
     return PodResourceClaimStatusPatch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceClaimName: map['resourceClaimName'] == null ? null : (map['resourceClaimName'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceClaimName: map['resourceClaimName'] == null ? null : (map['resourceClaimName']! as String).input(),
     );
   }
 }

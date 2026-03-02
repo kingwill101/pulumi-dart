@@ -65,10 +65,10 @@ class GetFwPolicyV2Result {
   factory GetFwPolicyV2Result.fromMap(Map<String, dynamic> map) {
     return GetFwPolicyV2Result(
       audited: map['audited'] as bool,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      policyId: map['policyId'] == null ? null : map['policyId'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      policyId: map['policyId'] == null ? null : map['policyId']! as String,
       projectId: map['projectId'] as String,
       region: map['region'] as String,
       rules: (map['rules'] as List).cast<String>(),

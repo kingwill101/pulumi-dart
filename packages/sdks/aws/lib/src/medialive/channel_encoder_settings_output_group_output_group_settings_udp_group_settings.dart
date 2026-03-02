@@ -29,9 +29,9 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings {
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings(
-      inputLossAction: map['inputLossAction'] == null ? null : (map['inputLossAction'] as String).input(),
-      timedMetadataId3Frame: map['timedMetadataId3Frame'] == null ? null : (map['timedMetadataId3Frame'] as String).input(),
-      timedMetadataId3Period: map['timedMetadataId3Period'] == null ? null : (map['timedMetadataId3Period'] as int).input(),
+      inputLossAction: map['inputLossAction'] == null ? null : ((map['inputLossAction'] as String).input()).input(),
+      timedMetadataId3Frame: map['timedMetadataId3Frame'] == null ? null : ((map['timedMetadataId3Frame'] as String).input()).input(),
+      timedMetadataId3Period: map['timedMetadataId3Period'] == null ? null : ((map['timedMetadataId3Period'] as int).input()).input(),
     );
   }
 }

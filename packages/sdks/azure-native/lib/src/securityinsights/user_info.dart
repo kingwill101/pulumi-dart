@@ -21,7 +21,7 @@ class UserInfo {
 
   factory UserInfo.fromMap(Map<String, dynamic> map) {
     return UserInfo(
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
     );
   }
 }

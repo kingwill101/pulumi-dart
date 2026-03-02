@@ -26,7 +26,7 @@ class PoolSourceAdapterParentAddr {
 
   factory PoolSourceAdapterParentAddr.fromMap(Map<String, dynamic> map) {
     return PoolSourceAdapterParentAddr(
-      address: map['address'] == null ? null : (PoolSourceAdapterParentAddrAddress.fromMap((map['address'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : (PoolSourceAdapterParentAddrAddress.fromMap((map['address']! as Map).cast<String, dynamic>())).input(),
       uniqueId: (map['uniqueId'] as double).input(),
     );
   }

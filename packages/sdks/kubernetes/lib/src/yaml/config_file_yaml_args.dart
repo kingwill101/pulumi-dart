@@ -35,8 +35,8 @@ class ConfigFileYamlArgs {
   factory ConfigFileYamlArgs.fromMap(Map<String, dynamic> map) {
     return ConfigFileYamlArgs(
       file: (map['file'] as String).input(),
-      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix'] as String).input(),
-      transformations: map['transformations'] == null ? null : ((map['transformations'] as List).cast<dynamic>()).input(),
+      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix']! as String).input(),
+      transformations: map['transformations'] == null ? null : ((map['transformations']! as List).cast<dynamic>()).input(),
     );
   }
 }

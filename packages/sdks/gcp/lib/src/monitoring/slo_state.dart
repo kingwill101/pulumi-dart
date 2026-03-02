@@ -110,18 +110,18 @@ class SloState {
 
   factory SloState.fromMap(Map<String, dynamic> map) {
     return SloState(
-      basicSli: map['basicSli'] == null ? null : (SloBasicSli.fromMap((map['basicSli'] as Map).cast<String, dynamic>())).input(),
-      calendarPeriod: map['calendarPeriod'] == null ? null : (map['calendarPeriod'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      goal: map['goal'] == null ? null : (map['goal'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestBasedSli: map['requestBasedSli'] == null ? null : (SloRequestBasedSli.fromMap((map['requestBasedSli'] as Map).cast<String, dynamic>())).input(),
-      rollingPeriodDays: map['rollingPeriodDays'] == null ? null : (map['rollingPeriodDays'] as int).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      sloId: map['sloId'] == null ? null : (map['sloId'] as String).input(),
-      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
-      windowsBasedSli: map['windowsBasedSli'] == null ? null : (SloWindowsBasedSli.fromMap((map['windowsBasedSli'] as Map).cast<String, dynamic>())).input(),
+      basicSli: map['basicSli'] == null ? null : (SloBasicSli.fromMap((map['basicSli']! as Map).cast<String, dynamic>())).input(),
+      calendarPeriod: map['calendarPeriod'] == null ? null : (map['calendarPeriod']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      goal: map['goal'] == null ? null : (map['goal']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestBasedSli: map['requestBasedSli'] == null ? null : (SloRequestBasedSli.fromMap((map['requestBasedSli']! as Map).cast<String, dynamic>())).input(),
+      rollingPeriodDays: map['rollingPeriodDays'] == null ? null : (map['rollingPeriodDays']! as int).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      sloId: map['sloId'] == null ? null : (map['sloId']! as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels']! as Map).cast<String, String>()).input(),
+      windowsBasedSli: map['windowsBasedSli'] == null ? null : (SloWindowsBasedSli.fromMap((map['windowsBasedSli']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

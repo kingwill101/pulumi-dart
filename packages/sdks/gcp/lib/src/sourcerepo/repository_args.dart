@@ -44,10 +44,10 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pubsubConfigs: map['pubsubConfigs'] == null ? null : (pulumi.Input.decodeList<RepositoryPubsubConfig>(map['pubsubConfigs'], (value) => RepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pubsubConfigs: map['pubsubConfigs'] == null ? null : (pulumi.Input.decodeList<RepositoryPubsubConfig>(map['pubsubConfigs']!, (value) => RepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

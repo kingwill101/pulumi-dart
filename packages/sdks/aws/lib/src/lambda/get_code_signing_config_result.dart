@@ -56,13 +56,13 @@ class GetCodeSigningConfigResult {
 
   factory GetCodeSigningConfigResult.fromMap(Map<String, dynamic> map) {
     return GetCodeSigningConfigResult(
-      allowedPublishers: pulumi.Input.decodeList<GetCodeSigningConfigAllowedPublisher>(map['allowedPublishers'], (value) => GetCodeSigningConfigAllowedPublisher.fromMap((value as Map).cast<String, dynamic>())),
+      allowedPublishers: pulumi.Input.decodeList<GetCodeSigningConfigAllowedPublisher>(map['allowedPublishers']!, (value) => GetCodeSigningConfigAllowedPublisher.fromMap((value as Map).cast<String, dynamic>())),
       arn: map['arn'] as String,
       configId: map['configId'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
       lastModified: map['lastModified'] as String,
-      policies: pulumi.Input.decodeList<GetCodeSigningConfigPolicy>(map['policies'], (value) => GetCodeSigningConfigPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      policies: pulumi.Input.decodeList<GetCodeSigningConfigPolicy>(map['policies']!, (value) => GetCodeSigningConfigPolicy.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }

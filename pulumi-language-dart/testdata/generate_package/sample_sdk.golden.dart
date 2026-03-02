@@ -122,9 +122,8 @@ class GetWidgetDetailsArgs {
   /// Creates a new [GetWidgetDetailsArgs].
   /// [id] Required.
   GetWidgetDetailsArgs({
-    required pulumi.Input<String> id,
-  }) :
-      id = pulumi.Input.asInput<String>(id);
+    required this.id,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -134,7 +133,7 @@ class GetWidgetDetailsArgs {
 
   factory GetWidgetDetailsArgs.fromMap(Map<String, dynamic> map) {
     return GetWidgetDetailsArgs(
-      id: map['id'] as String,
+      id: (map['id'] as String).input(),
     );
   }
 }
@@ -222,11 +221,9 @@ class WidgetArgs {
   /// [metadata] Optional.
   /// [mode] Required.
   WidgetArgs({
-    pulumi.Input<WidgetMetadata>? metadata,
-    required pulumi.Input<WidgetMode> mode,
-  }) :
-      metadata = pulumi.Input.asOptionalInput<WidgetMetadata>(metadata),
-      mode = pulumi.Input.asInput<WidgetMode>(mode);
+    this.metadata,
+    required this.mode,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -237,8 +234,8 @@ class WidgetArgs {
 
   factory WidgetArgs.fromMap(Map<String, dynamic> map) {
     return WidgetArgs(
-      metadata: map['metadata'] == null ? null : WidgetMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      mode: WidgetMode.fromValue(map['mode'] as String),
+      metadata: map['metadata'] == null ? null : (WidgetMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      mode: (WidgetMode.fromValue(map['mode'] as String)).input(),
     );
   }
 }
@@ -258,11 +255,9 @@ class WidgetMetadata {
   /// [mode] Required.
   /// [owner] Required.
   WidgetMetadata({
-    required pulumi.Input<WidgetMode> mode,
-    required pulumi.Input<String> owner,
-  }) :
-      mode = pulumi.Input.asInput<WidgetMode>(mode),
-      owner = pulumi.Input.asInput<String>(owner);
+    required this.mode,
+    required this.owner,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -273,8 +268,8 @@ class WidgetMetadata {
 
   factory WidgetMetadata.fromMap(Map<String, dynamic> map) {
     return WidgetMetadata(
-      mode: WidgetMode.fromValue(map['mode'] as String),
-      owner: map['owner'] as String,
+      mode: (WidgetMode.fromValue(map['mode'] as String)).input(),
+      owner: (map['owner'] as String).input(),
     );
   }
 }
@@ -317,7 +312,7 @@ class ProviderProvider extends pulumi.ProviderResource {
   }) : super(
           'sample',
           name,
-          const <String, dynamic>{},
+          const <String, pulumi.Input<dynamic>>{},
           options ?? pulumi.CustomResourceOptions(),
         );
 }

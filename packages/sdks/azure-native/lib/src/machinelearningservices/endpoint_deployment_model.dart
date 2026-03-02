@@ -35,10 +35,10 @@ class EndpointDeploymentModel {
 
   factory EndpointDeploymentModel.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentModel(
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

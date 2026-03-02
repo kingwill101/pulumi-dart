@@ -26,8 +26,8 @@ class GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature {
 
   factory GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sigma: map['sigma'] == null ? null : (map['sigma'] as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sigma: map['sigma'] == null ? null : (map['sigma']! as double).input(),
     );
   }
 }

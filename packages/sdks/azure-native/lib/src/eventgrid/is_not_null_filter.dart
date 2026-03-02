@@ -27,7 +27,7 @@ class IsNotNullFilter {
 
   factory IsNotNullFilter.fromMap(Map<String, dynamic> map) {
     return IsNotNullFilter(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
       operatorType: (map['operatorType'] as String).input(),
     );
   }

@@ -20,7 +20,7 @@ class ApplicationLivenessV2Exec {
 
   factory ApplicationLivenessV2Exec.fromMap(Map<String, dynamic> map) {
     return ApplicationLivenessV2Exec(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
     );
   }
 }

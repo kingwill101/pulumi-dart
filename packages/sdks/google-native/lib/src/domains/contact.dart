@@ -38,7 +38,7 @@ class Contact {
   factory Contact.fromMap(Map<String, dynamic> map) {
     return Contact(
       email: (map['email'] as String).input(),
-      faxNumber: map['faxNumber'] == null ? null : (map['faxNumber'] as String).input(),
+      faxNumber: map['faxNumber'] == null ? null : (map['faxNumber']! as String).input(),
       phoneNumber: (map['phoneNumber'] as String).input(),
       postalAddress: (PostalAddress.fromMap((map['postalAddress'] as Map).cast<String, dynamic>())).input(),
     );

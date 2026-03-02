@@ -34,9 +34,9 @@ class GetVpcEndpointServiceUsersArgs {
 
   factory GetVpcEndpointServiceUsersArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServiceUsersArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

@@ -54,11 +54,11 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource {
 
   factory OsPolicyAssignmentOsPolicyResourceGroupResource.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResource(
-      exec: map['exec'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceExec.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      exec: map['exec'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceExec.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
-      pkg: map['pkg'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourcePkg.fromMap((map['pkg'] as Map).cast<String, dynamic>())).input(),
-      repository: map['repository'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceRepository.fromMap((map['repository'] as Map).cast<String, dynamic>())).input(),
+      pkg: map['pkg'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourcePkg.fromMap((map['pkg']! as Map).cast<String, dynamic>())).input(),
+      repository: map['repository'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceRepository.fromMap((map['repository']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

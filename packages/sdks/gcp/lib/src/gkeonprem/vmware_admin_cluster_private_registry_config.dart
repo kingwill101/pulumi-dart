@@ -25,8 +25,8 @@ class VmwareAdminClusterPrivateRegistryConfig {
 
   factory VmwareAdminClusterPrivateRegistryConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterPrivateRegistryConfig(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      caCert: map['caCert'] == null ? null : (map['caCert'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      caCert: map['caCert'] == null ? null : (map['caCert']! as String).input(),
     );
   }
 }

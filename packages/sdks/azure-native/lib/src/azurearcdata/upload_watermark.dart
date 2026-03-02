@@ -31,9 +31,9 @@ class UploadWatermark {
 
   factory UploadWatermark.fromMap(Map<String, dynamic> map) {
     return UploadWatermark(
-      logs: map['logs'] == null ? null : (map['logs'] as String).input(),
-      metrics: map['metrics'] == null ? null : (map['metrics'] as String).input(),
-      usages: map['usages'] == null ? null : (map['usages'] as String).input(),
+      logs: map['logs'] == null ? null : (map['logs']! as String).input(),
+      metrics: map['metrics'] == null ? null : (map['metrics']! as String).input(),
+      usages: map['usages'] == null ? null : (map['usages']! as String).input(),
     );
   }
 }

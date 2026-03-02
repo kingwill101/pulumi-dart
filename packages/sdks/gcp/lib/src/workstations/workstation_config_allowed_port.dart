@@ -25,8 +25,8 @@ class WorkstationConfigAllowedPort {
 
   factory WorkstationConfigAllowedPort.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigAllowedPort(
-      first: map['first'] == null ? null : (map['first'] as int).input(),
-      last: map['last'] == null ? null : (map['last'] as int).input(),
+      first: map['first'] == null ? null : (map['first']! as int).input(),
+      last: map['last'] == null ? null : (map['last']! as int).input(),
     );
   }
 }

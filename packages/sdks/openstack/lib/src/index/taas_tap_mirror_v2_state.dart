@@ -75,15 +75,15 @@ class TaasTapMirrorV2State {
 
   factory TaasTapMirrorV2State.fromMap(Map<String, dynamic> map) {
     return TaasTapMirrorV2State(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      directions: map['directions'] == null ? null : (TaasTapMirrorV2Directions.fromMap((map['directions'] as Map).cast<String, dynamic>())).input(),
-      mirrorType: map['mirrorType'] == null ? null : (map['mirrorType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      remoteIp: map['remoteIp'] == null ? null : (map['remoteIp'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      directions: map['directions'] == null ? null : (TaasTapMirrorV2Directions.fromMap((map['directions']! as Map).cast<String, dynamic>())).input(),
+      mirrorType: map['mirrorType'] == null ? null : (map['mirrorType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      portId: map['portId'] == null ? null : (map['portId']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      remoteIp: map['remoteIp'] == null ? null : (map['remoteIp']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

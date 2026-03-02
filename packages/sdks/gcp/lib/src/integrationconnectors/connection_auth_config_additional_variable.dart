@@ -49,12 +49,12 @@ class ConnectionAuthConfigAdditionalVariable {
 
   factory ConnectionAuthConfigAdditionalVariable.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigAdditionalVariable(
-      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue'] as bool).input(),
-      encryptionKeyValue: map['encryptionKeyValue'] == null ? null : (ConnectionAuthConfigAdditionalVariableEncryptionKeyValue.fromMap((map['encryptionKeyValue'] as Map).cast<String, dynamic>())).input(),
-      integerValue: map['integerValue'] == null ? null : (map['integerValue'] as int).input(),
+      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue']! as bool).input(),
+      encryptionKeyValue: map['encryptionKeyValue'] == null ? null : (ConnectionAuthConfigAdditionalVariableEncryptionKeyValue.fromMap((map['encryptionKeyValue']! as Map).cast<String, dynamic>())).input(),
+      integerValue: map['integerValue'] == null ? null : (map['integerValue']! as int).input(),
       key: (map['key'] as String).input(),
-      secretValue: map['secretValue'] == null ? null : (ConnectionAuthConfigAdditionalVariableSecretValue.fromMap((map['secretValue'] as Map).cast<String, dynamic>())).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
+      secretValue: map['secretValue'] == null ? null : (ConnectionAuthConfigAdditionalVariableSecretValue.fromMap((map['secretValue']! as Map).cast<String, dynamic>())).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
     );
   }
 }

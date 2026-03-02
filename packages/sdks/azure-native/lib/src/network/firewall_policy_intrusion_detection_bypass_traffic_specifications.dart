@@ -56,14 +56,14 @@ class FirewallPolicyIntrusionDetectionBypassTrafficSpecifications {
 
   factory FirewallPolicyIntrusionDetectionBypassTrafficSpecifications.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyIntrusionDetectionBypassTrafficSpecifications(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses'] as List).cast<String>()).input(),
-      destinationIpGroups: map['destinationIpGroups'] == null ? null : ((map['destinationIpGroups'] as List).cast<String>()).input(),
-      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses']! as List).cast<String>()).input(),
+      destinationIpGroups: map['destinationIpGroups'] == null ? null : ((map['destinationIpGroups']! as List).cast<String>()).input(),
+      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
+      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups']! as List).cast<String>()).input(),
     );
   }
 }

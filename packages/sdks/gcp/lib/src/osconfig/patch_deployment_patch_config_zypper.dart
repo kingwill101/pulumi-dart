@@ -46,12 +46,12 @@ class PatchDeploymentPatchConfigZypper {
 
   factory PatchDeploymentPatchConfigZypper.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentPatchConfigZypper(
-      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
-      excludes: map['excludes'] == null ? null : ((map['excludes'] as List).cast<String>()).input(),
-      exclusivePatches: map['exclusivePatches'] == null ? null : ((map['exclusivePatches'] as List).cast<String>()).input(),
-      severities: map['severities'] == null ? null : ((map['severities'] as List).cast<String>()).input(),
-      withOptional: map['withOptional'] == null ? null : (map['withOptional'] as bool).input(),
-      withUpdate: map['withUpdate'] == null ? null : (map['withUpdate'] as bool).input(),
+      categories: map['categories'] == null ? null : ((map['categories']! as List).cast<String>()).input(),
+      excludes: map['excludes'] == null ? null : ((map['excludes']! as List).cast<String>()).input(),
+      exclusivePatches: map['exclusivePatches'] == null ? null : ((map['exclusivePatches']! as List).cast<String>()).input(),
+      severities: map['severities'] == null ? null : ((map['severities']! as List).cast<String>()).input(),
+      withOptional: map['withOptional'] == null ? null : (map['withOptional']! as bool).input(),
+      withUpdate: map['withUpdate'] == null ? null : (map['withUpdate']! as bool).input(),
     );
   }
 }

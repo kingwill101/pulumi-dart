@@ -39,8 +39,8 @@ class ControlBoostAction {
     return ControlBoostAction(
       dataStore: (map['dataStore'] as String).input(),
       filter: (map['filter'] as String).input(),
-      fixedBoost: map['fixedBoost'] == null ? null : (map['fixedBoost'] as double).input(),
-      interpolationBoostSpec: map['interpolationBoostSpec'] == null ? null : (ControlBoostActionInterpolationBoostSpec.fromMap((map['interpolationBoostSpec'] as Map).cast<String, dynamic>())).input(),
+      fixedBoost: map['fixedBoost'] == null ? null : (map['fixedBoost']! as double).input(),
+      interpolationBoostSpec: map['interpolationBoostSpec'] == null ? null : (ControlBoostActionInterpolationBoostSpec.fromMap((map['interpolationBoostSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

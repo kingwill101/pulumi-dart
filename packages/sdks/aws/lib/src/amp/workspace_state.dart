@@ -57,14 +57,14 @@ class WorkspaceState {
 
   factory WorkspaceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceState(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : (WorkspaceLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      prometheusEndpoint: map['prometheusEndpoint'] == null ? null : (map['prometheusEndpoint'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      alias: map['alias'] == null ? null : ((map['alias'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      loggingConfiguration: map['loggingConfiguration'] == null ? null : ((WorkspaceLoggingConfiguration.fromMap((map['loggingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      prometheusEndpoint: map['prometheusEndpoint'] == null ? null : ((map['prometheusEndpoint'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

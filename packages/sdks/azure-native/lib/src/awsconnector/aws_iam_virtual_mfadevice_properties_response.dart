@@ -42,11 +42,11 @@ class AwsIamVirtualMFADevicePropertiesResponse {
 
   factory AwsIamVirtualMFADevicePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsIamVirtualMFADevicePropertiesResponse(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
-      virtualMfaDeviceName: map['virtualMfaDeviceName'] == null ? null : (map['virtualMfaDeviceName'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      users: map['users'] == null ? null : ((map['users']! as List).cast<String>()).input(),
+      virtualMfaDeviceName: map['virtualMfaDeviceName'] == null ? null : (map['virtualMfaDeviceName']! as String).input(),
     );
   }
 }

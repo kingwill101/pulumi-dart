@@ -27,8 +27,8 @@ class V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroup {
 
   factory V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroup.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroup(
-      message: map['message'] == null ? null : (V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessage.fromMap((map['message'] as Map).cast<String, dynamic>())).input(),
-      variations: map['variations'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupVariation>(map['variations'], (value) => V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupVariation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : ((V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessage.fromMap((map['message']! as Map).cast<String, dynamic>())).input()).input(),
+      variations: map['variations'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupVariation>(map['variations']!, (value) => V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupVariation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class ExpressRouteAuthorizationArgs {
 
   factory ExpressRouteAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteAuthorizationArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       privateCloudId: (map['privateCloudId'] as String).input(),
     );
   }

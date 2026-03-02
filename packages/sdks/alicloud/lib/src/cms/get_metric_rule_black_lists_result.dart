@@ -72,18 +72,18 @@ class GetMetricRuleBlackListsResult {
 
   factory GetMetricRuleBlackListsResult.fromMap(Map<String, dynamic> map) {
     return GetMetricRuleBlackListsResult(
-      category: map['category'] == null ? null : map['category'] as String,
+      category: map['category'] == null ? null : map['category']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       lists: pulumi.Input.decodeList<GetMetricRuleBlackListsList>(map['lists'], (value) => GetMetricRuleBlackListsList.fromMap((value as Map).cast<String, dynamic>())),
-      metricRuleBlackListId: map['metricRuleBlackListId'] == null ? null : map['metricRuleBlackListId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      metricRuleBlackListId: map['metricRuleBlackListId'] == null ? null : map['metricRuleBlackListId']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      order: map['order'] == null ? null : map['order'] as int,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      namespace: map['namespace'] == null ? null : map['namespace']! as String,
+      order: map['order'] == null ? null : map['order']! as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
     );
   }
 }

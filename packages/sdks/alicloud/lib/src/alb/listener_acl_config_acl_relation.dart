@@ -25,8 +25,8 @@ class ListenerAclConfigAclRelation {
 
   factory ListenerAclConfigAclRelation.fromMap(Map<String, dynamic> map) {
     return ListenerAclConfigAclRelation(
-      aclId: map['aclId'] == null ? null : (map['aclId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      aclId: map['aclId'] == null ? null : (map['aclId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

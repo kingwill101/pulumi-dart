@@ -36,10 +36,10 @@ class MongoMigrationCollection {
 
   factory MongoMigrationCollection.fromMap(Map<String, dynamic> map) {
     return MongoMigrationCollection(
-      sourceCollection: map['sourceCollection'] == null ? null : (map['sourceCollection'] as String).input(),
-      sourceDatabase: map['sourceDatabase'] == null ? null : (map['sourceDatabase'] as String).input(),
-      targetCollection: map['targetCollection'] == null ? null : (map['targetCollection'] as String).input(),
-      targetDatabase: map['targetDatabase'] == null ? null : (map['targetDatabase'] as String).input(),
+      sourceCollection: map['sourceCollection'] == null ? null : (map['sourceCollection']! as String).input(),
+      sourceDatabase: map['sourceDatabase'] == null ? null : (map['sourceDatabase']! as String).input(),
+      targetCollection: map['targetCollection'] == null ? null : (map['targetCollection']! as String).input(),
+      targetDatabase: map['targetDatabase'] == null ? null : (map['targetDatabase']! as String).input(),
     );
   }
 }

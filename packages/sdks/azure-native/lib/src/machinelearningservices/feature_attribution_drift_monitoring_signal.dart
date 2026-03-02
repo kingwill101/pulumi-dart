@@ -58,12 +58,12 @@ class FeatureAttributionDriftMonitoringSignal {
 
   factory FeatureAttributionDriftMonitoringSignal.fromMap(Map<String, dynamic> map) {
     return FeatureAttributionDriftMonitoringSignal(
-      featureDataTypeOverride: map['featureDataTypeOverride'] == null ? null : ((map['featureDataTypeOverride'] as Map).cast<String, String>()).input(),
+      featureDataTypeOverride: map['featureDataTypeOverride'] == null ? null : ((map['featureDataTypeOverride']! as Map).cast<String, String>()).input(),
       featureImportanceSettings: (FeatureImportanceSettings.fromMap((map['featureImportanceSettings'] as Map).cast<String, dynamic>())).input(),
       metricThreshold: (FeatureAttributionMetricThreshold.fromMap((map['metricThreshold'] as Map).cast<String, dynamic>())).input(),
-      notificationTypes: map['notificationTypes'] == null ? null : ((map['notificationTypes'] as List).cast<String>()).input(),
+      notificationTypes: map['notificationTypes'] == null ? null : ((map['notificationTypes']! as List).cast<String>()).input(),
       productionData: (pulumi.Input.decodeList<FixedInputData>(map['productionData'], (value) => FixedInputData.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       referenceData: (FixedInputData.fromMap((map['referenceData'] as Map).cast<String, dynamic>())).input(),
       signalType: (map['signalType'] as String).input(),
     );

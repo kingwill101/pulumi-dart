@@ -55,12 +55,12 @@ class SummaryLogArgs {
 
   factory SummaryLogArgs.fromMap(Map<String, dynamic> map) {
     return SummaryLogArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleDefinition: map['ruleDefinition'] == null ? null : (RuleDefinition.fromMap((map['ruleDefinition'] as Map).cast<String, dynamic>())).input(),
-      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as String).input(),
-      summaryLogsName: map['summaryLogsName'] == null ? null : (map['summaryLogsName'] as String).input(),
+      ruleDefinition: map['ruleDefinition'] == null ? null : (RuleDefinition.fromMap((map['ruleDefinition']! as Map).cast<String, dynamic>())).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType']! as String).input(),
+      summaryLogsName: map['summaryLogsName'] == null ? null : (map['summaryLogsName']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

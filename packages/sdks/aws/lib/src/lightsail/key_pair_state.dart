@@ -78,18 +78,18 @@ class KeyPairState {
 
   factory KeyPairState.fromMap(Map<String, dynamic> map) {
     return KeyPairState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      encryptedFingerprint: map['encryptedFingerprint'] == null ? null : (map['encryptedFingerprint'] as String).input(),
-      encryptedPrivateKey: map['encryptedPrivateKey'] == null ? null : (map['encryptedPrivateKey'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      encryptedFingerprint: map['encryptedFingerprint'] == null ? null : ((map['encryptedFingerprint'] as String).input()).input(),
+      encryptedPrivateKey: map['encryptedPrivateKey'] == null ? null : ((map['encryptedPrivateKey'] as String).input()).input(),
+      fingerprint: map['fingerprint'] == null ? null : ((map['fingerprint'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      pgpKey: map['pgpKey'] == null ? null : ((map['pgpKey'] as String).input()).input(),
+      privateKey: map['privateKey'] == null ? null : ((map['privateKey'] as String).input()).input(),
+      publicKey: map['publicKey'] == null ? null : ((map['publicKey'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class RuntimeVirtualMachine {
 
   factory RuntimeVirtualMachine.fromMap(Map<String, dynamic> map) {
     return RuntimeVirtualMachine(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      virtualMachineConfig: map['virtualMachineConfig'] == null ? null : (RuntimeVirtualMachineVirtualMachineConfig.fromMap((map['virtualMachineConfig'] as Map).cast<String, dynamic>())).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      virtualMachineConfig: map['virtualMachineConfig'] == null ? null : (RuntimeVirtualMachineVirtualMachineConfig.fromMap((map['virtualMachineConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

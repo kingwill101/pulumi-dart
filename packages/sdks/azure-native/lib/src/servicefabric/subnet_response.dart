@@ -41,11 +41,11 @@ class SubnetResponse {
 
   factory SubnetResponse.fromMap(Map<String, dynamic> map) {
     return SubnetResponse(
-      enableIpv6: map['enableIpv6'] == null ? null : (map['enableIpv6'] as bool).input(),
+      enableIpv6: map['enableIpv6'] == null ? null : (map['enableIpv6']! as bool).input(),
       name: (map['name'] as String).input(),
-      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId'] as String).input(),
-      privateEndpointNetworkPolicies: map['privateEndpointNetworkPolicies'] == null ? null : (map['privateEndpointNetworkPolicies'] as String).input(),
-      privateLinkServiceNetworkPolicies: map['privateLinkServiceNetworkPolicies'] == null ? null : (map['privateLinkServiceNetworkPolicies'] as String).input(),
+      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId']! as String).input(),
+      privateEndpointNetworkPolicies: map['privateEndpointNetworkPolicies'] == null ? null : (map['privateEndpointNetworkPolicies']! as String).input(),
+      privateLinkServiceNetworkPolicies: map['privateLinkServiceNetworkPolicies'] == null ? null : (map['privateLinkServiceNetworkPolicies']! as String).input(),
     );
   }
 }

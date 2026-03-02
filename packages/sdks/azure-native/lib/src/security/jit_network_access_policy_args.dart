@@ -51,9 +51,9 @@ class JitNetworkAccessPolicyArgs {
   factory JitNetworkAccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return JitNetworkAccessPolicyArgs(
       ascLocation: (map['ascLocation'] as String).input(),
-      jitNetworkAccessPolicyName: map['jitNetworkAccessPolicyName'] == null ? null : (map['jitNetworkAccessPolicyName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<JitNetworkAccessRequest>(map['requests'], (value) => JitNetworkAccessRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      jitNetworkAccessPolicyName: map['jitNetworkAccessPolicyName'] == null ? null : (map['jitNetworkAccessPolicyName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<JitNetworkAccessRequest>(map['requests']!, (value) => JitNetworkAccessRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       virtualMachines: (pulumi.Input.decodeList<JitNetworkAccessPolicyVirtualMachine>(map['virtualMachines'], (value) => JitNetworkAccessPolicyVirtualMachine.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

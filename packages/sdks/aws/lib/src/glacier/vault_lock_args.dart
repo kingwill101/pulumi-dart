@@ -45,9 +45,9 @@ class VaultLockArgs {
   factory VaultLockArgs.fromMap(Map<String, dynamic> map) {
     return VaultLockArgs(
       completeLock: (map['completeLock'] as bool).input(),
-      ignoreDeletionError: map['ignoreDeletionError'] == null ? null : (map['ignoreDeletionError'] as bool).input(),
+      ignoreDeletionError: map['ignoreDeletionError'] == null ? null : ((map['ignoreDeletionError'] as bool).input()).input(),
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vaultName: (map['vaultName'] as String).input(),
     );
   }

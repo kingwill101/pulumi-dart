@@ -81,17 +81,17 @@ class SecurityUserRuleArgs {
   factory SecurityUserRuleArgs.fromMap(Map<String, dynamic> map) {
     return SecurityUserRuleArgs(
       configurationName: (map['configurationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationPortRanges: map['destinationPortRanges'] == null ? null : ((map['destinationPortRanges'] as List).cast<String>()).input(),
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<AddressPrefixItem>(map['destinations'], (value) => AddressPrefixItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationPortRanges: map['destinationPortRanges'] == null ? null : ((map['destinationPortRanges']! as List).cast<String>()).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<AddressPrefixItem>(map['destinations']!, (value) => AddressPrefixItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
       direction: (map['direction'] as String).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
       protocol: (map['protocol'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       ruleCollectionName: (map['ruleCollectionName'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges'] as List).cast<String>()).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<AddressPrefixItem>(map['sources'], (value) => AddressPrefixItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      sourcePortRanges: map['sourcePortRanges'] == null ? null : ((map['sourcePortRanges']! as List).cast<String>()).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<AddressPrefixItem>(map['sources']!, (value) => AddressPrefixItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

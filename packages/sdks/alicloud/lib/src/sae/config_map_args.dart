@@ -40,8 +40,8 @@ class ConfigMapArgs {
   factory ConfigMapArgs.fromMap(Map<String, dynamic> map) {
     return ConfigMapArgs(
       data: (map['data'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       namespaceId: (map['namespaceId'] as String).input(),
     );
   }

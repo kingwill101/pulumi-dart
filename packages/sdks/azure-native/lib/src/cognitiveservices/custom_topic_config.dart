@@ -31,9 +31,9 @@ class CustomTopicConfig {
 
   factory CustomTopicConfig.fromMap(Map<String, dynamic> map) {
     return CustomTopicConfig(
-      blocking: map['blocking'] == null ? null : (map['blocking'] as bool).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
+      blocking: map['blocking'] == null ? null : (map['blocking']! as bool).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
     );
   }
 }

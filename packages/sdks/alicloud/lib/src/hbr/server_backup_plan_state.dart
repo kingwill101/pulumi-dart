@@ -63,15 +63,15 @@ class ServerBackupPlanState {
 
   factory ServerBackupPlanState.fromMap(Map<String, dynamic> map) {
     return ServerBackupPlanState(
-      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName'] as String).input(),
-      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType'] as String).input(),
-      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId'] as int).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<ServerBackupPlanDetail>(map['details'], (value) => ServerBackupPlanDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      ecsServerBackupPlanName: map['ecsServerBackupPlanName'] == null ? null : (map['ecsServerBackupPlanName'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as int).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName']! as String).input(),
+      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType']! as String).input(),
+      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId']! as int).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<ServerBackupPlanDetail>(map['details']!, (value) => ServerBackupPlanDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      ecsServerBackupPlanName: map['ecsServerBackupPlanName'] == null ? null : (map['ecsServerBackupPlanName']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as int).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
     );
   }
 }

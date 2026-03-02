@@ -31,9 +31,9 @@ class OsDiskResponse {
 
   factory OsDiskResponse.fromMap(Map<String, dynamic> map) {
     return OsDiskResponse(
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
     );
   }
 }

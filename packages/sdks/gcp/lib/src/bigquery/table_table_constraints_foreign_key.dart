@@ -36,7 +36,7 @@ class TableTableConstraintsForeignKey {
   factory TableTableConstraintsForeignKey.fromMap(Map<String, dynamic> map) {
     return TableTableConstraintsForeignKey(
       columnReferences: (TableTableConstraintsForeignKeyColumnReferences.fromMap((map['columnReferences'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       referencedTable: (TableTableConstraintsForeignKeyReferencedTable.fromMap((map['referencedTable'] as Map).cast<String, dynamic>())).input(),
     );
   }

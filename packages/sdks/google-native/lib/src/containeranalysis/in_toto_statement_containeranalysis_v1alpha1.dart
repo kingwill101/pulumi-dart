@@ -50,12 +50,12 @@ class InTotoStatementContaineranalysisV1alpha1 {
 
   factory InTotoStatementContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return InTotoStatementContaineranalysisV1alpha1(
-      predicateType: map['predicateType'] == null ? null : (map['predicateType'] as String).input(),
-      provenance: map['provenance'] == null ? null : (InTotoProvenanceContaineranalysisV1alpha1.fromMap((map['provenance'] as Map).cast<String, dynamic>())).input(),
-      slsaProvenance: map['slsaProvenance'] == null ? null : (SlsaProvenanceContaineranalysisV1alpha1.fromMap((map['slsaProvenance'] as Map).cast<String, dynamic>())).input(),
-      slsaProvenanceZeroTwo: map['slsaProvenanceZeroTwo'] == null ? null : (SlsaProvenanceZeroTwoContaineranalysisV1alpha1.fromMap((map['slsaProvenanceZeroTwo'] as Map).cast<String, dynamic>())).input(),
-      subject: map['subject'] == null ? null : (pulumi.Input.decodeList<SubjectContaineranalysisV1alpha1>(map['subject'], (value) => SubjectContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      predicateType: map['predicateType'] == null ? null : (map['predicateType']! as String).input(),
+      provenance: map['provenance'] == null ? null : (InTotoProvenanceContaineranalysisV1alpha1.fromMap((map['provenance']! as Map).cast<String, dynamic>())).input(),
+      slsaProvenance: map['slsaProvenance'] == null ? null : (SlsaProvenanceContaineranalysisV1alpha1.fromMap((map['slsaProvenance']! as Map).cast<String, dynamic>())).input(),
+      slsaProvenanceZeroTwo: map['slsaProvenanceZeroTwo'] == null ? null : (SlsaProvenanceZeroTwoContaineranalysisV1alpha1.fromMap((map['slsaProvenanceZeroTwo']! as Map).cast<String, dynamic>())).input(),
+      subject: map['subject'] == null ? null : (pulumi.Input.decodeList<SubjectContaineranalysisV1alpha1>(map['subject']!, (value) => SubjectContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

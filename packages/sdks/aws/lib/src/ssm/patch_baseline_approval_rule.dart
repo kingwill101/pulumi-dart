@@ -41,11 +41,11 @@ class PatchBaselineApprovalRule {
 
   factory PatchBaselineApprovalRule.fromMap(Map<String, dynamic> map) {
     return PatchBaselineApprovalRule(
-      approveAfterDays: map['approveAfterDays'] == null ? null : (map['approveAfterDays'] as int).input(),
-      approveUntilDate: map['approveUntilDate'] == null ? null : (map['approveUntilDate'] as String).input(),
-      complianceLevel: map['complianceLevel'] == null ? null : (map['complianceLevel'] as String).input(),
-      enableNonSecurity: map['enableNonSecurity'] == null ? null : (map['enableNonSecurity'] as bool).input(),
-      patchFilters: (pulumi.Input.decodeList<PatchBaselineApprovalRulePatchFilter>(map['patchFilters'], (value) => PatchBaselineApprovalRulePatchFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      approveAfterDays: map['approveAfterDays'] == null ? null : ((map['approveAfterDays'] as int).input()).input(),
+      approveUntilDate: map['approveUntilDate'] == null ? null : ((map['approveUntilDate'] as String).input()).input(),
+      complianceLevel: map['complianceLevel'] == null ? null : ((map['complianceLevel'] as String).input()).input(),
+      enableNonSecurity: map['enableNonSecurity'] == null ? null : ((map['enableNonSecurity'] as bool).input()).input(),
+      patchFilters: (pulumi.Input.decodeList<PatchBaselineApprovalRulePatchFilter>(map['patchFilters']!, (value) => PatchBaselineApprovalRulePatchFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

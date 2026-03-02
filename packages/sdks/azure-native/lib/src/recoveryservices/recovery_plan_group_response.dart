@@ -38,10 +38,10 @@ class RecoveryPlanGroupResponse {
 
   factory RecoveryPlanGroupResponse.fromMap(Map<String, dynamic> map) {
     return RecoveryPlanGroupResponse(
-      endGroupActions: map['endGroupActions'] == null ? null : (pulumi.Input.decodeList<RecoveryPlanActionResponse>(map['endGroupActions'], (value) => RecoveryPlanActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endGroupActions: map['endGroupActions'] == null ? null : (pulumi.Input.decodeList<RecoveryPlanActionResponse>(map['endGroupActions']!, (value) => RecoveryPlanActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       groupType: (map['groupType'] as String).input(),
-      replicationProtectedItems: map['replicationProtectedItems'] == null ? null : (pulumi.Input.decodeList<RecoveryPlanProtectedItemResponse>(map['replicationProtectedItems'], (value) => RecoveryPlanProtectedItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      startGroupActions: map['startGroupActions'] == null ? null : (pulumi.Input.decodeList<RecoveryPlanActionResponse>(map['startGroupActions'], (value) => RecoveryPlanActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicationProtectedItems: map['replicationProtectedItems'] == null ? null : (pulumi.Input.decodeList<RecoveryPlanProtectedItemResponse>(map['replicationProtectedItems']!, (value) => RecoveryPlanProtectedItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      startGroupActions: map['startGroupActions'] == null ? null : (pulumi.Input.decodeList<RecoveryPlanActionResponse>(map['startGroupActions']!, (value) => RecoveryPlanActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

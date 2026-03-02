@@ -66,14 +66,14 @@ class GetCoreNetworkPolicyDocumentArgs {
 
   factory GetCoreNetworkPolicyDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentArgs(
-      attachmentPolicies: map['attachmentPolicies'] == null ? null : (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentPolicy>(map['attachmentPolicies'], (value) => GetCoreNetworkPolicyDocumentAttachmentPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      attachmentRoutingPolicyRules: map['attachmentRoutingPolicyRules'] == null ? null : (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule>(map['attachmentRoutingPolicyRules'], (value) => GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      coreNetworkConfigurations: (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentCoreNetworkConfiguration>(map['coreNetworkConfigurations'], (value) => GetCoreNetworkPolicyDocumentCoreNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkFunctionGroups: map['networkFunctionGroups'] == null ? null : (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentNetworkFunctionGroup>(map['networkFunctionGroups'], (value) => GetCoreNetworkPolicyDocumentNetworkFunctionGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routingPolicies: map['routingPolicies'] == null ? null : (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentRoutingPolicy>(map['routingPolicies'], (value) => GetCoreNetworkPolicyDocumentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      segmentActions: map['segmentActions'] == null ? null : (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentSegmentAction>(map['segmentActions'], (value) => GetCoreNetworkPolicyDocumentSegmentAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      segments: (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentSegment>(map['segments'], (value) => GetCoreNetworkPolicyDocumentSegment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      attachmentPolicies: map['attachmentPolicies'] == null ? null : ((pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentPolicy>(map['attachmentPolicies']!, (value) => GetCoreNetworkPolicyDocumentAttachmentPolicy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      attachmentRoutingPolicyRules: map['attachmentRoutingPolicyRules'] == null ? null : ((pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule>(map['attachmentRoutingPolicyRules']!, (value) => GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      coreNetworkConfigurations: (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentCoreNetworkConfiguration>(map['coreNetworkConfigurations']!, (value) => GetCoreNetworkPolicyDocumentCoreNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkFunctionGroups: map['networkFunctionGroups'] == null ? null : ((pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentNetworkFunctionGroup>(map['networkFunctionGroups']!, (value) => GetCoreNetworkPolicyDocumentNetworkFunctionGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      routingPolicies: map['routingPolicies'] == null ? null : ((pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentRoutingPolicy>(map['routingPolicies']!, (value) => GetCoreNetworkPolicyDocumentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      segmentActions: map['segmentActions'] == null ? null : ((pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentSegmentAction>(map['segmentActions']!, (value) => GetCoreNetworkPolicyDocumentSegmentAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      segments: (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentSegment>(map['segments']!, (value) => GetCoreNetworkPolicyDocumentSegment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class UserPoolConfigResponse {
 
   factory UserPoolConfigResponse.fromMap(Map<String, dynamic> map) {
     return UserPoolConfigResponse(
-      appIdClientRegex: map['appIdClientRegex'] == null ? null : (map['appIdClientRegex'] as String).input(),
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
-      defaultAction: map['defaultAction'] == null ? null : (DefaultActionEnumValueResponse.fromMap((map['defaultAction'] as Map).cast<String, dynamic>())).input(),
-      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
+      appIdClientRegex: map['appIdClientRegex'] == null ? null : (map['appIdClientRegex']! as String).input(),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion']! as String).input(),
+      defaultAction: map['defaultAction'] == null ? null : (DefaultActionEnumValueResponse.fromMap((map['defaultAction']! as Map).cast<String, dynamic>())).input(),
+      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class SbomReferenceIntotoPredicate {
 
   factory SbomReferenceIntotoPredicate.fromMap(Map<String, dynamic> map) {
     return SbomReferenceIntotoPredicate(
-      digest: map['digest'] == null ? null : ((map['digest'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
-      referrerId: map['referrerId'] == null ? null : (map['referrerId'] as String).input(),
+      digest: map['digest'] == null ? null : ((map['digest']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
+      referrerId: map['referrerId'] == null ? null : (map['referrerId']! as String).input(),
     );
   }
 }

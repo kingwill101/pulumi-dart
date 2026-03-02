@@ -77,17 +77,17 @@ class RestSource {
 
   factory RestSource.fromMap(Map<String, dynamic> map) {
     return RestSource(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      additionalHeaders: map['additionalHeaders'] == null ? null : (map['additionalHeaders']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      httpRequestTimeout: map['httpRequestTimeout'] == null ? null : (map['httpRequestTimeout']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      paginationRules: map['paginationRules'] == null ? null : (map['paginationRules']).input(),
-      requestBody: map['requestBody'] == null ? null : (map['requestBody']).input(),
-      requestInterval: map['requestInterval'] == null ? null : (map['requestInterval']).input(),
-      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      additionalHeaders: map['additionalHeaders'] == null ? null : (map['additionalHeaders']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      httpRequestTimeout: map['httpRequestTimeout'] == null ? null : (map['httpRequestTimeout']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      paginationRules: map['paginationRules'] == null ? null : (map['paginationRules']!).input(),
+      requestBody: map['requestBody'] == null ? null : (map['requestBody']!).input(),
+      requestInterval: map['requestInterval'] == null ? null : (map['requestInterval']!).input(),
+      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
       type: (map['type'] as String).input(),
     );
   }

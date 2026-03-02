@@ -26,8 +26,8 @@ class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk {
 
   factory AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk.fromMap(Map<String, dynamic> map) {
     return AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk(
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
-      interface: map['interface'] == null ? null : (AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface.fromValue(map['interface'] as String)).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as String).input(),
+      interface: map['interface'] == null ? null : (AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface.fromValue(map['interface']! as String)).input(),
     );
   }
 }

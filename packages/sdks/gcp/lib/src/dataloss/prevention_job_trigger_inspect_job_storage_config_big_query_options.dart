@@ -68,12 +68,12 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
 
   factory PreventionJobTriggerInspectJobStorageConfigBigQueryOptions.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(
-      excludedFields: map['excludedFields'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField>(map['excludedFields'], (value) => PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identifyingFields: map['identifyingFields'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField>(map['identifyingFields'], (value) => PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includedFields: map['includedFields'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField>(map['includedFields'], (value) => PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rowsLimit: map['rowsLimit'] == null ? null : (map['rowsLimit'] as int).input(),
-      rowsLimitPercent: map['rowsLimitPercent'] == null ? null : (map['rowsLimitPercent'] as int).input(),
-      sampleMethod: map['sampleMethod'] == null ? null : (map['sampleMethod'] as String).input(),
+      excludedFields: map['excludedFields'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField>(map['excludedFields']!, (value) => PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identifyingFields: map['identifyingFields'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField>(map['identifyingFields']!, (value) => PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includedFields: map['includedFields'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField>(map['includedFields']!, (value) => PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rowsLimit: map['rowsLimit'] == null ? null : (map['rowsLimit']! as int).input(),
+      rowsLimitPercent: map['rowsLimitPercent'] == null ? null : (map['rowsLimitPercent']! as int).input(),
+      sampleMethod: map['sampleMethod'] == null ? null : (map['sampleMethod']! as String).input(),
       tableReference: (PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference.fromMap((map['tableReference'] as Map).cast<String, dynamic>())).input(),
     );
   }

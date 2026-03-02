@@ -74,20 +74,20 @@ class GetBaseInstancesResult {
 
   factory GetBaseInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetBaseInstancesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      instanceName: map['instanceName'] == null ? null : map['instanceName'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
+      instanceName: map['instanceName'] == null ? null : map['instanceName']! as String,
       instances: pulumi.Input.decodeList<GetBaseInstancesInstance>(map['instances'], (value) => GetBaseInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      searchKey: map['searchKey'] == null ? null : map['searchKey'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      searchKey: map['searchKey'] == null ? null : map['searchKey']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

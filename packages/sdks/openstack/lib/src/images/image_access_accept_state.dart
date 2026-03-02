@@ -56,13 +56,13 @@ class ImageAccessAcceptState {
 
   factory ImageAccessAcceptState.fromMap(Map<String, dynamic> map) {
     return ImageAccessAcceptState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      memberId: map['memberId'] == null ? null : (map['memberId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
+      memberId: map['memberId'] == null ? null : (map['memberId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
     );
   }
 }

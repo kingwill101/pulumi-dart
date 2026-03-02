@@ -32,7 +32,7 @@ class PlanMemberSyncStatusResponse {
 
   factory PlanMemberSyncStatusResponse.fromMap(Map<String, dynamic> map) {
     return PlanMemberSyncStatusResponse(
-      lastSyncError: map['lastSyncError'] == null ? null : (ErrorDetailResponse.fromMap((map['lastSyncError'] as Map).cast<String, dynamic>())).input(),
+      lastSyncError: map['lastSyncError'] == null ? null : (ErrorDetailResponse.fromMap((map['lastSyncError']! as Map).cast<String, dynamic>())).input(),
       lastSyncTime: (map['lastSyncTime'] as String).input(),
       syncState: (map['syncState'] as String).input(),
     );

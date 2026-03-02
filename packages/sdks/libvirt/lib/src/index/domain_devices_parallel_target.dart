@@ -25,8 +25,8 @@ class DomainDevicesParallelTarget {
 
   factory DomainDevicesParallelTarget.fromMap(Map<String, dynamic> map) {
     return DomainDevicesParallelTarget(
-      port: map['port'] == null ? null : (map['port'] as double).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as double).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

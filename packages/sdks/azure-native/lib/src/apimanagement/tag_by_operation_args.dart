@@ -48,7 +48,7 @@ class TagByOperationArgs {
       operationId: (map['operationId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      tagId: map['tagId'] == null ? null : (map['tagId'] as String).input(),
+      tagId: map['tagId'] == null ? null : (map['tagId']! as String).input(),
     );
   }
 }

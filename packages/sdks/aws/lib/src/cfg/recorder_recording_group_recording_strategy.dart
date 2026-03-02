@@ -19,7 +19,7 @@ class RecorderRecordingGroupRecordingStrategy {
 
   factory RecorderRecordingGroupRecordingStrategy.fromMap(Map<String, dynamic> map) {
     return RecorderRecordingGroupRecordingStrategy(
-      useOnly: map['useOnly'] == null ? null : (map['useOnly'] as String).input(),
+      useOnly: map['useOnly'] == null ? null : ((map['useOnly'] as String).input()).input(),
     );
   }
 }

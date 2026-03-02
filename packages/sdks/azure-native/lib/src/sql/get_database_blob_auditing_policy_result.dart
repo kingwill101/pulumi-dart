@@ -156,19 +156,19 @@ class GetDatabaseBlobAuditingPolicyResult {
 
   factory GetDatabaseBlobAuditingPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseBlobAuditingPolicyResult(
-      auditActionsAndGroups: map['auditActionsAndGroups'] == null ? null : (map['auditActionsAndGroups'] as List).cast<String>(),
+      auditActionsAndGroups: map['auditActionsAndGroups'] == null ? null : (map['auditActionsAndGroups']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      isAzureMonitorTargetEnabled: map['isAzureMonitorTargetEnabled'] == null ? null : map['isAzureMonitorTargetEnabled'] as bool,
-      isManagedIdentityInUse: map['isManagedIdentityInUse'] == null ? null : map['isManagedIdentityInUse'] as bool,
-      isStorageSecondaryKeyInUse: map['isStorageSecondaryKeyInUse'] == null ? null : map['isStorageSecondaryKeyInUse'] as bool,
+      isAzureMonitorTargetEnabled: map['isAzureMonitorTargetEnabled'] == null ? null : map['isAzureMonitorTargetEnabled']! as bool,
+      isManagedIdentityInUse: map['isManagedIdentityInUse'] == null ? null : map['isManagedIdentityInUse']! as bool,
+      isStorageSecondaryKeyInUse: map['isStorageSecondaryKeyInUse'] == null ? null : map['isStorageSecondaryKeyInUse']! as bool,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      queueDelayMs: map['queueDelayMs'] == null ? null : map['queueDelayMs'] as int,
-      retentionDays: map['retentionDays'] == null ? null : map['retentionDays'] as int,
+      queueDelayMs: map['queueDelayMs'] == null ? null : map['queueDelayMs']! as int,
+      retentionDays: map['retentionDays'] == null ? null : map['retentionDays']! as int,
       state: map['state'] as String,
-      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : map['storageAccountSubscriptionId'] as String,
-      storageEndpoint: map['storageEndpoint'] == null ? null : map['storageEndpoint'] as String,
+      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : map['storageAccountSubscriptionId']! as String,
+      storageEndpoint: map['storageEndpoint'] == null ? null : map['storageEndpoint']! as String,
       type: map['type'] as String,
     );
   }

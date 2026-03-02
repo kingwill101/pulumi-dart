@@ -45,7 +45,7 @@ class GetTimeSeriesArgs {
     return GetTimeSeriesArgs(
       experimentId: (map['experimentId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       runId: (map['runId'] as String).input(),
       tensorboardId: (map['tensorboardId'] as String).input(),
       timeSeriesId: (map['timeSeriesId'] as String).input(),

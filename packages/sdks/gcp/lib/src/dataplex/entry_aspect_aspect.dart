@@ -44,11 +44,11 @@ class EntryAspectAspect {
 
   factory EntryAspectAspect.fromMap(Map<String, dynamic> map) {
     return EntryAspectAspect(
-      aspectType: map['aspectType'] == null ? null : (map['aspectType'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      aspectType: map['aspectType'] == null ? null : (map['aspectType']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
       data: (map['data'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

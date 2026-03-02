@@ -21,7 +21,7 @@ class ExpirationPolicy {
 
   factory ExpirationPolicy.fromMap(Map<String, dynamic> map) {
     return ExpirationPolicy(
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
     );
   }
 }

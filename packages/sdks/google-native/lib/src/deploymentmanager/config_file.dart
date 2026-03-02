@@ -20,7 +20,7 @@ class ConfigFile {
 
   factory ConfigFile.fromMap(Map<String, dynamic> map) {
     return ConfigFile(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class NodeResponse {
 
   factory NodeResponse.fromMap(Map<String, dynamic> map) {
     return NodeResponse(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (DaxClusterEndpointResponse.fromMap((map['endpoint'] as Map).cast<String, dynamic>())).input(),
-      nodeCreateTime: map['nodeCreateTime'] == null ? null : (map['nodeCreateTime'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      nodeStatus: map['nodeStatus'] == null ? null : (map['nodeStatus'] as String).input(),
-      parameterGroupStatus: map['parameterGroupStatus'] == null ? null : (map['parameterGroupStatus'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (DaxClusterEndpointResponse.fromMap((map['endpoint']! as Map).cast<String, dynamic>())).input(),
+      nodeCreateTime: map['nodeCreateTime'] == null ? null : (map['nodeCreateTime']! as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      nodeStatus: map['nodeStatus'] == null ? null : (map['nodeStatus']! as String).input(),
+      parameterGroupStatus: map['parameterGroupStatus'] == null ? null : (map['parameterGroupStatus']! as String).input(),
     );
   }
 }

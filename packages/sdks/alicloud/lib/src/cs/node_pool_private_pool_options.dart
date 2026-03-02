@@ -25,8 +25,8 @@ class NodePoolPrivatePoolOptions {
 
   factory NodePoolPrivatePoolOptions.fromMap(Map<String, dynamic> map) {
     return NodePoolPrivatePoolOptions(
-      privatePoolOptionsId: map['privatePoolOptionsId'] == null ? null : (map['privatePoolOptionsId'] as String).input(),
-      privatePoolOptionsMatchCriteria: map['privatePoolOptionsMatchCriteria'] == null ? null : (map['privatePoolOptionsMatchCriteria'] as String).input(),
+      privatePoolOptionsId: map['privatePoolOptionsId'] == null ? null : (map['privatePoolOptionsId']! as String).input(),
+      privatePoolOptionsMatchCriteria: map['privatePoolOptionsMatchCriteria'] == null ? null : (map['privatePoolOptionsMatchCriteria']! as String).input(),
     );
   }
 }

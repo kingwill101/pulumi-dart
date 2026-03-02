@@ -39,10 +39,10 @@ class RocketMQInstanceNetworkInfoInternetInfo {
 
   factory RocketMQInstanceNetworkInfoInternetInfo.fromMap(Map<String, dynamic> map) {
     return RocketMQInstanceNetworkInfoInternetInfo(
-      flowOutBandwidth: map['flowOutBandwidth'] == null ? null : (map['flowOutBandwidth'] as int).input(),
+      flowOutBandwidth: map['flowOutBandwidth'] == null ? null : (map['flowOutBandwidth']! as int).input(),
       flowOutType: (map['flowOutType'] as String).input(),
       internetSpec: (map['internetSpec'] as String).input(),
-      ipWhitelists: map['ipWhitelists'] == null ? null : ((map['ipWhitelists'] as List).cast<String>()).input(),
+      ipWhitelists: map['ipWhitelists'] == null ? null : ((map['ipWhitelists']! as List).cast<String>()).input(),
     );
   }
 }

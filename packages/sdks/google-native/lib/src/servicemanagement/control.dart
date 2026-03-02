@@ -27,8 +27,8 @@ class Control {
 
   factory Control.fromMap(Map<String, dynamic> map) {
     return Control(
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      methodPolicies: map['methodPolicies'] == null ? null : (pulumi.Input.decodeList<MethodPolicy>(map['methodPolicies'], (value) => MethodPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      methodPolicies: map['methodPolicies'] == null ? null : (pulumi.Input.decodeList<MethodPolicy>(map['methodPolicies']!, (value) => MethodPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

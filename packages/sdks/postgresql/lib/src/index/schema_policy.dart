@@ -42,11 +42,11 @@ class SchemaPolicy {
 
   factory SchemaPolicy.fromMap(Map<String, dynamic> map) {
     return SchemaPolicy(
-      create: map['create'] == null ? null : (map['create'] as bool).input(),
-      createWithGrant: map['createWithGrant'] == null ? null : (map['createWithGrant'] as bool).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      usage: map['usage'] == null ? null : (map['usage'] as bool).input(),
-      usageWithGrant: map['usageWithGrant'] == null ? null : (map['usageWithGrant'] as bool).input(),
+      create: map['create'] == null ? null : (map['create']! as bool).input(),
+      createWithGrant: map['createWithGrant'] == null ? null : (map['createWithGrant']! as bool).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      usage: map['usage'] == null ? null : (map['usage']! as bool).input(),
+      usageWithGrant: map['usageWithGrant'] == null ? null : (map['usageWithGrant']! as bool).input(),
     );
   }
 }

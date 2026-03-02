@@ -27,8 +27,8 @@ class GoogleCloudDialogflowV2NotificationConfig {
 
   factory GoogleCloudDialogflowV2NotificationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2NotificationConfig(
-      messageFormat: map['messageFormat'] == null ? null : (GoogleCloudDialogflowV2NotificationConfigMessageFormat.fromValue(map['messageFormat'] as String)).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      messageFormat: map['messageFormat'] == null ? null : (GoogleCloudDialogflowV2NotificationConfigMessageFormat.fromValue(map['messageFormat']! as String)).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

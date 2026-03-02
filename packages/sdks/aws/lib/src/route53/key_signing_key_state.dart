@@ -88,20 +88,20 @@ class KeySigningKeyState {
 
   factory KeySigningKeyState.fromMap(Map<String, dynamic> map) {
     return KeySigningKeyState(
-      digestAlgorithmMnemonic: map['digestAlgorithmMnemonic'] == null ? null : (map['digestAlgorithmMnemonic'] as String).input(),
-      digestAlgorithmType: map['digestAlgorithmType'] == null ? null : (map['digestAlgorithmType'] as int).input(),
-      digestValue: map['digestValue'] == null ? null : (map['digestValue'] as String).input(),
-      dnskeyRecord: map['dnskeyRecord'] == null ? null : (map['dnskeyRecord'] as String).input(),
-      dsRecord: map['dsRecord'] == null ? null : (map['dsRecord'] as String).input(),
-      flag: map['flag'] == null ? null : (map['flag'] as int).input(),
-      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
-      keyManagementServiceArn: map['keyManagementServiceArn'] == null ? null : (map['keyManagementServiceArn'] as String).input(),
-      keyTag: map['keyTag'] == null ? null : (map['keyTag'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
-      signingAlgorithmMnemonic: map['signingAlgorithmMnemonic'] == null ? null : (map['signingAlgorithmMnemonic'] as String).input(),
-      signingAlgorithmType: map['signingAlgorithmType'] == null ? null : (map['signingAlgorithmType'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      digestAlgorithmMnemonic: map['digestAlgorithmMnemonic'] == null ? null : ((map['digestAlgorithmMnemonic'] as String).input()).input(),
+      digestAlgorithmType: map['digestAlgorithmType'] == null ? null : ((map['digestAlgorithmType'] as int).input()).input(),
+      digestValue: map['digestValue'] == null ? null : ((map['digestValue'] as String).input()).input(),
+      dnskeyRecord: map['dnskeyRecord'] == null ? null : ((map['dnskeyRecord'] as String).input()).input(),
+      dsRecord: map['dsRecord'] == null ? null : ((map['dsRecord'] as String).input()).input(),
+      flag: map['flag'] == null ? null : ((map['flag'] as int).input()).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : ((map['hostedZoneId'] as String).input()).input(),
+      keyManagementServiceArn: map['keyManagementServiceArn'] == null ? null : ((map['keyManagementServiceArn'] as String).input()).input(),
+      keyTag: map['keyTag'] == null ? null : ((map['keyTag'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      publicKey: map['publicKey'] == null ? null : ((map['publicKey'] as String).input()).input(),
+      signingAlgorithmMnemonic: map['signingAlgorithmMnemonic'] == null ? null : ((map['signingAlgorithmMnemonic'] as String).input()).input(),
+      signingAlgorithmType: map['signingAlgorithmType'] == null ? null : ((map['signingAlgorithmType'] as int).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

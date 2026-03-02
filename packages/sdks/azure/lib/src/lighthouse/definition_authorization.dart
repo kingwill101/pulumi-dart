@@ -35,8 +35,8 @@ class DefinitionAuthorization {
 
   factory DefinitionAuthorization.fromMap(Map<String, dynamic> map) {
     return DefinitionAuthorization(
-      delegatedRoleDefinitionIds: map['delegatedRoleDefinitionIds'] == null ? null : ((map['delegatedRoleDefinitionIds'] as List).cast<String>()).input(),
-      principalDisplayName: map['principalDisplayName'] == null ? null : (map['principalDisplayName'] as String).input(),
+      delegatedRoleDefinitionIds: map['delegatedRoleDefinitionIds'] == null ? null : ((map['delegatedRoleDefinitionIds']! as List).cast<String>()).input(),
+      principalDisplayName: map['principalDisplayName'] == null ? null : (map['principalDisplayName']! as String).input(),
       principalId: (map['principalId'] as String).input(),
       roleDefinitionId: (map['roleDefinitionId'] as String).input(),
     );

@@ -31,7 +31,7 @@ class GetVpnTunnelArgs {
 
   factory GetVpnTunnelArgs.fromMap(Map<String, dynamic> map) {
     return GetVpnTunnelArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       vpnTunnel: (map['vpnTunnel'] as String).input(),
     );

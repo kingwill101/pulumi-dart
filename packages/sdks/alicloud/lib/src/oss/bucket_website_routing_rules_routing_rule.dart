@@ -38,10 +38,10 @@ class BucketWebsiteRoutingRulesRoutingRule {
 
   factory BucketWebsiteRoutingRulesRoutingRule.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRule(
-      condition: map['condition'] == null ? null : (BucketWebsiteRoutingRulesRoutingRuleCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      luaConfig: map['luaConfig'] == null ? null : (BucketWebsiteRoutingRulesRoutingRuleLuaConfig.fromMap((map['luaConfig'] as Map).cast<String, dynamic>())).input(),
-      redirect: map['redirect'] == null ? null : (BucketWebsiteRoutingRulesRoutingRuleRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>())).input(),
-      ruleNumber: map['ruleNumber'] == null ? null : (map['ruleNumber'] as int).input(),
+      condition: map['condition'] == null ? null : (BucketWebsiteRoutingRulesRoutingRuleCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      luaConfig: map['luaConfig'] == null ? null : (BucketWebsiteRoutingRulesRoutingRuleLuaConfig.fromMap((map['luaConfig']! as Map).cast<String, dynamic>())).input(),
+      redirect: map['redirect'] == null ? null : (BucketWebsiteRoutingRulesRoutingRuleRedirect.fromMap((map['redirect']! as Map).cast<String, dynamic>())).input(),
+      ruleNumber: map['ruleNumber'] == null ? null : (map['ruleNumber']! as int).input(),
     );
   }
 }

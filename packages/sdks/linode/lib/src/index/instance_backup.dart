@@ -30,9 +30,9 @@ class InstanceBackup {
 
   factory InstanceBackup.fromMap(Map<String, dynamic> map) {
     return InstanceBackup(
-      available: map['available'] == null ? null : (map['available'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<InstanceBackupSchedule>(map['schedules'], (value) => InstanceBackupSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      available: map['available'] == null ? null : (map['available']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<InstanceBackupSchedule>(map['schedules']!, (value) => InstanceBackupSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class NotebookInstanceInstanceMetadataServiceConfiguration {
 
   factory NotebookInstanceInstanceMetadataServiceConfiguration.fromMap(Map<String, dynamic> map) {
     return NotebookInstanceInstanceMetadataServiceConfiguration(
-      minimumInstanceMetadataServiceVersion: map['minimumInstanceMetadataServiceVersion'] == null ? null : (map['minimumInstanceMetadataServiceVersion'] as String).input(),
+      minimumInstanceMetadataServiceVersion: map['minimumInstanceMetadataServiceVersion'] == null ? null : ((map['minimumInstanceMetadataServiceVersion'] as String).input()).input(),
     );
   }
 }

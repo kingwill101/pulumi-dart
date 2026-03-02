@@ -32,9 +32,9 @@ class AgentcoreGatewayInterceptorConfiguration {
 
   factory AgentcoreGatewayInterceptorConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayInterceptorConfiguration(
-      inputConfiguration: map['inputConfiguration'] == null ? null : (AgentcoreGatewayInterceptorConfigurationInputConfiguration.fromMap((map['inputConfiguration'] as Map).cast<String, dynamic>())).input(),
+      inputConfiguration: map['inputConfiguration'] == null ? null : ((AgentcoreGatewayInterceptorConfigurationInputConfiguration.fromMap((map['inputConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       interceptionPoints: ((map['interceptionPoints'] as List).cast<String>()).input(),
-      interceptor: map['interceptor'] == null ? null : (AgentcoreGatewayInterceptorConfigurationInterceptor.fromMap((map['interceptor'] as Map).cast<String, dynamic>())).input(),
+      interceptor: map['interceptor'] == null ? null : ((AgentcoreGatewayInterceptorConfigurationInterceptor.fromMap((map['interceptor']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

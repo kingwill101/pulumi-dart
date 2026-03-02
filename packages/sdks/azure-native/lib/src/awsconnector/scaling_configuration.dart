@@ -46,12 +46,12 @@ class ScalingConfiguration {
 
   factory ScalingConfiguration.fromMap(Map<String, dynamic> map) {
     return ScalingConfiguration(
-      autoPause: map['autoPause'] == null ? null : (map['autoPause'] as bool).input(),
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as int).input(),
-      secondsBeforeTimeout: map['secondsBeforeTimeout'] == null ? null : (map['secondsBeforeTimeout'] as int).input(),
-      secondsUntilAutoPause: map['secondsUntilAutoPause'] == null ? null : (map['secondsUntilAutoPause'] as int).input(),
-      timeoutAction: map['timeoutAction'] == null ? null : (map['timeoutAction'] as String).input(),
+      autoPause: map['autoPause'] == null ? null : (map['autoPause']! as bool).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity']! as int).input(),
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as int).input(),
+      secondsBeforeTimeout: map['secondsBeforeTimeout'] == null ? null : (map['secondsBeforeTimeout']! as int).input(),
+      secondsUntilAutoPause: map['secondsUntilAutoPause'] == null ? null : (map['secondsUntilAutoPause']! as int).input(),
+      timeoutAction: map['timeoutAction'] == null ? null : (map['timeoutAction']! as String).input(),
     );
   }
 }

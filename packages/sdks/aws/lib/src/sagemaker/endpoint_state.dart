@@ -52,13 +52,13 @@ class EndpointState {
 
   factory EndpointState.fromMap(Map<String, dynamic> map) {
     return EndpointState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deploymentConfig: map['deploymentConfig'] == null ? null : (EndpointDeploymentConfig.fromMap((map['deploymentConfig'] as Map).cast<String, dynamic>())).input(),
-      endpointConfigName: map['endpointConfigName'] == null ? null : (map['endpointConfigName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deploymentConfig: map['deploymentConfig'] == null ? null : ((EndpointDeploymentConfig.fromMap((map['deploymentConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      endpointConfigName: map['endpointConfigName'] == null ? null : ((map['endpointConfigName'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

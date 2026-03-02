@@ -32,9 +32,9 @@ class ClusterClientAuthentication {
 
   factory ClusterClientAuthentication.fromMap(Map<String, dynamic> map) {
     return ClusterClientAuthentication(
-      sasl: map['sasl'] == null ? null : (ClusterClientAuthenticationSasl.fromMap((map['sasl'] as Map).cast<String, dynamic>())).input(),
-      tls: map['tls'] == null ? null : (ClusterClientAuthenticationTls.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
-      unauthenticated: map['unauthenticated'] == null ? null : (map['unauthenticated'] as bool).input(),
+      sasl: map['sasl'] == null ? null : ((ClusterClientAuthenticationSasl.fromMap((map['sasl']! as Map).cast<String, dynamic>())).input()).input(),
+      tls: map['tls'] == null ? null : ((ClusterClientAuthenticationTls.fromMap((map['tls']! as Map).cast<String, dynamic>())).input()).input(),
+      unauthenticated: map['unauthenticated'] == null ? null : ((map['unauthenticated'] as bool).input()).input(),
     );
   }
 }

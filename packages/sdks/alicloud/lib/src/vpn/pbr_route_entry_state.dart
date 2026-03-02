@@ -51,13 +51,13 @@ class PbrRouteEntryState {
 
   factory PbrRouteEntryState.fromMap(Map<String, dynamic> map) {
     return PbrRouteEntryState(
-      nextHop: map['nextHop'] == null ? null : (map['nextHop'] as String).input(),
-      publishVpc: map['publishVpc'] == null ? null : (map['publishVpc'] as bool).input(),
-      routeDest: map['routeDest'] == null ? null : (map['routeDest'] as String).input(),
-      routeSource: map['routeSource'] == null ? null : (map['routeSource'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      nextHop: map['nextHop'] == null ? null : (map['nextHop']! as String).input(),
+      publishVpc: map['publishVpc'] == null ? null : (map['publishVpc']! as bool).input(),
+      routeDest: map['routeDest'] == null ? null : (map['routeDest']! as String).input(),
+      routeSource: map['routeSource'] == null ? null : (map['routeSource']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

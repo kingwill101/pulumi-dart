@@ -32,9 +32,9 @@ class DomainDevicesAudioPipeWire {
 
   factory DomainDevicesAudioPipeWire.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioPipeWire(
-      input: map['input'] == null ? null : (DomainDevicesAudioPipeWireInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      output: map['output'] == null ? null : (DomainDevicesAudioPipeWireOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
-      runtimeDir: map['runtimeDir'] == null ? null : (map['runtimeDir'] as String).input(),
+      input: map['input'] == null ? null : (DomainDevicesAudioPipeWireInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
+      output: map['output'] == null ? null : (DomainDevicesAudioPipeWireOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
+      runtimeDir: map['runtimeDir'] == null ? null : (map['runtimeDir']! as String).input(),
     );
   }
 }

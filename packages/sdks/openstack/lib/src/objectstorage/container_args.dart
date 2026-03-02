@@ -109,19 +109,19 @@ class ContainerArgs {
 
   factory ContainerArgs.fromMap(Map<String, dynamic> map) {
     return ContainerArgs(
-      containerRead: map['containerRead'] == null ? null : (map['containerRead'] as String).input(),
-      containerSyncKey: map['containerSyncKey'] == null ? null : (map['containerSyncKey'] as String).input(),
-      containerSyncTo: map['containerSyncTo'] == null ? null : (map['containerSyncTo'] as String).input(),
-      containerWrite: map['containerWrite'] == null ? null : (map['containerWrite'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
-      storagePolicy: map['storagePolicy'] == null ? null : (map['storagePolicy'] as String).input(),
-      versioning: map['versioning'] == null ? null : (map['versioning'] as bool).input(),
-      versioningLegacy: map['versioningLegacy'] == null ? null : (ContainerVersioningLegacy.fromMap((map['versioningLegacy'] as Map).cast<String, dynamic>())).input(),
+      containerRead: map['containerRead'] == null ? null : (map['containerRead']! as String).input(),
+      containerSyncKey: map['containerSyncKey'] == null ? null : (map['containerSyncKey']! as String).input(),
+      containerSyncTo: map['containerSyncTo'] == null ? null : (map['containerSyncTo']! as String).input(),
+      containerWrite: map['containerWrite'] == null ? null : (map['containerWrite']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      storageClass: map['storageClass'] == null ? null : (map['storageClass']! as String).input(),
+      storagePolicy: map['storagePolicy'] == null ? null : (map['storagePolicy']! as String).input(),
+      versioning: map['versioning'] == null ? null : (map['versioning']! as bool).input(),
+      versioningLegacy: map['versioningLegacy'] == null ? null : (ContainerVersioningLegacy.fromMap((map['versioningLegacy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -94,7 +94,7 @@ class GetNetworkPeeringResult {
       name: map['name'] as String,
       peerNetwork: map['peerNetwork'] as String,
       peerNetworkType: map['peerNetworkType'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       state: map['state'] as String,
       stateDetails: map['stateDetails'] as String,
       uid: map['uid'] as String,

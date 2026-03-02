@@ -55,7 +55,7 @@ class GetPrincipalPolicySimulationResult {
       allowed: (map['allowed'] as bool).input(),
       decision: (map['decision'] as String).input(),
       decisionDetails: ((map['decisionDetails'] as Map).cast<String, String>()).input(),
-      matchedStatements: (pulumi.Input.decodeList<GetPrincipalPolicySimulationResultMatchedStatement>(map['matchedStatements'], (value) => GetPrincipalPolicySimulationResultMatchedStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchedStatements: (pulumi.Input.decodeList<GetPrincipalPolicySimulationResultMatchedStatement>(map['matchedStatements']!, (value) => GetPrincipalPolicySimulationResultMatchedStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
       missingContextKeys: ((map['missingContextKeys'] as List).cast<String>()).input(),
       resourceArn: (map['resourceArn'] as String).input(),
     );

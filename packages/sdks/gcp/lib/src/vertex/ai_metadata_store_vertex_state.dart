@@ -61,14 +61,14 @@ class AiMetadataStoreVertexState {
 
   factory AiMetadataStoreVertexState.fromMap(Map<String, dynamic> map) {
     return AiMetadataStoreVertexState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiMetadataStoreEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<AiMetadataStoreState>(map['states'], (value) => AiMetadataStoreState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiMetadataStoreEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<AiMetadataStoreState>(map['states']!, (value) => AiMetadataStoreState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

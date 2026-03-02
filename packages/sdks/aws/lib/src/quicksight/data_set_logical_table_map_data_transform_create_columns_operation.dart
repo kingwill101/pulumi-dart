@@ -21,7 +21,7 @@ class DataSetLogicalTableMapDataTransformCreateColumnsOperation {
 
   factory DataSetLogicalTableMapDataTransformCreateColumnsOperation.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapDataTransformCreateColumnsOperation(
-      columns: (pulumi.Input.decodeList<DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn>(map['columns'], (value) => DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: (pulumi.Input.decodeList<DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn>(map['columns']!, (value) => DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

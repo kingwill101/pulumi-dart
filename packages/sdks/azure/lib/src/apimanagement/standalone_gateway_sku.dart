@@ -25,7 +25,7 @@ class StandaloneGatewaySku {
 
   factory StandaloneGatewaySku.fromMap(Map<String, dynamic> map) {
     return StandaloneGatewaySku(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -27,8 +27,8 @@ class ExtendedPropertiesResponse {
 
   factory ExtendedPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ExtendedPropertiesResponse(
-      diskExclusionProperties: map['diskExclusionProperties'] == null ? null : (DiskExclusionPropertiesResponse.fromMap((map['diskExclusionProperties'] as Map).cast<String, dynamic>())).input(),
-      linuxVmApplicationName: map['linuxVmApplicationName'] == null ? null : (map['linuxVmApplicationName'] as String).input(),
+      diskExclusionProperties: map['diskExclusionProperties'] == null ? null : (DiskExclusionPropertiesResponse.fromMap((map['diskExclusionProperties']! as Map).cast<String, dynamic>())).input(),
+      linuxVmApplicationName: map['linuxVmApplicationName'] == null ? null : (map['linuxVmApplicationName']! as String).input(),
     );
   }
 }

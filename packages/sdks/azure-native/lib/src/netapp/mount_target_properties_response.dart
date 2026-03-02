@@ -39,7 +39,7 @@ class MountTargetPropertiesResponse {
       fileSystemId: (map['fileSystemId'] as String).input(),
       ipAddress: (map['ipAddress'] as String).input(),
       mountTargetId: (map['mountTargetId'] as String).input(),
-      smbServerFqdn: map['smbServerFqdn'] == null ? null : (map['smbServerFqdn'] as String).input(),
+      smbServerFqdn: map['smbServerFqdn'] == null ? null : (map['smbServerFqdn']! as String).input(),
     );
   }
 }

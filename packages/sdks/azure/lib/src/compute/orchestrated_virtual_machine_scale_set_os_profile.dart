@@ -34,9 +34,9 @@ class OrchestratedVirtualMachineScaleSetOsProfile {
 
   factory OrchestratedVirtualMachineScaleSetOsProfile.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetOsProfile(
-      customData: map['customData'] == null ? null : (map['customData'] as String).input(),
-      linuxConfiguration: map['linuxConfiguration'] == null ? null : (OrchestratedVirtualMachineScaleSetOsProfileLinuxConfiguration.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>())).input(),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : (OrchestratedVirtualMachineScaleSetOsProfileWindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      customData: map['customData'] == null ? null : (map['customData']! as String).input(),
+      linuxConfiguration: map['linuxConfiguration'] == null ? null : (OrchestratedVirtualMachineScaleSetOsProfileLinuxConfiguration.fromMap((map['linuxConfiguration']! as Map).cast<String, dynamic>())).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (OrchestratedVirtualMachineScaleSetOsProfileWindowsConfiguration.fromMap((map['windowsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

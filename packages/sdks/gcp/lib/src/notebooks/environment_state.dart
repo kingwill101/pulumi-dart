@@ -68,15 +68,15 @@ class EnvironmentState {
 
   factory EnvironmentState.fromMap(Map<String, dynamic> map) {
     return EnvironmentState(
-      containerImage: map['containerImage'] == null ? null : (EnvironmentContainerImage.fromMap((map['containerImage'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      postStartupScript: map['postStartupScript'] == null ? null : (map['postStartupScript'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      vmImage: map['vmImage'] == null ? null : (EnvironmentVmImage.fromMap((map['vmImage'] as Map).cast<String, dynamic>())).input(),
+      containerImage: map['containerImage'] == null ? null : (EnvironmentContainerImage.fromMap((map['containerImage']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      postStartupScript: map['postStartupScript'] == null ? null : (map['postStartupScript']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      vmImage: map['vmImage'] == null ? null : (EnvironmentVmImage.fromMap((map['vmImage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

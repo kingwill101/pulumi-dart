@@ -26,8 +26,8 @@ class FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration {
 
   factory FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfiguration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      processors: map['processors'] == null ? null : (pulumi.Input.decodeList<FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor>(map['processors'], (value) => FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      processors: map['processors'] == null ? null : ((pulumi.Input.decodeList<FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor>(map['processors']!, (value) => FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

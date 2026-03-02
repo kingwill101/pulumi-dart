@@ -37,10 +37,10 @@ class WindowsFunctionAppAuthSettingsV2MicrosoftV2 {
 
   factory WindowsFunctionAppAuthSettingsV2MicrosoftV2.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppAuthSettingsV2MicrosoftV2(
-      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences'] as List).cast<String>()).input(),
+      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences']! as List).cast<String>()).input(),
       clientId: (map['clientId'] as String).input(),
       clientSecretSettingName: (map['clientSecretSettingName'] as String).input(),
-      loginScopes: map['loginScopes'] == null ? null : ((map['loginScopes'] as List).cast<String>()).input(),
+      loginScopes: map['loginScopes'] == null ? null : ((map['loginScopes']! as List).cast<String>()).input(),
     );
   }
 }

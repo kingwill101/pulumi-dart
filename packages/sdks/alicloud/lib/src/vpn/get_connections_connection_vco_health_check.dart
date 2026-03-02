@@ -45,12 +45,12 @@ class GetConnectionsConnectionVcoHealthCheck {
 
   factory GetConnectionsConnectionVcoHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetConnectionsConnectionVcoHealthCheck(
-      dip: map['dip'] == null ? null : (map['dip'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      retry: map['retry'] == null ? null : (map['retry'] as int).input(),
-      sip: map['sip'] == null ? null : (map['sip'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      dip: map['dip'] == null ? null : (map['dip']! as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      retry: map['retry'] == null ? null : (map['retry']! as int).input(),
+      sip: map['sip'] == null ? null : (map['sip']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

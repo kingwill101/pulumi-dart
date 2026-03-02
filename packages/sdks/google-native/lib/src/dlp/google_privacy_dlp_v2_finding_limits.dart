@@ -32,9 +32,9 @@ class GooglePrivacyDlpV2FindingLimits {
 
   factory GooglePrivacyDlpV2FindingLimits.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2FindingLimits(
-      maxFindingsPerInfoType: map['maxFindingsPerInfoType'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeLimit>(map['maxFindingsPerInfoType'], (value) => GooglePrivacyDlpV2InfoTypeLimit.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxFindingsPerItem: map['maxFindingsPerItem'] == null ? null : (map['maxFindingsPerItem'] as int).input(),
-      maxFindingsPerRequest: map['maxFindingsPerRequest'] == null ? null : (map['maxFindingsPerRequest'] as int).input(),
+      maxFindingsPerInfoType: map['maxFindingsPerInfoType'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeLimit>(map['maxFindingsPerInfoType']!, (value) => GooglePrivacyDlpV2InfoTypeLimit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxFindingsPerItem: map['maxFindingsPerItem'] == null ? null : (map['maxFindingsPerItem']! as int).input(),
+      maxFindingsPerRequest: map['maxFindingsPerRequest'] == null ? null : (map['maxFindingsPerRequest']! as int).input(),
     );
   }
 }

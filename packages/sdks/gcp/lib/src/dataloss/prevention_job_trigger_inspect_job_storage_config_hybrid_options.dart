@@ -46,10 +46,10 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptions {
 
   factory PreventionJobTriggerInspectJobStorageConfigHybridOptions.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigHybridOptions(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      requiredFindingLabelKeys: map['requiredFindingLabelKeys'] == null ? null : ((map['requiredFindingLabelKeys'] as List).cast<String>()).input(),
-      tableOptions: map['tableOptions'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions.fromMap((map['tableOptions'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      requiredFindingLabelKeys: map['requiredFindingLabelKeys'] == null ? null : ((map['requiredFindingLabelKeys']! as List).cast<String>()).input(),
+      tableOptions: map['tableOptions'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions.fromMap((map['tableOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

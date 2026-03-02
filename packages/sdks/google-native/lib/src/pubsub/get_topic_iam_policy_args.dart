@@ -31,8 +31,8 @@ class GetTopicIamPolicyArgs {
 
   factory GetTopicIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetTopicIamPolicyArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       topicId: (map['topicId'] as String).input(),
     );
   }

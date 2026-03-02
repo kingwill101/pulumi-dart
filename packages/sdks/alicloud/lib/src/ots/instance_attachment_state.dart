@@ -36,10 +36,10 @@ class InstanceAttachmentState {
 
   factory InstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentState(
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vpcName: map['vpcName'] == null ? null : (map['vpcName'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vpcName: map['vpcName'] == null ? null : (map['vpcName']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

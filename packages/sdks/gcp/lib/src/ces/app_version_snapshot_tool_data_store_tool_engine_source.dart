@@ -41,9 +41,9 @@ class AppVersionSnapshotToolDataStoreToolEngineSource {
 
   factory AppVersionSnapshotToolDataStoreToolEngineSource.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolEngineSource(
-      dataStoreSources: map['dataStoreSources'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource>(map['dataStoreSources'], (value) => AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      dataStoreSources: map['dataStoreSources'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource>(map['dataStoreSources']!, (value) => AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
     );
   }
 }

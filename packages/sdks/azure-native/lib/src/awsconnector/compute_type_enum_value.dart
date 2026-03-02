@@ -21,7 +21,7 @@ class ComputeTypeEnumValue {
 
   factory ComputeTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return ComputeTypeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

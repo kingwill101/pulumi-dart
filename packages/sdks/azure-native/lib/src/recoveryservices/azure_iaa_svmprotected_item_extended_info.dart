@@ -46,12 +46,12 @@ class AzureIaaSVMProtectedItemExtendedInfo {
 
   factory AzureIaaSVMProtectedItemExtendedInfo.fromMap(Map<String, dynamic> map) {
     return AzureIaaSVMProtectedItemExtendedInfo(
-      newestRecoveryPointInArchive: map['newestRecoveryPointInArchive'] == null ? null : (map['newestRecoveryPointInArchive'] as String).input(),
-      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint'] as String).input(),
-      oldestRecoveryPointInArchive: map['oldestRecoveryPointInArchive'] == null ? null : (map['oldestRecoveryPointInArchive'] as String).input(),
-      oldestRecoveryPointInVault: map['oldestRecoveryPointInVault'] == null ? null : (map['oldestRecoveryPointInVault'] as String).input(),
-      policyInconsistent: map['policyInconsistent'] == null ? null : (map['policyInconsistent'] as bool).input(),
-      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount'] as int).input(),
+      newestRecoveryPointInArchive: map['newestRecoveryPointInArchive'] == null ? null : (map['newestRecoveryPointInArchive']! as String).input(),
+      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint']! as String).input(),
+      oldestRecoveryPointInArchive: map['oldestRecoveryPointInArchive'] == null ? null : (map['oldestRecoveryPointInArchive']! as String).input(),
+      oldestRecoveryPointInVault: map['oldestRecoveryPointInVault'] == null ? null : (map['oldestRecoveryPointInVault']! as String).input(),
+      policyInconsistent: map['policyInconsistent'] == null ? null : (map['policyInconsistent']! as bool).input(),
+      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount']! as int).input(),
     );
   }
 }

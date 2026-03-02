@@ -33,9 +33,9 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig(
-      forceUpgradeOnSignin: map['forceUpgradeOnSignin'] == null ? null : (map['forceUpgradeOnSignin'] as bool).input(),
-      passwordPolicyEnforcementState: map['passwordPolicyEnforcementState'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState.fromValue(map['passwordPolicyEnforcementState'] as String)).input(),
-      passwordPolicyVersions: map['passwordPolicyVersions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion>(map['passwordPolicyVersions'], (value) => GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forceUpgradeOnSignin: map['forceUpgradeOnSignin'] == null ? null : (map['forceUpgradeOnSignin']! as bool).input(),
+      passwordPolicyEnforcementState: map['passwordPolicyEnforcementState'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState.fromValue(map['passwordPolicyEnforcementState']! as String)).input(),
+      passwordPolicyVersions: map['passwordPolicyVersions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion>(map['passwordPolicyVersions']!, (value) => GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

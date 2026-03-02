@@ -73,17 +73,17 @@ class ApplicationVersionState {
 
   factory ApplicationVersionState.fromMap(Map<String, dynamic> map) {
     return ApplicationVersionState(
-      application: map['application'] == null ? null : (map['application'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      process: map['process'] == null ? null : (map['process'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      application: map['application'] == null ? null : ((map['application'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      forceDelete: map['forceDelete'] == null ? null : ((map['forceDelete'] as bool).input()).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      process: map['process'] == null ? null : ((map['process'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

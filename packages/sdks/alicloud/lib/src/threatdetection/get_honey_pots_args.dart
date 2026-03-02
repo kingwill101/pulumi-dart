@@ -54,13 +54,13 @@ class GetHoneyPotsArgs {
 
   factory GetHoneyPotsArgs.fromMap(Map<String, dynamic> map) {
     return GetHoneyPotsArgs(
-      honeypotId: map['honeypotId'] == null ? null : (map['honeypotId'] as String).input(),
-      honeypotName: map['honeypotName'] == null ? null : (map['honeypotName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      honeypotId: map['honeypotId'] == null ? null : (map['honeypotId']! as String).input(),
+      honeypotName: map['honeypotName'] == null ? null : (map['honeypotName']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class PoolImage {
 
   factory PoolImage.fromMap(Map<String, dynamic> map) {
     return PoolImage(
-      aliases: map['aliases'] == null ? null : ((map['aliases'] as List).cast<String>()).input(),
-      buffer: map['buffer'] == null ? null : (map['buffer'] as String).input(),
-      ephemeralType: map['ephemeralType'] == null ? null : (map['ephemeralType'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      wellKnownImageName: map['wellKnownImageName'] == null ? null : (map['wellKnownImageName'] as String).input(),
+      aliases: map['aliases'] == null ? null : ((map['aliases']! as List).cast<String>()).input(),
+      buffer: map['buffer'] == null ? null : (map['buffer']! as String).input(),
+      ephemeralType: map['ephemeralType'] == null ? null : (map['ephemeralType']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      wellKnownImageName: map['wellKnownImageName'] == null ? null : (map['wellKnownImageName']! as String).input(),
     );
   }
 }

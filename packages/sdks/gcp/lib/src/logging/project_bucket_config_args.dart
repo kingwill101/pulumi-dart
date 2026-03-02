@@ -67,14 +67,14 @@ class ProjectBucketConfigArgs {
   factory ProjectBucketConfigArgs.fromMap(Map<String, dynamic> map) {
     return ProjectBucketConfigArgs(
       bucketId: (map['bucketId'] as String).input(),
-      cmekSettings: map['cmekSettings'] == null ? null : (ProjectBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableAnalytics: map['enableAnalytics'] == null ? null : (map['enableAnalytics'] as bool).input(),
-      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<ProjectBucketConfigIndexConfig>(map['indexConfigs'], (value) => ProjectBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (ProjectBucketConfigCmekSettings.fromMap((map['cmekSettings']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableAnalytics: map['enableAnalytics'] == null ? null : (map['enableAnalytics']! as bool).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<ProjectBucketConfigIndexConfig>(map['indexConfigs']!, (value) => ProjectBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       location: (map['location'] as String).input(),
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
       project: (map['project'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
     );
   }
 }

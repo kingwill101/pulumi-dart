@@ -34,9 +34,9 @@ class RuleGroupRuleStatementRegexMatchStatement {
 
   factory RuleGroupRuleStatementRegexMatchStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementRegexMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null ? null : (RuleGroupRuleStatementRegexMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((RuleGroupRuleStatementRegexMatchStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
       regexString: (map['regexString'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRegexMatchStatementTextTransformation>(map['textTransformations'], (value) => RuleGroupRuleStatementRegexMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementRegexMatchStatementTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementRegexMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

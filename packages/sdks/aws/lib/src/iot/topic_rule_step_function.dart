@@ -30,7 +30,7 @@ class TopicRuleStepFunction {
 
   factory TopicRuleStepFunction.fromMap(Map<String, dynamic> map) {
     return TopicRuleStepFunction(
-      executionNamePrefix: map['executionNamePrefix'] == null ? null : (map['executionNamePrefix'] as String).input(),
+      executionNamePrefix: map['executionNamePrefix'] == null ? null : ((map['executionNamePrefix'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
       stateMachineName: (map['stateMachineName'] as String).input(),
     );

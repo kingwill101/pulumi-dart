@@ -85,20 +85,20 @@ class GetDedicatedHostsResult {
 
   factory GetDedicatedHostsResult.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsResult(
-      dedicatedHostId: map['dedicatedHostId'] == null ? null : map['dedicatedHostId'] as String,
-      dedicatedHostName: map['dedicatedHostName'] == null ? null : map['dedicatedHostName'] as String,
-      dedicatedHostType: map['dedicatedHostType'] == null ? null : map['dedicatedHostType'] as String,
+      dedicatedHostId: map['dedicatedHostId'] == null ? null : map['dedicatedHostId']! as String,
+      dedicatedHostName: map['dedicatedHostName'] == null ? null : map['dedicatedHostName']! as String,
+      dedicatedHostType: map['dedicatedHostType'] == null ? null : map['dedicatedHostType']! as String,
       hosts: pulumi.Input.decodeList<GetDedicatedHostsHost>(map['hosts'], (value) => GetDedicatedHostsHost.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      operationLocks: map['operationLocks'] == null ? null : pulumi.Input.decodeList<GetDedicatedHostsOperationLock>(map['operationLocks'], (value) => GetDedicatedHostsOperationLock.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      operationLocks: map['operationLocks'] == null ? null : pulumi.Input.decodeList<GetDedicatedHostsOperationLock>(map['operationLocks']!, (value) => GetDedicatedHostsOperationLock.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

@@ -109,11 +109,11 @@ class DatasetResponseLatest {
 
   factory DatasetResponseLatest.fromMap(Map<String, dynamic> map) {
     return DatasetResponseLatest(
-      createdBy: map['createdBy'] == null ? null : (UserInfoResponse.fromMap((map['createdBy'] as Map).cast<String, dynamic>())).input(),
+      createdBy: map['createdBy'] == null ? null : (UserInfoResponse.fromMap((map['createdBy']! as Map).cast<String, dynamic>())).input(),
       createdTime: (map['createdTime'] as String).input(),
-      dataPath: map['dataPath'] == null ? null : (DatasetResponseDataPath.fromMap((map['dataPath'] as Map).cast<String, dynamic>())).input(),
+      dataPath: map['dataPath'] == null ? null : (DatasetResponseDataPath.fromMap((map['dataPath']! as Map).cast<String, dynamic>())).input(),
       dataflow: (map['dataflow'] as String).input(),
-      datasetDefinitionState: map['datasetDefinitionState'] == null ? null : (DatasetStateResponse.fromMap((map['datasetDefinitionState'] as Map).cast<String, dynamic>())).input(),
+      datasetDefinitionState: map['datasetDefinitionState'] == null ? null : (DatasetStateResponse.fromMap((map['datasetDefinitionState']! as Map).cast<String, dynamic>())).input(),
       datasetId: (map['datasetId'] as String).input(),
       description: (map['description'] as String).input(),
       etag: (map['etag'] as String).input(),
@@ -121,7 +121,7 @@ class DatasetResponseLatest {
       modifiedTime: (map['modifiedTime'] as String).input(),
       notes: (map['notes'] as String).input(),
       partitionFormatInPath: (map['partitionFormatInPath'] as bool).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, dynamic>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, dynamic>()).input(),
       savedDatasetId: (map['savedDatasetId'] as String).input(),
       tags: ((map['tags'] as Map).cast<String, String>()).input(),
       telemetryInfo: ((map['telemetryInfo'] as Map).cast<String, String>()).input(),

@@ -20,7 +20,7 @@ class DomainMemoryBackingMemorySource {
 
   factory DomainMemoryBackingMemorySource.fromMap(Map<String, dynamic> map) {
     return DomainMemoryBackingMemorySource(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class VirtualNetworkGatewaySkuResponse {
   factory VirtualNetworkGatewaySkuResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewaySkuResponse(
       capacity: (map['capacity'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

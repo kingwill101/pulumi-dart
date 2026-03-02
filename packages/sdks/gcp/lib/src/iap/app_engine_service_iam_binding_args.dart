@@ -66,9 +66,9 @@ class AppEngineServiceIamBindingArgs {
   factory AppEngineServiceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return AppEngineServiceIamBindingArgs(
       appId: (map['appId'] as String).input(),
-      condition: map['condition'] == null ? null : (AppEngineServiceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (AppEngineServiceIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
       service: (map['service'] as String).input(),
     );

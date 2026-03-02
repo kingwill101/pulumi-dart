@@ -35,7 +35,7 @@ class GetGrafanaArgs {
 
   factory GetGrafanaArgs.fromMap(Map<String, dynamic> map) {
     return GetGrafanaArgs(
-      identity: map['identity'] == null ? null : (GetGrafanaIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (GetGrafanaIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

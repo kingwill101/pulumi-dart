@@ -60,12 +60,12 @@ class VolumeMount {
   factory VolumeMount.fromMap(Map<String, dynamic> map) {
     return VolumeMount(
       mountPath: (map['mountPath'] as String).input(),
-      mountPropagation: map['mountPropagation'] == null ? null : (map['mountPropagation'] as String).input(),
+      mountPropagation: map['mountPropagation'] == null ? null : (map['mountPropagation']! as String).input(),
       name: (map['name'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      recursiveReadOnly: map['recursiveReadOnly'] == null ? null : (map['recursiveReadOnly'] as String).input(),
-      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
-      subPathExpr: map['subPathExpr'] == null ? null : (map['subPathExpr'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      recursiveReadOnly: map['recursiveReadOnly'] == null ? null : (map['recursiveReadOnly']! as String).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath']! as String).input(),
+      subPathExpr: map['subPathExpr'] == null ? null : (map['subPathExpr']! as String).input(),
     );
   }
 }

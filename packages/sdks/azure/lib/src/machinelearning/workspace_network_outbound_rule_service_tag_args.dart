@@ -44,7 +44,7 @@ class WorkspaceNetworkOutboundRuleServiceTagArgs {
 
   factory WorkspaceNetworkOutboundRuleServiceTagArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceNetworkOutboundRuleServiceTagArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       portRanges: (map['portRanges'] as String).input(),
       protocol: (map['protocol'] as String).input(),
       serviceTag: (map['serviceTag'] as String).input(),

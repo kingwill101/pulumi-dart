@@ -25,8 +25,8 @@ class ClusterUpgradePolicyHealthPolicy {
 
   factory ClusterUpgradePolicyHealthPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradePolicyHealthPolicy(
-      maxUnhealthyApplicationsPercent: map['maxUnhealthyApplicationsPercent'] == null ? null : (map['maxUnhealthyApplicationsPercent'] as int).input(),
-      maxUnhealthyNodesPercent: map['maxUnhealthyNodesPercent'] == null ? null : (map['maxUnhealthyNodesPercent'] as int).input(),
+      maxUnhealthyApplicationsPercent: map['maxUnhealthyApplicationsPercent'] == null ? null : (map['maxUnhealthyApplicationsPercent']! as int).input(),
+      maxUnhealthyNodesPercent: map['maxUnhealthyNodesPercent'] == null ? null : (map['maxUnhealthyNodesPercent']! as int).input(),
     );
   }
 }

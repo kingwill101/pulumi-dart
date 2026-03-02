@@ -59,7 +59,7 @@ class GetWebAppResult {
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
     );
   }
 }

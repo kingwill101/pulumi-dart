@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2DiscoveryTarget {
 
   factory GooglePrivacyDlpV2DiscoveryTarget.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryTarget(
-      bigQueryTarget: map['bigQueryTarget'] == null ? null : (GooglePrivacyDlpV2BigQueryDiscoveryTarget.fromMap((map['bigQueryTarget'] as Map).cast<String, dynamic>())).input(),
+      bigQueryTarget: map['bigQueryTarget'] == null ? null : (GooglePrivacyDlpV2BigQueryDiscoveryTarget.fromMap((map['bigQueryTarget']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

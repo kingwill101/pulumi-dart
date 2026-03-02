@@ -33,8 +33,8 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSucce
   factory V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditional.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditional(
       active: (map['active'] as bool).input(),
-      conditionalBranches: map['conditionalBranches'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranch>(map['conditionalBranches'], (value) => V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultBranch: map['defaultBranch'] == null ? null : (V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranch.fromMap((map['defaultBranch'] as Map).cast<String, dynamic>())).input(),
+      conditionalBranches: map['conditionalBranches'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranch>(map['conditionalBranches']!, (value) => V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditionalConditionalBranch.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      defaultBranch: map['defaultBranch'] == null ? null : ((V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationSuccessConditionalDefaultBranch.fromMap((map['defaultBranch']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class TagSettingsProperties {
 
   factory TagSettingsProperties.fromMap(Map<String, dynamic> map) {
     return TagSettingsProperties(
-      filterOperator: map['filterOperator'] == null ? null : (TagOperators.fromValue(map['filterOperator'] as String)).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, List<String>>()).input(),
+      filterOperator: map['filterOperator'] == null ? null : (TagOperators.fromValue(map['filterOperator']! as String)).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, List<String>>()).input(),
     );
   }
 }

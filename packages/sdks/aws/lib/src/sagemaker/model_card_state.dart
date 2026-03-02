@@ -62,15 +62,15 @@ class ModelCardState {
 
   factory ModelCardState.fromMap(Map<String, dynamic> map) {
     return ModelCardState(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      modelCardArn: map['modelCardArn'] == null ? null : (map['modelCardArn'] as String).input(),
-      modelCardName: map['modelCardName'] == null ? null : (map['modelCardName'] as String).input(),
-      modelCardStatus: map['modelCardStatus'] == null ? null : (map['modelCardStatus'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityConfig: map['securityConfig'] == null ? null : (ModelCardSecurityConfig.fromMap((map['securityConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ModelCardTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      content: map['content'] == null ? null : ((map['content'] as String).input()).input(),
+      modelCardArn: map['modelCardArn'] == null ? null : ((map['modelCardArn'] as String).input()).input(),
+      modelCardName: map['modelCardName'] == null ? null : ((map['modelCardName'] as String).input()).input(),
+      modelCardStatus: map['modelCardStatus'] == null ? null : ((map['modelCardStatus'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityConfig: map['securityConfig'] == null ? null : ((ModelCardSecurityConfig.fromMap((map['securityConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ModelCardTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

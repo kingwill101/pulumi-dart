@@ -20,7 +20,7 @@ class LogDeliveryConfigurationLogConfigurationS3Configuration {
 
   factory LogDeliveryConfigurationLogConfigurationS3Configuration.fromMap(Map<String, dynamic> map) {
     return LogDeliveryConfigurationLogConfigurationS3Configuration(
-      bucketArn: map['bucketArn'] == null ? null : (map['bucketArn'] as String).input(),
+      bucketArn: map['bucketArn'] == null ? null : ((map['bucketArn'] as String).input()).input(),
     );
   }
 }

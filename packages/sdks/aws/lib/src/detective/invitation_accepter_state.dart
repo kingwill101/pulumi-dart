@@ -26,8 +26,8 @@ class InvitationAccepterState {
 
   factory InvitationAccepterState.fromMap(Map<String, dynamic> map) {
     return InvitationAccepterState(
-      graphArn: map['graphArn'] == null ? null : (map['graphArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      graphArn: map['graphArn'] == null ? null : ((map['graphArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

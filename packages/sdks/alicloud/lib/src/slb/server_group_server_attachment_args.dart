@@ -49,12 +49,12 @@ class ServerGroupServerAttachmentArgs {
 
   factory ServerGroupServerAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupServerAttachmentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       port: (map['port'] as int).input(),
       serverGroupId: (map['serverGroupId'] as String).input(),
       serverId: (map['serverId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

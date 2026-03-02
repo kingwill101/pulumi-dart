@@ -32,9 +32,9 @@ class DomainDevicesAudioPulseAudio {
 
   factory DomainDevicesAudioPulseAudio.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioPulseAudio(
-      input: map['input'] == null ? null : (DomainDevicesAudioPulseAudioInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      output: map['output'] == null ? null : (DomainDevicesAudioPulseAudioOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      input: map['input'] == null ? null : (DomainDevicesAudioPulseAudioInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
+      output: map['output'] == null ? null : (DomainDevicesAudioPulseAudioOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
     );
   }
 }

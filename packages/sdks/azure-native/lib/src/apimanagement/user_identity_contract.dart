@@ -26,8 +26,8 @@ class UserIdentityContract {
 
   factory UserIdentityContract.fromMap(Map<String, dynamic> map) {
     return UserIdentityContract(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      provider: map['provider'] == null ? null : (map['provider'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      provider: map['provider'] == null ? null : (map['provider']! as String).input(),
     );
   }
 }

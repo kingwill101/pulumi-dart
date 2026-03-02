@@ -60,15 +60,15 @@ class FilterFindingCriteriaCriterion {
 
   factory FilterFindingCriteriaCriterion.fromMap(Map<String, dynamic> map) {
     return FilterFindingCriteriaCriterion(
-      equals: map['equals'] == null ? null : ((map['equals'] as List).cast<String>()).input(),
+      equals: map['equals'] == null ? null : (((map['equals'] as List).cast<String>()).input()).input(),
       field: (map['field'] as String).input(),
-      greaterThan: map['greaterThan'] == null ? null : (map['greaterThan'] as String).input(),
-      greaterThanOrEqual: map['greaterThanOrEqual'] == null ? null : (map['greaterThanOrEqual'] as String).input(),
-      lessThan: map['lessThan'] == null ? null : (map['lessThan'] as String).input(),
-      lessThanOrEqual: map['lessThanOrEqual'] == null ? null : (map['lessThanOrEqual'] as String).input(),
-      matches: map['matches'] == null ? null : ((map['matches'] as List).cast<String>()).input(),
-      notEquals: map['notEquals'] == null ? null : ((map['notEquals'] as List).cast<String>()).input(),
-      notMatches: map['notMatches'] == null ? null : ((map['notMatches'] as List).cast<String>()).input(),
+      greaterThan: map['greaterThan'] == null ? null : ((map['greaterThan'] as String).input()).input(),
+      greaterThanOrEqual: map['greaterThanOrEqual'] == null ? null : ((map['greaterThanOrEqual'] as String).input()).input(),
+      lessThan: map['lessThan'] == null ? null : ((map['lessThan'] as String).input()).input(),
+      lessThanOrEqual: map['lessThanOrEqual'] == null ? null : ((map['lessThanOrEqual'] as String).input()).input(),
+      matches: map['matches'] == null ? null : (((map['matches'] as List).cast<String>()).input()).input(),
+      notEquals: map['notEquals'] == null ? null : (((map['notEquals'] as List).cast<String>()).input()).input(),
+      notMatches: map['notMatches'] == null ? null : (((map['notMatches'] as List).cast<String>()).input()).input(),
     );
   }
 }

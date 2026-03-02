@@ -25,8 +25,8 @@ class WireGroupTopologyEndpoint {
 
   factory WireGroupTopologyEndpoint.fromMap(Map<String, dynamic> map) {
     return WireGroupTopologyEndpoint(
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
     );
   }
 }

@@ -56,9 +56,9 @@ class PrincipalAccessBoundaryPolicyArgs {
 
   factory PrincipalAccessBoundaryPolicyArgs.fromMap(Map<String, dynamic> map) {
     return PrincipalAccessBoundaryPolicyArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      details: map['details'] == null ? null : (PrincipalAccessBoundaryPolicyDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      details: map['details'] == null ? null : (PrincipalAccessBoundaryPolicyDetails.fromMap((map['details']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       location: (map['location'] as String).input(),
       organization: (map['organization'] as String).input(),
       principalAccessBoundaryPolicyId: (map['principalAccessBoundaryPolicyId'] as String).input(),

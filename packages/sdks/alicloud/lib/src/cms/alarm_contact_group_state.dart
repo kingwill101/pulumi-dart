@@ -36,10 +36,10 @@ class AlarmContactGroupState {
 
   factory AlarmContactGroupState.fromMap(Map<String, dynamic> map) {
     return AlarmContactGroupState(
-      alarmContactGroupName: map['alarmContactGroupName'] == null ? null : (map['alarmContactGroupName'] as String).input(),
-      contacts: map['contacts'] == null ? null : ((map['contacts'] as List).cast<String>()).input(),
-      describe: map['describe'] == null ? null : (map['describe'] as String).input(),
-      enableSubscribed: map['enableSubscribed'] == null ? null : (map['enableSubscribed'] as bool).input(),
+      alarmContactGroupName: map['alarmContactGroupName'] == null ? null : (map['alarmContactGroupName']! as String).input(),
+      contacts: map['contacts'] == null ? null : ((map['contacts']! as List).cast<String>()).input(),
+      describe: map['describe'] == null ? null : (map['describe']! as String).input(),
+      enableSubscribed: map['enableSubscribed'] == null ? null : (map['enableSubscribed']! as bool).input(),
     );
   }
 }

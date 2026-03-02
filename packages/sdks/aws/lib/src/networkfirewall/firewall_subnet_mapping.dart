@@ -25,7 +25,7 @@ class FirewallSubnetMapping {
 
   factory FirewallSubnetMapping.fromMap(Map<String, dynamic> map) {
     return FirewallSubnetMapping(
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

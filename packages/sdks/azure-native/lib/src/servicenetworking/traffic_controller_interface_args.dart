@@ -45,11 +45,11 @@ class TrafficControllerInterfaceArgs {
 
   factory TrafficControllerInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return TrafficControllerInterfaceArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityPolicyConfigurations: map['securityPolicyConfigurations'] == null ? null : (SecurityPolicyConfigurations.fromMap((map['securityPolicyConfigurations'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trafficControllerName: map['trafficControllerName'] == null ? null : (map['trafficControllerName'] as String).input(),
+      securityPolicyConfigurations: map['securityPolicyConfigurations'] == null ? null : (SecurityPolicyConfigurations.fromMap((map['securityPolicyConfigurations']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      trafficControllerName: map['trafficControllerName'] == null ? null : (map['trafficControllerName']! as String).input(),
     );
   }
 }

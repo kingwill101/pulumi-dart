@@ -43,11 +43,11 @@ class MarketplaceGalleryImageStatusResponse {
 
   factory MarketplaceGalleryImageStatusResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceGalleryImageStatusResponse(
-      downloadStatus: map['downloadStatus'] == null ? null : (MarketplaceGalleryImageStatusDownloadStatusResponse.fromMap((map['downloadStatus'] as Map).cast<String, dynamic>())).input(),
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      progressPercentage: map['progressPercentage'] == null ? null : (map['progressPercentage'] as double).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (MarketplaceGalleryImageStatusProvisioningStatusResponse.fromMap((map['provisioningStatus'] as Map).cast<String, dynamic>())).input(),
+      downloadStatus: map['downloadStatus'] == null ? null : (MarketplaceGalleryImageStatusDownloadStatusResponse.fromMap((map['downloadStatus']! as Map).cast<String, dynamic>())).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      progressPercentage: map['progressPercentage'] == null ? null : (map['progressPercentage']! as double).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (MarketplaceGalleryImageStatusProvisioningStatusResponse.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

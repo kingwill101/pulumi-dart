@@ -42,9 +42,9 @@ class DatabaseUserArgs {
   factory DatabaseUserArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseUserArgs(
       clusterId: (map['clusterId'] as String).input(),
-      mysqlAuthPlugin: map['mysqlAuthPlugin'] == null ? null : (map['mysqlAuthPlugin'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<DatabaseUserSetting>(map['settings'], (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mysqlAuthPlugin: map['mysqlAuthPlugin'] == null ? null : (map['mysqlAuthPlugin']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<DatabaseUserSetting>(map['settings']!, (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

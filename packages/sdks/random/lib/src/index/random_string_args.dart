@@ -79,18 +79,18 @@ class RandomStringArgs {
 
   factory RandomStringArgs.fromMap(Map<String, dynamic> map) {
     return RandomStringArgs(
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
       length: (map['length'] as int).input(),
-      lower: map['lower'] == null ? null : (map['lower'] as bool).input(),
-      minLower: map['minLower'] == null ? null : (map['minLower'] as int).input(),
-      minNumeric: map['minNumeric'] == null ? null : (map['minNumeric'] as int).input(),
-      minSpecial: map['minSpecial'] == null ? null : (map['minSpecial'] as int).input(),
-      minUpper: map['minUpper'] == null ? null : (map['minUpper'] as int).input(),
-      number: map['number'] == null ? null : (map['number'] as bool).input(),
-      numeric: map['numeric'] == null ? null : (map['numeric'] as bool).input(),
-      overrideSpecial: map['overrideSpecial'] == null ? null : (map['overrideSpecial'] as String).input(),
-      special: map['special'] == null ? null : (map['special'] as bool).input(),
-      upper: map['upper'] == null ? null : (map['upper'] as bool).input(),
+      lower: map['lower'] == null ? null : (map['lower']! as bool).input(),
+      minLower: map['minLower'] == null ? null : (map['minLower']! as int).input(),
+      minNumeric: map['minNumeric'] == null ? null : (map['minNumeric']! as int).input(),
+      minSpecial: map['minSpecial'] == null ? null : (map['minSpecial']! as int).input(),
+      minUpper: map['minUpper'] == null ? null : (map['minUpper']! as int).input(),
+      number: map['number'] == null ? null : (map['number']! as bool).input(),
+      numeric: map['numeric'] == null ? null : (map['numeric']! as bool).input(),
+      overrideSpecial: map['overrideSpecial'] == null ? null : (map['overrideSpecial']! as String).input(),
+      special: map['special'] == null ? null : (map['special']! as bool).input(),
+      upper: map['upper'] == null ? null : (map['upper']! as bool).input(),
     );
   }
 }

@@ -38,10 +38,10 @@ class AuthenticationSettingsContract {
 
   factory AuthenticationSettingsContract.fromMap(Map<String, dynamic> map) {
     return AuthenticationSettingsContract(
-      oAuth2: map['oAuth2'] == null ? null : (OAuth2AuthenticationSettingsContract.fromMap((map['oAuth2'] as Map).cast<String, dynamic>())).input(),
-      oAuth2AuthenticationSettings: map['oAuth2AuthenticationSettings'] == null ? null : (pulumi.Input.decodeList<OAuth2AuthenticationSettingsContract>(map['oAuth2AuthenticationSettings'], (value) => OAuth2AuthenticationSettingsContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      openid: map['openid'] == null ? null : (OpenIdAuthenticationSettingsContract.fromMap((map['openid'] as Map).cast<String, dynamic>())).input(),
-      openidAuthenticationSettings: map['openidAuthenticationSettings'] == null ? null : (pulumi.Input.decodeList<OpenIdAuthenticationSettingsContract>(map['openidAuthenticationSettings'], (value) => OpenIdAuthenticationSettingsContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oAuth2: map['oAuth2'] == null ? null : (OAuth2AuthenticationSettingsContract.fromMap((map['oAuth2']! as Map).cast<String, dynamic>())).input(),
+      oAuth2AuthenticationSettings: map['oAuth2AuthenticationSettings'] == null ? null : (pulumi.Input.decodeList<OAuth2AuthenticationSettingsContract>(map['oAuth2AuthenticationSettings']!, (value) => OAuth2AuthenticationSettingsContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      openid: map['openid'] == null ? null : (OpenIdAuthenticationSettingsContract.fromMap((map['openid']! as Map).cast<String, dynamic>())).input(),
+      openidAuthenticationSettings: map['openidAuthenticationSettings'] == null ? null : (pulumi.Input.decodeList<OpenIdAuthenticationSettingsContract>(map['openidAuthenticationSettings']!, (value) => OpenIdAuthenticationSettingsContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class ActivationArgs {
 
   factory ActivationArgs.fromMap(Map<String, dynamic> map) {
     return ActivationArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      expirationDate: map['expirationDate'] == null ? null : ((map['expirationDate'] as String).input()).input(),
       iamRole: (map['iamRole'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registrationLimit: map['registrationLimit'] == null ? null : (map['registrationLimit'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registrationLimit: map['registrationLimit'] == null ? null : ((map['registrationLimit'] as int).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

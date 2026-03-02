@@ -31,7 +31,7 @@ class ResourceClaimParametersReferenceResourceK8sIoV1alpha2 {
 
   factory ResourceClaimParametersReferenceResourceK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
     return ResourceClaimParametersReferenceResourceK8sIoV1alpha2(
-      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup'] as String).input(),
+      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup']! as String).input(),
       kind: (map['kind'] as String).input(),
       name: (map['name'] as String).input(),
     );

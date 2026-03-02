@@ -38,10 +38,10 @@ class ConnectionAuthParameters {
 
   factory ConnectionAuthParameters.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthParameters(
-      apiKeyAuthParameters: map['apiKeyAuthParameters'] == null ? null : (ConnectionAuthParametersApiKeyAuthParameters.fromMap((map['apiKeyAuthParameters'] as Map).cast<String, dynamic>())).input(),
-      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
-      basicAuthParameters: map['basicAuthParameters'] == null ? null : (ConnectionAuthParametersBasicAuthParameters.fromMap((map['basicAuthParameters'] as Map).cast<String, dynamic>())).input(),
-      oauthParameters: map['oauthParameters'] == null ? null : (ConnectionAuthParametersOauthParameters.fromMap((map['oauthParameters'] as Map).cast<String, dynamic>())).input(),
+      apiKeyAuthParameters: map['apiKeyAuthParameters'] == null ? null : (ConnectionAuthParametersApiKeyAuthParameters.fromMap((map['apiKeyAuthParameters']! as Map).cast<String, dynamic>())).input(),
+      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType']! as String).input(),
+      basicAuthParameters: map['basicAuthParameters'] == null ? null : (ConnectionAuthParametersBasicAuthParameters.fromMap((map['basicAuthParameters']! as Map).cast<String, dynamic>())).input(),
+      oauthParameters: map['oauthParameters'] == null ? null : (ConnectionAuthParametersOauthParameters.fromMap((map['oauthParameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -80,18 +80,18 @@ class BranchRuleArgs {
 
   factory BranchRuleArgs.fromMap(Map<String, dynamic> map) {
     return BranchRuleArgs(
-      allowStaleReviews: map['allowStaleReviews'] == null ? null : (map['allowStaleReviews'] as bool).input(),
+      allowStaleReviews: map['allowStaleReviews'] == null ? null : (map['allowStaleReviews']! as bool).input(),
       branchRuleId: (map['branchRuleId'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       includePattern: (map['includePattern'] as String).input(),
       location: (map['location'] as String).input(),
-      minimumApprovalsCount: map['minimumApprovalsCount'] == null ? null : (map['minimumApprovalsCount'] as int).input(),
-      minimumReviewsCount: map['minimumReviewsCount'] == null ? null : (map['minimumReviewsCount'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      minimumApprovalsCount: map['minimumApprovalsCount'] == null ? null : (map['minimumApprovalsCount']! as int).input(),
+      minimumReviewsCount: map['minimumReviewsCount'] == null ? null : (map['minimumReviewsCount']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
-      requireCommentsResolved: map['requireCommentsResolved'] == null ? null : (map['requireCommentsResolved'] as bool).input(),
-      requireLinearHistory: map['requireLinearHistory'] == null ? null : (map['requireLinearHistory'] as bool).input(),
-      requirePullRequest: map['requirePullRequest'] == null ? null : (map['requirePullRequest'] as bool).input(),
+      requireCommentsResolved: map['requireCommentsResolved'] == null ? null : (map['requireCommentsResolved']! as bool).input(),
+      requireLinearHistory: map['requireLinearHistory'] == null ? null : (map['requireLinearHistory']! as bool).input(),
+      requirePullRequest: map['requirePullRequest'] == null ? null : (map['requirePullRequest']! as bool).input(),
     );
   }
 }

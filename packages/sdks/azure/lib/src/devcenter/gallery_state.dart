@@ -31,9 +31,9 @@ class GalleryState {
 
   factory GalleryState.fromMap(Map<String, dynamic> map) {
     return GalleryState(
-      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sharedGalleryId: map['sharedGalleryId'] == null ? null : (map['sharedGalleryId'] as String).input(),
+      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sharedGalleryId: map['sharedGalleryId'] == null ? null : (map['sharedGalleryId']! as String).input(),
     );
   }
 }

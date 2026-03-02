@@ -36,9 +36,9 @@ class UptimeCheckConfigHttpCheckAuthInfo {
 
   factory UptimeCheckConfigHttpCheckAuthInfo.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigHttpCheckAuthInfo(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      passwordWo: map['passwordWo'] == null ? null : (map['passwordWo'] as String).input(),
-      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      passwordWo: map['passwordWo'] == null ? null : (map['passwordWo']! as String).input(),
+      passwordWoVersion: map['passwordWoVersion'] == null ? null : (map['passwordWoVersion']! as String).input(),
       username: (map['username'] as String).input(),
     );
   }

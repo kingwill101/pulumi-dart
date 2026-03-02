@@ -45,12 +45,12 @@ class ScheduledQueryLastRunSummaryExecutionStat {
 
   factory ScheduledQueryLastRunSummaryExecutionStat.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryLastRunSummaryExecutionStat(
-      bytesMetered: map['bytesMetered'] == null ? null : (map['bytesMetered'] as int).input(),
-      cumulativeBytesScanned: map['cumulativeBytesScanned'] == null ? null : (map['cumulativeBytesScanned'] as int).input(),
-      dataWrites: map['dataWrites'] == null ? null : (map['dataWrites'] as int).input(),
-      executionTimeInMillis: map['executionTimeInMillis'] == null ? null : (map['executionTimeInMillis'] as int).input(),
-      queryResultRows: map['queryResultRows'] == null ? null : (map['queryResultRows'] as int).input(),
-      recordsIngested: map['recordsIngested'] == null ? null : (map['recordsIngested'] as int).input(),
+      bytesMetered: map['bytesMetered'] == null ? null : ((map['bytesMetered'] as int).input()).input(),
+      cumulativeBytesScanned: map['cumulativeBytesScanned'] == null ? null : ((map['cumulativeBytesScanned'] as int).input()).input(),
+      dataWrites: map['dataWrites'] == null ? null : ((map['dataWrites'] as int).input()).input(),
+      executionTimeInMillis: map['executionTimeInMillis'] == null ? null : ((map['executionTimeInMillis'] as int).input()).input(),
+      queryResultRows: map['queryResultRows'] == null ? null : ((map['queryResultRows'] as int).input()).input(),
+      recordsIngested: map['recordsIngested'] == null ? null : ((map['recordsIngested'] as int).input()).input(),
     );
   }
 }

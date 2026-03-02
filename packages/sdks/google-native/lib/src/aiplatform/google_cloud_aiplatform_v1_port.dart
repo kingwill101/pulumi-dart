@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1Port {
 
   factory GoogleCloudAiplatformV1Port.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1Port(
-      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
+      containerPort: map['containerPort'] == null ? null : (map['containerPort']! as int).input(),
     );
   }
 }

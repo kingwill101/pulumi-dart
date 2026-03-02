@@ -31,7 +31,7 @@ class VariableArgs {
   factory VariableArgs.fromMap(Map<String, dynamic> map) {
     return VariableArgs(
       columns: (pulumi.Input.decodeList<PolicyVariableColumn>(map['columns'], (value) => PolicyVariableColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      variableName: map['variableName'] == null ? null : (map['variableName'] as String).input(),
+      variableName: map['variableName'] == null ? null : (map['variableName']! as String).input(),
     );
   }
 }

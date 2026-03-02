@@ -39,10 +39,10 @@ class GetSiteMonitorsArgs {
 
   factory GetSiteMonitorsArgs.fromMap(Map<String, dynamic> map) {
     return GetSiteMonitorsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
-      taskType: map['taskType'] == null ? null : (map['taskType'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId']! as String).input(),
+      taskType: map['taskType'] == null ? null : (map['taskType']! as String).input(),
     );
   }
 }

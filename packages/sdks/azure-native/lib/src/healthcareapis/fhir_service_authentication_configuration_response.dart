@@ -37,10 +37,10 @@ class FhirServiceAuthenticationConfigurationResponse {
 
   factory FhirServiceAuthenticationConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FhirServiceAuthenticationConfigurationResponse(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
-      smartIdentityProviders: map['smartIdentityProviders'] == null ? null : (pulumi.Input.decodeList<SmartIdentityProviderConfigurationResponse>(map['smartIdentityProviders'], (value) => SmartIdentityProviderConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      smartProxyEnabled: map['smartProxyEnabled'] == null ? null : (map['smartProxyEnabled'] as bool).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
+      smartIdentityProviders: map['smartIdentityProviders'] == null ? null : (pulumi.Input.decodeList<SmartIdentityProviderConfigurationResponse>(map['smartIdentityProviders']!, (value) => SmartIdentityProviderConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      smartProxyEnabled: map['smartProxyEnabled'] == null ? null : (map['smartProxyEnabled']! as bool).input(),
     );
   }
 }

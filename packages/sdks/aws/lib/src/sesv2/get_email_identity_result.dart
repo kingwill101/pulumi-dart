@@ -66,7 +66,7 @@ class GetEmailIdentityResult {
     return GetEmailIdentityResult(
       arn: map['arn'] as String,
       configurationSetName: map['configurationSetName'] as String,
-      dkimSigningAttributes: pulumi.Input.decodeList<GetEmailIdentityDkimSigningAttribute>(map['dkimSigningAttributes'], (value) => GetEmailIdentityDkimSigningAttribute.fromMap((value as Map).cast<String, dynamic>())),
+      dkimSigningAttributes: pulumi.Input.decodeList<GetEmailIdentityDkimSigningAttribute>(map['dkimSigningAttributes']!, (value) => GetEmailIdentityDkimSigningAttribute.fromMap((value as Map).cast<String, dynamic>())),
       emailIdentity: map['emailIdentity'] as String,
       id: map['id'] as String,
       identityType: map['identityType'] as String,

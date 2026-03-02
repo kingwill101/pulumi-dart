@@ -36,10 +36,10 @@ class ManagedClusterHTTPProxyConfigResponse {
 
   factory ManagedClusterHTTPProxyConfigResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterHTTPProxyConfigResponse(
-      httpProxy: map['httpProxy'] == null ? null : (map['httpProxy'] as String).input(),
-      httpsProxy: map['httpsProxy'] == null ? null : (map['httpsProxy'] as String).input(),
-      noProxy: map['noProxy'] == null ? null : ((map['noProxy'] as List).cast<String>()).input(),
-      trustedCa: map['trustedCa'] == null ? null : (map['trustedCa'] as String).input(),
+      httpProxy: map['httpProxy'] == null ? null : (map['httpProxy']! as String).input(),
+      httpsProxy: map['httpsProxy'] == null ? null : (map['httpsProxy']! as String).input(),
+      noProxy: map['noProxy'] == null ? null : ((map['noProxy']! as List).cast<String>()).input(),
+      trustedCa: map['trustedCa'] == null ? null : (map['trustedCa']! as String).input(),
     );
   }
 }

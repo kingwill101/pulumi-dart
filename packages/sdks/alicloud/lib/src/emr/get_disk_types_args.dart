@@ -53,8 +53,8 @@ class GetDiskTypesArgs {
       destinationResource: (map['destinationResource'] as String).input(),
       instanceChargeType: (map['instanceChargeType'] as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

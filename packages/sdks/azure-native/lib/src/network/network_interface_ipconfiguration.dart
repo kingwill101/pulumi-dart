@@ -104,22 +104,22 @@ class NetworkInterfaceIPConfiguration {
 
   factory NetworkInterfaceIPConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceIPConfiguration(
-      applicationGatewayBackendAddressPools: map['applicationGatewayBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendAddressPool>(map['applicationGatewayBackendAddressPools'], (value) => ApplicationGatewayBackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : (pulumi.Input.decodeList<ApplicationSecurityGroup>(map['applicationSecurityGroups'], (value) => ApplicationSecurityGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gatewayLoadBalancer: map['gatewayLoadBalancer'] == null ? null : (SubResource.fromMap((map['gatewayLoadBalancer'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      loadBalancerBackendAddressPools: map['loadBalancerBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<BackendAddressPool>(map['loadBalancerBackendAddressPools'], (value) => BackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancerInboundNatRules: map['loadBalancerInboundNatRules'] == null ? null : (pulumi.Input.decodeList<InboundNatRule>(map['loadBalancerInboundNatRules'], (value) => InboundNatRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      privateIPAddressPrefixLength: map['privateIPAddressPrefixLength'] == null ? null : (map['privateIPAddressPrefixLength'] as int).input(),
-      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : (map['privateIPAddressVersion'] as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
-      publicIPAddress: map['publicIPAddress'] == null ? null : (PublicIPAddress.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (Subnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      virtualNetworkTaps: map['virtualNetworkTaps'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkTap>(map['virtualNetworkTaps'], (value) => VirtualNetworkTap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationGatewayBackendAddressPools: map['applicationGatewayBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayBackendAddressPool>(map['applicationGatewayBackendAddressPools']!, (value) => ApplicationGatewayBackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationSecurityGroups: map['applicationSecurityGroups'] == null ? null : (pulumi.Input.decodeList<ApplicationSecurityGroup>(map['applicationSecurityGroups']!, (value) => ApplicationSecurityGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gatewayLoadBalancer: map['gatewayLoadBalancer'] == null ? null : (SubResource.fromMap((map['gatewayLoadBalancer']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      loadBalancerBackendAddressPools: map['loadBalancerBackendAddressPools'] == null ? null : (pulumi.Input.decodeList<BackendAddressPool>(map['loadBalancerBackendAddressPools']!, (value) => BackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerInboundNatRules: map['loadBalancerInboundNatRules'] == null ? null : (pulumi.Input.decodeList<InboundNatRule>(map['loadBalancerInboundNatRules']!, (value) => InboundNatRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      privateIPAddressPrefixLength: map['privateIPAddressPrefixLength'] == null ? null : (map['privateIPAddressPrefixLength']! as int).input(),
+      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : (map['privateIPAddressVersion']! as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (PublicIPAddress.fromMap((map['publicIPAddress']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (Subnet.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      virtualNetworkTaps: map['virtualNetworkTaps'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkTap>(map['virtualNetworkTaps']!, (value) => VirtualNetworkTap.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

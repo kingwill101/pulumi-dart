@@ -26,8 +26,8 @@ class TargetEndpoint {
 
   factory TargetEndpoint.fromMap(Map<String, dynamic> map) {
     return TargetEndpoint(
-      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<int>()).input(),
-      targetFqdn: map['targetFqdn'] == null ? null : (map['targetFqdn'] as String).input(),
+      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<int>()).input(),
+      targetFqdn: map['targetFqdn'] == null ? null : (map['targetFqdn']! as String).input(),
     );
   }
 }

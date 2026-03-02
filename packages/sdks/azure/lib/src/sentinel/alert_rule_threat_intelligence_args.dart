@@ -40,9 +40,9 @@ class AlertRuleThreatIntelligenceArgs {
   factory AlertRuleThreatIntelligenceArgs.fromMap(Map<String, dynamic> map) {
     return AlertRuleThreatIntelligenceArgs(
       alertRuleTemplateGuid: (map['alertRuleTemplateGuid'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

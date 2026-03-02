@@ -26,7 +26,7 @@ class FacebookPageResponse {
 
   factory FacebookPageResponse.fromMap(Map<String, dynamic> map) {
     return FacebookPageResponse(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
       id: (map['id'] as String).input(),
     );
   }

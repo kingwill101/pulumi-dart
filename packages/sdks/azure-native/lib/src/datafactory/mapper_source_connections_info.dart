@@ -28,8 +28,8 @@ class MapperSourceConnectionsInfo {
 
   factory MapperSourceConnectionsInfo.fromMap(Map<String, dynamic> map) {
     return MapperSourceConnectionsInfo(
-      connection: map['connection'] == null ? null : (MapperConnection.fromMap((map['connection'] as Map).cast<String, dynamic>())).input(),
-      sourceEntities: map['sourceEntities'] == null ? null : (pulumi.Input.decodeList<MapperTable>(map['sourceEntities'], (value) => MapperTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connection: map['connection'] == null ? null : (MapperConnection.fromMap((map['connection']! as Map).cast<String, dynamic>())).input(),
+      sourceEntities: map['sourceEntities'] == null ? null : (pulumi.Input.decodeList<MapperTable>(map['sourceEntities']!, (value) => MapperTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

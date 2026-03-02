@@ -45,12 +45,12 @@ class ApiCorsConfiguration {
 
   factory ApiCorsConfiguration.fromMap(Map<String, dynamic> map) {
     return ApiCorsConfiguration(
-      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials'] as bool).input(),
-      allowHeaders: map['allowHeaders'] == null ? null : ((map['allowHeaders'] as List).cast<String>()).input(),
-      allowMethods: map['allowMethods'] == null ? null : ((map['allowMethods'] as List).cast<String>()).input(),
-      allowOrigins: map['allowOrigins'] == null ? null : ((map['allowOrigins'] as List).cast<String>()).input(),
-      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders'] as List).cast<String>()).input(),
-      maxAge: map['maxAge'] == null ? null : (map['maxAge'] as int).input(),
+      allowCredentials: map['allowCredentials'] == null ? null : ((map['allowCredentials'] as bool).input()).input(),
+      allowHeaders: map['allowHeaders'] == null ? null : (((map['allowHeaders'] as List).cast<String>()).input()).input(),
+      allowMethods: map['allowMethods'] == null ? null : (((map['allowMethods'] as List).cast<String>()).input()).input(),
+      allowOrigins: map['allowOrigins'] == null ? null : (((map['allowOrigins'] as List).cast<String>()).input()).input(),
+      exposeHeaders: map['exposeHeaders'] == null ? null : (((map['exposeHeaders'] as List).cast<String>()).input()).input(),
+      maxAge: map['maxAge'] == null ? null : ((map['maxAge'] as int).input()).input(),
     );
   }
 }

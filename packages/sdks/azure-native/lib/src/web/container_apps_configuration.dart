@@ -45,12 +45,12 @@ class ContainerAppsConfiguration {
 
   factory ContainerAppsConfiguration.fromMap(Map<String, dynamic> map) {
     return ContainerAppsConfiguration(
-      appSubnetResourceId: map['appSubnetResourceId'] == null ? null : (map['appSubnetResourceId'] as String).input(),
-      controlPlaneSubnetResourceId: map['controlPlaneSubnetResourceId'] == null ? null : (map['controlPlaneSubnetResourceId'] as String).input(),
-      daprAIInstrumentationKey: map['daprAIInstrumentationKey'] == null ? null : (map['daprAIInstrumentationKey'] as String).input(),
-      dockerBridgeCidr: map['dockerBridgeCidr'] == null ? null : (map['dockerBridgeCidr'] as String).input(),
-      platformReservedCidr: map['platformReservedCidr'] == null ? null : (map['platformReservedCidr'] as String).input(),
-      platformReservedDnsIP: map['platformReservedDnsIP'] == null ? null : (map['platformReservedDnsIP'] as String).input(),
+      appSubnetResourceId: map['appSubnetResourceId'] == null ? null : (map['appSubnetResourceId']! as String).input(),
+      controlPlaneSubnetResourceId: map['controlPlaneSubnetResourceId'] == null ? null : (map['controlPlaneSubnetResourceId']! as String).input(),
+      daprAIInstrumentationKey: map['daprAIInstrumentationKey'] == null ? null : (map['daprAIInstrumentationKey']! as String).input(),
+      dockerBridgeCidr: map['dockerBridgeCidr'] == null ? null : (map['dockerBridgeCidr']! as String).input(),
+      platformReservedCidr: map['platformReservedCidr'] == null ? null : (map['platformReservedCidr']! as String).input(),
+      platformReservedDnsIP: map['platformReservedDnsIP'] == null ? null : (map['platformReservedDnsIP']! as String).input(),
     );
   }
 }

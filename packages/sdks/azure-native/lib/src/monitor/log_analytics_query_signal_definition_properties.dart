@@ -63,15 +63,15 @@ class LogAnalyticsQuerySignalDefinitionProperties {
 
   factory LogAnalyticsQuerySignalDefinitionProperties.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsQuerySignalDefinitionProperties(
-      dataUnit: map['dataUnit'] == null ? null : (map['dataUnit'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      dataUnit: map['dataUnit'] == null ? null : (map['dataUnit']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       evaluationRules: (EvaluationRule.fromMap((map['evaluationRules'] as Map).cast<String, dynamic>())).input(),
       queryText: (map['queryText'] as String).input(),
-      refreshInterval: map['refreshInterval'] == null ? null : (map['refreshInterval'] as String).input(),
+      refreshInterval: map['refreshInterval'] == null ? null : (map['refreshInterval']! as String).input(),
       signalKind: (map['signalKind'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain'] as String).input(),
-      valueColumnName: map['valueColumnName'] == null ? null : (map['valueColumnName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain']! as String).input(),
+      valueColumnName: map['valueColumnName'] == null ? null : (map['valueColumnName']! as String).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class PasswordValidationPolicy {
 
   factory PasswordValidationPolicy.fromMap(Map<String, dynamic> map) {
     return PasswordValidationPolicy(
-      complexity: map['complexity'] == null ? null : (PasswordValidationPolicyComplexity.fromValue(map['complexity'] as String)).input(),
-      disallowCompromisedCredentials: map['disallowCompromisedCredentials'] == null ? null : (map['disallowCompromisedCredentials'] as bool).input(),
-      disallowUsernameSubstring: map['disallowUsernameSubstring'] == null ? null : (map['disallowUsernameSubstring'] as bool).input(),
-      enablePasswordPolicy: map['enablePasswordPolicy'] == null ? null : (map['enablePasswordPolicy'] as bool).input(),
-      minLength: map['minLength'] == null ? null : (map['minLength'] as int).input(),
-      passwordChangeInterval: map['passwordChangeInterval'] == null ? null : (map['passwordChangeInterval'] as String).input(),
-      reuseInterval: map['reuseInterval'] == null ? null : (map['reuseInterval'] as int).input(),
+      complexity: map['complexity'] == null ? null : (PasswordValidationPolicyComplexity.fromValue(map['complexity']! as String)).input(),
+      disallowCompromisedCredentials: map['disallowCompromisedCredentials'] == null ? null : (map['disallowCompromisedCredentials']! as bool).input(),
+      disallowUsernameSubstring: map['disallowUsernameSubstring'] == null ? null : (map['disallowUsernameSubstring']! as bool).input(),
+      enablePasswordPolicy: map['enablePasswordPolicy'] == null ? null : (map['enablePasswordPolicy']! as bool).input(),
+      minLength: map['minLength'] == null ? null : (map['minLength']! as int).input(),
+      passwordChangeInterval: map['passwordChangeInterval'] == null ? null : (map['passwordChangeInterval']! as String).input(),
+      reuseInterval: map['reuseInterval'] == null ? null : (map['reuseInterval']! as int).input(),
     );
   }
 }

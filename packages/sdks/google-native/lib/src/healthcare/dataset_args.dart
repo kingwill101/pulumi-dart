@@ -42,11 +42,11 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

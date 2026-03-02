@@ -44,10 +44,10 @@ class RecoveryPlanA2ADetailsResponse {
   factory RecoveryPlanA2ADetailsResponse.fromMap(Map<String, dynamic> map) {
     return RecoveryPlanA2ADetailsResponse(
       instanceType: (map['instanceType'] as String).input(),
-      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['primaryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
-      primaryZone: map['primaryZone'] == null ? null : (map['primaryZone'] as String).input(),
-      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['recoveryExtendedLocation'] as Map).cast<String, dynamic>())).input(),
-      recoveryZone: map['recoveryZone'] == null ? null : (map['recoveryZone'] as String).input(),
+      primaryExtendedLocation: map['primaryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['primaryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
+      primaryZone: map['primaryZone'] == null ? null : (map['primaryZone']! as String).input(),
+      recoveryExtendedLocation: map['recoveryExtendedLocation'] == null ? null : (ExtendedLocationResponse.fromMap((map['recoveryExtendedLocation']! as Map).cast<String, dynamic>())).input(),
+      recoveryZone: map['recoveryZone'] == null ? null : (map['recoveryZone']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class AccountKeyDatastoreSecrets {
 
   factory AccountKeyDatastoreSecrets.fromMap(Map<String, dynamic> map) {
     return AccountKeyDatastoreSecrets(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
       secretsType: (map['secretsType'] as String).input(),
     );
   }

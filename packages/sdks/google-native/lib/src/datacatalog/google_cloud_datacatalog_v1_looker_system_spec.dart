@@ -46,12 +46,12 @@ class GoogleCloudDatacatalogV1LookerSystemSpec {
 
   factory GoogleCloudDatacatalogV1LookerSystemSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1LookerSystemSpec(
-      parentInstanceDisplayName: map['parentInstanceDisplayName'] == null ? null : (map['parentInstanceDisplayName'] as String).input(),
-      parentInstanceId: map['parentInstanceId'] == null ? null : (map['parentInstanceId'] as String).input(),
-      parentModelDisplayName: map['parentModelDisplayName'] == null ? null : (map['parentModelDisplayName'] as String).input(),
-      parentModelId: map['parentModelId'] == null ? null : (map['parentModelId'] as String).input(),
-      parentViewDisplayName: map['parentViewDisplayName'] == null ? null : (map['parentViewDisplayName'] as String).input(),
-      parentViewId: map['parentViewId'] == null ? null : (map['parentViewId'] as String).input(),
+      parentInstanceDisplayName: map['parentInstanceDisplayName'] == null ? null : (map['parentInstanceDisplayName']! as String).input(),
+      parentInstanceId: map['parentInstanceId'] == null ? null : (map['parentInstanceId']! as String).input(),
+      parentModelDisplayName: map['parentModelDisplayName'] == null ? null : (map['parentModelDisplayName']! as String).input(),
+      parentModelId: map['parentModelId'] == null ? null : (map['parentModelId']! as String).input(),
+      parentViewDisplayName: map['parentViewDisplayName'] == null ? null : (map['parentViewDisplayName']! as String).input(),
+      parentViewId: map['parentViewId'] == null ? null : (map['parentViewId']! as String).input(),
     );
   }
 }

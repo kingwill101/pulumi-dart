@@ -49,7 +49,7 @@ class ComputingGroupArgs {
 
   factory ComputingGroupArgs.fromMap(Map<String, dynamic> map) {
     return ComputingGroupArgs(
-      computingGroupDescription: map['computingGroupDescription'] == null ? null : (map['computingGroupDescription'] as String).input(),
+      computingGroupDescription: map['computingGroupDescription'] == null ? null : (map['computingGroupDescription']! as String).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),
       isReadonly: (map['isReadonly'] as bool).input(),
       nodeCount: (map['nodeCount'] as int).input(),

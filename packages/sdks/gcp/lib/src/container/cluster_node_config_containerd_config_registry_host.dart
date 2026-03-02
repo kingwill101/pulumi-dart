@@ -26,7 +26,7 @@ class ClusterNodeConfigContainerdConfigRegistryHost {
 
   factory ClusterNodeConfigContainerdConfigRegistryHost.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigContainerdConfigRegistryHost(
-      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<ClusterNodeConfigContainerdConfigRegistryHostHost>(map['hosts'], (value) => ClusterNodeConfigContainerdConfigRegistryHostHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<ClusterNodeConfigContainerdConfigRegistryHostHost>(map['hosts']!, (value) => ClusterNodeConfigContainerdConfigRegistryHostHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
       server: (map['server'] as String).input(),
     );
   }

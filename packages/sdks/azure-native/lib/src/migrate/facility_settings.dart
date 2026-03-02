@@ -21,7 +21,7 @@ class FacilitySettings {
 
   factory FacilitySettings.fromMap(Map<String, dynamic> map) {
     return FacilitySettings(
-      facilitiesCostPerKwh: map['facilitiesCostPerKwh'] == null ? null : (map['facilitiesCostPerKwh'] as double).input(),
+      facilitiesCostPerKwh: map['facilitiesCostPerKwh'] == null ? null : (map['facilitiesCostPerKwh']! as double).input(),
     );
   }
 }

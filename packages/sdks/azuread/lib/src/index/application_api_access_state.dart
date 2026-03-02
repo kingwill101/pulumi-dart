@@ -38,10 +38,10 @@ class ApplicationApiAccessState {
 
   factory ApplicationApiAccessState.fromMap(Map<String, dynamic> map) {
     return ApplicationApiAccessState(
-      apiClientId: map['apiClientId'] == null ? null : (map['apiClientId'] as String).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      roleIds: map['roleIds'] == null ? null : ((map['roleIds'] as List).cast<String>()).input(),
-      scopeIds: map['scopeIds'] == null ? null : ((map['scopeIds'] as List).cast<String>()).input(),
+      apiClientId: map['apiClientId'] == null ? null : (map['apiClientId']! as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      roleIds: map['roleIds'] == null ? null : ((map['roleIds']! as List).cast<String>()).input(),
+      scopeIds: map['scopeIds'] == null ? null : ((map['scopeIds']! as List).cast<String>()).input(),
     );
   }
 }

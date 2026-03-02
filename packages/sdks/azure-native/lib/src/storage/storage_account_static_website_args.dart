@@ -40,8 +40,8 @@ class StorageAccountStaticWebsiteArgs {
   factory StorageAccountStaticWebsiteArgs.fromMap(Map<String, dynamic> map) {
     return StorageAccountStaticWebsiteArgs(
       accountName: (map['accountName'] as String).input(),
-      error404Document: map['error404Document'] == null ? null : (map['error404Document'] as String).input(),
-      indexDocument: map['indexDocument'] == null ? null : (map['indexDocument'] as String).input(),
+      error404Document: map['error404Document'] == null ? null : (map['error404Document']! as String).input(),
+      indexDocument: map['indexDocument'] == null ? null : (map['indexDocument']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

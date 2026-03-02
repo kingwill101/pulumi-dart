@@ -26,7 +26,7 @@ class ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader {
   factory ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader(
       name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

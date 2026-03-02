@@ -20,7 +20,7 @@ class ForwardingRuleRuleConditionHostConfig {
 
   factory ForwardingRuleRuleConditionHostConfig.fromMap(Map<String, dynamic> map) {
     return ForwardingRuleRuleConditionHostConfig(
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

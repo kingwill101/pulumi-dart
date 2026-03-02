@@ -96,21 +96,21 @@ class LinkedServiceAzureSqlDatabaseArgs {
 
   factory LinkedServiceAzureSqlDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return LinkedServiceAzureSqlDatabaseArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      credentialName: map['credentialName'] == null ? null : (map['credentialName'] as String).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      credentialName: map['credentialName'] == null ? null : (map['credentialName']! as String).input(),
       dataFactoryId: (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
-      keyVaultConnectionString: map['keyVaultConnectionString'] == null ? null : (LinkedServiceAzureSqlDatabaseKeyVaultConnectionString.fromMap((map['keyVaultConnectionString'] as Map).cast<String, dynamic>())).input(),
-      keyVaultPassword: map['keyVaultPassword'] == null ? null : (LinkedServiceAzureSqlDatabaseKeyVaultPassword.fromMap((map['keyVaultPassword'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (map['servicePrincipalKey'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      useManagedIdentity: map['useManagedIdentity'] == null ? null : (map['useManagedIdentity'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
+      keyVaultConnectionString: map['keyVaultConnectionString'] == null ? null : (LinkedServiceAzureSqlDatabaseKeyVaultConnectionString.fromMap((map['keyVaultConnectionString']! as Map).cast<String, dynamic>())).input(),
+      keyVaultPassword: map['keyVaultPassword'] == null ? null : (LinkedServiceAzureSqlDatabaseKeyVaultPassword.fromMap((map['keyVaultPassword']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']! as String).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (map['servicePrincipalKey']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      useManagedIdentity: map['useManagedIdentity'] == null ? null : (map['useManagedIdentity']! as bool).input(),
     );
   }
 }

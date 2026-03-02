@@ -43,11 +43,11 @@ class ComputeSchedulingVmmigrationV1alpha1 {
 
   factory ComputeSchedulingVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return ComputeSchedulingVmmigrationV1alpha1(
-      automaticRestart: map['automaticRestart'] == null ? null : (map['automaticRestart'] as bool).input(),
-      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus'] as int).input(),
-      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<SchedulingNodeAffinityVmmigrationV1alpha1>(map['nodeAffinities'], (value) => SchedulingNodeAffinityVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      onHostMaintenance: map['onHostMaintenance'] == null ? null : (ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1.fromValue(map['onHostMaintenance'] as String)).input(),
-      restartType: map['restartType'] == null ? null : (ComputeSchedulingRestartTypeVmmigrationV1alpha1.fromValue(map['restartType'] as String)).input(),
+      automaticRestart: map['automaticRestart'] == null ? null : (map['automaticRestart']! as bool).input(),
+      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus']! as int).input(),
+      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<SchedulingNodeAffinityVmmigrationV1alpha1>(map['nodeAffinities']!, (value) => SchedulingNodeAffinityVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onHostMaintenance: map['onHostMaintenance'] == null ? null : (ComputeSchedulingOnHostMaintenanceVmmigrationV1alpha1.fromValue(map['onHostMaintenance']! as String)).input(),
+      restartType: map['restartType'] == null ? null : (ComputeSchedulingRestartTypeVmmigrationV1alpha1.fromValue(map['restartType']! as String)).input(),
     );
   }
 }

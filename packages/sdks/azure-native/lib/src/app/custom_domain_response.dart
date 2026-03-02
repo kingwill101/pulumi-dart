@@ -31,8 +31,8 @@ class CustomDomainResponse {
 
   factory CustomDomainResponse.fromMap(Map<String, dynamic> map) {
     return CustomDomainResponse(
-      bindingType: map['bindingType'] == null ? null : (map['bindingType'] as String).input(),
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      bindingType: map['bindingType'] == null ? null : (map['bindingType']! as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

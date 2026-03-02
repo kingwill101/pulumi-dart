@@ -65,14 +65,14 @@ class DeveloperAppCredential {
 
   factory DeveloperAppCredential.fromMap(Map<String, dynamic> map) {
     return DeveloperAppCredential(
-      apiProducts: map['apiProducts'] == null ? null : (pulumi.Input.decodeList<DeveloperAppCredentialApiProduct>(map['apiProducts'], (value) => DeveloperAppCredentialApiProduct.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAppCredentialAttribute>(map['attributes'], (value) => DeveloperAppCredentialAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      consumerKey: map['consumerKey'] == null ? null : (map['consumerKey'] as String).input(),
-      consumerSecret: map['consumerSecret'] == null ? null : (map['consumerSecret'] as String).input(),
-      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt'] as String).input(),
-      issuedAt: map['issuedAt'] == null ? null : (map['issuedAt'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      apiProducts: map['apiProducts'] == null ? null : (pulumi.Input.decodeList<DeveloperAppCredentialApiProduct>(map['apiProducts']!, (value) => DeveloperAppCredentialApiProduct.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<DeveloperAppCredentialAttribute>(map['attributes']!, (value) => DeveloperAppCredentialAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consumerKey: map['consumerKey'] == null ? null : (map['consumerKey']! as String).input(),
+      consumerSecret: map['consumerSecret'] == null ? null : (map['consumerSecret']! as String).input(),
+      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt']! as String).input(),
+      issuedAt: map['issuedAt'] == null ? null : (map['issuedAt']! as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

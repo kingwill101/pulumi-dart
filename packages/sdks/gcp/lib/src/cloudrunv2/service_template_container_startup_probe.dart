@@ -56,13 +56,13 @@ class ServiceTemplateContainerStartupProbe {
 
   factory ServiceTemplateContainerStartupProbe.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateContainerStartupProbe(
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      grpc: map['grpc'] == null ? null : (ServiceTemplateContainerStartupProbeGrpc.fromMap((map['grpc'] as Map).cast<String, dynamic>())).input(),
-      httpGet: map['httpGet'] == null ? null : (ServiceTemplateContainerStartupProbeHttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      tcpSocket: map['tcpSocket'] == null ? null : (ServiceTemplateContainerStartupProbeTcpSocket.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      grpc: map['grpc'] == null ? null : (ServiceTemplateContainerStartupProbeGrpc.fromMap((map['grpc']! as Map).cast<String, dynamic>())).input(),
+      httpGet: map['httpGet'] == null ? null : (ServiceTemplateContainerStartupProbeHttpGet.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (ServiceTemplateContainerStartupProbeTcpSocket.fromMap((map['tcpSocket']! as Map).cast<String, dynamic>())).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class ConfigSmsRegionConfig {
 
   factory ConfigSmsRegionConfig.fromMap(Map<String, dynamic> map) {
     return ConfigSmsRegionConfig(
-      allowByDefault: map['allowByDefault'] == null ? null : (ConfigSmsRegionConfigAllowByDefault.fromMap((map['allowByDefault'] as Map).cast<String, dynamic>())).input(),
-      allowlistOnly: map['allowlistOnly'] == null ? null : (ConfigSmsRegionConfigAllowlistOnly.fromMap((map['allowlistOnly'] as Map).cast<String, dynamic>())).input(),
+      allowByDefault: map['allowByDefault'] == null ? null : (ConfigSmsRegionConfigAllowByDefault.fromMap((map['allowByDefault']! as Map).cast<String, dynamic>())).input(),
+      allowlistOnly: map['allowlistOnly'] == null ? null : (ConfigSmsRegionConfigAllowlistOnly.fromMap((map['allowlistOnly']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

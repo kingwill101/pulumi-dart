@@ -29,7 +29,7 @@ class GetDistributionArgs {
   factory GetDistributionArgs.fromMap(Map<String, dynamic> map) {
     return GetDistributionArgs(
       id: (map['id'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class JobCollectionProperties {
 
   factory JobCollectionProperties.fromMap(Map<String, dynamic> map) {
     return JobCollectionProperties(
-      quota: map['quota'] == null ? null : (JobCollectionQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (JobCollectionState.fromValue(map['state'] as String)).input(),
+      quota: map['quota'] == null ? null : (JobCollectionQuota.fromMap((map['quota']! as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (JobCollectionState.fromValue(map['state']! as String)).input(),
     );
   }
 }

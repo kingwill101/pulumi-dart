@@ -78,18 +78,18 @@ class IdentityPoolState {
 
   factory IdentityPoolState.fromMap(Map<String, dynamic> map) {
     return IdentityPoolState(
-      allowClassicFlow: map['allowClassicFlow'] == null ? null : (map['allowClassicFlow'] as bool).input(),
-      allowUnauthenticatedIdentities: map['allowUnauthenticatedIdentities'] == null ? null : (map['allowUnauthenticatedIdentities'] as bool).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cognitoIdentityProviders: map['cognitoIdentityProviders'] == null ? null : (pulumi.Input.decodeList<IdentityPoolCognitoIdentityProvider>(map['cognitoIdentityProviders'], (value) => IdentityPoolCognitoIdentityProvider.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      developerProviderName: map['developerProviderName'] == null ? null : (map['developerProviderName'] as String).input(),
-      identityPoolName: map['identityPoolName'] == null ? null : (map['identityPoolName'] as String).input(),
-      openidConnectProviderArns: map['openidConnectProviderArns'] == null ? null : ((map['openidConnectProviderArns'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      samlProviderArns: map['samlProviderArns'] == null ? null : ((map['samlProviderArns'] as List).cast<String>()).input(),
-      supportedLoginProviders: map['supportedLoginProviders'] == null ? null : ((map['supportedLoginProviders'] as Map).cast<String, String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      allowClassicFlow: map['allowClassicFlow'] == null ? null : ((map['allowClassicFlow'] as bool).input()).input(),
+      allowUnauthenticatedIdentities: map['allowUnauthenticatedIdentities'] == null ? null : ((map['allowUnauthenticatedIdentities'] as bool).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      cognitoIdentityProviders: map['cognitoIdentityProviders'] == null ? null : ((pulumi.Input.decodeList<IdentityPoolCognitoIdentityProvider>(map['cognitoIdentityProviders']!, (value) => IdentityPoolCognitoIdentityProvider.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      developerProviderName: map['developerProviderName'] == null ? null : ((map['developerProviderName'] as String).input()).input(),
+      identityPoolName: map['identityPoolName'] == null ? null : ((map['identityPoolName'] as String).input()).input(),
+      openidConnectProviderArns: map['openidConnectProviderArns'] == null ? null : (((map['openidConnectProviderArns'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      samlProviderArns: map['samlProviderArns'] == null ? null : (((map['samlProviderArns'] as List).cast<String>()).input()).input(),
+      supportedLoginProviders: map['supportedLoginProviders'] == null ? null : (((map['supportedLoginProviders'] as Map).cast<String, String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

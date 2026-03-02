@@ -74,17 +74,17 @@ class JobQueueState {
 
   factory JobQueueState.fromMap(Map<String, dynamic> map) {
     return JobQueueState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      computeEnvironmentOrders: map['computeEnvironmentOrders'] == null ? null : (pulumi.Input.decodeList<JobQueueComputeEnvironmentOrder>(map['computeEnvironmentOrders'], (value) => JobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      jobStateTimeLimitActions: map['jobStateTimeLimitActions'] == null ? null : (pulumi.Input.decodeList<JobQueueJobStateTimeLimitAction>(map['jobStateTimeLimitActions'], (value) => JobQueueJobStateTimeLimitAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      schedulingPolicyArn: map['schedulingPolicyArn'] == null ? null : (map['schedulingPolicyArn'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (JobQueueTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      computeEnvironmentOrders: map['computeEnvironmentOrders'] == null ? null : ((pulumi.Input.decodeList<JobQueueComputeEnvironmentOrder>(map['computeEnvironmentOrders']!, (value) => JobQueueComputeEnvironmentOrder.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      jobStateTimeLimitActions: map['jobStateTimeLimitActions'] == null ? null : ((pulumi.Input.decodeList<JobQueueJobStateTimeLimitAction>(map['jobStateTimeLimitActions']!, (value) => JobQueueJobStateTimeLimitAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      schedulingPolicyArn: map['schedulingPolicyArn'] == null ? null : ((map['schedulingPolicyArn'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((JobQueueTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

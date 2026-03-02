@@ -75,17 +75,17 @@ class RegionNetworkFirewallPolicyState {
 
   factory RegionNetworkFirewallPolicyState.fromMap(Map<String, dynamic> map) {
     return RegionNetworkFirewallPolicyState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      regionNetworkFirewallPolicyId: map['regionNetworkFirewallPolicyId'] == null ? null : (map['regionNetworkFirewallPolicyId'] as String).input(),
-      ruleTupleCount: map['ruleTupleCount'] == null ? null : (map['ruleTupleCount'] as int).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId'] as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      regionNetworkFirewallPolicyId: map['regionNetworkFirewallPolicyId'] == null ? null : (map['regionNetworkFirewallPolicyId']! as String).input(),
+      ruleTupleCount: map['ruleTupleCount'] == null ? null : (map['ruleTupleCount']! as int).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId']! as String).input(),
     );
   }
 }

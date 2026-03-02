@@ -38,7 +38,7 @@ class GetNetworkAttachmentArgs {
   factory GetNetworkAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkAttachmentArgs(
       name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

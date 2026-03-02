@@ -41,8 +41,8 @@ class GetDataQualityRulesResult {
     return GetDataQualityRulesResult(
       dataScanId: map['dataScanId'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      project: map['project'] == null ? null : map['project']! as String,
       rules: pulumi.Input.decodeList<GetDataQualityRulesRule>(map['rules'], (value) => GetDataQualityRulesRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

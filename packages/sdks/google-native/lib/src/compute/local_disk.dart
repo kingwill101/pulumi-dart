@@ -30,9 +30,9 @@ class LocalDisk {
 
   factory LocalDisk.fromMap(Map<String, dynamic> map) {
     return LocalDisk(
-      diskCount: map['diskCount'] == null ? null : (map['diskCount'] as int).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      diskCount: map['diskCount'] == null ? null : (map['diskCount']! as int).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
     );
   }
 }

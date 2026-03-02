@@ -60,14 +60,14 @@ class VirtualNetworkLinkArgs {
 
   factory VirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkLinkArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       privateZoneName: (map['privateZoneName'] as String).input(),
-      registrationEnabled: map['registrationEnabled'] == null ? null : (map['registrationEnabled'] as bool).input(),
-      resolutionPolicy: map['resolutionPolicy'] == null ? null : (map['resolutionPolicy'] as String).input(),
+      registrationEnabled: map['registrationEnabled'] == null ? null : (map['registrationEnabled']! as bool).input(),
+      resolutionPolicy: map['resolutionPolicy'] == null ? null : (map['resolutionPolicy']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualNetwork: map['virtualNetwork'] == null ? null : (SubResource.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())).input(),
-      virtualNetworkLinkName: map['virtualNetworkLinkName'] == null ? null : (map['virtualNetworkLinkName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualNetwork: map['virtualNetwork'] == null ? null : (SubResource.fromMap((map['virtualNetwork']! as Map).cast<String, dynamic>())).input(),
+      virtualNetworkLinkName: map['virtualNetworkLinkName'] == null ? null : (map['virtualNetworkLinkName']! as String).input(),
     );
   }
 }

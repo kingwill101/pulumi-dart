@@ -25,8 +25,8 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction 
 
   factory CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction(
-      parameter: map['parameter'] == null ? null : (map['parameter'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      parameter: map['parameter'] == null ? null : (map['parameter']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

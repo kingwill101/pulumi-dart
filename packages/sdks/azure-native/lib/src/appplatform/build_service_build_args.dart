@@ -45,9 +45,9 @@ class BuildServiceBuildArgs {
 
   factory BuildServiceBuildArgs.fromMap(Map<String, dynamic> map) {
     return BuildServiceBuildArgs(
-      buildName: map['buildName'] == null ? null : (map['buildName'] as String).input(),
+      buildName: map['buildName'] == null ? null : (map['buildName']! as String).input(),
       buildServiceName: (map['buildServiceName'] as String).input(),
-      properties: map['properties'] == null ? null : (BuildProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (BuildProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

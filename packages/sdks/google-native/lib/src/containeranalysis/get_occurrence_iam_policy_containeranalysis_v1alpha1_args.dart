@@ -28,7 +28,7 @@ class GetOccurrenceIamPolicyContaineranalysisV1alpha1Args {
   factory GetOccurrenceIamPolicyContaineranalysisV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetOccurrenceIamPolicyContaineranalysisV1alpha1Args(
       occurrenceId: (map['occurrenceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

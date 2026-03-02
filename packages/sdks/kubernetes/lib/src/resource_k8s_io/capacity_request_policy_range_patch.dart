@@ -44,9 +44,9 @@ class CapacityRequestPolicyRangePatch {
 
   factory CapacityRequestPolicyRangePatch.fromMap(Map<String, dynamic> map) {
     return CapacityRequestPolicyRangePatch(
-      max: map['max'] == null ? null : (map['max'] as String).input(),
-      min: map['min'] == null ? null : (map['min'] as String).input(),
-      step: map['step'] == null ? null : (map['step'] as String).input(),
+      max: map['max'] == null ? null : (map['max']! as String).input(),
+      min: map['min'] == null ? null : (map['min']! as String).input(),
+      step: map['step'] == null ? null : (map['step']! as String).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class SubscriberNotificationState {
 
   factory SubscriberNotificationState.fromMap(Map<String, dynamic> map) {
     return SubscriberNotificationState(
-      configuration: map['configuration'] == null ? null : (SubscriberNotificationConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subscriberEndpoint: map['subscriberEndpoint'] == null ? null : (map['subscriberEndpoint'] as String).input(),
-      subscriberId: map['subscriberId'] == null ? null : (map['subscriberId'] as String).input(),
+      configuration: map['configuration'] == null ? null : ((SubscriberNotificationConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      endpointId: map['endpointId'] == null ? null : ((map['endpointId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subscriberEndpoint: map['subscriberEndpoint'] == null ? null : ((map['subscriberEndpoint'] as String).input()).input(),
+      subscriberId: map['subscriberId'] == null ? null : ((map['subscriberId'] as String).input()).input(),
     );
   }
 }

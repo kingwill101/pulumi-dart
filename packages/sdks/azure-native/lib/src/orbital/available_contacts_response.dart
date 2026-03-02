@@ -78,7 +78,7 @@ class AvailableContactsResponse {
       maximumElevationDegrees: (map['maximumElevationDegrees'] as double).input(),
       rxEndTime: (map['rxEndTime'] as String).input(),
       rxStartTime: (map['rxStartTime'] as String).input(),
-      spacecraft: map['spacecraft'] == null ? null : (AvailableContactsResponseSpacecraft.fromMap((map['spacecraft'] as Map).cast<String, dynamic>())).input(),
+      spacecraft: map['spacecraft'] == null ? null : (AvailableContactsResponseSpacecraft.fromMap((map['spacecraft']! as Map).cast<String, dynamic>())).input(),
       startAzimuthDegrees: (map['startAzimuthDegrees'] as double).input(),
       startElevationDegrees: (map['startElevationDegrees'] as double).input(),
       txEndTime: (map['txEndTime'] as String).input(),

@@ -20,7 +20,7 @@ class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchUriFragment {
 
   factory RuleGroupRuleStatementSizeConstraintStatementFieldToMatchUriFragment.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSizeConstraintStatementFieldToMatchUriFragment(
-      fallbackBehavior: map['fallbackBehavior'] == null ? null : (map['fallbackBehavior'] as String).input(),
+      fallbackBehavior: map['fallbackBehavior'] == null ? null : ((map['fallbackBehavior'] as String).input()).input(),
     );
   }
 }

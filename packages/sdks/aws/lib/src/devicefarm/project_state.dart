@@ -46,12 +46,12 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      defaultJobTimeoutMinutes: map['defaultJobTimeoutMinutes'] == null ? null : (map['defaultJobTimeoutMinutes'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      defaultJobTimeoutMinutes: map['defaultJobTimeoutMinutes'] == null ? null : ((map['defaultJobTimeoutMinutes'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

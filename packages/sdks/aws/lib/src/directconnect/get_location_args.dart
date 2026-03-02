@@ -30,7 +30,7 @@ class GetLocationArgs {
   factory GetLocationArgs.fromMap(Map<String, dynamic> map) {
     return GetLocationArgs(
       locationCode: (map['locationCode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

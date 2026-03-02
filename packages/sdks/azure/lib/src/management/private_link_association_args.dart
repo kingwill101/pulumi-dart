@@ -42,7 +42,7 @@ class PrivateLinkAssociationArgs {
   factory PrivateLinkAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationArgs(
       managementGroupId: (map['managementGroupId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       publicNetworkAccessEnabled: (map['publicNetworkAccessEnabled'] as bool).input(),
       resourceManagementPrivateLinkId: (map['resourceManagementPrivateLinkId'] as String).input(),
     );

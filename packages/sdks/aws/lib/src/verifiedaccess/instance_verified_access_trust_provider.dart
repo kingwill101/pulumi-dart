@@ -40,11 +40,11 @@ class InstanceVerifiedAccessTrustProvider {
 
   factory InstanceVerifiedAccessTrustProvider.fromMap(Map<String, dynamic> map) {
     return InstanceVerifiedAccessTrustProvider(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      deviceTrustProviderType: map['deviceTrustProviderType'] == null ? null : (map['deviceTrustProviderType'] as String).input(),
-      trustProviderType: map['trustProviderType'] == null ? null : (map['trustProviderType'] as String).input(),
-      userTrustProviderType: map['userTrustProviderType'] == null ? null : (map['userTrustProviderType'] as String).input(),
-      verifiedAccessTrustProviderId: map['verifiedAccessTrustProviderId'] == null ? null : (map['verifiedAccessTrustProviderId'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      deviceTrustProviderType: map['deviceTrustProviderType'] == null ? null : ((map['deviceTrustProviderType'] as String).input()).input(),
+      trustProviderType: map['trustProviderType'] == null ? null : ((map['trustProviderType'] as String).input()).input(),
+      userTrustProviderType: map['userTrustProviderType'] == null ? null : ((map['userTrustProviderType'] as String).input()).input(),
+      verifiedAccessTrustProviderId: map['verifiedAccessTrustProviderId'] == null ? null : ((map['verifiedAccessTrustProviderId'] as String).input()).input(),
     );
   }
 }

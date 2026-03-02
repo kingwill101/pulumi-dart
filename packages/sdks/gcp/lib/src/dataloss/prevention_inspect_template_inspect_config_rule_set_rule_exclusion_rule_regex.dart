@@ -26,7 +26,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex {
 
   factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex(
-      groupIndexes: map['groupIndexes'] == null ? null : ((map['groupIndexes'] as List).cast<int>()).input(),
+      groupIndexes: map['groupIndexes'] == null ? null : ((map['groupIndexes']! as List).cast<int>()).input(),
       pattern: (map['pattern'] as String).input(),
     );
   }

@@ -25,8 +25,8 @@ class RocketMQInstanceAclInfo {
 
   factory RocketMQInstanceAclInfo.fromMap(Map<String, dynamic> map) {
     return RocketMQInstanceAclInfo(
-      aclTypes: map['aclTypes'] == null ? null : ((map['aclTypes'] as List).cast<String>()).input(),
-      defaultVpcAuthFree: map['defaultVpcAuthFree'] == null ? null : (map['defaultVpcAuthFree'] as bool).input(),
+      aclTypes: map['aclTypes'] == null ? null : ((map['aclTypes']! as List).cast<String>()).input(),
+      defaultVpcAuthFree: map['defaultVpcAuthFree'] == null ? null : (map['defaultVpcAuthFree']! as bool).input(),
     );
   }
 }

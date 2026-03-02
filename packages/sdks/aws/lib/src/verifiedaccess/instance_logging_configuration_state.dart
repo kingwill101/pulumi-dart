@@ -32,9 +32,9 @@ class InstanceLoggingConfigurationState {
 
   factory InstanceLoggingConfigurationState.fromMap(Map<String, dynamic> map) {
     return InstanceLoggingConfigurationState(
-      accessLogs: map['accessLogs'] == null ? null : (InstanceLoggingConfigurationAccessLogs.fromMap((map['accessLogs'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      verifiedaccessInstanceId: map['verifiedaccessInstanceId'] == null ? null : (map['verifiedaccessInstanceId'] as String).input(),
+      accessLogs: map['accessLogs'] == null ? null : ((InstanceLoggingConfigurationAccessLogs.fromMap((map['accessLogs']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      verifiedaccessInstanceId: map['verifiedaccessInstanceId'] == null ? null : ((map['verifiedaccessInstanceId'] as String).input()).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class GetPhysicalConnectionsArgs {
 
   factory GetPhysicalConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetPhysicalConnectionsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      includeReservationData: map['includeReservationData'] == null ? null : (map['includeReservationData'] as bool).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      includeReservationData: map['includeReservationData'] == null ? null : (map['includeReservationData']! as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

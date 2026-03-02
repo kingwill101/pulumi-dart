@@ -21,7 +21,7 @@ class GoogleCloudRetailV2RuleTwowaySynonymsAction {
 
   factory GoogleCloudRetailV2RuleTwowaySynonymsAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2RuleTwowaySynonymsAction(
-      synonyms: map['synonyms'] == null ? null : ((map['synonyms'] as List).cast<String>()).input(),
+      synonyms: map['synonyms'] == null ? null : ((map['synonyms']! as List).cast<String>()).input(),
     );
   }
 }

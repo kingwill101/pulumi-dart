@@ -26,8 +26,8 @@ class VersionSourceHealthcareV1beta1 {
 
   factory VersionSourceHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return VersionSourceHealthcareV1beta1(
-      mshField: map['mshField'] == null ? null : (map['mshField'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      mshField: map['mshField'] == null ? null : (map['mshField']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class RulestackDetails {
 
   factory RulestackDetails.fromMap(Map<String, dynamic> map) {
     return RulestackDetails(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      rulestackId: map['rulestackId'] == null ? null : (map['rulestackId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      rulestackId: map['rulestackId'] == null ? null : (map['rulestackId']! as String).input(),
     );
   }
 }

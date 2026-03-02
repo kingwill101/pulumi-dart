@@ -24,7 +24,7 @@ class GetReplicationSetArgs {
 
   factory GetReplicationSetArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationSetArgs(
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

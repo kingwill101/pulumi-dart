@@ -25,8 +25,8 @@ class ServerlessComputeSettings {
 
   factory ServerlessComputeSettings.fromMap(Map<String, dynamic> map) {
     return ServerlessComputeSettings(
-      serverlessComputeCustomSubnet: map['serverlessComputeCustomSubnet'] == null ? null : (map['serverlessComputeCustomSubnet'] as String).input(),
-      serverlessComputeNoPublicIP: map['serverlessComputeNoPublicIP'] == null ? null : (map['serverlessComputeNoPublicIP'] as bool).input(),
+      serverlessComputeCustomSubnet: map['serverlessComputeCustomSubnet'] == null ? null : (map['serverlessComputeCustomSubnet']! as String).input(),
+      serverlessComputeNoPublicIP: map['serverlessComputeNoPublicIP'] == null ? null : (map['serverlessComputeNoPublicIP']! as bool).input(),
     );
   }
 }

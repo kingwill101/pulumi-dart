@@ -44,11 +44,11 @@ class ClusterAutoscaling {
 
   factory ClusterAutoscaling.fromMap(Map<String, dynamic> map) {
     return ClusterAutoscaling(
-      autoprovisioningLocations: map['autoprovisioningLocations'] == null ? null : ((map['autoprovisioningLocations'] as List).cast<String>()).input(),
-      autoprovisioningNodePoolDefaults: map['autoprovisioningNodePoolDefaults'] == null ? null : (AutoprovisioningNodePoolDefaults.fromMap((map['autoprovisioningNodePoolDefaults'] as Map).cast<String, dynamic>())).input(),
-      autoscalingProfile: map['autoscalingProfile'] == null ? null : (ClusterAutoscalingAutoscalingProfile.fromValue(map['autoscalingProfile'] as String)).input(),
-      enableNodeAutoprovisioning: map['enableNodeAutoprovisioning'] == null ? null : (map['enableNodeAutoprovisioning'] as bool).input(),
-      resourceLimits: map['resourceLimits'] == null ? null : (pulumi.Input.decodeList<ResourceLimit>(map['resourceLimits'], (value) => ResourceLimit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoprovisioningLocations: map['autoprovisioningLocations'] == null ? null : ((map['autoprovisioningLocations']! as List).cast<String>()).input(),
+      autoprovisioningNodePoolDefaults: map['autoprovisioningNodePoolDefaults'] == null ? null : (AutoprovisioningNodePoolDefaults.fromMap((map['autoprovisioningNodePoolDefaults']! as Map).cast<String, dynamic>())).input(),
+      autoscalingProfile: map['autoscalingProfile'] == null ? null : (ClusterAutoscalingAutoscalingProfile.fromValue(map['autoscalingProfile']! as String)).input(),
+      enableNodeAutoprovisioning: map['enableNodeAutoprovisioning'] == null ? null : (map['enableNodeAutoprovisioning']! as bool).input(),
+      resourceLimits: map['resourceLimits'] == null ? null : (pulumi.Input.decodeList<ResourceLimit>(map['resourceLimits']!, (value) => ResourceLimit.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

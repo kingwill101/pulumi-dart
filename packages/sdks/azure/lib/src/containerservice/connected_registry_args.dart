@@ -82,18 +82,18 @@ class ConnectedRegistryArgs {
 
   factory ConnectedRegistryArgs.fromMap(Map<String, dynamic> map) {
     return ConnectedRegistryArgs(
-      auditLogEnabled: map['auditLogEnabled'] == null ? null : (map['auditLogEnabled'] as bool).input(),
-      clientTokenIds: map['clientTokenIds'] == null ? null : ((map['clientTokenIds'] as List).cast<String>()).input(),
+      auditLogEnabled: map['auditLogEnabled'] == null ? null : (map['auditLogEnabled']! as bool).input(),
+      clientTokenIds: map['clientTokenIds'] == null ? null : ((map['clientTokenIds']! as List).cast<String>()).input(),
       containerRegistryId: (map['containerRegistryId'] as String).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<ConnectedRegistryNotification>(map['notifications'], (value) => ConnectedRegistryNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parentRegistryId: map['parentRegistryId'] == null ? null : (map['parentRegistryId'] as String).input(),
-      syncMessageTtl: map['syncMessageTtl'] == null ? null : (map['syncMessageTtl'] as String).input(),
-      syncSchedule: map['syncSchedule'] == null ? null : (map['syncSchedule'] as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<ConnectedRegistryNotification>(map['notifications']!, (value) => ConnectedRegistryNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parentRegistryId: map['parentRegistryId'] == null ? null : (map['parentRegistryId']! as String).input(),
+      syncMessageTtl: map['syncMessageTtl'] == null ? null : (map['syncMessageTtl']! as String).input(),
+      syncSchedule: map['syncSchedule'] == null ? null : (map['syncSchedule']! as String).input(),
       syncTokenId: (map['syncTokenId'] as String).input(),
-      syncWindow: map['syncWindow'] == null ? null : (map['syncWindow'] as String).input(),
+      syncWindow: map['syncWindow'] == null ? null : (map['syncWindow']! as String).input(),
     );
   }
 }

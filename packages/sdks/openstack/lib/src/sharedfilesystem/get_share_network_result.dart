@@ -91,7 +91,7 @@ class GetShareNetworkResult {
       neutronSubnetId: map['neutronSubnetId'] as String,
       projectId: map['projectId'] as String,
       region: map['region'] as String,
-      securityServiceId: map['securityServiceId'] == null ? null : map['securityServiceId'] as String,
+      securityServiceId: map['securityServiceId'] == null ? null : map['securityServiceId']! as String,
       securityServiceIds: (map['securityServiceIds'] as List).cast<String>(),
       segmentationId: map['segmentationId'] as int,
     );

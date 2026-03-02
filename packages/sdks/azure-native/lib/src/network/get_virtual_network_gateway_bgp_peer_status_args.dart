@@ -34,7 +34,7 @@ class GetVirtualNetworkGatewayBgpPeerStatusArgs {
 
   factory GetVirtualNetworkGatewayBgpPeerStatusArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayBgpPeerStatusArgs(
-      peer: map['peer'] == null ? null : (map['peer'] as String).input(),
+      peer: map['peer'] == null ? null : (map['peer']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       virtualNetworkGatewayName: (map['virtualNetworkGatewayName'] as String).input(),
     );

@@ -47,12 +47,12 @@ class WebTestPropertiesRequest {
 
   factory WebTestPropertiesRequest.fromMap(Map<String, dynamic> map) {
     return WebTestPropertiesRequest(
-      followRedirects: map['followRedirects'] == null ? null : (map['followRedirects'] as bool).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HeaderField>(map['headers'], (value) => HeaderField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpVerb: map['httpVerb'] == null ? null : (map['httpVerb'] as String).input(),
-      parseDependentRequests: map['parseDependentRequests'] == null ? null : (map['parseDependentRequests'] as bool).input(),
-      requestBody: map['requestBody'] == null ? null : (map['requestBody'] as String).input(),
-      requestUrl: map['requestUrl'] == null ? null : (map['requestUrl'] as String).input(),
+      followRedirects: map['followRedirects'] == null ? null : (map['followRedirects']! as bool).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HeaderField>(map['headers']!, (value) => HeaderField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpVerb: map['httpVerb'] == null ? null : (map['httpVerb']! as String).input(),
+      parseDependentRequests: map['parseDependentRequests'] == null ? null : (map['parseDependentRequests']! as bool).input(),
+      requestBody: map['requestBody'] == null ? null : (map['requestBody']! as String).input(),
+      requestUrl: map['requestUrl'] == null ? null : (map['requestUrl']! as String).input(),
     );
   }
 }

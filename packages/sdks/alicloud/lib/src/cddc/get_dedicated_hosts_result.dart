@@ -66,18 +66,18 @@ class GetDedicatedHostsResult {
 
   factory GetDedicatedHostsResult.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsResult(
-      allocationStatus: map['allocationStatus'] == null ? null : map['allocationStatus'] as String,
+      allocationStatus: map['allocationStatus'] == null ? null : map['allocationStatus']! as String,
       dedicatedHostGroupId: map['dedicatedHostGroupId'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
-      hostType: map['hostType'] == null ? null : map['hostType'] as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      hostType: map['hostType'] == null ? null : map['hostType']! as String,
       hosts: pulumi.Input.decodeList<GetDedicatedHostsHost>(map['hosts'], (value) => GetDedicatedHostsHost.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      orderId: map['orderId'] == null ? null : map['orderId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      orderId: map['orderId'] == null ? null : map['orderId']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

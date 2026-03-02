@@ -20,7 +20,7 @@ class AnalysisCompleted {
 
   factory AnalysisCompleted.fromMap(Map<String, dynamic> map) {
     return AnalysisCompleted(
-      analysisType: map['analysisType'] == null ? null : ((map['analysisType'] as List).cast<String>()).input(),
+      analysisType: map['analysisType'] == null ? null : ((map['analysisType']! as List).cast<String>()).input(),
     );
   }
 }

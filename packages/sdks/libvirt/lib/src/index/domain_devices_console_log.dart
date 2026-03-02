@@ -25,7 +25,7 @@ class DomainDevicesConsoleLog {
 
   factory DomainDevicesConsoleLog.fromMap(Map<String, dynamic> map) {
     return DomainDevicesConsoleLog(
-      append: map['append'] == null ? null : (map['append'] as String).input(),
+      append: map['append'] == null ? null : (map['append']! as String).input(),
       file: (map['file'] as String).input(),
     );
   }

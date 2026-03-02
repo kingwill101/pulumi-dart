@@ -95,20 +95,20 @@ class VpcEndpointArgs {
 
   factory VpcEndpointArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointArgs(
-      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      endpointDescription: map['endpointDescription'] == null ? null : (map['endpointDescription'] as String).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
-      protectedEnabled: map['protectedEnabled'] == null ? null : (map['protectedEnabled'] as bool).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcEndpointName: map['vpcEndpointName'] == null ? null : (map['vpcEndpointName'] as String).input(),
+      addressIpVersion: map['addressIpVersion'] == null ? null : (map['addressIpVersion']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      endpointDescription: map['endpointDescription'] == null ? null : (map['endpointDescription']! as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument']! as String).input(),
+      protectedEnabled: map['protectedEnabled'] == null ? null : (map['protectedEnabled']! as bool).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcEndpointName: map['vpcEndpointName'] == null ? null : (map['vpcEndpointName']! as String).input(),
       vpcId: (map['vpcId'] as String).input(),
-      zonePrivateIpAddressCount: map['zonePrivateIpAddressCount'] == null ? null : (map['zonePrivateIpAddressCount'] as int).input(),
+      zonePrivateIpAddressCount: map['zonePrivateIpAddressCount'] == null ? null : (map['zonePrivateIpAddressCount']! as int).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      policyContent: map['policyContent'] == null ? null : (map['policyContent'] as String).input(),
-      policyDesc: map['policyDesc'] == null ? null : (map['policyDesc'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
+      policyContent: map['policyContent'] == null ? null : (map['policyContent']! as String).input(),
+      policyDesc: map['policyDesc'] == null ? null : (map['policyDesc']! as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      userType: map['userType'] == null ? null : (map['userType']! as String).input(),
     );
   }
 }

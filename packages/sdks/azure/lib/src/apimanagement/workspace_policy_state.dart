@@ -33,9 +33,9 @@ class WorkspacePolicyState {
 
   factory WorkspacePolicyState.fromMap(Map<String, dynamic> map) {
     return WorkspacePolicyState(
-      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : (map['apiManagementWorkspaceId'] as String).input(),
-      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent'] as String).input(),
-      xmlLink: map['xmlLink'] == null ? null : (map['xmlLink'] as String).input(),
+      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : (map['apiManagementWorkspaceId']! as String).input(),
+      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent']! as String).input(),
+      xmlLink: map['xmlLink'] == null ? null : (map['xmlLink']! as String).input(),
     );
   }
 }

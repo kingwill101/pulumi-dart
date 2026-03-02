@@ -20,7 +20,7 @@ class InstanceFromMachineImageParams {
 
   factory InstanceFromMachineImageParams.fromMap(Map<String, dynamic> map) {
     return InstanceFromMachineImageParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

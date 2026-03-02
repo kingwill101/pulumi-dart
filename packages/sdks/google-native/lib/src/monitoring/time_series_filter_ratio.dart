@@ -45,11 +45,11 @@ class TimeSeriesFilterRatio {
 
   factory TimeSeriesFilterRatio.fromMap(Map<String, dynamic> map) {
     return TimeSeriesFilterRatio(
-      denominator: map['denominator'] == null ? null : (RatioPart.fromMap((map['denominator'] as Map).cast<String, dynamic>())).input(),
-      numerator: map['numerator'] == null ? null : (RatioPart.fromMap((map['numerator'] as Map).cast<String, dynamic>())).input(),
-      pickTimeSeriesFilter: map['pickTimeSeriesFilter'] == null ? null : (PickTimeSeriesFilter.fromMap((map['pickTimeSeriesFilter'] as Map).cast<String, dynamic>())).input(),
-      secondaryAggregation: map['secondaryAggregation'] == null ? null : (Aggregation.fromMap((map['secondaryAggregation'] as Map).cast<String, dynamic>())).input(),
-      statisticalTimeSeriesFilter: map['statisticalTimeSeriesFilter'] == null ? null : (StatisticalTimeSeriesFilter.fromMap((map['statisticalTimeSeriesFilter'] as Map).cast<String, dynamic>())).input(),
+      denominator: map['denominator'] == null ? null : (RatioPart.fromMap((map['denominator']! as Map).cast<String, dynamic>())).input(),
+      numerator: map['numerator'] == null ? null : (RatioPart.fromMap((map['numerator']! as Map).cast<String, dynamic>())).input(),
+      pickTimeSeriesFilter: map['pickTimeSeriesFilter'] == null ? null : (PickTimeSeriesFilter.fromMap((map['pickTimeSeriesFilter']! as Map).cast<String, dynamic>())).input(),
+      secondaryAggregation: map['secondaryAggregation'] == null ? null : (Aggregation.fromMap((map['secondaryAggregation']! as Map).cast<String, dynamic>())).input(),
+      statisticalTimeSeriesFilter: map['statisticalTimeSeriesFilter'] == null ? null : (StatisticalTimeSeriesFilter.fromMap((map['statisticalTimeSeriesFilter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

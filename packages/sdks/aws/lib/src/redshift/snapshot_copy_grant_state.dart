@@ -46,12 +46,12 @@ class SnapshotCopyGrantState {
 
   factory SnapshotCopyGrantState.fromMap(Map<String, dynamic> map) {
     return SnapshotCopyGrantState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snapshotCopyGrantName: map['snapshotCopyGrantName'] == null ? null : (map['snapshotCopyGrantName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      snapshotCopyGrantName: map['snapshotCopyGrantName'] == null ? null : ((map['snapshotCopyGrantName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -19,7 +19,7 @@ class ProviderFeaturesManagedDisk {
 
   factory ProviderFeaturesManagedDisk.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesManagedDisk(
-      expandWithoutDowntime: map['expandWithoutDowntime'] == null ? null : (map['expandWithoutDowntime'] as bool).input(),
+      expandWithoutDowntime: map['expandWithoutDowntime'] == null ? null : (map['expandWithoutDowntime']! as bool).input(),
     );
   }
 }

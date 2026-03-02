@@ -21,7 +21,7 @@ class CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration {
 
   factory CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration(
-      icebergConfiguration: map['icebergConfiguration'] == null ? null : (CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration.fromMap((map['icebergConfiguration'] as Map).cast<String, dynamic>())).input(),
+      icebergConfiguration: map['icebergConfiguration'] == null ? null : ((CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration.fromMap((map['icebergConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

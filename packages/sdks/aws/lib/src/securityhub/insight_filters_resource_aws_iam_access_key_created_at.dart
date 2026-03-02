@@ -31,9 +31,9 @@ class InsightFiltersResourceAwsIamAccessKeyCreatedAt {
 
   factory InsightFiltersResourceAwsIamAccessKeyCreatedAt.fromMap(Map<String, dynamic> map) {
     return InsightFiltersResourceAwsIamAccessKeyCreatedAt(
-      dateRange: map['dateRange'] == null ? null : (InsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange.fromMap((map['dateRange'] as Map).cast<String, dynamic>())).input(),
-      end: map['end'] == null ? null : (map['end'] as String).input(),
-      start: map['start'] == null ? null : (map['start'] as String).input(),
+      dateRange: map['dateRange'] == null ? null : ((InsightFiltersResourceAwsIamAccessKeyCreatedAtDateRange.fromMap((map['dateRange']! as Map).cast<String, dynamic>())).input()).input(),
+      end: map['end'] == null ? null : ((map['end'] as String).input()).input(),
+      start: map['start'] == null ? null : ((map['start'] as String).input()).input(),
     );
   }
 }

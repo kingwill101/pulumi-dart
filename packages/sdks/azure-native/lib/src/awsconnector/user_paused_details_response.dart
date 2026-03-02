@@ -31,9 +31,9 @@ class UserPausedDetailsResponse {
 
   factory UserPausedDetailsResponse.fromMap(Map<String, dynamic> map) {
     return UserPausedDetailsResponse(
-      jobExpiresAt: map['jobExpiresAt'] == null ? null : (map['jobExpiresAt'] as String).input(),
-      jobImminentExpirationHealthEventArn: map['jobImminentExpirationHealthEventArn'] == null ? null : (map['jobImminentExpirationHealthEventArn'] as String).input(),
-      jobPausedAt: map['jobPausedAt'] == null ? null : (map['jobPausedAt'] as String).input(),
+      jobExpiresAt: map['jobExpiresAt'] == null ? null : (map['jobExpiresAt']! as String).input(),
+      jobImminentExpirationHealthEventArn: map['jobImminentExpirationHealthEventArn'] == null ? null : (map['jobImminentExpirationHealthEventArn']! as String).input(),
+      jobPausedAt: map['jobPausedAt'] == null ? null : (map['jobPausedAt']! as String).input(),
     );
   }
 }

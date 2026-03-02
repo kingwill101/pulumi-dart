@@ -41,11 +41,11 @@ class SpringCloudAppRedisAssociationState {
 
   factory SpringCloudAppRedisAssociationState.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppRedisAssociationState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      redisAccessKey: map['redisAccessKey'] == null ? null : (map['redisAccessKey'] as String).input(),
-      redisCacheId: map['redisCacheId'] == null ? null : (map['redisCacheId'] as String).input(),
-      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId'] as String).input(),
-      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled'] as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      redisAccessKey: map['redisAccessKey'] == null ? null : (map['redisAccessKey']! as String).input(),
+      redisCacheId: map['redisCacheId'] == null ? null : (map['redisCacheId']! as String).input(),
+      springCloudAppId: map['springCloudAppId'] == null ? null : (map['springCloudAppId']! as String).input(),
+      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled']! as bool).input(),
     );
   }
 }

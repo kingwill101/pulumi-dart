@@ -61,15 +61,15 @@ class DelegatedAdministratorState {
 
   factory DelegatedAdministratorState.fromMap(Map<String, dynamic> map) {
     return DelegatedAdministratorState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      delegationEnabledDate: map['delegationEnabledDate'] == null ? null : (map['delegationEnabledDate'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      joinedMethod: map['joinedMethod'] == null ? null : (map['joinedMethod'] as String).input(),
-      joinedTimestamp: map['joinedTimestamp'] == null ? null : (map['joinedTimestamp'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      servicePrincipal: map['servicePrincipal'] == null ? null : (map['servicePrincipal'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      delegationEnabledDate: map['delegationEnabledDate'] == null ? null : ((map['delegationEnabledDate'] as String).input()).input(),
+      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
+      joinedMethod: map['joinedMethod'] == null ? null : ((map['joinedMethod'] as String).input()).input(),
+      joinedTimestamp: map['joinedTimestamp'] == null ? null : ((map['joinedTimestamp'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      servicePrincipal: map['servicePrincipal'] == null ? null : ((map['servicePrincipal'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

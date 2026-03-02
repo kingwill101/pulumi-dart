@@ -31,9 +31,9 @@ class FhirNotificationConfigHealthcareV1beta1 {
 
   factory FhirNotificationConfigHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return FhirNotificationConfigHealthcareV1beta1(
-      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
-      sendFullResource: map['sendFullResource'] == null ? null : (map['sendFullResource'] as bool).input(),
-      sendPreviousResourceOnDelete: map['sendPreviousResourceOnDelete'] == null ? null : (map['sendPreviousResourceOnDelete'] as bool).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic']! as String).input(),
+      sendFullResource: map['sendFullResource'] == null ? null : (map['sendFullResource']! as bool).input(),
+      sendPreviousResourceOnDelete: map['sendPreviousResourceOnDelete'] == null ? null : (map['sendPreviousResourceOnDelete']! as bool).input(),
     );
   }
 }

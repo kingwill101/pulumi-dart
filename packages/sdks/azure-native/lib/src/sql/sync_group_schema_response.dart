@@ -27,8 +27,8 @@ class SyncGroupSchemaResponse {
 
   factory SyncGroupSchemaResponse.fromMap(Map<String, dynamic> map) {
     return SyncGroupSchemaResponse(
-      masterSyncMemberName: map['masterSyncMemberName'] == null ? null : (map['masterSyncMemberName'] as String).input(),
-      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<SyncGroupSchemaTableResponse>(map['tables'], (value) => SyncGroupSchemaTableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      masterSyncMemberName: map['masterSyncMemberName'] == null ? null : (map['masterSyncMemberName']! as String).input(),
+      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<SyncGroupSchemaTableResponse>(map['tables']!, (value) => SyncGroupSchemaTableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

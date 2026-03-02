@@ -51,13 +51,13 @@ class MonitorPropertiesResponse {
 
   factory MonitorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MonitorPropertiesResponse(
-      datadogOrganizationProperties: map['datadogOrganizationProperties'] == null ? null : (DatadogOrganizationPropertiesResponse.fromMap((map['datadogOrganizationProperties'] as Map).cast<String, dynamic>())).input(),
+      datadogOrganizationProperties: map['datadogOrganizationProperties'] == null ? null : (DatadogOrganizationPropertiesResponse.fromMap((map['datadogOrganizationProperties']! as Map).cast<String, dynamic>())).input(),
       liftrResourceCategory: (map['liftrResourceCategory'] as String).input(),
       liftrResourcePreference: (map['liftrResourcePreference'] as int).input(),
       marketplaceSubscriptionStatus: (map['marketplaceSubscriptionStatus'] as String).input(),
-      monitoringStatus: map['monitoringStatus'] == null ? null : (map['monitoringStatus'] as String).input(),
+      monitoringStatus: map['monitoringStatus'] == null ? null : (map['monitoringStatus']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      userInfo: map['userInfo'] == null ? null : (UserInfoResponse.fromMap((map['userInfo'] as Map).cast<String, dynamic>())).input(),
+      userInfo: map['userInfo'] == null ? null : (UserInfoResponse.fromMap((map['userInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

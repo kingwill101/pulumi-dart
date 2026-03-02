@@ -99,19 +99,19 @@ class SpokeArgs {
 
   factory SpokeArgs.fromMap(Map<String, dynamic> map) {
     return SpokeArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gateway: map['gateway'] == null ? null : (SpokeGateway.fromMap((map['gateway'] as Map).cast<String, dynamic>())).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      gateway: map['gateway'] == null ? null : (SpokeGateway.fromMap((map['gateway']! as Map).cast<String, dynamic>())).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
       hub: (map['hub'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      linkedInterconnectAttachments: map['linkedInterconnectAttachments'] == null ? null : (SpokeLinkedInterconnectAttachments.fromMap((map['linkedInterconnectAttachments'] as Map).cast<String, dynamic>())).input(),
-      linkedProducerVpcNetwork: map['linkedProducerVpcNetwork'] == null ? null : (SpokeLinkedProducerVpcNetwork.fromMap((map['linkedProducerVpcNetwork'] as Map).cast<String, dynamic>())).input(),
-      linkedRouterApplianceInstances: map['linkedRouterApplianceInstances'] == null ? null : (SpokeLinkedRouterApplianceInstances.fromMap((map['linkedRouterApplianceInstances'] as Map).cast<String, dynamic>())).input(),
-      linkedVpcNetwork: map['linkedVpcNetwork'] == null ? null : (SpokeLinkedVpcNetwork.fromMap((map['linkedVpcNetwork'] as Map).cast<String, dynamic>())).input(),
-      linkedVpnTunnels: map['linkedVpnTunnels'] == null ? null : (SpokeLinkedVpnTunnels.fromMap((map['linkedVpnTunnels'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      linkedInterconnectAttachments: map['linkedInterconnectAttachments'] == null ? null : (SpokeLinkedInterconnectAttachments.fromMap((map['linkedInterconnectAttachments']! as Map).cast<String, dynamic>())).input(),
+      linkedProducerVpcNetwork: map['linkedProducerVpcNetwork'] == null ? null : (SpokeLinkedProducerVpcNetwork.fromMap((map['linkedProducerVpcNetwork']! as Map).cast<String, dynamic>())).input(),
+      linkedRouterApplianceInstances: map['linkedRouterApplianceInstances'] == null ? null : (SpokeLinkedRouterApplianceInstances.fromMap((map['linkedRouterApplianceInstances']! as Map).cast<String, dynamic>())).input(),
+      linkedVpcNetwork: map['linkedVpcNetwork'] == null ? null : (SpokeLinkedVpcNetwork.fromMap((map['linkedVpcNetwork']! as Map).cast<String, dynamic>())).input(),
+      linkedVpnTunnels: map['linkedVpnTunnels'] == null ? null : (SpokeLinkedVpnTunnels.fromMap((map['linkedVpnTunnels']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

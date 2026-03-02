@@ -21,7 +21,7 @@ class ServiceBasicPublicState {
 
   factory ServiceBasicPublicState.fromMap(Map<String, dynamic> map) {
     return ServiceBasicPublicState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
     );
   }
 }

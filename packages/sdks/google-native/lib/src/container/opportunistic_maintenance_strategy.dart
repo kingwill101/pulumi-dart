@@ -31,9 +31,9 @@ class OpportunisticMaintenanceStrategy {
 
   factory OpportunisticMaintenanceStrategy.fromMap(Map<String, dynamic> map) {
     return OpportunisticMaintenanceStrategy(
-      maintenanceAvailabilityWindow: map['maintenanceAvailabilityWindow'] == null ? null : (map['maintenanceAvailabilityWindow'] as String).input(),
-      minNodesPerPool: map['minNodesPerPool'] == null ? null : (map['minNodesPerPool'] as String).input(),
-      nodeIdleTimeWindow: map['nodeIdleTimeWindow'] == null ? null : (map['nodeIdleTimeWindow'] as String).input(),
+      maintenanceAvailabilityWindow: map['maintenanceAvailabilityWindow'] == null ? null : (map['maintenanceAvailabilityWindow']! as String).input(),
+      minNodesPerPool: map['minNodesPerPool'] == null ? null : (map['minNodesPerPool']! as String).input(),
+      nodeIdleTimeWindow: map['nodeIdleTimeWindow'] == null ? null : (map['nodeIdleTimeWindow']! as String).input(),
     );
   }
 }

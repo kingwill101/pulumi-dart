@@ -48,8 +48,8 @@ class GetTransitRouterMulticastDomainMembersResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       members: pulumi.Input.decodeList<GetTransitRouterMulticastDomainMembersMember>(map['members'], (value) => GetTransitRouterMulticastDomainMembersMember.fromMap((value as Map).cast<String, dynamic>())),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] as String,
     );
   }

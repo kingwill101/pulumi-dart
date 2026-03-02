@@ -21,7 +21,7 @@ class DhcpOptions {
 
   factory DhcpOptions.fromMap(Map<String, dynamic> map) {
     return DhcpOptions(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
     );
   }
 }

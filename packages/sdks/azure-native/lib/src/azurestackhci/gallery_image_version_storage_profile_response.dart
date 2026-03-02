@@ -22,7 +22,7 @@ class GalleryImageVersionStorageProfileResponse {
 
   factory GalleryImageVersionStorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionStorageProfileResponse(
-      osDiskImage: map['osDiskImage'] == null ? null : (GalleryOSDiskImageResponse.fromMap((map['osDiskImage'] as Map).cast<String, dynamic>())).input(),
+      osDiskImage: map['osDiskImage'] == null ? null : (GalleryOSDiskImageResponse.fromMap((map['osDiskImage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -49,11 +49,11 @@ class BrandState {
 
   factory BrandState.fromMap(Map<String, dynamic> map) {
     return BrandState(
-      applicationTitle: map['applicationTitle'] == null ? null : (map['applicationTitle'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgInternalOnly: map['orgInternalOnly'] == null ? null : (map['orgInternalOnly'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      supportEmail: map['supportEmail'] == null ? null : (map['supportEmail'] as String).input(),
+      applicationTitle: map['applicationTitle'] == null ? null : (map['applicationTitle']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgInternalOnly: map['orgInternalOnly'] == null ? null : (map['orgInternalOnly']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      supportEmail: map['supportEmail'] == null ? null : (map['supportEmail']! as String).input(),
     );
   }
 }

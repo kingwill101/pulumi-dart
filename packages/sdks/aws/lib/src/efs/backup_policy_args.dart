@@ -35,9 +35,9 @@ class BackupPolicyArgs {
 
   factory BackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BackupPolicyArgs(
-      backupPolicy: (BackupPolicyBackupPolicy.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
+      backupPolicy: (BackupPolicyBackupPolicy.fromMap((map['backupPolicy']! as Map).cast<String, dynamic>())).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

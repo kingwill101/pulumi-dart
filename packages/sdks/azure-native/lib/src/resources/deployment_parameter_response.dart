@@ -32,9 +32,9 @@ class DeploymentParameterResponse {
 
   factory DeploymentParameterResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentParameterResponse(
-      reference: map['reference'] == null ? null : (KeyVaultParameterReferenceResponse.fromMap((map['reference'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      reference: map['reference'] == null ? null : (KeyVaultParameterReferenceResponse.fromMap((map['reference']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

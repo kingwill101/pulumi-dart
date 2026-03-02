@@ -40,9 +40,9 @@ class AttachmentArgs {
   factory AttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AttachmentArgs(
       autoscalingGroupName: (map['autoscalingGroupName'] as String).input(),
-      elb: map['elb'] == null ? null : (map['elb'] as String).input(),
-      lbTargetGroupArn: map['lbTargetGroupArn'] == null ? null : (map['lbTargetGroupArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      elb: map['elb'] == null ? null : ((map['elb'] as String).input()).input(),
+      lbTargetGroupArn: map['lbTargetGroupArn'] == null ? null : ((map['lbTargetGroupArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

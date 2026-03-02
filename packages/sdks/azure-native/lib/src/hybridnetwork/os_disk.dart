@@ -37,10 +37,10 @@ class OsDisk {
 
   factory OsDisk.fromMap(Map<String, dynamic> map) {
     return OsDisk(
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      vhd: map['vhd'] == null ? null : (VirtualHardDisk.fromMap((map['vhd'] as Map).cast<String, dynamic>())).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      vhd: map['vhd'] == null ? null : (VirtualHardDisk.fromMap((map['vhd']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

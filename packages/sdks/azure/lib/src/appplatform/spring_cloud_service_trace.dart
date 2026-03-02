@@ -25,8 +25,8 @@ class SpringCloudServiceTrace {
 
   factory SpringCloudServiceTrace.fromMap(Map<String, dynamic> map) {
     return SpringCloudServiceTrace(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate'] as double).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate']! as double).input(),
     );
   }
 }

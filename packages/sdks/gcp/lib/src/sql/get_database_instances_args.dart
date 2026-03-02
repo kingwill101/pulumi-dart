@@ -49,12 +49,12 @@ class GetDatabaseInstancesArgs {
 
   factory GetDatabaseInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesArgs(
-      databaseVersion: map['databaseVersion'] == null ? null : (map['databaseVersion'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      databaseVersion: map['databaseVersion'] == null ? null : (map['databaseVersion']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

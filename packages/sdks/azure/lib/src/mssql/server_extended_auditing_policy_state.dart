@@ -68,16 +68,16 @@ class ServerExtendedAuditingPolicyState {
 
   factory ServerExtendedAuditingPolicyState.fromMap(Map<String, dynamic> map) {
     return ServerExtendedAuditingPolicyState(
-      auditActionsAndGroups: map['auditActionsAndGroups'] == null ? null : ((map['auditActionsAndGroups'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      logMonitoringEnabled: map['logMonitoringEnabled'] == null ? null : (map['logMonitoringEnabled'] as bool).input(),
-      predicateExpression: map['predicateExpression'] == null ? null : (map['predicateExpression'] as String).input(),
-      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
-      storageAccountAccessKeyIsSecondary: map['storageAccountAccessKeyIsSecondary'] == null ? null : (map['storageAccountAccessKeyIsSecondary'] as bool).input(),
-      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : (map['storageAccountSubscriptionId'] as String).input(),
-      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
+      auditActionsAndGroups: map['auditActionsAndGroups'] == null ? null : ((map['auditActionsAndGroups']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      logMonitoringEnabled: map['logMonitoringEnabled'] == null ? null : (map['logMonitoringEnabled']! as bool).input(),
+      predicateExpression: map['predicateExpression'] == null ? null : (map['predicateExpression']! as String).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays']! as int).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey']! as String).input(),
+      storageAccountAccessKeyIsSecondary: map['storageAccountAccessKeyIsSecondary'] == null ? null : (map['storageAccountAccessKeyIsSecondary']! as bool).input(),
+      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : (map['storageAccountSubscriptionId']! as String).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint']! as String).input(),
     );
   }
 }

@@ -110,20 +110,20 @@ class DiskReplicaGroupState {
 
   factory DiskReplicaGroupState.fromMap(Map<String, dynamic> map) {
     return DiskReplicaGroupState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationRegionId: map['destinationRegionId'] == null ? null : (map['destinationRegionId'] as String).input(),
-      destinationZoneId: map['destinationZoneId'] == null ? null : (map['destinationZoneId'] as String).input(),
-      diskReplicaGroupName: map['diskReplicaGroupName'] == null ? null : (map['diskReplicaGroupName'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      oneShot: map['oneShot'] == null ? null : (map['oneShot'] as bool).input(),
-      pairIds: map['pairIds'] == null ? null : ((map['pairIds'] as List).cast<String>()).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      reverseReplicate: map['reverseReplicate'] == null ? null : (map['reverseReplicate'] as bool).input(),
-      rpo: map['rpo'] == null ? null : (map['rpo'] as int).input(),
-      sourceRegionId: map['sourceRegionId'] == null ? null : (map['sourceRegionId'] as String).input(),
-      sourceZoneId: map['sourceZoneId'] == null ? null : (map['sourceZoneId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationRegionId: map['destinationRegionId'] == null ? null : (map['destinationRegionId']! as String).input(),
+      destinationZoneId: map['destinationZoneId'] == null ? null : (map['destinationZoneId']! as String).input(),
+      diskReplicaGroupName: map['diskReplicaGroupName'] == null ? null : (map['diskReplicaGroupName']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      oneShot: map['oneShot'] == null ? null : (map['oneShot']! as bool).input(),
+      pairIds: map['pairIds'] == null ? null : ((map['pairIds']! as List).cast<String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      reverseReplicate: map['reverseReplicate'] == null ? null : (map['reverseReplicate']! as bool).input(),
+      rpo: map['rpo'] == null ? null : (map['rpo']! as int).input(),
+      sourceRegionId: map['sourceRegionId'] == null ? null : (map['sourceRegionId']! as String).input(),
+      sourceZoneId: map['sourceZoneId'] == null ? null : (map['sourceZoneId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

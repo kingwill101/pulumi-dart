@@ -35,7 +35,7 @@ class GetStaticIpsResult {
     return GetStaticIpsResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       staticIps: (map['staticIps'] as List).cast<String>(),
     );
   }

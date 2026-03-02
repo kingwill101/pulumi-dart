@@ -29,8 +29,8 @@ class AppVersionSnapshotExampleMessage {
 
   factory AppVersionSnapshotExampleMessage.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotExampleMessage(
-      chunks: map['chunks'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunk>(map['chunks'], (value) => AppVersionSnapshotExampleMessageChunk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      chunks: map['chunks'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExampleMessageChunk>(map['chunks']!, (value) => AppVersionSnapshotExampleMessageChunk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

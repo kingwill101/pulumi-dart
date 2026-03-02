@@ -32,7 +32,7 @@ class GetInboundSamlConfigArgs {
   factory GetInboundSamlConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetInboundSamlConfigArgs(
       inboundSamlConfigId: (map['inboundSamlConfigId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

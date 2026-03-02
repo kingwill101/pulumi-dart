@@ -86,18 +86,18 @@ class BlockchainNodesState {
 
   factory BlockchainNodesState.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesState(
-      blockchainNodeId: map['blockchainNodeId'] == null ? null : (map['blockchainNodeId'] as String).input(),
-      blockchainType: map['blockchainType'] == null ? null : (map['blockchainType'] as String).input(),
-      connectionInfos: map['connectionInfos'] == null ? null : (pulumi.Input.decodeList<BlockchainNodesConnectionInfo>(map['connectionInfos'], (value) => BlockchainNodesConnectionInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      ethereumDetails: map['ethereumDetails'] == null ? null : (BlockchainNodesEthereumDetails.fromMap((map['ethereumDetails'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      blockchainNodeId: map['blockchainNodeId'] == null ? null : (map['blockchainNodeId']! as String).input(),
+      blockchainType: map['blockchainType'] == null ? null : (map['blockchainType']! as String).input(),
+      connectionInfos: map['connectionInfos'] == null ? null : (pulumi.Input.decodeList<BlockchainNodesConnectionInfo>(map['connectionInfos']!, (value) => BlockchainNodesConnectionInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      ethereumDetails: map['ethereumDetails'] == null ? null : (BlockchainNodesEthereumDetails.fromMap((map['ethereumDetails']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

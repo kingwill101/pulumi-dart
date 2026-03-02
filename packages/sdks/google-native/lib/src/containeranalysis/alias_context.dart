@@ -27,8 +27,8 @@ class AliasContext {
 
   factory AliasContext.fromMap(Map<String, dynamic> map) {
     return AliasContext(
-      kind: map['kind'] == null ? null : (AliasContextKind.fromValue(map['kind'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      kind: map['kind'] == null ? null : (AliasContextKind.fromValue(map['kind']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

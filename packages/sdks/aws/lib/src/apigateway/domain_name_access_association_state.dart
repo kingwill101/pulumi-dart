@@ -51,13 +51,13 @@ class DomainNameAccessAssociationState {
 
   factory DomainNameAccessAssociationState.fromMap(Map<String, dynamic> map) {
     return DomainNameAccessAssociationState(
-      accessAssociationSource: map['accessAssociationSource'] == null ? null : (map['accessAssociationSource'] as String).input(),
-      accessAssociationSourceType: map['accessAssociationSourceType'] == null ? null : (map['accessAssociationSourceType'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      domainNameArn: map['domainNameArn'] == null ? null : (map['domainNameArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      accessAssociationSource: map['accessAssociationSource'] == null ? null : ((map['accessAssociationSource'] as String).input()).input(),
+      accessAssociationSourceType: map['accessAssociationSourceType'] == null ? null : ((map['accessAssociationSourceType'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      domainNameArn: map['domainNameArn'] == null ? null : ((map['domainNameArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

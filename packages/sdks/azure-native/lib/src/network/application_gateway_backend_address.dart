@@ -26,8 +26,8 @@ class ApplicationGatewayBackendAddress {
 
   factory ApplicationGatewayBackendAddress.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendAddress(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
     );
   }
 }

@@ -48,10 +48,10 @@ class BucketMetadataConfigurationArgs {
   factory BucketMetadataConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationArgs(
       bucket: (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      metadataConfiguration: (BucketMetadataConfigurationMetadataConfiguration.fromMap((map['metadataConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (BucketMetadataConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      metadataConfiguration: (BucketMetadataConfigurationMetadataConfiguration.fromMap((map['metadataConfiguration']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((BucketMetadataConfigurationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

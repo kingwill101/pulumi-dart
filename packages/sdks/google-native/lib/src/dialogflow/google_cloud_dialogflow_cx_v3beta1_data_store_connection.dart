@@ -27,8 +27,8 @@ class GoogleCloudDialogflowCxV3beta1DataStoreConnection {
 
   factory GoogleCloudDialogflowCxV3beta1DataStoreConnection.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1DataStoreConnection(
-      dataStore: map['dataStore'] == null ? null : (map['dataStore'] as String).input(),
-      dataStoreType: map['dataStoreType'] == null ? null : (GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType.fromValue(map['dataStoreType'] as String)).input(),
+      dataStore: map['dataStore'] == null ? null : (map['dataStore']! as String).input(),
+      dataStoreType: map['dataStoreType'] == null ? null : (GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType.fromValue(map['dataStoreType']! as String)).input(),
     );
   }
 }

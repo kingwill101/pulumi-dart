@@ -38,9 +38,9 @@ class ExporterResponse {
 
   factory ExporterResponse.fromMap(Map<String, dynamic> map) {
     return ExporterResponse(
-      azureMonitorWorkspaceLogs: map['azureMonitorWorkspaceLogs'] == null ? null : (AzureMonitorWorkspaceLogsExporterResponse.fromMap((map['azureMonitorWorkspaceLogs'] as Map).cast<String, dynamic>())).input(),
+      azureMonitorWorkspaceLogs: map['azureMonitorWorkspaceLogs'] == null ? null : (AzureMonitorWorkspaceLogsExporterResponse.fromMap((map['azureMonitorWorkspaceLogs']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      tcp: map['tcp'] == null ? null : (TcpExporterResponse.fromMap((map['tcp'] as Map).cast<String, dynamic>())).input(),
+      tcp: map['tcp'] == null ? null : (TcpExporterResponse.fromMap((map['tcp']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

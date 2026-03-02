@@ -31,9 +31,9 @@ class InstanceIpWhitelist {
 
   factory InstanceIpWhitelist.fromMap(Map<String, dynamic> map) {
     return InstanceIpWhitelist(
-      ipGroupAttribute: map['ipGroupAttribute'] == null ? null : (map['ipGroupAttribute'] as String).input(),
-      ipGroupName: map['ipGroupName'] == null ? null : (map['ipGroupName'] as String).input(),
-      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList'] as String).input(),
+      ipGroupAttribute: map['ipGroupAttribute'] == null ? null : (map['ipGroupAttribute']! as String).input(),
+      ipGroupName: map['ipGroupName'] == null ? null : (map['ipGroupName']! as String).input(),
+      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList']! as String).input(),
     );
   }
 }

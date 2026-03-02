@@ -28,8 +28,8 @@ class PodTemplateSpecPatch {
 
   factory PodTemplateSpecPatch.fromMap(Map<String, dynamic> map) {
     return PodTemplateSpecPatch(
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (PodSpecPatch.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (PodSpecPatch.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

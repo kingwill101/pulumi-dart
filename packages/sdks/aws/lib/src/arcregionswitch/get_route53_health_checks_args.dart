@@ -30,7 +30,7 @@ class GetRoute53HealthChecksArgs {
   factory GetRoute53HealthChecksArgs.fromMap(Map<String, dynamic> map) {
     return GetRoute53HealthChecksArgs(
       planArn: (map['planArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

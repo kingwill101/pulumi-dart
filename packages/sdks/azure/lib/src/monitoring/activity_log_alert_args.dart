@@ -66,15 +66,15 @@ class ActivityLogAlertArgs {
 
   factory ActivityLogAlertArgs.fromMap(Map<String, dynamic> map) {
     return ActivityLogAlertArgs(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<ActivityLogAlertAction>(map['actions'], (value) => ActivityLogAlertAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<ActivityLogAlertAction>(map['actions']!, (value) => ActivityLogAlertAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       criteria: (ActivityLogAlertCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scopes: ((map['scopes'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

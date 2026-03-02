@@ -25,8 +25,8 @@ class AppSpecStaticSiteGit {
 
   factory AppSpecStaticSiteGit.fromMap(Map<String, dynamic> map) {
     return AppSpecStaticSiteGit(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      repoCloneUrl: map['repoCloneUrl'] == null ? null : (map['repoCloneUrl'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      repoCloneUrl: map['repoCloneUrl'] == null ? null : (map['repoCloneUrl']! as String).input(),
     );
   }
 }

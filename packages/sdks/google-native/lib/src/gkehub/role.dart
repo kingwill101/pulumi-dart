@@ -22,7 +22,7 @@ class Role {
 
   factory Role.fromMap(Map<String, dynamic> map) {
     return Role(
-      predefinedRole: map['predefinedRole'] == null ? null : (RolePredefinedRole.fromValue(map['predefinedRole'] as String)).input(),
+      predefinedRole: map['predefinedRole'] == null ? null : (RolePredefinedRole.fromValue(map['predefinedRole']! as String)).input(),
     );
   }
 }

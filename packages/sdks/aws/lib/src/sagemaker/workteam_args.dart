@@ -63,12 +63,12 @@ class WorkteamArgs {
   factory WorkteamArgs.fromMap(Map<String, dynamic> map) {
     return WorkteamArgs(
       description: (map['description'] as String).input(),
-      memberDefinitions: (pulumi.Input.decodeList<WorkteamMemberDefinition>(map['memberDefinitions'], (value) => WorkteamMemberDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notificationConfiguration: map['notificationConfiguration'] == null ? null : (WorkteamNotificationConfiguration.fromMap((map['notificationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workerAccessConfiguration: map['workerAccessConfiguration'] == null ? null : (WorkteamWorkerAccessConfiguration.fromMap((map['workerAccessConfiguration'] as Map).cast<String, dynamic>())).input(),
-      workforceName: map['workforceName'] == null ? null : (map['workforceName'] as String).input(),
+      memberDefinitions: (pulumi.Input.decodeList<WorkteamMemberDefinition>(map['memberDefinitions']!, (value) => WorkteamMemberDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notificationConfiguration: map['notificationConfiguration'] == null ? null : ((WorkteamNotificationConfiguration.fromMap((map['notificationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      workerAccessConfiguration: map['workerAccessConfiguration'] == null ? null : ((WorkteamWorkerAccessConfiguration.fromMap((map['workerAccessConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      workforceName: map['workforceName'] == null ? null : ((map['workforceName'] as String).input()).input(),
       workteamName: (map['workteamName'] as String).input(),
     );
   }

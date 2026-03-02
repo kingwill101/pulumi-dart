@@ -69,16 +69,16 @@ class ProducerImageShareGroupState {
 
   factory ProducerImageShareGroupState.fromMap(Map<String, dynamic> map) {
     return ProducerImageShareGroupState(
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
-      images: map['images'] == null ? null : (pulumi.Input.decodeList<ProducerImageShareGroupImage>(map['images'], (value) => ProducerImageShareGroupImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      imagesCount: map['imagesCount'] == null ? null : (map['imagesCount'] as int).input(),
-      isSuspended: map['isSuspended'] == null ? null : (map['isSuspended'] as bool).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      membersCount: map['membersCount'] == null ? null : (map['membersCount'] as int).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
+      images: map['images'] == null ? null : (pulumi.Input.decodeList<ProducerImageShareGroupImage>(map['images']!, (value) => ProducerImageShareGroupImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imagesCount: map['imagesCount'] == null ? null : (map['imagesCount']! as int).input(),
+      isSuspended: map['isSuspended'] == null ? null : (map['isSuspended']! as bool).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      membersCount: map['membersCount'] == null ? null : (map['membersCount']! as int).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

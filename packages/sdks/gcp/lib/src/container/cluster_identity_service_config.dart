@@ -20,7 +20,7 @@ class ClusterIdentityServiceConfig {
 
   factory ClusterIdentityServiceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterIdentityServiceConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

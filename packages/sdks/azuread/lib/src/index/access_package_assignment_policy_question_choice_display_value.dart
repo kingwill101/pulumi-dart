@@ -27,7 +27,7 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
   factory AccessPackageAssignmentPolicyQuestionChoiceDisplayValue.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyQuestionChoiceDisplayValue(
       defaultText: (map['defaultText'] as String).input(),
-      localizedTexts: map['localizedTexts'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText>(map['localizedTexts'], (value) => AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localizedTexts: map['localizedTexts'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText>(map['localizedTexts']!, (value) => AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

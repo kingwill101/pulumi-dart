@@ -26,7 +26,7 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverride {
 
   factory WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverride.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverride(
-      actionToUse: (WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse.fromMap((map['actionToUse'] as Map).cast<String, dynamic>())).input(),
+      actionToUse: (WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse.fromMap((map['actionToUse']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

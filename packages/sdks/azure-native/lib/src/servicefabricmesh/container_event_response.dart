@@ -46,12 +46,12 @@ class ContainerEventResponse {
 
   factory ContainerEventResponse.fromMap(Map<String, dynamic> map) {
     return ContainerEventResponse(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      firstTimestamp: map['firstTimestamp'] == null ? null : (map['firstTimestamp'] as String).input(),
-      lastTimestamp: map['lastTimestamp'] == null ? null : (map['lastTimestamp'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      firstTimestamp: map['firstTimestamp'] == null ? null : (map['firstTimestamp']! as String).input(),
+      lastTimestamp: map['lastTimestamp'] == null ? null : (map['lastTimestamp']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

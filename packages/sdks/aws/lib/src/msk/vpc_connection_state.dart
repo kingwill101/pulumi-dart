@@ -61,15 +61,15 @@ class VpcConnectionState {
 
   factory VpcConnectionState.fromMap(Map<String, dynamic> map) {
     return VpcConnectionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      authentication: map['authentication'] == null ? null : (map['authentication'] as String).input(),
-      clientSubnets: map['clientSubnets'] == null ? null : ((map['clientSubnets'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      targetClusterArn: map['targetClusterArn'] == null ? null : (map['targetClusterArn'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      authentication: map['authentication'] == null ? null : ((map['authentication'] as String).input()).input(),
+      clientSubnets: map['clientSubnets'] == null ? null : (((map['clientSubnets'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroups: map['securityGroups'] == null ? null : (((map['securityGroups'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      targetClusterArn: map['targetClusterArn'] == null ? null : ((map['targetClusterArn'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

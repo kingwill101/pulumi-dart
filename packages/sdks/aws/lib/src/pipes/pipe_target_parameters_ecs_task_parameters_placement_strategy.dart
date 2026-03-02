@@ -25,8 +25,8 @@ class PipeTargetParametersEcsTaskParametersPlacementStrategy {
 
   factory PipeTargetParametersEcsTaskParametersPlacementStrategy.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersEcsTaskParametersPlacementStrategy(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      field: map['field'] == null ? null : ((map['field'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

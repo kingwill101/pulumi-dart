@@ -27,8 +27,8 @@ class AzureActiveDirectoryLogin {
 
   factory AzureActiveDirectoryLogin.fromMap(Map<String, dynamic> map) {
     return AzureActiveDirectoryLogin(
-      disableWWWAuthenticate: map['disableWWWAuthenticate'] == null ? null : (map['disableWWWAuthenticate'] as bool).input(),
-      loginParameters: map['loginParameters'] == null ? null : ((map['loginParameters'] as List).cast<String>()).input(),
+      disableWWWAuthenticate: map['disableWWWAuthenticate'] == null ? null : (map['disableWWWAuthenticate']! as bool).input(),
+      loginParameters: map['loginParameters'] == null ? null : ((map['loginParameters']! as List).cast<String>()).input(),
     );
   }
 }

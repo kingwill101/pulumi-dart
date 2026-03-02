@@ -26,7 +26,7 @@ class DeployParameters {
 
   factory DeployParameters.fromMap(Map<String, dynamic> map) {
     return DeployParameters(
-      matchTargetLabels: map['matchTargetLabels'] == null ? null : ((map['matchTargetLabels'] as Map).cast<String, String>()).input(),
+      matchTargetLabels: map['matchTargetLabels'] == null ? null : ((map['matchTargetLabels']! as Map).cast<String, String>()).input(),
       values: ((map['values'] as Map).cast<String, String>()).input(),
     );
   }

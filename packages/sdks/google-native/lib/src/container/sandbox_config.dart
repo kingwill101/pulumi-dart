@@ -22,7 +22,7 @@ class SandboxConfig {
 
   factory SandboxConfig.fromMap(Map<String, dynamic> map) {
     return SandboxConfig(
-      type: map['type'] == null ? null : (SandboxConfigType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (SandboxConfigType.fromValue(map['type']! as String)).input(),
     );
   }
 }

@@ -57,10 +57,10 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteResult {
     return GetStaticSiteUserProvidedFunctionAppForStaticSiteResult(
       azureApiVersion: map['azureApiVersion'] as String,
       createdOn: map['createdOn'] as String,
-      functionAppRegion: map['functionAppRegion'] == null ? null : map['functionAppRegion'] as String,
-      functionAppResourceId: map['functionAppResourceId'] == null ? null : map['functionAppResourceId'] as String,
+      functionAppRegion: map['functionAppRegion'] == null ? null : map['functionAppRegion']! as String,
+      functionAppResourceId: map['functionAppResourceId'] == null ? null : map['functionAppResourceId']! as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       type: map['type'] as String,
     );

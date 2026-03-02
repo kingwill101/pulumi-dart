@@ -22,7 +22,7 @@ class ListApplicationTokensResult {
 
   factory ListApplicationTokensResult.fromMap(Map<String, dynamic> map) {
     return ListApplicationTokensResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ManagedIdentityTokenResponse>(map['value'], (value) => ManagedIdentityTokenResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ManagedIdentityTokenResponse>(map['value']!, (value) => ManagedIdentityTokenResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

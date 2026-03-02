@@ -80,19 +80,19 @@ class UserGlobalGrants {
 
   factory UserGlobalGrants.fromMap(Map<String, dynamic> map) {
     return UserGlobalGrants(
-      accountAccess: map['accountAccess'] == null ? null : (map['accountAccess'] as String).input(),
-      addDatabases: map['addDatabases'] == null ? null : (map['addDatabases'] as bool).input(),
-      addDomains: map['addDomains'] == null ? null : (map['addDomains'] as bool).input(),
-      addFirewalls: map['addFirewalls'] == null ? null : (map['addFirewalls'] as bool).input(),
-      addImages: map['addImages'] == null ? null : (map['addImages'] as bool).input(),
-      addLinodes: map['addLinodes'] == null ? null : (map['addLinodes'] as bool).input(),
-      addLongview: map['addLongview'] == null ? null : (map['addLongview'] as bool).input(),
-      addNodebalancers: map['addNodebalancers'] == null ? null : (map['addNodebalancers'] as bool).input(),
-      addStackscripts: map['addStackscripts'] == null ? null : (map['addStackscripts'] as bool).input(),
-      addVolumes: map['addVolumes'] == null ? null : (map['addVolumes'] as bool).input(),
-      addVpcs: map['addVpcs'] == null ? null : (map['addVpcs'] as bool).input(),
-      cancelAccount: map['cancelAccount'] == null ? null : (map['cancelAccount'] as bool).input(),
-      longviewSubscription: map['longviewSubscription'] == null ? null : (map['longviewSubscription'] as bool).input(),
+      accountAccess: map['accountAccess'] == null ? null : (map['accountAccess']! as String).input(),
+      addDatabases: map['addDatabases'] == null ? null : (map['addDatabases']! as bool).input(),
+      addDomains: map['addDomains'] == null ? null : (map['addDomains']! as bool).input(),
+      addFirewalls: map['addFirewalls'] == null ? null : (map['addFirewalls']! as bool).input(),
+      addImages: map['addImages'] == null ? null : (map['addImages']! as bool).input(),
+      addLinodes: map['addLinodes'] == null ? null : (map['addLinodes']! as bool).input(),
+      addLongview: map['addLongview'] == null ? null : (map['addLongview']! as bool).input(),
+      addNodebalancers: map['addNodebalancers'] == null ? null : (map['addNodebalancers']! as bool).input(),
+      addStackscripts: map['addStackscripts'] == null ? null : (map['addStackscripts']! as bool).input(),
+      addVolumes: map['addVolumes'] == null ? null : (map['addVolumes']! as bool).input(),
+      addVpcs: map['addVpcs'] == null ? null : (map['addVpcs']! as bool).input(),
+      cancelAccount: map['cancelAccount'] == null ? null : (map['cancelAccount']! as bool).input(),
+      longviewSubscription: map['longviewSubscription'] == null ? null : (map['longviewSubscription']! as bool).input(),
     );
   }
 }

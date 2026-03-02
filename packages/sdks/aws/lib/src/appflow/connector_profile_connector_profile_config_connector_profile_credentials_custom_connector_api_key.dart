@@ -24,7 +24,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorApiKey.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorApiKey(
       apiKey: (map['apiKey'] as String).input(),
-      apiSecretKey: map['apiSecretKey'] == null ? null : (map['apiSecretKey'] as String).input(),
+      apiSecretKey: map['apiSecretKey'] == null ? null : ((map['apiSecretKey'] as String).input()).input(),
     );
   }
 }

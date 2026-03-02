@@ -35,8 +35,8 @@ class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig {
 
   factory AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig(
-      dnsPeeringConfigs: map['dnsPeeringConfigs'] == null ? null : (pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig>(map['dnsPeeringConfigs'], (value) => AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkAttachment: map['networkAttachment'] == null ? null : (map['networkAttachment'] as String).input(),
+      dnsPeeringConfigs: map['dnsPeeringConfigs'] == null ? null : (pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig>(map['dnsPeeringConfigs']!, (value) => AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkAttachment: map['networkAttachment'] == null ? null : (map['networkAttachment']! as String).input(),
     );
   }
 }

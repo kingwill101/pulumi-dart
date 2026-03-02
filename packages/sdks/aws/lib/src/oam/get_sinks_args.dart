@@ -24,7 +24,7 @@ class GetSinksArgs {
 
   factory GetSinksArgs.fromMap(Map<String, dynamic> map) {
     return GetSinksArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

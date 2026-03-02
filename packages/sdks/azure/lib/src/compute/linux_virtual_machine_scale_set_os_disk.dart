@@ -71,13 +71,13 @@ class LinuxVirtualMachineScaleSetOsDisk {
   factory LinuxVirtualMachineScaleSetOsDisk.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineScaleSetOsDisk(
       caching: (map['caching'] as String).input(),
-      diffDiskSettings: map['diffDiskSettings'] == null ? null : (LinuxVirtualMachineScaleSetOsDiskDiffDiskSettings.fromMap((map['diffDiskSettings'] as Map).cast<String, dynamic>())).input(),
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      secureVmDiskEncryptionSetId: map['secureVmDiskEncryptionSetId'] == null ? null : (map['secureVmDiskEncryptionSetId'] as String).input(),
-      securityEncryptionType: map['securityEncryptionType'] == null ? null : (map['securityEncryptionType'] as String).input(),
+      diffDiskSettings: map['diffDiskSettings'] == null ? null : (LinuxVirtualMachineScaleSetOsDiskDiffDiskSettings.fromMap((map['diffDiskSettings']! as Map).cast<String, dynamic>())).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      secureVmDiskEncryptionSetId: map['secureVmDiskEncryptionSetId'] == null ? null : (map['secureVmDiskEncryptionSetId']! as String).input(),
+      securityEncryptionType: map['securityEncryptionType'] == null ? null : (map['securityEncryptionType']! as String).input(),
       storageAccountType: (map['storageAccountType'] as String).input(),
-      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled'] as bool).input(),
+      writeAcceleratorEnabled: map['writeAcceleratorEnabled'] == null ? null : (map['writeAcceleratorEnabled']! as bool).input(),
     );
   }
 }

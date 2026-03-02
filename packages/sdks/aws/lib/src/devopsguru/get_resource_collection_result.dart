@@ -41,10 +41,10 @@ class GetResourceCollectionResult {
 
   factory GetResourceCollectionResult.fromMap(Map<String, dynamic> map) {
     return GetResourceCollectionResult(
-      cloudformations: pulumi.Input.decodeList<GetResourceCollectionCloudformation>(map['cloudformations'], (value) => GetResourceCollectionCloudformation.fromMap((value as Map).cast<String, dynamic>())),
+      cloudformations: pulumi.Input.decodeList<GetResourceCollectionCloudformation>(map['cloudformations']!, (value) => GetResourceCollectionCloudformation.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
-      tags: pulumi.Input.decodeList<GetResourceCollectionTag>(map['tags'], (value) => GetResourceCollectionTag.fromMap((value as Map).cast<String, dynamic>())),
+      tags: pulumi.Input.decodeList<GetResourceCollectionTag>(map['tags']!, (value) => GetResourceCollectionTag.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

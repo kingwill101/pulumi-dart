@@ -105,22 +105,22 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDisk {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesDisk.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesDisk(
-      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete'] as bool).input(),
-      boot: map['boot'] == null ? null : (map['boot'] as bool).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : (RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey.fromMap((map['diskEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      diskInterface: map['diskInterface'] == null ? null : (map['diskInterface'] as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      guestOsFeatures: map['guestOsFeatures'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature>(map['guestOsFeatures'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      index: map['index'] == null ? null : (map['index'] as int).input(),
-      initializeParams: map['initializeParams'] == null ? null : (RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams.fromMap((map['initializeParams'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      licenses: map['licenses'] == null ? null : ((map['licenses'] as List).cast<String>()).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      savedState: map['savedState'] == null ? null : (map['savedState'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete']! as bool).input(),
+      boot: map['boot'] == null ? null : (map['boot']! as bool).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      diskEncryptionKey: map['diskEncryptionKey'] == null ? null : (RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKey.fromMap((map['diskEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      diskInterface: map['diskInterface'] == null ? null : (map['diskInterface']! as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      guestOsFeatures: map['guestOsFeatures'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature>(map['guestOsFeatures']!, (value) => RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      index: map['index'] == null ? null : (map['index']! as int).input(),
+      initializeParams: map['initializeParams'] == null ? null : (RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams.fromMap((map['initializeParams']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      licenses: map['licenses'] == null ? null : ((map['licenses']! as List).cast<String>()).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      savedState: map['savedState'] == null ? null : (map['savedState']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

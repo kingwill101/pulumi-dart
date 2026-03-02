@@ -25,8 +25,8 @@ class ContainerServicePrivateRegistryAccessEcrImagePullerRole {
 
   factory ContainerServicePrivateRegistryAccessEcrImagePullerRole.fromMap(Map<String, dynamic> map) {
     return ContainerServicePrivateRegistryAccessEcrImagePullerRole(
-      isActive: map['isActive'] == null ? null : (map['isActive'] as bool).input(),
-      principalArn: map['principalArn'] == null ? null : (map['principalArn'] as String).input(),
+      isActive: map['isActive'] == null ? null : ((map['isActive'] as bool).input()).input(),
+      principalArn: map['principalArn'] == null ? null : ((map['principalArn'] as String).input()).input(),
     );
   }
 }

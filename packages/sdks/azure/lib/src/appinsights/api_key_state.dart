@@ -43,11 +43,11 @@ class ApiKeyState {
 
   factory ApiKeyState.fromMap(Map<String, dynamic> map) {
     return ApiKeyState(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      readPermissions: map['readPermissions'] == null ? null : ((map['readPermissions'] as List).cast<String>()).input(),
-      writePermissions: map['writePermissions'] == null ? null : ((map['writePermissions'] as List).cast<String>()).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      readPermissions: map['readPermissions'] == null ? null : ((map['readPermissions']! as List).cast<String>()).input(),
+      writePermissions: map['writePermissions'] == null ? null : ((map['writePermissions']! as List).cast<String>()).input(),
     );
   }
 }

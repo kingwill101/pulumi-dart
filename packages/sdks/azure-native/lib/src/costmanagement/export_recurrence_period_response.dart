@@ -27,7 +27,7 @@ class ExportRecurrencePeriodResponse {
   factory ExportRecurrencePeriodResponse.fromMap(Map<String, dynamic> map) {
     return ExportRecurrencePeriodResponse(
       from: (map['from'] as String).input(),
-      to: map['to'] == null ? null : (map['to'] as String).input(),
+      to: map['to'] == null ? null : (map['to']! as String).input(),
     );
   }
 }

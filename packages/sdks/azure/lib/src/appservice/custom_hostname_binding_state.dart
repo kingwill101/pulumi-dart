@@ -50,12 +50,12 @@ class CustomHostnameBindingState {
 
   factory CustomHostnameBindingState.fromMap(Map<String, dynamic> map) {
     return CustomHostnameBindingState(
-      appServiceName: map['appServiceName'] == null ? null : (map['appServiceName'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sslState: map['sslState'] == null ? null : (map['sslState'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
-      virtualIp: map['virtualIp'] == null ? null : (map['virtualIp'] as String).input(),
+      appServiceName: map['appServiceName'] == null ? null : (map['appServiceName']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sslState: map['sslState'] == null ? null : (map['sslState']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      virtualIp: map['virtualIp'] == null ? null : (map['virtualIp']! as String).input(),
     );
   }
 }

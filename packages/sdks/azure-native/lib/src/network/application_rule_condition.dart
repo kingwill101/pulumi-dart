@@ -63,15 +63,15 @@ class ApplicationRuleCondition {
 
   factory ApplicationRuleCondition.fromMap(Map<String, dynamic> map) {
     return ApplicationRuleCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses'] as List).cast<String>()).input(),
-      fqdnTags: map['fqdnTags'] == null ? null : ((map['fqdnTags'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleConditionApplicationProtocol>(map['protocols'], (value) => FirewallPolicyRuleConditionApplicationProtocol.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses']! as List).cast<String>()).input(),
+      fqdnTags: map['fqdnTags'] == null ? null : ((map['fqdnTags']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocols: map['protocols'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleConditionApplicationProtocol>(map['protocols']!, (value) => FirewallPolicyRuleConditionApplicationProtocol.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ruleConditionType: (map['ruleConditionType'] as String).input(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups'] as List).cast<String>()).input(),
-      targetFqdns: map['targetFqdns'] == null ? null : ((map['targetFqdns'] as List).cast<String>()).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
+      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups']! as List).cast<String>()).input(),
+      targetFqdns: map['targetFqdns'] == null ? null : ((map['targetFqdns']! as List).cast<String>()).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class AppVersionSnapshotAppLoggingSettingBigqueryExportSetting {
 
   factory AppVersionSnapshotAppLoggingSettingBigqueryExportSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppLoggingSettingBigqueryExportSetting(
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

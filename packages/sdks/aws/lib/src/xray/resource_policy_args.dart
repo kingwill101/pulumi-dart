@@ -46,11 +46,11 @@ class ResourcePolicyArgs {
 
   factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyArgs(
-      bypassPolicyLockoutCheck: map['bypassPolicyLockoutCheck'] == null ? null : (map['bypassPolicyLockoutCheck'] as bool).input(),
+      bypassPolicyLockoutCheck: map['bypassPolicyLockoutCheck'] == null ? null : ((map['bypassPolicyLockoutCheck'] as bool).input()).input(),
       policyDocument: (map['policyDocument'] as String).input(),
       policyName: (map['policyName'] as String).input(),
-      policyRevisionId: map['policyRevisionId'] == null ? null : (map['policyRevisionId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      policyRevisionId: map['policyRevisionId'] == null ? null : ((map['policyRevisionId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

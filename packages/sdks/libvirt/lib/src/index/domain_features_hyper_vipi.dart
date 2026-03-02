@@ -20,7 +20,7 @@ class DomainFeaturesHyperVIpi {
 
   factory DomainFeaturesHyperVIpi.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesHyperVIpi(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

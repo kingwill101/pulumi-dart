@@ -46,12 +46,12 @@ class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions {
 
   factory GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptions(
-      containsLowercaseCharacter: map['containsLowercaseCharacter'] == null ? null : (map['containsLowercaseCharacter'] as bool).input(),
-      containsNonAlphanumericCharacter: map['containsNonAlphanumericCharacter'] == null ? null : (map['containsNonAlphanumericCharacter'] as bool).input(),
-      containsNumericCharacter: map['containsNumericCharacter'] == null ? null : (map['containsNumericCharacter'] as bool).input(),
-      containsUppercaseCharacter: map['containsUppercaseCharacter'] == null ? null : (map['containsUppercaseCharacter'] as bool).input(),
-      maxPasswordLength: map['maxPasswordLength'] == null ? null : (map['maxPasswordLength'] as int).input(),
-      minPasswordLength: map['minPasswordLength'] == null ? null : (map['minPasswordLength'] as int).input(),
+      containsLowercaseCharacter: map['containsLowercaseCharacter'] == null ? null : (map['containsLowercaseCharacter']! as bool).input(),
+      containsNonAlphanumericCharacter: map['containsNonAlphanumericCharacter'] == null ? null : (map['containsNonAlphanumericCharacter']! as bool).input(),
+      containsNumericCharacter: map['containsNumericCharacter'] == null ? null : (map['containsNumericCharacter']! as bool).input(),
+      containsUppercaseCharacter: map['containsUppercaseCharacter'] == null ? null : (map['containsUppercaseCharacter']! as bool).input(),
+      maxPasswordLength: map['maxPasswordLength'] == null ? null : (map['maxPasswordLength']! as int).input(),
+      minPasswordLength: map['minPasswordLength'] == null ? null : (map['minPasswordLength']! as int).input(),
     );
   }
 }

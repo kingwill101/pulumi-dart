@@ -125,7 +125,7 @@ class GetRepositoryResult {
       mavenConfigs: pulumi.Input.decodeList<GetRepositoryMavenConfig>(map['mavenConfigs'], (value) => GetRepositoryMavenConfig.fromMap((value as Map).cast<String, dynamic>())),
       mode: map['mode'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       registryUri: map['registryUri'] as String,
       remoteRepositoryConfigs: pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfig>(map['remoteRepositoryConfigs'], (value) => GetRepositoryRemoteRepositoryConfig.fromMap((value as Map).cast<String, dynamic>())),

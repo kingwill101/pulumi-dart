@@ -72,13 +72,13 @@ class SavedSearchArgs {
     return SavedSearchArgs(
       category: (map['category'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias'] as String).input(),
-      functionParameters: map['functionParameters'] == null ? null : (map['functionParameters'] as String).input(),
+      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias']! as String).input(),
+      functionParameters: map['functionParameters'] == null ? null : (map['functionParameters']! as String).input(),
       query: (map['query'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      savedSearchId: map['savedSearchId'] == null ? null : (map['savedSearchId'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as double).input(),
+      savedSearchId: map['savedSearchId'] == null ? null : (map['savedSearchId']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']! as double).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

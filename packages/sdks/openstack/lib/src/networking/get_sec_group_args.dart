@@ -56,13 +56,13 @@ class GetSecGroupArgs {
 
   factory GetSecGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSecGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secgroupId: map['secgroupId'] == null ? null : (map['secgroupId'] as String).input(),
-      stateful: map['stateful'] == null ? null : (map['stateful'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      secgroupId: map['secgroupId'] == null ? null : (map['secgroupId']! as String).input(),
+      stateful: map['stateful'] == null ? null : (map['stateful']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

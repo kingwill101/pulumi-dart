@@ -39,7 +39,7 @@ class TldLegalAgreementResponse {
       agreementKey: (map['agreementKey'] as String).input(),
       content: (map['content'] as String).input(),
       title: (map['title'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

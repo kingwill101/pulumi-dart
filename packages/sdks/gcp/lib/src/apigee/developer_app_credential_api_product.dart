@@ -26,8 +26,8 @@ class DeveloperAppCredentialApiProduct {
 
   factory DeveloperAppCredentialApiProduct.fromMap(Map<String, dynamic> map) {
     return DeveloperAppCredentialApiProduct(
-      apiproduct: map['apiproduct'] == null ? null : (map['apiproduct'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      apiproduct: map['apiproduct'] == null ? null : (map['apiproduct']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

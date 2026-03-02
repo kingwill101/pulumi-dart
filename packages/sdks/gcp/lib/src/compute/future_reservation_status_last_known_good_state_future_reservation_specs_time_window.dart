@@ -32,9 +32,9 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow 
 
   factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow.fromMap(Map<String, dynamic> map) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow(
-      duration: map['duration'] == null ? null : (FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDuration.fromMap((map['duration'] as Map).cast<String, dynamic>())).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      duration: map['duration'] == null ? null : (FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDuration.fromMap((map['duration']! as Map).cast<String, dynamic>())).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

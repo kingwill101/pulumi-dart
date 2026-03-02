@@ -22,7 +22,7 @@ class DataSamplingConfig {
 
   factory DataSamplingConfig.fromMap(Map<String, dynamic> map) {
     return DataSamplingConfig(
-      behaviors: map['behaviors'] == null ? null : (pulumi.Input.decodeList<DataSamplingConfigBehaviorsItem>(map['behaviors'], (value) => DataSamplingConfigBehaviorsItem.fromValue(value as String))).input(),
+      behaviors: map['behaviors'] == null ? null : (pulumi.Input.decodeList<DataSamplingConfigBehaviorsItem>(map['behaviors']!, (value) => DataSamplingConfigBehaviorsItem.fromValue(value as String))).input(),
     );
   }
 }

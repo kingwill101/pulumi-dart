@@ -41,8 +41,8 @@ class CacheNodeInstallPropertiesResponse {
 
   factory CacheNodeInstallPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CacheNodeInstallPropertiesResponse(
-      cacheNodeId: map['cacheNodeId'] == null ? null : (map['cacheNodeId'] as String).input(),
-      customerId: map['customerId'] == null ? null : (map['customerId'] as String).input(),
+      cacheNodeId: map['cacheNodeId'] == null ? null : (map['cacheNodeId']! as String).input(),
+      customerId: map['customerId'] == null ? null : (map['customerId']! as String).input(),
       primaryAccountKey: (map['primaryAccountKey'] as String).input(),
       registrationKey: (map['registrationKey'] as String).input(),
       secondaryAccountKey: (map['secondaryAccountKey'] as String).input(),

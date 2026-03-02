@@ -49,12 +49,12 @@ class AdministratorsMicrosoftEntraArgs {
 
   factory AdministratorsMicrosoftEntraArgs.fromMap(Map<String, dynamic> map) {
     return AdministratorsMicrosoftEntraArgs(
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      principalName: map['principalName'] == null ? null : (map['principalName'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      principalName: map['principalName'] == null ? null : (map['principalName']! as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

@@ -61,15 +61,15 @@ class EnterpriseUserState {
 
   factory EnterpriseUserState.fromMap(Map<String, dynamic> map) {
     return EnterpriseUserState(
-      maxExecuteCount: map['maxExecuteCount'] == null ? null : (map['maxExecuteCount'] as int).input(),
-      maxResultCount: map['maxResultCount'] == null ? null : (map['maxResultCount'] as int).input(),
-      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
-      nickName: map['nickName'] == null ? null : (map['nickName'] as String).input(),
-      roleNames: map['roleNames'] == null ? null : ((map['roleNames'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tid: map['tid'] == null ? null : (map['tid'] as int).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      maxExecuteCount: map['maxExecuteCount'] == null ? null : (map['maxExecuteCount']! as int).input(),
+      maxResultCount: map['maxResultCount'] == null ? null : (map['maxResultCount']! as int).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile']! as String).input(),
+      nickName: map['nickName'] == null ? null : (map['nickName']! as String).input(),
+      roleNames: map['roleNames'] == null ? null : ((map['roleNames']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tid: map['tid'] == null ? null : (map['tid']! as int).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

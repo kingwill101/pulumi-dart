@@ -25,8 +25,8 @@ class SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory {
 
   factory SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory(
-      availableVmSkus: map['availableVmSkus'] == null ? null : ((map['availableVmSkus'] as List).cast<String>()).input(),
-      virtualMachineFamily: map['virtualMachineFamily'] == null ? null : (map['virtualMachineFamily'] as String).input(),
+      availableVmSkus: map['availableVmSkus'] == null ? null : ((map['availableVmSkus']! as List).cast<String>()).input(),
+      virtualMachineFamily: map['virtualMachineFamily'] == null ? null : (map['virtualMachineFamily']! as String).input(),
     );
   }
 }

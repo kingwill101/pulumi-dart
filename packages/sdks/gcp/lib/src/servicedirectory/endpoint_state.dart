@@ -57,13 +57,13 @@ class EndpointState {
 
   factory EndpointState.fromMap(Map<String, dynamic> map) {
     return EndpointState(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

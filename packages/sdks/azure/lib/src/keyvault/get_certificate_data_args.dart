@@ -38,7 +38,7 @@ class GetCertificateDataArgs {
     return GetCertificateDataArgs(
       keyVaultId: (map['keyVaultId'] as String).input(),
       name: (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

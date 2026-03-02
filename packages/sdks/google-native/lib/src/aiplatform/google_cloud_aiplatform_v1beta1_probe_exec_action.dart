@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1ProbeExecAction {
 
   factory GoogleCloudAiplatformV1beta1ProbeExecAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ProbeExecAction(
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
     );
   }
 }

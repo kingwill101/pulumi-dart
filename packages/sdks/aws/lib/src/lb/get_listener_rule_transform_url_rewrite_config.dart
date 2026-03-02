@@ -21,7 +21,7 @@ class GetListenerRuleTransformUrlRewriteConfig {
 
   factory GetListenerRuleTransformUrlRewriteConfig.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleTransformUrlRewriteConfig(
-      rewrites: map['rewrites'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleTransformUrlRewriteConfigRewrite>(map['rewrites'], (value) => GetListenerRuleTransformUrlRewriteConfigRewrite.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rewrites: map['rewrites'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleTransformUrlRewriteConfigRewrite>(map['rewrites']!, (value) => GetListenerRuleTransformUrlRewriteConfigRewrite.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

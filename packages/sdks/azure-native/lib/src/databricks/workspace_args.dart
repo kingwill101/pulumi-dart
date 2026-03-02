@@ -106,22 +106,22 @@ class WorkspaceArgs {
 
   factory WorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceArgs(
-      accessConnector: map['accessConnector'] == null ? null : (WorkspacePropertiesAccessConnector.fromMap((map['accessConnector'] as Map).cast<String, dynamic>())).input(),
-      authorizations: map['authorizations'] == null ? null : (pulumi.Input.decodeList<WorkspaceProviderAuthorization>(map['authorizations'], (value) => WorkspaceProviderAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultCatalog: map['defaultCatalog'] == null ? null : (DefaultCatalogProperties.fromMap((map['defaultCatalog'] as Map).cast<String, dynamic>())).input(),
-      defaultStorageFirewall: map['defaultStorageFirewall'] == null ? null : (map['defaultStorageFirewall'] as String).input(),
-      encryption: map['encryption'] == null ? null : (WorkspacePropertiesEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      enhancedSecurityCompliance: map['enhancedSecurityCompliance'] == null ? null : (EnhancedSecurityComplianceDefinition.fromMap((map['enhancedSecurityCompliance'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      accessConnector: map['accessConnector'] == null ? null : (WorkspacePropertiesAccessConnector.fromMap((map['accessConnector']! as Map).cast<String, dynamic>())).input(),
+      authorizations: map['authorizations'] == null ? null : (pulumi.Input.decodeList<WorkspaceProviderAuthorization>(map['authorizations']!, (value) => WorkspaceProviderAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultCatalog: map['defaultCatalog'] == null ? null : (DefaultCatalogProperties.fromMap((map['defaultCatalog']! as Map).cast<String, dynamic>())).input(),
+      defaultStorageFirewall: map['defaultStorageFirewall'] == null ? null : (map['defaultStorageFirewall']! as String).input(),
+      encryption: map['encryption'] == null ? null : (WorkspacePropertiesEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      enhancedSecurityCompliance: map['enhancedSecurityCompliance'] == null ? null : (EnhancedSecurityComplianceDefinition.fromMap((map['enhancedSecurityCompliance']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managedResourceGroupId: (map['managedResourceGroupId'] as String).input(),
-      parameters: map['parameters'] == null ? null : (WorkspaceCustomParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      requiredNsgRules: map['requiredNsgRules'] == null ? null : (map['requiredNsgRules'] as String).input(),
+      parameters: map['parameters'] == null ? null : (WorkspaceCustomParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      requiredNsgRules: map['requiredNsgRules'] == null ? null : (map['requiredNsgRules']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      uiDefinitionUri: map['uiDefinitionUri'] == null ? null : (map['uiDefinitionUri'] as String).input(),
-      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName'] as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      uiDefinitionUri: map['uiDefinitionUri'] == null ? null : (map['uiDefinitionUri']! as String).input(),
+      workspaceName: map['workspaceName'] == null ? null : (map['workspaceName']! as String).input(),
     );
   }
 }

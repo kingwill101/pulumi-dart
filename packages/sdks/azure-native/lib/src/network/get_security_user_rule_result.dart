@@ -94,9 +94,9 @@ class GetSecurityUserRuleResult {
   factory GetSecurityUserRuleResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityUserRuleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationPortRanges: map['destinationPortRanges'] == null ? null : (map['destinationPortRanges'] as List).cast<String>(),
-      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<AddressPrefixItemResponse>(map['destinations'], (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : map['description']! as String,
+      destinationPortRanges: map['destinationPortRanges'] == null ? null : (map['destinationPortRanges']! as List).cast<String>(),
+      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<AddressPrefixItemResponse>(map['destinations']!, (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())),
       direction: map['direction'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
@@ -104,8 +104,8 @@ class GetSecurityUserRuleResult {
       protocol: map['protocol'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : (map['sourcePortRanges'] as List).cast<String>(),
-      sources: map['sources'] == null ? null : pulumi.Input.decodeList<AddressPrefixItemResponse>(map['sources'], (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      sourcePortRanges: map['sourcePortRanges'] == null ? null : (map['sourcePortRanges']! as List).cast<String>(),
+      sources: map['sources'] == null ? null : pulumi.Input.decodeList<AddressPrefixItemResponse>(map['sources']!, (value) => AddressPrefixItemResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

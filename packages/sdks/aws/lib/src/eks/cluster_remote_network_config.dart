@@ -27,8 +27,8 @@ class ClusterRemoteNetworkConfig {
 
   factory ClusterRemoteNetworkConfig.fromMap(Map<String, dynamic> map) {
     return ClusterRemoteNetworkConfig(
-      remoteNodeNetworks: (ClusterRemoteNetworkConfigRemoteNodeNetworks.fromMap((map['remoteNodeNetworks'] as Map).cast<String, dynamic>())).input(),
-      remotePodNetworks: map['remotePodNetworks'] == null ? null : (ClusterRemoteNetworkConfigRemotePodNetworks.fromMap((map['remotePodNetworks'] as Map).cast<String, dynamic>())).input(),
+      remoteNodeNetworks: (ClusterRemoteNetworkConfigRemoteNodeNetworks.fromMap((map['remoteNodeNetworks']! as Map).cast<String, dynamic>())).input(),
+      remotePodNetworks: map['remotePodNetworks'] == null ? null : ((ClusterRemoteNetworkConfigRemotePodNetworks.fromMap((map['remotePodNetworks']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

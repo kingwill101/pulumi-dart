@@ -21,7 +21,7 @@ class ResourceIdentity {
 
   factory ResourceIdentity.fromMap(Map<String, dynamic> map) {
     return ResourceIdentity(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

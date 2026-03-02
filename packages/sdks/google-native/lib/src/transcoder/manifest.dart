@@ -38,8 +38,8 @@ class Manifest {
 
   factory Manifest.fromMap(Map<String, dynamic> map) {
     return Manifest(
-      dash: map['dash'] == null ? null : (DashConfig.fromMap((map['dash'] as Map).cast<String, dynamic>())).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      dash: map['dash'] == null ? null : (DashConfig.fromMap((map['dash']! as Map).cast<String, dynamic>())).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
       muxStreams: ((map['muxStreams'] as List).cast<String>()).input(),
       type: (ManifestType.fromValue(map['type'] as String)).input(),
     );

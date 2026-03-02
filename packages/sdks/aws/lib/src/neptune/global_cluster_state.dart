@@ -71,17 +71,17 @@ class GlobalClusterState {
 
   factory GlobalClusterState.fromMap(Map<String, dynamic> map) {
     return GlobalClusterState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
-      globalClusterIdentifier: map['globalClusterIdentifier'] == null ? null : (map['globalClusterIdentifier'] as String).input(),
-      globalClusterMembers: map['globalClusterMembers'] == null ? null : (pulumi.Input.decodeList<GlobalClusterGlobalClusterMember>(map['globalClusterMembers'], (value) => GlobalClusterGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      globalClusterResourceId: map['globalClusterResourceId'] == null ? null : (map['globalClusterResourceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceDbClusterIdentifier: map['sourceDbClusterIdentifier'] == null ? null : (map['sourceDbClusterIdentifier'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      storageEncrypted: map['storageEncrypted'] == null ? null : (map['storageEncrypted'] as bool).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : ((map['deletionProtection'] as bool).input()).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
+      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
+      globalClusterIdentifier: map['globalClusterIdentifier'] == null ? null : ((map['globalClusterIdentifier'] as String).input()).input(),
+      globalClusterMembers: map['globalClusterMembers'] == null ? null : ((pulumi.Input.decodeList<GlobalClusterGlobalClusterMember>(map['globalClusterMembers']!, (value) => GlobalClusterGlobalClusterMember.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      globalClusterResourceId: map['globalClusterResourceId'] == null ? null : ((map['globalClusterResourceId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceDbClusterIdentifier: map['sourceDbClusterIdentifier'] == null ? null : ((map['sourceDbClusterIdentifier'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      storageEncrypted: map['storageEncrypted'] == null ? null : ((map['storageEncrypted'] as bool).input()).input(),
     );
   }
 }

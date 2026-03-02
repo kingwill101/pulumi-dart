@@ -21,7 +21,7 @@ class LoginRoutesResponse {
 
   factory LoginRoutesResponse.fromMap(Map<String, dynamic> map) {
     return LoginRoutesResponse(
-      logoutEndpoint: map['logoutEndpoint'] == null ? null : (map['logoutEndpoint'] as String).input(),
+      logoutEndpoint: map['logoutEndpoint'] == null ? null : (map['logoutEndpoint']! as String).input(),
     );
   }
 }

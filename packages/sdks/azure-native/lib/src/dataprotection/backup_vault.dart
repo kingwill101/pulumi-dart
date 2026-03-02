@@ -50,11 +50,11 @@ class BackupVault {
 
   factory BackupVault.fromMap(Map<String, dynamic> map) {
     return BackupVault(
-      featureSettings: map['featureSettings'] == null ? null : (FeatureSettings.fromMap((map['featureSettings'] as Map).cast<String, dynamic>())).input(),
-      monitoringSettings: map['monitoringSettings'] == null ? null : (MonitoringSettings.fromMap((map['monitoringSettings'] as Map).cast<String, dynamic>())).input(),
-      replicatedRegions: map['replicatedRegions'] == null ? null : ((map['replicatedRegions'] as List).cast<String>()).input(),
-      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests'] as List).cast<String>()).input(),
-      securitySettings: map['securitySettings'] == null ? null : (SecuritySettings.fromMap((map['securitySettings'] as Map).cast<String, dynamic>())).input(),
+      featureSettings: map['featureSettings'] == null ? null : (FeatureSettings.fromMap((map['featureSettings']! as Map).cast<String, dynamic>())).input(),
+      monitoringSettings: map['monitoringSettings'] == null ? null : (MonitoringSettings.fromMap((map['monitoringSettings']! as Map).cast<String, dynamic>())).input(),
+      replicatedRegions: map['replicatedRegions'] == null ? null : ((map['replicatedRegions']! as List).cast<String>()).input(),
+      resourceGuardOperationRequests: map['resourceGuardOperationRequests'] == null ? null : ((map['resourceGuardOperationRequests']! as List).cast<String>()).input(),
+      securitySettings: map['securitySettings'] == null ? null : (SecuritySettings.fromMap((map['securitySettings']! as Map).cast<String, dynamic>())).input(),
       storageSettings: (pulumi.Input.decodeList<StorageSetting>(map['storageSettings'], (value) => StorageSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

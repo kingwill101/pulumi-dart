@@ -37,10 +37,10 @@ class InstancePrivateConfig {
 
   factory InstancePrivateConfig.fromMap(Map<String, dynamic> map) {
     return InstancePrivateConfig(
-      caPool: map['caPool'] == null ? null : (map['caPool'] as String).input(),
-      httpServiceAttachment: map['httpServiceAttachment'] == null ? null : (map['httpServiceAttachment'] as String).input(),
+      caPool: map['caPool'] == null ? null : (map['caPool']! as String).input(),
+      httpServiceAttachment: map['httpServiceAttachment'] == null ? null : (map['httpServiceAttachment']! as String).input(),
       isPrivate: (map['isPrivate'] as bool).input(),
-      sshServiceAttachment: map['sshServiceAttachment'] == null ? null : (map['sshServiceAttachment'] as String).input(),
+      sshServiceAttachment: map['sshServiceAttachment'] == null ? null : (map['sshServiceAttachment']! as String).input(),
     );
   }
 }

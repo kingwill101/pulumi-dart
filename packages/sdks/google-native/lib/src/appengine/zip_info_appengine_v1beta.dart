@@ -26,8 +26,8 @@ class ZipInfoAppengineV1beta {
 
   factory ZipInfoAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ZipInfoAppengineV1beta(
-      filesCount: map['filesCount'] == null ? null : (map['filesCount'] as int).input(),
-      sourceUrl: map['sourceUrl'] == null ? null : (map['sourceUrl'] as String).input(),
+      filesCount: map['filesCount'] == null ? null : (map['filesCount']! as int).input(),
+      sourceUrl: map['sourceUrl'] == null ? null : (map['sourceUrl']! as String).input(),
     );
   }
 }

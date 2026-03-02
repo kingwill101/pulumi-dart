@@ -49,12 +49,12 @@ class GetInstanceClassInfosResult {
   factory GetInstanceClassInfosResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassInfosResult(
       commodityCode: map['commodityCode'] as String,
-      dbInstanceId: map['dbInstanceId'] == null ? null : map['dbInstanceId'] as String,
+      dbInstanceId: map['dbInstanceId'] == null ? null : map['dbInstanceId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      infos: map['infos'] == null ? null : pulumi.Input.decodeList<GetInstanceClassInfosInfo>(map['infos'], (value) => GetInstanceClassInfosInfo.fromMap((value as Map).cast<String, dynamic>())),
+      infos: map['infos'] == null ? null : pulumi.Input.decodeList<GetInstanceClassInfosInfo>(map['infos']!, (value) => GetInstanceClassInfosInfo.fromMap((value as Map).cast<String, dynamic>())),
       orderType: map['orderType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

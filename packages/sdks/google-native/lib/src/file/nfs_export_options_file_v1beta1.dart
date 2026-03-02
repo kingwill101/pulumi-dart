@@ -49,12 +49,12 @@ class NfsExportOptionsFileV1beta1 {
 
   factory NfsExportOptionsFileV1beta1.fromMap(Map<String, dynamic> map) {
     return NfsExportOptionsFileV1beta1(
-      accessMode: map['accessMode'] == null ? null : (NfsExportOptionsAccessModeFileV1beta1.fromValue(map['accessMode'] as String)).input(),
-      anonGid: map['anonGid'] == null ? null : (map['anonGid'] as String).input(),
-      anonUid: map['anonUid'] == null ? null : (map['anonUid'] as String).input(),
-      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges'] as List).cast<String>()).input(),
-      securityFlavors: map['securityFlavors'] == null ? null : (pulumi.Input.decodeList<NfsExportOptionsSecurityFlavorsItem>(map['securityFlavors'], (value) => NfsExportOptionsSecurityFlavorsItem.fromValue(value as String))).input(),
-      squashMode: map['squashMode'] == null ? null : (NfsExportOptionsSquashModeFileV1beta1.fromValue(map['squashMode'] as String)).input(),
+      accessMode: map['accessMode'] == null ? null : (NfsExportOptionsAccessModeFileV1beta1.fromValue(map['accessMode']! as String)).input(),
+      anonGid: map['anonGid'] == null ? null : (map['anonGid']! as String).input(),
+      anonUid: map['anonUid'] == null ? null : (map['anonUid']! as String).input(),
+      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges']! as List).cast<String>()).input(),
+      securityFlavors: map['securityFlavors'] == null ? null : (pulumi.Input.decodeList<NfsExportOptionsSecurityFlavorsItem>(map['securityFlavors']!, (value) => NfsExportOptionsSecurityFlavorsItem.fromValue(value as String))).input(),
+      squashMode: map['squashMode'] == null ? null : (NfsExportOptionsSquashModeFileV1beta1.fromValue(map['squashMode']! as String)).input(),
     );
   }
 }

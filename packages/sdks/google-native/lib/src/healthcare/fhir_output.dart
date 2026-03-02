@@ -21,7 +21,7 @@ class FhirOutput {
 
   factory FhirOutput.fromMap(Map<String, dynamic> map) {
     return FhirOutput(
-      fhirStore: map['fhirStore'] == null ? null : (map['fhirStore'] as String).input(),
+      fhirStore: map['fhirStore'] == null ? null : (map['fhirStore']! as String).input(),
     );
   }
 }

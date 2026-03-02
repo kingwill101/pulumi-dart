@@ -28,8 +28,8 @@ class TrustStore {
 
   factory TrustStore.fromMap(Map<String, dynamic> map) {
     return TrustStore(
-      intermediateCas: map['intermediateCas'] == null ? null : (pulumi.Input.decodeList<IntermediateCA>(map['intermediateCas'], (value) => IntermediateCA.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      trustAnchors: map['trustAnchors'] == null ? null : (pulumi.Input.decodeList<TrustAnchor>(map['trustAnchors'], (value) => TrustAnchor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      intermediateCas: map['intermediateCas'] == null ? null : (pulumi.Input.decodeList<IntermediateCA>(map['intermediateCas']!, (value) => IntermediateCA.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trustAnchors: map['trustAnchors'] == null ? null : (pulumi.Input.decodeList<TrustAnchor>(map['trustAnchors']!, (value) => TrustAnchor.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

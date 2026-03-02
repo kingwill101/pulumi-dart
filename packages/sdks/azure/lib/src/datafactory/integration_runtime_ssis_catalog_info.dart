@@ -45,11 +45,11 @@ class IntegrationRuntimeSsisCatalogInfo {
 
   factory IntegrationRuntimeSsisCatalogInfo.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisCatalogInfo(
-      administratorLogin: map['administratorLogin'] == null ? null : (map['administratorLogin'] as String).input(),
-      administratorPassword: map['administratorPassword'] == null ? null : (map['administratorPassword'] as String).input(),
-      dualStandbyPairName: map['dualStandbyPairName'] == null ? null : (map['dualStandbyPairName'] as String).input(),
-      elasticPoolName: map['elasticPoolName'] == null ? null : (map['elasticPoolName'] as String).input(),
-      pricingTier: map['pricingTier'] == null ? null : (map['pricingTier'] as String).input(),
+      administratorLogin: map['administratorLogin'] == null ? null : (map['administratorLogin']! as String).input(),
+      administratorPassword: map['administratorPassword'] == null ? null : (map['administratorPassword']! as String).input(),
+      dualStandbyPairName: map['dualStandbyPairName'] == null ? null : (map['dualStandbyPairName']! as String).input(),
+      elasticPoolName: map['elasticPoolName'] == null ? null : (map['elasticPoolName']! as String).input(),
+      pricingTier: map['pricingTier'] == null ? null : (map['pricingTier']! as String).input(),
       serverEndpoint: (map['serverEndpoint'] as String).input(),
     );
   }

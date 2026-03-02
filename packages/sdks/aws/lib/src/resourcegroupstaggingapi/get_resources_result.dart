@@ -57,9 +57,9 @@ class GetResourcesResult {
       includeComplianceDetails: map['includeComplianceDetails'] == null ? null : map['includeComplianceDetails'] as bool,
       region: map['region'] as String,
       resourceArnLists: map['resourceArnLists'] == null ? null : (map['resourceArnLists'] as List).cast<String>(),
-      resourceTagMappingLists: pulumi.Input.decodeList<GetResourcesResourceTagMappingList>(map['resourceTagMappingLists'], (value) => GetResourcesResourceTagMappingList.fromMap((value as Map).cast<String, dynamic>())),
+      resourceTagMappingLists: pulumi.Input.decodeList<GetResourcesResourceTagMappingList>(map['resourceTagMappingLists']!, (value) => GetResourcesResourceTagMappingList.fromMap((value as Map).cast<String, dynamic>())),
       resourceTypeFilters: map['resourceTypeFilters'] == null ? null : (map['resourceTypeFilters'] as List).cast<String>(),
-      tagFilters: map['tagFilters'] == null ? null : pulumi.Input.decodeList<GetResourcesTagFilter>(map['tagFilters'], (value) => GetResourcesTagFilter.fromMap((value as Map).cast<String, dynamic>())),
+      tagFilters: map['tagFilters'] == null ? null : pulumi.Input.decodeList<GetResourcesTagFilter>(map['tagFilters']!, (value) => GetResourcesTagFilter.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

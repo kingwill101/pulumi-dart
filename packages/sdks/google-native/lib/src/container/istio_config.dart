@@ -27,8 +27,8 @@ class IstioConfig {
 
   factory IstioConfig.fromMap(Map<String, dynamic> map) {
     return IstioConfig(
-      auth: map['auth'] == null ? null : (IstioConfigAuth.fromValue(map['auth'] as String)).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      auth: map['auth'] == null ? null : (IstioConfigAuth.fromValue(map['auth']! as String)).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
     );
   }
 }

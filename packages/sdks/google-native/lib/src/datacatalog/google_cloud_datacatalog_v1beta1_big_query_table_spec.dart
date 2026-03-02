@@ -26,8 +26,8 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
 
   factory GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1beta1BigQueryTableSpec(
-      tableSpec: map['tableSpec'] == null ? null : ((map['tableSpec'] as Map).cast<String, dynamic>()).input(),
-      viewSpec: map['viewSpec'] == null ? null : ((map['viewSpec'] as Map).cast<String, dynamic>()).input(),
+      tableSpec: map['tableSpec'] == null ? null : ((map['tableSpec']! as Map).cast<String, dynamic>()).input(),
+      viewSpec: map['viewSpec'] == null ? null : ((map['viewSpec']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

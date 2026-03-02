@@ -25,8 +25,8 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailo
 
   factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsVideoBlackSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsVideoBlackSettings(
-      blackDetectThreshold: map['blackDetectThreshold'] == null ? null : (map['blackDetectThreshold'] as double).input(),
-      videoBlackThresholdMsec: map['videoBlackThresholdMsec'] == null ? null : (map['videoBlackThresholdMsec'] as int).input(),
+      blackDetectThreshold: map['blackDetectThreshold'] == null ? null : ((map['blackDetectThreshold'] as double).input()).input(),
+      videoBlackThresholdMsec: map['videoBlackThresholdMsec'] == null ? null : ((map['videoBlackThresholdMsec'] as int).input()).input(),
     );
   }
 }

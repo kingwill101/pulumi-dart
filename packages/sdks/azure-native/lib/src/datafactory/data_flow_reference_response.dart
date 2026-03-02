@@ -36,8 +36,8 @@ class DataFlowReferenceResponse {
 
   factory DataFlowReferenceResponse.fromMap(Map<String, dynamic> map) {
     return DataFlowReferenceResponse(
-      datasetParameters: map['datasetParameters'] == null ? null : (map['datasetParameters']).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, dynamic>()).input(),
+      datasetParameters: map['datasetParameters'] == null ? null : (map['datasetParameters']!).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, dynamic>()).input(),
       referenceName: (map['referenceName'] as String).input(),
       type: (map['type'] as String).input(),
     );

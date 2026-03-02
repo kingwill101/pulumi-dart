@@ -21,7 +21,7 @@ class SapHanaPartitionSettings {
 
   factory SapHanaPartitionSettings.fromMap(Map<String, dynamic> map) {
     return SapHanaPartitionSettings(
-      partitionColumnName: map['partitionColumnName'] == null ? null : (map['partitionColumnName']).input(),
+      partitionColumnName: map['partitionColumnName'] == null ? null : (map['partitionColumnName']!).input(),
     );
   }
 }

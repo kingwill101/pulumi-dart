@@ -32,9 +32,9 @@ class ConnectionStatusDefinition {
 
   factory ConnectionStatusDefinition.fromMap(Map<String, dynamic> map) {
     return ConnectionStatusDefinition(
-      error: map['error'] == null ? null : (ConnectionError.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      error: map['error'] == null ? null : (ConnectionError.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

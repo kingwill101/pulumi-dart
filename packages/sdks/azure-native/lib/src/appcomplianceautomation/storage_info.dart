@@ -36,10 +36,10 @@ class StorageInfo {
 
   factory StorageInfo.fromMap(Map<String, dynamic> map) {
     return StorageInfo(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

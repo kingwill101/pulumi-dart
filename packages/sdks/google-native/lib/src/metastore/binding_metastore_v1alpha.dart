@@ -32,9 +32,9 @@ class BindingMetastoreV1alpha {
 
   factory BindingMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return BindingMetastoreV1alpha(
-      condition: map['condition'] == null ? null : (ExprMetastoreV1alpha.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (ExprMetastoreV1alpha.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

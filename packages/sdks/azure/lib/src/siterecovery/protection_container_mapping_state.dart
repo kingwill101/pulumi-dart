@@ -57,14 +57,14 @@ class ProtectionContainerMappingState {
 
   factory ProtectionContainerMappingState.fromMap(Map<String, dynamic> map) {
     return ProtectionContainerMappingState(
-      automaticUpdate: map['automaticUpdate'] == null ? null : (ProtectionContainerMappingAutomaticUpdate.fromMap((map['automaticUpdate'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recoveryFabricName: map['recoveryFabricName'] == null ? null : (map['recoveryFabricName'] as String).input(),
-      recoveryReplicationPolicyId: map['recoveryReplicationPolicyId'] == null ? null : (map['recoveryReplicationPolicyId'] as String).input(),
-      recoverySourceProtectionContainerName: map['recoverySourceProtectionContainerName'] == null ? null : (map['recoverySourceProtectionContainerName'] as String).input(),
-      recoveryTargetProtectionContainerId: map['recoveryTargetProtectionContainerId'] == null ? null : (map['recoveryTargetProtectionContainerId'] as String).input(),
-      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      automaticUpdate: map['automaticUpdate'] == null ? null : (ProtectionContainerMappingAutomaticUpdate.fromMap((map['automaticUpdate']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recoveryFabricName: map['recoveryFabricName'] == null ? null : (map['recoveryFabricName']! as String).input(),
+      recoveryReplicationPolicyId: map['recoveryReplicationPolicyId'] == null ? null : (map['recoveryReplicationPolicyId']! as String).input(),
+      recoverySourceProtectionContainerName: map['recoverySourceProtectionContainerName'] == null ? null : (map['recoverySourceProtectionContainerName']! as String).input(),
+      recoveryTargetProtectionContainerId: map['recoveryTargetProtectionContainerId'] == null ? null : (map['recoveryTargetProtectionContainerId']! as String).input(),
+      recoveryVaultName: map['recoveryVaultName'] == null ? null : (map['recoveryVaultName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

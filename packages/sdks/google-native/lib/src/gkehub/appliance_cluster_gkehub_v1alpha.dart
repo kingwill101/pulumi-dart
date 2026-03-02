@@ -21,7 +21,7 @@ class ApplianceClusterGkehubV1alpha {
 
   factory ApplianceClusterGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return ApplianceClusterGkehubV1alpha(
-      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink'] as String).input(),
+      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink']! as String).input(),
     );
   }
 }

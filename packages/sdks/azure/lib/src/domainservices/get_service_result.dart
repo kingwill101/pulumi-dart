@@ -119,7 +119,7 @@ class GetServiceResult {
       securities: pulumi.Input.decodeList<GetServiceSecurity>(map['securities'], (value) => GetServiceSecurity.fromMap((value as Map).cast<String, dynamic>())),
       sku: map['sku'] as String,
       syncOwner: map['syncOwner'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       tenantId: map['tenantId'] as String,
       version: map['version'] as int,
     );

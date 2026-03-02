@@ -91,17 +91,17 @@ class EnvironmentState {
 
   factory EnvironmentState.fromMap(Map<String, dynamic> map) {
     return EnvironmentState(
-      apiProxyType: map['apiProxyType'] == null ? null : (map['apiProxyType'] as String).input(),
-      clientIpResolutionConfig: map['clientIpResolutionConfig'] == null ? null : (EnvironmentClientIpResolutionConfig.fromMap((map['clientIpResolutionConfig'] as Map).cast<String, dynamic>())).input(),
-      deploymentType: map['deploymentType'] == null ? null : (map['deploymentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      forwardProxyUri: map['forwardProxyUri'] == null ? null : (map['forwardProxyUri'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeConfig: map['nodeConfig'] == null ? null : (EnvironmentNodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      properties: map['properties'] == null ? null : (EnvironmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      apiProxyType: map['apiProxyType'] == null ? null : (map['apiProxyType']! as String).input(),
+      clientIpResolutionConfig: map['clientIpResolutionConfig'] == null ? null : (EnvironmentClientIpResolutionConfig.fromMap((map['clientIpResolutionConfig']! as Map).cast<String, dynamic>())).input(),
+      deploymentType: map['deploymentType'] == null ? null : (map['deploymentType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      forwardProxyUri: map['forwardProxyUri'] == null ? null : (map['forwardProxyUri']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeConfig: map['nodeConfig'] == null ? null : (EnvironmentNodeConfig.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>())).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      properties: map['properties'] == null ? null : (EnvironmentProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

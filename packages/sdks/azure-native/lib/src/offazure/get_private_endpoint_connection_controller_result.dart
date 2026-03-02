@@ -68,7 +68,7 @@ class GetPrivateEndpointConnectionControllerResult {
       id: map['id'] as String,
       name: map['name'] as String,
       privateEndpoint: ResourceIdResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>()),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>()),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

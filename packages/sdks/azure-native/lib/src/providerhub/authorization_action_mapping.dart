@@ -25,8 +25,8 @@ class AuthorizationActionMapping {
 
   factory AuthorizationActionMapping.fromMap(Map<String, dynamic> map) {
     return AuthorizationActionMapping(
-      desired: map['desired'] == null ? null : (map['desired'] as String).input(),
-      original: map['original'] == null ? null : (map['original'] as String).input(),
+      desired: map['desired'] == null ? null : (map['desired']! as String).input(),
+      original: map['original'] == null ? null : (map['original']! as String).input(),
     );
   }
 }

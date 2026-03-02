@@ -20,7 +20,7 @@ class DomainDevicesInterfaceSourceVdpa {
 
   factory DomainDevicesInterfaceSourceVdpa.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceVdpa(
-      device: map['device'] == null ? null : (map['device'] as String).input(),
+      device: map['device'] == null ? null : (map['device']! as String).input(),
     );
   }
 }

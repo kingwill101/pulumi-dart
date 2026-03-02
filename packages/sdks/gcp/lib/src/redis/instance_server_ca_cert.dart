@@ -45,11 +45,11 @@ class InstanceServerCaCert {
 
   factory InstanceServerCaCert.fromMap(Map<String, dynamic> map) {
     return InstanceServerCaCert(
-      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
-      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : (map['sha1Fingerprint'] as String).input(),
+      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
+      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : (map['sha1Fingerprint']! as String).input(),
     );
   }
 }

@@ -47,9 +47,9 @@ class CxWebhookGenericWebServiceOauthConfig {
   factory CxWebhookGenericWebServiceOauthConfig.fromMap(Map<String, dynamic> map) {
     return CxWebhookGenericWebServiceOauthConfig(
       clientId: (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
-      secretVersionForClientSecret: map['secretVersionForClientSecret'] == null ? null : (map['secretVersionForClientSecret'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      secretVersionForClientSecret: map['secretVersionForClientSecret'] == null ? null : (map['secretVersionForClientSecret']! as String).input(),
       tokenEndpoint: (map['tokenEndpoint'] as String).input(),
     );
   }

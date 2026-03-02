@@ -49,12 +49,12 @@ class EndpointEventGridArgs {
 
   factory EndpointEventGridArgs.fromMap(Map<String, dynamic> map) {
     return EndpointEventGridArgs(
-      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret'] as String).input(),
+      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret']! as String).input(),
       digitalTwinsId: (map['digitalTwinsId'] as String).input(),
       eventgridTopicEndpoint: (map['eventgridTopicEndpoint'] as String).input(),
       eventgridTopicPrimaryAccessKey: (map['eventgridTopicPrimaryAccessKey'] as String).input(),
       eventgridTopicSecondaryAccessKey: (map['eventgridTopicSecondaryAccessKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

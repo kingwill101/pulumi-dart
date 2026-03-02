@@ -36,10 +36,10 @@ class ConnectPeerConfigurationBgpConfiguration {
 
   factory ConnectPeerConfigurationBgpConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectPeerConfigurationBgpConfiguration(
-      coreNetworkAddress: map['coreNetworkAddress'] == null ? null : (map['coreNetworkAddress'] as String).input(),
-      coreNetworkAsn: map['coreNetworkAsn'] == null ? null : (map['coreNetworkAsn'] as int).input(),
-      peerAddress: map['peerAddress'] == null ? null : (map['peerAddress'] as String).input(),
-      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as String).input(),
+      coreNetworkAddress: map['coreNetworkAddress'] == null ? null : ((map['coreNetworkAddress'] as String).input()).input(),
+      coreNetworkAsn: map['coreNetworkAsn'] == null ? null : ((map['coreNetworkAsn'] as int).input()).input(),
+      peerAddress: map['peerAddress'] == null ? null : ((map['peerAddress'] as String).input()).input(),
+      peerAsn: map['peerAsn'] == null ? null : ((map['peerAsn'] as String).input()).input(),
     );
   }
 }

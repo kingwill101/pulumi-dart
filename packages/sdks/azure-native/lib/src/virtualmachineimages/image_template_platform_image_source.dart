@@ -48,12 +48,12 @@ class ImageTemplatePlatformImageSource {
 
   factory ImageTemplatePlatformImageSource.fromMap(Map<String, dynamic> map) {
     return ImageTemplatePlatformImageSource(
-      offer: map['offer'] == null ? null : (map['offer'] as String).input(),
-      planInfo: map['planInfo'] == null ? null : (PlatformImagePurchasePlan.fromMap((map['planInfo'] as Map).cast<String, dynamic>())).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      offer: map['offer'] == null ? null : (map['offer']! as String).input(),
+      planInfo: map['planInfo'] == null ? null : (PlatformImagePurchasePlan.fromMap((map['planInfo']! as Map).cast<String, dynamic>())).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

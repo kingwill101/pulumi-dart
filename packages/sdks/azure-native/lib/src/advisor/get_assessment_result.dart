@@ -90,15 +90,15 @@ class GetAssessmentResult {
       azureApiVersion: map['azureApiVersion'] as String,
       description: map['description'] as String,
       id: map['id'] as String,
-      locale: map['locale'] == null ? null : map['locale'] as String,
+      locale: map['locale'] == null ? null : map['locale']! as String,
       name: map['name'] as String,
       score: map['score'] as int,
       state: map['state'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      typeId: map['typeId'] == null ? null : map['typeId'] as String,
+      typeId: map['typeId'] == null ? null : map['typeId']! as String,
       typeVersion: map['typeVersion'] as String,
-      workloadId: map['workloadId'] == null ? null : map['workloadId'] as String,
+      workloadId: map['workloadId'] == null ? null : map['workloadId']! as String,
       workloadName: map['workloadName'] as String,
     );
   }

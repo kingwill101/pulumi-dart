@@ -35,8 +35,8 @@ class ConnectionProfileSalesforceProfile {
   factory ConnectionProfileSalesforceProfile.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileSalesforceProfile(
       domain: (map['domain'] as String).input(),
-      oauth2ClientCredentials: map['oauth2ClientCredentials'] == null ? null : (ConnectionProfileSalesforceProfileOauth2ClientCredentials.fromMap((map['oauth2ClientCredentials'] as Map).cast<String, dynamic>())).input(),
-      userCredentials: map['userCredentials'] == null ? null : (ConnectionProfileSalesforceProfileUserCredentials.fromMap((map['userCredentials'] as Map).cast<String, dynamic>())).input(),
+      oauth2ClientCredentials: map['oauth2ClientCredentials'] == null ? null : (ConnectionProfileSalesforceProfileOauth2ClientCredentials.fromMap((map['oauth2ClientCredentials']! as Map).cast<String, dynamic>())).input(),
+      userCredentials: map['userCredentials'] == null ? null : (ConnectionProfileSalesforceProfileUserCredentials.fromMap((map['userCredentials']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

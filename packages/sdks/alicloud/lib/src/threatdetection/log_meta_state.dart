@@ -46,8 +46,8 @@ class LogMetaState {
 
   factory LogMetaState.fromMap(Map<String, dynamic> map) {
     return LogMetaState(
-      logMetaName: map['logMetaName'] == null ? null : (map['logMetaName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      logMetaName: map['logMetaName'] == null ? null : (map['logMetaName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

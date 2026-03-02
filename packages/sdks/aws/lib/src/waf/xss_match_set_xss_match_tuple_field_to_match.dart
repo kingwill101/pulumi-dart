@@ -29,7 +29,7 @@ class XssMatchSetXssMatchTupleFieldToMatch {
 
   factory XssMatchSetXssMatchTupleFieldToMatch.fromMap(Map<String, dynamic> map) {
     return XssMatchSetXssMatchTupleFieldToMatch(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
+      data: map['data'] == null ? null : ((map['data'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -27,7 +27,7 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo {
   factory GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo(
       serverCaCertPem: (map['serverCaCertPem'] as String).input(),
-      sslDecryptCaCertPem: map['sslDecryptCaCertPem'] == null ? null : (map['sslDecryptCaCertPem'] as String).input(),
+      sslDecryptCaCertPem: map['sslDecryptCaCertPem'] == null ? null : (map['sslDecryptCaCertPem']! as String).input(),
     );
   }
 }

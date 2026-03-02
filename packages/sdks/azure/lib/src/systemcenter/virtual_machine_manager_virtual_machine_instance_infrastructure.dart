@@ -40,11 +40,11 @@ class VirtualMachineManagerVirtualMachineInstanceInfrastructure {
 
   factory VirtualMachineManagerVirtualMachineInstanceInfrastructure.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerVirtualMachineInstanceInfrastructure(
-      checkpointType: map['checkpointType'] == null ? null : (map['checkpointType'] as String).input(),
-      systemCenterVirtualMachineManagerCloudId: map['systemCenterVirtualMachineManagerCloudId'] == null ? null : (map['systemCenterVirtualMachineManagerCloudId'] as String).input(),
-      systemCenterVirtualMachineManagerInventoryItemId: map['systemCenterVirtualMachineManagerInventoryItemId'] == null ? null : (map['systemCenterVirtualMachineManagerInventoryItemId'] as String).input(),
-      systemCenterVirtualMachineManagerTemplateId: map['systemCenterVirtualMachineManagerTemplateId'] == null ? null : (map['systemCenterVirtualMachineManagerTemplateId'] as String).input(),
-      systemCenterVirtualMachineManagerVirtualMachineServerId: map['systemCenterVirtualMachineManagerVirtualMachineServerId'] == null ? null : (map['systemCenterVirtualMachineManagerVirtualMachineServerId'] as String).input(),
+      checkpointType: map['checkpointType'] == null ? null : (map['checkpointType']! as String).input(),
+      systemCenterVirtualMachineManagerCloudId: map['systemCenterVirtualMachineManagerCloudId'] == null ? null : (map['systemCenterVirtualMachineManagerCloudId']! as String).input(),
+      systemCenterVirtualMachineManagerInventoryItemId: map['systemCenterVirtualMachineManagerInventoryItemId'] == null ? null : (map['systemCenterVirtualMachineManagerInventoryItemId']! as String).input(),
+      systemCenterVirtualMachineManagerTemplateId: map['systemCenterVirtualMachineManagerTemplateId'] == null ? null : (map['systemCenterVirtualMachineManagerTemplateId']! as String).input(),
+      systemCenterVirtualMachineManagerVirtualMachineServerId: map['systemCenterVirtualMachineManagerVirtualMachineServerId'] == null ? null : (map['systemCenterVirtualMachineManagerVirtualMachineServerId']! as String).input(),
     );
   }
 }

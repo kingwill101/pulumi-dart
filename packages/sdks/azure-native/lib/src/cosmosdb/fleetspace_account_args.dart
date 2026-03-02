@@ -46,9 +46,9 @@ class FleetspaceAccountArgs {
   factory FleetspaceAccountArgs.fromMap(Map<String, dynamic> map) {
     return FleetspaceAccountArgs(
       fleetName: (map['fleetName'] as String).input(),
-      fleetspaceAccountName: map['fleetspaceAccountName'] == null ? null : (map['fleetspaceAccountName'] as String).input(),
+      fleetspaceAccountName: map['fleetspaceAccountName'] == null ? null : (map['fleetspaceAccountName']! as String).input(),
       fleetspaceName: (map['fleetspaceName'] as String).input(),
-      globalDatabaseAccountProperties: map['globalDatabaseAccountProperties'] == null ? null : (FleetspaceAccountPropertiesGlobalDatabaseAccountProperties.fromMap((map['globalDatabaseAccountProperties'] as Map).cast<String, dynamic>())).input(),
+      globalDatabaseAccountProperties: map['globalDatabaseAccountProperties'] == null ? null : (FleetspaceAccountPropertiesGlobalDatabaseAccountProperties.fromMap((map['globalDatabaseAccountProperties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

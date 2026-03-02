@@ -25,7 +25,7 @@ class StackParameter {
 
   factory StackParameter.fromMap(Map<String, dynamic> map) {
     return StackParameter(
-      parameterKey: map['parameterKey'] == null ? null : (map['parameterKey'] as String).input(),
+      parameterKey: map['parameterKey'] == null ? null : (map['parameterKey']! as String).input(),
       parameterValue: (map['parameterValue'] as String).input(),
     );
   }

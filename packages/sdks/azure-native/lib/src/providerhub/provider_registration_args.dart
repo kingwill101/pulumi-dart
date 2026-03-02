@@ -34,9 +34,9 @@ class ProviderRegistrationArgs {
 
   factory ProviderRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return ProviderRegistrationArgs(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      properties: map['properties'] == null ? null : (ProviderRegistrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      providerNamespace: map['providerNamespace'] == null ? null : (map['providerNamespace'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      properties: map['properties'] == null ? null : (ProviderRegistrationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      providerNamespace: map['providerNamespace'] == null ? null : (map['providerNamespace']! as String).input(),
     );
   }
 }

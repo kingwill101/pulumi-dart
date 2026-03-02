@@ -21,7 +21,7 @@ class CloudAuditLoggingFeatureSpec {
 
   factory CloudAuditLoggingFeatureSpec.fromMap(Map<String, dynamic> map) {
     return CloudAuditLoggingFeatureSpec(
-      allowlistedServiceAccounts: map['allowlistedServiceAccounts'] == null ? null : ((map['allowlistedServiceAccounts'] as List).cast<String>()).input(),
+      allowlistedServiceAccounts: map['allowlistedServiceAccounts'] == null ? null : ((map['allowlistedServiceAccounts']! as List).cast<String>()).input(),
     );
   }
 }

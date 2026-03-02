@@ -67,14 +67,14 @@ class PublishedBlueprintArgs {
   factory PublishedBlueprintArgs.fromMap(Map<String, dynamic> map) {
     return PublishedBlueprintArgs(
       blueprintName: (map['blueprintName'] as String).input(),
-      changeNotes: map['changeNotes'] == null ? null : (map['changeNotes'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterDefinition>(map['parameters'], (value) => ParameterDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroups: map['resourceGroups'] == null ? null : (pulumi.Input.decodeMapValues<ResourceGroupDefinition>(map['resourceGroups'], (value) => ResourceGroupDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      changeNotes: map['changeNotes'] == null ? null : (map['changeNotes']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterDefinition>(map['parameters']!, (value) => ParameterDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : (pulumi.Input.decodeMapValues<ResourceGroupDefinition>(map['resourceGroups']!, (value) => ResourceGroupDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceScope: (map['resourceScope'] as String).input(),
-      targetScope: map['targetScope'] == null ? null : (map['targetScope'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      targetScope: map['targetScope'] == null ? null : (map['targetScope']! as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
     );
   }
 }

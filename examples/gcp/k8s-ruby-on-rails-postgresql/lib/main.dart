@@ -20,7 +20,7 @@ class K8sRubyOnRailsPostgresqlStack extends pulumi.Stack {
     final dbPassword = config.require('dbPassword');
 
     // Kubernetes config.
-    final clusterNodeCount = config.getNumber('clusterNodeCount') ?? 3;
+    final clusterNodeCount = (config.getNumber('clusterNodeCount') ?? 3).toInt();
     final clusterNodeMachineType =
         config.get('clusterNodeMachineType') ?? 'n1-standard-1';
     config.get('clusterUsername') ?? 'admin';
@@ -39,18 +39,18 @@ class K8sRubyOnRailsPostgresqlStack extends pulumi.Stack {
     final dbInstance = gcp.sql.DatabaseInstance(
       'web-db',
       args: gcp.sql.DatabaseInstanceArgs(
-        databaseVersion: 'POSTGRES_9_6',
+        databaseVersion: 'POSTGRES_9_6'.output(),
         settings: gcp.sql
             .DatabaseInstanceSettings(
-              tier: 'db-f1-micro',
+              tier: 'db-f1-micro'.output(),
               ipConfiguration: gcp.sql
                   .DatabaseInstanceSettingsIpConfiguration(
                     authorizedNetworks: [
                       gcp.sql
-                          .DatabaseInstanceSettingsIpConfigurationAuthorizedNetworks(
-                            value: '0.0.0.0/0',
+                    .DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork(
+                            value: '0.0.0.0/0'.output(),
                           ),
-                    ],
+                    ].output(),
                   )
                   .output(),
             )
@@ -62,8 +62,8 @@ class K8sRubyOnRailsPostgresqlStack extends pulumi.Stack {
       'web-db-user',
       args: gcp.sql.UserArgs(
         instance: dbInstance.name,
-        name: dbUsername,
-        password: dbPassword,
+        name: dbUsername.output(),
+        password: dbPassword.output(),
       ),
     );
 
@@ -73,8 +73,8 @@ class K8sRubyOnRailsPostgresqlStack extends pulumi.Stack {
       args: gcp.container.ClusterArgs(
         // We can't create a cluster with no node pool defined, but we want to only
         // use separately managed node pools.
-        initialNodeCount: 1,
-        removeDefaultNodePool: true,
+        initialNodeCount: 1.output(),
+        removeDefaultNodePool: true.output(),
         minMasterVersion: masterVersion,
       ),
     );
@@ -83,20 +83,21 @@ class K8sRubyOnRailsPostgresqlStack extends pulumi.Stack {
       'primary-node-pool',
       args: gcp.container.NodePoolArgs(
         cluster: cluster.name,
-        initialNodeCount: clusterNodeCount,
+        initialNodeCount: clusterNodeCount.output(),
         location: cluster.location,
         nodeConfig: gcp.container.NodePoolNodeConfig(
-          preemptible: true,
-          machineType: clusterNodeMachineType,
+          preemptible: true.output(),
+          machineType: clusterNodeMachineType.output(),
           oauthScopes: const [
             'https://www.googleapis.com/auth/compute',
             'https://www.googleapis.com/auth/devstorage.read_only',
             'https://www.googleapis.com/auth/logging.write',
             'https://www.googleapis.com/auth/monitoring',
-          ],
-        ),
+          ].output(),
+        ).output(),
         version: masterVersion,
-        management: gcp.container.NodePoolManagement(autoRepair: true),
+        management: gcp.container.NodePoolManagement(autoRepair: true.output())
+            .output(),
       ),
       options: pulumi.CustomResourceOptions(dependsOn: [cluster]),
     );
@@ -107,7 +108,7 @@ class K8sRubyOnRailsPostgresqlStack extends pulumi.Stack {
           cluster.name,
           cluster.endpoint,
           cluster.masterAuth,
-        ).apply((values) {
+        ).apply<String>((values) {
           final clusterName = values.$1;
           final endpoint = values.$2;
           final masterAuth = values.$3;
@@ -148,12 +149,12 @@ users:
       options: pulumi.CustomResourceOptions(dependsOn: [nodePool]),
     );
 
-    final appImage = docker.Image(
+    final appImage = docker.index.Image(
       'rails-app',
-      args: docker.ImageArgs(
+      args: docker.index.ImageArgs(
         imageName:
-            '$dockerUsername/${pulumi.Deployment.instance.projectName}_${pulumi.Deployment.instance.stackName}',
-        build: docker.DockerBuild(context: './app'),
+            '$dockerUsername/${pulumi.Deployment.instance.projectName}_${pulumi.Deployment.instance.stackName}'.output(),
+        build: docker.index.DockerBuild(context: './app'.output()).output(),
       ),
     );
 
@@ -164,28 +165,37 @@ users:
       'rails-deployment',
       args: k8sapps.DeploymentArgs(
         spec: k8sapps.DeploymentSpec(
-          selector: k8smeta.LabelSelector(matchLabels: appLabels),
-          replicas: 1,
+          selector: k8smeta.LabelSelector(
+            matchLabels: appLabels.output(),
+          ).output(),
+          replicas: 1.output(),
           template: k8score.PodTemplateSpec(
-            metadata: k8smeta.ObjectMeta(labels: appLabels).output(),
+            metadata: k8smeta.ObjectMeta(labels: appLabels.output()).output(),
             spec: k8score.PodSpec(
               containers: [
                 k8score.Container(
-                  name: 'rails-app',
+                  name: 'rails-app'.output(),
                   image: appImage.imageName,
                   env: [
                     k8score.EnvVar(
-                      name: 'DB_HOST',
+                      name: 'DB_HOST'.output(),
                       value: dbInstance.firstIpAddress,
                     ),
-                    k8score.EnvVar(name: 'DB_USERNAME', value: dbUsername),
-                    k8score.EnvVar(name: 'DB_PASSWORD', value: dbPassword),
-                  ],
-                  ports: [k8score.ContainerPort(containerPort: appPort)],
+                    k8score.EnvVar(
+                      name: 'DB_USERNAME'.output(),
+                      value: dbUsername.output(),
+                    ),
+                    k8score.EnvVar(
+                      name: 'DB_PASSWORD'.output(),
+                      value: dbPassword.output(),
+                    ),
+                  ].output(),
+                  ports: [k8score.ContainerPort(containerPort: appPort.output())]
+                      .output(),
                 ),
-              ],
-            ),
-          ),
+              ].output(),
+            ).output(),
+          ).output(),
         ).output(),
       ),
       options: pulumi.CustomResourceOptions(provider: provider),
@@ -195,24 +205,34 @@ users:
       'rails-service',
       args: k8score.ServiceArgs(
         metadata: k8smeta.ObjectMeta(
-          labels: appDeployment.metadata.apply(
-            (metadata) => metadata.labels ?? appLabels,
-          ),
+          labels: appDeployment.metadata
+              .apply<Map<String, String>>(
+                (metadata) => metadata.labels ?? appLabels,
+              ),
         ).output(),
         spec: k8score.ServiceSpec(
-          type: 'LoadBalancer',
-          selector: appLabels,
-          ports: [k8score.ServicePort(port: appPort, targetPort: appPort)],
+          type: 'LoadBalancer'.output(),
+          selector: appLabels.output(),
+          ports: [
+            k8score.ServicePort(
+              port: appPort.output(),
+              targetPort: appPort.output(),
+            ),
+          ].output(),
         ).output(),
       ),
       options: pulumi.CustomResourceOptions(provider: provider),
     );
 
-    final appAddress = appService.status.apply((s) {
-      final ingress = s?.loadBalancer?.ingress;
-      final firstIngress = ingress?.first;
-      return 'http://${firstIngress?.ip}:$appPort';
-    });
+    final appAddress = appService.status
+        .apply((s) => s?.loadBalancer)
+        .apply((lb) => lb?.ingress)
+        .apply((ingress) {
+          if (ingress == null || ingress.isEmpty) {
+            return '';
+          }
+          return 'http://${ingress.first.ip ?? ""}:$appPort';
+        });
 
     registerOutputs({
       'appName': appDeployment.metadata.apply(
@@ -223,8 +243,4 @@ users:
       'kubeConfig': kubeConfig,
     });
   }
-}
-
-Future<void> run() async {
-  await pulumi.Deployment.run(() => K8sRubyOnRailsPostgresqlStack());
 }

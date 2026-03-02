@@ -52,12 +52,12 @@ class Disk {
 
   factory Disk.fromMap(Map<String, dynamic> map) {
     return Disk(
-      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete'] as bool).input(),
-      mountPoint: map['mountPoint'] == null ? null : (map['mountPoint'] as String).input(),
+      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete']! as bool).input(),
+      mountPoint: map['mountPoint'] == null ? null : (map['mountPoint']! as String).input(),
       name: (map['name'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb'] as int).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      sizeGb: map['sizeGb'] == null ? null : (map['sizeGb']! as int).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
       type: (DiskType.fromValue(map['type'] as String)).input(),
     );
   }

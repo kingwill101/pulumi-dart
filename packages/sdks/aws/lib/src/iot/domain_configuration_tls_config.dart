@@ -20,7 +20,7 @@ class DomainConfigurationTlsConfig {
 
   factory DomainConfigurationTlsConfig.fromMap(Map<String, dynamic> map) {
     return DomainConfigurationTlsConfig(
-      securityPolicy: map['securityPolicy'] == null ? null : (map['securityPolicy'] as String).input(),
+      securityPolicy: map['securityPolicy'] == null ? null : ((map['securityPolicy'] as String).input()).input(),
     );
   }
 }

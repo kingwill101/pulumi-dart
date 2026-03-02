@@ -57,9 +57,9 @@ class GetNetworkResult {
       id: map['id'] as int,
       ipRange: map['ipRange'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
+      mostRecent: map['mostRecent'] == null ? null : map['mostRecent']! as bool,
       name: map['name'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

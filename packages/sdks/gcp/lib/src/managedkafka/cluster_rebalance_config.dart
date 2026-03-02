@@ -20,7 +20,7 @@ class ClusterRebalanceConfig {
 
   factory ClusterRebalanceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterRebalanceConfig(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

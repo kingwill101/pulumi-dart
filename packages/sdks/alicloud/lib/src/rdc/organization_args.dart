@@ -39,9 +39,9 @@ class OrganizationArgs {
 
   factory OrganizationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationArgs(
-      desiredMemberCount: map['desiredMemberCount'] == null ? null : (map['desiredMemberCount'] as int).input(),
+      desiredMemberCount: map['desiredMemberCount'] == null ? null : (map['desiredMemberCount']! as int).input(),
       organizationName: (map['organizationName'] as String).input(),
-      realPk: map['realPk'] == null ? null : (map['realPk'] as String).input(),
+      realPk: map['realPk'] == null ? null : (map['realPk']! as String).input(),
       source: (map['source'] as String).input(),
     );
   }

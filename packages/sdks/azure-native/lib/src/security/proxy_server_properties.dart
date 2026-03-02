@@ -26,8 +26,8 @@ class ProxyServerProperties {
 
   factory ProxyServerProperties.fromMap(Map<String, dynamic> map) {
     return ProxyServerProperties(
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
     );
   }
 }

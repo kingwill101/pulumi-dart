@@ -32,9 +32,9 @@ class OSProfileResponse {
 
   factory OSProfileResponse.fromMap(Map<String, dynamic> map) {
     return OSProfileResponse(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
-      osConfiguration: map['osConfiguration'] == null ? null : (LinuxConfigurationResponse.fromMap((map['osConfiguration'] as Map).cast<String, dynamic>())).input(),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername']! as String).input(),
+      osConfiguration: map['osConfiguration'] == null ? null : (LinuxConfigurationResponse.fromMap((map['osConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

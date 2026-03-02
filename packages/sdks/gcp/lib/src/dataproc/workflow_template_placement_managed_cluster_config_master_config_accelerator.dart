@@ -25,8 +25,8 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator {
 
   factory WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator(
-      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount'] as int).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
+      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount']! as int).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
     );
   }
 }

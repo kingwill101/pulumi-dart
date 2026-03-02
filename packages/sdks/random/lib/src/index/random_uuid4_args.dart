@@ -24,7 +24,7 @@ class RandomUuid4Args {
 
   factory RandomUuid4Args.fromMap(Map<String, dynamic> map) {
     return RandomUuid4Args(
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class NamespaceIamPolicyState {
 
   factory NamespaceIamPolicyState.fromMap(Map<String, dynamic> map) {
     return NamespaceIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
     );
   }
 }

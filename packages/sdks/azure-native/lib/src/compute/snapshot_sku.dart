@@ -21,7 +21,7 @@ class SnapshotSku {
 
   factory SnapshotSku.fromMap(Map<String, dynamic> map) {
     return SnapshotSku(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

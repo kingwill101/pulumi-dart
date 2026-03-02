@@ -47,10 +47,10 @@ class GetRoutingProfileArgs {
   factory GetRoutingProfileArgs.fromMap(Map<String, dynamic> map) {
     return GetRoutingProfileArgs(
       instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routingProfileId: map['routingProfileId'] == null ? null : (map['routingProfileId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routingProfileId: map['routingProfileId'] == null ? null : ((map['routingProfileId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

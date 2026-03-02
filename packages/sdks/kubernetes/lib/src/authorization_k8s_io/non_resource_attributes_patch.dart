@@ -26,8 +26,8 @@ class NonResourceAttributesPatch {
 
   factory NonResourceAttributesPatch.fromMap(Map<String, dynamic> map) {
     return NonResourceAttributesPatch(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      verb: map['verb'] == null ? null : (map['verb'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      verb: map['verb'] == null ? null : (map['verb']! as String).input(),
     );
   }
 }

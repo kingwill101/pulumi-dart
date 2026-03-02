@@ -31,9 +31,9 @@ class CircuitBreakerPolicy {
 
   factory CircuitBreakerPolicy.fromMap(Map<String, dynamic> map) {
     return CircuitBreakerPolicy(
-      consecutiveErrors: map['consecutiveErrors'] == null ? null : (map['consecutiveErrors'] as int).input(),
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
-      maxEjectionPercent: map['maxEjectionPercent'] == null ? null : (map['maxEjectionPercent'] as int).input(),
+      consecutiveErrors: map['consecutiveErrors'] == null ? null : (map['consecutiveErrors']! as int).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as int).input(),
+      maxEjectionPercent: map['maxEjectionPercent'] == null ? null : (map['maxEjectionPercent']! as int).input(),
     );
   }
 }

@@ -45,11 +45,11 @@ class DocumentProcessorArgs {
 
   factory DocumentProcessorArgs.fromMap(Map<String, dynamic> map) {
     return DocumentProcessorArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      processorName: map['processorName'] == null ? null : (map['processorName'] as String).input(),
-      properties: map['properties'] == null ? null : (DocumentProcessorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      processorName: map['processorName'] == null ? null : (map['processorName']! as String).input(),
+      properties: map['properties'] == null ? null : (DocumentProcessorProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

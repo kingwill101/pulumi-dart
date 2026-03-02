@@ -101,21 +101,21 @@ class GetConnectedEnvironmentsDaprComponentResult {
   factory GetConnectedEnvironmentsDaprComponentResult.fromMap(Map<String, dynamic> map) {
     return GetConnectedEnvironmentsDaprComponentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      componentType: map['componentType'] == null ? null : map['componentType'] as String,
+      componentType: map['componentType'] == null ? null : map['componentType']! as String,
       deploymentErrors: map['deploymentErrors'] as String,
       id: map['id'] as String,
-      ignoreErrors: map['ignoreErrors'] == null ? null : map['ignoreErrors'] as bool,
-      initTimeout: map['initTimeout'] == null ? null : map['initTimeout'] as String,
-      metadata: map['metadata'] == null ? null : pulumi.Input.decodeList<DaprMetadataResponse>(map['metadata'], (value) => DaprMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
+      ignoreErrors: map['ignoreErrors'] == null ? null : map['ignoreErrors']! as bool,
+      initTimeout: map['initTimeout'] == null ? null : map['initTimeout']! as String,
+      metadata: map['metadata'] == null ? null : pulumi.Input.decodeList<DaprMetadataResponse>(map['metadata']!, (value) => DaprMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
-      secretStoreComponent: map['secretStoreComponent'] == null ? null : map['secretStoreComponent'] as String,
-      secrets: map['secrets'] == null ? null : pulumi.Input.decodeList<SecretResponse>(map['secrets'], (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>())),
-      serviceComponentBind: map['serviceComponentBind'] == null ? null : pulumi.Input.decodeList<DaprComponentServiceBindingResponse>(map['serviceComponentBind'], (value) => DaprComponentServiceBindingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      scopes: map['scopes'] == null ? null : (map['scopes']! as List).cast<String>(),
+      secretStoreComponent: map['secretStoreComponent'] == null ? null : map['secretStoreComponent']! as String,
+      secrets: map['secrets'] == null ? null : pulumi.Input.decodeList<SecretResponse>(map['secrets']!, (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>())),
+      serviceComponentBind: map['serviceComponentBind'] == null ? null : pulumi.Input.decodeList<DaprComponentServiceBindingResponse>(map['serviceComponentBind']!, (value) => DaprComponentServiceBindingResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

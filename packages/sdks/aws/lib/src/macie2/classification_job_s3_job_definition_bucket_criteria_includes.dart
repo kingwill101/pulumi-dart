@@ -21,7 +21,7 @@ class ClassificationJobS3JobDefinitionBucketCriteriaIncludes {
 
   factory ClassificationJobS3JobDefinitionBucketCriteriaIncludes.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionBucketCriteriaIncludes(
-      ands: map['ands'] == null ? null : (pulumi.Input.decodeList<ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd>(map['ands'], (value) => ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ands: map['ands'] == null ? null : ((pulumi.Input.decodeList<ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd>(map['ands']!, (value) => ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

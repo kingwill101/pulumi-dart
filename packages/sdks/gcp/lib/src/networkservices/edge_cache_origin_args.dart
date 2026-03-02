@@ -140,21 +140,21 @@ class EdgeCacheOriginArgs {
 
   factory EdgeCacheOriginArgs.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginArgs(
-      awsV4Authentication: map['awsV4Authentication'] == null ? null : (EdgeCacheOriginAwsV4Authentication.fromMap((map['awsV4Authentication'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      failoverOrigin: map['failoverOrigin'] == null ? null : (map['failoverOrigin'] as String).input(),
-      flexShielding: map['flexShielding'] == null ? null : (EdgeCacheOriginFlexShielding.fromMap((map['flexShielding'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      maxAttempts: map['maxAttempts'] == null ? null : (map['maxAttempts'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      awsV4Authentication: map['awsV4Authentication'] == null ? null : (EdgeCacheOriginAwsV4Authentication.fromMap((map['awsV4Authentication']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      failoverOrigin: map['failoverOrigin'] == null ? null : (map['failoverOrigin']! as String).input(),
+      flexShielding: map['flexShielding'] == null ? null : (EdgeCacheOriginFlexShielding.fromMap((map['flexShielding']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      maxAttempts: map['maxAttempts'] == null ? null : (map['maxAttempts']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       originAddress: (map['originAddress'] as String).input(),
-      originOverrideAction: map['originOverrideAction'] == null ? null : (EdgeCacheOriginOriginOverrideAction.fromMap((map['originOverrideAction'] as Map).cast<String, dynamic>())).input(),
-      originRedirect: map['originRedirect'] == null ? null : (EdgeCacheOriginOriginRedirect.fromMap((map['originRedirect'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      retryConditions: map['retryConditions'] == null ? null : ((map['retryConditions'] as List).cast<String>()).input(),
-      timeout: map['timeout'] == null ? null : (EdgeCacheOriginTimeout.fromMap((map['timeout'] as Map).cast<String, dynamic>())).input(),
+      originOverrideAction: map['originOverrideAction'] == null ? null : (EdgeCacheOriginOriginOverrideAction.fromMap((map['originOverrideAction']! as Map).cast<String, dynamic>())).input(),
+      originRedirect: map['originRedirect'] == null ? null : (EdgeCacheOriginOriginRedirect.fromMap((map['originRedirect']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      retryConditions: map['retryConditions'] == null ? null : ((map['retryConditions']! as List).cast<String>()).input(),
+      timeout: map['timeout'] == null ? null : (EdgeCacheOriginTimeout.fromMap((map['timeout']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

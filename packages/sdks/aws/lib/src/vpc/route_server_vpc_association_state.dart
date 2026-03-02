@@ -38,10 +38,10 @@ class RouteServerVpcAssociationState {
 
   factory RouteServerVpcAssociationState.fromMap(Map<String, dynamic> map) {
     return RouteServerVpcAssociationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routeServerId: map['routeServerId'] == null ? null : (map['routeServerId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (RouteServerVpcAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routeServerId: map['routeServerId'] == null ? null : ((map['routeServerId'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((RouteServerVpcAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

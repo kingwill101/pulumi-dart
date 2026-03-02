@@ -33,9 +33,9 @@ class GetCostCategoryRuleRuleAndAnd {
 
   factory GetCostCategoryRuleRuleAndAnd.fromMap(Map<String, dynamic> map) {
     return GetCostCategoryRuleRuleAndAnd(
-      costCategories: (pulumi.Input.decodeList<GetCostCategoryRuleRuleAndAndCostCategory>(map['costCategories'], (value) => GetCostCategoryRuleRuleAndAndCostCategory.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dimensions: (pulumi.Input.decodeList<GetCostCategoryRuleRuleAndAndDimension>(map['dimensions'], (value) => GetCostCategoryRuleRuleAndAndDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: (pulumi.Input.decodeList<GetCostCategoryRuleRuleAndAndTag>(map['tags'], (value) => GetCostCategoryRuleRuleAndAndTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      costCategories: (pulumi.Input.decodeList<GetCostCategoryRuleRuleAndAndCostCategory>(map['costCategories']!, (value) => GetCostCategoryRuleRuleAndAndCostCategory.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: (pulumi.Input.decodeList<GetCostCategoryRuleRuleAndAndDimension>(map['dimensions']!, (value) => GetCostCategoryRuleRuleAndAndDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: (pulumi.Input.decodeList<GetCostCategoryRuleRuleAndAndTag>(map['tags']!, (value) => GetCostCategoryRuleRuleAndAndTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

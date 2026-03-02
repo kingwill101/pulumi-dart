@@ -106,21 +106,21 @@ class SearchEngineState {
 
   factory SearchEngineState.fromMap(Map<String, dynamic> map) {
     return SearchEngineState(
-      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
-      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
-      commonConfig: map['commonConfig'] == null ? null : (SearchEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataStoreIds: map['dataStoreIds'] == null ? null : ((map['dataStoreIds'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      engineId: map['engineId'] == null ? null : (map['engineId'] as String).input(),
-      features: map['features'] == null ? null : ((map['features'] as Map).cast<String, String>()).input(),
-      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      searchEngineConfig: map['searchEngineConfig'] == null ? null : (SearchEngineSearchEngineConfig.fromMap((map['searchEngineConfig'] as Map).cast<String, dynamic>())).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      appType: map['appType'] == null ? null : (map['appType']! as String).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId']! as String).input(),
+      commonConfig: map['commonConfig'] == null ? null : (SearchEngineCommonConfig.fromMap((map['commonConfig']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataStoreIds: map['dataStoreIds'] == null ? null : ((map['dataStoreIds']! as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      engineId: map['engineId'] == null ? null : (map['engineId']! as String).input(),
+      features: map['features'] == null ? null : ((map['features']! as Map).cast<String, String>()).input(),
+      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical']! as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      searchEngineConfig: map['searchEngineConfig'] == null ? null : (SearchEngineSearchEngineConfig.fromMap((map['searchEngineConfig']! as Map).cast<String, dynamic>())).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

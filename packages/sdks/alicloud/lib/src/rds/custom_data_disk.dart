@@ -33,9 +33,9 @@ class CustomDataDisk {
 
   factory CustomDataDisk.fromMap(Map<String, dynamic> map) {
     return CustomDataDisk(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

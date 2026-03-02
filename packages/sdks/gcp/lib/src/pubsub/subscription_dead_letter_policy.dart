@@ -40,8 +40,8 @@ class SubscriptionDeadLetterPolicy {
 
   factory SubscriptionDeadLetterPolicy.fromMap(Map<String, dynamic> map) {
     return SubscriptionDeadLetterPolicy(
-      deadLetterTopic: map['deadLetterTopic'] == null ? null : (map['deadLetterTopic'] as String).input(),
-      maxDeliveryAttempts: map['maxDeliveryAttempts'] == null ? null : (map['maxDeliveryAttempts'] as int).input(),
+      deadLetterTopic: map['deadLetterTopic'] == null ? null : (map['deadLetterTopic']! as String).input(),
+      maxDeliveryAttempts: map['maxDeliveryAttempts'] == null ? null : (map['maxDeliveryAttempts']! as int).input(),
     );
   }
 }

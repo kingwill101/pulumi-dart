@@ -40,8 +40,8 @@ class ComponentCurrentBillingFeatureArgs {
 
   factory ComponentCurrentBillingFeatureArgs.fromMap(Map<String, dynamic> map) {
     return ComponentCurrentBillingFeatureArgs(
-      currentBillingFeatures: map['currentBillingFeatures'] == null ? null : ((map['currentBillingFeatures'] as List).cast<String>()).input(),
-      dataVolumeCap: map['dataVolumeCap'] == null ? null : (ApplicationInsightsComponentDataVolumeCap.fromMap((map['dataVolumeCap'] as Map).cast<String, dynamic>())).input(),
+      currentBillingFeatures: map['currentBillingFeatures'] == null ? null : ((map['currentBillingFeatures']! as List).cast<String>()).input(),
+      dataVolumeCap: map['dataVolumeCap'] == null ? null : (ApplicationInsightsComponentDataVolumeCap.fromMap((map['dataVolumeCap']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

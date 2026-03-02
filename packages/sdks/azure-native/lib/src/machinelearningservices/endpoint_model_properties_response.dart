@@ -73,17 +73,17 @@ class EndpointModelPropertiesResponse {
 
   factory EndpointModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointModelPropertiesResponse(
-      capabilities: map['capabilities'] == null ? null : ((map['capabilities'] as Map).cast<String, String>()).input(),
-      deprecation: map['deprecation'] == null ? null : (EndpointModelDeprecationPropertiesResponse.fromMap((map['deprecation'] as Map).cast<String, dynamic>())).input(),
-      finetuneCapabilities: map['finetuneCapabilities'] == null ? null : ((map['finetuneCapabilities'] as Map).cast<String, String>()).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      isDefaultVersion: map['isDefaultVersion'] == null ? null : (map['isDefaultVersion'] as bool).input(),
-      lifecycleStatus: map['lifecycleStatus'] == null ? null : (map['lifecycleStatus'] as String).input(),
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      skus: map['skus'] == null ? null : (pulumi.Input.decodeList<EndpointModelSkuPropertiesResponse>(map['skus'], (value) => EndpointModelSkuPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      capabilities: map['capabilities'] == null ? null : ((map['capabilities']! as Map).cast<String, String>()).input(),
+      deprecation: map['deprecation'] == null ? null : (EndpointModelDeprecationPropertiesResponse.fromMap((map['deprecation']! as Map).cast<String, dynamic>())).input(),
+      finetuneCapabilities: map['finetuneCapabilities'] == null ? null : ((map['finetuneCapabilities']! as Map).cast<String, String>()).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      isDefaultVersion: map['isDefaultVersion'] == null ? null : (map['isDefaultVersion']! as bool).input(),
+      lifecycleStatus: map['lifecycleStatus'] == null ? null : (map['lifecycleStatus']! as String).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      skus: map['skus'] == null ? null : (pulumi.Input.decodeList<EndpointModelSkuPropertiesResponse>(map['skus']!, (value) => EndpointModelSkuPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

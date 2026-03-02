@@ -51,11 +51,11 @@ class IotHubDeviceUpdateInstanceArgs {
   factory IotHubDeviceUpdateInstanceArgs.fromMap(Map<String, dynamic> map) {
     return IotHubDeviceUpdateInstanceArgs(
       deviceUpdateAccountId: (map['deviceUpdateAccountId'] as String).input(),
-      diagnosticEnabled: map['diagnosticEnabled'] == null ? null : (map['diagnosticEnabled'] as bool).input(),
-      diagnosticStorageAccount: map['diagnosticStorageAccount'] == null ? null : (IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap((map['diagnosticStorageAccount'] as Map).cast<String, dynamic>())).input(),
+      diagnosticEnabled: map['diagnosticEnabled'] == null ? null : (map['diagnosticEnabled']! as bool).input(),
+      diagnosticStorageAccount: map['diagnosticStorageAccount'] == null ? null : (IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap((map['diagnosticStorageAccount']! as Map).cast<String, dynamic>())).input(),
       iothubId: (map['iothubId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

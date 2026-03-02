@@ -63,13 +63,13 @@ class GetZoneRrsetResult {
   factory GetZoneRrsetResult.fromMap(Map<String, dynamic> map) {
     return GetZoneRrsetResult(
       changeProtection: map['changeProtection'] as bool,
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       records: pulumi.Input.decodeList<GetZoneRrsetRecord>(map['records'], (value) => GetZoneRrsetRecord.fromMap((value as Map).cast<String, dynamic>())),
       ttl: map['ttl'] as int,
-      type: map['type'] == null ? null : map['type'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      type: map['type'] == null ? null : map['type']! as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
       zone: map['zone'] as String,
     );
   }

@@ -39,10 +39,10 @@ class AppRegistry {
 
   factory AppRegistry.fromMap(Map<String, dynamic> map) {
     return AppRegistry(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      passwordSecretName: map['passwordSecretName'] == null ? null : (map['passwordSecretName'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
+      passwordSecretName: map['passwordSecretName'] == null ? null : (map['passwordSecretName']! as String).input(),
       server: (map['server'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

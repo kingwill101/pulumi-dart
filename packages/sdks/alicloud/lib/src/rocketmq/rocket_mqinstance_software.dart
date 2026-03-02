@@ -30,9 +30,9 @@ class RocketMQInstanceSoftware {
 
   factory RocketMQInstanceSoftware.fromMap(Map<String, dynamic> map) {
     return RocketMQInstanceSoftware(
-      maintainTime: map['maintainTime'] == null ? null : (map['maintainTime'] as String).input(),
-      softwareVersion: map['softwareVersion'] == null ? null : (map['softwareVersion'] as String).input(),
-      upgradeMethod: map['upgradeMethod'] == null ? null : (map['upgradeMethod'] as String).input(),
+      maintainTime: map['maintainTime'] == null ? null : (map['maintainTime']! as String).input(),
+      softwareVersion: map['softwareVersion'] == null ? null : (map['softwareVersion']! as String).input(),
+      upgradeMethod: map['upgradeMethod'] == null ? null : (map['upgradeMethod']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class AppEngine {
 
   factory AppEngine.fromMap(Map<String, dynamic> map) {
     return AppEngine(
-      moduleId: map['moduleId'] == null ? null : (map['moduleId'] as String).input(),
+      moduleId: map['moduleId'] == null ? null : (map['moduleId']! as String).input(),
     );
   }
 }

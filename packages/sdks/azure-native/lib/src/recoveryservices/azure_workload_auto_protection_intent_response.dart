@@ -47,12 +47,12 @@ class AzureWorkloadAutoProtectionIntentResponse {
 
   factory AzureWorkloadAutoProtectionIntentResponse.fromMap(Map<String, dynamic> map) {
     return AzureWorkloadAutoProtectionIntentResponse(
-      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType'] as String).input(),
-      itemId: map['itemId'] == null ? null : (map['itemId'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType']! as String).input(),
+      itemId: map['itemId'] == null ? null : (map['itemId']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
       protectionIntentItemType: (map['protectionIntentItemType'] as String).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState'] as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
+      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class NodePoolNodeConfigKubeletConfigMemoryManager {
 
   factory NodePoolNodeConfigKubeletConfigMemoryManager.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigKubeletConfigMemoryManager(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
     );
   }
 }

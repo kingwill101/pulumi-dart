@@ -32,7 +32,7 @@ class GetRegionBackendServiceArgs {
   factory GetRegionBackendServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceArgs(
       backendService: (map['backendService'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

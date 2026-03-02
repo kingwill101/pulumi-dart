@@ -20,7 +20,7 @@ class DataLakeAnalyticsSchemaProperties {
 
   factory DataLakeAnalyticsSchemaProperties.fromMap(Map<String, dynamic> map) {
     return DataLakeAnalyticsSchemaProperties(
-      dataLakeStoreAccountName: map['dataLakeStoreAccountName'] == null ? null : (map['dataLakeStoreAccountName'] as String).input(),
+      dataLakeStoreAccountName: map['dataLakeStoreAccountName'] == null ? null : (map['dataLakeStoreAccountName']! as String).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class LocalRulestackPrefixListState {
 
   factory LocalRulestackPrefixListState.fromMap(Map<String, dynamic> map) {
     return LocalRulestackPrefixListState(
-      auditComment: map['auditComment'] == null ? null : (map['auditComment'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      prefixLists: map['prefixLists'] == null ? null : ((map['prefixLists'] as List).cast<String>()).input(),
-      rulestackId: map['rulestackId'] == null ? null : (map['rulestackId'] as String).input(),
+      auditComment: map['auditComment'] == null ? null : (map['auditComment']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      prefixLists: map['prefixLists'] == null ? null : ((map['prefixLists']! as List).cast<String>()).input(),
+      rulestackId: map['rulestackId'] == null ? null : (map['rulestackId']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

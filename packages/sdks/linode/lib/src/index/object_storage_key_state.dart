@@ -55,13 +55,13 @@ class ObjectStorageKeyState {
 
   factory ObjectStorageKeyState.fromMap(Map<String, dynamic> map) {
     return ObjectStorageKeyState(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      bucketAccesses: map['bucketAccesses'] == null ? null : (pulumi.Input.decodeList<ObjectStorageKeyBucketAccess>(map['bucketAccesses'], (value) => ObjectStorageKeyBucketAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      limited: map['limited'] == null ? null : (map['limited'] as bool).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      regionsDetails: map['regionsDetails'] == null ? null : (pulumi.Input.decodeList<ObjectStorageKeyRegionsDetail>(map['regionsDetails'], (value) => ObjectStorageKeyRegionsDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
+      bucketAccesses: map['bucketAccesses'] == null ? null : (pulumi.Input.decodeList<ObjectStorageKeyBucketAccess>(map['bucketAccesses']!, (value) => ObjectStorageKeyBucketAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      limited: map['limited'] == null ? null : (map['limited']! as bool).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
+      regionsDetails: map['regionsDetails'] == null ? null : (pulumi.Input.decodeList<ObjectStorageKeyRegionsDetail>(map['regionsDetails']!, (value) => ObjectStorageKeyRegionsDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey']! as String).input(),
     );
   }
 }

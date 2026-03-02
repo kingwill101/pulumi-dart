@@ -86,20 +86,20 @@ class OciLinkAccountState {
 
   factory OciLinkAccountState.fromMap(Map<String, dynamic> map) {
     return OciLinkAccountState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      compartmentOcid: map['compartmentOcid'] == null ? null : (map['compartmentOcid'] as String).input(),
-      ingestVaultOcid: map['ingestVaultOcid'] == null ? null : (map['ingestVaultOcid'] as String).input(),
-      instrumentationType: map['instrumentationType'] == null ? null : (map['instrumentationType'] as String).input(),
-      loggingStackOcid: map['loggingStackOcid'] == null ? null : (map['loggingStackOcid'] as String).input(),
-      metricStackOcid: map['metricStackOcid'] == null ? null : (map['metricStackOcid'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ociClientId: map['ociClientId'] == null ? null : (map['ociClientId'] as String).input(),
-      ociClientSecret: map['ociClientSecret'] == null ? null : (map['ociClientSecret'] as String).input(),
-      ociDomainUrl: map['ociDomainUrl'] == null ? null : (map['ociDomainUrl'] as String).input(),
-      ociHomeRegion: map['ociHomeRegion'] == null ? null : (map['ociHomeRegion'] as String).input(),
-      ociRegion: map['ociRegion'] == null ? null : (map['ociRegion'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      userVaultOcid: map['userVaultOcid'] == null ? null : (map['userVaultOcid'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      compartmentOcid: map['compartmentOcid'] == null ? null : (map['compartmentOcid']! as String).input(),
+      ingestVaultOcid: map['ingestVaultOcid'] == null ? null : (map['ingestVaultOcid']! as String).input(),
+      instrumentationType: map['instrumentationType'] == null ? null : (map['instrumentationType']! as String).input(),
+      loggingStackOcid: map['loggingStackOcid'] == null ? null : (map['loggingStackOcid']! as String).input(),
+      metricStackOcid: map['metricStackOcid'] == null ? null : (map['metricStackOcid']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ociClientId: map['ociClientId'] == null ? null : (map['ociClientId']! as String).input(),
+      ociClientSecret: map['ociClientSecret'] == null ? null : (map['ociClientSecret']! as String).input(),
+      ociDomainUrl: map['ociDomainUrl'] == null ? null : (map['ociDomainUrl']! as String).input(),
+      ociHomeRegion: map['ociHomeRegion'] == null ? null : (map['ociHomeRegion']! as String).input(),
+      ociRegion: map['ociRegion'] == null ? null : (map['ociRegion']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      userVaultOcid: map['userVaultOcid'] == null ? null : (map['userVaultOcid']! as String).input(),
     );
   }
 }

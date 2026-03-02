@@ -61,15 +61,15 @@ class ApiOperationResponseHeader {
 
   factory ApiOperationResponseHeader.fromMap(Map<String, dynamic> map) {
     return ApiOperationResponseHeader(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      examples: map['examples'] == null ? null : (pulumi.Input.decodeList<ApiOperationResponseHeaderExample>(map['examples'], (value) => ApiOperationResponseHeaderExample.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      examples: map['examples'] == null ? null : (pulumi.Input.decodeList<ApiOperationResponseHeaderExample>(map['examples']!, (value) => ApiOperationResponseHeaderExample.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       required: (map['required'] as bool).input(),
-      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId']! as String).input(),
       type: (map['type'] as String).input(),
-      typeName: map['typeName'] == null ? null : (map['typeName'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      typeName: map['typeName'] == null ? null : (map['typeName']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

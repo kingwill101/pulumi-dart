@@ -27,8 +27,8 @@ class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidation {
 
   factory VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidation.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidation(
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : (VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames'] as Map).cast<String, dynamic>())).input(),
-      trust: (VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrust.fromMap((map['trust'] as Map).cast<String, dynamic>())).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames']! as Map).cast<String, dynamic>())).input()).input(),
+      trust: (VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrust.fromMap((map['trust']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

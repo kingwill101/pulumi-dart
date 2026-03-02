@@ -31,7 +31,7 @@ class ConfigurationProtectedFile {
   factory ConfigurationProtectedFile.fromMap(Map<String, dynamic> map) {
     return ConfigurationProtectedFile(
       content: (map['content'] as String).input(),
-      contentHash: map['contentHash'] == null ? null : (map['contentHash'] as String).input(),
+      contentHash: map['contentHash'] == null ? null : (map['contentHash']! as String).input(),
       virtualPath: (map['virtualPath'] as String).input(),
     );
   }

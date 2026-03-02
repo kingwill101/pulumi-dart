@@ -52,9 +52,9 @@ class NamespaceIamMemberArgs {
 
   factory NamespaceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceIamMemberArgs(
-      condition: map['condition'] == null ? null : (NamespaceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (NamespaceIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

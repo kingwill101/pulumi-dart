@@ -24,7 +24,7 @@ class InterconnectAttachmentGroupConfigured {
 
   factory InterconnectAttachmentGroupConfigured.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupConfigured(
-      availabilitySlas: map['availabilitySlas'] == null ? null : (pulumi.Input.decodeList<InterconnectAttachmentGroupConfiguredAvailabilitySla>(map['availabilitySlas'], (value) => InterconnectAttachmentGroupConfiguredAvailabilitySla.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      availabilitySlas: map['availabilitySlas'] == null ? null : (pulumi.Input.decodeList<InterconnectAttachmentGroupConfiguredAvailabilitySla>(map['availabilitySlas']!, (value) => InterconnectAttachmentGroupConfiguredAvailabilitySla.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

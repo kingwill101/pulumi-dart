@@ -27,7 +27,7 @@ class WorkforcePoolProviderOidcClientSecretValue {
   factory WorkforcePoolProviderOidcClientSecretValue.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderOidcClientSecretValue(
       plainText: (map['plainText'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

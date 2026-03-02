@@ -35,7 +35,7 @@ class GetVpcSubnetsResult {
 
   factory GetVpcSubnetsResult.fromMap(Map<String, dynamic> map) {
     return GetVpcSubnetsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcSubnetsFilter>(map['filters'], (value) => GetVpcSubnetsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcSubnetsFilter>(map['filters']!, (value) => GetVpcSubnetsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       vpcId: map['vpcId'] as int,
       vpcSubnets: pulumi.Input.decodeList<GetVpcSubnetsVpcSubnet>(map['vpcSubnets'], (value) => GetVpcSubnetsVpcSubnet.fromMap((value as Map).cast<String, dynamic>())),

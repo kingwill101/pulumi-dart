@@ -30,8 +30,8 @@ class GetDataSetPhysicalTableMapS3Source {
   factory GetDataSetPhysicalTableMapS3Source.fromMap(Map<String, dynamic> map) {
     return GetDataSetPhysicalTableMapS3Source(
       dataSourceArn: (map['dataSourceArn'] as String).input(),
-      inputColumns: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapS3SourceInputColumn>(map['inputColumns'], (value) => GetDataSetPhysicalTableMapS3SourceInputColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uploadSettings: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapS3SourceUploadSetting>(map['uploadSettings'], (value) => GetDataSetPhysicalTableMapS3SourceUploadSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputColumns: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapS3SourceInputColumn>(map['inputColumns']!, (value) => GetDataSetPhysicalTableMapS3SourceInputColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uploadSettings: (pulumi.Input.decodeList<GetDataSetPhysicalTableMapS3SourceUploadSetting>(map['uploadSettings']!, (value) => GetDataSetPhysicalTableMapS3SourceUploadSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

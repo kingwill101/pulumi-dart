@@ -23,8 +23,8 @@ class AdditionalAuthorizationResponse {
 
   factory AdditionalAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalAuthorizationResponse(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
     );
   }
 }

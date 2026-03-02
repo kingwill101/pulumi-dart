@@ -62,15 +62,15 @@ class ApiConnectionDefinitionProperties {
 
   factory ApiConnectionDefinitionProperties.fromMap(Map<String, dynamic> map) {
     return ApiConnectionDefinitionProperties(
-      api: map['api'] == null ? null : (ApiReference.fromMap((map['api'] as Map).cast<String, dynamic>())).input(),
-      changedTime: map['changedTime'] == null ? null : (map['changedTime'] as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      customParameterValues: map['customParameterValues'] == null ? null : ((map['customParameterValues'] as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      nonSecretParameterValues: map['nonSecretParameterValues'] == null ? null : ((map['nonSecretParameterValues'] as Map).cast<String, String>()).input(),
-      parameterValues: map['parameterValues'] == null ? null : ((map['parameterValues'] as Map).cast<String, String>()).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ConnectionStatusDefinition>(map['statuses'], (value) => ConnectionStatusDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      testLinks: map['testLinks'] == null ? null : (pulumi.Input.decodeList<ApiConnectionTestLink>(map['testLinks'], (value) => ApiConnectionTestLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      api: map['api'] == null ? null : (ApiReference.fromMap((map['api']! as Map).cast<String, dynamic>())).input(),
+      changedTime: map['changedTime'] == null ? null : (map['changedTime']! as String).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime']! as String).input(),
+      customParameterValues: map['customParameterValues'] == null ? null : ((map['customParameterValues']! as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      nonSecretParameterValues: map['nonSecretParameterValues'] == null ? null : ((map['nonSecretParameterValues']! as Map).cast<String, String>()).input(),
+      parameterValues: map['parameterValues'] == null ? null : ((map['parameterValues']! as Map).cast<String, String>()).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ConnectionStatusDefinition>(map['statuses']!, (value) => ConnectionStatusDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testLinks: map['testLinks'] == null ? null : (pulumi.Input.decodeList<ApiConnectionTestLink>(map['testLinks']!, (value) => ApiConnectionTestLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

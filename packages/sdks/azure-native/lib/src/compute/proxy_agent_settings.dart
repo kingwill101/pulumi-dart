@@ -42,11 +42,11 @@ class ProxyAgentSettings {
 
   factory ProxyAgentSettings.fromMap(Map<String, dynamic> map) {
     return ProxyAgentSettings(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      imds: map['imds'] == null ? null : (HostEndpointSettings.fromMap((map['imds'] as Map).cast<String, dynamic>())).input(),
-      keyIncarnationId: map['keyIncarnationId'] == null ? null : (map['keyIncarnationId'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      wireServer: map['wireServer'] == null ? null : (HostEndpointSettings.fromMap((map['wireServer'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      imds: map['imds'] == null ? null : (HostEndpointSettings.fromMap((map['imds']! as Map).cast<String, dynamic>())).input(),
+      keyIncarnationId: map['keyIncarnationId'] == null ? null : (map['keyIncarnationId']! as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      wireServer: map['wireServer'] == null ? null : (HostEndpointSettings.fromMap((map['wireServer']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

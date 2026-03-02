@@ -80,18 +80,18 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      batchModePriority: map['batchModePriority'] == null ? null : (map['batchModePriority'] as int).input(),
-      config: map['config'] == null ? null : (JobConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      inputUri: map['inputUri'] == null ? null : (map['inputUri'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mode: map['mode'] == null ? null : (JobMode.fromValue(map['mode'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      optimization: map['optimization'] == null ? null : (JobOptimization.fromValue(map['optimization'] as String)).input(),
-      outputUri: map['outputUri'] == null ? null : (map['outputUri'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      ttlAfterCompletionDays: map['ttlAfterCompletionDays'] == null ? null : (map['ttlAfterCompletionDays'] as int).input(),
+      batchModePriority: map['batchModePriority'] == null ? null : (map['batchModePriority']! as int).input(),
+      config: map['config'] == null ? null : (JobConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      inputUri: map['inputUri'] == null ? null : (map['inputUri']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mode: map['mode'] == null ? null : (JobMode.fromValue(map['mode']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      optimization: map['optimization'] == null ? null : (JobOptimization.fromValue(map['optimization']! as String)).input(),
+      outputUri: map['outputUri'] == null ? null : (map['outputUri']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      ttlAfterCompletionDays: map['ttlAfterCompletionDays'] == null ? null : (map['ttlAfterCompletionDays']! as int).input(),
     );
   }
 }

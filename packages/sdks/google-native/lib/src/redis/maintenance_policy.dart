@@ -27,8 +27,8 @@ class MaintenancePolicy {
 
   factory MaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return MaintenancePolicy(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      weeklyMaintenanceWindow: map['weeklyMaintenanceWindow'] == null ? null : (pulumi.Input.decodeList<WeeklyMaintenanceWindow>(map['weeklyMaintenanceWindow'], (value) => WeeklyMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      weeklyMaintenanceWindow: map['weeklyMaintenanceWindow'] == null ? null : (pulumi.Input.decodeList<WeeklyMaintenanceWindow>(map['weeklyMaintenanceWindow']!, (value) => WeeklyMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

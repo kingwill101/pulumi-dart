@@ -52,12 +52,12 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      configs: map['configs'] == null ? null : ((map['configs'] as Map).cast<String, String>()).input(),
+      configs: map['configs'] == null ? null : ((map['configs']! as Map).cast<String, String>()).input(),
       connectCluster: (map['connectCluster'] as String).input(),
       connectorId: (map['connectorId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      taskRestartPolicy: map['taskRestartPolicy'] == null ? null : (ConnectorTaskRestartPolicy.fromMap((map['taskRestartPolicy'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      taskRestartPolicy: map['taskRestartPolicy'] == null ? null : (ConnectorTaskRestartPolicy.fromMap((map['taskRestartPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

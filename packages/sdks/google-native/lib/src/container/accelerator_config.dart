@@ -43,11 +43,11 @@ class AcceleratorConfig {
 
   factory AcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfig(
-      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount'] as String).input(),
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
-      gpuDriverInstallationConfig: map['gpuDriverInstallationConfig'] == null ? null : (GPUDriverInstallationConfig.fromMap((map['gpuDriverInstallationConfig'] as Map).cast<String, dynamic>())).input(),
-      gpuPartitionSize: map['gpuPartitionSize'] == null ? null : (map['gpuPartitionSize'] as String).input(),
-      gpuSharingConfig: map['gpuSharingConfig'] == null ? null : (GPUSharingConfig.fromMap((map['gpuSharingConfig'] as Map).cast<String, dynamic>())).input(),
+      acceleratorCount: map['acceleratorCount'] == null ? null : (map['acceleratorCount']! as String).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      gpuDriverInstallationConfig: map['gpuDriverInstallationConfig'] == null ? null : (GPUDriverInstallationConfig.fromMap((map['gpuDriverInstallationConfig']! as Map).cast<String, dynamic>())).input(),
+      gpuPartitionSize: map['gpuPartitionSize'] == null ? null : (map['gpuPartitionSize']! as String).input(),
+      gpuSharingConfig: map['gpuSharingConfig'] == null ? null : (GPUSharingConfig.fromMap((map['gpuSharingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

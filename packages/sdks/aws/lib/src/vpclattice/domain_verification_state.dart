@@ -68,16 +68,16 @@ class DomainVerificationState {
 
   factory DomainVerificationState.fromMap(Map<String, dynamic> map) {
     return DomainVerificationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      lastVerifiedTime: map['lastVerifiedTime'] == null ? null : (map['lastVerifiedTime'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      txtRecordName: map['txtRecordName'] == null ? null : (map['txtRecordName'] as String).input(),
-      txtRecordValue: map['txtRecordValue'] == null ? null : (map['txtRecordValue'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      lastVerifiedTime: map['lastVerifiedTime'] == null ? null : ((map['lastVerifiedTime'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      txtRecordName: map['txtRecordName'] == null ? null : ((map['txtRecordName'] as String).input()).input(),
+      txtRecordValue: map['txtRecordValue'] == null ? null : ((map['txtRecordValue'] as String).input()).input(),
     );
   }
 }

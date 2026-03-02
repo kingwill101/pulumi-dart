@@ -25,8 +25,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound(
-      floatValue: map['floatValue'] == null ? null : (map['floatValue'] as double).input(),
-      integerValue: map['integerValue'] == null ? null : (map['integerValue'] as String).input(),
+      floatValue: map['floatValue'] == null ? null : (map['floatValue']! as double).input(),
+      integerValue: map['integerValue'] == null ? null : (map['integerValue']! as String).input(),
     );
   }
 }

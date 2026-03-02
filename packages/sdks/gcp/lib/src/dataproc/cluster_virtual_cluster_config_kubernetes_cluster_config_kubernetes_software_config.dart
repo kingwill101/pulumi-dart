@@ -29,7 +29,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
   factory ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig(
       componentVersion: ((map['componentVersion'] as Map).cast<String, String>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
     );
   }
 }

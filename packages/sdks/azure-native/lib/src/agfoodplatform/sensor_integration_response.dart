@@ -32,8 +32,8 @@ class SensorIntegrationResponse {
 
   factory SensorIntegrationResponse.fromMap(Map<String, dynamic> map) {
     return SensorIntegrationResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
-      provisioningInfo: map['provisioningInfo'] == null ? null : (ErrorResponseResponse.fromMap((map['provisioningInfo'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
+      provisioningInfo: map['provisioningInfo'] == null ? null : (ErrorResponseResponse.fromMap((map['provisioningInfo']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

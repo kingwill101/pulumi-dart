@@ -30,9 +30,9 @@ class NetworkConnectionMonitorTestConfigurationTcpConfiguration {
 
   factory NetworkConnectionMonitorTestConfigurationTcpConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorTestConfigurationTcpConfiguration(
-      destinationPortBehavior: map['destinationPortBehavior'] == null ? null : (map['destinationPortBehavior'] as String).input(),
+      destinationPortBehavior: map['destinationPortBehavior'] == null ? null : (map['destinationPortBehavior']! as String).input(),
       port: (map['port'] as int).input(),
-      traceRouteEnabled: map['traceRouteEnabled'] == null ? null : (map['traceRouteEnabled'] as bool).input(),
+      traceRouteEnabled: map['traceRouteEnabled'] == null ? null : (map['traceRouteEnabled']! as bool).input(),
     );
   }
 }

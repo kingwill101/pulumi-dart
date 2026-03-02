@@ -46,12 +46,12 @@ class ManagedInstanceExternalAdministrator {
 
   factory ManagedInstanceExternalAdministrator.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceExternalAdministrator(
-      administratorType: map['administratorType'] == null ? null : (map['administratorType'] as String).input(),
-      azureADOnlyAuthentication: map['azureADOnlyAuthentication'] == null ? null : (map['azureADOnlyAuthentication'] as bool).input(),
-      login: map['login'] == null ? null : (map['login'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      administratorType: map['administratorType'] == null ? null : (map['administratorType']! as String).input(),
+      azureADOnlyAuthentication: map['azureADOnlyAuthentication'] == null ? null : (map['azureADOnlyAuthentication']! as bool).input(),
+      login: map['login'] == null ? null : (map['login']! as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
+      sid: map['sid'] == null ? null : (map['sid']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

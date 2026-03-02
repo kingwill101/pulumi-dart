@@ -98,8 +98,8 @@ class GetCIAMTenantResult {
       provisioningState: map['provisioningState'] as String,
       sku: CIAMResourceSKUResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
     );
   }

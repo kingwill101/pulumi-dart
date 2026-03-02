@@ -41,11 +41,11 @@ class WorkspaceNetworkOutboundRuleServiceTagState {
 
   factory WorkspaceNetworkOutboundRuleServiceTagState.fromMap(Map<String, dynamic> map) {
     return WorkspaceNetworkOutboundRuleServiceTagState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      portRanges: map['portRanges'] == null ? null : (map['portRanges'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      serviceTag: map['serviceTag'] == null ? null : (map['serviceTag'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      portRanges: map['portRanges'] == null ? null : (map['portRanges']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      serviceTag: map['serviceTag'] == null ? null : (map['serviceTag']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

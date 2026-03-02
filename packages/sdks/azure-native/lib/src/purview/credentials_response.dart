@@ -26,8 +26,8 @@ class CredentialsResponse {
 
   factory CredentialsResponse.fromMap(Map<String, dynamic> map) {
     return CredentialsResponse(
-      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -70,16 +70,16 @@ class SnapshotPolicyState {
 
   factory SnapshotPolicyState.fromMap(Map<String, dynamic> map) {
     return SnapshotPolicyState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      dailySchedule: map['dailySchedule'] == null ? null : (SnapshotPolicyDailySchedule.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      hourlySchedule: map['hourlySchedule'] == null ? null : (SnapshotPolicyHourlySchedule.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      monthlySchedule: map['monthlySchedule'] == null ? null : (SnapshotPolicyMonthlySchedule.fromMap((map['monthlySchedule'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      weeklySchedule: map['weeklySchedule'] == null ? null : (SnapshotPolicyWeeklySchedule.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      dailySchedule: map['dailySchedule'] == null ? null : (SnapshotPolicyDailySchedule.fromMap((map['dailySchedule']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      hourlySchedule: map['hourlySchedule'] == null ? null : (SnapshotPolicyHourlySchedule.fromMap((map['hourlySchedule']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      monthlySchedule: map['monthlySchedule'] == null ? null : (SnapshotPolicyMonthlySchedule.fromMap((map['monthlySchedule']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      weeklySchedule: map['weeklySchedule'] == null ? null : (SnapshotPolicyWeeklySchedule.fromMap((map['weeklySchedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -42,10 +42,10 @@ class GroupContractPropertiesResponse {
   factory GroupContractPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GroupContractPropertiesResponse(
       builtIn: (map['builtIn'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

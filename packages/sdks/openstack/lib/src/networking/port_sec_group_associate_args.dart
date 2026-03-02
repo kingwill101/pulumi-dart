@@ -45,9 +45,9 @@ class PortSecGroupAssociateArgs {
 
   factory PortSecGroupAssociateArgs.fromMap(Map<String, dynamic> map) {
     return PortSecGroupAssociateArgs(
-      enforce: map['enforce'] == null ? null : (map['enforce'] as bool).input(),
+      enforce: map['enforce'] == null ? null : (map['enforce']! as bool).input(),
       portId: (map['portId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
     );
   }

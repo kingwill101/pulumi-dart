@@ -64,15 +64,15 @@ class GetIpamIpamScopesArgs {
 
   factory GetIpamIpamScopesArgs.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamScopesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      ipamId: map['ipamId'] == null ? null : (map['ipamId'] as String).input(),
-      ipamScopeId: map['ipamScopeId'] == null ? null : (map['ipamScopeId'] as String).input(),
-      ipamScopeName: map['ipamScopeName'] == null ? null : (map['ipamScopeName'] as String).input(),
-      ipamScopeType: map['ipamScopeType'] == null ? null : (map['ipamScopeType'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      ipamId: map['ipamId'] == null ? null : (map['ipamId']! as String).input(),
+      ipamScopeId: map['ipamScopeId'] == null ? null : (map['ipamScopeId']! as String).input(),
+      ipamScopeName: map['ipamScopeName'] == null ? null : (map['ipamScopeName']! as String).input(),
+      ipamScopeType: map['ipamScopeType'] == null ? null : (map['ipamScopeType']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class SoftwareConfigComposerV1beta1 {
 
   factory SoftwareConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return SoftwareConfigComposerV1beta1(
-      airflowConfigOverrides: map['airflowConfigOverrides'] == null ? null : ((map['airflowConfigOverrides'] as Map).cast<String, String>()).input(),
-      cloudDataLineageIntegration: map['cloudDataLineageIntegration'] == null ? null : (CloudDataLineageIntegration.fromMap((map['cloudDataLineageIntegration'] as Map).cast<String, dynamic>())).input(),
-      envVariables: map['envVariables'] == null ? null : ((map['envVariables'] as Map).cast<String, String>()).input(),
-      imageVersion: map['imageVersion'] == null ? null : (map['imageVersion'] as String).input(),
-      pypiPackages: map['pypiPackages'] == null ? null : ((map['pypiPackages'] as Map).cast<String, String>()).input(),
-      pythonVersion: map['pythonVersion'] == null ? null : (map['pythonVersion'] as String).input(),
-      schedulerCount: map['schedulerCount'] == null ? null : (map['schedulerCount'] as int).input(),
+      airflowConfigOverrides: map['airflowConfigOverrides'] == null ? null : ((map['airflowConfigOverrides']! as Map).cast<String, String>()).input(),
+      cloudDataLineageIntegration: map['cloudDataLineageIntegration'] == null ? null : (CloudDataLineageIntegration.fromMap((map['cloudDataLineageIntegration']! as Map).cast<String, dynamic>())).input(),
+      envVariables: map['envVariables'] == null ? null : ((map['envVariables']! as Map).cast<String, String>()).input(),
+      imageVersion: map['imageVersion'] == null ? null : (map['imageVersion']! as String).input(),
+      pypiPackages: map['pypiPackages'] == null ? null : ((map['pypiPackages']! as Map).cast<String, String>()).input(),
+      pythonVersion: map['pythonVersion'] == null ? null : (map['pythonVersion']! as String).input(),
+      schedulerCount: map['schedulerCount'] == null ? null : (map['schedulerCount']! as int).input(),
     );
   }
 }

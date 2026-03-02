@@ -46,9 +46,9 @@ class ElasticBackupArgs {
   factory ElasticBackupArgs.fromMap(Map<String, dynamic> map) {
     return ElasticBackupArgs(
       accountName: (map['accountName'] as String).input(),
-      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
+      backupName: map['backupName'] == null ? null : (map['backupName']! as String).input(),
       backupVaultName: (map['backupVaultName'] as String).input(),
-      properties: map['properties'] == null ? null : (ElasticBackupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ElasticBackupProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

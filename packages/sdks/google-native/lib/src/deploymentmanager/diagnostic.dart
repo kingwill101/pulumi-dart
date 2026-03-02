@@ -26,8 +26,8 @@ class Diagnostic {
 
   factory Diagnostic.fromMap(Map<String, dynamic> map) {
     return Diagnostic(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      level: map['level'] == null ? null : (DiagnosticLevel.fromValue(map['level'] as String)).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      level: map['level'] == null ? null : (DiagnosticLevel.fromValue(map['level']! as String)).input(),
     );
   }
 }

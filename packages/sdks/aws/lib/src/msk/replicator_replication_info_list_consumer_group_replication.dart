@@ -35,10 +35,10 @@ class ReplicatorReplicationInfoListConsumerGroupReplication {
 
   factory ReplicatorReplicationInfoListConsumerGroupReplication.fromMap(Map<String, dynamic> map) {
     return ReplicatorReplicationInfoListConsumerGroupReplication(
-      consumerGroupsToExcludes: map['consumerGroupsToExcludes'] == null ? null : ((map['consumerGroupsToExcludes'] as List).cast<String>()).input(),
+      consumerGroupsToExcludes: map['consumerGroupsToExcludes'] == null ? null : (((map['consumerGroupsToExcludes'] as List).cast<String>()).input()).input(),
       consumerGroupsToReplicates: ((map['consumerGroupsToReplicates'] as List).cast<String>()).input(),
-      detectAndCopyNewConsumerGroups: map['detectAndCopyNewConsumerGroups'] == null ? null : (map['detectAndCopyNewConsumerGroups'] as bool).input(),
-      synchroniseConsumerGroupOffsets: map['synchroniseConsumerGroupOffsets'] == null ? null : (map['synchroniseConsumerGroupOffsets'] as bool).input(),
+      detectAndCopyNewConsumerGroups: map['detectAndCopyNewConsumerGroups'] == null ? null : ((map['detectAndCopyNewConsumerGroups'] as bool).input()).input(),
+      synchroniseConsumerGroupOffsets: map['synchroniseConsumerGroupOffsets'] == null ? null : ((map['synchroniseConsumerGroupOffsets'] as bool).input()).input(),
     );
   }
 }

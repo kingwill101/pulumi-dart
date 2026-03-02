@@ -20,7 +20,7 @@ class ClusterNodePoolAutoConfigNetworkTags {
 
   factory ClusterNodePoolAutoConfigNetworkTags.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolAutoConfigNetworkTags(
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

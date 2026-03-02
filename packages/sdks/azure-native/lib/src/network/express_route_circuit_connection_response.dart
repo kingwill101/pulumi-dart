@@ -73,15 +73,15 @@ class ExpressRouteCircuitConnectionResponse {
 
   factory ExpressRouteCircuitConnectionResponse.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitConnectionResponse(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
       circuitConnectionStatus: (map['circuitConnectionStatus'] as String).input(),
       etag: (map['etag'] as String).input(),
-      expressRouteCircuitPeering: map['expressRouteCircuitPeering'] == null ? null : (SubResourceResponse.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipv6CircuitConnectionConfig: map['ipv6CircuitConnectionConfig'] == null ? null : (Ipv6CircuitConnectionConfigResponse.fromMap((map['ipv6CircuitConnectionConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peerExpressRouteCircuitPeering: map['peerExpressRouteCircuitPeering'] == null ? null : (SubResourceResponse.fromMap((map['peerExpressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
+      expressRouteCircuitPeering: map['expressRouteCircuitPeering'] == null ? null : (SubResourceResponse.fromMap((map['expressRouteCircuitPeering']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipv6CircuitConnectionConfig: map['ipv6CircuitConnectionConfig'] == null ? null : (Ipv6CircuitConnectionConfigResponse.fromMap((map['ipv6CircuitConnectionConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peerExpressRouteCircuitPeering: map['peerExpressRouteCircuitPeering'] == null ? null : (SubResourceResponse.fromMap((map['peerExpressRouteCircuitPeering']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),
     );

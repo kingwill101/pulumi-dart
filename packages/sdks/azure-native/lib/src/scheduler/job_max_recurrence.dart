@@ -26,8 +26,8 @@ class JobMaxRecurrence {
 
   factory JobMaxRecurrence.fromMap(Map<String, dynamic> map) {
     return JobMaxRecurrence(
-      frequency: map['frequency'] == null ? null : (RecurrenceFrequency.fromValue(map['frequency'] as String)).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      frequency: map['frequency'] == null ? null : (RecurrenceFrequency.fromValue(map['frequency']! as String)).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
     );
   }
 }

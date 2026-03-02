@@ -41,11 +41,11 @@ class NetworkAssociationState {
 
   factory NetworkAssociationState.fromMap(Map<String, dynamic> map) {
     return NetworkAssociationState(
-      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
-      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : (map['clientVpnEndpointId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      associationId: map['associationId'] == null ? null : ((map['associationId'] as String).input()).input(),
+      clientVpnEndpointId: map['clientVpnEndpointId'] == null ? null : ((map['clientVpnEndpointId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

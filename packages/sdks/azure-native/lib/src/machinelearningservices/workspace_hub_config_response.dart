@@ -24,8 +24,8 @@ class WorkspaceHubConfigResponse {
 
   factory WorkspaceHubConfigResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceHubConfigResponse(
-      additionalWorkspaceStorageAccounts: map['additionalWorkspaceStorageAccounts'] == null ? null : ((map['additionalWorkspaceStorageAccounts'] as List).cast<String>()).input(),
-      defaultWorkspaceResourceGroup: map['defaultWorkspaceResourceGroup'] == null ? null : (map['defaultWorkspaceResourceGroup'] as String).input(),
+      additionalWorkspaceStorageAccounts: map['additionalWorkspaceStorageAccounts'] == null ? null : ((map['additionalWorkspaceStorageAccounts']! as List).cast<String>()).input(),
+      defaultWorkspaceResourceGroup: map['defaultWorkspaceResourceGroup'] == null ? null : (map['defaultWorkspaceResourceGroup']! as String).input(),
     );
   }
 }

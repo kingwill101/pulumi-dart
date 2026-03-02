@@ -44,8 +44,8 @@ class GetWorkstationConfigIamPolicyArgs {
 
   factory GetWorkstationConfigIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkstationConfigIamPolicyArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workstationClusterId: (map['workstationClusterId'] as String).input(),
       workstationConfigId: (map['workstationConfigId'] as String).input(),
     );

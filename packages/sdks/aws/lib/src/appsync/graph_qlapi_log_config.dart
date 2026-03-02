@@ -31,7 +31,7 @@ class GraphQLApiLogConfig {
   factory GraphQLApiLogConfig.fromMap(Map<String, dynamic> map) {
     return GraphQLApiLogConfig(
       cloudwatchLogsRoleArn: (map['cloudwatchLogsRoleArn'] as String).input(),
-      excludeVerboseContent: map['excludeVerboseContent'] == null ? null : (map['excludeVerboseContent'] as bool).input(),
+      excludeVerboseContent: map['excludeVerboseContent'] == null ? null : ((map['excludeVerboseContent'] as bool).input()).input(),
       fieldLogLevel: (map['fieldLogLevel'] as String).input(),
     );
   }

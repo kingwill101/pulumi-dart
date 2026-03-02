@@ -35,10 +35,10 @@ class ResourceSetResource {
 
   factory ResourceSetResource.fromMap(Map<String, dynamic> map) {
     return ResourceSetResource(
-      componentId: map['componentId'] == null ? null : (map['componentId'] as String).input(),
-      dnsTargetResource: map['dnsTargetResource'] == null ? null : (ResourceSetResourceDnsTargetResource.fromMap((map['dnsTargetResource'] as Map).cast<String, dynamic>())).input(),
-      readinessScopes: map['readinessScopes'] == null ? null : ((map['readinessScopes'] as List).cast<String>()).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      componentId: map['componentId'] == null ? null : ((map['componentId'] as String).input()).input(),
+      dnsTargetResource: map['dnsTargetResource'] == null ? null : ((ResourceSetResourceDnsTargetResource.fromMap((map['dnsTargetResource']! as Map).cast<String, dynamic>())).input()).input(),
+      readinessScopes: map['readinessScopes'] == null ? null : (((map['readinessScopes'] as List).cast<String>()).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
     );
   }
 }

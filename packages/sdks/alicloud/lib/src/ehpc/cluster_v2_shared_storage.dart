@@ -47,12 +47,12 @@ class ClusterV2SharedStorage {
 
   factory ClusterV2SharedStorage.fromMap(Map<String, dynamic> map) {
     return ClusterV2SharedStorage(
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      mountDirectory: map['mountDirectory'] == null ? null : (map['mountDirectory'] as String).input(),
-      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions'] as String).input(),
-      mountTargetDomain: map['mountTargetDomain'] == null ? null : (map['mountTargetDomain'] as String).input(),
-      nasDirectory: map['nasDirectory'] == null ? null : (map['nasDirectory'] as String).input(),
-      protocolType: map['protocolType'] == null ? null : (map['protocolType'] as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      mountDirectory: map['mountDirectory'] == null ? null : (map['mountDirectory']! as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : (map['mountOptions']! as String).input(),
+      mountTargetDomain: map['mountTargetDomain'] == null ? null : (map['mountTargetDomain']! as String).input(),
+      nasDirectory: map['nasDirectory'] == null ? null : (map['nasDirectory']! as String).input(),
+      protocolType: map['protocolType'] == null ? null : (map['protocolType']! as String).input(),
     );
   }
 }

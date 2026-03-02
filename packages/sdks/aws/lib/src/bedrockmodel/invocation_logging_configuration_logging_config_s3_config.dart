@@ -26,7 +26,7 @@ class InvocationLoggingConfigurationLoggingConfigS3Config {
   factory InvocationLoggingConfigurationLoggingConfigS3Config.fromMap(Map<String, dynamic> map) {
     return InvocationLoggingConfigurationLoggingConfigS3Config(
       bucketName: (map['bucketName'] as String).input(),
-      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix'] as String).input(),
+      keyPrefix: map['keyPrefix'] == null ? null : ((map['keyPrefix'] as String).input()).input(),
     );
   }
 }

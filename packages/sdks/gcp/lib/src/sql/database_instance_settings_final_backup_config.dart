@@ -25,8 +25,8 @@ class DatabaseInstanceSettingsFinalBackupConfig {
 
   factory DatabaseInstanceSettingsFinalBackupConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsFinalBackupConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
     );
   }
 }

@@ -40,10 +40,10 @@ class ManagementGroupArgs {
 
   factory ManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return ManagementGroupArgs(
-      details: map['details'] == null ? null : (CreateManagementGroupDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      details: map['details'] == null ? null : (CreateManagementGroupDetails.fromMap((map['details']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -46,11 +46,11 @@ class PipelineRunRequest {
 
   factory PipelineRunRequest.fromMap(Map<String, dynamic> map) {
     return PipelineRunRequest(
-      artifacts: map['artifacts'] == null ? null : ((map['artifacts'] as List).cast<String>()).input(),
-      catalogDigest: map['catalogDigest'] == null ? null : (map['catalogDigest'] as String).input(),
-      pipelineResourceId: map['pipelineResourceId'] == null ? null : (map['pipelineResourceId'] as String).input(),
-      source: map['source'] == null ? null : (PipelineRunSourceProperties.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (PipelineRunTargetProperties.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      artifacts: map['artifacts'] == null ? null : ((map['artifacts']! as List).cast<String>()).input(),
+      catalogDigest: map['catalogDigest'] == null ? null : (map['catalogDigest']! as String).input(),
+      pipelineResourceId: map['pipelineResourceId'] == null ? null : (map['pipelineResourceId']! as String).input(),
+      source: map['source'] == null ? null : (PipelineRunSourceProperties.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (PipelineRunTargetProperties.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

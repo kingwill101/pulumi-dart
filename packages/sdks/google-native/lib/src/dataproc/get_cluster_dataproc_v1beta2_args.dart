@@ -32,7 +32,7 @@ class GetClusterDataprocV1beta2Args {
   factory GetClusterDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetClusterDataprocV1beta2Args(
       clusterName: (map['clusterName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

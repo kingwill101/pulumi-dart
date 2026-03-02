@@ -69,14 +69,14 @@ class DeploymentSettingsArgs {
 
   factory DeploymentSettingsArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsArgs(
-      agentPoolId: map['agentPoolId'] == null ? null : (map['agentPoolId'] as String).input(),
-      cacheOptions: map['cacheOptions'] == null ? null : (DeploymentSettingsCacheOptions.fromMap((map['cacheOptions'] as Map).cast<String, dynamic>())).input(),
-      executorContext: map['executorContext'] == null ? null : (DeploymentSettingsExecutorContext.fromMap((map['executorContext'] as Map).cast<String, dynamic>())).input(),
-      github: map['github'] == null ? null : (DeploymentSettingsGithub.fromMap((map['github'] as Map).cast<String, dynamic>())).input(),
-      operationContext: map['operationContext'] == null ? null : (DeploymentSettingsOperationContext.fromMap((map['operationContext'] as Map).cast<String, dynamic>())).input(),
+      agentPoolId: map['agentPoolId'] == null ? null : (map['agentPoolId']! as String).input(),
+      cacheOptions: map['cacheOptions'] == null ? null : (DeploymentSettingsCacheOptions.fromMap((map['cacheOptions']! as Map).cast<String, dynamic>())).input(),
+      executorContext: map['executorContext'] == null ? null : (DeploymentSettingsExecutorContext.fromMap((map['executorContext']! as Map).cast<String, dynamic>())).input(),
+      github: map['github'] == null ? null : (DeploymentSettingsGithub.fromMap((map['github']! as Map).cast<String, dynamic>())).input(),
+      operationContext: map['operationContext'] == null ? null : (DeploymentSettingsOperationContext.fromMap((map['operationContext']! as Map).cast<String, dynamic>())).input(),
       organization: (map['organization'] as String).input(),
       project: (map['project'] as String).input(),
-      sourceContext: map['sourceContext'] == null ? null : (DeploymentSettingsSourceContext.fromMap((map['sourceContext'] as Map).cast<String, dynamic>())).input(),
+      sourceContext: map['sourceContext'] == null ? null : (DeploymentSettingsSourceContext.fromMap((map['sourceContext']! as Map).cast<String, dynamic>())).input(),
       stack: (map['stack'] as String).input(),
     );
   }

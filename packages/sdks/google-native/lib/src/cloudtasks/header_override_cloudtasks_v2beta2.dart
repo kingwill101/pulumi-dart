@@ -22,7 +22,7 @@ class HeaderOverrideCloudtasksV2beta2 {
 
   factory HeaderOverrideCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return HeaderOverrideCloudtasksV2beta2(
-      header: map['header'] == null ? null : (HeaderCloudtasksV2beta2.fromMap((map['header'] as Map).cast<String, dynamic>())).input(),
+      header: map['header'] == null ? null : (HeaderCloudtasksV2beta2.fromMap((map['header']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

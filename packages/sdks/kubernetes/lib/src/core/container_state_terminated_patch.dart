@@ -51,13 +51,13 @@ class ContainerStateTerminatedPatch {
 
   factory ContainerStateTerminatedPatch.fromMap(Map<String, dynamic> map) {
     return ContainerStateTerminatedPatch(
-      containerID: map['containerID'] == null ? null : (map['containerID'] as String).input(),
-      exitCode: map['exitCode'] == null ? null : (map['exitCode'] as int).input(),
-      finishedAt: map['finishedAt'] == null ? null : (map['finishedAt'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      signal: map['signal'] == null ? null : (map['signal'] as int).input(),
-      startedAt: map['startedAt'] == null ? null : (map['startedAt'] as String).input(),
+      containerID: map['containerID'] == null ? null : (map['containerID']! as String).input(),
+      exitCode: map['exitCode'] == null ? null : (map['exitCode']! as int).input(),
+      finishedAt: map['finishedAt'] == null ? null : (map['finishedAt']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      signal: map['signal'] == null ? null : (map['signal']! as int).input(),
+      startedAt: map['startedAt'] == null ? null : (map['startedAt']! as String).input(),
     );
   }
 }

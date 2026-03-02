@@ -36,10 +36,10 @@ class KafkaTopicMapBatchingResponse {
 
   factory KafkaTopicMapBatchingResponse.fromMap(Map<String, dynamic> map) {
     return KafkaTopicMapBatchingResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      latencyMs: map['latencyMs'] == null ? null : (map['latencyMs'] as int).input(),
-      maxBytes: map['maxBytes'] == null ? null : (map['maxBytes'] as double).input(),
-      maxMessages: map['maxMessages'] == null ? null : (map['maxMessages'] as double).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      latencyMs: map['latencyMs'] == null ? null : (map['latencyMs']! as int).input(),
+      maxBytes: map['maxBytes'] == null ? null : (map['maxBytes']! as double).input(),
+      maxMessages: map['maxMessages'] == null ? null : (map['maxMessages']! as double).input(),
     );
   }
 }

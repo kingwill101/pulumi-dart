@@ -30,9 +30,9 @@ class AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration {
 
   factory AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration(
-      indexArn: map['indexArn'] == null ? null : (map['indexArn'] as String).input(),
-      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
-      vectorBucketArn: map['vectorBucketArn'] == null ? null : (map['vectorBucketArn'] as String).input(),
+      indexArn: map['indexArn'] == null ? null : ((map['indexArn'] as String).input()).input(),
+      indexName: map['indexName'] == null ? null : ((map['indexName'] as String).input()).input(),
+      vectorBucketArn: map['vectorBucketArn'] == null ? null : ((map['vectorBucketArn'] as String).input()).input(),
     );
   }
 }

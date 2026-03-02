@@ -22,7 +22,7 @@ class PodSchedulingContextStatusResourceK8sIoV1alpha3 {
 
   factory PodSchedulingContextStatusResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return PodSchedulingContextStatusResourceK8sIoV1alpha3(
-      resourceClaims: map['resourceClaims'] == null ? null : (pulumi.Input.decodeList<ResourceClaimSchedulingStatusResourceK8sIoV1alpha3>(map['resourceClaims'], (value) => ResourceClaimSchedulingStatusResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceClaims: map['resourceClaims'] == null ? null : (pulumi.Input.decodeList<ResourceClaimSchedulingStatusResourceK8sIoV1alpha3>(map['resourceClaims']!, (value) => ResourceClaimSchedulingStatusResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

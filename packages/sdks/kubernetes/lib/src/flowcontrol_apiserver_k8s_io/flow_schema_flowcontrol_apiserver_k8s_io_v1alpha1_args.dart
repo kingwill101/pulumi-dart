@@ -41,10 +41,10 @@ class FlowSchemaFlowcontrolApiserverK8sIoV1alpha1Args {
 
   factory FlowSchemaFlowcontrolApiserverK8sIoV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return FlowSchemaFlowcontrolApiserverK8sIoV1alpha1Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (FlowSchemaSpecFlowcontrolApiserverK8sIoV1alpha1.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (FlowSchemaSpecFlowcontrolApiserverK8sIoV1alpha1.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

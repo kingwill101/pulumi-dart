@@ -32,9 +32,9 @@ class StatefulRuleGroupReferenceResponse {
 
   factory StatefulRuleGroupReferenceResponse.fromMap(Map<String, dynamic> map) {
     return StatefulRuleGroupReferenceResponse(
-      override: map['override'] == null ? null : (StatefulRuleGroupOverrideResponse.fromMap((map['override'] as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      override: map['override'] == null ? null : (StatefulRuleGroupOverrideResponse.fromMap((map['override']! as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn']! as String).input(),
     );
   }
 }

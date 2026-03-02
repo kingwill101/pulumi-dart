@@ -39,10 +39,10 @@ class UpgradeNote {
 
   factory UpgradeNote.fromMap(Map<String, dynamic> map) {
     return UpgradeNote(
-      distributions: map['distributions'] == null ? null : (pulumi.Input.decodeList<UpgradeDistribution>(map['distributions'], (value) => UpgradeDistribution.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      package: map['package'] == null ? null : (map['package'] as String).input(),
-      version: map['version'] == null ? null : (Version.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
-      windowsUpdate: map['windowsUpdate'] == null ? null : (WindowsUpdate.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>())).input(),
+      distributions: map['distributions'] == null ? null : (pulumi.Input.decodeList<UpgradeDistribution>(map['distributions']!, (value) => UpgradeDistribution.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      package: map['package'] == null ? null : (map['package']! as String).input(),
+      version: map['version'] == null ? null : (Version.fromMap((map['version']! as Map).cast<String, dynamic>())).input(),
+      windowsUpdate: map['windowsUpdate'] == null ? null : (WindowsUpdate.fromMap((map['windowsUpdate']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

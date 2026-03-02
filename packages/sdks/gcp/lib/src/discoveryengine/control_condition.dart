@@ -34,9 +34,9 @@ class ControlCondition {
 
   factory ControlCondition.fromMap(Map<String, dynamic> map) {
     return ControlCondition(
-      activeTimeRanges: map['activeTimeRanges'] == null ? null : (pulumi.Input.decodeList<ControlConditionActiveTimeRange>(map['activeTimeRanges'], (value) => ControlConditionActiveTimeRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queryRegex: map['queryRegex'] == null ? null : (map['queryRegex'] as String).input(),
-      queryTerms: map['queryTerms'] == null ? null : (pulumi.Input.decodeList<ControlConditionQueryTerm>(map['queryTerms'], (value) => ControlConditionQueryTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      activeTimeRanges: map['activeTimeRanges'] == null ? null : (pulumi.Input.decodeList<ControlConditionActiveTimeRange>(map['activeTimeRanges']!, (value) => ControlConditionActiveTimeRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryRegex: map['queryRegex'] == null ? null : (map['queryRegex']! as String).input(),
+      queryTerms: map['queryTerms'] == null ? null : (pulumi.Input.decodeList<ControlConditionQueryTerm>(map['queryTerms']!, (value) => ControlConditionQueryTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

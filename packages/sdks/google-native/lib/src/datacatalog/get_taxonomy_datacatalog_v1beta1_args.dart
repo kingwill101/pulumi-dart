@@ -32,7 +32,7 @@ class GetTaxonomyDatacatalogV1beta1Args {
   factory GetTaxonomyDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetTaxonomyDatacatalogV1beta1Args(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       taxonomyId: (map['taxonomyId'] as String).input(),
     );
   }

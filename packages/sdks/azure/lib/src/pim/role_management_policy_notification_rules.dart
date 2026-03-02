@@ -33,9 +33,9 @@ class RoleManagementPolicyNotificationRules {
 
   factory RoleManagementPolicyNotificationRules.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyNotificationRules(
-      activeAssignments: map['activeAssignments'] == null ? null : (RoleManagementPolicyNotificationRulesActiveAssignments.fromMap((map['activeAssignments'] as Map).cast<String, dynamic>())).input(),
-      eligibleActivations: map['eligibleActivations'] == null ? null : (RoleManagementPolicyNotificationRulesEligibleActivations.fromMap((map['eligibleActivations'] as Map).cast<String, dynamic>())).input(),
-      eligibleAssignments: map['eligibleAssignments'] == null ? null : (RoleManagementPolicyNotificationRulesEligibleAssignments.fromMap((map['eligibleAssignments'] as Map).cast<String, dynamic>())).input(),
+      activeAssignments: map['activeAssignments'] == null ? null : (RoleManagementPolicyNotificationRulesActiveAssignments.fromMap((map['activeAssignments']! as Map).cast<String, dynamic>())).input(),
+      eligibleActivations: map['eligibleActivations'] == null ? null : (RoleManagementPolicyNotificationRulesEligibleActivations.fromMap((map['eligibleActivations']! as Map).cast<String, dynamic>())).input(),
+      eligibleAssignments: map['eligibleAssignments'] == null ? null : (RoleManagementPolicyNotificationRulesEligibleAssignments.fromMap((map['eligibleAssignments']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

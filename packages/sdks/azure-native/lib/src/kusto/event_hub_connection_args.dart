@@ -71,14 +71,14 @@ class EventHubConnectionArgs {
     return EventHubConnectionArgs(
       clusterName: (map['clusterName'] as String).input(),
       consumerGroup: (map['consumerGroup'] as String).input(),
-      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat'] as String).input(),
+      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      eventHubConnectionName: map['eventHubConnectionName'] == null ? null : (map['eventHubConnectionName'] as String).input(),
+      eventHubConnectionName: map['eventHubConnectionName'] == null ? null : (map['eventHubConnectionName']! as String).input(),
       eventHubResourceId: (map['eventHubResourceId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
     );
   }
 }

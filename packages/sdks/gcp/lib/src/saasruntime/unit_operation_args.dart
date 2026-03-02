@@ -89,16 +89,16 @@ class UnitOperationArgs {
 
   factory UnitOperationArgs.fromMap(Map<String, dynamic> map) {
     return UnitOperationArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      deprovision: map['deprovision'] == null ? null : ((map['deprovision'] as Map).cast<String, dynamic>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      deprovision: map['deprovision'] == null ? null : ((map['deprovision']! as Map).cast<String, dynamic>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      provision: map['provision'] == null ? null : (UnitOperationProvision.fromMap((map['provision'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      provision: map['provision'] == null ? null : (UnitOperationProvision.fromMap((map['provision']! as Map).cast<String, dynamic>())).input(),
       unit: (map['unit'] as String).input(),
       unitOperationId: (map['unitOperationId'] as String).input(),
-      upgrade: map['upgrade'] == null ? null : (UnitOperationUpgrade.fromMap((map['upgrade'] as Map).cast<String, dynamic>())).input(),
-      waitForCompletion: map['waitForCompletion'] == null ? null : (map['waitForCompletion'] as bool).input(),
+      upgrade: map['upgrade'] == null ? null : (UnitOperationUpgrade.fromMap((map['upgrade']! as Map).cast<String, dynamic>())).input(),
+      waitForCompletion: map['waitForCompletion'] == null ? null : (map['waitForCompletion']! as bool).input(),
     );
   }
 }

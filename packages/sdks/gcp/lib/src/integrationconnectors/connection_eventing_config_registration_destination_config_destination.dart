@@ -30,9 +30,9 @@ class ConnectionEventingConfigRegistrationDestinationConfigDestination {
 
   factory ConnectionEventingConfigRegistrationDestinationConfigDestination.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingConfigRegistrationDestinationConfigDestination(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment']! as String).input(),
     );
   }
 }

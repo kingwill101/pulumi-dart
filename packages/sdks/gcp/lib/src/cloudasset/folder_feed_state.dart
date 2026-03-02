@@ -85,16 +85,16 @@ class FolderFeedState {
 
   factory FolderFeedState.fromMap(Map<String, dynamic> map) {
     return FolderFeedState(
-      assetNames: map['assetNames'] == null ? null : ((map['assetNames'] as List).cast<String>()).input(),
-      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes'] as List).cast<String>()).input(),
-      billingProject: map['billingProject'] == null ? null : (map['billingProject'] as String).input(),
-      condition: map['condition'] == null ? null : (FolderFeedCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      feedId: map['feedId'] == null ? null : (map['feedId'] as String).input(),
-      feedOutputConfig: map['feedOutputConfig'] == null ? null : (FolderFeedFeedOutputConfig.fromMap((map['feedOutputConfig'] as Map).cast<String, dynamic>())).input(),
-      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
-      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      assetNames: map['assetNames'] == null ? null : ((map['assetNames']! as List).cast<String>()).input(),
+      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes']! as List).cast<String>()).input(),
+      billingProject: map['billingProject'] == null ? null : (map['billingProject']! as String).input(),
+      condition: map['condition'] == null ? null : (FolderFeedCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      feedId: map['feedId'] == null ? null : (map['feedId']! as String).input(),
+      feedOutputConfig: map['feedOutputConfig'] == null ? null : (FolderFeedFeedOutputConfig.fromMap((map['feedOutputConfig']! as Map).cast<String, dynamic>())).input(),
+      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

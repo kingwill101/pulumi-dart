@@ -62,12 +62,12 @@ class EventSourceArgs {
 
   factory EventSourceArgs.fromMap(Map<String, dynamic> map) {
     return EventSourceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       eventBusName: (map['eventBusName'] as String).input(),
       eventSourceName: (map['eventSourceName'] as String).input(),
-      externalSourceConfig: map['externalSourceConfig'] == null ? null : ((map['externalSourceConfig'] as Map).cast<String, String>()).input(),
-      externalSourceType: map['externalSourceType'] == null ? null : (map['externalSourceType'] as String).input(),
-      linkedExternalSource: map['linkedExternalSource'] == null ? null : (map['linkedExternalSource'] as bool).input(),
+      externalSourceConfig: map['externalSourceConfig'] == null ? null : ((map['externalSourceConfig']! as Map).cast<String, String>()).input(),
+      externalSourceType: map['externalSourceType'] == null ? null : (map['externalSourceType']! as String).input(),
+      linkedExternalSource: map['linkedExternalSource'] == null ? null : (map['linkedExternalSource']! as bool).input(),
     );
   }
 }

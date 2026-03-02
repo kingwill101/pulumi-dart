@@ -65,12 +65,12 @@ class GetContainerAppsSourceControlResult {
   factory GetContainerAppsSourceControlResult.fromMap(Map<String, dynamic> map) {
     return GetContainerAppsSourceControlResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      branch: map['branch'] == null ? null : map['branch'] as String,
-      githubActionConfiguration: map['githubActionConfiguration'] == null ? null : GithubActionConfigurationResponse.fromMap((map['githubActionConfiguration'] as Map).cast<String, dynamic>()),
+      branch: map['branch'] == null ? null : map['branch']! as String,
+      githubActionConfiguration: map['githubActionConfiguration'] == null ? null : GithubActionConfigurationResponse.fromMap((map['githubActionConfiguration']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       operationState: map['operationState'] as String,
-      repoUrl: map['repoUrl'] == null ? null : map['repoUrl'] as String,
+      repoUrl: map['repoUrl'] == null ? null : map['repoUrl']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

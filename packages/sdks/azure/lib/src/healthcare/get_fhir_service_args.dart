@@ -35,7 +35,7 @@ class GetFhirServiceArgs {
   factory GetFhirServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetFhirServiceArgs(
       name: (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

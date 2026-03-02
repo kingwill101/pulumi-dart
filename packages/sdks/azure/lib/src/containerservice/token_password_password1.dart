@@ -25,8 +25,8 @@ class TokenPasswordPassword1 {
 
   factory TokenPasswordPassword1.fromMap(Map<String, dynamic> map) {
     return TokenPasswordPassword1(
-      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

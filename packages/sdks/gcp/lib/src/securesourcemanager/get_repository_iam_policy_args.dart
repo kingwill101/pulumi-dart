@@ -38,8 +38,8 @@ class GetRepositoryIamPolicyArgs {
 
   factory GetRepositoryIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoryIamPolicyArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
     );
   }

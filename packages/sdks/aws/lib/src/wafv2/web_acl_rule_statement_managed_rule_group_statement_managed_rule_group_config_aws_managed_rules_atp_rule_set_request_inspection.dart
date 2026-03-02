@@ -32,9 +32,9 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
 
   factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspection.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspection(
-      passwordField: (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspectionPasswordField.fromMap((map['passwordField'] as Map).cast<String, dynamic>())).input(),
+      passwordField: (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspectionPasswordField.fromMap((map['passwordField']! as Map).cast<String, dynamic>())).input(),
       payloadType: (map['payloadType'] as String).input(),
-      usernameField: (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspectionUsernameField.fromMap((map['usernameField'] as Map).cast<String, dynamic>())).input(),
+      usernameField: (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspectionUsernameField.fromMap((map['usernameField']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

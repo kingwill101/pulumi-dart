@@ -32,8 +32,8 @@ class AutomationRuleRepairRolloutRuleRepairPhaseRetry {
   factory AutomationRuleRepairRolloutRuleRepairPhaseRetry.fromMap(Map<String, dynamic> map) {
     return AutomationRuleRepairRolloutRuleRepairPhaseRetry(
       attempts: (map['attempts'] as String).input(),
-      backoffMode: map['backoffMode'] == null ? null : (map['backoffMode'] as String).input(),
-      wait: map['wait'] == null ? null : (map['wait'] as String).input(),
+      backoffMode: map['backoffMode'] == null ? null : (map['backoffMode']! as String).input(),
+      wait: map['wait'] == null ? null : (map['wait']! as String).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class InMagePolicyInput {
 
   factory InMagePolicyInput.fromMap(Map<String, dynamic> map) {
     return InMagePolicyInput(
-      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : (map['appConsistentFrequencyInMinutes'] as int).input(),
+      appConsistentFrequencyInMinutes: map['appConsistentFrequencyInMinutes'] == null ? null : (map['appConsistentFrequencyInMinutes']! as int).input(),
       instanceType: (map['instanceType'] as String).input(),
       multiVmSyncStatus: (map['multiVmSyncStatus'] as String).input(),
-      recoveryPointHistory: map['recoveryPointHistory'] == null ? null : (map['recoveryPointHistory'] as int).input(),
-      recoveryPointThresholdInMinutes: map['recoveryPointThresholdInMinutes'] == null ? null : (map['recoveryPointThresholdInMinutes'] as int).input(),
+      recoveryPointHistory: map['recoveryPointHistory'] == null ? null : (map['recoveryPointHistory']! as int).input(),
+      recoveryPointThresholdInMinutes: map['recoveryPointThresholdInMinutes'] == null ? null : (map['recoveryPointThresholdInMinutes']! as int).input(),
     );
   }
 }

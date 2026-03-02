@@ -26,7 +26,7 @@ class GroupInsightsConfiguration {
   factory GroupInsightsConfiguration.fromMap(Map<String, dynamic> map) {
     return GroupInsightsConfiguration(
       insightsEnabled: (map['insightsEnabled'] as bool).input(),
-      notificationsEnabled: map['notificationsEnabled'] == null ? null : (map['notificationsEnabled'] as bool).input(),
+      notificationsEnabled: map['notificationsEnabled'] == null ? null : ((map['notificationsEnabled'] as bool).input()).input(),
     );
   }
 }

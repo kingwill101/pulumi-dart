@@ -22,7 +22,7 @@ class EnvironmentClientIpResolutionConfig {
 
   factory EnvironmentClientIpResolutionConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentClientIpResolutionConfig(
-      headerIndexAlgorithm: map['headerIndexAlgorithm'] == null ? null : (EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm.fromMap((map['headerIndexAlgorithm'] as Map).cast<String, dynamic>())).input(),
+      headerIndexAlgorithm: map['headerIndexAlgorithm'] == null ? null : (EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm.fromMap((map['headerIndexAlgorithm']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

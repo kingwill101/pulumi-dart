@@ -37,10 +37,10 @@ class CertSyncRecordResponse {
 
   factory CertSyncRecordResponse.fromMap(Map<String, dynamic> map) {
     return CertSyncRecordResponse(
-      certificationStatus: map['certificationStatus'] == null ? null : (map['certificationStatus'] as String).input(),
-      controls: map['controls'] == null ? null : (pulumi.Input.decodeList<ControlSyncRecordResponse>(map['controls'], (value) => ControlSyncRecordResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingestionStatus: map['ingestionStatus'] == null ? null : (map['ingestionStatus'] as String).input(),
-      offerGuid: map['offerGuid'] == null ? null : (map['offerGuid'] as String).input(),
+      certificationStatus: map['certificationStatus'] == null ? null : (map['certificationStatus']! as String).input(),
+      controls: map['controls'] == null ? null : (pulumi.Input.decodeList<ControlSyncRecordResponse>(map['controls']!, (value) => ControlSyncRecordResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingestionStatus: map['ingestionStatus'] == null ? null : (map['ingestionStatus']! as String).input(),
+      offerGuid: map['offerGuid'] == null ? null : (map['offerGuid']! as String).input(),
     );
   }
 }

@@ -38,8 +38,8 @@ class MetricConfigurationResponse {
   factory MetricConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return MetricConfigurationResponse(
       counterSets: (pulumi.Input.decodeList<MetricCounterSetResponse>(map['counterSets'], (value) => MetricCounterSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mdmAccount: map['mdmAccount'] == null ? null : (map['mdmAccount'] as String).input(),
-      metricNameSpace: map['metricNameSpace'] == null ? null : (map['metricNameSpace'] as String).input(),
+      mdmAccount: map['mdmAccount'] == null ? null : (map['mdmAccount']! as String).input(),
+      metricNameSpace: map['metricNameSpace'] == null ? null : (map['metricNameSpace']! as String).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

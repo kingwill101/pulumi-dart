@@ -69,16 +69,16 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      gitRemoteSettings: map['gitRemoteSettings'] == null ? null : (GitRemoteSettings.fromMap((map['gitRemoteSettings'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      npmrcEnvironmentVariablesSecretVersion: map['npmrcEnvironmentVariablesSecretVersion'] == null ? null : (map['npmrcEnvironmentVariablesSecretVersion'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      gitRemoteSettings: map['gitRemoteSettings'] == null ? null : (GitRemoteSettings.fromMap((map['gitRemoteSettings']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      npmrcEnvironmentVariablesSecretVersion: map['npmrcEnvironmentVariablesSecretVersion'] == null ? null : (map['npmrcEnvironmentVariablesSecretVersion']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      setAuthenticatedUserAdmin: map['setAuthenticatedUserAdmin'] == null ? null : (map['setAuthenticatedUserAdmin'] as bool).input(),
-      workspaceCompilationOverrides: map['workspaceCompilationOverrides'] == null ? null : (WorkspaceCompilationOverrides.fromMap((map['workspaceCompilationOverrides'] as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      setAuthenticatedUserAdmin: map['setAuthenticatedUserAdmin'] == null ? null : (map['setAuthenticatedUserAdmin']! as bool).input(),
+      workspaceCompilationOverrides: map['workspaceCompilationOverrides'] == null ? null : (WorkspaceCompilationOverrides.fromMap((map['workspaceCompilationOverrides']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

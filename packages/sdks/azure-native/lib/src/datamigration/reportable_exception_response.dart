@@ -46,12 +46,12 @@ class ReportableExceptionResponse {
 
   factory ReportableExceptionResponse.fromMap(Map<String, dynamic> map) {
     return ReportableExceptionResponse(
-      actionableMessage: map['actionableMessage'] == null ? null : (map['actionableMessage'] as String).input(),
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
-      hResult: map['hResult'] == null ? null : (map['hResult'] as int).input(),
-      lineNumber: map['lineNumber'] == null ? null : (map['lineNumber'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      stackTrace: map['stackTrace'] == null ? null : (map['stackTrace'] as String).input(),
+      actionableMessage: map['actionableMessage'] == null ? null : (map['actionableMessage']! as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
+      hResult: map['hResult'] == null ? null : (map['hResult']! as int).input(),
+      lineNumber: map['lineNumber'] == null ? null : (map['lineNumber']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      stackTrace: map['stackTrace'] == null ? null : (map['stackTrace']! as String).input(),
     );
   }
 }

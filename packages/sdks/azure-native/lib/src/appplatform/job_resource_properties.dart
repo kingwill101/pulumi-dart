@@ -40,10 +40,10 @@ class JobResourceProperties {
 
   factory JobResourceProperties.fromMap(Map<String, dynamic> map) {
     return JobResourceProperties(
-      managedComponentReferences: map['managedComponentReferences'] == null ? null : (pulumi.Input.decodeList<ManagedComponentReference>(map['managedComponentReferences'], (value) => ManagedComponentReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      source: map['source'] == null ? null : (BuildResultUserSourceInfo.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      template: map['template'] == null ? null : (JobExecutionTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
-      triggerConfig: map['triggerConfig'] == null ? null : (ManualJobTriggerConfig.fromMap((map['triggerConfig'] as Map).cast<String, dynamic>())).input(),
+      managedComponentReferences: map['managedComponentReferences'] == null ? null : (pulumi.Input.decodeList<ManagedComponentReference>(map['managedComponentReferences']!, (value) => ManagedComponentReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      source: map['source'] == null ? null : (BuildResultUserSourceInfo.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      template: map['template'] == null ? null : (JobExecutionTemplate.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
+      triggerConfig: map['triggerConfig'] == null ? null : (ManualJobTriggerConfig.fromMap((map['triggerConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

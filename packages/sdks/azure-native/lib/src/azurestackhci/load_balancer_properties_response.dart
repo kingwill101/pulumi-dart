@@ -51,10 +51,10 @@ class LoadBalancerPropertiesResponse {
 
   factory LoadBalancerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerPropertiesResponse(
-      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<BackendAddressPoolResponse>(map['backendAddressPools'], (value) => BackendAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<BackendAddressPoolResponse>(map['backendAddressPools']!, (value) => BackendAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       frontendIPConfigurations: (pulumi.Input.decodeList<FrontendIPConfigurationResponse>(map['frontendIPConfigurations'], (value) => FrontendIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancingRules: map['loadBalancingRules'] == null ? null : (pulumi.Input.decodeList<LoadBalancerRuleResponse>(map['loadBalancingRules'], (value) => LoadBalancerRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      probes: map['probes'] == null ? null : (pulumi.Input.decodeList<ProbeResponse>(map['probes'], (value) => ProbeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancingRules: map['loadBalancingRules'] == null ? null : (pulumi.Input.decodeList<LoadBalancerRuleResponse>(map['loadBalancingRules']!, (value) => LoadBalancerRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      probes: map['probes'] == null ? null : (pulumi.Input.decodeList<ProbeResponse>(map['probes']!, (value) => ProbeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       status: (LoadBalancerStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );

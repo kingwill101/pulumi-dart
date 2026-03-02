@@ -63,14 +63,14 @@ class PeerConnectionAccepterArgs {
 
   factory PeerConnectionAccepterArgs.fromMap(Map<String, dynamic> map) {
     return PeerConnectionAccepterArgs(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
       instanceId: (map['instanceId'] as String).input(),
-      linkType: map['linkType'] == null ? null : (map['linkType'] as String).input(),
-      peerConnectionAccepterName: map['peerConnectionAccepterName'] == null ? null : (map['peerConnectionAccepterName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      linkType: map['linkType'] == null ? null : (map['linkType']! as String).input(),
+      peerConnectionAccepterName: map['peerConnectionAccepterName'] == null ? null : (map['peerConnectionAccepterName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
     );
   }
 }

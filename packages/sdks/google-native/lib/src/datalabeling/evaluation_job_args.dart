@@ -59,7 +59,7 @@ class EvaluationJobArgs {
       evaluationJobConfig: (GoogleCloudDatalabelingV1beta1EvaluationJobConfig.fromMap((map['evaluationJobConfig'] as Map).cast<String, dynamic>())).input(),
       labelMissingGroundTruth: (map['labelMissingGroundTruth'] as bool).input(),
       modelVersion: (map['modelVersion'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       schedule: (map['schedule'] as String).input(),
     );
   }

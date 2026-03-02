@@ -56,11 +56,11 @@ class GradientaiFunctionArgs {
     return GradientaiFunctionArgs(
       agentId: (map['agentId'] as String).input(),
       description: (map['description'] as String).input(),
-      faasName: map['faasName'] == null ? null : (map['faasName'] as String).input(),
+      faasName: map['faasName'] == null ? null : (map['faasName']! as String).input(),
       faasNamespace: (map['faasNamespace'] as String).input(),
       functionName: (map['functionName'] as String).input(),
       inputSchema: (map['inputSchema'] as String).input(),
-      outputSchema: map['outputSchema'] == null ? null : (map['outputSchema'] as String).input(),
+      outputSchema: map['outputSchema'] == null ? null : (map['outputSchema']! as String).input(),
     );
   }
 }

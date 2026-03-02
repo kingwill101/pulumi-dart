@@ -32,7 +32,7 @@ class GetSpecialistPoolAiplatformV1beta1Args {
   factory GetSpecialistPoolAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetSpecialistPoolAiplatformV1beta1Args(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       specialistPoolId: (map['specialistPoolId'] as String).input(),
     );
   }

@@ -26,7 +26,7 @@ class ResourceGroupPolicyAssignmentOverride {
 
   factory ResourceGroupPolicyAssignmentOverride.fromMap(Map<String, dynamic> map) {
     return ResourceGroupPolicyAssignmentOverride(
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<ResourceGroupPolicyAssignmentOverrideSelector>(map['selectors'], (value) => ResourceGroupPolicyAssignmentOverrideSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<ResourceGroupPolicyAssignmentOverrideSelector>(map['selectors']!, (value) => ResourceGroupPolicyAssignmentOverrideSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
       value: (map['value'] as String).input(),
     );
   }

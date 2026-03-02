@@ -46,12 +46,12 @@ class PeeredDnsDomainState {
 
   factory PeeredDnsDomainState.fromMap(Map<String, dynamic> map) {
     return PeeredDnsDomainState(
-      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

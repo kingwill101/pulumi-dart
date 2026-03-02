@@ -31,7 +31,7 @@ class GetRegionSecurityPolicyComputeV1Args {
 
   factory GetRegionSecurityPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyComputeV1Args(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       securityPolicy: (map['securityPolicy'] as String).input(),
     );

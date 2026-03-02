@@ -41,11 +41,11 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      certificateVirtualPath: map['certificateVirtualPath'] == null ? null : (map['certificateVirtualPath'] as String).input(),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
-      keyVirtualPath: map['keyVirtualPath'] == null ? null : (map['keyVirtualPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nginxDeploymentId: map['nginxDeploymentId'] == null ? null : (map['nginxDeploymentId'] as String).input(),
+      certificateVirtualPath: map['certificateVirtualPath'] == null ? null : (map['certificateVirtualPath']! as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId']! as String).input(),
+      keyVirtualPath: map['keyVirtualPath'] == null ? null : (map['keyVirtualPath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nginxDeploymentId: map['nginxDeploymentId'] == null ? null : (map['nginxDeploymentId']! as String).input(),
     );
   }
 }

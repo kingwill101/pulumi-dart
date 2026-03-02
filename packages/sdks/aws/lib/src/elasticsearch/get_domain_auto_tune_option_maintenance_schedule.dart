@@ -32,7 +32,7 @@ class GetDomainAutoTuneOptionMaintenanceSchedule {
   factory GetDomainAutoTuneOptionMaintenanceSchedule.fromMap(Map<String, dynamic> map) {
     return GetDomainAutoTuneOptionMaintenanceSchedule(
       cronExpressionForRecurrence: (map['cronExpressionForRecurrence'] as String).input(),
-      durations: (pulumi.Input.decodeList<GetDomainAutoTuneOptionMaintenanceScheduleDuration>(map['durations'], (value) => GetDomainAutoTuneOptionMaintenanceScheduleDuration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      durations: (pulumi.Input.decodeList<GetDomainAutoTuneOptionMaintenanceScheduleDuration>(map['durations']!, (value) => GetDomainAutoTuneOptionMaintenanceScheduleDuration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       startAt: (map['startAt'] as String).input(),
     );
   }

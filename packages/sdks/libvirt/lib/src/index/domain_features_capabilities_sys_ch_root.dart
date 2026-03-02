@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesSysChRoot {
 
   factory DomainFeaturesCapabilitiesSysChRoot.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesSysChRoot(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

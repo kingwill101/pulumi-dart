@@ -26,7 +26,7 @@ class EnvironmentConfigMasterAuthorizedNetworksConfig {
 
   factory EnvironmentConfigMasterAuthorizedNetworksConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigMasterAuthorizedNetworksConfig(
-      cidrBlocks: map['cidrBlocks'] == null ? null : (pulumi.Input.decodeList<EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>(map['cidrBlocks'], (value) => EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cidrBlocks: map['cidrBlocks'] == null ? null : (pulumi.Input.decodeList<EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>(map['cidrBlocks']!, (value) => EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

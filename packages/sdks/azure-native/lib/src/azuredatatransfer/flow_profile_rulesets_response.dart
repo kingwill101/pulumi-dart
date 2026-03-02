@@ -52,12 +52,12 @@ class FlowProfileRulesetsResponse {
 
   factory FlowProfileRulesetsResponse.fromMap(Map<String, dynamic> map) {
     return FlowProfileRulesetsResponse(
-      antivirus: map['antivirus'] == null ? null : (AntivirusRulesetResponse.fromMap((map['antivirus'] as Map).cast<String, dynamic>())).input(),
-      archives: map['archives'] == null ? null : (ArchiveRulesetResponse.fromMap((map['archives'] as Map).cast<String, dynamic>())).input(),
-      dataSize: map['dataSize'] == null ? null : (DataSizeRulesetResponse.fromMap((map['dataSize'] as Map).cast<String, dynamic>())).input(),
-      mimeFilters: map['mimeFilters'] == null ? null : (MimeFilterRulesetResponse.fromMap((map['mimeFilters'] as Map).cast<String, dynamic>())).input(),
-      textMatching: map['textMatching'] == null ? null : (TextMatchingRulesetResponse.fromMap((map['textMatching'] as Map).cast<String, dynamic>())).input(),
-      xmlFilters: map['xmlFilters'] == null ? null : (XmlFilterRulesetResponse.fromMap((map['xmlFilters'] as Map).cast<String, dynamic>())).input(),
+      antivirus: map['antivirus'] == null ? null : (AntivirusRulesetResponse.fromMap((map['antivirus']! as Map).cast<String, dynamic>())).input(),
+      archives: map['archives'] == null ? null : (ArchiveRulesetResponse.fromMap((map['archives']! as Map).cast<String, dynamic>())).input(),
+      dataSize: map['dataSize'] == null ? null : (DataSizeRulesetResponse.fromMap((map['dataSize']! as Map).cast<String, dynamic>())).input(),
+      mimeFilters: map['mimeFilters'] == null ? null : (MimeFilterRulesetResponse.fromMap((map['mimeFilters']! as Map).cast<String, dynamic>())).input(),
+      textMatching: map['textMatching'] == null ? null : (TextMatchingRulesetResponse.fromMap((map['textMatching']! as Map).cast<String, dynamic>())).input(),
+      xmlFilters: map['xmlFilters'] == null ? null : (XmlFilterRulesetResponse.fromMap((map['xmlFilters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

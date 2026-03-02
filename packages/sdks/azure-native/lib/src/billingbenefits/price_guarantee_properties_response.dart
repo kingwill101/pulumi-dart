@@ -26,8 +26,8 @@ class PriceGuaranteePropertiesResponse {
 
   factory PriceGuaranteePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PriceGuaranteePropertiesResponse(
-      priceGuaranteeDate: map['priceGuaranteeDate'] == null ? null : (map['priceGuaranteeDate'] as String).input(),
-      pricingPolicy: map['pricingPolicy'] == null ? null : (map['pricingPolicy'] as String).input(),
+      priceGuaranteeDate: map['priceGuaranteeDate'] == null ? null : (map['priceGuaranteeDate']! as String).input(),
+      pricingPolicy: map['pricingPolicy'] == null ? null : (map['pricingPolicy']! as String).input(),
     );
   }
 }

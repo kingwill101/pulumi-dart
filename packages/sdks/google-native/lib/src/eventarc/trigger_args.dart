@@ -75,16 +75,16 @@ class TriggerArgs {
 
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
       destination: (Destination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      eventDataContentType: map['eventDataContentType'] == null ? null : (map['eventDataContentType'] as String).input(),
+      eventDataContentType: map['eventDataContentType'] == null ? null : (map['eventDataContentType']! as String).input(),
       eventFilters: (pulumi.Input.decodeList<EventFilter>(map['eventFilters'], (value) => EventFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      transport: map['transport'] == null ? null : (Transport.fromMap((map['transport'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      transport: map['transport'] == null ? null : (Transport.fromMap((map['transport']! as Map).cast<String, dynamic>())).input(),
       triggerId: (map['triggerId'] as String).input(),
     );
   }

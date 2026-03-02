@@ -33,9 +33,9 @@ class UsageExportBucketState {
 
   factory UsageExportBucketState.fromMap(Map<String, dynamic> map) {
     return UsageExportBucketState(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

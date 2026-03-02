@@ -30,9 +30,9 @@ class PlanRuleLifecycle {
 
   factory PlanRuleLifecycle.fromMap(Map<String, dynamic> map) {
     return PlanRuleLifecycle(
-      coldStorageAfter: map['coldStorageAfter'] == null ? null : (map['coldStorageAfter'] as int).input(),
-      deleteAfter: map['deleteAfter'] == null ? null : (map['deleteAfter'] as int).input(),
-      optInToArchiveForSupportedResources: map['optInToArchiveForSupportedResources'] == null ? null : (map['optInToArchiveForSupportedResources'] as bool).input(),
+      coldStorageAfter: map['coldStorageAfter'] == null ? null : ((map['coldStorageAfter'] as int).input()).input(),
+      deleteAfter: map['deleteAfter'] == null ? null : ((map['deleteAfter'] as int).input()).input(),
+      optInToArchiveForSupportedResources: map['optInToArchiveForSupportedResources'] == null ? null : ((map['optInToArchiveForSupportedResources'] as bool).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ApiResourcePoliciesResponse {
 
   factory ApiResourcePoliciesResponse.fromMap(Map<String, dynamic> map) {
     return ApiResourcePoliciesResponse(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      contentLink: map['contentLink'] == null ? null : (map['contentLink'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      contentLink: map['contentLink'] == null ? null : (map['contentLink']! as String).input(),
     );
   }
 }

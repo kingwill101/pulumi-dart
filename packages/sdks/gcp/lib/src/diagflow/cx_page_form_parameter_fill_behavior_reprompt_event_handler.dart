@@ -45,11 +45,11 @@ class CxPageFormParameterFillBehaviorRepromptEventHandler {
 
   factory CxPageFormParameterFillBehaviorRepromptEventHandler.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterFillBehaviorRepromptEventHandler(
-      event: map['event'] == null ? null : (map['event'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      targetFlow: map['targetFlow'] == null ? null : (map['targetFlow'] as String).input(),
-      targetPage: map['targetPage'] == null ? null : (map['targetPage'] as String).input(),
-      triggerFulfillment: map['triggerFulfillment'] == null ? null : (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment.fromMap((map['triggerFulfillment'] as Map).cast<String, dynamic>())).input(),
+      event: map['event'] == null ? null : (map['event']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      targetFlow: map['targetFlow'] == null ? null : (map['targetFlow']! as String).input(),
+      targetPage: map['targetPage'] == null ? null : (map['targetPage']! as String).input(),
+      triggerFulfillment: map['triggerFulfillment'] == null ? null : (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment.fromMap((map['triggerFulfillment']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

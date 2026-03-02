@@ -36,7 +36,7 @@ class PipelineJobReconciliationPipelineJob {
 
   factory PipelineJobReconciliationPipelineJob.fromMap(Map<String, dynamic> map) {
     return PipelineJobReconciliationPipelineJob(
-      fhirStoreDestination: map['fhirStoreDestination'] == null ? null : (map['fhirStoreDestination'] as String).input(),
+      fhirStoreDestination: map['fhirStoreDestination'] == null ? null : (map['fhirStoreDestination']! as String).input(),
       matchingUriPrefix: (map['matchingUriPrefix'] as String).input(),
       mergeConfig: (PipelineJobReconciliationPipelineJobMergeConfig.fromMap((map['mergeConfig'] as Map).cast<String, dynamic>())).input(),
     );

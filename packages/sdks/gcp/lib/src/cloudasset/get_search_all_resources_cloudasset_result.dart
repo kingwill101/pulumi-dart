@@ -39,9 +39,9 @@ class GetSearchAllResourcesCloudassetResult {
 
   factory GetSearchAllResourcesCloudassetResult.fromMap(Map<String, dynamic> map) {
     return GetSearchAllResourcesCloudassetResult(
-      assetTypes: map['assetTypes'] == null ? null : (map['assetTypes'] as List).cast<String>(),
+      assetTypes: map['assetTypes'] == null ? null : (map['assetTypes']! as List).cast<String>(),
       id: map['id'] as String,
-      query: map['query'] == null ? null : map['query'] as String,
+      query: map['query'] == null ? null : map['query']! as String,
       results: pulumi.Input.decodeList<GetSearchAllResourcesResult>(map['results'], (value) => GetSearchAllResourcesResult.fromMap((value as Map).cast<String, dynamic>())),
       scope: map['scope'] as String,
     );

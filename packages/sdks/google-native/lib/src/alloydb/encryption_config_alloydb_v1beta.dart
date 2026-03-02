@@ -21,7 +21,7 @@ class EncryptionConfigAlloydbV1beta {
 
   factory EncryptionConfigAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigAlloydbV1beta(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
     );
   }
 }

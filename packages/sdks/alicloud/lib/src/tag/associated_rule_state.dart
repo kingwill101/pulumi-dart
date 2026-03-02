@@ -31,9 +31,9 @@ class AssociatedRuleState {
 
   factory AssociatedRuleState.fromMap(Map<String, dynamic> map) {
     return AssociatedRuleState(
-      associatedSettingName: map['associatedSettingName'] == null ? null : (map['associatedSettingName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tagKeys: map['tagKeys'] == null ? null : ((map['tagKeys'] as List).cast<String>()).input(),
+      associatedSettingName: map['associatedSettingName'] == null ? null : (map['associatedSettingName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tagKeys: map['tagKeys'] == null ? null : ((map['tagKeys']! as List).cast<String>()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class SourceInstanceParamsComputeV1 {
 
   factory SourceInstanceParamsComputeV1.fromMap(Map<String, dynamic> map) {
     return SourceInstanceParamsComputeV1(
-      diskConfigs: map['diskConfigs'] == null ? null : (pulumi.Input.decodeList<DiskInstantiationConfigComputeV1>(map['diskConfigs'], (value) => DiskInstantiationConfigComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskConfigs: map['diskConfigs'] == null ? null : (pulumi.Input.decodeList<DiskInstantiationConfigComputeV1>(map['diskConfigs']!, (value) => DiskInstantiationConfigComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

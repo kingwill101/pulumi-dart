@@ -41,10 +41,10 @@ class ManagedCertificateResponseProperties {
 
   factory ManagedCertificateResponseProperties.fromMap(Map<String, dynamic> map) {
     return ManagedCertificateResponseProperties(
-      domainControlValidation: map['domainControlValidation'] == null ? null : (map['domainControlValidation'] as String).input(),
+      domainControlValidation: map['domainControlValidation'] == null ? null : (map['domainControlValidation']! as String).input(),
       error: (map['error'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      subjectName: map['subjectName'] == null ? null : (map['subjectName'] as String).input(),
+      subjectName: map['subjectName'] == null ? null : (map['subjectName']! as String).input(),
       validationToken: (map['validationToken'] as String).input(),
     );
   }

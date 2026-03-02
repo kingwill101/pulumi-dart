@@ -35,9 +35,9 @@ class RouteEntryState {
 
   factory RouteEntryState.fromMap(Map<String, dynamic> map) {
     return RouteEntryState(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId']! as String).input(),
     );
   }
 }

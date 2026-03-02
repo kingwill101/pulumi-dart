@@ -82,18 +82,18 @@ class NetworkAclRuleState {
 
   factory NetworkAclRuleState.fromMap(Map<String, dynamic> map) {
     return NetworkAclRuleState(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      egress: map['egress'] == null ? null : (map['egress'] as bool).input(),
-      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
-      icmpCode: map['icmpCode'] == null ? null : (map['icmpCode'] as int).input(),
-      icmpType: map['icmpType'] == null ? null : (map['icmpType'] as int).input(),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
-      networkAclId: map['networkAclId'] == null ? null : (map['networkAclId'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction'] as String).input(),
-      ruleNumber: map['ruleNumber'] == null ? null : (map['ruleNumber'] as int).input(),
-      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : ((map['cidrBlock'] as String).input()).input(),
+      egress: map['egress'] == null ? null : ((map['egress'] as bool).input()).input(),
+      fromPort: map['fromPort'] == null ? null : ((map['fromPort'] as int).input()).input(),
+      icmpCode: map['icmpCode'] == null ? null : ((map['icmpCode'] as int).input()).input(),
+      icmpType: map['icmpType'] == null ? null : ((map['icmpType'] as int).input()).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : ((map['ipv6CidrBlock'] as String).input()).input(),
+      networkAclId: map['networkAclId'] == null ? null : ((map['networkAclId'] as String).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleAction: map['ruleAction'] == null ? null : ((map['ruleAction'] as String).input()).input(),
+      ruleNumber: map['ruleNumber'] == null ? null : ((map['ruleNumber'] as int).input()).input(),
+      toPort: map['toPort'] == null ? null : ((map['toPort'] as int).input()).input(),
     );
   }
 }

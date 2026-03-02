@@ -36,8 +36,8 @@ class JobTargetGroupArgs {
   factory JobTargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return JobTargetGroupArgs(
       jobAgentId: (map['jobAgentId'] as String).input(),
-      jobTargets: map['jobTargets'] == null ? null : (pulumi.Input.decodeList<JobTargetGroupJobTarget>(map['jobTargets'], (value) => JobTargetGroupJobTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      jobTargets: map['jobTargets'] == null ? null : (pulumi.Input.decodeList<JobTargetGroupJobTarget>(map['jobTargets']!, (value) => JobTargetGroupJobTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

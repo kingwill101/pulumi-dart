@@ -26,8 +26,8 @@ class SubnetworkSecondaryRangeComputeV1 {
 
   factory SubnetworkSecondaryRangeComputeV1.fromMap(Map<String, dynamic> map) {
     return SubnetworkSecondaryRangeComputeV1(
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      rangeName: map['rangeName'] == null ? null : (map['rangeName'] as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      rangeName: map['rangeName'] == null ? null : (map['rangeName']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class ApiManagementGatewaySkuPropertiesResponse {
 
   factory ApiManagementGatewaySkuPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApiManagementGatewaySkuPropertiesResponse(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
       name: (map['name'] as String).input(),
     );
   }

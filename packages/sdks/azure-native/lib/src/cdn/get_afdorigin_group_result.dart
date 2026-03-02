@@ -83,18 +83,18 @@ class GetAFDOriginGroupResult {
 
   factory GetAFDOriginGroupResult.fromMap(Map<String, dynamic> map) {
     return GetAFDOriginGroupResult(
-      authentication: map['authentication'] == null ? null : OriginAuthenticationPropertiesResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
+      authentication: map['authentication'] == null ? null : OriginAuthenticationPropertiesResponse.fromMap((map['authentication']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
       deploymentStatus: map['deploymentStatus'] as String,
-      healthProbeSettings: map['healthProbeSettings'] == null ? null : HealthProbeParametersResponse.fromMap((map['healthProbeSettings'] as Map).cast<String, dynamic>()),
+      healthProbeSettings: map['healthProbeSettings'] == null ? null : HealthProbeParametersResponse.fromMap((map['healthProbeSettings']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      loadBalancingSettings: map['loadBalancingSettings'] == null ? null : LoadBalancingSettingsParametersResponse.fromMap((map['loadBalancingSettings'] as Map).cast<String, dynamic>()),
+      loadBalancingSettings: map['loadBalancingSettings'] == null ? null : LoadBalancingSettingsParametersResponse.fromMap((map['loadBalancingSettings']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       profileName: map['profileName'] as String,
       provisioningState: map['provisioningState'] as String,
-      sessionAffinityState: map['sessionAffinityState'] == null ? null : map['sessionAffinityState'] as String,
+      sessionAffinityState: map['sessionAffinityState'] == null ? null : map['sessionAffinityState']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] == null ? null : map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] as int,
+      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes'] == null ? null : map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes']! as int,
       type: map['type'] as String,
     );
   }

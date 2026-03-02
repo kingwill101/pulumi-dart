@@ -35,7 +35,7 @@ class SourceCodeTokenArgs {
   factory SourceCodeTokenArgs.fromMap(Map<String, dynamic> map) {
     return SourceCodeTokenArgs(
       token: (map['token'] as String).input(),
-      tokenSecret: map['tokenSecret'] == null ? null : (map['tokenSecret'] as String).input(),
+      tokenSecret: map['tokenSecret'] == null ? null : (map['tokenSecret']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

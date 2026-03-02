@@ -37,9 +37,9 @@ class AppSpecFunctionLogDestinationOpenSearch {
   factory AppSpecFunctionLogDestinationOpenSearch.fromMap(Map<String, dynamic> map) {
     return AppSpecFunctionLogDestinationOpenSearch(
       basicAuth: (AppSpecFunctionLogDestinationOpenSearchBasicAuth.fromMap((map['basicAuth'] as Map).cast<String, dynamic>())).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      indexName: map['indexName'] == null ? null : (map['indexName']! as String).input(),
     );
   }
 }

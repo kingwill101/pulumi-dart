@@ -81,18 +81,18 @@ class CustomLocationArgs {
 
   factory CustomLocationArgs.fromMap(Map<String, dynamic> map) {
     return CustomLocationArgs(
-      authentication: map['authentication'] == null ? null : (CustomLocationPropertiesAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      clusterExtensionIds: map['clusterExtensionIds'] == null ? null : ((map['clusterExtensionIds'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      hostResourceId: map['hostResourceId'] == null ? null : (map['hostResourceId'] as String).input(),
-      hostType: map['hostType'] == null ? null : (map['hostType'] as String).input(),
-      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      authentication: map['authentication'] == null ? null : (CustomLocationPropertiesAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      clusterExtensionIds: map['clusterExtensionIds'] == null ? null : ((map['clusterExtensionIds']! as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      hostResourceId: map['hostResourceId'] == null ? null : (map['hostResourceId']! as String).input(),
+      hostType: map['hostType'] == null ? null : (map['hostType']! as String).input(),
+      identity: map['identity'] == null ? null : (Identity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

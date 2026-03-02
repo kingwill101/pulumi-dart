@@ -26,8 +26,8 @@ class PacketCaptureMachineScope {
 
   factory PacketCaptureMachineScope.fromMap(Map<String, dynamic> map) {
     return PacketCaptureMachineScope(
-      exclude: map['exclude'] == null ? null : ((map['exclude'] as List).cast<String>()).input(),
-      include: map['include'] == null ? null : ((map['include'] as List).cast<String>()).input(),
+      exclude: map['exclude'] == null ? null : ((map['exclude']! as List).cast<String>()).input(),
+      include: map['include'] == null ? null : ((map['include']! as List).cast<String>()).input(),
     );
   }
 }

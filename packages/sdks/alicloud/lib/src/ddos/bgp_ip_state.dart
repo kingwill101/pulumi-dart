@@ -41,11 +41,11 @@ class BgpIpState {
 
   factory BgpIpState.fromMap(Map<String, dynamic> map) {
     return BgpIpState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

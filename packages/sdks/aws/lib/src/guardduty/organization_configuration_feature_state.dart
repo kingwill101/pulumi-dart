@@ -42,11 +42,11 @@ class OrganizationConfigurationFeatureState {
 
   factory OrganizationConfigurationFeatureState.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationFeatureState(
-      additionalConfigurations: map['additionalConfigurations'] == null ? null : (pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(map['additionalConfigurations'], (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      autoEnable: map['autoEnable'] == null ? null : (map['autoEnable'] as String).input(),
-      detectorId: map['detectorId'] == null ? null : (map['detectorId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      additionalConfigurations: map['additionalConfigurations'] == null ? null : ((pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(map['additionalConfigurations']!, (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      autoEnable: map['autoEnable'] == null ? null : ((map['autoEnable'] as String).input()).input(),
+      detectorId: map['detectorId'] == null ? null : ((map['detectorId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

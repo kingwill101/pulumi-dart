@@ -31,9 +31,9 @@ class TrackingEventDefinitionResponse {
 
   factory TrackingEventDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return TrackingEventDefinitionResponse(
-      operationName: map['operationName'] == null ? null : (map['operationName'] as String).input(),
-      operationType: map['operationType'] == null ? null : (map['operationType'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, dynamic>()).input(),
+      operationName: map['operationName'] == null ? null : (map['operationName']! as String).input(),
+      operationType: map['operationType'] == null ? null : (map['operationType']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

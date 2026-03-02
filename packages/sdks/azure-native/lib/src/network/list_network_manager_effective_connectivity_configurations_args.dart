@@ -40,8 +40,8 @@ class ListNetworkManagerEffectiveConnectivityConfigurationsArgs {
   factory ListNetworkManagerEffectiveConnectivityConfigurationsArgs.fromMap(Map<String, dynamic> map) {
     return ListNetworkManagerEffectiveConnectivityConfigurationsArgs(
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
       virtualNetworkName: (map['virtualNetworkName'] as String).input(),
     );
   }

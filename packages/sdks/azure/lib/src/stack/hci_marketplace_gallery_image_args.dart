@@ -73,12 +73,12 @@ class HciMarketplaceGalleryImageArgs {
       customLocationId: (map['customLocationId'] as String).input(),
       hypervGeneration: (map['hypervGeneration'] as String).input(),
       identifier: (HciMarketplaceGalleryImageIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       osType: (map['osType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storagePathId: map['storagePathId'] == null ? null : (map['storagePathId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storagePathId: map['storagePathId'] == null ? null : (map['storagePathId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       version: (map['version'] as String).input(),
     );
   }

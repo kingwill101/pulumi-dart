@@ -48,9 +48,9 @@ class ContactProfileLinkChannel {
     return ContactProfileLinkChannel(
       bandwidthMhz: (map['bandwidthMhz'] as double).input(),
       centerFrequencyMhz: (map['centerFrequencyMhz'] as double).input(),
-      demodulationConfiguration: map['demodulationConfiguration'] == null ? null : (map['demodulationConfiguration'] as String).input(),
+      demodulationConfiguration: map['demodulationConfiguration'] == null ? null : (map['demodulationConfiguration']! as String).input(),
       endPoints: (pulumi.Input.decodeList<ContactProfileLinkChannelEndPoint>(map['endPoints'], (value) => ContactProfileLinkChannelEndPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      modulationConfiguration: map['modulationConfiguration'] == null ? null : (map['modulationConfiguration'] as String).input(),
+      modulationConfiguration: map['modulationConfiguration'] == null ? null : (map['modulationConfiguration']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

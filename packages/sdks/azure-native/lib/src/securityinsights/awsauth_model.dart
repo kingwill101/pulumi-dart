@@ -32,7 +32,7 @@ class AWSAuthModel {
 
   factory AWSAuthModel.fromMap(Map<String, dynamic> map) {
     return AWSAuthModel(
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
       roleArn: (map['roleArn'] as String).input(),
       type: (map['type'] as String).input(),
     );

@@ -57,14 +57,14 @@ class AzureInternalMonitoringPipelineSinkDescriptionResponse {
 
   factory AzureInternalMonitoringPipelineSinkDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return AzureInternalMonitoringPipelineSinkDescriptionResponse(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      autoKeyConfigUrl: map['autoKeyConfigUrl'] == null ? null : (map['autoKeyConfigUrl'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fluentdConfigUrl: map['fluentdConfigUrl'] == null ? null : (map['fluentdConfigUrl']).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      autoKeyConfigUrl: map['autoKeyConfigUrl'] == null ? null : (map['autoKeyConfigUrl']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fluentdConfigUrl: map['fluentdConfigUrl'] == null ? null : (map['fluentdConfigUrl']!).input(),
       kind: (map['kind'] as String).input(),
-      maConfigUrl: map['maConfigUrl'] == null ? null : (map['maConfigUrl'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      maConfigUrl: map['maConfigUrl'] == null ? null : (map['maConfigUrl']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

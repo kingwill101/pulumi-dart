@@ -32,8 +32,8 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSapoData {
   factory FlowSourceFlowConfigSourceConnectorPropertiesSapoData.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesSapoData(
       objectPath: (map['objectPath'] as String).input(),
-      paginationConfig: map['paginationConfig'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig.fromMap((map['paginationConfig'] as Map).cast<String, dynamic>())).input(),
-      parallelismConfig: map['parallelismConfig'] == null ? null : (FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig.fromMap((map['parallelismConfig'] as Map).cast<String, dynamic>())).input(),
+      paginationConfig: map['paginationConfig'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig.fromMap((map['paginationConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      parallelismConfig: map['parallelismConfig'] == null ? null : ((FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig.fromMap((map['parallelismConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring {
 
   factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring(
-      backends: map['backends'] == null ? null : ((map['backends'] as List).cast<String>()).input(),
+      backends: map['backends'] == null ? null : ((map['backends']! as List).cast<String>()).input(),
     );
   }
 }

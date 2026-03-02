@@ -31,7 +31,7 @@ class VolumeProviderParametersAzureFileResponse {
 
   factory VolumeProviderParametersAzureFileResponse.fromMap(Map<String, dynamic> map) {
     return VolumeProviderParametersAzureFileResponse(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
       accountName: (map['accountName'] as String).input(),
       shareName: (map['shareName'] as String).input(),
     );

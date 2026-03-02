@@ -25,8 +25,8 @@ class ClusterEnterpriseConfig {
 
   factory ClusterEnterpriseConfig.fromMap(Map<String, dynamic> map) {
     return ClusterEnterpriseConfig(
-      clusterTier: map['clusterTier'] == null ? null : (map['clusterTier'] as String).input(),
-      desiredTier: map['desiredTier'] == null ? null : (map['desiredTier'] as String).input(),
+      clusterTier: map['clusterTier'] == null ? null : (map['clusterTier']! as String).input(),
+      desiredTier: map['desiredTier'] == null ? null : (map['desiredTier']! as String).input(),
     );
   }
 }

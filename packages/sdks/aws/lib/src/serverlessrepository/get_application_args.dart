@@ -35,8 +35,8 @@ class GetApplicationArgs {
   factory GetApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationArgs(
       applicationId: (map['applicationId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      semanticVersion: map['semanticVersion'] == null ? null : (map['semanticVersion'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      semanticVersion: map['semanticVersion'] == null ? null : ((map['semanticVersion'] as String).input()).input(),
     );
   }
 }

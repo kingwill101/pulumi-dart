@@ -70,15 +70,15 @@ class NetworkConnectionArgs {
   factory NetworkConnectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionArgs(
       domainJoinType: (map['domainJoinType'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      domainPassword: map['domainPassword'] == null ? null : (map['domainPassword'] as String).input(),
-      domainUsername: map['domainUsername'] == null ? null : (map['domainUsername'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      organizationUnit: map['organizationUnit'] == null ? null : (map['organizationUnit'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      domainPassword: map['domainPassword'] == null ? null : (map['domainPassword']! as String).input(),
+      domainUsername: map['domainUsername'] == null ? null : (map['domainUsername']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      organizationUnit: map['organizationUnit'] == null ? null : (map['organizationUnit']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class ChannelNamespaceHandlerConfigsOnSubscribe {
   factory ChannelNamespaceHandlerConfigsOnSubscribe.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceHandlerConfigsOnSubscribe(
       behavior: (map['behavior'] as String).input(),
-      integration: (ChannelNamespaceHandlerConfigsOnSubscribeIntegration.fromMap((map['integration'] as Map).cast<String, dynamic>())).input(),
+      integration: (ChannelNamespaceHandlerConfigsOnSubscribeIntegration.fromMap((map['integration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

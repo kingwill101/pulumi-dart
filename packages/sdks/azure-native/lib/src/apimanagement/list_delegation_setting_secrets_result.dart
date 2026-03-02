@@ -20,7 +20,7 @@ class ListDelegationSettingSecretsResult {
 
   factory ListDelegationSettingSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListDelegationSettingSecretsResult(
-      validationKey: map['validationKey'] == null ? null : map['validationKey'] as String,
+      validationKey: map['validationKey'] == null ? null : map['validationKey']! as String,
     );
   }
 }

@@ -27,8 +27,8 @@ class PolicyControllerMembershipSpecGkehubV1alpha {
 
   factory PolicyControllerMembershipSpecGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return PolicyControllerMembershipSpecGkehubV1alpha(
-      policyControllerHubConfig: map['policyControllerHubConfig'] == null ? null : (PolicyControllerHubConfigGkehubV1alpha.fromMap((map['policyControllerHubConfig'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      policyControllerHubConfig: map['policyControllerHubConfig'] == null ? null : (PolicyControllerHubConfigGkehubV1alpha.fromMap((map['policyControllerHubConfig']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

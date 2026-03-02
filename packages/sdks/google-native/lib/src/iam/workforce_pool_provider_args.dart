@@ -69,14 +69,14 @@ class WorkforcePoolProviderArgs {
 
   factory WorkforcePoolProviderArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderArgs(
-      attributeCondition: map['attributeCondition'] == null ? null : (map['attributeCondition'] as String).input(),
+      attributeCondition: map['attributeCondition'] == null ? null : (map['attributeCondition']! as String).input(),
       attributeMapping: ((map['attributeMapping'] as Map).cast<String, String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      oidc: map['oidc'] == null ? null : (GoogleIamAdminV1WorkforcePoolProviderOidc.fromMap((map['oidc'] as Map).cast<String, dynamic>())).input(),
-      saml: map['saml'] == null ? null : (GoogleIamAdminV1WorkforcePoolProviderSaml.fromMap((map['saml'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      oidc: map['oidc'] == null ? null : (GoogleIamAdminV1WorkforcePoolProviderOidc.fromMap((map['oidc']! as Map).cast<String, dynamic>())).input(),
+      saml: map['saml'] == null ? null : (GoogleIamAdminV1WorkforcePoolProviderSaml.fromMap((map['saml']! as Map).cast<String, dynamic>())).input(),
       workforcePoolId: (map['workforcePoolId'] as String).input(),
       workforcePoolProviderId: (map['workforcePoolProviderId'] as String).input(),
     );

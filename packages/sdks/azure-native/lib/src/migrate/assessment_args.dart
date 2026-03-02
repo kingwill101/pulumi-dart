@@ -50,8 +50,8 @@ class AssessmentArgs {
 
   factory AssessmentArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentArgs(
-      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName'] as String).input(),
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
+      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName']! as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
       groupName: (map['groupName'] as String).input(),
       projectName: (map['projectName'] as String).input(),
       properties: (AssessmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),

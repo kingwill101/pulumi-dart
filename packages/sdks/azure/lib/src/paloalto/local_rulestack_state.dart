@@ -66,16 +66,16 @@ class LocalRulestackState {
 
   factory LocalRulestackState.fromMap(Map<String, dynamic> map) {
     return LocalRulestackState(
-      antiSpywareProfile: map['antiSpywareProfile'] == null ? null : (map['antiSpywareProfile'] as String).input(),
-      antiVirusProfile: map['antiVirusProfile'] == null ? null : (map['antiVirusProfile'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dnsSubscription: map['dnsSubscription'] == null ? null : (map['dnsSubscription'] as String).input(),
-      fileBlockingProfile: map['fileBlockingProfile'] == null ? null : (map['fileBlockingProfile'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (map['urlFilteringProfile'] as String).input(),
-      vulnerabilityProfile: map['vulnerabilityProfile'] == null ? null : (map['vulnerabilityProfile'] as String).input(),
+      antiSpywareProfile: map['antiSpywareProfile'] == null ? null : (map['antiSpywareProfile']! as String).input(),
+      antiVirusProfile: map['antiVirusProfile'] == null ? null : (map['antiVirusProfile']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dnsSubscription: map['dnsSubscription'] == null ? null : (map['dnsSubscription']! as String).input(),
+      fileBlockingProfile: map['fileBlockingProfile'] == null ? null : (map['fileBlockingProfile']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (map['urlFilteringProfile']! as String).input(),
+      vulnerabilityProfile: map['vulnerabilityProfile'] == null ? null : (map['vulnerabilityProfile']! as String).input(),
     );
   }
 }

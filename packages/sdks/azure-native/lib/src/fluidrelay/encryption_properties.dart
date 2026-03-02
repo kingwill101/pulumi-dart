@@ -22,7 +22,7 @@ class EncryptionProperties {
 
   factory EncryptionProperties.fromMap(Map<String, dynamic> map) {
     return EncryptionProperties(
-      customerManagedKeyEncryption: map['customerManagedKeyEncryption'] == null ? null : (CustomerManagedKeyEncryptionProperties.fromMap((map['customerManagedKeyEncryption'] as Map).cast<String, dynamic>())).input(),
+      customerManagedKeyEncryption: map['customerManagedKeyEncryption'] == null ? null : (CustomerManagedKeyEncryptionProperties.fromMap((map['customerManagedKeyEncryption']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

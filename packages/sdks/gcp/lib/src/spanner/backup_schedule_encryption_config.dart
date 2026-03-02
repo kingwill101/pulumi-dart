@@ -37,8 +37,8 @@ class BackupScheduleEncryptionConfig {
   factory BackupScheduleEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return BackupScheduleEncryptionConfig(
       encryptionType: (map['encryptionType'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      kmsKeyNames: map['kmsKeyNames'] == null ? null : ((map['kmsKeyNames'] as List).cast<String>()).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      kmsKeyNames: map['kmsKeyNames'] == null ? null : ((map['kmsKeyNames']! as List).cast<String>()).input(),
     );
   }
 }

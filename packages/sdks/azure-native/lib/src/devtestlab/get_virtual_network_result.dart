@@ -89,18 +89,18 @@ class GetVirtualNetworkResult {
 
   factory GetVirtualNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkResult(
-      allowedSubnets: map['allowedSubnets'] == null ? null : pulumi.Input.decodeList<SubnetResponse>(map['allowedSubnets'], (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      allowedSubnets: map['allowedSubnets'] == null ? null : pulumi.Input.decodeList<SubnetResponse>(map['allowedSubnets']!, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
       createdDate: map['createdDate'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      externalProviderResourceId: map['externalProviderResourceId'] == null ? null : map['externalProviderResourceId'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      externalProviderResourceId: map['externalProviderResourceId'] == null ? null : map['externalProviderResourceId']! as String,
       externalSubnets: pulumi.Input.decodeList<ExternalSubnetResponse>(map['externalSubnets'], (value) => ExternalSubnetResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      subnetOverrides: map['subnetOverrides'] == null ? null : pulumi.Input.decodeList<SubnetOverrideResponse>(map['subnetOverrides'], (value) => SubnetOverrideResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      subnetOverrides: map['subnetOverrides'] == null ? null : pulumi.Input.decodeList<SubnetOverrideResponse>(map['subnetOverrides']!, (value) => SubnetOverrideResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
     );

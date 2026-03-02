@@ -31,9 +31,9 @@ class ImageMetadataResponse {
 
   factory ImageMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ImageMetadataResponse(
-      currentImageVersion: map['currentImageVersion'] == null ? null : (map['currentImageVersion'] as String).input(),
-      isLatestOsImageVersion: map['isLatestOsImageVersion'] == null ? null : (map['isLatestOsImageVersion'] as bool).input(),
-      latestImageVersion: map['latestImageVersion'] == null ? null : (map['latestImageVersion'] as String).input(),
+      currentImageVersion: map['currentImageVersion'] == null ? null : (map['currentImageVersion']! as String).input(),
+      isLatestOsImageVersion: map['isLatestOsImageVersion'] == null ? null : (map['isLatestOsImageVersion']! as bool).input(),
+      latestImageVersion: map['latestImageVersion'] == null ? null : (map['latestImageVersion']! as String).input(),
     );
   }
 }

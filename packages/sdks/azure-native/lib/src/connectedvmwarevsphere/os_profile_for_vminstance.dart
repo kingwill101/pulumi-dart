@@ -47,12 +47,12 @@ class OsProfileForVMInstance {
 
   factory OsProfileForVMInstance.fromMap(Map<String, dynamic> map) {
     return OsProfileForVMInstance(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
-      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
-      guestId: map['guestId'] == null ? null : (map['guestId'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : (WindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername']! as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
+      guestId: map['guestId'] == null ? null : (map['guestId']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (WindowsConfiguration.fromMap((map['windowsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

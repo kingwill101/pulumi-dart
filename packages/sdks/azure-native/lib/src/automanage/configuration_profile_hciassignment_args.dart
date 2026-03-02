@@ -41,8 +41,8 @@ class ConfigurationProfileHCIAssignmentArgs {
   factory ConfigurationProfileHCIAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileHCIAssignmentArgs(
       clusterName: (map['clusterName'] as String).input(),
-      configurationProfileAssignmentName: map['configurationProfileAssignmentName'] == null ? null : (map['configurationProfileAssignmentName'] as String).input(),
-      properties: map['properties'] == null ? null : (ConfigurationProfileAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      configurationProfileAssignmentName: map['configurationProfileAssignmentName'] == null ? null : (map['configurationProfileAssignmentName']! as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationProfileAssignmentProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -73,16 +73,16 @@ class WidgetConfigUiSettingsGenerativeAnswerConfig {
 
   factory WidgetConfigUiSettingsGenerativeAnswerConfig.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiSettingsGenerativeAnswerConfig(
-      disableRelatedQuestions: map['disableRelatedQuestions'] == null ? null : (map['disableRelatedQuestions'] as bool).input(),
-      ignoreAdversarialQuery: map['ignoreAdversarialQuery'] == null ? null : (map['ignoreAdversarialQuery'] as bool).input(),
-      ignoreLowRelevantContent: map['ignoreLowRelevantContent'] == null ? null : (map['ignoreLowRelevantContent'] as bool).input(),
-      ignoreNonAnswerSeekingQuery: map['ignoreNonAnswerSeekingQuery'] == null ? null : (map['ignoreNonAnswerSeekingQuery'] as bool).input(),
-      imageSource: map['imageSource'] == null ? null : (map['imageSource'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      maxRephraseSteps: map['maxRephraseSteps'] == null ? null : (map['maxRephraseSteps'] as int).input(),
-      modelPromptPreamble: map['modelPromptPreamble'] == null ? null : (map['modelPromptPreamble'] as String).input(),
-      modelVersion: map['modelVersion'] == null ? null : (map['modelVersion'] as String).input(),
-      resultCount: map['resultCount'] == null ? null : (map['resultCount'] as int).input(),
+      disableRelatedQuestions: map['disableRelatedQuestions'] == null ? null : (map['disableRelatedQuestions']! as bool).input(),
+      ignoreAdversarialQuery: map['ignoreAdversarialQuery'] == null ? null : (map['ignoreAdversarialQuery']! as bool).input(),
+      ignoreLowRelevantContent: map['ignoreLowRelevantContent'] == null ? null : (map['ignoreLowRelevantContent']! as bool).input(),
+      ignoreNonAnswerSeekingQuery: map['ignoreNonAnswerSeekingQuery'] == null ? null : (map['ignoreNonAnswerSeekingQuery']! as bool).input(),
+      imageSource: map['imageSource'] == null ? null : (map['imageSource']! as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      maxRephraseSteps: map['maxRephraseSteps'] == null ? null : (map['maxRephraseSteps']! as int).input(),
+      modelPromptPreamble: map['modelPromptPreamble'] == null ? null : (map['modelPromptPreamble']! as String).input(),
+      modelVersion: map['modelVersion'] == null ? null : (map['modelVersion']! as String).input(),
+      resultCount: map['resultCount'] == null ? null : (map['resultCount']! as int).input(),
     );
   }
 }

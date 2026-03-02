@@ -46,11 +46,11 @@ class ApiPortalArgs {
 
   factory ApiPortalArgs.fromMap(Map<String, dynamic> map) {
     return ApiPortalArgs(
-      apiPortalName: map['apiPortalName'] == null ? null : (map['apiPortalName'] as String).input(),
-      properties: map['properties'] == null ? null : (ApiPortalProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      apiPortalName: map['apiPortalName'] == null ? null : (map['apiPortalName']! as String).input(),
+      properties: map['properties'] == null ? null : (ApiPortalProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

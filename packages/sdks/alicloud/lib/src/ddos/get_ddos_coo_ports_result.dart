@@ -50,12 +50,12 @@ class GetDdosCooPortsResult {
 
   factory GetDdosCooPortsResult.fromMap(Map<String, dynamic> map) {
     return GetDdosCooPortsResult(
-      frontendPort: map['frontendPort'] == null ? null : map['frontendPort'] as String,
-      frontendProtocol: map['frontendProtocol'] == null ? null : map['frontendProtocol'] as String,
+      frontendPort: map['frontendPort'] == null ? null : map['frontendPort']! as String,
+      frontendProtocol: map['frontendProtocol'] == null ? null : map['frontendProtocol']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       ports: pulumi.Input.decodeList<GetDdosCooPortsPort>(map['ports'], (value) => GetDdosCooPortsPort.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

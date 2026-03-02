@@ -26,8 +26,8 @@ class IpRange {
 
   factory IpRange.fromMap(Map<String, dynamic> map) {
     return IpRange(
-      cidrIp: map['cidrIp'] == null ? null : (map['cidrIp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      cidrIp: map['cidrIp'] == null ? null : (map['cidrIp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

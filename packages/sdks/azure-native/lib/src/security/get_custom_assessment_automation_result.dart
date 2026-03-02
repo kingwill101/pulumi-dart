@@ -76,16 +76,16 @@ class GetCustomAssessmentAutomationResult {
 
   factory GetCustomAssessmentAutomationResult.fromMap(Map<String, dynamic> map) {
     return GetCustomAssessmentAutomationResult(
-      assessmentKey: map['assessmentKey'] == null ? null : map['assessmentKey'] as String,
+      assessmentKey: map['assessmentKey'] == null ? null : map['assessmentKey']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      compressedQuery: map['compressedQuery'] == null ? null : map['compressedQuery'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      compressedQuery: map['compressedQuery'] == null ? null : map['compressedQuery']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      remediationDescription: map['remediationDescription'] == null ? null : map['remediationDescription'] as String,
-      severity: map['severity'] == null ? null : map['severity'] as String,
-      supportedCloud: map['supportedCloud'] == null ? null : map['supportedCloud'] as String,
+      remediationDescription: map['remediationDescription'] == null ? null : map['remediationDescription']! as String,
+      severity: map['severity'] == null ? null : map['severity']! as String,
+      supportedCloud: map['supportedCloud'] == null ? null : map['supportedCloud']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

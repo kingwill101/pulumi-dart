@@ -26,8 +26,8 @@ class FirewallPolicyIntrusionDetectionSignatureSpecification {
 
   factory FirewallPolicyIntrusionDetectionSignatureSpecification.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyIntrusionDetectionSignatureSpecification(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

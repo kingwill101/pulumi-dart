@@ -31,7 +31,7 @@ class DataSourceCustomDocumentEnrichmentConfigurationPostExtractionHookConfigura
 
   factory DataSourceCustomDocumentEnrichmentConfigurationPostExtractionHookConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceCustomDocumentEnrichmentConfigurationPostExtractionHookConfiguration(
-      invocationCondition: map['invocationCondition'] == null ? null : (DataSourceCustomDocumentEnrichmentConfigurationPostExtractionHookConfigurationInvocationCondition.fromMap((map['invocationCondition'] as Map).cast<String, dynamic>())).input(),
+      invocationCondition: map['invocationCondition'] == null ? null : ((DataSourceCustomDocumentEnrichmentConfigurationPostExtractionHookConfigurationInvocationCondition.fromMap((map['invocationCondition']! as Map).cast<String, dynamic>())).input()).input(),
       lambdaArn: (map['lambdaArn'] as String).input(),
       s3Bucket: (map['s3Bucket'] as String).input(),
     );

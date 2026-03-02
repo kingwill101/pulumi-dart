@@ -45,12 +45,12 @@ class VpnConnectionTunnel2LogOptionsCloudwatchLogOptions {
 
   factory VpnConnectionTunnel2LogOptionsCloudwatchLogOptions.fromMap(Map<String, dynamic> map) {
     return VpnConnectionTunnel2LogOptionsCloudwatchLogOptions(
-      bgpLogEnabled: map['bgpLogEnabled'] == null ? null : (map['bgpLogEnabled'] as bool).input(),
-      bgpLogGroupArn: map['bgpLogGroupArn'] == null ? null : (map['bgpLogGroupArn'] as String).input(),
-      bgpLogOutputFormat: map['bgpLogOutputFormat'] == null ? null : (map['bgpLogOutputFormat'] as String).input(),
-      logEnabled: map['logEnabled'] == null ? null : (map['logEnabled'] as bool).input(),
-      logGroupArn: map['logGroupArn'] == null ? null : (map['logGroupArn'] as String).input(),
-      logOutputFormat: map['logOutputFormat'] == null ? null : (map['logOutputFormat'] as String).input(),
+      bgpLogEnabled: map['bgpLogEnabled'] == null ? null : ((map['bgpLogEnabled'] as bool).input()).input(),
+      bgpLogGroupArn: map['bgpLogGroupArn'] == null ? null : ((map['bgpLogGroupArn'] as String).input()).input(),
+      bgpLogOutputFormat: map['bgpLogOutputFormat'] == null ? null : ((map['bgpLogOutputFormat'] as String).input()).input(),
+      logEnabled: map['logEnabled'] == null ? null : ((map['logEnabled'] as bool).input()).input(),
+      logGroupArn: map['logGroupArn'] == null ? null : ((map['logGroupArn'] as String).input()).input(),
+      logOutputFormat: map['logOutputFormat'] == null ? null : ((map['logOutputFormat'] as String).input()).input(),
     );
   }
 }

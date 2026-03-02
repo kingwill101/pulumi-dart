@@ -21,7 +21,7 @@ class SparkHistoryServerConfig {
 
   factory SparkHistoryServerConfig.fromMap(Map<String, dynamic> map) {
     return SparkHistoryServerConfig(
-      dataprocCluster: map['dataprocCluster'] == null ? null : (map['dataprocCluster'] as String).input(),
+      dataprocCluster: map['dataprocCluster'] == null ? null : (map['dataprocCluster']! as String).input(),
     );
   }
 }

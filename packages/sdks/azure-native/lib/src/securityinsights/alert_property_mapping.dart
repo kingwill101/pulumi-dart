@@ -26,8 +26,8 @@ class AlertPropertyMapping {
 
   factory AlertPropertyMapping.fromMap(Map<String, dynamic> map) {
     return AlertPropertyMapping(
-      alertProperty: map['alertProperty'] == null ? null : (map['alertProperty'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      alertProperty: map['alertProperty'] == null ? null : (map['alertProperty']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

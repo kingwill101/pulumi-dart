@@ -27,8 +27,8 @@ class DeviceCredential {
 
   factory DeviceCredential.fromMap(Map<String, dynamic> map) {
     return DeviceCredential(
-      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (PublicKeyCredential.fromMap((map['publicKey'] as Map).cast<String, dynamic>())).input(),
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime']! as String).input(),
+      publicKey: map['publicKey'] == null ? null : (PublicKeyCredential.fromMap((map['publicKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

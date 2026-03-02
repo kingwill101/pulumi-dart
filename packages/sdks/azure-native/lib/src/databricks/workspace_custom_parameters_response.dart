@@ -101,22 +101,22 @@ class WorkspaceCustomParametersResponse {
 
   factory WorkspaceCustomParametersResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceCustomParametersResponse(
-      amlWorkspaceId: map['amlWorkspaceId'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['amlWorkspaceId'] as Map).cast<String, dynamic>())).input(),
-      customPrivateSubnetName: map['customPrivateSubnetName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['customPrivateSubnetName'] as Map).cast<String, dynamic>())).input(),
-      customPublicSubnetName: map['customPublicSubnetName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['customPublicSubnetName'] as Map).cast<String, dynamic>())).input(),
-      customVirtualNetworkId: map['customVirtualNetworkId'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['customVirtualNetworkId'] as Map).cast<String, dynamic>())).input(),
-      enableNoPublicIp: map['enableNoPublicIp'] == null ? null : (WorkspaceNoPublicIPBooleanParameterResponse.fromMap((map['enableNoPublicIp'] as Map).cast<String, dynamic>())).input(),
-      encryption: map['encryption'] == null ? null : (WorkspaceEncryptionParameterResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      loadBalancerBackendPoolName: map['loadBalancerBackendPoolName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['loadBalancerBackendPoolName'] as Map).cast<String, dynamic>())).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['loadBalancerId'] as Map).cast<String, dynamic>())).input(),
-      natGatewayName: map['natGatewayName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['natGatewayName'] as Map).cast<String, dynamic>())).input(),
-      prepareEncryption: map['prepareEncryption'] == null ? null : (WorkspaceCustomBooleanParameterResponse.fromMap((map['prepareEncryption'] as Map).cast<String, dynamic>())).input(),
-      publicIpName: map['publicIpName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['publicIpName'] as Map).cast<String, dynamic>())).input(),
-      requireInfrastructureEncryption: map['requireInfrastructureEncryption'] == null ? null : (WorkspaceCustomBooleanParameterResponse.fromMap((map['requireInfrastructureEncryption'] as Map).cast<String, dynamic>())).input(),
+      amlWorkspaceId: map['amlWorkspaceId'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['amlWorkspaceId']! as Map).cast<String, dynamic>())).input(),
+      customPrivateSubnetName: map['customPrivateSubnetName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['customPrivateSubnetName']! as Map).cast<String, dynamic>())).input(),
+      customPublicSubnetName: map['customPublicSubnetName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['customPublicSubnetName']! as Map).cast<String, dynamic>())).input(),
+      customVirtualNetworkId: map['customVirtualNetworkId'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['customVirtualNetworkId']! as Map).cast<String, dynamic>())).input(),
+      enableNoPublicIp: map['enableNoPublicIp'] == null ? null : (WorkspaceNoPublicIPBooleanParameterResponse.fromMap((map['enableNoPublicIp']! as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (WorkspaceEncryptionParameterResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      loadBalancerBackendPoolName: map['loadBalancerBackendPoolName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['loadBalancerBackendPoolName']! as Map).cast<String, dynamic>())).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['loadBalancerId']! as Map).cast<String, dynamic>())).input(),
+      natGatewayName: map['natGatewayName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['natGatewayName']! as Map).cast<String, dynamic>())).input(),
+      prepareEncryption: map['prepareEncryption'] == null ? null : (WorkspaceCustomBooleanParameterResponse.fromMap((map['prepareEncryption']! as Map).cast<String, dynamic>())).input(),
+      publicIpName: map['publicIpName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['publicIpName']! as Map).cast<String, dynamic>())).input(),
+      requireInfrastructureEncryption: map['requireInfrastructureEncryption'] == null ? null : (WorkspaceCustomBooleanParameterResponse.fromMap((map['requireInfrastructureEncryption']! as Map).cast<String, dynamic>())).input(),
       resourceTags: (WorkspaceCustomObjectParameterResponse.fromMap((map['resourceTags'] as Map).cast<String, dynamic>())).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['storageAccountName'] as Map).cast<String, dynamic>())).input(),
-      storageAccountSkuName: map['storageAccountSkuName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['storageAccountSkuName'] as Map).cast<String, dynamic>())).input(),
-      vnetAddressPrefix: map['vnetAddressPrefix'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['vnetAddressPrefix'] as Map).cast<String, dynamic>())).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['storageAccountName']! as Map).cast<String, dynamic>())).input(),
+      storageAccountSkuName: map['storageAccountSkuName'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['storageAccountSkuName']! as Map).cast<String, dynamic>())).input(),
+      vnetAddressPrefix: map['vnetAddressPrefix'] == null ? null : (WorkspaceCustomStringParameterResponse.fromMap((map['vnetAddressPrefix']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

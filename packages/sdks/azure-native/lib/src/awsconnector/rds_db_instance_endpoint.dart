@@ -31,9 +31,9 @@ class RdsDbInstanceEndpoint {
 
   factory RdsDbInstanceEndpoint.fromMap(Map<String, dynamic> map) {
     return RdsDbInstanceEndpoint(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
     );
   }
 }

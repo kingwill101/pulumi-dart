@@ -96,21 +96,21 @@ class AwsEfsFileSystemProperties {
 
   factory AwsEfsFileSystemProperties.fromMap(Map<String, dynamic> map) {
     return AwsEfsFileSystemProperties(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      availabilityZoneName: map['availabilityZoneName'] == null ? null : (map['availabilityZoneName'] as String).input(),
-      backupPolicy: map['backupPolicy'] == null ? null : (BackupPolicy.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      fileSystemPolicy: map['fileSystemPolicy'] == null ? null : (map['fileSystemPolicy']).input(),
-      fileSystemProtection: map['fileSystemProtection'] == null ? null : (FileSystemProtection.fromMap((map['fileSystemProtection'] as Map).cast<String, dynamic>())).input(),
-      fileSystemTags: map['fileSystemTags'] == null ? null : (pulumi.Input.decodeList<ElasticFileSystemTag>(map['fileSystemTags'], (value) => ElasticFileSystemTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      lifecyclePolicies: map['lifecyclePolicies'] == null ? null : (pulumi.Input.decodeList<LifecyclePolicy>(map['lifecyclePolicies'], (value) => LifecyclePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      performanceMode: map['performanceMode'] == null ? null : (map['performanceMode'] as String).input(),
-      provisionedThroughputInMibps: map['provisionedThroughputInMibps'] == null ? null : (map['provisionedThroughputInMibps'] as int).input(),
-      replicationConfiguration: map['replicationConfiguration'] == null ? null : (ReplicationConfiguration.fromMap((map['replicationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      throughputMode: map['throughputMode'] == null ? null : (map['throughputMode'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      availabilityZoneName: map['availabilityZoneName'] == null ? null : (map['availabilityZoneName']! as String).input(),
+      backupPolicy: map['backupPolicy'] == null ? null : (BackupPolicy.fromMap((map['backupPolicy']! as Map).cast<String, dynamic>())).input(),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck']! as bool).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      fileSystemPolicy: map['fileSystemPolicy'] == null ? null : (map['fileSystemPolicy']!).input(),
+      fileSystemProtection: map['fileSystemProtection'] == null ? null : (FileSystemProtection.fromMap((map['fileSystemProtection']! as Map).cast<String, dynamic>())).input(),
+      fileSystemTags: map['fileSystemTags'] == null ? null : (pulumi.Input.decodeList<ElasticFileSystemTag>(map['fileSystemTags']!, (value) => ElasticFileSystemTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      lifecyclePolicies: map['lifecyclePolicies'] == null ? null : (pulumi.Input.decodeList<LifecyclePolicy>(map['lifecyclePolicies']!, (value) => LifecyclePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      performanceMode: map['performanceMode'] == null ? null : (map['performanceMode']! as String).input(),
+      provisionedThroughputInMibps: map['provisionedThroughputInMibps'] == null ? null : (map['provisionedThroughputInMibps']! as int).input(),
+      replicationConfiguration: map['replicationConfiguration'] == null ? null : (ReplicationConfiguration.fromMap((map['replicationConfiguration']! as Map).cast<String, dynamic>())).input(),
+      throughputMode: map['throughputMode'] == null ? null : (map['throughputMode']! as String).input(),
     );
   }
 }

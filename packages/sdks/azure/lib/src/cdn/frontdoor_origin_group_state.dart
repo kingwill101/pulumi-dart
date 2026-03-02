@@ -50,12 +50,12 @@ class FrontdoorOriginGroupState {
 
   factory FrontdoorOriginGroupState.fromMap(Map<String, dynamic> map) {
     return FrontdoorOriginGroupState(
-      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : (map['cdnFrontdoorProfileId'] as String).input(),
-      healthProbe: map['healthProbe'] == null ? null : (FrontdoorOriginGroupHealthProbe.fromMap((map['healthProbe'] as Map).cast<String, dynamic>())).input(),
-      loadBalancing: map['loadBalancing'] == null ? null : (FrontdoorOriginGroupLoadBalancing.fromMap((map['loadBalancing'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      restoreTrafficTimeToHealedOrNewEndpointInMinutes: map['restoreTrafficTimeToHealedOrNewEndpointInMinutes'] == null ? null : (map['restoreTrafficTimeToHealedOrNewEndpointInMinutes'] as int).input(),
-      sessionAffinityEnabled: map['sessionAffinityEnabled'] == null ? null : (map['sessionAffinityEnabled'] as bool).input(),
+      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : (map['cdnFrontdoorProfileId']! as String).input(),
+      healthProbe: map['healthProbe'] == null ? null : (FrontdoorOriginGroupHealthProbe.fromMap((map['healthProbe']! as Map).cast<String, dynamic>())).input(),
+      loadBalancing: map['loadBalancing'] == null ? null : (FrontdoorOriginGroupLoadBalancing.fromMap((map['loadBalancing']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      restoreTrafficTimeToHealedOrNewEndpointInMinutes: map['restoreTrafficTimeToHealedOrNewEndpointInMinutes'] == null ? null : (map['restoreTrafficTimeToHealedOrNewEndpointInMinutes']! as int).input(),
+      sessionAffinityEnabled: map['sessionAffinityEnabled'] == null ? null : (map['sessionAffinityEnabled']! as bool).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class TransferJobTransferSpecGcsDataSource {
   factory TransferJobTransferSpecGcsDataSource.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecGcsDataSource(
       bucketName: (map['bucketName'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

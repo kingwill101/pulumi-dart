@@ -51,13 +51,13 @@ class SamlProviderState {
 
   factory SamlProviderState.fromMap(Map<String, dynamic> map) {
     return SamlProviderState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      samlMetadataDocument: map['samlMetadataDocument'] == null ? null : (map['samlMetadataDocument'] as String).input(),
-      samlProviderUuid: map['samlProviderUuid'] == null ? null : (map['samlProviderUuid'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      validUntil: map['validUntil'] == null ? null : (map['validUntil'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      samlMetadataDocument: map['samlMetadataDocument'] == null ? null : ((map['samlMetadataDocument'] as String).input()).input(),
+      samlProviderUuid: map['samlProviderUuid'] == null ? null : ((map['samlProviderUuid'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      validUntil: map['validUntil'] == null ? null : ((map['validUntil'] as String).input()).input(),
     );
   }
 }

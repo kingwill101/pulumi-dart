@@ -25,8 +25,8 @@ class StorageLensConfigurationStorageLensConfigurationInclude {
 
   factory StorageLensConfigurationStorageLensConfigurationInclude.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationInclude(
-      buckets: map['buckets'] == null ? null : ((map['buckets'] as List).cast<String>()).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      buckets: map['buckets'] == null ? null : (((map['buckets'] as List).cast<String>()).input()).input(),
+      regions: map['regions'] == null ? null : (((map['regions'] as List).cast<String>()).input()).input(),
     );
   }
 }

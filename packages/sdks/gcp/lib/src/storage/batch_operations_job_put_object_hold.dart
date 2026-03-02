@@ -25,8 +25,8 @@ class BatchOperationsJobPutObjectHold {
 
   factory BatchOperationsJobPutObjectHold.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobPutObjectHold(
-      eventBasedHold: map['eventBasedHold'] == null ? null : (map['eventBasedHold'] as String).input(),
-      temporaryHold: map['temporaryHold'] == null ? null : (map['temporaryHold'] as String).input(),
+      eventBasedHold: map['eventBasedHold'] == null ? null : (map['eventBasedHold']! as String).input(),
+      temporaryHold: map['temporaryHold'] == null ? null : (map['temporaryHold']! as String).input(),
     );
   }
 }

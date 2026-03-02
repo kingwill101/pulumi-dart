@@ -35,10 +35,10 @@ class RRSetRoutingPolicy {
 
   factory RRSetRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicy(
-      geo: map['geo'] == null ? null : (RRSetRoutingPolicyGeoPolicy.fromMap((map['geo'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      primaryBackup: map['primaryBackup'] == null ? null : (RRSetRoutingPolicyPrimaryBackupPolicy.fromMap((map['primaryBackup'] as Map).cast<String, dynamic>())).input(),
-      wrr: map['wrr'] == null ? null : (RRSetRoutingPolicyWrrPolicy.fromMap((map['wrr'] as Map).cast<String, dynamic>())).input(),
+      geo: map['geo'] == null ? null : (RRSetRoutingPolicyGeoPolicy.fromMap((map['geo']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      primaryBackup: map['primaryBackup'] == null ? null : (RRSetRoutingPolicyPrimaryBackupPolicy.fromMap((map['primaryBackup']! as Map).cast<String, dynamic>())).input(),
+      wrr: map['wrr'] == null ? null : (RRSetRoutingPolicyWrrPolicy.fromMap((map['wrr']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

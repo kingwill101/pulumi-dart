@@ -105,22 +105,22 @@ class TaskArgs {
 
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
-      agentConfiguration: map['agentConfiguration'] == null ? null : (AgentProperties.fromMap((map['agentConfiguration'] as Map).cast<String, dynamic>())).input(),
-      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName'] as String).input(),
-      credentials: map['credentials'] == null ? null : (Credentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      isSystemTask: map['isSystemTask'] == null ? null : (map['isSystemTask'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate'] as String).input(),
-      platform: map['platform'] == null ? null : (PlatformProperties.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
+      agentConfiguration: map['agentConfiguration'] == null ? null : (AgentProperties.fromMap((map['agentConfiguration']! as Map).cast<String, dynamic>())).input(),
+      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName']! as String).input(),
+      credentials: map['credentials'] == null ? null : (Credentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      isSystemTask: map['isSystemTask'] == null ? null : (map['isSystemTask']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate']! as String).input(),
+      platform: map['platform'] == null ? null : (PlatformProperties.fromMap((map['platform']! as Map).cast<String, dynamic>())).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      step: map['step'] == null ? null : (DockerBuildStep.fromMap((map['step'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      taskName: map['taskName'] == null ? null : (map['taskName'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      trigger: map['trigger'] == null ? null : (TriggerProperties.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      step: map['step'] == null ? null : (DockerBuildStep.fromMap((map['step']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      taskName: map['taskName'] == null ? null : (map['taskName']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      trigger: map['trigger'] == null ? null : (TriggerProperties.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

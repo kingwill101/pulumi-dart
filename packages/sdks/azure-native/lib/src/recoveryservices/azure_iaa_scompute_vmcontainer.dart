@@ -65,15 +65,15 @@ class AzureIaaSComputeVMContainer {
 
   factory AzureIaaSComputeVMContainer.fromMap(Map<String, dynamic> map) {
     return AzureIaaSComputeVMContainer(
-      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType'] as String).input(),
+      backupManagementType: map['backupManagementType'] == null ? null : (map['backupManagementType']! as String).input(),
       containerType: (map['containerType'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus'] as String).input(),
-      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType'] as String).input(),
-      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
-      virtualMachineVersion: map['virtualMachineVersion'] == null ? null : (map['virtualMachineVersion'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      healthStatus: map['healthStatus'] == null ? null : (map['healthStatus']! as String).input(),
+      protectableObjectType: map['protectableObjectType'] == null ? null : (map['protectableObjectType']! as String).input(),
+      registrationStatus: map['registrationStatus'] == null ? null : (map['registrationStatus']! as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId']! as String).input(),
+      virtualMachineVersion: map['virtualMachineVersion'] == null ? null : (map['virtualMachineVersion']! as String).input(),
     );
   }
 }

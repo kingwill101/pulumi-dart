@@ -22,7 +22,7 @@ class PipelineConnectionResponseProperties {
 
   factory PipelineConnectionResponseProperties.fromMap(Map<String, dynamic> map) {
     return PipelineConnectionResponseProperties(
-      internalMetadata: map['internalMetadata'] == null ? null : (InternalMetadataPropertiesResponse.fromMap((map['internalMetadata'] as Map).cast<String, dynamic>())).input(),
+      internalMetadata: map['internalMetadata'] == null ? null : (InternalMetadataPropertiesResponse.fromMap((map['internalMetadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

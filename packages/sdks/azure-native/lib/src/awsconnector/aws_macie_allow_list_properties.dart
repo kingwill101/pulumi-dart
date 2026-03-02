@@ -53,13 +53,13 @@ class AwsMacieAllowListProperties {
 
   factory AwsMacieAllowListProperties.fromMap(Map<String, dynamic> map) {
     return AwsMacieAllowListProperties(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      criteria: map['criteria'] == null ? null : (Criteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      criteria: map['criteria'] == null ? null : (Criteria.fromMap((map['criteria']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

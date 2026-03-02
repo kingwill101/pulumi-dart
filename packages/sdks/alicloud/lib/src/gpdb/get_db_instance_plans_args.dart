@@ -55,12 +55,12 @@ class GetDbInstancePlansArgs {
   factory GetDbInstancePlansArgs.fromMap(Map<String, dynamic> map) {
     return GetDbInstancePlansArgs(
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      planScheduleType: map['planScheduleType'] == null ? null : (map['planScheduleType'] as String).input(),
-      planType: map['planType'] == null ? null : (map['planType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      planScheduleType: map['planScheduleType'] == null ? null : (map['planScheduleType']! as String).input(),
+      planType: map['planType'] == null ? null : (map['planType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

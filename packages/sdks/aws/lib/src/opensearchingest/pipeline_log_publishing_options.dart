@@ -26,8 +26,8 @@ class PipelineLogPublishingOptions {
 
   factory PipelineLogPublishingOptions.fromMap(Map<String, dynamic> map) {
     return PipelineLogPublishingOptions(
-      cloudwatchLogDestination: map['cloudwatchLogDestination'] == null ? null : (PipelineLogPublishingOptionsCloudwatchLogDestination.fromMap((map['cloudwatchLogDestination'] as Map).cast<String, dynamic>())).input(),
-      isLoggingEnabled: map['isLoggingEnabled'] == null ? null : (map['isLoggingEnabled'] as bool).input(),
+      cloudwatchLogDestination: map['cloudwatchLogDestination'] == null ? null : ((PipelineLogPublishingOptionsCloudwatchLogDestination.fromMap((map['cloudwatchLogDestination']! as Map).cast<String, dynamic>())).input()).input(),
+      isLoggingEnabled: map['isLoggingEnabled'] == null ? null : ((map['isLoggingEnabled'] as bool).input()).input(),
     );
   }
 }

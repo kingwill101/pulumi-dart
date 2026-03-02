@@ -47,11 +47,11 @@ class AuditLogConfigState {
 
   factory AuditLogConfigState.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dbAudit: map['dbAudit'] == null ? null : (map['dbAudit'] as bool).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dbAudit: map['dbAudit'] == null ? null : (map['dbAudit']! as bool).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

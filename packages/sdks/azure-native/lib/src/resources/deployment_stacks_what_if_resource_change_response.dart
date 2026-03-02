@@ -88,16 +88,16 @@ class DeploymentStacksWhatIfResourceChangeResponse {
       apiVersion: (map['apiVersion'] as String).input(),
       changeCertainty: (map['changeCertainty'] as String).input(),
       changeType: (map['changeType'] as String).input(),
-      denyStatusChange: map['denyStatusChange'] == null ? null : (DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange.fromMap((map['denyStatusChange'] as Map).cast<String, dynamic>())).input(),
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
+      denyStatusChange: map['denyStatusChange'] == null ? null : (DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange.fromMap((map['denyStatusChange']! as Map).cast<String, dynamic>())).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
       extension: (DeploymentExtensionResponse.fromMap((map['extension'] as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
       identifiers: (map['identifiers']).input(),
-      managementStatusChange: map['managementStatusChange'] == null ? null : (DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange.fromMap((map['managementStatusChange'] as Map).cast<String, dynamic>())).input(),
-      resourceConfigurationChanges: map['resourceConfigurationChanges'] == null ? null : (DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges.fromMap((map['resourceConfigurationChanges'] as Map).cast<String, dynamic>())).input(),
-      symbolicName: map['symbolicName'] == null ? null : (map['symbolicName'] as String).input(),
+      managementStatusChange: map['managementStatusChange'] == null ? null : (DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange.fromMap((map['managementStatusChange']! as Map).cast<String, dynamic>())).input(),
+      resourceConfigurationChanges: map['resourceConfigurationChanges'] == null ? null : (DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges.fromMap((map['resourceConfigurationChanges']! as Map).cast<String, dynamic>())).input(),
+      symbolicName: map['symbolicName'] == null ? null : (map['symbolicName']! as String).input(),
       type: (map['type'] as String).input(),
-      unsupportedReason: map['unsupportedReason'] == null ? null : (map['unsupportedReason'] as String).input(),
+      unsupportedReason: map['unsupportedReason'] == null ? null : (map['unsupportedReason']! as String).input(),
     );
   }
 }

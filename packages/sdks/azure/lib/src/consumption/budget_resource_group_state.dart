@@ -59,14 +59,14 @@ class BudgetResourceGroupState {
 
   factory BudgetResourceGroupState.fromMap(Map<String, dynamic> map) {
     return BudgetResourceGroupState(
-      amount: map['amount'] == null ? null : (map['amount'] as double).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      filter: map['filter'] == null ? null : (BudgetResourceGroupFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<BudgetResourceGroupNotification>(map['notifications'], (value) => BudgetResourceGroupNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain'] as String).input(),
-      timePeriod: map['timePeriod'] == null ? null : (BudgetResourceGroupTimePeriod.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as double).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      filter: map['filter'] == null ? null : (BudgetResourceGroupFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<BudgetResourceGroupNotification>(map['notifications']!, (value) => BudgetResourceGroupNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      timeGrain: map['timeGrain'] == null ? null : (map['timeGrain']! as String).input(),
+      timePeriod: map['timePeriod'] == null ? null : (BudgetResourceGroupTimePeriod.fromMap((map['timePeriod']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

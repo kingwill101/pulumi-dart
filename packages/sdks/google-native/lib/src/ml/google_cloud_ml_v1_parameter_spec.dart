@@ -53,12 +53,12 @@ class GoogleCloudMlV1ParameterSpec {
 
   factory GoogleCloudMlV1ParameterSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1ParameterSpec(
-      categoricalValues: map['categoricalValues'] == null ? null : ((map['categoricalValues'] as List).cast<String>()).input(),
-      discreteValues: map['discreteValues'] == null ? null : ((map['discreteValues'] as List).cast<double>()).input(),
-      maxValue: map['maxValue'] == null ? null : (map['maxValue'] as double).input(),
-      minValue: map['minValue'] == null ? null : (map['minValue'] as double).input(),
+      categoricalValues: map['categoricalValues'] == null ? null : ((map['categoricalValues']! as List).cast<String>()).input(),
+      discreteValues: map['discreteValues'] == null ? null : ((map['discreteValues']! as List).cast<double>()).input(),
+      maxValue: map['maxValue'] == null ? null : (map['maxValue']! as double).input(),
+      minValue: map['minValue'] == null ? null : (map['minValue']! as double).input(),
       parameterName: (map['parameterName'] as String).input(),
-      scaleType: map['scaleType'] == null ? null : (GoogleCloudMlV1ParameterSpecScaleType.fromValue(map['scaleType'] as String)).input(),
+      scaleType: map['scaleType'] == null ? null : (GoogleCloudMlV1ParameterSpecScaleType.fromValue(map['scaleType']! as String)).input(),
       type: (GoogleCloudMlV1ParameterSpecType.fromValue(map['type'] as String)).input(),
     );
   }

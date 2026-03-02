@@ -86,17 +86,17 @@ class QuotaV2Args {
 
   factory QuotaV2Args.fromMap(Map<String, dynamic> map) {
     return QuotaV2Args(
-      floatingip: map['floatingip'] == null ? null : (map['floatingip'] as int).input(),
-      network: map['network'] == null ? null : (map['network'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      floatingip: map['floatingip'] == null ? null : (map['floatingip']! as int).input(),
+      network: map['network'] == null ? null : (map['network']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       projectId: (map['projectId'] as String).input(),
-      rbacPolicy: map['rbacPolicy'] == null ? null : (map['rbacPolicy'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      router: map['router'] == null ? null : (map['router'] as int).input(),
-      securityGroup: map['securityGroup'] == null ? null : (map['securityGroup'] as int).input(),
-      securityGroupRule: map['securityGroupRule'] == null ? null : (map['securityGroupRule'] as int).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as int).input(),
-      subnetpool: map['subnetpool'] == null ? null : (map['subnetpool'] as int).input(),
+      rbacPolicy: map['rbacPolicy'] == null ? null : (map['rbacPolicy']! as int).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      router: map['router'] == null ? null : (map['router']! as int).input(),
+      securityGroup: map['securityGroup'] == null ? null : (map['securityGroup']! as int).input(),
+      securityGroupRule: map['securityGroupRule'] == null ? null : (map['securityGroupRule']! as int).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as int).input(),
+      subnetpool: map['subnetpool'] == null ? null : (map['subnetpool']! as int).input(),
     );
   }
 }

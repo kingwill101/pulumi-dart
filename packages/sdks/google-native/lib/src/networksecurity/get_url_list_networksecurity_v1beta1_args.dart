@@ -32,7 +32,7 @@ class GetUrlListNetworksecurityV1beta1Args {
   factory GetUrlListNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetUrlListNetworksecurityV1beta1Args(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       urlListId: (map['urlListId'] as String).input(),
     );
   }

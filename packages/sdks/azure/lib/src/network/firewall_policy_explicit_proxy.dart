@@ -45,12 +45,12 @@ class FirewallPolicyExplicitProxy {
 
   factory FirewallPolicyExplicitProxy.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyExplicitProxy(
-      enablePacFile: map['enablePacFile'] == null ? null : (map['enablePacFile'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
-      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
-      pacFile: map['pacFile'] == null ? null : (map['pacFile'] as String).input(),
-      pacFilePort: map['pacFilePort'] == null ? null : (map['pacFilePort'] as int).input(),
+      enablePacFile: map['enablePacFile'] == null ? null : (map['enablePacFile']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort']! as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort']! as int).input(),
+      pacFile: map['pacFile'] == null ? null : (map['pacFile']! as String).input(),
+      pacFilePort: map['pacFilePort'] == null ? null : (map['pacFilePort']! as int).input(),
     );
   }
 }

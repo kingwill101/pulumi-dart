@@ -26,8 +26,8 @@ class DaxClusterNotificationConfigurationResponse {
 
   factory DaxClusterNotificationConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DaxClusterNotificationConfigurationResponse(
-      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
-      topicStatus: map['topicStatus'] == null ? null : (map['topicStatus'] as String).input(),
+      topicArn: map['topicArn'] == null ? null : (map['topicArn']! as String).input(),
+      topicStatus: map['topicStatus'] == null ? null : (map['topicStatus']! as String).input(),
     );
   }
 }

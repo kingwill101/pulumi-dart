@@ -62,13 +62,13 @@ class JobTemplateTemplateContainerStartupProbe {
 
   factory JobTemplateTemplateContainerStartupProbe.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateContainerStartupProbe(
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      grpc: map['grpc'] == null ? null : (JobTemplateTemplateContainerStartupProbeGrpc.fromMap((map['grpc'] as Map).cast<String, dynamic>())).input(),
-      httpGet: map['httpGet'] == null ? null : (JobTemplateTemplateContainerStartupProbeHttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      tcpSocket: map['tcpSocket'] == null ? null : (JobTemplateTemplateContainerStartupProbeTcpSocket.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      grpc: map['grpc'] == null ? null : (JobTemplateTemplateContainerStartupProbeGrpc.fromMap((map['grpc']! as Map).cast<String, dynamic>())).input(),
+      httpGet: map['httpGet'] == null ? null : (JobTemplateTemplateContainerStartupProbeHttpGet.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (JobTemplateTemplateContainerStartupProbeTcpSocket.fromMap((map['tcpSocket']! as Map).cast<String, dynamic>())).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

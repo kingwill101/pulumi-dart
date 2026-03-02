@@ -27,7 +27,7 @@ class TeradataImportCommandResponse {
 
   factory TeradataImportCommandResponse.fromMap(Map<String, dynamic> map) {
     return TeradataImportCommandResponse(
-      additionalFormatOptions: map['additionalFormatOptions'] == null ? null : (map['additionalFormatOptions']).input(),
+      additionalFormatOptions: map['additionalFormatOptions'] == null ? null : (map['additionalFormatOptions']!).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -37,8 +37,8 @@ class HttpRequestHeaderModificationRuleRequestHeaderModification {
     return HttpRequestHeaderModificationRuleRequestHeaderModification(
       name: (map['name'] as String).input(),
       operation: (map['operation'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

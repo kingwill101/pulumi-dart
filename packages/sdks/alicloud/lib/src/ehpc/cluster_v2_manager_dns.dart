@@ -30,8 +30,8 @@ class ClusterV2ManagerDns {
 
   factory ClusterV2ManagerDns.fromMap(Map<String, dynamic> map) {
     return ClusterV2ManagerDns(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class IAMPolicyState {
 
   factory IAMPolicyState.fromMap(Map<String, dynamic> map) {
     return IAMPolicyState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId']! as String).input(),
     );
   }
 }

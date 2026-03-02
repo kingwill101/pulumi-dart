@@ -26,7 +26,7 @@ class PodFailurePolicyOnPodConditionsPattern {
 
   factory PodFailurePolicyOnPodConditionsPattern.fromMap(Map<String, dynamic> map) {
     return PodFailurePolicyOnPodConditionsPattern(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

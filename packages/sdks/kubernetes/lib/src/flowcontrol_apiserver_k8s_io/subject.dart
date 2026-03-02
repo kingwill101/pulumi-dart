@@ -39,10 +39,10 @@ class Subject {
 
   factory Subject.fromMap(Map<String, dynamic> map) {
     return Subject(
-      group: map['group'] == null ? null : (GroupSubject.fromMap((map['group'] as Map).cast<String, dynamic>())).input(),
+      group: map['group'] == null ? null : (GroupSubject.fromMap((map['group']! as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccountSubject.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
-      user: map['user'] == null ? null : (UserSubject.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccountSubject.fromMap((map['serviceAccount']! as Map).cast<String, dynamic>())).input(),
+      user: map['user'] == null ? null : (UserSubject.fromMap((map['user']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

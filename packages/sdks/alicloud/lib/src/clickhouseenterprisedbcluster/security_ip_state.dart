@@ -31,9 +31,9 @@ class SecurityIpState {
 
   factory SecurityIpState.fromMap(Map<String, dynamic> map) {
     return SecurityIpState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList'] as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList']! as String).input(),
     );
   }
 }

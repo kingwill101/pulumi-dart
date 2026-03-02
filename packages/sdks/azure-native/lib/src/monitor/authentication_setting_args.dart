@@ -45,10 +45,10 @@ class AuthenticationSettingArgs {
 
   factory AuthenticationSettingArgs.fromMap(Map<String, dynamic> map) {
     return AuthenticationSettingArgs(
-      authenticationSettingName: map['authenticationSettingName'] == null ? null : (map['authenticationSettingName'] as String).input(),
+      authenticationSettingName: map['authenticationSettingName'] == null ? null : (map['authenticationSettingName']! as String).input(),
       azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
       healthModelName: (map['healthModelName'] as String).input(),
-      properties: map['properties'] == null ? null : (ManagedIdentityAuthenticationSettingProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ManagedIdentityAuthenticationSettingProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class LogicalNetworkPropertiesDhcpOptionsResponse {
 
   factory LogicalNetworkPropertiesDhcpOptionsResponse.fromMap(Map<String, dynamic> map) {
     return LogicalNetworkPropertiesDhcpOptionsResponse(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
     );
   }
 }

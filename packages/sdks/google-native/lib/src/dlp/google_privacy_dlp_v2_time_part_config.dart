@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2TimePartConfig {
 
   factory GooglePrivacyDlpV2TimePartConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TimePartConfig(
-      partToExtract: map['partToExtract'] == null ? null : (GooglePrivacyDlpV2TimePartConfigPartToExtract.fromValue(map['partToExtract'] as String)).input(),
+      partToExtract: map['partToExtract'] == null ? null : (GooglePrivacyDlpV2TimePartConfigPartToExtract.fromValue(map['partToExtract']! as String)).input(),
     );
   }
 }

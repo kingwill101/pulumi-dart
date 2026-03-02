@@ -36,10 +36,10 @@ class VpcNetworkAclAttachmentState {
 
   factory VpcNetworkAclAttachmentState.fromMap(Map<String, dynamic> map) {
     return VpcNetworkAclAttachmentState(
-      networkAclId: map['networkAclId'] == null ? null : (map['networkAclId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      networkAclId: map['networkAclId'] == null ? null : (map['networkAclId']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

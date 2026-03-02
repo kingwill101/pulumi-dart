@@ -52,13 +52,13 @@ class GitFileSource {
 
   factory GitFileSource.fromMap(Map<String, dynamic> map) {
     return GitFileSource(
-      bitbucketServerConfig: map['bitbucketServerConfig'] == null ? null : (map['bitbucketServerConfig'] as String).input(),
-      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : (map['githubEnterpriseConfig'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      repoType: map['repoType'] == null ? null : (GitFileSourceRepoType.fromValue(map['repoType'] as String)).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      bitbucketServerConfig: map['bitbucketServerConfig'] == null ? null : (map['bitbucketServerConfig']! as String).input(),
+      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : (map['githubEnterpriseConfig']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      repoType: map['repoType'] == null ? null : (GitFileSourceRepoType.fromValue(map['repoType']! as String)).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

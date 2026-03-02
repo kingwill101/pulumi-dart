@@ -21,7 +21,7 @@ class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseC
 
   factory WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCount.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCount(
-      customRequestHandling: map['customRequestHandling'] == null ? null : (WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCountCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>())).input(),
+      customRequestHandling: map['customRequestHandling'] == null ? null : ((WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseCountCustomRequestHandling.fromMap((map['customRequestHandling']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

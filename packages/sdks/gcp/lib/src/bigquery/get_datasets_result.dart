@@ -33,7 +33,7 @@ class GetDatasetsResult {
     return GetDatasetsResult(
       datasets: pulumi.Input.decodeList<GetDatasetsDataset>(map['datasets'], (value) => GetDatasetsDataset.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
     );
   }
 }

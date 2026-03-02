@@ -33,7 +33,7 @@ class GetResourceDirectoriesResult {
     return GetResourceDirectoriesResult(
       directories: pulumi.Input.decodeList<GetResourceDirectoriesDirectory>(map['directories'], (value) => GetResourceDirectoriesDirectory.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

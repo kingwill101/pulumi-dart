@@ -30,7 +30,7 @@ class GetConfigurationProfilesArgs {
   factory GetConfigurationProfilesArgs.fromMap(Map<String, dynamic> map) {
     return GetConfigurationProfilesArgs(
       applicationId: (map['applicationId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class GalleryApplicationAssignmentState {
 
   factory GalleryApplicationAssignmentState.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationAssignmentState(
-      configurationBlobUri: map['configurationBlobUri'] == null ? null : (map['configurationBlobUri'] as String).input(),
-      galleryApplicationVersionId: map['galleryApplicationVersionId'] == null ? null : (map['galleryApplicationVersionId'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
+      configurationBlobUri: map['configurationBlobUri'] == null ? null : (map['configurationBlobUri']! as String).input(),
+      galleryApplicationVersionId: map['galleryApplicationVersionId'] == null ? null : (map['galleryApplicationVersionId']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId']! as String).input(),
     );
   }
 }

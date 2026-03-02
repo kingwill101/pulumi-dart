@@ -46,10 +46,10 @@ class DocumentArgs {
   factory DocumentArgs.fromMap(Map<String, dynamic> map) {
     return DocumentArgs(
       collection: (map['collection'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
       documentId: (map['documentId'] as String).input(),
       fields: (map['fields'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

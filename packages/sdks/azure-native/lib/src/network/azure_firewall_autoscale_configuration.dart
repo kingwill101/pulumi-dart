@@ -26,8 +26,8 @@ class AzureFirewallAutoscaleConfiguration {
 
   factory AzureFirewallAutoscaleConfiguration.fromMap(Map<String, dynamic> map) {
     return AzureFirewallAutoscaleConfiguration(
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
-      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity'] as int).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity']! as int).input(),
+      minCapacity: map['minCapacity'] == null ? null : (map['minCapacity']! as int).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesTags {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesTags.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesTags(
-      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
+      items: map['items'] == null ? null : ((map['items']! as List).cast<String>()).input(),
     );
   }
 }

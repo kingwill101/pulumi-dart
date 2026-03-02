@@ -21,7 +21,7 @@ class SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement {
 
   factory SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement(
-      idleSettings: map['idleSettings'] == null ? null : (SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings'] as Map).cast<String, dynamic>())).input(),
+      idleSettings: map['idleSettings'] == null ? null : ((SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

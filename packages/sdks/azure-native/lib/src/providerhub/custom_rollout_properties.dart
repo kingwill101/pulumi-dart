@@ -28,7 +28,7 @@ class CustomRolloutProperties {
   factory CustomRolloutProperties.fromMap(Map<String, dynamic> map) {
     return CustomRolloutProperties(
       specification: (CustomRolloutPropertiesSpecification.fromMap((map['specification'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (CustomRolloutPropertiesStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (CustomRolloutPropertiesStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

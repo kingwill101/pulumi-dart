@@ -54,10 +54,10 @@ class AttestorAttestationAuthorityNotePublicKey {
 
   factory AttestorAttestationAuthorityNotePublicKey.fromMap(Map<String, dynamic> map) {
     return AttestorAttestationAuthorityNotePublicKey(
-      asciiArmoredPgpPublicKey: map['asciiArmoredPgpPublicKey'] == null ? null : (map['asciiArmoredPgpPublicKey'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      pkixPublicKey: map['pkixPublicKey'] == null ? null : (AttestorAttestationAuthorityNotePublicKeyPkixPublicKey.fromMap((map['pkixPublicKey'] as Map).cast<String, dynamic>())).input(),
+      asciiArmoredPgpPublicKey: map['asciiArmoredPgpPublicKey'] == null ? null : (map['asciiArmoredPgpPublicKey']! as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      pkixPublicKey: map['pkixPublicKey'] == null ? null : (AttestorAttestationAuthorityNotePublicKeyPkixPublicKey.fromMap((map['pkixPublicKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

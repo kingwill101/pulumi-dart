@@ -26,8 +26,8 @@ class NetworkPoliciesResponse {
 
   factory NetworkPoliciesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkPoliciesResponse(
-      egress: map['egress'] == null ? null : (map['egress'] as String).input(),
-      ingress: map['ingress'] == null ? null : (map['ingress'] as String).input(),
+      egress: map['egress'] == null ? null : (map['egress']! as String).input(),
+      ingress: map['ingress'] == null ? null : (map['ingress']! as String).input(),
     );
   }
 }

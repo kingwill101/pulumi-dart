@@ -57,12 +57,12 @@ class FolderBucketConfigArgs {
   factory FolderBucketConfigArgs.fromMap(Map<String, dynamic> map) {
     return FolderBucketConfigArgs(
       bucketId: (map['bucketId'] as String).input(),
-      cmekSettings: map['cmekSettings'] == null ? null : (FolderBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (FolderBucketConfigCmekSettings.fromMap((map['cmekSettings']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       folder: (map['folder'] as String).input(),
-      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<FolderBucketConfigIndexConfig>(map['indexConfigs'], (value) => FolderBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<FolderBucketConfigIndexConfig>(map['indexConfigs']!, (value) => FolderBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       location: (map['location'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
     );
   }
 }

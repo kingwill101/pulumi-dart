@@ -67,14 +67,14 @@ class HciExtensionArgs {
   factory HciExtensionArgs.fromMap(Map<String, dynamic> map) {
     return HciExtensionArgs(
       arcSettingId: (map['arcSettingId'] as String).input(),
-      autoUpgradeMinorVersionEnabled: map['autoUpgradeMinorVersionEnabled'] == null ? null : (map['autoUpgradeMinorVersionEnabled'] as bool).input(),
-      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : (map['automaticUpgradeEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings'] as String).input(),
+      autoUpgradeMinorVersionEnabled: map['autoUpgradeMinorVersionEnabled'] == null ? null : (map['autoUpgradeMinorVersionEnabled']! as bool).input(),
+      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : (map['automaticUpgradeEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']! as String).input(),
       publisher: (map['publisher'] as String).input(),
-      settings: map['settings'] == null ? null : (map['settings'] as String).input(),
+      settings: map['settings'] == null ? null : (map['settings']! as String).input(),
       type: (map['type'] as String).input(),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion']! as String).input(),
     );
   }
 }

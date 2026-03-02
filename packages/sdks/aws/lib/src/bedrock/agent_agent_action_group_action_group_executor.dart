@@ -28,8 +28,8 @@ class AgentAgentActionGroupActionGroupExecutor {
 
   factory AgentAgentActionGroupActionGroupExecutor.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupActionGroupExecutor(
-      customControl: map['customControl'] == null ? null : (map['customControl'] as String).input(),
-      lambda: map['lambda'] == null ? null : (map['lambda'] as String).input(),
+      customControl: map['customControl'] == null ? null : ((map['customControl'] as String).input()).input(),
+      lambda: map['lambda'] == null ? null : ((map['lambda'] as String).input()).input(),
     );
   }
 }

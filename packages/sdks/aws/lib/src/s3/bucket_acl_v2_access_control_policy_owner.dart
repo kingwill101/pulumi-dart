@@ -25,7 +25,7 @@ class BucketAclV2AccessControlPolicyOwner {
 
   factory BucketAclV2AccessControlPolicyOwner.fromMap(Map<String, dynamic> map) {
     return BucketAclV2AccessControlPolicyOwner(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
       id: (map['id'] as String).input(),
     );
   }

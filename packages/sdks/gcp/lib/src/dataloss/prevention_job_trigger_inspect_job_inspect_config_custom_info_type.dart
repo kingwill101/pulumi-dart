@@ -72,14 +72,14 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoType {
 
   factory PreventionJobTriggerInspectJobInspectConfigCustomInfoType.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigCustomInfoType(
-      dictionary: map['dictionary'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary.fromMap((map['dictionary'] as Map).cast<String, dynamic>())).input(),
-      exclusionType: map['exclusionType'] == null ? null : (map['exclusionType'] as String).input(),
+      dictionary: map['dictionary'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary.fromMap((map['dictionary']! as Map).cast<String, dynamic>())).input(),
+      exclusionType: map['exclusionType'] == null ? null : (map['exclusionType']! as String).input(),
       infoType: (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType.fromMap((map['infoType'] as Map).cast<String, dynamic>())).input(),
-      likelihood: map['likelihood'] == null ? null : (map['likelihood'] as String).input(),
-      regex: map['regex'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex.fromMap((map['regex'] as Map).cast<String, dynamic>())).input(),
-      sensitivityScore: map['sensitivityScore'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore.fromMap((map['sensitivityScore'] as Map).cast<String, dynamic>())).input(),
-      storedType: map['storedType'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType.fromMap((map['storedType'] as Map).cast<String, dynamic>())).input(),
-      surrogateType: map['surrogateType'] == null ? null : ((map['surrogateType'] as Map).cast<String, dynamic>()).input(),
+      likelihood: map['likelihood'] == null ? null : (map['likelihood']! as String).input(),
+      regex: map['regex'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex.fromMap((map['regex']! as Map).cast<String, dynamic>())).input(),
+      sensitivityScore: map['sensitivityScore'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore.fromMap((map['sensitivityScore']! as Map).cast<String, dynamic>())).input(),
+      storedType: map['storedType'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType.fromMap((map['storedType']! as Map).cast<String, dynamic>())).input(),
+      surrogateType: map['surrogateType'] == null ? null : ((map['surrogateType']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

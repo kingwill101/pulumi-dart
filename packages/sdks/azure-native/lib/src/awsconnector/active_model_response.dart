@@ -21,7 +21,7 @@ class ActiveModelResponse {
 
   factory ActiveModelResponse.fromMap(Map<String, dynamic> map) {
     return ActiveModelResponse(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
     );
   }
 }

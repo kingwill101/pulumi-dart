@@ -58,13 +58,13 @@ class TextNer {
 
   factory TextNer.fromMap(Map<String, dynamic> map) {
     return TextNer(
-      featurizationSettings: map['featurizationSettings'] == null ? null : (NlpVerticalFeaturizationSettings.fromMap((map['featurizationSettings'] as Map).cast<String, dynamic>())).input(),
-      limitSettings: map['limitSettings'] == null ? null : (NlpVerticalLimitSettings.fromMap((map['limitSettings'] as Map).cast<String, dynamic>())).input(),
-      logVerbosity: map['logVerbosity'] == null ? null : (map['logVerbosity'] as String).input(),
-      targetColumnName: map['targetColumnName'] == null ? null : (map['targetColumnName'] as String).input(),
+      featurizationSettings: map['featurizationSettings'] == null ? null : (NlpVerticalFeaturizationSettings.fromMap((map['featurizationSettings']! as Map).cast<String, dynamic>())).input(),
+      limitSettings: map['limitSettings'] == null ? null : (NlpVerticalLimitSettings.fromMap((map['limitSettings']! as Map).cast<String, dynamic>())).input(),
+      logVerbosity: map['logVerbosity'] == null ? null : (map['logVerbosity']! as String).input(),
+      targetColumnName: map['targetColumnName'] == null ? null : (map['targetColumnName']! as String).input(),
       taskType: (map['taskType'] as String).input(),
       trainingData: (MLTableJobInput.fromMap((map['trainingData'] as Map).cast<String, dynamic>())).input(),
-      validationData: map['validationData'] == null ? null : (MLTableJobInput.fromMap((map['validationData'] as Map).cast<String, dynamic>())).input(),
+      validationData: map['validationData'] == null ? null : (MLTableJobInput.fromMap((map['validationData']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

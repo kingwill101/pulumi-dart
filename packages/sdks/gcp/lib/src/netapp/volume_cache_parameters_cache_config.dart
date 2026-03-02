@@ -20,7 +20,7 @@ class VolumeCacheParametersCacheConfig {
 
   factory VolumeCacheParametersCacheConfig.fromMap(Map<String, dynamic> map) {
     return VolumeCacheParametersCacheConfig(
-      cifsChangeNotifyEnabled: map['cifsChangeNotifyEnabled'] == null ? null : (map['cifsChangeNotifyEnabled'] as bool).input(),
+      cifsChangeNotifyEnabled: map['cifsChangeNotifyEnabled'] == null ? null : (map['cifsChangeNotifyEnabled']! as bool).input(),
     );
   }
 }

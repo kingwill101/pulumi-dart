@@ -60,13 +60,13 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfig {
   factory GoogleCloudDialogflowCxV3beta1InputAudioConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1InputAudioConfig(
       audioEncoding: (GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding.fromValue(map['audioEncoding'] as String)).input(),
-      bargeInConfig: map['bargeInConfig'] == null ? null : (GoogleCloudDialogflowCxV3beta1BargeInConfig.fromMap((map['bargeInConfig'] as Map).cast<String, dynamic>())).input(),
-      enableWordInfo: map['enableWordInfo'] == null ? null : (map['enableWordInfo'] as bool).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      modelVariant: map['modelVariant'] == null ? null : (GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant.fromValue(map['modelVariant'] as String)).input(),
-      phraseHints: map['phraseHints'] == null ? null : ((map['phraseHints'] as List).cast<String>()).input(),
-      sampleRateHertz: map['sampleRateHertz'] == null ? null : (map['sampleRateHertz'] as int).input(),
-      singleUtterance: map['singleUtterance'] == null ? null : (map['singleUtterance'] as bool).input(),
+      bargeInConfig: map['bargeInConfig'] == null ? null : (GoogleCloudDialogflowCxV3beta1BargeInConfig.fromMap((map['bargeInConfig']! as Map).cast<String, dynamic>())).input(),
+      enableWordInfo: map['enableWordInfo'] == null ? null : (map['enableWordInfo']! as bool).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      modelVariant: map['modelVariant'] == null ? null : (GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant.fromValue(map['modelVariant']! as String)).input(),
+      phraseHints: map['phraseHints'] == null ? null : ((map['phraseHints']! as List).cast<String>()).input(),
+      sampleRateHertz: map['sampleRateHertz'] == null ? null : (map['sampleRateHertz']! as int).input(),
+      singleUtterance: map['singleUtterance'] == null ? null : (map['singleUtterance']! as bool).input(),
     );
   }
 }

@@ -61,8 +61,8 @@ class TargetProperties {
       description: (map['description'] as String).input(),
       displayName: (map['displayName'] as String).input(),
       hierarchyLevel: (map['hierarchyLevel'] as String).input(),
-      solutionScope: map['solutionScope'] == null ? null : (map['solutionScope'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      solutionScope: map['solutionScope'] == null ? null : (map['solutionScope']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       targetSpecification: (map['targetSpecification']).input(),
     );
   }

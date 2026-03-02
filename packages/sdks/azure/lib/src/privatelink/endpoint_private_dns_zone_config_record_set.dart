@@ -40,11 +40,11 @@ class EndpointPrivateDnsZoneConfigRecordSet {
 
   factory EndpointPrivateDnsZoneConfigRecordSet.fromMap(Map<String, dynamic> map) {
     return EndpointPrivateDnsZoneConfigRecordSet(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

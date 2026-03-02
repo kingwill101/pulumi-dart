@@ -33,7 +33,7 @@ class GetOsPolicyAssignmentArgs {
     return GetOsPolicyAssignmentArgs(
       location: (map['location'] as String).input(),
       osPolicyAssignmentId: (map['osPolicyAssignmentId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

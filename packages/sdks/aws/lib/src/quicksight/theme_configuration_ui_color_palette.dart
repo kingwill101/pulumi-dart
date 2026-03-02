@@ -95,22 +95,22 @@ class ThemeConfigurationUiColorPalette {
 
   factory ThemeConfigurationUiColorPalette.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationUiColorPalette(
-      accent: map['accent'] == null ? null : (map['accent'] as String).input(),
-      accentForeground: map['accentForeground'] == null ? null : (map['accentForeground'] as String).input(),
-      danger: map['danger'] == null ? null : (map['danger'] as String).input(),
-      dangerForeground: map['dangerForeground'] == null ? null : (map['dangerForeground'] as String).input(),
-      dimension: map['dimension'] == null ? null : (map['dimension'] as String).input(),
-      dimensionForeground: map['dimensionForeground'] == null ? null : (map['dimensionForeground'] as String).input(),
-      measure: map['measure'] == null ? null : (map['measure'] as String).input(),
-      measureForeground: map['measureForeground'] == null ? null : (map['measureForeground'] as String).input(),
-      primaryBackground: map['primaryBackground'] == null ? null : (map['primaryBackground'] as String).input(),
-      primaryForeground: map['primaryForeground'] == null ? null : (map['primaryForeground'] as String).input(),
-      secondaryBackground: map['secondaryBackground'] == null ? null : (map['secondaryBackground'] as String).input(),
-      secondaryForeground: map['secondaryForeground'] == null ? null : (map['secondaryForeground'] as String).input(),
-      success: map['success'] == null ? null : (map['success'] as String).input(),
-      successForeground: map['successForeground'] == null ? null : (map['successForeground'] as String).input(),
-      warning: map['warning'] == null ? null : (map['warning'] as String).input(),
-      warningForeground: map['warningForeground'] == null ? null : (map['warningForeground'] as String).input(),
+      accent: map['accent'] == null ? null : ((map['accent'] as String).input()).input(),
+      accentForeground: map['accentForeground'] == null ? null : ((map['accentForeground'] as String).input()).input(),
+      danger: map['danger'] == null ? null : ((map['danger'] as String).input()).input(),
+      dangerForeground: map['dangerForeground'] == null ? null : ((map['dangerForeground'] as String).input()).input(),
+      dimension: map['dimension'] == null ? null : ((map['dimension'] as String).input()).input(),
+      dimensionForeground: map['dimensionForeground'] == null ? null : ((map['dimensionForeground'] as String).input()).input(),
+      measure: map['measure'] == null ? null : ((map['measure'] as String).input()).input(),
+      measureForeground: map['measureForeground'] == null ? null : ((map['measureForeground'] as String).input()).input(),
+      primaryBackground: map['primaryBackground'] == null ? null : ((map['primaryBackground'] as String).input()).input(),
+      primaryForeground: map['primaryForeground'] == null ? null : ((map['primaryForeground'] as String).input()).input(),
+      secondaryBackground: map['secondaryBackground'] == null ? null : ((map['secondaryBackground'] as String).input()).input(),
+      secondaryForeground: map['secondaryForeground'] == null ? null : ((map['secondaryForeground'] as String).input()).input(),
+      success: map['success'] == null ? null : ((map['success'] as String).input()).input(),
+      successForeground: map['successForeground'] == null ? null : ((map['successForeground'] as String).input()).input(),
+      warning: map['warning'] == null ? null : ((map['warning'] as String).input()).input(),
+      warningForeground: map['warningForeground'] == null ? null : ((map['warningForeground'] as String).input()).input(),
     );
   }
 }

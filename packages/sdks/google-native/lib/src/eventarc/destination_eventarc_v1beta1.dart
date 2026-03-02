@@ -22,7 +22,7 @@ class DestinationEventarcV1beta1 {
 
   factory DestinationEventarcV1beta1.fromMap(Map<String, dynamic> map) {
     return DestinationEventarcV1beta1(
-      cloudRunService: map['cloudRunService'] == null ? null : (CloudRunService.fromMap((map['cloudRunService'] as Map).cast<String, dynamic>())).input(),
+      cloudRunService: map['cloudRunService'] == null ? null : (CloudRunService.fromMap((map['cloudRunService']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

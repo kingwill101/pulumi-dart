@@ -22,7 +22,7 @@ class BareMetalAdminNetworkConfig {
 
   factory BareMetalAdminNetworkConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminNetworkConfig(
-      islandModeCidr: map['islandModeCidr'] == null ? null : (BareMetalAdminIslandModeCidrConfig.fromMap((map['islandModeCidr'] as Map).cast<String, dynamic>())).input(),
+      islandModeCidr: map['islandModeCidr'] == null ? null : (BareMetalAdminIslandModeCidrConfig.fromMap((map['islandModeCidr']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

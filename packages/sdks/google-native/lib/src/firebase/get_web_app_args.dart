@@ -27,7 +27,7 @@ class GetWebAppArgs {
 
   factory GetWebAppArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAppArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       webAppId: (map['webAppId'] as String).input(),
     );
   }

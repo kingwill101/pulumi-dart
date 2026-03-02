@@ -105,14 +105,14 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse {
   factory MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse(
       databaseSummary: (pulumi.Input.decodeMapValues<DatabaseSummaryResultResponse>(map['databaseSummary'], (value) => DatabaseSummaryResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      databases: map['databases'] == null ? null : ((map['databases'] as Map).cast<String, String>()).input(),
+      databases: map['databases'] == null ? null : ((map['databases']! as Map).cast<String, String>()).input(),
       durationInSeconds: (map['durationInSeconds'] as double).input(),
       endedOn: (map['endedOn'] as String).input(),
       exceptionsAndWarnings: (pulumi.Input.decodeList<ReportableExceptionResponse>(map['exceptionsAndWarnings'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       id: (map['id'] as String).input(),
       lastStorageUpdate: (map['lastStorageUpdate'] as String).input(),
       message: (map['message'] as String).input(),
-      migrationReportResult: map['migrationReportResult'] == null ? null : (MigrationReportResultResponse.fromMap((map['migrationReportResult'] as Map).cast<String, dynamic>())).input(),
+      migrationReportResult: map['migrationReportResult'] == null ? null : (MigrationReportResultResponse.fromMap((map['migrationReportResult']! as Map).cast<String, dynamic>())).input(),
       resultType: (map['resultType'] as String).input(),
       sourceServerBrandVersion: (map['sourceServerBrandVersion'] as String).input(),
       sourceServerVersion: (map['sourceServerVersion'] as String).input(),

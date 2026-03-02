@@ -84,17 +84,17 @@ class GetVirtualRouterResult {
     return GetVirtualRouterResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      hostedGateway: map['hostedGateway'] == null ? null : SubResourceResponse.fromMap((map['hostedGateway'] as Map).cast<String, dynamic>()),
-      hostedSubnet: map['hostedSubnet'] == null ? null : SubResourceResponse.fromMap((map['hostedSubnet'] as Map).cast<String, dynamic>()),
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      hostedGateway: map['hostedGateway'] == null ? null : SubResourceResponse.fromMap((map['hostedGateway']! as Map).cast<String, dynamic>()),
+      hostedSubnet: map['hostedSubnet'] == null ? null : SubResourceResponse.fromMap((map['hostedSubnet']! as Map).cast<String, dynamic>()),
+      id: map['id'] == null ? null : map['id']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       peerings: pulumi.Input.decodeList<SubResourceResponse>(map['peerings'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      virtualRouterAsn: map['virtualRouterAsn'] == null ? null : map['virtualRouterAsn'] as double,
-      virtualRouterIps: map['virtualRouterIps'] == null ? null : (map['virtualRouterIps'] as List).cast<String>(),
+      virtualRouterAsn: map['virtualRouterAsn'] == null ? null : map['virtualRouterAsn']! as double,
+      virtualRouterIps: map['virtualRouterIps'] == null ? null : (map['virtualRouterIps']! as List).cast<String>(),
     );
   }
 }

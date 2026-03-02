@@ -37,7 +37,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResourcesClusterConfig(
       instanceCount: (map['instanceCount'] as int).input(),
       instanceType: (map['instanceType'] as String).input(),
-      volumeKmsKeyId: map['volumeKmsKeyId'] == null ? null : (map['volumeKmsKeyId'] as String).input(),
+      volumeKmsKeyId: map['volumeKmsKeyId'] == null ? null : ((map['volumeKmsKeyId'] as String).input()).input(),
       volumeSizeInGb: (map['volumeSizeInGb'] as int).input(),
     );
   }

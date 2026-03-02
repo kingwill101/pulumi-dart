@@ -55,14 +55,14 @@ class FluxConfigurationKustomization {
 
   factory FluxConfigurationKustomization.fromMap(Map<String, dynamic> map) {
     return FluxConfigurationKustomization(
-      dependsOns: map['dependsOns'] == null ? null : ((map['dependsOns'] as List).cast<String>()).input(),
-      garbageCollectionEnabled: map['garbageCollectionEnabled'] == null ? null : (map['garbageCollectionEnabled'] as bool).input(),
+      dependsOns: map['dependsOns'] == null ? null : ((map['dependsOns']! as List).cast<String>()).input(),
+      garbageCollectionEnabled: map['garbageCollectionEnabled'] == null ? null : (map['garbageCollectionEnabled']! as bool).input(),
       name: (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      recreatingEnabled: map['recreatingEnabled'] == null ? null : (map['recreatingEnabled'] as bool).input(),
-      retryIntervalInSeconds: map['retryIntervalInSeconds'] == null ? null : (map['retryIntervalInSeconds'] as int).input(),
-      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds'] as int).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      recreatingEnabled: map['recreatingEnabled'] == null ? null : (map['recreatingEnabled']! as bool).input(),
+      retryIntervalInSeconds: map['retryIntervalInSeconds'] == null ? null : (map['retryIntervalInSeconds']! as int).input(),
+      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds']! as int).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as int).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class SecurityDeviceGroupAllowRule {
 
   factory SecurityDeviceGroupAllowRule.fromMap(Map<String, dynamic> map) {
     return SecurityDeviceGroupAllowRule(
-      connectionFromIpsNotAlloweds: map['connectionFromIpsNotAlloweds'] == null ? null : ((map['connectionFromIpsNotAlloweds'] as List).cast<String>()).input(),
-      connectionToIpsNotAlloweds: map['connectionToIpsNotAlloweds'] == null ? null : ((map['connectionToIpsNotAlloweds'] as List).cast<String>()).input(),
-      localUsersNotAlloweds: map['localUsersNotAlloweds'] == null ? null : ((map['localUsersNotAlloweds'] as List).cast<String>()).input(),
-      processesNotAlloweds: map['processesNotAlloweds'] == null ? null : ((map['processesNotAlloweds'] as List).cast<String>()).input(),
+      connectionFromIpsNotAlloweds: map['connectionFromIpsNotAlloweds'] == null ? null : ((map['connectionFromIpsNotAlloweds']! as List).cast<String>()).input(),
+      connectionToIpsNotAlloweds: map['connectionToIpsNotAlloweds'] == null ? null : ((map['connectionToIpsNotAlloweds']! as List).cast<String>()).input(),
+      localUsersNotAlloweds: map['localUsersNotAlloweds'] == null ? null : ((map['localUsersNotAlloweds']! as List).cast<String>()).input(),
+      processesNotAlloweds: map['processesNotAlloweds'] == null ? null : ((map['processesNotAlloweds']! as List).cast<String>()).input(),
     );
   }
 }

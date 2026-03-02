@@ -44,11 +44,11 @@ class StudioLifecycleConfigArgs {
 
   factory StudioLifecycleConfigArgs.fromMap(Map<String, dynamic> map) {
     return StudioLifecycleConfigArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       studioLifecycleConfigAppType: (map['studioLifecycleConfigAppType'] as String).input(),
       studioLifecycleConfigContent: (map['studioLifecycleConfigContent'] as String).input(),
       studioLifecycleConfigName: (map['studioLifecycleConfigName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

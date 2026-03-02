@@ -32,9 +32,9 @@ class AgentcoreTokenVaultCmkState {
 
   factory AgentcoreTokenVaultCmkState.fromMap(Map<String, dynamic> map) {
     return AgentcoreTokenVaultCmkState(
-      kmsConfiguration: map['kmsConfiguration'] == null ? null : (AgentcoreTokenVaultCmkKmsConfiguration.fromMap((map['kmsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tokenVaultId: map['tokenVaultId'] == null ? null : (map['tokenVaultId'] as String).input(),
+      kmsConfiguration: map['kmsConfiguration'] == null ? null : ((AgentcoreTokenVaultCmkKmsConfiguration.fromMap((map['kmsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tokenVaultId: map['tokenVaultId'] == null ? null : ((map['tokenVaultId'] as String).input()).input(),
     );
   }
 }

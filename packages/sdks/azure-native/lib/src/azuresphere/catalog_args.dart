@@ -39,10 +39,10 @@ class CatalogArgs {
 
   factory CatalogArgs.fromMap(Map<String, dynamic> map) {
     return CatalogArgs(
-      catalogName: map['catalogName'] == null ? null : (map['catalogName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      catalogName: map['catalogName'] == null ? null : (map['catalogName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

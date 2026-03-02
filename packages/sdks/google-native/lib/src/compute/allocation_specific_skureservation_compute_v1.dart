@@ -32,9 +32,9 @@ class AllocationSpecificSKUReservationComputeV1 {
 
   factory AllocationSpecificSKUReservationComputeV1.fromMap(Map<String, dynamic> map) {
     return AllocationSpecificSKUReservationComputeV1(
-      count: map['count'] == null ? null : (map['count'] as String).input(),
-      instanceProperties: map['instanceProperties'] == null ? null : (AllocationSpecificSKUAllocationReservedInstancePropertiesComputeV1.fromMap((map['instanceProperties'] as Map).cast<String, dynamic>())).input(),
-      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null ? null : (map['sourceInstanceTemplate'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as String).input(),
+      instanceProperties: map['instanceProperties'] == null ? null : (AllocationSpecificSKUAllocationReservedInstancePropertiesComputeV1.fromMap((map['instanceProperties']! as Map).cast<String, dynamic>())).input(),
+      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null ? null : (map['sourceInstanceTemplate']! as String).input(),
     );
   }
 }

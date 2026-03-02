@@ -20,7 +20,7 @@ class RocketMQInstanceNetworkInfoVpcInfoVswitch {
 
   factory RocketMQInstanceNetworkInfoVpcInfoVswitch.fromMap(Map<String, dynamic> map) {
     return RocketMQInstanceNetworkInfoVpcInfoVswitch(
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

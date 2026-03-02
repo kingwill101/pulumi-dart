@@ -22,7 +22,7 @@ class GetSapVirtualInstanceInvokeSapSupportedSkuResult {
 
   factory GetSapVirtualInstanceInvokeSapSupportedSkuResult.fromMap(Map<String, dynamic> map) {
     return GetSapVirtualInstanceInvokeSapSupportedSkuResult(
-      supportedSkus: map['supportedSkus'] == null ? null : pulumi.Input.decodeList<SAPSupportedSkuResponse>(map['supportedSkus'], (value) => SAPSupportedSkuResponse.fromMap((value as Map).cast<String, dynamic>())),
+      supportedSkus: map['supportedSkus'] == null ? null : pulumi.Input.decodeList<SAPSupportedSkuResponse>(map['supportedSkus']!, (value) => SAPSupportedSkuResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

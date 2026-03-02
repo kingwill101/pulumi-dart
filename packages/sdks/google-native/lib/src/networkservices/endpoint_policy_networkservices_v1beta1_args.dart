@@ -80,17 +80,17 @@ class EndpointPolicyNetworkservicesV1beta1Args {
 
   factory EndpointPolicyNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return EndpointPolicyNetworkservicesV1beta1Args(
-      authorizationPolicy: map['authorizationPolicy'] == null ? null : (map['authorizationPolicy'] as String).input(),
-      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : (map['clientTlsPolicy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      authorizationPolicy: map['authorizationPolicy'] == null ? null : (map['authorizationPolicy']! as String).input(),
+      clientTlsPolicy: map['clientTlsPolicy'] == null ? null : (map['clientTlsPolicy']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       endpointMatcher: (EndpointMatcherNetworkservicesV1beta1.fromMap((map['endpointMatcher'] as Map).cast<String, dynamic>())).input(),
       endpointPolicyId: (map['endpointPolicyId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy'] as String).input(),
-      trafficPortSelector: map['trafficPortSelector'] == null ? null : (TrafficPortSelectorNetworkservicesV1beta1.fromMap((map['trafficPortSelector'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy']! as String).input(),
+      trafficPortSelector: map['trafficPortSelector'] == null ? null : (TrafficPortSelectorNetworkservicesV1beta1.fromMap((map['trafficPortSelector']! as Map).cast<String, dynamic>())).input(),
       type: (EndpointPolicyTypeNetworkservicesV1beta1.fromValue(map['type'] as String)).input(),
     );
   }

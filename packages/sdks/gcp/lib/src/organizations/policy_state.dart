@@ -67,14 +67,14 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      booleanPolicy: map['booleanPolicy'] == null ? null : (PolicyBooleanPolicy.fromMap((map['booleanPolicy'] as Map).cast<String, dynamic>())).input(),
-      constraint: map['constraint'] == null ? null : (map['constraint'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      listPolicy: map['listPolicy'] == null ? null : (PolicyListPolicy.fromMap((map['listPolicy'] as Map).cast<String, dynamic>())).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      restorePolicy: map['restorePolicy'] == null ? null : (PolicyRestorePolicy.fromMap((map['restorePolicy'] as Map).cast<String, dynamic>())).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      booleanPolicy: map['booleanPolicy'] == null ? null : (PolicyBooleanPolicy.fromMap((map['booleanPolicy']! as Map).cast<String, dynamic>())).input(),
+      constraint: map['constraint'] == null ? null : (map['constraint']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      listPolicy: map['listPolicy'] == null ? null : (PolicyListPolicy.fromMap((map['listPolicy']! as Map).cast<String, dynamic>())).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      restorePolicy: map['restorePolicy'] == null ? null : (PolicyRestorePolicy.fromMap((map['restorePolicy']! as Map).cast<String, dynamic>())).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

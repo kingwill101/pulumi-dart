@@ -42,7 +42,7 @@ class GetLogViewIamPolicyArgs {
   factory GetLogViewIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetLogViewIamPolicyArgs(
       bucket: (map['bucket'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
       parent: (map['parent'] as String).input(),
     );

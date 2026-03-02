@@ -26,7 +26,7 @@ class SecurityProfileResponse {
 
   factory SecurityProfileResponse.fromMap(Map<String, dynamic> map) {
     return SecurityProfileResponse(
-      openAccess: map['openAccess'] == null ? null : (map['openAccess'] as String).input(),
+      openAccess: map['openAccess'] == null ? null : (map['openAccess']! as String).input(),
       registrationCode: (map['registrationCode'] as String).input(),
     );
   }

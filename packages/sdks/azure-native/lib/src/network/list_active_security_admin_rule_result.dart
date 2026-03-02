@@ -27,8 +27,8 @@ class ListActiveSecurityAdminRuleResult {
 
   factory ListActiveSecurityAdminRuleResult.fromMap(Map<String, dynamic> map) {
     return ListActiveSecurityAdminRuleResult(
-      skipToken: map['skipToken'] == null ? null : map['skipToken'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ActiveDefaultSecurityAdminRuleResponse>(map['value'], (value) => ActiveDefaultSecurityAdminRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      skipToken: map['skipToken'] == null ? null : map['skipToken']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ActiveDefaultSecurityAdminRuleResponse>(map['value']!, (value) => ActiveDefaultSecurityAdminRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

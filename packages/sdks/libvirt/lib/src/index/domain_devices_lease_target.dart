@@ -25,7 +25,7 @@ class DomainDevicesLeaseTarget {
 
   factory DomainDevicesLeaseTarget.fromMap(Map<String, dynamic> map) {
     return DomainDevicesLeaseTarget(
-      offset: map['offset'] == null ? null : (map['offset'] as double).input(),
+      offset: map['offset'] == null ? null : (map['offset']! as double).input(),
       path: (map['path'] as String).input(),
     );
   }

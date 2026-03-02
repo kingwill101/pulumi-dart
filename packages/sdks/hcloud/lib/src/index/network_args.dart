@@ -44,11 +44,11 @@ class NetworkArgs {
 
   factory NetworkArgs.fromMap(Map<String, dynamic> map) {
     return NetworkArgs(
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      exposeRoutesToVswitch: map['exposeRoutesToVswitch'] == null ? null : (map['exposeRoutesToVswitch'] as bool).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
+      exposeRoutesToVswitch: map['exposeRoutesToVswitch'] == null ? null : (map['exposeRoutesToVswitch']! as bool).input(),
       ipRange: (map['ipRange'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

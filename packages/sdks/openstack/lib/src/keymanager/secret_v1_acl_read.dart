@@ -37,10 +37,10 @@ class SecretV1AclRead {
 
   factory SecretV1AclRead.fromMap(Map<String, dynamic> map) {
     return SecretV1AclRead(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      projectAccess: map['projectAccess'] == null ? null : (map['projectAccess'] as bool).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
-      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      projectAccess: map['projectAccess'] == null ? null : (map['projectAccess']! as bool).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
+      users: map['users'] == null ? null : ((map['users']! as List).cast<String>()).input(),
     );
   }
 }

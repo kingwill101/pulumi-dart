@@ -56,12 +56,12 @@ class MaintenanceWindowTargetArgs {
 
   factory MaintenanceWindowTargetArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTargetArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ownerInformation: map['ownerInformation'] == null ? null : (map['ownerInformation'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      ownerInformation: map['ownerInformation'] == null ? null : ((map['ownerInformation'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceType: (map['resourceType'] as String).input(),
-      targets: (pulumi.Input.decodeList<MaintenanceWindowTargetTarget>(map['targets'], (value) => MaintenanceWindowTargetTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targets: (pulumi.Input.decodeList<MaintenanceWindowTargetTarget>(map['targets']!, (value) => MaintenanceWindowTargetTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
       windowId: (map['windowId'] as String).input(),
     );
   }

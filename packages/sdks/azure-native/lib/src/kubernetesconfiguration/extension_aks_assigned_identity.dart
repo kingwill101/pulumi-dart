@@ -22,7 +22,7 @@ class ExtensionAksAssignedIdentity {
 
   factory ExtensionAksAssignedIdentity.fromMap(Map<String, dynamic> map) {
     return ExtensionAksAssignedIdentity(
-      type: map['type'] == null ? null : (AKSIdentityType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (AKSIdentityType.fromValue(map['type']! as String)).input(),
     );
   }
 }

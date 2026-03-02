@@ -43,11 +43,11 @@ class UserPermissionPermission {
 
   factory UserPermissionPermission.fromMap(Map<String, dynamic> map) {
     return UserPermissionPermission(
-      isCustom: map['isCustom'] == null ? null : (map['isCustom'] as bool).input(),
-      isRamRole: map['isRamRole'] == null ? null : (map['isRamRole'] as bool).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      roleType: map['roleType'] == null ? null : (map['roleType'] as String).input(),
-      serviceMeshId: map['serviceMeshId'] == null ? null : (map['serviceMeshId'] as String).input(),
+      isCustom: map['isCustom'] == null ? null : (map['isCustom']! as bool).input(),
+      isRamRole: map['isRamRole'] == null ? null : (map['isRamRole']! as bool).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      roleType: map['roleType'] == null ? null : (map['roleType']! as String).input(),
+      serviceMeshId: map['serviceMeshId'] == null ? null : (map['serviceMeshId']! as String).input(),
     );
   }
 }

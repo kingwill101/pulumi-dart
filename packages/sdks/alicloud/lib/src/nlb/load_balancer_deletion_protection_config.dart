@@ -33,9 +33,9 @@ class LoadBalancerDeletionProtectionConfig {
 
   factory LoadBalancerDeletionProtectionConfig.fromMap(Map<String, dynamic> map) {
     return LoadBalancerDeletionProtectionConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      enabledTime: map['enabledTime'] == null ? null : (map['enabledTime'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      enabledTime: map['enabledTime'] == null ? null : (map['enabledTime']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

@@ -88,18 +88,18 @@ class JobStepArgs {
 
   factory JobStepArgs.fromMap(Map<String, dynamic> map) {
     return JobStepArgs(
-      initialRetryIntervalSeconds: map['initialRetryIntervalSeconds'] == null ? null : (map['initialRetryIntervalSeconds'] as int).input(),
-      jobCredentialId: map['jobCredentialId'] == null ? null : (map['jobCredentialId'] as String).input(),
+      initialRetryIntervalSeconds: map['initialRetryIntervalSeconds'] == null ? null : (map['initialRetryIntervalSeconds']! as int).input(),
+      jobCredentialId: map['jobCredentialId'] == null ? null : (map['jobCredentialId']! as String).input(),
       jobId: (map['jobId'] as String).input(),
       jobStepIndex: (map['jobStepIndex'] as int).input(),
       jobTargetGroupId: (map['jobTargetGroupId'] as String).input(),
-      maximumRetryIntervalSeconds: map['maximumRetryIntervalSeconds'] == null ? null : (map['maximumRetryIntervalSeconds'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputTarget: map['outputTarget'] == null ? null : (JobStepOutputTarget.fromMap((map['outputTarget'] as Map).cast<String, dynamic>())).input(),
-      retryAttempts: map['retryAttempts'] == null ? null : (map['retryAttempts'] as int).input(),
-      retryIntervalBackoffMultiplier: map['retryIntervalBackoffMultiplier'] == null ? null : (map['retryIntervalBackoffMultiplier'] as double).input(),
+      maximumRetryIntervalSeconds: map['maximumRetryIntervalSeconds'] == null ? null : (map['maximumRetryIntervalSeconds']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outputTarget: map['outputTarget'] == null ? null : (JobStepOutputTarget.fromMap((map['outputTarget']! as Map).cast<String, dynamic>())).input(),
+      retryAttempts: map['retryAttempts'] == null ? null : (map['retryAttempts']! as int).input(),
+      retryIntervalBackoffMultiplier: map['retryIntervalBackoffMultiplier'] == null ? null : (map['retryIntervalBackoffMultiplier']! as double).input(),
       sqlScript: (map['sqlScript'] as String).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

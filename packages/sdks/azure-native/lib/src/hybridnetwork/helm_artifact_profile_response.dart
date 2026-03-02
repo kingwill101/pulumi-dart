@@ -36,10 +36,10 @@ class HelmArtifactProfileResponse {
 
   factory HelmArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
     return HelmArtifactProfileResponse(
-      helmPackageName: map['helmPackageName'] == null ? null : (map['helmPackageName'] as String).input(),
-      helmPackageVersionRange: map['helmPackageVersionRange'] == null ? null : (map['helmPackageVersionRange'] as String).input(),
-      imagePullSecretsValuesPaths: map['imagePullSecretsValuesPaths'] == null ? null : ((map['imagePullSecretsValuesPaths'] as List).cast<String>()).input(),
-      registryValuesPaths: map['registryValuesPaths'] == null ? null : ((map['registryValuesPaths'] as List).cast<String>()).input(),
+      helmPackageName: map['helmPackageName'] == null ? null : (map['helmPackageName']! as String).input(),
+      helmPackageVersionRange: map['helmPackageVersionRange'] == null ? null : (map['helmPackageVersionRange']! as String).input(),
+      imagePullSecretsValuesPaths: map['imagePullSecretsValuesPaths'] == null ? null : ((map['imagePullSecretsValuesPaths']! as List).cast<String>()).input(),
+      registryValuesPaths: map['registryValuesPaths'] == null ? null : ((map['registryValuesPaths']! as List).cast<String>()).input(),
     );
   }
 }

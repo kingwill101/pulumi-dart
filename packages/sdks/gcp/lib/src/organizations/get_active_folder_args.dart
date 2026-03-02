@@ -34,7 +34,7 @@ class GetActiveFolderArgs {
 
   factory GetActiveFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetActiveFolderArgs(
-      apiMethod: map['apiMethod'] == null ? null : (map['apiMethod'] as String).input(),
+      apiMethod: map['apiMethod'] == null ? null : (map['apiMethod']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       parent: (map['parent'] as String).input(),
     );

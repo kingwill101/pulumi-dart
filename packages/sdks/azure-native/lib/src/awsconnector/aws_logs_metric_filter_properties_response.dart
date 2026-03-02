@@ -37,10 +37,10 @@ class AwsLogsMetricFilterPropertiesResponse {
 
   factory AwsLogsMetricFilterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsLogsMetricFilterPropertiesResponse(
-      filterName: map['filterName'] == null ? null : (map['filterName'] as String).input(),
-      filterPattern: map['filterPattern'] == null ? null : (map['filterPattern'] as String).input(),
-      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
-      metricTransformations: map['metricTransformations'] == null ? null : (pulumi.Input.decodeList<MetricTransformationResponse>(map['metricTransformations'], (value) => MetricTransformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filterName: map['filterName'] == null ? null : (map['filterName']! as String).input(),
+      filterPattern: map['filterPattern'] == null ? null : (map['filterPattern']! as String).input(),
+      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName']! as String).input(),
+      metricTransformations: map['metricTransformations'] == null ? null : (pulumi.Input.decodeList<MetricTransformationResponse>(map['metricTransformations']!, (value) => MetricTransformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

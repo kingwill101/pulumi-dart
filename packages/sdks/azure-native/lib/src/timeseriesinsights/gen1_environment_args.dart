@@ -68,14 +68,14 @@ class Gen1EnvironmentArgs {
   factory Gen1EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return Gen1EnvironmentArgs(
       dataRetentionTime: (map['dataRetentionTime'] as String).input(),
-      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName']! as String).input(),
       kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      partitionKeyProperties: map['partitionKeyProperties'] == null ? null : (pulumi.Input.decodeList<TimeSeriesIdProperty>(map['partitionKeyProperties'], (value) => TimeSeriesIdProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      partitionKeyProperties: map['partitionKeyProperties'] == null ? null : (pulumi.Input.decodeList<TimeSeriesIdProperty>(map['partitionKeyProperties']!, (value) => TimeSeriesIdProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      storageLimitExceededBehavior: map['storageLimitExceededBehavior'] == null ? null : (map['storageLimitExceededBehavior'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storageLimitExceededBehavior: map['storageLimitExceededBehavior'] == null ? null : (map['storageLimitExceededBehavior']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

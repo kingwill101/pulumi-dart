@@ -118,7 +118,7 @@ class GetShareSubscriptionResult {
     return GetShareSubscriptionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       createdAt: map['createdAt'] as String,
-      expirationDate: map['expirationDate'] == null ? null : map['expirationDate'] as String,
+      expirationDate: map['expirationDate'] == null ? null : map['expirationDate']! as String,
       id: map['id'] as String,
       invitationId: map['invitationId'] as String,
       name: map['name'] as String,

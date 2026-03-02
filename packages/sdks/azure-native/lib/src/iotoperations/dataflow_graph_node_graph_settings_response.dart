@@ -33,7 +33,7 @@ class DataflowGraphNodeGraphSettingsResponse {
   factory DataflowGraphNodeGraphSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DataflowGraphNodeGraphSettingsResponse(
       artifact: (map['artifact'] as String).input(),
-      configuration: map['configuration'] == null ? null : (pulumi.Input.decodeList<DataflowGraphGraphNodeConfigurationResponse>(map['configuration'], (value) => DataflowGraphGraphNodeConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configuration: map['configuration'] == null ? null : (pulumi.Input.decodeList<DataflowGraphGraphNodeConfigurationResponse>(map['configuration']!, (value) => DataflowGraphGraphNodeConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       registryEndpointRef: (map['registryEndpointRef'] as String).input(),
     );
   }

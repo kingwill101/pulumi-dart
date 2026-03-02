@@ -26,8 +26,8 @@ class RollingUpdateDeploymentPatchAppsV1beta2 {
 
   factory RollingUpdateDeploymentPatchAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return RollingUpdateDeploymentPatchAppsV1beta2(
-      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge'] as int).input(),
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as int).input(),
+      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge']! as int).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
     );
   }
 }

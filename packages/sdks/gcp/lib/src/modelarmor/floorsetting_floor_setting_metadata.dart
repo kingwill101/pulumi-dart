@@ -22,7 +22,7 @@ class FloorsettingFloorSettingMetadata {
 
   factory FloorsettingFloorSettingMetadata.fromMap(Map<String, dynamic> map) {
     return FloorsettingFloorSettingMetadata(
-      multiLanguageDetection: map['multiLanguageDetection'] == null ? null : (FloorsettingFloorSettingMetadataMultiLanguageDetection.fromMap((map['multiLanguageDetection'] as Map).cast<String, dynamic>())).input(),
+      multiLanguageDetection: map['multiLanguageDetection'] == null ? null : (FloorsettingFloorSettingMetadataMultiLanguageDetection.fromMap((map['multiLanguageDetection']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

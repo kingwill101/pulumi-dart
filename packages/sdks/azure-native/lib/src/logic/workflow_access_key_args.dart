@@ -49,10 +49,10 @@ class WorkflowAccessKeyArgs {
 
   factory WorkflowAccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowAccessKeyArgs(
-      accessKeyName: map['accessKeyName'] == null ? null : (map['accessKeyName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      notAfter: map['notAfter'] == null ? null : (map['notAfter'] as String).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as String).input(),
+      accessKeyName: map['accessKeyName'] == null ? null : (map['accessKeyName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      notAfter: map['notAfter'] == null ? null : (map['notAfter']! as String).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workflowName: (map['workflowName'] as String).input(),
     );

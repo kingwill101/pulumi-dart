@@ -20,7 +20,7 @@ class ManagedInstancePrivateEndpointProperty {
 
   factory ManagedInstancePrivateEndpointProperty.fromMap(Map<String, dynamic> map) {
     return ManagedInstancePrivateEndpointProperty(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

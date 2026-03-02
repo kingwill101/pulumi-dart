@@ -60,11 +60,11 @@ class OutputFunctionArgs {
   factory OutputFunctionArgs.fromMap(Map<String, dynamic> map) {
     return OutputFunctionArgs(
       apiKey: (map['apiKey'] as String).input(),
-      batchMaxCount: map['batchMaxCount'] == null ? null : (map['batchMaxCount'] as int).input(),
-      batchMaxInBytes: map['batchMaxInBytes'] == null ? null : (map['batchMaxInBytes'] as int).input(),
+      batchMaxCount: map['batchMaxCount'] == null ? null : (map['batchMaxCount']! as int).input(),
+      batchMaxInBytes: map['batchMaxInBytes'] == null ? null : (map['batchMaxInBytes']! as int).input(),
       functionApp: (map['functionApp'] as String).input(),
       functionName: (map['functionName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),
     );

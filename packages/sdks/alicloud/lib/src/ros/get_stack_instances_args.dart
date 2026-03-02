@@ -59,13 +59,13 @@ class GetStackInstancesArgs {
 
   factory GetStackInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetStackInstancesArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       stackGroupName: (map['stackGroupName'] as String).input(),
-      stackInstanceAccountId: map['stackInstanceAccountId'] == null ? null : (map['stackInstanceAccountId'] as String).input(),
-      stackInstanceRegionId: map['stackInstanceRegionId'] == null ? null : (map['stackInstanceRegionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      stackInstanceAccountId: map['stackInstanceAccountId'] == null ? null : (map['stackInstanceAccountId']! as String).input(),
+      stackInstanceRegionId: map['stackInstanceRegionId'] == null ? null : (map['stackInstanceRegionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

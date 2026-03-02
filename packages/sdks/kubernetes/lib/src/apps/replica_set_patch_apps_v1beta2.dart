@@ -44,11 +44,11 @@ class ReplicaSetPatchAppsV1beta2 {
 
   factory ReplicaSetPatchAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return ReplicaSetPatchAppsV1beta2(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (ReplicaSetSpecPatchAppsV1beta2.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (ReplicaSetStatusPatchAppsV1beta2.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (ReplicaSetSpecPatchAppsV1beta2.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ReplicaSetStatusPatchAppsV1beta2.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -60,14 +60,14 @@ class GetTableGlobalSecondaryIndex {
   factory GetTableGlobalSecondaryIndex.fromMap(Map<String, dynamic> map) {
     return GetTableGlobalSecondaryIndex(
       hashKey: (map['hashKey'] as String).input(),
-      keySchemas: (pulumi.Input.decodeList<GetTableGlobalSecondaryIndexKeySchema>(map['keySchemas'], (value) => GetTableGlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keySchemas: (pulumi.Input.decodeList<GetTableGlobalSecondaryIndexKeySchema>(map['keySchemas']!, (value) => GetTableGlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       nonKeyAttributes: ((map['nonKeyAttributes'] as List).cast<String>()).input(),
-      onDemandThroughputs: (pulumi.Input.decodeList<GetTableGlobalSecondaryIndexOnDemandThroughput>(map['onDemandThroughputs'], (value) => GetTableGlobalSecondaryIndexOnDemandThroughput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onDemandThroughputs: (pulumi.Input.decodeList<GetTableGlobalSecondaryIndexOnDemandThroughput>(map['onDemandThroughputs']!, (value) => GetTableGlobalSecondaryIndexOnDemandThroughput.fromMap((value as Map).cast<String, dynamic>()))).input(),
       projectionType: (map['projectionType'] as String).input(),
       rangeKey: (map['rangeKey'] as String).input(),
       readCapacity: (map['readCapacity'] as int).input(),
-      warmThroughputs: (pulumi.Input.decodeList<GetTableGlobalSecondaryIndexWarmThroughput>(map['warmThroughputs'], (value) => GetTableGlobalSecondaryIndexWarmThroughput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      warmThroughputs: (pulumi.Input.decodeList<GetTableGlobalSecondaryIndexWarmThroughput>(map['warmThroughputs']!, (value) => GetTableGlobalSecondaryIndexWarmThroughput.fromMap((value as Map).cast<String, dynamic>()))).input(),
       writeCapacity: (map['writeCapacity'] as int).input(),
     );
   }

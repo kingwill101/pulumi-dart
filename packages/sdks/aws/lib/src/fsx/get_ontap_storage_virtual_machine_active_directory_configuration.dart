@@ -26,7 +26,7 @@ class GetOntapStorageVirtualMachineActiveDirectoryConfiguration {
   factory GetOntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap(Map<String, dynamic> map) {
     return GetOntapStorageVirtualMachineActiveDirectoryConfiguration(
       netbiosName: (map['netbiosName'] as String).input(),
-      selfManagedActiveDirectoryConfigurations: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration>(map['selfManagedActiveDirectoryConfigurations'], (value) => GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selfManagedActiveDirectoryConfigurations: (pulumi.Input.decodeList<GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration>(map['selfManagedActiveDirectoryConfigurations']!, (value) => GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

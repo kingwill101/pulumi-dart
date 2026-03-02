@@ -65,9 +65,9 @@ class ScheduledTriggerArgs {
       recurrenceInterval: (map['recurrenceInterval'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
-      synchronizationMode: map['synchronizationMode'] == null ? null : (map['synchronizationMode'] as String).input(),
+      synchronizationMode: map['synchronizationMode'] == null ? null : (map['synchronizationMode']! as String).input(),
       synchronizationTime: (map['synchronizationTime'] as String).input(),
-      triggerName: map['triggerName'] == null ? null : (map['triggerName'] as String).input(),
+      triggerName: map['triggerName'] == null ? null : (map['triggerName']! as String).input(),
     );
   }
 }

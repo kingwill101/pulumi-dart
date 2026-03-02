@@ -71,16 +71,16 @@ class SslCertState {
 
   factory SslCertState.fromMap(Map<String, dynamic> map) {
     return SslCertState(
-      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
-      certSerialNumber: map['certSerialNumber'] == null ? null : (map['certSerialNumber'] as String).input(),
-      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serverCaCert: map['serverCaCert'] == null ? null : (map['serverCaCert'] as String).input(),
-      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : (map['sha1Fingerprint'] as String).input(),
+      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
+      certSerialNumber: map['certSerialNumber'] == null ? null : (map['certSerialNumber']! as String).input(),
+      commonName: map['commonName'] == null ? null : (map['commonName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serverCaCert: map['serverCaCert'] == null ? null : (map['serverCaCert']! as String).input(),
+      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : (map['sha1Fingerprint']! as String).input(),
     );
   }
 }

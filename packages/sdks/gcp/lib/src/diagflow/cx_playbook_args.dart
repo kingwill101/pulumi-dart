@@ -62,11 +62,11 @@ class CxPlaybookArgs {
     return CxPlaybookArgs(
       displayName: (map['displayName'] as String).input(),
       goal: (map['goal'] as String).input(),
-      instruction: map['instruction'] == null ? null : (CxPlaybookInstruction.fromMap((map['instruction'] as Map).cast<String, dynamic>())).input(),
-      llmModelSettings: map['llmModelSettings'] == null ? null : (CxPlaybookLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>())).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      playbookType: map['playbookType'] == null ? null : (map['playbookType'] as String).input(),
-      referencedTools: map['referencedTools'] == null ? null : ((map['referencedTools'] as List).cast<String>()).input(),
+      instruction: map['instruction'] == null ? null : (CxPlaybookInstruction.fromMap((map['instruction']! as Map).cast<String, dynamic>())).input(),
+      llmModelSettings: map['llmModelSettings'] == null ? null : (CxPlaybookLlmModelSettings.fromMap((map['llmModelSettings']! as Map).cast<String, dynamic>())).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      playbookType: map['playbookType'] == null ? null : (map['playbookType']! as String).input(),
+      referencedTools: map['referencedTools'] == null ? null : ((map['referencedTools']! as List).cast<String>()).input(),
     );
   }
 }

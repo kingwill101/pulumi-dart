@@ -62,14 +62,14 @@ class ImportPipelineArgs {
 
   factory ImportPipelineArgs.fromMap(Map<String, dynamic> map) {
     return ImportPipelineArgs(
-      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      importPipelineName: map['importPipelineName'] == null ? null : (map['importPipelineName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      options: map['options'] == null ? null : ((map['options'] as List).cast<String>()).input(),
+      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      importPipelineName: map['importPipelineName'] == null ? null : (map['importPipelineName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      options: map['options'] == null ? null : ((map['options']! as List).cast<String>()).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       source: (ImportPipelineSourceProperties.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      trigger: map['trigger'] == null ? null : (PipelineTriggerProperties.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      trigger: map['trigger'] == null ? null : (PipelineTriggerProperties.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

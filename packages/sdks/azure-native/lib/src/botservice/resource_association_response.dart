@@ -26,8 +26,8 @@ class ResourceAssociationResponse {
 
   factory ResourceAssociationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceAssociationResponse(
-      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accessMode: map['accessMode'] == null ? null : (map['accessMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

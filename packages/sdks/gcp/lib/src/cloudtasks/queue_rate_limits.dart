@@ -39,9 +39,9 @@ class QueueRateLimits {
 
   factory QueueRateLimits.fromMap(Map<String, dynamic> map) {
     return QueueRateLimits(
-      maxBurstSize: map['maxBurstSize'] == null ? null : (map['maxBurstSize'] as int).input(),
-      maxConcurrentDispatches: map['maxConcurrentDispatches'] == null ? null : (map['maxConcurrentDispatches'] as int).input(),
-      maxDispatchesPerSecond: map['maxDispatchesPerSecond'] == null ? null : (map['maxDispatchesPerSecond'] as double).input(),
+      maxBurstSize: map['maxBurstSize'] == null ? null : (map['maxBurstSize']! as int).input(),
+      maxConcurrentDispatches: map['maxConcurrentDispatches'] == null ? null : (map['maxConcurrentDispatches']! as int).input(),
+      maxDispatchesPerSecond: map['maxDispatchesPerSecond'] == null ? null : (map['maxDispatchesPerSecond']! as double).input(),
     );
   }
 }

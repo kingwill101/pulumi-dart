@@ -62,15 +62,15 @@ class FunctionAsyncInvokeConfigState {
 
   factory FunctionAsyncInvokeConfigState.fromMap(Map<String, dynamic> map) {
     return FunctionAsyncInvokeConfigState(
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      destinationConfig: map['destinationConfig'] == null ? null : (FunctionAsyncInvokeConfigDestinationConfig.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      maximumEventAgeInSeconds: map['maximumEventAgeInSeconds'] == null ? null : (map['maximumEventAgeInSeconds'] as int).input(),
-      maximumRetryAttempts: map['maximumRetryAttempts'] == null ? null : (map['maximumRetryAttempts'] as int).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      statefulInvocation: map['statefulInvocation'] == null ? null : (map['statefulInvocation'] as bool).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime']! as String).input(),
+      destinationConfig: map['destinationConfig'] == null ? null : (FunctionAsyncInvokeConfigDestinationConfig.fromMap((map['destinationConfig']! as Map).cast<String, dynamic>())).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      maximumEventAgeInSeconds: map['maximumEventAgeInSeconds'] == null ? null : (map['maximumEventAgeInSeconds']! as int).input(),
+      maximumRetryAttempts: map['maximumRetryAttempts'] == null ? null : (map['maximumRetryAttempts']! as int).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      statefulInvocation: map['statefulInvocation'] == null ? null : (map['statefulInvocation']! as bool).input(),
     );
   }
 }

@@ -369,20 +369,20 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      adjustmentType: map['adjustmentType'] == null ? null : (map['adjustmentType'] as String).input(),
+      adjustmentType: map['adjustmentType'] == null ? null : ((map['adjustmentType'] as String).input()).input(),
       autoscalingGroupName: (map['autoscalingGroupName'] as String).input(),
-      cooldown: map['cooldown'] == null ? null : (map['cooldown'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      estimatedInstanceWarmup: map['estimatedInstanceWarmup'] == null ? null : (map['estimatedInstanceWarmup'] as int).input(),
-      metricAggregationType: map['metricAggregationType'] == null ? null : (map['metricAggregationType'] as String).input(),
-      minAdjustmentMagnitude: map['minAdjustmentMagnitude'] == null ? null : (map['minAdjustmentMagnitude'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      predictiveScalingConfiguration: map['predictiveScalingConfiguration'] == null ? null : (PolicyPredictiveScalingConfiguration.fromMap((map['predictiveScalingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scalingAdjustment: map['scalingAdjustment'] == null ? null : (map['scalingAdjustment'] as int).input(),
-      stepAdjustments: map['stepAdjustments'] == null ? null : (pulumi.Input.decodeList<PolicyStepAdjustment>(map['stepAdjustments'], (value) => PolicyStepAdjustment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetTrackingConfiguration: map['targetTrackingConfiguration'] == null ? null : (PolicyTargetTrackingConfiguration.fromMap((map['targetTrackingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      cooldown: map['cooldown'] == null ? null : ((map['cooldown'] as int).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      estimatedInstanceWarmup: map['estimatedInstanceWarmup'] == null ? null : ((map['estimatedInstanceWarmup'] as int).input()).input(),
+      metricAggregationType: map['metricAggregationType'] == null ? null : ((map['metricAggregationType'] as String).input()).input(),
+      minAdjustmentMagnitude: map['minAdjustmentMagnitude'] == null ? null : ((map['minAdjustmentMagnitude'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      policyType: map['policyType'] == null ? null : ((map['policyType'] as String).input()).input(),
+      predictiveScalingConfiguration: map['predictiveScalingConfiguration'] == null ? null : ((PolicyPredictiveScalingConfiguration.fromMap((map['predictiveScalingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scalingAdjustment: map['scalingAdjustment'] == null ? null : ((map['scalingAdjustment'] as int).input()).input(),
+      stepAdjustments: map['stepAdjustments'] == null ? null : ((pulumi.Input.decodeList<PolicyStepAdjustment>(map['stepAdjustments']!, (value) => PolicyStepAdjustment.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      targetTrackingConfiguration: map['targetTrackingConfiguration'] == null ? null : ((PolicyTargetTrackingConfiguration.fromMap((map['targetTrackingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

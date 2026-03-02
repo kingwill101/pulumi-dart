@@ -21,7 +21,7 @@ class GoogleCloudMlV1EncryptionConfig {
 
   factory GoogleCloudMlV1EncryptionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1EncryptionConfig(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
     );
   }
 }

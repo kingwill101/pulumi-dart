@@ -89,20 +89,20 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      directoryUserId: map['directoryUserId'] == null ? null : (map['directoryUserId'] as String).input(),
-      hierarchyGroupId: map['hierarchyGroupId'] == null ? null : (map['hierarchyGroupId'] as String).input(),
-      identityInfo: map['identityInfo'] == null ? null : (UserIdentityInfo.fromMap((map['identityInfo'] as Map).cast<String, dynamic>())).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      phoneConfig: map['phoneConfig'] == null ? null : (UserPhoneConfig.fromMap((map['phoneConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routingProfileId: map['routingProfileId'] == null ? null : (map['routingProfileId'] as String).input(),
-      securityProfileIds: map['securityProfileIds'] == null ? null : ((map['securityProfileIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      directoryUserId: map['directoryUserId'] == null ? null : ((map['directoryUserId'] as String).input()).input(),
+      hierarchyGroupId: map['hierarchyGroupId'] == null ? null : ((map['hierarchyGroupId'] as String).input()).input(),
+      identityInfo: map['identityInfo'] == null ? null : ((UserIdentityInfo.fromMap((map['identityInfo']! as Map).cast<String, dynamic>())).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      password: map['password'] == null ? null : ((map['password'] as String).input()).input(),
+      phoneConfig: map['phoneConfig'] == null ? null : ((UserPhoneConfig.fromMap((map['phoneConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routingProfileId: map['routingProfileId'] == null ? null : ((map['routingProfileId'] as String).input()).input(),
+      securityProfileIds: map['securityProfileIds'] == null ? null : (((map['securityProfileIds'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      userId: map['userId'] == null ? null : ((map['userId'] as String).input()).input(),
     );
   }
 }

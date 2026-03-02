@@ -46,12 +46,12 @@ class SharedDirectoryAccepterState {
 
   factory SharedDirectoryAccepterState.fromMap(Map<String, dynamic> map) {
     return SharedDirectoryAccepterState(
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      ownerAccountId: map['ownerAccountId'] == null ? null : (map['ownerAccountId'] as String).input(),
-      ownerDirectoryId: map['ownerDirectoryId'] == null ? null : (map['ownerDirectoryId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sharedDirectoryId: map['sharedDirectoryId'] == null ? null : (map['sharedDirectoryId'] as String).input(),
+      method: map['method'] == null ? null : ((map['method'] as String).input()).input(),
+      notes: map['notes'] == null ? null : ((map['notes'] as String).input()).input(),
+      ownerAccountId: map['ownerAccountId'] == null ? null : ((map['ownerAccountId'] as String).input()).input(),
+      ownerDirectoryId: map['ownerDirectoryId'] == null ? null : ((map['ownerDirectoryId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sharedDirectoryId: map['sharedDirectoryId'] == null ? null : ((map['sharedDirectoryId'] as String).input()).input(),
     );
   }
 }

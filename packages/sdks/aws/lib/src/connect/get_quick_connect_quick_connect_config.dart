@@ -38,10 +38,10 @@ class GetQuickConnectQuickConnectConfig {
 
   factory GetQuickConnectQuickConnectConfig.fromMap(Map<String, dynamic> map) {
     return GetQuickConnectQuickConnectConfig(
-      phoneConfigs: (pulumi.Input.decodeList<GetQuickConnectQuickConnectConfigPhoneConfig>(map['phoneConfigs'], (value) => GetQuickConnectQuickConnectConfigPhoneConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queueConfigs: (pulumi.Input.decodeList<GetQuickConnectQuickConnectConfigQueueConfig>(map['queueConfigs'], (value) => GetQuickConnectQuickConnectConfigQueueConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      phoneConfigs: (pulumi.Input.decodeList<GetQuickConnectQuickConnectConfigPhoneConfig>(map['phoneConfigs']!, (value) => GetQuickConnectQuickConnectConfigPhoneConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queueConfigs: (pulumi.Input.decodeList<GetQuickConnectQuickConnectConfigQueueConfig>(map['queueConfigs']!, (value) => GetQuickConnectQuickConnectConfigQueueConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       quickConnectType: (map['quickConnectType'] as String).input(),
-      userConfigs: (pulumi.Input.decodeList<GetQuickConnectQuickConnectConfigUserConfig>(map['userConfigs'], (value) => GetQuickConnectQuickConnectConfigUserConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userConfigs: (pulumi.Input.decodeList<GetQuickConnectQuickConnectConfigUserConfig>(map['userConfigs']!, (value) => GetQuickConnectQuickConnectConfigUserConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

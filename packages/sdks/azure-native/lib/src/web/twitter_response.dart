@@ -27,8 +27,8 @@ class TwitterResponse {
 
   factory TwitterResponse.fromMap(Map<String, dynamic> map) {
     return TwitterResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      registration: map['registration'] == null ? null : (TwitterRegistrationResponse.fromMap((map['registration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      registration: map['registration'] == null ? null : (TwitterRegistrationResponse.fromMap((map['registration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

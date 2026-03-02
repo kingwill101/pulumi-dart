@@ -33,7 +33,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscali
   factory AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec(
       metricName: (map['metricName'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as int).input(),
+      target: map['target'] == null ? null : (map['target']! as int).input(),
     );
   }
 }

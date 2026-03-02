@@ -33,9 +33,9 @@ class AvsAssessmentPropertiesV2 {
 
   factory AvsAssessmentPropertiesV2.fromMap(Map<String, dynamic> map) {
     return AvsAssessmentPropertiesV2(
-      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId'] as String).input(),
-      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (AvsAssessmentSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId']! as String).input(),
+      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (AvsAssessmentSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

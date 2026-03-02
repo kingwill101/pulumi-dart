@@ -19,7 +19,7 @@ class EnterpriseCrmEventbusProtoDoubleParameterArray {
 
   factory EnterpriseCrmEventbusProtoDoubleParameterArray.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoDoubleParameterArray(
-      doubleValues: map['doubleValues'] == null ? null : ((map['doubleValues'] as List).cast<double>()).input(),
+      doubleValues: map['doubleValues'] == null ? null : ((map['doubleValues']! as List).cast<double>()).input(),
     );
   }
 }

@@ -65,13 +65,13 @@ class GetModelsResult {
       groupId: map['groupId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      modelName: map['modelName'] == null ? null : map['modelName'] as String,
+      modelName: map['modelName'] == null ? null : map['modelName']! as String,
       models: pulumi.Input.decodeList<GetModelsModel>(map['models'], (value) => GetModelsModel.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
     );
   }
 }

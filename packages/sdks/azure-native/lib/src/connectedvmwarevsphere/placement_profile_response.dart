@@ -36,10 +36,10 @@ class PlacementProfileResponse {
 
   factory PlacementProfileResponse.fromMap(Map<String, dynamic> map) {
     return PlacementProfileResponse(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      datastoreId: map['datastoreId'] == null ? null : (map['datastoreId'] as String).input(),
-      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
-      resourcePoolId: map['resourcePoolId'] == null ? null : (map['resourcePoolId'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      datastoreId: map['datastoreId'] == null ? null : (map['datastoreId']! as String).input(),
+      hostId: map['hostId'] == null ? null : (map['hostId']! as String).input(),
+      resourcePoolId: map['resourcePoolId'] == null ? null : (map['resourcePoolId']! as String).input(),
     );
   }
 }

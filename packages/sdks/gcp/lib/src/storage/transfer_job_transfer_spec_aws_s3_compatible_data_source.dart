@@ -43,9 +43,9 @@ class TransferJobTransferSpecAwsS3CompatibleDataSource {
     return TransferJobTransferSpecAwsS3CompatibleDataSource(
       bucketName: (map['bucketName'] as String).input(),
       endpoint: (map['endpoint'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3Metadata: map['s3Metadata'] == null ? null : (TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata.fromMap((map['s3Metadata'] as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      s3Metadata: map['s3Metadata'] == null ? null : (TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata.fromMap((map['s3Metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

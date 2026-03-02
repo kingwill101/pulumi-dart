@@ -69,16 +69,16 @@ class FrontendIPConfiguration {
 
   factory FrontendIPConfiguration.fromMap(Map<String, dynamic> map) {
     return FrontendIPConfiguration(
-      gatewayLoadBalancer: map['gatewayLoadBalancer'] == null ? null : (SubResource.fromMap((map['gatewayLoadBalancer'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : (map['privateIPAddressVersion'] as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
-      publicIPAddress: map['publicIPAddress'] == null ? null : (PublicIPAddress.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>())).input(),
-      publicIPPrefix: map['publicIPPrefix'] == null ? null : (SubResource.fromMap((map['publicIPPrefix'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (Subnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      gatewayLoadBalancer: map['gatewayLoadBalancer'] == null ? null : (SubResource.fromMap((map['gatewayLoadBalancer']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      privateIPAddressVersion: map['privateIPAddressVersion'] == null ? null : (map['privateIPAddressVersion']! as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
+      publicIPAddress: map['publicIPAddress'] == null ? null : (PublicIPAddress.fromMap((map['publicIPAddress']! as Map).cast<String, dynamic>())).input(),
+      publicIPPrefix: map['publicIPPrefix'] == null ? null : (SubResource.fromMap((map['publicIPPrefix']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (Subnet.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

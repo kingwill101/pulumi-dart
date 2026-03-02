@@ -22,7 +22,7 @@ class ServiceCIDRStatusPatch {
 
   factory ServiceCIDRStatusPatch.fromMap(Map<String, dynamic> map) {
     return ServiceCIDRStatusPatch(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions']!, (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

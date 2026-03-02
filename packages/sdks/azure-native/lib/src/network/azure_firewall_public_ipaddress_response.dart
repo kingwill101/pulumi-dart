@@ -21,7 +21,7 @@ class AzureFirewallPublicIPAddressResponse {
 
   factory AzureFirewallPublicIPAddressResponse.fromMap(Map<String, dynamic> map) {
     return AzureFirewallPublicIPAddressResponse(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
     );
   }
 }

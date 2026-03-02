@@ -104,21 +104,21 @@ class SharedImageVersionState {
 
   factory SharedImageVersionState.fromMap(Map<String, dynamic> map) {
     return SharedImageVersionState(
-      blobUri: map['blobUri'] == null ? null : (map['blobUri'] as String).input(),
-      deletionOfReplicatedLocationsEnabled: map['deletionOfReplicatedLocationsEnabled'] == null ? null : (map['deletionOfReplicatedLocationsEnabled'] as bool).input(),
-      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate'] as String).input(),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
-      galleryName: map['galleryName'] == null ? null : (map['galleryName'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedImageId: map['managedImageId'] == null ? null : (map['managedImageId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      osDiskSnapshotId: map['osDiskSnapshotId'] == null ? null : (map['osDiskSnapshotId'] as String).input(),
-      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<SharedImageVersionTargetRegion>(map['targetRegions'], (value) => SharedImageVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      blobUri: map['blobUri'] == null ? null : (map['blobUri']! as String).input(),
+      deletionOfReplicatedLocationsEnabled: map['deletionOfReplicatedLocationsEnabled'] == null ? null : (map['deletionOfReplicatedLocationsEnabled']! as bool).input(),
+      endOfLifeDate: map['endOfLifeDate'] == null ? null : (map['endOfLifeDate']! as String).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest']! as bool).input(),
+      galleryName: map['galleryName'] == null ? null : (map['galleryName']! as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedImageId: map['managedImageId'] == null ? null : (map['managedImageId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      osDiskSnapshotId: map['osDiskSnapshotId'] == null ? null : (map['osDiskSnapshotId']! as String).input(),
+      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<SharedImageVersionTargetRegion>(map['targetRegions']!, (value) => SharedImageVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

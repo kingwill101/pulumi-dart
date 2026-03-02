@@ -26,8 +26,8 @@ class UserOwnedAmlWorkspace {
 
   factory UserOwnedAmlWorkspace.fromMap(Map<String, dynamic> map) {
     return UserOwnedAmlWorkspace(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

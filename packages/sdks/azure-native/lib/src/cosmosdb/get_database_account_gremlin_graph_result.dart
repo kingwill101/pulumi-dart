@@ -90,19 +90,19 @@ class GetDatabaseAccountGremlinGraphResult {
   factory GetDatabaseAccountGremlinGraphResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseAccountGremlinGraphResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : ConflictResolutionPolicyResponse.fromMap((map['conflictResolutionPolicy'] as Map).cast<String, dynamic>()),
-      defaultTtl: map['defaultTtl'] == null ? null : map['defaultTtl'] as int,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : ConflictResolutionPolicyResponse.fromMap((map['conflictResolutionPolicy']! as Map).cast<String, dynamic>()),
+      defaultTtl: map['defaultTtl'] == null ? null : map['defaultTtl']! as int,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      indexingPolicy: map['indexingPolicy'] == null ? null : IndexingPolicyResponse.fromMap((map['indexingPolicy'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
+      indexingPolicy: map['indexingPolicy'] == null ? null : IndexingPolicyResponse.fromMap((map['indexingPolicy']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      partitionKey: map['partitionKey'] == null ? null : ContainerPartitionKeyResponse.fromMap((map['partitionKey'] as Map).cast<String, dynamic>()),
-      rid: map['rid'] == null ? null : map['rid'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      ts: map['ts'] == null ? null : map['ts'],
+      partitionKey: map['partitionKey'] == null ? null : ContainerPartitionKeyResponse.fromMap((map['partitionKey']! as Map).cast<String, dynamic>()),
+      rid: map['rid'] == null ? null : map['rid']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      ts: map['ts'] == null ? null : map['ts']!,
       type: map['type'] as String,
-      uniqueKeyPolicy: map['uniqueKeyPolicy'] == null ? null : UniqueKeyPolicyResponse.fromMap((map['uniqueKeyPolicy'] as Map).cast<String, dynamic>()),
+      uniqueKeyPolicy: map['uniqueKeyPolicy'] == null ? null : UniqueKeyPolicyResponse.fromMap((map['uniqueKeyPolicy']! as Map).cast<String, dynamic>()),
     );
   }
 }

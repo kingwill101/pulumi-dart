@@ -34,8 +34,8 @@ class SubscriptionFeatureRegistrationArgs {
 
   factory SubscriptionFeatureRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionFeatureRegistrationArgs(
-      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
-      properties: map['properties'] == null ? null : (SubscriptionFeatureRegistrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      featureName: map['featureName'] == null ? null : (map['featureName']! as String).input(),
+      properties: map['properties'] == null ? null : (SubscriptionFeatureRegistrationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       providerNamespace: (map['providerNamespace'] as String).input(),
     );
   }

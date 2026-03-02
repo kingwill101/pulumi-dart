@@ -25,8 +25,8 @@ class TenantClientPermissions {
 
   factory TenantClientPermissions.fromMap(Map<String, dynamic> map) {
     return TenantClientPermissions(
-      disabledUserDeletion: map['disabledUserDeletion'] == null ? null : (map['disabledUserDeletion'] as bool).input(),
-      disabledUserSignup: map['disabledUserSignup'] == null ? null : (map['disabledUserSignup'] as bool).input(),
+      disabledUserDeletion: map['disabledUserDeletion'] == null ? null : (map['disabledUserDeletion']! as bool).input(),
+      disabledUserSignup: map['disabledUserSignup'] == null ? null : (map['disabledUserSignup']! as bool).input(),
     );
   }
 }

@@ -54,12 +54,12 @@ class DeliveryChannelResourceSnapshotDelivery {
 
   factory DeliveryChannelResourceSnapshotDelivery.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelResourceSnapshotDelivery(
-      customExpression: map['customExpression'] == null ? null : (map['customExpression'] as String).input(),
-      deliveryTime: map['deliveryTime'] == null ? null : (map['deliveryTime'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      slsProperties: map['slsProperties'] == null ? null : (DeliveryChannelResourceSnapshotDeliverySlsProperties.fromMap((map['slsProperties'] as Map).cast<String, dynamic>())).input(),
-      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      customExpression: map['customExpression'] == null ? null : (map['customExpression']! as String).input(),
+      deliveryTime: map['deliveryTime'] == null ? null : (map['deliveryTime']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      slsProperties: map['slsProperties'] == null ? null : (DeliveryChannelResourceSnapshotDeliverySlsProperties.fromMap((map['slsProperties']! as Map).cast<String, dynamic>())).input(),
+      targetArn: map['targetArn'] == null ? null : (map['targetArn']! as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
     );
   }
 }

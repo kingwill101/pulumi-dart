@@ -50,12 +50,12 @@ class IntegrationAccountBatchConfigurationArgs {
 
   factory IntegrationAccountBatchConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountBatchConfigurationArgs(
-      batchConfigurationName: map['batchConfigurationName'] == null ? null : (map['batchConfigurationName'] as String).input(),
+      batchConfigurationName: map['batchConfigurationName'] == null ? null : (map['batchConfigurationName']! as String).input(),
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       properties: (BatchConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -58,13 +58,13 @@ class GetSecGroupResult {
   factory GetSecGroupResult.fromMap(Map<String, dynamic> map) {
     return GetSecGroupResult(
       allTags: (map['allTags'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       region: map['region'] as String,
-      secgroupId: map['secgroupId'] == null ? null : map['secgroupId'] as String,
+      secgroupId: map['secgroupId'] == null ? null : map['secgroupId']! as String,
       stateful: map['stateful'] as bool,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
       tenantId: map['tenantId'] as String,
     );
   }

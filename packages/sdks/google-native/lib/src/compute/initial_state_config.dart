@@ -37,10 +37,10 @@ class InitialStateConfig {
 
   factory InitialStateConfig.fromMap(Map<String, dynamic> map) {
     return InitialStateConfig(
-      dbs: map['dbs'] == null ? null : (pulumi.Input.decodeList<FileContentBuffer>(map['dbs'], (value) => FileContentBuffer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dbxs: map['dbxs'] == null ? null : (pulumi.Input.decodeList<FileContentBuffer>(map['dbxs'], (value) => FileContentBuffer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      keks: map['keks'] == null ? null : (pulumi.Input.decodeList<FileContentBuffer>(map['keks'], (value) => FileContentBuffer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pk: map['pk'] == null ? null : (FileContentBuffer.fromMap((map['pk'] as Map).cast<String, dynamic>())).input(),
+      dbs: map['dbs'] == null ? null : (pulumi.Input.decodeList<FileContentBuffer>(map['dbs']!, (value) => FileContentBuffer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbxs: map['dbxs'] == null ? null : (pulumi.Input.decodeList<FileContentBuffer>(map['dbxs']!, (value) => FileContentBuffer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keks: map['keks'] == null ? null : (pulumi.Input.decodeList<FileContentBuffer>(map['keks']!, (value) => FileContentBuffer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pk: map['pk'] == null ? null : (FileContentBuffer.fromMap((map['pk']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class DumpFlags {
 
   factory DumpFlags.fromMap(Map<String, dynamic> map) {
     return DumpFlags(
-      dumpFlags: map['dumpFlags'] == null ? null : (pulumi.Input.decodeList<DumpFlag>(map['dumpFlags'], (value) => DumpFlag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dumpFlags: map['dumpFlags'] == null ? null : (pulumi.Input.decodeList<DumpFlag>(map['dumpFlags']!, (value) => DumpFlag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

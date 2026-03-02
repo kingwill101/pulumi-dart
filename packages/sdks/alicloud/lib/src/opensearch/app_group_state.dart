@@ -73,17 +73,17 @@ class AppGroupState {
 
   factory AppGroupState.fromMap(Map<String, dynamic> map) {
     return AppGroupState(
-      appGroupName: map['appGroupName'] == null ? null : (map['appGroupName'] as String).input(),
-      chargeWay: map['chargeWay'] == null ? null : (map['chargeWay'] as String).input(),
-      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      orderType: map['orderType'] == null ? null : (map['orderType'] as String).input(),
-      orders: map['orders'] == null ? null : (pulumi.Input.decodeList<AppGroupOrder>(map['orders'], (value) => AppGroupOrder.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      quota: map['quota'] == null ? null : (AppGroupQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      appGroupName: map['appGroupName'] == null ? null : (map['appGroupName']! as String).input(),
+      chargeWay: map['chargeWay'] == null ? null : (map['chargeWay']! as String).input(),
+      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      orderType: map['orderType'] == null ? null : (map['orderType']! as String).input(),
+      orders: map['orders'] == null ? null : (pulumi.Input.decodeList<AppGroupOrder>(map['orders']!, (value) => AppGroupOrder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      quota: map['quota'] == null ? null : (AppGroupQuota.fromMap((map['quota']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

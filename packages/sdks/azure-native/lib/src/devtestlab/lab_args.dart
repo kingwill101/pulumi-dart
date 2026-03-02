@@ -83,18 +83,18 @@ class LabArgs {
 
   factory LabArgs.fromMap(Map<String, dynamic> map) {
     return LabArgs(
-      announcement: map['announcement'] == null ? null : (LabAnnouncementProperties.fromMap((map['announcement'] as Map).cast<String, dynamic>())).input(),
-      environmentPermission: map['environmentPermission'] == null ? null : (map['environmentPermission'] as String).input(),
-      extendedProperties: map['extendedProperties'] == null ? null : ((map['extendedProperties'] as Map).cast<String, String>()).input(),
-      labStorageType: map['labStorageType'] == null ? null : (map['labStorageType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mandatoryArtifactsResourceIdsLinux: map['mandatoryArtifactsResourceIdsLinux'] == null ? null : ((map['mandatoryArtifactsResourceIdsLinux'] as List).cast<String>()).input(),
-      mandatoryArtifactsResourceIdsWindows: map['mandatoryArtifactsResourceIdsWindows'] == null ? null : ((map['mandatoryArtifactsResourceIdsWindows'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      premiumDataDisks: map['premiumDataDisks'] == null ? null : (map['premiumDataDisks'] as String).input(),
+      announcement: map['announcement'] == null ? null : (LabAnnouncementProperties.fromMap((map['announcement']! as Map).cast<String, dynamic>())).input(),
+      environmentPermission: map['environmentPermission'] == null ? null : (map['environmentPermission']! as String).input(),
+      extendedProperties: map['extendedProperties'] == null ? null : ((map['extendedProperties']! as Map).cast<String, String>()).input(),
+      labStorageType: map['labStorageType'] == null ? null : (map['labStorageType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mandatoryArtifactsResourceIdsLinux: map['mandatoryArtifactsResourceIdsLinux'] == null ? null : ((map['mandatoryArtifactsResourceIdsLinux']! as List).cast<String>()).input(),
+      mandatoryArtifactsResourceIdsWindows: map['mandatoryArtifactsResourceIdsWindows'] == null ? null : ((map['mandatoryArtifactsResourceIdsWindows']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      premiumDataDisks: map['premiumDataDisks'] == null ? null : (map['premiumDataDisks']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      support: map['support'] == null ? null : (LabSupportProperties.fromMap((map['support'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      support: map['support'] == null ? null : (LabSupportProperties.fromMap((map['support']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

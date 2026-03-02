@@ -48,7 +48,7 @@ class AccountPrivilegeArgs {
       accountName: (map['accountName'] as String).input(),
       dbNames: ((map['dbNames'] as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      privilege: map['privilege'] == null ? null : (map['privilege'] as String).input(),
+      privilege: map['privilege'] == null ? null : (map['privilege']! as String).input(),
     );
   }
 }

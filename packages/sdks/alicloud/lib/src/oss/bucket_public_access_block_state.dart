@@ -26,8 +26,8 @@ class BucketPublicAccessBlockState {
 
   factory BucketPublicAccessBlockState.fromMap(Map<String, dynamic> map) {
     return BucketPublicAccessBlockState(
-      blockPublicAccess: map['blockPublicAccess'] == null ? null : (map['blockPublicAccess'] as bool).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      blockPublicAccess: map['blockPublicAccess'] == null ? null : (map['blockPublicAccess']! as bool).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
     );
   }
 }

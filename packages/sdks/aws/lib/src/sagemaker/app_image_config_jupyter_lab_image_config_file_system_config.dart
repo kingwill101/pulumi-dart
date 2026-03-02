@@ -32,9 +32,9 @@ class AppImageConfigJupyterLabImageConfigFileSystemConfig {
 
   factory AppImageConfigJupyterLabImageConfigFileSystemConfig.fromMap(Map<String, dynamic> map) {
     return AppImageConfigJupyterLabImageConfigFileSystemConfig(
-      defaultGid: map['defaultGid'] == null ? null : (map['defaultGid'] as int).input(),
-      defaultUid: map['defaultUid'] == null ? null : (map['defaultUid'] as int).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      defaultGid: map['defaultGid'] == null ? null : ((map['defaultGid'] as int).input()).input(),
+      defaultUid: map['defaultUid'] == null ? null : ((map['defaultUid'] as int).input()).input(),
+      mountPath: map['mountPath'] == null ? null : ((map['mountPath'] as String).input()).input(),
     );
   }
 }

@@ -62,15 +62,15 @@ class ScheduledActionState {
 
   factory ScheduledActionState.fromMap(Map<String, dynamic> map) {
     return ScheduledActionState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      iamRole: map['iamRole'] == null ? null : (map['iamRole'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      targetAction: map['targetAction'] == null ? null : (ScheduledActionTargetAction.fromMap((map['targetAction'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      enable: map['enable'] == null ? null : ((map['enable'] as bool).input()).input(),
+      endTime: map['endTime'] == null ? null : ((map['endTime'] as String).input()).input(),
+      iamRole: map['iamRole'] == null ? null : ((map['iamRole'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      schedule: map['schedule'] == null ? null : ((map['schedule'] as String).input()).input(),
+      startTime: map['startTime'] == null ? null : ((map['startTime'] as String).input()).input(),
+      targetAction: map['targetAction'] == null ? null : ((ScheduledActionTargetAction.fromMap((map['targetAction']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

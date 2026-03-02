@@ -61,14 +61,14 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      closeOnDeletion: map['closeOnDeletion'] == null ? null : (map['closeOnDeletion'] as bool).input(),
-      createGovcloud: map['createGovcloud'] == null ? null : (map['createGovcloud'] as bool).input(),
+      closeOnDeletion: map['closeOnDeletion'] == null ? null : ((map['closeOnDeletion'] as bool).input()).input(),
+      createGovcloud: map['createGovcloud'] == null ? null : ((map['createGovcloud'] as bool).input()).input(),
       email: (map['email'] as String).input(),
-      iamUserAccessToBilling: map['iamUserAccessToBilling'] == null ? null : (map['iamUserAccessToBilling'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      iamUserAccessToBilling: map['iamUserAccessToBilling'] == null ? null : ((map['iamUserAccessToBilling'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parentId: map['parentId'] == null ? null : ((map['parentId'] as String).input()).input(),
+      roleName: map['roleName'] == null ? null : ((map['roleName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

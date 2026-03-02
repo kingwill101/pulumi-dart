@@ -26,8 +26,8 @@ class UserPoliciesExclusiveState {
 
   factory UserPoliciesExclusiveState.fromMap(Map<String, dynamic> map) {
     return UserPoliciesExclusiveState(
-      policyNames: map['policyNames'] == null ? null : ((map['policyNames'] as List).cast<String>()).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      policyNames: map['policyNames'] == null ? null : (((map['policyNames'] as List).cast<String>()).input()).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
     );
   }
 }

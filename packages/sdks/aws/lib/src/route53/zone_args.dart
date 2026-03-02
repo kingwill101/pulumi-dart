@@ -55,13 +55,13 @@ class ZoneArgs {
 
   factory ZoneArgs.fromMap(Map<String, dynamic> map) {
     return ZoneArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      delegationSetId: map['delegationSetId'] == null ? null : (map['delegationSetId'] as String).input(),
-      enableAcceleratedRecovery: map['enableAcceleratedRecovery'] == null ? null : (map['enableAcceleratedRecovery'] as bool).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<ZoneVpc>(map['vpcs'], (value) => ZoneVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      delegationSetId: map['delegationSetId'] == null ? null : ((map['delegationSetId'] as String).input()).input(),
+      enableAcceleratedRecovery: map['enableAcceleratedRecovery'] == null ? null : ((map['enableAcceleratedRecovery'] as bool).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vpcs: map['vpcs'] == null ? null : ((pulumi.Input.decodeList<ZoneVpc>(map['vpcs']!, (value) => ZoneVpc.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -83,18 +83,18 @@ class GetCloudConnectionResult {
   factory GetCloudConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetCloudConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      cloudConnector: map['cloudConnector'] == null ? null : ResourceReferenceResponse.fromMap((map['cloudConnector'] as Map).cast<String, dynamic>()),
+      cloudConnector: map['cloudConnector'] == null ? null : ResourceReferenceResponse.fromMap((map['cloudConnector']! as Map).cast<String, dynamic>()),
       etag: map['etag'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      remoteResourceId: map['remoteResourceId'] == null ? null : map['remoteResourceId'] as String,
-      sharedKey: map['sharedKey'] == null ? null : map['sharedKey'] as String,
+      remoteResourceId: map['remoteResourceId'] == null ? null : map['remoteResourceId']! as String,
+      sharedKey: map['sharedKey'] == null ? null : map['sharedKey']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      virtualHub: map['virtualHub'] == null ? null : ResourceReferenceResponse.fromMap((map['virtualHub'] as Map).cast<String, dynamic>()),
+      virtualHub: map['virtualHub'] == null ? null : ResourceReferenceResponse.fromMap((map['virtualHub']! as Map).cast<String, dynamic>()),
     );
   }
 }

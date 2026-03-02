@@ -35,7 +35,7 @@ class GroupMembershipArgs {
   factory GroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return GroupMembershipArgs(
       group: (map['group'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       users: ((map['users'] as List).cast<String>()).input(),
     );
   }

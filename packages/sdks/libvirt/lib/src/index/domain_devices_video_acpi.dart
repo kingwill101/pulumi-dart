@@ -20,7 +20,7 @@ class DomainDevicesVideoAcpi {
 
   factory DomainDevicesVideoAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVideoAcpi(
-      index: map['index'] == null ? null : (map['index'] as double).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
     );
   }
 }

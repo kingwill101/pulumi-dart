@@ -20,7 +20,7 @@ class ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashbo
 
   factory ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard(
-      dashboardArn: map['dashboardArn'] == null ? null : (map['dashboardArn'] as String).input(),
+      dashboardArn: map['dashboardArn'] == null ? null : ((map['dashboardArn'] as String).input()).input(),
     );
   }
 }

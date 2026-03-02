@@ -26,8 +26,8 @@ class FileContentBufferComputeV1 {
 
   factory FileContentBufferComputeV1.fromMap(Map<String, dynamic> map) {
     return FileContentBufferComputeV1(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      fileType: map['fileType'] == null ? null : (FileContentBufferFileTypeComputeV1.fromValue(map['fileType'] as String)).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      fileType: map['fileType'] == null ? null : (FileContentBufferFileTypeComputeV1.fromValue(map['fileType']! as String)).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class GetVirtualNodeSpecListenerTlValidationTrust {
 
   factory GetVirtualNodeSpecListenerTlValidationTrust.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTlValidationTrust(
-      files: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTlValidationTrustFile>(map['files'], (value) => GetVirtualNodeSpecListenerTlValidationTrustFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sds: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTlValidationTrustSd>(map['sds'], (value) => GetVirtualNodeSpecListenerTlValidationTrustSd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      files: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTlValidationTrustFile>(map['files']!, (value) => GetVirtualNodeSpecListenerTlValidationTrustFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sds: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTlValidationTrustSd>(map['sds']!, (value) => GetVirtualNodeSpecListenerTlValidationTrustSd.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

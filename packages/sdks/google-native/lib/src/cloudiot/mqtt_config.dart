@@ -22,7 +22,7 @@ class MqttConfig {
 
   factory MqttConfig.fromMap(Map<String, dynamic> map) {
     return MqttConfig(
-      mqttEnabledState: map['mqttEnabledState'] == null ? null : (MqttConfigMqttEnabledState.fromValue(map['mqttEnabledState'] as String)).input(),
+      mqttEnabledState: map['mqttEnabledState'] == null ? null : (MqttConfigMqttEnabledState.fromValue(map['mqttEnabledState']! as String)).input(),
     );
   }
 }

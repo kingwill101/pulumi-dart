@@ -38,10 +38,10 @@ class ChannelVpc {
 
   factory ChannelVpc.fromMap(Map<String, dynamic> map) {
     return ChannelVpc(
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
-      networkInterfaceIds: map['networkInterfaceIds'] == null ? null : ((map['networkInterfaceIds'] as List).cast<String>()).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : (((map['availabilityZones'] as List).cast<String>()).input()).input(),
+      networkInterfaceIds: map['networkInterfaceIds'] == null ? null : (((map['networkInterfaceIds'] as List).cast<String>()).input()).input(),
       publicAddressAllocationIds: ((map['publicAddressAllocationIds'] as List).cast<String>()).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
     );
   }

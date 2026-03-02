@@ -63,7 +63,7 @@ class GetContactsRotationResult {
       contactIds: (map['contactIds'] as List).cast<String>(),
       id: map['id'] as String,
       name: map['name'] as String,
-      recurrences: pulumi.Input.decodeList<GetContactsRotationRecurrence>(map['recurrences'], (value) => GetContactsRotationRecurrence.fromMap((value as Map).cast<String, dynamic>())),
+      recurrences: pulumi.Input.decodeList<GetContactsRotationRecurrence>(map['recurrences']!, (value) => GetContactsRotationRecurrence.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       startTime: map['startTime'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),

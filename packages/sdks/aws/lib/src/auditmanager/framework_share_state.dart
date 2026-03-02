@@ -48,12 +48,12 @@ class FrameworkShareState {
 
   factory FrameworkShareState.fromMap(Map<String, dynamic> map) {
     return FrameworkShareState(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      destinationAccount: map['destinationAccount'] == null ? null : (map['destinationAccount'] as String).input(),
-      destinationRegion: map['destinationRegion'] == null ? null : (map['destinationRegion'] as String).input(),
-      frameworkId: map['frameworkId'] == null ? null : (map['frameworkId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      destinationAccount: map['destinationAccount'] == null ? null : ((map['destinationAccount'] as String).input()).input(),
+      destinationRegion: map['destinationRegion'] == null ? null : ((map['destinationRegion'] as String).input()).input(),
+      frameworkId: map['frameworkId'] == null ? null : ((map['frameworkId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

@@ -85,19 +85,19 @@ class SecurityGroupRuleState {
 
   factory SecurityGroupRuleState.fromMap(Map<String, dynamic> map) {
     return SecurityGroupRuleState(
-      cidrBlocks: map['cidrBlocks'] == null ? null : ((map['cidrBlocks'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
-      ipv6CidrBlocks: map['ipv6CidrBlocks'] == null ? null : ((map['ipv6CidrBlocks'] as List).cast<String>()).input(),
-      prefixListIds: map['prefixListIds'] == null ? null : ((map['prefixListIds'] as List).cast<String>()).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      securityGroupRuleId: map['securityGroupRuleId'] == null ? null : (map['securityGroupRuleId'] as String).input(),
-      self: map['self'] == null ? null : (map['self'] as bool).input(),
-      sourceSecurityGroupId: map['sourceSecurityGroupId'] == null ? null : (map['sourceSecurityGroupId'] as String).input(),
-      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      cidrBlocks: map['cidrBlocks'] == null ? null : (((map['cidrBlocks'] as List).cast<String>()).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      fromPort: map['fromPort'] == null ? null : ((map['fromPort'] as int).input()).input(),
+      ipv6CidrBlocks: map['ipv6CidrBlocks'] == null ? null : (((map['ipv6CidrBlocks'] as List).cast<String>()).input()).input(),
+      prefixListIds: map['prefixListIds'] == null ? null : (((map['prefixListIds'] as List).cast<String>()).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : ((map['securityGroupId'] as String).input()).input(),
+      securityGroupRuleId: map['securityGroupRuleId'] == null ? null : ((map['securityGroupRuleId'] as String).input()).input(),
+      self: map['self'] == null ? null : ((map['self'] as bool).input()).input(),
+      sourceSecurityGroupId: map['sourceSecurityGroupId'] == null ? null : ((map['sourceSecurityGroupId'] as String).input()).input(),
+      toPort: map['toPort'] == null ? null : ((map['toPort'] as int).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

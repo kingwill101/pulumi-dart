@@ -32,7 +32,7 @@ class ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy {
   factory ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesTemplateDeploymentPolicy(
       capabilities: (map['capabilities'] as String).input(),
-      preflightNotifications: map['preflightNotifications'] == null ? null : (map['preflightNotifications'] as String).input(),
+      preflightNotifications: map['preflightNotifications'] == null ? null : (map['preflightNotifications']! as String).input(),
       preflightOptions: (map['preflightOptions'] as String).input(),
     );
   }

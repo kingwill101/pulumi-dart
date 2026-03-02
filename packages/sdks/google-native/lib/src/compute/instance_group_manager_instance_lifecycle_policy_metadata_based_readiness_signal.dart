@@ -20,7 +20,7 @@ class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal {
 
   factory InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal(
-      timeoutSec: map['timeoutSec'] == null ? null : (map['timeoutSec'] as int).input(),
+      timeoutSec: map['timeoutSec'] == null ? null : (map['timeoutSec']! as int).input(),
     );
   }
 }

@@ -35,7 +35,7 @@ class GetKMSKeyRingResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
     );
   }
 }

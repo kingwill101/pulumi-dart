@@ -91,19 +91,19 @@ class PoolArgs {
   factory PoolArgs.fromMap(Map<String, dynamic> map) {
     return PoolArgs(
       devBoxDefinitionName: (map['devBoxDefinitionName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       licenseType: (map['licenseType'] as String).input(),
       localAdministrator: (map['localAdministrator'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedVirtualNetworkRegions: map['managedVirtualNetworkRegions'] == null ? null : ((map['managedVirtualNetworkRegions'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedVirtualNetworkRegions: map['managedVirtualNetworkRegions'] == null ? null : ((map['managedVirtualNetworkRegions']! as List).cast<String>()).input(),
       networkConnectionName: (map['networkConnectionName'] as String).input(),
-      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
+      poolName: map['poolName'] == null ? null : (map['poolName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      singleSignOnStatus: map['singleSignOnStatus'] == null ? null : (map['singleSignOnStatus'] as String).input(),
-      stopOnDisconnect: map['stopOnDisconnect'] == null ? null : (StopOnDisconnectConfiguration.fromMap((map['stopOnDisconnect'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualNetworkType: map['virtualNetworkType'] == null ? null : (map['virtualNetworkType'] as String).input(),
+      singleSignOnStatus: map['singleSignOnStatus'] == null ? null : (map['singleSignOnStatus']! as String).input(),
+      stopOnDisconnect: map['stopOnDisconnect'] == null ? null : (StopOnDisconnectConfiguration.fromMap((map['stopOnDisconnect']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualNetworkType: map['virtualNetworkType'] == null ? null : (map['virtualNetworkType']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class VolumeTypeEnumValueResponse {
 
   factory VolumeTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return VolumeTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

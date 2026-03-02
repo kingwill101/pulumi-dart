@@ -29,7 +29,7 @@ class GetDatabaseClusterArgs {
   factory GetDatabaseClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseClusterArgs(
       name: (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

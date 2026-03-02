@@ -45,12 +45,12 @@ class ServiceMeshMeshConfigOpa {
 
   factory ServiceMeshMeshConfigOpa.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigOpa(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      limitCpu: map['limitCpu'] == null ? null : (map['limitCpu'] as String).input(),
-      limitMemory: map['limitMemory'] == null ? null : (map['limitMemory'] as String).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
-      requestCpu: map['requestCpu'] == null ? null : (map['requestCpu'] as String).input(),
-      requestMemory: map['requestMemory'] == null ? null : (map['requestMemory'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      limitCpu: map['limitCpu'] == null ? null : (map['limitCpu']! as String).input(),
+      limitMemory: map['limitMemory'] == null ? null : (map['limitMemory']! as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
+      requestCpu: map['requestCpu'] == null ? null : (map['requestCpu']! as String).input(),
+      requestMemory: map['requestMemory'] == null ? null : (map['requestMemory']! as String).input(),
     );
   }
 }

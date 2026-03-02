@@ -34,8 +34,8 @@ class StatelessAgentProfileResponse {
   factory StatelessAgentProfileResponse.fromMap(Map<String, dynamic> map) {
     return StatelessAgentProfileResponse(
       kind: (map['kind'] as String).input(),
-      resourcePredictions: map['resourcePredictions'] == null ? null : (map['resourcePredictions']).input(),
-      resourcePredictionsProfile: map['resourcePredictionsProfile'] == null ? null : (AutomaticResourcePredictionsProfileResponse.fromMap((map['resourcePredictionsProfile'] as Map).cast<String, dynamic>())).input(),
+      resourcePredictions: map['resourcePredictions'] == null ? null : (map['resourcePredictions']!).input(),
+      resourcePredictionsProfile: map['resourcePredictionsProfile'] == null ? null : (AutomaticResourcePredictionsProfileResponse.fromMap((map['resourcePredictionsProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

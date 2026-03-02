@@ -32,7 +32,7 @@ class VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse {
   factory VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse(
       domainNameLabel: (map['domainNameLabel'] as String).input(),
-      domainNameLabelScope: map['domainNameLabelScope'] == null ? null : (map['domainNameLabelScope'] as String).input(),
+      domainNameLabelScope: map['domainNameLabelScope'] == null ? null : (map['domainNameLabelScope']! as String).input(),
     );
   }
 }

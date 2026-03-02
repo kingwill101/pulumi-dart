@@ -21,7 +21,7 @@ class CharacterMaskConfigHealthcareV1beta1 {
 
   factory CharacterMaskConfigHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return CharacterMaskConfigHealthcareV1beta1(
-      maskingCharacter: map['maskingCharacter'] == null ? null : (map['maskingCharacter'] as String).input(),
+      maskingCharacter: map['maskingCharacter'] == null ? null : (map['maskingCharacter']! as String).input(),
     );
   }
 }

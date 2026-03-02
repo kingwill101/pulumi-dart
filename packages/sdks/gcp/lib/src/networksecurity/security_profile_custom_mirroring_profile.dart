@@ -40,9 +40,9 @@ class SecurityProfileCustomMirroringProfile {
 
   factory SecurityProfileCustomMirroringProfile.fromMap(Map<String, dynamic> map) {
     return SecurityProfileCustomMirroringProfile(
-      mirroringDeploymentGroups: map['mirroringDeploymentGroups'] == null ? null : ((map['mirroringDeploymentGroups'] as List).cast<String>()).input(),
+      mirroringDeploymentGroups: map['mirroringDeploymentGroups'] == null ? null : ((map['mirroringDeploymentGroups']! as List).cast<String>()).input(),
       mirroringEndpointGroup: (map['mirroringEndpointGroup'] as String).input(),
-      mirroringEndpointGroupType: map['mirroringEndpointGroupType'] == null ? null : (map['mirroringEndpointGroupType'] as String).input(),
+      mirroringEndpointGroupType: map['mirroringEndpointGroupType'] == null ? null : (map['mirroringEndpointGroupType']! as String).input(),
     );
   }
 }

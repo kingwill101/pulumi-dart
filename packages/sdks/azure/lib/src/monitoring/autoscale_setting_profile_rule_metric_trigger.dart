@@ -73,10 +73,10 @@ class AutoscaleSettingProfileRuleMetricTrigger {
 
   factory AutoscaleSettingProfileRuleMetricTrigger.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingProfileRuleMetricTrigger(
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<AutoscaleSettingProfileRuleMetricTriggerDimension>(map['dimensions'], (value) => AutoscaleSettingProfileRuleMetricTriggerDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      divideByInstanceCount: map['divideByInstanceCount'] == null ? null : (map['divideByInstanceCount'] as bool).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<AutoscaleSettingProfileRuleMetricTriggerDimension>(map['dimensions']!, (value) => AutoscaleSettingProfileRuleMetricTriggerDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      divideByInstanceCount: map['divideByInstanceCount'] == null ? null : (map['divideByInstanceCount']! as bool).input(),
       metricName: (map['metricName'] as String).input(),
-      metricNamespace: map['metricNamespace'] == null ? null : (map['metricNamespace'] as String).input(),
+      metricNamespace: map['metricNamespace'] == null ? null : (map['metricNamespace']! as String).input(),
       metricResourceId: (map['metricResourceId'] as String).input(),
       operator: (map['operator'] as String).input(),
       statistic: (map['statistic'] as String).input(),

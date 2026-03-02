@@ -36,10 +36,10 @@ class ElasticBackupPolicyProperties {
 
   factory ElasticBackupPolicyProperties.fromMap(Map<String, dynamic> map) {
     return ElasticBackupPolicyProperties(
-      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : (map['dailyBackupsToKeep'] as int).input(),
-      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : (map['monthlyBackupsToKeep'] as int).input(),
-      policyState: map['policyState'] == null ? null : (map['policyState'] as String).input(),
-      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : (map['weeklyBackupsToKeep'] as int).input(),
+      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : (map['dailyBackupsToKeep']! as int).input(),
+      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : (map['monthlyBackupsToKeep']! as int).input(),
+      policyState: map['policyState'] == null ? null : (map['policyState']! as String).input(),
+      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : (map['weeklyBackupsToKeep']! as int).input(),
     );
   }
 }

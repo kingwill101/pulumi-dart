@@ -26,8 +26,8 @@ class BuildArtifact {
 
   factory BuildArtifact.fromMap(Map<String, dynamic> map) {
     return BuildArtifact(
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

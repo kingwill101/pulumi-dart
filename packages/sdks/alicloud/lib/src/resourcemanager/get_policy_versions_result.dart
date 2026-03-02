@@ -48,10 +48,10 @@ class GetPolicyVersionsResult {
 
   factory GetPolicyVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyVersionsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       policyName: map['policyName'] as String,
       policyType: map['policyType'] as String,
       versions: pulumi.Input.decodeList<GetPolicyVersionsVersion>(map['versions'], (value) => GetPolicyVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),

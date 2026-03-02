@@ -52,13 +52,13 @@ class ProcessorArgs {
 
   factory ProcessorArgs.fromMap(Map<String, dynamic> map) {
     return ProcessorArgs(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      defaultProcessorVersion: map['defaultProcessorVersion'] == null ? null : (map['defaultProcessorVersion'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      defaultProcessorVersion: map['defaultProcessorVersion'] == null ? null : (map['defaultProcessorVersion']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

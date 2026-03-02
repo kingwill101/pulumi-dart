@@ -58,7 +58,7 @@ class GetDBAuditInstanceInstance {
       privateDomain: (map['privateDomain'] as String).input(),
       publicDomain: (map['publicDomain'] as String).input(),
       publicNetworkAccess: (map['publicNetworkAccess'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       userVswitchId: (map['userVswitchId'] as String).input(),
     );
   }

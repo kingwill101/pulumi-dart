@@ -49,8 +49,8 @@ class ManagedPolicyAttachmentsExclusiveArgs {
       instanceArn: (map['instanceArn'] as String).input(),
       managedPolicyArns: ((map['managedPolicyArns'] as List).cast<String>()).input(),
       permissionSetArn: (map['permissionSetArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ManagedPolicyAttachmentsExclusiveTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ManagedPolicyAttachmentsExclusiveTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

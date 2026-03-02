@@ -50,9 +50,9 @@ class GetServiceResult {
     return GetServiceResult(
       changingAffectTime: map['changingAffectTime'] as String,
       changingChargeType: map['changingChargeType'] as String,
-      enable: map['enable'] == null ? null : map['enable'] as String,
+      enable: map['enable'] == null ? null : map['enable']! as String,
       id: map['id'] as String,
-      internetChargeType: map['internetChargeType'] == null ? null : map['internetChargeType'] as String,
+      internetChargeType: map['internetChargeType'] == null ? null : map['internetChargeType']! as String,
       openingTime: map['openingTime'] as String,
       status: map['status'] as String,
     );

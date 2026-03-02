@@ -30,8 +30,8 @@ class SqlContainerConflictResolutionPolicy {
 
   factory SqlContainerConflictResolutionPolicy.fromMap(Map<String, dynamic> map) {
     return SqlContainerConflictResolutionPolicy(
-      conflictResolutionPath: map['conflictResolutionPath'] == null ? null : (map['conflictResolutionPath'] as String).input(),
-      conflictResolutionProcedure: map['conflictResolutionProcedure'] == null ? null : (map['conflictResolutionProcedure'] as String).input(),
+      conflictResolutionPath: map['conflictResolutionPath'] == null ? null : (map['conflictResolutionPath']! as String).input(),
+      conflictResolutionProcedure: map['conflictResolutionProcedure'] == null ? null : (map['conflictResolutionProcedure']! as String).input(),
       mode: (map['mode'] as String).input(),
     );
   }

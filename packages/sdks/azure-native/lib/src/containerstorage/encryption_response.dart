@@ -32,7 +32,7 @@ class EncryptionResponse {
 
   factory EncryptionResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionResponse(
-      identity: map['identity'] == null ? null : (ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       keyName: (map['keyName'] as String).input(),
       keyVaultUri: (map['keyVaultUri'] as String).input(),
     );

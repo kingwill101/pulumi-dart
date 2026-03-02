@@ -26,8 +26,8 @@ class HybridMonitorSlsTaskSlsProcessConfigFilter {
 
   factory HybridMonitorSlsTaskSlsProcessConfigFilter.fromMap(Map<String, dynamic> map) {
     return HybridMonitorSlsTaskSlsProcessConfigFilter(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<HybridMonitorSlsTaskSlsProcessConfigFilterFilter>(map['filters'], (value) => HybridMonitorSlsTaskSlsProcessConfigFilterFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      relation: map['relation'] == null ? null : (map['relation'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<HybridMonitorSlsTaskSlsProcessConfigFilterFilter>(map['filters']!, (value) => HybridMonitorSlsTaskSlsProcessConfigFilterFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relation: map['relation'] == null ? null : (map['relation']! as String).input(),
     );
   }
 }

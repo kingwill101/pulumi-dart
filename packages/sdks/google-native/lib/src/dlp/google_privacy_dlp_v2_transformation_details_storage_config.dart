@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2TransformationDetailsStorageConfig {
 
   factory GooglePrivacyDlpV2TransformationDetailsStorageConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TransformationDetailsStorageConfig(
-      table: map['table'] == null ? null : (GooglePrivacyDlpV2BigQueryTable.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
+      table: map['table'] == null ? null : (GooglePrivacyDlpV2BigQueryTable.fromMap((map['table']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

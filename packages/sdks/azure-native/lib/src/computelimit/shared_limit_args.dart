@@ -30,7 +30,7 @@ class SharedLimitArgs {
   factory SharedLimitArgs.fromMap(Map<String, dynamic> map) {
     return SharedLimitArgs(
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -38,10 +38,10 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
 
   factory GoogleCloudDocumentaiV1DocumentProvenance.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentProvenance(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      parents: map['parents'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentProvenanceParent>(map['parents'], (value) => GoogleCloudDocumentaiV1DocumentProvenanceParent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as int).input(),
-      type: map['type'] == null ? null : (GoogleCloudDocumentaiV1DocumentProvenanceType.fromValue(map['type'] as String)).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      parents: map['parents'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentProvenanceParent>(map['parents']!, (value) => GoogleCloudDocumentaiV1DocumentProvenanceParent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as int).input(),
+      type: map['type'] == null ? null : (GoogleCloudDocumentaiV1DocumentProvenanceType.fromValue(map['type']! as String)).input(),
     );
   }
 }

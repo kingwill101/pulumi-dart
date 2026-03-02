@@ -68,16 +68,16 @@ class FolderState {
 
   factory FolderState.fromMap(Map<String, dynamic> map) {
     return FolderState(
-      configuredCapabilities: map['configuredCapabilities'] == null ? null : ((map['configuredCapabilities'] as List).cast<String>()).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
-      lifecycleState: map['lifecycleState'] == null ? null : (map['lifecycleState'] as String).input(),
-      managementProject: map['managementProject'] == null ? null : (map['managementProject'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      configuredCapabilities: map['configuredCapabilities'] == null ? null : ((map['configuredCapabilities']! as List).cast<String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId']! as String).input(),
+      lifecycleState: map['lifecycleState'] == null ? null : (map['lifecycleState']! as String).input(),
+      managementProject: map['managementProject'] == null ? null : (map['managementProject']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class ServiceLiveTrace {
 
   factory ServiceLiveTrace.fromMap(Map<String, dynamic> map) {
     return ServiceLiveTrace(
-      connectivityLogsEnabled: map['connectivityLogsEnabled'] == null ? null : (map['connectivityLogsEnabled'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      httpRequestLogsEnabled: map['httpRequestLogsEnabled'] == null ? null : (map['httpRequestLogsEnabled'] as bool).input(),
-      messagingLogsEnabled: map['messagingLogsEnabled'] == null ? null : (map['messagingLogsEnabled'] as bool).input(),
+      connectivityLogsEnabled: map['connectivityLogsEnabled'] == null ? null : (map['connectivityLogsEnabled']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      httpRequestLogsEnabled: map['httpRequestLogsEnabled'] == null ? null : (map['httpRequestLogsEnabled']! as bool).input(),
+      messagingLogsEnabled: map['messagingLogsEnabled'] == null ? null : (map['messagingLogsEnabled']! as bool).input(),
     );
   }
 }

@@ -93,21 +93,21 @@ class GetDomainsArgs {
 
   factory GetDomainsArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainsArgs(
-      aliDomain: map['aliDomain'] == null ? null : (map['aliDomain'] as bool).input(),
-      domainNameRegex: map['domainNameRegex'] == null ? null : (map['domainNameRegex'] as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      groupNameRegex: map['groupNameRegex'] == null ? null : (map['groupNameRegex'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      keyWord: map['keyWord'] == null ? null : (map['keyWord'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      searchMode: map['searchMode'] == null ? null : (map['searchMode'] as String).input(),
-      starmark: map['starmark'] == null ? null : (map['starmark'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      versionCode: map['versionCode'] == null ? null : (map['versionCode'] as String).input(),
+      aliDomain: map['aliDomain'] == null ? null : (map['aliDomain']! as bool).input(),
+      domainNameRegex: map['domainNameRegex'] == null ? null : (map['domainNameRegex']! as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      groupNameRegex: map['groupNameRegex'] == null ? null : (map['groupNameRegex']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      keyWord: map['keyWord'] == null ? null : (map['keyWord']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      searchMode: map['searchMode'] == null ? null : (map['searchMode']! as String).input(),
+      starmark: map['starmark'] == null ? null : (map['starmark']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      versionCode: map['versionCode'] == null ? null : (map['versionCode']! as String).input(),
     );
   }
 }

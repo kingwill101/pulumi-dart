@@ -25,8 +25,8 @@ class ProvisionedProductParameter {
 
   factory ProvisionedProductParameter.fromMap(Map<String, dynamic> map) {
     return ProvisionedProductParameter(
-      parameterKey: map['parameterKey'] == null ? null : (map['parameterKey'] as String).input(),
-      parameterValue: map['parameterValue'] == null ? null : (map['parameterValue'] as String).input(),
+      parameterKey: map['parameterKey'] == null ? null : (map['parameterKey']! as String).input(),
+      parameterValue: map['parameterValue'] == null ? null : (map['parameterValue']! as String).input(),
     );
   }
 }

@@ -41,9 +41,9 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig {
 
   factory FhirStoreStreamConfigBigqueryDestinationSchemaConfig.fromMap(Map<String, dynamic> map) {
     return FhirStoreStreamConfigBigqueryDestinationSchemaConfig(
-      lastUpdatedPartitionConfig: map['lastUpdatedPartitionConfig'] == null ? null : (FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig.fromMap((map['lastUpdatedPartitionConfig'] as Map).cast<String, dynamic>())).input(),
+      lastUpdatedPartitionConfig: map['lastUpdatedPartitionConfig'] == null ? null : (FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig.fromMap((map['lastUpdatedPartitionConfig']! as Map).cast<String, dynamic>())).input(),
       recursiveStructureDepth: (map['recursiveStructureDepth'] as int).input(),
-      schemaType: map['schemaType'] == null ? null : (map['schemaType'] as String).input(),
+      schemaType: map['schemaType'] == null ? null : (map['schemaType']! as String).input(),
     );
   }
 }

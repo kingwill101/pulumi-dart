@@ -24,8 +24,8 @@ class AlertConfigurationJoinConfiguration {
 
   factory AlertConfigurationJoinConfiguration.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationJoinConfiguration(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

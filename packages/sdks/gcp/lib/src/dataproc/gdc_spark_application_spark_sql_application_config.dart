@@ -37,10 +37,10 @@ class GdcSparkApplicationSparkSqlApplicationConfig {
 
   factory GdcSparkApplicationSparkSqlApplicationConfig.fromMap(Map<String, dynamic> map) {
     return GdcSparkApplicationSparkSqlApplicationConfig(
-      jarFileUris: map['jarFileUris'] == null ? null : ((map['jarFileUris'] as List).cast<String>()).input(),
-      queryFileUri: map['queryFileUri'] == null ? null : (map['queryFileUri'] as String).input(),
-      queryList: map['queryList'] == null ? null : (GdcSparkApplicationSparkSqlApplicationConfigQueryList.fromMap((map['queryList'] as Map).cast<String, dynamic>())).input(),
-      scriptVariables: map['scriptVariables'] == null ? null : ((map['scriptVariables'] as Map).cast<String, String>()).input(),
+      jarFileUris: map['jarFileUris'] == null ? null : ((map['jarFileUris']! as List).cast<String>()).input(),
+      queryFileUri: map['queryFileUri'] == null ? null : (map['queryFileUri']! as String).input(),
+      queryList: map['queryList'] == null ? null : (GdcSparkApplicationSparkSqlApplicationConfigQueryList.fromMap((map['queryList']! as Map).cast<String, dynamic>())).input(),
+      scriptVariables: map['scriptVariables'] == null ? null : ((map['scriptVariables']! as Map).cast<String, String>()).input(),
     );
   }
 }

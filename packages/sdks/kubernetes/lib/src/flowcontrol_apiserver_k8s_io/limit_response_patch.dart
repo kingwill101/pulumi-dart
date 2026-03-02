@@ -27,8 +27,8 @@ class LimitResponsePatch {
 
   factory LimitResponsePatch.fromMap(Map<String, dynamic> map) {
     return LimitResponsePatch(
-      queuing: map['queuing'] == null ? null : (QueuingConfigurationPatch.fromMap((map['queuing'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      queuing: map['queuing'] == null ? null : (QueuingConfigurationPatch.fromMap((map['queuing']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

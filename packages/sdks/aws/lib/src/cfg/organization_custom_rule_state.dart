@@ -81,19 +81,19 @@ class OrganizationCustomRuleState {
 
   factory OrganizationCustomRuleState.fromMap(Map<String, dynamic> map) {
     return OrganizationCustomRuleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      excludedAccounts: map['excludedAccounts'] == null ? null : ((map['excludedAccounts'] as List).cast<String>()).input(),
-      inputParameters: map['inputParameters'] == null ? null : (map['inputParameters'] as String).input(),
-      lambdaFunctionArn: map['lambdaFunctionArn'] == null ? null : (map['lambdaFunctionArn'] as String).input(),
-      maximumExecutionFrequency: map['maximumExecutionFrequency'] == null ? null : (map['maximumExecutionFrequency'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceIdScope: map['resourceIdScope'] == null ? null : (map['resourceIdScope'] as String).input(),
-      resourceTypesScopes: map['resourceTypesScopes'] == null ? null : ((map['resourceTypesScopes'] as List).cast<String>()).input(),
-      tagKeyScope: map['tagKeyScope'] == null ? null : (map['tagKeyScope'] as String).input(),
-      tagValueScope: map['tagValueScope'] == null ? null : (map['tagValueScope'] as String).input(),
-      triggerTypes: map['triggerTypes'] == null ? null : ((map['triggerTypes'] as List).cast<String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      excludedAccounts: map['excludedAccounts'] == null ? null : (((map['excludedAccounts'] as List).cast<String>()).input()).input(),
+      inputParameters: map['inputParameters'] == null ? null : ((map['inputParameters'] as String).input()).input(),
+      lambdaFunctionArn: map['lambdaFunctionArn'] == null ? null : ((map['lambdaFunctionArn'] as String).input()).input(),
+      maximumExecutionFrequency: map['maximumExecutionFrequency'] == null ? null : ((map['maximumExecutionFrequency'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceIdScope: map['resourceIdScope'] == null ? null : ((map['resourceIdScope'] as String).input()).input(),
+      resourceTypesScopes: map['resourceTypesScopes'] == null ? null : (((map['resourceTypesScopes'] as List).cast<String>()).input()).input(),
+      tagKeyScope: map['tagKeyScope'] == null ? null : ((map['tagKeyScope'] as String).input()).input(),
+      tagValueScope: map['tagValueScope'] == null ? null : ((map['tagValueScope'] as String).input()).input(),
+      triggerTypes: map['triggerTypes'] == null ? null : (((map['triggerTypes'] as List).cast<String>()).input()).input(),
     );
   }
 }

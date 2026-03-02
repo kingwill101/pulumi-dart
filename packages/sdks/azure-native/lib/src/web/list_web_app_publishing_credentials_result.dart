@@ -61,13 +61,13 @@ class ListWebAppPublishingCredentialsResult {
   factory ListWebAppPublishingCredentialsResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppPublishingCredentialsResult(
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
-      publishingPassword: map['publishingPassword'] == null ? null : map['publishingPassword'] as String,
-      publishingPasswordHash: map['publishingPasswordHash'] == null ? null : map['publishingPasswordHash'] as String,
-      publishingPasswordHashSalt: map['publishingPasswordHashSalt'] == null ? null : map['publishingPasswordHashSalt'] as String,
+      publishingPassword: map['publishingPassword'] == null ? null : map['publishingPassword']! as String,
+      publishingPasswordHash: map['publishingPasswordHash'] == null ? null : map['publishingPasswordHash']! as String,
+      publishingPasswordHashSalt: map['publishingPasswordHashSalt'] == null ? null : map['publishingPasswordHashSalt']! as String,
       publishingUserName: map['publishingUserName'] as String,
-      scmUri: map['scmUri'] == null ? null : map['scmUri'] as String,
+      scmUri: map['scmUri'] == null ? null : map['scmUri']! as String,
       type: map['type'] as String,
     );
   }

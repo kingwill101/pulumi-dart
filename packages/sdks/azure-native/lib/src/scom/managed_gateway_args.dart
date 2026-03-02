@@ -35,7 +35,7 @@ class ManagedGatewayArgs {
   factory ManagedGatewayArgs.fromMap(Map<String, dynamic> map) {
     return ManagedGatewayArgs(
       instanceName: (map['instanceName'] as String).input(),
-      managedGatewayName: map['managedGatewayName'] == null ? null : (map['managedGatewayName'] as String).input(),
+      managedGatewayName: map['managedGatewayName'] == null ? null : (map['managedGatewayName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

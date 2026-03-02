@@ -34,7 +34,7 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       directoryId: (map['directoryId'] as String).input(),
       groupName: (map['groupName'] as String).input(),
     );

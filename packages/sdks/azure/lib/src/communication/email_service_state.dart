@@ -36,10 +36,10 @@ class EmailServiceState {
 
   factory EmailServiceState.fromMap(Map<String, dynamic> map) {
     return EmailServiceState(
-      dataLocation: map['dataLocation'] == null ? null : (map['dataLocation'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      dataLocation: map['dataLocation'] == null ? null : (map['dataLocation']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

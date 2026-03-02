@@ -67,7 +67,7 @@ class KubernetesRoleArgs {
       kind: (map['kind'] as String).input(),
       kubernetesClusterInfo: (KubernetesClusterInfo.fromMap((map['kubernetesClusterInfo'] as Map).cast<String, dynamic>())).input(),
       kubernetesRoleResources: (KubernetesRoleResources.fromMap((map['kubernetesRoleResources'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       roleStatus: (map['roleStatus'] as String).input(),
     );

@@ -35,10 +35,10 @@ class AwsNodePoolKubeletConfig {
 
   factory AwsNodePoolKubeletConfig.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolKubeletConfig(
-      cpuCfsQuota: map['cpuCfsQuota'] == null ? null : (map['cpuCfsQuota'] as bool).input(),
-      cpuCfsQuotaPeriod: map['cpuCfsQuotaPeriod'] == null ? null : (map['cpuCfsQuotaPeriod'] as String).input(),
-      cpuManagerPolicy: map['cpuManagerPolicy'] == null ? null : (map['cpuManagerPolicy'] as String).input(),
-      podPidsLimit: map['podPidsLimit'] == null ? null : (map['podPidsLimit'] as int).input(),
+      cpuCfsQuota: map['cpuCfsQuota'] == null ? null : (map['cpuCfsQuota']! as bool).input(),
+      cpuCfsQuotaPeriod: map['cpuCfsQuotaPeriod'] == null ? null : (map['cpuCfsQuotaPeriod']! as String).input(),
+      cpuManagerPolicy: map['cpuManagerPolicy'] == null ? null : (map['cpuManagerPolicy']! as String).input(),
+      podPidsLimit: map['podPidsLimit'] == null ? null : (map['podPidsLimit']! as int).input(),
     );
   }
 }

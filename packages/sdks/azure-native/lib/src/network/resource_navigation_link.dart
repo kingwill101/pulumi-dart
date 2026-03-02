@@ -36,10 +36,10 @@ class ResourceNavigationLink {
 
   factory ResourceNavigationLink.fromMap(Map<String, dynamic> map) {
     return ResourceNavigationLink(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      link: map['link'] == null ? null : (map['link'] as String).input(),
-      linkedResourceType: map['linkedResourceType'] == null ? null : (map['linkedResourceType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      link: map['link'] == null ? null : (map['link']! as String).input(),
+      linkedResourceType: map['linkedResourceType'] == null ? null : (map['linkedResourceType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

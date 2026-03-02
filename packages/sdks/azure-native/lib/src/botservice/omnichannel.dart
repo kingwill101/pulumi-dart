@@ -33,8 +33,8 @@ class Omnichannel {
   factory Omnichannel.fromMap(Map<String, dynamic> map) {
     return Omnichannel(
       channelName: (map['channelName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
     );
   }
 }

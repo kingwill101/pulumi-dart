@@ -85,18 +85,18 @@ class VpnGatewayArgs {
 
   factory VpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return VpnGatewayArgs(
-      bgpSettings: map['bgpSettings'] == null ? null : (BgpSettings.fromMap((map['bgpSettings'] as Map).cast<String, dynamic>())).input(),
-      connections: map['connections'] == null ? null : ((map['connections'] as List).cast<VpnConnectionNetwork>()).input(),
-      enableBgpRouteTranslationForNat: map['enableBgpRouteTranslationForNat'] == null ? null : (map['enableBgpRouteTranslationForNat'] as bool).input(),
-      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      isRoutingPreferenceInternet: map['isRoutingPreferenceInternet'] == null ? null : (map['isRoutingPreferenceInternet'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      natRules: map['natRules'] == null ? null : (pulumi.Input.decodeList<VpnGatewayNatRule>(map['natRules'], (value) => VpnGatewayNatRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bgpSettings: map['bgpSettings'] == null ? null : (BgpSettings.fromMap((map['bgpSettings']! as Map).cast<String, dynamic>())).input(),
+      connections: map['connections'] == null ? null : ((map['connections']! as List).cast<VpnConnectionNetwork>()).input(),
+      enableBgpRouteTranslationForNat: map['enableBgpRouteTranslationForNat'] == null ? null : (map['enableBgpRouteTranslationForNat']! as bool).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      isRoutingPreferenceInternet: map['isRoutingPreferenceInternet'] == null ? null : (map['isRoutingPreferenceInternet']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      natRules: map['natRules'] == null ? null : (pulumi.Input.decodeList<VpnGatewayNatRule>(map['natRules']!, (value) => VpnGatewayNatRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualHub: map['virtualHub'] == null ? null : (SubResource.fromMap((map['virtualHub'] as Map).cast<String, dynamic>())).input(),
-      vpnGatewayScaleUnit: map['vpnGatewayScaleUnit'] == null ? null : (map['vpnGatewayScaleUnit'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualHub: map['virtualHub'] == null ? null : (SubResource.fromMap((map['virtualHub']! as Map).cast<String, dynamic>())).input(),
+      vpnGatewayScaleUnit: map['vpnGatewayScaleUnit'] == null ? null : (map['vpnGatewayScaleUnit']! as int).input(),
     );
   }
 }

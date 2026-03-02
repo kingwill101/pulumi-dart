@@ -29,7 +29,7 @@ class SubscriptionPricingExtension {
 
   factory SubscriptionPricingExtension.fromMap(Map<String, dynamic> map) {
     return SubscriptionPricingExtension(
-      additionalExtensionProperties: map['additionalExtensionProperties'] == null ? null : ((map['additionalExtensionProperties'] as Map).cast<String, String>()).input(),
+      additionalExtensionProperties: map['additionalExtensionProperties'] == null ? null : ((map['additionalExtensionProperties']! as Map).cast<String, String>()).input(),
       name: (map['name'] as String).input(),
     );
   }

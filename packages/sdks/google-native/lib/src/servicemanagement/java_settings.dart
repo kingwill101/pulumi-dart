@@ -32,9 +32,9 @@ class JavaSettings {
 
   factory JavaSettings.fromMap(Map<String, dynamic> map) {
     return JavaSettings(
-      common: map['common'] == null ? null : (CommonLanguageSettings.fromMap((map['common'] as Map).cast<String, dynamic>())).input(),
-      libraryPackage: map['libraryPackage'] == null ? null : (map['libraryPackage'] as String).input(),
-      serviceClassNames: map['serviceClassNames'] == null ? null : ((map['serviceClassNames'] as Map).cast<String, String>()).input(),
+      common: map['common'] == null ? null : (CommonLanguageSettings.fromMap((map['common']! as Map).cast<String, dynamic>())).input(),
+      libraryPackage: map['libraryPackage'] == null ? null : (map['libraryPackage']! as String).input(),
+      serviceClassNames: map['serviceClassNames'] == null ? null : ((map['serviceClassNames']! as Map).cast<String, String>()).input(),
     );
   }
 }

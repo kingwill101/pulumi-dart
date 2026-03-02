@@ -64,15 +64,15 @@ class TableState {
 
   factory TableState.fromMap(Map<String, dynamic> map) {
     return TableState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      magneticStoreWriteProperties: map['magneticStoreWriteProperties'] == null ? null : (TableMagneticStoreWriteProperties.fromMap((map['magneticStoreWriteProperties'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionProperties: map['retentionProperties'] == null ? null : (TableRetentionProperties.fromMap((map['retentionProperties'] as Map).cast<String, dynamic>())).input(),
-      schema: map['schema'] == null ? null : (TableSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      databaseName: map['databaseName'] == null ? null : ((map['databaseName'] as String).input()).input(),
+      magneticStoreWriteProperties: map['magneticStoreWriteProperties'] == null ? null : ((TableMagneticStoreWriteProperties.fromMap((map['magneticStoreWriteProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionProperties: map['retentionProperties'] == null ? null : ((TableRetentionProperties.fromMap((map['retentionProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      schema: map['schema'] == null ? null : ((TableSchema.fromMap((map['schema']! as Map).cast<String, dynamic>())).input()).input(),
+      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

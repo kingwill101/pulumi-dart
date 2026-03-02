@@ -24,7 +24,7 @@ class GetProviderActionCollectionCountArgs {
 
   factory GetProviderActionCollectionCountArgs.fromMap(Map<String, dynamic> map) {
     return GetProviderActionCollectionCountArgs(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -31,10 +31,10 @@ class ProviderFeaturesVirtualMachine {
 
   factory ProviderFeaturesVirtualMachine.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesVirtualMachine(
-      deleteOsDiskOnDeletion: map['deleteOsDiskOnDeletion'] == null ? null : (map['deleteOsDiskOnDeletion'] as bool).input(),
-      detachImplicitDataDiskOnDeletion: map['detachImplicitDataDiskOnDeletion'] == null ? null : (map['detachImplicitDataDiskOnDeletion'] as bool).input(),
-      gracefulShutdown: map['gracefulShutdown'] == null ? null : (map['gracefulShutdown'] as bool).input(),
-      skipShutdownAndForceDelete: map['skipShutdownAndForceDelete'] == null ? null : (map['skipShutdownAndForceDelete'] as bool).input(),
+      deleteOsDiskOnDeletion: map['deleteOsDiskOnDeletion'] == null ? null : (map['deleteOsDiskOnDeletion']! as bool).input(),
+      detachImplicitDataDiskOnDeletion: map['detachImplicitDataDiskOnDeletion'] == null ? null : (map['detachImplicitDataDiskOnDeletion']! as bool).input(),
+      gracefulShutdown: map['gracefulShutdown'] == null ? null : (map['gracefulShutdown']! as bool).input(),
+      skipShutdownAndForceDelete: map['skipShutdownAndForceDelete'] == null ? null : (map['skipShutdownAndForceDelete']! as bool).input(),
     );
   }
 }

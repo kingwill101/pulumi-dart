@@ -77,15 +77,15 @@ class GetAutoUpgradeProfileResult {
     return GetAutoUpgradeProfileResult(
       azureApiVersion: map['azureApiVersion'] as String,
       channel: map['channel'] as String,
-      disabled: map['disabled'] == null ? null : map['disabled'] as bool,
+      disabled: map['disabled'] == null ? null : map['disabled']! as bool,
       eTag: map['eTag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      nodeImageSelection: map['nodeImageSelection'] == null ? null : AutoUpgradeNodeImageSelectionResponse.fromMap((map['nodeImageSelection'] as Map).cast<String, dynamic>()),
+      nodeImageSelection: map['nodeImageSelection'] == null ? null : AutoUpgradeNodeImageSelectionResponse.fromMap((map['nodeImageSelection']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      updateStrategyId: map['updateStrategyId'] == null ? null : map['updateStrategyId'] as String,
+      updateStrategyId: map['updateStrategyId'] == null ? null : map['updateStrategyId']! as String,
     );
   }
 }

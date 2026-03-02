@@ -28,8 +28,8 @@ class CloudAuditOptionsGameservicesV1beta {
 
   factory CloudAuditOptionsGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return CloudAuditOptionsGameservicesV1beta(
-      authorizationLoggingOptions: map['authorizationLoggingOptions'] == null ? null : (AuthorizationLoggingOptionsGameservicesV1beta.fromMap((map['authorizationLoggingOptions'] as Map).cast<String, dynamic>())).input(),
-      logName: map['logName'] == null ? null : (CloudAuditOptionsLogNameGameservicesV1beta.fromValue(map['logName'] as String)).input(),
+      authorizationLoggingOptions: map['authorizationLoggingOptions'] == null ? null : (AuthorizationLoggingOptionsGameservicesV1beta.fromMap((map['authorizationLoggingOptions']! as Map).cast<String, dynamic>())).input(),
+      logName: map['logName'] == null ? null : (CloudAuditOptionsLogNameGameservicesV1beta.fromValue(map['logName']! as String)).input(),
     );
   }
 }

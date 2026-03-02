@@ -41,11 +41,11 @@ class MainPrincipal {
 
   factory MainPrincipal.fromMap(Map<String, dynamic> map) {
     return MainPrincipal(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      login: map['login'] == null ? null : (map['login'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      login: map['login'] == null ? null : (map['login']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

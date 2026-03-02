@@ -25,7 +25,7 @@ class ZoneAttachmentVpc {
 
   factory ZoneAttachmentVpc.fromMap(Map<String, dynamic> map) {
     return ZoneAttachmentVpc(
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

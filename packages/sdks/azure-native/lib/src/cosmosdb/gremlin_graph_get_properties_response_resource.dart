@@ -80,18 +80,18 @@ class GremlinGraphGetPropertiesResponseResource {
 
   factory GremlinGraphGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return GremlinGraphGetPropertiesResponseResource(
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as double).input(),
-      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : (ConflictResolutionPolicyResponse.fromMap((map['conflictResolutionPolicy'] as Map).cast<String, dynamic>())).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl']! as double).input(),
+      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : (ConflictResolutionPolicyResponse.fromMap((map['conflictResolutionPolicy']! as Map).cast<String, dynamic>())).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as int).input(),
       etag: (map['etag'] as String).input(),
       id: (map['id'] as String).input(),
-      indexingPolicy: map['indexingPolicy'] == null ? null : (IndexingPolicyResponse.fromMap((map['indexingPolicy'] as Map).cast<String, dynamic>())).input(),
-      partitionKey: map['partitionKey'] == null ? null : (ContainerPartitionKeyResponse.fromMap((map['partitionKey'] as Map).cast<String, dynamic>())).input(),
-      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParametersResponse.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>())).input(),
+      indexingPolicy: map['indexingPolicy'] == null ? null : (IndexingPolicyResponse.fromMap((map['indexingPolicy']! as Map).cast<String, dynamic>())).input(),
+      partitionKey: map['partitionKey'] == null ? null : (ContainerPartitionKeyResponse.fromMap((map['partitionKey']! as Map).cast<String, dynamic>())).input(),
+      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParametersResponse.fromMap((map['restoreParameters']! as Map).cast<String, dynamic>())).input(),
       rid: (map['rid'] as String).input(),
       ts: (map['ts'] as double).input(),
-      uniqueKeyPolicy: map['uniqueKeyPolicy'] == null ? null : (UniqueKeyPolicyResponse.fromMap((map['uniqueKeyPolicy'] as Map).cast<String, dynamic>())).input(),
+      uniqueKeyPolicy: map['uniqueKeyPolicy'] == null ? null : (UniqueKeyPolicyResponse.fromMap((map['uniqueKeyPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

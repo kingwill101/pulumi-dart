@@ -42,10 +42,10 @@ class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule {
 
   factory GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRule(
-      action: (GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      conditions: (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition>(map['conditions'], (value) => GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      edgeLocations: map['edgeLocations'] == null ? null : ((map['edgeLocations'] as List).cast<String>()).input(),
+      action: (GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      conditions: (pulumi.Input.decodeList<GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition>(map['conditions']!, (value) => GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      edgeLocations: map['edgeLocations'] == null ? null : (((map['edgeLocations'] as List).cast<String>()).input()).input(),
       ruleNumber: (map['ruleNumber'] as int).input(),
     );
   }

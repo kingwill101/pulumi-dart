@@ -50,11 +50,11 @@ class ApplicationAttributes {
 
   factory ApplicationAttributes.fromMap(Map<String, dynamic> map) {
     return ApplicationAttributes(
-      businessOwners: map['businessOwners'] == null ? null : (pulumi.Input.decodeList<ApplicationAttributesBusinessOwner>(map['businessOwners'], (value) => ApplicationAttributesBusinessOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      criticality: map['criticality'] == null ? null : (ApplicationAttributesCriticality.fromMap((map['criticality'] as Map).cast<String, dynamic>())).input(),
-      developerOwners: map['developerOwners'] == null ? null : (pulumi.Input.decodeList<ApplicationAttributesDeveloperOwner>(map['developerOwners'], (value) => ApplicationAttributesDeveloperOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environment: map['environment'] == null ? null : (ApplicationAttributesEnvironment.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
-      operatorOwners: map['operatorOwners'] == null ? null : (pulumi.Input.decodeList<ApplicationAttributesOperatorOwner>(map['operatorOwners'], (value) => ApplicationAttributesOperatorOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      businessOwners: map['businessOwners'] == null ? null : (pulumi.Input.decodeList<ApplicationAttributesBusinessOwner>(map['businessOwners']!, (value) => ApplicationAttributesBusinessOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      criticality: map['criticality'] == null ? null : (ApplicationAttributesCriticality.fromMap((map['criticality']! as Map).cast<String, dynamic>())).input(),
+      developerOwners: map['developerOwners'] == null ? null : (pulumi.Input.decodeList<ApplicationAttributesDeveloperOwner>(map['developerOwners']!, (value) => ApplicationAttributesDeveloperOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environment: map['environment'] == null ? null : (ApplicationAttributesEnvironment.fromMap((map['environment']! as Map).cast<String, dynamic>())).input(),
+      operatorOwners: map['operatorOwners'] == null ? null : (pulumi.Input.decodeList<ApplicationAttributesOperatorOwner>(map['operatorOwners']!, (value) => ApplicationAttributesOperatorOwner.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -35,8 +35,8 @@ class GetMetaTagsResult {
   factory GetMetaTagsResult.fromMap(Map<String, dynamic> map) {
     return GetMetaTagsResult(
       id: map['id'] as String,
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      keyName: map['keyName'] == null ? null : map['keyName']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       tags: pulumi.Input.decodeList<GetMetaTagsTag>(map['tags'], (value) => GetMetaTagsTag.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

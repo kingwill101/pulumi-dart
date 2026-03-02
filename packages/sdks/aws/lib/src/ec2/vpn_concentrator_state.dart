@@ -53,13 +53,13 @@ class VpnConcentratorState {
 
   factory VpnConcentratorState.fromMap(Map<String, dynamic> map) {
     return VpnConcentratorState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vpnConcentratorId: map['vpnConcentratorId'] == null ? null : (map['vpnConcentratorId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : ((map['transitGatewayAttachmentId'] as String).input()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      vpnConcentratorId: map['vpnConcentratorId'] == null ? null : ((map['vpnConcentratorId'] as String).input()).input(),
     );
   }
 }

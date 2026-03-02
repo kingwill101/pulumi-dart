@@ -44,11 +44,11 @@ class NotebookInstanceLifecycleConfigurationArgs {
 
   factory NotebookInstanceLifecycleConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return NotebookInstanceLifecycleConfigurationArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      onCreate: map['onCreate'] == null ? null : (map['onCreate'] as String).input(),
-      onStart: map['onStart'] == null ? null : (map['onStart'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      onCreate: map['onCreate'] == null ? null : ((map['onCreate'] as String).input()).input(),
+      onStart: map['onStart'] == null ? null : ((map['onStart'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

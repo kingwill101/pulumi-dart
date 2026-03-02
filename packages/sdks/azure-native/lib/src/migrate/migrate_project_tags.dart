@@ -20,7 +20,7 @@ class MigrateProjectTags {
 
   factory MigrateProjectTags.fromMap(Map<String, dynamic> map) {
     return MigrateProjectTags(
-      additionalProperties: map['additionalProperties'] == null ? null : (map['additionalProperties'] as String).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : (map['additionalProperties']! as String).input(),
     );
   }
 }

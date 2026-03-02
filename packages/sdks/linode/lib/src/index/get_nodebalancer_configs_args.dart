@@ -41,10 +41,10 @@ class GetNodebalancerConfigsArgs {
 
   factory GetNodebalancerConfigsArgs.fromMap(Map<String, dynamic> map) {
     return GetNodebalancerConfigsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNodebalancerConfigsFilter>(map['filters'], (value) => GetNodebalancerConfigsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNodebalancerConfigsFilter>(map['filters']!, (value) => GetNodebalancerConfigsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       nodebalancerId: (map['nodebalancerId'] as int).input(),
-      order: map['order'] == null ? null : (map['order'] as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
+      order: map['order'] == null ? null : (map['order']! as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
     );
   }
 }

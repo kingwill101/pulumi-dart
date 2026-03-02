@@ -63,14 +63,14 @@ class FilterFilterCriteriaVulnerablePackage {
 
   factory FilterFilterCriteriaVulnerablePackage.fromMap(Map<String, dynamic> map) {
     return FilterFilterCriteriaVulnerablePackage(
-      architecture: map['architecture'] == null ? null : (FilterFilterCriteriaVulnerablePackageArchitecture.fromMap((map['architecture'] as Map).cast<String, dynamic>())).input(),
-      epoches: map['epoches'] == null ? null : (pulumi.Input.decodeList<FilterFilterCriteriaVulnerablePackageEpoch>(map['epoches'], (value) => FilterFilterCriteriaVulnerablePackageEpoch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filePath: map['filePath'] == null ? null : (FilterFilterCriteriaVulnerablePackageFilePath.fromMap((map['filePath'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (FilterFilterCriteriaVulnerablePackageName.fromMap((map['name'] as Map).cast<String, dynamic>())).input(),
-      release: map['release'] == null ? null : (FilterFilterCriteriaVulnerablePackageRelease.fromMap((map['release'] as Map).cast<String, dynamic>())).input(),
-      sourceLambdaLayerArn: map['sourceLambdaLayerArn'] == null ? null : (FilterFilterCriteriaVulnerablePackageSourceLambdaLayerArn.fromMap((map['sourceLambdaLayerArn'] as Map).cast<String, dynamic>())).input(),
-      sourceLayerHash: map['sourceLayerHash'] == null ? null : (FilterFilterCriteriaVulnerablePackageSourceLayerHash.fromMap((map['sourceLayerHash'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (FilterFilterCriteriaVulnerablePackageVersion.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
+      architecture: map['architecture'] == null ? null : ((FilterFilterCriteriaVulnerablePackageArchitecture.fromMap((map['architecture']! as Map).cast<String, dynamic>())).input()).input(),
+      epoches: map['epoches'] == null ? null : ((pulumi.Input.decodeList<FilterFilterCriteriaVulnerablePackageEpoch>(map['epoches']!, (value) => FilterFilterCriteriaVulnerablePackageEpoch.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      filePath: map['filePath'] == null ? null : ((FilterFilterCriteriaVulnerablePackageFilePath.fromMap((map['filePath']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((FilterFilterCriteriaVulnerablePackageName.fromMap((map['name']! as Map).cast<String, dynamic>())).input()).input(),
+      release: map['release'] == null ? null : ((FilterFilterCriteriaVulnerablePackageRelease.fromMap((map['release']! as Map).cast<String, dynamic>())).input()).input(),
+      sourceLambdaLayerArn: map['sourceLambdaLayerArn'] == null ? null : ((FilterFilterCriteriaVulnerablePackageSourceLambdaLayerArn.fromMap((map['sourceLambdaLayerArn']! as Map).cast<String, dynamic>())).input()).input(),
+      sourceLayerHash: map['sourceLayerHash'] == null ? null : ((FilterFilterCriteriaVulnerablePackageSourceLayerHash.fromMap((map['sourceLayerHash']! as Map).cast<String, dynamic>())).input()).input(),
+      version: map['version'] == null ? null : ((FilterFilterCriteriaVulnerablePackageVersion.fromMap((map['version']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

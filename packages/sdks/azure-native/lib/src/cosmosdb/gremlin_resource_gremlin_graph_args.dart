@@ -63,12 +63,12 @@ class GremlinResourceGremlinGraphArgs {
     return GremlinResourceGremlinGraphArgs(
       accountName: (map['accountName'] as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      graphName: map['graphName'] == null ? null : (map['graphName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      options: map['options'] == null ? null : (CreateUpdateOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      graphName: map['graphName'] == null ? null : (map['graphName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      options: map['options'] == null ? null : (CreateUpdateOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
       resource: (GremlinGraphResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

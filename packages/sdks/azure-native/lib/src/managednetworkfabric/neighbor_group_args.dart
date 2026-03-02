@@ -50,12 +50,12 @@ class NeighborGroupArgs {
 
   factory NeighborGroupArgs.fromMap(Map<String, dynamic> map) {
     return NeighborGroupArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
       destination: (NeighborGroupDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      neighborGroupName: map['neighborGroupName'] == null ? null : (map['neighborGroupName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      neighborGroupName: map['neighborGroupName'] == null ? null : (map['neighborGroupName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

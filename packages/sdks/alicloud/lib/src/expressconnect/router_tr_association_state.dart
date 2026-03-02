@@ -61,15 +61,15 @@ class RouterTrAssociationState {
 
   factory RouterTrAssociationState.fromMap(Map<String, dynamic> map) {
     return RouterTrAssociationState(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes'] as List).cast<String>()).input(),
-      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
-      associationRegionId: map['associationRegionId'] == null ? null : (map['associationRegionId'] as String).input(),
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      ecrId: map['ecrId'] == null ? null : (map['ecrId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
-      transitRouterOwnerId: map['transitRouterOwnerId'] == null ? null : (map['transitRouterOwnerId'] as int).input(),
+      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes']! as List).cast<String>()).input(),
+      associationId: map['associationId'] == null ? null : (map['associationId']! as String).input(),
+      associationRegionId: map['associationRegionId'] == null ? null : (map['associationRegionId']! as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      ecrId: map['ecrId'] == null ? null : (map['ecrId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
+      transitRouterOwnerId: map['transitRouterOwnerId'] == null ? null : (map['transitRouterOwnerId']! as int).input(),
     );
   }
 }

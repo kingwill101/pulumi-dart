@@ -27,7 +27,7 @@ class LabelingJobTextProperties {
 
   factory LabelingJobTextProperties.fromMap(Map<String, dynamic> map) {
     return LabelingJobTextProperties(
-      annotationType: map['annotationType'] == null ? null : (map['annotationType'] as String).input(),
+      annotationType: map['annotationType'] == null ? null : (map['annotationType']! as String).input(),
       mediaType: (map['mediaType'] as String).input(),
     );
   }

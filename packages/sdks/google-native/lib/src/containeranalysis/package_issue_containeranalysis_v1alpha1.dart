@@ -36,10 +36,10 @@ class PackageIssueContaineranalysisV1alpha1 {
 
   factory PackageIssueContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return PackageIssueContaineranalysisV1alpha1(
-      affectedLocation: map['affectedLocation'] == null ? null : (VulnerabilityLocation.fromMap((map['affectedLocation'] as Map).cast<String, dynamic>())).input(),
-      fixedLocation: map['fixedLocation'] == null ? null : (VulnerabilityLocation.fromMap((map['fixedLocation'] as Map).cast<String, dynamic>())).input(),
-      packageType: map['packageType'] == null ? null : (map['packageType'] as String).input(),
-      severityName: map['severityName'] == null ? null : (map['severityName'] as String).input(),
+      affectedLocation: map['affectedLocation'] == null ? null : (VulnerabilityLocation.fromMap((map['affectedLocation']! as Map).cast<String, dynamic>())).input(),
+      fixedLocation: map['fixedLocation'] == null ? null : (VulnerabilityLocation.fromMap((map['fixedLocation']! as Map).cast<String, dynamic>())).input(),
+      packageType: map['packageType'] == null ? null : (map['packageType']! as String).input(),
+      severityName: map['severityName'] == null ? null : (map['severityName']! as String).input(),
     );
   }
 }

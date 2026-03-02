@@ -46,10 +46,10 @@ class IntegrationRuntimeSelfHostedArgs {
   factory IntegrationRuntimeSelfHostedArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSelfHostedArgs(
       dataFactoryId: (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rbacAuthorizations: map['rbacAuthorizations'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeSelfHostedRbacAuthorization>(map['rbacAuthorizations'], (value) => IntegrationRuntimeSelfHostedRbacAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selfContainedInteractiveAuthoringEnabled: map['selfContainedInteractiveAuthoringEnabled'] == null ? null : (map['selfContainedInteractiveAuthoringEnabled'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rbacAuthorizations: map['rbacAuthorizations'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeSelfHostedRbacAuthorization>(map['rbacAuthorizations']!, (value) => IntegrationRuntimeSelfHostedRbacAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selfContainedInteractiveAuthoringEnabled: map['selfContainedInteractiveAuthoringEnabled'] == null ? null : (map['selfContainedInteractiveAuthoringEnabled']! as bool).input(),
     );
   }
 }

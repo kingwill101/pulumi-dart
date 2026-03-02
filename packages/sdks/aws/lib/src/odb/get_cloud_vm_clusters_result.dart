@@ -31,7 +31,7 @@ class GetCloudVmClustersResult {
 
   factory GetCloudVmClustersResult.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClustersResult(
-      cloudVmClusters: pulumi.Input.decodeList<GetCloudVmClustersCloudVmCluster>(map['cloudVmClusters'], (value) => GetCloudVmClustersCloudVmCluster.fromMap((value as Map).cast<String, dynamic>())),
+      cloudVmClusters: pulumi.Input.decodeList<GetCloudVmClustersCloudVmCluster>(map['cloudVmClusters']!, (value) => GetCloudVmClustersCloudVmCluster.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

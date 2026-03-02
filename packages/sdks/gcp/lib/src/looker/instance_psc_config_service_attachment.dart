@@ -31,9 +31,9 @@ class InstancePscConfigServiceAttachment {
 
   factory InstancePscConfigServiceAttachment.fromMap(Map<String, dynamic> map) {
     return InstancePscConfigServiceAttachment(
-      connectionStatus: map['connectionStatus'] == null ? null : (map['connectionStatus'] as String).input(),
-      localFqdn: map['localFqdn'] == null ? null : (map['localFqdn'] as String).input(),
-      targetServiceAttachmentUri: map['targetServiceAttachmentUri'] == null ? null : (map['targetServiceAttachmentUri'] as String).input(),
+      connectionStatus: map['connectionStatus'] == null ? null : (map['connectionStatus']! as String).input(),
+      localFqdn: map['localFqdn'] == null ? null : (map['localFqdn']! as String).input(),
+      targetServiceAttachmentUri: map['targetServiceAttachmentUri'] == null ? null : (map['targetServiceAttachmentUri']! as String).input(),
     );
   }
 }

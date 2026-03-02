@@ -87,20 +87,20 @@ class MetricRuleBlackListState {
 
   factory MetricRuleBlackListState.fromMap(Map<String, dynamic> map) {
     return MetricRuleBlackListState(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
-      enableEndTime: map['enableEndTime'] == null ? null : (map['enableEndTime'] as String).input(),
-      enableStartTime: map['enableStartTime'] == null ? null : (map['enableStartTime'] as String).input(),
-      instances: map['instances'] == null ? null : ((map['instances'] as List).cast<String>()).input(),
-      isEnable: map['isEnable'] == null ? null : (map['isEnable'] as bool).input(),
-      metricRuleBlackListId: map['metricRuleBlackListId'] == null ? null : (map['metricRuleBlackListId'] as String).input(),
-      metricRuleBlackListName: map['metricRuleBlackListName'] == null ? null : (map['metricRuleBlackListName'] as String).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<MetricRuleBlackListMetric>(map['metrics'], (value) => MetricRuleBlackListMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      scopeType: map['scopeType'] == null ? null : (map['scopeType'] as String).input(),
-      scopeValues: map['scopeValues'] == null ? null : ((map['scopeValues'] as List).cast<String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime']! as String).input(),
+      enableEndTime: map['enableEndTime'] == null ? null : (map['enableEndTime']! as String).input(),
+      enableStartTime: map['enableStartTime'] == null ? null : (map['enableStartTime']! as String).input(),
+      instances: map['instances'] == null ? null : ((map['instances']! as List).cast<String>()).input(),
+      isEnable: map['isEnable'] == null ? null : (map['isEnable']! as bool).input(),
+      metricRuleBlackListId: map['metricRuleBlackListId'] == null ? null : (map['metricRuleBlackListId']! as String).input(),
+      metricRuleBlackListName: map['metricRuleBlackListName'] == null ? null : (map['metricRuleBlackListName']! as String).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<MetricRuleBlackListMetric>(map['metrics']!, (value) => MetricRuleBlackListMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      scopeType: map['scopeType'] == null ? null : (map['scopeType']! as String).input(),
+      scopeValues: map['scopeValues'] == null ? null : ((map['scopeValues']! as List).cast<String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

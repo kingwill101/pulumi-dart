@@ -43,10 +43,10 @@ class PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig {
   factory PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig(
       capacityMonitoringApproach: (map['capacityMonitoringApproach'] as String).input(),
-      services: map['services'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService>(map['services'], (value) => PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetPercent: map['targetPercent'] == null ? null : (map['targetPercent'] as int).input(),
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
-      ungraceful: map['ungraceful'] == null ? null : (PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigUngraceful.fromMap((map['ungraceful'] as Map).cast<String, dynamic>())).input(),
+      services: map['services'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService>(map['services']!, (value) => PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigService.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      targetPercent: map['targetPercent'] == null ? null : ((map['targetPercent'] as int).input()).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : ((map['timeoutMinutes'] as int).input()).input(),
+      ungraceful: map['ungraceful'] == null ? null : ((PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfigUngraceful.fromMap((map['ungraceful']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

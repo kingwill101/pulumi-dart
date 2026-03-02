@@ -29,7 +29,7 @@ class BudgetThresholdRule {
 
   factory BudgetThresholdRule.fromMap(Map<String, dynamic> map) {
     return BudgetThresholdRule(
-      spendBasis: map['spendBasis'] == null ? null : (map['spendBasis'] as String).input(),
+      spendBasis: map['spendBasis'] == null ? null : (map['spendBasis']! as String).input(),
       thresholdPercent: (map['thresholdPercent'] as double).input(),
     );
   }

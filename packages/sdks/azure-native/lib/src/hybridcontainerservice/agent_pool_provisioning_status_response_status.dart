@@ -37,10 +37,10 @@ class AgentPoolProvisioningStatusResponseStatus {
 
   factory AgentPoolProvisioningStatusResponseStatus.fromMap(Map<String, dynamic> map) {
     return AgentPoolProvisioningStatusResponseStatus(
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (AgentPoolProvisioningStatusResponseProvisioningStatus.fromMap((map['provisioningStatus'] as Map).cast<String, dynamic>())).input(),
-      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas'] as int).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (AgentPoolProvisioningStatusResponseProvisioningStatus.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
+      readyReplicas: map['readyReplicas'] == null ? null : (map['readyReplicas']! as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
     );
   }
 }

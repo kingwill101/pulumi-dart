@@ -55,12 +55,12 @@ class DatabaseArgs {
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
       createStatement: (map['createStatement'] as String).input(),
-      databaseDialect: map['databaseDialect'] == null ? null : (DatabaseDatabaseDialect.fromValue(map['databaseDialect'] as String)).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      extraStatements: map['extraStatements'] == null ? null : ((map['extraStatements'] as List).cast<String>()).input(),
+      databaseDialect: map['databaseDialect'] == null ? null : (DatabaseDatabaseDialect.fromValue(map['databaseDialect']! as String)).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      extraStatements: map['extraStatements'] == null ? null : ((map['extraStatements']! as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      protoDescriptors: map['protoDescriptors'] == null ? null : (map['protoDescriptors'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      protoDescriptors: map['protoDescriptors'] == null ? null : (map['protoDescriptors']! as String).input(),
     );
   }
 }

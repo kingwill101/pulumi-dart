@@ -74,18 +74,18 @@ class AgreementState {
 
   factory AgreementState.fromMap(Map<String, dynamic> map) {
     return AgreementState(
-      accessRole: map['accessRole'] == null ? null : (map['accessRole'] as String).input(),
-      agreementId: map['agreementId'] == null ? null : (map['agreementId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      baseDirectory: map['baseDirectory'] == null ? null : (map['baseDirectory'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      localProfileId: map['localProfileId'] == null ? null : (map['localProfileId'] as String).input(),
-      partnerProfileId: map['partnerProfileId'] == null ? null : (map['partnerProfileId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      accessRole: map['accessRole'] == null ? null : ((map['accessRole'] as String).input()).input(),
+      agreementId: map['agreementId'] == null ? null : ((map['agreementId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      baseDirectory: map['baseDirectory'] == null ? null : ((map['baseDirectory'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      localProfileId: map['localProfileId'] == null ? null : ((map['localProfileId'] as String).input()).input(),
+      partnerProfileId: map['partnerProfileId'] == null ? null : ((map['partnerProfileId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serverId: map['serverId'] == null ? null : ((map['serverId'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

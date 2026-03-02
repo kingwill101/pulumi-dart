@@ -27,7 +27,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable {
 
   factory StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn>(map['columns'], (value) => StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn>(map['columns']!, (value) => StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
       table: (map['table'] as String).input(),
     );
   }

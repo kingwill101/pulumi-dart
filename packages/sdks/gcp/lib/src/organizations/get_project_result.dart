@@ -79,7 +79,7 @@ class GetProjectResult {
       name: map['name'] as String,
       number: map['number'] as String,
       orgId: map['orgId'] as String,
-      projectId: map['projectId'] == null ? null : map['projectId'] as String,
+      projectId: map['projectId'] == null ? null : map['projectId']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       tags: (map['tags'] as Map).cast<String, String>(),
     );

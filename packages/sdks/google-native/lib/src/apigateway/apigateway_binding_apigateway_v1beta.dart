@@ -32,9 +32,9 @@ class ApigatewayBindingApigatewayV1beta {
 
   factory ApigatewayBindingApigatewayV1beta.fromMap(Map<String, dynamic> map) {
     return ApigatewayBindingApigatewayV1beta(
-      condition: map['condition'] == null ? null : (ApigatewayExprApigatewayV1beta.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (ApigatewayExprApigatewayV1beta.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

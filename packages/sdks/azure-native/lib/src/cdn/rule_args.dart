@@ -61,13 +61,13 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<DeliveryRuleCacheExpirationAction>(map['actions'], (value) => DeliveryRuleCacheExpirationAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<DeliveryRuleClientPortCondition>(map['conditions'], (value) => DeliveryRuleClientPortCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchProcessingBehavior: map['matchProcessingBehavior'] == null ? null : (map['matchProcessingBehavior'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<DeliveryRuleCacheExpirationAction>(map['actions']!, (value) => DeliveryRuleCacheExpirationAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<DeliveryRuleClientPortCondition>(map['conditions']!, (value) => DeliveryRuleClientPortCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchProcessingBehavior: map['matchProcessingBehavior'] == null ? null : (map['matchProcessingBehavior']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
       ruleSetName: (map['ruleSetName'] as String).input(),
     );
   }

@@ -42,11 +42,11 @@ class ModelArgs {
 
   factory ModelArgs.fromMap(Map<String, dynamic> map) {
     return ModelArgs(
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

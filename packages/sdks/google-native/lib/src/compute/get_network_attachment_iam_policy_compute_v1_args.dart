@@ -35,8 +35,8 @@ class GetNetworkAttachmentIamPolicyComputeV1Args {
 
   factory GetNetworkAttachmentIamPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetNetworkAttachmentIamPolicyComputeV1Args(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       resource: (map['resource'] as String).input(),
     );

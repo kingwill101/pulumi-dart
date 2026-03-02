@@ -56,10 +56,10 @@ class BackupInstanceDiskArgs {
     return BackupInstanceDiskArgs(
       backupPolicyId: (map['backupPolicyId'] as String).input(),
       diskId: (map['diskId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       snapshotResourceGroupName: (map['snapshotResourceGroupName'] as String).input(),
-      snapshotSubscriptionId: map['snapshotSubscriptionId'] == null ? null : (map['snapshotSubscriptionId'] as String).input(),
+      snapshotSubscriptionId: map['snapshotSubscriptionId'] == null ? null : (map['snapshotSubscriptionId']! as String).input(),
       vaultId: (map['vaultId'] as String).input(),
     );
   }

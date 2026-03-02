@@ -48,12 +48,12 @@ class CellState {
 
   factory CellState.fromMap(Map<String, dynamic> map) {
     return CellState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cellName: map['cellName'] == null ? null : (map['cellName'] as String).input(),
-      cells: map['cells'] == null ? null : ((map['cells'] as List).cast<String>()).input(),
-      parentReadinessScopes: map['parentReadinessScopes'] == null ? null : ((map['parentReadinessScopes'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      cellName: map['cellName'] == null ? null : ((map['cellName'] as String).input()).input(),
+      cells: map['cells'] == null ? null : (((map['cells'] as List).cast<String>()).input()).input(),
+      parentReadinessScopes: map['parentReadinessScopes'] == null ? null : (((map['parentReadinessScopes'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

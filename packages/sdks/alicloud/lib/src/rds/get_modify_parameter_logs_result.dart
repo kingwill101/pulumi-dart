@@ -46,7 +46,7 @@ class GetModifyParameterLogsResult {
       endTime: map['endTime'] as String,
       id: map['id'] as String,
       logs: pulumi.Input.decodeList<GetModifyParameterLogsLog>(map['logs'], (value) => GetModifyParameterLogsLog.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       startTime: map['startTime'] as String,
     );
   }

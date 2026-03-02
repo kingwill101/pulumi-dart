@@ -25,7 +25,7 @@ class GatewayVpc {
 
   factory GatewayVpc.fromMap(Map<String, dynamic> map) {
     return GatewayVpc(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

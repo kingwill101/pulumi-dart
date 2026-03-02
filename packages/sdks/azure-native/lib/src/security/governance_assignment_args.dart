@@ -67,14 +67,14 @@ class GovernanceAssignmentArgs {
 
   factory GovernanceAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GovernanceAssignmentArgs(
-      additionalData: map['additionalData'] == null ? null : (GovernanceAssignmentAdditionalData.fromMap((map['additionalData'] as Map).cast<String, dynamic>())).input(),
+      additionalData: map['additionalData'] == null ? null : (GovernanceAssignmentAdditionalData.fromMap((map['additionalData']! as Map).cast<String, dynamic>())).input(),
       assessmentName: (map['assessmentName'] as String).input(),
-      assignmentKey: map['assignmentKey'] == null ? null : (map['assignmentKey'] as String).input(),
-      governanceEmailNotification: map['governanceEmailNotification'] == null ? null : (GovernanceEmailNotification.fromMap((map['governanceEmailNotification'] as Map).cast<String, dynamic>())).input(),
-      isGracePeriod: map['isGracePeriod'] == null ? null : (map['isGracePeriod'] as bool).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      assignmentKey: map['assignmentKey'] == null ? null : (map['assignmentKey']! as String).input(),
+      governanceEmailNotification: map['governanceEmailNotification'] == null ? null : (GovernanceEmailNotification.fromMap((map['governanceEmailNotification']! as Map).cast<String, dynamic>())).input(),
+      isGracePeriod: map['isGracePeriod'] == null ? null : (map['isGracePeriod']! as bool).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
       remediationDueDate: (map['remediationDueDate'] as String).input(),
-      remediationEta: map['remediationEta'] == null ? null : (RemediationEta.fromMap((map['remediationEta'] as Map).cast<String, dynamic>())).input(),
+      remediationEta: map['remediationEta'] == null ? null : (RemediationEta.fromMap((map['remediationEta']! as Map).cast<String, dynamic>())).input(),
       scope: (map['scope'] as String).input(),
     );
   }

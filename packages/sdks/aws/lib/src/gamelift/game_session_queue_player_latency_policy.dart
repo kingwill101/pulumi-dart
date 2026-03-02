@@ -26,7 +26,7 @@ class GameSessionQueuePlayerLatencyPolicy {
   factory GameSessionQueuePlayerLatencyPolicy.fromMap(Map<String, dynamic> map) {
     return GameSessionQueuePlayerLatencyPolicy(
       maximumIndividualPlayerLatencyMilliseconds: (map['maximumIndividualPlayerLatencyMilliseconds'] as int).input(),
-      policyDurationSeconds: map['policyDurationSeconds'] == null ? null : (map['policyDurationSeconds'] as int).input(),
+      policyDurationSeconds: map['policyDurationSeconds'] == null ? null : ((map['policyDurationSeconds'] as int).input()).input(),
     );
   }
 }

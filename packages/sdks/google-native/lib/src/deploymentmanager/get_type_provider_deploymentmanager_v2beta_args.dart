@@ -27,7 +27,7 @@ class GetTypeProviderDeploymentmanagerV2betaArgs {
 
   factory GetTypeProviderDeploymentmanagerV2betaArgs.fromMap(Map<String, dynamic> map) {
     return GetTypeProviderDeploymentmanagerV2betaArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       typeProvider: (map['typeProvider'] as String).input(),
     );
   }

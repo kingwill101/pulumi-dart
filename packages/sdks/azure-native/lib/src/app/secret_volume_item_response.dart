@@ -26,8 +26,8 @@ class SecretVolumeItemResponse {
 
   factory SecretVolumeItemResponse.fromMap(Map<String, dynamic> map) {
     return SecretVolumeItemResponse(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      secretRef: map['secretRef'] == null ? null : (map['secretRef'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      secretRef: map['secretRef'] == null ? null : (map['secretRef']! as String).input(),
     );
   }
 }

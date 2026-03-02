@@ -22,7 +22,7 @@ class VectorEmbeddingPolicy {
 
   factory VectorEmbeddingPolicy.fromMap(Map<String, dynamic> map) {
     return VectorEmbeddingPolicy(
-      vectorEmbeddings: map['vectorEmbeddings'] == null ? null : (pulumi.Input.decodeList<VectorEmbedding>(map['vectorEmbeddings'], (value) => VectorEmbedding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vectorEmbeddings: map['vectorEmbeddings'] == null ? null : (pulumi.Input.decodeList<VectorEmbedding>(map['vectorEmbeddings']!, (value) => VectorEmbedding.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

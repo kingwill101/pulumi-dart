@@ -37,9 +37,9 @@ class GoogleCloudAiplatformV1ContainerSpec {
 
   factory GoogleCloudAiplatformV1ContainerSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ContainerSpec(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
-      env: map['env'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1EnvVar>(map['env'], (value) => GoogleCloudAiplatformV1EnvVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
+      env: map['env'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1EnvVar>(map['env']!, (value) => GoogleCloudAiplatformV1EnvVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
       imageUri: (map['imageUri'] as String).input(),
     );
   }

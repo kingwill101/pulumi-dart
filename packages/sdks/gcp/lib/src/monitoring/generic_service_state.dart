@@ -65,13 +65,13 @@ class GenericServiceState {
 
   factory GenericServiceState.fromMap(Map<String, dynamic> map) {
     return GenericServiceState(
-      basicService: map['basicService'] == null ? null : (GenericServiceBasicService.fromMap((map['basicService'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
-      telemetries: map['telemetries'] == null ? null : (pulumi.Input.decodeList<GenericServiceTelemetry>(map['telemetries'], (value) => GenericServiceTelemetry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
+      basicService: map['basicService'] == null ? null : (GenericServiceBasicService.fromMap((map['basicService']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      telemetries: map['telemetries'] == null ? null : (pulumi.Input.decodeList<GenericServiceTelemetry>(map['telemetries']!, (value) => GenericServiceTelemetry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

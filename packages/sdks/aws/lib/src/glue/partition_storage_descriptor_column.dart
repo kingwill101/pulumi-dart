@@ -29,9 +29,9 @@ class PartitionStorageDescriptorColumn {
 
   factory PartitionStorageDescriptorColumn.fromMap(Map<String, dynamic> map) {
     return PartitionStorageDescriptorColumn(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class CertificateDatastoreSecrets {
 
   factory CertificateDatastoreSecrets.fromMap(Map<String, dynamic> map) {
     return CertificateDatastoreSecrets(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
       secretsType: (map['secretsType'] as String).input(),
     );
   }

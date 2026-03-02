@@ -27,8 +27,8 @@ class AdditionalCapabilitiesResponse {
 
   factory AdditionalCapabilitiesResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalCapabilitiesResponse(
-      hibernationEnabled: map['hibernationEnabled'] == null ? null : (map['hibernationEnabled'] as bool).input(),
-      ultraSSDEnabled: map['ultraSSDEnabled'] == null ? null : (map['ultraSSDEnabled'] as bool).input(),
+      hibernationEnabled: map['hibernationEnabled'] == null ? null : (map['hibernationEnabled']! as bool).input(),
+      ultraSSDEnabled: map['ultraSSDEnabled'] == null ? null : (map['ultraSSDEnabled']! as bool).input(),
     );
   }
 }

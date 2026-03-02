@@ -41,10 +41,10 @@ class PreventionDiscoveryConfigTargetBigQueryTarget {
 
   factory PreventionDiscoveryConfigTargetBigQueryTarget.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTarget(
-      cadence: map['cadence'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetCadence.fromMap((map['cadence'] as Map).cast<String, dynamic>())).input(),
-      conditions: map['conditions'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      disabled: map['disabled'] == null ? null : ((map['disabled'] as Map).cast<String, dynamic>()).input(),
-      filter: map['filter'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      cadence: map['cadence'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetCadence.fromMap((map['cadence']! as Map).cast<String, dynamic>())).input(),
+      conditions: map['conditions'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetConditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      disabled: map['disabled'] == null ? null : ((map['disabled']! as Map).cast<String, dynamic>()).input(),
+      filter: map['filter'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -54,13 +54,13 @@ class NetworkRackArgs {
 
   factory NetworkRackArgs.fromMap(Map<String, dynamic> map) {
     return NetworkRackArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       networkFabricId: (map['networkFabricId'] as String).input(),
-      networkRackName: map['networkRackName'] == null ? null : (map['networkRackName'] as String).input(),
-      networkRackType: map['networkRackType'] == null ? null : (map['networkRackType'] as String).input(),
+      networkRackName: map['networkRackName'] == null ? null : (map['networkRackName']! as String).input(),
+      networkRackType: map['networkRackType'] == null ? null : (map['networkRackType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

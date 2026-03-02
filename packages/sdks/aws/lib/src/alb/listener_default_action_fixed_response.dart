@@ -33,8 +33,8 @@ class ListenerDefaultActionFixedResponse {
   factory ListenerDefaultActionFixedResponse.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionFixedResponse(
       contentType: (map['contentType'] as String).input(),
-      messageBody: map['messageBody'] == null ? null : (map['messageBody'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
+      messageBody: map['messageBody'] == null ? null : ((map['messageBody'] as String).input()).input(),
+      statusCode: map['statusCode'] == null ? null : ((map['statusCode'] as String).input()).input(),
     );
   }
 }

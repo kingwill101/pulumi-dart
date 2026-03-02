@@ -26,7 +26,7 @@ class DbClusterMultiZoneVswitchList {
   factory DbClusterMultiZoneVswitchList.fromMap(Map<String, dynamic> map) {
     return DbClusterMultiZoneVswitchList(
       vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

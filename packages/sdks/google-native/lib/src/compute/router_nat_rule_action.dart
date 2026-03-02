@@ -35,10 +35,10 @@ class RouterNatRuleAction {
 
   factory RouterNatRuleAction.fromMap(Map<String, dynamic> map) {
     return RouterNatRuleAction(
-      sourceNatActiveIps: map['sourceNatActiveIps'] == null ? null : ((map['sourceNatActiveIps'] as List).cast<String>()).input(),
-      sourceNatActiveRanges: map['sourceNatActiveRanges'] == null ? null : ((map['sourceNatActiveRanges'] as List).cast<String>()).input(),
-      sourceNatDrainIps: map['sourceNatDrainIps'] == null ? null : ((map['sourceNatDrainIps'] as List).cast<String>()).input(),
-      sourceNatDrainRanges: map['sourceNatDrainRanges'] == null ? null : ((map['sourceNatDrainRanges'] as List).cast<String>()).input(),
+      sourceNatActiveIps: map['sourceNatActiveIps'] == null ? null : ((map['sourceNatActiveIps']! as List).cast<String>()).input(),
+      sourceNatActiveRanges: map['sourceNatActiveRanges'] == null ? null : ((map['sourceNatActiveRanges']! as List).cast<String>()).input(),
+      sourceNatDrainIps: map['sourceNatDrainIps'] == null ? null : ((map['sourceNatDrainIps']! as List).cast<String>()).input(),
+      sourceNatDrainRanges: map['sourceNatDrainRanges'] == null ? null : ((map['sourceNatDrainRanges']! as List).cast<String>()).input(),
     );
   }
 }

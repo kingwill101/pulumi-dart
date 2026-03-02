@@ -62,15 +62,15 @@ class LogtailConfigState {
 
   factory LogtailConfigState.fromMap(Map<String, dynamic> map) {
     return LogtailConfigState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      inputDetail: map['inputDetail'] == null ? null : (map['inputDetail'] as String).input(),
-      inputType: map['inputType'] == null ? null : (map['inputType'] as String).input(),
-      lastModifyTime: map['lastModifyTime'] == null ? null : (map['lastModifyTime'] as int).input(),
-      logSample: map['logSample'] == null ? null : (map['logSample'] as String).input(),
-      logtailConfigName: map['logtailConfigName'] == null ? null : (map['logtailConfigName'] as String).input(),
-      outputDetail: map['outputDetail'] == null ? null : (LogtailConfigOutputDetail.fromMap((map['outputDetail'] as Map).cast<String, dynamic>())).input(),
-      outputType: map['outputType'] == null ? null : (map['outputType'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      inputDetail: map['inputDetail'] == null ? null : (map['inputDetail']! as String).input(),
+      inputType: map['inputType'] == null ? null : (map['inputType']! as String).input(),
+      lastModifyTime: map['lastModifyTime'] == null ? null : (map['lastModifyTime']! as int).input(),
+      logSample: map['logSample'] == null ? null : (map['logSample']! as String).input(),
+      logtailConfigName: map['logtailConfigName'] == null ? null : (map['logtailConfigName']! as String).input(),
+      outputDetail: map['outputDetail'] == null ? null : (LogtailConfigOutputDetail.fromMap((map['outputDetail']! as Map).cast<String, dynamic>())).input(),
+      outputType: map['outputType'] == null ? null : (map['outputType']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
     );
   }
 }

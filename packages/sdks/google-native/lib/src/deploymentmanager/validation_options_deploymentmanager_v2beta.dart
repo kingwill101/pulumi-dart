@@ -28,8 +28,8 @@ class ValidationOptionsDeploymentmanagerV2beta {
 
   factory ValidationOptionsDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return ValidationOptionsDeploymentmanagerV2beta(
-      schemaValidation: map['schemaValidation'] == null ? null : (ValidationOptionsSchemaValidationDeploymentmanagerV2beta.fromValue(map['schemaValidation'] as String)).input(),
-      undeclaredProperties: map['undeclaredProperties'] == null ? null : (ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta.fromValue(map['undeclaredProperties'] as String)).input(),
+      schemaValidation: map['schemaValidation'] == null ? null : (ValidationOptionsSchemaValidationDeploymentmanagerV2beta.fromValue(map['schemaValidation']! as String)).input(),
+      undeclaredProperties: map['undeclaredProperties'] == null ? null : (ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta.fromValue(map['undeclaredProperties']! as String)).input(),
     );
   }
 }

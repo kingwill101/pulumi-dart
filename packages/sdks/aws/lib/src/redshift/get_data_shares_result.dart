@@ -31,7 +31,7 @@ class GetDataSharesResult {
 
   factory GetDataSharesResult.fromMap(Map<String, dynamic> map) {
     return GetDataSharesResult(
-      dataShares: pulumi.Input.decodeList<GetDataSharesDataShare>(map['dataShares'], (value) => GetDataSharesDataShare.fromMap((value as Map).cast<String, dynamic>())),
+      dataShares: pulumi.Input.decodeList<GetDataSharesDataShare>(map['dataShares']!, (value) => GetDataSharesDataShare.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

@@ -21,7 +21,7 @@ class ResourceTypeRegistrationPropertiesMarketplaceOptionsResponse {
 
   factory ResourceTypeRegistrationPropertiesMarketplaceOptionsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesMarketplaceOptionsResponse(
-      addOnPlanConversionAllowed: map['addOnPlanConversionAllowed'] == null ? null : (map['addOnPlanConversionAllowed'] as bool).input(),
+      addOnPlanConversionAllowed: map['addOnPlanConversionAllowed'] == null ? null : (map['addOnPlanConversionAllowed']! as bool).input(),
     );
   }
 }

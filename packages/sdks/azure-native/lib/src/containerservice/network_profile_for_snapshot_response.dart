@@ -41,11 +41,11 @@ class NetworkProfileForSnapshotResponse {
 
   factory NetworkProfileForSnapshotResponse.fromMap(Map<String, dynamic> map) {
     return NetworkProfileForSnapshotResponse(
-      loadBalancerSku: map['loadBalancerSku'] == null ? null : (map['loadBalancerSku'] as String).input(),
-      networkMode: map['networkMode'] == null ? null : (map['networkMode'] as String).input(),
-      networkPlugin: map['networkPlugin'] == null ? null : (map['networkPlugin'] as String).input(),
-      networkPluginMode: map['networkPluginMode'] == null ? null : (map['networkPluginMode'] as String).input(),
-      networkPolicy: map['networkPolicy'] == null ? null : (map['networkPolicy'] as String).input(),
+      loadBalancerSku: map['loadBalancerSku'] == null ? null : (map['loadBalancerSku']! as String).input(),
+      networkMode: map['networkMode'] == null ? null : (map['networkMode']! as String).input(),
+      networkPlugin: map['networkPlugin'] == null ? null : (map['networkPlugin']! as String).input(),
+      networkPluginMode: map['networkPluginMode'] == null ? null : (map['networkPluginMode']! as String).input(),
+      networkPolicy: map['networkPolicy'] == null ? null : (map['networkPolicy']! as String).input(),
     );
   }
 }

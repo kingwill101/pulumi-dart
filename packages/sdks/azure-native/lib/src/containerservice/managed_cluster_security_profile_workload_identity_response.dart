@@ -21,7 +21,7 @@ class ManagedClusterSecurityProfileWorkloadIdentityResponse {
 
   factory ManagedClusterSecurityProfileWorkloadIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterSecurityProfileWorkloadIdentityResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

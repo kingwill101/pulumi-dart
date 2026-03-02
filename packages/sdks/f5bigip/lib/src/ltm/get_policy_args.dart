@@ -49,12 +49,12 @@ class GetPolicyArgs {
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyArgs(
-      controls: map['controls'] == null ? null : ((map['controls'] as List).cast<String>()).input(),
+      controls: map['controls'] == null ? null : ((map['controls']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
-      publishedCopy: map['publishedCopy'] == null ? null : (map['publishedCopy'] as String).input(),
-      requires: map['requires'] == null ? null : ((map['requires'] as List).cast<String>()).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<GetPolicyRule>(map['rules'], (value) => GetPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
+      publishedCopy: map['publishedCopy'] == null ? null : (map['publishedCopy']! as String).input(),
+      requires: map['requires'] == null ? null : ((map['requires']! as List).cast<String>()).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<GetPolicyRule>(map['rules']!, (value) => GetPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy']! as String).input(),
     );
   }
 }

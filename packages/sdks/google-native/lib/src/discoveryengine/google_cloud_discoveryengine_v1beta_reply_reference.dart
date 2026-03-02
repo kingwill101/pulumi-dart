@@ -36,10 +36,10 @@ class GoogleCloudDiscoveryengineV1betaReplyReference {
 
   factory GoogleCloudDiscoveryengineV1betaReplyReference.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1betaReplyReference(
-      anchorText: map['anchorText'] == null ? null : (map['anchorText'] as String).input(),
-      end: map['end'] == null ? null : (map['end'] as int).input(),
-      start: map['start'] == null ? null : (map['start'] as int).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      anchorText: map['anchorText'] == null ? null : (map['anchorText']! as String).input(),
+      end: map['end'] == null ? null : (map['end']! as int).input(),
+      start: map['start'] == null ? null : (map['start']! as int).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

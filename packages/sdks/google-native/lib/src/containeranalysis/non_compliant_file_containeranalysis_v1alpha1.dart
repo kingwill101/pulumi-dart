@@ -31,9 +31,9 @@ class NonCompliantFileContaineranalysisV1alpha1 {
 
   factory NonCompliantFileContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return NonCompliantFileContaineranalysisV1alpha1(
-      displayCommand: map['displayCommand'] == null ? null : (map['displayCommand'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      displayCommand: map['displayCommand'] == null ? null : (map['displayCommand']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

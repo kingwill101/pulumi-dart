@@ -64,12 +64,12 @@ class ApiVersionSetArgs {
   factory ApiVersionSetArgs.fromMap(Map<String, dynamic> map) {
     return ApiVersionSetArgs(
       apiManagementName: (map['apiManagementName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      versionHeaderName: map['versionHeaderName'] == null ? null : (map['versionHeaderName'] as String).input(),
-      versionQueryName: map['versionQueryName'] == null ? null : (map['versionQueryName'] as String).input(),
+      versionHeaderName: map['versionHeaderName'] == null ? null : (map['versionHeaderName']! as String).input(),
+      versionQueryName: map['versionQueryName'] == null ? null : (map['versionQueryName']! as String).input(),
       versioningScheme: (map['versioningScheme'] as String).input(),
     );
   }

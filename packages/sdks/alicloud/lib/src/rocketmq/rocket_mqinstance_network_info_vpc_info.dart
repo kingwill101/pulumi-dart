@@ -36,10 +36,10 @@ class RocketMQInstanceNetworkInfoVpcInfo {
 
   factory RocketMQInstanceNetworkInfoVpcInfo.fromMap(Map<String, dynamic> map) {
     return RocketMQInstanceNetworkInfoVpcInfo(
-      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds']! as String).input(),
       vpcId: (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      vswitches: map['vswitches'] == null ? null : (pulumi.Input.decodeList<RocketMQInstanceNetworkInfoVpcInfoVswitch>(map['vswitches'], (value) => RocketMQInstanceNetworkInfoVpcInfoVswitch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      vswitches: map['vswitches'] == null ? null : (pulumi.Input.decodeList<RocketMQInstanceNetworkInfoVpcInfoVswitch>(map['vswitches']!, (value) => RocketMQInstanceNetworkInfoVpcInfoVswitch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

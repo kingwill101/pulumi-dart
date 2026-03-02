@@ -74,10 +74,10 @@ class WorkloadIdentityPoolManagedIdentityArgs {
 
   factory WorkloadIdentityPoolManagedIdentityArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolManagedIdentityArgs(
-      attestationRules: map['attestationRules'] == null ? null : (pulumi.Input.decodeList<WorkloadIdentityPoolManagedIdentityAttestationRule>(map['attestationRules'], (value) => WorkloadIdentityPoolManagedIdentityAttestationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      attestationRules: map['attestationRules'] == null ? null : (pulumi.Input.decodeList<WorkloadIdentityPoolManagedIdentityAttestationRule>(map['attestationRules']!, (value) => WorkloadIdentityPoolManagedIdentityAttestationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
       workloadIdentityPoolManagedIdentityId: (map['workloadIdentityPoolManagedIdentityId'] as String).input(),
       workloadIdentityPoolNamespaceId: (map['workloadIdentityPoolNamespaceId'] as String).input(),

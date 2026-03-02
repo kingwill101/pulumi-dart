@@ -27,7 +27,7 @@ class DomainDevicesTpmBackendExternalSourcePipe {
   factory DomainDevicesTpmBackendExternalSourcePipe.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendExternalSourcePipe(
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesTpmBackendExternalSourcePipeSecLabel>(map['secLabels'], (value) => DomainDevicesTpmBackendExternalSourcePipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesTpmBackendExternalSourcePipeSecLabel>(map['secLabels']!, (value) => DomainDevicesTpmBackendExternalSourcePipeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

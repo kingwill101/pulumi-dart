@@ -31,9 +31,9 @@ class GoogleCloudAiplatformV1ModelMonitoringAlertConfig {
 
   factory GoogleCloudAiplatformV1ModelMonitoringAlertConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelMonitoringAlertConfig(
-      emailAlertConfig: map['emailAlertConfig'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig.fromMap((map['emailAlertConfig'] as Map).cast<String, dynamic>())).input(),
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
-      notificationChannels: map['notificationChannels'] == null ? null : ((map['notificationChannels'] as List).cast<String>()).input(),
+      emailAlertConfig: map['emailAlertConfig'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringAlertConfigEmailAlertConfig.fromMap((map['emailAlertConfig']! as Map).cast<String, dynamic>())).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
+      notificationChannels: map['notificationChannels'] == null ? null : ((map['notificationChannels']! as List).cast<String>()).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class GetIpv6RangesResult {
 
   factory GetIpv6RangesResult.fromMap(Map<String, dynamic> map) {
     return GetIpv6RangesResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetIpv6RangesFilter>(map['filters'], (value) => GetIpv6RangesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetIpv6RangesFilter>(map['filters']!, (value) => GetIpv6RangesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ranges: pulumi.Input.decodeList<GetIpv6RangesRange>(map['ranges'], (value) => GetIpv6RangesRange.fromMap((value as Map).cast<String, dynamic>())),
     );

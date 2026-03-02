@@ -22,7 +22,7 @@ class ClusterConfigurationResponse {
 
   factory ClusterConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ClusterConfigurationResponse(
-      executeCommandConfiguration: map['executeCommandConfiguration'] == null ? null : (ExecuteCommandConfigurationResponse.fromMap((map['executeCommandConfiguration'] as Map).cast<String, dynamic>())).input(),
+      executeCommandConfiguration: map['executeCommandConfiguration'] == null ? null : (ExecuteCommandConfigurationResponse.fromMap((map['executeCommandConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

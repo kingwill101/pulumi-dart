@@ -76,17 +76,17 @@ class GetFavoriteResult {
   factory GetFavoriteResult.fromMap(Map<String, dynamic> map) {
     return GetFavoriteResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      category: map['category'] == null ? null : map['category'] as String,
-      config: map['config'] == null ? null : map['config'] as String,
+      category: map['category'] == null ? null : map['category']! as String,
+      config: map['config'] == null ? null : map['config']! as String,
       favoriteId: map['favoriteId'] as String,
-      favoriteType: map['favoriteType'] == null ? null : map['favoriteType'] as String,
-      isGeneratedFromTemplate: map['isGeneratedFromTemplate'] == null ? null : map['isGeneratedFromTemplate'] as bool,
-      name: map['name'] == null ? null : map['name'] as String,
-      sourceType: map['sourceType'] == null ? null : map['sourceType'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
+      favoriteType: map['favoriteType'] == null ? null : map['favoriteType']! as String,
+      isGeneratedFromTemplate: map['isGeneratedFromTemplate'] == null ? null : map['isGeneratedFromTemplate']! as bool,
+      name: map['name'] == null ? null : map['name']! as String,
+      sourceType: map['sourceType'] == null ? null : map['sourceType']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
       timeModified: map['timeModified'] as String,
       userId: map['userId'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

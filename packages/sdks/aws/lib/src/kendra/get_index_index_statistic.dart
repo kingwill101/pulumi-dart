@@ -27,8 +27,8 @@ class GetIndexIndexStatistic {
 
   factory GetIndexIndexStatistic.fromMap(Map<String, dynamic> map) {
     return GetIndexIndexStatistic(
-      faqStatistics: (pulumi.Input.decodeList<GetIndexIndexStatisticFaqStatistic>(map['faqStatistics'], (value) => GetIndexIndexStatisticFaqStatistic.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      textDocumentStatistics: (pulumi.Input.decodeList<GetIndexIndexStatisticTextDocumentStatistic>(map['textDocumentStatistics'], (value) => GetIndexIndexStatisticTextDocumentStatistic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      faqStatistics: (pulumi.Input.decodeList<GetIndexIndexStatisticFaqStatistic>(map['faqStatistics']!, (value) => GetIndexIndexStatisticFaqStatistic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textDocumentStatistics: (pulumi.Input.decodeList<GetIndexIndexStatisticTextDocumentStatistic>(map['textDocumentStatistics']!, (value) => GetIndexIndexStatisticTextDocumentStatistic.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

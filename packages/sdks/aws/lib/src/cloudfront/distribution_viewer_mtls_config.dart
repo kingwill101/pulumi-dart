@@ -26,8 +26,8 @@ class DistributionViewerMtlsConfig {
 
   factory DistributionViewerMtlsConfig.fromMap(Map<String, dynamic> map) {
     return DistributionViewerMtlsConfig(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      trustStoreConfig: map['trustStoreConfig'] == null ? null : (DistributionViewerMtlsConfigTrustStoreConfig.fromMap((map['trustStoreConfig'] as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
+      trustStoreConfig: map['trustStoreConfig'] == null ? null : ((DistributionViewerMtlsConfigTrustStoreConfig.fromMap((map['trustStoreConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

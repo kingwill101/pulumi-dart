@@ -38,8 +38,8 @@ class VolumeMount {
     return VolumeMount(
       mountPath: (map['mountPath'] as String).input(),
       name: (map['name'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      subPath: map['subPath'] == null ? null : (map['subPath'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      subPath: map['subPath'] == null ? null : (map['subPath']! as String).input(),
     );
   }
 }

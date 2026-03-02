@@ -40,7 +40,7 @@ class ExternalDataServiceArgs {
   factory ExternalDataServiceArgs.fromMap(Map<String, dynamic> map) {
     return ExternalDataServiceArgs(
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      serviceDescription: map['serviceDescription'] == null ? null : (map['serviceDescription'] as String).input(),
+      serviceDescription: map['serviceDescription'] == null ? null : (map['serviceDescription']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
       serviceSpec: (map['serviceSpec'] as String).input(),
     );

@@ -26,8 +26,8 @@ class AssetBindState {
 
   factory AssetBindState.fromMap(Map<String, dynamic> map) {
     return AssetBindState(
-      authVersion: map['authVersion'] == null ? null : (map['authVersion'] as int).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      authVersion: map['authVersion'] == null ? null : (map['authVersion']! as int).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class RelationshipOccurrence {
 
   factory RelationshipOccurrence.fromMap(Map<String, dynamic> map) {
     return RelationshipOccurrence(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

@@ -55,13 +55,13 @@ class S3LocationArgs {
 
   factory S3LocationArgs.fromMap(Map<String, dynamic> map) {
     return S3LocationArgs(
-      agentArns: map['agentArns'] == null ? null : ((map['agentArns'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      agentArns: map['agentArns'] == null ? null : (((map['agentArns'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       s3BucketArn: (map['s3BucketArn'] as String).input(),
-      s3Config: (S3LocationS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>())).input(),
-      s3StorageClass: map['s3StorageClass'] == null ? null : (map['s3StorageClass'] as String).input(),
+      s3Config: (S3LocationS3Config.fromMap((map['s3Config']! as Map).cast<String, dynamic>())).input(),
+      s3StorageClass: map['s3StorageClass'] == null ? null : ((map['s3StorageClass'] as String).input()).input(),
       subdirectory: (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

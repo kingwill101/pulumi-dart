@@ -22,7 +22,7 @@ class GoogleCloudDatacatalogV1Schema {
 
   factory GoogleCloudDatacatalogV1Schema.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1Schema(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(map['columns'], (value) => GoogleCloudDatacatalogV1ColumnSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(map['columns']!, (value) => GoogleCloudDatacatalogV1ColumnSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -46,7 +46,7 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      clusterDesc: map['clusterDesc'] == null ? null : (map['clusterDesc'] as String).input(),
+      clusterDesc: map['clusterDesc'] == null ? null : (map['clusterDesc']! as String).input(),
       clusterId: (map['clusterId'] as String).input(),
       clusterName: (map['clusterName'] as String).input(),
       machineTypes: (ResourceMachineTypes.fromMap((map['machineTypes'] as Map).cast<String, dynamic>())).input(),

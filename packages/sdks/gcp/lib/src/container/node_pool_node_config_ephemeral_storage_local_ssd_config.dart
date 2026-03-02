@@ -25,7 +25,7 @@ class NodePoolNodeConfigEphemeralStorageLocalSsdConfig {
 
   factory NodePoolNodeConfigEphemeralStorageLocalSsdConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigEphemeralStorageLocalSsdConfig(
-      dataCacheCount: map['dataCacheCount'] == null ? null : (map['dataCacheCount'] as int).input(),
+      dataCacheCount: map['dataCacheCount'] == null ? null : (map['dataCacheCount']! as int).input(),
       localSsdCount: (map['localSsdCount'] as int).input(),
     );
   }

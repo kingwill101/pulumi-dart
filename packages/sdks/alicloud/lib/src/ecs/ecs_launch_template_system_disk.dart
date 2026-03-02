@@ -60,15 +60,15 @@ class EcsLaunchTemplateSystemDisk {
 
   factory EcsLaunchTemplateSystemDisk.fromMap(Map<String, dynamic> map) {
     return EcsLaunchTemplateSystemDisk(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      iops: map['iops'] == null ? null : (map['iops'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      deleteWithInstance: map['deleteWithInstance'] == null ? null : (map['deleteWithInstance']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
+      iops: map['iops'] == null ? null : (map['iops']! as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

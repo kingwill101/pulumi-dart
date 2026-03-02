@@ -26,8 +26,8 @@ class DefaultKmsKeyState {
 
   factory DefaultKmsKeyState.fromMap(Map<String, dynamic> map) {
     return DefaultKmsKeyState(
-      keyArn: map['keyArn'] == null ? null : (map['keyArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      keyArn: map['keyArn'] == null ? null : ((map['keyArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

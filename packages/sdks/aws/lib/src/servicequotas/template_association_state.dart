@@ -31,9 +31,9 @@ class TemplateAssociationState {
 
   factory TemplateAssociationState.fromMap(Map<String, dynamic> map) {
     return TemplateAssociationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

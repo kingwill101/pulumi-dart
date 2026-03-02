@@ -22,7 +22,7 @@ class OwnershipControls {
 
   factory OwnershipControls.fromMap(Map<String, dynamic> map) {
     return OwnershipControls(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<OwnershipControlsRule>(map['rules'], (value) => OwnershipControlsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<OwnershipControlsRule>(map['rules']!, (value) => OwnershipControlsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

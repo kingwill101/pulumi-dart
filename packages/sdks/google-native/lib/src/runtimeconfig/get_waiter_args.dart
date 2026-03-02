@@ -32,7 +32,7 @@ class GetWaiterArgs {
   factory GetWaiterArgs.fromMap(Map<String, dynamic> map) {
     return GetWaiterArgs(
       configId: (map['configId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       waiterId: (map['waiterId'] as String).input(),
     );
   }

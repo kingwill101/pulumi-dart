@@ -68,14 +68,14 @@ class PreventionStoredInfoTypeState {
 
   factory PreventionStoredInfoTypeState.fromMap(Map<String, dynamic> map) {
     return PreventionStoredInfoTypeState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dictionary: map['dictionary'] == null ? null : (PreventionStoredInfoTypeDictionary.fromMap((map['dictionary'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      largeCustomDictionary: map['largeCustomDictionary'] == null ? null : (PreventionStoredInfoTypeLargeCustomDictionary.fromMap((map['largeCustomDictionary'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      regex: map['regex'] == null ? null : (PreventionStoredInfoTypeRegex.fromMap((map['regex'] as Map).cast<String, dynamic>())).input(),
-      storedInfoTypeId: map['storedInfoTypeId'] == null ? null : (map['storedInfoTypeId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dictionary: map['dictionary'] == null ? null : (PreventionStoredInfoTypeDictionary.fromMap((map['dictionary']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      largeCustomDictionary: map['largeCustomDictionary'] == null ? null : (PreventionStoredInfoTypeLargeCustomDictionary.fromMap((map['largeCustomDictionary']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      regex: map['regex'] == null ? null : (PreventionStoredInfoTypeRegex.fromMap((map['regex']! as Map).cast<String, dynamic>())).input(),
+      storedInfoTypeId: map['storedInfoTypeId'] == null ? null : (map['storedInfoTypeId']! as String).input(),
     );
   }
 }

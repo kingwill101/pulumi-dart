@@ -51,13 +51,13 @@ class SoaRecord {
 
   factory SoaRecord.fromMap(Map<String, dynamic> map) {
     return SoaRecord(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as double).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      minimumTtl: map['minimumTtl'] == null ? null : (map['minimumTtl'] as double).input(),
-      refreshTime: map['refreshTime'] == null ? null : (map['refreshTime'] as double).input(),
-      retryTime: map['retryTime'] == null ? null : (map['retryTime'] as double).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as double).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as double).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      minimumTtl: map['minimumTtl'] == null ? null : (map['minimumTtl']! as double).input(),
+      refreshTime: map['refreshTime'] == null ? null : (map['refreshTime']! as double).input(),
+      retryTime: map['retryTime'] == null ? null : (map['retryTime']! as double).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as double).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class SiteAddressProperties {
 
   factory SiteAddressProperties.fromMap(Map<String, dynamic> map) {
     return SiteAddressProperties(
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      country: map['country'] == null ? null : (map['country'] as String).input(),
-      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
-      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince'] as String).input(),
-      streetAddress1: map['streetAddress1'] == null ? null : (map['streetAddress1'] as String).input(),
-      streetAddress2: map['streetAddress2'] == null ? null : (map['streetAddress2'] as String).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
+      country: map['country'] == null ? null : (map['country']! as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode']! as String).input(),
+      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince']! as String).input(),
+      streetAddress1: map['streetAddress1'] == null ? null : (map['streetAddress1']! as String).input(),
+      streetAddress2: map['streetAddress2'] == null ? null : (map['streetAddress2']! as String).input(),
     );
   }
 }

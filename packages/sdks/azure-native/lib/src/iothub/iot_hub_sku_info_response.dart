@@ -31,7 +31,7 @@ class IotHubSkuInfoResponse {
 
   factory IotHubSkuInfoResponse.fromMap(Map<String, dynamic> map) {
     return IotHubSkuInfoResponse(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as double).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as double).input(),
       name: (map['name'] as String).input(),
       tier: (map['tier'] as String).input(),
     );

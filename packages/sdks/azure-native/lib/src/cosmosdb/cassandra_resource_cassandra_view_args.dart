@@ -68,14 +68,14 @@ class CassandraResourceCassandraViewArgs {
   factory CassandraResourceCassandraViewArgs.fromMap(Map<String, dynamic> map) {
     return CassandraResourceCassandraViewArgs(
       accountName: (map['accountName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       keyspaceName: (map['keyspaceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      options: map['options'] == null ? null : (CreateUpdateOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      options: map['options'] == null ? null : (CreateUpdateOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
       resource: (CassandraViewResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      viewName: map['viewName'] == null ? null : (map['viewName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      viewName: map['viewName'] == null ? null : (map['viewName']! as String).input(),
     );
   }
 }

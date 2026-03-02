@@ -37,8 +37,8 @@ class GetRuntimeIamPolicyArgs {
 
   factory GetRuntimeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeIamPolicyArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       runtimeName: (map['runtimeName'] as String).input(),
     );
   }

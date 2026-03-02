@@ -21,7 +21,7 @@ class ApiEndpointHandler {
 
   factory ApiEndpointHandler.fromMap(Map<String, dynamic> map) {
     return ApiEndpointHandler(
-      scriptPath: map['scriptPath'] == null ? null : (map['scriptPath'] as String).input(),
+      scriptPath: map['scriptPath'] == null ? null : (map['scriptPath']! as String).input(),
     );
   }
 }

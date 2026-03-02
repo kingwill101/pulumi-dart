@@ -44,7 +44,7 @@ class PostgresqlProfile {
       database: (map['database'] as String).input(),
       hostname: (map['hostname'] as String).input(),
       password: (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       username: (map['username'] as String).input(),
     );
   }

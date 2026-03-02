@@ -36,10 +36,10 @@ class GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis {
 
   factory GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      monitoringInterval: map['monitoringInterval'] == null ? null : (map['monitoringInterval'] as String).input(),
-      monitoringIntervalDays: map['monitoringIntervalDays'] == null ? null : (map['monitoringIntervalDays'] as int).input(),
-      stalenessDays: map['stalenessDays'] == null ? null : (map['stalenessDays'] as int).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      monitoringInterval: map['monitoringInterval'] == null ? null : (map['monitoringInterval']! as String).input(),
+      monitoringIntervalDays: map['monitoringIntervalDays'] == null ? null : (map['monitoringIntervalDays']! as int).input(),
+      stalenessDays: map['stalenessDays'] == null ? null : (map['stalenessDays']! as int).input(),
     );
   }
 }

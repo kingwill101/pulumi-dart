@@ -31,8 +31,8 @@ class FrameworkControlSet {
 
   factory FrameworkControlSet.fromMap(Map<String, dynamic> map) {
     return FrameworkControlSet(
-      controls: map['controls'] == null ? null : (pulumi.Input.decodeList<FrameworkControlSetControl>(map['controls'], (value) => FrameworkControlSetControl.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      controls: map['controls'] == null ? null : ((pulumi.Input.decodeList<FrameworkControlSetControl>(map['controls']!, (value) => FrameworkControlSetControl.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

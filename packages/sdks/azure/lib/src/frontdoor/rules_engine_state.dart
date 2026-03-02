@@ -47,12 +47,12 @@ class RulesEngineState {
 
   factory RulesEngineState.fromMap(Map<String, dynamic> map) {
     return RulesEngineState(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      frontdoorName: map['frontdoorName'] == null ? null : (map['frontdoorName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RulesEngineRule>(map['rules'], (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      frontdoorName: map['frontdoorName'] == null ? null : (map['frontdoorName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RulesEngineRule>(map['rules']!, (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

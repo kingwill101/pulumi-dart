@@ -37,10 +37,10 @@ class MonitoredSubscription {
 
   factory MonitoredSubscription.fromMap(Map<String, dynamic> map) {
     return MonitoredSubscription(
-      error: map['error'] == null ? null : (map['error'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      tagRules: map['tagRules'] == null ? null : (MonitoringTagRulesProperties.fromMap((map['tagRules'] as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      tagRules: map['tagRules'] == null ? null : (MonitoringTagRulesProperties.fromMap((map['tagRules']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

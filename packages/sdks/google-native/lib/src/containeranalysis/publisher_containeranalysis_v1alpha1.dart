@@ -31,9 +31,9 @@ class PublisherContaineranalysisV1alpha1 {
 
   factory PublisherContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return PublisherContaineranalysisV1alpha1(
-      issuingAuthority: map['issuingAuthority'] == null ? null : (map['issuingAuthority'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publisherNamespace: map['publisherNamespace'] == null ? null : (map['publisherNamespace'] as String).input(),
+      issuingAuthority: map['issuingAuthority'] == null ? null : (map['issuingAuthority']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publisherNamespace: map['publisherNamespace'] == null ? null : (map['publisherNamespace']! as String).input(),
     );
   }
 }

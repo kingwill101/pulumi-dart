@@ -22,7 +22,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
 
   factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections(
-      sectionTypes: map['sectionTypes'] == null ? null : ((map['sectionTypes'] as List).cast<String>()).input(),
+      sectionTypes: map['sectionTypes'] == null ? null : ((map['sectionTypes']! as List).cast<String>()).input(),
     );
   }
 }

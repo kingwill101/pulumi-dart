@@ -40,9 +40,9 @@ class TableReplicationArgs {
 
   factory TableReplicationArgs.fromMap(Map<String, dynamic> map) {
     return TableReplicationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       role: (map['role'] as String).input(),
-      rule: map['rule'] == null ? null : (TableReplicationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      rule: map['rule'] == null ? null : ((TableReplicationRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input()).input(),
       tableArn: (map['tableArn'] as String).input(),
     );
   }

@@ -32,9 +32,9 @@ class AssessmentSettings {
 
   factory AssessmentSettings.fromMap(Map<String, dynamic> map) {
     return AssessmentSettings(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      runImmediately: map['runImmediately'] == null ? null : (map['runImmediately'] as bool).input(),
-      schedule: map['schedule'] == null ? null : (Schedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      runImmediately: map['runImmediately'] == null ? null : (map['runImmediately']! as bool).input(),
+      schedule: map['schedule'] == null ? null : (Schedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

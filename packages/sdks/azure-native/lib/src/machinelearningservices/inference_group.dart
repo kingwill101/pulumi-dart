@@ -49,12 +49,12 @@ class InferenceGroup {
 
   factory InferenceGroup.fromMap(Map<String, dynamic> map) {
     return InferenceGroup(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environmentConfiguration: map['environmentConfiguration'] == null ? null : (GroupEnvironmentConfiguration.fromMap((map['environmentConfiguration'] as Map).cast<String, dynamic>())).input(),
-      modelConfiguration: map['modelConfiguration'] == null ? null : (GroupModelConfiguration.fromMap((map['modelConfiguration'] as Map).cast<String, dynamic>())).input(),
-      nodeSkuType: map['nodeSkuType'] == null ? null : (map['nodeSkuType'] as String).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePair>(map['properties'], (value) => StringStringKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scaleUnitSize: map['scaleUnitSize'] == null ? null : (map['scaleUnitSize'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environmentConfiguration: map['environmentConfiguration'] == null ? null : (GroupEnvironmentConfiguration.fromMap((map['environmentConfiguration']! as Map).cast<String, dynamic>())).input(),
+      modelConfiguration: map['modelConfiguration'] == null ? null : (GroupModelConfiguration.fromMap((map['modelConfiguration']! as Map).cast<String, dynamic>())).input(),
+      nodeSkuType: map['nodeSkuType'] == null ? null : (map['nodeSkuType']! as String).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePair>(map['properties']!, (value) => StringStringKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scaleUnitSize: map['scaleUnitSize'] == null ? null : (map['scaleUnitSize']! as int).input(),
     );
   }
 }

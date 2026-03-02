@@ -36,7 +36,7 @@ class QueuePolicyArgs {
     return QueuePolicyArgs(
       policy: (map['policy'] as String).input(),
       queueUrl: (map['queueUrl'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

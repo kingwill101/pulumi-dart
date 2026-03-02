@@ -23,7 +23,7 @@ class VmwareAdminClusterAuthorization {
 
   factory VmwareAdminClusterAuthorization.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterAuthorization(
-      viewerUsers: map['viewerUsers'] == null ? null : (pulumi.Input.decodeList<VmwareAdminClusterAuthorizationViewerUser>(map['viewerUsers'], (value) => VmwareAdminClusterAuthorizationViewerUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      viewerUsers: map['viewerUsers'] == null ? null : (pulumi.Input.decodeList<VmwareAdminClusterAuthorizationViewerUser>(map['viewerUsers']!, (value) => VmwareAdminClusterAuthorizationViewerUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

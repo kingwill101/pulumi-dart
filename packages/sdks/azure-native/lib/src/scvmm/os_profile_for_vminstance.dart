@@ -26,8 +26,8 @@ class OsProfileForVMInstance {
 
   factory OsProfileForVMInstance.fromMap(Map<String, dynamic> map) {
     return OsProfileForVMInstance(
-      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword'] as String).input(),
-      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
+      adminPassword: map['adminPassword'] == null ? null : (map['adminPassword']! as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
     );
   }
 }

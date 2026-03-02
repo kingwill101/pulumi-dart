@@ -97,20 +97,20 @@ class ExcelDataset {
 
   factory ExcelDataset.fromMap(Map<String, dynamic> map) {
     return ExcelDataset(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      compression: map['compression'] == null ? null : (DatasetCompression.fromMap((map['compression'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      firstRowAsHeader: map['firstRowAsHeader'] == null ? null : (map['firstRowAsHeader']).input(),
-      folder: map['folder'] == null ? null : (DatasetFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      compression: map['compression'] == null ? null : (DatasetCompression.fromMap((map['compression']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      firstRowAsHeader: map['firstRowAsHeader'] == null ? null : (map['firstRowAsHeader']!).input(),
+      folder: map['folder'] == null ? null : (DatasetFolder.fromMap((map['folder']! as Map).cast<String, dynamic>())).input(),
       linkedServiceName: (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
       location: (AmazonS3CompatibleLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
-      nullValue: map['nullValue'] == null ? null : (map['nullValue']).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters'], (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      range: map['range'] == null ? null : (map['range']).input(),
-      schema: map['schema'] == null ? null : (map['schema']).input(),
-      sheetIndex: map['sheetIndex'] == null ? null : (map['sheetIndex']).input(),
-      sheetName: map['sheetName'] == null ? null : (map['sheetName']).input(),
-      structure: map['structure'] == null ? null : (map['structure']).input(),
+      nullValue: map['nullValue'] == null ? null : (map['nullValue']!).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecification>(map['parameters']!, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      range: map['range'] == null ? null : (map['range']!).input(),
+      schema: map['schema'] == null ? null : (map['schema']!).input(),
+      sheetIndex: map['sheetIndex'] == null ? null : (map['sheetIndex']!).input(),
+      sheetName: map['sheetName'] == null ? null : (map['sheetName']!).input(),
+      structure: map['structure'] == null ? null : (map['structure']!).input(),
       type: (map['type'] as String).input(),
     );
   }

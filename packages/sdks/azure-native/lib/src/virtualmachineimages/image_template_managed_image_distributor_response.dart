@@ -42,7 +42,7 @@ class ImageTemplateManagedImageDistributorResponse {
 
   factory ImageTemplateManagedImageDistributorResponse.fromMap(Map<String, dynamic> map) {
     return ImageTemplateManagedImageDistributorResponse(
-      artifactTags: map['artifactTags'] == null ? null : ((map['artifactTags'] as Map).cast<String, String>()).input(),
+      artifactTags: map['artifactTags'] == null ? null : ((map['artifactTags']! as Map).cast<String, String>()).input(),
       imageId: (map['imageId'] as String).input(),
       location: (map['location'] as String).input(),
       runOutputName: (map['runOutputName'] as String).input(),

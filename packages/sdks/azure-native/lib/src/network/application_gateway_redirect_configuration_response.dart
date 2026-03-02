@@ -78,17 +78,17 @@ class ApplicationGatewayRedirectConfigurationResponse {
   factory ApplicationGatewayRedirectConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRedirectConfigurationResponse(
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      includePath: map['includePath'] == null ? null : (map['includePath'] as bool).input(),
-      includeQueryString: map['includeQueryString'] == null ? null : (map['includeQueryString'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['pathRules'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      redirectType: map['redirectType'] == null ? null : (map['redirectType'] as String).input(),
-      requestRoutingRules: map['requestRoutingRules'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['requestRoutingRules'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetListener: map['targetListener'] == null ? null : (SubResourceResponse.fromMap((map['targetListener'] as Map).cast<String, dynamic>())).input(),
-      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      includePath: map['includePath'] == null ? null : (map['includePath']! as bool).input(),
+      includeQueryString: map['includeQueryString'] == null ? null : (map['includeQueryString']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['pathRules']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      redirectType: map['redirectType'] == null ? null : (map['redirectType']! as String).input(),
+      requestRoutingRules: map['requestRoutingRules'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['requestRoutingRules']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetListener: map['targetListener'] == null ? null : (SubResourceResponse.fromMap((map['targetListener']! as Map).cast<String, dynamic>())).input(),
+      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl']! as String).input(),
       type: (map['type'] as String).input(),
-      urlPathMaps: map['urlPathMaps'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['urlPathMaps'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      urlPathMaps: map['urlPathMaps'] == null ? null : (pulumi.Input.decodeList<SubResourceResponse>(map['urlPathMaps']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

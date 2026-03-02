@@ -100,7 +100,7 @@ class GetZoneResult {
   factory GetZoneResult.fromMap(Map<String, dynamic> map) {
     return GetZoneResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       maxNumberOfRecordSets: map['maxNumberOfRecordSets'] as double,
@@ -108,13 +108,13 @@ class GetZoneResult {
       name: map['name'] as String,
       nameServers: (map['nameServers'] as List).cast<String>(),
       numberOfRecordSets: map['numberOfRecordSets'] as double,
-      registrationVirtualNetworks: map['registrationVirtualNetworks'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['registrationVirtualNetworks'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      resolutionVirtualNetworks: map['resolutionVirtualNetworks'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['resolutionVirtualNetworks'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      registrationVirtualNetworks: map['registrationVirtualNetworks'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['registrationVirtualNetworks']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      resolutionVirtualNetworks: map['resolutionVirtualNetworks'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['resolutionVirtualNetworks']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
       signingKeys: pulumi.Input.decodeList<SigningKeyResponse>(map['signingKeys'], (value) => SigningKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      zoneType: map['zoneType'] == null ? null : map['zoneType'] as String,
+      zoneType: map['zoneType'] == null ? null : map['zoneType']! as String,
     );
   }
 }

@@ -39,10 +39,10 @@ class PoolMount {
 
   factory PoolMount.fromMap(Map<String, dynamic> map) {
     return PoolMount(
-      azureBlobFileSystem: map['azureBlobFileSystem'] == null ? null : (PoolMountAzureBlobFileSystem.fromMap((map['azureBlobFileSystem'] as Map).cast<String, dynamic>())).input(),
-      azureFileShares: map['azureFileShares'] == null ? null : (pulumi.Input.decodeList<PoolMountAzureFileShare>(map['azureFileShares'], (value) => PoolMountAzureFileShare.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cifsMounts: map['cifsMounts'] == null ? null : (pulumi.Input.decodeList<PoolMountCifsMount>(map['cifsMounts'], (value) => PoolMountCifsMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nfsMounts: map['nfsMounts'] == null ? null : (pulumi.Input.decodeList<PoolMountNfsMount>(map['nfsMounts'], (value) => PoolMountNfsMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureBlobFileSystem: map['azureBlobFileSystem'] == null ? null : (PoolMountAzureBlobFileSystem.fromMap((map['azureBlobFileSystem']! as Map).cast<String, dynamic>())).input(),
+      azureFileShares: map['azureFileShares'] == null ? null : (pulumi.Input.decodeList<PoolMountAzureFileShare>(map['azureFileShares']!, (value) => PoolMountAzureFileShare.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cifsMounts: map['cifsMounts'] == null ? null : (pulumi.Input.decodeList<PoolMountCifsMount>(map['cifsMounts']!, (value) => PoolMountCifsMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nfsMounts: map['nfsMounts'] == null ? null : (pulumi.Input.decodeList<PoolMountNfsMount>(map['nfsMounts']!, (value) => PoolMountNfsMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

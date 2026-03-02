@@ -26,8 +26,8 @@ class TargetDirectoryRequestProperties {
 
   factory TargetDirectoryRequestProperties.fromMap(Map<String, dynamic> map) {
     return TargetDirectoryRequestProperties(
-      destinationOwnerId: map['destinationOwnerId'] == null ? null : (map['destinationOwnerId'] as String).input(),
-      destinationTenantId: map['destinationTenantId'] == null ? null : (map['destinationTenantId'] as String).input(),
+      destinationOwnerId: map['destinationOwnerId'] == null ? null : (map['destinationOwnerId']! as String).input(),
+      destinationTenantId: map['destinationTenantId'] == null ? null : (map['destinationTenantId']! as String).input(),
     );
   }
 }

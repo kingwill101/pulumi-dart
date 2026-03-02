@@ -49,12 +49,12 @@ class SecretValueArgs {
 
   factory SecretValueArgs.fromMap(Map<String, dynamic> map) {
     return SecretValueArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       secretResourceName: (map['secretResourceName'] as String).input(),
-      secretValueResourceName: map['secretValueResourceName'] == null ? null : (map['secretValueResourceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      secretValueResourceName: map['secretValueResourceName'] == null ? null : (map['secretValueResourceName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

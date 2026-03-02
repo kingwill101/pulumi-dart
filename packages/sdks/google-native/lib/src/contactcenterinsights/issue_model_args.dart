@@ -54,13 +54,13 @@ class IssueModelArgs {
 
   factory IssueModelArgs.fromMap(Map<String, dynamic> map) {
     return IssueModelArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      inputDataConfig: map['inputDataConfig'] == null ? null : (GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      modelType: map['modelType'] == null ? null : (IssueModelModelType.fromValue(map['modelType'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      inputDataConfig: map['inputDataConfig'] == null ? null : (GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromMap((map['inputDataConfig']! as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      modelType: map['modelType'] == null ? null : (IssueModelModelType.fromValue(map['modelType']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

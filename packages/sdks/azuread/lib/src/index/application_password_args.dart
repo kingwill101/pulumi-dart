@@ -50,11 +50,11 @@ class ApplicationPasswordArgs {
   factory ApplicationPasswordArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationPasswordArgs(
       applicationId: (map['applicationId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      endDateRelative: map['endDateRelative'] == null ? null : (map['endDateRelative'] as String).input(),
-      rotateWhenChanged: map['rotateWhenChanged'] == null ? null : ((map['rotateWhenChanged'] as Map).cast<String, String>()).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
+      endDateRelative: map['endDateRelative'] == null ? null : (map['endDateRelative']! as String).input(),
+      rotateWhenChanged: map['rotateWhenChanged'] == null ? null : ((map['rotateWhenChanged']! as Map).cast<String, String>()).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class SoleTenantNodeType {
 
   factory SoleTenantNodeType.fromMap(Map<String, dynamic> map) {
     return SoleTenantNodeType(
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
     );
   }
 }

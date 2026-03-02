@@ -30,9 +30,9 @@ class BucketObjectLockConfigurationRuleDefaultRetention {
 
   factory BucketObjectLockConfigurationRuleDefaultRetention.fromMap(Map<String, dynamic> map) {
     return BucketObjectLockConfigurationRuleDefaultRetention(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      years: map['years'] == null ? null : (map['years'] as int).input(),
+      days: map['days'] == null ? null : ((map['days'] as int).input()).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
+      years: map['years'] == null ? null : ((map['years'] as int).input()).input(),
     );
   }
 }

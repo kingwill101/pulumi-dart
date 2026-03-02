@@ -32,9 +32,9 @@ class ContainerResourceMetricSourcePatchAutoscalingV2beta2 {
 
   factory ContainerResourceMetricSourcePatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return ContainerResourceMetricSourcePatchAutoscalingV2beta2(
-      container: map['container'] == null ? null : (map['container'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      target: map['target'] == null ? null : (MetricTargetPatchAutoscalingV2beta2.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      container: map['container'] == null ? null : (map['container']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      target: map['target'] == null ? null : (MetricTargetPatchAutoscalingV2beta2.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class TimelineResultsMetadataResponse {
   factory TimelineResultsMetadataResponse.fromMap(Map<String, dynamic> map) {
     return TimelineResultsMetadataResponse(
       aggregations: (pulumi.Input.decodeList<TimelineAggregationResponse>(map['aggregations'], (value) => TimelineAggregationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<TimelineErrorResponse>(map['errors'], (value) => TimelineErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<TimelineErrorResponse>(map['errors']!, (value) => TimelineErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       totalCount: (map['totalCount'] as int).input(),
     );
   }

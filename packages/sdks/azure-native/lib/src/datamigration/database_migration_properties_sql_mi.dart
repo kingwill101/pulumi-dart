@@ -69,16 +69,16 @@ class DatabaseMigrationPropertiesSqlMi {
 
   factory DatabaseMigrationPropertiesSqlMi.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationPropertiesSqlMi(
-      backupConfiguration: map['backupConfiguration'] == null ? null : (BackupConfiguration.fromMap((map['backupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      backupConfiguration: map['backupConfiguration'] == null ? null : (BackupConfiguration.fromMap((map['backupConfiguration']! as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
-      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId'] as String).input(),
-      migrationService: map['migrationService'] == null ? null : (map['migrationService'] as String).input(),
-      offlineConfiguration: map['offlineConfiguration'] == null ? null : (OfflineConfiguration.fromMap((map['offlineConfiguration'] as Map).cast<String, dynamic>())).input(),
-      provisioningError: map['provisioningError'] == null ? null : (map['provisioningError'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName'] as String).input(),
-      sourceSqlConnection: map['sourceSqlConnection'] == null ? null : (SqlConnectionInformation.fromMap((map['sourceSqlConnection'] as Map).cast<String, dynamic>())).input(),
-      targetDatabaseCollation: map['targetDatabaseCollation'] == null ? null : (map['targetDatabaseCollation'] as String).input(),
+      migrationOperationId: map['migrationOperationId'] == null ? null : (map['migrationOperationId']! as String).input(),
+      migrationService: map['migrationService'] == null ? null : (map['migrationService']! as String).input(),
+      offlineConfiguration: map['offlineConfiguration'] == null ? null : (OfflineConfiguration.fromMap((map['offlineConfiguration']! as Map).cast<String, dynamic>())).input(),
+      provisioningError: map['provisioningError'] == null ? null : (map['provisioningError']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      sourceDatabaseName: map['sourceDatabaseName'] == null ? null : (map['sourceDatabaseName']! as String).input(),
+      sourceSqlConnection: map['sourceSqlConnection'] == null ? null : (SqlConnectionInformation.fromMap((map['sourceSqlConnection']! as Map).cast<String, dynamic>())).input(),
+      targetDatabaseCollation: map['targetDatabaseCollation'] == null ? null : (map['targetDatabaseCollation']! as String).input(),
     );
   }
 }

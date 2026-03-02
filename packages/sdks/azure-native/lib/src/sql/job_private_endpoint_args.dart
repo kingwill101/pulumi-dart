@@ -45,7 +45,7 @@ class JobPrivateEndpointArgs {
   factory JobPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return JobPrivateEndpointArgs(
       jobAgentName: (map['jobAgentName'] as String).input(),
-      privateEndpointName: map['privateEndpointName'] == null ? null : (map['privateEndpointName'] as String).input(),
+      privateEndpointName: map['privateEndpointName'] == null ? null : (map['privateEndpointName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
       targetServerAzureResourceId: (map['targetServerAzureResourceId'] as String).input(),

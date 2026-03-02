@@ -27,7 +27,7 @@ class UptimeCheckConfigTcpCheck {
 
   factory UptimeCheckConfigTcpCheck.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigTcpCheck(
-      pingConfig: map['pingConfig'] == null ? null : (UptimeCheckConfigTcpCheckPingConfig.fromMap((map['pingConfig'] as Map).cast<String, dynamic>())).input(),
+      pingConfig: map['pingConfig'] == null ? null : (UptimeCheckConfigTcpCheckPingConfig.fromMap((map['pingConfig']! as Map).cast<String, dynamic>())).input(),
       port: (map['port'] as int).input(),
     );
   }

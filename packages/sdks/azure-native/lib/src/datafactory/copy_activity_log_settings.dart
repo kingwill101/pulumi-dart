@@ -26,8 +26,8 @@ class CopyActivityLogSettings {
 
   factory CopyActivityLogSettings.fromMap(Map<String, dynamic> map) {
     return CopyActivityLogSettings(
-      enableReliableLogging: map['enableReliableLogging'] == null ? null : (map['enableReliableLogging']).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel']).input(),
+      enableReliableLogging: map['enableReliableLogging'] == null ? null : (map['enableReliableLogging']!).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']!).input(),
     );
   }
 }

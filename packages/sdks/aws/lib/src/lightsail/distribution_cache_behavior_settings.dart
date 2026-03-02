@@ -58,14 +58,14 @@ class DistributionCacheBehaviorSettings {
 
   factory DistributionCacheBehaviorSettings.fromMap(Map<String, dynamic> map) {
     return DistributionCacheBehaviorSettings(
-      allowedHttpMethods: map['allowedHttpMethods'] == null ? null : (map['allowedHttpMethods'] as String).input(),
-      cachedHttpMethods: map['cachedHttpMethods'] == null ? null : (map['cachedHttpMethods'] as String).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
-      forwardedCookies: map['forwardedCookies'] == null ? null : (DistributionCacheBehaviorSettingsForwardedCookies.fromMap((map['forwardedCookies'] as Map).cast<String, dynamic>())).input(),
-      forwardedHeaders: map['forwardedHeaders'] == null ? null : (DistributionCacheBehaviorSettingsForwardedHeaders.fromMap((map['forwardedHeaders'] as Map).cast<String, dynamic>())).input(),
-      forwardedQueryStrings: map['forwardedQueryStrings'] == null ? null : (DistributionCacheBehaviorSettingsForwardedQueryStrings.fromMap((map['forwardedQueryStrings'] as Map).cast<String, dynamic>())).input(),
-      maximumTtl: map['maximumTtl'] == null ? null : (map['maximumTtl'] as int).input(),
-      minimumTtl: map['minimumTtl'] == null ? null : (map['minimumTtl'] as int).input(),
+      allowedHttpMethods: map['allowedHttpMethods'] == null ? null : ((map['allowedHttpMethods'] as String).input()).input(),
+      cachedHttpMethods: map['cachedHttpMethods'] == null ? null : ((map['cachedHttpMethods'] as String).input()).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : ((map['defaultTtl'] as int).input()).input(),
+      forwardedCookies: map['forwardedCookies'] == null ? null : ((DistributionCacheBehaviorSettingsForwardedCookies.fromMap((map['forwardedCookies']! as Map).cast<String, dynamic>())).input()).input(),
+      forwardedHeaders: map['forwardedHeaders'] == null ? null : ((DistributionCacheBehaviorSettingsForwardedHeaders.fromMap((map['forwardedHeaders']! as Map).cast<String, dynamic>())).input()).input(),
+      forwardedQueryStrings: map['forwardedQueryStrings'] == null ? null : ((DistributionCacheBehaviorSettingsForwardedQueryStrings.fromMap((map['forwardedQueryStrings']! as Map).cast<String, dynamic>())).input()).input(),
+      maximumTtl: map['maximumTtl'] == null ? null : ((map['maximumTtl'] as int).input()).input(),
+      minimumTtl: map['minimumTtl'] == null ? null : ((map['minimumTtl'] as int).input()).input(),
     );
   }
 }

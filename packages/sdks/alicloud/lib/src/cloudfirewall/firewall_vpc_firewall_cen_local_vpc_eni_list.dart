@@ -25,8 +25,8 @@ class FirewallVpcFirewallCenLocalVpcEniList {
 
   factory FirewallVpcFirewallCenLocalVpcEniList.fromMap(Map<String, dynamic> map) {
     return FirewallVpcFirewallCenLocalVpcEniList(
-      eniId: map['eniId'] == null ? null : (map['eniId'] as String).input(),
-      eniPrivateIpAddress: map['eniPrivateIpAddress'] == null ? null : (map['eniPrivateIpAddress'] as String).input(),
+      eniId: map['eniId'] == null ? null : (map['eniId']! as String).input(),
+      eniPrivateIpAddress: map['eniPrivateIpAddress'] == null ? null : (map['eniPrivateIpAddress']! as String).input(),
     );
   }
 }

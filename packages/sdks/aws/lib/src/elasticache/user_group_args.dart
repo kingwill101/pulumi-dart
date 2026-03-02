@@ -47,10 +47,10 @@ class UserGroupArgs {
   factory UserGroupArgs.fromMap(Map<String, dynamic> map) {
     return UserGroupArgs(
       engine: (map['engine'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       userGroupId: (map['userGroupId'] as String).input(),
-      userIds: map['userIds'] == null ? null : ((map['userIds'] as List).cast<String>()).input(),
+      userIds: map['userIds'] == null ? null : (((map['userIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

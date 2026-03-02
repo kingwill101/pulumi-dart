@@ -32,9 +32,9 @@ class Environment {
 
   factory Environment.fromMap(Map<String, dynamic> map) {
     return Environment(
-      encryptedVariables: map['encryptedVariables'] == null ? null : (KMSEnvMap.fromMap((map['encryptedVariables'] as Map).cast<String, dynamic>())).input(),
-      secretVariables: map['secretVariables'] == null ? null : ((map['secretVariables'] as Map).cast<String, String>()).input(),
-      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, String>()).input(),
+      encryptedVariables: map['encryptedVariables'] == null ? null : (KMSEnvMap.fromMap((map['encryptedVariables']! as Map).cast<String, dynamic>())).input(),
+      secretVariables: map['secretVariables'] == null ? null : ((map['secretVariables']! as Map).cast<String, String>()).input(),
+      variables: map['variables'] == null ? null : ((map['variables']! as Map).cast<String, String>()).input(),
     );
   }
 }

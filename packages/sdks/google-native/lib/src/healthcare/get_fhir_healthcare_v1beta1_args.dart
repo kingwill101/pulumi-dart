@@ -48,7 +48,7 @@ class GetFhirHealthcareV1beta1Args {
       fhirId1: (map['fhirId1'] as String).input(),
       fhirStoreId: (map['fhirStoreId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

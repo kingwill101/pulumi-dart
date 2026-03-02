@@ -78,17 +78,17 @@ class GetAddressResult {
 
   factory GetAddressResult.fromMap(Map<String, dynamic> map) {
     return GetAddressResult(
-      addressClassification: map['addressClassification'] == null ? null : map['addressClassification'] as String,
+      addressClassification: map['addressClassification'] == null ? null : map['addressClassification']! as String,
       addressValidationStatus: map['addressValidationStatus'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      contactDetails: map['contactDetails'] == null ? null : ContactDetailsResponse.fromMap((map['contactDetails'] as Map).cast<String, dynamic>()),
+      contactDetails: map['contactDetails'] == null ? null : ContactDetailsResponse.fromMap((map['contactDetails']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      shippingAddress: map['shippingAddress'] == null ? null : ShippingAddressResponse.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>()),
+      shippingAddress: map['shippingAddress'] == null ? null : ShippingAddressResponse.fromMap((map['shippingAddress']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

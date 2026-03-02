@@ -29,8 +29,8 @@ class ResourceProviderRegistrationState {
 
   factory ResourceProviderRegistrationState.fromMap(Map<String, dynamic> map) {
     return ResourceProviderRegistrationState(
-      features: map['features'] == null ? null : (pulumi.Input.decodeList<ResourceProviderRegistrationFeature>(map['features'], (value) => ResourceProviderRegistrationFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      features: map['features'] == null ? null : (pulumi.Input.decodeList<ResourceProviderRegistrationFeature>(map['features']!, (value) => ResourceProviderRegistrationFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

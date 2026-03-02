@@ -36,10 +36,10 @@ class BasicAccelerateIpEndpointRelationState {
 
   factory BasicAccelerateIpEndpointRelationState.fromMap(Map<String, dynamic> map) {
     return BasicAccelerateIpEndpointRelationState(
-      accelerateIpId: map['accelerateIpId'] == null ? null : (map['accelerateIpId'] as String).input(),
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accelerateIpId: map['accelerateIpId'] == null ? null : (map['accelerateIpId']! as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

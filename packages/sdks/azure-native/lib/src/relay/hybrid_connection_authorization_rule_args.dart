@@ -44,7 +44,7 @@ class HybridConnectionAuthorizationRuleArgs {
 
   factory HybridConnectionAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return HybridConnectionAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName'] as String).input(),
+      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName']! as String).input(),
       hybridConnectionName: (map['hybridConnectionName'] as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

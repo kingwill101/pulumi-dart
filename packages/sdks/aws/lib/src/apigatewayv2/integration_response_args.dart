@@ -55,12 +55,12 @@ class IntegrationResponseArgs {
   factory IntegrationResponseArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationResponseArgs(
       apiId: (map['apiId'] as String).input(),
-      contentHandlingStrategy: map['contentHandlingStrategy'] == null ? null : (map['contentHandlingStrategy'] as String).input(),
+      contentHandlingStrategy: map['contentHandlingStrategy'] == null ? null : ((map['contentHandlingStrategy'] as String).input()).input(),
       integrationId: (map['integrationId'] as String).input(),
       integrationResponseKey: (map['integrationResponseKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      responseTemplates: map['responseTemplates'] == null ? null : ((map['responseTemplates'] as Map).cast<String, String>()).input(),
-      templateSelectionExpression: map['templateSelectionExpression'] == null ? null : (map['templateSelectionExpression'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      responseTemplates: map['responseTemplates'] == null ? null : (((map['responseTemplates'] as Map).cast<String, String>()).input()).input(),
+      templateSelectionExpression: map['templateSelectionExpression'] == null ? null : ((map['templateSelectionExpression'] as String).input()).input(),
     );
   }
 }

@@ -64,15 +64,15 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      apiEndpoint: map['apiEndpoint'] == null ? null : (map['apiEndpoint'] as String).input(),
-      httpRetryMax: map['httpRetryMax'] == null ? null : (map['httpRetryMax'] as int).input(),
-      httpRetryWaitMax: map['httpRetryWaitMax'] == null ? null : (map['httpRetryWaitMax'] as double).input(),
-      httpRetryWaitMin: map['httpRetryWaitMin'] == null ? null : (map['httpRetryWaitMin'] as double).input(),
-      requestsPerSecond: map['requestsPerSecond'] == null ? null : (map['requestsPerSecond'] as double).input(),
-      spacesAccessId: map['spacesAccessId'] == null ? null : (map['spacesAccessId'] as String).input(),
-      spacesEndpoint: map['spacesEndpoint'] == null ? null : (map['spacesEndpoint'] as String).input(),
-      spacesSecretKey: map['spacesSecretKey'] == null ? null : (map['spacesSecretKey'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      apiEndpoint: map['apiEndpoint'] == null ? null : (map['apiEndpoint']! as String).input(),
+      httpRetryMax: map['httpRetryMax'] == null ? null : (map['httpRetryMax']! as int).input(),
+      httpRetryWaitMax: map['httpRetryWaitMax'] == null ? null : (map['httpRetryWaitMax']! as double).input(),
+      httpRetryWaitMin: map['httpRetryWaitMin'] == null ? null : (map['httpRetryWaitMin']! as double).input(),
+      requestsPerSecond: map['requestsPerSecond'] == null ? null : (map['requestsPerSecond']! as double).input(),
+      spacesAccessId: map['spacesAccessId'] == null ? null : (map['spacesAccessId']! as String).input(),
+      spacesEndpoint: map['spacesEndpoint'] == null ? null : (map['spacesEndpoint']! as String).input(),
+      spacesSecretKey: map['spacesSecretKey'] == null ? null : (map['spacesSecretKey']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

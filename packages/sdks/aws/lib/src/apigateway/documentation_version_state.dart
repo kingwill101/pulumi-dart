@@ -36,10 +36,10 @@ class DocumentationVersionState {
 
   factory DocumentationVersionState.fromMap(Map<String, dynamic> map) {
     return DocumentationVersionState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restApiId: map['restApiId'] == null ? null : (map['restApiId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restApiId: map['restApiId'] == null ? null : ((map['restApiId'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

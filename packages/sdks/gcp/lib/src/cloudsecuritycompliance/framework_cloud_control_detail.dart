@@ -37,7 +37,7 @@ class FrameworkCloudControlDetail {
     return FrameworkCloudControlDetail(
       majorRevisionId: (map['majorRevisionId'] as String).input(),
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<FrameworkCloudControlDetailParameter>(map['parameters'], (value) => FrameworkCloudControlDetailParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<FrameworkCloudControlDetailParameter>(map['parameters']!, (value) => FrameworkCloudControlDetailParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class PolicyPatch {
 
   factory PolicyPatch.fromMap(Map<String, dynamic> map) {
     return PolicyPatch(
-      level: map['level'] == null ? null : (map['level'] as String).input(),
-      stages: map['stages'] == null ? null : ((map['stages'] as List).cast<String>()).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
+      stages: map['stages'] == null ? null : ((map['stages']! as List).cast<String>()).input(),
     );
   }
 }

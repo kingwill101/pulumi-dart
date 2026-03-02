@@ -27,7 +27,7 @@ class TopicsConfigurationResponse {
 
   factory TopicsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TopicsConfigurationResponse(
-      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomainConfigurationResponse>(map['customDomains'], (value) => CustomDomainConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomainConfigurationResponse>(map['customDomains']!, (value) => CustomDomainConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       hostname: (map['hostname'] as String).input(),
     );
   }

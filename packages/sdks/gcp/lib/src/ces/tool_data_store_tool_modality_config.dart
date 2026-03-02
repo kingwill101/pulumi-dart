@@ -44,10 +44,10 @@ class ToolDataStoreToolModalityConfig {
 
   factory ToolDataStoreToolModalityConfig.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolModalityConfig(
-      groundingConfig: map['groundingConfig'] == null ? null : (ToolDataStoreToolModalityConfigGroundingConfig.fromMap((map['groundingConfig'] as Map).cast<String, dynamic>())).input(),
+      groundingConfig: map['groundingConfig'] == null ? null : (ToolDataStoreToolModalityConfigGroundingConfig.fromMap((map['groundingConfig']! as Map).cast<String, dynamic>())).input(),
       modalityType: (map['modalityType'] as String).input(),
-      rewriterConfig: map['rewriterConfig'] == null ? null : (ToolDataStoreToolModalityConfigRewriterConfig.fromMap((map['rewriterConfig'] as Map).cast<String, dynamic>())).input(),
-      summarizationConfig: map['summarizationConfig'] == null ? null : (ToolDataStoreToolModalityConfigSummarizationConfig.fromMap((map['summarizationConfig'] as Map).cast<String, dynamic>())).input(),
+      rewriterConfig: map['rewriterConfig'] == null ? null : (ToolDataStoreToolModalityConfigRewriterConfig.fromMap((map['rewriterConfig']! as Map).cast<String, dynamic>())).input(),
+      summarizationConfig: map['summarizationConfig'] == null ? null : (ToolDataStoreToolModalityConfigSummarizationConfig.fromMap((map['summarizationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

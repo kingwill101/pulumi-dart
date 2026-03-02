@@ -26,8 +26,8 @@ class SortOptions {
 
   factory SortOptions.fromMap(Map<String, dynamic> map) {
     return SortOptions(
-      operatorName: map['operatorName'] == null ? null : (map['operatorName'] as String).input(),
-      sortOrder: map['sortOrder'] == null ? null : (SortOptionsSortOrder.fromValue(map['sortOrder'] as String)).input(),
+      operatorName: map['operatorName'] == null ? null : (map['operatorName']! as String).input(),
+      sortOrder: map['sortOrder'] == null ? null : (SortOptionsSortOrder.fromValue(map['sortOrder']! as String)).input(),
     );
   }
 }

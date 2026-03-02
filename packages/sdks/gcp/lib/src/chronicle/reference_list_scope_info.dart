@@ -22,7 +22,7 @@ class ReferenceListScopeInfo {
 
   factory ReferenceListScopeInfo.fromMap(Map<String, dynamic> map) {
     return ReferenceListScopeInfo(
-      referenceListScope: map['referenceListScope'] == null ? null : (ReferenceListScopeInfoReferenceListScope.fromMap((map['referenceListScope'] as Map).cast<String, dynamic>())).input(),
+      referenceListScope: map['referenceListScope'] == null ? null : (ReferenceListScopeInfoReferenceListScope.fromMap((map['referenceListScope']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveCo
 
   factory RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig.fromMap(Map<String, dynamic> map) {
     return RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig(
-      targetField: map['targetField'] == null ? null : (map['targetField'] as String).input(),
-      targetFieldValueFloat: map['targetFieldValueFloat'] == null ? null : (map['targetFieldValueFloat'] as double).input(),
+      targetField: map['targetField'] == null ? null : (map['targetField']! as String).input(),
+      targetFieldValueFloat: map['targetFieldValueFloat'] == null ? null : (map['targetFieldValueFloat']! as double).input(),
     );
   }
 }

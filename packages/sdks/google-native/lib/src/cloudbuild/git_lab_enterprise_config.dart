@@ -32,9 +32,9 @@ class GitLabEnterpriseConfig {
 
   factory GitLabEnterpriseConfig.fromMap(Map<String, dynamic> map) {
     return GitLabEnterpriseConfig(
-      hostUri: map['hostUri'] == null ? null : (map['hostUri'] as String).input(),
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>())).input(),
-      sslCa: map['sslCa'] == null ? null : (map['sslCa'] as String).input(),
+      hostUri: map['hostUri'] == null ? null : (map['hostUri']! as String).input(),
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig']! as Map).cast<String, dynamic>())).input(),
+      sslCa: map['sslCa'] == null ? null : (map['sslCa']! as String).input(),
     );
   }
 }

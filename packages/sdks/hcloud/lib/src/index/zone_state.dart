@@ -58,14 +58,14 @@ class ZoneState {
 
   factory ZoneState.fromMap(Map<String, dynamic> map) {
     return ZoneState(
-      authoritativeNameservers: map['authoritativeNameservers'] == null ? null : (ZoneAuthoritativeNameservers.fromMap((map['authoritativeNameservers'] as Map).cast<String, dynamic>())).input(),
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryNameservers: map['primaryNameservers'] == null ? null : (pulumi.Input.decodeList<ZonePrimaryNameserver>(map['primaryNameservers'], (value) => ZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      registrar: map['registrar'] == null ? null : (map['registrar'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      authoritativeNameservers: map['authoritativeNameservers'] == null ? null : (ZoneAuthoritativeNameservers.fromMap((map['authoritativeNameservers']! as Map).cast<String, dynamic>())).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryNameservers: map['primaryNameservers'] == null ? null : (pulumi.Input.decodeList<ZonePrimaryNameserver>(map['primaryNameservers']!, (value) => ZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      registrar: map['registrar'] == null ? null : (map['registrar']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
     );
   }
 }

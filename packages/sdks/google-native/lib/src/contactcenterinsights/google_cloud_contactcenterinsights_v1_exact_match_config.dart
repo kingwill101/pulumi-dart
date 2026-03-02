@@ -21,7 +21,7 @@ class GoogleCloudContactcenterinsightsV1ExactMatchConfig {
 
   factory GoogleCloudContactcenterinsightsV1ExactMatchConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ExactMatchConfig(
-      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
+      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive']! as bool).input(),
     );
   }
 }

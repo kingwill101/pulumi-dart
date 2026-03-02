@@ -32,7 +32,7 @@ class WebIamPolicyArgs {
   factory WebIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return WebIamPolicyArgs(
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

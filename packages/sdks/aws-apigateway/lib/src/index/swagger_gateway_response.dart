@@ -27,9 +27,9 @@ class SwaggerGatewayResponse {
 
   factory SwaggerGatewayResponse.fromMap(Map<String, dynamic> map) {
     return SwaggerGatewayResponse(
-      responseParameters: map['responseParameters'] == null ? null : ((map['responseParameters'] as Map).cast<String, String>()).input(),
-      responseTemplates: map['responseTemplates'] == null ? null : ((map['responseTemplates'] as Map).cast<String, String>()).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as double).input(),
+      responseParameters: map['responseParameters'] == null ? null : ((map['responseParameters']! as Map).cast<String, String>()).input(),
+      responseTemplates: map['responseTemplates'] == null ? null : ((map['responseTemplates']! as Map).cast<String, String>()).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as double).input(),
     );
   }
 }

@@ -53,13 +53,13 @@ class ReservationAssignmentState {
 
   factory ReservationAssignmentState.fromMap(Map<String, dynamic> map) {
     return ReservationAssignmentState(
-      assignee: map['assignee'] == null ? null : (map['assignee'] as String).input(),
-      jobType: map['jobType'] == null ? null : (map['jobType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reservation: map['reservation'] == null ? null : (map['reservation'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      assignee: map['assignee'] == null ? null : (map['assignee']! as String).input(),
+      jobType: map['jobType'] == null ? null : (map['jobType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reservation: map['reservation'] == null ? null : (map['reservation']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

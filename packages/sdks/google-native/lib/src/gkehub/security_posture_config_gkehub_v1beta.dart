@@ -28,8 +28,8 @@ class SecurityPostureConfigGkehubV1beta {
 
   factory SecurityPostureConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return SecurityPostureConfigGkehubV1beta(
-      mode: map['mode'] == null ? null : (SecurityPostureConfigModeGkehubV1beta.fromValue(map['mode'] as String)).input(),
-      vulnerabilityMode: map['vulnerabilityMode'] == null ? null : (SecurityPostureConfigVulnerabilityModeGkehubV1beta.fromValue(map['vulnerabilityMode'] as String)).input(),
+      mode: map['mode'] == null ? null : (SecurityPostureConfigModeGkehubV1beta.fromValue(map['mode']! as String)).input(),
+      vulnerabilityMode: map['vulnerabilityMode'] == null ? null : (SecurityPostureConfigVulnerabilityModeGkehubV1beta.fromValue(map['vulnerabilityMode']! as String)).input(),
     );
   }
 }

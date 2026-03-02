@@ -25,8 +25,8 @@ class WorkspacePrivateEndpointConnection {
 
   factory WorkspacePrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
     return WorkspacePrivateEndpointConnection(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

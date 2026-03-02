@@ -27,8 +27,8 @@ class WorkteamMemberDefinition {
 
   factory WorkteamMemberDefinition.fromMap(Map<String, dynamic> map) {
     return WorkteamMemberDefinition(
-      cognitoMemberDefinition: map['cognitoMemberDefinition'] == null ? null : (WorkteamMemberDefinitionCognitoMemberDefinition.fromMap((map['cognitoMemberDefinition'] as Map).cast<String, dynamic>())).input(),
-      oidcMemberDefinition: map['oidcMemberDefinition'] == null ? null : (WorkteamMemberDefinitionOidcMemberDefinition.fromMap((map['oidcMemberDefinition'] as Map).cast<String, dynamic>())).input(),
+      cognitoMemberDefinition: map['cognitoMemberDefinition'] == null ? null : ((WorkteamMemberDefinitionCognitoMemberDefinition.fromMap((map['cognitoMemberDefinition']! as Map).cast<String, dynamic>())).input()).input(),
+      oidcMemberDefinition: map['oidcMemberDefinition'] == null ? null : ((WorkteamMemberDefinitionOidcMemberDefinition.fromMap((map['oidcMemberDefinition']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

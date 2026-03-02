@@ -162,18 +162,18 @@ class RunResult {
 
   factory RunResult.fromMap(Map<String, dynamic> map) {
     return RunResult(
-      addPreviousOutputInEnv: map['addPreviousOutputInEnv'] == null ? null : map['addPreviousOutputInEnv'] as bool,
-      archive: map['archive'] == null ? null : map['archive'],
-      archivePaths: map['archivePaths'] == null ? null : (map['archivePaths'] as List).cast<String>(),
-      assetPaths: map['assetPaths'] == null ? null : (map['assetPaths'] as List).cast<String>(),
-      assets: map['assets'] == null ? null : (map['assets'] as Map).cast<String, dynamic>(),
+      addPreviousOutputInEnv: map['addPreviousOutputInEnv'] == null ? null : map['addPreviousOutputInEnv']! as bool,
+      archive: map['archive'] == null ? null : map['archive']!,
+      archivePaths: map['archivePaths'] == null ? null : (map['archivePaths']! as List).cast<String>(),
+      assetPaths: map['assetPaths'] == null ? null : (map['assetPaths']! as List).cast<String>(),
+      assets: map['assets'] == null ? null : (map['assets']! as Map).cast<String, dynamic>(),
       command: map['command'] as String,
-      dir: map['dir'] == null ? null : map['dir'] as String,
-      environment: map['environment'] == null ? null : (map['environment'] as Map).cast<String, String>(),
-      interpreter: map['interpreter'] == null ? null : (map['interpreter'] as List).cast<String>(),
-      logging: map['logging'] == null ? null : Logging.fromValue(map['logging'] as String),
+      dir: map['dir'] == null ? null : map['dir']! as String,
+      environment: map['environment'] == null ? null : (map['environment']! as Map).cast<String, String>(),
+      interpreter: map['interpreter'] == null ? null : (map['interpreter']! as List).cast<String>(),
+      logging: map['logging'] == null ? null : Logging.fromValue(map['logging']! as String),
       stderr: map['stderr'] as String,
-      stdin: map['stdin'] == null ? null : map['stdin'] as String,
+      stdin: map['stdin'] == null ? null : map['stdin']! as String,
       stdout: map['stdout'] as String,
     );
   }

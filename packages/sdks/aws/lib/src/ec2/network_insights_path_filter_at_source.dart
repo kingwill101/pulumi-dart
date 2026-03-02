@@ -37,10 +37,10 @@ class NetworkInsightsPathFilterAtSource {
 
   factory NetworkInsightsPathFilterAtSource.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsPathFilterAtSource(
-      destinationAddress: map['destinationAddress'] == null ? null : (map['destinationAddress'] as String).input(),
-      destinationPortRange: map['destinationPortRange'] == null ? null : (NetworkInsightsPathFilterAtSourceDestinationPortRange.fromMap((map['destinationPortRange'] as Map).cast<String, dynamic>())).input(),
-      sourceAddress: map['sourceAddress'] == null ? null : (map['sourceAddress'] as String).input(),
-      sourcePortRange: map['sourcePortRange'] == null ? null : (NetworkInsightsPathFilterAtSourceSourcePortRange.fromMap((map['sourcePortRange'] as Map).cast<String, dynamic>())).input(),
+      destinationAddress: map['destinationAddress'] == null ? null : ((map['destinationAddress'] as String).input()).input(),
+      destinationPortRange: map['destinationPortRange'] == null ? null : ((NetworkInsightsPathFilterAtSourceDestinationPortRange.fromMap((map['destinationPortRange']! as Map).cast<String, dynamic>())).input()).input(),
+      sourceAddress: map['sourceAddress'] == null ? null : ((map['sourceAddress'] as String).input()).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : ((NetworkInsightsPathFilterAtSourceSourcePortRange.fromMap((map['sourcePortRange']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class NodePoolNodeDrainConfig {
 
   factory NodePoolNodeDrainConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeDrainConfig(
-      respectPdbDuringNodePoolDeletion: map['respectPdbDuringNodePoolDeletion'] == null ? null : (map['respectPdbDuringNodePoolDeletion'] as bool).input(),
+      respectPdbDuringNodePoolDeletion: map['respectPdbDuringNodePoolDeletion'] == null ? null : (map['respectPdbDuringNodePoolDeletion']! as bool).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class BastionHostPropertiesFormatResponseNetworkAcls {
 
   factory BastionHostPropertiesFormatResponseNetworkAcls.fromMap(Map<String, dynamic> map) {
     return BastionHostPropertiesFormatResponseNetworkAcls(
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRuleResponse>(map['ipRules'], (value) => IPRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRuleResponse>(map['ipRules']!, (value) => IPRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

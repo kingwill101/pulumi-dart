@@ -35,10 +35,10 @@ class FunctionLoggingConfig {
 
   factory FunctionLoggingConfig.fromMap(Map<String, dynamic> map) {
     return FunctionLoggingConfig(
-      applicationLogLevel: map['applicationLogLevel'] == null ? null : (map['applicationLogLevel'] as String).input(),
+      applicationLogLevel: map['applicationLogLevel'] == null ? null : ((map['applicationLogLevel'] as String).input()).input(),
       logFormat: (map['logFormat'] as String).input(),
-      logGroup: map['logGroup'] == null ? null : (map['logGroup'] as String).input(),
-      systemLogLevel: map['systemLogLevel'] == null ? null : (map['systemLogLevel'] as String).input(),
+      logGroup: map['logGroup'] == null ? null : ((map['logGroup'] as String).input()).input(),
+      systemLogLevel: map['systemLogLevel'] == null ? null : ((map['systemLogLevel'] as String).input()).input(),
     );
   }
 }

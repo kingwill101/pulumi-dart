@@ -27,8 +27,8 @@ class AuditConfigGameservicesV1beta {
 
   factory AuditConfigGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return AuditConfigGameservicesV1beta(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigGameservicesV1beta>(map['auditLogConfigs'], (value) => AuditLogConfigGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigGameservicesV1beta>(map['auditLogConfigs']!, (value) => AuditLogConfigGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

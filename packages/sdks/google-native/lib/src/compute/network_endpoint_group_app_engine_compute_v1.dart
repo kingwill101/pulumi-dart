@@ -31,9 +31,9 @@ class NetworkEndpointGroupAppEngineComputeV1 {
 
   factory NetworkEndpointGroupAppEngineComputeV1.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointGroupAppEngineComputeV1(
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      urlMask: map['urlMask'] == null ? null : (map['urlMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      urlMask: map['urlMask'] == null ? null : (map['urlMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

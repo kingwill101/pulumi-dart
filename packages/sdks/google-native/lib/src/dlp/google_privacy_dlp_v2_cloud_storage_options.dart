@@ -48,12 +48,12 @@ class GooglePrivacyDlpV2CloudStorageOptions {
 
   factory GooglePrivacyDlpV2CloudStorageOptions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CloudStorageOptions(
-      bytesLimitPerFile: map['bytesLimitPerFile'] == null ? null : (map['bytesLimitPerFile'] as String).input(),
-      bytesLimitPerFilePercent: map['bytesLimitPerFilePercent'] == null ? null : (map['bytesLimitPerFilePercent'] as int).input(),
-      fileSet: map['fileSet'] == null ? null : (GooglePrivacyDlpV2FileSet.fromMap((map['fileSet'] as Map).cast<String, dynamic>())).input(),
-      fileTypes: map['fileTypes'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem>(map['fileTypes'], (value) => GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem.fromValue(value as String))).input(),
-      filesLimitPercent: map['filesLimitPercent'] == null ? null : (map['filesLimitPercent'] as int).input(),
-      sampleMethod: map['sampleMethod'] == null ? null : (GooglePrivacyDlpV2CloudStorageOptionsSampleMethod.fromValue(map['sampleMethod'] as String)).input(),
+      bytesLimitPerFile: map['bytesLimitPerFile'] == null ? null : (map['bytesLimitPerFile']! as String).input(),
+      bytesLimitPerFilePercent: map['bytesLimitPerFilePercent'] == null ? null : (map['bytesLimitPerFilePercent']! as int).input(),
+      fileSet: map['fileSet'] == null ? null : (GooglePrivacyDlpV2FileSet.fromMap((map['fileSet']! as Map).cast<String, dynamic>())).input(),
+      fileTypes: map['fileTypes'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem>(map['fileTypes']!, (value) => GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem.fromValue(value as String))).input(),
+      filesLimitPercent: map['filesLimitPercent'] == null ? null : (map['filesLimitPercent']! as int).input(),
+      sampleMethod: map['sampleMethod'] == null ? null : (GooglePrivacyDlpV2CloudStorageOptionsSampleMethod.fromValue(map['sampleMethod']! as String)).input(),
     );
   }
 }

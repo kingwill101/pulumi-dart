@@ -60,12 +60,12 @@ class PluginState {
 
   factory PluginState.fromMap(Map<String, dynamic> map) {
     return PluginState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      pluginData: map['pluginData'] == null ? null : (map['pluginData'] as String).input(),
-      pluginName: map['pluginName'] == null ? null : (map['pluginName'] as String).input(),
-      pluginType: map['pluginType'] == null ? null : (map['pluginType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      pluginData: map['pluginData'] == null ? null : (map['pluginData']! as String).input(),
+      pluginName: map['pluginName'] == null ? null : (map['pluginName']! as String).input(),
+      pluginType: map['pluginType'] == null ? null : (map['pluginType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

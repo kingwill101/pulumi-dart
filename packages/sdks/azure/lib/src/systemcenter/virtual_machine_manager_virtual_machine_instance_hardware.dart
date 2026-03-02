@@ -40,11 +40,11 @@ class VirtualMachineManagerVirtualMachineInstanceHardware {
 
   factory VirtualMachineManagerVirtualMachineInstanceHardware.fromMap(Map<String, dynamic> map) {
     return VirtualMachineManagerVirtualMachineInstanceHardware(
-      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount'] as int).input(),
-      dynamicMemoryMaxInMb: map['dynamicMemoryMaxInMb'] == null ? null : (map['dynamicMemoryMaxInMb'] as int).input(),
-      dynamicMemoryMinInMb: map['dynamicMemoryMinInMb'] == null ? null : (map['dynamicMemoryMinInMb'] as int).input(),
-      limitCpuForMigrationEnabled: map['limitCpuForMigrationEnabled'] == null ? null : (map['limitCpuForMigrationEnabled'] as bool).input(),
-      memoryInMb: map['memoryInMb'] == null ? null : (map['memoryInMb'] as int).input(),
+      cpuCount: map['cpuCount'] == null ? null : (map['cpuCount']! as int).input(),
+      dynamicMemoryMaxInMb: map['dynamicMemoryMaxInMb'] == null ? null : (map['dynamicMemoryMaxInMb']! as int).input(),
+      dynamicMemoryMinInMb: map['dynamicMemoryMinInMb'] == null ? null : (map['dynamicMemoryMinInMb']! as int).input(),
+      limitCpuForMigrationEnabled: map['limitCpuForMigrationEnabled'] == null ? null : (map['limitCpuForMigrationEnabled']! as bool).input(),
+      memoryInMb: map['memoryInMb'] == null ? null : (map['memoryInMb']! as int).input(),
     );
   }
 }

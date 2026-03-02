@@ -116,22 +116,22 @@ class QuotaSetV2Args {
 
   factory QuotaSetV2Args.fromMap(Map<String, dynamic> map) {
     return QuotaSetV2Args(
-      cores: map['cores'] == null ? null : (map['cores'] as int).input(),
-      fixedIps: map['fixedIps'] == null ? null : (map['fixedIps'] as int).input(),
-      floatingIps: map['floatingIps'] == null ? null : (map['floatingIps'] as int).input(),
-      injectedFileContentBytes: map['injectedFileContentBytes'] == null ? null : (map['injectedFileContentBytes'] as int).input(),
-      injectedFilePathBytes: map['injectedFilePathBytes'] == null ? null : (map['injectedFilePathBytes'] as int).input(),
-      injectedFiles: map['injectedFiles'] == null ? null : (map['injectedFiles'] as int).input(),
-      instances: map['instances'] == null ? null : (map['instances'] as int).input(),
-      keyPairs: map['keyPairs'] == null ? null : (map['keyPairs'] as int).input(),
-      metadataItems: map['metadataItems'] == null ? null : (map['metadataItems'] as int).input(),
+      cores: map['cores'] == null ? null : (map['cores']! as int).input(),
+      fixedIps: map['fixedIps'] == null ? null : (map['fixedIps']! as int).input(),
+      floatingIps: map['floatingIps'] == null ? null : (map['floatingIps']! as int).input(),
+      injectedFileContentBytes: map['injectedFileContentBytes'] == null ? null : (map['injectedFileContentBytes']! as int).input(),
+      injectedFilePathBytes: map['injectedFilePathBytes'] == null ? null : (map['injectedFilePathBytes']! as int).input(),
+      injectedFiles: map['injectedFiles'] == null ? null : (map['injectedFiles']! as int).input(),
+      instances: map['instances'] == null ? null : (map['instances']! as int).input(),
+      keyPairs: map['keyPairs'] == null ? null : (map['keyPairs']! as int).input(),
+      metadataItems: map['metadataItems'] == null ? null : (map['metadataItems']! as int).input(),
       projectId: (map['projectId'] as String).input(),
-      ram: map['ram'] == null ? null : (map['ram'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupRules: map['securityGroupRules'] == null ? null : (map['securityGroupRules'] as int).input(),
-      securityGroups: map['securityGroups'] == null ? null : (map['securityGroups'] as int).input(),
-      serverGroupMembers: map['serverGroupMembers'] == null ? null : (map['serverGroupMembers'] as int).input(),
-      serverGroups: map['serverGroups'] == null ? null : (map['serverGroups'] as int).input(),
+      ram: map['ram'] == null ? null : (map['ram']! as int).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      securityGroupRules: map['securityGroupRules'] == null ? null : (map['securityGroupRules']! as int).input(),
+      securityGroups: map['securityGroups'] == null ? null : (map['securityGroups']! as int).input(),
+      serverGroupMembers: map['serverGroupMembers'] == null ? null : (map['serverGroupMembers']! as int).input(),
+      serverGroups: map['serverGroups'] == null ? null : (map['serverGroups']! as int).input(),
     );
   }
 }

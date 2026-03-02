@@ -41,11 +41,11 @@ class ManagedPolicyAttachmentState {
 
   factory ManagedPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return ManagedPolicyAttachmentState(
-      instanceArn: map['instanceArn'] == null ? null : (map['instanceArn'] as String).input(),
-      managedPolicyArn: map['managedPolicyArn'] == null ? null : (map['managedPolicyArn'] as String).input(),
-      managedPolicyName: map['managedPolicyName'] == null ? null : (map['managedPolicyName'] as String).input(),
-      permissionSetArn: map['permissionSetArn'] == null ? null : (map['permissionSetArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      instanceArn: map['instanceArn'] == null ? null : ((map['instanceArn'] as String).input()).input(),
+      managedPolicyArn: map['managedPolicyArn'] == null ? null : ((map['managedPolicyArn'] as String).input()).input(),
+      managedPolicyName: map['managedPolicyName'] == null ? null : ((map['managedPolicyName'] as String).input()).input(),
+      permissionSetArn: map['permissionSetArn'] == null ? null : ((map['permissionSetArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

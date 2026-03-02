@@ -69,17 +69,17 @@ class GetVpcEndpointServicesResult {
 
   factory GetVpcEndpointServicesResult.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointServicesResult(
-      autoAcceptConnection: map['autoAcceptConnection'] == null ? null : map['autoAcceptConnection'] as bool,
+      autoAcceptConnection: map['autoAcceptConnection'] == null ? null : map['autoAcceptConnection']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      serviceBusinessStatus: map['serviceBusinessStatus'] == null ? null : map['serviceBusinessStatus'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      serviceBusinessStatus: map['serviceBusinessStatus'] == null ? null : map['serviceBusinessStatus']! as String,
       services: pulumi.Input.decodeList<GetVpcEndpointServicesService>(map['services'], (value) => GetVpcEndpointServicesService.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      vpcEndpointServiceName: map['vpcEndpointServiceName'] == null ? null : map['vpcEndpointServiceName'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      vpcEndpointServiceName: map['vpcEndpointServiceName'] == null ? null : map['vpcEndpointServiceName']! as String,
     );
   }
 }

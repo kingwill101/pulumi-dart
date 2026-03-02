@@ -68,16 +68,16 @@ class GetMonitorGroupsArgs {
 
   factory GetMonitorGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetMonitorGroupsArgs(
-      dynamicTagRuleId: map['dynamicTagRuleId'] == null ? null : (map['dynamicTagRuleId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      includeTemplateHistory: map['includeTemplateHistory'] == null ? null : (map['includeTemplateHistory'] as bool).input(),
-      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
-      monitorGroupName: map['monitorGroupName'] == null ? null : (map['monitorGroupName'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      selectContactGroups: map['selectContactGroups'] == null ? null : (map['selectContactGroups'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      dynamicTagRuleId: map['dynamicTagRuleId'] == null ? null : (map['dynamicTagRuleId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      includeTemplateHistory: map['includeTemplateHistory'] == null ? null : (map['includeTemplateHistory']! as bool).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword']! as String).input(),
+      monitorGroupName: map['monitorGroupName'] == null ? null : (map['monitorGroupName']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      selectContactGroups: map['selectContactGroups'] == null ? null : (map['selectContactGroups']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

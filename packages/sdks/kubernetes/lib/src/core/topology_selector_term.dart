@@ -22,7 +22,7 @@ class TopologySelectorTerm {
 
   factory TopologySelectorTerm.fromMap(Map<String, dynamic> map) {
     return TopologySelectorTerm(
-      matchLabelExpressions: map['matchLabelExpressions'] == null ? null : (pulumi.Input.decodeList<TopologySelectorLabelRequirement>(map['matchLabelExpressions'], (value) => TopologySelectorLabelRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchLabelExpressions: map['matchLabelExpressions'] == null ? null : (pulumi.Input.decodeList<TopologySelectorLabelRequirement>(map['matchLabelExpressions']!, (value) => TopologySelectorLabelRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class JsonMapperSourceField {
 
   factory JsonMapperSourceField.fromMap(Map<String, dynamic> map) {
     return JsonMapperSourceField(
-      fieldName: map['fieldName'] == null ? null : (map['fieldName'] as String).input(),
+      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
     );
   }
 }

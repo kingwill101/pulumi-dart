@@ -30,9 +30,9 @@ class AppIngressCustomDomain {
 
   factory AppIngressCustomDomain.fromMap(Map<String, dynamic> map) {
     return AppIngressCustomDomain(
-      certificateBindingType: map['certificateBindingType'] == null ? null : (map['certificateBindingType'] as String).input(),
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      certificateBindingType: map['certificateBindingType'] == null ? null : (map['certificateBindingType']! as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

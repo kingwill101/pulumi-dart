@@ -32,7 +32,7 @@ class GetInstanceComputeV1Args {
   factory GetInstanceComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetInstanceComputeV1Args(
       instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       zone: (map['zone'] as String).input(),
     );
   }

@@ -96,19 +96,19 @@ class EntityArgs {
     return EntityArgs(
       asset: (map['asset'] as String).input(),
       dataPath: (map['dataPath'] as String).input(),
-      dataPathPattern: map['dataPathPattern'] == null ? null : (map['dataPathPattern'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      dataPathPattern: map['dataPathPattern'] == null ? null : (map['dataPathPattern']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       format: (GoogleCloudDataplexV1StorageFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
       lakeId: (map['lakeId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       schema: (GoogleCloudDataplexV1Schema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
       system: (EntitySystem.fromValue(map['system'] as String)).input(),
       type: (EntityType.fromValue(map['type'] as String)).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

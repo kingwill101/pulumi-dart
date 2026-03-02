@@ -73,15 +73,15 @@ class GetClustersArgs {
 
   factory GetClustersArgs.fromMap(Map<String, dynamic> map) {
     return GetClustersArgs(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      clusterSpec: map['clusterSpec'] == null ? null : (map['clusterSpec'] as String).input(),
-      clusterType: map['clusterType'] == null ? null : (map['clusterType'] as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      clusterSpec: map['clusterSpec'] == null ? null : (map['clusterSpec']! as String).input(),
+      clusterType: map['clusterType'] == null ? null : (map['clusterType']! as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
     );
   }
 }

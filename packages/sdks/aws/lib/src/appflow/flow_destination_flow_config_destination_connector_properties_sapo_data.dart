@@ -38,11 +38,11 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData {
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesSapoData(
-      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>())).input(),
-      idFieldNames: map['idFieldNames'] == null ? null : ((map['idFieldNames'] as List).cast<String>()).input(),
+      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataErrorHandlingConfig.fromMap((map['errorHandlingConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      idFieldNames: map['idFieldNames'] == null ? null : (((map['idFieldNames'] as List).cast<String>()).input()).input(),
       objectPath: (map['objectPath'] as String).input(),
-      successResponseHandlingConfig: map['successResponseHandlingConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig.fromMap((map['successResponseHandlingConfig'] as Map).cast<String, dynamic>())).input(),
-      writeOperationType: map['writeOperationType'] == null ? null : (map['writeOperationType'] as String).input(),
+      successResponseHandlingConfig: map['successResponseHandlingConfig'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig.fromMap((map['successResponseHandlingConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      writeOperationType: map['writeOperationType'] == null ? null : ((map['writeOperationType'] as String).input()).input(),
     );
   }
 }

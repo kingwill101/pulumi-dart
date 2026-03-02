@@ -85,19 +85,19 @@ class CloudSqlSettingsDatamigrationV1beta1 {
 
   factory CloudSqlSettingsDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudSqlSettingsDatamigrationV1beta1(
-      activationPolicy: map['activationPolicy'] == null ? null : (CloudSqlSettingsActivationPolicyDatamigrationV1beta1.fromValue(map['activationPolicy'] as String)).input(),
-      autoStorageIncrease: map['autoStorageIncrease'] == null ? null : (map['autoStorageIncrease'] as bool).input(),
-      dataDiskSizeGb: map['dataDiskSizeGb'] == null ? null : (map['dataDiskSizeGb'] as String).input(),
-      dataDiskType: map['dataDiskType'] == null ? null : (CloudSqlSettingsDataDiskTypeDatamigrationV1beta1.fromValue(map['dataDiskType'] as String)).input(),
-      databaseFlags: map['databaseFlags'] == null ? null : ((map['databaseFlags'] as Map).cast<String, String>()).input(),
-      databaseVersion: map['databaseVersion'] == null ? null : (CloudSqlSettingsDatabaseVersionDatamigrationV1beta1.fromValue(map['databaseVersion'] as String)).input(),
-      ipConfig: map['ipConfig'] == null ? null : (SqlIpConfigDatamigrationV1beta1.fromMap((map['ipConfig'] as Map).cast<String, dynamic>())).input(),
-      rootPassword: map['rootPassword'] == null ? null : (map['rootPassword'] as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
-      storageAutoResizeLimit: map['storageAutoResizeLimit'] == null ? null : (map['storageAutoResizeLimit'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
-      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      activationPolicy: map['activationPolicy'] == null ? null : (CloudSqlSettingsActivationPolicyDatamigrationV1beta1.fromValue(map['activationPolicy']! as String)).input(),
+      autoStorageIncrease: map['autoStorageIncrease'] == null ? null : (map['autoStorageIncrease']! as bool).input(),
+      dataDiskSizeGb: map['dataDiskSizeGb'] == null ? null : (map['dataDiskSizeGb']! as String).input(),
+      dataDiskType: map['dataDiskType'] == null ? null : (CloudSqlSettingsDataDiskTypeDatamigrationV1beta1.fromValue(map['dataDiskType']! as String)).input(),
+      databaseFlags: map['databaseFlags'] == null ? null : ((map['databaseFlags']! as Map).cast<String, String>()).input(),
+      databaseVersion: map['databaseVersion'] == null ? null : (CloudSqlSettingsDatabaseVersionDatamigrationV1beta1.fromValue(map['databaseVersion']! as String)).input(),
+      ipConfig: map['ipConfig'] == null ? null : (SqlIpConfigDatamigrationV1beta1.fromMap((map['ipConfig']! as Map).cast<String, dynamic>())).input(),
+      rootPassword: map['rootPassword'] == null ? null : (map['rootPassword']! as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
+      storageAutoResizeLimit: map['storageAutoResizeLimit'] == null ? null : (map['storageAutoResizeLimit']! as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels']! as Map).cast<String, String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

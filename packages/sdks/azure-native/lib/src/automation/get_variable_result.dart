@@ -61,14 +61,14 @@ class GetVariableResult {
   factory GetVariableResult.fromMap(Map<String, dynamic> map) {
     return GetVariableResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      creationTime: map['creationTime'] == null ? null : map['creationTime'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      creationTime: map['creationTime'] == null ? null : map['creationTime']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
-      isEncrypted: map['isEncrypted'] == null ? null : map['isEncrypted'] as bool,
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime'] as String,
+      isEncrypted: map['isEncrypted'] == null ? null : map['isEncrypted']! as bool,
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime']! as String,
       name: map['name'] as String,
       type: map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

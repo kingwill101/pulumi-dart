@@ -53,9 +53,9 @@ class GetServicePrincipalsResult {
       clientIds: (map['clientIds'] as List).cast<String>(),
       displayNames: (map['displayNames'] as List).cast<String>(),
       id: map['id'] as String,
-      ignoreMissing: map['ignoreMissing'] == null ? null : map['ignoreMissing'] as bool,
+      ignoreMissing: map['ignoreMissing'] == null ? null : map['ignoreMissing']! as bool,
       objectIds: (map['objectIds'] as List).cast<String>(),
-      returnAll: map['returnAll'] == null ? null : map['returnAll'] as bool,
+      returnAll: map['returnAll'] == null ? null : map['returnAll']! as bool,
       servicePrincipals: pulumi.Input.decodeList<GetServicePrincipalsServicePrincipal>(map['servicePrincipals'], (value) => GetServicePrincipalsServicePrincipal.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

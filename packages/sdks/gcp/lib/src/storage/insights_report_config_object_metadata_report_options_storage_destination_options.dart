@@ -26,7 +26,7 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions {
   factory InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions.fromMap(Map<String, dynamic> map) {
     return InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions(
       bucket: (map['bucket'] as String).input(),
-      destinationPath: map['destinationPath'] == null ? null : (map['destinationPath'] as String).input(),
+      destinationPath: map['destinationPath'] == null ? null : (map['destinationPath']! as String).input(),
     );
   }
 }

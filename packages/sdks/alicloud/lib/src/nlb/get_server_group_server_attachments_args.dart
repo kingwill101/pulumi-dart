@@ -44,11 +44,11 @@ class GetServerGroupServerAttachmentsArgs {
 
   factory GetServerGroupServerAttachmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetServerGroupServerAttachmentsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
-      serverIds: map['serverIds'] == null ? null : ((map['serverIds'] as List).cast<String>()).input(),
-      serverIps: map['serverIps'] == null ? null : ((map['serverIps'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId']! as String).input(),
+      serverIds: map['serverIds'] == null ? null : ((map['serverIds']! as List).cast<String>()).input(),
+      serverIps: map['serverIps'] == null ? null : ((map['serverIps']! as List).cast<String>()).input(),
     );
   }
 }

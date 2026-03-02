@@ -44,9 +44,9 @@ class DiJobTableMappingTransformationRule {
 
   factory DiJobTableMappingTransformationRule.fromMap(Map<String, dynamic> map) {
     return DiJobTableMappingTransformationRule(
-      ruleActionType: map['ruleActionType'] == null ? null : (map['ruleActionType'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      ruleTargetType: map['ruleTargetType'] == null ? null : (map['ruleTargetType'] as String).input(),
+      ruleActionType: map['ruleActionType'] == null ? null : (map['ruleActionType']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      ruleTargetType: map['ruleTargetType'] == null ? null : (map['ruleTargetType']! as String).input(),
     );
   }
 }

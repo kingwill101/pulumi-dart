@@ -34,9 +34,9 @@ class AssessmentTargetArgs {
 
   factory AssessmentTargetArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentTargetArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceGroupArn: map['resourceGroupArn'] == null ? null : (map['resourceGroupArn'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceGroupArn: map['resourceGroupArn'] == null ? null : ((map['resourceGroupArn'] as String).input()).input(),
     );
   }
 }

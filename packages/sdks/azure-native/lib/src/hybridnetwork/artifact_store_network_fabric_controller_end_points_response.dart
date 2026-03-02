@@ -22,7 +22,7 @@ class ArtifactStoreNetworkFabricControllerEndPointsResponse {
 
   factory ArtifactStoreNetworkFabricControllerEndPointsResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactStoreNetworkFabricControllerEndPointsResponse(
-      networkFabricControllerIds: map['networkFabricControllerIds'] == null ? null : (pulumi.Input.decodeList<ReferencedResourceResponse>(map['networkFabricControllerIds'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkFabricControllerIds: map['networkFabricControllerIds'] == null ? null : (pulumi.Input.decodeList<ReferencedResourceResponse>(map['networkFabricControllerIds']!, (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

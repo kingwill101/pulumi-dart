@@ -30,8 +30,8 @@ class ScaleSetOsProfileLinuxConfig {
 
   factory ScaleSetOsProfileLinuxConfig.fromMap(Map<String, dynamic> map) {
     return ScaleSetOsProfileLinuxConfig(
-      disablePasswordAuthentication: map['disablePasswordAuthentication'] == null ? null : (map['disablePasswordAuthentication'] as bool).input(),
-      sshKeys: map['sshKeys'] == null ? null : (pulumi.Input.decodeList<ScaleSetOsProfileLinuxConfigSshKey>(map['sshKeys'], (value) => ScaleSetOsProfileLinuxConfigSshKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disablePasswordAuthentication: map['disablePasswordAuthentication'] == null ? null : (map['disablePasswordAuthentication']! as bool).input(),
+      sshKeys: map['sshKeys'] == null ? null : (pulumi.Input.decodeList<ScaleSetOsProfileLinuxConfigSshKey>(map['sshKeys']!, (value) => ScaleSetOsProfileLinuxConfigSshKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

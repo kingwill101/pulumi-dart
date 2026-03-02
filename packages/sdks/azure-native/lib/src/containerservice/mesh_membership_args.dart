@@ -45,9 +45,9 @@ class MeshMembershipArgs {
 
   factory MeshMembershipArgs.fromMap(Map<String, dynamic> map) {
     return MeshMembershipArgs(
-      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
-      meshMembershipName: map['meshMembershipName'] == null ? null : (map['meshMembershipName'] as String).input(),
-      properties: map['properties'] == null ? null : (MeshMembershipProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy']! as String).input(),
+      meshMembershipName: map['meshMembershipName'] == null ? null : (map['meshMembershipName']! as String).input(),
+      properties: map['properties'] == null ? null : (MeshMembershipProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

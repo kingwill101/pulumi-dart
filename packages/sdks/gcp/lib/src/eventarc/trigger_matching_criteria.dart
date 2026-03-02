@@ -31,7 +31,7 @@ class TriggerMatchingCriteria {
   factory TriggerMatchingCriteria.fromMap(Map<String, dynamic> map) {
     return TriggerMatchingCriteria(
       attribute: (map['attribute'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

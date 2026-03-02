@@ -34,10 +34,10 @@ class IAppTable {
 
   factory IAppTable.fromMap(Map<String, dynamic> map) {
     return IAppTable(
-      columnNames: map['columnNames'] == null ? null : ((map['columnNames'] as List).cast<String>()).input(),
-      encryptedColumns: map['encryptedColumns'] == null ? null : (map['encryptedColumns'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rows: map['rows'] == null ? null : (pulumi.Input.decodeList<IAppTableRow>(map['rows'], (value) => IAppTableRow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columnNames: map['columnNames'] == null ? null : ((map['columnNames']! as List).cast<String>()).input(),
+      encryptedColumns: map['encryptedColumns'] == null ? null : (map['encryptedColumns']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rows: map['rows'] == null ? null : (pulumi.Input.decodeList<IAppTableRow>(map['rows']!, (value) => IAppTableRow.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

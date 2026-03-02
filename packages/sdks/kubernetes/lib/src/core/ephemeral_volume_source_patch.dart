@@ -33,8 +33,8 @@ class EphemeralVolumeSourcePatch {
 
   factory EphemeralVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return EphemeralVolumeSourcePatch(
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      volumeClaimTemplate: map['volumeClaimTemplate'] == null ? null : (PersistentVolumeClaimTemplatePatch.fromMap((map['volumeClaimTemplate'] as Map).cast<String, dynamic>())).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      volumeClaimTemplate: map['volumeClaimTemplate'] == null ? null : (PersistentVolumeClaimTemplatePatch.fromMap((map['volumeClaimTemplate']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

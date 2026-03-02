@@ -46,12 +46,12 @@ class ExplicitProxyResponse {
 
   factory ExplicitProxyResponse.fromMap(Map<String, dynamic> map) {
     return ExplicitProxyResponse(
-      enableExplicitProxy: map['enableExplicitProxy'] == null ? null : (map['enableExplicitProxy'] as bool).input(),
-      enablePacFile: map['enablePacFile'] == null ? null : (map['enablePacFile'] as bool).input(),
-      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
-      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
-      pacFile: map['pacFile'] == null ? null : (map['pacFile'] as String).input(),
-      pacFilePort: map['pacFilePort'] == null ? null : (map['pacFilePort'] as int).input(),
+      enableExplicitProxy: map['enableExplicitProxy'] == null ? null : (map['enableExplicitProxy']! as bool).input(),
+      enablePacFile: map['enablePacFile'] == null ? null : (map['enablePacFile']! as bool).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort']! as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort']! as int).input(),
+      pacFile: map['pacFile'] == null ? null : (map['pacFile']! as String).input(),
+      pacFilePort: map['pacFilePort'] == null ? null : (map['pacFilePort']! as int).input(),
     );
   }
 }

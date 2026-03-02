@@ -41,11 +41,11 @@ class DataSetPhysicalTableMapRelationalTable {
 
   factory DataSetPhysicalTableMapRelationalTable.fromMap(Map<String, dynamic> map) {
     return DataSetPhysicalTableMapRelationalTable(
-      catalog: map['catalog'] == null ? null : (map['catalog'] as String).input(),
+      catalog: map['catalog'] == null ? null : ((map['catalog'] as String).input()).input(),
       dataSourceArn: (map['dataSourceArn'] as String).input(),
-      inputColumns: (pulumi.Input.decodeList<DataSetPhysicalTableMapRelationalTableInputColumn>(map['inputColumns'], (value) => DataSetPhysicalTableMapRelationalTableInputColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputColumns: (pulumi.Input.decodeList<DataSetPhysicalTableMapRelationalTableInputColumn>(map['inputColumns']!, (value) => DataSetPhysicalTableMapRelationalTableInputColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      schema: map['schema'] == null ? null : ((map['schema'] as String).input()).input(),
     );
   }
 }

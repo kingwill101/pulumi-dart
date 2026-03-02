@@ -67,15 +67,15 @@ class PoolArgs {
 
   factory PoolArgs.fromMap(Map<String, dynamic> map) {
     return PoolArgs(
-      assignments: map['assignments'] == null ? null : (pulumi.Input.decodeList<Assignment>(map['assignments'], (value) => Assignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
+      assignments: map['assignments'] == null ? null : (pulumi.Input.decodeList<Assignment>(map['assignments']!, (value) => Assignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      poolName: map['poolName'] == null ? null : (map['poolName']! as String).input(),
       poolType: (PoolType.fromMap((map['poolType'] as Map).cast<String, dynamic>())).input(),
-      reclaimPolicy: map['reclaimPolicy'] == null ? null : (map['reclaimPolicy'] as String).input(),
+      reclaimPolicy: map['reclaimPolicy'] == null ? null : (map['reclaimPolicy']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resources: map['resources'] == null ? null : (Resources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      resources: map['resources'] == null ? null : (Resources.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

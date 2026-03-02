@@ -20,7 +20,7 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledg
 
   factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfigurationExactResponseFields(
-      answerField: map['answerField'] == null ? null : (map['answerField'] as String).input(),
+      answerField: map['answerField'] == null ? null : ((map['answerField'] as String).input()).input(),
     );
   }
 }

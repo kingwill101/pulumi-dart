@@ -22,7 +22,7 @@ class EnterpriseCrmEventbusProtoEventBusProperties {
 
   factory EnterpriseCrmEventbusProtoEventBusProperties.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoEventBusProperties(
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmEventbusProtoPropertyEntry>(map['properties'], (value) => EnterpriseCrmEventbusProtoPropertyEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmEventbusProtoPropertyEntry>(map['properties']!, (value) => EnterpriseCrmEventbusProtoPropertyEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

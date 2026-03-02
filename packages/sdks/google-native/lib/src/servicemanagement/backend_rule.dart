@@ -66,16 +66,16 @@ class BackendRule {
 
   factory BackendRule.fromMap(Map<String, dynamic> map) {
     return BackendRule(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      deadline: map['deadline'] == null ? null : (map['deadline'] as double).input(),
-      disableAuth: map['disableAuth'] == null ? null : (map['disableAuth'] as bool).input(),
-      jwtAudience: map['jwtAudience'] == null ? null : (map['jwtAudience'] as String).input(),
-      minDeadline: map['minDeadline'] == null ? null : (map['minDeadline'] as double).input(),
-      operationDeadline: map['operationDeadline'] == null ? null : (map['operationDeadline'] as double).input(),
-      overridesByRequestProtocol: map['overridesByRequestProtocol'] == null ? null : ((map['overridesByRequestProtocol'] as Map).cast<String, String>()).input(),
-      pathTranslation: map['pathTranslation'] == null ? null : (BackendRulePathTranslation.fromValue(map['pathTranslation'] as String)).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      deadline: map['deadline'] == null ? null : (map['deadline']! as double).input(),
+      disableAuth: map['disableAuth'] == null ? null : (map['disableAuth']! as bool).input(),
+      jwtAudience: map['jwtAudience'] == null ? null : (map['jwtAudience']! as String).input(),
+      minDeadline: map['minDeadline'] == null ? null : (map['minDeadline']! as double).input(),
+      operationDeadline: map['operationDeadline'] == null ? null : (map['operationDeadline']! as double).input(),
+      overridesByRequestProtocol: map['overridesByRequestProtocol'] == null ? null : ((map['overridesByRequestProtocol']! as Map).cast<String, String>()).input(),
+      pathTranslation: map['pathTranslation'] == null ? null : (BackendRulePathTranslation.fromValue(map['pathTranslation']! as String)).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
     );
   }
 }

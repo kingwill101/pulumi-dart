@@ -25,8 +25,8 @@ class ListenerQuicConfig {
 
   factory ListenerQuicConfig.fromMap(Map<String, dynamic> map) {
     return ListenerQuicConfig(
-      quicListenerId: map['quicListenerId'] == null ? null : (map['quicListenerId'] as String).input(),
-      quicUpgradeEnabled: map['quicUpgradeEnabled'] == null ? null : (map['quicUpgradeEnabled'] as bool).input(),
+      quicListenerId: map['quicListenerId'] == null ? null : (map['quicListenerId']! as String).input(),
+      quicUpgradeEnabled: map['quicUpgradeEnabled'] == null ? null : (map['quicUpgradeEnabled']! as bool).input(),
     );
   }
 }

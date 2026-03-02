@@ -40,7 +40,7 @@ class IntegrationRuntimeArgs {
 
   factory IntegrationRuntimeArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeArgs(
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
       properties: (ManagedIntegrationRuntime.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),

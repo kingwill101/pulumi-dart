@@ -20,7 +20,7 @@ class DiskAsyncReplicationComputeV1 {
 
   factory DiskAsyncReplicationComputeV1.fromMap(Map<String, dynamic> map) {
     return DiskAsyncReplicationComputeV1(
-      disk: map['disk'] == null ? null : (map['disk'] as String).input(),
+      disk: map['disk'] == null ? null : (map['disk']! as String).input(),
     );
   }
 }

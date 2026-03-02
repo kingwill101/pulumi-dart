@@ -22,7 +22,7 @@ class EventActionAction {
 
   factory EventActionAction.fromMap(Map<String, dynamic> map) {
     return EventActionAction(
-      exportRevisionToS3: (EventActionActionExportRevisionToS3.fromMap((map['exportRevisionToS3'] as Map).cast<String, dynamic>())).input(),
+      exportRevisionToS3: (EventActionActionExportRevisionToS3.fromMap((map['exportRevisionToS3']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

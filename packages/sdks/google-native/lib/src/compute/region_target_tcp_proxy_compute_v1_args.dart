@@ -58,14 +58,14 @@ class RegionTargetTcpProxyComputeV1Args {
 
   factory RegionTargetTcpProxyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return RegionTargetTcpProxyComputeV1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind'] as bool).input(),
-      proxyHeader: map['proxyHeader'] == null ? null : (RegionTargetTcpProxyProxyHeaderComputeV1.fromValue(map['proxyHeader'] as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind']! as bool).input(),
+      proxyHeader: map['proxyHeader'] == null ? null : (RegionTargetTcpProxyProxyHeaderComputeV1.fromValue(map['proxyHeader']! as String)).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

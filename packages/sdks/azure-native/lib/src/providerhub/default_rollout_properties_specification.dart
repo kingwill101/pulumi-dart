@@ -76,16 +76,16 @@ class DefaultRolloutPropertiesSpecification {
 
   factory DefaultRolloutPropertiesSpecification.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutPropertiesSpecification(
-      autoProvisionConfig: map['autoProvisionConfig'] == null ? null : (DefaultRolloutSpecificationAutoProvisionConfig.fromMap((map['autoProvisionConfig'] as Map).cast<String, dynamic>())).input(),
-      canary: map['canary'] == null ? null : (DefaultRolloutSpecificationCanary.fromMap((map['canary'] as Map).cast<String, dynamic>())).input(),
-      expeditedRollout: map['expeditedRollout'] == null ? null : (DefaultRolloutSpecificationExpeditedRollout.fromMap((map['expeditedRollout'] as Map).cast<String, dynamic>())).input(),
-      highTraffic: map['highTraffic'] == null ? null : (DefaultRolloutSpecificationHighTraffic.fromMap((map['highTraffic'] as Map).cast<String, dynamic>())).input(),
-      lowTraffic: map['lowTraffic'] == null ? null : (DefaultRolloutSpecificationLowTraffic.fromMap((map['lowTraffic'] as Map).cast<String, dynamic>())).input(),
-      mediumTraffic: map['mediumTraffic'] == null ? null : (DefaultRolloutSpecificationMediumTraffic.fromMap((map['mediumTraffic'] as Map).cast<String, dynamic>())).input(),
-      providerRegistration: map['providerRegistration'] == null ? null : (DefaultRolloutSpecificationProviderRegistration.fromMap((map['providerRegistration'] as Map).cast<String, dynamic>())).input(),
-      resourceTypeRegistrations: map['resourceTypeRegistrations'] == null ? null : (pulumi.Input.decodeList<ResourceTypeRegistration>(map['resourceTypeRegistrations'], (value) => ResourceTypeRegistration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      restOfTheWorldGroupOne: map['restOfTheWorldGroupOne'] == null ? null : (DefaultRolloutSpecificationRestOfTheWorldGroupOne.fromMap((map['restOfTheWorldGroupOne'] as Map).cast<String, dynamic>())).input(),
-      restOfTheWorldGroupTwo: map['restOfTheWorldGroupTwo'] == null ? null : (DefaultRolloutSpecificationRestOfTheWorldGroupTwo.fromMap((map['restOfTheWorldGroupTwo'] as Map).cast<String, dynamic>())).input(),
+      autoProvisionConfig: map['autoProvisionConfig'] == null ? null : (DefaultRolloutSpecificationAutoProvisionConfig.fromMap((map['autoProvisionConfig']! as Map).cast<String, dynamic>())).input(),
+      canary: map['canary'] == null ? null : (DefaultRolloutSpecificationCanary.fromMap((map['canary']! as Map).cast<String, dynamic>())).input(),
+      expeditedRollout: map['expeditedRollout'] == null ? null : (DefaultRolloutSpecificationExpeditedRollout.fromMap((map['expeditedRollout']! as Map).cast<String, dynamic>())).input(),
+      highTraffic: map['highTraffic'] == null ? null : (DefaultRolloutSpecificationHighTraffic.fromMap((map['highTraffic']! as Map).cast<String, dynamic>())).input(),
+      lowTraffic: map['lowTraffic'] == null ? null : (DefaultRolloutSpecificationLowTraffic.fromMap((map['lowTraffic']! as Map).cast<String, dynamic>())).input(),
+      mediumTraffic: map['mediumTraffic'] == null ? null : (DefaultRolloutSpecificationMediumTraffic.fromMap((map['mediumTraffic']! as Map).cast<String, dynamic>())).input(),
+      providerRegistration: map['providerRegistration'] == null ? null : (DefaultRolloutSpecificationProviderRegistration.fromMap((map['providerRegistration']! as Map).cast<String, dynamic>())).input(),
+      resourceTypeRegistrations: map['resourceTypeRegistrations'] == null ? null : (pulumi.Input.decodeList<ResourceTypeRegistration>(map['resourceTypeRegistrations']!, (value) => ResourceTypeRegistration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      restOfTheWorldGroupOne: map['restOfTheWorldGroupOne'] == null ? null : (DefaultRolloutSpecificationRestOfTheWorldGroupOne.fromMap((map['restOfTheWorldGroupOne']! as Map).cast<String, dynamic>())).input(),
+      restOfTheWorldGroupTwo: map['restOfTheWorldGroupTwo'] == null ? null : (DefaultRolloutSpecificationRestOfTheWorldGroupTwo.fromMap((map['restOfTheWorldGroupTwo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class RoutingEnrichmentsResponse {
 
   factory RoutingEnrichmentsResponse.fromMap(Map<String, dynamic> map) {
     return RoutingEnrichmentsResponse(
-      dynamic: map['dynamic'] == null ? null : (pulumi.Input.decodeList<DynamicRoutingEnrichmentResponse>(map['dynamic'], (value) => DynamicRoutingEnrichmentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      static: map['static'] == null ? null : (pulumi.Input.decodeList<StaticStringRoutingEnrichmentResponse>(map['static'], (value) => StaticStringRoutingEnrichmentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dynamic: map['dynamic'] == null ? null : (pulumi.Input.decodeList<DynamicRoutingEnrichmentResponse>(map['dynamic']!, (value) => DynamicRoutingEnrichmentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      static: map['static'] == null ? null : (pulumi.Input.decodeList<StaticStringRoutingEnrichmentResponse>(map['static']!, (value) => StaticStringRoutingEnrichmentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

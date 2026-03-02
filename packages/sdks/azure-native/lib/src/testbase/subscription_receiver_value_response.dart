@@ -31,9 +31,9 @@ class SubscriptionReceiverValueResponse {
 
   factory SubscriptionReceiverValueResponse.fromMap(Map<String, dynamic> map) {
     return SubscriptionReceiverValueResponse(
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName'] as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      subscriptionName: map['subscriptionName'] == null ? null : (map['subscriptionName']! as String).input(),
     );
   }
 }

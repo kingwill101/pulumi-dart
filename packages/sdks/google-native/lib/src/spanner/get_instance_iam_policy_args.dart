@@ -28,7 +28,7 @@ class GetInstanceIamPolicyArgs {
   factory GetInstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceIamPolicyArgs(
       instanceId: (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

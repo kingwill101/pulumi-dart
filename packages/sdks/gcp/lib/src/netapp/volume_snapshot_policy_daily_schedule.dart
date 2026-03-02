@@ -30,8 +30,8 @@ class VolumeSnapshotPolicyDailySchedule {
 
   factory VolumeSnapshotPolicyDailySchedule.fromMap(Map<String, dynamic> map) {
     return VolumeSnapshotPolicyDailySchedule(
-      hour: map['hour'] == null ? null : (map['hour'] as int).input(),
-      minute: map['minute'] == null ? null : (map['minute'] as int).input(),
+      hour: map['hour'] == null ? null : (map['hour']! as int).input(),
+      minute: map['minute'] == null ? null : (map['minute']! as int).input(),
       snapshotsToKeep: (map['snapshotsToKeep'] as int).input(),
     );
   }

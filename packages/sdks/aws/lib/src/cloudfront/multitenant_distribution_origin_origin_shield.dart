@@ -26,7 +26,7 @@ class MultitenantDistributionOriginOriginShield {
   factory MultitenantDistributionOriginOriginShield.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOriginOriginShield(
       enabled: (map['enabled'] as bool).input(),
-      originShieldRegion: map['originShieldRegion'] == null ? null : (map['originShieldRegion'] as String).input(),
+      originShieldRegion: map['originShieldRegion'] == null ? null : ((map['originShieldRegion'] as String).input()).input(),
     );
   }
 }

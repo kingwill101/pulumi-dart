@@ -66,13 +66,13 @@ class GetLongRunningBackupResult {
   factory GetLongRunningBackupResult.fromMap(Map<String, dynamic> map) {
     return GetLongRunningBackupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      backupNameV2: map['backupNameV2'] == null ? null : map['backupNameV2'] as String,
-      backupType: map['backupType'] == null ? null : map['backupType'] as String,
-      completedTime: map['completedTime'] == null ? null : map['completedTime'] as String,
+      backupNameV2: map['backupNameV2'] == null ? null : map['backupNameV2']! as String,
+      backupType: map['backupType'] == null ? null : map['backupType']! as String,
+      completedTime: map['completedTime'] == null ? null : map['completedTime']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      source: map['source'] == null ? null : map['source'] as String,
+      source: map['source'] == null ? null : map['source']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

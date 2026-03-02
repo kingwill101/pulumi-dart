@@ -53,13 +53,13 @@ class ContainerMount {
 
   factory ContainerMount.fromMap(Map<String, dynamic> map) {
     return ContainerMount(
-      bindOptions: map['bindOptions'] == null ? null : (ContainerMountBindOptions.fromMap((map['bindOptions'] as Map).cast<String, dynamic>())).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      bindOptions: map['bindOptions'] == null ? null : (ContainerMountBindOptions.fromMap((map['bindOptions']! as Map).cast<String, dynamic>())).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
       target: (map['target'] as String).input(),
-      tmpfsOptions: map['tmpfsOptions'] == null ? null : (ContainerMountTmpfsOptions.fromMap((map['tmpfsOptions'] as Map).cast<String, dynamic>())).input(),
+      tmpfsOptions: map['tmpfsOptions'] == null ? null : (ContainerMountTmpfsOptions.fromMap((map['tmpfsOptions']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      volumeOptions: map['volumeOptions'] == null ? null : (ContainerMountVolumeOptions.fromMap((map['volumeOptions'] as Map).cast<String, dynamic>())).input(),
+      volumeOptions: map['volumeOptions'] == null ? null : (ContainerMountVolumeOptions.fromMap((map['volumeOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

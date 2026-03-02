@@ -50,13 +50,13 @@ class OrchestratedVirtualMachineScaleSetRollingUpgradePolicy {
 
   factory OrchestratedVirtualMachineScaleSetRollingUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetRollingUpgradePolicy(
-      crossZoneUpgradesEnabled: map['crossZoneUpgradesEnabled'] == null ? null : (map['crossZoneUpgradesEnabled'] as bool).input(),
+      crossZoneUpgradesEnabled: map['crossZoneUpgradesEnabled'] == null ? null : (map['crossZoneUpgradesEnabled']! as bool).input(),
       maxBatchInstancePercent: (map['maxBatchInstancePercent'] as int).input(),
       maxUnhealthyInstancePercent: (map['maxUnhealthyInstancePercent'] as int).input(),
       maxUnhealthyUpgradedInstancePercent: (map['maxUnhealthyUpgradedInstancePercent'] as int).input(),
-      maximumSurgeInstancesEnabled: map['maximumSurgeInstancesEnabled'] == null ? null : (map['maximumSurgeInstancesEnabled'] as bool).input(),
+      maximumSurgeInstancesEnabled: map['maximumSurgeInstancesEnabled'] == null ? null : (map['maximumSurgeInstancesEnabled']! as bool).input(),
       pauseTimeBetweenBatches: (map['pauseTimeBetweenBatches'] as String).input(),
-      prioritizeUnhealthyInstancesEnabled: map['prioritizeUnhealthyInstancesEnabled'] == null ? null : (map['prioritizeUnhealthyInstancesEnabled'] as bool).input(),
+      prioritizeUnhealthyInstancesEnabled: map['prioritizeUnhealthyInstancesEnabled'] == null ? null : (map['prioritizeUnhealthyInstancesEnabled']! as bool).input(),
     );
   }
 }

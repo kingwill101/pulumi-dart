@@ -64,12 +64,12 @@ class ApplicationCertificateArgs {
   factory ApplicationCertificateArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationCertificateArgs(
       applicationId: (map['applicationId'] as String).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      endDateRelative: map['endDateRelative'] == null ? null : (map['endDateRelative'] as String).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
+      endDateRelative: map['endDateRelative'] == null ? null : (map['endDateRelative']! as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

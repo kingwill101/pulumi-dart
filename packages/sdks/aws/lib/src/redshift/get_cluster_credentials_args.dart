@@ -54,13 +54,13 @@ class GetClusterCredentialsArgs {
 
   factory GetClusterCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterCredentialsArgs(
-      autoCreate: map['autoCreate'] == null ? null : (map['autoCreate'] as bool).input(),
+      autoCreate: map['autoCreate'] == null ? null : ((map['autoCreate'] as bool).input()).input(),
       clusterIdentifier: (map['clusterIdentifier'] as String).input(),
-      dbGroups: map['dbGroups'] == null ? null : ((map['dbGroups'] as List).cast<String>()).input(),
-      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
+      dbGroups: map['dbGroups'] == null ? null : (((map['dbGroups'] as List).cast<String>()).input()).input(),
+      dbName: map['dbName'] == null ? null : ((map['dbName'] as String).input()).input(),
       dbUser: (map['dbUser'] as String).input(),
-      durationSeconds: map['durationSeconds'] == null ? null : (map['durationSeconds'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      durationSeconds: map['durationSeconds'] == null ? null : ((map['durationSeconds'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

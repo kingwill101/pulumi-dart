@@ -30,8 +30,8 @@ class IntentSlotValueElicitationPrompt {
   factory IntentSlotValueElicitationPrompt.fromMap(Map<String, dynamic> map) {
     return IntentSlotValueElicitationPrompt(
       maxAttempts: (map['maxAttempts'] as int).input(),
-      messages: (pulumi.Input.decodeList<IntentSlotValueElicitationPromptMessage>(map['messages'], (value) => IntentSlotValueElicitationPromptMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseCard: map['responseCard'] == null ? null : (map['responseCard'] as String).input(),
+      messages: (pulumi.Input.decodeList<IntentSlotValueElicitationPromptMessage>(map['messages']!, (value) => IntentSlotValueElicitationPromptMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseCard: map['responseCard'] == null ? null : ((map['responseCard'] as String).input()).input(),
     );
   }
 }

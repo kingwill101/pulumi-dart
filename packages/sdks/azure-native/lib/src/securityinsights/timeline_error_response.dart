@@ -33,7 +33,7 @@ class TimelineErrorResponse {
     return TimelineErrorResponse(
       errorMessage: (map['errorMessage'] as String).input(),
       kind: (map['kind'] as String).input(),
-      queryId: map['queryId'] == null ? null : (map['queryId'] as String).input(),
+      queryId: map['queryId'] == null ? null : (map['queryId']! as String).input(),
     );
   }
 }

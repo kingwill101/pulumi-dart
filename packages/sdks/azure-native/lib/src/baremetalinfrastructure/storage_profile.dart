@@ -27,8 +27,8 @@ class StorageProfile {
 
   factory StorageProfile.fromMap(Map<String, dynamic> map) {
     return StorageProfile(
-      nfsIpAddress: map['nfsIpAddress'] == null ? null : (map['nfsIpAddress'] as String).input(),
-      osDisks: map['osDisks'] == null ? null : (pulumi.Input.decodeList<Disk>(map['osDisks'], (value) => Disk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nfsIpAddress: map['nfsIpAddress'] == null ? null : (map['nfsIpAddress']! as String).input(),
+      osDisks: map['osDisks'] == null ? null : (pulumi.Input.decodeList<Disk>(map['osDisks']!, (value) => Disk.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

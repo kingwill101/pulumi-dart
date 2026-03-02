@@ -20,7 +20,7 @@ class GatewayRouteSpecHttp2RouteMatchQueryParameterMatch {
 
   factory GatewayRouteSpecHttp2RouteMatchQueryParameterMatch.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttp2RouteMatchQueryParameterMatch(
-      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
+      exact: map['exact'] == null ? null : ((map['exact'] as String).input()).input(),
     );
   }
 }

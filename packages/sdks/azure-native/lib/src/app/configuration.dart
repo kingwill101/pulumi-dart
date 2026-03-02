@@ -79,17 +79,17 @@ class Configuration {
 
   factory Configuration.fromMap(Map<String, dynamic> map) {
     return Configuration(
-      activeRevisionsMode: map['activeRevisionsMode'] == null ? null : (map['activeRevisionsMode'] as String).input(),
-      dapr: map['dapr'] == null ? null : (Dapr.fromMap((map['dapr'] as Map).cast<String, dynamic>())).input(),
-      identitySettings: map['identitySettings'] == null ? null : (pulumi.Input.decodeList<IdentitySettings>(map['identitySettings'], (value) => IdentitySettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingress: map['ingress'] == null ? null : (Ingress.fromMap((map['ingress'] as Map).cast<String, dynamic>())).input(),
-      maxInactiveRevisions: map['maxInactiveRevisions'] == null ? null : (map['maxInactiveRevisions'] as int).input(),
-      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<RegistryCredentials>(map['registries'], (value) => RegistryCredentials.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      revisionTransitionThreshold: map['revisionTransitionThreshold'] == null ? null : (map['revisionTransitionThreshold'] as int).input(),
-      runtime: map['runtime'] == null ? null : (Runtime.fromMap((map['runtime'] as Map).cast<String, dynamic>())).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<Secret>(map['secrets'], (value) => Secret.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: map['service'] == null ? null : (Service.fromMap((map['service'] as Map).cast<String, dynamic>())).input(),
-      targetLabel: map['targetLabel'] == null ? null : (map['targetLabel'] as String).input(),
+      activeRevisionsMode: map['activeRevisionsMode'] == null ? null : (map['activeRevisionsMode']! as String).input(),
+      dapr: map['dapr'] == null ? null : (Dapr.fromMap((map['dapr']! as Map).cast<String, dynamic>())).input(),
+      identitySettings: map['identitySettings'] == null ? null : (pulumi.Input.decodeList<IdentitySettings>(map['identitySettings']!, (value) => IdentitySettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingress: map['ingress'] == null ? null : (Ingress.fromMap((map['ingress']! as Map).cast<String, dynamic>())).input(),
+      maxInactiveRevisions: map['maxInactiveRevisions'] == null ? null : (map['maxInactiveRevisions']! as int).input(),
+      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<RegistryCredentials>(map['registries']!, (value) => RegistryCredentials.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      revisionTransitionThreshold: map['revisionTransitionThreshold'] == null ? null : (map['revisionTransitionThreshold']! as int).input(),
+      runtime: map['runtime'] == null ? null : (Runtime.fromMap((map['runtime']! as Map).cast<String, dynamic>())).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<Secret>(map['secrets']!, (value) => Secret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      service: map['service'] == null ? null : (Service.fromMap((map['service']! as Map).cast<String, dynamic>())).input(),
+      targetLabel: map['targetLabel'] == null ? null : (map['targetLabel']! as String).input(),
     );
   }
 }

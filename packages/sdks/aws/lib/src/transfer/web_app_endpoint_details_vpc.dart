@@ -35,9 +35,9 @@ class WebAppEndpointDetailsVpc {
 
   factory WebAppEndpointDetailsVpc.fromMap(Map<String, dynamic> map) {
     return WebAppEndpointDetailsVpc(
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

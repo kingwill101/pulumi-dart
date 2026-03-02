@@ -82,19 +82,19 @@ class GetStorageAccountCredentialResult {
 
   factory GetStorageAccountCredentialResult.fromMap(Map<String, dynamic> map) {
     return GetStorageAccountCredentialResult(
-      accountKey: map['accountKey'] == null ? null : AsymmetricEncryptedSecretResponse.fromMap((map['accountKey'] as Map).cast<String, dynamic>()),
+      accountKey: map['accountKey'] == null ? null : AsymmetricEncryptedSecretResponse.fromMap((map['accountKey']! as Map).cast<String, dynamic>()),
       accountType: map['accountType'] as String,
       alias: map['alias'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      blobDomainName: map['blobDomainName'] == null ? null : map['blobDomainName'] as String,
-      connectionString: map['connectionString'] == null ? null : map['connectionString'] as String,
+      blobDomainName: map['blobDomainName'] == null ? null : map['blobDomainName']! as String,
+      connectionString: map['connectionString'] == null ? null : map['connectionString']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       sslStatus: map['sslStatus'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
+      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      userName: map['userName'] == null ? null : map['userName'] as String,
+      userName: map['userName'] == null ? null : map['userName']! as String,
     );
   }
 }

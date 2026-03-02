@@ -24,7 +24,7 @@ class GetPartitionArgs {
 
   factory GetPartitionArgs.fromMap(Map<String, dynamic> map) {
     return GetPartitionArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
     );
   }
 }

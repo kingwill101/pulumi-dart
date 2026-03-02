@@ -30,9 +30,9 @@ class ActionGroupWebhookReceiverAadAuth {
 
   factory ActionGroupWebhookReceiverAadAuth.fromMap(Map<String, dynamic> map) {
     return ActionGroupWebhookReceiverAadAuth(
-      identifierUri: map['identifierUri'] == null ? null : (map['identifierUri'] as String).input(),
+      identifierUri: map['identifierUri'] == null ? null : (map['identifierUri']! as String).input(),
       objectId: (map['objectId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

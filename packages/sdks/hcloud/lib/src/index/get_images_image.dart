@@ -73,7 +73,7 @@ class GetImagesImage {
       osFlavor: (map['osFlavor'] as String).input(),
       osVersion: (map['osVersion'] as String).input(),
       rapidDeploy: (map['rapidDeploy'] as bool).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

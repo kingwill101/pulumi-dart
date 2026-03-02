@@ -34,7 +34,7 @@ class RoutineRelatedRecordArgs {
 
   factory RoutineRelatedRecordArgs.fromMap(Map<String, dynamic> map) {
     return RoutineRelatedRecordArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       recordName: (map['recordName'] as String).input(),
       siteId: (map['siteId'] as String).input(),
     );

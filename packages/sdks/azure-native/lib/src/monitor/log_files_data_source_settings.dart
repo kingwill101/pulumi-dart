@@ -22,7 +22,7 @@ class LogFilesDataSourceSettings {
 
   factory LogFilesDataSourceSettings.fromMap(Map<String, dynamic> map) {
     return LogFilesDataSourceSettings(
-      text: map['text'] == null ? null : (LogFileSettingsText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (LogFileSettingsText.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

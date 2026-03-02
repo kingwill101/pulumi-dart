@@ -60,14 +60,14 @@ class VpcIpamArgs {
 
   factory VpcIpamArgs.fromMap(Map<String, dynamic> map) {
     return VpcIpamArgs(
-      cascade: map['cascade'] == null ? null : (map['cascade'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enablePrivateGua: map['enablePrivateGua'] == null ? null : (map['enablePrivateGua'] as bool).input(),
-      meteredAccount: map['meteredAccount'] == null ? null : (map['meteredAccount'] as String).input(),
-      operatingRegions: (pulumi.Input.decodeList<VpcIpamOperatingRegion>(map['operatingRegions'], (value) => VpcIpamOperatingRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      cascade: map['cascade'] == null ? null : ((map['cascade'] as bool).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      enablePrivateGua: map['enablePrivateGua'] == null ? null : ((map['enablePrivateGua'] as bool).input()).input(),
+      meteredAccount: map['meteredAccount'] == null ? null : ((map['meteredAccount'] as String).input()).input(),
+      operatingRegions: (pulumi.Input.decodeList<VpcIpamOperatingRegion>(map['operatingRegions']!, (value) => VpcIpamOperatingRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tier: map['tier'] == null ? null : ((map['tier'] as String).input()).input(),
     );
   }
 }

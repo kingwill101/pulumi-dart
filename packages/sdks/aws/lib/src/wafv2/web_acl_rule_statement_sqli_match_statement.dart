@@ -32,9 +32,9 @@ class WebAclRuleStatementSqliMatchStatement {
 
   factory WebAclRuleStatementSqliMatchStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementSqliMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null ? null : (WebAclRuleStatementSqliMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
-      sensitivityLevel: map['sensitivityLevel'] == null ? null : (map['sensitivityLevel'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementSqliMatchStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementSqliMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((WebAclRuleStatementSqliMatchStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
+      sensitivityLevel: map['sensitivityLevel'] == null ? null : ((map['sensitivityLevel'] as String).input()).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementSqliMatchStatementTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementSqliMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class VpcAccessibleServices {
 
   factory VpcAccessibleServices.fromMap(Map<String, dynamic> map) {
     return VpcAccessibleServices(
-      allowedServices: map['allowedServices'] == null ? null : ((map['allowedServices'] as List).cast<String>()).input(),
-      enableRestriction: map['enableRestriction'] == null ? null : (map['enableRestriction'] as bool).input(),
+      allowedServices: map['allowedServices'] == null ? null : ((map['allowedServices']! as List).cast<String>()).input(),
+      enableRestriction: map['enableRestriction'] == null ? null : (map['enableRestriction']! as bool).input(),
     );
   }
 }

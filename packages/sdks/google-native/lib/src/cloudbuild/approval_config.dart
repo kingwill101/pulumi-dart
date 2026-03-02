@@ -21,7 +21,7 @@ class ApprovalConfig {
 
   factory ApprovalConfig.fromMap(Map<String, dynamic> map) {
     return ApprovalConfig(
-      approvalRequired: map['approvalRequired'] == null ? null : (map['approvalRequired'] as bool).input(),
+      approvalRequired: map['approvalRequired'] == null ? null : (map['approvalRequired']! as bool).input(),
     );
   }
 }

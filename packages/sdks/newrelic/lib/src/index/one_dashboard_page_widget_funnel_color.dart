@@ -26,8 +26,8 @@ class OneDashboardPageWidgetFunnelColor {
 
   factory OneDashboardPageWidgetFunnelColor.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetFunnelColor(
-      color: map['color'] == null ? null : (map['color'] as String).input(),
-      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetFunnelColorSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetFunnelColorSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      color: map['color'] == null ? null : (map['color']! as String).input(),
+      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetFunnelColorSeriesOverride>(map['seriesOverrides']!, (value) => OneDashboardPageWidgetFunnelColorSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

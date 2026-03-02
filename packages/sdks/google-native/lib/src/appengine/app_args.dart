@@ -78,17 +78,17 @@ class AppArgs {
 
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
-      authDomain: map['authDomain'] == null ? null : (map['authDomain'] as String).input(),
-      databaseType: map['databaseType'] == null ? null : (AppDatabaseType.fromValue(map['databaseType'] as String)).input(),
-      defaultCookieExpiration: map['defaultCookieExpiration'] == null ? null : (map['defaultCookieExpiration'] as String).input(),
-      dispatchRules: map['dispatchRules'] == null ? null : (pulumi.Input.decodeList<UrlDispatchRule>(map['dispatchRules'], (value) => UrlDispatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      featureSettings: map['featureSettings'] == null ? null : (FeatureSettings.fromMap((map['featureSettings'] as Map).cast<String, dynamic>())).input(),
-      generatedCustomerMetadata: map['generatedCustomerMetadata'] == null ? null : ((map['generatedCustomerMetadata'] as Map).cast<String, String>()).input(),
-      iap: map['iap'] == null ? null : (IdentityAwareProxy.fromMap((map['iap'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      servingStatus: map['servingStatus'] == null ? null : (AppServingStatus.fromValue(map['servingStatus'] as String)).input(),
+      authDomain: map['authDomain'] == null ? null : (map['authDomain']! as String).input(),
+      databaseType: map['databaseType'] == null ? null : (AppDatabaseType.fromValue(map['databaseType']! as String)).input(),
+      defaultCookieExpiration: map['defaultCookieExpiration'] == null ? null : (map['defaultCookieExpiration']! as String).input(),
+      dispatchRules: map['dispatchRules'] == null ? null : (pulumi.Input.decodeList<UrlDispatchRule>(map['dispatchRules']!, (value) => UrlDispatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      featureSettings: map['featureSettings'] == null ? null : (FeatureSettings.fromMap((map['featureSettings']! as Map).cast<String, dynamic>())).input(),
+      generatedCustomerMetadata: map['generatedCustomerMetadata'] == null ? null : ((map['generatedCustomerMetadata']! as Map).cast<String, String>()).input(),
+      iap: map['iap'] == null ? null : (IdentityAwareProxy.fromMap((map['iap']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      servingStatus: map['servingStatus'] == null ? null : (AppServingStatus.fromValue(map['servingStatus']! as String)).input(),
     );
   }
 }

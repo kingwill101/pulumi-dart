@@ -31,9 +31,9 @@ class Scope {
 
   factory Scope.fromMap(Map<String, dynamic> map) {
     return Scope(
-      azureResourceGraphQuery: map['azureResourceGraphQuery'] == null ? null : (map['azureResourceGraphQuery'] as String).input(),
-      scopeType: map['scopeType'] == null ? null : (map['scopeType'] as String).input(),
-      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId'] as String).input(),
+      azureResourceGraphQuery: map['azureResourceGraphQuery'] == null ? null : (map['azureResourceGraphQuery']! as String).input(),
+      scopeType: map['scopeType'] == null ? null : (map['scopeType']! as String).input(),
+      serverGroupId: map['serverGroupId'] == null ? null : (map['serverGroupId']! as String).input(),
     );
   }
 }

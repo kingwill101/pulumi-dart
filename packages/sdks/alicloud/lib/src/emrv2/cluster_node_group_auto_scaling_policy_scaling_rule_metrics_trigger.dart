@@ -47,11 +47,11 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger {
 
   factory ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTrigger(
-      conditionLogicOperator: map['conditionLogicOperator'] == null ? null : (map['conditionLogicOperator'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition>(map['conditions'], (value) => ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      coolDownInterval: map['coolDownInterval'] == null ? null : (map['coolDownInterval'] as int).input(),
+      conditionLogicOperator: map['conditionLogicOperator'] == null ? null : (map['conditionLogicOperator']! as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition>(map['conditions']!, (value) => ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      coolDownInterval: map['coolDownInterval'] == null ? null : (map['coolDownInterval']! as int).input(),
       evaluationCount: (map['evaluationCount'] as int).input(),
-      timeConstraints: map['timeConstraints'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint>(map['timeConstraints'], (value) => ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeConstraints: map['timeConstraints'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint>(map['timeConstraints']!, (value) => ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
       timeWindow: (map['timeWindow'] as int).input(),
     );
   }

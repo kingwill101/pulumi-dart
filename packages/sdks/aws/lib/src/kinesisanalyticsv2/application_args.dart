@@ -76,17 +76,17 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationConfiguration: map['applicationConfiguration'] == null ? null : (ApplicationApplicationConfiguration.fromMap((map['applicationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      applicationMode: map['applicationMode'] == null ? null : (map['applicationMode'] as String).input(),
-      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : (ApplicationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      forceStop: map['forceStop'] == null ? null : (map['forceStop'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      applicationConfiguration: map['applicationConfiguration'] == null ? null : ((ApplicationApplicationConfiguration.fromMap((map['applicationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      applicationMode: map['applicationMode'] == null ? null : ((map['applicationMode'] as String).input()).input(),
+      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : ((ApplicationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      forceStop: map['forceStop'] == null ? null : ((map['forceStop'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       runtimeEnvironment: (map['runtimeEnvironment'] as String).input(),
       serviceExecutionRole: (map['serviceExecutionRole'] as String).input(),
-      startApplication: map['startApplication'] == null ? null : (map['startApplication'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      startApplication: map['startApplication'] == null ? null : ((map['startApplication'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

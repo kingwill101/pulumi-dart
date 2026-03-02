@@ -38,7 +38,7 @@ class AppIngressIpSecurityRestriction {
   factory AppIngressIpSecurityRestriction.fromMap(Map<String, dynamic> map) {
     return AppIngressIpSecurityRestriction(
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       ipAddressRange: (map['ipAddressRange'] as String).input(),
       name: (map['name'] as String).input(),
     );

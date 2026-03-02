@@ -20,7 +20,7 @@ class CassandraTableAutoscaleSettings {
 
   factory CassandraTableAutoscaleSettings.fromMap(Map<String, dynamic> map) {
     return CassandraTableAutoscaleSettings(
-      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput'] as int).input(),
+      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput']! as int).input(),
     );
   }
 }

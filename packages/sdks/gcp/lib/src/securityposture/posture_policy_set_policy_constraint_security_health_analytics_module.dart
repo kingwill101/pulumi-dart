@@ -26,7 +26,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule {
 
   factory PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule(
-      moduleEnablementState: map['moduleEnablementState'] == null ? null : (map['moduleEnablementState'] as String).input(),
+      moduleEnablementState: map['moduleEnablementState'] == null ? null : (map['moduleEnablementState']! as String).input(),
       moduleName: (map['moduleName'] as String).input(),
     );
   }

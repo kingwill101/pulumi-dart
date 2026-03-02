@@ -26,8 +26,8 @@ class AppRegistrationResponse {
 
   factory AppRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return AppRegistrationResponse(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      appSecretSettingName: map['appSecretSettingName'] == null ? null : (map['appSecretSettingName'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      appSecretSettingName: map['appSecretSettingName'] == null ? null : (map['appSecretSettingName']! as String).input(),
     );
   }
 }

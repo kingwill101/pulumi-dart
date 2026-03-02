@@ -39,9 +39,9 @@ class CxIntentTrainingPhrase {
 
   factory CxIntentTrainingPhrase.fromMap(Map<String, dynamic> map) {
     return CxIntentTrainingPhrase(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       parts: (pulumi.Input.decodeList<CxIntentTrainingPhrasePart>(map['parts'], (value) => CxIntentTrainingPhrasePart.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      repeatCount: map['repeatCount'] == null ? null : (map['repeatCount'] as int).input(),
+      repeatCount: map['repeatCount'] == null ? null : (map['repeatCount']! as int).input(),
     );
   }
 }

@@ -43,8 +43,8 @@ class RolePolicyArgs {
 
   factory RolePolicyArgs.fromMap(Map<String, dynamic> map) {
     return RolePolicyArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
       policy: (map['policy'] as String).input(),
       role: (map['role'] as String).input(),
     );

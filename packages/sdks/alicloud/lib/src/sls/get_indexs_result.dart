@@ -48,7 +48,7 @@ class GetIndexsResult {
       ids: (map['ids'] as List).cast<String>(),
       indexs: pulumi.Input.decodeList<GetIndexsIndex>(map['indexs'], (value) => GetIndexsIndex.fromMap((value as Map).cast<String, dynamic>())),
       logstoreName: map['logstoreName'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       projectName: map['projectName'] as String,
     );
   }

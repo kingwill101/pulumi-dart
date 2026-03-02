@@ -27,7 +27,7 @@ class WireGroupEndpoint {
   factory WireGroupEndpoint.fromMap(Map<String, dynamic> map) {
     return WireGroupEndpoint(
       endpoint: (map['endpoint'] as String).input(),
-      interconnects: map['interconnects'] == null ? null : (pulumi.Input.decodeList<WireGroupEndpointInterconnect>(map['interconnects'], (value) => WireGroupEndpointInterconnect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interconnects: map['interconnects'] == null ? null : (pulumi.Input.decodeList<WireGroupEndpointInterconnect>(map['interconnects']!, (value) => WireGroupEndpointInterconnect.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

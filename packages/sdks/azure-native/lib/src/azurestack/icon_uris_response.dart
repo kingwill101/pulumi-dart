@@ -41,11 +41,11 @@ class IconUrisResponse {
 
   factory IconUrisResponse.fromMap(Map<String, dynamic> map) {
     return IconUrisResponse(
-      hero: map['hero'] == null ? null : (map['hero'] as String).input(),
-      large: map['large'] == null ? null : (map['large'] as String).input(),
-      medium: map['medium'] == null ? null : (map['medium'] as String).input(),
-      small: map['small'] == null ? null : (map['small'] as String).input(),
-      wide: map['wide'] == null ? null : (map['wide'] as String).input(),
+      hero: map['hero'] == null ? null : (map['hero']! as String).input(),
+      large: map['large'] == null ? null : (map['large']! as String).input(),
+      medium: map['medium'] == null ? null : (map['medium']! as String).input(),
+      small: map['small'] == null ? null : (map['small']! as String).input(),
+      wide: map['wide'] == null ? null : (map['wide']! as String).input(),
     );
   }
 }

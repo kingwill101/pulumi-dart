@@ -71,14 +71,14 @@ class TemplateArtifactArgs {
 
   factory TemplateArtifactArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArtifactArgs(
-      artifactName: map['artifactName'] == null ? null : (map['artifactName'] as String).input(),
+      artifactName: map['artifactName'] == null ? null : (map['artifactName']! as String).input(),
       blueprintName: (map['blueprintName'] as String).input(),
-      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       kind: (map['kind'] as String).input(),
       parameters: (pulumi.Input.decodeMapValues<ParameterValue>(map['parameters'], (value) => ParameterValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
       resourceScope: (map['resourceScope'] as String).input(),
       template: (map['template']).input(),
     );

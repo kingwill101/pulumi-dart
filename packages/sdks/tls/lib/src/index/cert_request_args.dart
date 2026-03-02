@@ -45,11 +45,11 @@ class CertRequestArgs {
 
   factory CertRequestArgs.fromMap(Map<String, dynamic> map) {
     return CertRequestArgs(
-      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames'] as List).cast<String>()).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames']! as List).cast<String>()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
       privateKeyPem: (map['privateKeyPem'] as String).input(),
-      subject: map['subject'] == null ? null : (CertRequestSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
-      uris: map['uris'] == null ? null : ((map['uris'] as List).cast<String>()).input(),
+      subject: map['subject'] == null ? null : (CertRequestSubject.fromMap((map['subject']! as Map).cast<String, dynamic>())).input(),
+      uris: map['uris'] == null ? null : ((map['uris']! as List).cast<String>()).input(),
     );
   }
 }

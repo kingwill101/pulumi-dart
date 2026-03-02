@@ -69,12 +69,12 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection {
   factory ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection.fromMap(Map<String, dynamic> map) {
     return ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection(
       address: (map['address'] as String).input(),
-      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
+      connectionType: map['connectionType'] == null ? null : (map['connectionType']! as String).input(),
       forwardingRule: (map['forwardingRule'] as String).input(),
       network: (map['network'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
       pscConnectionId: (map['pscConnectionId'] as String).input(),
-      pscConnectionStatus: map['pscConnectionStatus'] == null ? null : (map['pscConnectionStatus'] as String).input(),
+      pscConnectionStatus: map['pscConnectionStatus'] == null ? null : (map['pscConnectionStatus']! as String).input(),
       serviceAttachment: (map['serviceAttachment'] as String).input(),
     );
   }

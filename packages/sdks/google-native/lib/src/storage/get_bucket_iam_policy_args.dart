@@ -32,8 +32,8 @@ class GetBucketIamPolicyArgs {
   factory GetBucketIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketIamPolicyArgs(
       bucket: (map['bucket'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
     );
   }
 }

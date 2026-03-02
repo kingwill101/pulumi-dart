@@ -25,7 +25,7 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp {
 
   factory VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp(
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
       ip: (map['ip'] as String).input(),
     );
   }

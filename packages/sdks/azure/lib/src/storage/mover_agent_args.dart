@@ -46,8 +46,8 @@ class MoverAgentArgs {
     return MoverAgentArgs(
       arcVirtualMachineId: (map['arcVirtualMachineId'] as String).input(),
       arcVirtualMachineUuid: (map['arcVirtualMachineUuid'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       storageMoverId: (map['storageMoverId'] as String).input(),
     );
   }

@@ -32,9 +32,9 @@ class GremlinDatabaseResource {
 
   factory GremlinDatabaseResource.fromMap(Map<String, dynamic> map) {
     return GremlinDatabaseResource(
-      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
       id: (map['id'] as String).input(),
-      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParameters.fromMap((map['restoreParameters'] as Map).cast<String, dynamic>())).input(),
+      restoreParameters: map['restoreParameters'] == null ? null : (ResourceRestoreParameters.fromMap((map['restoreParameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

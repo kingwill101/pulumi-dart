@@ -33,8 +33,8 @@ class GetDomainsArgs {
 
   factory GetDomainsArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDomainsFilter>(map['filters'], (value) => GetDomainsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetDomainsSort>(map['sorts'], (value) => GetDomainsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDomainsFilter>(map['filters']!, (value) => GetDomainsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetDomainsSort>(map['sorts']!, (value) => GetDomainsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -61,15 +61,15 @@ class AssessmentPolicyState {
 
   factory AssessmentPolicyState.fromMap(Map<String, dynamic> map) {
     return AssessmentPolicyState(
-      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      implementationEffort: map['implementationEffort'] == null ? null : (map['implementationEffort'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      remediationDescription: map['remediationDescription'] == null ? null : (map['remediationDescription'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      threats: map['threats'] == null ? null : ((map['threats'] as List).cast<String>()).input(),
-      userImpact: map['userImpact'] == null ? null : (map['userImpact'] as String).input(),
+      categories: map['categories'] == null ? null : ((map['categories']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      implementationEffort: map['implementationEffort'] == null ? null : (map['implementationEffort']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      remediationDescription: map['remediationDescription'] == null ? null : (map['remediationDescription']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      threats: map['threats'] == null ? null : ((map['threats']! as List).cast<String>()).input(),
+      userImpact: map['userImpact'] == null ? null : (map['userImpact']! as String).input(),
     );
   }
 }

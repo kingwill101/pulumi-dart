@@ -41,7 +41,7 @@ class CodeContainerArgs {
   factory CodeContainerArgs.fromMap(Map<String, dynamic> map) {
     return CodeContainerArgs(
       codeContainerProperties: (map['codeContainerProperties'] as CodeContainerMachinelearningservices).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

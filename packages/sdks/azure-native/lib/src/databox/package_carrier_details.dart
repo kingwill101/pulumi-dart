@@ -31,9 +31,9 @@ class PackageCarrierDetails {
 
   factory PackageCarrierDetails.fromMap(Map<String, dynamic> map) {
     return PackageCarrierDetails(
-      carrierAccountNumber: map['carrierAccountNumber'] == null ? null : (map['carrierAccountNumber'] as String).input(),
-      carrierName: map['carrierName'] == null ? null : (map['carrierName'] as String).input(),
-      trackingId: map['trackingId'] == null ? null : (map['trackingId'] as String).input(),
+      carrierAccountNumber: map['carrierAccountNumber'] == null ? null : (map['carrierAccountNumber']! as String).input(),
+      carrierName: map['carrierName'] == null ? null : (map['carrierName']! as String).input(),
+      trackingId: map['trackingId'] == null ? null : (map['trackingId']! as String).input(),
     );
   }
 }

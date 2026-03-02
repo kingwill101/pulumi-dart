@@ -43,10 +43,10 @@ class VwanConfiguration {
 
   factory VwanConfiguration.fromMap(Map<String, dynamic> map) {
     return VwanConfiguration(
-      ipOfTrustSubnetForUdr: map['ipOfTrustSubnetForUdr'] == null ? null : (IPAddress.fromMap((map['ipOfTrustSubnetForUdr'] as Map).cast<String, dynamic>())).input(),
-      networkVirtualApplianceId: map['networkVirtualApplianceId'] == null ? null : (map['networkVirtualApplianceId'] as String).input(),
-      trustSubnet: map['trustSubnet'] == null ? null : (IPAddressSpace.fromMap((map['trustSubnet'] as Map).cast<String, dynamic>())).input(),
-      unTrustSubnet: map['unTrustSubnet'] == null ? null : (IPAddressSpace.fromMap((map['unTrustSubnet'] as Map).cast<String, dynamic>())).input(),
+      ipOfTrustSubnetForUdr: map['ipOfTrustSubnetForUdr'] == null ? null : (IPAddress.fromMap((map['ipOfTrustSubnetForUdr']! as Map).cast<String, dynamic>())).input(),
+      networkVirtualApplianceId: map['networkVirtualApplianceId'] == null ? null : (map['networkVirtualApplianceId']! as String).input(),
+      trustSubnet: map['trustSubnet'] == null ? null : (IPAddressSpace.fromMap((map['trustSubnet']! as Map).cast<String, dynamic>())).input(),
+      unTrustSubnet: map['unTrustSubnet'] == null ? null : (IPAddressSpace.fromMap((map['unTrustSubnet']! as Map).cast<String, dynamic>())).input(),
       vHub: (IPAddressSpace.fromMap((map['vHub'] as Map).cast<String, dynamic>())).input(),
     );
   }

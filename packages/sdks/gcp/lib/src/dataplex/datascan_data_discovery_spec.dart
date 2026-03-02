@@ -29,8 +29,8 @@ class DatascanDataDiscoverySpec {
 
   factory DatascanDataDiscoverySpec.fromMap(Map<String, dynamic> map) {
     return DatascanDataDiscoverySpec(
-      bigqueryPublishingConfig: map['bigqueryPublishingConfig'] == null ? null : (DatascanDataDiscoverySpecBigqueryPublishingConfig.fromMap((map['bigqueryPublishingConfig'] as Map).cast<String, dynamic>())).input(),
-      storageConfig: map['storageConfig'] == null ? null : (DatascanDataDiscoverySpecStorageConfig.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())).input(),
+      bigqueryPublishingConfig: map['bigqueryPublishingConfig'] == null ? null : (DatascanDataDiscoverySpecBigqueryPublishingConfig.fromMap((map['bigqueryPublishingConfig']! as Map).cast<String, dynamic>())).input(),
+      storageConfig: map['storageConfig'] == null ? null : (DatascanDataDiscoverySpecStorageConfig.fromMap((map['storageConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

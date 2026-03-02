@@ -51,10 +51,10 @@ class MetastoreServiceHiveMetastoreConfig {
 
   factory MetastoreServiceHiveMetastoreConfig.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceHiveMetastoreConfig(
-      auxiliaryVersions: map['auxiliaryVersions'] == null ? null : (pulumi.Input.decodeList<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion>(map['auxiliaryVersions'], (value) => MetastoreServiceHiveMetastoreConfigAuxiliaryVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      configOverrides: map['configOverrides'] == null ? null : ((map['configOverrides'] as Map).cast<String, String>()).input(),
-      endpointProtocol: map['endpointProtocol'] == null ? null : (map['endpointProtocol'] as String).input(),
-      kerberosConfig: map['kerberosConfig'] == null ? null : (MetastoreServiceHiveMetastoreConfigKerberosConfig.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>())).input(),
+      auxiliaryVersions: map['auxiliaryVersions'] == null ? null : (pulumi.Input.decodeList<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion>(map['auxiliaryVersions']!, (value) => MetastoreServiceHiveMetastoreConfigAuxiliaryVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configOverrides: map['configOverrides'] == null ? null : ((map['configOverrides']! as Map).cast<String, String>()).input(),
+      endpointProtocol: map['endpointProtocol'] == null ? null : (map['endpointProtocol']! as String).input(),
+      kerberosConfig: map['kerberosConfig'] == null ? null : (MetastoreServiceHiveMetastoreConfigKerberosConfig.fromMap((map['kerberosConfig']! as Map).cast<String, dynamic>())).input(),
       version: (map['version'] as String).input(),
     );
   }

@@ -32,7 +32,7 @@ class AsymmetricEncryptedSecret {
   factory AsymmetricEncryptedSecret.fromMap(Map<String, dynamic> map) {
     return AsymmetricEncryptedSecret(
       encryptionAlgorithm: (map['encryptionAlgorithm'] as String).input(),
-      encryptionCertThumbprint: map['encryptionCertThumbprint'] == null ? null : (map['encryptionCertThumbprint'] as String).input(),
+      encryptionCertThumbprint: map['encryptionCertThumbprint'] == null ? null : (map['encryptionCertThumbprint']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

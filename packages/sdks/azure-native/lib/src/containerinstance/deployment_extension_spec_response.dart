@@ -43,8 +43,8 @@ class DeploymentExtensionSpecResponse {
     return DeploymentExtensionSpecResponse(
       extensionType: (map['extensionType'] as String).input(),
       name: (map['name'] as String).input(),
-      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']).input(),
-      settings: map['settings'] == null ? null : (map['settings']).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']!).input(),
+      settings: map['settings'] == null ? null : (map['settings']!).input(),
       version: (map['version'] as String).input(),
     );
   }

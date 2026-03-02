@@ -43,8 +43,8 @@ class ControlTowerControlArgs {
   factory ControlTowerControlArgs.fromMap(Map<String, dynamic> map) {
     return ControlTowerControlArgs(
       controlIdentifier: (map['controlIdentifier'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ControlTowerControlParameter>(map['parameters'], (value) => ControlTowerControlParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<ControlTowerControlParameter>(map['parameters']!, (value) => ControlTowerControlParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       targetIdentifier: (map['targetIdentifier'] as String).input(),
     );
   }

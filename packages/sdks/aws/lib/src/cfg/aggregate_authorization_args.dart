@@ -40,9 +40,9 @@ class AggregateAuthorizationArgs {
   factory AggregateAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return AggregateAuthorizationArgs(
       accountId: (map['accountId'] as String).input(),
-      authorizedAwsRegion: map['authorizedAwsRegion'] == null ? null : (map['authorizedAwsRegion'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      authorizedAwsRegion: map['authorizedAwsRegion'] == null ? null : ((map['authorizedAwsRegion'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

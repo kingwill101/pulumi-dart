@@ -22,7 +22,7 @@ class IdentityServiceMembershipSpec {
 
   factory IdentityServiceMembershipSpec.fromMap(Map<String, dynamic> map) {
     return IdentityServiceMembershipSpec(
-      authMethods: map['authMethods'] == null ? null : (pulumi.Input.decodeList<IdentityServiceAuthMethod>(map['authMethods'], (value) => IdentityServiceAuthMethod.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authMethods: map['authMethods'] == null ? null : (pulumi.Input.decodeList<IdentityServiceAuthMethod>(map['authMethods']!, (value) => IdentityServiceAuthMethod.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

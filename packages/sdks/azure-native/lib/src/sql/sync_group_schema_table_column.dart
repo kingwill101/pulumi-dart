@@ -31,9 +31,9 @@ class SyncGroupSchemaTableColumn {
 
   factory SyncGroupSchemaTableColumn.fromMap(Map<String, dynamic> map) {
     return SyncGroupSchemaTableColumn(
-      dataSize: map['dataSize'] == null ? null : (map['dataSize'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      quotedName: map['quotedName'] == null ? null : (map['quotedName'] as String).input(),
+      dataSize: map['dataSize'] == null ? null : (map['dataSize']! as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      quotedName: map['quotedName'] == null ? null : (map['quotedName']! as String).input(),
     );
   }
 }

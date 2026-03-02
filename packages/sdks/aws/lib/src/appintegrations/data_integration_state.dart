@@ -62,15 +62,15 @@ class DataIntegrationState {
 
   factory DataIntegrationState.fromMap(Map<String, dynamic> map) {
     return DataIntegrationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scheduleConfig: map['scheduleConfig'] == null ? null : (DataIntegrationScheduleConfig.fromMap((map['scheduleConfig'] as Map).cast<String, dynamic>())).input(),
-      sourceUri: map['sourceUri'] == null ? null : (map['sourceUri'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scheduleConfig: map['scheduleConfig'] == null ? null : ((DataIntegrationScheduleConfig.fromMap((map['scheduleConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      sourceUri: map['sourceUri'] == null ? null : ((map['sourceUri'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

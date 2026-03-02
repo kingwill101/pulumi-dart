@@ -24,7 +24,7 @@ class AiTrafficAnalysisStatusArgs {
 
   factory AiTrafficAnalysisStatusArgs.fromMap(Map<String, dynamic> map) {
     return AiTrafficAnalysisStatusArgs(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

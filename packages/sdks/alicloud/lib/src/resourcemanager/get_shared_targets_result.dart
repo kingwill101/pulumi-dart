@@ -47,9 +47,9 @@ class GetSharedTargetsResult {
     return GetSharedTargetsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceShareId: map['resourceShareId'] == null ? null : map['resourceShareId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceShareId: map['resourceShareId'] == null ? null : map['resourceShareId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
       targets: pulumi.Input.decodeList<GetSharedTargetsTarget>(map['targets'], (value) => GetSharedTargetsTarget.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

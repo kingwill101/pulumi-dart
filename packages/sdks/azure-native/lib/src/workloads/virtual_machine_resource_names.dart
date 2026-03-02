@@ -42,11 +42,11 @@ class VirtualMachineResourceNames {
 
   factory VirtualMachineResourceNames.fromMap(Map<String, dynamic> map) {
     return VirtualMachineResourceNames(
-      dataDiskNames: map['dataDiskNames'] == null ? null : ((map['dataDiskNames'] as Map).cast<String, List<String>>()).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterfaceResourceNames>(map['networkInterfaces'], (value) => NetworkInterfaceResourceNames.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osDiskName: map['osDiskName'] == null ? null : (map['osDiskName'] as String).input(),
-      vmName: map['vmName'] == null ? null : (map['vmName'] as String).input(),
+      dataDiskNames: map['dataDiskNames'] == null ? null : ((map['dataDiskNames']! as Map).cast<String, List<String>>()).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterfaceResourceNames>(map['networkInterfaces']!, (value) => NetworkInterfaceResourceNames.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osDiskName: map['osDiskName'] == null ? null : (map['osDiskName']! as String).input(),
+      vmName: map['vmName'] == null ? null : (map['vmName']! as String).input(),
     );
   }
 }

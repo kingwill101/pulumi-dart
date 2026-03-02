@@ -64,15 +64,15 @@ class GetRandomPasswordArgs {
 
   factory GetRandomPasswordArgs.fromMap(Map<String, dynamic> map) {
     return GetRandomPasswordArgs(
-      excludeCharacters: map['excludeCharacters'] == null ? null : (map['excludeCharacters'] as String).input(),
-      excludeLowercase: map['excludeLowercase'] == null ? null : (map['excludeLowercase'] as bool).input(),
-      excludeNumbers: map['excludeNumbers'] == null ? null : (map['excludeNumbers'] as bool).input(),
-      excludePunctuation: map['excludePunctuation'] == null ? null : (map['excludePunctuation'] as bool).input(),
-      excludeUppercase: map['excludeUppercase'] == null ? null : (map['excludeUppercase'] as bool).input(),
-      includeSpace: map['includeSpace'] == null ? null : (map['includeSpace'] as bool).input(),
-      passwordLength: map['passwordLength'] == null ? null : (map['passwordLength'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requireEachIncludedType: map['requireEachIncludedType'] == null ? null : (map['requireEachIncludedType'] as bool).input(),
+      excludeCharacters: map['excludeCharacters'] == null ? null : ((map['excludeCharacters'] as String).input()).input(),
+      excludeLowercase: map['excludeLowercase'] == null ? null : ((map['excludeLowercase'] as bool).input()).input(),
+      excludeNumbers: map['excludeNumbers'] == null ? null : ((map['excludeNumbers'] as bool).input()).input(),
+      excludePunctuation: map['excludePunctuation'] == null ? null : ((map['excludePunctuation'] as bool).input()).input(),
+      excludeUppercase: map['excludeUppercase'] == null ? null : ((map['excludeUppercase'] as bool).input()).input(),
+      includeSpace: map['includeSpace'] == null ? null : ((map['includeSpace'] as bool).input()).input(),
+      passwordLength: map['passwordLength'] == null ? null : ((map['passwordLength'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requireEachIncludedType: map['requireEachIncludedType'] == null ? null : ((map['requireEachIncludedType'] as bool).input()).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom {
 
   factory PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom(
-      customConstraint: map['customConstraint'] == null ? null : (PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint.fromMap((map['customConstraint'] as Map).cast<String, dynamic>())).input(),
+      customConstraint: map['customConstraint'] == null ? null : (PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint.fromMap((map['customConstraint']! as Map).cast<String, dynamic>())).input(),
       policyRules: (pulumi.Input.decodeList<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule>(map['policyRules'], (value) => PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

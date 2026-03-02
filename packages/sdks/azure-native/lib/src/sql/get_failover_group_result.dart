@@ -80,16 +80,16 @@ class GetFailoverGroupResult {
   factory GetFailoverGroupResult.fromMap(Map<String, dynamic> map) {
     return GetFailoverGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      databases: map['databases'] == null ? null : (map['databases'] as List).cast<String>(),
+      databases: map['databases'] == null ? null : (map['databases']! as List).cast<String>(),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       partnerServers: pulumi.Input.decodeList<PartnerInfoResponse>(map['partnerServers'], (value) => PartnerInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      readOnlyEndpoint: map['readOnlyEndpoint'] == null ? null : FailoverGroupReadOnlyEndpointResponse.fromMap((map['readOnlyEndpoint'] as Map).cast<String, dynamic>()),
+      readOnlyEndpoint: map['readOnlyEndpoint'] == null ? null : FailoverGroupReadOnlyEndpointResponse.fromMap((map['readOnlyEndpoint']! as Map).cast<String, dynamic>()),
       readWriteEndpoint: FailoverGroupReadWriteEndpointResponse.fromMap((map['readWriteEndpoint'] as Map).cast<String, dynamic>()),
       replicationRole: map['replicationRole'] as String,
       replicationState: map['replicationState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

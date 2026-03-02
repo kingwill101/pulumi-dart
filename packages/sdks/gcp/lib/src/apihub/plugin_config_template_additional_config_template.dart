@@ -66,12 +66,12 @@ class PluginConfigTemplateAdditionalConfigTemplate {
 
   factory PluginConfigTemplateAdditionalConfigTemplate.fromMap(Map<String, dynamic> map) {
     return PluginConfigTemplateAdditionalConfigTemplate(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enumOptions: map['enumOptions'] == null ? null : (pulumi.Input.decodeList<PluginConfigTemplateAdditionalConfigTemplateEnumOption>(map['enumOptions'], (value) => PluginConfigTemplateAdditionalConfigTemplateEnumOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enumOptions: map['enumOptions'] == null ? null : (pulumi.Input.decodeList<PluginConfigTemplateAdditionalConfigTemplateEnumOption>(map['enumOptions']!, (value) => PluginConfigTemplateAdditionalConfigTemplateEnumOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
       id: (map['id'] as String).input(),
-      multiSelectOptions: map['multiSelectOptions'] == null ? null : (pulumi.Input.decodeList<PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption>(map['multiSelectOptions'], (value) => PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
-      validationRegex: map['validationRegex'] == null ? null : (map['validationRegex'] as String).input(),
+      multiSelectOptions: map['multiSelectOptions'] == null ? null : (pulumi.Input.decodeList<PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption>(map['multiSelectOptions']!, (value) => PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      required: map['required'] == null ? null : (map['required']! as bool).input(),
+      validationRegex: map['validationRegex'] == null ? null : (map['validationRegex']! as String).input(),
       valueType: (map['valueType'] as String).input(),
     );
   }

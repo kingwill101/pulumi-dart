@@ -26,7 +26,7 @@ class EndpointGlobalDeliveryRuleCacheExpirationAction {
   factory EndpointGlobalDeliveryRuleCacheExpirationAction.fromMap(Map<String, dynamic> map) {
     return EndpointGlobalDeliveryRuleCacheExpirationAction(
       behavior: (map['behavior'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
     );
   }
 }

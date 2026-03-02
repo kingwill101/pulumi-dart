@@ -72,7 +72,7 @@ class GetNetworkResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       state: map['state'] as String,
       type: map['type'] as String,
       uid: map['uid'] as String,

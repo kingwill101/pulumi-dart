@@ -76,18 +76,18 @@ class SchemaState {
 
   factory SchemaState.fromMap(Map<String, dynamic> map) {
     return SchemaState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registryName: map['registryName'] == null ? null : (map['registryName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      versionCreatedDate: map['versionCreatedDate'] == null ? null : (map['versionCreatedDate'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      content: map['content'] == null ? null : ((map['content'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      lastModified: map['lastModified'] == null ? null : ((map['lastModified'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registryName: map['registryName'] == null ? null : ((map['registryName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      versionCreatedDate: map['versionCreatedDate'] == null ? null : ((map['versionCreatedDate'] as String).input()).input(),
     );
   }
 }

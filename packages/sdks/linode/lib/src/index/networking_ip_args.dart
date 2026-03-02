@@ -44,11 +44,11 @@ class NetworkingIpArgs {
 
   factory NetworkingIpArgs.fromMap(Map<String, dynamic> map) {
     return NetworkingIpArgs(
-      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
-      public: map['public'] == null ? null : (map['public'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reserved: map['reserved'] == null ? null : (map['reserved'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
+      public: map['public'] == null ? null : (map['public']! as bool).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      reserved: map['reserved'] == null ? null : (map['reserved']! as bool).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -53,12 +53,12 @@ class CustomHttpsConfigurationResponse {
   factory CustomHttpsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CustomHttpsConfigurationResponse(
       certificateSource: (map['certificateSource'] as String).input(),
-      certificateType: map['certificateType'] == null ? null : (map['certificateType'] as String).input(),
+      certificateType: map['certificateType'] == null ? null : (map['certificateType']! as String).input(),
       minimumTlsVersion: (map['minimumTlsVersion'] as String).input(),
       protocolType: (map['protocolType'] as String).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
-      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion'] as String).input(),
-      vault: map['vault'] == null ? null : (KeyVaultCertificateSourceParametersResponseVault.fromMap((map['vault'] as Map).cast<String, dynamic>())).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion']! as String).input(),
+      vault: map['vault'] == null ? null : (KeyVaultCertificateSourceParametersResponseVault.fromMap((map['vault']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

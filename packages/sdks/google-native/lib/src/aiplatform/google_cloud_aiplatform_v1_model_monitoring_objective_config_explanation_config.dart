@@ -27,8 +27,8 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfig {
 
   factory GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfig(
-      enableFeatureAttributes: map['enableFeatureAttributes'] == null ? null : (map['enableFeatureAttributes'] as bool).input(),
-      explanationBaseline: map['explanationBaseline'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline.fromMap((map['explanationBaseline'] as Map).cast<String, dynamic>())).input(),
+      enableFeatureAttributes: map['enableFeatureAttributes'] == null ? null : (map['enableFeatureAttributes']! as bool).input(),
+      explanationBaseline: map['explanationBaseline'] == null ? null : (GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline.fromMap((map['explanationBaseline']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

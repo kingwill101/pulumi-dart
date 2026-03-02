@@ -46,12 +46,12 @@ class RouteResponseState {
 
   factory RouteResponseState.fromMap(Map<String, dynamic> map) {
     return RouteResponseState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      modelSelectionExpression: map['modelSelectionExpression'] == null ? null : (map['modelSelectionExpression'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      responseModels: map['responseModels'] == null ? null : ((map['responseModels'] as Map).cast<String, String>()).input(),
-      routeId: map['routeId'] == null ? null : (map['routeId'] as String).input(),
-      routeResponseKey: map['routeResponseKey'] == null ? null : (map['routeResponseKey'] as String).input(),
+      apiId: map['apiId'] == null ? null : ((map['apiId'] as String).input()).input(),
+      modelSelectionExpression: map['modelSelectionExpression'] == null ? null : ((map['modelSelectionExpression'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      responseModels: map['responseModels'] == null ? null : (((map['responseModels'] as Map).cast<String, String>()).input()).input(),
+      routeId: map['routeId'] == null ? null : ((map['routeId'] as String).input()).input(),
+      routeResponseKey: map['routeResponseKey'] == null ? null : ((map['routeResponseKey'] as String).input()).input(),
     );
   }
 }

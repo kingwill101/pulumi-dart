@@ -34,9 +34,9 @@ class ServiceNetworkSettingsState {
 
   factory ServiceNetworkSettingsState.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkSettingsState(
-      networkSettings: map['networkSettings'] == null ? null : (ServiceNetworkSettingsNetworkSettings.fromMap((map['networkSettings'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      networkSettings: map['networkSettings'] == null ? null : (ServiceNetworkSettingsNetworkSettings.fromMap((map['networkSettings']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

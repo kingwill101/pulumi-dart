@@ -37,10 +37,10 @@ class EndpointsApiServiceAppengineV1beta {
 
   factory EndpointsApiServiceAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return EndpointsApiServiceAppengineV1beta(
-      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
-      disableTraceSampling: map['disableTraceSampling'] == null ? null : (map['disableTraceSampling'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rolloutStrategy: map['rolloutStrategy'] == null ? null : (EndpointsApiServiceRolloutStrategyAppengineV1beta.fromValue(map['rolloutStrategy'] as String)).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as String).input(),
+      disableTraceSampling: map['disableTraceSampling'] == null ? null : (map['disableTraceSampling']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rolloutStrategy: map['rolloutStrategy'] == null ? null : (EndpointsApiServiceRolloutStrategyAppengineV1beta.fromValue(map['rolloutStrategy']! as String)).input(),
     );
   }
 }

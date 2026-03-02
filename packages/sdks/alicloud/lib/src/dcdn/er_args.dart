@@ -35,8 +35,8 @@ class ErArgs {
 
   factory ErArgs.fromMap(Map<String, dynamic> map) {
     return ErArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      envConf: map['envConf'] == null ? null : (ErEnvConf.fromMap((map['envConf'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      envConf: map['envConf'] == null ? null : (ErEnvConf.fromMap((map['envConf']! as Map).cast<String, dynamic>())).input(),
       erName: (map['erName'] as String).input(),
     );
   }

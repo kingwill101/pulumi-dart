@@ -35,10 +35,10 @@ class GetApplicationOptionalClaimSaml2Token {
 
   factory GetApplicationOptionalClaimSaml2Token.fromMap(Map<String, dynamic> map) {
     return GetApplicationOptionalClaimSaml2Token(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as List).cast<String>()).input(),
-      essential: map['essential'] == null ? null : (map['essential'] as bool).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as List).cast<String>()).input(),
+      essential: map['essential'] == null ? null : (map['essential']! as bool).input(),
       name: (map['name'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

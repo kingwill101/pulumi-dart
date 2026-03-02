@@ -40,11 +40,11 @@ class CanaryRunConfig {
 
   factory CanaryRunConfig.fromMap(Map<String, dynamic> map) {
     return CanaryRunConfig(
-      activeTracing: map['activeTracing'] == null ? null : (map['activeTracing'] as bool).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      ephemeralStorage: map['ephemeralStorage'] == null ? null : (map['ephemeralStorage'] as int).input(),
-      memoryInMb: map['memoryInMb'] == null ? null : (map['memoryInMb'] as int).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
+      activeTracing: map['activeTracing'] == null ? null : ((map['activeTracing'] as bool).input()).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (((map['environmentVariables'] as Map).cast<String, String>()).input()).input(),
+      ephemeralStorage: map['ephemeralStorage'] == null ? null : ((map['ephemeralStorage'] as int).input()).input(),
+      memoryInMb: map['memoryInMb'] == null ? null : ((map['memoryInMb'] as int).input()).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : ((map['timeoutInSeconds'] as int).input()).input(),
     );
   }
 }

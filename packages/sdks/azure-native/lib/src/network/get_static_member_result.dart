@@ -67,7 +67,7 @@ class GetStaticMemberResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       region: map['region'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      resourceId: map['resourceId'] == null ? null : map['resourceId']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

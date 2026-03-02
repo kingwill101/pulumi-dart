@@ -96,21 +96,21 @@ class EciScalingConfigurationInitContainer {
 
   factory EciScalingConfigurationInitContainer.fromMap(Map<String, dynamic> map) {
     return EciScalingConfigurationInitContainer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      environmentVars: map['environmentVars'] == null ? null : (pulumi.Input.decodeList<EciScalingConfigurationInitContainerEnvironmentVar>(map['environmentVars'], (value) => EciScalingConfigurationInitContainerEnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gpu: map['gpu'] == null ? null : (map['gpu'] as int).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      imagePullPolicy: map['imagePullPolicy'] == null ? null : (map['imagePullPolicy'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<EciScalingConfigurationInitContainerPort>(map['ports'], (value) => EciScalingConfigurationInitContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      securityContextCapabilityAdds: map['securityContextCapabilityAdds'] == null ? null : ((map['securityContextCapabilityAdds'] as List).cast<String>()).input(),
-      securityContextReadOnlyRootFileSystem: map['securityContextReadOnlyRootFileSystem'] == null ? null : (map['securityContextReadOnlyRootFileSystem'] as bool).input(),
-      securityContextRunAsUser: map['securityContextRunAsUser'] == null ? null : (map['securityContextRunAsUser'] as int).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<EciScalingConfigurationInitContainerVolumeMount>(map['volumeMounts'], (value) => EciScalingConfigurationInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
+      environmentVars: map['environmentVars'] == null ? null : (pulumi.Input.decodeList<EciScalingConfigurationInitContainerEnvironmentVar>(map['environmentVars']!, (value) => EciScalingConfigurationInitContainerEnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gpu: map['gpu'] == null ? null : (map['gpu']! as int).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      imagePullPolicy: map['imagePullPolicy'] == null ? null : (map['imagePullPolicy']! as String).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<EciScalingConfigurationInitContainerPort>(map['ports']!, (value) => EciScalingConfigurationInitContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      securityContextCapabilityAdds: map['securityContextCapabilityAdds'] == null ? null : ((map['securityContextCapabilityAdds']! as List).cast<String>()).input(),
+      securityContextReadOnlyRootFileSystem: map['securityContextReadOnlyRootFileSystem'] == null ? null : (map['securityContextReadOnlyRootFileSystem']! as bool).input(),
+      securityContextRunAsUser: map['securityContextRunAsUser'] == null ? null : (map['securityContextRunAsUser']! as int).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<EciScalingConfigurationInitContainerVolumeMount>(map['volumeMounts']!, (value) => EciScalingConfigurationInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir']! as String).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class CxPageEntryFulfillmentMessagePlayAudio {
 
   factory CxPageEntryFulfillmentMessagePlayAudio.fromMap(Map<String, dynamic> map) {
     return CxPageEntryFulfillmentMessagePlayAudio(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption'] as bool).input(),
+      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption']! as bool).input(),
       audioUri: (map['audioUri'] as String).input(),
     );
   }

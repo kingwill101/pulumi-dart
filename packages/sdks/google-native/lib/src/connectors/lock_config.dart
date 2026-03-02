@@ -26,8 +26,8 @@ class LockConfig {
 
   factory LockConfig.fromMap(Map<String, dynamic> map) {
     return LockConfig(
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

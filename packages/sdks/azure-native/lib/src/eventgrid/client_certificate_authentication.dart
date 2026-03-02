@@ -26,8 +26,8 @@ class ClientCertificateAuthentication {
 
   factory ClientCertificateAuthentication.fromMap(Map<String, dynamic> map) {
     return ClientCertificateAuthentication(
-      allowedThumbprints: map['allowedThumbprints'] == null ? null : ((map['allowedThumbprints'] as List).cast<String>()).input(),
-      validationScheme: map['validationScheme'] == null ? null : (map['validationScheme'] as String).input(),
+      allowedThumbprints: map['allowedThumbprints'] == null ? null : ((map['allowedThumbprints']! as List).cast<String>()).input(),
+      validationScheme: map['validationScheme'] == null ? null : (map['validationScheme']! as String).input(),
     );
   }
 }

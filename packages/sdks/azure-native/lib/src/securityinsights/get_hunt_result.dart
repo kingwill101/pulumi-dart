@@ -87,18 +87,18 @@ class GetHuntResult {
 
   factory GetHuntResult.fromMap(Map<String, dynamic> map) {
     return GetHuntResult(
-      attackTactics: map['attackTactics'] == null ? null : (map['attackTactics'] as List).cast<String>(),
-      attackTechniques: map['attackTechniques'] == null ? null : (map['attackTechniques'] as List).cast<String>(),
+      attackTactics: map['attackTactics'] == null ? null : (map['attackTactics']! as List).cast<String>(),
+      attackTechniques: map['attackTechniques'] == null ? null : (map['attackTechniques']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
-      hypothesisStatus: map['hypothesisStatus'] == null ? null : map['hypothesisStatus'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
+      hypothesisStatus: map['hypothesisStatus'] == null ? null : map['hypothesisStatus']! as String,
       id: map['id'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as List).cast<String>(),
+      labels: map['labels'] == null ? null : (map['labels']! as List).cast<String>(),
       name: map['name'] as String,
-      owner: map['owner'] == null ? null : HuntOwnerResponse.fromMap((map['owner'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
+      owner: map['owner'] == null ? null : HuntOwnerResponse.fromMap((map['owner']! as Map).cast<String, dynamic>()),
+      status: map['status'] == null ? null : map['status']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

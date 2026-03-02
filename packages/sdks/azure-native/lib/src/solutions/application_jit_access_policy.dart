@@ -38,9 +38,9 @@ class ApplicationJitAccessPolicy {
   factory ApplicationJitAccessPolicy.fromMap(Map<String, dynamic> map) {
     return ApplicationJitAccessPolicy(
       jitAccessEnabled: (map['jitAccessEnabled'] as bool).input(),
-      jitApprovalMode: map['jitApprovalMode'] == null ? null : (map['jitApprovalMode'] as String).input(),
-      jitApprovers: map['jitApprovers'] == null ? null : (pulumi.Input.decodeList<JitApproverDefinition>(map['jitApprovers'], (value) => JitApproverDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maximumJitAccessDuration: map['maximumJitAccessDuration'] == null ? null : (map['maximumJitAccessDuration'] as String).input(),
+      jitApprovalMode: map['jitApprovalMode'] == null ? null : (map['jitApprovalMode']! as String).input(),
+      jitApprovers: map['jitApprovers'] == null ? null : (pulumi.Input.decodeList<JitApproverDefinition>(map['jitApprovers']!, (value) => JitApproverDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maximumJitAccessDuration: map['maximumJitAccessDuration'] == null ? null : (map['maximumJitAccessDuration']! as String).input(),
     );
   }
 }

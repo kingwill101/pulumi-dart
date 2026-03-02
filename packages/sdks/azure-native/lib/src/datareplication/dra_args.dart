@@ -40,7 +40,7 @@ class DraArgs {
 
   factory DraArgs.fromMap(Map<String, dynamic> map) {
     return DraArgs(
-      fabricAgentName: map['fabricAgentName'] == null ? null : (map['fabricAgentName'] as String).input(),
+      fabricAgentName: map['fabricAgentName'] == null ? null : (map['fabricAgentName']! as String).input(),
       fabricName: (map['fabricName'] as String).input(),
       properties: (DraModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

@@ -36,7 +36,7 @@ class GetInstanceSpecificationsResult {
     return GetInstanceSpecificationsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       specifications: pulumi.Input.decodeList<GetInstanceSpecificationsSpecification>(map['specifications'], (value) => GetInstanceSpecificationsSpecification.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

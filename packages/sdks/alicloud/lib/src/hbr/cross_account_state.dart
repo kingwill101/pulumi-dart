@@ -36,10 +36,10 @@ class CrossAccountState {
 
   factory CrossAccountState.fromMap(Map<String, dynamic> map) {
     return CrossAccountState(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName'] as String).input(),
-      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId'] as int).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName']! as String).input(),
+      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId']! as int).input(),
     );
   }
 }

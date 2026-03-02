@@ -26,7 +26,7 @@ class RecommendationPreferencesUtilizationPreferenceMetricParameters {
   factory RecommendationPreferencesUtilizationPreferenceMetricParameters.fromMap(Map<String, dynamic> map) {
     return RecommendationPreferencesUtilizationPreferenceMetricParameters(
       headroom: (map['headroom'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as String).input(),
+      threshold: map['threshold'] == null ? null : ((map['threshold'] as String).input()).input(),
     );
   }
 }

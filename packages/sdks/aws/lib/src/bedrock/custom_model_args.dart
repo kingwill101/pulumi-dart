@@ -94,19 +94,19 @@ class CustomModelArgs {
   factory CustomModelArgs.fromMap(Map<String, dynamic> map) {
     return CustomModelArgs(
       baseModelIdentifier: (map['baseModelIdentifier'] as String).input(),
-      customModelKmsKeyId: map['customModelKmsKeyId'] == null ? null : (map['customModelKmsKeyId'] as String).input(),
+      customModelKmsKeyId: map['customModelKmsKeyId'] == null ? null : ((map['customModelKmsKeyId'] as String).input()).input(),
       customModelName: (map['customModelName'] as String).input(),
-      customizationType: map['customizationType'] == null ? null : (map['customizationType'] as String).input(),
+      customizationType: map['customizationType'] == null ? null : ((map['customizationType'] as String).input()).input(),
       hyperparameters: ((map['hyperparameters'] as Map).cast<String, String>()).input(),
       jobName: (map['jobName'] as String).input(),
-      outputDataConfig: (CustomModelOutputDataConfig.fromMap((map['outputDataConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      outputDataConfig: (CustomModelOutputDataConfig.fromMap((map['outputDataConfig']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (CustomModelTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      trainingDataConfig: (CustomModelTrainingDataConfig.fromMap((map['trainingDataConfig'] as Map).cast<String, dynamic>())).input(),
-      validationDataConfig: map['validationDataConfig'] == null ? null : (CustomModelValidationDataConfig.fromMap((map['validationDataConfig'] as Map).cast<String, dynamic>())).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : (CustomModelVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((CustomModelTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      trainingDataConfig: (CustomModelTrainingDataConfig.fromMap((map['trainingDataConfig']! as Map).cast<String, dynamic>())).input(),
+      validationDataConfig: map['validationDataConfig'] == null ? null : ((CustomModelValidationDataConfig.fromMap((map['validationDataConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : ((CustomModelVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

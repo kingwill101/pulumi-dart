@@ -35,10 +35,10 @@ class ResponseHeadersPolicySecurityHeadersConfigXssProtection {
 
   factory ResponseHeadersPolicySecurityHeadersConfigXssProtection.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicySecurityHeadersConfigXssProtection(
-      modeBlock: map['modeBlock'] == null ? null : (map['modeBlock'] as bool).input(),
+      modeBlock: map['modeBlock'] == null ? null : ((map['modeBlock'] as bool).input()).input(),
       override: (map['override'] as bool).input(),
       protection: (map['protection'] as bool).input(),
-      reportUri: map['reportUri'] == null ? null : (map['reportUri'] as String).input(),
+      reportUri: map['reportUri'] == null ? null : ((map['reportUri'] as String).input()).input(),
     );
   }
 }

@@ -69,12 +69,12 @@ class GetMECRoleResult {
   factory GetMECRoleResult.fromMap(Map<String, dynamic> map) {
     return GetMECRoleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      connectionString: map['connectionString'] == null ? null : AsymmetricEncryptedSecretResponse.fromMap((map['connectionString'] as Map).cast<String, dynamic>()),
-      controllerEndpoint: map['controllerEndpoint'] == null ? null : map['controllerEndpoint'] as String,
+      connectionString: map['connectionString'] == null ? null : AsymmetricEncryptedSecretResponse.fromMap((map['connectionString']! as Map).cast<String, dynamic>()),
+      controllerEndpoint: map['controllerEndpoint'] == null ? null : map['controllerEndpoint']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      resourceUniqueId: map['resourceUniqueId'] == null ? null : map['resourceUniqueId'] as String,
+      resourceUniqueId: map['resourceUniqueId'] == null ? null : map['resourceUniqueId']! as String,
       roleStatus: map['roleStatus'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

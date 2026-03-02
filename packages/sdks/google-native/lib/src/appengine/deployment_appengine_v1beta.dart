@@ -45,11 +45,11 @@ class DeploymentAppengineV1beta {
 
   factory DeploymentAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return DeploymentAppengineV1beta(
-      build: map['build'] == null ? null : (BuildInfo.fromMap((map['build'] as Map).cast<String, dynamic>())).input(),
-      cloudBuildOptions: map['cloudBuildOptions'] == null ? null : (CloudBuildOptionsAppengineV1beta.fromMap((map['cloudBuildOptions'] as Map).cast<String, dynamic>())).input(),
-      container: map['container'] == null ? null : (ContainerInfoAppengineV1beta.fromMap((map['container'] as Map).cast<String, dynamic>())).input(),
-      files: map['files'] == null ? null : ((map['files'] as Map).cast<String, String>()).input(),
-      zip: map['zip'] == null ? null : (ZipInfoAppengineV1beta.fromMap((map['zip'] as Map).cast<String, dynamic>())).input(),
+      build: map['build'] == null ? null : (BuildInfo.fromMap((map['build']! as Map).cast<String, dynamic>())).input(),
+      cloudBuildOptions: map['cloudBuildOptions'] == null ? null : (CloudBuildOptionsAppengineV1beta.fromMap((map['cloudBuildOptions']! as Map).cast<String, dynamic>())).input(),
+      container: map['container'] == null ? null : (ContainerInfoAppengineV1beta.fromMap((map['container']! as Map).cast<String, dynamic>())).input(),
+      files: map['files'] == null ? null : ((map['files']! as Map).cast<String, String>()).input(),
+      zip: map['zip'] == null ? null : (ZipInfoAppengineV1beta.fromMap((map['zip']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

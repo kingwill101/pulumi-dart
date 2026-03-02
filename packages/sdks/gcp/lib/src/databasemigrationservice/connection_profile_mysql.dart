@@ -55,13 +55,13 @@ class ConnectionProfileMysql {
 
   factory ConnectionProfileMysql.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileMysql(
-      cloudSqlId: map['cloudSqlId'] == null ? null : (map['cloudSqlId'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      passwordSet: map['passwordSet'] == null ? null : (map['passwordSet'] as bool).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      ssl: map['ssl'] == null ? null : (ConnectionProfileMysqlSsl.fromMap((map['ssl'] as Map).cast<String, dynamic>())).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      cloudSqlId: map['cloudSqlId'] == null ? null : (map['cloudSqlId']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      passwordSet: map['passwordSet'] == null ? null : (map['passwordSet']! as bool).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      ssl: map['ssl'] == null ? null : (ConnectionProfileMysqlSsl.fromMap((map['ssl']! as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

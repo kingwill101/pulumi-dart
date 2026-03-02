@@ -21,7 +21,7 @@ class GoogleCloudIdentitytoolkitAdminV2IdpCertificate {
 
   factory GoogleCloudIdentitytoolkitAdminV2IdpCertificate.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2IdpCertificate(
-      x509Certificate: map['x509Certificate'] == null ? null : (map['x509Certificate'] as String).input(),
+      x509Certificate: map['x509Certificate'] == null ? null : (map['x509Certificate']! as String).input(),
     );
   }
 }

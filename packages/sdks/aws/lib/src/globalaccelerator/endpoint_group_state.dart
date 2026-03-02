@@ -74,17 +74,17 @@ class EndpointGroupState {
 
   factory EndpointGroupState.fromMap(Map<String, dynamic> map) {
     return EndpointGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      endpointConfigurations: map['endpointConfigurations'] == null ? null : (pulumi.Input.decodeList<EndpointGroupEndpointConfiguration>(map['endpointConfigurations'], (value) => EndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : (map['endpointGroupRegion'] as String).input(),
-      healthCheckIntervalSeconds: map['healthCheckIntervalSeconds'] == null ? null : (map['healthCheckIntervalSeconds'] as int).input(),
-      healthCheckPath: map['healthCheckPath'] == null ? null : (map['healthCheckPath'] as String).input(),
-      healthCheckPort: map['healthCheckPort'] == null ? null : (map['healthCheckPort'] as int).input(),
-      healthCheckProtocol: map['healthCheckProtocol'] == null ? null : (map['healthCheckProtocol'] as String).input(),
-      listenerArn: map['listenerArn'] == null ? null : (map['listenerArn'] as String).input(),
-      portOverrides: map['portOverrides'] == null ? null : (pulumi.Input.decodeList<EndpointGroupPortOverride>(map['portOverrides'], (value) => EndpointGroupPortOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      thresholdCount: map['thresholdCount'] == null ? null : (map['thresholdCount'] as int).input(),
-      trafficDialPercentage: map['trafficDialPercentage'] == null ? null : (map['trafficDialPercentage'] as double).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      endpointConfigurations: map['endpointConfigurations'] == null ? null : ((pulumi.Input.decodeList<EndpointGroupEndpointConfiguration>(map['endpointConfigurations']!, (value) => EndpointGroupEndpointConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      endpointGroupRegion: map['endpointGroupRegion'] == null ? null : ((map['endpointGroupRegion'] as String).input()).input(),
+      healthCheckIntervalSeconds: map['healthCheckIntervalSeconds'] == null ? null : ((map['healthCheckIntervalSeconds'] as int).input()).input(),
+      healthCheckPath: map['healthCheckPath'] == null ? null : ((map['healthCheckPath'] as String).input()).input(),
+      healthCheckPort: map['healthCheckPort'] == null ? null : ((map['healthCheckPort'] as int).input()).input(),
+      healthCheckProtocol: map['healthCheckProtocol'] == null ? null : ((map['healthCheckProtocol'] as String).input()).input(),
+      listenerArn: map['listenerArn'] == null ? null : ((map['listenerArn'] as String).input()).input(),
+      portOverrides: map['portOverrides'] == null ? null : ((pulumi.Input.decodeList<EndpointGroupPortOverride>(map['portOverrides']!, (value) => EndpointGroupPortOverride.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      thresholdCount: map['thresholdCount'] == null ? null : ((map['thresholdCount'] as int).input()).input(),
+      trafficDialPercentage: map['trafficDialPercentage'] == null ? null : ((map['trafficDialPercentage'] as double).input()).input(),
     );
   }
 }

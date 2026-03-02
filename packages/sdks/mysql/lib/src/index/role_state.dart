@@ -21,7 +21,7 @@ class RoleState {
 
   factory RoleState.fromMap(Map<String, dynamic> map) {
     return RoleState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

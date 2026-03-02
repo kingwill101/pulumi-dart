@@ -35,7 +35,7 @@ class HybridMonitorFcTaskArgs {
   factory HybridMonitorFcTaskArgs.fromMap(Map<String, dynamic> map) {
     return HybridMonitorFcTaskArgs(
       namespace: (map['namespace'] as String).input(),
-      targetUserId: map['targetUserId'] == null ? null : (map['targetUserId'] as String).input(),
+      targetUserId: map['targetUserId'] == null ? null : (map['targetUserId']! as String).input(),
       yarmConfig: (map['yarmConfig'] as String).input(),
     );
   }

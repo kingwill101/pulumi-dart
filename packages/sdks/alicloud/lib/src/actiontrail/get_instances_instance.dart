@@ -185,7 +185,7 @@ class GetInstancesInstance {
       specType: (map['specType'] as String).input(),
       sslDomainEndpoint: (map['sslDomainEndpoint'] as String).input(),
       sslEndPoint: (map['sslEndPoint'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       topicQuota: (map['topicQuota'] as int).input(),
       upgradeServiceDetailInfos: (pulumi.Input.decodeList<GetInstancesInstanceUpgradeServiceDetailInfo>(map['upgradeServiceDetailInfos'], (value) => GetInstancesInstanceUpgradeServiceDetailInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
       vpcId: (map['vpcId'] as String).input(),

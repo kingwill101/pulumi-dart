@@ -31,9 +31,9 @@ class AzureHybridBenefitPropertiesResponse {
 
   factory AzureHybridBenefitPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AzureHybridBenefitPropertiesResponse(
-      scomLicenseType: map['scomLicenseType'] == null ? null : (map['scomLicenseType'] as String).input(),
-      sqlServerLicenseType: map['sqlServerLicenseType'] == null ? null : (map['sqlServerLicenseType'] as String).input(),
-      windowsServerLicenseType: map['windowsServerLicenseType'] == null ? null : (map['windowsServerLicenseType'] as String).input(),
+      scomLicenseType: map['scomLicenseType'] == null ? null : (map['scomLicenseType']! as String).input(),
+      sqlServerLicenseType: map['sqlServerLicenseType'] == null ? null : (map['sqlServerLicenseType']! as String).input(),
+      windowsServerLicenseType: map['windowsServerLicenseType'] == null ? null : (map['windowsServerLicenseType']! as String).input(),
     );
   }
 }

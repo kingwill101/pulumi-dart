@@ -47,12 +47,12 @@ class IntegrationAccountBatchConfigurationState {
 
   factory IntegrationAccountBatchConfigurationState.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountBatchConfigurationState(
-      batchGroupName: map['batchGroupName'] == null ? null : (map['batchGroupName'] as String).input(),
-      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      releaseCriteria: map['releaseCriteria'] == null ? null : (IntegrationAccountBatchConfigurationReleaseCriteria.fromMap((map['releaseCriteria'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      batchGroupName: map['batchGroupName'] == null ? null : (map['batchGroupName']! as String).input(),
+      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      releaseCriteria: map['releaseCriteria'] == null ? null : (IntegrationAccountBatchConfigurationReleaseCriteria.fromMap((map['releaseCriteria']! as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

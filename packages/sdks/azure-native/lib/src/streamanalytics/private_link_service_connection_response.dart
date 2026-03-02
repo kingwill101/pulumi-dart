@@ -37,9 +37,9 @@ class PrivateLinkServiceConnectionResponse {
 
   factory PrivateLinkServiceConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionResponse(
-      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
-      privateLinkServiceId: map['privateLinkServiceId'] == null ? null : (map['privateLinkServiceId'] as String).input(),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds']! as List).cast<String>()).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
+      privateLinkServiceId: map['privateLinkServiceId'] == null ? null : (map['privateLinkServiceId']! as String).input(),
       requestMessage: (map['requestMessage'] as String).input(),
     );
   }

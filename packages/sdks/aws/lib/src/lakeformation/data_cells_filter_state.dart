@@ -32,9 +32,9 @@ class DataCellsFilterState {
 
   factory DataCellsFilterState.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tableData: map['tableData'] == null ? null : (DataCellsFilterTableData.fromMap((map['tableData'] as Map).cast<String, dynamic>())).input(),
-      timeouts: map['timeouts'] == null ? null : (DataCellsFilterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tableData: map['tableData'] == null ? null : ((DataCellsFilterTableData.fromMap((map['tableData']! as Map).cast<String, dynamic>())).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DataCellsFilterTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

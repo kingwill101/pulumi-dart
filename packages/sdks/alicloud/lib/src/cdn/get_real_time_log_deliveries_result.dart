@@ -41,8 +41,8 @@ class GetRealTimeLogDeliveriesResult {
       deliveries: pulumi.Input.decodeList<GetRealTimeLogDeliveriesDelivery>(map['deliveries'], (value) => GetRealTimeLogDeliveriesDelivery.fromMap((value as Map).cast<String, dynamic>())),
       domain: map['domain'] as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

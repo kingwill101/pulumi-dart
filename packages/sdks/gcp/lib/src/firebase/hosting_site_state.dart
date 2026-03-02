@@ -56,12 +56,12 @@ class HostingSiteState {
 
   factory HostingSiteState.fromMap(Map<String, dynamic> map) {
     return HostingSiteState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      defaultUrl: map['defaultUrl'] == null ? null : (map['defaultUrl'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      defaultUrl: map['defaultUrl'] == null ? null : (map['defaultUrl']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

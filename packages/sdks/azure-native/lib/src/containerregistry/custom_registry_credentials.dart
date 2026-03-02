@@ -37,9 +37,9 @@ class CustomRegistryCredentials {
 
   factory CustomRegistryCredentials.fromMap(Map<String, dynamic> map) {
     return CustomRegistryCredentials(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      password: map['password'] == null ? null : (SecretObject.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
-      userName: map['userName'] == null ? null : (SecretObject.fromMap((map['userName'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
+      password: map['password'] == null ? null : (SecretObject.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
+      userName: map['userName'] == null ? null : (SecretObject.fromMap((map['userName']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

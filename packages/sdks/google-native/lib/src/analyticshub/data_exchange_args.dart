@@ -64,14 +64,14 @@ class DataExchangeArgs {
   factory DataExchangeArgs.fromMap(Map<String, dynamic> map) {
     return DataExchangeArgs(
       dataExchangeId: (map['dataExchangeId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      documentation: map['documentation'] == null ? null : (map['documentation'] as String).input(),
-      icon: map['icon'] == null ? null : (map['icon'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sharingEnvironmentConfig: map['sharingEnvironmentConfig'] == null ? null : (SharingEnvironmentConfig.fromMap((map['sharingEnvironmentConfig'] as Map).cast<String, dynamic>())).input(),
+      documentation: map['documentation'] == null ? null : (map['documentation']! as String).input(),
+      icon: map['icon'] == null ? null : (map['icon']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sharingEnvironmentConfig: map['sharingEnvironmentConfig'] == null ? null : (SharingEnvironmentConfig.fromMap((map['sharingEnvironmentConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

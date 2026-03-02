@@ -30,8 +30,8 @@ class TriggerDestinationCloudRunService {
 
   factory TriggerDestinationCloudRunService.fromMap(Map<String, dynamic> map) {
     return TriggerDestinationCloudRunService(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       service: (map['service'] as String).input(),
     );
   }

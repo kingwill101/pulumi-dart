@@ -27,7 +27,7 @@ class ListIssueResourcesResult {
 
   factory ListIssueResourcesResult.fromMap(Map<String, dynamic> map) {
     return ListIssueResourcesResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: pulumi.Input.decodeList<RelatedResourceResponse>(map['value'], (value) => RelatedResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

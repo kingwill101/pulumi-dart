@@ -32,9 +32,9 @@ class BindingDataprocV1beta2 {
 
   factory BindingDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return BindingDataprocV1beta2(
-      condition: map['condition'] == null ? null : (ExprDataprocV1beta2.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (ExprDataprocV1beta2.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

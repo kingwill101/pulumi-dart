@@ -34,7 +34,7 @@ class ListIssueAlertsArgs {
 
   factory ListIssueAlertsArgs.fromMap(Map<String, dynamic> map) {
     return ListIssueAlertsArgs(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       issueName: (map['issueName'] as String).input(),
       resourceUri: (map['resourceUri'] as String).input(),
     );

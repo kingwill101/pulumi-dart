@@ -29,7 +29,7 @@ class ImageOccurrence {
   factory ImageOccurrence.fromMap(Map<String, dynamic> map) {
     return ImageOccurrence(
       fingerprint: (Fingerprint.fromMap((map['fingerprint'] as Map).cast<String, dynamic>())).input(),
-      layerInfo: map['layerInfo'] == null ? null : (pulumi.Input.decodeList<Layer>(map['layerInfo'], (value) => Layer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      layerInfo: map['layerInfo'] == null ? null : (pulumi.Input.decodeList<Layer>(map['layerInfo']!, (value) => Layer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

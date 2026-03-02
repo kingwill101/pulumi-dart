@@ -73,17 +73,17 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      autoStopDelay: map['autoStopDelay'] == null ? null : (map['autoStopDelay'] as String).input(),
-      deleteResourcesOnStop: map['deleteResourcesOnStop'] == null ? null : (map['deleteResourcesOnStop'] as bool).input(),
+      autoStopDelay: map['autoStopDelay'] == null ? null : (map['autoStopDelay']! as String).input(),
+      deleteResourcesOnStop: map['deleteResourcesOnStop'] == null ? null : (map['deleteResourcesOnStop']! as bool).input(),
       groupName: (map['groupName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      sku: map['sku'] == null ? null : (ServiceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualNicId: map['virtualNicId'] == null ? null : (map['virtualNicId'] as String).input(),
-      virtualSubnetId: map['virtualSubnetId'] == null ? null : (map['virtualSubnetId'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      sku: map['sku'] == null ? null : (ServiceSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualNicId: map['virtualNicId'] == null ? null : (map['virtualNicId']! as String).input(),
+      virtualSubnetId: map['virtualSubnetId'] == null ? null : (map['virtualSubnetId']! as String).input(),
     );
   }
 }

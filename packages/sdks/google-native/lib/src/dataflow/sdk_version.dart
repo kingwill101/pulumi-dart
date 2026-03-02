@@ -32,9 +32,9 @@ class SdkVersion {
 
   factory SdkVersion.fromMap(Map<String, dynamic> map) {
     return SdkVersion(
-      sdkSupportStatus: map['sdkSupportStatus'] == null ? null : (SdkVersionSdkSupportStatus.fromValue(map['sdkSupportStatus'] as String)).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      versionDisplayName: map['versionDisplayName'] == null ? null : (map['versionDisplayName'] as String).input(),
+      sdkSupportStatus: map['sdkSupportStatus'] == null ? null : (SdkVersionSdkSupportStatus.fromValue(map['sdkSupportStatus']! as String)).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
+      versionDisplayName: map['versionDisplayName'] == null ? null : (map['versionDisplayName']! as String).input(),
     );
   }
 }

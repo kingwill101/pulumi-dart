@@ -32,8 +32,8 @@ class DomainCpuTuneMemoryTune {
 
   factory DomainCpuTuneMemoryTune.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneMemoryTune(
-      monitors: map['monitors'] == null ? null : (pulumi.Input.decodeList<DomainCpuTuneMemoryTuneMonitor>(map['monitors'], (value) => DomainCpuTuneMemoryTuneMonitor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<DomainCpuTuneMemoryTuneNode>(map['nodes'], (value) => DomainCpuTuneMemoryTuneNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      monitors: map['monitors'] == null ? null : (pulumi.Input.decodeList<DomainCpuTuneMemoryTuneMonitor>(map['monitors']!, (value) => DomainCpuTuneMemoryTuneMonitor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<DomainCpuTuneMemoryTuneNode>(map['nodes']!, (value) => DomainCpuTuneMemoryTuneNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
       vcpus: (map['vcpus'] as String).input(),
     );
   }

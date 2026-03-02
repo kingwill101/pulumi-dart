@@ -41,7 +41,7 @@ class GetSecretsResult {
   factory GetSecretsResult.fromMap(Map<String, dynamic> map) {
     return GetSecretsResult(
       arns: (map['arns'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSecretsFilter>(map['filters'], (value) => GetSecretsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSecretsFilter>(map['filters']!, (value) => GetSecretsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
       region: map['region'] as String,

@@ -64,15 +64,15 @@ class MultipleActivationKeyArgs {
 
   factory MultipleActivationKeyArgs.fromMap(Map<String, dynamic> map) {
     return MultipleActivationKeyArgs(
-      agreementNumber: map['agreementNumber'] == null ? null : (map['agreementNumber'] as String).input(),
-      installedServerNumber: map['installedServerNumber'] == null ? null : (map['installedServerNumber'] as int).input(),
-      isEligible: map['isEligible'] == null ? null : (map['isEligible'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      multipleActivationKeyName: map['multipleActivationKeyName'] == null ? null : (map['multipleActivationKeyName'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      agreementNumber: map['agreementNumber'] == null ? null : (map['agreementNumber']! as String).input(),
+      installedServerNumber: map['installedServerNumber'] == null ? null : (map['installedServerNumber']! as int).input(),
+      isEligible: map['isEligible'] == null ? null : (map['isEligible']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      multipleActivationKeyName: map['multipleActivationKeyName'] == null ? null : (map['multipleActivationKeyName']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      supportType: map['supportType'] == null ? null : (map['supportType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      supportType: map['supportType'] == null ? null : (map['supportType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

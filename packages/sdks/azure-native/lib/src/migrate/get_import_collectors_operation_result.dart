@@ -63,10 +63,10 @@ class GetImportCollectorsOperationResult {
     return GetImportCollectorsOperationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       createdTimestamp: map['createdTimestamp'] as String,
-      discoverySiteId: map['discoverySiteId'] == null ? null : map['discoverySiteId'] as String,
+      discoverySiteId: map['discoverySiteId'] == null ? null : map['discoverySiteId']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       updatedTimestamp: map['updatedTimestamp'] as String,

@@ -21,7 +21,7 @@ class AutoProvisioningState {
 
   factory AutoProvisioningState.fromMap(Map<String, dynamic> map) {
     return AutoProvisioningState(
-      autoProvision: map['autoProvision'] == null ? null : (map['autoProvision'] as String).input(),
+      autoProvision: map['autoProvision'] == null ? null : (map['autoProvision']! as String).input(),
     );
   }
 }

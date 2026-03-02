@@ -27,8 +27,8 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase {
 
   factory StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabase(
-      collections: map['collections'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection>(map['collections'], (value) => StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
+      collections: map['collections'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection>(map['collections']!, (value) => StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
     );
   }
 }

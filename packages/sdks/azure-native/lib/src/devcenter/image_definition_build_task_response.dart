@@ -57,12 +57,12 @@ class ImageDefinitionBuildTaskResponse {
 
   factory ImageDefinitionBuildTaskResponse.fromMap(Map<String, dynamic> map) {
     return ImageDefinitionBuildTaskResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       endTime: (map['endTime'] as String).input(),
       id: (map['id'] as String).input(),
       logUri: (map['logUri'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ImageDefinitionBuildTaskResponseParameters>(map['parameters'], (value) => ImageDefinitionBuildTaskResponseParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ImageDefinitionBuildTaskResponseParameters>(map['parameters']!, (value) => ImageDefinitionBuildTaskResponseParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
       startTime: (map['startTime'] as String).input(),
       status: (map['status'] as String).input(),
     );

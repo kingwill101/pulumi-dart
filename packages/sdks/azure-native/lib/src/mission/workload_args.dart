@@ -49,12 +49,12 @@ class WorkloadArgs {
 
   factory WorkloadArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      resourceGroupCollection: map['resourceGroupCollection'] == null ? null : ((map['resourceGroupCollection'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      resourceGroupCollection: map['resourceGroupCollection'] == null ? null : ((map['resourceGroupCollection']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       virtualEnclaveName: (map['virtualEnclaveName'] as String).input(),
-      workloadName: map['workloadName'] == null ? null : (map['workloadName'] as String).input(),
+      workloadName: map['workloadName'] == null ? null : (map['workloadName']! as String).input(),
     );
   }
 }

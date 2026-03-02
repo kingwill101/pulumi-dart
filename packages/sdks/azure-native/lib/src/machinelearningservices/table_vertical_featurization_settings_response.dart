@@ -49,12 +49,12 @@ class TableVerticalFeaturizationSettingsResponse {
 
   factory TableVerticalFeaturizationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return TableVerticalFeaturizationSettingsResponse(
-      blockedTransformers: map['blockedTransformers'] == null ? null : ((map['blockedTransformers'] as List).cast<String>()).input(),
-      columnNameAndTypes: map['columnNameAndTypes'] == null ? null : ((map['columnNameAndTypes'] as Map).cast<String, String>()).input(),
-      datasetLanguage: map['datasetLanguage'] == null ? null : (map['datasetLanguage'] as String).input(),
-      enableDnnFeaturization: map['enableDnnFeaturization'] == null ? null : (map['enableDnnFeaturization'] as bool).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      transformerParams: map['transformerParams'] == null ? null : (pulumi.Input.decodeMapValues<List<ColumnTransformerResponse>>(map['transformerParams'], (value) => pulumi.Input.decodeList<ColumnTransformerResponse>(value, (value) => ColumnTransformerResponse.fromMap((value as Map).cast<String, dynamic>())))).input(),
+      blockedTransformers: map['blockedTransformers'] == null ? null : ((map['blockedTransformers']! as List).cast<String>()).input(),
+      columnNameAndTypes: map['columnNameAndTypes'] == null ? null : ((map['columnNameAndTypes']! as Map).cast<String, String>()).input(),
+      datasetLanguage: map['datasetLanguage'] == null ? null : (map['datasetLanguage']! as String).input(),
+      enableDnnFeaturization: map['enableDnnFeaturization'] == null ? null : (map['enableDnnFeaturization']! as bool).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      transformerParams: map['transformerParams'] == null ? null : (pulumi.Input.decodeMapValues<List<ColumnTransformerResponse>>(map['transformerParams']!, (value) => pulumi.Input.decodeList<ColumnTransformerResponse>(value, (value) => ColumnTransformerResponse.fromMap((value as Map).cast<String, dynamic>())))).input(),
     );
   }
 }

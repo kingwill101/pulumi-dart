@@ -29,8 +29,8 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver {
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver(
       bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
-      s3OutputFormatConfig: (FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig.fromMap((map['s3OutputFormatConfig'] as Map).cast<String, dynamic>())).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : ((map['bucketPrefix'] as String).input()).input(),
+      s3OutputFormatConfig: (FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfig.fromMap((map['s3OutputFormatConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

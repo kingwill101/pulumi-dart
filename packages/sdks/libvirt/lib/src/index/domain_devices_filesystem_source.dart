@@ -57,13 +57,13 @@ class DomainDevicesFilesystemSource {
 
   factory DomainDevicesFilesystemSource.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemSource(
-      bind: map['bind'] == null ? null : (DomainDevicesFilesystemSourceBind.fromMap((map['bind'] as Map).cast<String, dynamic>())).input(),
-      block: map['block'] == null ? null : (DomainDevicesFilesystemSourceBlock.fromMap((map['block'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (DomainDevicesFilesystemSourceFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
-      mount: map['mount'] == null ? null : (DomainDevicesFilesystemSourceMount.fromMap((map['mount'] as Map).cast<String, dynamic>())).input(),
-      ram: map['ram'] == null ? null : (DomainDevicesFilesystemSourceRam.fromMap((map['ram'] as Map).cast<String, dynamic>())).input(),
-      template: map['template'] == null ? null : (DomainDevicesFilesystemSourceTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
-      volume: map['volume'] == null ? null : (DomainDevicesFilesystemSourceVolume.fromMap((map['volume'] as Map).cast<String, dynamic>())).input(),
+      bind: map['bind'] == null ? null : (DomainDevicesFilesystemSourceBind.fromMap((map['bind']! as Map).cast<String, dynamic>())).input(),
+      block: map['block'] == null ? null : (DomainDevicesFilesystemSourceBlock.fromMap((map['block']! as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (DomainDevicesFilesystemSourceFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
+      mount: map['mount'] == null ? null : (DomainDevicesFilesystemSourceMount.fromMap((map['mount']! as Map).cast<String, dynamic>())).input(),
+      ram: map['ram'] == null ? null : (DomainDevicesFilesystemSourceRam.fromMap((map['ram']! as Map).cast<String, dynamic>())).input(),
+      template: map['template'] == null ? null : (DomainDevicesFilesystemSourceTemplate.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
+      volume: map['volume'] == null ? null : (DomainDevicesFilesystemSourceVolume.fromMap((map['volume']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

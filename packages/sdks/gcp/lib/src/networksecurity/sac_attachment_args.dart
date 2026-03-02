@@ -70,15 +70,15 @@ class SacAttachmentArgs {
 
   factory SacAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return SacAttachmentArgs(
-      country: map['country'] == null ? null : (map['country'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      country: map['country'] == null ? null : (map['country']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nccGateway: (map['nccGateway'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sacRealm: (map['sacRealm'] as String).input(),
-      symantecOptions: map['symantecOptions'] == null ? null : (SacAttachmentSymantecOptions.fromMap((map['symantecOptions'] as Map).cast<String, dynamic>())).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      symantecOptions: map['symantecOptions'] == null ? null : (SacAttachmentSymantecOptions.fromMap((map['symantecOptions']! as Map).cast<String, dynamic>())).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

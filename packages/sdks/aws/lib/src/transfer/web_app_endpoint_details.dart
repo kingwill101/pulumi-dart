@@ -21,7 +21,7 @@ class WebAppEndpointDetails {
 
   factory WebAppEndpointDetails.fromMap(Map<String, dynamic> map) {
     return WebAppEndpointDetails(
-      vpc: map['vpc'] == null ? null : (WebAppEndpointDetailsVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())).input(),
+      vpc: map['vpc'] == null ? null : ((WebAppEndpointDetailsVpc.fromMap((map['vpc']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

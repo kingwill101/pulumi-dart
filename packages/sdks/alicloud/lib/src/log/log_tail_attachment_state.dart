@@ -31,9 +31,9 @@ class LogTailAttachmentState {
 
   factory LogTailAttachmentState.fromMap(Map<String, dynamic> map) {
     return LogTailAttachmentState(
-      logtailConfigName: map['logtailConfigName'] == null ? null : (map['logtailConfigName'] as String).input(),
-      machineGroupName: map['machineGroupName'] == null ? null : (map['machineGroupName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      logtailConfigName: map['logtailConfigName'] == null ? null : (map['logtailConfigName']! as String).input(),
+      machineGroupName: map['machineGroupName'] == null ? null : (map['machineGroupName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

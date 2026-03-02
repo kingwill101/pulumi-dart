@@ -88,20 +88,20 @@ class TriggerScheduleState {
 
   factory TriggerScheduleState.fromMap(Map<String, dynamic> map) {
     return TriggerScheduleState(
-      activated: map['activated'] == null ? null : (map['activated'] as bool).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pipelineName: map['pipelineName'] == null ? null : (map['pipelineName'] as String).input(),
-      pipelineParameters: map['pipelineParameters'] == null ? null : ((map['pipelineParameters'] as Map).cast<String, String>()).input(),
-      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerSchedulePipeline>(map['pipelines'], (value) => TriggerSchedulePipeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schedule: map['schedule'] == null ? null : (TriggerScheduleSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      activated: map['activated'] == null ? null : (map['activated']! as bool).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pipelineName: map['pipelineName'] == null ? null : (map['pipelineName']! as String).input(),
+      pipelineParameters: map['pipelineParameters'] == null ? null : ((map['pipelineParameters']! as Map).cast<String, String>()).input(),
+      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerSchedulePipeline>(map['pipelines']!, (value) => TriggerSchedulePipeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schedule: map['schedule'] == null ? null : (TriggerScheduleSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

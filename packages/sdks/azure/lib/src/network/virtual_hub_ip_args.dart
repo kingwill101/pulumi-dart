@@ -49,9 +49,9 @@ class VirtualHubIpArgs {
 
   factory VirtualHubIpArgs.fromMap(Map<String, dynamic> map) {
     return VirtualHubIpArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : (map['privateIpAllocationMethod'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      privateIpAllocationMethod: map['privateIpAllocationMethod'] == null ? null : (map['privateIpAllocationMethod']! as String).input(),
       publicIpAddressId: (map['publicIpAddressId'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
       virtualHubId: (map['virtualHubId'] as String).input(),

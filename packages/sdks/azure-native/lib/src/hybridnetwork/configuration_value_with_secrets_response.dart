@@ -55,7 +55,7 @@ class ConfigurationValueWithSecretsResponse {
     return ConfigurationValueWithSecretsResponse(
       configurationGroupSchemaName: (map['configurationGroupSchemaName'] as String).input(),
       configurationGroupSchemaOfferingLocation: (map['configurationGroupSchemaOfferingLocation'] as String).input(),
-      configurationGroupSchemaResourceReference: map['configurationGroupSchemaResourceReference'] == null ? null : (OpenDeploymentResourceReferenceResponse.fromMap((map['configurationGroupSchemaResourceReference'] as Map).cast<String, dynamic>())).input(),
+      configurationGroupSchemaResourceReference: map['configurationGroupSchemaResourceReference'] == null ? null : (OpenDeploymentResourceReferenceResponse.fromMap((map['configurationGroupSchemaResourceReference']! as Map).cast<String, dynamic>())).input(),
       configurationType: (map['configurationType'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       publisherName: (map['publisherName'] as String).input(),

@@ -38,10 +38,10 @@ class GetNetworkInsightsAnalysisForwardPathComponentOutboundHeader {
   factory GetNetworkInsightsAnalysisForwardPathComponentOutboundHeader.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisForwardPathComponentOutboundHeader(
       destinationAddresses: ((map['destinationAddresses'] as List).cast<String>()).input(),
-      destinationPortRanges: (pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange>(map['destinationPortRanges'], (value) => GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationPortRanges: (pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange>(map['destinationPortRanges']!, (value) => GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
       protocol: (map['protocol'] as String).input(),
       sourceAddresses: ((map['sourceAddresses'] as List).cast<String>()).input(),
-      sourcePortRanges: (pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange>(map['sourcePortRanges'], (value) => GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourcePortRanges: (pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange>(map['sourcePortRanges']!, (value) => GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

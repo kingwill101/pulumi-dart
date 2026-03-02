@@ -57,10 +57,10 @@ class GetCacheResult {
     return GetCacheResult(
       azureApiVersion: map['azureApiVersion'] as String,
       connectionString: map['connectionString'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      resourceId: map['resourceId'] == null ? null : map['resourceId']! as String,
       type: map['type'] as String,
       useFromLocation: map['useFromLocation'] as String,
     );

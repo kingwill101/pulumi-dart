@@ -47,12 +47,12 @@ class OpenZfsFileSystemRootVolumeConfiguration {
 
   factory OpenZfsFileSystemRootVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return OpenZfsFileSystemRootVolumeConfiguration(
-      copyTagsToSnapshots: map['copyTagsToSnapshots'] == null ? null : (map['copyTagsToSnapshots'] as bool).input(),
-      dataCompressionType: map['dataCompressionType'] == null ? null : (map['dataCompressionType'] as String).input(),
-      nfsExports: map['nfsExports'] == null ? null : (OpenZfsFileSystemRootVolumeConfigurationNfsExports.fromMap((map['nfsExports'] as Map).cast<String, dynamic>())).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      recordSizeKib: map['recordSizeKib'] == null ? null : (map['recordSizeKib'] as int).input(),
-      userAndGroupQuotas: map['userAndGroupQuotas'] == null ? null : (pulumi.Input.decodeList<OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota>(map['userAndGroupQuotas'], (value) => OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      copyTagsToSnapshots: map['copyTagsToSnapshots'] == null ? null : ((map['copyTagsToSnapshots'] as bool).input()).input(),
+      dataCompressionType: map['dataCompressionType'] == null ? null : ((map['dataCompressionType'] as String).input()).input(),
+      nfsExports: map['nfsExports'] == null ? null : ((OpenZfsFileSystemRootVolumeConfigurationNfsExports.fromMap((map['nfsExports']! as Map).cast<String, dynamic>())).input()).input(),
+      readOnly: map['readOnly'] == null ? null : ((map['readOnly'] as bool).input()).input(),
+      recordSizeKib: map['recordSizeKib'] == null ? null : ((map['recordSizeKib'] as int).input()).input(),
+      userAndGroupQuotas: map['userAndGroupQuotas'] == null ? null : ((pulumi.Input.decodeList<OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota>(map['userAndGroupQuotas']!, (value) => OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

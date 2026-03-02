@@ -49,12 +49,12 @@ class VpcState {
 
   factory VpcState.fromMap(Map<String, dynamic> map) {
     return VpcState(
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipv6s: map['ipv6s'] == null ? null : (pulumi.Input.decodeList<VpcIpv6>(map['ipv6s'], (value) => VpcIpv6.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipv6s: map['ipv6s'] == null ? null : (pulumi.Input.decodeList<VpcIpv6>(map['ipv6s']!, (value) => VpcIpv6.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
     );
   }
 }

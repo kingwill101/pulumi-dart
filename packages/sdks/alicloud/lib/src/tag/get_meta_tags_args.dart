@@ -29,8 +29,8 @@ class GetMetaTagsArgs {
 
   factory GetMetaTagsArgs.fromMap(Map<String, dynamic> map) {
     return GetMetaTagsArgs(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

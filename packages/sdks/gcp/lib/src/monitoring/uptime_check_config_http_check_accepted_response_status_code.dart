@@ -26,8 +26,8 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCode {
 
   factory UptimeCheckConfigHttpCheckAcceptedResponseStatusCode.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigHttpCheckAcceptedResponseStatusCode(
-      statusClass: map['statusClass'] == null ? null : (map['statusClass'] as String).input(),
-      statusValue: map['statusValue'] == null ? null : (map['statusValue'] as int).input(),
+      statusClass: map['statusClass'] == null ? null : (map['statusClass']! as String).input(),
+      statusValue: map['statusValue'] == null ? null : (map['statusValue']! as int).input(),
     );
   }
 }

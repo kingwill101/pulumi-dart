@@ -95,21 +95,21 @@ class DistributionTenantState {
 
   factory DistributionTenantState.fromMap(Map<String, dynamic> map) {
     return DistributionTenantState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      connectionGroupId: map['connectionGroupId'] == null ? null : (map['connectionGroupId'] as String).input(),
-      customizations: map['customizations'] == null ? null : (DistributionTenantCustomizations.fromMap((map['customizations'] as Map).cast<String, dynamic>())).input(),
-      distributionId: map['distributionId'] == null ? null : (map['distributionId'] as String).input(),
-      domains: map['domains'] == null ? null : (pulumi.Input.decodeList<DistributionTenantDomain>(map['domains'], (value) => DistributionTenantDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      managedCertificateRequest: map['managedCertificateRequest'] == null ? null : (DistributionTenantManagedCertificateRequest.fromMap((map['managedCertificateRequest'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<DistributionTenantParameter>(map['parameters'], (value) => DistributionTenantParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (DistributionTenantTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      waitForDeployment: map['waitForDeployment'] == null ? null : (map['waitForDeployment'] as bool).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      connectionGroupId: map['connectionGroupId'] == null ? null : ((map['connectionGroupId'] as String).input()).input(),
+      customizations: map['customizations'] == null ? null : ((DistributionTenantCustomizations.fromMap((map['customizations']! as Map).cast<String, dynamic>())).input()).input(),
+      distributionId: map['distributionId'] == null ? null : ((map['distributionId'] as String).input()).input(),
+      domains: map['domains'] == null ? null : ((pulumi.Input.decodeList<DistributionTenantDomain>(map['domains']!, (value) => DistributionTenantDomain.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      managedCertificateRequest: map['managedCertificateRequest'] == null ? null : ((DistributionTenantManagedCertificateRequest.fromMap((map['managedCertificateRequest']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<DistributionTenantParameter>(map['parameters']!, (value) => DistributionTenantParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DistributionTenantTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      waitForDeployment: map['waitForDeployment'] == null ? null : ((map['waitForDeployment'] as bool).input()).input(),
     );
   }
 }

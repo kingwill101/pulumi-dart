@@ -32,9 +32,9 @@ class NumberInRangeFilterResponse {
 
   factory NumberInRangeFilterResponse.fromMap(Map<String, dynamic> map) {
     return NumberInRangeFilterResponse(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
       operatorType: (map['operatorType'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<List<double>>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<List<double>>()).input(),
     );
   }
 }

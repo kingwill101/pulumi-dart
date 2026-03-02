@@ -20,7 +20,7 @@ class GetFlowStreamConnectionStringResult {
 
   factory GetFlowStreamConnectionStringResult.fromMap(Map<String, dynamic> map) {
     return GetFlowStreamConnectionStringResult(
-      connectionString: map['connectionString'] == null ? null : map['connectionString'] as String,
+      connectionString: map['connectionString'] == null ? null : map['connectionString']! as String,
     );
   }
 }

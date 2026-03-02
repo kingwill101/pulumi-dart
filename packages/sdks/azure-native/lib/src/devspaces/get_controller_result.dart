@@ -84,7 +84,7 @@ class GetControllerResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       targetContainerHostApiServerFqdn: map['targetContainerHostApiServerFqdn'] as String,
       targetContainerHostResourceId: map['targetContainerHostResourceId'] as String,
       type: map['type'] as String,

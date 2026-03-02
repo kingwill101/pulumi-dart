@@ -39,12 +39,12 @@ class BillingHubFreeHourIncrementEntryResponse {
 
   factory BillingHubFreeHourIncrementEntryResponse.fromMap(Map<String, dynamic> map) {
     return BillingHubFreeHourIncrementEntryResponse(
-      createTimeStamp: map['createTimeStamp'] == null ? null : (map['createTimeStamp'] as String).input(),
-      expirationTimeStamp: map['expirationTimeStamp'] == null ? null : (map['expirationTimeStamp'] as String).input(),
-      freeHourStatus: map['freeHourStatus'] == null ? null : (map['freeHourStatus'] as String).input(),
-      freeHourType: map['freeHourType'] == null ? null : (map['freeHourType'] as String).input(),
-      incrementalFreeHours: map['incrementalFreeHours'] == null ? null : (map['incrementalFreeHours'] as double).input(),
-      remainingFreeHours: map['remainingFreeHours'] == null ? null : (map['remainingFreeHours'] as double).input(),
+      createTimeStamp: map['createTimeStamp'] == null ? null : (map['createTimeStamp']! as String).input(),
+      expirationTimeStamp: map['expirationTimeStamp'] == null ? null : (map['expirationTimeStamp']! as String).input(),
+      freeHourStatus: map['freeHourStatus'] == null ? null : (map['freeHourStatus']! as String).input(),
+      freeHourType: map['freeHourType'] == null ? null : (map['freeHourType']! as String).input(),
+      incrementalFreeHours: map['incrementalFreeHours'] == null ? null : (map['incrementalFreeHours']! as double).input(),
+      remainingFreeHours: map['remainingFreeHours'] == null ? null : (map['remainingFreeHours']! as double).input(),
     );
   }
 }

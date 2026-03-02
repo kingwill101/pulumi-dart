@@ -28,8 +28,8 @@ class LkeClusterControlPlaneAcl {
 
   factory LkeClusterControlPlaneAcl.fromMap(Map<String, dynamic> map) {
     return LkeClusterControlPlaneAcl(
-      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<LkeClusterControlPlaneAclAddress>(map['addresses'], (value) => LkeClusterControlPlaneAclAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<LkeClusterControlPlaneAclAddress>(map['addresses']!, (value) => LkeClusterControlPlaneAclAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

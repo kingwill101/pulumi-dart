@@ -25,8 +25,8 @@ class CxTestCaseTestCaseConversationTurnUserInputInputDtmf {
 
   factory CxTestCaseTestCaseConversationTurnUserInputInputDtmf.fromMap(Map<String, dynamic> map) {
     return CxTestCaseTestCaseConversationTurnUserInputInputDtmf(
-      digits: map['digits'] == null ? null : (map['digits'] as String).input(),
-      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit'] as String).input(),
+      digits: map['digits'] == null ? null : (map['digits']! as String).input(),
+      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit']! as String).input(),
     );
   }
 }

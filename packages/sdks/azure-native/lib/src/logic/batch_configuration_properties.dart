@@ -42,9 +42,9 @@ class BatchConfigurationProperties {
   factory BatchConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return BatchConfigurationProperties(
       batchGroupName: (map['batchGroupName'] as String).input(),
-      changedTime: map['changedTime'] == null ? null : (map['changedTime'] as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      changedTime: map['changedTime'] == null ? null : (map['changedTime']! as String).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
       releaseCriteria: (BatchReleaseCriteria.fromMap((map['releaseCriteria'] as Map).cast<String, dynamic>())).input(),
     );
   }

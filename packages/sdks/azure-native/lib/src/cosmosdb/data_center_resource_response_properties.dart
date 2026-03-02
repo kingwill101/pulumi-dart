@@ -99,22 +99,22 @@ class DataCenterResourceResponseProperties {
 
   factory DataCenterResourceResponseProperties.fromMap(Map<String, dynamic> map) {
     return DataCenterResourceResponseProperties(
-      authenticationMethodLdapProperties: map['authenticationMethodLdapProperties'] == null ? null : (AuthenticationMethodLdapPropertiesResponse.fromMap((map['authenticationMethodLdapProperties'] as Map).cast<String, dynamic>())).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as bool).input(),
-      backupStorageCustomerKeyUri: map['backupStorageCustomerKeyUri'] == null ? null : (map['backupStorageCustomerKeyUri'] as String).input(),
-      base64EncodedCassandraYamlFragment: map['base64EncodedCassandraYamlFragment'] == null ? null : (map['base64EncodedCassandraYamlFragment'] as String).input(),
-      dataCenterLocation: map['dataCenterLocation'] == null ? null : (map['dataCenterLocation'] as String).input(),
-      deallocated: map['deallocated'] == null ? null : (map['deallocated'] as bool).input(),
-      delegatedSubnetId: map['delegatedSubnetId'] == null ? null : (map['delegatedSubnetId'] as String).input(),
-      diskCapacity: map['diskCapacity'] == null ? null : (map['diskCapacity'] as int).input(),
-      diskSku: map['diskSku'] == null ? null : (map['diskSku'] as String).input(),
-      managedDiskCustomerKeyUri: map['managedDiskCustomerKeyUri'] == null ? null : (map['managedDiskCustomerKeyUri'] as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      privateEndpointIpAddress: map['privateEndpointIpAddress'] == null ? null : (map['privateEndpointIpAddress'] as String).input(),
-      provisionError: map['provisionError'] == null ? null : (CassandraErrorResponse.fromMap((map['provisionError'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      authenticationMethodLdapProperties: map['authenticationMethodLdapProperties'] == null ? null : (AuthenticationMethodLdapPropertiesResponse.fromMap((map['authenticationMethodLdapProperties']! as Map).cast<String, dynamic>())).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as bool).input(),
+      backupStorageCustomerKeyUri: map['backupStorageCustomerKeyUri'] == null ? null : (map['backupStorageCustomerKeyUri']! as String).input(),
+      base64EncodedCassandraYamlFragment: map['base64EncodedCassandraYamlFragment'] == null ? null : (map['base64EncodedCassandraYamlFragment']! as String).input(),
+      dataCenterLocation: map['dataCenterLocation'] == null ? null : (map['dataCenterLocation']! as String).input(),
+      deallocated: map['deallocated'] == null ? null : (map['deallocated']! as bool).input(),
+      delegatedSubnetId: map['delegatedSubnetId'] == null ? null : (map['delegatedSubnetId']! as String).input(),
+      diskCapacity: map['diskCapacity'] == null ? null : (map['diskCapacity']! as int).input(),
+      diskSku: map['diskSku'] == null ? null : (map['diskSku']! as String).input(),
+      managedDiskCustomerKeyUri: map['managedDiskCustomerKeyUri'] == null ? null : (map['managedDiskCustomerKeyUri']! as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      privateEndpointIpAddress: map['privateEndpointIpAddress'] == null ? null : (map['privateEndpointIpAddress']! as String).input(),
+      provisionError: map['provisionError'] == null ? null : (CassandraErrorResponse.fromMap((map['provisionError']! as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       seedNodes: (pulumi.Input.decodeList<SeedNodeResponse>(map['seedNodes'], (value) => SeedNodeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
     );
   }
 }

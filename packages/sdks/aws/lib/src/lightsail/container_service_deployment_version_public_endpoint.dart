@@ -33,7 +33,7 @@ class ContainerServiceDeploymentVersionPublicEndpoint {
     return ContainerServiceDeploymentVersionPublicEndpoint(
       containerName: (map['containerName'] as String).input(),
       containerPort: (map['containerPort'] as int).input(),
-      healthCheck: (ContainerServiceDeploymentVersionPublicEndpointHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>())).input(),
+      healthCheck: (ContainerServiceDeploymentVersionPublicEndpointHealthCheck.fromMap((map['healthCheck']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

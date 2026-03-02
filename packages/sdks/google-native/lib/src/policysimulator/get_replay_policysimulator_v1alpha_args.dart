@@ -32,7 +32,7 @@ class GetReplayPolicysimulatorV1alphaArgs {
   factory GetReplayPolicysimulatorV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return GetReplayPolicysimulatorV1alphaArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       replayId: (map['replayId'] as String).input(),
     );
   }

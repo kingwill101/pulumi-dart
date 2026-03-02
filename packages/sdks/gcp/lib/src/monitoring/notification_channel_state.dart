@@ -90,17 +90,17 @@ class NotificationChannelState {
 
   factory NotificationChannelState.fromMap(Map<String, dynamic> map) {
     return NotificationChannelState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sensitiveLabels: map['sensitiveLabels'] == null ? null : (NotificationChannelSensitiveLabels.fromMap((map['sensitiveLabels'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
-      verificationStatus: map['verificationStatus'] == null ? null : (map['verificationStatus'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sensitiveLabels: map['sensitiveLabels'] == null ? null : (NotificationChannelSensitiveLabels.fromMap((map['sensitiveLabels']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels']! as Map).cast<String, String>()).input(),
+      verificationStatus: map['verificationStatus'] == null ? null : (map['verificationStatus']! as String).input(),
     );
   }
 }

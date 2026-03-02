@@ -36,10 +36,10 @@ class LongRunning {
 
   factory LongRunning.fromMap(Map<String, dynamic> map) {
     return LongRunning(
-      initialPollDelay: map['initialPollDelay'] == null ? null : (map['initialPollDelay'] as String).input(),
-      maxPollDelay: map['maxPollDelay'] == null ? null : (map['maxPollDelay'] as String).input(),
-      pollDelayMultiplier: map['pollDelayMultiplier'] == null ? null : (map['pollDelayMultiplier'] as double).input(),
-      totalPollTimeout: map['totalPollTimeout'] == null ? null : (map['totalPollTimeout'] as String).input(),
+      initialPollDelay: map['initialPollDelay'] == null ? null : (map['initialPollDelay']! as String).input(),
+      maxPollDelay: map['maxPollDelay'] == null ? null : (map['maxPollDelay']! as String).input(),
+      pollDelayMultiplier: map['pollDelayMultiplier'] == null ? null : (map['pollDelayMultiplier']! as double).input(),
+      totalPollTimeout: map['totalPollTimeout'] == null ? null : (map['totalPollTimeout']! as String).input(),
     );
   }
 }

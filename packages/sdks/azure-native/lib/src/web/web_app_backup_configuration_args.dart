@@ -61,11 +61,11 @@ class WebAppBackupConfigurationArgs {
 
   factory WebAppBackupConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return WebAppBackupConfigurationArgs(
-      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
-      backupSchedule: map['backupSchedule'] == null ? null : (BackupSchedule.fromMap((map['backupSchedule'] as Map).cast<String, dynamic>())).input(),
-      databases: map['databases'] == null ? null : (pulumi.Input.decodeList<DatabaseBackupSetting>(map['databases'], (value) => DatabaseBackupSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      backupName: map['backupName'] == null ? null : (map['backupName']! as String).input(),
+      backupSchedule: map['backupSchedule'] == null ? null : (BackupSchedule.fromMap((map['backupSchedule']! as Map).cast<String, dynamic>())).input(),
+      databases: map['databases'] == null ? null : (pulumi.Input.decodeList<DatabaseBackupSetting>(map['databases']!, (value) => DatabaseBackupSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       storageAccountUrl: (map['storageAccountUrl'] as String).input(),

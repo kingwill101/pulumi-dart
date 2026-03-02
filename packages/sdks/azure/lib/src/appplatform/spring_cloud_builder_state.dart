@@ -38,10 +38,10 @@ class SpringCloudBuilderState {
 
   factory SpringCloudBuilderState.fromMap(Map<String, dynamic> map) {
     return SpringCloudBuilderState(
-      buildPackGroups: map['buildPackGroups'] == null ? null : (pulumi.Input.decodeList<SpringCloudBuilderBuildPackGroup>(map['buildPackGroups'], (value) => SpringCloudBuilderBuildPackGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
-      stack: map['stack'] == null ? null : (SpringCloudBuilderStack.fromMap((map['stack'] as Map).cast<String, dynamic>())).input(),
+      buildPackGroups: map['buildPackGroups'] == null ? null : (pulumi.Input.decodeList<SpringCloudBuilderBuildPackGroup>(map['buildPackGroups']!, (value) => SpringCloudBuilderBuildPackGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId']! as String).input(),
+      stack: map['stack'] == null ? null : (SpringCloudBuilderStack.fromMap((map['stack']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

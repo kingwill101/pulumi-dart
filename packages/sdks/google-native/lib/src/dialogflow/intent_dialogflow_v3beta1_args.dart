@@ -79,17 +79,17 @@ class IntentDialogflowV3beta1Args {
   factory IntentDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return IntentDialogflowV3beta1Args(
       agentId: (map['agentId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      isFallback: map['isFallback'] == null ? null : (map['isFallback'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1IntentParameter>(map['parameters'], (value) => GoogleCloudDialogflowCxV3beta1IntentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      trainingPhrases: map['trainingPhrases'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase>(map['trainingPhrases'], (value) => GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isFallback: map['isFallback'] == null ? null : (map['isFallback']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1IntentParameter>(map['parameters']!, (value) => GoogleCloudDialogflowCxV3beta1IntentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      trainingPhrases: map['trainingPhrases'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase>(map['trainingPhrases']!, (value) => GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

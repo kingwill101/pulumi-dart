@@ -40,9 +40,9 @@ class GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs {
   factory GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs.fromMap(Map<String, dynamic> map) {
     return GetP2sVpnGatewayP2sVpnConnectionHealthDetailedArgs(
       gatewayName: (map['gatewayName'] as String).input(),
-      outputBlobSasUrl: map['outputBlobSasUrl'] == null ? null : (map['outputBlobSasUrl'] as String).input(),
+      outputBlobSasUrl: map['outputBlobSasUrl'] == null ? null : (map['outputBlobSasUrl']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vpnUserNamesFilter: map['vpnUserNamesFilter'] == null ? null : ((map['vpnUserNamesFilter'] as List).cast<String>()).input(),
+      vpnUserNamesFilter: map['vpnUserNamesFilter'] == null ? null : ((map['vpnUserNamesFilter']! as List).cast<String>()).input(),
     );
   }
 }

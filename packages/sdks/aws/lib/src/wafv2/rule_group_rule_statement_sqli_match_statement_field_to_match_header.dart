@@ -31,7 +31,7 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchHeader {
 
   factory RuleGroupRuleStatementSqliMatchStatementFieldToMatchHeader.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSqliMatchStatementFieldToMatchHeader(
-      matchPattern: (RuleGroupRuleStatementSqliMatchStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern'] as Map).cast<String, dynamic>())).input(),
+      matchPattern: (RuleGroupRuleStatementSqliMatchStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern']! as Map).cast<String, dynamic>())).input(),
       matchScope: (map['matchScope'] as String).input(),
       oversizeHandling: (map['oversizeHandling'] as String).input(),
     );

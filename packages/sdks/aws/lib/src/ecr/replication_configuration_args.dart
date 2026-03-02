@@ -30,8 +30,8 @@ class ReplicationConfigurationArgs {
 
   factory ReplicationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replicationConfiguration: map['replicationConfiguration'] == null ? null : (ReplicationConfigurationReplicationConfiguration.fromMap((map['replicationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replicationConfiguration: map['replicationConfiguration'] == null ? null : ((ReplicationConfigurationReplicationConfiguration.fromMap((map['replicationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

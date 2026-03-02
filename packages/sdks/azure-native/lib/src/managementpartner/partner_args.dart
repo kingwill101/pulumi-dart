@@ -24,7 +24,7 @@ class PartnerArgs {
 
   factory PartnerArgs.fromMap(Map<String, dynamic> map) {
     return PartnerArgs(
-      partnerId: map['partnerId'] == null ? null : (map['partnerId'] as String).input(),
+      partnerId: map['partnerId'] == null ? null : (map['partnerId']! as String).input(),
     );
   }
 }

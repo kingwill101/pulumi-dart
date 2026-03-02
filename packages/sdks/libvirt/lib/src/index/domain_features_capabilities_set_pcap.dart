@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesSetPCap {
 
   factory DomainFeaturesCapabilitiesSetPCap.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesSetPCap(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

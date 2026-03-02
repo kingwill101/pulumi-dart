@@ -66,16 +66,16 @@ class AzureVmDiskDetailsResponse {
 
   factory AzureVmDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AzureVmDiskDetailsResponse(
-      customTargetDiskName: map['customTargetDiskName'] == null ? null : (map['customTargetDiskName'] as String).input(),
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
-      lunId: map['lunId'] == null ? null : (map['lunId'] as String).input(),
-      maxSizeMB: map['maxSizeMB'] == null ? null : (map['maxSizeMB'] as String).input(),
-      targetDiskLocation: map['targetDiskLocation'] == null ? null : (map['targetDiskLocation'] as String).input(),
-      targetDiskName: map['targetDiskName'] == null ? null : (map['targetDiskName'] as String).input(),
-      vhdId: map['vhdId'] == null ? null : (map['vhdId'] as String).input(),
-      vhdName: map['vhdName'] == null ? null : (map['vhdName'] as String).input(),
-      vhdType: map['vhdType'] == null ? null : (map['vhdType'] as String).input(),
+      customTargetDiskName: map['customTargetDiskName'] == null ? null : (map['customTargetDiskName']! as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
+      lunId: map['lunId'] == null ? null : (map['lunId']! as String).input(),
+      maxSizeMB: map['maxSizeMB'] == null ? null : (map['maxSizeMB']! as String).input(),
+      targetDiskLocation: map['targetDiskLocation'] == null ? null : (map['targetDiskLocation']! as String).input(),
+      targetDiskName: map['targetDiskName'] == null ? null : (map['targetDiskName']! as String).input(),
+      vhdId: map['vhdId'] == null ? null : (map['vhdId']! as String).input(),
+      vhdName: map['vhdName'] == null ? null : (map['vhdName']! as String).input(),
+      vhdType: map['vhdType'] == null ? null : (map['vhdType']! as String).input(),
     );
   }
 }

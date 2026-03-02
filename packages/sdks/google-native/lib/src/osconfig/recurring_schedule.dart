@@ -56,10 +56,10 @@ class RecurringSchedule {
 
   factory RecurringSchedule.fromMap(Map<String, dynamic> map) {
     return RecurringSchedule(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       frequency: (RecurringScheduleFrequency.fromValue(map['frequency'] as String)).input(),
       monthly: (MonthlySchedule.fromMap((map['monthly'] as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
       timeOfDay: (TimeOfDay.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>())).input(),
       timeZone: (TimeZone.fromMap((map['timeZone'] as Map).cast<String, dynamic>())).input(),
       weekly: (WeeklySchedule.fromMap((map['weekly'] as Map).cast<String, dynamic>())).input(),

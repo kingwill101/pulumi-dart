@@ -65,16 +65,16 @@ class AssemblyPropertiesResponse {
 
   factory AssemblyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AssemblyPropertiesResponse(
-      assemblyCulture: map['assemblyCulture'] == null ? null : (map['assemblyCulture'] as String).input(),
+      assemblyCulture: map['assemblyCulture'] == null ? null : (map['assemblyCulture']! as String).input(),
       assemblyName: (map['assemblyName'] as String).input(),
-      assemblyPublicKeyToken: map['assemblyPublicKeyToken'] == null ? null : (map['assemblyPublicKeyToken'] as String).input(),
-      assemblyVersion: map['assemblyVersion'] == null ? null : (map['assemblyVersion'] as String).input(),
-      changedTime: map['changedTime'] == null ? null : (map['changedTime'] as String).input(),
-      content: map['content'] == null ? null : (map['content']).input(),
-      contentLink: map['contentLink'] == null ? null : (ContentLinkResponse.fromMap((map['contentLink'] as Map).cast<String, dynamic>())).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      assemblyPublicKeyToken: map['assemblyPublicKeyToken'] == null ? null : (map['assemblyPublicKeyToken']! as String).input(),
+      assemblyVersion: map['assemblyVersion'] == null ? null : (map['assemblyVersion']! as String).input(),
+      changedTime: map['changedTime'] == null ? null : (map['changedTime']! as String).input(),
+      content: map['content'] == null ? null : (map['content']!).input(),
+      contentLink: map['contentLink'] == null ? null : (ContentLinkResponse.fromMap((map['contentLink']! as Map).cast<String, dynamic>())).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      createdTime: map['createdTime'] == null ? null : (map['createdTime']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds {
 
   factory AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds.fromMap(Map<String, dynamic> map) {
     return AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds(
-      expectationLevelMetricsThresholds: map['expectationLevelMetricsThresholds'] == null ? null : (AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds.fromMap((map['expectationLevelMetricsThresholds'] as Map).cast<String, dynamic>())).input(),
-      turnLevelMetricsThresholds: map['turnLevelMetricsThresholds'] == null ? null : (AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds.fromMap((map['turnLevelMetricsThresholds'] as Map).cast<String, dynamic>())).input(),
+      expectationLevelMetricsThresholds: map['expectationLevelMetricsThresholds'] == null ? null : (AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds.fromMap((map['expectationLevelMetricsThresholds']! as Map).cast<String, dynamic>())).input(),
+      turnLevelMetricsThresholds: map['turnLevelMetricsThresholds'] == null ? null : (AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds.fromMap((map['turnLevelMetricsThresholds']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -23,8 +23,8 @@ class EciScalingConfigurationContainerPort {
 
   factory EciScalingConfigurationContainerPort.fromMap(Map<String, dynamic> map) {
     return EciScalingConfigurationContainerPort(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

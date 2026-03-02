@@ -96,20 +96,20 @@ class GetWorkspaceBackendResult {
   factory GetWorkspaceBackendResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceBackendResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      circuitBreaker: map['circuitBreaker'] == null ? null : BackendCircuitBreakerResponse.fromMap((map['circuitBreaker'] as Map).cast<String, dynamic>()),
-      credentials: map['credentials'] == null ? null : BackendCredentialsContractResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
+      circuitBreaker: map['circuitBreaker'] == null ? null : BackendCircuitBreakerResponse.fromMap((map['circuitBreaker']! as Map).cast<String, dynamic>()),
+      credentials: map['credentials'] == null ? null : BackendCredentialsContractResponse.fromMap((map['credentials']! as Map).cast<String, dynamic>()),
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      pool: map['pool'] == null ? null : BackendBaseParametersResponsePool.fromMap((map['pool'] as Map).cast<String, dynamic>()),
+      pool: map['pool'] == null ? null : BackendBaseParametersResponsePool.fromMap((map['pool']! as Map).cast<String, dynamic>()),
       properties: BackendPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      proxy: map['proxy'] == null ? null : BackendProxyContractResponse.fromMap((map['proxy'] as Map).cast<String, dynamic>()),
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      title: map['title'] == null ? null : map['title'] as String,
-      tls: map['tls'] == null ? null : BackendTlsPropertiesResponse.fromMap((map['tls'] as Map).cast<String, dynamic>()),
+      protocol: map['protocol'] == null ? null : map['protocol']! as String,
+      proxy: map['proxy'] == null ? null : BackendProxyContractResponse.fromMap((map['proxy']! as Map).cast<String, dynamic>()),
+      resourceId: map['resourceId'] == null ? null : map['resourceId']! as String,
+      title: map['title'] == null ? null : map['title']! as String,
+      tls: map['tls'] == null ? null : BackendTlsPropertiesResponse.fromMap((map['tls']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      url: map['url'] == null ? null : map['url'] as String,
+      url: map['url'] == null ? null : map['url']! as String,
     );
   }
 }

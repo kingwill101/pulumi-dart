@@ -31,8 +31,8 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoo
 
   factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment(
-      fixedLikelihood: map['fixedLikelihood'] == null ? null : (map['fixedLikelihood'] as String).input(),
-      relativeLikelihood: map['relativeLikelihood'] == null ? null : (map['relativeLikelihood'] as int).input(),
+      fixedLikelihood: map['fixedLikelihood'] == null ? null : (map['fixedLikelihood']! as String).input(),
+      relativeLikelihood: map['relativeLikelihood'] == null ? null : (map['relativeLikelihood']! as int).input(),
     );
   }
 }

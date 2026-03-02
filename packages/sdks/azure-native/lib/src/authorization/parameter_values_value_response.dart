@@ -21,7 +21,7 @@ class ParameterValuesValueResponse {
 
   factory ParameterValuesValueResponse.fromMap(Map<String, dynamic> map) {
     return ParameterValuesValueResponse(
-      value: map['value'] == null ? null : (map['value']).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

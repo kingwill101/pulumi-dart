@@ -29,8 +29,8 @@ class TwitterRegistrationResponse {
 
   factory TwitterRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return TwitterRegistrationResponse(
-      consumerKey: map['consumerKey'] == null ? null : (map['consumerKey'] as String).input(),
-      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : (map['consumerSecretSettingName'] as String).input(),
+      consumerKey: map['consumerKey'] == null ? null : (map['consumerKey']! as String).input(),
+      consumerSecretSettingName: map['consumerSecretSettingName'] == null ? null : (map['consumerSecretSettingName']! as String).input(),
     );
   }
 }

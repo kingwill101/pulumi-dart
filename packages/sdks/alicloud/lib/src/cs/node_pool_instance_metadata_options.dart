@@ -27,7 +27,7 @@ class NodePoolInstanceMetadataOptions {
 
   factory NodePoolInstanceMetadataOptions.fromMap(Map<String, dynamic> map) {
     return NodePoolInstanceMetadataOptions(
-      httpTokens: map['httpTokens'] == null ? null : (map['httpTokens'] as String).input(),
+      httpTokens: map['httpTokens'] == null ? null : (map['httpTokens']! as String).input(),
     );
   }
 }

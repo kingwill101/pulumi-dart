@@ -36,7 +36,7 @@ class BgpNetworkArgs {
     return BgpNetworkArgs(
       dstCidrBlock: (map['dstCidrBlock'] as String).input(),
       routerId: (map['routerId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

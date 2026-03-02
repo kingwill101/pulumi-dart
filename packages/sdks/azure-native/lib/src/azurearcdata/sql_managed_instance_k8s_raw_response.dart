@@ -22,7 +22,7 @@ class SqlManagedInstanceK8sRawResponse {
 
   factory SqlManagedInstanceK8sRawResponse.fromMap(Map<String, dynamic> map) {
     return SqlManagedInstanceK8sRawResponse(
-      spec: map['spec'] == null ? null : (SqlManagedInstanceK8sSpecResponse.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (SqlManagedInstanceK8sSpecResponse.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

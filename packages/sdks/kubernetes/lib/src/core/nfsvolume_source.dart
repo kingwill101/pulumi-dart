@@ -32,7 +32,7 @@ class NFSVolumeSource {
   factory NFSVolumeSource.fromMap(Map<String, dynamic> map) {
     return NFSVolumeSource(
       path: (map['path'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
       server: (map['server'] as String).input(),
     );
   }

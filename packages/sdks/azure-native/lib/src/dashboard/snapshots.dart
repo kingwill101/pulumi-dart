@@ -21,7 +21,7 @@ class Snapshots {
 
   factory Snapshots.fromMap(Map<String, dynamic> map) {
     return Snapshots(
-      externalEnabled: map['externalEnabled'] == null ? null : (map['externalEnabled'] as bool).input(),
+      externalEnabled: map['externalEnabled'] == null ? null : (map['externalEnabled']! as bool).input(),
     );
   }
 }

@@ -58,14 +58,14 @@ class OrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs {
 
   factory OrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationPartnerTenantProxyConfigIamPolicyBeyondcorpV1alphaArgs(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditConfigBeyondcorpV1alpha>(map['auditConfigs'], (value) => GoogleIamV1AuditConfigBeyondcorpV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1BindingBeyondcorpV1alpha>(map['bindings'], (value) => GoogleIamV1BindingBeyondcorpV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1AuditConfigBeyondcorpV1alpha>(map['auditConfigs']!, (value) => GoogleIamV1AuditConfigBeyondcorpV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1BindingBeyondcorpV1alpha>(map['bindings']!, (value) => GoogleIamV1BindingBeyondcorpV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
       partnerTenantId: (map['partnerTenantId'] as String).input(),
       proxyConfigId: (map['proxyConfigId'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

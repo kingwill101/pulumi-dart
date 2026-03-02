@@ -50,12 +50,12 @@ class UriOverrideCloudtasksV2beta2 {
 
   factory UriOverrideCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return UriOverrideCloudtasksV2beta2(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      pathOverride: map['pathOverride'] == null ? null : (PathOverrideCloudtasksV2beta2.fromMap((map['pathOverride'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      queryOverride: map['queryOverride'] == null ? null : (QueryOverrideCloudtasksV2beta2.fromMap((map['queryOverride'] as Map).cast<String, dynamic>())).input(),
-      scheme: map['scheme'] == null ? null : (UriOverrideSchemeCloudtasksV2beta2.fromValue(map['scheme'] as String)).input(),
-      uriOverrideEnforceMode: map['uriOverrideEnforceMode'] == null ? null : (UriOverrideUriOverrideEnforceModeCloudtasksV2beta2.fromValue(map['uriOverrideEnforceMode'] as String)).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      pathOverride: map['pathOverride'] == null ? null : (PathOverrideCloudtasksV2beta2.fromMap((map['pathOverride']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      queryOverride: map['queryOverride'] == null ? null : (QueryOverrideCloudtasksV2beta2.fromMap((map['queryOverride']! as Map).cast<String, dynamic>())).input(),
+      scheme: map['scheme'] == null ? null : (UriOverrideSchemeCloudtasksV2beta2.fromValue(map['scheme']! as String)).input(),
+      uriOverrideEnforceMode: map['uriOverrideEnforceMode'] == null ? null : (UriOverrideUriOverrideEnforceModeCloudtasksV2beta2.fromValue(map['uriOverrideEnforceMode']! as String)).input(),
     );
   }
 }

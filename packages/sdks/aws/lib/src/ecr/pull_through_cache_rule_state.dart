@@ -51,13 +51,13 @@ class PullThroughCacheRuleState {
 
   factory PullThroughCacheRuleState.fromMap(Map<String, dynamic> map) {
     return PullThroughCacheRuleState(
-      credentialArn: map['credentialArn'] == null ? null : (map['credentialArn'] as String).input(),
-      customRoleArn: map['customRoleArn'] == null ? null : (map['customRoleArn'] as String).input(),
-      ecrRepositoryPrefix: map['ecrRepositoryPrefix'] == null ? null : (map['ecrRepositoryPrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registryId: map['registryId'] == null ? null : (map['registryId'] as String).input(),
-      upstreamRegistryUrl: map['upstreamRegistryUrl'] == null ? null : (map['upstreamRegistryUrl'] as String).input(),
-      upstreamRepositoryPrefix: map['upstreamRepositoryPrefix'] == null ? null : (map['upstreamRepositoryPrefix'] as String).input(),
+      credentialArn: map['credentialArn'] == null ? null : ((map['credentialArn'] as String).input()).input(),
+      customRoleArn: map['customRoleArn'] == null ? null : ((map['customRoleArn'] as String).input()).input(),
+      ecrRepositoryPrefix: map['ecrRepositoryPrefix'] == null ? null : ((map['ecrRepositoryPrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registryId: map['registryId'] == null ? null : ((map['registryId'] as String).input()).input(),
+      upstreamRegistryUrl: map['upstreamRegistryUrl'] == null ? null : ((map['upstreamRegistryUrl'] as String).input()).input(),
+      upstreamRepositoryPrefix: map['upstreamRepositoryPrefix'] == null ? null : ((map['upstreamRepositoryPrefix'] as String).input()).input(),
     );
   }
 }

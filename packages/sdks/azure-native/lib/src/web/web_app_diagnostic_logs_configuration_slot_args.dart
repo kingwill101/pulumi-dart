@@ -62,11 +62,11 @@ class WebAppDiagnosticLogsConfigurationSlotArgs {
 
   factory WebAppDiagnosticLogsConfigurationSlotArgs.fromMap(Map<String, dynamic> map) {
     return WebAppDiagnosticLogsConfigurationSlotArgs(
-      applicationLogs: map['applicationLogs'] == null ? null : (ApplicationLogsConfig.fromMap((map['applicationLogs'] as Map).cast<String, dynamic>())).input(),
-      detailedErrorMessages: map['detailedErrorMessages'] == null ? null : (EnabledConfig.fromMap((map['detailedErrorMessages'] as Map).cast<String, dynamic>())).input(),
-      failedRequestsTracing: map['failedRequestsTracing'] == null ? null : (EnabledConfig.fromMap((map['failedRequestsTracing'] as Map).cast<String, dynamic>())).input(),
-      httpLogs: map['httpLogs'] == null ? null : (HttpLogsConfig.fromMap((map['httpLogs'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      applicationLogs: map['applicationLogs'] == null ? null : (ApplicationLogsConfig.fromMap((map['applicationLogs']! as Map).cast<String, dynamic>())).input(),
+      detailedErrorMessages: map['detailedErrorMessages'] == null ? null : (EnabledConfig.fromMap((map['detailedErrorMessages']! as Map).cast<String, dynamic>())).input(),
+      failedRequestsTracing: map['failedRequestsTracing'] == null ? null : (EnabledConfig.fromMap((map['failedRequestsTracing']! as Map).cast<String, dynamic>())).input(),
+      httpLogs: map['httpLogs'] == null ? null : (HttpLogsConfig.fromMap((map['httpLogs']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       slot: (map['slot'] as String).input(),

@@ -50,11 +50,11 @@ class ToolGoogleSearchTool {
 
   factory ToolGoogleSearchTool.fromMap(Map<String, dynamic> map) {
     return ToolGoogleSearchTool(
-      contextUrls: map['contextUrls'] == null ? null : ((map['contextUrls'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      excludeDomains: map['excludeDomains'] == null ? null : ((map['excludeDomains'] as List).cast<String>()).input(),
+      contextUrls: map['contextUrls'] == null ? null : ((map['contextUrls']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      excludeDomains: map['excludeDomains'] == null ? null : ((map['excludeDomains']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
-      preferredDomains: map['preferredDomains'] == null ? null : ((map['preferredDomains'] as List).cast<String>()).input(),
+      preferredDomains: map['preferredDomains'] == null ? null : ((map['preferredDomains']! as List).cast<String>()).input(),
     );
   }
 }

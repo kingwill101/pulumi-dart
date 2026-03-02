@@ -37,9 +37,9 @@ class GetTransitRouterAvailableResourcesResult {
   factory GetTransitRouterAvailableResourcesResult.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterAvailableResourcesResult(
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       resources: pulumi.Input.decodeList<GetTransitRouterAvailableResourcesResource>(map['resources'], (value) => GetTransitRouterAvailableResourcesResource.fromMap((value as Map).cast<String, dynamic>())),
-      supportMulticast: map['supportMulticast'] == null ? null : map['supportMulticast'] as bool,
+      supportMulticast: map['supportMulticast'] == null ? null : map['supportMulticast']! as bool,
     );
   }
 }

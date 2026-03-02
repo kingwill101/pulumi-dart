@@ -20,7 +20,7 @@ class NetworkPortOptions {
 
   factory NetworkPortOptions.fromMap(Map<String, dynamic> map) {
     return NetworkPortOptions(
-      isolated: map['isolated'] == null ? null : (map['isolated'] as String).input(),
+      isolated: map['isolated'] == null ? null : (map['isolated']! as String).input(),
     );
   }
 }

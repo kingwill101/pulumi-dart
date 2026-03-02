@@ -26,8 +26,8 @@ class ClientRegistrationResponse {
 
   factory ClientRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return ClientRegistrationResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedSca
 
   factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStat.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStat(
-      metric: (PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetric.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
+      metric: (PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedScalingMetricSpecificationMetricDataQueryMetricStatMetric.fromMap((map['metric']! as Map).cast<String, dynamic>())).input(),
       stat: (map['stat'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : ((map['unit'] as String).input()).input(),
     );
   }
 }

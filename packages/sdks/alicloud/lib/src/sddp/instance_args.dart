@@ -89,15 +89,15 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      dataphin: map['dataphin'] == null ? null : (map['dataphin'] as String).input(),
-      dataphinCount: map['dataphinCount'] == null ? null : (map['dataphinCount'] as String).input(),
-      logistics: map['logistics'] == null ? null : (map['logistics'] as String).input(),
-      modifyType: map['modifyType'] == null ? null : (map['modifyType'] as String).input(),
-      ossSize: map['ossSize'] == null ? null : (map['ossSize'] as String).input(),
+      dataphin: map['dataphin'] == null ? null : (map['dataphin']! as String).input(),
+      dataphinCount: map['dataphinCount'] == null ? null : (map['dataphinCount']! as String).input(),
+      logistics: map['logistics'] == null ? null : (map['logistics']! as String).input(),
+      modifyType: map['modifyType'] == null ? null : (map['modifyType']! as String).input(),
+      ossSize: map['ossSize'] == null ? null : (map['ossSize']! as String).input(),
       paymentType: (map['paymentType'] as String).input(),
       period: (map['period'] as int).input(),
-      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod'] as int).input(),
-      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus'] as String).input(),
+      renewPeriod: map['renewPeriod'] == null ? null : (map['renewPeriod']! as int).input(),
+      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus']! as String).input(),
       sdCbool: (map['sdCbool'] as String).input(),
       sdc: (map['sdc'] as String).input(),
       sddpVersion: (map['sddpVersion'] as String).input(),

@@ -25,8 +25,8 @@ class DataLakeConfigurationLifecycleConfigurationTransition {
 
   factory DataLakeConfigurationLifecycleConfigurationTransition.fromMap(Map<String, dynamic> map) {
     return DataLakeConfigurationLifecycleConfigurationTransition(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
+      days: map['days'] == null ? null : ((map['days'] as int).input()).input(),
+      storageClass: map['storageClass'] == null ? null : ((map['storageClass'] as String).input()).input(),
     );
   }
 }

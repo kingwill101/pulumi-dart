@@ -26,8 +26,8 @@ class ConnectorSubnet {
 
   factory ConnectorSubnet.fromMap(Map<String, dynamic> map) {
     return ConnectorSubnet(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
     );
   }
 }

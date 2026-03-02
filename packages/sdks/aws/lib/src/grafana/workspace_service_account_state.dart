@@ -41,11 +41,11 @@ class WorkspaceServiceAccountState {
 
   factory WorkspaceServiceAccountState.fromMap(Map<String, dynamic> map) {
     return WorkspaceServiceAccountState(
-      grafanaRole: map['grafanaRole'] == null ? null : (map['grafanaRole'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      grafanaRole: map['grafanaRole'] == null ? null : ((map['grafanaRole'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : ((map['serviceAccountId'] as String).input()).input(),
+      workspaceId: map['workspaceId'] == null ? null : ((map['workspaceId'] as String).input()).input(),
     );
   }
 }

@@ -40,7 +40,7 @@ class GetImagesResult {
   factory GetImagesResult.fromMap(Map<String, dynamic> map) {
     return GetImagesResult(
       id: map['id'] as String,
-      imageIds: pulumi.Input.decodeList<GetImagesImageId>(map['imageIds'], (value) => GetImagesImageId.fromMap((value as Map).cast<String, dynamic>())),
+      imageIds: pulumi.Input.decodeList<GetImagesImageId>(map['imageIds']!, (value) => GetImagesImageId.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       registryId: map['registryId'] == null ? null : map['registryId'] as String,
       repositoryName: map['repositoryName'] as String,

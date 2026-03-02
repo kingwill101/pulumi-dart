@@ -45,10 +45,10 @@ class BatchEndpoint {
   factory BatchEndpoint.fromMap(Map<String, dynamic> map) {
     return BatchEndpoint(
       authMode: (map['authMode'] as String).input(),
-      defaults: map['defaults'] == null ? null : (BatchEndpointDefaults.fromMap((map['defaults'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      keys: map['keys'] == null ? null : (EndpointAuthKeys.fromMap((map['keys'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      defaults: map['defaults'] == null ? null : (BatchEndpointDefaults.fromMap((map['defaults']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      keys: map['keys'] == null ? null : (EndpointAuthKeys.fromMap((map['keys']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class GetGradientaiAgentParentAgentApiKey {
 
   factory GetGradientaiAgentParentAgentApiKey.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentParentAgentApiKey(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
     );
   }
 }

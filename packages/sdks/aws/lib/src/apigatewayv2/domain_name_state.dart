@@ -63,15 +63,15 @@ class DomainNameState {
 
   factory DomainNameState.fromMap(Map<String, dynamic> map) {
     return DomainNameState(
-      apiMappingSelectionExpression: map['apiMappingSelectionExpression'] == null ? null : (map['apiMappingSelectionExpression'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      domainNameConfiguration: map['domainNameConfiguration'] == null ? null : (DomainNameDomainNameConfiguration.fromMap((map['domainNameConfiguration'] as Map).cast<String, dynamic>())).input(),
-      mutualTlsAuthentication: map['mutualTlsAuthentication'] == null ? null : (DomainNameMutualTlsAuthentication.fromMap((map['mutualTlsAuthentication'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routingMode: map['routingMode'] == null ? null : (map['routingMode'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      apiMappingSelectionExpression: map['apiMappingSelectionExpression'] == null ? null : ((map['apiMappingSelectionExpression'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      domainNameConfiguration: map['domainNameConfiguration'] == null ? null : ((DomainNameDomainNameConfiguration.fromMap((map['domainNameConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      mutualTlsAuthentication: map['mutualTlsAuthentication'] == null ? null : ((DomainNameMutualTlsAuthentication.fromMap((map['mutualTlsAuthentication']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routingMode: map['routingMode'] == null ? null : ((map['routingMode'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

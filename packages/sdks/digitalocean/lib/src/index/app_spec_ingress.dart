@@ -26,8 +26,8 @@ class AppSpecIngress {
 
   factory AppSpecIngress.fromMap(Map<String, dynamic> map) {
     return AppSpecIngress(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AppSpecIngressRule>(map['rules'], (value) => AppSpecIngressRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secureHeader: map['secureHeader'] == null ? null : (AppSpecIngressSecureHeader.fromMap((map['secureHeader'] as Map).cast<String, dynamic>())).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AppSpecIngressRule>(map['rules']!, (value) => AppSpecIngressRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secureHeader: map['secureHeader'] == null ? null : (AppSpecIngressSecureHeader.fromMap((map['secureHeader']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

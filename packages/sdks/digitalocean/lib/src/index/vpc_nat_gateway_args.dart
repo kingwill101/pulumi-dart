@@ -66,14 +66,14 @@ class VpcNatGatewayArgs {
 
   factory VpcNatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return VpcNatGatewayArgs(
-      icmpTimeoutSeconds: map['icmpTimeoutSeconds'] == null ? null : (map['icmpTimeoutSeconds'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      icmpTimeoutSeconds: map['icmpTimeoutSeconds'] == null ? null : (map['icmpTimeoutSeconds']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
       region: (map['region'] as String).input(),
       size: (map['size'] as int).input(),
-      tcpTimeoutSeconds: map['tcpTimeoutSeconds'] == null ? null : (map['tcpTimeoutSeconds'] as int).input(),
+      tcpTimeoutSeconds: map['tcpTimeoutSeconds'] == null ? null : (map['tcpTimeoutSeconds']! as int).input(),
       type: (map['type'] as String).input(),
-      udpTimeoutSeconds: map['udpTimeoutSeconds'] == null ? null : (map['udpTimeoutSeconds'] as int).input(),
+      udpTimeoutSeconds: map['udpTimeoutSeconds'] == null ? null : (map['udpTimeoutSeconds']! as int).input(),
       vpcs: (pulumi.Input.decodeList<VpcNatGatewayVpc>(map['vpcs'], (value) => VpcNatGatewayVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

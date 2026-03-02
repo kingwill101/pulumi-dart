@@ -21,7 +21,7 @@ class DomainDevicesHostdevCapsMisc {
 
   factory DomainDevicesHostdevCapsMisc.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevCapsMisc(
-      source: map['source'] == null ? null : (DomainDevicesHostdevCapsMiscSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (DomainDevicesHostdevCapsMiscSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

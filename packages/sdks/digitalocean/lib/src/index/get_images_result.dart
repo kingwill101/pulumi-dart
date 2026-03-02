@@ -37,10 +37,10 @@ class GetImagesResult {
 
   factory GetImagesResult.fromMap(Map<String, dynamic> map) {
     return GetImagesResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetImagesFilter>(map['filters'], (value) => GetImagesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetImagesFilter>(map['filters']!, (value) => GetImagesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       images: pulumi.Input.decodeList<GetImagesImage>(map['images'], (value) => GetImagesImage.fromMap((value as Map).cast<String, dynamic>())),
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetImagesSort>(map['sorts'], (value) => GetImagesSort.fromMap((value as Map).cast<String, dynamic>())),
+      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetImagesSort>(map['sorts']!, (value) => GetImagesSort.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

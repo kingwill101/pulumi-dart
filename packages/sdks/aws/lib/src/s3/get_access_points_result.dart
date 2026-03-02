@@ -50,7 +50,7 @@ class GetAccessPointsResult {
 
   factory GetAccessPointsResult.fromMap(Map<String, dynamic> map) {
     return GetAccessPointsResult(
-      accessPoints: pulumi.Input.decodeList<GetAccessPointsAccessPoint>(map['accessPoints'], (value) => GetAccessPointsAccessPoint.fromMap((value as Map).cast<String, dynamic>())),
+      accessPoints: pulumi.Input.decodeList<GetAccessPointsAccessPoint>(map['accessPoints']!, (value) => GetAccessPointsAccessPoint.fromMap((value as Map).cast<String, dynamic>())),
       accountId: map['accountId'] == null ? null : map['accountId'] as String,
       bucket: map['bucket'] == null ? null : map['bucket'] as String,
       dataSourceId: map['dataSourceId'] == null ? null : map['dataSourceId'] as String,

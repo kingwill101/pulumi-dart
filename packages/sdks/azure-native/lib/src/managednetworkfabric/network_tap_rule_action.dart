@@ -41,11 +41,11 @@ class NetworkTapRuleAction {
 
   factory NetworkTapRuleAction.fromMap(Map<String, dynamic> map) {
     return NetworkTapRuleAction(
-      destinationId: map['destinationId'] == null ? null : (map['destinationId'] as String).input(),
-      isTimestampEnabled: map['isTimestampEnabled'] == null ? null : (map['isTimestampEnabled'] as String).input(),
-      matchConfigurationName: map['matchConfigurationName'] == null ? null : (map['matchConfigurationName'] as String).input(),
-      truncate: map['truncate'] == null ? null : (map['truncate'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      destinationId: map['destinationId'] == null ? null : (map['destinationId']! as String).input(),
+      isTimestampEnabled: map['isTimestampEnabled'] == null ? null : (map['isTimestampEnabled']! as String).input(),
+      matchConfigurationName: map['matchConfigurationName'] == null ? null : (map['matchConfigurationName']! as String).input(),
+      truncate: map['truncate'] == null ? null : (map['truncate']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

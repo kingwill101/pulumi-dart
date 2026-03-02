@@ -22,7 +22,7 @@ class TaskTemplateSpec {
 
   factory TaskTemplateSpec.fromMap(Map<String, dynamic> map) {
     return TaskTemplateSpec(
-      spec: map['spec'] == null ? null : (TaskSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (TaskSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

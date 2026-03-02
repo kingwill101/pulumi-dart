@@ -31,7 +31,7 @@ class TcpRouteRule {
   factory TcpRouteRule.fromMap(Map<String, dynamic> map) {
     return TcpRouteRule(
       action: (TcpRouteRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<TcpRouteRuleMatch>(map['matches'], (value) => TcpRouteRuleMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<TcpRouteRuleMatch>(map['matches']!, (value) => TcpRouteRuleMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

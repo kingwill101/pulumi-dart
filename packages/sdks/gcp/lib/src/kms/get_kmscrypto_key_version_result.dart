@@ -62,7 +62,7 @@ class GetKMSCryptoKeyVersionResult {
       protectionLevel: map['protectionLevel'] as String,
       publicKeys: pulumi.Input.decodeList<GetKMSCryptoKeyVersionPublicKey>(map['publicKeys'], (value) => GetKMSCryptoKeyVersionPublicKey.fromMap((value as Map).cast<String, dynamic>())),
       state: map['state'] as String,
-      version: map['version'] == null ? null : map['version'] as int,
+      version: map['version'] == null ? null : map['version']! as int,
     );
   }
 }

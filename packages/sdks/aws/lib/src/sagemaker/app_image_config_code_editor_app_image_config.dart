@@ -27,8 +27,8 @@ class AppImageConfigCodeEditorAppImageConfig {
 
   factory AppImageConfigCodeEditorAppImageConfig.fromMap(Map<String, dynamic> map) {
     return AppImageConfigCodeEditorAppImageConfig(
-      containerConfig: map['containerConfig'] == null ? null : (AppImageConfigCodeEditorAppImageConfigContainerConfig.fromMap((map['containerConfig'] as Map).cast<String, dynamic>())).input(),
-      fileSystemConfig: map['fileSystemConfig'] == null ? null : (AppImageConfigCodeEditorAppImageConfigFileSystemConfig.fromMap((map['fileSystemConfig'] as Map).cast<String, dynamic>())).input(),
+      containerConfig: map['containerConfig'] == null ? null : ((AppImageConfigCodeEditorAppImageConfigContainerConfig.fromMap((map['containerConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      fileSystemConfig: map['fileSystemConfig'] == null ? null : ((AppImageConfigCodeEditorAppImageConfigFileSystemConfig.fromMap((map['fileSystemConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

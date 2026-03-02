@@ -41,11 +41,11 @@ class AkriConnectorTemplateHelmInstallConfiguration {
 
   factory AkriConnectorTemplateHelmInstallConfiguration.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateHelmInstallConfiguration(
-      atomic: map['atomic'] == null ? null : (map['atomic'] as bool).input(),
-      disableHooks: map['disableHooks'] == null ? null : (map['disableHooks'] as bool).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      wait: map['wait'] == null ? null : (map['wait'] as bool).input(),
-      waitForJobs: map['waitForJobs'] == null ? null : (map['waitForJobs'] as bool).input(),
+      atomic: map['atomic'] == null ? null : (map['atomic']! as bool).input(),
+      disableHooks: map['disableHooks'] == null ? null : (map['disableHooks']! as bool).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      wait: map['wait'] == null ? null : (map['wait']! as bool).input(),
+      waitForJobs: map['waitForJobs'] == null ? null : (map['waitForJobs']! as bool).input(),
     );
   }
 }

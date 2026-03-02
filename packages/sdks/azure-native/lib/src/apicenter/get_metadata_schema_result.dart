@@ -53,7 +53,7 @@ class GetMetadataSchemaResult {
 
   factory GetMetadataSchemaResult.fromMap(Map<String, dynamic> map) {
     return GetMetadataSchemaResult(
-      assignedTo: map['assignedTo'] == null ? null : pulumi.Input.decodeList<MetadataAssignmentResponse>(map['assignedTo'], (value) => MetadataAssignmentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      assignedTo: map['assignedTo'] == null ? null : pulumi.Input.decodeList<MetadataAssignmentResponse>(map['assignedTo']!, (value) => MetadataAssignmentResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

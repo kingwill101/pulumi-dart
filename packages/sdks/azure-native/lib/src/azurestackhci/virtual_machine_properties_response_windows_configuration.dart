@@ -37,10 +37,10 @@ class VirtualMachinePropertiesResponseWindowsConfiguration {
 
   factory VirtualMachinePropertiesResponseWindowsConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesResponseWindowsConfiguration(
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates'] as bool).input(),
-      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent'] as bool).input(),
-      ssh: map['ssh'] == null ? null : (VirtualMachinePropertiesResponseSshSsh.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates']! as bool).input(),
+      provisionVMAgent: map['provisionVMAgent'] == null ? null : (map['provisionVMAgent']! as bool).input(),
+      ssh: map['ssh'] == null ? null : (VirtualMachinePropertiesResponseSshSsh.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

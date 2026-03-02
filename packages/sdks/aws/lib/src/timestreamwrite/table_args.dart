@@ -58,12 +58,12 @@ class TableArgs {
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
       databaseName: (map['databaseName'] as String).input(),
-      magneticStoreWriteProperties: map['magneticStoreWriteProperties'] == null ? null : (TableMagneticStoreWriteProperties.fromMap((map['magneticStoreWriteProperties'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionProperties: map['retentionProperties'] == null ? null : (TableRetentionProperties.fromMap((map['retentionProperties'] as Map).cast<String, dynamic>())).input(),
-      schema: map['schema'] == null ? null : (TableSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      magneticStoreWriteProperties: map['magneticStoreWriteProperties'] == null ? null : ((TableMagneticStoreWriteProperties.fromMap((map['magneticStoreWriteProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionProperties: map['retentionProperties'] == null ? null : ((TableRetentionProperties.fromMap((map['retentionProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      schema: map['schema'] == null ? null : ((TableSchema.fromMap((map['schema']! as Map).cast<String, dynamic>())).input()).input(),
       tableName: (map['tableName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class VolumeAttachmentState {
 
   factory VolumeAttachmentState.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentState(
-      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as int).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId']! as int).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as String).input(),
     );
   }
 }

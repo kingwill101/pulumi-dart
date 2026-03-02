@@ -26,8 +26,8 @@ class SecretStoreResponse {
 
   factory SecretStoreResponse.fromMap(Map<String, dynamic> map) {
     return SecretStoreResponse(
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName']! as String).input(),
     );
   }
 }

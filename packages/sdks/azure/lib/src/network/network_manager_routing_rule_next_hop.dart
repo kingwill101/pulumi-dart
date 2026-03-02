@@ -25,7 +25,7 @@ class NetworkManagerRoutingRuleNextHop {
 
   factory NetworkManagerRoutingRuleNextHop.fromMap(Map<String, dynamic> map) {
     return NetworkManagerRoutingRuleNextHop(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

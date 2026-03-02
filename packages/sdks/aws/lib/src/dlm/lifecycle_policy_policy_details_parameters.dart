@@ -25,8 +25,8 @@ class LifecyclePolicyPolicyDetailsParameters {
 
   factory LifecyclePolicyPolicyDetailsParameters.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsParameters(
-      excludeBootVolume: map['excludeBootVolume'] == null ? null : (map['excludeBootVolume'] as bool).input(),
-      noReboot: map['noReboot'] == null ? null : (map['noReboot'] as bool).input(),
+      excludeBootVolume: map['excludeBootVolume'] == null ? null : ((map['excludeBootVolume'] as bool).input()).input(),
+      noReboot: map['noReboot'] == null ? null : ((map['noReboot'] as bool).input()).input(),
     );
   }
 }

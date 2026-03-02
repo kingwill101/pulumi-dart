@@ -26,8 +26,8 @@ class InstanceMaintenancePolicy {
 
   factory InstanceMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return InstanceMaintenancePolicy(
-      maxHealthyPercentage: map['maxHealthyPercentage'] == null ? null : (map['maxHealthyPercentage'] as int).input(),
-      minHealthyPercentage: map['minHealthyPercentage'] == null ? null : (map['minHealthyPercentage'] as int).input(),
+      maxHealthyPercentage: map['maxHealthyPercentage'] == null ? null : (map['maxHealthyPercentage']! as int).input(),
+      minHealthyPercentage: map['minHealthyPercentage'] == null ? null : (map['minHealthyPercentage']! as int).input(),
     );
   }
 }

@@ -24,7 +24,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge {
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridge(
-      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridgeErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>())).input(),
+      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesEventBridgeErrorHandlingConfig.fromMap((map['errorHandlingConfig']! as Map).cast<String, dynamic>())).input()).input(),
       object: (map['object'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class ConnectionMonitorIcmpConfiguration {
 
   factory ConnectionMonitorIcmpConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorIcmpConfiguration(
-      disableTraceRoute: map['disableTraceRoute'] == null ? null : (map['disableTraceRoute'] as bool).input(),
+      disableTraceRoute: map['disableTraceRoute'] == null ? null : (map['disableTraceRoute']! as bool).input(),
     );
   }
 }

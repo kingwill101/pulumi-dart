@@ -31,9 +31,9 @@ class ApiErrorBaseResponse {
 
   factory ApiErrorBaseResponse.fromMap(Map<String, dynamic> map) {
     return ApiErrorBaseResponse(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

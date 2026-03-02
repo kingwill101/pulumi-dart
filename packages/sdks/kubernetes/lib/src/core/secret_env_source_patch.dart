@@ -28,8 +28,8 @@ class SecretEnvSourcePatch {
 
   factory SecretEnvSourcePatch.fromMap(Map<String, dynamic> map) {
     return SecretEnvSourcePatch(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
     );
   }
 }

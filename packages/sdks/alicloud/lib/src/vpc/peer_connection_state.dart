@@ -109,21 +109,21 @@ class PeerConnectionState {
 
   factory PeerConnectionState.fromMap(Map<String, dynamic> map) {
     return PeerConnectionState(
-      acceptingAliUid: map['acceptingAliUid'] == null ? null : (map['acceptingAliUid'] as int).input(),
-      acceptingRegionId: map['acceptingRegionId'] == null ? null : (map['acceptingRegionId'] as String).input(),
-      acceptingVpcId: map['acceptingVpcId'] == null ? null : (map['acceptingVpcId'] as String).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      linkType: map['linkType'] == null ? null : (map['linkType'] as String).input(),
-      peerConnectionName: map['peerConnectionName'] == null ? null : (map['peerConnectionName'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      acceptingAliUid: map['acceptingAliUid'] == null ? null : (map['acceptingAliUid']! as int).input(),
+      acceptingRegionId: map['acceptingRegionId'] == null ? null : (map['acceptingRegionId']! as String).input(),
+      acceptingVpcId: map['acceptingVpcId'] == null ? null : (map['acceptingVpcId']! as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
+      linkType: map['linkType'] == null ? null : (map['linkType']! as String).input(),
+      peerConnectionName: map['peerConnectionName'] == null ? null : (map['peerConnectionName']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

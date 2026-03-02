@@ -61,14 +61,14 @@ class ProjectCloudresourcemanagerV1beta1Args {
 
   factory ProjectCloudresourcemanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ProjectCloudresourcemanagerV1beta1Args(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      lifecycleState: map['lifecycleState'] == null ? null : (ProjectLifecycleStateCloudresourcemanagerV1beta1.fromValue(map['lifecycleState'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (ResourceIdCloudresourcemanagerV1beta1.fromMap((map['parent'] as Map).cast<String, dynamic>())).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
-      useLegacyStack: map['useLegacyStack'] == null ? null : (map['useLegacyStack'] as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      lifecycleState: map['lifecycleState'] == null ? null : (ProjectLifecycleStateCloudresourcemanagerV1beta1.fromValue(map['lifecycleState']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (ResourceIdCloudresourcemanagerV1beta1.fromMap((map['parent']! as Map).cast<String, dynamic>())).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber']! as String).input(),
+      useLegacyStack: map['useLegacyStack'] == null ? null : (map['useLegacyStack']! as bool).input(),
     );
   }
 }

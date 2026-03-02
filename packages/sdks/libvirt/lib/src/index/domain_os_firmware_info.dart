@@ -21,7 +21,7 @@ class DomainOsFirmwareInfo {
 
   factory DomainOsFirmwareInfo.fromMap(Map<String, dynamic> map) {
     return DomainOsFirmwareInfo(
-      features: map['features'] == null ? null : (pulumi.Input.decodeList<DomainOsFirmwareInfoFeature>(map['features'], (value) => DomainOsFirmwareInfoFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      features: map['features'] == null ? null : (pulumi.Input.decodeList<DomainOsFirmwareInfoFeature>(map['features']!, (value) => DomainOsFirmwareInfoFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

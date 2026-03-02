@@ -58,14 +58,14 @@ class GetAccessStrategiesResult {
 
   factory GetAccessStrategiesResult.fromMap(Map<String, dynamic> map) {
     return GetAccessStrategiesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       strategies: pulumi.Input.decodeList<GetAccessStrategiesStrategy>(map['strategies'], (value) => GetAccessStrategiesStrategy.fromMap((value as Map).cast<String, dynamic>())),
       strategyMode: map['strategyMode'] as String,
     );

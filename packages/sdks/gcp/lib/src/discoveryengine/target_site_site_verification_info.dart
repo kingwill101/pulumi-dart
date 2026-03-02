@@ -26,8 +26,8 @@ class TargetSiteSiteVerificationInfo {
 
   factory TargetSiteSiteVerificationInfo.fromMap(Map<String, dynamic> map) {
     return TargetSiteSiteVerificationInfo(
-      siteVerificationState: map['siteVerificationState'] == null ? null : (map['siteVerificationState'] as String).input(),
-      verifyTime: map['verifyTime'] == null ? null : (map['verifyTime'] as String).input(),
+      siteVerificationState: map['siteVerificationState'] == null ? null : (map['siteVerificationState']! as String).input(),
+      verifyTime: map['verifyTime'] == null ? null : (map['verifyTime']! as String).input(),
     );
   }
 }

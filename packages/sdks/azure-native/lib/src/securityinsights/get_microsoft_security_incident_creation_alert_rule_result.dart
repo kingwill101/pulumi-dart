@@ -97,20 +97,20 @@ class GetMicrosoftSecurityIncidentCreationAlertRuleResult {
 
   factory GetMicrosoftSecurityIncidentCreationAlertRuleResult.fromMap(Map<String, dynamic> map) {
     return GetMicrosoftSecurityIncidentCreationAlertRuleResult(
-      alertRuleTemplateName: map['alertRuleTemplateName'] == null ? null : map['alertRuleTemplateName'] as String,
+      alertRuleTemplateName: map['alertRuleTemplateName'] == null ? null : map['alertRuleTemplateName']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       displayName: map['displayName'] as String,
-      displayNamesExcludeFilter: map['displayNamesExcludeFilter'] == null ? null : (map['displayNamesExcludeFilter'] as List).cast<String>(),
-      displayNamesFilter: map['displayNamesFilter'] == null ? null : (map['displayNamesFilter'] as List).cast<String>(),
+      displayNamesExcludeFilter: map['displayNamesExcludeFilter'] == null ? null : (map['displayNamesExcludeFilter']! as List).cast<String>(),
+      displayNamesFilter: map['displayNamesFilter'] == null ? null : (map['displayNamesFilter']! as List).cast<String>(),
       enabled: map['enabled'] as bool,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       lastModifiedUtc: map['lastModifiedUtc'] as String,
       name: map['name'] as String,
       productFilter: map['productFilter'] as String,
-      severitiesFilter: map['severitiesFilter'] == null ? null : (map['severitiesFilter'] as List).cast<String>(),
+      severitiesFilter: map['severitiesFilter'] == null ? null : (map['severitiesFilter']! as List).cast<String>(),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

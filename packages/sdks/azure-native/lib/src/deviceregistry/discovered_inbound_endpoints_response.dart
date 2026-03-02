@@ -46,12 +46,12 @@ class DiscoveredInboundEndpointsResponse {
 
   factory DiscoveredInboundEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveredInboundEndpointsResponse(
-      additionalConfiguration: map['additionalConfiguration'] == null ? null : (map['additionalConfiguration'] as String).input(),
+      additionalConfiguration: map['additionalConfiguration'] == null ? null : (map['additionalConfiguration']! as String).input(),
       address: (map['address'] as String).input(),
       endpointType: (map['endpointType'] as String).input(),
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn'] as String).input(),
-      supportedAuthenticationMethods: map['supportedAuthenticationMethods'] == null ? null : ((map['supportedAuthenticationMethods'] as List).cast<String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn']! as String).input(),
+      supportedAuthenticationMethods: map['supportedAuthenticationMethods'] == null ? null : ((map['supportedAuthenticationMethods']! as List).cast<String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

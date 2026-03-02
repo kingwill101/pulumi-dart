@@ -21,7 +21,7 @@ class SecretPasswordIdentity {
 
   factory SecretPasswordIdentity.fromMap(Map<String, dynamic> map) {
     return SecretPasswordIdentity(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
     );
   }
 }

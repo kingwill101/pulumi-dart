@@ -46,12 +46,12 @@ class GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec {
 
   factory GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec(
-      learningRateParameterName: map['learningRateParameterName'] == null ? null : (map['learningRateParameterName'] as String).input(),
-      maxStepCount: map['maxStepCount'] == null ? null : (map['maxStepCount'] as String).input(),
-      minMeasurementCount: map['minMeasurementCount'] == null ? null : (map['minMeasurementCount'] as String).input(),
-      minStepCount: map['minStepCount'] == null ? null : (map['minStepCount'] as String).input(),
-      updateAllStoppedTrials: map['updateAllStoppedTrials'] == null ? null : (map['updateAllStoppedTrials'] as bool).input(),
-      useElapsedDuration: map['useElapsedDuration'] == null ? null : (map['useElapsedDuration'] as bool).input(),
+      learningRateParameterName: map['learningRateParameterName'] == null ? null : (map['learningRateParameterName']! as String).input(),
+      maxStepCount: map['maxStepCount'] == null ? null : (map['maxStepCount']! as String).input(),
+      minMeasurementCount: map['minMeasurementCount'] == null ? null : (map['minMeasurementCount']! as String).input(),
+      minStepCount: map['minStepCount'] == null ? null : (map['minStepCount']! as String).input(),
+      updateAllStoppedTrials: map['updateAllStoppedTrials'] == null ? null : (map['updateAllStoppedTrials']! as bool).input(),
+      useElapsedDuration: map['useElapsedDuration'] == null ? null : (map['useElapsedDuration']! as bool).input(),
     );
   }
 }
